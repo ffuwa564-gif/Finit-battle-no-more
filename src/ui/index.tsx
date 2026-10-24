@@ -102,8 +102,8 @@ export function EmptyState({ icon, title, children }: { icon?: ReactNode; title:
   return <div className="empty-state">{icon && <span className="empty-state__icon">{icon}</span>}<h3>{title}</h3>{children && <div className="empty-state__copy">{children}</div>}</div>;
 }
 
-export function Toast({ children, tone = 'info', onClose }: { children: ReactNode; tone?: 'info' | 'error' | 'success'; onClose?: () => void }) {
-  return <NoticeSurface className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'} tone={tone}><span>{children}</span>{onClose && <IconButton className="close-button" label="通知を閉じる" sound="cancel" onClick={onClose}><X size={16} /></IconButton>}</NoticeSurface>;
+export function Toast({ children, tone = 'info', onClose, present = true }: { children: ReactNode; tone?: 'info' | 'error' | 'success'; onClose?: () => void; present?: boolean }) {
+  return <NoticeSurface present={present} noticeKey={typeof children === 'string' ? children : undefined} className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'} tone={tone}><span>{children}</span>{onClose && <IconButton className="close-button" label="通知を閉じる" sound="cancel" onClick={onClose}><X size={16} /></IconButton>}</NoticeSurface>;
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */

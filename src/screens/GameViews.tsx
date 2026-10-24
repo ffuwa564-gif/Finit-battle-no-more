@@ -115,7 +115,7 @@ export function BattleView(p: ViewProps) {
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label="敵の戦場">
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} materials={total} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
-      {event && <NoticeSurface className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={`toast-${event.id}`}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</NoticeSurface>}
+      <NoticeSurface present={!!event} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status">{event?.kind === 'dialogue' && <Feather size={15} />}{event?.text}</NoticeSurface>
       {event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}
     </section>
     <div className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label="パーティメンバー">
