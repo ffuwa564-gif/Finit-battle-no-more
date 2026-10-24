@@ -82,9 +82,11 @@ export default function App() {
       }
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
+        const eventReturn = content.dungeons.find(d => d.id === previous.battle?.dungeonId)?.kind === 'event';
         navigate('dungeons');
+        if (eventReturn) location.hash = 'dungeons/events';
         // Deployed releases return to the stable launcher only at a safe town boundary.
-        if (/^\/releases\/[^/]+\//.test(location.pathname)) location.assign('/');
+        if (/^\/releases\/[^/]+\//.test(location.pathname)) location.assign(eventReturn ? '/#dungeons/events' : '/');
       }
       return true;
     } catch (error) {
