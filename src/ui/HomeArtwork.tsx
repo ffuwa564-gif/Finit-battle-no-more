@@ -18,7 +18,6 @@ export function HomeArtwork({ save, busy, command, suspended }: {
  const anchor=selected?'50% 0%':undefined;
  async function choose(id:string|null){if(await command({type:'settings',settings:{homeCharacterId:id}}))setOpen(false);}
  return <>
-  {selected&&<div className="home-artwork-backdrop" aria-hidden="true" style={{backgroundImage:`url("${assetPath(poster)}")`}} />}
   <div className={`home-artwork${selected?' is-character-home':''}`} style={{'--home-art-anchor':anchor} as CSSProperties}>
    {motion?<AnimatedIllustration key={selected?.id??'default'} posterId={poster} motionId={motion} alt={tr(selected?.name??'月下の廃聖堂に佇む銀髪の巡礼者と白い狼')} reducedMotion={save.settings.reducedMotion} suspended={suspended||open} />:<img src={assetPath(poster)} alt={tr(selected!.name)} />}
   </div>
