@@ -1,3 +1,4 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 test('BGM unlocks on interaction, switches with exploration, and remembers independent mute', async ({ page }) => {
@@ -5,8 +6,11 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   page.on('pageerror', e => errors.push(e.message));
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: '旅の支度' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STILLVEIL', exact: true })).toBeVisible();
   await expect(page.locator('audio[data-bgm]')).toHaveCount(0);
+  await enterGame(page);
+  await expect(page.getByRole('heading', { name: '旅の支度' })).toBeVisible();
+  await expect(page.locator('audio[data-bgm]')).toHaveAttribute('data-scene', 'home');
   await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: '設定', exact: true }).click();
   const music = page.locator('audio[data-bgm]');
   await expect(music).toHaveAttribute('data-scene', 'home');
@@ -37,9 +41,11 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await page.getByRole('button', { name: '街へ戻る', exact: true }).click();
   await expect(music).toHaveAttribute('data-scene', 'home');
   await page.goto('/#settings');
+  await enterGame(page);
   await expect(volume.getByRole('button', { name: '25%', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await volume.getByRole('button', { name: '0%', exact: true }).click();
   await page.reload();
+  await enterGame(page);
   await expect(volume.getByRole('button', { name: '0%', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('audio[data-bgm]')).toHaveCount(0);
   expect(errors).toEqual([]);
