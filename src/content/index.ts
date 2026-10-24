@@ -16,7 +16,7 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
 };
 const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: template })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
-interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; rarity?: CharacterDef['rarity'] }
+interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; motionId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'pale-wolf': { intro: '……ここから先は、夢さえ帰れない。', threshold: 'まだ、その灯を消すわけにはいかない。', defeat: 'ようやく……あの人の足音が、聞こえる。' },
   'stone-drake': { intro: 'この庭の眠りを、誰が呼び覚ました。', threshold: '石は砕けても……約束は、残る。', defeat: '花を……踏まないで、おくれ。' },
@@ -39,8 +39,8 @@ const characters: CharacterDef[] = [
   character({ id: 'thorn-witch', name: '荊の魔女', epithet: '枯園の記憶', role: 'debuffer', speciesId: 'thorn', strength: 12, origin: ['recruit'], flavor: '花を咲かせなくなった庭に暮らす魔女。荊の冠は罰ではなく、彼女自身が選んだ約束のしるし。誰かが種を持ってくるたび、ほんの少しだけ口元を緩める。' }),
   character({ id: 'iris', name: 'アメノウズメ', epithet: '薄明の鈴舞', role: 'supporter', speciesId: 'pilgrim', strength: 12, origin: ['gacha'], rarity: 'R', flavor: '神楽の舞台で、赤茶の短い髪と紅いリボンを弾ませる女神。神楽鈴を高く掲げ、扇を開き、黒と生成りのゴシックロリータで軽やかに舞う。沈黙に閉ざされた街にも、もう一度笑い声が戻ると信じている。' }),
   character({ id: 'mireille', name: 'コノハナサクヤヒメ', epithet: '黒桜の花守', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '富士を背に、桜の枝と小さな炎をそっと掲げる女神。桜色と黒いレースのゴシックロリータを纏い、火の粉を花びらのように遊ばせる。儚さと強さを知る彼女の祈りは、傷ついた仲間の命を静かにつなぎとめる。' }),
-  character({ id: 'asteria', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
-  character({ id: 'evelyn', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
+  character({ id: 'asteria', motionId: 'gacha-amaterasu-motion', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
+  character({ id: 'evelyn', motionId: 'gacha-izanami-motion', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
 ];
 
 const characterAssets: AssetDef[] = characters.flatMap(char => {
@@ -79,6 +79,8 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const menuAssets: AssetDef[] = [
+  { id: 'gacha-izanami-motion', path: 'video/gacha-izanami.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task d2d265ba-0283-46ed-84cd-bdee1ffd8ccf.' },
+  { id: 'gacha-amaterasu-motion', path: 'video/gacha-amaterasu.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task 3b46aceb-e02f-4277-9ec0-ba114d5afcf1.' },
   { id: 'home-portrait-motion', path: 'video/home-portrait-original.mp4', kind: 'video', width: 1080, height: 1080, anchor: '50% 18%', rights: 'Original project menu illustration animated with Runway; task 1b014d68-3575-4172-9f96-4b1b4a0fd72e; full original motion; H.264 High Level 4.0.' },
   { id: 'notice-moonlight', path: 'art/notice-moonlight.png', kind: 'background', width: 2172, height: 724, anchor: '50% 50%', rights: 'Original AI-generated moonlit notification frame for this project.' },
   { id: 'command-moonlight', path: 'art/command-moonlight.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated moonlit command surface for this project.' },
