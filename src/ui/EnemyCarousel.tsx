@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button, HPBar } from './index';
+import { Button, HPBar, UnitEffects } from './index';
 import { emitUISound } from './interaction';
 import { AnimatedIllustration } from './AnimatedIllustration';
 import { EncounterCrest } from './Sigils';
@@ -143,6 +143,7 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
         <span>Wave {wave}<small> / {waveCount}</small></span><span>ROUND {round}</span>
         <span className="enemy-carousel-meta__bag" data-bag aria-label={`仮取得素材 ${materials}個`}><Backpack size={15} /><strong>{materials}</strong></span>
       </div>
+      <UnitEffects unit={front} round={round} />
     </div>
     {units.length > 1 && <div className="enemy-carousel-controls">
       <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label="前の敵を表示" disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>

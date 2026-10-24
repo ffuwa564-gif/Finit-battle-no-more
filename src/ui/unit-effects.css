@@ -1,0 +1,18 @@
+.unit-effects { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; margin-top: 4px; min-width: 0; pointer-events: auto; }
+.unit-effects > span { padding: 2px 5px; border: 1px solid #a5c7c691; border-radius: 4px; background: #e5f0e9; color: #385c61; font: 9px/1.4 var(--font-body); white-space: nowrap; }
+.unit-effects > .is-debuff { color: #814658; background: #f3e3e9; border-color: #d3a0b5; }
+.enemy-carousel-status > .unit-effects { grid-column: 2 / 4; grid-row: 4; justify-content: flex-start; margin-top: 2px; }
+.enemy-carousel-status .unit-effects > span { color: #e4f7ee; background: #24424ee8; border-color: #b3d4d66b; text-shadow: none; }
+.enemy-carousel-status .unit-effects > .is-debuff { color: #ffe1e6; background: #5b324ae8; border-color: #c898b2; }
+.skill-description { padding: 10px 0; border-bottom: 1px solid #c7cfcd6b; }
+.skill-description > small, .character-leader-hint { display: block; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.leader-panel p { margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+.character-leader-hint { margin: 9px 0 14px; font-size: 10px; }
+@media (max-width: 760px) { .party-unit .unit-effects > span { font-size: 8px; padding: 2px 3px; } }
+/* Longer tactical descriptions need the full reading width on phones. */
+@media (max-width: 760px) {
+  .character-detail { grid-template-columns: minmax(0,1fr); gap: 16px; }
+  .character-detail .detail-art { height: 230px; max-height: 230px; }
+  .character-detail p { font-size: 11px; }
+  .character-detail .stat-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+}

@@ -20,6 +20,8 @@ for(const stage of content.dungeons.filter(d=>d.eventId))for(const [name,party,l
  ['通常版入り・均衡',['elaine','liora','seris','kuzuha'],'kuzuha','balanced',5],
  ['通常版＋回復2・生存',['elaine','veil-priestess','liora','kuzuha'],'liora','survival',5],
  ['通常版＋回復2・均衡',['elaine','veil-priestess','liora','kuzuha'],'liora','balanced',5],
+ ['通常版＋貫通・均衡',['elaine','seris','liora','kuzuha'],'liora','balanced',5],
+ ['通常版＋貫通・生存',['elaine','seris','liora','kuzuha'],'liora','survival',5],
  ['SSR編成・均衡',['mireille','evelyn','asteria','kuzuha'],'evelyn','balanced',5],
 ] as const){const tests=Array.from({length:50},(_,i)=>simulate(stage.id,[...party],leader,i+1,strategy,potions));const row={difficulty:stage.tierName,index:dungeonDifficulty(stage,content),team:name,wins:tests.filter(r=>r.win).length,seeds:50,meanRounds:Math.round(tests.reduce((s,r)=>s+r.turns,0)/50)};rows.push(row);console.log(JSON.stringify(row));}
 const {writeFileSync}=await import('node:fs');writeFileSync('docs/reports/event-balance.json',JSON.stringify(rows,null,2));

@@ -1,10 +1,11 @@
 export type Role = 'healer' | 'tank' | 'attacker' | 'area_attacker' | 'supporter' | 'debuffer';
-export type SkillTemplate = 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff';
+export type SkillTemplate = 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'pierce' | 'drain' | 'regen' | 'barrier' | 'cleanse';
 export type Strategy = 'balanced' | 'aggressive' | 'survival';
 export type Rarity = 'common' | 'rare' | 'epic';
+export type LeaderEffect = 'regeneration' | 'finisher' | 'lifesteal' | 'bulwark' | 'resonance';
 export type LeaderStat = 'hp' | 'attack' | 'defense';
 export type Side = 'party' | 'enemy';
-export interface CharacterDef { id: string; name: string; epithet: string; flavor: string; speciesId: string; role: Role; strength: number; leaderStat: LeaderStat; skillIds: string[]; portraitId: string; artId: string; motionId?: string; portraitMotionId?: string; familyId?: string; encounterArtId?: string; origin: ('initial' | 'recruit' | 'gacha' | 'event')[]; rarity: 'R' | 'SR' | 'SSR'; published: boolean; soundProfile: string; dialogue?: { intro: string; threshold: string; defeat: string } }
+export interface CharacterDef { id: string; name: string; epithet: string; flavor: string; speciesId: string; role: Role; strength: number; leaderStat: LeaderStat; leaderEffect?: LeaderEffect; skillIds: string[]; portraitId: string; artId: string; motionId?: string; portraitMotionId?: string; familyId?: string; encounterArtId?: string; origin: ('initial' | 'recruit' | 'gacha' | 'event')[]; rarity: 'R' | 'SR' | 'SSR'; published: boolean; soundProfile: string; dialogue?: { intro: string; threshold: string; defeat: string } }
 export interface SkillDef { id: string; name: string; template: SkillTemplate; strength: number; soundProfile: string }
 export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon' | 'video'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string }
 export interface SpeciesDef { id: string; name: string }
@@ -12,7 +13,7 @@ export interface EnemyDef { characterId: string; boss?: boolean }
 export interface DungeonDef { id: string; kind?: 'normal' | 'event'; name: string; subtitle: string; description: string; artId: string; published: boolean; waves: EnemyDef[][]; eventId?: string; tierName?: string; previousDungeonId?: string; requiresOwnedId?: string; bossScale?: { hp: number; attack: number }; eventReward?: MaterialCost }
 export interface EventDef { id: string; name: string; subtitle: string; published: boolean; familyId: string; normalId: string; awakenedId: string; materialSpeciesId: string; entryDungeonId: string; fragment: { id: string; name: string }; core: { id: string; name: string }; normalCost: MaterialCost; awakenedCost: MaterialCost; dungeonIds: string[] }
 export interface Content { appVersion: string; contentVersion: string; rulesVersion: string; schemaVersion: number; characters: CharacterDef[]; skills: SkillDef[]; species: SpeciesDef[]; assets: AssetDef[]; dungeons: DungeonDef[]; events?: EventDef[] }
-export interface Unit { uid: string; characterId: string; side: Side; boss: boolean; hp: number; maxHp: number; attack: number; defense: number; speed: number; tie: number; cooldowns: Record<string, number>; guardTarget?: string; guardUntil?: number; guardStrength?: number; buffUntil?: number; buffStrength?: number; debuffUntil?: number; debuffStrength?: number }
+export interface Unit { uid: string; characterId: string; side: Side; boss: boolean; hp: number; maxHp: number; attack: number; defense: number; speed: number; tie: number; cooldowns: Record<string, number>; guardTarget?: string; guardUntil?: number; guardStrength?: number; buffUntil?: number; buffStrength?: number; debuffUntil?: number; debuffStrength?: number; barrier?: number; barrierUntil?: number; regenStrength?: number; regenUntil?: number }
 export type Phase = 'ready' | 'playing' | 'reward' | 'failed';
 export type NextPhase = 'ready' | 'wave' | 'reward' | 'failed';
 export interface BattleEvent { id: string; kind: 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'drop' | 'dialogue' | 'wave' | 'defeat'; text: string; actorId?: string; targetIds?: string[]; skillId?: string; amount?: number; materialId?: string; rarity?: Rarity; unitsAfter?: Unit[] }

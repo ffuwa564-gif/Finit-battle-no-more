@@ -11,6 +11,7 @@ async function seed(page: Page, patch: Partial<GameSave>) {
 }
 
 test('event previews, exclusive exchanges and form restrictions work with an existing save', async ({page})=>{
+  page.setDefaultTimeout(10000);
   await page.setViewportSize({width:390,height:844});
   await page.goto('/#dungeons/boss-events');await enterGame(page);
   await expect(page.getByRole('heading',{name:'宵宮に咲く九尾',exact:true})).toBeVisible();
@@ -37,7 +38,10 @@ test('event previews, exclusive exchanges and form restrictions work with an exi
   const save=await stored(page);expect(save.ownedIds).toEqual(expect.arrayContaining(['kuzuha','kuzuha-awakened']));
   expect(save.materials['kuzuha-contract:epic']).toBe(0);
   await page.goto('/#party');await enterGame(page);
-  for(let i=0;i<2;i++)await page.getByRole('button',{name:'編成中',exact:true}).first().click();
+  for(let i=0;i<2;i++){
+    await page.getByRole('button',{name:'編成中',exact:true}).first().click();
+    await expect.poll(async()=>(await stored(page)).partyIds.length).toBe(3-i);
+  }
   const normal=page.locator('.character-card').filter({has:page.getByRole('heading',{name:'葛葉',exact:true})});
   const awakened=page.locator('.character-card').filter({has:page.getByRole('heading',{name:'九尾・葛葉',exact:true})});
   await normal.getByRole('button',{name:'編成する',exact:true}).click();

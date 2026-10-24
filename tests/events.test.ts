@@ -106,8 +106,8 @@ describe('event progression and durable rewards', () => {
     expect(validateContent(invalid)).toEqual(expect.arrayContaining([expect.stringContaining('exclusive'), expect.stringContaining('event-exclusive')]));
   });
   it('has a highest-difficulty winning route using only ordinary recruits and normal Kuzuha', () => {
-    const save = normalOwned(); save.seed = 1; save.ownedIds.push('veil-priestess');
-    save.partyIds = ['elaine', 'veil-priestess', 'liora', event.normalId]; save.leaderId = 'liora';
+    const save = normalOwned(); save.seed = 1;
+    save.partyIds = ['elaine', 'seris', 'liora', event.normalId]; save.leaderId = 'liora';
     expect(play(save, event.dungeonIds.at(-1)!, 'survival').battle?.phase).toBe('reward');
   });
 });
