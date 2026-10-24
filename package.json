@@ -10,12 +10,16 @@
     "check:content": "tsx scripts/check-content.ts",
     "check:ui": "tsx scripts/check-ui.ts",
     "check:release": "tsx scripts/check-approvals.ts",
-    "build": "npm run typecheck && npm run check:content && npm run check:ui && vite build && tsx scripts/stamp-build.ts",
+    "build": "npm run typecheck && npm run check:content && npm run check:ui && npm run check:locales && vite build && tsx scripts/stamp-build.ts",
     "package:release": "node scripts/release.mjs",
     "release": "npm run test && npm run build && npm run check:release && npm run package:release",
     "preview": "vite preview --host 0.0.0.0",
     "test:e2e": "playwright test",
-    "balance:events": "tsx scripts/balance-events.ts"
+    "balance:events": "tsx scripts/balance-events.ts",
+    "check:locales": "tsx scripts/check-locales.ts",
+    "build:itch": "npm run typecheck && npm run check:content && npm run check:ui && npm run check:locales && vite build --mode itch --outDir dist-itch && node scripts/package-itch.mjs",
+    "test:itch": "playwright test --config playwright.itch.config.ts",
+    "capture:itch": "tsx scripts/capture-itch-media.ts"
   },
   "dependencies": {
     "gsap": "^3.14.0",
@@ -30,6 +34,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "fflate": "^0.8.3",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
     "vite": "^7.2.0",

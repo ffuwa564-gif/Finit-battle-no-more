@@ -1,3 +1,4 @@
+import { tr, localize } from '../locales/i18n';
 import { House, Compass, Users, Backpack, Settings } from 'lucide-react';
 import { Button } from './index';
 import './town-navigation.css';
@@ -15,10 +16,10 @@ export type TownDestination = typeof destinations[number]['id'];
 export function TownNavigation({ active, onNavigate, disabled = false, embedded = false }: {
   active: string; onNavigate: (page: TownDestination) => void; disabled?: boolean; embedded?: boolean;
 }) {
-  return <nav className={`town-navigation ${embedded ? 'hub-navigation' : 'mobile-nav'}`} aria-label={embedded ? 'ホームのメニュー' : 'モバイルメニュー'}>
-    {destinations.map(item => <Button variant={active === item.id && !disabled ? 'primary' : 'secondary'} key={item.id}
+  return <nav className={`town-navigation ${embedded ? 'hub-navigation' : 'mobile-nav'}`} aria-label={tr(embedded ? 'ホームのメニュー' : 'モバイルメニュー')}>
+    {localize(destinations.map(item => <Button variant={active === item.id && !disabled ? 'primary' : 'secondary'} key={item.id}
       aria-current={active === item.id && !disabled ? 'page' : undefined} disabled={disabled} onClick={() => onNavigate(item.id)}>
-      <item.icon size={25} strokeWidth={1.5} aria-hidden="true" /><span>{item.label}</span>
-    </Button>)}
+      <item.icon size={25} strokeWidth={1.5} aria-hidden="true" /><span>{localize(item.label)}</span>
+    </Button>))}
   </nav>;
 }

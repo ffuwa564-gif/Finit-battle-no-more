@@ -1,3 +1,4 @@
+import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BattleEvent, Unit } from '../domain/types';
 import { characterById } from '../content';
@@ -46,8 +47,8 @@ export function CombatFeedback({ event, before, reducedMotion }: { event?: Battl
   }, [event?.id]);
   useEffect(() => () => { for (const timer of timers.current) clearTimeout(timer); }, []);
   return <div ref={root} className={`combat-feedback${reducedMotion ? ' combat-feedback--reduced' : ''}`} aria-live="off">
-    {numbers.map(number => <div key={number.id} data-hp-unit={number.unitId} data-hp-delta={number.amount} className={`combat-number combat-number--${number.amount > 0 ? 'heal' : number.side === 'party' ? 'hurt' : 'damage'}`} style={{ left: number.x, top: number.y } as CSSProperties} aria-label={`${characterById(number.characterId).name} ${number.amount > 0 ? '回復' : 'ダメージ'} ${Math.abs(number.amount)}`}>
-      {number.named && <small>{characterById(number.characterId).name}</small>}<strong><span className="combat-number__sign">{number.amount > 0 ? '+' : '−'}</span>{Math.abs(number.amount).toLocaleString()}</strong>
-    </div>)}
+    {localize(numbers.map(number => <div key={number.id} data-hp-unit={number.unitId} data-hp-delta={number.amount} className={`combat-number combat-number--${number.amount > 0 ? 'heal' : number.side === 'party' ? 'hurt' : 'damage'}`} style={{ left: number.x, top: number.y } as CSSProperties} aria-label={tr(`${characterById(number.characterId).name} ${number.amount > 0 ? '回復' : 'ダメージ'} ${Math.abs(number.amount)}`)}>
+      {localize(number.named && <small>{localize(characterById(number.characterId).name)}</small>)}<strong><span className="combat-number__sign">{localize(number.amount > 0 ? '+' : '−')}</span>{localize(Math.abs(number.amount).toLocaleString())}</strong>
+    </div>))}
   </div>;
 }

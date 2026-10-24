@@ -1,0 +1,19 @@
+.language-switch { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.language-switch .button { min-width: 70px; font-size: 12px; }
+.title-screen .title-language { position: absolute; inset: max(23px,env(safe-area-inset-top)) 24px auto auto; z-index: 2; }
+.title-screen .title-language .button { padding: 7px 12px; min-height: 36px; color: #eef1eb; border: 1px solid #cad7e366; background: #20314788; box-shadow: none; }
+.title-screen .title-language .button.is-selected { background: #d9e6ed26; border-color: #e3edf0; }
+.home-hub .quick-guide-button { width: calc(100% - 32px); margin: 10px 16px 0; font-size: 12px; }
+.quick-guide-steps { padding-left: 23px; line-height: 1.8; }
+.quick-guide-steps li { margin-bottom: 20px; }
+.quick-guide-steps p,.backup-description { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 8px 0 16px; }
+.backup-error { color: #8b4057; font-size: 12px; line-height: 1.7; margin-top: 15px; }
+.backup-summary { display: grid; grid-template-columns: minmax(80px,1fr) minmax(0,2fr); gap: 12px; margin: 20px 0; font-size: 12px; }
+.backup-summary dt { color: var(--muted); }.backup-summary dd { margin: 0; overflow-wrap: anywhere; }
+html[lang="en"] .title-screen h1 { letter-spacing: .1em; }
+html[lang="en"] .hub-menu-tile strong { font-size: clamp(11px,2.5vw,15px); letter-spacing: 0; }
+html[lang="en"] .goddess-collection__account { flex-wrap: wrap; }
+html[lang="en"] .goddess-feature__copy strong { font-size: clamp(18px,4vw,30px); letter-spacing: 0; }
+html[lang="en"] .enemy-carousel-name > strong { font-size: clamp(15px,4vw,23px); letter-spacing: 0; }
+html[lang="en"] .unit-effects > span { font-size: 8px; }
+html[lang="en"] .dungeon-info h2,html[lang="en"] .event-tier h3 { overflow-wrap: anywhere; }

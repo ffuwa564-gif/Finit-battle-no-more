@@ -1,3 +1,4 @@
+import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState, type CSSProperties, type HTMLAttributes, type Key } from 'react';
 import { assetPath } from '../content';
 import './notice-surface.css';
@@ -13,5 +14,5 @@ export function NoticeSurface({ className = '', tone = 'info', style, present = 
     return () => clearTimeout(timer);
   }, [present]);
   if (!present && !retained) return null;
-  return <div {...props} key={last.current.noticeKey} aria-hidden={!present || undefined} inert={!present || undefined} className={`notice-surface notice-surface--${last.current.tone} ${last.current.className}${present ? '' : ' is-leaving'}`} style={{ '--notice-art': `url("${new URL(assetPath('notice-moonlight'), document.baseURI).href}")`, ...style } as CSSProperties}>{last.current.children}</div>;
+  return <div {...props} key={last.current.noticeKey} aria-hidden={!present || undefined} inert={!present || undefined} className={`notice-surface notice-surface--${last.current.tone} ${last.current.className}${present ? '' : ' is-leaving'}`} style={{ '--notice-art': `url("${new URL(assetPath('notice-moonlight'), document.baseURI).href}")`, ...style } as CSSProperties}>{localize(last.current.children)}</div>;
 }
