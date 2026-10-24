@@ -26,6 +26,7 @@ export const initialGacha: GachaCollection = {
   featuredIds: ['evelyn', 'asteria'],
 };
 export const goddessArt: Record<string, string> = {
+  toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',
   evelyn: 'gacha-izanami', asteria: 'gacha-amaterasu', iris: 'gacha-uzume', mireille: 'gacha-sakuya',
 };
 
@@ -39,3 +40,9 @@ export function gachaPity(save: Pick<GameSave, 'ssrPity' | 'history' | 'drawCoun
 export function gachaSSRRate(pity: number): number {
   return Math.min(100, initialGacha.rates.SSR + Math.max(0, pity + 1 - initialGacha.softPityStart + 1) * 6);
 }
+
+
+/** New full-body paintings place the face near the top of the source image. */
+export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
+  ['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+);
