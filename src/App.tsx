@@ -6,6 +6,8 @@ import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, setAudioVolume } from './platform/audio';
 import { configureBgm, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
+import { battleSounds, commandSounds } from './platform/sound-cues';
+import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
 import type { CharacterDef, GameCommand, GameSave } from './domain/types';
 import { BagView, BattleView, CharacterDetail, CodexView, DungeonsView, GachaView, HomeView, PartyView, PreviewView, RecruitView, SettingsView, type Page } from './screens/GameViews';
@@ -63,9 +65,14 @@ export default function App() {
       const next = applyCommand(previous, action, content);
       await persistSave(next, previous.revision);
       state.current = next; setSave(next);
-      if (action.type === 'recruit') { playSound('recruit'); setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
+      setAudioVolume(next.settings.seVolume);
+      const cue = commandSounds[action.type];
+      if (cue) playSound(cue);
+      if (action.type === 'settings' && action.settings.seVolume !== undefined && action.settings.seVolume > 0) playSound('confirm');
+      if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
+      if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
+      if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
       if (action.type === 'draw') {
-        playSound('gacha');
         const acquired = next.ownedIds.find(id => !previous.ownedIds.includes(id));
         const found = content.characters.find(ch => ch.id === acquired);
         if (found) { setCharacter(found); setToast({ text: `${found.rarity} ${found.name} が仲間になりました。`, tone: 'success' }); }
@@ -79,6 +86,7 @@ export default function App() {
       return true;
     } catch (error) {
       const text = error instanceof Error ? error.message : '操作を保存できませんでした。';
+      playSound('error');
       setToast({ text, tone: 'error' });
       if (/別のタブ|更新されています|競合/.test(text)) setFatal(`${text} 既存データを上書きせず停止しました。ページを再読み込みしてください。`);
       return false;
@@ -87,7 +95,7 @@ export default function App() {
 
   useEffect(() => {
     setAudioVolume(save?.settings.seVolume ?? 0.5);
-    const onUI = () => { unlockBgm(); void enableAudio().then(() => playSound('ui')); };
+    const onUI = (event: Event) => { unlockBgm(); const kind = (event as CustomEvent).detail?.kind; void enableAudio().then(() => playSound(kind === 'cancel' || kind === 'select' ? kind : 'confirm')); };
     window.addEventListener('game:ui', onUI);
     return () => window.removeEventListener('game:ui', onUI);
   }, [save?.settings.seVolume]);
@@ -112,7 +120,7 @@ export default function App() {
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   useEffect(() => {
     if (!event || !save) return;
-    playSound(event.kind, event.rarity);
+    playSound(battleSounds[event.kind], event.rarity);
     const cleanup = animateEvent(event, save.settings.reducedMotion);
     const duration = event.kind === 'dialogue' ? 2400 : event.kind === 'drop' ? 1050 : event.kind === 'wave' ? 800 : 650;
     let timer: ReturnType<typeof setTimeout>;

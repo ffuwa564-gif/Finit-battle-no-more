@@ -1,0 +1,12 @@
+.combat-feedback { position: absolute; inset: 0; z-index: 12; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.combat-number { position: absolute; transform: translate(-50%,-50%); text-align: center; animation: combat-number-rise 1.15s cubic-bezier(.16,.7,.3,1) both; color: #fff7de; filter: drop-shadow(0 3px 3px #15233b); }
+.combat-number strong { display: block; font: italic 800 clamp(30px,8vw,44px)/1.1 var(--font-body); letter-spacing: -.055em; -webkit-text-stroke: 1px #705741; paint-order: stroke fill; text-shadow: 0 2px 0 #594431,0 0 13px #fff1bc77; }
+.combat-number--hurt { color: #ffd1cc; }
+.combat-number--hurt strong { -webkit-text-stroke-color: #813f4a; text-shadow: 0 2px 0 #763646,0 0 13px #ed849b55; }
+.combat-number--heal { color: #b9ffe0; }
+.combat-number--heal strong { -webkit-text-stroke-color: #2c6b64; text-shadow: 0 2px 0 #245954,0 0 15px #80f7c099; }
+.combat-number small { display: block; max-width: 90px; margin-bottom: 3px; font-size: 10px; color: #fff9ed; text-shadow: 0 1px 4px #081426,0 0 3px #081426; }
+@keyframes combat-number-rise { 0% { opacity: 0; transform: translate(-50%,0) scale(.65); } 12% { opacity: 1; transform: translate(-50%,-18px) scale(1.15); } 28% { transform: translate(-50%,-22px) scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-52px) scale(.98); } }
+.combat-feedback--reduced .combat-number { animation: combat-number-still 1.15s linear both; }
+@keyframes combat-number-still { 0%,80% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .combat-number { animation: combat-number-still 1.15s linear both; } }

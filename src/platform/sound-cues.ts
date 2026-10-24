@@ -1,0 +1,11 @@
+import type { BattleEvent, GameCommand } from '../domain/types';
+
+export type SoundCue = 'confirm' | 'cancel' | 'select' | 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'drop' | 'dialogue' | 'wave' | 'defeat' | 'victory' | 'recruit' | 'gacha' | 'purchase' | 'exchange' | 'depart' | 'error';
+
+/** Exhaustive contracts: new actions/events must explicitly select a cue or opt out. */
+export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
+  attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff', drop: 'drop', dialogue: 'dialogue', wave: 'wave', defeat: 'defeat',
+};
+export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
+  depart: 'depart', strategy: 'select', round: null, replay: null, potion: 'heal', retreat: 'cancel', claim: 'victory', leaveFailure: 'cancel', buyPotion: 'purchase', recruit: 'recruit', exchange: 'exchange', party: 'select', draw: 'gacha', settings: null,
+};
