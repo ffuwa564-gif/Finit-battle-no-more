@@ -1,8 +1,9 @@
+import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
 
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 const profiles = new Set(['default', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop']);
-const templates = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff']);
+const templates = new Set<string>(skillTemplates);
 const leaderStats = new Set(['hp', 'attack', 'defense']);
 const roles = new Set(Object.keys(required));
 const plain = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0 && !/<\/?[a-z!][^>]*>/i.test(value);
@@ -51,6 +52,7 @@ export function validateContent(content: Content): string[] {
     if (char.dialogue) for (const [event, text] of Object.entries(char.dialogue)) reject(!['intro', 'threshold', 'defeat'].includes(event) || !plain(text), `characters/${char.id}: plain boss dialogue required`);
     if (char.dialogue) reject(!['intro', 'threshold', 'defeat'].every(event => plain(char.dialogue?.[event as keyof NonNullable<typeof char.dialogue>])), `characters/${char.id}: complete boss dialogue required`);
     reject(!roles.has(char.role), `characters/${char.id}: unknown role`);
+    reject(char.leaderEffect !== undefined && !['regeneration', 'finisher', 'lifesteal', 'bulwark', 'resonance'].includes(char.leaderEffect), `characters/${char.id}: invalid leader effect`);
     reject(!leaderStats.has(char.leaderStat), `characters/${char.id}: invalid leader stat`);
     reject(!strengthValid(char.strength), `characters/${char.id}: integer strength 10..30 required`);
     reject(typeof char.published !== 'boolean', `characters/${char.id}: publication state required`);
@@ -73,7 +75,7 @@ export function validateContent(content: Content): string[] {
     reject(new Set(known.map(skill => skill.template)).size !== known.length, `characters/${char.id}: repeated effect template`);
     if (roles.has(char.role)) {
       reject(!known.some(skill => skill.template === required[char.role]), `characters/${char.id}: role required skill missing`);
-      const allowed: SkillTemplate[] = char.role === 'attacker' || char.role === 'area_attacker' ? ['attack', 'area'] : [required[char.role], 'attack', 'area'];
+      const allowed: SkillTemplate[] = [required[char.role], 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse'];
       reject(known.some(skill => !allowed.includes(skill.template)), `characters/${char.id}: unreachable second skill`);
     }
   }

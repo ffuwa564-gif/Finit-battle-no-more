@@ -219,3 +219,13 @@ describe('repeatable stone event expeditions', () => {
     expect(applyCommand(failed, { type: 'leaveFailure' }, content).stones).toBe(0);
   });
 });
+
+
+it('preserves optional tactical statuses in saves and rejects corrupt effect values', () => {
+  const save = start();
+  const unit = save.battle!.units[0];
+  unit.barrier = 25; unit.barrierUntil = 2; unit.regenUntil = 3; unit.regenStrength = 18;
+  expect(() => assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content)).not.toThrow();
+  expect(() => assertValidSave({ ...save, battle: { ...save.battle, units: [{ ...unit, barrier: -1 }] } })).toThrow();
+  expect(() => assertValidSave({ ...save, battle: { ...save.battle, units: [{ ...unit, regenUntil: NaN }] } })).toThrow();
+});
