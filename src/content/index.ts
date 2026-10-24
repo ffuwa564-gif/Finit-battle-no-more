@@ -115,7 +115,7 @@ const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portrait
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
 }));
 const menuAssets: AssetDef[] = [
-  { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration animated with Runway; task aaafd36f-ba2c-4282-a8d8-a263ac011992.' },
+  { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration with understated chest silhouette animated with Runway; task 7b9e961c-2a25-47cc-89f1-2f537bc7d520.' },
   { id: 'gacha-izanami-motion', path: 'video/gacha-izanami.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task d2d265ba-0283-46ed-84cd-bdee1ffd8ccf.' },
   { id: 'gacha-amaterasu-motion', path: 'video/gacha-amaterasu.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task 3b46aceb-e02f-4277-9ec0-ba114d5afcf1.' },
   { id: 'home-portrait-motion', path: 'video/home-portrait-original.mp4', kind: 'video', width: 1080, height: 1080, anchor: '50% 18%', rights: 'Original project menu illustration animated with Runway; task 1b014d68-3575-4172-9f96-4b1b4a0fd72e; full original motion; H.264 High Level 4.0.' },
