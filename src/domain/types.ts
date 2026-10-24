@@ -6,7 +6,7 @@ export type LeaderStat = 'hp' | 'attack' | 'defense';
 export type Side = 'party' | 'enemy';
 export interface CharacterDef { id: string; name: string; epithet: string; flavor: string; speciesId: string; role: Role; strength: number; leaderStat: LeaderStat; skillIds: string[]; portraitId: string; artId: string; encounterArtId?: string; origin: ('initial' | 'recruit' | 'gacha')[]; rarity: 'R' | 'SR' | 'SSR'; published: boolean; soundProfile: string; dialogue?: { intro: string; threshold: string; defeat: string } }
 export interface SkillDef { id: string; name: string; template: SkillTemplate; strength: number; soundProfile: string }
-export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string }
+export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon' | 'video'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string }
 export interface SpeciesDef { id: string; name: string }
 export interface EnemyDef { characterId: string; boss?: boolean }
 export interface DungeonDef { id: string; name: string; subtitle: string; description: string; artId: string; published: boolean; waves: EnemyDef[][] }

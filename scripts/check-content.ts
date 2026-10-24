@@ -21,6 +21,7 @@ for (const asset of content.assets) {
   } else if (/\.webp$/i.test(asset.path) && bytes.subarray(8, 12).toString() !== 'WEBP') {
     errors.push(`${asset.id}: file is not WebP`);
   }
+  if (asset.kind === 'video' && bytes.subarray(4, 8).toString() !== 'ftyp') errors.push(`${asset.id}: file is not MP4`);
   if (!asset.rights.trim()) errors.push(`${asset.id}: missing rights information`);
 }
 if (errors.length) {

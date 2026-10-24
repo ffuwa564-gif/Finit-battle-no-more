@@ -1,0 +1,8 @@
+.animated-illustration { position: absolute; inset: 0; }
+.animated-illustration__art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.animated-illustration__video { opacity: 0; pointer-events: none; transition: opacity .35s ease-out; }
+.animated-illustration.is-ready .animated-illustration__video { opacity: 1; }
+.home-hub .animated-illustration__toggle { position: absolute; z-index: 4; right: 12px; bottom: 24px; width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 0; border: 1px solid #e0dfd3a3; border-radius: 50%; background: #293649a6; color: #f4f0e6; box-shadow: inset 0 1px 0 #ffffff3d; backdrop-filter: blur(5px); }
+.home-hub .animated-illustration__toggle:hover:not(:disabled) { color: #fff8e8; background: #293649d9; }
+@media (max-width: 760px) { .app-shell.is-menu .hub-illustration .animated-illustration__art { object-position: 70% 50%; } }
+@media (prefers-reduced-motion: reduce) { .animated-illustration__video { transition: none; } }

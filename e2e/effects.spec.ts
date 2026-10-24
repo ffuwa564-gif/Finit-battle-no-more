@@ -96,7 +96,7 @@ test('WebGL unavailable retains the artwork and usable menu', async ({ page }) =
   });
   await page.goto('/');
   await expect(page.locator('[data-fx-mode="menu"]')).toHaveAttribute('data-fx-backend', 'static');
-  await expect(page.locator('.hub-illustration > img')).toBeVisible();
+  await expect(page.locator('.animated-illustration > img')).toBeVisible();
   await page.locator('.home-hub-menu').getByRole('button', { name: 'パーティ', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'パーティ', exact: true })).toBeVisible();
 });
