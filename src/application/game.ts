@@ -1,4 +1,5 @@
 import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
+import { initialGacha } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -153,17 +154,17 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'draw': {
       town(save);
       if (content.dungeons.filter(item => item.published).length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
-      if (save.stones < 5) fail('召喚には石が5個必要です。');
+      if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
       const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && !save.ownedIds.includes(item.id));
       if (!available.length) fail('召喚できる未所持キャラクターがいません。');
       let roll = rng(save.seed); save.seed = roll.seed;
-      const rarity = save.drawCount === 1 ? 'SSR' : roll.value < 0.8 ? 'R' : roll.value < 0.97 ? 'SR' : 'SSR';
+      const rarity = save.drawCount + 1 === initialGacha.guaranteeDraw ? 'SSR' : roll.value < initialGacha.rates.R / 100 ? 'R' : roll.value < (initialGacha.rates.R + initialGacha.rates.SR) / 100 ? 'SR' : 'SSR';
       let candidates = available.filter(item => item.rarity === rarity);
-      if (save.drawCount === 1 && !candidates.length) fail('2回目のSSR保証対象がありません。石は消費されません。');
+      if (save.drawCount + 1 === initialGacha.guaranteeDraw && !candidates.length) fail(`${initialGacha.guaranteeDraw}回目のSSR保証対象がありません。石は消費されません。`);
       if (!candidates.length) candidates = available;
       roll = rng(save.seed); save.seed = roll.seed;
       const selected = candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
-      save.stones -= 5; save.drawCount += 1; save.ownedIds.push(selected.id);
+      save.stones -= initialGacha.stoneCost; save.drawCount += 1; save.ownedIds.push(selected.id);
       log(save, `召喚：${selected.rarity} ${selected.name}が訪れました。`);
       break;
     }

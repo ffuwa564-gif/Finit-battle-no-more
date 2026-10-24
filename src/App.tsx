@@ -15,7 +15,7 @@ import { BagView, BattleView, CharacterDetail, CodexView, DungeonsView, GachaVie
 const navigation = [
   { page: 'home', title: 'ホーム', icon: Home }, { page: 'dungeons', title: 'ダンジョン', icon: Compass },
   { page: 'party', title: 'パーティ', icon: Users }, { page: 'recruit', title: '仲間を迎える', icon: Heart },
-  { page: 'bag', title: 'カバン・道具', icon: Backpack }, { page: 'gacha', title: '星の祈願', icon: Sparkles },
+  { page: 'bag', title: 'カバン・道具', icon: Backpack }, { page: 'gacha', title: '女神の祈願', icon: Sparkles },
   { page: 'codex', title: '記憶の図鑑', icon: BookOpen }, { page: 'settings', title: '設定', icon: Settings },
 ] as const;
 const validPages = new Set<string>([...navigation.map(n => n.page), 'preview']);
@@ -75,7 +75,7 @@ export default function App() {
       if (action.type === 'draw') {
         const acquired = next.ownedIds.find(id => !previous.ownedIds.includes(id));
         const found = content.characters.find(ch => ch.id === acquired);
-        if (found) { setCharacter(found); setToast({ text: `${found.rarity} ${found.name} が仲間になりました。`, tone: 'success' }); }
+        if (found) setCharacter(found);
       }
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {

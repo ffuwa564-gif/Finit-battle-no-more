@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, PortraitArt, CurrencyEmblem } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, PortraitArt, CurrencyEmblem } from '../ui';
 import { bgmTracks } from '../platform/bgm';
-import { content, assetPath, characterById, materialName, roleName } from '../content';
+import { content, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
 import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Unit } from '../domain/types';
 
@@ -14,7 +14,7 @@ const menu = [
   { page: 'party', title: 'パーティ', emblem: 'party' },
   { page: 'recruit', title: '仲間を迎える', emblem: 'monster' },
   { page: 'bag', title: 'カバン・道具', emblem: 'bag' },
-  { page: 'gacha', title: '星の祈願', emblem: 'wish' },
+  { page: 'gacha', title: '女神の祈願', emblem: 'wish' },
   { page: 'codex', title: '記憶の図鑑', emblem: 'codex' },
   { page: 'settings', title: '設定', emblem: 'settings' },
 ] as const;
@@ -77,7 +77,10 @@ export function CodexView(p: ViewProps) { return <><PageTitle eyebrow="THE ARCHI
 export function GachaView(p: ViewProps) {
   const pool = content.characters.filter(c => c.published && c.origin.includes('gacha'));
   async function draw() { await p.command({ type: 'draw' }); }
-  return <><PageTitle eyebrow="WISH UPON A FALLEN STAR" title="星の祈願" /><section className="wish-hero"><img src={assetPath('key-art')} alt="静かな月光の庭" /><div className="wish-content"><Sparkles size={40} strokeWidth={1} /><span className="eyebrow">CELESTIAL ENCOUNTER</span><h2>星が結ぶ、新しい縁。</h2><Button size="lg" disabled={p.busy || p.save.stones < 5 || pool.every(c => p.save.ownedIds.includes(c.id))} onClick={draw}><CurrencyEmblem kind="stone" size={18} /> 石5個で祈願する</Button><span>所持 {p.save.stones} 個 · 次は {p.save.drawCount === 1 ? 'SSR確定' : '通常抽選'}</span></div></section><Panel><h3>排出について</h3><p>通常：R 80% / SR 17% / SSR 3%。通算2回目はSSR確定。同じ仲間は重複しません。</p><p className="subtle">各レアリティ内の未所持キャラから均等抽選。全員所持した区分は残る未所持へ振替。石の供給は初踏破のみで、課金はありません。</p></Panel><h2>星からの訪問者</h2><div className="character-grid">{pool.map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity}</span><h3>{ch.name}</h3><p>{ch.epithet}</p></Panel>)}</div></>;
+  const featured = initialGacha.featuredIds.map(characterById);
+  return <><PageTitle eyebrow="GOTHIC GODDESSES" title="女神の祈願" /><GachaShowcase collection={initialGacha} featured={featured} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} exhausted={pool.every(character => p.save.ownedIds.includes(character.id))} busy={p.busy} onDraw={draw} onInspect={p.inspect} />
+    <Panel><h3>通常の基準排出率</h3><div className="goddess-rates"><span>R {initialGacha.rates.R}%</span><span>SR {initialGacha.rates.SR}%</span><span>SSR {initialGacha.rates.SSR}%</span></div><p>通算{initialGacha.guaranteeDraw}回目の祈願はSSR確定。未所持の女神のみ、各レアリティ内で均等抽選します。全員所持した区分は残る未所持へ振替。</p><p className="subtle">石{initialGacha.stoneCost}個で1回。祈願石はダンジョン初踏破で獲得できます。</p></Panel>
+    <h2>ほかの女神</h2><div className="character-grid">{pool.filter(character => character.rarity !== 'SSR').map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity}</span><h3>{ch.name}</h3><p>{ch.epithet}</p></Panel>)}</div></>;
 }
 
 export function SettingsView(p: ViewProps) {
@@ -87,7 +90,7 @@ export function SettingsView(p: ViewProps) {
 export function CharacterDetail({ character: ch, onClose }: { character: CharacterDef | null; onClose: () => void }) {
   if (!ch) return null;
   const stats = characterStats(ch), bonus = leaderBonus(ch);
-  return <Modal open={true} title={ch.name} onClose={onClose}><div className="character-detail"><img className="detail-art" src={assetPath(ch.artId)} alt={ch.name} /><div><span className="eyebrow">{ch.epithet}</span><p>{roleName(ch.role)} · 難易度定数 {(ch.strength / 10).toFixed(1)}</p><div className="stat-grid"><span>HP <strong>{stats.hp}</strong></span><span>攻撃 <strong>{stats.attack}</strong></span><span>防御 <strong>{stats.defense}</strong></span><span>素早さ <strong>{stats.speed}</strong></span></div><h3><Crown size={16} /> リーダースキル</h3><p>パーティ全員の{statNames[bonus.stat]}を{bonus.percent}%上昇</p><h3>スキル</h3>{ch.skillIds.map(id => { const sk = content.skills.find(s => s.id === id)!; return <p key={id}><WandSparkles size={13} /> {sk.name} <span className="subtle">強さ {(sk.strength / 10).toFixed(1)}</span></p>; })}</div></div><div className="flavor-text"><Feather size={18} /><p>{ch.flavor}</p></div></Modal>;
+  return <Modal open={true} title={ch.name} onClose={onClose}><div className="character-detail"><img className="detail-art" src={assetPath(ch.artId)} alt={ch.name} /><div><span className="eyebrow">{ch.rarity} · {ch.epithet}</span><p>{roleName(ch.role)} · 難易度定数 {(ch.strength / 10).toFixed(1)}</p><div className="stat-grid"><span>HP <strong>{stats.hp}</strong></span><span>攻撃 <strong>{stats.attack}</strong></span><span>防御 <strong>{stats.defense}</strong></span><span>素早さ <strong>{stats.speed}</strong></span></div><h3><Crown size={16} /> リーダースキル</h3><p>パーティ全員の{statNames[bonus.stat]}を{bonus.percent}%上昇</p><h3>スキル</h3>{ch.skillIds.map(id => { const sk = content.skills.find(s => s.id === id)!; return <p key={id}><WandSparkles size={13} /> {sk.name} <span className="subtle">強さ {(sk.strength / 10).toFixed(1)}</span></p>; })}</div></div><div className="flavor-text"><Feather size={18} /><p>{ch.flavor}</p></div></Modal>;
 }
 
 export function visibleUnits(battle: Battle): Unit[] {
