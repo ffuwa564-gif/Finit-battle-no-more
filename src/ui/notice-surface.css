@@ -1,10 +1,23 @@
-.notice-surface.notice-surface { color: #f6f2e8; background: #233249 var(--notice-art) center / 100% 100% no-repeat; border: 0; border-radius: 13px; box-shadow: 0 5px 22px #10203559; text-shadow: 0 1px 3px #091427; }
+.notice-surface.notice-surface { color: #f6f2e8; background: linear-gradient(115deg,#1d2c40eb,#2c3c53e0), var(--notice-art) center / cover no-repeat; border: 1px solid #d5dfed50; border-radius: 14px; box-shadow: inset 0 1px 0 #ffffff12,0 8px 24px #10203538; text-shadow: 0 1px 2px #09142770; animation: notice-arrive 280ms cubic-bezier(.2,.7,.3,1) both; }
 .notice-surface.notice-surface--error { color: #ffe1d9; }
 .notice-surface.notice-surface--success { color: #e2ffe9; }
-.toast.notice-surface { padding: 16px 23px; gap: 12px; font-size: 12px; }
+.toast.notice-surface { width: max-content; max-width: min(calc(100vw - 32px),580px); padding: 12px 16px 12px 21px; gap: 12px; font-size: 12px; }
 .toast.notice-surface > span { min-width: 0; overflow-wrap: anywhere; }
 .toast.notice-surface .button { color: #f5eedf; background: transparent; border: 0; box-shadow: none; flex-shrink: 0; }
-.battle-layout .battle-toast.notice-surface { top: 52%; pointer-events: none; max-width: 88%; min-width: 58%; padding: 14px 20px; border: 0; border-radius: 12px; background: #233249 var(--notice-art) center / 100% 100% no-repeat; color: #f6f2e8; box-shadow: 0 5px 22px #10203559; font-size: 12px; line-height: 1.6; text-shadow: 0 1px 3px #091427; }
+.battle-layout .battle-toast.notice-surface { top: 52%; pointer-events: none; max-width: 88%; min-width: 58%; padding: 14px 20px; border: 1px solid #d5dfed50; border-radius: 12px; background: linear-gradient(115deg,#1d2c40eb,#2c3c53e0), var(--notice-art) center / cover no-repeat; color: #f6f2e8; box-shadow: inset 0 1px 0 #ffffff12,0 7px 20px #10203538; font-size: 12px; line-height: 1.6; text-shadow: 0 1px 3px #091427; }
 .battle-layout .battle-toast.notice-surface > svg { color: #d8e8ff; flex-shrink: 0; }
 .battle-layout .battle-toast.dialogue-toast.notice-surface { top: auto; bottom: 16px; width: 88%; padding: 18px 22px; text-align: left; }
 @media (max-width: 760px) { .battle-layout .battle-toast.notice-surface { font-size: 11px; } }
+
+/* Individual translate preserves each notice's horizontal centering. */
+@keyframes notice-arrive { from { opacity: 0; translate: 0 9px; } to { opacity: 1; translate: 0 0; } }
+@keyframes notice-depart { from { opacity: 1; translate: 0 0; } to { opacity: 0; translate: 0 -5px; } }
+.notice-surface.notice-surface.is-leaving { animation: notice-depart 200ms ease-in both; pointer-events: none; }
+html[data-motion="reduced"] .notice-surface.notice-surface { animation-name: notice-fade-in; animation-duration: 150ms; }
+html[data-motion="reduced"] .notice-surface.notice-surface.is-leaving { animation-name: notice-fade-out; }
+@keyframes notice-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes notice-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .notice-surface.notice-surface { animation-name: notice-fade-in; animation-duration: 150ms; }
+  .notice-surface.notice-surface.is-leaving { animation-name: notice-fade-out; }
+}
