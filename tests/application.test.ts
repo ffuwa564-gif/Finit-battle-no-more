@@ -143,3 +143,25 @@ describe('save contracts', () => {
     expect(() => assertSaveCompatibility(missing, content)).toThrow('参照するキャラクター');
   });
 });
+
+
+describe('gothic goddess collection', () => {
+  it('draws the four themed goddesses once each and keeps the second-draw SSR guarantee', () => {
+    let save = createInitialSave(content, 42); save.stones = 20;
+    const acquired = [];
+    for (let index = 0; index < 4; index++) {
+      const next = applyCommand(save, { type: 'draw' }, content);
+      const id = next.ownedIds.find(id => !save.ownedIds.includes(id))!;
+      const character = content.characters.find(character => character.id === id)!;
+      acquired.push(character);
+      if (index === 1) expect(character.rarity).toBe('SSR');
+      expect(next.stones).toBe(save.stones - 5);
+      save = next;
+    }
+    expect(acquired.map(character => character.name).sort()).toEqual(['イザナミ', 'アマテラス', 'アメノウズメ', 'コノハナサクヤヒメ'].sort());
+    expect(acquired.filter(character => character.rarity === 'SSR')).toHaveLength(2);
+    const snapshot = structuredClone(save);
+    expect(() => applyCommand({ ...save, stones: 5 }, { type: 'draw' }, content)).toThrow('未所持');
+    expect(save).toEqual(snapshot);
+  });
+});

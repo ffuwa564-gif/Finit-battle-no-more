@@ -1,4 +1,6 @@
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
+import { goddessArt } from './gacha';
+export { initialGacha } from './gacha';
 export { validateContent } from './validation';
 
 const roleLabels: Record<Role, string> = { healer: '癒し手', tank: '守護者', attacker: '剣士', area_attacker: '詠唱者', supporter: '導き手', debuffer: '呪術師' };
@@ -6,7 +8,13 @@ export const roleName = (role: Role): string => roleLabels[role];
 const labels: Record<SkillTemplate, string> = { attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福' };
 const templates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'];
 const skillFor = (template: SkillTemplate, strength: number): string => `${template}-${strength}`;
-const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: labels[template], template, strength, soundProfile: template })));
+const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> = {
+  12: { buff: '神楽鈴の祝福' },
+  18: { heal: '桜花の祈り', attack: '散り桜の一閃' },
+  22: { area: '天照・暁のレース', attack: '八咫鏡の煌き' },
+  24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
+};
+const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: template })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
@@ -29,10 +37,10 @@ const characters: CharacterDef[] = [
   character({ id: 'moon-moth', name: '月翅の蛾', epithet: '欠けた月の使者', role: 'area_attacker', speciesId: 'moon', strength: 10, origin: ['recruit'], flavor: '月明かりの差す場所にだけ現れる幻の蛾。翅に散る燐粉は、触れた者に遠い夢を見せる。死者の言葉を運ぶとも、生きる者の寂しさが形になったとも言われる。' }),
   character({ id: 'veil-priestess', name: '帳の巫女', epithet: '届かない祈り', role: 'healer', speciesId: 'veil', strength: 11, origin: ['recruit'], flavor: '破れた聖歌を口ずさむ、角を持つ女性。人々が去った後も祈りの灯を絶やさなかった。差し出された手に触れると、冷えた指先だけが微かに震える。' }),
   character({ id: 'thorn-witch', name: '荊の魔女', epithet: '枯園の記憶', role: 'debuffer', speciesId: 'thorn', strength: 12, origin: ['recruit'], flavor: '花を咲かせなくなった庭に暮らす魔女。荊の冠は罰ではなく、彼女自身が選んだ約束のしるし。誰かが種を持ってくるたび、ほんの少しだけ口元を緩める。' }),
-  character({ id: 'iris', name: 'イリス', epithet: '灰青の巡礼者', role: 'supporter', speciesId: 'pilgrim', strength: 12, origin: ['gacha'], rarity: 'R', flavor: '失われた鐘の音を探して街を巡る女性。小さなランタンに灯るのは、旅先で分けてもらった祈りのかけら。誰も道を覚えていなくても、彼女は立ち止まらない。' }),
-  character({ id: 'mireille', name: 'ミレイユ', epithet: '鏡湖の歌姫', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '鏡のように静かな湖で歌う亜人の女性。水面には、もうこの世にいない観客の影が揺れる。彼女が歌を止めると、遠くで季節の終わる音がする。' }),
-  character({ id: 'asteria', name: 'アステリア', epithet: '落星の聖女', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '夜空から一つの星が落ちた晩、廃都に現れた女性。その瞳には薄れた銀河が宿る。奇跡を願われることよりも、ただ名前を呼ばれることを望んでいる。' }),
-  character({ id: 'evelyn', name: 'エヴリン', epithet: '終庭の女王', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '誰もいない玉座を離れ、旅に加わった女王。王冠よりも重い記憶を抱えながら、今は一人の仲間として盾を持つ。枯れた花にも水をやる理由を、彼女は決して語らない。' }),
+  character({ id: 'iris', name: 'アメノウズメ', epithet: '薄明の鈴舞', role: 'supporter', speciesId: 'pilgrim', strength: 12, origin: ['gacha'], rarity: 'R', flavor: '神楽の舞台で、赤茶の短い髪と紅いリボンを弾ませる女神。神楽鈴を高く掲げ、扇を開き、黒と生成りのゴシックロリータで軽やかに舞う。沈黙に閉ざされた街にも、もう一度笑い声が戻ると信じている。' }),
+  character({ id: 'mireille', name: 'コノハナサクヤヒメ', epithet: '黒桜の花守', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '富士を背に、桜の枝と小さな炎をそっと掲げる女神。桜色と黒いレースのゴシックロリータを纏い、火の粉を花びらのように遊ばせる。儚さと強さを知る彼女の祈りは、傷ついた仲間の命を静かにつなぎとめる。' }),
+  character({ id: 'asteria', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
+  character({ id: 'evelyn', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
 ];
 
 const characterAssets: AssetDef[] = characters.flatMap(char => {
@@ -40,11 +48,12 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const humanScene = ['hollow', 'veil', 'thorn'].includes(char.speciesId);
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
-  const generated = char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: fullScene || landscape ? 1536 : generated ? 1024 : 640, height: fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const goddess = goddessArt[char.id];
+  const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
+  const common = { path: goddess ? `art/${goddess}.png` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: fullScene || landscape ? 1536 : generated ? 1024 : 640, height: fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: landscape ? '50% 50%' : '50% 42%' },
-    { ...common, id: char.portraitId, kind: 'portrait', anchor: fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: fullScene ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
+    { ...common, id: char.portraitId, kind: 'portrait', anchor: fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: fullScene ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
   ];
 });
 const stages = [
