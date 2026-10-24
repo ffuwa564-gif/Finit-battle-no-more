@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button, HPBar } from './index';
 import { emitUISound } from './interaction';
@@ -23,6 +23,12 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
+  const [transition, setTransition] = useState<{ previous: Unit; direction: 1 | -1 } | null>(null);
+  useEffect(() => {
+    if (!transition) return;
+    const timer = setTimeout(() => setTransition(null), 480);
+    return () => clearTimeout(timer);
+  }, [transition]);
   const [systemReducedMotion, setSystemReducedMotion] = useState(false);
   const handledEvent = useRef<string | undefined>(undefined);
   const gesture = useRef<{ pointerId: number; x: number; y: number; horizontal: boolean } | null>(null);
@@ -40,18 +46,23 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
     return () => media.removeEventListener('change', update);
   }, []);
 
-  const focusUnit = useCallback((uid: string) => {
+  const focusUnit = useCallback((uid: string, direction?: 1 | -1) => {
     if (!units.some(unit => unit.uid === uid)) return;
+    if (uid === selectedRef.current) return;
+    const previous = units.find(unit => unit.uid === selectedRef.current);
+    const from = units.findIndex(unit => unit.uid === selectedRef.current);
+    const to = units.findIndex(unit => unit.uid === uid);
+    setTransition(previous && !reduced ? { previous, direction: direction ?? (to >= from ? 1 : -1) } : null);
     selectedRef.current = uid;
     setSelectedId(uid);
-  }, [units]);
+  }, [units, reduced]);
 
   const changePage = useCallback((direction: 1 | -1) => {
     if (!canChange) return;
     const current = units.findIndex(unit => unit.uid === selectedRef.current);
     for (let distance = 1; distance <= units.length; distance++) {
       const index = (current + direction * distance + units.length * 2) % units.length;
-      if (units[index].hp > 0) { focusUnit(units[index].uid); emitUISound('select'); return; }
+      if (units[index].hp > 0) { focusUnit(units[index].uid, direction); emitUISound('select'); return; }
     }
   }, [canChange, units, focusUnit]);
 
@@ -106,6 +117,9 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
   const character = characterById(front.characterId);
   const sceneId = character.encounterArtId ?? character.artId;
   const scene = content.assets.find(asset => asset.id === sceneId);
+  const previousCharacter = transition ? characterById(transition.previous.characterId) : undefined;
+  const previousSceneId = previousCharacter?.encounterArtId ?? previousCharacter?.artId;
+  const previousScene = content.assets.find(asset => asset.id === previousSceneId);
   const aliveIndex = available.findIndex(unit => unit.uid === front.uid);
   const position = aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
   return <div className={`enemy-carousel${reduced ? ' enemy-carousel--reduced' : ''}`}
@@ -113,7 +127,10 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={cancelGesture}
     onPointerLeave={() => { if (gesture.current && !gesture.current.horizontal) cancelGesture(); }} onLostPointerCapture={cancelGesture}>
-    <div className="enemy-page" key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
+    {transition && !reduced && <div className="enemy-page--outgoing" key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
+      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousScene?.anchor ?? '50% 30%' }} />
+    </div>}
+    <div className={`enemy-page${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
       <img className="enemy-page-art" src={assetPath(sceneId)} alt="" draggable={false} style={{ objectPosition: scene?.anchor ?? '50% 30%' }} />
     </div>
     <div className="enemy-carousel-status">
