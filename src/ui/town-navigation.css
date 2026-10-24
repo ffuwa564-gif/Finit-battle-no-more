@@ -1,10 +1,6 @@
 /* One engraved navigation vocabulary, whether inset in the frame or docked. */
 .town-navigation > .button { flex-direction: column; gap: 3px; font-family: var(--font-display); }
-.town-navigation > .button > .menu-emblem,
-.town-navigation > .button > .command-emblem { width: 29px; height: 29px; padding: 0; transform: none; }
-.town-navigation > .button > .menu-emblem { filter: grayscale(1); }
-.town-navigation > .button > .command-emblem { filter: none; }
-.hub-navigation > .button > .command-emblem { filter: grayscale(1); }
+.town-navigation > .button > svg { width: 25px; height: 25px; flex-shrink: 0; }
 .hub-navigation {
   position: relative;
   z-index: 6;
