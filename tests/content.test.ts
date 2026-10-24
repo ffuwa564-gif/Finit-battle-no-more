@@ -26,11 +26,13 @@ describe('shared content contract', () => {
   it('rejects absent assets, HTML text, and editable derived skill effects', () => {
     const invalid = structuredClone(content);
     invalid.characters[0].portraitId = 'missing';
+    invalid.characters.find(char => char.id === 'pale-wolf')!.encounterArtId = 'missing-scene';
     invalid.characters[0].flavor = '<button>override</button>';
     invalid.characters[0].dialogue = { intro: '<script>bad</script>', threshold: '……', defeat: '……' };
     Object.assign(invalid.skills[0], { coefficient: 100 });
     const errors = validateContent(invalid);
     expect(errors.some(message => message.includes('missing art/portrait'))).toBe(true);
+    expect(errors.some(message => message.includes('invalid encounter scene'))).toBe(true);
     expect(errors.some(message => message.includes('plain name, epithet and flavor'))).toBe(true);
     expect(errors.some(message => message.includes('derived effect overrides'))).toBe(true);
     expect(errors.some(message => message.includes('plain boss dialogue'))).toBe(true);

@@ -23,12 +23,12 @@ export function animateEvent(event: BattleEvent, reducedMotion: boolean): () => 
   }
   const context = gsap.context(() => {
     const actor = event.actorId ? document.querySelector(`[data-unit="${event.actorId}"]`) : null;
-    if (actor && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(event.kind)) {
+    if (actor && !actor.hasAttribute('data-encounter-scene') && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(event.kind)) {
       gsap.fromTo(actor, { y: 0 }, { y: -10, duration: 0.16, yoyo: true, repeat: 1, clearProps: 'transform' });
     }
     for (const id of event.targetIds ?? []) {
       const target = document.querySelector(`[data-unit="${id}"]`);
-      if (target) gsap.fromTo(target, { opacity: 0.45 }, { opacity: 1, duration: 0.3, clearProps: 'opacity' });
+      if (target && !target.hasAttribute('data-encounter-scene')) gsap.fromTo(target, { opacity: 0.45 }, { opacity: 1, duration: 0.3, clearProps: 'opacity' });
     }
     const drop = document.querySelector('[data-drop]');
     const bag = document.querySelector('[data-bag]');

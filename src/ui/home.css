@@ -1,10 +1,12 @@
 /* The menu is a single illustrated game surface, using shared control behavior. */
 .home-hub {
+  --hub-inset-inline: 11px;
+  --hub-inset-bottom: 12px;
   position: relative;
   isolation: isolate;
   width: min(100%, 600px);
   margin: 0 auto;
-  padding: 0 11px 12px;
+  padding: 0 var(--hub-inset-inline) var(--hub-inset-bottom);
   overflow: hidden;
   border: 1px solid #b1aea6;
   border-radius: 28px;
@@ -123,8 +125,8 @@
 }
 .home-hub-menu .hub-menu-tile::after { content: none; }
 .home-hub-menu .hub-menu-tile:hover:not(:disabled) { background: var(--paper-grain, none), linear-gradient(135deg, #fcfaf4, #eeeae4); border-color: #aeb4b7; box-shadow: inset 0 1px 1px #fffef5, 0 5px 12px #36415216; transform: translateY(-1px); }
-.menu-emblem { width: 119px; height: 91px; flex-shrink: 0; filter: drop-shadow(0 1px 0 #faf8efaa); }
-.menu-emblem--painted { object-fit: contain; padding: 1px 9px 2px; transform: scale(1.08); filter: saturate(.76) drop-shadow(0 2px 1px #3b46521a); -webkit-user-drag: none; }
+.menu-emblem { display: block; width: 110px; height: 110px; flex-shrink: 0; background-repeat: no-repeat; }
+.home-hub-menu .menu-emblem { filter: grayscale(1); }
 .hub-menu-tile > strong { position: relative; z-index: 1; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: .055em; white-space: nowrap; text-shadow: 0 1px 0 #fffdf6a6; }
 .home-hub .hub-dungeon-entry {
   position: relative;
@@ -149,12 +151,9 @@
 .hub-dungeon-entry:hover:not(:disabled) > img { transform: scale(1.03); }
 .hub-dungeon-entry > span { display: flex; flex: 1; flex-direction: column; gap: 4px; text-align: center; }
 .hub-dungeon-entry strong { font-family: var(--font-display); font-size: 26px; font-weight: 400; letter-spacing: .11em; text-shadow: 0 1px 9px #20304455; }
-.hub-dungeon-entry small { font-size: 7px; letter-spacing: .19em; color: #e0e4e6; }
 .hub-dungeon-entry > svg { width: 43px; height: 43px; padding: 9px; border: 1px solid #f5f3e49c; border-radius: 50%; background: #f4f1e1c9; color: #5e6876; stroke-width: 1.5; }
-.hub-quiet-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 11px 0 0; font-size: 8px; color: #899095; letter-spacing: .06em; line-height: 1.6; }
-.hub-quiet-note svg { width: 11px; height: 11px; color: #9da49e; }
 @media (max-width: 760px) {
-  .home-hub { width: 100%; max-width: 430px; border-radius: 22px; padding: 0 8px 10px; box-shadow: 0 2px 0 #faf9f1 inset, 0 7px 25px #313a4718; }
+  .home-hub { --hub-inset-inline: 8px; --hub-inset-bottom: 10px; width: 100%; max-width: 430px; border-radius: 22px; box-shadow: 0 2px 0 #faf9f1 inset, 0 7px 25px #313a4718; }
   .home-hub::after { inset: 4px; border-radius: 18px; }
   .hub-illustration { height: 372px; margin-inline: -8px; border-radius: 21px 21px 0 0; }
   .hub-illustration > img { object-position: 50% 50%; }
@@ -172,13 +171,11 @@
   .hub-scene-note > p { font-size: 14px; letter-spacing: .08em; }
   .home-hub-menu { gap: 3px; margin-top: -16px; }
   .home-hub-menu .hub-menu-tile { min-height: 122px; padding: 3px 3px 9px; border-radius: 21px; }
-  .menu-emblem { width: 97px; height: 75px; }
+  .menu-emblem { width: 96px; height: 96px; }
   .hub-menu-tile > strong { font-size: 14px; letter-spacing: .015em; }
   .home-hub .hub-dungeon-entry { min-height: 85px; margin-top: 9px; border-radius: 19px; padding: 10px 12px; gap: 12px; }
   .hub-dungeon-entry strong { font-size: 21px; letter-spacing: .07em; }
-  .hub-dungeon-entry small { font-size: 6px; }
   .hub-dungeon-entry > svg { width: 36px; height: 36px; padding: 7px; }
-  .hub-quiet-note { font-size: 7px; gap: 5px; margin-top: 9px; }
 }
 @media (max-width: 760px) and (max-height: 740px) {
   .hub-illustration { height: 300px; }
@@ -194,5 +191,5 @@
   .hub-currencies > span > svg { width: 15px; height: 15px; }
   .hub-profile-copy > strong { font-size: 13px; }
   .hub-menu-tile > strong { font-size: 12px; letter-spacing: 0; }
-  .menu-emblem { width: 86px; height: 66px; }
+  .menu-emblem { width: 80px; height: 80px; }
 }

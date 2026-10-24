@@ -1,12 +1,14 @@
 /* The illustrated home and battlefield are standalone game frames. */
-.app-shell:is(.is-menu,.is-exploring) { grid-template-columns: minmax(0,1fr); }
+.app-shell:is(.is-menu,.is-exploring) { grid-template-columns: minmax(0,1fr); min-height: 0; align-content: start; }
 .app-shell:is(.is-menu,.is-exploring) > .sidebar { display: none; }
 .app-shell:is(.is-menu,.is-exploring) {
   background: radial-gradient(ellipse at 50% 14%,#f8f6ef7a,transparent 55%),radial-gradient(ellipse at 50% 92%,#b8c2ce38,transparent 65%);
 }
 .app-shell.is-exploring .app-body > .topbar { display: none; }
 .app-shell.is-exploring .main-content { padding-inline: 12px; }
+.app-shell:is(.is-menu,.is-exploring) .main-content { padding-bottom: 0; }
 .app-shell.is-exploring .app-footer { display: none; }
+.app-shell.is-menu .town-navigation .command-emblem { filter: grayscale(1); }
 @media (min-width: 761px) {
   .app-shell.is-exploring .app-body { padding-top: 24px; }
   .app-shell.is-menu .main-content { padding-top: 24px; }
@@ -14,4 +16,11 @@
 @media (max-width: 760px) {
   .app-shell.is-exploring .app-body { padding-top: 8px; }
   .app-shell.is-exploring .main-content { padding-inline: 10px; }
+  .app-shell.is-menu .home-hub { display: flex; flex-direction: column; min-height: 100dvh; }
+  .app-shell.is-menu .hub-illustration { flex: 1 0 auto; }
+  .app-shell.is-menu .home-hub > :not(.hub-illustration) { flex-shrink: 0; }
+  .app-shell.is-menu .hub-illustration > img { object-position: 70% 50%; }
+  .app-shell.is-exploring .battle-layout { display: flex; flex-direction: column; min-height: calc(100dvh - 8px); }
+  .app-shell.is-exploring .battle-scene { flex: 1 0 auto; }
+  .app-shell.is-exploring .battle-layout > :not(.battle-scene) { flex-shrink: 0; }
 }

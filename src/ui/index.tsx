@@ -74,10 +74,10 @@ export function HPBar({ hp: hpInput, maxHp: maxInput, value, max, showNumbers = 
   </div>;
 }
 
-export interface CharacterPortraitProps { variant?: 'face' | 'card'; character: CharacterDef; selected?: boolean; leader?: boolean; hp?: number; maxHp?: number; onClick?: () => void; disabled?: boolean; compact?: boolean; showRole?: boolean }
-export function CharacterPortrait({ character, selected, leader, hp, maxHp, onClick, disabled, compact, variant = 'card', showRole = true }: CharacterPortraitProps) {
+export interface CharacterPortraitProps { variant?: 'face' | 'card'; character: CharacterDef; selected?: boolean; leader?: boolean; hp?: number; maxHp?: number; onClick?: () => void; disabled?: boolean; compact?: boolean; showRole?: boolean; showName?: boolean }
+export function CharacterPortrait({ character, selected, leader, hp, maxHp, onClick, disabled, compact, variant = 'card', showRole = true, showName = true }: CharacterPortraitProps) {
   const face = variant === 'face' || compact === true;
-  const body = <><div className="portrait-image"><PortraitArt character={character} face={face} />{leader && <span className="leader-mark" title="リーダー"><Crown size={13} /><span className="sr-only">リーダー</span></span>}<span className="portrait-constant">{(character.strength / 10).toFixed(1)}</span></div><div className="portrait-copy"><strong>{character.name}</strong>{showRole && <span>{roleName(character.role)}</span>}</div>{hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} />}</>;
+  const body = <><div className="portrait-image"><PortraitArt character={character} face={face} />{leader && <span className="leader-mark" title="リーダー"><Crown size={13} /><span className="sr-only">リーダー</span></span>}<span className="portrait-constant">{(character.strength / 10).toFixed(1)}</span></div>{(showName || showRole) && <div className="portrait-copy">{showName && <strong>{character.name}</strong>}{showRole && <span>{roleName(character.role)}</span>}</div>}{hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} label={`${character.name}のHP`} />}</>;
   const classes = `character-portrait${selected ? ' is-selected' : ''}${hp === 0 ? ' is-fallen' : ''}${compact ? ' character-portrait--compact' : ''}${face ? ' character-portrait--face' : ''}`;
   return onClick ? <Button variant="secondary" className={classes} onClick={onClick} disabled={disabled} selected={selected} aria-label={`${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`}>{body}</Button> : <div className={classes}>{body}</div>;
 }

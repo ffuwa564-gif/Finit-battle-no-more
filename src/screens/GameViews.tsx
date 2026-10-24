@@ -38,8 +38,7 @@ export function HomeView(p: ViewProps) {
       </div>
     </div>
     <div className="home-hub-menu">{menu.map(item => <Button variant="secondary" className="hub-menu-tile" key={item.page} onClick={() => p.navigate(item.page)}><MenuEmblem kind={item.emblem} /><strong>{item.title}</strong></Button>)}</div>
-    <Button variant="secondary" className="hub-dungeon-entry" onClick={() => p.navigate('dungeons')}><img src={assetPath('cathedral')} alt="" /><span><small>ENTER THE FORGOTTEN DEPTHS</small><strong>ダンジョンへ</strong></span><ChevronRight size={24} /></Button>
-    <p className="hub-quiet-note"><Moon size={11} /> 踏破 {p.save.completedDungeonIds.length} / {content.dungeons.length}</p>
+    <Button variant="secondary" className="hub-dungeon-entry" onClick={() => p.navigate('dungeons')}><img src={assetPath('cathedral')} alt="" /><span><strong>ダンジョンへ</strong></span><ChevronRight size={24} /></Button>
     <TownNavigation active="home" onNavigate={p.navigate} embedded />
   </section>;
 }
@@ -109,27 +108,20 @@ export function BattleView(p: ViewProps) {
   const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
   if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={reward ? '探索の記録' : '探索終了'} text={dungeon.name} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{reward ? '獲得素材' : '今回の素材は失われました。'}</h2>{reward ? <><div className="resource-list">{items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{materialName(id)}</span><strong>×{n}</strong></div>)}</div><div className="reward-summary"><span><CurrencyEmblem kind="gold" size={17} /> 撃破 {battle.goldEarned} G（取得済み）</span><span>クリア +20 G</span>{!p.save.completedDungeonIds.includes(dungeon.id) && <span><CurrencyEmblem kind="stone" size={17} /> 初踏破 +1</span>}</div><p className="subtle">確定するまで素材は仮取得です。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} /> 獲得を確定</Button></> : <><p>{battle.failureReason ?? 'パーティは廃都から帰還しました。'}</p><p className="subtle">ゴールド・敵の記録は保持。次回は全回復で出発します。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>街へ戻る <ArrowRight size={16} /></Button></>}</Panel></>;
   return <div className="battle-layout game-frame">
-    <div className="battle-topline">
-      <div><span className="eyebrow">{dungeon.name}</span><h2>Wave {battle.wave + 1}<small> / {dungeon.waves.length}</small></h2></div>
-      <span className="round-label">ROUND {displayRound}</span>
-      <div className="bag-counter" data-bag><Backpack size={23} /><strong>{total}</strong><small>仮取得・全滅時喪失</small></div>
-    </div>
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label="敵の戦場">
-      <img className="scene-background" src={assetPath(dungeon.artId)} alt="" />
-      <div className="scene-mist" />
-      <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} event={event} reducedMotion={p.save.settings.reducedMotion} />
+      <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} materials={total} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
       {event && <div className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={`toast-${event.id}`}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</div>}
       {event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}
     </section>
     <div className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label="パーティメンバー">
       {party.map(unit => <div data-unit={unit.uid} className={`party-unit ${unit.hp <= 0 ? 'is-defeated' : ''}`} key={unit.uid}>
-        <CharacterPortrait variant="face" compact showRole={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} onClick={usingPotion && unit.hp > 0 ? async () => { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } : undefined} />
+        <CharacterPortrait variant="face" compact showRole={false} showName={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} onClick={usingPotion && unit.hp > 0 ? async () => { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } : undefined} />
         <span className="party-hp">{unit.hp} / {unit.maxHp}</span>
       </div>)}
     </div>
     <Panel className="command-pad">
-      <div className="command-heading"><span className="eyebrow">{usingPotion ? '回復する仲間を選択' : battle.phase === 'playing' ? '行動中' : '作戦'}</span><div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button variant="icon" title={p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 0.5 : 0 } })}>{p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button><Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div>
+      <div className="command-heading">{usingPotion && <span className="sr-only">回復する仲間を選択</span>}<div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button variant="icon" title={p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 0.5 : 0 } })}>{p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button><Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div>
       <StrategyDial value={battle.strategy} disabled={p.busy || battle.phase !== 'ready'} onChange={strategy => { void p.command({ type: 'strategy', strategy }); }} />
       <div className="command-actions">
         <Button variant="secondary" className="battle-item-control" disabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} onClick={() => setUsingPotion(!usingPotion)}><CommandEmblem kind="potion" /><span>回復薬 <small>{battle.potionsRemaining}</small></span></Button>

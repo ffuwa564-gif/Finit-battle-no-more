@@ -1,7 +1,9 @@
 /* One engraved navigation vocabulary, whether inset in the frame or docked. */
 .town-navigation > .button { flex-direction: column; gap: 3px; font-family: var(--font-display); }
 .town-navigation > .button > .menu-emblem,
-.town-navigation > .button > .command-emblem { width: 29px; height: 26px; padding: 0; transform: none; filter: drop-shadow(0 1px 0 #fffdf1); }
+.town-navigation > .button > .command-emblem { width: 29px; height: 29px; padding: 0; transform: none; }
+.town-navigation > .button > .menu-emblem { filter: grayscale(1); }
+.town-navigation > .button > .command-emblem { filter: none; }
 .hub-navigation {
   position: relative;
   z-index: 6;
@@ -9,7 +11,7 @@
   grid-template-columns: repeat(5,minmax(0,1fr));
   gap: 3px;
   padding: 5px 9px 8px;
-  margin: 0 -11px -12px;
+  margin: 8px calc(-1 * var(--hub-inset-inline)) calc(-1 * var(--hub-inset-bottom));
   border-top: 1px solid #c5c0b5;
   background: linear-gradient(180deg,#f8f5ed,#eae7de);
   box-shadow: inset 0 1px 0 #fffdf7;
@@ -35,7 +37,6 @@
 }
 .hub-navigation > .button:hover:not(:disabled) { color: #40576c; background: #e4e8e3; border-color: #bec7c7; }
 .hub-navigation > .button > svg { filter: drop-shadow(0 1px 0 #fffdf1); }
-.app-shell.is-menu .main-content { padding-bottom: 18px; }
 @media (max-width: 360px) {
   .hub-navigation { padding-inline: 5px; gap: 0; }
   .hub-navigation > .button { font-size: 9px; }

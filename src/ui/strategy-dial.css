@@ -43,7 +43,7 @@
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice--balanced { top: 5%; left: calc(50% - var(--dial-choice) / 2); }
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice--aggressive { bottom: 8%; right: 8%; }
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice--survival { bottom: 8%; left: 8%; }
-.battle-layout .strategy-dial.strategy-options .strategy-dial__choice > .command-emblem { width: 24px; height: 24px; }
+.battle-layout .strategy-dial.strategy-options .strategy-dial__choice > .command-emblem { width: 100%; height: 100%; transform: scale(1.2); }
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice > span { font-size: 11px; letter-spacing: 0; line-height: 1.2; }
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice.is-selected {
   color: #fffdf3;
@@ -54,11 +54,9 @@
 .battle-layout .strategy-dial.strategy-options .strategy-dial__choice:not(.is-selected):hover:not(:disabled) { background: #f4f2e8; border-color: #7d8d99; }
 @media (max-width: 760px) {
   .battle-layout .strategy-dial.strategy-options { --dial-choice: 58px; --dial-center: 62px; }
-  .battle-layout .strategy-dial.strategy-options .strategy-dial__choice > .command-emblem { width: 21px; height: 21px; }
   .battle-layout .strategy-dial.strategy-options .strategy-dial__choice > span { font-size: 10px; }
 }
 @media (max-width: 360px) {
   .battle-layout .strategy-dial.strategy-options { --dial-choice: 48px; --dial-center: 50px; }
-  .battle-layout .strategy-dial.strategy-options .strategy-dial__choice > .command-emblem { width: 18px; height: 18px; }
   .battle-layout .strategy-dial.strategy-options .strategy-dial__choice > span { font-size: 9px; }
 }

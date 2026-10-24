@@ -55,6 +55,7 @@ export function validateContent(content: Content): string[] {
     reject(!speciesIds.has(char.speciesId), `characters/${char.id}: missing species ${char.speciesId}`);
     reject(!assetIds.has(char.artId) || !assetIds.has(char.portraitId), `characters/${char.id}: missing art/portrait asset`);
     reject(content.assets.find(asset => asset.id === char.artId)?.kind !== 'illustration' || content.assets.find(asset => asset.id === char.portraitId)?.kind !== 'portrait', `characters/${char.id}: incorrect image kinds`);
+    if (char.encounterArtId !== undefined) reject(!assetIds.has(char.encounterArtId) || content.assets.find(asset => asset.id === char.encounterArtId)?.kind !== 'background', `characters/${char.id}: invalid encounter scene`);
     reject(!profiles.has(char.soundProfile), `characters/${char.id}: unknown sound profile`);
     reject(!['R', 'SR', 'SSR'].includes(char.rarity), `characters/${char.id}: invalid rarity`);
     reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
@@ -83,6 +84,7 @@ export function validateContent(content: Content): string[] {
         const char = content.characters.find(item => item.id === enemy.characterId);
         reject(!characterIds.has(enemy.characterId), `dungeons/${dungeon.id}: missing enemy ${enemy.characterId}`);
         if (dungeon.published && char) reject(!char.published || !char.origin.includes('recruit'), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
+        if (dungeon.published && char) reject(!char.encounterArtId, `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
         reject(Boolean(enemy.boss) && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }
     });

@@ -99,7 +99,7 @@ test('retreat forfeits all provisional materials while retaining earned gold', a
   expect((await stored(page)).gold).toBe(before.gold);
 });
 
-test('strategy dial selects commands while enemy rotation leaves combat unchanged', async ({ page }) => {
+test('strategy dial selects commands while enemy paging leaves combat unchanged', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await openDungeon(page);
@@ -115,7 +115,8 @@ test('strategy dial selects commands while enemy rotation leaves combat unchange
   await dial.getByRole('button', { name: '均衡', exact: true }).click();
   await expect.poll(async () => (await stored(page)).battle?.strategy).toBe('balanced');
   const before = await stored(page);
-  const front = page.locator('.enemy-orbit-slot.is-front');
+  const front = page.locator('.enemy-page');
+  await expect(front).toHaveCount(1);
   const first = await front.getAttribute('data-enemy-id');
   expect(first).toBeTruthy();
   for (let index = 0; index < 4; index++) {
@@ -132,17 +133,16 @@ test('strategy dial selects commands while enemy rotation leaves combat unchange
   await page.mouse.move(bounds.x + bounds.width * 0.25, bounds.y + bounds.height * 0.6, { steps: 8 });
   await page.mouse.up();
   await expect(front).not.toHaveAttribute('data-enemy-id', first!);
-  // Selection can update before the browser paints the snapped rotation.
-  // Compare hover against the settled pose, not an in-flight drag frame.
-  await expect.poll(() => front.evaluate(element => new DOMMatrix(getComputedStyle(element).transform).a)).toBe(1);
-  const stableTransform = await front.evaluate(element => getComputedStyle(element).transform);
+  const stablePage = await front.getAttribute('data-enemy-id');
   // A pointer released outside before the swipe threshold must not keep dragging on hover.
   await page.mouse.move(bounds.x + 4, bounds.y + bounds.height * 0.6);
   await page.mouse.down();
   await page.mouse.move(bounds.x - 3, bounds.y + bounds.height * 0.6);
   await page.mouse.up();
   await page.mouse.move(bounds.x + bounds.width * 0.6, bounds.y + bounds.height * 0.6);
-  expect(await front.evaluate(element => getComputedStyle(element).transform)).toBe(stableTransform);
+  await expect(front).toHaveAttribute('data-enemy-id', stablePage!);
+  await expect(front).toHaveCount(1);
+  await expect(page.getByText('左右に回して確認', { exact: true })).toHaveCount(0);
   const after = await stored(page);
   expect(after.revision).toBe(before.revision);
   expect(after.battle).toEqual(before.battle);

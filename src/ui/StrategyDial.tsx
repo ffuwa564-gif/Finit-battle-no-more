@@ -11,10 +11,10 @@ export function StrategyDial({ value, disabled = false, onChange }: {
   value: Strategy; disabled?: boolean; onChange: (strategy: Strategy) => void;
 }) {
   return <div className="strategy-options strategy-dial" role="group" aria-label="作戦を選ぶ">
-    <span className="strategy-dial__hub" aria-hidden="true"><CommandEmblem kind={value} /></span>
+    <span className="strategy-dial__hub" aria-hidden="true" />
     {choices.map(strategy => <Button key={strategy} variant="secondary" selected={value === strategy} disabled={disabled}
-      className={`strategy-dial__choice strategy-dial__choice--${strategy}`} onClick={() => onChange(strategy)}>
-      <CommandEmblem kind={strategy} /><span>{names[strategy]}</span>
+      aria-label={names[strategy]} title={names[strategy]} className={`strategy-dial__choice strategy-dial__choice--${strategy}`} onClick={() => onChange(strategy)}>
+      <CommandEmblem kind={strategy} />
     </Button>)}
   </div>;
 }

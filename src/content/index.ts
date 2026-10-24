@@ -17,7 +17,7 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'veil-priestess': { intro: 'この祈りだけは、奪わないで。', threshold: '届かないと知っても……私は、祈る。', defeat: 'こんなにも静かに……終われるのですね。' },
   'thorn-witch': { intro: '枯れた花にも、帰る場所はある。', threshold: '咲かせましょう……最後の、一輪を。', defeat: '庭のこと……ときどき、思い出して。' },
 };
-const character = (input: CharacterInput): CharacterDef => ({ ...input, ...(bossDialogues[input.id] ? { dialogue: bossDialogues[input.id] } : {}), rarity: input.rarity ?? 'R', leaderStat: input.role === 'tank' || input.role === 'healer' ? 'hp' : input.role === 'supporter' || input.role === 'debuffer' ? 'defense' : 'attack', skillIds: [skillFor(required[input.role], input.strength), skillFor(input.role === 'attacker' ? 'area' : 'attack', input.strength)], portraitId: `${input.id}-portrait`, artId: `${input.id}-art`, published: true, soundProfile: 'default' });
+const character = (input: CharacterInput): CharacterDef => ({ ...input, ...(bossDialogues[input.id] ? { dialogue: bossDialogues[input.id], encounterArtId: `encounter-${input.id}` } : {}), rarity: input.rarity ?? 'R', leaderStat: input.role === 'tank' || input.role === 'healer' ? 'hp' : input.role === 'supporter' || input.role === 'debuffer' ? 'defense' : 'attack', skillIds: [skillFor(required[input.role], input.strength), skillFor(input.role === 'attacker' ? 'area' : 'attack', input.strength)], portraitId: `${input.id}-portrait`, artId: `${input.id}-art`, published: true, soundProfile: 'default' });
 const characters: CharacterDef[] = [
   character({ id: 'elaine', name: 'エレイン', epithet: '白花の祈り手', role: 'healer', speciesId: 'pilgrim', strength: 14, origin: ['initial', 'recruit'], flavor: '誰もいない礼拝堂に、今日も花を供える祈り手。救えなかった人々の名を、彼女だけがまだ覚えている。優しい声の奥には、もう二度と手を離さないという静かな決意がある。' }),
   character({ id: 'liora', name: 'リオラ', epithet: '錆銀の守護者', role: 'tank', speciesId: 'pilgrim', strength: 14, origin: ['initial', 'recruit'], flavor: '滅びた王国の門を守り続けた騎士。主のいない盾は重さを失わず、彼女はその重さを生きる理由に変えた。言葉は少ないが、仲間の歩幅に合わせることを決して忘れない。' }),
@@ -35,17 +35,16 @@ const characters: CharacterDef[] = [
   character({ id: 'evelyn', name: 'エヴリン', epithet: '終庭の女王', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '誰もいない玉座を離れ、旅に加わった女王。王冠よりも重い記憶を抱えながら、今は一人の仲間として盾を持つ。枯れた花にも水をやる理由を、彼女は決して語らない。' }),
 ];
 
-const illustrationDimensions: Record<string, { width: number; height: number } | undefined> = {
-  'hollow-keeper': { width: 1024, height: 1535 },
-};
 const characterAssets: AssetDef[] = characters.flatMap(char => {
+  const fullScene = Boolean(char.encounterArtId);
+  const humanScene = ['hollow', 'veil', 'thorn'].includes(char.speciesId);
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
   const generated = char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: `art/${char.id}.${generated ? 'png' : 'svg'}`, width: landscape ? 1536 : generated ? 1024 : 640, height: landscape ? 1024 : generated ? 1536 : 900, ...illustrationDimensions[char.id], rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: fullScene || landscape ? 1536 : generated ? 1024 : 640, height: fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: landscape ? '50% 50%' : '50% 42%' },
-    { ...common, id: char.portraitId, kind: 'portrait', anchor: landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
+    { ...common, id: char.portraitId, kind: 'portrait', anchor: fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: fullScene ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
   ];
 });
 const stages = [
@@ -66,9 +65,16 @@ const dungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, second], i
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const menuAssets: AssetDef[] = [{ id: 'menu-bag', path: 'art/menu-bag.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-codex', path: 'art/menu-codex.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-hero', path: 'art/menu-hero.png', kind: 'background', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }];
+const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
+  id: char.encounterArtId, path: `art/${char.encounterArtId}.png`, kind: 'background' as const,
+  width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
+}] : []);
+const menuAssets: AssetDef[] = [
+  { id: 'menu-atlas', path: 'art/menu-atlas.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated painted UI icon atlas for this project.' },
+  { id: 'command-atlas', path: 'art/command-atlas.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated painted UI icon atlas for this project.' },
+{ id: 'menu-bag', path: 'art/menu-bag.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-codex', path: 'art/menu-codex.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-hero', path: 'art/menu-hero.png', kind: 'background', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }];
 
-export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, species: [ { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...menuAssets, { id: 'app-icon', path: 'art/icon.svg', kind: 'icon', width: 512, height: 512, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: 'Rasterization of original project SVG artwork.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
+export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, species: [ { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...encounterAssets, ...menuAssets, { id: 'app-icon', path: 'art/icon.svg', kind: 'icon', width: 512, height: 512, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: 'Rasterization of original project SVG artwork.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
 
 export function characterById(id: string): CharacterDef { const found = content.characters.find(char => char.id === id); if (!found) throw new Error(`未知のキャラクター: ${id}`); return found; }
 export function assetPath(id: string): string { const asset = content.assets.find(item => item.id === id); if (!asset) throw new Error(`未知のアセット: ${id}`); const base = typeof import.meta.env === 'object' ? import.meta.env.BASE_URL : '/'; return `${base.replace(/\/$/, '')}/${asset.path.replace(/^\//, '')}`; }
