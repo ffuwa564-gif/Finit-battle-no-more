@@ -14,6 +14,7 @@ import './enemy-carousel.css';
 import './game-frame.css';
 import './materials.css';
 import './typography.css';
+import './close-button.css';
 export { EnemyCarousel } from './EnemyCarousel';
 export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
@@ -102,7 +103,7 @@ export function EmptyState({ icon, title, children }: { icon?: ReactNode; title:
 }
 
 export function Toast({ children, tone = 'info', onClose }: { children: ReactNode; tone?: 'info' | 'error' | 'success'; onClose?: () => void }) {
-  return <NoticeSurface className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'} tone={tone}><span>{children}</span>{onClose && <IconButton label="通知を閉じる" sound="cancel" onClick={onClose}><X size={16} /></IconButton>}</NoticeSurface>;
+  return <NoticeSurface className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'} tone={tone}><span>{children}</span>{onClose && <IconButton className="close-button" label="通知を閉じる" sound="cancel" onClick={onClose}><X size={16} /></IconButton>}</NoticeSurface>;
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */
@@ -131,7 +132,7 @@ export function Modal({ open = true, title, children, onClose, footer }: { open?
     return () => { document.body.style.overflow = oldOverflow; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createPortal(<div className="modal-backdrop"><div className="modal" ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton label="閉じる" sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
+  return createPortal(<div className="modal-backdrop"><div className="modal" ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton className="close-button" label="閉じる" sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{children}<ChevronRight size={16} aria-hidden="true" /></span>; }

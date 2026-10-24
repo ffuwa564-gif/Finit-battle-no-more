@@ -122,13 +122,13 @@ export default function App() {
     if (!event || !save) return;
     playSound(battleSounds[event.kind], event.rarity);
     const cleanup = animateEvent(event, save.settings.reducedMotion);
-    const duration = event.kind === 'dialogue' ? 2400 : event.kind === 'drop' ? 1050 : event.kind === 'wave' ? 800 : 650;
+    const duration = event.kind === 'dialogue' ? 4400 : event.kind === 'drop' ? 2200 : event.kind === 'wave' ? 2400 : 1800;
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current) { timer = setTimeout(complete, 100); return; }
       void command({ type: 'replay' }, event.id);
     };
-    timer = setTimeout(complete, duration / save.settings.speed);
+    timer = setTimeout(complete, Math.max(1200, duration / save.settings.speed));
     return () => { clearTimeout(timer); cleanup(); };
   }, [event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
 

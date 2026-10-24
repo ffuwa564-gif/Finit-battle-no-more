@@ -47,7 +47,7 @@ export function CombatFeedback({ event, before, reducedMotion }: { event?: Battl
   useEffect(() => () => { for (const timer of timers.current) clearTimeout(timer); }, []);
   return <div ref={root} className={`combat-feedback${reducedMotion ? ' combat-feedback--reduced' : ''}`} aria-live="off">
     {numbers.map(number => <div key={number.id} data-hp-unit={number.unitId} data-hp-delta={number.amount} className={`combat-number combat-number--${number.amount > 0 ? 'heal' : number.side === 'party' ? 'hurt' : 'damage'}`} style={{ left: number.x, top: number.y } as CSSProperties} aria-label={`${characterById(number.characterId).name} ${number.amount > 0 ? '回復' : 'ダメージ'} ${Math.abs(number.amount)}`}>
-      {number.named && <small>{characterById(number.characterId).name}</small>}<strong>{number.amount > 0 ? '+' : '−'}{Math.abs(number.amount).toLocaleString()}</strong>
+      {number.named && <small>{characterById(number.characterId).name}</small>}<strong><span className="combat-number__sign">{number.amount > 0 ? '+' : '−'}</span>{Math.abs(number.amount).toLocaleString()}</strong>
     </div>)}
   </div>;
 }
