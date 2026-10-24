@@ -79,7 +79,7 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const menuAssets: AssetDef[] = [
-  { id: 'home-portrait-motion', path: 'video/home-portrait.mp4', kind: 'video', width: 1080, height: 1080, anchor: '50% 18%', rights: 'Original project menu illustration animated with Runway; task 1b014d68-3575-4172-9f96-4b1b4a0fd72e; selected 5-10s with reverse/forward loop.' },
+  { id: 'home-portrait-motion', path: 'video/home-portrait-original.mp4', kind: 'video', width: 1080, height: 1080, anchor: '50% 18%', rights: 'Original project menu illustration animated with Runway; task 1b014d68-3575-4172-9f96-4b1b4a0fd72e; full original motion; H.264 High Level 4.0.' },
   { id: 'notice-moonlight', path: 'art/notice-moonlight.png', kind: 'background', width: 2172, height: 724, anchor: '50% 50%', rights: 'Original AI-generated moonlit notification frame for this project.' },
   { id: 'command-moonlight', path: 'art/command-moonlight.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated moonlit command surface for this project.' },
   { id: 'menu-logos', path: 'art/menu-logos.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated monochrome menu crest atlas for this project.' },
