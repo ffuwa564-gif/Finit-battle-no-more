@@ -7,10 +7,19 @@ async function saveState(page:import('@playwright/test').Page){return page.evalu
 test('flower collection has four original kimono goddesses, readable skills and English support',async({page},testInfo)=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();
+ await expect(page.locator('.character-grid > .character-card')).toHaveCount(2);
+ for(const name of ['アメノウズメ','イワナガヒメ','ククリヒメ'])await expect(page.getByRole('button',{name,exact:true})).toHaveCount(0);
+ await expect(page.locator('.goddess-rates')).toHaveText('SR 97%SSR 3%');
+ await page.getByRole('button',{name:legacy,exact:true}).click();
+ await expect(page.locator('.character-grid > .character-card')).toHaveCount(6);
+ await expect(page.getByRole('button',{name:'アメノウズメ',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:title,exact:true}).click();
  for(const [name,skill] of [['セレネ','三日月の袖守り'],['アテナ','知恵の一閃'],['フローラ','花風の浄め'],['イリス','晴れ渡る空']]){
   const button=page.getByRole('button',{name:name==='セレネ'||name==='アテナ'?`SSR ${name}の詳細`:name,exact:true});
   await button.click();const dialog=page.getByRole('dialog');await expect(dialog).toContainText(skill);
   await expect(dialog).toContainText('花宴への客人');
+  const art={ 'セレネ':'gacha-selene.webp','アテナ':'gacha-athena-anime.webp','フローラ':'gacha-flora-anime.webp','イリス':'gacha-rainbow-iris-anime.webp' }[name];
+  await expect(dialog.locator('.character-artwork img')).toHaveAttribute('src',new RegExp(art!));
   await expect.poll(()=>dialog.locator('.character-artwork img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(1024);
   const animated=name==='セレネ'||name==='アテナ';
   if(animated){

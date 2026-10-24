@@ -37,14 +37,15 @@ export const flowerGacha: GachaCollection = {
   title: '神々の装い ― 和の花宴 ―',
   subtitle: '遠き地の女神たちが、自ら選んだ晴れ着で月下の花宴へ。',
   featuredIds: ['selene', 'athena'],
-  characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'iris', 'iwanagahime', 'kukurihime'],
+  characterIds: ['selene', 'athena', 'flora', 'rainbow-iris'],
+  rates: { R: 0, SR: 97, SSR: 3 },
 };
 export const gachaCollections = [flowerGacha, initialGacha] as const;
 export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolean {
   return save.drawCount + 1 === initialGacha.guaranteeDraw;
 }
 export const goddessArt: Record<string, string> = {
-  selene: 'gacha-selene', athena: 'gacha-athena', flora: 'gacha-flora', 'rainbow-iris': 'gacha-rainbow-iris',
+  selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
   toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',
   evelyn: 'gacha-izanami', asteria: 'gacha-amaterasu', iris: 'gacha-uzume', mireille: 'gacha-sakuya',
 };
@@ -56,8 +57,8 @@ export function gachaPity(save: Pick<GameSave, 'ssrPity' | 'history' | 'drawCoun
   const lastSSR = draws.findIndex(entry => entry.text.startsWith('召喚：SSR '));
   return Math.min(lastSSR >= 0 ? lastSSR : save.drawCount, initialGacha.hardPity - 1);
 }
-export function gachaSSRRate(pity: number): number {
-  return Math.min(100, initialGacha.rates.SSR + Math.max(0, pity + 1 - initialGacha.softPityStart + 1) * 6);
+export function gachaSSRRate(pity: number, collection = initialGacha): number {
+  return Math.min(100, collection.rates.SSR + Math.max(0, pity + 1 - collection.softPityStart + 1) * 6);
 }
 
 

@@ -177,7 +177,10 @@ export function validateContent(content: Content): string[] {
   for (const collection of gachaCollections) {
     const pool = gacha.filter(char => collection.characterIds.includes(char.id));
     reject(new Set(collection.characterIds).size !== collection.characterIds.length || collection.characterIds.some(id => !pool.some(char => char.id === id)), `gacha/${collection.id}: missing or duplicate character definition`);
-    reject(!pool.some(char => char.rarity === 'R') || !pool.some(char => char.rarity === 'SR') || pool.filter(char => char.rarity === 'SSR').length !== 2, `gacha/${collection.id}: R, SR and two SSR definitions required`);
+    reject(Object.values(collection.rates).some(rate => !Number.isFinite(rate) || rate < 0) || Object.values(collection.rates).reduce((sum,rate) => sum + rate,0) !== 100, `gacha/${collection.id}: valid rates totaling 100 required`);
+    reject((['R','SR','SSR'] as const).some(rarity => collection.rates[rarity] > 0 && !pool.some(char => char.rarity === rarity)), `gacha/${collection.id}: each positive rarity rate needs matching characters`);
+    reject(pool.some(char => collection.rates[char.rarity] === 0), `gacha/${collection.id}: zero-rate rarity must not have characters`);
+    reject(pool.filter(char => char.rarity === 'SSR').length !== 2, `gacha/${collection.id}: two SSR definitions required`);
     reject(collection.featuredIds.some(id => !pool.some(char => char.id === id && char.rarity === 'SSR')), `gacha/${collection.id}: featured SSR must belong to collection`);
   }
   return errors;

@@ -17,7 +17,7 @@ describe('flower banquet and shared guarantees',()=>{
   save.seed=42;save=applyCommand(save,{type:'draw',collectionId:initialGacha.id},content);
   save.seed=42;save=applyCommand(save,{type:'draw',collectionId:flowerGacha.id},content);
   expect(save.drawCount).toBe(4);expect(save.ssrPity).toBe(2);
-  expect(content.characters.find(c=>c.id===save.lastGachaResult!.characterId)!.rarity).toBe('R');
+  expect(content.characters.find(c=>c.id===save.lastGachaResult!.characterId)!.rarity).toBe('SR');
  });
  it('carries the 90-wish pity to the other collection and refunds an owned SSR',()=>{
   let save=createInitialSave(content,42);save.drawCount=130;save.ssrPity=88;save.stones=20;
@@ -29,15 +29,24 @@ describe('flower banquet and shared guarantees',()=>{
   expect(save.lastGachaResult).toMatchObject({duplicate:true,refund:3});expect(gachaPity(save)).toBe(0);
   assertSaveCompatibility(save,content);
  });
- it('never mixes the collections\' SR and SSR pools, and rejects an invalid collection without mutation',()=>{
+ it('never mixes any characters between collections, and rejects an invalid collection without mutation',()=>{
   for(const collection of [initialGacha,flowerGacha]){
-   for(let seed=0;seed<150;seed++){
-    const save=createInitialSave(content,seed);save.stones=5;save.drawCount=10;
+   for(let seed=0;seed<500;seed++){
+    const save=createInitialSave(content,Math.imul(seed,2654435761) >>> 0);save.stones=5;save.drawCount=10;
     const next=applyCommand(save,{type:'draw',collectionId:collection.id},content);
     expect(collection.characterIds).toContain(next.lastGachaResult!.characterId);
+    const other = collection.id === flowerGacha.id ? initialGacha : flowerGacha;
+    expect(other.characterIds).not.toContain(next.lastGachaResult!.characterId);
    }
   }
   const save=createInitialSave(content,42);save.stones=5;const before=structuredClone(save);
   expect(()=>applyCommand(save,{type:'draw',collectionId:'missing'},content)).toThrow();expect(save).toEqual(before);
  });
+});
+
+it('does not silently substitute an SSR when the SR pool is unavailable',()=>{
+ const definitions=structuredClone(content);definitions.characters.filter(c=>['flora','rainbow-iris'].includes(c.id)).forEach(c=>c.published=false);
+ const save=createInitialSave(content,42);save.drawCount=10;save.stones=5;const before=structuredClone(save);
+ expect(()=>applyCommand(save,{type:'draw',collectionId:flowerGacha.id},definitions)).toThrow('レアリティ');
+ expect(save).toEqual(before);
 });

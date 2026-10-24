@@ -102,12 +102,13 @@ export function GachaView(p: ViewProps) {
     <Panel><h3>{tr('全シリーズ共通の天井')}</h3>
       <p className="gacha-guarantee-status" role="status">{tr(p.save.drawCount >= 2 ? '初回SSR保証は使用済みです。以降は共通90回天井です。' : intro ? '次の祈願で、全ガチャ共通・一度きりの初回SSR保証を使用します。' : '全ガチャを合計して2回目だけ、初回SSR保証を使用できます。')}</p>
       <p>{tr('シリーズを切り替えても、祈願回数とSSR天井の進行は引き継ぎます。初回保証はシリーズごとには復活しません。')}</p>
-      <h3>{tr('通常の基準排出率')}</h3><div className="goddess-rates"><span>R {localize(collection.rates.R)}%</span><span>SR {localize(collection.rates.SR)}%</span><span>SSR {localize(collection.rates.SSR)}%</span></div>
+      <h3>{tr('通常の基準排出率')}</h3><div className="goddess-rates">{(['R','SR','SSR'] as const).filter(rarity => collection.rates[rarity] > 0).map(rarity => <span key={rarity}>{rarity} {collection.rates[rarity]}%</span>)}</div>
       <p>{tr('SSR未獲得90回目でSSR確定。74回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。')}</p>
-      <p>{tr('重複あり・各レアリティ内は均等抽選です。Rは両シリーズ共通、SR・SSRは選んだシリーズの女神が出現します。')}</p>
-      <p>{tr('重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
+      <p>{tr('出現する女神は選んだシリーズ限定です。重複あり・各レアリティ内は均等抽選です。')}</p>
+      {collection.rates.R === 0 && <p>{tr('このシリーズはSR・SSRの4人限定です。Rは出現しません。')}</p>}
+      <p>{tr(collection.rates.R === 0 ? '重複時は祈願石をSR 2個・SSR 3個還元します。' : '重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
     </Panel>
-    <h2>{tr('ほかの女神')}</h2><div className="character-grid">{localize(pool.filter(character => character.rarity !== 'SSR').map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)}{localize(ch.rarity === 'R' && tr('・共通枠'))}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p></Panel>))}</div>
+    <h2>{tr('ほかの女神')}</h2><div className="character-grid">{localize(pool.filter(character => character.rarity !== 'SSR').map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p></Panel>))}</div>
     <Modal open={confirmIntro} title={tr('一度きりの初回SSR保証を使いますか？')} onClose={() => { if (!p.busy) setConfirmIntro(false); }}>
       <p>{tr(collection.title)}</p><p role="alert">{tr('この祈願で、全ガチャ共通の初回SSR保証を消費します。他のシリーズでは再使用できず、次回からはSSR未獲得90回天井になります。')}</p>
       <p>{tr('石5個を消費して、選択中のシリーズのSSRを1人迎えます。重複する場合があります。取消では石も保証も消費しません。')}</p>
