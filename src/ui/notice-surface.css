@@ -4,7 +4,7 @@
 .toast.notice-surface { padding: 16px 23px; gap: 12px; font-size: 12px; }
 .toast.notice-surface > span { min-width: 0; overflow-wrap: anywhere; }
 .toast.notice-surface .button { color: #f5eedf; background: transparent; border: 0; box-shadow: none; flex-shrink: 0; }
-.battle-layout .battle-toast.notice-surface { top: 100px; max-width: 88%; min-width: 58%; padding: 14px 20px; border: 0; border-radius: 12px; background: #233249 var(--notice-art) center / 100% 100% no-repeat; color: #f6f2e8; box-shadow: 0 5px 22px #10203559; font-size: 12px; line-height: 1.6; text-shadow: 0 1px 3px #091427; }
+.battle-layout .battle-toast.notice-surface { top: 52%; pointer-events: none; max-width: 88%; min-width: 58%; padding: 14px 20px; border: 0; border-radius: 12px; background: #233249 var(--notice-art) center / 100% 100% no-repeat; color: #f6f2e8; box-shadow: 0 5px 22px #10203559; font-size: 12px; line-height: 1.6; text-shadow: 0 1px 3px #091427; }
 .battle-layout .battle-toast.notice-surface > svg { color: #d8e8ff; flex-shrink: 0; }
 .battle-layout .battle-toast.dialogue-toast.notice-surface { top: auto; bottom: 16px; width: 88%; padding: 18px 22px; text-align: left; }
-@media (max-width: 760px) { .battle-layout .battle-toast.notice-surface { top: 96px; font-size: 11px; } }
+@media (max-width: 760px) { .battle-layout .battle-toast.notice-surface { top: 52%; font-size: 11px; } }
