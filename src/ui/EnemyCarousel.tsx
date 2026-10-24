@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button, HPBar } from './index';
+import { emitUISound } from './interaction';
 import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
 import type { BattleEvent, Unit } from '../domain/types';
@@ -50,11 +51,11 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
     const current = units.findIndex(unit => unit.uid === selectedRef.current);
     for (let distance = 1; distance <= units.length; distance++) {
       const index = (current + direction * distance + units.length * 2) % units.length;
-      if (units[index].hp > 0) { focusUnit(units[index].uid); return; }
+      if (units[index].hp > 0) { focusUnit(units[index].uid); emitUISound('select'); return; }
     }
   }, [canChange, units, focusUnit]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (event?.id !== handledEvent.current) {
       handledEvent.current = event?.id;
       if (event && actionKinds.has(event.kind)) {
@@ -124,9 +125,9 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
       </div>
     </div>
     {units.length > 1 && <div className="enemy-carousel-controls">
-      <Button variant="icon" className="enemy-carousel-arrow" aria-label="前の敵を表示" disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label="前の敵を表示" disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
       <div className="enemy-carousel-position" aria-live="polite" aria-atomic="true"><strong>{position}</strong></div>
-      <Button variant="icon" className="enemy-carousel-arrow" aria-label="次の敵を表示" disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label="次の敵を表示" disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
     </div>}
   </div>;
 }

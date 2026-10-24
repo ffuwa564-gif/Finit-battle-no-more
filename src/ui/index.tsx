@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { ChevronRight, Crown, Diamond, X } from 'lucide-react';
 import type { CharacterDef, Rarity } from '../domain/types';
 import { roleName } from '../content';
+import { emitUISound, type UISound } from './interaction';
+import { NoticeSurface } from './NoticeSurface';
 import { PortraitArt } from './PortraitArt';
 import './styles.css';
 import './screens.css';
@@ -17,18 +19,21 @@ export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
+export { CombatFeedback } from './CombatFeedback';
+export { NoticeSurface } from './NoticeSurface';
 export { BattleControlPad } from './BattleControlPad';
 export { PortraitArt } from './PortraitArt';
 export { CurrencyEmblem, EncounterCrest } from './Sigils';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean }
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean; sound?: UISound | false }
 
 /** All interactive controls share this visual and sound boundary. */
-export function Button({ variant = 'primary', size = 'md', selected, className = '', onClick, children, type = 'button', ...props }: ButtonProps) {
+export function Button({ variant = 'primary', size = 'md', selected, className = '', sound = 'confirm', onClick, children, type = 'button', ...props }: ButtonProps) {
   return <button {...props} type={type} aria-pressed={selected} className={`button button--${variant} button--${size}${selected ? ' is-selected' : ''} ${className}`} onClick={(event) => {
+    // Unlock audio before a synchronous command error or view change can occur.
+    if (sound) emitUISound(sound);
     onClick?.(event);
-    if (!event.defaultPrevented) window.dispatchEvent(new CustomEvent('game:ui', { detail: { kind: 'confirm' } }));
   }}>{children}</button>;
 }
 
@@ -96,7 +101,7 @@ export function EmptyState({ icon, title, children }: { icon?: ReactNode; title:
 }
 
 export function Toast({ children, tone = 'info', onClose }: { children: ReactNode; tone?: 'info' | 'error' | 'success'; onClose?: () => void }) {
-  return <div className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'}><span>{children}</span>{onClose && <IconButton label="通知を閉じる" onClick={onClose}><X size={16} /></IconButton>}</div>;
+  return <NoticeSurface className={`toast toast--${tone}`} role={tone === 'error' ? 'alert' : 'status'} tone={tone}><span>{children}</span>{onClose && <IconButton label="通知を閉じる" sound="cancel" onClick={onClose}><X size={16} /></IconButton>}</NoticeSurface>;
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */
@@ -113,7 +118,7 @@ export function Modal({ open = true, title, children, onClose, footer }: { open?
     const focusable = () => [...(ref.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]') ?? [])];
     (focusable()[0] ?? ref.current)?.focus();
     const handleKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { event.preventDefault(); closeRef.current(); }
+      if (event.key === 'Escape') { event.preventDefault(); emitUISound('cancel'); closeRef.current(); }
       if (event.key !== 'Tab') return;
       const elements = focusable();
       if (!elements.length) { event.preventDefault(); ref.current?.focus(); return; }
@@ -125,7 +130,7 @@ export function Modal({ open = true, title, children, onClose, footer }: { open?
     return () => { document.body.style.overflow = oldOverflow; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createPortal(<div className="modal-backdrop"><div className="modal" ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton label="閉じる" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
+  return createPortal(<div className="modal-backdrop"><div className="modal" ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton label="閉じる" sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{children}<ChevronRight size={16} aria-hidden="true" /></span>; }
