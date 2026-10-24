@@ -56,10 +56,17 @@
 }
 @media (prefers-reduced-motion: reduce) { .enemy-page { animation: none; } }
 
-/* Keep the collectible boss's face below the fixed HUD. */
-.enemy-page--portrait > .enemy-page-art { position: absolute; top: 44px; height: calc(100% - 44px); }
-.enemy-page--portrait .animated-illustration { top: 44px; }
+/* Compact portrait HUD leaves the original sky and face visible. */
+.enemy-page--portrait > .enemy-page-art { position: absolute; top: 0; height: 100%; object-position: 50% 0%; }
+.enemy-page--portrait .animated-illustration { top: 0; }
 .enemy-page--portrait .animated-illustration__art { object-position: 50% 0%; }
+.enemy-carousel--portrait .enemy-carousel-status { --enemy-crest-width: 20px; --enemy-constant-size: 24px; gap: 1px 8px; padding: 4px 10px; background: linear-gradient(180deg,#172334a8,#17233458 70%,transparent); }
+.enemy-carousel--portrait .enemy-carousel-name > strong { font-size: 16px; line-height: 1.2; }
+.enemy-carousel--portrait .enemy-carousel-name > .encounter-crest { width: 20px; height: 24px; }
+.enemy-carousel--portrait .enemy-carousel-constant { width: 24px; height: 24px; border-width: 1px; font-size: 14px; }
+.enemy-carousel--portrait .hp-bar { height: 4px; }
+.enemy-carousel--portrait .enemy-carousel-meta { font-size: 8px; line-height: 1.2; gap: 10px; }
+.enemy-carousel--portrait .enemy-carousel-meta__bag strong { font-size: 10px; }
 .enemy-page .animated-illustration__toggle { pointer-events: auto; }
 
 .enemy-page--incoming > .animated-illustration { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
