@@ -75,6 +75,10 @@ export default function App() {
       if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
       if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
+      if (action.type === 'eventRecruit') {
+        const found = content.characters.find(char => next.ownedIds.includes(char.id) && !previous.ownedIds.includes(char.id));
+        if (found) setCharacter(found);
+      }
       if (action.type === 'draw') {
         const result = next.lastGachaResult;
         const found = result && content.characters.find(ch => ch.id === result.characterId);
@@ -82,11 +86,12 @@ export default function App() {
       }
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
-        const eventReturn = content.dungeons.find(d => d.id === previous.battle?.dungeonId)?.kind === 'event';
+        const previousDungeon = content.dungeons.find(dungeon => dungeon.id === previous.battle?.dungeonId);
+        const returnHash = previousDungeon?.eventId ? 'dungeons/boss-events' : previousDungeon?.kind === 'event' ? 'dungeons/events' : '';
         navigate('dungeons');
-        if (eventReturn) location.hash = 'dungeons/events';
+        if (returnHash) location.hash = returnHash;
         // Deployed releases return to the stable launcher only at a safe town boundary.
-        if (/^\/releases\/[^/]+\//.test(location.pathname)) location.assign(eventReturn ? '/#dungeons/events' : '/');
+        if (/^\/releases\/[^/]+\//.test(location.pathname)) location.assign(returnHash ? `/#${returnHash}` : '/');
       }
       return true;
     } catch (error) {

@@ -5,11 +5,11 @@ import { validateContent } from '../src/content/validation';
 describe('shared content contract', () => {
   it('accepts the complete first playable registry and guarantees launch acquisition', () => {
     expect(validateContent(content)).toEqual([]);
-    expect(content.dungeons.filter(d => d.kind !== 'event')).toHaveLength(10);
-    const events = content.dungeons.filter(d => d.kind === 'event');
+    expect(content.dungeons.filter(dungeon => dungeon.kind !== 'event')).toHaveLength(10);
+    const events = content.dungeons.filter(dungeon => dungeon.kind === 'event' && !dungeon.eventId);
     expect(events).toHaveLength(3);
-    expect(events.every(d => d.waves.length === 2)).toBe(true);
-    expect(new Set(events.map(d => JSON.stringify(d.waves))).size).toBe(3);
+    expect(events.every(dungeon => dungeon.waves.length === 2)).toBe(true);
+    expect(new Set(events.map(dungeon => JSON.stringify(dungeon.waves))).size).toBe(3);
     expect(content.characters.filter(char => char.origin.includes('initial'))).toHaveLength(4);
   });
   it('rejects alias skills that bypass cooldown and role requirements', () => {

@@ -55,3 +55,9 @@
   .enemy-carousel-controls { inset-inline: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { .enemy-page { animation: none; } }
+
+/* Keep the collectible boss's face below the fixed HUD. */
+.enemy-page--event > .enemy-page-art { position: absolute; top: 44px; height: calc(100% - 44px); }
+.enemy-page--event .animated-illustration { top: 44px; }
+.enemy-page--event .animated-illustration__art { object-position: 50% 0%; }
+.enemy-page .animated-illustration__toggle { pointer-events: auto; }
