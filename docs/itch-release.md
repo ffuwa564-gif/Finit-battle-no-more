@@ -1,6 +1,6 @@
 # itch.io公開準備
 
-この作業は公開前のレビュー用です。itch.ioへのアップロードや公開、外部アカウントの設定変更は行いません。
+公開先は https://fluffy3546.itch.io/stillveil （butler: `fluffy3546/stillveil:html`）。ローカルの準備コマンドはレビュー用です。アップロードは以下のGitHub Actionsを手動実行した場合だけ行い、ページの公開設定・価格は変更しません。
 
 ## レビュー用ビルド
 
@@ -38,3 +38,23 @@ itch.io側ではHTML Game、まずDraft、No paymentsを設定案とし、ZIPを
 
 - [HTML5のアップロードと相対パス・サイズ制限](https://itch.io/docs/creators/html5)
 - [分類・生成AI申告などの品質ガイド](https://itch.io/docs/creators/quality-guidelines)
+
+
+## GitHub Actionsでビルドとアップロード
+
+`.github/workflows/itch.yml`の「itch.io HTML5」はmainへのpushごとにテスト・itch用ビルド・入れ子iframeのブラウザーテストを実行し、コミットSHA付きのArtifactへZIPとレビューフィンガープリントを保存します。自動実行ではアップロードしません。
+
+初回設定：
+
+1. 手元にbutlerを入れ、`butler login`でitch.ioへログインする。
+2. [itch.ioのAPI keys](https://itch.io/user/settings/api-keys)で、butlerの認証に対応するsourceが`wharf`のキーを確認する（[公式認証手順](https://itch.io/docs/butler/login.html)）。
+3. [GitHubのActions secrets](https://github.com/ffuwa564-gif/Finit-battle-no-more/settings/secrets/actions)で、Repository secretとして`BUTLER_API_KEY`を登録する。キーをソースやチャットへ貼らない。
+
+アップロード：
+
+1. mainの対象コミットをビルドしたZIP、または同じコミットのローカルビルドで、見た目と音を確認する。Actions画面で40文字のコミットSHAを控える。
+2. Actions → **itch.io HTML5** → **Run workflow**を開き、Branchは`main`、`upload`をオン、`reviewed_sha`へ確認したSHAを入力、視聴確認のチェックをオンにして実行する。SHAが今のmainと違う場合は停止する。
+3. 同じソースを再ビルド・テスト後、実行者による明示的な視聴確認をSHA付きで記録し、既存の`check:release`を通してからbutlerで送信する。確認なしに承認を作ったり、チェックを解除したりしない。
+4. 初回アップロード後だけ、itch.ioのEdit gameでKindをHTMLにし、送ったhtmlチャンネルのファイルを「This file will be played in the browser」に設定する。Draftで実際の起動を確認してから、ページの公開範囲を決める。
+
+チャンネル名`html`だけではブラウザープレイ指定になりません。ページ本文・表紙・価格・公開範囲の変更もbutlerでは行いません。配信先をCloudflareと切り替えず、itch用の`dist-itch`だけを送ります。
