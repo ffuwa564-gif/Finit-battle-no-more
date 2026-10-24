@@ -1,5 +1,5 @@
 export type Role = 'healer' | 'tank' | 'attacker' | 'area_attacker' | 'supporter' | 'debuffer';
-export type SkillTemplate = 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'pierce' | 'drain' | 'regen' | 'barrier' | 'cleanse';
+export type SkillTemplate = 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'pierce' | 'drain' | 'regen' | 'barrier' | 'cleanse' | 'mend_pair' | 'shatter' | 'dispel';
 export type Strategy = 'balanced' | 'aggressive' | 'survival';
 export type Rarity = 'common' | 'rare' | 'epic';
 export type LeaderEffect = 'regeneration' | 'finisher' | 'lifesteal' | 'bulwark' | 'resonance';
