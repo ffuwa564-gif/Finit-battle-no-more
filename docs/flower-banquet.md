@@ -13,8 +13,17 @@
 
 通算祈願回数とSSR未獲得カウントは全シリーズ共通です。通算2回目だけのSSR保証は一度きりで、シリーズ切替や再起動では復活しません。使用前に対象シリーズ・石消費・重複の可能性・再使用できないことを確認し、取消では保存を変更しません。結果画面に使用を表示し、使用後はガチャ説明にも使用済みと表示します。以降は74回目から確率上昇、90回でSSR確定。SSR獲得でカウントをリセットします。
 
-原画は本作向けに新規生成した1024×1536のイラスト。`public/art/gacha-{selene,athena,flora,rainbow-iris}.webp`は原画のWebP配信用書き出しです。生成原本はワークスペースの`/workspace/generated_images/`に保持。SSRのセレネとアテナはイザナミ・アマテラスと同じ生成方式で、表情・顔の向き・手元・衣に動きをつけた約10秒の無音映像を使います。紹介・獲得・詳細では720×1080、編成・図鑑・戦闘では320×480の軽量版を使用します。SRのフローラとイリスは静止画です。SSR獲得時には共通の光輪・粒子・放射光・ファンファーレを使います。動き軽減・通信量節約時は動画を読み込まず、停止・画面外停止・再生失敗時の原画表示にも対応します。
+原画は本作向けに新規生成した1024×1536のイラスト。`public/art/gacha-selene.webp`と`public/art/gacha-{athena,flora,rainbow-iris}-anime.webp`は原画のWebP配信用書き出しです。セレネを基準に、他の3人の目・輪郭・肌の塗りをアニメ調へ統一し、和装・髪型・モチーフ・背景の構図を維持します。生成原本はワークスペースの`/workspace/generated_images/`に保持。SSRのセレネとアテナはイザナミ・アマテラスと同じ生成方式で、表情・顔の向き・手元・衣に動きをつけた約10秒の無音映像を使います。紹介・獲得・詳細では720×1080、編成・図鑑・戦闘では320×480の軽量版を使用します。SRのフローラとイリスは静止画です。SSR獲得時には共通の光輪・粒子・放射光・ファンファーレを使います。動き軽減・通信量節約時は動画を読み込まず、停止・画面外停止・再生失敗時の原画表示にも対応します。
 
 日英の名前・物語・スキル・保証確認に対応。追加は既存IDと保存形式を維持し、既存の所持・天井・探索中セーブを変更しません。正式公開前の既存視聴承認チェックは引き続き必要です。
 
-動画原本は`/workspace/generated_videos/flower-v2/{selene,athena}-original.mp4`に保持します。`node scripts/export-flower-motion.mjs /workspace/generated_videos/flower-v2`で配信用動画を再書き出しできます（FFmpegが必要）。H.264 Baseline・yuv420p・faststart、原画の縦横比に合わせて中央を切り出し、音声トラックは含めません。逆再生や往復編集は行いません。配信用ファイルは`gacha-{selene,athena}-v2.mp4`と`{selene,athena}-portrait-v2.mp4`にして、旧版キャッシュとの混同を避けます。
+動画原本はセレネが`/workspace/generated_videos/flower-v2/selene-original.mp4`、アテナが`/workspace/generated_videos/flower-anime/athena-original.mp4`に保持します。アテナはアニメ調に描き直した原画から再生成し、動画でも描き目・輪郭・滑らかな肌の塗りを維持します。セレネの原画と動画は変更しません。
+
+FFmpegがあれば、以下で個別に再書き出しできます。
+
+```sh
+node scripts/export-flower-motion.mjs /workspace/generated_videos/flower-v2 selene
+node scripts/export-flower-motion.mjs /workspace/generated_videos/flower-anime athena
+```
+
+H.264 Baseline・yuv420p・faststart、音声トラックなし。逆再生や往復編集は行いません。配信用ファイルはセレネが`gacha-selene-v2.mp4`／`selene-portrait-v2.mp4`、アテナが`gacha-athena-anime.mp4`／`athena-portrait-anime.mp4`です。原画・動画のファイル名を切り替え、旧版キャッシュとの混同を避けます。

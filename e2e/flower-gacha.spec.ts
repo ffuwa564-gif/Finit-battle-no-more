@@ -18,6 +18,8 @@ test('flower collection has four original kimono goddesses, readable skills and 
   const button=page.getByRole('button',{name:name==='セレネ'||name==='アテナ'?`SSR ${name}の詳細`:name,exact:true});
   await button.click();const dialog=page.getByRole('dialog');await expect(dialog).toContainText(skill);
   await expect(dialog).toContainText('花宴への客人');
+  const art={ 'セレネ':'gacha-selene.webp','アテナ':'gacha-athena-anime.webp','フローラ':'gacha-flora-anime.webp','イリス':'gacha-rainbow-iris-anime.webp' }[name];
+  await expect(dialog.locator('.character-artwork img')).toHaveAttribute('src',new RegExp(art!));
   await expect.poll(()=>dialog.locator('.character-artwork img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(1024);
   const animated=name==='セレネ'||name==='アテナ';
   if(animated){
