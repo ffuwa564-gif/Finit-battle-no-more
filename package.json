@@ -14,7 +14,8 @@
     "package:release": "node scripts/release.mjs",
     "release": "npm run test && npm run build && npm run check:release && npm run package:release",
     "preview": "vite preview --host 0.0.0.0",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "balance:events": "tsx scripts/balance-events.ts"
   },
   "dependencies": {
     "gsap": "^3.14.0",

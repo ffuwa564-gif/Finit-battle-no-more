@@ -1,4 +1,5 @@
 import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
+import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { initialGacha, gachaPity, gachaSSRRate } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
@@ -10,8 +11,9 @@ function town(save: GameSave): void { if (save.battle) fail('探索を終了し�
 function log(save: GameSave, text: string): void {
   save.history = [{ id: `${save.revision + 1}-${save.history.length}`, text }, ...save.history].slice(0, 12);
 }
-function validateParty(save: GameSave, ids: string[], leaderId: string): void {
+function validateParty(save: GameSave, ids: string[], leaderId: string, content: Content): void {
   if (ids.length < 1 || ids.length > 4 || new Set(ids).size !== ids.length || ids.some(id => !save.ownedIds.includes(id))) fail('編成は所持している異なる仲間1〜4体で指定してください。');
+  if (duplicateFamily(ids, content)) fail('同じ仲間の通常版と覚醒版は同時に編成できません。');
   if (!ids.includes(leaderId)) fail('リーダーを編成メンバーから1人選んでください。');
 }
 function ready(save: GameSave) {
@@ -43,9 +45,11 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
   switch (command.type) {
     case 'depart': {
       town(save);
-      validateParty(save, save.partyIds, save.leaderId);
+      validateParty(save, save.partyIds, save.leaderId, content);
       const dungeon = content.dungeons.find(item => item.id === command.dungeonId && item.published);
       if (!dungeon) fail('このダンジョンには出発できません。');
+      const lock = dungeonLock(dungeon, save, content);
+      if (lock) fail(lock);
       natural(command.potions, '持込数', true);
       if (command.potions > Math.min(5, save.potions)) fail('持ち込める回復薬は在庫内で5個までです。');
       const next = rng(save.seed);
@@ -130,9 +134,25 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       log(save, `${character.name}が仲間になりました。`);
       break;
     }
+    case 'eventRecruit': {
+      town(save);
+      if (!['normal', 'awakened'].includes(command.form)) fail('取得する形態を選んでください。');
+      const event = content.events?.find(item => item.id === command.eventId && item.published);
+      if (!event) fail('このイベントは公開されていません。');
+      const id = command.form === 'normal' ? event.normalId : event.awakenedId;
+      const char = content.characters.find(item => item.id === id && item.published && item.origin.includes('event'));
+      if (!char) fail('取得できる仲間ではありません。');
+      const lock = eventExchangeLock(event, command.form, save);
+      if (lock) fail(lock);
+      spendMaterials(save, [command.form === 'normal' ? event.normalCost : event.awakenedCost]);
+      save.ownedIds.push(id);
+      log(save, `${char.name}との契りが結ばれました。`);
+      break;
+    }
     case 'exchange': {
       town(save);
       if (!content.species.some(species => species.id === command.speciesId)) fail('素材の種族が正しくありません。');
+      if (content.events?.some(event => event.materialSpeciesId === command.speciesId)) fail('イベント専用素材は合成・分解できません。');
       const rarities: Rarity[] = ['common', 'rare', 'epic'];
       const index = rarities.indexOf(command.rarity);
       if (index < 0 || !['up', 'down'].includes(command.direction)) fail('交換内容が正しくありません。');
@@ -147,13 +167,13 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       break;
     }
     case 'party': {
-      town(save); validateParty(save, command.partyIds, command.leaderId);
+      town(save); validateParty(save, command.partyIds, command.leaderId, content);
       save.partyIds = [...command.partyIds]; save.leaderId = command.leaderId;
       break;
     }
     case 'draw': {
       town(save);
-      if (content.dungeons.filter(item => item.published).length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
+      if (content.dungeons.filter(item => item.published && !item.eventId).length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
       const available = content.characters.filter(item => item.published && item.origin.includes('gacha'));
       if (!available.length) fail('召喚できるキャラクターがいません。');

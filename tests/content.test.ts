@@ -5,7 +5,7 @@ import { validateContent } from '../src/content/validation';
 describe('shared content contract', () => {
   it('accepts the complete first playable registry and guarantees launch acquisition', () => {
     expect(validateContent(content)).toEqual([]);
-    expect(content.dungeons).toHaveLength(10);
+    expect(content.dungeons.filter(dungeon => !dungeon.eventId)).toHaveLength(10);
     expect(content.characters.filter(char => char.origin.includes('initial'))).toHaveLength(4);
   });
   it('rejects alias skills that bypass cooldown and role requirements', () => {

@@ -1,4 +1,5 @@
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
+import { eventDungeons, kuzuhaEvent } from './boss-events';
 import { goddessArt } from './gacha';
 export { initialGacha } from './gacha';
 export { validateContent } from './validation';
@@ -12,12 +13,16 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
   12: { buff: '神楽鈴の祝福' },
   18: { heal: '桜花の祈り', attack: '散り桜の一閃' },
   22: { area: '天照・暁のレース', attack: '八咫鏡の煌き' },
+  26: { debuff: '宵宮の幻惑', attack: '紅蓮の狐火' },
+  30: { debuff: '九尾・夢幻結界', attack: '月蝕の狐火' },
   24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
 };
-const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: template })));
+const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: template })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
-interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; motionId?: string; rarity?: CharacterDef['rarity'] }
+interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
+  kuzuha: { intro: 'よくいらしたわ。今宵は、どんな願いを預けるの？', threshold: 'ふふ……その眼差し、少し気に入ったわ。', defeat: 'また逢いにきて。契りの続きは、その時に。' },
+  'kuzuha-awakened': { intro: '九つの尾がほどける夜。もう、夢からは帰さない。', threshold: 'ここまで追ってくるなんて……本気にしてしまうわ。', defeat: 'あなたの願い、九つの尾に結びましょう。' },
   'pale-wolf': { intro: '……ここから先は、夢さえ帰れない。', threshold: 'まだ、その灯を消すわけにはいかない。', defeat: 'ようやく……あの人の足音が、聞こえる。' },
   'stone-drake': { intro: 'この庭の眠りを、誰が呼び覚ました。', threshold: '石は砕けても……約束は、残る。', defeat: '花を……踏まないで、おくれ。' },
   'hollow-keeper': { intro: '名を捨てた者だけが、この門を守れる。', threshold: '主よ……もう少しだけ、お待ちください。', defeat: '鍵を、あなたに。今度こそ……扉の向こうへ。' },
@@ -41,6 +46,8 @@ const characters: CharacterDef[] = [
   character({ id: 'mireille', name: 'コノハナサクヤヒメ', epithet: '黒桜の花守', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '富士を背に、桜の枝と小さな炎をそっと掲げる女神。桜色と黒いレースのゴシックロリータを纏い、火の粉を花びらのように遊ばせる。儚さと強さを知る彼女の祈りは、傷ついた仲間の命を静かにつなぎとめる。' }),
   character({ id: 'asteria', motionId: 'gacha-amaterasu-motion', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
   character({ id: 'evelyn', motionId: 'gacha-izanami-motion', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
+  character({ id: 'kuzuha', familyId: 'kuzuha', name: '葛葉', epithet: '宵宮の妖狐姫', role: 'debuffer', speciesId: 'fox', strength: 26, origin: ['event'], rarity: 'SSR', flavor: '参拝者の途絶えた稲荷の社で、今も人々の願いを預かる妖狐の姫。紅の結び紐と古い鈴は、忘れられた契りの数だけ増えてゆく。扇の向こうの笑みは、訪れる者を試す余裕と、誰かを待ち続ける寂しさを隠している。' }),
+  character({ id: 'kuzuha-awakened', familyId: 'kuzuha', motionId: 'kuzuha-awakened-motion', name: '九尾・葛葉', epithet: '月蝕にひらく九つの契り', role: 'debuffer', speciesId: 'fox', strength: 30, origin: ['event'], rarity: 'SSR', flavor: '月が欠ける夜、封じた九つの尾と白銀の髪が本来の姿を取り戻す。揺れる狐火は、守りきれなかった願いの灯。それでも傍に立つと決めたあなたの名を、葛葉は最後の結び紐にそっと刻む。' }),
 ];
 
 const characterAssets: AssetDef[] = characters.flatMap(char => {
@@ -48,9 +55,9 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const humanScene = ['hollow', 'veil', 'thorn'].includes(char.speciesId);
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
-  const goddess = goddessArt[char.id];
+  const goddess = char.origin.includes('event') ? `event-${char.id}` : goddessArt[char.id];
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.png` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: fullScene || landscape ? 1536 : generated ? 1024 : 640, height: fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: goddess ? `art/${goddess}.png` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: landscape ? '50% 50%' : '50% 42%' },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: fullScene ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
@@ -68,17 +75,19 @@ const stages = [
   ['last-observatory', '終わりの天文台', 'もう見えない星を探して。', 'stone-drake', 'thorn-witch'],
   ['pale-throne', '白夜の玉座', 'ここで、ひとつの祈りが終わる。', 'hollow-keeper', 'thorn-witch'],
 ] as const;
-const dungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, second], index) => ({ id, name, subtitle, description: `廃都の奥に残された${name}。${subtitle} 同じ種族の素材を集め、彼女たちの物語に触れる。`, artId: 'cathedral', published: true, waves: [
+const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, second], index) => ({ id, name, subtitle, description: `廃都の奥に残された${name}。${subtitle} 同じ種族の素材を集め、彼女たちの物語に触れる。`, artId: 'cathedral', published: true, waves: [
   Array.from({ length: 4 }, () => ({ characterId: main })),
   [{ characterId: main }, { characterId: main }, { characterId: index < 3 ? 'moon-moth' : second }],
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
+const dungeons = [...normalDungeons, ...eventDungeons];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
-  id: char.encounterArtId, path: `art/${char.encounterArtId}.png`, kind: 'background' as const,
-  width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
+  id: char.encounterArtId, path: char.origin.includes('event') ? `art/event-${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
+  width: char.origin.includes('event') ? 1024 : 1536, height: char.origin.includes('event') ? 1536 : 1024, anchor: char.origin.includes('event') ? '50% 18%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const menuAssets: AssetDef[] = [
+  { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration animated with Runway; task aaafd36f-ba2c-4282-a8d8-a263ac011992.' },
   { id: 'gacha-izanami-motion', path: 'video/gacha-izanami.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task d2d265ba-0283-46ed-84cd-bdee1ffd8ccf.' },
   { id: 'gacha-amaterasu-motion', path: 'video/gacha-amaterasu.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task 3b46aceb-e02f-4277-9ec0-ba114d5afcf1.' },
   { id: 'home-portrait-motion', path: 'video/home-portrait-original.mp4', kind: 'video', width: 1080, height: 1080, anchor: '50% 18%', rights: 'Original project menu illustration animated with Runway; task 1b014d68-3575-4172-9f96-4b1b4a0fd72e; full original motion; H.264 High Level 4.0.' },
@@ -90,8 +99,11 @@ const menuAssets: AssetDef[] = [
   { id: 'command-atlas', path: 'art/command-atlas.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated painted UI icon atlas for this project.' },
 { id: 'menu-bag', path: 'art/menu-bag.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-codex', path: 'art/menu-codex.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-hero', path: 'art/menu-hero.png', kind: 'background', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }];
 
-export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, species: [ { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...encounterAssets, ...menuAssets, { id: 'app-icon', path: 'art/app-icon-portrait.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated silver-haired female portrait for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: '180px export of original AI-generated project portrait.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
+export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, events: [kuzuhaEvent], species: [ { id: 'fox', name: '妖狐' }, { id: 'kuzuha-contract', name: '契り' }, { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...encounterAssets, ...menuAssets, { id: 'app-icon', path: 'art/app-icon-portrait.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated silver-haired female portrait for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: '180px export of original AI-generated project portrait.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
 
 export function characterById(id: string): CharacterDef { const found = content.characters.find(char => char.id === id); if (!found) throw new Error(`未知のキャラクター: ${id}`); return found; }
 export function assetPath(id: string): string { const asset = content.assets.find(item => item.id === id); if (!asset) throw new Error(`未知のアセット: ${id}`); const base = typeof import.meta.env === 'object' ? import.meta.env.BASE_URL : '/'; return `${base.replace(/\/$/, '')}/${asset.path.replace(/^\//, '')}`; }
-export function materialName(id: string): string { const [speciesId, rarity] = id.split(':'); const name = content.species.find(item => item.id === speciesId)?.name ?? speciesId; const suffix = ({ common: '欠片', rare: '結晶', epic: '核' } as Record<string, string>)[rarity] ?? rarity; return `${name}の${suffix}`; }
+export function materialName(id: string): string {
+  const special = content.events?.flatMap(event => [event.fragment, event.core]).find(item => item.id === id);
+  if (special) return special.name;
+  const [speciesId, rarity] = id.split(':'); const name = content.species.find(item => item.id === speciesId)?.name ?? speciesId; const suffix = ({ common: '欠片', rare: '結晶', epic: '核' } as Record<string, string>)[rarity] ?? rarity; return `${name}の${suffix}`; }
