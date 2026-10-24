@@ -23,7 +23,7 @@ export function GachaShowcase({ collection, featured, stones, drawCount, ownedId
       <div className="goddess-collection__account"><span><CurrencyEmblem kind="stone" size={16} /> {stones}</span><span>{guaranteed ? '次の祈願はSSR確定' : drawCount < collection.guaranteeDraw ? `初回のみ${collection.guaranteeDraw}回目はSSR確定` : `SSR天井まであと${collection.hardPity - pity}回`}</span></div>
       <Button size="lg" className="goddess-collection__draw" disabled={busy || stones < collection.stoneCost} onClick={onDraw}><CurrencyEmblem kind="stone" size={21} /> 石{collection.stoneCost}個で祈願する</Button>
       <div className="goddess-pity" aria-label={`SSR天井 ${pity} / ${collection.hardPity}`}><span>SSRまでの祈り</span><progress value={pity} max={collection.hardPity} /><small>{pity} / {collection.hardPity}</small></div>
-      {stones < collection.stoneCost && <p className="goddess-collection__availability">ダンジョン初踏破で祈願石を獲得</p>}
+      {stones < collection.stoneCost && <p className="goddess-collection__availability">通常の初踏破は石3個・イベント踏破は毎回1個</p>}
     </div>
   </section>;
 }

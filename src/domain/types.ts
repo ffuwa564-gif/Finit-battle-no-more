@@ -9,7 +9,7 @@ export interface SkillDef { id: string; name: string; template: SkillTemplate; s
 export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon' | 'video'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string }
 export interface SpeciesDef { id: string; name: string }
 export interface EnemyDef { characterId: string; boss?: boolean }
-export interface DungeonDef { id: string; name: string; subtitle: string; description: string; artId: string; published: boolean; waves: EnemyDef[][] }
+export interface DungeonDef { id: string; kind?: 'normal' | 'event'; name: string; subtitle: string; description: string; artId: string; published: boolean; waves: EnemyDef[][] }
 export interface Content { appVersion: string; contentVersion: string; rulesVersion: string; schemaVersion: number; characters: CharacterDef[]; skills: SkillDef[]; species: SpeciesDef[]; assets: AssetDef[]; dungeons: DungeonDef[] }
 export interface Unit { uid: string; characterId: string; side: Side; boss: boolean; hp: number; maxHp: number; attack: number; defense: number; speed: number; tie: number; cooldowns: Record<string, number>; guardTarget?: string; guardUntil?: number; guardStrength?: number; buffUntil?: number; buffStrength?: number; debuffUntil?: number; debuffStrength?: number }
 export type Phase = 'ready' | 'playing' | 'reward' | 'failed';

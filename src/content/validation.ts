@@ -76,6 +76,7 @@ export function validateContent(content: Content): string[] {
     }
   }
   for (const dungeon of content.dungeons) {
+    reject(dungeon.kind !== undefined && !['normal', 'event'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     reject(!plain(dungeon.name) || !plain(dungeon.subtitle) || !plain(dungeon.description), `dungeons/${dungeon.id}: plain text required`);
     reject(!assetIds.has(dungeon.artId), `dungeons/${dungeon.id}: missing background`);
     reject(!dungeon.waves.length, `dungeons/${dungeon.id}: empty waves`);
