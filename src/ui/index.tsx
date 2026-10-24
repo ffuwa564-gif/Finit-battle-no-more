@@ -20,6 +20,7 @@ export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
+export { CharacterArtwork } from './CharacterArtwork';
 export { AnimatedIllustration } from './AnimatedIllustration';
 export { GachaShowcase } from './GachaShowcase';
 export { CombatFeedback } from './CombatFeedback';

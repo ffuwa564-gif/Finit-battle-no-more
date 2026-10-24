@@ -1,0 +1,5 @@
+.character-artwork { position: relative; width: 100%; min-width: 0; height: 100%; overflow: hidden; }
+.character-artwork__still, .character-artwork .animated-illustration__art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.character-artwork .animated-illustration__toggle { right: 8px; bottom: 8px; }
+.goddess-feature > .character-artwork { position: absolute; inset: 0; }
+.goddess-feature .animated-illustration__toggle { top: 8px; bottom: auto; }
