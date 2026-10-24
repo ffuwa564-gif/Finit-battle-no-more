@@ -27,7 +27,7 @@
   transform-origin: center bottom;
   transform: translateX(calc(-50% + var(--orbit-x))) translateY(var(--orbit-y)) scale(var(--orbit-scale));
   opacity: var(--orbit-alpha);
-  filter: blur(var(--orbit-blur));
+  filter: blur(var(--orbit-blur)) brightness(var(--orbit-light,1)) saturate(var(--orbit-saturation,1));
   will-change: transform;
   pointer-events: none;
 }

@@ -171,8 +171,10 @@ export function EnemyCarousel({ units, event, reducedMotion = false }: EnemyCaro
           '--orbit-x': `${Math.sin(theta) * 120}px`,
           '--orbit-y': `${(1 - depth) * -140}px`,
           '--orbit-scale': 0.3 + depth * 0.7,
-          '--orbit-alpha': visible ? (unit.hp <= 0 ? 0.24 : 0.3 + depth * 0.7) : 0,
+          '--orbit-alpha': visible ? (unit.hp <= 0 ? 0.24 : 0.72 + depth * 0.28) : 0,
           '--orbit-blur': `${(1 - depth) * 1.2}px`,
+          '--orbit-light': 0.72 + depth * 0.28,
+          '--orbit-saturation': 0.55 + depth * 0.45,
           zIndex: Math.round(depth * 10) + 1,
         } as CSSProperties;
         const def = characterById(unit.characterId);
