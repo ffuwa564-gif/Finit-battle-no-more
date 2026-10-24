@@ -14,9 +14,11 @@ export function HomeArtwork({ save, busy, command, suspended }: {
  const selected=content.characters.find(char=>char.id===save.settings.homeCharacterId && save.ownedIds.includes(char.id));
  const choices=content.characters.filter(char=>save.ownedIds.includes(char.id));
  const poster=selected?.artId??'menu-hero', motion=selected?.motionId??(!selected?'home-portrait-motion':undefined);
- const anchor=selected?content.assets.find(asset=>asset.id===poster)?.anchor:undefined;
+ // Home artwork needs its own framing; small face crops and gallery anchors do not apply here.
+ const anchor=selected?'50% 0%':undefined;
  async function choose(id:string|null){if(await command({type:'settings',settings:{homeCharacterId:id}}))setOpen(false);}
  return <>
+  {selected&&<div className="home-artwork-backdrop" aria-hidden="true" style={{backgroundImage:`url("${assetPath(poster)}")`}} />}
   <div className={`home-artwork${selected?' is-character-home':''}`} style={{'--home-art-anchor':anchor} as CSSProperties}>
    {motion?<AnimatedIllustration key={selected?.id??'default'} posterId={poster} motionId={motion} alt={tr(selected?.name??'月下の廃聖堂に佇む銀髪の巡礼者と白い狼')} reducedMotion={save.settings.reducedMotion} suspended={suspended||open} />:<img src={assetPath(poster)} alt={tr(selected!.name)} />}
   </div>

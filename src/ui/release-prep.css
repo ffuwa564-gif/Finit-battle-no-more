@@ -17,3 +17,8 @@ html[lang="en"] .goddess-feature__copy strong { font-size: clamp(18px,4vw,30px);
 html[lang="en"] .enemy-carousel-name > strong { font-size: clamp(15px,4vw,23px); letter-spacing: 0; }
 html[lang="en"] .unit-effects > span { font-size: 8px; }
 html[lang="en"] .dungeon-info h2,html[lang="en"] .event-tier h3 { overflow-wrap: anywhere; }
+
+.retreat-confirm .modal__footer { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: stretch; gap: 12px; }
+.retreat-confirm .modal__footer .button { width: 100%; min-height: 48px; white-space: normal; }
+.retreat-confirm .modal__footer .backup-error { grid-column: 1 / -1; }
+@media (max-width: 480px) { .retreat-confirm .modal__footer { grid-template-columns: minmax(0,1fr); } }
