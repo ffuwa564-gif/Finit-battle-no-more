@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Coins, Compass, Crown, Gem, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, DoorOpen, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects } from '../ui';
 import { content, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
 import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Strategy, Unit } from '../domain/types';
@@ -28,6 +28,7 @@ export function HomeView(p: ViewProps) {
     <h1 id="home-title" className="sr-only">旅の支度</h1>
     <div className="hub-illustration">
       <img src={assetPath('menu-hero')} alt="月下の廃聖堂に佇む銀髪の巡礼者と白い狼" />
+      <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">
           <span className="hub-profile-avatar"><img src={assetPath(leader.portraitId)} alt="" /></span>
@@ -118,6 +119,7 @@ export function BattleView(p: ViewProps) {
       <img className="scene-background" src={assetPath(dungeon.artId)} alt="" />
       <div className="scene-mist" />
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} event={event} reducedMotion={p.save.settings.reducedMotion} />
+      <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
       {event && <div className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={`toast-${event.id}`}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</div>}
       {event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}
     </section>

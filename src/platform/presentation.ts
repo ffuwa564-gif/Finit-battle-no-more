@@ -2,7 +2,25 @@ import { gsap } from 'gsap';
 import type { BattleEvent } from '../domain/types';
 
 export function animateEvent(event: BattleEvent, reducedMotion: boolean): () => void {
-  if (reducedMotion) return () => {};
+  if (reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
+  // One visual boundary for every character: cues never enter combat or save state.
+  if (event.kind !== 'dialogue') {
+    const scene = document.querySelector('.battle-scene');
+    const bounds = scene?.getBoundingClientRect();
+    if (bounds) {
+      const ids = event.kind === 'drop' ? [event.actorId] : event.targetIds?.length ? event.targetIds : [event.actorId];
+      const points = ids?.slice(0, 4).map(id => id ? document.querySelector(`[data-unit="${id}"]`)?.getBoundingClientRect() : undefined) ?? [];
+      // Wave-wide magic uses the stage center; missing/party targets stay at the lower edge.
+      const centers = event.kind === 'area' || event.kind === 'wave' || !points.length ? [undefined] : points;
+      for (const point of centers) {
+        window.dispatchEvent(new CustomEvent('game:fx', { detail: {
+          kind: event.kind, rarity: event.rarity,
+          x: point ? point.left + point.width / 2 : bounds.left + bounds.width / 2,
+          y: point ? point.top + point.height * 0.58 : bounds.top + bounds.height * 0.65,
+        } }));
+      }
+    }
+  }
   const context = gsap.context(() => {
     const actor = event.actorId ? document.querySelector(`[data-unit="${event.actorId}"]`) : null;
     if (actor && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(event.kind)) {
