@@ -73,3 +73,47 @@ test('SSR motion follows reduced motion and leaves other rarities as still artwo
   await expect(dialog.locator('.character-artwork img')).toBeVisible();
   await expect(dialog.locator('video')).toHaveCount(0);
 });
+
+test('hard pity reveals a spectacular SSR and persists duplicate refunds before animation', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/#gacha'); await enterGame(page);
+  await page.evaluate(async () => {
+    const { content } = await import('/src/content/index.ts');
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!; const revision = save.revision;
+    save.stones = 5; save.drawCount = 120; save.ssrPity = 89; save.seed = 42;
+    save.ownedIds.push(...content.characters.filter(c => c.origin.includes('gacha')).map(c => c.id));
+    save.revision++; await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await expect(page.getByText('次の祈願はSSR確定', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
+  await expect(page.locator('.gacha-reveal--ssr')).toBeVisible();
+  await expect(page.locator('.gacha-reveal__particles i')).toHaveCount(32);
+  expect(await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!.ssrPity)).toBe(0);
+  await page.getByRole('button', { name: '演出をスキップ', exact: true }).click();
+  await expect(page.getByText('祈願石 3個を還元', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '祈願に戻る', exact: true }).click();
+  await page.reload(); await enterGame(page);
+  await expect(page.getByText('SSR天井まであと90回', { exact: true })).toBeVisible();
+  expect(await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!.stones)).toBe(3);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+});
+
+
+test('reduced motion reveals SSR without the burst or moving particles', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/#gacha'); await enterGame(page);
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!; const revision = save.revision;
+    save.stones = 5; save.drawCount = 1; save.revision++;
+    await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
+  await expect(page.locator('.gacha-reveal--ssr.is-revealed')).toBeVisible();
+  await expect(page.locator('.gacha-reveal__burst')).toBeHidden();
+  await expect(page.locator('.gacha-reveal__particles i').first()).toHaveCSS('animation-name', 'none');
+  await page.getByRole('button', { name: '女神を迎える', exact: true }).click();
+});
