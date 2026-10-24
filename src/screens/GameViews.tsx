@@ -6,7 +6,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee } from '../content/gacha';
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork } from '../ui';
 import { bgmTracks } from '../platform/bgm';
 import { content, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
@@ -34,7 +34,7 @@ export function HomeView(p: ViewProps) {
   return <section className="home-hub game-frame" aria-labelledby="home-title">
     <h1 id="home-title" className="sr-only">{tr("旅の支度")}</h1>
     <div className="hub-illustration">
-      <AnimatedIllustration posterId="menu-hero" motionId="home-portrait-motion" alt={tr("月下の廃聖堂に佇む銀髪の巡礼者と白い狼")} reducedMotion={p.save.settings.reducedMotion} />
+      <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">
@@ -105,8 +105,7 @@ export function GachaView(p: ViewProps) {
       <h3>{tr('通常の基準排出率')}</h3><div className="goddess-rates">{(['R','SR','SSR'] as const).filter(rarity => collection.rates[rarity] > 0).map(rarity => <span key={rarity}>{rarity} {collection.rates[rarity]}%</span>)}</div>
       <p>{tr('SSR未獲得90回目でSSR確定。74回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。')}</p>
       <p>{tr('出現する女神は選んだシリーズ限定です。重複あり・各レアリティ内は均等抽選です。')}</p>
-      {collection.rates.R === 0 && <p>{tr('このシリーズはSR・SSRの4人限定です。Rは出現しません。')}</p>}
-      <p>{tr(collection.rates.R === 0 ? '重複時は祈願石をSR 2個・SSR 3個還元します。' : '重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
+      <p>{tr('重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
     </Panel>
     <h2>{tr('ほかの女神')}</h2><div className="character-grid">{localize(pool.filter(character => character.rarity !== 'SSR').map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p></Panel>))}</div>
     <Modal open={confirmIntro} title={tr('一度きりの初回SSR保証を使いますか？')} onClose={() => { if (!p.busy) setConfirmIntro(false); }}>
