@@ -62,7 +62,8 @@ export function validateContent(content: Content): string[] {
     if (char.encounterArtId !== undefined) reject(!assetIds.has(char.encounterArtId) || content.assets.find(asset => asset.id === char.encounterArtId)?.kind !== 'background', `characters/${char.id}: invalid encounter scene`);
     reject(!profiles.has(char.soundProfile), `characters/${char.id}: unknown sound profile`);
     reject(!['R', 'SR', 'SSR'].includes(char.rarity), `characters/${char.id}: invalid rarity`);
-    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
+    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
+    reject(char.origin.includes('awakening') && (char.origin.length !== 1 || !content.awakenings?.some(def => def.awakenedId === char.id)), `characters/${char.id}: awakening-exclusive form required`);
     reject(char.origin.includes('event') && char.origin.length !== 1, `characters/${char.id}: event-exclusive acquisition required`);
     reject(char.origin.includes('gacha') && (char.origin.includes('recruit') || char.origin.includes('initial')), `characters/${char.id}: gacha-exclusive character has another route`);
     reject(!char.published && char.origin.includes('initial'), `characters/${char.id}: unpublished initial acquisition`);
@@ -75,7 +76,7 @@ export function validateContent(content: Content): string[] {
     reject(new Set(known.map(skill => skill.template)).size !== known.length, `characters/${char.id}: repeated effect template`);
     if (roles.has(char.role)) {
       reject(!known.some(skill => skill.template === required[char.role]), `characters/${char.id}: role required skill missing`);
-      const allowed: SkillTemplate[] = [required[char.role], 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel'];
+      const allowed: SkillTemplate[] = [required[char.role], 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn'];
       reject(known.some(skill => !allowed.includes(skill.template)), `characters/${char.id}: unreachable second skill`);
     }
   }
@@ -105,7 +106,7 @@ export function validateContent(content: Content): string[] {
     reject(dungeon.kind !== undefined && !['normal', 'event'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
-    if (dungeon.bossScale) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId) || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
     if (dungeon.eventReward) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.eventReward.count) || dungeon.eventReward.count < 1, `dungeons/${dungeon.id}: invalid event reward`);
     if (dungeon.previousDungeonId) reject(!content.dungeons.some(item => item.id === dungeon.previousDungeonId && item.id !== dungeon.id), `dungeons/${dungeon.id}: missing unlock dungeon`);
     reject(!plain(dungeon.name) || !plain(dungeon.subtitle) || !plain(dungeon.description), `dungeons/${dungeon.id}: plain text required`);
@@ -116,13 +117,58 @@ export function validateContent(content: Content): string[] {
       for (const enemy of wave) {
         const char = content.characters.find(item => item.id === enemy.characterId);
         reject(!characterIds.has(enemy.characterId), `dungeons/${dungeon.id}: missing enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.published || !(char.origin.includes('recruit') || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
+        if (dungeon.published && char) reject(!char.published || !(char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
         if (dungeon.published && char) reject(!char.encounterArtId, `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
         reject(Boolean(enemy.boss) && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }
     });
     const finalWave = dungeon.waves.at(-1);
     reject(!finalWave || finalWave.length !== 1 || !finalWave[0].boss, `dungeons/${dungeon.id}: final wave must contain one boss`);
+  }
+  allIds(content.awakenings ?? [], 'awakenings');
+  const awakeningForms = new Set<string>();
+  const awakeningBases = new Set<string>();
+  const validCost = (cost: { materialId: string; count: number }) => Boolean(content.materials?.some(item => item.id === cost.materialId)) && Number.isSafeInteger(cost.count) && cost.count > 0;
+  for (const def of content.awakenings ?? []) {
+    const base = content.characters.find(char => char.id === def.baseId);
+    const form = content.characters.find(char => char.id === def.awakenedId);
+    reject(!base || !form || base.id === form.id || !base.familyId || base.familyId !== form.familyId || !form.origin.includes('awakening') || base.origin.includes('awakening'), `awakenings/${def.id}: distinct base and exclusive form with one family required`);
+    reject(awakeningBases.has(def.baseId) || !base?.published || !form?.published, `awakenings/${def.id}: unique published base and form required`); awakeningBases.add(def.baseId);
+    reject(awakeningForms.has(def.awakenedId), `awakenings/${def.id}: duplicate form`); awakeningForms.add(def.awakenedId);
+    reject(!validCost(def.cost), `awakenings/${def.id}: invalid isolated material cost`);
+    reject(new Set(def.requiredOwnedIds).size !== def.requiredOwnedIds.length || def.requiredOwnedIds.some(id => !content.awakenings?.some(item => item.awakenedId === id) || id === def.awakenedId), `awakenings/${def.id}: invalid prerequisite forms`);
+    reject(new Set(def.requiredDungeonIds).size !== def.requiredDungeonIds.length || def.requiredDungeonIds.some(id => !content.dungeons.some(stage => stage.id === id && stage.published)), `awakenings/${def.id}: missing prerequisite dungeon`);
+  }
+  const visit = (id: string, path: Set<string>): boolean => {
+    if (path.has(id)) return true;
+    const def = content.awakenings?.find(item => item.awakenedId === id);
+    return Boolean(def?.requiredOwnedIds.some(next => visit(next, new Set([...path, id]))));
+  };
+  for (const def of content.awakenings ?? []) reject(visit(def.awakenedId, new Set()), `awakenings/${def.id}: circular prerequisites`);
+  const materialIds = new Set<string>();
+  for (const item of content.materials ?? []) {
+    reject(materialIds.has(item.id) || !/^[a-z0-9-]+:(common|rare|epic)$/.test(item.id) || !speciesIds.has(item.id.split(':')[0]!) || !plain(item.name), `materials/${item.id}: invalid named material`);
+    reject(content.characters.some(char => char.speciesId === item.id.split(':')[0]), `materials/${item.id}: isolated currency cannot drop from ordinary enemies`);
+    materialIds.add(item.id);
+  }
+  allIds(content.storylines ?? [], 'storylines');
+  for (const story of content.storylines ?? []) {
+    reject(!plain(story.title) || !plain(story.subtitle) || !characterIds.has(story.protagonistId) || new Set(story.relatedIds).size !== story.relatedIds.length || story.relatedIds.some(id => !characterIds.has(id) || id === story.protagonistId), `storylines/${story.id}: invalid cast`);
+    const final = content.awakenings?.find(def => def.baseId === story.protagonistId);
+    const expected = story.relatedIds.map(id => content.awakenings?.find(def => def.baseId === id)?.awakenedId);
+    reject(!final || expected.some(id => !id || !final.requiredOwnedIds.includes(id)) || final.requiredOwnedIds.length !== expected.length, `storylines/${story.id}: awakening cast must exactly match prerequisites`);
+  }
+  const memoryIds = new Set<string>();
+  for (const memory of content.memories ?? []) {
+    reject(!characterIds.has(memory.characterId) || memoryIds.has(memory.characterId) || !plain(memory.encounter) || !plain(memory.companion) || !plain(memory.awakened), `memories/${memory.characterId}: valid unique character and chapters required`); memoryIds.add(memory.characterId);
+  }
+  for (const stage of content.dungeons) {
+    if (stage.storyId) reject(!content.storylines?.some(story => story.id === stage.storyId) || stage.kind === 'event', `dungeons/${stage.id}: valid normal storyline required`);
+    if (stage.requiresOwnedIds) reject(stage.requiresOwnedIds.some(id => !awakeningForms.has(id)), `dungeons/${stage.id}: invalid awakened ownership lock`);
+    if (stage.bossLoot) {
+      reject(!stage.storyId || !stage.bossLoot.guaranteed.length || stage.bossLoot.guaranteed.some(cost => !validCost(cost)), `dungeons/${stage.id}: invalid guaranteed boss loot`);
+      if (stage.bossLoot.bonus) reject(!validCost(stage.bossLoot.bonus.reward) || !Number.isInteger(stage.bossLoot.bonus.chance) || stage.bossLoot.bonus.chance < 1 || stage.bossLoot.bonus.chance > 100, `dungeons/${stage.id}: invalid bonus boss loot`);
+    }
   }
   const initial = content.characters.filter(char => char.published && char.origin.includes('initial'));
   reject(initial.length !== 4 || !['healer', 'tank', 'attacker', 'area_attacker'].every(role => initial.some(char => char.role === role)), 'initial party: required four roles missing');
