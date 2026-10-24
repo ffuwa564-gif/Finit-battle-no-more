@@ -141,3 +141,5 @@ export function LinkArrow({ children }: { children: ReactNode }) { return <span 
 export function ArtBackground({ src, children, className = '' }: { src: string; children?: ReactNode; className?: string }) {
   return <div className={`art-background ${className}`} style={{ '--art-url': `url("${src}")` } as CSSProperties}>{children}</div>;
 }
+
+export { TitleScreen } from './TitleScreen';

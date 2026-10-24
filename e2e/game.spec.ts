@@ -1,3 +1,4 @@
+import { enterGame } from './boot';
 import { test, expect, type Page } from '@playwright/test';
 import type { GameSave } from '../src/domain/types';
 
@@ -10,6 +11,7 @@ async function stored(page: Page): Promise<GameSave> {
 }
 async function openDungeon(page: Page) {
   await page.goto('/#dungeons');
+  await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();
   await expect.poll(async () => (await stored(page))?.battle?.id).toBeTruthy();
@@ -26,6 +28,7 @@ test('mobile common UI, flavor details and leader change remain usable', async (
   await page.setViewportSize({ width: 390, height: 844 });
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/');
+  await enterGame(page);
   await expect(page.getByRole('heading', { name: '旅の支度' })).toBeVisible();
   await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: 'パーティ', exact: true }).click();
   await page.getByRole('button', { name: 'リーダーにする' }).first().click();
@@ -55,6 +58,7 @@ test('full exploration preserves provisional rewards across reload and claims on
       const id = save.battle.id;
       expect(Object.values(save.materials).reduce((sum, n) => sum + n, 0)).toBe(0);
       await page.reload();
+      await enterGame(page);
       await expect.poll(async () => (await stored(page)).battle?.id).toBe(id);
       reloaded = true;
     }
@@ -75,6 +79,7 @@ test('full exploration preserves provisional rewards across reload and claims on
   expect(claimed.stones).toBe(1);
   expect(Object.values(claimed.materials).reduce((sum, n) => sum + n, 0)).toBe(amount);
   await page.reload();
+  await enterGame(page);
   await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
   expect((await stored(page)).stones).toBe(1);
   expect((await stored(page)).materials).toEqual(claimed.materials);

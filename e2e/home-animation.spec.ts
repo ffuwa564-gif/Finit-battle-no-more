@@ -1,8 +1,10 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 test('home portrait plays silently and pauses with controls, visibility and scrolling', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
+  await enterGame(page);
   const video = page.locator('.animated-illustration video');
   await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.currentTime)).toBeGreaterThan(0);
   await expect(video).toHaveJSProperty('muted', true);
@@ -34,6 +36,7 @@ test('motion preferences keep the original artwork and do not fetch the video', 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   let requests = 0; page.on('request', request => { if (request.url().includes('/video/home-portrait')) requests++; });
   await page.goto('/');
+  await enterGame(page);
   const root = page.locator('.animated-illustration');
   await expect(root).toHaveAttribute('data-animation-state', 'static');
   await expect(root.locator('img')).toBeVisible();
@@ -46,11 +49,13 @@ test('motion preferences keep the original artwork and do not fetch the video', 
   await expect(root.locator('video')).toHaveJSProperty('paused', true);
   await expect(root.locator('video')).not.toHaveAttribute('src');
   await page.goto('/#settings');
+  await enterGame(page);
   await page.getByRole('button', { name: 'オフ', exact: true }).click();
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ホーム', exact: true }).click();
   await expect(root).toHaveAttribute('data-animation-state', 'static');
   await page.reload();
+  await enterGame(page);
   await expect(root.locator('video')).not.toHaveAttribute('src');
 });
 
@@ -58,6 +63,7 @@ test('a failed animation retains the painting and working home navigation', asyn
   await page.setViewportSize({ width: 390, height: 844 });
   await page.route('**/video/home-portrait*.mp4', route => route.abort());
   await page.goto('/');
+  await enterGame(page);
   const root = page.locator('.animated-illustration');
   await expect(root).toHaveAttribute('data-animation-state', 'error');
   await expect(root.locator('img')).toBeVisible();
@@ -94,6 +100,7 @@ test('blocked autoplay offers a play button and retries inside the user gesture'
     };
   });
   await page.goto('/');
+  await enterGame(page);
   const video = page.locator('.animated-illustration video');
   await expect(page.locator('.animated-illustration')).toHaveAttribute('data-animation-state', 'blocked');
   await page.getByRole('button', { name: 'ホームのアニメーションを再生', exact: true }).click();
@@ -106,6 +113,7 @@ test('a transient video load error can be retried without reloading the app', as
   await page.setViewportSize({ width: 390, height: 844 });
   await page.route('**/video/home-portrait*.mp4', route => route.abort(), { times: 1 });
   await page.goto('/');
+  await enterGame(page);
   const root = page.locator('.animated-illustration');
   await expect(root).toHaveAttribute('data-animation-state', 'error');
   await page.getByRole('button', { name: 'ホームのアニメーションを再生', exact: true }).click();

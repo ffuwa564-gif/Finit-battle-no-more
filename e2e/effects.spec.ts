@@ -1,3 +1,4 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 // Exercise the actual GLSL programs in CI, including machines without a physical GPU.
@@ -8,6 +9,7 @@ test('GLSL renders all cues, leaves progression unchanged, and survives context 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
+  await enterGame(page);
   await expect(page.locator('[data-fx-mode="menu"]')).toHaveAttribute('data-fx-backend', 'webgl');
   const pixels = await page.evaluate(async () => {
     const { createSceneRenderer } = await import('/src/platform/fx-renderer.ts');
@@ -40,6 +42,7 @@ test('GLSL renders all cues, leaves progression unchanged, and survives context 
   expect(pixels.every(result => result.error === 0 && result.visible)).toBe(true);
 
   await page.goto('/#dungeons');
+  await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();
   await expect(page.locator('[data-fx-mode="battle"]')).toHaveAttribute('data-fx-backend', 'webgl');
@@ -76,6 +79,7 @@ test('GLSL renders all cues, leaves progression unchanged, and survives context 
 test('motion preference switches to a static layer and back', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
+  await enterGame(page);
   const effects = page.locator('[data-fx-mode="menu"]');
   await expect(effects).toHaveAttribute('data-fx-backend', 'static');
   await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -95,6 +99,7 @@ test('WebGL unavailable retains the artwork and usable menu', async ({ page }) =
     } as typeof original;
   });
   await page.goto('/');
+  await enterGame(page);
   await expect(page.locator('[data-fx-mode="menu"]')).toHaveAttribute('data-fx-backend', 'static');
   await expect(page.locator('.animated-illustration > img')).toBeVisible();
   await page.locator('.home-hub-menu').getByRole('button', { name: 'パーティ', exact: true }).click();
