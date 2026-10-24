@@ -5,8 +5,8 @@ import { Button } from './index';
 import './animated-illustration.css';
 
 /** A muted decorative loop; the original painting remains available at all times. */
-export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion, label = 'ホーム', suspended = false }: {
-  posterId: string; motionId: string; alt: string; reducedMotion: boolean; label?: string; suspended?: boolean;
+export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion, label = 'ホーム', suspended = false, controls = true }: {
+  posterId: string; motionId: string; alt: string; reducedMotion: boolean; label?: string; suspended?: boolean; controls?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
@@ -53,6 +53,18 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion, l
     return () => { canceled = true; player.pause(); };
   }, [active, allowed, activated]);
 
+  useEffect(() => {
+    if (controls || !active || !activated) return;
+    const retry = () => {
+      const player = video.current;
+      if (player?.paused) { player.muted = true; void player.play().catch(() => setBlocked(true)); }
+    };
+    // Decorative portraits have no nested controls; retry blocked autoplay on
+    // the next real interaction while preserving the enclosing button's action.
+    window.addEventListener('pointerup', retry, { passive: true });
+    return () => window.removeEventListener('pointerup', retry);
+  }, [controls, active, activated]);
+
   const toggle = () => {
     const player = video.current;
     if (!player) return;
@@ -69,6 +81,6 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion, l
   return <div ref={root} className={`animated-illustration${allowed && ready ? ' is-ready' : ''}`} data-animation-state={!allowed ? 'static' : failed ? 'error' : blocked ? 'blocked' : !ready ? 'loading' : playing && active ? 'playing' : 'paused'}>
     <img className="animated-illustration__art" src={assetPath(posterId)} alt={alt} />
     <video ref={video} className="animated-illustration__art animated-illustration__video" src={allowed && activated ? assetPath(motionId) : undefined} poster={assetPath(posterId)} muted autoPlay={active && !blocked} playsInline loop preload={active ? 'auto' : 'none'} disablePictureInPicture tabIndex={-1} aria-hidden="true" onLoadedData={() => setReady(true)} onPlaying={() => { setReady(true); setPlaying(true); setBlocked(false); }} onPause={() => setPlaying(false)} onError={event => { if (event.currentTarget.error && event.currentTarget.getAttribute('src')) { setFailed(true); setReady(false); setPlaying(false); } }} />
-    {allowed && activated && <Button variant="icon" className="animated-illustration__toggle" aria-label={`${label}のアニメーションを${playing ? '停止' : '再生'}`} title={failed ? 'アニメーションを再読み込み' : playing ? 'アニメーションを停止' : 'アニメーションを再生'} onClick={toggle}>{playing ? <Pause size={16} /> : <Play size={16} />}</Button>}
+    {controls && allowed && activated && <Button variant="icon" className="animated-illustration__toggle" aria-label={`${label}のアニメーションを${playing ? '停止' : '再生'}`} title={failed ? 'アニメーションを再読み込み' : playing ? 'アニメーションを停止' : 'アニメーションを再生'} onClick={toggle}>{playing ? <Pause size={16} /> : <Play size={16} />}</Button>}
   </div>;
 }

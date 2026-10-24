@@ -113,7 +113,7 @@ body {
 .hp-bar > span { background: linear-gradient(90deg,#8baaa5,#b2c6bd); box-shadow: inset 0 1px 0 #d9e5db8c; }
 .character-portrait { border-color: #c5c8c2; border-radius: 13px; background: linear-gradient(145deg,#fcfaf3,#efeee6); box-shadow: inset 0 0 0 1px #fffdf5c9; }
 .character-portrait--face .portrait-image { aspect-ratio: 1.15; }
-.character-portrait--face .portrait-image img { transform: scale(var(--portrait-zoom,1)); transform-origin: var(--portrait-origin,50% 20%); }
+.character-portrait--face .portrait-image > img { transform: scale(var(--portrait-zoom,1)); transform-origin: var(--portrait-origin,50% 20%); }
 .character-portrait--face .portrait-copy strong { font-family: var(--font-display); }
 .portrait-image { border: 1px solid #c8ccc6; border-radius: 9px; }
 .portrait-constant { background: #465568c9; border: 1px solid #e4e6e073; font-size: 10px; }
