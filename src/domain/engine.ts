@@ -1,4 +1,5 @@
 import { skillCooldown } from './skill-info';
+import { duplicateFamily } from './events';
 import type { Battle, BattleEvent, CharacterDef, Content, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
 
 const BASE: Record<CharacterDef['role'], Stats> = {
@@ -42,9 +43,9 @@ export function baseStats(def: CharacterDef): Stats {
 export function leaderBonus(def: CharacterDef): { stat: LeaderStat; percent: number } {
   return { stat: def.leaderStat, percent: (def.leaderStat === 'hp' ? 8 : def.leaderStat === 'attack' ? 3 : 10) * def.strength / 10 };
 }
-export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = false): Stats {
+export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = false, scale = { hp: 300, attack: 120 }): Stats {
   const stats = baseStats(def);
-  if (boss) { stats.hp *= 3; stats.attack = Math.round(stats.attack * 12 / 10); }
+  if (boss) { stats.hp = Math.round(stats.hp * scale.hp / 100); stats.attack = Math.round(stats.attack * scale.attack / 100); }
   if (leader) {
     const bonus = leaderBonus(leader);
     const rate = bonus.stat === 'hp' ? 8 : bonus.stat === 'attack' ? 3 : 10;
@@ -53,7 +54,8 @@ export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = 
   return stats;
 }
 export function dungeonDifficulty(def: DungeonDef, content: Content): number {
-  const waves = def.waves.map((wave) => wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(3 * 1.2) : 1), 0));
+  const scale = def.bossScale ?? { hp: 300, attack: 120 };
+  const waves = def.waves.map((wave) => wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack / 10_000) : 1), 0));
   const max = Math.max(0, ...waves);
   return Math.round((max + 0.25 * (waves.reduce((sum, value) => sum + value, 0) - max)) * 10) / 10;
 }
@@ -73,7 +75,7 @@ function emit(battle: Battle, event: Omit<BattleEvent, 'id'>): void {
 function makeUnit(battle: Battle, content: Content, characterId: string, side: Unit['side'], index: number, boss = false): Unit {
   const def = character(content, characterId);
   const leader = side === 'party' ? character(content, battle.leaderId) : undefined;
-  const stats = characterStats(def, leader, boss);
+  const stats = characterStats(def, leader, boss, dungeon(content, battle.dungeonId).bossScale);
   const random = rng(battle.seed); battle.seed = random.seed;
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
@@ -103,7 +105,7 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
   return battle;
 }
 export function createBattle(content: Content, partyIds: string[], leaderId: string, dungeonId: string, potions: number, seed: number, id: string): Battle {
-  if (partyIds.length < 1 || partyIds.length > 4 || new Set(partyIds).size !== partyIds.length || !partyIds.includes(leaderId)) throw new Error('編成とリーダーを確認してください');
+  if (duplicateFamily(partyIds, content) || partyIds.length < 1 || partyIds.length > 4 || new Set(partyIds).size !== partyIds.length || !partyIds.includes(leaderId)) throw new Error('編成とリーダーを確認してください');
   if (!Number.isInteger(potions) || potions < 0 || potions > 5) throw new Error('薬の持ち込み数が不正です');
   const def = dungeon(content, dungeonId);
   if (!def.published || !def.waves.length) throw new Error('このダンジョンには出発できません');
@@ -160,17 +162,17 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const cleanse = get('cleanse');
   const afflicted = allies.filter(unit => (unit.debuffUntil ?? -1) >= battle.round).sort(lowerHP)[0];
   if (cleanse && afflicted) return { skill: cleanse, template: 'cleanse', targets: [afflicted] };
+  if (role === 'tank') {
+    const target = allies.filter((unit) => unit.uid !== actor.uid && !allies.some((guard) => guard.uid !== actor.uid && guard.guardTarget === unit.uid && (guard.guardUntil ?? -1) >= battle.round)).sort(lowerHP)[0];
+    const skill = get('guard');
+    if (skill && target && !actor.guardTarget) return { skill, template: 'guard', targets: [target] };
+  }
   const barrier = get('barrier');
   const exposed = allies.filter(unit => !(unit.barrier && (unit.barrierUntil ?? -1) >= battle.round)).sort(lowerHP)[0];
   if (barrier && exposed && (strategy === 'survival' || exposed.hp < exposed.maxHp * .8 || enemies.some(unit => unit.boss))) return { skill: barrier, template: 'barrier', targets: [exposed] };
   const regen = get('regen');
   const recovering = allies.filter(unit => (unit.regenUntil ?? -1) < battle.round && unit.hp < unit.maxHp * (strategy === 'aggressive' ? .65 : .9)).sort(lowerHP)[0];
   if (regen && recovering) return { skill: regen, template: 'regen', targets: [recovering] };
-  if (role === 'tank') {
-    const target = allies.filter((unit) => unit.uid !== actor.uid && !allies.some((guard) => guard.uid !== actor.uid && guard.guardTarget === unit.uid && (guard.guardUntil ?? -1) >= battle.round)).sort(lowerHP)[0];
-    const skill = get('guard');
-    if (skill && target && !actor.guardTarget) return { skill, template: 'guard', targets: [target] };
-  }
   if (role === 'supporter') {
     const target = allies.filter((unit) => (unit.buffUntil ?? -1) < battle.round).sort((a, b) => b.attack - a.attack || byId(a, b))[0];
     const skill = get('buff');
@@ -278,13 +280,22 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const def = character(content, unit.characterId);
       if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat') }); }
       if (unit.side !== 'enemy') continue;
+      const stage = dungeon(content, battle.dungeonId);
+      const event = content.events?.find(item => item.id === stage.eventId);
+      const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
       const random = rng(battle.seed); battle.seed = random.seed;
       const rarity = random.value < 0.75 ? 'common' : random.value < 0.97 ? 'rare' : 'epic';
       const materialId = `${def.speciesId}:${rarity}`;
-      battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
+      if (!special) battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
       const gold = Math.ceil(def.strength / 2); goldEarned += gold; battle.goldEarned += gold;
       if (!discoveredIds.includes(def.id)) discoveredIds.push(def.id);
-      emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+      if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+      if (special && event && stage.eventReward) {
+        const reward = stage.eventReward;
+        battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+        const label = reward.materialId === event.core.id ? event.core.name : event.fragment.name;
+        emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId === event.core.id ? 'epic' : 'rare' });
+      }
     }
   }
   for (const unit of battle.units.filter(unit => unit.hp > 0 && unit.hp < unit.maxHp && (unit.regenUntil ?? -1) >= battle.round)) {

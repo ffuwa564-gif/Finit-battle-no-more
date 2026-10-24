@@ -1,0 +1,282 @@
+[
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "初期・均衡・薬なし",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 5
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "通常版入り・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 5
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "通常版＋回復2・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 7
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "通常版＋回復2・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 7
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "通常版＋貫通・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 5
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "通常版＋貫通・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 5
+  },
+  {
+    "difficulty": "初級",
+    "index": 2.5,
+    "team": "SSR編成・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 4
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "初期・均衡・薬なし",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 14
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "通常版入り・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 11
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "通常版＋回復2・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 17
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "通常版＋回復2・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 17
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "通常版＋貫通・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 11
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "通常版＋貫通・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 11
+  },
+  {
+    "difficulty": "中級",
+    "index": 5,
+    "team": "SSR編成・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 9
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "初期・均衡・薬なし",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 22
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "通常版入り・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 20
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "通常版＋回復2・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 28
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "通常版＋回復2・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 27
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "通常版＋貫通・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 20
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "通常版＋貫通・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 20
+  },
+  {
+    "difficulty": "上級",
+    "index": 7.4,
+    "team": "SSR編成・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 14
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "初期・均衡・薬なし",
+    "wins": 0,
+    "seeds": 50,
+    "meanRounds": 26
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "通常版入り・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 30
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "通常版＋回復2・生存",
+    "wins": 38,
+    "seeds": 50,
+    "meanRounds": 44
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "通常版＋回復2・均衡",
+    "wins": 35,
+    "seeds": 50,
+    "meanRounds": 42
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "通常版＋貫通・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 30
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "通常版＋貫通・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 29
+  },
+  {
+    "difficulty": "超級",
+    "index": 10.8,
+    "team": "SSR編成・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 20
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "初期・均衡・薬なし",
+    "wins": 0,
+    "seeds": 50,
+    "meanRounds": 31
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "通常版入り・均衡",
+    "wins": 18,
+    "seeds": 50,
+    "meanRounds": 35
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "通常版＋回復2・生存",
+    "wins": 5,
+    "seeds": 50,
+    "meanRounds": 53
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "通常版＋回復2・均衡",
+    "wins": 12,
+    "seeds": 50,
+    "meanRounds": 51
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "通常版＋貫通・均衡",
+    "wins": 43,
+    "seeds": 50,
+    "meanRounds": 40
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "通常版＋貫通・生存",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 37
+  },
+  {
+    "difficulty": "覚醒級",
+    "index": 11.9,
+    "team": "SSR編成・均衡",
+    "wins": 50,
+    "seeds": 50,
+    "meanRounds": 27
+  }
+]

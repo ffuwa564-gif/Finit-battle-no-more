@@ -1,3 +1,4 @@
+import { duplicateFamily } from '../domain/events';
 import type { Content, GameSave } from '../domain/types';
 
 export const SAVE_DATABASE = 'stillveil-save';
@@ -57,6 +58,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
 export function assertSaveCompatibility(save: GameSave, content: Content): void {
   assertValidSave(save);
   if (save.schemaVersion !== content.schemaVersion || save.appVersion !== content.appVersion || save.contentVersion !== content.contentVersion || save.rulesVersion !== content.rulesVersion) throw new Error('このセーブに対応するリリースで再開してください。');
+  if (duplicateFamily(save.partyIds, content)) throw new Error('同じ仲間の複数形態が編成されています。セーブは保持しています。');
   const characters = new Set(content.characters.map(item => item.id));
   const skills = new Set(content.skills.map(item => item.id));
   const species = new Set(content.species.map(item => item.id));

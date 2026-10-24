@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProp
 import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button, HPBar, UnitEffects } from './index';
 import { emitUISound } from './interaction';
+import { AnimatedIllustration } from './AnimatedIllustration';
 import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
 import type { BattleEvent, Unit } from '../domain/types';
@@ -130,8 +131,8 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
     {transition && !reduced && <div className="enemy-page--outgoing" key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
       <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousScene?.anchor ?? '50% 30%' }} />
     </div>}
-    <div className={`enemy-page${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
-      <img className="enemy-page-art" src={assetPath(sceneId)} alt="" draggable={false} style={{ objectPosition: scene?.anchor ?? '50% 30%' }} />
+    <div className={`enemy-page${character.origin.includes('event') ? ' enemy-page--event' : ''}${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
+      {character.motionId && character.origin.includes('event') ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={character.name} label={character.name} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt="" draggable={false} style={{ objectPosition: scene?.anchor ?? '50% 30%' }} />}
     </div>
     <div className="enemy-carousel-status">
       <div className="enemy-carousel-name">{front.boss && <EncounterCrest />}<strong>{character.name}</strong><span className="enemy-carousel-constant" aria-label="難易度定数">{(character.strength / 10).toFixed(1)}</span></div>

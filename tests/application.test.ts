@@ -190,7 +190,7 @@ describe('repeatable stone event expeditions', () => {
     return next;
   }
 
-  it.each(content.dungeons.filter(d => d.kind === 'event'))('$name grants one stone on each distinct completed run', dungeon => {
+  it.each(content.dungeons.filter(d => d.kind === 'event' && !d.eventId))('$name grants one stone on each distinct completed run', dungeon => {
     const fresh = createInitialSave(content, 42);
     const completed = clear(fresh, dungeon.id);
     expect(completed.stones).toBe(0);
@@ -208,7 +208,7 @@ describe('repeatable stone event expeditions', () => {
   });
 
   it('grants no event stones on retreat or failure', () => {
-    const id = content.dungeons.find(d => d.kind === 'event')!.id;
+    const id = content.dungeons.find(d => d.kind === 'event' && !d.eventId)!.id;
     const departed = finishReplay(applyCommand(createInitialSave(content, 42), { type: 'depart', dungeonId: id, potions: 0 }, content));
     const retreat = applyCommand(departed, { type: 'retreat' }, content);
     expect(() => applyCommand(retreat, { type: 'claim' }, content)).toThrow();

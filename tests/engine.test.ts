@@ -190,6 +190,7 @@ describe('tactical skills and leader synergies', () => {
   it('a survival barrier absorbs damage before HP and persists in replay snapshots', () => {
     const defs = fixture(); defs.characters.find(c => c.id === 'tank')!.skillIds = ['guard', 'barrier'];
     const battle = start(defs, ['tank', 'hero']); battle.strategy = 'survival';
+    battle.units.find(u => u.characterId === 'tank')!.cooldowns.guard = 99;
     const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.attack = 30;
     const hero = battle.units.find(u => u.characterId === 'hero')!; hero.hp = 80;
     const result = resolveRound(battle, defs).battle;
