@@ -11,6 +11,7 @@ import './battle.css';
 import './enemy-carousel.css';
 import './game-frame.css';
 import './materials.css';
+import './typography.css';
 export { EnemyCarousel } from './EnemyCarousel';
 export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
