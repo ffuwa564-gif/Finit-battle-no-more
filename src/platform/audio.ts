@@ -11,7 +11,7 @@ let lastCueAt = 0;
 const pending: { kind: SoundCue; rarity?: Rarity; at: number }[] = [];
 let browserContext: AudioContext | undefined;
 let active = false;
-let volume = 0.55;
+let volume = 1;
 let enabling: Promise<void> | undefined;
 
 /** Only called in a trusted pointer/key gesture. Audio failure never blocks play. */

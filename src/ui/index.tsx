@@ -122,6 +122,9 @@ export function Modal({ open = true, title, children, onClose, footer, className
     if (!open) return;
     const previous = document.activeElement as HTMLElement | null;
     const oldOverflow = document.body.style.overflow;
+    const root = document.getElementById('root');
+    const oldRootOverflow = root?.style.overflow;
+    if (root) root.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     const focusable = () => [...(ref.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]') ?? [])];
     (focusable()[0] ?? ref.current)?.focus();
@@ -135,7 +138,7 @@ export function Modal({ open = true, title, children, onClose, footer, className
       if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     };
     document.addEventListener('keydown', handleKey);
-    return () => { document.body.style.overflow = oldOverflow; document.removeEventListener('keydown', handleKey); previous?.focus(); };
+    return () => { document.body.style.overflow = oldOverflow; if (root) root.style.overflow = oldRootOverflow ?? ''; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
   return createPortal(<div className="modal-backdrop"><div className={`modal ${className}`} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div>, document.body);

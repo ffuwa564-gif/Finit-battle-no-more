@@ -3,6 +3,10 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { min-width: 320px; background: var(--page); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
 body { margin: 0; }
+/* Keep touch scrolling inside an iframe even when the host sets scrolling="no". */
+html.is-embedded, html.is-embedded body { height: 100%; overflow: hidden; }
+html.is-embedded #root { height: 100%; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+html.is-embedded .hub-navigation { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
 button, input, select { font: inherit; }
 button { -webkit-tap-highlight-color: transparent; }
 button, a, input, select { touch-action: manipulation; }
