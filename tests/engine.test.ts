@@ -5,7 +5,7 @@ import type { Battle, CharacterDef, Content, Role, SkillTemplate } from '../src/
 function definition(id: string, role: Role, skillIds: string[]): CharacterDef {
   return { id, name: id, epithet: '', flavor: '', speciesId: 'ashen', role, strength: 10, leaderStat: 'hp', skillIds, portraitId: 'test', artId: 'test', origin: ['initial', 'recruit'], rarity: 'R', published: true, soundProfile: 'test' };
 }
-const templates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'];
+const templates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse'];
 function fixture(): Content {
   return { appVersion: 'test', contentVersion: 'test', rulesVersion: 'test', schemaVersion: 1, assets: [], species: [{ id: 'ashen', name: 'ashen' }], skills: templates.map((template) => ({ id: template, name: template, template, strength: 10, soundProfile: template })), characters: [definition('tank', 'tank', ['guard', 'attack']), definition('hero', 'attacker', ['attack', 'area']), definition('healer', 'healer', ['heal', 'attack']), definition('enemy', 'attacker', ['attack', 'area'])], dungeons: [{ id: 'dungeon', name: '', subtitle: '', description: '', artId: '', published: true, waves: [[{ characterId: 'enemy' }], [{ characterId: 'enemy', boss: true }]] }] };
 }
@@ -75,6 +75,7 @@ describe('rounds and replay', () => {
   it('keeps drops provisional and waits for replay before the next Wave', () => {
     const content = fixture(); const battle = start(content);
     battle.units.find((unit) => unit.side === 'enemy')!.hp = 1;
+    Object.assign(battle.units.find(unit => unit.side === 'party')!, { barrier: 100, barrierUntil: 9, regenUntil: 9, regenStrength: 16 });
     const result = resolveRound(battle, content);
     expect(result.discoveredIds).toEqual(['enemy']);
     expect(result.goldEarned).toBe(5);
@@ -86,7 +87,7 @@ describe('rounds and replay', () => {
     expect(after.wave).toBe(1);
     expect(after.units.find((unit) => unit.boss)?.maxHp).toBe(300);
     expect(after.pendingMaterials).toEqual(result.battle.pendingMaterials);
-    expect(after.units.filter((unit) => unit.side === 'party').every((unit) => Object.keys(unit.cooldowns).length === 0)).toBe(true);
+    expect(after.units.filter((unit) => unit.side === 'party').every((unit) => Object.keys(unit.cooldowns).length === 0 && unit.barrier === undefined && unit.regenUntil === undefined)).toBe(true);
   });
   it('suppresses threshold dialogue for a killing blow, and only then allows rewards', () => {
     const content = fixture(); content.dungeons[0]!.waves = [[{ characterId: 'enemy', boss: true }]];
@@ -157,5 +158,102 @@ describe('initial content acceptance', () => {
       expect(kills).toBeGreaterThan(0);
       expect(Object.values(battle.pendingMaterials).reduce((a, b) => a + b, 0)).toBe(content.dungeons[0]!.waves.flat().length);
     }
+  });
+});
+
+
+describe('tactical skills and leader synergies', () => {
+  it('uses piercing attacks against armor and reports actual HP lost', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'hero')!.skillIds = ['attack', 'pierce'];
+    const battle = start(defs, ['hero']); battle.strategy = 'aggressive';
+    const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.defense = 100;
+    const hero = battle.units.find(u => u.side === 'party')!; hero.speed = 100;
+    const pierce = resolveRound(battle, defs).battle.events.find(e => e.actorId === hero.uid)!;
+    expect(pierce.skillId).toBe('pierce');
+    const ordinary = structuredClone(battle); ordinary.units.find(u => u.uid === hero.uid)!.cooldowns.pierce = 99;
+    const attack = resolveRound(ordinary, defs).battle.events.find(e => e.actorId === hero.uid)!;
+    expect(pierce.amount).toBeGreaterThan(attack.amount!);
+    expect(enemy.hp - pierce.unitsAfter!.find(u => u.uid === enemy.uid)!.hp).toBe(pierce.amount);
+  });
+
+  it('drains only actual damage and never heals past maximum HP', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'hero')!.skillIds = ['attack', 'drain'];
+    const battle = start(defs, ['hero']);
+    const hero = battle.units.find(u => u.side === 'party')!; hero.hp = 30; hero.speed = 100;
+    battle.units.find(u => u.side === 'enemy')!.hp = 10;
+    const result = resolveRound(battle, defs).battle;
+    expect(result.events.find(e => e.actorId === hero.uid)?.skillId).toBe('drain');
+    expect(result.units.find(u => u.uid === hero.uid)!.hp).toBe(33);
+    expect(battle.units.find(u => u.uid === hero.uid)!.hp).toBe(30);
+  });
+
+  it('a survival barrier absorbs damage before HP and persists in replay snapshots', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'tank')!.skillIds = ['guard', 'barrier'];
+    const battle = start(defs, ['tank', 'hero']); battle.strategy = 'survival';
+    const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.attack = 30;
+    const hero = battle.units.find(u => u.characterId === 'hero')!; hero.hp = 80;
+    const result = resolveRound(battle, defs).battle;
+    const cast = result.events.find(e => e.skillId === 'barrier')!;
+    expect(cast.unitsAfter!.find(u => u.uid === hero.uid)!.barrier).toBeGreaterThan(0);
+    const ordinary = structuredClone(battle); const tank = ordinary.units.find(u => u.characterId === 'tank')!;
+    tank.cooldowns.barrier = tank.cooldowns.guard = 99;
+    expect(result.events.find(e => e.actorId === enemy.uid)!.amount).toBeLessThan(resolveRound(ordinary, defs).battle.events.find(e => e.actorId === enemy.uid)!.amount!);
+  });
+
+  it('cleanses defense reduction, but prioritizes an urgent heal', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'healer')!.skillIds = ['heal', 'cleanse'];
+    const battle = start(defs, ['hero', 'healer']);
+    const healer = battle.units.find(u => u.characterId === 'healer')!; healer.speed = 100;
+    const hero = battle.units.find(u => u.characterId === 'hero')!; hero.hp = 90; hero.debuffUntil = 4; hero.debuffStrength = 10;
+    const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.attack = 0;
+    const cast = resolveRound(battle, defs).battle.events.find(e => e.actorId === healer.uid)!;
+    expect(cast.skillId).toBe('cleanse');
+    expect(cast.unitsAfter!.find(u => u.uid === hero.uid)!.debuffUntil).toBeUndefined();
+    expect(cast.unitsAfter!.find(u => u.uid === hero.uid)!.hp).toBeGreaterThan(90);
+    hero.hp = 10;
+    expect(resolveRound(battle, defs).battle.events.find(e => e.actorId === healer.uid)!.skillId).toBe('heal');
+  });
+
+  it('regeneration ticks exactly three times and expires before the fourth round', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'healer')!.skillIds = ['heal', 'regen'];
+    let battle = start(defs, ['hero', 'healer']);
+    battle.units.find(u => u.characterId === 'healer')!.speed = 100;
+    battle.units.find(u => u.characterId === 'hero')!.hp = 70;
+    const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.attack = 0;
+    for (let round = 1; round <= 4; round++) {
+      const result = resolveRound(battle, defs).battle;
+      const ticks = result.events.filter(e => e.text.includes('月の雫の再生'));
+      expect(ticks).toHaveLength(round <= 3 ? 1 : 0);
+      if (ticks.length) expect(ticks[0].amount).toBe(5);
+      battle = finish(result, defs);
+      battle.units.find(u => u.characterId === 'healer')!.cooldowns.regen = 99;
+    }
+  });
+
+  it('leader regeneration heals living allies and stops when the leader falls', () => {
+    const defs = fixture(); defs.characters.find(c => c.id === 'tank')!.leaderEffect = 'regeneration';
+    const battle = start(defs); const hero = battle.units.find(u => u.characterId === 'hero')!; hero.hp = 60;
+    battle.units.find(u => u.characterId === 'healer')!.hp = 0;
+    const enemy = battle.units.find(u => u.side === 'enemy')!; enemy.hp = enemy.maxHp = 10000; enemy.attack = 0;
+    const result = resolveRound(battle, defs).battle;
+    expect(result.events.find(e => e.text.includes('月の慈愛'))!.targetIds).toContain(hero.uid);
+    expect(result.units.find(u => u.characterId === 'healer')!.hp).toBe(0);
+    battle.units.find(u => u.characterId === 'tank')!.hp = 0;
+    expect(resolveRound(battle, defs).battle.events.some(e => e.text.includes('月の慈愛'))).toBe(false);
+  });
+
+  it.each(['finisher', 'resonance', 'bulwark', 'lifesteal'] as const)('leader %s changes the corresponding combat outcome', effect => {
+    const defs = fixture();
+    defs.characters.find(c => c.id === 'hero')!.role = effect === 'resonance' ? 'area_attacker' : 'attacker';
+    defs.dungeons[0].waves = [[{ characterId: 'enemy' }, { characterId: 'enemy' }]];
+    const battle = start(defs, ['hero']);
+    const hero = battle.units.find(u => u.side === 'party')!; hero.speed = 100; hero.hp = 60;
+    battle.units.filter(u => u.side === 'enemy').forEach(u => { u.hp = 300; u.maxHp = 1000; u.attack = 10; });
+    const normal = resolveRound(battle, defs).battle;
+    defs.characters.find(c => c.id === 'hero')!.leaderEffect = effect;
+    const powered = resolveRound(battle, defs).battle;
+    if (effect === 'finisher' || effect === 'resonance') expect(powered.events.find(e => e.actorId === hero.uid)!.amount).toBeGreaterThan(normal.events.find(e => e.actorId === hero.uid)!.amount!);
+    if (effect === 'bulwark') expect(powered.events.filter(e => e.actorId?.startsWith('enemy:')).reduce((sum,e) => sum + (e.amount ?? 0), 0)).toBeLessThan(normal.events.filter(e => e.actorId?.startsWith('enemy:')).reduce((sum,e) => sum + (e.amount ?? 0), 0));
+    if (effect === 'lifesteal') expect(powered.units.find(u => u.uid === hero.uid)!.hp).toBeGreaterThan(normal.units.find(u => u.uid === hero.uid)!.hp);
   });
 });

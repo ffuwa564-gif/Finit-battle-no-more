@@ -18,7 +18,7 @@ function validUnit(value: unknown): boolean {
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
   if (Number(value.maxHp) < 1 || Number(value.hp) > Number(value.maxHp) || !record(value.cooldowns) || Object.values(value.cooldowns).some(item => !count(item))) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
-  for (const key of ['guardUntil', 'guardStrength', 'buffUntil', 'buffStrength', 'debuffUntil', 'debuffStrength']) if (value[key] !== undefined && !count(value[key])) return false;
+  for (const key of ['guardUntil', 'guardStrength', 'buffUntil', 'buffStrength', 'debuffUntil', 'debuffStrength', 'barrier', 'barrierUntil', 'regenStrength', 'regenUntil']) if (value[key] !== undefined && !count(value[key])) return false;
   return true;
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }

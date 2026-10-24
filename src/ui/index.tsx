@@ -146,3 +146,5 @@ export function ArtBackground({ src, children, className = '' }: { src: string; 
 export { TitleScreen } from './TitleScreen';
 
 export { GachaReveal } from './GachaReveal';
+
+export { UnitEffects } from './UnitEffects';

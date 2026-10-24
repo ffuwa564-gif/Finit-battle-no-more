@@ -1,3 +1,4 @@
+import { skillNames, skillTemplates } from '../domain/skill-info';
 import { stoneEvents } from './events';
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
 import { goddessArt } from './gacha';
@@ -6,8 +7,8 @@ export { validateContent } from './validation';
 
 const roleLabels: Record<Role, string> = { healer: '癒し手', tank: '守護者', attacker: '剣士', area_attacker: '詠唱者', supporter: '導き手', debuffer: '呪術師' };
 export const roleName = (role: Role): string => roleLabels[role];
-const labels: Record<SkillTemplate, string> = { attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福' };
-const templates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'];
+const labels = skillNames;
+const templates = skillTemplates;
 const skillFor = (template: SkillTemplate, strength: number): string => `${template}-${strength}`;
 const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> = {
   12: { buff: '神楽鈴の祝福' },
@@ -15,7 +16,7 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
   22: { area: '天照・暁のレース', attack: '八咫鏡の煌き' },
   24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
 };
-const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: template })));
+const skills: SkillDef[] = [10, 11, 12, 14, 16, 18, 20, 22, 24].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: ['pierce', 'drain'].includes(template) ? 'attack' : template === 'regen' ? 'heal' : template === 'barrier' ? 'guard' : template === 'cleanse' ? 'buff' : template })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; motionId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
@@ -26,7 +27,16 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'veil-priestess': { intro: 'この祈りだけは、奪わないで。', threshold: '届かないと知っても……私は、祈る。', defeat: 'こんなにも静かに……終われるのですね。' },
   'thorn-witch': { intro: '枯れた花にも、帰る場所はある。', threshold: '咲かせましょう……最後の、一輪を。', defeat: '庭のこと……ときどき、思い出して。' },
 };
-const character = (input: CharacterInput): CharacterDef => ({ ...input, ...(bossDialogues[input.id] ? { dialogue: bossDialogues[input.id], encounterArtId: `encounter-${input.id}` } : {}), rarity: input.rarity ?? 'R', leaderStat: input.role === 'tank' || input.role === 'healer' ? 'hp' : input.role === 'supporter' || input.role === 'debuffer' ? 'defense' : 'attack', skillIds: [skillFor(required[input.role], input.strength), skillFor(input.role === 'attacker' ? 'area' : 'attack', input.strength)], portraitId: `${input.id}-portrait`, artId: `${input.id}-art`, published: true, soundProfile: 'default' });
+const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<CharacterDef['leaderEffect']> }> = {
+  elaine: { secondary: 'cleanse', leader: 'regeneration' }, liora: { secondary: 'barrier', leader: 'bulwark' },
+  seris: { secondary: 'pierce', leader: 'finisher' }, noelle: { secondary: 'attack', leader: 'resonance' },
+  'pale-wolf': { secondary: 'drain', leader: 'finisher' }, 'stone-drake': { secondary: 'barrier', leader: 'bulwark' },
+  'hollow-keeper': { secondary: 'pierce', leader: 'bulwark' }, 'moon-moth': { secondary: 'attack', leader: 'resonance' },
+  'veil-priestess': { secondary: 'regen', leader: 'regeneration' }, 'thorn-witch': { secondary: 'drain', leader: 'lifesteal' },
+  iris: { secondary: 'regen', leader: 'regeneration' }, mireille: { secondary: 'barrier', leader: 'regeneration' },
+  asteria: { secondary: 'pierce', leader: 'resonance' }, evelyn: { secondary: 'drain', leader: 'lifesteal' },
+};
+const character = (input: CharacterInput): CharacterDef => ({ ...input, ...(bossDialogues[input.id] ? { dialogue: bossDialogues[input.id], encounterArtId: `encounter-${input.id}` } : {}), rarity: input.rarity ?? 'R', leaderEffect: tactics[input.id]?.leader, leaderStat: input.role === 'tank' || input.role === 'healer' ? 'hp' : input.role === 'supporter' || input.role === 'debuffer' ? 'defense' : 'attack', skillIds: [skillFor(required[input.role], input.strength), skillFor(tactics[input.id]?.secondary ?? (input.role === 'attacker' ? 'area' : 'attack'), input.strength)], portraitId: `${input.id}-portrait`, artId: `${input.id}-art`, published: true, soundProfile: 'default' });
 const characters: CharacterDef[] = [
   character({ id: 'elaine', name: 'エレイン', epithet: '白花の祈り手', role: 'healer', speciesId: 'pilgrim', strength: 14, origin: ['initial', 'recruit'], flavor: '誰もいない礼拝堂に、今日も花を供える祈り手。救えなかった人々の名を、彼女だけがまだ覚えている。優しい声の奥には、もう二度と手を離さないという静かな決意がある。' }),
   character({ id: 'liora', name: 'リオラ', epithet: '錆銀の守護者', role: 'tank', speciesId: 'pilgrim', strength: 14, origin: ['initial', 'recruit'], flavor: '滅びた王国の門を守り続けた騎士。主のいない盾は重さを失わず、彼女はその重さを生きる理由に変えた。言葉は少ないが、仲間の歩幅に合わせることを決して忘れない。' }),
