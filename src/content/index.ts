@@ -1,4 +1,5 @@
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
+import { stoneEvents } from './events';
 import { eventDungeons, kuzuhaEvent } from './boss-events';
 import { goddessArt } from './gacha';
 export { initialGacha } from './gacha';
@@ -81,7 +82,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...normalDungeons, ...eventDungeons];
+const dungeons = [...normalDungeons, ...eventDungeons, ...stoneEvents];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: char.origin.includes('event') ? `art/event-${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') ? 1024 : 1536, height: char.origin.includes('event') ? 1536 : 1024, anchor: char.origin.includes('event') ? '50% 18%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',

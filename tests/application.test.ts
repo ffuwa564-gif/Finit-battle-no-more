@@ -73,7 +73,7 @@ describe('application command boundary', () => {
     const result = applyCommand(complete, { type: 'claim' }, content);
     expect(result.materials['mist:rare']).toBe(2);
     expect(result.gold).toBe(initial.gold + 20);
-    expect(result.stones).toBe(1);
+    expect(result.stones).toBe(3);
     expect(result.claimedExplorationIds).toContain(battle.id);
     expect(result.battle).toBeNull();
     expect(() => applyCommand(result, { type: 'claim' }, content)).toThrow();
@@ -175,5 +175,47 @@ describe('gothic goddess pity', () => {
     const before = structuredClone(save);
     expect(() => applyCommand(save, { type: 'draw' }, definitions)).toThrow('保証対象');
     expect(save).toEqual(before);
+  });
+});
+
+
+describe('repeatable stone event expeditions', () => {
+  function clear(save: GameSave, dungeonId: string): GameSave {
+    let next = finishReplay(applyCommand(save, { type: 'depart', dungeonId, potions: 0 }, content));
+    let rounds = 0;
+    while (next.battle?.phase === 'ready' && rounds++ < 80) {
+      next = finishReplay(applyCommand(next, { type: 'round' }, content));
+    }
+    expect(next.battle?.phase).toBe('reward');
+    return next;
+  }
+
+  it.each(content.dungeons.filter(d => d.kind === 'event' && !d.eventId))('$name grants one stone on each distinct completed run', dungeon => {
+    const fresh = createInitialSave(content, 42);
+    const completed = clear(fresh, dungeon.id);
+    expect(completed.stones).toBe(0);
+    const first = applyCommand(completed, { type: 'claim' }, content);
+    expect(first.stones).toBe(1);
+    expect(first.completedDungeonIds).toEqual([dungeon.id]);
+    const completedAgain = clear(first, dungeon.id);
+    expect(completedAgain.battle!.id).not.toBe(completed.battle!.id);
+    const second = applyCommand(completedAgain, { type: 'claim' }, content);
+    expect(second.stones).toBe(2);
+    expect(second.completedDungeonIds).toEqual([dungeon.id]);
+    const replayed = { ...second, battle: completedAgain.battle };
+    expect(() => applyCommand(replayed, { type: 'claim' }, content)).toThrow('確定済み');
+    assertSaveCompatibility(second, content);
+  });
+
+  it('grants no event stones on retreat or failure', () => {
+    const id = content.dungeons.find(d => d.kind === 'event' && !d.eventId)!.id;
+    const departed = finishReplay(applyCommand(createInitialSave(content, 42), { type: 'depart', dungeonId: id, potions: 0 }, content));
+    const retreat = applyCommand(departed, { type: 'retreat' }, content);
+    expect(() => applyCommand(retreat, { type: 'claim' }, content)).toThrow();
+    expect(applyCommand(retreat, { type: 'leaveFailure' }, content).stones).toBe(0);
+    const failed = structuredClone(departed);
+    failed.battle!.phase = 'failed'; failed.battle!.nextPhase = 'failed';
+    expect(() => applyCommand(failed, { type: 'claim' }, content)).toThrow();
+    expect(applyCommand(failed, { type: 'leaveFailure' }, content).stones).toBe(0);
   });
 });

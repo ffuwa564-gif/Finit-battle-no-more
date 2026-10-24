@@ -50,7 +50,7 @@ describe('event progression and durable rewards', () => {
     expect(() => applyCommand(claimed, { type: 'claim' }, content)).toThrow();
     const second = applyCommand(play(claimed, event.dungeonIds[0]!), { type: 'claim' }, content);
     expect(second.materials[event.fragment.id]).toBe(2);
-    expect(second.stones).toBe(1);
+    expect(second.stones).toBe(2);
   });
   it('uses dedicated normal exchange and never synthesizes awakening cores', () => {
     const save = town(); save.completedDungeonIds.push(event.dungeonIds[0]!); save.materials[event.fragment.id] = 29;

@@ -12,7 +12,7 @@ async function seed(page: Page, patch: Partial<GameSave>) {
 
 test('event previews, exclusive exchanges and form restrictions work with an existing save', async ({page})=>{
   await page.setViewportSize({width:390,height:844});
-  await page.goto('/#dungeons/events');await enterGame(page);
+  await page.goto('/#dungeons/boss-events');await enterGame(page);
   await expect(page.getByRole('heading',{name:'宵宮に咲く九尾',exact:true})).toBeVisible();
   await expect(page.getByRole('button',{name:'初級の探索準備',exact:true})).toBeDisabled();
   await page.getByRole('button',{name:'九尾・葛葉の姿を見る',exact:true}).click();
@@ -48,7 +48,7 @@ test('event previews, exclusive exchanges and form restrictions work with an exi
 
 test('a real event clear keeps currency provisional through reload and claims it once',async({page})=>{
   await page.setViewportSize({width:390,height:844});
-  await page.goto('/#dungeons/events');await enterGame(page);
+  await page.goto('/#dungeons/boss-events');await enterGame(page);
   await seed(page,{completedDungeonIds:['silent-cathedral']});
   await page.getByRole('button',{name:'初級の探索準備',exact:true}).click();
   await page.getByRole('button',{name:'探索を始める',exact:true}).click();

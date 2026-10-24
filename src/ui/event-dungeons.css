@@ -1,5 +1,5 @@
 .dungeon-mode-tabs { display: flex; gap: 8px; margin-bottom: 22px; }
-.dungeon-mode-tabs .button { flex: 1; }
+.dungeon-mode-tabs .button { flex: 1; min-width: 0; padding-inline: 8px; }
 .event-sanctuary { overflow: hidden; border: 1px solid #a6a0b5; border-radius: 24px; background: #f5f1e8; box-shadow: 0 14px 35px #23304214; }
 .event-heading { padding: 27px 16px 25px; text-align: center; background: linear-gradient(135deg,#25263a,#493147,#29293b); color: #f7eedf; }
 .event-heading > span { font: 9px var(--font-body); letter-spacing: .2em; color: #d9bd93; }

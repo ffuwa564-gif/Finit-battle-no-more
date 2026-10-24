@@ -1,4 +1,5 @@
 import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
+import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { initialGacha, gachaPity, gachaSSRRate } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
@@ -101,10 +102,10 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
         save.materials[id] = (save.materials[id] ?? 0) + count;
       }
       save.gold += 20;
-      if (!save.completedDungeonIds.includes(battle.dungeonId)) {
-        save.completedDungeonIds.push(battle.dungeonId);
-        save.stones += 1;
-      }
+      const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
+      if (!dungeon) fail('探索の報酬定義がありません。');
+      save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
+      if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
       save.claimedExplorationIds.push(battle.id);
       log(save, '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
       save.battle = null;
@@ -173,7 +174,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'draw': {
       town(save);
-      if (content.dungeons.filter(item => item.published && !item.eventId).length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
+      if (content.dungeons.filter(item => item.published && item.kind !== 'event').length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
       const available = content.characters.filter(item => item.published && item.origin.includes('gacha'));
       if (!available.length) fail('召喚できるキャラクターがいません。');

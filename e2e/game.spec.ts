@@ -76,12 +76,12 @@ test('full exploration preserves provisional rewards across reload and claims on
   await page.getByRole('button', { name: '獲得を確定', exact: true }).click();
   await expect.poll(async () => (await stored(page)).battle).toBeNull();
   const claimed = await stored(page);
-  expect(claimed.stones).toBe(1);
+  expect(claimed.stones).toBe(3);
   expect(Object.values(claimed.materials).reduce((sum, n) => sum + n, 0)).toBe(amount);
   await page.reload();
   await enterGame(page);
   await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
-  expect((await stored(page)).stones).toBe(1);
+  expect((await stored(page)).stones).toBe(3);
   expect((await stored(page)).materials).toEqual(claimed.materials);
 });
 

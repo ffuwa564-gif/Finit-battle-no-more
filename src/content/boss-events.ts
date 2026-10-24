@@ -16,7 +16,7 @@ const tiers = [
   { name: '覚醒級', hp: 700, attack: 120, amount: 1, waves: [['pale-wolf', 'thorn-witch', 'moon-moth'], ['hollow-keeper', 'veil-priestess', 'pale-wolf'], ['thorn-witch', 'thorn-witch', 'moon-moth'], ['veil-priestess', 'pale-wolf', 'moon-moth']] },
 ];
 export const eventDungeons: DungeonDef[] = tiers.map((tier, i) => ({
-  id: kuzuhaEvent.dungeonIds[i]!, name: `${kuzuhaEvent.name}・${tier.name}`, tierName: tier.name,
+  id: kuzuhaEvent.dungeonIds[i]!, kind: 'event', name: `${kuzuhaEvent.name}・${tier.name}`, tierName: tier.name,
   subtitle: i === 4 ? '九尾がひらく夜、願いの底へ。' : '今宵も、あの姫に逢うために。',
   description: i === 4 ? '覚醒核はこの難易度だけ。道中の消耗を抑え、薬と役割を整えて九尾に挑む。' : '葛葉の契りを集め、妖狐の姫を仲間に迎える。',
   artId: i === 4 ? 'kuzuha-awakened-art' : 'kuzuha-art', published: true, eventId: kuzuhaEvent.id,

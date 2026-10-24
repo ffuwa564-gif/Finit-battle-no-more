@@ -99,6 +99,8 @@ export function validateContent(content: Content): string[] {
     });
   }
   for (const dungeon of content.dungeons) {
+    reject(dungeon.kind !== undefined && !['normal', 'event'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
+    if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
     if (dungeon.bossScale) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
     if (dungeon.eventReward) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.eventReward.count) || dungeon.eventReward.count < 1, `dungeons/${dungeon.id}: invalid event reward`);

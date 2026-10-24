@@ -327,3 +327,7 @@
 .button.button--sm, .button.button--icon, .toolbar > .button, .dungeon-info > .button { min-height: 44px; }
 .button.button--icon { min-width: 44px; height: 44px; }
 .topbar .currencies .button.button--icon { min-width: 44px; width: 44px; min-height: 44px; height: 44px; }
+
+.dungeon-categories { gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.dungeon-category-note { color: var(--muted); font-size: 12px; line-height: 1.8; margin-bottom: 22px; }
+.dungeon-reward-note { display: flex; align-items: center; gap: 8px; color: var(--slate-deep); font-size: 13px; margin: 16px 0; }
