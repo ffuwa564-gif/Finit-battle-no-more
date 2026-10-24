@@ -1,3 +1,4 @@
+import { tr, localize } from '../locales/i18n';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button, HPBar, UnitEffects } from './index';
@@ -126,29 +127,29 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
   const aliveIndex = available.findIndex(unit => unit.uid === front.uid);
   const position = aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
   return <div className={`enemy-carousel${portraitScene ? ' enemy-carousel--portrait' : ''}${reduced ? ' enemy-carousel--reduced' : ''}`}
-    role="group" aria-label="敵を切り替える" tabIndex={canChange ? 0 : -1}
+    role="group" aria-label={tr("敵を切り替える")} tabIndex={canChange ? 0 : -1}
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={cancelGesture}
     onPointerLeave={() => { if (gesture.current && !gesture.current.horizontal) cancelGesture(); }} onLostPointerCapture={cancelGesture}>
-    {transition && !reduced && <div className={`enemy-page--outgoing${previousPortraitScene ? ' enemy-page--portrait' : ''}`} key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
-      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousPortraitScene ? '50% 0%' : previousScene?.anchor ?? '50% 30%' }} />
-    </div>}
+    {localize(transition && !reduced && <div className={`enemy-page--outgoing${previousPortraitScene ? ' enemy-page--portrait' : ''}`} key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
+      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt={tr("")} draggable={false} style={{ objectPosition: previousPortraitScene ? '50% 0%' : previousScene?.anchor ?? '50% 30%' }} />
+    </div>)}
     <div className={`enemy-page${portraitScene ? ' enemy-page--portrait' : ''}${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
-      {character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={character.name} label={character.name} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt="" draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />}
+      {localize(character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={tr(character.name)} label={tr(character.name)} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt={tr("")} draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />)}
     </div>
     <div className="enemy-carousel-status">
-      <div className="enemy-carousel-name">{front.boss && <EncounterCrest />}<strong>{character.name}</strong><span className="enemy-carousel-constant" aria-label="難易度定数">{(character.strength / 10).toFixed(1)}</span></div>
-      <HPBar hp={front.hp} maxHp={front.maxHp} label={`${character.name}のHP`} />
+      <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{localize(character.name)}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
+      <HPBar hp={front.hp} maxHp={front.maxHp} label={tr(`${character.name}のHP`)} />
       <div className="enemy-carousel-meta">
-        <span>Wave {wave}<small> / {waveCount}</small></span><span>ROUND {round}</span>
-        <span className="enemy-carousel-meta__bag" data-bag aria-label={`仮取得素材 ${materials}個`}><Backpack size={15} /><strong>{materials}</strong></span>
+        <span>Wave {localize(wave)}<small> / {localize(waveCount)}</small></span><span>ROUND {localize(round)}</span>
+        <span className="enemy-carousel-meta__bag" data-bag aria-label={tr(`仮取得素材 ${materials}個`)}><Backpack size={15} /><strong>{localize(materials)}</strong></span>
       </div>
       <UnitEffects unit={front} round={round} />
     </div>
-    {units.length > 1 && <div className="enemy-carousel-controls">
-      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label="前の敵を表示" disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
-      <div className="enemy-carousel-position" aria-live="polite" aria-atomic="true"><strong>{position}</strong></div>
-      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label="次の敵を表示" disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
-    </div>}
+    {localize(units.length > 1 && <div className="enemy-carousel-controls">
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("前の敵を表示")} disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
+      <div className="enemy-carousel-position" aria-live="polite" aria-atomic="true"><strong>{localize(position)}</strong></div>
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("次の敵を表示")} disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
+    </div>)}
   </div>;
 }

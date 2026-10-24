@@ -7,3 +7,6 @@ test-results/
 *.local
 
 .reports/
+
+dist-itch/
+artifacts/

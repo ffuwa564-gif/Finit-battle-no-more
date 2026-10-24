@@ -3,7 +3,7 @@ import { enterGame } from './boot';
 
 test('four new lower-rarity goddesses have distinct artwork, readable abilities and real summon ownership', async ({page}) => {
   await page.setViewportSize({width:390,height:844});
-  await page.goto('/#gacha'); await enterGame(page);
+  await page.goto('/#gacha'); await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.locator('.goddess-feature')).toHaveCount(2);
   await expect(page.locator('.character-grid > .character-card')).toHaveCount(6);
   const additions = [
@@ -25,12 +25,12 @@ test('four new lower-rarity goddesses have distinct artwork, readable abilities 
     const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const revision=save.revision;
     save.seed=1309757276;save.stones=5;save.revision++;await persistSave(save,revision);
   });
-  await page.reload();await enterGame(page);
+  await page.reload();await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();
   await page.getByRole('button',{name:'演出をスキップ',exact:true}).click();
   await expect(page.getByRole('dialog')).toContainText('トヨタマヒメ');
   await page.getByRole('button',{name:'女神を迎える',exact:true}).click();
-  await page.reload();await enterGame(page);
+  await page.reload();await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   const save=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!);
   expect(save.ownedIds).toContain('toyotama');expect(save.stones).toBe(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);

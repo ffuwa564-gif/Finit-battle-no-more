@@ -1,3 +1,4 @@
+import { tr } from '../locales/i18n';
 import type { CSSProperties } from 'react';
 import type { CharacterDef } from '../domain/types';
 import { assetPath, content } from '../content';
@@ -11,7 +12,8 @@ export function CharacterArtwork({ character, reducedMotion, suspended = false, 
   const anchor = content.assets.find(asset => asset.id === character.artId)?.anchor ?? '50% 22%';
   return <div className={`character-artwork ${className}`} style={{ '--character-art-anchor': anchor } as CSSProperties}>
     {character.motionId
-      ? <AnimatedIllustration posterId={character.artId} motionId={character.motionId} alt={character.name} label={character.name} reducedMotion={reducedMotion} suspended={suspended} />
-      : <img className="character-artwork__still" src={assetPath(character.artId)} alt={character.name} loading="lazy" />}
+      ? <AnimatedIllustration posterId={character.artId} motionId={character.motionId} alt={tr(character.name)} label={tr(character.name)} reducedMotion={reducedMotion} suspended={suspended} />
+      : <img className="character-artwork__still" src={assetPath(character.artId)} alt={tr(character.name)} loading="lazy" />}
+
   </div>;
 }

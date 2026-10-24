@@ -5,6 +5,7 @@ test('goddess collection animates both SSRs and grants an owned goddess on the g
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#gacha');
   await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.getByRole('heading', { name: 'ゴス☆イザナミコレクション', exact: true })).toBeVisible();
   await expect(page.locator('.goddess-feature')).toHaveCount(2);
   await expect(page.getByRole('button', { name: 'SSR イザナミの詳細', exact: true })).toBeVisible();
@@ -34,11 +35,13 @@ test('goddess collection animates both SSRs and grants an owned goddess on the g
   });
   await page.reload();
   await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
   await expect(page.getByText('次の祈願はSSR確定', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
+  await page.getByRole('button',{name:'保証を使って祈願する',exact:true}).click();
   const result = page.getByRole('dialog');
   await expect(result).toBeVisible();
   await expect(result.getByRole('heading', { level: 2 }).first()).toHaveText(/イザナミ|アマテラス/);
@@ -47,6 +50,7 @@ test('goddess collection animates both SSRs and grants an owned goddess on the g
   await expect(page.getByText('迎え入れ済み', { exact: true })).toHaveCount(1);
   await page.reload();
   await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.getByText('迎え入れ済み', { exact: true })).toHaveCount(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
 });
@@ -59,6 +63,7 @@ test('SSR motion follows reduced motion and leaves other rarities as still artwo
   page.on('request', request => { if (/video\/gacha-.*\.mp4/.test(request.url())) requests++; });
   await page.goto('/#gacha');
   await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.locator('.goddess-collection .animated-illustration[data-animation-state="static"]')).toHaveCount(2);
   for (const video of await page.locator('.goddess-collection video').all()) await expect(video).not.toHaveAttribute('src');
   expect(requests).toBe(0);
@@ -77,6 +82,7 @@ test('SSR motion follows reduced motion and leaves other rarities as still artwo
 test('hard pity reveals a spectacular SSR and persists duplicate refunds before animation', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#gacha'); await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.evaluate(async () => {
     const { content } = await import('/src/content/index.ts');
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
@@ -86,6 +92,7 @@ test('hard pity reveals a spectacular SSR and persists duplicate refunds before 
     save.revision++; await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.getByText('次の祈願はSSR確定', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
   await expect(page.locator('.gacha-reveal--ssr')).toBeVisible();
@@ -95,6 +102,7 @@ test('hard pity reveals a spectacular SSR and persists duplicate refunds before 
   await expect(page.getByText('祈願石 3個を還元', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: '祈願に戻る', exact: true }).click();
   await page.reload(); await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.getByText('SSR天井まであと90回', { exact: true })).toBeVisible();
   expect(await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!.stones)).toBe(3);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
@@ -104,6 +112,7 @@ test('hard pity reveals a spectacular SSR and persists duplicate refunds before 
 test('reduced motion reveals SSR without the burst or moving particles', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#gacha'); await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const save = (await loadSave())!; const revision = save.revision;
@@ -111,7 +120,9 @@ test('reduced motion reveals SSR without the burst or moving particles', async (
     await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page);
+  await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
+  await page.getByRole('button',{name:'保証を使って祈願する',exact:true}).click();
   await expect(page.locator('.gacha-reveal--ssr.is-revealed')).toBeVisible();
   await expect(page.locator('.gacha-reveal__burst')).toBeHidden();
   await expect(page.locator('.gacha-reveal__particles i').first()).toHaveCSS('animation-name', 'none');

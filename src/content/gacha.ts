@@ -12,9 +12,13 @@ export interface GachaCollection {
   duplicateRefund: { R: number; SR: number; SSR: number };
   rates: { R: number; SR: number; SSR: number };
   featuredIds: readonly [string, string];
+  characterIds: readonly string[];
+  label: string;
 }
 export const initialGacha: GachaCollection = {
   id: 'goth-izanami',
+  label: 'GOTHIC GODDESSES · VOL.01',
+  characterIds: ['iris', 'mireille', 'asteria', 'evelyn', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime'],
   title: 'ゴス☆イザナミコレクション',
   subtitle: '神々も、今宵は黒いレースを纏う。',
   stoneCost: 5,
@@ -25,7 +29,22 @@ export const initialGacha: GachaCollection = {
   rates: { R: 80, SR: 17, SSR: 3 },
   featuredIds: ['evelyn', 'asteria'],
 };
+/** Both collections share account-wide introductory guarantee and SSR pity. */
+export const flowerGacha: GachaCollection = {
+  ...initialGacha,
+  id: 'wa-flower-banquet',
+  label: 'DIVINE ATTIRE · VOL.02',
+  title: '神々の装い ― 和の花宴 ―',
+  subtitle: '遠き地の女神たちが、自ら選んだ晴れ着で月下の花宴へ。',
+  featuredIds: ['selene', 'athena'],
+  characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'iris', 'iwanagahime', 'kukurihime'],
+};
+export const gachaCollections = [flowerGacha, initialGacha] as const;
+export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolean {
+  return save.drawCount + 1 === initialGacha.guaranteeDraw;
+}
 export const goddessArt: Record<string, string> = {
+  selene: 'gacha-selene', athena: 'gacha-athena', flora: 'gacha-flora', 'rainbow-iris': 'gacha-rainbow-iris',
   toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',
   evelyn: 'gacha-izanami', asteria: 'gacha-amaterasu', iris: 'gacha-uzume', mireille: 'gacha-sakuya',
 };
@@ -44,5 +63,5 @@ export function gachaSSRRate(pity: number): number {
 
 /** New full-body paintings place the face near the top of the source image. */
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
-  ['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+  ['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );

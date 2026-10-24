@@ -2,7 +2,7 @@ import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
-import { initialGacha, gachaPity, gachaSSRRate } from '../content/gacha';
+import { initialGacha, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -193,10 +193,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       town(save);
       if (content.dungeons.filter(item => item.published && item.kind !== 'event').length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
-      const available = content.characters.filter(item => item.published && item.origin.includes('gacha'));
+      const collection = gachaCollections.find(item => item.id === (command.collectionId ?? initialGacha.id));
+      if (!collection) fail('選択した祈願が見つかりません。');
+      const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && collection!.characterIds.includes(item.id));
       if (!available.length) fail('召喚できるキャラクターがいません。');
       const pity = gachaPity(save);
-      const guaranteed = save.drawCount + 1 === initialGacha.guaranteeDraw || pity + 1 >= initialGacha.hardPity;
+      const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;
       let roll = rng(save.seed); save.seed = roll.seed;
       const ssrRate = gachaSSRRate(pity) / 100;
       const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * initialGacha.rates.R / (initialGacha.rates.R + initialGacha.rates.SR) ? 'R' : 'SR';

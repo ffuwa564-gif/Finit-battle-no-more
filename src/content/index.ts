@@ -13,6 +13,10 @@ const labels = skillNames;
 const templates = skillTemplates;
 const skillFor = (template: SkillTemplate, strength: number): string => `${template.replaceAll('_', '-')}-${strength}`;
 const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> = {
+  21: { heal: '月白のやすらぎ', barrier: '三日月の袖守り' },
+  23: { guard: '梟の見守り', pierce: '知恵の一閃' },
+  16: { heal: '百花のぬくもり', cleanse: '花風の浄め' },
+  20: { buff: '虹糸の便り', dispel: '晴れ渡る空' },
   27: { dawn: '約束の朝', attack: '暁を返す一閃' },
   13: { guard: '不変の岩守', shatter: '磐砕き' },
   14: { debuff: '縁結びのほどき', dispel: '結び直す指先' },
@@ -25,7 +29,7 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
   30: { debuff: '九尾・夢幻結界', attack: '月蝕の狐火' },
   24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
 };
-const skills: SkillDef[] = [10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 22, 24, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
+const skills: SkillDef[] = [10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
@@ -52,6 +56,10 @@ const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<Ch
   'seris-awakened': { secondary: 'dawn', leader: 'finisher' },
   toyotama: { secondary: 'mend_pair', leader: 'regeneration' }, wakahirume: { secondary: 'barrier', leader: 'resonance' },
   iwanagahime: { secondary: 'shatter', leader: 'bulwark' }, kukurihime: { secondary: 'dispel', leader: 'finisher' },
+  selene: { secondary: 'barrier', leader: 'regeneration' },
+  athena: { secondary: 'pierce', leader: 'bulwark' },
+  flora: { secondary: 'cleanse', leader: 'regeneration' },
+  'rainbow-iris': { secondary: 'dispel', leader: 'finisher' },
   kuzuha: { secondary: 'attack', leader: 'lifesteal' }, 'kuzuha-awakened': { secondary: 'attack', leader: 'lifesteal' },
   elaine: { secondary: 'cleanse', leader: 'regeneration' }, liora: { secondary: 'barrier', leader: 'bulwark' },
   seris: { secondary: 'pierce', leader: 'finisher' }, noelle: { secondary: 'attack', leader: 'resonance' },
@@ -77,6 +85,10 @@ const characters: CharacterDef[] = [
   character({ id: 'mireille', name: 'コノハナサクヤヒメ', epithet: '黒桜の花守', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '富士を背に、桜の枝と小さな炎をそっと掲げる女神。桜色と黒いレースのゴシックロリータを纏い、火の粉を花びらのように遊ばせる。儚さと強さを知る彼女の祈りは、傷ついた仲間の命を静かにつなぎとめる。' }),
   character({ id: 'asteria', motionId: 'gacha-amaterasu-motion', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
   character({ id: 'evelyn', motionId: 'gacha-izanami-motion', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
+  character({ id: "selene", name: "セレネ", epithet: "月白の振袖", role: "healer", speciesId: "moon", strength: 21, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の月の女神を着想にした、花宴への客人。月白と紺の振袖を自ら選び、銀糸の三日月を袖に散らした。月を映す扇を開けば、仲間を守る柔らかな光が庭に満ちる。静かな宴を誰もが楽しめるよう、隅々まで目を配っている。" }),
+  character({ id: "athena", name: "アテナ", epithet: "知恵咲く羽織", role: "tank", speciesId: "pilgrim", strength: 23, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の知恵の女神を着想にした、花宴への客人。藍の羽織にはオリーブの枝と梟の刺繍。着物の文様に込められた工夫を楽しみながら、仲間の話に耳を傾ける。旅では冷静な判断と確かな守りで、一行の進む道を支える。" }),
+  character({ id: "flora", name: "フローラ", epithet: "百花の晴れ衣", role: "healer", speciesId: "veil", strength: 16, origin: ["gacha"], rarity: "SR", flavor: "ローマ神話の花の女神を着想にした、花宴への客人。桜色と若草色の晴れ着に、牡丹や小さな野花をあしらった。庭で見つけた花の名前をひとつずつ覚え、出会った人へ小さな花束を贈る。その優しい花風は、仲間の傷と弱りをいたわる。" }),
+  character({ id: "rainbow-iris", name: "イリス", epithet: "虹織の訪れ", role: "supporter", speciesId: "pilgrim", strength: 20, origin: ["gacha"], rarity: "SR", flavor: "ギリシャ神話の虹と伝令の女神を着想にした、花宴への客人。雲と流水を織り込んだ袖が、光を受けて淡い虹色に変わる。招待の返事を大切に携え、遠い土地の話を皆へ届ける。戦いでは仲間を励まし、敵にまとわりつく強化を晴らす。" }),
   character({ id: 'kuzuha', familyId: 'kuzuha', name: '葛葉', epithet: '宵宮の妖狐姫', role: 'debuffer', speciesId: 'fox', strength: 26, origin: ['event'], rarity: 'SSR', flavor: '参拝者の途絶えた稲荷の社で、今も人々の願いを預かる妖狐の姫。紅の結び紐と古い鈴は、忘れられた契りの数だけ増えてゆく。扇の向こうの笑みは、訪れる者を試す余裕と、誰かを待ち続ける寂しさを隠している。' }),
   character({ id: 'kuzuha-awakened', familyId: 'kuzuha', motionId: 'kuzuha-awakened-motion', name: '九尾・葛葉', epithet: '月蝕にひらく九つの契り', role: 'debuffer', speciesId: 'fox', strength: 30, origin: ['event'], rarity: 'SSR', flavor: '月が欠ける夜、封じた九つの尾と白銀の髪が本来の姿を取り戻す。揺れる狐火は、守りきれなかった願いの灯。それでも傍に立つと決めたあなたの名を、葛葉は最後の結び紐にそっと刻む。' }),
 
@@ -102,7 +114,7 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const goddess = char.origin.includes('event') ? `event-${char.id}` : goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
   const framing = goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.png` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: goddess ? `art/${goddess}.${['selene', 'athena', 'flora', 'rainbow-iris'].includes(char.id) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },

@@ -1,3 +1,4 @@
+import { gachaCollections } from './gacha';
 import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
 
@@ -173,6 +174,11 @@ export function validateContent(content: Content): string[] {
   const initial = content.characters.filter(char => char.published && char.origin.includes('initial'));
   reject(initial.length !== 4 || !['healer', 'tank', 'attacker', 'area_attacker'].every(role => initial.some(char => char.role === role)), 'initial party: required four roles missing');
   const gacha = content.characters.filter(char => char.published && char.origin.includes('gacha'));
-  reject(!gacha.some(char => char.rarity === 'R') || !gacha.some(char => char.rarity === 'SR') || gacha.filter(char => char.rarity === 'SSR').length < 2, 'gacha: R, SR and two SSR definitions required');
+  for (const collection of gachaCollections) {
+    const pool = gacha.filter(char => collection.characterIds.includes(char.id));
+    reject(new Set(collection.characterIds).size !== collection.characterIds.length || collection.characterIds.some(id => !pool.some(char => char.id === id)), `gacha/${collection.id}: missing or duplicate character definition`);
+    reject(!pool.some(char => char.rarity === 'R') || !pool.some(char => char.rarity === 'SR') || pool.filter(char => char.rarity === 'SSR').length !== 2, `gacha/${collection.id}: R, SR and two SSR definitions required`);
+    reject(collection.featuredIds.some(id => !pool.some(char => char.id === id && char.rarity === 'SSR')), `gacha/${collection.id}: featured SSR must belong to collection`);
+  }
   return errors;
 }

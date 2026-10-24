@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({ testDir: './itch-e2e', timeout: 90000, use: { baseURL: 'http://127.0.0.1:4182', headless: true, locale: 'en-US' }, webServer: { command: 'node scripts/preview-itch.mjs', url: 'http://127.0.0.1:4182', reuseExistingServer: true }, reporter: 'list' });

@@ -1,3 +1,4 @@
+import { tr, localize } from '../locales/i18n';
 import { useId } from 'react';
 import './sigils.css';
 
@@ -6,14 +7,14 @@ export function CurrencyEmblem({ kind, size = 18 }: { kind: 'stone' | 'gold'; si
   const id = useId().replace(/:/g, '');
   return <svg className={`currency-emblem currency-emblem--${kind}`} width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <defs><linearGradient id={`${id}-metal`} x1="9" y1="3" x2="31" y2="37" gradientUnits="userSpaceOnUse"><stop stopColor={kind === 'stone' ? '#eef0f3' : '#eee3c8'} /><stop offset=".52" stopColor={kind === 'stone' ? '#9aaac0' : '#c4b18a'} /><stop offset="1" stopColor={kind === 'stone' ? '#6b7e9a' : '#928064'} /></linearGradient></defs>
-    {kind === 'stone' ? <>
+    {localize(kind === 'stone' ? <>
       <path d="m20 2 12 12-2 13-10 11L10 27 8 14 20 2Z" fill={`url(#${id}-metal)`} stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
       <path d="m20 2-4 13 4 23 4-23-4-13Z" fill="#e6e9ef" /><path d="m8 14 8 1 4-13m-4 13-6 12m6-12h8l8-1m-8 1 6 12m-6-12-4 23" stroke="#f9f7ed" strokeWidth=".8" />
       <path d="m20 2 4 13-4 23 10-11 2-13L20 2Z" fill="#788ca8" opacity=".24" />
     </> : <>
       <circle cx="20" cy="20" r="17" fill={`url(#${id}-metal)`} stroke="currentColor" strokeWidth="1.5" /><circle cx="20" cy="20" r="13.5" stroke="#faf2da" strokeWidth="1" /><circle cx="20" cy="20" r="11.5" stroke="currentColor" strokeWidth=".7" opacity=".55" />
       <path d="M23 11c-9-2-13 11-5 15 4 2 8-1 8-6-5 4-10-1-7-6m-7 13 4 3m9-19 2 3" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" /><path d="M14 9a14 14 0 0 0-6 9" stroke="#fff8df" strokeWidth="1.4" strokeLinecap="round" />
-    </>}
+    </>)}
   </svg>;
 }
 

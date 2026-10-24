@@ -43,3 +43,7 @@
 .goddess-pity progress { flex: 1; min-width: 40px; height: 5px; border: 0; border-radius: 4px; accent-color: #dfbd7f; }
 .goddess-pity progress::-webkit-progress-bar { background: #ffffff15; border-radius: 4px; }
 .goddess-pity progress::-webkit-progress-value { background: linear-gradient(90deg,#a798cf,#edce8c); border-radius: 4px; }
+
+.gacha-collections { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.gacha-collections .button { flex: 1 1 220px; white-space: normal; line-height: 1.6; padding: 12px; }
+.gacha-guarantee-status { font-weight: 600; color: #69533c; }
