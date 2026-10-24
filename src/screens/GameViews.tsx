@@ -27,7 +27,7 @@ export function HomeView(p: ViewProps) {
   return <section className="home-hub" aria-labelledby="home-title">
     <h1 id="home-title" className="sr-only">旅の支度</h1>
     <div className="hub-illustration">
-      <img src={assetPath('key-art')} alt="月下の廃聖堂に佇む銀髪の巡礼者と白い狼" />
+      <img src={assetPath('menu-hero')} alt="月下の廃聖堂に佇む銀髪の巡礼者と白い狼" />
       <div className="hub-profile">
         <div className="hub-profile-person">
           <span className="hub-profile-avatar"><img src={assetPath(leader.portraitId)} alt="" /></span>

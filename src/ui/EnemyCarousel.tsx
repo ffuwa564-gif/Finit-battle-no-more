@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { ChevronLeft, ChevronRight, Crown } from 'lucide-react';
 import { Button, HPBar } from './index';
-import { assetPath, characterById } from '../content';
+import { assetPath, characterById, content } from '../content';
 import type { BattleEvent, Unit } from '../domain/types';
 
 export interface EnemyCarouselProps {
@@ -175,8 +175,10 @@ export function EnemyCarousel({ units, event, reducedMotion = false }: EnemyCaro
           zIndex: Math.round(depth * 10) + 1,
         } as CSSProperties;
         const def = characterById(unit.characterId);
+        const art = content.assets.find(asset => asset.id === def.artId);
+        const portraitArt = art ? art.height > art.width : false;
         return <div key={unit.uid} data-enemy-id={unit.uid} className={`enemy-orbit-slot${isFront ? ' is-front' : ''}${unit.hp <= 0 ? ' is-defeated' : ''}`} style={style}>
-          <div className="enemy-orbit-actor" data-unit={unit.uid}><img className="enemy-orbit-art" src={assetPath(def.artId)} alt="" draggable={false} /></div>
+          <div className="enemy-orbit-actor" data-unit={unit.uid}><img className={`enemy-orbit-art${portraitArt ? ' enemy-orbit-art--portrait' : ''}`} src={assetPath(def.artId)} alt="" draggable={false} /></div>
         </div>;
       })}
     </div>

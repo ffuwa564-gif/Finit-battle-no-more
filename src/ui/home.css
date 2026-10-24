@@ -6,9 +6,9 @@
   margin: 0 auto;
   padding: 0 11px 12px;
   overflow: hidden;
-  border: 1px solid #b7b8b6;
+  border: 1px solid #b7b2a8;
   border-radius: 28px;
-  background: linear-gradient(135deg, #f1eee6, #e5e3df 52%, #eeeae2);
+  background: radial-gradient(ellipse at 18% 6%, #fffdf5a8, transparent 58%), repeating-linear-gradient(8deg, #85827b04 0, #85827b04 1px, transparent 1px, transparent 4px), linear-gradient(135deg, #f3efe7, #e9e5de 52%, #f1ede5);
   box-shadow: 0 2px 0 #faf9f1 inset, 0 12px 35px #313a4720, 0 0 0 4px #f6f4ec80;
 }
 .home-hub::after {
@@ -16,7 +16,7 @@
   position: absolute;
   inset: 5px;
   z-index: 5;
-  border: 1px solid #faf8ec66;
+  border: 1px solid #fffdf0a6;
   border-radius: 23px;
   pointer-events: none;
 }
@@ -31,7 +31,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 78% 27%;
+  object-position: 50% 50%;
 }
 .hub-illustration::after {
   content: '';
@@ -128,8 +128,8 @@
   padding: 7px 6px 13px;
   border: 1px solid #fcfbf5;
   border-radius: 23px;
-  background: linear-gradient(135deg, #f5f2ebf5, #eae6dfe8);
-  box-shadow: 0 2px 0 #bbbab650, 0 0 0 1px #bebfbb80 inset, 0 2px 9px #323d4b0d;
+  background: radial-gradient(ellipse at 22% 12%, #fffdf8e6, transparent 70%), repeating-linear-gradient(3deg, #918a7f05 0, #918a7f05 1px, transparent 1px, transparent 4px), linear-gradient(145deg, #f4f0e9f7, #e9e5ddec);
+  box-shadow: 0 2px 0 #b8b3aa55, 0 0 0 1px #bbb8ae8f inset, inset 0 1px 4px #fffdf3b3, 0 3px 9px #323d4b0c;
   color: #4c5260;
   text-align: center;
   overflow: hidden;
@@ -137,6 +137,7 @@
 .home-hub-menu .hub-menu-tile::after { content: ''; position: absolute; inset: 5px; border: 1px solid #ffffff5c; border-radius: 18px; pointer-events: none; }
 .home-hub-menu .hub-menu-tile:hover:not(:disabled) { background: linear-gradient(135deg, #fcfaf4, #eeeae4); border-color: #fcfbf5; box-shadow: 0 3px 0 #b7b7b160, 0 0 0 1px #a6adba inset, 0 7px 17px #36415216; transform: translateY(-1px); }
 .menu-emblem { width: 107px; height: 83px; flex-shrink: 0; filter: drop-shadow(0 2px 1px #49556515); }
+.menu-emblem--painted { object-fit: contain; padding: 1px 7px 2px; transform: scale(1.08); filter: drop-shadow(0 3px 2px #3b46521d); -webkit-user-drag: none; }
 .hub-menu-tile > strong { position: relative; z-index: 1; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: .05em; white-space: nowrap; }
 .home-hub .hub-dungeon-entry {
   position: relative;
@@ -169,7 +170,7 @@
   .home-hub { width: 100%; max-width: 430px; border-radius: 22px; padding: 0 8px 10px; box-shadow: 0 2px 0 #faf9f1 inset, 0 7px 25px #313a4718; }
   .home-hub::after { inset: 4px; border-radius: 18px; }
   .hub-illustration { height: 360px; margin-inline: -8px; border-radius: 21px 21px 0 0; }
-  .hub-illustration > img { object-position: 76% 26%; }
+  .hub-illustration > img { object-position: 50% 50%; }
   .hub-profile { top: 9px; left: 8px; right: 8px; gap: 7px; }
   .hub-profile-person { gap: 8px; padding: 5px 11px 5px 5px; }
   .hub-profile-avatar { width: 37px; height: 37px; }

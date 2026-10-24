@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { assetPath } from '../content';
 
 export type MenuEmblemKind = 'party' | 'monster' | 'bag' | 'wish' | 'codex' | 'settings';
 
@@ -6,6 +7,7 @@ export type MenuEmblemKind = 'party' | 'monster' | 'bag' | 'wish' | 'codex' | 's
 export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
   const id = useId().replace(/:/g, '');
   const metal = `url(#${id}-metal)`, paper = `url(#${id}-paper)`;
+  if (kind === 'bag' || kind === 'codex') return <img className={`menu-emblem menu-emblem--painted menu-emblem--${kind}`} src={assetPath(`menu-${kind}`)} alt="" aria-hidden="true" draggable={false} />;
   return <svg className={`menu-emblem menu-emblem--${kind}`} viewBox="0 0 120 92" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#8d94a4" /><stop offset=".56" stopColor="#697387" /><stop offset="1" stopColor="#a2a8b5" /></linearGradient>
@@ -14,33 +16,23 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
     </defs>
     <ellipse cx="60" cy="53" rx="53" ry="36" fill={`url(#${id}-halo)`} />
     {kind === 'party' && <>
-      <path d="M29 79c-10-2-13-8-10-19 2-9 10-15 13-21-5-10-1-23 10-25 13-2 20 11 15 24-2 5-6 8-7 11 2 10 8 17 12 24-12-3-22 3-33 6Z" fill="#939aa8" opacity=".7" />
-      <path d="M76 77c14 2 20-2 19-12-1-12-11-13-14-23 4-8 3-19-5-22-9-4-18 3-17 13 0 7 5 10 8 13-1 9-7 15-12 23 6 5 14 8 21 8Z" fill="#a8aebb" />
-      <path d="M40 82c-9-3-10-9-7-16 3-8 14-13 18-19-9-11-5-27 5-29 15-3 24 12 18 25-3 6-8 10-8 16 4 5 13 12 18 20-18-4-30 0-44 3Z" fill={metal} />
-      <path d="M57 26c5-5 13-1 15 6l-4 3 4 5-6 3-1 8-10-3c5-6 6-12 2-22Z" fill={paper} />
-      <path d="M51 29c-4 13-1 23-7 35M48 43c3 12-1 20-7 27" stroke="#b6bbc4" strokeWidth="1.3" strokeLinecap="round" />
-      <path d="m47 57 12 8 10-7" stroke="#c6c7cb" strokeWidth="1.1" />
+      <path d="M27 80c9-4 12-11 12-20 0-8-5-12-5-24 0-17 12-28 28-28 18 0 29 12 28 28-1 7-4 11-8 16-3 5-4 10-2 16 1 5 5 9 10 13-16 0-28 2-39 4-9 2-18 1-24-5Z" fill={metal} />
+      <path d="M64 17c9-1 17 6 18 15l-2 6 7 7c1 1 0 3-2 3l-6 1-1 8c-1 5-5 7-11 7-3 7 0 12 8 16-11 0-22 2-31 4 2-7 9-10 12-17 2-5 1-10-1-15 7-7 11-19 9-35Z" fill={paper} />
+      <path d="M61 12c-14 7-16 17-12 33 4 17-3 23-11 32M56 16c-13 10-16 19-12 31 5 16-2 25-8 30M66 13c-9 8-9 18-4 27" stroke="#bdc1c7" strokeWidth="1.25" strokeLinecap="round" />
+      <path d="M75 35c2-1 4 0 5 1" stroke="#747e8c" strokeWidth="1" strokeLinecap="round" />
+      <path d="M88 79c9-6 13-15 14-26m-2 9 7-5m-10 14 8-3m-14 10 8-1" stroke="#a5aaa6" strokeWidth="1.15" strokeLinecap="round" />
+      <path d="M101 60c-5-2-7-5-7-8 5 1 8 3 7 8Zm-5 11c-5 0-8-3-9-6 6-1 9 2 9 6Z" fill="#a5aaa6" />
     </>}
     {kind === 'monster' && <>
-      <path d="M81 7c4 9 1 19-8 23 12 0 20-13 14-24-2-3-5-5-8-6l2 7Z" fill="#9ca2b3" />
-      <path d="m31 22 15 14 14-7 17 7 15-16 1 27 10 13-17 1 7 12-21-3-10 13-10-12-21 2 6-13-18-4 15-11-3-23Z" fill={metal} />
-      <path d="m38 34 9 10-7 2-2-12Zm46-2-9 12 8 1 1-13Z" fill={paper} />
-      <path d="m46 51 9 5-7 2-2-7Zm30 0-8 5 7 2 1-7Z" fill="#edece5" />
-      <path d="m55 61 7-4 7 4-7 7-7-7Z" fill="#e0e2e5" />
-      <path d="m59 70 3 3 4-3" stroke="#c4c9d0" strokeWidth="1.3" />
-      <path d="M26 82c-10-7-15-18-15-30M11 57l-5-5m6 13-6-2m11 12-6-1m80 7c10-7 15-17 16-29m-1 7 6-5m-8 14 7-2m-12 12 7-1" stroke="#a3aaa9" strokeWidth="1.4" strokeLinecap="round" />
-      <path d="m20 75-3-8 7 4m73 3 3-8-7 5" fill="#a3aaa9" />
-    </>}
-    {kind === 'bag' && <>
-      <path d="M45 26v-7c0-8 30-8 30 0v7" stroke="#6f7784" strokeWidth="5" />
-      <path d="M31 31c0-6 58-6 58 0l8 42c1 8-70 9-72 1l6-43Z" fill={metal} stroke="#687080" strokeWidth="1.3" />
-      <path d="m31 32-5 22c16 8 46 7 68-2l-5-21c-17 9-40 10-58 1Z" fill={paper} stroke="#9c9b99" strokeWidth="1.2" />
-      <path d="m42 30-1 45m36-46 2 46" stroke="#b7b1a1" strokeWidth="8" />
-      <path d="m42 30-1 45m36-46 2 46" stroke="#e2d8bc" strokeWidth="2" />
-      <rect x="36" y="47" width="11" height="12" rx="2" fill="#7b808a" stroke="#e2d8bc" strokeWidth="1.6" />
-      <rect x="73" y="46" width="11" height="12" rx="2" fill="#7b808a" stroke="#e2d8bc" strokeWidth="1.6" />
-      <path d="M51 61h19v16H51z" fill="#8e98a3" stroke="#c5c8c9" strokeWidth="1.1" />
-      <path d="M31 73c15 5 44 5 59-1" stroke="#ccd0d2" strokeWidth="1" />
+      <path d="M79 8c4 9 0 18-8 21 12 0 19-13 13-23-2-3-4-5-7-6l2 8Z" fill="#9ca3af" />
+      <path d="M34 78c6-7 7-14 6-23-5-2-9-5-11-9 6 0 10-2 13-6-1-8 0-18 4-29 6 6 11 13 13 20 7-3 14-3 20-2 4 7 10 13 17 16l10 3c3 1 4 5 1 7-4 3-11 4-18 5-2 6-5 11-10 14l6 10c-8-2-14-3-21-2l-8 5-7-7-15-2Z" fill={metal} />
+      <path d="M46 20c0 7 0 13 2 17l7-3-9-14Z" fill={paper} />
+      <path d="M60 45c7-6 15-8 21-5l-5 9-16-4Z" fill="#d9dde0" />
+      <path d="m70 44 7-1-2 4-5-3Z" fill="#697485" />
+      <path d="M91 48c3 0 7 1 10 2l-4 4-6-6Z" fill="#e6e5dc" />
+      <path d="M48 58c5 0 10-2 13-5-2 9-7 15-15 19m14-12c2 8 1 14-4 19m14-15c5 5 6 10 4 15" stroke="#bcc3ca" strokeWidth="1.1" strokeLinecap="round" />
+      <path d="M29 83C16 76 10 64 10 49m1 8-6-5m9 16-7-3m13 12-8-2m79 8c12-7 18-19 18-34m-1 9 6-5m-9 15 7-3m-13 12 8-2" stroke="#a1aaa5" strokeWidth="1.25" strokeLinecap="round" />
+      <path d="m17 73-2-8 7 5m75 4 2-8-7 5" fill="#a1aaa5" />
     </>}
     {kind === 'wish' && <>
       <path d="m60 9 23 30-6 28-17 18-17-18-6-28L60 9Z" fill="#a9b9ce" stroke="#75879e" strokeWidth="1.4" />
@@ -52,15 +44,6 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
       <path d="m37 39 19 2 4-32m-4 32 12 0 15-2" stroke="#f5f5ef" strokeWidth="1.2" />
       <path d="m23 29 2 8 7 2-7 2-2 8-2-8-7-2 7-2 2-8Zm72 22 2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" fill="#a7acb7" />
       <circle cx="33" cy="69" r="2" fill="#b0ac9d" /><circle cx="90" cy="26" r="1.5" fill="#b0ac9d" />
-    </>}
-    {kind === 'codex' && <>
-      <path d="m34 17 49 7-7 57-51-8 9-56Z" fill={metal} stroke="#6f7887" strokeWidth="1.2" />
-      <path d="m39 15 48 7-7 56-48-7 7-56Z" fill={paper} stroke="#9ba1a7" strokeWidth="1.2" />
-      <path d="m40 14 43 6-7 54-43-6 7-54Z" fill="#818c9d" stroke="#c4c4bf" strokeWidth="1.2" />
-      <path d="m46 21 30 4-5 40-30-4 5-40Z" stroke="#c4c3b8" strokeWidth=".8" />
-      <path d="M57 59c-1-10 2-21 11-27m-10 13c-10-5-9-12-9-12 8 0 12 6 9 12Zm2-3c9 0 13-7 13-7-8-2-13 1-13 7Zm-4 10c-9-1-11-8-11-8 8-2 12 2 11 8Z" stroke="#dcd9c8" fill="#dcd9c8" strokeWidth=".8" strokeLinecap="round" />
-      <path d="m32 72 47 7m-45-4 43 7" stroke="#d2cdbc" strokeWidth="1.2" />
-      <path d="m17 64 4 6-6 1m77-13-3 8 7-3" fill="#a6ada9" />
     </>}
     {kind === 'settings' && <>
       <path d="m49 14 4 9 10-1 3-9 12 4-1 10 8 6 9-3 7 11-7 7 2 10 9 4-3 13-11-1-6 8 1 8-14 3-5-8-10-1-6 7-11-6 2-10-6-7-10 1-4-12 8-6 1-10-8-6 6-11 10 3 8-5 1-10 13-3Z" fill={metal} transform="translate(-2 -2) scale(.88) translate(10 7)" />
