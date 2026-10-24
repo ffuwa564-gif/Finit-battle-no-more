@@ -1,7 +1,9 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 test('toast dismisses with its text intact and a new notice survives dismissal', async ({ page }) => {
   await page.goto('/#bag');
+  await enterGame(page);
   const buy = page.getByRole('button', { name: '10 G で購入', exact: true });
   await buy.click();
   const toast = page.locator('.toast.notice-surface');
@@ -21,6 +23,7 @@ test('toast dismisses with its text intact and a new notice survives dismissal',
 test('reduced motion uses opacity without moving the notice', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#bag');
+  await enterGame(page);
   await page.getByRole('button', { name: '10 G で購入', exact: true }).click();
   const toast = page.locator('.toast.notice-surface');
   await expect(toast).toHaveCSS('animation-name', 'notice-fade-in');

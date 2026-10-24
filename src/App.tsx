@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
-import { Button, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem } from './ui';
+import { Button, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen } from './ui';
 import { content, validateContent } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
@@ -22,6 +22,8 @@ const validPages = new Set<string>([...navigation.map(n => n.page), 'preview']);
 function currentPage(): Page { const route = location.hash.slice(1).split('/')[0]; return validPages.has(route) ? route as Page : 'home'; }
 
 export default function App() {
+  const [started, setStarted] = useState(false);
+  const [entering, setEntering] = useState(false);
   const [save, setSave] = useState<GameSave | null>(null);
   const state = useRef<GameSave | null>(null);
   const busyRef = useRef(false);
@@ -116,10 +118,16 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [toast]);
 
+  useEffect(() => {
+    if (!entering) return;
+    const timer = setTimeout(() => setStarted(true), 320);
+    return () => clearTimeout(timer);
+  }, [entering]);
+
   const battle = save?.battle;
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   useEffect(() => {
-    if (!event || !save) return;
+    if (!event || !save || !started) return;
     playSound(battleSounds[event.kind], event.rarity);
     const cleanup = animateEvent(event, save.settings.reducedMotion);
     const duration = event.kind === 'dialogue' ? 4400 : event.kind === 'drop' ? 2200 : event.kind === 'wave' ? 2400 : 1800;
@@ -130,10 +138,17 @@ export default function App() {
     };
     timer = setTimeout(complete, Math.max(1200, duration / save.settings.speed));
     return () => { clearTimeout(timer); cleanup(); };
-  }, [event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
+  }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>データを守るため、停止しました。</h1><p role="alert">{fatal}</p><p className="subtle">セーブの初期化や上書きは行っていません。</p><Button variant="primary" onClick={() => location.reload()}>再読み込み</Button></Panel></div>;
   if (!save) return <div className="app-loading" role="status"><Moon size={38} strokeWidth={1} /><p>記憶をたどっています…</p></div>;
+  if (!started) return <TitleScreen leaving={entering} returning={!!save.battle} onStart={() => {
+    if (entering) return;
+    configureBgm(save.battle ? 'battle' : 'home', save.settings.bgmVolume);
+    unlockBgm();
+    void enableAudio().then(() => playSound('confirm'));
+    setEntering(true);
+  }} />;
   const props = { save, busy, artworkSuspended: !!character, command, navigate, inspect: setCharacter };
   const view = save.battle ? <BattleView {...props} /> : page === 'dungeons' ? <DungeonsView {...props} /> : page === 'party' ? <PartyView {...props} /> : page === 'bag' ? <BagView {...props} /> : page === 'recruit' ? <RecruitView {...props} /> : page === 'gacha' ? <GachaView {...props} /> : page === 'codex' ? <CodexView {...props} /> : page === 'settings' ? <SettingsView {...props} /> : page === 'preview' ? <PreviewView {...props} /> : <HomeView {...props} />;
   return <div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>静謐の残響</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label="メインメニュー">{navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{item.title}</span>{page === item.page && !save.battle && <ChevronRight size={13} />}</Button>)}</nav><div className="sidebar-bottom"><Shield size={16} /><p>自動保存</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>静謐の残響</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label="G" /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label="石" /><Button variant="icon" title={save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 0.5 : 0 } })}>{save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button></div></header><main className="main-content" id="main-content">{view}</main></div>{(save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />}{character && <CharacterDetail character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{toast?.text}</Toast></div>;

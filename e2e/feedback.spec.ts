@@ -1,3 +1,4 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 test('SE reaches the output at audible level, covers cues, and respects mute', async ({ page }) => {
@@ -19,6 +20,7 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
     } as typeof AudioNode.prototype.connect;
   });
   await page.goto('/#settings');
+  await enterGame(page);
   await page.getByRole('group', { name: 'BGM音量' }).getByRole('button', { name: '0%', exact: true }).click();
   await page.evaluate(async () => {
     const audio = await import('/src/platform/audio.ts'); await audio.enableAudio(); audio.setAudioVolume(1);
@@ -46,6 +48,7 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
   expect(mutedPeak).toBeLessThan(.001);
   // Real UI routes exercise startup queuing and non-button dismissal sounds.
   await page.goto('/#bag');
+  await enterGame(page);
   await page.getByRole('button', { name: '10 G で購入', exact: true }).click();
   await expect.poll(() => page.evaluate(() => (window as any).__seStats.cues)).toContain('purchase');
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'パーティ', exact: true }).click();
@@ -57,6 +60,7 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
 
 test('item healing and battle damage show exact per-unit numbers with generated notices', async ({ page }) => {
   await page.goto('/');
+  await enterGame(page);
   await page.getByRole('heading', { name: '旅の支度' }).waitFor();
   await page.evaluate(async () => {
     const { content } = await import('/src/content/index.ts');
@@ -68,6 +72,7 @@ test('item healing and battle damage show exact per-unit numbers with generated 
     await persistSave(save, 0);
   });
   await page.reload();
+  await enterGame(page);
   await page.getByRole('button', { name: '回復薬 2' }).click();
   const target = page.locator('.party-strip button').first();
   const unitId = await target.locator('..').getAttribute('data-unit');

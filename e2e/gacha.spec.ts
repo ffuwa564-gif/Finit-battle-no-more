@@ -1,8 +1,10 @@
+import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
 test('goddess collection animates both SSRs and grants an owned goddess on the guaranteed draw', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#gacha');
+  await enterGame(page);
   await expect(page.getByRole('heading', { name: 'ゴス☆イザナミコレクション', exact: true })).toBeVisible();
   await expect(page.locator('.goddess-feature')).toHaveCount(2);
   await expect(page.getByRole('button', { name: 'SSR イザナミの詳細', exact: true })).toBeVisible();
@@ -31,6 +33,7 @@ test('goddess collection animates both SSRs and grants an owned goddess on the g
     save.stones = 20; save.seed = 42; save.revision += 1; await persistSave(save, revision);
   });
   await page.reload();
+  await enterGame(page);
   await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
@@ -43,6 +46,7 @@ test('goddess collection animates both SSRs and grants an owned goddess on the g
   await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
   await expect(page.getByText('迎え入れ済み', { exact: true })).toHaveCount(1);
   await page.reload();
+  await enterGame(page);
   await expect(page.getByText('迎え入れ済み', { exact: true })).toHaveCount(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
 });
@@ -54,6 +58,7 @@ test('SSR motion follows reduced motion and leaves other rarities as still artwo
   let requests = 0;
   page.on('request', request => { if (/video\/gacha-.*\.mp4/.test(request.url())) requests++; });
   await page.goto('/#gacha');
+  await enterGame(page);
   await expect(page.locator('.goddess-collection .animated-illustration[data-animation-state="static"]')).toHaveCount(2);
   for (const video of await page.locator('.goddess-collection video').all()) await expect(video).not.toHaveAttribute('src');
   expect(requests).toBe(0);
