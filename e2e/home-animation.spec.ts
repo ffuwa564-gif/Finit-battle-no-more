@@ -8,6 +8,11 @@ test('home portrait plays silently and pauses with controls, visibility and scro
   await expect(video).toHaveJSProperty('muted', true);
   await expect(video).toHaveJSProperty('loop', true);
   await expect(video).toHaveAttribute('playsinline', '');
+  await expect(video).toHaveAttribute('muted', '');
+  // iOS can pause media independently when suspending a standalone app.
+  await video.evaluate((node: HTMLVideoElement) => node.pause());
+  await page.getByRole('button', { name: 'ホームのアニメーションを再生', exact: true }).click();
+  await expect(video).toHaveJSProperty('paused', false);
   const save = await page.evaluate(async () => { const { loadSave } = await import('/src/platform/save.ts'); return loadSave(); });
   await page.getByRole('button', { name: 'ホームのアニメーションを停止', exact: true }).click();
   await expect(video).toHaveJSProperty('paused', true);
@@ -58,4 +63,35 @@ test('a failed animation retains the painting and working home navigation', asyn
   await expect(root.locator('img')).toBeVisible();
   await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: 'パーティ', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'パーティ', exact: true })).toBeVisible();
+});
+
+test('blocked autoplay offers a play button and retries inside the user gesture', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.addInitScript(() => {
+    // Model a browser policy blocking native autoplay as well as play().
+    const setAttribute = Element.prototype.setAttribute;
+    Element.prototype.setAttribute = function (name, value) {
+      if (this instanceof HTMLVideoElement && name.toLowerCase() === 'autoplay') return;
+      setAttribute.call(this, name, value);
+    };
+    const autoplay = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'autoplay')!;
+    Object.defineProperty(HTMLMediaElement.prototype, 'autoplay', {
+      configurable: true, get: autoplay.get,
+      set(value) { autoplay.set!.call(this, this instanceof HTMLVideoElement ? false : value); },
+    });
+    let insideTap = false;
+    document.addEventListener('click', () => { insideTap = true; }, true);
+    document.addEventListener('click', () => { insideTap = false; });
+    const original = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function () {
+      if (this instanceof HTMLVideoElement && !insideTap) return Promise.reject(new DOMException('Autoplay blocked', 'NotAllowedError'));
+      return original.call(this);
+    };
+  });
+  await page.goto('/');
+  const video = page.locator('.animated-illustration video');
+  await expect(page.locator('.animated-illustration')).toHaveAttribute('data-animation-state', 'blocked');
+  await page.getByRole('button', { name: 'ホームのアニメーションを再生', exact: true }).click();
+  await expect.poll(() => video.evaluate((node: HTMLVideoElement) => node.currentTime)).toBeGreaterThan(0);
+  await expect(page.getByRole('button', { name: 'ホームのアニメーションを停止', exact: true })).toBeVisible();
 });
