@@ -27,7 +27,7 @@ test('mobile common UI, flavor details and leader change remain usable', async (
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/');
   await expect(page.getByRole('heading', { name: '旅の支度' })).toBeVisible();
-  await page.goto('/#party');
+  await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: 'パーティ', exact: true }).click();
   await page.getByRole('button', { name: 'リーダーにする' }).first().click();
   await expect.poll(async () => (await stored(page)).leaderId).toBe('elaine');
   await page.getByRole('button', { name: /^エレイン/ }).first().click();

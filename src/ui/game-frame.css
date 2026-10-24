@@ -1,0 +1,14 @@
+/* The illustrated home and battlefield are standalone game frames. */
+.app-shell:is(.is-menu,.is-exploring) { grid-template-columns: minmax(0,1fr); }
+.app-shell:is(.is-menu,.is-exploring) > .sidebar { display: none; }
+.app-shell.is-exploring .app-body > .topbar { display: none; }
+.app-shell.is-exploring .main-content { padding-inline: 12px; }
+.app-shell.is-exploring .app-footer { display: none; }
+@media (min-width: 761px) {
+  .app-shell.is-exploring .app-body { padding-top: 24px; }
+  .app-shell.is-menu .main-content { padding-top: 24px; }
+}
+@media (max-width: 760px) {
+  .app-shell.is-exploring .app-body { padding-top: 8px; }
+  .app-shell.is-exploring .main-content { padding-inline: 10px; }
+}

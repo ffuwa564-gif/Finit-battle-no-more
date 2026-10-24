@@ -20,7 +20,7 @@ a { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 .muted, .text-muted { color: var(--muted); }
 .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 9px; }
-.button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 11px 18px; background: var(--paper); color: var(--ink); font-weight: 500; font-size: 12px; letter-spacing: .025em; cursor: pointer; transition: background .18s, border-color .18s, transform .18s, box-shadow .18s; text-decoration: none; line-height: 1.5; }
+.button { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 11px 18px; background: var(--paper); color: var(--ink); font-weight: 500; font-size: 12px; letter-spacing: .025em; cursor: pointer; transition: background .18s, border-color .18s, transform .18s, box-shadow .18s; text-decoration: none; line-height: 1.5; }
 .button:hover:not(:disabled) { background: var(--paper-bright); border-color: var(--gold-light); box-shadow: 0 3px 12px #333c4510; }
 .button:active:not(:disabled) { transform: translateY(1px); }
 .button:disabled { opacity: .44; box-shadow: none; }

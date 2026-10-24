@@ -46,10 +46,15 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
       <circle cx="33" cy="69" r="2" fill="#b0ac9d" /><circle cx="90" cy="26" r="1.5" fill="#b0ac9d" />
     </>}
     {kind === 'settings' && <>
-      <path d="m49 14 4 9 10-1 3-9 12 4-1 10 8 6 9-3 7 11-7 7 2 10 9 4-3 13-11-1-6 8 1 8-14 3-5-8-10-1-6 7-11-6 2-10-6-7-10 1-4-12 8-6 1-10-8-6 6-11 10 3 8-5 1-10 13-3Z" fill={metal} transform="translate(-2 -2) scale(.88) translate(10 7)" />
-      <circle cx="61" cy="48" r="16" fill={paper} stroke="#c2c6c9" strokeWidth="2" />
-      <circle cx="61" cy="48" r="7" fill="#a1a9b5" />
-      <path d="M28 77c-7-6-10-14-10-22m0 7-6-3m9 12-7-1m80 7c7-6 10-14 10-22m0 7 6-3m-9 12 7-1" stroke="#adb1ab" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M49 82h26M54 78h16M61 72v8" stroke="#8a8f96" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="61" cy="44" r="31" fill={paper} fillOpacity=".35" stroke="#818a98" strokeWidth="2" />
+      <circle cx="61" cy="44" r="26" stroke="#b3b4b2" strokeWidth="1.2" />
+      <ellipse cx="61" cy="44" rx="29" ry="12" transform="rotate(-30 61 44)" stroke="#9199a4" strokeWidth="1.6" />
+      <path d="M61 10v7m0 54v7M27 44h7m54 0h7M37 20l5 5m38 38 5 5M37 68l5-5m38-38 5-5" stroke="#9ca2aa" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="m61 22 7 24-7 18-7-18 7-24Z" fill={metal} stroke="#848d9a" strokeWidth="1" />
+      <path d="m61 22 0 25 7-1-7-24Z" fill="#d7d6cc" />
+      <circle cx="61" cy="44" r="4" fill="#e0d5bd" stroke="#92959a" strokeWidth="1.1" />
+      <path d="M25 79c-7-6-10-14-10-22m0 7-6-3m9 12-7-1m85 7c7-6 10-14 10-22m0 7 6-3m-9 12 7-1" stroke="#adb1ab" strokeWidth="1.15" strokeLinecap="round" />
     </>}
   </svg>;
 }
