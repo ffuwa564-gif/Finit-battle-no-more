@@ -69,3 +69,30 @@ test('a real event clear keeps currency provisional through reload and claims it
   const claimed=await stored(page);expect(claimed.materials['kuzuha-contract:rare']).toBe(1);expect(claimed.stones).toBe(1);
   await page.reload();await enterGame(page);expect((await stored(page)).materials['kuzuha-contract:rare']).toBe(1);
 });
+
+test('the awakened boss animation can be paused and resumed inside the battle scene', async ({page})=>{
+  await page.setViewportSize({width:390,height:844});await page.goto('/#dungeons/boss-events');await enterGame(page);
+  await page.evaluate(async()=>{
+    const {loadSave,persistSave}=await import('/src/platform/save.ts');const {content}=await import('/src/content/index.ts');
+    const {createBattle,advanceReplay,resolveRound,usePotion}=await import('/src/domain/engine.ts');
+    const save=(await loadSave())!;const revision=save.revision;
+    save.ownedIds.push('mireille','evelyn','asteria','kuzuha');save.partyIds=['mireille','evelyn','asteria','kuzuha'];save.leaderId='evelyn';
+    let battle=createBattle(content,save.partyIds,save.leaderId,'kuzuha-awakening',5,42,'preview-battle');
+    for(let i=0;i<1000&&battle.wave<4;i++){
+      if(battle.phase==='playing')battle=advanceReplay(battle,content);
+      else if(battle.phase==='ready'){
+        const low=battle.units.filter(u=>u.side==='party'&&u.hp>0).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
+        if(low&&low.hp/low.maxHp<.65&&battle.potionsRemaining)battle=usePotion(battle,low.uid);
+        battle=resolveRound(battle,content).battle;
+      }else throw Error(battle.phase);
+    }
+    save.battle=battle;save.revision=revision+1;await persistSave(save,revision);
+  });
+  await page.reload();await enterGame(page);
+  const video=page.locator('.enemy-page video');
+  await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
+  await page.getByRole('button',{name:'九尾・葛葉のアニメーションを停止',exact:true}).click();
+  await expect(video).toHaveJSProperty('paused',true);
+  await page.getByRole('button',{name:'九尾・葛葉のアニメーションを再生',exact:true}).click();
+  await expect(video).toHaveJSProperty('paused',false);
+});

@@ -85,7 +85,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
 const dungeons = [...normalDungeons, ...eventDungeons, ...stoneEvents];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: char.origin.includes('event') ? `art/event-${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
-  width: char.origin.includes('event') ? 1024 : 1536, height: char.origin.includes('event') ? 1536 : 1024, anchor: char.origin.includes('event') ? '50% 18%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
+  width: char.origin.includes('event') ? 1024 : 1536, height: char.origin.includes('event') ? 1536 : 1024, anchor: char.origin.includes('event') ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const menuAssets: AssetDef[] = [
   { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration animated with Runway; task aaafd36f-ba2c-4282-a8d8-a263ac011992.' },
