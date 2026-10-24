@@ -122,15 +122,16 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
   const previousCharacter = transition ? characterById(transition.previous.characterId) : undefined;
   const previousSceneId = previousCharacter?.encounterArtId ?? previousCharacter?.artId;
   const previousScene = content.assets.find(asset => asset.id === previousSceneId);
+  const previousPortraitScene = Boolean(previousScene && previousScene.height > previousScene.width);
   const aliveIndex = available.findIndex(unit => unit.uid === front.uid);
   const position = aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
-  return <div className={`enemy-carousel${reduced ? ' enemy-carousel--reduced' : ''}`}
+  return <div className={`enemy-carousel${portraitScene ? ' enemy-carousel--portrait' : ''}${reduced ? ' enemy-carousel--reduced' : ''}`}
     role="group" aria-label="敵を切り替える" tabIndex={canChange ? 0 : -1}
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={cancelGesture}
     onPointerLeave={() => { if (gesture.current && !gesture.current.horizontal) cancelGesture(); }} onLostPointerCapture={cancelGesture}>
-    {transition && !reduced && <div className="enemy-page--outgoing" key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
-      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousScene?.anchor ?? '50% 30%' }} />
+    {transition && !reduced && <div className={`enemy-page--outgoing${previousPortraitScene ? ' enemy-page--portrait' : ''}`} key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
+      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousPortraitScene ? '50% 0%' : previousScene?.anchor ?? '50% 30%' }} />
     </div>}
     <div className={`enemy-page${portraitScene ? ' enemy-page--portrait' : ''}${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
       {character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={character.name} label={character.name} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt="" draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />}
