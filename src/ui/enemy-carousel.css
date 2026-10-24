@@ -29,7 +29,8 @@
 .enemy-page, .enemy-page--outgoing { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: #344150; }
 .enemy-page-art { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; -webkit-user-drag: none; }
 /* Keep both illustrations visible during a directional page turn. */
-.enemy-page--incoming { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
+.enemy-page--incoming { background: transparent; }
+.enemy-page--incoming > .enemy-page-art { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
 .enemy-page--outgoing { animation: enemy-page-exit .48s cubic-bezier(.22,.61,.36,1) both; }
 @keyframes enemy-page-enter { from { transform: translateX(calc(var(--page-direction) * 100%)); } to { transform: translateX(0); } }
 @keyframes enemy-page-exit { from { transform: translateX(0); } to { transform: translateX(calc(var(--page-direction) * -100%)); } }
