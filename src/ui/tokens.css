@@ -1,0 +1,26 @@
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+  --page: #eeeee8;
+  --paper: #f7f5ed;
+  --paper-bright: #fcfaf4;
+  --ink: #3e4852;
+  --muted: #89908c;
+  --slate: #526978;
+  --slate-deep: #3a5262;
+  --sidebar: #25313c;
+  --teal: #82a29b;
+  --gold: #a9946c;
+  --gold-light: #c9bfa5;
+  --border: #d9dbd1;
+  --selected: #e5ece7;
+  --danger: #a16e63;
+  --radius: 11px;
+  --radius-sm: 7px;
+  --space-xs: 5px;
+  --space-sm: 9px;
+  --space-md: 15px;
+  --space-lg: 23px;
+  --space-xl: 32px;
+  --shadow-card: 0 3px 16px #26332a04;
+}
