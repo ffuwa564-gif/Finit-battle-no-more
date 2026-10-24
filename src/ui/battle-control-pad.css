@@ -1,54 +1,60 @@
+/* Moonlit glass and fine silver edges follow modern-command-palette.png. */
 .battle-layout .battle-control-pad {
-  position: relative;
   margin: 0;
-  padding: 8px 8px 20px;
-  border: 1px solid #c4bfb4;
-  border-radius: 22px 22px 0 0;
-  background: var(--paper-grain,none),radial-gradient(ellipse at 30% 10%,#faf7ee77,transparent 65%),linear-gradient(135deg,#f2eee4,#e8e2d6);
-  box-shadow: inset 0 1px 0 #fffdf7,inset 0 0 0 2px #f7f4eb,inset 0 0 0 3px #d7d1c466;
+  padding: 10px;
+  border-top: 1px solid #e2e4e5b3;
+  background: radial-gradient(ellipse at 0 100%,#9cabb64d,transparent 60%),linear-gradient(145deg,#475565,#202b3d 78%);
+  box-shadow: inset 0 1px 0 #ffffff30;
+  color: #f1f0e8;
 }
-.battle-control-pad__toolbar { position: absolute; z-index: 2; top: 8px; right: 8px; display: flex; justify-content: flex-end; align-items: center; min-height: 44px; padding: 0; }
-.battle-control-pad__toolbar .toolbar { gap: 2px; }
-.battle-control-pad__toolbar .button { min-height: 44px; min-width: 44px; padding: 5px 8px; border-color: transparent; background: transparent; box-shadow: none; font-size: 10px; }
-.battle-control-pad__board { position: relative; width: 100%; aspect-ratio: 1.22; }
-.battle-control-pad__strategies { display: contents; }
-.battle-layout .battle-control-pad .framed-control {
-  position: absolute;
-  display: block;
-  height: auto;
-  aspect-ratio: 1;
-  min-width: 44px;
+.battle-control-pad__board { display: grid; grid-template-columns: minmax(0,3fr) minmax(52px,.85fr) minmax(90px,1.1fr); gap: 7px; }
+.battle-control-pad__strategies { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); min-width: 0; padding: 2px; border: 1px solid #d2d5d59c; border-radius: 13px; background: #1723354d; box-shadow: inset 0 0 0 2px #dde5eb16; }
+.battle-layout .battle-control-pad .moon-command {
+  position: relative;
+  min-width: 0;
   min-height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: none;
-  color: #f6f2e9;
-  overflow: visible;
-  isolation: isolate;
-  transition: filter .16s,transform .16s;
+  padding: 8px 4px;
+  gap: 7px;
+  border: 1px solid #d5d9dc91;
+  border-radius: 12px;
+  background: linear-gradient(145deg,#e4e8ef17,#b2bec708 48%,#dbe1ea1c);
+  box-shadow: inset 0 0 0 2px #d9e0e91a,inset 0 1px 0 #fff7e654,0 2px 5px #101a2a33;
+  color: #f4f0e8;
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-shadow: 0 1px 3px #15233d;
+  transition: filter .18s,box-shadow .18s;
 }
-.battle-layout .battle-control-pad .framed-control:hover:not(:disabled) { background: transparent; border: 0; box-shadow: none; filter: brightness(1.07); }
-.battle-layout .battle-control-pad .framed-control:active:not(:disabled) { transform: scale(.97); }
-.battle-layout .battle-control-pad .framed-control:disabled { opacity: .52; }
-.battle-layout .battle-control-pad .framed-control.is-selected { background: transparent; box-shadow: none; filter: brightness(1.08); }
-.battle-layout .battle-control-pad .framed-control.is-selected::after { content: ''; position: absolute; inset: 4%; border: 1px solid #f4f8e9bb; border-radius: 50%; pointer-events: none; }
-.battle-layout .battle-control-pad .framed-control > .atlas-icon { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; pointer-events: none; z-index: -1; }
-.battle-control-pad .framed-control--balanced { width: 52%; left: 0; top: 31%; }
-.battle-control-pad .framed-control--aggressive { width: 20%; left: 3%; top: 0; }
-.battle-control-pad .framed-control--survival { width: 20%; left: 27%; top: 0; }
-.battle-control-pad .framed-control--advance { width: 35.5%; right: 0; top: 44%; }
-.battle-control-pad .framed-control--potion { width: 15%; left: 53%; top: 27%; }
-.battle-control-pad .framed-control--retreat { width: 9%; left: 53%; bottom: 18px; }
-.framed-control__label { position: absolute; left: 50%; top: calc(100% + 3px); transform: translateX(-50%); color: #444e5c; font-family: var(--font-display); font-size: clamp(11px,2.8vw,16px); font-weight: 400; line-height: 1.3; text-align: center; text-shadow: 0 1px 0 #fffdf2; white-space: nowrap; pointer-events: none; }
-.framed-control--advance .framed-control__label { font-size: clamp(15px,3.5vw,22px); }
-.framed-control--retreat .framed-control__label { font-size: 10px; }
-.framed-control__count { position: absolute; right: 0; bottom: 0; min-width: 1.55em; padding: 2px 4px; border-radius: 12px; background: #f3eee3; color: #435160; border: 1px solid #a6abb0; font-size: 11px; line-height: 1.1; font-family: var(--font-display); text-shadow: none; }
+.battle-layout .battle-control-pad .moon-command:hover:not(:disabled) { background-color: #9fb9d326; filter: brightness(1.15); }
+.battle-layout .battle-control-pad .moon-command:active:not(:disabled) { filter: brightness(.95); transform: none; }
+.battle-layout .battle-control-pad .moon-command:focus-visible { outline: 2px solid #f8e8be; outline-offset: -3px; }
+.battle-layout .battle-control-pad .moon-command:disabled { opacity: .45; }
+.battle-layout .battle-control-pad .moon-command > svg { flex-shrink: 0; stroke-width: 1.15; filter: drop-shadow(0 1px 2px #d7e8ff45); }
+.battle-layout .battle-control-pad .moon-command--strategy { flex-direction: column; gap: 6px; min-height: 92px; border-color: transparent; border-radius: 10px; background: transparent; box-shadow: none; font-size: 9px; letter-spacing: .035em; padding-inline: 1px; }
+.moon-command--strategy + .moon-command--strategy::before { content: ''; position: absolute; left: -1px; top: 20%; bottom: 20%; width: 1px; background: linear-gradient(transparent,#d2d5da70,transparent); }
+.battle-layout .battle-control-pad .moon-command--strategy > svg { width: 31px; height: 31px; }
+.battle-layout .battle-control-pad .moon-command.is-selected { border-color: #e3e8f2bd; background: linear-gradient(145deg,#b8d3f34d,#6e94c36b),var(--command-moonlight) center / cover; box-shadow: inset 0 0 0 2px #cde1ff42,inset 0 1px 0 #fff8e9,0 0 12px #bdd6ff33; }
+.moon-command__marker { width: 18px; height: 2px; background: #c8cdda85; border-radius: 2px; }
+.is-selected > .moon-command__marker { background: #faf5df; box-shadow: 0 0 6px #d3e9ff; }
+.battle-layout .battle-control-pad .moon-command--potion { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; letter-spacing: .1em; }
+.battle-layout .battle-control-pad .moon-command--potion > svg { width: 30px; height: 30px; color: #dceaff; fill: #9fc8f126; }
+.moon-command__count { position: absolute; right: 6px; top: 6px; font-size: 11px; letter-spacing: 0; color: #dee6f0; }
+.battle-control-pad__utilities { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.battle-control-pad__toolbar { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; border: 1px solid #cbd0db91; border-radius: 11px; background: #14203145; box-shadow: inset 0 0 0 2px #d9e0e91a,inset 0 1px 0 #fff7e640; }
+.battle-control-pad__toolbar .button { flex: 1; min-width: 44px; min-height: 44px; padding: 3px; gap: 2px; border: 0; border-radius: 8px; background: transparent; box-shadow: none; color: #e0e6ef; font-size: 10px; }
+.battle-control-pad__toolbar .button:hover:not(:disabled) { background: #b8d2f02b; }
+.battle-layout .battle-control-pad .moon-command--retreat { flex: 1; gap: 5px; padding: 5px 2px; font-size: 8px; letter-spacing: .06em; }
+.battle-layout .battle-control-pad .moon-command--retreat > svg { width: 17px; height: 17px; }
+.battle-layout .battle-control-pad .moon-command--advance { grid-column: 1 / -1; min-height: 92px; overflow: hidden; border-radius: 16px; border-color: #f0e7cdcc; gap: 18px; padding: 15px 10px 22px; background: linear-gradient(100deg,#dbe3eb33,#7c9fd21a 45%,#eee3c830),var(--command-moonlight) center 58% / cover; box-shadow: inset 0 0 0 3px #d5e5ff40,inset 0 0 0 5px #e3e7ec38,0 0 0 1px #ebdfc94d,0 4px 17px #9dbff833; font-size: clamp(26px,6vw,40px); letter-spacing: .16em; line-height: 1.2; }
+.battle-layout .battle-control-pad .moon-command--advance > svg { width: 43px; height: 43px; stroke-width: 1.3; fill: #c9ddf42b; }
+.moon-command__flourish { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); font-size: 11px; line-height: 1; color: #eff4fc; }
+.moon-command__flourish::before,.moon-command__flourish::after { content: ''; position: absolute; top: 50%; width: 38px; height: 1px; background: linear-gradient(90deg,transparent,#d9e8ff); }
+.moon-command__flourish::before { right: 17px; }
+.moon-command__flourish::after { left: 17px; transform: rotate(180deg); }
 @media (max-width: 360px) {
-  .battle-layout .battle-control-pad { padding-inline: 5px; padding-bottom: 20px; }
-  .battle-control-pad__toolbar .button { padding-inline: 5px; }
+  .battle-layout .battle-control-pad { padding: 7px 5px; }
+  .battle-control-pad__board { grid-template-columns: minmax(0,3fr) 48px 90px; gap: 4px; }
+  .battle-layout .battle-control-pad .moon-command--strategy { font-size: 8px; letter-spacing: 0; }
+  .battle-layout .battle-control-pad .moon-command--strategy > svg { width: 27px; height: 27px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .battle-layout .battle-control-pad .framed-control { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .battle-layout .battle-control-pad .moon-command { transition: none; } }

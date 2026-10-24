@@ -70,6 +70,7 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const menuAssets: AssetDef[] = [
+  { id: 'command-moonlight', path: 'art/command-moonlight.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated moonlit command surface for this project.' },
   { id: 'menu-logos', path: 'art/menu-logos.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated monochrome menu crest atlas for this project.' },
   { id: 'control-frames', path: 'art/control-frames.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated complete framed control atlas for this project.' },
   { id: 'menu-atlas', path: 'art/menu-atlas.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated painted UI icon atlas for this project.' },
