@@ -19,7 +19,9 @@
     "check:locales": "tsx scripts/check-locales.ts",
     "build:itch": "npm run typecheck && npm run check:content && npm run check:ui && npm run check:locales && vite build --mode itch --outDir dist-itch && node scripts/package-itch.mjs",
     "test:itch": "playwright test --config playwright.itch.config.ts",
-    "capture:itch": "tsx scripts/capture-itch-media.ts"
+    "capture:itch": "tsx scripts/capture-itch-media.ts",
+    "capture:trailer": "tsx scripts/capture-trailer.ts",
+    "edit:trailer": "python scripts/edit-trailer.py"
   },
   "dependencies": {
     "gsap": "^3.14.0",
