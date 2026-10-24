@@ -7,6 +7,8 @@ import './styles.css';
 import './screens.css';
 import './home.css';
 import './battle.css';
+import './enemy-carousel.css';
+export { EnemyCarousel } from './EnemyCarousel';
 export { MenuEmblem } from './MenuEmblem';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';

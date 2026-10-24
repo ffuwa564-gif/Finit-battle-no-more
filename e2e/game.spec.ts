@@ -95,3 +95,39 @@ test('retreat forfeits all provisional materials while retaining earned gold', a
   expect((await stored(page)).materials).toEqual({});
   expect((await stored(page)).gold).toBe(before.gold);
 });
+
+test('enemy display rotates through the same units without changing combat state', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await openDungeon(page);
+  await expect(page.getByRole('button', { name: 'ラウンドを進める', exact: true })).toBeEnabled();
+  const before = await stored(page);
+  const front = page.locator('.enemy-orbit-slot.is-front');
+  const first = await front.getAttribute('data-enemy-id');
+  expect(first).toBeTruthy();
+  for (let index = 0; index < 4; index++) {
+    const previous = await front.getAttribute('data-enemy-id');
+    await page.getByRole('button', { name: '次の敵を表示', exact: true }).click();
+    await expect(front).not.toHaveAttribute('data-enemy-id', previous!);
+  }
+  await expect(front).toHaveAttribute('data-enemy-id', first!);
+  const region = page.locator('.enemy-carousel');
+  const bounds = await region.boundingBox();
+  if (!bounds) throw new Error('Enemy display has no layout');
+  await page.mouse.move(bounds.x + bounds.width * 0.75, bounds.y + bounds.height * 0.6);
+  await page.mouse.down();
+  await page.mouse.move(bounds.x + bounds.width * 0.25, bounds.y + bounds.height * 0.6, { steps: 8 });
+  await page.mouse.up();
+  await expect(front).not.toHaveAttribute('data-enemy-id', first!);
+  const stableTransform = await front.evaluate(element => getComputedStyle(element).transform);
+  // A pointer released outside before the swipe threshold must not keep dragging on hover.
+  await page.mouse.move(bounds.x + 4, bounds.y + bounds.height * 0.6);
+  await page.mouse.down();
+  await page.mouse.move(bounds.x - 3, bounds.y + bounds.height * 0.6);
+  await page.mouse.up();
+  await page.mouse.move(bounds.x + bounds.width * 0.6, bounds.y + bounds.height * 0.6);
+  expect(await front.evaluate(element => getComputedStyle(element).transform)).toBe(stableTransform);
+  const after = await stored(page);
+  expect(after.revision).toBe(before.revision);
+  expect(after.battle).toEqual(before.battle);
+});

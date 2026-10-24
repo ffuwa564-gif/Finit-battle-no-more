@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Coins, Compass, Crown, Gem, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, DoorOpen, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel } from '../ui';
 import { content, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
 import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Strategy, Unit } from '../domain/types';
@@ -117,12 +117,7 @@ export function BattleView(p: ViewProps) {
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label="敵の戦場">
       <img className="scene-background" src={assetPath(dungeon.artId)} alt="" />
       <div className="scene-mist" />
-      <div className={`enemy-line enemy-line--${enemies.length}`}>
-        {enemies.map(unit => { const ch = characterById(unit.characterId); return <div className={`enemy-unit${unit.boss ? ' enemy-unit--boss' : ''}${unit.hp <= 0 ? ' is-defeated' : ''}`} data-unit={unit.uid} key={unit.uid}>
-          <div className="enemy-status"><div className="enemy-name">{unit.boss && <Crown size={13} />}<span>{ch.name}</span><small aria-label="難易度定数">{(ch.strength / 10).toFixed(1)}</small></div><HPBar hp={unit.hp} maxHp={unit.maxHp} label={`${ch.name}のHP`} /></div>
-          <img className="enemy-art" src={assetPath(ch.artId)} alt={ch.name} />
-        </div>; })}
-      </div>
+      <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} event={event} reducedMotion={p.save.settings.reducedMotion} />
       {event && <div className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={`toast-${event.id}`}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</div>}
       {event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}
     </section>

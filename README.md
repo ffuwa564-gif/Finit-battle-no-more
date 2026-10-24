@@ -51,3 +51,5 @@ npm run test:e2e      # ブラウザーで探索・再開・確定・撤退・�
 - [モバイルのメニュー](docs/screenshots/menu-mobile.png)
 - [通常戦](docs/screenshots/battle.png)
 - [ボス戦](docs/screenshots/boss-mobile.png)
+
+敵の表示は、手前の1体を主役にした遠近カルーセルです。左右ボタン・横スワイプ・左右キーで一周でき、奥の敵は小さく淡く見えます。表示の切替は攻撃対象や行動順に影響しません。
