@@ -20,6 +20,7 @@ export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
+export { MotionSettingsProvider } from './animation-settings';
 export { EventDungeons } from './EventDungeons';
 export { CharacterArtwork } from './CharacterArtwork';
 export { AnimatedIllustration } from './AnimatedIllustration';

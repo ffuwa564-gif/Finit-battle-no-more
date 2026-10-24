@@ -46,6 +46,7 @@ export function validateContent(content: Content): string[] {
     reject(Object.keys(skill).some(key => !['id', 'name', 'template', 'strength', 'soundProfile'].includes(key)), `skills/${skill.id}: derived effect overrides are forbidden`);
   }
   for (const char of content.characters) {
+    if (char.portraitMotionId) reject(!char.motionId || !content.assets.some(asset => asset.id === char.portraitMotionId && asset.kind === 'video'), `characters/${char.id}: portrait motion must reference a video and full animation`);
     if (char.motionId) reject(!content.assets.some(asset => asset.id === char.motionId && asset.kind === 'video'), `characters/${char.id}: motion must reference a video asset`);
     reject(!plain(char.name) || !plain(char.epithet) || !plain(char.flavor), `characters/${char.id}: plain name, epithet and flavor required`);
     if (char.dialogue) for (const [event, text] of Object.entries(char.dialogue)) reject(!['intro', 'threshold', 'defeat'].includes(event) || !plain(text), `characters/${char.id}: plain boss dialogue required`);
