@@ -36,7 +36,7 @@ export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave
     rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
     completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
-    battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 0.5, reducedMotion: false, speed: 1 },
+    battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
   };
 }
 
