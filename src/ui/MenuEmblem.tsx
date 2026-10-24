@@ -10,7 +10,7 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
   if (kind === 'bag' || kind === 'codex') return <img className={`menu-emblem menu-emblem--painted menu-emblem--${kind}`} src={assetPath(`menu-${kind}`)} alt="" aria-hidden="true" draggable={false} />;
   return <svg className={`menu-emblem menu-emblem--${kind}`} viewBox="0 0 120 92" fill="none" aria-hidden="true">
     <defs>
-      <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#8d94a4" /><stop offset=".56" stopColor="#697387" /><stop offset="1" stopColor="#a2a8b5" /></linearGradient>
+      <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#818995" /><stop offset=".56" stopColor="#626c7e" /><stop offset="1" stopColor="#979eaa" /></linearGradient>
       <linearGradient id={`${id}-paper`} x1="28" y1="19" x2="87" y2="81" gradientUnits="userSpaceOnUse"><stop stopColor="#f2ede2" /><stop offset="1" stopColor="#d2ccbf" /></linearGradient>
       <radialGradient id={`${id}-halo`}><stop stopColor="#d7dce4" stopOpacity=".78" /><stop offset="1" stopColor="#d7dce4" stopOpacity="0" /></radialGradient>
     </defs>
@@ -19,6 +19,7 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
       <path d="M27 80c9-4 12-11 12-20 0-8-5-12-5-24 0-17 12-28 28-28 18 0 29 12 28 28-1 7-4 11-8 16-3 5-4 10-2 16 1 5 5 9 10 13-16 0-28 2-39 4-9 2-18 1-24-5Z" fill={metal} />
       <path d="M64 17c9-1 17 6 18 15l-2 6 7 7c1 1 0 3-2 3l-6 1-1 8c-1 5-5 7-11 7-3 7 0 12 8 16-11 0-22 2-31 4 2-7 9-10 12-17 2-5 1-10-1-15 7-7 11-19 9-35Z" fill={paper} />
       <path d="M61 12c-14 7-16 17-12 33 4 17-3 23-11 32M56 16c-13 10-16 19-12 31 5 16-2 25-8 30M66 13c-9 8-9 18-4 27" stroke="#bdc1c7" strokeWidth="1.25" strokeLinecap="round" />
+      <path d="M42 31c-6 13 7 25 0 37-3 6-8 10-13 12m15-2c8-9 13-14 11-24M72 18c6 4 9 9 9 15" stroke="#e1dfd4" strokeOpacity=".6" strokeWidth=".65" strokeLinecap="round" />
       <path d="M75 35c2-1 4 0 5 1" stroke="#747e8c" strokeWidth="1" strokeLinecap="round" />
       <path d="M88 79c9-6 13-15 14-26m-2 9 7-5m-10 14 8-3m-14 10 8-1" stroke="#a5aaa6" strokeWidth="1.15" strokeLinecap="round" />
       <path d="M101 60c-5-2-7-5-7-8 5 1 8 3 7 8Zm-5 11c-5 0-8-3-9-6 6-1 9 2 9 6Z" fill="#a5aaa6" />
@@ -47,13 +48,15 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
     </>}
     {kind === 'settings' && <>
       <path d="M49 82h26M54 78h16M61 72v8" stroke="#8a8f96" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="61" cy="44" r="31" fill={paper} fillOpacity=".35" stroke="#818a98" strokeWidth="2" />
+      <circle cx="61" cy="44" r="31" fill={metal} fillOpacity=".17" stroke="#818a98" strokeWidth="2" />
       <circle cx="61" cy="44" r="26" stroke="#b3b4b2" strokeWidth="1.2" />
+      <path d="m48 16 2 5m24-5-2 5M33 31l5 2m46 22 5 2M33 57l5-2m46-22 5-2M48 72l2-5m24 5-2-5" stroke="#9b9fa3" strokeWidth=".7" />
       <ellipse cx="61" cy="44" rx="29" ry="12" transform="rotate(-30 61 44)" stroke="#9199a4" strokeWidth="1.6" />
       <path d="M61 10v7m0 54v7M27 44h7m54 0h7M37 20l5 5m38 38 5 5M37 68l5-5m38-38 5-5" stroke="#9ca2aa" strokeWidth="1.3" strokeLinecap="round" />
       <path d="m61 22 7 24-7 18-7-18 7-24Z" fill={metal} stroke="#848d9a" strokeWidth="1" />
       <path d="m61 22 0 25 7-1-7-24Z" fill="#d7d6cc" />
       <circle cx="61" cy="44" r="4" fill="#e0d5bd" stroke="#92959a" strokeWidth="1.1" />
+      <path d="M16 68c-4-1-6-4-6-7 4 0 7 3 6 7Zm5 9c-4 1-7-1-9-4 4-1 8 0 9 4Zm85-9c4-1 6-4 6-7-4 0-7 3-6 7Zm-5 9c4 1 7-1 9-4-4-1-8 0-9 4Z" fill="#a1aaa5" />
       <path d="M25 79c-7-6-10-14-10-22m0 7-6-3m9 12-7-1m85 7c7-6 10-14 10-22m0 7 6-3m-9 12 7-1" stroke="#adb1ab" strokeWidth="1.15" strokeLinecap="round" />
     </>}
   </svg>;

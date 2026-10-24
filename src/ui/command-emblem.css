@@ -1,0 +1,9 @@
+.command-emblem { display: block; overflow: visible; color: #727c8c; }
+.command-emblem__light { stop-color: #f3f0e6; }
+.command-emblem__middle { stop-color: #c7cbd0; }
+.command-emblem__shade { stop-color: #8d97a5; }
+.command-emblem__liquid { fill: #8caca9; fill-opacity: .8; }
+.button.is-selected .command-emblem, .battle-advance-control .command-emblem { color: #e7e3d9; }
+.button.is-selected .command-emblem__light, .battle-advance-control .command-emblem__light { stop-color: #fffdf0; }
+.button.is-selected .command-emblem__middle, .battle-advance-control .command-emblem__middle { stop-color: #e4e4de; }
+.button.is-selected .command-emblem__shade, .battle-advance-control .command-emblem__shade { stop-color: #a7afbb; }

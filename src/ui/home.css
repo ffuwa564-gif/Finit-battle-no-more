@@ -22,7 +22,7 @@
 }
 .hub-illustration {
   position: relative;
-  height: 410px;
+  height: 422px;
   margin: 0 -11px;
   overflow: hidden;
   border-radius: 27px 27px 0 0;
@@ -31,7 +31,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50% 18%;
 }
 .hub-illustration::after {
   content: '';
@@ -55,23 +55,24 @@
   align-items: center;
   gap: 10px;
   min-width: 0;
-  padding: 6px 17px 6px 7px;
-  background: #f3f0e7e6;
-  border: 1px solid #fdfbf1;
-  border-radius: 35px 15px 15px 35px;
+  padding: 5px 17px 5px 6px;
+  background: linear-gradient(125deg, #faf7eeed, #e7e4deeb);
+  border: 1px solid #eeeae0;
+  border-radius: 36px 15px 15px 36px;
   box-shadow: 0 2px 8px #202c3a17;
   backdrop-filter: blur(6px);
 }
 .hub-profile-avatar {
-  width: 47px;
-  height: 47px;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid #a8a6a0;
   box-shadow: 0 0 0 2px #f5f2e4;
   background: #d4d8da;
 }
-.hub-profile-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; transform: scale(1.5); transform-origin: 50% 20%; }
+.hub-profile-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; transform: scale(2.35); transform-origin: 50% 18%; }
 .hub-profile-copy { min-width: 0; }
 .hub-profile-copy > strong { display: block; font-family: var(--font-display); color: #4a4c55; font-weight: 500; font-size: 17px; letter-spacing: .05em; }
 .hub-profile-copy > span { display: flex; align-items: center; gap: 4px; font-size: 8px; color: #7c7d83; margin-top: 3px; }
@@ -109,21 +110,21 @@
   justify-content: center;
   gap: 0;
   min-width: 0;
-  min-height: 139px;
-  padding: 7px 6px 13px;
-  border: 1px solid #c9c5bc;
+  min-height: 133px;
+  padding: 4px 6px 11px;
+  border: 1px solid #c4c0b7;
   border-radius: 23px;
-  background: radial-gradient(ellipse at 22% 12%, #fffdf8e6, transparent 70%), radial-gradient(ellipse at 80% 78%, #a89b830d, transparent 64%), linear-gradient(145deg, #f4f0e9f7, #e9e5ddec);
-  box-shadow: inset 0 1px 1px #fffef5e6, 0 2px 4px #414b5510;
-  color: #4c5260;
+  background: radial-gradient(ellipse at 19% 15%, #fffdf7b8, transparent 56%), radial-gradient(ellipse at 85% 88%, #b3a99416, transparent 66%), linear-gradient(125deg, #ece8dfef, #f0ece3f2 48%, #e7e3dbf0);
+  box-shadow: inset 0 1px 0 #fffdf3d9, 0 2px 3px #414b5514;
+  color: #424955;
   text-align: center;
   overflow: hidden;
 }
 .home-hub-menu .hub-menu-tile::after { content: none; }
 .home-hub-menu .hub-menu-tile:hover:not(:disabled) { background: linear-gradient(135deg, #fcfaf4, #eeeae4); border-color: #aeb4b7; box-shadow: inset 0 1px 1px #fffef5, 0 5px 12px #36415216; transform: translateY(-1px); }
-.menu-emblem { width: 107px; height: 83px; flex-shrink: 0; filter: drop-shadow(0 2px 1px #49556515); }
-.menu-emblem--painted { object-fit: contain; padding: 1px 7px 2px; transform: scale(1.08); filter: drop-shadow(0 3px 2px #3b46521d); -webkit-user-drag: none; }
-.hub-menu-tile > strong { position: relative; z-index: 1; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: .05em; white-space: nowrap; }
+.menu-emblem { width: 119px; height: 91px; flex-shrink: 0; filter: drop-shadow(0 2px 1px #49556515); }
+.menu-emblem--painted { object-fit: contain; padding: 1px 9px 2px; transform: scale(1.08); filter: drop-shadow(0 3px 2px #3b46521d); -webkit-user-drag: none; }
+.hub-menu-tile > strong { position: relative; z-index: 1; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: .055em; white-space: nowrap; text-shadow: 0 1px 0 #fffdf6a6; }
 .home-hub .hub-dungeon-entry {
   position: relative;
   isolation: isolate;
@@ -154,11 +155,11 @@
 @media (max-width: 760px) {
   .home-hub { width: 100%; max-width: 430px; border-radius: 22px; padding: 0 8px 10px; box-shadow: 0 2px 0 #faf9f1 inset, 0 7px 25px #313a4718; }
   .home-hub::after { inset: 4px; border-radius: 18px; }
-  .hub-illustration { height: 360px; margin-inline: -8px; border-radius: 21px 21px 0 0; }
+  .hub-illustration { height: 372px; margin-inline: -8px; border-radius: 21px 21px 0 0; }
   .hub-illustration > img { object-position: 50% 50%; }
   .hub-profile { top: 9px; left: 8px; right: 8px; gap: 7px; }
-  .hub-profile-person { gap: 8px; padding: 5px 11px 5px 5px; }
-  .hub-profile-avatar { width: 37px; height: 37px; }
+  .hub-profile-person { gap: 7px; padding: 4px 11px 4px 4px; }
+  .hub-profile-avatar { width: 44px; height: 44px; }
   .hub-profile-copy > strong { font-size: 14px; }
   .hub-profile-copy > span { font-size: 7px; }
   .hub-currencies { min-width: 100px; gap: 3px; }
@@ -169,10 +170,10 @@
   .hub-scene-note > span { font-size: 6px; letter-spacing: .2em; }
   .hub-scene-note > p { font-size: 14px; letter-spacing: .08em; }
   .home-hub-menu { gap: 5px; margin-top: -16px; }
-  .home-hub-menu .hub-menu-tile { min-height: 128px; padding: 4px 3px 10px; border-radius: 18px; }
+  .home-hub-menu .hub-menu-tile { min-height: 122px; padding: 3px 3px 9px; border-radius: 18px; }
   .home-hub-menu .hub-menu-tile::after { inset: 4px; border-radius: 14px; }
-  .menu-emblem { width: 85px; height: 67px; }
-  .hub-menu-tile > strong { font-size: 13px; letter-spacing: .015em; }
+  .menu-emblem { width: 97px; height: 75px; }
+  .hub-menu-tile > strong { font-size: 14px; letter-spacing: .015em; }
   .home-hub .hub-dungeon-entry { min-height: 85px; margin-top: 9px; border-radius: 19px; padding: 10px 12px; gap: 12px; }
   .hub-dungeon-entry strong { font-size: 18px; letter-spacing: .07em; }
   .hub-dungeon-entry small { font-size: 6px; }
@@ -185,6 +186,8 @@
   .home-hub .hub-dungeon-entry { min-height: 72px; }
 }
 @media (max-width: 359px) {
+  .hub-profile-person { gap: 5px; padding-right: 8px; }
+  .hub-profile-copy > strong { font-size: 13px; }
   .hub-menu-tile > strong { font-size: 12px; letter-spacing: 0; }
-  .menu-emblem { width: 76px; height: 61px; }
+  .menu-emblem { width: 86px; height: 66px; }
 }

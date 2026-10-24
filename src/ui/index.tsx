@@ -13,6 +13,7 @@ export { EnemyCarousel } from './EnemyCarousel';
 export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
+export { CommandEmblem } from './CommandEmblem';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean }
