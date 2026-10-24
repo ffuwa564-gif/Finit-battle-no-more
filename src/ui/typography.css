@@ -1,0 +1,6 @@
+/* Stable engraved figures prevent counters from shifting as their values change. */
+:root { font-variant-numeric: lining-nums tabular-nums; }
+
+@media (max-width: 760px) {
+  .battle-layout .round-label { font-size: 9px; }
+}

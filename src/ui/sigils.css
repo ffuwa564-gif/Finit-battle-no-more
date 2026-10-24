@@ -1,0 +1,7 @@
+.currency-emblem { display: inline-block; flex-shrink: 0; vertical-align: middle; }
+.currency-emblem--stone { color: #6d7f9a; }
+.currency-emblem--gold { color: #998260; }
+.enemy-carousel-name > .encounter-crest { width: 32px; height: 36px; filter: drop-shadow(0 1px 3px #17273566); }
+@media (max-width: 760px) {
+  .enemy-carousel-name > .encounter-crest { width: 28px; height: 32px; }
+}

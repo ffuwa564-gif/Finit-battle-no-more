@@ -1,0 +1,88 @@
+/* The battlefield, portraits and command surface form one quiet silver frame. */
+.battle-layout {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin-inline: auto;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #b9b5ac;
+  border-radius: 28px;
+  background: #f3f0e7;
+  box-shadow: 0 0 0 3px #eeeae2, 0 0 0 4px #cbc7bd, 0 16px 52px #26344524;
+}
+.battle-layout .battle-scene { min-height: 0; height: 424px; border: 0; border-radius: 0; overflow: hidden; background: #465361; }
+.battle-layout .scene-background { opacity: 1; object-position: 50% 43%; filter: saturate(.56) contrast(.78) brightness(.88); }
+.battle-layout .scene-mist { background: linear-gradient(0deg,#c5d0dca6,#b4c4d43d 24%,transparent 57%),linear-gradient(180deg,#17273718,transparent 38%); }
+.battle-layout .enemy-line {
+  position: absolute;
+  inset: 76px 15px 10px;
+  min-height: 0;
+  padding: 0;
+  gap: 9px 4px;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-rows: repeat(2,minmax(0,1fr));
+  align-items: end;
+}
+.battle-layout .enemy-unit { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; width: 100%; height: 100%; max-width: none; min-height: 0; }
+.battle-layout .enemy-status { width: 92%; max-width: 205px; z-index: 1; padding: 5px 7px 7px; border: 1px solid #d6d6cfa1; border-radius: 7px; background: linear-gradient(135deg,#f4f1e6c9,#e5e8e2a6); backdrop-filter: blur(4px); box-shadow: inset 0 1px 0 #fffdf570; }
+.battle-layout .enemy-name { color: #4b5968; margin: 0 0 5px; font-size: 10px; text-shadow: none; gap: 5px; flex-wrap: nowrap; }
+.battle-layout .enemy-name > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.battle-layout .enemy-name small { font-size: 9px; margin-left: auto; background: #f7f5ec61; border-color: #a8afb2; color: #5c6975; padding: 1px 5px; }
+.battle-layout .enemy-unit .hp-meter { padding: 0; }
+.battle-layout .enemy-unit .hp-bar { height: 4px; border: 1px solid #d8cfcc79; border-radius: 6px; background: #2a35458c; }
+.battle-layout .enemy-unit .hp-bar > span { background: linear-gradient(90deg,#a88b92,#d1b2b5); }
+.battle-layout .enemy-art { width: 100%; height: calc(100% - 43px); min-height: 0; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 8px 7px #1a2d3b55); }
+.battle-layout .enemy-line--4 .enemy-unit:nth-child(-n+2) { transform: translateY(4px); }
+.battle-layout .enemy-line--4 .enemy-unit:nth-child(n+3) { z-index: 2; }
+.battle-layout .enemy-line--3 .enemy-unit:last-child { grid-column: 1 / -1; width: 58%; justify-self: center; }
+.battle-layout .enemy-line--2 { grid-template-rows: 1fr; align-items: center; }
+.battle-layout .enemy-line--2 .enemy-unit { max-height: 260px; }
+.battle-layout .enemy-line--1 { display: block; inset: 77px 28px 0; }
+.battle-layout .enemy-line--1 .enemy-unit:only-child { max-width: none; height: 100%; }
+.battle-layout .enemy-line--1 .enemy-status { position: absolute; top: 0; left: 0; width: 100%; max-width: none; z-index: 3; padding: 8px 13px 10px; border: 0; background: transparent; backdrop-filter: none; box-shadow: none; }
+.battle-layout .enemy-line--1 .enemy-name { font-family: var(--font-display); font-size: 18px; margin-bottom: 7px; color: #f5f1e8; text-shadow: 0 1px 6px #172a3d; }
+.battle-layout .enemy-line--1 .enemy-name small { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; margin-top: -3px; border: 1px solid #d1c0bd; background: #755f6cbd; color: #f8f4ec; }
+.battle-layout .enemy-line--1 .enemy-art { position: absolute; bottom: -5px; left: -10%; height: calc(100% + 65px); width: 120%; max-width: none; padding: 0; object-fit: contain; object-position: center bottom; }
+.battle-layout .enemy-line--1 .enemy-unit--boss .enemy-art { height: calc(100% + 65px); max-height: none; }
+.battle-layout .battle-toast { top: 104px; padding: 9px 17px; font-size: 11px; border-radius: 9px; color: #4f5a69; border-color: #c9c6bd; background: #f8f6eef2; box-shadow: 0 4px 17px #273b4e28; }
+.battle-layout .battle-toast.dialogue-toast { top: auto; bottom: 16px; width: 87%; padding: 12px 18px; line-height: 1.8; }
+/* One portrait ribbon sits over the stage edge, with the HP strips kept clear beneath. */
+.battle-layout .party-strip { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; padding: 7px 7px 6px; margin: -3px 0 0; border-radius: 17px 17px 0 0; border: 1px solid #c6c4ba; border-bottom: 0; background: linear-gradient(#f7f5ed,#eae9e1); box-shadow: 0 -1px 5px #20344712,inset 0 1px 0 #ffffff; }
+.battle-layout .party-unit { width: 100%; min-width: 0; }
+.battle-layout .party-unit > .character-portrait { padding: 0; width: 100%; gap: 0; border-radius: 6px; border: 0; background: transparent; box-shadow: none; }
+.battle-layout .party-strip .portrait-image { border: 1px solid #adb5b3; border-radius: 6px; aspect-ratio: 1.15; }
+.battle-layout .party-strip .portrait-copy { display: none; }
+.battle-layout .party-strip .portrait-constant { display: none; }
+.battle-layout .party-strip .leader-mark { width: 18px; height: 18px; left: 3px; top: 3px; background: #69737dd9; color: #f7edd5; }
+.battle-layout .party-strip .leader-mark svg { width: 10px; height: 10px; }
+.battle-layout .party-strip .hp-meter { padding: 4px 1px 0; }
+.battle-layout .party-strip .hp-bar { height: 7px; background: #b4bdbb; border: 1px solid #8d9e9c; border-radius: 7px; box-shadow: inset 0 1px 2px #3e575f24,0 1px 0 #ffffff90; }
+.battle-layout .party-strip .hp-bar > span { background: linear-gradient(90deg,#548a87,#a0c4b9); }
+.battle-layout .party-hp { display: none; }
+.battle-layout .party-strip--selecting .character-portrait.button:not(:disabled) { box-shadow: 0 0 0 2px #9bbab2,0 0 15px #c1d9d3; }
+@media (max-width: 760px) {
+  .battle-layout .battle-toast { top: 96px; }
+  .battle-layout { max-width: 500px; border-radius: 22px; }
+  .battle-layout .battle-scene { height: 385px; }
+  .battle-layout .enemy-line { inset: 72px 9px 8px; gap: 5px 0; }
+  .battle-layout .enemy-status { padding: 4px 6px 5px; }
+  .battle-layout .enemy-name { font-size: 9px; margin-bottom: 4px; }
+  .battle-layout .enemy-name small { font-size: 8px; }
+  .battle-layout .enemy-art { height: calc(100% - 34px); }
+  .battle-layout .enemy-line--1 { inset: 74px 15px 0; }
+  .battle-layout .enemy-line--1 .enemy-name { font-size: 16px; }
+  .battle-layout .enemy-line--1 .enemy-art { height: calc(100% + 65px); padding: 0; }
+  .battle-layout .party-strip { padding: 7px 6px 6px; gap: 4px; }
+  .battle-layout .party-strip .portrait-image { aspect-ratio: 1.08; }
+
+}
+@media (max-width: 360px) {
+  .battle-layout .battle-scene { height: 350px; }
+
+}
+
+@media (max-width: 760px) and (max-height: 740px) {
+  .battle-layout .battle-scene { height: 350px; }
+}

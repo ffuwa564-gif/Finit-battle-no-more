@@ -1,0 +1,46 @@
+import { test, expect } from '@playwright/test';
+
+test('BGM unlocks on interaction, switches with exploration, and remembers independent mute', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: '旅の支度' })).toBeVisible();
+  await expect(page.locator('audio[data-bgm]')).toHaveCount(0);
+  await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: '設定', exact: true }).click();
+  const music = page.locator('audio[data-bgm]');
+  await expect(music).toHaveAttribute('data-scene', 'home');
+  await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);
+  await expect(music).toHaveJSProperty('loop', true);
+  const volume = page.getByRole('group', { name: 'BGM音量' });
+  await volume.getByRole('button', { name: '0%', exact: true }).click();
+  await expect(music).toHaveJSProperty('paused', true);
+  await volume.getByRole('button', { name: '25%', exact: true }).click();
+  await expect(music).toHaveJSProperty('volume', 0.25);
+  await expect(music).toHaveJSProperty('paused', false);
+  await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ダンジョン', exact: true }).click();
+  await page.getByRole('button', { name: '探索の準備' }).first().click();
+  await page.getByRole('button', { name: '探索を始める' }).click();
+  await expect(music).toHaveAttribute('data-scene', 'battle');
+  await expect(music).toHaveAttribute('src', /audio\/uzumaki.mp3$/);
+  await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);
+  await page.getByRole('button', { name: '効果音をミュート', exact: true }).click();
+  await expect(music).toHaveJSProperty('paused', false);
+  await expect(music).toHaveJSProperty('volume', 0.25);
+  // Browser suspension does not restart the track or lose its volume setting.
+  await page.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => true }); document.dispatchEvent(new Event('visibilitychange')); });
+  await expect(music).toHaveJSProperty('paused', true);
+  await page.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => false }); document.dispatchEvent(new Event('visibilitychange')); });
+  await expect(music).toHaveJSProperty('paused', false);
+  await page.getByRole('button', { name: '撤退', exact: true }).click();
+  await page.getByRole('button', { name: '撤退する', exact: true }).click();
+  await page.getByRole('button', { name: '街へ戻る', exact: true }).click();
+  await expect(music).toHaveAttribute('data-scene', 'home');
+  await page.goto('/#settings');
+  await expect(volume.getByRole('button', { name: '25%', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await volume.getByRole('button', { name: '0%', exact: true }).click();
+  await page.reload();
+  await expect(volume.getByRole('button', { name: '0%', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('audio[data-bgm]')).toHaveCount(0);
+  expect(errors).toEqual([]);
+});
