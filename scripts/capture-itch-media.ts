@@ -31,6 +31,7 @@ try {
  const demo=createInitialSave(content,42);demo.stones=20;demo.drawCount=1;demo.ssrPity=1;
  await restore(demo);console.log('Capturing SSR');await page.setViewportSize({width:390,height:844});await page.goto(root+'#gacha');
  await page.getByRole('button',{name:'Summon for 5 Wishstones',exact:true}).click();
+ await page.getByRole('button',{name:'Use Guarantee and Summon',exact:true}).click();
  await expect(page.locator('.gacha-reveal.is-revealed')).toBeVisible({timeout:15000});
  await page.locator('.gacha-reveal__art img').first().evaluate((el:HTMLImageElement)=>el.decode());
  await page.screenshot({path:'artifacts/itch-media/ssr-en.jpg',type:'jpeg',quality:92});

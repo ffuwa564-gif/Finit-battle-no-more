@@ -159,6 +159,9 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
     const skill = get('heal');
     if (skill && target && target.hp / target.maxHp <= threshold && target.hp < target.maxHp) return { skill, template: 'heal', targets: [target] };
   }
+  const pair = get('mend_pair');
+  const wounded = allies.filter(unit => unit.hp < unit.maxHp * (strategy === 'aggressive' ? .65 : strategy === 'survival' ? .95 : .85)).sort(lowerHP).slice(0, 2);
+  if (pair && wounded.length === 2) return { skill: pair, template: 'mend_pair', targets: wounded };
   const cleanse = get('cleanse');
   const afflicted = allies.filter(unit => (unit.debuffUntil ?? -1) >= battle.round).sort(lowerHP)[0];
   if (cleanse && afflicted) return { skill: cleanse, template: 'cleanse', targets: [afflicted] };
@@ -178,6 +181,12 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
     const skill = get('buff');
     if (skill && target) return { skill, template: 'buff', targets: [target] };
   }
+  const dispel = get('dispel');
+  const empowered = enemies.filter(unit => (unit.buffUntil ?? -1) >= battle.round || (unit.regenUntil ?? -1) >= battle.round).sort((a,b) => b.hp - a.hp || byId(a,b))[0];
+  if (dispel && empowered) return { skill: dispel, template: 'dispel', targets: [empowered] };
+  const shatter = get('shatter');
+  const shielded = enemies.filter(unit => (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort((a,b) => (b.barrier ?? 0) - (a.barrier ?? 0) || byId(a,b))[0];
+  if (shatter && shielded) return { skill: shatter, template: 'shatter', targets: [shielded] };
   if (role === 'debuffer') {
     const target = enemies.filter((unit) => (unit.debuffUntil ?? -1) < battle.round).sort((a, b) => b.hp - a.hp || byId(a, b))[0];
     const skill = get('debuff');
@@ -188,6 +197,8 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const target = chooseTarget(enemies, strategy, content);
   const drain = get('drain');
   if (drain && (actor.hp < actor.maxHp * .7 || !get('attack'))) return { skill: drain, template: 'drain', targets: [target] };
+  const dawn = get('dawn');
+  if (dawn && (target.boss || (target.debuffUntil ?? -1) >= battle.round || strategy === 'aggressive' || !get('attack'))) return { skill: dawn, template: 'dawn', targets: [target] };
   const pierce = get('pierce');
   if (pierce && (strategy === 'aggressive' || target.boss || effectiveDefense(target, battle.round) >= actor.attack * .45 || !get('attack'))) return { skill: pierce, template: 'pierce', targets: [target] };
   const attack = get('attack');
@@ -195,13 +206,15 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   if (area) return { skill: area, template: 'area', targets: enemies };
   return { template: 'attack', targets: [chooseTarget(enemies, strategy, content)] };
 }
-function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false): { unit: Unit; amount: number; absorbed: number } {
+function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false): { unit: Unit; amount: number; absorbed: number; shattered: number } {
   const guard = guardable ? battle.units.find(unit => unit.hp > 0 && unit.side === target.side && unit.uid !== target.uid && unit.guardTarget === target.uid && (unit.guardUntil ?? -1) >= battle.round) : undefined;
   const recipient = guard ?? target;
+  const shattered = shattering && (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0;
+  if (shattering) { delete recipient.barrier; delete recipient.barrierUntil; }
   const passive = leaderEffect(battle, content);
   const resonance = actor.side === 'party' && passive === 'resonance' && !guardable ? 115 : 100;
-  const powerNumerator = effectiveAttack(actor, battle.round) * numerator * resonance;
-  const powerDenominator = denominator * 100;
+  const powerNumerator = effectiveAttack(actor, battle.round) * numerator * resonance * (dawning && (recipient.debuffUntil ?? -1) >= battle.round ? 125 : 100);
+  const powerDenominator = denominator * 100 * 100;
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - effectiveDefense(recipient, battle.round) * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
   if (actor.side === 'party' && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
   if (guard) amount = Math.max(1, Math.floor(amount * (370 - (guard.guardStrength ?? 10)) / 400));
@@ -209,10 +222,11 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
-  return { unit: recipient, amount: actual, absorbed };
+  return { unit: recipient, amount: actual, absorbed, shattered };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
+  mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
 };
 export function resolveRound(input: Battle, content: Content): RoundResult {
@@ -236,11 +250,20 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const action = chooseAction(actor, battle, content);
     const name = character(content, actor.characterId).name;
     const actionName = action.skill?.name ?? '通常攻撃';
-    const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0;
+    const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
     if (action.template === 'heal') {
       const target = action.targets[0]!;
       amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(effectiveAttack(actor, battle.round) * (action.skill!.strength + 30) / 20)));
       target.hp += amount; targetIds.push(target.uid);
+    } else if (action.template === 'mend_pair') {
+      for (const target of action.targets) {
+        const healed = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(effectiveAttack(actor, battle.round) * (action.skill!.strength + 30) / 40)));
+        target.hp += healed; amount += healed; targetIds.push(target.uid);
+      }
+    } else if (action.template === 'dispel') {
+      const target = action.targets[0]!;
+      delete target.buffUntil; delete target.buffStrength; delete target.regenUntil; delete target.regenStrength;
+      targetIds.push(target.uid);
     } else if (action.template === 'regen') {
       const target = action.targets[0]!; target.regenUntil = battle.round + 2; target.regenStrength = action.skill!.strength; targetIds.push(target.uid);
     } else if (action.template === 'barrier') {
@@ -255,10 +278,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     } else if (action.template === 'debuff') {
       const target = action.targets[0]!; target.debuffUntil = battle.round + 1; target.debuffStrength = action.skill!.strength; targetIds.push(target.uid);
     } else {
-      const numerator = action.template === 'pierce' ? action.skill!.strength + 30 : action.template === 'drain' ? 9 * (action.skill!.strength + 30) : action.template === 'area' ? 13 * (action.skill!.strength + 30) : action.skill ? 3 * (action.skill.strength + 30) : 1;
-      const denominator = action.template === 'pierce' ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
+      const numerator = action.template === 'shatter' ? action.skill!.strength + 30 : (action.template === 'pierce' || action.template === 'dawn') ? action.skill!.strength + 30 : action.template === 'drain' ? 9 * (action.skill!.strength + 30) : action.template === 'area' ? 13 * (action.skill!.strength + 30) : action.skill ? 3 * (action.skill.strength + 30) : 1;
+      const denominator = action.template === 'shatter' ? 50 : (action.template === 'pierce' || action.template === 'dawn') ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
       for (const target of action.targets) {
-        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce'); amount += hit.amount; absorbed += hit.absorbed; targetIds.push(hit.unit.uid);
+        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn'); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
       }
     }
     if (action.template === 'drain' && amount > 0) {
@@ -266,8 +289,8 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     }
     if (action.skill) actor.cooldowns[action.skill.id] = battle.round + skillCooldown(action.template);
     clearInvalidGuards(battle);
-    emit(battle, { kind: eventKind[action.template], text: `${name} — ${actionName}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
-    if (actor.side === 'party' && ['attack', 'area', 'pierce', 'drain'].includes(action.template) && amount > 0 && leaderEffect(battle, content) === 'lifesteal') {
+    emit(battle, { kind: eventKind[action.template], text: `${name} — ${actionName}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    if (actor.side === 'party' && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && amount > 0 && leaderEffect(battle, content) === 'lifesteal') {
       const healed = Math.min(actor.maxHp - actor.hp, Math.floor(amount * 8 / 100));
       if (healed > 0) { actor.hp += healed; emit(battle, { kind: 'heal', text: `${name} — 黄泉の契り`, actorId: actor.uid, targetIds: [actor.uid], amount: healed, unitsAfter: clone(battle.units) }); }
     }
@@ -290,6 +313,18 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const gold = Math.ceil(def.strength / 2); goldEarned += gold; battle.goldEarned += gold;
       if (!discoveredIds.includes(def.id)) discoveredIds.push(def.id);
       if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+      if (unit.boss && stage.bossLoot) {
+        const rewards = [...stage.bossLoot.guaranteed];
+        if (stage.bossLoot.bonus) {
+          const roll = rng(battle.seed); battle.seed = roll.seed;
+          if (roll.value * 100 < stage.bossLoot.bonus.chance) rewards.push(stage.bossLoot.bonus.reward);
+        }
+        for (const reward of rewards) {
+          battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+          const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
+          emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'rare' });
+        }
+      }
       if (special && event && stage.eventReward) {
         const reward = stage.eventReward;
         battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;

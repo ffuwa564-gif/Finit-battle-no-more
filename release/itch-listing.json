@@ -6,12 +6,22 @@
     "pricing": "No payments",
     "embed": "Click to launch in fullscreen",
     "mobile_friendly": "Enable after iPhone/Safari testing on itch.io",
-    "languages": ["Japanese", "English"],
-    "suggested_tags": ["RPG", "Turn-based", "Singleplayer", "Fantasy", "Gothic", "Anime"]
+    "languages": [
+      "Japanese",
+      "English"
+    ],
+    "suggested_tags": [
+      "RPG",
+      "Turn-based",
+      "Singleplayer",
+      "Fantasy",
+      "Gothic",
+      "Anime"
+    ]
   },
   "en": {
     "short_description": "A moonlit dungeon RPG of quiet ruins, unlikely companions, and gothic goddesses.",
-    "description": "Explore a ruined city beneath a silent moon. Assemble a party of up to four companions, choose a leader, and guide each round with Balanced, Offense, or Defense strategy. Companions choose their skills automatically as the battle unfolds.\n\nRecruit the enemies you encounter, gather materials, and build combinations of piercing attacks, barriers, regeneration, cleansing, and life drain. Your leader adds a distinct effect that can change how a party survives or finishes a fight.\n\nClear ten normal dungeons and three short, repeatable Wishstone routes. Challenge Kuzuha's five event difficulties, gather covenant materials, and work toward her separate awakened form.\n\nWishstones are earned through play. Five stones grant a Goddess Wish, with a one-time introductory SSR guarantee on your second wish, increasing SSR odds from the 74th wish without an SSR, and a guaranteed SSR by the 90th. SSR goddesses arrive with a special reveal sequence. Duplicate companions refund part of the stone cost. There are no real-money purchases.\n\nAn evolving browser-game prototype, available in Japanese and English. Progress saves in your browser; export a backup from Settings before clearing browser data or moving to another device or host.",
+    "description": "Explore a ruined city beneath a silent moon. Assemble a party of up to four companions, choose a leader, and guide each round with Balanced, Offense, or Defense strategy. Companions choose their skills automatically as the battle unfolds.\n\nRecruit the enemies you encounter, gather materials, and build combinations of piercing attacks, barriers, regeneration, cleansing, and life drain. Your leader adds a distinct effect that can change how a party survives or finishes a fight.\n\nClear ten normal dungeons and three short, repeatable Wishstone routes. Challenge Kuzuha's five event difficulties, gather covenant materials, and work toward her separate awakened form.\n\nWishstones are earned through play. Five stones grant a Goddess Wish, with a one-time introductory SSR guarantee on your second wish, increasing SSR odds from the 74th wish without an SSR, and a guaranteed SSR by the 90th. Choose between Gothic Goddesses and Divine Attire — A Kimono Flower Banquet, featuring Selene, Athena, Flora, and Iris in elegant kimono. Wish totals, the one-time introductory guarantee, and SSR pity are shared across both collections. A confirmation appears before the introductory guarantee is spent. SSR goddesses arrive with a special reveal sequence. Duplicate companions refund part of the stone cost. There are no real-money purchases.\n\nAn evolving browser-game prototype, available in Japanese and English. Progress saves in your browser; export a backup from Settings before clearing browser data or moving to another device or host.",
     "controls": "Mouse or touch to select commands. ATTACK resolves a round; NEXT advances the current battle event. Choose ITEM between rounds to heal an ally. Swipe or use arrow keys to browse enemies. Keyboard focus and Enter work for buttons. Confirm rewards after clearing a dungeon.",
     "content_note": "Fantasy combat and suggestive character outfits. Reduce Motion and separate music/sound-effect controls are available.",
     "ai_disclosure": "Generative AI was used for illustrations and assisted with programming. Selected character illustrations were animated with Runway. Artwork and gameplay were selected, assembled, and iterated for this project. Music tracks are credited separately below.",
@@ -19,7 +29,7 @@
   },
   "ja": {
     "short_description": "月下の廃都を、仲間と女神たちと巡る静かなダンジョンRPG。",
-    "description": "静かな月の下、忘れられた街を巡るブラウザーRPGです。最大4人の仲間とリーダーを選び、均衡・攻撃重視・生存重視の作戦でラウンドを進めます。スキルは戦況に応じて仲間が自動使用します。\n\n出会った敵を仲間に迎え、素材を集め、貫通・障壁・再生・浄化・吸収を組み合わせて編成を工夫できます。通常ダンジョン10種、祈願石を毎回獲得できる短い周回ルート3種、葛葉の5難度イベントを収録。専用素材を集めて通常版・覚醒版の獲得を目指します。\n\n女神の祈願に使う石はゲーム内で獲得します。初回のみ2回目SSR保証、74回目から確率上昇、90回天井。SSRには特別な登場演出を用意しています。重複は石を一部還元し、実際のお金での購入はありません。\n\n日本語・英語に対応した開発中のブラウザーゲームです。進行はこのブラウザーに保存されます。端末・配信サイトの移行やブラウザーデータ削除の前に、設定からバックアップを保存してください。",
+    "description": "静かな月の下、忘れられた街を巡るブラウザーRPGです。最大4人の仲間とリーダーを選び、均衡・攻撃重視・生存重視の作戦でラウンドを進めます。スキルは戦況に応じて仲間が自動使用します。\n\n出会った敵を仲間に迎え、素材を集め、貫通・障壁・再生・浄化・吸収を組み合わせて編成を工夫できます。通常ダンジョン10種、祈願石を毎回獲得できる短い周回ルート3種、葛葉の5難度イベントを収録。専用素材を集めて通常版・覚醒版の獲得を目指します。\n\n女神の祈願に使う石はゲーム内で獲得します。初回のみ2回目SSR保証、74回目から確率上昇、90回天井。「ゴス☆イザナミコレクション」と「神々の装い ― 和の花宴 ―」を選べます。和の花宴にはセレネ・アテナ・フローラ・イリスが登場。祈願回数・初回SSR保証・天井は全シリーズ共通で、初回保証の使用前には確認が出ます。SSRには特別な登場演出を用意しています。重複は石を一部還元し、実際のお金での購入はありません。\n\n日本語・英語に対応した開発中のブラウザーゲームです。進行はこのブラウザーに保存されます。端末・配信サイトの移行やブラウザーデータ削除の前に、設定からバックアップを保存してください。",
     "controls": "マウス・タップで操作。ATTACKで1ラウンド進行、NEXTで演出送り。合間にITEMから回復する仲間を選びます。敵の表示は左右ボタン・横スワイプ・左右キーで切り替え。踏破後は報酬の確定を忘れずに。",
     "content_note": "ファンタジー戦闘と、露出のある衣装のキャラクター表現を含みます。動き軽減とBGM・効果音の個別調整に対応。",
     "ai_disclosure": "イラスト生成とプログラミング支援に生成AIを使用。一部のキャラクター原画はRunwayで動画化しています。素材の選択・構成・ゲーム内容は本作向けに調整しています。BGMは別途記載する音楽素材を使用。"
@@ -27,8 +37,14 @@
   "credits": {
     "music": "Amacha Music Studio / 甘茶の音楽工房",
     "tracks": [
-      {"title": "悲しみの曖昧な対象 (Ambiguous Sadness)", "source": "https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html"},
-      {"title": "渦巻き (Whirlpool)", "source": "https://amachamusic.chagasi.com/music_uzumaki.html"}
+      {
+        "title": "悲しみの曖昧な対象 (Ambiguous Sadness)",
+        "source": "https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html"
+      },
+      {
+        "title": "渦巻き (Whirlpool)",
+        "source": "https://amachamusic.chagasi.com/music_uzumaki.html"
+      }
     ],
     "font": "Cinzel numeral subset — SIL Open Font License; license included in the game bundle.",
     "icons": "Lucide — ISC license"

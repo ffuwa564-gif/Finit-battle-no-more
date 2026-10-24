@@ -6,7 +6,7 @@ import { roleName } from '../content';
 import { Button, Modal, CharacterArtwork } from './index';
 import './gacha-reveal.css';
 
-export function GachaReveal({ character, reducedMotion, onClose, onReveal, duplicate, refund }: { character: CharacterDef; reducedMotion: boolean; onClose: () => void; onReveal: () => void; duplicate: boolean; refund: number }) {
+export function GachaReveal({ character, reducedMotion, onClose, onReveal, duplicate, refund, introGuarantee = false }: { character: CharacterDef; reducedMotion: boolean; onClose: () => void; onReveal: () => void; duplicate: boolean; refund: number; introGuarantee?: boolean }) {
   const [revealed, setRevealed] = useState(false);
   const announced = useRef(false);
   const announce = useRef(onReveal); announce.current = onReveal;
@@ -23,7 +23,7 @@ export function GachaReveal({ character, reducedMotion, onClose, onReveal, dupli
       <div className="gacha-reveal__ring" aria-hidden="true" />
       <div className="gacha-reveal__particles" aria-hidden="true">{localize(Array.from({ length: ssr ? 32 : 12 }, (_, i) => <i key={i} style={{ '--angle': `${i * 137.5}deg`, '--distance': `${100 + i % 7 * 27}px`, '--delay': `${i % 8 * 75}ms` } as CSSProperties} />))}</div>
       {localize(!revealed && <div className="gacha-reveal__invocation"><Sparkles size={40} strokeWidth={1} /><p>{localize(ssr ? '運命の扉が、開く。' : '祈りが、星に届く。')}</p><Button variant="secondary" onClick={() => setRevealed(true)}>{tr("演出をスキップ")}</Button></div>)}
-      {localize(revealed && <><div className="gacha-reveal__burst" aria-hidden="true" /><CharacterArtwork className="gacha-reveal__art" character={character} reducedMotion={reducedMotion} /><div className="gacha-reveal__result" role="status"><span className="gacha-reveal__rarity">{localize(character.rarity)}</span><span className="gacha-reveal__new">{localize(duplicate ? `祈願石 ${refund}個を還元` : 'NEW GODDESS')}</span><p>{localize(character.epithet)}</p><h3>{localize(character.name)}</h3><small>{localize(roleName(character.role))}</small><Button className="gacha-reveal__accept" onClick={onClose}>{localize(duplicate ? '祈願に戻る' : '女神を迎える')}</Button></div></>)}
+      {localize(revealed && <><div className="gacha-reveal__burst" aria-hidden="true" /><CharacterArtwork className="gacha-reveal__art" character={character} reducedMotion={reducedMotion} /><div className="gacha-reveal__result" role="status"><span className="gacha-reveal__rarity">{localize(character.rarity)}</span>{introGuarantee && <span className="gacha-reveal__guarantee">{tr("全ガチャ共通の初回SSR保証を使用しました")}</span>}<span className="gacha-reveal__new">{localize(duplicate ? `祈願石 ${refund}個を還元` : 'NEW GODDESS')}</span><p>{localize(character.epithet)}</p><h3>{localize(character.name)}</h3><small>{localize(roleName(character.role))}</small><Button className="gacha-reveal__accept" onClick={onClose}>{localize(duplicate ? '祈願に戻る' : '女神を迎える')}</Button></div></>)}
     </div>
   </Modal>;
 }

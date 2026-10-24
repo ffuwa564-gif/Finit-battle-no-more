@@ -44,3 +44,5 @@
 .gacha-reveal--ssr.is-revealed .gacha-reveal__ring { z-index: 4; pointer-events: none; animation: summon-halo 1500ms ease-out both; }
 .gacha-reveal--ssr .gacha-reveal__result::before { content: '✦  ✦  ✦  ✦  ✦'; display: block; margin-bottom: 12px; font-size: 18px; letter-spacing: .35em; color: #ffe6a6; text-shadow: 0 0 16px #f6ce77; }
 @keyframes summon-halo { from { opacity: 1; scale: .5; } to { opacity: 0; scale: 3.5; } }
+
+.gacha-reveal__guarantee { display: block; max-width: 290px; margin: 0 auto 7px; font-size: 10px; line-height: 1.5; color: #f3dca6; letter-spacing: .04em; }

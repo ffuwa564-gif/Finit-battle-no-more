@@ -11,7 +11,7 @@ export function GachaShowcase({ collection, featured, stones, drawCount, ownedId
 }) {
   const guaranteed = drawCount + 1 === collection.guaranteeDraw || pity + 1 >= collection.hardPity;
   return <section className="goddess-collection" aria-label={tr(collection.title)}>
-    <header className="goddess-collection__heading"><span>GOTHIC GODDESSES · VOL.01</span><h2>{localize(collection.title)}</h2><p>{localize(collection.subtitle)}</p></header>
+    <header className="goddess-collection__heading"><span>{collection.label}</span><h2>{localize(collection.title)}</h2><p>{localize(collection.subtitle)}</p></header>
     <div className="goddess-collection__pair">
       {localize(featured.map(character => <article key={character.id} className={`goddess-feature goddess-feature--${character.id}`}>
         <CharacterArtwork character={character} reducedMotion={reducedMotion} suspended={suspended} />

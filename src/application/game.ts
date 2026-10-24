@@ -1,7 +1,8 @@
 import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
-import { initialGacha, gachaPity, gachaSSRRate } from '../content/gacha';
+import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
+import { initialGacha, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -150,10 +151,26 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       log(save, `${char.name}との契りが結ばれました。`);
       break;
     }
+    case 'awaken': {
+      town(save);
+      const def = content.awakenings?.find(item => item.id === command.awakeningId);
+      if (!def) fail('この覚醒は定義されていません。');
+      const lock = awakeningLock(def, save, content);
+      if (lock) fail(lock);
+      spendMaterials(save, [def.cost]);
+      save.ownedIds.push(def.awakenedId);
+      if (!save.discoveredIds.includes(def.awakenedId)) save.discoveredIds.push(def.awakenedId);
+      // Replace an active base form in place; retain both owned forms and leader status.
+      save.partyIds = save.partyIds.map(id => id === def.baseId ? def.awakenedId : id);
+      if (save.leaderId === def.baseId) save.leaderId = def.awakenedId;
+      validateParty(save, save.partyIds, save.leaderId, content);
+      log(save, `${content.characters.find(char => char.id === def.awakenedId)!.name}が覚醒しました。`);
+      break;
+    }
     case 'exchange': {
       town(save);
       if (!content.species.some(species => species.id === command.speciesId)) fail('素材の種族が正しくありません。');
-      if (content.events?.some(event => event.materialSpeciesId === command.speciesId)) fail('イベント専用素材は合成・分解できません。');
+      if (isolatedMaterialSpecies(content, command.speciesId)) fail('専用素材は合成・分解できません。');
       const rarities: Rarity[] = ['common', 'rare', 'epic'];
       const index = rarities.indexOf(command.rarity);
       if (index < 0 || !['up', 'down'].includes(command.direction)) fail('交換内容が正しくありません。');
@@ -176,10 +193,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       town(save);
       if (content.dungeons.filter(item => item.published && item.kind !== 'event').length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
-      const available = content.characters.filter(item => item.published && item.origin.includes('gacha'));
+      const collection = gachaCollections.find(item => item.id === (command.collectionId ?? initialGacha.id));
+      if (!collection) fail('選択した祈願が見つかりません。');
+      const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && collection!.characterIds.includes(item.id));
       if (!available.length) fail('召喚できるキャラクターがいません。');
       const pity = gachaPity(save);
-      const guaranteed = save.drawCount + 1 === initialGacha.guaranteeDraw || pity + 1 >= initialGacha.hardPity;
+      const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;
       let roll = rng(save.seed); save.seed = roll.seed;
       const ssrRate = gachaSSRRate(pity) / 100;
       const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * initialGacha.rates.R / (initialGacha.rates.R + initialGacha.rates.SR) ? 'R' : 'SR';
