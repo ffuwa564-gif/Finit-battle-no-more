@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Coins, Compass, Crown, Gem, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, DoorOpen, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem } from '../ui';
 import { content, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
 import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Strategy, Unit } from '../domain/types';
@@ -10,12 +10,12 @@ export interface ViewProps { save: GameSave; busy: boolean; command: (c: GameCom
 const rarities: Rarity[] = ['common', 'rare', 'epic'];
 const statNames = { hp: '最大HP', attack: '攻撃力', defense: '防御力' };
 const menu = [
-  { page: 'party', title: 'パーティ', sub: '仲間と作戦を整える', icon: Users },
-  { page: 'recruit', title: '仲間を迎える', sub: '素材から結ぶ、新しい縁', icon: Heart },
-  { page: 'bag', title: 'カバン・道具', sub: '旅のかけらを確かめる', icon: Backpack },
-  { page: 'gacha', title: '星の祈願', sub: '遠い星からの訪問者', icon: Sparkles },
-  { page: 'codex', title: '記憶の図鑑', sub: '彼女たちの物語', icon: BookOpen },
-  { page: 'settings', title: '設定', sub: '音と演出を整える', icon: Settings },
+  { page: 'party', title: 'パーティ', emblem: 'party' },
+  { page: 'recruit', title: '仲間を迎える', emblem: 'monster' },
+  { page: 'bag', title: 'カバン・道具', emblem: 'bag' },
+  { page: 'gacha', title: '星の祈願', emblem: 'wish' },
+  { page: 'codex', title: '記憶の図鑑', emblem: 'codex' },
+  { page: 'settings', title: '設定', emblem: 'settings' },
 ] as const;
 
 function PageTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
@@ -23,12 +23,24 @@ function PageTitle({ eyebrow, title, text }: { eyebrow: string; title: string; t
 }
 
 export function HomeView(p: ViewProps) {
-  return <>
-    <section className="hero"><img className="hero-art" src={assetPath('key-art')} alt="月下の廃聖堂と銀髪の巡礼者" /><div className="hero-shade" /><div className="hero-content"><span className="eyebrow">A JOURNEY THROUGH THE SILENCE</span><h1>静寂の先で、<br />まだ見ぬ縁を。</h1><p>失われた祈りを辿り、<br />忘却の廃都へ、もう一度。</p><Button size="lg" onClick={() => p.navigate('dungeons')}><Compass size={18} /> ダンジョンへ <ArrowRight size={17} /></Button></div><div className="hero-caption"><Moon size={13} /> STILLVEIL · 静謐の残響</div></section>
-    <div className="section-heading"><div><span className="eyebrow">YOUR JOURNEY</span><h2>旅の支度</h2></div><span className="subtle">{p.save.completedDungeonIds.length} / {content.dungeons.length} 踏破</span></div>
-    <div className="menu-grid">{menu.map(item => <Button variant="secondary" className="menu-tile" key={item.page} onClick={() => p.navigate(item.page)}><item.icon size={27} strokeWidth={1.3} /><span><strong>{item.title}</strong><small>{item.sub}</small></span><ChevronRight size={15} /></Button>)}</div>
-    <Panel className="journey-panel"><div><Feather size={18} /><strong>いまを共に歩く仲間</strong></div><div className="home-party">{p.save.partyIds.map(id => <CharacterPortrait key={id} character={characterById(id)} leader={p.save.leaderId === id} onClick={() => p.inspect(characterById(id))} />)}</div><p className="subtle">スタミナなし。すべての旅は、全回復から始まります。</p></Panel>
-  </>;
+  const leader = characterById(p.save.leaderId);
+  return <section className="home-hub" aria-labelledby="home-title">
+    <h1 id="home-title" className="sr-only">旅の支度</h1>
+    <div className="hub-illustration">
+      <img src={assetPath('key-art')} alt="月下の廃聖堂に佇む銀髪の巡礼者と白い狼" />
+      <div className="hub-profile">
+        <div className="hub-profile-person">
+          <span className="hub-profile-avatar"><img src={assetPath(leader.portraitId)} alt="" /></span>
+          <div className="hub-profile-copy"><strong>{leader.name}</strong><span><Crown size={10} /> パーティリーダー</span></div>
+        </div>
+        <div className="hub-currencies"><span><Gem size={13} /><strong>{p.save.stones.toLocaleString()}</strong></span><span><Coins size={13} /><strong>{p.save.gold.toLocaleString()}</strong></span></div>
+      </div>
+      <div className="hub-scene-note"><span>STILLVEIL · 静謐の残響</span><p>忘れられた祈りを、<br />あなたと辿る。</p></div>
+    </div>
+    <div className="home-hub-menu">{menu.map(item => <Button variant="secondary" className="hub-menu-tile" key={item.page} onClick={() => p.navigate(item.page)}><MenuEmblem kind={item.emblem} /><strong>{item.title}</strong></Button>)}</div>
+    <Button variant="secondary" className="hub-dungeon-entry" onClick={() => p.navigate('dungeons')}><img src={assetPath('cathedral')} alt="" /><span><small>ENTER THE FORGOTTEN DEPTHS</small><strong>ダンジョンへ</strong></span><ChevronRight size={24} /></Button>
+    <p className="hub-quiet-note"><Moon size={11} /> スタミナなし<span>·</span>踏破 {p.save.completedDungeonIds.length} / {content.dungeons.length}</p>
+  </section>;
 }
 
 export function DungeonsView(p: ViewProps) {
@@ -96,7 +108,42 @@ export function BattleView(p: ViewProps) {
   const strategies: { id: Strategy; name: string; icon: typeof Shield; sub: string }[] = [{ id: 'balanced', name: '均衡', icon: Compass, sub: '回復を織り交ぜる' }, { id: 'aggressive', name: '攻撃重視', icon: Swords, sub: '強敵を狙う' }, { id: 'survival', name: '生存重視', icon: Shield, sub: '早めの回復' }];
   const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
   if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={reward ? '探索の記録' : '祈りは、まだ途切れない。'} text={dungeon.name} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{reward ? '持ち帰った、記憶のかけら。' : '今回の素材は失われました。'}</h2>{reward ? <><div className="resource-list">{items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{materialName(id)}</span><strong>×{n}</strong></div>)}</div><div className="reward-summary"><span><Coins size={17} /> 撃破 {battle.goldEarned} G（取得済み）</span><span>クリア +20 G</span>{!p.save.completedDungeonIds.includes(dungeon.id) && <span><Gem size={17} /> 初踏破 +1</span>}</div><p className="subtle">確定するまで素材は仮取得です。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} /> 獲得を確定</Button></> : <><p>{battle.failureReason ?? 'パーティは廃都から帰還しました。'}</p><p className="subtle">ゴールド・出会った敵の記録は保持されます。次の探索は全回復で開始します。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>街へ戻る <ArrowRight size={16} /></Button></>}</Panel></>;
-  return <div className="battle-layout"><div className="battle-topline"><div><span className="eyebrow">{dungeon.name}</span><h2>Wave {battle.wave + 1}<small> / {dungeon.waves.length}</small></h2></div><span className="round-label">ROUND {displayRound}</span><div className="bag-counter" data-bag><Backpack size={23} /><strong>{total}</strong><small>仮取得・全滅時喪失</small></div></div><section className="battle-scene"><img className="scene-background" src={assetPath(dungeon.artId)} alt="" /><div className="scene-mist" /><div className="enemy-line">{enemies.map(unit => { const ch = characterById(unit.characterId); return <div className={`enemy-unit ${unit.hp <= 0 ? 'is-defeated' : ''}`} data-unit={unit.uid} key={unit.uid}><span className="enemy-name">{unit.boss && <Crown size={13} />}{ch.name}<small>{(ch.strength / 10).toFixed(1)}</small></span><HPBar hp={unit.hp} maxHp={unit.maxHp} /><img className="enemy-art" src={assetPath(ch.artId)} alt={ch.name} /></div>; })}</div>{event && <div className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={event.id}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</div>}{event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={event.id}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}</section><div className="party-strip">{party.map(unit => <div data-unit={unit.uid} className={`party-unit ${unit.hp <= 0 ? 'is-defeated' : ''}`} key={unit.uid}><CharacterPortrait character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} onClick={usingPotion && unit.hp > 0 ? async () => { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } : undefined} /><span className="party-hp">{unit.hp} / {unit.maxHp}</span></div>)}</div><Panel className="command-pad"><div className="command-heading"><span className="eyebrow">{usingPotion ? '回復する仲間を選んでください' : battle.phase === 'playing' ? '行動を見守っています' : '次のラウンドの作戦'}</span><div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div><div className="strategy-options">{strategies.map(st => <Button variant={battle.strategy === st.id ? 'primary' : 'secondary'} key={st.id} disabled={p.busy || battle.phase !== 'ready'} onClick={() => p.command({ type: 'strategy', strategy: st.id })}><st.icon size={23} strokeWidth={1.4} /><span>{st.name}<small>{st.sub}</small></span></Button>)}</div><div className="command-actions"><Button variant="secondary" disabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} onClick={() => setUsingPotion(!usingPotion)}><FlaskConical size={21} /> 回復薬 <small>{battle.potionsRemaining}</small></Button>{battle.phase === 'playing' ? <Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'replay' })}><FastForward size={21} /> 次の演出へ</Button> : <Button size="lg" disabled={p.busy || usingPotion} onClick={() => p.command({ type: 'round' })}><Play size={23} /> ラウンドを進める</Button>}<Button variant="icon" title="撤退" disabled={p.busy || battle.phase !== 'ready'} onClick={() => setRetreat(true)}><DoorOpen size={20} /></Button></div><p className="command-note">全員が素早さ順に1回行動。作戦と道具だけを指示します。</p></Panel><Modal open={retreat} onClose={() => setRetreat(false)} title="探索から撤退しますか？"><p>今回の探索で仮取得した素材はすべて失われます。ゴールドと敵の記録は残ります。</p><Button variant="danger" disabled={p.busy} onClick={async () => { if (await p.command({ type: 'retreat' })) setRetreat(false); }}>撤退する</Button></Modal></div>;
+  return <div className="battle-layout">
+    <div className="battle-topline">
+      <div><span className="eyebrow">{dungeon.name}</span><h2>Wave {battle.wave + 1}<small> / {dungeon.waves.length}</small></h2></div>
+      <span className="round-label">ROUND {displayRound}</span>
+      <div className="bag-counter" data-bag><Backpack size={23} /><strong>{total}</strong><small>仮取得・全滅時喪失</small></div>
+    </div>
+    <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label="敵の戦場">
+      <img className="scene-background" src={assetPath(dungeon.artId)} alt="" />
+      <div className="scene-mist" />
+      <div className={`enemy-line enemy-line--${enemies.length}`}>
+        {enemies.map(unit => { const ch = characterById(unit.characterId); return <div className={`enemy-unit${unit.boss ? ' enemy-unit--boss' : ''}${unit.hp <= 0 ? ' is-defeated' : ''}`} data-unit={unit.uid} key={unit.uid}>
+          <div className="enemy-status"><div className="enemy-name">{unit.boss && <Crown size={13} />}<span>{ch.name}</span><small aria-label="難易度定数">{(ch.strength / 10).toFixed(1)}</small></div><HPBar hp={unit.hp} maxHp={unit.maxHp} label={`${ch.name}のHP`} /></div>
+          <img className="enemy-art" src={assetPath(ch.artId)} alt={ch.name} />
+        </div>; })}
+      </div>
+      {event && <div className={`battle-toast ${event.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status" key={`toast-${event.id}`}>{event.kind === 'dialogue' && <Feather size={15} />}{event.text}</div>}
+      {event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>}
+    </section>
+    <div className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label="パーティメンバー">
+      {party.map(unit => <div data-unit={unit.uid} className={`party-unit ${unit.hp <= 0 ? 'is-defeated' : ''}`} key={unit.uid}>
+        <CharacterPortrait variant="face" compact showRole={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} onClick={usingPotion && unit.hp > 0 ? async () => { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } : undefined} />
+        <span className="party-hp">{unit.hp} / {unit.maxHp}</span>
+      </div>)}
+    </div>
+    <Panel className="command-pad">
+      <div className="command-heading"><span className="eyebrow">{usingPotion ? '回復する仲間を選んでください' : battle.phase === 'playing' ? '行動を見守っています' : '次のラウンドの作戦'}</span><div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div>
+      <div className="strategy-options" aria-label="作戦を選ぶ">{strategies.map(st => <Button variant={battle.strategy === st.id ? 'primary' : 'secondary'} selected={battle.strategy === st.id} key={st.id} disabled={p.busy || battle.phase !== 'ready'} onClick={() => p.command({ type: 'strategy', strategy: st.id })}><st.icon size={27} strokeWidth={1.25} /><span>{st.name}<small>{st.sub}</small></span></Button>)}</div>
+      <div className="command-actions">
+        <Button variant="secondary" className="battle-item-control" disabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} onClick={() => setUsingPotion(!usingPotion)}><FlaskConical size={30} strokeWidth={1.2} /><span>回復薬 <small>{battle.potionsRemaining}</small></span></Button>
+        {battle.phase === 'playing' ? <Button size="lg" className="battle-advance-control" disabled={p.busy} onClick={() => p.command({ type: 'replay' })} aria-label="次の演出へ"><FastForward size={35} strokeWidth={1.1} /><span>次の演出へ</span></Button> : <Button size="lg" className="battle-advance-control" disabled={p.busy || usingPotion} onClick={() => p.command({ type: 'round' })} aria-label="ラウンドを進める"><Play size={36} strokeWidth={1.1} /><span>ラウンドを進める</span></Button>}
+        <Button variant="icon" className="battle-retreat-control" title="撤退" disabled={p.busy || battle.phase !== 'ready'} onClick={() => setRetreat(true)}><DoorOpen size={20} strokeWidth={1.3} /></Button>
+      </div>
+      <p className="command-note">作戦を選び、仲間たちに行動を託します。</p>
+    </Panel>
+    <Modal open={retreat} onClose={() => setRetreat(false)} title="探索から撤退しますか？"><p>今回の探索で仮取得した素材はすべて失われます。ゴールドと敵の記録は残ります。</p><Button variant="danger" disabled={p.busy} onClick={async () => { if (await p.command({ type: 'retreat' })) setRetreat(false); }}>撤退する</Button></Modal>
+  </div>;
 }
 
 export function PreviewView(p: ViewProps) { return <><PageTitle eyebrow="SHARED DESIGN SYSTEM" title="共通プレビュー" text="全コンテンツを同じ表示部品で確認します。" /><Panel><div className="toolbar"><Button>主操作</Button><Button variant="secondary">補助操作</Button><Button variant="danger">危険な操作</Button><Button disabled>無効</Button></div><div className="toolbar">{rarities.map(r => <MaterialIcon key={r} rarity={r} />)}</div><HPBar hp={65} maxHp={100} /></Panel><div className="character-grid">{content.characters.map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><h3>{ch.name}</h3><p>{ch.flavor}</p></Panel>)}</div></>; }

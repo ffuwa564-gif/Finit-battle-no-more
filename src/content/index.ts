@@ -25,7 +25,7 @@ const characters: CharacterDef[] = [
   character({ id: 'noelle', name: 'ノエル', epithet: '星読みの残響', role: 'area_attacker', speciesId: 'pilgrim', strength: 14, origin: ['initial', 'recruit'], flavor: '消えた星座を読み続ける魔術師。崩れた天文台から持ち出した一冊の本には、誰にも見えない空の記録が綴られている。旅の夜には、仲間に忘れられた星の名を教える。' }),
   character({ id: 'pale-wolf', name: '白霧の狼', epithet: '聖堂に残る遠吠え', role: 'attacker', speciesId: 'mist', strength: 10, origin: ['recruit'], flavor: '聖堂に迷い込んだ魂を、出口まで導く白い獣。その足跡は霧とともに消える。かつて誰かを待っていたというが、今ではその誰かの姿を思い出せない。' }),
   character({ id: 'stone-drake', name: '石燐の幼竜', epithet: '眠れる庭の番人', role: 'tank', speciesId: 'stone', strength: 11, origin: ['recruit'], flavor: '崩れた噴水の底で長い眠りについていた竜。石のような鱗の隙間から、青白い光がこぼれる。小さな花を踏まないよう、驚くほど慎重に歩く。' }),
-  character({ id: 'hollow-keeper', name: '虚ろの守り手', epithet: '帰らぬ主への誓い', role: 'tank', speciesId: 'hollow', strength: 12, origin: ['recruit'], flavor: '白い仮面の下に名前を隠した女騎士。朽ちた鍵束を腰に下げ、閉じるべき扉を探している。鎧の内側には、すっかり色の褪せた小さなリボンが縫い付けられている。' }),
+  character({ id: 'hollow-keeper', name: '虚ろの守り手', epithet: '帰らぬ主への誓い', role: 'tank', speciesId: 'hollow', strength: 12, origin: ['recruit'], flavor: '錆銀の鎧に名前を隠した女騎士。朽ちた鍵束を腰に下げ、閉じるべき扉を探している。鎧の内側には、すっかり色の褪せた小さなリボンが縫い付けられている。' }),
   character({ id: 'moon-moth', name: '月翅の蛾', epithet: '欠けた月の使者', role: 'area_attacker', speciesId: 'moon', strength: 10, origin: ['recruit'], flavor: '月明かりの差す場所にだけ現れる幻の蛾。翅に散る燐粉は、触れた者に遠い夢を見せる。死者の言葉を運ぶとも、生きる者の寂しさが形になったとも言われる。' }),
   character({ id: 'veil-priestess', name: '帳の巫女', epithet: '届かない祈り', role: 'healer', speciesId: 'veil', strength: 11, origin: ['recruit'], flavor: '破れた聖歌を口ずさむ、角を持つ女性。人々が去った後も祈りの灯を絶やさなかった。差し出された手に触れると、冷えた指先だけが微かに震える。' }),
   character({ id: 'thorn-witch', name: '荊の魔女', epithet: '枯園の記憶', role: 'debuffer', speciesId: 'thorn', strength: 12, origin: ['recruit'], flavor: '花を咲かせなくなった庭に暮らす魔女。荊の冠は罰ではなく、彼女自身が選んだ約束のしるし。誰かが種を持ってくるたび、ほんの少しだけ口元を緩める。' }),
@@ -37,11 +37,12 @@ const characters: CharacterDef[] = [
 
 const characterAssets: AssetDef[] = characters.flatMap(char => {
   const wolf = char.id === 'pale-wolf';
-  const generated = char.origin.includes('initial') || wolf;
-  const common = { path: `art/${char.id}.${generated ? 'png' : 'svg'}`, width: wolf ? 1536 : generated ? 1024 : 640, height: wolf ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const landscape = wolf || char.id === 'stone-drake';
+  const generated = char.origin.includes('initial') || landscape || char.id === 'hollow-keeper';
+  const common = { path: `art/${char.id}.${generated ? 'png' : 'svg'}`, width: landscape ? 1536 : generated ? 1024 : 640, height: landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
-    { ...common, id: char.artId, kind: 'illustration', anchor: wolf ? '50% 50%' : '50% 42%' },
-    { ...common, id: char.portraitId, kind: 'portrait', anchor: wolf ? '25% 30%' : generated ? '50% 8%' : '50% 28%' },
+    { ...common, id: char.artId, kind: 'illustration', anchor: landscape ? '50% 50%' : '50% 42%' },
+    { ...common, id: char.portraitId, kind: 'portrait', anchor: landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: landscape ? 1.4 : char.id === 'hollow-keeper' ? 1.7 : generated ? 1.9 : 1.25, portraitOrigin: landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
   ];
 });
 const stages = [

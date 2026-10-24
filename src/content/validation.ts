@@ -29,6 +29,8 @@ export function validateContent(content: Content): string[] {
     reject(!['portrait', 'illustration', 'background', 'icon'].includes(asset.kind), `assets/${asset.id}: invalid kind`);
     reject(!/^[a-zA-Z0-9][a-zA-Z0-9/_.-]*\.(svg|png|webp|avif|jpg|jpeg)$/.test(asset.path) || asset.path.includes('..'), `assets/${asset.id}: local safe file path required`);
     reject(!Number.isInteger(asset.width) || asset.width <= 0 || !Number.isInteger(asset.height) || asset.height <= 0, `assets/${asset.id}: dimensions required`);
+    reject(asset.portraitZoom !== undefined && (!Number.isFinite(asset.portraitZoom) || asset.portraitZoom < 1 || asset.portraitZoom > 3), `assets/${asset.id}: portrait zoom must be 1..3`);
+    reject(asset.portraitOrigin !== undefined && !/^\d+(?:\.\d+)?% \d+(?:\.\d+)?%$/.test(asset.portraitOrigin), `assets/${asset.id}: portrait origin must use percentage coordinates`);
     reject(!plain(asset.anchor) || !plain(asset.rights), `assets/${asset.id}: anchor and rights required`);
   }
   const semanticKeys = new Set<string>();

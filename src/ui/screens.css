@@ -270,3 +270,60 @@
   .strategy-options .button small { font-size: 7px; }.strategy-options .button { min-height: 72px; }.command-actions { grid-template-columns: 1fr 1.6fr auto; gap: 7px; }.command-actions .button { font-size: 10px; gap: 5px; padding-inline: 8px; }.command-actions .button--icon { min-width: 30px; padding-inline: 4px; }.command-actions .button svg { width: 18px; height: 18px; }.command-note { font-size: 8px; }
   .result-panel { padding: 29px 20px; }.result-panel > h2 { font-size: 20px; }.reward-summary { gap: 10px; font-size: 9px; }.result-panel .resource-item { padding: 12px; }.result-panel .resource-item > span:not(.material-icon) { font-size: 10px; }
 }
+
+/* Misty frame around the illustrated game screens, rather than a dashboard. */
+.app-shell { grid-template-columns: 184px minmax(0,1fr); }
+.sidebar {
+  padding: 30px 15px 22px;
+  color: #697782;
+  background: linear-gradient(130deg,#eef0eabf,#dbe2e3c9);
+  border-right: 1px solid #c2c9c9;
+  box-shadow: inset -1px 0 0 #fffdf57a;
+  backdrop-filter: blur(16px);
+}
+.brand { gap: 10px; padding-inline: 8px; padding-bottom: 33px; }
+.brand > svg { color: #938971; width: 25px; height: 25px; }
+.brand strong { color: #44566a; font-size: 17px; letter-spacing: .1em; }
+.brand span { color: #7e888c; font-size: 7px; }
+.sidebar-label { color: #7e8e94; font-size: 7px; letter-spacing: .2em; }
+.sidebar .nav-item { color: #657581; background: transparent; min-height: 46px; padding: 11px 12px; font-size: 11px; border-radius: 12px; box-shadow: none; border-color: transparent; }
+.sidebar .nav-item:hover:not(:disabled) { color: #3f566a; background: #fbfaf28f; border-color: #bfc9cb; box-shadow: inset 0 0 0 1px #fffdf6ba; }
+.sidebar .nav-item.button--primary { color: #485c70; border-color: #b5c0c6; background: linear-gradient(145deg,#fafaf1d9,#dfe7e8c9); box-shadow: inset 0 0 0 1px #fffef5a6; text-shadow: none; }
+.sidebar .nav-item:disabled { opacity: .48; }
+.sidebar-bottom { border-top-color: #c5cfce; color: #79868b; padding: 20px 12px 0; }
+.sidebar-bottom > svg { color: #7c929b; }
+.sidebar-bottom > p { color: #657985; }
+.sidebar-bottom > p > small { color: #7b8a90; }
+.main-content { max-width: 1180px; }
+.app-body > .topbar { border-bottom: 0; min-height: 76px; margin-bottom: 12px; }
+.topbar-title { color: #5d6f7f; }
+.topbar-title > svg { color: #9b8e72; }
+.topbar-title > small { color: #718188; }
+.topbar .stat-badge { background: #f7f5ebc9; border: 1px solid #c8ccc6; border-radius: 12px; padding: 5px 10px; box-shadow: inset 0 0 0 1px #fffdf5c9; }
+.topbar .stat-badge + .stat-badge { border-left: 1px solid #c8ccc6; border-radius: 12px; }
+.currencies { gap: 7px; }
+.app-footer { color: #7d8b92; border-top-color: #cbd1cd; }
+.is-menu .topbar, .is-menu .app-footer { display: none; }
+.is-menu .main-content { padding-top: 24px; }
+.mobile-nav { border-top: 1px solid #babfb9; background: linear-gradient(180deg,#fcfaf2f2,#edece3f2); box-shadow: inset 0 1px 0 #fffef4,0 -4px 18px #43515a0a; }
+.mobile-nav > .button { box-shadow: none; }
+@media (max-width: 1100px) and (min-width: 761px) { .app-shell { grid-template-columns: 160px minmax(0,1fr); }.brand strong { font-size: 15px; }.brand { gap: 7px; }.sidebar .nav-item { padding-inline: 8px; } }
+@media (max-width: 760px) {
+  .app-shell { display: block; }
+  .main-content { padding-inline: 10px; }
+  .app-body > .topbar { min-height: 56px; padding-inline: 14px; margin-bottom: 8px; }
+  .currencies { gap: 3px; }
+  .topbar .stat-badge { padding: 4px 7px; }
+  .topbar .stat-badge strong { font-size: 14px; }
+  .is-menu .main-content { padding-top: 0; }
+  .mobile-nav { min-height: 65px; padding-top: 5px; padding-bottom: max(6px,env(safe-area-inset-bottom)); }
+  .mobile-nav > .button { min-height: 49px; border-radius: 13px; }
+  .mobile-nav > .button--primary { background: linear-gradient(145deg,#e7edeb,#d9e3e4); color: #4d6478; border-color: #c8d0ce; }
+  .character-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .character-card { border-radius: 19px; }
+}
+
+/* Compact controls retain a full touch target even when their label is small. */
+.button.button--sm, .button.button--icon, .toolbar > .button, .dungeon-info > .button { min-height: 44px; }
+.button.button--icon { min-width: 44px; height: 44px; }
+.topbar .currencies .button.button--icon { min-width: 44px; width: 44px; min-height: 44px; height: 44px; }

@@ -40,6 +40,8 @@ test('mobile common UI, flavor details and leader change remain usable', async (
 });
 
 test('full exploration preserves provisional rewards across reload and claims only once', async ({ page }) => {
+  const consoleErrors: string[] = [];
+  page.on('console', message => { if (message.type() === 'error') consoleErrors.push(message.text()); });
   await openDungeon(page);
   let reloaded = false;
   for (let i = 0; i < 300; i++) {
@@ -54,7 +56,10 @@ test('full exploration preserves provisional rewards across reload and claims on
       reloaded = true;
     }
     await step(page);
+    // Regression: toast and drop siblings must not reuse keys and leak old DOM.
+    expect(await page.locator('.battle-toast').count()).toBeLessThanOrEqual(1);
   }
+  expect(consoleErrors).toEqual([]);
   const provisional = await stored(page);
   expect(provisional.battle?.phase).toBe('reward');
   expect(reloaded).toBe(true);
