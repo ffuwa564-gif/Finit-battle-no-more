@@ -588,8 +588,6 @@
   "全ガチャを合計して2回目だけ、初回SSR保証を使用できます。": "The introductory SSR guarantee applies only to your second wish in total across all collections.",
   "シリーズを切り替えても、祈願回数とSSR天井の進行は引き継ぎます。初回保証はシリーズごとには復活しません。": "Wish totals and SSR pity carry over when switching collections. Switching does not renew the introductory guarantee.",
   "SSR未獲得90回目でSSR確定。74回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。": "An SSR is guaranteed by your 90th wish without one. From wish 74, SSR odds rise by 6 percentage points per wish. Receiving any SSR resets pity to zero.",
-  "重複あり・各レアリティ内は均等抽選です。Rは両シリーズ共通、SR・SSRは選んだシリーズの女神が出現します。": "Duplicates are possible. Characters of the same rarity have equal odds. R characters are shared; SR and SSR characters come from the selected collection.",
-  "・共通枠": " · Shared pool",
   "一度きりの初回SSR保証を使いますか？": "Use your one-time introductory SSR guarantee?",
   "この祈願で、全ガチャ共通の初回SSR保証を消費します。他のシリーズでは再使用できず、次回からはSSR未獲得90回天井になります。": "This wish consumes your introductory SSR guarantee across ALL collections. It cannot be used again in another collection. Later wishes follow the shared 90-wish SSR guarantee.",
   "石5個を消費して、選択中のシリーズのSSRを1人迎えます。重複する場合があります。取消では石も保証も消費しません。": "Spend 5 Wishstones to receive one SSR from this collection. It may be a duplicate. Canceling spends neither stones nor the guarantee.",
@@ -708,5 +706,9 @@
   "{0}を覚醒": "Awaken {0}",
   "{0}の記憶": "{0}'s Memories",
   "物語": "Story",
-  "覚醒": "Awakening"
+  "覚醒": "Awakening",
+  "選択したレアリティの対象がありません。石は消費されません。": "No characters are available for the selected rarity. No stones were spent.",
+  "出現する女神は選んだシリーズ限定です。重複あり・各レアリティ内は均等抽選です。": "Only goddesses from the selected collection can appear. Duplicates are possible; characters of the same rarity have equal odds.",
+  "このシリーズはSR・SSRの4人限定です。Rは出現しません。": "This collection contains only its four SR and SSR goddesses. R characters do not appear.",
+  "重複時は祈願石をSR 2個・SSR 3個還元します。": "Duplicate SR/SSR characters refund 2/3 Wishstones respectively."
 }

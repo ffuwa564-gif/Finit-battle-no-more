@@ -200,11 +200,11 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const pity = gachaPity(save);
       const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;
       let roll = rng(save.seed); save.seed = roll.seed;
-      const ssrRate = gachaSSRRate(pity) / 100;
-      const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * initialGacha.rates.R / (initialGacha.rates.R + initialGacha.rates.SR) ? 'R' : 'SR';
-      let candidates = available.filter(item => item.rarity === rarity);
+      const ssrRate = gachaSSRRate(pity, collection) / 100;
+      const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * collection.rates.R / (collection.rates.R + collection.rates.SR) ? 'R' : 'SR';
+      const candidates = available.filter(item => item.rarity === rarity);
       if (guaranteed && !candidates.length) fail('SSR保証対象がありません。石は消費されません。');
-      if (!candidates.length) candidates = available;
+      if (!candidates.length) fail('選択したレアリティの対象がありません。石は消費されません。');
       roll = rng(save.seed); save.seed = roll.seed;
       const selected = candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
       const duplicate = save.ownedIds.includes(selected.id);
