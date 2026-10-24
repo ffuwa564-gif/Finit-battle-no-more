@@ -28,7 +28,7 @@ await context.addInitScript(()=>{
  localStorage.setItem('stillveil-language','en');
  const w=window as any;w.__audioBuses=[];w.__se=[];
  const connect=AudioNode.prototype.connect;
- AudioNode.prototype.connect=function(destination:any,...args:any[]){
+ AudioNode.prototype.connect=function(this:AudioNode,destination:any,...args:any[]){
   if(destination instanceof AudioDestinationNode){const ctx=this.context as any;if(!ctx.__recordBus){ctx.__recordBus=ctx.createMediaStreamDestination();w.__audioBuses.push(ctx.__recordBus);}connect.call(this,ctx.__recordBus);}
   return (connect as any).call(this,destination,...args);
  } as any;
