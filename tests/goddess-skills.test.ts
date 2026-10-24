@@ -96,3 +96,20 @@ describe('lower rarity goddess utility', () => {
     expect([...acquired]).toEqual(expect.arrayContaining(['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime']));
   });
 });
+
+it('Eos strengthens an attacker or protects an ally, while Nike removes a barrier before damage',()=>{
+  const battle=ready(['eos','nike']);
+  ally(battle,'eos').speed=100;ally(battle,'nike').speed=90;
+  const enemy=battle.units.find(unit=>unit.side==='enemy')!;enemy.barrier=500;enemy.barrierUntil=5;
+  const result=resolveRound(battle,content).battle;
+  const support=result.events.find(event=>event.actorId==='party:eos')!;
+  expect(support.targetIds).toEqual(['party:nike']);
+  expect(support.unitsAfter!.find(unit=>unit.uid==='party:nike')!.buffStrength).toBe(15);
+  const strike=result.events.find(event=>event.actorId==='party:nike')!;
+  const struck=strike.unitsAfter!.find(unit=>unit.uid===enemy.uid)!;
+  expect(struck.barrier).toBeUndefined();expect(struck.hp).toBeLessThan(enemy.hp);
+  const protecting=structuredClone(battle);protecting.strategy='survival';
+  const ward=resolveRound(protecting,content).battle.events.find(event=>event.actorId==='party:eos')!;
+  expect(ward.unitsAfter!.some(unit=>unit.side==='party'&&(unit.barrier??0)>0)).toBe(true);
+  expect(enemy.barrier).toBe(500);
+});
