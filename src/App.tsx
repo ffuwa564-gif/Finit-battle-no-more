@@ -5,6 +5,7 @@ import { content, validateContent } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, setAudioVolume } from './platform/audio';
+import { configureBgm, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { animateEvent } from './platform/presentation';
 import type { CharacterDef, GameCommand, GameSave } from './domain/types';
 import { BagView, BattleView, CharacterDetail, CodexView, DungeonsView, GachaView, HomeView, PartyView, PreviewView, RecruitView, SettingsView, type Page } from './screens/GameViews';
@@ -86,10 +87,18 @@ export default function App() {
 
   useEffect(() => {
     setAudioVolume(save?.settings.seVolume ?? 0.5);
-    const onUI = () => { void enableAudio().then(() => playSound('ui')); };
+    const onUI = () => { unlockBgm(); void enableAudio().then(() => playSound('ui')); };
     window.addEventListener('game:ui', onUI);
     return () => window.removeEventListener('game:ui', onUI);
   }, [save?.settings.seVolume]);
+  useEffect(() => {
+    if (save && !fatal) configureBgm(save.battle ? 'battle' : 'home', save.settings.bgmVolume);
+    else configureBgm('home', 0);
+  }, [!!save, !!save?.battle, save?.settings.bgmVolume, fatal]);
+  useEffect(() => {
+    document.addEventListener('visibilitychange', refreshBgm);
+    return () => { document.removeEventListener('visibilitychange', refreshBgm); disposeBgm(); };
+  }, []);
   useEffect(() => {
     document.documentElement.dataset.motion = save?.settings.reducedMotion ? 'reduced' : 'full';
   }, [save?.settings.reducedMotion]);
