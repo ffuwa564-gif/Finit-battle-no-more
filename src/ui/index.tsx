@@ -2,7 +2,8 @@ import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties
 import { createPortal } from 'react-dom';
 import { ChevronRight, Crown, Diamond, X } from 'lucide-react';
 import type { CharacterDef, Rarity } from '../domain/types';
-import { assetPath, roleName, content } from '../content';
+import { roleName } from '../content';
+import { PortraitArt } from './PortraitArt';
 import './styles.css';
 import './screens.css';
 import './home.css';
@@ -14,6 +15,8 @@ export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
+export { StrategyDial } from './StrategyDial';
+export { PortraitArt } from './PortraitArt';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean }
@@ -70,11 +73,8 @@ export function HPBar({ hp: hpInput, maxHp: maxInput, value, max, showNumbers = 
 
 export interface CharacterPortraitProps { variant?: 'face' | 'card'; character: CharacterDef; selected?: boolean; leader?: boolean; hp?: number; maxHp?: number; onClick?: () => void; disabled?: boolean; compact?: boolean; showRole?: boolean }
 export function CharacterPortrait({ character, selected, leader, hp, maxHp, onClick, disabled, compact, variant = 'card', showRole = true }: CharacterPortraitProps) {
-  const asset = content.assets.find(item => item.id === character.portraitId);
-  const anchor = asset?.anchor ?? '50% 22%';
   const face = variant === 'face' || compact === true;
-  const portraitStyle = { objectPosition: anchor, '--portrait-zoom': face ? asset?.portraitZoom ?? 1 : 1, '--portrait-origin': asset?.portraitOrigin ?? anchor } as CSSProperties;
-  const body = <><div className="portrait-image"><img src={assetPath(character.portraitId)} alt="" loading="lazy" style={portraitStyle} />{leader && <span className="leader-mark" title="リーダー"><Crown size={13} /><span className="sr-only">リーダー</span></span>}<span className="portrait-constant">{(character.strength / 10).toFixed(1)}</span></div><div className="portrait-copy"><strong>{character.name}</strong>{showRole && <span>{roleName(character.role)}</span>}</div>{hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} />}</>;
+  const body = <><div className="portrait-image"><PortraitArt character={character} face={face} />{leader && <span className="leader-mark" title="リーダー"><Crown size={13} /><span className="sr-only">リーダー</span></span>}<span className="portrait-constant">{(character.strength / 10).toFixed(1)}</span></div><div className="portrait-copy"><strong>{character.name}</strong>{showRole && <span>{roleName(character.role)}</span>}</div>{hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} />}</>;
   const classes = `character-portrait${selected ? ' is-selected' : ''}${hp === 0 ? ' is-fallen' : ''}${compact ? ' character-portrait--compact' : ''}${face ? ' character-portrait--face' : ''}`;
   return onClick ? <Button variant="secondary" className={classes} onClick={onClick} disabled={disabled} selected={selected} aria-label={`${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`}>{body}</Button> : <div className={classes}>{body}</div>;
 }

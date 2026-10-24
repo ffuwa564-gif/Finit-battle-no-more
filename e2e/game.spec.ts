@@ -35,6 +35,9 @@ test('mobile common UI, flavor details and leader change remain usable', async (
   await expect(page.getByRole('heading', { name: 'リーダースキル', exact: true })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).not.toBeVisible();
+  await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ホーム', exact: true }).click();
+  await expect(page.locator('.hub-profile-copy > strong')).toHaveText('エレイン');
+  await expect(page.locator('.hub-profile-avatar img')).toHaveAttribute('src', /elaine/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   expect(errors).toEqual([]);
 });
@@ -96,11 +99,21 @@ test('retreat forfeits all provisional materials while retaining earned gold', a
   expect((await stored(page)).gold).toBe(before.gold);
 });
 
-test('enemy display rotates through the same units without changing combat state', async ({ page }) => {
+test('strategy dial selects commands while enemy rotation leaves combat unchanged', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await openDungeon(page);
   await expect(page.getByRole('button', { name: 'ラウンドを進める', exact: true })).toBeEnabled();
+  const dial = page.getByRole('group', { name: '作戦を選ぶ', exact: true });
+  await dial.getByRole('button', { name: '攻撃重視', exact: true }).click();
+  await expect.poll(async () => (await stored(page)).battle?.strategy).toBe('aggressive');
+  const survival = dial.getByRole('button', { name: '生存重視', exact: true });
+  await survival.focus();
+  await page.keyboard.press('Enter');
+  await expect.poll(async () => (await stored(page)).battle?.strategy).toBe('survival');
+  await expect(survival).toHaveAttribute('aria-pressed', 'true');
+  await dial.getByRole('button', { name: '均衡', exact: true }).click();
+  await expect.poll(async () => (await stored(page)).battle?.strategy).toBe('balanced');
   const before = await stored(page);
   const front = page.locator('.enemy-orbit-slot.is-front');
   const first = await front.getAttribute('data-enemy-id');

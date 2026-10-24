@@ -69,18 +69,19 @@
 .battle-layout .enemy-line--1 .enemy-unit--boss .enemy-art { height: calc(100% + 65px); max-height: none; }
 .battle-layout .battle-toast { top: 76px; padding: 9px 17px; font-size: 11px; border-radius: 9px; color: #4f5a69; border-color: #c9c6bd; background: #f8f6eef2; box-shadow: 0 4px 17px #273b4e28; }
 .battle-layout .battle-toast.dialogue-toast { top: auto; bottom: 16px; width: 87%; padding: 12px 18px; line-height: 1.8; }
-.battle-layout .party-strip { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; padding: 7px 8px 6px; margin: 0; border-radius: 10px 10px 0 0; border: 1px solid #c6c4ba; background: linear-gradient(#f4f2e9,#e7e6df); box-shadow: 0 -3px 14px #20344712,inset 0 1px 0 #ffffff; }
+/* One portrait ribbon sits over the stage edge, with the HP strips kept clear beneath. */
+.battle-layout .party-strip { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; padding: 7px 7px 6px; margin: -3px 0 0; border-radius: 17px 17px 0 0; border: 1px solid #c6c4ba; border-bottom: 0; background: linear-gradient(#f7f5ed,#eae9e1); box-shadow: 0 -2px 9px #20344716,inset 0 1px 0 #ffffff; }
 .battle-layout .party-unit { width: 100%; min-width: 0; }
-.battle-layout .party-unit > .character-portrait { padding: 0; width: 100%; gap: 1px; border-radius: 5px; border: 1px solid #b6b9b3; background: #f0efe8; box-shadow: none; }
-.battle-layout .party-strip .portrait-image { border-radius: 3px 3px 0 0; aspect-ratio: 1.15; }
-.battle-layout .party-strip .portrait-copy { padding-inline: 3px; padding-top: 0; gap: 0; }
-.battle-layout .party-strip .portrait-copy strong { font-family: var(--font-display); font-size: 10px; line-height: 1.2; }
+.battle-layout .party-unit > .character-portrait { padding: 0; width: 100%; gap: 0; border-radius: 6px; border: 0; background: transparent; box-shadow: none; }
+.battle-layout .party-strip .portrait-image { border: 1px solid #adb5b3; border-radius: 6px; aspect-ratio: 1.15; }
+.battle-layout .party-strip .portrait-copy { position: absolute; z-index: 2; inset: auto 1px 12px; padding: 10px 4px 3px; gap: 0; border-radius: 0 0 5px 5px; background: linear-gradient(transparent,#27323eaa); pointer-events: none; }
+.battle-layout .party-strip .portrait-copy strong { font-family: var(--font-display); font-size: 10px; line-height: 1.2; color: #fffdf4; text-shadow: 0 1px 3px #20303b; }
 .battle-layout .party-strip .portrait-constant { display: none; }
 .battle-layout .party-strip .leader-mark { width: 18px; height: 18px; left: 3px; top: 3px; background: #69737dd9; color: #f7edd5; }
 .battle-layout .party-strip .leader-mark svg { width: 10px; height: 10px; }
-.battle-layout .party-strip .hp-meter { padding: 2px 3px 3px; }
-.battle-layout .party-strip .hp-bar { height: 5px; background: #c9cfce; border: 1px solid #b5bfbd; border-radius: 7px; }
-.battle-layout .party-strip .hp-bar > span { background: linear-gradient(90deg,#739e99,#c3d5cc); }
+.battle-layout .party-strip .hp-meter { padding: 4px 1px 0; }
+.battle-layout .party-strip .hp-bar { height: 7px; background: #b4bdbb; border: 1px solid #8d9e9c; border-radius: 7px; box-shadow: inset 0 1px 2px #3e575f24,0 1px 0 #ffffff90; }
+.battle-layout .party-strip .hp-bar > span { background: linear-gradient(90deg,#548a87,#a0c4b9); }
 .battle-layout .party-hp { display: none; }
 .battle-layout .party-strip--selecting .character-portrait.button:not(:disabled) { box-shadow: 0 0 0 2px #9bbab2,0 0 15px #c1d9d3; }
 .battle-layout .command-pad { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 180px; column-gap: 16px; row-gap: 9px; align-items: center; padding: 17px 19px 15px; margin: 0; border: 1px solid #c6c3b9; border-radius: 24px 24px 0 0; background: radial-gradient(ellipse at 28% 8%,#fffdf7cc,transparent 63%),radial-gradient(ellipse at 83% 72%,#c8c2b51a,transparent 57%),linear-gradient(135deg,#f8f5eb,#eae6dc); box-shadow: inset 0 1px 0 #ffffff,inset 0 0 0 4px #f7f4eb,inset 0 0 0 5px #d7d1c480; }
@@ -124,7 +125,7 @@
   .battle-layout .enemy-line--1 { inset: 74px 15px 0; }
   .battle-layout .enemy-line--1 .enemy-name { font-size: 16px; }
   .battle-layout .enemy-line--1 .enemy-art { height: calc(100% + 65px); padding: 0; }
-  .battle-layout .party-strip { padding: 6px 6px 5px; gap: 4px; }
+  .battle-layout .party-strip { padding: 7px 6px 6px; gap: 4px; }
   .battle-layout .party-strip .portrait-image { aspect-ratio: 1.08; }
   .battle-layout .party-strip .portrait-copy strong { font-size: 9px; }
   .battle-layout .command-pad { grid-template-columns: minmax(0,1fr) 132px; column-gap: 12px; row-gap: 6px; padding: 11px 13px 10px; }

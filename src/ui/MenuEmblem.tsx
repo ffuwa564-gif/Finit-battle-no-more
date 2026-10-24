@@ -10,7 +10,7 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
   if (kind === 'bag' || kind === 'codex') return <img className={`menu-emblem menu-emblem--painted menu-emblem--${kind}`} src={assetPath(`menu-${kind}`)} alt="" aria-hidden="true" draggable={false} />;
   return <svg className={`menu-emblem menu-emblem--${kind}`} viewBox="0 0 120 92" fill="none" aria-hidden="true">
     <defs>
-      <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#818995" /><stop offset=".56" stopColor="#626c7e" /><stop offset="1" stopColor="#979eaa" /></linearGradient>
+      <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#747d8b" /><stop offset=".56" stopColor="#566171" /><stop offset="1" stopColor="#8d96a4" /></linearGradient>
       <linearGradient id={`${id}-paper`} x1="28" y1="19" x2="87" y2="81" gradientUnits="userSpaceOnUse"><stop stopColor="#f2ede2" /><stop offset="1" stopColor="#d2ccbf" /></linearGradient>
       <radialGradient id={`${id}-halo`}><stop stopColor="#d7dce4" stopOpacity=".78" /><stop offset="1" stopColor="#d7dce4" stopOpacity="0" /></radialGradient>
     </defs>
@@ -48,10 +48,10 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
     </>}
     {kind === 'settings' && <>
       <path d="M49 82h26M54 78h16M61 72v8" stroke="#8a8f96" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="61" cy="44" r="31" fill={metal} fillOpacity=".17" stroke="#818a98" strokeWidth="2" />
+      <circle cx="61" cy="44" r="31" fill={metal} fillOpacity=".17" stroke="#737d8c" strokeWidth="2" />
       <circle cx="61" cy="44" r="26" stroke="#b3b4b2" strokeWidth="1.2" />
       <path d="m48 16 2 5m24-5-2 5M33 31l5 2m46 22 5 2M33 57l5-2m46-22 5-2M48 72l2-5m24 5-2-5" stroke="#9b9fa3" strokeWidth=".7" />
-      <ellipse cx="61" cy="44" rx="29" ry="12" transform="rotate(-30 61 44)" stroke="#9199a4" strokeWidth="1.6" />
+      <ellipse cx="61" cy="44" rx="29" ry="12" transform="rotate(-30 61 44)" stroke="#828d9a" strokeWidth="1.6" />
       <path d="M61 10v7m0 54v7M27 44h7m54 0h7M37 20l5 5m38 38 5 5M37 68l5-5m38-38 5-5" stroke="#9ca2aa" strokeWidth="1.3" strokeLinecap="round" />
       <path d="m61 22 7 24-7 18-7-18 7-24Z" fill={metal} stroke="#848d9a" strokeWidth="1" />
       <path d="m61 22 0 25 7-1-7-24Z" fill="#d7d6cc" />

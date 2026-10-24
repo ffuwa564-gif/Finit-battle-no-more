@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Coins, Compass, Crown, Gem, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, DoorOpen, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, CommandEmblem } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, CommandEmblem, StrategyDial, PortraitArt } from '../ui';
 import { content, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
-import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Strategy, Unit } from '../domain/types';
+import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Unit } from '../domain/types';
 
 export type Page = 'home' | 'dungeons' | 'party' | 'bag' | 'recruit' | 'codex' | 'gacha' | 'settings' | 'preview';
 export interface ViewProps { save: GameSave; busy: boolean; command: (c: GameCommand) => Promise<boolean>; navigate: (page: Page) => void; inspect: (character: CharacterDef) => void }
@@ -31,7 +31,7 @@ export function HomeView(p: ViewProps) {
       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">
-          <span className="hub-profile-avatar"><img src={assetPath(leader.portraitId)} alt="" /></span>
+          <span className="hub-profile-avatar"><PortraitArt character={leader} face /></span>
           <div className="hub-profile-copy"><strong>{leader.name}</strong><span><Crown size={10} /> パーティリーダー</span></div>
         </div>
         <div className="hub-currencies"><span><Gem size={13} /><strong>{p.save.stones.toLocaleString()}</strong></span><span><Coins size={13} /><strong>{p.save.gold.toLocaleString()}</strong></span></div>
@@ -106,7 +106,6 @@ export function BattleView(p: ViewProps) {
   const items = Object.entries(battle.pendingMaterials).filter(([, n]) => n > 0);
   const total = items.reduce((n, [, amount]) => n + amount, 0) - (battle.phase === 'playing' ? battle.events.slice(battle.cursor).filter(e => e.kind === 'drop').length : 0);
   const displayRound = battle.phase === 'playing' && battle.events.some(e => ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(e.kind)) ? Math.max(1, battle.round - 1) : battle.round;
-  const strategies: { id: Strategy; name: string }[] = [{ id: 'balanced', name: '均衡' }, { id: 'aggressive', name: '攻撃重視' }, { id: 'survival', name: '生存重視' }];
   const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
   if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={reward ? '探索の記録' : '探索終了'} text={dungeon.name} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{reward ? '獲得素材' : '今回の素材は失われました。'}</h2>{reward ? <><div className="resource-list">{items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{materialName(id)}</span><strong>×{n}</strong></div>)}</div><div className="reward-summary"><span><Coins size={17} /> 撃破 {battle.goldEarned} G（取得済み）</span><span>クリア +20 G</span>{!p.save.completedDungeonIds.includes(dungeon.id) && <span><Gem size={17} /> 初踏破 +1</span>}</div><p className="subtle">確定するまで素材は仮取得です。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} /> 獲得を確定</Button></> : <><p>{battle.failureReason ?? 'パーティは廃都から帰還しました。'}</p><p className="subtle">ゴールド・敵の記録は保持。次回は全回復で出発します。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>街へ戻る <ArrowRight size={16} /></Button></>}</Panel></>;
   return <div className="battle-layout">
@@ -131,7 +130,7 @@ export function BattleView(p: ViewProps) {
     </div>
     <Panel className="command-pad">
       <div className="command-heading"><span className="eyebrow">{usingPotion ? '回復する仲間を選択' : battle.phase === 'playing' ? '行動中' : '作戦'}</span><div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button variant="icon" title={p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 0.5 : 0 } })}>{p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button><Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div>
-      <div className="strategy-options" aria-label="作戦を選ぶ">{strategies.map(st => <Button variant={battle.strategy === st.id ? 'primary' : 'secondary'} selected={battle.strategy === st.id} key={st.id} disabled={p.busy || battle.phase !== 'ready'} onClick={() => p.command({ type: 'strategy', strategy: st.id })}><CommandEmblem kind={st.id} /><span>{st.name}</span></Button>)}</div>
+      <StrategyDial value={battle.strategy} disabled={p.busy || battle.phase !== 'ready'} onChange={strategy => { void p.command({ type: 'strategy', strategy }); }} />
       <div className="command-actions">
         <Button variant="secondary" className="battle-item-control" disabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} onClick={() => setUsingPotion(!usingPotion)}><CommandEmblem kind="potion" /><span>回復薬 <small>{battle.potionsRemaining}</small></span></Button>
         {battle.phase === 'playing' ? <Button size="lg" className="battle-advance-control" disabled={p.busy} onClick={() => p.command({ type: 'replay' })} aria-label="次の演出へ"><CommandEmblem kind="replay" /><span>次へ</span></Button> : <Button size="lg" className="battle-advance-control" disabled={p.busy || usingPotion} onClick={() => p.command({ type: 'round' })} aria-label="ラウンドを進める"><CommandEmblem kind="advance" /><span>進める</span></Button>}

@@ -6,9 +6,9 @@
   margin: 0 auto;
   padding: 0 11px 12px;
   overflow: hidden;
-  border: 1px solid #b7b2a8;
+  border: 1px solid #b1aea6;
   border-radius: 28px;
-  background: radial-gradient(ellipse at 18% 6%, #fffdf5a8, transparent 58%), radial-gradient(ellipse at 75% 78%, #9b93800a, transparent 65%), linear-gradient(135deg, #f3efe7, #e9e5de 52%, #f1ede5);
+  background: radial-gradient(ellipse at 18% 6%, #fffdf5a8, transparent 58%), radial-gradient(ellipse at 75% 78%, #aca48e12, transparent 65%), linear-gradient(135deg, #f1eee6, #e8e4db 52%, #f0ece3);
   box-shadow: 0 2px 0 #faf9f1 inset, 0 12px 35px #313a4720, 0 0 0 4px #f6f4ec80;
 }
 .home-hub::after {
@@ -72,7 +72,7 @@
   box-shadow: 0 0 0 2px #f5f2e4;
   background: #d4d8da;
 }
-.hub-profile-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; transform: scale(2.35); transform-origin: 50% 18%; }
+.hub-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .hub-profile-copy { min-width: 0; }
 .hub-profile-copy > strong { display: block; font-family: var(--font-display); color: #4a4c55; font-weight: 500; font-size: 17px; letter-spacing: .05em; }
 .hub-profile-copy > span { display: flex; align-items: center; gap: 4px; font-size: 8px; color: #7c7d83; margin-top: 3px; }
@@ -99,7 +99,7 @@
   z-index: 3;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
+  gap: 4px;
   margin-top: -19px;
 }
 .home-hub-menu .hub-menu-tile {
@@ -112,10 +112,10 @@
   min-width: 0;
   min-height: 133px;
   padding: 4px 6px 11px;
-  border: 1px solid #c4c0b7;
-  border-radius: 23px;
-  background: radial-gradient(ellipse at 19% 15%, #fffdf7b8, transparent 56%), radial-gradient(ellipse at 85% 88%, #b3a99416, transparent 66%), linear-gradient(125deg, #ece8dfef, #f0ece3f2 48%, #e7e3dbf0);
-  box-shadow: inset 0 1px 0 #fffdf3d9, 0 2px 3px #414b5514;
+  border: 1px solid #c5c1b6a6;
+  border-radius: 25px;
+  background: radial-gradient(ellipse at 23% 8%, #fffdf4a6, transparent 64%), radial-gradient(ellipse at 87% 92%, #b9ae9310, transparent 64%), linear-gradient(135deg, #eeebe3eb, #eae6dfe8);
+  box-shadow: inset 0 1px 0 #fffef8, inset 1px 0 0 #fffdf58c, 0 1px 1px #625b4810;
   color: #424955;
   text-align: center;
   overflow: hidden;
@@ -146,8 +146,8 @@
 .hub-dungeon-entry > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; transition: transform .5s; }
 .hub-dungeon-entry::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#192b3e10,#2d3d50a1 55%,#394858b5); }
 .hub-dungeon-entry:hover:not(:disabled) > img { transform: scale(1.03); }
-.hub-dungeon-entry > span { display: flex; flex-direction: column; gap: 4px; }
-.hub-dungeon-entry strong { font-family: var(--font-display); font-size: 23px; font-weight: 400; letter-spacing: .11em; text-shadow: 0 1px 9px #20304455; }
+.hub-dungeon-entry > span { display: flex; flex: 1; flex-direction: column; gap: 4px; text-align: center; }
+.hub-dungeon-entry strong { font-family: var(--font-display); font-size: 26px; font-weight: 400; letter-spacing: .11em; text-shadow: 0 1px 9px #20304455; }
 .hub-dungeon-entry small { font-size: 7px; letter-spacing: .19em; color: #e0e4e6; }
 .hub-dungeon-entry > svg { width: 43px; height: 43px; padding: 9px; border: 1px solid #f5f3e49c; border-radius: 50%; background: #f4f1e1c9; color: #5e6876; stroke-width: 1.5; }
 .hub-quiet-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 11px 0 0; font-size: 8px; color: #899095; letter-spacing: .06em; line-height: 1.6; }
@@ -157,7 +157,7 @@
   .home-hub::after { inset: 4px; border-radius: 18px; }
   .hub-illustration { height: 372px; margin-inline: -8px; border-radius: 21px 21px 0 0; }
   .hub-illustration > img { object-position: 50% 50%; }
-  .hub-profile { top: 9px; left: 8px; right: 8px; gap: 7px; }
+  .hub-profile { top: 11px; left: 10px; right: 10px; gap: 7px; }
   .hub-profile-person { gap: 7px; padding: 4px 11px 4px 4px; }
   .hub-profile-avatar { width: 44px; height: 44px; }
   .hub-profile-copy > strong { font-size: 14px; }
@@ -169,13 +169,12 @@
   .hub-scene-note { left: 15px; bottom: 35px; }
   .hub-scene-note > span { font-size: 6px; letter-spacing: .2em; }
   .hub-scene-note > p { font-size: 14px; letter-spacing: .08em; }
-  .home-hub-menu { gap: 5px; margin-top: -16px; }
-  .home-hub-menu .hub-menu-tile { min-height: 122px; padding: 3px 3px 9px; border-radius: 18px; }
-  .home-hub-menu .hub-menu-tile::after { inset: 4px; border-radius: 14px; }
+  .home-hub-menu { gap: 3px; margin-top: -16px; }
+  .home-hub-menu .hub-menu-tile { min-height: 122px; padding: 3px 3px 9px; border-radius: 21px; }
   .menu-emblem { width: 97px; height: 75px; }
   .hub-menu-tile > strong { font-size: 14px; letter-spacing: .015em; }
   .home-hub .hub-dungeon-entry { min-height: 85px; margin-top: 9px; border-radius: 19px; padding: 10px 12px; gap: 12px; }
-  .hub-dungeon-entry strong { font-size: 18px; letter-spacing: .07em; }
+  .hub-dungeon-entry strong { font-size: 21px; letter-spacing: .07em; }
   .hub-dungeon-entry small { font-size: 6px; }
   .hub-dungeon-entry > svg { width: 36px; height: 36px; padding: 7px; }
   .hub-quiet-note { font-size: 7px; gap: 5px; margin-top: 9px; }
@@ -186,6 +185,8 @@
   .home-hub .hub-dungeon-entry { min-height: 72px; }
 }
 @media (max-width: 359px) {
+  .hub-dungeon-entry strong { font-size: 18px; letter-spacing: .04em; }
+  .hub-profile { left: 8px; right: 8px; }
   .hub-profile-person { gap: 5px; padding-right: 8px; }
   .hub-profile-copy > strong { font-size: 13px; }
   .hub-menu-tile > strong { font-size: 12px; letter-spacing: 0; }
