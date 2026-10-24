@@ -38,3 +38,8 @@
 
 .goddess-feature .goddess-feature__inspect { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; transform: none; }
 .goddess-feature .goddess-feature__inspect:hover:not(:disabled), .goddess-feature .goddess-feature__inspect:active:not(:disabled) { background: transparent; box-shadow: inset 0 0 0 2px #e7d8bd; transform: none; }
+
+.goddess-pity { display: flex; align-items: center; gap: 10px; margin-top: 16px; color: #d8ccdc; font-size: 10px; }
+.goddess-pity progress { flex: 1; min-width: 40px; height: 5px; border: 0; border-radius: 4px; accent-color: #dfbd7f; }
+.goddess-pity progress::-webkit-progress-bar { background: #ffffff15; border-radius: 4px; }
+.goddess-pity progress::-webkit-progress-value { background: linear-gradient(90deg,#a798cf,#edce8c); border-radius: 4px; }

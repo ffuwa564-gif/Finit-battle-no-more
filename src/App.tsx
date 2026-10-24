@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
-import { Button, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen } from './ui';
+import { Button, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaReveal } from './ui';
 import { content, validateContent } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
@@ -31,6 +31,7 @@ export default function App() {
   const [page, setPage] = useState<Page>(currentPage);
   const [fatal, setFatal] = useState('');
   const [toast, setToast] = useState<{ text: string; tone: 'error' | 'success' } | null>(null);
+  const [summon, setSummon] = useState<{ character: CharacterDef; duplicate: boolean; refund: number } | null>(null);
   const [character, setCharacter] = useState<CharacterDef | null>(null);
   const init = useRef<Promise<GameSave> | null>(null);
 
@@ -75,9 +76,9 @@ export default function App() {
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
       if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
       if (action.type === 'draw') {
-        const acquired = next.ownedIds.find(id => !previous.ownedIds.includes(id));
-        const found = content.characters.find(ch => ch.id === acquired);
-        if (found) setCharacter(found);
+        const result = next.lastGachaResult;
+        const found = result && content.characters.find(ch => ch.id === result.characterId);
+        if (found && result) setSummon({ character: found, duplicate: result.duplicate, refund: result.refund });
       }
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
@@ -149,7 +150,7 @@ export default function App() {
     void enableAudio().then(() => playSound('confirm'));
     setEntering(true);
   }} />;
-  const props = { save, busy, artworkSuspended: !!character, command, navigate, inspect: setCharacter };
+  const props = { save, busy, artworkSuspended: !!character || !!summon, command, navigate, inspect: setCharacter };
   const view = save.battle ? <BattleView {...props} /> : page === 'dungeons' ? <DungeonsView {...props} /> : page === 'party' ? <PartyView {...props} /> : page === 'bag' ? <BagView {...props} /> : page === 'recruit' ? <RecruitView {...props} /> : page === 'gacha' ? <GachaView {...props} /> : page === 'codex' ? <CodexView {...props} /> : page === 'settings' ? <SettingsView {...props} /> : page === 'preview' ? <PreviewView {...props} /> : <HomeView {...props} />;
-  return <div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>静謐の残響</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label="メインメニュー">{navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{item.title}</span>{page === item.page && !save.battle && <ChevronRight size={13} />}</Button>)}</nav><div className="sidebar-bottom"><Shield size={16} /><p>自動保存</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>静謐の残響</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label="G" /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label="石" /><Button variant="icon" title={save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 0.5 : 0 } })}>{save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button></div></header><main className="main-content" id="main-content">{view}</main></div>{(save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />}{character && <CharacterDetail character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{toast?.text}</Toast></div>;
+  return <div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>静謐の残響</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label="メインメニュー">{navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{item.title}</span>{page === item.page && !save.battle && <ChevronRight size={13} />}</Button>)}</nav><div className="sidebar-bottom"><Shield size={16} /><p>自動保存</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>静謐の残響</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label="G" /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label="石" /><Button variant="icon" title={save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 0.5 : 0 } })}>{save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button></div></header><main className="main-content" id="main-content">{view}</main></div>{(save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />}{summon && <GachaReveal key={save.drawCount} character={summon.character} duplicate={summon.duplicate} refund={summon.refund} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={() => playSound(summon.character.rarity === 'SSR' ? 'victory' : 'recruit')} />}{character && <CharacterDetail character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{toast?.text}</Toast></div>;
 }

@@ -1,3 +1,4 @@
+import { gachaPity, gachaSSRRate } from '../src/content/gacha';
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import type { Content, GameSave } from '../src/domain/types';
@@ -107,21 +108,18 @@ describe('application command boundary', () => {
     expect(() => applyCommand(down, { type: 'exchange', speciesId: 'mist', rarity: 'common', direction: 'up' }, content)).toThrow('不足');
   });
 
-  it('guarantees an unowned SSR on the second draw and preserves input on an exhausted guarantee', () => {
-    const definitions: Content = structuredClone(content);
-    while (definitions.dungeons.length < 10) definitions.dungeons.push({ ...definitions.dungeons[0]!, id: `fixture-${definitions.dungeons.length}` });
-    const initial = createInitialSave(definitions, 42);
-    initial.stones = 10;
-    const first = applyCommand(initial, { type: 'draw' }, definitions);
-    const second = applyCommand(first, { type: 'draw' }, definitions);
-    const newId = second.ownedIds.find(id => !first.ownedIds.includes(id));
-    expect(definitions.characters.find(character => character.id === newId)!.rarity).toBe('SSR');
-    expect(second.stones).toBe(0);
-    const exhausted = structuredClone(first);
-    exhausted.ownedIds.push(...definitions.characters.filter(item => item.rarity === 'SSR' && item.origin.includes('gacha')).map(item => item.id));
-    const snapshot = structuredClone(exhausted);
-    expect(() => applyCommand(exhausted, { type: 'draw' }, definitions)).toThrow('保証対象');
-    expect(exhausted).toEqual(snapshot);
+  it('guarantees SSR only on the introductory second draw, with duplicates refunded', () => {
+    const initial = createInitialSave(content, 42); initial.stones = 100;
+    const first = applyCommand(initial, { type: 'draw' }, content);
+    const second = applyCommand(first, { type: 'draw' }, content);
+    expect(content.characters.find(c => c.id === second.lastGachaResult!.characterId)!.rarity).toBe('SSR');
+    expect(second.ssrPity).toBe(0);
+    const later = { ...second, drawCount: 3, seed: 42 };
+    const fourth = applyCommand(later, { type: 'draw' }, content);
+    expect(content.characters.find(c => c.id === fourth.lastGachaResult!.characterId)!.rarity).toBe('R');
+    expect(fourth.lastGachaResult!.duplicate).toBe(true);
+    expect(fourth.stones).toBe(later.stones - 4);
+    expect(new Set(fourth.ownedIds).size).toBe(fourth.ownedIds.length);
   });
 });
 
@@ -145,23 +143,37 @@ describe('save contracts', () => {
 });
 
 
-describe('gothic goddess collection', () => {
-  it('draws the four themed goddesses once each and keeps the second-draw SSR guarantee', () => {
-    let save = createInitialSave(content, 42); save.stones = 20;
-    const acquired = [];
-    for (let index = 0; index < 4; index++) {
-      const next = applyCommand(save, { type: 'draw' }, content);
-      const id = next.ownedIds.find(id => !save.ownedIds.includes(id))!;
-      const character = content.characters.find(character => character.id === id)!;
-      acquired.push(character);
-      if (index === 1) expect(character.rarity).toBe('SSR');
-      expect(next.stones).toBe(save.stones - 5);
-      save = next;
-    }
-    expect(acquired.map(character => character.name).sort()).toEqual(['イザナミ', 'アマテラス', 'アメノウズメ', 'コノハナサクヤヒメ'].sort());
-    expect(acquired.filter(character => character.rarity === 'SSR')).toHaveLength(2);
-    const snapshot = structuredClone(save);
-    expect(() => applyCommand({ ...save, stones: 5 }, { type: 'draw' }, content)).toThrow('未所持');
-    expect(save).toEqual(snapshot);
+describe('gothic goddess pity', () => {
+  it('guarantees SSR at 90, resets the streak and refunds a duplicate SSR', () => {
+    const save = createInitialSave(content, 42); save.stones = 5; save.drawCount = 120; save.ssrPity = 89;
+    save.ownedIds.push(...content.characters.filter(c => c.origin.includes('gacha')).map(c => c.id));
+    const next = applyCommand(save, { type: 'draw' }, content);
+    expect(content.characters.find(c => c.id === next.lastGachaResult!.characterId)!.rarity).toBe('SSR');
+    expect(next.ssrPity).toBe(0);
+    expect(next.lastGachaResult).toMatchObject({ duplicate: true, refund: 3 });
+    expect(next.stones).toBe(3);
+    expect(next.drawCount).toBe(121);
+    assertSaveCompatibility(next, content);
+  });
+
+  it('raises SSR odds at 74 and derives a streak for old saves', () => {
+    expect(gachaSSRRate(72)).toBe(3);
+    expect(gachaSSRRate(73)).toBe(9);
+    expect(gachaSSRRate(88)).toBe(99);
+    const old = createInitialSave(content, 42); delete old.ssrPity; old.drawCount = 4;
+    old.history = [{ id: '4', text: '召喚：R アメノウズメが訪れました。' }, { id: '3', text: '召喚：SSR イザナミが訪れました。' }];
+    expect(gachaPity(old)).toBe(1);
+    expect(() => assertValidSave({ ...old, ssrPity: 90 })).toThrow('天井');
+    const next = applyCommand({ ...old, stones: 5 }, { type: 'draw' }, content);
+    expect(next.ssrPity).toBe(2);
+  });
+
+  it('does not consume stones or change the input when guaranteed SSR content is missing', () => {
+    const definitions = structuredClone(content);
+    definitions.characters.filter(c => c.rarity === 'SSR').forEach(c => c.published = false);
+    const save = createInitialSave(definitions, 42); save.stones = 5; save.drawCount = 1;
+    const before = structuredClone(save);
+    expect(() => applyCommand(save, { type: 'draw' }, definitions)).toThrow('保証対象');
+    expect(save).toEqual(before);
   });
 });

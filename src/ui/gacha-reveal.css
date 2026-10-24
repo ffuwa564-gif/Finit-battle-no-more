@@ -1,0 +1,46 @@
+.modal.summon-modal { position: relative; width: min(94vw,760px); max-height: 94dvh; border: 1px solid #c4c4dc73; border-radius: 18px; background: #101527; color: #f5eee2; box-shadow: 0 0 90px #9c95ff38,0 30px 100px #020512a6; overflow: auto; }
+.summon-modal .modal__header { position: absolute; inset: 0 0 auto; z-index: 8; padding: 10px 14px; border: 0; background: transparent; }
+.summon-modal .modal__header h2 { font-size: 12px; color: #e8e2d6; text-shadow: 0 1px 5px #000; }
+.summon-modal .modal__body { padding: 0; }
+.gacha-reveal { --summon-color: #bbd5ff; position: relative; min-height: min(720px,88dvh); overflow: hidden; isolation: isolate; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 38%,#343b61,#0c1425 70%); text-align: center; }
+.gacha-reveal--sr { --summon-color: #d3b4ff; }
+.gacha-reveal--ssr { --summon-color: #ffe2a0; background: radial-gradient(ellipse at 50% 38%,#685164,#242039 50%,#101323 85%); }
+.gacha-reveal__rays { position: absolute; inset: -70%; z-index: -1; opacity: .24; background: repeating-conic-gradient(from 0deg,transparent 0deg 13deg,var(--summon-color) 14deg 15deg,transparent 18deg 30deg); animation: summon-rays 24s linear infinite; }
+.gacha-reveal--ssr .gacha-reveal__rays { opacity: .55; animation-duration: 16s; }
+.gacha-reveal__ring { position: absolute; width: 230px; height: 230px; top: 30%; border: 1px solid var(--summon-color); border-radius: 50%; box-shadow: 0 0 35px #d7b9ff60,inset 0 0 35px #d7b9ff40; animation: summon-charge 2.4s ease-in-out infinite; }
+.gacha-reveal__ring::after { content: ''; position: absolute; inset: 15px; border: 1px dashed var(--summon-color); border-radius: 50%; }
+.gacha-reveal__invocation { z-index: 4; color: var(--summon-color); letter-spacing: .15em; }
+.gacha-reveal__invocation > svg { filter: drop-shadow(0 0 20px var(--summon-color)); }
+.gacha-reveal__invocation p { margin: 22px 0 35px; font-family: var(--font-display); }
+.gacha-reveal__invocation .button { background: #16213999; border-color: #aab8ca66; color: #ece7df; font-size: 11px; }
+.gacha-reveal__particles { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.gacha-reveal__particles i { position: absolute; left: 50%; top: 42%; width: 3px; height: 3px; border-radius: 50%; background: var(--summon-color); box-shadow: 0 0 10px var(--summon-color); animation: summon-spark 2.8s var(--delay) ease-out infinite; transform: rotate(var(--angle)); }
+.gacha-reveal__art { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; animation: summon-portrait 900ms cubic-bezier(.16,.7,.3,1) both; }
+.gacha-reveal.is-revealed::after { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg,#10132336,transparent 30%,#10132325 48%,#101323f2 90%); pointer-events: none; }
+.gacha-reveal__result { position: relative; align-self: end; width: 100%; z-index: 5; padding: 240px 15px 24px; animation: summon-name 600ms 350ms both; }
+.gacha-reveal__rarity { display: block; color: var(--summon-color); font: 400 48px/1.1 var(--font-display); letter-spacing: .18em; text-shadow: 0 0 22px #e3c28f80,0 2px 6px #141526; }
+.gacha-reveal--ssr .gacha-reveal__rarity { font-size: 68px; text-shadow: 0 0 25px #ffda8fb3,0 0 55px #ce92e180,0 2px 6px #141526; }
+.gacha-reveal__new { display: block; margin: 10px 0 14px; font-size: 9px; letter-spacing: .3em; color: #f3dba4; }
+.gacha-reveal__result p { color: #e1d8e8; font: 12px/1.8 var(--font-display); letter-spacing: .1em; }
+.gacha-reveal__result h3 { font: 400 clamp(24px,6vw,38px)/1.6 var(--font-display); color: #fff7e8; text-shadow: 0 2px 10px #101323; }
+.gacha-reveal__result small { color: #d0c9da; }
+.gacha-reveal .gacha-reveal__accept { display: flex; margin: 20px auto 0; min-width: 220px; background: #f2e6cfe6; color: #47384b; border-color: #f4d49b; }
+.gacha-reveal__burst { position: absolute; inset: 0; z-index: 6; pointer-events: none; background: radial-gradient(ellipse at 50% 35%,#fff6ddcc,transparent 72%); animation: summon-burst 800ms ease-out both; }
+.gacha-reveal:not(.gacha-reveal--ssr) .gacha-reveal__burst { opacity: .4; }
+@keyframes summon-rays { to { rotate: 360deg; } }
+@keyframes summon-charge { 0%,100% { scale: .85; opacity: .4; } 60% { scale: 1.12; opacity: 1; } }
+@keyframes summon-spark { from { opacity: 0; transform: rotate(var(--angle)) translateY(12px); } 20% { opacity: 1; } to { opacity: 0; transform: rotate(var(--angle)) translateY(calc(-1 * var(--distance))); } }
+@keyframes summon-portrait { from { opacity: 0; scale: 1.13; } to { opacity: 1; scale: 1; } }
+@keyframes summon-name { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
+@keyframes summon-burst { from { opacity: 1; scale: .5; } to { opacity: 0; scale: 1.7; } }
+.gacha-reveal.is-reduced *, html[data-motion="reduced"] .gacha-reveal * { animation: none !important; }
+.gacha-reveal.is-reduced .gacha-reveal__burst, html[data-motion="reduced"] .gacha-reveal__burst { display: none; }
+@media (prefers-reduced-motion: reduce) { .gacha-reveal * { animation: none !important; } .gacha-reveal__burst { display: none; } }
+@media (max-width: 760px) { .modal.summon-modal { position: relative; width: 100%; max-height: 96dvh; border-radius: 13px; } .gacha-reveal { min-height: 86dvh; } }
+
+.gacha-reveal.is-revealed .gacha-reveal__rays { z-index: 2; opacity: .2; mix-blend-mode: screen; pointer-events: none; }
+.gacha-reveal__art .animated-illustration__toggle { top: 62px; right: 12px; bottom: auto; }
+
+.gacha-reveal--ssr.is-revealed .gacha-reveal__ring { z-index: 4; pointer-events: none; animation: summon-halo 1500ms ease-out both; }
+.gacha-reveal--ssr .gacha-reveal__result::before { content: '✦  ✦  ✦  ✦  ✦'; display: block; margin-bottom: 12px; font-size: 18px; letter-spacing: .35em; color: #ffe6a6; text-shadow: 0 0 16px #f6ce77; }
+@keyframes summon-halo { from { opacity: 1; scale: .5; } to { opacity: 0; scale: 3.5; } }

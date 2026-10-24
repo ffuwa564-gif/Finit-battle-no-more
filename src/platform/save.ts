@@ -37,6 +37,8 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (!record(value) || value.schemaVersion !== 1) throw new Error('未対応または破損した保存形式です。セーブは保持されています。');
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
   for (const key of ['revision', 'gold', 'potions', 'stones', 'drawCount', 'seed']) if (!count(value[key])) throw new Error('保存データの所持数または状態が不正です。');
+  if (value.ssrPity !== undefined && (!count(value.ssrPity) || value.ssrPity >= 90 || value.ssrPity > Number(value.drawCount))) throw new Error('祈願の天井情報が不正です。');
+  if (value.lastGachaResult !== undefined && (!record(value.lastGachaResult) || !nonempty(value.lastGachaResult.characterId) || typeof value.lastGachaResult.duplicate !== 'boolean' || !count(value.lastGachaResult.refund) || value.lastGachaResult.refund > 3)) throw new Error('祈願の結果情報が不正です。');
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
   if (partyIds.length < 1 || partyIds.length > 4 || !partyIds.includes(value.leaderId as string) || partyIds.some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('保存データの編成が不正です。');
@@ -60,6 +62,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   const species = new Set(content.species.map(item => item.id));
   const dungeonIds = new Set(content.dungeons.map(item => item.id));
   if ([...save.ownedIds, ...save.discoveredIds].some(id => !characters.has(id)) || save.completedDungeonIds.some(id => !dungeonIds.has(id)) || Object.keys(save.materials).some(id => !species.has(id.split(':')[0]!))) throw new Error('保存データが参照する定義がありません。セーブを保持して停止します。');
+  if (save.lastGachaResult && (!characters.has(save.lastGachaResult.characterId) || !save.ownedIds.includes(save.lastGachaResult.characterId))) throw new Error('祈願の結果が所持情報と一致しません。');
   const battle = save.battle;
   if (!battle) return;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);

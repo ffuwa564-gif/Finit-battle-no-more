@@ -109,7 +109,7 @@ export function Toast({ children, tone = 'info', onClose, present = true }: { ch
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */
-export function Modal({ open = true, title, children, onClose, footer }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode }) {
+export function Modal({ open = true, title, children, onClose, footer, className = '' }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
@@ -134,7 +134,7 @@ export function Modal({ open = true, title, children, onClose, footer }: { open?
     return () => { document.body.style.overflow = oldOverflow; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createPortal(<div className="modal-backdrop"><div className="modal" ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton className="close-button" label="閉じる" sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
+  return createPortal(<div className="modal-backdrop"><div className={`modal ${className}`} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{title}</h2><IconButton className="close-button" label="閉じる" sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{children}</div>{footer && <div className="modal__footer">{footer}</div>}</div></div>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{children}<ChevronRight size={16} aria-hidden="true" /></span>; }
@@ -144,3 +144,5 @@ export function ArtBackground({ src, children, className = '' }: { src: string; 
 }
 
 export { TitleScreen } from './TitleScreen';
+
+export { GachaReveal } from './GachaReveal';

@@ -1,5 +1,5 @@
 import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
-import { initialGacha } from '../content/gacha';
+import { initialGacha, gachaPity, gachaSSRRate } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -31,7 +31,7 @@ export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave
     schemaVersion: content.schemaVersion, appVersion: content.appVersion, contentVersion: content.contentVersion,
     rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
-    completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, seed: seed >>> 0,
+    completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
     battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 0.5, reducedMotion: false, speed: 1 },
   };
 }
@@ -155,16 +155,25 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       town(save);
       if (content.dungeons.filter(item => item.published).length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
-      const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && !save.ownedIds.includes(item.id));
-      if (!available.length) fail('召喚できる未所持キャラクターがいません。');
+      const available = content.characters.filter(item => item.published && item.origin.includes('gacha'));
+      if (!available.length) fail('召喚できるキャラクターがいません。');
+      const pity = gachaPity(save);
+      const guaranteed = save.drawCount + 1 === initialGacha.guaranteeDraw || pity + 1 >= initialGacha.hardPity;
       let roll = rng(save.seed); save.seed = roll.seed;
-      const rarity = save.drawCount + 1 === initialGacha.guaranteeDraw ? 'SSR' : roll.value < initialGacha.rates.R / 100 ? 'R' : roll.value < (initialGacha.rates.R + initialGacha.rates.SR) / 100 ? 'SR' : 'SSR';
+      const ssrRate = gachaSSRRate(pity) / 100;
+      const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * initialGacha.rates.R / (initialGacha.rates.R + initialGacha.rates.SR) ? 'R' : 'SR';
       let candidates = available.filter(item => item.rarity === rarity);
-      if (save.drawCount + 1 === initialGacha.guaranteeDraw && !candidates.length) fail(`${initialGacha.guaranteeDraw}回目のSSR保証対象がありません。石は消費されません。`);
+      if (guaranteed && !candidates.length) fail('SSR保証対象がありません。石は消費されません。');
       if (!candidates.length) candidates = available;
       roll = rng(save.seed); save.seed = roll.seed;
       const selected = candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
-      save.stones -= initialGacha.stoneCost; save.drawCount += 1; save.ownedIds.push(selected.id);
+      const duplicate = save.ownedIds.includes(selected.id);
+      const refund = duplicate ? initialGacha.duplicateRefund[selected.rarity] : 0;
+      save.stones = save.stones - initialGacha.stoneCost + refund;
+      save.drawCount += 1;
+      if (!duplicate) save.ownedIds.push(selected.id);
+      save.ssrPity = selected.rarity === 'SSR' ? 0 : pity + 1;
+      save.lastGachaResult = { characterId: selected.id, duplicate, refund };
       log(save, `召喚：${selected.rarity} ${selected.name}が訪れました。`);
       break;
     }

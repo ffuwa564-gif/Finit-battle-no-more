@@ -1,3 +1,4 @@
+import { gachaPity } from '../content/gacha';
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
 import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem } from '../ui';
@@ -78,8 +79,8 @@ export function GachaView(p: ViewProps) {
   const pool = content.characters.filter(c => c.published && c.origin.includes('gacha'));
   async function draw() { await p.command({ type: 'draw' }); }
   const featured = initialGacha.featuredIds.map(characterById);
-  return <><PageTitle eyebrow="GOTHIC GODDESSES" title="女神の祈願" /><GachaShowcase reducedMotion={p.save.settings.reducedMotion} suspended={Boolean(p.artworkSuspended)} collection={initialGacha} featured={featured} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} exhausted={pool.every(character => p.save.ownedIds.includes(character.id))} busy={p.busy} onDraw={draw} onInspect={p.inspect} />
-    <Panel><h3>通常の基準排出率</h3><div className="goddess-rates"><span>R {initialGacha.rates.R}%</span><span>SR {initialGacha.rates.SR}%</span><span>SSR {initialGacha.rates.SSR}%</span></div><p>通算{initialGacha.guaranteeDraw}回目の祈願はSSR確定。未所持の女神のみ、各レアリティ内で均等抽選します。全員所持した区分は残る未所持へ振替。</p><p className="subtle">石{initialGacha.stoneCost}個で1回。祈願石はダンジョン初踏破で獲得できます。</p></Panel>
+  return <><PageTitle eyebrow="GOTHIC GODDESSES" title="女神の祈願" /><GachaShowcase reducedMotion={p.save.settings.reducedMotion} suspended={Boolean(p.artworkSuspended)} collection={initialGacha} featured={featured} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} pity={gachaPity(p.save)} busy={p.busy} onDraw={draw} onInspect={p.inspect} />
+    <Panel><h3>通常の基準排出率</h3><div className="goddess-rates"><span>R {initialGacha.rates.R}%</span><span>SR {initialGacha.rates.SR}%</span><span>SSR {initialGacha.rates.SSR}%</span></div><p>初回のみ通算{initialGacha.guaranteeDraw}回目はSSR確定。その後はSSR未獲得{initialGacha.hardPity}回目でSSR確定。{initialGacha.softPityStart}回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。重複あり・各レアリティ内は均等抽選です。</p><p>重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。</p><p className="subtle">石{initialGacha.stoneCost}個で1回。祈願石はダンジョン初踏破で獲得できます。</p></Panel>
     <h2>ほかの女神</h2><div className="character-grid">{pool.filter(character => character.rarity !== 'SSR').map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity}</span><h3>{ch.name}</h3><p>{ch.epithet}</p></Panel>)}</div></>;
 }
 
