@@ -12,7 +12,6 @@
 /* Longer tactical descriptions need the full reading width on phones. */
 @media (max-width: 760px) {
   .character-detail { grid-template-columns: minmax(0,1fr); gap: 16px; }
-  .character-detail .detail-art { height: 230px; max-height: 230px; }
   .character-detail p { font-size: 11px; }
   .character-detail .stat-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
 }

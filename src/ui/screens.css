@@ -127,7 +127,6 @@
 .main-content > .panel > p + h3 { margin-top: 26px; }
 .main-content > .panel > .button { margin-top: 18px; }
 .character-detail { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: 22px; }
-.character-detail .detail-art { height: 300px; object-position: center 22%; }
 .character-detail p { font-size: 10px; color: var(--muted); line-height: 1.9; margin-block: 6px 12px; }
 .character-detail h3 { display: flex; align-items: center; gap: 7px; font-size: 15px; margin-top: 18px; }
 .character-detail h3 svg { color: var(--gold); }
@@ -259,7 +258,7 @@
   .wish-hero::after { background: linear-gradient(90deg,#192d3fd9,#203c4b66); }
   .wish-content { max-width: 95%; padding: 27px; }.wish-content h2 { font-size: 26px; }.wish-content > p { font-size: 10px; }.wish-content > .button { font-size: 11px; }
   .setting-row { flex-wrap: wrap; gap: 13px; }.setting-row .toolbar { gap: 5px; }.setting-row .button--sm { font-size: 8px; padding-inline: 7px; }
-  .character-detail { grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: 16px; }.character-detail .detail-art { height: 260px; }.character-detail p { font-size: 9px; }.character-detail h3 { font-size: 13px; }.character-detail > div > .eyebrow { font-size: 6px; }.stat-grid { gap: 5px; }.stat-grid > span { font-size: 7px; padding: 6px; }.stat-grid strong { font-size: 14px; }
+  .character-detail { grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: 16px; } .character-detail p { font-size: 9px; }.character-detail h3 { font-size: 13px; }.character-detail > div > .eyebrow { font-size: 6px; }.stat-grid { gap: 5px; }.stat-grid > span { font-size: 7px; padding: 6px; }.stat-grid strong { font-size: 14px; }
   .flavor-text { gap: 10px; }.flavor-text p { font-size: 12px; }
   .battle-topline { gap: 13px; margin-bottom: 12px; }.battle-topline h2 { font-size: 22px; }.battle-topline .eyebrow { font-size: 7px; }.round-label { font-size: 7px; padding-left: 12px; }
   .bag-counter > svg { width: 20px; height: 20px; }.bag-counter strong { font-size: 15px; }.bag-counter small { font-size: 6px; }

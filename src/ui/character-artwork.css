@@ -3,3 +3,17 @@
 .character-artwork .animated-illustration__toggle { right: 8px; bottom: 8px; }
 .goddess-feature > .character-artwork { position: absolute; inset: 0; }
 .goddess-feature .animated-illustration__toggle { top: 8px; bottom: auto; }
+
+/* Details show the complete painting, including its top edge and face. */
+.character-detail > .character-artwork.detail-art {
+  height: auto;
+  aspect-ratio: var(--character-art-ratio,2 / 3);
+  max-height: min(60vh,520px);
+  max-height: min(60dvh,520px);
+  align-self: start;
+}
+.character-detail > .character-artwork.detail-art .character-artwork__still,
+.character-detail > .character-artwork.detail-art .animated-illustration__art {
+  object-fit: contain;
+  object-position: center;
+}
