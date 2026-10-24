@@ -15,23 +15,23 @@
   position: absolute;
   z-index: 5;
   inset: 0 0 auto;
-  min-height: 44px;
-  padding: 8px 17px;
+  min-height: 28px;
+  padding: 4px 17px;
   margin: 0;
-  gap: 14px;
+  gap: 10px;
   color: #edece8;
-  background: linear-gradient(180deg,#263443e0,#26344391 72%,#26344326);
-  border-bottom: 1px solid #d7d4c14d;
+  background: linear-gradient(180deg,#263443cf,#26344376 70%,transparent);
+  border-bottom: 0;
 }
 .battle-layout .battle-topline .eyebrow { color: #e2ded0; font-size: 8px; margin-bottom: 0; letter-spacing: .08em; }
-.battle-layout .battle-topline > div:first-child { display: flex; align-items: center; gap: 11px; }
-.battle-layout .battle-topline h2 { font-size: 16px; line-height: 1.2; color: #f3f0e9; white-space: nowrap; }
+.battle-layout .battle-topline > div:first-child { display: flex; align-items: center; gap: 8px; }
+.battle-layout .battle-topline h2 { font-size: 14px; line-height: 1.2; color: #f3f0e9; white-space: nowrap; }
 .battle-layout .battle-topline h2 small { color: #c5ced1; font-size: 10px; }
-.battle-layout .round-label { color: #c4cdd0; border-color: #d9d7cc3b; font-size: 9px; padding-left: 14px; letter-spacing: .07em; }
-.battle-layout .bag-counter { color: #e8e7df; gap: 2px 7px; }
+.battle-layout .round-label { color: #d0d6d4; border: 0; font-size: 9px; padding-left: 0; letter-spacing: .04em; }
+.battle-layout .bag-counter { display: flex; color: #e8e7df; gap: 6px; }
 .battle-layout .bag-counter strong { font-size: 15px; }
 .battle-layout .bag-counter > svg { width: 18px; height: 18px; }
-.battle-layout .bag-counter small { color: #c7ccce; font-size: 7px; }
+.battle-layout .bag-counter small { display: none; }
 .battle-layout .battle-scene { min-height: 0; height: 424px; border: 0; border-radius: 0; overflow: hidden; background: #465361; }
 .battle-layout .scene-background { opacity: 1; object-position: 50% 43%; filter: saturate(.7); }
 .battle-layout .scene-mist { background: linear-gradient(0deg,#dee3e258,transparent 28%),linear-gradient(180deg,#17273712,transparent 35%); }
@@ -70,7 +70,7 @@
 .battle-layout .battle-toast { top: 76px; padding: 9px 17px; font-size: 11px; border-radius: 9px; color: #4f5a69; border-color: #c9c6bd; background: #f8f6eef2; box-shadow: 0 4px 17px #273b4e28; }
 .battle-layout .battle-toast.dialogue-toast { top: auto; bottom: 16px; width: 87%; padding: 12px 18px; line-height: 1.8; }
 /* One portrait ribbon sits over the stage edge, with the HP strips kept clear beneath. */
-.battle-layout .party-strip { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; padding: 7px 7px 6px; margin: -3px 0 0; border-radius: 17px 17px 0 0; border: 1px solid #c6c4ba; border-bottom: 0; background: linear-gradient(#f7f5ed,#eae9e1); box-shadow: 0 -2px 9px #20344716,inset 0 1px 0 #ffffff; }
+.battle-layout .party-strip { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; padding: 7px 7px 6px; margin: -3px 0 0; border-radius: 17px 17px 0 0; border: 1px solid #c6c4ba; border-bottom: 0; background: linear-gradient(#f7f5ed,#eae9e1); box-shadow: 0 -1px 5px #20344712,inset 0 1px 0 #ffffff; }
 .battle-layout .party-unit { width: 100%; min-width: 0; }
 .battle-layout .party-unit > .character-portrait { padding: 0; width: 100%; gap: 0; border-radius: 6px; border: 0; background: transparent; box-shadow: none; }
 .battle-layout .party-strip .portrait-image { border: 1px solid #adb5b3; border-radius: 6px; aspect-ratio: 1.15; }
@@ -84,7 +84,7 @@
 .battle-layout .party-strip .hp-bar > span { background: linear-gradient(90deg,#548a87,#a0c4b9); }
 .battle-layout .party-hp { display: none; }
 .battle-layout .party-strip--selecting .character-portrait.button:not(:disabled) { box-shadow: 0 0 0 2px #9bbab2,0 0 15px #c1d9d3; }
-.battle-layout .command-pad { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 196px; column-gap: 12px; row-gap: 3px; align-items: center; padding: 17px 19px 15px; margin: 0; border: 1px solid #c6c3b9; border-radius: 24px 24px 0 0; background: var(--paper-grain,none),radial-gradient(ellipse at 28% 8%,#faf7ee66,transparent 63%),radial-gradient(ellipse at 83% 72%,#bdb4a326,transparent 57%),linear-gradient(135deg,#f1eee3,#e7e2d7); box-shadow: inset 0 1px 0 #ffffff,inset 0 0 0 4px #f7f4eb,inset 0 0 0 5px #d7d1c480; }
+.battle-layout .command-pad { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 196px; column-gap: 12px; row-gap: 3px; align-items: center; padding: 17px 19px 15px; margin: 0; border: 1px solid #c6c3b9; border-radius: 20px 20px 0 0; background: var(--paper-grain,none),radial-gradient(ellipse at 28% 8%,#faf7ee66,transparent 63%),radial-gradient(ellipse at 83% 72%,#bdb4a326,transparent 57%),linear-gradient(135deg,#f1eee3,#e7e2d7); box-shadow: inset 0 1px 0 #ffffff,inset 0 0 0 2px #f7f4eb,inset 0 0 0 3px #d7d1c466; }
 .battle-layout .command-heading { grid-column: 1 / -1; grid-row: 1; margin: 0; min-height: 44px; gap: 6px; }
 .battle-layout .command-heading > .eyebrow { min-width: 0; flex: 1; font-size: 9px; letter-spacing: .04em; color: #727d82; }
 .battle-layout .command-heading .toolbar { flex-shrink: 0; gap: 5px; }
@@ -111,11 +111,11 @@
 @media (max-width: 760px) {
   .battle-layout { max-width: 500px; border-radius: 22px; }
   .battle-layout .battle-scene { height: 385px; }
-  .battle-layout .battle-topline { min-height: 43px; padding: 7px 12px; gap: 8px; }
+  .battle-layout .battle-topline { min-height: 28px; padding: 4px 12px; gap: 8px; }
   .battle-layout .battle-topline .eyebrow { font-size: 7px; }
-  .battle-layout .battle-topline h2 { font-size: 15px; }
+  .battle-layout .battle-topline h2 { font-size: 14px; }
   .battle-layout .battle-topline > div:first-child { gap: 7px; }
-  .battle-layout .round-label { font-size: 8px; padding-left: 9px; }
+  .battle-layout .round-label { font-size: 8px; padding-left: 0; }
   .battle-layout .bag-counter small { font-size: 6px; }
   .battle-layout .enemy-line { inset: 72px 9px 8px; gap: 5px 0; }
   .battle-layout .enemy-status { padding: 4px 6px 5px; }
@@ -146,7 +146,7 @@
 }
 @media (max-width: 360px) {
   .battle-layout .battle-scene { height: 350px; }
-  .battle-layout .round-label { display: none; }
+  .battle-layout .round-label { display: block; }
   .battle-layout .bag-counter small { font-size: 6px; }
   .battle-layout .command-pad { grid-template-columns: minmax(0,1fr) 120px; column-gap: 6px; padding-inline: 12px; }
   .battle-layout .strategy-options { padding: 10px 8px; gap: 2px; }

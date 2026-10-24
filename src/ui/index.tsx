@@ -18,6 +18,7 @@ export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
 export { StrategyDial } from './StrategyDial';
 export { PortraitArt } from './PortraitArt';
+export { CurrencyEmblem, EncounterCrest } from './Sigils';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean }

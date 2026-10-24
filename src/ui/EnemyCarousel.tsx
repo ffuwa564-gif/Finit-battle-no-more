@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
-import { ChevronLeft, ChevronRight, Crown } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button, HPBar } from './index';
+import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
 import type { BattleEvent, Unit } from '../domain/types';
 
@@ -157,7 +158,7 @@ export function EnemyCarousel({ units, event, reducedMotion = false }: EnemyCaro
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerCancel}
     onPointerLeave={() => { if (drag.current && !drag.current.horizontal) drag.current = null; }} onLostPointerCapture={pointerCancel}>
     <div className="enemy-carousel-status">
-      <div className="enemy-carousel-name">{front.boss && <Crown size={14} />}<strong>{character.name}</strong><span className="enemy-carousel-constant" aria-label="難易度定数">{(character.strength / 10).toFixed(1)}</span></div>
+      <div className="enemy-carousel-name">{front.boss && <EncounterCrest />}<strong>{character.name}</strong><span className="enemy-carousel-constant" aria-label="難易度定数">{(character.strength / 10).toFixed(1)}</span></div>
       <HPBar hp={front.hp} maxHp={front.maxHp} label={`${character.name}のHP`} />
     </div>
     <div className="enemy-orbit" aria-hidden="true">

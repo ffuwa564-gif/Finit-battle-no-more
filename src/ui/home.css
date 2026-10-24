@@ -54,7 +54,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0;
+  min-width: 160px;
+  flex-basis: 40%;
   padding: 5px 17px 5px 6px;
   background: linear-gradient(125deg, #faf7eeed, #e7e4deeb);
   border: 1px solid #eeeae0;
@@ -74,14 +75,14 @@
 }
 .hub-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .hub-profile-copy { min-width: 0; }
-.hub-profile-copy > strong { display: block; font-family: var(--font-display); color: #4a4c55; font-weight: 500; font-size: 17px; letter-spacing: .05em; }
+.hub-profile-copy > strong { display: block; font-family: var(--font-display); color: #4a4c55; font-weight: 500; font-size: 19px; letter-spacing: .05em; }
 .hub-profile-copy > span { display: flex; align-items: center; gap: 4px; font-size: 8px; color: #7c7d83; margin-top: 3px; }
 .hub-profile-copy > span svg { width: 10px; height: 10px; color: #9e926e; }
-.hub-currencies { display: flex; flex-direction: column; gap: 4px; min-width: 123px; margin-left: auto; }
+.hub-currencies { display: flex; flex-direction: column; gap: 4px; min-width: 123px; width: 35%; margin-left: auto; }
 .hub-currencies > span { display: flex; align-items: center; gap: 10px; padding: 6px 13px; border: 1px solid #faf8ee; border-radius: 12px; background: #f3f0e9e8; box-shadow: 0 1px 4px #26334017; color: #7d8594; backdrop-filter: blur(6px); }
-.hub-currencies > span > svg { color: #9094a1; }
+.hub-currencies > span > svg { width: 20px; height: 20px; flex-shrink: 0; color: #7c899c; }
 .hub-currencies > span:last-child > svg { color: #b39c71; }
-.hub-currencies strong { margin-left: auto; color: #535b66; font-family: var(--font-display); font-weight: 400; font-size: 16px; }
+.hub-currencies strong { margin-left: auto; color: #535b66; font-family: var(--font-display); font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
 .hub-scene-note {
   position: absolute;
   isolation: isolate;
@@ -160,12 +161,12 @@
   .hub-profile { top: 11px; left: 10px; right: 10px; gap: 7px; }
   .hub-profile-person { gap: 7px; padding: 4px 11px 4px 4px; }
   .hub-profile-avatar { width: 44px; height: 44px; }
-  .hub-profile-copy > strong { font-size: 14px; }
+  .hub-profile-copy > strong { font-size: 15px; }
   .hub-profile-copy > span { font-size: 7px; }
   .hub-currencies { min-width: 100px; gap: 3px; }
   .hub-currencies > span { padding: 4px 10px; border-radius: 10px; gap: 7px; }
-  .hub-currencies strong { font-size: 14px; }
-  .hub-currencies svg { width: 12px; height: 12px; }
+  .hub-currencies strong { font-size: 16px; }
+  .hub-currencies > span > svg { width: 17px; height: 17px; }
   .hub-scene-note { left: 15px; bottom: 35px; }
   .hub-scene-note > span { font-size: 6px; letter-spacing: .2em; }
   .hub-scene-note > p { font-size: 14px; letter-spacing: .08em; }
@@ -187,7 +188,10 @@
 @media (max-width: 359px) {
   .hub-dungeon-entry strong { font-size: 18px; letter-spacing: .04em; }
   .hub-profile { left: 8px; right: 8px; }
-  .hub-profile-person { gap: 5px; padding-right: 8px; }
+  .hub-profile-person { flex-basis: auto; min-width: 0; gap: 5px; padding-right: 8px; }
+  .hub-currencies { width: auto; }
+  .hub-currencies strong { font-size: 14px; }
+  .hub-currencies > span > svg { width: 15px; height: 15px; }
   .hub-profile-copy > strong { font-size: 13px; }
   .hub-menu-tile > strong { font-size: 12px; letter-spacing: 0; }
   .menu-emblem { width: 86px; height: 66px; }

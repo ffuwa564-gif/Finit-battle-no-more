@@ -1,7 +1,7 @@
 /* One foreground illustration, with the other combatants waiting in depth. */
 .enemy-carousel {
   position: absolute;
-  inset: 44px 0 0;
+  inset: 28px 0 0;
   z-index: 1;
   overflow: hidden;
   touch-action: pan-y;
@@ -10,8 +10,8 @@
   outline: none;
 }
 .enemy-carousel:focus-visible { outline: 2px solid #d4d9cd; outline-offset: -5px; border-radius: 14px; }
-.enemy-carousel-status { position: absolute; top: 3px; left: 5%; width: 90%; z-index: 25; pointer-events: none; padding: 5px 10px 9px; border: 0; border-radius: 0; background: linear-gradient(180deg,#26344391,#26344345 76%,transparent); box-shadow: none; }
-.enemy-carousel-name { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; color: #f5f2e9; text-shadow: 0 1px 5px #152332, 0 1px 10px #152332a0; }
+.enemy-carousel-status { position: absolute; top: 3px; left: 5%; width: 90%; z-index: 25; pointer-events: none; padding: 3px 10px 6px; border: 0; border-radius: 0; background: linear-gradient(180deg,#26344391,#26344345 76%,transparent); box-shadow: none; }
+.enemy-carousel-name { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; color: #f5f2e9; text-shadow: 0 1px 5px #152332, 0 1px 10px #152332a0; }
 .enemy-carousel-name > strong { font-family: var(--font-display); font-size: 21px; font-weight: 400; letter-spacing: .035em; }
 .enemy-carousel-name > svg { width: 24px; height: 24px; flex-shrink: 0; color: #e2d7b9; filter: drop-shadow(0 1px 3px #1d2b39); }
 .enemy-carousel-constant { display: grid; place-items: center; width: 36px; height: 36px; margin-left: auto; border: 2px solid #c9aeb5; border-radius: 50%; background: #6c5c68e6; color: #f8f4ed; font-family: var(--font-display); font-size: 18px; text-shadow: none; box-shadow: inset 0 0 0 2px #e6e0db2e,0 0 0 2px #dfd2cc45,0 2px 7px #27323d30; }
@@ -45,8 +45,8 @@
 .enemy-carousel-position span { color: #e0e5df; font-size: 8px; }
 .enemy-carousel--reduced .enemy-orbit-slot { will-change: auto; }
 @media (max-width: 760px) {
-  .enemy-carousel { inset: 43px 0 0; }
-  .enemy-carousel-status { top: 2px; left: 4%; width: 92%; padding: 4px 9px 8px; }
+  .enemy-carousel { inset: 28px 0 0; }
+  .enemy-carousel-status { top: 2px; left: 4%; width: 92%; padding: 3px 9px 6px; }
   .enemy-carousel-name > strong { font-size: 19px; }
   .enemy-carousel-constant { width: 32px; height: 32px; font-size: 17px; }
   .enemy-orbit-slot { width: 72%; }

@@ -35,11 +35,14 @@ const characters: CharacterDef[] = [
   character({ id: 'evelyn', name: 'エヴリン', epithet: '終庭の女王', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '誰もいない玉座を離れ、旅に加わった女王。王冠よりも重い記憶を抱えながら、今は一人の仲間として盾を持つ。枯れた花にも水をやる理由を、彼女は決して語らない。' }),
 ];
 
+const illustrationDimensions: Record<string, { width: number; height: number } | undefined> = {
+  'hollow-keeper': { width: 1024, height: 1535 },
+};
 const characterAssets: AssetDef[] = characters.flatMap(char => {
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
   const generated = char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: `art/${char.id}.${generated ? 'png' : 'svg'}`, width: landscape ? 1536 : generated ? 1024 : 640, height: landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: `art/${char.id}.${generated ? 'png' : 'svg'}`, width: landscape ? 1536 : generated ? 1024 : 640, height: landscape ? 1024 : generated ? 1536 : 900, ...illustrationDimensions[char.id], rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: landscape ? '50% 50%' : '50% 42%' },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%', portraitZoom: char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25, portraitOrigin: char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%' },
