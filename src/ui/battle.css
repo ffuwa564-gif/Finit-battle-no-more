@@ -62,29 +62,6 @@
 .battle-layout .party-strip .hp-bar > span { background: linear-gradient(90deg,#548a87,#a0c4b9); }
 .battle-layout .party-hp { display: none; }
 .battle-layout .party-strip--selecting .character-portrait.button:not(:disabled) { box-shadow: 0 0 0 2px #9bbab2,0 0 15px #c1d9d3; }
-.battle-layout .command-pad { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 196px; column-gap: 12px; row-gap: 3px; align-items: center; padding: 17px 19px 15px; margin: 0; border: 1px solid #c6c3b9; border-radius: 20px 20px 0 0; background: var(--paper-grain,none),radial-gradient(ellipse at 28% 8%,#faf7ee66,transparent 63%),radial-gradient(ellipse at 83% 72%,#bdb4a326,transparent 57%),linear-gradient(135deg,#f1eee3,#e7e2d7); box-shadow: inset 0 1px 0 #ffffff,inset 0 0 0 2px #f7f4eb,inset 0 0 0 3px #d7d1c466; }
-.battle-layout .command-heading { grid-column: 1 / -1; grid-row: 1; margin: 0; min-height: 44px; gap: 6px; justify-content: flex-end; }
-.battle-layout .command-heading > .eyebrow { min-width: 0; flex: 1; font-size: 9px; letter-spacing: .04em; color: #727d82; }
-.battle-layout .command-heading .toolbar { flex-shrink: 0; gap: 5px; }
-.battle-layout .command-heading .button { padding: 6px 10px; min-height: 44px; border-radius: 50px; background: #f4f1e7; font-size: 9px; border-color: #cacbc3; }
-/* A large tactile strategy selector replaces a decorative movement pad. */
-.battle-layout .strategy-options { grid-column: 1; grid-row: 2; width: min(100%,248px); aspect-ratio: 1; justify-self: center; align-self: start; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 6px; margin: 0; padding: 29px 25px; border: 1px solid #9caeb8; border-radius: 50%; background: radial-gradient(ellipse at 35% 18%,#e4e4de,#bfc4c5 65%,#a8b0b5); box-shadow: inset 0 1px 0 #f6f4eb,inset 0 0 0 4px #e6e5df,inset 0 0 0 5px #9da7ad,inset 0 0 0 8px #c6cbcd,inset 0 0 0 9px #adb3b780,0 3px 8px #414b5420; }
-.battle-layout .strategy-options .button { flex: 0 0 auto; min-height: 52px; padding: 7px 12px; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; border: 1px solid #b8c3ca78; border-radius: 28px; background: linear-gradient(135deg,#e8e8e3b8,#d1d5d44a); color: #465661; box-shadow: inset 0 1px 0 #f3f2e9b0,0 1px 2px #526a7b0d; }
-.battle-layout .strategy-options .button:not(.is-selected):hover:not(:disabled) { border-color: #8da5b6; background: #f1f6f3c9; box-shadow: inset 0 1px 0 #ffffff,0 1px 3px #526a7b1c; }
-.battle-layout .strategy-options .button.is-selected { background: linear-gradient(150deg,#89959c,#667580); color: #ffffff; border-color: #7b8a94; box-shadow: inset 0 1px 0 #dce0dd99,inset 0 0 0 1px #c1c9cd70,0 1px 3px #3a4d5c21; }
-.battle-layout .strategy-options .button > .command-emblem { box-sizing: border-box; width: 26px; height: 26px; padding: 0; stroke-width: 1.5; border: 0; background: transparent; box-shadow: none; filter: drop-shadow(0 1px 0 #ffffff60); }
-.battle-layout .strategy-options .button.is-selected > .command-emblem { filter: drop-shadow(0 1px 2px #3d526551); }
-.battle-layout .strategy-options .button > span:not(.command-emblem) { display: block; font-family: var(--font-display); font-size: 13px; line-height: 1.4; white-space: nowrap; }
-.battle-layout .strategy-options .button small { display: none; }
-.battle-layout .command-actions { grid-column: 2; grid-row: 2; display: grid; width: 100%; grid-template-columns: 1fr auto; align-items: center; justify-items: center; gap: 10px 8px; }
-.battle-layout .command-actions .battle-item-control { grid-column: 1; grid-row: 1; width: 86px; height: 86px; min-height: 86px; padding: 10px; border-radius: 50%; display: flex; flex-direction: column; gap: 4px; border: 1px solid #aebec0; background: radial-gradient(circle at 35% 23%,#e9e8df,#c5cbca 65%,#acb7bc); box-shadow: inset 0 1px 0 #f4f2e8,inset 0 0 0 3px #e6e6dd,inset 0 0 0 4px #a1aeb4,inset 0 0 0 6px #d3d8d5,0 3px 6px #41556218; color: #465b67; }
-.battle-layout .battle-item-control > .command-emblem { width: 48px; height: 48px; flex-shrink: 0; }
-.battle-layout .battle-item-control > span:not(.command-emblem) { font-size: 11px; line-height: 1.2; }
-.battle-layout .battle-item-control small { margin-left: 3px; font-family: var(--font-display); }
-.battle-layout .command-actions .battle-advance-control { grid-column: 1 / -1; grid-row: 2; width: 188px; height: 188px; min-height: 188px; padding: 23px 14px; border-radius: 50%; display: flex; flex-direction: column; gap: 10px; border: 1px solid #a6b2bd; background: radial-gradient(ellipse at 35% 18%,#a4acb3,#818d9a 57%,#6c7988); color: #f7f5ed; box-shadow: inset 0 1px 0 #e9e8df,inset 0 0 0 3px #e5e4dc,inset 0 0 0 4px #8a949e,inset 0 0 0 7px #bcc3ca,inset 0 0 0 8px #939da8,0 3px 8px #3a4e5f28; text-shadow: 0 1px 2px #3f4d5970; }
-.battle-layout .battle-advance-control > .command-emblem { width: 112px; height: 112px; filter: drop-shadow(0 1px 3px #31475e2b); }
-.battle-layout .battle-advance-control > span:not(.command-emblem) { max-width: 110px; font-family: var(--font-display); font-size: 13px; line-height: 1.4; text-align: center; }
-.battle-layout .command-actions .battle-retreat-control { grid-column: 2; grid-row: 1; width: 44px; height: 44px; min-height: 44px; padding: 9px; border-radius: 50%; border: 1px solid #c6c8c1; background: #f2f0e7; color: #8a9394; }
 @media (max-width: 760px) {
   .battle-layout .battle-toast { top: 96px; }
   .battle-layout { max-width: 500px; border-radius: 22px; }
@@ -99,33 +76,11 @@
   .battle-layout .enemy-line--1 .enemy-art { height: calc(100% + 65px); padding: 0; }
   .battle-layout .party-strip { padding: 7px 6px 6px; gap: 4px; }
   .battle-layout .party-strip .portrait-image { aspect-ratio: 1.08; }
-  .battle-layout .command-pad { grid-template-columns: minmax(0,1fr) 148px; column-gap: 8px; row-gap: 2px; padding: 9px 13px 12px; }
-  .battle-layout .command-heading { margin: 0; }
-  .battle-layout .command-heading > .eyebrow { font-size: 8px; }
-  .battle-layout .strategy-options { width: 100%; max-width: 204px; padding: 23px 17px; gap: 4px; }
-  .battle-layout .strategy-options .button { min-height: 44px; padding: 5px 8px; border-radius: 25px; gap: 6px; }
-  .battle-layout .strategy-options .button > .command-emblem { width: 22px; height: 22px; padding: 0; }
-  .battle-layout .strategy-options .button > span:not(.command-emblem) { font-size: 11px; }
-  .battle-layout .command-actions { grid-template-columns: 82px 44px; justify-content: center; gap: 8px; }
-  .battle-layout .command-actions .battle-item-control { width: 66px; height: 66px; min-height: 66px; padding: 4px; gap: 2px; }
-  .battle-layout .command-actions .battle-advance-control { width: 144px; height: 144px; min-height: 144px; padding: 12px 10px; gap: 6px; }
-  .battle-layout .battle-advance-control > .command-emblem { width: 96px; height: 96px; }
-  .battle-layout .battle-item-control > .command-emblem { width: 40px; height: 40px; }
-  .battle-layout .battle-advance-control > span:not(.command-emblem) { max-width: 92px; font-size: 11px; }
 
 }
 @media (max-width: 360px) {
   .battle-layout .battle-scene { height: 350px; }
-  .battle-layout .command-pad { grid-template-columns: minmax(0,1fr) 120px; column-gap: 6px; padding-inline: 12px; }
-  .battle-layout .strategy-options { padding: 10px 8px; gap: 2px; }
-  .battle-layout .strategy-options .button { min-height: 44px; padding-inline: 6px; gap: 4px; }
-  .battle-layout .strategy-options .button > .command-emblem { width: 19px; height: 19px; }
-  .battle-layout .strategy-options .button > span:not(.command-emblem) { font-size: 10px; }
-  .battle-layout .command-actions { grid-template-columns: 64px 44px; gap: 6px; }
-  .battle-layout .command-actions .battle-advance-control { width: 116px; height: 116px; min-height: 116px; }
-  .battle-layout .battle-advance-control > .command-emblem { width: 70px; height: 70px; }
-  .battle-layout .battle-item-control > .command-emblem { width: 32px; height: 32px; }
-  .battle-layout .command-actions .battle-item-control { width: 62px; height: 62px; min-height: 62px; }
+
 }
 
 @media (max-width: 760px) and (max-height: 740px) {

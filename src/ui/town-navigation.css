@@ -4,6 +4,7 @@
 .town-navigation > .button > .command-emblem { width: 29px; height: 29px; padding: 0; transform: none; }
 .town-navigation > .button > .menu-emblem { filter: grayscale(1); }
 .town-navigation > .button > .command-emblem { filter: none; }
+.hub-navigation > .button > .command-emblem { filter: grayscale(1); }
 .hub-navigation {
   position: relative;
   z-index: 6;

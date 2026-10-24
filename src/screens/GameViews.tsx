@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, DoorOpen, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, CommandEmblem, StrategyDial, PortraitArt, CurrencyEmblem } from '../ui';
+import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, PortraitArt, CurrencyEmblem } from '../ui';
 import { content, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
 import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Unit } from '../domain/types';
@@ -120,15 +120,11 @@ export function BattleView(p: ViewProps) {
         <span className="party-hp">{unit.hp} / {unit.maxHp}</span>
       </div>)}
     </div>
-    <Panel className="command-pad">
-      <div className="command-heading">{usingPotion && <span className="sr-only">回復する仲間を選択</span>}<div className="toolbar">{usingPotion && <Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button>}<Button variant="icon" title={p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 0.5 : 0 } })}>{p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button><Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></div></div>
-      <StrategyDial value={battle.strategy} disabled={p.busy || battle.phase !== 'ready'} onChange={strategy => { void p.command({ type: 'strategy', strategy }); }} />
-      <div className="command-actions">
-        <Button variant="secondary" className="battle-item-control" disabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} onClick={() => setUsingPotion(!usingPotion)}><CommandEmblem kind="potion" /><span>回復薬 <small>{battle.potionsRemaining}</small></span></Button>
-        {battle.phase === 'playing' ? <Button size="lg" className="battle-advance-control" disabled={p.busy} onClick={() => p.command({ type: 'replay' })} aria-label="次の演出へ"><CommandEmblem kind="replay" /><span>次へ</span></Button> : <Button size="lg" className="battle-advance-control" disabled={p.busy || usingPotion} onClick={() => p.command({ type: 'round' })} aria-label="ラウンドを進める"><CommandEmblem kind="advance" /><span>進める</span></Button>}
-        <Button variant="icon" className="battle-retreat-control" title="撤退" disabled={p.busy || battle.phase !== 'ready'} onClick={() => setRetreat(true)}><DoorOpen size={20} strokeWidth={1.3} /></Button>
-      </div>
-    </Panel>
+    <BattleControlPad strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
+      advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command({ type: battle.phase === 'playing' ? 'replay' : 'round' }); }}
+      potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}
+      retreatDisabled={p.busy || battle.phase !== 'ready'} onRetreat={() => setRetreat(true)}
+      toolbar={<>{usingPotion && <><span className="sr-only">回復する仲間を選択</span><Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>取消</Button></>}<Button variant="icon" title={p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート'} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 0.5 : 0 } })}>{p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />}</Button><Button size="sm" variant="secondary" disabled={p.busy} title="演出速度" onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{p.save.settings.speed}</Button></>} />
     <Modal open={retreat} onClose={() => setRetreat(false)} title="探索から撤退しますか？"><p>今回の素材をすべて失います。ゴールド・敵の記録は残ります。</p><Button variant="danger" disabled={p.busy} onClick={async () => { if (await p.command({ type: 'retreat' })) setRetreat(false); }}>撤退する</Button></Modal>
   </div>;
 }

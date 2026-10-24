@@ -17,7 +17,7 @@ export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
-export { StrategyDial } from './StrategyDial';
+export { BattleControlPad } from './BattleControlPad';
 export { PortraitArt } from './PortraitArt';
 export { CurrencyEmblem, EncounterCrest } from './Sigils';
 
