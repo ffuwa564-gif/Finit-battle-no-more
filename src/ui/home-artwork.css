@@ -1,9 +1,13 @@
 .home-artwork { position:absolute; inset:0; }
-/* Keep the background behind the header while framing the character below its badges. */
-.hub-illustration:has(.is-character-home) { min-height: 372px; display: grid; grid-template-rows: auto minmax(0,1fr); background: #27313d; }
-.hub-illustration:has(.is-character-home) .hub-profile { position: relative; inset: auto; grid-area: 1 / 1; margin: 13px 13px 10px; }
-.home-artwork-backdrop { position: absolute; inset: -12px; background-size: cover; background-position: 50% 18%; filter: blur(7px) brightness(.85); pointer-events: none; }
-.home-artwork.is-character-home { position: relative; inset: auto; grid-area: 2 / 1; min-height: 0; z-index: 1; mask-image: linear-gradient(transparent,#000 20px); -webkit-mask-image: linear-gradient(transparent,#000 20px); }
+/* Compact corner badges leave the center of full-bleed paintings clear. */
+.hub-illustration:has(.is-character-home) { min-height: 372px; }
+.app-shell.is-menu .hub-profile { align-items: flex-start; }
+.app-shell.is-menu .hub-profile-person { min-width: 0; flex-basis: auto; padding: 3px; gap: 0; border-radius: 50%; }
+.app-shell.is-menu .hub-profile-avatar { width: 36px; height: 36px; }
+.app-shell.is-menu .hub-profile-copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.app-shell.is-menu .hub-currencies { min-width: 0; width: 96px; }
+.app-shell.is-menu .hub-currencies > span { padding: 4px 8px; gap: 5px; border-radius: 10px; }
+.app-shell.is-menu .hub-currencies strong { font-size: 15px; }
 .home-artwork > img { width:100%; height:100%; object-fit:cover; object-position:var(--home-art-anchor,50% 18%); }
 .app-shell.is-menu .hub-illustration .home-artwork.is-character-home .animated-illustration__art { object-position:var(--home-art-anchor,50% 0%); }
 .home-character-change.button { position:absolute; z-index:4; left:13px; bottom:24px; display:flex; gap:9px; max-width:calc(100% - 88px); padding:8px 12px; min-height:44px; color:#f6f1e8; border:1px solid #ede8db88; border-radius:14px; background:#263448a6; backdrop-filter:blur(8px); box-shadow:0 2px 8px #14213324; }

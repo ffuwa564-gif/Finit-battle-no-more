@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { content } from '../src/content';
 import { enterGame } from './boot';
 
-test('all owned home paintings stay below the profile header on mobile and desktop', async ({ page }) => {
+test('all owned home paintings reach the top with compact corner badges on mobile and desktop', async ({ page }) => {
   await page.goto('/#home'); await enterGame(page);
   await page.evaluate(async () => {
     const { content } = await import('/src/content/index.ts');
@@ -20,10 +20,11 @@ test('all owned home paintings stay below the profile header on mobile and deskt
       await expect(page.getByRole('dialog')).toHaveCount(0);
       const image = page.locator('.home-artwork img'); await image.evaluate((el: HTMLImageElement) => el.decode());
       const bounds = await image.evaluate(el => {
-        const box = el.getBoundingClientRect(), header = document.querySelector('.hub-profile')!.getBoundingClientRect();
-        return { top: box.top, headerBottom: header.bottom, position: getComputedStyle(el).objectPosition, height: box.height };
+        const box = el.getBoundingClientRect(), hero = document.querySelector('.hub-illustration')!.getBoundingClientRect();
+        return { top: box.top, heroTop: hero.top, position: getComputedStyle(el).objectPosition, height: box.height, profileWidth: document.querySelector('.hub-profile-person')!.getBoundingClientRect().width, currencyWidth: document.querySelector('.hub-currencies')!.getBoundingClientRect().width };
       });
-      expect(bounds.top, character.id).toBeGreaterThanOrEqual(bounds.headerBottom + 2);
+      expect(Math.abs(bounds.top - bounds.heroTop), character.id).toBeLessThan(1);
+      expect(bounds.profileWidth, character.id).toBeLessThanOrEqual(46); expect(bounds.currencyWidth, character.id).toBeLessThanOrEqual(100);
       expect(bounds.position, character.id).toBe('50% 0%'); expect(bounds.height).toBeGreaterThan(240);
       expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     }
