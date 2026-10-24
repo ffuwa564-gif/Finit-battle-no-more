@@ -121,7 +121,7 @@ test('enemy display rotates through the same units without changing combat state
   await expect(front).not.toHaveAttribute('data-enemy-id', first!);
   // Selection can update before the browser paints the snapped rotation.
   // Compare hover against the settled pose, not an in-flight drag frame.
-  await expect.poll(() => front.evaluate(element => Number((element as HTMLElement).style.getPropertyValue('--orbit-scale')))).toBe(1);
+  await expect.poll(() => front.evaluate(element => new DOMMatrix(getComputedStyle(element).transform).a)).toBe(1);
   const stableTransform = await front.evaluate(element => getComputedStyle(element).transform);
   // A pointer released outside before the swipe threshold must not keep dragging on hover.
   await page.mouse.move(bounds.x + 4, bounds.y + bounds.height * 0.6);
