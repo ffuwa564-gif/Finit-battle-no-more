@@ -1,0 +1,115 @@
+name: itch.io HTML5
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: 'Upload the reviewed build to fluffy3546/stillveil:html'
+        type: boolean
+        default: false
+      reviewed_sha:
+        description: 'Full main commit SHA whose visuals and audio you reviewed'
+        type: string
+        default: ''
+      reviewed_visual_audio:
+        description: 'I have checked the visuals and listened to the audio for that commit'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: itch-html5
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      ITCH_TARGET: fluffy3546/stillveil:html
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate selected review
+        if: inputs.upload == true
+        env:
+          REVIEWED_SHA: ${{ inputs.reviewed_sha }}
+          REVIEW_CONFIRMED: ${{ inputs.reviewed_visual_audio }}
+        run: |
+          node --input-type=module <<'JS'
+          if (process.env.GITHUB_REF !== 'refs/heads/main' || process.env.GITHUB_EVENT_NAME !== 'workflow_dispatch') throw Error('Upload must be run manually on main.');
+          if (process.env.REVIEW_CONFIRMED !== 'true' || !/^[a-f0-9]{40}$/i.test(process.env.REVIEWED_SHA || '') || process.env.REVIEWED_SHA.toLowerCase() !== process.env.GITHUB_SHA) throw Error('Review confirmation and the exact main commit SHA are required.');
+          JS
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build:itch
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:itch
+      - name: Prepare review fingerprint
+        run: npm run check:release -- --report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stillveil-itch-${{ github.sha }}
+          path: |
+            artifacts/stillveil-itch-preview.zip
+            artifacts/itch-build.json
+            .reports/content-review.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record the explicit workflow review and check release approval
+        if: inputs.upload == true
+        env:
+          REVIEWED_SHA: ${{ inputs.reviewed_sha }}
+          REVIEW_CONFIRMED: ${{ inputs.reviewed_visual_audio }}
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          if (process.env.REVIEW_CONFIRMED !== 'true' || process.env.REVIEWED_SHA.toLowerCase() !== process.env.GITHUB_SHA) throw Error('Explicit review is required.');
+          const report = JSON.parse(readFileSync('.reports/content-review.json', 'utf8'));
+          writeFileSync('content-approval.json', JSON.stringify({ contentVersion: report.contentVersion, fingerprint: report.fingerprint, visualConfirmed: true, audioConfirmed: true, reviewer: process.env.GITHUB_ACTOR, confirmedAt: new Date().toISOString(), reviewedCommit: process.env.GITHUB_SHA, workflowRun: process.env.GITHUB_RUN_ID }));
+          JS
+          npm run check:release
+      - name: Install official butler
+        if: inputs.upload == true
+        run: |
+          curl --fail --location --retry 3 https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default --output "$RUNNER_TEMP/butler.zip"
+          unzip -q "$RUNNER_TEMP/butler.zip" -d "$RUNNER_TEMP/butler"
+          chmod +x "$RUNNER_TEMP/butler/butler"
+          "$RUNNER_TEMP/butler/butler" version
+      - name: Upload reviewed HTML5 build
+        if: inputs.upload == true
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          if [ -z "$BUTLER_API_KEY" ]; then
+            echo 'Set BUTLER_API_KEY in repository Actions secrets before uploading.'
+            exit 1
+          fi
+          "$RUNNER_TEMP/butler/butler" push dist-itch "$ITCH_TARGET" --userversion "${GITHUB_SHA:0:12}"
+      - name: Workflow summary
+        if: always()
+        env:
+          UPLOAD_REQUESTED: ${{ inputs.upload }}
+        run: |
+          {
+            echo '### STILLVEIL / itch.io'
+            echo "Commit: $GITHUB_SHA"
+            echo "Target: $ITCH_TARGET"
+            echo "Upload requested: ${UPLOAD_REQUESTED:-false}"
+            echo 'Page: https://fluffy3546.itch.io/stillveil'
+            echo 'The workflow does not change page visibility, pricing, or HTML embed settings.'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: itch-browser-results-${{ github.run_id }}
+          path: test-results/
+          if-no-files-found: ignore

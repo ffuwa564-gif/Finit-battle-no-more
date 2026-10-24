@@ -55,5 +55,7 @@
     "Check music and asset usage terms against the final distribution plan.",
     "Run a live Draft-page test on desktop, Android and iPhone/Safari, including save, restore, audio and video.",
     "Complete the repository's existing visual/audio release review before public release."
-  ]
+  ],
+  "project_url": "https://fluffy3546.itch.io/stillveil",
+  "butler_target": "fluffy3546/stillveil:html"
 }
