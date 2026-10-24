@@ -12,7 +12,12 @@ test('flower collection has four original kimono goddesses, readable skills and 
   await button.click();const dialog=page.getByRole('dialog');await expect(dialog).toContainText(skill);
   await expect(dialog).toContainText('花宴への客人');
   await expect.poll(()=>dialog.locator('.character-artwork img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(1024);
-  await expect(dialog.locator('video')).toHaveCount(0);await dialog.getByRole('button',{name:'閉じる',exact:true}).click();
+  const animated=name==='セレネ'||name==='アテナ';
+  if(animated){
+   await expect.poll(()=>dialog.locator('video').evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
+   await expect(dialog.locator('video')).toHaveJSProperty('muted',true);
+  }else await expect(dialog.locator('video')).toHaveCount(0);
+  await dialog.getByRole('button',{name:'閉じる',exact:true}).click();
  }
  await page.screenshot({path:testInfo.outputPath('flower-banquet-mobile.png'),fullPage:true});
  await page.goto('/#settings');await page.getByRole('button',{name:'English',exact:true}).click();await page.goto('/#gacha');
