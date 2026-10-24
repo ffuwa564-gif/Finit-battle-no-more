@@ -127,7 +127,7 @@ export function EnemyCarousel({ units, event, reducedMotion = false, wave, waveC
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={cancelGesture}
     onPointerLeave={() => { if (gesture.current && !gesture.current.horizontal) cancelGesture(); }} onLostPointerCapture={cancelGesture}>
-    {transition && !reduced && <div className="enemy-page--outgoing" aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
+    {transition && !reduced && <div className="enemy-page--outgoing" key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
       <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt="" draggable={false} style={{ objectPosition: previousScene?.anchor ?? '50% 30%' }} />
     </div>}
     <div className={`enemy-page${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
