@@ -6,7 +6,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee } from '../content/gacha';
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening } from '../ui';
+import { Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork } from '../ui';
 import { bgmTracks } from '../platform/bgm';
 import { content, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
@@ -34,7 +34,7 @@ export function HomeView(p: ViewProps) {
   return <section className="home-hub game-frame" aria-labelledby="home-title">
     <h1 id="home-title" className="sr-only">{tr("旅の支度")}</h1>
     <div className="hub-illustration">
-      <AnimatedIllustration posterId="menu-hero" motionId="home-portrait-motion" alt={tr("月下の廃聖堂に佇む銀髪の巡礼者と白い狼")} reducedMotion={p.save.settings.reducedMotion} />
+      <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">

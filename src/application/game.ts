@@ -222,6 +222,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       for (const key of ['bgmVolume', 'seVolume'] as const) if (patch[key] !== undefined && (!Number.isFinite(patch[key]) || patch[key]! < 0 || patch[key]! > 1)) fail('音量は0〜1の範囲で指定してください。');
       if (patch.speed !== undefined && patch.speed !== 1 && patch.speed !== 2) fail('演出速度が正しくありません。');
       if (patch.reducedMotion !== undefined && typeof patch.reducedMotion !== 'boolean') fail('演出設定が正しくありません。');
+      if (patch.homeCharacterId !== undefined && patch.homeCharacterId !== null && (typeof patch.homeCharacterId !== 'string' || !save.ownedIds.includes(patch.homeCharacterId) || !content.characters.some(char => char.id === patch.homeCharacterId))) fail('ホームのキャラクターは所持している仲間から選んでください。');
       save.settings = { ...save.settings, ...patch };
       break;
     }

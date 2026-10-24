@@ -156,3 +156,5 @@ export { UnitEffects } from './UnitEffects';
 export { LanguageSwitch } from './LanguageSwitch';
 export { QuickGuide } from './QuickGuide';
 export { SaveBackup, BackupExportButton } from './SaveBackup';
+
+export { HomeArtwork } from './HomeArtwork';
