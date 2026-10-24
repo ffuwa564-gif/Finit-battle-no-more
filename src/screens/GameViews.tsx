@@ -24,7 +24,7 @@ function PageTitle({ eyebrow, title, text }: { eyebrow: string; title: string; t
 
 export function HomeView(p: ViewProps) {
   const leader = characterById(p.save.leaderId);
-  return <section className="home-hub" aria-labelledby="home-title">
+  return <section className="home-hub game-frame" aria-labelledby="home-title">
     <h1 id="home-title" className="sr-only">旅の支度</h1>
     <div className="hub-illustration">
       <img src={assetPath('menu-hero')} alt="月下の廃聖堂に佇む銀髪の巡礼者と白い狼" />
@@ -108,7 +108,7 @@ export function BattleView(p: ViewProps) {
   const displayRound = battle.phase === 'playing' && battle.events.some(e => ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(e.kind)) ? Math.max(1, battle.round - 1) : battle.round;
   const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
   if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={reward ? '探索の記録' : '探索終了'} text={dungeon.name} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{reward ? '獲得素材' : '今回の素材は失われました。'}</h2>{reward ? <><div className="resource-list">{items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{materialName(id)}</span><strong>×{n}</strong></div>)}</div><div className="reward-summary"><span><Coins size={17} /> 撃破 {battle.goldEarned} G（取得済み）</span><span>クリア +20 G</span>{!p.save.completedDungeonIds.includes(dungeon.id) && <span><Gem size={17} /> 初踏破 +1</span>}</div><p className="subtle">確定するまで素材は仮取得です。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} /> 獲得を確定</Button></> : <><p>{battle.failureReason ?? 'パーティは廃都から帰還しました。'}</p><p className="subtle">ゴールド・敵の記録は保持。次回は全回復で出発します。</p><Button size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>街へ戻る <ArrowRight size={16} /></Button></>}</Panel></>;
-  return <div className="battle-layout">
+  return <div className="battle-layout game-frame">
     <div className="battle-topline">
       <div><span className="eyebrow">{dungeon.name}</span><h2>Wave {battle.wave + 1}<small> / {dungeon.waves.length}</small></h2></div>
       <span className="round-label">ROUND {displayRound}</span>

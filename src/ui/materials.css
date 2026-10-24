@@ -1,0 +1,16 @@
+:root {
+  --paper-grain: url('./textures/ivory-grain.svg');
+  --frame-edge: #aaa9a3;
+  --frame-light: #faf7ed;
+}
+
+/* One quiet silver bevel around the illustrated game surfaces. */
+.game-frame.home-hub, .game-frame.battle-layout {
+  border-color: var(--frame-edge);
+  box-shadow: inset 0 1px 0 var(--frame-light),0 0 0 2px #f3f0e8,0 0 0 3px #aaa8a054,0 10px 22px #35404f1c;
+}
+@media (min-width: 761px) {
+  .game-frame.home-hub, .game-frame.battle-layout {
+    box-shadow: inset 0 1px 0 var(--frame-light),0 0 0 2px #f3f0e8,0 0 0 3px #aaa8a066,0 18px 38px #35404f26;
+  }
+}

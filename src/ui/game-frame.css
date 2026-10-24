@@ -1,6 +1,9 @@
 /* The illustrated home and battlefield are standalone game frames. */
 .app-shell:is(.is-menu,.is-exploring) { grid-template-columns: minmax(0,1fr); }
 .app-shell:is(.is-menu,.is-exploring) > .sidebar { display: none; }
+.app-shell:is(.is-menu,.is-exploring) {
+  background: radial-gradient(ellipse at 50% 14%,#f8f6ef7a,transparent 55%),radial-gradient(ellipse at 50% 92%,#b8c2ce38,transparent 65%);
+}
 .app-shell.is-exploring .app-body > .topbar { display: none; }
 .app-shell.is-exploring .main-content { padding-inline: 12px; }
 .app-shell.is-exploring .app-footer { display: none; }

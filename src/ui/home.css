@@ -8,7 +8,7 @@
   overflow: hidden;
   border: 1px solid #b1aea6;
   border-radius: 28px;
-  background: radial-gradient(ellipse at 18% 6%, #fffdf5a8, transparent 58%), radial-gradient(ellipse at 75% 78%, #aca48e12, transparent 65%), linear-gradient(135deg, #f1eee6, #e8e4db 52%, #f0ece3);
+  background: var(--paper-grain, none), radial-gradient(ellipse at 18% 6%, #fffdf5a8, transparent 58%), radial-gradient(ellipse at 75% 78%, #aca48e12, transparent 65%), linear-gradient(135deg, #f1eee6, #e8e4db 52%, #f0ece3);
   box-shadow: 0 2px 0 #faf9f1 inset, 0 12px 35px #313a4720, 0 0 0 4px #f6f4ec80;
 }
 .home-hub::after {
@@ -37,7 +37,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #101c2a0b, transparent 28%, transparent 84%, #f2efe6a6 96%, #f2efe6 100%);
+  background: linear-gradient(180deg, #1723340c, transparent 28%, transparent 82%, #eeebe3a6 96%, #eeebe3 100%), linear-gradient(90deg, #17233421, transparent 12%, transparent 88%, #17233421);
   pointer-events: none;
 }
 .hub-profile {
@@ -114,16 +114,16 @@
   padding: 4px 6px 11px;
   border: 1px solid #c5c1b6a6;
   border-radius: 25px;
-  background: radial-gradient(ellipse at 23% 8%, #fffdf4a6, transparent 64%), radial-gradient(ellipse at 87% 92%, #b9ae9310, transparent 64%), linear-gradient(135deg, #eeebe3eb, #eae6dfe8);
+  background: var(--paper-grain, none), radial-gradient(ellipse at 23% 8%, #fffdf4a6, transparent 64%), radial-gradient(ellipse at 87% 92%, #b9ae9310, transparent 64%), linear-gradient(135deg, #eeebe3eb, #eae6dfe8);
   box-shadow: inset 0 1px 0 #fffef8, inset 1px 0 0 #fffdf58c, 0 1px 1px #625b4810;
   color: #424955;
   text-align: center;
   overflow: hidden;
 }
 .home-hub-menu .hub-menu-tile::after { content: none; }
-.home-hub-menu .hub-menu-tile:hover:not(:disabled) { background: linear-gradient(135deg, #fcfaf4, #eeeae4); border-color: #aeb4b7; box-shadow: inset 0 1px 1px #fffef5, 0 5px 12px #36415216; transform: translateY(-1px); }
-.menu-emblem { width: 119px; height: 91px; flex-shrink: 0; filter: drop-shadow(0 2px 1px #49556515); }
-.menu-emblem--painted { object-fit: contain; padding: 1px 9px 2px; transform: scale(1.08); filter: drop-shadow(0 3px 2px #3b46521d); -webkit-user-drag: none; }
+.home-hub-menu .hub-menu-tile:hover:not(:disabled) { background: var(--paper-grain, none), linear-gradient(135deg, #fcfaf4, #eeeae4); border-color: #aeb4b7; box-shadow: inset 0 1px 1px #fffef5, 0 5px 12px #36415216; transform: translateY(-1px); }
+.menu-emblem { width: 119px; height: 91px; flex-shrink: 0; filter: drop-shadow(0 1px 0 #faf8efaa); }
+.menu-emblem--painted { object-fit: contain; padding: 1px 9px 2px; transform: scale(1.08); filter: saturate(.76) drop-shadow(0 2px 1px #3b46521a); -webkit-user-drag: none; }
 .hub-menu-tile > strong { position: relative; z-index: 1; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: .055em; white-space: nowrap; text-shadow: 0 1px 0 #fffdf6a6; }
 .home-hub .hub-dungeon-entry {
   position: relative;
@@ -143,8 +143,8 @@
   box-shadow: 0 2px 0 #acb1b1, 0 0 0 1px #b9b6a8, 0 5px 16px #38445315;
   text-align: right;
 }
-.hub-dungeon-entry > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; transition: transform .5s; }
-.hub-dungeon-entry::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#192b3e10,#2d3d50a1 55%,#394858b5); }
+.hub-dungeon-entry > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; transition: transform .5s; }
+.hub-dungeon-entry::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #192b3e1a, #253447b3 35%, #2b3b50ab 74%, #35435591); }
 .hub-dungeon-entry:hover:not(:disabled) > img { transform: scale(1.03); }
 .hub-dungeon-entry > span { display: flex; flex: 1; flex-direction: column; gap: 4px; text-align: center; }
 .hub-dungeon-entry strong { font-family: var(--font-display); font-size: 26px; font-weight: 400; letter-spacing: .11em; text-shadow: 0 1px 9px #20304455; }

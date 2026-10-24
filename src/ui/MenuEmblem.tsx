@@ -12,8 +12,16 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
     <defs>
       <linearGradient id={`${id}-metal`} x1="32" y1="14" x2="86" y2="84" gradientUnits="userSpaceOnUse"><stop stopColor="#747d8b" /><stop offset=".56" stopColor="#566171" /><stop offset="1" stopColor="#8d96a4" /></linearGradient>
       <linearGradient id={`${id}-paper`} x1="28" y1="19" x2="87" y2="81" gradientUnits="userSpaceOnUse"><stop stopColor="#f2ede2" /><stop offset="1" stopColor="#d2ccbf" /></linearGradient>
+      <filter id={`${id}-ink`} x="-2%" y="-2%" width="104%" height="104%" colorInterpolationFilters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="14" stitchTiles="stitch" result="grain" />
+        <feColorMatrix in="grain" type="saturate" values="0" />
+        <feComponentTransfer><feFuncA type="linear" slope=".16" /></feComponentTransfer>
+        <feComposite in2="SourceAlpha" operator="in" />
+        <feBlend in="SourceGraphic" mode="multiply" />
+      </filter>
       <radialGradient id={`${id}-halo`}><stop stopColor="#d7dce4" stopOpacity=".78" /><stop offset="1" stopColor="#d7dce4" stopOpacity="0" /></radialGradient>
     </defs>
+    <g filter={`url(#${id}-ink)`}>
     <ellipse cx="60" cy="53" rx="53" ry="36" fill={`url(#${id}-halo)`} />
     {kind === 'party' && <>
       <path d="M27 80c9-4 12-11 12-20 0-8-5-12-5-24 0-17 12-28 28-28 18 0 29 12 28 28-1 7-4 11-8 16-3 5-4 10-2 16 1 5 5 9 10 13-16 0-28 2-39 4-9 2-18 1-24-5Z" fill={metal} />
@@ -59,5 +67,6 @@ export function MenuEmblem({ kind }: { kind: MenuEmblemKind }) {
       <path d="M16 68c-4-1-6-4-6-7 4 0 7 3 6 7Zm5 9c-4 1-7-1-9-4 4-1 8 0 9 4Zm85-9c4-1 6-4 6-7-4 0-7 3-6 7Zm-5 9c4 1 7-1 9-4-4-1-8 0-9 4Z" fill="#a1aaa5" />
       <path d="M25 79c-7-6-10-14-10-22m0 7-6-3m9 12-7-1m85 7c7-6 10-14 10-22m0 7 6-3m-9 12 7-1" stroke="#adb1ab" strokeWidth="1.15" strokeLinecap="round" />
     </>}
+    </g>
   </svg>;
 }
