@@ -45,7 +45,7 @@ export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolea
   return save.drawCount + 1 === initialGacha.guaranteeDraw;
 }
 export const goddessArt: Record<string, string> = {
-  selene: 'gacha-selene', athena: 'gacha-athena', flora: 'gacha-flora', 'rainbow-iris': 'gacha-rainbow-iris',
+  selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
   toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',
   evelyn: 'gacha-izanami', asteria: 'gacha-amaterasu', iris: 'gacha-uzume', mireille: 'gacha-sakuya',
 };
