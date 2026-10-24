@@ -20,8 +20,8 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion }:
   const [playing, setPlaying] = useState(false);
   const [paused, setPaused] = useState(false);
   const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
-  const allowed = !reducedMotion && !systemReduced && !saveData && !failed;
-  const active = allowed && visible && inView && !paused;
+  const allowed = !reducedMotion && !systemReduced && !saveData;
+  const active = allowed && !failed && visible && inView && !paused;
 
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -58,6 +58,7 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion }:
     if (!player) return;
     if (playing) { setPaused(true); player.pause(); return; }
     setPaused(false);
+    if (failed) { setFailed(false); setBlocked(false); player.load(); }
     player.defaultMuted = true;
     player.muted = true;
     // Keep play() inside the tap handler: iOS standalone/Low Power Mode may
@@ -65,9 +66,9 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion }:
     void player.play().catch(error => { if (error?.name !== 'AbortError') setBlocked(true); });
   };
 
-  return <div ref={root} className={`animated-illustration${allowed && ready ? ' is-ready' : ''}`} data-animation-state={!allowed ? 'static' : blocked ? 'blocked' : !ready ? 'loading' : playing && active ? 'playing' : 'paused'}>
+  return <div ref={root} className={`animated-illustration${allowed && ready ? ' is-ready' : ''}`} data-animation-state={!allowed ? 'static' : failed ? 'error' : blocked ? 'blocked' : !ready ? 'loading' : playing && active ? 'playing' : 'paused'}>
     <img className="animated-illustration__art" src={assetPath(posterId)} alt={alt} />
-    <video ref={video} className="animated-illustration__art animated-illustration__video" src={allowed && activated ? assetPath(motionId) : undefined} poster={assetPath(posterId)} muted autoPlay={active && !blocked} playsInline loop preload={active ? 'auto' : 'none'} disablePictureInPicture tabIndex={-1} aria-hidden="true" onLoadedData={() => setReady(true)} onPlaying={() => { setReady(true); setPlaying(true); setBlocked(false); }} onPause={() => setPlaying(false)} onError={() => setFailed(true)} />
-    {allowed && activated && <Button variant="icon" className="animated-illustration__toggle" aria-label={playing ? 'ホームのアニメーションを停止' : 'ホームのアニメーションを再生'} title={playing ? 'アニメーションを停止' : 'アニメーションを再生'} onClick={toggle}>{playing ? <Pause size={16} /> : <Play size={16} />}</Button>}
+    <video ref={video} className="animated-illustration__art animated-illustration__video" src={allowed && activated ? assetPath(motionId) : undefined} poster={assetPath(posterId)} muted autoPlay={active && !blocked} playsInline loop preload={active ? 'auto' : 'none'} disablePictureInPicture tabIndex={-1} aria-hidden="true" onLoadedData={() => setReady(true)} onPlaying={() => { setReady(true); setPlaying(true); setBlocked(false); }} onPause={() => setPlaying(false)} onError={event => { if (event.currentTarget.error && event.currentTarget.getAttribute('src')) { setFailed(true); setReady(false); setPlaying(false); } }} />
+    {allowed && activated && <Button variant="icon" className="animated-illustration__toggle" aria-label={playing ? 'ホームのアニメーションを停止' : 'ホームのアニメーションを再生'} title={failed ? 'アニメーションを再読み込み' : playing ? 'アニメーションを停止' : 'アニメーションを再生'} onClick={toggle}>{playing ? <Pause size={16} /> : <Play size={16} />}</Button>}
   </div>;
 }
