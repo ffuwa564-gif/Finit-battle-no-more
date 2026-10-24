@@ -117,7 +117,9 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
   const goddess = char.origin.includes('event') ? `event-${char.id}` : goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
-  const framing = goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
+  // These original paintings place faces lower than the awakened story artwork.
+  const initialFace = char.origin.includes('initial') ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
+  const framing = initialFace ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
   const common = { path: goddess ? `art/${goddess}.${['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
