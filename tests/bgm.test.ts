@@ -13,6 +13,10 @@ describe('BGM scene transitions', () => {
     const boss = { ...battle.initialUnits.find(unit => unit.side === 'enemy')!, boss: true, hp: 0 };
     const final = { ...battle, initialUnits: [boss], units: [boss], phase: 'playing' as const, nextPhase: 'reward' as const };
     expect(getBgmScene(final)).toBe('boss');
+    expect(getBgmScene(final, { bossMusic: 'japanese' })).toBe('japaneseBoss');
+    expect(getBgmScene(battle, { bossMusic: 'japanese' })).toBe('battle');
+    expect(getBgmScene({ ...final, phase: 'reward' }, { bossMusic: 'japanese' })).toBe('clear');
+    expect(content.dungeons.filter(d => d.eventId === 'evening-nine-tails').every(d => d.bossMusic === 'japanese')).toBe(true);
     expect(getBgmScene({ ...final, phase: 'ready' })).toBe('boss');
     expect(getBgmScene({ ...final, phase: 'reward' })).toBe('clear');
     expect(getBgmScene({ ...final, phase: 'failed' })).toBe('home');

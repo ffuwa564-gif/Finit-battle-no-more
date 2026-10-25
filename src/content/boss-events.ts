@@ -22,6 +22,7 @@ export const eventDungeons: DungeonDef[] = tiers.map((tier, i) => ({
   artId: i === 4 ? 'kuzuha-awakened-art' : 'kuzuha-art', published: true, eventId: kuzuhaEvent.id,
   previousDungeonId: i === 0 ? kuzuhaEvent.entryDungeonId : kuzuhaEvent.dungeonIds[i - 1],
   requiresOwnedId: i === 4 ? kuzuhaEvent.normalId : undefined,
+  bossMusic: 'japanese',
   bossScale: { hp: tier.hp, attack: tier.attack },
   eventReward: { materialId: i === 4 ? kuzuhaEvent.core.id : kuzuhaEvent.fragment.id, count: tier.amount },
   waves: [...tier.waves.map(mobs), [{ characterId: i === 4 ? kuzuhaEvent.awakenedId : kuzuhaEvent.normalId, boss: true }]],

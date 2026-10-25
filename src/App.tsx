@@ -112,7 +112,7 @@ export default function App() {
     window.addEventListener('game:ui', onUI);
     return () => window.removeEventListener('game:ui', onUI);
   }, [save?.settings.seVolume]);
-  const bgmScene = getBgmScene(save?.battle);
+  const bgmScene = getBgmScene(save?.battle, content.dungeons.find(dungeon => dungeon.id === save?.battle?.dungeonId));
   useEffect(() => {
     if (save && !fatal) configureBgm(bgmScene, save.settings.bgmVolume);
     else configureBgm('home', 0);
@@ -140,7 +140,7 @@ export default function App() {
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   useEffect(() => {
     if (!event || !save || !started) return;
-    playSound(battleSounds[event.kind], event.rarity);
+    playSound(battleSounds[event.kind], event.rarity, content.skills.find(skill => skill.id === event.skillId)?.template);
     const cleanup = animateEvent(event, save.settings.reducedMotion);
     const duration = event.kind === 'dialogue' ? 4400 : event.kind === 'drop' ? 2200 : event.kind === 'wave' ? 2400 : 1800;
     let timer: ReturnType<typeof setTimeout>;
