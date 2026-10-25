@@ -21,7 +21,8 @@
     "test:itch": "playwright test --config playwright.itch.config.ts",
     "capture:itch": "tsx scripts/capture-itch-media.ts",
     "capture:trailer": "tsx scripts/capture-trailer.ts",
-    "edit:trailer": "python scripts/edit-trailer.py"
+    "edit:trailer": "python scripts/edit-trailer.py",
+    "edit:cm": "python scripts/edit-heisei-cm.py"
   },
   "dependencies": {
     "gsap": "^3.14.0",
