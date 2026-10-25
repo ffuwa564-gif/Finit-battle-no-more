@@ -44,3 +44,13 @@
 - 今回100クレジット、生成直後の残高296。旧版は作業用artifactsへ退避。
 - `node scripts/export-lunette-motion.mjs artifacts/lunette-motion-v2` で無音の720×1080・24fpsと320×480・18fpsへ書き出す。H.264 Baseline、yuv420p、faststartを使用。
 - キャッシュを更新するため、全画面は`lunette-v2.mp4`／`lunette-awakened-v2.mp4`、顔枠は`lunette-portrait-v2.mp4`／`lunette-awakened-portrait-v2.mp4`へ参照を変更。既存の動画制御を通じ、イベント・詳細・敵・味方枠に適用する。
+
+## 通常版の動作を再制作（v3）
+
+v2通常版は実際にはほぼ静止しており、動きが十分という評価を訂正。鍵を回す→うさぎが反応→得意げに笑うという具体的な動作で再制作した。
+
+- 最初の10秒試作（`a4b77b79-eb0e-4b48-bec2-745d5292c49a`）は振り向きと笑顔が大きく動くが、途中でカメラが寄り、原画の全身構図を保てないためゲーム用には不採用。
+- 採用は固定構図の5秒版（`d3b2f5d7-63dd-4c09-b3e9-48e06ae9099e`）。鍵を持つ手を下げる、首を傾ける、笑顔になる、うさぎが動くことを短い間隔の連続フレームで確認。鍵を2回回す指示は明確には実現していない。完全なシームレスループではない。
+- 全画面`lunette-v3.mp4`と顔枠`lunette-portrait-v3.mp4`を更新。覚醒版はv2を維持。旧v2通常版は作業用artifactsへ退避する。
+- 再現：`node scripts/export-lunette-motion.mjs artifacts/lunette-motion-v3 normal v3`。原本と不採用試作はartifactsに保存。
+- 今回の生成は120＋25＝145クレジット、残り151。先に試した別モデルは送信前に拒否され、生成・消費なし。
