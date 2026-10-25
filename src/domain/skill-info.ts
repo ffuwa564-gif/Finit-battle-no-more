@@ -1,8 +1,9 @@
 import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
 
-export const skillTemplates: SkillTemplate[] = ['rally', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
+export const skillTemplates: SkillTemplate[] = ['overclock', 'barrier_mend', 'jam', 'rally', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
 export const skillNames: Record<SkillTemplate, string> = {
   confusion: '迷いの霧', sleep: 'まどろみの花', paralysis: '痺れる閃光', charm: '惑いの旋律',
+  overclock: '星炉の過充填', barrier_mend: '装甲リサイクル', jam: '秒針ジャミング',
   rally: '軍神の号令',
   dawn: '約束の朝',
   attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福',
@@ -10,6 +11,9 @@ export const skillNames: Record<SkillTemplate, string> = {
   pierce: '銀閃の貫突', drain: '夜露の吸命', regen: '巡る月の雫', barrier: '月光の障壁', cleanse: '白花の浄化',
 };
 const descriptions: Record<SkillTemplate, string> = {
+  overclock: '自分の最大HPの10%を消費し、自分以外の攻撃力が高い味方1人の必殺ゲージを35充填。自身のHPが20%より多く、味方のゲージが65以下のときに使用。自分の必殺ゲージは通常どおり増加。',
+  barrier_mend: 'HP75%以下で障壁がある味方1人の障壁を、最大HPの15%分まで消費して、その2倍のHPへ変換。必要な分だけ消費し、HP30%以下の味方への通常回復を優先する。',
+  jam: '敵1体の通常スキルを次ラウンド終了まで使用不能にする。使えるスキルがある敵を狙う。通常攻撃・ボスの予告大技・ビット射撃は止められない。',
   rally: '生存中の味方全員の攻撃力を次ラウンド終了まで強化。攻撃強化は重複せず、強い効果を優先。味方が2人以上で、強化できる相手がいるときに使用する。',
   confusion: '敵1体を混乱させる。2回の行動でスキルを使わず、50%で味方（自分を含む）、それ以外は敵に通常攻撃。',
   sleep: '敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。',
@@ -27,7 +31,7 @@ const descriptions: Record<SkillTemplate, string> = {
   barrier: '味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。',
   cleanse: '味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。',
 };
-export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
+export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['overclock', 'jam', 'rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
 export function skillDescription(skill: SkillDef): string {
   const effect = skill.template === 'rally' ? `${descriptions.rally} 攻撃力上昇量：${15 + skill.strength / 2}%。` : descriptions[skill.template];
   return `${effect}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`;
@@ -46,6 +50,7 @@ export function leaderEffectDescription(character: CharacterDef): string {
 
 /** Every template explicitly declares its shared sound and presentation family. */
 export const skillSoundProfiles: Record<SkillTemplate, 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff'> = {
+  overclock: 'buff', barrier_mend: 'heal', jam: 'debuff',
   rally: 'buff', confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
