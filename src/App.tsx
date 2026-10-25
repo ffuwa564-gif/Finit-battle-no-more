@@ -6,7 +6,7 @@ import { content, validateContent } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, setAudioVolume } from './platform/audio';
-import { configureBgm, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
+import { configureBgm, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleSounds, commandSounds } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
@@ -112,10 +112,11 @@ export default function App() {
     window.addEventListener('game:ui', onUI);
     return () => window.removeEventListener('game:ui', onUI);
   }, [save?.settings.seVolume]);
+  const bgmScene = getBgmScene(save?.battle);
   useEffect(() => {
-    if (save && !fatal) configureBgm(save.battle ? 'battle' : 'home', save.settings.bgmVolume);
+    if (save && !fatal) configureBgm(bgmScene, save.settings.bgmVolume);
     else configureBgm('home', 0);
-  }, [!!save, !!save?.battle, save?.settings.bgmVolume, fatal]);
+  }, [!!save, bgmScene, save?.settings.bgmVolume, fatal]);
   useEffect(() => {
     document.addEventListener('visibilitychange', refreshBgm);
     return () => { document.removeEventListener('visibilitychange', refreshBgm); disposeBgm(); };
@@ -155,7 +156,7 @@ export default function App() {
   if (!save) return <div className="app-loading" role="status"><Moon size={38} strokeWidth={1} /><p>{tr("記憶をたどっています…")}</p></div>;
   if (!started) return <TitleScreen leaving={entering} returning={!!save.battle} onStart={() => {
     if (entering) return;
-    configureBgm(save.battle ? 'battle' : 'home', save.settings.bgmVolume);
+    configureBgm(bgmScene, save.settings.bgmVolume);
     unlockBgm();
     void enableAudio().then(() => playSound('confirm'));
     setEntering(true);
