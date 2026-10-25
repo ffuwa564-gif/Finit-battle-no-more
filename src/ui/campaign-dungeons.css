@@ -10,7 +10,7 @@
 .chapter-heading progress::-webkit-progress-bar { background:#d7dcda; }
 .chapter-heading progress::-webkit-progress-value { background:#a39568; }
 .chapter-boss { display:flex; align-items:center; gap:14px; padding:15px; margin-bottom:18px; border-color:#b7a475; background:linear-gradient(135deg,#f7f3e7,#e9eeeb); }
-.chapter-boss__portrait { flex:0 0 78px; height:84px; overflow:hidden; border-radius:12px; }
+.chapter-boss .button.chapter-boss__portrait { flex:0 0 78px; width:78px; height:84px; min-height:84px; padding:0; overflow:hidden; border-radius:12px; background:transparent; box-shadow:none; }
 .chapter-boss__portrait img { display:block; width:100%; height:100%; object-fit:cover; }
 .chapter-boss > div:last-child { min-width:0; }
 .chapter-boss .eyebrow { display:flex; align-items:center; gap:4px; color:#8a764b; }
@@ -19,4 +19,4 @@
 .dungeon-card--finale { border-color:#b6a16e; box-shadow:0 0 0 1px #d1c19455,0 6px 18px #4f4b3512; }
 .dungeon-card--finale .eyebrow { color:#947744; }
 .dungeon-lock svg { flex-shrink:0; vertical-align:middle; }
-@media(max-width:360px) { .chapter-tab > strong { font-size:10px; } .chapter-tabs .chapter-tab { padding:10px 7px; } .chapter-boss { gap:10px; padding:12px; } .chapter-boss__portrait { flex-basis:64px; height:76px; } }
+@media(max-width:360px) { .chapter-tab > strong { font-size:10px; } .chapter-tabs .chapter-tab { padding:10px 7px; } .chapter-boss { gap:10px; padding:12px; } .chapter-boss .button.chapter-boss__portrait { flex-basis:64px; width:64px; height:76px; min-height:76px; } }
