@@ -1,3 +1,4 @@
+import { characterRarities } from '../domain/xr-gacha';
 import { gachaCollections, gachaPoolIds, sharedGoddessIds, sharedSSRIds } from './gacha';
 import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
@@ -8,7 +9,7 @@ const templates = new Set<string>(skillTemplates);
 const leaderStats = new Set(['hp', 'attack', 'defense']);
 const roles = new Set(Object.keys(required));
 const plain = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0 && !/<\/?[a-z!][^>]*>/i.test(value);
-const strengthValid = (value: number) => Number.isInteger(value) && value >= 10 && value <= 30;
+const strengthValid = (value: number, maximum = 40, minimum = 10) => Number.isInteger(value) && value >= minimum && value <= maximum;
 
 /** Shared build/runtime validation. No character-specific validators or executable data. */
 export function validateContent(content: Content): string[] {
@@ -45,7 +46,7 @@ export function validateContent(content: Content): string[] {
   for (const skill of content.skills) {
     reject(!plain(skill.name), `skills/${skill.id}: plain name required`);
     reject(!templates.has(skill.template), `skills/${skill.id}: unknown template`);
-    reject(!strengthValid(skill.strength), `skills/${skill.id}: integer strength 10..30 required`);
+    reject(!strengthValid(skill.strength), `skills/${skill.id}: integer strength 10..40 required`);
     reject(!profiles.has(skill.soundProfile), `skills/${skill.id}: unknown sound profile`);
     const key = `${skill.template}:${skill.strength}`;
     reject(semanticKeys.has(key), `skills/${skill.id}: duplicate semantic key ${key}`);
@@ -67,15 +68,16 @@ export function validateContent(content: Content): string[] {
     reject(!roles.has(char.role), `characters/${char.id}: unknown role`);
     reject(char.leaderEffect !== undefined && !['acceleration', 'regeneration', 'finisher', 'lifesteal', 'bulwark', 'resonance'].includes(char.leaderEffect), `characters/${char.id}: invalid leader effect`);
     reject(!leaderStats.has(char.leaderStat), `characters/${char.id}: invalid leader stat`);
-    reject(!strengthValid(char.strength), `characters/${char.id}: integer strength 10..30 required`);
+    reject(!strengthValid(char.strength, char.rarity === 'XR' ? 40 : 30, char.rarity === 'XR' ? 31 : 10), `characters/${char.id}: ${char.rarity === 'XR' ? 'XR strength 31..40 required' : 'integer strength 10..30 required'}`);
     reject(typeof char.published !== 'boolean', `characters/${char.id}: publication state required`);
     reject(!speciesIds.has(char.speciesId), `characters/${char.id}: missing species ${char.speciesId}`);
     reject(!assetIds.has(char.artId) || !assetIds.has(char.portraitId), `characters/${char.id}: missing art/portrait asset`);
     reject(content.assets.find(asset => asset.id === char.artId)?.kind !== 'illustration' || content.assets.find(asset => asset.id === char.portraitId)?.kind !== 'portrait', `characters/${char.id}: incorrect image kinds`);
     if (char.encounterArtId !== undefined) reject(!assetIds.has(char.encounterArtId) || content.assets.find(asset => asset.id === char.encounterArtId)?.kind !== 'background', `characters/${char.id}: invalid encounter scene`);
     reject(!profiles.has(char.soundProfile), `characters/${char.id}: unknown sound profile`);
-    reject(!['R', 'SR', 'SSR'].includes(char.rarity), `characters/${char.id}: invalid rarity`);
-    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening', 'gold_exchange', 'trial'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
+    reject(!characterRarities.includes(char.rarity), `characters/${char.id}: invalid rarity`);
+    reject(char.rarity === 'XR' && (char.origin.length !== 1 || !char.origin.includes('xr_gacha')), `characters/${char.id}: XR must be exclusive to premium summons`);
+    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening', 'gold_exchange', 'trial', 'xr_gacha'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
     reject(char.origin.includes('awakening') && (char.origin.length !== 1 || !content.awakenings?.some(def => def.awakenedId === char.id)), `characters/${char.id}: awakening-exclusive form required`);
     reject(char.origin.includes('trial') && (char.origin.length !== 1 || char.rarity !== 'SSR' || !content.dungeons.some(stage => stage.kind === 'trial' && stage.waves.some(wave => wave.some(enemy => enemy.characterId === char.id)))), `characters/${char.id}: exclusive trial boss required`);
     reject(char.origin.includes('event') && char.origin.length !== 1, `characters/${char.id}: event-exclusive acquisition required`);
@@ -243,8 +245,17 @@ export function validateContent(content: Content): string[] {
   }
   const initial = content.characters.filter(char => char.published && char.origin.includes('initial'));
   reject(initial.length !== 4 || !['healer', 'tank', 'attacker', 'area_attacker'].every(role => initial.some(char => char.role === role)), 'initial party: required four roles missing');
+  const premium = content.xrGacha;
+  if (premium) {
+    reject(!Number.isSafeInteger(premium.unlockChapter) || premium.unlockChapter !== 10 || !Number.isSafeInteger(premium.stoneCost) || premium.stoneCost < 1 || typeof premium.published !== 'boolean', 'xrGacha: invalid unlock or cost');
+    reject(characterRarities.some(rarity => !Number.isFinite(premium.rates[rarity]) || premium.rates[rarity] < 0) || Math.abs(Object.values(premium.rates).reduce((sum, rate) => sum + rate, 0) - 100) > 1e-9 || premium.rates.XR <= 0 || premium.rates.XR > 0.1, 'xrGacha: valid rates and XR rate at most 0.1% required');
+    reject(characterRarities.some(rarity => !Number.isSafeInteger(premium.duplicateRefund[rarity]) || premium.duplicateRefund[rarity] < 0 || premium.duplicateRefund[rarity] > Math.min(3, premium.stoneCost)), 'xrGacha: invalid premium refund');
+    const pool = content.characters.filter(character => premium.characterIds.includes(character.id));
+    reject(new Set(premium.characterIds).size !== premium.characterIds.length || pool.length !== premium.characterIds.length || pool.some(character => !character.origin.some(origin => origin === 'gacha' || origin === 'xr_gacha')), 'xrGacha: invalid character pool');
+    if (premium.published) reject(characterRarities.some(rarity => premium.rates[rarity] > 0 && !pool.some(character => character.published && character.rarity === rarity)), 'xrGacha: all positive rates need published characters');
+  }
   const gacha = content.characters.filter(char => char.published && char.origin.includes('gacha'));
-  reject(sharedGoddessIds.some(id => !gacha.some(char => char.id === id && char.rarity !== 'SSR')), 'gacha/common: published R/SR base forms required');
+  reject(sharedGoddessIds.some(id => !gacha.some(char => char.id === id && ['R', 'SR'].includes(char.rarity))), 'gacha/common: published R/SR base forms required');
   reject(sharedSSRIds.some(id => !gacha.some(char => char.id === id && char.rarity === 'SSR')), 'gacha/common: published common SSR forms required');
   for (const collection of gachaCollections) {
     const ids = gachaPoolIds(collection);
@@ -252,7 +263,7 @@ export function validateContent(content: Content): string[] {
     reject(new Set(ids).size !== ids.length || ids.some(id => !pool.some(char => char.id === id)), `gacha/${collection.id}: missing or duplicate character definition`);
     reject(Object.values(collection.rates).some(rate => !Number.isFinite(rate) || rate < 0) || Object.values(collection.rates).reduce((sum,rate) => sum + rate,0) !== 100, `gacha/${collection.id}: valid rates totaling 100 required`);
     reject((['R','SR','SSR'] as const).some(rarity => collection.rates[rarity] > 0 && !pool.some(char => char.rarity === rarity)), `gacha/${collection.id}: each positive rarity rate needs matching characters`);
-    reject(pool.some(char => collection.rates[char.rarity] === 0), `gacha/${collection.id}: zero-rate rarity must not have characters`);
+    reject(pool.some(char => char.rarity === 'XR' || collection.rates[char.rarity] === 0), `gacha/${collection.id}: zero-rate rarity must not have characters`);
     reject(collection.featuredIds.length < 1 || new Set(collection.featuredIds).size !== collection.featuredIds.length || pool.filter(char => char.rarity === 'SSR').length !== collection.featuredIds.length + sharedSSRIds.length, `gacha/${collection.id}: featured and common SSR definitions required`);
     reject(!Number.isFinite(collection.featuredSSRShare) || collection.featuredSSRShare <= 0 || collection.featuredSSRShare >= 100 || collection.featuredIds.some(id => sharedSSRIds.includes(id)), `gacha/${collection.id}: invalid featured SSR share`);
     reject(collection.featuredIds.some(id => !pool.some(char => char.id === id && char.rarity === 'SSR')), `gacha/${collection.id}: featured SSR must belong to collection`);

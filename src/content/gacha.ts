@@ -107,6 +107,7 @@ export function pickSSR(candidates: CharacterDef[], collection: GachaCollection,
 /** Base per-character percentage, using the same group split as the real draw. */
 export function gachaBaseChance(char: CharacterDef, collection: GachaCollection, pool: CharacterDef[]): number {
   if (!pool.some(item => item.id === char.id)) return 0;
+  if (char.rarity === 'XR') return 0;
   if (char.rarity !== 'SSR') return collection.rates[char.rarity] / pool.filter(item => item.rarity === char.rarity).length;
   const featured = collection.featuredIds.includes(char.id);
   const group = pool.filter(item => item.rarity === 'SSR' && (featured ? collection.featuredIds.includes(item.id) : sharedSSRIds.includes(item.id)));

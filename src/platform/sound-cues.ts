@@ -7,5 +7,5 @@ export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff', drop: 'drop', dialogue: 'dialogue', wave: 'wave', defeat: 'defeat',
 };
 export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
-  depart: 'depart', strategy: 'select', round: null, replay: null, potion: 'heal', retreat: 'cancel', claim: 'victory', leaveFailure: 'cancel', buyPotion: 'purchase', recruit: 'recruit', goldRecruit: 'victory', eventRecruit: 'recruit', awaken: 'victory', exchange: 'exchange', party: 'select', draw: 'gacha', settings: null,
+  depart: 'depart', strategy: 'select', round: null, replay: null, potion: 'heal', retreat: 'cancel', claim: 'victory', leaveFailure: 'cancel', buyPotion: 'purchase', recruit: 'recruit', goldRecruit: 'victory', eventRecruit: 'recruit', awaken: 'victory', exchange: 'exchange', party: 'select', drawXR: 'gacha', draw: 'gacha', settings: null,
 };

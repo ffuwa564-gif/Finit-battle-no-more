@@ -15,7 +15,7 @@ function count(value: unknown): value is number { return typeof value === 'numbe
 function nonempty(value: unknown): value is string { return typeof value === 'string' && value.length > 0; }
 function uniqueStrings(value: unknown): value is string[] { return stringArray(value) && new Set(value).size === value.length && value.every(nonempty); }
 function materialMap(value: unknown): boolean { return record(value) && Object.entries(value).every(([id, amount]) => /^[a-zA-Z0-9_-]+:(common|rare|epic)$/.test(id) && count(amount)); }
-function validGachaResult(value: unknown): value is GachaResult { return record(value) && nonempty(value.characterId) && typeof value.duplicate === 'boolean' && count(value.refund) && value.refund <= 3; }
+function validGachaResult(value: unknown): value is GachaResult { return record(value) && nonempty(value.characterId) && typeof value.duplicate === 'boolean' && count(value.refund) && value.refund <= 3 && (value.currency === undefined || ['stones', 'astralStones'].includes(value.currency as string)); }
 function validUnit(value: unknown): boolean {
   if (!record(value) || !nonempty(value.uid) || !nonempty(value.characterId) || !['party', 'enemy'].includes(value.side as string) || typeof value.boss !== 'boolean') return false;
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
@@ -50,13 +50,14 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (!record(value) || value.schemaVersion !== 1) throw new Error('未対応または破損した保存形式です。セーブは保持されています。');
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
   for (const key of ['revision', 'gold', 'potions', 'stones', 'drawCount', 'seed']) if (!count(value[key])) throw new Error('保存データの所持数または状態が不正です。');
+  for (const key of ['astralStones', 'xrDrawCount']) if (value[key] !== undefined && !count(value[key])) throw new Error('星晶の所持数または状態が不正です。');
   if (value.ssrPity !== undefined && (!count(value.ssrPity) || value.ssrPity >= 90 || value.ssrPity > Number(value.drawCount))) throw new Error('祈願の天井情報が不正です。');
   if (value.lastGachaResult !== undefined && !validGachaResult(value.lastGachaResult)) throw new Error('祈願の結果情報が不正です。');
   if (value.lastGachaResults !== undefined) {
     const results = value.lastGachaResults;
-    if (!Array.isArray(results) || ![1, 10].includes(results.length) || !results.every(validGachaResult) || Number(value.drawCount) < results.length || !validGachaResult(value.lastGachaResult)) throw new Error('祈願の結果情報が不正です。');
+    if (!Array.isArray(results) || ![1, 10].includes(results.length) || !results.every(validGachaResult) || Number(results[0]?.currency === 'astralStones' ? value.xrDrawCount ?? 0 : value.drawCount) < results.length || results.some(result => (result.currency ?? 'stones') !== (results[0]?.currency ?? 'stones')) || !validGachaResult(value.lastGachaResult)) throw new Error('祈願の結果情報が不正です。');
     const last = results.at(-1)!;
-    if (last.characterId !== value.lastGachaResult.characterId || last.duplicate !== value.lastGachaResult.duplicate || last.refund !== value.lastGachaResult.refund) throw new Error('祈願の結果情報が不正です。');
+    if (last.characterId !== value.lastGachaResult.characterId || last.duplicate !== value.lastGachaResult.duplicate || last.refund !== value.lastGachaResult.refund || (last.currency ?? 'stones') !== (value.lastGachaResult.currency ?? 'stones')) throw new Error('祈願の結果情報が不正です。');
   }
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
