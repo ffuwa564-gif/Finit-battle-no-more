@@ -1,3 +1,4 @@
+import { activeAcceleration } from '../domain/acceleration';
 import { tr, localize } from '../locales/i18n';
 import { isolatedMaterialSpecies, memoryChapters } from '../domain/awakening';
 import { dungeonLock, duplicateFamily } from '../domain/events';
@@ -165,7 +166,7 @@ export function BattleView(p: ViewProps) {
       </div>))}
     </div>
     <CombatFeedback event={event} before={units} reducedMotion={p.save.settings.reducedMotion} />
-    <BattleControlPad round={displayRound} strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
+    <BattleControlPad acceleration={activeAcceleration({ ...battle, units, round: displayRound }, content)} strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command({ type: battle.phase === 'playing' ? 'replay' : 'round' }); }}
       potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}
       retreatDisabled={p.busy || battle.phase !== 'ready'} onRetreat={() => setRetreat(true)}

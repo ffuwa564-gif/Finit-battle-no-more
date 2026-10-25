@@ -28,6 +28,7 @@ const descriptions: Record<SkillTemplate, string> = {
 export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
 export function skillDescription(skill: SkillDef): string { return `${descriptions[skill.template]}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`; }
 const leaderDescriptions: Record<LeaderEffect, string> = {
+  acceleration: '曙の加速：各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。',
   regeneration: '月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。',
   finisher: '薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。',
   lifesteal: '黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。',

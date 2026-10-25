@@ -1,4 +1,4 @@
-import { accelerationPercent } from './acceleration';
+import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
 import { duplicateFamily } from './events';
@@ -137,8 +137,8 @@ function leaderEffect(battle: Battle, content: Content): CharacterDef['leaderEff
   const leader = battle.units.find(unit => unit.side === 'party' && unit.characterId === battle.leaderId && unit.hp > 0);
   return leader ? character(content, leader.characterId).leaderEffect : undefined;
 }
-function effectiveAttack(unit: Unit, round: number, accelerated = false): number {
-  return Math.round(unit.attack * (100 + (accelerated ? accelerationPercent(round) : 0)) / 100 * ((unit.buffUntil ?? -1) >= round ? 230 + (unit.buffStrength ?? 10) : 200) / 200);
+function effectiveAttack(unit: Unit, round: number, attackBonus = 0): number {
+  return Math.round(unit.attack * (100 + attackBonus) / 100 * ((unit.buffUntil ?? -1) >= round ? 230 + (unit.buffStrength ?? 10) : 200) / 200);
 }
 function effectiveDefense(unit: Unit, round: number): number {
   return Math.round(unit.defense * ((unit.debuffUntil ?? -1) >= round ? 170 - (unit.debuffStrength ?? 10) : 200) / 200);
@@ -291,7 +291,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   if (shattering) { delete recipient.barrier; delete recipient.barrierUntil; }
   const passive = leaderEffect(battle, content);
   const resonance = actor.side === 'party' && passive === 'resonance' && !guardable ? 115 : 100;
-  const powerNumerator = effectiveAttack(actor, battle.round, true) * numerator * resonance * (dawning && (recipient.debuffUntil ?? -1) >= battle.round ? 125 : 100);
+  const powerNumerator = effectiveAttack(actor, battle.round, activeAcceleration(battle, content)?.percent ?? 0) * numerator * resonance * (dawning && (recipient.debuffUntil ?? -1) >= battle.round ? 125 : 100);
   const powerDenominator = denominator * 100 * 100;
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - effectiveDefense(recipient, battle.round) * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
   if (actor.side === 'party' && recipient.side !== actor.side && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
