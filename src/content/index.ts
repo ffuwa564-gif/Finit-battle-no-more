@@ -236,7 +236,7 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portraitMotionId).map(char => ({
-  id: char.portraitMotionId!, path: `video/${char.id}-portrait${char.id === 'athena' ? '-anime' : char.id === 'selene' ? '-v2' : ''}.mp4`, kind: 'video', width: 320, height: 480,
+  id: char.portraitMotionId!, path: `video/${char.id}-portrait${char.id === 'athena' ? '-anime' : char.id === 'selene' ? '-v2' : char.id === 'lunette-awakened' ? '-loop' : ''}.mp4`, kind: 'video', width: 320, height: 480,
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
 }));
 const menuAssets: AssetDef[] = [
@@ -244,7 +244,7 @@ const menuAssets: AssetDef[] = [
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },
   { id: 'seris-awakened-motion', path: 'video/seris-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Seris dawn illustration animated with Runway; task 5e312a67-100d-448a-afa6-b2b00b7a8bb7.' },
   { id: 'gacha-nox-motion', path: 'video/gacha-nox.mp4', kind: 'video', width: 720, height: 960, anchor: '50% 0%', rights: 'Original project clockwork maiden Nox animated with Runway; generation details in docs/clockwork-maidens.md.' },
-  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened.mp4', kind: 'video', width: 720, height: 960, anchor: '50% 0%', rights: 'Original project awakened Lunette illustration animated with Runway; task 8359e9fb-8015-4c91-8232-8a937424eab2; 8 seconds, silent.' },
+  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened-loop.mp4', kind: 'video', width: 720, height: 960, anchor: '50% 0%', rights: 'Original project awakened Lunette illustration animated with Runway; base task 8359e9fb-8015-4c91-8232-8a937424eab2 plus return bridge d57d4e7d-52e7-4cd7-a54a-0b29ff7580b2; about 10 seconds, silent.' },
   { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration with understated chest silhouette animated with Runway; task 7b9e961c-2a25-47cc-89f1-2f537bc7d520.' },
   { id: 'gacha-izanami-motion', path: 'video/gacha-izanami.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task d2d265ba-0283-46ed-84cd-bdee1ffd8ccf.' },
   { id: 'gacha-amaterasu-motion', path: 'video/gacha-amaterasu.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task 3b46aceb-e02f-4277-9ec0-ba114d5afcf1.' },

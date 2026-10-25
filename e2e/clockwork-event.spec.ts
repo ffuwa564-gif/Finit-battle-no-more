@@ -9,7 +9,7 @@ test('clockwork event has its own rewards, instructions and awakened animation i
   await expect(event.locator('.character-artwork__still')).toHaveCount(1);
   const video = event.locator('video');
   await video.scrollIntoViewIfNeeded();
-  await expect(video).toHaveAttribute('src', /video\/lunette-awakened.mp4/);
+  await expect(video).toHaveAttribute('src', /video\/lunette-awakened-loop.mp4/);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(video).toHaveJSProperty('muted', true);
   await expect(video).toHaveJSProperty('loop', true);
@@ -69,16 +69,27 @@ test('awakened Lunette plays on home and keeps her painting for reduced motion a
   });
   await page.reload(); await enterGame(page);
   const home = page.locator('.home-artwork');
-  await expect(home.locator('video')).toHaveAttribute('src', /video\/lunette-awakened.mp4/);
+  await expect(home.locator('video')).toHaveAttribute('src', /video\/lunette-awakened-loop.mp4/);
   await expect.poll(() => home.locator('video').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(home.locator('video')).toHaveJSProperty('muted', true);
+  await expect.poll(() => home.locator('video').evaluate((v: HTMLVideoElement) => v.duration)).toBeGreaterThan(9.5);
+  await expect(home.locator('video')).toHaveJSProperty('loop', true);
+  const wrapped = await home.locator('video').evaluate((v: HTMLVideoElement) => new Promise<boolean>(resolve => {
+    let previous = v.currentTime;
+    const timeout = setTimeout(() => { clearInterval(timer); resolve(false); }, 15000);
+    const timer = setInterval(() => {
+      if (v.currentTime < previous - 1) { clearInterval(timer); clearTimeout(timeout); resolve(true); }
+      previous = v.currentTime;
+    }, 50);
+  }));
+  expect(wrapped).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-home.png'), fullPage: true });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(home.locator('.animated-illustration')).toHaveAttribute('data-animation-state', 'static');
   await expect(home.locator('video')).not.toHaveAttribute('src');
   await expect(home.locator('img')).toHaveAttribute('src', /event-lunette-awakened.png/);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.route('**/video/lunette-awakened.mp4', route => route.abort());
+  await page.route('**/video/lunette-awakened-loop.mp4', route => route.abort());
   await page.reload(); await enterGame(page);
   await expect(home.locator('.animated-illustration')).toHaveAttribute('data-animation-state', 'error');
   await expect(home.locator('img')).toBeVisible();
@@ -99,13 +110,13 @@ test('awakened Lunette uses the lightweight portrait and full animation in detai
   const card = page.locator('.character-card').filter({ has: page.getByRole('heading', { name: '星時計・ルネット', exact: true }) });
   await card.scrollIntoViewIfNeeded();
   const portrait = card.locator('video');
-  await expect(portrait).toHaveAttribute('src', /lunette-awakened-portrait.mp4/);
+  await expect(portrait).toHaveAttribute('src', /lunette-awakened-portrait-loop.mp4/);
   await expect.poll(() => portrait.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(portrait).toHaveJSProperty('videoWidth', 320);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-portrait.png') });
   await card.getByRole('button', { name: '星時計・ルネット・リーダー', exact: true }).click();
   const video = page.getByRole('dialog').locator('video');
-  await expect(video).toHaveAttribute('src', /video\/lunette-awakened.mp4/);
+  await expect(video).toHaveAttribute('src', /video\/lunette-awakened-loop.mp4/);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-detail.png'), fullPage: true });
   await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
@@ -117,7 +128,7 @@ test('awakened Lunette uses the lightweight portrait and full animation in detai
     await persistSave(applyCommand(save, { type: 'depart', dungeonId: content.dungeons[0].id, potions: 0 }, content), save.revision);
   });
   await page.reload(); await enterGame(page);
-  const battlePortrait = page.locator('.party-strip video[src$="lunette-awakened-portrait.mp4"]');
+  const battlePortrait = page.locator('.party-strip video[src$="lunette-awakened-portrait-loop.mp4"]');
   await expect.poll(() => battlePortrait.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(battlePortrait).toHaveJSProperty('muted', true);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-battle.png'), fullPage: true });
