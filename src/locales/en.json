@@ -727,5 +727,9 @@
   "所持している仲間を選べます。動画のあるキャラはアニメーション、ないキャラは原画を表示します。": "Choose an owned companion. Characters with animations will move; others display their illustration.",
   "アニメーション": "Animated",
   "{0}／{1}をホームに表示": "Show {0} — {1} on Home",
-  "イラスト": "Illustration"
+  "イラスト": "Illustration",
+  "騎兵戦": "Cavalry Battle",
+  "楽しい冒険": "A Joyful Adventure",
+  "ボス戦：": "Boss: ",
+  "／ クリア：": "/ Clear: "
 }
