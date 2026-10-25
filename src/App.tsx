@@ -90,7 +90,7 @@ export default function App() {
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
         const previousDungeon = content.dungeons.find(dungeon => dungeon.id === previous.battle?.dungeonId);
-        const returnHash = previousDungeon?.eventId ? 'dungeons/boss-events' : previousDungeon?.kind === 'event' ? 'dungeons/events' : previousDungeon?.previousDungeonId ? 'dungeons/memories' : '';
+        const returnHash = previousDungeon?.eventId ? 'dungeons/boss-events' : previousDungeon?.kind === 'event' ? 'dungeons/events' : previousDungeon?.previousDungeonId && !previousDungeon.chapterId ? 'dungeons/memories' : '';
         navigate('dungeons');
         if (returnHash) location.hash = returnHash;
         // Deployed releases return to the stable launcher only at a safe town boundary.

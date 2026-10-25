@@ -5,7 +5,7 @@ import { validateContent } from '../src/content/validation';
 describe('shared content contract', () => {
   it('accepts the complete first playable registry and guarantees launch acquisition', () => {
     expect(validateContent(content)).toEqual([]);
-    expect(content.dungeons.filter(dungeon => dungeon.kind !== 'event' && !dungeon.previousDungeonId)).toHaveLength(10);
+    expect(content.dungeons.filter(dungeon => Boolean(dungeon.chapterId))).toHaveLength(10);
     const events = content.dungeons.filter(dungeon => dungeon.kind === 'event' && !dungeon.eventId);
     expect(events).toHaveLength(3);
     expect(events.every(dungeon => dungeon.waves.length === 2)).toBe(true);

@@ -1,0 +1,98 @@
+[
+  {
+    "chapter": 1,
+    "stage": "stone-fountain",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 20
+  },
+  {
+    "chapter": 1,
+    "stage": "stone-fountain",
+    "team": "initial-no-potions",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 20
+  },
+  {
+    "chapter": 1,
+    "stage": "stone-fountain",
+    "team": "recruits",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 28.1
+  },
+  {
+    "chapter": 1,
+    "stage": "stone-fountain",
+    "team": "goddesses",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 17.9
+  },
+  {
+    "chapter": 2,
+    "stage": "hollow-gate",
+    "team": "initial",
+    "wins": 12,
+    "seeds": 20,
+    "meanRounds": 36.1
+  },
+  {
+    "chapter": 2,
+    "stage": "hollow-gate",
+    "team": "initial-no-potions",
+    "wins": 12,
+    "seeds": 20,
+    "meanRounds": 32.5
+  },
+  {
+    "chapter": 2,
+    "stage": "hollow-gate",
+    "team": "recruits",
+    "wins": 13,
+    "seeds": 20,
+    "meanRounds": 52
+  },
+  {
+    "chapter": 2,
+    "stage": "hollow-gate",
+    "team": "goddesses",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 25.85
+  },
+  {
+    "chapter": 3,
+    "stage": "pale-throne",
+    "team": "initial",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 22.9
+  },
+  {
+    "chapter": 3,
+    "stage": "pale-throne",
+    "team": "initial-no-potions",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 22.9
+  },
+  {
+    "chapter": 3,
+    "stage": "pale-throne",
+    "team": "recruits",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 29.8
+  },
+  {
+    "chapter": 3,
+    "stage": "pale-throne",
+    "team": "goddesses",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 22.15
+  }
+]

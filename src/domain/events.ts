@@ -1,7 +1,9 @@
+import { campaignLock } from './campaign';
 import type { Content, DungeonDef, EventDef, GameSave } from './types';
 
 export function dungeonLock(def: DungeonDef, save: Pick<GameSave, 'completedDungeonIds' | 'ownedIds'>, content: Content): string | null {
-  if (def.previousDungeonId && !save.completedDungeonIds.includes(def.previousDungeonId)) return def.eventId ? '前の難易度を踏破して解放' : `${content.dungeons.find(stage => stage.id === def.previousDungeonId)?.name ?? '前の探索'}を踏破して解放`;
+  if (def.chapterId) { const lock = campaignLock(def, save, content); if (lock) return lock; }
+  if (!def.chapterId && def.previousDungeonId && !save.completedDungeonIds.includes(def.previousDungeonId)) return def.eventId ? '前の難易度を踏破して解放' : `${content.dungeons.find(stage => stage.id === def.previousDungeonId)?.name ?? '前の探索'}を踏破して解放`;
   if (def.requiresOwnedIds?.some(id => !save.ownedIds.includes(id))) return `関係者${def.requiresOwnedIds.length}人の覚醒で解放`;
   if (!def.eventId) return null;
   const event = content.events?.find(item => item.id === def.eventId && item.published);

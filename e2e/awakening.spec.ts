@@ -47,7 +47,10 @@ test('memories hide locked chapters and four real awakenings unlock animated Ser
 
 test('normal routes show fixed encounters, remembrance gates and fit mobile and desktop widths', async({page})=>{
   await page.goto('/#dungeons');await enterGame(page);
-  await expect(page.locator('.dungeon-card')).toHaveCount(10);
+  await expect(page.locator('.dungeon-card')).toHaveCount(3);
+  await page.evaluate(async()=>{ const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const revision=save.revision;save.completedDungeonIds=['hollow-gate'];save.revision++;await persistSave(save,revision); });
+  await page.reload();await enterGame(page);
+  await expect(page.locator('.dungeon-card')).toHaveCount(4);
   await expect(page.locator('.dungeon-card').filter({hasText:'白夜の玉座'})).toContainText('弔鐘の追憶 ×6');
   await page.getByRole('button',{name:'追憶・覚醒',exact:true}).click();
   await expect(page.locator('.dungeon-card')).toHaveCount(5);
