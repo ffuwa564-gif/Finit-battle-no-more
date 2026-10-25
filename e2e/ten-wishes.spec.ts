@@ -24,6 +24,8 @@ test('ten wishes confirms the one-time guarantee, saves once, and lets players i
   await expect(results.locator('.gacha-result')).toHaveCount(10); await expect(results).toContainText('全ガチャ共通の初回SSR保証を使用しました');
   const saved = await readSave(page); expect(saved!.drawCount).toBe(10); expect(saved!.revision).toBe(before!.revision + 1);
   expect(saved!.stones).toBe(saved!.lastGachaResults!.reduce((sum, result) => sum + result.refund, 0));
+  await expect(results.locator('.gacha-result').last()).toBeInViewport();
+  await expect(results.getByRole('button', { name: '祈願に戻る', exact: true })).toBeInViewport();
   await results.screenshot({ path: testInfo.outputPath('ten-wishes-mobile.png') });
   await results.locator('.gacha-result').nth(1).click();
   await expect(page.getByRole('dialog').locator('.gacha-reveal__rarity')).toHaveText('SSR');
