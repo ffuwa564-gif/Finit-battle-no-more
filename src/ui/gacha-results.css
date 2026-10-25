@@ -37,3 +37,5 @@
 .gacha-result.button:hover:not(:disabled), .gacha-result.button:focus-visible { background: #293146; color: #efe8db; filter: brightness(1.08); }
 .gacha-result--sr.button:hover:not(:disabled), .gacha-result--sr.button:focus-visible { background: #38304c; }
 .gacha-result--ssr.button:hover:not(:disabled), .gacha-result--ssr.button:focus-visible { background: #514133; }
+
+.gacha-result--xr { border-color: #a8e8f7; box-shadow: inset 0 0 0 1px #dbc3ff; }

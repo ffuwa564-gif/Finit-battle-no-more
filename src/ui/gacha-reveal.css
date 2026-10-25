@@ -46,3 +46,9 @@
 @keyframes summon-halo { from { opacity: 1; scale: .5; } to { opacity: 0; scale: 3.5; } }
 
 .gacha-reveal__guarantee { display: block; max-width: 290px; margin: 0 auto 7px; font-size: 10px; line-height: 1.5; color: #f3dca6; letter-spacing: .04em; }
+
+.gacha-reveal--xr { --summon-color: #bcf3ff; background: radial-gradient(ellipse at 50% 38%,#415878,#282044 50%,#101323 85%); }
+.gacha-reveal--xr .gacha-reveal__rarity { color: #e6fdff; text-shadow: 0 0 16px #9f8ce9; }
+
+.gacha-reveal--xr .gacha-reveal__rarity { font-size: 72px; }
+.gacha-reveal--xr.is-revealed .gacha-reveal__ring { z-index: 4; pointer-events: none; animation: summon-halo 1500ms ease-out both; }

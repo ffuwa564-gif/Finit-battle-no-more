@@ -1,3 +1,4 @@
+export { XRGacha } from './XRGacha';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
@@ -100,8 +101,8 @@ export function MaterialIcon({ rarity, size = 'md' }: { rarity: Rarity; size?: '
   return <span className={`material-icon material-icon--${rarity} material-icon--${size}`} aria-hidden="true"><Diamond strokeWidth={1.2} /><span className="material-icon__glint" /></span>;
 }
 
-export function RarityBadge({ rarity }: { rarity: Rarity | 'R' | 'SR' | 'SSR' }) {
-  const names: Record<string, string> = { common: '通常', rare: 'レア', epic: '希少', R: 'R', SR: 'SR', SSR: 'SSR' };
+export function RarityBadge({ rarity }: { rarity: Rarity | 'R' | 'SR' | 'SSR' | 'XR' }) {
+  const names: Record<string, string> = { common: '通常', rare: 'レア', epic: '希少', R: 'R', SR: 'SR', SSR: 'SSR', XR: 'XR' };
   return <span className={`rarity-badge rarity-badge--${rarity}`}>{localize(names[rarity])}</span>;
 }
 

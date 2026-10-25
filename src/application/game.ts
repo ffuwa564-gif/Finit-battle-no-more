@@ -1,3 +1,4 @@
+import { pickXR, xrGachaLock } from '../domain/xr-gacha';
 import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
@@ -33,7 +34,7 @@ export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave
   const leader = initial.find(id => content.characters.find(character => character.id === id)?.role === 'tank') ?? initial[0]!;
   return {
     schemaVersion: content.schemaVersion, appVersion: content.appVersion, contentVersion: content.contentVersion,
-    rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0,
+    rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0, astralStones: 0, xrDrawCount: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
     completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
     battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
@@ -211,6 +212,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const collection = gachaCollections.find(item => item.id === (command.collectionId ?? initialGacha.id));
       if (!collection) fail('選択した祈願が見つかりません。');
       const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && gachaPoolIds(collection!).includes(item.id));
+      if (available.some(character => character.rarity === 'XR')) fail('XRは星晶の祈願限定です。');
       if (!available.length) fail('召喚できるキャラクターがいません。');
       const results: GachaResult[] = [];
       for (let index = 0; index < count; index++) {
@@ -224,6 +226,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
         if (!candidates.length) fail('選択したレアリティの対象がありません。石は消費されません。');
         roll = rng(save.seed); save.seed = roll.seed;
         const selected = rarity === 'SSR' ? pickSSR(candidates, collection, roll.value, guaranteed) : candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
+        if (selected.rarity === 'XR') fail('XRは星晶の祈願限定です。');
         const duplicate = save.ownedIds.includes(selected.id);
         const refund = duplicate ? initialGacha.duplicateRefund[selected.rarity] : 0;
         save.stones = save.stones - initialGacha.stoneCost + refund;
@@ -233,6 +236,37 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
         save.lastGachaResult = { characterId: selected.id, duplicate, refund };
         log(save, `召喚：${selected.rarity} ${selected.name}が訪れました。`, `draw-${save.drawCount}`);
         results.push(save.lastGachaResult!);
+      }
+      save.lastGachaResults = results;
+      break;
+    }
+    case 'drawXR': {
+      town(save);
+      const lock = xrGachaLock(save, content);
+      if (lock) fail(lock);
+      const banner = content.xrGacha!;
+      const count = command.count ?? 1;
+      if (count !== 1 && count !== 10) fail('祈願回数は1回または10回を指定してください。');
+      const balance = save.astralStones ?? 0;
+      natural(balance, '星晶石', true);
+      if (balance < banner.stoneCost * count) fail('星晶石が不足しています。');
+      const pool = content.characters.filter(character => character.published && banner.characterIds.includes(character.id));
+      natural((save.xrDrawCount ?? 0) + count, '星晶の祈願回数', true);
+      // Preserve legacy normal pity before premium history displaces old normal rolls.
+      save.ssrPity = gachaPity(save);
+      const results: GachaResult[] = [];
+      for (let index = 0; index < count; index++) {
+        const rarityRoll = rng(save.seed), characterRoll = rng(rarityRoll.seed);
+        save.seed = characterRoll.seed;
+        const selected = pickXR(pool, banner, rarityRoll.value, characterRoll.value);
+        const duplicate = save.ownedIds.includes(selected.id);
+        const refund = duplicate ? banner.duplicateRefund[selected.rarity] : 0;
+        save.astralStones = (save.astralStones ?? 0) - banner.stoneCost + refund;
+        save.xrDrawCount = (save.xrDrawCount ?? 0) + 1;
+        if (!duplicate) save.ownedIds.push(selected.id);
+        save.lastGachaResult = { characterId: selected.id, duplicate, refund, currency: 'astralStones' };
+        results.push(save.lastGachaResult);
+        log(save, `星晶召喚：${selected.rarity} ${selected.name}が訪れました。`, `xr-${save.xrDrawCount}`);
       }
       save.lastGachaResults = results;
       break;

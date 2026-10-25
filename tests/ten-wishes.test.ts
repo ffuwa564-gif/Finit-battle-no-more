@@ -27,6 +27,7 @@ describe('atomic ten wishes', () => {
     for (const result of next.lastGachaResults!) {
       expect(result.duplicate).toBe(seen.has(result.characterId));
       const rarity = content.characters.find(c => c.id === result.characterId)!.rarity;
+      if (rarity === 'XR') throw new Error('XR leaked into regular summons');
       expect(result.refund).toBe(result.duplicate ? { R: 1, SR: 2, SSR: 3 }[rarity] : 0); seen.add(result.characterId);
     }
     expect(next.lastGachaResults!.some(result => result.duplicate)).toBe(true);

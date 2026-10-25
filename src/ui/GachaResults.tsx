@@ -13,12 +13,12 @@ export function GachaResults({ results, introIndex, reducedMotion, onClose, onRe
   const [selected, setSelected] = useState<number | null>(null);
   const announced = useRef(false);
   const cue = useRef(onReveal); cue.current = onReveal;
-  const hasSSR = results.some(result => characterById(result.characterId).rarity === 'SSR');
+  const hasSSR = results.some(result => characterById(result.characterId).rarity === 'SSR' || characterById(result.characterId).rarity === 'XR');
   useEffect(() => { if (results.length > 1 && !announced.current) { announced.current = true; cue.current(hasSSR); } }, [results, hasSSR]);
   const index = results.length === 1 ? 0 : selected;
   if (index !== null) {
     const result = results[index]!; const character = characterById(result.characterId);
-    return <GachaReveal key={index} character={character} duplicate={result.duplicate} refund={result.refund} introGuarantee={introIndex === index} reducedMotion={reducedMotion} onClose={results.length === 1 ? onClose : () => setSelected(null)} onReveal={() => onReveal(character.rarity === 'SSR')} />;
+    return <GachaReveal key={index} character={character} duplicate={result.duplicate} refund={result.refund} introGuarantee={introIndex === index} currency={result.currency} reducedMotion={reducedMotion} onClose={results.length === 1 ? onClose : () => setSelected(null)} onReveal={() => onReveal(character.rarity === 'SSR' || character.rarity === 'XR')} />;
   }
   const refund = results.reduce((sum, result) => sum + result.refund, 0);
   return <Modal title={tr('10連祈願の結果')} className="gacha-results-modal" onClose={onClose}>
@@ -36,7 +36,7 @@ export function GachaResults({ results, introIndex, reducedMotion, onClose, onRe
           </Button>;
         })}
       </div>
-      <div className="gacha-results__footer"><span>{tr(results.some(result => characterById(result.characterId).speciesId === 'clockwork') ? '新しい仲間 {0}体' : '新しい女神 {0}体').replace('{0}', String(results.filter(result => !result.duplicate).length))}</span><span>{tr('祈願石還元 {0}個').replace('{0}', String(refund))}</span></div>
+      <div className="gacha-results__footer"><span>{tr(results.some(result => characterById(result.characterId).speciesId === 'clockwork') ? '新しい仲間 {0}体' : '新しい女神 {0}体').replace('{0}', String(results.filter(result => !result.duplicate).length))}</span><span>{tr(results[0]?.currency === 'astralStones' ? '星晶石還元 {0}個' : '祈願石還元 {0}個').replace('{0}', String(refund))}</span></div>
       <Button size="lg" className="gacha-results__accept" onClick={onClose}>{tr('祈願に戻る')}</Button>
     </div>
   </Modal>;

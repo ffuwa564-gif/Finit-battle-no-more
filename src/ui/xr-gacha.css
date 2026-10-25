@@ -1,0 +1,8 @@
+.xr-gacha { margin-top: 28px; padding: clamp(18px,3vw,28px); border-color: #9abfd6; background: linear-gradient(145deg,#edf6f6,#f4effb); }
+.xr-gacha__heading { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.xr-gacha__heading h2 { margin: 4px 0; }
+.xr-gacha__heading p { margin: 0; }
+.xr-gacha__emblem { display: grid; place-items: center; flex-shrink: 0; width: 68px; height: 76px; border: 2px solid #92bad5; border-radius: 16px 4px; color: #426579; background: linear-gradient(135deg,#d5f6ed,#eee0ff,#e0f5ff); box-shadow: inset 0 0 0 3px #ffffffa0; font: 30px/1 var(--font-display); }
+.xr-gacha__balance,.xr-gacha__status { display: flex; align-items: center; gap: 8px; color: #3e6177; }
+.xr-gacha > p { line-height: 1.8; }
+.xr-gacha .toolbar { flex-wrap: wrap; }
