@@ -5,7 +5,7 @@ import argparse,json,math,subprocess,wave
 from pathlib import Path
 import numpy as np
 p=argparse.ArgumentParser();p.add_argument('--preview',action='store_true');p.add_argument('--audio-only',action='store_true');args=p.parse_args()
-root=Path(__file__).resolve().parents[1];out=root/'artifacts/heisei-cm';src=out/'source';work=out/('edit-v6-720' if args.preview else 'edit-v6-1080');work.mkdir(parents=True,exist_ok=True)
+root=Path(__file__).resolve().parents[1];out=root/'artifacts/heisei-cm';src=out/'source';work=out/('edit-v7-720' if args.preview else 'edit-v7-1080');work.mkdir(parents=True,exist_ok=True)
 S=2/3 if args.preview else 1;W,H=int(1920*S),int(1080*S)
 sans='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc';bold='/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc';serif='/usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc'
 def n(x):return round(x*S)
@@ -81,11 +81,11 @@ noise=rng.normal(0,1,len(t));crisp=noise-np.convolve(noise,np.ones(5)/5,mode='sa
 add(click_time,crisp*np.exp(-t*430)*.35+np.sin(2*np.pi*2400*t)*np.exp(-t*250)*.28+np.sin(2*np.pi*780*t)*np.exp(-t*170)*.18)
 add(click_time+.024,crisp*np.exp(-t*520)*.24+np.sin(2*np.pi*3300*t)*np.exp(-t*320)*.18)
 with wave.open(str(work/'accents.wav'),'wb') as w:w.setnchannels(2);w.setsampwidth(2);w.setframerate(sr);w.writeframes((np.clip(mix,-.98,.98)*32767).astype('<i2').tobytes())
-# Approved auditions retain their original tempo and pitch. The new everyday
-# opening is kept intact; only Amaterasu's almost-silent trailing tail is trimmed.
+# Approved auditions retain their original tempo and pitch. Only a measured
+# opening pause and Amaterasu's almost-silent trailing tail are shortened.
 placements=[('intro',.08,2.60),('seris',2.76,2.14),('kuzuha',5.0,3.18),('amaterasu',8.3,1.40),('title',9.82,2.70),('cta',12.62,2.03)]
 selected_files={
- 'intro':'everyday-intro-audition/B.wav',
+ 'intro':'idol-intro-amateur-retake/B.wav',
  'seris':'moe-and-drama-audition/seris-A.wav',
  'kuzuha':'title-and-cv-audition/kuzuha.wav',
  'amaterasu':'amaterasu-diction-audition/A.wav',
@@ -113,6 +113,11 @@ def place_pcm(source,destination,start):
 voice_mix=np.zeros((15*sr,2));timing=[]
 for name,start,window in placements:
  samples=read_pcm(out/selected_files[name])
+ if name=='intro':
+  # Cut 300ms wholly within the measured 0.729–1.381s silence.
+  left=round(.85*sr);right=round(1.15*sr)
+  if np.sqrt(np.mean(samples[left:right]**2))>.01:raise RuntimeError('Opening pause contains speech; refuse to cut it')
+  samples=np.concatenate([samples[:left],samples[right:]])
  if name=='amaterasu':
   voiced=np.flatnonzero(np.max(np.abs(samples),axis=1)>.001)
   samples=samples[:min(len(samples),voiced[-1]+1+round(.05*sr))]
@@ -140,5 +145,5 @@ ff('-i',root/'artifacts/trailer/raw/battle/audio.wav','-af','atrim=start=4.1:dur
 place_pcm(work/'game-clip.wav',work/'game.wav',2.7)
 inputs=['-i',picture,'-i',work/'voices.wav','-i',work/'piano.wav','-i',work/'orchestra.wav','-i',work/'accents.wav','-i',work/'game.wav']
 graph='[2:a][3:a]amix=inputs=2:normalize=0[music];[1:a]asplit[voice][side];[music][side]sidechaincompress=threshold=0.025:ratio=5:attack=15:release=160[duck];[duck][voice][4:a][5:a]amix=inputs=4:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=8,afade=t=out:st=14.9:d=0.1[a]'
-target=out/('stillveil-heisei-cm-v6-720p.mp4' if args.preview else 'stillveil-heisei-cm-v6-1080p.mp4');ff(*inputs,'-filter_complex',graph,'-map','0:v','-map','[a]','-c:v','copy','-c:a','aac','-b:a','192k','-ar',48000,'-ac',2,'-t',15,'-movflags','+faststart',target)
+target=out/('stillveil-heisei-cm-v7-720p.mp4' if args.preview else 'stillveil-heisei-cm-v7-1080p.mp4');ff(*inputs,'-filter_complex',graph,'-map','0:v','-map','[a]','-c:v','copy','-c:a','aac','-b:a','192k','-ar',48000,'-ac',2,'-t',15,'-movflags','+faststart',target)
 print('Finished',target,flush=True)
