@@ -1076,5 +1076,10 @@
   "夜明けを閉じ込めた水門を開く。": "You open the sluice that holds back dawn.",
   "リゼットが最後の道で待つ。": "Lisette waits on the final path.",
   "弔鐘の剣姫を越え、街の朝を解き放つ。": "You face the swordswoman of the mourning bell and release the city’s morning.",
-  "。": "."
+  "。": ".",
+  "戦闘加速": "Battle Acceleration",
+  "加速：敵味方の攻撃 +{0}%": "Acceleration: both sides ATK +{0}%",
+  "毎ターン+5%・Wave切替でリセット": "+5% each turn · resets each wave",
+  "加速で敵も味方も強くなる": "Acceleration strengthens both sides",
+  "各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。": "From turn two of each wave, everyone gains 5% ATK per turn. This resets each wave. Healing does not increase."
 }

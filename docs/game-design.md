@@ -719,3 +719,5 @@ SR2体・R2体を追加し、コレクション全体をSSR2・SR3・R3の8体�
 状態異常の混乱・睡眠・麻痺・魅了の仕様と対策は [status-ailments.md](status-ailments.md) を参照。
 
 通常探索の章立て、順次解放と章末ボスの仕様は [campaign-chapters.md](campaign-chapters.md) を参照。
+
+敵味方共通でターン経過に応じて攻撃が上昇するパッシブスキルは [battle-acceleration.md](battle-acceleration.md) を参照。
