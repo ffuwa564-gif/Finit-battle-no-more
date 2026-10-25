@@ -69,8 +69,9 @@ export function validateContent(content: Content): string[] {
     if (char.encounterArtId !== undefined) reject(!assetIds.has(char.encounterArtId) || content.assets.find(asset => asset.id === char.encounterArtId)?.kind !== 'background', `characters/${char.id}: invalid encounter scene`);
     reject(!profiles.has(char.soundProfile), `characters/${char.id}: unknown sound profile`);
     reject(!['R', 'SR', 'SSR'].includes(char.rarity), `characters/${char.id}: invalid rarity`);
-    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening', 'gold_exchange'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
+    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening', 'gold_exchange', 'trial'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
     reject(char.origin.includes('awakening') && (char.origin.length !== 1 || !content.awakenings?.some(def => def.awakenedId === char.id)), `characters/${char.id}: awakening-exclusive form required`);
+    reject(char.origin.includes('trial') && (char.origin.length !== 1 || char.rarity !== 'SSR' || !content.dungeons.some(stage => stage.kind === 'trial' && stage.waves.some(wave => wave.some(enemy => enemy.characterId === char.id)))), `characters/${char.id}: exclusive trial boss required`);
     reject(char.origin.includes('event') && char.origin.length !== 1, `characters/${char.id}: event-exclusive acquisition required`);
     reject(char.origin.includes('gacha') && (char.origin.includes('recruit') || char.origin.includes('initial')), `characters/${char.id}: gacha-exclusive character has another route`);
     reject(!char.published && char.origin.includes('initial'), `characters/${char.id}: unpublished initial acquisition`);
@@ -139,17 +140,21 @@ export function validateContent(content: Content): string[] {
     reject(!finale?.bossScale || !finale.waves.at(-1)?.[0]?.boss, `chapters/${chapter.id}: scaled finale boss required`);
   }
   for (const dungeon of content.dungeons) {
-    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || dungeon.kind !== 'trial' || !dungeon.bossStrike, `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
+    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || dungeon.kind !== 'trial' || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
     if (dungeon.chapterId) reject(!chapterIds.has(dungeon.chapterId) || !campaignStages.has(dungeon.id), `dungeons/${dungeon.id}: unknown chapter`);
     reject(dungeon.kind !== undefined && !['normal', 'event', 'trial'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.kind === 'trial') {
       reject(Boolean(dungeon.eventId || dungeon.eventReward || dungeon.bossLoot || dungeon.rareEncounter || dungeon.bossBits || dungeon.storyId), `dungeons/${dungeon.id}: trials cannot carry loot or special encounters`);
-      reject(dungeon.waves.length < 2 || dungeon.waves.some(wave => wave.length !== 1 || !wave[0]?.boss || !content.characters.some(char => char.id === wave[0]!.characterId && char.published && char.origin.includes('gacha') && char.rarity === 'SSR')), `dungeons/${dungeon.id}: trials require sequential SSR goddess bosses`);
+      reject(dungeon.waves.length < (dungeon.bossClock ? 1 : 2) || dungeon.waves.some(wave => wave.length !== 1 || !wave[0]?.boss || !content.characters.some(char => char.id === wave[0]!.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR')), `dungeons/${dungeon.id}: trials require sequential SSR goddess bosses`);
     }
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
     if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
     if (dungeon.bossStrike) { const strike = dungeon.bossStrike; reject(!(dungeon.kind === 'trial' && dungeon.tacticalCommands === true) && (!dungeon.chapterId || !chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id)) || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`); }
+    if (dungeon.bossClock) {
+      const clock = dungeon.bossClock;
+      reject(dungeon.kind !== 'trial' || dungeon.waves.length !== 1 || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
+    }
     if (dungeon.bossBits) {
       const bits = dungeon.bossBits;
       reject(!dungeon.eventId || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
@@ -164,7 +169,7 @@ export function validateContent(content: Content): string[] {
       for (const enemy of wave) {
         const char = content.characters.find(item => item.id === enemy.characterId);
         reject(!characterIds.has(enemy.characterId), `dungeons/${dungeon.id}: missing enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.published || !((dungeon.kind === 'trial' && char.rarity === 'SSR' && char.origin.includes('gacha')) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
+        if (dungeon.published && char) reject(!char.published || !((dungeon.kind === 'trial' && char.rarity === 'SSR' && (char.origin.includes('gacha') || char.origin.includes('trial'))) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
         if (dungeon.published && char) reject(!char.encounterArtId && dungeon.kind !== 'trial', `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
         reject(Boolean(enemy.boss) && dungeon.kind !== 'trial' && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }

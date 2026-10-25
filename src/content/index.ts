@@ -1,5 +1,5 @@
 import { goldExchanges, goldExchangeArt } from './gold-exchanges';
-import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, trialDialogues } from './trials';
+import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, trialDialogues } from './trials';
 import { rareEnemyArt, rareEnemySpecies, rareEnemyMaterials, rareEncounterFor } from './rare-encounters';
 import { skillNames, skillTemplates, skillSoundProfiles } from '../domain/skill-info';
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
@@ -81,6 +81,7 @@ const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<Ch
   persephone: { secondary: 'sleep', leader: 'lifesteal' },
   hestia: { secondary: 'barrier', leader: 'bulwark' },
   hebe: { secondary: 'mend_pair', leader: 'regeneration' },
+  chrona: { secondary: 'attack', leader: 'bulwark' },
   fortuna: { secondary: 'barrier', leader: 'bulwark' },
   hecate: { secondary: 'dispel', leader: 'bulwark' }, freyja: { secondary: 'drain', leader: 'lifesteal' }, benzaiten: { secondary: 'mend_pair', leader: 'regeneration' },
   'seoritsu-standard': { secondary: 'cleanse', leader: 'regeneration' }, 'wakahirume-standard': { secondary: 'regen', leader: 'resonance' }, 'ukanomitama-standard': { secondary: 'barrier', leader: 'bulwark' },
@@ -171,6 +172,7 @@ const characters: CharacterDef[] = [
   { ...character({ id: 'lucielle', name: 'リュシエル', epithet: '銀灯に迷う訪問者', role: 'supporter', speciesId: 'silverwing', strength: 14, origin: ['recruit'], rarity: 'SR', flavor: '灯りを失った回廊に、ごく稀に現れる銀髪の旅人。銀灯に集まる蛾は、帰り道を忘れた願いだという。「あなたの朝まで、少しだけ一緒に歩いてもいい？」手渡される小さな灯芯には、まだ温かな鈴の音が眠っている。', encounterLoot: { gold: 30, guaranteed: [{ materialId: 'silverwing:common', count: 3 }, { materialId: 'silverwing:rare', count: 1 }] } }), encounterArtId: 'encounter-lucielle' },
   { ...character({ id: 'nemuria', name: 'ネムリア', epithet: '夢蛾を連れる夜の客人', role: 'debuffer', speciesId: 'nightmoth', strength: 18, origin: ['recruit'], rarity: 'SR', flavor: '忘れられた庭を渡り歩く、眠たげな夜の客人。瓶にしまうのは誰にも話せなかった夢。夢蛾が翅を閉じると、敵意さえ静かな眠りへほどけてゆく。彼女が差す傘の下だけ、雨は遠い日の子守歌に聞こえる。', encounterLoot: { gold: 45, guaranteed: [{ materialId: 'nightmoth:common', count: 3 }, { materialId: 'nightmoth:rare', count: 1 }] } }), encounterArtId: 'encounter-nemuria' },
 
+  character({ id: 'chrona', name: 'クローナ', epithet: '凍暁の機巧聖女', role: 'area_attacker', speciesId: 'clockwork', strength: 24, origin: ['trial'], rarity: 'SSR', flavor: '夜明けを失うことを恐れ、時計塔ごと時を閉ざした機巧の聖女。壊れた針を何度も繕う銀の指先は、もう誰のための祈りかも覚えていない。それでも歯車の奥では、小さな振り子が朝を待っている。「進むことが、失うこととは限らないのなら」砕けた時計盤の向こうに、初めて彼女自身の空が見える。' }),
   character({ id: 'fortuna', name: 'フォルトゥナ', epithet: '朽ちた金貨に宿る祈り', role: 'supporter', speciesId: 'pilgrim', strength: 23, origin: ['gold_exchange'], rarity: 'SSR', flavor: '貨幣を打つ音の絶えた造幣堂で、運命の輪を見守る女神。彼女が量るのは金貨の輝きではなく、一枚を持ち帰るまでに歩いた道のりだという。擦り切れた財布を差し出す旅人に、静かに微笑む。「幸運は、あなたがここまで運んできたものよ」古びた輪が動き出すとき、積み重ねた祈りは仲間を包む金色の守りになる。' }),
   character({ id: 'hecate', name: 'ヘカテ', epithet: '三叉路に灯す蒼火', role: 'debuffer', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '三つの道が交わる廃都の片隅で、蒼い灯火を絶やさない女神。腰の鍵は閉ざされた門ではなく、迷った心の出口を開くためのもの。敵の祝福を静かにほどき、旅人が自分で道を選ぶまで、少し離れて見守っている。' }),
   character({ id: 'freyja', name: 'フレイヤ', epithet: '琥珀に眠る鷹の歌', role: 'attacker', speciesId: 'pilgrim', strength: 23, origin: ['gacha'], rarity: 'SSR', flavor: '鷹羽の外套と琥珀の首飾りを纏い、二匹の猫と忘れられた北の庭を巡る女神。美しいものを愛するからこそ、失われる痛みを知っている。「帰る場所なら、これから一緒につくればいい」傷を引き受けた手は、次の一撃でも揺らがない。' }),
@@ -183,6 +185,7 @@ const characters: CharacterDef[] = [
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
 // Portrait crops follow each painting rather than assuming all story art shares a face position.
 const companionPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = {
+  chrona: { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' },
   lucielle: { anchor: '50% 0%', zoom: 2, origin: '50% 0%' },
   nemuria: { anchor: '50% 0%', zoom: 2, origin: '50% 0%' },
   lunette: { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' },
@@ -203,13 +206,13 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const humanScene = ['hollow', 'veil', 'thorn'].includes(char.speciesId);
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
-  const goddess = char.origin.includes('event') ? `event-${char.id}` : rareEnemyArt[char.id] ?? goldExchangeArt[char.id] ?? goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
+  const goddess = char.origin.includes('event') ? `event-${char.id}` : rareEnemyArt[char.id] ?? (char.origin.includes('trial') ? `trial-${char.id}` : undefined) ?? goldExchangeArt[char.id] ?? goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
   // These original paintings place faces lower than the awakened story artwork.
   const initialFace = char.origin.includes('initial') ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
   const standardFace = ([...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
   const framing = standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.id === 'nox' ? 1440 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.id === 'nox' ? 1920 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}) };
+  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id]) || char.origin.includes('trial')) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.id === 'nox' ? 1440 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.id === 'nox' ? 1920 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}) };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, ...(char.id === 'lunette-awakened' ? lunettePortraitLoopPoster : {}), id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },
@@ -233,7 +236,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial];
+const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: rareEnemyArt[char.id] ? `art/${rareEnemyArt[char.id]}.png` : char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}),
