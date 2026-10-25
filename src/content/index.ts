@@ -39,6 +39,10 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
   24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
 };
 const skills: SkillDef[] = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
+skills.push(
+  { id: skillFor('attack', 36), name: '星律の断罪', template: 'attack', strength: 36, soundProfile: skillSoundProfiles.attack },
+  { id: skillFor('pierce', 36), name: '終天の一閃', template: 'pierce', strength: 36, soundProfile: skillSoundProfiles.pierce },
+);
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; dialogue?: CharacterDef['dialogue']; encounterLoot?: CharacterDef['encounterLoot']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
@@ -60,6 +64,7 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
 };
 const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<CharacterDef['leaderEffect']> }> = {
   nox: { secondary: 'pierce', leader: 'finisher' },
+  astraea: { secondary: 'pierce', leader: 'finisher' },
   'artemis-standard': { secondary: 'pierce', leader: 'finisher' },
   'persephone-standard': { secondary: 'regen', leader: 'lifesteal' },
   'hestia-standard': { secondary: 'barrier', leader: 'bulwark' },
@@ -182,6 +187,7 @@ const characters: CharacterDef[] = [
   character({ id: 'seoritsu-standard', familyId: 'seoritsu', name: 'セオリツヒメ', epithet: '清流を渡る旅衣', role: 'healer', speciesId: 'veil', strength: 16, origin: ['gacha'], rarity: 'SR', flavor: '長い水色の髪を夜風にほどき、滝から滝へ祈りを運ぶ女神。簡素な旅衣と銀の水鉢だけを携え、立ち止まる仲間の不調を洗い流す。橋の向こうに何が待つかは語らず、渡り終えるまで隣を歩いてくれる。' }),
   character({ id: 'wakahirume-standard', familyId: 'wakahirume', name: 'ワカヒルメ', epithet: '朝糸を結ぶ旅人', role: 'supporter', speciesId: 'pilgrim', strength: 17, origin: ['gacha'], rarity: 'SR', flavor: '織りかけの朝を小さな糸巻きに収め、廃都を歩く女神。いつもの生成りの旅衣には、仲間が直してくれた縫い目がいくつも残る。ほどけた糸を結ぶ仕草は、急がなくても旅を続けてよいと教えてくれる。' }),
   character({ id: 'ukanomitama-standard', familyId: 'ukanomitama', name: 'ウカノミタマ', epithet: '実りを分ける旅支度', role: 'supporter', speciesId: 'pilgrim', strength: 13, origin: ['gacha'], rarity: 'R', flavor: '稲穂と小さな升を抱え、白狐と里の跡を巡る女神。普段の旅衣は土の色に近く、畦道に座っても気にしない。残った実りを等しく分け、仲間の背に薄い守りを添えてから、自分の分をそっと取り分ける。' }),
+  character({ id: 'astraea', name: 'アストレア', epithet: '終天を裁く星冠', role: 'attacker', speciesId: 'moon', strength: 36, origin: ['xr_gacha'], rarity: 'XR', flavor: '砕けた星座の王冠を戴き、夜の果てを見守る女神。銀の髪に降り積もるのは、帰らなかった祈りの残光。星剣が告げる裁きに慈悲はない。それでも、最後の一人が朝へ辿り着くまで、彼女は決して空を閉ざさない。' }),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
@@ -208,13 +214,13 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const humanScene = ['hollow', 'veil', 'thorn'].includes(char.speciesId);
   const wolf = char.id === 'pale-wolf';
   const landscape = wolf || char.id === 'stone-drake' || char.id === 'moon-moth';
-  const goddess = char.origin.includes('event') ? `event-${char.id}` : rareEnemyArt[char.id] ?? (char.origin.includes('trial') ? `trial-${char.id}` : undefined) ?? goldExchangeArt[char.id] ?? goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
+  const goddess = char.origin.includes('xr_gacha') ? `xr-${char.id}` : char.origin.includes('event') ? `event-${char.id}` : rareEnemyArt[char.id] ?? (char.origin.includes('trial') ? `trial-${char.id}` : undefined) ?? goldExchangeArt[char.id] ?? goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
   // These original paintings place faces lower than the awakened story artwork.
   const initialFace = char.origin.includes('initial') ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
   const standardFace = ([...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
-  const framing = standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
+  const framing = (char.origin.includes('xr_gacha') ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined) ?? standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id]) || char.origin.includes('trial')) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.id === 'nox' ? 1440 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.id === 'nox' ? 1920 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}) };
+  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id]) || char.origin.includes('trial')) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.id === 'astraea' ? 1280 : char.id === 'nox' ? 1440 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.id === 'astraea' || char.id === 'nox' ? 1920 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}) };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, ...(char.id === 'lunette-awakened' ? lunettePortraitLoopPoster : {}), id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },

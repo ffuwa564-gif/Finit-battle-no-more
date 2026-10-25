@@ -6,6 +6,8 @@ test('XR is a locked separate summon with zero unobtainable premium stones in th
   await page.goto('/#gacha'); await enterGame(page);
   const premium = page.getByRole('region', { name: '星晶の祈願', exact: true });
   await expect(premium).toContainText('XR'); await expect(premium).toContainText('第10章');
+  await expect(premium.getByRole('heading', { name: 'アストレア', exact: true })).toBeVisible();
+  await expect(premium).toContainText('現在は入手できません');
   await expect(premium).toContainText('0.1%'); await expect(premium).toContainText('入手方法はまだありません');
   await expect(premium.locator('.xr-gacha__balance')).toContainText('星晶石 0');
   await expect(premium.getByRole('button', { name: '星晶石1個で祈願する', exact: true })).toBeDisabled();
@@ -42,18 +44,14 @@ test('legacy saves without premium fields still display a zero balance', async (
   await expect(page.locator('.xr-gacha__balance')).toContainText('星晶石 0');
 });
 
-test('XR has a distinct higher-rarity frame without adding a production XR character', async ({ page }) => {
+test('Astraea has the real XR frame and original art while recruitment remains locked', async ({ page }) => {
   await page.goto('/'); await enterGame(page);
-  await page.evaluate(async () => {
-    const { content } = await import('/src/content/index.ts');
-    const source = content.characters.find(character => character.id === 'nox')!;
-    content.characters.push({ ...source, id: 'test-xr-frame', name: 'XR frame fixture', familyId: 'test-xr-frame', rarity: 'XR', strength: 40, origin: ['xr_gacha'], motionId: undefined, portraitMotionId: undefined });
-  });
   await page.goto('/#preview');
-  const card = page.locator('.character-card').filter({ has: page.getByRole('heading', { name: 'XR frame fixture', exact: true }) });
+  const card = page.locator('.character-card').filter({ has: page.getByRole('heading', { name: 'アストレア', exact: true }) });
   await card.scrollIntoViewIfNeeded();
   await expect(card.locator('.character-portrait')).toHaveAttribute('data-rarity', 'XR');
   await expect(card.locator('.rarity-badge--XR')).toHaveText('XR');
   await expect(card.locator('.rarity-frame--XR')).toHaveCSS('border-top-width', '3px');
   await expect(card.locator('.rarity-frame--XR')).toHaveCSS('border-top-color', 'rgb(156, 225, 238)');
+  await expect(card.locator('img')).toHaveAttribute('src', /xr-astraea.png$/);
 });
