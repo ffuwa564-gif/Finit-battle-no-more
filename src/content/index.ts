@@ -153,8 +153,8 @@ const characters: CharacterDef[] = [
   character({"id": "nike-standard", "familyId": "nike", "name": "ニケ", "epithet": "若葉の誓い", "role": "attacker", "speciesId": "pilgrim", "strength": 14, "origin": ["gacha"], "rarity": "R", "flavor": "青緑の三つ編みに月桂の葉を留めた女神。白い旅衣に軽い鎧を重ね、剣の手入れを欠かさない。勝ち急ぐより全員で帰ることを選び、頑丈な障壁を砕いて仲間の進む道を開く。"}),
   character({"id": "rainbow-iris-standard", "familyId": "rainbow-iris", "name": "イリス", "epithet": "雨上がりの便り", "role": "supporter", "speciesId": "moon", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "紫の髪と小さな郵便鞄が目印の女神。薄紫の旅衣で廃都を渡り、途絶えた手紙を届けている。空に虹がかかると少しだけ足が速くなる。敵の強化をほどき、味方へ希望の便りを運ぶ。"}),
   character({"id": "toyotama-standard", "familyId": "toyotama", "name": "トヨタマヒメ", "epithet": "凪を運ぶ旅衣", "role": "healer", "speciesId": "veil", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "藍色の長い髪に真珠を一粒飾った女神。穏やかな海色の衣で浜辺を歩き、貝の器に澄んだ水をすくう。波のような癒しと薄い水の障壁で、旅人たちが次の岸へ進むのを支える。"}),
-  character({"id": "lunette", "familyId": "lunette", "motionId": "lunette-motion", "name": "ルネット", "epithet": "時計庭のうさぎ姫", "role": "area_attacker", "speciesId": "clockwork", "strength": 20, "origin": ["event"], "rarity": "SSR", "flavor": "忘れられた時計庭に住む、小柄な発明家の少女。得意げな言葉とは裏腹に、壊れたうさぎを放っておけない。手製の機械うさぎに囲まれ、訪れた旅人を遊び相手に誘う。誰かと帰る約束を、ずっと待っていた。"}),
-  character({"id": "lunette-awakened", "familyId": "lunette", "motionId": "lunette-awakened-motion", "name": "星時計・ルネット", "epithet": "夜明けを刻むうさぎ隊", "role": "area_attacker", "speciesId": "clockwork", "strength": 24, "origin": ["event"], "rarity": "SSR", "flavor": "大時計の奥で眠っていた星のぜんまいが、少女とうさぎたちの願いに応える。紺と白の旅装に星の歯車を飾り、今度は誰かを置いていかないと誓った。生意気な笑い声も、仲間の足音を確かめるための合図になった。"}),
+  character({"id": "lunette", "familyId": "lunette", "name": "ルネット", "epithet": "時計庭のうさぎ姫", "role": "area_attacker", "speciesId": "clockwork", "strength": 20, "origin": ["event"], "rarity": "SSR", "flavor": "忘れられた時計庭に住む、小柄な発明家の少女。得意げな言葉とは裏腹に、壊れたうさぎを放っておけない。手製の機械うさぎに囲まれ、訪れた旅人を遊び相手に誘う。誰かと帰る約束を、ずっと待っていた。"}),
+  character({"id": "lunette-awakened", "familyId": "lunette", "name": "星時計・ルネット", "epithet": "夜明けを刻むうさぎ隊", "role": "area_attacker", "speciesId": "clockwork", "strength": 24, "origin": ["event"], "rarity": "SSR", "flavor": "大時計の奥で眠っていた星のぜんまいが、少女とうさぎたちの願いに応える。紺と白の旅装に星の歯車を飾り、今度は誰かを置いていかないと誓った。生意気な笑い声も、仲間の足音を確かめるための合図になった。"}),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
@@ -215,8 +215,6 @@ const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portrait
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
 }));
 const menuAssets: AssetDef[] = [
-  { id: 'lunette-motion', path: 'video/lunette.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Lunette clockwork illustration animated with Runway; task ef1010c6-3487-46f6-979c-79381bec9c83.' },
-  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project awakened Lunette clockwork illustration animated with Runway; task 3f0e60a1-b92b-4a36-82f0-54aad04c7be0.' },
   { id: 'gacha-selene-motion', path: 'video/gacha-selene-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Selene kimono illustration animated with Runway; task cdf471e0-c6d0-4ff6-871e-854922b3beac.' },
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },
   { id: 'seris-awakened-motion', path: 'video/seris-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Seris dawn illustration animated with Runway; task 5e312a67-100d-448a-afa6-b2b00b7a8bb7.' },
