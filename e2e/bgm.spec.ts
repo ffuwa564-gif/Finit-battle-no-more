@@ -39,6 +39,7 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await page.getByRole('button', { name: '撤退', exact: true }).click();
   await page.getByRole('button', { name: '撤退する', exact: true }).click();
   await page.getByRole('button', { name: '街へ戻る', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
   await expect(music).toHaveAttribute('data-scene', 'home');
   await page.goto('/#settings');
   await enterGame(page);

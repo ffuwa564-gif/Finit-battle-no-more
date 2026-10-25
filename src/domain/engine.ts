@@ -1,6 +1,7 @@
+import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
 import { duplicateFamily } from './events';
-import type { Battle, BattleEvent, CharacterDef, Content, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
+import type { Ailment, Battle, BattleEvent, CharacterDef, Content, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
 
 const BASE: Record<CharacterDef['role'], Stats> = {
   healer: { hp: 100, attack: 25, defense: 14, speed: 12 },
@@ -80,6 +81,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
 function clearEffects(unit: Unit): void {
+  delete unit.ailments; delete unit.statusWardUntil;
   delete unit.bits;
   delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength;
   delete unit.buffUntil; delete unit.buffStrength; delete unit.debuffUntil; delete unit.debuffStrength;
@@ -130,7 +132,8 @@ function clearInvalidGuards(battle: Battle): void {
   }
 }
 function chooseTarget(enemies: Unit[], strategy: Strategy, content: Content): Unit {
-  return [...enemies].sort((a, b) => {
+  const awake = enemies.filter(unit => !unit.ailments?.sleep);
+  return [...(awake.length ? awake : enemies)].sort((a, b) => {
     if (strategy === 'aggressive') return b.attack - a.attack || byId(a, b);
     if (strategy === 'survival') {
       const role = Number(character(content, b.characterId).role === 'healer') - Number(character(content, a.characterId).role === 'healer');
@@ -146,7 +149,43 @@ function skillList(actor: Unit, content: Content, round: number): SkillDef[] {
     return skill;
   }).filter((skill) => (actor.cooldowns[skill.id] ?? 0) <= round).sort((a, b) => b.strength - a.strength || a.id.localeCompare(b.id));
 }
-interface Action { skill?: SkillDef; template: SkillTemplate; targets: Unit[] }
+interface Action { skill?: SkillDef; template: SkillTemplate; targets: Unit[]; forcedBy?: Ailment }
+function emitRecovery(battle: Battle, unit: Unit, id: Ailment, content: Content): void {
+  emit(battle, { kind: 'buff', statusAction: 'recover', ailment: id, actorId: unit.uid, targetIds: [unit.uid], text: `${character(content, unit.characterId).name} — ${ailmentNames[id]}解除`, unitsAfter: clone(battle.units) });
+}
+function emitCures(battle: Battle, before: Unit[], content: Content, actorId: string): void {
+  for (const old of before.filter(unit => unit.uid !== actorId)) {
+    const unit = battle.units.find(item => item.uid === old.uid)!;
+    if (unit.hp > 0) for (const id of ailments) if (old.ailments?.[id] && !unit.ailments?.[id]) emitRecovery(battle, unit, id, content);
+  }
+}
+function ageAilments(unit: Unit, round: number): Ailment[] {
+  const recovered: Ailment[] = [];
+  for (const id of ailments) {
+    const state = unit.ailments?.[id];
+    if (state && --state.turns <= 0) { delete unit.ailments![id]; unit.statusWardUntil = round + 1; recovered.push(id); }
+  }
+  if (!hasAilment(unit)) delete unit.ailments;
+  return recovered;
+}
+function controlledAction(actor: Unit, battle: Battle, content: Content): { skip?: boolean; ailment?: Ailment; action?: Action } {
+  if (actor.ailments?.charm && !battle.units.some(unit => unit.uid === actor.ailments!.charm!.sourceId && unit.hp > 0)) {
+    delete actor.ailments.charm; actor.statusWardUntil = battle.round + 1; emitRecovery(battle, actor, 'charm', content);
+  }
+  if (actor.ailments?.sleep) return { skip: true, ailment: 'sleep' };
+  if (actor.ailments?.paralysis) {
+    const roll = rng(battle.seed); battle.seed = roll.seed;
+    if (roll.value < .4) return { skip: true, ailment: 'paralysis' };
+  }
+  const forcedBy = actor.ailments?.charm ? 'charm' : actor.ailments?.confusion ? 'confusion' : undefined;
+  if (!forcedBy) return {};
+  let side = actor.side;
+  if (forcedBy === 'confusion') { const roll = rng(battle.seed); battle.seed = roll.seed; side = roll.value < .5 ? actor.side : actor.side === 'party' ? 'enemy' : 'party'; }
+  const targets = alive(battle.units, side).filter(unit => forcedBy !== 'charm' || unit.uid !== actor.uid).sort(byId);
+  if (!targets.length) return { skip: true, ailment: forcedBy };
+  const roll = rng(battle.seed); battle.seed = roll.seed;
+  return { action: { template: 'attack', targets: [targets[Math.floor(roll.value * targets.length)]!], forcedBy } };
+}
 function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const allies = alive(battle.units, actor.side);
   const enemies = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
@@ -160,12 +199,12 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
     const skill = get('heal');
     if (skill && target && target.hp / target.maxHp <= threshold && target.hp < target.maxHp) return { skill, template: 'heal', targets: [target] };
   }
+  const cleanse = get('cleanse');
+  const afflicted = allies.filter(unit => hasAilment(unit) || (unit.debuffUntil ?? -1) >= battle.round).sort((a,b) => Number(hasAilment(b)) - Number(hasAilment(a)) || lowerHP(a,b))[0];
+  if (cleanse && afflicted) return { skill: cleanse, template: 'cleanse', targets: [afflicted] };
   const pair = get('mend_pair');
   const wounded = allies.filter(unit => unit.hp < unit.maxHp * (strategy === 'aggressive' ? .65 : strategy === 'survival' ? .95 : .85)).sort(lowerHP).slice(0, 2);
   if (pair && wounded.length === 2) return { skill: pair, template: 'mend_pair', targets: wounded };
-  const cleanse = get('cleanse');
-  const afflicted = allies.filter(unit => (unit.debuffUntil ?? -1) >= battle.round).sort(lowerHP)[0];
-  if (cleanse && afflicted) return { skill: cleanse, template: 'cleanse', targets: [afflicted] };
   if (role === 'tank') {
     const target = allies.filter((unit) => unit.uid !== actor.uid && !allies.some((guard) => guard.uid !== actor.uid && guard.guardTarget === unit.uid && (guard.guardUntil ?? -1) >= battle.round)).sort(lowerHP)[0];
     const skill = get('guard');
@@ -188,6 +227,9 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const shatter = get('shatter');
   const shielded = enemies.filter(unit => (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort((a,b) => (b.barrier ?? 0) - (a.barrier ?? 0) || byId(a,b))[0];
   if (shatter && shielded) return { skill: shatter, template: 'shatter', targets: [shielded] };
+  const control = skills.find(skill => isAilment(skill.template));
+  const susceptible = enemies.filter(unit => !hasAilment(unit) && (unit.statusWardUntil ?? -1) < battle.round).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
+  if (control && susceptible) return { skill: control, template: control.template, targets: [susceptible] };
   if (role === 'debuffer') {
     const target = enemies.filter((unit) => (unit.debuffUntil ?? -1) < battle.round).sort((a, b) => b.hp - a.hp || byId(a, b))[0];
     const skill = get('debuff');
@@ -217,15 +259,18 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const powerNumerator = effectiveAttack(actor, battle.round) * numerator * resonance * (dawning && (recipient.debuffUntil ?? -1) >= battle.round ? 125 : 100);
   const powerDenominator = denominator * 100 * 100;
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - effectiveDefense(recipient, battle.round) * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
-  if (actor.side === 'party' && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
+  if (actor.side === 'party' && recipient.side !== actor.side && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
   if (guard) amount = Math.max(1, Math.floor(amount * (370 - (guard.guardStrength ?? 10)) / 400));
   if (recipient.side === 'party' && passive === 'bulwark') amount = Math.max(1, Math.floor(amount * 90 / 100));
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
+  if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
+  if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
   return { unit: recipient, amount: actual, absorbed, shattered };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
+  confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
@@ -250,9 +295,11 @@ function resolveBossBits(battle: Battle, content: Content): void {
       if (!targets.length) break;
       const roll = rng(battle.seed); battle.seed = roll.seed;
       const target = targets[Math.floor(roll.value * targets.length)]!;
+      const before = clone(battle.units);
       const hit = damage(boss, target, pattern.power, 100, battle, true, content);
       clearInvalidGuards(battle);
       emit(battle, { kind: 'attack', bitAction: 'fire', bitIndex: index, actorId: boss.uid, targetIds: [hit.unit.uid], amount: hit.amount, text: `うさぎビット${index + 1}号 — 自動射撃${hit.absorbed ? `（障壁が${hit.absorbed}軽減）` : ''}`, unitsAfter: clone(battle.units) });
+      emitCures(battle, before, content, boss.uid);
     }
     if (boss.bits.expiresRound === battle.round) {
       delete boss.bits;
@@ -267,6 +314,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
   for (const unit of battle.units) {
+    if ((unit.statusWardUntil ?? -1) < battle.round) delete unit.statusWardUntil;
     if ((unit.guardUntil ?? -1) < battle.round) { delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength; }
     if ((unit.buffUntil ?? -1) < battle.round) { delete unit.buffUntil; delete unit.buffStrength; }
     if ((unit.debuffUntil ?? -1) < battle.round) { delete unit.debuffUntil; delete unit.debuffStrength; }
@@ -278,11 +326,27 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     if (actor.hp <= 0) continue;
     if (!alive(battle.units, 'party').length || !alive(battle.units, 'enemy').length) break;
     const before = clone(battle.units);
-    const action = chooseAction(actor, battle, content);
+    const controlled = controlledAction(actor, battle, content);
+    if (controlled.skip) {
+      const recovered = ageAilments(actor, battle.round);
+      emit(battle, { kind: 'debuff', actorId: actor.uid, targetIds: [actor.uid], statusAction: 'skip', ailment: controlled.ailment, text: `${character(content, actor.characterId).name} — ${ailmentNames[controlled.ailment!]}で行動できない`, unitsAfter: clone(battle.units) });
+      for (const id of recovered) emitRecovery(battle, actor, id, content);
+      continue;
+    }
+    const action = controlled.action ?? chooseAction(actor, battle, content);
     const name = character(content, actor.characterId).name;
-    const actionName = action.skill?.name ?? '通常攻撃';
+    const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.skill?.name ?? '通常攻撃';
+    let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
-    if (action.template === 'heal') {
+    if (isAilment(action.template)) {
+      const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
+      const success = (target.statusWardUntil ?? -1) < battle.round && !hasAilment(target) && roll.value * 100 < ailmentChance(target);
+      statusAction = success ? 'inflict' : 'resist'; targetIds.push(target.uid);
+      if (success) {
+        target.ailments ??= {}; target.ailments[action.template] = { turns: target.boss ? 1 : 2, sourceId: actor.uid };
+        delete target.guardTarget; delete target.guardUntil; delete target.guardStrength;
+      }
+    } else if (action.template === 'heal') {
       const target = action.targets[0]!;
       amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(effectiveAttack(actor, battle.round) * (action.skill!.strength + 30) / 20)));
       target.hp += amount; targetIds.push(target.uid);
@@ -300,7 +364,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     } else if (action.template === 'barrier') {
       const target = action.targets[0]!; target.barrier = Math.max(target.barrier ?? 0, Math.floor((target.maxHp * 12 + effectiveAttack(actor, battle.round) * 60) / 100)); target.barrierUntil = battle.round + 1; targetIds.push(target.uid);
     } else if (action.template === 'cleanse') {
-      const target = action.targets[0]!; delete target.debuffUntil; delete target.debuffStrength;
+      const target = action.targets[0]!; delete target.debuffUntil; delete target.debuffStrength; cureAilments(target, battle.round);
       amount = Math.min(target.maxHp - target.hp, Math.floor(effectiveAttack(actor, battle.round) * 60 / 100)); target.hp += amount; targetIds.push(target.uid);
     } else if (action.template === 'guard') {
       actor.guardTarget = action.targets[0]!.uid; actor.guardUntil = battle.round + 1; actor.guardStrength = action.skill!.strength; targetIds.push(actor.guardTarget);
@@ -320,8 +384,11 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     }
     if (action.skill) actor.cooldowns[action.skill.id] = battle.round + skillCooldown(action.template);
     clearInvalidGuards(battle);
-    emit(battle, { kind: eventKind[action.template], text: `${name} — ${actionName}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
-    if (actor.side === 'party' && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && amount > 0 && leaderEffect(battle, content) === 'lifesteal') {
+    const recovered = ageAilments(actor, battle.round);
+    emit(battle, { kind: eventKind[action.template], statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    for (const id of recovered) emitRecovery(battle, actor, id, content);
+    emitCures(battle, before, content, actor.uid);
+    if (action.targets.some(target => target.side !== actor.side) && actor.side === 'party' && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && amount > 0 && leaderEffect(battle, content) === 'lifesteal') {
       const healed = Math.min(actor.maxHp - actor.hp, Math.floor(amount * 8 / 100));
       if (healed > 0) { actor.hp += healed; emit(battle, { kind: 'heal', text: `${name} — 黄泉の契り`, actorId: actor.uid, targetIds: [actor.uid], amount: healed, unitsAfter: clone(battle.units) }); }
     }

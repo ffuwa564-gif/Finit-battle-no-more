@@ -1,0 +1,194 @@
+[
+  {
+    "stage": "silent-cathedral",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 12.5,
+    "meanMissedActions": 0.2
+  },
+  {
+    "stage": "silent-cathedral",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 16.2,
+    "meanMissedActions": 0.6
+  },
+  {
+    "stage": "silent-cathedral",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 8.8,
+    "meanMissedActions": 0.8
+  },
+  {
+    "stage": "moon-garden",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 10.1,
+    "meanMissedActions": 3.65
+  },
+  {
+    "stage": "moon-garden",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 16.8,
+    "meanMissedActions": 8.2
+  },
+  {
+    "stage": "moon-garden",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 9.25,
+    "meanMissedActions": 6
+  },
+  {
+    "stage": "thorn-court",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 16.7,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "thorn-court",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 26.6,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "thorn-court",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 12.75,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "hollow-gate",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 29.65,
+    "meanMissedActions": 5.55
+  },
+  {
+    "stage": "hollow-gate",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 35.65,
+    "meanMissedActions": 8.55
+  },
+  {
+    "stage": "hollow-gate",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 17.7,
+    "meanMissedActions": 5.35
+  },
+  {
+    "stage": "kuzuha-beginner",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 5,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "kuzuha-beginner",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 7,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "kuzuha-beginner",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 4,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "kuzuha-awakening",
+    "team": "initial",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 42.6,
+    "meanMissedActions": 2.1
+  },
+  {
+    "stage": "kuzuha-awakening",
+    "team": "ordinary",
+    "wins": 4,
+    "seeds": 20,
+    "meanRounds": 54.25,
+    "meanMissedActions": 2.7
+  },
+  {
+    "stage": "kuzuha-awakening",
+    "team": "SSR",
+    "wins": 19,
+    "seeds": 20,
+    "meanRounds": 31.25,
+    "meanMissedActions": 3.35
+  },
+  {
+    "stage": "lunette-beginner",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 8,
+    "meanMissedActions": 0
+  },
+  {
+    "stage": "lunette-beginner",
+    "team": "ordinary",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 10,
+    "meanMissedActions": 0.75
+  },
+  {
+    "stage": "lunette-beginner",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 6.35,
+    "meanMissedActions": 0.35
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "initial",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 26.4,
+    "meanMissedActions": 1.55
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "ordinary",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 37.5,
+    "meanMissedActions": 2.6
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "SSR",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 24,
+    "meanMissedActions": 2.3
+  }
+]

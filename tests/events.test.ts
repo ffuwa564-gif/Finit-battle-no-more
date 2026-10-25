@@ -88,6 +88,7 @@ describe('event progression and durable rewards', () => {
   });
   it('forfeits provisional event materials on failure or retreat without losing confirmed progress', () => {
     const save = normalOwned(); save.materials[event.core.id] = 2;
+    save.partyIds = ['elaine']; save.leaderId = 'elaine';
     const failed = play(save, event.dungeonIds.at(-1)!);
     expect(failed.battle?.phase).toBe('failed');
     expect(failed.battle?.pendingMaterials).toEqual({});
