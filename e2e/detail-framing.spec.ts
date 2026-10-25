@@ -35,7 +35,7 @@ test('short landscape screens and desktop retain both portrait and landscape pai
  for(const viewport of [{width:667,height:375},{width:1280,height:900}]){
   await page.setViewportSize(viewport);await page.goto('/#codex');await enterGame(page);
   for(const name of ['コノハナサクヤヒメ','白霧の狼','石燐の幼竜','セレネ']){
-   const card=page.locator('.character-card').filter({has:page.getByRole('heading',{name,exact:true})});
+   const card=page.locator('.character-card').filter({has:page.getByRole('heading',{name,exact:true})}).first();
    await card.getByRole('button',{name:'物語を読む',exact:true}).click();
    await expectFullImage(page.getByRole('dialog').locator('.detail-art img'));
    await page.getByRole('dialog').getByRole('button',{name:'閉じる',exact:true}).click();

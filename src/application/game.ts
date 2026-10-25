@@ -2,7 +2,7 @@ import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
-import { initialGacha, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee } from '../content/gacha';
+import { initialGacha, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee, gachaPoolIds } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -15,7 +15,7 @@ function log(save: GameSave, text: string): void {
 }
 function validateParty(save: GameSave, ids: string[], leaderId: string, content: Content): void {
   if (ids.length < 1 || ids.length > 4 || new Set(ids).size !== ids.length || ids.some(id => !save.ownedIds.includes(id))) fail('編成は所持している異なる仲間1〜4体で指定してください。');
-  if (duplicateFamily(ids, content)) fail('同じ仲間の通常版と覚醒版は同時に編成できません。');
+  if (duplicateFamily(ids, content)) fail('同じ仲間の異なる姿は同時に編成できません。');
   if (!ids.includes(leaderId)) fail('リーダーを編成メンバーから1人選んでください。');
 }
 function ready(save: GameSave) {
@@ -195,7 +195,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
       const collection = gachaCollections.find(item => item.id === (command.collectionId ?? initialGacha.id));
       if (!collection) fail('選択した祈願が見つかりません。');
-      const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && collection!.characterIds.includes(item.id));
+      const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && gachaPoolIds(collection!).includes(item.id));
       if (!available.length) fail('召喚できるキャラクターがいません。');
       const pity = gachaPity(save);
       const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;

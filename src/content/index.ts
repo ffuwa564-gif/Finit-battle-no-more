@@ -3,7 +3,7 @@ import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, Skill
 import { dawnStory, dawnAwakenings, dawnMemories, dawnMaterials, dawnDungeons, storyEncounter } from './seris-story';
 import { stoneEvents } from './events';
 import { eventDungeons, kuzuhaEvent } from './boss-events';
-import { goddessArt, goddessPortraitFocus } from './gacha';
+import { goddessArt, goddessPortraitFocus, sharedGoddessIds } from './gacha';
 export { initialGacha } from './gacha';
 export { validateContent } from './validation';
 
@@ -49,6 +49,11 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'thorn-witch': { intro: '枯れた花にも、帰る場所はある。', threshold: '咲かせましょう……最後の、一輪を。', defeat: '庭のこと……ときどき、思い出して。' },
 };
 const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<CharacterDef['leaderEffect']> }> = {
+  'selene-standard': { secondary: 'regen', leader: 'regeneration' },
+  'athena-standard': { secondary: 'shatter', leader: 'bulwark' },
+  'flora-standard': { secondary: 'cleanse', leader: 'regeneration' },
+  'amaterasu-standard': { secondary: 'barrier', leader: 'resonance' },
+  'izanami-standard': { secondary: 'drain', leader: 'lifesteal' },
   lisette: { secondary: 'dispel', leader: 'finisher' },
   'elaine-awakened': { secondary: 'mend_pair', leader: 'regeneration' },
   'liora-awakened': { secondary: 'barrier', leader: 'bulwark' },
@@ -108,6 +113,11 @@ const characters: CharacterDef[] = [
   character({ id: 'lisette-awakened', familyId: 'lisette', name: 'リゼット', epithet: '朝を告げる弔鐘', role: 'debuffer', speciesId: 'pilgrim', strength: 22, origin: ['awakening'], rarity: 'SR', flavor: '弟子を夜に留める剣を下ろし、隣を歩く師。金で継いだ鐘は、弔いではなく朝の合図になる。' }),
   character({ id: 'seris-awakened', familyId: 'seris', motionId: 'seris-awakened-motion', name: 'セリス', epithet: '暁を返す剣', role: 'attacker', speciesId: 'pilgrim', strength: 27, origin: ['awakening'], rarity: 'SSR', flavor: '雨上がりの石畳を、彼女はもう懐かしそうには眺めない。その先へ、一緒に歩く人がいる。' }),
 
+  character({"id": "selene-standard", "familyId": "selene", "name": "セレネ", "epithet": "月明かりの導き手", "role": "healer", "speciesId": "moon", "strength": 19, "origin": ["gacha"], "rarity": "SR", "flavor": "月白の衣と銀の飾りを纏い、夜の道を照らす女神。花宴の振袖をしまった日も、仲間を気遣う眼差しは変わらない。静かな光を傷ついた者へ分け、休める場所までそっと導く。本作の世界で旅をするときの、彼女のいつもの姿。"}),
+  character({"id": "athena-standard", "familyId": "athena", "name": "アテナ", "epithet": "静謐の知恵", "role": "tank", "speciesId": "pilgrim", "strength": 18, "origin": ["gacha"], "rarity": "SR", "flavor": "白い衣に軽い銀の鎧を重ね、梟とともに廃都の地図を読む女神。花宴の華やかな装いとは違う、旅に馴染んだ身支度で仲間を迎える。敵の守りを見極め、一行が無理なく進める道を選ぶ。彼女にとって知恵は、誰かを守るためにある。"}),
+  character({"id": "flora-standard", "familyId": "flora", "name": "フローラ", "epithet": "朝庭の花守り", "role": "healer", "speciesId": "veil", "strength": 12, "origin": ["gacha"], "rarity": "R", "flavor": "生成りと若草色の素朴なドレスで、朝の庭を手入れする女神。晴れ着を着ない日には、小さな花籠を持って散歩に出る。誰かの傷や疲れに気づくと、その人に似合う野花を一輪選ぶ。華やかな宴の外にも、彼女の優しい仕事は続いている。"}),
+  character({"id": "amaterasu-standard", "familyId": "asteria", "name": "アマテラス", "epithet": "暁を照らす光", "role": "supporter", "speciesId": "moon", "strength": 17, "origin": ["gacha"], "rarity": "SR", "flavor": "白と朱の端正な衣に、小さな日輪の飾りを添えた女神。特別なレースの衣装を離れ、いつもの鏡で朝の光を仲間へ届ける。誰かを眩しく照らすより、進む道が見える明るさを大切にしている。本作の世界で描く、穏やかな旅姿。"}),
+  character({"id": "izanami-standard", "familyId": "evelyn", "name": "イザナミ", "epithet": "静かな境の守り手", "role": "debuffer", "speciesId": "thorn", "strength": 15, "origin": ["gacha"], "rarity": "R", "flavor": "墨色と生成りの長衣を纏い、静かな水辺に灯をともす女神。特別な黒いレースを脱いでも、旅人を見守る気持ちは変わらない。敵の勢いを鎮め、仲間が息を整える時間をつくる。本作の世界での穏やかな姿として、柔らかな表情と確かな威厳を描く。"}),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
@@ -129,9 +139,10 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const goddess = char.origin.includes('event') ? `event-${char.id}` : goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
   // These original paintings place faces lower than the awakened story artwork.
   const initialFace = char.origin.includes('initial') ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
-  const framing = initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
+  const standardFace = sharedGoddessIds.includes(char.id) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
+  const framing = standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.${['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || sharedGoddessIds.includes(char.id)) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },

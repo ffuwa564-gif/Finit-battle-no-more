@@ -41,10 +41,17 @@ export const flowerGacha: GachaCollection = {
   rates: { R: 80, SR: 17, SSR: 3 },
 };
 export const gachaCollections = [flowerGacha, initialGacha] as const;
+/** Base forms are available in every collection; costume IDs above stay collection-exclusive. */
+export const sharedGoddessIds: readonly string[] = ['selene-standard', 'athena-standard', 'flora-standard', 'amaterasu-standard', 'izanami-standard'];
+export function gachaPoolIds(collection: GachaCollection): readonly string[] {
+  return [...collection.characterIds, ...sharedGoddessIds];
+}
+
 export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolean {
   return save.drawCount + 1 === initialGacha.guaranteeDraw;
 }
 export const goddessArt: Record<string, string> = {
+  ...Object.fromEntries(sharedGoddessIds.map(id => [id, `gacha-${id}`])),
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
   toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',

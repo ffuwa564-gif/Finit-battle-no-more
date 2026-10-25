@@ -47,3 +47,17 @@
 .gacha-collections { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .gacha-collections .button { flex: 1 1 220px; white-space: normal; line-height: 1.6; padding: 12px; }
 .gacha-guarantee-status { font-weight: 600; color: #69533c; }
+
+.gacha-common-section { margin-top: 32px; }
+.gacha-common-section > .subtle { margin: 12px 0 18px; line-height: 1.8; }
+.goddess-forms { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.goddess-forms > .subtle { margin: 10px 0 16px; line-height: 1.8; }
+.goddess-forms__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.goddess-form.button { min-width: 0; justify-content: start; padding: 8px; text-align: left; }
+.goddess-form__portrait { width: 54px; height: 64px; flex-shrink: 0; border-radius: 7px; overflow: hidden; }
+.goddess-form > span:last-child { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.goddess-form small { font-size: 9px; }
+.goddess-form strong { font-size: 11px; font-weight: 500; white-space: normal; }
+@media(max-width:480px) { .goddess-forms__grid { grid-template-columns: minmax(0,1fr); } }
+
+.goddess-form__portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transform: scale(1.9); transform-origin: 50% 0%; }
