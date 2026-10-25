@@ -16,7 +16,7 @@ def text(value,size,x,y,color='FFF9E9',font=serif,center=False,border=2,enable=N
  t=f"drawtext=fontfile='{font}':textfile='{f}':fontsize={n(size)}:fontcolor=0x{color}:x={'(w-text_w)/2' if center else n(x)}:y={n(y)}:borderw={n(border)}:bordercolor=0x142035@0.85:shadowcolor=0x020815@0.8:shadowx={n(2)}:shadowy={n(4)}"
  return t+(f":enable='{enable}'" if enable else '')
 def sparkles():
- return ','.join(f"drawtext=fontfile='{sans}':text='✦':fontsize={n(12+(i%4)*5)}:fontcolor=0xEEDDB3:x={n((i*173+75)%1920)}:y='mod({n(i*89+35)}-t*{n(20+i*2)}+h*2,h)':alpha='0.16+0.18*sin(t*3+{i})'" for i in range(12))
+ return ','.join(f"drawtext=fontfile='{sans}':text='・':fontsize={n(12+(i%4)*5)}:fontcolor=0xEEDDB3:x={n((i*173+75)%1920)}:y='mod({n(i*89+35)}-t*{n(20+i*2)}+h*2,h)':alpha='0.16+0.18*sin(t*3+{i})'" for i in range(12))
 def encode(inputs,graph,label,duration,target):
  ff(*inputs,'-filter_complex',graph+f';{label}setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration=0.1[vout]','-map','[vout]','-frames:v',round(duration*30),'-t',duration,'-an','-c:v','libx264','-threads','4','-preset','fast','-crf','18','-pix_fmt','yuv420p',target)
 def hero(art,start,duration,target,copy,extra=None,game=None):
@@ -41,7 +41,7 @@ if not args.audio_only:
  # 0.0–2.8: new live-action opening. Preserve the generated woman's face and phone.
  f=work/'00-opening.mp4';chain=f'[0:v]scale={W}:{H},setsar=1,fps=30,eq=saturation=0.82:contrast=1.03,'+','.join([text('あの日、',64,150,390),text('忘れた約束を。',64,150,485),f"fade=t=out:st=2.66:d=0.14:color=white"] )+'[v]';encode(['-ss',1.85,'-i',src/'opening.mp4'],chain,'[v]',2.8,f);segments.append(f)
  shots=[
-  ('01-seris','seris-awakened.mp4',0.2,2.3,'約束は、まだ。','……迎えに来てくれたの？',False),
+  ('01-seris','seris-awakened.mp4',0.2,2.3,'約束は、まだ。','……来てくれたんだ。',False),
   ('02-battle','seris-awakened.mp4',2,1.5,'戦う。','指示ひとつで、戦況が変わる。',True),
   ('03-kuzuha','kuzuha-awakened.mp4',2,0.9,'出逢いが、',None,False),
   ('04-goddess','gacha-amaterasu.mp4',3,0.9,'運命を変える。','女神たちとの、新たな出会い。',False),
@@ -54,6 +54,7 @@ if not args.audio_only:
  inputs=['-ss',3,'-i',root/'public/video/kuzuha-awakened.mp4','-ss',1,'-i',root/'public/video/home-portrait-anime.mp4']
  graph=f'[0:v]split[b][l];[b]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur={n(28)}:2,eq=brightness=-0.23:saturation=0.6,setsar=1,fps=30[bg];[l]scale={even(740)}:{even(1110)},crop={even(740)}:{H}:0:0,setsar=1,fps=30[left];[1:v]scale={even(1080)}:{H},crop={even(740)}:{H}:{n(170)}:0,setsar=1,fps=30[right];[bg][left]overlay=-{n(100)}:0[a];[a][right]overlay={n(1270)}:0[b];[b]drawbox=x=0:y=0:w=iw:h=ih:color=0x061022@0.35:t=fill,'
  filters=[sparkles(),text('静謐のダンジョンRPG',32,0,165,'F4DFB0',sans,True),text('STILLVEIL',154,0,246,'FFF9E9',serif,True,3),text('静謐の残響',48,0,449,'F4DFB0',serif,True),text('ブラウザで無料プレイ',38,0,601,'FFF9E9',bold,True),f"drawbox=x={n(520)}:y={n(720)}:w={n(880)}:h={n(115)}:color=0xF7F6EF:t=fill:enable='gte(t,2.15)'",f"drawbox=x={n(520)}:y={n(720)}:w={n(880)}:h={n(115)}:color=0xC9B68A:t={n(4)}:enable='gte(t,2.15)'",f"drawbox=x={n(1200)}:y={n(727)}:w={n(192)}:h={n(100)}:color=0x385975:t=fill:enable='gte(t,2.15)'",text('スティルヴェイル',43,562,747,'24313F',sans,border=0,enable='gte(t,2.15)'),text('検索',42,1245,747,'FFFFFF',bold,border=0,enable='gte(t,2.15)'),text('fluffy3546.itch.io/stillveil',32,0,883,'FFF9E9',sans,True),text('開発中',20,0,952,'D7DDE5',sans,True),text('音楽：甘茶の音楽工房（作曲：甘茶）',18,38,1026,'CCD3DF',sans,border=1)]
+ filters += [f"drawbox=x={n(1200)}:y={n(727)}:w={n(192)}:h={n(100)}:color=0x253F54:t=fill:enable='between(t,4.35,4.47)'",text('検索',42,1247,749,'FFFFFF',bold,border=0,enable='between(t,4.35,4.47)')]
  graph+=','.join(filters)+',fade=t=out:st=4.66:d=0.14[v]';encode(inputs,graph,'[v]',4.8,f);segments.append(f)
  manifest=work/'segments.ffconcat';manifest.write_text('ffconcat version 1.0\n'+''.join(f"file '{f}'\n" for f in segments))
  picture=work/'picture.mp4'
@@ -70,10 +71,17 @@ for at in [2.64,5.05,6.55,7.45,8.35,10.14]:
  t=np.arange(round(.34*sr))/sr;env=np.sin(np.pi*np.clip(t/.34,0,1))**2;noise=rng.normal(0,1,len(t));noise=np.convolve(noise,np.ones(4)/4,mode='same');add(at-.16,noise*env*.20)
  t=np.arange(round(.4*sr))/sr;phase=np.cumsum(65+200*np.exp(-t*28))*2*np.pi/sr;add(at,np.sin(phase)*np.exp(-t*13)*.55)
 for i,hz in enumerate([587.33,880,1174.66,1396.91]):
- t=np.arange(round(.55*sr))/sr;add(12.36+i*.055,(np.sin(2*np.pi*hz*t)+.2*np.sin(4*np.pi*hz*t))*np.exp(-t*9)*.12,(-1)**i*.25)
+ t=np.arange(round(.55*sr))/sr;add(12.36+i*.055,(np.sin(2*np.pi*hz*t)+.2*np.sin(4*np.pi*hz*t))*np.exp(-t*9)*.045,(-1)**i*.25)
+# A short mechanical mouse-down/up pair, after the final spoken word.
+click_time=14.55
+t=np.arange(round(.055*sr))/sr
+noise=rng.normal(0,1,len(t));crisp=noise-np.convolve(noise,np.ones(5)/5,mode='same')
+add(click_time,crisp*np.exp(-t*430)*.35+np.sin(2*np.pi*2400*t)*np.exp(-t*250)*.28+np.sin(2*np.pi*780*t)*np.exp(-t*170)*.18)
+add(click_time+.024,crisp*np.exp(-t*520)*.24+np.sin(2*np.pi*3300*t)*np.exp(-t*320)*.18)
 with wave.open(str(work/'accents.wav'),'wb') as w:w.setnchannels(2);w.setsampwidth(2);w.setframerate(sr);w.writeframes((np.clip(mix,-.98,.98)*32767).astype('<i2').tobytes())
 # Trim only outer silence, retaining pauses and complete words. Never cut a line to fit.
-placements=[('intro',.1,2.48),('seris',2.98,1.95),('title',8.45,3.7),('cta',12.38,2.48)]
+placements=[('intro',.15,2.40),('seris',3.0,1.95),('title',9.1,3.05),('cta',13.0,1.45)]
+voice_pace={'intro':0.94,'seris':0.86,'title':0.86,'cta':1.0}
 def read_pcm(path):
  with wave.open(str(path)) as f:
   assert f.getframerate()==48000 and f.getnchannels()==2 and f.getsampwidth()==2, path
@@ -97,9 +105,9 @@ for name,start,window in placements:
  trimmed=work/f'{name}-trim.wav'
  trim='silenceremove=start_periods=1:start_duration=0.015:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_duration=0.02:start_threshold=-45dB,areverse'
  ff('-i',src/f'{name}.mp3','-af',trim,'-ar',48000,'-ac',2,trimmed)
- dur=len(read_pcm(trimmed))/sr;tempo=max(1,dur/window)
+ dur=len(read_pcm(trimmed))/sr;tempo=max(voice_pace[name],dur/window)
  normalized=work/f'{name}-normalized.wav';dest=work/f'{name}.wav'
- ff('-i',trimmed,'-af',f'atempo={tempo},loudnorm=I=-17:TP=-2:LRA=7,aresample=48000,asetpts=N/SR/TB','-ar',48000,'-ac',2,normalized)
+ ff('-i',trimmed,'-af',f'atempo={tempo},highpass=f=85,lowpass=f=11500,equalizer=f=240:t=q:w=0.8:g=-1.5,equalizer=f=2900:t=q:w=1:g=1.8,acompressor=threshold=0.13:ratio=2.5:attack=5:release=85:makeup=1.25,loudnorm=I=-17:TP=-2.5:LRA=5,aresample=48000,asetpts=N/SR/TB','-ar',48000,'-ac',2,normalized)
  samples,placed=place_pcm(normalized,dest,start)
  if len(samples)/sr>window+.04:raise RuntimeError(f'{name}: voice exceeds its time window')
  active=np.flatnonzero(np.max(np.abs(placed),axis=1)>.003)
@@ -108,6 +116,7 @@ for name,start,window in placements:
  voice_mix+=placed
 for left,right in zip(timing,timing[1:]):
  if left['end']+.10>right['start']:raise RuntimeError(f'Voice overlap: {left} / {right}')
+if timing[-1]['end']+.10>click_time:raise RuntimeError('Final voice overlaps the mouse click')
 write_pcm(work/'voices.wav',voice_mix)
 (work/'voice-timing.json').write_text(json.dumps(timing,ensure_ascii=False,indent=2)+'\n')
 print('Verified non-overlapping voice intervals:',timing,flush=True)
@@ -121,5 +130,5 @@ ff('-i',root/'artifacts/trailer/raw/battle/audio.wav','-af','atrim=start=4.1:dur
 place_pcm(work/'game-clip.wav',work/'game.wav',5.1)
 inputs=['-i',picture,'-i',work/'voices.wav','-i',work/'piano.wav','-i',work/'orchestra.wav','-i',work/'accents.wav','-i',work/'game.wav']
 graph='[2:a][3:a]amix=inputs=2:normalize=0[music];[1:a]asplit[voice][side];[music][side]sidechaincompress=threshold=0.025:ratio=5:attack=15:release=160[duck];[duck][voice][4:a][5:a]amix=inputs=4:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=8,afade=t=out:st=14.82:d=0.18[a]'
-target=out/('stillveil-heisei-cm-v2-720p.mp4' if args.preview else 'stillveil-heisei-cm-v2-1080p.mp4');ff(*inputs,'-filter_complex',graph,'-map','0:v','-map','[a]','-c:v','copy','-c:a','aac','-b:a','192k','-ar',48000,'-ac',2,'-t',15,'-movflags','+faststart',target)
+target=out/('stillveil-heisei-cm-v3-720p.mp4' if args.preview else 'stillveil-heisei-cm-v3-1080p.mp4');ff(*inputs,'-filter_complex',graph,'-map','0:v','-map','[a]','-c:v','copy','-c:a','aac','-b:a','192k','-ar',48000,'-ac',2,'-t',15,'-movflags','+faststart',target)
 print('Finished',target,flush=True)
