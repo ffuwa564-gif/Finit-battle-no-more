@@ -1,3 +1,4 @@
+import { checkMotionPosters } from './motion-posters';
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { content, validateContent } from '../src/content/index';
@@ -24,6 +25,7 @@ for (const asset of content.assets) {
   if (asset.kind === 'video' && bytes.subarray(4, 8).toString() !== 'ftyp') errors.push(`${asset.id}: file is not MP4`);
   if (!asset.rights.trim()) errors.push(`${asset.id}: missing rights information`);
 }
+if (!errors.length) errors.push(...checkMotionPosters(content.assets, publicRoot));
 if (errors.length) {
   console.error(`Content gate failed (${errors.length}):\n${errors.map(error => `- ${error}`).join('\n')}`);
   process.exitCode = 1;

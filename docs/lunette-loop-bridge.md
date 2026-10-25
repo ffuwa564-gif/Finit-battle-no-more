@@ -48,3 +48,5 @@ node scripts/export-lunette-loop.mjs /tmp/lunette-original-eight-seconds.mp4 doc
 全身用の表示静止画は `art/event-lunette-awakened-loop-poster.png`、顔枠用は `art/event-lunette-awakened-portrait-loop-poster.png` とし、それぞれ対応動画の先頭フレームから書き出す。全身用アセットと戦闘背景は720×960、顔枠アセットは320×480として登録する。ホーム・詳細・イベント紹介・戦闘の全身表示と、編成・図鑑・戦闘の顔枠で、各動画と同じ静止画の構図を使う。動き軽減時や読み込みエラー時の表示も同じになる。
 
 生成参照用の元絵 `art/event-lunette-awakened.png` は保持する。動画・動画の表示倍率・通常ルネットは変更しない。書き出しスクリプトにも両静止画の生成を追加し、次回の書き出しで構図がずれないようにする。
+
+後続の再発防止では、全動画の専用 `posterId` と先頭フレームの完全一致検査を共通化した。現在のプレイヤーは `art/motion-posters/<動画ID>.png` を優先する。上記ルネット専用の静止画と同じ先頭フレーム由来で、元絵は引き続き制作資料として保持する。[制作手順と自動検査](animation-posters.md)

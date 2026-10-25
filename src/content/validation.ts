@@ -34,6 +34,12 @@ export function validateContent(content: Content): string[] {
     reject(asset.portraitZoom !== undefined && (!Number.isFinite(asset.portraitZoom) || asset.portraitZoom < 1 || asset.portraitZoom > 3), `assets/${asset.id}: portrait zoom must be 1..3`);
     reject(asset.portraitOrigin !== undefined && !/^\d+(?:\.\d+)?% \d+(?:\.\d+)?%$/.test(asset.portraitOrigin), `assets/${asset.id}: portrait origin must use percentage coordinates`);
     reject(!plain(asset.anchor) || !plain(asset.rights), `assets/${asset.id}: anchor and rights required`);
+    if (asset.kind === 'video') {
+      const poster = content.assets.find(item => item.id === asset.posterId);
+      reject(!poster || poster.kind === 'video' || !poster.path.endsWith('.png'), `assets/${asset.id}: lossless video poster required`);
+      reject(Boolean(poster && (poster.width !== asset.width || poster.height !== asset.height)), `assets/${asset.id}: video/poster dimensions must match`);
+    } else reject(asset.posterId !== undefined, `assets/${asset.id}: only videos may declare posterId`);
+
   }
   const semanticKeys = new Set<string>();
   for (const skill of content.skills) {
