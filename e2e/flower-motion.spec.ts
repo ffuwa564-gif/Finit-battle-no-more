@@ -24,7 +24,7 @@ test('both SSR paintings play, pause and resume, and a video failure keeps the o
  await page.route('**/video/gacha-athena-anime.mp4',route=>route.abort());await page.reload();await enterGame(page);
  const artwork=page.locator('.goddess-feature--athena .animated-illustration');await expect(artwork).toHaveAttribute('data-animation-state','error');
  await expect(artwork).not.toHaveClass(/is-ready/);await expect(artwork.locator('img')).toBeVisible();
- await expect.poll(()=>artwork.locator('img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(1024);
+ await expect.poll(()=>artwork.locator('img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(720);
 });
 
 test('SSR reveal and party/battle portraits use the matching full and lightweight animations',async({page})=>{

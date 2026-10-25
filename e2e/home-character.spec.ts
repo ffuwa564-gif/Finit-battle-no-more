@@ -39,7 +39,7 @@ test('a selected animation obeys reduced motion and falls back to its own painti
  await page.goto('/');await enterGame(page);
  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const revision=save.revision;save.ownedIds.push('selene');save.settings.homeCharacterId='selene';save.revision++;await persistSave(save,revision);});
  await page.emulateMedia({reducedMotion:'reduce'});const requests:string[]=[];page.on('request',r=>{if(r.url().includes('gacha-selene-v2.mp4'))requests.push(r.url());});
- await page.reload();await enterGame(page);await expect(page.locator('.home-artwork .animated-illustration')).toHaveAttribute('data-animation-state','static');await expect(page.locator('.home-artwork img')).toHaveAttribute('src',/gacha-selene.webp/);expect(requests).toEqual([]);
+ await page.reload();await enterGame(page);await expect(page.locator('.home-artwork .animated-illustration')).toHaveAttribute('data-animation-state','static');await expect(page.locator('.home-artwork img')).toHaveAttribute('src',/motion-posters\/gacha-selene-motion.png/);expect(requests).toEqual([]);
  await page.emulateMedia({reducedMotion:'no-preference'});await page.route('**/video/gacha-selene-v2.mp4',route=>route.abort());await page.reload();await enterGame(page);
  await expect(page.locator('.home-artwork .animated-illustration')).toHaveAttribute('data-animation-state','error');await expect(page.locator('.home-artwork .animated-illustration')).not.toHaveClass(/is-ready/);await expect(page.locator('.home-artwork img')).toBeVisible();
 });

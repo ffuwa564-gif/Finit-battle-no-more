@@ -38,6 +38,8 @@ npx playwright install chromium
 npm run test:e2e      # ブラウザーで探索・再開・確定・撤退・モバイル表示
 ```
 
+動画と静止画の構図はビルド時に自動検査します。検査・書き出しにはFFmpegとffprobeが必要です。動画更新後は `npm run export:motion-posters` で表示用静止画を再生成してください。[制作手順と再発防止](docs/animation-posters.md)
+
 ## Cloudflare
 
 連携・プロジェクト作成・公開はユーザーが行います。ここではデプロイしていません。
