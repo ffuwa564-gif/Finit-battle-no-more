@@ -15,3 +15,9 @@
   .character-detail p { font-size: 11px; }
   .character-detail .stat-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
 }
+
+.unit-effects > .is-ailment { display:inline-flex; align-items:center; gap:3px; font-weight:600; }
+.unit-effects [data-ailment='sleep'] { background:#e5e8f7; color:#525985; border-color:#aeb9db; }
+.unit-effects [data-ailment='paralysis'] { background:#fbefc9; color:#886426; border-color:#dfc777; }
+.unit-effects [data-ailment='confusion'] { background:#ede0f6; color:#76488c; border-color:#c3a0d7; }
+.unit-effects [data-ailment='charm'] { background:#f9dfe9; color:#934568; border-color:#daa0ba; }

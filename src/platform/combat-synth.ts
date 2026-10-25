@@ -14,6 +14,10 @@ type CombatKey = SkillTemplate | 'wave' | 'defeat';
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
+  confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
+  sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
+  paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },
+  charm: { bells: { notes: ['F5', 'A5', 'C6', 'E6'], spacing: .09, duration: .25 }, aura: { notes: ['F4', 'A4', 'E5'], duration: .4 } },
   attack: { sweep: { from: 6200, to: 650, duration: 0.12, velocity: 0.8 }, impact: { note: 'D2', velocity: 0.85 }, metal: { note: 'A4', velocity: 0.3 } },
   area: { sweep: { from: 350, to: 4400, duration: 0.28, velocity: 0.9 }, impact: { note: 'C2', velocity: 0.95 }, bells: { notes: ['D4', 'A4', 'D5', 'F5'], spacing: 0.055, duration: 0.3 }, aura: { notes: ['D3', 'A3', 'F4'], duration: 0.36 } },
   heal: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: 0.085, duration: 0.32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.4 } },

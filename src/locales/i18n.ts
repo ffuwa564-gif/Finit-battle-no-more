@@ -43,7 +43,7 @@ export function tr(value: string | number | null | undefined, locale = language,
       const suffix = ' ' + sentence;
       if (text.endsWith(suffix)) return tr(text.slice(0,-suffix.length),locale,depth+1) + ' ' + messages[sentence];
     }
-    const suffixes = text.split(/(（障壁が\d+軽減）|（HP\d+吸収）|（障壁\d+を破壊）)/).filter(Boolean);
+    const suffixes = text.split(/(（障壁が\d+軽減）|（HP\d+吸収）|（障壁\d+を破壊）|（状態異常を防いだ）|（[^（）]+を付与）)/).filter(Boolean);
     if (suffixes.length > 1) return suffixes.map(part => tr(part,locale,depth+1)).join(' ');
     for (const template of templates) {
       const match = text.match(template.expression);

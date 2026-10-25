@@ -1,13 +1,18 @@
 import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
 
-export const skillTemplates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn'];
+export const skillTemplates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
 export const skillNames: Record<SkillTemplate, string> = {
+  confusion: '迷いの霧', sleep: 'まどろみの花', paralysis: '痺れる閃光', charm: '惑いの旋律',
   dawn: '約束の朝',
   attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福',
   mend_pair: '返し潮の抱擁', shatter: '磐砕き', dispel: '結び直す指先',
   pierce: '銀閃の貫突', drain: '夜露の吸命', regen: '巡る月の雫', barrier: '月光の障壁', cleanse: '白花の浄化',
 };
 const descriptions: Record<SkillTemplate, string> = {
+  confusion: '敵1体を混乱させる。2回の行動でスキルを使わず、50%で味方（自分を含む）、それ以外は敵に通常攻撃。',
+  sleep: '敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。',
+  paralysis: '敵1体を麻痺させる。2回の行動の間、毎回40%の確率で行動できない。',
+  charm: '敵1体を魅了する。2回の行動で自分以外の味方に通常攻撃。味方がいなければ行動不可。付与者が倒れると解除。',
   dawn: '敵1体の防御を65%無視する攻撃。実際に攻撃を受ける敵が防御低下中なら威力が25%上昇。ボス・弱体化中の敵や攻撃重視で優先する。',
   attack: '敵1体に強力な攻撃。', area: '敵全体を攻撃。かばうを無視する。', heal: 'HPが低い味方1人を回復。生存重視では早めに使用する。',
   guard: '味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。', buff: '攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。', debuff: '敵1体の防御力を次ラウンドまで下げる。',
@@ -18,10 +23,10 @@ const descriptions: Record<SkillTemplate, string> = {
   drain: '敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。',
   regen: '負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。',
   barrier: '味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。',
-  cleanse: '防御低下中の味方1人を浄化し、小回復。重傷者がいる時は通常の回復を優先。',
+  cleanse: '味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。',
 };
-export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : 3; }
-export function skillDescription(skill: SkillDef): string { return `${descriptions[skill.template]} 再使用まで${skillCooldown(skill.template)}ラウンド。`; }
+export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
+export function skillDescription(skill: SkillDef): string { return `${descriptions[skill.template]}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`; }
 const leaderDescriptions: Record<LeaderEffect, string> = {
   regeneration: '月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。',
   finisher: '薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。',
@@ -35,6 +40,7 @@ export function leaderEffectDescription(character: CharacterDef): string {
 
 /** Every template explicitly declares its shared sound and presentation family. */
 export const skillSoundProfiles: Record<SkillTemplate, 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff'> = {
+  confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
