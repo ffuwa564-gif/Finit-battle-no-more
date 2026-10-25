@@ -22,3 +22,12 @@ export const ultimateGoddessTrial: DungeonDef = {
   previousDungeonId: goddessTrial.id,
   bossScale: { hp: 1830, attack: 300 },
 };
+
+/** Intentionally out of reach today. The shared formula computes 100.0 from these real stats. */
+export const impossibleGoddessTrial: DungeonDef = {
+  ...goddessTrial,
+  id: 'goddess-procession-impossible', name: '女神の試練・不可侵', subtitle: '定数100。今は、届かなくてもいい。',
+  description: '定数100.0の超高難度4連戦。現時点での攻略を前提に調整していません。HP61倍・攻撃10倍のSSR女神、セレネ、アテナ、イザナミ、アマテラスに挑みます。HPは次のWaveへ引き継ぎ。素材・ゴールド・祈願石は獲得せず、踏破記録のみが残ります。使用した回復薬は消費されます。',
+  previousDungeonId: 'silent-cathedral',
+  bossScale: { hp: 6100, attack: 1000 },
+};

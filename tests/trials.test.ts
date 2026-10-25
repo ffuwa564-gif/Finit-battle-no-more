@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { content, validateContent } from '../src/content';
-import { goddessTrial, ultimateGoddessTrial } from '../src/content/trials';
+import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial } from '../src/content/trials';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { characterStats, dungeonDifficulty } from '../src/domain/engine';
 import { dungeonStoneReward } from '../src/domain/rewards';
@@ -98,4 +98,33 @@ describe('SSR goddess gauntlet', () => {
     const ordinary = structuredClone(content); ordinary.dungeons[0]!.waves[0]![0]!.boss = true;
     expect(validateContent(ordinary).some(error => error.includes('boss before final wave'))).toBe(true);
   });
+});
+
+
+it('adds a deliberately impossible 100.0 trial without changing lower trial stats or requiring the extreme clear', () => {
+  expect(validateContent(content)).toEqual([]);
+  expect(dungeonDifficulty(impossibleGoddessTrial, content)).toBe(100);
+  expect(dungeonDifficulty(ultimateGoddessTrial, content)).toBe(30);
+  const save=createInitialSave(content,42);
+  expect(()=>applyCommand(save,{type:'depart',dungeonId:impossibleGoddessTrial.id,potions:0},content)).toThrow('忘却の聖堂');
+  save.completedDungeonIds=['silent-cathedral'];
+  const entered=drain(applyCommand(save,{type:'depart',dungeonId:impossibleGoddessTrial.id,potions:0},content));
+  const enemy=entered.battle!.units.find(unit=>unit.side==='enemy')!;
+  const char=content.characters.find(char=>char.id===enemy.characterId)!;
+  const base=characterStats(char);
+  expect(enemy.maxHp).toBe(base.hp*61);expect(enemy.attack).toBe(base.attack*10);
+  expect(entered.battle!.pendingMaterials).toEqual({});expect(entered.battle!.goldEarned).toBe(0);
+  assertSaveCompatibility(JSON.parse(JSON.stringify(entered)),content);
+  const retreated=applyCommand(entered,{type:'retreat'},content);
+  expect(retreated.completedDungeonIds).not.toContain(impossibleGoddessTrial.id);
+  const reward=structuredClone(entered);Object.assign(reward.battle!,{phase:'reward',nextPhase:'reward',events:[],cursor:0});
+  const claimed=applyCommand(reward,{type:'claim'},content);
+  expect(claimed.completedDungeonIds).toContain(impossibleGoddessTrial.id);
+  expect(claimed.stones).toBe(save.stones);expect(claimed.gold).toBe(save.gold);expect(claimed.materials).toEqual(save.materials);
+});
+it('permits extreme scales only for trials and still rejects unsafe trial multipliers',()=>{
+  const ordinary=structuredClone(content);ordinary.dungeons.find(stage=>stage.id==='stone-fountain')!.bossScale={hp:6100,attack:1000};
+  expect(validateContent(ordinary)).toContain('dungeons/stone-fountain: invalid event boss scale');
+  const invalid=structuredClone(content);invalid.dungeons.find(stage=>stage.id===impossibleGoddessTrial.id)!.bossScale={hp:10001,attack:1001};
+  expect(validateContent(invalid)).toContain('dungeons/goddess-procession-impossible: invalid event boss scale');
 });
