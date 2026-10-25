@@ -79,7 +79,7 @@ export default function App() {
       if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
       if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
-      if (action.type === 'eventRecruit' || action.type === 'awaken') {
+      if (action.type === 'eventRecruit' || action.type === 'awaken' || action.type === 'goldRecruit') {
         const found = content.characters.find(char => next.ownedIds.includes(char.id) && !previous.ownedIds.includes(char.id));
         if (found) setCharacter(found);
       }

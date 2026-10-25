@@ -69,7 +69,7 @@ export function validateContent(content: Content): string[] {
     if (char.encounterArtId !== undefined) reject(!assetIds.has(char.encounterArtId) || content.assets.find(asset => asset.id === char.encounterArtId)?.kind !== 'background', `characters/${char.id}: invalid encounter scene`);
     reject(!profiles.has(char.soundProfile), `characters/${char.id}: unknown sound profile`);
     reject(!['R', 'SR', 'SSR'].includes(char.rarity), `characters/${char.id}: invalid rarity`);
-    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
+    reject(!Array.isArray(char.origin) || char.origin.length === 0 || char.origin.some(origin => !['initial', 'recruit', 'gacha', 'event', 'awakening', 'gold_exchange'].includes(origin)) || new Set(char.origin).size !== char.origin.length, `characters/${char.id}: valid acquisition routes required`);
     reject(char.origin.includes('awakening') && (char.origin.length !== 1 || !content.awakenings?.some(def => def.awakenedId === char.id)), `characters/${char.id}: awakening-exclusive form required`);
     reject(char.origin.includes('event') && char.origin.length !== 1, `characters/${char.id}: event-exclusive acquisition required`);
     reject(char.origin.includes('gacha') && (char.origin.includes('recruit') || char.origin.includes('initial')), `characters/${char.id}: gacha-exclusive character has another route`);
@@ -86,6 +86,18 @@ export function validateContent(content: Content): string[] {
       const allowed: SkillTemplate[] = [required[char.role], 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
       reject(known.some(skill => !allowed.includes(skill.template)), `characters/${char.id}: unreachable second skill`);
     }
+  }
+  allIds(content.goldExchanges ?? [], 'goldExchanges');
+  const exchangeCharacters = new Set<string>();
+  for (const offer of content.goldExchanges ?? []) {
+    const char = content.characters.find(item => item.id === offer.characterId);
+    reject(typeof offer.published !== 'boolean' || !Number.isSafeInteger(offer.goldCost) || offer.goldCost <= 0, `goldExchanges/${offer.id}: positive safe integer gold cost and publication required`);
+    reject(!char || char.origin.length !== 1 || !char.origin.includes('gold_exchange') || char.rarity !== 'SSR' || (offer.published && !char.published), `goldExchanges/${offer.id}: exclusive SSR character required`);
+    reject(exchangeCharacters.has(offer.characterId), `goldExchanges/${offer.id}: duplicate exchange character`);
+    exchangeCharacters.add(offer.characterId);
+  }
+  for (const char of content.characters.filter(item => item.origin.includes('gold_exchange'))) {
+    reject(char.origin.length !== 1 || !content.goldExchanges?.some(offer => offer.characterId === char.id && (!char.published || offer.published)), `characters/${char.id}: gold-exclusive exchange required`);
   }
   const eventIds = allIds(content.events ?? [], 'events');
   for (const event of content.events ?? []) {
