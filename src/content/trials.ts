@@ -23,6 +23,16 @@ export const ultimateGoddessTrial: DungeonDef = {
   bossScale: { hp: 1830, attack: 300 },
 };
 
+
+/** A small, reward-free place to learn the difference between protection and counters. */
+export const tacticalTrial: DungeonDef = {
+  id: 'moonshield-rehearsal', kind: 'trial', name: '月盾の稽古', subtitle: '守る一手、砕く一手。',
+  description: 'セレネとアテナに挑む2連戦。攻撃重視では有効な障壁破壊・強化解除、生存重視では守護・回復を優先します。瀕死の仲間への保護は維持。3ターンごとの大技に備え、大技で障壁を解く隙を狙いましょう。戦利品はなく、使用した薬は消費します。',
+  artId: 'athena-art', published: true, previousDungeonId: 'silent-cathedral', tacticalCommands: true,
+  bossScale: { hp: 350, attack: 120 }, bossStrike: { every: 3, power: 200, name: '月盾の一撃' },
+  waves: ['selene', 'athena'].map(characterId => [{ characterId, boss: true }]),
+};
+
 /** Intentionally out of reach today. The shared formula computes 100.0 from these real stats. */
 export const impossibleGoddessTrial: DungeonDef = {
   ...goddessTrial,
