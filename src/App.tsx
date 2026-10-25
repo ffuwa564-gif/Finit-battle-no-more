@@ -1,3 +1,4 @@
+import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
@@ -142,13 +143,13 @@ export default function App() {
     if (!event || !save || !started) return;
     playSound(battleSounds[event.kind], event.rarity, content.skills.find(skill => skill.id === event.skillId)?.template);
     const cleanup = animateEvent(event, save.settings.reducedMotion);
-    const duration = event.kind === 'dialogue' ? 4400 : event.kind === 'drop' ? 2200 : event.kind === 'wave' ? 2400 : 1800;
+    const duration = battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current) { timer = setTimeout(complete, 100); return; }
       void command({ type: 'replay' }, event.id);
     };
-    timer = setTimeout(complete, Math.max(1200, duration / save.settings.speed));
+    timer = setTimeout(complete, duration);
     return () => { clearTimeout(timer); cleanup(); };
   }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
 

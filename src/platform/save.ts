@@ -33,6 +33,7 @@ function validEvent(value: unknown): boolean {
   if (value.targetIds !== undefined && !stringArray(value.targetIds)) return false;
   if (value.amount !== undefined && !count(value.amount)) return false;
   if (value.rarity !== undefined && !['common', 'rare', 'epic'].includes(value.rarity as string)) return false;
+  if (value.directive !== undefined && !['aggressive', 'survival'].includes(value.directive as string)) return false;
   if (value.bossStrike !== undefined && typeof value.bossStrike !== 'boolean') return false;
   if (value.ailment !== undefined && !(ailments as readonly string[]).includes(value.ailment as string)) return false;
   if (value.statusAction !== undefined && (!['inflict', 'resist', 'skip', 'recover', 'friendly_fire'].includes(value.statusAction as string) || value.ailment === undefined)) return false;

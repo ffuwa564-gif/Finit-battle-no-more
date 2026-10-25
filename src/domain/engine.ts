@@ -166,7 +166,7 @@ function skillList(actor: Unit, content: Content, round: number): SkillDef[] {
     return skill;
   }).filter((skill) => (actor.cooldowns[skill.id] ?? 0) <= round).sort((a, b) => b.strength - a.strength || a.id.localeCompare(b.id));
 }
-interface Action { skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
+interface Action { directive?: 'aggressive' | 'survival'; skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
 function emitRecovery(battle: Battle, unit: Unit, id: Ailment, content: Content): void {
   emit(battle, { kind: 'buff', statusAction: 'recover', ailment: id, actorId: unit.uid, targetIds: [unit.uid], text: `${character(content, unit.characterId).name} — ${ailmentNames[id]}解除`, unitsAfter: clone(battle.units) });
 }
@@ -203,7 +203,7 @@ function controlledAction(actor: Unit, battle: Battle, content: Content): { skip
   const roll = rng(battle.seed); battle.seed = roll.seed;
   return { action: { template: 'attack', targets: [targets[Math.floor(roll.value * targets.length)]!], forcedBy } };
 }
-function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
+function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, counterFirst = false): Action {
   const allies = alive(battle.units, actor.side);
   const enemies = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
   const strike = actor.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
@@ -224,6 +224,13 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const pair = get('mend_pair');
   const wounded = allies.filter(unit => unit.hp < unit.maxHp * (strategy === 'aggressive' ? .65 : strategy === 'survival' ? .95 : .85)).sort(lowerHP).slice(0, 2);
   if (pair && wounded.length === 2) return { skill: pair, template: 'mend_pair', targets: wounded };
+  const dispel = get('dispel');
+  const empowered = enemies.filter(unit => (unit.buffUntil ?? -1) >= battle.round || (unit.regenUntil ?? -1) >= battle.round).sort((a,b) => b.hp - a.hp || byId(a,b))[0];
+  const shatter = get('shatter');
+  const shielded = enemies.filter(unit => (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort((a,b) => (b.barrier ?? 0) - (a.barrier ?? 0) || byId(a,b))[0];
+  const counter: Action | undefined = dispel && empowered ? { skill: dispel, template: 'dispel', targets: [empowered] } : shatter && shielded ? { skill: shatter, template: 'shatter', targets: [shielded] } : undefined;
+  // Invalid counters never fire; critically injured allies retain protective priority.
+  if (counterFirst && counter && !allies.some(unit => unit.hp <= unit.maxHp * .3)) return counter;
   if (role === 'tank') {
     const target = allies.filter((unit) => unit.uid !== actor.uid && !allies.some((guard) => guard.uid !== actor.uid && guard.guardTarget === unit.uid && (guard.guardUntil ?? -1) >= battle.round)).sort((a,b) => a.hp / a.maxHp - b.hp / b.maxHp || a.hp - b.hp || byId(a,b))[0];
     const skill = get('guard');
@@ -238,14 +245,15 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   if (role === 'supporter') {
     const target = allies.filter((unit) => (unit.buffUntil ?? -1) < battle.round).sort((a, b) => b.attack - a.attack || byId(a, b))[0];
     const skill = get('buff');
-    if (skill && target) return { skill, template: 'buff', targets: [target] };
+    if (skill && target) {
+      const strongest = [...allies].sort((a,b) => b.attack - a.attack || byId(a,b))[0]!;
+      // A meaningful enemy regeneration/empowerment is worth removing before buffing
+      // a weaker ally when the main damage dealer already has the same buff.
+      if (dispel && empowered && target.attack < strongest.attack && (strongest.buffUntil ?? -1) >= battle.round) return { skill: dispel, template: 'dispel', targets: [empowered] };
+      return { skill, template: 'buff', targets: [target] };
+    }
   }
-  const dispel = get('dispel');
-  const empowered = enemies.filter(unit => (unit.buffUntil ?? -1) >= battle.round || (unit.regenUntil ?? -1) >= battle.round).sort((a,b) => b.hp - a.hp || byId(a,b))[0];
-  if (dispel && empowered) return { skill: dispel, template: 'dispel', targets: [empowered] };
-  const shatter = get('shatter');
-  const shielded = enemies.filter(unit => (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort((a,b) => (b.barrier ?? 0) - (a.barrier ?? 0) || byId(a,b))[0];
-  if (shatter && shielded) return { skill: shatter, template: 'shatter', targets: [shielded] };
+  if (counter) return counter;
   const control = skills.find(skill => isAilment(skill.template));
   const susceptible = enemies.filter(unit => !hasAilment(unit) && (unit.statusWardUntil ?? -1) < battle.round).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
   if (control && susceptible) return { skill: control, template: control.template, targets: [susceptible] };
@@ -267,6 +275,14 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   if (attack) return { skill: attack, template: 'attack', targets: [chooseTarget(enemies, strategy, content)] };
   if (area) return { skill: area, template: 'area', targets: enemies };
   return { template: 'attack', targets: [chooseTarget(enemies, strategy, content)] };
+}
+function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
+  const ordinary = chooseDefaultAction(actor, battle, content);
+  if (actor.side !== 'party' || !dungeon(content, battle.dungeonId).tacticalCommands || battle.strategy === 'balanced') return ordinary;
+  const comparison = chooseDefaultAction(actor, battle.strategy === 'survival' ? { ...battle, strategy: 'aggressive' } : battle, content, true);
+  const chosen = battle.strategy === 'aggressive' ? comparison : ordinary;
+  // Show a reason only when the two valid policies actually choose different skills.
+  return ordinary.skill?.id !== comparison.skill?.id ? { ...chosen, directive: battle.strategy } : chosen;
 }
 function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false): { unit: Unit; amount: number; absorbed: number; shattered: number } {
   const guard = guardable ? battle.units.find(unit => unit.hp > 0 && unit.side === target.side && unit.uid !== target.uid && unit.guardTarget === target.uid && (unit.guardUntil ?? -1) >= battle.round) : undefined;
@@ -406,7 +422,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     if (action.skill) actor.cooldowns[action.skill.id] = battle.round + skillCooldown(action.template);
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
-    emit(battle, { kind: eventKind[action.template], bossStrike: Boolean(action.power), statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    emit(battle, { kind: eventKind[action.template], bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
     for (const id of recovered) emitRecovery(battle, actor, id, content);
     emitCures(battle, before, content, actor.uid);
     if (action.targets.some(target => target.side !== actor.side) && actor.side === 'party' && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && amount > 0 && leaderEffect(battle, content) === 'lifesteal') {

@@ -1,0 +1,45 @@
+# 覚醒後ルネット：Runwayアニメーションの見本
+
+2026-10-25に生成した「星時計・ルネット」の記録。4秒の試作をユーザーが確認し、「めちゃいい」と評価。そのプロンプトの時間指定だけを8秒へ変更して完成版を生成した。別のキャラクターへ応用する際も、参照原画と動かしたい箇所に合わせて調整する。同じプロンプトでも生成結果は変わる。
+
+## 生成条件
+
+| 項目 | 設定 |
+| --- | --- |
+| サービス | Runway |
+| モデルID | `seedance-2` |
+| 入力方式 | Image-to-video：既存原画を開始フレームに指定 |
+| 原画 | [`public/art/event-lunette-awakened.png`](../public/art/event-lunette-awakened.png) |
+| 縦横比 | `3:4` |
+| 解像度指定 | `720p` |
+| 音声 | `generateAudio: false`（無音） |
+| 完成版の長さ | `duration: 8` |
+| 完成版タスクID | `8359e9fb-8015-4c91-8232-8a937424eab2` |
+| 4秒試作タスクID | `436732db-a57c-433a-9760-ac571574e5c5` |
+
+シードは指定していない。参照画像の一時的な署名付きURLは保存せず、リポジトリ内の原画を正本とする。
+
+## 実際に使用したプロンプト全文（8秒版）
+
+以下が生成時に送信した英語プロンプト。4秒試作では末尾の `over eight seconds` が `over four seconds` で、それ以外の本文は同一。
+
+```text
+A single locked-off shot animating this exact detailed 2D anime illustration. The lavender-haired girl maintains her raised-key pose and eye contact with the viewer. She makes one clearly visible small playful head tilt toward her lowered hand, blinks once, and gives a slightly wider mischievous smile. Her short hair tips and sleeve ribbons follow the tilt with gentle secondary movement. Her raised hand keeps a firm steady grip on the gold key, with the key retaining its exact shape. The two airborne clockwork rabbits gently bob up and down in place. The seated foreground rabbits remain seated. Preserve the full-body composition, face, costume ornaments, rabbit designs, intricate observatory background and drawn illustration style throughout. Keep her entire head, key and boots inside the frame. Camera stays completely stationary, all feet stay in their original places. One restrained readable character gesture over eight seconds, continuous shot.
+```
+
+## 見本として押さえる点
+
+- カメラを固定し、元絵の顔・衣装・背景・全身構図を保つよう指定する。
+- 主動作は小さな首の傾き・瞬き・笑顔に絞り、髪先とリボンには追従する動きを指定する。
+- 持ち物を握る手と鍵の形、足の位置を保つよう指定する。
+- 浮遊ウサギは小さく上下させ、座っているウサギは座ったままにする。
+- 最初に4秒で試し、出来を確認してから8秒へ進めた。長さの変更でも再生成されるため、完成版も確認する。
+
+このプロンプトは開始・終了フレームの一致を指定していない。ゲームでは通常のループ再生を使うが、継ぎ目のないループを保証するものではない。
+
+## ゲームに組み込んだファイル
+
+- 全身用：[`public/video/lunette-awakened.mp4`](../public/video/lunette-awakened.mp4)（720×960・24fps）
+- 顔枠用：[`public/video/lunette-awakened-portrait.mp4`](../public/video/lunette-awakened-portrait.mp4)（320×480・18fps）
+
+両方とも8秒版から書き出した無音のH.264 MP4。表示・フォールバックの仕様は[時計庭のうさぎ姫](lunette-event.md#原画と表示)を参照。

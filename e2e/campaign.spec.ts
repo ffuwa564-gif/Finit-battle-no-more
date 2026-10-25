@@ -57,7 +57,7 @@ test('chapter bosses visibly announce their periodic heavy attack and persist it
     b.round=3;for(const u of b.units){u.hp=u.maxHp=10000;u.attack=u.side==='party'?1:100;u.speed=u.side==='party'?100:0;u.cooldowns=Object.fromEntries(content.characters.find(c=>c.id===u.characterId)!.skillIds.map(id=>[id,999]));}
     b.initialUnits=structuredClone(b.units);save.battle=b;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);
   });
-  await page.reload();await enterGame(page);await expect(page.getByRole('status',{name:'章末ボスの予告',exact:true})).toContainText('このターンに大技');
+  await page.reload();await enterGame(page);await expect(page.getByRole('status',{name:'ボスの大技予告',exact:true})).toContainText('このターンに大技');
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();await expect(page.locator('.boss-strike-status.is-striking')).toBeVisible({timeout:20000});
   await expect(page.locator('.battle-toast')).toContainText('石燐の突進');await page.screenshot({path:testInfo.outputPath('chapter-boss-strike.png')});
   const b=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.battle!);

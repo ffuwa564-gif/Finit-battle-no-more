@@ -29,7 +29,7 @@ export function CombatFeedback({ event, before, reducedMotion }: { event?: Battl
         return { ...change, id: `${id}:${change.unitId}`, x: Math.max(42, Math.min(frame.width - 42, x)), y, named: !bounds };
       });
       setNumbers(old => [...old, ...entries].slice(-16));
-      const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, 1150);
+      const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, 850);
       timers.current.add(timer);
     };
     const onHp = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[] }>).detail; show(detail.id, detail.changes); };
