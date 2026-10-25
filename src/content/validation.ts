@@ -59,7 +59,7 @@ export function validateContent(content: Content): string[] {
     if (char.dialogue) for (const [event, text] of Object.entries(char.dialogue)) reject(!['intro', 'threshold', 'defeat'].includes(event) || !plain(text), `characters/${char.id}: plain boss dialogue required`);
     if (char.dialogue) reject(!['intro', 'threshold', 'defeat'].every(event => plain(char.dialogue?.[event as keyof NonNullable<typeof char.dialogue>])), `characters/${char.id}: complete boss dialogue required`);
     reject(!roles.has(char.role), `characters/${char.id}: unknown role`);
-    reject(char.leaderEffect !== undefined && !['regeneration', 'finisher', 'lifesteal', 'bulwark', 'resonance'].includes(char.leaderEffect), `characters/${char.id}: invalid leader effect`);
+    reject(char.leaderEffect !== undefined && !['acceleration', 'regeneration', 'finisher', 'lifesteal', 'bulwark', 'resonance'].includes(char.leaderEffect), `characters/${char.id}: invalid leader effect`);
     reject(!leaderStats.has(char.leaderStat), `characters/${char.id}: invalid leader stat`);
     reject(!strengthValid(char.strength), `characters/${char.id}: integer strength 10..30 required`);
     reject(typeof char.published !== 'boolean', `characters/${char.id}: publication state required`);

@@ -1,14 +1,14 @@
 import { tr, localize } from '../locales/i18n';
 import type { CSSProperties, ReactNode } from 'react';
 import { Compass, Flag, Flame, FlaskConical, Shield, Swords } from 'lucide-react';
-import { accelerationPercent } from '../domain/acceleration';
+import type { AccelerationEffect } from '../domain/acceleration';
 import type { Strategy } from '../domain/types';
 import { assetPath } from '../content';
 import { Button } from './index';
 import './battle-control-pad.css';
 
 export interface BattleControlPadProps {
-  round: number;
+  acceleration?: AccelerationEffect;
   strategy: Strategy;
   onStrategy: (strategy: Strategy) => void;
   strategyDisabled: boolean;
@@ -34,7 +34,7 @@ const strategies = [
 export function BattleControlPad(p: BattleControlPadProps) {
   const style = { '--command-moonlight': `url("${new URL(assetPath('command-moonlight'), document.baseURI).href}")` } as CSSProperties;
   return <section className="battle-control-pad" aria-label={tr("戦闘操作")} style={style}>
-    <div className="battle-acceleration" role="status" aria-label={tr('戦闘加速')}><span><Flame size={13} aria-hidden="true" />{tr(`加速：敵味方の攻撃 +${accelerationPercent(p.round)}%`)}</span><small>{tr('毎ターン+5%・Wave切替でリセット')}</small></div>
+    {p.acceleration && <div className="battle-acceleration" role="status" aria-label={tr('戦闘加速')}><span><Flame size={13} aria-hidden="true" />{tr(`加速：敵味方の攻撃 +${p.acceleration.percent}%`)}</span><small>{tr(`発動者：${p.acceleration.source}`)} · {tr('毎ターン+5%・Wave切替でリセット')}</small></div>}
     <div className="battle-control-pad__board">
       <div className="battle-control-pad__strategies" role="group" aria-label={tr("作戦を選ぶ")}>
         {localize(strategies.map(({ id, label, name, icon: Icon }) => <Button key={id} variant="secondary" className="moon-command moon-command--strategy" aria-label={tr(name)} title={tr(name)} selected={p.strategy === id} disabled={p.strategyDisabled} onClick={() => p.onStrategy(id)}>

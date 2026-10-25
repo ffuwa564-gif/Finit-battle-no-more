@@ -79,7 +79,7 @@ describe('normal campaign chapters',()=>{
     for(const unit of battle.units){unit.hp=unit.maxHp=10000;unit.defense=0;unit.attack=unit.side==='party'?1:100;unit.speed=unit.side==='party'?100:0;unit.cooldowns=Object.fromEntries(content.characters.find(c=>c.id===unit.characterId)!.skillIds.map(id=>[id,99]));}
     battle.units.find(u=>u.boss)!.barrier=800;battle.units.find(u=>u.boss)!.barrierUntil=4;
     const hit=resolveRound(battle,content).battle.events.filter(e=>e.bossStrike);
-    expect(hit).toHaveLength(1);expect(hit[0]!.amount).toBe(308);expect(hit[0]!.skillId).toBeUndefined();expect(hit[0]!.unitsAfter!.find(u=>u.boss)!.barrier).toBeUndefined();
+    expect(hit).toHaveLength(1);expect(hit[0]!.amount).toBe(280);expect(hit[0]!.skillId).toBeUndefined();expect(hit[0]!.unitsAfter!.find(u=>u.boss)!.barrier).toBeUndefined();
     const ordinary=structuredClone(battle);ordinary.round=2;expect(resolveRound(ordinary,content).battle.events.some(e=>e.bossStrike)).toBe(false);
     const guarded=structuredClone(battle);const ward=guarded.units.find(u=>u.characterId==='elaine')!,guard=guarded.units.find(u=>u.characterId==='liora')!;
     guard.guardTarget=ward.uid;guard.guardUntil=4;guard.guardStrength=14;guard.barrier=1000;guard.barrierUntil=4;

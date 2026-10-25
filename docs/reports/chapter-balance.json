@@ -5,7 +5,7 @@
     "team": "initial",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 18.8
+    "meanRounds": 20
   },
   {
     "chapter": 1,
@@ -13,7 +13,7 @@
     "team": "initial-no-potions",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 19.05
+    "meanRounds": 20
   },
   {
     "chapter": 1,
@@ -21,7 +21,7 @@
     "team": "recruits",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 19.2
+    "meanRounds": 27.6
   },
   {
     "chapter": 1,
@@ -29,31 +29,31 @@
     "team": "goddesses",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 16
+    "meanRounds": 18.2
   },
   {
     "chapter": 2,
     "stage": "hollow-gate",
     "team": "initial",
-    "wins": 12,
+    "wins": 7,
     "seeds": 20,
-    "meanRounds": 24.35
+    "meanRounds": 36.85
   },
   {
     "chapter": 2,
     "stage": "hollow-gate",
     "team": "initial-no-potions",
-    "wins": 12,
+    "wins": 7,
     "seeds": 20,
-    "meanRounds": 23.15
+    "meanRounds": 31
   },
   {
     "chapter": 2,
     "stage": "hollow-gate",
     "team": "recruits",
-    "wins": 12,
+    "wins": 17,
     "seeds": 20,
-    "meanRounds": 29.25
+    "meanRounds": 55.35
   },
   {
     "chapter": 2,
@@ -61,7 +61,7 @@
     "team": "goddesses",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 21.25
+    "meanRounds": 25.55
   },
   {
     "chapter": 3,
@@ -69,7 +69,7 @@
     "team": "initial",
     "wins": 0,
     "seeds": 20,
-    "meanRounds": 21.95
+    "meanRounds": 22.9
   },
   {
     "chapter": 3,
@@ -77,15 +77,15 @@
     "team": "initial-no-potions",
     "wins": 0,
     "seeds": 20,
-    "meanRounds": 21.95
+    "meanRounds": 22.9
   },
   {
     "chapter": 3,
     "stage": "pale-throne",
     "team": "recruits",
-    "wins": 3,
+    "wins": 20,
     "seeds": 20,
-    "meanRounds": 23.7
+    "meanRounds": 29.8
   },
   {
     "chapter": 3,
@@ -93,6 +93,6 @@
     "team": "goddesses",
     "wins": 20,
     "seeds": 20,
-    "meanRounds": 19.15
+    "meanRounds": 21.85
   }
 ]
