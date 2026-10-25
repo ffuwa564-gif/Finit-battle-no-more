@@ -85,7 +85,7 @@ it('ends acceleration for both sides immediately when the leader falls during a 
 });
 it('can summon base Eos from either collection and actually activate her leader skill through party selection',()=>{
   for(const collection of [initialGacha,flowerGacha]){
-    let save=createInitialSave(content,6);save.drawCount=10;save.stones=5;
+    let save=createInitialSave(content,collection.id === flowerGacha.id ? 5 : 6);save.drawCount=10;save.stones=5;
     save=applyCommand(save,{type:'draw',collectionId:collection.id},content);
     expect(save.lastGachaResult!.characterId).toBe('eos-standard');
     save=applyCommand(save,{type:'party',partyIds:['eos-standard','elaine','seris','noelle'],leaderId:'eos-standard'},content);

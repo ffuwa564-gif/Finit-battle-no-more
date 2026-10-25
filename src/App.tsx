@@ -2,7 +2,7 @@ import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
-import { Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaReveal } from './ui';
+import { Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults } from './ui';
 import { content, validateContent } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
@@ -11,7 +11,7 @@ import { configureBgm, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './
 import { battleSounds, commandSounds } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
-import type { CharacterDef, GameCommand, GameSave } from './domain/types';
+import type { CharacterDef, GameCommand, GameSave, GachaResult } from './domain/types';
 import { BagView, BattleView, CharacterDetail, CodexView, DungeonsView, GachaView, HomeView, PartyView, PreviewView, RecruitView, SettingsView, type Page } from './screens/GameViews';
 
 const navigation = [
@@ -35,7 +35,7 @@ export default function App() {
   const [page, setPage] = useState<Page>(currentPage);
   const [fatal, setFatal] = useState('');
   const [toast, setToast] = useState<{ text: string; tone: 'error' | 'success' } | null>(null);
-  const [summon, setSummon] = useState<{ character: CharacterDef; duplicate: boolean; refund: number; introGuarantee: boolean } | null>(null);
+  const [summon, setSummon] = useState<{ results: GachaResult[]; introIndex: number } | null>(null);
   const [character, setCharacter] = useState<CharacterDef | null>(null);
   const init = useRef<Promise<GameSave> | null>(null);
 
@@ -84,9 +84,8 @@ export default function App() {
         if (found) setCharacter(found);
       }
       if (action.type === 'draw') {
-        const result = next.lastGachaResult;
-        const found = result && content.characters.find(ch => ch.id === result.characterId);
-        if (found && result) setSummon({ character: found, duplicate: result.duplicate, refund: result.refund, introGuarantee: previous.drawCount === 1 });
+        const results = next.lastGachaResults ?? (next.lastGachaResult ? [next.lastGachaResult] : []);
+        if (results.length) setSummon({ results, introIndex: previous.drawCount < 2 && next.drawCount >= 2 ? 1 - previous.drawCount : -1 });
       }
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
@@ -164,5 +163,5 @@ export default function App() {
   }} />;
   const props = { save, busy, artworkSuspended: !!character || !!summon, command, navigate, inspect: setCharacter };
   const view = save.battle ? <BattleView {...props} /> : page === 'dungeons' ? <DungeonsView {...props} /> : page === 'party' ? <PartyView {...props} /> : page === 'bag' ? <BagView {...props} /> : page === 'recruit' ? <RecruitView {...props} /> : page === 'gacha' ? <GachaView {...props} /> : page === 'codex' ? <CodexView {...props} /> : page === 'settings' ? <SettingsView {...props} /> : page === 'preview' ? <PreviewView {...props} /> : <HomeView {...props} />;
-  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon}><div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaReveal key={save.drawCount} character={summon.character} duplicate={summon.duplicate} refund={summon.refund} introGuarantee={summon.introGuarantee} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={() => playSound(summon.character.rarity === 'SSR' ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div></MotionSettingsProvider>;
+  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon}><div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaResults key={save.drawCount} results={summon.results} introIndex={summon.introIndex} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={ssr => playSound(ssr ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div></MotionSettingsProvider>;
 }

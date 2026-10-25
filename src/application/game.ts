@@ -1,4 +1,4 @@
-import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
+import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
@@ -10,8 +10,8 @@ function natural(value: number, label: string, allowZero = false): void {
   if (!Number.isSafeInteger(value) || value < (allowZero ? 0 : 1)) fail(`${label}が正しくありません。`);
 }
 function town(save: GameSave): void { if (save.battle) fail('探索を終了してから操作してください。'); }
-function log(save: GameSave, text: string): void {
-  save.history = [{ id: `${save.revision + 1}-${save.history.length}`, text }, ...save.history].slice(0, 12);
+function log(save: GameSave, text: string, suffix: string | number = save.history.length): void {
+  save.history = [{ id: `${save.revision + 1}-${suffix}`, text }, ...save.history].slice(0, 12);
 }
 function validateParty(save: GameSave, ids: string[], leaderId: string, content: Content): void {
   if (ids.length < 1 || ids.length > 4 || new Set(ids).size !== ids.length || ids.some(id => !save.ownedIds.includes(id))) fail('編成は所持している異なる仲間1〜4体で指定してください。');
@@ -193,29 +193,36 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'draw': {
       town(save);
       if (content.dungeons.filter(item => item.published && item.kind !== 'event').length < 10) fail('ガチャは正式コンテンツの公開時に解放されます。');
-      if (save.stones < initialGacha.stoneCost) fail(`召喚には石が${initialGacha.stoneCost}個必要です。`);
+      const count = command.count ?? 1;
+      if (count !== 1 && count !== 10) fail('祈願回数は1回または10回を指定してください。');
+      if (save.stones < initialGacha.stoneCost * count) fail(`召喚には石が${initialGacha.stoneCost * count}個必要です。`);
       const collection = gachaCollections.find(item => item.id === (command.collectionId ?? initialGacha.id));
       if (!collection) fail('選択した祈願が見つかりません。');
       const available = content.characters.filter(item => item.published && item.origin.includes('gacha') && gachaPoolIds(collection!).includes(item.id));
       if (!available.length) fail('召喚できるキャラクターがいません。');
-      const pity = gachaPity(save);
-      const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;
-      let roll = rng(save.seed); save.seed = roll.seed;
-      const ssrRate = gachaSSRRate(pity, collection) / 100;
-      const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * collection.rates.R / (collection.rates.R + collection.rates.SR) ? 'R' : 'SR';
-      const candidates = available.filter(item => item.rarity === rarity);
-      if (guaranteed && !candidates.length) fail('SSR保証対象がありません。石は消費されません。');
-      if (!candidates.length) fail('選択したレアリティの対象がありません。石は消費されません。');
-      roll = rng(save.seed); save.seed = roll.seed;
-      const selected = rarity === 'SSR' ? pickSSR(candidates, collection, roll.value, guaranteed) : candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
-      const duplicate = save.ownedIds.includes(selected.id);
-      const refund = duplicate ? initialGacha.duplicateRefund[selected.rarity] : 0;
-      save.stones = save.stones - initialGacha.stoneCost + refund;
-      save.drawCount += 1;
-      if (!duplicate) save.ownedIds.push(selected.id);
-      save.ssrPity = selected.rarity === 'SSR' ? 0 : pity + 1;
-      save.lastGachaResult = { characterId: selected.id, duplicate, refund };
-      log(save, `召喚：${selected.rarity} ${selected.name}が訪れました。`);
+      const results: GachaResult[] = [];
+      for (let index = 0; index < count; index++) {
+        const pity = gachaPity(save);
+        const guaranteed = introductoryGuarantee(save) || pity + 1 >= initialGacha.hardPity;
+        let roll = rng(save.seed); save.seed = roll.seed;
+        const ssrRate = gachaSSRRate(pity, collection) / 100;
+        const rarity = guaranteed || roll.value >= 1 - ssrRate ? 'SSR' : roll.value < (1 - ssrRate) * collection.rates.R / (collection.rates.R + collection.rates.SR) ? 'R' : 'SR';
+        const candidates = available.filter(item => item.rarity === rarity);
+        if (guaranteed && !candidates.length) fail('SSR保証対象がありません。石は消費されません。');
+        if (!candidates.length) fail('選択したレアリティの対象がありません。石は消費されません。');
+        roll = rng(save.seed); save.seed = roll.seed;
+        const selected = rarity === 'SSR' ? pickSSR(candidates, collection, roll.value, guaranteed) : candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
+        const duplicate = save.ownedIds.includes(selected.id);
+        const refund = duplicate ? initialGacha.duplicateRefund[selected.rarity] : 0;
+        save.stones = save.stones - initialGacha.stoneCost + refund;
+        save.drawCount += 1;
+        if (!duplicate) save.ownedIds.push(selected.id);
+        save.ssrPity = selected.rarity === 'SSR' ? 0 : pity + 1;
+        save.lastGachaResult = { characterId: selected.id, duplicate, refund };
+        log(save, `召喚：${selected.rarity} ${selected.name}が訪れました。`, `draw-${save.drawCount}`);
+        results.push(save.lastGachaResult!);
+      }
+      save.lastGachaResults = results;
       break;
     }
     case 'settings': {

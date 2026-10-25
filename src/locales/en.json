@@ -1114,5 +1114,15 @@
   "稲穂と小さな升を抱え、白狐と里の跡を巡る女神。普段の旅衣は土の色に近く、畦道に座っても気にしない。残った実りを等しく分け、仲間の背に薄い守りを添えてから、自分の分をそっと取り分ける。": "With rice stalks and a little wooden measure, she visits abandoned villages alongside a white fox. Her earth-colored robes are made for resting on field paths. She shares the remaining harvest fairly and lays a thin ward over her companions before quietly taking her own portion.",
   "通常SSR抽選はピックアップ50%・共通SSR50%。各グループ内は均等抽選です。初回保証・90回天井はピックアップSSRが確定します。": "Normal SSR rolls select Featured SSRs 50% / Shared SSRs 50%, equally within each group. The introductory guarantee and 90-draw hard pity always award a Featured SSR.",
   "共通SSR": "Shared SSRs",
-  "どのシリーズからも迎えられます。共通SSR獲得でも天井はリセットされ、次回のピックアップ保証は発生しません。": "Available in every collection. Obtaining a Shared SSR resets SSR pity and does not guarantee a Featured SSR on your next draw."
+  "どのシリーズからも迎えられます。共通SSR獲得でも天井はリセットされ、次回のピックアップ保証は発生しません。": "Available in every collection. Obtaining a Shared SSR resets SSR pity and does not guarantee a Featured SSR on your next draw.",
+  "祈願回数は1回または10回を指定してください。": "Choose either 1 or 10 wishes.",
+  "10連は単発10回と同じ抽選です。追加のレアリティ保証はありません。開始時に石50個が必要です。": "Ten wishes use the same odds as ten single wishes, with no additional rarity guarantee. You need 50 stones before starting.",
+  "石50個で10連祈願します。途中で一度きりの初回SSR保証を使用します。重複あり。取消では石も保証も消費しません。": "Spend 50 stones for ten wishes, including your one-time introductory SSR guarantee. Duplicates are possible. Canceling consumes neither stones nor the guarantee.",
+  "10連祈願の結果": "Ten-Wish Results",
+  "十の祈りが、結ばれる。": "Ten prayers, ten encounters.",
+  "獲得した10体": "Ten summoned characters",
+  "還元 +{0}": "Refund +{0}",
+  "新しい女神 {0}体": "New goddesses: {0}",
+  "祈願石還元 {0}個": "Stones refunded: {0}",
+  "石{0}個で10連祈願": "10 wishes · {0} stones"
 }
