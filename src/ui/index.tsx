@@ -168,3 +168,5 @@ export { CampaignDungeons } from './CampaignDungeons';
 export { CampaignStory } from './CampaignStory';
 
 export { GachaResults } from './GachaResults';
+
+export { GoldExchange } from './GoldExchange';

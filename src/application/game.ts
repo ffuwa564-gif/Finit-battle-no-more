@@ -127,6 +127,18 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       log(save, `回復薬を${command.count}個購入しました。`);
       break;
     }
+    case 'goldRecruit': {
+      town(save);
+      const offer = content.goldExchanges?.find(item => item.id === command.exchangeId && item.published);
+      const character = offer && content.characters.find(item => item.id === offer.characterId && item.published && item.rarity === 'SSR' && item.origin.length === 1 && item.origin.includes('gold_exchange'));
+      if (!offer || !character || !Number.isSafeInteger(offer.goldCost) || offer.goldCost <= 0) fail('交換できる女神が見つかりません。');
+      if (save.ownedIds.includes(character.id)) fail('このキャラクターはすでに仲間です。');
+      if (save.gold < offer.goldCost) fail('交換に必要なゴールドが不足しています。');
+      save.gold -= offer.goldCost;
+      save.ownedIds.push(character.id);
+      log(save, `${character.name}が仲間になりました。`);
+      break;
+    }
     case 'recruit': {
       town(save);
       const character = content.characters.find(item => item.id === command.characterId && item.published && item.origin.includes('recruit'));

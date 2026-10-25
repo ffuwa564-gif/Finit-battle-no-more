@@ -1135,5 +1135,22 @@
   "祈願": "Summon",
   "廃都の兵器工房で目を覚ました機巧少女。陶器の肌と氷色の瞳に、歓びも怒りも浮かばない。命乞いを聞いても、剣先は揺れない。標的を排除し、命令を完遂する。それだけが、胸の歯車に刻まれた存在理由だった。あなたの隣でも刃を収める理由は語らない。ただ、味方を狙うものから順に、無言で断ち切っていく。": "A clockwork maiden awakened in the ruined city’s weapons workshop. Neither joy nor anger crosses her porcelain face or icy eyes. Even pleas for mercy cannot shake her blade. Eliminate the target. Complete the order. These alone were engraved into the gears of her heart. At your side, she offers no explanation for sparing you. She simply cuts down, in silence, whatever threatens her allies.",
   "{0}を迎える": "Welcome {0}",
-  "新しい仲間 {0}体": "New companions: {0}"
+  "新しい仲間 {0}体": "New companions: {0}",
+  "交換できる女神が見つかりません。": "No goddess is available for this exchange.",
+  "交換に必要なゴールドが不足しています。": "You do not have enough gold for this exchange.",
+  "フォルトゥナ": "Fortuna",
+  "朽ちた金貨に宿る祈り": "Prayers in Tarnished Gold",
+  "貨幣を打つ音の絶えた造幣堂で、運命の輪を見守る女神。彼女が量るのは金貨の輝きではなく、一枚を持ち帰るまでに歩いた道のりだという。擦り切れた財布を差し出す旅人に、静かに微笑む。「幸運は、あなたがここまで運んできたものよ」古びた輪が動き出すとき、積み重ねた祈りは仲間を包む金色の守りになる。": "In a mint long silent, she watches over the wheel of fortune. She weighs not the shine of a coin, but the journey taken to bring it home. When a traveler offers a worn purse, she smiles. \"You carried your own good fortune all the way here.\" As the ancient wheel turns again, countless small prayers become a golden ward around her companions.",
+  "ゴールド交換": "Gold Exchange",
+  "ゴールド交換限定": "Gold Exchange Exclusive",
+  "交換限定": "Exchange Exclusive",
+  "物語と能力を見る": "Story & Abilities",
+  "常設・1回限り": "Permanent · Once Only",
+  "交換までのゴールド": "Gold toward exchange",
+  "所持 {0} G": "Owned: {0} G",
+  "交換済み": "Exchanged",
+  "ゴールドで迎える": "Welcome with Gold",
+  "ゴールド交換の確認": "Confirm Gold Exchange",
+  "ゴールドを消費して、この女神を仲間に迎えます。一度限りの交換です。": "Spend gold to welcome this goddess. This exchange is available once.",
+  "交換を確定する": "Confirm Exchange"
 }
