@@ -12,7 +12,7 @@ export function GachaShowcase({ collection, featured, featuredBaseChance, stones
   const guaranteed = drawCount + 1 === collection.guaranteeDraw || pity + 1 >= collection.hardPity;
   return <section className="goddess-collection" aria-label={tr(collection.title)}>
     <header className="goddess-collection__heading"><span>{collection.label}</span><h2>{localize(collection.title)}</h2><p>{localize(collection.subtitle)}</p></header>
-    <div className="goddess-collection__pair">
+    <div className={`goddess-collection__pair${featured.length === 1 ? ' goddess-collection__pair--single' : ''}`}>
       {localize(featured.map(character => <article key={character.id} className={`goddess-feature goddess-feature--${character.id}`}>
         <CharacterArtwork character={character} reducedMotion={reducedMotion} suspended={suspended} />
         <Button variant="secondary" className="goddess-feature__inspect" onClick={() => onInspect(character)} aria-label={tr(`SSR ${character.name}の詳細`)}>

@@ -12,7 +12,7 @@ export interface GachaCollection {
   duplicateRefund: { R: number; SR: number; SSR: number };
   rates: { R: number; SR: number; SSR: number };
   featuredSSRShare: number;
-  featuredIds: readonly [string, string];
+  featuredIds: readonly [string, ...string[]];
   characterIds: readonly string[];
   label: string;
 }
@@ -42,7 +42,17 @@ export const flowerGacha: GachaCollection = {
   characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike', 'artemis', 'persephone', 'hestia', 'hebe'],
   rates: { R: 80, SR: 17, SSR: 3 },
 };
-export const gachaCollections = [flowerGacha, initialGacha] as const;
+/** One exclusive SSR; existing shared R/SR and SSR groups retain the common rules. */
+export const clockworkGacha: GachaCollection = {
+  ...initialGacha,
+  id: 'clockwork-maidens',
+  label: 'CLOCKWORK MAIDENS · VOL.03',
+  title: '機巧少女 ― 無慈悲な歯車 ―',
+  subtitle: '祈りも、命乞いも、彼女の歯車を止めない。',
+  featuredIds: ['nox'],
+  characterIds: ['nox'],
+};
+export const gachaCollections = [flowerGacha, initialGacha, clockworkGacha] as const;
 /** Base forms are available in every collection; costume IDs above stay collection-exclusive. */
 export const sharedGoddessIds: readonly string[] = ['selene-standard', 'athena-standard', 'flora-standard', 'amaterasu-standard', 'izanami-standard',
   'artemis-standard', 'persephone-standard', 'hestia-standard', 'hebe-standard', 'eos-standard', 'nike-standard', 'rainbow-iris-standard', 'toyotama-standard', 'seoritsu-standard', 'wakahirume-standard', 'ukanomitama-standard'];
@@ -56,7 +66,7 @@ export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolea
 }
 export const goddessArt: Record<string, string> = {
   ...Object.fromEntries([...sharedGoddessIds, ...sharedSSRIds].map(id => [id, `gacha-${id}`])),
-  artemis: 'gacha-artemis', persephone: 'gacha-persephone', hestia: 'gacha-hestia', hebe: 'gacha-hebe',
+  nox: 'gacha-nox', artemis: 'gacha-artemis', persephone: 'gacha-persephone', hestia: 'gacha-hestia', hebe: 'gacha-hebe',
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
   seoritsu: 'gacha-seoritsu', ukanomitama: 'gacha-ukanomitama', mizuhanome: 'gacha-mizuhanome', haniyasu: 'gacha-haniyasu',
@@ -78,7 +88,7 @@ export function gachaSSRRate(pity: number, collection = initialGacha): number {
 
 /** New full-body paintings place the face near the top of the source image. */
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
-  ['artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+  ['nox', 'artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );
 
 
