@@ -10,6 +10,7 @@ const full = resolve('public/video/lunette-awakened-loop.mp4');
 const portrait = resolve('public/video/lunette-awakened-portrait-loop.mp4');
 if ([full, portrait].some(output => output === base || output === bridge)) throw new Error('Inputs must be separate from output files.');
 mkdirSync('public/video', { recursive: true });
+mkdirSync('public/art', { recursive: true });
 function ffmpeg(args) {
   const result = spawnSync('ffmpeg', ['-y', '-hide_banner', '-loglevel', 'error', ...args], { stdio: 'inherit' });
   if (result.error) throw result.error;
@@ -22,4 +23,8 @@ ffmpeg(['-i', base, '-i', bridge, '-filter_complex',
   '-map', '[out]', '-an', '-c:v', 'libx264', '-profile:v', 'baseline', '-level', '3.1', '-crf', '24', '-maxrate', '1600k', '-bufsize', '3200k', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-threads', '2', full]);
 ffmpeg(['-i', full, '-an', '-vf', 'scale=360:480,crop=320:480,setsar=1,fps=18',
   '-c:v', 'libx264', '-profile:v', 'baseline', '-level', '3.0', '-crf', '26', '-maxrate', '280k', '-bufsize', '560k', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-threads', '2', portrait]);
-console.log('Exported Lunette forward animation with a return bridge, plus lightweight portrait.');
+// Static fallbacks must share the framing of their corresponding video, rather
+// than using the differently proportioned source painting for both variants.
+ffmpeg(['-i', full, '-frames:v', '1', 'public/art/event-lunette-awakened-loop-poster.png']);
+ffmpeg(['-i', portrait, '-frames:v', '1', 'public/art/event-lunette-awakened-portrait-loop-poster.png']);
+console.log('Exported Lunette loop, lightweight portrait and matching static posters.');

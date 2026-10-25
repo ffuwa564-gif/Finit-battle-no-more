@@ -72,6 +72,8 @@ test('awakened Lunette plays on home and keeps her painting for reduced motion a
   await expect(home.locator('video')).toHaveAttribute('src', /video\/lunette-awakened-loop.mp4/);
   await expect.poll(() => home.locator('video').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(home.locator('video')).toHaveJSProperty('muted', true);
+  const fullSize = await home.locator('video').evaluate((v: HTMLVideoElement) => [v.videoWidth, v.videoHeight]);
+  await expect.poll(() => home.locator('img').evaluate((img: HTMLImageElement) => [img.naturalWidth, img.naturalHeight])).toEqual(fullSize);
   await expect.poll(() => home.locator('video').evaluate((v: HTMLVideoElement) => v.duration)).toBeGreaterThan(9.5);
   await expect(home.locator('video')).toHaveJSProperty('loop', true);
   const wrapped = await home.locator('video').evaluate((v: HTMLVideoElement) => new Promise<boolean>(resolve => {
@@ -87,7 +89,7 @@ test('awakened Lunette plays on home and keeps her painting for reduced motion a
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(home.locator('.animated-illustration')).toHaveAttribute('data-animation-state', 'static');
   await expect(home.locator('video')).not.toHaveAttribute('src');
-  await expect(home.locator('img')).toHaveAttribute('src', /event-lunette-awakened.png/);
+  await expect(home.locator('img')).toHaveAttribute('src', /event-lunette-awakened-loop-poster.png/);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.route('**/video/lunette-awakened-loop.mp4', route => route.abort());
   await page.reload(); await enterGame(page);
@@ -113,6 +115,9 @@ test('awakened Lunette uses the lightweight portrait and full animation in detai
   await expect(portrait).toHaveAttribute('src', /lunette-awakened-portrait-loop.mp4/);
   await expect.poll(() => portrait.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(portrait).toHaveJSProperty('videoWidth', 320);
+  const portraitPoster = card.locator('.animated-illustration img');
+  await expect(portraitPoster).toHaveAttribute('src', /event-lunette-awakened-portrait-loop-poster.png/);
+  await expect.poll(() => portraitPoster.evaluate((img: HTMLImageElement) => [img.naturalWidth, img.naturalHeight])).toEqual([320, 480]);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-portrait.png') });
   await card.getByRole('button', { name: '星時計・ルネット・リーダー', exact: true }).click();
   const video = page.getByRole('dialog').locator('video');
