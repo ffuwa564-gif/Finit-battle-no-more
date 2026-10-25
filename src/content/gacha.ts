@@ -37,7 +37,7 @@ export const flowerGacha: GachaCollection = {
   title: '神々の装い ― 和の花宴 ―',
   subtitle: '遠き地の女神たちが、自ら選んだ晴れ着で月下の花宴へ。',
   featuredIds: ['selene', 'athena'],
-  characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'],
+  characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike', 'artemis', 'persephone', 'hestia', 'hebe'],
   rates: { R: 80, SR: 17, SSR: 3 },
 };
 export const gachaCollections = [flowerGacha, initialGacha] as const;
@@ -45,6 +45,7 @@ export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolea
   return save.drawCount + 1 === initialGacha.guaranteeDraw;
 }
 export const goddessArt: Record<string, string> = {
+  artemis: 'gacha-artemis', persephone: 'gacha-persephone', hestia: 'gacha-hestia', hebe: 'gacha-hebe',
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
   seoritsu: 'gacha-seoritsu', ukanomitama: 'gacha-ukanomitama', mizuhanome: 'gacha-mizuhanome', haniyasu: 'gacha-haniyasu',
@@ -66,5 +67,5 @@ export function gachaSSRRate(pity: number, collection = initialGacha): number {
 
 /** New full-body paintings place the face near the top of the source image. */
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
-  ['seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+  ['artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );
