@@ -211,12 +211,12 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
 }] : []);
 const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portraitMotionId).map(char => ({
-  id: char.portraitMotionId!, path: `video/${char.id}-portrait${char.id === 'athena' ? '-anime' : char.id === 'selene' ? '-v2' : ''}.mp4`, kind: 'video', width: 320, height: 480,
+  id: char.portraitMotionId!, path: `video/${char.id}-portrait${char.id === 'athena' ? '-anime' : char.id === 'selene' || char.id === 'lunette' || char.id === 'lunette-awakened' ? '-v2' : ''}.mp4`, kind: 'video', width: 320, height: 480,
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
 }));
 const menuAssets: AssetDef[] = [
-  { id: 'lunette-motion', path: 'video/lunette.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Lunette clockwork illustration animated with Runway; task ef1010c6-3487-46f6-979c-79381bec9c83.' },
-  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project awakened Lunette clockwork illustration animated with Runway; task 3f0e60a1-b92b-4a36-82f0-54aad04c7be0.' },
+  { id: 'lunette-motion', path: 'video/lunette-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Lunette clockwork illustration animated with Runway; task 1d2390c1-634c-4a9b-bdac-6c0fd218f061; expressive idle revision 2.' },
+  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project awakened Lunette clockwork illustration animated with Runway; task b64b5cd3-5b25-41b4-9cd6-f77486db0c97; expressive idle revision 2.' },
   { id: 'gacha-selene-motion', path: 'video/gacha-selene-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Selene kimono illustration animated with Runway; task cdf471e0-c6d0-4ff6-871e-854922b3beac.' },
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },
   { id: 'seris-awakened-motion', path: 'video/seris-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Seris dawn illustration animated with Runway; task 5e312a67-100d-448a-afa6-b2b00b7a8bb7.' },

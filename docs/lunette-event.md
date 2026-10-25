@@ -34,3 +34,13 @@
 `tests/clockwork-bits.test.ts` は周期、展開中の予告、射撃対象、障壁・かばう、停止条件、保存と再生、専用素材の確定・交換、同時編成制約、不正な設定とセーブの拒否を検証する。`e2e/clockwork-event.spec.ts` はイベント紹介の分離と英語、実際の展開・射撃、再読み込み、動き軽減を検証する。
 
 `docs/reports/lunette-balance.json` は各難度20シードずつの編成シミュレーション。均衡作戦、薬5個、HP65%未満で薬を使用。initialは初期4人・リオラリーダー、midはエレイン／リオラ／セリス／ルネット・リオラリーダー、ssrはコノハナサクヤヒメ／イザナミ／アマテラス／ルネット・イザナミリーダー。実機のiPhone検証を示すものではない。
+
+## アニメーション改訂（v2）
+
+旧版の動きが弱いため、通常・覚醒の原画から10秒動画を各1本再生成。得意げな表情、首の傾き、鍵を持つ手首、機械うさぎの浮遊と耳の動きを強めた。生成結果では通常版に口を開けた笑顔も含まれる。固定構図を保ち、逆再生は使わない。
+
+- 通常版：`1d2390c1-634c-4a9b-bdac-6c0fd218f061`
+- 覚醒版：`b64b5cd3-5b25-41b4-9cd6-f77486db0c97`
+- 今回100クレジット、生成直後の残高296。旧版は作業用artifactsへ退避。
+- `node scripts/export-lunette-motion.mjs artifacts/lunette-motion-v2` で無音の720×1080・24fpsと320×480・18fpsへ書き出す。H.264 Baseline、yuv420p、faststartを使用。
+- キャッシュを更新するため、全画面は`lunette-v2.mp4`／`lunette-awakened-v2.mp4`、顔枠は`lunette-portrait-v2.mp4`／`lunette-awakened-portrait-v2.mp4`へ参照を変更。既存の動画制御を通じ、イベント・詳細・敵・味方枠に適用する。
