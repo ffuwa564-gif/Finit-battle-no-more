@@ -18,7 +18,7 @@ export interface GachaCollection {
 export const initialGacha: GachaCollection = {
   id: 'goth-izanami',
   label: 'GOTHIC GODDESSES · VOL.01',
-  characterIds: ['iris', 'mireille', 'asteria', 'evelyn', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime'],
+  characterIds: ['iris', 'mireille', 'asteria', 'evelyn', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu'],
   title: 'ゴス☆イザナミコレクション',
   subtitle: '神々も、今宵は黒いレースを纏う。',
   stoneCost: 5,
@@ -47,6 +47,7 @@ export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolea
 export const goddessArt: Record<string, string> = {
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
+  seoritsu: 'gacha-seoritsu', ukanomitama: 'gacha-ukanomitama', mizuhanome: 'gacha-mizuhanome', haniyasu: 'gacha-haniyasu',
   toyotama: 'gacha-toyotama', wakahirume: 'gacha-wakahirume', iwanagahime: 'gacha-iwanagahime', kukurihime: 'gacha-kukurihime',
   evelyn: 'gacha-izanami', asteria: 'gacha-amaterasu', iris: 'gacha-uzume', mireille: 'gacha-sakuya',
 };
@@ -65,5 +66,5 @@ export function gachaSSRRate(pity: number, collection = initialGacha): number {
 
 /** New full-body paintings place the face near the top of the source image. */
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
-  ['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+  ['seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );
