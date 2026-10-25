@@ -7,8 +7,8 @@ test('both collections show the same base forms, correct chances, and linked cos
   await page.setViewportSize({ width: 390, height: 844 }); await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#gacha'); await enterGame(page);
   const pool = page.getByRole('region', { name: shared, exact: true });
-  await expect(pool.locator('.character-card')).toHaveCount(5);
-  await expect(pool).toContainText('SR · 通常の姿 · 共通'); await expect(pool).toContainText('基準排出率 2.4286%');
+  await expect(pool.locator('.character-card')).toHaveCount(13);
+  await expect(pool).toContainText('SR · 通常の姿 · 共通'); await expect(pool).toContainText('基準排出率 1.5455%');
   await pool.getByRole('button', { name: 'セレネ／月明かりの導き手の詳細', exact: true }).click();
   const dialog = page.getByRole('dialog'); await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene-standard.webp$/);
   await expect(dialog.locator('.goddess-form')).toHaveCount(2); await expect(dialog).toContainText('通常の姿と特別な装いは別々に迎えられます。');
@@ -19,7 +19,7 @@ test('both collections show the same base forms, correct chances, and linked cos
   await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene-standard.webp$/);
   await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
   await page.getByRole('button', { name: 'ゴス☆イザナミコレクション', exact: true }).click();
-  await expect(pool.locator('.character-card')).toHaveCount(5); await expect(pool).toContainText('基準排出率 2.125%');
+  await expect(pool.locator('.character-card')).toHaveCount(13); await expect(pool).toContainText('基準排出率 1.4167%');
   await pool.scrollIntoViewIfNeeded(); await page.screenshot({ path: testInfo.outputPath('shared-base-forms.png') });
   await page.goto('/#settings'); await page.getByRole('button', { name: 'English', exact: true }).click(); await page.goto('/#gacha');
   await expect(page.getByRole('region', { name: 'Base Forms — Shared Pool', exact: true })).toContainText('Moonlit Guide');
@@ -30,7 +30,7 @@ test('a shared form can be summoned, selected for home, and exported without a c
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/#gacha'); await enterGame(page);
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts'); const save = (await loadSave())!; const revision = save.revision;
-    save.seed = 5; save.drawCount = 10; save.stones = 20; save.settings.reducedMotion = true; save.revision++; await persistSave(save, revision);
+    save.seed = 2; save.drawCount = 10; save.stones = 20; save.settings.reducedMotion = true; save.revision++; await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page); await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
   const dialog = page.getByRole('dialog'); await expect(dialog).toContainText('朝庭の花守り'); await expect(dialog.locator('.gacha-reveal__rarity')).toHaveText('R');
@@ -41,4 +41,35 @@ test('a shared form can be summoned, selected for home, and exported without a c
   await page.goto('/#settings'); const download = page.waitForEvent('download'); await page.getByRole('button', { name: 'バックアップを保存', exact: true }).click();
   const file = await download; const save = JSON.parse(await readFile((await file.path())!, 'utf8')).save;
   expect(save.ownedIds).toContain('flora-standard'); expect(save.ownedIds).not.toContain('flora'); expect(save.settings.homeCharacterId).toBe('flora-standard'); expect(save.stones).toBe(15);
+});
+
+test('eight additional base forms load their own art and switch to their existing costumes on mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/#gacha'); await enterGame(page);
+  const pool = page.getByRole('region', { name: shared, exact: true });
+  const additions = [
+    ['アルテミス', '月森の道しるべ', 'artemis'],
+    ['ペルセポネ', '芽吹きを待つ庭', 'persephone'],
+    ['ヘスティア', '帰り道の灯火', 'hestia'],
+    ['ヘベ', 'ひと息の茶会', 'hebe'],
+    ['エオス', '朝風の旅人', 'eos'],
+    ['ニケ', '若葉の誓い', 'nike'],
+    ['イリス', '雨上がりの便り', 'rainbow-iris'],
+    ['トヨタマヒメ', '凪を運ぶ旅衣', 'toyotama'],
+  ];
+  for (const [name, epithet, id] of additions) {
+    await pool.getByRole('button', { name: `${name}／${epithet}の詳細`, exact: true }).click();
+    const dialog = page.getByRole('dialog'); const art = dialog.locator('.detail-art img');
+    await expect(art).toHaveAttribute('src', new RegExp(`gacha-${id}-standard.webp$`));
+    await expect.poll(() => art.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBe(1024);
+    await expect(dialog.locator('.goddess-form')).toHaveCount(2);
+    await expect(dialog.locator('video')).toHaveCount(0);
+    await expect(dialog).toContainText('リーダースキル');
+    await dialog.locator('.goddess-form').filter({ hasNotText: epithet }).click();
+    await expect(art).not.toHaveAttribute('src', /-standard.webp$/);
+    await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
+  }
+  await pool.screenshot({ path: testInfo.outputPath('thirteen-base-forms.png') });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
 });

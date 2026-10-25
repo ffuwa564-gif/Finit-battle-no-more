@@ -55,7 +55,7 @@ it('does not silently substitute an SSR when the SR pool is unavailable',()=>{
 });
 
 it('recruits both exclusive R goddesses and refunds exactly one stone for a duplicate',()=>{
- for(const [seed,id] of [[8,'eos'],[0,'nike']] as const){
+ for(const [seed,id] of [[8,'eos'],[10,'nike']] as const){
   let save=createInitialSave(content,seed);save.drawCount=10;save.stones=10;
   save=applyCommand(save,{type:'draw',collectionId:flowerGacha.id},content);
   expect(save.lastGachaResult).toMatchObject({characterId:id,duplicate:false,refund:0});expect(save.ownedIds).toContain(id);expect(save.stones).toBe(5);
