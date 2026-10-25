@@ -1076,5 +1076,12 @@
   "夜明けを閉じ込めた水門を開く。": "You open the sluice that holds back dawn.",
   "リゼットが最後の道で待つ。": "Lisette waits on the final path.",
   "弔鐘の剣姫を越え、街の朝を解き放つ。": "You face the swordswoman of the mourning bell and release the city’s morning.",
-  "。": "."
+  "。": ".",
+  "月盾の稽古": "Moonshield Rehearsal",
+  "守る一手、砕く一手。": "One move to protect. One move to break.",
+  "セレネとアテナに挑む2連戦。攻撃重視では有効な障壁破壊・強化解除、生存重視では守護・回復を優先します。瀕死の仲間への保護は維持。3ターンごとの大技に備え、大技で障壁を解く隙を狙いましょう。戦利品はなく、使用した薬は消費します。": "Two battles against Selene and Athena. Offense prioritizes useful barrier breaking and dispelling; survival favors protection and healing. Critically wounded allies remain protected. Prepare for a heavy strike every third turn and exploit the opening as the boss releases her barrier. No loot; healing items used are consumed.",
+  "月盾の一撃": "Moonshield Strike",
+  "突破優先": "Counter priority",
+  "生存優先": "Survival priority",
+  "ボスの大技予告": "Boss Heavy-Attack Forecast"
 }

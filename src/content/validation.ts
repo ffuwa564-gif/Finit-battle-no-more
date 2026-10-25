@@ -127,6 +127,7 @@ export function validateContent(content: Content): string[] {
     reject(!finale?.bossScale || !finale.waves.at(-1)?.[0]?.boss, `chapters/${chapter.id}: scaled finale boss required`);
   }
   for (const dungeon of content.dungeons) {
+    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || dungeon.kind !== 'trial' || !dungeon.bossStrike, `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
     if (dungeon.chapterId) reject(!chapterIds.has(dungeon.chapterId) || !campaignStages.has(dungeon.id), `dungeons/${dungeon.id}: unknown chapter`);
     reject(dungeon.kind !== undefined && !['normal', 'event', 'trial'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.kind === 'trial') {
@@ -136,7 +137,7 @@ export function validateContent(content: Content): string[] {
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
     if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
-    if (dungeon.bossStrike) { const strike = dungeon.bossStrike; reject(!dungeon.chapterId || !chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id) || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`); }
+    if (dungeon.bossStrike) { const strike = dungeon.bossStrike; reject(!(dungeon.kind === 'trial' && dungeon.tacticalCommands === true) && (!dungeon.chapterId || !chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id)) || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`); }
     if (dungeon.bossBits) {
       const bits = dungeon.bossBits;
       reject(!dungeon.eventId || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
