@@ -60,7 +60,7 @@ if not args.audio_only:
  picture=work/'picture.mp4'
  inputs=[]
  for f in segments:inputs+=['-i',f]
- joined=''.join(f'[{i}:v]settb=AVTB,setpts=PTS-STARTPTS[v{i}];' for i in range(len(segments)))+''.join(f'[v{i}]' for i in range(len(segments)))+f'concat=n={len(segments)}:v=1:a=0,fps=30[v]'
+ joined=''.join(f'[{i}:v]settb=AVTB,setpts=PTS-STARTPTS[v{i}];' for i in range(len(segments)))+''.join(f'[v{i}]' for i in range(len(segments)))+f'concat=n={len(segments)}:v=1:a=0,fps=30,tpad=stop_mode=clone:stop_duration=0.1[v]'
  ff(*inputs,'-filter_complex',joined,'-map','[v]','-frames:v',450,'-an','-c:v','libx264','-threads',4,'-preset','fast','-crf',18,'-pix_fmt','yuv420p',picture)
 # Synthetic transition accents: wind rises, short low impacts, a glistening search click.
 sr=48000;mix=np.zeros((15*sr,2),dtype=np.float64);rng=np.random.default_rng(2013)
