@@ -1,0 +1,64 @@
+import { describe, expect, it } from 'vitest';
+import { content } from '../src/content';
+import { accelerationPercent } from '../src/domain/acceleration';
+import { advanceReplay, createBattle, resolveRound, usePotion } from '../src/domain/engine';
+import { createInitialSave } from '../src/application/game';
+import { assertSaveCompatibility } from '../src/platform/save';
+import type { Battle } from '../src/domain/types';
+
+function ready(battle: Battle): Battle {
+  while (battle.phase === 'playing') battle = advanceReplay(battle, content);
+  return battle;
+}
+function fixture(round = 1): Battle {
+  const battle = ready(createBattle(content, ['elaine', 'liora', 'seris', 'noelle'], 'elaine', 'silent-cathedral', 1, 42, 'acceleration'));
+  battle.round = round;
+  for (const unit of battle.units) {
+    unit.hp = unit.maxHp = 10000; unit.attack = 100; unit.defense = 0;
+    unit.cooldowns = Object.fromEntries(content.characters.find(char => char.id === unit.characterId)!.skillIds.map(id => [id, 1000]));
+  }
+  return battle;
+}
+describe('shared acceleration passive skill', () => {
+  it.each([[1,100],[2,105],[5,120],[21,200],[41,300]])('uses turn %i attack on both sides without changing base stats', (round, amount) => {
+    const battle = fixture(round), before = structuredClone(battle);
+    const resolved = resolveRound(battle, content).battle;
+    const attacks = resolved.events.filter(event => event.kind === 'attack');
+    for (const side of ['party', 'enemy']) {
+      const hits = attacks.filter(event => battle.units.find(unit => unit.uid === event.actorId)?.side === side);
+      expect(hits.length).toBeGreaterThan(0); expect(hits.every(event => event.amount === amount)).toBe(true);
+    }
+    expect(battle).toEqual(before); expect(resolved.units.every(unit => unit.attack === 100)).toBe(true);
+  });
+  it('stacks with attack buffs before defense, while barriers still mitigate', () => {
+    const battle = fixture(5), attacker = battle.units.find(unit => unit.characterId === 'seris')!;
+    attacker.buffUntil = 20; attacker.buffStrength = 10;
+    for (const unit of battle.units.filter(unit => unit.side === 'enemy')) unit.defense = 100;
+    const result = resolveRound(battle, content).battle;
+    expect(result.events.find(event => event.actorId === attacker.uid && event.kind === 'attack')!.amount).toBe(94);
+    const barrier = fixture(5);
+    for (const unit of barrier.units.filter(unit => unit.side === 'party')) { unit.barrier=10000; unit.barrierUntil=20; }
+    expect(resolveRound(barrier, content).battle.events.filter(event => event.kind==='attack' && event.actorId!.startsWith('enemy:')).every(event => event.amount === 0)).toBe(true);
+  });
+  it('does not increase healing, potion recovery or maximum HP', () => {
+    const heal = (round: number) => {
+      const battle=fixture(round), healer=battle.units.find(unit=>unit.characterId==='elaine')!;
+      healer.cooldowns={}; const target=battle.units.find(unit=>unit.characterId==='noelle')!; target.hp=1000;
+      return resolveRound(battle,content).battle.events.find(event=>event.actorId===healer.uid&&event.skillId==='heal-14')!.amount;
+    };
+    expect(heal(21)).toBe(heal(1));
+    const battle=fixture(21),target=battle.units[0]!;target.hp=100;
+    expect(usePotion(battle,target.uid).units[0]!.hp).toBe(3100);
+    expect(resolveRound(battle,content).battle.units.every(unit=>unit.maxHp===10000)).toBe(true);
+  });
+  it('persists and replays a boosted round exactly once, then resets on the next wave', () => {
+    const battle=fixture(10);expect(resolveRound(JSON.parse(JSON.stringify(battle)),content)).toEqual(resolveRound(battle,content));
+    const resolved=resolveRound(battle,content).battle,save=createInitialSave(content);save.battle=resolved;
+    assertSaveCompatibility(JSON.parse(JSON.stringify(save)),content);
+    const replayed=ready(JSON.parse(JSON.stringify(resolved)));
+    expect(replayed.units).toEqual(resolved.units);expect(replayed.round).toBe(11);expect(accelerationPercent(replayed.round)).toBe(50);
+    for(const unit of replayed.units) {if(unit.side==='enemy')unit.hp=1;else{unit.attack=100000;unit.speed=100;}}
+    const nextWave=ready(resolveRound(replayed,content).battle);
+    expect(nextWave.wave).toBe(1);expect(nextWave.round).toBe(1);expect(accelerationPercent(nextWave.round)).toBe(0);
+  });
+});

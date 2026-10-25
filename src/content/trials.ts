@@ -29,6 +29,15 @@ export const tacticalTrial: DungeonDef = {
   id: 'moonshield-rehearsal', kind: 'trial', name: '月盾の稽古', subtitle: '守る一手、砕く一手。',
   description: 'セレネとアテナに挑む2連戦。攻撃重視では有効な障壁破壊・強化解除、生存重視では守護・回復を優先します。瀕死の仲間への保護は維持。3ターンごとの大技に備え、大技で障壁を解く隙を狙いましょう。戦利品はなく、使用した薬は消費します。',
   artId: 'athena-art', published: true, previousDungeonId: 'silent-cathedral', tacticalCommands: true,
-  bossScale: { hp: 300, attack: 120 }, bossStrike: { every: 3, power: 200, name: '月盾の一撃' },
+  bossScale: { hp: 350, attack: 120 }, bossStrike: { every: 3, power: 200, name: '月盾の一撃' },
   waves: ['selene', 'athena'].map(characterId => [{ characterId, boss: true }]),
+};
+
+/** Intentionally out of reach today. The shared formula computes 100.0 from these real stats. */
+export const impossibleGoddessTrial: DungeonDef = {
+  ...goddessTrial,
+  id: 'goddess-procession-impossible', name: '女神の試練・不可侵', subtitle: '定数100。今は、届かなくてもいい。',
+  description: '定数100.0の超高難度4連戦。現時点での攻略を前提に調整していません。HP61倍・攻撃10倍のSSR女神、セレネ、アテナ、イザナミ、アマテラスに挑みます。HPは次のWaveへ引き継ぎ。素材・ゴールド・祈願石は獲得せず、踏破記録のみが残ります。使用した回復薬は消費されます。',
+  previousDungeonId: 'silent-cathedral',
+  bossScale: { hp: 6100, attack: 1000 },
 };
