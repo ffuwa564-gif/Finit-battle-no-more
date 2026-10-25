@@ -1,14 +1,12 @@
 import type * as ToneTypes from 'tone';
 import type { SoundCue } from './sound-cues';
 import type { Rarity, SkillTemplate } from '../domain/types';
-import { skillSoundProfiles } from '../domain/skill-info';
+import { createCombatSynth, type CombatSynth } from './combat-synth';
 
 let Tone: typeof import('tone') | undefined;
 let gain: ToneTypes.Gain | undefined;
 let voice: ToneTypes.PolySynth | undefined;
-let noise: ToneTypes.NoiseSynth | undefined;
-let skillVoice: ToneTypes.PolySynth<ToneTypes.FMSynth> | undefined;
-let impact: ToneTypes.MembraneSynth | undefined;
+let combat: CombatSynth | undefined;
 let limiter: ToneTypes.Limiter | undefined;
 let lastCueAt = 0;
 const pending: { kind: SoundCue; rarity?: Rarity; skill?: SkillTemplate; at: number }[] = [];
@@ -39,24 +37,8 @@ export async function enableAudio(): Promise<void> {
           envelope: { attack: 0.008, decay: 0.16, sustain: 0.08, release: 0.45 },
           volume: -3,
         }).connect(gain);
-        noise = new tone.NoiseSynth({
-          noise: { type: 'pink' },
-          envelope: { attack: 0.002, decay: 0.09, sustain: 0, release: 0.06 },
-          volume: -12,
-        }).connect(gain);
-        // Dedicated voices add body and a bright edge without making UI clicks louder.
-        skillVoice = new tone.PolySynth(tone.FMSynth, {
-          harmonicity: 2, modulationIndex: 3,
-          envelope: { attack: 0.004, decay: 0.18, sustain: 0.05, release: 0.45 },
-          modulationEnvelope: { attack: 0.002, decay: 0.12, sustain: 0, release: 0.2 },
-          volume: -8,
-        }).connect(gain);
-        impact = new tone.MembraneSynth({
-          pitchDecay: 0.035, octaves: 4,
-          envelope: { attack: 0.002, decay: 0.18, sustain: 0, release: 0.12 },
-          volume: -6,
-        }).connect(gain);
       }
+      if (!combat) combat = await createCombatSynth(tone, gain);
       active = tone.getContext().state === 'running';
       if (active) {
         const queued = pending.splice(0).filter(cue => performance.now() - cue.at < 2000);
@@ -90,7 +72,7 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
     const notes = (sequence: string[], spacing = 0.07, duration = 0.19, velocity = 0.5) => {
       sequence.forEach((note, index) => voice?.triggerAttackRelease(note, duration, now + index * spacing, velocity));
     };
-    switch (kind) {
+    if (!combat?.play(kind, skill, now)) switch (kind) {
       case 'confirm': notes(['D5', 'A5'], 0.035, 0.085, 0.42); break;
       case 'cancel': notes(['A4', 'D4'], 0.035, 0.085, 0.42); break;
       case 'heal': notes(['D4', 'F4', 'A4', 'D5'], 0.08, 0.3, 0.42); break;
@@ -113,36 +95,9 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
       case 'depart': notes(['D3', 'A3', 'D4', 'A4'], 0.09, 0.3, 0.52); break;
       case 'victory': notes(['D4', 'F4', 'A4', 'D5', 'A5', 'D6'], 0.1, 0.5, 0.55); break;
       case 'error': notes(['Eb4', 'D4'], 0.1, 0.16, 0.42); break;
-      case 'area': noise?.triggerAttackRelease(0.1, now, 0.35); notes(['D3', 'A3', 'D4'], 0.035, 0.16, 0.4); break;
-      case 'attack':
- noise?.triggerAttackRelease(0.055, now, 0.3); notes(['A3', 'D3'], 0.025, 0.075, 0.38); break;
+      case 'area': notes(['D3', 'A3', 'D4'], 0.035, 0.16, 0.4); break;
+      case 'attack': notes(['A3', 'D3'], 0.025, 0.075, 0.38); break;
       default: notes(['D5'], 0, 0.07, 0.2);
-    }
-    if (skill && skillVoice && impact) {
-      const shimmer = (sequence: string[], spacing: number, duration = 0.26) => {
-        sequence.forEach((note, index) => skillVoice?.triggerAttackRelease(note, duration, now + 0.025 + index * spacing, 0.75));
-      };
-      switch (skillSoundProfiles[skill]) {
-        case 'attack':
-          impact.triggerAttackRelease('D2', 0.14, now, 0.85);
-          noise?.triggerAttackRelease(0.09, now + 0.07, 0.7);
-          shimmer(skill === 'pierce' ? ['D6', 'A5', 'D4'] : skill === 'drain' ? ['D4', 'Ab4', 'D5'] : ['D5', 'A4', 'D4'], 0.045, 0.19);
-          if (skill === 'shatter' || skill === 'dawn') shimmer(['A5', 'D6', 'F6'], 0.055, 0.4);
-          break;
-        case 'area':
-          impact.triggerAttackRelease('D1', 0.24, now, 0.95);
-          noise?.triggerAttackRelease(0.2, now + 0.09, 0.85);
-          shimmer(['D4', 'A4', 'D5', 'F5', 'A5'], 0.045, 0.4);
-          break;
-        case 'heal': shimmer(['D5', 'F5', 'A5', 'D6', 'F6'], 0.075, 0.4); break;
-        case 'guard':
-          impact.triggerAttackRelease('A2', 0.12, now, 0.7);
-          shimmer(['D4', 'A4', 'D5'], 0.065, 0.45); break;
-        case 'buff': shimmer(['F4', 'A4', 'C5', 'F5', 'A5'], 0.065, 0.35); break;
-        case 'debuff':
-          shimmer(['D5', 'Ab4', 'Eb4', 'D3'], 0.075, 0.35);
-          noise?.triggerAttackRelease(0.12, now + 0.08, 0.5); break;
-      }
     }
     window.dispatchEvent(new CustomEvent('game:se', { detail: { kind, rarity, skill } }));
   } catch {
