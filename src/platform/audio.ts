@@ -73,6 +73,7 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
       sequence.forEach((note, index) => voice?.triggerAttackRelease(note, duration, now + index * spacing, velocity));
     };
     if (!combat?.play(kind, skill, now)) switch (kind) {
+      case 'ultimate': notes(['D3', 'A3', 'D4', 'F4', 'A4', 'D5'], .13, .4, .5); break;
       case 'confirm': notes(['D5', 'A5'], 0.035, 0.085, 0.42); break;
       case 'cancel': notes(['A4', 'D4'], 0.035, 0.085, 0.42); break;
       case 'heal': notes(['D4', 'F4', 'A4', 'D5'], 0.08, 0.3, 0.42); break;

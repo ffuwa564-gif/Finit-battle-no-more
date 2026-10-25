@@ -42,7 +42,7 @@ export function CombatFeedback({ event, before, reducedMotion }: { event?: Battl
   useEffect(() => {
     if (!event) return;
     const changes = eventHpChanges(event, latestBefore.current);
-    const timer = setTimeout(() => window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes } })), 0);
+    const timer = setTimeout(() => window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes } })), event.ultimate ? 1100 : 0);
     return () => clearTimeout(timer);
   }, [event?.id]);
   useEffect(() => () => { for (const timer of timers.current) clearTimeout(timer); }, []);

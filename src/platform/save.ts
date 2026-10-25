@@ -21,6 +21,8 @@ function validUnit(value: unknown): boolean {
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
   if (Number(value.maxHp) < 1 || Number(value.hp) > Number(value.maxHp) || !record(value.cooldowns) || Object.values(value.cooldowns).some(item => !count(item))) return false;
   if (value.ailments !== undefined && (!record(value.ailments) || Object.entries(value.ailments).some(([id,state]) => !(ailments as readonly string[]).includes(id) || !record(state) || !count(state.turns) || state.turns < 1 || state.turns > 2 || !nonempty(state.sourceId)))) return false;
+  if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
+  if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
   if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
@@ -36,6 +38,7 @@ function validEvent(value: unknown): boolean {
   if (value.rarity !== undefined && !['common', 'rare', 'epic'].includes(value.rarity as string)) return false;
   if (value.clockAction !== undefined && (!['restore', 'break', 'finale'].includes(value.clockAction as string) || value.kind !== ({ restore: 'guard', break: 'debuff', finale: 'area' } as Record<string, string>)[String(value.clockAction)])) return false;
   if (value.directive !== undefined && !['aggressive', 'survival'].includes(value.directive as string)) return false;
+  if (value.ultimate !== undefined && typeof value.ultimate !== 'boolean') return false;
   if (value.bossStrike !== undefined && typeof value.bossStrike !== 'boolean') return false;
   if (value.ailment !== undefined && !(ailments as readonly string[]).includes(value.ailment as string)) return false;
   if (value.statusAction !== undefined && (!['inflict', 'resist', 'skip', 'recover', 'friendly_fire'].includes(value.statusAction as string) || value.ailment === undefined)) return false;
