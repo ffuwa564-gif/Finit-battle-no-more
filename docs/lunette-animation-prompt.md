@@ -35,11 +35,11 @@ A single locked-off shot animating this exact detailed 2D anime illustration. Th
 - 浮遊ウサギは小さく上下させ、座っているウサギは座ったままにする。
 - 最初に4秒で試し、出来を確認してから8秒へ進めた。長さの変更でも再生成されるため、完成版も確認する。
 
-このプロンプトは開始・終了フレームの一致を指定していない。ゲームでは通常のループ再生を使うが、継ぎ目のないループを保証するものではない。
+この8秒版プロンプトは開始・終了フレームの一致を指定していない。当初はそのままループ再生していたが、その後の依頼で約2秒の復帰動作を追加した。[ループ補間の記録](lunette-loop-bridge.md)を参照。
 
 ## ループ再生で分かった課題
 
-生成後、ユーザーから「ループしたときに違和感がある」との報告があった。今回は修正不要との指示のため、動画はそのまま採用し、今後の制作に向けて記録する。
+生成後、ユーザーから「ループしたときに違和感がある」との報告があった。当初は修正不要との指示だったため、その時点では動画をそのまま採用した。以下は当初の問題と原因の記録であり、その後の依頼で[補間動画を追加](lunette-loop-bridge.md)している。
 
 ### 確認できたこと
 
@@ -58,11 +58,11 @@ A single locked-off shot animating this exact detailed 2D anime illustration. Th
 - 対応モデルでは終了フレームの指定も検討する。ただし、同じ絵を指定するだけで自然な継ぎ目が保証されるわけではない。
 - 短い試作でも数回繰り返して見て、動画単体の自然さとループ境界の自然さをそれぞれ確認する。
 
-以上は次回に向けた方針で、今回のプロンプトや動画へ適用済みの修正ではない。
+上記は当初記録した未検証の方針。後日の補間では、元動画の末尾・冒頭フレームを指定して復帰動作を別途生成した。この8秒版のプロンプト本文や元の演技は変更していない。
 
 ## ゲームに組み込んだファイル
 
-- 全身用：[`public/video/lunette-awakened.mp4`](../public/video/lunette-awakened.mp4)（720×960・24fps）
-- 顔枠用：[`public/video/lunette-awakened-portrait.mp4`](../public/video/lunette-awakened-portrait.mp4)（320×480・18fps）
+- 全身用：[`public/video/lunette-awakened-loop.mp4`](../public/video/lunette-awakened-loop.mp4)（720×960・24fps）
+- 顔枠用：[`public/video/lunette-awakened-portrait-loop.mp4`](../public/video/lunette-awakened-portrait-loop.mp4)（320×480・18fps）
 
-両方とも8秒版から書き出した無音のH.264 MP4。表示・フォールバックの仕様は[時計庭のうさぎ姫](lunette-event.md#原画と表示)を参照。
+現在の両ファイルは、8秒版に約2秒の復帰動作を連結して書き出した無音のH.264 MP4。初回の8秒版は[Git履歴](https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/cf7da7a6347ab7c5858908e76655882c276da5cf/public/video/lunette-awakened.mp4)に保持している。表示・フォールバックの仕様は[時計庭のうさぎ姫](lunette-event.md#原画と表示)を参照。
