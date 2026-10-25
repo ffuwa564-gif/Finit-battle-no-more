@@ -5,7 +5,7 @@ import { baseStats, rng } from '../src/domain/engine';
 import { pickXR, xrChapterCleared, xrGachaLock } from '../src/domain/xr-gacha';
 import { assertSaveCompatibility, assertValidSave } from '../src/platform/save';
 import { gachaCollections, gachaPoolIds, gachaPity } from '../src/content/gacha';
-import type { CharacterDef, Content } from '../src/domain/types';
+import type { Content } from '../src/domain/types';
 
 function futureContent(): Content {
   const definitions = structuredClone(content);
@@ -18,15 +18,7 @@ function futureContent(): Content {
     }
     definitions.chapters!.push({ id, number, title: id, subtitle: id, bossHint: id, dungeonIds: stages });
   }
-  const source = definitions.characters.find(character => character.id === 'nox')!;
-  for (const template of ['attack', 'pierce'] as const) {
-    const original = definitions.skills.find(skill => skill.template === template)!;
-    definitions.skills.push({ ...original, id: `test-xr-${template}-40`, strength: 40 });
-  }
-  const xr: CharacterDef = { ...source, id: 'test-xr', familyId: 'test-xr', rarity: 'XR', origin: ['xr_gacha'], strength: 40, motionId: undefined, portraitMotionId: undefined, skillIds: ['test-xr-attack-40', 'test-xr-pierce-40'] };
-  definitions.characters.push(xr);
   definitions.xrGacha!.published = true;
-  definitions.xrGacha!.characterIds.push(xr.id);
   return definitions;
 }
 function unlocked(definitions: Content, seed = 42) {
@@ -53,6 +45,12 @@ describe('future XR summons', () => {
     expect(() => applyCommand(save, { type: 'drawXR' }, content)).toThrow('第10章');
     expect(save).toEqual(before);
     expect(createInitialSave(content).astralStones).toBe(0);
+    const roster = content.characters.filter(character => character.rarity === 'XR');
+    expect(roster.map(character => character.id)).toEqual(['astraea']);
+    expect(content.xrGacha!.characterIds).toContain('astraea');
+    expect(content.xrGacha!.published).toBe(false);
+    expect(createInitialSave(content).ownedIds).not.toContain('astraea');
+    expect(roster[0].origin).toEqual(['xr_gacha']);
     for (const banner of gachaCollections) expect(gachaPoolIds(banner).every(id => content.characters.find(character => character.id === id)!.rarity !== 'XR')).toBe(true);
   });
   it('requires every chapter through ten, a published roster and premium currency', () => {
@@ -79,19 +77,19 @@ describe('future XR summons', () => {
     const xr = definitions.characters.find(character => character.rarity === 'XR')!;
     const higher = baseStats(xr), ssr = baseStats({ ...xr, rarity: 'SSR', strength: 30 });
     expect(higher.hp).toBeGreaterThan(ssr.hp); expect(higher.attack).toBeGreaterThan(ssr.attack); expect(higher.defense).toBeGreaterThan(ssr.defense);
-    xr.strength = 30; expect(validateContent(definitions)).toContain('characters/test-xr: XR strength 31..40 required');
+    xr.strength = 30; expect(validateContent(definitions)).toContain('characters/astraea: XR strength 31..40 required');
   });
   it('awards XR with premium stones and keeps all normal stones, counts and pity unchanged', () => {
     const definitions = futureContent();
     let seed = 0; while (rng(seed).value < 0.999) seed++;
     const save = unlocked(definitions, seed), before = structuredClone(save);
     const next = applyCommand(save, { type: 'drawXR' }, definitions);
-    expect(next.lastGachaResult).toEqual({ characterId: 'test-xr', duplicate: false, refund: 0, currency: 'astralStones' });
+    expect(next.lastGachaResult).toEqual({ characterId: 'astraea', duplicate: false, refund: 0, currency: 'astralStones' });
     expect(next.astralStones).toBe(19); expect(next.stones).toBe(before.stones); expect(next.drawCount).toBe(before.drawCount); expect(next.ssrPity).toBe(before.ssrPity); expect(next.xrDrawCount).toBe(1);
     expect(save).toEqual(before); assertSaveCompatibility(JSON.parse(JSON.stringify(next)), definitions);
     next.seed = seed;
     const duplicate = applyCommand(next, { type: 'drawXR' }, definitions);
-    expect(duplicate.lastGachaResult!.refund).toBe(1); expect(duplicate.astralStones).toBe(19); expect(duplicate.ownedIds.filter(id => id === 'test-xr')).toHaveLength(1);
+    expect(duplicate.lastGachaResult!.refund).toBe(1); expect(duplicate.astralStones).toBe(19); expect(duplicate.ownedIds.filter(id => id === 'astraea')).toHaveLength(1);
   });
   it('preserves legacy normal pity even when premium history replaces older normal rolls', () => {
     const definitions = futureContent(), save = unlocked(definitions);
