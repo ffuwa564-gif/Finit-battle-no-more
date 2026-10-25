@@ -31,11 +31,12 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
   12: { buff: '神楽鈴の祝福' },
   18: { heal: '桜花の祈り', attack: '散り桜の一閃' },
   22: { area: '天照・暁のレース', attack: '八咫鏡の煌き' },
+  25: { attack: '無赦の裁断', pierce: '零式・穿孔' },
   26: { debuff: '宵宮の幻惑', attack: '紅蓮の狐火' },
   30: { debuff: '九尾・夢幻結界', attack: '月蝕の狐火' },
   24: { guard: '黄泉のヴェール', attack: '黄泉路の黒薔薇' },
 };
-const skills: SkillDef[] = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
+const skills: SkillDef[] = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
 interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; dialogue?: CharacterDef['dialogue']; encounterLoot?: CharacterDef['encounterLoot']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
@@ -56,6 +57,7 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'thorn-witch': { intro: '枯れた花にも、帰る場所はある。', threshold: '咲かせましょう……最後の、一輪を。', defeat: '庭のこと……ときどき、思い出して。' },
 };
 const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<CharacterDef['leaderEffect']> }> = {
+  nox: { secondary: 'pierce', leader: 'finisher' },
   'artemis-standard': { secondary: 'pierce', leader: 'finisher' },
   'persephone-standard': { secondary: 'regen', leader: 'lifesteal' },
   'hestia-standard': { secondary: 'barrier', leader: 'bulwark' },
@@ -127,6 +129,7 @@ const characters: CharacterDef[] = [
   character({ id: "rainbow-iris", name: "イリス", epithet: "虹織の訪れ", role: "supporter", speciesId: "pilgrim", strength: 20, origin: ["gacha"], rarity: "SR", flavor: "ギリシャ神話の虹と伝令の女神を着想にした、花宴への客人。雲と流水を織り込んだ袖が、光を受けて淡い虹色に変わる。招待の返事を大切に携え、遠い土地の話を皆へ届ける。戦いでは仲間を励まし、敵にまとわりつく強化を晴らす。" }),
   character({ id: 'eos', name: 'エオス', epithet: '曙染めの小袖', role: 'supporter', speciesId: 'pilgrim', strength: 15, origin: ['gacha'], rarity: 'R', flavor: 'ギリシャ神話の暁の女神を着想にした、花宴への客人。朝顔と淡い光を織り込んだ小袖を選び、庭の朝露を楽しんでいる。仲間の小さな一歩にも気づき、そっと背中を押す。旅では朝霞のような障壁を広げ、新しい一日へ進む力を分けてくれる。' }),
   character({ id: 'nike', name: 'ニケ', epithet: '風結びの羽織', role: 'attacker', speciesId: 'pilgrim', strength: 13, origin: ['gacha'], rarity: 'R', flavor: 'ギリシャ神話の勝利の女神を着想にした、花宴への客人。青緑の羽織に月桂樹と羽根の文様をあしらい、祝いの結び紐を風に遊ばせる。彼女が喜ぶのは大きな名誉より、仲間が昨日できなかったことを成し遂げる瞬間。旅では行く手を阻む障壁をほどき、一行に追い風を届ける。' }),
+  character({ id: 'nox', familyId: 'nox', motionId: 'gacha-nox-motion', name: 'ノクス', epithet: '零式・無赦の執行者', role: 'attacker', speciesId: 'clockwork', strength: 25, origin: ['gacha'], rarity: 'SSR', flavor: '廃都の兵器工房で目を覚ました機巧少女。陶器の肌と氷色の瞳に、歓びも怒りも浮かばない。命乞いを聞いても、剣先は揺れない。標的を排除し、命令を完遂する。それだけが、胸の歯車に刻まれた存在理由だった。あなたの隣でも刃を収める理由は語らない。ただ、味方を狙うものから順に、無言で断ち切っていく。' }),
   character({ id: 'kuzuha', familyId: 'kuzuha', name: '葛葉', epithet: '宵宮の妖狐姫', role: 'debuffer', speciesId: 'fox', strength: 26, origin: ['event'], rarity: 'SSR', flavor: '参拝者の途絶えた稲荷の社で、今も人々の願いを預かる妖狐の姫。紅の結び紐と古い鈴は、忘れられた契りの数だけ増えてゆく。扇の向こうの笑みは、訪れる者を試す余裕と、誰かを待ち続ける寂しさを隠している。' }),
   character({ id: 'kuzuha-awakened', familyId: 'kuzuha', motionId: 'kuzuha-awakened-motion', name: '九尾・葛葉', epithet: '月蝕にひらく九つの契り', role: 'debuffer', speciesId: 'fox', strength: 30, origin: ['event'], rarity: 'SSR', flavor: '月が欠ける夜、封じた九つの尾と白銀の髪が本来の姿を取り戻す。揺れる狐火は、守りきれなかった願いの灯。それでも傍に立つと決めたあなたの名を、葛葉は最後の結び紐にそっと刻む。' }),
 
@@ -203,7 +206,7 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const standardFace = ([...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
   const framing = standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) || Boolean(goldExchangeArt[char.id])) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.id === 'nox' ? 1440 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.id === 'nox' ? 1920 : char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },
@@ -240,6 +243,7 @@ const menuAssets: AssetDef[] = [
   { id: 'gacha-selene-motion', path: 'video/gacha-selene-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Selene kimono illustration animated with Runway; task cdf471e0-c6d0-4ff6-871e-854922b3beac.' },
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },
   { id: 'seris-awakened-motion', path: 'video/seris-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Seris dawn illustration animated with Runway; task 5e312a67-100d-448a-afa6-b2b00b7a8bb7.' },
+  { id: 'gacha-nox-motion', path: 'video/gacha-nox.mp4', kind: 'video', width: 720, height: 960, anchor: '50% 0%', rights: 'Original project clockwork maiden Nox animated with Runway; generation details in docs/clockwork-maidens.md.' },
   { id: 'lunette-awakened-motion', path: 'video/lunette-awakened.mp4', kind: 'video', width: 720, height: 960, anchor: '50% 0%', rights: 'Original project awakened Lunette illustration animated with Runway; task 8359e9fb-8015-4c91-8232-8a937424eab2; 8 seconds, silent.' },
   { id: 'kuzuha-awakened-motion', path: 'video/kuzuha-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 18%', rights: 'Original project illustration with understated chest silhouette animated with Runway; task 7b9e961c-2a25-47cc-89f1-2f537bc7d520.' },
   { id: 'gacha-izanami-motion', path: 'video/gacha-izanami.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 22%', rights: 'Original project goddess illustration animated with Runway; task d2d265ba-0283-46ed-84cd-bdee1ffd8ccf.' },

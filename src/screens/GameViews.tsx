@@ -96,7 +96,8 @@ export function GachaView(p: ViewProps) {
     await p.command({ type: 'draw', collectionId, count });
   }
   const featured = collection.featuredIds.map(characterById);
-  return <><PageTitle eyebrow="DIVINE ATTIRE" title={tr('女神の祈願')} />
+  const exclusiveOthers = pool.filter(character => character.rarity !== 'SSR' && !sharedGoddessIds.includes(character.id));
+  return <><PageTitle eyebrow="SUMMON" title={tr('祈願')} />
     <div className="gacha-collections" role="group" aria-label={tr('祈願シリーズ')}>
       {localize(gachaCollections.map(item => <Button key={item.id} variant={collectionId === item.id ? 'primary' : 'secondary'} selected={collectionId === item.id} disabled={p.busy || Boolean(confirmIntro)} onClick={() => setCollectionId(item.id)}>{tr(item.title)}</Button>))}
     </div>
@@ -110,7 +111,7 @@ export function GachaView(p: ViewProps) {
       <p>{tr('重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p>{tr('10連は単発10回と同じ抽選です。追加のレアリティ保証はありません。開始時に石50個が必要です。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
     </Panel>
     <section className="gacha-common-ssr" aria-label={tr('共通SSR')}><h2>{tr('共通SSR')}</h2><div className="character-grid">{sharedSSRIds.map(characterById).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">SSR · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('どのシリーズからも迎えられます。共通SSR獲得でも天井はリセットされ、次回のピックアップ保証は発生しません。')}</p></section>
-    <h2>{tr('ほかの女神')}</h2><div className="character-grid gacha-exclusive-pool">{localize(pool.filter(character => character.rarity !== 'SSR' && !sharedGoddessIds.includes(character.id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)} · {tr('シリーズ限定')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>))}</div>
+    {exclusiveOthers.length > 0 && <><h2>{tr('ほかの女神')}</h2><div className="character-grid gacha-exclusive-pool">{localize(exclusiveOthers.map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)} · {tr('シリーズ限定')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>))}</div></>}
     <section className="gacha-common-section" aria-label={tr('通常の姿・共通プール')}><h2>{tr('通常の姿・共通プール')}</h2><p className="subtle">{tr('特別な装いを離れた、女神たちのいつもの姿。どのシリーズからも迎えられます。')}</p><div className="character-grid gacha-common-pool">{sharedGoddessIds.map(id => characterById(id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity} · {tr('通常の姿')} · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('表示は通常時の基準値です。SSR確率上昇中はR・SRの確率も変動し、SSR保証時は共通プールから排出されません。')}</p></section>
     <Modal open={!!confirmIntro} title={tr('一度きりの初回SSR保証を使いますか？')} onClose={() => { if (!p.busy) setConfirmIntro(null); }}>
       <p>{tr(collection.title)}</p><p role="alert">{tr('この祈願で、全ガチャ共通の初回SSR保証を消費します。他のシリーズでは再使用できず、次回からはSSR未獲得90回天井になります。')}</p>
