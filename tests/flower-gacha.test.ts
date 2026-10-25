@@ -31,13 +31,16 @@ describe('flower banquet and shared guarantees',()=>{
  });
  it('shares only base forms between collections, and rejects an invalid collection without mutation',()=>{
   for(const collection of [initialGacha,flowerGacha]){
+   const acquired = new Set<string>();
    for(let seed=0;seed<500;seed++){
     const save=createInitialSave(content,Math.imul(seed,2654435761) >>> 0);save.stones=5;save.drawCount=10;
     const next=applyCommand(save,{type:'draw',collectionId:collection.id},content);
+    acquired.add(next.lastGachaResult!.characterId);
     expect(gachaPoolIds(collection)).toContain(next.lastGachaResult!.characterId);
     const other = collection.id === flowerGacha.id ? initialGacha : flowerGacha;
     if (!sharedGoddessIds.includes(next.lastGachaResult!.characterId)) expect(other.characterIds).not.toContain(next.lastGachaResult!.characterId);
    }
+   if (collection.id === flowerGacha.id) expect([...acquired]).toEqual(expect.arrayContaining(['artemis', 'persephone', 'hestia', 'hebe']));
   }
   const save=createInitialSave(content,42);save.stones=5;const before=structuredClone(save);
   expect(()=>applyCommand(save,{type:'draw',collectionId:'missing'},content)).toThrow();expect(save).toEqual(before);

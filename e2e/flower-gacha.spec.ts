@@ -7,11 +7,11 @@ async function saveState(page:import('@playwright/test').Page){return page.evalu
 test('flower collection has six original kimono goddesses, readable skills and English support',async({page},testInfo)=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();
- await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(4);
+ await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(8);
  for(const name of ['アメノウズメ','イワナガヒメ','ククリヒメ'])await expect(page.getByRole('button',{name,exact:true})).toHaveCount(0);
  await expect(page.locator('.goddess-rates')).toHaveText('R 80%SR 17%SSR 3%');
  await page.getByRole('button',{name:legacy,exact:true}).click();
- await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(6);
+ await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(10);
  await expect(page.getByRole('button',{name:'アメノウズメ',exact:true})).toBeVisible();
  await page.getByRole('button',{name:title,exact:true}).click();
  for(const [name,skill] of [['セレネ','三日月の袖守り'],['アテナ','知恵の一閃'],['フローラ','花風の浄め'],['イリス','晴れ渡る空'],['エオス','朝霞の袖守り'],['ニケ','追い風の一閃']]){

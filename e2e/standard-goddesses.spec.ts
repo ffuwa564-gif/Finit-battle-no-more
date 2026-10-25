@@ -8,7 +8,7 @@ test('both collections show the same base forms, correct chances, and linked cos
   await page.goto('/#gacha'); await enterGame(page);
   const pool = page.getByRole('region', { name: shared, exact: true });
   await expect(pool.locator('.character-card')).toHaveCount(5);
-  await expect(pool).toContainText('SR · 通常の姿 · 共通'); await expect(pool).toContainText('基準排出率 3.4%');
+  await expect(pool).toContainText('SR · 通常の姿 · 共通'); await expect(pool).toContainText('基準排出率 2.4286%');
   await pool.getByRole('button', { name: 'セレネ／月明かりの導き手の詳細', exact: true }).click();
   const dialog = page.getByRole('dialog'); await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene-standard.webp$/);
   await expect(dialog.locator('.goddess-form')).toHaveCount(2); await expect(dialog).toContainText('通常の姿と特別な装いは別々に迎えられます。');
@@ -19,7 +19,7 @@ test('both collections show the same base forms, correct chances, and linked cos
   await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene-standard.webp$/);
   await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
   await page.getByRole('button', { name: 'ゴス☆イザナミコレクション', exact: true }).click();
-  await expect(pool.locator('.character-card')).toHaveCount(5); await expect(pool).toContainText('基準排出率 2.8333%');
+  await expect(pool.locator('.character-card')).toHaveCount(5); await expect(pool).toContainText('基準排出率 2.125%');
   await pool.scrollIntoViewIfNeeded(); await page.screenshot({ path: testInfo.outputPath('shared-base-forms.png') });
   await page.goto('/#settings'); await page.getByRole('button', { name: 'English', exact: true }).click(); await page.goto('/#gacha');
   await expect(page.getByRole('region', { name: 'Base Forms — Shared Pool', exact: true })).toContainText('Moonlit Guide');
@@ -30,7 +30,7 @@ test('a shared form can be summoned, selected for home, and exported without a c
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/#gacha'); await enterGame(page);
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts'); const save = (await loadSave())!; const revision = save.revision;
-    save.seed = 3; save.drawCount = 10; save.stones = 20; save.settings.reducedMotion = true; save.revision++; await persistSave(save, revision);
+    save.seed = 5; save.drawCount = 10; save.stones = 20; save.settings.reducedMotion = true; save.revision++; await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page); await page.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
   const dialog = page.getByRole('dialog'); await expect(dialog).toContainText('朝庭の花守り'); await expect(dialog.locator('.gacha-reveal__rarity')).toHaveText('R');

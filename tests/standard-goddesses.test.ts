@@ -5,8 +5,8 @@ import { flowerGacha, initialGacha, sharedGoddessIds, gachaPoolIds, gachaSSRRate
 import { assertSaveCompatibility } from '../src/platform/save';
 
 const cases = [
-  [flowerGacha, { 'flora-standard': 3, 'izanami-standard': 6, 'selene-standard': 1457, 'athena-standard': 1459, 'amaterasu-standard': 1462 }],
-  [initialGacha, { 'flora-standard': 4, 'izanami-standard': 6, 'selene-standard': 1458, 'athena-standard': 1460, 'amaterasu-standard': 1462 }],
+  [flowerGacha, { 'flora-standard': 5, 'izanami-standard': 7, 'selene-standard': 1459, 'athena-standard': 1461, 'amaterasu-standard': 1462 }],
+  [initialGacha, { 'flora-standard': 5, 'izanami-standard': 7, 'selene-standard': 1460, 'athena-standard': 1461, 'amaterasu-standard': 1462 }],
 ] as const;
 
 describe('shared base-form goddesses', () => {
