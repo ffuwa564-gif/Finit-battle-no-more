@@ -65,7 +65,7 @@ test('both exclusive R goddesses can be summoned, saved and placed in the party'
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.stones=15;save.seed=42;save.drawCount=10;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);});
  await page.reload();await enterGame(page);
- for(const [seed,name] of [[8,'エオス'],[0,'ニケ']] as const){
+ for(const [seed,name] of [[8,'エオス'],[10,'ニケ']] as const){
   await page.evaluate(async(seed)=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.seed=seed;save.revision++;await persistSave(save,rev);},seed);
   await page.reload();await enterGame(page);
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();
@@ -75,7 +75,11 @@ test('both exclusive R goddesses can be summoned, saved and placed in the party'
  }
  await page.goto('/#party');
  for(const name of ['ノエル','セリス'])await page.locator('.character-card').filter({has:page.getByRole('heading',{name,exact:true})}).getByRole('button',{name:'編成中',exact:true}).click();
- for(const name of ['エオス','ニケ'])await page.locator('.character-card').filter({has:page.getByRole('heading',{name,exact:true})}).getByRole('button',{name:'編成する',exact:true}).click();
+ for(const name of ['エオス','ニケ']){
+  const card=page.locator('.character-card').filter({has:page.getByRole('heading',{name,exact:true})});
+  await card.getByRole('button',{name:'編成する',exact:true}).click();
+  await expect(card.getByRole('button',{name:'編成中',exact:true})).toBeVisible();
+ }
  await page.reload();await enterGame(page);const save=await saveState(page);
  expect(save.partyIds).toEqual(expect.arrayContaining(['eos','nike']));expect(save.ownedIds).toEqual(expect.arrayContaining(['eos','nike']));expect(save.stones).toBe(5);expect(save.drawCount).toBe(12);
 });

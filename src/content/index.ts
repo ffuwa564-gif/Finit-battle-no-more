@@ -49,6 +49,14 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   'thorn-witch': { intro: '枯れた花にも、帰る場所はある。', threshold: '咲かせましょう……最後の、一輪を。', defeat: '庭のこと……ときどき、思い出して。' },
 };
 const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<CharacterDef['leaderEffect']> }> = {
+  'artemis-standard': { secondary: 'pierce', leader: 'finisher' },
+  'persephone-standard': { secondary: 'regen', leader: 'lifesteal' },
+  'hestia-standard': { secondary: 'barrier', leader: 'bulwark' },
+  'hebe-standard': { secondary: 'mend_pair', leader: 'regeneration' },
+  'eos-standard': { secondary: 'cleanse', leader: 'resonance' },
+  'nike-standard': { secondary: 'shatter', leader: 'finisher' },
+  'rainbow-iris-standard': { secondary: 'dispel', leader: 'resonance' },
+  'toyotama-standard': { secondary: 'barrier', leader: 'bulwark' },
   'selene-standard': { secondary: 'regen', leader: 'regeneration' },
   'athena-standard': { secondary: 'shatter', leader: 'bulwark' },
   'flora-standard': { secondary: 'cleanse', leader: 'regeneration' },
@@ -134,6 +142,14 @@ const characters: CharacterDef[] = [
   character({"id": "flora-standard", "familyId": "flora", "name": "フローラ", "epithet": "朝庭の花守り", "role": "healer", "speciesId": "veil", "strength": 12, "origin": ["gacha"], "rarity": "R", "flavor": "生成りと若草色の素朴なドレスで、朝の庭を手入れする女神。晴れ着を着ない日には、小さな花籠を持って散歩に出る。誰かの傷や疲れに気づくと、その人に似合う野花を一輪選ぶ。華やかな宴の外にも、彼女の優しい仕事は続いている。"}),
   character({"id": "amaterasu-standard", "familyId": "asteria", "name": "アマテラス", "epithet": "暁を照らす光", "role": "supporter", "speciesId": "moon", "strength": 17, "origin": ["gacha"], "rarity": "SR", "flavor": "白と朱の端正な衣に、小さな日輪の飾りを添えた女神。特別なレースの衣装を離れ、いつもの鏡で朝の光を仲間へ届ける。誰かを眩しく照らすより、進む道が見える明るさを大切にしている。本作の世界で描く、穏やかな旅姿。"}),
   character({"id": "izanami-standard", "familyId": "evelyn", "name": "イザナミ", "epithet": "静かな境の守り手", "role": "debuffer", "speciesId": "thorn", "strength": 15, "origin": ["gacha"], "rarity": "R", "flavor": "墨色と生成りの長衣を纏い、静かな水辺に灯をともす女神。特別な黒いレースを脱いでも、旅人を見守る気持ちは変わらない。敵の勢いを鎮め、仲間が息を整える時間をつくる。本作の世界での穏やかな姿として、柔らかな表情と確かな威厳を描く。"}),
+  character({"id": "artemis-standard", "familyId": "artemis", "name": "アルテミス", "epithet": "月森の道しるべ", "role": "attacker", "speciesId": "moon", "strength": 18, "origin": ["gacha"], "rarity": "SR", "flavor": "銀の三つ編みを揺らし、森の小径を歩く女神。いつもの緑の旅装に弓を携え、獣の足跡から安全な道を探す。仲間が迷った夜には、言葉より先に小さな灯を置いていく。"}),
+  character({"id": "persephone-standard", "familyId": "persephone", "name": "ペルセポネ", "epithet": "芽吹きを待つ庭", "role": "debuffer", "speciesId": "thorn", "strength": 17, "origin": ["gacha"], "rarity": "SR", "flavor": "黒い短髪に小さな柘榴の飾りを添えた女神。深紅の旅衣で枯れた庭を巡り、まだ眠っている種を集める。敵の勢いを静めながら仲間に再生の時間を与え、季節を待つ強さを教えてくれる。"}),
+  character({"id": "hestia-standard", "familyId": "hestia", "name": "ヘスティア", "epithet": "帰り道の灯火", "role": "tank", "speciesId": "pilgrim", "strength": 13, "origin": ["gacha"], "rarity": "R", "flavor": "栗色の髪と素朴な前掛けが似合う女神。旅先で見つけた古い宿に火を入れ、誰でも休める場所を整える。戦いでは灯火のような障壁を張り、小さな盾と大きな安心で仲間を守る。"}),
+  character({"id": "hebe-standard", "familyId": "hebe", "name": "ヘベ", "epithet": "ひと息の茶会", "role": "healer", "speciesId": "veil", "strength": 12, "origin": ["gacha"], "rarity": "R", "flavor": "桃色の髪を高く結び、青い旅衣で水辺を歩く女神。休憩のたびに小さな茶器を取り出し、疲れた仲間に温かな一杯を渡す。傷ついた二人へ同時に手を差し伸べる、旅の頼もしい世話役。"}),
+  character({"id": "eos-standard", "familyId": "eos", "name": "エオス", "epithet": "朝風の旅人", "role": "supporter", "speciesId": "moon", "strength": 14, "origin": ["gacha"], "rarity": "R", "flavor": "淡い桃色の髪に朝の光を映す女神。軽い外套と灯りを携え、まだ暗い丘を仲間と越えていく。追い風で一行を励まし、まとわりつく不調を払いながら、一緒に夜明けを探している。"}),
+  character({"id": "nike-standard", "familyId": "nike", "name": "ニケ", "epithet": "若葉の誓い", "role": "attacker", "speciesId": "pilgrim", "strength": 14, "origin": ["gacha"], "rarity": "R", "flavor": "青緑の三つ編みに月桂の葉を留めた女神。白い旅衣に軽い鎧を重ね、剣の手入れを欠かさない。勝ち急ぐより全員で帰ることを選び、頑丈な障壁を砕いて仲間の進む道を開く。"}),
+  character({"id": "rainbow-iris-standard", "familyId": "rainbow-iris", "name": "イリス", "epithet": "雨上がりの便り", "role": "supporter", "speciesId": "moon", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "紫の髪と小さな郵便鞄が目印の女神。薄紫の旅衣で廃都を渡り、途絶えた手紙を届けている。空に虹がかかると少しだけ足が速くなる。敵の強化をほどき、味方へ希望の便りを運ぶ。"}),
+  character({"id": "toyotama-standard", "familyId": "toyotama", "name": "トヨタマヒメ", "epithet": "凪を運ぶ旅衣", "role": "healer", "speciesId": "veil", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "藍色の長い髪に真珠を一粒飾った女神。穏やかな海色の衣で浜辺を歩き、貝の器に澄んだ水をすくう。波のような癒しと薄い水の障壁で、旅人たちが次の岸へ進むのを支える。"}),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];

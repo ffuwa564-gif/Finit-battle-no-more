@@ -23,7 +23,7 @@ test('four new lower-rarity goddesses have distinct artwork, readable abilities 
   }
   await page.evaluate(async()=>{
     const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const revision=save.revision;
-    save.seed=1457;save.stones=5;save.revision++;await persistSave(save,revision);
+    save.seed=1466;save.stones=5;save.revision++;await persistSave(save,revision);
   });
   await page.reload();await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();

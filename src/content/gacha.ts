@@ -42,7 +42,8 @@ export const flowerGacha: GachaCollection = {
 };
 export const gachaCollections = [flowerGacha, initialGacha] as const;
 /** Base forms are available in every collection; costume IDs above stay collection-exclusive. */
-export const sharedGoddessIds: readonly string[] = ['selene-standard', 'athena-standard', 'flora-standard', 'amaterasu-standard', 'izanami-standard'];
+export const sharedGoddessIds: readonly string[] = ['selene-standard', 'athena-standard', 'flora-standard', 'amaterasu-standard', 'izanami-standard',
+  'artemis-standard', 'persephone-standard', 'hestia-standard', 'hebe-standard', 'eos-standard', 'nike-standard', 'rainbow-iris-standard', 'toyotama-standard'];
 export function gachaPoolIds(collection: GachaCollection): readonly string[] {
   return [...collection.characterIds, ...sharedGoddessIds];
 }
