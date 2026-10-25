@@ -1,3 +1,4 @@
+import { gainUltimate, ultimateFor, ultimateReady } from './ultimates';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
@@ -88,6 +89,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
 function clearEffects(unit: Unit): void {
+  delete unit.ultimateQueued;
   delete unit.ailments; delete unit.statusWardUntil;
   delete unit.bits;
   delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength;
@@ -175,7 +177,7 @@ function skillList(actor: Unit, content: Content, round: number): SkillDef[] {
     return skill;
   }).filter((skill) => (actor.cooldowns[skill.id] ?? 0) <= round).sort((a, b) => b.strength - a.strength || a.id.localeCompare(b.id));
 }
-interface Action { clockFinale?: boolean; directive?: 'aggressive' | 'survival'; skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
+interface Action { ultimate?: boolean; clockFinale?: boolean; directive?: 'aggressive' | 'survival'; skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
 function emitRecovery(battle: Battle, unit: Unit, id: Ailment, content: Content): void {
   emit(battle, { kind: 'buff', statusAction: 'recover', ailment: id, actorId: unit.uid, targetIds: [unit.uid], text: `${character(content, unit.characterId).name} — ${ailmentNames[id]}解除`, unitsAfter: clone(battle.units) });
 }
@@ -292,6 +294,12 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
 function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   const clock = dungeon(content, battle.dungeonId).bossClock;
   if (clock && actor.side === 'enemy' && actor.boss && battle.round >= clock.deadline) return { template: 'area', targets: alive(battle.units, 'party'), power: clock.finalePower, name: clock.finaleName, clockFinale: true };
+  if (actor.ultimateQueued && ultimateReady(actor)) {
+    const special = ultimateFor(character(content, actor.characterId));
+    const friends = alive(battle.units, actor.side);
+    const foes = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
+    return { ultimate: true, template: special.template, name: special.name, targets: ['heal', 'barrier', 'rally'].includes(special.template) ? friends : special.template === 'pierce' ? [chooseTarget(foes, battle.strategy, content)] : foes };
+  }
   const ordinary = chooseDefaultAction(actor, battle, content);
   if (actor.side !== 'party' || !dungeon(content, battle.dungeonId).tacticalCommands || battle.strategy === 'balanced') return ordinary;
   const comparison = chooseDefaultAction(actor, battle.strategy === 'survival' ? { ...battle, strategy: 'aggressive' } : battle, content, true);
@@ -317,6 +325,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
+  if (actual > 0) gainUltimate(recipient, 10);
   if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
   if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
   return { unit: recipient, amount: actual, absorbed, shattered };
@@ -393,7 +402,34 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.name ?? action.skill?.name ?? '通常攻撃';
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
-    if (isAilment(action.template)) {
+    if (action.ultimate) {
+      actor.ultimateCharge = 0; delete actor.ultimateQueued;
+      const role = character(content, actor.characterId).role;
+      for (const target of action.targets) {
+        if (role === 'healer') {
+          const healed = Math.min(target.maxHp - target.hp, Math.floor(target.maxHp * .4));
+          target.hp += healed; amount += healed; cureAilments(target, battle.round);
+          delete target.debuffUntil; delete target.debuffStrength;
+        } else if (role === 'tank' || role === 'supporter') {
+          const shield = Math.floor(target.maxHp * (role === 'tank' ? .3 : .15) + (role === 'tank' ? actor.defense * 2 : 0));
+          target.barrier = Math.max((target.barrierUntil ?? -1) >= battle.round ? target.barrier ?? 0 : 0, shield);
+          target.barrierUntil = Math.max(target.barrierUntil ?? 0, battle.round + 1);
+          if (role === 'supporter') {
+            target.buffStrength = Math.max((target.buffUntil ?? -1) >= battle.round ? target.buffStrength ?? 10 : 0, 50);
+            target.buffUntil = Math.max(target.buffUntil ?? 0, battle.round + 1);
+          }
+        } else {
+          const hit = damage(actor, target, role === 'attacker' ? 280 : role === 'area_attacker' ? 190 : 150, 100, battle, role === 'attacker', content, role === 'attacker');
+          amount += hit.amount; absorbed += hit.absorbed;
+          if (role === 'debuffer' && hit.unit.hp > 0) {
+            hit.unit.debuffStrength = Math.max((hit.unit.debuffUntil ?? -1) >= battle.round ? hit.unit.debuffStrength ?? 10 : 0, 40);
+            hit.unit.debuffUntil = Math.max(hit.unit.debuffUntil ?? 0, battle.round + 1);
+          }
+          targetIds.push(hit.unit.uid); continue;
+        }
+        targetIds.push(target.uid);
+      }
+    } else if (isAilment(action.template)) {
       const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
       const success = (target.statusWardUntil ?? -1) < battle.round && !hasAilment(target) && roll.value * 100 < ailmentChance(target);
       statusAction = success ? 'inflict' : 'resist'; targetIds.push(target.uid);
@@ -445,9 +481,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       drained = Math.min(actor.maxHp - actor.hp, Math.floor(amount * 35 / 100)); actor.hp += drained;
     }
     if (action.skill) actor.cooldowns[action.skill.id] = battle.round + skillCooldown(action.template);
+    if (!action.ultimate && !action.forcedBy) gainUltimate(actor, 25);
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
-    emit(battle, { kind: eventKind[action.template], clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    emit(battle, { kind: eventKind[action.template], ultimate: action.ultimate || undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
     if (actor.side === 'party' && dungeon(content, battle.dungeonId).bossClock) {
       for (const boss of battle.units.filter(unit => unit.side === 'enemy' && unit.boss && !unit.barrier && before.some(old => old.uid === unit.uid && (old.barrier ?? 0) > 0))) {
         emit(battle, { kind: 'debuff', clockAction: 'break', actorId: boss.uid, targetIds: [boss.uid], text: '時計の障壁が砕けた — このターンは防御低下', unitsAfter: clone(battle.units) });

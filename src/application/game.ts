@@ -1,3 +1,4 @@
+import { ultimateReady } from '../domain/ultimates';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
 import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
@@ -64,6 +65,13 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'strategy': {
       if (!['balanced', 'aggressive', 'survival'].includes(command.strategy)) fail('作戦が正しくありません。');
       ready(save).strategy = command.strategy;
+      break;
+    }
+    case 'ultimate': {
+      const battle = ready(save);
+      const unit = battle.units.find(unit => unit.uid === command.unitId);
+      if (!unit || !ultimateReady(unit)) fail('必殺技の準備ができている仲間を選んでください。');
+      unit.ultimateQueued = !unit.ultimateQueued;
       break;
     }
     case 'round': {

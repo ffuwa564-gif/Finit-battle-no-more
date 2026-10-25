@@ -10,12 +10,13 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = SkillTemplate | 'wave' | 'defeat';
+type CombatKey = 'ultimate' | SkillTemplate | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
+  ultimate: { sweep: { from: 300, to: 8000, duration: .55, velocity: .65 }, impact: { note: 'D1', velocity: .9 }, metal: { note: 'A4', velocity: .35 }, bells: { notes: ['D4', 'A4', 'D5', 'F5', 'A5', 'D6'], spacing: .13, duration: .4 }, aura: { notes: ['D3', 'F3', 'A3', 'D4'], duration: .8 } },
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },

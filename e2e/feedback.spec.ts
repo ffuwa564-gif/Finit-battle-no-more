@@ -25,7 +25,7 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
   await page.evaluate(async () => {
     const audio = await import('/src/platform/audio.ts'); await audio.enableAudio(); audio.setAudioVolume(1);
   });
-  const kinds = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'dialogue', 'wave', 'defeat', 'victory', 'purchase', 'exchange', 'depart', 'error', 'drop'] as const;
+  const kinds = ['ultimate', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'dialogue', 'wave', 'defeat', 'victory', 'purchase', 'exchange', 'depart', 'error', 'drop'] as const;
   for (const kind of kinds) {
     await page.evaluate(async kind => {
       const audio = await import('/src/platform/audio.ts');

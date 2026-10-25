@@ -171,3 +171,5 @@ export { CampaignStory } from './CampaignStory';
 export { GachaResults } from './GachaResults';
 
 export { GoldExchange } from './GoldExchange';
+export { UltimateCutIn } from './UltimateCutIn';
+export { UltimateMeter } from './UltimateMeter';

@@ -138,9 +138,13 @@ export default function App() {
 
   const battle = save?.battle;
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
+  const soundedEvent = useRef<string | null>(null);
   useEffect(() => {
     if (!event || !save || !started) return;
-    playSound(battleSounds[event.kind], event.rarity, content.skills.find(skill => skill.id === event.skillId)?.template);
+    if (soundedEvent.current !== event.id) {
+      soundedEvent.current = event.id;
+      playSound(event.ultimate ? 'ultimate' : battleSounds[event.kind], event.rarity, event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template);
+    }
     const cleanup = animateEvent(event, save.settings.reducedMotion);
     const duration = battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
