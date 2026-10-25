@@ -861,5 +861,21 @@
   "状態異常の付与者が戦闘データにありません。": "The ailment caster is missing from the saved battle.",
   "{0} 残り{1}回の行動。": "{0} {1} actions remaining.",
   "状態耐性": "Ailment Ward",
-  "混乱・睡眠・麻痺・魅了の再付与を防ぐ・残り{0}ラウンド": "Prevents confusion, sleep, paralysis, and charm for {0} more rounds"
+  "混乱・睡眠・麻痺・魅了の再付与を防ぐ・残り{0}ラウンド": "Prevents confusion, sleep, paralysis, and charm for {0} more rounds",
+  "リュシエル": "Lucielle",
+  "銀灯に迷う訪問者": "Visitor of the Silver Lantern",
+  "灯りを失った回廊に、ごく稀に現れる銀髪の旅人。銀灯に集まる蛾は、帰り道を忘れた願いだという。「あなたの朝まで、少しだけ一緒に歩いてもいい？」手渡される小さな灯芯には、まだ温かな鈴の音が眠っている。": "A silver-haired traveler rarely seen in unlit corridors. The moths gathering at her lantern are wishes that have forgotten the way home. “May I walk beside you until your morning comes?” The wick she offers still holds the warmth of a distant bell.",
+  "ネムリア": "Nemuria",
+  "夢蛾を連れる夜の客人": "Night Visitor of the Dream Moths",
+  "忘れられた庭を渡り歩く、眠たげな夜の客人。瓶にしまうのは誰にも話せなかった夢。夢蛾が翅を閉じると、敵意さえ静かな眠りへほどけてゆく。彼女が差す傘の下だけ、雨は遠い日の子守歌に聞こえる。": "A drowsy visitor wandering forgotten gardens, bottling dreams that could never be spoken. When her moths fold their wings, even hostility unravels into sleep. Beneath her parasol, rain sounds like a long-forgotten lullaby.",
+  "銀灯": "Silver Lantern",
+  "夢蛾": "Dream Moth",
+  "銀灯の羽片": "Silver Lantern Feather",
+  "銀鈴の灯芯": "Silver Bell Wick",
+  "星を宿す銀灯": "Starlit Silver Lantern",
+  "夜蛾の鱗粉": "Night Moth Dust",
+  "夢織りの翅": "Dreamwoven Wing",
+  "眠り星の雫": "Sleeping Star Dew",
+  "希少な気配 — {0}": "Rare encounter — {0}",
+  "希少な敵": "Rare enemy"
 }

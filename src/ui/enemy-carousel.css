@@ -70,3 +70,5 @@
 .enemy-page .animated-illustration__toggle { pointer-events: auto; }
 
 .enemy-page--incoming > .animated-illustration { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
+
+.enemy-rare-label { display: inline-block; margin-left: 8px; padding: 2px 5px; border: 1px solid #d9bf82; border-radius: 3px; color: #ffe6a8; background: #413b31d9; font: 600 9px/1.2 var(--font-body); letter-spacing: .12em; vertical-align: middle; text-shadow: none; }

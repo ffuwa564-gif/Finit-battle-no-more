@@ -47,6 +47,12 @@ export function validateContent(content: Content): string[] {
     reject(Object.keys(skill).some(key => !['id', 'name', 'template', 'strength', 'soundProfile'].includes(key)), `skills/${skill.id}: derived effect overrides are forbidden`);
   }
   for (const char of content.characters) {
+    if (char.encounterLoot) {
+      const loot = char.encounterLoot;
+      reject(!char.origin.includes('recruit') || !Number.isSafeInteger(loot.gold) || loot.gold < 0 || loot.gold > 10000 || !loot.guaranteed.length || loot.guaranteed.length > 3, `characters/${char.id}: invalid encounter loot`);
+      reject(new Set(loot.guaranteed.map(item => item.materialId)).size !== loot.guaranteed.length || loot.guaranteed.some(item => !['common', 'rare', 'epic'].some(rarity => item.materialId === `${char.speciesId}:${rarity}`) || !Number.isSafeInteger(item.count) || item.count < 1 || item.count > 999), `characters/${char.id}: invalid encounter material`);
+    }
+
     if (char.portraitMotionId) reject(!char.motionId || !content.assets.some(asset => asset.id === char.portraitMotionId && asset.kind === 'video'), `characters/${char.id}: portrait motion must reference a video and full animation`);
     if (char.motionId) reject(!content.assets.some(asset => asset.id === char.motionId && asset.kind === 'video'), `characters/${char.id}: motion must reference a video asset`);
     reject(!plain(char.name) || !plain(char.epithet) || !plain(char.flavor), `characters/${char.id}: plain name, epithet and flavor required`);
@@ -128,6 +134,15 @@ export function validateContent(content: Content): string[] {
         reject(Boolean(enemy.boss) && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }
     });
+    if (dungeon.rareEncounter) {
+      const encounter = dungeon.rareEncounter;
+      reject(dungeon.kind === 'event' || dungeon.waves.length < 2 || dungeon.waves[dungeon.waves.length - 2]?.some(enemy => enemy.boss) === true, `dungeons/${dungeon.id}: rare encounter requires an ordinary non-boss wave`);
+      reject(!Number.isFinite(encounter.chance) || encounter.chance <= 0 || encounter.chance > 100 || !encounter.characterIds.length || encounter.characterIds.length > 8 || new Set(encounter.characterIds).size !== encounter.characterIds.length, `dungeons/${dungeon.id}: invalid rare encounter probability or pool`);
+      for (const id of encounter.characterIds) {
+        const char = content.characters.find(item => item.id === id);
+        reject(!char || !char.published || !char.origin.includes('recruit') || !char.encounterArtId || !char.encounterLoot, `dungeons/${dungeon.id}: unavailable rare enemy ${id}`);
+      }
+    }
     const finalWave = dungeon.waves.at(-1);
     reject(!finalWave || finalWave.length !== 1 || !finalWave[0].boss, `dungeons/${dungeon.id}: final wave must contain one boss`);
   }
@@ -154,7 +169,9 @@ export function validateContent(content: Content): string[] {
   const materialIds = new Set<string>();
   for (const item of content.materials ?? []) {
     reject(materialIds.has(item.id) || !/^[a-z0-9-]+:(common|rare|epic)$/.test(item.id) || !speciesIds.has(item.id.split(':')[0]!) || !plain(item.name), `materials/${item.id}: invalid named material`);
-    reject(content.characters.some(char => char.speciesId === item.id.split(':')[0]), `materials/${item.id}: isolated currency cannot drop from ordinary enemies`);
+    const species = item.id.split(':')[0];
+    const isolated = content.awakenings?.some(def => def.cost.materialId.split(':')[0] === species) || content.events?.some(event => event.materialSpeciesId === species);
+    reject(Boolean(isolated) && content.characters.some(char => char.speciesId === species), `materials/${item.id}: isolated currency cannot drop from ordinary enemies`);
     materialIds.add(item.id);
   }
   allIds(content.storylines ?? [], 'storylines');
