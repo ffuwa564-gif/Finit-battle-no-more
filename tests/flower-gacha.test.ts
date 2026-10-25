@@ -31,13 +31,16 @@ describe('flower banquet and shared guarantees',()=>{
  });
  it('never mixes any characters between collections, and rejects an invalid collection without mutation',()=>{
   for(const collection of [initialGacha,flowerGacha]){
+   const acquired = new Set<string>();
    for(let seed=0;seed<500;seed++){
     const save=createInitialSave(content,Math.imul(seed,2654435761) >>> 0);save.stones=5;save.drawCount=10;
     const next=applyCommand(save,{type:'draw',collectionId:collection.id},content);
+    acquired.add(next.lastGachaResult!.characterId);
     expect(collection.characterIds).toContain(next.lastGachaResult!.characterId);
     const other = collection.id === flowerGacha.id ? initialGacha : flowerGacha;
     expect(other.characterIds).not.toContain(next.lastGachaResult!.characterId);
    }
+   if (collection.id === flowerGacha.id) expect([...acquired]).toEqual(expect.arrayContaining(['artemis', 'persephone', 'hestia', 'hebe']));
   }
   const save=createInitialSave(content,42);save.stones=5;const before=structuredClone(save);
   expect(()=>applyCommand(save,{type:'draw',collectionId:'missing'},content)).toThrow();expect(save).toEqual(before);
@@ -45,14 +48,14 @@ describe('flower banquet and shared guarantees',()=>{
 });
 
 it('does not silently substitute an SSR when the SR pool is unavailable',()=>{
- const definitions=structuredClone(content);definitions.characters.filter(c=>['flora','rainbow-iris'].includes(c.id)).forEach(c=>c.published=false);
+ const definitions=structuredClone(content);definitions.characters.filter(c=>flowerGacha.characterIds.includes(c.id)&&c.rarity==='SR').forEach(c=>c.published=false);
  const save=createInitialSave(content,1500);save.drawCount=10;save.stones=5;const before=structuredClone(save);
  expect(()=>applyCommand(save,{type:'draw',collectionId:flowerGacha.id},definitions)).toThrow('レアリティ');
  expect(save).toEqual(before);
 });
 
 it('recruits both exclusive R goddesses and refunds exactly one stone for a duplicate',()=>{
- for(const [seed,id] of [[42,'eos'],[3,'nike']] as const){
+ for(const [seed,id] of [[8,'eos'],[0,'nike']] as const){
   let save=createInitialSave(content,seed);save.drawCount=10;save.stones=10;
   save=applyCommand(save,{type:'draw',collectionId:flowerGacha.id},content);
   expect(save.lastGachaResult).toMatchObject({characterId:id,duplicate:false,refund:0});expect(save.ownedIds).toContain(id);expect(save.stones).toBe(5);

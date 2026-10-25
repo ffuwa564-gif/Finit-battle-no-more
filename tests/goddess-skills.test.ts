@@ -85,7 +85,7 @@ describe('lower rarity goddess utility', () => {
     delete target.buffUntil; delete target.regenUntil;
     expect(resolveRound(battle, content).battle.events.find(event => event.actorId === caster.uid)!.skillId).not.toBe('dispel-14');
   });
-  it('draws all four added goddesses through the existing gacha without putting event characters in the pool', () => {
+  it('draws the expanded goddess roster through the existing gacha without putting event characters in the pool', () => {
     const acquired = new Set<string>();
     for (let i = 1; i <= 400; i++) {
       const save = createInitialSave(content, Math.imul(i, 2654435761) >>> 0); save.stones = 5;
@@ -93,7 +93,7 @@ describe('lower rarity goddess utility', () => {
       const id = next.lastGachaResult!.characterId; acquired.add(id);
       expect(content.characters.find(character => character.id === id)!.origin).toEqual(['gacha']);
     }
-    expect([...acquired]).toEqual(expect.arrayContaining(['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime']));
+    expect([...acquired]).toEqual(expect.arrayContaining(['toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu']));
   });
 });
 
