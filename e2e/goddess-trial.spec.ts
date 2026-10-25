@@ -84,3 +84,28 @@ test('ultimate trial displays a computed 30.0 and starts with the extreme boss s
   });
   expect(data.dungeonId).toBe('goddess-procession-ultimate'); expect(data.hp).toBe(3843); expect(data.attack).toBe(159); expect(data.loot).toEqual({});
 });
+
+test('unassailable trial shows 100.0, warns before departure and persists the real extreme stats',async({page},testInfo)=>{
+  await page.setViewportSize({width:390,height:844});await page.goto('/#dungeons/trials');await enterGame(page);
+  const card=page.locator('.dungeon-card').filter({has:page.getByRole('heading',{name:'女神の試練・不可侵',exact:true})});
+  await expect(card.locator('.dungeon-meta')).toContainText('100.0');await expect(card).toContainText('報酬なし');
+  await expect(card.getByRole('button',{name:'探索の準備',exact:true})).toBeDisabled();
+  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!,rev=save.revision;save.completedDungeonIds=['silent-cathedral'];save.revision++;await persistSave(save,rev);});
+  await page.reload();await enterGame(page);await card.scrollIntoViewIfNeeded();await page.screenshot({path:testInfo.outputPath('unassailable-selection.png')});
+  await card.getByRole('button',{name:'探索の準備',exact:true}).click();
+  await expect(page.getByRole('dialog')).toContainText('現時点での攻略を前提に調整していません');
+  await expect(page.getByRole('dialog')).toContainText('HP61倍・攻撃10倍');
+  await page.getByRole('dialog').getByRole('button',{name:'探索を始める',exact:true}).click();
+  await expect(page.getByRole('button',{name:'ラウンドを進める',exact:true})).toBeVisible({timeout:20000});
+  const stats=await page.evaluate(async()=>{const {loadSave}=await import('/src/platform/save.ts');const b=(await loadSave())!.battle!;return {id:b.dungeonId,enemy:b.units.find(u=>u.side==='enemy')!,materials:b.pendingMaterials,gold:b.goldEarned};});
+  expect(stats.id).toBe('goddess-procession-impossible');expect(stats.enemy.maxHp).toBe(12810);expect(stats.enemy.attack).toBe(530);expect(stats.materials).toEqual({});expect(stats.gold).toBe(0);
+  await page.screenshot({path:testInfo.outputPath('unassailable-battle.png')});
+  await page.reload();await enterGame(page);await expect(page.locator('.enemy-carousel-name')).toContainText('セレネ');
+  for(const width of [320,390]){await page.setViewportSize({width,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);}
+  await page.getByRole('button',{name:'撤退',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'撤退する',exact:true}).click();
+  await page.getByRole('button',{name:'街へ戻る',exact:true}).click();
+  await expect(page).toHaveURL(/#dungeons\/trials$/);
+  await page.goto('/#settings');await page.getByRole('button',{name:'English',exact:true}).click();await page.goto('/#dungeons/trials');
+  const english=page.locator('.dungeon-card').filter({has:page.getByRole('heading',{name:'Goddess Trial: Unassailable',exact:true})});
+  await english.getByRole('button',{name:'Prepare Expedition',exact:true}).click();await expect(page.getByRole('dialog')).toContainText('not balanced to be beatable');
+});
