@@ -18,6 +18,7 @@ function validUnit(value: unknown): boolean {
   if (!record(value) || !nonempty(value.uid) || !nonempty(value.characterId) || !['party', 'enemy'].includes(value.side as string) || typeof value.boss !== 'boolean') return false;
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
   if (Number(value.maxHp) < 1 || Number(value.hp) > Number(value.maxHp) || !record(value.cooldowns) || Object.values(value.cooldowns).some(item => !count(item))) return false;
+  if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
   for (const key of ['guardUntil', 'guardStrength', 'buffUntil', 'buffStrength', 'debuffUntil', 'debuffStrength', 'barrier', 'barrierUntil', 'regenStrength', 'regenUntil']) if (value[key] !== undefined && !count(value[key])) return false;
   return true;
@@ -29,6 +30,8 @@ function validEvent(value: unknown): boolean {
   if (value.targetIds !== undefined && !stringArray(value.targetIds)) return false;
   if (value.amount !== undefined && !count(value.amount)) return false;
   if (value.rarity !== undefined && !['common', 'rare', 'epic'].includes(value.rarity as string)) return false;
+  if (value.bitAction !== undefined && !['deploy', 'fire', 'expire'].includes(value.bitAction as string)) return false;
+  if (value.bitIndex !== undefined && (value.bitAction !== 'fire' || !count(value.bitIndex) || value.bitIndex > 3)) return false;
   if (value.unitsAfter !== undefined && !validUnits(value.unitsAfter)) return false;
   return true;
 }

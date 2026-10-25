@@ -83,11 +83,12 @@ export function validateContent(content: Content): string[] {
   }
   const eventIds = allIds(content.events ?? [], 'events');
   for (const event of content.events ?? []) {
+    for (const label of [event.normalLabel, event.recruitLabel, event.awakenLabel, event.ruleDescription]) reject(label !== undefined && !plain(label), `events/${event.id}: plain presentation text required`);
     const normal = content.characters.find(char => char.id === event.normalId);
     const awakened = content.characters.find(char => char.id === event.awakenedId);
     reject(!plain(event.name) || !plain(event.subtitle), `events/${event.id}: plain text required`);
     reject(!normal || !awakened || normal.id === awakened.id || normal.familyId !== event.familyId || awakened.familyId !== event.familyId, `events/${event.id}: distinct forms with one family required`);
-    reject(!normal?.origin.includes('event') || !awakened?.origin.includes('event') || Boolean(normal?.motionId) || !awakened?.motionId, `events/${event.id}: still normal and animated awakened event forms required`);
+    reject(!normal?.origin.includes('event') || !awakened?.origin.includes('event') || !awakened?.motionId, `events/${event.id}: event-exclusive forms and animated awakened form required`);
     reject(content.characters.some(char => char.speciesId === event.materialSpeciesId), `events/${event.id}: currency species cannot drop from ordinary enemies`);
     reject(!speciesIds.has(event.materialSpeciesId) || event.fragment.id !== `${event.materialSpeciesId}:rare` || event.core.id !== `${event.materialSpeciesId}:epic`, `events/${event.id}: isolated event materials required`);
     reject(event.normalCost.materialId !== event.fragment.id || event.awakenedCost.materialId !== event.core.id || !Number.isSafeInteger(event.normalCost.count) || event.normalCost.count < 1 || !Number.isSafeInteger(event.awakenedCost.count) || event.awakenedCost.count < 1, `events/${event.id}: valid exchange costs required`);
@@ -108,6 +109,10 @@ export function validateContent(content: Content): string[] {
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
     if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId) || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossBits) {
+      const bits = dungeon.bossBits;
+      reject(!dungeon.eventId || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
+    }
     if (dungeon.eventReward) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.eventReward.count) || dungeon.eventReward.count < 1, `dungeons/${dungeon.id}: invalid event reward`);
     if (dungeon.previousDungeonId) reject(!content.dungeons.some(item => item.id === dungeon.previousDungeonId && item.id !== dungeon.id), `dungeons/${dungeon.id}: missing unlock dungeon`);
     reject(!plain(dungeon.name) || !plain(dungeon.subtitle) || !plain(dungeon.description), `dungeons/${dungeon.id}: plain text required`);

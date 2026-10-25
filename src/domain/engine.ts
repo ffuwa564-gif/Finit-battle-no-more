@@ -80,6 +80,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
 function clearEffects(unit: Unit): void {
+  delete unit.bits;
   delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength;
   delete unit.buffUntil; delete unit.buffStrength; delete unit.debuffUntil; delete unit.debuffStrength;
   delete unit.barrier; delete unit.barrierUntil; delete unit.regenUntil; delete unit.regenStrength;
@@ -229,6 +230,36 @@ const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
 };
+
+/** Boss devices act after ordinary actions. A deployment always gives a full round's warning. */
+function resolveBossBits(battle: Battle, content: Content): void {
+  const pattern = dungeon(content, battle.dungeonId).bossBits;
+  if (!pattern) return;
+  for (const boss of battle.units.filter(unit => unit.side === 'enemy' && unit.boss)) {
+    if (boss.hp <= 0) { delete boss.bits; continue; }
+    if (!alive(battle.units, 'party').length) break;
+    if (battle.round % pattern.every === 0) {
+      boss.bits = { count: pattern.count, deployedRound: battle.round, expiresRound: battle.round + pattern.duration };
+      emit(battle, { kind: 'buff', bitAction: 'deploy', actorId: boss.uid, targetIds: [boss.uid], text: `うさぎビット${pattern.count}機を展開 — 次のターンから${pattern.duration}ターン自動射撃`, unitsAfter: clone(battle.units) });
+      continue;
+    }
+    if (!boss.bits || boss.bits.deployedRound >= battle.round) continue;
+    if (boss.bits.expiresRound < battle.round) { delete boss.bits; continue; }
+    for (let index = 0; index < boss.bits.count; index++) {
+      const targets = alive(battle.units, 'party').sort(byId);
+      if (!targets.length) break;
+      const roll = rng(battle.seed); battle.seed = roll.seed;
+      const target = targets[Math.floor(roll.value * targets.length)]!;
+      const hit = damage(boss, target, pattern.power, 100, battle, true, content);
+      clearInvalidGuards(battle);
+      emit(battle, { kind: 'attack', bitAction: 'fire', bitIndex: index, actorId: boss.uid, targetIds: [hit.unit.uid], amount: hit.amount, text: `うさぎビット${index + 1}号 — 自動射撃${hit.absorbed ? `（障壁が${hit.absorbed}軽減）` : ''}`, unitsAfter: clone(battle.units) });
+    }
+    if (boss.bits.expiresRound === battle.round) {
+      delete boss.bits;
+      emit(battle, { kind: 'buff', bitAction: 'expire', actorId: boss.uid, targetIds: [boss.uid], text: 'うさぎビット帰還 — 次の展開に備えている', unitsAfter: clone(battle.units) });
+    }
+  }
+}
 export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
@@ -333,6 +364,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       }
     }
   }
+  resolveBossBits(battle, content);
   for (const unit of battle.units.filter(unit => unit.hp > 0 && unit.hp < unit.maxHp && (unit.regenUntil ?? -1) >= battle.round)) {
     const amount = Math.min(unit.maxHp - unit.hp, Math.max(1, Math.floor(unit.maxHp * (40 + (unit.regenStrength ?? 10)) / 1000)));
     unit.hp += amount;

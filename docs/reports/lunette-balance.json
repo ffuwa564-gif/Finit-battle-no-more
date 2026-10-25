@@ -1,0 +1,122 @@
+[
+  {
+    "stage": "lunette-beginner",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 8,
+    "meanShots": 4
+  },
+  {
+    "stage": "lunette-beginner",
+    "team": "mid",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 8,
+    "meanShots": 4
+  },
+  {
+    "stage": "lunette-beginner",
+    "team": "ssr",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 6.65,
+    "meanShots": 3.3
+  },
+  {
+    "stage": "lunette-intermediate",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 10,
+    "meanShots": 6
+  },
+  {
+    "stage": "lunette-intermediate",
+    "team": "mid",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 12,
+    "meanShots": 8
+  },
+  {
+    "stage": "lunette-intermediate",
+    "team": "ssr",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 10,
+    "meanShots": 6
+  },
+  {
+    "stage": "lunette-advanced",
+    "team": "initial",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 17.3,
+    "meanShots": 8.6
+  },
+  {
+    "stage": "lunette-advanced",
+    "team": "mid",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 18.05,
+    "meanShots": 11.3
+  },
+  {
+    "stage": "lunette-advanced",
+    "team": "ssr",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 14.45,
+    "meanShots": 8
+  },
+  {
+    "stage": "lunette-expert",
+    "team": "initial",
+    "wins": 7,
+    "seeds": 20,
+    "meanRounds": 24.2,
+    "meanShots": 26.5
+  },
+  {
+    "stage": "lunette-expert",
+    "team": "mid",
+    "wins": 18,
+    "seeds": 20,
+    "meanRounds": 23.95,
+    "meanShots": 27.6
+  },
+  {
+    "stage": "lunette-expert",
+    "team": "ssr",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 18.7,
+    "meanShots": 21.45
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "initial",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 25.2,
+    "meanShots": 22.45
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "mid",
+    "wins": 0,
+    "seeds": 20,
+    "meanRounds": 29.25,
+    "meanShots": 30.85
+  },
+  {
+    "stage": "lunette-awakening",
+    "team": "ssr",
+    "wins": 20,
+    "seeds": 20,
+    "meanRounds": 30.55,
+    "meanShots": 38.55
+  }
+]

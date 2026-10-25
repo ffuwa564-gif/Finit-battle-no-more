@@ -2,7 +2,7 @@ import { skillNames, skillTemplates, skillSoundProfiles } from '../domain/skill-
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
 import { dawnStory, dawnAwakenings, dawnMemories, dawnMaterials, dawnDungeons, storyEncounter } from './seris-story';
 import { stoneEvents } from './events';
-import { eventDungeons, kuzuhaEvent } from './boss-events';
+import { eventDungeons, kuzuhaEvent, lunetteDungeons, lunetteEvent } from './boss-events';
 import { goddessArt, goddessPortraitFocus, sharedGoddessIds } from './gacha';
 export { initialGacha } from './gacha';
 export { validateContent } from './validation';
@@ -39,6 +39,8 @@ const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   noelle: { intro: '消えた名前を、もう一度読ませて。', threshold: '朝の記録は、まだ終わらない。', defeat: '余白には、あなたの名前を。' },
   lisette: { intro: '救ったものを、その手で失う覚悟はある？', threshold: 'あの夜を、繰り返させはしない。', defeat: '……最後の稽古は、隣を歩くことにしましょう。' },
   'seris-awakened': { intro: 'あの日の剣を、今度こそ越えて。', threshold: 'ひとりで夜を引き受けるのは、もう終わり。', defeat: '約束の朝へ。一緒に、帰ろう。' },
+  lunette: { intro: 'ふふふっ、おねえさんよっわー', threshold: 'むぅ……うさぎ隊、もっと本気でいくよ！', defeat: 'ま、負けてないし……もう一回、遊んでくれる？' },
+  'lunette-awakened': { intro: '星時計、ぜんまい全開！ あたしのうさぎ隊についてこれる？', threshold: 'ふふっ、やるじゃん！ ここからが本番だよ！', defeat: '……強いね、おねえさん。次は、あたしも連れてって。' },
   kuzuha: { intro: 'よくいらしたわ。今宵は、どんな願いを預けるの？', threshold: 'ふふ……その眼差し、少し気に入ったわ。', defeat: 'また逢いにきて。契りの続きは、その時に。' },
   'kuzuha-awakened': { intro: '九つの尾がほどける夜。もう、夢からは帰さない。', threshold: 'ここまで追ってくるなんて……本気にしてしまうわ。', defeat: 'あなたの願い、九つの尾に結びましょう。' },
   'pale-wolf': { intro: '……ここから先は、夢さえ帰れない。', threshold: 'まだ、その灯を消すわけにはいかない。', defeat: 'ようやく……あの人の足音が、聞こえる。' },
@@ -84,6 +86,7 @@ const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<Ch
   athena: { secondary: 'pierce', leader: 'bulwark' },
   flora: { secondary: 'cleanse', leader: 'regeneration' },
   'rainbow-iris': { secondary: 'dispel', leader: 'finisher' },
+  lunette: { secondary: 'barrier', leader: 'bulwark' }, 'lunette-awakened': { secondary: 'barrier', leader: 'resonance' },
   kuzuha: { secondary: 'attack', leader: 'lifesteal' }, 'kuzuha-awakened': { secondary: 'attack', leader: 'lifesteal' },
   elaine: { secondary: 'cleanse', leader: 'regeneration' }, liora: { secondary: 'barrier', leader: 'bulwark' },
   seris: { secondary: 'pierce', leader: 'finisher' }, noelle: { secondary: 'attack', leader: 'resonance' },
@@ -150,11 +153,15 @@ const characters: CharacterDef[] = [
   character({"id": "nike-standard", "familyId": "nike", "name": "ニケ", "epithet": "若葉の誓い", "role": "attacker", "speciesId": "pilgrim", "strength": 14, "origin": ["gacha"], "rarity": "R", "flavor": "青緑の三つ編みに月桂の葉を留めた女神。白い旅衣に軽い鎧を重ね、剣の手入れを欠かさない。勝ち急ぐより全員で帰ることを選び、頑丈な障壁を砕いて仲間の進む道を開く。"}),
   character({"id": "rainbow-iris-standard", "familyId": "rainbow-iris", "name": "イリス", "epithet": "雨上がりの便り", "role": "supporter", "speciesId": "moon", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "紫の髪と小さな郵便鞄が目印の女神。薄紫の旅衣で廃都を渡り、途絶えた手紙を届けている。空に虹がかかると少しだけ足が速くなる。敵の強化をほどき、味方へ希望の便りを運ぶ。"}),
   character({"id": "toyotama-standard", "familyId": "toyotama", "name": "トヨタマヒメ", "epithet": "凪を運ぶ旅衣", "role": "healer", "speciesId": "veil", "strength": 16, "origin": ["gacha"], "rarity": "SR", "flavor": "藍色の長い髪に真珠を一粒飾った女神。穏やかな海色の衣で浜辺を歩き、貝の器に澄んだ水をすくう。波のような癒しと薄い水の障壁で、旅人たちが次の岸へ進むのを支える。"}),
+  character({"id": "lunette", "familyId": "lunette", "motionId": "lunette-motion", "name": "ルネット", "epithet": "時計庭のうさぎ姫", "role": "area_attacker", "speciesId": "clockwork", "strength": 20, "origin": ["event"], "rarity": "SSR", "flavor": "忘れられた時計庭に住む、小柄な発明家の少女。得意げな言葉とは裏腹に、壊れたうさぎを放っておけない。手製の機械うさぎに囲まれ、訪れた旅人を遊び相手に誘う。誰かと帰る約束を、ずっと待っていた。"}),
+  character({"id": "lunette-awakened", "familyId": "lunette", "motionId": "lunette-awakened-motion", "name": "星時計・ルネット", "epithet": "夜明けを刻むうさぎ隊", "role": "area_attacker", "speciesId": "clockwork", "strength": 24, "origin": ["event"], "rarity": "SSR", "flavor": "大時計の奥で眠っていた星のぜんまいが、少女とうさぎたちの願いに応える。紺と白の旅装に星の歯車を飾り、今度は誰かを置いていかないと誓った。生意気な笑い声も、仲間の足音を確かめるための合図になった。"}),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
 // Portrait crops follow each painting rather than assuming all story art shares a face position.
 const companionPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = {
+  lunette: { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' },
+  'lunette-awakened': { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' },
   'veil-priestess': { anchor: '50% 50%', zoom: 2.2, origin: '50% 22%' },
   'thorn-witch': { anchor: '50% 50%', zoom: 2.2, origin: '50% 22%' },
   iris: { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' },
@@ -198,7 +205,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...normalDungeons.map(storyEncounter), ...dawnDungeons, ...eventDungeons, ...stoneEvents];
+const dungeons = [...normalDungeons.map(storyEncounter), ...dawnDungeons, ...eventDungeons, ...lunetteDungeons, ...stoneEvents];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',
@@ -208,6 +215,8 @@ const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portrait
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
 }));
 const menuAssets: AssetDef[] = [
+  { id: 'lunette-motion', path: 'video/lunette.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Lunette clockwork illustration animated with Runway; task ef1010c6-3487-46f6-979c-79381bec9c83.' },
+  { id: 'lunette-awakened-motion', path: 'video/lunette-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project awakened Lunette clockwork illustration animated with Runway; task 3f0e60a1-b92b-4a36-82f0-54aad04c7be0.' },
   { id: 'gacha-selene-motion', path: 'video/gacha-selene-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Selene kimono illustration animated with Runway; task cdf471e0-c6d0-4ff6-871e-854922b3beac.' },
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },
   { id: 'seris-awakened-motion', path: 'video/seris-awakened.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Seris dawn illustration animated with Runway; task 5e312a67-100d-448a-afa6-b2b00b7a8bb7.' },
@@ -223,7 +232,7 @@ const menuAssets: AssetDef[] = [
   { id: 'command-atlas', path: 'art/command-atlas.png', kind: 'icon', width: 1536, height: 1024, anchor: '50% 50%', rights: 'Original AI-generated painted UI icon atlas for this project.' },
 { id: 'menu-bag', path: 'art/menu-bag.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-codex', path: 'art/menu-codex.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'menu-hero', path: 'art/menu-hero.png', kind: 'background', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated artwork for this project.' }];
 
-export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, awakenings: dawnAwakenings, memories: dawnMemories, storylines: [dawnStory], materials: dawnMaterials, events: [kuzuhaEvent], species: [ ...dawnMaterials.map(item => ({ id: item.id.split(':')[0]!, name: item.name })), { id: 'fox', name: '妖狐' }, { id: 'kuzuha-contract', name: '契り' }, { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...encounterAssets, ...menuAssets, ...portraitMotionAssets, { id: 'app-icon', path: 'art/app-icon-portrait.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated silver-haired female portrait for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: '180px export of original AI-generated project portrait.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
+export const content: Content = { appVersion: '0.1.0', contentVersion: 'initial-r1', rulesVersion: '1', schemaVersion: 1, characters, skills, awakenings: dawnAwakenings, memories: dawnMemories, storylines: [dawnStory], materials: dawnMaterials, events: [kuzuhaEvent, lunetteEvent], species: [ ...dawnMaterials.map(item => ({ id: item.id.split(':')[0]!, name: item.name })), { id: 'clockwork', name: '機巧' }, { id: 'lunette-clockwork', name: '星時計' }, { id: 'fox', name: '妖狐' }, { id: 'kuzuha-contract', name: '契り' }, { id: 'pilgrim', name: '巡礼' }, { id: 'mist', name: '白霧' }, { id: 'stone', name: '石燐' }, { id: 'hollow', name: '虚ろ' }, { id: 'moon', name: '月翅' }, { id: 'veil', name: '白帳' }, { id: 'thorn', name: '荊冠' } ], assets: [...characterAssets, ...encounterAssets, ...menuAssets, ...portraitMotionAssets, { id: 'app-icon', path: 'art/app-icon-portrait.png', kind: 'icon', width: 1254, height: 1254, anchor: '50% 50%', rights: 'Original AI-generated silver-haired female portrait for this project.' }, { id: 'apple-touch-icon', path: 'apple-touch-icon.png', kind: 'icon', width: 180, height: 180, anchor: '50% 50%', rights: '180px export of original AI-generated project portrait.' }, { id: 'key-art', path: 'art/key-art.png', kind: 'background', width: 1536, height: 1024, anchor: '70% 50%', rights: 'Original AI-generated artwork for this project.' }, { id: 'cathedral', path: 'art/cathedral.png', kind: 'background', width: 1536, height: 1024, anchor: '50% 45%', rights: 'Original AI-generated background created for this project.' }, ...(['common', 'rare', 'epic'] as const).map(rarity => ({ id: `material-${rarity}`, path: `art/material-${rarity}.svg`, kind: 'icon' as const, width: 128, height: 128, anchor: '50% 50%', rights: 'Original SVG artwork created for this project.' }))], dungeons };
 
 export function characterById(id: string): CharacterDef { const found = content.characters.find(char => char.id === id); if (!found) throw new Error(`未知のキャラクター: ${id}`); return found; }
 export function assetPath(id: string): string { const asset = content.assets.find(item => item.id === id); if (!asset) throw new Error(`未知のアセット: ${id}`); const base = typeof import.meta.env === 'object' ? import.meta.env.BASE_URL : '/'; return `${base.replace(/\/$/, '')}/${asset.path.replace(/^\//, '')}`; }
