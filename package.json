@@ -22,7 +22,8 @@
     "capture:itch": "tsx scripts/capture-itch-media.ts",
     "capture:trailer": "tsx scripts/capture-trailer.ts",
     "edit:trailer": "python scripts/edit-trailer.py",
-    "edit:cm": "python scripts/edit-heisei-cm.py"
+    "edit:cm": "python scripts/edit-heisei-cm.py",
+    "export:motion-posters": "tsx scripts/export-motion-posters.ts"
   },
   "dependencies": {
     "gsap": "^3.14.0",

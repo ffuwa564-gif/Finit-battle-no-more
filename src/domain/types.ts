@@ -9,7 +9,7 @@ export type Side = 'party' | 'enemy';
 export interface BossBitPattern { every: number; count: number; duration: number; power: number }
 export interface CharacterDef { encounterLoot?: { guaranteed: MaterialCost[]; gold: number }; id: string; name: string; epithet: string; flavor: string; speciesId: string; role: Role; strength: number; leaderStat: LeaderStat; leaderEffect?: LeaderEffect; skillIds: string[]; portraitId: string; artId: string; motionId?: string; portraitMotionId?: string; familyId?: string; encounterArtId?: string; origin: ('initial' | 'recruit' | 'gacha' | 'event' | 'awakening' | 'gold_exchange' | 'trial')[]; rarity: 'R' | 'SR' | 'SSR'; published: boolean; soundProfile: string; dialogue?: { intro: string; threshold: string; defeat: string } }
 export interface SkillDef { id: string; name: string; template: SkillTemplate; strength: number; soundProfile: string }
-export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon' | 'video'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string }
+export interface AssetDef { id: string; path: string; kind: 'portrait' | 'illustration' | 'background' | 'icon' | 'video'; width: number; height: number; anchor: string; rights: string; portraitZoom?: number; portraitOrigin?: string; posterId?: string }
 export interface SpeciesDef { id: string; name: string }
 export interface EnemyDef { characterId: string; boss?: boolean }
 export interface ChapterDef { id: string; number: number; title: string; subtitle: string; dungeonIds: string[]; bossHint: string }

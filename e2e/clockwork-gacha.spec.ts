@@ -54,7 +54,7 @@ test('Nox keeps her painting for reduced motion and failures, and the new series
   await page.getByRole('button', { name: title, exact: true }).click();
   const nox = page.locator('.goddess-feature--nox .animated-illustration');
   await expect(nox).toHaveAttribute('data-animation-state', 'static');
-  await expect(nox.locator('img')).toHaveAttribute('src', /gacha-nox.png/);
+  await expect(nox.locator('img')).toHaveAttribute('src', /motion-posters\/gacha-nox-motion.png/);
   expect(requests).toEqual([]);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.route('**/video/gacha-nox.mp4', route => route.abort());
