@@ -1,0 +1,90 @@
+import { test, expect } from '@playwright/test';
+import { enterGame } from './boot';
+const title = '機巧少女 ― 無慈悲な歯車 ―';
+
+test('single featured maiden animates, shows correct odds and is awarded by the shared introductory guarantee', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/#gacha'); await enterGame(page);
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!; const revision = save.revision;
+    save.stones = 5; save.drawCount = 1; save.ssrPity = 1; save.revision++;
+    await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await page.getByRole('button', { name: title, exact: true }).click();
+  const showcase = page.getByRole('region', { name: title, exact: true });
+  await expect(showcase.locator('.goddess-feature')).toHaveCount(1);
+  await expect(showcase).toContainText('1.5%');
+  const video = showcase.locator('video');
+  await video.scrollIntoViewIfNeeded();
+  await expect(video).toHaveAttribute('src', /gacha-nox.mp4/);
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
+  await expect(video).toHaveJSProperty('muted', true);
+  await expect(video).toHaveJSProperty('loop', true);
+  await page.screenshot({ path: testInfo.outputPath('nox-gacha-mobile.png'), fullPage: true });
+  await showcase.getByRole('button', { name: 'SSR ノクスの詳細', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText('零式・無赦の執行者');
+  await expect.poll(() => page.getByRole('dialog').locator('video').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
+  await expect(video).toHaveJSProperty('paused', true);
+  await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
+  await showcase.getByRole('button', { name: '石5個で祈願する', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText(title);
+  await page.getByRole('button', { name: '保証を使って祈願する', exact: true }).click();
+  await page.getByRole('button', { name: '演出をスキップ', exact: true }).click();
+  const result = page.getByRole('dialog');
+  await expect(result.locator('video')).toHaveAttribute('src', /gacha-nox.mp4/);
+  await expect.poll(() => result.locator('video').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
+  await result.getByRole('button', { name: '閉じる', exact: true }).click();
+  const save = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
+  expect(save.ownedIds).toContain('nox'); expect(save.drawCount).toBe(2); expect(save.stones).toBe(0); expect(save.ssrPity).toBe(0);
+  await page.goto('/#party');
+  const card = page.locator('.character-card').filter({ has: page.getByRole('heading', { name: 'ノクス', exact: true }) });
+  await card.scrollIntoViewIfNeeded();
+  await expect(card.locator('video')).toHaveAttribute('src', /nox-portrait.mp4/);
+  await expect.poll(() => card.locator('video').evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+});
+
+test('Nox keeps her painting for reduced motion and failures, and the new series is translated', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const requests: string[] = [];
+  page.on('request', request => { if (request.url().includes('gacha-nox.mp4')) requests.push(request.url()); });
+  await page.goto('/#gacha'); await enterGame(page);
+  await page.getByRole('button', { name: title, exact: true }).click();
+  const nox = page.locator('.goddess-feature--nox .animated-illustration');
+  await expect(nox).toHaveAttribute('data-animation-state', 'static');
+  await expect(nox.locator('img')).toHaveAttribute('src', /gacha-nox.png/);
+  expect(requests).toEqual([]);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.route('**/video/gacha-nox.mp4', route => route.abort());
+  await nox.scrollIntoViewIfNeeded();
+  await expect(nox).toHaveAttribute('data-animation-state', 'error');
+  await expect(nox.locator('img')).toBeVisible();
+  await page.goto('/#settings'); await page.getByRole('button', { name: 'English', exact: true }).click();
+  await page.goto('/#gacha');
+  await page.getByRole('button', { name: 'Clockwork Maidens — Merciless Gears', exact: true }).click();
+  await expect(page.getByRole('region', { name: 'Clockwork Maidens — Merciless Gears', exact: true })).toContainText('Nox');
+});
+
+test('Nox can be welcomed from a ten-wish gallery with shared hard pity', async ({ page }) => {
+  await page.goto('/#gacha'); await enterGame(page);
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!; const revision = save.revision;
+    save.stones = 50; save.drawCount = 100; save.ssrPity = 89;
+    save.settings.reducedMotion = true; save.revision++;
+    await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await page.getByRole('button', { name: title, exact: true }).click();
+  await page.getByRole('button', { name: '石50個で10連祈願', exact: true }).click();
+  const gallery = page.getByRole('dialog', { name: '10連祈願の結果', exact: true });
+  await expect(gallery.locator('.gacha-result')).toHaveCount(10);
+  await expect(gallery.locator('.gacha-result').first()).toContainText('ノクス');
+  await expect(gallery).toContainText('新しい仲間');
+  await gallery.locator('.gacha-result').first().click();
+  await expect(page.getByRole('button', { name: 'ノクスを迎える', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'ノクスを迎える', exact: true }).click();
+  await expect(gallery.locator('.gacha-result')).toHaveCount(10);
+});

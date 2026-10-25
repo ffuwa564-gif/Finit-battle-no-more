@@ -5,18 +5,18 @@ import { gachaCollections, sharedSSRIds, gachaPoolIds, gachaBaseChance, pickSSR 
 import { assertSaveCompatibility } from '../src/platform/save';
 
 describe('shared SSR summons', () => {
-  it('shows probabilities totaling 100% and preserves a 50/50 SSR group split in both collections', () => {
+  it('shows probabilities totaling 100% and preserves a 50/50 SSR group split in every collection', () => {
     for (const collection of gachaCollections) {
       const pool = content.characters.filter(c => gachaPoolIds(collection).includes(c.id));
       expect(pool.reduce((sum,c) => sum + gachaBaseChance(c, collection, pool), 0)).toBeCloseTo(100, 8);
-      for (const id of collection.featuredIds) expect(gachaBaseChance(pool.find(c => c.id === id)!, collection, pool)).toBe(0.75);
+      for (const id of collection.featuredIds) expect(gachaBaseChance(pool.find(c => c.id === id)!, collection, pool)).toBe(1.5 / collection.featuredIds.length);
       for (const id of sharedSSRIds) expect(gachaBaseChance(pool.find(c => c.id === id)!, collection, pool)).toBe(0.5);
       const counts: Record<string, number> = {};
       for (let n = 0; n < 1200; n++) {
         const selected = pickSSR(pool.filter(c => c.rarity === 'SSR'), collection, (n + 0.5) / 1200, false);
         counts[selected.id] = (counts[selected.id] ?? 0) + 1;
       }
-      for (const id of collection.featuredIds) expect(counts[id]).toBe(300);
+      for (const id of collection.featuredIds) expect(counts[id]).toBe(600 / collection.featuredIds.length);
       for (const id of sharedSSRIds) expect(counts[id]).toBe(200);
     }
   });

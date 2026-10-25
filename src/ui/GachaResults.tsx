@@ -36,7 +36,7 @@ export function GachaResults({ results, introIndex, reducedMotion, onClose, onRe
           </Button>;
         })}
       </div>
-      <div className="gacha-results__footer"><span>{tr('新しい女神 {0}体').replace('{0}', String(results.filter(result => !result.duplicate).length))}</span><span>{tr('祈願石還元 {0}個').replace('{0}', String(refund))}</span></div>
+      <div className="gacha-results__footer"><span>{tr(results.some(result => characterById(result.characterId).speciesId === 'clockwork') ? '新しい仲間 {0}体' : '新しい女神 {0}体').replace('{0}', String(results.filter(result => !result.duplicate).length))}</span><span>{tr('祈願石還元 {0}個').replace('{0}', String(refund))}</span></div>
       <Button size="lg" className="gacha-results__accept" onClick={onClose}>{tr('祈願に戻る')}</Button>
     </div>
   </Modal>;
