@@ -1,3 +1,4 @@
+import { goddessTrial, trialDialogues } from './trials';
 import { rareEnemyArt, rareEnemySpecies, rareEnemyMaterials, rareEncounterFor } from './rare-encounters';
 import { skillNames, skillTemplates, skillSoundProfiles } from '../domain/skill-info';
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
@@ -33,7 +34,7 @@ const goddessSkillNames: Record<number, Partial<Record<SkillTemplate, string>>> 
 };
 const skills: SkillDef[] = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 30].flatMap(strength => templates.map(template => ({ id: skillFor(template, strength), name: goddessSkillNames[strength]?.[template] ?? labels[template], template, strength, soundProfile: skillSoundProfiles[template] })));
 const required: Record<Role, SkillTemplate> = { healer: 'heal', tank: 'guard', attacker: 'attack', area_attacker: 'area', supporter: 'buff', debuffer: 'debuff' };
-interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; encounterLoot?: CharacterDef['encounterLoot']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
+interface CharacterInput { id: string; name: string; epithet: string; flavor: string; role: Role; speciesId: string; strength: number; origin: CharacterDef['origin']; dialogue?: CharacterDef['dialogue']; encounterLoot?: CharacterDef['encounterLoot']; motionId?: string; familyId?: string; rarity?: CharacterDef['rarity'] }
 const bossDialogues: Record<string, NonNullable<CharacterDef['dialogue']>> = {
   elaine: { intro: 'この花を、誰に渡すはずだったのでしょう。', threshold: '忘れても、約束はここに。', defeat: 'セリス……一緒に、帰りましょう。' },
   liora: { intro: 'この門は、私が開いた。', threshold: '命令より、帰る者を守る。', defeat: '帰還の許可なら、とうに出ている。' },
@@ -112,10 +113,10 @@ const characters: CharacterDef[] = [
   character({ id: 'thorn-witch', name: '荊の魔女', epithet: '枯園の記憶', role: 'debuffer', speciesId: 'thorn', strength: 12, origin: ['recruit'], flavor: '花を咲かせなくなった庭に暮らす魔女。荊の冠は罰ではなく、彼女自身が選んだ約束のしるし。誰かが種を持ってくるたび、ほんの少しだけ口元を緩める。' }),
   character({ id: 'iris', name: 'アメノウズメ', epithet: '薄明の鈴舞', role: 'supporter', speciesId: 'pilgrim', strength: 12, origin: ['gacha'], rarity: 'R', flavor: '神楽の舞台で、赤茶の短い髪と紅いリボンを弾ませる女神。神楽鈴を高く掲げ、扇を開き、黒と生成りのゴシックロリータで軽やかに舞う。沈黙に閉ざされた街にも、もう一度笑い声が戻ると信じている。' }),
   character({ id: 'mireille', name: 'コノハナサクヤヒメ', epithet: '黒桜の花守', role: 'healer', speciesId: 'veil', strength: 18, origin: ['gacha'], rarity: 'SR', flavor: '富士を背に、桜の枝と小さな炎をそっと掲げる女神。桜色と黒いレースのゴシックロリータを纏い、火の粉を花びらのように遊ばせる。儚さと強さを知る彼女の祈りは、傷ついた仲間の命を静かにつなぎとめる。' }),
-  character({ id: 'asteria', motionId: 'gacha-amaterasu-motion', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
-  character({ id: 'evelyn', motionId: 'gacha-izanami-motion', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
-  character({ id: "selene", motionId: "gacha-selene-motion", name: "セレネ", epithet: "月白の振袖", role: "healer", speciesId: "moon", strength: 21, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の月の女神を着想にした、花宴への客人。月白と紺の振袖を自ら選び、銀糸の三日月を袖に散らした。月を映す扇を開けば、仲間を守る柔らかな光が庭に満ちる。静かな宴を誰もが楽しめるよう、隅々まで目を配っている。" }),
-  character({ id: "athena", motionId: "gacha-athena-motion", name: "アテナ", epithet: "知恵咲く羽織", role: "tank", speciesId: "pilgrim", strength: 23, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の知恵の女神を着想にした、花宴への客人。藍の羽織にはオリーブの枝と梟の刺繍。着物の文様に込められた工夫を楽しみながら、仲間の話に耳を傾ける。旅では冷静な判断と確かな守りで、一行の進む道を支える。" }),
+  character({ id: 'asteria', dialogue: trialDialogues.asteria, motionId: 'gacha-amaterasu-motion', name: 'アマテラス', epithet: '黒レースの暁光', role: 'area_attacker', speciesId: 'moon', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '岩戸の向こうから朝を連れてくる女神。黒髪のボブに太陽の光輪を戴き、白と黒のフリルに金を添えたゴシックロリータを纏う。両手に掲げる八咫鏡が暁を映すと、閉ざされた街にも温かな光が満ちてゆく。' }),
+  character({ id: 'evelyn', dialogue: trialDialogues.evelyn, motionId: 'gacha-izanami-motion', name: 'イザナミ', epithet: '黄泉のフリル', role: 'tank', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '黄泉の境界に立つ女神が、銀髪を黒い喪のヴェールで包み、黒と紫のゴシックロリータを纏った。胸には勾玉、手には赤い彼岸花と古い灯。閉ざされた岩の前で、今は隣に立つ仲間を守ることを選ぶ。' }),
+  character({ id: "selene", dialogue: trialDialogues.selene, motionId: "gacha-selene-motion", name: "セレネ", epithet: "月白の振袖", role: "healer", speciesId: "moon", strength: 21, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の月の女神を着想にした、花宴への客人。月白と紺の振袖を自ら選び、銀糸の三日月を袖に散らした。月を映す扇を開けば、仲間を守る柔らかな光が庭に満ちる。静かな宴を誰もが楽しめるよう、隅々まで目を配っている。" }),
+  character({ id: "athena", dialogue: trialDialogues.athena, motionId: "gacha-athena-motion", name: "アテナ", epithet: "知恵咲く羽織", role: "tank", speciesId: "pilgrim", strength: 23, origin: ["gacha"], rarity: "SSR", flavor: "ギリシャ神話の知恵の女神を着想にした、花宴への客人。藍の羽織にはオリーブの枝と梟の刺繍。着物の文様に込められた工夫を楽しみながら、仲間の話に耳を傾ける。旅では冷静な判断と確かな守りで、一行の進む道を支える。" }),
   character({ id: "flora", name: "フローラ", epithet: "百花の晴れ衣", role: "healer", speciesId: "veil", strength: 16, origin: ["gacha"], rarity: "SR", flavor: "ローマ神話の花の女神を着想にした、花宴への客人。桜色と若草色の晴れ着に、牡丹や小さな野花をあしらった。庭で見つけた花の名前をひとつずつ覚え、出会った人へ小さな花束を贈る。その優しい花風は、仲間の傷と弱りをいたわる。" }),
   character({ id: "rainbow-iris", name: "イリス", epithet: "虹織の訪れ", role: "supporter", speciesId: "pilgrim", strength: 20, origin: ["gacha"], rarity: "SR", flavor: "ギリシャ神話の虹と伝令の女神を着想にした、花宴への客人。雲と流水を織り込んだ袖が、光を受けて淡い虹色に変わる。招待の返事を大切に携え、遠い土地の話を皆へ届ける。戦いでは仲間を励まし、敵にまとわりつく強化を晴らす。" }),
   character({ id: 'eos', name: 'エオス', epithet: '曙染めの小袖', role: 'supporter', speciesId: 'pilgrim', strength: 15, origin: ['gacha'], rarity: 'R', flavor: 'ギリシャ神話の暁の女神を着想にした、花宴への客人。朝顔と淡い光を織り込んだ小袖を選び、庭の朝露を楽しんでいる。仲間の小さな一歩にも気づき、そっと背中を押す。旅では朝霞のような障壁を広げ、新しい一日へ進む力を分けてくれる。' }),
@@ -212,7 +213,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...normalDungeons.map(storyEncounter).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents];
+const dungeons = [...normalDungeons.map(storyEncounter).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: rareEnemyArt[char.id] ? `art/${rareEnemyArt[char.id]}.png` : char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.',

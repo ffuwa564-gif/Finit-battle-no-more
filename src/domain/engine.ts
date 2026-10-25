@@ -416,7 +416,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     for (const unit of killed) {
       const def = character(content, unit.characterId);
       if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat') }); }
-      if (unit.side !== 'enemy') continue;
+      if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
       const stage = dungeon(content, battle.dungeonId);
       const event = content.events?.find(item => item.id === stage.eventId);
       const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
@@ -468,12 +468,12 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   }
   if (!alive(battle.units, 'party').length) {
     battle.nextPhase = 'failed'; battle.failureReason = 'パーティが全滅しました';
-    emit(battle, { kind: 'defeat', text: '探索失敗 — 今回の素材はすべて失われます' });
+    emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — パーティが全滅しました' : '探索失敗 — 今回の素材はすべて失われます' });
   } else if (!alive(battle.units, 'enemy').length) {
     battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
   } else if (battle.round >= 100) {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
-    emit(battle, { kind: 'defeat', text: '探索失敗 — ラウンド上限です' });
+    emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
