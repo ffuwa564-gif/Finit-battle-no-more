@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
-test('clockwork event has its own rewards, instructions and animated forms in both languages', async ({ page }, testInfo) => {
+test('clockwork event has its own rewards, instructions and static forms in both languages', async ({ page }, testInfo) => {
   await page.setViewportSize({width:390,height:844}); await page.goto('/#dungeons/boss-events'); await enterGame(page);
   const event = page.getByRole('region', {name:'時計庭のうさぎ姫',exact:true});
   await expect(event).toContainText('3ターンごと'); await expect(event).toContainText('うさぎの歯車');
   await expect(event).not.toContainText('葛葉'); await expect(event.locator('.event-stage')).toHaveCount(5);
-  await expect(event.locator('video')).toHaveCount(2);
+  await expect(event.locator('video')).toHaveCount(0);
+  await expect(event.locator('.character-artwork__still')).toHaveCount(2);
   await expect(event.getByRole('button',{name:'ルネットを迎える',exact:true})).toBeDisabled();
   await event.scrollIntoViewIfNeeded(); await page.screenshot({path:testInfo.outputPath('clockwork-event.png')});
   await page.goto('/#settings'); await page.getByRole('button',{name:'English',exact:true}).click(); await page.goto('/#dungeons/boss-events');
@@ -48,6 +49,5 @@ test('real bit deployments and shots survive reload, replay once, and respect re
   const reloaded=await page.evaluate(async()=> (await(await import('/src/platform/save.ts')).loadSave())!.battle!);
   expect(reloaded.units).toEqual(after.units); expect(reloaded.round).toBe(after.round);
   expect(await page.locator('.clockwork-bit').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
-  await expect(enemy.locator('video')).not.toHaveAttribute('src');
-  await expect(enemy.locator('video')).toHaveJSProperty('paused',true);
+  await expect(enemy.locator('video')).toHaveCount(0);
 });

@@ -88,7 +88,7 @@ export function validateContent(content: Content): string[] {
     const awakened = content.characters.find(char => char.id === event.awakenedId);
     reject(!plain(event.name) || !plain(event.subtitle), `events/${event.id}: plain text required`);
     reject(!normal || !awakened || normal.id === awakened.id || normal.familyId !== event.familyId || awakened.familyId !== event.familyId, `events/${event.id}: distinct forms with one family required`);
-    reject(!normal?.origin.includes('event') || !awakened?.origin.includes('event') || !awakened?.motionId, `events/${event.id}: event-exclusive forms and animated awakened form required`);
+    reject(!normal?.origin.includes('event') || !awakened?.origin.includes('event'), `events/${event.id}: event-exclusive forms required`);
     reject(content.characters.some(char => char.speciesId === event.materialSpeciesId), `events/${event.id}: currency species cannot drop from ordinary enemies`);
     reject(!speciesIds.has(event.materialSpeciesId) || event.fragment.id !== `${event.materialSpeciesId}:rare` || event.core.id !== `${event.materialSpeciesId}:epic`, `events/${event.id}: isolated event materials required`);
     reject(event.normalCost.materialId !== event.fragment.id || event.awakenedCost.materialId !== event.core.id || !Number.isSafeInteger(event.normalCost.count) || event.normalCost.count < 1 || !Number.isSafeInteger(event.awakenedCost.count) || event.awakenedCost.count < 1, `events/${event.id}: valid exchange costs required`);
