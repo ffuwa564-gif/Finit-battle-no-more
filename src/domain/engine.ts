@@ -18,10 +18,10 @@ const character = (content: Content, id: string): CharacterDef => {
   if (!result) throw new Error(`不明なキャラクター: ${id}`);
   return result;
 };
-const bossLine = (content: Content, id: string, phase: 'intro' | 'threshold' | 'defeat'): string => {
+const bossLine = (content: Content, id: string, phase: 'intro' | 'threshold' | 'defeat', dungeonId: string): string => {
   const def = character(content, id);
   const fallback = { intro: 'この静寂を、乱すのは誰……', threshold: 'まだ、ここを去るわけには……', defeat: 'どうか、この記憶を……' };
-  const line = def.dialogue?.[phase]?.trim() || fallback[phase];
+  const line = content.dungeons.find(stage => stage.id === dungeonId)?.bossDialogue?.[phase]?.trim() || def.dialogue?.[phase]?.trim() || fallback[phase];
   return `${def.name}「${line}」`;
 };
 const dungeon = (content: Content, id: string): DungeonDef => {
@@ -118,7 +118,7 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
     const flag = `${boss.uid}:enter`;
     if (!battle.talkFlags.includes(flag)) {
       battle.talkFlags.push(flag);
-      emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'intro') });
+      emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'intro', battle.dungeonId) });
     }
   }
   return battle;
@@ -415,11 +415,11 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const killed = battle.units.filter((unit) => unit.hp <= 0 && before.some((old) => old.uid === unit.uid && old.hp > 0));
     for (const boss of battle.units.filter((unit) => unit.boss && unit.hp > 0 && unit.hp <= unit.maxHp / 2 && before.some((old) => old.uid === unit.uid && old.hp > old.maxHp / 2))) {
       const flag = `${boss.uid}:half`;
-      if (!battle.talkFlags.includes(flag)) { battle.talkFlags.push(flag); emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'threshold') }); }
+      if (!battle.talkFlags.includes(flag)) { battle.talkFlags.push(flag); emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'threshold', battle.dungeonId) }); }
     }
     for (const unit of killed) {
       const def = character(content, unit.characterId);
-      if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat') }); }
+      if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat', battle.dungeonId) }); }
       if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
       const stage = dungeon(content, battle.dungeonId);
       const event = content.events?.find(item => item.id === stage.eventId);

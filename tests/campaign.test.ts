@@ -16,9 +16,9 @@ function finish(save: GameSave): GameSave {
   expect(save.battle?.phase).toBe('reward'); return save;
 }
 describe('normal campaign chapters',()=>{
-  it('groups the ten stable routes into three ordered chapters with distinct scaled finale bosses',()=>{
+  it('groups thirty-six routes while retaining the ten stable routes into three ordered chapters with distinct scaled finale bosses',()=>{
     expect(validateContent(content)).toEqual([]);expect(content.chapters).toHaveLength(3);
-    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([3,3,4]);expect(new Set(ids).size).toBe(10);
+    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12]);expect(new Set(ids).size).toBe(36);
     const bosses=content.chapters!.map(ch=>content.dungeons.find(d=>d.id===ch.dungeonIds.at(-1))!);
     expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette']);
     expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,400,550]);
@@ -43,7 +43,7 @@ describe('normal campaign chapters',()=>{
     }
     expect(save.materials['lisette-memory:rare']).toBeGreaterThanOrEqual(6);
     const repeat=applyCommand(finish(applyCommand(save,{type:'depart',dungeonId:ids[0]!,potions:0},content)),{type:'claim'},content);
-    expect(repeat.stones).toBe(30);assertSaveCompatibility(repeat,content);
+    expect(repeat.stones).toBe(108);assertSaveCompatibility(repeat,content);
   });
   it('does not unlock a route after retreat or failure',()=>{
     let save=applyCommand(createInitialSave(content),{type:'depart',dungeonId:ids[0]!,potions:0},content);
@@ -53,9 +53,10 @@ describe('normal campaign chapters',()=>{
   });
   it('keeps old deep clear records accessible without inventing earlier rewards',()=>{
     const save=createInitialSave(content);save.completedDungeonIds=['last-observatory'];const before=structuredClone(save);
-    assertSaveCompatibility(save,content);expect(campaignFrontier(save,content)).toBe(9);
+    assertSaveCompatibility(save,content);expect(campaignFrontier(save,content)).toBe(ids.indexOf('last-observatory')+1);
     expect(content.chapters!.every(ch=>chapterUnlocked(ch,save,content))).toBe(true);
-    expect(ids.every(id=>!dungeonLock(content.dungeons.find(d=>d.id===id)!,save,content))).toBe(true);
+    expect(ids.slice(0,ids.indexOf('last-observatory')+2).every(id=>!dungeonLock(content.dungeons.find(d=>d.id===id)!,save,content))).toBe(true);
+    expect(dungeonLock(content.dungeons.find(d=>d.id==='pale-throne')!,save,content)).toBeTruthy();
     expect(dungeonStoneReward(content.dungeons.find(d=>d.id==='last-observatory')!,save.completedDungeonIds)).toBe(0);
     expect(dungeonStoneReward(content.dungeons[0]!,save.completedDungeonIds)).toBe(3);expect(save).toEqual(before);
   });
@@ -91,4 +92,18 @@ describe('normal campaign chapters',()=>{
     const guard=resolveRound(battle,content).battle.events.find(e=>e.actorId==='party:liora'&&e.skillId==='guard-14')!;
     expect(guard.targetIds).toEqual(['party:noelle']);
   });
+});
+
+it('keeps chapter-specific boss dialogue in saved replays without changing the recruit or memory encounter',()=>{
+  const battle=createBattle(content,['elaine','liora','seris','noelle'],'elaine','hollow-gate',0,42,'chapter-dialogue');
+  let b=battle;while(b.phase==='playing')b=advanceReplay(b,content);
+  while(b.wave<2){b.phase='playing';b.nextPhase='wave';b.events=[];b.cursor=0;while(b.phase==='playing')b=advanceReplay(b,content);}
+  expect(b.events.some(e=>e.text.includes('盾が、もう私の命令'))).toBe(true);
+  const save=createInitialSave(content);save.battle=b;assertSaveCompatibility(JSON.parse(JSON.stringify(save)),content);
+  expect(content.characters.find(c=>c.id==='liora')!.dialogue!.intro).toBe('この門は、私が開いた。');
+});
+it('rejects missing story passages and invalid boss dialogue while accepting the expanded campaign',()=>{
+  const bad=structuredClone(content);bad.dungeons[0]!.narrative!.after='';bad.dungeons.find(d=>d.id==='hollow-gate')!.bossDialogue!.defeat='';
+  expect(validateContent(bad)).toContain('dungeons/silent-cathedral: plain narrative before and after required');
+  expect(validateContent(bad)).toContain('dungeons/hollow-gate: complete plain boss dialogue required');
 });

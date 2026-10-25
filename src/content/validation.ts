@@ -208,6 +208,8 @@ export function validateContent(content: Content): string[] {
     reject(!characterIds.has(memory.characterId) || memoryIds.has(memory.characterId) || !plain(memory.encounter) || !plain(memory.companion) || !plain(memory.awakened), `memories/${memory.characterId}: valid unique character and chapters required`); memoryIds.add(memory.characterId);
   }
   for (const stage of content.dungeons) {
+    if (stage.bossDialogue) reject(!['intro', 'threshold', 'defeat'].every(phase => plain(stage.bossDialogue?.[phase as keyof NonNullable<typeof stage.bossDialogue>])), `dungeons/${stage.id}: complete plain boss dialogue required`);
+    if (stage.narrative) reject(!plain(stage.narrative.before) || !plain(stage.narrative.after), `dungeons/${stage.id}: plain narrative before and after required`);
     if (stage.storyId) reject(!content.storylines?.some(story => story.id === stage.storyId) || stage.kind === 'event', `dungeons/${stage.id}: valid normal storyline required`);
     if (stage.requiresOwnedIds) reject(stage.requiresOwnedIds.some(id => !awakeningForms.has(id)), `dungeons/${stage.id}: invalid awakened ownership lock`);
     if (stage.bossLoot) {

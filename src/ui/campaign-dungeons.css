@@ -20,3 +20,10 @@
 .dungeon-card--finale .eyebrow { color:#947744; }
 .dungeon-lock svg { flex-shrink:0; vertical-align:middle; }
 @media(max-width:360px) { .chapter-tab > strong { font-size:10px; } .chapter-tabs .chapter-tab { padding:10px 7px; } .chapter-boss { gap:10px; padding:12px; } .chapter-boss .button.chapter-boss__portrait { flex-basis:64px; width:64px; height:76px; min-height:76px; } }
+
+.campaign-story { margin: 18px 0; padding: 20px 22px; border: 1px solid var(--border); border-left: 3px solid #ab9568; border-radius: 12px; background: var(--paper); text-align: left; }
+.campaign-story p { margin: 8px 0 0; color: var(--ink); font-family: var(--font-display); font-size: 15px; line-height: 2; overflow-wrap: anywhere; white-space: pre-line; }
+.campaign-story-archive { margin: 10px 0; font-size: 12px; }
+.campaign-story-archive summary { cursor: pointer; color: var(--slate); padding: 8px 0; }
+.campaign-story-archive .campaign-story { padding: 12px; }
+@media (max-width: 360px) { .campaign-story { padding: 16px; } .campaign-story p { font-size: 14px; } }
