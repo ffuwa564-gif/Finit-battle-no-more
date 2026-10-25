@@ -85,7 +85,7 @@ describe('clockwork boss bits', () => {
     let shots = 0;
     for (let i = 0; i < 1000 && save.battle && !['reward', 'failed'].includes(save.battle.phase); i++) {
       const replay = save.battle.phase === 'playing';
-      save = applyCommand(save, { type: replay ? 'replay' : 'round' }, content);
+      save = applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: replay ? 'replay' : 'round' }, content);
       if (!replay) shots += save.battle!.events.filter(event => event.bitAction === 'fire').length;
     }
     expect(save.battle?.phase).toBe('reward'); expect(shots).toBeGreaterThan(0);

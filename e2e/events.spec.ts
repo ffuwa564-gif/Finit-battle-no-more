@@ -10,12 +10,19 @@ async function clearEvent(page: Page) {
   await expect(page.getByRole('dialog')).toContainText('踏破報酬：毎回 石1個');
   await page.getByRole('button', { name: '探索を始める', exact: true }).click();
   await expect.poll(async () => (await stored(page)).battle?.id).toBeTruthy();
+  // Validate repeat claims using real rounds with a short combat fixture.
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!, revision = save.revision;
+    for (const unit of save.battle!.units.filter(unit => unit.side === 'party')) unit.attack *= 4;
+    save.revision++; await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
   for (let i = 0; i < 180; i++) {
     const save = await stored(page);
     if (save.battle?.phase === 'reward') return;
     expect(save.battle?.phase).not.toBe('failed');
-    const name = save.battle?.phase === 'playing' ? '次の演出へ' : 'ラウンドを進める';
-    await page.getByRole('button', { name, exact: true }).click();
+    await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).or(page.locator('.wave-omens__choices button').first()).first().click();
     await expect.poll(async () => (await stored(page)).revision).toBeGreaterThan(save.revision);
   }
   throw new Error('イベントが完了しません');

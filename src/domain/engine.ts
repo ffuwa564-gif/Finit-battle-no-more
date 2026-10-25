@@ -1,4 +1,5 @@
 import { gainUltimate, ultimateFor, ultimateReady } from './ultimates';
+import { offerOmens } from './omens';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
@@ -568,9 +569,14 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
 }
 export function advanceReplay(input: Battle, content: Content): Battle {
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
+  if (input.omens?.pending) throw new Error('痕跡をひとつ選んでください。');
   const battle = clone(input);
   if (battle.cursor < battle.events.length) battle.cursor += 1;
   if (battle.cursor < battle.events.length) return battle;
+  if (battle.omens && battle.omens.picks.length === battle.wave && ['wave', 'reward'].includes(battle.nextPhase)) {
+    offerOmens(battle, rng);
+    return battle;
+  }
   switch (battle.nextPhase) {
     case 'wave': battle.wave += 1; return openWave(battle, content, false);
     case 'reward': battle.phase = 'reward'; break;

@@ -15,12 +15,19 @@ async function openDungeon(page: Page) {
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();
   await expect.poll(async () => (await stored(page))?.battle?.id).toBeTruthy();
+  // These tests exercise persistence and rewards; keep their combat fixture short.
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!, revision = save.revision;
+    for (const unit of save.battle!.units.filter(unit => unit.side === 'party')) unit.attack *= 4;
+    save.revision++; await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
 }
 async function step(page: Page) {
   const before = await stored(page);
   if (!before.battle) throw new Error('Missing exploration');
-  const name = before.battle.phase === 'playing' ? '次の演出へ' : 'ラウンドを進める';
-  await page.getByRole('button', { name, exact: true }).click();
+  await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).or(page.locator('.wave-omens__choices button').first()).first().click();
   await expect.poll(async () => (await stored(page)).revision).toBeGreaterThan(before.revision);
 }
 
