@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { content, validateContent } from '../src/content';
-import { goddessTrial } from '../src/content/trials';
+import { goddessTrial, ultimateGoddessTrial } from '../src/content/trials';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { characterStats, dungeonDifficulty } from '../src/domain/engine';
 import { dungeonStoneReward } from '../src/domain/rewards';
@@ -19,6 +19,25 @@ function drain(save: GameSave): GameSave {
 }
 
 describe('SSR goddess gauntlet', () => {
+  it('offers a separate extreme gauntlet with a calculated 30.0 index and real amplified stats', () => {
+    expect(dungeonDifficulty(ultimateGoddessTrial, content)).toBe(30);
+    expect(dungeonDifficulty(goddessTrial, content)).toBeLessThan(30);
+    expect(content.dungeons).toContainEqual(ultimateGoddessTrial);
+    const save = createInitialSave(content, 42); save.completedDungeonIds = ['silent-cathedral'];
+    expect(() => applyCommand(save, { type: 'depart', dungeonId: ultimateGoddessTrial.id, potions: 0 }, content)).toThrow('女神の試練');
+    save.completedDungeonIds.push(goddessTrial.id);
+    const entered = drain(applyCommand(save, { type: 'depart', dungeonId: ultimateGoddessTrial.id, potions: 0 }, content));
+    const enemy = entered.battle!.units.find(unit => unit.side === 'enemy')!;
+    const char = content.characters.find(char => char.id === enemy.characterId)!;
+    const ordinary = characterStats(char, undefined, true, goddessTrial.bossScale);
+    expect(enemy.hp).toBe(characterStats(char, undefined, true, ultimateGoddessTrial.bossScale).hp);
+    expect(enemy.maxHp).toBeGreaterThan(ordinary.hp * 6);
+    expect(enemy.attack).toBeGreaterThan(ordinary.attack * 2);
+    expect(dungeonStoneReward(ultimateGoddessTrial, [])).toBe(0);
+    expect(entered.battle!.pendingMaterials).toEqual({});
+    expect(() => assertSaveCompatibility(JSON.parse(JSON.stringify(entered)), content)).not.toThrow();
+  });
+
   it('unlocks after the first dungeon and uses the real SSR bosses with their own art, skills and lines', () => {
     expect(() => applyCommand(createInitialSave(content, 42), { type: 'depart', dungeonId: goddessTrial.id, potions: 0 }, content)).toThrow('踏破');
     expect(validateContent(content)).toEqual([]);

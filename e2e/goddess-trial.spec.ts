@@ -6,15 +6,16 @@ test('goddess trial has its own tab, SSR battle artwork and a reward-free record
   await page.goto('/#dungeons/trials'); await enterGame(page);
   await expect(page.getByRole('button', { name: '腕試し', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: '女神の試練', exact: true })).toBeVisible();
-  await expect(page.locator('.dungeon-meta')).toContainText('報酬なし');
-  await expect(page.getByRole('button', { name: '探索の準備', exact: false })).toBeDisabled();
+  const ordinary = page.locator('.dungeon-card').filter({ has: page.getByRole('heading', { name: '女神の試練', exact: true }) });
+  await expect(ordinary.locator('.dungeon-meta')).toContainText('報酬なし');
+  await expect(ordinary.getByRole('button', { name: '探索の準備', exact: false })).toBeDisabled();
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const save = (await loadSave())!; const revision = save.revision;
     save.completedDungeonIds = ['silent-cathedral']; save.revision++; await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page);
-  await page.getByRole('button', { name: '探索の準備', exact: false }).click();
+  await ordinary.getByRole('button', { name: '探索の準備', exact: false }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toContainText('SSR女神との4連戦'); await expect(dialog).toContainText('戦利品なし・踏破の記録のみ');
   await dialog.getByRole('button', { name: '探索を始める', exact: false }).click();
@@ -55,4 +56,31 @@ test('goddess trial has its own tab, SSR battle artwork and a reward-free record
     return { gold: save.gold, stones: save.stones, materials: save.materials, ownedIds: save.ownedIds };
   });
   expect(after).toEqual(before);
+});
+
+test('ultimate trial displays a computed 30.0 and starts with the extreme boss stats after unlock', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/#dungeons/trials'); await enterGame(page);
+  const ultimate = page.locator('.dungeon-card').filter({ has: page.getByRole('heading', { name: '女神の試練・終極', exact: true }) });
+  await expect(ultimate.locator('.dungeon-meta')).toContainText('30.0');
+  await expect(ultimate.locator('.dungeon-meta')).toContainText('報酬なし');
+  await expect(ultimate.getByRole('button', { name: '探索の準備', exact: false })).toBeDisabled();
+  await ultimate.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath('ultimate-selection.png') });
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!; const revision = save.revision;
+    save.completedDungeonIds = ['silent-cathedral', 'goddess-procession'];
+    save.revision++; await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await ultimate.getByRole('button', { name: '探索の準備', exact: false }).click();
+  await page.getByRole('dialog').getByRole('button', { name: '探索を始める', exact: false }).click();
+  await expect(page.locator('.enemy-carousel-name')).toContainText('セレネ');
+  const data = await page.evaluate(async () => {
+    const { loadSave } = await import('/src/platform/save.ts'); const battle = (await loadSave())!.battle!;
+    const enemy = battle.units.find(unit => unit.side === 'enemy')!;
+    return { dungeonId: battle.dungeonId, hp: enemy.maxHp, attack: enemy.attack, loot: battle.pendingMaterials };
+  });
+  expect(data.dungeonId).toBe('goddess-procession-ultimate'); expect(data.hp).toBe(3843); expect(data.attack).toBe(159); expect(data.loot).toEqual({});
 });

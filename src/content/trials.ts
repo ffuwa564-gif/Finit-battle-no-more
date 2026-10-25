@@ -13,3 +13,12 @@ export const goddessTrial: DungeonDef = {
   bossScale: { hp: 300, attack: 120 },
   waves: ['selene', 'athena', 'evelyn', 'asteria'].map(characterId => [{ characterId, boss: true }]),
 };
+
+/** Deliberate long-term ceiling; calibrated through dungeonDifficulty, never a display override. */
+export const ultimateGoddessTrial: DungeonDef = {
+  ...goddessTrial,
+  id: 'goddess-procession-ultimate', name: '女神の試練・終極', subtitle: 'その祈りが、神域に届くまで。',
+  description: '四柱の女神が本領を解き放つ最上位の4連戦。HPを引き継ぎ、セレネ、アテナ、イザナミ、アマテラスに挑みます。素材・ゴールド・祈願石は獲得せず、踏破記録のみが残ります。使用した回復薬は消費されます。',
+  previousDungeonId: goddessTrial.id,
+  bossScale: { hp: 1830, attack: 300 },
+};
