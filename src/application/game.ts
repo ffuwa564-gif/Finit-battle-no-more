@@ -2,7 +2,7 @@ import type { Content, GameCommand, GameSave, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
-import { initialGacha, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee, gachaPoolIds } from '../content/gacha';
+import { initialGacha, pickSSR, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee, gachaPoolIds } from '../content/gacha';
 import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
@@ -207,7 +207,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       if (guaranteed && !candidates.length) fail('SSR保証対象がありません。石は消費されません。');
       if (!candidates.length) fail('選択したレアリティの対象がありません。石は消費されません。');
       roll = rng(save.seed); save.seed = roll.seed;
-      const selected = candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
+      const selected = rarity === 'SSR' ? pickSSR(candidates, collection, roll.value, guaranteed) : candidates[Math.min(candidates.length - 1, Math.floor(roll.value * candidates.length))]!;
       const duplicate = save.ownedIds.includes(selected.id);
       const refund = duplicate ? initialGacha.duplicateRefund[selected.rarity] : 0;
       save.stones = save.stones - initialGacha.stoneCost + refund;

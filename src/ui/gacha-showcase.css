@@ -48,7 +48,7 @@
 .gacha-collections .button { flex: 1 1 220px; white-space: normal; line-height: 1.6; padding: 12px; }
 .gacha-guarantee-status { font-weight: 600; color: #69533c; }
 
-.gacha-common-section { margin-top: 32px; }
+.gacha-common-section, .gacha-common-ssr { margin-top: 32px; }
 .gacha-common-section > .subtle { margin: 12px 0 18px; line-height: 1.8; }
 .goddess-forms { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
 .goddess-forms > .subtle { margin: 10px 0 16px; line-height: 1.8; }

@@ -6,8 +6,8 @@ import { Button, CurrencyEmblem, CharacterArtwork } from './index';
 import './gacha-showcase.css';
 
 /** Collection artwork, live account state, and one shared draw action. */
-export function GachaShowcase({ collection, featured, stones, drawCount, ownedIds, pity, busy, onDraw, onInspect, reducedMotion, suspended }: {
-  reducedMotion: boolean; suspended: boolean; collection: GachaCollection; featured: CharacterDef[]; stones: number; drawCount: number; ownedIds: string[]; pity: number; busy: boolean; onDraw: () => void; onInspect: (character: CharacterDef) => void;
+export function GachaShowcase({ collection, featured, featuredBaseChance, stones, drawCount, ownedIds, pity, busy, onDraw, onInspect, reducedMotion, suspended }: {
+  reducedMotion: boolean; suspended: boolean; collection: GachaCollection; featured: CharacterDef[]; featuredBaseChance: string; stones: number; drawCount: number; ownedIds: string[]; pity: number; busy: boolean; onDraw: () => void; onInspect: (character: CharacterDef) => void;
 }) {
   const guaranteed = drawCount + 1 === collection.guaranteeDraw || pity + 1 >= collection.hardPity;
   return <section className="goddess-collection" aria-label={tr(collection.title)}>
@@ -16,7 +16,7 @@ export function GachaShowcase({ collection, featured, stones, drawCount, ownedId
       {localize(featured.map(character => <article key={character.id} className={`goddess-feature goddess-feature--${character.id}`}>
         <CharacterArtwork character={character} reducedMotion={reducedMotion} suspended={suspended} />
         <Button variant="secondary" className="goddess-feature__inspect" onClick={() => onInspect(character)} aria-label={tr(`SSR ${character.name}の詳細`)}>
-        <div className="goddess-feature__copy"><span className="goddess-feature__rarity">SSR</span><small>{localize(character.epithet)}</small><strong>{localize(character.name)}</strong><span>{localize(roleName(character.role))} · {localize((character.strength / 10).toFixed(1))}</span>{localize(ownedIds.includes(character.id) && <em>{tr("迎え入れ済み")}</em>)}</div>
+        <div className="goddess-feature__copy"><span className="goddess-feature__rarity">SSR · {featuredBaseChance}%</span><small>{localize(character.epithet)}</small><strong>{localize(character.name)}</strong><span>{localize(roleName(character.role))} · {localize((character.strength / 10).toFixed(1))}</span>{localize(ownedIds.includes(character.id) && <em>{tr("迎え入れ済み")}</em>)}</div>
         </Button>
       </article>))}
     </div>
