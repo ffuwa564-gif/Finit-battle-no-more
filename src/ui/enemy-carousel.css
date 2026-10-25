@@ -75,3 +75,4 @@
 .boss-strike-status > span { display:flex; flex-direction:column; gap:2px; text-align:center; white-space:nowrap; }
 .boss-strike-status strong { font-size:12px; letter-spacing:.08em; }
 .boss-strike-status.is-striking { background:#632e3de8; border-color:#f8b7bc; box-shadow:0 0 18px #d5917c66; }
+.enemy-rare-label { display: inline-block; margin-left: 8px; padding: 2px 5px; border: 1px solid #d9bf82; border-radius: 3px; color: #ffe6a8; background: #413b31d9; font: 600 9px/1.2 var(--font-body); letter-spacing: .12em; vertical-align: middle; text-shadow: none; }

@@ -89,7 +89,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'retreat': {
       const battle = ready(save);
-      battle.phase = 'failed'; battle.nextPhase = 'failed'; battle.failureReason = '撤退しました。今回の仮取得素材は失われました。';
+      battle.phase = 'failed'; battle.nextPhase = 'failed'; battle.failureReason = content.dungeons.find(item => item.id === battle.dungeonId)?.kind === 'trial' ? '試練から撤退しました。' : '撤退しました。今回の仮取得素材は失われました。';
       battle.pendingMaterials = {};
       log(save, '探索から撤退しました。撃破ゴールドは保持されます。');
       break;
@@ -98,17 +98,18 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const battle = save.battle;
       if (!battle || battle.phase !== 'reward' || battle.cursor < battle.events.length || battle.nextPhase !== 'reward') fail('報酬はクリア演出の完了後に確定できます。');
       if (save.claimedExplorationIds.includes(battle.id)) fail('この探索の報酬は確定済みです。');
+      const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
+      if (!dungeon) fail('探索の報酬定義がありません。');
+      if (dungeon.kind === 'trial' && (Object.keys(battle.pendingMaterials).length || battle.goldEarned)) fail('腕試しに戦利品はありません。');
       for (const [id, count] of Object.entries(battle.pendingMaterials)) {
         natural(count, '素材数', true);
         save.materials[id] = (save.materials[id] ?? 0) + count;
       }
-      save.gold += 20;
-      const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
-      if (!dungeon) fail('探索の報酬定義がありません。');
+      if (dungeon.kind !== 'trial') save.gold += 20;
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
       save.claimedExplorationIds.push(battle.id);
-      log(save, '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
+      log(save, dungeon.kind === 'trial' ? '女神の試練を踏破しました。' : '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
       save.battle = null;
       break;
     }

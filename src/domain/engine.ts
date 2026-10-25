@@ -56,7 +56,13 @@ export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = 
 }
 export function dungeonDifficulty(def: DungeonDef, content: Content): number {
   const scale = def.bossScale ?? { hp: 300, attack: 120 };
-  const waves = def.waves.map((wave) => wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack / 10_000) : 1), 0));
+  const waves = def.waves.map((wave, index) => {
+    const base = wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack / 10_000) : 1), 0);
+    if (!def.rareEncounter || index !== def.waves.length - 2) return base;
+    // The displayed constant covers the hardest possible replacement, not just the common lineup.
+    const rare = Math.max(...def.rareEncounter.characterIds.map(id => character(content, id).strength / 10));
+    return Math.max(base, base - character(content, wave[0]!.characterId).strength / 10 + rare);
+  });
   const max = Math.max(0, ...waves);
   return Math.round((max + 0.25 * (waves.reduce((sum, value) => sum + value, 0) - max)) * 10) / 10;
 }
@@ -89,15 +95,25 @@ function clearEffects(unit: Unit): void {
 }
 function openWave(battle: Battle, content: Content, first: boolean): Battle {
   const def = dungeon(content, battle.dungeonId);
-  const wave = def.waves[battle.wave];
+  let wave = def.waves[battle.wave];
   if (!wave?.length || wave.length > 4) throw new Error('Waveの敵編成が不正です');
   const party = first ? battle.partyIds.map((id, i) => makeUnit(battle, content, id, 'party', i)) : battle.units.filter((unit) => unit.side === 'party');
   party.forEach((unit) => { clearEffects(unit); unit.cooldowns = {}; });
+  let rareId: string | undefined;
+  if (def.rareEncounter && battle.wave === def.waves.length - 2) {
+    const roll = rng(battle.seed); battle.seed = roll.seed;
+    if (roll.value * 100 < def.rareEncounter.chance) {
+      const pick = rng(battle.seed); battle.seed = pick.seed;
+      rareId = def.rareEncounter.characterIds[Math.floor(pick.value * def.rareEncounter.characterIds.length)]!;
+      wave = [{ characterId: rareId }, ...wave.slice(1)];
+    }
+  }
   battle.units = [...party, ...wave.map((enemy, i) => makeUnit(battle, content, enemy.characterId, 'enemy', i, !!enemy.boss))];
   battle.round = 1; battle.potionUsed = false;
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
   battle.phase = 'playing'; battle.nextPhase = 'ready';
   emit(battle, { kind: 'wave', text: `Wave ${battle.wave + 1} / ${def.waves.length}`, unitsAfter: clone(battle.units) });
+  if (rareId) emit(battle, { kind: 'dialogue', actorId: battle.units.find(unit => unit.side === 'enemy' && unit.characterId === rareId)!.uid, text: `希少な気配 — ${character(content, rareId).name}` });
   for (const boss of battle.units.filter((unit) => unit.boss)) {
     const flag = `${boss.uid}:enter`;
     if (!battle.talkFlags.includes(flag)) {
@@ -404,7 +420,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     for (const unit of killed) {
       const def = character(content, unit.characterId);
       if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat') }); }
-      if (unit.side !== 'enemy') continue;
+      if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
       const stage = dungeon(content, battle.dungeonId);
       const event = content.events?.find(item => item.id === stage.eventId);
       const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
@@ -412,9 +428,14 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const rarity = random.value < 0.75 ? 'common' : random.value < 0.97 ? 'rare' : 'epic';
       const materialId = `${def.speciesId}:${rarity}`;
       if (!special) battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
-      const gold = Math.ceil(def.strength / 2); goldEarned += gold; battle.goldEarned += gold;
+      const gold = Math.ceil(def.strength / 2) + (def.encounterLoot?.gold ?? 0); goldEarned += gold; battle.goldEarned += gold;
       if (!discoveredIds.includes(def.id)) discoveredIds.push(def.id);
       if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+      for (const reward of def.encounterLoot?.guaranteed ?? []) {
+        battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+        const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
+        emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'common' | 'rare' | 'epic' });
+      }
       if (unit.boss && stage.bossLoot) {
         const rewards = [...stage.bossLoot.guaranteed];
         if (stage.bossLoot.bonus) {
@@ -451,12 +472,12 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   }
   if (!alive(battle.units, 'party').length) {
     battle.nextPhase = 'failed'; battle.failureReason = 'パーティが全滅しました';
-    emit(battle, { kind: 'defeat', text: '探索失敗 — 今回の素材はすべて失われます' });
+    emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — パーティが全滅しました' : '探索失敗 — 今回の素材はすべて失われます' });
   } else if (!alive(battle.units, 'enemy').length) {
     battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
   } else if (battle.round >= 100) {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
-    emit(battle, { kind: 'defeat', text: '探索失敗 — ラウンド上限です' });
+    emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
