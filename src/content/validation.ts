@@ -1,4 +1,4 @@
-import { gachaCollections, gachaPoolIds, sharedGoddessIds } from './gacha';
+import { gachaCollections, gachaPoolIds, sharedGoddessIds, sharedSSRIds } from './gacha';
 import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
 
@@ -222,6 +222,7 @@ export function validateContent(content: Content): string[] {
   reject(initial.length !== 4 || !['healer', 'tank', 'attacker', 'area_attacker'].every(role => initial.some(char => char.role === role)), 'initial party: required four roles missing');
   const gacha = content.characters.filter(char => char.published && char.origin.includes('gacha'));
   reject(sharedGoddessIds.some(id => !gacha.some(char => char.id === id && char.rarity !== 'SSR')), 'gacha/common: published R/SR base forms required');
+  reject(sharedSSRIds.some(id => !gacha.some(char => char.id === id && char.rarity === 'SSR')), 'gacha/common: published common SSR forms required');
   for (const collection of gachaCollections) {
     const ids = gachaPoolIds(collection);
     const pool = gacha.filter(char => ids.includes(char.id));
@@ -229,7 +230,8 @@ export function validateContent(content: Content): string[] {
     reject(Object.values(collection.rates).some(rate => !Number.isFinite(rate) || rate < 0) || Object.values(collection.rates).reduce((sum,rate) => sum + rate,0) !== 100, `gacha/${collection.id}: valid rates totaling 100 required`);
     reject((['R','SR','SSR'] as const).some(rarity => collection.rates[rarity] > 0 && !pool.some(char => char.rarity === rarity)), `gacha/${collection.id}: each positive rarity rate needs matching characters`);
     reject(pool.some(char => collection.rates[char.rarity] === 0), `gacha/${collection.id}: zero-rate rarity must not have characters`);
-    reject(pool.filter(char => char.rarity === 'SSR').length !== 2, `gacha/${collection.id}: two SSR definitions required`);
+    reject(collection.featuredIds.length !== 2 || new Set(collection.featuredIds).size !== 2 || pool.filter(char => char.rarity === 'SSR').length !== collection.featuredIds.length + sharedSSRIds.length, `gacha/${collection.id}: featured and common SSR definitions required`);
+    reject(!Number.isFinite(collection.featuredSSRShare) || collection.featuredSSRShare <= 0 || collection.featuredSSRShare >= 100 || collection.featuredIds.some(id => sharedSSRIds.includes(id)), `gacha/${collection.id}: invalid featured SSR share`);
     reject(collection.featuredIds.some(id => !pool.some(char => char.id === id && char.rarity === 'SSR')), `gacha/${collection.id}: featured SSR must belong to collection`);
   }
   return errors;

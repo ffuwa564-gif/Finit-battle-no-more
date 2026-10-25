@@ -4,7 +4,7 @@ import { isolatedMaterialSpecies, memoryChapters } from '../domain/awakening';
 import { dungeonLock, duplicateFamily } from '../domain/events';
 import { leaderEffectDescription, skillDescription } from '../domain/skill-info';
 import { dungeonStoneReward } from '../domain/rewards';
-import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, gachaPoolIds } from '../content/gacha';
+import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, sharedSSRIds, gachaBaseChance, gachaPoolIds } from '../content/gacha';
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
 import { Button, Panel, CampaignStory, CampaignDungeons, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork } from '../ui';
@@ -89,7 +89,7 @@ export function GachaView(p: ViewProps) {
   const [confirmIntro, setConfirmIntro] = useState(false);
   const collection = gachaCollections.find(item => item.id === collectionId)!;
   const pool = content.characters.filter(c => c.published && gachaPoolIds(collection).includes(c.id));
-  const baseChance = (char: CharacterDef) => (collection.rates[char.rarity] / pool.filter(c => c.rarity === char.rarity).length).toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+  const baseChance = (char: CharacterDef) => gachaBaseChance(char, collection, pool).toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
   const intro = introductoryGuarantee(p.save);
   async function draw() {
     if (intro) { setConfirmIntro(true); return; }
@@ -100,15 +100,16 @@ export function GachaView(p: ViewProps) {
     <div className="gacha-collections" role="group" aria-label={tr('祈願シリーズ')}>
       {localize(gachaCollections.map(item => <Button key={item.id} variant={collectionId === item.id ? 'primary' : 'secondary'} selected={collectionId === item.id} disabled={p.busy || confirmIntro} onClick={() => setCollectionId(item.id)}>{tr(item.title)}</Button>))}
     </div>
-    <GachaShowcase key={collectionId} reducedMotion={p.save.settings.reducedMotion} suspended={Boolean(p.artworkSuspended) || confirmIntro} collection={collection} featured={featured} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} pity={gachaPity(p.save)} busy={p.busy} onDraw={draw} onInspect={p.inspect} />
+    <GachaShowcase key={collectionId} reducedMotion={p.save.settings.reducedMotion} suspended={Boolean(p.artworkSuspended) || confirmIntro} collection={collection} featured={featured} featuredBaseChance={baseChance(featured[0]!)} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} pity={gachaPity(p.save)} busy={p.busy} onDraw={draw} onInspect={p.inspect} />
     <Panel><h3>{tr('全シリーズ共通の天井')}</h3>
       <p className="gacha-guarantee-status" role="status">{tr(p.save.drawCount >= 2 ? '初回SSR保証は使用済みです。以降は共通90回天井です。' : intro ? '次の祈願で、全ガチャ共通・一度きりの初回SSR保証を使用します。' : '全ガチャを合計して2回目だけ、初回SSR保証を使用できます。')}</p>
       <p>{tr('シリーズを切り替えても、祈願回数とSSR天井の進行は引き継ぎます。初回保証はシリーズごとには復活しません。')}</p>
       <h3>{tr('通常の基準排出率')}</h3><div className="goddess-rates">{(['R','SR','SSR'] as const).filter(rarity => collection.rates[rarity] > 0).map(rarity => <span key={rarity}>{rarity} {collection.rates[rarity]}%</span>)}</div>
       <p>{tr('SSR未獲得90回目でSSR確定。74回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。')}</p>
-      <p>{tr('通常の姿は全シリーズ共通、衣装版は選んだシリーズ限定です。重複あり・各レアリティ内は均等抽選です。')}</p>
+      <p>{tr('通常SSR抽選はピックアップ50%・共通SSR50%。各グループ内は均等抽選です。初回保証・90回天井はピックアップSSRが確定します。')}</p>
       <p>{tr('重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
     </Panel>
+    <section className="gacha-common-ssr" aria-label={tr('共通SSR')}><h2>{tr('共通SSR')}</h2><div className="character-grid">{sharedSSRIds.map(characterById).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">SSR · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('どのシリーズからも迎えられます。共通SSR獲得でも天井はリセットされ、次回のピックアップ保証は発生しません。')}</p></section>
     <h2>{tr('ほかの女神')}</h2><div className="character-grid gacha-exclusive-pool">{localize(pool.filter(character => character.rarity !== 'SSR' && !sharedGoddessIds.includes(character.id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)} · {tr('シリーズ限定')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>))}</div>
     <section className="gacha-common-section" aria-label={tr('通常の姿・共通プール')}><h2>{tr('通常の姿・共通プール')}</h2><p className="subtle">{tr('特別な装いを離れた、女神たちのいつもの姿。どのシリーズからも迎えられます。')}</p><div className="character-grid gacha-common-pool">{sharedGoddessIds.map(id => characterById(id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity} · {tr('通常の姿')} · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('表示は通常時の基準値です。SSR確率上昇中はR・SRの確率も変動し、SSR保証時は共通プールから排出されません。')}</p></section>
     <Modal open={confirmIntro} title={tr('一度きりの初回SSR保証を使いますか？')} onClose={() => { if (!p.busy) setConfirmIntro(false); }}>

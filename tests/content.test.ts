@@ -44,7 +44,7 @@ describe('shared content contract', () => {
   it('rejects missing SSR guarantee coverage and maps collected material IDs', () => {
     const invalid = structuredClone(content);
     invalid.characters = invalid.characters.filter(char => char.id !== 'evelyn');
-    expect(validateContent(invalid).some(message => message.includes('two SSR'))).toBe(true);
+    expect(validateContent(invalid).some(message => message.includes('featured and common SSR'))).toBe(true);
     expect(materialName('mist:rare')).toBe('白霧の結晶');
   });
 });

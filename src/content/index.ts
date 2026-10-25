@@ -7,7 +7,7 @@ import { stoneEvents } from './events';
 import { eventDungeons, kuzuhaEvent, lunetteDungeons, lunetteEvent } from './boss-events';
 import { campaignChapters, chapterRoute } from './chapters';
 import { expandCampaign } from './campaign-stages';
-import { goddessArt, goddessPortraitFocus, sharedGoddessIds } from './gacha';
+import { goddessArt, goddessPortraitFocus, sharedGoddessIds, sharedSSRIds } from './gacha';
 export { initialGacha } from './gacha';
 export { validateContent } from './validation';
 
@@ -78,6 +78,8 @@ const tactics: Record<string, { secondary: SkillTemplate; leader: NonNullable<Ch
   persephone: { secondary: 'sleep', leader: 'lifesteal' },
   hestia: { secondary: 'barrier', leader: 'bulwark' },
   hebe: { secondary: 'mend_pair', leader: 'regeneration' },
+  hecate: { secondary: 'dispel', leader: 'bulwark' }, freyja: { secondary: 'drain', leader: 'lifesteal' }, benzaiten: { secondary: 'mend_pair', leader: 'regeneration' },
+  'seoritsu-standard': { secondary: 'cleanse', leader: 'regeneration' }, 'wakahirume-standard': { secondary: 'regen', leader: 'resonance' }, 'ukanomitama-standard': { secondary: 'barrier', leader: 'bulwark' },
   seoritsu: { secondary: 'confusion', leader: 'regeneration' },
   ukanomitama: { secondary: 'regen', leader: 'regeneration' },
   mizuhanome: { secondary: 'paralysis', leader: 'finisher' },
@@ -163,6 +165,13 @@ const characters: CharacterDef[] = [
 
   { ...character({ id: 'lucielle', name: 'リュシエル', epithet: '銀灯に迷う訪問者', role: 'supporter', speciesId: 'silverwing', strength: 14, origin: ['recruit'], rarity: 'SR', flavor: '灯りを失った回廊に、ごく稀に現れる銀髪の旅人。銀灯に集まる蛾は、帰り道を忘れた願いだという。「あなたの朝まで、少しだけ一緒に歩いてもいい？」手渡される小さな灯芯には、まだ温かな鈴の音が眠っている。', encounterLoot: { gold: 30, guaranteed: [{ materialId: 'silverwing:common', count: 3 }, { materialId: 'silverwing:rare', count: 1 }] } }), encounterArtId: 'encounter-lucielle' },
   { ...character({ id: 'nemuria', name: 'ネムリア', epithet: '夢蛾を連れる夜の客人', role: 'debuffer', speciesId: 'nightmoth', strength: 18, origin: ['recruit'], rarity: 'SR', flavor: '忘れられた庭を渡り歩く、眠たげな夜の客人。瓶にしまうのは誰にも話せなかった夢。夢蛾が翅を閉じると、敵意さえ静かな眠りへほどけてゆく。彼女が差す傘の下だけ、雨は遠い日の子守歌に聞こえる。', encounterLoot: { gold: 45, guaranteed: [{ materialId: 'nightmoth:common', count: 3 }, { materialId: 'nightmoth:rare', count: 1 }] } }), encounterArtId: 'encounter-nemuria' },
+
+  character({ id: 'hecate', name: 'ヘカテ', epithet: '三叉路に灯す蒼火', role: 'debuffer', speciesId: 'thorn', strength: 24, origin: ['gacha'], rarity: 'SSR', flavor: '三つの道が交わる廃都の片隅で、蒼い灯火を絶やさない女神。腰の鍵は閉ざされた門ではなく、迷った心の出口を開くためのもの。敵の祝福を静かにほどき、旅人が自分で道を選ぶまで、少し離れて見守っている。' }),
+  character({ id: 'freyja', name: 'フレイヤ', epithet: '琥珀に眠る鷹の歌', role: 'attacker', speciesId: 'pilgrim', strength: 23, origin: ['gacha'], rarity: 'SSR', flavor: '鷹羽の外套と琥珀の首飾りを纏い、二匹の猫と忘れられた北の庭を巡る女神。美しいものを愛するからこそ、失われる痛みを知っている。「帰る場所なら、これから一緒につくればいい」傷を引き受けた手は、次の一撃でも揺らがない。' }),
+  character({ id: 'benzaiten', name: '弁財天', epithet: '水鏡にほどける琵琶', role: 'healer', speciesId: 'veil', strength: 22, origin: ['gacha'], rarity: 'SSR', flavor: '水辺の朽ちた社で、誰も忘れた歌を琵琶に託す女神。ひとつの音が波紋になるたび、離れた心の傷にも小さな安らぎが届く。華やかな宴より、旅人たちが言葉もなく寄り添う夜を好み、最後の一音まで席を立たない。' }),
+  character({ id: 'seoritsu-standard', familyId: 'seoritsu', name: 'セオリツヒメ', epithet: '清流を渡る旅衣', role: 'healer', speciesId: 'veil', strength: 16, origin: ['gacha'], rarity: 'SR', flavor: '長い水色の髪を夜風にほどき、滝から滝へ祈りを運ぶ女神。簡素な旅衣と銀の水鉢だけを携え、立ち止まる仲間の不調を洗い流す。橋の向こうに何が待つかは語らず、渡り終えるまで隣を歩いてくれる。' }),
+  character({ id: 'wakahirume-standard', familyId: 'wakahirume', name: 'ワカヒルメ', epithet: '朝糸を結ぶ旅人', role: 'supporter', speciesId: 'pilgrim', strength: 17, origin: ['gacha'], rarity: 'SR', flavor: '織りかけの朝を小さな糸巻きに収め、廃都を歩く女神。いつもの生成りの旅衣には、仲間が直してくれた縫い目がいくつも残る。ほどけた糸を結ぶ仕草は、急がなくても旅を続けてよいと教えてくれる。' }),
+  character({ id: 'ukanomitama-standard', familyId: 'ukanomitama', name: 'ウカノミタマ', epithet: '実りを分ける旅支度', role: 'supporter', speciesId: 'pilgrim', strength: 13, origin: ['gacha'], rarity: 'R', flavor: '稲穂と小さな升を抱え、白狐と里の跡を巡る女神。普段の旅衣は土の色に近く、畦道に座っても気にしない。残った実りを等しく分け、仲間の背に薄い守りを添えてから、自分の分をそっと取り分ける。' }),
 ];
 
 const storyCharacters = [...dawnStory.relatedIds, dawnStory.protagonistId, ...dawnAwakenings.map(def => def.awakenedId)];
@@ -188,10 +197,10 @@ const characterAssets: AssetDef[] = characters.flatMap(char => {
   const goddess = char.origin.includes('event') ? `event-${char.id}` : rareEnemyArt[char.id] ?? goddessArt[char.id] ?? (storyCharacters.includes(char.id) ? char.id : undefined);
   // These original paintings place faces lower than the awakened story artwork.
   const initialFace = char.origin.includes('initial') ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
-  const standardFace = sharedGoddessIds.includes(char.id) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
+  const standardFace = [...sharedGoddessIds, ...sharedSSRIds].includes(char.id) ? { anchor: '50% 0%', zoom: 1.9, origin: '50% 0%' } : undefined;
   const framing = standardFace ?? initialFace ?? companionPortraitFocus[char.id] ?? goddessPortraitFocus[char.id] ?? (storyCharacters.includes(char.id) ? { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' } : undefined);
   const generated = Boolean(goddess) || char.origin.includes('initial') || char.origin.includes('recruit');
-  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || sharedGoddessIds.includes(char.id)) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
+  const common = { path: goddess ? `art/${goddess}.${(['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].includes(char.id) || [...sharedGoddessIds, ...sharedSSRIds].includes(char.id)) ? 'webp' : 'png'}` : fullScene ? `art/${char.encounterArtId}.png` : `art/${char.id}.${generated ? 'png' : 'svg'}`, width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : fullScene || landscape ? 1536 : generated ? 1024 : 640, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : fullScene || landscape ? 1024 : generated ? 1536 : 900, rights: generated ? 'Original AI-generated illustration for this project.' : 'Original SVG artwork created for this project. No third-party source.' };
   return [
     { ...common, id: char.artId, kind: 'illustration', anchor: framing?.anchor ?? (landscape ? '50% 50%' : '50% 22%') },
     { ...common, id: char.portraitId, kind: 'portrait', anchor: framing?.anchor ?? (char.origin.includes('event') || char.motionId ? '50% 0%' : fullScene ? '50% 50%' : landscape ? '25% 30%' : generated ? '50% 8%' : '50% 28%'), portraitZoom: framing?.zoom ?? (char.origin.includes('event') || char.motionId ? 2.6 : fullScene ? (humanScene ? 2.2 : 1.4) : char.id === 'moon-moth' ? 1.1 : landscape ? 1.4 : goddess ? 2 : char.origin.includes('initial') ? 1.9 : generated ? 1.7 : 1.25), portraitOrigin: framing?.origin ?? (fullScene || char.motionId ? '50% 0%' : char.id === 'moon-moth' ? '50% 40%' : landscape ? '25% 30%' : generated ? '50% 18%' : '50% 22%') },

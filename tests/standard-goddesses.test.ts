@@ -1,21 +1,21 @@
 import { describe, it, expect } from 'vitest';
 import { content, validateContent } from '../src/content';
 import { createInitialSave, applyCommand } from '../src/application/game';
-import { flowerGacha, initialGacha, sharedGoddessIds, gachaPoolIds, gachaSSRRate } from '../src/content/gacha';
+import { flowerGacha, initialGacha, sharedGoddessIds, sharedSSRIds, gachaPoolIds, gachaSSRRate } from '../src/content/gacha';
 import { assertSaveCompatibility } from '../src/platform/save';
 
 const cases = [
-  [flowerGacha, {"selene-standard": 1457, "athena-standard": 1458, "flora-standard": 2, "amaterasu-standard": 1459, "izanami-standard": 3, "artemis-standard": 1460, "persephone-standard": 1461, "hestia-standard": 4, "hebe-standard": 5, "eos-standard": 6, "nike-standard": 7, "rainbow-iris-standard": 1462, "toyotama-standard": 1463}],
-  [initialGacha, {"selene-standard": 1457, "athena-standard": 1458, "flora-standard": 2, "amaterasu-standard": 1459, "izanami-standard": 3, "artemis-standard": 1460, "persephone-standard": 1461, "hestia-standard": 4, "hebe-standard": 5, "eos-standard": 6, "nike-standard": 7, "rainbow-iris-standard": 1462, "toyotama-standard": 1463}],
+  [flowerGacha, {"selene-standard": 1456, "athena-standard": 1457, "flora-standard": 1, "amaterasu-standard": 1458, "izanami-standard": 2, "artemis-standard": 1459, "persephone-standard": 1537, "hestia-standard": 3, "hebe-standard": 4, "eos-standard": 5, "nike-standard": 6, "rainbow-iris-standard": 1460, "toyotama-standard": 1461, "seoritsu-standard": 1462, "wakahirume-standard": 1463, "ukanomitama-standard": 7}],
+  [initialGacha, {"selene-standard": 1490, "athena-standard": 1457, "flora-standard": 2, "amaterasu-standard": 1458, "izanami-standard": 3, "artemis-standard": 1459, "persephone-standard": 1460, "hestia-standard": 4, "hebe-standard": 5, "eos-standard": 6, "nike-standard": 7, "rainbow-iris-standard": 1516, "toyotama-standard": 1461, "seoritsu-standard": 1462, "wakahirume-standard": 1463, "ukanomitama-standard": 30}],
 ] as const;
 
 describe('shared base-form goddesses', () => {
-  it('adds thirteen R/SR base forms to each collection without mixing their costumes or changing SSR odds', () => {
-    expect(validateContent(content)).toEqual([]); expect(sharedGoddessIds).toHaveLength(13);
+  it('adds sixteen R/SR base forms to each collection without mixing their costumes or changing SSR odds', () => {
+    expect(validateContent(content)).toEqual([]); expect(sharedGoddessIds).toHaveLength(16);
     for (const [collection] of cases) {
       expect(sharedGoddessIds.every(id => gachaPoolIds(collection).includes(id))).toBe(true);
       const ssrs = content.characters.filter(c => gachaPoolIds(collection).includes(c.id) && c.rarity === 'SSR').map(c => c.id);
-      expect(ssrs.sort()).toEqual([...collection.featuredIds].sort()); expect(collection.rates).toEqual({ R: 80, SR: 17, SSR: 3 });
+      expect(ssrs.sort()).toEqual([...collection.featuredIds, ...sharedSSRIds].sort()); expect(collection.rates).toEqual({ R: 80, SR: 17, SSR: 3 });
       expect(gachaSSRRate(0, collection)).toBe(3); expect(gachaSSRRate(73, collection)).toBe(9);
     }
   });

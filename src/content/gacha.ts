@@ -1,4 +1,4 @@
-import type { GameSave } from '../domain/types';
+import type { CharacterDef, GameSave } from '../domain/types';
 
 /** Initial collection: stable character keys preserve existing ownership and saves. */
 export interface GachaCollection {
@@ -11,6 +11,7 @@ export interface GachaCollection {
   softPityStart: number;
   duplicateRefund: { R: number; SR: number; SSR: number };
   rates: { R: number; SR: number; SSR: number };
+  featuredSSRShare: number;
   featuredIds: readonly [string, string];
   characterIds: readonly string[];
   label: string;
@@ -27,6 +28,7 @@ export const initialGacha: GachaCollection = {
   softPityStart: 74,
   duplicateRefund: { R: 1, SR: 2, SSR: 3 },
   rates: { R: 80, SR: 17, SSR: 3 },
+  featuredSSRShare: 50,
   featuredIds: ['evelyn', 'asteria'],
 };
 /** Both collections share account-wide introductory guarantee and SSR pity. */
@@ -43,16 +45,17 @@ export const flowerGacha: GachaCollection = {
 export const gachaCollections = [flowerGacha, initialGacha] as const;
 /** Base forms are available in every collection; costume IDs above stay collection-exclusive. */
 export const sharedGoddessIds: readonly string[] = ['selene-standard', 'athena-standard', 'flora-standard', 'amaterasu-standard', 'izanami-standard',
-  'artemis-standard', 'persephone-standard', 'hestia-standard', 'hebe-standard', 'eos-standard', 'nike-standard', 'rainbow-iris-standard', 'toyotama-standard'];
+  'artemis-standard', 'persephone-standard', 'hestia-standard', 'hebe-standard', 'eos-standard', 'nike-standard', 'rainbow-iris-standard', 'toyotama-standard', 'seoritsu-standard', 'wakahirume-standard', 'ukanomitama-standard'];
+export const sharedSSRIds: readonly string[] = ['hecate', 'freyja', 'benzaiten'];
 export function gachaPoolIds(collection: GachaCollection): readonly string[] {
-  return [...collection.characterIds, ...sharedGoddessIds];
+  return [...collection.characterIds, ...sharedGoddessIds, ...sharedSSRIds];
 }
 
 export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolean {
   return save.drawCount + 1 === initialGacha.guaranteeDraw;
 }
 export const goddessArt: Record<string, string> = {
-  ...Object.fromEntries(sharedGoddessIds.map(id => [id, `gacha-${id}`])),
+  ...Object.fromEntries([...sharedGoddessIds, ...sharedSSRIds].map(id => [id, `gacha-${id}`])),
   artemis: 'gacha-artemis', persephone: 'gacha-persephone', hestia: 'gacha-hestia', hebe: 'gacha-hebe',
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
@@ -77,3 +80,25 @@ export function gachaSSRRate(pity: number, collection = initialGacha): number {
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
   ['artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );
+
+
+/** One SSR roll is partitioned into featured/common groups, then normalized within its group. */
+export function pickSSR(candidates: CharacterDef[], collection: GachaCollection, value: number, guaranteedFeatured: boolean): CharacterDef {
+  const featured = candidates.filter(char => collection.featuredIds.includes(char.id));
+  const common = candidates.filter(char => sharedSSRIds.includes(char.id));
+  const share = collection.featuredSSRShare / 100;
+  if (!featured.length || (!guaranteedFeatured && !common.length) || !Number.isFinite(share) || share <= 0 || share >= 1) throw new Error('SSRの排出対象が不足しています。石は消費されません。');
+  const featuredRoll = guaranteedFeatured || value < share;
+  const group = featuredRoll ? featured : common;
+  const normalized = guaranteedFeatured ? value : featuredRoll ? value / share : (value - share) / (1 - share);
+  return group[Math.min(group.length - 1, Math.floor(normalized * group.length))]!;
+}
+
+/** Base per-character percentage, using the same group split as the real draw. */
+export function gachaBaseChance(char: CharacterDef, collection: GachaCollection, pool: CharacterDef[]): number {
+  if (!pool.some(item => item.id === char.id)) return 0;
+  if (char.rarity !== 'SSR') return collection.rates[char.rarity] / pool.filter(item => item.rarity === char.rarity).length;
+  const featured = collection.featuredIds.includes(char.id);
+  const group = pool.filter(item => item.rarity === 'SSR' && (featured ? collection.featuredIds.includes(item.id) : sharedSSRIds.includes(item.id)));
+  return collection.rates.SSR * (featured ? collection.featuredSSRShare : 100 - collection.featuredSSRShare) / 100 / group.length;
+}
