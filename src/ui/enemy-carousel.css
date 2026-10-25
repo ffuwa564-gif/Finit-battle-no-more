@@ -71,4 +71,8 @@
 
 .enemy-page--incoming > .animated-illustration { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
 
+.boss-strike-status { position:absolute; z-index:4; bottom:18px; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:9px; max-width:90%; padding:8px 18px; border:1px solid #d0b58b; border-radius:24px; background:#30242ee8; color:#fff3db; box-shadow:0 4px 16px #0004; font-size:10px; pointer-events:none; }
+.boss-strike-status > span { display:flex; flex-direction:column; gap:2px; text-align:center; white-space:nowrap; }
+.boss-strike-status strong { font-size:12px; letter-spacing:.08em; }
+.boss-strike-status.is-striking { background:#632e3de8; border-color:#f8b7bc; box-shadow:0 0 18px #d5917c66; }
 .enemy-rare-label { display: inline-block; margin-left: 8px; padding: 2px 5px; border: 1px solid #d9bf82; border-radius: 3px; color: #ffe6a8; background: #413b31d9; font: 600 9px/1.2 var(--font-body); letter-spacing: .12em; vertical-align: middle; text-shadow: none; }

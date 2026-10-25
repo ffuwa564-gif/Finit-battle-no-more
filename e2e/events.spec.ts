@@ -24,8 +24,8 @@ async function clearEvent(page: Page) {
 test('three repeatable events award one stone per confirmed expedition and retain the event list', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#dungeons'); await enterGame(page);
-  await expect(page.locator('.dungeon-card')).toHaveCount(10);
-  await expect(page.getByText('初踏破 石3個', { exact: true })).toHaveCount(10);
+  await expect(page.locator('.dungeon-card')).toHaveCount(12);
+  await expect(page.getByText('初踏破 石3個', { exact: true })).toHaveCount(12);
   await page.getByRole('button', { name: '祈願石イベント', exact: true }).click();
   await expect(page.locator('.dungeon-card')).toHaveCount(3);
   for (const name of ['星屑の庭', '白花の祈り路', '銀灯の守門']) await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();

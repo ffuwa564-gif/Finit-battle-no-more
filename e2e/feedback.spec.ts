@@ -66,7 +66,8 @@ test('item healing and battle damage show exact per-unit numbers with generated 
     const { content } = await import('/src/content/index.ts');
     const { createInitialSave, applyCommand } = await import('/src/application/game.ts');
     const { persistSave } = await import('/src/platform/save.ts');
-    const save = applyCommand(createInitialSave(content, 42), { type: 'depart', dungeonId: content.dungeons[5].id, potions: 2 }, content);
+    const initial=createInitialSave(content,42);initial.completedDungeonIds=content.dungeons.slice(0,5).map(d=>d.id);
+    const save = applyCommand(initial, { type: 'depart', dungeonId: content.dungeons[5].id, potions: 2 }, content);
     save.battle!.units.filter(unit => unit.side === 'party').forEach(unit => { unit.hp = Math.floor(unit.maxHp * .6); });
     save.battle!.initialUnits = structuredClone(save.battle!.units);
     await persistSave(save, 0);

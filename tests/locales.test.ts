@@ -6,7 +6,7 @@ import { createInitialSave } from '../src/application/game';
 const japanese=/[\u3040-\u30ff\u3400-\u9fff]/;
 describe('Japanese and English presentation',()=>{
  it('translates names, stories, dungeons and all skill conditions',()=>{
-  const texts=[...content.characters.flatMap(c=>[c.name,c.epithet,c.flavor,leaderEffectDescription(c),...Object.values(c.dialogue??{})]),...content.dungeons.flatMap(d=>[d.name,d.subtitle,d.description]),...content.skills.map(skillDescription),...(content.memories??[]).flatMap(m=>[m.encounter,m.companion,m.awakened]),...content.species.flatMap(s=>['common','rare','epic'].map(r=>materialName(`${s.id}:${r}`)))];
+  const texts=[...content.characters.flatMap(c=>[c.name,c.epithet,c.flavor,leaderEffectDescription(c),...Object.values(c.dialogue??{})]),...content.dungeons.flatMap(d=>[d.name,d.subtitle,d.description,...Object.values(d.narrative??{}),...Object.values(d.bossDialogue??{})]),...content.skills.map(skillDescription),...(content.memories??[]).flatMap(m=>[m.encounter,m.companion,m.awakened]),...content.species.flatMap(s=>['common','rare','epic'].map(r=>materialName(`${s.id}:${r}`)))];
   for(const text of texts)expect(tr(text,'en'),text).not.toMatch(japanese);
  });
  it('formats persisted events and interpolated labels without changing the save',()=>{

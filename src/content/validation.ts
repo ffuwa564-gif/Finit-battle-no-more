@@ -110,7 +110,24 @@ export function validateContent(content: Content): string[] {
       reject(stage.previousDungeonId !== (index === 0 ? event.entryDungeonId : event.dungeonIds[index - 1]), `events/${event.id}: invalid difficulty progression`);
     });
   }
+  const chapters = content.chapters ?? [];
+  const chapterIds = allIds(chapters, 'chapters');
+  const campaignStages = new Set<string>();
+  const chapterStages = chapters.flatMap(chapter => chapter.dungeonIds);
+  for (const [index, chapter] of chapters.entries()) {
+    reject(chapter.number !== index + 1 || !plain(chapter.title) || !plain(chapter.subtitle) || !plain(chapter.bossHint) || chapter.dungeonIds.length < 2, `chapters/${chapter.id}: ordered number, text and stages required`);
+    for (const id of chapter.dungeonIds) {
+      const stage = content.dungeons.find(item => item.id === id);
+      reject(campaignStages.has(id) || !stage?.published || stage.chapterId !== chapter.id || (stage.kind ?? 'normal') !== 'normal', `chapters/${chapter.id}: unique published campaign stage required`);
+      campaignStages.add(id);
+      const at = chapterStages.indexOf(id);
+      reject(stage?.previousDungeonId !== (at > 0 ? chapterStages[at - 1] : undefined), `chapters/${chapter.id}: sequential route required`);
+    }
+    const finale = content.dungeons.find(stage => stage.id === chapter.dungeonIds.at(-1));
+    reject(!finale?.bossScale || !finale.waves.at(-1)?.[0]?.boss, `chapters/${chapter.id}: scaled finale boss required`);
+  }
   for (const dungeon of content.dungeons) {
+    if (dungeon.chapterId) reject(!chapterIds.has(dungeon.chapterId) || !campaignStages.has(dungeon.id), `dungeons/${dungeon.id}: unknown chapter`);
     reject(dungeon.kind !== undefined && !['normal', 'event', 'trial'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.kind === 'trial') {
       reject(Boolean(dungeon.eventId || dungeon.eventReward || dungeon.bossLoot || dungeon.rareEncounter || dungeon.bossBits || dungeon.storyId), `dungeons/${dungeon.id}: trials cannot carry loot or special encounters`);
@@ -118,7 +135,8 @@ export function validateContent(content: Content): string[] {
     }
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
-    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > 2000 || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > 300, `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossStrike) { const strike = dungeon.bossStrike; reject(!dungeon.chapterId || !chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id) || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`); }
     if (dungeon.bossBits) {
       const bits = dungeon.bossBits;
       reject(!dungeon.eventId || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
@@ -190,6 +208,8 @@ export function validateContent(content: Content): string[] {
     reject(!characterIds.has(memory.characterId) || memoryIds.has(memory.characterId) || !plain(memory.encounter) || !plain(memory.companion) || !plain(memory.awakened), `memories/${memory.characterId}: valid unique character and chapters required`); memoryIds.add(memory.characterId);
   }
   for (const stage of content.dungeons) {
+    if (stage.bossDialogue) reject(!['intro', 'threshold', 'defeat'].every(phase => plain(stage.bossDialogue?.[phase as keyof NonNullable<typeof stage.bossDialogue>])), `dungeons/${stage.id}: complete plain boss dialogue required`);
+    if (stage.narrative) reject(!plain(stage.narrative.before) || !plain(stage.narrative.after), `dungeons/${stage.id}: plain narrative before and after required`);
     if (stage.storyId) reject(!content.storylines?.some(story => story.id === stage.storyId) || stage.kind === 'event', `dungeons/${stage.id}: valid normal storyline required`);
     if (stage.requiresOwnedIds) reject(stage.requiresOwnedIds.some(id => !awakeningForms.has(id)), `dungeons/${stage.id}: invalid awakened ownership lock`);
     if (stage.bossLoot) {

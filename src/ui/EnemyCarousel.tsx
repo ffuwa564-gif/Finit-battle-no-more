@@ -1,17 +1,18 @@
 import { tr, localize } from '../locales/i18n';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
-import { Backpack, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Backpack, ChevronLeft, ChevronRight, Crown } from 'lucide-react';
 import { Button, HPBar, UnitEffects } from './index';
 import { emitUISound } from './interaction';
 import { AnimatedIllustration } from './AnimatedIllustration';
 import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
 import { ClockworkBits } from './ClockworkBits';
-import type { BattleEvent, BossBitPattern, Unit } from '../domain/types';
+import type { BattleEvent, BossBitPattern, DungeonDef, Unit } from '../domain/types';
 
 export interface EnemyCarouselProps {
   units: Unit[];
   bitPattern?: BossBitPattern;
+  bossStrike?: DungeonDef['bossStrike'];
   event?: BattleEvent;
   reducedMotion?: boolean;
   wave: number;
@@ -23,7 +24,7 @@ export interface EnemyCarouselProps {
 const actionKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue']);
 
 /** A single illustrated enemy page. Paging never changes combat or saved state. */
-export function EnemyCarousel({ units, bitPattern, event, reducedMotion = false, wave, waveCount, round, materials }: EnemyCarouselProps) {
+export function EnemyCarousel({ units, bitPattern, bossStrike, event, reducedMotion = false, wave, waveCount, round, materials }: EnemyCarouselProps) {
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
@@ -139,6 +140,7 @@ export function EnemyCarousel({ units, bitPattern, event, reducedMotion = false,
     <div className={`enemy-page${portraitScene ? ' enemy-page--portrait' : ''}${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
       {localize(character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={tr(character.name)} label={tr(character.name)} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt={tr("")} draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />)}
     </div>
+    {front.boss && front.hp > 0 && bossStrike && <div className={`boss-strike-status${event?.bossStrike && event.actorId === front.uid ? ' is-striking' : ''}`} role="status" aria-label={tr('章末ボスの予告')}><Crown size={13} /><span><strong>{tr(bossStrike.name)}</strong>{tr((bossStrike.every - round % bossStrike.every) % bossStrike.every === 0 ? 'このターンに大技' : `大技まで${(bossStrike.every - round % bossStrike.every) % bossStrike.every}ターン`)}</span></div>}
     <ClockworkBits boss={front} pattern={bitPattern} event={event} round={round} />
     <div className="enemy-carousel-status">
       <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
