@@ -1,20 +1,22 @@
-import type { Battle } from '../domain/types';
+import type { Battle, DungeonDef } from '../domain/types';
 
 /** Downloaded game BGM; ownership and source links stay separate from project art. */
 export const bgmTracks = {
   home: { title: '悲しみの曖昧な対象', file: 'kanashiminoaimainataishou.mp3', source: 'https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html' },
   battle: { title: '渦巻き', file: 'uzumaki.mp3', source: 'https://amachamusic.chagasi.com/music_uzumaki.html' },
   boss: { title: '騎兵戦', file: 'kiheisen.mp3', source: 'https://amachamusic.chagasi.com/music_kiheisen.html' },
+  japaneseBoss: { title: '打ち上げ花火', file: 'uchiagehanabi.mp3', source: 'https://amachamusic.chagasi.com/music_uchiagehanabi.html' },
   clear: { title: '楽しい冒険', file: 'tanoshiibouken.mp3', source: 'https://amachamusic.chagasi.com/music_tanoshiibouken.html' },
 } as const;
 export type BgmScene = keyof typeof bgmTracks;
 
-export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | null | undefined): BgmScene {
+export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | null | undefined, dungeon?: Pick<DungeonDef, 'bossMusic'>): BgmScene {
   if (!battle || battle.phase === 'failed') return 'home';
   if (battle.phase === 'reward') return 'clear';
   // Use the wave's initial units: killing the boss must not restart normal BGM
   // while its final attacks, dialogue and drops are still being presented.
-  return battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss) ? 'boss' : 'battle';
+  if (!battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss)) return 'battle';
+  return dungeon?.bossMusic === 'japanese' ? 'japaneseBoss' : 'boss';
 }
 let player: HTMLAudioElement | undefined;
 let scene: BgmScene = 'home';

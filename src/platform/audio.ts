@@ -1,14 +1,17 @@
 import type * as ToneTypes from 'tone';
 import type { SoundCue } from './sound-cues';
-import type { Rarity } from '../domain/types';
+import type { Rarity, SkillTemplate } from '../domain/types';
+import { skillSoundProfiles } from '../domain/skill-info';
 
 let Tone: typeof import('tone') | undefined;
 let gain: ToneTypes.Gain | undefined;
 let voice: ToneTypes.PolySynth | undefined;
 let noise: ToneTypes.NoiseSynth | undefined;
+let skillVoice: ToneTypes.PolySynth<ToneTypes.FMSynth> | undefined;
+let impact: ToneTypes.MembraneSynth | undefined;
 let limiter: ToneTypes.Limiter | undefined;
 let lastCueAt = 0;
-const pending: { kind: SoundCue; rarity?: Rarity; at: number }[] = [];
+const pending: { kind: SoundCue; rarity?: Rarity; skill?: SkillTemplate; at: number }[] = [];
 let browserContext: AudioContext | undefined;
 let active = false;
 let volume = 1;
@@ -41,11 +44,23 @@ export async function enableAudio(): Promise<void> {
           envelope: { attack: 0.002, decay: 0.09, sustain: 0, release: 0.06 },
           volume: -12,
         }).connect(gain);
+        // Dedicated voices add body and a bright edge without making UI clicks louder.
+        skillVoice = new tone.PolySynth(tone.FMSynth, {
+          harmonicity: 2, modulationIndex: 3,
+          envelope: { attack: 0.004, decay: 0.18, sustain: 0.05, release: 0.45 },
+          modulationEnvelope: { attack: 0.002, decay: 0.12, sustain: 0, release: 0.2 },
+          volume: -8,
+        }).connect(gain);
+        impact = new tone.MembraneSynth({
+          pitchDecay: 0.035, octaves: 4,
+          envelope: { attack: 0.002, decay: 0.18, sustain: 0, release: 0.12 },
+          volume: -6,
+        }).connect(gain);
       }
       active = tone.getContext().state === 'running';
       if (active) {
         const queued = pending.splice(0).filter(cue => performance.now() - cue.at < 2000);
-        for (const cue of queued) playSound(cue.kind, cue.rarity);
+        for (const cue of queued) playSound(cue.kind, cue.rarity, cue.skill);
       }
     } catch {
       active = false;
@@ -63,10 +78,10 @@ export function setAudioVolume(next: number): void {
 }
 
 /** The sole synth dispatcher. It accepts game events, never character-specific code. */
-export function playSound(kind: SoundCue, rarity?: Rarity): void {
+export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate): void {
   if (volume === 0) return;
   if (!active || !voice || !gain || !Tone || Tone.getContext().state !== 'running') {
-    if (enabling) { pending.push({ kind, rarity, at: performance.now() }); if (pending.length > 8) pending.shift(); }
+    if (enabling) { pending.push({ kind, rarity, skill, at: performance.now() }); if (pending.length > 8) pending.shift(); }
     return;
   }
   try {
@@ -103,7 +118,33 @@ export function playSound(kind: SoundCue, rarity?: Rarity): void {
  noise?.triggerAttackRelease(0.055, now, 0.3); notes(['A3', 'D3'], 0.025, 0.075, 0.38); break;
       default: notes(['D5'], 0, 0.07, 0.2);
     }
-    window.dispatchEvent(new CustomEvent('game:se', { detail: { kind, rarity } }));
+    if (skill && skillVoice && impact) {
+      const shimmer = (sequence: string[], spacing: number, duration = 0.26) => {
+        sequence.forEach((note, index) => skillVoice?.triggerAttackRelease(note, duration, now + 0.025 + index * spacing, 0.75));
+      };
+      switch (skillSoundProfiles[skill]) {
+        case 'attack':
+          impact.triggerAttackRelease('D2', 0.14, now, 0.85);
+          noise?.triggerAttackRelease(0.09, now + 0.07, 0.7);
+          shimmer(skill === 'pierce' ? ['D6', 'A5', 'D4'] : skill === 'drain' ? ['D4', 'Ab4', 'D5'] : ['D5', 'A4', 'D4'], 0.045, 0.19);
+          if (skill === 'shatter' || skill === 'dawn') shimmer(['A5', 'D6', 'F6'], 0.055, 0.4);
+          break;
+        case 'area':
+          impact.triggerAttackRelease('D1', 0.24, now, 0.95);
+          noise?.triggerAttackRelease(0.2, now + 0.09, 0.85);
+          shimmer(['D4', 'A4', 'D5', 'F5', 'A5'], 0.045, 0.4);
+          break;
+        case 'heal': shimmer(['D5', 'F5', 'A5', 'D6', 'F6'], 0.075, 0.4); break;
+        case 'guard':
+          impact.triggerAttackRelease('A2', 0.12, now, 0.7);
+          shimmer(['D4', 'A4', 'D5'], 0.065, 0.45); break;
+        case 'buff': shimmer(['F4', 'A4', 'C5', 'F5', 'A5'], 0.065, 0.35); break;
+        case 'debuff':
+          shimmer(['D5', 'Ab4', 'Eb4', 'D3'], 0.075, 0.35);
+          noise?.triggerAttackRelease(0.12, now + 0.08, 0.5); break;
+      }
+    }
+    window.dispatchEvent(new CustomEvent('game:se', { detail: { kind, rarity, skill } }));
   } catch {
     // Concurrent browser suspension/rapid catch-up may reject synth scheduling.
     // Saved game results and replay cursors must still progress normally.
