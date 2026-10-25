@@ -87,12 +87,12 @@ export function HPBar({ hp: hpInput, maxHp: maxInput, value, max, showNumbers = 
   </div>;
 }
 
-export interface CharacterPortraitProps { variant?: 'face' | 'card'; character: CharacterDef; selected?: boolean; leader?: boolean; hp?: number; maxHp?: number; onClick?: () => void; disabled?: boolean; compact?: boolean; showRole?: boolean; showName?: boolean }
-export function CharacterPortrait({ character, selected, leader, hp, maxHp, onClick, disabled, compact, variant = 'card', showRole = true, showName = true }: CharacterPortraitProps) {
+export interface CharacterPortraitProps { label?: string; variant?: 'face' | 'card'; character: CharacterDef; selected?: boolean; leader?: boolean; hp?: number; maxHp?: number; onClick?: () => void; disabled?: boolean; compact?: boolean; showRole?: boolean; showName?: boolean }
+export function CharacterPortrait({ character, label, selected, leader, hp, maxHp, onClick, disabled, compact, variant = 'card', showRole = true, showName = true }: CharacterPortraitProps) {
   const face = variant === 'face' || compact === true;
   const body = <><div className="portrait-image"><PortraitArt character={character} face={face} />{localize(leader && <span className="leader-mark" title={tr("リーダー")}><Crown size={13} /><span className="sr-only">{tr("リーダー")}</span></span>)}<span className="portrait-constant">{localize((character.strength / 10).toFixed(1))}</span></div>{localize((showName || showRole) && <div className="portrait-copy">{localize(showName && <strong>{localize(character.name)}</strong>)}{localize(showRole && <span>{localize(roleName(character.role))}</span>)}</div>)}{localize(hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} label={tr(`${character.name}のHP`)} />)}</>;
   const classes = `character-portrait${selected ? ' is-selected' : ''}${hp === 0 ? ' is-fallen' : ''}${compact ? ' character-portrait--compact' : ''}${face ? ' character-portrait--face' : ''}`;
-  return onClick ? <Button variant="secondary" className={classes} onClick={onClick} disabled={disabled} selected={selected} aria-label={tr(`${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`)}>{localize(body)}</Button> : <div className={classes}>{localize(body)}</div>;
+  return onClick ? <Button variant="secondary" className={classes} onClick={onClick} disabled={disabled} selected={selected} aria-label={tr(label ?? `${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`)}>{localize(body)}</Button> : <div className={classes}>{localize(body)}</div>;
 }
 
 export function MaterialIcon({ rarity, size = 'md' }: { rarity: Rarity; size?: 'sm' | 'md' | 'lg' }) {

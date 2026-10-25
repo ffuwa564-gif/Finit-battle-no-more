@@ -5,7 +5,7 @@ test('four new lower-rarity goddesses have distinct artwork, readable abilities 
   await page.setViewportSize({width:390,height:844});
   await page.goto('/#gacha'); await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await expect(page.locator('.goddess-feature')).toHaveCount(2);
-  await expect(page.locator('.character-grid > .character-card')).toHaveCount(6);
+  await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(10);
   const additions = [
     {name:'トヨタマヒメ',file:'gacha-toyotama.png',skill:'傷ついた味方2人'},
     {name:'ワカヒルメ',file:'gacha-wakahirume.png',skill:'天衣の結界'},
@@ -23,7 +23,7 @@ test('four new lower-rarity goddesses have distinct artwork, readable abilities 
   }
   await page.evaluate(async()=>{
     const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const revision=save.revision;
-    save.seed=1309757276;save.stones=5;save.revision++;await persistSave(save,revision);
+    save.seed=1457;save.stones=5;save.revision++;await persistSave(save,revision);
   });
   await page.reload();await enterGame(page);await page.getByRole('button',{name:'ゴス☆イザナミコレクション',exact:true}).click();
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();

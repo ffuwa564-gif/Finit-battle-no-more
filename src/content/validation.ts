@@ -1,4 +1,4 @@
-import { gachaCollections } from './gacha';
+import { gachaCollections, gachaPoolIds, sharedGoddessIds } from './gacha';
 import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
 
@@ -174,9 +174,11 @@ export function validateContent(content: Content): string[] {
   const initial = content.characters.filter(char => char.published && char.origin.includes('initial'));
   reject(initial.length !== 4 || !['healer', 'tank', 'attacker', 'area_attacker'].every(role => initial.some(char => char.role === role)), 'initial party: required four roles missing');
   const gacha = content.characters.filter(char => char.published && char.origin.includes('gacha'));
+  reject(sharedGoddessIds.some(id => !gacha.some(char => char.id === id && char.rarity !== 'SSR')), 'gacha/common: published R/SR base forms required');
   for (const collection of gachaCollections) {
-    const pool = gacha.filter(char => collection.characterIds.includes(char.id));
-    reject(new Set(collection.characterIds).size !== collection.characterIds.length || collection.characterIds.some(id => !pool.some(char => char.id === id)), `gacha/${collection.id}: missing or duplicate character definition`);
+    const ids = gachaPoolIds(collection);
+    const pool = gacha.filter(char => ids.includes(char.id));
+    reject(new Set(ids).size !== ids.length || ids.some(id => !pool.some(char => char.id === id)), `gacha/${collection.id}: missing or duplicate character definition`);
     reject(Object.values(collection.rates).some(rate => !Number.isFinite(rate) || rate < 0) || Object.values(collection.rates).reduce((sum,rate) => sum + rate,0) !== 100, `gacha/${collection.id}: valid rates totaling 100 required`);
     reject((['R','SR','SSR'] as const).some(rarity => collection.rates[rarity] > 0 && !pool.some(char => char.rarity === rarity)), `gacha/${collection.id}: each positive rarity rate needs matching characters`);
     reject(pool.some(char => collection.rates[char.rarity] === 0), `gacha/${collection.id}: zero-rate rarity must not have characters`);

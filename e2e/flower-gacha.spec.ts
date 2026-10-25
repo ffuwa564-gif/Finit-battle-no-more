@@ -7,11 +7,11 @@ async function saveState(page:import('@playwright/test').Page){return page.evalu
 test('flower collection has six original kimono goddesses, readable skills and English support',async({page},testInfo)=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();
- await expect(page.locator('.character-grid > .character-card')).toHaveCount(4);
+ await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(8);
  for(const name of ['アメノウズメ','イワナガヒメ','ククリヒメ'])await expect(page.getByRole('button',{name,exact:true})).toHaveCount(0);
  await expect(page.locator('.goddess-rates')).toHaveText('R 80%SR 17%SSR 3%');
  await page.getByRole('button',{name:legacy,exact:true}).click();
- await expect(page.locator('.character-grid > .character-card')).toHaveCount(6);
+ await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(10);
  await expect(page.getByRole('button',{name:'アメノウズメ',exact:true})).toBeVisible();
  await page.getByRole('button',{name:title,exact:true}).click();
  for(const [name,skill] of [['セレネ','三日月の袖守り'],['アテナ','知恵の一閃'],['フローラ','花風の浄め'],['イリス','晴れ渡る空'],['エオス','朝霞の袖守り'],['ニケ','追い風の一閃']]){
@@ -65,7 +65,7 @@ test('both exclusive R goddesses can be summoned, saved and placed in the party'
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.stones=15;save.seed=42;save.drawCount=10;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);});
  await page.reload();await enterGame(page);
- for(const [seed,name] of [[42,'エオス'],[3,'ニケ']] as const){
+ for(const [seed,name] of [[8,'エオス'],[0,'ニケ']] as const){
   await page.evaluate(async(seed)=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.seed=seed;save.revision++;await persistSave(save,rev);},seed);
   await page.reload();await enterGame(page);
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();
