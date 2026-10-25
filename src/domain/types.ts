@@ -3,7 +3,7 @@ export type Ailment = 'confusion' | 'sleep' | 'paralysis' | 'charm';
 export type SkillTemplate = Ailment | 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'pierce' | 'drain' | 'regen' | 'barrier' | 'cleanse' | 'mend_pair' | 'shatter' | 'dispel' | 'dawn';
 export type Strategy = 'balanced' | 'aggressive' | 'survival';
 export type Rarity = 'common' | 'rare' | 'epic';
-export type LeaderEffect = 'regeneration' | 'finisher' | 'lifesteal' | 'bulwark' | 'resonance';
+export type LeaderEffect = 'acceleration' | 'regeneration' | 'finisher' | 'lifesteal' | 'bulwark' | 'resonance';
 export type LeaderStat = 'hp' | 'attack' | 'defense';
 export type Side = 'party' | 'enemy';
 export interface BossBitPattern { every: number; count: number; duration: number; power: number }
