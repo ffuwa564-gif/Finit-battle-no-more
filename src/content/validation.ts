@@ -92,7 +92,7 @@ export function validateContent(content: Content): string[] {
     reject(new Set(known.map(skill => skill.template)).size !== known.length, `characters/${char.id}: repeated effect template`);
     if (roles.has(char.role)) {
       reject(!known.some(skill => skill.template === required[char.role]), `characters/${char.id}: role required skill missing`);
-      const allowed: SkillTemplate[] = [required[char.role], 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
+      const allowed: SkillTemplate[] = [required[char.role], 'rally', 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
       reject(known.some(skill => !allowed.includes(skill.template)), `characters/${char.id}: unreachable second skill`);
     }
   }

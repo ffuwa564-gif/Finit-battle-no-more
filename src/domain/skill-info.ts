@@ -1,14 +1,16 @@
 import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
 
-export const skillTemplates: SkillTemplate[] = ['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
+export const skillTemplates: SkillTemplate[] = ['rally', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
 export const skillNames: Record<SkillTemplate, string> = {
   confusion: '迷いの霧', sleep: 'まどろみの花', paralysis: '痺れる閃光', charm: '惑いの旋律',
+  rally: '軍神の号令',
   dawn: '約束の朝',
   attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福',
   mend_pair: '返し潮の抱擁', shatter: '磐砕き', dispel: '結び直す指先',
   pierce: '銀閃の貫突', drain: '夜露の吸命', regen: '巡る月の雫', barrier: '月光の障壁', cleanse: '白花の浄化',
 };
 const descriptions: Record<SkillTemplate, string> = {
+  rally: '生存中の味方全員の攻撃力を次ラウンド終了まで強化。攻撃強化は重複せず、強い効果を優先。味方が2人以上で、強化できる相手がいるときに使用する。',
   confusion: '敵1体を混乱させる。2回の行動でスキルを使わず、50%で味方（自分を含む）、それ以外は敵に通常攻撃。',
   sleep: '敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。',
   paralysis: '敵1体を麻痺させる。2回の行動の間、毎回40%の確率で行動できない。',
@@ -25,8 +27,11 @@ const descriptions: Record<SkillTemplate, string> = {
   barrier: '味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。',
   cleanse: '味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。',
 };
-export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
-export function skillDescription(skill: SkillDef): string { return `${descriptions[skill.template]}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`; }
+export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
+export function skillDescription(skill: SkillDef): string {
+  const effect = skill.template === 'rally' ? `${descriptions.rally} 攻撃力上昇量：${15 + skill.strength / 2}%。` : descriptions[skill.template];
+  return `${effect}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`;
+}
 const leaderDescriptions: Record<LeaderEffect, string> = {
   acceleration: '曙の加速：各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。',
   regeneration: '月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。',
@@ -41,7 +46,7 @@ export function leaderEffectDescription(character: CharacterDef): string {
 
 /** Every template explicitly declares its shared sound and presentation family. */
 export const skillSoundProfiles: Record<SkillTemplate, 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff'> = {
-  confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
+  rally: 'buff', confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',

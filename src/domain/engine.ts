@@ -251,6 +251,10 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const regen = get('regen');
   const recovering = allies.filter(unit => (unit.regenUntil ?? -1) < battle.round && unit.hp < unit.maxHp * (strategy === 'aggressive' ? .65 : .9)).sort(lowerHP)[0];
   if (regen && recovering) return { skill: regen, template: 'regen', targets: [recovering] };
+  const rally = get('rally');
+  if (rally && allies.length >= 2 && allies.some(unit => (unit.buffUntil ?? -1) < battle.round || (unit.buffStrength ?? 10) < rally.strength)) {
+    return { skill: rally, template: 'rally', targets: allies };
+  }
   if (role === 'supporter') {
     const target = allies.filter((unit) => (unit.buffUntil ?? -1) < battle.round).sort((a, b) => b.attack - a.attack || byId(a, b))[0];
     const skill = get('buff');
@@ -318,7 +322,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   return { unit: recipient, amount: actual, absorbed, shattered };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
-  confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
+  rally: 'buff', confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
   pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
@@ -419,6 +423,13 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       amount = Math.min(target.maxHp - target.hp, Math.floor(effectiveAttack(actor, battle.round) * 60 / 100)); target.hp += amount; targetIds.push(target.uid);
     } else if (action.template === 'guard') {
       actor.guardTarget = action.targets[0]!.uid; actor.guardUntil = battle.round + 1; actor.guardStrength = action.skill!.strength; targetIds.push(actor.guardTarget);
+    } else if (action.template === 'rally') {
+      for (const target of action.targets) {
+        const active = (target.buffUntil ?? -1) >= battle.round;
+        target.buffStrength = Math.max(active ? target.buffStrength ?? 10 : 0, action.skill!.strength);
+        target.buffUntil = Math.max(active ? target.buffUntil! : 0, battle.round + 1);
+        targetIds.push(target.uid);
+      }
     } else if (action.template === 'buff') {
       const target = action.targets[0]!; target.buffUntil = battle.round + 1; target.buffStrength = action.skill!.strength; targetIds.push(target.uid);
     } else if (action.template === 'debuff') {

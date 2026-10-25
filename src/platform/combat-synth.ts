@@ -12,6 +12,8 @@ interface CombatScore {
 }
 type CombatKey = SkillTemplate | 'wave' | 'defeat';
 
+const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
+
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
@@ -22,7 +24,8 @@ const scores: Record<CombatKey, CombatScore> = {
   area: { sweep: { from: 350, to: 4400, duration: 0.28, velocity: 0.9 }, impact: { note: 'C2', velocity: 0.95 }, bells: { notes: ['D4', 'A4', 'D5', 'F5'], spacing: 0.055, duration: 0.3 }, aura: { notes: ['D3', 'A3', 'F4'], duration: 0.36 } },
   heal: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: 0.085, duration: 0.32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.4 } },
   guard: { impact: { note: 'A2', velocity: 0.65 }, metal: { note: 'D4', velocity: 0.55 }, aura: { notes: ['D3', 'A3', 'D4'], duration: 0.3 } },
-  buff: { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } },
+  buff: attackBoostScore,
+  rally: attackBoostScore,
   debuff: { sweep: { from: 4200, to: 220, duration: 0.24, velocity: 0.55 }, bells: { notes: ['D5', 'Ab4', 'Eb4', 'D4'], spacing: 0.065, duration: 0.18 }, aura: { notes: ['D3', 'Ab3'], duration: 0.3 } },
   pierce: { sweep: { from: 900, to: 8500, duration: 0.09, velocity: 0.7 }, impact: { note: 'E2', velocity: 0.85 }, metal: { note: 'D5', velocity: 0.5 }, bells: { notes: ['A5', 'D6'], spacing: 0.035, duration: 0.12 } },
   drain: { sweep: { from: 2400, to: 350, duration: 0.2, velocity: 0.55 }, impact: { note: 'D2', velocity: 0.65 }, bells: { notes: ['D4', 'Ab4', 'A4', 'D5'], spacing: 0.065, duration: 0.22 }, aura: { notes: ['D3', 'A3'], duration: 0.35 } },
