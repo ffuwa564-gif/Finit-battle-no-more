@@ -42,15 +42,15 @@ export const flowerGacha: GachaCollection = {
   characterIds: ['selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike', 'artemis', 'persephone', 'hestia', 'hebe'],
   rates: { R: 80, SR: 17, SSR: 3 },
 };
-/** One exclusive SSR; existing shared R/SR and SSR groups retain the common rules. */
+/** Exclusive clockwork roster; shared groups and account-wide guarantees remain common. */
 export const clockworkGacha: GachaCollection = {
   ...initialGacha,
   id: 'clockwork-maidens',
   label: 'CLOCKWORK MAIDENS · VOL.03',
   title: '機巧少女 ― 無慈悲な歯車 ―',
   subtitle: '祈りも、命乞いも、彼女の歯車を止めない。',
-  featuredIds: ['nox'],
-  characterIds: ['nox'],
+  featuredIds: ['nox', 'vespera'],
+  characterIds: ['nox', 'vespera', 'miette', 'tikka'],
 };
 export const gachaCollections = [flowerGacha, initialGacha, clockworkGacha] as const;
 /** Base forms are available in every collection; costume IDs above stay collection-exclusive. */
@@ -66,6 +66,7 @@ export function introductoryGuarantee(save: Pick<GameSave, 'drawCount'>): boolea
 }
 export const goddessArt: Record<string, string> = {
   ...Object.fromEntries([...sharedGoddessIds, ...sharedSSRIds].map(id => [id, `gacha-${id}`])),
+  vespera: 'gacha-vespera', miette: 'gacha-miette', tikka: 'gacha-tikka',
   nox: 'gacha-nox', artemis: 'gacha-artemis', persephone: 'gacha-persephone', hestia: 'gacha-hestia', hebe: 'gacha-hebe',
   eos: 'gacha-eos-anime', nike: 'gacha-nike-anime',
   selene: 'gacha-selene', athena: 'gacha-athena-anime', flora: 'gacha-flora-anime', 'rainbow-iris': 'gacha-rainbow-iris-anime',
@@ -88,7 +89,7 @@ export function gachaSSRRate(pity: number, collection = initialGacha): number {
 
 /** New full-body paintings place the face near the top of the source image. */
 export const goddessPortraitFocus: Record<string, { anchor: string; zoom: number; origin: string }> = Object.fromEntries(
-  ['nox', 'artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
+  ['vespera', 'miette', 'tikka', 'nox', 'artemis', 'persephone', 'hestia', 'hebe', 'seoritsu', 'ukanomitama', 'mizuhanome', 'haniyasu', 'toyotama', 'wakahirume', 'iwanagahime', 'kukurihime', 'selene', 'athena', 'flora', 'rainbow-iris', 'eos', 'nike'].map(id => [id, { anchor: '50% 0%', zoom: 2.6, origin: '50% 0%' }]),
 );
 
 
