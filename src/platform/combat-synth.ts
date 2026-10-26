@@ -1,9 +1,9 @@
 import type * as Tone from 'tone';
 import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
+import { isUltimateSound, renderUltimateSound, type UltimateSound } from './ultimate-audio';
 
 interface CombatScore {
-  lightning?: { bursts: number; spacing: number; velocity: number; note: string };
   // Filtered white noise supplies motion, while the membrane supplies the hit.
   sweep?: { from: number; to: number; duration: number; velocity: number };
   impact?: { note: string; velocity: number };
@@ -11,16 +11,12 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = 'ultimate-strike' | 'ultimate-magic' | 'ultimate-sanctuary' | 'ultimate' | SkillTemplate | 'wave' | 'defeat';
+type CombatKey = SkillTemplate | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
-  ultimate: { sweep: { from: 350, to: 2600, duration: .6, velocity: .32 }, bells: { notes: ['D4', 'A4', 'D5'], spacing: .18, duration: .3 }, aura: { notes: ['D3', 'A3'], duration: .65 } },
-  'ultimate-strike': { lightning: { bursts: 4, spacing: .085, velocity: .95, note: 'D5' }, sweep: { from: 7500, to: 250, duration: .22, velocity: .9 }, impact: { note: 'D1', velocity: .95 }, metal: { note: 'D5', velocity: .5 }, bells: { notes: ['A5', 'D6'], spacing: .05, duration: .3 } },
-  'ultimate-magic': { lightning: { bursts: 5, spacing: .09, velocity: .85, note: 'A5' }, sweep: { from: 450, to: 7200, duration: .4, velocity: .85 }, impact: { note: 'C1', velocity: .9 }, bells: { notes: ['D5', 'F5', 'A5', 'D6', 'F6'], spacing: .07, duration: .35 }, aura: { notes: ['D3', 'F3', 'A3'], duration: .7 } },
-  'ultimate-sanctuary': { lightning: { bursts: 3, spacing: .12, velocity: .6, note: 'F5' }, impact: { note: 'F1', velocity: .8 }, bells: { notes: ['F5', 'A5', 'C6', 'F6', 'A6'], spacing: .1, duration: .38 }, aura: { notes: ['F3', 'A3', 'C4', 'F4'], duration: .8 }, metal: { note: 'C5', velocity: .2 } },
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },
@@ -64,18 +60,16 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   const air = new tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.003, decay: 0.16, sustain: 0, release: 0.08 }, volume: -5 }).connect(airFilter);
   const hit = new tone.MembraneSynth({ pitchDecay: 0.028, octaves: 3, envelope: { attack: 0.002, decay: 0.18, sustain: 0, release: 0.08 }, volume: -3 }).connect(bus);
   const metal = new tone.MetalSynth({ harmonicity: 5.1, modulationIndex: 12, resonance: 2600, octaves: 1, envelope: { attack: 0.001, decay: 0.085, sustain: 0, release: 0.06 }, volume: -14 }).connect(bus);
-  // Dedicated electrical layer: a distorted FM arc and sharp broadband cracks.
-  // Allocate once, keep mono transients clear, route every return through SE gain.
-  const arcEcho = new tone.FeedbackDelay({ delayTime: .14, feedback: .28, wet: .25 }).connect(bus);
-  const arcFilter = new tone.Filter({ type: 'lowpass', frequency: 7800, Q: .7 }).connect(arcEcho);
-  const arcDrive = new tone.Distortion({ distortion: .48, wet: .65 }).connect(arcFilter);
-  const arc = new tone.FMSynth({ harmonicity: 7.13, modulationIndex: 38,
-    oscillator: { type: 'sawtooth' }, modulation: { type: 'square' },
-    envelope: { attack: .001, decay: .045, sustain: 0, release: .065 },
-    modulationEnvelope: { attack: .001, decay: .025, sustain: 0, release: .035 }, volume: -14 }).connect(arcDrive);
-  const crackFilter = new tone.Filter({ type: 'highpass', frequency: 1600, Q: .65 }).connect(arcEcho);
-  const crack = new tone.NoiseSynth({ noise: { type: 'white' },
-    envelope: { attack: .001, decay: .018, sustain: 0, release: .035 }, volume: -12 }).connect(crackFilter);
+  // Render once per unlocked audio context. Buffer playback avoids monophonic
+  // synth scheduling conflicts and gives ultimates a completely separate timbre.
+  const context = tone.getContext().rawContext;
+  const ultimateBuffers = new Map<UltimateSound, AudioBuffer>();
+  for (const kind of ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-sanctuary'] as const) {
+    const pcm = renderUltimateSound(kind, context.sampleRate);
+    const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
+    buffer.getChannelData(0).set(pcm);
+    ultimateBuffers.set(kind, buffer);
+  }
   type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number };
   const bells: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, voice: new tone.FMSynth({ harmonicity: 3.01, modulationIndex: 5, envelope: { attack: 0.003, decay: 0.2, sustain: 0, release: 0.3 }, modulationEnvelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0.15 }, volume: -3 }).connect(echo) }));
   const aura: VoiceSlot[] = Array.from({ length: 4 }, () => ({ freeAt: 0, voice: new tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.025, decay: 0.2, sustain: 0.12, release: 0.32 }, volume: -10 }).connect(bus) }));
@@ -90,19 +84,19 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   await room.ready;
 
   return { play(kind, skill, time) {
+    if (isUltimateSound(kind)) {
+      const source = context.createBufferSource();
+      source.buffer = ultimateBuffers.get(kind)!;
+      // Connect to the same volume/limiter as every SE, with no extra UI sound.
+      tone.connect(source, output);
+      source.onended = () => source.disconnect();
+      source.start(time);
+      return true;
+    }
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];
     const intensity = skill ? 1 : 0.72;
-    if (score.lightning) {
-      const { bursts, spacing, velocity, note: pitch } = score.lightning;
-      for (let index = 0; index < bursts; index++) {
-        const at = time + index * spacing;
-        const strength = velocity * (index === 0 ? 1 : .65 / (1 + index * .15));
-        arc.triggerAttackRelease(pitch, .025, at, strength);
-        crack.triggerAttackRelease(.018, at, strength);
-      }
-    }
     if (score.sweep) {
       const { from, to, duration, velocity } = score.sweep;
       // New foreground sweeps replace filter automation, never allocate a new filter.

@@ -1,4 +1,4 @@
-// One normalized timeline for video, impact sound, HP numbers and replay advance.
+// One normalized timeline for particles, impact sound, HP numbers and replay advance.
 export const ULTIMATE_TIMING = { effect: 900, impact: 1650, tail: 2600, end: 3600 } as const;
 export const ultimatePlaybackRate = (speed: 1 | 2) => speed === 2 ? 1.25 : 1;
 

@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { assetPath, characterById, content } from '../content';
-import { ultimateEffectIds } from '../content/ultimate-effects';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
@@ -19,8 +18,7 @@ function FallbackImpact({ theme }: { theme: UltimateTheme }) {
 function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: { eventId: string; character: CharacterDef; allies: Unit[]; speed: 1 | 2; reducedMotion: boolean }) {
   const special = ultimateFor(character);
   const supporting = ['bloom', 'aegis', 'dawn'].includes(special.theme);
-  const asset = content.assets.find(asset => asset.id === ultimateEffectIds[special.theme])!;
-  const video = useRef<HTMLVideoElement>(null);
+  const effectHost = useRef<HTMLDivElement>(null);
   const clock = useRef(new UltimateClock());
   const [phase, setPhase] = useState('intro');
   const [ready, setReady] = useState(false);
@@ -39,44 +37,39 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     return () => { preference.removeEventListener('change', motion); connection?.removeEventListener('change', data); };
   }, [connection]);
 
-  const reconcileVideo = useCallback(() => {
-    const player = video.current;
-    if (!player) return;
-    const elapsed = clock.current.position(performance.now());
-    if (!allowed || failed || document.hidden || elapsed < ULTIMATE_TIMING.effect || elapsed >= ULTIMATE_TIMING.end) { player.pause(); return; }
-    player.defaultMuted = true; player.muted = true; player.playbackRate = clock.current.rate;
-    if (player.readyState >= 1) {
-      const desired = Math.min(Math.max(0, (elapsed - ULTIMATE_TIMING.effect) / 1000), Math.max(0, player.duration - .04));
-      if (Math.abs(player.currentTime - desired) > .12) player.currentTime = desired;
-    }
-    if (player.paused) void player.play().catch(error => { if (error?.name !== 'AbortError') setFailed(true); });
-  }, [allowed, failed]);
+  useEffect(() => {
+    if (!allowed || failed || !effectHost.current) return;
+    let cancelled = false, dispose: (() => void) | undefined;
+    const host = effectHost.current;
+    void import('./ultimate-pixi').then(async ({ createUltimateEffect }) => {
+      if (cancelled) return;
+      const cleanup = await createUltimateEffect(host, special.theme, () => clock.current.position(performance.now()), () => { if (!cancelled) setFailed(true); });
+      if (cancelled) cleanup();
+      else { dispose = cleanup; setReady(true); }
+    }).catch(() => { if (!cancelled) setFailed(true); });
+    return () => { cancelled = true; dispose?.(); setReady(false); };
+  }, [allowed, failed, special.theme]);
 
   useEffect(() => {
     clock.current.sync(eventId, speed, performance.now());
     const elapsed = clock.current.position(performance.now());
     setPhase(elapsed < ULTIMATE_TIMING.effect ? 'intro' : elapsed < ULTIMATE_TIMING.impact ? 'effect' : elapsed < ULTIMATE_TIMING.tail ? 'impact' : 'tail');
     const timers = [
-      setTimeout(() => { setPhase('effect'); reconcileVideo(); }, clock.current.delay(ULTIMATE_TIMING.effect, performance.now())),
+      setTimeout(() => setPhase('effect'), clock.current.delay(ULTIMATE_TIMING.effect, performance.now())),
       setTimeout(() => setPhase('impact'), clock.current.delay(ULTIMATE_TIMING.impact, performance.now())),
       setTimeout(() => setPhase('tail'), clock.current.delay(ULTIMATE_TIMING.tail, performance.now())),
     ];
-    const player = video.current;
-    reconcileVideo();
-    document.addEventListener('visibilitychange', reconcileVideo);
-    window.addEventListener('pageshow', reconcileVideo);
-    return () => { timers.forEach(clearTimeout); player?.pause(); document.removeEventListener('visibilitychange', reconcileVideo); window.removeEventListener('pageshow', reconcileVideo); };
-  }, [eventId, speed, reconcileVideo]);
+    return () => timers.forEach(clearTimeout);
+  }, [eventId, speed]);
 
-  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'video' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
       <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
       <div className="ultimate-cinematic__title"><small>ULTIMATE</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
     </div>
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}
     <div className="ultimate-cinematic__effect" aria-hidden="true">
-      {allowed && !failed && <video ref={video} className={`ultimate-effect-video${ready ? ' is-ready' : ''}`} src={assetPath(asset.id)} poster={assetPath(asset.posterId!)} muted playsInline preload="auto" disablePictureInPicture disableRemotePlayback tabIndex={-1}
-        onLoadedData={reconcileVideo} onPlaying={() => { setReady(true); reconcileVideo(); }} onError={() => { setFailed(true); setReady(false); }} />}
+      {allowed && !failed && <div className="ultimate-pixi-host" ref={effectHost} /> }
       {!ready || failed || !allowed ? <FallbackImpact theme={special.theme} /> : null}
     </div>
   </div>;

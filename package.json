@@ -28,6 +28,7 @@
   "dependencies": {
     "gsap": "^3.14.0",
     "lucide-react": "^0.468.0",
+    "pixi.js": "8.14.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tone": "^15.1.22"
