@@ -1,3 +1,4 @@
+export { FairyGuide, FairyGuideButton } from './FairyGuide';
 export { XRGacha } from './XRGacha';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
