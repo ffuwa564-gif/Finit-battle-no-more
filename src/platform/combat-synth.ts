@@ -13,12 +13,17 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = Exclude<SkillTemplate, 'attack' | 'area' | 'pierce' | 'shatter' | 'drain' | 'dawn' | 'heal' | 'regen' | 'mend_pair' | 'barrier_mend' | 'cleanse' | 'guard' | 'barrier'> | 'wave' | 'defeat';
+type CombatKey = Exclude<SkillTemplate, 'attack' | 'area' | 'pierce' | 'shatter' | 'drain' | 'dawn' | 'guard' | 'barrier'> | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
+  heal: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: 0.085, duration: 0.32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.4 } },
+  barrier_mend: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: .085, duration: .32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: .4 } },
+  regen: { bells: { notes: ['A4', 'D5', 'F5', 'A5', 'D6'], spacing: 0.095, duration: 0.28 }, aura: { notes: ['D4', 'A4'], duration: 0.5 } },
+  cleanse: { sweep: { from: 1400, to: 6000, duration: 0.16, velocity: 0.25 }, bells: { notes: ['A5', 'D6', 'F6', 'A6'], spacing: 0.07, duration: 0.27 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.34 } },
+  mend_pair: { bells: { notes: ['D5', 'F5', 'A5', 'C6', 'D6', 'F6'], spacing: 0.06, duration: 0.3 }, aura: { notes: ['D4', 'F4', 'C5'], duration: 0.4 } },
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },
@@ -77,7 +82,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     }
     return buffer;
   };
-  ordinaryBuffer('blade', 0);
+  ordinaryBuffer('thunder', 0);
   const playOrdinary = (family: CombatFamily | CombatSignature, time: number, variationKey?: string) => {
     const stream = `${family}:${variationKey ?? 'preview'}`;
     const variant = variations.get(stream) ?? 0;
