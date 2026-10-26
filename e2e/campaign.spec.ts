@@ -24,7 +24,7 @@ test('confirming a chapter boss clear opens chapter two and returns to campaign 
     save.completedDungeonIds=content.chapters![0]!.dungeonIds.slice(0,-1);save=applyCommand(save,{type:'depart',dungeonId:'stone-fountain',potions:0},content);
     for(let n=0;n<200&&save.battle?.phase!=='reward';n++){
       if(save.battle!.phase==='ready')for(const unit of save.battle!.units.filter(u=>u.side==='party')){unit.attack=10000;unit.speed=100;}
-      save=applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: save.battle!.phase==='playing'?'replay':'round' }, content);
+      save=applyCommand(save, { type: save.battle!.phase==='playing'?'replay':'round' }, content);
     }
     save.revision=revision+1;await persistSave(save,revision);
   });
@@ -79,7 +79,7 @@ test('chapter two shows its romance before departure and its tragic ending only 
     let save=(await loadSave())!;const revision=save.revision;save=applyCommand(save,{type:'depart',dungeonId:'hollow-gate',potions:0},content);
     for(let n=0;n<200&&save.battle?.phase!=='reward';n++){
       if(save.battle!.phase==='ready')for(const unit of save.battle!.units.filter(u=>u.side==='party')){unit.attack=10000;unit.speed=100;}
-      save=applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: save.battle!.phase==='playing'?'replay':'round' }, content);
+      save=applyCommand(save, { type: save.battle!.phase==='playing'?'replay':'round' }, content);
     }
     if(save.battle?.phase!=='reward')throw Error('No victory');save.revision=revision+1;await persistSave(save,revision);
   });

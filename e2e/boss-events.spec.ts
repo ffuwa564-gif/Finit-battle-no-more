@@ -59,7 +59,7 @@ test('a real event clear keeps currency provisional through reload and claims it
   for(let i=0;i<150;i++){
     const save=await stored(page);if(save.battle?.phase==='reward')break;
     expect(save.battle?.phase).not.toBe('failed');
-    await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).or(page.locator('.wave-omens__choices button').first()).first().click();
+    await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).first().click();
     await expect.poll(async()=>(await stored(page)).revision).toBeGreaterThan(save.revision);
   }
   const reward=await stored(page);expect(reward.battle?.phase).toBe('reward');

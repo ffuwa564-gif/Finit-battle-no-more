@@ -1,5 +1,4 @@
 import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
-import { offerOmens } from './omens';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
@@ -383,6 +382,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input);
+  delete battle.omens;
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
   for (const unit of battle.units) {
@@ -591,14 +591,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
 }
 export function advanceReplay(input: Battle, content: Content): Battle {
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
-  if (input.omens?.pending) throw new Error('痕跡をひとつ選んでください。');
   const battle = clone(input);
+  delete battle.omens;
   if (battle.cursor < battle.events.length) battle.cursor += 1;
   if (battle.cursor < battle.events.length) return battle;
-  if (battle.omens && battle.omens.picks.length === battle.wave && ['wave', 'reward'].includes(battle.nextPhase)) {
-    offerOmens(battle, rng);
-    return battle;
-  }
   switch (battle.nextPhase) {
     case 'wave': battle.wave += 1; return openWave(battle, content, false);
     case 'reward': battle.phase = 'reward'; break;
@@ -610,6 +606,7 @@ export function advanceReplay(input: Battle, content: Content): Battle {
 export function usePotion(input: Battle, unitId: string): Battle {
   if (input.phase !== 'ready' || input.potionUsed || input.potionsRemaining <= 0) throw new Error('今は回復薬を使えません');
   const battle = clone(input);
+  delete battle.omens;
   const unit = battle.units.find((item) => item.uid === unitId && item.side === 'party');
   if (!unit || unit.hp <= 0 || unit.hp >= unit.maxHp) throw new Error('回復できる味方を選んでください');
   unit.hp = Math.min(unit.maxHp, unit.hp + Math.floor(unit.maxHp * 3 / 10));

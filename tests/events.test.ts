@@ -10,7 +10,7 @@ import type { GameSave, Strategy } from '../src/domain/types';
 function play(save: GameSave, stage: string, strategy: Strategy = 'balanced'): GameSave {
   let next = applyCommand(save, { type: 'depart', dungeonId: stage, potions: 5 }, content);
   for (let i = 0; i < 1500 && next.battle && !['reward', 'failed'].includes(next.battle.phase); i++) {
-    if (next.battle.phase === 'playing') { next = applyCommand(next, next.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: next.battle.omens.pending[0]! } : { type: 'replay' }, content); continue; }
+    if (next.battle.phase === 'playing') { next = applyCommand(next, { type: 'replay' }, content); continue; }
     next = applyCommand(next, { type: 'strategy', strategy }, content);
     const weakest = next.battle!.units.filter(unit => unit.side === 'party' && unit.hp > 0).sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
     if (weakest && weakest.hp / weakest.maxHp < .65 && next.battle!.potionsRemaining > 0) next = applyCommand(next, { type: 'potion', unitId: weakest.uid }, content);
@@ -94,7 +94,7 @@ describe('event progression and durable rewards', () => {
     expect(failed.battle?.pendingMaterials).toEqual({});
     expect(failed.materials[event.core.id]).toBe(2);
     const ready = applyCommand(town(), { type: 'depart', dungeonId: event.dungeonIds[0]!, potions: 0 }, content);
-    while (ready.battle?.phase === 'playing') ready.battle = applyCommand(ready, ready.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: ready.battle.omens.pending[0]! } : { type: 'replay' }, content).battle;
+    while (ready.battle?.phase === 'playing') ready.battle = applyCommand(ready, { type: 'replay' }, content).battle;
     ready.battle!.pendingMaterials[event.fragment.id] = 3;
     const retreat = applyCommand(ready, { type: 'retreat' }, content);
     expect(retreat.battle?.pendingMaterials).toEqual({});

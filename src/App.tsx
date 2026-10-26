@@ -140,7 +140,9 @@ export default function App() {
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   const soundedEvent = useRef<string | null>(null);
   useEffect(() => {
-    if (!event || !save || !started) return;
+    if (!save || !started || battle?.phase !== 'playing') return;
+    // Old saves can be paused at the end of a Wave with no remaining event.
+    if (!event) { void command({ type: 'replay' }); return; }
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       playSound(event.ultimate ? 'ultimate' : battleSounds[event.kind], event.rarity, event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template);

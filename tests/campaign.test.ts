@@ -11,7 +11,7 @@ const ids = campaignStageIds(content);
 function finish(save: GameSave): GameSave {
   for (let n=0;n<200 && save.battle && !['reward','failed'].includes(save.battle.phase);n++) {
     if (save.battle.phase === 'ready') for (const unit of save.battle.units.filter(u=>u.side==='party')) {unit.attack=10000;unit.speed=100;}
-    save=applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: save.battle!.phase==='playing'?'replay':'round' }, content);
+    save=applyCommand(save, { type: save.battle!.phase==='playing'?'replay':'round' }, content);
   }
   expect(save.battle?.phase).toBe('reward'); return save;
 }
@@ -47,7 +47,7 @@ describe('normal campaign chapters',()=>{
   });
   it('does not unlock a route after retreat or failure',()=>{
     let save=applyCommand(createInitialSave(content),{type:'depart',dungeonId:ids[0]!,potions:0},content);
-    while(save.battle!.phase==='playing')save=applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: 'replay' }, content);
+    while(save.battle!.phase==='playing')save=applyCommand(save, { type: 'replay' }, content);
     save=applyCommand(save,{type:'retreat'},content);save=applyCommand(save,{type:'leaveFailure'},content);
     expect(save.completedDungeonIds).toEqual([]);expect(campaignFrontier(save,content)).toBe(0);
   });
