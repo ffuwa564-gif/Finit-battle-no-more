@@ -1,3 +1,4 @@
+import { skipStory } from '../e2e/boot';
 import { test, expect, type Page } from '@playwright/test';
 import { content } from '../src/content';
 import { createInitialSave, applyCommand } from '../src/application/game';
@@ -30,10 +31,10 @@ function transitions(dungeonId = content.dungeons[0].id) {
 async function restore(page: Page, save: GameSave) {
   await page.goto('/nested/game/index.html#settings');
   const begin = page.getByRole('button', { name: 'Tap to Begin', exact: true });
-  await begin.click();
+  await begin.click(); await skipStory(page);
   await page.getByLabel('Backup file', { exact: true }).setInputFiles({ name: 'bgm-demo.json', mimeType: 'application/json', buffer: Buffer.from(encodeBackup(save, content)) });
   await page.getByRole('button', { name: 'Restore This Save', exact: true }).click();
-  await begin.click();
+  await begin.click(); await skipStory(page);
 }
 
 for (const scenario of [{ dungeon: content.dungeons[0].id, scene: 'boss' }, { dungeon: 'kuzuha-beginner', scene: 'japaneseBoss' }]) {

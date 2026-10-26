@@ -1,3 +1,4 @@
+import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domain/novels';
 import { ultimateReady } from '../domain/ultimates';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
 import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
@@ -29,11 +30,12 @@ function spendMaterials(save: GameSave, costs: { materialId: string; count: numb
   for (const cost of costs) save.materials[cost.materialId] = (save.materials[cost.materialId] ?? 0) - cost.count;
 }
 
-export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave {
+export function createInitialSave(content: Content, seed = 0x584a39b1, options: { opening?: boolean } = {}): GameSave {
   const initial = content.characters.filter(character => character.published && character.origin.includes('initial')).slice(0, 4).map(character => character.id);
   if (!initial.length) fail('初期パーティの定義がありません。');
   const leader = initial.find(id => content.characters.find(character => character.id === id)?.role === 'tank') ?? initial[0]!;
   return {
+    ...(options.opening ? { novels: initialNovelProgress(content, true) } : {}),
     schemaVersion: content.schemaVersion, appVersion: content.appVersion, contentVersion: content.contentVersion,
     rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0, astralStones: 0, xrDrawCount: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
@@ -46,9 +48,35 @@ export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave
 export function applyCommand(previous: GameSave, command: GameCommand, content: Content): GameSave {
   if (previous.schemaVersion !== content.schemaVersion || previous.appVersion !== content.appVersion || previous.contentVersion !== content.contentVersion || previous.rulesVersion !== content.rulesVersion) fail('保存データに対応するリリースで再開してください。');
   const save = structuredClone(previous);
+  if (save.novels?.active && !['novelNext', 'novelBack', 'novelFinish', 'settings'].includes(command.type)) fail('物語を閉じてから操作してください。');
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
   switch (command.type) {
+    case 'novelStart': {
+      town(save);
+      const scene = content.novels?.find(scene => scene.id === command.sceneId);
+      if (!scene || !novelAvailable(scene, save)) fail('この物語はまだ読めません。');
+      save.novels ??= initialNovelProgress(content, false);
+      save.novels.active = { sceneId: scene.id, page: 0 };
+      break;
+    }
+    case 'novelNext': case 'novelBack': case 'novelFinish': {
+      const active = save.novels?.active;
+      const scene = content.novels?.find(scene => scene.id === active?.sceneId);
+      if (!active || !scene || save.battle) fail('再生中の物語がありません。');
+      natural(active.page, '物語の再生位置', true);
+      if (active.page >= scene.pages.length) fail('物語のページが正しくありません。');
+      if (command.type === 'novelFinish') {
+        save.novels!.seen = [...new Set([...save.novels!.seen, scene.id])];
+        delete save.novels!.active;
+      } else {
+        const page = active.page + (command.type === 'novelNext' ? 1 : -1);
+        if (page < 0 || page >= scene.pages.length) fail('物語のページが正しくありません。');
+        active.page = page;
+      }
+      break;
+    }
+
     case 'depart': {
       town(save);
       validateParty(save, save.partyIds, save.leaderId, content);
@@ -118,10 +146,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       }
       if (dungeon.kind !== 'trial') save.gold += 20;
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
+      const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
       save.claimedExplorationIds.push(battle.id);
       log(save, dungeon.kind === 'trial' ? '女神の試練を踏破しました。' : '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
       save.battle = null;
+      enqueueMilestone(save, dungeon.id, previouslyCleared, content);
       break;
     }
     case 'leaveFailure': {

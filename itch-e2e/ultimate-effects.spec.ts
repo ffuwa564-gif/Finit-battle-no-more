@@ -1,3 +1,4 @@
+import { skipStory } from '../e2e/boot';
 import { test, expect } from '@playwright/test';
 import { content } from '../src/content';
 import { createInitialSave, applyCommand } from '../src/application/game';
@@ -26,12 +27,12 @@ test('packaged Pixi and electrical audio work in a nested cross-origin iframe', 
   }
   await page.goto('/');
   const frame=page.frameLocator('iframe[title="STILLVEIL"]');
-  await frame.getByRole('button',{name:'Tap to Begin',exact:true}).click();
+  await frame.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(frame);
   const child=page.frames().find(frame=>frame.url().includes('/nested/game/'))!;
   await child.evaluate(()=>location.hash='settings');
   await frame.getByLabel('Backup file',{exact:true}).setInputFiles({name:'ultimate.json',mimeType:'application/json',buffer:Buffer.from(encodeBackup(save,content))});
   await frame.getByRole('button',{name:'Restore This Save',exact:true}).click();
-  await frame.getByRole('button',{name:'Tap to Begin',exact:true}).click();
+  await frame.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(frame);
   await frame.getByRole('button',{name:'Seris: queue ultimate',exact:true}).click();
   await frame.getByRole('button',{name:'Advance Round',exact:true}).click();
   const effect=frame.locator('.ultimate-cinematic');

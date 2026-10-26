@@ -1,3 +1,4 @@
+import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
 import { ultimateVisualFor } from './platform/ultimate-choreography';
 import { ultimateSoundFor } from './platform/ultimate-audio';
@@ -6,7 +7,7 @@ import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
-import { FairyGuide, FairyGuideButton, Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults } from './ui';
+import { VisualNovel, FairyGuide, FairyGuideButton, Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults } from './ui';
 import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
@@ -56,9 +57,16 @@ export default function App() {
       const metadata = await readBootMetadata();
       if (metadata && (metadata.appVersion !== content.appVersion || metadata.contentVersion !== content.contentVersion || metadata.rulesVersion !== content.rulesVersion || metadata.schemaVersion !== content.schemaVersion)) throw new Error('このセーブは別のリリースで作成されています。本番の起動ページから対応する版を開いてください。セーブは保持しています。');
       const existing = await loadSave();
-      if (existing) { assertSaveCompatibility(existing, content); return existing; }
+      if (existing) {
+        assertSaveCompatibility(existing, content);
+        if (!existing.novels) {
+          const updated = { ...existing, novels: initialNovelProgress(content, false), revision: existing.revision + 1 };
+          await persistSave(updated, existing.revision); return updated;
+        }
+        return existing;
+      }
       const seed = crypto.getRandomValues(new Uint32Array(1))[0];
-      const initial = createInitialSave(content, seed);
+      const initial = createInitialSave(content, seed, { opening: true });
       await persistSave(initial);
       return initial;
     })();
@@ -149,7 +157,7 @@ export default function App() {
   const activeUltimateSound = useRef<{ eventId: string; voice: NonNullable<ReturnType<typeof scheduleUltimateSound>> } | undefined>(undefined);
   useEffect(() => () => activeUltimateSound.current?.voice.cancel(), []);
   useEffect(() => {
-    if (!save || !started || battle?.phase !== 'playing') return;
+    if (!save || save.novels?.active || !started || battle?.phase !== 'playing') return;
     // Old saves can be paused at the end of a Wave with no remaining event.
     if (!event) { void command({ type: 'replay' }); return; }
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
@@ -213,7 +221,8 @@ export default function App() {
     void enableAudio().then(() => playSound('confirm'));
     setEntering(true);
   }} />;
-  const props = { save, busy, artworkSuspended: !!character || !!summon, command, navigate, inspect: setCharacter };
+  const novel = content.novels?.find(scene => scene.id === save.novels?.active?.sceneId);
+  const props = { save, busy, artworkSuspended: !!character || !!summon || !!novel, command, navigate, inspect: setCharacter };
   const view = save.battle ? <BattleView {...props} /> : page === 'dungeons' ? <DungeonsView {...props} /> : page === 'party' ? <PartyView {...props} /> : page === 'bag' ? <BagView {...props} /> : page === 'recruit' ? <RecruitView {...props} /> : page === 'gacha' ? <GachaView {...props} /> : page === 'codex' ? <CodexView {...props} /> : page === 'settings' ? <SettingsView {...props} /> : page === 'preview' ? <PreviewView {...props} /> : <HomeView {...props} />;
-  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon || !!event?.ultimate}><div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><FairyGuideButton compact /><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaResults key={`${save.drawCount}-${save.xrDrawCount ?? 0}`} results={summon.results} introIndex={summon.introIndex} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={ssr => playSound(ssr ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<FairyGuide save={save} page={page} suspended={!!character || !!summon} /><Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div></MotionSettingsProvider>;
+  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon || !!event?.ultimate || !!novel}><div inert={Boolean(novel)} className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><FairyGuideButton compact /><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaResults key={`${save.drawCount}-${save.xrDrawCount ?? 0}`} results={summon.results} introIndex={summon.introIndex} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={ssr => playSound(ssr ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<FairyGuide save={save} page={page} suspended={!!character || !!summon || !!novel} /><Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div>{novel && save.novels?.active && <VisualNovel key={novel.id} scene={novel} pageIndex={save.novels.active.page} reducedMotion={save.settings.reducedMotion} busy={busy} onNext={() => command({ type: 'novelNext' })} onBack={() => command({ type: 'novelBack' })} onFinish={() => command({ type: 'novelFinish' })} />}</MotionSettingsProvider>;
 }

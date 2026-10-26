@@ -99,3 +99,5 @@ SSR上位のXRと専用の「星晶石」を扱う仕組みを追加しました
 WAVE後の3択と、探索中の痕跡の組み合わせによる共鳴は [docs/wave-omens.md](docs/wave-omens.md) を参照。
 
 妖精リュミの操作案内は、ホーム・設定・妖精アイコンから見直せます。実装前のウェブ調査と仕様は [docs/fairy-tutorial.md](docs/fairy-tutorial.md) を参照。
+
+初回OPと通常章の全画面ノベルは、設定の「物語の記録」から読み返せます。台本と追加方法は [docs/visual-novels.md](docs/visual-novels.md) を参照。

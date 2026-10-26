@@ -1,3 +1,4 @@
+import { skipStory } from './boot';
 import { test, expect, type Page } from '@playwright/test';
 import { enterGame } from './boot';
 test.beforeEach(({ page }) => page.setDefaultTimeout(15000));
@@ -82,7 +83,7 @@ test('departure guidance is inside its modal and battle lessons neither start ro
 test('English lessons fit small and large screens, and skipping leaves normal play accessible', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.addInitScript(() => localStorage.setItem('stillveil-language', 'en'));
-  await page.goto('/'); await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();
+  await page.goto('/'); await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();await skipStory(page);
   await page.getByRole('button', { name: 'Show Me Around!', exact: true }).click();
   await expect(card(page)).toContainText('Every Journey Needs Companions');
   expect(await card(page).innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);

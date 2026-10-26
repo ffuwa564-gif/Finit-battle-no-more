@@ -1,5 +1,5 @@
 import {test,expect} from '@playwright/test';
-import {enterGame} from './boot';
+import { enterGame, skipStory } from './boot';
 
 test('new campaigns open in chapter one, lock later routes, and retain independent remembrance routes',async({page},testInfo)=>{
   await page.setViewportSize({width:390,height:844});await page.goto('/#dungeons');await enterGame(page);
@@ -30,6 +30,7 @@ test('confirming a chapter boss clear opens chapter two and returns to campaign 
   });
   await page.reload();await enterGame(page);await expect(page.locator('.result-panel')).toContainText('初踏破 +3');
   await page.getByRole('button',{name:'獲得を確定',exact:true}).click();
+  await expect(page.locator('.visual-novel')).toBeVisible(); await skipStory(page);
   await expect(page.locator('.chapter-heading')).toContainText('ふたりぶんの空席');
   await expect(page.getByRole('button',{name:'第2章 ふたりぶんの空席',exact:true})).toHaveAttribute('aria-pressed','true');
   await expect(page.locator('.dungeon-card').first()).toContainText('白帳の回廊');expect(page.url()).not.toContain('/memories');
@@ -87,6 +88,7 @@ test('chapter two shows its romance before departure and its tragic ending only 
   await expect(page.getByRole('region',{name:'探索後の物語',exact:true})).toContainText('どなたですか');
   await page.screenshot({path:testInfo.outputPath('chapter-two-ending.png'),fullPage:true});
   await page.getByRole('button',{name:'獲得を確定',exact:true}).click();
+  await expect(page.locator('.visual-novel')).toBeVisible(); await skipStory(page);
   await page.getByRole('button',{name:'第2章 ふたりぶんの空席',exact:true}).click();
   await card.getByText('踏破した物語を読み返す',{exact:true}).click();
   await expect(card.getByRole('region',{name:'探索後の物語',exact:true})).toContainText('個体は生まれず');

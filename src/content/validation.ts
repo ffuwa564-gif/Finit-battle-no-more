@@ -42,6 +42,19 @@ export function validateContent(content: Content): string[] {
     } else reject(asset.posterId !== undefined, `assets/${asset.id}: only videos may declare posterId`);
 
   }
+  allIds(content.novels ?? [], 'novels');
+  const novelTriggers = new Set<string>();
+  for (const scene of content.novels ?? []) {
+    reject(!plain(scene.title) || !Array.isArray(scene.pages) || !scene.pages.length || scene.pages.length > 200, `novels/${scene.id}: title and 1..200 pages required`);
+    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : '';
+    reject(!trigger || novelTriggers.has(trigger), `novels/${scene.id}: unique trigger required`); novelTriggers.add(trigger);
+    if (scene.trigger.kind === 'dungeon-clear') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
+    for (const page of scene.pages) {
+      reject(!plain(page.text) || (page.speaker !== undefined && !plain(page.speaker)), `novels/${scene.id}: plain page text required`);
+      reject(!content.assets.some(asset => asset.id === page.backgroundId && ['background', 'illustration'].includes(asset.kind)), `novels/${scene.id}: background required`);
+      reject(page.shade !== undefined && !['dark', 'black'].includes(page.shade), `novels/${scene.id}: invalid shade`);
+    }
+  }
   const semanticKeys = new Set<string>();
   for (const skill of content.skills) {
     reject(!plain(skill.name), `skills/${skill.id}: plain name required`);

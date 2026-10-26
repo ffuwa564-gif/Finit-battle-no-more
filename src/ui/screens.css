@@ -330,3 +330,6 @@
 .dungeon-categories { gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
 .dungeon-category-note { color: var(--muted); font-size: 12px; line-height: 1.8; margin-bottom: 22px; }
 .dungeon-reward-note { display: flex; align-items: center; gap: 8px; color: var(--slate-deep); font-size: 13px; margin: 16px 0; }
+
+/* Keep the fairy shortcut and currencies inside narrow phone viewports. */
+@media (max-width: 360px) { .topbar { padding-inline: 10px; gap: 8px; } .topbar-title { gap: 4px; } .topbar-title > span { font-size: 11px; letter-spacing: .04em; } .topbar .currencies { gap: 3px; } }
