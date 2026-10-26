@@ -47,7 +47,7 @@ test('rapid catch-up replaces old voices and leaves no unbounded ordinary tails'
   expect(errors).toEqual([]);
 });
 
-test('healing aliases return to the original bell and aura synth instead of combat PCM',async({page})=>{
+test('healing aliases use the soft prayer synth instead of combat PCM',async({page})=>{
   await prepare(page);
   const voices=await page.evaluate(async()=>{
     const audio=await import('/src/platform/audio.ts');

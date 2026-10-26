@@ -117,15 +117,19 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     source.onended = () => { normalVoices.delete(entry); source.disconnect(); envelope.disconnect(); };
     source.start(startsAt);
   };
-  type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number };
+  type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number; tail?: number };
   const bells: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, voice: new tone.FMSynth({ harmonicity: 3.01, modulationIndex: 5, envelope: { attack: 0.003, decay: 0.2, sustain: 0, release: 0.3 }, modulationEnvelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0.15 }, volume: -3 }).connect(echo) }));
+  // Prayer uses a round, gently blooming voice rather than bright FM bell sidebands.
+  // A separate fixed pool avoids changing attack/support timbres or stealing their notes.
+  const prayerFilter = new tone.Filter({ type: 'lowpass', frequency: 1800, Q: .5 }).connect(bus);
+  const prayer: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, tail: .55, voice: new tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: .055, decay: .28, sustain: .08, release: .48 }, volume: -15 }).connect(prayerFilter) }));
   const aura: VoiceSlot[] = Array.from({ length: 4 }, () => ({ freeAt: 0, voice: new tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.025, decay: 0.2, sustain: 0.12, release: 0.32 }, volume: -10 }).connect(bus) }));
   const note = (pool: VoiceSlot[], pitch: string, duration: number, time: number, velocity: number) => {
     const slot = pool.find(candidate => candidate.freeAt <= time);
     // Protect phones during catch-up bursts: omit an overlapping ornament rather
     // than growing the graph, stealing a foreground hit, or queuing long delays.
     if (!slot) return;
-    slot.freeAt = time + duration + 0.35;
+    slot.freeAt = time + duration + (slot.tail ?? .35);
     slot.voice.triggerAttackRelease(pitch, duration, time, velocity);
   };
   await room.ready;
@@ -155,8 +159,9 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];
+    const healing = ['heal', 'regen', 'mend_pair', 'barrier_mend', 'cleanse'].includes(key);
     const intensity = skill ? 1 : 0.72;
-    if (score.sweep) {
+    if (score.sweep && !healing) {
       const { from, to, duration, velocity } = score.sweep;
       // New foreground sweeps replace filter automation, never allocate a new filter.
       airFilter.frequency.cancelScheduledValues(time);
@@ -168,7 +173,11 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     if (score.metal) metal.triggerAttackRelease(score.metal.note, 0.045, time + 0.055, score.metal.velocity * intensity);
     if (score.bells) {
       const { notes, spacing, duration } = score.bells;
-      notes.forEach((pitch, index) => note(bells, pitch, duration, time + 0.07 + index * spacing, 0.8 * intensity));
+      notes.forEach((pitch, index) => note(
+        healing ? prayer : bells,
+        healing ? tone.Frequency(pitch).transpose(-12).toNote() : pitch,
+        duration, time + 0.07 + index * spacing, 0.8 * intensity,
+      ));
     }
     if (score.aura) for (const pitch of score.aura.notes) note(aura, pitch, score.aura.duration, time + 0.025, 0.65 * intensity);
     return true;
