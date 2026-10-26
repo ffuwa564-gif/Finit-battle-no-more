@@ -49,3 +49,5 @@ Original anime mobile fantasy RPG tutorial mascot character portrait, one friend
 ## 検証
 
 `tests/fairy-tutorial.test.ts`で不正設定、スキップ、途中再開、画面ごとの完了記録を検証する。`e2e/fairy-tutorial.spec.ts`では実ボタンの操作、案内だけではセーブが変わらないこと、途中再開、キャラ詳細との切替、出発確認、戦闘、祈願の非消費、英訳・狭幅、ストレージ拒否を検証する。
+
+今回の確認では、単体233件、チュートリアル画面6件、itch用iframe・音声・保存10件が成功し、通常ビルドとitch用ビルドも完了した。追加確認した既存の`e2e/ultimates.spec.ts`の必殺技同期1件は、数値表示と音の予定時刻の差が60ms未満という条件に失敗した。同じテストを変更前のmain `7d5f013` の独立したworktreeでも実行して同じ失敗を確認しており、このPRでは同期処理やその許容値を変更していない。

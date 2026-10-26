@@ -55,6 +55,8 @@ test('departure guidance is inside its modal and battle lessons neither start ro
   await start(page);
   await page.locator('[data-guide="home-dungeons"]').click();
   await expect(card(page)).toContainText('少しずつ、先の章へ');
+  await card(page).getByRole('button', { name: '次へ', exact: true }).click();
+  await expect(card(page)).toContainText('出発前に、ひと呼吸');
   await page.locator('[data-guide="prepare"]').first().click();
   const preparation = page.getByRole('dialog').filter({ has: page.locator('[data-guide="depart"]') });
   await expect(preparation.locator('.fairy-guide')).toContainText('お薬、持っていく？');
