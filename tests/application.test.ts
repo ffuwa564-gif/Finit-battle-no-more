@@ -8,7 +8,7 @@ import { assertSaveCompatibility, assertValidSave, bootMetadata } from '../src/p
 function finishReplay(save: GameSave, definitions = content): GameSave {
   let next = save;
   let limit = 200;
-  while (next.battle?.phase === 'playing' && limit-- > 0) next = applyCommand(next, next.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: next.battle.omens.pending[0]! } : { type: 'replay' }, definitions);
+  while (next.battle?.phase === 'playing' && limit-- > 0) next = applyCommand(next, { type: 'replay' }, definitions);
   if (limit <= 0) throw new Error('演出が完了しません');
   return next;
 }

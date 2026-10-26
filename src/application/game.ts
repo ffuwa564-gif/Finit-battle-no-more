@@ -1,5 +1,4 @@
 import { ultimateReady } from '../domain/ultimates';
-import { chooseOmen } from '../domain/omens';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
 import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
@@ -47,6 +46,8 @@ export function createInitialSave(content: Content, seed = 0x584a39b1): GameSave
 export function applyCommand(previous: GameSave, command: GameCommand, content: Content): GameSave {
   if (previous.schemaVersion !== content.schemaVersion || previous.appVersion !== content.appVersion || previous.contentVersion !== content.contentVersion || previous.rulesVersion !== content.rulesVersion) fail('保存データに対応するリリースで再開してください。');
   const save = structuredClone(previous);
+  // Discard retired choice metadata; retain already-saved stats, loot and replay.
+  if (save.battle) delete save.battle.omens;
   switch (command.type) {
     case 'depart': {
       town(save);
@@ -60,7 +61,6 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const next = rng(save.seed);
       save.seed = next.seed;
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
-      if (dungeon.kind !== 'trial') save.battle.omens = { picks: [], activated: [] };
       log(save, `${dungeon.name}へ出発しました。`);
       break;
     }
@@ -87,13 +87,6 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'replay': {
       if (!save.battle || save.battle.phase !== 'playing') fail('再生できる演出がありません。');
-      save.battle = advanceReplay(save.battle, content);
-      save.seed = save.battle.seed;
-      break;
-    }
-    case 'chooseOmen': {
-      if (!save.battle) fail('探索中ではありません。');
-      chooseOmen(save.battle, command.choiceId, content);
       save.battle = advanceReplay(save.battle, content);
       save.seed = save.battle.seed;
       break;

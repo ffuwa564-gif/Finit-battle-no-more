@@ -21,7 +21,7 @@ function transitions(dungeonId = content.dungeons[0].id) {
         if (battle.nextPhase === 'wave') beforeBoss = structuredClone(save);
         if (battle.nextPhase === 'reward' && beforeBoss) return { beforeBoss, beforeClear: save };
       }
-      save = applyCommand(save, save.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: save.battle.omens.pending[0]! } : { type: 'replay' }, content);
+      save = applyCommand(save, { type: 'replay' }, content);
     } else if (battle.phase === 'ready') save = applyCommand(save, { type: 'round' }, content);
     else throw new Error(`Unexpected phase: ${battle.phase}`);
   }
@@ -44,7 +44,6 @@ for (const scenario of [{ dungeon: content.dungeons[0].id, scene: 'boss' }, { du
     await restore(page, beforeBoss);
     const audio = page.locator('audio[data-bgm]');
     await expect(audio).toHaveAttribute('data-scene', 'battle');
-    await page.locator('.wave-omens__choices button').first().click();
     await expect(audio).toHaveAttribute('data-scene', scenario.scene, { timeout: 12000 });
     await expect.poll(() => audio.evaluate((el: HTMLAudioElement) => !el.paused && el.currentTime > 0)).toBe(true);
     await context.close();
@@ -53,7 +52,6 @@ for (const scenario of [{ dungeon: content.dungeons[0].id, scene: 'boss' }, { du
     await restore(clearPage, beforeClear);
     const clearAudio = clearPage.locator('audio[data-bgm]');
     await expect(clearAudio).toHaveAttribute('data-scene', scenario.scene);
-    await clearPage.locator('.wave-omens__choices button').first().click();
     await expect(clearAudio).toHaveAttribute('data-scene', 'clear', { timeout: 12000 });
     await expect.poll(() => clearAudio.evaluate((el: HTMLAudioElement) => !el.paused && el.currentTime > 0)).toBe(true);
     await clearContext.close();

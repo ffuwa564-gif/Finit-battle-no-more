@@ -27,7 +27,7 @@ async function openDungeon(page: Page) {
 async function step(page: Page) {
   const before = await stored(page);
   if (!before.battle) throw new Error('Missing exploration');
-  await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).or(page.locator('.wave-omens__choices button').first()).first().click();
+  await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).first().click();
   await expect.poll(async () => (await stored(page)).revision).toBeGreaterThan(before.revision);
 }
 

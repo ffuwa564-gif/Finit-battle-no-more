@@ -22,7 +22,7 @@ async function clearEvent(page: Page) {
     const save = await stored(page);
     if (save.battle?.phase === 'reward') return;
     expect(save.battle?.phase).not.toBe('failed');
-    await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).or(page.locator('.wave-omens__choices button').first()).first().click();
+    await page.getByRole('button', { name: /^(次の演出へ|ラウンドを進める)$/ }).first().click();
     await expect.poll(async () => (await stored(page)).revision).toBeGreaterThan(save.revision);
   }
   throw new Error('イベントが完了しません');
