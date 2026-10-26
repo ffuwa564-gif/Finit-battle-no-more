@@ -44,17 +44,36 @@ export const fairyLessons = {
   ],
 } as const;
 export type FairyTopic = keyof typeof fairyLessons;
-export interface FairyProgress { version: 1; enrolled: boolean; dismissed: boolean; topic: FairyTopic; step: number; seen: FairyTopic[] }
+export interface FairyProgress { version: 2; offered: boolean; enrolled: boolean; dismissed: boolean; topic: FairyTopic; step: number; seen: FairyTopic[]; checkpoints: Partial<Record<FairyTopic, number>> }
+// Keep the existing storage key so returning players are migrated instead of invited again.
 export const fairyStorageKey = 'stillveil-fairy-tutorial-v1';
-export const newFairyProgress = (): FairyProgress => ({ version: 1, enrolled: false, dismissed: false, topic: 'home', step: 0, seen: [] });
+export const newFairyProgress = (): FairyProgress => ({ version: 2, offered: false, enrolled: false, dismissed: false, topic: 'home', step: 0, seen: [], checkpoints: {} });
+const validStep = (topic: string, step: unknown): step is number => Object.hasOwn(fairyLessons, topic) && Number.isInteger(step) && Number(step) >= 0 && Number(step) < fairyLessons[topic as FairyTopic].length;
 export function parseFairyProgress(raw: string | null): FairyProgress {
   try {
     if (!raw || raw.length > 4096) return newFairyProgress();
-    const p = JSON.parse(raw) as FairyProgress;
-    if (!p || p.version !== 1 || typeof p.enrolled !== 'boolean' || typeof p.dismissed !== 'boolean' || !Object.hasOwn(fairyLessons, p.topic) || !Number.isInteger(p.step) || p.step < 0 || p.step >= fairyLessons[p.topic].length || !Array.isArray(p.seen) || p.seen.length > Object.keys(fairyLessons).length || new Set(p.seen).size !== p.seen.length || p.seen.some(topic => !Object.hasOwn(fairyLessons, topic))) return newFairyProgress();
-    return { version: 1, enrolled: p.enrolled, dismissed: p.dismissed, topic: p.topic, step: p.step, seen: p.seen };
+    const p = JSON.parse(raw);
+    if (!p || ![1, 2].includes(p.version) || typeof p.enrolled !== 'boolean' || typeof p.dismissed !== 'boolean' || !validStep(p.topic, p.step) || !Array.isArray(p.seen) || p.seen.length > Object.keys(fairyLessons).length || new Set(p.seen).size !== p.seen.length || p.seen.some((topic: string) => !Object.hasOwn(fairyLessons, topic))) return newFairyProgress();
+    if (p.version === 1) return { version: 2, offered: true, enrolled: p.enrolled, dismissed: p.dismissed, topic: p.topic, step: p.step, seen: p.seen, checkpoints: { [p.topic]: p.step } };
+    if (typeof p.offered !== 'boolean' || !p.checkpoints || typeof p.checkpoints !== 'object' || Array.isArray(p.checkpoints) || Object.entries(p.checkpoints).some(([topic, step]) => !validStep(topic, step))) return newFairyProgress();
+    return { version: 2, offered: p.offered, enrolled: p.enrolled, dismissed: p.dismissed, topic: p.topic, step: p.step, seen: p.seen, checkpoints: { ...p.checkpoints, [p.topic]: p.step } };
   } catch { return newFairyProgress(); }
 }
+export function moveFairyStep(p: FairyProgress, step: number): FairyProgress {
+  return { ...p, step, checkpoints: { ...p.checkpoints, [p.topic]: step } };
+}
+export function switchFairyTopic(p: FairyProgress, topic: FairyTopic): FairyProgress {
+  if (p.topic === topic) return p;
+  return { ...p, topic, step: p.checkpoints[topic] ?? 0, checkpoints: { ...p.checkpoints, [p.topic]: p.step } };
+}
 export function finishFairyTopic(p: FairyProgress): FairyProgress {
-  return { ...p, step: 0, seen: [...new Set([...p.seen, p.topic])] };
+  return { ...p, seen: [...new Set([...p.seen, p.topic])], checkpoints: { ...p.checkpoints, [p.topic]: p.step } };
+}
+export function advanceFairyStep(p: FairyProgress): FairyProgress {
+  return p.step + 1 < fairyLessons[p.topic].length ? moveFairyStep(p, p.step + 1) : finishFairyTopic(p);
+}
+export function openFairyTopic(p: FairyProgress, topic: FairyTopic): FairyProgress {
+  const resumed = switchFairyTopic(p, topic);
+  const current = p.seen.includes(topic) ? moveFairyStep(resumed, 0) : resumed;
+  return { ...current, offered: true, enrolled: true, dismissed: false, seen: current.seen.filter(id => id !== topic) };
 }
