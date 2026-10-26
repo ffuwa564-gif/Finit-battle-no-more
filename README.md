@@ -97,3 +97,5 @@ npm run test:e2e      # ブラウザーで探索・再開・確定・撤退・�
 SSR上位のXRと専用の「星晶石」を扱う仕組みを追加しました。星晶の祈願は第10章クリア後の解禁を予定し、現在は準備中です。星晶石の入手先とXRキャラクターはまだ追加していません。[仕様](docs/xr-rarity.md)
 
 WAVE後の3択と、探索中の痕跡の組み合わせによる共鳴は [docs/wave-omens.md](docs/wave-omens.md) を参照。
+
+妖精リュミの操作案内は、ホーム・設定・妖精アイコンから見直せます。実装前のウェブ調査と仕様は [docs/fairy-tutorial.md](docs/fairy-tutorial.md) を参照。

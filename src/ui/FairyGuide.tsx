@@ -26,10 +26,10 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
   const restoreFocus = useRef<HTMLElement | null>(null);
   const textId = useId();
   const titleId = useId();
-  const preparation = Boolean(geometry.modal?.querySelector('[data-guide="depart"]'));
+  const preparation = Boolean(geometry.modal?.isConnected && geometry.modal?.querySelector('[data-guide="depart"]'));
   const battle = save.battle;
   const context: FairyTopic | null = preparation ? 'preparation' : battle ? battle.phase === 'ready' ? 'battle' : battle.phase === 'reward' ? content.dungeons.find(d => d.id === battle.dungeonId)?.kind === 'trial' ? 'trial-reward' : 'reward' : battle.phase === 'failed' ? 'failure' : null : Object.hasOwn(fairyLessons, page) ? page as FairyTopic : 'general';
-  const active = !suspended && (!geometry.modal || preparation) && progress.enrolled && !progress.dismissed && context === progress.topic && !progress.seen.includes(context);
+  const active = !suspended && (!geometry.modal?.isConnected || preparation) && progress.enrolled && !progress.dismissed && context === progress.topic && !progress.seen.includes(context);
   const welcome = !suspended && !geometry.modal && !battle && page === 'home' && !progress.enrolled && !progress.dismissed;
   const lesson = fairyLessons[progress.topic][progress.step];
   const key = active ? `${progress.topic}:${progress.step}` : '';
@@ -48,6 +48,8 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
   }, [context]);
 
   useLayoutEffect(() => {
+    // No DOM observation or animation-frame work while help is inactive in combat.
+    if (battle?.phase === 'playing' || ((!progress.enrolled || progress.dismissed) && !(page === 'home' && !progress.dismissed && !battle))) return;
     let frame = 0;
     const measure = () => {
       const modal = [...document.querySelectorAll<HTMLElement>('.modal[aria-modal="true"]')].filter(visible).at(-1) ?? null;
@@ -64,7 +66,7 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
     window.visualViewport?.addEventListener('resize', queue);
     measure();
     return () => { cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener('resize', queue); window.removeEventListener('scroll', queue, true); window.visualViewport?.removeEventListener('resize', queue); };
-  }, [active, lesson.target, page, save.battle?.phase]);
+  }, [active, lesson.target, page, save.battle?.phase, progress.enrolled, progress.dismissed]);
   useLayoutEffect(() => {
     if (!active) return;
     const target = [...document.querySelectorAll<HTMLElement>(`[data-guide="${lesson.target}"]`)].find(visible);
