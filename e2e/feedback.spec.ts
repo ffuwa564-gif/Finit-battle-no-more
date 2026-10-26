@@ -27,6 +27,8 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
   });
   const kinds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-sanctuary', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'dialogue', 'wave', 'defeat', 'victory', 'purchase', 'exchange', 'depart', 'error', 'drop'] as const;
   for (const kind of kinds) {
+    // Isolate long ultimate tails so another cue cannot conceal a silent recipe.
+    if (kind.startsWith('ultimate')) await page.waitForTimeout(1600);
     await page.evaluate(async kind => {
       const audio = await import('/src/platform/audio.ts');
       (window as any).__seStats.peak = 0;
@@ -37,7 +39,7 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
   const stats = await page.evaluate(() => (window as any).__seStats);
   expect(stats.cues).toEqual(expect.arrayContaining(kinds));
   expect(stats.overallPeak).toBeLessThan(.98);
-  await page.evaluate(async () => { const audio = await import('/src/platform/audio.ts'); audio.setAudioVolume(0); (window as any).__seStats.cues = []; audio.playSound('attack'); });
+  await page.evaluate(async () => { const audio = await import('/src/platform/audio.ts'); audio.setAudioVolume(0); (window as any).__seStats.cues = []; audio.playSound('attack'); audio.playSound('ultimate-strike'); audio.playSound('ultimate-magic'); audio.playSound('ultimate-sanctuary'); });
   expect(await page.evaluate(() => (window as any).__seStats.cues)).toEqual([]);
   const mutedPeak = await page.evaluate(async () => {
     await new Promise(resolve => setTimeout(resolve, 200));
