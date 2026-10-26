@@ -38,7 +38,7 @@ export interface ScheduledUltimateVoice {
 }
 export interface CombatSynth {
   scheduleUltimate(kind: UltimateSound, time: number): ScheduledUltimateVoice;
-  play(kind: SoundCue, skill: SkillTemplate | undefined, time: number): boolean;
+  play(kind: SoundCue, skill: SkillTemplate | undefined, time: number, variationKey?: string): boolean;
 }
 
 export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): Promise<CombatSynth> {
@@ -64,7 +64,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     ultimateBuffers.set(kind, buffer);
   }
   const normalBuffers = new Map<string, AudioBuffer>();
-  const variations = new Map<CombatFamily, number>();
+  const variations = new Map<string, number>();
   const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
   const ordinaryBuffer = (family: CombatFamily, variant: number) => {
     const key = `${family}:${variant}`;
@@ -77,9 +77,11 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     return buffer;
   };
   ordinaryBuffer('attack', 0);
-  const playOrdinary = (family: CombatFamily, time: number) => {
-    const variant = variations.get(family) ?? 0;
-    variations.set(family, (variant + 1) % 3);
+  const playOrdinary = (family: CombatFamily, time: number, variationKey?: string) => {
+    const stream = `${family}:${variationKey ?? 'preview'}`;
+    const variant = variations.get(stream) ?? 0;
+    if (!variations.has(stream) && variations.size >= 64) variations.delete(variations.keys().next().value!);
+    variations.set(stream, (variant + 1) % 3);
     const buffer = ordinaryBuffer(family, variant);
     // At most six foreground voices; a catch-up burst replaces the oldest one
     // with a tiny fade rather than growing the graph or queuing delayed attacks.
@@ -132,10 +134,10 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
       },
     };
   };
-  return { scheduleUltimate, play(kind, skill, time) {
+  return { scheduleUltimate, play(kind, skill, time, variationKey) {
     if (isUltimateSound(kind)) { scheduleUltimate(kind, time); return true; }
     const family = combatFamily(kind, skill);
-    if (family) { playOrdinary(family, time); return true; }
+    if (family) { playOrdinary(family, time, variationKey); return true; }
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];
