@@ -3,6 +3,7 @@ import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
+import { ultimateVisualFor } from '../platform/ultimate-choreography';
 import { ULTIMATE_TIMING, UltimateClock } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
@@ -17,6 +18,7 @@ function FallbackImpact({ theme }: { theme: UltimateTheme }) {
 
 function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: { eventId: string; character: CharacterDef; allies: Unit[]; speed: 1 | 2; reducedMotion: boolean }) {
   const special = ultimateFor(character);
+  const visual = ultimateVisualFor(character);
   const supporting = ['bloom', 'aegis', 'dawn'].includes(special.theme);
   const effectHost = useRef<HTMLDivElement>(null);
   const clock = useRef(new UltimateClock());
@@ -43,12 +45,12 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     const host = effectHost.current;
     void import('./ultimate-pixi').then(async ({ createUltimateEffect }) => {
       if (cancelled) return;
-      const cleanup = await createUltimateEffect(host, special.theme, () => clock.current.position(performance.now()), () => { if (!cancelled) setFailed(true); });
+      const cleanup = await createUltimateEffect(host, visual, () => clock.current.position(performance.now()), () => { if (!cancelled) setFailed(true); });
       if (cancelled) cleanup();
       else { dispose = cleanup; setReady(true); }
     }).catch(() => { if (!cancelled) setFailed(true); });
     return () => { cancelled = true; dispose?.(); setReady(false); };
-  }, [allowed, failed, special.theme]);
+  }, [allowed, failed, visual]);
 
   useEffect(() => {
     clock.current.sync(eventId, speed, performance.now());
@@ -62,7 +64,7 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     return () => timers.forEach(clearTimeout);
   }, [eventId, speed]);
 
-  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
       <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
       <div className="ultimate-cinematic__title"><small>ULTIMATE</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>

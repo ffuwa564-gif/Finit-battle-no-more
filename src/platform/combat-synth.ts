@@ -1,7 +1,7 @@
 import type * as Tone from 'tone';
 import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
-import { isUltimateSound, renderUltimateSound, type UltimateSound } from './ultimate-audio';
+import { isUltimateSound, renderUltimateSound, ultimateSounds, type UltimateSound } from './ultimate-audio';
 
 interface CombatScore {
   // Filtered white noise supplies motion, while the membrane supplies the hit.
@@ -44,7 +44,12 @@ const scores: Record<CombatKey, CombatScore> = {
   defeat: { bells: { notes: ['A4', 'F4', 'D4', 'A3'], spacing: 0.12, duration: 0.25 }, aura: { notes: ['D3', 'F3'], duration: 0.5 } },
 };
 
+export interface ScheduledUltimateVoice {
+  hasStarted(): boolean;
+  cancel(stopActive?: boolean): void;
+}
 export interface CombatSynth {
+  scheduleUltimate(kind: UltimateSound, time: number): ScheduledUltimateVoice;
   play(kind: SoundCue, skill: SkillTemplate | undefined, time: number): boolean;
 }
 
@@ -64,7 +69,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   // synth scheduling conflicts and gives ultimates a completely separate timbre.
   const context = tone.getContext().rawContext;
   const ultimateBuffers = new Map<UltimateSound, AudioBuffer>();
-  for (const kind of ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-sanctuary'] as const) {
+  for (const kind of ultimateSounds) {
     const pcm = renderUltimateSound(kind, context.sampleRate);
     const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
     buffer.getChannelData(0).set(pcm);
@@ -83,16 +88,26 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   };
   await room.ready;
 
-  return { play(kind, skill, time) {
-    if (isUltimateSound(kind)) {
-      const source = context.createBufferSource();
-      source.buffer = ultimateBuffers.get(kind)!;
-      // Connect to the same volume/limiter as every SE, with no extra UI sound.
-      tone.connect(source, output);
-      source.onended = () => source.disconnect();
-      source.start(time);
-      return true;
-    }
+  const scheduleUltimate = (kind: UltimateSound, time: number): ScheduledUltimateVoice => {
+    const source = context.createBufferSource(), envelope = context.createGain();
+    source.buffer = ultimateBuffers.get(kind)!;
+    source.connect(envelope); tone.connect(envelope, output);
+    let stopped = false;
+    source.onended = () => { source.disconnect(); envelope.disconnect(); };
+    source.start(time);
+    return {
+      hasStarted: () => context.currentTime >= time,
+      cancel(stopActive = true) {
+        if (stopped || (!stopActive && context.currentTime >= time)) return;
+        stopped = true;
+        const now = context.currentTime;
+        if (now < time) source.stop();
+        else { envelope.gain.setValueAtTime(1,now); envelope.gain.linearRampToValueAtTime(0,now+.012); source.stop(now+.015); }
+      },
+    };
+  };
+  return { scheduleUltimate, play(kind, skill, time) {
+    if (isUltimateSound(kind)) { scheduleUltimate(kind, time); return true; }
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];

@@ -27,7 +27,7 @@
 .ultimate-cinematic[data-phase="effect"],.ultimate-cinematic[data-phase="impact"],.ultimate-cinematic[data-phase="tail"] { background: transparent; }
 .ultimate-cinematic:not([data-phase="intro"]) .ultimate-cinematic__intro { opacity: 0; }
 .ultimate-cinematic:not([data-phase="intro"]) .ultimate-cinematic__effect { opacity: 1; }
-.ultimate-cinematic[data-phase="tail"] { opacity: 0; transition: opacity calc(1000ms * var(--ultimate-rate)) ease-out; }
+.ultimate-cinematic[data-phase="tail"] { opacity: 0; transition: opacity calc(900ms * var(--ultimate-rate)) ease-out; }
 .ultimate-fallback { position: absolute; inset: 10%; width: 80%; height: 80%; fill: none; stroke: var(--ultimate-color); stroke-width: 4; opacity: 0; filter: drop-shadow(0 0 9px var(--ultimate-color)); }
 .ultimate-fallback--blade { stroke-width: 9; }
 .ultimate-cinematic[data-phase="impact"] .ultimate-fallback,.ultimate-cinematic[data-phase="tail"] .ultimate-fallback { animation: ultimate-impact calc(1200ms * var(--ultimate-rate)) both; }
