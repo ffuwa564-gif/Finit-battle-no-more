@@ -17,7 +17,7 @@ function prepared() {
 }
 function replay(save: GameSave) {
   let next = save;
-  for (let i = 0; next.battle?.phase === 'playing' && i < 100; i++) next = applyCommand(next, { type: 'replay' }, content);
+  for (let i = 0; next.battle?.phase === 'playing' && i < 100; i++) next = applyCommand(next, next.battle?.omens?.pending ? { type: 'chooseOmen', choiceId: next.battle.omens.pending[0]! } : { type: 'replay' }, content);
   return next;
 }
 

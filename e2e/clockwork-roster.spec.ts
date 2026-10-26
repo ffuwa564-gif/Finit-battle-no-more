@@ -66,6 +66,7 @@ test('Vespera charges a manual ultimate in real combat and all new allies keep t
   await expect(page.locator('[data-unit="party:nox"] [role="meter"]')).toHaveAttribute('aria-valuenow', '100');
   await expect(page.locator('.party-unit--ultimate-queued')).toHaveCount(0);
   await page.getByRole('button', { name: 'ノクス：必殺技を予約', exact: true }).click();
+  await expect.poll(() => page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!.battle!.units.find(unit => unit.characterId === 'nox')!.ultimateQueued)).toBe(true);
   await page.reload(); await enterGame(page);
   await expect(page.locator('[data-unit="party:nox"]')).toHaveClass(/party-unit--ultimate-queued/);
   await expect(page.locator('.party-strip img[src*="gacha-vespera"]')).toBeVisible();

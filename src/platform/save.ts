@@ -1,3 +1,4 @@
+import { validOmens } from '../domain/omens';
 import { ailments } from '../domain/ailments';
 import { duplicateFamily } from '../domain/events';
 import type { Content, GameSave, GachaResult } from '../domain/types';
@@ -73,6 +74,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (value.battle !== null) {
     const battle = value.battle;
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if (battle.omens !== undefined && !validOmens(battle.omens, battle as unknown as Parameters<typeof validOmens>[1])) throw new Error('痕跡の保存状態が不正です。');
     if (battle.phase !== 'playing' && battle.cursor !== battle.events.length) throw new Error('探索演出の完了状態が不正です。');
   }
 }
@@ -92,6 +94,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (!battle) return;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
   if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
+  if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
