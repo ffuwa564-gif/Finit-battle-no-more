@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 const title = '機巧少女 ― 無慈悲な歯車 ―';
 
-test('single featured maiden animates, shows correct odds and is awarded by the shared introductory guarantee', async ({ page }, testInfo) => {
+test('featured maiden pair keeps Nox animation, shows correct odds and is awarded by the shared introductory guarantee', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#gacha'); await enterGame(page);
   await page.evaluate(async () => {
@@ -14,8 +14,8 @@ test('single featured maiden animates, shows correct odds and is awarded by the 
   await page.reload(); await enterGame(page);
   await page.getByRole('button', { name: title, exact: true }).click();
   const showcase = page.getByRole('region', { name: title, exact: true });
-  await expect(showcase.locator('.goddess-feature')).toHaveCount(1);
-  await expect(showcase).toContainText('1.5%');
+  await expect(showcase.locator('.goddess-feature')).toHaveCount(2);
+  await expect(showcase).toContainText('0.75%');
   const video = showcase.locator('video');
   await video.scrollIntoViewIfNeeded();
   await expect(video).toHaveAttribute('src', /gacha-nox.mp4/);

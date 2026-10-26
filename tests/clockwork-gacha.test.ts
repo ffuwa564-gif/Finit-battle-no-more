@@ -5,13 +5,13 @@ import { createInitialSave, applyCommand } from '../src/application/game';
 import { assertSaveCompatibility } from '../src/platform/save';
 
 describe('clockwork maiden summons', () => {
-  it('has one exclusive SSR, preserves common pools and does not leak Nox into other collections', () => {
-    expect(clockworkGacha.featuredIds).toEqual(['nox']);
-    expect(clockworkGacha.characterIds).toEqual(['nox']);
-    expect(gachaPoolIds(clockworkGacha)).toEqual(['nox', ...sharedGoddessIds, ...sharedSSRIds]);
-    for (const other of [flowerGacha, initialGacha]) expect(gachaPoolIds(other)).not.toContain('nox');
+  it('has two exclusive SSRs and exclusive R/SR without leaking the clockwork roster into other collections', () => {
+    expect(clockworkGacha.featuredIds).toEqual(['nox', 'vespera']);
+    expect(clockworkGacha.characterIds).toEqual(['nox', 'vespera', 'miette', 'tikka']);
+    expect(gachaPoolIds(clockworkGacha)).toEqual(['nox', 'vespera', 'miette', 'tikka', ...sharedGoddessIds, ...sharedSSRIds]);
+    for (const other of [flowerGacha, initialGacha]) for (const id of clockworkGacha.characterIds) expect(gachaPoolIds(other)).not.toContain(id);
     const pool = content.characters.filter(char => gachaPoolIds(clockworkGacha).includes(char.id));
-    expect(gachaBaseChance(pool.find(char => char.id === 'nox')!, clockworkGacha, pool)).toBe(1.5);
+    expect(gachaBaseChance(pool.find(char => char.id === 'nox')!, clockworkGacha, pool)).toBe(.75);
     expect(pool.reduce((sum, char) => sum + gachaBaseChance(char, clockworkGacha, pool), 0)).toBeCloseTo(100, 8);
   });
   it('gives Nox on introductory and hard guarantees and refunds duplicates without duplicating ownership', () => {
@@ -28,6 +28,20 @@ describe('clockwork maiden summons', () => {
       const selected = applyCommand(duplicate, { type: 'settings', settings: { homeCharacterId: 'nox' } }, content);
       assertSaveCompatibility(JSON.parse(JSON.stringify(selected)), content);
     }
+  });
+  it('awards Vespera through the shared guarantee, and draws all new characters through ordinary summons', () => {
+    const guaranteed = createInitialSave(content, 42); guaranteed.stones = 5; guaranteed.drawCount = 1; guaranteed.ssrPity = 1;
+    const next = applyCommand(guaranteed, { type: 'draw', collectionId: clockworkGacha.id }, content);
+    expect(next.lastGachaResult!.characterId).toBe('vespera');
+    expect(next.ssrPity).toBe(0);
+    const acquired = new Set<string>();
+    for (let i = 1; i <= 800; i++) {
+      const save = createInitialSave(content, Math.imul(i, 2654435761) >>> 0); save.stones = 5; save.drawCount = 100;
+      const result = applyCommand(save, { type: 'draw', collectionId: clockworkGacha.id }, content);
+      acquired.add(result.lastGachaResult!.characterId);
+      assertSaveCompatibility(JSON.parse(JSON.stringify(result)), content);
+    }
+    expect([...acquired]).toEqual(expect.arrayContaining(['nox', 'vespera', 'miette', 'tikka']));
   });
   it('shares introductory guarantee consumption when changing collections', () => {
     let save = createInitialSave(content); save.stones = 20; save.drawCount = 1;

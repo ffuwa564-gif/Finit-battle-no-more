@@ -10,5 +10,5 @@ export function hpChanges(before: Unit[], after: Unit[]): HpChange[] {
   });
 }
 export function eventHpChanges(event: BattleEvent, before: Unit[]): HpChange[] {
-  return event.unitsAfter && ['attack', 'area', 'heal'].includes(event.kind) ? hpChanges(before, event.unitsAfter) : [];
+  return event.unitsAfter && ['attack', 'area', 'heal', 'buff'].includes(event.kind) ? hpChanges(before, event.unitsAfter) : [];
 }

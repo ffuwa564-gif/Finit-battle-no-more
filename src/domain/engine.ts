@@ -1,4 +1,4 @@
-import { gainUltimate, ultimateFor, ultimateReady } from './ultimates';
+import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
 import { offerOmens } from './omens';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
@@ -224,6 +224,9 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
   const skills = skillList(actor, content, battle.round);
   const get = (template: SkillTemplate) => skills.find((skill) => skill.template === template);
+  const recycling = get('barrier_mend');
+  const salvage = allies.filter(unit => unit.hp <= unit.maxHp * .75 && (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort(lowerHP)[0];
+  if (recycling && salvage && !(get('heal') && allies.some(unit => unit.hp <= unit.maxHp * .3))) return { skill: recycling, template: 'barrier_mend', targets: [salvage] };
   if (role === 'healer') {
     const target = [...allies].sort(lowerHP)[0];
     const threshold = strategy === 'aggressive' ? 0.3 : strategy === 'survival' ? 0.8 : 0.6;
@@ -258,6 +261,9 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   if (rally && allies.length >= 2 && allies.some(unit => (unit.buffUntil ?? -1) < battle.round || (unit.buffStrength ?? 10) < rally.strength)) {
     return { skill: rally, template: 'rally', targets: allies };
   }
+  const overclock = get('overclock');
+  const battery = allies.filter(unit => unit.side === 'party' && unit.uid !== actor.uid && ultimateCharge(unit) <= 65 && !unit.ultimateQueued).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
+  if (overclock && battery && actor.hp > actor.maxHp * .2) return { skill: overclock, template: 'overclock', targets: [battery] };
   if (role === 'supporter') {
     const target = allies.filter((unit) => (unit.buffUntil ?? -1) < battle.round).sort((a, b) => b.attack - a.attack || byId(a, b))[0];
     const skill = get('buff');
@@ -273,6 +279,9 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const control = skills.find(skill => isAilment(skill.template));
   const susceptible = enemies.filter(unit => !hasAilment(unit) && (unit.statusWardUntil ?? -1) < battle.round).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
   if (control && susceptible) return { skill: control, template: control.template, targets: [susceptible] };
+  const jam = get('jam');
+  const readyCaster = enemies.filter(unit => skillList(unit, content, battle.round).length > 0).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
+  if (jam && readyCaster) return { skill: jam, template: 'jam', targets: [readyCaster] };
   if (role === 'debuffer') {
     const target = enemies.filter((unit) => (unit.debuffUntil ?? -1) < battle.round).sort((a, b) => b.hp - a.hp || byId(a, b))[0];
     const skill = get('debuff');
@@ -332,6 +341,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   return { unit: recipient, amount: actual, absorbed, shattered };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
+  overclock: 'buff', barrier_mend: 'heal', jam: 'debuff',
   rally: 'buff', confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
   mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
@@ -430,6 +440,18 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
         }
         targetIds.push(target.uid);
       }
+    } else if (action.template === 'overclock') {
+      actor.hp = Math.max(1, actor.hp - Math.max(1, Math.floor(actor.maxHp * .1)));
+      const target = action.targets[0]!; gainUltimate(target, 35); targetIds.push(target.uid);
+    } else if (action.template === 'barrier_mend') {
+      const target = action.targets[0]!;
+      const consumed = Math.min(target.barrier ?? 0, Math.max(1, Math.floor(target.maxHp * .15)), Math.ceil((target.maxHp - target.hp) / 2));
+      target.barrier = (target.barrier ?? 0) - consumed;
+      amount = Math.min(target.maxHp - target.hp, consumed * 2); target.hp += amount; targetIds.push(target.uid);
+    } else if (action.template === 'jam') {
+      const target = action.targets[0]!;
+      for (const id of character(content, target.characterId).skillIds) target.cooldowns[id] = Math.max(target.cooldowns[id] ?? 0, battle.round + 2);
+      targetIds.push(target.uid);
     } else if (isAilment(action.template)) {
       const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
       const success = (target.statusWardUntil ?? -1) < battle.round && !hasAilment(target) && roll.value * 100 < ailmentChance(target);
