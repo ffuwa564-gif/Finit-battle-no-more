@@ -11,7 +11,7 @@ let voice: ToneTypes.PolySynth | undefined;
 let combat: CombatSynth | undefined;
 let limiter: ToneTypes.Limiter | undefined;
 let lastCueAt = 0;
-const pending: { kind: SoundCue; rarity?: Rarity; skill?: SkillTemplate; at: number }[] = [];
+const pending: { kind: SoundCue; rarity?: Rarity; skill?: SkillTemplate; variationKey?: string; at: number }[] = [];
 let browserContext: AudioContext | undefined;
 let active = false;
 let volume = 1;
@@ -51,7 +51,7 @@ export async function enableAudio(): Promise<void> {
       active = tone.getContext().state === 'running';
       if (active) {
         const queued = pending.splice(0).filter(cue => performance.now() - cue.at < 2000);
-        for (const cue of queued) playSound(cue.kind, cue.rarity, cue.skill);
+        for (const cue of queued) playSound(cue.kind, cue.rarity, cue.skill, cue.variationKey);
       }
     } catch {
       active = false;
@@ -69,10 +69,10 @@ export function setAudioVolume(next: number): void {
 }
 
 /** The sole synth dispatcher. It accepts game events, never character-specific code. */
-export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate): void {
+export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate, variationKey?: string): void {
   if (volume === 0) return;
   if (!active || !voice || !gain || !Tone || Tone.getContext().state !== 'running') {
-    if (enabling) { pending.push({ kind, rarity, skill, at: performance.now() }); if (pending.length > 8) pending.shift(); }
+    if (enabling) { pending.push({ kind, rarity, skill, variationKey, at: performance.now() }); if (pending.length > 8) pending.shift(); }
     return;
   }
   try {
@@ -84,7 +84,7 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
     const notes = (sequence: string[], spacing = 0.07, duration = 0.19, velocity = 0.5) => {
       sequence.forEach((note, index) => voice?.triggerAttackRelease(note, duration, now + index * spacing, velocity));
     };
-    if (!combat?.play(kind, skill, now)) switch (kind) {
+    if (!combat?.play(kind, skill, now, variationKey)) switch (kind) {
       case 'ultimate-strike': notes(['D2', 'A3', 'D4'], .04, .25, .6); break;
       case 'ultimate-magic': notes(['C2', 'D4', 'F4', 'A4'], .07, .35, .55); break;
       case 'ultimate-sanctuary': notes(['F4', 'A4', 'C5', 'F5', 'A5'], .1, .4, .45); break;
@@ -115,7 +115,7 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
       case 'attack': notes(['A3', 'D3'], 0.025, 0.075, 0.38); break;
       default: notes(['D5'], 0, 0.07, 0.2);
     }
-    window.dispatchEvent(new CustomEvent('game:se', { detail: { kind, rarity, skill } }));
+    window.dispatchEvent(new CustomEvent('game:se', { detail: { kind, rarity, skill, variationKey } }));
   } catch {
     // Concurrent browser suspension/rapid catch-up may reject synth scheduling.
     // Saved game results and replay cursors must still progress normally.

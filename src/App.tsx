@@ -154,7 +154,7 @@ export default function App() {
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
-      playSound(event.ultimate ? 'ultimate' : battleSounds[event.kind], event.rarity, event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template);
+      playSound(event.ultimate ? 'ultimate' : battleSounds[event.kind], event.rarity, event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template, event.ultimate ? undefined : event.actorId);
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};

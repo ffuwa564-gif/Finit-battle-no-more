@@ -7,7 +7,7 @@ async function prepare(page:Page){
     (window as any).__ordinaryVoices=[];
     const start=AudioBufferSourceNode.prototype.start,stop=AudioBufferSourceNode.prototype.stop;
     AudioBufferSourceNode.prototype.start=function(...args:any[]){
-      if(this.buffer&&!this.loop&&this.buffer.duration>.25&&this.buffer.duration<.8){
+      if(this.buffer&&!this.loop&&this.buffer.duration>.25&&this.buffer.duration<.9){
         if(!ids.has(this.buffer))ids.set(this.buffer,++next);
         const record={buffer:ids.get(this.buffer),duration:this.buffer.duration,lead:(args[0]-this.context.currentTime)*1000,stopped:false,ended:false};
         (this as any).__ordinary=record;(window as any).__ordinaryVoices.push(record);
@@ -33,7 +33,7 @@ test('ordinary strikes use immediate native audio, cycle cached variations and r
   expect(result[0].buffer).toBe(result[3].buffer);
   expect(new Set(result.slice(0,3).map((voice:any)=>voice.buffer)).size).toBe(3);
   for(const voice of result){expect(voice.lead).toBeGreaterThan(-20);expect(voice.lead).toBeLessThan(25);}
-  expect(result[0].duration).toBeCloseTo(.38,2);expect(result[4].duration).toBeCloseTo(.34,2);
+  expect(result[0].duration).toBeCloseTo(.64,2);expect(result[4].duration).toBeCloseTo(.52,2);
 });
 
 test('rapid catch-up replaces old voices and leaves no unbounded ordinary tails',async({page})=>{
@@ -45,4 +45,18 @@ test('rapid catch-up replaces old voices and leaves no unbounded ordinary tails'
   expect(result.filter((voice:any)=>!voice.stopped&&!voice.ended).length).toBeLessThanOrEqual(6);
   await expect.poll(()=>page.evaluate(()=>(window as any).__ordinaryVoices.every((voice:any)=>voice.ended))).toBe(true);
   expect(errors).toEqual([]);
+});
+
+test('each combatant advances her own material variations independently',async({page})=>{
+  await prepare(page);
+  const voices=await page.evaluate(async()=>{
+    const audio=await import('/src/platform/audio.ts');
+    for(const actor of ['party:seris','enemy:wolf','party:seris','enemy:wolf','party:seris'])audio.playSound('attack',undefined,undefined,actor);
+    return (window as any).__ordinaryVoices;
+  });
+  expect(voices).toHaveLength(5);
+  expect(voices[0].buffer).toBe(voices[1].buffer);
+  expect(voices[2].buffer).toBe(voices[3].buffer);
+  expect(new Set([voices[0].buffer,voices[2].buffer,voices[4].buffer]).size).toBe(3);
+  expect(new Set([voices[0].duration,voices[2].duration,voices[4].duration]).size).toBe(3);
 });
