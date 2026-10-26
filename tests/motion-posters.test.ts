@@ -1,3 +1,4 @@
+import ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { spawnSync } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
@@ -28,7 +29,7 @@ describe('actual motion poster files', () => {
   const assets = withMotionPosters(videos);
   const poster = join(root, 'art/motion-posters/red.png');
   function ffmpeg(args: string[]): Buffer {
-    const result = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', ...args]);
+    const result = spawnSync(ffmpegInstaller.path, ['-y', '-loglevel', 'error', ...args]);
     if (result.error) throw result.error;
     if (result.status !== 0) throw new Error(result.stderr.toString());
     return result.stdout;
@@ -45,6 +46,17 @@ describe('actual motion poster files', () => {
     expect(checkMotionPosters(assets, root)).toEqual(['red: poster differs from first video frame; run npm run export:motion-posters']);
     exportMotionPosters(assets, root);
     expect(checkMotionPosters(assets, root)).toEqual([]);
+  }, 30000);
+  it('validates and exports real media with no system FFmpeg tools on PATH', () => {
+    const previousPath = process.env.PATH;
+    try {
+      process.env.PATH = '';
+      exportMotionPosters(assets, root);
+      expect(checkMotionPosters(assets, root)).toEqual([]);
+    } finally {
+      if (previousPath === undefined) delete process.env.PATH;
+      else process.env.PATH = previousPath;
+    }
   }, 30000);
   it('checks real dimensions even when registry entries claim to match', () => {
     exportMotionPosters(assets, root);

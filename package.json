@@ -33,6 +33,8 @@
     "tone": "^15.1.22"
   },
   "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "1.1.0",
+    "@ffprobe-installer/ffprobe": "2.1.2",
     "@playwright/test": "^1.56.0",
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.0",
