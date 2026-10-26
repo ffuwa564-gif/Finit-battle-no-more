@@ -93,3 +93,44 @@ test('old profiles receive no forced OP and English reduced-motion reading fits 
   await page.getByRole('button', { name: 'Keep Reading', exact: true }).click();
   await expect(story).toBeVisible();
 });
+
+for (const language of ['ja','en'] as const) {
+  test(`rebuilt opening and all garden returns can be read to the end in ${language} without changing rewards`, async ({page},info) => {
+    await page.setViewportSize({width:language==='en'?320:390,height:740});
+    await begin(page);await skipStory(page);
+    const scenes=await page.evaluate(async language=>{
+      const {content}=await import('/src/content/index.ts');
+      const {loadSave,persistSave}=await import('/src/platform/save.ts');
+      const save=(await loadSave())!,revision=save.revision;
+      save.completedDungeonIds=content.chapters!.flatMap(chapter=>chapter.dungeonIds);
+      save.settings.reducedMotion=true;save.revision++;
+      await persistSave(save,revision);localStorage.setItem('stillveil-language',language);
+      return content.novels!.map(scene=>({id:scene.id,pages:scene.pages.length}));
+    },language);
+    await page.reload();
+    await page.getByRole('button',{name:language==='en'?'Tap to Begin':'タップしてはじめる',exact:true}).click();
+    await page.goto('/#settings');
+    const before=await saved(page);
+    for(const [index,scene] of scenes.entries()) {
+      await page.locator('.novel-library__list button').nth(index).click();
+      const story=page.locator('.visual-novel');
+      await expect(story).toHaveAttribute('data-scene',scene.id);
+      for(let position=0;position<scene.pages;position++){
+        await expect(story).toHaveAttribute('data-page',String(position));
+        if(language==='en')expect(await story.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
+        if(position+1<scene.pages)await story.getByRole('button',{name:language==='en'?'Next Line':'次の台詞',exact:true}).click();
+      }
+      if(index===scenes.length-1){
+        await expect(story).toContainText(language==='en'?'Even so, I knocked.':'それでも、私は扉を叩いた。');
+        await page.screenshot({path:info.outputPath(`chosen-door-${language}.png`)});
+      }
+      await story.getByRole('button',{name:language==='en'?'Close Story':'物語を閉じる',exact:true}).click();
+      await expect(story).toHaveCount(0);
+    }
+    const after=await saved(page);
+    expect(after.gold).toBe(before.gold);expect(after.stones).toBe(before.stones);
+    expect(after.materials).toEqual(before.materials);expect(after.completedDungeonIds).toEqual(before.completedDungeonIds);
+    expect(after.novels!.seen).toEqual(expect.arrayContaining(scenes.map(scene=>scene.id)));
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
+  });
+}
