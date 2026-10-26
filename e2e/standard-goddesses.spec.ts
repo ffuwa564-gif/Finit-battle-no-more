@@ -14,7 +14,7 @@ test('both collections show the same base forms, correct chances, and linked cos
   await expect(dialog.locator('.goddess-form')).toHaveCount(2); await expect(dialog).toContainText('通常の姿と特別な装いは別々に迎えられます。');
   await expect(dialog.locator('video')).toHaveCount(0);
   await dialog.getByRole('button', { name: 'セレネ／月白の振袖の姿を見る', exact: true }).click();
-  await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene.webp$/);
+  await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /motion-posters\/gacha-selene-motion.png$/);
   await dialog.getByRole('button', { name: 'セレネ／月明かりの導き手の姿を見る', exact: true }).click();
   await expect(dialog.locator('.detail-art img')).toHaveAttribute('src', /gacha-selene-standard.webp$/);
   await dialog.getByRole('button', { name: '閉じる', exact: true }).click();

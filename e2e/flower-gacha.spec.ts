@@ -14,14 +14,14 @@ test('flower collection has six original kimono goddesses, readable skills and E
  await expect(page.locator('.gacha-exclusive-pool > .character-card')).toHaveCount(10);
  await expect(page.getByRole('button',{name:'アメノウズメ',exact:true})).toBeVisible();
  await page.getByRole('button',{name:title,exact:true}).click();
- for(const [name,skill] of [['セレネ','三日月の袖守り'],['アテナ','知恵の一閃'],['フローラ','花風の浄め'],['イリス','晴れ渡る空'],['エオス','朝霞の袖守り'],['ニケ','追い風の一閃']]){
+ for(const [name,skill] of [['セレネ','三日月の袖守り'],['アテナ','軍神の号令'],['フローラ','花風の浄め'],['イリス','晴れ渡る空'],['エオス','朝霞の袖守り'],['ニケ','追い風の一閃']]){
   const button=page.getByRole('button',{name:name==='セレネ'||name==='アテナ'?`SSR ${name}の詳細`:name,exact:true});
   await button.click();const dialog=page.getByRole('dialog');await expect(dialog).toContainText(skill);
   await expect(dialog).toContainText('花宴への客人');
-  const art={ 'セレネ':'gacha-selene.webp','アテナ':'gacha-athena-anime.webp','フローラ':'gacha-flora-anime.webp','イリス':'gacha-rainbow-iris-anime.webp','エオス':'gacha-eos-anime.webp','ニケ':'gacha-nike-anime.webp' }[name];
+  const art={ 'セレネ':'motion-posters/gacha-selene-motion.png','アテナ':'motion-posters/gacha-athena-motion.png','フローラ':'gacha-flora-anime.webp','イリス':'gacha-rainbow-iris-anime.webp','エオス':'gacha-eos-anime.webp','ニケ':'gacha-nike-anime.webp' }[name];
   await expect(dialog.locator('.character-artwork img')).toHaveAttribute('src',new RegExp(art!));
-  await expect.poll(()=>dialog.locator('.character-artwork img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(1024);
   const animated=name==='セレネ'||name==='アテナ';
+  await expect.poll(()=>dialog.locator('.character-artwork img').evaluate((img:HTMLImageElement)=>img.naturalWidth)).toBe(animated?720:1024);
   if(animated){
    await expect.poll(()=>dialog.locator('video').evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
    await expect(dialog.locator('video')).toHaveJSProperty('muted',true);
@@ -65,8 +65,18 @@ test('both exclusive R goddesses can be summoned, saved and placed in the party'
  await page.setViewportSize({width:390,height:844});await page.goto('/#gacha');await enterGame(page);
  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.stones=15;save.seed=42;save.drawCount=10;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);});
  await page.reload();await enterGame(page);
- for(const [seed,name] of [[8,'エオス'],[10,'ニケ']] as const){
-  await page.evaluate(async(seed)=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!;const rev=save.revision;save.seed=seed;save.revision++;await persistSave(save,rev);},seed);
+ for(const [id,name] of [['eos','エオス'],['nike','ニケ']] as const){
+  // Find a real draw for the current pool instead of pinning seeds from an older roster.
+  await page.evaluate(async id=>{
+   const {loadSave,persistSave}=await import('/src/platform/save.ts');
+   const {content}=await import('/src/content/index.ts');
+   const {applyCommand}=await import('/src/application/game.ts');
+   const save=(await loadSave())!,rev=save.revision;
+   let selected=0;
+   for(let seed=1;seed<=10000;seed++)if(applyCommand({...save,seed},{type:'draw',collectionId:'wa-flower-banquet'},content).lastGachaResult?.characterId===id){selected=seed;break;}
+   if(!selected)throw new Error(`No fixture seed found for ${id}`);
+   save.seed=selected;save.revision++;await persistSave(save,rev);
+  },id);
   await page.reload();await enterGame(page);
   await page.getByRole('button',{name:'石5個で祈願する',exact:true}).click();
   const result=page.getByRole('dialog');await expect(result.getByRole('heading',{level:2})).toHaveText(name);
