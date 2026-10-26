@@ -48,16 +48,30 @@ describe('saved visual novel stories', () => {
     expect(() => applyCommand(finished, { type: 'claim' }, content)).toThrow();
     const repeat = won(stageId, [stageId]); expect(applyCommand(repeat, { type: 'claim' }, content).novels!.active).toBeUndefined();
   });
-  it('locks unreached chapter archives and preserves the existing chapter prose', () => {
+  it('locks unreached chapter archives and includes the stage outcome before the garden return', () => {
     const scene = content.novels!.find(scene => scene.id === 'chapter-2-epilogue')!;
     expect(novelAvailable(scene, close())).toBe(false);
     expect(() => applyCommand(close(), { type: 'novelStart', sceneId: scene.id }, content)).toThrow('まだ');
     if (scene.trigger.kind !== 'dungeon-clear') throw Error('fixture');
     const stageId = scene.trigger.dungeonId;
     const stage = content.dungeons.find(stage => stage.id === stageId)!
-    expect(scene.pages.at(-1)!.text).toBe(stage.narrative!.after);
+    expect(scene.pages[1]!.text).toBe(stage.narrative!.after);
+    expect(scene.pages.length).toBeGreaterThan(2);
     const save = close(); save.completedDungeonIds.push(stage.id);
     assertSaveCompatibility(applyCommand(save, { type: 'novelStart', sceneId: scene.id }, content), content);
+  });
+  it('resumes pre-rebuild final pages and reaches appended scenes without replaying rewards', () => {
+    for (const sceneId of ['opening-desire-gate','chapter-1-epilogue','chapter-2-epilogue','chapter-3-epilogue']) {
+      const save = close();
+      save.completedDungeonIds = content.chapters!.flatMap(chapter => chapter.dungeonIds);
+      const oldFinal = sceneId === 'opening-desire-gate' ? 14 : 1;
+      save.novels = { seen: [], active: { sceneId, page: oldFinal } };
+      assertSaveCompatibility(save, content);
+      const next = applyCommand(save, { type: 'novelNext' }, content);
+      expect(next.novels!.active).toEqual({ sceneId, page: oldFinal + 1 });
+      expect(next.gold).toBe(save.gold); expect(next.stones).toBe(save.stones);
+      expect(next.materials).toEqual(save.materials); expect(next.completedDungeonIds).toEqual(save.completedDungeonIds);
+    }
   });
   it('rejects malformed saved positions, simultaneous combat and unknown content references', () => {
     const save = start();
