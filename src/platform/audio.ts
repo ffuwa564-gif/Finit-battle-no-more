@@ -1,7 +1,8 @@
 import type * as ToneTypes from 'tone';
+import { isUltimateSound, type UltimateSound } from './ultimate-audio';
 import type { SoundCue } from './sound-cues';
 import type { Rarity, SkillTemplate } from '../domain/types';
-import { createCombatSynth, type CombatSynth } from './combat-synth';
+import { createCombatSynth, type CombatSynth, type ScheduledUltimateVoice } from './combat-synth';
 
 let Tone: typeof import('tone') | undefined;
 let gain: ToneTypes.Gain | undefined;
@@ -67,8 +68,10 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
     return;
   }
   try {
-    const now = Math.max(Tone.now() + 0.015, lastCueAt + 0.045);
-    lastCueAt = now;
+    // Ordinary synths keep their scheduling lookahead. Buffered ultimates use
+    // the native clock, so immediate previews do not inherit the extra 115 ms.
+    const now = isUltimateSound(kind) ? Tone.immediate() + .005 : Math.max(Tone.now() + .015, lastCueAt + .045);
+    if (!isUltimateSound(kind)) lastCueAt = now;
     const notes = (sequence: string[], spacing = 0.07, duration = 0.19, velocity = 0.5) => {
       sequence.forEach((note, index) => voice?.triggerAttackRelease(note, duration, now + index * spacing, velocity));
     };
@@ -108,4 +111,23 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
     // Concurrent browser suspension/rapid catch-up may reject synth scheduling.
     // Saved game results and replay cursors must still progress normally.
   }
+}
+
+/** Reserve the native voice at the visual impact deadline, before the frame arrives. */
+export function scheduleUltimateSound(kind: UltimateSound, delayMs: number): ScheduledUltimateVoice | undefined {
+  if (!active || !combat || !Tone || Tone.getContext().state !== 'running') return;
+  try {
+    const delay = Math.max(.005, delayMs / 1000);
+    const voice = combat.scheduleUltimate(kind, Tone.immediate() + delay);
+    const notice = setTimeout(() => {
+      if (volume > 0 && !document.hidden) window.dispatchEvent(new CustomEvent('game:se', { detail: { kind } }));
+    }, delay * 1000);
+    return {
+      hasStarted: voice.hasStarted,
+      cancel(stopActive = true) {
+        if (!voice.hasStarted() || stopActive) clearTimeout(notice);
+        voice.cancel(stopActive);
+      },
+    };
+  } catch { return; }
 }

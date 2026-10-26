@@ -31,7 +31,7 @@ export function CombatFeedback({ event, before, reducedMotion, speed = 1 }: { ev
         return { ...change, ultimate, id: `${id}:${change.unitId}`, x: Math.max(42, Math.min(frame.width - 42, x)), y, named: !bounds };
       });
       setNumbers(old => [...old, ...entries].slice(-16));
-      const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, 850);
+      const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, ultimate ? 1350 : 850);
       timers.current.add(timer);
     };
     const onHp = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[]; ultimate?: boolean }>).detail; show(detail.id, detail.changes, detail.ultimate); };

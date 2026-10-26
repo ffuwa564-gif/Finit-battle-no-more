@@ -1,13 +1,15 @@
+import { ultimateVisualFor } from './platform/ultimate-choreography';
+import { ultimateSoundFor } from './platform/ultimate-audio';
 import { ULTIMATE_TIMING, UltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
 import { Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults } from './ui';
-import { content, validateContent } from './content';
+import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
-import { enableAudio, playSound, setAudioVolume } from './platform/audio';
+import { enableAudio, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
 import { configureBgm, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleSounds, commandSounds } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
@@ -141,7 +143,10 @@ export default function App() {
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   const soundedEvent = useRef<string | null>(null);
   const soundedImpact = useRef<string | null>(null);
+  const heardImpact = useRef<string | null>(null);
   const ultimateClock = useRef(new UltimateClock());
+  const activeUltimateSound = useRef<{ eventId: string; voice: NonNullable<ReturnType<typeof scheduleUltimateSound>> } | undefined>(undefined);
+  useEffect(() => () => activeUltimateSound.current?.voice.cancel(), []);
   useEffect(() => {
     if (!save || !started || battle?.phase !== 'playing') return;
     // Old saves can be paused at the end of a Wave with no remaining event.
@@ -153,10 +158,28 @@ export default function App() {
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};
+    const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
+    const impactCue = actor ? ultimateSoundFor(ultimateVisualFor(characterById(actor.characterId))) : 'ultimate-strike';
+    let scheduled = activeUltimateSound.current?.eventId === event.id ? activeUltimateSound.current.voice : undefined;
+    const reserveSound = () => {
+      if (!event.ultimate || heardImpact.current === event.id || document.hidden) return;
+      const remaining = ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now());
+      // Returning from a hidden tab never plays past impacts in a burst.
+      if (remaining <= 0) { heardImpact.current = event.id; return; }
+      scheduled = scheduleUltimateSound(impactCue, remaining);
+      activeUltimateSound.current = scheduled ? { eventId: event.id, voice: scheduled } : undefined;
+    };
+    const visibility = () => {
+      if (document.hidden) { if (scheduled?.hasStarted()) heardImpact.current = event.id; scheduled?.cancel(); scheduled = undefined; activeUltimateSound.current = undefined; }
+      else reserveSound();
+    };
+    reserveSound();
+    if (event.ultimate) document.addEventListener('visibilitychange', visibility);
     const impactTimer = event.ultimate ? setTimeout(() => {
       if (soundedImpact.current === event.id) return;
       soundedImpact.current = event.id;
-      playSound(event.kind === 'attack' ? 'ultimate-strike' : event.kind === 'area' ? 'ultimate-magic' : 'ultimate-sanctuary');
+      if (!scheduled && heardImpact.current !== event.id && !document.hidden) playSound(impactCue);
+      heardImpact.current = event.id;
       cleanupImpact = animateEvent(event, save.settings.reducedMotion);
     }, ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now())) : undefined;
     const duration = event.ultimate ? ultimateClock.current.delay(ULTIMATE_TIMING.end, performance.now()) : battleEventDuration(event, save.settings.speed);
@@ -166,7 +189,16 @@ export default function App() {
       void command({ type: 'replay' }, event.id);
     };
     timer = setTimeout(complete, duration);
-    return () => { clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact(); };
+    return () => {
+      clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact();
+      document.removeEventListener('visibilitychange', visibility);
+      if (scheduled?.hasStarted()) heardImpact.current = event.id;
+      const current = state.current?.battle;
+      // Speed/settings changes keep an already sounding tail; NEXT/event changes stop it.
+      const changed = current?.events[current.cursor]?.id !== event.id;
+      scheduled?.cancel(changed);
+      if (changed || !scheduled?.hasStarted()) activeUltimateSound.current = undefined;
+    };
   }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>{tr("データを守るため、停止しました。")}</h1><p role="alert">{localize(fatal)}</p><p className="subtle">{tr("セーブの初期化や上書きは行っていません。")}</p><Button variant="primary" onClick={() => location.reload()}>{tr("再読み込み")}</Button></Panel></div>;

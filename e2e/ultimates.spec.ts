@@ -26,6 +26,19 @@ async function prepare(page: Page, reducedMotion = false) {
 
 test('tap ready frames to queue or cancel, retain choices, and unleash the selected characters with cut-ins', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.addInitScript(() => {
+    (window as any).__nativeUltimates=[];
+    const start=AudioBufferSourceNode.prototype.start,stop=AudioBufferSourceNode.prototype.stop;
+    AudioBufferSourceNode.prototype.start=function(...args:any[]) {
+      if(this.buffer && Math.abs(this.buffer.duration-1.05)<.001 && !this.loop) {
+        const lead=(args[0]-this.context.currentTime)*1000;
+        const record={due:performance.now()+lead,lead,stopped:false};
+        (window as any).__nativeUltimates.push(record);(this as any).__ultimateRecord=record;
+      }
+      return start.apply(this,args as any);
+    };
+    AudioBufferSourceNode.prototype.stop=function(...args:any[]) {if((this as any).__ultimateRecord)(this as any).__ultimateRecord.stopped=true;return stop.apply(this,args as any);};
+  });
   const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
   await prepare(page);
   await expect(page.locator('.party-unit--ultimate-ready')).toHaveCount(4);
@@ -68,6 +81,12 @@ test('tap ready frames to queue or cancel, retain choices, and unleash the selec
   await expect(page.locator('.combat-number--ultimate')).not.toHaveCount(0);
   const hits = await page.evaluate(() => (window as any).__impactEvents);
   expect(hits.filter((hit: any) => hit.kind === 'ultimate-strike')).toHaveLength(1);
+  const reserved=await page.evaluate(()=>(window as any).__nativeUltimates);
+  const sounding=reserved.filter((voice:any)=>!voice.stopped);
+  expect(sounding).toHaveLength(1);
+  expect(reserved[0].lead).toBeGreaterThan(500);
+  expect(Math.abs(sounding[0].due-hits.find((hit:any)=>hit.kind==='numbers').at)).toBeLessThan(60);
+  expect(reserved.some((voice:any)=>voice.stopped)).toBe(true);
   expect(Math.abs(hits.find((hit: any) => hit.kind === 'numbers').at - hits.find((hit: any) => hit.kind === 'ultimate-strike').at)).toBeLessThan(150);
   expect(await cutIn.evaluate(element => getComputedStyle(element).mixBlendMode)).toBe('normal');
   await page.waitForTimeout(200);

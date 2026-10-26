@@ -88,7 +88,7 @@ describe('player-selected character ultimates', () => {
     const after = event.unitsAfter!.find(unit => unit.uid === 'party:seris')!;
     expect(after.ultimateCharge).toBe(0); expect(after.ultimateQueued).toBeUndefined(); expect(after.cooldowns).toEqual({});
     expect(ally(save, 'seris').ultimateCharge).toBe(100);
-    expect(battleEventDuration(event, 1)).toBe(3600); expect(battleEventDuration(event, 2)).toBe(2880);
+    expect(battleEventDuration(event, 1)).toBe(3200); expect(battleEventDuration(event, 2)).toBe(2560);
   });
   it('does not spend a reserved ultimate when sleep or charm controls the action', () => {
     for (const ailment of ['sleep', 'charm'] as const) {

@@ -1,54 +1,91 @@
-/** Original procedural sound design. No bell melody, media download or random runtime voices. */
-export type UltimateSound = 'ultimate' | 'ultimate-strike' | 'ultimate-magic' | 'ultimate-sanctuary';
-export const isUltimateSound = (kind: string): kind is UltimateSound => kind === 'ultimate' || kind === 'ultimate-strike' || kind === 'ultimate-magic' || kind === 'ultimate-sanctuary';
+import type { UltimateVisual } from './ultimate-choreography';
 
+export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism'] as const;
+export type UltimateSound = typeof ultimateSounds[number];
+export const isUltimateSound = (kind: string): kind is UltimateSound => (ultimateSounds as readonly string[]).includes(kind);
+export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism' } as const)[theme];
+
+/** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
-  const charge = kind === 'ultimate', sanctuary = kind === 'ultimate-sanctuary';
-  const duration = charge ? .82 : 2.1;
+  const charge = kind === 'ultimate', heal = kind === 'ultimate-sanctuary';
+  const duration = charge ? .68 : heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : 1.5;
   const samples = new Float32Array(Math.ceil(duration * sampleRate));
-  let seed = 0x51a71, low = 0, slow = 0, phase = 0, lastNoise = 0;
-  const bursts = kind === 'ultimate-magic' ? [0, .055, .13, .23, .34] : sanctuary ? [0, .11, .24] : [0, .045, .12, .205];
+  const pole = (hz: number) => 1 - Math.exp(-2 * Math.PI * hz / sampleRate);
+  const lowA = pole(170), midA = pole(950), airA = pole(5900), floorA = pole(580);
+  let seed = 0x51a71 + ultimateSounds.indexOf(kind) * 7919, low = 0, mid = 0, air = 0, floor = 0, phase = 0;
   for (let i = 0; i < samples.length; i++) {
     const t = i / sampleRate;
     seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5;
     const noise = (seed >>> 0) / 0x80000000 - 1;
-    low += .075 * (noise - low); slow += .014 * (noise - slow);
+    low += lowA * (noise-low); mid += midA * (noise-mid);
+    air += airA * (noise-air); floor += floorA * (noise-floor);
+    const grain = air-floor, body = mid-low;
+    const attack = (speed: number) => Math.min(1,t*speed);
+    let sound = 0;
     if (charge) {
-      phase += 2 * Math.PI * (240 + 2100 * Math.pow(t / duration, 2)) / sampleRate;
-      const envelope = Math.sin(Math.PI * t / duration) * .26;
-      samples[i] = (Math.sin(phase + 5 * Math.sin(phase * 2.17)) * .42 + (noise - low) * .35) * envelope;
-    } else {
-      let electricity = 0;
-      for (let b = 0; b < bursts.length; b++) {
-        const dt = t - bursts[b];
-        if (dt < 0 || dt > .16) continue;
-        const env = Math.min(1, dt * 1800) * Math.exp(-dt * (sanctuary ? 25 : 37)) / (1 + b * .24);
-        // Swept inharmonic FM, sharp noise cracks and their jagged high-frequency edge.
-        const carrier = 2 * Math.PI * (2200 * dt - 4900 * dt * dt);
-        electricity += env * (.32 * Math.sin(carrier + 8 * Math.sin(carrier * 1.731)) + .7 * (noise - low) + .12 * (noise - lastNoise));
+      phase += 2*Math.PI*(220+1300*(t/duration)**2)/sampleRate;
+      sound = (grain*.7+Math.sin(phase+1.2*Math.sin(phase*1.41))*.2) * Math.sin(Math.PI*t/duration)**2;
+    } else if (kind === 'ultimate-strike') {
+      // Air slicing past, a brief hard edge, then dying steel partials.
+      const whoosh = Math.exp(-t*13)*attack(180);
+      const steel = Math.sin(2*Math.PI*2370*t)*Math.exp(-t*27)+.6*Math.sin(2*Math.PI*3890*t)*Math.exp(-t*35)+.3*Math.sin(2*Math.PI*5270*t)*Math.exp(-t*45);
+      const thud = Math.sin(2*Math.PI*(105*t+2.2*(1-Math.exp(-t*30))))*Math.exp(-t*15);
+      sound = grain*2.5*whoosh + body*1.9*Math.exp(-t*9)+steel*.14*attack(1400)+thud*.3;
+    } else if (kind === 'ultimate-magic') {
+      // Irregular discharges with a dark, substantial midrange thunder body.
+      for (const [offset,strength] of [[0,1],[.038,.65],[.117,.47],[.194,.36],[.307,.2]]) {
+        const age=t-offset;
+        if(age<0 || age>.16) continue;
+        const p=2*Math.PI*(1450*age-3400*age*age);
+        const env=Math.min(1,age*1300)*Math.exp(-age*38)*strength;
+        sound += (grain*1.8+.22*Math.sin(p+5.5*Math.exp(-age*19)*Math.sin(p*1.413)))*env;
       }
-      const boom = Math.sin(2 * Math.PI * (52 * t + 4 * (1 - Math.exp(-25 * t)))) * Math.exp(-t * 5.5);
-      const thunder = (slow * 5 + low * 1.2) * Math.exp(-t * 2.4) * Math.min(1, t * 50);
-      const air = (noise - low) * Math.exp(-t * 7) * .12;
-      const bloom = sanctuary ? Math.sin(2 * Math.PI * 740 * t + Math.sin(2 * Math.PI * 1110 * t)) * Math.exp(-t * 3.5) * .12 : 0;
-      samples[i] = Math.tanh(electricity * 1.8 + boom * .65 + thunder * .65 + air + bloom);
+      sound += (body*2.7+low*1.1)*Math.exp(-t*4.8)*attack(250);
+      sound += .22*(Math.sin(2*Math.PI*230*t)+.45*Math.sin(2*Math.PI*460*t))*Math.exp(-t*10);
+    } else if (kind === 'ultimate-stars') {
+      // Glassy falling stars and a broad airy impact, no electrical crack train.
+      for(const [offset,freq] of [[0,1046],[.065,1568],[.16,2093]]) {
+        const age=t-offset;if(age<0) continue;
+        sound += .19*Math.sin(2*Math.PI*freq*age+1.4*Math.exp(-age*15)*Math.sin(2*Math.PI*freq*2.37*age))*Math.min(1,age*650)*Math.exp(-age*6);
+      }
+      sound += grain*1.4*Math.exp(-t*10)*attack(600)+body*1.8*Math.exp(-t*7);
+    } else if (kind === 'ultimate-mechanism') {
+      for(const offset of [0,.065,.13]) {
+        const age=t-offset;if(age<0)continue;
+        const env=Math.min(1,age*1800)*Math.exp(-age*39);
+        const p=2*Math.PI*(980*age-2400*age*age);
+        sound+=(body*1.8+grain*.7+.24*Math.sin(p+3*Math.sin(p*2.71)))*env;
+      }
+      sound+=.14*Math.sin(2*Math.PI*610*t)*Math.exp(-t*13)*attack(900);
+    } else if (heal) {
+      const env=(1-Math.exp(-t*22))*Math.exp(-t*3.2);
+      sound=(Math.sin(2*Math.PI*396*t)+.6*Math.sin(2*Math.PI*594*t)+.28*Math.sin(2*Math.PI*792*t))*.2*env;
+      sound += grain*.26*env + .07*Math.sin(2*Math.PI*2376*t)*(1-Math.exp(-t*8))*Math.exp(-t*4);
+    } else if (kind === 'ultimate-guard') {
+      const env=attack(1600);
+      sound=(.26*Math.sin(2*Math.PI*220*t)*Math.exp(-t*6)+.16*Math.sin(2*Math.PI*437*t)*Math.exp(-t*9)+.1*Math.sin(2*Math.PI*682*t)*Math.exp(-t*12))*env;
+      sound += body*1.5*Math.exp(-t*20)+grain*.55*Math.exp(-t*45)*env;
+    } else {
+      const env=(1-Math.exp(-t*38))*Math.exp(-t*4.6);
+      phase += 2*Math.PI*(330+110*Math.min(1,t*7))/sampleRate;
+      sound=(Math.sin(phase)+.45*Math.sin(phase*2)+.2*Math.sin(phase*3))*.22*env+body*.7*env;
     }
-    lastNoise = noise;
+    // Keep the transient intact; saturate the body mildly, rather than flattening all layers.
+    samples[i] = Math.tanh(sound*.9);
   }
-  if (!charge) {
-    // Finite multi-tap reflections: no feedback node or late sounds survive indefinitely.
-    const dry = samples.slice();
-    for (const [delay, gain] of [[.095,.27],[.173,.18],[.287,.12],[.431,.075],[.613,.04]]) {
-      const offset = Math.round(delay * sampleRate);
-      for (let i = offset; i < samples.length; i++) samples[i] += dry[i - offset] * gain;
+  if(!charge) {
+    const dry=samples.slice(), wet=heal ? .32 : kind==='ultimate-strike' ? .1 : .2;
+    for(const [delay,strength] of [[.071,1],[.139,.65],[.233,.4],[.379,.2]]) {
+      const offset=Math.round(delay*sampleRate);
+      for(let i=offset;i<samples.length;i++)samples[i]+=dry[i-offset]*wet*strength;
     }
   }
-  let peak = 0;
-  for (const sample of samples) peak = Math.max(peak, Math.abs(sample));
-  const gain = (charge ? .24 : .88) / Math.max(peak, .001);
-  for (let i = 0; i < samples.length; i++) {
-    const edge = Math.min(1, i / (sampleRate * .001), (samples.length - 1 - i) / (sampleRate * .09));
-    samples[i] *= gain * edge;
+  let peak=0;
+  for(const sample of samples)peak=Math.max(peak,Math.abs(sample));
+  const gain=(charge ? .23 : heal ? .62 : .83)/Math.max(peak,.001);
+  for(let i=0;i<samples.length;i++) {
+    const edge=Math.min(1,i/(sampleRate*.001),(samples.length-1-i)/(sampleRate*.08));
+    samples[i]*=gain*edge;
   }
   return samples;
 }

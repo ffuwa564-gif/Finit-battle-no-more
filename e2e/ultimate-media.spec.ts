@@ -8,6 +8,11 @@ async function prepare(page: Page, caster = 'seris') {
     const { createBattle, advanceReplay } = await import('/src/domain/engine.ts');
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const previous = (await loadSave())!, save = structuredClone(previous);
+    if(!save.partyIds.includes(id)) {
+      save.ownedIds=[...new Set([...save.ownedIds,id])];
+      const removed=save.partyIds[0];save.partyIds[0]=id;
+      if(save.leaderId===removed)save.leaderId=id;
+    }
     let battle = createBattle(content, save.partyIds, save.leaderId, 'silent-cathedral', 0, 42, 'ultimate-media');
     while (battle.phase === 'playing') battle = advanceReplay(battle, content);
     for (const unit of battle.units) {
@@ -22,17 +27,17 @@ async function prepare(page: Page, caster = 'seris') {
   await expect(page.locator('.ultimate-cinematic')).toBeVisible();
 }
 
-for (const [caster, clip, theme] of [['noelle','arcane','stars'],['elaine','sanctuary','bloom']]) {
+for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane','stars'],['kuzuha','thunder','eclipse'],['elaine','sanctuary','bloom'],['liora','shield','aegis'],['iris','rally','dawn'],['nox','bits','clockwork']]) {
   test(`${clip} renders a transparent Pixi effect over the battlefield`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await prepare(page, caster);
     const effect = page.locator('.ultimate-cinematic');
-    await expect(effect).toHaveClass(new RegExp(`ultimate-cinematic--${theme}`));
+    await expect(effect).toHaveAttribute('data-visual',theme);
     await expect(effect.locator('video')).toHaveCount(0);
     await expect(effect).toHaveAttribute('data-fx-state', 'pixi');
     await expect(effect.locator('canvas')).toBeVisible();
     await expect(effect).toHaveAttribute('data-phase', 'impact');
-    if (clip === 'sanctuary') await expect(effect.locator('.ultimate-recipients .ultimate-recipient__art')).toHaveCount(4);
+    if (['sanctuary','shield','rally'].includes(clip)) await expect(effect.locator('.ultimate-recipients .ultimate-recipient__art')).toHaveCount(4);
     await expect(effect.locator('.ultimate-cinematic__finish')).toHaveCount(0);
     await expect(effect.locator('.ultimate-cinematic__intro')).toHaveCSS('opacity', '0');
     await page.waitForTimeout(220);
@@ -44,7 +49,7 @@ for (const [caster, clip, theme] of [['noelle','arcane','stars'],['elaine','sanc
     expect(opacity).toBeGreaterThan(0);
     expect(opacity).toBeLessThan(.95);
     // Healing recipients fade together with their halo, without disappearing first.
-    if (clip === 'sanctuary') await expect(effect.locator('.ultimate-recipients')).toHaveCSS('opacity', '1');
+    if (['sanctuary','shield','rally'].includes(clip)) await expect(effect.locator('.ultimate-recipients')).toHaveCSS('opacity', '1');
   });
 }
 
@@ -110,4 +115,34 @@ test('losing the live WebGL context releases the canvas and keeps the fallback',
   await expect(effect.locator('.ultimate-fallback')).toBeAttached();
   await page.getByRole('button', {name:'次の演出へ',exact:true}).click();
   await expect(page.locator('.ultimate-cinematic')).toHaveCount(0);
+});
+
+test('returning from a hidden tab does not replay a missed ultimate impact', async ({page}) => {
+  await page.addInitScript(()=>{
+    (window as any).__fakeHidden=false;(window as any).__hiddenImpacts=[];
+    Object.defineProperty(document,'hidden',{get:()=>(window as any).__fakeHidden});
+    window.addEventListener('game:se',event=>{const kind=(event as CustomEvent).detail.kind;if(kind.startsWith('ultimate-'))(window as any).__hiddenImpacts.push(kind);});
+  });
+  await prepare(page);
+  await page.evaluate(()=>{(window as any).__fakeHidden=true;document.dispatchEvent(new Event('visibilitychange'));});
+  await page.waitForTimeout(1600);
+  await page.evaluate(()=>{(window as any).__fakeHidden=false;document.dispatchEvent(new Event('visibilitychange'));});
+  await page.waitForTimeout(150);
+  expect(await page.evaluate(()=>(window as any).__hiddenImpacts)).toEqual([]);
+});
+
+test('speed change after impact retains the voice so NEXT can stop its tail', async ({page}) => {
+  await page.addInitScript(()=>{
+    (window as any).__tailStops=0;
+    const stop=AudioBufferSourceNode.prototype.stop;
+    AudioBufferSourceNode.prototype.stop=function(...args:any[]){
+      if(this.buffer && Math.abs(this.buffer.duration-1.05)<.001)(window as any).__tailStops++;
+      return stop.apply(this,args as any);
+    };
+  });
+  await prepare(page);
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await page.getByTitle('演出速度',{exact:true}).click();
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as any).__tailStops)).toBeGreaterThan(0);
 });

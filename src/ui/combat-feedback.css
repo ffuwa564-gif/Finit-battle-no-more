@@ -19,3 +19,5 @@
 .combat-number--ultimate.combat-number--heal strong { font-size: clamp(26px,8vw,42px); }
 
 .combat-feedback--ultimate { z-index: 40; }
+
+.combat-feedback .combat-number--ultimate { animation-duration: 1.35s; }
