@@ -38,7 +38,11 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
     await new Promise(resolve => setTimeout(resolve, reducedMotion ? 0 : 550));
     if (!await onFinish()) { closing.current = false; setPhase('reading'); setError('物語の記録を保存できませんでした。もう一度お試しください。'); }
   }
-  function advance() { if (blocked) return; if (last) void finish(); else void onNext(); }
+  async function move(back = false) {
+    setError('');
+    if (!await (back ? onBack() : onNext())) setError('物語の記録を保存できませんでした。もう一度お試しください。');
+  }
+  function advance() { if (blocked) return; if (last) void finish(); else void move(); }
   useEffect(() => {
     const keys = (event: KeyboardEvent) => {
       if (skip || log) return;
@@ -64,7 +68,7 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
         <div className="novel-speaker" aria-live="polite">{tr(page.speaker ?? '語り')}</div>
         <Button className="novel-dialogue" sound={false} disabled={blocked} onClick={advance} aria-label={tr('台詞を進める')} aria-describedby="novel-text"><span id="novel-text" className="novel-text" key={`${scene.id}:${pageIndex}`} aria-live="polite">{tr(page.text)}</span><span className="novel-cursor" aria-hidden="true">◇</span></Button>
         {error && <p role="alert">{tr(error)}</p>}
-        <footer className="novel-footer"><Button variant="secondary" size="sm" disabled={blocked || pageIndex === 0} onClick={() => { void onBack(); }}><ArrowLeft size={15} />{tr('前の台詞')}</Button><span>{pageIndex + 1} / {scene.pages.length}</span><Button size="sm" disabled={blocked} onClick={advance}>{tr(last ? '物語を閉じる' : '次の台詞')}<ArrowRight size={15} /></Button></footer>
+        <footer className="novel-footer"><Button variant="secondary" size="sm" disabled={blocked || pageIndex === 0} onClick={() => { void move(true); }}><ArrowLeft size={15} />{tr('前の台詞')}</Button><span>{pageIndex + 1} / {scene.pages.length}</span><Button size="sm" disabled={blocked} onClick={advance}>{tr(last ? '物語を閉じる' : '次の台詞')}<ArrowRight size={15} /></Button></footer>
       </div>
     </section>
     <Modal className="novel-confirm" open={skip} title={tr('この物語をスキップしますか？')} onClose={() => setSkip(false)}><p>{tr('スキップした物語は、設定の「物語の記録」から読み返せます。')}</p><div className="toolbar"><Button disabled={blocked} onClick={() => { void finish(); }}>{tr('スキップして進む')}</Button><Button variant="secondary" onClick={() => setSkip(false)}>{tr('読み続ける')}</Button></div></Modal>
