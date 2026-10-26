@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { enterGame } from './boot';
+import { enterGame, skipStory } from './boot';
 
 test('title starts music with a keyboard gesture and preserves the requested page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -11,6 +11,7 @@ test('title starts music with a keyboard gesture and preserves the requested pag
   await start.focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('.title-screen')).toHaveCount(0);
+  await skipStory(page);
   await expect(page.getByRole('heading', { name: 'カバン・道具', exact: true })).toBeVisible();
   const audio = page.locator('audio[data-bgm]');
   await expect.poll(() => audio.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);

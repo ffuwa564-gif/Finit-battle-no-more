@@ -1,3 +1,4 @@
+import { skipStory } from '../e2e/boot';
 import { test,expect,type Page } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import { content } from '../src/content';
@@ -6,7 +7,7 @@ import { encodeBackup } from '../src/platform/save-backup';
 
 async function open(page:Page) {
  await page.goto('/');const game=page.frameLocator('iframe');
- await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();
+ await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(game);
  await expect(game.locator('.title-screen')).toHaveCount(0);return game;
 }
 async function settings(page:Page){const game=page.frameLocator('iframe');await game.getByRole('navigation',{name:'Home menu',exact:true}).getByRole('button',{name:'Settings',exact:true}).click();return game;}
@@ -42,7 +43,7 @@ test('backup import previews, restores and exports progress across reload',async
  const beforeFile=await beforeDownload;const before=JSON.parse(await readFile((await beforeFile.path())!,'utf8'));
  expect(before.save.stones).toBe(0);
  await upload(page,encodeBackup(save,content));await game.getByRole('button',{name:'Restore This Save',exact:true}).click();
- await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();await expect(game.locator('.title-screen')).toHaveCount(0);
+ await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(game);await expect(game.locator('.title-screen')).toHaveCount(0);
  const download=page.waitForEvent('download');await game.getByRole('button',{name:'Export Backup',exact:true}).click();
  const file=await download;const restored=JSON.parse(await readFile((await file.path())!,'utf8'));
  expect(restored.save.stones).toBe(18);expect(restored.save.gold).toBe(240);expect(restored.save.ssrPity).toBe(4);expect(restored.save.ownedIds).toEqual(save.ownedIds);
@@ -58,9 +59,9 @@ test('an expedition can be resumed and exported without leaving the battle',asyn
  await open(page);const game=await settings(page);
  const save=applyCommand(createInitialSave(content,42),{type:'depart',dungeonId:content.dungeons[0].id,potions:2},content);
  await upload(page,encodeBackup(save,content));await game.getByRole('button',{name:'Restore This Save',exact:true}).click();
- await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();await expect(game.locator('.title-screen')).toHaveCount(0);
+ await game.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(game);await expect(game.locator('.title-screen')).toHaveCount(0);
  await expect(game.getByRole('region',{name:'Battle Controls',exact:true})).toBeVisible();
- await expect(game.locator('.battle-toast')).not.toContainText(/[\u3040-\u30ff\u3400-\u9fff]/);
+ expect((await game.locator('.battle-toast').allTextContents()).join('')).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
  await expect(game.getByRole('button',{name:'Retreat',exact:true})).toBeEnabled({timeout:10000});
  await game.getByRole('button',{name:'Retreat',exact:true}).click();
  const download=page.waitForEvent('download');await game.getByRole('button',{name:'Export Backup',exact:true}).click();

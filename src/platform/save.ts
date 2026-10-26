@@ -63,6 +63,11 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     const last = results.at(-1)!;
     if (last.characterId !== value.lastGachaResult.characterId || last.duplicate !== value.lastGachaResult.duplicate || last.refund !== value.lastGachaResult.refund || (last.currency ?? 'stones') !== (value.lastGachaResult.currency ?? 'stones')) throw new Error('祈願の結果情報が不正です。');
   }
+  if (value.novels !== undefined) {
+    const novels = value.novels;
+    if (!record(novels) || !uniqueStrings(novels.seen)) throw new Error('物語の記録が不正です。');
+    if (novels.active !== undefined && (!record(novels.active) || !nonempty(novels.active.sceneId) || !count(novels.active.page) || value.battle !== null)) throw new Error('物語の再生位置が不正です。');
+  }
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
   if (partyIds.length < 1 || partyIds.length > 4 || !partyIds.includes(value.leaderId as string) || partyIds.some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('保存データの編成が不正です。');
@@ -90,6 +95,14 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   const dungeonIds = new Set(content.dungeons.map(item => item.id));
   if ([...save.ownedIds, ...save.discoveredIds].some(id => !characters.has(id)) || save.completedDungeonIds.some(id => !dungeonIds.has(id)) || Object.keys(save.materials).some(id => !species.has(id.split(':')[0]!))) throw new Error('保存データが参照する定義がありません。セーブを保持して停止します。');
   if ([...(save.lastGachaResults ?? []), ...(save.lastGachaResult ? [save.lastGachaResult] : [])].some(result => !characters.has(result.characterId) || !save.ownedIds.includes(result.characterId))) throw new Error('祈願の結果が所持情報と一致しません。');
+  if (save.novels) {
+    if (save.novels.seen.some(id => !content.novels?.some(scene => scene.id === id))) throw new Error('物語の固定定義がありません。');
+    const active = save.novels.active;
+    if (active) {
+      const scene = content.novels?.find(scene => scene.id === active.sceneId);
+      if (!scene || active.page >= scene.pages.length || (scene.trigger.kind === 'dungeon-clear' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
+    }
+  }
   const battle = save.battle;
   if (!battle) return;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);

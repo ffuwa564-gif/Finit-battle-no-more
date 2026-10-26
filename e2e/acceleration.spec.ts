@@ -1,3 +1,4 @@
+import { skipStory } from './boot';
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
@@ -18,7 +19,7 @@ test('both sides deal accelerated damage and the mobile HUD follows the replayed
   expect(attacks.filter(e=>e.actorId!.startsWith('party:')).every(e=>e.amount===120)).toBe(true);expect(attacks.filter(e=>e.actorId!.startsWith('enemy:')).every(e=>e.amount===120)).toBe(true);
   for(const width of [320,390]){await page.setViewportSize({width,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);}
   await page.screenshot({path:testInfo.outputPath('battle-acceleration-mobile.png')});
-  await page.reload();await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Tap to Begin',exact:true}).click();
+  await page.reload();await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(page);
   await expect(page.getByRole('status',{name:'Battle Acceleration',exact:true})).toContainText('both sides ATK +25%');
 });
 

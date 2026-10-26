@@ -1,3 +1,4 @@
+import { skipStory } from '../e2e/boot';
 import { test, expect } from '@playwright/test';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
@@ -32,10 +33,10 @@ test('real battle skill synthesis is audible and its entire effect tail obeys mu
     save = applyCommand(save, { type: 'depart', dungeonId: content.dungeons[0].id, potions: 0 }, content);
     while (save.battle?.phase === 'playing') save = applyCommand(save, { type: 'replay' }, content);
     await page.goto('/nested/game/index.html#settings');
-    await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();
+    await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();await skipStory(page);
     await page.getByLabel('Backup file', { exact: true }).setInputFiles({ name: 'combat-audio.json', mimeType: 'application/json', buffer: Buffer.from(encodeBackup(save, content)) });
     await page.getByRole('button', { name: 'Restore This Save', exact: true }).click();
-    await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();
+    await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click();await skipStory(page);
     await page.getByRole('button', { name: 'Advance Round', exact: true }).click();
     const rms = () => page.evaluate(() => Math.max(0, ...(window as any).meters.map((meter: AnalyserNode) => {
       const data = new Float32Array(meter.fftSize); meter.getFloatTimeDomainData(data);

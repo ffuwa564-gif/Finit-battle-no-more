@@ -1,3 +1,4 @@
+import { skipStory } from '../e2e/boot';
 import { test, expect } from '@playwright/test';
 
 async function enter(page: import('@playwright/test').Page) {
@@ -5,7 +6,7 @@ async function enter(page: import('@playwright/test').Page) {
   // Match itch.io's non-scrolling iframe with a short visible area.
   await page.locator('iframe').evaluate(el => { el.setAttribute('scrolling', 'no'); el.style.height = '560px'; });
   const game = page.frameLocator('iframe');
-  await game.getByRole('button', { name: 'Tap to Begin', exact: true }).click();
+  await game.getByRole('button', { name: 'Tap to Begin', exact: true }).click();await skipStory(game);
   await expect(game.locator('.title-screen')).toHaveCount(0);
   return game;
 }
