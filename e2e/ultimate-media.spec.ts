@@ -32,6 +32,23 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     await page.setViewportSize({ width: 390, height: 844 });
     await prepare(page, caster);
     const effect = page.locator('.ultimate-cinematic');
+    // Observe before the phase begins; CDP polling plus screenshots can outlast a tail.
+    // Hold the actual CSS opacity transition at 250 ms to check its intermediate frame.
+    const tailSample = page.evaluate(() => new Promise<{opacity:number;recipients?:string}>((resolve,reject) => {
+      const element=document.querySelector<HTMLElement>('.ultimate-cinematic')!;
+      const observer=new MutationObserver(() => {
+        if(element.dataset.phase!=='tail')return;
+        observer.disconnect();
+        requestAnimationFrame(() => {
+          const fade=element.getAnimations().find(animation=>animation instanceof CSSTransition && animation.transitionProperty==='opacity');
+          if(!fade){reject(new Error('Expected an opacity transition on the ultimate tail'));return;}
+          fade.pause();fade.currentTime=250;
+          const recipients=element.querySelector('.ultimate-recipients');
+          resolve({opacity:Number(getComputedStyle(element).opacity),recipients:recipients?getComputedStyle(recipients).opacity:undefined});
+        });
+      });
+      observer.observe(element,{attributes:true,attributeFilter:['data-phase']});
+    }));
     await expect(effect).toHaveAttribute('data-visual',theme);
     await expect(effect.locator('video')).toHaveCount(0);
     await expect(effect).toHaveAttribute('data-fx-state', 'pixi');
@@ -43,13 +60,11 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     await page.waitForTimeout(220);
     await page.screenshot({ path: `artifacts/ultimates/${clip}-impact-390.png` });
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
-    await expect(effect).toHaveAttribute('data-phase', 'tail');
-    await page.waitForTimeout(250);
-    const opacity = await effect.evaluate(element => Number(getComputedStyle(element).opacity));
-    expect(opacity).toBeGreaterThan(0);
-    expect(opacity).toBeLessThan(.95);
-    // Healing recipients fade together with their halo, without disappearing first.
-    if (['sanctuary','shield','rally'].includes(clip)) await expect(effect.locator('.ultimate-recipients')).toHaveCSS('opacity', '1');
+    const fade = await tailSample;
+    expect(fade.opacity).toBeGreaterThan(0);
+    expect(fade.opacity).toBeLessThan(.95);
+    // Sample recipients at the same frame, even when screenshot/CI work takes time.
+    if (['sanctuary','shield','rally'].includes(clip)) expect(fade.recipients).toBe('1');
   });
 }
 
