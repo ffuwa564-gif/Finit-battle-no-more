@@ -32,9 +32,18 @@ for (const [caster, clip, theme] of [['noelle','arcane','stars'],['elaine','sanc
     await expect(effect).toHaveAttribute('data-fx-state', 'video');
     await expect(effect).toHaveAttribute('data-phase', 'impact');
     if (clip === 'sanctuary') await expect(effect.locator('.ultimate-recipients .ultimate-recipient__art')).toHaveCount(4);
+    await expect(effect.locator('.ultimate-cinematic__finish')).toHaveCount(0);
+    await expect(effect.locator('.ultimate-cinematic__intro')).toHaveCSS('opacity', '0');
     await page.waitForTimeout(220);
     await page.screenshot({ path: `artifacts/ultimates/${clip}-impact-390.png` });
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+    await expect(effect).toHaveAttribute('data-phase', 'tail');
+    await page.waitForTimeout(250);
+    const opacity = await effect.evaluate(element => Number(getComputedStyle(element).opacity));
+    expect(opacity).toBeGreaterThan(0);
+    expect(opacity).toBeLessThan(.95);
+    // Healing recipients fade together with their halo, without disappearing first.
+    if (clip === 'sanctuary') await expect(effect.locator('.ultimate-recipients')).toHaveCSS('opacity', '1');
   });
 }
 

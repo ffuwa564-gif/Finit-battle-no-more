@@ -32,25 +32,19 @@
 .ultimate-cinematic[data-phase="effect"],.ultimate-cinematic[data-phase="impact"],.ultimate-cinematic[data-phase="tail"] { mix-blend-mode: screen; background: #000; }
 .ultimate-cinematic:not([data-phase="intro"]) .ultimate-cinematic__intro { opacity: 0; }
 .ultimate-cinematic:not([data-phase="intro"]) .ultimate-cinematic__effect { opacity: 1; }
-.ultimate-cinematic[data-phase="tail"] { opacity: 0; transition: opacity calc(350ms * var(--ultimate-rate)); }
-.ultimate-cinematic__finish { position: absolute; bottom: 8%; width: 100%; display: grid; gap: 4px; padding: 10px; color: #fff7df; text-align: center; opacity: 0; text-shadow: 0 0 18px var(--ultimate-color),0 2px 5px #000; }
-.ultimate-cinematic__finish small { font-size: 11px; letter-spacing: .15em; }
-.ultimate-cinematic__finish strong { font: 500 clamp(16px,4.6vw,24px)/1.5 var(--font-serif,serif); overflow-wrap: anywhere; }
-.ultimate-cinematic[data-phase="impact"] .ultimate-cinematic__finish { animation: ultimate-finish calc(1500ms * var(--ultimate-rate)) both; }
+.ultimate-cinematic[data-phase="tail"] { opacity: 0; transition: opacity calc(1000ms * var(--ultimate-rate)) ease-out; }
 .ultimate-fallback { position: absolute; inset: 10%; width: 80%; height: 80%; fill: none; stroke: var(--ultimate-color); stroke-width: 4; opacity: 0; filter: drop-shadow(0 0 9px var(--ultimate-color)); }
 .ultimate-fallback--blade { stroke-width: 9; }
-.ultimate-cinematic[data-phase="impact"] .ultimate-fallback { animation: ultimate-impact calc(1200ms * var(--ultimate-rate)) both; }
+.ultimate-cinematic[data-phase="impact"] .ultimate-fallback,.ultimate-cinematic[data-phase="tail"] .ultimate-fallback { animation: ultimate-impact calc(1200ms * var(--ultimate-rate)) both; }
 @keyframes ultimate-ready { 50% { box-shadow: 0 0 15px #f6cc6ac9,inset 0 0 18px #f6cc6a55; } }
 @keyframes ultimate-portrait { 0% { translate: -22% 0; opacity: 0; } 22%,100% { translate: 0 0; opacity: 1; } }
 @keyframes ultimate-title { 0% { translate: 12% 0; opacity: 0; } 28%,100% { translate: 0 0; opacity: 1; } }
 @keyframes ultimate-impact { 0% { transform: scale(.35); opacity: 0; } 18% { opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
-@keyframes ultimate-finish { 0% { opacity: 0; translate: 0 6px; } 15%,80% { opacity: 1; translate: 0 0; } 100% { opacity: 0; } }
 .ultimate-cinematic--reduced,.ultimate-cinematic--reduced * { animation: none !important; transition: none !important; }
 .ultimate-cinematic.ultimate-cinematic--reduced { mix-blend-mode: normal; opacity: 1; background: #071120; }
 .ultimate-cinematic--reduced .ultimate-cinematic__intro { opacity: 1 !important; }
 .ultimate-cinematic--reduced .ultimate-cinematic__portrait { opacity: .7; }
 .ultimate-cinematic--reduced .ultimate-cinematic__title { opacity: 1; }
-.ultimate-cinematic--reduced .ultimate-cinematic__effect,.ultimate-cinematic--reduced .ultimate-cinematic__finish { display: none; }
 html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-ready .character-portrait { animation: none; }
 @media (prefers-reduced-motion: reduce) { .party-unit--ultimate-ready .character-portrait { animation: none !important; } }
 
@@ -63,5 +57,7 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 .ultimate-recipients > div > span { display: grid; gap: 8px; min-width: 0; width: 22%; }
 .ultimate-recipients small { font-size: 9px; text-shadow: 0 1px 4px #000; overflow-wrap: anywhere; }
 .ultimate-recipient__art { display: block; aspect-ratio: .85; border-radius: 15px; border: 1px solid var(--ultimate-color); overflow: hidden; box-shadow: 0 0 14px var(--ultimate-color); }
-.ultimate-cinematic--support[data-phase="effect"] .ultimate-recipients,.ultimate-cinematic--support[data-phase="impact"] .ultimate-recipients { opacity: 1; transition: opacity 180ms; }
+.ultimate-cinematic--support[data-phase="effect"] .ultimate-recipients,.ultimate-cinematic--support[data-phase="impact"] .ultimate-recipients,.ultimate-cinematic--support[data-phase="tail"] .ultimate-recipients { opacity: 1; transition: opacity 180ms; }
 .ultimate-cinematic--support.ultimate-cinematic--reduced .ultimate-recipients { display: none; }
+
+.ultimate-cinematic--reduced .ultimate-cinematic__effect { display: none; }

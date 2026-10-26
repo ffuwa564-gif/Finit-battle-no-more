@@ -43,7 +43,7 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     const player = video.current;
     if (!player) return;
     const elapsed = clock.current.position(performance.now());
-    if (!allowed || failed || document.hidden || elapsed < ULTIMATE_TIMING.effect || elapsed >= ULTIMATE_TIMING.tail) { player.pause(); return; }
+    if (!allowed || failed || document.hidden || elapsed < ULTIMATE_TIMING.effect || elapsed >= ULTIMATE_TIMING.end) { player.pause(); return; }
     player.defaultMuted = true; player.muted = true; player.playbackRate = clock.current.rate;
     if (player.readyState >= 1) {
       const desired = Math.min(Math.max(0, (elapsed - ULTIMATE_TIMING.effect) / 1000), Math.max(0, player.duration - .04));
@@ -59,7 +59,7 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     const timers = [
       setTimeout(() => { setPhase('effect'); reconcileVideo(); }, clock.current.delay(ULTIMATE_TIMING.effect, performance.now())),
       setTimeout(() => setPhase('impact'), clock.current.delay(ULTIMATE_TIMING.impact, performance.now())),
-      setTimeout(() => { setPhase('tail'); video.current?.pause(); }, clock.current.delay(ULTIMATE_TIMING.tail, performance.now())),
+      setTimeout(() => setPhase('tail'), clock.current.delay(ULTIMATE_TIMING.tail, performance.now())),
     ];
     const player = video.current;
     reconcileVideo();
@@ -79,7 +79,6 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
         onLoadedData={reconcileVideo} onPlaying={() => { setReady(true); reconcileVideo(); }} onError={() => { setFailed(true); setReady(false); }} />}
       {!ready || failed || !allowed ? <FallbackImpact theme={special.theme} /> : null}
     </div>
-    <div className="ultimate-cinematic__finish" aria-hidden="true"><small>{tr(character.name)}</small><strong>{tr(special.name)}</strong></div>
   </div>;
 }
 
