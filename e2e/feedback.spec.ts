@@ -36,15 +36,25 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
     }, kind);
     await expect.poll(() => page.evaluate(() => (window as any).__seStats.peak)).toBeGreaterThan(.025);
   }
+  for (const signature of ['blade','thunder','mechanism'] as const) {
+    await page.waitForTimeout(900);
+    await page.evaluate(async signature => {
+      const audio = await import('/src/platform/audio.ts');
+      (window as any).__seStats.peak = 0;
+      audio.playSound('attack', undefined, 'attack', 'signature-output', signature);
+    }, signature);
+    await expect.poll(() => page.evaluate(() => (window as any).__seStats.peak), { intervals: [10,20,40,80] }).toBeGreaterThan(.025);
+  }
   await page.evaluate(async () => {
     const audio = await import('/src/platform/audio.ts');
     for (let i = 0; i < 24; i++) audio.playSound('attack', undefined, i % 2 ? 'shatter' : 'pierce');
+    for (let i = 0; i < 24; i++) audio.playSound('attack', undefined, 'attack', 'signature-burst', (['blade','thunder','mechanism'] as const)[i % 3]);
   });
   await page.waitForTimeout(100);
   const stats = await page.evaluate(() => (window as any).__seStats);
   expect(stats.cues).toEqual(expect.arrayContaining(kinds));
   expect(stats.overallPeak).toBeLessThan(.98);
-  await page.evaluate(async () => { const audio = await import('/src/platform/audio.ts'); audio.setAudioVolume(0); (window as any).__seStats.cues = []; audio.playSound('attack'); audio.playSound('ultimate-strike'); audio.playSound('ultimate-magic'); audio.playSound('ultimate-sanctuary'); });
+  await page.evaluate(async () => { const audio = await import('/src/platform/audio.ts'); audio.setAudioVolume(0); (window as any).__seStats.cues = []; audio.playSound('attack'); audio.playSound('attack',undefined,'attack','signature-mute','mechanism'); audio.playSound('ultimate-strike'); audio.playSound('ultimate-magic'); audio.playSound('ultimate-sanctuary'); });
   expect(await page.evaluate(() => (window as any).__seStats.cues)).toEqual([]);
   const mutedPeak = await page.evaluate(async () => {
     await new Promise(resolve => setTimeout(resolve, 200));

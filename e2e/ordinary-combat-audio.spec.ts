@@ -60,3 +60,60 @@ test('each combatant advances her own material variations independently',async({
   expect(new Set([voices[0].buffer,voices[2].buffer,voices[4].buffer]).size).toBe(3);
   expect(new Set([voices[0].duration,voices[2].duration,voices[4].duration]).size).toBe(3);
 });
+
+test('weapon signatures keep their identity across takes and use immediate native playback',async({page})=>{
+  await prepare(page);
+  const voices=await page.evaluate(async()=>{
+    const audio=await import('/src/platform/audio.ts');
+    for(const signature of ['blade','thunder','mechanism'] as const){
+      for(let i=0;i<4;i++)audio.playSound('attack',undefined,'attack',`test:${signature}`,signature);
+    }
+    // Real status skill reaches the electrical patch without an explicit override.
+    audio.playSound('debuff',undefined,'paralysis','status:test');
+    return (window as any).__ordinaryVoices;
+  });
+  expect(voices).toHaveLength(13);
+  for(const [offset,duration] of [[0,.58],[4,.68],[8,.46]]){
+    expect(new Set(voices.slice(offset,offset+3).map((v:any)=>v.buffer)).size).toBe(3);
+    expect(voices[offset].buffer).toBe(voices[offset+3].buffer);
+    for(const voice of voices.slice(offset,offset+4)){
+      expect(voice.duration).toBeCloseTo(duration,3);
+      expect(voice.lead).toBeGreaterThan(-20);expect(voice.lead).toBeLessThan(25);
+    }
+  }
+  expect(voices[12].duration).toBeCloseTo(.68,3);
+});
+
+test('real battle replay assigns Seris steel and Lunette mechanical fire through the App',async({page})=>{
+  await prepare(page);
+  await page.evaluate(async()=>{
+    const {content}=await import('/src/content/index.ts');
+    const {createBattle,advanceReplay}=await import('/src/domain/engine.ts');
+    const {loadSave,persistSave}=await import('/src/platform/save.ts');
+    const previous=(await loadSave())!,save=structuredClone(previous);
+    const party=['seris','lunette','liora','elaine'];
+    save.ownedIds=[...new Set([...save.ownedIds,...party])];save.partyIds=party;save.leaderId='seris';
+    let battle=createBattle(content,party,'seris','silent-cathedral',0,42,'signature-replay');
+    while(battle.phase==='playing')battle=advanceReplay(battle,content);
+    for(const unit of battle.units){
+      if(unit.side==='enemy'){unit.hp=unit.maxHp=100000;unit.attack=0;unit.speed=0;}
+      else unit.speed=unit.characterId==='seris'?100:unit.characterId==='lunette'?99:1;
+    }
+    save.battle=battle;save.settings.speed=2;save.settings.bgmVolume=0;save.revision=previous.revision+1;
+    await persistSave(save,previous.revision);
+  });
+  await page.reload();await enterGame(page);
+  await page.evaluate(()=>{
+    (window as any).__signatureCues=[];
+    window.addEventListener('game:se',event=>(window as any).__signatureCues.push((event as CustomEvent).detail));
+  });
+  await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as any).__signatureCues.filter((cue:any)=>cue.signature==='mechanism').length),{timeout:15000}).toBeGreaterThan(0);
+  const result=await page.evaluate(()=>({cues:(window as any).__signatureCues,voices:(window as any).__ordinaryVoices}));
+  expect(result.cues).toEqual(expect.arrayContaining([
+    expect.objectContaining({variationKey:'party:seris',signature:'blade'}),
+    expect.objectContaining({variationKey:'party:lunette',signature:'mechanism'}),
+  ]));
+  expect(result.voices.some((voice:any)=>Math.abs(voice.duration-.58)<.001)).toBe(true);
+  expect(result.voices.some((voice:any)=>Math.abs(voice.duration-.46)<.001)).toBe(true);
+});
