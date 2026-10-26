@@ -1,10 +1,14 @@
+import ffmpeg from '@ffmpeg-installer/ffmpeg';
+import ffprobe from '@ffprobe-installer/ffprobe';
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { AssetDef } from '../src/domain/types';
 
-function run(command: string, args: string[]): Buffer {
-  const result = spawnSync(command, args, { maxBuffer: 64 * 1024 * 1024 });
+const mediaTools = { ffmpeg: ffmpeg.path, ffprobe: ffprobe.path };
+
+function run(command: keyof typeof mediaTools, args: string[]): Buffer {
+  const result = spawnSync(mediaTools[command], args, { maxBuffer: 64 * 1024 * 1024 });
   if (result.error) throw new Error(`${command} is required for motion poster validation: ${result.error.message}`);
   if (result.status !== 0) throw new Error(`${command} failed: ${result.stderr.toString().slice(-2000)}`);
   return result.stdout;
