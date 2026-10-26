@@ -45,6 +45,15 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
     }, signature);
     await expect.poll(() => page.evaluate(() => (window as any).__seStats.peak), { intervals: [10,20,40,80] }).toBeGreaterThan(.025);
   }
+  for (const skill of ['heal','regen','mend_pair','barrier_mend','cleanse'] as const) {
+    await page.waitForTimeout(1000);
+    await page.evaluate(async skill => {
+      const audio = await import('/src/platform/audio.ts');
+      (window as any).__seStats.peak = 0;
+      audio.playSound('heal', undefined, skill);
+    }, skill);
+    await expect.poll(() => page.evaluate(() => (window as any).__seStats.peak)).toBeGreaterThan(.025);
+  }
   await page.evaluate(async () => {
     const audio = await import('/src/platform/audio.ts');
     for (let i = 0; i < 24; i++) audio.playSound('attack', undefined, i % 2 ? 'shatter' : 'pierce');

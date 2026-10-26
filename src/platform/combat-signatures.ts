@@ -1,22 +1,16 @@
-import type { CharacterDef, SkillTemplate } from '../domain/types';
+import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
 import { isUltimateSound } from './ultimate-audio';
 
 export const combatSignatures = ['blade', 'thunder', 'mechanism'] as const;
 export type CombatSignature = typeof combatSignatures[number];
-const offensive = new Set<SkillTemplate>(['attack', 'pierce', 'area', 'shatter']);
+const offensive = new Set<SkillTemplate>(['attack', 'pierce', 'area', 'shatter', 'drain', 'dawn']);
 
-/** Presentation only: a stable weapon identity, never an extra hit or game rule. */
-export function combatSignature(kind: SoundCue, skill?: SkillTemplate, character?: CharacterDef): CombatSignature | undefined {
+/** One approved electrical timbre for every ordinary damaging action. */
+export function combatSignature(kind: SoundCue, skill?: SkillTemplate): CombatSignature | undefined {
   if (isUltimateSound(kind)) return;
   const action = skill ?? kind;
-  if (action === 'paralysis') return 'thunder';
-  if (!offensive.has(action as SkillTemplate)) return;
-  if (character && (character.speciesId === 'lunette-clockwork' || ['tikka', 'vespera', 'miette', 'chrona', 'lunette', 'lunette-awakened'].includes(character.id))) return 'mechanism';
-  // Nox carries a sword; being clockwork does not automatically make it a gun.
-  if (character && (character.role === 'attacker' || character.role === 'tank') && (action === 'attack' || action === 'pierce')) {
-    if (['pilgrim', 'hollow', 'clockwork', 'moon'].includes(character.speciesId)) return 'blade';
-  }
+  if (action === 'paralysis' || offensive.has(action as SkillTemplate)) return 'thunder';
 }
 
 export const signatureDuration: Record<CombatSignature, number> = { blade: .58, thunder: .68, mechanism: .46 };

@@ -35,7 +35,7 @@ describe('ordinary combat materials',()=>{
   it('routes basic attacks and real skill templates without overriding an ultimate',()=>{
     expect(combatFamily('attack')).toBe('attack');
     expect(combatFamily('attack','pierce')).toBe('pierce');
-    expect(combatFamily('heal','barrier_mend')).toBe('heal');
+    expect(combatFamily('heal','barrier_mend')).toBeUndefined();
     expect(combatFamily('guard','barrier')).toBe('barrier');
     expect(combatFamily('ultimate-strike','attack')).toBeUndefined();
     expect(combatFamily('confirm')).toBeUndefined();
