@@ -36,6 +36,11 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
     }, kind);
     await expect.poll(() => page.evaluate(() => (window as any).__seStats.peak)).toBeGreaterThan(.025);
   }
+  await page.evaluate(async () => {
+    const audio = await import('/src/platform/audio.ts');
+    for (let i = 0; i < 24; i++) audio.playSound('attack', undefined, i % 2 ? 'shatter' : 'pierce');
+  });
+  await page.waitForTimeout(100);
   const stats = await page.evaluate(() => (window as any).__seStats);
   expect(stats.cues).toEqual(expect.arrayContaining(kinds));
   expect(stats.overallPeak).toBeLessThan(.98);
