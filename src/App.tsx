@@ -1,3 +1,4 @@
+import { ULTIMATE_TIMING, UltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -139,23 +140,33 @@ export default function App() {
   const battle = save?.battle;
   const event = battle?.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   const soundedEvent = useRef<string | null>(null);
+  const soundedImpact = useRef<string | null>(null);
+  const ultimateClock = useRef(new UltimateClock());
   useEffect(() => {
     if (!save || !started || battle?.phase !== 'playing') return;
     // Old saves can be paused at the end of a Wave with no remaining event.
     if (!event) { void command({ type: 'replay' }); return; }
+    if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       playSound(event.ultimate ? 'ultimate' : battleSounds[event.kind], event.rarity, event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template);
     }
-    const cleanup = animateEvent(event, save.settings.reducedMotion);
-    const duration = battleEventDuration(event, save.settings.speed);
+    const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
+    let cleanupImpact = () => {};
+    const impactTimer = event.ultimate ? setTimeout(() => {
+      if (soundedImpact.current === event.id) return;
+      soundedImpact.current = event.id;
+      playSound(event.kind === 'attack' ? 'ultimate-strike' : event.kind === 'area' ? 'ultimate-magic' : 'ultimate-sanctuary');
+      cleanupImpact = animateEvent(event, save.settings.reducedMotion);
+    }, ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now())) : undefined;
+    const duration = event.ultimate ? ultimateClock.current.delay(ULTIMATE_TIMING.end, performance.now()) : battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current) { timer = setTimeout(complete, 100); return; }
       void command({ type: 'replay' }, event.id);
     };
     timer = setTimeout(complete, duration);
-    return () => { clearTimeout(timer); cleanup(); };
+    return () => { clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact(); };
   }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>{tr("データを守るため、停止しました。")}</h1><p role="alert">{localize(fatal)}</p><p className="subtle">{tr("セーブの初期化や上書きは行っていません。")}</p><Button variant="primary" onClick={() => location.reload()}>{tr("再読み込み")}</Button></Panel></div>;
@@ -169,5 +180,5 @@ export default function App() {
   }} />;
   const props = { save, busy, artworkSuspended: !!character || !!summon, command, navigate, inspect: setCharacter };
   const view = save.battle ? <BattleView {...props} /> : page === 'dungeons' ? <DungeonsView {...props} /> : page === 'party' ? <PartyView {...props} /> : page === 'bag' ? <BagView {...props} /> : page === 'recruit' ? <RecruitView {...props} /> : page === 'gacha' ? <GachaView {...props} /> : page === 'codex' ? <CodexView {...props} /> : page === 'settings' ? <SettingsView {...props} /> : page === 'preview' ? <PreviewView {...props} /> : <HomeView {...props} />;
-  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon}><div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaResults key={`${save.drawCount}-${save.xrDrawCount ?? 0}`} results={summon.results} introIndex={summon.introIndex} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={ssr => playSound(ssr ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div></MotionSettingsProvider>;
+  return <MotionSettingsProvider reducedMotion={save.settings.reducedMotion} suspended={!!character || !!summon || !!event?.ultimate}><div className={`app-shell${save.battle ? ' is-exploring' : page === 'home' ? ' is-menu' : ''}`}><aside className="sidebar"><div className="brand"><Moon size={29} strokeWidth={1} /><div><strong>STILLVEIL</strong><span>{tr("静謐の残響")}</span></div></div><span className="sidebar-label">THE JOURNEY</span><nav aria-label={tr("メインメニュー")}>{localize(navigation.map(item => <Button key={item.page} variant={page === item.page && !save.battle ? 'primary' : 'secondary'} className="nav-item" disabled={!!save.battle} onClick={() => navigate(item.page)}><item.icon size={18} strokeWidth={1.4} /><span>{localize(item.title)}</span>{localize(page === item.page && !save.battle && <ChevronRight size={13} />)}</Button>))}</nav><div className="sidebar-bottom"><Shield size={16} /><p>{tr("自動保存")}</p></div></aside><div className="app-body"><header className="topbar"><div className="topbar-title"><Moon size={19} /><span>STILLVEIL</span><small>{tr("静謐の残響")}</small></div><div className="currencies"><StatBadge icon={<CurrencyEmblem kind="gold" size={16} />} value={save.gold.toLocaleString()} label={tr("G")} /><StatBadge icon={<CurrencyEmblem kind="stone" size={16} />} value={save.stones} label={tr("石")} /><Button sound={false} variant="icon" title={tr(save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={busy} onClick={() => command({ type: 'settings', settings: { seVolume: save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button></div></header><main className="main-content" id="main-content">{localize(view)}</main></div>{localize((save.battle || page !== 'home') && <TownNavigation active={page} onNavigate={navigate} disabled={!!save.battle} />)}{localize(summon && <GachaResults key={`${save.drawCount}-${save.xrDrawCount ?? 0}`} results={summon.results} introIndex={summon.introIndex} reducedMotion={save.settings.reducedMotion} onClose={() => setSummon(null)} onReveal={ssr => playSound(ssr ? 'victory' : 'recruit')} />)}{localize(character && <CharacterDetail onInspect={setCharacter} save={save} character={character} reducedMotion={save.settings.reducedMotion} onClose={() => setCharacter(null)} />)}<Toast present={!!toast} tone={toast?.tone} onClose={() => setToast(null)}>{localize(toast?.text)}</Toast></div></MotionSettingsProvider>;
 }

@@ -1,6 +1,8 @@
 import type { CharacterDef, Role, SkillTemplate, Unit } from './types';
 
-const forms: Record<Role, { name: string; description: string; template: SkillTemplate; theme: string }> = {
+export type UltimateTheme = 'blade' | 'stars' | 'bloom' | 'aegis' | 'dawn' | 'eclipse';
+
+const forms: Record<Role, { name: string; description: string; template: SkillTemplate; theme: UltimateTheme }> = {
   attacker: { name: '終夜の一閃', description: '敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。', template: 'pierce', theme: 'blade' },
   area_attacker: { name: '星降る終奏', description: '敵全体に攻撃力の190%で攻撃。かばうを無視する。', template: 'area', theme: 'stars' },
   healer: { name: '命花の奇跡', description: '生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。', template: 'heal', theme: 'bloom' },

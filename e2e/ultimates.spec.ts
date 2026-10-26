@@ -47,16 +47,34 @@ test('tap ready frames to queue or cancel, retain choices, and unleash the selec
   await page.screenshot({ path: 'artifacts/ultimates/queued-390.png' });
   await page.evaluate(() => {
     (window as any).__ultimateSounds = [];
+    (window as any).__impactEvents = [];
+    window.addEventListener('game:se', (event: Event) => { const kind = (event as CustomEvent).detail.kind; if (kind.startsWith('ultimate-')) (window as any).__impactEvents.push({ kind, at: performance.now() }); });
+    window.addEventListener('game:combat-numbers', (event: Event) => { if ((event as CustomEvent).detail.ultimate) (window as any).__impactEvents.push({ kind: 'numbers', at: performance.now() }); });
     window.addEventListener('game:se', (event: Event) => (window as any).__ultimateSounds.push((event as CustomEvent).detail.kind));
   });
   await page.getByRole('button', { name: 'ラウンドを進める', exact: true }).click();
   const cutIn = page.getByRole('status', { name: 'セリスの必殺技：薄明・夜を断つ剣', exact: true });
   await expect(cutIn).toBeVisible();
+  await expect(page.locator('.battle-toast')).not.toBeVisible();
   await page.waitForTimeout(400);
   await page.screenshot({ path: 'artifacts/ultimates/cutin-390.png' });
   await page.getByTitle('演出速度', { exact: true }).click();
   await page.waitForTimeout(100);
   await expect.poll(() => page.evaluate(() => (window as any).__ultimateSounds.filter((kind: string) => kind === 'ultimate').length)).toBe(1);
+  const effectVideo = cutIn.locator('.ultimate-effect-video');
+  await expect(effectVideo).toHaveAttribute('src', /ultimate-fx-slash.mp4/);
+  await expect(effectVideo).toHaveJSProperty('muted', true);
+  await expect(effectVideo).toHaveJSProperty('playsInline', true);
+  await expect(effectVideo).toHaveJSProperty('loop', false);
+  await expect.poll(() => effectVideo.evaluate((video: HTMLVideoElement) => video.currentTime)).toBeGreaterThan(0);
+  await expect(cutIn).toHaveAttribute('data-phase', 'impact');
+  await expect(page.locator('.combat-number--ultimate')).not.toHaveCount(0);
+  const hits = await page.evaluate(() => (window as any).__impactEvents);
+  expect(hits.filter((hit: any) => hit.kind === 'ultimate-strike')).toHaveLength(1);
+  expect(Math.abs(hits.find((hit: any) => hit.kind === 'numbers').at - hits.find((hit: any) => hit.kind === 'ultimate-strike').at)).toBeLessThan(150);
+  expect(await cutIn.evaluate(element => getComputedStyle(element).mixBlendMode)).toBe('screen');
+  await page.waitForTimeout(200);
+  await page.screenshot({ path: 'artifacts/ultimates/runway-impact-390.png' });
   await expect(page.getByRole('button', { name: 'ノエル：必殺技の予約を解除' })).toBeDisabled();
   // The next selected character gets her own cinematic later in the same round.
   await expect(page.getByRole('status', { name: 'ノエルの必殺技：星詠・失われた天河', exact: true })).toBeVisible({ timeout: 15000 });

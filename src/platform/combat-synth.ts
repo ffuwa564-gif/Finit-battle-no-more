@@ -10,13 +10,16 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = 'ultimate' | SkillTemplate | 'wave' | 'defeat';
+type CombatKey = 'ultimate-strike' | 'ultimate-magic' | 'ultimate-sanctuary' | 'ultimate' | SkillTemplate | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
-  ultimate: { sweep: { from: 300, to: 8000, duration: .55, velocity: .65 }, impact: { note: 'D1', velocity: .9 }, metal: { note: 'A4', velocity: .35 }, bells: { notes: ['D4', 'A4', 'D5', 'F5', 'A5', 'D6'], spacing: .13, duration: .4 }, aura: { notes: ['D3', 'F3', 'A3', 'D4'], duration: .8 } },
+  ultimate: { sweep: { from: 350, to: 2600, duration: .6, velocity: .32 }, bells: { notes: ['D4', 'A4', 'D5'], spacing: .18, duration: .3 }, aura: { notes: ['D3', 'A3'], duration: .65 } },
+  'ultimate-strike': { sweep: { from: 7500, to: 250, duration: .22, velocity: .9 }, impact: { note: 'D1', velocity: .95 }, metal: { note: 'D5', velocity: .5 }, bells: { notes: ['A5', 'D6'], spacing: .05, duration: .3 } },
+  'ultimate-magic': { sweep: { from: 450, to: 7200, duration: .4, velocity: .85 }, impact: { note: 'C1', velocity: .9 }, bells: { notes: ['D5', 'F5', 'A5', 'D6', 'F6'], spacing: .07, duration: .35 }, aura: { notes: ['D3', 'F3', 'A3'], duration: .7 } },
+  'ultimate-sanctuary': { bells: { notes: ['F5', 'A5', 'C6', 'F6', 'A6'], spacing: .1, duration: .38 }, aura: { notes: ['F3', 'A3', 'C4', 'F4'], duration: .8 }, metal: { note: 'C5', velocity: .2 } },
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },

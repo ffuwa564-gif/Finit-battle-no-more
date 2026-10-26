@@ -158,9 +158,9 @@ export function BattleView(p: ViewProps) {
   return <div className="battle-layout game-frame" data-directive={event?.directive}>
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label={tr("敵の戦場")}>
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} materials={total} />
-      <UltimateCutIn event={event} units={units} reducedMotion={p.save.settings.reducedMotion} />
+      <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
-      <NoticeSurface present={!!event} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
+      <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
       {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
     </section>
     <div className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label={tr("パーティメンバー")}>
@@ -170,7 +170,7 @@ export function BattleView(p: ViewProps) {
       </div>))}
     </div>
     <p className="ultimate-hint">{tr(usingPotion ? "回復する仲間を選択" : "光る枠をタップで必殺予約・もう一度で解除。ATTACKで発動。")}</p>
-    <CombatFeedback event={event} before={units} reducedMotion={p.save.settings.reducedMotion} />
+    <CombatFeedback event={event} before={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
     <BattleControlPad acceleration={activeAcceleration({ ...battle, units, round: displayRound }, content)} strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command({ type: battle.phase === 'playing' ? 'replay' : 'round' }); }}
       potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}

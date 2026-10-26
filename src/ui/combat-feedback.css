@@ -14,3 +14,8 @@
 .combat-feedback--reduced .combat-number { animation: combat-number-still .85s linear both; }
 @keyframes combat-number-still { 0%,80% { opacity: 1; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .combat-number { animation: combat-number-still .85s linear both; } }
+
+.combat-number--ultimate strong { font-size: clamp(32px,10vw,54px); filter: drop-shadow(0 0 7px #f3d88877); }
+.combat-number--ultimate.combat-number--heal strong { font-size: clamp(26px,8vw,42px); }
+
+.combat-feedback--ultimate { z-index: 40; }
