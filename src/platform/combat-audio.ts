@@ -6,7 +6,7 @@ export const combatFamilies = ['attack','area','pierce','shatter','drain','dawn'
 export type CombatFamily = typeof combatFamilies[number];
 const families: Partial<Record<SkillTemplate, CombatFamily>> = {
   attack:'attack',area:'area',pierce:'pierce',shatter:'shatter',drain:'drain',dawn:'dawn',
-  heal:'heal',regen:'heal',mend_pair:'heal',barrier_mend:'heal',cleanse:'heal',guard:'guard',barrier:'barrier',
+  guard:'guard',barrier:'barrier',
 };
 export function combatFamily(kind: SoundCue, skill?: SkillTemplate): CombatFamily | undefined {
   return isUltimateSound(kind) ? undefined : families[(skill ?? kind) as SkillTemplate];

@@ -157,9 +157,7 @@ export default function App() {
       soundedEvent.current = event.id;
       const cue = event.ultimate ? 'ultimate' : battleSounds[event.kind];
       const skill = event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template;
-      const combatant = battle.units.find(unit => unit.uid === event.actorId);
-      const character = combatant ? characterById(combatant.characterId) : undefined;
-      playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill, character));
+      playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};

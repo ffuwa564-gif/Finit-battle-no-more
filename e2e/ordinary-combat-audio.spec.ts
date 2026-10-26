@@ -33,7 +33,7 @@ test('ordinary strikes use immediate native audio, cycle cached variations and r
   expect(result[0].buffer).toBe(result[3].buffer);
   expect(new Set(result.slice(0,3).map((voice:any)=>voice.buffer)).size).toBe(3);
   for(const voice of result){expect(voice.lead).toBeGreaterThan(-20);expect(voice.lead).toBeLessThan(25);}
-  expect(result[0].duration).toBeCloseTo(.64,2);expect(result[4].duration).toBeCloseTo(.52,2);
+  for(const voice of result)expect(voice.duration).toBeCloseTo(.68,2);
 });
 
 test('rapid catch-up replaces old voices and leaves no unbounded ordinary tails',async({page})=>{
@@ -47,7 +47,20 @@ test('rapid catch-up replaces old voices and leaves no unbounded ordinary tails'
   expect(errors).toEqual([]);
 });
 
-test('each combatant advances her own material variations independently',async({page})=>{
+test('healing aliases use the soft prayer synth instead of combat PCM',async({page})=>{
+  await prepare(page);
+  const voices=await page.evaluate(async()=>{
+    const audio=await import('/src/platform/audio.ts');
+    for(const skill of ['heal','regen','mend_pair','barrier_mend','cleanse'] as const){
+      audio.playSound('heal',undefined,skill);
+      await new Promise(resolve=>setTimeout(resolve,650));
+    }
+    return (window as any).__ordinaryVoices;
+  });
+  expect(voices).toHaveLength(0);
+});
+
+test('each combatant advances her own thunder takes independently',async({page})=>{
   await prepare(page);
   const voices=await page.evaluate(async()=>{
     const audio=await import('/src/platform/audio.ts');
@@ -58,7 +71,7 @@ test('each combatant advances her own material variations independently',async({
   expect(voices[0].buffer).toBe(voices[1].buffer);
   expect(voices[2].buffer).toBe(voices[3].buffer);
   expect(new Set([voices[0].buffer,voices[2].buffer,voices[4].buffer]).size).toBe(3);
-  expect(new Set([voices[0].duration,voices[2].duration,voices[4].duration]).size).toBe(3);
+  expect(voices.every((voice:any)=>Math.abs(voice.duration-.68)<.001)).toBe(true);
 });
 
 test('weapon signatures keep their identity across takes and use immediate native playback',async({page})=>{
@@ -84,7 +97,7 @@ test('weapon signatures keep their identity across takes and use immediate nativ
   expect(voices[12].duration).toBeCloseTo(.68,3);
 });
 
-test('real battle replay assigns Seris steel and Lunette mechanical fire through the App',async({page})=>{
+test('real battle replay uses approved thunder for both Seris and Lunette',async({page})=>{
   await prepare(page);
   await page.evaluate(async()=>{
     const {content}=await import('/src/content/index.ts');
@@ -108,12 +121,11 @@ test('real battle replay assigns Seris steel and Lunette mechanical fire through
     window.addEventListener('game:se',event=>(window as any).__signatureCues.push((event as CustomEvent).detail));
   });
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__signatureCues.filter((cue:any)=>cue.signature==='mechanism').length),{timeout:15000}).toBeGreaterThan(0);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__signatureCues.filter((cue:any)=>cue.variationKey==='party:lunette'&&cue.signature==='thunder').length),{timeout:15000}).toBeGreaterThan(0);
   const result=await page.evaluate(()=>({cues:(window as any).__signatureCues,voices:(window as any).__ordinaryVoices}));
   expect(result.cues).toEqual(expect.arrayContaining([
-    expect.objectContaining({variationKey:'party:seris',signature:'blade'}),
-    expect.objectContaining({variationKey:'party:lunette',signature:'mechanism'}),
+    expect.objectContaining({variationKey:'party:seris',signature:'thunder'}),
+    expect.objectContaining({variationKey:'party:lunette',signature:'thunder'}),
   ]));
-  expect(result.voices.some((voice:any)=>Math.abs(voice.duration-.58)<.001)).toBe(true);
-  expect(result.voices.some((voice:any)=>Math.abs(voice.duration-.46)<.001)).toBe(true);
+  expect(result.voices.filter((voice:any)=>Math.abs(voice.duration-.68)<.001).length).toBeGreaterThanOrEqual(2);
 });

@@ -1,21 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { content } from '../src/content';
 import { combatSignature, combatSignatures, renderCombatSignature, signatureDuration } from '../src/platform/combat-signatures';
 
-describe('stable ordinary weapon signatures', () => {
-  const character = (id: string) => content.characters.find(c => c.id === id)!;
-  it('selects by weapon and actual action, keeping support and ultimates separate', () => {
-    expect(combatSignature('attack', 'pierce', character('seris'))).toBe('blade');
-    expect(combatSignature('attack', 'attack', character('nox'))).toBe('blade');
-    for (const id of ['lunette', 'lunette-awakened', 'tikka', 'vespera']) {
-      expect(combatSignature('area', 'area', character(id))).toBe('mechanism');
-      expect(combatSignature('heal', 'heal', character(id))).toBeUndefined();
-      expect(combatSignature('guard', 'barrier', character(id))).toBeUndefined();
-      expect(combatSignature('buff', 'overclock', character(id))).toBeUndefined();
-      expect(combatSignature('ultimate-strike', 'attack', character(id))).toBeUndefined();
+describe('ordinary electrical attacks and separate healing', () => {
+  it('uses thunder for all ordinary damage templates, preserving support and ultimates', () => {
+    for (const skill of ['attack','area','pierce','shatter','drain','dawn'] as const) {
+      expect(combatSignature('attack', skill)).toBe('thunder');
+      expect(combatSignature('ultimate-strike', skill)).toBeUndefined();
     }
-    expect(combatSignature('debuff', 'paralysis', character('hollow-keeper'))).toBe('thunder');
-    expect(combatSignature('attack', 'attack', character('pale-wolf'))).toBeUndefined();
+    expect(combatSignature('attack')).toBe('thunder');
+    expect(combatSignature('area')).toBe('thunder');
+    expect(combatSignature('debuff','paralysis')).toBe('thunder');
+    for (const skill of ['heal','regen','barrier_mend','mend_pair','cleanse','guard','barrier','overclock','rally','jam'] as const) {
+      expect(combatSignature('heal', skill)).toBeUndefined();
+    }
   });
   it.each([22050, 44100, 48000])('keeps all performances bounded and pop-free at %i Hz', rate => {
     for (const signature of combatSignatures) for (let take = 0; take < 3; take++) {

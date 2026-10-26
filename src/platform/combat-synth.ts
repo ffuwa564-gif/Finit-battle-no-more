@@ -13,12 +13,17 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = Exclude<SkillTemplate, 'attack' | 'area' | 'pierce' | 'shatter' | 'drain' | 'dawn' | 'heal' | 'regen' | 'mend_pair' | 'barrier_mend' | 'cleanse' | 'guard' | 'barrier'> | 'wave' | 'defeat';
+type CombatKey = Exclude<SkillTemplate, 'attack' | 'area' | 'pierce' | 'shatter' | 'drain' | 'dawn' | 'guard' | 'barrier'> | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
 /** Exhaustive sound recipes, shared by every character using the same template. */
 const scores: Record<CombatKey, CombatScore> = {
+  heal: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: 0.085, duration: 0.32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.4 } },
+  barrier_mend: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: .085, duration: .32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: .4 } },
+  regen: { bells: { notes: ['A4', 'D5', 'F5', 'A5', 'D6'], spacing: 0.095, duration: 0.28 }, aura: { notes: ['D4', 'A4'], duration: 0.5 } },
+  cleanse: { sweep: { from: 1400, to: 6000, duration: 0.16, velocity: 0.25 }, bells: { notes: ['A5', 'D6', 'F6', 'A6'], spacing: 0.07, duration: 0.27 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.34 } },
+  mend_pair: { bells: { notes: ['D5', 'F5', 'A5', 'C6', 'D6', 'F6'], spacing: 0.06, duration: 0.3 }, aura: { notes: ['D4', 'F4', 'C5'], duration: 0.4 } },
   confusion: { sweep: { from: 2100, to: 420, duration: .26, velocity: .4 }, bells: { notes: ['A4', 'Bb4', 'E5', 'Eb5'], spacing: .07, duration: .2 } },
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },
@@ -77,7 +82,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     }
     return buffer;
   };
-  ordinaryBuffer('blade', 0);
+  ordinaryBuffer('thunder', 0);
   const playOrdinary = (family: CombatFamily | CombatSignature, time: number, variationKey?: string) => {
     const stream = `${family}:${variationKey ?? 'preview'}`;
     const variant = variations.get(stream) ?? 0;
@@ -112,15 +117,19 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     source.onended = () => { normalVoices.delete(entry); source.disconnect(); envelope.disconnect(); };
     source.start(startsAt);
   };
-  type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number };
+  type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number; tail?: number };
   const bells: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, voice: new tone.FMSynth({ harmonicity: 3.01, modulationIndex: 5, envelope: { attack: 0.003, decay: 0.2, sustain: 0, release: 0.3 }, modulationEnvelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0.15 }, volume: -3 }).connect(echo) }));
+  // Prayer uses a round, gently blooming voice rather than bright FM bell sidebands.
+  // A separate fixed pool avoids changing attack/support timbres or stealing their notes.
+  const prayerFilter = new tone.Filter({ type: 'lowpass', frequency: 1800, Q: .5 }).connect(bus);
+  const prayer: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, tail: .55, voice: new tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: .055, decay: .28, sustain: .08, release: .48 }, volume: -15 }).connect(prayerFilter) }));
   const aura: VoiceSlot[] = Array.from({ length: 4 }, () => ({ freeAt: 0, voice: new tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.025, decay: 0.2, sustain: 0.12, release: 0.32 }, volume: -10 }).connect(bus) }));
   const note = (pool: VoiceSlot[], pitch: string, duration: number, time: number, velocity: number) => {
     const slot = pool.find(candidate => candidate.freeAt <= time);
     // Protect phones during catch-up bursts: omit an overlapping ornament rather
     // than growing the graph, stealing a foreground hit, or queuing long delays.
     if (!slot) return;
-    slot.freeAt = time + duration + 0.35;
+    slot.freeAt = time + duration + (slot.tail ?? .35);
     slot.voice.triggerAttackRelease(pitch, duration, time, velocity);
   };
   await room.ready;
@@ -150,8 +159,9 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];
+    const healing = ['heal', 'regen', 'mend_pair', 'barrier_mend', 'cleanse'].includes(key);
     const intensity = skill ? 1 : 0.72;
-    if (score.sweep) {
+    if (score.sweep && !healing) {
       const { from, to, duration, velocity } = score.sweep;
       // New foreground sweeps replace filter automation, never allocate a new filter.
       airFilter.frequency.cancelScheduledValues(time);
@@ -163,7 +173,11 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     if (score.metal) metal.triggerAttackRelease(score.metal.note, 0.045, time + 0.055, score.metal.velocity * intensity);
     if (score.bells) {
       const { notes, spacing, duration } = score.bells;
-      notes.forEach((pitch, index) => note(bells, pitch, duration, time + 0.07 + index * spacing, 0.8 * intensity));
+      notes.forEach((pitch, index) => note(
+        healing ? prayer : bells,
+        healing ? tone.Frequency(pitch).transpose(-12).toNote() : pitch,
+        duration, time + 0.07 + index * spacing, 0.8 * intensity,
+      ));
     }
     if (score.aura) for (const pitch of score.aura.notes) note(aura, pitch, score.aura.duration, time + 0.025, 0.65 * intensity);
     return true;
