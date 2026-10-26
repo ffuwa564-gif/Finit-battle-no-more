@@ -1,3 +1,4 @@
+import { combatFamily, renderCombatSound, type CombatFamily } from './combat-audio';
 import type * as Tone from 'tone';
 import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
@@ -11,7 +12,7 @@ interface CombatScore {
   bells?: { notes: string[]; spacing: number; duration: number };
   aura?: { notes: string[]; duration: number };
 }
-type CombatKey = SkillTemplate | 'wave' | 'defeat';
+type CombatKey = Exclude<SkillTemplate, 'attack' | 'area' | 'pierce' | 'shatter' | 'drain' | 'dawn' | 'heal' | 'regen' | 'mend_pair' | 'barrier_mend' | 'cleanse' | 'guard' | 'barrier'> | 'wave' | 'defeat';
 
 const attackBoostScore: CombatScore = { bells: { notes: ['F4', 'C5', 'F5', 'A5'], spacing: 0.075, duration: 0.24 }, aura: { notes: ['F3', 'A3', 'C4'], duration: 0.35 } };
 
@@ -21,25 +22,12 @@ const scores: Record<CombatKey, CombatScore> = {
   sleep: { bells: { notes: ['A5', 'F5', 'D5'], spacing: .12, duration: .32 }, aura: { notes: ['D4', 'A4'], duration: .5 } },
   paralysis: { sweep: { from: 7200, to: 1500, duration: .12, velocity: .5 }, metal: { note: 'E6', velocity: .35 }, bells: { notes: ['E5', 'Bb5', 'E6'], spacing: .035, duration: .12 } },
   charm: { bells: { notes: ['F5', 'A5', 'C6', 'E6'], spacing: .09, duration: .25 }, aura: { notes: ['F4', 'A4', 'E5'], duration: .4 } },
-  attack: { sweep: { from: 6200, to: 650, duration: 0.12, velocity: 0.8 }, impact: { note: 'D2', velocity: 0.85 }, metal: { note: 'A4', velocity: 0.3 } },
-  area: { sweep: { from: 350, to: 4400, duration: 0.28, velocity: 0.9 }, impact: { note: 'C2', velocity: 0.95 }, bells: { notes: ['D4', 'A4', 'D5', 'F5'], spacing: 0.055, duration: 0.3 }, aura: { notes: ['D3', 'A3', 'F4'], duration: 0.36 } },
-  heal: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: 0.085, duration: 0.32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.4 } },
-  guard: { impact: { note: 'A2', velocity: 0.65 }, metal: { note: 'D4', velocity: 0.55 }, aura: { notes: ['D3', 'A3', 'D4'], duration: 0.3 } },
   overclock: attackBoostScore,
-  barrier_mend: { bells: { notes: ['D5', 'A5', 'F6', 'A6'], spacing: .085, duration: .32 }, aura: { notes: ['D4', 'F4', 'A4'], duration: .4 } },
   jam: { sweep: { from: 4200, to: 220, duration: .24, velocity: .55 }, bells: { notes: ['D5', 'Ab4', 'Eb4', 'D4'], spacing: .065, duration: .18 } },
   buff: attackBoostScore,
   rally: attackBoostScore,
   debuff: { sweep: { from: 4200, to: 220, duration: 0.24, velocity: 0.55 }, bells: { notes: ['D5', 'Ab4', 'Eb4', 'D4'], spacing: 0.065, duration: 0.18 }, aura: { notes: ['D3', 'Ab3'], duration: 0.3 } },
-  pierce: { sweep: { from: 900, to: 8500, duration: 0.09, velocity: 0.7 }, impact: { note: 'E2', velocity: 0.85 }, metal: { note: 'D5', velocity: 0.5 }, bells: { notes: ['A5', 'D6'], spacing: 0.035, duration: 0.12 } },
-  drain: { sweep: { from: 2400, to: 350, duration: 0.2, velocity: 0.55 }, impact: { note: 'D2', velocity: 0.65 }, bells: { notes: ['D4', 'Ab4', 'A4', 'D5'], spacing: 0.065, duration: 0.22 }, aura: { notes: ['D3', 'A3'], duration: 0.35 } },
-  regen: { bells: { notes: ['A4', 'D5', 'F5', 'A5', 'D6'], spacing: 0.095, duration: 0.28 }, aura: { notes: ['D4', 'A4'], duration: 0.5 } },
-  barrier: { metal: { note: 'A4', velocity: 0.4 }, bells: { notes: ['D5', 'A5', 'D6'], spacing: 0.06, duration: 0.35 }, aura: { notes: ['D3', 'A3', 'D4'], duration: 0.48 } },
-  cleanse: { sweep: { from: 1400, to: 6000, duration: 0.16, velocity: 0.25 }, bells: { notes: ['A5', 'D6', 'F6', 'A6'], spacing: 0.07, duration: 0.27 }, aura: { notes: ['D4', 'F4', 'A4'], duration: 0.34 } },
-  mend_pair: { bells: { notes: ['D5', 'F5', 'A5', 'C6', 'D6', 'F6'], spacing: 0.06, duration: 0.3 }, aura: { notes: ['D4', 'F4', 'C5'], duration: 0.4 } },
-  shatter: { sweep: { from: 8000, to: 950, duration: 0.18, velocity: 0.9 }, impact: { note: 'C2', velocity: 0.95 }, metal: { note: 'F5', velocity: 0.65 }, bells: { notes: ['D6', 'A5', 'F5'], spacing: 0.045, duration: 0.13 } },
   dispel: { sweep: { from: 6800, to: 500, duration: 0.19, velocity: 0.45 }, metal: { note: 'Eb5', velocity: 0.25 }, bells: { notes: ['A5', 'Eb5', 'D5', 'A4'], spacing: 0.055, duration: 0.15 } },
-  dawn: { sweep: { from: 650, to: 7500, duration: 0.2, velocity: 0.85 }, impact: { note: 'D2', velocity: 1 }, metal: { note: 'D5', velocity: 0.45 }, bells: { notes: ['D5', 'A5', 'D6', 'F6', 'A6'], spacing: 0.055, duration: 0.3 }, aura: { notes: ['D3', 'A3', 'D4', 'F4'], duration: 0.42 } },
   wave: { sweep: { from: 250, to: 1800, duration: 0.3, velocity: 0.3 }, impact: { note: 'D2', velocity: 0.45 }, aura: { notes: ['D3', 'F3', 'A3'], duration: 0.48 } },
   defeat: { bells: { notes: ['A4', 'F4', 'D4', 'A3'], spacing: 0.12, duration: 0.25 }, aura: { notes: ['D3', 'F3'], duration: 0.5 } },
 };
@@ -75,6 +63,44 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     buffer.getChannelData(0).set(pcm);
     ultimateBuffers.set(kind, buffer);
   }
+  const normalBuffers = new Map<string, AudioBuffer>();
+  const variations = new Map<CombatFamily, number>();
+  const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
+  const ordinaryBuffer = (family: CombatFamily, variant: number) => {
+    const key = `${family}:${variant}`;
+    let buffer = normalBuffers.get(key);
+    if (!buffer) {
+      const pcm = renderCombatSound(family, context.sampleRate, variant);
+      buffer = context.createBuffer(1, pcm.length, context.sampleRate);
+      buffer.getChannelData(0).set(pcm); normalBuffers.set(key, buffer);
+    }
+    return buffer;
+  };
+  ordinaryBuffer('attack', 0);
+  const playOrdinary = (family: CombatFamily, time: number) => {
+    const variant = variations.get(family) ?? 0;
+    variations.set(family, (variant + 1) % 3);
+    const buffer = ordinaryBuffer(family, variant);
+    // At most six foreground voices; a catch-up burst replaces the oldest one
+    // with a tiny fade rather than growing the graph or queuing delayed attacks.
+    if (normalVoices.size >= 6) {
+      const oldest = normalVoices.values().next().value!;
+      const now = context.currentTime;
+      if (oldest.startsAt > now) oldest.source.stop();
+      else {
+        oldest.envelope.gain.setValueAtTime(1, now);
+        oldest.envelope.gain.linearRampToValueAtTime(0, now + .008);
+        oldest.source.stop(now + .01);
+      }
+      normalVoices.delete(oldest);
+    }
+    const source = context.createBufferSource(), envelope = context.createGain();
+    source.buffer = buffer; source.connect(envelope); tone.connect(envelope, output);
+    const startsAt = Math.max(time, context.currentTime + .003);
+    const entry = { source, envelope, startsAt }; normalVoices.add(entry);
+    source.onended = () => { normalVoices.delete(entry); source.disconnect(); envelope.disconnect(); };
+    source.start(startsAt);
+  };
   type VoiceSlot = { voice: Tone.Synth | Tone.FMSynth; freeAt: number };
   const bells: VoiceSlot[] = Array.from({ length: 6 }, () => ({ freeAt: 0, voice: new tone.FMSynth({ harmonicity: 3.01, modulationIndex: 5, envelope: { attack: 0.003, decay: 0.2, sustain: 0, release: 0.3 }, modulationEnvelope: { attack: 0.001, decay: 0.12, sustain: 0, release: 0.15 }, volume: -3 }).connect(echo) }));
   const aura: VoiceSlot[] = Array.from({ length: 4 }, () => ({ freeAt: 0, voice: new tone.Synth({ oscillator: { type: 'triangle' }, envelope: { attack: 0.025, decay: 0.2, sustain: 0.12, release: 0.32 }, volume: -10 }).connect(bus) }));
@@ -108,6 +134,8 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   };
   return { scheduleUltimate, play(kind, skill, time) {
     if (isUltimateSound(kind)) { scheduleUltimate(kind, time); return true; }
+    const family = combatFamily(kind, skill);
+    if (family) { playOrdinary(family, time); return true; }
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
     const score = scores[key as CombatKey];

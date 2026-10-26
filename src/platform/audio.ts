@@ -1,3 +1,4 @@
+import { combatFamily } from './combat-audio';
 import type * as ToneTypes from 'tone';
 import { isUltimateSound, type UltimateSound } from './ultimate-audio';
 import type { SoundCue } from './sound-cues';
@@ -32,7 +33,14 @@ export async function enableAudio(): Promise<void> {
       if (!Tone) { Tone = tone; tone.setContext(browserContext); }
       await tone.start();
       if (!gain) {
-        gain = new tone.Gain(volume * 0.9).connect(limiter = new tone.Limiter(-2).toDestination());
+        // The compressor can overshoot on overlapping sub-millisecond attacks.
+        // Keep the approved isolated sounds unchanged below .88, and catch only
+        // transient overload at the final output (including all effect returns).
+        const ceiling = new tone.WaveShaper(value => {
+          const level = Math.abs(value);
+          return level <= .88 ? value : Math.sign(value) * (.88 + .1 * Math.tanh((level - .88) / .1));
+        }, 4096).toDestination();
+        gain = new tone.Gain(volume * 0.9).connect(limiter = new tone.Limiter(-2).connect(ceiling));
         voice = new tone.PolySynth(tone.Synth, {
           oscillator: { type: 'sine' },
           envelope: { attack: 0.008, decay: 0.16, sustain: 0.08, release: 0.45 },
@@ -68,10 +76,11 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
     return;
   }
   try {
-    // Ordinary synths keep their scheduling lookahead. Buffered ultimates use
-    // the native clock, so immediate previews do not inherit the extra 115 ms.
-    const now = isUltimateSound(kind) ? Tone.immediate() + .005 : Math.max(Tone.now() + .015, lastCueAt + .045);
-    if (!isUltimateSound(kind)) lastCueAt = now;
+    // Foreground combat PCM follows the visible hit immediately. Musical/UI
+    // synths retain their lookahead without pushing back buffered attack sounds.
+    const buffered = isUltimateSound(kind) || !!combatFamily(kind, skill);
+    const now = buffered ? Tone.immediate() + .005 : Math.max(Tone.now() + .015, lastCueAt + .045);
+    if (!buffered) lastCueAt = now;
     const notes = (sequence: string[], spacing = 0.07, duration = 0.19, velocity = 0.5) => {
       sequence.forEach((note, index) => voice?.triggerAttackRelease(note, duration, now + index * spacing, velocity));
     };

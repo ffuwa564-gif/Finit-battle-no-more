@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "preview:combat-audio": "tsx scripts/export-combat-audio.ts",
     "preview:ultimate-audio": "tsx scripts/export-ultimate-audio.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run tests",
