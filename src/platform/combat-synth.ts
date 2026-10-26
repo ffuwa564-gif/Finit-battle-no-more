@@ -1,3 +1,4 @@
+import { combatSignature, renderCombatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily, renderCombatSound, type CombatFamily } from './combat-audio';
 import type * as Tone from 'tone';
 import type { SkillTemplate } from '../domain/types';
@@ -38,7 +39,7 @@ export interface ScheduledUltimateVoice {
 }
 export interface CombatSynth {
   scheduleUltimate(kind: UltimateSound, time: number): ScheduledUltimateVoice;
-  play(kind: SoundCue, skill: SkillTemplate | undefined, time: number, variationKey?: string): boolean;
+  play(kind: SoundCue, skill: SkillTemplate | undefined, time: number, variationKey?: string, signature?: CombatSignature): boolean;
 }
 
 export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): Promise<CombatSynth> {
@@ -66,18 +67,18 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   const normalBuffers = new Map<string, AudioBuffer>();
   const variations = new Map<string, number>();
   const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
-  const ordinaryBuffer = (family: CombatFamily, variant: number) => {
+  const ordinaryBuffer = (family: CombatFamily | CombatSignature, variant: number) => {
     const key = `${family}:${variant}`;
     let buffer = normalBuffers.get(key);
     if (!buffer) {
-      const pcm = renderCombatSound(family, context.sampleRate, variant);
+      const pcm = ['blade','thunder','mechanism'].includes(family) ? renderCombatSignature(family as CombatSignature, context.sampleRate, variant) : renderCombatSound(family as CombatFamily, context.sampleRate, variant);
       buffer = context.createBuffer(1, pcm.length, context.sampleRate);
       buffer.getChannelData(0).set(pcm); normalBuffers.set(key, buffer);
     }
     return buffer;
   };
-  ordinaryBuffer('attack', 0);
-  const playOrdinary = (family: CombatFamily, time: number, variationKey?: string) => {
+  ordinaryBuffer('blade', 0);
+  const playOrdinary = (family: CombatFamily | CombatSignature, time: number, variationKey?: string) => {
     const stream = `${family}:${variationKey ?? 'preview'}`;
     const variant = variations.get(stream) ?? 0;
     if (!variations.has(stream) && variations.size >= 64) variations.delete(variations.keys().next().value!);
@@ -90,15 +91,23 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
       const now = context.currentTime;
       if (oldest.startsAt > now) oldest.source.stop();
       else {
-        oldest.envelope.gain.setValueAtTime(1, now);
+        oldest.envelope.gain.cancelAndHoldAtTime(now);
         oldest.envelope.gain.linearRampToValueAtTime(0, now + .008);
         oldest.source.stop(now + .01);
       }
       normalVoices.delete(oldest);
     }
+    const startsAt = Math.max(time, context.currentTime + .003);
+    // Let the new contact read through old tails, without pumping the BGM.
+    // Hold existing automation so repeated contacts never jump a ducked tail up.
+    for (const previous of normalVoices) {
+      if (previous.startsAt > startsAt) continue;
+      previous.envelope.gain.cancelAndHoldAtTime(startsAt);
+      previous.envelope.gain.linearRampToValueAtTime(.63, startsAt + .004);
+      previous.envelope.gain.linearRampToValueAtTime(1, startsAt + .13);
+    }
     const source = context.createBufferSource(), envelope = context.createGain();
     source.buffer = buffer; source.connect(envelope); tone.connect(envelope, output);
-    const startsAt = Math.max(time, context.currentTime + .003);
     const entry = { source, envelope, startsAt }; normalVoices.add(entry);
     source.onended = () => { normalVoices.delete(entry); source.disconnect(); envelope.disconnect(); };
     source.start(startsAt);
@@ -134,9 +143,9 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
       },
     };
   };
-  return { scheduleUltimate, play(kind, skill, time, variationKey) {
+  return { scheduleUltimate, play(kind, skill, time, variationKey, signature) {
     if (isUltimateSound(kind)) { scheduleUltimate(kind, time); return true; }
-    const family = combatFamily(kind, skill);
+    const family = signature ?? combatSignature(kind, skill) ?? combatFamily(kind, skill);
     if (family) { playOrdinary(family, time, variationKey); return true; }
     const key = skill ?? kind;
     if (!Object.hasOwn(scores, key)) return false;
