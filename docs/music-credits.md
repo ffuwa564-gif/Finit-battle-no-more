@@ -23,3 +23,5 @@
 2026-10-27：ノベル専用曲として「月明かりの庭園」を公式の[楽曲ページ](https://amachamusic.chagasi.com/music_tsukiakarinoteien.html)からダウンロード。[利用規約](https://amachamusic.chagasi.com/terms.html)を再確認した。公式分類は幻想的／ファンタジー、使用楽器はストリングス／木管。原本を `public/audio/tsukiakarinoteien.mp3` に同梱（2,793,685 bytes、約2分54秒、SHA-256: `aab02d533c5c19f361b41ed8b7be211f0ea25318c00a16e921a0e08efade1092`）。
 
 OP・章末・設定からの再読で同じノベル曲をループし、台詞送りでは再起動しない。物語を閉じると通常の場面選択へ戻る。音量・ミュート・バックグラウンド停止は既存の共通BGM設定を使い、SEに影響しない。配信時はローカル同梱ファイルを再生し、提供元MP3へ直リンクしない。クレジットと公式ページのリンクを設定にも追加した。
+
+2026-10-27：ノベル専用曲を、ストリングス／木管の「月明かりの庭園」から、ピアノ独奏の「月明かりの灯台」へ差し替えた。読書場面を落ち着いたピアノ中心の雰囲気にするための変更。公式の[楽曲ページ](https://amachamusic.chagasi.com/music_tsukiakarinotodai.html)から取得し、[利用規約](https://amachamusic.chagasi.com/terms.html)を再確認。公式分類は「しみじみ／ピアノ」、使用楽器はピアノ、演奏時間は約2分00秒。原本を `public/audio/tsukiakarinotodai.mp3` に同梱（1,931,002 bytes、SHA-256: `918781b114652c043c1180ed3cb84ab05f46684dca9b28597e08eb911e200bff`）。旧ノベル音源は配信対象から削除。ノベルの開始・終了に伴う切替、台詞送り中の再生継続、共通音量・ミュート・バックグラウンド停止は既存の仕組みを使う。

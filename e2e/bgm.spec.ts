@@ -7,7 +7,7 @@ test('opening and story replay use the local fantasy track without restarting be
   const story = page.locator('.visual-novel'), music = page.locator('audio[data-bgm]');
   await expect(story).toBeVisible();
   await expect(music).toHaveAttribute('data-scene', 'novel');
-  await expect(music).toHaveAttribute('src', /audio\/tsukiakarinoteien.mp3$/);
+  await expect(music).toHaveAttribute('src', /audio\/tsukiakarinotodai.mp3$/);
   await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(.2);
   const position = await music.evaluate((el: HTMLAudioElement) => el.currentTime);
   await story.getByRole('button', { name: '次の台詞', exact: true }).click();
