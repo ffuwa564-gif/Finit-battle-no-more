@@ -7,6 +7,7 @@ import { novelAvailable } from '../domain/novels';
 import { tr } from '../locales/i18n';
 import { Button, Modal, Panel } from './index';
 import './visual-novel.css';
+import { SceneAtmosphere } from './SceneAtmosphere';
 
 export function NovelLibrary({ save, busy, command }: { save: GameSave; busy: boolean; command: (c: GameCommand) => Promise<boolean> }) {
   const scenes = (content.novels ?? []).filter(scene => novelAvailable(scene, save));
@@ -63,6 +64,7 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
     <section ref={root} className={`visual-novel visual-novel--${phase}${reducedMotion ? ' visual-novel--reduced' : ''}`} role="dialog" aria-modal="true" aria-labelledby="novel-title" tabIndex={-1} data-scene={scene.id} data-page={pageIndex}>
       <div className="novel-backgrounds" aria-hidden="true">{backgrounds.map(id => <img key={id} src={assetPath(id)} alt="" style={{ objectPosition: content.assets.find(asset => asset.id === id)?.anchor ?? '50% 50%' }} className={id === page.backgroundId ? 'is-current' : ''} />)}</div>
       <div className={`novel-shade novel-shade--${page.shade ?? 'normal'}`} aria-hidden="true" />
+      {page.shade !== 'black' && <SceneAtmosphere mode={page.shade === 'dark' ? 'memory' : 'quiet'} reducedMotion={reducedMotion} />}
       <header className="novel-header"><div><span>STILLVEIL · STORY</span><h1 id="novel-title">{tr(scene.title)}</h1></div><div className="novel-toolbar"><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setLog(true)}><BookOpen size={15} />{tr('会話ログ')}</Button><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setSkip(true)}><FastForward size={15} />{tr('物語をスキップ')}</Button></div></header>
       <div className="novel-message">
         <div className="novel-speaker" aria-live="polite">{tr(page.speaker ?? '語り')}</div>
