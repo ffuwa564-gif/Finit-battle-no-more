@@ -124,7 +124,7 @@ export default function App() {
     window.addEventListener('game:ui', onUI);
     return () => window.removeEventListener('game:ui', onUI);
   }, [save?.settings.seVolume]);
-  const bgmScene = getBgmScene(save?.battle, content.dungeons.find(dungeon => dungeon.id === save?.battle?.dungeonId));
+  const bgmScene = getBgmScene(save?.battle, content.dungeons.find(dungeon => dungeon.id === save?.battle?.dungeonId), Boolean(save?.novels?.active));
   useEffect(() => {
     if (save && !fatal) configureBgm(bgmScene, save.settings.bgmVolume);
     else configureBgm('home', 0);

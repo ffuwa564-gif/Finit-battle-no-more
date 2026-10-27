@@ -1,6 +1,28 @@
 import { enterGame } from './boot';
 import { test, expect } from '@playwright/test';
 
+test('opening and story replay use the local fantasy track without restarting between lines', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'タップしてはじめる', exact: true }).click();
+  const story = page.locator('.visual-novel'), music = page.locator('audio[data-bgm]');
+  await expect(story).toBeVisible();
+  await expect(music).toHaveAttribute('data-scene', 'novel');
+  await expect(music).toHaveAttribute('src', /audio\/tsukiakarinoteien.mp3$/);
+  await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(.2);
+  const position = await music.evaluate((el: HTMLAudioElement) => el.currentTime);
+  await story.getByRole('button', { name: '次の台詞', exact: true }).click();
+  await expect(story).toHaveAttribute('data-page', '1');
+  expect(await music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThanOrEqual(position);
+  await page.getByRole('button', { name: '物語をスキップ', exact: true }).click();
+  await page.getByRole('button', { name: 'スキップして進む', exact: true }).click();
+  await expect(music).toHaveAttribute('data-scene', 'home');
+  await page.goto('/#settings');
+  await page.getByRole('button', { name: /序章 ― 欲望の扉、その向こう/ }).click();
+  await expect(music).toHaveAttribute('data-scene', 'novel');
+  await expect(music).toHaveCount(1);
+  await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);
+});
+
 test('BGM unlocks on interaction, switches with exploration, and remembers independent mute', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));

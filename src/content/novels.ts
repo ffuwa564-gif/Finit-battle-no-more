@@ -18,14 +18,19 @@ export const openingNovel: NovelSceneDef = {
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'あなた、なかなか珍しいわね。\n気に入ったわ。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: '仕方ないから、こき使ってあげるわね。' },
     { backgroundId: 'novel-awakening-garden', text: '助けてくれた相手に、振り回される。\nそんな日々が始まることを、そのときの私は、まだ知らなかった。' },
-    {"backgroundId": "novel-awakening-garden", "text": "最初の仕事は、朝の来ない街よ。\n誰かの願いが、今もそこに残っているの。", "speaker": "庭園の女"},
-    {"backgroundId": "novel-awakening-garden", "text": "願いが叶った後、人はどう暮らすのか。\nあなたの目で見て、私に聞かせてちょうだい。", "speaker": "庭園の女"},
-    {"backgroundId": "novel-awakening-garden", "text": "……あなたは、見に行かないの？", "speaker": "私"},
-    {"backgroundId": "novel-awakening-garden", "text": "見えるものと、分かることは違うのよ。\nだから、あなたの話が聞きたいの。", "speaker": "庭園の女"},
-    {"backgroundId": "novel-awakening-garden", "text": "それで。あなたは、何を望むの？", "speaker": "庭園の女"},
-    {"backgroundId": "novel-awakening-garden", "text": "分からない。\nそう答えると、彼女は困った顔をせずに笑った。"},
-    {"backgroundId": "novel-awakening-garden", "text": "なら、分からないまま行ってらっしゃい。\n街ではセリスたちが待っているわ。帰ったら、続きを聞かせて。", "speaker": "庭園の女"},
-    {"backgroundId": "novel-awakening-garden", "text": "泉に壊れた聖堂が映った。\n私は水面へ手を伸ばす。帰ってきたら何を話そう。まだ見ぬ街のことを、少しだけ考えた。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "ここで生き延びるなら、まずはギルドに入りなさい。\n仕事を受けて、誰かと旅をするの。一人で歩ける街ではないわ。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……あなたは、一緒に来ないの？"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "私はここで、世界の可能性を探るの。\n街で何が起きているのかは、あなたの言葉で聞かせてちょうだい。"},
+    {"backgroundId": "novel-awakening-garden", "text": "彼女が名を呼ぶと、銀の盾を背負った女性が木陰から進み出た。\n私を一瞥し、すぐに庭園の女の前へ膝をつく。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "リオラ。あなたに頼むわ。\nこの子をギルドへ連れていって。仕事の選び方も、帰ってくる術も、教えてあげて。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "仰せのままに。\nあなたの望まれることなら、何なりと。"},
+    {"backgroundId": "novel-awakening-garden", "text": "私に向けられた声とは、温度が違った。\nリオラは、ただあの人だけを見ていた。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……私のために、そこまでしなくても。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "勘違いするな。あの方に命じられたからだ。\n私はリオラ。道では私の後ろを歩け。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "それで。あなたは、何を望むの？"},
+    {"backgroundId": "novel-awakening-garden", "text": "分からない。\n私の答えに、彼女は困った顔をせずに笑った。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "なら、まずは帰っていらっしゃい。\nギルドで居場所を作って、旅をして。話の続きは、それからよ。"},
+    {"backgroundId": "novel-awakening-garden", "text": "泉に、朝の来ない街が映った。\n水鏡へ踏み出す直前、リオラは一度だけ振り返った。その視線の先に、私はいなかった。"},
   ],
 };
 /** Returns to the garden develop the observer and the protagonist between chapters. */
@@ -33,40 +38,49 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
   "1": [
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "水鏡を渡って庭園へ戻る。\n街で預かった鉢を、私は膝に乗せた。"
+      "text": "ギルドに踏破の記録を預け、水鏡を渡って庭園へ戻る。\n街で託された鉢を抱えた私の隣で、リオラは身なりを整えた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "おかえり。あの街はどうだった？\nひどい世界だった？",
-      "speaker": "庭園の女"
+      "speaker": "庭園の女",
+      "text": "おかえり。リオラ、ご苦労さま。\nあなたはどうだった？ ひどい世界だった？"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "……優しい人たちがいた。\n待っているものを、誰も捨てられないみたいだった。",
-      "speaker": "私"
+      "speaker": "私",
+      "text": "……優しい人たちがいた。\n待っているものを、誰も捨てられないみたいだった。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "そう。あなたは、そこを見たのね。",
-      "speaker": "庭園の女"
+      "speaker": "庭園の女",
+      "text": "そう。あなたは、そこを見たのね。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "願った人を責めれば、あの夜は終わるの？\n彼女は答えず、私の抱える新しい芽を見た。"
+      "speaker": "リオラ",
+      "text": "ご指示のとおり、ギルドへの登録と聖域の調査を終えました。\n次も、どうか私にお命じください。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "街へ戻る。\nこれを届ける相手に、会ってみたい。",
-      "speaker": "私"
+      "text": "庭園の女が頷くと、リオラの張りつめた肩が下りた。\n旅の間、私に見せることのなかった顔だった。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "いいわ。庭園の祈りは街の外へも届くの。\n旅に力を貸してくれる女神たちも、迎えてあげて。",
-      "speaker": "庭園の女"
+      "speaker": "私",
+      "text": "街へ戻る。\nこの芽を届ける相手に、会ってみたい。ギルドにも、次の仕事を聞いてくる。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "観測の続き、と手帳には書いた。\nけれど私の足は、もう温室へ向いていた。"
+      "speaker": "庭園の女",
+      "text": "いいわ。庭園の祈りは街の外へも届くの。\n旅に力を貸してくれる女神たちも、迎えてあげて。"
+    },
+    {
+      "backgroundId": "novel-awakening-garden",
+      "text": "リオラは私の手の包帯を見て、新しい布を置いた。\n「傷を放っておくと、次の仕事に差し支える」。それだけ言って、またあの人へ向き直る。"
+    },
+    {
+      "backgroundId": "novel-awakening-garden",
+      "text": "手帳には、初仕事を終えたと書いた。\n私のことを知ろうともしない同行者と、明日も同じ道を歩く。そのことは、書かなかった。"
     }
   ],
   "2": [
