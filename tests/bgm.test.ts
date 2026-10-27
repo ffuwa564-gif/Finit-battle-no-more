@@ -22,6 +22,9 @@ describe('BGM scene transitions', () => {
     expect(getBgmScene({ ...final, phase: 'failed' })).toBe('home');
     expect(getBgmScene(null)).toBe('home');
     expect(getBgmScene(undefined)).toBe('home');
+    expect(getBgmScene(null, undefined, true)).toBe('novel');
+    expect(getBgmScene({ ...final, phase: 'reward' }, undefined, true)).toBe('novel');
+    expect(getBgmScene(null, undefined, false)).toBe('home');
   });
 
   it('changes source on transitions, preserves playback during updates, and resumes the requested scene after mute or hiding', () => {
@@ -53,5 +56,16 @@ describe('BGM scene transitions', () => {
     expect(audio.paused).toBe(false);
     configureBgm('home', 0.4);
     expect(audio.src).toContain(bgmTracks.home.file);
+    configureBgm('novel', 0.25);
+    expect(audio.src).toContain(bgmTracks.novel.file);
+    const storyLoads = audio.load.mock.calls.length;
+    configureBgm('novel', 0.25);
+    expect(audio.load).toHaveBeenCalledTimes(storyLoads);
+    expect(audio.volume).toBe(0.25);
+    configureBgm('novel', 0);
+    expect(audio.paused).toBe(true);
+    configureBgm('home', 0.25);
+    expect(audio.src).toContain(bgmTracks.home.file);
+    expect(audio.volume).toBe(0.25);
   });
 });
