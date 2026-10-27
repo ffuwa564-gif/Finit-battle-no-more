@@ -23,6 +23,7 @@ import './close-button.css';
 export { EnemyCarousel } from './EnemyCarousel';
 export { MenuEmblem } from './MenuEmblem';
 export { SceneEffects } from './SceneEffects';
+export { SceneAtmosphere } from './SceneAtmosphere';
 export { TownNavigation } from './TownNavigation';
 export { CommandEmblem } from './CommandEmblem';
 export { MotionSettingsProvider } from './animation-settings';

@@ -8,7 +8,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, sharedSSRIds, gachaBaseChance, gachaPoolIds } from '../content/gacha';
 import { useState } from 'react';
 import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather } from 'lucide-react';
-import { NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CampaignStory, CampaignDungeons, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
+import { SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CampaignStory, CampaignDungeons, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
 import { bgmTracks } from '../platform/bgm';
 import { content, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
@@ -38,6 +38,7 @@ export function HomeView(p: ViewProps) {
     <div className="hub-illustration">
       <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
+      <SceneAtmosphere reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">
           <span className="hub-profile-avatar"><PortraitArt character={leader} face /></span>
@@ -161,6 +162,7 @@ export function BattleView(p: ViewProps) {
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} materials={total} />
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
+      <SceneAtmosphere mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
       <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
       {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
     </section>

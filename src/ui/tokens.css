@@ -1,20 +1,20 @@
 :root {
   --font-body: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
   --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, 'Noto Serif CJK JP', 'Noto Serif JP', serif;
-  --page: #e9e9e5;
-  --paper: #f3f1e9;
-  --paper-bright: #fcfaf3;
-  --ink: #3c4653;
-  --muted: #717b7e;
-  --slate: #687b8b;
-  --slate-deep: #4b6175;
-  --sidebar: #e4e7e5;
-  --teal: #82a29b;
-  --gold: #9e8d6b;
-  --gold-light: #c6bca7;
-  --border: #c9cac4;
-  --selected: #e4e9e9;
-  --danger: #a16e63;
+  --page: #090e17;
+  --paper: #151e2c;
+  --paper-bright: #202d40;
+  --ink: #e0e5ee;
+  --muted: #a8b5c8;
+  --slate: #a5b9d5;
+  --slate-deep: #c2d2e8;
+  --sidebar: #101824;
+  --teal: #96c4bc;
+  --gold: #c2b28e;
+  --gold-light: #dfd1ae;
+  --border: #3c4b60;
+  --selected: #29394e;
+  --danger: #e1a29e;
   --radius: 22px;
   --radius-sm: 14px;
   --space-xs: 5px;
@@ -22,5 +22,7 @@
   --space-md: 15px;
   --space-lg: 23px;
   --space-xl: 32px;
-  --shadow-card: inset 0 0 0 1px #fffdf4c9, 0 3px 10px #34404b0b, 0 1px 2px #58636b12;
+  --shadow-card: inset 0 1px 0 #c8d8ee0a, 0 7px 24px #00000024;
+  --surface-moon: linear-gradient(145deg, #1c2839, #111a28 78%);
+  --edge-moon: #a7bdd53d;
 }

@@ -3,11 +3,13 @@ import { Moon, ArrowRight } from 'lucide-react';
 import { Button, LanguageSwitch } from './index';
 import { assetPath } from '../content';
 import './title-screen.css';
+import { SceneAtmosphere } from './SceneAtmosphere';
 
 export function TitleScreen({ onStart, leaving, returning }: { onStart: () => void; leaving: boolean; returning: boolean }) {
   return <main className={`title-screen${leaving ? ' is-leaving' : ''}`} aria-labelledby="title-screen-name">
     <LanguageSwitch className="title-language" />
     <img className="title-screen__art" src={assetPath('menu-hero')} alt={tr("")} />
+    <SceneAtmosphere />
     <div className="title-screen__brand">
       <Moon size={32} strokeWidth={1} aria-hidden="true" />
       <p className="title-screen__eyebrow">BENEATH THE SILENT MOON</p>
