@@ -3,7 +3,7 @@ import type { Battle, DungeonDef } from '../domain/types';
 /** Downloaded game BGM; ownership and source links stay separate from project art. */
 export const bgmTracks = {
   home: { title: '悲しみの曖昧な対象', file: 'kanashiminoaimainataishou.mp3', source: 'https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html' },
-  novel: { title: '月明かりの灯台', file: 'tsukiakarinotodai.mp3', source: 'https://amachamusic.chagasi.com/music_tsukiakarinotodai.html' },
+  novel: { title: '水に沈むオルガン', file: 'mizunishizumuorgan.mp3', source: 'https://amachamusic.chagasi.com/music_mizunishizumuorgan.html' },
   battle: { title: '渦巻き', file: 'uzumaki.mp3', source: 'https://amachamusic.chagasi.com/music_uzumaki.html' },
   boss: { title: '騎兵戦', file: 'kiheisen.mp3', source: 'https://amachamusic.chagasi.com/music_kiheisen.html' },
   japaneseBoss: { title: '打ち上げ花火', file: 'uchiagehanabi.mp3', source: 'https://amachamusic.chagasi.com/music_uchiagehanabi.html' },
