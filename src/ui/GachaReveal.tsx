@@ -6,7 +6,7 @@ import { roleName } from '../content';
 import { Button, Modal, CharacterArtwork } from './index';
 import './gacha-reveal.css';
 
-export function GachaReveal({ character, reducedMotion, onClose, onReveal, duplicate, refund, introGuarantee = false, currency = 'stones' }: { character: CharacterDef; reducedMotion: boolean; onClose: () => void; onReveal: () => void; duplicate: boolean; refund: number; introGuarantee?: boolean; currency?: 'stones' | 'astralStones' }) {
+export function GachaReveal({ character, reducedMotion, onClose, onReveal, onSkipAll, duplicate, refund, introGuarantee = false, currency = 'stones' }: { character: CharacterDef; reducedMotion: boolean; onClose: () => void; onSkipAll?: () => void; onReveal: () => void; duplicate: boolean; refund: number; introGuarantee?: boolean; currency?: 'stones' | 'astralStones' }) {
   const [revealed, setRevealed] = useState(false);
   const announced = useRef(false);
   const announce = useRef(onReveal); announce.current = onReveal;
@@ -19,6 +19,7 @@ export function GachaReveal({ character, reducedMotion, onClose, onReveal, dupli
   useEffect(() => { if (revealed && !announced.current) { announced.current = true; announce.current(); } }, [revealed]);
   return <Modal title={tr(revealed ? character.name : '祈願の顕現')} className={`summon-modal summon-modal--${character.rarity.toLowerCase()}`} onClose={onClose}>
     <div className={`gacha-reveal gacha-reveal--${character.rarity.toLowerCase()}${revealed ? ' is-revealed' : ''}${reducedMotion ? ' is-reduced' : ''}`} data-rarity={character.rarity}>
+      {onSkipAll && <Button variant="secondary" className="gacha-reveal__skip-all" onClick={onSkipAll}>{tr('結果をまとめて見る')}</Button>}
       <div className="gacha-reveal__rays" aria-hidden="true" />
       <div className="gacha-reveal__ring" aria-hidden="true" />
       <div className="gacha-reveal__particles" aria-hidden="true">{localize(Array.from({ length: ssr ? 32 : 12 }, (_, i) => <i key={i} style={{ '--angle': `${i * 137.5}deg`, '--distance': `${100 + i % 7 * 27}px`, '--delay': `${i % 8 * 75}ms` } as CSSProperties} />))}</div>
