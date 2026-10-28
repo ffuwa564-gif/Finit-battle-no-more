@@ -92,3 +92,6 @@
 .battle-layout .party-unit { position: relative; }
 .battle-layout .party-unit__effects { position: absolute; bottom: 30px; right: 3px; z-index: 4; max-width: calc(100% - 6px); pointer-events: none; }
 .battle-layout .party-unit__effects .unit-effects-summary { pointer-events: auto; }
+
+/* Begin both bars on the impact frame, with a short readable settling motion. */
+.battle-layout .hp-bar > span, .battle-layout .ultimate-meter__fill { transition: width .12s linear; }

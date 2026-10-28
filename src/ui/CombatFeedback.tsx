@@ -7,7 +7,7 @@ import { eventHpChanges, type HpChange } from '../platform/combat-feedback';
 import './combat-feedback.css';
 
 type FloatingNumber = HpChange & { id: string; x: number; y: number; named: boolean; ultimate?: boolean };
-export function CombatFeedback({ event, before, reducedMotion, speed = 1 }: { event?: BattleEvent; before: Unit[]; reducedMotion: boolean; speed?: 1 | 2 }) {
+export function CombatFeedback({ event, before, onImpact, reducedMotion, speed = 1 }: { event?: BattleEvent; before: Unit[]; onImpact: (eventId: string) => void; reducedMotion: boolean; speed?: 1 | 2 }) {
   const clock = useRef(new UltimateClock());
   const root = useRef<HTMLDivElement>(null);
   const [numbers, setNumbers] = useState<FloatingNumber[]>([]);
@@ -45,9 +45,15 @@ export function CombatFeedback({ event, before, reducedMotion, speed = 1 }: { ev
     if (!event) return;
     const changes = eventHpChanges(event, latestBefore.current);
     if (event.ultimate) clock.current.sync(event.id, speed, performance.now());
-    const timer = setTimeout(() => window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes, ultimate: event.ultimate } })), event.ultimate ? clock.current.delay(ULTIMATE_TIMING.impact, performance.now()) : 0);
+    // React batches the meters and floating numbers into the same impact frame.
+    // Keep `before` separate from the presented snapshot so speed/settings changes
+    // still calculate the original delta, rather than suppressing the number.
+    const timer = setTimeout(() => {
+      onImpact(event.id);
+      window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes, ultimate: event.ultimate } }));
+    }, event.ultimate ? clock.current.delay(ULTIMATE_TIMING.impact, performance.now()) : 0);
     return () => clearTimeout(timer);
-  }, [event?.id, speed]);
+  }, [event?.id, speed, onImpact]);
   useEffect(() => () => { for (const timer of timers.current) clearTimeout(timer); }, []);
   return <div ref={root} className={`combat-feedback${event?.ultimate ? ' combat-feedback--ultimate' : ''}${reducedMotion ? ' combat-feedback--reduced' : ''}`} aria-live="off">
     {localize(numbers.map(number => <div key={number.id} data-hp-unit={number.unitId} data-hp-delta={number.amount} className={`combat-number combat-number--${number.amount > 0 ? 'heal' : number.side === 'party' ? 'hurt' : 'damage'}${number.ultimate ? ' combat-number--ultimate' : ''}`} style={{ left: number.x, top: number.y } as CSSProperties} aria-label={tr(`${characterById(number.characterId).name} ${number.amount > 0 ? '回復' : 'ダメージ'} ${Math.abs(number.amount)}`)}>

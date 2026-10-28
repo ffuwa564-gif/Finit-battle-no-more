@@ -84,7 +84,9 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
       }
     }
     const current = units.find(unit => unit.uid === selectedRef.current);
-    if (!current || current.hp <= 0 && current.uid !== temporaryActor) {
+    // A killing hit keeps its recipient and empty HP bar under the damage number.
+    const receivingHit = current && event?.targetIds?.includes(current.uid);
+    if (!current || current.hp <= 0 && current.uid !== temporaryActor && !receivingHit) {
       const next = units.find(unit => unit.hp > 0) ?? units.find(unit => unit.uid === temporaryActor) ?? units[0];
       if (next && next.uid !== selectedRef.current) focusUnit(next.uid);
     }
