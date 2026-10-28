@@ -7,8 +7,14 @@ test('featured maiden pair keeps Nox animation, shows correct odds and is awarde
   await page.goto('/#gacha'); await enterGame(page);
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const { content } = await import('/src/content/index.ts');
+    const { applyCommand } = await import('/src/application/game.ts');
     const save = (await loadSave())!; const revision = save.revision;
-    save.stones = 5; save.drawCount = 1; save.ssrPity = 1; save.revision++;
+    save.stones = 5; save.drawCount = 1; save.ssrPity = 1;
+    for (let seed = 1; seed < 200; seed++) {
+      if (applyCommand({ ...save, seed }, { type: 'draw', collectionId: 'clockwork-maidens' }, content).lastGachaResult?.characterId === 'nox') { save.seed = seed; break; }
+    }
+    save.revision++;
     await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page);
@@ -71,8 +77,14 @@ test('Nox can be welcomed from a ten-wish gallery with shared hard pity', async 
   await page.goto('/#gacha'); await enterGame(page);
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const { content } = await import('/src/content/index.ts');
+    const { applyCommand } = await import('/src/application/game.ts');
     const save = (await loadSave())!; const revision = save.revision;
     save.stones = 50; save.drawCount = 100; save.ssrPity = 89;
+    for (let seed = 1; seed < 200; seed++) {
+      const trial = applyCommand({ ...save, seed }, { type: 'draw', collectionId: 'clockwork-maidens', count: 10 }, content);
+      if (trial.lastGachaResults?.[0].characterId === 'nox') { save.seed = seed; break; }
+    }
     save.settings.reducedMotion = true; save.revision++;
     await persistSave(save, revision);
   });
