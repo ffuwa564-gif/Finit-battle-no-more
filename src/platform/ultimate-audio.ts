@@ -1,4 +1,5 @@
 import type { UltimateVisual } from './ultimate-choreography';
+import { renderProtectionSound } from './protection-audio';
 
 export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism'] as const;
 export type UltimateSound = typeof ultimateSounds[number];
@@ -7,6 +8,7 @@ export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ bla
 
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
+  if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
   const charge = kind === 'ultimate', heal = kind === 'ultimate-sanctuary';
   const duration = charge ? .68 : heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : 1.5;
   const samples = new Float32Array(Math.ceil(duration * sampleRate));
@@ -61,10 +63,6 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
       const env=(1-Math.exp(-t*22))*Math.exp(-t*3.2);
       sound=(Math.sin(2*Math.PI*396*t)+.6*Math.sin(2*Math.PI*594*t)+.28*Math.sin(2*Math.PI*792*t))*.2*env;
       sound += grain*.26*env + .07*Math.sin(2*Math.PI*2376*t)*(1-Math.exp(-t*8))*Math.exp(-t*4);
-    } else if (kind === 'ultimate-guard') {
-      const env=attack(1600);
-      sound=(.26*Math.sin(2*Math.PI*220*t)*Math.exp(-t*6)+.16*Math.sin(2*Math.PI*437*t)*Math.exp(-t*9)+.1*Math.sin(2*Math.PI*682*t)*Math.exp(-t*12))*env;
-      sound += body*1.5*Math.exp(-t*20)+grain*.55*Math.exp(-t*45)*env;
     } else {
       const env=(1-Math.exp(-t*38))*Math.exp(-t*4.6);
       phase += 2*Math.PI*(330+110*Math.min(1,t*7))/sampleRate;

@@ -8,6 +8,10 @@
 .app-shell.is-exploring .main-content { padding-inline: 12px; }
 .app-shell:is(.is-menu,.is-exploring) .main-content { padding-bottom: 0; }
 .app-shell.is-exploring .app-footer { display: none; }
+/* Fix the frame to the available viewport; short screens scroll the whole page. */
+.app-shell.is-exploring .battle-layout { display: flex; flex-direction: column; height: max(680px,calc(100dvh - 48px)); min-height: 0; }
+.app-shell.is-exploring .battle-layout > :not(.battle-scene) { flex-shrink: 0; }
+.app-shell.is-exploring .battle-layout .battle-scene { flex: 1 1 0; height: auto; min-height: 140px; }
 .app-shell.is-menu .town-navigation .command-emblem { filter: grayscale(1); }
 @media (min-width: 761px) {
   .app-shell.is-exploring .app-body { padding-top: 24px; }
@@ -20,7 +24,5 @@
   .app-shell.is-menu .hub-illustration { flex: 1 0 auto; }
   .app-shell.is-menu .home-hub > :not(.hub-illustration) { flex-shrink: 0; }
   .app-shell.is-menu .hub-illustration > img { object-position: 70% 50%; }
-  .app-shell.is-exploring .battle-layout { display: flex; flex-direction: column; min-height: calc(100dvh - 8px); }
-  .app-shell.is-exploring .battle-scene { flex: 1 0 auto; }
-  .app-shell.is-exploring .battle-layout > :not(.battle-scene) { flex-shrink: 0; }
+  .app-shell.is-exploring .battle-layout { height: max(640px,calc(100dvh - 8px)); }
 }

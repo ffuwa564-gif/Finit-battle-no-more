@@ -19,5 +19,5 @@ export function UnitEffects({ unit, round }: { unit: Unit; round: number }) {
   if ((unit.statusWardUntil ?? -1) >= round) effects.push({ label: '状態耐性', title: `混乱・睡眠・麻痺・魅了の再付与を防ぐ・残り${unit.statusWardUntil! - round + 1}ラウンド` });
   const icons = { confusion: CloudFog, sleep: Moon, paralysis: Zap, charm: Heart };
   if (!effects.length) return null;
-  return <div className="unit-effects" aria-label={tr("付与効果")}>{localize(effects.map(effect => { const Icon = effect.ailment ? icons[effect.ailment] : null; return <span key={effect.label} className={`${effect.bad ? 'is-debuff' : ''}${effect.ailment ? ' is-ailment' : ''}`} data-ailment={effect.ailment} title={tr(effect.title)} aria-label={tr(effect.label) + ' / ' + tr(effect.title)}>{Icon && <Icon size={10} aria-hidden="true" />}{localize(effect.label)}</span>; }))}</div>;
+  return <div className="unit-effects" role="group" tabIndex={0} aria-label={tr("付与効果")}>{localize(effects.map(effect => { const Icon = effect.ailment ? icons[effect.ailment] : null; return <span key={effect.label} className={`${effect.bad ? 'is-debuff' : ''}${effect.ailment ? ' is-ailment' : ''}`} data-ailment={effect.ailment} title={tr(effect.title)} aria-label={tr(effect.label) + ' / ' + tr(effect.title)}>{Icon && <Icon size={10} aria-hidden="true" />}{localize(effect.label)}</span>; }))}</div>;
 }

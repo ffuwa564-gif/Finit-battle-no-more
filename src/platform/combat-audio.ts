@@ -1,6 +1,7 @@
 import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
 import { isUltimateSound } from './ultimate-audio';
+import { renderProtectionSound } from './protection-audio';
 
 export const combatFamilies = ['attack','area','pierce','shatter','drain','dawn','heal','guard','barrier'] as const;
 export type CombatFamily = typeof combatFamilies[number];
@@ -66,12 +67,13 @@ export const combatTake = (family: CombatFamily, variant: number) => combatTakes
 
 /** Weight comes from a sustained low-mid collision and harmonics, not sub-bass alone. */
 export function renderCombatSound(family: CombatFamily, sampleRate: number, variant = 0): Float32Array {
+  if (family === 'guard' || family === 'barrier') return renderProtectionSound(family, sampleRate, variant);
   const take=combatTake(family,variant),{duration,tone,weight,material}=take;
   const pcm=new Float32Array(Math.ceil(duration*sampleRate));
   const pole=(hz:number)=>1-Math.exp(-2*Math.PI*hz/sampleRate);
   const lowA=pole(140),bodyA=pole(1100),edgeA=pole(4200),airA=pole(7200),floorA=pole(620);
   let seed=0x76b93+combatFamilies.indexOf(family)*7919+((variant%3)+3)%3*1103,low=0,body=0,edge=0,air=0,floor=0,phase=0;
-  const gentle=family==='heal'||family==='barrier';
+  const gentle=family==='heal';
   for(let i=0;i<pcm.length;i++){
     const t=i/sampleRate;
     seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;
@@ -129,18 +131,10 @@ export function renderCombatSound(family: CombatFamily, sampleRate: number, vari
     // Parallel saturation thickens the body without flattening the bright attack.
     pcm[i]=Math.tanh(value*1.35);
   }
-  const support=family==='guard'||family==='barrier';
-  const dry=pcm.slice(),offset=Math.round((material==='hammer' ? .061 : .043)*sampleRate),wet=support ? .04 : gentle ? .16 : material==='stone' ? .13 : .08;
+  const dry=pcm.slice(),offset=Math.round((material==='hammer' ? .061 : .043)*sampleRate),wet=gentle ? .16 : material==='stone' ? .13 : .08;
   for(let i=offset;i<pcm.length;i++)pcm[i]+=dry[i-offset]*wet;
   let peak=0;for(const value of pcm)peak=Math.max(peak,Math.abs(value));
-  const target=family==='heal' ? .48 : family==='barrier' ? .50 : family==='guard' ? .58 : family==='shatter'||family==='area' ? .74 : .7;
-  // Round shield/ward contacts with two gentle low-pass stages. The final taper
-  // comes after filtering so the buffer still starts and ends at exact silence.
-  const softness=pole(family==='guard'?1500:1800);let rounded=0,roundedTwice=0;
-  for(let i=0;i<pcm.length;i++){
-    let value=pcm[i]*target/Math.max(peak,.001);
-    if(support){rounded+=softness*(value-rounded);roundedTwice+=softness*(rounded-roundedTwice);value=roundedTwice;}
-    pcm[i]=value*Math.min(1,i/(sampleRate*(support ? .009 : .0008)),(pcm.length-1-i)/(sampleRate*.045));
-  }
+  const target=family==='heal' ? .48 : family==='shatter'||family==='area' ? .74 : .7;
+  for(let i=0;i<pcm.length;i++)pcm[i]*=target/Math.max(peak,.001)*Math.min(1,i/(sampleRate*.0008),(pcm.length-1-i)/(sampleRate*.045));
   return pcm;
 }
