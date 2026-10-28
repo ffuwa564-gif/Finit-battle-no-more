@@ -60,6 +60,33 @@ test('healing aliases use the soft prayer synth instead of combat PCM',async({pa
   expect(voices).toHaveLength(0);
 });
 
+test('soft support effects remain audible through the actual master output',async({page})=>{
+  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.addInitScript(()=>{
+    (window as any).__supportMeters=[];
+    const original=AudioNode.prototype.connect;
+    AudioNode.prototype.connect=function(destination:AudioNode|AudioParam,...args:number[]){
+      if(destination instanceof AudioDestinationNode&&this.context instanceof AudioContext){
+        const meter=this.context.createAnalyser();meter.fftSize=2048;
+        original.call(this,meter);(window as any).__supportMeters.push(meter);
+      }
+      return (original as Function).call(this,destination,...args);
+    } as typeof AudioNode.prototype.connect;
+  });
+  await prepare(page);
+  const rms=()=>page.evaluate(()=>Math.max(0,...(window as any).__supportMeters.map((meter:AnalyserNode)=>{
+    const data=new Float32Array(meter.fftSize);meter.getFloatTimeDomainData(data);
+    return Math.sqrt(data.reduce((sum,x)=>sum+x*x,0)/data.length);
+  })));
+  await expect.poll(rms).toBeLessThan(.0001);
+  for(const skill of ['guard','barrier','buff','dispel'] as const){
+    await page.evaluate(async skill=>{const audio=await import('/src/platform/audio.ts');audio.playSound('guard',undefined,skill);},skill);
+    await expect.poll(rms,{timeout:3000,intervals:[20,30,50]}).toBeGreaterThan(.001);
+    await expect.poll(rms,{timeout:4000,intervals:[100]}).toBeLessThan(.0001);
+  }
+  expect(errors).toEqual([]);
+});
+
 test('each combatant advances her own thunder takes independently',async({page})=>{
   await prepare(page);
   const voices=await page.evaluate(async()=>{

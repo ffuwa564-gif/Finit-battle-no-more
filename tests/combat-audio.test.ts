@@ -8,6 +8,15 @@ const measure=(pcm:Float32Array)=>{
   return {peak,rms:Math.sqrt(energy/pcm.length),finite};
 };
 describe('ordinary combat materials',()=>{
+  it('keeps shields and wards rounded without a strong high-frequency edge',()=>{
+    for(const rate of [22050,44100,48000])for(const family of ['guard','barrier'] as const)for(let take=0;take<3;take++){
+      const pcm=renderCombatSound(family,rate,take),a=1-Math.exp(-2*Math.PI*3000/rate);
+      let low=0,highEnergy=0,totalEnergy=0;
+      for(const sample of pcm){low+=a*(sample-low);highEnergy+=(sample-low)**2;totalEnergy+=sample*sample;}
+      expect(highEnergy/totalEnergy).toBeLessThan(.06);
+      expect(measure(pcm).peak).toBeLessThan(.6);
+    }
+  });
   it.each([22050,44100,48000])('keeps every material and variation finite, short and below ultimate level at %i Hz',rate=>{
     const ultimatePeak=measure(renderUltimateSound('ultimate-strike',rate)).peak;
     for(const family of combatFamilies)for(let variant=0;variant<3;variant++){
