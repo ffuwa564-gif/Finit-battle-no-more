@@ -1,25 +1,25 @@
 .gold-exchange-section { margin: 28px 0; }
 .gold-exchange-section > h2 { margin-bottom: 14px; }
-.panel.gold-exchange-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 0; gap: 0; overflow: hidden; border-color: #b5a481; background: linear-gradient(135deg, #f4eee2, #e4e5df); }
+.panel.gold-exchange-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 0; gap: 0; overflow: hidden; color: var(--ink); border-color: var(--border); background: var(--surface-moon); }
 .gold-exchange-card__art { min-height: 520px; overflow: hidden; background: #514939; }
 .gold-exchange-card__art .character-artwork { height: 100%; width: 100%; }
 .gold-exchange-card__art .character-artwork__still { object-fit: cover; object-position: 50% 0%; }
 .gold-exchange-card__copy { display: flex; flex-direction: column; align-items: flex-start; padding: 26px; gap: 11px; }
-.gold-exchange-card__copy .eyebrow { color: #8e703e; }
-.gold-exchange-card__epithet { color: #7b6b60; font-family: var(--font-display); font-size: 12px; }
+.gold-exchange-card__copy .eyebrow { color: var(--gold); }
+.gold-exchange-card__epithet { color: var(--muted); font-family: var(--font-display); font-size: 12px; }
 .gold-exchange-card__copy h3 { font: 400 29px/1.5 var(--font-display); }
 .gold-exchange-card__copy > p { margin: 0; font-size: 12px; }
 .gold-exchange-card__skills { font-size: 12px; display: grid; gap: 10px; }
 .gold-exchange-card__skills p { margin: 0; }
-.gold-exchange-card__skills small { display: block; margin-top: 4px; color: #666b6b; line-height: 1.7; }
-.gold-exchange-card__leader { color: #7d6b4e; line-height: 1.8; }
+.gold-exchange-card__skills small { display: block; margin-top: 4px; color: var(--muted); line-height: 1.7; }
+.gold-exchange-card__leader { color: var(--gold-light); line-height: 1.8; }
 .gold-exchange-card__cost { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; }
-.gold-exchange-card__cost strong { font: 400 24px/1.5 var(--font-display); color: #796238; }
-.gold-exchange-card__cost > span { color: #7f7c70; font-size: 10px; }
-.gold-exchange-card__progress { display: flex; width: 100%; align-items: center; gap: 10px; font-size: 11px; color: #7b7466; }
+.gold-exchange-card__cost strong { font: 400 24px/1.5 var(--font-display); color: var(--gold-light); }
+.gold-exchange-card__cost > span { color: var(--muted); font-size: 10px; }
+.gold-exchange-card__progress { display: flex; width: 100%; align-items: center; gap: 10px; font-size: 11px; color: var(--muted); }
 .gold-exchange-card__progress progress { width: 100%; min-width: 0; height: 5px; accent-color: #9b8254; }
 .gold-exchange-card__progress span { flex-shrink: 0; }
-.gold-exchange-confirm__price { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px; font: 400 29px/1.5 var(--font-display); color: #897042; }
+.gold-exchange-confirm__price { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px; font: 400 29px/1.5 var(--font-display); color: var(--gold-light); }
 @media (max-width: 760px) {
   .panel.gold-exchange-card { grid-template-columns: minmax(0, 1fr); }
   .gold-exchange-card__art { min-height: 0; height: 350px; }
