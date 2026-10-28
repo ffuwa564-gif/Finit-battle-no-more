@@ -84,19 +84,21 @@ test('SE reaches the output at audible level, covers cues, and respects mute', a
   await expect.poll(() => page.evaluate(() => (window as any).__seStats.cues)).toContain('cancel');
 });
 
-test('item healing and battle damage show exact per-unit numbers with generated notices', async ({ page }) => {
+test('item healing and battle damage show exact per-unit numbers with readable moonlit notices', async ({ page }) => {
   await page.goto('/');
   await enterGame(page);
   await page.getByRole('heading', { name: '旅の支度' }).waitFor();
   await page.evaluate(async () => {
     const { content } = await import('/src/content/index.ts');
     const { createInitialSave, applyCommand } = await import('/src/application/game.ts');
-    const { persistSave } = await import('/src/platform/save.ts');
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const previous = (await loadSave())!;
     const initial=createInitialSave(content,42);initial.completedDungeonIds=content.dungeons.slice(0,5).map(d=>d.id);
     const save = applyCommand(initial, { type: 'depart', dungeonId: content.dungeons[5].id, potions: 2 }, content);
     save.battle!.units.filter(unit => unit.side === 'party').forEach(unit => { unit.hp = Math.floor(unit.maxHp * .6); });
     save.battle!.initialUnits = structuredClone(save.battle!.units);
-    await persistSave(save, 0);
+    save.revision = previous.revision + 1;
+    await persistSave(save, previous.revision);
   });
   await page.reload();
   await enterGame(page);
@@ -112,5 +114,5 @@ test('item healing and battle damage show exact per-unit numbers with generated 
   const hit = page.locator('.combat-number--damage,.combat-number--hurt').first();
   await expect(hit).toBeVisible({ timeout: 15000 });
   expect(Number(await hit.getAttribute('data-hp-delta'))).toBeLessThan(0);
-  await expect(page.locator('.battle-toast')).toHaveCSS('background-image', /notice-moonlight\.png/);
+  await expect(page.locator('.battle-toast')).toHaveCSS('background-image', /linear-gradient/);
 });

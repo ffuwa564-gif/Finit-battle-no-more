@@ -10,7 +10,7 @@
 .combat-number--hurt { --number-top: #fff3ef; --number-mid: #f5c1c1; --number-bottom: #cc8499; --number-edge: #492535; }
 .combat-number--heal { --number-top: #f1fff9; --number-mid: #c2efdc; --number-bottom: #78bda9; --number-edge: #193f3b; }
 .combat-number small { display: block; max-width: 90px; margin-bottom: 3px; font-size: 10px; color: #fff9ed; text-shadow: 0 1px 4px #081426,0 0 3px #081426; }
-@keyframes combat-number-rise { 0% { opacity: 0; transform: translate(-50%,0) scale(.88); } 12% { opacity: 1; transform: translate(-50%,-18px) scale(1.06); } 28% { transform: translate(-50%,-22px) scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-52px) scale(.98); } }
+@keyframes combat-number-rise { 0% { opacity: 1; transform: translate(-50%,0) scale(.88); } 12% { opacity: 1; transform: translate(-50%,-18px) scale(1.06); } 28% { transform: translate(-50%,-22px) scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-52px) scale(.98); } }
 .combat-feedback--reduced .combat-number { animation: combat-number-still .85s linear both; }
 @keyframes combat-number-still { 0%,80% { opacity: 1; } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .combat-number { animation: combat-number-still .85s linear both; } }

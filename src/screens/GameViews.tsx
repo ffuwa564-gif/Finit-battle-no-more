@@ -147,8 +147,11 @@ export function BattleView(p: ViewProps) {
   const battle = p.save.battle!;
   const [usingPotion, setUsingPotion] = useState(false);
   const [retreat, setRetreat] = useState(false);
+  const [impactEventId, setImpactEventId] = useState<string>();
   const dungeon = content.dungeons.find(d => d.id === battle.dungeonId)!;
-  const units = visibleUnits(battle), event = battle.phase === 'playing' ? battle.events[battle.cursor] : undefined;
+  const before = visibleUnits(battle), event = battle.phase === 'playing' ? battle.events[battle.cursor] : undefined;
+  // Publish the current snapshot at the hit, without advancing or rewriting the replay.
+  const units = event && event.id === impactEventId ? event.unitsAfter ?? before : before;
   const party = units.filter(u => u.side === 'party'), enemies = units.filter(u => u.side === 'enemy');
   const items = Object.entries(battle.pendingMaterials).filter(([, n]) => n > 0);
   const total = items.reduce((n, [, amount]) => n + amount, 0) - (battle.phase === 'playing' ? battle.events.slice(battle.cursor).filter(e => e.kind === 'drop').reduce((sum, e) => sum + (e.amount ?? 1), 0) : 0);
@@ -172,7 +175,7 @@ export function BattleView(p: ViewProps) {
         <UltimateMeter unit={unit} /><span className="party-hp">{localize(unit.hp)} / {localize(unit.maxHp)}</span><div className="party-unit__effects"><UnitEffects unit={unit} round={displayRound} compact /></div>
       </div>))}
     </div>
-    <CombatFeedback event={event} before={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
+    <CombatFeedback event={event} before={before} onImpact={setImpactEventId} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
     <BattleControlPad strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command({ type: battle.phase === 'playing' ? 'replay' : 'round' }); }}
       potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}
