@@ -11,7 +11,7 @@
 /* Fix the frame to the available viewport; short screens scroll the whole page. */
 .app-shell.is-exploring .battle-layout { display: flex; flex-direction: column; height: max(680px,calc(100dvh - 48px)); min-height: 0; }
 .app-shell.is-exploring .battle-layout > :not(.battle-scene) { flex-shrink: 0; }
-.app-shell.is-exploring .battle-layout .battle-scene { flex: 1 1 0; height: auto; min-height: 140px; }
+.app-shell.is-exploring .battle-layout .battle-scene { flex: 1 1 0; height: auto; min-height: 260px; }
 .app-shell.is-menu .town-navigation .command-emblem { filter: grayscale(1); }
 @media (min-width: 761px) {
   .app-shell.is-exploring .app-body { padding-top: 24px; }

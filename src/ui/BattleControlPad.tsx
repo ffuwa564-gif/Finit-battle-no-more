@@ -34,7 +34,7 @@ const strategies = [
 export function BattleControlPad(p: BattleControlPadProps) {
   const style = { '--command-moonlight': `url("${new URL(assetPath('command-moonlight'), document.baseURI).href}")` } as CSSProperties;
   return <section className="battle-control-pad" aria-label={tr("戦闘操作")} style={style}>
-    {p.acceleration && <div className="battle-acceleration" role="status" aria-label={tr('戦闘加速')}><span><Flame size={13} aria-hidden="true" />{tr(`加速：敵味方の攻撃 +${p.acceleration.percent}%`)}</span><small>{tr(`発動者：${p.acceleration.source}`)} · {tr('毎ターン+5%・Wave切替でリセット')}</small></div>}
+    {p.acceleration && <div className="battle-acceleration" role="status" aria-label={tr('戦闘加速')}><span><Flame size={13} aria-hidden="true" />{tr(`加速：敵味方の攻撃 +${p.acceleration.percent}%`)}</span></div>}
     <div className="battle-control-pad__board">
       <div className="battle-control-pad__strategies" data-guide="battle-strategy" role="group" aria-label={tr("作戦を選ぶ")}>
         {localize(strategies.map(({ id, label, name, icon: Icon }) => <Button key={id} variant="secondary" className="moon-command moon-command--strategy" aria-label={tr(name)} title={tr(name)} selected={p.strategy === id} disabled={p.strategyDisabled} onClick={() => p.onStrategy(id)}>

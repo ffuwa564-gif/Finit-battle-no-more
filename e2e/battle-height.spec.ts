@@ -26,6 +26,7 @@ async function effects(page: Page, enabled: boolean) {
       unit.regenUntil = unit.buffUntil = unit.debuffUntil = unit.statusWardUntil = enabled ? 4 : undefined;
       unit.guardTarget = enabled ? battle.units.find(u => u.side === 'party' && u.uid !== unit.uid)!.uid : undefined;
       unit.guardUntil = enabled ? 4 : undefined;
+      unit.ailments = enabled ? { sleep: { turns: 2, sourceId: battle.units.find(u => u.side === 'enemy')!.uid }, paralysis: { turns: 2, sourceId: battle.units.find(u => u.side === 'enemy')!.uid } } : {};
     }
     save.revision++; await persistSave(save, revision);
   }, enabled);
@@ -41,18 +42,27 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 390, height: 660 }
   test(`battle positions remain stable with many status badges at ${viewport.width}x${viewport.height}`, async ({ page }, info) => {
     await page.setViewportSize(viewport); await prepare(page);
     const before = await positions(page);
-    await effects(page, true); await expect(page.locator('.party-strip .unit-effects > span')).toHaveCount(24);
+    await expect(page.locator('.ultimate-hint')).toHaveCount(0);
+    await effects(page, true); await expect(page.locator('.party-strip .unit-effects-summary')).toHaveCount(4);
     const after = await positions(page);
     expect(Math.abs(after.frame.height - before.frame.height)).toBeLessThan(1);
     expect(Math.abs(after.party.top - before.party.top)).toBeLessThan(1);
     expect(Math.abs(after.advance.top - before.advance.top)).toBeLessThan(1);
     expect(after.advance.bottom).toBeLessThanOrEqual(after.frame.bottom);
-    expect(after.scene.height).toBeGreaterThanOrEqual(140);
+    expect(after.scene.height).toBeGreaterThanOrEqual(260);
+    const controls = await page.locator('.moon-command--strategy').first().boundingBox();
+    expect(controls!.height).toBeLessThanOrEqual(68);
     expect(after.pageWidth).toBeLessThanOrEqual(after.width);
     await page.screenshot({ path: info.outputPath('status-layout.png'), fullPage: true });
-    const status = page.locator('.party-strip .unit-effects').first();
-    await status.focus(); await status.press('End');
-    await expect.poll(() => status.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
+    const status = page.locator('.party-strip .unit-effects-summary').first();
+    await status.click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await expect(page.locator('.unit-effects-details li')).toHaveCount(8);
+    await expect(page.getByRole('dialog')).toContainText('残り2回の行動');
+    await expect(page.getByRole('dialog')).toContainText('ダメージを肩代わり');
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    expect(Math.abs((await positions(page)).advance.top - before.advance.top)).toBeLessThan(1);
     await page.getByRole('button', { name: /^回復薬 / }).click();
     expect(Math.abs((await positions(page)).advance.top - before.advance.top)).toBeLessThan(1);
     await page.getByRole('button', { name: '取消', exact: true }).click();
