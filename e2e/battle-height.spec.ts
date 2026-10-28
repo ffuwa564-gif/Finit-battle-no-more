@@ -43,6 +43,7 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 390, height: 660 }
     await page.setViewportSize(viewport); await prepare(page);
     const before = await positions(page);
     await expect(page.locator('.ultimate-hint')).toHaveCount(0);
+    await page.screenshot({path: info.outputPath('empty-status-layout.png'), fullPage:true});
     await effects(page, true); await expect(page.locator('.party-strip .unit-effects-summary')).toHaveCount(4);
     const after = await positions(page);
     expect(Math.abs(after.frame.height - before.frame.height)).toBeLessThan(1);
@@ -51,7 +52,16 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 390, height: 660 }
     expect(after.advance.bottom).toBeLessThanOrEqual(after.frame.bottom);
     expect(after.scene.height).toBeGreaterThanOrEqual(260);
     const controls = await page.locator('.moon-command--strategy').first().boundingBox();
-    expect(controls!.height).toBeLessThanOrEqual(68);
+    expect(controls!.height).toBeGreaterThanOrEqual(70);
+    expect(controls!.height).toBeLessThanOrEqual(76);
+    const overlay = await page.locator('.party-unit').first().evaluate(el => {
+      const portrait = el.querySelector('.portrait-image')!.getBoundingClientRect();
+      const icons = el.querySelector('.unit-effects-summary')!.getBoundingClientRect();
+      const meter = el.querySelector('.ultimate-meter')!.getBoundingClientRect();
+      return { inside: icons.top >= portrait.top && icons.bottom <= portrait.bottom && icons.left >= portrait.left && icons.right <= portrait.right, gapBelow: el.getBoundingClientRect().bottom - meter.bottom };
+    });
+    expect(overlay.inside).toBe(true);
+    expect(overlay.gapBelow).toBeLessThanOrEqual(2);
     expect(after.pageWidth).toBeLessThanOrEqual(after.width);
     await page.screenshot({ path: info.outputPath('status-layout.png'), fullPage: true });
     const status = page.locator('.party-strip .unit-effects-summary').first();
