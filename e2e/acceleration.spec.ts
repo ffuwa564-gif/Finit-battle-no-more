@@ -2,7 +2,7 @@ import { skipStory } from './boot';
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
-test('both sides deal accelerated damage and the mobile HUD follows the replayed turn in both languages', async ({page},testInfo) => {
+test('both sides deal accelerated damage and the battle omits acceleration explanations in both languages', async ({page},testInfo) => {
   await page.setViewportSize({width:390,height:844});await page.goto('/');await enterGame(page);
   await page.evaluate(async()=>{
     const {content}=await import('/src/content/index.ts');const {createBattle,advanceReplay}=await import('/src/domain/engine.ts');const {loadSave,persistSave}=await import('/src/platform/save.ts');
@@ -11,16 +11,18 @@ test('both sides deal accelerated damage and the mobile HUD follows the replayed
     b.initialUnits=structuredClone(b.units);save.battle=b;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);
   });
   await page.reload();await enterGame(page);const hud=page.getByRole('status',{name:'戦闘加速',exact:true});
-  await expect(hud).toContainText('敵味方の攻撃 +20%');await expect(hud).toContainText('Wave切替でリセット');
+  await expect(hud).toHaveCount(0);
+  await expect(page.locator('.battle-control-pad')).not.toContainText(/加速|リセット|説明|スキル/);
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
-  await expect(page.getByRole('button',{name:'次の演出へ',exact:true})).toBeVisible();await expect(hud).toContainText('+20%');
-  await expect(page.getByRole('button',{name:'ラウンドを進める',exact:true})).toBeVisible({timeout:30000});await expect(hud).toContainText('+25%');
+  await expect(page.getByRole('button',{name:'次の演出へ',exact:true})).toBeVisible();await expect(hud).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'ラウンドを進める',exact:true})).toBeVisible({timeout:30000});await expect(hud).toHaveCount(0);
   const attacks=await page.evaluate(async()=>((await(await import('/src/platform/save.ts')).loadSave())!.battle!.events.filter(e=>e.kind==='attack')));
   expect(attacks.filter(e=>e.actorId!.startsWith('party:')).every(e=>e.amount===120)).toBe(true);expect(attacks.filter(e=>e.actorId!.startsWith('enemy:')).every(e=>e.amount===120)).toBe(true);
   for(const width of [320,390]){await page.setViewportSize({width,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);}
   await page.screenshot({path:testInfo.outputPath('battle-acceleration-mobile.png')});
   await page.reload();await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('button',{name:'Tap to Begin',exact:true}).click();await skipStory(page);
-  await expect(page.getByRole('status',{name:'Battle Acceleration',exact:true})).toContainText('both sides ATK +25%');
+  await expect(page.getByRole('status',{name:'Battle Acceleration',exact:true})).toHaveCount(0);
+  await expect(page.locator('.battle-control-pad')).not.toContainText(/Acceleration|both sides ATK|reset|skill|explanation/i);
 });
 
 test('a new wave resets acceleration instead of carrying the last wave attack bonus',async({page})=>{
@@ -31,8 +33,9 @@ test('a new wave resets acceleration instead of carrying the last wave attack bo
     b.round=10;for(const u of b.units){if(u.side==='party'){u.hp=u.maxHp=10000;u.attack=10000;u.speed=100;}else u.hp=1;}
     b.initialUnits=structuredClone(b.units);save.battle=b;save.settings.reducedMotion=true;save.revision++;await persistSave(save,rev);
   });
-  await page.reload();await enterGame(page);await expect(page.getByRole('status',{name:'戦闘加速',exact:true})).toContainText('+45%');
-  await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();await expect(page.getByRole('status',{name:'戦闘加速',exact:true})).toContainText('+0%',{timeout:30000});
+  await page.reload();await enterGame(page);await expect(page.getByRole('status',{name:'戦闘加速',exact:true})).toHaveCount(0);
+  await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();await expect.poll(()=>page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.battle!.wave),{timeout:30000}).toBe(1);
+  await expect(page.getByRole('status',{name:'戦闘加速',exact:true})).toHaveCount(0);
   const b=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.battle!);expect(b.wave).toBe(1);expect(b.round).toBe(1);
 });
 

@@ -58,7 +58,3 @@
   .battle-layout .battle-control-pad .moon-command--strategy > svg { width: 25px; height: 25px; }
 }
 @media (prefers-reduced-motion: reduce) { .battle-layout .battle-control-pad .moon-command { transition: none; } }
-
-.battle-acceleration { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3px 12px; margin: 0 2px 4px; color: #f2dfb7; font-size: 11px; line-height: 1.5; }
-.battle-acceleration > span { display: flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; }
-.battle-acceleration small { color: #d0d6df; font-size: 9px; }
