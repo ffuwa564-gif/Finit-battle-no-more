@@ -1,3 +1,9 @@
+## Current protection sound: synth buff
+
+The latest user request replaces the Runway recording with an original low, rounded “ブオーン” synthesizer buff. `renderProtectionSound` uses a smoothly rising/settling fundamental, harmonic sine partials, a mildly detuned voice, and a sweeping two-pole low-pass filter. Attack is 75 ms; the tail releases smoothly. Ordinary peaks are .56; defensive ultimate is .6. The previous metallic/air-only timbres and Runway recording are superseded.
+
+Guard, barrier, barrier_mend and ultimate-guard now use local rendered buffers through the existing SE output/limiter, voice limits, and ultimate cancellation. There is no protection-asset fetch on unlock. `e2e/protection-synth.spec.ts` verifies native playback matches all four rendered routes and makes no request for the former MP3. The older sections below record previous iterations.
+
 # 通常戦闘音の材質とキャラの個性
 
 ## 音作りの好み・継続方針（2026-10-26）

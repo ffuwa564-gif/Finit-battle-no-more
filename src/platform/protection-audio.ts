@@ -1,28 +1,28 @@
-/** Unpitched cloth/air protection: no bells, oscillators or resonant partials. */
+/** Rounded synth buff: a low harmonic voice blooms upward, then settles away. */
 export function renderProtectionSound(kind: 'guard' | 'barrier', sampleRate: number, variation = 0, options: { duration?: number; peak?: number } = {}): Float32Array {
   const take = ((variation % 3) + 3) % 3;
-  const duration = options.duration ?? (kind === 'guard' ? [.62, .56, .76][take] : [.8, .84, .8][take]);
+  const duration = options.duration ?? (kind === 'guard' ? [.74, .78, .82][take] : [.84, .86, .88][take]);
   const pcm = new Float32Array(Math.ceil(duration * sampleRate));
-  const pole = (hz: number) => 1 - Math.exp(-2 * Math.PI * hz / sampleRate);
-  const bodyRate = pole(kind === 'guard' ? 620 : 850 + take * 90), floorRate = pole(100), cloudRate = pole(1500);
-  let seed = 0x42b35 + take * 7919 + (kind === 'guard' ? 0 : 257), body = 0, floor = 0, cloud = 0, smooth = 0, rounded = 0;
-  const smoothing = pole(kind === 'guard' ? 1100 : 1300);
+  const root = (kind === 'guard' ? 120 : 140) + take * 5;
+  let phase = 0, twinPhase = 0, filtered = 0, rounded = 0;
   for (let i = 0; i < pcm.length; i++) {
     const t = i / sampleRate, age = t / duration;
-    seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5;
-    const noise = (seed >>> 0) / 0x80000000 - 1;
-    body += bodyRate * (noise - body); floor += floorRate * (noise - floor); cloud += cloudRate * (noise - cloud);
-    const warm = body - floor, air = cloud - body;
-    const bloom = 1 - Math.exp(-t / (kind === 'guard' ? .013 : .045));
-    const envelope = bloom * Math.exp(-age * (kind === 'guard' ? 8 : 5));
-    const value = (warm + air * (kind === 'guard' ? .08 : .24)) * envelope;
-    smooth += smoothing * (value - smooth);
-    rounded += smoothing * (smooth - rounded);
-    pcm[i] = rounded;
+    // Smooth upward scoop supplies the "bwooom" vowel; only harmonic partials
+    // follow the fundamental, with no inharmonic bell/FM or noise transient.
+    const frequency = root * (.68 + .64 * (1 - Math.exp(-t / .065)) - .25 * age);
+    phase += 2 * Math.PI * frequency / sampleRate;
+    twinPhase += 2 * Math.PI * frequency * 1.006 / sampleRate;
+    const voice = Math.sin(phase) + .28 * Math.sin(2 * phase) + .12 * Math.sin(3 * phase) + .045 * Math.sin(4 * phase) + .22 * Math.sin(twinPhase);
+    const cutoff = 380 + 850 * Math.sin(Math.PI * Math.min(1, age));
+    const pole = 1 - Math.exp(-2 * Math.PI * cutoff / sampleRate);
+    filtered += pole * (voice - filtered); rounded += pole * (filtered - rounded);
+    const bloom = Math.sin(Math.min(1, t / .075) * Math.PI / 2) ** 2;
+    const release = Math.cos(Math.min(1, Math.max(0, (age - .22) / .78)) * Math.PI / 2) ** 2;
+    pcm[i] = rounded * bloom * release;
   }
   let peak = .001;
   for (const sample of pcm) peak = Math.max(peak, Math.abs(sample));
-  const level = options.peak ?? (kind === 'guard' ? .34 : .28);
-  for (let i = 0; i < pcm.length; i++) pcm[i] *= level / peak * Math.min(1, i / (sampleRate * .012), (pcm.length - 1 - i) / (sampleRate * .05));
+  const level = options.peak ?? .56;
+  for (let i = 0; i < pcm.length; i++) pcm[i] *= level / peak * Math.min(1, i / (sampleRate * .008), (pcm.length - 1 - i) / (sampleRate * .02));
   return pcm;
 }
