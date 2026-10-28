@@ -79,3 +79,14 @@ native AudioBufferによる即時再生、共通SE音量、リミッターと過
 `npm run preview:combat-audio` は `artifacts/combat-audio/` に各系統の3種類を全て書き出す。`attack-1.wav` などの単体音、0.35秒の無音を挟む `attack-comparison.wav`、一覧の `index.html` を生成する。互換用の `attack.wav` などはバリエーション1と同じ。前回のように試聴が1種類だけになることを避ける。
 
 自動検査は、サンプルレートごとの有限性・ピーク階層・端点、重打と一閃の帯域および持続の違い、材質の切り替わり、キャラ別の独立カウンター、キャッシュ再利用、連打上限、出力ピーク・ミュートと配布用iframeを対象とする。波形が違うことだけで聴感の品質を保証せず、人間の視聴確認は引き続き必要。
+
+## Runway protection recording (2026-10-28)
+
+User requested replacing the procedural protection sound with a Runway-generated effect. `public/audio/sfx/protection-runway.mp3` is the bundled production asset for guard, barrier, barrier_mend, and ultimate-guard. One decode on audio unlock; playback uses the existing shared SE volume, limiter, bounded ordinary voice pool and cancellable ultimate scheduler. Missing/offline assets fall back to the previous quiet procedural textures. No remote generation URL is needed at runtime.
+
+Runway task: `3f1f6ea9-3a05-416f-9fcf-df5b66c582ca`. Actual returned task/model: `eleven_text_to_sound_v2` (Runway Sound Effects). Requested duration: 2 seconds. Trimmed leading/trailing silence, mono 44.1 kHz, limited peak, short edge fades, encoded MP3 128 kbps; resulting duration approximately 1.4 seconds.
+
+Prompt:
+> Single dark fantasy RPG protective barrier activation. Short soft airy whoosh blooms into a warm deep velvety magical pulse, with a gentle clean fading tail. Elegant organic protective veil, satisfying and restrained. No metal, clangs, glass, bells, chimes, electric buzzing, harsh treble, music or voices. One isolated activation, about 1 second, silence before and after.
+
+`e2e/runway-protection.spec.ts` verifies actual native source buffers for all four protection cues match an independently decoded recording. Existing master-output tests check audibility and silence after tails. These automated checks do not establish subjective sound quality.

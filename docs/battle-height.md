@@ -1,11 +1,7 @@
-# 戦闘中の縦レイアウトの安定化
+# Battle height and compact controls
 
-状態表示が増えると画面が上下に動く問題を、390×844の画面で再現した。状態なしから6個×4人の表示へ切り替えると、戦闘フレームが約54.7px伸びていた。
+The previous variable status tags added 54.7 px at 390 × 844. The frame remains fixed, with a 260 px minimum battlefield and whole-page scrolling on short screens.
 
-原因は、状態ラベルの折り返しがパーティ欄の高さを変えることと、戦闘フレームが最小高さだけを持ち、敵の表示領域を縮められないflex設定だったこと。回復対象の案内も1行／2行で高さが変わっていた。
+The strategy/item/utility row is now bounded to 64 px (previously 92+), and ATTACK is 60 px. A 30 px portrait status slot shows up to three icons, prioritizing negative effects, followed by the overflow count. Tap to open the existing accessible modal with every effect name and description, barrier amount, and remaining turns. Empty slots keep the same height. The persistent ultimate/potion instruction strip and acceleration explanatory sentence are removed; only the current acceleration percentage remains. The character detail also omits the universal charge/booking instructions. Actual skill effects remain available in the character details.
 
-各仲間に44pxの状態欄を常時確保し、2行を超える分は欄の中で縦スクロールする。状態のラベル・説明は保持し、欄はキーボードでもフォーカスできる。回復／必殺技の案内は40pxで固定する。
-
-戦闘フレームは動的ビューポートの高さに合わせ、敵の領域で余白を吸収する。モバイルの下限は640px、PCは680px。下限より小さい画面ではページ全体をスクロールし、操作ボタンを切り落とさない。結果画面・メニュー・ノベルにはこのフレーム制約を掛けない。
-
-`e2e/battle-height.spec.ts`は390×844／390×660／320×568／844×390で、状態の増減・回復選択・リサイズと、状態欄のキーボードスクロールを確認する。`itch-e2e/battle-height.spec.ts`は別ホストの親から埋め込んだ配布ビルドで、英語表示と状態数の変化による操作欄の位置を確認する。
+`e2e/battle-height.spec.ts` checks stable positions with eight effects (including sleep and paralysis) on every party member, modal opening/closing, potion selection, and resizing at four viewport sizes. `itch-e2e/battle-height.spec.ts` checks the English nested iframe build.
