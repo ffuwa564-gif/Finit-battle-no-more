@@ -1,59 +1,105 @@
 import type { Battle, BattleEvent, Unit } from '../domain/types';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAnimationSettings } from './animation-settings';
 import { tr } from '../locales/i18n';
 import { assetPath } from '../content';
 import { Button } from './index';
 import './living-battle-frame.css';
 
-/** Native alpha WebP plays actual Runway footage without a video-autoplay dependency. */
-function GardenArt({ className, moving, poster, animate }: { className: string; moving: string; poster: string; animate: boolean }) {
-  const [failed, setFailed] = useState(false);
-  return <img className={className} src={assetPath(animate && !failed ? moving : poster)} alt="" draggable={false}
-    data-animated={animate && !failed} onError={() => setFailed(true)} />;
+const OPENING_MS = 5000;
+let openingBytes: Promise<Blob> | undefined;
+function openingBlob() {
+  return openingBytes ??= fetch(assetPath('living-garden-bloom-motion')).then(response => {
+    if (!response.ok) throw new Error('Flower artwork unavailable');
+    return response.blob();
+  }).catch(error => { openingBytes = undefined; throw error; });
 }
 
-/** One living frame; flower controls are invisible hit areas over the filmed garden beds. */
+/** Independent assets: the flower and crystal never contain a second frame. */
+function GardenArt({ className, moving, poster, animate }: { className: string; moving: string; poster: string; animate: boolean }) {
+  const [failed, setFailed] = useState(false);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    if (!animate || failed || ready) return;
+    let canceled = false;
+    const image = new Image();
+    image.onload = () => { if (!canceled) setReady(true); };
+    image.onerror = () => { if (!canceled) setFailed(true); };
+    image.src = assetPath(moving);
+    return () => { canceled = true; image.onload = image.onerror = null; };
+  }, [animate, failed, ready, moving]);
+  return <img className={className} src={assetPath(animate && ready && !failed ? moving : poster)} alt="" draggable={false}
+    data-animated={animate && ready && !failed} onError={() => setFailed(true)} />;
+}
+
+/** A fresh blob URL starts each new one-shot bloom at its bud, avoiding shared GIF/WebP cache clocks. */
+function OpeningFlower({ id, animate, restored, onOpen }: { id: string; animate: boolean; restored: boolean; onOpen: (id: string) => void }) {
+  const [open, setOpen] = useState(restored || !animate);
+  const [motionURL, setMotionURL] = useState<string>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => {
+    if (!animate) { setOpen(true); return; }
+    if (open) return;
+    let canceled = false, url: string | undefined;
+    void openingBlob().then(blob => {
+      if (canceled) return;
+      url = URL.createObjectURL(blob); setMotionURL(url);
+    }).catch(() => { if (!canceled) setOpen(true); });
+    return () => { canceled = true; if (url) URL.revokeObjectURL(url); clearTimeout(timer.current); timer.current = undefined; };
+  }, [animate, open]);
+  useEffect(() => { if (open) onOpen(id); }, [id, open, onOpen]);
+  return <img className="garden-flower-art" alt="" draggable={false}
+    src={open ? assetPath('living-garden-bloom-poster') : motionURL ?? assetPath('living-garden-bud')}
+    data-animated={animate && !open && Boolean(motionURL)} data-flower-phase={open ? 'open' : 'opening'}
+    onLoad={() => { if (!open && motionURL && timer.current === undefined) timer.current = setTimeout(() => setOpen(true), OPENING_MS); }}
+    onError={() => setOpen(true)} />;
+}
+
+/** Saved bloom state controls the action; the five-second opening changes presentation only. */
 export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, onBloom }: {
   battle: Battle; event?: BattleEvent; units: Unit[]; busy: boolean; reducedMotion: boolean;
   onBloom: (id: string) => void;
 }) {
+  const root = useRef<HTMLDivElement>(null);
   const { suspended } = useAnimationSettings();
+  const firstFlower = useRef(battle.blooms?.flower?.id);
+  const [openId, setOpenId] = useState(firstFlower.current);
+  const markOpen = useCallback((id: string) => setOpenId(id), []);
   const [systemReduced, setSystemReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [visible, setVisible] = useState(() => !document.hidden);
+  const [inView, setInView] = useState(true);
+  const connection = (navigator as Navigator & { connection?: EventTarget & { saveData?: boolean } }).connection;
+  const [saveData, setSaveData] = useState(() => !!connection?.saveData);
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
-    const onMotion = () => setSystemReduced(preference.matches);
-    const onVisibility = () => setVisible(!document.hidden);
-    preference.addEventListener('change', onMotion); document.addEventListener('visibilitychange', onVisibility);
-    return () => { preference.removeEventListener('change', onMotion); document.removeEventListener('visibilitychange', onVisibility); };
-  }, []);
+    const motion = () => setSystemReduced(preference.matches);
+    const visibility = () => setVisible(!document.hidden);
+    const data = () => setSaveData(!!connection?.saveData);
+    preference.addEventListener('change', motion); document.addEventListener('visibilitychange', visibility); connection?.addEventListener('change', data);
+    const observer = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(entries => setInView(entries.some(entry => entry.isIntersecting)));
+    if (root.current) observer?.observe(root.current);
+    return () => { observer?.disconnect(); preference.removeEventListener('change', motion); document.removeEventListener('visibilitychange', visibility); connection?.removeEventListener('change', data); };
+  }, [connection]);
   const motionOff = reducedMotion || systemReduced;
-  const animate = !motionOff && !suspended && visible && !Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+  const animate = !motionOff && !suspended && visible && inView && !saveData;
+  useEffect(() => { if (animate) void openingBlob().catch(() => {}); }, [animate]);
+  const flower = battle.blooms?.flower;
+  const open = !!flower && openId === flower.id;
   const actor = units.find(unit => unit.uid === event?.actorId);
   const cue = !event ? 'rest' : event.bloomAction === 'strike' ? 'strike-flower' : event.ultimate ? 'ultimate'
     : event.kind === 'heal' ? 'heal' : ['attack', 'area'].includes(event.kind) ? actor?.side === 'enemy' ? 'enemy' : 'attack'
-    : event.kind === 'guard' || event.kind === 'buff' ? 'guard' : event.kind === 'wave' ? 'wave' : 'rest';
-  const flower = battle.blooms?.flower;
-  const growth = battle.blooms?.growth ?? (flower ? 3 : 0);
-  const healing = flower?.kind === 'heal';
-  const canHeal = units.some(unit => unit.side === 'party' && unit.hp > 0 && unit.hp < unit.maxHp);
-  const label = tr(healing ? '癒しの花：最も傷ついた味方を最大HPの18%回復' : '月晶の花：弱った敵1体に追加攻撃');
-  const frameArt = assetPath('living-garden-frame');
-  return <div className="living-frame" data-cue={cue} data-reduced={motionOff} data-growth={growth} data-bloom-kind={flower?.kind}>
+    : event.kind === 'guard' || event.kind === 'buff' ? 'guard' : 'rest';
+  const label = tr(!open ? '白い蕾が開いています' : flower?.kind === 'heal'
+    ? '癒しの花：最も傷ついた味方を最大HPの18%回復' : '月晶の花：弱った敵1体に追加攻撃');
+  return <div ref={root} className="living-frame" data-cue={cue} data-reduced={motionOff}
+    data-bloom-state={flower ? open ? 'open' : 'opening' : 'bud'} data-bloom-kind={flower?.kind}>
     <GardenArt className="garden-frame__art" moving="living-garden-idle-motion" poster="living-garden-frame" animate={animate} />
-    {flower && <GardenArt key={flower.id} className={`garden-frame__bloom-art garden-frame__bloom-art--${flower.kind}`}
-      moving="living-garden-bloom-motion" poster="living-garden-bloom-poster" animate={animate} />}
-    {cue !== 'rest' && <div className="garden-frame__reaction" key={event?.id} aria-hidden="true">
-      <img className="garden-frame__current" src={frameArt} alt="" />
-      <span className="garden-frame__left-aura" /><span className="garden-frame__right-aura" />
-
-    </div>}
-    <div className="garden-frame__growth" role="progressbar" aria-label={tr('月の庭の成長')} aria-valuemin={0} aria-valuemax={3} aria-valuenow={growth}
-      aria-valuetext={tr(flower ? '開花中。花をタップして力を使う' : '戦闘で庭が育つ。3つ灯るまでに花が咲く')}>
-      {[0,1,2].map(index => <span key={index} className={`garden-frame__seed${growth > index ? ' is-lit' : ''}`} />)}
+    <div className="garden-flower-bed">
+      {flower ? <OpeningFlower key={flower.id} id={flower.id} animate={animate} restored={firstFlower.current === flower.id} onOpen={markOpen} />
+        : <img className="garden-flower-art" src={assetPath('living-garden-bud')} alt="" draggable={false} data-flower-phase="bud" />}
     </div>
-    {flower && <Button className={`battle-bloom battle-bloom--${flower.kind}`} variant="secondary" sound={false}
-      disabled={busy || battle.phase !== 'ready' || Boolean(healing && !canHeal)} aria-label={label} onClick={() => onBloom(flower.id)} />}
+    <GardenArt className="garden-crystal-art" moving="living-garden-crystal-motion" poster="living-garden-crystal" animate={animate} />
+    {flower && <Button className="battle-bloom" variant="secondary" sound={false} aria-label={label}
+      disabled={busy || battle.phase !== 'ready' || !open} onClick={() => onBloom(flower.id)} />}
   </div>;
 }

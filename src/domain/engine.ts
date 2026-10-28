@@ -433,7 +433,6 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input);
   delete battle.omens;
-  clearBattleBloom(battle);
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
   for (const unit of battle.units) {
@@ -597,13 +596,14 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
     emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
+  if (battle.nextPhase !== 'ready') clearBattleBloom(battle);
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
 }
 /** One optional off-turn action; ordinary defeat and reward settlement is shared. */
 export function useBattleBloom(input: Battle, bloomId: string, content: Content): RoundResult {
   const flower = input.blooms?.flower;
-  if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave !== input.wave || flower.round !== input.round) throw new Error('この花はもう使えません。');
+  if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave !== input.wave || flower.round > input.round) throw new Error('この花はもう使えません。');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input), before = clone(battle.units);
   const party = alive(battle.units, 'party');
@@ -611,12 +611,13 @@ export function useBattleBloom(input: Battle, bloomId: string, content: Content)
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
   battle.phase = 'playing'; battle.nextPhase = 'ready';
   clearBattleBloom(battle);
+  // Harvesting an older bloom must not trigger another roll in the same round.
+  battle.blooms!.checked = `${battle.wave}:${battle.round}`;
   if (flower.kind === 'heal') {
-    const target = party.filter(unit => unit.hp < unit.maxHp).sort((a,b) => a.hp * b.maxHp - b.hp * a.maxHp || byId(a,b))[0];
-    if (!target) throw new Error('回復できる味方がいません。');
+    const target = party.sort((a,b) => a.hp * b.maxHp - b.hp * a.maxHp || byId(a,b))[0]!;
     const amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(target.maxHp * BLOOM_HEAL_PERCENT / 100)));
     target.hp += amount;
-    emit(battle, { kind: 'heal', bloomAction: 'heal', targetIds: [target.uid], amount, text: `癒しの花 — 最も傷ついた味方を${amount}回復`, unitsAfter: clone(battle.units) });
+    emit(battle, { kind: 'heal', bloomAction: 'heal', targetIds: [target.uid], amount, text: amount ? `癒しの花 — 最も傷ついた味方を${amount}回復` : '癒しの花 — 味方のHPは満ちています', unitsAfter: clone(battle.units) });
   } else {
     const target = alive(battle.units, 'enemy').sort((a,b) => a.hp - b.hp || byId(a,b))[0]!;
     const source = { ...party[0]!, buffUntil: undefined, buffStrength: undefined, attack: Math.round(party.reduce((sum,unit) => sum + unit.attack, 0) / party.length) };
@@ -635,8 +636,8 @@ export function advanceReplay(input: Battle, content: Content): Battle {
   if (battle.cursor < battle.events.length) return battle;
   switch (battle.nextPhase) {
     case 'wave': battle.wave += 1; return openWave(battle, content, false);
-    case 'reward': battle.phase = 'reward'; break;
-    case 'failed': battle.phase = 'failed'; battle.pendingMaterials = {}; break;
+    case 'reward': clearBattleBloom(battle); battle.phase = 'reward'; break;
+    case 'failed': clearBattleBloom(battle); battle.phase = 'failed'; battle.pendingMaterials = {}; break;
     case 'ready':
       battle.phase = 'ready';
       if (!battle.events.some(event => event.bloomAction)) battle.potionUsed = false;

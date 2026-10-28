@@ -16,6 +16,8 @@ export function clearBattleBloom(battle: Battle): void {
 export function offerBattleBloom(battle: Battle): void {
   if (battle.phase !== 'ready' || battle.round < 2) return;
   const state = battle.blooms ??= initialBlooms(battle);
+  // An open flower belongs to this wave until harvested, including later rounds.
+  if (state.flower) return;
   const checkpoint = `${battle.wave}:${battle.round}`;
   if (state.checked === checkpoint) return;
   state.checked = checkpoint;
@@ -38,8 +40,8 @@ export function validBattleBlooms(value: unknown, battle: Pick<Battle, 'id' | 'w
   if (flower === undefined) return true;
   return !!flower && typeof flower === 'object' && ['heal', 'strike'].includes(flower.kind)
     && Number.isSafeInteger(flower.wave) && Number.isSafeInteger(flower.round)
-    && flower.wave === battle.wave && flower.round === battle.round && flower.round >= 2
+    && flower.wave === battle.wave && flower.round <= battle.round && flower.round >= 2
     && (state.growth === undefined || state.growth === 3)
     && state.checked === `${flower.wave}:${flower.round}`
-    && flower.id === `${battle.id}:flower:${state.checked}` && battle.phase === 'ready';
+    && flower.id === `${battle.id}:flower:${state.checked}` && ['ready', 'playing'].includes(battle.phase);
 }

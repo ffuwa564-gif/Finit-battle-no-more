@@ -70,9 +70,12 @@ describe('saved battle blossoms', () => {
     expect(done.battle!.blooms!.growth).toBe(0);
     expect(done.potions).toBe(save.potions); expect(done.battle!.potionsRemaining).toBe(5);
   });
-  it('rejects stale/double taps and refuses to consume a heal with nobody wounded', () => {
-    const save = fixture(); expect(() => tap(save)).toThrow('回復');
-    expect(save.battle!.blooms!.flower).toBeDefined();
+  it('lets a full-HP party pick the flower back to a bud and rejects stale/double taps', () => {
+    const save = fixture(); const picked = finish(tap(save));
+    expect(picked.battle!.blooms!.flower).toBeUndefined();
+    expect(picked.battle!.blooms!.growth).toBe(0);
+    expect(picked.battle!.events[0].amount).toBe(0);
+    expect(picked.battle!.units).toEqual(save.battle!.units);
     save.battle!.units.find(u => u.side === 'party')!.hp = 1;
     const id = save.battle!.blooms!.flower!.id, after = finish(tap(save));
     expect(() => applyCommand(after, { type: 'battleBloom', bloomId: id }, content)).toThrow('花');
@@ -106,7 +109,7 @@ describe('saved battle blossoms', () => {
     expect(claimed.materials['kuzuha-contract:epic']).toBe(1);
     expect(() => applyCommand(claimed, { type: 'claim' }, content)).toThrow();
   });
-  it('keeps trials reward-free, and an unused flower expires on ATTACK', () => {
+  it('keeps trials reward-free, and an unused flower remains on ATTACK', () => {
     const trial = content.dungeons.find(d => d.kind === 'trial')!;
     const save = fixture('strike', trial.id, true);
     for (const unit of save.battle!.units.filter(u => u.side === 'enemy')) { unit.hp = 1; delete unit.barrier; }
@@ -114,7 +117,34 @@ describe('saved battle blossoms', () => {
     expect(after.gold).toBe(save.gold); expect(after.battle!.pendingMaterials).toEqual({});
     expect(after.battle!.events.some(e => e.kind === 'drop')).toBe(false);
     const normal = fixture();
-    expect(resolveRound(normal.battle!, content).battle.blooms!.flower).toBeUndefined();
+    expect(resolveRound(normal.battle!, content).battle.blooms!.flower).toEqual(normal.battle!.blooms!.flower);
+  });
+  it('preserves a flower across later rounds and reloads until picked, without rolling on harvest', () => {
+    let save = fixture('heal');
+    for (const enemy of save.battle!.units.filter(u => u.side === 'enemy')) { enemy.hp = enemy.maxHp = 100000; enemy.attack = 1; }
+    const bloom = structuredClone(save.battle!.blooms!);
+    for (let i = 0; i < 3; i++) {
+      save = applyCommand(save, { type: 'round' }, content);
+      expect(save.battle!.blooms).toEqual(bloom);
+      assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content);
+      save = finish(save);
+      expect(save.battle!.blooms).toEqual(bloom);
+      assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content);
+    }
+    expect(save.battle!.round).toBe(5);
+    const harvested = finish(tap(save));
+    expect(harvested.battle!.blooms).toEqual({ ...bloom, checked: '0:5', growth: 0, flower: undefined });
+    expect(harvested.battle!.round).toBe(5);
+    expect(harvested.battle!.blooms!.seed).toBe(bloom.seed);
+  });
+  it('returns the garden to buds at a wave boundary', () => {
+    const save = fixture('strike');
+    for (const enemy of save.battle!.units.filter(u => u.side === 'enemy')) enemy.hp = 1;
+    for (const ally of save.battle!.units.filter(u => u.side === 'party')) { ally.attack = 10000; ally.speed = 1000; }
+    const next = finish(applyCommand(save, { type: 'round' }, content));
+    expect(next.battle!.wave).toBe(1);
+    expect(next.battle!.blooms!.flower).toBeUndefined();
+    expect(next.battle!.blooms!.growth).toBe(0);
   });
   it('round-trips valid flowers and legacy saves, rejects malformed state, and clears on retreat', () => {
     const save = fixture(); assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content);
