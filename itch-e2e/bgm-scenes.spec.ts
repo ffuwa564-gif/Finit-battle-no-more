@@ -44,7 +44,7 @@ for (const scenario of [{ dungeon: content.dungeons[0].id, scene: 'boss' }, { du
     const { beforeBoss, beforeClear } = transitions(scenario.dungeon);
     await restore(page, beforeBoss);
     const audio = page.locator('audio[data-bgm]');
-    await expect(audio).toHaveAttribute('data-scene', 'battle');
+    await expect(audio).toHaveAttribute('data-scene', scenario.scene === 'boss' ? 'normalBattle' : 'battle');
     await expect(audio).toHaveAttribute('data-scene', scenario.scene, { timeout: 12000 });
     await expect.poll(() => audio.evaluate((el: HTMLAudioElement) => !el.paused && el.currentTime > 0)).toBe(true);
     await context.close();

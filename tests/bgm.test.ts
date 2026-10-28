@@ -2,11 +2,30 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { bgmTracks, configureBgm, disposeBgm, getBgmScene, refreshBgm, unlockBgm } from '../src/platform/bgm';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
-import { createBattle } from '../src/domain/engine';
+import { advanceReplay, createBattle } from '../src/domain/engine';
 
 afterEach(() => { disposeBgm(); vi.unstubAllGlobals(); });
 
 describe('BGM scene transitions', () => {
+  it('uses Fjord throughout every normal dungeon approach, while keeping event and boss tracks', () => {
+    const save = createInitialSave(content, 42);
+    const normal = content.dungeons.filter(d => d.published && (d.kind ?? 'normal') === 'normal');
+    expect(normal.length).toBeGreaterThanOrEqual(36);
+    for (const dungeon of normal) {
+      let battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, 0, 42, `fjord-${dungeon.id}`);
+      for (let wave = 0; wave < dungeon.waves.length; wave++) {
+        const expected = battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss) ? 'boss' : 'normalBattle';
+        expect(getBgmScene(battle, dungeon), `${dungeon.id} wave ${wave}`).toBe(expected);
+        expect(getBgmScene({ ...battle, phase: 'ready' }, dungeon)).toBe(expected);
+        expect(getBgmScene({ ...battle, phase: 'reward' }, dungeon)).toBe('clear');
+        expect(getBgmScene({ ...battle, phase: 'failed' }, dungeon)).toBe('home');
+        if (wave + 1 < dungeon.waves.length) battle = advanceReplay({ ...battle, phase: 'playing', nextPhase: 'wave', cursor: battle.events.length }, content);
+      }
+    }
+    const event = content.dungeons.find(d => d.id === 'kuzuha-beginner')!;
+    const eventBattle = createBattle(content, save.partyIds, save.leaderId, event.id, 0, 42, 'event-approach');
+    expect(getBgmScene(eventBattle, event)).toBe('battle');
+  });
   it('uses the dedicated clock track for the actual clock trial, including its final replay', () => {
     const save = createInitialSave(content, 42);
     const clock = content.dungeons.find(d => d.id === 'frozen-dawn-clock')!;
@@ -29,7 +48,7 @@ describe('BGM scene transitions', () => {
     const final = { ...battle, initialUnits: [boss], units: [boss], phase: 'playing' as const, nextPhase: 'reward' as const };
     expect(getBgmScene(final)).toBe('boss');
     expect(getBgmScene(final, { bossMusic: 'japanese' })).toBe('japaneseBoss');
-    expect(getBgmScene(battle, { bossMusic: 'japanese' })).toBe('battle');
+    expect(getBgmScene(battle, { kind: 'event', bossMusic: 'japanese' })).toBe('battle');
     expect(getBgmScene({ ...final, phase: 'reward' }, { bossMusic: 'japanese' })).toBe('clear');
     expect(content.dungeons.filter(d => d.eventId === 'evening-nine-tails').every(d => d.bossMusic === 'japanese')).toBe(true);
     expect(getBgmScene({ ...final, phase: 'ready' })).toBe('boss');
