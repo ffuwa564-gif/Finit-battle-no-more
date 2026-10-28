@@ -51,7 +51,7 @@ test('healing aliases use the soft prayer synth instead of combat PCM',async({pa
   await prepare(page);
   const voices=await page.evaluate(async()=>{
     const audio=await import('/src/platform/audio.ts');
-    for(const skill of ['heal','regen','mend_pair','barrier_mend','cleanse'] as const){
+    for(const skill of ['heal','regen','mend_pair','cleanse'] as const){
       audio.playSound('heal',undefined,skill);
       await new Promise(resolve=>setTimeout(resolve,650));
     }

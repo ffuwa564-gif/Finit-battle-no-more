@@ -59,26 +59,17 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   // Render once per unlocked audio context. Buffer playback avoids monophonic
   // synth scheduling conflicts and gives ultimates a completely separate timbre.
   const context = tone.getContext().rawContext;
-  // Runway-generated recording is decoded once on audio unlock, then played
-  // through the same SE gain/limiter and bounded voice pool as other combat cues.
-  let protectionBuffer: AudioBuffer | undefined;
-  try {
-    const response = await fetch(`${import.meta.env.BASE_URL}audio/sfx/protection-runway.mp3`);
-    if (!response.ok) throw new Error('Protection audio unavailable');
-    protectionBuffer = await context.decodeAudioData(await response.arrayBuffer());
-  } catch { /* Offline/missing asset: retain the quiet procedural fallback. */ }
   const ultimateBuffers = new Map<UltimateSound, AudioBuffer>();
   for (const kind of ultimateSounds) {
     const pcm = renderUltimateSound(kind, context.sampleRate);
     const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
     buffer.getChannelData(0).set(pcm);
-    ultimateBuffers.set(kind, kind === 'ultimate-guard' && protectionBuffer ? protectionBuffer : buffer);
+    ultimateBuffers.set(kind, buffer);
   }
   const normalBuffers = new Map<string, AudioBuffer>();
   const variations = new Map<string, number>();
   const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
   const ordinaryBuffer = (family: CombatFamily | CombatSignature, variant: number) => {
-    if (protectionBuffer && (family === 'guard' || family === 'barrier')) return protectionBuffer;
     const key = `${family}:${variant}`;
     let buffer = normalBuffers.get(key);
     if (!buffer) {
