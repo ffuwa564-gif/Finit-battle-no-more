@@ -1,3 +1,4 @@
+import { clearBattleBloom, offerBattleBloom, BLOOM_HEAL_PERCENT } from './battle-blooms';
 import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
@@ -105,6 +106,8 @@ function restoreClockShield(battle: Battle, content: Content, present: boolean):
   }
 }
 function openWave(battle: Battle, content: Content, first: boolean): Battle {
+  clearBattleBloom(battle);
+  if (battle.blooms) battle.blooms.growth = 0;
   const def = dungeon(content, battle.dungeonId);
   let wave = def.waves[battle.wave];
   if (!wave?.length || wave.length > 4) throw new Error('Waveの敵編成が不正です');
@@ -378,6 +381,53 @@ function resolveBossBits(battle: Battle, content: Content): void {
     }
   }
 }
+function settleAction(battle: Battle, content: Content, before: Unit[]) {
+  let goldEarned = 0; const discoveredIds: string[] = [];
+  const killed = battle.units.filter((unit) => unit.hp <= 0 && before.some((old) => old.uid === unit.uid && old.hp > 0));
+  for (const boss of battle.units.filter((unit) => unit.boss && unit.hp > 0 && unit.hp <= unit.maxHp / 2 && before.some((old) => old.uid === unit.uid && old.hp > old.maxHp / 2))) {
+    const flag = `${boss.uid}:half`;
+    if (!battle.talkFlags.includes(flag)) { battle.talkFlags.push(flag); emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'threshold', battle.dungeonId) }); }
+  }
+  for (const unit of killed) {
+    const def = character(content, unit.characterId);
+    if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat', battle.dungeonId) }); }
+    if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
+    const stage = dungeon(content, battle.dungeonId);
+    const event = content.events?.find(item => item.id === stage.eventId);
+    const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
+    const random = rng(battle.seed); battle.seed = random.seed;
+    const rarity = random.value < 0.75 ? 'common' : random.value < 0.97 ? 'rare' : 'epic';
+    const materialId = `${def.speciesId}:${rarity}`;
+    if (!special) battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
+    const gold = Math.ceil(def.strength / 2) + (def.encounterLoot?.gold ?? 0); goldEarned += gold; battle.goldEarned += gold;
+    if (!discoveredIds.includes(def.id)) discoveredIds.push(def.id);
+    if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+    for (const reward of def.encounterLoot?.guaranteed ?? []) {
+      battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+      const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
+      emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'common' | 'rare' | 'epic' });
+    }
+    if (unit.boss && stage.bossLoot) {
+      const rewards = [...stage.bossLoot.guaranteed];
+      if (stage.bossLoot.bonus) {
+        const roll = rng(battle.seed); battle.seed = roll.seed;
+        if (roll.value * 100 < stage.bossLoot.bonus.chance) rewards.push(stage.bossLoot.bonus.reward);
+      }
+      for (const reward of rewards) {
+        battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+        const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
+        emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'rare' });
+      }
+    }
+    if (special && event && stage.eventReward) {
+      const reward = stage.eventReward;
+      battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
+      const label = reward.materialId === event.core.id ? event.core.name : event.fragment.name;
+      emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId === event.core.id ? 'epic' : 'rare' });
+    }
+  }
+  return { goldEarned, discoveredIds };
+}
 export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
@@ -519,49 +569,9 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const healed = Math.min(actor.maxHp - actor.hp, Math.floor(amount * 8 / 100));
       if (healed > 0) { actor.hp += healed; emit(battle, { kind: 'heal', text: `${name} — 黄泉の契り`, actorId: actor.uid, targetIds: [actor.uid], amount: healed, unitsAfter: clone(battle.units) }); }
     }
-    const killed = battle.units.filter((unit) => unit.hp <= 0 && before.some((old) => old.uid === unit.uid && old.hp > 0));
-    for (const boss of battle.units.filter((unit) => unit.boss && unit.hp > 0 && unit.hp <= unit.maxHp / 2 && before.some((old) => old.uid === unit.uid && old.hp > old.maxHp / 2))) {
-      const flag = `${boss.uid}:half`;
-      if (!battle.talkFlags.includes(flag)) { battle.talkFlags.push(flag); emit(battle, { kind: 'dialogue', actorId: boss.uid, text: bossLine(content, boss.characterId, 'threshold', battle.dungeonId) }); }
-    }
-    for (const unit of killed) {
-      const def = character(content, unit.characterId);
-      if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat', battle.dungeonId) }); }
-      if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
-      const stage = dungeon(content, battle.dungeonId);
-      const event = content.events?.find(item => item.id === stage.eventId);
-      const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
-      const random = rng(battle.seed); battle.seed = random.seed;
-      const rarity = random.value < 0.75 ? 'common' : random.value < 0.97 ? 'rare' : 'epic';
-      const materialId = `${def.speciesId}:${rarity}`;
-      if (!special) battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
-      const gold = Math.ceil(def.strength / 2) + (def.encounterLoot?.gold ?? 0); goldEarned += gold; battle.goldEarned += gold;
-      if (!discoveredIds.includes(def.id)) discoveredIds.push(def.id);
-      if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
-      for (const reward of def.encounterLoot?.guaranteed ?? []) {
-        battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
-        const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
-        emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'common' | 'rare' | 'epic' });
-      }
-      if (unit.boss && stage.bossLoot) {
-        const rewards = [...stage.bossLoot.guaranteed];
-        if (stage.bossLoot.bonus) {
-          const roll = rng(battle.seed); battle.seed = roll.seed;
-          if (roll.value * 100 < stage.bossLoot.bonus.chance) rewards.push(stage.bossLoot.bonus.reward);
-        }
-        for (const reward of rewards) {
-          battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
-          const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
-          emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId.split(':')[1] as 'rare' });
-        }
-      }
-      if (special && event && stage.eventReward) {
-        const reward = stage.eventReward;
-        battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
-        const label = reward.materialId === event.core.id ? event.core.name : event.fragment.name;
-        emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId === event.core.id ? 'epic' : 'rare' });
-      }
-    }
+    const settled = settleAction(battle, content, before);
+    goldEarned += settled.goldEarned;
+    discoveredIds.push(...settled.discoveredIds.filter(id => !discoveredIds.includes(id)));
   }
   resolveBossBits(battle, content);
   for (const unit of battle.units.filter(unit => unit.hp > 0 && unit.hp < unit.maxHp && (unit.regenUntil ?? -1) >= battle.round)) {
@@ -586,8 +596,37 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
     emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
+  if (battle.nextPhase !== 'ready') clearBattleBloom(battle);
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
+}
+/** One optional off-turn action; ordinary defeat and reward settlement is shared. */
+export function useBattleBloom(input: Battle, bloomId: string, content: Content): RoundResult {
+  const flower = input.blooms?.flower;
+  if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave !== input.wave || flower.round > input.round) throw new Error('この花はもう使えません。');
+  if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
+  const battle = clone(input), before = clone(battle.units);
+  const party = alive(battle.units, 'party');
+  if (!party.length || !alive(battle.units, 'enemy').length) throw new Error('この花はもう使えません。');
+  battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
+  battle.phase = 'playing'; battle.nextPhase = 'ready';
+  clearBattleBloom(battle);
+  // Harvesting an older bloom must not trigger another roll in the same round.
+  battle.blooms!.checked = `${battle.wave}:${battle.round}`;
+  if (flower.kind === 'heal') {
+    const target = party.sort((a,b) => a.hp * b.maxHp - b.hp * a.maxHp || byId(a,b))[0]!;
+    const amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(target.maxHp * BLOOM_HEAL_PERCENT / 100)));
+    target.hp += amount;
+    emit(battle, { kind: 'heal', bloomAction: 'heal', targetIds: [target.uid], amount, text: amount ? `癒しの花 — 最も傷ついた味方を${amount}回復` : '癒しの花 — 味方のHPは満ちています', unitsAfter: clone(battle.units) });
+  } else {
+    const target = alive(battle.units, 'enemy').sort((a,b) => a.hp - b.hp || byId(a,b))[0]!;
+    const source = { ...party[0]!, buffUntil: undefined, buffStrength: undefined, attack: Math.round(party.reduce((sum,unit) => sum + unit.attack, 0) / party.length) };
+    const hit = damage(source, target, 150, 100, battle, true, content);
+    emit(battle, { kind: 'attack', bloomAction: 'strike', targetIds: [hit.unit.uid], amount: hit.amount, text: `月晶の花 — ${hit.amount}ダメージ（障壁 ${hit.absorbed}）`, unitsAfter: clone(battle.units) });
+  }
+  const settled = settleAction(battle, content, before);
+  if (!alive(battle.units, 'enemy').length) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
+  return { battle, ...settled };
 }
 export function advanceReplay(input: Battle, content: Content): Battle {
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
@@ -597,9 +636,13 @@ export function advanceReplay(input: Battle, content: Content): Battle {
   if (battle.cursor < battle.events.length) return battle;
   switch (battle.nextPhase) {
     case 'wave': battle.wave += 1; return openWave(battle, content, false);
-    case 'reward': battle.phase = 'reward'; break;
-    case 'failed': battle.phase = 'failed'; battle.pendingMaterials = {}; break;
-    case 'ready': battle.phase = 'ready'; battle.potionUsed = false; break;
+    case 'reward': clearBattleBloom(battle); battle.phase = 'reward'; break;
+    case 'failed': clearBattleBloom(battle); battle.phase = 'failed'; battle.pendingMaterials = {}; break;
+    case 'ready':
+      battle.phase = 'ready';
+      if (!battle.events.some(event => event.bloomAction)) battle.potionUsed = false;
+      offerBattleBloom(battle);
+      break;
   }
   return battle;
 }

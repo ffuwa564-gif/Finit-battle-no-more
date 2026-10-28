@@ -1,0 +1,67 @@
+{
+  "approved": "2026-10-28; user requested game integration after approving the bud-to-bloom and circulating-light preview",
+  "assets": [
+    {
+      "file": "crystal-motion.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "3337466dd72d7d22dcbdc0dae25f4eb7c4d4c0e17b773ad011788aff845d9a06",
+      "bytes": 1852476,
+      "frames": 198,
+      "loop": 0,
+      "durationMs": 9900
+    },
+    {
+      "file": "crystal-poster.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b6767e7df6f5826ad478b178ddb99eb9b55990dfb876b974aaa7205a5af67b9",
+      "bytes": 144425,
+      "frames": 1
+    },
+    {
+      "file": "flower-bud-bloom.webp",
+      "width": 512,
+      "height": 512,
+      "sha256": "822021156ea444873ad49425cdba3829eeb0a48f69c1ab26ab65b86346164c76",
+      "bytes": 2876700,
+      "frames": 100,
+      "loop": 1,
+      "durationMs": 5000
+    },
+    {
+      "file": "flower-bud-poster.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "09cbc0f96b9e19c4248231eefeff3bd72a08c5bc0e589c3bca249385e7df661d",
+      "bytes": 148563,
+      "frames": 1
+    },
+    {
+      "file": "flower-open-poster.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "ff8282c976a786505ffe2f21ed08cb7f0a42b3c50f9f45cb7b758b120be0861f",
+      "bytes": 268846,
+      "frames": 1
+    },
+    {
+      "file": "frame-circulating-light.webp",
+      "width": 720,
+      "height": 960,
+      "sha256": "8c5da5fb534e858490e78b9c263ccff1ca219206597c0794227b96f43f077f6f",
+      "bytes": 10956042,
+      "frames": 160,
+      "loop": 0,
+      "durationMs": 8000
+    },
+    {
+      "file": "frame-poster.png",
+      "width": 720,
+      "height": 960,
+      "sha256": "ccb21369a0c4abad5d9f170b4956ce465b13c2f2ed09a3bb9d3e52c301ba5b64",
+      "bytes": 551486,
+      "frames": 1
+    }
+  ]
+}

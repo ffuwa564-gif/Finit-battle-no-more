@@ -1609,5 +1609,20 @@
   "十の祈りを紡いでいます": "Weaving ten wishes",
   "祈りの顕現 {0} / 10": "Wishes revealed {0} / 10",
   "未開封の祈り {0}": "Sealed wish {0}",
-  "結果をまとめて見る": "Show All Results"
+  "結果をまとめて見る": "Show All Results",
+  "この花はもう使えません。": "This flower is no longer available.",
+  "回復できる味方がいません。": "No living companion needs healing.",
+  "花の保存状態が不正です。": "The saved flower state is invalid.",
+  "癒しの花 — 最も傷ついた味方を{0}回復": "Healing Blossom — restores {0} HP to the most wounded companion",
+  "月晶の花 — {0}ダメージ（障壁 {1}）": "Mooncrystal Blossom — {0} damage ({1} absorbed by barrier)",
+  "癒しの花：最も傷ついた味方を最大HPの18%回復": "Healing Blossom: restore 18% of max HP to the most wounded companion",
+  "月晶の花：弱った敵1体に追加攻撃": "Mooncrystal Blossom: strike one weakened enemy",
+  "月の庭の成長": "Moon Garden growth",
+  "開花中。花をタップして力を使う": "In bloom. Tap the flower to use its power.",
+  "戦闘で庭が育つ。3つ灯るまでに花が咲く": "Battle nurtures the garden. A flower blooms by the third light.",
+  "月の庭で花を育てる": "Nurture the Moon Garden",
+  "戦闘で枠の結晶が灯り、確率で花が咲きます。白花は回復、青花は攻撃。次のATTACKまでに花をタップして力を使えます。": "Battle lights the frame's crystals and may bring a flower into bloom. White flowers heal; blue flowers attack. Tap a flower before your next ATTACK to use its power.",
+  "白い蕾が開いています": "The white bud is opening",
+  "癒しの花 — 味方のHPは満ちています": "Healing Blossom — your companions are already at full HP",
+  "戦闘で花が咲いたらタップ。回復または月晶の追撃が発動し、蕾に戻ります。咲いた花は摘むまで残り、3ラウンド以内に開花します。": "Tap an open flower to heal a companion or trigger a Mooncrystal strike, then return it to a bud. Flowers remain until harvested and bloom within three rounds."
 }
