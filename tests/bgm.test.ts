@@ -2,10 +2,25 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { bgmTracks, configureBgm, disposeBgm, getBgmScene, refreshBgm, unlockBgm } from '../src/platform/bgm';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
+import { createBattle } from '../src/domain/engine';
 
 afterEach(() => { disposeBgm(); vi.unstubAllGlobals(); });
 
 describe('BGM scene transitions', () => {
+  it('uses the dedicated clock track for the actual clock trial, including its final replay', () => {
+    const save = createInitialSave(content, 42);
+    const clock = content.dungeons.find(d => d.id === 'frozen-dawn-clock')!;
+    const battle = createBattle(content, save.partyIds, save.leaderId, clock.id, 0, 42, 'clock-music');
+    expect(getBgmScene(battle, clock)).toBe('clockBoss');
+    expect(getBgmScene({ ...battle, phase: 'ready' }, clock)).toBe('clockBoss');
+    expect(getBgmScene({ ...battle, initialUnits: battle.initialUnits.map(unit => ({ ...unit, hp: 0 })), phase: 'playing' }, clock)).toBe('clockBoss');
+    expect(getBgmScene({ ...battle, phase: 'reward' }, clock)).toBe('clear');
+    expect(getBgmScene({ ...battle, phase: 'failed' }, clock)).toBe('home');
+    expect(getBgmScene(null, clock)).toBe('home');
+    expect(getBgmScene(battle, clock, true)).toBe('novel');
+    expect(getBgmScene(battle)).toBe('boss');
+    expect(content.dungeons.filter(d => d.bossMusic === 'clock').map(d => d.id)).toEqual([clock.id]);
+  });
   it('keeps boss music through replay, plays clear only at rewards, and returns home on failure or claim', () => {
     const save = createInitialSave(content, 42);
     const battle = applyCommand(save, { type: 'depart', dungeonId: content.dungeons[0].id, potions: 0 }, content).battle!;
@@ -45,6 +60,11 @@ describe('BGM scene transitions', () => {
     configureBgm('boss', 0.7);
     expect(audio.load).toHaveBeenCalledTimes(loads);
     expect(audio.volume).toBe(0.7);
+    configureBgm('clockBoss', 0.7);
+    expect(audio.src).toContain(bgmTracks.clockBoss.file);
+    const clockLoads = audio.load.mock.calls.length;
+    configureBgm('clockBoss', 0.7);
+    expect(audio.load).toHaveBeenCalledTimes(clockLoads);
     configureBgm('clear', 0);
     expect(audio.paused).toBe(true);
     configureBgm('clear', 0.4);

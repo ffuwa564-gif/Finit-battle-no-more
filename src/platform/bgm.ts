@@ -7,6 +7,7 @@ export const bgmTracks = {
   battle: { title: '渦巻き', file: 'uzumaki.mp3', source: 'https://amachamusic.chagasi.com/music_uzumaki.html' },
   boss: { title: '騎兵戦', file: 'kiheisen.mp3', source: 'https://amachamusic.chagasi.com/music_kiheisen.html' },
   japaneseBoss: { title: '打ち上げ花火', file: 'uchiagehanabi.mp3', source: 'https://amachamusic.chagasi.com/music_uchiagehanabi.html' },
+  clockBoss: { title: 'チェス', file: 'chess.mp3', source: 'https://amachamusic.chagasi.com/music_chess.html' },
   clear: { title: '楽しい冒険', file: 'tanoshiibouken.mp3', source: 'https://amachamusic.chagasi.com/music_tanoshiibouken.html' },
 } as const;
 export type BgmScene = keyof typeof bgmTracks;
@@ -18,6 +19,7 @@ export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | nul
   // Use the wave's initial units: killing the boss must not restart normal BGM
   // while its final attacks, dialogue and drops are still being presented.
   if (!battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss)) return 'battle';
+  if (dungeon?.bossMusic === 'clock') return 'clockBoss';
   return dungeon?.bossMusic === 'japanese' ? 'japaneseBoss' : 'boss';
 }
 let player: HTMLAudioElement | undefined;

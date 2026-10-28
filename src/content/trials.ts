@@ -48,6 +48,7 @@ export const frozenDawnClock: DungeonDef = {
   id: 'frozen-dawn-clock', kind: 'trial', name: '凍暁の大時計', subtitle: '止まった針を、あなたの加速で砕け。',
   description: '機巧の聖女クローナとの1Wave長期決戦。毎ターン固定値の障壁を再生し、破壊するとそのターンは防御が低下。20ターン目から強烈な全体攻撃を放ちます。エオスをリーダーにして守り、加速で再生を上回るか、障壁破壊・防御低下で突破しましょう。素材・ゴールド・祈願石なし。踏破記録のみ。使用した薬は消費します。',
   artId: 'chrona-art', published: true, previousDungeonId: 'silent-cathedral', tacticalCommands: true,
+  bossMusic: 'clock',
   bossScale: { hp: 850, attack: 45 },
   bossClock: { shield: 170, brokenDefensePercent: 25, deadline: 20, finalePower: 15000, shieldName: '護時の障壁', finaleName: '凍暁の終鐘' },
   bossDialogue: { intro: 'ここでは、夜明けさえ刻を忘れる。', threshold: '止めたはずの針が……あなたの祈りで、進んでいる。', defeat: '……ああ。朝とは、こんなにもあたたかい。' },

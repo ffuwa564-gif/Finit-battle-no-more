@@ -37,6 +37,11 @@ test('the optional trial explains its shield, deadline, and reward-free rules be
   await modal.getByRole('button', { name: '探索を始める', exact: true }).click();
   await expect(page.getByRole('status', { name: '大時計の障壁と終鐘', exact: true })).toContainText('終鐘まで 19T');
   await expect(page.locator('.enemy-page-art')).toHaveAttribute('src', /trial-chrona.webp$/);
+  const music = page.locator('audio[data-bgm]');
+  await expect(music).toHaveAttribute('data-scene', 'clockBoss');
+  await expect(music).toHaveAttribute('src', /audio\/chess.mp3$/);
+  await expect(music).toHaveJSProperty('loop', true);
+  await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(.2);
 });
 
 test('breaking the shield reveals the defense window and restores it at the next round', async ({ page }, testInfo) => {
