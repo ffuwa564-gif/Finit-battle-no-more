@@ -1,0 +1,25 @@
+{
+  "source": "artifacts/silver-fairies; generated for user request on 2026-10-28",
+  "assets": [
+    {
+      "file": "fairy-facing-left-poster.png",
+      "sha256": "507c710db39c45814ddf71c94553c3a7ab4ffc077a2aa48ae5c533a677da9eab",
+      "bytes": 235220
+    },
+    {
+      "file": "fairy-facing-left.webp",
+      "sha256": "10b83e1b901965556497ccc737dd8701f3a9c1a35af88300126e8892452c2c31",
+      "bytes": 1644814
+    },
+    {
+      "file": "fairy-facing-right-poster.png",
+      "sha256": "4b8dd73edf3fd611035484999b787148e162ec1d6bd48b57c4fabdf53a7771d6",
+      "bytes": 204075
+    },
+    {
+      "file": "fairy-facing-right.webp",
+      "sha256": "942bd46ec33f2a289b3ea138f342df594be5afac8de0e0273520734c53932428",
+      "bytes": 4065306
+    }
+  ]
+}

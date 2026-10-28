@@ -6,7 +6,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
 import { initialGacha, pickSSR, gachaPity, gachaSSRRate, gachaCollections, introductoryGuarantee, gachaPoolIds } from '../content/gacha';
-import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion, useBattleBloom } from '../domain/engine';
+import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion, useBattleBloom, useBattleFairy } from '../domain/engine';
 
 function fail(message: string): never { throw new Error(message); }
 function natural(value: number, label: string, allowZero = false): void {
@@ -104,6 +104,10 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       unit.ultimateQueued = !unit.ultimateQueued;
       break;
     }
+    case 'battleFairy': {
+      save.battle = useBattleFairy(ready(save), command.fairyId, content);
+      break;
+    }
     case 'battleBloom': {
       const result = useBattleBloom(ready(save), command.bloomId, content);
       save.battle = result.battle;
@@ -137,6 +141,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'retreat': {
       const battle = ready(save);
       if (battle.blooms) delete battle.blooms.flower;
+      if (battle.fairies) delete battle.fairies.visitor;
       battle.phase = 'failed'; battle.nextPhase = 'failed'; battle.failureReason = content.dungeons.find(item => item.id === battle.dungeonId)?.kind === 'trial' ? '試練から撤退しました。' : '撤退しました。今回の仮取得素材は失われました。';
       battle.pendingMaterials = {};
       log(save, '探索から撤退しました。撃破ゴールドは保持されます。');

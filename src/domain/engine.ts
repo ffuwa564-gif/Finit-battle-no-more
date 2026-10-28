@@ -1,3 +1,4 @@
+import { clearBattleFairy, offerBattleFairy, FAIRY_CHARGE, FAIRY_STAY } from './battle-fairies';
 import { clearBattleBloom, offerBattleBloom, BLOOM_HEAL_PERCENT } from './battle-blooms';
 import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
 import { activeAcceleration } from './acceleration';
@@ -106,7 +107,7 @@ function restoreClockShield(battle: Battle, content: Content, present: boolean):
   }
 }
 function openWave(battle: Battle, content: Content, first: boolean): Battle {
-  clearBattleBloom(battle);
+  clearBattleBloom(battle); clearBattleFairy(battle);
   if (battle.blooms) battle.blooms.growth = 0;
   const def = dungeon(content, battle.dungeonId);
   let wave = def.waves[battle.wave];
@@ -596,7 +597,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
     emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
-  if (battle.nextPhase !== 'ready') clearBattleBloom(battle);
+  if (battle.nextPhase !== 'ready') { clearBattleBloom(battle); clearBattleFairy(battle); }
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
 }
@@ -628,6 +629,22 @@ export function useBattleBloom(input: Battle, bloomId: string, content: Content)
   if (!alive(battle.units, 'enemy').length) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
   return { battle, ...settled };
 }
+/** A single saved blessing; never advances combat or resets the potion allowance. */
+export function useBattleFairy(input: Battle, fairyId: string, content: Content): Battle {
+  const visitor = input.fairies?.visitor;
+  if (input.phase !== 'ready' || !visitor || visitor.id !== fairyId || visitor.wave !== input.wave || input.round >= visitor.round + FAIRY_STAY) throw new Error('この妖精はもういません。');
+  if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
+  if (!alive(input.units, 'party').length || !alive(input.units, 'enemy').length) throw new Error('この妖精はもういません。');
+  const battle = clone(input);
+  battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
+  battle.phase = 'playing'; battle.nextPhase = 'ready';
+  clearBattleFairy(battle);
+  battle.fairies!.checked = `${battle.wave}:${battle.round}`;
+  const party = alive(battle.units, 'party');
+  party.forEach(unit => gainUltimate(unit, FAIRY_CHARGE));
+  emit(battle, { kind: 'buff', fairyAction: 'charge', fairySide: visitor.side, targetIds: party.map(unit => unit.uid), amount: FAIRY_CHARGE, text: '妖精の祝福 — 味方全員の必殺ゲージ＋15%', unitsAfter: clone(battle.units) });
+  return battle;
+}
 export function advanceReplay(input: Battle, content: Content): Battle {
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
   const battle = clone(input);
@@ -636,12 +653,15 @@ export function advanceReplay(input: Battle, content: Content): Battle {
   if (battle.cursor < battle.events.length) return battle;
   switch (battle.nextPhase) {
     case 'wave': battle.wave += 1; return openWave(battle, content, false);
-    case 'reward': clearBattleBloom(battle); battle.phase = 'reward'; break;
-    case 'failed': clearBattleBloom(battle); battle.phase = 'failed'; battle.pendingMaterials = {}; break;
+    case 'reward': clearBattleBloom(battle); clearBattleFairy(battle); battle.phase = 'reward'; break;
+    case 'failed': clearBattleBloom(battle); clearBattleFairy(battle); battle.phase = 'failed'; battle.pendingMaterials = {}; break;
     case 'ready':
       battle.phase = 'ready';
-      if (!battle.events.some(event => event.bloomAction)) battle.potionUsed = false;
-      offerBattleBloom(battle);
+      if (!battle.events.some(event => event.bloomAction || event.fairyAction)) {
+        battle.potionUsed = false;
+        offerBattleBloom(battle);
+        offerBattleFairy(battle);
+      }
       break;
   }
   return battle;
