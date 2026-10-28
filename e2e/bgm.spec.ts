@@ -47,8 +47,8 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ダンジョン', exact: true }).click();
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();
-  await expect(music).toHaveAttribute('data-scene', 'battle');
-  await expect(music).toHaveAttribute('src', /audio\/uzumaki.mp3$/);
+  await expect(music).toHaveAttribute('data-scene', 'normalBattle');
+  await expect(music).toHaveAttribute('src', /audio\/fjordnosundakaze.mp3$/);
   await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);
   await page.getByRole('button', { name: '効果音をミュート', exact: true }).click();
   await expect(music).toHaveJSProperty('paused', false);

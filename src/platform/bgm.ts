@@ -5,6 +5,7 @@ export const bgmTracks = {
   home: { title: '悲しみの曖昧な対象', file: 'kanashiminoaimainataishou.mp3', source: 'https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html' },
   novel: { title: '水に沈むオルガン', file: 'mizunishizumuorgan.mp3', source: 'https://amachamusic.chagasi.com/music_mizunishizumuorgan.html' },
   battle: { title: '渦巻き', file: 'uzumaki.mp3', source: 'https://amachamusic.chagasi.com/music_uzumaki.html' },
+  normalBattle: { title: 'フィヨルドの澄んだ風', file: 'fjordnosundakaze.mp3', source: 'https://amachamusic.chagasi.com/music_fjordnosundakaze.html' },
   boss: { title: '騎兵戦', file: 'kiheisen.mp3', source: 'https://amachamusic.chagasi.com/music_kiheisen.html' },
   japaneseBoss: { title: '打ち上げ花火', file: 'uchiagehanabi.mp3', source: 'https://amachamusic.chagasi.com/music_uchiagehanabi.html' },
   clockBoss: { title: 'チェス', file: 'chess.mp3', source: 'https://amachamusic.chagasi.com/music_chess.html' },
@@ -12,13 +13,16 @@ export const bgmTracks = {
 } as const;
 export type BgmScene = keyof typeof bgmTracks;
 
-export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | null | undefined, dungeon?: Pick<DungeonDef, 'bossMusic'>, novelActive = false): BgmScene {
+export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | null | undefined, dungeon?: Pick<DungeonDef, 'bossMusic' | 'kind'>, novelActive = false): BgmScene {
   if (novelActive) return 'novel';
   if (!battle || battle.phase === 'failed') return 'home';
   if (battle.phase === 'reward') return 'clear';
   // Use the wave's initial units: killing the boss must not restart normal BGM
   // while its final attacks, dialogue and drops are still being presented.
-  if (!battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss)) return 'battle';
+  if (!battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss)) {
+    // Legacy campaign stages omit kind; they are normal dungeons too.
+    return dungeon && (dungeon.kind ?? 'normal') === 'normal' ? 'normalBattle' : 'battle';
+  }
   if (dungeon?.bossMusic === 'clock') return 'clockBoss';
   return dungeon?.bossMusic === 'japanese' ? 'japaneseBoss' : 'boss';
 }
