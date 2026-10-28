@@ -52,13 +52,13 @@ export const combatTakes: Record<CombatFamily, readonly [Take,Take,Take]> = {
     {name:'清水',material:'soft',duration:.82,tone:785,weight:.12},
   ],
   guard:[
-    {name:'鉄盾',material:'iron',duration:.62,tone:265,weight:.8},
-    {name:'木盾',material:'wood',duration:.56,tone:390,weight:.75},
+    {name:'盾の受け止め',material:'wood',duration:.62,tone:190,weight:.7},
+    {name:'包む守り',material:'soft',duration:.56,tone:260,weight:.55},
     {name:'石壁',material:'stone',duration:.76,tone:180,weight:1},
   ],
   barrier:[
-    {name:'結晶の壁',material:'glass',duration:.8,tone:740,weight:.25},
-    {name:'柔らかな結界',material:'soft',duration:.84,tone:440,weight:.2},
+    {name:'薄明の結界',material:'soft',duration:.8,tone:330,weight:.18},
+    {name:'柔らかな結界',material:'air',duration:.84,tone:440,weight:.2},
     {name:'脈動する結界',material:'pulse',duration:.8,tone:350,weight:.25},
   ],
 };
@@ -129,10 +129,18 @@ export function renderCombatSound(family: CombatFamily, sampleRate: number, vari
     // Parallel saturation thickens the body without flattening the bright attack.
     pcm[i]=Math.tanh(value*1.35);
   }
-  const dry=pcm.slice(),offset=Math.round((material==='hammer' ? .061 : .043)*sampleRate),wet=gentle ? .16 : material==='stone' ? .13 : .08;
+  const support=family==='guard'||family==='barrier';
+  const dry=pcm.slice(),offset=Math.round((material==='hammer' ? .061 : .043)*sampleRate),wet=support ? .04 : gentle ? .16 : material==='stone' ? .13 : .08;
   for(let i=offset;i<pcm.length;i++)pcm[i]+=dry[i-offset]*wet;
   let peak=0;for(const value of pcm)peak=Math.max(peak,Math.abs(value));
-  const target=family==='heal' ? .48 : family==='barrier' ? .54 : family==='shatter'||family==='area' ? .74 : .7;
-  for(let i=0;i<pcm.length;i++)pcm[i]*=target/Math.max(peak,.001)*Math.min(1,i/(sampleRate*.0008),(pcm.length-1-i)/(sampleRate*.045));
+  const target=family==='heal' ? .48 : family==='barrier' ? .50 : family==='guard' ? .58 : family==='shatter'||family==='area' ? .74 : .7;
+  // Round shield/ward contacts with two gentle low-pass stages. The final taper
+  // comes after filtering so the buffer still starts and ends at exact silence.
+  const softness=pole(family==='guard'?1500:1800);let rounded=0,roundedTwice=0;
+  for(let i=0;i<pcm.length;i++){
+    let value=pcm[i]*target/Math.max(peak,.001);
+    if(support){rounded+=softness*(value-rounded);roundedTwice+=softness*(rounded-roundedTwice);value=roundedTwice;}
+    pcm[i]=value*Math.min(1,i/(sampleRate*(support ? .009 : .0008)),(pcm.length-1-i)/(sampleRate*.045));
+  }
   return pcm;
 }
