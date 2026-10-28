@@ -61,7 +61,7 @@ test('breaking the shield reveals the defense window and restores it at the next
 
 test('an accelerated real run clears and records the trial without loot or currency rewards', async ({ page }) => {
   await prepare(page, -1); const before = (await readSave(page))!;
-  await expect(page.getByRole('status', { name: '戦闘加速', exact: true })).toContainText(`+${(before.battle!.round - 1) * 5}%`);
+  await expect(page.getByRole('status', { name: '戦闘加速', exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'ラウンドを進める', exact: true }).click();
   await expect(page.getByRole('heading', { name: '試練踏破', exact: true })).toBeVisible({ timeout: 30000 });
   await expect(page.locator('.result-panel')).toContainText('戦利品なし・踏破の記録のみ');
