@@ -22,7 +22,7 @@
 .goddess-collection .goddess-collection__draw { width: 100%; min-height: 58px; border-color: #d2bd99; border-radius: 13px; background: linear-gradient(140deg,#f0e6d6,#d7c7b9); color: #42374d; box-shadow: inset 0 0 0 2px #fff6e866,0 3px 12px #0f142733; text-shadow: none; font: 400 18px/1.5 var(--font-display); letter-spacing: .05em; }
 .goddess-collection__availability { margin: 10px 0 0; color: #d9d0d9; text-align: center; font-size: 11px; }
 .goddess-rates { display: flex; justify-content: center; gap: 24px; margin: 10px 0; font-family: var(--font-display); font-size: 18px; }
-.goddess-rates > span:last-child { color: #937340; }
+.goddess-rates > span:last-child { color: var(--gold); }
 @media (max-width: 760px) {
   .goddess-collection__heading { padding: 20px 10px 17px; }
   .goddess-collection__heading h2 { font-size: clamp(20px,5.3vw,29px); letter-spacing: 0; }
@@ -46,7 +46,7 @@
 
 .gacha-collections { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .gacha-collections .button { flex: 1 1 220px; white-space: normal; line-height: 1.6; padding: 12px; }
-.gacha-guarantee-status { font-weight: 600; color: #69533c; }
+.gacha-guarantee-status { font-weight: 600; color: var(--gold-light); }
 
 .gacha-common-section, .gacha-common-ssr { margin-top: 32px; }
 .gacha-common-section > .subtle { margin: 12px 0 18px; line-height: 1.8; }
