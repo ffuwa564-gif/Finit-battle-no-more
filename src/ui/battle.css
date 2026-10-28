@@ -87,5 +87,8 @@
   .battle-layout .battle-scene { height: 350px; }
 }
 
-/* One compact row keeps portraits and commands stable; details open on demand. */
-.battle-layout .party-unit__effects { height: 30px; min-width: 0; }
+/* Status icons float over the portrait; empty states consume no layout space.
+   HP and ultimate meters occupy the 27px below the portrait. */
+.battle-layout .party-unit { position: relative; }
+.battle-layout .party-unit__effects { position: absolute; bottom: 30px; right: 3px; z-index: 4; max-width: calc(100% - 6px); pointer-events: none; }
+.battle-layout .party-unit__effects .unit-effects-summary { pointer-events: auto; }

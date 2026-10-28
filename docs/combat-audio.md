@@ -90,3 +90,7 @@ Prompt:
 > Single dark fantasy RPG protective barrier activation. Short soft airy whoosh blooms into a warm deep velvety magical pulse, with a gentle clean fading tail. Elegant organic protective veil, satisfying and restrained. No metal, clangs, glass, bells, chimes, electric buzzing, harsh treble, music or voices. One isolated activation, about 1 second, silence before and after.
 
 `e2e/runway-protection.spec.ts` verifies actual native source buffers for all four protection cues match an independently decoded recording. Existing master-output tests check audibility and silence after tails. These automated checks do not establish subjective sound quality.
+
+### Protection recording level adjustment
+
+Raised the production recording by +4 dB after feedback that it was too quiet. The Runway source, silence trim and edge fades remain the same. This changes only the protection asset; the shared SE volume and output limiter still apply. The bundled recording is also the preview, so its level matches the game input.

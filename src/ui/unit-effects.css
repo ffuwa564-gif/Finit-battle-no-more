@@ -22,8 +22,8 @@
 .unit-effects [data-ailment='confusion'] { background:#ede0f6; color:#76488c; border-color:#c3a0d7; }
 .unit-effects [data-ailment='charm'] { background:#f9dfe9; color:#934568; border-color:#daa0ba; }
 
-.unit-effects-summary { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center; gap: 3px; padding: 0 2px; border: 0; border-radius: 4px; background: transparent; color: #385c61; cursor: pointer; }
-.unit-effects-summary > span { display: flex; padding: 3px; border-radius: 4px; background: #dceae4; }
+.unit-effects-summary { width: auto; height: 24px; display: flex; align-items: center; justify-content: center; gap: 2px; padding: 2px; border: 1px solid #c6d8e35c; border-radius: 5px; background: #182537dd; box-shadow: 0 1px 3px #0005; color: #e8edf2; cursor: pointer; }
+.unit-effects-summary > span { display: flex; color: #385c61; padding: 2px; border-radius: 4px; background: #dceae4; }
 .unit-effects-summary > .is-debuff { color: #8b3856; background: #f2dce5; }
 .unit-effects-summary small { font: 10px/1 var(--font-body); }
 .unit-effects-summary:focus-visible { outline: 2px solid #8d754e; outline-offset: -2px; }

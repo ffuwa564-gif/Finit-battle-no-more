@@ -27,8 +27,8 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
     const iconFor = (effect: typeof effects[number]) => effect.ailment ? icons[effect.ailment] : effect.icon ?? Sparkles;
     return <>
       <button type="button" className="unit-effects-summary" aria-label={`${tr('付与効果')}: ${effects.map(effect => tr(effect.label)).join(', ')}`} aria-haspopup="dialog" onClick={() => setOpen(true)}>
-        {effects.slice(0, 3).map(effect => { const Icon = iconFor(effect); return <span key={effect.label} className={effect.bad ? 'is-debuff' : ''} title={tr(effect.label)}><Icon size={12} aria-hidden="true" /></span>; })}
-        {effects.length > 3 && <small>+{effects.length - 3}</small>}
+        {effects.slice(0, 2).map(effect => { const Icon = iconFor(effect); return <span key={effect.label} className={effect.bad ? 'is-debuff' : ''} title={tr(effect.label)}><Icon size={12} aria-hidden="true" /></span>; })}
+        {effects.length > 2 && <small>+{effects.length - 2}</small>}
       </button>
       <Modal open={open} title={tr('付与効果')} onClose={() => setOpen(false)} className="unit-effects-modal">
         <ul className="unit-effects-details">{effects.map(effect => { const Icon = iconFor(effect); return <li key={effect.label} className={effect.bad ? 'is-debuff' : ''}><Icon size={18} aria-hidden="true" /><div><strong>{localize(effect.label)}</strong><p>{localize(effect.title)}</p></div></li>; })}</ul>
