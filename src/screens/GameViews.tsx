@@ -169,7 +169,7 @@ export function BattleView(p: ViewProps) {
     <div data-guide="battle-party" className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label={tr("パーティメンバー")}>
       {localize(party.map(unit => <div data-unit={unit.uid} className={`party-unit ${unit.hp <= 0 ? 'is-defeated' : ''}${ultimateReady(unit) ? ' party-unit--ultimate-ready' : ''}${unit.ultimateQueued ? ' party-unit--ultimate-queued' : ''}`} key={unit.uid}>
         <CharacterPortrait variant="face" compact showRole={false} showName={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} selected={!!unit.ultimateQueued} disabled={p.busy || battle.phase !== 'ready' || unit.hp <= 0 || (!usingPotion && !ultimateReady(unit))} label={tr(usingPotion ? `${characterById(unit.characterId).name}を回復` : unit.ultimateQueued ? `${characterById(unit.characterId).name}：必殺技の予約を解除` : `${characterById(unit.characterId).name}：必殺技を予約`)} onClick={async () => { if (usingPotion) { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } else await p.command({ type: 'ultimate', unitId: unit.uid }); }} />
-        <UltimateMeter unit={unit} /><span className="party-hp">{localize(unit.hp)} / {localize(unit.maxHp)}</span><UnitEffects unit={unit} round={displayRound} />
+        <UltimateMeter unit={unit} /><span className="party-hp">{localize(unit.hp)} / {localize(unit.maxHp)}</span><div className="party-unit__effects"><UnitEffects unit={unit} round={displayRound} /></div>
       </div>))}
     </div>
     <p className="ultimate-hint">{tr(usingPotion ? "回復する仲間を選択" : "光る枠をタップで必殺予約・もう一度で解除。ATTACKで発動。")}</p>

@@ -86,3 +86,9 @@
 @media (max-width: 760px) and (max-height: 740px) {
   .battle-layout .battle-scene { height: 350px; }
 }
+
+/* Statuses keep a reserved two-line slot even when no effects are active. */
+.battle-layout .party-unit__effects { height: 44px; min-width: 0; overflow: hidden; }
+.battle-layout .party-unit__effects > .unit-effects { height: 100%; margin: 0; align-content: flex-start; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.battle-layout .party-unit__effects > .unit-effects:focus-visible { outline: 1px solid #d8c995; outline-offset: -1px; }
+.battle-layout .ultimate-hint { height: 40px; display: flex; align-items: center; justify-content: center; }
