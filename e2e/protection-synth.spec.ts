@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
-test('all protection routes play the harmonic synth without loading the old recording', async ({ page }) => {
+test('all protection routes play the ultimate opening sound without loading the old recording', async ({ page }) => {
   await page.addInitScript(() => {
     (window as any).__protection = [];
     const start = AudioBufferSourceNode.prototype.start;
@@ -26,6 +26,6 @@ test('all protection routes play the harmonic synth without loading the old reco
   expect(requests).toBe(0);
   const voices = await page.evaluate(() => (window as any).__protection);
   expect(voices).toHaveLength(4);
-  expect(voices.map((voice: any) => voice.duration)).toEqual([.74, .84, .86, 1.5]);
+  for (let i = 0; i < voices.length; i++) expect(voices[i].duration).toBeCloseTo([.68, .68, .68, 1.5][i], 4);
   expect(voices.map((voice: any) => voice.samples)).toEqual(expected);
 });

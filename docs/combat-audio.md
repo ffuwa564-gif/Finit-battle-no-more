@@ -1,4 +1,10 @@
-## Current protection sound: synth buff
+## Current protection sound: reuse the actual ultimate opening
+
+Protection now uses the same `renderUltimateCharge` waveform as the existing opening sound at the start of every ultimate cut-in (`ultimate`). The recipe is extracted without changing the ultimate opening PCM. Guard, barrier and barrier_mend use the same 0.68-second pitch sweep, air layer and envelope at ordinary protection volume (peaks .50/.485/.47); defensive ultimate uses the same recipe at 1.5 seconds and peak .6. This replaces the separate low synth described in the previous iteration below.
+
+`tests/protection-audio.test.ts` checks normalized waveform identity against the actual ultimate opening at 22.05/44.1/48 kHz. `e2e/protection-synth.spec.ts` verifies native playback buffers for all four protection routes. There is no Runway recording fetch.
+
+## Previous iteration: independent synth buff
 
 The latest user request replaces the Runway recording with an original low, rounded “ブオーン” synthesizer buff. `renderProtectionSound` uses a smoothly rising/settling fundamental, harmonic sine partials, a mildly detuned voice, and a sweeping two-pole low-pass filter. Attack is 75 ms; the tail releases smoothly. Ordinary peaks are .56; defensive ultimate is .6. The previous metallic/air-only timbres and Runway recording are superseded.
 

@@ -1,5 +1,6 @@
 import type { UltimateVisual } from './ultimate-choreography';
 import { renderProtectionSound } from './protection-audio';
+import { renderUltimateCharge } from './ultimate-charge-audio';
 
 export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism'] as const;
 export type UltimateSound = typeof ultimateSounds[number];
@@ -9,8 +10,9 @@ export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ bla
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
   if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
-  const charge = kind === 'ultimate', heal = kind === 'ultimate-sanctuary';
-  const duration = charge ? .68 : heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : 1.5;
+  if (kind === 'ultimate') return renderUltimateCharge(sampleRate);
+  const heal = kind === 'ultimate-sanctuary';
+  const duration = heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : 1.5;
   const samples = new Float32Array(Math.ceil(duration * sampleRate));
   const pole = (hz: number) => 1 - Math.exp(-2 * Math.PI * hz / sampleRate);
   const lowA = pole(170), midA = pole(950), airA = pole(5900), floorA = pole(580);
@@ -24,10 +26,7 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
     const grain = air-floor, body = mid-low;
     const attack = (speed: number) => Math.min(1,t*speed);
     let sound = 0;
-    if (charge) {
-      phase += 2*Math.PI*(220+1300*(t/duration)**2)/sampleRate;
-      sound = (grain*.7+Math.sin(phase+1.2*Math.sin(phase*1.41))*.2) * Math.sin(Math.PI*t/duration)**2;
-    } else if (kind === 'ultimate-strike') {
+    if (kind === 'ultimate-strike') {
       // Air slicing past, a brief hard edge, then dying steel partials.
       const whoosh = Math.exp(-t*13)*attack(180);
       const steel = Math.sin(2*Math.PI*2370*t)*Math.exp(-t*27)+.6*Math.sin(2*Math.PI*3890*t)*Math.exp(-t*35)+.3*Math.sin(2*Math.PI*5270*t)*Math.exp(-t*45);
@@ -71,7 +70,7 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
     // Keep the transient intact; saturate the body mildly, rather than flattening all layers.
     samples[i] = Math.tanh(sound*.9);
   }
-  if(!charge) {
+  {
     const dry=samples.slice(), wet=heal ? .32 : kind==='ultimate-strike' ? .1 : .2;
     for(const [delay,strength] of [[.071,1],[.139,.65],[.233,.4],[.379,.2]]) {
       const offset=Math.round(delay*sampleRate);
@@ -80,7 +79,7 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
   }
   let peak=0;
   for(const sample of samples)peak=Math.max(peak,Math.abs(sample));
-  const gain=(charge ? .23 : heal ? .62 : .83)/Math.max(peak,.001);
+  const gain=(heal ? .62 : .83)/Math.max(peak,.001);
   for(let i=0;i<samples.length;i++) {
     const edge=Math.min(1,i/(sampleRate*.001),(samples.length-1-i)/(sampleRate*.08));
     samples[i]*=gain*edge;
