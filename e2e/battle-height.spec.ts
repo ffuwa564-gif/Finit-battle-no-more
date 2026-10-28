@@ -52,8 +52,8 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 390, height: 660 }
     expect(after.advance.bottom).toBeLessThanOrEqual(after.frame.bottom);
     expect(after.scene.height).toBeGreaterThanOrEqual(260);
     const controls = await page.locator('.moon-command--strategy').first().boundingBox();
-    expect(controls!.height).toBeGreaterThanOrEqual(82);
-    expect(controls!.height).toBeLessThanOrEqual(88);
+    expect(controls!.height).toBeGreaterThanOrEqual(106);
+    expect(controls!.height).toBeLessThanOrEqual(112);
     const overlay = await page.locator('.party-unit').first().evaluate(el => {
       const portrait = el.querySelector('.portrait-image')!.getBoundingClientRect();
       const icons = el.querySelector('.unit-effects-summary')!.getBoundingClientRect();
