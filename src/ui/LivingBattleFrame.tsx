@@ -56,9 +56,9 @@ function OpeningFlower({ id, animate, restored, onOpen }: { id: string; animate:
 }
 
 /** Saved bloom state controls the action; the five-second opening changes presentation only. */
-export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, onBloom }: {
+export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, onBloom, onFairy }: {
   battle: Battle; event?: BattleEvent; units: Unit[]; busy: boolean; reducedMotion: boolean;
-  onBloom: (id: string) => void;
+  onBloom: (id: string) => void; onFairy: (id: string) => void;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const { suspended } = useAnimationSettings();
@@ -84,6 +84,10 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
   const animate = !motionOff && !suspended && visible && inView && !saveData;
   useEffect(() => { if (animate) void openingBlob().catch(() => {}); }, [animate]);
   const flower = battle.blooms?.flower;
+  const visitor = battle.fairies?.visitor;
+  const departing = event?.fairyAction === 'charge' ? event.fairySide : undefined;
+  const fairySide = departing ?? visitor?.side;
+  const fairyFacing = fairySide === 'left' ? 'right' : 'left';
   const open = !!flower && openId === flower.id;
   const actor = units.find(unit => unit.uid === event?.actorId);
   const cue = !event ? 'rest' : event.bloomAction === 'strike' ? 'strike-flower' : event.ultimate ? 'ultimate'
@@ -92,13 +96,20 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
   const label = tr(!open ? '白い蕾が開いています' : flower?.kind === 'heal'
     ? '癒しの花：最も傷ついた味方を最大HPの18%回復' : '月晶の花：弱った敵1体に追加攻撃');
   return <div ref={root} className="living-frame" data-cue={cue} data-reduced={motionOff}
-    data-bloom-state={flower ? open ? 'open' : 'opening' : 'bud'} data-bloom-kind={flower?.kind}>
+    data-fairy-blessing={Boolean(departing)} data-bloom-state={flower ? open ? 'open' : 'opening' : 'bud'} data-bloom-kind={flower?.kind}>
     <GardenArt className="garden-frame__art" moving="living-garden-idle-motion" poster="living-garden-frame" animate={animate} />
     <div className="garden-flower-bed">
       {flower ? <OpeningFlower key={flower.id} id={flower.id} animate={animate} restored={firstFlower.current === flower.id} onOpen={markOpen} />
         : <img className="garden-flower-art" src={assetPath('living-garden-bud')} alt="" draggable={false} data-flower-phase="bud" />}
     </div>
     <GardenArt className="garden-crystal-art" moving="living-garden-crystal-motion" poster="living-garden-crystal" animate={animate} />
+    {fairySide && <div key={departing ? event!.id : visitor!.id} className={`garden-fairy garden-fairy--${fairySide}`} data-departing={Boolean(departing)}>
+      <GardenArt className="garden-fairy__art" moving={`living-garden-fairy-${fairyFacing}-motion`} poster={`living-garden-fairy-${fairyFacing}-poster`} animate={animate} />
+      {!departing && visitor && <Button className="battle-fairy" variant="secondary" sound={false}
+        aria-label={tr('妖精の祝福：味方全員の必殺ゲージを15%増やす')}
+        disabled={busy || battle.phase !== 'ready'} onClick={() => onFairy(visitor.id)} />}
+    </div>}
+    {departing && <span key={event!.id} className="garden-fairy-blessing" aria-hidden="true" />}
     {flower && <Button className="battle-bloom" variant="secondary" sound={false} aria-label={label}
       disabled={busy || battle.phase !== 'ready' || !open} onClick={() => onBloom(flower.id)} />}
   </div>;

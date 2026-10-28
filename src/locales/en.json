@@ -1624,5 +1624,10 @@
   "戦闘で枠の結晶が灯り、確率で花が咲きます。白花は回復、青花は攻撃。次のATTACKまでに花をタップして力を使えます。": "Battle lights the frame's crystals and may bring a flower into bloom. White flowers heal; blue flowers attack. Tap a flower before your next ATTACK to use its power.",
   "白い蕾が開いています": "The white bud is opening",
   "癒しの花 — 味方のHPは満ちています": "Healing Blossom — your companions are already at full HP",
-  "戦闘で花が咲いたらタップ。回復または月晶の追撃が発動し、蕾に戻ります。咲いた花は摘むまで残り、3ラウンド以内に開花します。": "Tap an open flower to heal a companion or trigger a Mooncrystal strike, then return it to a bud. Flowers remain until harvested and bloom within three rounds."
+  "戦闘で花が咲いたらタップ。回復または月晶の追撃が発動し、蕾に戻ります。咲いた花は摘むまで残り、3ラウンド以内に開花します。": "Tap an open flower to heal a companion or trigger a Mooncrystal strike, then return it to a bud. Flowers remain until harvested and bloom within three rounds.",
+  "妖精の祝福：味方全員の必殺ゲージを15%増やす": "Fairy blessing: add 15% Ultimate charge to all living allies",
+  "妖精の祝福 — 味方全員の必殺ゲージ＋15%": "Fairy blessing — all living allies gain 15% Ultimate charge",
+  "この妖精はもういません。": "This fairy has already left.",
+  "妖精の保存状態が不正です。": "Invalid saved fairy state.",
+  "ゲージが100%になった仲間の枠を押すと、必殺技を予約できるよ。次の行動で発動するの！ もう一度押すと予約を取り消せるよ。 枠の縁に小さな妖精が来たら、3ターン以内にタップしてね。生きている仲間全員の必殺ゲージが15%増えるよ！": "When a meter reaches 100%, tap that companion's frame to queue an ultimate for their next action. Tap again to cancel it! If a little fairy visits the frame, tap her within 3 turns. All living allies gain 15% Ultimate charge!"
 }

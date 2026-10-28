@@ -163,7 +163,7 @@ export default function App() {
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
-      const cue = event.ultimate ? 'ultimate' : battleSounds[event.kind];
+      const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];
       const skill = event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template;
       playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
