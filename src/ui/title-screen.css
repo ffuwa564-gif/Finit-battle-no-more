@@ -5,7 +5,9 @@
 .title-screen::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg,#03060b38,transparent 26%,#060a120a 40%,#04070ddd 73%,#03060bf5),radial-gradient(ellipse at 50% 28%,transparent 23%,#05080e50 90%); }
 .title-screen::after { content: ''; position: absolute; inset: max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom)); z-index: 7; border: 1px solid #c4c7c51e; pointer-events: none; }
 .title-screen .scene-atmosphere { z-index: 2; }
-.title-screen .scene-atmosphere__grain { opacity: .065; }
+/* Fine, quiet film grain; leave the central face and hair mostly clear. */
+.title-screen .scene-atmosphere__grain { opacity: .045; background-size: 128px 128px; mask-image: radial-gradient(ellipse at 50% 30%,#0002 0%,#0004 32%,#000b 66%,#000 100%); animation: title-grain 3s steps(6,end) infinite; }
+@keyframes title-grain { 0%,100% { transform: translate(0,0); } 25% { transform: translate(-3px,2px); } 50% { transform: translate(2px,-3px); } 75% { transform: translate(-2px,-1px); } }
 .title-screen .scene-atmosphere__shade { background: radial-gradient(ellipse at 50% 36%,transparent 38%,#02050a55); }
 .title-screen__brand { position: absolute; z-index: 3; left: 50%; bottom: max(156px,19dvh); width: min(450px,88%); transform: translateX(-50%); pointer-events: none; text-shadow: 0 2px 12px #000; }
 .title-screen h1 { margin: 0; width: 100%; aspect-ratio: 3 / 1; font-size: 0; }
