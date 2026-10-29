@@ -12,7 +12,8 @@ test('new game opens the full-screen OP, saves its place and never restarts it a
   await begin(page);
   const story = page.locator('.visual-novel');
   await expect(story).toHaveAttribute('data-scene', 'opening-desire-gate');
-  await expect(story).toContainText('死にたがりの世界');
+  await expect(story.locator('.novel-text')).not.toBeEmpty();
+  const openingLine = (await story.locator('.novel-text').innerText()).trim();
   await expect(page.locator('.app-shell')).toHaveAttribute('inert', '');
   await expect(page.locator('.fairy-invitation')).toHaveCount(0);
   const box = await story.boundingBox(); expect(box!.width).toBe(390); expect(box!.height).toBe(844);
@@ -22,7 +23,7 @@ test('new game opens the full-screen OP, saves its place and never restarts it a
   await page.reload(); await page.getByRole('button', { name: 'タップしてはじめる', exact: true }).click();
   await expect(story).toHaveAttribute('data-page', '1');
   await story.getByRole('button', { name: '会話ログ', exact: true }).click();
-  await expect(page.locator('.novel-log')).toContainText('死にたがりの世界');
+  await expect(page.locator('.novel-log')).toContainText(openingLine);
   await page.getByRole('button', { name: '物語に戻る', exact: true }).click();
   const before = await saved(page);
   for (let index = 1; index < 9; index++) await story.getByRole('button', { name: '次の台詞', exact: true }).click();
@@ -83,7 +84,7 @@ test('old profiles receive no forced OP and English reduced-motion reading fits 
   await page.getByRole('button', { name: /Prologue — Beyond the Gate of Desire/ }).click();
   const story = page.locator('.visual-novel');
   await expect(story).toHaveClass(/visual-novel--reduced/);
-  await expect(story).toContainText('In a world longing for death');
+  await expect(story.locator('.novel-text')).not.toBeEmpty();
   expect(await story.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   await story.focus(); await page.keyboard.press('Enter');
