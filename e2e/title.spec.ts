@@ -34,6 +34,6 @@ test('reloading a battle pauses replay behind the title until tapped', async ({ 
   await page.waitForTimeout(2200);
   expect(await cursor()).toBe(before);
   await enterGame(page);
-  await expect(page.locator('audio[data-bgm]')).toHaveAttribute('data-scene', 'battle');
+  await expect(page.locator('audio[data-bgm]')).toHaveAttribute('data-scene', 'normalBattle');
   await expect.poll(cursor, { timeout: 7000 }).toBeGreaterThan(before);
 });

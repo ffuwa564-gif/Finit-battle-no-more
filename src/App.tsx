@@ -214,7 +214,7 @@ export default function App() {
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>{tr("データを守るため、停止しました。")}</h1><p role="alert">{localize(fatal)}</p><p className="subtle">{tr("セーブの初期化や上書きは行っていません。")}</p><Button variant="primary" onClick={() => location.reload()}>{tr("再読み込み")}</Button></Panel></div>;
   if (!save) return <div className="app-loading" role="status"><Moon size={38} strokeWidth={1} /><p>{tr("記憶をたどっています…")}</p></div>;
-  if (!started) return <TitleScreen leaving={entering} returning={!!save.battle} onStart={() => {
+  if (!started) return <TitleScreen leaving={entering} returning={!!save.battle} reducedMotion={save.settings.reducedMotion} onStart={() => {
     if (entering) return;
     configureBgm(bgmScene, save.settings.bgmVolume);
     unlockBgm();
