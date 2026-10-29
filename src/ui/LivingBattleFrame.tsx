@@ -4,7 +4,7 @@ import { useAnimationSettings } from './animation-settings';
 import { tr } from '../locales/i18n';
 import { crystalRoles } from '../domain/crystal-resonance';
 import { assetPath, characterById, roleName } from '../content';
-import { Button, Modal } from './index';
+import { Button } from './index';
 import './living-battle-frame.css';
 
 const OPENING_MS = 5000;
@@ -61,7 +61,6 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
   battle: Battle; event?: BattleEvent; units: Unit[]; busy: boolean; reducedMotion: boolean;
   onBloom: (id: string) => void; onFairy: (id: string) => void; onCrystal: (role: Role | null) => void;
 }) {
-  const [choosingCrystal, setChoosingCrystal] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const { suspended } = useAnimationSettings();
   const firstFlower = useRef(battle.blooms?.flower?.id);
@@ -85,6 +84,9 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
   const motionOff = reducedMotion || systemReduced;
   const animate = !motionOff && !suspended && visible && inView && !saveData;
   useEffect(() => { if (animate) void openingBlob(battle.blooms?.flower?.kind ?? 'heal').catch(() => {}); }, [animate, battle.blooms?.flower?.kind]);
+  const currentRoleIndex = crystalRoles.findIndex(role => role === battle.crystalRole);
+  const nextRole = [...crystalRoles.slice(currentRoleIndex + 1), ...crystalRoles.slice(0, currentRoleIndex + 1)]
+    .find(role => units.some(unit => unit.side === 'party' && unit.hp > 0 && characterById(unit.characterId).role === role));
   const flower = battle.blooms?.flower;
   const visitor = battle.fairies?.visitor;
   const departing = event?.fairyAction === 'charge' ? event.fairySide : undefined;
@@ -107,10 +109,10 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
     <GardenArt key={battle.crystalRole ?? 'neutral'} className="garden-crystal-art"
       moving={battle.crystalRole ? `living-garden-role-${battle.crystalRole.replaceAll('_', '-')}-motion` : 'living-garden-crystal-motion'}
       poster={battle.crystalRole ? `living-garden-role-${battle.crystalRole.replaceAll('_', '-')}-poster` : 'living-garden-crystal'} animate={animate} />
-    <Button className="battle-crystal" variant="secondary" aria-haspopup="dialog" sound="select"
+    <Button className="battle-crystal" variant="secondary" sound={false}
       aria-label={tr(battle.crystalRole ? `宝石の共鳴：${roleName(battle.crystalRole)}` : '宝石の共鳴を選ぶ')}
-      title={tr(battle.crystalRole ? `宝石の共鳴：${roleName(battle.crystalRole)}` : '宝石の共鳴を選ぶ')}
-      disabled={busy || battle.phase !== 'ready'} onClick={() => setChoosingCrystal(true)} />
+      title={nextRole ? tr(`タップで${roleName(nextRole)}に切り替え（スキル効果20%上昇）`) : undefined}
+      disabled={busy || battle.phase !== 'ready' || !nextRole} onClick={() => { if (nextRole && nextRole !== battle.crystalRole) onCrystal(nextRole); }} />
     {fairySide && <div key={departing ? event!.id : visitor!.id} className={`garden-fairy garden-fairy--${fairySide}`} data-departing={Boolean(departing)}>
       <GardenArt className="garden-fairy__art" moving={`living-garden-fairy-${fairyFacing}-motion`} poster={`living-garden-fairy-${fairyFacing}-poster`} animate={animate} />
       {!departing && visitor && <Button className="battle-fairy" variant="secondary" sound={false}
@@ -120,24 +122,6 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
     {departing && <span key={event!.id} className="garden-fairy-blessing" aria-hidden="true" />}
     {flower && <Button className="battle-bloom" variant="secondary" sound={false} aria-label={label}
       disabled={busy || battle.phase !== 'ready'} onClick={() => onBloom(flower.id)} />}
-    {choosingCrystal && <Modal title={tr('宝石の共鳴')} className="crystal-choice-modal" onClose={() => setChoosingCrystal(false)}>
-      <p>{tr('選んだ役割の仲間のスキル・必殺技を強化します。')}</p>
-      <p>{tr('ダメージ・回復・障壁・強化／弱体・ゲージ付与・状態異常成功率が20%上昇します。')}</p>
-      <p>{tr('効果時間・再使用待ち・解除だけの効果は変わりません。')}</p>
-      <div className="crystal-choices">
-        {crystalRoles.map(role => {
-          const allies = units.filter(unit => unit.side === 'party' && unit.hp > 0 && characterById(unit.characterId).role === role);
-          return <Button key={role} variant="secondary" className="crystal-choice" sound={false} selected={battle.crystalRole === role}
-            aria-label={tr(roleName(role))} disabled={busy || battle.phase !== 'ready' || !allies.length}
-            onClick={() => { onCrystal(role); setChoosingCrystal(false); }}>
-            <img src={assetPath(`living-garden-role-${role.replaceAll('_', '-')}-poster`)} alt="" />
-            <strong>{tr(roleName(role))}</strong>
-            <small>{allies.length ? allies.map(unit => tr(characterById(unit.characterId).name)).join('、') : tr('対象の仲間なし')}</small>
-          </Button>;
-        })}
-      </div>
-      <Button variant="secondary" sound={false} disabled={busy || battle.phase !== 'ready'}
-        onClick={() => { onCrystal(null); setChoosingCrystal(false); }}>{tr('共鳴を解除')}</Button>
-    </Modal>}
+
   </div>;
 }

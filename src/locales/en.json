@@ -1630,7 +1630,6 @@
   "この妖精はもういません。": "This fairy has already left.",
   "妖精の保存状態が不正です。": "Invalid saved fairy state.",
   "ゲージが100%になった仲間の枠を押すと、必殺技を予約できるよ。次の行動で発動するの！ もう一度押すと予約を取り消せるよ。 枠の縁に小さな妖精が来たら、3ターン以内にタップしてね。生きている仲間全員の必殺ゲージが15%増えるよ！": "When a meter reaches 100%, tap that companion's frame to queue an ultimate for their next action. Tap again to cancel it! If a little fairy visits the frame, tap her within 3 turns. All living allies gain 15% Ultimate charge!",
-  "均衡・攻撃重視・生存重視を選ぶと、仲間の動き方針が変わるよ。作戦だけではラウンドは進まないから、選んでからATTACKね！ 右下の宝石を触ると、強化したい役割を選べるよ。色と中の紋章で見分けてね。": "Balanced, Offense, and Defense guide your companions' choices. Picking a strategy doesn't start the round; press ATTACK when ready! Tap the bottom-right crystal to choose which role to empower. Its color and emblem show your choice.",
   "宝石の共鳴状態が不正です。": "Invalid saved crystal resonance.",
   "宝石の役割が正しくありません。": "Invalid crystal role.",
   "この役割の仲間は戦闘に参加していません。": "No living ally in this battle has that role.",
@@ -1641,5 +1640,7 @@
   "ダメージ・回復・障壁・強化／弱体・ゲージ付与・状態異常成功率が20%上昇します。": "Damage, healing, barriers, buff/debuff strength, charge granted, and ailment success rates increase by 20%.",
   "効果時間・再使用待ち・解除だけの効果は変わりません。": "Durations, cooldowns, and effects that only remove statuses stay unchanged.",
   "対象の仲間なし": "No matching allies",
-  "共鳴を解除": "Clear Resonance"
+  "共鳴を解除": "Clear Resonance",
+  "均衡・攻撃重視・生存重視を選ぶと、仲間の動き方針が変わるよ。作戦だけではラウンドは進まないから、選んでからATTACKね！ 右下の宝石はタップするたびに、仲間がいる役割へ順番に切り替わるよ。色と中の紋章で見分けてね。選んだ役割のスキル・必殺技の効果が20%上がるよ！": "Balanced, Offense, and Defense guide your companions' choices. Picking a strategy doesn't start the round; press ATTACK when ready! Each tap on the bottom-right crystal cycles through roles with living allies. Its color and emblem show your choice. Skills and Ultimates of that role gain 20% stronger effects!",
+  "タップで{0}に切り替え（スキル効果20%上昇）": "Tap to switch to {0} (20% stronger skill effects)"
 }

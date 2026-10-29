@@ -43,16 +43,10 @@
 .living-frame[data-reduced='true'] .garden-fairy[data-departing='true'],.living-frame[data-reduced='true'] .garden-fairy-blessing { display:none; }
 @media (prefers-reduced-motion:reduce) { .garden-fairy { animation:none; } .garden-fairy[data-departing='true'],.garden-fairy-blessing { display:none; } }
 @media (forced-colors:active) { .garden-fairy__art { display:none; } .living-frame .battle-fairy.button { border:2px solid ButtonText; background:ButtonFace; } }
-/* The crystal itself opens the selector. No role text or extra icon covers the frame. */
+/* A direct tap cycles the crystal role; no dialog or extra frame text. */
 .living-frame .battle-crystal.button { position:absolute; left:86.56%; top:86.05%; translate:-50% -50%; width:64px; height:64px; min-width:48px; min-height:48px; padding:0; border:0; border-radius:50%; background:transparent; box-shadow:none; pointer-events:auto; touch-action:manipulation; }
 .living-frame .battle-crystal.button:hover:not(:disabled) { background:transparent; box-shadow:0 0 12px #c8e9ff44; }
 .living-frame .battle-crystal.button:disabled { opacity:1; }
 .living-frame .battle-crystal.button:focus-visible { outline:2px solid #d9f2ff; outline-offset:2px; }
 .living-frame[data-bloom-state='open'][data-bloom-kind='strike'] .garden-flower-art { filter:drop-shadow(0 0 4px #c795ffbb); }
-.crystal-choices { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:16px 0; }
-.crystal-choices .crystal-choice.button { display:flex; flex-direction:column; gap:4px; min-width:0; padding:8px 5px; }
-.crystal-choice img { width:100%; height:88px; object-fit:contain; }
-.crystal-choice strong { font-size:14px; }
-.crystal-choice small { font-size:11px; line-height:1.5; overflow-wrap:anywhere; }
-@media(max-width:360px) { .crystal-choices { gap:6px; } .crystal-choice img { height:70px; } }
 @media(forced-colors:active) { .living-frame .battle-crystal.button { border:2px solid ButtonText; background:ButtonFace; color:ButtonText; } }
