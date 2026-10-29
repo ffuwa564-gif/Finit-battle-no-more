@@ -4,21 +4,21 @@ import type { ChapterDef, DungeonDef, NovelSceneDef } from '../domain/types';
 export const openingNovel: NovelSceneDef = {
   id: 'opening-desire-gate', title: '序章 ― 欲望の扉、その向こう', trigger: { kind: 'opening' },
   pages: [
-    { backgroundId: 'novel-desire-gate', text: '死にたがりの世界で、私はまだ息をしていた。', shade: 'dark' },
-    { backgroundId: 'novel-desire-gate', text: '世界には、たったひとつの「欲望の扉」があった。\nその向こうでは、どんな願いも叶うのだと、誰かが言った。' },
-    { backgroundId: 'novel-desire-gate', text: '愛されたい。取り戻したい。許されたい。\n数多の少女が、ひとつの扉へ手を伸ばした。' },
-    { backgroundId: 'novel-desire-gate', text: '願いは、別の願いを押しのけた。\n少女たちは傷つけ合い、扉の前で、互いの明日を奪っていった。' },
+    { backgroundId: 'novel-desire-gate', text: '扉の前で、私はまだ息をしていた。', shade: 'dark' },
+    { backgroundId: 'novel-desire-gate', text: '世界にひとつだけの「欲望の扉」。\nそこへ行けば、どんな願いも叶う。私はそう聞かされていた。' },
+    { backgroundId: 'novel-desire-gate', text: '愛されたい。取り戻したい。許されたい。\n少女たちの叫ぶ声が、扉の前に重なっていた。' },
+    { backgroundId: 'novel-desire-gate', text: '誰かが扉へ走り、別の少女がその腕を掴んだ。\n次に見えたのは、振り上げられた刃だった。' },
     { backgroundId: 'novel-desire-gate', speaker: '私', text: '私には、願うものなんてなかった。\nただ、この世界にいることが苦しかった。' },
-    { backgroundId: 'novel-desire-gate', text: 'それでも争いに巻き込まれ、手を伸ばす理由さえ見つけられないまま、私は扉の前に立っていた。' },
-    { backgroundId: 'novel-desire-gate', text: 'やがて、声が途絶えた。\n皮肉なことに、生還したのは、何も望まなかった私ひとりだった。', shade: 'dark' },
-    { backgroundId: 'novel-desire-gate', text: '終わりを望む世界で、私は終われなかった。', shade: 'black' },
+    { backgroundId: 'novel-desire-gate', text: '逃げようとして押し戻され、倒れた誰かにつまずいた。\n立ち上がったとき、目の前に扉があった。' },
+    { backgroundId: 'novel-desire-gate', text: 'やがて、声が途絶えた。\nあの争いで生き残ったのは、私ひとりだった。', shade: 'dark' },
+    { backgroundId: 'novel-desire-gate', text: '扉の向こうを見ることもなく、私は目を閉じた。', shade: 'black' },
     { backgroundId: 'novel-awakening-garden', text: '目を開けると、見知らぬ庭園にいた。\n白い花。水音。肌に触れる、柔らかな風。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'あら、やっとお目覚め？\nお寝坊さんね。' },
     { backgroundId: 'novel-awakening-garden', speaker: '私', text: '……ここは、どこ？\nあなたは……。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: '私は、世界の可能性を探っているの。\nあなたをここへ運んだのも、そのためよ。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'あなた、なかなか珍しいわね。\n気に入ったわ。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: '仕方ないから、こき使ってあげるわね。' },
-    { backgroundId: 'novel-awakening-garden', text: '助けてくれた相手に、振り回される。\nそんな日々が始まることを、そのときの私は、まだ知らなかった。' },
+    { backgroundId: 'novel-awakening-garden', text: '起き上がろうとすると、腕に力が入らなかった。\n女は私の背を支えたまま、さっきまでと変わらない調子で話し続けた。' },
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "ここで生き延びるなら、まずはギルドに入りなさい。\nあの街では、帰ってきた者が次の道を教えるの。仕事を受けて、誰かと歩くことから覚えなさい。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……あなたは、一緒に来ないの？"},
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "今は、ここで観測を続けたいの。\nあなたは街を見てきなさい。報告だけでなく、あなたがどう思ったかも聞かせてちょうだい。"},
@@ -148,11 +148,11 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "cathedral",
-      "text": "同じ朝、療養室では、エレインが窓際の小卓へお茶を運んでいた。\n台帳には「砂糖なし」とある。魔女はそれを横目に、砂糖壺を引き寄せた。「今日は甘くしたい。自分で入れるから、茶碗は半分くらいにして」\nエレインがお茶を注ぐ間、震える手の中で匙が揺れ、壺の縁に触れた。"
+      "text": "同じ朝、療養室では、魔女が栽培ノートを広げていた。\nお茶を運んできたエレインに、棚の図を見せる。「温室の鉢、誰か見に行ってる？ 枯れていても捨てないでほしいの。根を見たいから」\n「まだ確かめていません。今日は私が行けるか、まだ分からなくて」エレインの盆には、ほかの部屋へ運ぶ茶碗も載っていた。"
     },
     {
       "backgroundId": "cathedral",
-      "text": "砂糖が匙からこぼれ、思ったより多く落ちた。魔女はひと口飲んで、眉を寄せる。\n「淹れ直しましょうか」とエレインが茶碗へ手を伸ばすと、「まだ飲む」と引き戻した。\nエレインはポットを置いて、窓の結露を拭き始めた。魔女は匙を回していたが、お茶はなかなか減らなかった。"
+      "text": "「全部じゃなくて、この段のだけ。土が違うの」\n魔女が図を指す。エレインは「伝言はします。どの鉢か分かるように、もう少し教えてください」と身を寄せたが、廊下から呼ばれて顔を上げた。\n「あとで伺います」。盆を持って出ていく背を見送り、魔女はノートに棚の位置を書き足した。まだ鉢の様子は分からないままだった。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -160,12 +160,12 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "あの炉の話は、まだ終わっていないのだけれど。\n……戻ったら、また聞かせて。今度はどこまで話してくれるかしら。",
+      "text": "行ってらっしゃい。\nあの人に会うなら、会話の記録を調べたいことも伝えて。あなたが言いにくいなら、私から説明するわ。",
       "speaker": "庭園の女"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "返事に困っていると、女は先に回路図へ目を戻した。\n私は茶碗を布に包んだ。欠けた縁がもう一つに触れないよう、間に布を折り込む。女の手元では、紙をめくる音がしていた。"
+      "text": "すぐには頷けなかった。女はそのまま待っていたが、私が答えないのを見て、回路図へ目を戻した。\n「まずは、会ってくる」。帰る間際にそれだけ言うと、「ええ」と返ってきた。説明を頼むかどうかは、決めないまま庭園を出た。"
     },
     {
       "backgroundId": "cathedral",
