@@ -165,7 +165,7 @@ export function BattleView(p: ViewProps) {
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
       <SceneAtmosphere mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
-      <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} onFairy={fairyId => { void p.command({ type: 'battleFairy', fairyId }); }} onBloom={bloomId => { void p.command({ type: 'battleBloom', bloomId }); }} />
+      <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} onCrystal={role => { void p.command({ type: 'crystalRole', role }); }} onFairy={fairyId => { void p.command({ type: 'battleFairy', fairyId }); }} onBloom={bloomId => { void p.command({ type: 'battleBloom', bloomId }); }} />
       <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
       {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
     </section>
