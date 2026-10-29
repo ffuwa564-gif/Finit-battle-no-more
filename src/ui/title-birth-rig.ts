@@ -1,5 +1,5 @@
-import { Application, MeshPlane, Rectangle, Sprite, Texture } from 'pixi.js';
-import { titleRigOffset } from '../platform/title-rig';
+import { Application, Rectangle, Sprite, Texture } from 'pixi.js';
+import { createTitleCharacter, disposeTitleVideo, loadTitleVideo } from './title-character-video';
 
 const W = 1672, H = 941;
 export interface BirthRig {
@@ -18,13 +18,21 @@ function image(url: string): Promise<HTMLImageElement> {
   });
 }
 
-/** Fixed artwork with constrained 2D mesh motion; no generated frames or camera movement. */
-export async function createBirthRig(host: HTMLElement, backgroundUrl: string, characterUrl: string, onFailure: () => void, signal?: AbortSignal): Promise<BirthRig> {
+/** A static world with the isolated Runway character composited using its separate alpha. */
+export async function createBirthRig(host: HTMLElement, backgroundUrl: string, characterUrl: string, motionUrl: string, onFailure: () => void, signal?: AbortSignal): Promise<BirthRig> {
   const app = new Application();
   const textures: Texture[] = [];
   let destroyed = false;
+  let video: HTMLVideoElement | undefined;
+  let animated: ReturnType<typeof createTitleCharacter> | undefined;
+  let wanted = false;
   try {
-    const [background, character] = await Promise.all([image(backgroundUrl), image(characterUrl)]);
+    const videoPromise = loadTitleVideo(motionUrl, host, signal).then(value => {
+      video = value;
+      if (destroyed) { disposeTitleVideo(value); throw new Error('Title closed'); }
+      return value;
+    });
+    const [background, character] = await Promise.all([image(backgroundUrl), image(characterUrl), videoPromise]);
     if (signal?.aborted) throw new DOMException('Title was closed', 'AbortError');
     await app.init({ width: W, height: H, backgroundAlpha: 0, resolution: Math.min(devicePixelRatio || 1, 1.75), autoDensity: false,
       antialias: true, preference: 'webgl', powerPreference: 'low-power', autoStart: false });
@@ -38,14 +46,8 @@ export async function createBirthRig(host: HTMLElement, backgroundUrl: string, c
     backdrop.width = W; backdrop.height = H;
     app.stage.addChild(backdrop);
 
-    const figure = new MeshPlane({ texture: characterTexture, verticesX: 37, verticesY: 57 });
-    const scale = 500 / characterTexture.height;
-    figure.scale.set(scale);
-    figure.position.set(W / 2 - characterTexture.width * scale / 2, 116);
-    app.stage.addChild(figure);
-    const buffer = figure.geometry.getBuffer('aPosition');
-    const positions = buffer.data as Float32Array;
-    const rest = new Float32Array(positions);
+    animated = createTitleCharacter(video!);
+    app.stage.addChild(animated.mesh);
 
     const lightCanvas = document.createElement('canvas');
     lightCanvas.width = lightCanvas.height = 64;
@@ -73,12 +75,7 @@ export async function createBirthRig(host: HTMLElement, backgroundUrl: string, c
 
     let elapsed = 0;
     const draw = () => {
-      for (let i = 0; i < positions.length; i += 2) {
-        const offset = titleRigOffset(rest[i] / characterTexture.width, rest[i + 1] / characterTexture.height, elapsed);
-        positions[i] = rest[i] + offset.x / scale;
-        positions[i + 1] = rest[i + 1] + offset.y / scale;
-      }
-      buffer.update();
+      animated!.update();
       glow.alpha = .022 + .012 * (1 + Math.sin(elapsed * .58));
       for (const mote of motes) {
         const phase = (mote.phase + elapsed / 16) % 1;
@@ -95,6 +92,7 @@ export async function createBirthRig(host: HTMLElement, backgroundUrl: string, c
     app.canvas.className = 'title-birth-scene__canvas';
     app.canvas.setAttribute('aria-hidden', 'true');
     app.canvas.addEventListener('webglcontextlost', event => { event.preventDefault(); if (!destroyed) { app.stop(); onFailure(); } });
+    video!.addEventListener('error', () => { if (!destroyed) { app.stop(); onFailure(); } });
     host.appendChild(app.canvas);
     app.renderer.render(app.stage);
     app.ticker.add(ticker => {
@@ -103,17 +101,30 @@ export async function createBirthRig(host: HTMLElement, backgroundUrl: string, c
       draw();
     });
     return {
-      setRunning(running) { if (!destroyed) { if (running) app.start(); else app.stop(); } },
+      setRunning(running) {
+        wanted = running;
+        if (destroyed) return;
+        if (running) {
+          app.start();
+          void video!.play().then(() => { if (destroyed || !wanted) video?.pause(); }).catch(() => { if (!destroyed && wanted) { app.stop(); onFailure(); } });
+        } else { video!.pause(); app.stop(); }
+      },
       snapshot() { return app.renderer.extract.base64({ target: app.stage, format: 'png', resolution: 1 }); },
       destroy() {
         if (destroyed) return;
         destroyed = true;
+        video!.pause();
         app.destroy(true, { children: true });
+        animated?.destroy();
+        disposeTitleVideo(video!);
         characterTexture.destroy(false);
         textures.forEach(texture => texture.destroy(true));
       },
     };
   } catch (error) {
+    destroyed = true;
+    if (video) disposeTitleVideo(video);
+    animated?.destroy();
     try { app.destroy(true, { children: true }); } catch { /* Initialization may have stopped before the renderer existed. */ }
     textures.forEach(texture => texture.destroy(true));
     throw error;

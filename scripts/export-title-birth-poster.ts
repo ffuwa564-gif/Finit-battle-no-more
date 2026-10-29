@@ -1,4 +1,4 @@
-/** Run alongside the Vite dev server. This only exports the authored rig at rest. */
+/** Run alongside the Vite dev server. This only exports the composited first character frame. */
 import { chromium } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -14,12 +14,12 @@ try {
     const host = document.createElement('div');
     host.hidden = true;
     document.body.appendChild(host);
-    const rig = await createBirthRig(host, assetPath('title-birth-background'), assetPath('title-birth-character'), () => {});
+    const rig = await createBirthRig(host, assetPath('title-birth-background'), assetPath('title-birth-character'), assetPath('title-character-motion'), () => {});
     try { return await rig.snapshot(); } finally { rig.destroy(); host.remove(); }
   });
   await mkdir('artifacts/title-birth/rig', { recursive: true });
   const png = 'artifacts/title-birth/rig/poster-render.png';
   await writeFile(png, Buffer.from(data.split(',')[1], 'base64'));
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', png, '-c:v', 'libwebp', '-pix_fmt', 'bgra', '-lossless', '1', '-frames:v', '1', 'public/art/title-birth-still.webp']);
-  console.log('Exported the title rig at rest.');
+  console.log('Exported the composited first character frame.');
 } finally { await browser.close(); }
