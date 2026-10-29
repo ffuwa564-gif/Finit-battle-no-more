@@ -1,7 +1,7 @@
 /* The image is already alive on arrival; the wordmark has no reveal sequence. */
 .title-screen { position: relative; isolation: isolate; min-height: 100svh; min-height: 100dvh; overflow: hidden; background: #080b12; color: #f0eee8; text-align: center; }
 .title-screen__backdrop { position: absolute; inset: 0; z-index: 0; }
-.title-screen__backdrop .animated-illustration__art { object-position: 50% 38%; filter: saturate(.74) brightness(.82); }
+.title-birth-scene__poster,.title-birth-scene__canvas { object-position: 50% 38%; filter: saturate(.74) brightness(.82); }
 .title-screen::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg,#03060b38,transparent 26%,#060a120a 40%,#04070ddd 73%,#03060bf5),radial-gradient(ellipse at 50% 28%,transparent 23%,#05080e50 90%); }
 .title-screen::after { content: ''; position: absolute; inset: max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom)); z-index: 7; border: 1px solid #c4c7c51e; pointer-events: none; }
 .title-screen .scene-atmosphere { z-index: 2; }
@@ -69,3 +69,8 @@
 }
 html[data-motion='reduced'] .title-screen__motes i,html[data-motion='reduced'] .title-screen__touch i { animation: none; }
 html[data-motion='reduced'] .title-screen.is-leaving { animation-duration: 1ms; }
+
+.title-birth-scene,.title-birth-scene__rig { position: absolute; inset: 0; }
+.title-birth-scene__poster,.title-birth-scene__canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.title-birth-scene__rig { opacity: 0; }
+.title-birth-scene__rig.is-ready { opacity: 1; }

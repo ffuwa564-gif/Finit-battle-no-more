@@ -5,13 +5,13 @@ import { Button, LanguageSwitch } from './index';
 import { assetPath } from '../content';
 import './title-screen.css';
 import { SceneAtmosphere } from './SceneAtmosphere';
-import { AnimatedIllustration } from './AnimatedIllustration';
+import { TitleBirthScene } from './TitleBirthScene';
 
 export function TitleScreen({ onStart, leaving, returning, reducedMotion = false }: { onStart: () => void; leaving: boolean; returning: boolean; reducedMotion?: boolean }) {
   const [paused, setPaused] = useState(false);
   return <main className={`title-screen${leaving ? ' is-leaving' : ''}`} aria-labelledby="title-screen-name" data-motion-paused={paused || reducedMotion}>
     <div className="title-screen__backdrop" aria-hidden="true">
-      <AnimatedIllustration posterId="title-birth-motion-poster" motionId="title-birth-motion" alt="" label="誕生の空" reducedMotion={reducedMotion} suspended={paused || leaving} controls={false} />
+      <TitleBirthScene reducedMotion={reducedMotion} suspended={paused || leaving} />
     </div>
     <SceneAtmosphere reducedMotion={reducedMotion || paused} />
     <div className="title-screen__motes" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
