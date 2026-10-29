@@ -71,7 +71,7 @@ export const storyMilestones: NovelSceneDef[] = [
       },
       {
         "backgroundId": "thorn-witch-art",
-        "text": "「明日には、止める」\n手帳を閉じ、鍵をしまった。窓の灯を背に歩き出してからも、鍵を握っていた手が、なかなか開かなかった。",
+        "text": "「明日には、止める」\n手帳を閉じ、鍵を握ったまま温室を出た。窓の灯を背に、歩き出した。",
         "shade": "dark"
       }
     ]
