@@ -90,7 +90,7 @@ test('320px reduced motion uses open/bud posters and keyboard harvest applies cr
   const flower = page.getByRole('button', { name: /^Mooncrystal Blossom:/ }); await expect(flower).toBeEnabled();
   await expect(page.locator('.garden-frame__art')).toHaveAttribute('data-animated', 'false');
   await expect(page.locator('.garden-crystal-art')).toHaveAttribute('data-animated', 'false');
-  await expect(page.locator('.garden-flower-art')).toHaveAttribute('src', /flower-open-poster\.png$/);
+  await expect(page.locator('.garden-flower-art')).toHaveAttribute('src', /black-flower-open\.png$/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   const counter = await page.locator('.enemy-carousel-position').boundingBox(); expect(counter!.height).toBeLessThan(32);
   const flowerBox = await flower.boundingBox();
