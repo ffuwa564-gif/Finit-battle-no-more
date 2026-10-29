@@ -1,3 +1,4 @@
+import { validCrystalRole } from '../domain/crystal-resonance';
 import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domain/novels';
 import { ultimateReady } from '../domain/ultimates';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
@@ -95,6 +96,14 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'strategy': {
       if (!['balanced', 'aggressive', 'survival'].includes(command.strategy)) fail('作戦が正しくありません。');
       ready(save).strategy = command.strategy;
+      break;
+    }
+    case 'crystalRole': {
+      const battle = ready(save);
+      if (command.role === null) { delete battle.crystalRole; break; }
+      if (!validCrystalRole(command.role)) fail('宝石の役割が正しくありません。');
+      if (!battle.units.some(unit => unit.side === 'party' && unit.hp > 0 && content.characters.find(c => c.id === unit.characterId)?.role === command.role)) fail('この役割の仲間は戦闘に参加していません。');
+      battle.crystalRole = command.role;
       break;
     }
     case 'ultimate': {

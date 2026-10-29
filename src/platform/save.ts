@@ -1,3 +1,4 @@
+import { validCrystalRole } from '../domain/crystal-resonance';
 import { validBattleFairies } from '../domain/battle-fairies';
 import { validBattleBlooms } from '../domain/battle-blooms';
 import { validLegacyOmens } from '../domain/legacy-omens';
@@ -83,6 +84,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (value.battle !== null) {
     const battle = value.battle;
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if (battle.crystalRole !== undefined && !validCrystalRole(battle.crystalRole)) throw new Error('宝石の共鳴状態が不正です。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
     if (battle.omens !== undefined && !validLegacyOmens(battle.omens, battle as unknown as Parameters<typeof validLegacyOmens>[1])) throw new Error('痕跡の保存状態が不正です。');

@@ -1,0 +1,97 @@
+{
+  "source": "2026-10-29 user-approved assets; role-crystals-black-bloom",
+  "generation": {
+    "date": "2026-10-29",
+    "creditsUsed": 299,
+    "tasks": {
+      "blackFlower": {
+        "video": "4f1e2ec9-8c9b-42ec-984d-21a69f5a0a91",
+        "alpha": "0231daee-de86-4aa4-a970-44f8a91e52f2"
+      },
+      "healer": {
+        "video": "cf7ea7ec-8eb4-444a-a856-8f0b84e20fc6",
+        "alpha": "f33ec2bf-1bfc-474c-ac93-16d144fed8d2"
+      },
+      "tank": {
+        "video": "6b23bea2-14d0-4d36-8936-b66f3109c703",
+        "alpha": "d22e2856-a03b-4cf7-a37c-2df3d9c6520f"
+      },
+      "attacker": {
+        "video": "9abf3f85-99bc-4be0-8b8d-8265026a20a0",
+        "alpha": "14a3a179-5810-4bf3-be86-7e4b5d4a05e9"
+      },
+      "area_attacker": {
+        "video": "688593d9-5508-4182-9667-3c1a3c52ca08",
+        "alpha": "e8ea9ff8-76c5-41ae-a074-dc6468744c68"
+      },
+      "supporter": {
+        "video": "481d50f7-ebf3-4b37-8149-7f546d1403b9",
+        "alpha": "ceae4995-6b70-4263-82a4-bf35e62838d5"
+      },
+      "debuffer": {
+        "video": "72aa9381-d97c-48b4-bc31-63042bf5c8b4",
+        "alpha": "3f7e2252-d6a9-4436-95ba-93dd28256af3"
+      }
+    },
+    "blackFlowerEdit": "Source 0..3s only, slowed 1.5x and held 0.5s to make 5s; later source clips petals and is excluded."
+  },
+  "assets": {
+    "black-flower-bloom.webp": {
+      "sha256": "0cd0aa0c95b19b4676be76ff42bb147f9cbe82c0ad4954eb85a965a93bfba3a2",
+      "bytes": 2747928
+    },
+    "black-flower-open.png": {
+      "sha256": "95bb5914a9f21b100bbba9cbe5e3daad4b45276fc6e7a62f5443bd1d4663afb9",
+      "bytes": 214155
+    },
+    "crystal-healer-motion.webp": {
+      "sha256": "47324945af46a1519fca98800a29950885a20c7858e270c9ac84398969d3f18f",
+      "bytes": 1759080
+    },
+    "crystal-healer-poster.png": {
+      "sha256": "da711d3799c5a1211cb3c28a5d1ed145bfe06e7149d7dc90ee095a82e8a4814d",
+      "bytes": 147844
+    },
+    "crystal-tank-motion.webp": {
+      "sha256": "675f47d91fb706aa8d9096fe7663008dc4059a0206ab2e95d1e64e093e8cc664",
+      "bytes": 1717190
+    },
+    "crystal-tank-poster.png": {
+      "sha256": "6141775e595c3ead21b2715afc861d18e2bd08f946b3646d2dc9c1ff73c0efe6",
+      "bytes": 153000
+    },
+    "crystal-attacker-motion.webp": {
+      "sha256": "07e591f5886a0169876d21809da18538cf10a880ed553a06dec5faee25b5a4dc",
+      "bytes": 1592648
+    },
+    "crystal-attacker-poster.png": {
+      "sha256": "59a03c56ce81c7107fbbabd3f7c0383d26be2cd7bd1b44ab5939f3abdc40de02",
+      "bytes": 146227
+    },
+    "crystal-area_attacker-motion.webp": {
+      "sha256": "dc0f067286f5350bd03b31a9550a601d09e2843843c8ba66f2b6b411cfa92b46",
+      "bytes": 1765278
+    },
+    "crystal-area_attacker-poster.png": {
+      "sha256": "fc3360f1f18771d50ac8d9c34721d948a3a60eca3ee2a4997adfd46ec3c8cc89",
+      "bytes": 148334
+    },
+    "crystal-supporter-motion.webp": {
+      "sha256": "b26e6c82af6517c7b24311642124ed519798ea502adea5fac4477e8bd8864de4",
+      "bytes": 1788440
+    },
+    "crystal-supporter-poster.png": {
+      "sha256": "8f247a9c0f269be36c757918a9ddca92319357f2330a9bf34f2aaf36e2dd6a0e",
+      "bytes": 149777
+    },
+    "crystal-debuffer-motion.webp": {
+      "sha256": "203c46d50786a73110199215efca5041c47e9a733f3c2cab208b0ed1f498e598",
+      "bytes": 1704256
+    },
+    "crystal-debuffer-poster.png": {
+      "sha256": "18e757fe2bccc95d5e3f006fd89f66a70b18135c5fc760a63c8ea1adc34bcdd2",
+      "bytes": 153466
+    }
+  },
+  "integratedIntoGame": true
+}
