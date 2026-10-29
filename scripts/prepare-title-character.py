@@ -23,7 +23,7 @@ output.parent.mkdir(parents=True, exist_ok=True)
 # An idle-only forward/back loop avoids a visible pose reset without double-image fades.
 # The source is 120 frames; omit duplicated turnaround frames: 0..119,118..1.
 filters = (
-    '[0:v]fps=24,trim=end_frame=120,scale=504:896:flags=lanczos,format=rgba,split=2[f][r];'
+    '[0:v]fps=24,trim=end_frame=120,format=gbrap,premultiply=inplace=1,scale=504:896:flags=lanczos,unpremultiply=inplace=1,format=rgba,split=2[f][r];'
     '[r]reverse,trim=start_frame=1:end_frame=119,setpts=PTS-STARTPTS[back];'
     '[f][back]concat=n=2:v=1:a=0,split=2[color][mask];'
     '[color]format=rgb24[rgb];[mask]alphaextract,format=rgb24[alpha];'

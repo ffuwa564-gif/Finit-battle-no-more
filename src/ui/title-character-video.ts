@@ -18,7 +18,7 @@ export function createTitleCharacter(video: HTMLVideoElement) {
         in vec2 vUV; out vec4 finalColor; uniform sampler2D uPacked;
         void main() {
           vec3 color = texture(uPacked, vec2(vUV.x * .5, vUV.y)).rgb;
-          float alpha = smoothstep(.012, .988, texture(uPacked, vec2(.5 + vUV.x * .5, vUV.y)).r);
+          float alpha = clamp((texture(uPacked, vec2(.5 + vUV.x * .5, vUV.y)).r - .004) / .992, 0.0, 1.0);
           finalColor = vec4(color * alpha, alpha);
         }`,
     },
