@@ -4,8 +4,8 @@ import { chapterStageIds } from './campaign-stages';
 
 export const campaignChapters: ChapterDef[] = [
   { id: 'mistbound-sanctuary', number: 1, title: '霧に沈む聖域', subtitle: 'リオラに連れられ、ギルドの初仕事へ。', dungeonIds: chapterStageIds[0]!, bossHint: '3ターンごとの石燐の突進に注意。大技で障壁が消える隙を狙い、かばう・回復で備えよう。' },
-  { id: 'sealed-gate', number: 2, title: 'ふたりぶんの空席', subtitle: '観測の旅は、ふたりぶんの明日を願う日々へ。', dungeonIds: chapterStageIds[1]!, bossHint: '3ターンごとに銀盾の重撃。大技で障壁が消える隙に攻め、回復薬を準備しよう。' },
-  { id: 'promise-of-dawn', number: 3, title: '白夜の約束', subtitle: '朝を戻す者、夜を守る者。それぞれの帰り道。', dungeonIds: chapterStageIds[2]!, bossHint: '3ターンごとに弔鐘の一閃。強化解除にも注意し、かばう・障壁・回復で守ろう。' },
+  { id: 'sealed-gate', number: 2, title: 'ふたりぶんの空席', subtitle: '温室に通い、荊の魔女と過ごす日々。', dungeonIds: chapterStageIds[1]!, bossHint: '3ターンごとに銀盾の重撃。大技で障壁が消える隙に攻め、回復薬を準備しよう。' },
+  { id: 'promise-of-dawn', number: 3, title: '白夜の約束', subtitle: '朝を取り戻すため、街に残された封印を調べる。', dungeonIds: chapterStageIds[2]!, bossHint: '3ターンごとに弔鐘の一閃。強化解除にも注意し、かばう・障壁・回復で守ろう。' },
   zakuroChapter,
 ];
 /** Stable exploration IDs and reward records are preserved. */
