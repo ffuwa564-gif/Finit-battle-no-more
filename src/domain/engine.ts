@@ -107,8 +107,8 @@ function restoreClockShield(battle: Battle, content: Content, present: boolean):
   }
 }
 function openWave(battle: Battle, content: Content, first: boolean): Battle {
-  clearBattleBloom(battle); clearBattleFairy(battle);
-  if (battle.blooms) battle.blooms.growth = 0;
+  clearBattleFairy(battle);
+  if (battle.blooms && !battle.blooms.flower) battle.blooms.growth = 0;
   const def = dungeon(content, battle.dungeonId);
   let wave = def.waves[battle.wave];
   if (!wave?.length || wave.length > 4) throw new Error('Waveの敵編成が不正です');
@@ -597,14 +597,17 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     battle.nextPhase = 'failed'; battle.failureReason = 'ラウンド上限に達しました';
     emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — ラウンド上限です' : '探索失敗 — ラウンド上限です' });
   }
-  if (battle.nextPhase !== 'ready') { clearBattleBloom(battle); clearBattleFairy(battle); }
+  if (battle.nextPhase !== 'ready') {
+    if (battle.nextPhase !== 'wave') clearBattleBloom(battle);
+    clearBattleFairy(battle);
+  }
   battle.round += 1;
   return { battle, goldEarned, discoveredIds };
 }
 /** One optional off-turn action; ordinary defeat and reward settlement is shared. */
 export function useBattleBloom(input: Battle, bloomId: string, content: Content): RoundResult {
   const flower = input.blooms?.flower;
-  if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave !== input.wave || flower.round > input.round) throw new Error('この花はもう使えません。');
+  if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave < 0 || flower.wave > input.wave || flower.round < 2 || (flower.wave === input.wave && flower.round > input.round)) throw new Error('この花はもう使えません。');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input), before = clone(battle.units);
   const party = alive(battle.units, 'party');
