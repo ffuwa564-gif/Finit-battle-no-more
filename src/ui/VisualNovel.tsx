@@ -11,7 +11,7 @@ import { SceneAtmosphere } from './SceneAtmosphere';
 
 export function NovelLibrary({ save, busy, command }: { save: GameSave; busy: boolean; command: (c: GameCommand) => Promise<boolean> }) {
   const scenes = (content.novels ?? []).filter(scene => novelAvailable(scene, save));
-  return <Panel className="novel-library"><h3><BookOpen size={18} />{tr('物語の記録')}</h3><p>{tr('OPや、踏破した章の物語を読み返せます。')}</p><div className="novel-library__list">{scenes.map(scene => <Button variant="secondary" key={scene.id} disabled={busy || Boolean(save.battle) || Boolean(save.novels?.active)} onClick={() => { void command({ type: 'novelStart', sceneId: scene.id }); }}><span>{tr(scene.title)}</span><small>{tr(save.novels?.seen.includes(scene.id) ? '再生済み' : '未読')}</small><ArrowRight size={14} /></Button>)}</div></Panel>;
+  return <Panel className="novel-library"><h3><BookOpen size={18} />{tr('物語の記録')}</h3><p>{tr('OPや、探索で進めた物語を読み返せます。')}</p><div className="novel-library__list">{scenes.map(scene => <Button variant="secondary" key={scene.id} disabled={busy || Boolean(save.battle) || Boolean(save.novels?.active)} onClick={() => { void command({ type: 'novelStart', sceneId: scene.id }); }}><span>{tr(scene.title)}</span><small>{tr(save.novels?.seen.includes(scene.id) ? '再生済み' : '未読')}</small><ArrowRight size={14} /></Button>)}</div></Panel>;
 }
 
 export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onBack, onFinish }: {

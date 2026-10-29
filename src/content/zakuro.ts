@@ -39,8 +39,8 @@ export const zakuroDungeons: DungeonDef[] = [
     waves: [[{ characterId: 'moon-moth' }, { characterId: 'pale-wolf' }], [{ characterId: 'stone-drake', boss: true }]],
     bossLoot: { guaranteed: [{ materialId: 'ritual-stone:rare', count: 1 }] },
     narrative: {
-      before: '街に朝が来てからも、療養室へ通う日々が続いた。その帰り道、リオラが「私も、誰かを迎える側に立ちたい」と言った。失った人の代わりではない一人を迎えるため、二人で中断の手順まで確かめ、個体の輪郭を支える契生石を探しに樹海へ入った。',
-      after: '苔むした根元で契生石を拾い、二人で確かめて包んだ。帰り道、絡んだ枝の下をくぐると、頭上で鈴が鳴った。赤い紐が風もなく張る。境を示す標だったのだと気づいたとき、黒い衣の少女たちが前後の道を塞いでいた。',
+      before: '街に朝が来てからも、療養室へ通う日々は続いた。帰り道に読み合わせた儀式の手順で、リオラの指が迎え手の欄に止まる。「私の名も、ここへ。迎えた後の世話も、私がする」。二人で中断の合図を決め、個体の輪郭を支える契生石を探しに樹海へ入った。',
+      after: '苔むした根元で契生石を拾い、二人で確かめて包んだ。帰り道、枝の下で鈴が鳴り、リオラの盾に刃が落ちた。苔に隠れた赤い紐が、頭上で揺れている。境の標だと気づいたときには、前後の道を少女たちが塞いでいた。',
     },
   },
   {
@@ -52,8 +52,8 @@ export const zakuroDungeons: DungeonDef[] = [
     bossStrike: { every: 3, power: 260, name: '総配役・地天の包囲' },
     bossLoot: { guaranteed: [{ materialId: 'pomegranate:rare', count: 1 }], bonus: { chance: 20, reward: { materialId: 'pomegranate:epic', count: 1 } } },
     narrative: {
-      before: '枝に隠れた標の向こうは、ザクロの行列が通る道だった。神輿の女は、私たちの盾と石包みへ目を細める。「この子たちのところへ、近づけないで」。事情を聞く気配もなく、地上と空へ合図が飛んだ。リオラの盾に、最初の刃が落ちる。',
-      after: 'リオラの盾で一列を押し返し、包囲の継ぎ目へ走る。ザクロが追撃を切ったのは、少女の袖に血を見つけたからだった。彼女は名前を呼び、傷のある腕から鈴を外して、別の子へ渡す。こちらに背を向けたその手に、怠惰はなかった。',
+      before: '最初の刃を盾で受けても、行列は止まらない。神輿の女は私たちの盾と石包みへ目を細め、「この子たちのところへ、近づけないで」と指を振った。枝に隠れた標の向こうは、ザクロの行列が通る道だった。',
+      after: 'リオラの盾が一列を押し返した。私は石包みへ伸ばしかけた手で彼女の腕を支え、空いた道を指す。「今、戻ろう」。ザクロは血の滲んだ少女の名を呼び、追撃を切った。その声に振り返らず、二人で赤い紐の外へ走った。',
     },
   },
 ];
@@ -62,21 +62,21 @@ export const zakuroEncounterNovel: NovelSceneDef = {
   id: 'zakuro-forest-encounter', title: '樹海 ― 怠惰姫の行列',
   trigger: { kind: 'dungeon-clear', dungeonId: 'ritual-stone-grove' },
   pages: [
-    { backgroundId: 'encounter-zakuro', text: '帰り道、絡んだ枝の下をくぐると、鈴が鳴った。\n苔の奥に赤い紐が見えた。地上にも、頭上の枝の間にも、少女がいた。誰も迷わず、別々の位置へ散っていく。' },
-    { backgroundId: 'encounter-zakuro', speaker: 'リオラ', text: '……その鈴は、庭の境を示すものだ。枝に隠れていたのか。\n怠惰姫ザクロ。動くな。あの行列は、もう私たちを囲んでいる。' },
-    { backgroundId: 'encounter-zakuro', text: '黒い神輿に、赤髪の女が横たわっていた。\n「今日は左手ね。右は昨日、痛めたでしょう」。少女の飾り紐を結び直し、隣の子へ灯りを渡す。こちらを見るのは、その後だった。' },
-    { backgroundId: 'encounter-zakuro', speaker: '私', text: 'あれだけの個体が、同じ庭に……。\n私たちは、たった一人を迎える準備だけで、こんなに迷っているのに。' },
-    { backgroundId: 'encounter-zakuro', speaker: 'リオラ', text: 'あの灯り持ち、さっきまで列の外にいた。隣の子が手を引いたら戻った。\n命じるだけでは、あの数は暮らせない。あの女は、一人ずつ見ている。' },
+    { backgroundId: 'encounter-zakuro', text: '帰り道、絡んだ枝の下で鈴が鳴った。\n同時に、頭上から刃が落ちる。リオラの盾が鳴り、私はその陰へ引き戻された。苔の奥で、赤い紐が揺れていた。' },
+    { backgroundId: 'encounter-zakuro', speaker: 'リオラ', text: '伏せろ。……あの鈴、庭の境か。\n怠惰姫ザクロ。前も後ろも、もう押さえられている。' },
+    { backgroundId: 'encounter-zakuro', text: '次の刃を盾が弾いた。その向こうで、赤髪の女が黒い神輿に寝そべっていた。\n少女の傷を避けて飾り紐を結び直し、余った灯りを隣の子へ渡す。こちらを見るのは、その後だった。' },
+    { backgroundId: 'encounter-zakuro', speaker: '私', text: '……あの人だけ、立ち上がりもしない。' },
+    { backgroundId: 'encounter-zakuro', speaker: 'リオラ', text: '右の槍を見ろ。隣の子に肩を貸したまま、退路を塞いでいる。\n……あそこも通れない。私の後ろから離れるな。' },
     { backgroundId: 'encounter-zakuro', speaker: '私', text: '境だと知らなかった。私たちは、儀式の石を探しに来ただけで――' },
     { backgroundId: 'encounter-zakuro', speaker: 'ザクロ', text: '聞いていないわ。この子たちに近づけないで。\n地上は退路。空は盾の裏。ためらわず、仕留めて。' },
-    { backgroundId: 'encounter-zakuro', text: '警告も、試すための手加減もなかった。\n少女たちが降る。リオラの盾が、私の目の前を塞いだ。', shade: 'dark' },
+    { backgroundId: 'encounter-zakuro', text: '神輿の鈴が、もう一度鳴った。\n地上の槍が揃い、少女たちが降る。リオラの盾越しに、逃げ道が一本ずつ消えていった。', shade: 'dark' },
   ],
 };
 export const zakuroEpilogue: NovelPageDef[] = [
-  { backgroundId: 'encounter-zakuro', text: '「あなたは戻って。隣は、あの子に頼んで」。\nザクロは少女の袖を裂き、傷に巻いた。名前を取り違えることはなかった。最後まで、神輿から立ち上がらなかった。' },
-  { backgroundId: 'encounter-zakuro', speaker: 'ザクロ', text: 'その子は高いところが怖いの。灯りを持つ役へ戻して。\n……私が歩くのは面倒よ。でも、この子が泣く理由を確かめるのまで、省いたことはないわ。' },
-  { backgroundId: 'encounter-zakuro', text: '赤い紐を背に、私たちは森を離れた。追ってこないのは、許されたからではない。\nザクロは傷ついた少女へ顔を寄せていた。あの声で、ついさっき、私たちを仕留めろと命じたのだ。' },
+  { backgroundId: 'encounter-zakuro', text: '赤い紐の外で、私はリオラの盾の留め具を確かめた。石包みは、まだ鞄にある。\n振り返ると、神輿を支える少女が、隣の子の分まで肩を入れていた。空いた手が、負傷者を女のもとへ押し上げる。' },
+  { backgroundId: 'encounter-zakuro', speaker: 'ザクロ', text: 'その結び目は、傷に当たるわ。私に貸して。\n……そう、こっち側。今夜はあなたの隣で眠らせて。あなたの声なら、落ち着くから。' },
+  { backgroundId: 'encounter-zakuro', text: '最後の少女がこちらを見た。私の手の傷に目を留め、それから槍を構え直した。\n守っているのは、あの神輿へ戻る道だった。鈴が遠ざかるまで、私もリオラの腕から手を離せなかった。' },
   { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'ザクロに会ったの？ 相変わらず、話を聞かないのね。\nあの女を好く管理者には会ったことがないわ。でも、あれだけの個体が、互いを壊さず同じ庭で暮らし続けている。その才は、誰も否定しない。' },
-  { backgroundId: 'novel-awakening-garden', speaker: 'リオラ', text: '次は、樹海へ入る前に道を確かめよう。私の盾だけでは、守れないものがあった。\n……石は、まだここにある。迎える子の寝床は、窓の近くでいいだろうか。明るいところを嫌うかもしれないな。' },
-  { backgroundId: 'novel-awakening-garden', speaker: '私', text: '聞いてから、決めよう。\n契生石を机に置き、二人で決めた中断の手順を開く。夕方には療養室へ行く。持ち帰った石は、失くした人を取り戻すためのものではなかった。' },
+  { backgroundId: 'novel-awakening-garden', speaker: 'リオラ', text: '盾の留め具、直しておく。次に歩く前に。\n……あの行列の子たちは、命令がなくても隣の子を支えていた。私たちも、二人だけで全部を決めてしまわない方がいいんだろうな。' },
+  { backgroundId: 'novel-awakening-garden', text: '契生石を机に置いた。迎え手の欄にリオラの名が増えても、停止の頁は閉じない。\n夕方には療養室へ行く。何を話そうか迷いながら、私はその日の手帳を開いた。' },
 ];

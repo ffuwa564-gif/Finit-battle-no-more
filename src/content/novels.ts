@@ -54,7 +54,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "庭園の女",
-      "text": "そう。あなたは、そこを見たのね。"
+      "text": "そう。その芽、しばらく預けていかない？\n枯れた庭で、それだけが芽吹いた理由を調べたいの。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -68,7 +68,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "私",
-      "text": "街へ戻る。\nこの芽を届ける相手に、会ってみたい。ギルドにも、次の仕事を聞いてくる。"
+      "text": "……この芽を待っている人がいる。先に、届けてくる。\nギルドにも、次の仕事を聞いてくるよ。"
     },
     {
       "backgroundId": "novel-awakening-garden",
