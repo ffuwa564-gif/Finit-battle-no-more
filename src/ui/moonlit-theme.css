@@ -131,13 +131,6 @@ body {
 .scene-atmosphere--memory .scene-atmosphere__shade { background: radial-gradient(ellipse at 50% 40%,#080e1b12 10%,#02050cba 100%),repeating-linear-gradient(0deg,#0000000c 0 1px,transparent 1px 5px); }
 .scene-atmosphere--battle .scene-atmosphere__grain { opacity: .075; }
 .scene-atmosphere[data-disturbance='true'] .scene-atmosphere__fracture { background: linear-gradient(180deg,transparent 28%,#8eb2d433 29%,#030812d9 30%,transparent 33%),#040811; animation: memory-fracture 650ms ease-out both; }
-.title-screen .scene-atmosphere { z-index: -1; }
-.title-screen__art { filter: saturate(.65) brightness(.79); }
-.title-screen::before { background: linear-gradient(180deg,#050a17b3,#0c152328 43%,#060d1bed 100%); }
-.title-screen__brand { text-shadow: 0 2px 24px #000a,0 0 36px #9bbce51f; }
-.title-screen__eyebrow { color: #b0c1d8; }
-.title-screen .button.title-screen__start { border-color: #a6bdd873; background: #111f34ad; box-shadow: inset 0 1px 0 #d7e7ff1a,0 0 32px #87a7d00a; }
-.title-screen .button.title-screen__start:hover:not(:disabled) { background: #2d425ecc; }
 .visual-novel .scene-atmosphere { position: fixed; z-index: 0; }
 .novel-header, .novel-message { position: relative; z-index: 1; }
 .novel-backgrounds img { filter: saturate(.72) contrast(1.04); }

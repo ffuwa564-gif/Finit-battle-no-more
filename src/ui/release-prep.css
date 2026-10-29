@@ -1,6 +1,6 @@
 .language-switch { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
 .language-switch .button { min-width: 70px; font-size: 12px; }
-.title-screen .title-language { position: absolute; inset: max(23px,env(safe-area-inset-top)) 24px auto auto; z-index: 2; }
+.title-screen .title-language { position: absolute; inset: max(23px,env(safe-area-inset-top)) 24px auto auto; z-index: 8; }
 .title-screen .title-language .button { padding: 7px 12px; min-height: 36px; color: #eef1eb; border: 1px solid #cad7e366; background: #20314788; box-shadow: none; }
 .title-screen .title-language .button.is-selected { background: #d9e6ed26; border-color: #e3edf0; }
 .home-hub .quick-guide-button { width: calc(100% - 32px); margin: 10px 16px 0; font-size: 12px; }
