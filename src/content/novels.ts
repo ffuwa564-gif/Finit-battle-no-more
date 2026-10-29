@@ -19,13 +19,13 @@ export const openingNovel: NovelSceneDef = {
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'あなた、なかなか珍しいわね。\n気に入ったわ。' },
     { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: '仕方ないから、こき使ってあげるわね。' },
     { backgroundId: 'novel-awakening-garden', text: '助けてくれた相手に、振り回される。\nそんな日々が始まることを、そのときの私は、まだ知らなかった。' },
-    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "ここで生き延びるなら、まずはギルドに入りなさい。\n仕事を受けて、誰かと旅をするの。一人で歩ける街ではないわ。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "ここで生き延びるなら、まずはギルドに入りなさい。\nあの街では、帰ってきた者が次の道を教えるの。仕事を受けて、誰かと歩くことから覚えなさい。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……あなたは、一緒に来ないの？"},
-    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "私はここで、世界の可能性を探るの。\n街で何が起きているのかは、あなたの言葉で聞かせてちょうだい。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "私は、ここでしか確かめられないものを見ているの。\nあなたは街を見てきなさい。何が起きたかだけでなく、何を見たのかも聞かせてちょうだい。"},
     {"backgroundId": "novel-awakening-garden", "text": "彼女が名を呼ぶと、銀の盾を背負った女性が木陰から進み出た。\n私を一瞥し、すぐに庭園の女の前へ膝をつく。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "リオラ。あなたに頼むわ。\nこの子をギルドへ連れていって。仕事の選び方も、帰ってくる術も、教えてあげて。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "仰せのままに。\nあなたの望まれることなら、何なりと。"},
-    {"backgroundId": "novel-awakening-garden", "text": "私に向けられた声とは、温度が違った。\nリオラは、ただあの人だけを見ていた。"},
+    {"backgroundId": "novel-awakening-garden", "text": "リオラは私に背を向けたまま、女の返事を待っていた。\n盾を預けることさえ忘れたように、その縁を握りしめている。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……私のために、そこまでしなくても。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "勘違いするな。あの方に命じられたからだ。\n私はリオラ。道では私の後ろを歩け。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "それで。あなたは、何を望むの？"},
@@ -39,7 +39,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
   "1": [
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "ギルドに踏破の記録を預け、水鏡を渡って庭園へ戻る。\n街で託された鉢を抱えた私の隣で、リオラは身なりを整えた。"
+      "text": "ギルドに踏破の記録を預け、水鏡を渡った。\nリオラは泥のついた袖を払い、盾の紐を直す。私の腕には、街で託された小さな鉢があった。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -49,12 +49,12 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "私",
-      "text": "……優しい人たちがいた。\n待っているものを、誰も捨てられないみたいだった。"
+      "text": "……優しい人たちがいた。\n次の春を見たこともないのに、花を守っていた。私が持ってきたこの芽も、誰かに届けるためのものなんだ。"
     },
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "庭園の女",
-      "text": "そう。あなたは、そこを見たのね。"
+      "text": "そう。その芽、しばらく預けていかない？\n枯れた庭で、それだけが芽吹いた理由を調べたいの。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -63,12 +63,12 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "庭園の女が頷くと、リオラの張りつめた肩が下りた。\n旅の間、私に見せることのなかった顔だった。"
+      "text": "庭園の女が頷くと、リオラはようやく盾から手を離した。\n水筒の蓋も、私の包帯も、旅の間はあんなに手早く扱っていたのに。"
     },
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "私",
-      "text": "街へ戻る。\nこの芽を届ける相手に、会ってみたい。ギルドにも、次の仕事を聞いてくる。"
+      "text": "……この芽を待っている人がいる。先に、届けてくる。\nギルドにも、次の仕事を聞いてくるよ。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -81,13 +81,13 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "手帳には、初仕事を終えたと書いた。\n私のことを知ろうともしない同行者と、明日も同じ道を歩く。そのことは、書かなかった。"
+      "text": "手帳には、初仕事を終えたと書いた。\n鉢を抱え直すと、リオラが黙って荷紐を締めてくれた。明日も同じ道を歩くことだけは、もう決まっていた。"
     }
   ],
   "2": [
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "泉の水面に、療養室の窓が映る。\nエレインは彼女のそばに、リオラは廊下に残っていた。"
+      "text": "庭園へ戻る前、リオラが療養室の廊下で報告書を膝に置いた。\n封をする指が止まる。「……おまえの話を、先に聞く」。私は二つの茶碗を抱えたまま、隣の椅子に座った。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -105,16 +105,16 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "……そうね。\n話せるところから、聞かせて。",
+      "text": "回路図は調べたいわ。けれど、何に反応していたかを分けるには、会話を写した記録も要る。\nそこを伏せるなら、分からないところは残る。それでも、いい？",
       "speaker": "庭園の女"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "同じ世界を見ていても、私たちはまだ違うものを見ている。\n彼女の声が静かになっても、私は頷けなかった。"
+      "text": "炉の回路図と計測値を渡した。二人の会話を写した頁は、鞄から出さなかった。\n女は記録の一部を空欄のままにした。私は、その空いた欄を見ていた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "私は止められた。鍵も持っていた。\n失敗だったと認めるのが怖くて、明日まで待ってしまった。",
+      "text": "彼女は「今夜、止めよう」って、私に鍵を預けた。\nそれなのに私は、「明日には」と言って帰った。彼女の頼みより、炉が繰り返すあの午後の返事を聞いていたかった。",
       "speaker": "私"
     },
     {
@@ -134,7 +134,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
   "3": [
     {
       "backgroundId": "cathedral",
-      "text": "壊れた礼拝堂に、朝の光が差した。\nセリスは剣を鞘に戻す。白霧の狼は、その足元で目を細めた。"
+      "text": "壊れた礼拝堂の床を、朝の光がゆっくり渡った。\nセリスは剣を鞘に戻す。白霧の狼の影が、初めて扉の外へ伸びていた。"
     },
     {
       "backgroundId": "cathedral",
@@ -148,7 +148,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "庭園の卓には、置いていった茶碗があった。\n女は中を覗かず、私の前へそっと滑らせた。"
+      "text": "庭園の卓には、置いていった茶碗があった。\n縁の欠けたところまで、そのままだった。女は中を覗かず、私の前へ滑らせた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -157,7 +157,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "あの人に会いに行きたい。\n覚えていなくても、今日の話はできるかもしれない。",
+      "text": "あの人に会いに行きたい。\n覚えていなくても、今日の話はできるかもしれない。私のことを聞く前に、今、何が好きかを聞いてみたい。",
       "speaker": "私"
     },
     {
@@ -171,7 +171,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "cathedral",
-      "text": "療養室の前で、私は二つの茶碗を持ち直した。\n中から、私の名を呼ぶ声はしない。"
+      "text": "療養室の前で、私は二つの茶碗を持ち直した。\n手帳には「砂糖なし」とある。茶碗を買った店の名もあるのに、そこまでの道は思い出せない。今日は砂糖も一包み持ってきた。中から、私の名を呼ぶ声はしない。"
     },
     {
       "backgroundId": "cathedral",

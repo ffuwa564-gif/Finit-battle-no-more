@@ -1,3 +1,4 @@
+import { storyMilestones } from './story-milestones';
 import { zakuroCharacter, zakuroSkills, zakuroAssets, zakuroDungeons, zakuroEncounterNovel } from './zakuro';
 import { livingGardenArt } from './living-garden';
 import { openingNovel, campaignNovels } from './novels';
@@ -291,7 +292,7 @@ export function materialName(id: string): string {
   if (special) return special.name;
   const [speciesId, rarity] = id.split(':'); const name = content.species.find(item => item.id === speciesId)?.name ?? speciesId; const suffix = ({ common: '欠片', rare: '結晶', epic: '核' } as Record<string, string>)[rarity] ?? rarity; return `${name}の${suffix}`; }
 
-const milestones = [...campaignNovels(content.chapters ?? [], content.dungeons), zakuroEncounterNovel];
+const milestones = [...campaignNovels(content.chapters ?? [], content.dungeons), zakuroEncounterNovel, ...storyMilestones];
 const milestoneOrder = (scene: typeof milestones[number]) => {
   const trigger = scene.trigger;
   return trigger.kind === 'dungeon-clear' ? content.dungeons.findIndex(stage => stage.id === trigger.dungeonId) : -1;
