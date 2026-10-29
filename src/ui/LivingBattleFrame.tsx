@@ -93,7 +93,7 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
   const cue = !event ? 'rest' : event.bloomAction === 'strike' ? 'strike-flower' : event.ultimate ? 'ultimate'
     : event.kind === 'heal' ? 'heal' : ['attack', 'area'].includes(event.kind) ? actor?.side === 'enemy' ? 'enemy' : 'attack'
     : event.kind === 'guard' || event.kind === 'buff' ? 'guard' : 'rest';
-  const label = tr(!open ? '白い蕾が開いています' : flower?.kind === 'heal'
+  const label = tr(flower?.kind === 'heal'
     ? '癒しの花：最も傷ついた味方を最大HPの18%回復' : '月晶の花：弱った敵1体に追加攻撃');
   return <div ref={root} className="living-frame" data-cue={cue} data-reduced={motionOff}
     data-fairy-blessing={Boolean(departing)} data-bloom-state={flower ? open ? 'open' : 'opening' : 'bud'} data-bloom-kind={flower?.kind}>
@@ -111,6 +111,6 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
     </div>}
     {departing && <span key={event!.id} className="garden-fairy-blessing" aria-hidden="true" />}
     {flower && <Button className="battle-bloom" variant="secondary" sound={false} aria-label={label}
-      disabled={busy || battle.phase !== 'ready' || !open} onClick={() => onBloom(flower.id)} />}
+      disabled={busy || battle.phase !== 'ready'} onClick={() => onBloom(flower.id)} />}
   </div>;
 }

@@ -65,7 +65,7 @@ test('fresh bloom opens once, survives ATTACK, then a later bloom gets a fresh o
   await page.setViewportSize({ width: 390, height: 844 }); await prepare(page);
   const frame = page.locator('.living-frame'); await expect(frame).toHaveAttribute('data-bloom-state', 'bud');
   await round(page); await expect(frame).toHaveAttribute('data-bloom-state', 'opening', { timeout: 30000 });
-  await expect(page.locator('.battle-bloom')).toBeDisabled();
+  await expect(page.locator('.battle-bloom')).toBeEnabled();
   await expect.poll(() => page.locator('.garden-flower-art').getAttribute('src')).toMatch(/^blob:/);
   const firstURL = await page.locator('.garden-flower-art').getAttribute('src');
   const firstId = (await saved(page)).battle!.blooms!.flower!.id;
@@ -113,4 +113,47 @@ test('failed motion downloads still allow a new flower to be harvested', async (
   await expect(page.locator('.garden-frame__art')).toHaveAttribute('data-animated', 'false');
   await expect(page.locator('.battle-bloom')).toBeEnabled();
   await page.locator('.battle-bloom').click(); await expect(page.locator('.living-frame')).toHaveAttribute('data-bloom-state', 'bud');
+});
+
+
+test('a newly opening flower can be harvested before its five-second animation finishes', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 }); await prepare(page);
+  await round(page); await ready(page);
+  const frame = page.locator('.living-frame'), flower = page.locator('.battle-bloom');
+  await expect(frame).toHaveAttribute('data-bloom-state', 'opening');
+  await expect(flower).toBeEnabled();
+  const before = await saved(page), id = before.battle!.blooms!.flower!.id;
+  await flower.click(); await expect(frame).toHaveAttribute('data-bloom-state', 'bud'); await ready(page);
+  const after = await saved(page);
+  expect(after.battle!.blooms!.flower).toBeUndefined();
+  expect(after.battle!.round).toBe(before.battle!.round);
+  expect(after.battle!.events.filter(e => e.bloomAction)).toHaveLength(1);
+  await page.reload(); await enterGame(page); await expect(flower).toHaveCount(0);
+  expect((await saved(page)).battle!.blooms!.flower?.id).not.toBe(id);
+});
+
+test('an unpicked flower stays open across a wave change and reload until tapped', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 }); await prepare(page, 'heal', true);
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!, revision = save.revision;
+    for (const unit of save.battle!.units) {
+      if (unit.side === 'enemy') unit.hp = 1;
+      else { unit.attack = 100000; unit.speed = 1000; }
+    }
+    save.battle!.initialUnits = structuredClone(save.battle!.units);
+    save.revision++; await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  const id = (await saved(page)).battle!.blooms!.flower!.id;
+  await round(page); await ready(page);
+  const carried = await saved(page); expect(carried.battle!.wave).toBe(1);
+  expect(carried.battle!.blooms!.flower!.id).toBe(id);
+  await expect(page.locator('.living-frame')).toHaveAttribute('data-bloom-state', 'open');
+  await page.reload(); await enterGame(page);
+  await expect(page.locator('.living-frame')).toHaveAttribute('data-bloom-state', 'open');
+  await expect(page.locator('.battle-bloom')).toBeEnabled();
+  await page.locator('.battle-bloom').click(); await ready(page);
+  await expect(page.locator('.living-frame')).toHaveAttribute('data-bloom-state', 'bud');
+  expect((await saved(page)).battle!.blooms!.flower).toBeUndefined();
 });

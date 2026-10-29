@@ -137,14 +137,24 @@ describe('saved battle blossoms', () => {
     expect(harvested.battle!.round).toBe(5);
     expect(harvested.battle!.blooms!.seed).toBe(bloom.seed);
   });
-  it('returns the garden to buds at a wave boundary', () => {
+  it('keeps the same unharvested flower across waves and reloads, then consumes it once', () => {
     const save = fixture('strike');
     for (const enemy of save.battle!.units.filter(u => u.side === 'enemy')) enemy.hp = 1;
     for (const ally of save.battle!.units.filter(u => u.side === 'party')) { ally.attack = 10000; ally.speed = 1000; }
     const next = finish(applyCommand(save, { type: 'round' }, content));
     expect(next.battle!.wave).toBe(1);
-    expect(next.battle!.blooms!.flower).toBeUndefined();
-    expect(next.battle!.blooms!.growth).toBe(0);
+    expect(next.battle!.round).toBe(1);
+    expect(next.battle!.blooms).toEqual(save.battle!.blooms);
+    assertSaveCompatibility(JSON.parse(JSON.stringify(next)), content);
+    // The flower was born at round 2 of wave 0; round 1 of wave 1 must accept it.
+    const id = next.battle!.blooms!.flower!.id;
+    for (const enemy of next.battle!.units.filter(u => u.side === 'enemy')) enemy.hp = enemy.maxHp = 100000;
+    const used = finish(tap(next));
+    expect(used.battle!.blooms!.flower).toBeUndefined();
+    expect(used.battle!.blooms!.checked).toBe('1:1');
+    expect(used.battle!.round).toBe(1);
+    assertSaveCompatibility(used, content);
+    expect(() => applyCommand(used, { type: 'battleBloom', bloomId: id }, content)).toThrow('花');
   });
   it('round-trips valid flowers and legacy saves, rejects malformed state, and clears on retreat', () => {
     const save = fixture(); assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content);
