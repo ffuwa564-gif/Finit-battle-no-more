@@ -49,7 +49,7 @@ test('Zakuro chapter opens after the old campaign and renders the procession, po
   });
   await page.reload(); await page.getByRole('button', { name: 'タップしてはじめる', exact: true }).click();
   await expect(page.locator('.visual-novel')).toHaveAttribute('data-scene', 'zakuro-forest-encounter');
-  await expect(page.locator('.visual-novel')).toContainText('リオラの盾が鳴り');
+  await expect(page.locator('.visual-novel')).toContainText('リオラの盾が弾く');
   await expect.poll(() => page.locator('.novel-backgrounds img.is-current').evaluate((img: HTMLImageElement) => img.naturalWidth)).toBe(1024);
   await page.screenshot({ path: info.outputPath('zakuro-story-390.png') });
   expect(errors).toEqual([]);

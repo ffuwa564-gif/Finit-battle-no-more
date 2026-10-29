@@ -21,11 +21,11 @@ export const openingNovel: NovelSceneDef = {
     { backgroundId: 'novel-awakening-garden', text: '助けてくれた相手に、振り回される。\nそんな日々が始まることを、そのときの私は、まだ知らなかった。' },
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "ここで生き延びるなら、まずはギルドに入りなさい。\nあの街では、帰ってきた者が次の道を教えるの。仕事を受けて、誰かと歩くことから覚えなさい。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……あなたは、一緒に来ないの？"},
-    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "私は、ここでしか確かめられないものを見ているの。\nあなたは街を見てきなさい。何が起きたかだけでなく、何を見たのかも聞かせてちょうだい。"},
+    {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "今は、ここで観測を続けたいの。\nあなたは街を見てきなさい。報告だけでなく、あなたがどう思ったかも聞かせてちょうだい。"},
     {"backgroundId": "novel-awakening-garden", "text": "彼女が名を呼ぶと、銀の盾を背負った少女が木陰から進み出た。\n私と同じ、ひとりの少女。けれど彼女は、私を一瞥しただけで庭園の女の前へ膝をついた。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "リオラ。あなたに頼むわ。\nこの子をギルドへ連れていって。仕事の選び方も、帰ってくる術も、教えてあげて。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "仰せのままに。\nあなたの望まれることなら、何なりと。"},
-    {"backgroundId": "novel-awakening-garden", "text": "リオラは私に背を向けたまま、女の返事を待っていた。\n盾を預けることさえ忘れたように、その縁を握りしめている。"},
+    {"backgroundId": "novel-awakening-garden", "text": "リオラは私に背を向けたまま、女の次の言葉を待っていた。\n膝をついた姿勢も崩さず、肩にかかった盾の紐を握っている。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "私", "text": "……私のために、そこまでしなくても。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "リオラ", "text": "勘違いするな。あの方に命じられたからだ。\n私はリオラ。道では私の後ろを歩け。"},
     {"backgroundId": "novel-awakening-garden", "speaker": "庭園の女", "text": "それで。あなたは、何を望むの？"},
@@ -49,7 +49,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     {
       "backgroundId": "novel-awakening-garden",
       "speaker": "私",
-      "text": "……優しい人たちがいた。\n次の春を見たこともないのに、花を守っていた。私が持ってきたこの芽も、誰かに届けるためのものなんだ。"
+      "text": "……優しい人たちがいた。\n春が来るかも分からないのに、花を守っていた。この芽も、待っている人に届けるんだ。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -63,7 +63,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "庭園の女が頷くと、リオラはようやく盾から手を離した。\n水筒の蓋も、私の包帯も、旅の間はあんなに手早く扱っていたのに。"
+      "text": "庭園の女が頷くと、リオラはようやく盾の紐から手を離した。\n離してからも、指は曲がったままだった。私の包帯を替えるときには、あんなに手早く動いていたのに。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -86,7 +86,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
   ],
   "2": [
     {
-      "backgroundId": "novel-awakening-garden",
+      "backgroundId": "cathedral",
       "text": "庭園へ戻る前、リオラが療養室の廊下で報告書を膝に置いた。\n封をする指が止まる。「……おまえの話を、先に聞く」。私は二つの茶碗を抱えたまま、隣の椅子に座った。"
     },
     {
@@ -105,16 +105,16 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "回路図は調べたいわ。けれど、何に反応していたかを分けるには、会話を写した記録も要る。\nそこを伏せるなら、分からないところは残る。それでも、いい？",
+      "text": "回路図は調べたいわ。ただ、どの言葉にどう反応したかは、会話の記録と照らし合わせないと分からない。\nそこを伏せるなら、調べきれない部分は残るわ。それでも、いい？",
       "speaker": "庭園の女"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "炉の回路図と計測値を渡した。会話の頁へ手をかけると、リオラが報告書を重ねた。\n「その頁を渡す返事を、あの人はしていない」。私の声も写っている。けれど、私だけでは渡せない。女は調査欄を空けたまま、回路図を広げた。"
+      "text": "炉の回路図と計測値を渡した。会話の写しも取り出すと、リオラがその上に報告書を置いた。\n「あの人に、渡していいか聞いていないだろう」。私の声も書き留めてある。けれど、私だけでは決められない。写しを鞄へ戻すと、女は調査欄を空けたまま、回路図を広げた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "彼女は「今夜、止めよう」って、私に鍵を預けた。\nそれなのに私は、「明日には」と言って帰った。彼女の頼みより、炉が繰り返すあの午後の返事を聞いていたかった。",
+      "text": "彼女は「今夜、止めよう」って、私に鍵を預けた。\nそれなのに私は、「明日には」って帰った。止めてほしいと言われたのに、炉から聞こえるあの午後の声を、まだ聞いていたかった。",
       "speaker": "私"
     },
     {
@@ -148,15 +148,15 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "cathedral",
-      "text": "その朝、私のいない療養室で、エレインは台帳の「砂糖なし」を指で辿っていた。\n魔女は砂糖壺を引き寄せる。「今日は、甘いのがいい。窓のところで、自分で淹れたい」。「まだ手が震えています。注ぐのだけは、私にさせてください」エレインは盆を持ったまま、返事を待った。"
+      "text": "同じ朝、療養室では、エレインが台帳の「砂糖なし」を確かめていた。\n魔女は砂糖壺を引き寄せる。「今日は甘いのがいい。窓際で、自分で淹れたい」\n「まだ手が震えています。注ぐのだけは、私にさせてください」\nエレインは盆を持ったまま、返事を待った。"
     },
     {
       "backgroundId": "cathedral",
-      "text": "「お湯は、半分までね」。魔女は窓際の椅子を指した。エレインは盆を運び、手の届く位置に砂糖を置く。\n古い好みを消そうとすると、魔女は首を振った。「そこは残して。今日のは、その下に」。エレインは新しい行に日付を入れた。"
+      "text": "「じゃあ、茶碗の半分までね」\n魔女が窓際の椅子を指すと、エレインは傍らの小卓へ盆を置いた。砂糖壺も、魔女の手の届くところへ。\n台帳の「砂糖なし」を消しかけたエレインに、魔女は首を振る。「それは残して。今日の分は、その下に書いて」。エレインは新しい行に日付を入れた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "あの人に会いに行きたい。\n庭園の女に望みを問われて、そう答えた。戻ってきた茶碗の欠けを指でなぞる。私を覚えていなくても、今日は何が好きか、聞いてみたい。"
+      "text": "庭園へ戻ると、女は卓に残していた茶碗を私の前へ滑らせた。「それで。あなたは、何を望むの？」\n「あの人に会いに行きたい」\n茶碗の欠けを指でなぞった。私を覚えていなくても、今日、何が好きかは聞けるかもしれない。"
     },
     {
       "backgroundId": "novel-awakening-garden",
