@@ -252,7 +252,7 @@ export function validateContent(content: Content): string[] {
     if (stage.storyId) reject(!content.storylines?.some(story => story.id === stage.storyId) || stage.kind === 'event', `dungeons/${stage.id}: valid normal storyline required`);
     if (stage.requiresOwnedIds) reject(stage.requiresOwnedIds.some(id => !awakeningForms.has(id)), `dungeons/${stage.id}: invalid awakened ownership lock`);
     if (stage.bossLoot) {
-      reject(!stage.storyId || !stage.bossLoot.guaranteed.length || stage.bossLoot.guaranteed.some(cost => !validCost(cost)), `dungeons/${stage.id}: invalid guaranteed boss loot`);
+      reject((!stage.storyId && !stage.chapterId) || !stage.bossLoot.guaranteed.length || stage.bossLoot.guaranteed.some(cost => !validCost(cost)), `dungeons/${stage.id}: invalid guaranteed boss loot`);
       if (stage.bossLoot.bonus) reject(!validCost(stage.bossLoot.bonus.reward) || !Number.isInteger(stage.bossLoot.bonus.chance) || stage.bossLoot.bonus.chance < 1 || stage.bossLoot.bonus.chance > 100, `dungeons/${stage.id}: invalid bonus boss loot`);
     }
   }

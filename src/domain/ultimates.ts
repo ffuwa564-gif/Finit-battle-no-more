@@ -11,6 +11,7 @@ const forms: Record<Role, { name: string; description: string; template: SkillTe
   debuffer: { name: '夜をほどく呪詩', description: '敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。', template: 'area', theme: 'eclipse' },
 };
 const personalNames: Record<string, string> = {
+  zakuro: '柘榴庭・誰ひとり欠かさぬ葬列',
   vespera: '星炉・限界臨界の夜明け', miette: '修繕・世界を縫う金糸', tikka: '秒針・零時の侵入者',
   elaine: '白花・命を結ぶ祈り', liora: '錆銀・帰還の聖盾', seris: '薄明・夜を断つ剣', noelle: '星詠・失われた天河',
   'elaine-awakened': '白暁・還り咲く命', 'liora-awakened': '銀誓・不滅の帰還門', 'seris-awakened': '約束・明日を拓く剣', 'noelle-awakened': '星録・夜明けの天河',

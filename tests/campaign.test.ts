@@ -16,18 +16,18 @@ function finish(save: GameSave): GameSave {
   expect(save.battle?.phase).toBe('reward'); return save;
 }
 describe('normal campaign chapters',()=>{
-  it('groups thirty-six routes while retaining the ten stable routes into three ordered chapters with distinct scaled finale bosses',()=>{
-    expect(validateContent(content)).toEqual([]);expect(content.chapters).toHaveLength(3);
-    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12]);expect(new Set(ids).size).toBe(36);
+  it('extends the thirty-six stable routes with the two-stage Zakuro chapter and distinct scaled finale bosses',()=>{
+    expect(validateContent(content)).toEqual([]);expect(content.chapters).toHaveLength(4);
+    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12,2]);expect(new Set(ids).size).toBe(38);
     const bosses=content.chapters!.map(ch=>content.dungeons.find(d=>d.id===ch.dungeonIds.at(-1))!);
-    expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette']);
-    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,400,550]);
+    expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette','zakuro']);
+    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,400,550,650]);
     expect(bosses[1]!.bossLoot).toBeDefined();expect(bosses[2]!.bossLoot).toBeDefined();
   });
   it('opens only the first exploration for a new save and enforces the gate in real commands',()=>{
     const save=createInitialSave(content),before=structuredClone(save);
     expect(ids.filter(id=>!dungeonLock(content.dungeons.find(d=>d.id===id)!,save,content))).toEqual([ids[0]]);
-    expect(content.chapters!.map(ch=>chapterUnlocked(ch,save,content))).toEqual([true,false,false]);
+    expect(content.chapters!.map(ch=>chapterUnlocked(ch,save,content))).toEqual([true,false,false,false]);
     for(const id of ids.slice(1))expect(()=>applyCommand(save,{type:'depart',dungeonId:id,potions:0},content)).toThrow('解放');
     expect(save).toEqual(before);
   });
@@ -43,7 +43,7 @@ describe('normal campaign chapters',()=>{
     }
     expect(save.materials['lisette-memory:rare']).toBeGreaterThanOrEqual(6);
     const repeat=applyCommand(finish(applyCommand(save,{type:'depart',dungeonId:ids[0]!,potions:0},content)),{type:'claim'},content);
-    expect(repeat.stones).toBe(108);assertSaveCompatibility(repeat,content);
+    expect(repeat.stones).toBe(114);assertSaveCompatibility(repeat,content);
   });
   it('does not unlock a route after retreat or failure',()=>{
     let save=applyCommand(createInitialSave(content),{type:'depart',dungeonId:ids[0]!,potions:0},content);
@@ -54,7 +54,7 @@ describe('normal campaign chapters',()=>{
   it('keeps old deep clear records accessible without inventing earlier rewards',()=>{
     const save=createInitialSave(content);save.completedDungeonIds=['last-observatory'];const before=structuredClone(save);
     assertSaveCompatibility(save,content);expect(campaignFrontier(save,content)).toBe(ids.indexOf('last-observatory')+1);
-    expect(content.chapters!.every(ch=>chapterUnlocked(ch,save,content))).toBe(true);
+    expect(content.chapters!.slice(0,3).every(ch=>chapterUnlocked(ch,save,content))).toBe(true);
     expect(ids.slice(0,ids.indexOf('last-observatory')+2).every(id=>!dungeonLock(content.dungeons.find(d=>d.id===id)!,save,content))).toBe(true);
     expect(dungeonLock(content.dungeons.find(d=>d.id==='pale-throne')!,save,content)).toBeTruthy();
     expect(dungeonStoneReward(content.dungeons.find(d=>d.id==='last-observatory')!,save.completedDungeonIds)).toBe(0);

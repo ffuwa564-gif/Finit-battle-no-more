@@ -1,3 +1,4 @@
+import { zakuroEpilogue } from './zakuro';
 import type { ChapterDef, DungeonDef, NovelSceneDef } from '../domain/types';
 
 export const openingNovel: NovelSceneDef = {
@@ -187,7 +188,7 @@ export function campaignNovels(chapters: ChapterDef[], dungeons: DungeonDef[]): 
     return [{ id: `chapter-${chapter.number}-epilogue`, title: `第${chapter.number}章 ― ${chapter.title}`, trigger: { kind: 'dungeon-clear' as const, dungeonId: stage.id }, pages: [
       { backgroundId: stage.artId, text: chapter.subtitle },
       { backgroundId: stage.artId, text: stage.narrative.after },
-      ...(chapterReturns[chapter.number] ?? []),
+      ...(chapter.number === 4 ? zakuroEpilogue : chapterReturns[chapter.number] ?? []),
     ] }];
   });
 }
