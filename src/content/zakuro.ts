@@ -77,6 +77,6 @@ export const zakuroEpilogue: NovelPageDef[] = [
   { backgroundId: 'encounter-zakuro', speaker: 'ザクロ', text: 'その結び目は、傷に当たるわ。私に貸して。\n……そう、こっち側。今夜はあなたの隣で眠らせて。あなたの声なら、落ち着くから。' },
   { backgroundId: 'encounter-zakuro', text: '最後の少女がこちらを見た。私の手の傷に目を留め、それから槍を構え直した。\n守っているのは、あの神輿へ戻る道だった。鈴が遠ざかるまで、私もリオラの腕から手を離せなかった。' },
   { backgroundId: 'novel-awakening-garden', speaker: '庭園の女', text: 'ザクロに会ったの？ 相変わらず、話を聞かないのね。\nあの女を好く管理者には会ったことがないわ。でも、あれだけの個体が、互いを壊さず同じ庭で暮らし続けている。その才は、誰も否定しない。' },
-  { backgroundId: 'novel-awakening-garden', speaker: 'リオラ', text: '盾の留め具、直しておく。次に歩く前に。\n……あの行列の子たちは、命令がなくても隣の子を支えていた。私たちも、二人だけで全部を決めてしまわない方がいいんだろうな。' },
-  { backgroundId: 'novel-awakening-garden', text: '契生石を机に置いた。迎え手の欄にリオラの名が増えても、停止の頁は閉じない。\n夕方には療養室へ行く。何を話そうか迷いながら、私はその日の手帳を開いた。' },
+  { backgroundId: 'novel-awakening-garden', text: '私は傷のある手を握った。あの少女たちが、あそこへ帰る理由を知りたい。けれど、私たちへ向けられた刃まで、頷く気にはなれなかった。\nリオラは盾の留め具を直していた。「次に見るなら、先に招かれる道を探す。いいな」。' },
+  { backgroundId: 'novel-awakening-garden', text: '契生石の横に、停止の頁を開いた。手帳に「あの庭へ招かれるには」と書き、次の行で筆を止める。\n夕方には療養室へ行く。鍵を使わなかった夜を隠さず話すための言葉も、まだ書きかけだった。' },
 ];

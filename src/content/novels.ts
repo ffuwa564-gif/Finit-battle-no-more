@@ -87,7 +87,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
   "2": [
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "泉の水面に、療養室の窓が映る。\nエレインは彼女のそばに、リオラは廊下に残っていた。"
+      "text": "庭園へ戻る前、リオラが療養室の廊下で報告書を膝に置いた。\n封をする指が止まる。「……おまえの話を、先に聞く」。私は二つの茶碗を抱えたまま、隣の椅子に座った。"
     },
     {
       "backgroundId": "novel-awakening-garden",
@@ -105,16 +105,16 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "……そうね。\n記録は、あとにしましょう。今は、あなたの話を聞くわ。",
+      "text": "回路図は調べたいわ。けれど、何に反応していたかを分けるには、会話を写した記録も要る。\nそこを伏せるなら、分からないところは残る。それでも、いい？",
       "speaker": "庭園の女"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "女は炉の記録を閉じた。卓に並んだ二つの茶碗には、触れなかった。\n私は片方を握り直す。声が静かになっただけでは、まだ頷けなかった。"
+      "text": "炉の回路図と計測値を渡した。二人の会話を写した頁は、鞄から出さなかった。\n女は記録の一部を空欄のままにした。私は、その空いた欄を見ていた。"
     },
     {
       "backgroundId": "novel-awakening-garden",
-      "text": "私は止められた。鍵も持っていた。\nあの晩、灯りのついた温室の前まで行ったのに。失敗だったと認めるのが怖くて、扉を叩かなかった。",
+      "text": "彼女は「今夜、止めよう」って、私に鍵を預けた。\nそれなのに私は、「明日には」と言って帰った。彼女の頼みより、炉が繰り返すあの午後の返事を聞いていたかった。",
       "speaker": "私"
     },
     {
@@ -171,7 +171,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
     },
     {
       "backgroundId": "cathedral",
-      "text": "療養室の前で、私は二つの茶碗を持ち直した。\n中から、私の名を呼ぶ声はしない。"
+      "text": "療養室の前で、私は二つの茶碗を持ち直した。\n手帳には「砂糖なし」とある。茶碗を買った店の名もあるのに、そこまでの道は思い出せない。今日は砂糖も一包み持ってきた。中から、私の名を呼ぶ声はしない。"
     },
     {
       "backgroundId": "cathedral",
