@@ -11,7 +11,7 @@ test('the isolated Runway character plays silently over the fixed sky and artwor
   await expect(canvas).toBeVisible();
   const video = title.locator('video');
   await expect(video).toHaveCount(1);
-  expect(await video.evaluate((v: HTMLVideoElement) => ({ muted: v.muted, inline: v.playsInline, width: v.videoWidth, height: v.videoHeight }))).toEqual({ muted: true, inline: true, width: 1008, height: 896 });
+  expect(await video.evaluate((v: HTMLVideoElement) => ({ muted: v.muted, inline: v.playsInline, width: v.videoWidth, height: v.videoHeight }))).toEqual({ muted: true, inline: true, width: 1440, height: 1280 });
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(.1);
   await expect(page.locator('audio[data-bgm]')).toHaveCount(0);
   await page.mouse.click(270, 250);

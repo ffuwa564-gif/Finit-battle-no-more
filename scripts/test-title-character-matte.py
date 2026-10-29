@@ -39,5 +39,31 @@ class CharacterMatteTests(unittest.TestCase):
         np.testing.assert_array_equal(result[7, 7, :3], [0, 0, 0])
         self.assertEqual(int(result[0, 0, 3]), 0)
 
+class TemporalEdgeTests(unittest.TestCase):
+    def test_matte_flicker_is_reduced_without_changing_opaque_detail(self):
+        rgb = np.zeros((128, 128, 3), np.float32)
+        rgb[20:108, 36:92] = [200, 180, 160]
+        rgb[40:80, 35] = [80, 72, 64]
+        current = np.zeros((128, 128, 4), np.uint8)
+        current[20:108, 36:92] = [200, 180, 160, 255]
+        current[40:80, 35] = [200, 180, 160, 102]
+        neighbor = current.copy()
+        neighbor[40:80, 35, 3] = 153
+        result = module.stabilize_edges((rgb, current), (rgb, neighbor), (rgb, neighbor))
+        self.assertGreater(int(result[60, 35, 3]), 102)
+        self.assertLess(int(result[60, 35, 3]), 153)
+        np.testing.assert_array_equal(result[65, 65], current[65, 65])
+
+    def test_disoccluded_background_does_not_keep_a_trail(self):
+        rgb = np.zeros((128, 128, 3), np.float32)
+        current = np.zeros((128, 128, 4), np.uint8)
+        previous_rgb = rgb.copy()
+        previous_rgb[40:80, 40:80] = 200
+        previous = current.copy()
+        previous[40:80, 40:80] = [200, 200, 200, 255]
+        result = module.stabilize_edges((rgb, current), (previous_rgb, previous), (rgb, current))
+        self.assertEqual(int(result[:, :, 3].max()), 0)
+
+
 if __name__ == '__main__':
     unittest.main()
