@@ -120,7 +120,7 @@ for (const language of ['ja','en'] as const) {
         if(language==='en')expect(await story.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
         if(position+1<scene.pages)await story.getByRole('button',{name:language==='en'?'Next Line':'次の台詞',exact:true}).click();
       }
-      if(index===scenes.length-1){
+      if(scene.id==='chapter-3-epilogue'){
         await expect(story).toContainText(language==='en'?'Even so, I knocked.':'それでも、私は扉を叩いた。');
         await page.screenshot({path:info.outputPath(`chosen-door-${language}.png`)});
       }

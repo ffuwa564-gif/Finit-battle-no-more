@@ -9,7 +9,7 @@ import type { Content } from '../src/domain/types';
 
 function futureContent(): Content {
   const definitions = structuredClone(content);
-  for (let number = 4; number <= 10; number++) {
+  for (let number = definitions.chapters!.length + 1; number <= 10; number++) {
     const id = `future-chapter-${number}`;
     const stages = [1, 2].map(index => `${id}-${index}`);
     for (const [index, stage] of stages.entries()) {
