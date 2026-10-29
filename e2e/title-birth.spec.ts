@@ -26,7 +26,8 @@ test('language and animation controls do not start the game or music', async ({ 
   await expect(title.locator('.title-birth-scene')).toHaveAttribute('data-animation-state', 'playing');
   await page.getByRole('button', { name: 'English', exact: true }).click();
   await expect(title).toBeVisible();
-  await expect(title.locator('.title-screen__invitation')).toContainText('I could not die.');
+  await expect(title.locator('.title-screen__invitation')).toContainText('Experience a world of stillness,');
+  await expect(title.locator('.title-screen__invitation')).toContainText('inhabited only by girls.');
   await page.addStyleTag({ content: '.title-screen *, .title-screen *::before, .title-screen *::after { animation: none !important; transition: none !important; }' });
   await page.getByRole('button', { name: 'Pause Background Animation', exact: true }).click();
   await expect(title.locator('.title-birth-scene')).toHaveAttribute('data-animation-state', 'paused');

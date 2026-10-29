@@ -20,7 +20,7 @@ export function TitleScreen({ onStart, leaving, returning, reducedMotion = false
     <div className="title-screen__brand">
       <h1 id="title-screen-name" aria-label="STILLVEIL"><img src={assetPath('title-wordmark')} alt="" /></h1>
       <p className="title-screen__subtitle">{tr("静謐の残響")}</p>
-      <p className="title-screen__invitation" id="title-screen-invitation">{tr('死にたがりの世界で、')}<br />{tr('私は死ねなかった。')}</p>
+      <p className="title-screen__invitation" id="title-screen-invitation">{tr('静謐と少女だけの')}<br />{tr('世界構造を体感する')}</p>
     </div>
     <Button className="title-screen__start" sound={false} disabled={leaving} aria-label={tr('タップしてはじめる')} aria-describedby="title-screen-invitation" onClick={onStart}>
       <span className="title-screen__entry"><span className="title-screen__touch" aria-hidden="true"><i /><i /></span><span className="title-screen__start-label">{tr('タップしてはじめる')}</span><span className="title-screen__footnote">{localize(returning ? '旅の続きから、もう一度。' : '音楽とともに、静かな廃都へ。')}</span></span>
