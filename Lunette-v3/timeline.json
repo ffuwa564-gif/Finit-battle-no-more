@@ -1,0 +1,91 @@
+{
+  "duration": 20,
+  "fps": 24,
+  "newGenerationCredits": 0,
+  "music": {
+    "title": "Twinkle Soda",
+    "artist": "FUJINEQo",
+    "sourceStart": 31.62,
+    "sourceEnd": 51.62
+  },
+  "character": "Existing in-game Lunette animation plus faithful original-illustration alpha cutout. No new generated character art or motion.",
+  "1080p": "Upscaled delivery from 720p animation, game capture, and locally rendered 720p graphic sequences.",
+  "shots": [
+    {
+      "id": "01-taunt",
+      "kind": "intro",
+      "frames": 68,
+      "start": 3.1,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 0
+    },
+    {
+      "id": "02-name",
+      "kind": "title",
+      "frames": 68,
+      "at": 2.8333333333333335
+    },
+    {
+      "id": "03-rabbits",
+      "kind": "rabbits",
+      "frames": 34,
+      "start": 0.35,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 5.666666666666667
+    },
+    {
+      "id": "04-battle",
+      "kind": "battle",
+      "frames": 68,
+      "at": 7.083333333333334
+    },
+    {
+      "id": "05-respect",
+      "kind": "respect",
+      "frames": 68,
+      "start": 5.9,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 9.916666666666668
+    },
+    {
+      "id": "06-invite",
+      "kind": "invite",
+      "frames": 34,
+      "at": 12.750000000000002
+    },
+    {
+      "id": "07-gesture",
+      "kind": "gesture",
+      "frames": 51,
+      "start": 0.5,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 14.166666666666668
+    },
+    {
+      "id": "08-ending",
+      "kind": "end",
+      "frames": 89,
+      "at": 16.291666666666668
+    }
+  ]
+}

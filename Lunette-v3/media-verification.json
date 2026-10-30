@@ -1,0 +1,62 @@
+[
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "profile": "Constrained Baseline",
+        "width": 720,
+        "height": 1280,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "24/1",
+        "nb_frames": "480"
+      },
+      {
+        "codec_name": "aac",
+        "profile": "LC",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "nb_frames": "939"
+      }
+    ],
+    "format": {
+      "duration": "20.000000",
+      "size": "11959050"
+    },
+    "file": "STILLVEIL_Lunette_PV_v3_20s_720p.mp4",
+    "sha256": "04c8172e1c1590f62a4aa82772a671f3a447adcbdc31ccb4bb96fb7730f67dcf",
+    "fullDecode": "passed"
+  },
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "profile": "Constrained Baseline",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "24/1",
+        "nb_frames": "480"
+      },
+      {
+        "codec_name": "aac",
+        "profile": "LC",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "nb_frames": "939"
+      }
+    ],
+    "format": {
+      "duration": "20.000000",
+      "size": "21385683"
+    },
+    "file": "STILLVEIL_Lunette_PV_v3_20s_1080p.mp4",
+    "sha256": "81d55c394b0d1cd34eb283153c99a6b935b283304f9da00239c5b4624323e5f6",
+    "fullDecode": "passed"
+  }
+]
