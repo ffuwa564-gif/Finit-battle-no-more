@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BattleEvent, Unit } from '../domain/types';
 import { characterById } from '../content';
 import { eventHpChanges, type HpChange } from '../platform/combat-feedback';
+import { shakeDamage } from '../platform/battle-shake';
 import './combat-feedback.css';
 
 type FloatingNumber = HpChange & { id: string; x: number; y: number; named: boolean; ultimate?: boolean };
@@ -14,10 +15,14 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
   const timers = useRef(new Set<ReturnType<typeof setTimeout>>());
   const handled = useRef(new Set<string>());
   const latestBefore = useRef(before); latestBefore.current = before;
+  const latestReduced = useRef(reducedMotion); latestReduced.current = reducedMotion;
+  const stopShake = useRef<(() => void) | undefined>(undefined);
+  useEffect(() => () => { stopShake.current?.(); stopShake.current = undefined; }, [event?.id, reducedMotion]);
   useEffect(() => {
     const show = (id: string, changes: HpChange[], ultimate = false) => {
       const parent = root.current?.parentElement;
       if (!parent || handled.current.has(id) || !changes.length) return;
+      stopShake.current?.();
       handled.current.add(id);
       if (handled.current.size > 64) handled.current.delete(handled.current.values().next().value!);
       const frame = parent.getBoundingClientRect();
@@ -31,6 +36,9 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
         return { ...change, ultimate, id: `${id}:${change.unitId}`, x: Math.max(42, Math.min(frame.width - 42, x)), y, named: !bounds };
       });
       setNumbers(old => [...old, ...entries].slice(-16));
+      // Restart rather than stack impulses during consecutive hits. This runs
+      // with the floating numbers, after their untransformed bounds are read.
+      stopShake.current = shakeDamage(parent, changes, latestBefore.current, ultimate, latestReduced.current);
       const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, ultimate ? 1350 : 850);
       timers.current.add(timer);
     };
