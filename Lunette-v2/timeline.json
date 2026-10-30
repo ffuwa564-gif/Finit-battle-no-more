@@ -1,0 +1,189 @@
+{
+  "duration": 20,
+  "fps": 24,
+  "newRunwayCredits": 0,
+  "videoSource": "public/video/lunette-awakened-loop.mp4",
+  "sourceSha256": "b7dada0239f641d39a4b6c1fbb49b896e773ecc9c0cf2630187d8b2a8648b117",
+  "music": "しゃろう「しゅわしゅわハニーレモン350ml」公式音源の15.36–35.36秒を使用",
+  "sourceResolution": "720x960 game animation; detail shots are digital crops. 1080p is an upscale.",
+  "shots": [
+    {
+      "id": "01-smile",
+      "frames": 46,
+      "start": 3.7,
+      "crop": [
+        300,
+        534,
+        215,
+        25
+      ],
+      "zoom": 0.025,
+      "plates": [
+        [
+          "shade",
+          0
+        ],
+        [
+          "laugh",
+          0.12
+        ]
+      ],
+      "at": 0
+    },
+    {
+      "id": "02-taunt",
+      "frames": 46,
+      "start": 5.5,
+      "crop": [
+        340,
+        604,
+        195,
+        8
+      ],
+      "zoom": 0.025,
+      "plates": [
+        [
+          "shade",
+          0
+        ],
+        [
+          "taunt",
+          0.08
+        ]
+      ],
+      "at": 1.9166666666666667
+    },
+    {
+      "id": "03-rabbit",
+      "frames": 12,
+      "start": 0.5,
+      "crop": [
+        245,
+        436,
+        0,
+        15
+      ],
+      "zoom": 0.025,
+      "plates": [],
+      "at": 3.8333333333333335
+    },
+    {
+      "id": "04-key",
+      "frames": 12,
+      "start": 0.1,
+      "crop": [
+        215,
+        382,
+        75,
+        0
+      ],
+      "zoom": 0.025,
+      "plates": [],
+      "at": 4.333333333333334
+    },
+    {
+      "id": "05-reveal",
+      "frames": 68,
+      "start": 0.1,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "zoom": 0.02,
+      "plates": [
+        [
+          "shade",
+          0
+        ],
+        [
+          "name",
+          0.16
+        ]
+      ],
+      "at": 4.833333333333334
+    },
+    {
+      "id": "06-game",
+      "frames": 68,
+      "game": true,
+      "plates": [
+        [
+          "game-label",
+          0
+        ]
+      ],
+      "at": 7.666666666666668
+    },
+    {
+      "id": "07-invite",
+      "frames": 70,
+      "start": 6.0,
+      "crop": [
+        360,
+        640,
+        180,
+        8
+      ],
+      "zoom": 0.015,
+      "plates": [
+        [
+          "shade",
+          0
+        ],
+        [
+          "invite",
+          0.2
+        ]
+      ],
+      "at": 10.500000000000002
+    },
+    {
+      "id": "08-dawn",
+      "frames": 69,
+      "start": 0.2,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "zoom": 0.035,
+      "plates": [
+        [
+          "shade",
+          0
+        ],
+        [
+          "promise",
+          0.35
+        ]
+      ],
+      "at": 13.416666666666668
+    },
+    {
+      "id": "09-brand",
+      "frames": 89,
+      "start": 4.0,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "zoom": 0.015,
+      "plates": [
+        [
+          "shade-outro",
+          0
+        ],
+        [
+          "brand",
+          0.1
+        ]
+      ],
+      "at": 16.291666666666668
+    }
+  ]
+}
