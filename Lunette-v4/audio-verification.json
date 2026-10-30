@@ -1,0 +1,36 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "countInSourceSeconds": [
+    44.433333,
+    44.85,
+    45.225,
+    45.6
+  ],
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "source": "Existing track vocal. No new spoken voice. Four text cuts rounded to 24fps. Word alignments checked against source spectrogram; ASR drafts are approximate.",
+  "effects": "Game renderCombatSignature(thunder, 44100, takes 0/1/2), synchronized to three visible bit impacts; music briefly ducked.",
+  "gameplaySourceStart": 8.45,
+  "sfxTimes": [
+    7.296666666666667,
+    8.416666666666668,
+    9.526666666666667
+  ],
+  "sfxPeak": 0.38515347242355347,
+  "sfxRms": 0.010220753960311413,
+  "newGenerationCredits": 0,
+  "encodedMixCorrelation": 0.9922594736867895,
+  "encodedAudioFrames": 960512,
+  "effectsPresentInRenderedMix": true,
+  "impactWindowsCorrelation": [
+    0.9905156518207697,
+    0.9951509783232941,
+    0.9942476832758437
+  ]
+}

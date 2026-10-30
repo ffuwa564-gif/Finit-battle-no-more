@@ -1,3 +1,15 @@
+## 最新：ルネットPV v4（効果音・カウント音ハメ版）
+
+Twinkle Sodaのサビ前から。機械うさぎが「1、2、3、Fire!」と吹き出しでカウントする4カットと、ゲームで使っている攻撃効果音を追加。
+
+- [720p MP4](Lunette-v4/STILLVEIL_Lunette_PV_v4_20s_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v4/STILLVEIL_Lunette_PV_v4_20s_1080p.mp4)
+- [投稿説明文・音楽クレジット](Lunette-v4/upload-description.txt)
+
+BGM: Twinkle Soda / FUJINEQo。投稿時は説明文の音楽クレジットを残してください。
+
+---
+
 # STILLVEIL — ルネット紹介PV v3
 
 **最新版：Twinkle Soda / FUJINEQo、透過素材と名前ロゴを使った編集版。** 声なし・縦型20秒。
