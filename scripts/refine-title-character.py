@@ -17,9 +17,22 @@ def decode(path, pixels):
     return subprocess.Popen(['ffmpeg', '-v', 'error', '-i', str(path), '-vf', 'fps=24',
         '-pix_fmt', pixels, '-f', 'rawvideo', 'pipe:1'], stdout=subprocess.PIPE)
 
-def refine(rgb, mask):
+def refine(rgb, mask, trusted_alpha=None, reference_rgb=None):
     # The coarse segmentation is trusted only well inside the figure. Never use its jagged edge.
-    core = ndi.binary_erosion(mask > 250, iterations=12)
+    semantic_core = ndi.binary_erosion(mask > 250, iterations=12)
+    core = semantic_core.copy()
+    trusted_weight = None
+    deep = None
+    if trusted_alpha is not None:
+        if reference_rgb is None:
+            raise ValueError('Trusted alpha requires the matching transported RGB reference')
+        support = trusted_alpha > 240
+        deep = ndi.binary_erosion(support, iterations=12)
+        difference = np.max(np.abs(reference_rgb - rgb), axis=2) if reference_rgb is not None else np.zeros(mask.shape)
+        confidence = np.exp(-.5 * (np.maximum(difference - 30, 0) / 25) ** 2)
+        trusted_weight = trusted_alpha.astype(np.float32) / 255 * confidence
+        # The original cutout preserves openings the coarse segmentation filled with black.
+        core = (core & support & (confidence > .99)) | deep
     if not core.any():
         raise ValueError('Missing opaque body mask')
     _, nearest = ndi.distance_transform_edt(~core, return_indices=True)
@@ -29,6 +42,15 @@ def refine(rgb, mask):
     # A continuous falloff avoids pixels popping on/off when compression crosses a hard threshold.
     coverage = np.clip((rgb.max(2) - 8) / 24, 0, 1)
     alpha[~core] *= (coverage * coverage * (3 - 2 * coverage))[~core]
+    if trusted_weight is not None:
+        alpha = np.maximum(alpha, trusted_weight)
+        alpha[deep] = 1
+    if trusted_weight is not None:
+        # Black matte must never become opaque merely because an estimated mask filled a gap.
+        # Keep dark paint only when the transported original actually contains that dark paint.
+        paint_support = ndi.binary_erosion(trusted_alpha > 240, iterations=3) | semantic_core
+        dark_paint = paint_support & (trusted_alpha > 240) & (reference_rgb.max(2) < 48) & (difference < 24)
+        alpha[(rgb.max(2) < 32) & ~dark_paint] = 0
     components, _ = ndi.label(alpha > .04)
     keep = np.bincount(components.ravel()) >= 16
     keep[0] = False
@@ -77,7 +99,7 @@ def stabilize_edges(current, previous, following):
     result = premult.copy()
     result[edge] = filtered[edge]
     a = result[:, :, 3]
-    a[(alpha == 0) & (rgb.max(2) < 8)] = 0
+    a[(alpha == 0) & (rgb.max(2) < 32)] = 0
     result[:, :, :3] /= np.maximum(a[:, :, None], .01)
     result[a < .01, :3] = 0
     return np.rint(np.clip(result, 0, 1) * 255).astype(np.uint8)
@@ -92,7 +114,16 @@ if __name__ == '__main__':
         '-pix_fmt', 'yuva420p', '-crf', '14', '-b:v', '0', '-deadline', 'good', '-cpu-used', '3',
         '-row-mt', '1', '-threads', '4', str(output)], stdin=subprocess.PIPE)
 
+    original = cv2.imread('public/art/title-birth-character.webp', cv2.IMREAD_UNCHANGED)
+    if original is None or original.shape[2] != 4:
+        raise ValueError('Original transparent cutout required')
+    original_alpha = np.zeros((HEIGHT, WIDTH), np.uint8)
+    original_alpha[100:1180] = cv2.resize(original[:, :, 3], (720, 1080), interpolation=cv2.INTER_LANCZOS4)
+    initial_rgb = None
+    initial_gray = None
+
     def read_frame():
+        global initial_rgb, initial_gray
         color = source.stdout.read(WIDTH * HEIGHT * 3)
         matte = mask.stdout.read(WIDTH * HEIGHT)
         if not color and not matte:
@@ -101,7 +132,17 @@ if __name__ == '__main__':
             raise ValueError('Source and mask frames do not match')
         rgb = np.frombuffer(color, np.uint8).reshape(HEIGHT, WIDTH, 3).astype(np.float32)
         alpha = np.frombuffer(matte, np.uint8).reshape(HEIGHT, WIDTH)
-        return rgb, refine(rgb, alpha)
+        gray = cv2.resize(cv2.cvtColor(rgb.astype(np.uint8), cv2.COLOR_RGB2GRAY), (360, 640))
+        if initial_rgb is None:
+            initial_rgb = rgb.copy()
+            initial_gray = gray
+        flow = cv2.calcOpticalFlowFarneback(gray, initial_gray, None, .5, 5, 31, 5, 7, 1.5, 0)
+        flow = cv2.resize(flow, (WIDTH, HEIGHT), interpolation=cv2.INTER_LINEAR) * 2
+        x, y = grid(HEIGHT, WIDTH)
+        mx, my = x + flow[:, :, 0], y + flow[:, :, 1]
+        trusted = cv2.remap(original_alpha, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
+        reference = cv2.remap(initial_rgb, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
+        return rgb, refine(rgb, alpha, trusted, reference)
 
     count = 0
     try:
