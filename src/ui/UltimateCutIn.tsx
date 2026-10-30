@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { createPortal } from 'react-dom';
 import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
@@ -28,11 +29,17 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   const [phase, setPhase] = useState('intro');
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [partyLayer, setPartyLayer] = useState<HTMLElement | null>(null);
   const connection = (navigator as Navigator & { connection?: EventTarget & { saveData?: boolean } }).connection;
   const [systemReduced, setSystemReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [saveData, setSaveData] = useState(() => !!connection?.saveData);
   const allowed = !reducedMotion && !systemReduced && !saveData;
   const anchor = content.assets.find(asset => asset.id === character.artId)?.anchor ?? '50% 0%';
+  useEffect(() => { if (enemy) setPartyLayer(document.querySelector<HTMLElement>('.battle-layout .party-strip')); }, [enemy]);
+  const targetElements = () => [...new Set(event.targetIds ?? [])].flatMap(id => {
+    const element = partyLayer?.querySelector<HTMLElement>(`.party-unit[data-unit="${CSS.escape(id)}"]`);
+    return element ? [element] : [];
+  });
 
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -48,12 +55,18 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
     const host = effectHost.current;
     void import('./ultimate-pixi').then(async ({ createUltimateEffect }) => {
       if (cancelled) return;
-      const cleanup = await createUltimateEffect(host, visual, () => clock.current.position(performance.now()), () => { if (!cancelled) setFailed(true); });
+      const cleanup = await createUltimateEffect(host, visual, () => clock.current.position(performance.now()), () => { if (!cancelled) setFailed(true); }, enemy ? () => {
+        const bounds = host.getBoundingClientRect();
+        return targetElements().map(element => {
+          const target = element.getBoundingClientRect();
+          return { x: target.left + target.width / 2 - bounds.left, y: target.top + target.height * .35 - bounds.top, size: target.width * .9 };
+        });
+      } : undefined);
       if (cancelled) cleanup();
       else { dispose = cleanup; setReady(true); }
     }).catch(() => { if (!cancelled) setFailed(true); });
     return () => { cancelled = true; dispose?.(); setReady(false); };
-  }, [allowed, failed, visual]);
+  }, [allowed, failed, visual, partyLayer]);
 
   useEffect(() => {
     clock.current.sync(eventId, speed, performance.now());
@@ -67,17 +80,22 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
     return () => timers.forEach(clearTimeout);
   }, [eventId, speed]);
 
-  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+  return <><div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
       <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
       <div className="ultimate-cinematic__title"><small>{enemy ? 'ENEMY ULTIMATE' : 'ULTIMATE'}</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
     </div>
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}
-    <div className="ultimate-cinematic__effect" aria-hidden="true">
+    {!enemy && <div className="ultimate-cinematic__effect" aria-hidden="true">
       {allowed && !failed && <div className="ultimate-pixi-host" ref={effectHost} /> }
       {!ready || failed || !allowed ? <FallbackImpact theme={special.theme} /> : null}
-    </div>
-  </div>;
+    </div>}
+  </div>{enemy && allowed && partyLayer && <>
+    {createPortal(<div className="ultimate-party-effect" data-phase={phase} aria-hidden="true" style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+      {!failed && <div className="ultimate-pixi-host" ref={effectHost} />}
+    </div>, partyLayer)}
+    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} /></div>, element, element.dataset.unit))}
+  </>}</>;
 }
 
 export function UltimateCutIn({ event, units, reducedMotion, speed = 1 }: { event?: BattleEvent; units: Unit[]; reducedMotion: boolean; speed?: 1 | 2 }) {

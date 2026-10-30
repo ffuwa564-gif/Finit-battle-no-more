@@ -60,3 +60,10 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 
 .ultimate-pixi-host,.ultimate-pixi-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .ultimate-cinematic:not([data-phase="intro"])::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 46%,transparent 15%,#04101d55 100%); }
+.ultimate-cinematic--enemy:not([data-phase="intro"])::before { background: none; }
+/* Enemy portraits stay above; offensive light lands only on actual party slots. */
+.battle-layout .party-unit { position: relative; }
+.ultimate-party-effect,.ultimate-target-fallback { position: absolute; inset: 0; z-index: 30; overflow: hidden; pointer-events: none; border-radius: inherit; --ultimate-color: #dfacff; }
+.ultimate-party-effect[data-phase="intro"],.ultimate-target-fallback[data-phase="intro"] { opacity: 0; }
+.ultimate-party-effect[data-phase="tail"],.ultimate-target-fallback[data-phase="tail"] { opacity: 0; transition: opacity calc(900ms * var(--ultimate-rate,1)) ease-out; }
+.ultimate-target-fallback[data-phase="impact"] .ultimate-fallback { animation: ultimate-impact 1200ms both; }

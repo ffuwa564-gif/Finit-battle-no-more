@@ -5,7 +5,8 @@ const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
 
 /** Seven authored silhouettes, with traveling edges, a held impact and material-specific exits. */
-export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void) {
+export interface UltimateTargetPoint { x: number; y: number; size: number }
+export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void, targets?: () => UltimateTargetPoint[]) {
   const app = new Application();
   try {
     await app.init({ width: Math.max(1,host.clientWidth),height: Math.max(1,host.clientHeight),backgroundAlpha:0,
@@ -19,7 +20,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   gradient.addColorStop(0,'#ffffff');gradient.addColorStop(.14,'#ffffffff');gradient.addColorStop(.35,'#ffffff70');gradient.addColorStop(1,'#ffffff00');
   ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);
   const texture=Texture.from(glow),color=palette[visual];
-  const particles=Array.from({length:56},(_,i)=>{
+  const particles=Array.from({length:56*(targets?4:1)},(_,i)=>{
     const sprite=new Sprite(texture);sprite.anchor.set(.5);sprite.blendMode='add';sprite.tint=i%4?color:0xffffff;scene.addChild(sprite);
     return {sprite,angle:i*2.39996,speed:.35+(i*37%73)/100,size:3+i%5};
   });
@@ -35,10 +36,16 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const draw=()=>{
     if(destroyed||document.hidden)return;
     const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
-    const w=host.clientWidth,h=host.clientHeight,s=Math.min(w,h),cx=w*.5,cy=h*.46;
+    const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
     forms.clear();light.clear();scene.visible=f.visible;scene.alpha=f.fade;
     if(!scene.visible){app.render();return;}
+    for(const {sprite} of particles)sprite.alpha=0;
+    // Explicit recipients never fall back to the enemy-stage centre. A single
+    // canvas serves all area recipients without allocating extra WebGL contexts.
+    const points=targets?targets().slice(0,4):[{x:w*.5,y:h*.46,size:Math.min(w,h)}];
+    for(const [targetIndex,point] of points.entries()){
+    const s=Math.min(w,h,point.size),cx=point.x,cy=point.y;
     const alive=hit<0?1:decay(age,2.8),impact=hit>=0?decay(age,7):0;
     if(visual==='blade'){
       // A broad tapered blade moves across the target; no lightning or generic rings.
@@ -138,13 +145,14 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       forms.circle(cx,cy,s*.026).fill({color:0xffffff,alpha:impact});
       stroke([cx-s*.12,cy,cx+s*.12,cy],2,impact);
     }
-    for(let i=0;i<particles.length;i++){
-      const {sprite,angle,speed,size}=particles[i];
+    for(let i=0;i<56;i++){
+      const {sprite,angle,speed,size}=particles[targetIndex*56+i];
       const support=['bloom','aegis','dawn'].includes(visual);
       if(hit<0){const radius=s*(.5-gather*.43)*speed;sprite.position.set(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius);sprite.alpha=gather*.35;}
       else if(support){sprite.position.set(w*(.17+(i%4)*.22)+Math.sin(angle+hit)*s*.09,cy+s*.25-hit*s*.3*speed);sprite.alpha=decay(hit,1.5)*.65;}
       else{const direction=visual==='blade'?-.42+Math.sin(angle)*.28:angle,r=s*(.04+Math.max(0,age)*speed*.65);sprite.position.set(cx+Math.cos(direction)*r,cy+Math.sin(direction)*r);sprite.alpha=decay(age,2)*.7;}
       sprite.width=size*(support?1:2.8);sprite.height=size*(support?1:.4);sprite.rotation=support?0:visual==='blade'?-.42:angle;
+    }
     }
     app.render();
   };
