@@ -1,0 +1,85 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 62,
+      "sourceStart": 1.3611161708831787,
+      "sourceEnd": 4.286515951156616,
+      "impactAt": 1.1666666666666667,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 28,
+          "sourceStart": 1.3611161708831787,
+          "sourceEnd": 2.611016035079956,
+          "playbackRate": 1.0713427407400948
+        },
+        {
+          "frames": 34,
+          "sourceStart": 2.611016035079956,
+          "sourceEnd": 4.286515951156616,
+          "playbackRate": 1.1827058231129366
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "frames": 62,
+      "sourceStart": 4.286515951156616,
+      "sourceEnd": 7.360415935516357,
+      "impactAt": 3.666666666666667,
+      "sound": "ultimate-magic",
+      "parts": [
+        {
+          "frames": 26,
+          "sourceStart": 4.286515951156616,
+          "sourceEnd": 5.688816070556641,
+          "playbackRate": 1.2944308794461765
+        },
+        {
+          "frames": 36,
+          "sourceStart": 5.688816070556641,
+          "sourceEnd": 7.360415935516357,
+          "playbackRate": 1.1143999099731445
+        }
+      ]
+    }
+  ],
+  "sfxTimes": [
+    8.083333333333334,
+    10.583333333333334
+  ],
+  "effects": "Actual game ultimate-rabbits and ultimate-magic PCM; peaks matched to 0.85, re-synchronized to captured impact phase",
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 8.083333333333334,
+      "effectsRmsDbFS": -12.735403249323237,
+      "musicRmsDbFS": -32.99282283440034,
+      "effectsOverMusicDb": 20.257419620080064
+    },
+    {
+      "at": 10.583333333333334,
+      "effectsRmsDbFS": -13.235390272724693,
+      "musicRmsDbFS": -36.66170661890376,
+      "effectsOverMusicDb": 23.426316401335132
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture at revision 3c94c6b. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9916717716355671,
+  "impactCorrelations": [
+    0.9875741250951042,
+    0.9854423156699508
+  ]
+}

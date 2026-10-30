@@ -1,3 +1,17 @@
+## 最新：ルネットPV v9（専用うさぎビット召喚・4連射）
+
+ルネットの汎用の星エフェクトを、4体の機械うさぎが召喚・照準・4連射して退場する専用演出へ変更し、ゲーム内映像を再収録。専用の発射音入り、20秒です。敵の着弾先修正も維持しています。
+
+- [720p MP4](Lunette-v9/STILLVEIL_Lunette_PV_v9_20s_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v9/STILLVEIL_Lunette_PV_v9_20s_1080p.mp4)
+- [投稿説明文・音楽クレジット](Lunette-v9/upload-description.txt)
+- [演出のプレビュー](Lunette-v9/rabbit-volley-preview.png)
+- [ゲーム側のPR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+音楽：Twinkle Soda / FUJINEQo。投稿時は音楽クレジットを残してください。
+
+---
+
 ## 最新：ルネットPV v8（敵必殺技の着弾先を修正）
 
 敵の攻撃エフェクトが敵自身に出ていた問題を修正したゲーム映像で再収録。敵のカットインは上側に残し、着弾は実際の攻撃対象の味方枠に表示します。20秒、音楽と効果音入り。
