@@ -1,0 +1,59 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 62,
+      "sourceStart": 1.7358977794647217,
+      "sourceEnd": 4.713997840881348,
+      "playbackRate": 1.1528129269999843,
+      "impactAt": 1.1777280404159018,
+      "sound": "ultimate-stars"
+    },
+    {
+      "id": 1,
+      "frames": 62,
+      "sourceStart": 4.713997840881348,
+      "sourceEnd": 7.7874977588653564,
+      "playbackRate": 1.1897419037357453,
+      "impactAt": 3.6640719171608094,
+      "sound": "ultimate-magic"
+    }
+  ],
+  "sfxTimes": [
+    8.094394707082568,
+    10.580738583827475
+  ],
+  "effects": "Actual game ultimate-stars and ultimate-magic PCM; peaks matched to 0.85, re-synchronized to captured impact phase",
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 8.094394707082568,
+      "effectsRmsDbFS": -13.591104950113541,
+      "musicRmsDbFS": -32.89853666055375,
+      "effectsOverMusicDb": 19.307431744634997
+    },
+    {
+      "at": 10.580738583827475,
+      "effectsRmsDbFS": -13.235390272724693,
+      "musicRmsDbFS": -36.653784664896506,
+      "effectsOverMusicDb": 23.41839444727396
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture at revision 295cf8a. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9916116365103599,
+  "impactCorrelations": [
+    0.9828755676722408,
+    0.9847724100781206
+  ]
+}
