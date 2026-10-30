@@ -1,12 +1,14 @@
-import type { CharacterDef } from '../domain/types';
+import type { BattleEvent, CharacterDef } from '../domain/types';
 import type { UltimateTheme } from '../domain/ultimates';
 import { ultimateFor } from '../domain/ultimates';
 import { ULTIMATE_TIMING } from './ultimate-timing';
 
 export type UltimateVisual = UltimateTheme | 'clockwork';
-export function ultimateVisualFor(character: CharacterDef): UltimateVisual {
+export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent): UltimateVisual {
   const theme = ultimateFor(character).theme;
-  return ['nox','tikka'].includes(character.id) ? 'clockwork' : theme;
+  if (event?.clockAction === 'finale' || ['nox','tikka'].includes(character.id)) return 'clockwork';
+  // An enemy's offensive boss strike must not look or sound like a party heal.
+  return event?.bossStrike && ['bloom', 'aegis', 'dawn'].includes(theme) ? 'eclipse' : theme;
 }
 export const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 /** Presentation time only: hold the moving impact key for 60 ms, never the game state. */

@@ -3,18 +3,9 @@ import type { BattleEvent } from '../domain/types';
 
 export function animateEvent(event: BattleEvent, reducedMotion: boolean): () => void {
   if (reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-  if (event.ultimate) {
-    // Dedicated cinematics own the light effects. React only the enemy artwork,
-    // keeping names, HP bars, party slots and command buttons steady.
-    const context = gsap.context(() => {
-      if (['attack','area','debuff'].includes(event.kind)) {
-        const art = document.querySelector('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration');
-        if (art) gsap.timeline().to(art,{x:5,scale:1.018,duration:.06,ease:'power2.out'})
-          .to(art,{x:-3,duration:.055}).to(art,{x:0,scale:1,duration:.22,ease:'power2.out',clearProps:'transform'});
-      }
-    });
-    return () => context.revert();
-  }
+  // Cinematics own ultimate light effects; CombatFeedback owns all damage
+  // shakes at the actual HP impact, including enemy and friendly recipients.
+  if (event.ultimate) return () => {};
   // One visual boundary for every character: cues never enter combat or save state.
   if (event.kind !== 'dialogue') {
     const scene = document.querySelector('.battle-scene');

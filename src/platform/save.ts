@@ -36,7 +36,7 @@ function validUnit(value: unknown): boolean {
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
-  for (const key of ['actorId', 'skillId', 'materialId']) if (value[key] !== undefined && !nonempty(value[key])) return false;
+  for (const key of ['actorId', 'skillId', 'materialId', 'ultimateName']) if (value[key] !== undefined && !nonempty(value[key])) return false;
   if (value.targetIds !== undefined && !stringArray(value.targetIds)) return false;
   if (value.amount !== undefined && !count(value.amount)) return false;
   if (value.rarity !== undefined && !['common', 'rare', 'epic'].includes(value.rarity as string)) return false;

@@ -170,7 +170,7 @@ export default function App() {
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};
     const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
-    const impactCue = actor ? ultimateSoundFor(ultimateVisualFor(characterById(actor.characterId))) : 'ultimate-strike';
+    const impactCue = actor ? ultimateSoundFor(ultimateVisualFor(characterById(actor.characterId), event)) : 'ultimate-strike';
     let scheduled = activeUltimateSound.current?.eventId === event.id ? activeUltimateSound.current.voice : undefined;
     const reserveSound = () => {
       if (!event.ultimate || heardImpact.current === event.id || document.hidden) return;
