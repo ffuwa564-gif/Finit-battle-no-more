@@ -1,0 +1,74 @@
+[
+  {
+    "file": "rabbit-1.png",
+    "size": [
+      611,
+      655
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "largestComponents": [
+      [
+        61,
+        4,
+        516,
+        643,
+        165912
+      ]
+    ]
+  },
+  {
+    "file": "rabbit-2.png",
+    "size": [
+      611,
+      655
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "largestComponents": [
+      [
+        80,
+        13,
+        482,
+        631,
+        159237
+      ]
+    ]
+  },
+  {
+    "file": "rabbit-3.png",
+    "size": [
+      611,
+      632
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "largestComponents": [
+      [
+        72,
+        38,
+        497,
+        439,
+        141065
+      ]
+    ]
+  },
+  {
+    "file": "rabbit-4.png",
+    "size": [
+      611,
+      632
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "largestComponents": [
+      [
+        94,
+        5,
+        504,
+        623,
+        166804
+      ]
+    ]
+  }
+]

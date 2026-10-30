@@ -1,0 +1,89 @@
+[
+  {
+    "file": "Lunette_game_SFX_check_no_BGM.mp4",
+    "bytes": 2053061,
+    "sha256": "8423719c84dbe298080bfc8f0568d86f81a1d20d07e367ebd9f92c7549ea2a9a",
+    "fullDecode": "passed",
+    "duration": "3.250000",
+    "streams": [
+      {
+        "codec_name": "h264",
+        "profile": "Constrained Baseline",
+        "width": 720,
+        "height": 1280,
+        "pix_fmt": "yuv420p",
+        "nb_frames": "78",
+        "sample_rate": null,
+        "channels": null
+      },
+      {
+        "codec_name": "aac",
+        "profile": "LC",
+        "width": null,
+        "height": null,
+        "pix_fmt": null,
+        "nb_frames": "154",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ]
+  },
+  {
+    "file": "STILLVEIL_Lunette_PV_v5_20s_1080p.mp4",
+    "bytes": 21398316,
+    "sha256": "f6f420cd5616d1889a163c5850cdba31eb84acf756d1952d8153f829433b66c3",
+    "fullDecode": "passed",
+    "duration": "20.000000",
+    "streams": [
+      {
+        "codec_name": "h264",
+        "profile": "Constrained Baseline",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "nb_frames": "480",
+        "sample_rate": null,
+        "channels": null
+      },
+      {
+        "codec_name": "aac",
+        "profile": "LC",
+        "width": null,
+        "height": null,
+        "pix_fmt": null,
+        "nb_frames": "939",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ]
+  },
+  {
+    "file": "STILLVEIL_Lunette_PV_v5_20s_720p.mp4",
+    "bytes": 11783428,
+    "sha256": "8fc0491842c5d896a9bfa9fdb232fa2f87259d60dcc7ace3a6697dffcb386eac",
+    "fullDecode": "passed",
+    "duration": "20.000000",
+    "streams": [
+      {
+        "codec_name": "h264",
+        "profile": "Constrained Baseline",
+        "width": 720,
+        "height": 1280,
+        "pix_fmt": "yuv420p",
+        "nb_frames": "480",
+        "sample_rate": null,
+        "channels": null
+      },
+      {
+        "codec_name": "aac",
+        "profile": "LC",
+        "width": null,
+        "height": null,
+        "pix_fmt": null,
+        "nb_frames": "939",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ]
+  }
+]

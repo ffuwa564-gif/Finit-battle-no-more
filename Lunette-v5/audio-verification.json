@@ -1,0 +1,48 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplaySourceStart": 8.45,
+  "sfxTimes": [
+    7.296666666666667,
+    8.416666666666668,
+    9.526666666666667
+  ],
+  "effectGainVsV4Db": 5.192746210115122,
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 7.296666666666667,
+      "effectsRmsDbFS": -20.036585727531396,
+      "musicRmsDbFS": -27.875504403673865,
+      "effectsOverMusicDb": 7.838918688927393
+    },
+    {
+      "at": 8.416666666666668,
+      "effectsRmsDbFS": -19.24784221464322,
+      "musicRmsDbFS": -25.948954428157137,
+      "effectsOverMusicDb": 6.701112222777614
+    },
+    {
+      "at": 9.526666666666667,
+      "effectsRmsDbFS": -20.512480572431024,
+      "musicRmsDbFS": -25.642749906521352,
+      "effectsOverMusicDb": 5.130269341508816
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Four newly generated rabbit-only PNGs. Character animation remains existing game footage.",
+  "encodedMixCorrelation": 0.9924109078349604,
+  "impactCorrelations": [
+    0.9931585629327379,
+    0.9888556324424662,
+    0.9889313096075601
+  ]
+}

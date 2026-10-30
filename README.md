@@ -1,3 +1,18 @@
+## 最新：ルネットPV v5（機械うさぎ4カット再制作・SEミックス改訂）
+
+機械単体の透過うさぎ4体、単色矩形、柔らかい吹き出しで「1、2、3、Fire!」を再制作。戦闘の攻撃音に合わせBGMを深く短く下げています。
+
+- [720p MP4](Lunette-v5/STILLVEIL_Lunette_PV_v5_20s_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v5/STILLVEIL_Lunette_PV_v5_20s_1080p.mp4)
+- [BGMなし効果音確認用](Lunette-v5/Lunette_game_SFX_check_no_BGM.mp4)
+- [透過PNG 4体セット](Lunette-v5/Lunette_mechanical_rabbits_4_PNGs.zip)
+- [調査メモ・参考URL](Lunette-v5/research-notes.txt)
+- [投稿説明文・必須の音楽クレジット](Lunette-v5/upload-description.txt)
+
+BGM: Twinkle Soda / FUJINEQo。投稿時は作者クレジットを残してください。
+
+---
+
 ## 最新：ルネットPV v4（効果音・カウント音ハメ版）
 
 Twinkle Sodaのサビ前から。機械うさぎが「1、2、3、Fire!」と吹き出しでカウントする4カットと、ゲームで使っている攻撃効果音を追加。
