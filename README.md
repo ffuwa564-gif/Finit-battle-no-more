@@ -1,3 +1,17 @@
+## 最新：ルネットPV v8（敵必殺技の着弾先を修正）
+
+敵の攻撃エフェクトが敵自身に出ていた問題を修正したゲーム映像で再収録。敵のカットインは上側に残し、着弾は実際の攻撃対象の味方枠に表示します。20秒、音楽と効果音入り。
+
+- [720p MP4](Lunette-v8/STILLVEIL_Lunette_PV_v8_20s_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v8/STILLVEIL_Lunette_PV_v8_20s_1080p.mp4)
+- [投稿説明文・音楽クレジット](Lunette-v8/upload-description.txt)
+- [収録・編集について](Lunette-v8/README.txt)
+- [ゲーム側の修正PR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+音楽：Twinkle Soda / FUJINEQo。投稿時は音楽クレジットを残してください。
+
+---
+
 ## 最新：ルネットPV v7（新しい必殺技・被弾の揺れを実機収録）
 
 Fire!からルネット本人の必殺技、対戦相手セレネの敵カットイン、被弾の揺れへつなぐ20秒版です。PR #115実装版の実際のゲーム映像を、撮影用の独立デモセーブで収録しました。

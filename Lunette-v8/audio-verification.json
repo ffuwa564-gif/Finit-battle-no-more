@@ -1,0 +1,85 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 62,
+      "sourceStart": 1.7306559085845947,
+      "sourceEnd": 4.646955728530884,
+      "impactAt": 1.1666666666666667,
+      "sound": "ultimate-stars",
+      "parts": [
+        {
+          "frames": 28,
+          "sourceStart": 1.7306559085845947,
+          "sourceEnd": 3.157855749130249,
+          "playbackRate": 1.2233141490391322
+        },
+        {
+          "frames": 34,
+          "sourceStart": 3.157855749130249,
+          "sourceEnd": 4.646955728530884,
+          "playbackRate": 1.0511293972239775
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "frames": 62,
+      "sourceStart": 4.646955728530884,
+      "sourceEnd": 7.440455913543701,
+      "impactAt": 3.666666666666667,
+      "sound": "ultimate-magic",
+      "parts": [
+        {
+          "frames": 26,
+          "sourceStart": 4.646955728530884,
+          "sourceEnd": 5.891855716705322,
+          "playbackRate": 1.1491384506225586
+        },
+        {
+          "frames": 36,
+          "sourceStart": 5.891855716705322,
+          "sourceEnd": 7.440455913543701,
+          "playbackRate": 1.032400131225586
+        }
+      ]
+    }
+  ],
+  "sfxTimes": [
+    8.083333333333334,
+    10.583333333333334
+  ],
+  "effects": "Actual game ultimate-stars and ultimate-magic PCM; peaks matched to 0.85, re-synchronized to captured impact phase",
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 8.083333333333334,
+      "effectsRmsDbFS": -13.591104950113541,
+      "musicRmsDbFS": -32.99282283440034,
+      "effectsOverMusicDb": 19.401717918900125
+    },
+    {
+      "at": 10.583333333333334,
+      "effectsRmsDbFS": -13.235390272724693,
+      "musicRmsDbFS": -36.66170661890376,
+      "effectsOverMusicDb": 23.426316401335132
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture at revision 11123d5. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9916074476509608,
+  "impactCorrelations": [
+    0.9832978738668045,
+    0.9854200403401684
+  ]
+}
