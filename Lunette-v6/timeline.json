@@ -1,0 +1,159 @@
+{
+  "duration": 20,
+  "fps": 24,
+  "musicSourceStart": 39.1,
+  "newGenerationCredits": 0,
+  "shots": [
+    {
+      "id": "01-taunt",
+      "kind": "intro",
+      "frames": 64,
+      "start": 3.1,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 0.0
+    },
+    {
+      "id": "02-name",
+      "kind": "title",
+      "frames": 64,
+      "at": 2.6666666666666665
+    },
+    {
+      "id": "03-one",
+      "kind": "count",
+      "count": 0,
+      "frames": 10,
+      "at": 5.333333333333333
+    },
+    {
+      "id": "04-two",
+      "kind": "count",
+      "count": 1,
+      "frames": 9,
+      "at": 5.75
+    },
+    {
+      "id": "05-three",
+      "kind": "count",
+      "count": 2,
+      "frames": 9,
+      "at": 6.125
+    },
+    {
+      "id": "06-fire",
+      "kind": "count",
+      "count": 3,
+      "frames": 10,
+      "start": 0.35,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 6.5
+    },
+    {
+      "id": "07-battle",
+      "kind": "battle",
+      "frames": 78,
+      "at": 6.916666666666667
+    },
+    {
+      "id": "08-respect",
+      "kind": "respect",
+      "frames": 68,
+      "start": 5.9,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 10.166666666666666
+    },
+    {
+      "id": "09-invite",
+      "kind": "invite",
+      "frames": 34,
+      "at": 13.0
+    },
+    {
+      "id": "10-gesture",
+      "kind": "gesture",
+      "frames": 51,
+      "start": 0.5,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 14.416666666666666
+    },
+    {
+      "id": "11-ending",
+      "kind": "end",
+      "frames": 83,
+      "at": 16.541666666666668
+    }
+  ],
+  "gameplayEdit": [
+    {
+      "frames": 9,
+      "source": 8.45,
+      "zoom": 1.0,
+      "focus": [
+        360,
+        640
+      ],
+      "label": "establish"
+    },
+    {
+      "frames": 19,
+      "source": 8.8,
+      "zoom": 1.07,
+      "focus": [
+        245,
+        650
+      ],
+      "label": "left bit"
+    },
+    {
+      "frames": 19,
+      "source": 9.92,
+      "zoom": 1.13,
+      "focus": [
+        500,
+        650
+      ],
+      "label": "right bit"
+    },
+    {
+      "frames": 20,
+      "source": 11.03,
+      "zoom": 1.15,
+      "focus": [
+        360,
+        600
+      ],
+      "label": "centre bit"
+    },
+    {
+      "frames": 11,
+      "source": 11.87,
+      "zoom": 1.0,
+      "focus": [
+        360,
+        640
+      ],
+      "label": "release to full UI"
+    }
+  ],
+  "polish": "Different entrance motion per rabbit; staggered Fire lettering; three game shots edited onto alternate beats, with cut-specific reframing and full UI release."
+}

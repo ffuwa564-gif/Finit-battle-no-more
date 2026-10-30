@@ -1,0 +1,99 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "frames": 9,
+      "source": 8.45,
+      "zoom": 1.0,
+      "focus": [
+        360,
+        640
+      ],
+      "label": "establish"
+    },
+    {
+      "frames": 19,
+      "source": 8.8,
+      "zoom": 1.07,
+      "focus": [
+        245,
+        650
+      ],
+      "label": "left bit"
+    },
+    {
+      "frames": 19,
+      "source": 9.92,
+      "zoom": 1.13,
+      "focus": [
+        500,
+        650
+      ],
+      "label": "right bit"
+    },
+    {
+      "frames": 20,
+      "source": 11.03,
+      "zoom": 1.15,
+      "focus": [
+        360,
+        600
+      ],
+      "label": "centre bit"
+    },
+    {
+      "frames": 11,
+      "source": 11.87,
+      "zoom": 1.0,
+      "focus": [
+        360,
+        640
+      ],
+      "label": "release to full UI"
+    }
+  ],
+  "sfxTimes": [
+    7.333333333333334,
+    8.125,
+    8.916666666666668
+  ],
+  "effectGainVsV4Db": 5.192746210115122,
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 7.333333333333334,
+      "effectsRmsDbFS": -20.036585727531396,
+      "musicRmsDbFS": -28.121358371634027,
+      "effectsOverMusicDb": 8.08477265750502
+    },
+    {
+      "at": 8.125,
+      "effectsRmsDbFS": -19.24784221464322,
+      "musicRmsDbFS": -27.2585700100235,
+      "effectsOverMusicDb": 8.010727807447756
+    },
+    {
+      "at": 8.916666666666668,
+      "effectsRmsDbFS": -20.512480572431024,
+      "musicRmsDbFS": -31.830000595226338,
+      "effectsOverMusicDb": 11.317520047490472
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs and game footage. No additional image/video generation.",
+  "encodedMixCorrelation": 0.9926634494246953,
+  "impactCorrelations": [
+    0.993877437603578,
+    0.9943779369223795,
+    0.9869814959736055
+  ]
+}
