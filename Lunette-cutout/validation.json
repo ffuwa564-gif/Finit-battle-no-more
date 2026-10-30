@@ -1,0 +1,80 @@
+{
+  "source": "public/art/event-lunette-awakened.png",
+  "sourceRevision": "d3533f5acff0dc49b67cf4aa1c2d5f33044f36d7",
+  "tasks": {
+    "body": "c4ec64f0-924f-41fb-a419-42f53e79176a",
+    "key": "35381d59-e771-4e87-8e2e-4b1052fe2b17"
+  },
+  "checks": {
+    "Lunette_body_only.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "nonzeroBounds": [
+        216,
+        172,
+        852,
+        1455
+      ],
+      "transparentFraction": 0.7477,
+      "opaqueRgbMaxDifference": 0,
+      "opaqueRgbMeanDifference": 0.0,
+      "sha256": "d1bc6060ee5203d625c56d9ca746831de1346ff2ca5e21b1c6fad1a976a3f5e8"
+    },
+    "Lunette_winding_key.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "nonzeroBounds": [
+        320,
+        112,
+        405,
+        224
+      ],
+      "transparentFraction": 0.9977,
+      "opaqueRgbMaxDifference": 0,
+      "opaqueRgbMeanDifference": 0.0,
+      "sha256": "56c7c9e9aea0e19593c4a4194a0d461c1601ba562af779241777d98eb4f93b6d"
+    },
+    "Lunette_awakened_cutout.png": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "nonzeroBounds": [
+        216,
+        112,
+        852,
+        1455
+      ],
+      "transparentFraction": 0.7454,
+      "opaqueRgbMaxDifference": 0,
+      "opaqueRgbMeanDifference": 0.0,
+      "sha256": "6627ff4f0f7a9ba66cecf5e1954c5229ae5beac5aad17b407491c0e8d79cf37a"
+    }
+  },
+  "keyHoleAlphaCenters": [
+    0,
+    0
+  ],
+  "matteFinishing": "Within two small winding-key hole regions only, removed violet background spill from alpha. RGB values remain original. Body and key composited in RGB at their original canvas coordinates.",
+  "runwayCreditsUsed": 2,
+  "runwayCreditsRemaining": 438
+}
