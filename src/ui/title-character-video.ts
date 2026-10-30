@@ -1,8 +1,9 @@
 import { Mesh, MeshGeometry, Shader, Texture, VideoSource } from 'pixi.js';
 
-/** RGB on the left, the matching alpha on the right: ordinary H.264 works on iPhone too. */
+/** Premultiplied RGB on the left, alpha on the right. Shader output and Pixi blending must both use PMA. */
 export function createTitleCharacter(video: HTMLVideoElement) {
-  const source = new VideoSource({ resource: video, autoLoad: false, autoPlay: false, alphaMode: 'no-premultiply-alpha' });
+  // Pixi also chooses the blend factors from this flag, even though the packed H.264 itself is opaque.
+  const source = new VideoSource({ resource: video, autoLoad: false, autoPlay: false, alphaMode: 'premultiplied-alpha' });
   source.autoUpdate = false;
   const texture = new Texture({ source });
   const shader = Shader.from({
@@ -18,8 +19,9 @@ export function createTitleCharacter(video: HTMLVideoElement) {
         in vec2 vUV; out vec4 finalColor; uniform sampler2D uPacked;
         void main() {
           vec3 color = texture(uPacked, vec2(vUV.x * .5, vUV.y)).rgb;
-          float alpha = clamp((texture(uPacked, vec2(.5 + vUV.x * .5, vUV.y)).r - .004) / .992, 0.0, 1.0);
-          finalColor = vec4(color * alpha, alpha);
+          float alpha = texture(uPacked, vec2(.5 + vUV.x * .5, vUV.y)).r;
+          // RGB already includes alpha before encoding/filtering. Never multiply it again.
+          finalColor = vec4(min(color, vec3(alpha)), alpha);
         }`,
     },
     resources: { uPacked: source },
