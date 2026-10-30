@@ -2,10 +2,10 @@ import type { UltimateVisual } from './ultimate-choreography';
 import { renderProtectionSound } from './protection-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
 
-export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism'] as const;
+export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism', 'ultimate-rabbits'] as const;
 export type UltimateSound = typeof ultimateSounds[number];
 export const isUltimateSound = (kind: string): kind is UltimateSound => (ultimateSounds as readonly string[]).includes(kind);
-export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism' } as const)[theme];
+export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism', 'rabbit-bits': 'ultimate-rabbits' } as const)[theme];
 
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
@@ -50,6 +50,15 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
         sound += .19*Math.sin(2*Math.PI*freq*age+1.4*Math.exp(-age*15)*Math.sin(2*Math.PI*freq*2.37*age))*Math.min(1,age*650)*Math.exp(-age*6);
       }
       sound += grain*1.4*Math.exp(-t*10)*attack(600)+body*1.8*Math.exp(-t*7);
+    } else if (kind === 'ultimate-rabbits') {
+      // Four pneumatic discharges, broad low-mid weight, no ringing metal bell.
+      for (const [offset, strength] of [[0, 1], [.045, .86], [.09, .94], [.135, 1.05]]) {
+        const age=t-offset; if(age<0)continue;
+        const env=Math.min(1,age*1600)*Math.exp(-age*27);
+        const thump=Math.sin(2*Math.PI*(145*age+2.7*(1-Math.exp(-age*35))));
+        sound+=(body*2.8+grain*.65+.38*thump)*env*strength;
+      }
+      sound+=body*.8*Math.exp(-t*6)*attack(80);
     } else if (kind === 'ultimate-mechanism') {
       for(const offset of [0,.065,.13]) {
         const age=t-offset;if(age<0)continue;

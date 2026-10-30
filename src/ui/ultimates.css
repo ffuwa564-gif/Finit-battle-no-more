@@ -67,3 +67,10 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 .ultimate-party-effect[data-phase="intro"],.ultimate-target-fallback[data-phase="intro"] { opacity: 0; }
 .ultimate-party-effect[data-phase="tail"],.ultimate-target-fallback[data-phase="tail"] { opacity: 0; transition: opacity calc(900ms * var(--ultimate-rate,1)) ease-out; }
 .ultimate-target-fallback[data-phase="impact"] .ultimate-fallback { animation: ultimate-impact 1200ms both; }
+.ultimate-cinematic[data-visual="rabbit-bits"] { --ultimate-color: #9aeee7; }
+.ultimate-cinematic[data-phase="effect"] .ultimate-fallback--rabbit-bits { opacity: 1; animation: rabbit-summon .3s ease-out both; }
+.ultimate-cinematic[data-phase="impact"] .ultimate-fallback--rabbit-bits,.ultimate-cinematic[data-phase="tail"] .ultimate-fallback--rabbit-bits { opacity: 1; animation: none; }
+.rabbit-fallback-beam { opacity: 0; stroke-width: 5; }
+.ultimate-cinematic[data-phase="impact"] .rabbit-fallback-beam { animation: rabbit-volley .55s ease-out both; }
+@keyframes rabbit-summon { from { opacity: 0; transform: translateY(20px) scale(.8); } to { opacity: 1; transform: none; } }
+@keyframes rabbit-volley { from { opacity: 1; } to { opacity: 0; } }

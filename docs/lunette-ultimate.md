@@ -1,0 +1,9 @@
+# Lunette: rabbit-bit summon ultimate
+
+Lunette and awakened Lunette use the dedicated `rabbit-bits` presentation. Four illustrated mechanical rabbits materialize through small clock gates, aim at the target, fire four short converging beams, recoil, and fade away. The four discharges use a dedicated synthesized `ultimate-rabbits` sound without bell-like metallic ringing.
+
+This is the presentation of Lunette's existing single area-attack ultimate. Damage, target resolution, charge, and cooldown rules are unchanged. The transient visual rabbits do not add repeated battle actions or the persistent enemy-only automatic bits.
+
+The source artwork is the project's four transparent mechanical rabbits, generated for the Lunette PV from `public/art/event-lunette-awakened.png`. The accepted sheet was `/workspace/generated_images/exec-c28bdba1-4014-45f5-890f-58ce002beb5b.png`; separate alpha PNG exports were originally delivered in the `downloads/lunette-pv` media branch, `Lunette-v5/rabbits/`. Copies now live in `public/art/lunette-bit-{1,2,3,4}.png` and are registered as original project illustrations in `src/content/lunette-ultimate.ts`. No third-party character art, PV footage, or additional generation is used.
+
+Pixi loads these textures only for the rabbit presentation and keeps them in the asset cache. The SVG fallback also uses the four rabbit images rather than a star-burst substitute. Reduced-motion and data-saving modes keep the readable static cut-in without loading the rabbit effect textures. Existing enemy target routing is retained.

@@ -4,12 +4,19 @@ import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
-import { ultimateVisualFor } from '../platform/ultimate-choreography';
+import { ultimateVisualFor, type UltimateVisual } from '../platform/ultimate-choreography';
 import { ULTIMATE_TIMING, UltimateClock } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
 
-function FallbackImpact({ theme }: { theme: UltimateTheme }) {
+function FallbackImpact({ theme, visual }: { theme: UltimateTheme; visual?: UltimateVisual }) {
+  if (visual === 'rabbit-bits') return <svg className="ultimate-fallback ultimate-fallback--rabbit-bits" viewBox="0 0 400 400" aria-hidden="true">
+    {[[15,35],[255,35],[15,245],[255,245]].map(([x,y],index) => <g key={index}>
+      <image href={assetPath(`lunette-bit-${index+1}`)} x={x} y={y} width="130" height="140" />
+      <path className="rabbit-fallback-beam" d={`M${x+65} ${y+70} 200 200`} />
+    </g>)}
+    <circle cx="200" cy="200" r="20" />
+  </svg>;
   return <svg className={`ultimate-fallback ultimate-fallback--${theme}`} viewBox="0 0 400 400" aria-hidden="true">
     {theme === 'blade' ? <><path d="M45 340 330 65 145 320 355 110" /><path d="M30 245 360 160" /><circle cx="200" cy="200" r="104" /></>
       : theme === 'stars' || theme === 'eclipse' ? <><circle cx="200" cy="200" r="155" /><circle cx="200" cy="200" r="118" /><path d="m200 35 44 112 121 53-121 43-44 122-43-122-122-43 122-53Z" /><path d="m85 85 230 230m0-230L85 315" /></>
@@ -22,7 +29,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   const enemy = Boolean(event.bossStrike);
   const form = ultimateFor(character);
   const visual = ultimateVisualFor(character, event);
-  const special = { ...form, name: event.ultimateName ?? form.name, theme: visual === 'clockwork' ? 'stars' as const : visual };
+  const special = { ...form, name: event.ultimateName ?? form.name, theme: visual === 'clockwork' || visual === 'rabbit-bits' ? 'stars' as const : visual };
   const supporting = !enemy && ['bloom', 'aegis', 'dawn'].includes(special.theme);
   const effectHost = useRef<HTMLDivElement>(null);
   const clock = useRef(new UltimateClock());
@@ -88,13 +95,13 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}
     {!enemy && <div className="ultimate-cinematic__effect" aria-hidden="true">
       {allowed && !failed && <div className="ultimate-pixi-host" ref={effectHost} /> }
-      {!ready || failed || !allowed ? <FallbackImpact theme={special.theme} /> : null}
+      {allowed && (!ready || failed) ? <FallbackImpact theme={special.theme} visual={visual} /> : null}
     </div>}
   </div>{enemy && allowed && partyLayer && <>
     {createPortal(<div className="ultimate-party-effect" data-phase={phase} aria-hidden="true" style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
       {!failed && <div className="ultimate-pixi-host" ref={effectHost} />}
     </div>, partyLayer)}
-    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} /></div>, element, element.dataset.unit))}
+    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} visual={visual} /></div>, element, element.dataset.unit))}
   </>}</>;
 }
 

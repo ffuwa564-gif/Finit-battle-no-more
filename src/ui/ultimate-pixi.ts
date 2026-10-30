@@ -1,12 +1,15 @@
-import { Application, Container, Graphics, Sprite, Texture } from 'pixi.js';
-import { ultimateFrame, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
+import { assetPath } from '../content';
+import { ultimateFrame, rabbitBitFrame, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
-const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd };
+const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
 
 /** Seven authored silhouettes, with traveling edges, a held impact and material-specific exits. */
 export interface UltimateTargetPoint { x: number; y: number; size: number }
 export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void, targets?: () => UltimateTargetPoint[]) {
+  const rabbitTextures = visual === 'rabbit-bits'
+    ? await Promise.all([1,2,3,4].map(index => Assets.load<Texture>(assetPath(`lunette-bit-${index}`)))) : [];
   const app = new Application();
   try {
     await app.init({ width: Math.max(1,host.clientWidth),height: Math.max(1,host.clientHeight),backgroundAlpha:0,
@@ -24,6 +27,9 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const sprite=new Sprite(texture);sprite.anchor.set(.5);sprite.blendMode='add';sprite.tint=i%4?color:0xffffff;scene.addChild(sprite);
     return {sprite,angle:i*2.39996,speed:.35+(i*37%73)/100,size:3+i%5};
   });
+  const rabbits = rabbitTextures.map(texture => {
+    const sprite = new Sprite(texture); sprite.anchor.set(.5); scene.addChild(sprite); return sprite;
+  });
   let destroyed=false;
   const stroke=(points:number[],width:number,alpha:number,tint=color)=>{
     if(alpha<=0)return;
@@ -39,6 +45,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
     forms.clear();light.clear();scene.visible=f.visible;scene.alpha=f.fade;
+    for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
     for(const {sprite} of particles)sprite.alpha=0;
     // Explicit recipients never fall back to the enemy-stage centre. A single
@@ -129,6 +136,38 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         const x=w*(.17+unit*.22),endY=cy+s*.1,reach=clamp(hit*7);
         stroke([cx,y,x,y+(endY-y)*reach],2,decay(hit,1.5));
         polygon([x-w*.08,endY-s*.09,x+w*.08,endY-s*.09,x+w*.08,endY+s*.08,x,endY+s*.04,x-w*.08,endY+s*.08],decay(hit,1.4)*.2);
+      }
+    }else if(visual==='rabbit-bits'){
+      // Lunette's four illustrated robots materialize around the actual target.
+      const mounts=[[-.34,-.27],[.34,-.27],[-.34,.29],[.34,.29]];
+      for(let bit=0;bit<4;bit++){
+        const state=rabbitBitFrame(bit,elapsed),[dx,dy]=mounts[bit];
+        const x=cx+dx*s,y=cy+dy*s+(1-state.summon)*s*.15;
+        const angle=Math.atan2(cy-y,cx-x),back=state.recoil*s*.028;
+        const bunny=rabbits[bit];bunny.visible=true;
+        bunny.position.set(x-Math.cos(angle)*back,y-Math.sin(angle)*back);
+        const width=s*.245*(.35+.65*state.summon);
+        bunny.scale.set(width/bunny.texture.width);bunny.alpha=state.summon*state.alpha;
+        bunny.rotation=(bit%2?1:-1)*(.075+.15*(1-state.summon));
+        // A small clock-shaped summon gate behind each rabbit, not a generic star.
+        const ring=s*.10*state.summon;
+        light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.alpha*state.summon*.65});
+        if(hit<0 && gather>.55){
+          stroke([x,y,x+(cx-x)*gather,y+(cy-y)*gather],.65,(gather-.55)*.6);
+        }
+        if(state.beam>0){
+          stroke([x,y,cx,cy],5.5*state.beam,state.beam);
+          light.circle(x,y,s*.027*state.beam).fill({color:0xffffff,alpha:state.beam});
+          light.circle(cx,cy,s*(.035+.045*(1-state.beam))).stroke({color,width:2,alpha:state.beam});
+        }
+      }
+      if(hit<0 && gather>.3){
+        const r=s*.07;
+        light.circle(cx,cy,r).stroke({color,width:1.5,alpha:gather*.75});
+        for(let mark=0;mark<4;mark++){
+          const a=mark*Math.PI/2+gather*.35;
+          stroke([cx+Math.cos(a)*r*1.2,cy+Math.sin(a)*r*1.2,cx+Math.cos(a)*r*1.65,cy+Math.sin(a)*r*1.65],1.2,gather);
+        }
       }
     }else{
       // Clockwork bits deploy, aim, then shoot converging beams together.

@@ -46,6 +46,15 @@ async function prepare(page: Page, mode: 'single' | 'guard' | 'area', fallback =
 test('enemy Pixi canvas is on the party row, never on the attacking enemy', async ({ page }, info) => {
   await prepare(page, 'single');
   const cinematic = page.locator('.ultimate-cinematic--enemy');
+  // Subscribe before GPU initialization/geometry checks can outlast this phase.
+  const impact = page.evaluate(() => new Promise<boolean>(resolve => {
+    const element = document.querySelector('.ultimate-cinematic--enemy')!;
+    const observer = new MutationObserver(() => {
+      if (element.getAttribute('data-phase') === 'impact') { observer.disconnect(); resolve(true); }
+    });
+    if (element.getAttribute('data-phase') === 'impact') resolve(true);
+    else observer.observe(element, { attributes: true, attributeFilter: ['data-phase'] });
+  }));
   await expect(cinematic).toHaveAttribute('data-fx-state', 'pixi');
   await expect(cinematic.locator('.ultimate-pixi-canvas, .ultimate-fallback')).toHaveCount(0);
   const canvas = page.locator('.party-strip .ultimate-party-effect .ultimate-pixi-canvas');
@@ -55,7 +64,7 @@ test('enemy Pixi canvas is on the party row, never on the attacking enemy', asyn
   expect(bounds!.y).toBeGreaterThanOrEqual(party!.y - 2);
   expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(party!.y + party!.height + 2);
   expect(bounds!.y).toBeGreaterThan(enemy!.y + enemy!.height - 8);
-  await expect(cinematic).toHaveAttribute('data-phase', 'impact');
+  expect(await impact).toBe(true);
   await page.screenshot({ path: info.outputPath('enemy-impact-on-party.png') });
 });
 

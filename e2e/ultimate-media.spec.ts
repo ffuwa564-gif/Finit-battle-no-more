@@ -27,7 +27,7 @@ async function prepare(page: Page, caster = 'seris') {
   await expect(page.locator('.ultimate-cinematic')).toBeVisible();
 }
 
-for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane','stars'],['kuzuha','thunder','eclipse'],['elaine','sanctuary','bloom'],['liora','shield','aegis'],['iris','rally','dawn'],['nox','bits','clockwork']]) {
+for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane','stars'],['kuzuha','thunder','eclipse'],['elaine','sanctuary','bloom'],['liora','shield','aegis'],['iris','rally','dawn'],['nox','bits','clockwork'],['lunette','rabbits','rabbit-bits'],['lunette-awakened','awakened-rabbits','rabbit-bits']]) {
   test(`${clip} renders a transparent Pixi effect over the battlefield`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await prepare(page, caster);
@@ -67,6 +67,16 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     if (['sanctuary','shield','rally'].includes(clip)) expect(fade.recipients).toBe('1');
   });
 }
+
+test('Lunette fallback keeps the four rabbit illustrations instead of a generic star', async ({ page }) => {
+  await page.route('**/src/ui/ultimate-pixi.ts*', route => route.abort());
+  await prepare(page, 'lunette');
+  const effect = page.locator('.ultimate-cinematic');
+  await expect(effect).toHaveAttribute('data-visual', 'rabbit-bits');
+  await expect(effect).toHaveAttribute('data-fx-state', 'fallback');
+  await expect(effect.locator('.ultimate-fallback--rabbit-bits image')).toHaveCount(4);
+  await expect(effect.locator('.rabbit-fallback-beam')).toHaveCount(4);
+});
 
 test('a failed renderer import uses the fallback and still finishes the round', async ({ page }) => {
   await page.route('**/src/ui/ultimate-pixi.ts*', route => route.abort());

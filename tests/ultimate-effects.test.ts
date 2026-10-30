@@ -1,8 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame } from '../src/platform/ultimate-choreography';
+import { content } from '../src/content';
+import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
 
 describe('ultimate presentation clock', () => {
+  it('gives both Lunette forms their own rabbit summon and volley without replacing other characters', () => {
+    for (const id of ['lunette', 'lunette-awakened']) expect(ultimateVisualFor(content.characters.find(c => c.id === id)!)).toBe('rabbit-bits');
+    expect(ultimateVisualFor(content.characters.find(c => c.id === 'noelle')!)).toBe('stars');
+    expect(ultimateVisualFor(content.characters.find(c => c.id === 'nox')!)).toBe('clockwork');
+    expect(ultimateSoundFor('rabbit-bits')).toBe('ultimate-rabbits');
+    const impact = ULTIMATE_TIMING.impact;
+    for (let i = 0; i < 4; i++) {
+      expect(rabbitBitFrame(i, impact - 1).summon).toBe(1);
+      expect(rabbitBitFrame(i, impact - 1).beam).toBe(0);
+      expect(rabbitBitFrame(i, impact + 140).beam).toBeGreaterThan(0);
+      expect(rabbitBitFrame(i, ULTIMATE_TIMING.end).alpha).toBe(0);
+    }
+    expect(rabbitBitFrame(0, impact).beam).toBe(1);
+    expect(rabbitBitFrame(1, impact).beam).toBe(0);
+  });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;
     expect(ultimateFrame('blade',impact-95).travel).toBe(0);
