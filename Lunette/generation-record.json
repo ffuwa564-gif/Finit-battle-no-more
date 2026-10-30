@@ -1,0 +1,65 @@
+{
+  "startedCredits": 533,
+  "afterSubmissions": 440,
+  "images": [
+    {
+      "taskId": "378183c3-0352-4147-ac28-3f05a9546f29",
+      "prompt": "Create one polished Japanese 2D anime key visual for a character trailer. @lunette is the exact character reference: Lunette, short lavender bob with one small braid, large turquoise eyes, gold clock hair accessory on viewer right, navy and ivory modest fully covered clockmaker dress, white gloves, navy capelet with delicate gold gears. Keep her face, age impression, drawn anime rendering, palette and clockwork rabbit design faithful to the reference. Medium close-up portrait from chest upwards, her whole head and hair inside frame with generous headroom. She leans forward slightly with an impish confident closed-mouth smile, tilting her head at the viewer. A single small ivory-and-brass mechanical rabbit with turquoise glowing eyes hovers beside her shoulder. Behind her: abandoned moonlit Gothic glass clock garden, soft blue light, antique brass clock mechanisms, warm pinpoints of lanterns, beautifully drawn background. Emotive expressive anime illustration, not photorealistic, restrained painterly detail with clean face linework. Composition safe for vertical mobile video. No lettering, no logos, no subtitles, no panels.",
+      "meta": {
+        "modelId": "gpt-image-2.5-flare",
+        "modelLabel": "GPT Image 2.5 Flare",
+        "aspectRatio": "9:16"
+      }
+    },
+    {
+      "taskId": "2561722c-a6c0-4755-bcb3-9180edf0b142",
+      "prompt": "One cinematic anime illustration, no collage. Use @lunette as the exact character and art-style reference. Close three-quarter view of Lunette, the lavender-bobbed turquoise-eyed clockmaker girl in her unchanged navy and ivory modest dress, white gloves, gold clock hairpin. Seated at an old brass workbench in the abandoned moonlit Gothic clock garden. Her face is visible in upper third, eyes looking down tenderly. She gently cradles a small ivory and brass mechanical rabbit in both white-gloved hands near chest height. The rabbit has the same design as the reference: long brass-edged ears, turquoise glass eyes, round gear mechanism, no biological flesh. A small loosened brass cover is open on its side, a few tiny gears on the table imply ongoing repair. Her expression is unusually careful and kind, a quiet contrast to her usual smugness. Show only one rabbit. Both hands have simple readable natural poses supporting the rabbit, no tool in hands. Soft warm desk lantern against cool blue moonlight, drifting dust, richly drawn 2D anime style with delicate clean face linework, no realistic skin. All hair and head fully in frame. No text, no logos, no speech bubbles.",
+      "meta": {
+        "modelId": "gpt-image-2.5-flare",
+        "modelLabel": "GPT Image 2.5 Flare",
+        "aspectRatio": "9:16"
+      }
+    },
+    {
+      "taskId": "8c05e129-1346-4c44-8cd9-1bdbb245f584",
+      "prompt": "One cinematic Japanese 2D anime illustration using @lunette as exact character design and painting reference. Lunette with the same lavender bob, small braid, turquoise eyes, gold clock hair ornament, fully covered navy and ivory clockmaker outfit and white gloves. Medium close-up portrait chest upwards in the same moonlit abandoned Gothic glass clock garden. Her entire head and hair fit with generous headroom. This is a quiet goodbye moment: body turned a little away, looking back toward the viewer, one hand gently holding a small ivory-and-brass mechanical rabbit against her chest, the other lowered outside crop. A fragile small closed-mouth smile, eyes a little uncertain and hopeful as though she wants to ask someone to stay. Not crying, no tears, no exaggerated sadness. Soft moonlit blue and subtle warm brass lantern light, drifting dust and blurred gears behind her. Preserve her facial identity and outfit, clean expressive anime face linework and highly detailed drawn background, no photorealism. No text, no logos, no speech bubbles, no panels.",
+      "meta": {
+        "modelId": "gpt-image-2.5-flare",
+        "modelLabel": "GPT Image 2.5 Flare",
+        "aspectRatio": "9:16"
+      }
+    }
+  ],
+  "videos": [
+    {
+      "taskId": "1fc1350f-e9e1-4245-8bf5-00c898c11ee3",
+      "prompt": "Locked-off close-up. The exact illustrated anime girl gives one small playful head tilt and a slightly smug closed-mouth smile toward the viewer. She blinks once. Her hair tips and ribbons follow subtly. The mechanical rabbit beside her shoulder gently bobs in place with stiff clockwork ears. Preserve the original drawn 2D anime style, face, costume and richly painted background. Hand and fingers remain in exactly the same pose, mouth stays closed. Restrained limited-animation cels with short held poses; only one readable gesture in five seconds. Camera completely stationary, single continuous shot, no cuts, no text.",
+      "meta": {
+        "modelId": "gen-4-turbo",
+        "modelLabel": "Gen-4 Turbo",
+        "width": 720,
+        "height": 1280
+      }
+    },
+    {
+      "taskId": "d09eb1f8-71f1-4477-a51d-858be3f19f92",
+      "prompt": "A locked-off single anime shot in the exact illustrated style. The girl tenderly looks down at the ivory-and-brass mechanical rabbit in her white-gloved hands. Her right gloved thumb makes one tiny careful press on the existing brass side panel as though finishing a repair. The rabbit's turquoise eye gently brightens and one brass ear slowly perks up. She gives a tiny relieved smile and blinks once, keeping her head almost still. Both hands keep the rabbit steady at chest height. Preserve the face, clothing, hand anatomy, rabbit mechanical shape and every background detail. Small restrained hand-drawn animation with held poses. No camera movement, no speaking, closed mouth, no new tools or objects, no cuts, no lettering.",
+      "meta": {
+        "modelId": "gen-4-turbo",
+        "modelLabel": "Gen-4 Turbo",
+        "width": 720,
+        "height": 1280
+      }
+    },
+    {
+      "taskId": "77bc8667-0c4a-4275-9382-f9b8b6c5aba8",
+      "prompt": "Locked camera, single continuous shot. Animate this exact painted 2D anime portrait with minimal movement. Still holding the mechanical rabbit securely, the lavender-haired girl briefly lowers her gaze to it, blinks once slowly, then looks back into the camera with a very small hopeful closed-mouth smile. Her body, hands and rabbit keep the same position. Hair tips shift very slightly and settle. Preserve the face, turquoise eyes, costume, mechanical rabbit, background and drawn illustration style exactly. Quiet wistful emotional acting, not crying, no tears, no speaking. Limited animation with short held poses, not fluid realistic motion. No camera motion, no new objects, no cuts, no text.",
+      "meta": {
+        "modelId": "gen-4-turbo",
+        "modelLabel": "Gen-4 Turbo",
+        "width": 720,
+        "height": 1280
+      }
+    }
+  ]
+}

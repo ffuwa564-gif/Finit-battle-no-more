@@ -1,3 +1,18 @@
+# STILLVEIL — ルネット紹介PV
+
+声なし・縦型20秒。前半は生意気なうさぎ姫、後半は機械うさぎへの優しさと見送り。
+
+- [720p版（再生・確認用）](Lunette/STILLVEIL_Lunette_PV_20s_720p.mp4)
+- [1080p版（投稿用）](Lunette/STILLVEIL_Lunette_PV_20s_1080p.mp4)
+- [投稿説明文・BGMクレジット](Lunette/upload-description.txt)
+- [保存手順・利用条件・制作メモ](Lunette/README.txt)
+
+BGM：しゃろう「しゅわしゅわハニーレモン350ml」。公式サイトのCM・YouTube利用条件を確認し、背景音楽として編集しています。音源単体は配布していません。
+
+新規Runway消費93クレジット、生成後残高440。生成動画と実機収録は720p、1080p版は拡大書き出しです。
+
+---
+
 # STILLVEIL — 15秒CM（1080p）
 
 [高画質CMをZIPでダウンロード](https://github.com/ffuwa564-gif/Finit-battle-no-more/raw/refs/heads/downloads/cm-15s-1080p/STILLVEIL_CM_15s_1080p.zip)

@@ -1,0 +1,52 @@
+{
+  "duration": 20,
+  "fps": 24,
+  "characterAnimationFps": 12,
+  "audio": "BGM only; no voice",
+  "music": {
+    "title": "しゅわしゅわハニーレモン350ml",
+    "author": "しゃろう",
+    "url": "https://dova-s.jp/bgm/play14640.html",
+    "license": "https://opentracks.com/help/articles/license/",
+    "sourceSegments": [
+      [
+        15.36,
+        23.266667
+      ],
+      [
+        34.56,
+        46.893333
+      ]
+    ]
+  },
+  "shots": [
+    {
+      "id": "hook",
+      "at": 0,
+      "duration": 3.833333
+    },
+    {
+      "id": "real-gameplay",
+      "at": 3.833333,
+      "duration": 3.833333
+    },
+    {
+      "id": "repair",
+      "at": 7.666667,
+      "duration": 4.833333
+    },
+    {
+      "id": "stay",
+      "at": 12.5,
+      "duration": 4.833333
+    },
+    {
+      "id": "outro",
+      "at": 17.333333,
+      "duration": 2.666667
+    }
+  ],
+  "sourceResolution": "Generated clips and gameplay: 720x1280. 1080p is a high-bitrate upscale, not native 1080p generation.",
+  "creditsUsed": 93,
+  "creditsRemainingAfterGeneration": 440
+}
