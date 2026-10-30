@@ -16,10 +16,13 @@ function FallbackImpact({ theme }: { theme: UltimateTheme }) {
   </svg>;
 }
 
-function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: { eventId: string; character: CharacterDef; allies: Unit[]; speed: 1 | 2; reducedMotion: boolean }) {
-  const special = ultimateFor(character);
-  const visual = ultimateVisualFor(character);
-  const supporting = ['bloom', 'aegis', 'dawn'].includes(special.theme);
+function UltimateSequence({ event, character, allies, speed, reducedMotion }: { event: BattleEvent; character: CharacterDef; allies: Unit[]; speed: 1 | 2; reducedMotion: boolean }) {
+  const eventId = event.id;
+  const enemy = Boolean(event.bossStrike);
+  const form = ultimateFor(character);
+  const visual = ultimateVisualFor(character, event);
+  const special = { ...form, name: event.ultimateName ?? form.name, theme: visual === 'clockwork' ? 'stars' as const : visual };
+  const supporting = !enemy && ['bloom', 'aegis', 'dawn'].includes(special.theme);
   const effectHost = useRef<HTMLDivElement>(null);
   const clock = useRef(new UltimateClock());
   const [phase, setPhase] = useState('intro');
@@ -64,10 +67,10 @@ function UltimateSequence({ eventId, character, allies, speed, reducedMotion }: 
     return () => timers.forEach(clearTimeout);
   }, [eventId, speed]);
 
-  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+  return <div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
       <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
-      <div className="ultimate-cinematic__title"><small>ULTIMATE</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
+      <div className="ultimate-cinematic__title"><small>{enemy ? 'ENEMY ULTIMATE' : 'ULTIMATE'}</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
     </div>
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}
     <div className="ultimate-cinematic__effect" aria-hidden="true">
@@ -81,5 +84,5 @@ export function UltimateCutIn({ event, units, reducedMotion, speed = 1 }: { even
   if (!event?.ultimate) return null;
   const actor = units.find(unit => unit.uid === event.actorId);
   if (!actor) return null;
-  return <UltimateSequence key={event.id} eventId={event.id} character={characterById(actor.characterId)} allies={units.filter(unit => unit.side === 'party' && unit.hp > 0)} speed={speed} reducedMotion={reducedMotion} />;
+  return <UltimateSequence key={event.id} event={event} character={characterById(actor.characterId)} allies={units.filter(unit => unit.side === actor.side && unit.hp > 0)} speed={speed} reducedMotion={reducedMotion} />;
 }

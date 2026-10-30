@@ -52,7 +52,7 @@ describe('Frozen Dawn Clock', () => {
     expect(resolveRound(battle, content).battle.events.some(event => event.clockAction === 'finale')).toBe(false);
     battle.round = 20; const result = resolveRound(battle, content).battle;
     const actions = result.events.filter(event => event.actorId?.startsWith('enemy:') && ['attack','area'].includes(event.kind));
-    expect(actions).toHaveLength(1); expect(actions[0]).toMatchObject({ kind: 'area', clockAction: 'finale', bossStrike: true });
+    expect(actions).toHaveLength(1); expect(actions[0]).toMatchObject({ kind: 'area', clockAction: 'finale', bossStrike: true, ultimate: true, ultimateName: frozenDawnClock.bossClock!.finaleName });
     expect(actions[0]!.targetIds).toHaveLength(4); expect(result.nextPhase).toBe('failed');
   });
   it('resumes a mid-round save exactly and awards only the clear record, never loot or ownership', () => {
