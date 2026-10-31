@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
-test('animated leader and collection portraits use lightweight videos and obey game settings', async ({ page }) => {
+test('collection videos stay lightweight while enlarged leader faces use higher resolution', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/#party'); await enterGame(page);
   await page.evaluate(async () => {
@@ -23,7 +23,7 @@ test('animated leader and collection portraits use lightweight videos and obey g
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ホーム', exact: true }).click();
   const face = page.locator('.hub-profile-avatar video');
   await expect.poll(() => face.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
-  await expect(face).toHaveAttribute('src', /kuzuha-awakened-portrait.mp4/);
+  await expect(face).toHaveAttribute('src', /kuzuha-awakened-portrait-hq.mp4/);
   await expect(page.locator('.hub-profile-avatar button')).toHaveCount(0);
   await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: '設定', exact: true }).click();
   await page.getByRole('button', { name: 'オフ', exact: true }).click();
@@ -55,7 +55,7 @@ test('battle portraits animate and any enemy with motion plays irrespective of a
   await expect(portraits).toHaveCount(3);
   for (const video of await portraits.all()) {
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
-    await expect(video).toHaveJSProperty('videoWidth', 320);
+    await expect(video).toHaveJSProperty('videoWidth', 640);
     await expect(video).toHaveJSProperty('muted', true);
   }
   const enemy = page.locator('.enemy-page video');

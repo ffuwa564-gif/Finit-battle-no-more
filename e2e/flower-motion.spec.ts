@@ -47,7 +47,7 @@ test('SSR reveal and party/battle portraits use the matching full and lightweigh
  await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const {applyCommand}=await import('/src/application/game.ts');const {content}=await import('/src/content/index.ts');const save=(await loadSave())!;await persistSave(applyCommand(save,{type:'depart',dungeonId:content.dungeons[0].id,potions:0},content),save.revision);});
  await page.reload();await enterGame(page);
  for(const id of ['selene','athena']){
-  const v=page.locator(`.party-strip video[src$="${id}-portrait-${motionVersion(id)}.mp4"]`);
+  const v=page.locator(`.party-strip video[src$="${id}-portrait-${motionVersion(id)}-hq.mp4"]`);
   await expect.poll(()=>v.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);await expect(v).toHaveJSProperty('muted',true);
  }
  expect(await page.locator('button button').count()).toBe(0);

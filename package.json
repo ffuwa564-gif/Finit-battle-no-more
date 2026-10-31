@@ -26,6 +26,7 @@
     "edit:trailer": "python scripts/edit-trailer.py",
     "edit:cm": "python scripts/edit-heisei-cm.py",
     "export:motion-posters": "tsx scripts/export-motion-posters.ts",
+    "export:portrait-quality": "tsx scripts/export-portrait-quality.ts",
     "capture:battle-guide": "tsx scripts/capture-battle-guide.ts && python scripts/edit-battle-guide.py",
     "balance:difficulty": "tsx scripts/balance-difficulty.ts",
     "balance:tower": "tsx scripts/balance-tower.ts",

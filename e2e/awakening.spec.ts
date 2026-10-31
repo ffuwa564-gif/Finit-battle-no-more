@@ -29,7 +29,8 @@ test('memories hide locked chapters and four real awakenings unlock animated Ser
   await story.getByRole('button',{name:'セリスを覚醒',exact:true}).click();
   const detail = page.getByRole('dialog');
   await expect(detail).toContainText('暁を返す剣');
-  await expect(detail).toContainText('その先へ、一緒に歩く人がいる。');
+  const recoveredMemory = await page.evaluate(async () => (await import('/src/content/index.ts')).content.memories!.find(memory => memory.characterId === 'seris')!.awakened);
+  await expect(detail).toContainText(recoveredMemory);
   await expect.poll(()=>detail.locator('video').evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
   await expect(detail.locator('video')).toHaveJSProperty('videoWidth',720);
   await detail.getByRole('button',{name:'閉じる',exact:true}).click();
@@ -79,7 +80,7 @@ test('awakened Seris animates as an enemy and party member and obeys reduced mot
   await expect(enemy).toHaveAttribute('src',/seris-awakened.mp4/);
   await expect.poll(()=>enemy.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
   const portrait=page.locator('.party-strip video');
-  await expect(portrait).toHaveAttribute('src',/seris-awakened-portrait.mp4/);
+  await expect(portrait).toHaveAttribute('src',/seris-awakened-portrait-hq.mp4/);
   await expect.poll(()=>portrait.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
   await page.emulateMedia({reducedMotion:'reduce'});
   for(const video of await page.locator('video').all())await expect(video).not.toHaveAttribute('src');
