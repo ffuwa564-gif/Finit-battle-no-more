@@ -9,6 +9,31 @@
     {
       "build": "echo-chain",
       "stage": "starter",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 0,
+          "trait": "chain",
+          "value": 0,
+          "coreTrait": "chain"
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 0
+        }
+      ],
       "dungeonId": "drowned-vestry",
       "partyIds": [
         "seris",
@@ -42,6 +67,37 @@
     {
       "build": "echo-chain",
       "stage": "complete",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 50,
+          "trait": "chain",
+          "value": 40,
+          "coreTrait": "chain"
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 50,
+          "trait": "mercy",
+          "value": 40
+        }
+      ],
       "dungeonId": "drowned-vestry",
       "partyIds": [
         "seris-awakened",
@@ -74,7 +130,38 @@
     {
       "build": "echo-chain",
       "stage": "perfect",
-      "dungeonId": "drowned-vestry",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 220,
+          "trait": "chain",
+          "value": 80,
+          "coreTrait": "chain"
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 220,
+          "trait": "mercy",
+          "value": 80
+        }
+      ],
+      "dungeonId": "kuzuha-advanced",
       "partyIds": [
         "seris-awakened",
         "noelle",
@@ -83,7 +170,7 @@
       ],
       "leaderId": "liora",
       "proof": {
-        "chainHits": 1,
+        "chainHits": 3,
         "echoHits": 1,
         "barrierCasts": 0,
         "shieldShots": 0,
@@ -98,14 +185,43 @@
         "chain",
         null,
         null,
-        "echo"
+        "chain",
+        null,
+        null,
+        "chain",
+        null,
+        null,
+        "echo",
+        null
       ],
-      "visibleEvents": 5,
-      "simulationEvents": 22
+      "visibleEvents": 12,
+      "simulationEvents": 47
     },
     {
       "build": "shield-cannon",
       "stage": "starter",
+      "gemTargets": [
+        {
+          "defId": "shield-break",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 0
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "seris",
@@ -139,6 +255,36 @@
     {
       "build": "shield-cannon",
       "stage": "complete",
+      "gemTargets": [
+        {
+          "defId": "shield-break",
+          "variant": "pure",
+          "power": 50,
+          "trait": "execution",
+          "value": 40
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 50,
+          "trait": "mercy",
+          "value": 40
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "seris-awakened",
@@ -173,6 +319,36 @@
     {
       "build": "shield-cannon",
       "stage": "perfect",
+      "gemTargets": [
+        {
+          "defId": "shield-break",
+          "variant": "pure",
+          "power": 220,
+          "trait": "execution",
+          "value": 80
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "night-dew",
+          "variant": "pure",
+          "power": 220,
+          "trait": "mercy",
+          "value": 80
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "seris-awakened",
@@ -186,7 +362,7 @@
         "echoHits": 0,
         "barrierCasts": 1,
         "shieldShots": 1,
-        "consumedBarrier": 148,
+        "consumedBarrier": 228,
         "batteryCharges": 0,
         "chargeReceived": 0,
         "rabbitUltimates": 0
@@ -197,16 +373,37 @@
         "barrier",
         null,
         null,
-        null,
         "shield",
         null
       ],
-      "visibleEvents": 7,
-      "simulationEvents": 17
+      "visibleEvents": 6,
+      "simulationEvents": 15
     },
     {
       "build": "rabbit-battery",
       "stage": "starter",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "star-furnace",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 0
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 0
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "lunette",
@@ -242,6 +439,36 @@
     {
       "build": "rabbit-battery",
       "stage": "complete",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 50,
+          "trait": "chain",
+          "value": 40
+        },
+        {
+          "defId": "star-furnace",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 50,
+          "trait": "bulwark",
+          "value": 40
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "lunette-awakened",
@@ -277,6 +504,36 @@
     {
       "build": "rabbit-battery",
       "stage": "perfect",
+      "gemTargets": [
+        {
+          "defId": "echo-shard",
+          "variant": "pure",
+          "power": 220,
+          "trait": "chain",
+          "value": 80
+        },
+        {
+          "defId": "star-furnace",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "pale-ward",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        },
+        {
+          "defId": "clear-tear",
+          "variant": "pure",
+          "power": 220,
+          "trait": "bulwark",
+          "value": 80
+        }
+      ],
       "dungeonId": "veiled-cloister",
       "partyIds": [
         "lunette-awakened",
@@ -292,7 +549,7 @@
         "shieldShots": 0,
         "consumedBarrier": 0,
         "batteryCharges": 1,
-        "chargeReceived": 70,
+        "chargeReceived": 80,
         "rabbitUltimates": 1
       },
       "demonstrated": true,
@@ -307,7 +564,7 @@
         "ultimate"
       ],
       "visibleEvents": 8,
-      "simulationEvents": 27
+      "simulationEvents": 16
     }
   ]
 }

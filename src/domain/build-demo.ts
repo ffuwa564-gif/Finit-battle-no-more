@@ -17,7 +17,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   const recipe = definition.stages[stage];
   const partyIds = recipe.slots.map(slot => slot.characterIds[0]);
   const leaderId = partyIds[recipe.leaderSlot];
-  const dungeonId = buildId === 'echo-chain' ? 'drowned-vestry' : 'veiled-cloister';
+  const dungeonId = buildId === 'echo-chain' ? stage === 'perfect' ? 'kuzuha-advanced' : 'drowned-vestry' : 'veiled-cloister';
   const fixtures: Record<string, MemoryGem> = Object.fromEntries(recipe.slots.map((slot, index) => [partyIds[index], {
     id: `build-demo-${buildId}-${index}`, defId: slot.gem.defId, variant: slot.gem.variant,
     roll: { power: slot.gem.power, trait: slot.gem.trait ?? 'none', value: slot.gem.value ?? 0 },

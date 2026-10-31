@@ -100,3 +100,13 @@
 .build-planner__confirmation .button { min-height:43px; font-size:11px; }
 @media(min-width:650px) { .build-planner__choices { grid-template-columns:repeat(3,minmax(0,1fr)); } .build-planner .build-planner__choice { min-height:125px; } .build-planner__choice-copy > span { font-size:17px; } .build-planner__detail { padding:26px; } }
 @media(prefers-reduced-motion:reduce) { .build-planner * { scroll-behavior:auto; } }
+
+.build-planner__tiers { display:flex; align-items:center; flex-wrap:wrap; gap:7px 11px; margin:9px 0; color:#ddcfb1; }
+.build-planner__tiers > small { width:100%; font-size:10px; color:#becadd; }
+.build-planner__tiers > span { display:inline-flex; align-items:center; gap:5px; font-size:10px; }
+.build-planner__tiers--owned { color:#c1d3e8; }
+
+.build-planner__source-profile { display:grid; gap:6px; margin:9px 0; font-size:10px; color:#d4dbea; }
+.build-planner__source-profile > div { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.build-planner__source-profile > div > span { display:inline-flex; align-items:center; gap:4px; }
+.build-planner__source-profile > small { color:#b9c9dc; font-size:9px; line-height:1.8; }

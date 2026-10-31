@@ -1,6 +1,6 @@
 import { dungeonLock } from './events';
 import { dungeonDifficulty } from './engine';
-import { GEM_CRAFT_COST, GEM_DEFINITIONS, dungeonGemFamily, gemRoll, validMemoryGem, type GemFamily, type GemTrait, type GemVariant, type MemoryGem } from './memory-gems';
+import { GEM_CRAFT_COST, GEM_DEFINITIONS, TIER_RANGES, dungeonGemFamily, dungeonGemLootProfile, gemPowerTier, gemTraitTier, gemRoll, supportedGemTraits, validMemoryGem, type GemFamily, type GemTier, type GemTrait, type GemVariant, type MemoryGem } from './memory-gems';
 import type { Content, GameSave } from './types';
 
 export type BuildStage = 'starter' | 'complete' | 'perfect';
@@ -24,13 +24,15 @@ export interface BuildFarmSource {
   id: string; kind: 'dungeon' | 'craft'; name: string; description: string; family: GemFamily;
   dungeonId?: string; unlockDungeonId?: string; locked: boolean; lockReason: string | null; bossOnly: boolean;
   craftCost?: number; waves?: number; towerFloor?: number; difficulty?: number;
+  maxTier: GemTier; featured: boolean; tierChances: { tier4: number; tier5: number; tier6: number };
+  targetTier?: GemTier; targetPowerTier?: GemTier; targetTraitTier?: GemTier;
 }
 
 const stages: BuildStage[] = ['starter', 'complete', 'perfect'];
 const stageMeta: Record<BuildStage, { label: string; description: string; power: number; value: number }> = {
   starter: { label: '入門', description: 'まず仕組みを動かす。特性値の高さより、必要な石と役割をそろえる。', power: 0, value: 0 },
   complete: { label: '完成', description: '同じ術式の効力と特性を磨き、普段の探索で使いやすくする。', power: 50, value: 40 },
-  perfect: { label: '厳選', description: '効力85以上と狙った特性を目指す長期目標。最上階の突破を保証するものではない。', power: 85, value: 80 },
+  perfect: { label: '厳選', description: 'T6の技効力と、狙った特性を磨く任意の長期目標。T6の技効力は新たなドロップで探す。最上階の突破を保証するものではない。', power: 220, value: 80 },
 };
 function slot(id: string, label: string, characterIds: string[], defId: string, stage: BuildStage, trait?: GemTrait, coreTrait?: GemTrait): BuildSlot {
   const meta = stageMeta[stage];
@@ -94,6 +96,28 @@ export function gemMeetsBuildTarget(gem: MemoryGem, target: BuildGemTarget): boo
     && (!target.coreTrait || roll.trait === target.coreTrait);
 }
 
+function targetValueTier(value: number): GemTier | undefined {
+  if (!Number.isSafeInteger(value) || value < 0) return undefined;
+  return ([1,2,3,4,5,6] as GemTier[]).find(tier => TIER_RANGES[tier][1] >= value);
+}
+
+/** Tiers are acquired per affix, never by the maximum badge across the whole stone. */
+export function targetNeedsNewTier(gem: MemoryGem, target: BuildGemTarget): boolean {
+  if (gem.defId !== target.defId || gem.variant !== target.variant) return true;
+  const powerTier = gemPowerTier(gem), traitTier = gemTraitTier(gem);
+  const powerLimit = powerTier <= 3 ? 100 : TIER_RANGES[powerTier][1];
+  const traitLimit = traitTier <= 3 ? 100 : TIER_RANGES[traitTier as GemTier][1];
+  const trait = target.trait ?? target.coreTrait;
+  return target.power > powerLimit || Boolean(trait && !supportedGemTraits(gem).includes(trait))
+    || Boolean(trait && (target.value ?? 0) > (trait === 'none' ? 0 : traitLimit));
+}
+
+function canDropTargetValue(value: number, tier4: number, tier5: number, tier6: number): boolean {
+  if (!targetValueTier(value)) return false;
+  return value <= 100 || tier4 > 0 && value <= TIER_RANGES[4][1]
+    || tier5 > 0 && value <= TIER_RANGES[5][1] || tier6 > 0 && value <= TIER_RANGES[6][1];
+}
+
 function chooseCharacters(content: Content, save: GameSave, slots: BuildSlot[]): (string | null)[] {
   let best: (string | null)[] = slots.map(() => null), bestScore = -1;
   function visit(index: number, selected: (string | null)[], families: Set<string>, score: number): void {
@@ -116,7 +140,9 @@ function gemScore(gem: MemoryGem, target: BuildGemTarget, characterId: string | 
   const owner = Object.keys(equipped).find(id => equipped[id] === gem.id);
   const core = !target.coreTrait || roll.trait === target.coreTrait;
   const deficit = Math.max(0, target.power - roll.power) + (target.trait && target.trait !== roll.trait ? 150 : Math.max(0, (target.value ?? 0) - roll.value));
-  return 100000 + Number(core) * 10000 + Number(gemMeetsBuildTarget(gem, target)) * 10000 - deficit * 10
+  // A functional allocation outranks a prettier roll in a flexible slot. With four
+  // slots, one preserved core trait must outweigh every possible quality bonus.
+  return 1000000 + Number(core) * 100000 + Number(gemMeetsBuildTarget(gem, target)) * 10000 - deficit * 10
     + (owner === characterId ? 4 : !owner ? 2 : 0);
 }
 function chooseGems(save: GameSave, slots: BuildSlot[], characters: (string | null)[]): (MemoryGem | null)[] {
@@ -185,20 +211,39 @@ function reachablePrerequisite(content: Content, save: GameSave, dungeonId: stri
 }
 
 /** Family pools are shared by all listed routes; no source promises a particular stone. */
-export function findGemSources(content: Content, save: GameSave, defId: string): BuildFarmSource[] {
+export function findGemSources(content: Content, save: GameSave, defId: string, target?: BuildGemTarget): BuildFarmSource[] {
   const definition = GEM_DEFINITIONS.find(def => def.id === defId);
   if (!definition) return [];
+  const trait = target?.trait ?? target?.coreTrait;
+  if (target && (target.defId !== defId || !definition.variants.includes(target.variant) || !targetValueTier(target.power)
+    || trait && (!supportedGemTraits(defId).includes(trait) || !targetValueTier(target.value ?? 0) || trait === 'none' && (target.value ?? 0) > 0))) return [];
+  const targetPowerTier = target ? targetValueTier(target.power)! : undefined;
+  const targetTraitTier = target && trait ? targetValueTier(target.value ?? 0)! : undefined;
+  const targetTier = target ? Math.max(targetPowerTier!,targetTraitTier ?? 1) as GemTier : undefined;
+  const highTarget = targetTier !== undefined && targetTier >= 4;
+  const targetInfo = target ? { targetTier,targetPowerTier,...(targetTraitTier ? {targetTraitTier} : {}) } : {};
   const bossOnly = Boolean(definition.bossOnly);
-  const sources: BuildFarmSource[] = content.dungeons.filter(dungeon => dungeon.published && dungeon.kind !== 'trial' && dungeon.waves.length > 0 && dungeonGemFamily(dungeon) === definition.family).map(dungeon => {
+  const sources: BuildFarmSource[] = content.dungeons.filter(dungeon => {
+    if (!dungeon.published || dungeon.kind === 'trial' || !dungeon.waves.length || dungeonGemFamily(dungeon) !== definition.family) return false;
+    if (!target) return true;
+    const profile = dungeonGemLootProfile(dungeon);
+    return canDropTargetValue(target.power,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0)
+      && (!trait || canDropTargetValue(target.value ?? 0,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0));
+  }).map(dungeon => {
     const lockReason = dungeonLock(dungeon,save,content);
     const unlockDungeonId = lockReason ? reachablePrerequisite(content,save,dungeon.id) : undefined;
-    return { id:dungeon.id,kind:'dungeon',name:dungeon.name,description:bossOnly ? '同じ系統の踏破宝箱から抽選。狙った石の確定入手ではありません。' : '同じ系統の宝箱から抽選。狙った石の確定入手ではありません。',
+    const profile = dungeonGemLootProfile(dungeon);
+    const maxTier: GemTier = (profile.tier6Chance ?? 0) > 0 ? 6 : profile.tier5Chance > 0 ? 5 : profile.tier4Chance > 0 ? 4 : 3;
+    return { id:dungeon.id,kind:'dungeon',name:dungeon.name,description:highTarget ? '対象のTierが出現する踏破宝箱から抽選。効力と特性のTierは別々に抽選され、狙った石の確定入手ではありません。' : bossOnly ? '同じ系統の踏破宝箱から抽選。狙った石の確定入手ではありません。' : '同じ系統の宝箱から抽選。狙った石の確定入手ではありません。',
+      maxTier,featured:profile.featuredDefId === defId,tierChances:{tier4:profile.tier4Chance,tier5:profile.tier5Chance,tier6:profile.tier6Chance ?? 0},...targetInfo,
       family:definition.family,dungeonId:dungeon.id,...(unlockDungeonId ? {unlockDungeonId} : {}),locked:Boolean(lockReason),lockReason,bossOnly,waves:dungeon.waves.length,difficulty:dungeonDifficulty(dungeon,content),...(dungeon.towerFloor ? {towerFloor:dungeon.towerFloor} : {}) };
   });
-  sources.sort((a,b) => Number(a.locked)-Number(b.locked) || Number(Boolean(a.towerFloor))-Number(Boolean(b.towerFloor)) || (a.difficulty ?? 0)-(b.difficulty ?? 0) || (a.waves ?? 0)-(b.waves ?? 0) || (a.towerFloor ?? 0)-(b.towerFloor ?? 0) || a.id.localeCompare(b.id));
-  if (!bossOnly) {
-    const lockReason = save.battle ? '探索を終了してから製作できます。' : (save.memoryGems?.dust[definition.family] ?? 0) < GEM_CRAFT_COST ? '同じ系統の欠片を集めて製作できます。' : null;
-    sources.unshift({id:`craft:${defId}`,kind:'craft',name:'澄明の石を製作',description:'基本の術式を製作できます。追加特性は付かないため、必要な特性は調律で狙います。',family:definition.family,locked:Boolean(lockReason),lockReason,bossOnly:false,craftCost:GEM_CRAFT_COST});
+  sources.sort((a,b) => Number(a.locked)-Number(b.locked) || Number(Boolean(a.towerFloor))-Number(Boolean(b.towerFloor)) || (a.difficulty ?? 0)-(b.difficulty ?? 0) || Number(b.featured)-Number(a.featured) || (a.waves ?? 0)-(b.waves ?? 0) || (a.towerFloor ?? 0)-(b.towerFloor ?? 0) || a.id.localeCompare(b.id));
+  if (!bossOnly && !highTarget) {
+    const variant = target?.variant ?? 'pure';
+    const craftCost = GEM_CRAFT_COST + (variant === 'pure' ? 0 : 3);
+    const lockReason = save.battle ? '探索を終了してから製作できます。' : (save.memoryGems?.dust[definition.family] ?? 0) < craftCost ? '同じ系統の欠片を集めて製作できます。' : null;
+    sources.unshift({id:`craft:${defId}`,kind:'craft',name:variant === 'swift' ? '速唱の石を製作' : variant === 'echo' ? '残響の石を製作' : '澄明の石を製作',description:'基本の術式を製作できます。追加特性は付かないため、必要な特性は調律で狙います。',family:definition.family,locked:Boolean(lockReason),lockReason,bossOnly:false,craftCost,maxTier:1,featured:false,tierChances:{tier4:0,tier5:0,tier6:0},...targetInfo});
   }
   return sources;
 }

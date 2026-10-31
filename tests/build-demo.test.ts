@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import { createBuildDemo } from '../src/domain/build-demo';
 import { BUILD_DEFINITIONS, type BuildStage } from '../src/domain/builds';
-import { gemDefinitionForSkill } from '../src/domain/memory-gems';
+import { gemDefinitionForSkill, gemFromSkill, gemFurnaceCharge } from '../src/domain/memory-gems';
 
 const stages:BuildStage[]=['starter','complete','perfect'];
 describe('real-engine build demonstrations',()=>{
@@ -16,6 +16,12 @@ describe('real-engine build demonstrations',()=>{
       for(const value of expected) expect(highlights,`${definition.id}/${stage} visible ${value}`).toContain(value);
       for(const frame of demo.frames) expect(frame.units).toEqual(frame.event.unitsAfter);
       expect(demo.initialUnits.every(unit=>!unit.ultimateCharge)).toBe(true);
+      const featured=definition.id==='rabbit-battery'?definition.stages[stage].slots[1]:definition.stages[stage].slots[0];
+      const cast=demo.events.find(frame=>frame.event.skillId&&gemDefinitionForSkill(frame.event.skillId)?.id===featured.gem.defId)!;
+      const actualGem=gemFromSkill(cast.event.skillId!)!;
+      expect(actualGem.roll?.power).toBe(featured.gem.power);
+      expect(actualGem.roll?.value).toBe(featured.gem.value??0);
+      expect(actualGem.roll?.trait).toBe(featured.gem.trait??'none');
     }
   });
   it('chains to a different enemy than the primary single-target hit and waits until the next round for echo',()=>{
@@ -51,7 +57,9 @@ describe('real-engine build demonstrations',()=>{
       expect(charge.event.targetIds).toContain(rabbit.uid);
       const before=charge.before.find(unit=>unit.uid===rabbit.uid)!;
       expect((rabbit.ultimateCharge??0)-(before.ultimateCharge??0)).toBeGreaterThan(0);
-      expect(demo.proof.chargeReceived).toBeLessThanOrEqual(70);
+      const furnace=gemFromSkill(charge.event.skillId!)!;
+      expect((rabbit.ultimateCharge??0)-(before.ultimateCharge??0)).toBeLessThanOrEqual(gemFurnaceCharge(furnace));
+      expect(furnace.roll?.power).toBe(BUILD_DEFINITIONS.find(build=>build.id==='rabbit-battery')!.stages[stage].slots[1].gem.power);
       const ultimate=demo.frames.find(frame=>frame.highlight==='ultimate')!;
       expect(ultimate.before.find(unit=>unit.uid===ultimate.event.actorId)?.ultimateCharge).toBe(100);
       expect(demo.frames.indexOf(ultimate)).toBeGreaterThan(demo.frames.indexOf(charge));

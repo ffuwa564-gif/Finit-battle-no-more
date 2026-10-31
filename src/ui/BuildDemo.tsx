@@ -47,7 +47,7 @@ export function BuildDemo({buildId,stage,content,reducedMotion=false}:BuildDemoP
   }
   return <section className={`build-demo${reducedMotion?' is-reduced-motion':''}`} data-testid="build-demo" aria-label={tr('ビルドの実演')}>
     <div className="build-demo__heading"><span><Sparkles size={15}/>{tr('連携の実演')}</span><small>{tr('見本装備')}</small></div>
-    <p className="build-demo__note">{tr('見本の仲間と装備による実演です。所持品は消費しません。')}</p>
+    <p className="build-demo__note">{tr('見本の仲間と装備による実演です。所持品は消費しません。')}<br />{tr('実演の舞台：{0}').replace('{0}',tr(content.dungeons.find(dungeon=>dungeon.id===result.dungeonId)?.name ?? result.dungeonId))}</p>
     <div className={`build-demo__stage${highlight?` build-demo__stage--${highlight}`:''}`} data-testid="build-demo-frame" data-frame-index={index} data-highlight={highlight ?? ''}>
       <div className="build-demo__position">{frame ? `WAVE ${frame.wave+1} · ROUND ${frame.round}` : tr('連携ダイジェスト')}</div>
       {lineup('enemy')}

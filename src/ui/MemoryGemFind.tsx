@@ -1,4 +1,4 @@
-import { getBuildDefinition, gemMeetsBuildTarget, type BuildGoal } from '../domain/builds';
+import { getBuildDefinition, gemMeetsBuildTarget, targetNeedsNewTier, type BuildGoal } from '../domain/builds';
 import { towerDustReward } from '../domain/ivory-tower';
 import { useEffect, useState } from 'react';
 import { Gem, PackageOpen } from 'lucide-react';
@@ -39,5 +39,5 @@ export function MemoryGemSource({ dungeon, compact = false }: { dungeon: Dungeon
 export function MemoryGemSummary({ battle, buildGoal }: { battle: Battle; buildGoal?: BuildGoal }) {
   if (!battle.gemFinds?.length) return null;
   const targets = buildGoal ? getBuildDefinition(buildGoal.buildId)?.stages[buildGoal.stage].slots.map(slot => slot.gem) ?? [] : [];
-  return <div className="memory-gem-summary"><h2><Gem size={20} />{tr('確保した記憶石')}</h2>{battle.gemFinds.map(gem => <div key={gem.id}><MemoryGemTier tier={gemTier(gem)} /><span>{tr(gemName(gem))}{targets.some(target => target.defId === gem.defId && target.variant === gem.variant) && <small className="memory-gem-summary__goal">{tr(targets.some(target => gemMeetsBuildTarget(gem, target)) ? '目標性能の石を獲得' : '目標ビルドの候補・調律で仕上げる')}</small>}{gem.roll && <small className="memory-gem-summary__quality">{tr('技効力 ×{0}').replace('{0}', gemPowerMultiplier(gem).toFixed(2))} · {tr(gemTraitInfo[gemRoll(gem).trait].name)}</small>}</span></div>)}<p>{tr('記憶石は取得済みです。撤退・全滅でも失いません。')}</p></div>;
+  return <div className="memory-gem-summary"><h2><Gem size={20} />{tr('確保した記憶石')}</h2>{battle.gemFinds.map(gem => <div key={gem.id}><MemoryGemTier tier={gemTier(gem)} /><span>{tr(gemName(gem))}{targets.some(target => target.defId === gem.defId && target.variant === gem.variant) && <small className="memory-gem-summary__goal">{tr(targets.some(target => gemMeetsBuildTarget(gem, target)) ? '目標性能の石を獲得' : targets.some(target => target.defId === gem.defId && target.variant === gem.variant && targetNeedsNewTier(gem, target)) ? '目標の術式・上位Tierを探そう' : '目標ビルドの候補・調律で仕上げる')}</small>}{gem.roll && <small className="memory-gem-summary__quality">{tr('技効力 ×{0}').replace('{0}', gemPowerMultiplier(gem).toFixed(2))} · {tr(gemTraitInfo[gemRoll(gem).trait].name)}</small>}</span></div>)}<p>{tr('記憶石は取得済みです。撤退・全滅でも失いません。')}</p></div>;
 }

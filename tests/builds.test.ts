@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import { createInitialSave } from '../src/application/game';
-import { BUILD_DEFINITIONS, findGemSources, gemMeetsBuildTarget, getBuildDefinition, getBuildPlan, isBuildStage, planBuildDefinition, validBuildGoal, type BuildDefinition, type BuildStage } from '../src/domain/builds';
-import { GEM_DEFINITIONS, dungeonGemFamily, emptyGemInventory, supportedGemTraits, validMemoryGem, type MemoryGem } from '../src/domain/memory-gems';
+import { BUILD_DEFINITIONS, findGemSources, gemMeetsBuildTarget, getBuildDefinition, getBuildPlan, isBuildStage, planBuildDefinition, targetNeedsNewTier, validBuildGoal, type BuildDefinition, type BuildStage } from '../src/domain/builds';
+import { GEM_DEFINITIONS, dungeonGemFamily, dungeonGemLootProfile, emptyGemInventory, supportedGemTraits, validMemoryGem, type MemoryGem } from '../src/domain/memory-gems';
 import { duplicateFamily, dungeonLock } from '../src/domain/events';
 
 function fixture(buildId = 'echo-chain', stage: BuildStage = 'starter') {
@@ -115,6 +115,19 @@ describe('build recipes and read-only planning', () => {
     expect(plan.slots[0].gem!.id).toBe('plain'); expect(plan.slots[1].gem!.id).toBe('fixture:0');
   });
 
+  it('preserves a functional core before maximizing a flexible slot quality when both slots want T6 power', () => {
+    const {build,save} = withCustomSlots(build => {
+      build.stages.starter.slots[0].gem = {defId:'echo-shard',variant:'pure',power:220};
+      build.stages.starter.slots[1].gem = {defId:'echo-shard',variant:'pure',power:220,trait:'chain',value:220,coreTrait:'chain'};
+    });
+    save.memoryGems!.items = save.memoryGems!.items.filter(item => item.defId !== 'clear-tear');
+    save.memoryGems!.items[0].roll = {power:220,trait:'chain',value:0};
+    save.memoryGems!.items.push({id:'low-flexible',defId:'echo-shard',variant:'pure'});
+    const plan = planBuildDefinition(content,save,build,'starter');
+    expect(plan.functional).toBe(true); expect(plan.canApply).toBe(true); expect(plan.complete).toBe(false);
+    expect(plan.slots[0].gem!.id).toBe('low-flexible'); expect(plan.slots[1].gem!.id).toBe('fixture:0');
+  });
+
   it('never substitutes an unrelated heroine for a missing Lunette and blocks applying during expeditions or refinement', () => {
     const {save} = fixture('rabbit-battery');
     save.ownedIds = save.ownedIds.filter(id => !id.startsWith('lunette'));
@@ -129,6 +142,26 @@ describe('build recipes and read-only planning', () => {
     expect(validBuildGoal({buildId:'echo-chain',stage:'starter'})).toBe(true);
     for (const value of [null,[],{buildId:'free-loot',stage:'starter'},{buildId:'echo-chain',stage:'godlike'}]) expect(validBuildGoal(value)).toBe(false);
     expect(isBuildStage('perfect')).toBe(true); expect(isBuildStage('godlike')).toBe(false);
+  });
+
+  it('keeps T6 efficacy as an optional long-term chase without requiring dual T6 affixes', () => {
+    for (const build of BUILD_DEFINITIONS) for (const slot of build.stages.perfect.slots) {
+      expect(slot.gem.power).toBe(220);
+      if (slot.gem.trait) expect(slot.gem.value).toBe(80);
+    }
+  });
+
+  it('checks acquired power and trait tiers independently before recommending refinement', () => {
+    const target = {defId:'shield-break',variant:'pure' as const,power:220,trait:'execution' as const,value:220};
+    const gem:MemoryGem = {id:'mixed',defId:'shield-break',variant:'pure',roll:{power:100,trait:'execution',value:220}};
+    expect(targetNeedsNewTier(gem,target)).toBe(true);
+    expect(targetNeedsNewTier({...gem,roll:{power:220,trait:'execution',value:100}},target)).toBe(true);
+    expect(targetNeedsNewTier({...gem,roll:{power:220,trait:'chain',value:220}},target)).toBe(false);
+    // A T6 power stone can still refine an ordinary trait up to the catalog's T3 value goal.
+    expect(targetNeedsNewTier({...gem,roll:{power:220,trait:'none',value:0}},{...target,value:80})).toBe(false);
+    expect(targetNeedsNewTier({...gem,roll:{power:100,trait:'execution',value:220}},{...target,value:80})).toBe(true);
+    expect(targetNeedsNewTier({...gem,roll:{power:120,trait:'execution',value:120}},{...target,power:139,value:139})).toBe(false);
+    expect(targetNeedsNewTier({...gem,roll:{power:120,trait:'execution',value:120}},{...target,power:160,value:139})).toBe(true);
   });
 });
 
@@ -194,5 +227,37 @@ describe('honest build farming destinations', () => {
     save.completedDungeonIds.push('silent-cathedral');
     const owned = findGemSources(custom,save,'echo-shard').find(source => source.dungeonId === 'clock-owned')!;
     expect(owned.locked).toBe(true); expect(owned.unlockDungeonId).toBeUndefined();
+  });
+
+  it('only recommends real T6 drop pools for a T6 target, keeping non-featured same-family stones eligible', () => {
+    const save = createInitialSave(content);
+    const target = getBuildDefinition('echo-chain')!.stages.perfect.slots[0].gem;
+    const sources = findGemSources(content,save,'echo-shard',target);
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every(source => source.kind === 'dungeon')).toBe(true);
+    expect(sources.some(source => !source.featured)).toBe(true);
+    expect(sources.some(source => source.locked && source.unlockDungeonId)).toBe(true);
+    for (const source of sources) {
+      const dungeon = content.dungeons.find(dungeon => dungeon.id === source.dungeonId)!;
+      expect(dungeonGemFamily(dungeon)).toBe('clock');
+      expect(dungeonGemLootProfile(dungeon).tier6Chance!).toBeGreaterThan(0);
+      expect(source.maxTier).toBe(6); expect(source.targetTier).toBe(6);
+      expect(source.targetPowerTier).toBe(6); expect(source.targetTraitTier).toBe(3);
+      expect(source.featured).toBe(dungeonGemLootProfile(dungeon).featuredDefId === 'echo-shard');
+    }
+    // The backwards-compatible guide still offers basic crafting and ordinary routes.
+    expect(findGemSources(content,save,'echo-shard').some(source => source.kind === 'craft')).toBe(true);
+  });
+
+  it('filters impossible trait-tier targets and gives variant-aware basic crafting costs', () => {
+    const save = createInitialSave(content);
+    const target = {defId:'echo-shard',variant:'pure' as const,power:0,trait:'chain' as const,value:220};
+    const sources = findGemSources(content,save,'echo-shard',target);
+    expect(sources.length).toBeGreaterThan(0); expect(sources.every(source => source.maxTier === 6)).toBe(true);
+    expect(findGemSources(content,save,'echo-shard',{...target,power:240})).toEqual([]);
+    expect(findGemSources(content,save,'echo-shard',{...target,trait:'none'})).toEqual([]);
+    expect(findGemSources(content,save,'pale-ward',{...target,defId:'pale-ward'})).toEqual([]);
+    const swift = findGemSources(content,save,'echo-shard',{...target,variant:'swift',value:0}).find(source => source.kind === 'craft')!;
+    expect(swift.craftCost).toBe(9); expect(swift.name).toContain('速唱');
   });
 });

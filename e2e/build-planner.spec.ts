@@ -130,7 +130,7 @@ test('English build guidance and folded recipe sources remain readable at320px',
   const planner=await openPlanner(page);
   await page.setViewportSize({width:320,height:740});
   await page.evaluate(async () => (await import('/src/locales/i18n.ts')).setLanguage('en'));
-  await expect(planner).toBeVisible();
+  await expect(planner.getByRole('heading',{name:'Build Atelier',exact:true})).toBeVisible();
   for(const section of await planner.locator('[data-inventory-section]').all()) await expect(section).not.toHaveAttribute('open');
   expect(await planner.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
   const recipe=await openSection(page,'build-recipe');
@@ -143,6 +143,13 @@ test('English build guidance and folded recipe sources remain readable at320px',
 
 test('farm destinations respect locks and open the actual preparation screen without starting an expedition', async ({page}) => {
   await installOwnedRecipe(page);
+  await page.evaluate(async () => {
+    const {loadSave,persistSave}=await import('/src/platform/save.ts');
+    const {content}=await import('/src/content/index.ts');
+    const save=(await loadSave())!,revision=save.revision;
+    save.completedDungeonIds=content.dungeons.filter(dungeon=>dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
+    save.revision++;await persistSave(save,revision);
+  });
   await openPlanner(page);
   const sources=await openSection(page,'build-farm-sources');
   await expect(sources).toContainText('狙った石や特性の入手は保証されません。');
@@ -198,6 +205,7 @@ test('a new player can follow a locked family goal toward an available prerequis
   await expect(next).toContainText('入手先の解放を目指す');
   await page.setViewportSize({width:320,height:740});
   await page.evaluate(async () => (await import('/src/locales/i18n.ts')).setLanguage('en'));
+  await expect(planner.getByRole('heading',{name:'Build Atelier',exact:true})).toBeVisible();
   expect(await next.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
   await assertNoOverflow(page);
   await snapshot(page,'planner-unlock-320-en.png');
@@ -219,4 +227,88 @@ test('a new player can follow a locked family goal toward an available prerequis
   expect((await saved(page)).battle).toBeNull();
   expect((await saved(page)).memoryGems).toEqual(before.memoryGems);
   expect((await saved(page)).seed).toBe(before.seed);
+});
+
+async function installTierRecipe(page: Page, mode:'t3'|'power-gap'|'trait-gap') {
+  await page.goto('/');await enterGame(page);
+  return page.evaluate(async mode => {
+    const {loadSave,persistSave}=await import('/src/platform/save.ts');
+    const {BUILD_DEFINITIONS,getBuildPlan}=await import('/src/domain/builds.ts');
+    const {content}=await import('/src/content/index.ts');
+    const {emptyGemInventory,gemTier,gemPowerTier,gemTraitTier}=await import('/src/domain/memory-gems.ts');
+    const save=(await loadSave())!,revision=save.revision;
+    const build=BUILD_DEFINITIONS.find(build=>build.id==='shield-cannon')!,stage=build.stages.perfect;
+    if(stage.slots[0].gem.power<220) throw new Error('The perfect recipe must use the current T6 power target.');
+    const available=content.characters.filter(character=>character.published && !character.origin.includes('xr_gacha') && !character.origin.includes('trial')).map(character=>character.id);
+    save.ownedIds=[...new Set([...save.ownedIds,...available,...stage.slots.map(slot=>slot.characterIds[0])])];
+    save.completedDungeonIds=content.dungeons.filter(dungeon=>dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
+    save.memoryGems=emptyGemInventory();
+    save.memoryGems.dust={sanctuary:1000,clock:1000,grave:1000};
+    save.memoryGems.items=stage.slots.map((slot,index)=>({id:`tier-browser-${index}`,defId:slot.gem.defId,variant:slot.gem.variant,roll:mode==='t3'?{power:100,trait:slot.gem.trait ?? 'none',value:slot.gem.trait?100:0}:{power:slot.gem.power,trait:slot.gem.trait ?? 'none',value:slot.gem.trait?(slot.gem.value ?? 0):0}}));
+    const first=save.memoryGems.items[0];
+    if(mode==='power-gap') first.roll={power:100,trait:stage.slots[0].gem.trait!,value:220};
+    if(mode==='trait-gap') first.roll={power:220,trait:stage.slots[0].gem.trait!,value:40};
+    save.memoryGems.seen=[...new Set(save.memoryGems.items.map(gem=>gem.defId))];
+    save.buildGoal={buildId:build.id,stage:'perfect'};
+    save.settings.reducedMotion=true;save.revision++;
+    await persistSave(save,revision);
+    const plan=getBuildPlan(content,save,build.id,'perfect');
+    return {readyCount:plan.readyCount,complete:plan.complete,firstSlot:stage.slots[0].id,overallTier:gemTier(first),powerTier:gemPowerTier(first),traitTier:gemTraitTier(first)};
+  },mode);
+}
+
+test('T6 goals inspect each affix and direct ordinary stones toward real upper-tier drops rather than basic crafting', async ({page}) => {
+  for(const mode of ['t3','power-gap','trait-gap'] as const) {
+    const fixture=await installTierRecipe(page,mode);
+    expect(fixture.complete).toBe(false);
+    expect(fixture.readyCount).toBe(mode==='t3'?0:3);
+    const planner=await openPlanner(page),next=planner.getByTestId('build-next-action');
+    await expect(planner.locator('.build-planner__progress strong')).toHaveText(`${fixture.readyCount} / 4`);
+    await expect(planner.getByRole('button',{name:'この目標を解除',exact:true})).toBeVisible();
+    const recipe=await openSection(page,'build-recipe');
+    const first=recipe.locator(`[data-slot-id="${fixture.firstSlot}"]`);
+    await expect(first.locator('[data-tier-kind="target"][data-gem-stat="power"]')).toHaveAttribute('data-tier','6');
+    await expect(first.locator('[data-tier-kind="owned"][data-gem-stat="power"]')).toHaveAttribute('data-tier',String(fixture.powerTier));
+    await expect(first.locator('[data-tier-kind="owned"][data-gem-stat="trait"]')).toHaveAttribute('data-tier',String(fixture.traitTier));
+    if(mode==='trait-gap') {
+      expect(fixture.overallTier).toBe(6);
+      await expect(next.getByRole('button',{name:'記憶石を整える',exact:true})).toBeEnabled();
+      await expect(next.locator('button[data-dungeon-id]')).toHaveCount(0);
+    } else {
+      if(mode==='power-gap') expect(fixture.overallTier).toBe(6);
+      await expect(next).toContainText('上位Tierの石を探す');
+      await expect(next.getByRole('button',{name:'石の製作へ',exact:true})).toHaveCount(0);
+      await expect(next.getByRole('button',{name:'記憶石を整える',exact:true})).toHaveCount(0);
+      const farm=next.locator('button[data-dungeon-id]');
+      await expect(farm).toBeEnabled();
+      const id=(await farm.getAttribute('data-dungeon-id'))!;
+      const profile=await page.evaluate(async id => {
+        const {content}=await import('/src/content/index.ts');
+        const {dungeonGemLootProfile}=await import('/src/domain/memory-gems.ts');
+        return dungeonGemLootProfile(content.dungeons.find(dungeon=>dungeon.id===id)!);
+      },id);
+      expect(profile.tier6Chance ?? 0).toBeGreaterThan(0);
+      const sources=await openSection(page,'build-farm-sources');
+      const source=sources.locator(`.build-planner__source:has(button[data-dungeon-id="${id}"])`).first();
+      await expect(source).toContainText('T6');
+      await expect(source).toContainText('踏破宝箱で石が出た後の、各項目の確率です。');
+      await expect(source).toContainText(`${Number(((profile.tier6Chance ?? 0)*100).toFixed(2))}%`);
+      await assertNoOverflow(page);
+      if(mode==='power-gap') {
+        await snapshot(page,'planner-mixed-affix-390-ja.png');
+        await page.setViewportSize({width:320,height:740});
+        await page.evaluate(async () => (await import('/src/locales/i18n.ts')).setLanguage('en'));
+        await expect(planner.getByRole('heading',{name:'Build Atelier',exact:true})).toBeVisible();
+        expect(await planner.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
+        await assertNoOverflow(page);
+        await snapshot(page,'planner-mixed-affix-320-en.png');
+        await page.evaluate(async () => (await import('/src/locales/i18n.ts')).setLanguage('ja'));
+        await page.setViewportSize({width:390,height:844});
+      }
+    }
+    await planner.getByRole('button',{name:'閉じる',exact:true}).click();
+    const summary=page.getByTestId('tracked-build-summary');
+    await expect(summary).toContainText(mode==='trait-gap'?'を調律':'を探す');
+    expect((await saved(page)).buildGoal).toEqual({buildId:'shield-cannon',stage:'perfect'});
+  }
 });

@@ -2,12 +2,13 @@ import { useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronRight, Crown, Gem, Layers3, LockKeyhole, Shield, Target, Users, X, Zap } from 'lucide-react';
 import { assetPath } from '../content';
 import type { Content, GameCommand, GameSave } from '../domain/types';
-import { BUILD_DEFINITIONS, findGemSources, getBuildPlan, type BuildFarmSource, type BuildStage, type BuildSlotPlan } from '../domain/builds';
+import { BUILD_DEFINITIONS, findGemSources, getBuildPlan, targetNeedsNewTier, type BuildFarmSource, type BuildStage, type BuildSlotPlan } from '../domain/builds';
 import { dungeonLock } from '../domain/events';
-import { GEM_DEFINITIONS, GEM_VARIANTS, gemName, gemPowerMultiplier, gemRoll, gemTraitDescription, gemTraitInfo } from '../domain/memory-gems';
+import { GEM_DEFINITIONS, GEM_VARIANTS, gemName, gemDescription, gemPowerRefinementIsFixed, gemPowerMultiplier, gemRoll, gemTraitDescription, gemTraitInfo, gemPowerTier, gemTraitTier, type MemoryGem } from '../domain/memory-gems';
 import { tr } from '../locales/i18n';
 import { Button, InventorySection } from './index';
 import { BuildDemo } from './BuildDemo';
+import { MemoryGemTier } from './MemoryGemTier';
 import './build-planner.css';
 
 export interface BuildPlannerProps {
@@ -36,7 +37,10 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
   const missingCharacter = plan.slots.find(slot => !slot.characterId);
   const nextGem = plan.slots.find(slot => slot.gemStatus === 'missing') ?? plan.slots.find(slot => slot.gemStatus === 'upgrade');
   const nextDef = nextGem && GEM_DEFINITIONS.find(gem => gem.id === nextGem.slot.gem.defId);
-  const nextSources = nextDef ? findGemSources(content, save, nextDef.id) : [];
+  const nextSources = nextDef ? findGemSources(content, save, nextDef.id, nextGem?.slot.gem) : [];
+  const needsNewTier = Boolean(nextGem?.gem && targetNeedsNewTier(nextGem.gem,nextGem.slot.gem));
+  const targetIsHighTier = Boolean(nextGem && (gemPowerTier(targetGem(nextGem)) >= 4 || gemTraitTier(targetGem(nextGem)) >= 4));
+  const needsDrop = nextGem?.gemStatus === 'missing' || needsNewTier;
   const nextCraft = nextSources.find(source => source.kind === 'craft' && !source.locked);
   const needsCoreTrait = nextGem?.slot.gem.coreTrait && nextGem.gem && gemRoll(nextGem.gem).trait !== nextGem.slot.gem.coreTrait;
   const nextFarm = nextSources.find(source => source.kind === 'dungeon' && !source.locked && !source.towerFloor) ?? nextSources.find(source => source.kind === 'dungeon' && !source.locked);
@@ -52,6 +56,14 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
   }
   function changeStage(value: BuildStage) { setStage(value); setConfirmApply(false); }
   function previewApply() { setConfirmApply(true); requestAnimationFrame(() => applySection.current?.scrollIntoView({ block:'start', behavior:'auto' })); }
+  function targetGem(slot: BuildSlotPlan): MemoryGem {
+    const target=slot.slot.gem, trait=target.coreTrait ?? target.trait ?? 'none';
+    return {id:'build-target',defId:target.defId,variant:target.variant,roll:{power:target.power,trait,value:target.value ?? 0}};
+  }
+  function TierPair({ gem, target=false }: {gem:MemoryGem;target?:boolean}) {
+    const power=gemPowerTier(gem), trait=gemTraitTier(gem);
+    return <div className={`build-planner__tiers${target ? '' : ' build-planner__tiers--owned'}`} aria-label={tr(target ? '目標のTier' : '手持ちのTier')}><small>{tr(target ? '目標のTier' : '手持ちのTier')}</small><span data-tier-kind={target ? 'target' : 'owned'} data-gem-stat="power" data-tier={power}>{tr('効力')}<MemoryGemTier tier={power}/></span>{trait > 0 && <span data-tier-kind={target ? 'target' : 'owned'} data-gem-stat="trait" data-tier={trait}>{tr('特性')}<MemoryGemTier tier={trait}/></span>}</div>;
+  }
   function targetText(slot: BuildSlotPlan) {
     const target = slot.slot.gem;
     const trait = target.coreTrait ?? target.trait;
@@ -64,7 +76,7 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
   function SourceRow({ source }: { source: BuildFarmSource }) {
     const craft = source.kind === 'craft';
     return <div className={`build-planner__source${source.locked ? ' is-locked' : ''}`}>
-      <div><strong>{tr(source.name)}</strong><p>{tr(source.description)}</p>{source.lockReason && <span className="build-planner__lock"><LockKeyhole size={12} />{tr(source.lockReason)}</span>}{craft && source.craftCost !== undefined && <p>{tr('必要な欠片：{0}個').replace('{0}',String(source.craftCost))}</p>}{source.bossOnly && !craft && <span className="build-planner__source-note">{tr('踏破宝箱で抽選')}</span>}</div>
+      <div><strong>{tr(source.name)}</strong><p>{tr(source.description)}</p>{source.lockReason && <span className="build-planner__lock"><LockKeyhole size={12} />{tr(source.lockReason)}</span>}{craft && source.craftCost !== undefined && <p>{tr('必要な欠片：{0}個').replace('{0}',String(source.craftCost))}</p>}{!craft && source.maxTier >= 4 && <div className="build-planner__source-profile"><span>{tr('排出する上位Tier')}</span><div>{([4,5,6] as const).map(tier => { const chance=source.tierChances[`tier${tier}`]; return chance > 0 ? <span key={tier}><MemoryGemTier tier={tier} />{Number((chance * 100).toFixed(3))}%</span> : null; })}</div><small>{tr('踏破宝箱で石が出た後の、各項目の確率です。')}</small></div>}{!craft && source.featured && <p className="build-planner__source-note">{tr('対象の石が抽選で優先されます。確定ではありません。')}</p>}{source.bossOnly && !craft && <span className="build-planner__source-note">{tr('踏破宝箱で抽選')}</span>}</div>
       <Button size="sm" variant="secondary" disabled={busy || !craft && (source.locked || Boolean(save.battle))} data-dungeon-id={source.dungeonId} aria-label={craft ? tr('石の製作へ') : tr('{0}へ向かう').replace('{0}', tr(source.name))} onClick={() => craft ? onGems(source.id.replace(/^craft:/,'')) : source.dungeonId && onDungeon(source.dungeonId)}>{craft ? <Gem size={15} /> : <ArrowRight size={15} />}{tr(craft ? '製作へ' : '探索へ')}</Button>
     </div>;
   }
@@ -91,30 +103,30 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
       {isTracked && <p className="build-planner__tracked" role="status">{tr('目標を保存しました。石を集めたら、ここで進み具合を確認できます。')}</p>}
 
       <section className="build-planner__next" data-testid="build-next-action" aria-label={tr('次にすること')}>
-        <span className="build-planner__eyebrow">NEXT STEP</span><h4>{tr(missingCharacter ? 'まずは仲間を揃える' : nextGem?.gemStatus === 'missing' ? nextCraft ? '足りない石を製作する' : nextFarm ? '足りない石を探しに' : '入手先の解放を目指す' : needsCoreTrait ? '特性を調律する' : nextGem ? '手持ちの石を磨く' : '戦い方を試す準備ができました')}</h4>
+        <span className="build-planner__eyebrow">NEXT STEP</span><h4>{tr(missingCharacter ? 'まずは仲間を揃える' : needsNewTier || needsDrop && targetIsHighTier ? '上位Tierの石を探す' : nextGem?.gemStatus === 'missing' ? nextCraft ? '足りない石を製作する' : nextFarm ? '足りない石を探しに' : '入手先の解放を目指す' : needsCoreTrait ? '特性を調律する' : nextGem ? '手持ちの石を磨く' : '戦い方を試す準備ができました')}</h4>
         <p>{missingCharacter ? tr('{0}の枠に入る仲間が不足しています。').replace('{0}', tr(missingCharacter.slot.label)) : nextDef ? tr(nextDef.name) : tr('手持ちの装備が、この段階の目標を満たしています。')}</p>
         {missingCharacter && <p className="build-planner__next-small">{missingCharacter.slot.characterIds.map(id => name(id)).join(' / ')}</p>}
-        {nextGem && !missingCharacter && <p className="build-planner__next-small">{targetText(nextGem)}</p>}
-        {plan.complete ? <Button disabled={busy || !plan.canApply} onClick={previewApply}><Users size={16} />{tr('編成の変更内容を確認')}<ChevronRight size={16} /></Button> : missingCharacter && onRecruit ? <Button disabled={busy || Boolean(save.battle)} onClick={() => onRecruit(missingCharacter.preferredCharacterId)}><Users size={16} />{tr('仲間を迎える')}<ChevronRight size={16} /></Button> : nextCraft && nextGem?.gemStatus === 'missing' && !missingCharacter ? <><p className="build-planner__next-small">{tr(nextCraft.description)}</p><Button disabled={busy || Boolean(save.battle)} onClick={() => onGems(nextDef!.id)}><Gem size={16} />{tr('石の製作へ')}<ChevronRight size={16} /></Button></> : nextFarm && nextGem?.gemStatus === 'missing' && !missingCharacter ? <><p className="build-planner__next-small">{tr('まずは挑戦できる入手先へ。目的の石は抽選です。')}</p><Button disabled={busy || Boolean(save.battle)} data-dungeon-id={nextFarm.dungeonId} onClick={() => onDungeon(nextFarm.dungeonId!)}><ArrowRight size={16} />{tr(nextFarm.name)}<ChevronRight size={16} /></Button></> : nextGem?.gemStatus === 'missing' && !missingCharacter ? <><p className="build-planner__lock"><LockKeyhole size={13} />{nextLockedSource ? `${tr(nextLockedSource.name)} — ${tr(nextLockedSource.lockReason ?? '入手先の解放が必要です。')}` : tr('入手先の解放が必要です。')}</p><p className="build-planner__next-small">{tr('まずは挑戦できる探索を進め、石の入手先を解放しましょう。')}</p>{unlockDungeon && <Button disabled={busy || Boolean(save.battle)} data-dungeon-id={unlockDungeon.id} onClick={() => onDungeon(unlockDungeon.id)}><ArrowRight size={16} />{tr(nextLockedSource?.unlockDungeonId ? '解放に向けて探索する' : '通常探索を進める')} · {tr(unlockDungeon.name)}</Button>}</> : <Button variant="secondary" disabled={busy} onClick={() => onGems()}><Gem size={16} />{tr('記憶石を整える')}<ChevronRight size={16} /></Button>}
+        {nextGem && !missingCharacter && <><p className="build-planner__next-small">{targetText(nextGem)}</p><TierPair gem={targetGem(nextGem)} target />{(needsNewTier || targetIsHighTier && needsDrop) && <p className="build-planner__next-small">{tr('目標の上位Tierは調律では作れません。対象の探索で新しい石を探しましょう。')}</p>}</>}
+        {plan.complete ? <Button disabled={busy || !plan.canApply} onClick={previewApply}><Users size={16} />{tr('編成の変更内容を確認')}<ChevronRight size={16} /></Button> : missingCharacter && onRecruit ? <Button disabled={busy || Boolean(save.battle)} onClick={() => onRecruit(missingCharacter.preferredCharacterId)}><Users size={16} />{tr('仲間を迎える')}<ChevronRight size={16} /></Button> : nextCraft && needsDrop && !needsNewTier && !missingCharacter ? <><p className="build-planner__next-small">{tr(nextCraft.description)}</p><Button disabled={busy || Boolean(save.battle)} onClick={() => onGems(nextDef!.id)}><Gem size={16} />{tr('石の製作へ')}<ChevronRight size={16} /></Button></> : nextFarm && needsDrop && !missingCharacter ? <><p className="build-planner__next-small">{tr('まずは挑戦できる入手先へ。目的の石は抽選です。')}</p><Button disabled={busy || Boolean(save.battle)} data-dungeon-id={nextFarm.dungeonId} onClick={() => onDungeon(nextFarm.dungeonId!)}><ArrowRight size={16} />{tr(nextFarm.name)}<ChevronRight size={16} /></Button></> : needsDrop && !missingCharacter ? <><p className="build-planner__lock"><LockKeyhole size={13} />{nextLockedSource ? `${tr(nextLockedSource.name)} — ${tr(nextLockedSource.lockReason ?? '入手先の解放が必要です。')}` : tr('入手先の解放が必要です。')}</p><p className="build-planner__next-small">{tr('まずは挑戦できる探索を進め、石の入手先を解放しましょう。')}</p>{unlockDungeon && <Button disabled={busy || Boolean(save.battle)} data-dungeon-id={unlockDungeon.id} onClick={() => onDungeon(unlockDungeon.id)}><ArrowRight size={16} />{tr(nextLockedSource?.unlockDungeonId ? '解放に向けて探索する' : '通常探索を進める')} · {tr(unlockDungeon.name)}</Button>}</> : <Button variant="secondary" disabled={busy} onClick={() => onGems()}><Gem size={16} />{tr('記憶石を整える')}<ChevronRight size={16} /></Button>}
       </section>
 
       <BuildDemo buildId={selectedId} stage={stage} content={content} reducedMotion={save.settings.reducedMotion} />
 
-      <InventorySection id="build-recipe" title="目標の編成と装備" count={plan.totalCount} tone="night"><div className="build-planner__recipe">{plan.slots.map((slot,index) => { const def=GEM_DEFINITIONS.find(gem => gem.id === slot.slot.gem.defId)!; return <article key={slot.slot.id} data-testid="build-slot" className="build-planner__slot">
+      <InventorySection id="build-recipe" title="目標の編成と装備" count={plan.totalCount} tone="night"><div className="build-planner__recipe">{plan.slots.map((slot,index) => { const def=GEM_DEFINITIONS.find(gem => gem.id === slot.slot.gem.defId)!; return <article key={slot.slot.id} data-testid="build-slot" data-slot-id={slot.slot.id} className="build-planner__slot">
         <div className="build-planner__slot-heading"><span>{String(index+1).padStart(2,'0')}</span><div><h4>{tr(slot.slot.label)}</h4><strong>{name(slot.characterId ?? slot.preferredCharacterId)}</strong></div>{slot.fulfilled && <Check size={18} />}</div>
         {slot.substitute && <p className="build-planner__muted">{tr('所持している代役です。実演の編成とは性能が異なります。')}</p>}
         {!slot.characterId && <p className="build-planner__lock"><Users size={13} />{tr('この枠の仲間を持っていません。')}</p>}
-        <p className="build-planner__gem-name"><Gem size={15} />{tr(def.name)}</p><p className="build-planner__target">{targetText(slot)}</p>{targetTraitDescription(slot) && <p className="build-planner__target-trait">{tr('目標の特性')}：{tr(targetTraitDescription(slot)!)}</p>}
+        <p className="build-planner__gem-name"><Gem size={15} />{tr(def.name)}</p><p className="build-planner__target">{targetText(slot)}</p><TierPair gem={targetGem(slot)} target />{gemPowerRefinementIsFixed(targetGem(slot)) && <p className="build-planner__target-effect">{tr('目標の技効果')}：{tr(gemDescription(targetGem(slot)))}</p>}{targetTraitDescription(slot) && <p className="build-planner__target-trait">{tr('目標の特性')}：{tr(targetTraitDescription(slot)!)}</p>}
         <p className={`build-planner__slot-state${slot.gemStatus === 'ready' ? ' is-ready' : ''}`}>{tr(slot.gemStatus === 'ready' ? '石の目標を達成' : slot.gemStatus === 'upgrade' ? '石は所持・性能は未達成' : 'この石は未所持')}</p>
         {slot.gem && <p className="build-planner__owned-gem">{tr('手持ち')}：{tr(gemName(slot.gem))} · {tr('技効力 ×{0}').replace('{0}',gemPowerMultiplier(slot.gem).toFixed(3).replace(/0$/, ''))} · {tr(gemTraitInfo[gemRoll(slot.gem).trait].name)}</p>}
-        {slot.gem && gemRoll(slot.gem).trait !== 'none' && <p className="build-planner__owned-gem">{tr('手持ちの特性')}：{tr(gemTraitDescription(slot.gem))}</p>}
+        {slot.gem && <TierPair gem={slot.gem} />}{slot.gem && (gemPowerRefinementIsFixed(targetGem(slot)) || gemPowerRefinementIsFixed(slot.gem)) && <p className="build-planner__owned-gem">{tr('手持ちの技効果')}：{tr(gemDescription(slot.gem))}</p>}{slot.gem && gemRoll(slot.gem).trait !== 'none' && <p className="build-planner__owned-gem">{tr('手持ちの特性')}：{tr(gemTraitDescription(slot.gem))}</p>}
         {slot.needsTransfer && <p className="build-planner__transfer">{tr('{0}から装備を移します。').replace('{0}',name(slot.ownerId))}</p>}
         <p className="build-planner__alternatives">{tr('編成できる仲間')}：{slot.slot.characterIds.map(id => name(id)).join(' / ')}</p>
       </article>; })}</div></InventorySection>
 
       <InventorySection id="build-farm-sources" title="不足している石の入手先" count={requiredDefs.length} tone="night"><div className="build-planner__sources">
-        <p className="build-planner__muted">{tr('石の系統が合う探索を表示します。狙った石や特性の入手は保証されません。')}</p>
-        {requiredDefs.length === 0 ? <p>{tr('この段階で不足している石はありません。さらに上の段階も目指せます。')}</p> : requiredDefs.map(id => { const def=GEM_DEFINITIONS.find(gem=>gem.id===id)!; const sources=findGemSources(content,save,id); const shown=sources.slice(0,6); return <section key={id} className="build-planner__source-group"><h4><Gem size={16} />{tr(def.name)}</h4>{shown.map(source => <SourceRow key={source.id} source={source} />)}{sources.length > shown.length && <p className="build-planner__muted">{tr('ほかにも同じ系統の探索で抽選されます。')}</p>}{sources.length === 0 && <p>{tr('現在表示できる入手先はありません。')}</p>}</section>; })}
+        <p className="build-planner__muted">{tr('石の系統が合う探索を表示します。狙った石や特性の入手は保証されません。')}</p>{plan.slots.some(slot => gemPowerTier(targetGem(slot)) >= 4 || gemTraitTier(targetGem(slot)) >= 4) && <p className="build-planner__muted">{tr('上位Tier率は、踏破宝箱で石を得たときの各項目の確率です。1周あたりの入手率ではありません。追加特性がある石だけ、特性も抽選します。')}</p>}
+        {requiredDefs.length === 0 ? <p>{tr('この段階で不足している石はありません。さらに上の段階も目指せます。')}</p> : requiredDefs.map(id => { const def=GEM_DEFINITIONS.find(gem=>gem.id===id)!; const sources=findGemSources(content,save,id,plan.slots.find(slot => slot.slot.gem.defId === id && slot.gemStatus !== 'ready')?.slot.gem); const shown=sources.slice(0,6); return <section key={id} className="build-planner__source-group"><h4><Gem size={16} />{tr(def.name)}</h4>{shown.map(source => <SourceRow key={source.id} source={source} />)}{sources.length > shown.length && <p className="build-planner__muted">{tr('ほかにも同じ系統の探索で抽選されます。')}</p>}{sources.length === 0 && <p>{tr('現在表示できる入手先はありません。')}</p>}</section>; })}
       </div></InventorySection>
 
       <InventorySection id="build-how-it-works" title="このビルドの使い方" tone="night"><div className="build-planner__mechanic"><p>{tr(definition.mechanic)}</p><ol>{definition.steps.map((step,index) => <li key={index}>{tr(step)}</li>)}</ol></div></InventorySection>
