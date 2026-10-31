@@ -1,3 +1,15 @@
+## 最新試作：ルネット必殺技 v4（「ぶおーん」のチャージ音）
+
+ユーザーのいう「バフ音」は必殺技前のチャージ音でした。誤って追加したバフスキルの音階フレーズを撤去し、既存チャージ原音をそのまま強化して4回配置しています。
+
+- [▶ 原音→強化音の比較・3秒](Lunette-Ultimate-Study-v4/STILLVEIL_Ultimate_Charge_Original_vs_Enhanced.mp4)
+- [▶ 必殺技へ組み込んだ版・5秒](Lunette-Ultimate-Study-v4/STILLVEIL_Lunette_Ultimate_Study_v4_Charge_720p.mp4)
+- [制作について](Lunette-Ultimate-Study-v4/README.txt)
+
+BGM・タップ音・鍵の回転なし。PR #116 に反映。マージ・itch.io配信は行っていません。以下の旧版は履歴です。
+
+---
+
 ## 最新試作：ルネット必殺技 v3（既存のバフ原音を強化）
 
 現在ゲームで鳴っているバフ音を直接書き出して使用。音程・フレーズ・間隔を維持し、密度と余韻を補強しました。高音へ作り直した版は外しています。

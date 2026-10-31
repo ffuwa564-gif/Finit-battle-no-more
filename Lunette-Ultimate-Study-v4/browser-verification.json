@@ -1,0 +1,20 @@
+[
+  {
+    "file": "STILLVEIL_Lunette_Ultimate_Study_v4_Charge_720p.mp4",
+    "width": 720,
+    "height": 1280,
+    "duration": 5,
+    "error": null,
+    "playback": "passed",
+    "seeks": "passed"
+  },
+  {
+    "file": "STILLVEIL_Ultimate_Charge_Original_vs_Enhanced.mp4",
+    "width": 720,
+    "height": 1280,
+    "duration": 3,
+    "error": null,
+    "playback": "passed",
+    "seeks": "passed"
+  }
+]
