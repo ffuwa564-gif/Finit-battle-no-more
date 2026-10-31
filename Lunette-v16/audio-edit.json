@@ -1,0 +1,84 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 23.0,
+  "source": "v8 score.wav, same game renderer with 75ms projectile contact and 180ms finishing flight",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 14.916666666666668,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 5.26279010318134
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 11.2905906759206
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 16.980560558615206
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 12.45749417752598
+    },
+    {
+      "at": 12.15,
+      "effectsOverMusicDb": 6.553560396613957
+    },
+    {
+      "at": 12.215,
+      "effectsOverMusicDb": 13.642054334452302
+    },
+    {
+      "at": 12.280000000000001,
+      "effectsOverMusicDb": 14.763717785680688
+    },
+    {
+      "at": 12.344999999999999,
+      "effectsOverMusicDb": 12.571927946714535
+    },
+    {
+      "at": 12.55,
+      "effectsOverMusicDb": 3.292972081184245
+    },
+    {
+      "at": 12.615,
+      "effectsOverMusicDb": 10.765284804885848
+    },
+    {
+      "at": 12.68,
+      "effectsOverMusicDb": 12.417415857963228
+    },
+    {
+      "at": 12.745000000000001,
+      "effectsOverMusicDb": 12.576784595724458
+    },
+    {
+      "at": 12.95,
+      "effectsOverMusicDb": 7.3082176507583005
+    },
+    {
+      "at": 13.015,
+      "effectsOverMusicDb": 10.834984021734604
+    },
+    {
+      "at": 13.08,
+      "effectsOverMusicDb": 10.918363758884775
+    },
+    {
+      "at": 13.145,
+      "effectsOverMusicDb": 13.564973041758657
+    },
+    {
+      "at": 14.916666666666668,
+      "effectsOverMusicDb": 17.21311695107151
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1
+}

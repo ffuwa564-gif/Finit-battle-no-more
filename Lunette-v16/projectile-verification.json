@@ -1,0 +1,12 @@
+{
+  "actualGame": true,
+  "noPageErrors": true,
+  "all17HpStepsObserved": true,
+  "firstFlightFrame": 125,
+  "firstDamageFrame": 128,
+  "heavyLandingHasNoFlyingBolts": true,
+  "initialHp": 1200,
+  "finalHp": 763,
+  "totalDamage": 437,
+  "whiteout": 1
+}

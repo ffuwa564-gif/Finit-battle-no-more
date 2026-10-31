@@ -1,0 +1,8 @@
+{
+  "whiteCutAt": 15.083333333333334,
+  "lastBattleFrameMean": 254.33333333333334,
+  "firstLunetteFrameMean": 254.33333333333334,
+  "afterRevealStd": 56.34123495982897,
+  "battlefieldReturn": false,
+  "fadeFromWhiteSeconds": 0.25
+}
