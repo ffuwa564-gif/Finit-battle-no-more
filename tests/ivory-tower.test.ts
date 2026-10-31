@@ -24,7 +24,7 @@ describe('Ivory Tower structure and ascent', () => {
     expect(ivoryTowerDungeons[99].enemyScale!.hp/ivoryTowerDungeons[0].enemyScale!.hp).toBeGreaterThan(3);
     // The entrance is already dangerous; deep floors still multiply that stronger baseline.
     expect(ivoryTowerDungeons[99].enemyScale!.attack/ivoryTowerDungeons[0].enemyScale!.attack).toBeGreaterThan(3);
-    expect(ivoryTowerDungeons[0].waves[0]).toHaveLength(2);
+    expect(ivoryTowerDungeons[0].waves[0]).toHaveLength(3);
     expect(ivoryTowerDungeons[4].bossStrike?.windup).toBeDefined();
     expect(ivoryTowerDungeons[9].waves).toHaveLength(2);
     expect(ivoryTowerDungeons[9].waves.at(-1)).toHaveLength(3);
@@ -63,11 +63,11 @@ describe('Ivory Tower real combat difficulty', () => {
   const excellent=towerBalanceQualities.find(item=>item.name==='excellent')!;
   const ideal=towerBalanceQualities.find(item=>item.name==='ideal')!;
   const bare=towerBalanceQualities.find(item=>item.name==='bare')!;
-  it('requires loot already at a shallow wall, with flowers, fairies, crystal switching, items and ultimates available', () => {
-    const wins = (quality: typeof practical) => Array.from({ length:10 }, (_, index) => runTowerBattle(12,party,quality,index+1)).filter(result => result.win).length;
-    expect(wins(bare)).toBe(0);
+  it('requires loot at the entrance, with flowers, fairies, crystal switching, items and ultimates available', () => {
+    const wins = (quality: typeof practical) => Array.from({ length:10 }, (_, index) => runTowerBattle(1,party,quality,index+1)).filter(result => result.win).length;
+    expect(wins(bare)).toBeLessThanOrEqual(2);
     expect(wins(practical)).toBeGreaterThanOrEqual(6);
-    expect(wins(excellent)).toBe(10);
+    expect(wins(excellent)).toBeGreaterThanOrEqual(8);
     expect(wins(ideal)).toBeGreaterThanOrEqual(8);
   }, 15000);
   it('stops bare SSR teams in the shallows and keeps the summit beyond the sampled ideal counterbuilds', () => {

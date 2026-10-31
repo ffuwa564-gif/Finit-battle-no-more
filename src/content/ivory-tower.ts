@@ -15,12 +15,12 @@ const strata = [
 ] as const;
 
 export const IVORY_TOWER_CURVE = {
-  hpBase: 9, hpGrowthDivisor: 85,
-  attackBase: 3.8, attackGrowthDivisor: 80,
+  hpBase: 12, hpGrowthDivisor: 85,
+  attackBase: 4.8, attackGrowthDivisor: 80,
   defensePerFloor: .006,
 } as const;
 
-/** HP is bounded for a 40-round encounter; attack keeps deep floors dangerous. */
+/** The entrance requires a loot build; deeper encounters retain the 40-round damage check. */
 export function towerEnemyScale(floor: number): NonNullable<DungeonDef['enemyScale']> {
   const step = floor - 1;
   return {
@@ -35,7 +35,7 @@ export const ivoryTowerDungeons: DungeonDef[] = Array.from({ length: 100 }, (_, 
   const milestone = floor % 10 === 0;
   const main = floor % 3 === 1 && !milestone ? 'pale-wolf' : floor % 3 === 2 && !milestone ? 'stone-drake' : stratum[1];
   // Loot progression starts at the entrance, rather than after a long single-boss tutorial.
-  const escorts = floor >= 10 ? [stratum[2], floor % 2 ? 'moon-moth' : 'thorn-witch'] : [stratum[2]];
+  const escorts = [stratum[2], stratum[2] === 'moon-moth' ? 'thorn-witch' : 'moon-moth'];
   const final: EnemyDef[] = [{ characterId: main, boss: true }, ...escorts.map(characterId => ({ characterId }))];
   const pressure = floor % 5 === 0;
   return {
