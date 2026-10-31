@@ -49,8 +49,12 @@ test('sound effects default to 100%, preview once, and stay independent of BGM',
   await expect(music.getByRole('button', { name: '50%', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(effects.getByRole('button', { name: '25%', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.waitForTimeout(300);
-  expect(await game.locator('body').evaluate(() => (window as any).cues)).toEqual([]);
+  expect(await game.locator('body').evaluate(() => (window as any).cues)).toEqual(['confirm']);
+  await game.locator('body').evaluate(() => { (window as any).cues = []; });
   await effects.getByRole('button', { name: '0%', exact: true }).click();
   await expect(effects.getByRole('button', { name: '0%', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await music.getByRole('button', { name: '0%', exact: true }).click();
+  await expect(music.getByRole('button', { name: '0%', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.waitForTimeout(300);
   expect(await game.locator('body').evaluate(() => (window as any).cues)).toEqual([]);
 });
