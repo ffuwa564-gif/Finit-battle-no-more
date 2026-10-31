@@ -36,3 +36,12 @@ ver1.0で入手導線のある69体が対象。4部門の上位3人、入手条�
 
 VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Future skills and stones are proposals, not implemented updates.
 
+## Scenario conference — ver1.00 and future plots
+
+- [13:52 scenario commentary (720p)](STILLVEIL-Scenario-Conference-ver1-720p.mp4)
+- [Plot notes: current story vs future proposals](Scenario-Plot-notes.txt)
+- [Full script](Scenario-Conference-script.txt)
+- [YouTube title and description](Scenario-YouTube-description.txt)
+
+Spoilers for the current opening and Chapters 1–4. Proposed Chapters 5–7 and skills are unimplemented. Meimei Himari appears as a fictional writing-role guest through the licensed VOICEVOX character; this is not an appearance or statement by the real creator.
+
