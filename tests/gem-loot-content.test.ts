@@ -13,6 +13,9 @@ describe('published Tier hunting destinations', () => {
     const entry = content.dungeons.find(dungeon => dungeon.id === 'silent-cathedral')!;
     expect(dungeonGemLootProfile(entry).tier4Chance).toBe(0);
     expect(content.dungeons.some(dungeon => !dungeon.towerFloor && dungeon.kind !== 'trial' && dungeonGemLootProfile(dungeon).tier5Chance > 0)).toBe(true);
+    const outsideTower = content.dungeons.filter(dungeon => dungeon.published && !dungeon.towerFloor && (dungeonGemLootProfile(dungeon).tier6Chance ?? 0) > 0);
+    expect(new Set(outsideTower.map(dungeonGemFamily))).toEqual(new Set(['sanctuary', 'clock', 'grave']));
+    expect(content.dungeons.filter(dungeon => dungeon.towerFloor && dungeon.towerFloor <= 40).every(dungeon => !dungeonGemLootProfile(dungeon).tier6Chance)).toBe(true);
   });
 
   it('rejects impossible rates, wrong-family targets and trial loot', () => {
@@ -20,6 +23,8 @@ describe('published Tier hunting destinations', () => {
     for (const patch of [
       { gemLoot: { tier4Chance: -.1, tier5Chance: 0 } },
       { gemLoot: { tier4Chance: .8, tier5Chance: .8 } },
+      { gemLoot: { tier4Chance: .4, tier5Chance: .4, tier6Chance: .3 } },
+      { gemLoot: { tier4Chance: .1, tier5Chance: 0, tier6Chance: NaN } },
       { gemLoot: { tier4Chance: .1, tier5Chance: 0, featuredDefId: 'star-furnace' } },
       { kind: 'trial' as const, gemLoot: { tier4Chance: .1, tier5Chance: 0 } },
     ]) {

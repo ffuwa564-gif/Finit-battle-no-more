@@ -2355,5 +2355,13 @@
   " 睡眠の成否にかかわらず、自分の必殺ゲージを追加で{0}充填する。": " Gain {0} extra Ultimate charge whether sleep succeeds or fails.",
   "睡眠の成否にかかわらず、自分の必殺ゲージを追加で{0}充填する。": "Gain {0} extra Ultimate charge whether sleep succeeds or fails.",
   "{0} 睡眠の成否にかかわらず、自分の必殺ゲージを追加で{1}充填する。": "{0} Gain {1} extra Ultimate charge whether sleep succeeds or fails.",
-  "このTier内では技の効果が変わらないため、技効力は調律できません。追加特性は調律できます。": "This skill has the same effect throughout its Tier, so its potency cannot be tuned. You can still tune its additional trait."
+  "このTier内では技の効果が変わらないため、技効力は調律できません。追加特性は調律できます。": "This skill has the same effect throughout its Tier, so its potency cannot be tuned. You can still tune its additional trait.",
+  "通常の調律はT3まで。拾ったT4〜T6の項目は、そのTierを保って仕上げられます。": "Ordinary tuning reaches T3. T4–T6 stats found in loot can be refined within their own Tier.",
+  "製作した石も、調律でT3まで育てられます。T4〜T6は探索で見つける上位の性能です。": "Crafted gems can be tuned up to T3. T4–T6 stats are higher-quality finds from exploration.",
+  "T4〜T6は対応するダンジョンの踏破宝箱から。道中の宝箱はT3までです。": "T4–T6 stats appear in eligible final treasure chests. Chests along the way reach T3.",
+  "別の敵1体へ攻撃力の45〜129%で追加攻撃。追加攻撃から特性は再発動しない。": "Strike one other enemy for 45–129% of attack power. This extra hit cannot trigger another trait effect.",
+  "HP割合が最も低い味方に最大HPの10〜46%の障壁を追加。障壁の合計上限は最大HPの60%。": "Grant the ally with the lowest HP ratio a barrier worth 10–46% of their max HP. Total barrier is capped at 60% of max HP.",
+  "残りHP35%以下の敵への技の威力が20〜116%上昇。": "Increase this skill’s damage by 20–116% against enemies with 35% HP or less.",
+  "実際に与えたHPダメージの20〜92%で、HP割合が最も低い味方を回復。": "Heal the ally with the lowest HP ratio for 20–92% of actual HP damage dealt.",
+  "白亜の塔のT6は第{0}層から狙えます。": "Tier 6 gems can be found in the Ivory Tower starting on floor {0}."
 }

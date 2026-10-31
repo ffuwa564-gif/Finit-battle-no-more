@@ -21,14 +21,15 @@ const qualities = [
   { name: 'legacy-best', power: 100, value: 100 },
   { name: 'T4-floor', power: 120, value: 120 },
   { name: 'T5-ceiling', power: 179, value: 179 },
+  { name: 'T6-ceiling', power: 239, value: 239 },
 ];
 const stages = ['silent-cathedral', 'stone-fountain', 'hollow-gate', 'kuzuha-advanced', 'lunette-advanced', ...[1, 5].map(floor => content.dungeons.find(stage => stage.towerFloor === floor)!.id)];
 const damage = new Set(['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn']);
-interface Outcome { seed: number; win: boolean; rounds: number; gemUses: number; ultimates: number; sleepSkips: number; sleepAttempts: number; sleepBlockedAttempts: number; maxBossSkipStreak: number; survivors: number }
+interface Outcome { seed: number; win: boolean; rounds: number; gemUses: number; ultimates: number; sleepSkips: number; sleepAttempts: number; sleepBlockedAttempts: number; maxBossSkipStreak: number; maxSameActorUltimateStreak: number; maxPartyUltimatesPerRound: number; batteryCasts: number; batteryHPPaid: number; nativeOffensiveActions: number; nativeHealingActions: number; survivors: number }
 interface ComparisonRecord {
   party: string; loadout: string; stage: string; quality: string; wins: number; seeds: number;
   averageRounds: number; averageGemUses: number; averageUltimates: number; averageSleepSkips: number;
-  sleepAttempts: number; sleepBlockedAttempts: number; maxBossSkipStreak: number; outcomes: Outcome[];
+  sleepAttempts: number; sleepBlockedAttempts: number; maxBossSkipStreak: number; maxSameActorUltimateStreak: number; maxPartyUltimatesPerRound: number; batteryCasts: number; batteryHPPaid: number; nativeOffensiveActions: number; nativeHealingActions: number; outcomes: Outcome[];
 }
 const records: ComparisonRecord[] = [];
 for (const party of parties) for (const loadout of loadouts) for (const stage of stages) for (const quality of qualities) {
@@ -41,8 +42,9 @@ for (const party of parties) for (const loadout of loadouts) for (const stage of
         power: quality.power, trait: damage.has(def.skill.template) ? 'execution' : 'bulwark', value: quality.value,
       } } satisfies MemoryGem];
     }));
-    let rounds = 0, gemUses = 0, ultimates = 0, sleepSkips = 0, sleepAttempts = 0, sleepBlockedAttempts = 0, maxBossSkipStreak = 0, steps = 0;
+    let rounds = 0, gemUses = 0, ultimates = 0, sleepSkips = 0, sleepAttempts = 0, sleepBlockedAttempts = 0, maxBossSkipStreak = 0, maxSameActorUltimateStreak = 0, maxPartyUltimatesPerRound = 0, batteryCasts = 0, batteryHPPaid = 0, nativeOffensiveActions = 0, nativeHealingActions = 0, steps = 0;
     const bossSkipStreak = new Map<string, number>();
+    const ultimateStreak = new Map<string, { round: number; streak: number }>();
     while (!['reward', 'failed'].includes(battle.phase) && steps++ < 2500) {
       if (battle.phase === 'playing') { battle = advanceReplay(battle, content); continue; }
       const pilot = battle.units.find(unit => unit.characterId === party.ids[0] && unit.side === 'party' && unit.hp > 0);
@@ -56,10 +58,26 @@ for (const party of parties) for (const loadout of loadouts) for (const stage of
       }
       const next = resolveRound(battle, content).battle;
       gemUses += next.events.filter(event => event.actionSelection && event.skillId && gemDefinitionForSkill(event.skillId)).length;
-      ultimates += next.events.filter(event => event.ultimate).length;
+      const partyUltimates = next.events.filter(event => event.actionSelection && event.ultimate && event.actorId?.startsWith('party:'));
+      ultimates += partyUltimates.length;
+      maxPartyUltimatesPerRound = Math.max(maxPartyUltimatesPerRound, partyUltimates.length);
+      for (const event of partyUltimates) {
+        const previous = ultimateStreak.get(event.actorId!);
+        const streak = previous?.round === next.round - 1 ? previous.streak + 1 : 1;
+        ultimateStreak.set(event.actorId!, { round: next.round, streak });
+        maxSameActorUltimateStreak = Math.max(maxSameActorUltimateStreak, streak);
+      }
       sleepSkips += next.events.filter(event => event.statusAction === 'skip' && event.ailment === 'sleep' && event.actorId?.startsWith('enemy:')).length;
+      const nativeActions = next.events.filter(event => event.actionSelection && event.actorId?.startsWith('party:') && !event.ultimate && !(event.skillId && gemDefinitionForSkill(event.skillId)));
+      nativeOffensiveActions += nativeActions.filter(event => ['attack', 'area'].includes(event.kind)).length;
+      nativeHealingActions += nativeActions.filter(event => event.kind === 'heal').length;
       let previousUnits = next.initialUnits;
       for (const event of next.events) {
+        if (event.actionSelection && event.skillId && gemDefinitionForSkill(event.skillId)?.id === 'star-furnace') {
+          batteryCasts++;
+          const before = previousUnits.find(unit => unit.uid === event.actorId), after = event.unitsAfter?.find(unit => unit.uid === event.actorId);
+          if (before && after) batteryHPPaid += Math.max(0, before.hp - after.hp);
+        }
         if (event.actionSelection && event.skillId && gemDefinitionForSkill(event.skillId)?.id === 'dream-lace') {
           sleepAttempts++;
           if (event.targetIds?.some(id => {
@@ -70,7 +88,7 @@ for (const party of parties) for (const loadout of loadouts) for (const stage of
         if (event.unitsAfter) previousUnits = event.unitsAfter;
       }
       for (const boss of next.units.filter(unit => unit.side === 'enemy' && unit.boss)) {
-        const skipped = next.events.some(event => event.actorId === boss.uid && event.statusAction === 'skip');
+        const skipped = next.events.some(event => event.actorId === boss.uid && event.statusAction === 'skip' && event.ailment === 'sleep');
         const acted = next.events.some(event => event.actorId === boss.uid && event.actionSelection);
         if (skipped) {
           const streak = (bossSkipStreak.get(boss.uid) ?? 0) + 1;
@@ -79,26 +97,30 @@ for (const party of parties) for (const loadout of loadouts) for (const stage of
       }
       battle = next; rounds++;
     }
-    outcomes.push({ seed, win: battle.phase === 'reward', rounds, gemUses, ultimates, sleepSkips, sleepAttempts, sleepBlockedAttempts, maxBossSkipStreak, survivors: battle.units.filter(unit => unit.side === 'party' && unit.hp > 0).length });
+    outcomes.push({ seed, win: battle.phase === 'reward', rounds, gemUses, ultimates, sleepSkips, sleepAttempts, sleepBlockedAttempts, maxBossSkipStreak, maxSameActorUltimateStreak, maxPartyUltimatesPerRound, batteryCasts, batteryHPPaid, nativeOffensiveActions, nativeHealingActions, survivors: battle.units.filter(unit => unit.side === 'party' && unit.hp > 0).length });
   }
   const average = (key: 'rounds' | 'gemUses' | 'ultimates' | 'sleepSkips') => Number((outcomes.reduce((sum, outcome) => sum + outcome[key], 0) / seeds).toFixed(2));
-  records.push({ party: party.name, loadout: loadout.name, stage, quality: quality.name, wins: outcomes.filter(outcome => outcome.win).length, seeds, averageRounds: average('rounds'), averageGemUses: average('gemUses'), averageUltimates: average('ultimates'), averageSleepSkips: average('sleepSkips'), sleepAttempts: outcomes.reduce((sum, outcome) => sum + outcome.sleepAttempts, 0), sleepBlockedAttempts: outcomes.reduce((sum, outcome) => sum + outcome.sleepBlockedAttempts, 0), maxBossSkipStreak: Math.max(...outcomes.map(outcome => outcome.maxBossSkipStreak)), outcomes });
+  records.push({ party: party.name, loadout: loadout.name, stage, quality: quality.name, wins: outcomes.filter(outcome => outcome.win).length, seeds, averageRounds: average('rounds'), averageGemUses: average('gemUses'), averageUltimates: average('ultimates'), averageSleepSkips: average('sleepSkips'), sleepAttempts: outcomes.reduce((sum, outcome) => sum + outcome.sleepAttempts, 0), sleepBlockedAttempts: outcomes.reduce((sum, outcome) => sum + outcome.sleepBlockedAttempts, 0), maxBossSkipStreak: Math.max(...outcomes.map(outcome => outcome.maxBossSkipStreak)), maxSameActorUltimateStreak: Math.max(...outcomes.map(outcome => outcome.maxSameActorUltimateStreak)), maxPartyUltimatesPerRound: Math.max(...outcomes.map(outcome => outcome.maxPartyUltimatesPerRound)), batteryCasts: outcomes.reduce((sum, outcome) => sum + outcome.batteryCasts, 0), batteryHPPaid: outcomes.reduce((sum, outcome) => sum + outcome.batteryHPPaid, 0), nativeOffensiveActions: outcomes.reduce((sum, outcome) => sum + outcome.nativeOffensiveActions, 0), nativeHealingActions: outcomes.reduce((sum, outcome) => sum + outcome.nativeHealingActions, 0), outcomes });
 }
-const pairedComparisons = records.filter(record => record.quality !== 'legacy-best').map(record => {
-  const baseline = records.find(candidate => candidate.party === record.party && candidate.loadout === record.loadout && candidate.stage === record.stage && candidate.quality === 'legacy-best')!;
-  const pairedWins = record.outcomes.flatMap(outcome => {
-    const before = baseline.outcomes.find(candidate => candidate.seed === outcome.seed)!;
-    return outcome.win && before.win ? [{ seed: outcome.seed, before: before.rounds, after: outcome.rounds }] : [];
+const pairedComparisons = records.filter(record => record.quality !== 'legacy-best').flatMap(record => {
+  const baselines = record.quality === 'T6-ceiling' ? ['legacy-best', 'T5-ceiling'] : ['legacy-best'];
+  return baselines.map(baselineQuality => {
+    const baseline = records.find(candidate => candidate.party === record.party && candidate.loadout === record.loadout && candidate.stage === record.stage && candidate.quality === baselineQuality)!;
+    const pairedWins = record.outcomes.flatMap(outcome => {
+      const before = baseline.outcomes.find(candidate => candidate.seed === outcome.seed)!;
+      return outcome.win && before.win ? [{ seed: outcome.seed, before: before.rounds, after: outcome.rounds }] : [];
+    });
+    return { party: record.party, loadout: record.loadout, stage: record.stage, quality: record.quality, baselineQuality, pairedWins, winsBefore: baseline.wins, winsAfter: record.wins };
   });
-  return { party: record.party, loadout: record.loadout, stage: record.stage, quality: record.quality, pairedWins, winsBefore: baseline.wins, winsAfter: record.wins };
 });
 const report = {
-  kind: 'paired-seed-domain-combat-comparison', revision: 'sleep-power-charge-v2', qualities, stages, seeds,
+  kind: 'paired-seed-domain-combat-comparison', revision: 'tier6-furnace-charge-v2', qualities, stages, seeds,
   assumptions: {
     identicalPartiesSkillsVariantsAndSeeds: true,
     qualityDoesNotRepresentAcquisitionTime: true,
     loadoutsAreComparisonsNotOptimalBuilds: true,
-    sleepTierModel: 'All tiers keep cooldown 4, ordinary/boss chance caps 95/60, boss sleep one action and status wards. Power T4/T5 adds 15/30 self ultimate charge once per actual cast, on success or resistance.',
+    furnaceTier6Model: 'T6 power keeps the T5 cooldown 3 and raises single-use charge cap from 70 to 80. Other tiers and native/legacy resonance remain unchanged. HP cost remains 10 percent.',
+    sleepTierModel: 'All tiers keep cooldown 4, ordinary/boss chance caps 95/60, boss sleep one action and status wards. Power T4/T5/T6 adds 15/30/45 self ultimate charge once per actual cast, on success or resistance.',
     policy: 'pilot-ultimate-then-gem-else-AI, except four-sleep-auto-stress uses pilot-ultimate-then-AI; companion-ultimates-queued; pilot-crystal; no-potions-or-flowers-or-fairies',
     limitation: 'Finite fixed-policy samples do not prove balance, monotonic wins, player fun, or impossibility. Three batteries and four sleep stones are deliberate stress cases.',
   }, records, pairedComparisons,

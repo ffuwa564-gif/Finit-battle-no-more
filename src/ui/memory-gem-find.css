@@ -25,3 +25,4 @@
 @media(prefers-reduced-motion:reduce) { .memory-gem-find,.memory-gem-find svg { animation:none; } }
 
 .memory-gem-summary__quality { display:block; margin-top:3px; font-size:10px; color:#526073; }
+.memory-gem-find--tier-6 { border-color:#a3e5ec; background:linear-gradient(120deg,#1b303cf5,#294b52f5); box-shadow:0 0 28px #7bd8e143,inset 0 1px #e4ffff47; }

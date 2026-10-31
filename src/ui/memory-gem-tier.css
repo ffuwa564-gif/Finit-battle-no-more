@@ -4,3 +4,4 @@
 .memory-gem-tier--3 { --tier-ink:#e5dfb6; --tier-glow:#c6ba84; }
 .memory-gem-tier--4 { --tier-ink:#ffe2a5; --tier-glow:#e1b668; box-shadow:inset 0 0 8px #e2b45712; }
 .memory-gem-tier--5 { --tier-ink:#f6d6ff; --tier-glow:#d0a1e0; box-shadow:inset 0 0 10px #d1a2e31c,0 0 9px #d1a2e315; }
+.memory-gem-tier--6 { --tier-ink:#e7fdff; --tier-glow:#8fdde8; border-color:#9ce5ed; background:linear-gradient(125deg,#26434a,#172b3a); box-shadow:inset 0 0 11px #a1ecf521,0 0 10px #8bdde51c; }

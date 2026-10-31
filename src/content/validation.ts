@@ -168,7 +168,8 @@ export function validateContent(content: Content): string[] {
     if (dungeon.gemLoot) {
       const loot = dungeon.gemLoot;
       const featured = GEM_DEFINITIONS.find(def => def.id === loot.featuredDefId);
-      reject(dungeon.kind === 'trial' || ![loot.tier4Chance, loot.tier5Chance].every(rate => Number.isFinite(rate) && rate >= 0 && rate <= 1) || loot.tier4Chance + loot.tier5Chance > 1 || Boolean(loot.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))), `dungeons/${dungeon.id}: invalid memory stone loot profile`);
+      const tier6Chance = loot.tier6Chance === undefined ? 0 : loot.tier6Chance;
+      reject(dungeon.kind === 'trial' || ![loot.tier4Chance, loot.tier5Chance, tier6Chance].every(rate => Number.isFinite(rate) && rate >= 0 && rate <= 1) || loot.tier4Chance + loot.tier5Chance + tier6Chance > 1 || Boolean(loot.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))), `dungeons/${dungeon.id}: invalid memory stone loot profile`);
     }
     if (dungeon.towerFloor !== undefined) {
       const floor = dungeon.towerFloor;

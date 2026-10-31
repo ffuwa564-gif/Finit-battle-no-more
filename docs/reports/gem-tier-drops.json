@@ -14,16 +14,22 @@
         "stone": 0.6484,
         "itemTier4": 0,
         "itemTier5": 0,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0,
         "powerTier5": 0,
         "traitTier4": 0,
         "traitTier5": 0,
         "featured": 0,
-        "featuredTier4Or5": 0
+        "featuredTier4OrHigher": 0
       },
-      "waitingForAnyTier4Or5": null,
-      "waitingForAnyTier5": null,
-      "waitingForFeaturedTier4Or5": null
+      "waitingForAnyTier4OrHigher": null,
+      "waitingForAnyTier5OrHigher": null,
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": null
     },
     {
       "id": "stone-fountain",
@@ -38,19 +44,25 @@
         "stone": 0.6484,
         "itemTier4": 0.05446,
         "itemTier5": 0,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.038,
         "powerTier5": 0,
         "traitTier4": 0.01738,
         "traitTier5": 0,
         "featured": 0.43219,
-        "featuredTier4Or5": 0.03654
+        "featuredTier4OrHigher": 0.03654
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 18.4,
         "runsFor95PercentChance": 54
       },
-      "waitingForAnyTier5": null,
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier5OrHigher": null,
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 27.4,
         "runsFor95PercentChance": 81
       }
@@ -68,22 +80,28 @@
         "stone": 0.6484,
         "itemTier4": 0.0894,
         "itemTier5": 0.00476,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.06376,
         "powerTier5": 0.00331,
         "traitTier4": 0.02881,
         "traitTier5": 0.00146,
         "featured": 0.37534,
-        "featuredTier4Or5": 0.05439
+        "featuredTier4OrHigher": 0.05439
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 10.6,
         "runsFor95PercentChance": 31
       },
-      "waitingForAnyTier5": {
+      "waitingForAnyTier5OrHigher": {
         "meanRuns": 210.1,
         "runsFor95PercentChance": 628
       },
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 18.4,
         "runsFor95PercentChance": 54
       }
@@ -101,22 +119,28 @@
         "stone": 0.6484,
         "itemTier4": 0.14173,
         "itemTier5": 0.00929,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.10288,
         "powerTier5": 0.00645,
         "traitTier4": 0.04717,
         "traitTier5": 0.00288,
         "featured": 0.30581,
-        "featuredTier4Or5": 0.07169
+        "featuredTier4OrHigher": 0.07169
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 6.6,
         "runsFor95PercentChance": 19
       },
-      "waitingForAnyTier5": {
+      "waitingForAnyTier5OrHigher": {
         "meanRuns": 107.6,
         "runsFor95PercentChance": 321
       },
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 13.9,
         "runsFor95PercentChance": 41
       }
@@ -127,31 +151,136 @@
       "profile": {
         "tier4Chance": 0.22,
         "tier5Chance": 0.03,
+        "tier6Chance": 0.005,
         "featuredDefId": "twin-tide"
       },
       "samples": 100000,
       "perFinalWave": {
         "stone": 0.6484,
-        "itemTier4": 0.18852,
-        "itemTier5": 0.02717,
-        "powerTier4": 0.14158,
-        "powerTier5": 0.01895,
-        "traitTier4": 0.06464,
-        "traitTier5": 0.0084,
+        "itemTier4": 0.18778,
+        "itemTier5": 0.02701,
+        "itemTier6": 0.00477,
+        "powerTier6": 0.00331,
+        "traitTier6": 0.00147,
+        "featuredTier6": 0.00216,
+        "powerTier4": 0.14146,
+        "powerTier5": 0.01881,
+        "traitTier4": 0.06449,
+        "traitTier5": 0.00843,
         "featured": 0.30581,
-        "featuredTier4Or5": 0.10241
+        "featuredTier4OrHigher": 0.10411
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 4.6,
         "runsFor95PercentChance": 13
       },
-      "waitingForAnyTier5": {
-        "meanRuns": 36.8,
-        "runsFor95PercentChance": 109
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 31.5,
+        "runsFor95PercentChance": 93
       },
-      "waitingForFeaturedTier4Or5": {
-        "meanRuns": 9.8,
+      "waitingForAnyTier6": {
+        "meanRuns": 209.6,
+        "runsFor95PercentChance": 627
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 463,
+        "runsFor95PercentChance": 1386
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 9.6,
         "runsFor95PercentChance": 28
+      }
+    },
+    {
+      "id": "zakuro-procession",
+      "name": "怠惰姫の渡御",
+      "profile": {
+        "tier4Chance": 0.22,
+        "tier5Chance": 0.03,
+        "tier6Chance": 0.005,
+        "featuredDefId": "clear-tear"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.18778,
+        "itemTier5": 0.02701,
+        "itemTier6": 0.00477,
+        "powerTier6": 0.00331,
+        "traitTier6": 0.00147,
+        "featuredTier6": 0.00276,
+        "powerTier4": 0.14146,
+        "powerTier5": 0.01881,
+        "traitTier4": 0.06449,
+        "traitTier5": 0.00843,
+        "featured": 0.37358,
+        "featuredTier4OrHigher": 0.12659
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 4.6,
+        "runsFor95PercentChance": 13
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 31.5,
+        "runsFor95PercentChance": 93
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 209.6,
+        "runsFor95PercentChance": 627
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 362.3,
+        "runsFor95PercentChance": 1084
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 7.9,
+        "runsFor95PercentChance": 23
+      }
+    },
+    {
+      "id": "kuzuha-awakening",
+      "name": "宵宮に咲く九尾・覚醒級",
+      "profile": {
+        "tier4Chance": 0.25,
+        "tier5Chance": 0.04,
+        "tier6Chance": 0.01,
+        "featuredDefId": "twin-tide"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.2092,
+        "itemTier5": 0.03607,
+        "itemTier6": 0.00925,
+        "powerTier6": 0.00645,
+        "traitTier6": 0.00284,
+        "featuredTier6": 0.00414,
+        "powerTier4": 0.16159,
+        "powerTier5": 0.02488,
+        "traitTier4": 0.07288,
+        "traitTier5": 0.01175,
+        "featured": 0.30581,
+        "featuredTier4OrHigher": 0.12049
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 3.9,
+        "runsFor95PercentChance": 11
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 22.1,
+        "runsFor95PercentChance": 65
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 108.1,
+        "runsFor95PercentChance": 323
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 241.5,
+        "runsFor95PercentChance": 723
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 8.3,
+        "runsFor95PercentChance": 24
       }
     },
     {
@@ -167,22 +296,28 @@
         "stone": 0.6484,
         "itemTier4": 0.10743,
         "itemTier5": 0.00477,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.07718,
         "powerTier5": 0.00331,
         "traitTier4": 0.03484,
         "traitTier5": 0.00147,
         "featured": 0.37534,
-        "featuredTier4Or5": 0.06495
+        "featuredTier4OrHigher": 0.06495
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 8.9,
         "runsFor95PercentChance": 26
       },
-      "waitingForAnyTier5": {
+      "waitingForAnyTier5OrHigher": {
         "meanRuns": 209.6,
         "runsFor95PercentChance": 627
       },
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 15.4,
         "runsFor95PercentChance": 45
       }
@@ -193,31 +328,44 @@
       "profile": {
         "tier4Chance": 0.25,
         "tier5Chance": 0.04,
+        "tier6Chance": 0.01,
         "featuredDefId": "star-furnace"
       },
       "samples": 100000,
       "perFinalWave": {
         "stone": 0.6484,
-        "itemTier4": 0.21079,
-        "itemTier5": 0.03586,
-        "powerTier4": 0.1615,
-        "powerTier5": 0.02489,
-        "traitTier4": 0.07286,
-        "traitTier5": 0.01136,
+        "itemTier4": 0.2092,
+        "itemTier5": 0.03607,
+        "itemTier6": 0.00925,
+        "powerTier6": 0.00645,
+        "traitTier6": 0.00284,
+        "featuredTier6": 0.00414,
+        "powerTier4": 0.16159,
+        "powerTier5": 0.02488,
+        "traitTier4": 0.07288,
+        "traitTier5": 0.01175,
         "featured": 0.30581,
-        "featuredTier4Or5": 0.11673
+        "featuredTier4OrHigher": 0.12049
       },
-      "waitingForAnyTier4Or5": {
-        "meanRuns": 4.1,
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 3.9,
         "runsFor95PercentChance": 11
       },
-      "waitingForAnyTier5": {
-        "meanRuns": 27.9,
-        "runsFor95PercentChance": 83
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 22.1,
+        "runsFor95PercentChance": 65
       },
-      "waitingForFeaturedTier4Or5": {
-        "meanRuns": 8.6,
-        "runsFor95PercentChance": 25
+      "waitingForAnyTier6": {
+        "meanRuns": 108.1,
+        "runsFor95PercentChance": 323
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 241.5,
+        "runsFor95PercentChance": 723
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 8.3,
+        "runsFor95PercentChance": 24
       }
     },
     {
@@ -233,19 +381,25 @@
         "stone": 0.6484,
         "itemTier4": 0.05446,
         "itemTier5": 0,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.038,
         "powerTier5": 0,
         "traitTier4": 0.01738,
         "traitTier5": 0,
         "featured": 0.37534,
-        "featuredTier4Or5": 0.03118
+        "featuredTier4OrHigher": 0.03118
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 18.4,
         "runsFor95PercentChance": 54
       },
-      "waitingForAnyTier5": null,
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier5OrHigher": null,
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 32.1,
         "runsFor95PercentChance": 95
       }
@@ -263,22 +417,28 @@
         "stone": 1,
         "itemTier4": 0.26927,
         "itemTier5": 0.02809,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.19903,
         "powerTier5": 0.01956,
         "traitTier4": 0.09166,
         "traitTier5": 0.00869,
         "featured": 0.57747,
-        "featuredTier4Or5": 0.17272
+        "featuredTier4OrHigher": 0.17272
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 3.4,
         "runsFor95PercentChance": 9
       },
-      "waitingForAnyTier5": {
+      "waitingForAnyTier5OrHigher": {
         "meanRuns": 35.6,
         "runsFor95PercentChance": 106
       },
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 5.8,
         "runsFor95PercentChance": 16
       }
@@ -296,22 +456,28 @@
         "stone": 1,
         "itemTier4": 0.27768,
         "itemTier5": 0.0291,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
         "powerTier4": 0.19903,
         "powerTier5": 0.01956,
         "traitTier4": 0.10247,
         "traitTier5": 0.00972,
         "featured": 0.57747,
-        "featuredTier4Or5": 0.17794
+        "featuredTier4OrHigher": 0.17794
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 3.3,
         "runsFor95PercentChance": 9
       },
-      "waitingForAnyTier5": {
+      "waitingForAnyTier5OrHigher": {
         "meanRuns": 34.4,
         "runsFor95PercentChance": 102
       },
-      "waitingForFeaturedTier4Or5": {
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
         "meanRuns": 5.6,
         "runsFor95PercentChance": 16
       }
@@ -322,31 +488,313 @@
       "profile": {
         "tier4Chance": 0.4,
         "tier5Chance": 0.1,
+        "tier6Chance": 0.015,
         "featuredDefId": "clear-tear"
       },
       "samples": 100000,
       "perFinalWave": {
         "stone": 1,
-        "itemTier4": 0.51879,
-        "itemTier5": 0.16751,
-        "powerTier4": 0.39927,
-        "powerTier5": 0.09962,
-        "traitTier4": 0.29804,
-        "traitTier5": 0.07531,
+        "itemTier4": 0.5093,
+        "itemTier5": 0.16561,
+        "itemTier6": 0.02581,
+        "powerTier6": 0.01483,
+        "traitTier6": 0.01116,
+        "featuredTier6": 0.01468,
+        "powerTier4": 0.39851,
+        "powerTier5": 0.10005,
+        "traitTier4": 0.29793,
+        "traitTier5": 0.07522,
         "featured": 0.57524,
-        "featuredTier4Or5": 0.39393
+        "featuredTier4OrHigher": 0.40253
       },
-      "waitingForAnyTier4Or5": {
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 1.4,
+        "runsFor95PercentChance": 3
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 5.2,
+        "runsFor95PercentChance": 15
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 38.7,
+        "runsFor95PercentChance": 115
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 68.1,
+        "runsFor95PercentChance": 203
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 2.5,
+        "runsFor95PercentChance": 6
+      }
+    },
+    {
+      "id": "ivory-tower-040",
+      "name": "白亜の塔・第40層",
+      "profile": {
+        "tier4Chance": 0.25,
+        "tier5Chance": 0.04,
+        "featuredDefId": "clear-tear"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.34505,
+        "itemTier5": 0.05987,
+        "itemTier6": 0,
+        "powerTier6": 0,
+        "traitTier6": 0,
+        "featuredTier6": 0,
+        "powerTier4": 0.24912,
+        "powerTier5": 0.03887,
+        "traitTier4": 0.14192,
+        "traitTier5": 0.02191,
+        "featured": 0.57524,
+        "featuredTier4OrHigher": 0.23221
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 2.5,
+        "runsFor95PercentChance": 6
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 16.7,
+        "runsFor95PercentChance": 49
+      },
+      "waitingForAnyTier6": null,
+      "waitingForFeaturedTier6": null,
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 4.3,
+        "runsFor95PercentChance": 12
+      }
+    },
+    {
+      "id": "ivory-tower-041",
+      "name": "白亜の塔・第41層",
+      "profile": {
+        "tier4Chance": 0.30000000000000004,
+        "tier5Chance": 0.06,
+        "tier6Chance": 0.005,
+        "featuredDefId": "rewind-thread"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.3977,
+        "itemTier5": 0.09066,
+        "itemTier6": 0.0076,
+        "powerTier6": 0.00501,
+        "traitTier6": 0.0026,
+        "featuredTier6": 0.00438,
+        "powerTier4": 0.29915,
+        "powerTier5": 0.05911,
+        "traitTier4": 0.17142,
+        "traitTier5": 0.03393,
+        "featured": 0.57524,
+        "featuredTier4OrHigher": 0.28456
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 2,
+        "runsFor95PercentChance": 5
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 10.2,
+        "runsFor95PercentChance": 29
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 131.6,
+        "runsFor95PercentChance": 393
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 228.3,
+        "runsFor95PercentChance": 683
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 3.5,
+        "runsFor95PercentChance": 9
+      }
+    },
+    {
+      "id": "ivory-tower-060",
+      "name": "白亜の塔・第60層",
+      "profile": {
+        "tier4Chance": 0.30000000000000004,
+        "tier5Chance": 0.06,
+        "tier6Chance": 0.005,
+        "featuredDefId": "dream-lace"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.40761,
+        "itemTier5": 0.09415,
+        "itemTier6": 0.00782,
+        "powerTier6": 0.00501,
+        "traitTier6": 0.00282,
+        "featuredTier6": 0.00521,
+        "powerTier4": 0.29915,
+        "powerTier5": 0.05911,
+        "traitTier4": 0.18904,
+        "traitTier5": 0.03763,
+        "featured": 0.66468,
+        "featuredTier4OrHigher": 0.33815
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 2,
+        "runsFor95PercentChance": 5
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 9.8,
+        "runsFor95PercentChance": 28
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 127.9,
+        "runsFor95PercentChance": 382
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 191.9,
+        "runsFor95PercentChance": 574
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 3,
+        "runsFor95PercentChance": 8
+      }
+    },
+    {
+      "id": "ivory-tower-061",
+      "name": "白亜の塔・第61層",
+      "profile": {
+        "tier4Chance": 0.35000000000000003,
+        "tier5Chance": 0.08,
+        "tier6Chance": 0.01,
+        "featuredDefId": "pale-ward"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.45331,
+        "itemTier5": 0.12526,
+        "itemTier6": 0.01589,
+        "powerTier6": 0.00994,
+        "traitTier6": 0.00603,
+        "featuredTier6": 0.00937,
+        "powerTier4": 0.34943,
+        "powerTier5": 0.0797,
+        "traitTier4": 0.22014,
+        "traitTier5": 0.05048,
+        "featured": 0.57747,
+        "featuredTier4OrHigher": 0.34396
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 1.7,
+        "runsFor95PercentChance": 4
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 7.1,
+        "runsFor95PercentChance": 20
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 62.9,
+        "runsFor95PercentChance": 188
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 106.7,
+        "runsFor95PercentChance": 319
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 2.9,
+        "runsFor95PercentChance": 8
+      }
+    },
+    {
+      "id": "ivory-tower-080",
+      "name": "白亜の塔・第80層",
+      "profile": {
+        "tier4Chance": 0.35000000000000003,
+        "tier5Chance": 0.08,
+        "tier6Chance": 0.01,
+        "featuredDefId": "hollow-lantern"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.4626,
+        "itemTier5": 0.12908,
+        "itemTier6": 0.01642,
+        "powerTier6": 0.00994,
+        "traitTier6": 0.00656,
+        "featuredTier6": 0.0097,
+        "powerTier4": 0.34943,
+        "powerTier5": 0.0797,
+        "traitTier4": 0.23972,
+        "traitTier5": 0.05475,
+        "featured": 0.57747,
+        "featuredTier4OrHigher": 0.35183
+      },
+      "waitingForAnyTier4OrHigher": {
+        "meanRuns": 1.6,
+        "runsFor95PercentChance": 4
+      },
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 6.9,
+        "runsFor95PercentChance": 20
+      },
+      "waitingForAnyTier6": {
+        "meanRuns": 60.9,
+        "runsFor95PercentChance": 181
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 103.1,
+        "runsFor95PercentChance": 308
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 2.8,
+        "runsFor95PercentChance": 7
+      }
+    },
+    {
+      "id": "ivory-tower-081",
+      "name": "白亜の塔・第81層",
+      "profile": {
+        "tier4Chance": 0.4,
+        "tier5Chance": 0.1,
+        "tier6Chance": 0.015,
+        "featuredDefId": "twin-tide"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.50087,
+        "itemTier5": 0.16031,
+        "itemTier6": 0.02493,
+        "powerTier6": 0.01483,
+        "traitTier6": 0.01028,
+        "featuredTier6": 0.01149,
+        "powerTier4": 0.39851,
+        "powerTier5": 0.10005,
+        "traitTier4": 0.27495,
+        "traitTier5": 0.06921,
+        "featured": 0.46999,
+        "featuredTier4OrHigher": 0.3227
+      },
+      "waitingForAnyTier4OrHigher": {
         "meanRuns": 1.5,
         "runsFor95PercentChance": 3
       },
-      "waitingForAnyTier5": {
-        "meanRuns": 6,
-        "runsFor95PercentChance": 17
+      "waitingForAnyTier5OrHigher": {
+        "meanRuns": 5.4,
+        "runsFor95PercentChance": 15
       },
-      "waitingForFeaturedTier4Or5": {
-        "meanRuns": 2.5,
-        "runsFor95PercentChance": 6
+      "waitingForAnyTier6": {
+        "meanRuns": 40.1,
+        "runsFor95PercentChance": 119
+      },
+      "waitingForFeaturedTier6": {
+        "meanRuns": 87,
+        "runsFor95PercentChance": 260
+      },
+      "waitingForFeaturedTier4OrHigher": {
+        "meanRuns": 3.1,
+        "runsFor95PercentChance": 8
       }
     }
   ]

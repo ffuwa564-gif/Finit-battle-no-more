@@ -30,7 +30,7 @@ export function MemoryGemSource({ dungeon, compact = false }: { dungeon: Dungeon
   const family = dungeonGemFamily(dungeon);
   const unique = GEM_DEFINITIONS.find(def => def.family === family && def.bossOnly);
   const profile = dungeonGemLootProfile(dungeon);
-  const tierRange = profile.tier5Chance > 0 ? 'T1–T5' : profile.tier4Chance > 0 ? 'T1–T4' : 'T1–T3';
+  const tierRange = (profile.tier6Chance ?? 0) > 0 ? 'T1–T6' : profile.tier5Chance > 0 ? 'T1–T5' : profile.tier4Chance > 0 ? 'T1–T4' : 'T1–T3';
   const featured = GEM_DEFINITIONS.find(def => def.id === profile.featuredDefId);
   return <p className={`memory-gem-source${compact ? ' memory-gem-source--compact' : ''}`}><Gem size={14} aria-hidden="true" /><span>{tr(`${GEM_FAMILIES[family].name}の記憶石`)}{!compact && <><br /><small>{tr('踏破で記憶の欠片 +{0}').replace('{0}', String(towerDustReward(dungeon) || 1))}{unique && <> · {tr('踏破宝箱限定')}：{tr(unique.name)}</>}</small><small className="memory-gem-source__tier">{tr('踏破宝箱：{0}').replace('{0}', tierRange)}{featured && <> · {tr('狙える記憶：{0}').replace('{0}', tr(featured.name))}</>}</small></>}</span></p>;
 }

@@ -15,26 +15,26 @@ const featured: Record<GemFamily, string[]> = {
 export function withGemLoot(dungeon: DungeonDef): DungeonDef {
   if (dungeon.kind === 'trial') return dungeon;
   const family = dungeonGemFamily(dungeon), pool = featured[family];
-  const profile = (tier4Chance: number, tier5Chance: number, index: number, regularOnly = false): DungeonDef => {
+  const profile = (tier4Chance: number, tier5Chance: number, index: number, regularOnly = false, tier6Chance = 0): DungeonDef => {
     const choices = regularOnly ? pool.slice(0, -1) : pool;
-    return { ...dungeon, gemLoot: { tier4Chance, tier5Chance, featuredDefId: choices[index % choices.length] } };
+    return { ...dungeon, gemLoot: { tier4Chance, tier5Chance, ...(tier6Chance > 0 ? { tier6Chance } : {}), featuredDefId: choices[index % choices.length] } };
   };
   if (dungeon.towerFloor) {
     const band = Math.floor((dungeon.towerFloor - 1) / 20);
-    return profile(.20 + band * .05, .02 + band * .02, Math.floor((dungeon.towerFloor - 1) / 3));
+    return profile(.20 + band * .05, .02 + band * .02, Math.floor((dungeon.towerFloor - 1) / 3), false, Math.max(0, band - 1) * .005);
   }
   const chapter = campaignChapters.find(item => item.id === dungeon.chapterId);
   if (chapter) {
     const index = chapter.dungeonIds.indexOf(dungeon.id), finale = index === chapter.dungeonIds.length - 1;
     if (chapter.number === 1) return finale ? profile(.06, 0, index, true) : dungeon;
     if (chapter.number === 2) return profile(finale ? .16 : .10, finale ? .01 : .005, index);
-    return profile(finale ? .22 : .18, finale ? .03 : .02, index);
+    return profile(finale ? .22 : .18, finale ? .03 : .02, index, false, finale ? .005 : 0);
   }
   if (dungeon.eventId && dungeon.tierName) {
     const index = ['初級', '中級', '上級', '超級', '覚醒級'].indexOf(dungeon.tierName);
     if (index < 2) return dungeon;
     const rates = [[.12, .005], [.20, .02], [.25, .04]][index - 2]!;
-    return profile(rates[0], rates[1], Math.min(index, pool.length - 1));
+    return profile(rates[0], rates[1], Math.min(index, pool.length - 1), false, index === 4 ? .01 : 0);
   }
   const shortRoutes: Record<string, string> = {
     'event-stardust-garden': 'night-dew',

@@ -108,9 +108,9 @@ test('secures a real high-tier chest, equips it, and finishes its acquired tier 
   await page.getByRole('button',{name:/記憶石の管理/}).click();
   await openSection(page,'memory-sources');
   const source = page.locator(`[data-gem-source="${stone.dungeonId}"]`);
-  await expect(source).toContainText('T1–T5');
-  await expect(source).toContainText(`T4 ${Number((stone.profile.tier4Chance*100).toFixed(1))}%`);
-  await expect(source).toContainText(`T5 ${Number((stone.profile.tier5Chance*100).toFixed(1))}%`);
+  await expect(source).toContainText((stone.profile.tier6Chance ?? 0) > 0 ? 'T1–T6' : 'T1–T5');
+  await expect(source).toContainText(`T4 ${Number((stone.profile.tier4Chance*100).toFixed(3))}%`);
+  await expect(source).toContainText(`T5 ${Number((stone.profile.tier5Chance*100).toFixed(3))}%`);
   await expect(page.locator('[data-inventory-section="memory-sources"] .memory-gems__tier-rule')).toContainText('1周あたりの入手率ではありません');
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
 });

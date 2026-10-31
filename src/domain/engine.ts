@@ -7,7 +7,7 @@ import { TOWER_ROUND_LIMIT } from './ivory-tower';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
-import { gemSkill, gemCooldown, gemDefinitionForSkill, gemVariantForSkill, gemRoll, gemPowerMultiplier, gemTraitAmount, gemSleepChargeBonus } from './memory-gems';
+import { gemSkill, gemCooldown, gemDefinitionForSkill, gemVariantForSkill, gemRoll, gemPowerMultiplier, gemTraitAmount, gemSleepChargeBonus, gemFurnaceCharge } from './memory-gems';
 import { duplicateFamily } from './events';
 import { orderSkillReady, orderTargets, memorySkillUsable } from './party-orders';
 import type { Ailment, Battle, BattleEvent, CharacterDef, Content, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
@@ -621,7 +621,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       }
     } else if (action.template === 'overclock') {
       actor.hp = Math.max(1, actor.hp - Math.max(1, Math.floor(actor.maxHp * .1)));
-      const target = action.targets[0]!; gainUltimate(target, memoryGem?.roll ? Math.min(70, Math.round(35 * potency)) : Math.round(35 * potency)); targetIds.push(target.uid);
+      const target = action.targets[0]!; gainUltimate(target, memoryGem ? gemFurnaceCharge(memoryGem, potency) : Math.round(35 * potency)); targetIds.push(target.uid);
     } else if (action.template === 'barrier_mend') {
       const target = action.targets[0]!;
       const consumed = Math.min(target.barrier ?? 0, Math.max(1, Math.floor(target.maxHp * .15)), Math.ceil((target.maxHp - target.hp) / (2 * potency)));
