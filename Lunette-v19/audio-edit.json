@@ -1,0 +1,84 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 23.0,
+  "source": "v19 game-score.wav: original v17 weapon plus one rising bell flourish per four-hit pass; same game renderer",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 14.916666666666668,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 9.798079728816964
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 14.855828939793525
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 20.634551470456618
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 16.210026089692573
+    },
+    {
+      "at": 12.15,
+      "effectsOverMusicDb": 11.598605764582146
+    },
+    {
+      "at": 12.215,
+      "effectsOverMusicDb": 17.25004687692763
+    },
+    {
+      "at": 12.280000000000001,
+      "effectsOverMusicDb": 18.392208655447707
+    },
+    {
+      "at": 12.344999999999999,
+      "effectsOverMusicDb": 16.3799229444395
+    },
+    {
+      "at": 12.55,
+      "effectsOverMusicDb": 8.247315942642402
+    },
+    {
+      "at": 12.615,
+      "effectsOverMusicDb": 14.45219989760716
+    },
+    {
+      "at": 12.68,
+      "effectsOverMusicDb": 16.044872580106645
+    },
+    {
+      "at": 12.745000000000001,
+      "effectsOverMusicDb": 16.069045363514842
+    },
+    {
+      "at": 12.95,
+      "effectsOverMusicDb": 11.763934318484424
+    },
+    {
+      "at": 13.015,
+      "effectsOverMusicDb": 14.447965279127086
+    },
+    {
+      "at": 13.08,
+      "effectsOverMusicDb": 14.770645907724928
+    },
+    {
+      "at": 13.145,
+      "effectsOverMusicDb": 17.348409194427155
+    },
+    {
+      "at": 14.916666666666668,
+      "effectsOverMusicDb": 18.300523172853662
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1
+}

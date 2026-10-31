@@ -1,3 +1,17 @@
+## 最新キャラPV：ルネット v19（元の射撃＋巡ごとに上がるベル）
+
+v17の射撃音へ戻し、4発のまとまりが当たり終わるたびに短い「チャララン」を追加。ベルの同じフレーズが4巡で段階的に高くなります。射撃の音程と映像は維持。
+
+- [▶ 連射とベルだけ確認・約2秒／BGMなし](Lunette-v19/Lunette_Rising_Bells_SFX_Check_720p.mp4)
+- [▶ PV・720p](Lunette-v19/STILLVEIL_Lunette_PV_v19_720p.mp4)
+- [▶ PV・1080p（720p素材から拡大）](Lunette-v19/STILLVEIL_Lunette_PV_v19_1080p.mp4)
+- [投稿文・音楽クレジット](Lunette-v19/upload-description.txt)
+- [制作について](Lunette-v19/README.txt)
+
+Music: Twinkle Soda / FUJINEQo。追加Runway消費0。ゲーム側はPR #116、未マージ・itch未配信。以下は旧版です。
+
+---
+
 ## 最新キャラPV：ルネット v18（丸い「ぽぽぽ」の射撃音）
 
 通常連射を短く丸い圧力音へ変更。鋭い破裂とざらつきを抑え、発射の粒を保ちます。最後の砲撃とチャージは維持。映像はv17と同じです。
