@@ -45,3 +45,14 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Future skills and stones ar
 
 Spoilers for the current opening and Chapters 1–4. Proposed Chapters 5–7 and skills are unimplemented. Meimei Himari appears as a fictional writing-role guest through the licensed VOICEVOX character; this is not an appearance or statement by the real creator.
 
+## Scout conference — four original candidate characters
+
+- [12:15 commentary video (720p)](STILLVEIL-Scout-Conference-720p.mp4)
+- [Four-character overview](Scout-Candidates-Overview.png)
+- [Character proposals, skill details, and full-size art links](Scout-Character-proposals.txt)
+- [Full script](Scout-Conference-script.txt)
+- [YouTube title and description](Scout-YouTube-description.txt)
+- Standing sprites: [Ione](Scout-Ione.png), [Neri](Scout-Neri.png), [Fio](Scout-Fio.png), [Ruka](Scout-Ruka.png)
+
+Original candidate designs, not implemented or announced characters. Base statistics use the existing ver1.0 formulas; new skills are untested proposals. VOICEVOX Kasukabe Tsumugi appears in a fictional scout role, not as a statement or appearance by the real creator.
+
