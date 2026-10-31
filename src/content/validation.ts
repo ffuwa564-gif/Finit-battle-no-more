@@ -1,5 +1,6 @@
 import { characterRarities } from '../domain/xr-gacha';
 import { IVORY_TOWER_FLOORS, ivoryTowerId } from '../domain/ivory-tower';
+import { GEM_DEFINITIONS, dungeonGemFamily } from '../domain/memory-gems';
 import { gachaCollections, gachaPoolIds, sharedGoddessIds, sharedSSRIds } from './gacha';
 import { skillTemplates } from '../domain/skill-info';
 import type { Content, Role, SkillTemplate } from '../domain/types';
@@ -164,6 +165,12 @@ export function validateContent(content: Content): string[] {
   const towerFloors = content.dungeons.filter(dungeon => dungeon.towerFloor !== undefined);
   if (towerFloors.length) reject(towerFloors.length !== IVORY_TOWER_FLOORS || new Set(towerFloors.map(dungeon => dungeon.towerFloor)).size !== IVORY_TOWER_FLOORS, 'ivoryTower: exactly 100 unique floors required');
   for (const dungeon of content.dungeons) {
+    if (dungeon.gemLoot) {
+      const loot = dungeon.gemLoot;
+      const featured = GEM_DEFINITIONS.find(def => def.id === loot.featuredDefId);
+      const tier6Chance = loot.tier6Chance === undefined ? 0 : loot.tier6Chance;
+      reject(dungeon.kind === 'trial' || ![loot.tier4Chance, loot.tier5Chance, tier6Chance].every(rate => Number.isFinite(rate) && rate >= 0 && rate <= 1) || loot.tier4Chance + loot.tier5Chance + tier6Chance > 1 || Boolean(loot.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))), `dungeons/${dungeon.id}: invalid memory stone loot profile`);
+    }
     if (dungeon.towerFloor !== undefined) {
       const floor = dungeon.towerFloor;
       reject(!Number.isSafeInteger(floor) || floor < 1 || floor > IVORY_TOWER_FLOORS || dungeon.id !== ivoryTowerId(floor) || dungeon.kind !== 'normal' || Boolean(dungeon.chapterId || dungeon.eventId || dungeon.storyId) || !dungeon.enemyScale || dungeon.previousDungeonId !== (floor === 1 ? 'silent-cathedral' : ivoryTowerId(floor - 1)), `dungeons/${dungeon.id}: invalid ivory tower floor`);

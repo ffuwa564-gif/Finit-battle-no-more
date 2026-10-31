@@ -1,0 +1,49 @@
+{
+  "baseCommit": "719372ab09a5578b6de7fb9e37048c4d093fda42",
+  "revision": "tier6-furnace-charge-v2",
+  "rounds": [
+    {
+      "round": 1,
+      "finding": "Compound T6 power and execution raises the ceiling about 40 percent above T5; support cooldowns cannot be judged from the potency percentage alone.",
+      "revision": "Keep the proposed meaningful T6 gap and require paired real-combat comparisons plus long multi-battery traces."
+    },
+    {
+      "round": 2,
+      "finding": "Adding optional T6 chance risks changing old seed results or stealing the probability mass of T4 and T5 attributes; broad statistical tolerance could miss this regression.",
+      "revision": "Default only undefined to zero, reject invalid rates and totals, verify old and zero profiles against 20000 baseline cases, and tighten fixed-seed rate tolerances."
+    },
+    {
+      "round": 3,
+      "finding": "Tier6 furnace cooldown 2 increased support opportunities but did not consistently improve harvesting speed.",
+      "revision": "Compare cooldown 3 with charge cap 80 while preserving all older power tiers and legacy resonance. Also compare the same winning seeds directly between candidates."
+    },
+    {
+      "round": 4,
+      "finding": "The charge-80 candidate gives a clear single-use benefit without increasing AI support frequency, with no old-tier combat outcome changes in the sampled 1050 cases.",
+      "revision": "Adopt furnace cooldown 3 / charge cap 80; keep rewind cooldown 2 and sleep cooldown 4 with extra 45 self charge. Review backup, UI, per-attribute rates and derived tower access hint again."
+    }
+  ],
+  "validation": {
+    "legacySeedComparisons": 20000,
+    "combatCasesPerCandidate": 1400,
+    "oldTierCombatOutcomesUnchanged": 1050,
+    "dropSamplesPerDestination": 100000,
+    "directPairedCandidateComparison": {
+      "threeBatteries": {
+        "bothWinSeeds": 49,
+        "cooldown2Rounds": 11.82,
+        "charge80Rounds": 11.33
+      },
+      "batteryAndRewind": {
+        "bothWinSeeds": 50,
+        "cooldown2Rounds": 12.06,
+        "charge80Rounds": 11.72
+      }
+    }
+  },
+  "limitations": [
+    "Finite fixed-party policies do not prove universal improvement or optimal builds.",
+    "Conditional per-attribute probabilities differ from overall item and per-run probabilities.",
+    "Waiting estimates are not measured play time, adopted upgrades or enjoyment."
+  ]
+}

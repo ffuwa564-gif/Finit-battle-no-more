@@ -3,6 +3,12 @@ import type { DungeonDef, SkillDef } from './types';
 export type GemFamily = 'sanctuary' | 'clock' | 'grave';
 export type GemVariant = 'pure' | 'echo' | 'swift';
 export type GemTrait = 'none' | 'chain' | 'bulwark' | 'execution' | 'mercy';
+export type GemTier = 1 | 2 | 3 | 4 | 5 | 6;
+/** Probabilities apply independently to each existing affix, after a boss stone drops. */
+export interface GemLootProfile { tier4Chance: number; tier5Chance: number; tier6Chance?: number; featuredDefId?: string }
+export const TIER_RANGES: Record<GemTier, readonly [number, number]> = {
+  1: [0, 33], 2: [34, 66], 3: [67, 100], 4: [120, 139], 5: [160, 179], 6: [220, 239],
+};
 export interface GemRoll { power: number; trait: GemTrait; value: number }
 export type GemRefinementMode = 'power' | 'trait';
 export interface MemoryGem { id: string; defId: string; variant: GemVariant; locked?: boolean; roll?: GemRoll }
@@ -64,16 +70,18 @@ export function gemDescription(gem: MemoryGem): string {
   const def = gemDefinition(gem);
   let description = def.description;
   if (gem.roll && def.id === 'rewind-thread') description = `自分以外の味方1人の通常スキルの再使用待ちを${Math.min(2, Math.max(1, Math.floor(gemPowerMultiplier(gem))))}ラウンド短縮する。記憶石の技には作用しない。`;
-  if (gem.roll && def.id === 'star-furnace') description = `自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを${Math.min(70, Math.floor(35 * gemPowerMultiplier(gem)))}充填する。自分のHPが20%より多い時に使用できる。`;
+  if (gem.roll && def.id === 'star-furnace') description = `自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを${gemFurnaceCharge(gem)}充填する。自分のHPが20%より多い時に使用できる。`;
   if (gem.roll && def.id === 'dream-lace') description += ` 成功率は通常${Math.round(Math.min(95, 70 * gemPowerMultiplier(gem)))}%・ボス${Math.round(Math.min(60, 35 * gemPowerMultiplier(gem)))}%。ボスの睡眠は1回の行動まで。`;
+  const sleepCharge = gemSleepChargeBonus(gem);
+  if (sleepCharge > 0) description += ` 睡眠の成否にかかわらず、自分の必殺ゲージを追加で${sleepCharge}充填する。`;
   return `${description} ${gem.variant === 'pure' ? '' : GEM_VARIANTS[gem.variant].description + ' '}再使用まで${gemCooldown(gemSkill(gem).id)}ラウンド。`;
 }
 export const gemTraitInfo: Record<GemTrait, { name: string; description: string }> = {
   none: { name: 'なし', description: '追加特性なし。' },
-  chain: { name: '連鎖', description: '別の敵1体へ攻撃力の45〜80%で追加攻撃。追加攻撃から特性は再発動しない。' },
-  bulwark: { name: '庇護', description: 'HP割合が最も低い味方に最大HPの10〜25%の障壁を追加。障壁の合計上限は最大HPの60%。' },
-  execution: { name: '処刑', description: '残りHP35%以下の敵への技の威力が20〜60%上昇。' },
-  mercy: { name: '慈雨', description: '実際に与えたHPダメージの20〜50%で、HP割合が最も低い味方を回復。' },
+  chain: { name: '連鎖', description: '別の敵1体へ攻撃力の45〜129%で追加攻撃。追加攻撃から特性は再発動しない。' },
+  bulwark: { name: '庇護', description: 'HP割合が最も低い味方に最大HPの10〜46%の障壁を追加。障壁の合計上限は最大HPの60%。' },
+  execution: { name: '処刑', description: '残りHP35%以下の敵への技の威力が20〜116%上昇。' },
+  mercy: { name: '慈雨', description: '実際に与えたHPダメージの20〜92%で、HP割合が最も低い味方を回復。' },
 };
 const damagingTemplates = new Set<SkillDef['template']>(['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn']);
 const defaultRoll: GemRoll = { power: 0, trait: 'none', value: 0 };
@@ -83,17 +91,49 @@ export function supportedGemTraits(gem: Pick<MemoryGem, 'defId'> | GemDefinition
   return def && damagingTemplates.has(def.skill.template) ? ['none', 'chain', 'bulwark', 'execution', 'mercy'] : ['none', 'bulwark'];
 }
 export function gemRoll(gem: MemoryGem): GemRoll { return gem.roll ? { ...gem.roll } : { ...defaultRoll }; }
+function tierForValue(value: number): GemTier {
+  if (value >= TIER_RANGES[6][0]) return 6;
+  if (value >= TIER_RANGES[5][0]) return 5;
+  if (value >= TIER_RANGES[4][0]) return 4;
+  if (value >= TIER_RANGES[3][0]) return 3;
+  return value >= TIER_RANGES[2][0] ? 2 : 1;
+}
+export function gemPowerTier(gem: MemoryGem): GemTier { return tierForValue(gemRoll(gem).power); }
+export function gemTraitTier(gem: MemoryGem): GemTier | 0 { const roll = gemRoll(gem); return roll.trait === 'none' ? 0 : tierForValue(roll.value); }
+export function gemTier(gem: MemoryGem): GemTier { return Math.max(gemPowerTier(gem), gemTraitTier(gem)) as GemTier; }
+/** Every raw value within these acquired tiers has the same capped effect/cadence. */
+export function gemPowerRefinementIsFixed(gem: MemoryGem): boolean {
+  return gemPowerTier(gem) >= 4 && ['rewind-thread', 'star-furnace', 'dream-lace'].includes(gem.defId);
+}
+/** Dream-lace keeps its original cadence; higher power rewards the same action. */
+export function gemSleepChargeBonus(gem: MemoryGem): number {
+  return gem.defId === 'dream-lace' ? Math.max(0, gemPowerTier(gem) - 3) * 15 : 0;
+}
+/** Preserve legacy unrolled resonance; acquired power tiers set rolled charge caps. */
+export function gemFurnaceCharge(gem: MemoryGem, potency = gemPowerMultiplier(gem)): number {
+  const charge = Math.round(35 * potency);
+  return gem.roll ? Math.min(gemPowerTier(gem) >= 6 ? 80 : 70, charge) : charge;
+}
+/** Actual percentage used by both battle resolution and descriptions. */
+export function gemTraitAmount(gem: MemoryGem): number {
+  const { trait, value } = gemRoll(gem);
+  if (trait === 'chain') return 45 + Math.round(value * .35);
+  if (trait === 'bulwark') return 10 + Math.round(value * .15);
+  if (trait === 'execution') return 20 + Math.round(value * .4);
+  if (trait === 'mercy') return 20 + Math.round(value * .3);
+  return 0;
+}
 export function gemPowerMultiplier(gem: MemoryGem): number { return 1 + gemRoll(gem).power * .015; }
 export function gemRollKey(gem: MemoryGem): string {
   const roll = gemRoll(gem), key = `${gem.defId}:${gem.variant}`;
   return roll.power === 0 && roll.trait === 'none' && roll.value === 0 ? key : `${key}:${roll.power}:${roll.trait}:${roll.value}`;
 }
 export function gemTraitDescription(gem: MemoryGem): string {
-  const { trait, value } = gemRoll(gem);
-  if (trait === 'chain') return `別の敵1体へ攻撃力の${45 + Math.round(value * .35)}%で追加攻撃。追加攻撃から特性は再発動しない。`;
-  if (trait === 'bulwark') return `HP割合が最も低い味方に最大HPの${10 + Math.round(value * .15)}%の障壁を追加。障壁の合計上限は最大HPの60%。`;
-  if (trait === 'execution') return `残りHP35%以下の敵への技の威力が${20 + Math.round(value * .4)}%上昇。`;
-  if (trait === 'mercy') return `実際に与えたHPダメージの${20 + Math.round(value * .3)}%で、HP割合が最も低い味方を回復。`;
+  const { trait } = gemRoll(gem), amount = gemTraitAmount(gem);
+  if (trait === 'chain') return `別の敵1体へ攻撃力の${amount}%で追加攻撃。追加攻撃から特性は再発動しない。`;
+  if (trait === 'bulwark') return `HP割合が最も低い味方に最大HPの${amount}%の障壁を追加。障壁の合計上限は最大HPの60%。`;
+  if (trait === 'execution') return `残りHP35%以下の敵への技の威力が${amount}%上昇。`;
+  if (trait === 'mercy') return `実際に与えたHPダメージの${amount}%で、HP割合が最も低い味方を回復。`;
   return gemTraitInfo.none.description;
 }
 export function gemRollDescription(gem: MemoryGem): string {
@@ -128,10 +168,14 @@ export function gemDefinitionForSkill(skillId: string): GemDefinition | undefine
 }
 export function gemVariantForSkill(skillId: string): GemVariant | undefined { return gemDefinitionForSkill(skillId) ? skillId.split(':')[2] as GemVariant : undefined; }
 export function gemCooldown(skillId: string): number | undefined {
-  const def = gemDefinitionForSkill(skillId);
-  if (!def) return undefined;
-  const variant = gemVariantForSkill(skillId);
-  return Math.max(2, def.cooldown + (variant === 'echo' ? 1 : variant === 'swift' ? -1 : 0));
+  const gem = gemFromSkill(skillId);
+  if (!gem) return undefined;
+  const def = gemDefinition(gem), variant = gem.variant;
+  // These skills already reach a capped effect with ordinary stones. Higher
+  // power tiers improve their cadence instead of advertising a fictitious gain.
+  const tierBonus = Math.max(0, gemPowerTier(gem) - 3);
+  const supportBonus = def.id === 'rewind-thread' ? tierBonus : def.id === 'star-furnace' ? Math.min(2, tierBonus) : 0;
+  return Math.max(2, def.cooldown + (variant === 'echo' ? 1 : variant === 'swift' ? -1 : 0) - supportBonus);
 }
 
 export function validMemoryGem(value: unknown): value is MemoryGem {
@@ -139,7 +183,8 @@ export function validMemoryGem(value: unknown): value is MemoryGem {
   return Boolean(definitions.get(value.defId)?.variants.includes(value.variant as GemVariant)) && (value.roll === undefined || validGemRoll(value.roll, value.defId));
 }
 function validGemRoll(value: unknown, defId: string): value is GemRoll {
-  if (!record(value) || !count(value.power) || value.power > 100 || !count(value.value) || value.value > 100 || typeof value.trait !== 'string' || !supportedGemTraits(defId).includes(value.trait as GemTrait)) return false;
+  const validValue = (amount: unknown): amount is number => count(amount) && Object.values(TIER_RANGES).some(([low, high]) => amount >= low && amount <= high);
+  if (!record(value) || !validValue(value.power) || !validValue(value.value) || typeof value.trait !== 'string' || !supportedGemTraits(defId).includes(value.trait as GemTrait)) return false;
   return value.trait !== 'none' || value.value === 0;
 }
 export function validGemInventory(value: unknown): value is GemInventory {
@@ -152,9 +197,18 @@ export function validGemInventory(value: unknown): value is GemInventory {
     const pending = value.pending;
     if (!record(pending) || typeof pending.gemId !== 'string' || !validMemoryGem(pending.candidate) || !pending.candidate.roll) return false;
     const target = (value.items as MemoryGem[]).find(item => item.id === pending.gemId);
-    if (!target || pending.candidate.id !== target.id || pending.candidate.defId !== target.defId || pending.candidate.variant !== target.variant) return false;
+    if (!target || !validRefinementCandidate(target, pending.candidate)) return false;
   }
   return true;
+}
+
+/** A saved offer cannot manufacture or transfer a drop-only affix tier. */
+function validRefinementCandidate(current: MemoryGem, candidate: MemoryGem): boolean {
+  if (!validMemoryGem(candidate) || !candidate.roll || candidate.id !== current.id || candidate.defId !== current.defId || candidate.variant !== current.variant) return false;
+  const before = gemRoll(current), after = gemRoll(candidate);
+  const powerOnly = before.trait === after.trait && before.value === after.value && (gemPowerTier(current) <= 3 ? after.power <= 100 : gemPowerTier(current) === gemPowerTier(candidate));
+  const traitOnly = before.power === after.power && after.trait !== 'none' && (gemTraitTier(current) <= 3 ? after.value <= 100 : gemTraitTier(current) === gemTraitTier(candidate));
+  return powerOnly || traitOnly;
 }
 
 /** Stable destinations let players farm a family even before they have a full collection. */
@@ -170,6 +224,40 @@ export function dungeonGemFamily(dungeon: Pick<DungeonDef, 'id' | 'name' | 'even
   return families[hash % families.length];
 }
 
+/** Shared by loot generation and destination previews; no hidden tier sources. */
+export function dungeonGemLootProfile(dungeon: DungeonDef): GemLootProfile {
+  const profile = dungeon.kind === 'trial' ? undefined : dungeon.gemLoot;
+  if (!profile) return { tier4Chance: 0, tier5Chance: 0 };
+  const validChance = (chance: number) => Number.isFinite(chance) && chance >= 0 && chance <= 1;
+  const tier6Chance = profile.tier6Chance === undefined ? 0 : profile.tier6Chance;
+  if (!validChance(profile.tier4Chance) || !validChance(profile.tier5Chance) || !validChance(tier6Chance) || profile.tier4Chance + profile.tier5Chance + tier6Chance > 1) throw new Error('記憶石のTier排出率が不正です。');
+  const featured = profile.featuredDefId ? definitions.get(profile.featuredDefId) : undefined;
+  if (profile.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))) throw new Error('記憶石の注目入手先が系統と一致しません。');
+  return { tier4Chance: profile.tier4Chance, tier5Chance: profile.tier5Chance, ...(profile.tier6Chance === undefined ? {} : { tier6Chance }), ...(featured ? { featuredDefId: featured.id } : {}) };
+}
+
+function rollValueInTier(seed: number, tier: GemTier): { seed: number; value: number } {
+  const random = nextRandom(seed), [low, high] = TIER_RANGES[tier];
+  return { seed: random.seed, value: low + Math.floor(random.value * (high - low + 1)) };
+}
+
+function promoteGemRoll(gem: MemoryGem, seed: number, profile: GemLootProfile): { gem: MemoryGem; seed: number } {
+  const tier6Chance = profile.tier6Chance ?? 0;
+  if (profile.tier4Chance + profile.tier5Chance + tier6Chance === 0) return { gem, seed };
+  const roll = gemRoll(gem);
+  let nextSeed = seed;
+  const promote = (value: number): number => {
+    const random = nextRandom(nextSeed); nextSeed = random.seed;
+    const tier = random.value < tier6Chance ? 6 : random.value < tier6Chance + profile.tier5Chance ? 5 : random.value < tier6Chance + profile.tier5Chance + profile.tier4Chance ? 4 : undefined;
+    if (!tier) return value;
+    const result = rollValueInTier(nextSeed, tier); nextSeed = result.seed;
+    return result.value;
+  };
+  roll.power = promote(roll.power);
+  if (roll.trait !== 'none') roll.value = promote(roll.value);
+  return { gem: { ...gem, roll }, seed: nextSeed };
+}
+
 function nextRandom(seed: number): { seed: number; value: number } {
   const next = (Math.imul(seed >>> 0, 1664525) + 1013904223) >>> 0;
   return { seed: next, value: next / 4294967296 };
@@ -178,20 +266,28 @@ export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, o
   if (dungeon.kind === 'trial') return { seed: seed >>> 0 };
   if (!dropId || dropId.length > 300) throw new Error('宝箱の識別子が正しくありません。');
   const family = dungeonGemFamily(dungeon);
+  const profile = dungeonGemLootProfile(dungeon);
   let random = nextRandom(seed);
   if (!options.first && !(dungeon.towerFloor && options.boss) && random.value >= (options.boss ? .65 : .32)) return { seed: random.seed };
+  let featured: GemDefinition | undefined;
+  if (options.boss && !options.first && profile.featuredDefId) {
+    random = nextRandom(random.seed);
+    if (random.value < .4) featured = definitions.get(profile.featuredDefId);
+  }
   random = nextRandom(random.seed);
   const unique = options.boss && !options.first && random.value < .12;
   const candidates = GEM_DEFINITIONS.filter(def => def.family === family && Boolean(def.bossOnly) === Boolean(unique));
   random = nextRandom(random.seed);
   const firstId = { sanctuary: 'pale-ward', clock: 'echo-shard', grave: 'night-dew' }[family];
-  const def = options.first ? definitions.get(firstId)! : candidates[Math.min(candidates.length - 1, Math.floor(random.value * candidates.length))];
+  const def = options.first ? definitions.get(firstId)! : featured ?? candidates[Math.min(candidates.length - 1, Math.floor(random.value * candidates.length))];
   random = nextRandom(random.seed);
   const available = options.first ? ['pure'] as GemVariant[] : def.variants;
   // Basic forms remain common; unusual forms are exciting without becoming mandatory upgrades.
   const variant = available.length === 1 || random.value < .65 ? 'pure' : available[1 + Math.floor((random.value - .65) / .35 * (available.length - 1))];
   const gem: MemoryGem = { id: dropId, defId: def.id, variant };
-  return options.first ? { gem, seed: random.seed } : rollGemCandidate(gem, random.seed, dungeon.towerFloor ?? 0);
+  if (options.first) return { gem, seed: random.seed };
+  const candidate = rollGemCandidate(gem, random.seed, dungeon.towerFloor ?? 0);
+  return options.boss ? promoteGemRoll(candidate.gem, candidate.seed, profile) : candidate;
 }
 
 function findGem(inventory: GemInventory, id: string): MemoryGem {
@@ -233,7 +329,7 @@ export function craftGem(inventory: GemInventory, defId: string, variant: GemVar
   return gem;
 }
 
-/** All destinations can roll perfection; deeper floors improve the distribution, not a hard cap. */
+/** Ordinary affixes span T1–T3; deeper floors improve that distribution. Boss profiles add higher tiers separately. */
 export function rollGemCandidate(gem: MemoryGem, seed: number, towerFloor = 0): { gem: MemoryGem; seed: number } {
   if (!Number.isSafeInteger(towerFloor) || towerFloor < 0 || towerFloor > 100) throw new Error('記憶石の探索階層が正しくありません。');
   const floor = Math.max(0, Math.min(100, Math.floor(towerFloor)));
@@ -262,12 +358,22 @@ export function startGemRefinement(inventory: GemInventory, gemId: string, mode:
   if ((inventory.dust[def.family] ?? 0) < cost) throw new Error('調律に必要な記憶の欠片が足りません。');
   const previous = gemRoll(gem);
   let random = nextRandom(seed), roll = { ...previous };
-  if (mode === 'power') roll.power = Math.min(100, Math.floor(101 * random.value ** 1.8));
+  if (mode === 'power') {
+    const tier = gemPowerTier(gem);
+    if (tier >= 4) {
+      const [low, high] = TIER_RANGES[tier];
+      roll.power = low + Math.floor(random.value * (high - low + 1));
+    } else roll.power = Math.min(100, Math.floor(101 * random.value ** 1.8));
+  }
   else {
     const choices = supportedGemTraits(gem).filter(trait => trait !== 'none');
     roll.trait = choices[Math.floor(random.value * choices.length)];
     random = nextRandom(random.seed);
-    roll.value = Math.min(100, Math.floor(101 * random.value ** 1.5));
+    const tier = gemTraitTier(gem);
+    if (tier >= 4) {
+      const [low, high] = TIER_RANGES[tier as GemTier];
+      roll.value = low + Math.floor(random.value * (high - low + 1));
+    } else roll.value = Math.min(100, Math.floor(101 * random.value ** 1.5));
   }
   inventory.dust[def.family] -= cost;
   inventory.pending = { gemId, candidate: { ...gem, roll } };
@@ -278,6 +384,7 @@ export function resolveGemRefinement(inventory: GemInventory, accept: boolean): 
   if (!pending) throw new Error('選択待ちの調律結果がありません。');
   const index = inventory.items.findIndex(item => item.id === pending.gemId);
   if (index < 0) throw new Error('調律中の記憶石が見つかりません。');
+  if (!validRefinementCandidate(inventory.items[index], pending.candidate)) throw new Error('調律結果が元の記憶石と一致しません。');
   if (accept) {
     const current = inventory.items[index];
     const replacement = { ...pending.candidate };
