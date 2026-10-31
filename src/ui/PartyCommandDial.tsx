@@ -1,3 +1,4 @@
+import { gemSkill } from '../domain/memory-gems';
 import { createPortal } from 'react-dom';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Heart, HeartPulse, Shield, ShieldCheck, Sparkles, Swords, Sword, Crosshair, WandSparkles, X, RotateCcw, Eye, Hand, MoreHorizontal, CircleHelp } from 'lucide-react';
@@ -33,7 +34,9 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
   const options = partyOrderOptions(unit, { ...battle, units: commandUnits(battle).map(u => u.uid === unit.uid ? unit : u) }, content);
   const latest = useRef({ anchor, options, hover }); latest.current = { anchor, options, hover };
   const enabled = unit.hp > 0 && ['ready', 'playing'].includes(battle.phase);
-  const points = options.map((option, index) => { const angle = (-80 + index * 160 / (options.length - 1)) * Math.PI / 180; return { ...option, dx: Math.cos(angle) * 88, dy: Math.sin(angle) * 88 }; });
+  // Keep adjacent 44px square touch targets apart even along a diagonal.
+  const radius = Math.max(88, Math.ceil(33 / Math.sin(80 * Math.PI / 180 / (options.length - 1))));
+  const points = options.map((option, index) => { const angle = (-80 + index * 160 / (options.length - 1)) * Math.PI / 180; return { ...option, dx: Math.cos(angle) * radius, dy: Math.sin(angle) * radius }; });
   function close() { clearTimeout(timer.current); const id = gesture.current?.id; gesture.current = undefined; if (id !== undefined && root.current?.hasPointerCapture(id)) root.current.releasePointerCapture(id); setAnchor(undefined); setHover(undefined); }
   useEffect(() => { close(); return () => clearTimeout(timer.current); }, [battle.id, battle.wave]);
   useEffect(() => { if (!enabled) close(); }, [enabled]);
@@ -50,7 +53,7 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
     if (!enabled) return;
     const rect = root.current?.querySelector('.portrait-image')?.getBoundingClientRect();
     if (!rect) return;
-    setAnchor({ x: Math.min(innerWidth - 122, Math.max(28, rect.x + rect.width / 2)), y: Math.min(innerHeight - 116, Math.max(158, rect.y + rect.height / 2)) });
+    setAnchor({ x: Math.min(innerWidth - radius - 30, Math.max(28, rect.x + rect.width / 2)), y: Math.min(innerHeight - radius - 28, Math.max(radius + 70, rect.y + rect.height / 2)) });
     setHover(undefined); emitUISound('select');
   }
   function choose(option?: OrderOption) {
@@ -93,7 +96,7 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
   const queued = options.find(o => o.id === orderId(effectiveOrder));
   const selected = options.find(o => o.id === hover);
   const visibleBattle = { ...battle, focusTargetId: targetId ?? battle.focusTargetId, units: commandUnits(battle) };
-  const targets = selected && selected.template !== 'auto' ? selected.order?.kind === 'guard' ? [unit] : selected.id === 'ultimate' && ['heal', 'barrier', 'rally'].includes(ultimateFor(characterById(unit.characterId)).template) ? visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0) : orderTargets(unit, visibleBattle, selected.template) : [];
+  const targets = selected && selected.template !== 'auto' ? selected.order?.kind === 'guard' ? [unit] : selected.id === 'ultimate' && ['heal', 'barrier', 'rally'].includes(ultimateFor(characterById(unit.characterId)).template) ? visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0) : orderTargets(unit, visibleBattle, selected.template, selected.order?.kind === 'skill' ? selected.order.skillId : undefined) : [];
   const targetLabel = targets.length > 1 ? targets[0].side === 'party' ? targets.length === visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0).length ? '味方全体' : `味方${targets.length}人` : '敵全体' : targets[0] ? characterById(targets[0].characterId).name : '';
   const targetNumber = content.dungeons.find(d => d.id === battle.dungeonId)?.coordination && targets.length === 1 && targets[0].side === 'enemy' ? '#' + (battle.units.filter(candidate => candidate.side === 'enemy').findIndex(candidate => candidate.uid === targets[0].uid) + 1) : '';
   return <div ref={root} className={`party-pilot${anchor ? ' is-commanding' : ''}`} data-pilot onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={close} onLostPointerCapture={() => { if (gesture.current) close(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} onKeyDownCapture={e => { if (e.key === 'Enter' || e.key === ' ') suppressClick.current = false; }}>
@@ -103,10 +106,10 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
     {anchor && createPortal(<div className="command-dial-layer" onKeyDown={e => { if (e.key === 'Escape') { e.preventDefault(); close(); } }}>
       <button className="command-dial-dismiss" type="button" aria-label={tr('取消')} onClick={() => choose()} />
       <div role="group" aria-label={tr('行動を選ぶ')} className="command-dial" style={{ left: anchor.x, top: anchor.y } as CSSProperties}>
-        <svg className="command-dial__arc" viewBox="-112 -112 224 224" aria-hidden="true"><path d="M 15 -87 A 88 88 0 0 1 15 87" /></svg>
+        <svg className="command-dial__arc" viewBox="-112 -112 224 224" aria-hidden="true" style={{ transform: `scale(${radius / 88})` }}><path d="M 15 -87 A 88 88 0 0 1 15 87" /></svg>
         <Button className="command-dial__cancel" variant="icon" aria-label={tr('取消')} sound="cancel" onClick={close}><X size={18} /></Button>
         {points.map(point => <Button key={point.id} data-command={point.id} className={`command-dial__choice${point.disabled ? ' is-unavailable' : ''}${hover === point.id ? ' is-hovered' : ''}${point.id === 'ultimate' ? ' is-ultimate' : ''}`} variant="icon" sound={false} aria-label={tr(point.label)} aria-disabled={point.disabled} selected={point.id === orderId(effectiveOrder)} style={{ left: point.dx, top: point.dy }} onFocus={() => setHover(point.id)} onPointerEnter={() => { if (!gesture.current) setHover(point.id); }} onClick={() => choose(point)}>{point.id === 'ultimate' ? <Sparkles size={21} /> : <ChoiceIcon template={point.id.startsWith('skill:') && point.template === 'attack' ? 'skill_attack' : point.id.startsWith('skill:') && point.template === 'guard' ? 'cover' : point.template} />}</Button>)}
-        <div className="command-dial__caption"><strong>{tr(selected?.label ?? '行動を選ぶ')}</strong>{targetLabel && <small>{targetNumber && <>{targetNumber} · </>}{tr(targetLabel)}</small>}<small className="command-dial__timing">{tr(selected?.disabled ? '今は使用できません' : battle.phase === 'playing' ? '次ラウンドに予約' : 'このラウンドに予約')}</small></div>
+        <div className="command-dial__caption" style={{ bottom: radius + 36 }}><strong>{tr(selected?.label ?? '行動を選ぶ')}</strong>{targetLabel && <small>{targetNumber && <>{targetNumber} · </>}{tr(targetLabel)}</small>}<small className="command-dial__timing">{tr(selected?.disabled ? '今は使用できません' : battle.phase === 'playing' ? '次ラウンドに予約' : 'このラウンドに予約')}</small></div>
       </div>
     </div>, document.body)}
   </div>;
@@ -138,7 +141,9 @@ export function CompanionChoice({ unit, battle, index, reducedMotion, hidden, si
   }, [upcoming?.id, hidden, reducedMotion, index, unit.hp <= 0]);
   if ((!upcoming && !signal) || unit.hp <= 0 || hidden) return null;
   const stage = signal ? 'reading' : cue?.id === upcoming?.id ? cue!.stage : 'waiting';
-  const skill = content.skills.find(s => s.id === upcoming?.skillId);
+  const memory = battle.memoryGems?.[unit.characterId];
+  const memorySkill = memory ? gemSkill(memory) : undefined;
+  const skill = content.skills.find(s => s.id === upcoming?.skillId) ?? (memorySkill?.id === upcoming?.skillId ? memorySkill : undefined);
   const label = signal?.label ?? (upcoming!.ultimate ? ultimateLabel(upcoming!, unit) : skill?.name ?? (upcoming!.kind === 'guard' ? '身を守る' : '通常攻撃'));
   const template = upcoming?.ultimate ? 'ultimate' : skill?.template ?? (upcoming?.kind === 'guard' ? 'guard' : 'attack');
   const target = upcoming ? revealedTargets(upcoming.targetIds ?? [], battle) : '';

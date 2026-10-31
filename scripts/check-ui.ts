@@ -37,6 +37,28 @@ for (const file of files) {
   };
   visit(source);
 }
+// Inventory collections are always closed initially, through the shared contract.
+const inventorySource = ts.createSourceFile('src/ui/InventorySection.tsx', readFileSync('src/ui/InventorySection.tsx', 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+function checkInventoryDefaults(node: ts.Node): void {
+  if ((ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) && node.tagName.getText(inventorySource) === 'details') {
+    if (node.attributes.properties.some(prop => ts.isJsxSpreadAttribute(prop) || ts.isJsxAttribute(prop) && ['open', 'defaultOpen'].includes(prop.name.getText(inventorySource)))) report('src/ui/InventorySection.tsx', node, inventorySource, 'Inventory sections must start collapsed; do not forward open state or arbitrary attributes.');
+  }
+  ts.forEachChild(node, checkInventoryDefaults);
+}
+checkInventoryDefaults(inventorySource);
+for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['src/ui/MemoryGems.tsx', 'MemoryGems']]) {
+  const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  function visit(node: ts.Node, inInventory = false, collapsed = false): void {
+    const scope = inInventory || ts.isFunctionDeclaration(node) && node.name?.text === functionName;
+    const section = ts.isJsxElement(node) && node.openingElement.tagName.getText(source) === 'InventorySection';
+    if (scope && !collapsed && ts.isJsxOpeningElement(node)) {
+      const className = node.attributes.properties.find(prop => ts.isJsxAttribute(prop) && prop.name.getText(source) === 'className') as ts.JsxAttribute | undefined;
+      if (className?.initializer && ts.isStringLiteral(className.initializer) && ['resource-list', 'memory-gems__grid', 'memory-gems__recipes', 'memory-gems__sources'].includes(className.initializer.text)) report(file, node, source, 'Long inventory collections must be inside InventorySection.');
+    }
+    ts.forEachChild(node, child => visit(child, scope, collapsed || section));
+  }
+  visit(source);
+}
 // Ready-state UI must consume public gestures, never the engine's private commitments.
 for (const file of [...walk('src/ui'), ...walk('src/screens')].filter(path => /\.tsx?$/.test(path))) {
   const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);

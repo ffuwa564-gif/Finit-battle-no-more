@@ -6,8 +6,9 @@ import { bossWindupStatus, recordBossWindupDamage } from './boss-pressure';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
+import { gemSkill, gemCooldown, gemDefinitionForSkill, gemVariantForSkill } from './memory-gems';
 import { duplicateFamily } from './events';
-import { orderSkillReady, orderTargets } from './party-orders';
+import { orderSkillReady, orderTargets, memorySkillUsable } from './party-orders';
 import type { Ailment, Battle, BattleEvent, CharacterDef, Content, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
 
 const BASE: Record<CharacterDef['role'], Stats> = {
@@ -114,6 +115,7 @@ function restoreClockShield(battle: Battle, content: Content, present: boolean):
 }
 function openWave(battle: Battle, content: Content, first: boolean): Battle {
   delete battle.focusTargetId;
+  delete battle.memoryEchoes;
   clearBattleFairy(battle);
   if (battle.blooms && !battle.blooms.flower) battle.blooms.growth = 0;
   const def = dungeon(content, battle.dungeonId);
@@ -181,12 +183,15 @@ function chooseTarget(enemies: Unit[], strategy: Strategy, content: Content): Un
     return a.hp - b.hp || byId(a, b);
   })[0]!;
 }
-function skillList(actor: Unit, content: Content, round: number): SkillDef[] {
-  return character(content, actor.characterId).skillIds.map((id) => {
+function skillList(actor: Unit, content: Content, battle: Battle): SkillDef[] {
+  const equipped = actor.side === 'party' && battle.partyIds.includes(actor.characterId) ? battle.memoryGems?.[actor.characterId] : undefined;
+  const skills = character(content, actor.characterId).skillIds.map((id) => {
     const skill = content.skills.find((item) => item.id === id);
     if (!skill) throw new Error(`不明なスキル: ${id}`);
     return skill;
-  }).filter((skill) => (actor.cooldowns[skill.id] ?? 0) <= round).sort((a, b) => b.strength - a.strength || a.id.localeCompare(b.id));
+  });
+  if (equipped) skills.push(gemSkill(equipped));
+  return skills.filter(skill => (actor.cooldowns[skill.id] ?? 0) <= battle.round && (!gemDefinitionForSkill(skill.id) || ((actor.cooldowns['memory:slot'] ?? 0) <= battle.round && memorySkillUsable(actor, battle, skill)))).sort((a,b) => b.strength - a.strength || a.id.localeCompare(b.id));
 }
 interface Action { manualGuard?: boolean; ultimate?: boolean; clockFinale?: boolean; directive?: 'aggressive' | 'survival'; skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
 function emitRecovery(battle: Battle, unit: Unit, id: Ailment, content: Content): void {
@@ -232,8 +237,8 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [strike.target === 'pilot' ? enemies.find(u => u.characterId === battle.partyIds[0]) ?? chooseTarget(enemies, 'balanced', content) : chooseTarget(enemies, 'balanced', content)], power: strike.windup && bossWindupStatus(actor, strike, battle.round).phase === 'broken' ? strike.windup.weakenedPower : strike.power, name: strike.name };
   const role = character(content, actor.characterId).role;
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
-  const skills = skillList(actor, content, battle.round);
-  const get = (template: SkillTemplate) => skills.find((skill) => skill.template === template);
+  const skills = skillList(actor, content, battle);
+  const get = (template: SkillTemplate) => skills.find((skill) => skill.template === template && !['shield-break', 'rewind-thread', 'echo-shard'].includes(gemDefinitionForSkill(skill.id)?.id ?? ''));
   const recycling = get('barrier_mend');
   const salvage = allies.filter(unit => unit.hp <= unit.maxHp * .75 && (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort(lowerHP)[0];
   if (recycling && salvage && !(get('heal') && allies.some(unit => unit.hp <= unit.maxHp * .3))) return { skill: recycling, template: 'barrier_mend', targets: [salvage] };
@@ -286,11 +291,15 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
     }
   }
   if (counter) return counter;
+  const memory = skills.find(skill => ['shield-break', 'rewind-thread', 'echo-shard'].includes(gemDefinitionForSkill(skill.id)?.id ?? '') && memorySkillUsable(actor, battle, skill));
+  if (memory && !(gemDefinitionForSkill(memory.id)?.id === 'shield-break' && allies.some(unit => unit.hp <= unit.maxHp * .3))) return { skill: memory, template: memory.template, targets: orderTargets(actor, battle, memory.template, memory.id) };
+  const memoryHeal = skills.find(skill => gemDefinitionForSkill(skill.id) && skill.template === 'heal');
+  if (memoryHeal && allies.some(unit => unit.hp <= unit.maxHp * .6)) return { skill: memoryHeal, template: 'heal', targets: [...allies].sort(lowerHP).slice(0,1) };
   const control = skills.find(skill => isAilment(skill.template));
   const susceptible = enemies.filter(unit => !hasAilment(unit) && (unit.statusWardUntil ?? -1) < battle.round).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
   if (control && susceptible) return { skill: control, template: control.template, targets: [susceptible] };
   const jam = get('jam');
-  const readyCaster = enemies.filter(unit => skillList(unit, content, battle.round).length > 0).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
+  const readyCaster = enemies.filter(unit => skillList(unit, content, battle).length > 0).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
   if (jam && readyCaster) return { skill: jam, template: 'jam', targets: [readyCaster] };
   if (role === 'debuffer') {
     const target = enemies.filter((unit) => (unit.debuffUntil ?? -1) < battle.round).sort((a, b) => b.hp - a.hp || byId(a, b))[0];
@@ -318,8 +327,8 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   if (order?.kind === 'guard') return { template: 'guard', targets: [actor], manualGuard: true, name: '身を守る' };
   if (order?.kind === 'attack') return { template: 'attack', targets: orderTargets(actor, battle, 'attack') };
   if (order?.kind === 'skill') {
-    const skill = skillList(actor, content, battle.round).find(s => s.id === order.skillId);
-    if (skill && orderSkillReady(actor, battle, skill)) return { template: skill.template, skill, targets: orderTargets(actor, battle, skill.template) };
+    const skill = skillList(actor, content, battle).find(s => s.id === order.skillId);
+    if (skill && orderSkillReady(actor, battle, skill)) return { template: skill.template, skill, targets: orderTargets(actor, battle, skill.template, skill.id) };
   }
   if ((actor.ultimateQueued || order?.kind === 'ultimate') && ultimateReady(actor)) {
     const special = ultimateFor(character(content, actor.characterId));
@@ -370,11 +379,11 @@ export function companionCommitments(input: Battle, content: Content): PlannedPa
 
 function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, content: Content): Action | undefined {
   if (intent.blocked) return;
-  const skill = intent.skillId ? skillList(actor, content, battle.round).find(s => s.id === intent.skillId) : undefined;
+  const skill = intent.skillId ? skillList(actor, content, battle).find(s => s.id === intent.skillId) : undefined;
   if (intent.skillId && (!skill || !orderSkillReady(actor, battle, skill))) return;
   if (intent.ultimate && !ultimateReady(actor)) return;
   let targets = intent.targetIds.flatMap(id => battle.units.filter(u => u.uid === id && u.hp > 0));
-  if (!targets.length) targets = orderTargets(actor, battle, intent.template);
+  if (!targets.length) targets = orderTargets(actor, battle, intent.template, skill?.id);
   if (!targets.length) return;
   return { template: intent.template, targets, skill, ultimate: intent.ultimate, name: intent.name };
 }
@@ -551,7 +560,20 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.name ?? action.skill?.name ?? '通常攻撃';
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
-    if (action.manualGuard) {
+    const memoryDef = action.skill ? gemDefinitionForSkill(action.skill.id) : undefined;
+    if (memoryDef?.id === 'shield-break') {
+      const donor = alive(battle.units, actor.side).filter(u => (u.barrierUntil ?? -1) >= battle.round && (u.barrier ?? 0) > 0).sort((a,b) => (b.barrier ?? 0) - (a.barrier ?? 0) || byId(a,b))[0];
+      const charge = donor?.barrier ?? 0;
+      if (donor) { delete donor.barrier; delete donor.barrierUntil; }
+      for (const target of action.targets) {
+        const hit = damage(actor, target, Math.floor((80 + Math.min(220, charge / Math.max(1, actor.attack) * 100)) * (action.skill!.strength + 30) / 44), 100, battle, true, content, false, false, false, potency, coordination);
+        amount += hit.amount; absorbed += hit.absorbed; targetIds.push(hit.unit.uid);
+      }
+    } else if (memoryDef?.id === 'rewind-thread') {
+      const target = action.targets[0]!;
+      for (const id of character(content, target.characterId).skillIds) if ((target.cooldowns[id] ?? 0) > battle.round) target.cooldowns[id] = Math.max(battle.round, target.cooldowns[id] - 1);
+      targetIds.push(target.uid);
+    } else if (action.manualGuard) {
       actor.defendingUntil = battle.round + 1; targetIds.push(actor.uid);
     } else if (action.ultimate) {
       actor.ultimateCharge = 0; delete actor.ultimateQueued;
@@ -611,6 +633,11 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       }
     } else if (action.template === 'dispel') {
       const target = action.targets[0]!;
+      if (memoryDef?.id === 'hollow-lantern') {
+        const recipient = alive(battle.units, actor.side).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
+        if (recipient && (target.buffUntil ?? -1) >= battle.round) { recipient.buffUntil = Math.max(recipient.buffUntil ?? 0, target.buffUntil!); recipient.buffStrength = Math.max((before.find(u => u.uid === recipient.uid)?.buffUntil ?? -1) >= battle.round ? recipient.buffStrength ?? 10 : 0, target.buffStrength ?? 10); }
+        if (recipient && (target.regenUntil ?? -1) >= battle.round) { recipient.regenUntil = Math.max(recipient.regenUntil ?? 0, target.regenUntil!); recipient.regenStrength = Math.max((before.find(u => u.uid === recipient.uid)?.regenUntil ?? -1) >= battle.round ? recipient.regenStrength ?? 10 : 0, target.regenStrength ?? 10); }
+      }
       delete target.buffUntil; delete target.buffStrength; delete target.regenUntil; delete target.regenStrength;
       targetIds.push(target.uid);
     } else if (action.template === 'regen') {
@@ -640,10 +667,21 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
         const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency, coordination); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
       }
     }
+    if (action.skill && memoryDef && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && (memoryDef.id === 'echo-shard' || gemVariantForSkill(action.skill.id) === 'echo')) {
+      const target = battle.units.find(u => targetIds.includes(u.uid) && u.hp > 0 && u.side !== actor.side);
+      if (target && amount > 0) {
+        battle.memoryEchoes ??= [];
+        battle.memoryEchoes.push({ actorId: actor.uid, targetId: target.uid, dueRound: battle.round + 1, power: Math.max(1, Math.floor(amount * .35)), skillId: action.skill.id, name: action.skill.name });
+      }
+    }
     if (action.template === 'drain' && amount > 0) {
       drained = Math.min(actor.maxHp - actor.hp, Math.floor(amount * 35 / 100)); actor.hp += drained;
     }
-    if (action.skill) actor.cooldowns[action.skill.id] = battle.round + skillCooldown(action.template);
+    if (action.skill) {
+      const cooldown = battle.round + (gemCooldown(action.skill.id) ?? skillCooldown(action.template));
+      actor.cooldowns[action.skill.id] = cooldown;
+      if (gemDefinitionForSkill(action.skill.id)) actor.cooldowns['memory:slot'] = cooldown;
+    }
     if (!action.ultimate && !action.forcedBy) gainUltimate(actor, 25);
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
@@ -663,6 +701,26 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     goldEarned += settled.goldEarned;
     discoveredIds.push(...settled.discoveredIds.filter(id => !discoveredIds.includes(id)));
   }
+  for (const echo of (battle.memoryEchoes ?? []).filter(e => e.dueRound <= battle.round)) {
+    const actor = battle.units.find(u => u.uid === echo.actorId && u.side === 'party' && u.hp > 0);
+    const target = battle.units.find(u => u.uid === echo.targetId && u.side === 'enemy' && u.hp > 0);
+    if (!actor || !target) continue;
+    const before = clone(battle.units);
+    const recipient = battle.units.find(u => u.hp > 0 && u.side === target.side && u.uid !== target.uid && u.guardTarget === target.uid && (u.guardUntil ?? -1) >= battle.round) ?? target;
+    let strength = echo.power;
+    if ((recipient.defendingUntil ?? -1) >= battle.round) strength = Math.max(1, Math.floor(strength / 2));
+    if (recipient !== target) strength = Math.max(1, Math.floor(strength * (370 - (recipient.guardStrength ?? 10)) / 400));
+    const absorbed = Math.min(strength, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
+    if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
+    const amount = Math.min(recipient.hp, strength - absorbed); recipient.hp -= amount;
+    if (amount > 0) { gainUltimate(recipient, 10); if (recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; } }
+    if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
+    clearInvalidGuards(battle);
+    emit(battle, { kind: 'attack', actorId: actor.uid, targetIds: [recipient.uid], skillId: echo.skillId, amount, text: `${character(content, actor.characterId).name} — ${echo.name}・残響`, unitsAfter: clone(battle.units) });
+    emitCures(battle, before, content, actor.uid);
+    const settled = settleAction(battle, content, before); goldEarned += settled.goldEarned; discoveredIds.push(...settled.discoveredIds.filter(id => !discoveredIds.includes(id)));
+  }
+  if (battle.memoryEchoes) { battle.memoryEchoes = battle.memoryEchoes.filter(e => e.dueRound > battle.round); if (!battle.memoryEchoes.length) delete battle.memoryEchoes; }
   resolveBossBits(battle, content);
   for (const unit of battle.units.filter(unit => unit.hp > 0 && unit.hp < unit.maxHp && (unit.regenUntil ?? -1) >= battle.round)) {
     const amount = Math.min(unit.maxHp - unit.hp, Math.max(1, Math.floor(unit.maxHp * (40 + (unit.regenStrength ?? 10)) / 1000)));

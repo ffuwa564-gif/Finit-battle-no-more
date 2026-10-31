@@ -179,3 +179,7 @@ export { UltimateCutIn } from './UltimateCutIn';
 export { UltimateMeter } from './UltimateMeter';
 
 export { PartyCommandDial, CompanionChoice } from './PartyCommandDial';
+
+export { MemoryGems, MemoryGemSigil } from './MemoryGems';
+export { InventorySection, type InventorySectionProps } from './InventorySection';
+export { MemoryGemFind, MemoryGemSource, MemoryGemSummary } from './MemoryGemFind';

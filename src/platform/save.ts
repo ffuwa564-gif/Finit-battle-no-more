@@ -1,3 +1,4 @@
+import { validMemoryGem, validGemInventory, gemSkill, gemDefinitionForSkill } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
 import { validBattleFairies } from '../domain/battle-fairies';
 import { validBattleBlooms } from '../domain/battle-blooms';
@@ -82,6 +83,11 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
   if (partyIds.length < 1 || partyIds.length > 4 || !partyIds.includes(value.leaderId as string) || partyIds.some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('保存データの編成が不正です。');
+  if (value.memoryGems !== undefined) {
+    if (!validGemInventory(value.memoryGems)) throw new Error('記憶石の保存状態が不正です。');
+    const inventory = value.memoryGems as unknown as NonNullable<GameSave['memoryGems']>;
+    if (Object.keys(inventory.equipped).some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('記憶石を装備している仲間が不正です。');
+  }
   if (!materialMap(value.materials)) throw new Error('保存データの素材数が不正です。');
   if (!Array.isArray(value.history) || value.history.some(item => !record(item) || typeof item.id !== 'string' || typeof item.text !== 'string')) throw new Error('保存データの履歴が不正です。');
   const settings = value.settings;
@@ -90,6 +96,11 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (value.battle !== null) {
     const battle = value.battle;
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if (battle.memoryGems !== undefined && (!record(battle.memoryGems) || Object.entries(battle.memoryGems).some(([id, gem]) => !(battle.partyIds as string[]).includes(id) || !validMemoryGem(gem)))) throw new Error('戦闘の記憶石が不正です。');
+    if (battle.memoryGems !== undefined && new Set(Object.values(battle.memoryGems as Record<string, { id: string }>).map(gem => gem.id)).size !== Object.values(battle.memoryGems).length) throw new Error('同じ記憶石が複数の仲間に装備されています。');
+    if (battle.gemChestChecks !== undefined && !uniqueStrings(battle.gemChestChecks)) throw new Error('宝箱の開封記録が不正です。');
+    if (battle.gemFinds !== undefined && (!Array.isArray(battle.gemFinds) || !battle.gemFinds.every(validMemoryGem) || new Set(battle.gemFinds.map(gem => gem.id)).size !== battle.gemFinds.length)) throw new Error('宝箱の獲得記録が不正です。');
+    if (battle.memoryEchoes !== undefined && (!Array.isArray(battle.memoryEchoes) || battle.memoryEchoes.some(echo => !record(echo) || !nonempty(echo.actorId) || !nonempty(echo.targetId) || !count(echo.dueRound) || !count(echo.power) || !nonempty(echo.skillId) || !gemDefinitionForSkill(echo.skillId) || !nonempty(echo.name)))) throw new Error('記憶石の残響状態が不正です。');
     if (battle.crystalRole !== undefined && !validCrystalRole(battle.crystalRole)) throw new Error('宝石の共鳴状態が不正です。');
     if (battle.partyOrder !== undefined && !validPartyOrder(battle.partyOrder)) throw new Error('行動の予約が正しくありません。');
     if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
@@ -122,14 +133,17 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   const battle = save.battle;
   if (!battle) return;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
-  if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
+  if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
   if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
+  if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && item.defId === gem.defId && item.variant === gem.variant) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');
+  if (battle.gemFinds?.some(gem => !save.memoryGems?.items.some(item => item.id === gem.id && item.defId === gem.defId && item.variant === gem.variant))) throw new Error('獲得した記憶石が所持情報にありません。');
+  if (battle.memoryEchoes?.some(echo => !battle.units.some(unit => unit.uid === echo.actorId && unit.side === 'party') || !battle.units.some(unit => unit.uid === echo.targetId && unit.side === 'enemy'))) throw new Error('記憶石の残響対象が戦闘データにありません。');
   if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
   if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
-  if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
+  if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id) && id !== 'memory:slot' && !gemDefinitionForSkill(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
-  if (battle.events.some(event => event.skillId && !skills.has(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');
+  if (battle.events.some(event => event.skillId && !skills.has(event.skillId) && !gemDefinitionForSkill(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');
 }
 
 export function bootMetadata(save: GameSave): BootMetadata {
