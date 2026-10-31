@@ -1,0 +1,30 @@
+[
+  {
+    "file": "STILLVEIL_Lunette_Ultimate_Study_v3_OriginalBuff_720p.mp4",
+    "bytes": 6282274,
+    "sha256": "99bb71b5bef64f027117d21ca6efd9ae528f799e41733be17dc9c42155e18e3d",
+    "duration": 5,
+    "fullDecode": "passed"
+  },
+  {
+    "file": "STILLVEIL_Buff_Original_vs_Enhanced.mp4",
+    "bytes": 73662,
+    "sha256": "539b8997c5aeaa4835348f61ca064db4c8075ea5ce2f9b427d72bd52de10bcbd",
+    "duration": 4,
+    "fullDecode": "passed"
+  },
+  {
+    "source": "Direct offline render of current CombatSynth.play(buff), no pitch shift or rewritten notes",
+    "sourceSHA256": "3c45aaf9da870f5a9aaa77d71ea9177de31c5d411d9bfc88129448429aa5bb3f",
+    "sourceEnhancedCorrelation": 0.999858051596006,
+    "enhancementRmsGainDb": 3.418205056393673,
+    "phraseTimes": [
+      0.12,
+      1,
+      1.8,
+      2.45,
+      3.2
+    ],
+    "BGM": false
+  }
+]

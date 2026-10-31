@@ -1,3 +1,16 @@
+## 最新試作：ルネット必殺技 v3（既存のバフ原音を強化）
+
+現在ゲームで鳴っているバフ音を直接書き出して使用。音程・フレーズ・間隔を維持し、密度と余韻を補強しました。高音へ作り直した版は外しています。
+
+- [▶ 原音→強化音の比較・4秒](Lunette-Ultimate-Study-v3/STILLVEIL_Buff_Original_vs_Enhanced.mp4)
+- [▶ ルネット必殺技へ組み込んだ版・5秒](Lunette-Ultimate-Study-v3/STILLVEIL_Lunette_Ultimate_Study_v3_OriginalBuff_720p.mp4)
+- [制作について](Lunette-Ultimate-Study-v3/README.txt)
+- [ゲーム側のPR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+BGMなし。鍵の回転なし。ゲームのマージ・itch.io配信は行っていません。
+
+---
+
 ## 最新試作：ルネット必殺技 v2（バフ音多め・鍵回転なし）
 
 鍵を回すアニメーションを撤去。召喚前・展開・連射の区切り・最後の溜めと白化に、バフ音の明るい上昇フレーズを繰り返し重ねました。5秒・BGMなしです。
