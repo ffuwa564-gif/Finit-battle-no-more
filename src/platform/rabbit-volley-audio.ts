@@ -1,7 +1,7 @@
 import { RABBIT_VOLLEY, RABBIT_FLIGHT, rabbitShotTimes } from './ultimate-choreography';
 
-/** Original layered plasma weapon. Stretch deadlines, never the individual transients. */
-export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 'electric' | 'pressure' = 'electric'): Float32Array {
+/** Pulse/triangle 8-bit crossfire with weighted plasma finisher. Retime deadlines only. */
+export function renderRabbitVolley(sampleRate: number, timingScale = 1): Float32Array {
   const scale=Number.isFinite(timingScale)?Math.max(.25,Math.min(4,timingScale)):1;
   const duration=(RABBIT_VOLLEY.finale+RABBIT_VOLLEY.echoes[1])*scale+.36;
   const pcm=new Float32Array(Math.ceil(duration*sampleRate));
@@ -18,27 +18,24 @@ export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 
     let sound=0;
     for(const shot of shots){
       const age=t-shot.at;if(age<0||age>.2)continue;
-      const onset=1-Math.exp(-age*700);
-      const variant=1+(shot.bit-1.5)*.035+(shot.round-1.5)*.018;
-      // Dry electrical crack plus a harmonically rich low-mid punch. No long "pew" glide.
-      const phase=2*Math.PI*variant*(155*age+330*.009*(1-Math.exp(-age/.009)));
-      const plasma=Math.sin(phase)+.3*Math.sin(phase*2);
-      const bodyPhase=2*Math.PI*(95*age+90*.016*(1-Math.exp(-age/.016)));
-      const punch=Math.sin(bodyPhase)+.5*Math.sin(bodyPhase*2)+.24*Math.sin(bodyPhase*4);
-      const core=plasma*(flavor==='electric'?.15:.04)*Math.exp(-age*55)+punch*.52*Math.exp(-age*29);
-      const crack=grit*3.9*Math.exp(-age*65)+spark*.42*Math.exp(-age*145);
-      const pressure=lo*1.8*Math.exp(-age*30);
-      sound+=(core+crack+pressure)*onset*(.85+shot.round*.05);
-      // A separate short flight and contact, rather than one repeated UI-like note.
-      const travel=age-.008;
-      if(travel>0&&travel<.045)sound+=spark*.38*Math.sin(Math.PI*travel/.045)*(1-travel/.045);
+      const onset=1-Math.exp(-age*900);
+      // A genuine pulse/triangle chip voice: stepped pitch, sample hold and 8-bit amplitude.
+      const held=Math.floor(age*12000)/12000;
+      const pitches=[988,740,494,330],step=.018;
+      let cycles=0;
+      for(let k=0;k<4;k++)cycles+=pitches[k]*Math.max(0,Math.min(step,held-k*step));
+      cycles*=2**((shot.bit%2+shot.round*2)/12);
+      const phase=cycles%1,pulse=phase<.25?.75:-.25;
+      const triangle=1-4*Math.abs(phase-.5);
+      const env=onset*Math.exp(-age*47)*Math.max(0,1-age/.09);
+      const chip=Math.round((pulse*.8+triangle*.27)*127)/127;
+      const weight=Math.sin(2*Math.PI*118*age)*Math.exp(-age*40)*.13;
+      sound+=(chip*1.15+weight)*env*(.9+shot.round*.10);
       const contact=age-RABBIT_FLIGHT.shot*scale;
-      if(contact>0){
-        const env=(1-Math.exp(-contact*850))*Math.exp(-contact*36);
-        const thud=Math.sin(2*Math.PI*132*contact)+.48*Math.sin(2*Math.PI*264*contact)+.18*Math.sin(2*Math.PI*528*contact);
-        sound+=(grit*3.4+lo*1.3+thud*.6)*env;
-        const slap=contact-.018;
-        if(slap>0)sound+=grit*.65*(1-Math.exp(-slap*700))*Math.exp(-slap*48);
+      if(contact>=0&&contact<.08){
+        const contactEnv=(1-Math.exp(-contact*900))*Math.exp(-contact*65);
+        const digitalNoise=Math.round(grit*15)/15;
+        sound+=(digitalNoise*.65+Math.sin(2*Math.PI*196*contact)*.22)*contactEnv;
       }
     }
     // Pressure leaving the four clock emitters precedes the combined landing.

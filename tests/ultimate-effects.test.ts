@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, rabbitEnergyFrame, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
@@ -39,13 +39,13 @@ describe('ultimate presentation clock', () => {
     expect(rabbitWhiteout(start+400)).toBeGreaterThan(0);
     expect(rabbitWhiteout(RABBIT_TIMING.end)).toBe(0);
   });
-  it('reacts on all eight shots and the finisher, with a still gap and distinct robot depths', () => {
+  it('reacts on all eight shots and the finisher, with continuous final energy and distinct robot depths', () => {
     for(let bit=0;bit<4;bit++)for(const at of rabbitShotTimes(bit)){
       const state=rabbitTargetFrame(RABBIT_TIMING.impact+(at+RABBIT_FLIGHT.shot)*1000+.1);
       expect(state.flash).toBeGreaterThan(.1);expect(Math.abs(state.x)+Math.abs(state.y)).toBeGreaterThan(.3);
     }
-    const rest=rabbitTargetFrame(RABBIT_SEQUENCE.charge+10);
-    expect(rest.x).toBe(0);expect(rest.flash).toBe(0);
+    const charge=rabbitTargetFrame(RABBIT_SEQUENCE.charge+250);
+    expect(charge.zoom).toBeGreaterThan(1.3);expect(charge.flash).toBe(0);
     const finish=rabbitTargetFrame(RABBIT_TIMING.damage+1);
     expect(finish.x).toBeGreaterThan(8);expect(finish.finish).toBe(true);
     expect(new Set([0,1,2,3].map(i=>rabbitMount(i,1700).size)).size).toBe(4);
@@ -65,12 +65,14 @@ describe('ultimate presentation clock', () => {
     expect(rabbitStage(RABBIT_SEQUENCE.charge)).toBe('charge');
     expect(rabbitStage(RABBIT_SEQUENCE.finish)).toBe('finish');
   });
-  it('accelerates into shots, pulls back for charge and reveals at neutral zoom',()=>{
+  it('accelerates from the second charge directly into heavy flight and reveals at neutral zoom',()=>{
     expect(rabbitCameraZoom(0)).toBe(1);
     const early=rabbitCameraZoom(3400)-rabbitCameraZoom(3200);
     const late=rabbitCameraZoom(4200)-rabbitCameraZoom(4000);
     expect(late).toBeGreaterThan(early*5);
-    expect(rabbitCameraZoom(RABBIT_SEQUENCE.charge+240)).toBeLessThan(rabbitCameraZoom(RABBIT_SEQUENCE.charge));
+    expect(rabbitCameraZoom(RABBIT_SEQUENCE.charge+240)).toBeGreaterThan(rabbitCameraZoom(RABBIT_SEQUENCE.charge));
+    const launch=RABBIT_SEQUENCE.finish-RABBIT_FLIGHT.finale*1000;
+    expect(Math.abs(rabbitCameraZoom(launch-1)-rabbitCameraZoom(launch+1))).toBeLessThan(.01);
     expect(rabbitCameraZoom(RABBIT_SEQUENCE.finish+80)).toBeCloseTo(1.38);
     expect(rabbitCameraZoom(RABBIT_SEQUENCE.end)).toBeCloseTo(1,10);
     for(let at=0;at<=RABBIT_SEQUENCE.end;at+=10){expect(rabbitCameraZoom(at)).toBeGreaterThanOrEqual(1-1e-10);expect(rabbitCameraZoom(at)).toBeLessThanOrEqual(1.381);}
@@ -85,8 +87,16 @@ describe('ultimate presentation clock', () => {
       const early=rabbitLoopCamera(at+cue.duration*1000*.15).zoom;
       const late=rabbitLoopCamera(at+cue.duration*1000*.45).zoom;
       expect(late).toBeGreaterThan(early*10);
-      expect(rabbitLoopCamera(at+cue.duration*1000+1).round).toBe(-1);
+      expect(rabbitLoopCamera(cue.round===RABBIT_VOLLEY.rounds-1?RABBIT_SEQUENCE.finish+1:at+cue.duration*1000+1).round).toBe(-1);
     }
+  });
+  it('changes local energy color on each charge and keeps it for the next shots',()=>{
+    expect(rabbitEnergyFrame(4200).color).toBe(0x9aeee7);
+    const cues=rabbitLoopCues();
+    expect(rabbitEnergyFrame(4200+cues[0].at*1000+100).color).toBe(0xbea2ff);
+    expect(rabbitEnergyFrame(5200).color).toBe(0xbea2ff);
+    expect(rabbitEnergyFrame(4200+cues[1].at*1000+100).color).toBe(0xff9fbd);
+    expect(rabbitEnergyFrame(RABBIT_SEQUENCE.finish).color).toBe(0xff9fbd);
   });
   it('launches from artwork clock faces, travels before damage and lands the heavy shot together',()=>{
     const first=RABBIT_TIMING.impact;

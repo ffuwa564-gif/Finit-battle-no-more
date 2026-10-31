@@ -32,10 +32,12 @@ export const rabbitLoopCues = () => RABBIT_LOOP_SEMITONES.map((semitones,round)=
 /** Accelerate into the charge peak, then release; later passes move further and faster. */
 export function rabbitLoopCamera(elapsed:number){
   const relative=(elapsed-RABBIT_SEQUENCE.fire)/1000;
-  const cue=rabbitLoopCues().find(cue=>relative>=cue.at&&relative<cue.at+cue.duration);
+  const cue=rabbitLoopCues().find(cue=>relative>=cue.at&&relative<(cue.round===RABBIT_VOLLEY.rounds-1?RABBIT_VOLLEY.finale:cue.at+cue.duration));
   if(!cue)return {zoom:0,x:0,y:0,round:-1,power:0};
   const u=(relative-cue.at)/cue.duration;
-  const power=u<.55?(u/.55)**3:(1-(u-.55)/.45)**3;
+  const last=cue.round===RABBIT_VOLLEY.rounds-1;
+  const release=last?1-clamp01((relative-(RABBIT_VOLLEY.finale-RABBIT_FLIGHT.finale))/RABBIT_FLIGHT.finale):1;
+  const power=(u<.55?(u/.55)**3:last?1:(1-(u-.55)/.45)**3)*release;
   return {zoom:cue.zoom*power,x:(cue.round%2?1:-1)*cue.pan*power,y:-cue.pan*.35*power,round:cue.round,power};
 }
 /** Repeated crossfire, a short breath, then one combined finishing blast. */
@@ -108,14 +110,34 @@ function rabbitBaseCameraZoom(elapsed: number): number {
   if(elapsed<RABBIT_SEQUENCE.summon)return 1;
   if(elapsed<RABBIT_SEQUENCE.aim)return 1+.055*easeOut((elapsed-RABBIT_SEQUENCE.summon)/2000);
   if(elapsed<RABBIT_SEQUENCE.fire)return 1.055+.055*easeIn((elapsed-RABBIT_SEQUENCE.aim)/1000);
-  if(elapsed<RABBIT_SEQUENCE.charge)return 1.11+.04*easeIn((elapsed-RABBIT_SEQUENCE.fire)/(RABBIT_SEQUENCE.charge-RABBIT_SEQUENCE.fire));
-  if(elapsed<RABBIT_SEQUENCE.charge+240)return 1.15-.13*easeOut((elapsed-RABBIT_SEQUENCE.charge)/240);
-  if(elapsed<RABBIT_SEQUENCE.finish)return 1.02+.17*easeIn((elapsed-RABBIT_SEQUENCE.charge-240)/560);
-  if(elapsed<RABBIT_SEQUENCE.finish+80)return 1.19+.19*easeOut((elapsed-RABBIT_SEQUENCE.finish)/80);
+  if(elapsed<RABBIT_SEQUENCE.finish)return 1.11+.04*easeIn((elapsed-RABBIT_SEQUENCE.fire)/(RABBIT_SEQUENCE.finish-RABBIT_SEQUENCE.fire-RABBIT_FLIGHT.finale*1000));
+  if(elapsed<RABBIT_SEQUENCE.finish+80)return 1.38;
   return 1.38-.38*easeOut((elapsed-RABBIT_SEQUENCE.finish-80)/900);
 }
 export function rabbitCameraZoom(elapsed:number):number {
+  const launch=RABBIT_SEQUENCE.finish-RABBIT_FLIGHT.finale*1000;
+  const last=rabbitLoopCues().at(-1)!;
+  const charged=RABBIT_SEQUENCE.fire+(last.at+last.duration)*1000;
+  if(elapsed>=charged&&elapsed<launch)return 1.35;
+  if(elapsed>=launch&&elapsed<RABBIT_SEQUENCE.finish){
+    const u=clamp01((elapsed-launch)/(RABBIT_FLIGHT.finale*1000));
+    return 1.35+.03*u**3;
+  }
   return rabbitBaseCameraZoom(elapsed)+rabbitLoopCamera(elapsed).zoom;
+}
+/** A sustained energy color at each actual charge, not a full-screen color filter. */
+export function rabbitEnergyFrame(elapsed:number){
+  const colors=[0x9aeee7,0xbea2ff,0xff9fbd];
+  const relative=(elapsed-RABBIT_SEQUENCE.fire)/1000;
+  const cues=rabbitLoopCues();let phase=0,color=colors[0];
+  for(const cue of cues){
+    if(relative<cue.at)break;
+    phase=cue.round+1;
+    const blend=clamp01((relative-cue.at)/.08),from=colors[phase-1],to=colors[phase];
+    const channel=(shift:number)=>Math.round(((from>>shift)&255)*(1-blend)+((to>>shift)&255)*blend);
+    color=(channel(16)<<16)|(channel(8)<<8)|channel(0);
+  }
+  return {color,phase,power:rabbitLoopCamera(elapsed).power};
 }
 /** Bounded reactions at every shot, a quiet gap, then a held heavy recoil. */
 export function rabbitTargetFrame(elapsed: number) {

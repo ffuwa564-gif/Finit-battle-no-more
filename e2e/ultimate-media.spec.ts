@@ -248,7 +248,7 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
     (window as any).__rabbitVoices=[];
     const start=AudioBufferSourceNode.prototype.start;
     AudioBufferSourceNode.prototype.start=function(...args:any[]){
-      if(this.buffer&&!this.loop&&this.buffer.duration>=7.03&&this.buffer.duration<=8.81){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*.7),hi=Math.floor(this.buffer.sampleRate*1.1);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
+      if(this.buffer&&!this.loop&&this.buffer.duration>=6.16&&this.buffer.duration<=7.73){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*.7),hi=Math.floor(this.buffer.sampleRate*1.1);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
       return start.apply(this,args as any);
     };
   });
@@ -256,10 +256,10 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   await page.waitForTimeout(180);
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-7.04)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-6.176)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
   const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
-  expect(voices.some((v:any)=>Math.abs(v.duration-8.8)<.01&&v.chargeRms>.02)).toBe(true);
-  expect(voices.some((v:any)=>Math.abs(v.duration-7.04)<.01&&v.offset>.1)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-7.72)<.01&&v.chargeRms>.02)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-6.176)<.01&&v.offset>.1)).toBe(true);
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
   expect(await page.locator('[data-encounter-scene] > .enemy-page-art, [data-encounter-scene] > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});

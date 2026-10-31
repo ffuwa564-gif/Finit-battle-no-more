@@ -1,7 +1,7 @@
 import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
-import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCamera, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCamera, rabbitEnergyFrame, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
 const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
@@ -23,7 +23,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const ctx=glow.getContext('2d')!,gradient=ctx.createRadialGradient(32,32,0,32,32,32);
   gradient.addColorStop(0,'#ffffff');gradient.addColorStop(.14,'#ffffffff');gradient.addColorStop(.35,'#ffffff70');gradient.addColorStop(1,'#ffffff00');
   ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);
-  const texture=Texture.from(glow),color=palette[visual];
+  const texture=Texture.from(glow);let color=palette[visual];
   const particles=Array.from({length:56*(targets?4:1)},(_,i)=>{
     const sprite=new Sprite(texture);sprite.anchor.set(.5);sprite.blendMode='add';sprite.tint=i%4?color:0xffffff;scene.addChild(sprite);
     return {sprite,angle:i*2.39996,speed:.35+(i*37%73)/100,size:3+i%5};
@@ -44,7 +44,9 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const polygon=(points:number[],alpha:number,tint=color)=>{if(alpha>0)forms.poly(points).fill({color:tint,alpha});};
   const draw=()=>{
     if(destroyed||document.hidden)return;
-    const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
+    const elapsed=position();
+    if(visual==='rabbit-bits'){const energy=rabbitEnergyFrame(elapsed);color=energy.color;host.dataset.rabbitColor=color.toString(16).padStart(6,'0');host.dataset.rabbitEnergy=String(energy.phase);}
+    const f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
     if(visual==='rabbit-bits'&&!targets){
@@ -185,7 +187,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       for(let bit=0;bit<4;bit++){
         const state=rabbitBitFrame(bit,elapsed),mount=rabbitMount(bit,elapsed);
         const x=cx+mount.x*s,y=cy+mount.y*s;
-        const spread=state.round===3?.4:1;
+        const spread=state.round===RABBIT_VOLLEY.rounds-1?.4:1;
         const aimX=cx+(state.final?0:[-.09,.08,-.045,.055][bit]*s*spread);
         const aimY=cy+(state.final?0:[-.055,-.015,.065,.09][bit]*s*spread);
         const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.035;
@@ -213,6 +215,17 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         }
         if(hit<0 && aiming>0){
           stroke([x,y,x+(cx-x)*aiming,y+(cy-y)*aiming],.65,aiming*.3);
+        }
+        const energy=rabbitEnergyFrame(elapsed);
+        if(energy.power>0){
+          // The charge visibly energizes the same emitters that fire next.
+          const r=s*(.022+.035*energy.power);
+          light.circle(muzzle.x,muzzle.y,r*1.8).fill({color,alpha:energy.power*.24});
+          light.circle(muzzle.x,muzzle.y,r).stroke({color,width:2,alpha:energy.power*.85});
+          for(let ray=0;ray<4;ray++){
+            const a=ray*Math.PI/2+elapsed*.002;
+            stroke([muzzle.x+Math.cos(a)*r,muzzle.y+Math.sin(a)*r,muzzle.x+Math.cos(a)*r*1.8,muzzle.y+Math.sin(a)*r*1.8],1,energy.power*.6);
+          }
         }
         if(state.finishCharge>0){
           light.circle(muzzle.x,muzzle.y,s*.04*state.finishCharge).fill({color,alpha:state.finishCharge*.7});

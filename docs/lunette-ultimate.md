@@ -4,18 +4,18 @@
 
 Summoning and shooting are distinct scenes. Do not pad an arbitrary short clip by repeating charge sounds. The user calls the existing pre-ultimate ブオーン “buff”; this is `renderUltimateCharge`, never `CombatSynth.play('buff')` or a new arpeggio. Preserve its timbre, avoid excessive metallic ringing, and give every sound a visual cause. The previous five-second soundtrack with four repeated charges is superseded.
 
-## Authored sequence (normal speed: 8.8 seconds)
+## Authored sequence (normal speed: 7.72 seconds)
 
 | Time | Picture | Sound |
 | --- | --- | --- |
 | 0–1.2 s | Lunette original full illustration, using the same portrait/title cut-in as other characters | Brief opening space, then existing charge rises into gate opening |
 | 1.2–3.2 s | Four rabbits materialize successively, 360 ms apart, through local clock gates; each settles over 540 ms | A soft air/pressure arrival for each robot, no musical notes |
 | 3.2–4.2 s | All four remain readable; thin aiming lines converge and the reticle locks | Silence from this soundtrack: a deliberate contrast before firing |
-| 4.2–6.4 s | Two crossfire passes, eight distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; a familiar rising charge after each completed pass |
-| 6.4–7.02 s | Clock emitters gather light inward together | One familiar charge rises into heavy launch |
-| 7.02–7.2 s | Four heavy plasma bodies fly inward together | Departure pressure and a short air trail |
-| 7.2–8.2 s | Combined blast, held recoil, finishing damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
-| 8.2–8.8 s | Clear aftermath before replay continues | Let the tail end |
+| 4.2–5.485 s | Two crossfire passes, eight distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; a familiar rising charge after each completed pass |
+| 5.485–5.94 s | Second pass charge changes emitters pink and gathers energy; camera pushes in and holds | The second pass ブオーン itself resolves into heavy launch; no extra charge |
+| 5.94–6.12 s | Four heavy plasma bodies fly inward together | Departure pressure and a short air trail |
+| 6.12–7.12 s | Combined blast, held recoil, finishing damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
+| 7.12–7.72 s | Clear aftermath before replay continues | Let the tail end |
 
 `RABBIT_SEQUENCE` owns the scene beats; `RABBIT_TIMING`, sound placement, Pixi, whiteout, per-shot HP presentation and replay duration derive from them. `rabbitStage` exposes command/summon/aim/volley/charge/finish/reveal for inspection without adding battle UI text. The SVG fallback uses the same clock for materialization and shots; it must not run an independent CSS firing loop. Other characters retain their normal ultimate timing.
 
@@ -84,3 +84,14 @@ The user found four passes too long. Use two four-hit passes (eight small contac
 Keep the exact original charge after both passes. Pitch rises from 0 to +7 semitones, additional zoom from .07 to .20, pan from 2 to 8, and charge gain from .95 to 1.34 before the common 1.65 multiplier. Both accents still follow the fourth contact by 15 ms and share the cubic acceleration envelope. Preserve the recognized shooting timbre, ornate cut-in, HUD stability and motion-saving gates.
 
 PV v21 uses a fresh real game recording, two native-speed passes, the existing final charge/whiteout transition and accepted layout. The technique header now correctly says eight shots. PV duration is 23.5 seconds, including 8.667 seconds of inset gameplay. The four-pass v20 description above is historical. No additional generated assets or credits.
+
+
+## Current direction: chip shots, charge colors and continuous follow-up (PV v22)
+
+Regular shots now use 12 kHz sample-held pulse/triangle synthesis, stepped pitch and 8-bit amplitude quantization with a compact contact body. The final plasma detonation retains weight and two delay returns. The familiar pre-ultimate ブオーン remains unchanged in identity; no bell/UI motif is added.
+
+`rabbitEnergyFrame` changes local light from mint to lilac after the first pass charge, then pink after the second. Each change blends over 80 ms and persists into subsequent shooting/finisher. The same color drives emitter halos, rays, projectiles, impact and the SVG fallback. Original character art and HUD are not recolored.
+
+The previous second charge ended around 5939 ms, then sat until a separate last charge at 6340 ms. This duplicated anticipation. Remove the separate last charge entirely: second pass finishes contact at 5470, charge begins at 5485 and directly launches heavy shots at 5940; impact at 6120. Hold the second camera push into launch, advance through the 180 ms flight and release only after the finishing impact. There is no reset/pullback between that charge and follow-up. Tail7120/end7720; total capped damage stays the same across eight small contacts and finisher.
+
+PV v22 uses freshly recorded gameplay and keeps charge-to-flight at near-native pace, with the existing full-composition whiteout into animated Lunette. Preserve count-in, track starting position, credits, skill header and cutout/inset layout. No new generated assets or credits.

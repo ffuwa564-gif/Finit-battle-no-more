@@ -38,16 +38,19 @@ describe('authored ultimate sound materials', () => {
   });
   it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
     const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
-    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES[1]).toBeCloseTo(6.34);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES).toHaveLength(1);
     for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
     expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
-    expect(voice.length/48000).toBe(8.8);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(7.04,4);
+    expect(voice.length/48000).toBe(7.72);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(6.176,4);
   });
-  it('keeps aiming silent and lets crossfire breathe before the last charge',()=>{
+  it('keeps aiming silent and lets the second pass charge lead directly into the heavy launch',()=>{
     const rate=48000,pcm=renderRabbitUltimate(rate);
     expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
-    expect(rms(pcm,rate,6.2,6.3)).toBe(0);
-    expect(rms(pcm,rate,6.7,7.0)).toBeGreaterThan(.02);
+    const last=rabbitLoopCues().at(-1)!;
+    const launch=RABBIT_SEQUENCE.finish/1000-.18;
+    expect(RABBIT_SEQUENCE.fire/1000+last.at+last.duration).toBeCloseTo(launch,2);
+    expect(rms(pcm,rate,5.55,5.8)).toBeGreaterThan(.02);
+    expect(rms(pcm,rate,6.13,6.20)).toBeGreaterThan(.02);
   });
   it('reuses the actual ブオーン after each completed pass and raises its whole waveform',()=>{
     const rate=48000,source=renderUltimateCharge(rate),cues=rabbitLoopCues(),pcm=renderRabbitLoopCharges(rate);

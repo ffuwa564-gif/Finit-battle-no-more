@@ -1,5 +1,4 @@
 import { renderRabbitLoopCharges } from './rabbit-loop-charge';
-import { RABBIT_FLIGHT } from './ultimate-choreography';
 import { RABBIT_TIMING, RABBIT_SEQUENCE } from './ultimate-timing';
 import { renderRabbitVolley } from './rabbit-volley-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
@@ -8,9 +7,8 @@ import { renderUltimateCharge } from './ultimate-charge-audio';
 export function enhanceRabbitCharge(source: Float32Array): Float32Array {
   return Float32Array.from(source, value => value * 1.65);
 }
-// Each charge ends on a meaningful picture: opening the gates, then launching the heavy bolts.
-export const RABBIT_CHARGE_CUES = [(RABBIT_SEQUENCE.summon-680)/1000,
-  (RABBIT_SEQUENCE.finish-680)/1000-RABBIT_FLIGHT.finale] as const;
+// Gate opening uses the opening charge. The final pass charge itself launches the heavy bolts.
+export const RABBIT_CHARGE_CUES = [(RABBIT_SEQUENCE.summon-680)/1000] as const;
 
 /** Soft air/pressure materialization; no pitched arpeggio or metallic ringing. */
 function summonAir(sampleRate: number): Float32Array {
@@ -37,10 +35,9 @@ export function renderRabbitUltimate(sampleRate: number, rate=1): Float32Array {
   const arrival=summonAir(sampleRate);
   for(let bit=0;bit<4;bit++)add(arrival,
     (RABBIT_SEQUENCE.summon+bit*RABBIT_SEQUENCE.summonStep+220)/1000,.9);
-  // Keep the original weapon, with the familiar rising charge and camera accent after each pass.
+  // Chip-style shots; the last rising charge resolves directly into the heavy launch.
   add(renderRabbitVolley(sampleRate,1/speed),RABBIT_TIMING.impact/1000,.72);
   add(renderRabbitLoopCharges(sampleRate,1/speed),RABBIT_TIMING.impact/1000,1);
-  add(charge,RABBIT_CHARGE_CUES[1],1.12);
   let peak=.001;for(const value of pcm)peak=Math.max(peak,Math.abs(value));
   for(let i=0;i<pcm.length;i++)pcm[i]*=.83/peak*Math.min(1,i/(sampleRate*.002),(pcm.length-1-i)/(sampleRate*.06));
   return pcm;
