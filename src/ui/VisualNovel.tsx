@@ -1,5 +1,6 @@
+import { GameImage } from './GameMedia';
 import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { createGamePortal } from './GamePortal';
 import { ArrowLeft, ArrowRight, BookOpen, FastForward, X } from 'lucide-react';
 import type { GameCommand, GameSave, NovelSceneDef } from '../domain/types';
 import { assetPath, content } from '../content';
@@ -60,9 +61,9 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
     };
     document.addEventListener('keydown', keys); return () => document.removeEventListener('keydown', keys);
   }, [skip, log, blocked, last, onNext, onFinish]);
-  return createPortal(<>
+  return createGamePortal(<>
     <section ref={root} className={`visual-novel visual-novel--${phase}${reducedMotion ? ' visual-novel--reduced' : ''}`} role="dialog" aria-modal="true" aria-labelledby="novel-title" tabIndex={-1} data-scene={scene.id} data-page={pageIndex}>
-      <div className="novel-backgrounds" aria-hidden="true">{backgrounds.map(id => <img key={id} src={assetPath(id)} alt="" style={{ objectPosition: content.assets.find(asset => asset.id === id)?.anchor ?? '50% 50%' }} className={id === page.backgroundId ? 'is-current' : ''} />)}</div>
+      <div className="novel-backgrounds" aria-hidden="true">{backgrounds.map(id => <GameImage key={id} src={assetPath(id)} alt="" style={{ objectPosition: content.assets.find(asset => asset.id === id)?.anchor ?? '50% 50%' }} className={id === page.backgroundId ? 'is-current' : ''} />)}</div>
       <div className={`novel-shade novel-shade--${page.shade ?? 'normal'}`} aria-hidden="true" />
       {page.shade !== 'black' && <SceneAtmosphere mode={page.shade === 'dark' ? 'memory' : 'quiet'} reducedMotion={reducedMotion} />}
       <header className="novel-header"><div><span>STILLVEIL · STORY</span><h1 id="novel-title">{tr(scene.title)}</h1></div><div className="novel-toolbar"><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setLog(true)}><BookOpen size={15} />{tr('会話ログ')}</Button><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setSkip(true)}><FastForward size={15} />{tr('物語をスキップ')}</Button></div></header>

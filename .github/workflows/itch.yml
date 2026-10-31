@@ -50,8 +50,9 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build:itch
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run test:itch
+      - run: npm run test:native-ui
       - name: Prepare review fingerprint
         run: npm run check:release -- --report
       - uses: actions/upload-artifact@v4

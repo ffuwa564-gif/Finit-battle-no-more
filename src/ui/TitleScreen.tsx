@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { tr, localize } from '../locales/i18n';
 import { useState } from 'react';
 import { Pause, Play } from 'lucide-react';
@@ -18,7 +19,7 @@ export function TitleScreen({ onStart, leaving, returning, reducedMotion = false
     {!reducedMotion && <Button className="title-screen__motion" variant="icon" sound={false} disabled={leaving} aria-label={tr(paused ? '背景の動きを再生' : '背景の動きを止める')} title={tr(paused ? '背景の動きを再生' : '背景の動きを止める')} onClick={() => setPaused(value => !value)}>{paused ? <Play size={15} /> : <Pause size={15} />}</Button>}
     <LanguageSwitch className="title-language" />
     <div className="title-screen__brand">
-      <h1 id="title-screen-name" aria-label="STILLVEIL"><img src={assetPath('title-wordmark')} alt="" /></h1>
+      <h1 id="title-screen-name" aria-label="STILLVEIL"><GameImage src={assetPath('title-wordmark')} alt="" /></h1>
       <p className="title-screen__subtitle">{tr("静謐の残響")}</p>
       <p className="title-screen__invitation" id="title-screen-invitation">{tr('静謐と少女だけの')}<br />{tr('世界構造を体感する')}</p>
     </div>

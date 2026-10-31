@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { tr, localize } from '../locales/i18n';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight, Crown, MapPin, Crosshair } from 'lucide-react';
@@ -167,10 +168,10 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={cancelGesture}
     onPointerLeave={() => { if (gesture.current && !gesture.current.horizontal) cancelGesture(); }} onLostPointerCapture={cancelGesture}>
     {localize(transition && !reduced && <div className={`enemy-page--outgoing${previousPortraitScene ? ' enemy-page--portrait' : ''}`} key={`outgoing-${transition.previous.uid}`} aria-hidden="true" style={{ '--page-direction': transition.direction } as CSSProperties}>
-      <img className="enemy-page-art" src={assetPath(previousSceneId!)} alt={tr("")} draggable={false} style={{ objectPosition: previousPortraitScene ? '50% 0%' : previousScene?.anchor ?? '50% 30%' }} />
+      <GameImage className="enemy-page-art" src={assetPath(previousSceneId!)} alt={tr("")} draggable={false} style={{ objectPosition: previousPortraitScene ? '50% 0%' : previousScene?.anchor ?? '50% 30%' }} />
     </div>)}
     <div className={`enemy-page${portraitScene ? ' enemy-page--portrait' : ''}${transition && !reduced ? ' enemy-page--incoming' : ''}`} style={{ '--page-direction': transition?.direction ?? 1 } as CSSProperties} key={front.uid} data-enemy-id={front.uid} data-unit={front.uid} data-encounter-scene>
-      {localize(character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={tr(character.name)} label={tr(character.name)} reducedMotion={reduced} /> : <img className="enemy-page-art" src={assetPath(sceneId)} alt={tr("")} draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />)}
+      {localize(character.motionId ? <AnimatedIllustration posterId={sceneId} motionId={character.motionId} alt={tr(character.name)} label={tr(character.name)} reducedMotion={reduced} /> : <GameImage className="enemy-page-art" src={assetPath(sceneId)} alt={tr("")} draggable={false} style={{ objectPosition: portraitScene ? '50% 0%' : scene?.anchor ?? '50% 30%' }} />)}
     </div>
     {front.uid === targetId && front.hp > 0 && <><MapPin className="enemy-target-pin" aria-label={tr('狙っている敵')} /><span className="enemy-target-ring" aria-hidden="true" /></>}
     {onTarget && front.hp > 0 && <Button className="enemy-target-button" variant="icon" sound={false} selected={front.uid === targetId} aria-label={tr('この敵を狙う')} onClick={() => onTarget(front.uid)}><Crosshair size={18} /></Button>}

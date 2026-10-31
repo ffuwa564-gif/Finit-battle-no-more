@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronRight, Pause, Play, RotateCcw, Sparkles } from 'lucide-react';
 import { assetPath } from '../content';
@@ -40,7 +41,7 @@ export function BuildDemo({buildId,stage,content,reducedMotion=false}:BuildDemoP
       const number=Math.abs(hpDelta) || (frame?.event.kind==='guard' ? shieldGain : frame?.event.kind==='buff' ? chargeGain : 0);
       const support=hpDelta>0 || hpDelta===0 && (shieldGain>0 || chargeGain>0);
       return <div key={unit.uid} className={`build-demo__unit${target?' is-target':''}${actor?' is-actor':''}${unit.hp<=0?' is-fallen':''}`}>
-        <div className="build-demo__portrait"><img src={assetPath(character.portraitId)} alt={displayName(unit)} style={{objectPosition:portrait?.anchor ?? '50% 22%'}} />{target && number>0 && <strong className={`build-demo__number${support?' is-support':''}`}>{support?'+':''}{number}</strong>}{unit.side==='party' && <span className="build-demo__charge">{unit.ultimateCharge ?? 0}%</span>}</div>
+        <div className="build-demo__portrait"><GameImage src={assetPath(character.portraitId)} alt={displayName(unit)} style={{objectPosition:portrait?.anchor ?? '50% 22%'}} />{target && number>0 && <strong className={`build-demo__number${support?' is-support':''}`}>{support?'+':''}{number}</strong>}{unit.side==='party' && <span className="build-demo__charge">{unit.ultimateCharge ?? 0}%</span>}</div>
         <span className="build-demo__name">{displayName(unit)}</span><meter min={0} max={unit.maxHp} value={Math.max(0,unit.hp)} aria-label={tr('{0}のHP').replace('{0}',displayName(unit))} />
       </div>;
     })}</div>;

@@ -1,7 +1,8 @@
+import { GameImage } from './GameMedia';
 import { UltimateIntroFx } from './UltimateIntroFx';
 import { createRabbitBattleMotion } from '../platform/rabbit-battle-motion';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { createPortal } from 'react-dom';
+import { createGamePortal } from './GamePortal';
 import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
@@ -133,7 +134,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
 
   return <><div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-stage={visual==='rabbit-bits'?stage:undefined} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
-      <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
+      <div className="ultimate-cinematic__portrait" aria-hidden="true"><GameImage src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
       {allowed && <UltimateIntroFx position={()=>clock.current.position(performance.now())} duration={timing.effect} />}
       <div className="ultimate-cinematic__title"><small>{enemy ? 'ENEMY ULTIMATE' : 'ULTIMATE'}</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
     </div>
@@ -143,11 +144,11 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
       {allowed && (!ready || failed) ? <FallbackImpact theme={special.theme} visual={visual} position={()=>clock.current.position(performance.now())} /> : null}
     </div>}
   </div>{enemy && allowed && partyLayer && <>
-    {createPortal(<div className="ultimate-party-effect" data-phase={phase} aria-hidden="true" style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+    {createGamePortal(<div className="ultimate-party-effect" data-phase={phase} aria-hidden="true" style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
       {!failed && <div className="ultimate-pixi-host" ref={effectHost} />}
     </div>, partyLayer)}
-    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} visual={visual} position={()=>clock.current.position(performance.now())} /></div>, element, element.dataset.unit))}
-  </>}{allowed && visual==='rabbit-bits' && battleLayer && createPortal(<div ref={whiteoutHost} className="ultimate-whiteout" aria-hidden="true" />,battleLayer)}</>;
+    {(!ready || failed) && targetElements().map(element => createGamePortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} visual={visual} position={()=>clock.current.position(performance.now())} /></div>, element, element.dataset.unit))}
+  </>}{allowed && visual==='rabbit-bits' && battleLayer && createGamePortal(<div ref={whiteoutHost} className="ultimate-whiteout" aria-hidden="true" />,battleLayer)}</>;
 }
 
 export function UltimateCutIn({ event, units, reducedMotion, speed = 1 }: { event?: BattleEvent; units: Unit[]; reducedMotion: boolean; speed?: 1 | 2 }) {

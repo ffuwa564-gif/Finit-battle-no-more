@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronRight, Crown, Gem, Layers3, LockKeyhole, Shield, Target, Users, X, Zap } from 'lucide-react';
 import { assetPath } from '../content';
@@ -85,7 +86,7 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
     <header className="build-planner__header"><div><span className="build-planner__eyebrow">BUILD ATELIER</span><h2>{tr('ビルドの道標')}</h2><p>{tr('作りたい戦い方から、次の一周を選ぶ。')}</p></div><Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button></header>
     <div className="build-planner__choices" aria-label={tr('おすすめビルド')}>
       {BUILD_DEFINITIONS.map((build,index) => { const Icon=icons[index % icons.length]; const members=build.stages.complete.slots.slice(0,3).map(slot => character(slot.characterIds[0])).filter(Boolean); return <Button key={build.id} variant="secondary" selected={selectedId === build.id} data-testid={`build-card-${build.id}`} data-build-id={build.id} className={`build-planner__choice build-planner__choice--${index}`} onClick={() => choose(build.id)}>
-        <span className="build-planner__choice-art" aria-hidden="true">{members.map((member,i) => member && <img key={`${member.id}-${i}`} src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />)}</span>
+        <span className="build-planner__choice-art" aria-hidden="true">{members.map((member,i) => member && <GameImage key={`${member.id}-${i}`} src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />)}</span>
         <span className="build-planner__choice-copy"><span><Icon size={15} />{tr(build.name)}</span><small>{tr(build.tagline)}</small></span><ChevronRight size={18} />
       </Button>; })}
     </div>
@@ -96,7 +97,7 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
       <p className="build-planner__stage-description">{tr(plan.stageDefinition.description)}</p>
       <div className="build-planner__progress"><div><span>{tr('目標を満たす枠')}</span><strong>{plan.readyCount}<small> / {plan.totalCount}</small></strong></div><progress max={plan.totalCount} value={plan.readyCount} aria-label={tr('ビルドの達成状況')} /><p>{tr('所持している仲間と石で判定。未装備でも数えます。')}</p></div>
       <div className="build-planner__lineup" aria-label={tr('手持ちでの編成候補')}>{plan.slots.map((slot,index) => { const member=character(slot.characterId ?? slot.preferredCharacterId); return <div key={slot.slot.id} className={`build-planner__member${!slot.characterId ? ' is-missing' : ''}`}>
-        <div className="build-planner__member-portrait">{member && <img src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />}{index === plan.stageDefinition.leaderSlot && <Crown size={13} aria-label={tr('リーダー')} />}{slot.fulfilled ? <Check size={13} className="build-planner__member-status is-ready" /> : <Gem size={13} className="build-planner__member-status" />}</div>
+        <div className="build-planner__member-portrait">{member && <GameImage src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />}{index === plan.stageDefinition.leaderSlot && <Crown size={13} aria-label={tr('リーダー')} />}{slot.fulfilled ? <Check size={13} className="build-planner__member-status is-ready" /> : <Gem size={13} className="build-planner__member-status" />}</div>
         <strong>{name(slot.characterId ?? slot.preferredCharacterId)}</strong><small>{tr(!slot.characterId ? '未所持' : slot.substitute ? '代役候補' : slot.gemStatus === 'missing' ? '石が不足' : slot.gemStatus === 'upgrade' ? '性能を磨く' : '準備できました')}</small>
       </div>; })}</div>
       <Button className="build-planner__track" variant={isTracked ? 'secondary' : 'primary'} disabled={busy} onClick={() => dispatch(isTracked ? {type:'trackBuild',buildId:null} : {type:'trackBuild',buildId:selectedId,stage})}><Target size={16} />{tr(isTracked ? 'この目標を解除' : 'このビルドを目標にする')}{isTracked && <Check size={15} />}</Button>

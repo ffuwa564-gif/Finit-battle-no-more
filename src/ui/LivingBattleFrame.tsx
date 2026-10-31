@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import type { Battle, BattleEvent, Unit, Role } from '../domain/types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAnimationSettings } from './animation-settings';
@@ -29,7 +30,7 @@ function GardenArt({ className, moving, poster, animate }: { className: string; 
     image.src = assetPath(moving);
     return () => { canceled = true; image.onload = image.onerror = null; };
   }, [animate, failed, ready, moving]);
-  return <img className={className} src={assetPath(animate && ready && !failed ? moving : poster)} alt="" draggable={false}
+  return <GameImage className={className} src={assetPath(animate && ready && !failed ? moving : poster)} alt="" draggable={false}
     data-animated={animate && ready && !failed} onError={() => setFailed(true)} />;
 }
 
@@ -49,7 +50,7 @@ function OpeningFlower({ id, kind, animate, restored, onOpen }: { id: string; ki
     return () => { canceled = true; if (url) URL.revokeObjectURL(url); clearTimeout(timer.current); timer.current = undefined; };
   }, [animate, open, kind]);
   useEffect(() => { if (open) onOpen(id); }, [id, open, onOpen]);
-  return <img className="garden-flower-art" alt="" draggable={false}
+  return <GameImage className="garden-flower-art" alt="" draggable={false}
     src={open ? assetPath(kind === 'strike' ? 'living-garden-black-bloom-poster' : 'living-garden-bloom-poster') : motionURL ?? assetPath('living-garden-bud')}
     data-animated={animate && !open && Boolean(motionURL)} data-flower-phase={open ? 'open' : 'opening'}
     onLoad={() => { if (!open && motionURL && timer.current === undefined) timer.current = setTimeout(() => setOpen(true), OPENING_MS); }}
@@ -104,7 +105,7 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
     <GardenArt className="garden-frame__art" moving="living-garden-idle-motion" poster="living-garden-frame" animate={animate} />
     <div className="garden-flower-bed">
       {flower ? <OpeningFlower key={flower.id} id={flower.id} kind={flower.kind} animate={animate} restored={firstFlower.current === flower.id} onOpen={markOpen} />
-        : <img className="garden-flower-art" src={assetPath('living-garden-bud')} alt="" draggable={false} data-flower-phase="bud" />}
+        : <GameImage className="garden-flower-art" src={assetPath('living-garden-bud')} alt="" draggable={false} data-flower-phase="bud" />}
     </div>
     <GardenArt key={battle.crystalRole ?? 'neutral'} className="garden-crystal-art"
       moving={battle.crystalRole ? `living-garden-role-${battle.crystalRole.replaceAll('_', '-')}-motion` : 'living-garden-crystal-motion'}

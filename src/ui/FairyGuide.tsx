@@ -1,5 +1,6 @@
+import { GameImage } from './GameMedia';
 import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
-import { createPortal } from 'react-dom';
+import { createGamePortal } from './GamePortal';
 import { ArrowLeft, ArrowRight, Sparkles, X } from 'lucide-react';
 import type { GameSave } from '../domain/types';
 import { assetPath, content } from '../content';
@@ -114,14 +115,14 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
     document.addEventListener('click', used, true);
     return () => document.removeEventListener('click', used, true);
   }, [active, geometry.target, key]);
-  if (welcome && geometry.host) return createPortal(<section className="fairy-invitation" aria-label={tr('案内妖精リュミ')}><img src={assetPath('fairy-guide')} alt={tr('案内妖精リュミ')} /><div><strong>{tr('はじめまして！ 私はリュミ。')}</strong><p>{tr('この街が初めてなら、私がボタンの使い方を教えるよ！')}</p><div className="fairy-invitation__actions"><Button size="sm" onClick={() => { restoreFocus.current = document.activeElement as HTMLElement; setRunning(true); setInviting(false); setProgress(p => openFairyTopic(p, 'home')); }}>{tr('案内をお願い！')}</Button><Button size="sm" variant="secondary" onClick={dismiss}>{tr('自分で始める')}</Button></div></div></section>, geometry.host);
+  if (welcome && geometry.host) return createGamePortal(<section className="fairy-invitation" aria-label={tr('案内妖精リュミ')}><GameImage src={assetPath('fairy-guide')} alt={tr('案内妖精リュミ')} /><div><strong>{tr('はじめまして！ 私はリュミ。')}</strong><p>{tr('この街が初めてなら、私がボタンの使い方を教えるよ！')}</p><div className="fairy-invitation__actions"><Button size="sm" onClick={() => { restoreFocus.current = document.activeElement as HTMLElement; setRunning(true); setInviting(false); setProgress(p => openFairyTopic(p, 'home')); }}>{tr('案内をお願い！')}</Button><Button size="sm" variant="secondary" onClick={dismiss}>{tr('自分で始める')}</Button></div></div></section>, geometry.host);
   if (!active) return null;
   const width = Math.min(380, geometry.width - 24);
   const r = geometry.rect;
   const left = Math.max(12, Math.min(geometry.width - width - 12, r ? r.left + r.width / 2 - width / 2 : geometry.width - width - 16));
   const top = Math.max(12, Math.min(geometry.height - panelHeight - 86, r ? (r.top > panelHeight + 28 ? r.top - panelHeight - 16 : r.top + r.height + 16) : 80));
   const card = <section ref={panel} className={`fairy-guide${preparation ? ' fairy-guide--embedded' : ''}`} style={preparation ? undefined : { left, top, width } as CSSProperties} role={preparation ? 'region' : 'dialog'} aria-labelledby={titleId} aria-describedby={textId}>
-    <div className="fairy-guide__portrait"><img src={assetPath('fairy-guide')} alt="" /><span>{tr('案内妖精 リュミ')}</span></div>
+    <div className="fairy-guide__portrait"><GameImage src={assetPath('fairy-guide')} alt="" /><span>{tr('案内妖精 リュミ')}</span></div>
     <div className="fairy-guide__copy"><span className="fairy-guide__chapter">{tr('リュミのレッスン')} {progress.step + 1} / {fairyLessons[progress.topic].length}</span><h2 id={titleId} ref={heading} tabIndex={-1}>{tr(lesson.title)}</h2><p id={textId}>{tr(lesson.text)}</p></div>
     <Button className="fairy-guide__close" variant="icon" aria-label={tr('案内をスキップ')} title={tr('案内をスキップ')} onClick={dismiss}><X size={17} /></Button>
     <div className="fairy-guide__actions"><Button size="sm" variant="secondary" disabled={progress.step === 0} onClick={() => setProgress(p => moveFairyStep(p, p.step - 1))}><ArrowLeft size={14} />{tr('前へ')}</Button>
@@ -129,5 +130,5 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
       <Button size="sm" onClick={() => { if (progress.step + 1 < fairyLessons[progress.topic].length) setProgress(advanceFairyStep); else { setProgress(advanceFairyStep); (restoreFocus.current?.isConnected ? restoreFocus.current : document.querySelector<HTMLElement>('[data-fairy-launch]'))?.focus({ preventScroll: true }); } }}>{tr(progress.step + 1 === fairyLessons[progress.topic].length ? 'この案内を閉じる' : '次へ')}<ArrowRight size={14} /></Button>
     </div><small className="fairy-guide__hint">{tr('光っているゲームのボタンを押してね。操作すると次の説明に進むよ！')}</small>
   </section>;
-  return <>{r && !preparation && createPortal(<div className="fairy-guide-highlight" aria-hidden="true" style={{ top: r.top - 5, left: r.left - 5, width: r.width + 10, height: r.height + 10 } as CSSProperties} />, document.body)}{createPortal(card, preparation ? geometry.modal!.querySelector<HTMLElement>('.modal__body')! : document.body)}</>;
+  return <>{r && !preparation && createGamePortal(<div className="fairy-guide-highlight" aria-hidden="true" style={{ top: r.top - 5, left: r.left - 5, width: r.width + 10, height: r.height + 10 } as CSSProperties} />, document.body)}{createGamePortal(card, preparation ? geometry.modal!.querySelector<HTMLElement>('.modal__body')! : document.body)}</>;
 }

@@ -1,11 +1,13 @@
+export { PartyFormation, type PartyFormationProps } from './PartyFormation';
 export { BuildPlanner } from './BuildPlanner';
+export { GameImage, GameVideo, type GameImageProps, type GameVideoProps } from './GameMedia';
 export { BuildGoalSummary } from './BuildGoalSummary';
 export { VisualNovel, NovelLibrary } from './VisualNovel';
 export { FairyGuide, FairyGuideButton } from './FairyGuide';
 export { XRGacha } from './XRGacha';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
-import { createPortal } from 'react-dom';
+import { createGamePortal } from './GamePortal';
 import { ChevronRight, Crown, Diamond, X } from 'lucide-react';
 import type { CharacterDef, Rarity } from '../domain/types';
 import { roleName } from '../content';
@@ -149,7 +151,7 @@ export function Modal({ open = true, title, children, onClose, footer, className
     return () => { document.body.style.overflow = oldOverflow; if (root) root.style.overflow = oldRootOverflow ?? ''; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createPortal(<div className="modal-backdrop"><div className={`modal ${className}`} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div>, document.body);
+  return createGamePortal(<div className="modal-backdrop"><div className={`modal ${className}`} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{localize(children)}<ChevronRight size={16} aria-hidden="true" /></span>; }

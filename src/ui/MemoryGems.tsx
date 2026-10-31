@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { memoryGemStacks, memoryGemStackKey, preferredStackItem, type MemoryGemStack } from './memory-gem-stacks';
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Gem, LockKeyhole, ShieldCheck, Sparkles, Trash2, UnlockKeyhole, X } from 'lucide-react';
@@ -111,7 +112,7 @@ export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetD
     <div className="memory-gems__equipment">
       <label className="memory-gems__character-select"><span>{tr('石を託す仲間')}</span><select value={activeCharacterId} onChange={event => changeCharacter(event.target.value)} aria-label={tr('石を託す仲間')}>{characters.map(character => <option key={character.id} value={character.id}>{tr(character.name)}</option>)}</select><ChevronDown size={16} aria-hidden="true" /></label>
       <div className="memory-gems__party" aria-label={tr('パーティ')}>
-        {save.partyIds.map(id => { const character = characters.find(item => item.id === id); if (!character) return null; const item = items.find(gem => gem.id === equipped[id]); const portrait = content.assets.find(asset => asset.id === character.portraitId); return <Button key={id} variant="secondary" selected={id === activeCharacterId} className="memory-gems__party-character" aria-label={tr(character.name)} onClick={() => changeCharacter(id)}><img src={assetPath(character.portraitId)} alt="" style={{ objectPosition: portrait?.anchor ?? '50% 22%' }} /><span>{tr(character.name)}</span>{item && <span className={`memory-gems__equipped-dot memory-gem-tone--${gemDefinition(item).family}`} />}</Button>; })}
+        {save.partyIds.map(id => { const character = characters.find(item => item.id === id); if (!character) return null; const item = items.find(gem => gem.id === equipped[id]); const portrait = content.assets.find(asset => asset.id === character.portraitId); return <Button key={id} variant="secondary" selected={id === activeCharacterId} className="memory-gems__party-character" aria-label={tr(character.name)} onClick={() => changeCharacter(id)}><GameImage src={assetPath(character.portraitId)} alt="" style={{ objectPosition: portrait?.anchor ?? '50% 22%' }} /><span>{tr(character.name)}</span>{item && <span className={`memory-gems__equipped-dot memory-gem-tone--${gemDefinition(item).family}`} />}</Button>; })}
       </div>
       <div className="memory-gems__slot">
         <MemoryGemSigil family={current ? gemDefinition(current).family : undefined} rare={current ? gemDefinition(current).rarity === 'epic' : false} />

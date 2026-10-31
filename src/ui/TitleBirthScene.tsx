@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { useEffect, useRef, useState } from 'react';
 import { assetPath } from '../content';
 import type { BirthRig } from './title-birth-rig';
@@ -42,7 +43,7 @@ export function TitleBirthScene({ reducedMotion, suspended }: { reducedMotion: b
   }, [allowed, activated]);
   useEffect(() => { rig.current?.setRunning(running); }, [running, ready]);
   return <div className="title-birth-scene" data-animation-state={!allowed ? 'static' : failed ? 'error' : !ready ? 'loading' : running ? 'playing' : 'paused'}>
-    <img className="title-birth-scene__poster" src={assetPath('title-birth-still')} alt="" />
+    <GameImage className="title-birth-scene__poster" src={assetPath('title-birth-still')} alt="" />
     <div ref={host} className={`title-birth-scene__rig${allowed && ready && !failed ? ' is-ready' : ''}`} />
   </div>;
 }
