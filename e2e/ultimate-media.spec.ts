@@ -32,6 +32,14 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     await page.setViewportSize({ width: 390, height: 844 });
     await prepare(page, caster);
     const effect = page.locator('.ultimate-cinematic');
+    if(theme==='rabbit-bits'){
+      const expected=await page.evaluate(async id=>{const {characterById,assetPath}=await import('/src/content/index.ts');return assetPath(characterById(id).artId);},caster);
+      await expect(effect.locator('.ultimate-cinematic__portrait img')).toHaveCount(1);
+      await expect(effect.locator('.ultimate-cinematic__portrait img')).toHaveAttribute('src',expected);
+      await expect(effect.locator('.lunette-command')).toHaveCount(0);
+      await page.waitForTimeout(350);
+      await page.screenshot({path:`artifacts/ultimates/${clip}-standard-cutin.png`});
+    }
     // Observe before the phase begins; CDP polling plus screenshots can outlast a tail.
     // Hold the actual CSS opacity transition at 250 ms to check its intermediate frame.
     const tailSample = page.evaluate(() => new Promise<{opacity:number;recipients?:string}>((resolve,reject) => {

@@ -82,14 +82,6 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 
 .ultimate-whiteout { position: absolute; inset: 0; z-index: 60; pointer-events: none; background: #fff; opacity: 0; border-radius: inherit; }
 
-/* The key and body share the original artwork's pixel coordinates. */
-.ultimate-cinematic[data-visual="rabbit-bits"] .ultimate-cinematic__intro { background: radial-gradient(ellipse at 42% 25%,#31525c,#07111f 78%); }
-.lunette-command { inset: 0 0 auto; height: auto; aspect-ratio: 2 / 3; overflow: visible; clip-path: none; transform-origin: 37.4% 14.2%; animation: lunette-command-body calc(1000ms * var(--ultimate-rate)) both; }
-.lunette-command img { position: absolute; inset: 0; object-fit: cover; object-position: 50% 0%; }
-.lunette-command__body { animation: none; }
-.lunette-command__key { transform-origin: 37.4% 14.2%; animation: none; }
-@keyframes lunette-command-body { from { transform: scale(1.04) translateY(10px); } 45%,100% { transform: scale(1.09) translateY(0); } }
-
 /* Fallback shares the actual clock with Pixi: no autonomous CSS shooting loop. */
 .ultimate-fallback--rabbit-bits .rabbit-fallback-beam { animation: none !important; }
 .ultimate-fallback--rabbit-bits g { opacity: 0; }
