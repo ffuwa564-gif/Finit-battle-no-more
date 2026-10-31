@@ -1,3 +1,4 @@
+import type { ImpactSnapshot } from '../platform/combat-feedback';
 import { companionSignals, companionTendency } from '../domain/companion-behavior';
 import { ultimateFor, ultimateReady } from '../domain/ultimates';
 import { tr, localize } from '../locales/i18n';
@@ -148,12 +149,12 @@ export function BattleView(p: ViewProps) {
   const battle = p.save.battle!;
   const [usingPotion, setUsingPotion] = useState(false);
   const [retreat, setRetreat] = useState(false);
-  const [impactEventId, setImpactEventId] = useState<string>();
+  const [impact, setImpact] = useState<ImpactSnapshot>();
   const [viewedEnemyId, setViewedEnemyId] = useState<string>();
   const dungeon = content.dungeons.find(d => d.id === battle.dungeonId)!;
   const before = visibleUnits(battle), event = battle.phase === 'playing' ? battle.events[battle.cursor] : undefined;
   // Publish the current snapshot at the hit, without advancing or rewriting the replay.
-  const units = event && event.id === impactEventId ? event.unitsAfter ?? before : before;
+  const units = event && event.id === impact?.eventId ? impact.units ?? event.unitsAfter ?? before : before;
   const party = units.filter(u => u.side === 'party'), enemies = units.filter(u => u.side === 'enemy');
   const signals = companionSignals(battle, content);
   const commandTargetId = enemies.find(u => u.uid === viewedEnemyId && u.hp > 0)?.uid ?? enemies.find(u => u.hp > 0)?.uid;
@@ -164,7 +165,7 @@ export function BattleView(p: ViewProps) {
   const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
   if (dungeon.kind === 'trial' && (reward || failed)) return <><PageTitle eyebrow="GODDESS TRIAL" title={tr(reward ? '試練踏破' : '挑戦終了')} text={tr(dungeon.name)} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{tr(`勝ち抜き ${battle.wave + (reward ? 1 : 0)} / ${dungeon.waves.length}`)}</h2><p>{tr('戦利品なし・踏破の記録のみ')}</p>{!reward && <p>{tr(battle.failureReason ?? 'パーティは廃都から帰還しました。')}</p>}<Button data-guide="trial-result" size="lg" disabled={p.busy} onClick={() => p.command({ type: reward ? 'claim' : 'leaveFailure' })}>{tr(reward ? '踏破を記録して戻る' : '街へ戻る')}</Button></Panel></>;
   if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={tr(reward ? '探索の記録' : '探索終了')} text={tr(dungeon.name)} />{reward && <CampaignStory dungeon={dungeon} phase="after" />}<Panel className="result-panel">{localize(reward ? <Sparkles size={38} /> : <Moon size={38} />)}<h2>{localize(reward ? '獲得素材' : '今回の素材は失われました。')}</h2>{localize(reward ? <><div className="resource-list">{localize(items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{localize(materialName(id))}</span><strong>×{localize(n)}</strong></div>))}</div><div className="reward-summary"><span><CurrencyEmblem kind="gold" size={17} />{tr(" 撃破 ")}{localize(battle.goldEarned)}{tr(" G（取得済み）")}</span><span>{tr("クリア +20 G")}</span>{localize(dungeonStoneReward(dungeon, p.save.completedDungeonIds) > 0 && <span><CurrencyEmblem kind="stone" size={17} /> {localize(dungeon.kind === 'event' ? 'イベント踏破' : '初踏破')} +{localize(dungeonStoneReward(dungeon, p.save.completedDungeonIds))}</span>)}</div><p className="subtle">{tr("確定するまで素材と祈願石は未獲得です。")}</p><Button data-guide="claim" size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} />{tr(" 獲得を確定")}</Button></> : <><p>{localize(battle.failureReason ?? 'パーティは廃都から帰還しました。')}</p><p className="subtle">{tr("ゴールド・敵の記録は保持。次回は全回復で出発します。")}</p><Button data-guide="return-town" size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>{tr("街へ戻る ")}<ArrowRight size={16} /></Button></>)}</Panel></>;
-  return <div className="battle-layout game-frame" data-directive={event?.directive}>
+  return <div className="battle-layout game-frame" data-directive={event?.directive} data-hit-index={event?.id===impact?.eventId?impact?.hitIndex:undefined}>
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label={tr("敵の戦場")}>
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} materials={total} targetId={focusedEnemyId} fixedNumbers={Boolean(dungeon.coordination)} onDisplay={setViewedEnemyId} />
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
@@ -180,7 +181,7 @@ export function BattleView(p: ViewProps) {
         <UltimateMeter unit={unit} /><span className="party-hp">{localize(unit.hp)} / {localize(unit.maxHp)}</span><div className="party-unit__effects"><UnitEffects unit={unit} round={displayRound} compact /></div>
       </div>))}
     </div>
-    <CombatFeedback event={event} before={before} onImpact={setImpactEventId} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
+    <CombatFeedback event={event} before={before} onImpact={setImpact} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
     <BattleControlPad strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command(battle.phase === 'playing' ? { type: 'replay' } : { type: 'round', battleId: battle.id, targetId: commandTargetId }); }}
       potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}

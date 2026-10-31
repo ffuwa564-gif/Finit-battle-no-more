@@ -1,4 +1,11 @@
+import { renderRabbitLoopCharges, renderRabbitLoopCharge } from '../src/platform/rabbit-loop-charge';
+import { rabbitLoopCues } from '../src/platform/ultimate-choreography';
+import {RABBIT_SEQUENCE} from '../src/platform/ultimate-timing';
+import {renderUltimateCharge} from '../src/platform/ultimate-charge-audio';
+import { renderRabbitUltimate, enhanceRabbitCharge, RABBIT_CHARGE_CUES } from '../src/platform/rabbit-ultimate-audio';
+import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
+import { renderRabbitVolley, renderRabbitShot, renderRabbitFinisher } from '../src/platform/rabbit-volley-audio';
 import { renderUltimateSound, ultimateSounds } from '../src/platform/ultimate-audio';
 
 const rms = (pcm: Float32Array, rate: number, start: number, end: number) => {
@@ -13,8 +20,64 @@ describe('authored ultimate sound materials', () => {
       expect(finite).toBe(true);expect(peak).toBeLessThanOrEqual(.831);
       expect(rms(pcm,rate,0,pcm.length/rate)).toBeGreaterThan(.02);
       expect(Math.abs(pcm[0])).toBe(0);expect(Math.abs(pcm[pcm.length-1])).toBe(0);
-      expect(pcm.length/rate).toBeLessThan(1.8);
+      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?8.9:1.8);
     }
+  });
+  it('leaves a breath before the rabbit finisher and returns three audible, increasingly softer echoes', () => {
+    const rate=44100,pcm=renderRabbitVolley(rate);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,RABBIT_VOLLEY.finale-.5,RABBIT_VOLLEY.finale-.3)*5);
+    const levels=RABBIT_VOLLEY.echoes.map(delay=>rms(pcm,rate,RABBIT_VOLLEY.finale+delay+.02,RABBIT_VOLLEY.finale+delay+.10));
+    expect(levels[0]).toBeGreaterThan(.10);expect(levels[1]).toBeGreaterThan(.06);expect(levels[2]).toBeGreaterThan(.035);
+    expect(levels[0]).toBeGreaterThan(levels[1]);expect(levels[1]).toBeGreaterThan(levels[2]);
+  });
+  it('uses a quieter copy of the final explosion for regular shots, preserving its waveform and pitch',()=>{
+    const rate=48000,blast=renderRabbitFinisher(rate),shot=renderRabbitShot(rate);
+    let dot=0,aa=0,bb=0;
+    for(let i=0;i<rate*.07;i++){dot+=blast[i]*shot[i];aa+=blast[i]**2;bb+=shot[i]**2;}
+    expect(dot/Math.sqrt(aa*bb)).toBeGreaterThan(.9999);
+    expect(rms(shot,rate,0,.07)/rms(blast,rate,0,.07)).toBeGreaterThan(.4);
+    expect(rms(shot,rate,0,.07)/rms(blast,rate,0,.07)).toBeLessThan(.5);
+    expect(shot.length/rate).toBeCloseTo(.14,4);expect(shot.at(-1)).toBe(0);
+  });
+  it('can retime the PV shot deadlines without stretching the individual shot attacks', () => {
+    const rate=44100,normal=renderRabbitVolley(rate),slow=renderRabbitVolley(rate,1.8);
+    expect(slow.length).toBeGreaterThan(normal.length*1.5);
+    const attack=rms(normal,rate,.003,.025),retimed=rms(slow,rate,.003,.025);
+    expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
+    expect(rms(slow,rate,1.8*RABBIT_VOLLEY.finale+.005,1.8*RABBIT_VOLLEY.finale+.06)).toBeGreaterThan(.05);
+  });
+  it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
+    const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES).toHaveLength(1);
+    for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
+    expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
+    expect(voice.length/48000).toBe(7.72);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(6.176,4);
+  });
+  it('keeps aiming silent and lets the second pass charge lead directly into the heavy launch',()=>{
+    const rate=48000,pcm=renderRabbitUltimate(rate);
+    expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
+    const last=rabbitLoopCues().at(-1)!;
+    const launch=RABBIT_SEQUENCE.finish/1000-.18;
+    expect(RABBIT_SEQUENCE.fire/1000+last.at+last.duration).toBeCloseTo(launch,2);
+    expect(rms(pcm,rate,5.55,5.8)).toBeGreaterThan(.02);
+    expect(rms(pcm,rate,6.13,6.20)).toBeGreaterThan(.02);
+  });
+  it('reuses the actual ブオーン after each completed pass and raises its whole waveform',()=>{
+    const rate=48000,source=renderUltimateCharge(rate),cues=rabbitLoopCues(),pcm=renderRabbitLoopCharges(rate);
+    expect(cues).toHaveLength(2);
+    cues.forEach((cue,index)=>{
+      expect(cue.at).toBeCloseTo(index+.285);
+      const voice=renderRabbitLoopCharge(rate,index);
+      expect(voice.length/rate).toBeCloseTo(.68/cue.ratio,4);
+      expect(renderRabbitLoopCharge(rate,index,.8).length/rate).toBeCloseTo(.68*.8/cue.ratio,4);
+      expect(rms(pcm,rate,cue.at+.03,cue.at+cue.duration*.8)).toBeGreaterThan(.03);
+      if(index){expect(cue.ratio).toBeGreaterThan(cues[index-1].ratio);expect(cue.zoom).toBeGreaterThan(cues[index-1].zoom);}
+      for(let i=0;i<voice.length-1;i+=997){
+        const at=i*cue.ratio,lo=Math.floor(at),mix=at-lo;
+        expect(voice[i]).toBeCloseTo(((source[lo]??0)*(1-mix)+(source[lo+1]??0)*mix)*1.65*(.95+index*.39),6);
+      }
+    });
+    expect(rms(pcm,rate,0,cues[0].at)).toBe(0);expect(pcm.at(-1)).toBeCloseTo(0,8);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

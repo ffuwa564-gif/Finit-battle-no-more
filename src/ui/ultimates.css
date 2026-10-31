@@ -60,3 +60,37 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 
 .ultimate-pixi-host,.ultimate-pixi-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .ultimate-cinematic:not([data-phase="intro"])::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 46%,transparent 15%,#04101d55 100%); }
+.ultimate-cinematic--enemy:not([data-phase="intro"])::before { background: none; }
+/* Enemy portraits stay above; offensive light lands only on actual party slots. */
+.battle-layout .party-unit { position: relative; }
+.ultimate-party-effect,.ultimate-target-fallback { position: absolute; inset: 0; z-index: 30; overflow: hidden; pointer-events: none; border-radius: inherit; --ultimate-color: #dfacff; }
+.ultimate-party-effect[data-phase="intro"],.ultimate-target-fallback[data-phase="intro"] { opacity: 0; }
+.ultimate-party-effect[data-phase="tail"],.ultimate-target-fallback[data-phase="tail"] { opacity: 0; transition: opacity calc(900ms * var(--ultimate-rate,1)) ease-out; }
+.ultimate-target-fallback[data-phase="impact"] .ultimate-fallback { animation: ultimate-impact 1200ms both; }
+.ultimate-cinematic[data-visual="rabbit-bits"] { --ultimate-color: #9aeee7; }
+.ultimate-cinematic[data-phase="effect"] .ultimate-fallback--rabbit-bits { opacity: 1; animation: rabbit-summon .3s ease-out both; }
+.ultimate-cinematic[data-phase="impact"] .ultimate-fallback--rabbit-bits,.ultimate-cinematic[data-phase="tail"] .ultimate-fallback--rabbit-bits { opacity: 1; animation: none; }
+.rabbit-fallback-beam,.rabbit-fallback-finale { opacity: 0; stroke-width: 5; }
+.ultimate-cinematic:not([data-phase="intro"]):not([data-phase="effect"]) .rabbit-fallback-beam { animation: rabbit-volley .21s ease-out 4 both; }
+@keyframes rabbit-summon { from { opacity: 0; transform: translateY(20px) scale(.8); } to { opacity: 1; transform: none; } }
+@keyframes rabbit-volley { from { opacity: 1; } to { opacity: 0; } }
+
+/* Rabbit barrage continues into the tail; Pixi owns its final hit and fade. */
+.ultimate-cinematic[data-visual="rabbit-bits"][data-phase="tail"] { opacity: 1; transition: none; }
+
+.ultimate-cinematic:not([data-phase="intro"]):not([data-phase="effect"]) .rabbit-fallback-finale { stroke-width: 8; animation: rabbit-volley .4s ease-out 1.05s both; }
+
+.ultimate-whiteout { position: absolute; inset: 0; z-index: 60; pointer-events: none; background: #fff; opacity: 0; border-radius: inherit; }
+
+/* Fallback shares the actual clock with Pixi: no autonomous CSS shooting loop. */
+.ultimate-fallback--rabbit-bits .rabbit-fallback-beam { animation: none !important; }
+.ultimate-fallback--rabbit-bits g { opacity: 0; }
+.ultimate-cinematic[data-visual="rabbit-bits"][data-stage="aim"]::before { background: radial-gradient(ellipse at 50% 46%,transparent 24%,#04101d99); }
+
+/* Clock arcs and a single light pass live inside the portrait cut-in only. */
+.ultimate-intro-fx { position: absolute; inset: 0; overflow: hidden; pointer-events: none; color: #f7e5b8; opacity: 0; mix-blend-mode: screen; }
+.ultimate-intro-fx svg { width: 100%; height: 100%; filter: drop-shadow(0 0 4px #d9e5ff55); }
+.ultimate-intro-fx__sweep { position: absolute; inset: -20% auto -20% -20%; width: 60%; background: linear-gradient(90deg,transparent,#fff5dc55 40%,#ffffffaa 50%,transparent 65%); opacity: 0; }
+.ultimate-cinematic__title { z-index: 2; }
+.ultimate-cinematic__title strong::after { content: ''; display: block; margin-top: 10px; height: 1px; width: 64%; background: linear-gradient(90deg,#f7e5b8cc,transparent); }
+.ultimate-cinematic--reduced .ultimate-intro-fx { display: none; }

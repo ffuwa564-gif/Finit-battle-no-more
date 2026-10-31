@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { bgmTracks, configureBgm, disposeBgm, getBgmScene, refreshBgm, unlockBgm } from '../src/platform/bgm';
+import { bgmTracks, createBgmDucker, configureBgm, disposeBgm, getBgmScene, refreshBgm, unlockBgm } from '../src/platform/bgm';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { advanceReplay, createBattle } from '../src/domain/engine';
@@ -61,6 +61,16 @@ describe('BGM scene transitions', () => {
     expect(getBgmScene(null, undefined, false)).toBe('home');
   });
 
+  it('temporarily lowers music without losing the user volume, source or playback position',()=>{
+    const audio={hidden:false,loop:false,preload:'',dataset:{} as Record<string,string>,src:'',volume:0,paused:true,
+      play:vi.fn(()=>{audio.paused=false;return Promise.resolve();}),pause:vi.fn(),load:vi.fn(),removeAttribute:vi.fn(),remove:vi.fn()};
+    vi.stubGlobal('document',{hidden:false,createElement:()=>audio,body:{append:vi.fn()}});
+    configureBgm('clockBoss',.4);unlockBgm();const loads=audio.load.mock.calls.length;
+    const duck=createBgmDucker();duck.set(.08);expect(audio.volume).toBeCloseTo(.032);
+    configureBgm('clockBoss',.7);expect(audio.volume).toBeCloseTo(.056);expect(audio.load).toHaveBeenCalledTimes(loads);
+    duck.dispose();expect(audio.volume).toBe(.7);
+    const muted=createBgmDucker();muted.set(.08);configureBgm('clockBoss',0);muted.dispose();expect(audio.volume).toBe(0);
+  });
   it('changes source on transitions, preserves playback during updates, and resumes the requested scene after mute or hiding', () => {
     const audio = {
       hidden: false, loop: false, preload: '', dataset: {} as Record<string, string>, src: '', volume: 0, paused: true,

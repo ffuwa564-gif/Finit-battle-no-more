@@ -30,6 +30,16 @@ let player: HTMLAudioElement | undefined;
 let scene: BgmScene = 'home';
 let volume = 0.4;
 let unlocked = false;
+const ducks=new Map<symbol,number>();
+function applyVolume():void { if(player)player.volume=volume*Math.min(1,...ducks.values()); }
+/** Temporary mix gain never changes the player's saved music setting or track position. */
+export function createBgmDucker(){
+  const key=Symbol();ducks.set(key,1);
+  return {
+    set(gain:number){if(!ducks.has(key))return;ducks.set(key,Number.isFinite(gain)?Math.max(0,Math.min(1,gain)):1);applyVolume();},
+    dispose(){ducks.delete(key);applyVolume();},
+  };
+}
 
 function syncBgm(): void {
   if (!unlocked) return;
@@ -48,7 +58,7 @@ function syncBgm(): void {
     player.dataset.scene = scene;
     player.load();
   }
-  player.volume = volume;
+  applyVolume();
   // play() is called directly inside the gesture; browser policy/network failures
   // remain retryable on the next interaction and never block saved progression.
   if (player.paused) void player.play().catch(() => undefined);
@@ -65,5 +75,6 @@ export function disposeBgm(): void {
   player?.pause();
   if (player) { player.removeAttribute('src'); player.load(); player.remove(); }
   player = undefined;
+  ducks.clear();
   unlocked = false;
 }

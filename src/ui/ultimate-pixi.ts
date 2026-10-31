@@ -1,11 +1,16 @@
-import { Application, Container, Graphics, Sprite, Texture } from 'pixi.js';
-import { ultimateFrame, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
+import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
+import { assetPath } from '../content';
+import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCamera, rabbitEnergyFrame, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
-const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd };
+const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
 
 /** Seven authored silhouettes, with traveling edges, a held impact and material-specific exits. */
-export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void) {
+export interface UltimateTargetPoint { x: number; y: number; size: number }
+export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void, targets?: () => UltimateTargetPoint[]) {
+  const rabbitTextures = visual === 'rabbit-bits'
+    ? await Promise.all([1,2,3,4].map(index => Assets.load<Texture>(assetPath(`lunette-bit-${index}`)))) : [];
   const app = new Application();
   try {
     await app.init({ width: Math.max(1,host.clientWidth),height: Math.max(1,host.clientHeight),backgroundAlpha:0,
@@ -18,11 +23,16 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const ctx=glow.getContext('2d')!,gradient=ctx.createRadialGradient(32,32,0,32,32,32);
   gradient.addColorStop(0,'#ffffff');gradient.addColorStop(.14,'#ffffffff');gradient.addColorStop(.35,'#ffffff70');gradient.addColorStop(1,'#ffffff00');
   ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);
-  const texture=Texture.from(glow),color=palette[visual];
-  const particles=Array.from({length:56},(_,i)=>{
+  const texture=Texture.from(glow);let color=palette[visual];
+  const particles=Array.from({length:56*(targets?4:1)},(_,i)=>{
     const sprite=new Sprite(texture);sprite.anchor.set(.5);sprite.blendMode='add';sprite.tint=i%4?color:0xffffff;scene.addChild(sprite);
     return {sprite,angle:i*2.39996,speed:.35+(i*37%73)/100,size:3+i%5};
   });
+  const rabbits = rabbitTextures.map(texture => {
+    const sprite = new Sprite(texture); sprite.anchor.set(.5); scene.addChild(sprite); return sprite;
+  });
+  // Clock-face discharge, projectile and impact light must read above the robot artwork.
+  if(visual==='rabbit-bits')scene.addChild(light);
   let destroyed=false;
   const stroke=(points:number[],width:number,alpha:number,tint=color)=>{
     if(alpha<=0)return;
@@ -34,11 +44,25 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const polygon=(points:number[],alpha:number,tint=color)=>{if(alpha>0)forms.poly(points).fill({color:tint,alpha});};
   const draw=()=>{
     if(destroyed||document.hidden)return;
-    const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
-    const w=host.clientWidth,h=host.clientHeight,s=Math.min(w,h),cx=w*.5,cy=h*.46;
+    const elapsed=position();
+    if(visual==='rabbit-bits'){const energy=rabbitEnergyFrame(elapsed);color=energy.color;host.dataset.rabbitColor=color.toString(16).padStart(6,'0');host.dataset.rabbitEnergy=String(energy.phase);}
+    const f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
+    const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
-    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=f.fade;
+    if(visual==='rabbit-bits'&&!targets){
+      const pulse=rabbitLoopCamera(elapsed);
+      scene.pivot.set(w*.5,h*.46);scene.position.set(w*.5+pulse.x,h*.46+pulse.y);scene.scale.set(rabbitCameraZoom(elapsed));
+    }
+    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((RABBIT_SEQUENCE.tail-elapsed)/550):f.fade;
+    if(visual==='rabbit-bits'){host.dataset.rabbitStage=rabbitStage(elapsed);host.dataset.rabbitFlight=String([0,1,2,3].filter(i=>rabbitBitFrame(i,elapsed).flight).length);}
+    for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
+    for(const {sprite} of particles)sprite.alpha=0;
+    // Explicit recipients never fall back to the enemy-stage centre. A single
+    // canvas serves all area recipients without allocating extra WebGL contexts.
+    const points=targets?targets().slice(0,4):[{x:w*.5,y:h*.46,size:Math.min(w,h)}];
+    for(const [targetIndex,point] of points.entries()){
+    const s=Math.min(w,h,point.size),cx=point.x,cy=point.y;
     const alive=hit<0?1:decay(age,2.8),impact=hit>=0?decay(age,7):0;
     if(visual==='blade'){
       // A broad tapered blade moves across the target; no lightning or generic rings.
@@ -123,6 +147,136 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         stroke([cx,y,x,y+(endY-y)*reach],2,decay(hit,1.5));
         polygon([x-w*.08,endY-s*.09,x+w*.08,endY-s*.09,x+w*.08,endY+s*.08,x,endY+s*.04,x-w*.08,endY+s*.08],decay(hit,1.4)*.2);
       }
+    }else if(visual==='rabbit-bits'){
+      // Lunette's four illustrated robots materialize around the actual target.
+      const aiming=clamp((elapsed-RABBIT_SEQUENCE.aim)/650);
+      const summoning=elapsed<RABBIT_SEQUENCE.aim;
+      // An expanding clockwork seal binds the four gates before they open fire.
+      // Keep all light local to the target: no full-screen white wash over HUD text.
+      const charge=summoning?Math.sin(Math.PI*clamp((elapsed-RABBIT_SEQUENCE.summon)/2000))*.8:0;
+      const seal=s*(.24+.055*gather);
+      for(let segment=0;segment<16;segment++){
+        const a=segment*Math.PI/8+elapsed*.00065;
+        const line:number[]=[];
+        for(let j=0;j<=6;j++){
+          const theta=a+j*.045;
+          line.push(cx+Math.cos(theta)*seal,cy+Math.sin(theta)*seal*.82);
+        }
+        stroke(line,segment%4===0?2:1,charge*.65);
+      }
+      const finishAge=hit-RABBIT_VOLLEY.finale;
+      if(finishAge>=0){
+        // The finishing hit expands as a lens-shaped blast, not a static star icon.
+        const blast=decay(finishAge,9),radius=s*(.07+clamp(finishAge*3)*.46);
+        // Four heavy bolts crush to a narrow core, then bloom out across the target.
+        const expand=1-(1-clamp(finishAge/.12))**3;
+        light.ellipse(cx,cy,s*(.025+.31*expand),s*(.10+.10*expand)).fill({color,alpha:blast*.55});
+        light.ellipse(cx,cy,s*(.018+.22*expand),s*(.075-.025*expand)).fill({color:0xffffff,alpha:blast*.85});
+        light.ellipse(cx,cy,radius,radius*.65).stroke({color,width:5*decay(finishAge,4)+.5,alpha:decay(finishAge,5)*.9});
+        for(let shard=0;shard<14;shard++){
+          const a=shard*2.39996,r=s*(.12+finishAge*(.32+(shard%3)*.1));
+          const length=s*.035*decay(finishAge,3);
+          const x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
+          stroke([x,y,x+Math.cos(a)*length,y+Math.sin(a)*length],2,decay(finishAge,4));
+        }
+        for(const delay of RABBIT_VOLLEY.echoes){
+          const age=finishAge-delay;
+          if(age>=0)light.ellipse(cx,cy,s*(.09+age*.5),s*(.06+age*.31)).stroke({color,width:1.5,alpha:decay(age,12)*.45});
+        }
+      }
+      for(let bit=0;bit<4;bit++){
+        const state=rabbitBitFrame(bit,elapsed),mount=rabbitMount(bit,elapsed);
+        const x=cx+mount.x*s,y=cy+mount.y*s;
+        const spread=state.round===RABBIT_VOLLEY.rounds-1?.4:1;
+        const aimX=cx+(state.final?0:[-.09,.08,-.045,.055][bit]*s*spread);
+        const aimY=cy+(state.final?0:[-.055,-.015,.065,.09][bit]*s*spread);
+        const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.035;
+        const bunny=rabbits[bit];bunny.visible=true;
+        bunny.position.set(x-Math.cos(angle)*back,y-Math.sin(angle)*back);
+        const width=s*mount.size*(.35+.65*state.summon);
+        bunny.scale.set(width/bunny.texture.width);bunny.alpha=state.summon*state.alpha;
+        bunny.rotation=mount.rotation-state.recoil*.065*(bit%2?1:-1);
+        const muzzle=rabbitMuzzle(bit,bunny.x,bunny.y,width,bunny.texture.height/bunny.texture.width,bunny.rotation);
+        const dx=aimX-muzzle.x,dy=aimY-muzzle.y,length=Math.max(1,Math.hypot(dx,dy));
+        const ux=dx/length,uy=dy/length,nx=-uy,ny=ux;
+        // A small clock-shaped summon gate behind each rabbit, not a generic star.
+        const ring=s*.10*(.6+.4*state.summon);
+        light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.gate*.85});
+        light.ellipse(x,y+s*.08,ring*1.22,ring*.34).stroke({width:1,color,alpha:state.gate*.55});
+        if(summoning && state.summon>0 && state.summon<1){
+          const power=state.summon;
+          for(let spark=0;spark<5;spark++){
+            const a=spark*Math.PI*.4+elapsed*.004+bit;
+            const orbit=s*(.09-.045*power);
+            const px=x+Math.cos(a)*orbit,py=y+Math.sin(a)*orbit*.7;
+            light.circle(px,py,1+power*1.6).fill({color:0xdffff8,alpha:power*.85});
+          }
+          light.circle(x,y,s*.035*power).fill({color,alpha:power*.4});
+        }
+        if(hit<0 && aiming>0){
+          stroke([x,y,x+(cx-x)*aiming,y+(cy-y)*aiming],.65,aiming*.3);
+        }
+        const energy=rabbitEnergyFrame(elapsed);
+        if(energy.power>0){
+          // The charge visibly energizes the same emitters that fire next.
+          const r=s*(.022+.035*energy.power);
+          light.circle(muzzle.x,muzzle.y,r*1.8).fill({color,alpha:energy.power*.24});
+          light.circle(muzzle.x,muzzle.y,r).stroke({color,width:2,alpha:energy.power*.85});
+          for(let ray=0;ray<4;ray++){
+            const a=ray*Math.PI/2+elapsed*.002;
+            stroke([muzzle.x+Math.cos(a)*r,muzzle.y+Math.sin(a)*r,muzzle.x+Math.cos(a)*r*1.8,muzzle.y+Math.sin(a)*r*1.8],1,energy.power*.6);
+          }
+        }
+        if(state.finishCharge>0){
+          light.circle(muzzle.x,muzzle.y,s*.04*state.finishCharge).fill({color,alpha:state.finishCharge*.7});
+          stroke([muzzle.x-nx*s*.035,muzzle.y-ny*s*.035,muzzle.x+nx*s*.035,muzzle.y+ny*s*.035],1.5,state.finishCharge);
+          for(let spark=0;spark<8;spark++){
+            const a=spark*Math.PI/4+elapsed*.003;
+            const radius=s*(.13-.10*state.finishCharge);
+            light.circle(muzzle.x+Math.cos(a)*radius,muzzle.y+Math.sin(a)*radius*.7,1+state.finishCharge)
+              .fill({color:0xffffff,alpha:state.finishCharge*.8});
+          }
+        }
+        if(state.muzzle>.02){
+          const radius=s*(state.final?.038:.019)*state.muzzle;
+          light.circle(muzzle.x,muzzle.y,radius*1.6).fill({color,alpha:state.muzzle*.35});
+          stroke([muzzle.x-ux*radius,muzzle.y-uy*radius,muzzle.x+ux*radius*2,muzzle.y+uy*radius*2],2.5,state.muzzle);
+          stroke([muzzle.x-nx*radius,muzzle.y-ny*radius,muzzle.x+nx*radius,muzzle.y+ny*radius],1.4,state.muzzle);
+        }
+        if(state.flight){
+          // A short moving bolt with a tail, never a full source-to-target line.
+          const head=state.travel,tail=Math.max(0,head-(state.final?.42:.23));
+          const hx=muzzle.x+dx*head,hy=muzzle.y+dy*head;
+          const tx=muzzle.x+dx*tail,ty=muzzle.y+dy*tail;
+          stroke([tx,ty,hx,hy],state.final?5:1.6,.75);
+          if(state.final){
+            const half=s*.025,body=s*.075;
+            const shape=[hx+ux*half,hy+uy*half,hx-ux*body+nx*half,hy-uy*body+ny*half,hx-ux*body*1.35,hy-uy*body*1.35,hx-ux*body-nx*half,hy-uy*body-ny*half];
+            light.poly(shape).fill({color,alpha:.85});
+            stroke([hx-ux*body,hy-uy*body,hx,hy],6,1);
+          }else stroke([hx-ux*s*.025,hy-uy*s*.025,hx,hy],3.5,1);
+        }
+        if(!state.final&&state.impact>.015){
+          const age=state.impactAge,power=state.impact;
+          light.circle(aimX,aimY,s*.014*power).fill({color:0xffffff,alpha:power});
+          // Directional fragments continue the incoming bolt through the contact.
+          for(let shard=0;shard<6;shard++){
+            const a=Math.atan2(uy,ux)+(shard-2.5)*.46;
+            const radius=s*(.009+age*(.35+shard*.06));
+            const px=aimX+Math.cos(a)*radius,py=aimY+Math.sin(a)*radius;
+            const size=s*.025*power;
+            stroke([px,py,px+Math.cos(a)*size,py+Math.sin(a)*size],1.1,power*.85);
+          }
+        }
+      }
+      if(hit<0 && aiming>0){
+        const r=s*.07;
+        light.circle(cx,cy,r).stroke({color,width:1.5,alpha:aiming*.75});
+        for(let mark=0;mark<4;mark++){
+          const a=mark*Math.PI/2+aiming*.35;
+          stroke([cx+Math.cos(a)*r*1.2,cy+Math.sin(a)*r*1.2,cx+Math.cos(a)*r*1.65,cy+Math.sin(a)*r*1.65],1.2,aiming);
+        }
+      }
     }else{
       // Clockwork bits deploy, aim, then shoot converging beams together.
       for(let bit=0;bit<4;bit++){
@@ -134,24 +288,29 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       }
       if(hit>=0)polygon([cx,cy-s*.08,cx+s*.025,cy-s*.025,cx+s*.08,cy,cx+s*.025,cy+s*.025,cx,cy+s*.08,cx-s*.025,cy+s*.025,cx-s*.08,cy,cx-s*.025,cy-s*.025],impact,0xffffff);
     }
-    if(!['bloom','aegis','dawn'].includes(visual)&&hit>=0){
+    if(!['bloom','aegis','dawn','rabbit-bits'].includes(visual)&&hit>=0){
       forms.circle(cx,cy,s*.026).fill({color:0xffffff,alpha:impact});
       stroke([cx-s*.12,cy,cx+s*.12,cy],2,impact);
     }
-    for(let i=0;i<particles.length;i++){
-      const {sprite,angle,speed,size}=particles[i];
+    for(let i=0;i<56;i++){
+      if(visual==='rabbit-bits')continue;
+      const {sprite,angle,speed,size}=particles[targetIndex*56+i];
       const support=['bloom','aegis','dawn'].includes(visual);
       if(hit<0){const radius=s*(.5-gather*.43)*speed;sprite.position.set(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius);sprite.alpha=gather*.35;}
       else if(support){sprite.position.set(w*(.17+(i%4)*.22)+Math.sin(angle+hit)*s*.09,cy+s*.25-hit*s*.3*speed);sprite.alpha=decay(hit,1.5)*.65;}
       else{const direction=visual==='blade'?-.42+Math.sin(angle)*.28:angle,r=s*(.04+Math.max(0,age)*speed*.65);sprite.position.set(cx+Math.cos(direction)*r,cy+Math.sin(direction)*r);sprite.alpha=decay(age,2)*.7;}
       sprite.width=size*(support?1:2.8);sprite.height=size*(support?1:.4);sprite.rotation=support?0:visual==='blade'?-.42:angle;
     }
+    }
     app.render();
   };
   const tick=()=>{try{draw();}catch{app.ticker.stop();onFailure();}};
-  app.ticker.remove(app.render,app);app.ticker.maxFPS=30;app.ticker.add(tick);
+  app.ticker.remove(app.render,app);app.ticker.maxFPS=visual==='rabbit-bits'?60:30;app.ticker.add(tick);
+  // A timed HP impact must paint its landing in the same frame, even between ticker beats.
+  const landing=()=>{if(visual==='rabbit-bits')tick();};
+  window.addEventListener('game:combat-numbers',landing);
   const visibility=()=>{if(document.hidden)app.ticker.stop();else{app.ticker.start();tick();}};
   const lost=(event:Event)=>{event.preventDefault();onFailure();};
   document.addEventListener('visibilitychange',visibility);canvas.addEventListener('webglcontextlost',lost);visibility();
-  return ()=>{if(destroyed)return;destroyed=true;document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);app.ticker.stop();app.destroy(true,{children:true});texture.destroy(true);};
+  return ()=>{if(destroyed)return;destroyed=true;window.removeEventListener('game:combat-numbers',landing);document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);app.ticker.stop();app.destroy(true,{children:true});texture.destroy(true);};
 }
