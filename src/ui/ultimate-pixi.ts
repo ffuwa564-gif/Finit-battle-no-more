@@ -1,6 +1,6 @@
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
-import { ultimateFrame, rabbitBitFrame, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateFrame, rabbitBitFrame, rabbitMount, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
 const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
@@ -44,7 +44,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
-    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((1.75-hit)/.4):f.fade;
+    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((2.3-hit)/.4):f.fade;
     for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
     for(const {sprite} of particles)sprite.alpha=0;
@@ -171,15 +171,15 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         }
       }
       for(let bit=0;bit<4;bit++){
-        const state=rabbitBitFrame(bit,elapsed),[dx,dy]=mounts[bit];
-        const x=cx+dx*s,y=cy+dy*s+(1-state.summon)*s*.15;
+        const state=rabbitBitFrame(bit,elapsed),mount=rabbitMount(bit,elapsed);
+        const x=cx+mount.x*s,y=cy+mount.y*s;
         const aimX=cx+(state.final?0:Math.sin(state.round*2.7+bit)*s*.055),aimY=cy+(state.final?0:Math.cos(state.round*3.1+bit)*s*.045);
         const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.045;
         const bunny=rabbits[bit];bunny.visible=true;
         bunny.position.set(x-Math.cos(angle)*back,y-Math.sin(angle)*back);
-        const width=s*.245*(.35+.65*state.summon);
+        const width=s*mount.size*(.35+.65*state.summon);
         bunny.scale.set(width/bunny.texture.width);bunny.alpha=state.summon*state.alpha;
-        bunny.rotation=(bit%2?1:-1)*(.075+.15*(1-state.summon));
+        bunny.rotation=mount.rotation-state.recoil*.1*(bit%2?1:-1);
         // A small clock-shaped summon gate behind each rabbit, not a generic star.
         const ring=s*.10*state.summon;
         light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.alpha*state.summon*.65});

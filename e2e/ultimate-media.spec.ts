@@ -183,11 +183,12 @@ test('Lunette has no extra buff cue and removes her whiteout when skipped', asyn
   await prepare(page,'lunette');
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','effect');
   expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
+  const peak=page.locator('.ultimate-whiteout').evaluate(e=>new Promise<boolean>(resolve=>{const watch=()=>{if(Number((e as HTMLElement).style.opacity)>.98){observer.disconnect();resolve(true);}};const observer=new MutationObserver(watch);observer.observe(e,{attributes:true,attributeFilter:['style']});watch();}));
   await page.getByTitle('演出速度',{exact:true}).click();
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
   expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
   const whiteout=page.locator('.battle-layout > .ultimate-whiteout');
-  await expect.poll(()=>whiteout.evaluate(e=>Number(getComputedStyle(e).opacity)),{intervals:[30],timeout:5000}).toBeGreaterThan(.98);
+  expect(await peak).toBe(true);
   const flash=await whiteout.boundingBox(),battle=await page.locator('.battle-layout').boundingBox();
   expect(flash!.width).toBeGreaterThan(battle!.width-5);
   expect(flash!.height).toBeGreaterThan(battle!.height-5);
@@ -199,4 +200,54 @@ test('Lunette has no extra buff cue and removes her whiteout when skipped', asyn
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await page.waitForTimeout(1100);
   expect(await page.evaluate(()=>(window as any).__summonCues)).toEqual([]);
+});
+
+test('Lunette reacts through the late volley, holds HP until the finisher and cleans up on skip',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await prepare(page,'lunette-awakened');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await expect(page.locator('.combat-number--ultimate')).toHaveCount(0);
+  const result=await page.evaluate(()=>new Promise<{shots:number[];motion:number;commands:number;hud:number;numberAt:number;finish:boolean}>(resolve=>{
+    const art=document.querySelector<HTMLElement>('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration')!;
+    const controls=document.querySelector<HTMLElement>('.battle-control-pad')!,hud=document.querySelector<HTMLElement>('.enemy-carousel-status')!;
+    const c=controls.getBoundingClientRect(),h=hud.getBoundingClientRect(),start=performance.now();
+    const shots=new Set<number>();let motion=0,commands=0,hudMotion=0,numberAt=-1;
+    const sample=()=>{
+      const now=performance.now()-start;shots.add(Number(art.dataset.rabbitShot??-1));
+      motion=Math.max(motion,Math.abs(parseFloat(art.style.translate)||0));
+      const cb=controls.getBoundingClientRect(),hb=hud.getBoundingClientRect();commands=Math.max(commands,Math.hypot(cb.x-c.x,cb.y-c.y));hudMotion=Math.max(hudMotion,Math.hypot(hb.x-h.x,hb.y-h.y));
+      if(numberAt<0&&document.querySelector('.combat-number--ultimate'))numberAt=now;
+      const white=document.querySelector<HTMLElement>('.ultimate-whiteout');
+      if(white&&Number(white.style.opacity)>.98){resolve({shots:[...shots],motion,commands,hud:hudMotion,numberAt,finish:art.dataset.rabbitFinish==='true'});return;}
+      if(now>4000)throw new Error('Finishing whiteout was not reached');
+      requestAnimationFrame(sample);
+    };requestAnimationFrame(sample);
+  }));
+  expect(Math.max(...result.shots)).toBe(15);expect(result.shots.filter(x=>x>=0).length).toBeGreaterThanOrEqual(10);
+  expect(result.motion).toBeGreaterThan(3);expect(result.commands).toBeLessThan(.1);expect(result.hud).toBeLessThan(.1);
+  expect(result.numberAt).toBeGreaterThan(1100);expect(result.finish).toBe(true);
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
+  expect(await page.locator('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
+});
+
+test('Lunette speed changes retime the sounding volley without restarting it from zero',async({page})=>{
+  await page.addInitScript(()=>{
+    (window as any).__rabbitVoices=[];
+    const start=AudioBufferSourceNode.prototype.start;
+    AudioBufferSourceNode.prototype.start=function(...args:any[]){
+      if(this.buffer&&this.buffer.duration>1.8&&this.buffer.duration<2.3)(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0});
+      return start.apply(this,args as any);
+    };
+  });
+  await prepare(page,'lunette');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await page.waitForTimeout(180);
+  await page.getByTitle('演出速度',{exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>v.offset>0).length)).toBeGreaterThan(0);
+  const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
+  expect(voices.some((v:any)=>Math.abs(v.duration-2.17)<.01)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-1.808)<.01&&v.offset>.1)).toBe(true);
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await expect(page.locator('[data-rabbit-shot]')).toHaveCount(0);
 });

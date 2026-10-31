@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
-import { ULTIMATE_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
+import { ULTIMATE_TIMING, RABBIT_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
 
 describe('ultimate presentation clock', () => {
   it('gives both Lunette forms their own rabbit summon and volley without replacing other characters', () => {
@@ -10,12 +10,12 @@ describe('ultimate presentation clock', () => {
     expect(ultimateVisualFor(content.characters.find(c => c.id === 'noelle')!)).toBe('stars');
     expect(ultimateVisualFor(content.characters.find(c => c.id === 'nox')!)).toBe('clockwork');
     expect(ultimateSoundFor('rabbit-bits')).toBe('ultimate-rabbits');
-    const impact = ULTIMATE_TIMING.impact;
+    const impact = RABBIT_TIMING.impact;
     for (let i = 0; i < 4; i++) {
       expect(rabbitBitFrame(i, impact - 1).summon).toBe(1);
       expect(rabbitBitFrame(i, impact - 1).beam).toBe(0);
       expect(rabbitBitFrame(i, impact + 140).beam).toBeGreaterThan(0);
-      expect(rabbitBitFrame(i, ULTIMATE_TIMING.end).alpha).toBe(0);
+      expect(rabbitBitFrame(i, RABBIT_TIMING.end).alpha).toBe(0);
     }
     expect(rabbitBitFrame(0, impact).beam).toBe(1);
     expect(rabbitBitFrame(1, impact).beam).toBe(0);
@@ -25,19 +25,31 @@ describe('ultimate presentation clock', () => {
     expect(new Set(shots).size).toBe(16);
     expect(shots.at(-1)).toBeLessThan(RABBIT_VOLLEY.finale-.25);
     for(let bit=0;bit<4;bit++){
-      for(const at of rabbitShotTimes(bit))expect(rabbitBitFrame(bit,ULTIMATE_TIMING.impact+at*1000).beam).toBeCloseTo(1);
-      expect(rabbitBitFrame(bit,ULTIMATE_TIMING.impact+950).finishCharge).toBeGreaterThan(.5);
-      const last=rabbitBitFrame(bit,ULTIMATE_TIMING.impact+RABBIT_VOLLEY.finale*1000);
+      for(const at of rabbitShotTimes(bit))expect(rabbitBitFrame(bit,RABBIT_TIMING.impact+at*1000).beam).toBeCloseTo(1);
+      expect(rabbitBitFrame(bit,RABBIT_TIMING.impact+1300).finishCharge).toBeGreaterThan(.5);
+      const last=rabbitBitFrame(bit,RABBIT_TIMING.impact+RABBIT_VOLLEY.finale*1000);
       expect(last.final).toBe(true);expect(last.beam).toBe(1);expect(last.alpha).toBe(1);
     }
   });
   it('whites out once at the finisher and reveals the battlefield before the replay advances', () => {
-    const start=ULTIMATE_TIMING.impact+RABBIT_VOLLEY.finale*1000;
+    const start=RABBIT_TIMING.impact+RABBIT_VOLLEY.finale*1000;
     expect(rabbitWhiteout(start)).toBe(0);
     expect(rabbitWhiteout(start+70)).toBeGreaterThan(.5);
     expect(rabbitWhiteout(start+150)).toBe(1);
     expect(rabbitWhiteout(start+400)).toBeGreaterThan(0);
-    expect(rabbitWhiteout(ULTIMATE_TIMING.end)).toBe(0);
+    expect(rabbitWhiteout(RABBIT_TIMING.end)).toBe(0);
+  });
+  it('reacts on all sixteen shots and the finisher, with a still gap and distinct robot depths', () => {
+    for(let bit=0;bit<4;bit++)for(const at of rabbitShotTimes(bit)){
+      const state=rabbitTargetFrame(RABBIT_TIMING.impact+at*1000+.1);
+      expect(state.flash).toBeGreaterThan(.1);expect(Math.abs(state.x)+Math.abs(state.y)).toBeGreaterThan(.3);
+    }
+    const rest=rabbitTargetFrame(RABBIT_TIMING.impact+1200);
+    expect(rest.x).toBe(0);expect(rest.flash).toBe(0);
+    const finish=rabbitTargetFrame(RABBIT_TIMING.damage+1);
+    expect(finish.x).toBeGreaterThan(8);expect(finish.finish).toBe(true);
+    expect(new Set([0,1,2,3].map(i=>rabbitMount(i,1700).size)).size).toBe(4);
+    expect(RABBIT_TIMING.damage).toBe(RABBIT_TIMING.impact+RABBIT_VOLLEY.finale*1000);
   });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;

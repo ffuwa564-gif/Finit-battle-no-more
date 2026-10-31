@@ -1,3 +1,4 @@
+import { createRabbitBattleMotion } from '../platform/rabbit-battle-motion';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { assetPath, characterById, content } from '../content';
@@ -5,7 +6,7 @@ import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
 import { ultimateVisualFor, rabbitWhiteout, type UltimateVisual } from '../platform/ultimate-choreography';
-import { ULTIMATE_TIMING, UltimateClock } from '../platform/ultimate-timing';
+import { ultimateTimingFor, UltimateClock } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
 
@@ -30,6 +31,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   const enemy = Boolean(event.bossStrike);
   const form = ultimateFor(character);
   const visual = ultimateVisualFor(character, event);
+  const timing=ultimateTimingFor(visual);
   const special = { ...form, name: event.ultimateName ?? form.name, theme: visual === 'clockwork' || visual === 'rabbit-bits' ? 'stars' as const : visual };
   const supporting = !enemy && ['bloom', 'aegis', 'dawn'].includes(special.theme);
   const effectHost = useRef<HTMLDivElement>(null);
@@ -57,6 +59,10 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
     frame=requestAnimationFrame(draw);
     return()=>{cancelAnimationFrame(frame);};
   },[allowed,visual,battleLayer]);
+  useEffect(()=>{
+    if(!allowed||visual!=='rabbit-bits'||!battleLayer||enemy)return;
+    return createRabbitBattleMotion(battleLayer,event.targetIds??[],()=>clock.current.position(performance.now()));
+  },[allowed,visual,battleLayer,eventId,enemy]);
   const targetElements = () => [...new Set(event.targetIds ?? [])].flatMap(id => {
     const element = partyLayer?.querySelector<HTMLElement>(`.party-unit[data-unit="${CSS.escape(id)}"]`);
     return element ? [element] : [];
@@ -92,18 +98,18 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   useEffect(() => {
     clock.current.sync(eventId, speed, performance.now());
     const elapsed = clock.current.position(performance.now());
-    setPhase(elapsed < ULTIMATE_TIMING.effect ? 'intro' : elapsed < ULTIMATE_TIMING.impact ? 'effect' : elapsed < ULTIMATE_TIMING.tail ? 'impact' : 'tail');
+    setPhase(elapsed < timing.effect ? 'intro' : elapsed < timing.impact ? 'effect' : elapsed < timing.tail ? 'impact' : 'tail');
     const timers = [
-      setTimeout(() => setPhase('effect'), clock.current.delay(ULTIMATE_TIMING.effect, performance.now())),
-      setTimeout(() => setPhase('impact'), clock.current.delay(ULTIMATE_TIMING.impact, performance.now())),
-      setTimeout(() => setPhase('tail'), clock.current.delay(ULTIMATE_TIMING.tail, performance.now())),
+      setTimeout(() => setPhase('effect'), clock.current.delay(timing.effect, performance.now())),
+      setTimeout(() => setPhase('impact'), clock.current.delay(timing.impact, performance.now())),
+      setTimeout(() => setPhase('tail'), clock.current.delay(timing.tail, performance.now())),
     ];
     return () => timers.forEach(clearTimeout);
   }, [eventId, speed]);
 
   return <><div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
-      <div className="ultimate-cinematic__portrait" aria-hidden="true"><img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" /></div>
+      <div className={`ultimate-cinematic__portrait${visual==='rabbit-bits'?' lunette-command':''}`} aria-hidden="true">{character.id==='lunette-awakened' ? <><img className="lunette-command__body" src={assetPath('lunette-command-body')} alt="" /><img className="lunette-command__key" src={assetPath('lunette-command-key')} alt="" /></> : <img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" />}</div>
       <div className="ultimate-cinematic__title"><small>{enemy ? 'ENEMY ULTIMATE' : 'ULTIMATE'}</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
     </div>
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}

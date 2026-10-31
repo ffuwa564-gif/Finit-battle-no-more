@@ -1,4 +1,5 @@
-import { ULTIMATE_TIMING, UltimateClock } from '../platform/ultimate-timing';
+import { ultimateVisualFor } from '../platform/ultimate-choreography';
+import { ultimateTimingFor, UltimateClock } from '../platform/ultimate-timing';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BattleEvent, Unit } from '../domain/types';
@@ -19,7 +20,7 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
   const stopShake = useRef<(() => void) | undefined>(undefined);
   useEffect(() => () => { stopShake.current?.(); stopShake.current = undefined; }, [event?.id, reducedMotion]);
   useEffect(() => {
-    const show = (id: string, changes: HpChange[], ultimate = false) => {
+    const show = (id: string, changes: HpChange[], ultimate = false, presentationRecoil = false) => {
       const parent = root.current?.parentElement;
       if (!parent || handled.current.has(id) || !changes.length) return;
       stopShake.current?.();
@@ -38,14 +39,14 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
       setNumbers(old => [...old, ...entries].slice(-16));
       // Restart rather than stack impulses during consecutive hits. This runs
       // with the floating numbers, after their untransformed bounds are read.
-      stopShake.current = shakeDamage(parent, changes, latestBefore.current, ultimate, latestReduced.current);
+      stopShake.current = presentationRecoil ? undefined : shakeDamage(parent, changes, latestBefore.current, ultimate, latestReduced.current);
       const timer = setTimeout(() => { setNumbers(old => old.filter(number => !entries.some(entry => entry.id === number.id))); timers.current.delete(timer); }, ultimate ? 1350 : 850);
       timers.current.add(timer);
     };
-    const onHp = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[]; ultimate?: boolean }>).detail; show(detail.id, detail.changes, detail.ultimate); };
+    const onHp = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[]; ultimate?: boolean; presentationRecoil?: boolean }>).detail; show(detail.id, detail.changes, detail.ultimate, detail.presentationRecoil); };
     window.addEventListener('game:hp', onHp);
     // Event-driven listener also handles out-of-round item healing.
-    const onBattle = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[]; ultimate?: boolean }>).detail; show(detail.id, detail.changes, detail.ultimate); };
+    const onBattle = (message: Event) => { const detail = (message as CustomEvent<{ id: string; changes: HpChange[]; ultimate?: boolean; presentationRecoil?: boolean }>).detail; show(detail.id, detail.changes, detail.ultimate, detail.presentationRecoil); };
     window.addEventListener('game:combat-numbers', onBattle);
     return () => { window.removeEventListener('game:hp', onHp); window.removeEventListener('game:combat-numbers', onBattle); };
   }, []);
@@ -53,13 +54,16 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
     if (!event) return;
     const changes = eventHpChanges(event, latestBefore.current);
     if (event.ultimate) clock.current.sync(event.id, speed, performance.now());
+    const actor=latestBefore.current.find(unit=>unit.uid===event.actorId);
+    const visual=event.ultimate&&actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
+    const timing=ultimateTimingFor(visual);
     // React batches the meters and floating numbers into the same impact frame.
     // Keep `before` separate from the presented snapshot so speed/settings changes
     // still calculate the original delta, rather than suppressing the number.
     const timer = setTimeout(() => {
       onImpact(event.id);
-      window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes, ultimate: event.ultimate } }));
-    }, event.ultimate ? clock.current.delay(ULTIMATE_TIMING.impact, performance.now()) : 0);
+      window.dispatchEvent(new CustomEvent('game:combat-numbers', { detail: { id: event.id, changes, ultimate: event.ultimate, presentationRecoil: visual==='rabbit-bits' } }));
+    }, event.ultimate ? clock.current.delay(timing.damage, performance.now()) : 0);
     return () => clearTimeout(timer);
   }, [event?.id, speed, onImpact]);
   useEffect(() => () => { for (const timer of timers.current) clearTimeout(timer); }, []);

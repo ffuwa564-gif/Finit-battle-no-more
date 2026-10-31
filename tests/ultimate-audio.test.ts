@@ -1,3 +1,4 @@
+import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
 import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
 import { renderUltimateSound, ultimateSounds } from '../src/platform/ultimate-audio';
@@ -14,21 +15,21 @@ describe('authored ultimate sound materials', () => {
       expect(finite).toBe(true);expect(peak).toBeLessThanOrEqual(.831);
       expect(rms(pcm,rate,0,pcm.length/rate)).toBeGreaterThan(.02);
       expect(Math.abs(pcm[0])).toBe(0);expect(Math.abs(pcm[pcm.length-1])).toBe(0);
-      expect(pcm.length/rate).toBeLessThan(1.8);
+      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?2.4:1.8);
     }
   });
   it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
     const rate=44100,pcm=renderUltimateSound('ultimate-rabbits',rate);
-    expect(rms(pcm,rate,1.055,1.13)).toBeGreaterThan(rms(pcm,rate,.95,1.03)*5);
-    expect(rms(pcm,rate,1.23,1.28)).toBeGreaterThan(.02);
-    expect(rms(pcm,rate,1.40,1.45)).toBeGreaterThan(.01);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,1.2,1.4)*5);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.19,RABBIT_VOLLEY.finale+.24)).toBeGreaterThan(.02);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.37,RABBIT_VOLLEY.finale+.42)).toBeGreaterThan(.01);
   });
   it('can retime the PV shot deadlines without stretching the individual shot attacks', () => {
     const rate=44100,normal=renderRabbitVolley(rate),slow=renderRabbitVolley(rate,1.8);
     expect(slow.length).toBeGreaterThan(normal.length*1.5);
     const attack=rms(normal,rate,.003,.025),retimed=rms(slow,rate,.003,.025);
     expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
-    expect(rms(slow,rate,1.8*1.05+.005,1.8*1.05+.06)).toBeGreaterThan(.05);
+    expect(rms(slow,rate,1.8*RABBIT_VOLLEY.finale+.005,1.8*RABBIT_VOLLEY.finale+.06)).toBeGreaterThan(.05);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

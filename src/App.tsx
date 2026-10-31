@@ -2,7 +2,7 @@ import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
 import { ultimateVisualFor } from './platform/ultimate-choreography';
 import { ultimateSoundFor } from './platform/ultimate-audio';
-import { ULTIMATE_TIMING, UltimateClock } from './platform/ultimate-timing';
+import { ultimateTimingFor, UltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -170,14 +170,17 @@ export default function App() {
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};
     const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
-    const impactCue = actor ? ultimateSoundFor(ultimateVisualFor(characterById(actor.characterId), event)) : 'ultimate-strike';
+    const visual=actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
+    const timing=ultimateTimingFor(visual);
+    const impactCue = visual ? ultimateSoundFor(visual) : 'ultimate-strike';
     let scheduled = activeUltimateSound.current?.eventId === event.id ? activeUltimateSound.current.voice : undefined;
+    if(visual==='rabbit-bits'&&scheduled?.hasStarted())scheduled.retime?.(ultimateClock.current.position(performance.now())-timing.impact,ultimateClock.current.rate);
     const reserveSound = () => {
       if (!event.ultimate || heardImpact.current === event.id || document.hidden) return;
-      const remaining = ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now());
+      const remaining = ultimateClock.current.delay(timing.impact, performance.now());
       // Returning from a hidden tab never plays past impacts in a burst.
       if (remaining <= 0) { heardImpact.current = event.id; return; }
-      scheduled = scheduleUltimateSound(impactCue, remaining);
+      scheduled = scheduleUltimateSound(impactCue, remaining, visual==='rabbit-bits'?ultimateClock.current.rate:1);
       activeUltimateSound.current = scheduled ? { eventId: event.id, voice: scheduled } : undefined;
     };
     const visibility = () => {
@@ -192,8 +195,8 @@ export default function App() {
       if (!scheduled && heardImpact.current !== event.id && !document.hidden) playSound(impactCue);
       heardImpact.current = event.id;
       cleanupImpact = animateEvent(event, save.settings.reducedMotion);
-    }, ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now())) : undefined;
-    const duration = event.ultimate ? ultimateClock.current.delay(ULTIMATE_TIMING.end, performance.now()) : battleEventDuration(event, save.settings.speed);
+    }, ultimateClock.current.delay(timing.impact, performance.now())) : undefined;
+    const duration = event.ultimate ? ultimateClock.current.delay(timing.end, performance.now()) : battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current) { timer = setTimeout(complete, 100); return; }

@@ -1,5 +1,8 @@
 // One normalized timeline for particles, impact sound, HP numbers and replay advance.
 export const ULTIMATE_TIMING = { effect: 900, impact: 1450, tail: 2300, end: 3200 } as const;
+export const RABBIT_TIMING = { effect: 1000, impact: 1750, damage: 3200, tail: 4200, end: 5000 } as const;
+export const ultimateTimingFor = (visual?: string) => visual === 'rabbit-bits'
+  ? RABBIT_TIMING : { ...ULTIMATE_TIMING, damage: ULTIMATE_TIMING.impact };
 export const ultimatePlaybackRate = (speed: 1 | 2) => speed === 2 ? 1.25 : 1;
 
 /** Presentation only. Speed changes preserve progress and never restart an effect. */

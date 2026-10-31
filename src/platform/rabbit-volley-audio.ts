@@ -1,7 +1,7 @@
 import { RABBIT_VOLLEY, rabbitShotTimes } from './ultimate-choreography';
 
 /** Original layered plasma weapon. Stretch deadlines, never the individual transients. */
-export function renderRabbitVolley(sampleRate: number, timingScale = 1): Float32Array {
+export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 'electric' | 'pressure' = 'electric'): Float32Array {
   const scale=Number.isFinite(timingScale)?Math.max(.25,Math.min(4,timingScale)):1;
   const duration=(RABBIT_VOLLEY.finale+RABBIT_VOLLEY.echoes[1])*scale+.36;
   const pcm=new Float32Array(Math.ceil(duration*sampleRate));
@@ -24,9 +24,19 @@ export function renderRabbitVolley(sampleRate: number, timingScale = 1): Float32
       const phase=2*Math.PI*variant*(190*age+790*.018*(1-Math.exp(-age/.018)));
       const plasma=(Math.sin(phase)+.34*Math.sin(phase*2)+.14*Math.sin(phase*3));
       const punch=Math.sin(2*Math.PI*(105*age+115*.012*(1-Math.exp(-age/.012))));
-      const core=plasma*.29*Math.exp(-age*27)+punch*.25*Math.exp(-age*34);
-      const pressure=grit*2.6*Math.exp(-age*31)+spark*.32*Math.exp(-age*100);
-      sound+=(core+pressure)*onset*(.88+shot.round*.05);
+      const electric=flavor==='electric'?1:.12;
+      const core=plasma*.16*electric*Math.exp(-age*35)+punch*(flavor==='electric'?.22:.65)*Math.exp(-age*32);
+      const discharge=(grit*(flavor==='electric'?1.8:1.2)+(flavor==='pressure'?lo*1.3:0))*Math.exp(-age*46)+spark*(flavor==='electric'?.36:.12)*Math.exp(-age*110);
+      sound+=(core+discharge)*onset*(.85+shot.round*.05);
+      // A separate short flight and contact, rather than one repeated UI-like note.
+      const travel=age-.008;
+      if(travel>0&&travel<.045)sound+=spark*.38*Math.sin(Math.PI*travel/.045)*(1-travel/.045);
+      const contact=age-.027;
+      if(contact>0){
+        const env=(1-Math.exp(-contact*850))*Math.exp(-contact*36);
+        const thud=Math.sin(2*Math.PI*132*contact)+.25*Math.sin(2*Math.PI*264*contact);
+        sound+=(grit*2.0+lo*.7+thud*(flavor==='electric'?.2:.4))*env;
+      }
     }
     // A broad detonation and two darker returns. No UI notes or metallic partials.
     for(const [at,strength] of [[finish,1],[finish+RABBIT_VOLLEY.echoes[0]*scale,.38],[finish+RABBIT_VOLLEY.echoes[1]*scale,.19]]){

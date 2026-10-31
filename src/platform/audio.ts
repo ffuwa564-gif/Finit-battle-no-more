@@ -124,16 +124,17 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
 }
 
 /** Reserve the native voice at the visual impact deadline, before the frame arrives. */
-export function scheduleUltimateSound(kind: UltimateSound, delayMs: number): ScheduledUltimateVoice | undefined {
+export function scheduleUltimateSound(kind: UltimateSound, delayMs: number, rate=1): ScheduledUltimateVoice | undefined {
   if (!active || !combat || !Tone || Tone.getContext().state !== 'running') return;
   try {
     const delay = Math.max(.005, delayMs / 1000);
-    const voice = combat.scheduleUltimate(kind, Tone.immediate() + delay);
+    const voice = combat.scheduleUltimate(kind, Tone.immediate() + delay, rate);
     const notice = setTimeout(() => {
       if (volume > 0 && !document.hidden) window.dispatchEvent(new CustomEvent('game:se', { detail: { kind } }));
     }, delay * 1000);
     return {
       hasStarted: voice.hasStarted,
+      retime: voice.retime,
       cancel(stopActive = true) {
         if (!voice.hasStarted() || stopActive) clearTimeout(notice);
         voice.cancel(stopActive);
