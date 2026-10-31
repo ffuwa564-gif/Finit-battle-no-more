@@ -1,6 +1,6 @@
 # Lunette: rabbit-bit summon ultimate
 
-Lunette and awakened Lunette use the dedicated `rabbit-bits` presentation. Four illustrated mechanical rabbits materialize through small clock gates, aim at the target, fire four short converging beams, recoil, and fade away. The four discharges use a dedicated synthesized `ultimate-rabbits` sound without bell-like metallic ringing.
+Lunette and awakened Lunette use the dedicated `rabbit-bits` presentation. Four illustrated mechanical rabbits materialize through small clock gates, aim at the target, fire four short converging beams, recoil, and fade away. An animated segmented seal connects the summon gates; spiraling charge sparks, broad muzzle blooms, a white-core burst, a dispersing shock ring and plasma fragments emphasize the volley. Lunette alone plays the existing soft buff arpeggio at the summon timing, once per event; skipping cancels the pending cue. It is a cosmetic power-up sound, not an extra stat buff. The four discharges use a dedicated synthesized `ultimate-rabbits` sound without bell-like metallic ringing.
 
 This is the presentation of Lunette's existing single area-attack ultimate. Damage, target resolution, charge, and cooldown rules are unchanged. The transient visual rabbits do not add repeated battle actions or the persistent enemy-only automatic bits.
 

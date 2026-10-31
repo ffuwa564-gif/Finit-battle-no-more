@@ -171,3 +171,21 @@ test('speed change after impact retains the voice so NEXT can stop its tail', as
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect.poll(()=>page.evaluate(()=>(window as any).__tailStops)).toBeGreaterThan(0);
 });
+
+test('Lunette summon cue plays once across speed changes and is cancelled on skip', async ({page}) => {
+  await page.addInitScript(()=>{
+    (window as any).__summonCues=[];
+    window.addEventListener('game:se',event=>{if((event as CustomEvent).detail.kind==='buff')(window as any).__summonCues.push(performance.now());});
+  });
+  await prepare(page,'lunette');
+  await expect.poll(()=>page.evaluate(()=>(window as any).__summonCues.length)).toBe(1);
+  await page.getByTitle('演出速度',{exact:true}).click();
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(1);
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await prepare(page,'lunette');
+  await page.evaluate(()=>(window as any).__summonCues=[]);
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await page.waitForTimeout(1100);
+  expect(await page.evaluate(()=>(window as any).__summonCues)).toEqual([]);
+});

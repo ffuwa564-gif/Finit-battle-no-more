@@ -140,6 +140,34 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     }else if(visual==='rabbit-bits'){
       // Lunette's four illustrated robots materialize around the actual target.
       const mounts=[[-.34,-.27],[.34,-.27],[-.34,.29],[.34,.29]];
+      // An expanding clockwork seal binds the four gates before they open fire.
+      // Keep all light local to the target: no full-screen white wash over HUD text.
+      const charge=hit<0?gather:decay(hit,5);
+      const seal=s*(.24+.055*gather);
+      for(let segment=0;segment<16;segment++){
+        const a=segment*Math.PI/8+elapsed*.00065;
+        const line:number[]=[];
+        for(let j=0;j<=6;j++){
+          const theta=a+j*.045;
+          line.push(cx+Math.cos(theta)*seal,cy+Math.sin(theta)*seal*.82);
+        }
+        stroke(line,segment%4===0?2:1,charge*.65);
+      }
+      if(hit>=0){
+        const blast=decay(hit,8),radius=s*(.045+clamp(hit*2.8)*.43);
+        forms.circle(cx,cy,s*(.08+.10*clamp(hit*9))).fill({color:0xffffff,alpha:blast*.68});
+        light.ellipse(cx,cy,radius,radius*.72).stroke({color,width:5*decay(hit,3)+.5,alpha:decay(hit,4)*.85});
+        // Eight short, tapered plasma fragments scatter from the convergence.
+        for(let shard=0;shard<8;shard++){
+          const a=shard*Math.PI/4+.21,r=s*(.08+hit*.38);
+          const length=s*.10*decay(hit,2),spread=s*.013*decay(hit,3);
+          const x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
+          polygon([x+Math.cos(a)*length,y+Math.sin(a)*length,
+            x-Math.sin(a)*spread,y+Math.cos(a)*spread,
+            x-Math.cos(a)*length*.4,y-Math.sin(a)*length*.4,
+            x+Math.sin(a)*spread,y-Math.cos(a)*spread],decay(hit,3)*.85,0xbffff4);
+        }
+      }
       for(let bit=0;bit<4;bit++){
         const state=rabbitBitFrame(bit,elapsed),[dx,dy]=mounts[bit];
         const x=cx+dx*s,y=cy+dy*s+(1-state.summon)*s*.15;
@@ -152,12 +180,31 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         // A small clock-shaped summon gate behind each rabbit, not a generic star.
         const ring=s*.10*state.summon;
         light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.alpha*state.summon*.65});
+        light.ellipse(x,y+s*.08,ring*1.22,ring*.34).stroke({width:1,color,alpha:state.alpha*state.summon*.45});
+        if(hit<0){
+          const power=clamp((gather-.4)/.6);
+          for(let spark=0;spark<5;spark++){
+            const a=spark*Math.PI*.4+elapsed*.004+bit;
+            const orbit=s*(.09-.045*power);
+            const px=x+Math.cos(a)*orbit,py=y+Math.sin(a)*orbit*.7;
+            light.circle(px,py,1+power*1.6).fill({color:0xdffff8,alpha:power*.85});
+          }
+          light.circle(x,y,s*.035*power).fill({color,alpha:power*.4});
+        }
         if(hit<0 && gather>.55){
           stroke([x,y,x+(cx-x)*gather,y+(cy-y)*gather],.65,(gather-.55)*.6);
         }
         if(state.beam>0){
           stroke([x,y,cx,cy],5.5*state.beam,state.beam);
+          // Broad muzzle bloom + a narrow white core, followed by a traveling echo.
+          light.circle(x,y,s*.047*state.beam).fill({color,alpha:state.beam*.45});
           light.circle(x,y,s*.027*state.beam).fill({color:0xffffff,alpha:state.beam});
+          const shotAge=hit-bit*.045;
+          const echo=clamp(shotAge*6);
+          if(echo>0 && echo<1){
+            const ex=x+(cx-x)*echo,ey=y+(cy-y)*echo;
+            stroke([ex-Math.cos(angle)*s*.10,ey-Math.sin(angle)*s*.10,ex,ey],3,(1-echo)*.8);
+          }
           light.circle(cx,cy,s*(.035+.045*(1-state.beam))).stroke({color,width:2,alpha:state.beam});
         }
       }

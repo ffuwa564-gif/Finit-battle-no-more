@@ -58,6 +58,12 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
         const thump=Math.sin(2*Math.PI*(145*age+2.7*(1-Math.exp(-age*35))));
         sound+=(body*2.8+grain*.65+.38*thump)*env*strength;
       }
+      // The volley lands as one substantial plasma burst, with a short low tail.
+      const burst=Math.max(0,t-.14);
+      if(t>=.14){
+        const env=(1-Math.exp(-burst*350))*Math.exp(-burst*9);
+        sound+=(body*1.5+grain*.38+.24*Math.sin(2*Math.PI*(92*burst+1.5*(1-Math.exp(-burst*22)))))*env;
+      }
       sound+=body*.8*Math.exp(-t*6)*attack(80);
     } else if (kind === 'ultimate-mechanism') {
       for(const offset of [0,.065,.13]) {
