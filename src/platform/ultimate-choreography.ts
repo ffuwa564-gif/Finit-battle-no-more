@@ -11,15 +11,24 @@ export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent):
   // An enemy's offensive boss strike must not look or sound like a party heal.
   return event?.bossStrike && ['bloom', 'aegis', 'dawn'].includes(theme) ? 'eclipse' : theme;
 }
-/** Summon, lock, four distinct shots, then dismiss; never extra combat actions. */
+/** Shared visual/audio deadlines, relative to the existing damage impact (seconds). */
+export const RABBIT_VOLLEY = { rounds: 4, spacing: .21, stagger: .035, finale: 1.05, echoes: [.17, .34] } as const;
+export const rabbitShotTimes = (index: number) => Array.from({length:RABBIT_VOLLEY.rounds},(_,round)=>round*RABBIT_VOLLEY.spacing+index*RABBIT_VOLLEY.stagger);
+/** Repeated crossfire, a short breath, then one combined finishing blast. */
 export function rabbitBitFrame(index: number, elapsed: number) {
   const hit = (elapsed - ULTIMATE_TIMING.impact) / 1000;
-  const shotAge = hit - index * .045;
+  const times=[...rabbitShotTimes(index),RABBIT_VOLLEY.finale];
+  const fired=times.filter(time=>time<=hit+1e-7);
+  const lastShot=fired.at(-1);
+  const shotAge=lastShot===undefined?-1:Math.max(0,hit-lastShot);
+  const final=lastShot===RABBIT_VOLLEY.finale;
   return {
     summon: clamp01((elapsed - ULTIMATE_TIMING.effect - index * 35) / 250),
-    alpha: clamp01((1.05 - hit) / .35),
-    beam: shotAge < 0 ? 0 : Math.exp(-shotAge * 6),
-    recoil: shotAge < 0 || shotAge > .18 ? 0 : Math.sin(shotAge / .18 * Math.PI),
+    alpha: clamp01((1.65 - hit) / .3),
+    beam: shotAge<0?0:Math.exp(-shotAge*(final?10:33)),
+    recoil: shotAge<0||shotAge>.09?0:Math.sin(shotAge/.09*Math.PI),
+    shotAge, final, round: Math.max(0,fired.length-1),
+    finishCharge: hit>.78&&hit<RABBIT_VOLLEY.finale?(hit-.78)/(RABBIT_VOLLEY.finale-.78):0,
   };
 }
 export const clamp01 = (value: number) => Math.max(0, Math.min(1, value));

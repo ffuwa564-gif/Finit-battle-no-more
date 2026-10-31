@@ -16,6 +16,12 @@ describe('authored ultimate sound materials', () => {
       expect(pcm.length/rate).toBeLessThan(1.8);
     }
   });
+  it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
+    const rate=44100,pcm=renderUltimateSound('ultimate-rabbits',rate);
+    expect(rms(pcm,rate,1.055,1.13)).toBeGreaterThan(rms(pcm,rate,.95,1.03)*5);
+    expect(rms(pcm,rate,1.23,1.28)).toBeGreaterThan(.02);
+    expect(rms(pcm,rate,1.40,1.45)).toBeGreaterThan(.01);
+  });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;
     const clips=ultimateSounds.filter(kind=>kind!=='ultimate').map(kind=>renderUltimateSound(kind,rate));

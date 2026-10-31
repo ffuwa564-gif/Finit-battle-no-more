@@ -13,7 +13,8 @@ function FallbackImpact({ theme, visual }: { theme: UltimateTheme; visual?: Ulti
   if (visual === 'rabbit-bits') return <svg className="ultimate-fallback ultimate-fallback--rabbit-bits" viewBox="0 0 400 400" aria-hidden="true">
     {[[15,35],[255,35],[15,245],[255,245]].map(([x,y],index) => <g key={index}>
       <image href={assetPath(`lunette-bit-${index+1}`)} x={x} y={y} width="130" height="140" />
-      <path className="rabbit-fallback-beam" d={`M${x+65} ${y+70} 200 200`} />
+      <path className="rabbit-fallback-beam" style={{ animationDelay: `${index * 35}ms` }} d={`M${x+65} ${y+70} 200 200`} />
+      <path className="rabbit-fallback-finale" d={`M${x+65} ${y+70} 200 200`} />
     </g>)}
     <circle cx="200" cy="200" r="20" />
   </svg>;

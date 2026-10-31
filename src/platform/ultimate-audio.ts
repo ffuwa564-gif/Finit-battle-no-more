@@ -1,4 +1,4 @@
-import type { UltimateVisual } from './ultimate-choreography';
+import { RABBIT_VOLLEY, rabbitShotTimes, type UltimateVisual } from './ultimate-choreography';
 import { renderProtectionSound } from './protection-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
 
@@ -12,7 +12,7 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
   if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
   if (kind === 'ultimate') return renderUltimateCharge(sampleRate);
   const heal = kind === 'ultimate-sanctuary';
-  const duration = heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : 1.5;
+  const duration = heal ? 1.7 : kind === 'ultimate-strike' ? 1.05 : kind === 'ultimate-rabbits' ? 1.75 : 1.5;
   const samples = new Float32Array(Math.ceil(duration * sampleRate));
   const pole = (hz: number) => 1 - Math.exp(-2 * Math.PI * hz / sampleRate);
   const lowA = pole(170), midA = pole(950), airA = pole(5900), floorA = pole(580);
@@ -51,20 +51,21 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
       }
       sound += grain*1.4*Math.exp(-t*10)*attack(600)+body*1.8*Math.exp(-t*7);
     } else if (kind === 'ultimate-rabbits') {
-      // Four pneumatic discharges, broad low-mid weight, no ringing metal bell.
-      for (const [offset, strength] of [[0, 1], [.045, .86], [.09, .94], [.135, 1.05]]) {
-        const age=t-offset; if(age<0)continue;
-        const env=Math.min(1,age*1600)*Math.exp(-age*27);
-        const thump=Math.sin(2*Math.PI*(145*age+2.7*(1-Math.exp(-age*35))));
-        sound+=(body*2.8+grain*.65+.38*thump)*env*strength;
+      // Sixteen short plasma discharges, a breath, then a heavy final blast.
+      for(let bit=0;bit<4;bit++)for(const offset of rabbitShotTimes(bit)){
+        const age=t-offset;if(age<0||age>.16)continue;
+        const env=Math.min(1,age*1800)*Math.exp(-age*52);
+        const pitch=180+bit*31;
+        const zap=Math.sin(2*Math.PI*(pitch*age+3.1*(1-Math.exp(-age*55))));
+        sound+=(body*2.5+grain*1.1+.32*zap)*env*(.72+bit*.055);
       }
-      // The volley lands as one substantial plasma burst, with a short low tail.
-      const burst=Math.max(0,t-.14);
-      if(t>=.14){
-        const env=(1-Math.exp(-burst*350))*Math.exp(-burst*9);
-        sound+=(body*1.5+grain*.38+.24*Math.sin(2*Math.PI*(92*burst+1.5*(1-Math.exp(-burst*22)))))*env;
+      // Discrete, darker echoes after the final hit: delay, not a metallic chime.
+      for(const [offset,strength] of [[RABBIT_VOLLEY.finale,1],...RABBIT_VOLLEY.echoes.map((delay,index)=>[RABBIT_VOLLEY.finale+delay,.38/(index+1)])]){
+        const age=t-offset;if(age<0)continue;
+        const env=(1-Math.exp(-age*650))*Math.exp(-age*15);
+        const sub=Math.sin(2*Math.PI*(80*age+2.7*(1-Math.exp(-age*30))));
+        sound+=(body*3.8+grain*.9+low*1.5+.55*sub)*env*strength;
       }
-      sound+=body*.8*Math.exp(-t*6)*attack(80);
     } else if (kind === 'ultimate-mechanism') {
       for(const offset of [0,.065,.13]) {
         const age=t-offset;if(age<0)continue;
@@ -86,7 +87,7 @@ export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Fl
     samples[i] = Math.tanh(sound*.9);
   }
   {
-    const dry=samples.slice(), wet=heal ? .32 : kind==='ultimate-strike' ? .1 : .2;
+    const dry=samples.slice(), wet=kind==='ultimate-rabbits' ? 0 : heal ? .32 : kind==='ultimate-strike' ? .1 : .2;
     for(const [delay,strength] of [[.071,1],[.139,.65],[.233,.4],[.379,.2]]) {
       const offset=Math.round(delay*sampleRate);
       for(let i=offset;i<samples.length;i++)samples[i]+=dry[i-offset]*wet*strength;

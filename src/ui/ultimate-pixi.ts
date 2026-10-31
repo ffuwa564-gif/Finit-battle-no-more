@@ -1,6 +1,6 @@
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
-import { ultimateFrame, rabbitBitFrame, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateFrame, rabbitBitFrame, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
 const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
@@ -44,7 +44,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
-    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=f.fade;
+    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((1.75-hit)/.4):f.fade;
     for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
     for(const {sprite} of particles)sprite.alpha=0;
@@ -153,25 +153,28 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         }
         stroke(line,segment%4===0?2:1,charge*.65);
       }
-      if(hit>=0){
-        const blast=decay(hit,8),radius=s*(.045+clamp(hit*2.8)*.43);
-        forms.circle(cx,cy,s*(.08+.10*clamp(hit*9))).fill({color:0xffffff,alpha:blast*.68});
-        light.ellipse(cx,cy,radius,radius*.72).stroke({color,width:5*decay(hit,3)+.5,alpha:decay(hit,4)*.85});
-        // Eight short, tapered plasma fragments scatter from the convergence.
-        for(let shard=0;shard<8;shard++){
-          const a=shard*Math.PI/4+.21,r=s*(.08+hit*.38);
-          const length=s*.10*decay(hit,2),spread=s*.013*decay(hit,3);
+      const finishAge=hit-RABBIT_VOLLEY.finale;
+      if(finishAge>=0){
+        // The finishing hit expands as a lens-shaped blast, not a static star icon.
+        const blast=decay(finishAge,9),radius=s*(.07+clamp(finishAge*3)*.46);
+        light.ellipse(cx,cy,s*(.19+.12*clamp(finishAge*8)),s*.065).fill({color:0xffffff,alpha:blast*.8});
+        light.ellipse(cx,cy,radius,radius*.65).stroke({color,width:5*decay(finishAge,4)+.5,alpha:decay(finishAge,5)*.9});
+        for(let shard=0;shard<14;shard++){
+          const a=shard*2.39996,r=s*(.12+finishAge*(.32+(shard%3)*.1));
+          const length=s*.035*decay(finishAge,3);
           const x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
-          polygon([x+Math.cos(a)*length,y+Math.sin(a)*length,
-            x-Math.sin(a)*spread,y+Math.cos(a)*spread,
-            x-Math.cos(a)*length*.4,y-Math.sin(a)*length*.4,
-            x+Math.sin(a)*spread,y-Math.cos(a)*spread],decay(hit,3)*.85,0xbffff4);
+          stroke([x,y,x+Math.cos(a)*length,y+Math.sin(a)*length],2,decay(finishAge,4));
+        }
+        for(const delay of RABBIT_VOLLEY.echoes){
+          const age=finishAge-delay;
+          if(age>=0)light.ellipse(cx,cy,s*(.09+age*.5),s*(.06+age*.31)).stroke({color,width:1.5,alpha:decay(age,12)*.45});
         }
       }
       for(let bit=0;bit<4;bit++){
         const state=rabbitBitFrame(bit,elapsed),[dx,dy]=mounts[bit];
         const x=cx+dx*s,y=cy+dy*s+(1-state.summon)*s*.15;
-        const angle=Math.atan2(cy-y,cx-x),back=state.recoil*s*.028;
+        const aimX=cx+(state.final?0:Math.sin(state.round*2.7+bit)*s*.055),aimY=cy+(state.final?0:Math.cos(state.round*3.1+bit)*s*.045);
+        const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.045;
         const bunny=rabbits[bit];bunny.visible=true;
         bunny.position.set(x-Math.cos(angle)*back,y-Math.sin(angle)*back);
         const width=s*.245*(.35+.65*state.summon);
@@ -194,15 +197,21 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         if(hit<0 && gather>.55){
           stroke([x,y,x+(cx-x)*gather,y+(cy-y)*gather],.65,(gather-.55)*.6);
         }
-        if(state.beam>0){
-          stroke([x,y,cx,cy],5.5*state.beam,state.beam);
+        if(state.finishCharge>0){
+          light.circle(x,y,s*.055*state.finishCharge).fill({color,alpha:state.finishCharge*.7});
+          stroke([x-s*.045,y,x+s*.045,y],1.5,state.finishCharge);
+        }
+        if(state.beam>.015){
+          const width=state.final?8:3.8;
+          stroke([x,y,aimX,aimY],width*state.beam,state.beam);
+          light.circle(aimX,aimY,s*.026*state.beam).fill({color:0xffffff,alpha:state.beam*.85});
           // Broad muzzle bloom + a narrow white core, followed by a traveling echo.
           light.circle(x,y,s*.047*state.beam).fill({color,alpha:state.beam*.45});
           light.circle(x,y,s*.027*state.beam).fill({color:0xffffff,alpha:state.beam});
-          const shotAge=hit-bit*.045;
+          const shotAge=state.shotAge;
           const echo=clamp(shotAge*6);
           if(echo>0 && echo<1){
-            const ex=x+(cx-x)*echo,ey=y+(cy-y)*echo;
+            const ex=x+(aimX-x)*echo,ey=y+(aimY-y)*echo;
             stroke([ex-Math.cos(angle)*s*.10,ey-Math.sin(angle)*s*.10,ex,ey],3,(1-echo)*.8);
           }
           light.circle(cx,cy,s*(.035+.045*(1-state.beam))).stroke({color,width:2,alpha:state.beam});

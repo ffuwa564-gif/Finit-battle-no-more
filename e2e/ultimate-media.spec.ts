@@ -40,6 +40,7 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
         if(element.dataset.phase!=='tail')return;
         observer.disconnect();
         requestAnimationFrame(() => {
+          if(element.dataset.visual==='rabbit-bits'){resolve({opacity:Number(getComputedStyle(element).opacity)});return;}
           const fade=element.getAnimations().find(animation=>animation instanceof CSSTransition && animation.transitionProperty==='opacity');
           if(!fade){reject(new Error('Expected an opacity transition on the ultimate tail'));return;}
           fade.pause();fade.currentTime=250;
@@ -62,7 +63,8 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     const fade = await tailSample;
     expect(fade.opacity).toBeGreaterThan(0);
-    expect(fade.opacity).toBeLessThan(.95);
+    if(theme==='rabbit-bits')expect(fade.opacity).toBe(1); // Canvas owns barrage, finisher and fade.
+    else expect(fade.opacity).toBeLessThan(.95);
     // Sample recipients at the same frame, even when screenshot/CI work takes time.
     if (['sanctuary','shield','rally'].includes(clip)) expect(fade.recipients).toBe('1');
   });

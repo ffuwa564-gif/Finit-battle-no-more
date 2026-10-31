@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
@@ -19,6 +19,17 @@ describe('ultimate presentation clock', () => {
     }
     expect(rabbitBitFrame(0, impact).beam).toBe(1);
     expect(rabbitBitFrame(1, impact).beam).toBe(0);
+  });
+  it('fires sixteen separate shots, rests, finishes together and remains visible through the final echo', () => {
+    const shots=[0,1,2,3].flatMap(rabbitShotTimes).sort((a,b)=>a-b);
+    expect(new Set(shots).size).toBe(16);
+    expect(shots.at(-1)).toBeLessThan(RABBIT_VOLLEY.finale-.25);
+    for(let bit=0;bit<4;bit++){
+      for(const at of rabbitShotTimes(bit))expect(rabbitBitFrame(bit,ULTIMATE_TIMING.impact+at*1000).beam).toBeCloseTo(1);
+      expect(rabbitBitFrame(bit,ULTIMATE_TIMING.impact+950).finishCharge).toBeGreaterThan(.5);
+      const last=rabbitBitFrame(bit,ULTIMATE_TIMING.impact+RABBIT_VOLLEY.finale*1000);
+      expect(last.final).toBe(true);expect(last.beam).toBe(1);expect(last.alpha).toBe(1);
+    }
   });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;
