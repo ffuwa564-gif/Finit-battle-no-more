@@ -1,6 +1,7 @@
 import { validCrystalRole } from '../domain/crystal-resonance';
 import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domain/novels';
 import { ultimateReady } from '../domain/ultimates';
+import { commandUnits, partyOrderOptions, validPartyOrder } from '../domain/party-orders';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
 import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
@@ -53,6 +54,25 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
   switch (command.type) {
+    case 'focusEnemy': {
+      const battle = save.battle;
+      if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase) || !commandUnits(battle).some(u => u.uid === command.unitId && u.side === 'enemy' && u.hp > 0)) fail('狙う敵を選んでください。');
+      battle.focusTargetId = command.unitId;
+      break;
+    }
+    case 'partyOrder': {
+      const battle = save.battle;
+      if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase)) fail('今は行動を予約できません。');
+      if (command.order === null) { delete battle.partyOrder; break; }
+      if (!validPartyOrder(command.order)) fail('行動の予約が正しくありません。');
+      const unit = commandUnits(battle).find(u => u.side === 'party' && u.characterId === battle.partyIds[0] && u.hp > 0);
+      const optionId = command.order.kind === 'skill' ? 'skill:' + command.order.skillId : command.order.kind;
+      if (!unit || !partyOrderOptions(unit, { ...battle, units: commandUnits(battle) }, content).some(o => !o.disabled && o.id === optionId)) fail('この行動はまだ使えません。');
+      battle.partyOrder = command.order;
+      const actual = battle.units.find(u => u.uid === unit.uid);
+      if (actual) delete actual.ultimateQueued;
+      break;
+    }
     case 'novelStart': {
       town(save);
       const scene = content.novels?.find(scene => scene.id === command.sceneId);

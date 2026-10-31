@@ -76,6 +76,9 @@ export default function App() {
 
   const navigate = useCallback((target: Page) => { location.hash = target; setPage(target); window.scrollTo({ top: 0 }); document.getElementById('root')?.scrollTo({ top: 0 }); }, []);
   const command = useCallback(async (action: GameCommand, expectedEventId?: string) => {
+    if (action.type === 'partyOrder' || action.type === 'focusEnemy') {
+      for (let wait = 0; busyRef.current && wait < 100; wait++) await new Promise(resolve => setTimeout(resolve, 20));
+    }
     const previous = state.current;
     if (!previous || busyRef.current) return false;
     if (expectedEventId && previous.battle?.events[previous.battle.cursor]?.id !== expectedEventId) return false;
