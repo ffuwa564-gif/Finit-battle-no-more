@@ -133,7 +133,7 @@ test('awakened Lunette uses the lightweight portrait and full animation in detai
     await persistSave(applyCommand(save, { type: 'depart', dungeonId: content.dungeons[0].id, potions: 0 }, content), save.revision);
   });
   await page.reload(); await enterGame(page);
-  const battlePortrait = page.locator('.party-strip video[src$="lunette-awakened-portrait-loop.mp4"]');
+  const battlePortrait = page.locator('.party-strip video[src$="lunette-awakened-portrait-loop-hq.mp4"]');
   await expect.poll(() => battlePortrait.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0);
   await expect(battlePortrait).toHaveJSProperty('muted', true);
   await page.screenshot({ path: testInfo.outputPath('lunette-awakened-battle.png'), fullPage: true });
