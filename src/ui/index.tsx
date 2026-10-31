@@ -7,7 +7,8 @@ import { createPortal } from 'react-dom';
 import { ChevronRight, Crown, Diamond, X } from 'lucide-react';
 import type { CharacterDef, Rarity } from '../domain/types';
 import { roleName } from '../content';
-import { emitUISound, type UISound } from './interaction';
+import { emitUISound, runUIInteraction, type UISound } from './interaction';
+export { claimCommandFeedback } from './interaction';
 import { NoticeSurface } from './NoticeSurface';
 import { PortraitArt } from './PortraitArt';
 import { RarityFrame } from './RarityFrame';
@@ -45,9 +46,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { v
 /** All interactive controls share this visual and sound boundary. */
 export function Button({ variant = 'primary', size = 'md', selected, className = '', sound = 'confirm', onClick, children, type = 'button', ...props }: ButtonProps) {
   return <button {...props} type={type} aria-pressed={selected} className={`button button--${variant} button--${size}${selected ? ' is-selected' : ''} ${className}`} onClick={(event) => {
-    // Unlock audio before a synchronous command error or view change can occur.
-    if (sound) emitUISound(sound);
-    onClick?.(event);
+    // Commands own their saved success/error cue; view-only buttons own a UI cue.
+    runUIInteraction(() => onClick?.(event), sound);
   }}>{localize(children)}</button>;
 }
 

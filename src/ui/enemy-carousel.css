@@ -67,7 +67,7 @@
 .enemy-carousel--portrait .hp-bar { height: 4px; }
 .enemy-carousel--portrait .enemy-carousel-meta { font-size: 8px; line-height: 1.2; gap: 10px; }
 .enemy-carousel--portrait .enemy-carousel-meta__bag strong { font-size: 10px; }
-.enemy-page .animated-illustration__toggle { pointer-events: auto; }
+.enemy-page .animated-illustration__toggle { pointer-events: auto; bottom: 96px; }
 
 .enemy-page--incoming > .animated-illustration { animation: enemy-page-enter .48s cubic-bezier(.22,.61,.36,1) both; }
 

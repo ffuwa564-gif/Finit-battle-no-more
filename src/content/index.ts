@@ -263,10 +263,15 @@ const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArt
   id: char.encounterArtId, path: rareEnemyArt[char.id] ? `art/${rareEnemyArt[char.id]}.png` : char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}),
 }] : []);
-const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portraitMotionId).map(char => ({
+const portraitMotionAssets: AssetDef[] = characters.filter(char => char.portraitMotionId).flatMap(char => {
+  const highResolutionId = `${char.portraitMotionId}-hq`;
+  const low: AssetDef = {
   id: char.portraitMotionId!, path: `video/${char.id}-portrait${char.id === 'athena' ? '-anime' : char.id === 'selene' ? '-v2' : char.id === 'lunette-awakened' ? '-loop' : ''}.mp4`, kind: 'video', width: 320, height: 480,
+  highResolutionId,
   anchor: '50% 0%', rights: `Optimized portrait export of original project animation ${char.motionId}; 320x480, 18fps, H.264 Baseline Level 3.0.`,
-}));
+  };
+  return [low, { id: highResolutionId, path: low.path.replace(/\.mp4$/, '-hq.mp4'), kind: 'video', width: 640, height: 960, anchor: low.anchor, rights: `High-resolution face export from original animation ${char.motionId}; same framing as ${low.id}; 640x960, 18fps, H.264.` }];
+});
 const menuAssets: AssetDef[] = [
   { id: 'gacha-selene-motion', path: 'video/gacha-selene-v2.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project Selene kimono illustration animated with Runway; task cdf471e0-c6d0-4ff6-871e-854922b3beac.' },
   { id: 'gacha-athena-motion', path: 'video/gacha-athena-anime.mp4', kind: 'video', width: 720, height: 1080, anchor: '50% 0%', rights: 'Original project anime-style Athena kimono illustration animated with Runway; task 1aceb7d3-6966-4dab-b652-892629560349.' },

@@ -2,7 +2,7 @@ import { tr, localize } from '../locales/i18n';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Backpack, ChevronLeft, ChevronRight, Crown, MapPin, Crosshair } from 'lucide-react';
 import { Button, HPBar, UnitEffects } from './index';
-import { emitUISound } from './interaction';
+import { runUIInteraction } from './interaction';
 import { AnimatedIllustration } from './AnimatedIllustration';
 import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
@@ -76,7 +76,7 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     const current = units.findIndex(unit => unit.uid === selectedRef.current);
     for (let distance = 1; distance <= units.length; distance++) {
       const index = (current + direction * distance + units.length * 2) % units.length;
-      if (units[index].hp > 0) { focusUnit(units[index].uid, direction); emitUISound('select'); return; }
+      if (units[index].hp > 0) { runUIInteraction(() => focusUnit(units[index].uid, direction), 'select'); return; }
     }
   }, [canChange, units, focusUnit]);
 

@@ -8,13 +8,13 @@ import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings, Shield, Sparkles, Users, Volume2, VolumeX } from 'lucide-react';
-import { VisualNovel, FairyGuide, FairyGuideButton, Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults } from './ui';
+import { VisualNovel, FairyGuide, FairyGuideButton, Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults, claimCommandFeedback } from './ui';
 import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
 import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
-import { battleSounds, commandSounds } from './platform/sound-cues';
+import { battleSounds, commandSound } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
 import type { CharacterDef, GameCommand, GameSave, GachaResult } from './domain/types';
@@ -77,6 +77,9 @@ export default function App() {
 
   const navigate = useCallback((target: Page) => { location.hash = target; setPage(target); window.scrollTo({ top: 0 }); document.getElementById('root')?.scrollTo({ top: 0 }); }, []);
   const command = useCallback(async (action: GameCommand, expectedEventId?: string) => {
+    // Claim before any await so the originating button cannot also play a cue.
+    // Unlock while still in the trusted gesture; saved commands may finish later.
+    if (claimCommandFeedback()) { unlockBgm(); void enableAudio(); }
     if (action.type === 'partyOrder' || action.type === 'focusEnemy') {
       for (let wait = 0; busyRef.current && wait < 100; wait++) await new Promise(resolve => setTimeout(resolve, 20));
     }
@@ -89,10 +92,9 @@ export default function App() {
       await persistSave(next, previous.revision);
       state.current = next; setSave(next);
       setAudioVolume(next.settings.seVolume);
-      const cue = commandSounds[action.type];
+      const cue = commandSound(action, next.settings);
       if (cue) playSound(cue);
       if ((next.memoryGems?.items.length ?? 0) > (previous.memoryGems?.items.length ?? 0) && action.type === 'replay') playSound('drop');
-      if (action.type === 'settings' && action.settings.seVolume !== undefined && action.settings.seVolume > 0) playSound('confirm');
       if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
       if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
