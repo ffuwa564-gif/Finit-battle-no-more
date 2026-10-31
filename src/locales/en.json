@@ -2068,9 +2068,14 @@
   "ITEMで生きている仲間を、1ラウンドに1回回復できるよ。ボスの溜め中は、予告の数字までHPを削ると次の大技が弱まるの。崩せそうにないなら、先頭の子に「身を守る」を指示して備えよう。大技の後の隙は、攻めるチャンスだよ！": "ITEM heals a living ally once per round. While a boss charges, deal the HP damage shown in the warning to weaken its next heavy attack. If you cannot break the charge, order your lead companion to Defend. Attack during the opening after the heavy strike!",
   "封域の一撃": "Sealed Domain Strike",
   "宵宮・九尾の祓い": "Evening Shrine: Nine-Tail Purification",
-  "時計庭・零時の一撃": "Clockwork Garden: Midnight Strike",
+  "時計庭・零時の一撃": "Midnight Strike",
   "3ターンごとの先頭狙いに備えよう。溜め中に集中して大技を弱めるか、防御でしのいで攻撃後の隙を狙おう。": "Prepare for a heavy strike against your lead every three turns. Focus damage during the charge to weaken it, or defend and counter during the opening afterward.",
   "先頭狙いの大技に注意。護衛のかばう・回復を崩すか、ボスへ集中して溜めを崩そう。": "Watch for heavy attacks on your lead. Defeat the escorts to stop their cover and healing, or focus the boss to break her charge.",
   "護衛の回復・妨害を見て狙う相手を決めよう。大技を弱めるか防御でしのぎ、攻撃後の隙に反撃しよう。": "Choose your target around the escorts’ healing and disruption. Weaken the heavy strike or defend through it, then counter during the opening.",
-  "ボスの予告状態が探索のラウンドと一致しません。": "The boss warning state does not match the current exploration round."
+  "ボスの予告状態が探索のラウンドと一致しません。": "The boss warning state does not match the current exploration round.",
+  "ビット": "Bits",
+  "射撃 {0}T": "Firing · {0}T",
+  "展開 {0}T": "Deploy · {0}T",
+  "次ターン射撃": "Fire next turn",
+  "今ターン展開": "Deploying now"
 }

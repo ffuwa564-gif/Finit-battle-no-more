@@ -6,27 +6,28 @@ async function enter(page: Page, english: boolean) {
   if (english) { await page.getByRole('button', { name: 'Tap to Begin', exact: true }).click(); await skipStory(page); }
   else await enterGame(page);
 }
-async function setup(page: Page, english = false) {
+async function setup(page: Page, english = false, stage = 'hollow-gate') {
   if (english) await page.addInitScript(() => localStorage.setItem('stillveil-language', 'en'));
   await page.goto('/'); await enter(page, english);
-  await page.evaluate(async () => {
+  await page.evaluate(async (stage) => {
     const { content } = await import('/src/content/index.ts');
     const { createBattle, advanceReplay } = await import('/src/domain/engine.ts');
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const save = (await loadSave())!, revision = save.revision;
-    let battle = createBattle(content, save.partyIds, save.leaderId, 'hollow-gate', 0, 42, 'pressure-browser');
+    let battle = createBattle(content, save.partyIds, save.leaderId, stage, 0, 42, 'pressure-browser');
     while (battle.phase === 'playing') battle = advanceReplay(battle, content);
-    while (battle.wave < content.dungeons.find(stage => stage.id === 'hollow-gate')!.waves.length - 1) {
+    while (battle.wave < content.dungeons.find(def => def.id === stage)!.waves.length - 1) {
       battle.phase = 'playing'; battle.nextPhase = 'wave'; battle.events = []; battle.cursor = 0;
       while (battle.phase === 'playing') battle = advanceReplay(battle, content);
     }
     battle.round = 2;
     const boss = battle.units.find(unit => unit.side === 'enemy' && unit.boss)!;
     boss.hp = boss.maxHp = 1000;
+    if (stage === 'lunette-awakening') { battle.round = 5; boss.bits = { count: 3, deployedRound: 3, expiresRound: 5 }; }
     battle.initialUnits = structuredClone(battle.units);
     save.battle = battle; save.settings.reducedMotion = true; save.revision++;
     await persistSave(save, revision);
-  });
+  }, stage);
   await page.reload(); await enter(page, english);
 }
 
@@ -76,4 +77,18 @@ test('English break and opening states fit a narrow screen and survive reloads',
   const controls = await page.locator('.enemy-carousel-controls').boundingBox();
   expect(controls!.y + controls!.height).toBeLessThanOrEqual(box!.y);
   await page.screenshot({ path: info.outputPath('boss-opening-english-320.png') });
+});
+
+for (const english of [false, true]) test(`combined bit and strike warnings stay visible above escorts at 320px (${english ? 'EN' : 'JP'})`, async ({page}, info) => {
+  await page.setViewportSize({width:320,height:740}); await setup(page, english, 'lunette-awakening');
+  const warning=page.locator('.boss-strike-status'), bits=page.locator('.clockwork-bits__status');
+  await expect(warning).toHaveAttribute('data-boss-pressure','charging');
+  await expect(bits).toHaveCount(1); await expect(bits).toHaveClass(/--inline/);
+  await expect(page.locator('.clockwork-bit')).toHaveCount(3);
+  await page.locator('.enemy-carousel-arrow').last().click();
+  await expect(bits).toBeVisible(); await expect(page.locator('.clockwork-bit')).toHaveCount(3);
+  const band=(await warning.boundingBox())!, label=(await bits.boundingBox())!, controls=(await page.locator('.enemy-carousel-controls').boundingBox())!;
+  expect(label.y).toBeGreaterThanOrEqual(band.y); expect(label.y+label.height).toBeLessThanOrEqual(band.y+band.height);
+  expect(controls.y+controls.height).toBeLessThanOrEqual(band.y); expect(band.x).toBeGreaterThanOrEqual(0); expect(band.x+band.width).toBeLessThanOrEqual(320);
+  await page.screenshot({path:info.outputPath(`combined-warning-${english?'en':'ja'}.png`)});
 });
