@@ -51,11 +51,8 @@ jobs:
       - run: npm test
       - run: npm run build:itch
       - run: npx playwright install --with-deps chromium webkit
-      - run: npm run test:itch
       - run: npm run test:native-ui
-        env:
-          WEBKIT_DISABLE_DMABUF_RENDERER: "1"
-          LIBGL_ALWAYS_SOFTWARE: "1"
+      - run: npm run test:itch
       - name: Prepare review fingerprint
         run: npm run check:release -- --report
       - uses: actions/upload-artifact@v4

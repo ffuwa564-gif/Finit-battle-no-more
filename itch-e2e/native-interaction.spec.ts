@@ -6,6 +6,9 @@ import { bootMetadata, SAVE_DATABASE, SAVE_STORE } from '../src/platform/save';
 
 test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: 'ja-JP' });
 async function preparation(page: Page) {
+  // This suite targets prepared game UI, not the unrelated Pixi title renderer.
+  // Restore full motion before exercising every actual portrait and control.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   const game = page.frameLocator('iframe');
   const begin = async () => {
@@ -32,6 +35,7 @@ async function preparation(page: Page) {
     location.hash = 'dungeons';
   }, { save, boot: bootMetadata(save), database: SAVE_DATABASE, store: SAVE_STORE });
   await page.reload(); await begin();
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await game.locator('.app-shell').evaluate(() => { location.hash = 'dungeons'; });
   const card = game.locator('.dungeon-card').filter({ has: game.getByRole('heading', { name: '虚ろの門', exact: true }) });
   await card.getByRole('button', { name: '探索の準備', exact: true }).click();
@@ -60,6 +64,7 @@ test('preparation portal protects static/animated portraits and text outside the
     })).toBe(true);
   }
   const video = modal.locator('video').first();
+  await expect(video).toHaveAttribute('src', /\.mp4/);
   await expect(video).toHaveJSProperty('controls', false);
   await expect(video).toHaveJSProperty('muted', true);
   for (const element of [name, modal.locator('.home-party img').last()]) {
@@ -115,8 +120,10 @@ test('current party makes the first companion and leader independently selectabl
   await expect(formation.locator('.leader-panel')).toContainText(content.characters.find(c => c.id === 'athena')!.name);
   await expect(formation.locator('[data-position="1"]')).toHaveAttribute('data-member-id', 'elaine');
   await page.screenshot({ path: info.outputPath('current-party-japanese-390.png') });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.reload();
   await game.getByRole('button', { name: 'タップしてはじめる', exact: true }).click(); await expect(game.locator('.title-screen')).toHaveCount(0, { timeout: 15000 }); await skipStory(game);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await game.locator('.app-shell').evaluate(() => { location.hash = 'party'; });
   await expect(formation.locator('[data-position="1"]')).toHaveAttribute('data-member-id', 'elaine');
   await expect(formation.locator('[data-member-id="athena"]')).toContainText('リーダー');
