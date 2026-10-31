@@ -1,5 +1,5 @@
-import {readFileSync} from 'node:fs';
-import { renderRabbitUltimate, enhanceRabbitBuff, RABBIT_BUFF_CUES } from '../src/platform/rabbit-ultimate-audio';
+import {renderUltimateCharge} from '../src/platform/ultimate-charge-audio';
+import { renderRabbitUltimate, enhanceRabbitCharge, RABBIT_CHARGE_CUES } from '../src/platform/rabbit-ultimate-audio';
 import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
 import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
@@ -33,15 +33,12 @@ describe('authored ultimate sound materials', () => {
     expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
     expect(rms(slow,rate,1.8*RABBIT_VOLLEY.finale+.005,1.8*RABBIT_VOLLEY.finale+.06)).toBeGreaterThan(.05);
   });
-  it('strengthens the actual buff waveform without changing its notes or timing',()=>{
-    const bytes=readFileSync(new URL('../src/platform/assets/combat-buff.wav',import.meta.url));
-    const source=Float32Array.from({length:(bytes.length-44)/2},(_,i)=>bytes.readInt16LE(44+i*2)/32768);
-    const buff=enhanceRabbitBuff(source),voice=renderRabbitUltimate(48000,1,source);
-    expect(buff.length).toBe(source.length);expect(RABBIT_BUFF_CUES.length).toBe(5);
-    let xy=0,xx=0,yy=0;for(let i=0;i<source.length;i++){xy+=source[i]*buff[i];xx+=source[i]**2;yy+=buff[i]**2;}
-    expect(xy/Math.sqrt(xx*yy)).toBeGreaterThan(.995);
-    expect(rms(buff,48000,.02,.5)).toBeGreaterThan(rms(source,48000,.02,.5)*1.25);
-    expect(voice.length/48000).toBe(5);expect(renderRabbitUltimate(48000,1.25,source).length/48000).toBe(4);
+  it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
+    const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES).toEqual([0,.9,1.8,2.55]);
+    for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
+    expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
+    expect(voice.length/48000).toBe(5);expect(renderRabbitUltimate(48000,1.25).length/48000).toBe(4);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;
