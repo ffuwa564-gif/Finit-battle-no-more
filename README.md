@@ -1,3 +1,18 @@
+## 最新：ルネットPV v12（ホワイトアウト・射撃音再制作）
+
+最後の締め撃ちで戦闘画面全体をホワイトアウト。残していた召喚バフ音も外し、追加のbuff/confirm/select/tap音を撤去しました。射撃は下降する電気的な音程・中低域の圧力・立ち上がり・暗い残響を別々に合成し直しています。20秒です。
+
+- [720p MP4](Lunette-v12/STILLVEIL_Lunette_PV_v12_20s_720p.mp4)
+- [BGMなし・効果音だけの確認動画](Lunette-v12/Lunette_ultimate_SFX_only_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v12/STILLVEIL_Lunette_PV_v12_20s_1080p.mp4)
+- [投稿説明文・音楽クレジット](Lunette-v12/upload-description.txt)
+- [制作と音作りの研究資料](Lunette-v12/README.txt)
+- [ゲーム側のPR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+音楽：Twinkle Soda / FUJINEQo。投稿時は音楽クレジットを残してください。BGM自身の打楽器音は残っています。確認動画にはBGMを含めていません。
+
+---
+
 ## 最新：ルネットPV v11（連射・締め撃ち・ディレイ）
 
 追加していたタップ・確認音を削除。プレイ映像はルネットの必殺技1回だけに絞り、4体×4巡の連射→短い間→同時の締め撃ち→2回のディレイ残響へ変更しました。バフ音は召喚時の1回だけ。20秒です。

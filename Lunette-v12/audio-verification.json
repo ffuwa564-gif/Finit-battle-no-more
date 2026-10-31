@@ -1,0 +1,89 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 124,
+      "sourceStart": 1.75,
+      "sourceEnd": 5.0,
+      "impactAt": 2.0,
+      "summonAt": 1.0,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 24,
+          "sourceStart": 1.75,
+          "sourceEnd": 2.625,
+          "playbackRate": 0.875
+        },
+        {
+          "frames": 24,
+          "sourceStart": 2.625,
+          "sourceEnd": 3.0,
+          "playbackRate": 0.375
+        },
+        {
+          "frames": 76,
+          "sourceStart": 3.0,
+          "sourceEnd": 5.0,
+          "playbackRate": 0.6315789473684211
+        }
+      ],
+      "pixelReviewedBoundaries": true
+    }
+  ],
+  "sfxTimes": [
+    8.916666666666668
+  ],
+  "effects": "Sixteen crossfire shots, a pause, combined finisher and two discrete delay echoes. No buff/confirmation/select/tap cues. Gun deadlines are synthesized to the footage edit; individual shot attacks are not time-stretched. Finishing whiteout is recorded from the actual game.",
+  "buffTimes": [],
+  "confirmationPops": false,
+  "finisherAt": 10.579166666666667,
+  "delayEchoesAt": [
+    10.848333333333334,
+    11.1175
+  ],
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 8.916666666666668,
+      "effectsRmsDbFS": -14.02913896199359,
+      "musicRmsDbFS": -38.14282335756625,
+      "effectsOverMusicDb": 24.113684461343116
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture with enhanced gate, charge, burst and volley effects. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9919103607682331,
+  "impactCorrelations": [
+    {
+      "at": 8.916666666666668,
+      "pcm": 0.9873559702403503,
+      "energyEnvelope": 0.9997329122439541
+    },
+    {
+      "at": 10.579166666666667,
+      "pcm": 0.9820090515828325,
+      "energyEnvelope": 0.9997901894290153
+    },
+    {
+      "at": 10.848333333333334,
+      "pcm": 0.9856669100094927,
+      "energyEnvelope": 0.9999452567653541
+    },
+    {
+      "at": 11.1175,
+      "pcm": 0.985022774678613,
+      "energyEnvelope": 0.9998465661974261
+    }
+  ]
+}

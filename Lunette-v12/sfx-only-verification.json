@@ -1,0 +1,19 @@
+{
+  "sfxOnlyClip": {
+    "file": "Lunette_ultimate_SFX_only_720p.mp4",
+    "sha256": "1cf8938f4bbb8e4b552c269f3ccde58099ce58641e2deeab18eb264bfc3b8554",
+    "bytes": 2475941,
+    "decoded": true,
+    "effectsOnlyCorrelation": 0.9810484700906077,
+    "containsBGM": false
+  },
+  "whiteout": {
+    "preview": "whiteout-preview.png",
+    "battleAreaMeanRGB": 250.24195248357964
+  },
+  "addedCueKinds": [
+    "ultimate",
+    "ultimate-rabbits"
+  ],
+  "buffConfirmSelectTapAdded": false
+}
