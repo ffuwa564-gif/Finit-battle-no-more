@@ -1,3 +1,4 @@
+import { renderRabbitVolleyChimes } from './rabbit-volley-chimes';
 import { RABBIT_FLIGHT } from './ultimate-choreography';
 import { RABBIT_TIMING, RABBIT_SEQUENCE } from './ultimate-timing';
 import { renderRabbitVolley } from './rabbit-volley-audio';
@@ -36,8 +37,9 @@ export function renderRabbitUltimate(sampleRate: number, rate=1): Float32Array {
   const arrival=summonAir(sampleRate);
   for(let bit=0;bit<4;bit++)add(arrival,
     (RABBIT_SEQUENCE.summon+bit*RABBIT_SEQUENCE.summonStep+220)/1000,.9);
-  // No charge or other accents across the crossfire. Let the weapon read clearly.
+  // Keep the original weapon, with one rising clock-bell flourish after each pass.
   add(renderRabbitVolley(sampleRate,1/speed),RABBIT_TIMING.impact/1000,.72);
+  add(renderRabbitVolleyChimes(sampleRate,1/speed),RABBIT_TIMING.impact/1000,.65);
   add(charge,RABBIT_CHARGE_CUES[1],1.12);
   let peak=.001;for(const value of pcm)peak=Math.max(peak,Math.abs(value));
   for(let i=0;i<pcm.length;i++)pcm[i]*=.83/peak*Math.min(1,i/(sampleRate*.002),(pcm.length-1-i)/(sampleRate*.06));

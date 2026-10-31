@@ -1,3 +1,4 @@
+import { renderRabbitVolleyChimes, rabbitChimeTimes, RABBIT_CHIME_BASES } from '../src/platform/rabbit-volley-chimes';
 import {RABBIT_SEQUENCE} from '../src/platform/ultimate-timing';
 import {renderUltimateCharge} from '../src/platform/ultimate-charge-audio';
 import { renderRabbitUltimate, enhanceRabbitCharge, RABBIT_CHARGE_CUES } from '../src/platform/rabbit-ultimate-audio';
@@ -44,8 +45,19 @@ describe('authored ultimate sound materials', () => {
   it('keeps aiming silent and lets crossfire breathe before the last charge',()=>{
     const rate=48000,pcm=renderRabbitUltimate(rate);
     expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
-    expect(rms(pcm,rate,5.87,5.93)).toBe(0);
+    expect(rms(pcm,rate,5.9,5.93)).toBe(0);
     expect(rms(pcm,rate,6.3,6.6)).toBeGreaterThan(.02);
+  });
+  it('places four progressively higher bell motifs after the four-hit passes',()=>{
+    const cues=rabbitChimeTimes(),rate=48000,pcm=renderRabbitVolleyChimes(rate);
+    expect(cues).toHaveLength(4);
+    cues.forEach((at,index)=>{
+      expect(at).toBeCloseTo(index*.4+.285);
+      expect(rms(pcm,rate,at+.008,at+.12)).toBeGreaterThan(.04);
+      if(index)expect(RABBIT_CHIME_BASES[index]).toBeGreaterThan(RABBIT_CHIME_BASES[index-1]);
+    });
+    expect(rms(pcm,rate,0,cues[0])).toBe(0);
+    expect(pcm.at(-1)).toBe(0);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

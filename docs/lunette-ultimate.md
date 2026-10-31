@@ -59,3 +59,8 @@ PV v17 frames the actual game as an inset on original cream/navy/lilac/mint edit
 ## Rounded crossfire preference (PV v18)
 
 The user prefers “ぽぽぽ” for the rabbit volley. This supersedes the dry crack from v17. Each ordinary shot is a short rounded 270→155 Hz pressure pop with restrained second/third harmonics, little air and a softer contact body. Its attack/decay leaves the 65 ms inter-robot spacing readable. Hard high-frequency crack, gritty slap and metallic top are removed from the ordinary volley. The final blast, familiar charge, projectile timing, HP, inset composition and intro ornaments are unchanged. Both game playback and PV export use the revised renderer; no new generated assets or credits are needed.
+
+
+## Loop-ending rising bells (PV v19)
+
+The latest user direction restores the v17 pre-pop weapon exactly and adds one soft three-note clock-bell flourish after each four-hit pass. This supersedes the v18 “ぽぽぽ” preference. The four cues follow the fourth contact by 15 ms, at .285/.685/1.085/1.485 seconds relative to first fire. Each 210 ms motif uses E5/F#5/G#5/B5 as its successive base, with the same three-note shape and restrained harmonic overtones. Bell pitch rises by loop; weapon pitch does not. The flourish belongs to the finished volley pass rather than being arbitrary buff/UI audio. Native speed variants retime cue positions while preserving bell pitch and attack lengths. The PV's native-speed crossfire includes all four motifs and their tails within the existing picture edit. No new visuals or generation are needed.
