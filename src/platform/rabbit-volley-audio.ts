@@ -1,60 +1,79 @@
 import { RABBIT_VOLLEY, RABBIT_FLIGHT, rabbitShotTimes } from './ultimate-choreography';
 
-/** Pulse/triangle 8-bit crossfire with weighted plasma finisher. Retime deadlines only. */
-export function renderRabbitVolley(sampleRate: number, timingScale = 1): Float32Array {
-  const scale=Number.isFinite(timingScale)?Math.max(.25,Math.min(4,timingScale)):1;
-  const duration=(RABBIT_VOLLEY.finale+RABBIT_VOLLEY.echoes[1])*scale+.36;
-  const pcm=new Float32Array(Math.ceil(duration*sampleRate));
+/** A round electronic projectile with a small chip edge, not a four-note UI bleep. */
+export function renderRabbitShot(sampleRate:number,bit=0,round=0):Float32Array {
+  const pcm=new Float32Array(Math.ceil(.16*sampleRate));
+  const ratio=2**(((bit-1.5)*.06+round*.18)/12);
+  const lowA=1-Math.exp(-2*Math.PI*3400/sampleRate),dcA=1-Math.exp(-2*Math.PI*45/sampleRate);
+  let low=0,dc=0;
+  for(let i=0;i<pcm.length;i++){
+    const t=i/sampleRate;
+    // Integrate the pitch sweep continuously through the full release.
+    const cycles=ratio*(310*t+410*.008*(1-Math.exp(-t/.008))),phase=cycles%1;
+    const triangle=1-4*Math.abs(phase-.5);
+    const chip=Math.round((phase<.5?1:-1)*63)/63;
+    const body=Math.sin(2*Math.PI*(155*t+90*.012*(1-Math.exp(-t/.012))));
+    const envelope=(1-Math.exp(-t*650))*Math.exp(-t*26)*Math.max(0,Math.min(1,(.11-t)/.025));
+    const voice=(triangle*.66+chip*.16+body*.30)*envelope;
+    low+=lowA*(voice-low);dc+=dcA*(low-dc);
+    pcm[i]=(low-dc)*Math.min(1,(pcm.length-1-i)/(sampleRate*.015));
+  }
+  return pcm;
+}
+/** A separate rounded landing body, so fast playback never detaches sound from damage. */
+export function renderRabbitContact(sampleRate:number):Float32Array {
+  const pcm=new Float32Array(Math.ceil(.08*sampleRate));
+  for(let i=0;i<pcm.length;i++){
+    const t=i/sampleRate;
+    pcm[i]=Math.sin(2*Math.PI*238*t)*(1-Math.exp(-t*1100))*Math.exp(-t*65)*.20*Math.min(1,(pcm.length-1-i)/(sampleRate*.01));
+  }
+  return pcm;
+}
+/** One original blast is reused by every repeat, including its exact pressure/noise contour. */
+export function renderRabbitFinisher(sampleRate:number):Float32Array {
+  const pcm=new Float32Array(Math.ceil(.29*sampleRate));let seed=0x719cdf,lo=0,body=0,air=0;
   const pole=(hz:number)=>1-Math.exp(-2*Math.PI*hz/sampleRate);
   const loA=pole(170),bodyA=pole(2200),airA=pole(5200);
-  let lo=0,body=0,air=0,seed=0x719cdf;
-  const shots=[0,1,2,3].flatMap(bit=>rabbitShotTimes(bit).map((at,round)=>({at:at*scale,bit,round})));
-  const finish=RABBIT_VOLLEY.finale*scale;
   for(let i=0;i<pcm.length;i++){
-    const t=i/sampleRate;seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;
-    const n=(seed>>>0)/0x80000000-1;
-    lo+=loA*(n-lo);body+=bodyA*(n-body);air+=airA*(n-air);
-    const grit=body-lo,spark=air-body;
-    let sound=0;
-    for(const shot of shots){
-      const age=t-shot.at;if(age<0||age>.2)continue;
-      const onset=1-Math.exp(-age*900);
-      // A genuine pulse/triangle chip voice: stepped pitch, sample hold and 8-bit amplitude.
-      const held=Math.floor(age*12000)/12000;
-      const pitches=[988,740,494,330],step=.018;
-      let cycles=0;
-      for(let k=0;k<4;k++)cycles+=pitches[k]*Math.max(0,Math.min(step,held-k*step));
-      cycles*=2**((shot.bit%2+shot.round*2)/12);
-      const phase=cycles%1,pulse=phase<.25?.75:-.25;
-      const triangle=1-4*Math.abs(phase-.5);
-      const env=onset*Math.exp(-age*47)*Math.max(0,1-age/.09);
-      const chip=Math.round((pulse*.8+triangle*.27)*127)/127;
-      const weight=Math.sin(2*Math.PI*118*age)*Math.exp(-age*40)*.13;
-      sound+=(chip*1.15+weight)*env*(.9+shot.round*.10);
-      const contact=age-RABBIT_FLIGHT.shot*scale;
-      if(contact>=0&&contact<.08){
-        const contactEnv=(1-Math.exp(-contact*900))*Math.exp(-contact*65);
-        const digitalNoise=Math.round(grit*15)/15;
-        sound+=(digitalNoise*.65+Math.sin(2*Math.PI*196*contact)*.22)*contactEnv;
-      }
-    }
-    // Pressure leaving the four clock emitters precedes the combined landing.
-    const departure=t-(finish-RABBIT_FLIGHT.finale*scale);
-    if(departure>=0&&departure<RABBIT_FLIGHT.finale*scale){
-      const q=departure/(RABBIT_FLIGHT.finale*scale);
-      sound+=(grit*1.1+spark*.35)*Math.sin(Math.PI*q)**2;
-    }
-    // A broad detonation and two darker returns. No UI notes or metallic partials.
-    for(const [at,strength] of [[finish,1],[finish+RABBIT_VOLLEY.echoes[0]*scale,.38],[finish+RABBIT_VOLLEY.echoes[1]*scale,.19]]){
-      const age=t-at;if(age<0)continue;
-      const onset=1-Math.exp(-age*450);
-      const phase=2*Math.PI*(68*age+170*.025*(1-Math.exp(-age/.025)));
-      const weight=(Math.sin(phase)+.65*Math.sin(phase*2)+.32*Math.sin(phase*3)+.18*Math.sin(phase*5))*.58;
-      const thunder=grit*4.6+lo*2.2+spark*.55*Math.exp(-age*30);
-      sound+=(weight+thunder)*onset*Math.exp(-age*15)*strength;
-    }
-    pcm[i]=Math.tanh(sound*.92);
+    const age=i/sampleRate;seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;
+    const noise=(seed>>>0)/0x80000000-1;lo+=loA*(noise-lo);body+=bodyA*(noise-body);air+=airA*(noise-air);
+    const phase=2*Math.PI*(68*age+170*.025*(1-Math.exp(-age/.025)));
+    const weight=(Math.sin(phase)+.65*Math.sin(phase*2)+.32*Math.sin(phase*3)+.18*Math.sin(phase*5))*.58;
+    const pressure=(body-lo)*4.6+lo*2.2+(air-body)*.55*Math.exp(-age*30);
+    const envelope=(1-Math.exp(-age*450))*Math.exp(-age*15);
+    pcm[i]=Math.tanh((weight+pressure)*envelope*.92)*Math.min(1,(pcm.length-1-i)/(sampleRate*.035));
   }
+  return pcm;
+}
+export const RABBIT_ECHO_GAINS = [.70,.48,.30] as const;
+/** Repeat the source with progressively softer highs, retaining the audible midrange body. */
+export function renderRabbitEcho(sampleRate:number,source:Float32Array,index:number):Float32Array {
+  const pcm=new Float32Array(source.length),a=1-Math.exp(-2*Math.PI*[4200,3400,2700][index]/sampleRate);
+  let low=0;
+  for(let i=0;i<pcm.length;i++){low+=a*(source[i]-low);pcm[i]=low*RABBIT_ECHO_GAINS[index]*Math.min(1,(pcm.length-1-i)/(sampleRate*.008));}
+  return pcm;
+}
+/** Native attack waveforms; speed changes move contact and echo deadlines, not their pitch. */
+export function renderRabbitVolley(sampleRate:number,timingScale=1):Float32Array {
+  const scale=Number.isFinite(timingScale)?Math.max(.25,Math.min(4,timingScale)):1;
+  const duration=(RABBIT_VOLLEY.finale+RABBIT_VOLLEY.echoes.at(-1)!)*scale+.36;
+  const pcm=new Float32Array(Math.ceil(duration*sampleRate));
+  const add=(voice:Float32Array,at:number,gain=1)=>{
+    const offset=Math.round(at*sampleRate);
+    for(let i=0;i<voice.length&&offset+i<pcm.length;i++)pcm[offset+i]+=voice[i]*gain;
+  };
+  const contact=renderRabbitContact(sampleRate);
+  for(let bit=0;bit<4;bit++)for(const [round,at] of rabbitShotTimes(bit).entries()){
+    add(renderRabbitShot(sampleRate,bit,round),at*scale,1.25);
+    add(contact,(at+RABBIT_FLIGHT.shot)*scale,1.25);
+  }
+  const finish=RABBIT_VOLLEY.finale*scale,blast=renderRabbitFinisher(sampleRate);
+  // Brief rounded departure pressure before the four heavy bodies land.
+  const flight=new Float32Array(Math.ceil(RABBIT_FLIGHT.finale*scale*sampleRate));
+  for(let i=0;i<flight.length;i++){const u=i/flight.length,t=i/sampleRate;flight[i]=Math.sin(2*Math.PI*(210*t+90*t*t))*.16*Math.sin(Math.PI*u)**2;}
+  add(flight,finish-RABBIT_FLIGHT.finale*scale);
+  add(blast,finish);
+  for(const [index,delay] of RABBIT_VOLLEY.echoes.entries())add(renderRabbitEcho(sampleRate,blast,index),finish+delay*scale);
   let peak=.001;for(const x of pcm)peak=Math.max(peak,Math.abs(x));
   for(let i=0;i<pcm.length;i++)pcm[i]*=.83/peak*Math.min(1,i/(sampleRate*.002),(pcm.length-1-i)/(sampleRate*.055));
   return pcm;

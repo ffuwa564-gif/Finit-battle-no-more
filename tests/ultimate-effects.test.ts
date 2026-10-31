@@ -45,7 +45,7 @@ describe('ultimate presentation clock', () => {
       expect(state.flash).toBeGreaterThan(.1);expect(Math.abs(state.x)+Math.abs(state.y)).toBeGreaterThan(.3);
     }
     const charge=rabbitTargetFrame(RABBIT_SEQUENCE.charge+250);
-    expect(charge.zoom).toBeGreaterThan(1.3);expect(charge.flash).toBe(0);
+    expect(charge.zoom).toBeLessThan(1.2);expect(charge.flash).toBe(0);
     const finish=rabbitTargetFrame(RABBIT_TIMING.damage+1);
     expect(finish.x).toBeGreaterThan(8);expect(finish.finish).toBe(true);
     expect(new Set([0,1,2,3].map(i=>rabbitMount(i,1700).size)).size).toBe(4);
@@ -65,30 +65,30 @@ describe('ultimate presentation clock', () => {
     expect(rabbitStage(RABBIT_SEQUENCE.charge)).toBe('charge');
     expect(rabbitStage(RABBIT_SEQUENCE.finish)).toBe('finish');
   });
-  it('accelerates from the second charge directly into heavy flight and reveals at neutral zoom',()=>{
+  it('pushes in while shooting, pulls out on each charge, then drives the final bolt in',()=>{
     expect(rabbitCameraZoom(0)).toBe(1);
     const early=rabbitCameraZoom(3400)-rabbitCameraZoom(3200);
     const late=rabbitCameraZoom(4200)-rabbitCameraZoom(4000);
     expect(late).toBeGreaterThan(early*5);
-    expect(rabbitCameraZoom(RABBIT_SEQUENCE.charge+240)).toBeGreaterThan(rabbitCameraZoom(RABBIT_SEQUENCE.charge));
+    expect(rabbitCameraZoom(RABBIT_SEQUENCE.charge+240)).toBeLessThan(rabbitCameraZoom(RABBIT_SEQUENCE.charge));
     const launch=RABBIT_SEQUENCE.finish-RABBIT_FLIGHT.finale*1000;
     expect(Math.abs(rabbitCameraZoom(launch-1)-rabbitCameraZoom(launch+1))).toBeLessThan(.01);
     expect(rabbitCameraZoom(RABBIT_SEQUENCE.finish+80)).toBeCloseTo(1.38);
     expect(rabbitCameraZoom(RABBIT_SEQUENCE.end)).toBeCloseTo(1,10);
     for(let at=0;at<=RABBIT_SEQUENCE.end;at+=10){expect(rabbitCameraZoom(at)).toBeGreaterThanOrEqual(1-1e-10);expect(rabbitCameraZoom(at)).toBeLessThanOrEqual(1.381);}
   });
-  it('accelerates the camera with the same rising charge after each pass',()=>{
-    let previous=0;
-    for(const cue of rabbitLoopCues()){
-      const at=RABBIT_SEQUENCE.fire+cue.at*1000;
-      const start=rabbitLoopCamera(at),peak=rabbitLoopCamera(at+cue.duration*1000*.55);
-      expect(start.power).toBeCloseTo(0);expect(peak.round).toBe(cue.round);
-      expect(peak.zoom).toBeCloseTo(cue.zoom);expect(peak.zoom).toBeGreaterThan(previous);previous=peak.zoom;
-      const early=rabbitLoopCamera(at+cue.duration*1000*.15).zoom;
-      const late=rabbitLoopCamera(at+cue.duration*1000*.45).zoom;
-      expect(late).toBeGreaterThan(early*10);
-      expect(rabbitLoopCamera(cue.round===RABBIT_VOLLEY.rounds-1?RABBIT_SEQUENCE.finish+1:at+cue.duration*1000+1).round).toBe(-1);
+  it('uses stronger and faster pullbacks on the two charge sounds without snapping the next shot',()=>{
+    const cues=rabbitLoopCues();
+    for(const cue of cues){
+      const start=RABBIT_SEQUENCE.fire+cue.round*1000;
+      const charge=RABBIT_SEQUENCE.fire+cue.at*1000;
+      expect(rabbitCameraZoom(start+240)).toBeGreaterThan(rabbitCameraZoom(start+30));
+      expect(rabbitCameraZoom(charge+cue.duration*1000-1)).toBeLessThan(rabbitCameraZoom(charge)-.15);
+      expect(rabbitLoopCamera(charge+cue.duration*500).zoom).toBeLessThan(0);
+      expect(Math.abs(rabbitCameraZoom(charge-1)-rabbitCameraZoom(charge+1))).toBeLessThan(.01);
     }
+    expect(cues[1].zoom).toBeGreaterThan(cues[0].zoom);expect(cues[1].duration).toBeLessThan(cues[0].duration);
+    expect(Math.abs(rabbitCameraZoom(5199)-rabbitCameraZoom(5201))).toBeLessThan(.01);
   });
   it('changes local energy color on each charge and keeps it for the next shots',()=>{
     expect(rabbitEnergyFrame(4200).color).toBe(0x9aeee7);

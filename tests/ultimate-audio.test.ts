@@ -23,11 +23,12 @@ describe('authored ultimate sound materials', () => {
       expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?8.9:1.8);
     }
   });
-  it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
+  it('leaves a breath before the rabbit finisher and returns three audible, increasingly softer echoes', () => {
     const rate=44100,pcm=renderRabbitVolley(rate);
-    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,RABBIT_VOLLEY.finale-.7,RABBIT_VOLLEY.finale-.5)*5);
-    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.19,RABBIT_VOLLEY.finale+.24)).toBeGreaterThan(.02);
-    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.37,RABBIT_VOLLEY.finale+.42)).toBeGreaterThan(.01);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,RABBIT_VOLLEY.finale-.5,RABBIT_VOLLEY.finale-.3)*5);
+    const levels=RABBIT_VOLLEY.echoes.map(delay=>rms(pcm,rate,RABBIT_VOLLEY.finale+delay+.02,RABBIT_VOLLEY.finale+delay+.10));
+    expect(levels[0]).toBeGreaterThan(.10);expect(levels[1]).toBeGreaterThan(.06);expect(levels[2]).toBeGreaterThan(.035);
+    expect(levels[0]).toBeGreaterThan(levels[1]);expect(levels[1]).toBeGreaterThan(levels[2]);
   });
   it('can retime the PV shot deadlines without stretching the individual shot attacks', () => {
     const rate=44100,normal=renderRabbitVolley(rate),slow=renderRabbitVolley(rate,1.8);

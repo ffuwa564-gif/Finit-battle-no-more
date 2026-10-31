@@ -95,3 +95,14 @@ Regular shots now use 12 kHz sample-held pulse/triangle synthesis, stepped pitch
 The previous second charge ended around 5939 ms, then sat until a separate last charge at 6340 ms. This duplicated anticipation. Remove the separate last charge entirely: second pass finishes contact at 5470, charge begins at 5485 and directly launches heavy shots at 5940; impact at 6120. Hold the second camera push into launch, advance through the 180 ms flight and release only after the finishing impact. There is no reset/pullback between that charge and follow-up. Tail7120/end7720; total capped damage stays the same across eight small contacts and finisher.
 
 PV v22 uses freshly recorded gameplay and keeps charge-to-flight at near-native pace, with the existing full-composition whiteout into animated Lunette. Preserve count-in, track starting position, credits, skill header and cutout/inset layout. No new generated assets or credits.
+
+
+## Current direction: shoot in / charge out, rounded shots and prominent triple delay (PV v23)
+
+The user clarified the camera grammar: each four-hit pass pushes toward the target; the familiar ブオーン pulls away. The second pass travels farther and pulls away faster. Preserve the two passes, original charge voice, mint/lilac/pink local light and direct second-charge-to-follow-up timing. The final heavy flight pushes in from the wide charge framing to the impact, with no extra charge or wait. HUD and buttons stay fixed.
+
+Camera keys: first pass 1.08→1.23, first charge 1.23→1.035; second pass 1.035→1.33, second charge 1.33→1.01; heavy flight 1.01→1.38; settle to neutral after impact. Cubic motion and smooth charge transitions preserve continuity. Shared loop timing still drives light and art/effect motion; reduced-motion/data-saving gates remain.
+
+Replace the thin four-step chip bleep with a continuous-pitch rounded electronic pulse: dominant triangle, restrained square edge, low-mid body, 3.4kHz low-pass and 45Hz DC removal. The oscillator runs through the release. Separate discharge and short rounded contact voices so speed changes place the contact sound exactly at the damage deadline without changing pitch.
+
+Render one original finishing blast, then repeat its actual waveform with softer highs at +220/+440/+660ms, gains .70/.48/.30. Repeats are sound/visual tails, not additional damage actions. Existing local ring echoes share all three times; no repeated full-screen flash or HUD shake. End/tail and total HP loss stay unchanged. PV holds BGM ducking through impact+0.9s and releases over .3s so all three returns carry over the white cut into animated Lunette. Research motivation: v22's last repeat window was about 8.5dB below the returning BGM. No third-party recordings, new generation or credits.
