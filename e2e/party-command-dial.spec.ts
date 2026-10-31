@@ -99,3 +99,46 @@ test('touch cancellation keeps automatic play and commands during replay only re
   await expect.poll(async()=> (await battle(page)).partyOrder?.kind).toBe('guard');
   const queued=await battle(page);expect(queued.events).toEqual(committed.events);expect(queued.seed).toBe(committed.seed);
 });
+
+test('battle faces suppress native image callouts and dragging without breaking animated companions or orders', async ({page}) => {
+  await setup(page);
+  await page.evaluate(async()=>{
+    const {content}=await import('/src/content/index.ts');
+    const {createBattle,advanceReplay}=await import('/src/domain/engine.ts');
+    const {loadSave,persistSave}=await import('/src/platform/save.ts');
+    const save=(await loadSave())!,revision=save.revision;
+    save.ownedIds=[...new Set([...save.ownedIds,'kuzuha-awakened'])];
+    save.partyIds=['seris','kuzuha-awakened','liora','noelle'];
+    let b=createBattle(content,save.partyIds,save.leaderId,'silent-cathedral',2,42,'portrait-hold');
+    while(b.phase==='playing')b=advanceReplay(b,content);
+    b.units.find(u=>u.characterId==='kuzuha-awakened')!.ultimateCharge=100;
+    b.initialUnits=structuredClone(b.units);save.battle=b;save.revision++;
+    await persistSave(save,revision);
+  });
+  await page.reload();await enterGame(page);
+  const animated=page.locator('[data-unit="party:kuzuha-awakened"]');
+  await expect.poll(()=>animated.locator('video').evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
+  const before=await battle(page);
+  const results=await page.locator('.party-strip .portrait-image img,.party-strip .portrait-image video').evaluateAll(media=>media.map(node=>{
+    const menu=new MouseEvent('contextmenu',{bubbles:true,cancelable:true});
+    const drag=new Event('dragstart',{bubbles:true,cancelable:true});
+    node.dispatchEvent(menu);node.dispatchEvent(drag);
+    const style=getComputedStyle(node);
+    return {menuPrevented:menu.defaultPrevented,dragPrevented:drag.defaultPrevented,pointerEvents:style.pointerEvents,select:style.userSelect,drag:style.getPropertyValue('-webkit-user-drag')};
+  }));
+  expect(results.length).toBeGreaterThanOrEqual(5); // Four posters plus the animated companion's video.
+  for(const result of results)expect(result).toEqual({menuPrevented:true,dragPrevented:true,pointerEvents:'none',select:'none',drag:'none'});
+  expect(await battle(page)).toEqual(before);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  const face=(await animated.locator('.portrait-image').boundingBox())!;
+  const cdp=await page.context().newCDPSession(page);
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:face.x+face.width/2,y:face.y+face.height/2}]});
+  await page.waitForTimeout(900);
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('.command-dial')).toHaveCount(0);
+  const wasQueued=!!(await battle(page)).units.find(u=>u.characterId==='kuzuha-awakened')!.ultimateQueued;
+  await animated.locator('button.character-portrait').tap();
+  await expect.poll(async()=>!!(await battle(page)).units.find(u=>u.characterId==='kuzuha-awakened')!.ultimateQueued).toBe(!wasQueued);
+  await expect(animated.locator('video')).toHaveJSProperty('paused',false);
+});
