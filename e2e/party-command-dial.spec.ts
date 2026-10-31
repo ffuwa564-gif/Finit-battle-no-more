@@ -23,8 +23,9 @@ async function battle(page: Page) { return page.evaluate(async () => (await (awa
 test('real touch hold-drag-release queues a focused attack while companions reveal their actual actions', async ({page}, info) => {
   await setup(page);
   await page.getByRole('button', {name:'次の敵を表示',exact:true}).click();
-  await expect(page.getByLabel('狙っている敵', {exact:true})).toBeVisible();
-  const pinned = (await battle(page)).focusTargetId;
+  expect((await battle(page)).focusTargetId).toBeUndefined();
+  await expect(page.getByLabel('狙っている敵', {exact:true})).toHaveCount(0);
+  const browsed = await page.locator('.enemy-page').getAttribute('data-enemy-id');
   const face = (await page.locator('[data-pilot] .portrait-image').boundingBox())!;
   const cdp = await page.context().newCDPSession(page);
   await cdp.send('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[{x:face.x+face.width/2,y:face.y+face.height/2}]});
@@ -36,11 +37,23 @@ test('real touch hold-drag-release queues a focused attack while companions reve
   await cdp.send('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
   await expect(page.locator('.command-dial')).toHaveCount(0);
   await expect.poll(async()=> (await battle(page)).partyOrder?.kind).toBe('attack');
+  expect((await battle(page)).focusTargetId).toBe(browsed);
+  await expect(page.getByLabel('狙っている敵', {exact:true})).toBeVisible();
+  // Browsing after reserving an action leaves its pin alone until ATTACK commits the new page.
+  await page.getByRole('button',{name:'次の敵を表示',exact:true}).click();
+  const pinned = await page.locator('.enemy-page').getAttribute('data-enemy-id');
+  expect((await battle(page)).focusTargetId).toBe(browsed);
+  expect(pinned).not.toBe(browsed);
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
   await expect.poll(async()=> (await battle(page)).events.find(e=>e.actionSelection && e.actorId==='party:seris')?.targetIds).toEqual([pinned]);
   const companion = page.locator('.companion-choice').first(); await expect(companion).toBeVisible();
   const skillId = await companion.getAttribute('data-choice-skill');
   expect((await battle(page)).events.some(e=>e.actionSelection && (e.skillId ?? e.kind)===skillId)).toBe(true);
+  const bubble=page.locator('.companion-choice__bubble[data-choice-state="selected"]').first();
+  await expect(bubble).toBeVisible();await expect(bubble).not.toHaveText('');
+  const bubbleBox=(await bubble.boundingBox())!;const strip=(await page.locator('.party-strip').boundingBox())!;
+  expect(bubbleBox.y+bubbleBox.height).toBeLessThan(strip.y+35);
+  await page.screenshot({path:info.outputPath('companion-bubbles-390.png')});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });
 

@@ -13,6 +13,7 @@ import type { BattleEvent, BossBitPattern, DungeonDef, Unit } from '../domain/ty
 export interface EnemyCarouselProps {
   targetId?: string;
   onTarget?: (unitId: string) => void;
+  onDisplay?: (unitId: string) => void;
   units: Unit[];
   bitPattern?: BossBitPattern;
   bossStrike?: DungeonDef['bossStrike'];
@@ -27,8 +28,8 @@ export interface EnemyCarouselProps {
 
 const actionKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue']);
 
-/** Manual paging selects a target; automatic action playback only changes the illustration. */
-export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, onTarget }: EnemyCarouselProps) {
+/** Browsing only changes the front illustration; a battle command commits its target. */
+export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, onTarget, onDisplay }: EnemyCarouselProps) {
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
@@ -46,6 +47,7 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
   const canChange = available.length > 1;
   const front = units.find(unit => unit.uid === selectedId) ?? available[0] ?? units[0];
   const reduced = reducedMotion || systemReducedMotion;
+  useLayoutEffect(() => { if (front) onDisplay?.(front.uid); }, [front?.uid, onDisplay]);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -71,9 +73,9 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     const current = units.findIndex(unit => unit.uid === selectedRef.current);
     for (let distance = 1; distance <= units.length; distance++) {
       const index = (current + direction * distance + units.length * 2) % units.length;
-      if (units[index].hp > 0) { focusUnit(units[index].uid, direction); onTarget?.(units[index].uid); if (!onTarget) emitUISound('select'); return; }
+      if (units[index].hp > 0) { focusUnit(units[index].uid, direction); emitUISound('select'); return; }
     }
-  }, [canChange, units, focusUnit, onTarget]);
+  }, [canChange, units, focusUnit]);
 
   useLayoutEffect(() => {
     if (event?.id !== handledEvent.current) {
