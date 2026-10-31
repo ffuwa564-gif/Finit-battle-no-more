@@ -26,7 +26,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  native-webkit:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Browser QA uses the same source and itch asset layout. The Linux build
+      # below still runs every content/type/release gate before publication.
+      - run: npx vite build --mode itch --outDir dist-itch
+      - run: npx playwright install webkit
+      - run: npm run test:native-ui -- --project=webkit
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: native-webkit-results-${{ github.run_id }}
+          path: test-results/
+          if-no-files-found: ignore
   build:
+    needs: native-webkit
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -50,8 +72,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build:itch
-      - run: npx playwright install --with-deps chromium webkit
-      - run: npm run test:native-ui
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:native-ui -- --project=chromium
       - run: npm run test:itch
       - name: Prepare review fingerprint
         run: npm run check:release -- --report

@@ -137,3 +137,42 @@ test('current party makes the first companion and leader independently selectabl
   await expect(english.locator('[data-position="1"]')).toContainText('First · Controlled');
   await page.screenshot({ path: info.outputPath('current-party-english-320.png') });
 });
+
+test('owned roster actions keep horizontal labels and full card width at320px and390px in both languages', async ({ page }, info) => {
+  const { game, modal } = await preparation(page);
+  await modal.getByRole('button', { name: '閉じる', exact: true }).click();
+  await game.locator('.app-shell').evaluate(() => { location.hash = 'party'; });
+  for (const language of ['ja', 'en']) {
+    if (language === 'en') {
+      await game.locator('.app-shell').evaluate(() => { location.hash = 'settings'; });
+      await game.getByRole('button', { name: 'English', exact: true }).click();
+      await game.locator('.app-shell').evaluate(() => { location.hash = 'party'; });
+    }
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      const actions = game.locator('.character-card .party-member-actions');
+      await expect(actions).toHaveCount(7);
+      const boxes = await actions.evaluateAll(nodes => nodes.flatMap(node => {
+        const container = node.getBoundingClientRect();
+        return [...node.querySelectorAll('button')].map(button => {
+          const box = button.getBoundingClientRect(), label = button.querySelector('.party-member-actions__label')!.getBoundingClientRect();
+          return { label: button.textContent, width: box.width, height: box.height, containerWidth: container.width, labelWidth: label.width, labelHeight: label.height, nowrap: getComputedStyle(button).whiteSpace };
+        });
+      }));
+      for (const box of boxes) {
+        expect(box.height, `${language}/${width}: ${box.label}`).toBe(44);
+        expect(Math.abs(box.width - box.containerWidth)).toBeLessThan(1);
+        expect(box.labelWidth + 8).toBeLessThanOrEqual(box.width);
+        expect(box.labelHeight).toBeLessThan(20);
+        expect(box.nowrap).toBe('nowrap');
+      }
+      await actions.first().scrollIntoViewIfNeeded();
+      await page.screenshot({ path: info.outputPath(`roster-actions-${language}-${width}.png`) });
+    }
+  }
+  const member = game.locator('.character-card').filter({ has: game.getByRole('heading', { name: 'Elaine', exact: true }) });
+  await member.locator('.party-member-actions button').first().click();
+  await expect(game.locator('.party-formation [data-member-id="elaine"]')).toHaveCount(0);
+  await member.locator('.party-member-actions button').first().click();
+  await expect(game.locator('.party-formation [data-member-id="elaine"]')).toHaveCount(1);
+});

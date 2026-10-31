@@ -21,3 +21,4 @@
 - 別アプリ・バックグラウンドから復帰する際はSEのAudioContextも回復する。再開待ち中でも次の信頼されたタップ（touchendを含む）からresumeを再試行し、未解決のPromiseで永久にロックしない。保存済みSEミュートを解除したり、回復だけで操作音を鳴らしたりしない。`tests/audio-resume.test.ts` と `e2e/mobile-recovery.spec.ts` の実音声出力チェックを維持する。
 - 長押しによるネイティブ文字選択・画像メニューをゲーム操作領域とbody上の操作ポータルで防ぐ。入力欄の選択・コピー・貼り付けは残し、顔グラの長押し操作を無効化しない。
 - 画像・動画は `GameImage` / `GameVideo`、ポータルは `createGamePortal` の共通インターフェースを必ず通す。画像へ操作ハンドラを付けず、親のゲームコントロールへ付ける。`#root` 外の共通Modal・探索準備・妖精・物語・必殺の表示も同じ `data-game-surface` 契約で保護する。画面名や戦闘クラスだけの対策に戻さない。`check:ui`、`tests/native-media.types.tsx`、`npm run test:native-ui` のChromium/WebKit検証を維持する。
+- 所持キャラの編成・リーダーボタンは `PartyMemberActions` の固定レイアウトを通す。画面で個別Buttonやflexのtoolbarへ戻さず、幅いっぱいの44pxボタンと折り返さないラベルを保つ。320px/390px・日本語/英語の全ラベル幅・高さ検証を維持する。

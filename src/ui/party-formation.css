@@ -19,7 +19,6 @@
 .party-formation__actions .button { min-height:46px; padding:8px 5px; gap:5px; font-size:11px; white-space:normal; line-height:1.5; }
 .party-formation .party-formation__leader { margin:16px 0 0; padding:12px; gap:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-moon); }
 .party-formation .party-formation__leader p { font-size:11px; line-height:1.7; }
-.character-card .party-leader-action { flex-basis:100%; min-height:40px; font-size:11px; white-space:normal; }
 @media(max-width:360px) {
   .party-formation { padding:14px; }
   .party-formation .party-formation__slot { grid-template-columns:38px minmax(0,1fr); padding:7px; gap:6px; }
