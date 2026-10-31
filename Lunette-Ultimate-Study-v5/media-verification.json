@@ -1,0 +1,29 @@
+{
+  "file": "STILLVEIL_Lunette_Summon_and_Barrage_v5_720p.mp4",
+  "sha256": "c11a7b7d53379c47e49c48be7034d2aa8f238e87b44ef1325b7c1dc78c6e069d",
+  "decode": "passed",
+  "all16ShotsObserved": true,
+  "whiteoutObserved": true,
+  "consoleErrors": [],
+  "duration": "8.400000",
+  "streams": [
+    {
+      "codec_name": "h264",
+      "profile": "Constrained Baseline",
+      "width": 720,
+      "height": 1280,
+      "pix_fmt": "yuv420p",
+      "sample_rate": null,
+      "channels": null
+    },
+    {
+      "codec_name": "aac",
+      "profile": "LC",
+      "width": null,
+      "height": null,
+      "pix_fmt": null,
+      "sample_rate": "48000",
+      "channels": 2
+    }
+  ]
+}
