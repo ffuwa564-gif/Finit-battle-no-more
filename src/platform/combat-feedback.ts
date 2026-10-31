@@ -27,7 +27,7 @@ export function rabbitDamageSteps(event: BattleEvent, before: Unit[]): RabbitDam
   let previous=before;
   return deadlines.map((at,index)=>{
     const final=index===shots.length;
-    // Sixteen small impacts carry 60%; the finisher carries the remaining 40%.
+    // Eight small impacts carry 60%; the finisher carries the remaining 40%.
     const progress=final?1:(index+1)/shots.length*.6;
     const units=final?after:before.map(unit=>{
       const target=after.find(next=>next.uid===unit.uid);

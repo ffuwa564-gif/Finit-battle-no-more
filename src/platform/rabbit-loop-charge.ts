@@ -8,7 +8,7 @@ export function renderRabbitLoopCharge(sampleRate:number,round:number,timingScal
   const pcm=new Float32Array(Math.ceil(source.length/cue.ratio));
   for(let i=0;i<pcm.length;i++){
     const at=i*cue.ratio,lo=Math.floor(at),mix=at-lo;
-    pcm[i]=((source[lo]??0)*(1-mix)+(source[lo+1]??0)*mix)*1.65*(.95+round*.13);
+    pcm[i]=((source[lo]??0)*(1-mix)+(source[lo+1]??0)*mix)*1.65*(.95+round*.39);
   }
   pcm[pcm.length-1]=0;return pcm;
 }

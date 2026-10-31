@@ -12,7 +12,7 @@ export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent):
   return event?.bossStrike && ['bloom', 'aegis', 'dawn'].includes(theme) ? 'eclipse' : theme;
 }
 /** Shared visual/audio deadlines, relative to the existing damage impact (seconds). */
-export const RABBIT_VOLLEY = { rounds: 4, spacing: 1, stagger: .065, finale: (RABBIT_TIMING.damage-RABBIT_TIMING.impact)/1000, echoes: [.18, .36] } as const;
+export const RABBIT_VOLLEY = { rounds: 2, spacing: 1, stagger: .065, finale: (RABBIT_TIMING.damage-RABBIT_TIMING.impact)/1000, echoes: [.18, .36] } as const;
 /** All durations are logical seconds, so speed changes retime the complete shot. */
 export const RABBIT_FLIGHT = { shot: .075, finale: .18 } as const;
 /** Clock faces are the emitters in this original artwork, rather than invented gun barrels. */
@@ -23,11 +23,11 @@ export function rabbitMuzzle(index:number,x:number,y:number,width:number,aspect:
 }
 export const rabbitShotTimes = (index: number) => Array.from({length:RABBIT_VOLLEY.rounds},(_,round)=>round*RABBIT_VOLLEY.spacing+index*RABBIT_VOLLEY.stagger);
 /** The existing ブオーン and camera share each completed pass, not arbitrary accents. */
-export const RABBIT_LOOP_SEMITONES = [0,2,4,7] as const;
+export const RABBIT_LOOP_SEMITONES = [0,7] as const;
 export const rabbitLoopCues = () => RABBIT_LOOP_SEMITONES.map((semitones,round)=>{
   const ratio=2**(semitones/12);
   return {round,semitones,ratio,at:rabbitShotTimes(3)[round]+RABBIT_FLIGHT.shot+.015,
-    duration:.68/ratio,zoom:[.05,.09,.14,.20][round],pan:[1.5,3,5,8][round]};
+    duration:.68/ratio,zoom:[.07,.20][round],pan:[2,8][round]};
 });
 /** Accelerate into the charge peak, then release; later passes move further and faster. */
 export function rabbitLoopCamera(elapsed:number){

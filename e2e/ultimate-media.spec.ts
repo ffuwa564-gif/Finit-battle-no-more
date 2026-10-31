@@ -233,9 +233,9 @@ test('Lunette reacts through the late volley, chips HP on each shot and cleans u
       requestAnimationFrame(sample);
     };requestAnimationFrame(sample);
   }));
-  await page.clock.runFor(9600);
+  await page.clock.runFor(7600);
   const result=await resultPromise;
-  expect(Math.max(...result.shots)).toBe(15);expect(result.shots.filter(x=>x>=0).length).toBeGreaterThanOrEqual(10);
+  expect(Math.max(...result.shots)).toBe(7);expect(result.shots.filter(x=>x>=0).length).toBeGreaterThanOrEqual(6);
   expect(result.motion).toBeGreaterThan(3);expect(result.commands).toBeLessThan(.1);expect(result.hud).toBeLessThan(.1);
   expect(result.numberAt).toBeGreaterThan(3000);expect(result.numberAt).toBeLessThan(4300);expect(result.finish).toBe(true);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
@@ -248,7 +248,7 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
     (window as any).__rabbitVoices=[];
     const start=AudioBufferSourceNode.prototype.start;
     AudioBufferSourceNode.prototype.start=function(...args:any[]){
-      if(this.buffer&&!this.loop&&this.buffer.duration>=8.63&&this.buffer.duration<=10.81){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*.7),hi=Math.floor(this.buffer.sampleRate*1.1);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
+      if(this.buffer&&!this.loop&&this.buffer.duration>=7.03&&this.buffer.duration<=8.81){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*.7),hi=Math.floor(this.buffer.sampleRate*1.1);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
       return start.apply(this,args as any);
     };
   });
@@ -256,10 +256,10 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   await page.waitForTimeout(180);
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-8.64)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-7.04)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
   const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
-  expect(voices.some((v:any)=>Math.abs(v.duration-10.8)<.01&&v.chargeRms>.02)).toBe(true);
-  expect(voices.some((v:any)=>Math.abs(v.duration-8.64)<.01&&v.offset>.1)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-8.8)<.01&&v.chargeRms>.02)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-7.04)<.01&&v.offset>.1)).toBe(true);
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
   expect(await page.locator('[data-encounter-scene] > .enemy-page-art, [data-encounter-scene] > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});
@@ -268,7 +268,7 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   await expect(page.locator('[data-rabbit-shot]')).toHaveCount(0);
 });
 
-test('Lunette presents seventeen conserving impacts, red recipient flashes and per-shot HP',async({page})=>{
+test('Lunette presents nine conserving impacts, red recipient flashes and per-shot HP',async({page})=>{
   await prepare(page,'lunette-awakened');
   await page.evaluate(()=>{
     (window as any).__rabbitHits=[];
@@ -283,17 +283,17 @@ test('Lunette presents seventeen conserving impacts, red recipient flashes and p
   });
   const targetId=await page.locator('[data-encounter-scene]').getAttribute('data-unit');
   const initial=Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'));
-  await expect(page.locator('.battle-layout')).toHaveAttribute('data-hit-index',/^(?:[0-9]|1[0-5])$/,{timeout:8000});
+  await expect(page.locator('.battle-layout')).toHaveAttribute('data-hit-index',/^[0-7]$/,{timeout:8000});
   await expect.poll(async()=>Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'))).toBeLessThan(initial);
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitHits.length),{timeout:8000}).toBe(17);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitHits.length),{timeout:8000}).toBe(9);
   const hits=await page.evaluate(()=>(window as any).__rabbitHits);
-  expect(new Set(hits.map((hit:any)=>hit.id)).size).toBe(17);
+  expect(new Set(hits.map((hit:any)=>hit.id)).size).toBe(9);
   const total=hits.flatMap((hit:any)=>hit.changes).filter((change:any)=>change.unitId===targetId).reduce((sum:number,change:any)=>sum-change.amount,0);
   const final=Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'));
   expect(initial-final).toBe(total);
   const panels=await page.evaluate(()=>(window as any).__redPanels);
-  expect(panels.length).toBe(17);expect(panels.every((p:any)=>p.enemy&&!p.party)).toBe(true);
+  expect(panels.length).toBe(9);expect(panels.every((p:any)=>p.enemy&&!p.party)).toBe(true);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect(page.locator('.damage-panel-flash')).toHaveCount(0);
 });

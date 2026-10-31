@@ -20,9 +20,9 @@ describe('ultimate presentation clock', () => {
     expect(rabbitBitFrame(0, impact).beam).toBe(1);
     expect(rabbitBitFrame(1, impact).beam).toBe(0);
   });
-  it('fires sixteen separate shots, rests, finishes together and remains visible through the final echo', () => {
+  it('fires eight separate shots, rests, finishes together and remains visible through the final echo', () => {
     const shots=[0,1,2,3].flatMap(rabbitShotTimes).sort((a,b)=>a-b);
-    expect(new Set(shots).size).toBe(16);
+    expect(new Set(shots).size).toBe(8);
     expect(shots.at(-1)).toBeLessThan(RABBIT_VOLLEY.finale-.25);
     for(let bit=0;bit<4;bit++){
       for(const at of rabbitShotTimes(bit))expect(rabbitBitFrame(bit,RABBIT_TIMING.impact+at*1000).beam).toBeCloseTo(1);
@@ -39,7 +39,7 @@ describe('ultimate presentation clock', () => {
     expect(rabbitWhiteout(start+400)).toBeGreaterThan(0);
     expect(rabbitWhiteout(RABBIT_TIMING.end)).toBe(0);
   });
-  it('reacts on all sixteen shots and the finisher, with a still gap and distinct robot depths', () => {
+  it('reacts on all eight shots and the finisher, with a still gap and distinct robot depths', () => {
     for(let bit=0;bit<4;bit++)for(const at of rabbitShotTimes(bit)){
       const state=rabbitTargetFrame(RABBIT_TIMING.impact+(at+RABBIT_FLIGHT.shot)*1000+.1);
       expect(state.flash).toBeGreaterThan(.1);expect(Math.abs(state.x)+Math.abs(state.y)).toBeGreaterThan(.3);

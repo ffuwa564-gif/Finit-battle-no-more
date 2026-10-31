@@ -20,12 +20,12 @@ describe('authored ultimate sound materials', () => {
       expect(finite).toBe(true);expect(peak).toBeLessThanOrEqual(.831);
       expect(rms(pcm,rate,0,pcm.length/rate)).toBeGreaterThan(.02);
       expect(Math.abs(pcm[0])).toBe(0);expect(Math.abs(pcm[pcm.length-1])).toBe(0);
-      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?10.9:1.8);
+      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?8.9:1.8);
     }
   });
   it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
     const rate=44100,pcm=renderRabbitVolley(rate);
-    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,4.3,4.5)*5);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,RABBIT_VOLLEY.finale-.7,RABBIT_VOLLEY.finale-.5)*5);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.19,RABBIT_VOLLEY.finale+.24)).toBeGreaterThan(.02);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.37,RABBIT_VOLLEY.finale+.42)).toBeGreaterThan(.01);
   });
@@ -38,20 +38,20 @@ describe('authored ultimate sound materials', () => {
   });
   it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
     const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
-    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES[1]).toBeCloseTo(8.34);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES[1]).toBeCloseTo(6.34);
     for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
     expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
-    expect(voice.length/48000).toBe(10.8);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(8.64,4);
+    expect(voice.length/48000).toBe(8.8);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(7.04,4);
   });
   it('keeps aiming silent and lets crossfire breathe before the last charge',()=>{
     const rate=48000,pcm=renderRabbitUltimate(rate);
     expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
-    expect(rms(pcm,rate,8.2,8.3)).toBe(0);
-    expect(rms(pcm,rate,8.7,9.0)).toBeGreaterThan(.02);
+    expect(rms(pcm,rate,6.2,6.3)).toBe(0);
+    expect(rms(pcm,rate,6.7,7.0)).toBeGreaterThan(.02);
   });
   it('reuses the actual ブオーン after each completed pass and raises its whole waveform',()=>{
     const rate=48000,source=renderUltimateCharge(rate),cues=rabbitLoopCues(),pcm=renderRabbitLoopCharges(rate);
-    expect(cues).toHaveLength(4);
+    expect(cues).toHaveLength(2);
     cues.forEach((cue,index)=>{
       expect(cue.at).toBeCloseTo(index+.285);
       const voice=renderRabbitLoopCharge(rate,index);
@@ -61,7 +61,7 @@ describe('authored ultimate sound materials', () => {
       if(index){expect(cue.ratio).toBeGreaterThan(cues[index-1].ratio);expect(cue.zoom).toBeGreaterThan(cues[index-1].zoom);}
       for(let i=0;i<voice.length-1;i+=997){
         const at=i*cue.ratio,lo=Math.floor(at),mix=at-lo;
-        expect(voice[i]).toBeCloseTo(((source[lo]??0)*(1-mix)+(source[lo+1]??0)*mix)*1.65*(.95+index*.13),6);
+        expect(voice[i]).toBeCloseTo(((source[lo]??0)*(1-mix)+(source[lo+1]??0)*mix)*1.65*(.95+index*.39),6);
       }
     });
     expect(rms(pcm,rate,0,cues[0].at)).toBe(0);expect(pcm.at(-1)).toBeCloseTo(0,8);
