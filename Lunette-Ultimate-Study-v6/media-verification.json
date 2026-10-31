@@ -1,0 +1,51 @@
+{
+  "file": "STILLVEIL_Lunette_PerHit_Damage_and_Camera_v6_720p.mp4",
+  "sha256": "2c4aff67dae0ef3345a80a5c1c8287d0a672809984a6ed1868bbf4867dadff66",
+  "decode": "passed",
+  "all17ImpactsObserved": true,
+  "hpSnapshots": [
+    1200,
+    1184,
+    1168,
+    1151,
+    1135,
+    1119,
+    1102,
+    1086,
+    1069,
+    1053,
+    1037,
+    1020,
+    1004,
+    987,
+    971,
+    955,
+    938,
+    763
+  ],
+  "hpLoss": 437,
+  "redFlashObserved": true,
+  "maxZoom": 1.23865,
+  "consoleErrors": [],
+  "duration": "8.400000",
+  "streams": [
+    {
+      "codec_name": "h264",
+      "profile": "Constrained Baseline",
+      "width": 720,
+      "height": 1280,
+      "pix_fmt": "yuv420p",
+      "sample_rate": null,
+      "channels": null
+    },
+    {
+      "codec_name": "aac",
+      "profile": "LC",
+      "width": null,
+      "height": null,
+      "pix_fmt": null,
+      "sample_rate": "48000",
+      "channels": 2
+    }
+  ]
+}
