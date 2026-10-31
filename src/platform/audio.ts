@@ -26,7 +26,7 @@ export async function enableAudio(): Promise<void> {
   // promise pending outside a user gesture. A new tap must still reach resume().
   if (!browserContext || browserContext.state === 'closed') {
     if (browserContext) {
-      Tone?.getContext().dispose();
+      try { Tone?.getContext().dispose(); } catch { /* The OS may already have torn it down. */ }
       gain = undefined; voice = undefined; combat = undefined; limiter = undefined;
       active = false; lastCueAt = 0; pending.length = 0; enabling = undefined;
     }
