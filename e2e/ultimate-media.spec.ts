@@ -202,12 +202,12 @@ test('Lunette uses one soundtrack and removes her whiteout when skipped', async 
   expect(await page.evaluate(()=>(window as any).__summonCues)).toEqual([]);
 });
 
-test('Lunette reacts through the late volley, holds HP until the finisher and cleans up on skip',async({page})=>{
+test('Lunette reacts through the late volley, chips HP on each shot and cleans up on skip',async({page})=>{
+  await page.clock.install();
   await page.setViewportSize({width:390,height:844});
   await prepare(page,'lunette-awakened');
-  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
-  await expect(page.locator('.combat-number--ultimate')).toHaveCount(0);
-  const result=await page.evaluate(()=>new Promise<{shots:number[];motion:number;commands:number;hud:number;numberAt:number;finish:boolean}>(resolve=>{
+  await page.clock.pauseAt(new Date(await page.evaluate(()=>Date.now())+100));
+  const resultPromise=page.evaluate(()=>new Promise<{shots:number[];motion:number;commands:number;hud:number;numberAt:number;finish:boolean}>(resolve=>{
     const art=document.querySelector<HTMLElement>('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration')!;
     const controls=document.querySelector<HTMLElement>('.battle-control-pad')!,hud=document.querySelector<HTMLElement>('.enemy-carousel-status')!;
     const c=controls.getBoundingClientRect(),h=hud.getBoundingClientRect(),start=performance.now();
@@ -219,13 +219,15 @@ test('Lunette reacts through the late volley, holds HP until the finisher and cl
       if(numberAt<0&&document.querySelector('.combat-number--ultimate'))numberAt=now;
       const white=document.querySelector<HTMLElement>('.ultimate-whiteout');
       if(white&&Number(white.style.opacity)>.98){resolve({shots:[...shots],motion,commands,hud:hudMotion,numberAt,finish:art.dataset.rabbitFinish==='true'});return;}
-      if(now>4000)throw new Error('Finishing whiteout was not reached');
+      if(now>8000)throw new Error('Finishing whiteout was not reached');
       requestAnimationFrame(sample);
     };requestAnimationFrame(sample);
   }));
+  await page.clock.runFor(7200);
+  const result=await resultPromise;
   expect(Math.max(...result.shots)).toBe(15);expect(result.shots.filter(x=>x>=0).length).toBeGreaterThanOrEqual(10);
   expect(result.motion).toBeGreaterThan(3);expect(result.commands).toBeLessThan(.1);expect(result.hud).toBeLessThan(.1);
-  expect(result.numberAt).toBeGreaterThan(1800);expect(result.finish).toBe(true);
+  expect(result.numberAt).toBeGreaterThan(3000);expect(result.numberAt).toBeLessThan(4300);expect(result.finish).toBe(true);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
   expect(await page.locator('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
@@ -254,4 +256,53 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   await expect(page.locator('[data-rabbit-shot]')).toHaveCount(1);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect(page.locator('[data-rabbit-shot]')).toHaveCount(0);
+});
+
+test('Lunette presents seventeen conserving impacts, red recipient flashes and per-shot HP',async({page})=>{
+  await prepare(page,'lunette-awakened');
+  await page.evaluate(()=>{
+    (window as any).__rabbitHits=[];
+    (window as any).__redPanels=[];
+    window.addEventListener('game:combat-numbers',((message:CustomEvent)=>{
+      if(message.detail.id.includes(':hit:'))(window as any).__rabbitHits.push(message.detail);
+    }) as EventListener);
+    const observer=new MutationObserver(records=>{
+      for(const record of records)for(const node of record.addedNodes)if(node instanceof HTMLElement&&node.classList.contains('damage-panel-flash'))
+        (window as any).__redPanels.push({unit:node.parentElement?.dataset.unit,party:!!node.closest('.party-unit'),enemy:!!node.closest('[data-encounter-scene]')});
+    });observer.observe(document.querySelector('.battle-layout')!,{childList:true,subtree:true});
+  });
+  const targetId=await page.locator('[data-encounter-scene]').getAttribute('data-unit');
+  const initial=Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'));
+  await expect(page.locator('.battle-layout')).toHaveAttribute('data-hit-index',/^(?:[0-9]|1[0-5])$/,{timeout:8000});
+  await expect.poll(async()=>Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'))).toBeLessThan(initial);
+  await page.getByTitle('演出速度',{exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitHits.length),{timeout:8000}).toBe(17);
+  const hits=await page.evaluate(()=>(window as any).__rabbitHits);
+  expect(new Set(hits.map((hit:any)=>hit.id)).size).toBe(17);
+  const total=hits.flatMap((hit:any)=>hit.changes).filter((change:any)=>change.unitId===targetId).reduce((sum:number,change:any)=>sum-change.amount,0);
+  const final=Number(await page.locator('.enemy-carousel-status [role="progressbar"]').getAttribute('aria-valuenow'));
+  expect(initial-final).toBe(total);
+  const panels=await page.evaluate(()=>(window as any).__redPanels);
+  expect(panels.length).toBe(17);expect(panels.every((p:any)=>p.enemy&&!p.party)).toBe(true);
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await expect(page.locator('.damage-panel-flash')).toHaveCount(0);
+});
+
+test('damage tint selects hurt party cards and omits healing and reduced motion',async({page})=>{
+  await prepare(page,'liora');
+  await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  const report=await page.evaluate(async()=>{
+    const {flashDamage}=await import('/src/platform/damage-flash.ts');
+    const root=document.querySelector<HTMLElement>('.battle-layout')!;
+    const card=root.querySelector<HTMLElement>('.party-unit')!;
+    const change={unitId:card.dataset.unit!,characterId:'liora',side:'party' as const,amount:-5};
+    const stop=flashDamage(root,[change],false);
+    const party=root.querySelectorAll('.party-unit .damage-panel-flash').length;
+    const enemy=root.querySelectorAll('[data-encounter-scene] .damage-panel-flash').length;
+    stop();const cleanup=root.querySelectorAll('.damage-panel-flash').length;
+    const heal=flashDamage(root,[{...change,amount:5}],false);const healing=root.querySelectorAll('.damage-panel-flash').length;heal();
+    const quiet=flashDamage(root,[change],true);const reduced=root.querySelectorAll('.damage-panel-flash').length;quiet();
+    return {party,enemy,cleanup,healing,reduced};
+  });
+  expect(report).toEqual({party:1,enemy:0,cleanup:0,healing:0,reduced:0});
 });

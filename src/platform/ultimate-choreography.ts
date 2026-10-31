@@ -70,6 +70,19 @@ export function rabbitMount(index: number, elapsed: number) {
     y:base[1]-.09*(1-deploy)+Math.sin(elapsed*.002+index)*.012,
     size:base[2],rotation:(index%2?1:-1)*(.08+.22*(1-deploy))};
 }
+/** Ease into framing, accelerate to fire, pull back to charge, then punch in and reveal. */
+export function rabbitCameraZoom(elapsed: number): number {
+  const easeIn=(v:number)=>clamp01(v)**3;
+  const easeOut=(v:number)=>1-(1-clamp01(v))**3;
+  if(elapsed<RABBIT_SEQUENCE.summon)return 1;
+  if(elapsed<RABBIT_SEQUENCE.aim)return 1+.055*easeOut((elapsed-RABBIT_SEQUENCE.summon)/2000);
+  if(elapsed<RABBIT_SEQUENCE.fire)return 1.055+.055*easeIn((elapsed-RABBIT_SEQUENCE.aim)/1000);
+  if(elapsed<RABBIT_SEQUENCE.charge)return 1.11+.04*easeIn((elapsed-RABBIT_SEQUENCE.fire)/1800);
+  if(elapsed<RABBIT_SEQUENCE.charge+240)return 1.15-.13*easeOut((elapsed-RABBIT_SEQUENCE.charge)/240);
+  if(elapsed<RABBIT_SEQUENCE.finish)return 1.02+.17*easeIn((elapsed-RABBIT_SEQUENCE.charge-240)/560);
+  if(elapsed<RABBIT_SEQUENCE.finish+80)return 1.19+.05*easeOut((elapsed-RABBIT_SEQUENCE.finish)/80);
+  return 1.24-.24*easeOut((elapsed-RABBIT_SEQUENCE.finish-80)/900);
+}
 /** Bounded reactions at every shot, a quiet gap, then a held heavy recoil. */
 export function rabbitTargetFrame(elapsed: number) {
   const hit=(elapsed-RABBIT_TIMING.impact)/1000;
@@ -88,7 +101,6 @@ export function rabbitTargetFrame(elapsed: number) {
     x+=10*Math.exp(-held*8)*Math.cos(held*31);
     y-=3.5*Math.exp(-held*8);flash=Math.max(flash,Math.exp(-held*14)*.6);
   }
-  const reveal=clamp01((hit-RABBIT_VOLLEY.finale-.3)/.8);
-  const zoom=elapsed<RABBIT_TIMING.effect?1:1+.09*clamp01((elapsed-RABBIT_TIMING.effect)/500)*(1-reveal);
+  const zoom=rabbitCameraZoom(elapsed);
   return {x:Math.max(-12,Math.min(12,x)),y:Math.max(-5,Math.min(5,y)),flash,zoom,shot,finish:finish>=0};
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
@@ -64,6 +64,16 @@ describe('ultimate presentation clock', () => {
     expect(rabbitStage(RABBIT_SEQUENCE.fire)).toBe('volley');
     expect(rabbitStage(RABBIT_SEQUENCE.charge)).toBe('charge');
     expect(rabbitStage(RABBIT_SEQUENCE.finish)).toBe('finish');
+  });
+  it('accelerates into shots, pulls back for charge and reveals at neutral zoom',()=>{
+    expect(rabbitCameraZoom(0)).toBe(1);
+    const early=rabbitCameraZoom(3400)-rabbitCameraZoom(3200);
+    const late=rabbitCameraZoom(4200)-rabbitCameraZoom(4000);
+    expect(late).toBeGreaterThan(early*5);
+    expect(rabbitCameraZoom(6240)).toBeLessThan(rabbitCameraZoom(6000));
+    expect(rabbitCameraZoom(6880)).toBeCloseTo(1.24);
+    expect(rabbitCameraZoom(8000)).toBe(1);
+    for(let at=0;at<=8400;at+=10){expect(rabbitCameraZoom(at)).toBeGreaterThanOrEqual(1);expect(rabbitCameraZoom(at)).toBeLessThanOrEqual(1.241);}
   });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;
