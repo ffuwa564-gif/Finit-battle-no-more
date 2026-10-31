@@ -1,0 +1,221 @@
+{
+  "duration": 30.791666666666668,
+  "fps": 24,
+  "frames": 739,
+  "musicSourceStart": 39.1,
+  "musicSourceEnd": 69.89166666666667,
+  "shots": [
+    {
+      "id": "01-taunt",
+      "kind": "intro",
+      "frames": 64,
+      "start": 3.1,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 0.0
+    },
+    {
+      "id": "02-name",
+      "kind": "title",
+      "frames": 64,
+      "at": 2.6666666666666665
+    },
+    {
+      "id": "03-one",
+      "kind": "count",
+      "count": 0,
+      "frames": 10,
+      "at": 5.333333333333333
+    },
+    {
+      "id": "04-two",
+      "kind": "count",
+      "count": 1,
+      "frames": 9,
+      "at": 5.75
+    },
+    {
+      "id": "05-three",
+      "kind": "count",
+      "count": 2,
+      "frames": 9,
+      "at": 6.125
+    },
+    {
+      "id": "06-fire",
+      "kind": "count",
+      "count": 3,
+      "frames": 10,
+      "start": 0.35,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 6.5
+    },
+    {
+      "id": "07-battle",
+      "kind": "battle",
+      "frames": 167,
+      "at": 6.916666666666667
+    },
+    {
+      "id": "07b-stats",
+      "kind": "stats",
+      "frames": 96,
+      "at": 13.875
+    },
+    {
+      "id": "07c-leader",
+      "kind": "leader",
+      "frames": 120,
+      "at": 17.875
+    },
+    {
+      "id": "08-respect",
+      "kind": "respect",
+      "frames": 44,
+      "start": 5.9,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 22.875
+    },
+    {
+      "id": "09-invite",
+      "kind": "invite",
+      "frames": 28,
+      "at": 24.708333333333332
+    },
+    {
+      "id": "10-gesture",
+      "kind": "gesture",
+      "frames": 35,
+      "start": 0.5,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 25.875
+    },
+    {
+      "id": "11-ending",
+      "kind": "end",
+      "frames": 83,
+      "at": 27.333333333333332
+    }
+  ],
+  "gameplay": {
+    "source": "lunette-ultimate-study-v13",
+    "firstSourceFrame": 0,
+    "lastSourceFrame": 186,
+    "sourceFps": 30,
+    "speed": "authored phase timing; native-rate crossfire",
+    "parts": [
+      {
+        "kind": "command",
+        "sourceStart": 0.0,
+        "sourceEnd": 1.1666666666666667,
+        "frames": 28,
+        "duration": 1.1666666666666667,
+        "speed": 1.0
+      },
+      {
+        "kind": "summon",
+        "sourceStart": 1.1666666666666667,
+        "sourceEnd": 3.1666666666666665,
+        "frames": 64,
+        "duration": 2.6666666666666665,
+        "speed": 0.75
+      },
+      {
+        "kind": "aim",
+        "sourceStart": 3.1666666666666665,
+        "sourceEnd": 4.166666666666667,
+        "frames": 24,
+        "duration": 1.0,
+        "speed": 1.0
+      },
+      {
+        "kind": "volley-and-charges",
+        "sourceStart": 4.166666666666667,
+        "sourceEnd": 5.906666666666666,
+        "frames": 42,
+        "duration": 1.75,
+        "speed": 0.994285714285714
+      },
+      {
+        "kind": "finisher-flight",
+        "sourceStart": 5.906666666666666,
+        "sourceEnd": 6.086666666666667,
+        "frames": 5,
+        "duration": 0.20833333333333334,
+        "speed": 0.8640000000000009
+      },
+      {
+        "kind": "whiteout",
+        "sourceStart": 6.086666666666667,
+        "sourceEnd": 6.2,
+        "frames": 4,
+        "duration": 0.16666666666666666,
+        "speed": 0.6800000000000012
+      }
+    ],
+    "at": 6.916666666666667,
+    "whiteCutAt": 22.875,
+    "whiteFadeIntoLunetteSeconds": 0.25,
+    "lastSourceWhiteout": 1,
+    "battleInsetWhiteAt": 13.875,
+    "preserveTailAcrossCut": true,
+    "gameplayContainsPerShotHP": true,
+    "noBattlefieldReturn": true,
+    "profile": {
+      "statsAt": 13.875,
+      "leaderAt": 17.875,
+      "duration": 9,
+      "data": {
+        "id": "lunette-awakened",
+        "name": "星時計・ルネット",
+        "epithet": "夜明けを刻むうさぎ隊",
+        "rarity": "SSR",
+        "strength": 24,
+        "stats": {
+          "hp": 216,
+          "attack": 67,
+          "defense": 24,
+          "speed": 11
+        },
+        "bonus": {
+          "stat": "attack",
+          "percent": 7.2
+        },
+        "leader": "星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+        "detailText": "SSR · 夜明けを刻むうさぎ隊\n\n詠唱者 · 難易度定数 2.4\n\nHP\n216\n攻撃\n67\n防御\n24\n素早さ\n11\nリーダースキル\n\nパーティ全員の攻撃力を7.2%上昇\n\n星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。\n\n必殺技\n\n 星時計・うさぎ座の大行進！\n\n敵全体に攻撃力の190%で攻撃。かばうを無視する。\nスキル\n\n 静寂の雨 強さ 2.4\n\n敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。\n\n 月光の障壁 強さ 2.4\n\n味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。",
+        "detailRect": {
+          "x": 36,
+          "y": 691.59375,
+          "width": 468,
+          "height": 515.53125
+        },
+        "source": "Actual current game CharacterDetail and domain stats/leader functions; no battle demo modifiers."
+      },
+      "whiteoutAt": 22.875
+    }
+  },
+  "newRunwayCredits": 0,
+  "loopAccent": "Two familiar charges shift mint to lilac to pink; quieter final-explosion shots; shoot-in/charge-out camera; direct follow-up and three strong source-waveform echoes",
+  "cutin": "Full illustration with shared animated clock arcs, spark ornaments and one light sweep; fresh actual capture",
+  "gameplayLayout": "Original cream/navy/lilac background; embedded gameplay at x24 y310 480x853; transparent Lunette lower right; skill introduction above; inset battle whiteout, embedded stats and leader detail, then full-composition whiteout",
+  "projectilePresentation": "Clock-face emitters; moving short bolts; directional landing fragments; four heavy plasma bodies converging into compressed impact before whiteout"
+}

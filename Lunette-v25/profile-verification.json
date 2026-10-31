@@ -1,0 +1,33 @@
+{
+  "actualContent": {
+    "id": "lunette-awakened",
+    "name": "星時計・ルネット",
+    "epithet": "夜明けを刻むうさぎ隊",
+    "rarity": "SSR",
+    "strength": 24,
+    "stats": {
+      "hp": 216,
+      "attack": 67,
+      "defense": 24,
+      "speed": 11
+    },
+    "bonus": {
+      "stat": "attack",
+      "percent": 7.2
+    },
+    "leader": "星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+    "detailText": "SSR · 夜明けを刻むうさぎ隊\n\n詠唱者 · 難易度定数 2.4\n\nHP\n216\n攻撃\n67\n防御\n24\n素早さ\n11\nリーダースキル\n\nパーティ全員の攻撃力を7.2%上昇\n\n星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。\n\n必殺技\n\n 星時計・うさぎ座の大行進！\n\n敵全体に攻撃力の190%で攻撃。かばうを無視する。\nスキル\n\n 静寂の雨 強さ 2.4\n\n敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。\n\n 月光の障壁 強さ 2.4\n\n味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。",
+    "detailRect": {
+      "x": 36,
+      "y": 691.59375,
+      "width": 468,
+      "height": 515.53125
+    },
+    "source": "Actual current game CharacterDetail and domain stats/leader functions; no battle demo modifiers."
+  },
+  "statsAt": 13.875,
+  "leaderAt": 17.875,
+  "duration": 9,
+  "battleWhiteIsInsetOnly": true,
+  "finalWhiteToLunette": true
+}

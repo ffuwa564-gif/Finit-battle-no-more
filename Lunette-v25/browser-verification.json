@@ -1,0 +1,20 @@
+[
+  {
+    "label": "720p",
+    "width": 720,
+    "height": 1280,
+    "duration": 30.791667,
+    "muted": false,
+    "error": null,
+    "seeks": "passed"
+  },
+  {
+    "label": "1080p",
+    "width": 1080,
+    "height": 1920,
+    "duration": 30.791667,
+    "muted": false,
+    "error": null,
+    "seeks": "passed"
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 30.791666666666668,
+  "source": "v25 game-score.wav (identical to approved v24 audio): quieter copies of the exact final explosion waveform; three original-blast echoes at 220/440/660ms; camera pushes in on shots, out on charge; BGM holds through final repeat",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 13.708333333333332,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 15.425805476437995
+    },
+    {
+      "at": 11.81537356321839,
+      "effectsOverMusicDb": 17.383737612735835
+    },
+    {
+      "at": 11.88074712643678,
+      "effectsOverMusicDb": 22.954945307219102
+    },
+    {
+      "at": 11.946120689655173,
+      "effectsOverMusicDb": 18.72191526655273
+    },
+    {
+      "at": 12.75574712643678,
+      "effectsOverMusicDb": 16.455173863153796
+    },
+    {
+      "at": 12.821120689655174,
+      "effectsOverMusicDb": 18.00099108164952
+    },
+    {
+      "at": 12.886494252873565,
+      "effectsOverMusicDb": 18.246232911433417
+    },
+    {
+      "at": 12.951867816091955,
+      "effectsOverMusicDb": 17.5779764576351
+    },
+    {
+      "at": 13.708333333333332,
+      "effectsOverMusicDb": 21.932862511324394
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1,
+  "encodedMixCorrelation": 0.9925437160584598,
+  "tailRmsAfterWhiteCut": 0.08365349471569061,
+  "finalEchoes": [
+    {
+      "delay": 0.22,
+      "effectsOverMusicDb": 19.6276046176065
+    },
+    {
+      "delay": 0.44,
+      "effectsOverMusicDb": 14.468294361054213
+    },
+    {
+      "delay": 0.66,
+      "effectsOverMusicDb": 9.880455180024976
+    }
+  ]
+}
