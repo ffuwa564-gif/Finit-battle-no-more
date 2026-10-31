@@ -31,7 +31,8 @@
     "balance:difficulty": "tsx scripts/balance-difficulty.ts",
     "balance:tower": "tsx scripts/balance-tower.ts",
     "balance:gem-tiers": "tsx scripts/balance-gem-tiers.ts",
-    "balance:gem-tier-combat": "tsx scripts/balance-gem-tier-combat.ts"
+    "balance:gem-tier-combat": "tsx scripts/balance-gem-tier-combat.ts",
+    "test:native-ui": "playwright test --config playwright.native-ui.config.ts"
   },
   "dependencies": {
     "gsap": "^3.14.0",

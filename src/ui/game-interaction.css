@@ -1,0 +1,19 @@
+.game-portal { display: contents; }
+[data-game-surface], [data-game-surface] * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+[data-game-surface] :is(input, textarea, select, [contenteditable]:not([contenteditable="false"])),
+[data-game-surface] [contenteditable]:not([contenteditable="false"]) * {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+[data-game-media] {
+  pointer-events: none !important;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}

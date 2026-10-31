@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { tr, localize } from '../locales/i18n';
 import type { CSSProperties } from 'react';
 import type { CharacterDef } from '../domain/types';
@@ -18,5 +19,5 @@ export function PortraitArt({ character, face = false }: { character: CharacterD
   if (character.motionId) return <span className={className} style={style}>
     <AnimatedIllustration key={motionId} posterId={character.portraitId} motionId={motionId!} alt={tr("")} label={tr(character.name)} reducedMotion={reducedMotion} suspended={suspended} controls={false} />
   </span>;
-  return <img className={`portrait-art${face ? ' portrait-art--face' : ''}`} src={assetPath(character.portraitId)} alt={tr("")} loading="lazy" style={style} />;
+  return <GameImage className={`portrait-art${face ? ' portrait-art--face' : ''}`} src={assetPath(character.portraitId)} alt={tr("")} loading="lazy" style={style} />;
 }
