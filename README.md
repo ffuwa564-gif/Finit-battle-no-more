@@ -1,3 +1,17 @@
+## 最新：ルネットPV v10（必殺技1本・召喚チャージとバフ音を強化）
+
+ゲーム映像はルネットの必殺技1回だけ。カットイン→うさぎ4体召喚→チャージ→4連射をじっくり見せ、バフ音・開始音・専用発射音を重ねています。ゲーム側も召喚の光粒、分割された円、銃口の光、着弾の光と破片を強化。20秒です。
+
+- [720p MP4](Lunette-v10/STILLVEIL_Lunette_PV_v10_20s_720p.mp4)
+- [1080p MP4（拡大書き出し）](Lunette-v10/STILLVEIL_Lunette_PV_v10_20s_1080p.mp4)
+- [投稿説明文・音楽クレジット](Lunette-v10/upload-description.txt)
+- [演出プレビュー](Lunette-v10/rabbit-volley-preview.png)
+- [ゲーム側のPR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+音楽：Twinkle Soda / FUJINEQo。投稿時は音楽クレジットを残してください。
+
+---
+
 ## 最新：ルネットPV v9（専用うさぎビット召喚・4連射）
 
 ルネットの汎用の星エフェクトを、4体の機械うさぎが召喚・照準・4連射して退場する専用演出へ変更し、ゲーム内映像を再収録。専用の発射音入り、20秒です。敵の着弾先修正も維持しています。

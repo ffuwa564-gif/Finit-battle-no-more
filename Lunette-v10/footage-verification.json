@@ -1,0 +1,47 @@
+{
+  "revision": "7cddf8a2f007c553f2f31f5000fb5a8311230d95",
+  "staging": "Independent demo save. Lunette awakened as ally, Selene as actual moonshield-rehearsal enemy boss. HP/attack/speed/cooldowns adjusted for filming. Real resolved skills/cut-ins/damage/shakes, no fabricated boss skill. Muted recording; game synth PCM is re-synchronized in the PV.",
+  "errors": [],
+  "ultimateActionsInPV": [
+    {
+      "id": "lunette-enemy-ultimate-pv:w0:r3:area:2531882709:e0",
+      "actor": "party:lunette-awakened",
+      "text": "星時計・ルネット — 星時計・うさぎ座の大行進！",
+      "boss": false,
+      "amount": 437
+    }
+  ],
+  "singleLunetteImpactRenderedByGamePixi": true,
+  "edits": [
+    {
+      "id": 0,
+      "frames": 124,
+      "sourceStart": 1.875,
+      "sourceEnd": 5.25,
+      "impactAt": 2.4166666666666665,
+      "summonAt": 1.1666666666666667,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 28,
+          "sourceStart": 1.875,
+          "sourceEnd": 3.0,
+          "playbackRate": 0.9642857142857142
+        },
+        {
+          "frames": 30,
+          "sourceStart": 3.0,
+          "sourceEnd": 3.375,
+          "playbackRate": 0.3
+        },
+        {
+          "frames": 66,
+          "sourceStart": 3.375,
+          "sourceEnd": 5.25,
+          "playbackRate": 0.6818181818181818
+        }
+      ],
+      "pixelReviewedBoundaries": true
+    }
+  ]
+}

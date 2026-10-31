@@ -1,0 +1,68 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 124,
+      "sourceStart": 1.875,
+      "sourceEnd": 5.25,
+      "impactAt": 2.4166666666666665,
+      "summonAt": 1.1666666666666667,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 28,
+          "sourceStart": 1.875,
+          "sourceEnd": 3.0,
+          "playbackRate": 0.9642857142857142
+        },
+        {
+          "frames": 30,
+          "sourceStart": 3.0,
+          "sourceEnd": 3.375,
+          "playbackRate": 0.3
+        },
+        {
+          "frames": 66,
+          "sourceStart": 3.375,
+          "sourceEnd": 5.25,
+          "playbackRate": 0.6818181818181818
+        }
+      ],
+      "pixelReviewedBoundaries": true
+    }
+  ],
+  "sfxTimes": [
+    9.333333333333334
+  ],
+  "effects": "Single actual Lunette rabbit ultimate, original opening charge, actual Tone buff cue at name reveal/Fire/summon. Buff accents do not grant extra gameplay stats",
+  "buffTimes": [
+    2.6666666666666665,
+    6.5,
+    8.083333333333334
+  ],
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 9.333333333333334,
+      "effectsRmsDbFS": -11.701618643119607,
+      "musicRmsDbFS": -39.74244321441194,
+      "effectsOverMusicDb": 28.040824652272327
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture with enhanced gate, charge, burst and volley effects. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9923352861699932,
+  "impactCorrelations": [
+    0.985366780824813
+  ]
+}
