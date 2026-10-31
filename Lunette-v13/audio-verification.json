@@ -1,0 +1,85 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 20.625,
+  "source": "v6 score.wav, same original game renderer",
+  "sourceTrimSeconds": 1.1666666666666667,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 12.516666666666667,
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 9.916666666666668,
+      "effectsOverMusicDb": 6.00999203576519
+    },
+    {
+      "at": 9.981666666666667,
+      "effectsOverMusicDb": 6.432510537286191
+    },
+    {
+      "at": 10.046666666666669,
+      "effectsOverMusicDb": 6.821524816757384
+    },
+    {
+      "at": 10.111666666666668,
+      "effectsOverMusicDb": 7.534367659848066
+    },
+    {
+      "at": 10.316666666666668,
+      "effectsOverMusicDb": 5.312891159932208
+    },
+    {
+      "at": 10.381666666666668,
+      "effectsOverMusicDb": 11.964642421993283
+    },
+    {
+      "at": 10.446666666666667,
+      "effectsOverMusicDb": 18.623201235271793
+    },
+    {
+      "at": 10.511666666666668,
+      "effectsOverMusicDb": 5.857784440471794
+    },
+    {
+      "at": 10.716666666666667,
+      "effectsOverMusicDb": 6.447324219332899
+    },
+    {
+      "at": 10.781666666666668,
+      "effectsOverMusicDb": 7.428821648444711
+    },
+    {
+      "at": 10.846666666666668,
+      "effectsOverMusicDb": 4.550082896979787
+    },
+    {
+      "at": 10.911666666666667,
+      "effectsOverMusicDb": 3.875720374244511
+    },
+    {
+      "at": 11.116666666666669,
+      "effectsOverMusicDb": 7.63208248179518
+    },
+    {
+      "at": 11.181666666666667,
+      "effectsOverMusicDb": 7.048164176482067
+    },
+    {
+      "at": 11.246666666666668,
+      "effectsOverMusicDb": 4.013415224389224
+    },
+    {
+      "at": 11.31166666666667,
+      "effectsOverMusicDb": 5.25609860110928
+    },
+    {
+      "at": 12.516666666666667,
+      "effectsOverMusicDb": 6.1695519617489705
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1,
+  "encodedMixCorrelation": 0.99213736941345,
+  "tailRmsAfterWhiteCut": 0.04589654877781868
+}
