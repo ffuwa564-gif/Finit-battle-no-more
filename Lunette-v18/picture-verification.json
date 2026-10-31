@@ -1,0 +1,10 @@
+[
+  {
+    "label": "720p",
+    "videoPacketsUnchanged": true
+  },
+  {
+    "label": "1080p",
+    "videoPacketsUnchanged": true
+  }
+]

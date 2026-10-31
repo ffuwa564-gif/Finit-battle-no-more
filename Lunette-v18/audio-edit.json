@@ -1,0 +1,84 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 23.0,
+  "source": "v18 game-score.wav: rounded po-po-po pressure pops, soft landing and original heavy finisher; same game renderer",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 14.916666666666668,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 9.301774412157801
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 10.255705826359032
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 15.718954457535117
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 11.43336215255426
+    },
+    {
+      "at": 12.15,
+      "effectsOverMusicDb": 11.064822296540902
+    },
+    {
+      "at": 12.215,
+      "effectsOverMusicDb": 12.82007772553342
+    },
+    {
+      "at": 12.280000000000001,
+      "effectsOverMusicDb": 13.461032594489087
+    },
+    {
+      "at": 12.344999999999999,
+      "effectsOverMusicDb": 11.388672906825313
+    },
+    {
+      "at": 12.55,
+      "effectsOverMusicDb": 8.084631526108033
+    },
+    {
+      "at": 12.615,
+      "effectsOverMusicDb": 10.277522290461793
+    },
+    {
+      "at": 12.68,
+      "effectsOverMusicDb": 11.376264784770086
+    },
+    {
+      "at": 12.745000000000001,
+      "effectsOverMusicDb": 11.071987768016944
+    },
+    {
+      "at": 12.95,
+      "effectsOverMusicDb": 10.952519325691767
+    },
+    {
+      "at": 13.015,
+      "effectsOverMusicDb": 10.104909557288375
+    },
+    {
+      "at": 13.08,
+      "effectsOverMusicDb": 10.090909687502732
+    },
+    {
+      "at": 13.145,
+      "effectsOverMusicDb": 12.554771606721483
+    },
+    {
+      "at": 14.916666666666668,
+      "effectsOverMusicDb": 18.915913814587
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1
+}

@@ -1,3 +1,17 @@
+## 最新キャラPV：ルネット v18（丸い「ぽぽぽ」の射撃音）
+
+通常連射を短く丸い圧力音へ変更。鋭い破裂とざらつきを抑え、発射の粒を保ちます。最後の砲撃とチャージは維持。映像はv17と同じです。
+
+- [▶ BGMなしの射撃音確認・約2秒](Lunette-v18/Lunette_PoPoPo_SFX_Check_720p.mp4)
+- [▶ PV・720p](Lunette-v18/STILLVEIL_Lunette_PV_v18_720p.mp4)
+- [▶ PV・1080p（720p素材から拡大）](Lunette-v18/STILLVEIL_Lunette_PV_v18_1080p.mp4)
+- [投稿文・音楽クレジット](Lunette-v18/upload-description.txt)
+- [制作について](Lunette-v18/README.txt)
+
+Music: Twinkle Soda / FUJINEQo。ゲーム側はPR #116へ反映、未マージ・itch未配信。以下は旧版です。
+
+---
+
 ## 最新キャラPV：ルネット v17（技紹介・埋め込み・透過キャラ）
 
 23秒版。上部に技紹介、背景の中に実ゲーム、右下に透過ルネットを配置。ゲームのカットインには動く時計光輪・星・斜めの光を加え、射撃音も短い電気的な破裂と強い中低域の着弾へ作り直しました。
