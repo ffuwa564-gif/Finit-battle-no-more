@@ -2,8 +2,11 @@ import type { DungeonDef, SkillDef } from './types';
 
 export type GemFamily = 'sanctuary' | 'clock' | 'grave';
 export type GemVariant = 'pure' | 'echo' | 'swift';
-export interface MemoryGem { id: string; defId: string; variant: GemVariant; locked?: boolean }
-export interface GemInventory { items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number }
+export type GemTrait = 'none' | 'chain' | 'bulwark' | 'execution' | 'mercy';
+export interface GemRoll { power: number; trait: GemTrait; value: number }
+export type GemRefinementMode = 'power' | 'trait';
+export interface MemoryGem { id: string; defId: string; variant: GemVariant; locked?: boolean; roll?: GemRoll }
+export interface GemInventory { items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number; pending?: { gemId: string; candidate: MemoryGem } }
 export interface GemDefinition { id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
 
 export const GEM_CRAFT_COST = 6;
@@ -53,21 +56,75 @@ export function gemDefinition(gem: MemoryGem): GemDefinition {
 export function gemName(gem: MemoryGem): string { return `${GEM_VARIANTS[gem.variant].name}の${gemDefinition(gem).name}`; }
 export function gemRarity(gem: MemoryGem): GemDefinition['rarity'] {
   const def = gemDefinition(gem);
-  return def.bossOnly ? 'epic' : gem.variant === 'pure' ? def.rarity : 'rare';
+  const roll = gemRoll(gem);
+  if (def.bossOnly || roll.power >= 90 && roll.trait !== 'none' && roll.value >= 90) return 'epic';
+  return gem.variant !== 'pure' || roll.trait !== 'none' || roll.power >= 70 ? 'rare' : def.rarity;
 }
 export function gemDescription(gem: MemoryGem): string {
   const def = gemDefinition(gem);
-  return `${def.description} ${gem.variant === 'pure' ? '' : GEM_VARIANTS[gem.variant].description + ' '}再使用まで${gemCooldown(gemSkill(gem).id)}ラウンド。`;
+  let description = def.description;
+  if (gem.roll && def.id === 'rewind-thread') description = `自分以外の味方1人の通常スキルの再使用待ちを${Math.min(2, Math.max(1, Math.floor(gemPowerMultiplier(gem))))}ラウンド短縮する。記憶石の技には作用しない。`;
+  if (gem.roll && def.id === 'star-furnace') description = `自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを${Math.min(70, Math.floor(35 * gemPowerMultiplier(gem)))}充填する。自分のHPが20%より多い時に使用できる。`;
+  if (gem.roll && def.id === 'dream-lace') description += ` 成功率は通常${Math.round(Math.min(95, 70 * gemPowerMultiplier(gem)))}%・ボス${Math.round(Math.min(60, 35 * gemPowerMultiplier(gem)))}%。ボスの睡眠は1回の行動まで。`;
+  return `${description} ${gem.variant === 'pure' ? '' : GEM_VARIANTS[gem.variant].description + ' '}再使用まで${gemCooldown(gemSkill(gem).id)}ラウンド。`;
+}
+export const gemTraitInfo: Record<GemTrait, { name: string; description: string }> = {
+  none: { name: 'なし', description: '追加特性なし。' },
+  chain: { name: '連鎖', description: '別の敵1体へ攻撃力の45〜80%で追加攻撃。追加攻撃から特性は再発動しない。' },
+  bulwark: { name: '庇護', description: 'HP割合が最も低い味方に最大HPの10〜25%の障壁を追加。障壁の合計上限は最大HPの60%。' },
+  execution: { name: '処刑', description: '残りHP35%以下の敵への技の威力が20〜60%上昇。' },
+  mercy: { name: '慈雨', description: '実際に与えたHPダメージの20〜50%で、HP割合が最も低い味方を回復。' },
+};
+const damagingTemplates = new Set<SkillDef['template']>(['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn']);
+const defaultRoll: GemRoll = { power: 0, trait: 'none', value: 0 };
+export function supportedGemTraits(gem: Pick<MemoryGem, 'defId'> | GemDefinition | string): GemTrait[] {
+  const id = typeof gem === 'string' ? gem : 'defId' in gem ? gem.defId : gem.id;
+  const def = definitions.get(id);
+  return def && damagingTemplates.has(def.skill.template) ? ['none', 'chain', 'bulwark', 'execution', 'mercy'] : ['none', 'bulwark'];
+}
+export function gemRoll(gem: MemoryGem): GemRoll { return gem.roll ? { ...gem.roll } : { ...defaultRoll }; }
+export function gemPowerMultiplier(gem: MemoryGem): number { return 1 + gemRoll(gem).power * .015; }
+export function gemRollKey(gem: MemoryGem): string {
+  const roll = gemRoll(gem), key = `${gem.defId}:${gem.variant}`;
+  return roll.power === 0 && roll.trait === 'none' && roll.value === 0 ? key : `${key}:${roll.power}:${roll.trait}:${roll.value}`;
+}
+export function gemTraitDescription(gem: MemoryGem): string {
+  const { trait, value } = gemRoll(gem);
+  if (trait === 'chain') return `別の敵1体へ攻撃力の${45 + Math.round(value * .35)}%で追加攻撃。追加攻撃から特性は再発動しない。`;
+  if (trait === 'bulwark') return `HP割合が最も低い味方に最大HPの${10 + Math.round(value * .15)}%の障壁を追加。障壁の合計上限は最大HPの60%。`;
+  if (trait === 'execution') return `残りHP35%以下の敵への技の威力が${20 + Math.round(value * .4)}%上昇。`;
+  if (trait === 'mercy') return `実際に与えたHPダメージの${20 + Math.round(value * .3)}%で、HP割合が最も低い味方を回復。`;
+  return gemTraitInfo.none.description;
+}
+export function gemRollDescription(gem: MemoryGem): string {
+  return `技の威力${Number((gemPowerMultiplier(gem) * 100).toFixed(1))}%。特性：${gemTraitInfo[gemRoll(gem).trait].name}。${gemTraitDescription(gem)}`;
 }
 export function gemSkill(gem: MemoryGem): SkillDef {
   const def = gemDefinition(gem);
-  return { ...def.skill, id: `memory:${gem.defId}:${gem.variant}:${gem.id}`, name: gemName(gem), strength: gem.variant === 'swift' ? Math.max(1, def.skill.strength - 10) : def.skill.strength };
+  const r = gemRoll(gem);
+  const roll = gem.roll ? `@roll=${r.power}~${r.trait}~${r.value}:` : '';
+  return { ...def.skill, id: `memory:${gem.defId}:${gem.variant}:${roll}${gem.id}`, name: gemName(gem), strength: gem.variant === 'swift' ? Math.max(1, def.skill.strength - 10) : def.skill.strength };
 }
-export function gemDefinitionForSkill(skillId: string): GemDefinition | undefined {
+/** A reserved marker separates rolls from legacy IDs, which may themselves contain colons. */
+export function gemFromSkill(skillId: string): MemoryGem | undefined {
   const parts = skillId.split(':');
   if (parts[0] !== 'memory' || !parts[3]) return undefined;
   const def = definitions.get(parts[1]);
-  return def?.variants.includes(parts[2] as GemVariant) ? def : undefined;
+  if (!def?.variants.includes(parts[2] as GemVariant)) return undefined;
+  let roll: GemRoll | undefined, offset = 3;
+  if (parts[3].startsWith('@roll=')) {
+    const match = /^@roll=(\d+)~([a-z]+)~(\d+)$/.exec(parts[3]);
+    if (!match) return undefined;
+    roll = { power: Number(match[1]), trait: match[2] as GemTrait, value: Number(match[3]) }; offset = 4;
+  }
+  const id = parts.slice(offset).join(':');
+  const gem: MemoryGem = { id, defId: def.id, variant: parts[2] as GemVariant, ...(roll ? { roll } : {}) };
+  return validMemoryGem(gem) ? gem : undefined;
+}
+export function gemRollForSkill(skillId: string): GemRoll | undefined { const gem = gemFromSkill(skillId); return gem ? gemRoll(gem) : undefined; }
+export function gemDefinitionForSkill(skillId: string): GemDefinition | undefined {
+  const gem = gemFromSkill(skillId);
+  return gem ? definitions.get(gem.defId) : undefined;
 }
 export function gemVariantForSkill(skillId: string): GemVariant | undefined { return gemDefinitionForSkill(skillId) ? skillId.split(':')[2] as GemVariant : undefined; }
 export function gemCooldown(skillId: string): number | undefined {
@@ -79,18 +136,31 @@ export function gemCooldown(skillId: string): number | undefined {
 
 export function validMemoryGem(value: unknown): value is MemoryGem {
   if (!record(value) || typeof value.id !== 'string' || !value.id.length || value.id.length > 300 || typeof value.defId !== 'string' || !variants.includes(value.variant as GemVariant) || value.locked !== undefined && typeof value.locked !== 'boolean') return false;
-  return Boolean(definitions.get(value.defId)?.variants.includes(value.variant as GemVariant));
+  return Boolean(definitions.get(value.defId)?.variants.includes(value.variant as GemVariant)) && (value.roll === undefined || validGemRoll(value.roll, value.defId));
+}
+function validGemRoll(value: unknown, defId: string): value is GemRoll {
+  if (!record(value) || !count(value.power) || value.power > 100 || !count(value.value) || value.value > 100 || typeof value.trait !== 'string' || !supportedGemTraits(defId).includes(value.trait as GemTrait)) return false;
+  return value.trait !== 'none' || value.value === 0;
 }
 export function validGemInventory(value: unknown): value is GemInventory {
   if (!record(value) || !Array.isArray(value.items) || !value.items.every(validMemoryGem) || !record(value.equipped) || !record(value.dust) || !Array.isArray(value.seen) || !value.seen.every(v => typeof v === 'string' && definitions.has(v)) || value.craftSerial !== undefined && !count(value.craftSerial)) return false;
   const ids = value.items.map(v => (v as MemoryGem).id);
   if (new Set(ids).size !== ids.length || new Set(value.seen).size !== value.seen.length) return false;
   const equipped = Object.values(value.equipped);
-  return equipped.every(v => typeof v === 'string' && ids.includes(v)) && new Set(equipped).size === equipped.length && Object.entries(value.dust).every(([family, amount]) => families.includes(family as GemFamily) && count(amount));
+  if (!equipped.every(v => typeof v === 'string' && ids.includes(v)) || new Set(equipped).size !== equipped.length || !Object.entries(value.dust).every(([family, amount]) => families.includes(family as GemFamily) && count(amount))) return false;
+  if (value.pending !== undefined) {
+    const pending = value.pending;
+    if (!record(pending) || typeof pending.gemId !== 'string' || !validMemoryGem(pending.candidate) || !pending.candidate.roll) return false;
+    const target = (value.items as MemoryGem[]).find(item => item.id === pending.gemId);
+    if (!target || pending.candidate.id !== target.id || pending.candidate.defId !== target.defId || pending.candidate.variant !== target.variant) return false;
+  }
+  return true;
 }
 
 /** Stable destinations let players farm a family even before they have a full collection. */
-export function dungeonGemFamily(dungeon: Pick<DungeonDef, 'id' | 'name' | 'eventId'>): GemFamily {
+export function dungeonGemFamily(dungeon: Pick<DungeonDef, 'id' | 'name' | 'eventId' | 'towerFloor'>): GemFamily {
+  // Tower names all contain 白; assign by floor before the ordinary name classifier.
+  if (dungeon.towerFloor) return families[(dungeon.towerFloor - 1) % families.length];
   const text = `${dungeon.id} ${dungeon.name} ${dungeon.eventId ?? ''}`;
   if (/clock|lunette|mechan|gear|機巧|時計|機械|秒針/i.test(text)) return 'clock';
   if (/grave|tomb|night|shadow|dream|garden|kuzuha|墓|夢|黄昏|影|庭|夜/i.test(text)) return 'grave';
@@ -109,7 +179,7 @@ export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, o
   if (!dropId || dropId.length > 300) throw new Error('宝箱の識別子が正しくありません。');
   const family = dungeonGemFamily(dungeon);
   let random = nextRandom(seed);
-  if (!options.first && random.value >= (options.boss ? .65 : .32)) return { seed: random.seed };
+  if (!options.first && !(dungeon.towerFloor && options.boss) && random.value >= (options.boss ? .65 : .32)) return { seed: random.seed };
   random = nextRandom(random.seed);
   const unique = options.boss && !options.first && random.value < .12;
   const candidates = GEM_DEFINITIONS.filter(def => def.family === family && Boolean(def.bossOnly) === Boolean(unique));
@@ -120,7 +190,8 @@ export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, o
   const available = options.first ? ['pure'] as GemVariant[] : def.variants;
   // Basic forms remain common; unusual forms are exciting without becoming mandatory upgrades.
   const variant = available.length === 1 || random.value < .65 ? 'pure' : available[1 + Math.floor((random.value - .65) / .35 * (available.length - 1))];
-  return { gem: { id: dropId, defId: def.id, variant }, seed: random.seed };
+  const gem: MemoryGem = { id: dropId, defId: def.id, variant };
+  return options.first ? { gem, seed: random.seed } : rollGemCandidate(gem, random.seed, dungeon.towerFloor ?? 0);
 }
 
 function findGem(inventory: GemInventory, id: string): MemoryGem {
@@ -140,6 +211,7 @@ export function equipGem(inventory: GemInventory, characterId: string, id: strin
 export function lockGem(inventory: GemInventory, id: string): void { const gem = findGem(inventory, id); gem.locked = !gem.locked; }
 export function salvageGem(inventory: GemInventory, id: string): void {
   const gem = findGem(inventory, id);
+  if (inventory.pending?.gemId === id) throw new Error('調律中の記憶石は分解できません。');
   if (gem.locked) throw new Error('保護している記憶石は分解できません。');
   if (Object.values(inventory.equipped).includes(id)) throw new Error('装備中の記憶石は分解できません。');
   const def = gemDefinition(gem);
@@ -153,10 +225,65 @@ export function craftGem(inventory: GemInventory, defId: string, variant: GemVar
   if ((inventory.dust[def.family] ?? 0) < cost) throw new Error('製作に必要な記憶の欠片が足りません。');
   let serial = inventory.craftSerial ?? inventory.items.length + inventory.seen.length;
   while (inventory.items.some(item => item.id === `crafted-${serial}`)) serial++;
-  const gem: MemoryGem = { id: `crafted-${serial}`, defId, variant };
+  const gem: MemoryGem = { id: `crafted-${serial}`, defId, variant, roll: { power: 20, trait: 'none', value: 0 } };
   inventory.dust[def.family] -= cost;
   inventory.items.push(gem);
   inventory.craftSerial = serial + 1;
   if (!inventory.seen.includes(def.id)) inventory.seen.push(def.id);
   return gem;
+}
+
+/** All destinations can roll perfection; deeper floors improve the distribution, not a hard cap. */
+export function rollGemCandidate(gem: MemoryGem, seed: number, towerFloor = 0): { gem: MemoryGem; seed: number } {
+  if (!Number.isSafeInteger(towerFloor) || towerFloor < 0 || towerFloor > 100) throw new Error('記憶石の探索階層が正しくありません。');
+  const floor = Math.max(0, Math.min(100, Math.floor(towerFloor)));
+  let random = nextRandom(seed);
+  const minimum = 5 + Math.min(30, Math.floor(floor / 3));
+  const exponent = floor ? Math.max(.65, 2.3 - floor / 55) : 3.2;
+  const power = Math.min(100, minimum + Math.floor((101 - minimum) * random.value ** exponent));
+  random = nextRandom(random.seed);
+  const choices = supportedGemTraits(gem).filter(trait => trait !== 'none');
+  const hasTrait = random.value < .45 + floor * .003;
+  random = nextRandom(random.seed);
+  const trait = hasTrait ? choices[Math.floor(random.value * choices.length)] : 'none';
+  random = nextRandom(random.seed);
+  const value = trait === 'none' ? 0 : Math.min(100, Math.floor(101 * random.value ** Math.max(.7, 2.2 - floor / 65)));
+  return { gem: { ...gem, roll: { power, trait, value } }, seed: random.seed };
+}
+export function refinementCost(gem: MemoryGem, mode: GemRefinementMode): number {
+  const roll = gemRoll(gem);
+  return mode === 'power' ? 3 + Math.floor(roll.power / 25) : 4 + Math.floor(roll.value / 25);
+}
+/** Paid once when offered, with the old equipment retained until the user accepts. */
+export function startGemRefinement(inventory: GemInventory, gemId: string, mode: GemRefinementMode, seed: number): { seed: number } {
+  if (mode !== 'power' && mode !== 'trait') throw new Error('調律する項目が正しくありません。');
+  if (inventory.pending) throw new Error('先に調律の結果を選んでください。');
+  const gem = findGem(inventory, gemId), def = gemDefinition(gem), cost = refinementCost(gem, mode);
+  if ((inventory.dust[def.family] ?? 0) < cost) throw new Error('調律に必要な記憶の欠片が足りません。');
+  const previous = gemRoll(gem);
+  let random = nextRandom(seed), roll = { ...previous };
+  if (mode === 'power') roll.power = Math.min(100, Math.floor(101 * random.value ** 1.8));
+  else {
+    const choices = supportedGemTraits(gem).filter(trait => trait !== 'none');
+    roll.trait = choices[Math.floor(random.value * choices.length)];
+    random = nextRandom(random.seed);
+    roll.value = Math.min(100, Math.floor(101 * random.value ** 1.5));
+  }
+  inventory.dust[def.family] -= cost;
+  inventory.pending = { gemId, candidate: { ...gem, roll } };
+  return { seed: random.seed };
+}
+export function resolveGemRefinement(inventory: GemInventory, accept: boolean): void {
+  const pending = inventory.pending;
+  if (!pending) throw new Error('選択待ちの調律結果がありません。');
+  const index = inventory.items.findIndex(item => item.id === pending.gemId);
+  if (index < 0) throw new Error('調律中の記憶石が見つかりません。');
+  if (accept) {
+    const current = inventory.items[index];
+    const replacement = { ...pending.candidate };
+    if (current.locked === undefined) delete replacement.locked;
+    else replacement.locked = current.locked;
+    inventory.items[index] = replacement;
+  }
+  delete inventory.pending;
 }

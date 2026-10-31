@@ -17,3 +17,5 @@
 @keyframes memory-find-arrive { from { opacity:0; transform:translate(-50%,12px) scale(.95); } to { opacity:1; transform:translate(-50%,0) scale(1); } }
 @keyframes memory-find-jewel { 50% { transform:translateY(-3px); filter:drop-shadow(0 0 5px #bbd9ed); } }
 @media(prefers-reduced-motion:reduce) { .memory-gem-find,.memory-gem-find svg { animation:none; } }
+
+.memory-gem-summary__quality { display:block; margin-top:3px; font-size:10px; color:#526073; }

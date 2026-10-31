@@ -74,7 +74,8 @@ test('large inventories start folded and the management entry remains visible ab
   await expect(page.getByTestId('memory-gem-card').first()).toBeHidden();
   await page.screenshot({ path: 'artifacts/memory-gems/gem-overview-collapsed.png', fullPage:true });
   await openGemInventory(page);
-  await expect(page.getByTestId('memory-gem-card')).toHaveCount(60);
+  await expect(page.getByTestId('memory-gem-card')).toHaveCount(3);
+  await expect(page.locator('.memory-gems__stack-count', { hasText: '×20' })).toHaveCount(3);
   await expect(page.getByTestId('memory-gem-card').first()).toBeVisible();
   await page.reload(); await enterGame(page);
   await page.getByRole('button', { name: /記憶石の管理/ }).click();
@@ -118,6 +119,47 @@ test('searches and transfers a worn stone directly after confirmation, returning
   await page.getByRole('combobox', { name: '記憶石の並び順' }).selectOption('cooldown');
   const ids = await page.getByTestId('memory-gem-card').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-gem-id')));
   expect(ids).toEqual(['qa-echo-shard', 'qa-pale-ward', 'qa-night-dew']);
+});
+
+test('stacks identical stones while equipping two distinct copies and salvaging only the unprotected spare', async ({ page }) => {
+  await inventoryFixture(page);
+  await page.evaluate(async () => {
+    const { loadSave, persistSave } = await import('/src/platform/save.ts');
+    const save = (await loadSave())!, revision = save.revision;
+    save.memoryGems!.items.push({ id:'qa-night-dew-copy', defId:'night-dew', variant:'pure' });
+    save.revision++;
+    await persistSave(save, revision);
+  });
+  await page.reload(); await enterGame(page);
+  await page.getByRole('button', { name:'記憶石', exact:true }).click();
+  await openGemInventory(page);
+  await expect(page.getByTestId('memory-gem-card')).toHaveCount(3);
+  const stack = page.locator('[data-gem-stack="night-dew:pure"]');
+  await expect(stack.locator('.memory-gems__stack-count')).toHaveText('×2');
+  await stack.click();
+  await page.getByRole('button', { name:'記憶石を保護', exact:true }).click();
+  await page.getByRole('button', { name:'この仲間に託す', exact:true }).click();
+  const [source, target] = (await currentSave(page)).partyIds;
+  await expect.poll(async () => (await currentSave(page)).memoryGems!.equipped[source]).toBeTruthy();
+  const sourceGem = (await currentSave(page)).memoryGems!.equipped[source];
+  await page.getByRole('combobox', { name:'石を託す仲間', exact:true }).selectOption(target);
+  await page.getByRole('button', { name:'この仲間に託す', exact:true }).click();
+  await expect.poll(async () => (await currentSave(page)).memoryGems!.equipped[target]).toBeTruthy();
+  expect((await currentSave(page)).memoryGems!.equipped[target]).not.toBe(sourceGem);
+  await expect(stack).toContainText('装備 2 · 未装備 0');
+  await page.getByRole('button', { name:'外す', exact:true }).click();
+  await expect.poll(async () => (await currentSave(page)).memoryGems!.equipped[target]).toBeUndefined();
+  await page.getByRole('button', { name:'分解', exact:true }).click();
+  await page.getByRole('button', { name:'分解を確定', exact:true }).click();
+  await expect(stack.locator('.memory-gems__stack-count')).toHaveText('×1');
+  const result = (await currentSave(page)).memoryGems!;
+  expect(result.items).toHaveLength(3);
+  expect(result.equipped[source]).toBe(sourceGem);
+  expect(result.items.find(item => item.id === sourceGem)!.locked).toBe(true);
+  await page.reload(); await enterGame(page);
+  await page.getByRole('button', { name:'記憶石', exact:true }).click();
+  await openGemInventory(page);
+  await expect(page.locator('[data-gem-stack="night-dew:pure"] .memory-gems__stack-count')).toHaveText('×1');
 });
 
 test('a gem skill survives real persistence, queues through the existing dial and consumes one action', async ({ page }, info) => {
