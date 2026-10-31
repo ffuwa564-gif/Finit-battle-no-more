@@ -1,3 +1,4 @@
+import { emptyGemInventory, equipGem, salvageGem, lockGem, craftGem, rollGemDrop, dungeonGemFamily, gemName } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
 import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domain/novels';
 import { ultimateReady } from '../domain/ultimates';
@@ -38,6 +39,34 @@ function spendMaterials(save: GameSave, costs: { materialId: string; count: numb
   for (const cost of costs) save.materials[cost.materialId] = (save.materials[cost.materialId] ?? 0) - cost.count;
 }
 
+/** Equipment is snapshotted without changing combat stats or resetting cooldowns. */
+function syncMemoryGems(save: GameSave): void {
+  const battle = save.battle;
+  if (!battle) return;
+  const inventory = save.memoryGems ?? emptyGemInventory();
+  battle.memoryGems = Object.fromEntries(battle.partyIds.flatMap(characterId => {
+    const gem = inventory.items.find(item => item.id === inventory.equipped[characterId]);
+    return gem ? [[characterId, structuredClone(gem)]] : [];
+  }));
+}
+/** Called only after the last saved event of a defeated wave has been replayed. */
+function secureMemoryChest(save: GameSave, wave: number, content: Content): void {
+  const battle = save.battle!;
+  const dungeon = content.dungeons.find(item => item.id === battle.dungeonId)!;
+  if (dungeon.kind === 'trial') return;
+  const key = `${battle.id}:wave:${wave}`;
+  if (battle.gemChestChecks?.includes(key)) return;
+  battle.gemChestChecks = [...(battle.gemChestChecks ?? []), key];
+  const inventory = save.memoryGems ??= emptyGemInventory();
+  const result = rollGemDrop(dungeon, battle.seed, key, { first: inventory.seen.length === 0, boss: wave === dungeon.waves.length - 1 });
+  battle.seed = result.seed;
+  if (!result.gem || inventory.items.some(item => item.id === result.gem!.id)) return;
+  inventory.items.push(result.gem);
+  if (!inventory.seen.includes(result.gem.defId)) inventory.seen.push(result.gem.defId);
+  battle.gemFinds = [...(battle.gemFinds ?? []), result.gem];
+  log(save, `宝箱から${gemName(result.gem)}を確保しました。`, key);
+}
+
 export function createInitialSave(content: Content, seed = 0x584a39b1, options: { opening?: boolean } = {}): GameSave {
   const initial = content.characters.filter(character => character.published && character.origin.includes('initial')).slice(0, 4).map(character => character.id);
   if (!initial.length) fail('初期パーティの定義がありません。');
@@ -48,7 +77,7 @@ export function createInitialSave(content: Content, seed = 0x584a39b1, options: 
     rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0, astralStones: 0, xrDrawCount: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
     completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
-    battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
+    memoryGems: emptyGemInventory(), battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
   };
 }
 
@@ -60,6 +89,29 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
   switch (command.type) {
+    case 'equipMemoryGem': {
+      if (!save.ownedIds.includes(command.characterId)) fail('所持している仲間を選んでください。');
+      if (save.battle && (save.battle.phase !== 'ready' || save.battle.round !== 1 || save.battle.potionUsed)) fail('記憶石は街かウェーブ開始時に装備してください。');
+      equipGem(save.memoryGems ??= emptyGemInventory(), command.characterId, command.gemId, { transfer: command.transfer === true });
+      syncMemoryGems(save);
+      if (save.battle) delete save.battle.partyOrder;
+      break;
+    }
+    case 'salvageMemoryGem': {
+      town(save);
+      salvageGem(save.memoryGems ??= emptyGemInventory(), command.gemId);
+      break;
+    }
+    case 'lockMemoryGem': {
+      lockGem(save.memoryGems ??= emptyGemInventory(), command.gemId);
+      break;
+    }
+    case 'craftMemoryGem': {
+      town(save);
+      const gem = craftGem(save.memoryGems ??= emptyGemInventory(), command.defId, command.variant);
+      log(save, `${gemName(gem)}を製作しました。`);
+      break;
+    }
     case 'focusEnemy': {
       const battle = save.battle;
       if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase) || !commandUnits(battle).some(u => u.uid === command.unitId && u.side === 'enemy' && u.hp > 0)) fail('狙う敵を選んでください。');
@@ -122,6 +174,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const next = rng(save.seed);
       save.seed = next.seed;
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
+      syncMemoryGems(save);
       log(save, `${dungeon.name}へ出発しました。`);
       break;
     }
@@ -171,7 +224,10 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'replay': {
       if (!save.battle || save.battle.phase !== 'playing') fail('再生できる演出がありません。');
-      save.battle = advanceReplay(save.battle, content);
+      const before = save.battle;
+      const finishedWave = before.cursor + 1 >= before.events.length && ['wave', 'reward'].includes(before.nextPhase) ? before.wave : undefined;
+      save.battle = advanceReplay(before, content);
+      if (finishedWave !== undefined) secureMemoryChest(save, finishedWave, content);
       save.seed = save.battle.seed;
       break;
     }
@@ -202,7 +258,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
         natural(count, '素材数', true);
         save.materials[id] = (save.materials[id] ?? 0) + count;
       }
-      if (dungeon.kind !== 'trial') save.gold += 20;
+      if (dungeon.kind !== 'trial') {
+        save.gold += 20;
+        const inventory = save.memoryGems ??= emptyGemInventory();
+        const family = dungeonGemFamily(dungeon);
+        inventory.dust[family] = (inventory.dust[family] ?? 0) + 1;
+      }
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);

@@ -1,0 +1,15 @@
+.inventory-section { margin:14px 0; border:1px solid #8998aa65; border-radius:14px; background:#faf8f1; color:#29384a; overflow:hidden; }
+.inventory-section > summary { display:flex; align-items:center; gap:10px; min-height:58px; padding:14px 16px; cursor:pointer; font-size:15px; list-style:none; }
+.inventory-section > summary::-webkit-details-marker { display:none; }
+.inventory-section > summary > span:first-child { flex:1; min-width:0; }
+.inventory-section > summary:focus-visible { outline:2px solid #759fc2; outline-offset:-4px; border-radius:13px; }
+.inventory-section__count { border:1px solid #8192a354; border-radius:20px; padding:2px 9px; font-size:12px; font-variant-numeric:tabular-nums; }
+.inventory-section > summary > svg { flex-shrink:0; transition:transform .15s ease; }
+.inventory-section[open] > summary > svg { transform:rotate(180deg); }
+.inventory-section__body { padding:0 14px 15px; }
+.inventory-section--night { background:#101b2a; color:#e4eaf2; border-color:#b4c4d43d; }
+.inventory-section--night > summary { color:#ddd0b0; }
+.bag-gem-entry { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.bag-gem-entry .button { flex:1; min-height:58px; justify-content:center; }
+.bag-gem-entry__count { font-size:12px; opacity:.85; }
+@media(prefers-reduced-motion:reduce) { .inventory-section > summary > svg { transition:none; } }

@@ -1,3 +1,4 @@
+import { gemDefinitionForSkill } from './domain/memory-gems';
 import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
 import { ultimateVisualFor, rabbitMusicGain } from './platform/ultimate-choreography';
@@ -90,6 +91,7 @@ export default function App() {
       setAudioVolume(next.settings.seVolume);
       const cue = commandSounds[action.type];
       if (cue) playSound(cue);
+      if ((next.memoryGems?.items.length ?? 0) > (previous.memoryGems?.items.length ?? 0) && action.type === 'replay') playSound('drop');
       if (action.type === 'settings' && action.settings.seVolume !== undefined && action.settings.seVolume > 0) playSound('confirm');
       if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
@@ -172,7 +174,7 @@ export default function App() {
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];
-      const skill = event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template;
+      const skill = event.ultimate ? undefined : (content.skills.find(skill => skill.id === event.skillId)?.template ?? gemDefinitionForSkill(event.skillId ?? '')?.skill.template);
       if(!rabbit)playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
