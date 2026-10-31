@@ -20,25 +20,21 @@ export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 
       const age=t-shot.at;if(age<0||age>.2)continue;
       const onset=1-Math.exp(-age*700);
       const variant=1+(shot.bit-1.5)*.035+(shot.round-1.5)*.018;
-      // Dry electrical crack plus a harmonically rich low-mid punch. No long "pew" glide.
-      const phase=2*Math.PI*variant*(155*age+330*.009*(1-Math.exp(-age/.009)));
-      const plasma=Math.sin(phase)+.3*Math.sin(phase*2);
-      const bodyPhase=2*Math.PI*(95*age+90*.016*(1-Math.exp(-age/.016)));
-      const punch=Math.sin(bodyPhase)+.5*Math.sin(bodyPhase*2)+.24*Math.sin(bodyPhase*4);
-      const core=plasma*(flavor==='electric'?.15:.04)*Math.exp(-age*55)+punch*.52*Math.exp(-age*29);
-      const crack=grit*3.9*Math.exp(-age*65)+spark*.42*Math.exp(-age*145);
-      const pressure=lo*1.8*Math.exp(-age*30);
-      sound+=(core+crack+pressure)*onset*(.85+shot.round*.05);
-      // A separate short flight and contact, rather than one repeated UI-like note.
+      // Rounded "po-po-po": a short low-mid pitch drop, soft harmonics and little air.
+      // Keep each attack distinct at 65 ms spacing; no hard crack or metallic top.
+      const pitch=flavor==='pressure'?.88:1;
+      const phase=2*Math.PI*variant*pitch*(155*age+115*.012*(1-Math.exp(-age/.012)));
+      const body=Math.sin(phase)+.32*Math.sin(phase*2)+.075*Math.sin(phase*3);
+      const pop=body*.94*(1-Math.exp(-age*950))*Math.exp(-age*48);
+      const breath=(lo*.18+grit*.10)*onset*Math.exp(-age*78);
+      sound+=(pop+breath)*(.94+shot.round*.025);
       const travel=age-.008;
-      if(travel>0&&travel<.045)sound+=spark*.38*Math.sin(Math.PI*travel/.045)*(1-travel/.045);
+      if(travel>0&&travel<.045)sound+=spark*.035*Math.sin(Math.PI*travel/.045)*(1-travel/.045);
       const contact=age-RABBIT_FLIGHT.shot*scale;
       if(contact>0){
-        const env=(1-Math.exp(-contact*850))*Math.exp(-contact*36);
-        const thud=Math.sin(2*Math.PI*132*contact)+.48*Math.sin(2*Math.PI*264*contact)+.18*Math.sin(2*Math.PI*528*contact);
-        sound+=(grit*3.4+lo*1.3+thud*.6)*env;
-        const slap=contact-.018;
-        if(slap>0)sound+=grit*.65*(1-Math.exp(-slap*700))*Math.exp(-slap*48);
+        const env=(1-Math.exp(-contact*700))*Math.exp(-contact*52);
+        const thud=Math.sin(2*Math.PI*108*contact)+.28*Math.sin(2*Math.PI*216*contact);
+        sound+=(lo*.16+grit*.12+thud*.18)*env;
       }
     }
     // Pressure leaving the four clock emitters precedes the combined landing.
