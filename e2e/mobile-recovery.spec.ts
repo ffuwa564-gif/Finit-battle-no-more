@@ -10,6 +10,7 @@ async function prepare(page: Page) {
     const resume = AudioContext.prototype.resume;
     AudioContext.prototype.resume = function () {
       w.resumeCalls++;
+      if (!w.gameContext || w.gameContext.state === 'closed') w.gameContext = this;
       return w.blockResume ? new Promise<void>(() => {}) : resume.call(this);
     };
     const connect = AudioNode.prototype.connect;
@@ -36,7 +37,7 @@ async function prepare(page: Page) {
   await page.evaluate(async () => { await (await import('/src/platform/audio.ts')).enableAudio(); });
   await expect.poll(() => page.evaluate(() => (window as any).audioMeters.length)).toBeGreaterThan(0);
   await page.waitForTimeout(350);
-  await page.evaluate(() => { const w = window as any; w.seContext = w.audioMeters.at(-1).context; });
+  await page.evaluate(() => { const w = window as any; w.seContext = w.gameContext; });
 }
 async function rms(page: Page) {
   return page.evaluate(() => Math.max(0, ...(window as any).audioMeters.map((meter: AnalyserNode) => {
@@ -85,7 +86,7 @@ test('foreground restores real synth output, and a trusted silent tap retries an
   });
   // No Button, no game:ui and no command: global gesture recovery owns this case.
   await page.locator('.battle-scene').click({ position: { x: 15, y: 110 } });
-  await expect.poll(() => page.evaluate(() => (window as any).resumeCalls > (window as any).callsBeforeTap)).toBe(true);
+  expect(await page.evaluate(() => (window as any).resumeCalls - (window as any).callsBeforeTap)).toBeGreaterThan(0);
   await expect.poll(() => page.evaluate(() => (window as any).seContext.state)).toBe('running');
   await audible(page);
   // Repeat automatic lifecycle recovery without a click.
@@ -97,8 +98,8 @@ test('foreground restores real synth output, and a trusted silent tap retries an
 test('a closed engine rebuilds its graph; returning never unmutes saved SE settings', async ({ page }) => {
   await prepare(page);
   await page.evaluate(async () => { await (window as any).seContext.close(); window.dispatchEvent(new Event('focus')); });
-  await expect.poll(() => page.evaluate(() => { const w = window as any; return w.audioMeters.at(-1).context !== w.seContext && w.audioMeters.at(-1).context.state === 'running'; })).toBe(true);
-  await page.evaluate(() => { const w = window as any; w.seContext = w.audioMeters.at(-1).context; });
+  await expect.poll(() => page.evaluate(() => { const w = window as any; return w.gameContext !== w.seContext && w.gameContext.state === 'running'; })).toBe(true);
+  await page.evaluate(() => { const w = window as any; w.seContext = w.gameContext; });
   await audible(page);
   await page.getByRole('button', { name: '効果音をミュート', exact: true }).click();
   await page.waitForTimeout(350);
