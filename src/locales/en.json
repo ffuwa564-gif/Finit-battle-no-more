@@ -2021,5 +2021,21 @@
   "{0}：行動を選ぶ": "{0}: Choose an action",
   "左端の顔を長押しして、技までドラッグして離すと予約できるよ。顔へ戻せば取消、触らなければ自動！ 演出中の予約は次ラウンドに反映されるの。ほかの仲間はゲージ100%で顔を押すと必殺技を予約・取消できるよ。枠の妖精は3ターン以内にタップすると全員のゲージが15%増えるよ！": "Hold the leftmost portrait, drag to an action and release to queue it. Move back to the portrait to cancel, or leave her on auto! Orders made during animations apply next round. Tap another ally at 100% gauge to queue or cancel their ultimate. Tap a fairy at the frame within three turns to give everyone 15% charge!",
   "仲間への指示": "Directing your party",
-  "味方{0}人": "{0} allies"
+  "味方{0}人": "{0} allies",
+  "連携予定": "Planned action",
+  "協撃相手": "Coordination partner",
+  "鎖のついた仲間を見て": "Watch the Linked Companion",
+  "この試練では、ATTACKを押す前に仲間の予定が見えるよ。鎖印は今回、息を合わせる相手。吹き出しの技と狙う敵を確かめてね。考えている間はラウンドが進まないから、ゆっくりで大丈夫！": "In this trial, you can see your companions' plans before pressing ATTACK. The chain marks the companion to coordinate with this round. Check her action and target in the bubble. The round waits for you, so take your time!",
+  "同じ敵へ、一緒に": "Strike the Same Enemy Together",
+  "相手が敵を狙うなら、左端の子も同じ敵を攻撃すると、与えるダメージが35%増えるよ。ページ送りで敵を表示してから、技を予約するかATTACKを押してね。相手が味方を支えるなら、守るか補助で待とう。": "If your linked companion targets an enemy, strike that enemy with your leftmost companion for 35% more damage. Browse to that enemy, then queue an action or press ATTACK. If she plans to help allies, defend or use a support action instead.",
+  "ひとりで飛び出すと……": "Rushing Ahead Alone...",
+  "違う敵を攻撃したり、相手が味方を支えるときに攻撃したりすると、ラウンドの最後に左端の子へ強い反撃が来るよ。最大HPの40%相当だけど、障壁や防御で軽減できるの。守りと補助はいつでも安全。予定の敵が先に倒れたり、相手が予定の技を使えなくなったりしても、読み違いにはならないよ。": "Attack a different enemy, or attack while your linked companion is helping allies, and your leftmost companion takes a heavy counterattack at the end of the round: 40% of her maximum HP before barriers and damage reduction. Defending and support actions are always safe. You will not be penalized if the planned enemy falls first or your linked companion cannot carry out her planned action.",
+  "誓鎖の稽古": "Oath-Chain Rehearsal",
+  "隣の一手を読み、同じ敵へ。": "Read your companion's move. Strike together.",
+  "アテナとアマテラスに同時に挑む連携の試練。印の付いた仲間の技と対象を見て、左端の行動を選びます。同じ敵への攻撃は35%強化。仲間が味方を支える時の攻撃や、別の敵への攻撃は、左端へ最大HP40%相当の反撃を招きます。防御・補助は安全。自動時は連携相手に合わせて攻撃か防御を選びます。1人編成では連携ルールなし。戦利品はなく、使用した薬は消費します。": "Face Athena and Amaterasu together in a coordination trial. Read the marked companion's action and target before choosing your leftmost companion's move. Strike the same enemy for 35% more damage. Attacking while your partner supports allies, or striking a different enemy, triggers a counterattack against your leftmost companion worth 40% of her maximum HP before damage reduction. Defense and support are safe. Auto follows your partner with a basic attack or defense. The coordination rule is disabled in solo parties. No loot; used potions are consumed.",
+  "（協撃）": "(Linked strike)",
+  "孤立反撃 — 仲間が支援中に単独攻撃": "Isolation counter — attacked while your partner was supporting allies",
+  "孤立反撃 — 連携対象{0}から外れた": "Isolation counter — wrong target (expected {0})",
+  "連携中断 — 仲間の予定が成立しなかったため反撃なし": "Coordination interrupted — no counter because your partner could not carry out her plan",
+  "予定不確定": "Uncertain action"
 }

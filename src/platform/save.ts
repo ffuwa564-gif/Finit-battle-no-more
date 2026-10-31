@@ -37,6 +37,7 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
+  if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
   if (record(value) && value.actionSelection !== undefined && typeof value.actionSelection !== 'boolean') return false;
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
   for (const key of ['actorId', 'skillId', 'materialId', 'ultimateName']) if (value[key] !== undefined && !nonempty(value[key])) return false;

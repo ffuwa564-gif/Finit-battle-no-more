@@ -30,7 +30,7 @@ export function FairyGuide({ save, page, suspended }: { save: GameSave; page: st
   const titleId = useId();
   const preparation = Boolean(geometry.modal?.isConnected && geometry.modal?.querySelector('[data-guide="depart"]'));
   const battle = save.battle;
-  const context: FairyTopic | null = preparation ? 'preparation' : battle ? battle.phase === 'ready' ? 'battle' : battle.phase === 'reward' ? content.dungeons.find(d => d.id === battle.dungeonId)?.kind === 'trial' ? 'trial-reward' : 'reward' : battle.phase === 'failed' ? 'failure' : null : Object.hasOwn(fairyLessons, page) ? page as FairyTopic : 'general';
+  const context: FairyTopic | null = preparation ? 'preparation' : battle ? battle.phase === 'ready' ? content.dungeons.find(d => d.id === battle.dungeonId)?.coordination ? 'coordination' : 'battle' : battle.phase === 'reward' ? content.dungeons.find(d => d.id === battle.dungeonId)?.kind === 'trial' ? 'trial-reward' : 'reward' : battle.phase === 'failed' ? 'failure' : null : Object.hasOwn(fairyLessons, page) ? page as FairyTopic : 'general';
   const active = !suspended && (!geometry.modal?.isConnected || preparation) && running && !progress.dismissed && context === progress.topic && !progress.seen.includes(context);
   const welcome = !suspended && !geometry.modal && !battle && page === 'home' && inviting && !running && !progress.dismissed;
   const lesson = fairyLessons[progress.topic][progress.step];

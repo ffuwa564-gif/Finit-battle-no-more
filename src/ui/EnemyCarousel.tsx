@@ -12,6 +12,7 @@ import type { BattleEvent, BossBitPattern, DungeonDef, Unit } from '../domain/ty
 
 export interface EnemyCarouselProps {
   targetId?: string;
+  fixedNumbers?: boolean;
   onTarget?: (unitId: string) => void;
   onDisplay?: (unitId: string) => void;
   units: Unit[];
@@ -29,7 +30,7 @@ export interface EnemyCarouselProps {
 const actionKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue']);
 
 /** Browsing only changes the front illustration; a battle command commits its target. */
-export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, onTarget, onDisplay }: EnemyCarouselProps) {
+export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, fixedNumbers = false, onTarget, onDisplay }: EnemyCarouselProps) {
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
@@ -137,7 +138,8 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
   const previousScene = content.assets.find(asset => asset.id === previousSceneId);
   const previousPortraitScene = Boolean(previousScene && previousScene.height > previousScene.width);
   const aliveIndex = available.findIndex(unit => unit.uid === front.uid);
-  const position = aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
+  const formationNumber = units.findIndex(unit => unit.uid === front.uid) + 1;
+  const position = fixedNumbers ? `${formationNumber} / ${units.length}` : aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
   return <div className={`enemy-carousel${portraitScene ? ' enemy-carousel--portrait' : ''}${reduced ? ' enemy-carousel--reduced' : ''}`}
     role="group" aria-label={tr("敵を切り替える")} tabIndex={canChange ? 0 : -1}
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
@@ -155,7 +157,7 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     <ClockBossStatus boss={front} pattern={bossClock} event={event} round={round} reducedMotion={reduced} />
     <ClockworkBits boss={front} pattern={bitPattern} event={event} round={round} />
     <div className="enemy-carousel-status">
-      <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
+      <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{fixedNumbers && <span className="enemy-formation-number">#{formationNumber} </span>}{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
       <HPBar hp={front.hp} maxHp={front.maxHp} label={tr(`${character.name}のHP`)} />
       <div className="enemy-carousel-meta">
         <span>Wave {localize(wave)}<small> / {localize(waveCount)}</small></span><span>ROUND {localize(round)}</span>
