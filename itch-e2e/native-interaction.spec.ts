@@ -10,6 +10,7 @@ async function preparation(page: Page) {
   const game = page.frameLocator('iframe');
   const begin = async () => {
     await game.getByRole('button', { name: /^(タップしてはじめる|Tap to Begin)$/ }).click({ timeout: 15000 });
+    await expect(game.locator('.title-screen')).toHaveCount(0, { timeout: 15000 });
     await skipStory(game);
   };
   await begin();
@@ -115,7 +116,7 @@ test('current party makes the first companion and leader independently selectabl
   await expect(formation.locator('[data-position="1"]')).toHaveAttribute('data-member-id', 'elaine');
   await page.screenshot({ path: info.outputPath('current-party-japanese-390.png') });
   await page.reload();
-  await game.getByRole('button', { name: 'タップしてはじめる', exact: true }).click(); await skipStory(game);
+  await game.getByRole('button', { name: 'タップしてはじめる', exact: true }).click(); await expect(game.locator('.title-screen')).toHaveCount(0, { timeout: 15000 }); await skipStory(game);
   await game.locator('.app-shell').evaluate(() => { location.hash = 'party'; });
   await expect(formation.locator('[data-position="1"]')).toHaveAttribute('data-member-id', 'elaine');
   await expect(formation.locator('[data-member-id="athena"]')).toContainText('リーダー');
