@@ -59,11 +59,15 @@ for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['
   }
   visit(source);
 }
-// Ready-state UI must consume public gestures, never the engine's private commitments.
-for (const file of [...walk('src/ui'), ...walk('src/screens')].filter(path => /\.tsx?$/.test(path))) {
+// Media and portals have one typed boundary, so a new screen cannot bypass the
+// native-gesture policy by rendering an image or opening a body portal directly.
+for (const file of walk('src').filter(path => /\.tsx?$/.test(path))) {
   const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   const visit = (node: ts.Node) => {
-    if (ts.isIdentifier(node) && ['companionCommitments', 'coordinationPlan'].includes(node.text)) report(file, node, source, 'Private companion commands must not be read by the presentation layer; use public companion signals.');
+    if (file !== 'src/ui/GamePortal.tsx' && ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier) && node.moduleSpecifier.text === 'react-dom') report(file, node, source, 'Use createGamePortal; raw portals bypass the shared native-interaction surface.');
+    if (file !== 'src/ui/GamePortal.tsx' && ts.isCallExpression(node) && (ts.isIdentifier(node.expression) && node.expression.text === 'createPortal' || ts.isPropertyAccessExpression(node.expression) && node.expression.name.text === 'createPortal')) report(file, node, source, 'Raw portals are forbidden; use createGamePortal.');
+    if (file !== 'src/ui/GameMedia.tsx' && (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) && ['img', 'video'].includes(node.tagName.getText(source))) report(file, node, source, 'Use GameImage/GameVideo; native artwork must not own hold gestures.');
+    if (/^src\/(ui|screens)\//.test(file) && ts.isIdentifier(node) && ['companionCommitments', 'coordinationPlan'].includes(node.text)) report(file, node, source, 'Private companion commands must not be read by the presentation layer; use public companion signals.');
     ts.forEachChild(node, visit);
   };
   visit(source);

@@ -1,5 +1,5 @@
 import { gemSkill } from '../domain/memory-gems';
-import { createPortal } from 'react-dom';
+import { createGamePortal } from './GamePortal';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Heart, HeartPulse, Shield, ShieldCheck, Sparkles, Swords, Sword, Crosshair, WandSparkles, X, RotateCcw, Eye, Hand, MoreHorizontal, CircleHelp } from 'lucide-react';
 import { Button, CharacterPortrait } from './index';
@@ -103,7 +103,7 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
     <CharacterPortrait variant="face" compact showRole={false} showName={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} disabled={!enabled} label={tr(`${characterById(unit.characterId).name}：行動を選ぶ`)} onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } open(); requestAnimationFrame(() => document.querySelector<HTMLButtonElement>('.command-dial__choice[aria-pressed="true"]')?.focus()); }} />
     <span className="party-pilot__mark" aria-hidden="true">Ⅰ</span>
     {effectiveOrder && queued && <span className="party-command-badge" role="status" aria-label={tr('行動を予約') + ': ' + tr(queued.label)}><ChoiceIcon template={queued.id === 'ultimate' ? 'ultimate' : queued.template} /></span>}
-    {anchor && createPortal(<div className="command-dial-layer" onKeyDown={e => { if (e.key === 'Escape') { e.preventDefault(); close(); } }}>
+    {anchor && createGamePortal(<div className="command-dial-layer" onKeyDown={e => { if (e.key === 'Escape') { e.preventDefault(); close(); } }}>
       <button className="command-dial-dismiss" type="button" aria-label={tr('取消')} onClick={() => choose()} />
       <div role="group" aria-label={tr('行動を選ぶ')} className="command-dial" style={{ left: anchor.x, top: anchor.y } as CSSProperties}>
         <svg className="command-dial__arc" viewBox="-112 -112 224 224" aria-hidden="true" style={{ transform: `scale(${radius / 88})` }}><path d="M 15 -87 A 88 88 0 0 1 15 87" /></svg>
@@ -150,7 +150,7 @@ export function CompanionChoice({ unit, battle, index, reducedMotion, hidden, si
   const Gesture = signal?.cue === 'weapon' ? Hand : signal?.cue === 'watch' ? Eye : signal?.cue === 'uncertain' ? CircleHelp : MoreHorizontal;
   const bubbleContents = signal ? <><Gesture aria-hidden="true" size={14} /><span className="companion-choice__text"><span className="companion-choice__label">{tr(label)}</span></span></> : stage === 'choosing' ? <span className="companion-choice__options" aria-hidden="true"><Sword size={13} /><Shield size={13} /><ChoiceIcon template={template} /><i /></span> : <><ChoiceIcon template={template} /><span className="companion-choice__text"><span className="companion-choice__label">{tr(label)}</span>{target && <small className="companion-choice__target">→ {target}</small>}</span></>;
   return <span ref={host} className={`companion-choice${stage === 'choosing' ? ' is-choosing' : ''}${reducedMotion ? ' is-reduced' : ''}`} data-choice-state={stage} data-choice-skill={upcoming?.skillId ?? upcoming?.kind} aria-label={signal ? tr('仲間の仕草') : tr(label) + (target ? ' → ' + target : '')}>
-    {position && createPortal(signal ? <button type="button" className="companion-choice__bubble companion-signal" data-choice-state="reading" style={position} onClick={() => { emitUISound('confirm'); onInspect?.(); }} aria-label={tr(`${characterById(unit.characterId).name}の戦い方`)}>{bubbleContents}</button> : <span className="companion-choice__bubble" data-choice-state={stage} style={position}>{bubbleContents}</span>, document.body)}
+    {position && createGamePortal(signal ? <button type="button" className="companion-choice__bubble companion-signal" data-choice-state="reading" style={position} onClick={() => { emitUISound('confirm'); onInspect?.(); }} aria-label={tr(`${characterById(unit.characterId).name}の戦い方`)}>{bubbleContents}</button> : <span className="companion-choice__bubble" data-choice-state={stage} style={position}>{bubbleContents}</span>, document.body)}
     {!signal && <span className="companion-choice__badge"><ChoiceIcon template={template} /></span>}
   </span>;
 }

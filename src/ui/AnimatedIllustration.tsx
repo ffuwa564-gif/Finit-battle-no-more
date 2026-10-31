@@ -1,3 +1,4 @@
+import { GameImage, GameVideo } from './GameMedia';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
@@ -81,8 +82,8 @@ export function AnimatedIllustration({ posterId, motionId, alt, reducedMotion, l
   };
 
   return <div ref={root} className={`animated-illustration${allowed && ready ? ' is-ready' : ''}`} data-animation-state={!allowed ? 'static' : failed ? 'error' : blocked ? 'blocked' : !ready ? 'loading' : playing && active ? 'playing' : 'paused'}>
-    <img className="animated-illustration__art" src={assetPath(matchingPosterId)} alt={tr(alt)} />
-    <video ref={video} className="animated-illustration__art animated-illustration__video" src={allowed && activated ? assetPath(motionId) : undefined} poster={assetPath(matchingPosterId)} muted autoPlay={active && !blocked} playsInline loop preload={active ? 'auto' : 'none'} disablePictureInPicture tabIndex={-1} aria-hidden="true" onLoadedData={() => setReady(true)} onPlaying={() => { setReady(true); setPlaying(true); setBlocked(false); }} onPause={() => setPlaying(false)} onError={event => { if (event.currentTarget.error && event.currentTarget.getAttribute('src')) { setFailed(true); setReady(false); setPlaying(false); } }} />
+    <GameImage className="animated-illustration__art" src={assetPath(matchingPosterId)} alt={tr(alt)} />
+    <GameVideo ref={video} className="animated-illustration__art animated-illustration__video" src={allowed && activated ? assetPath(motionId) : undefined} poster={assetPath(matchingPosterId)} muted autoPlay={active && !blocked} playsInline loop preload={active ? 'auto' : 'none'} disablePictureInPicture tabIndex={-1} aria-hidden="true" onLoadedData={() => setReady(true)} onPlaying={() => { setReady(true); setPlaying(true); setBlocked(false); }} onPause={() => setPlaying(false)} onError={event => { if (event.currentTarget.error && event.currentTarget.getAttribute('src')) { setFailed(true); setReady(false); setPlaying(false); } }} />
     {localize(controls && allowed && activated && <Button variant="icon" className="animated-illustration__toggle" aria-label={tr(`${label}のアニメーションを${playing ? '停止' : '再生'}`)} title={tr(failed ? 'アニメーションを再読み込み' : playing ? 'アニメーションを停止' : 'アニメーションを再生')} onClick={toggle}>{localize(playing ? <Pause size={16} /> : <Play size={16} />)}</Button>)}
   </div>;
 }

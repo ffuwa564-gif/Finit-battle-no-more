@@ -35,8 +35,14 @@ test('saved barriers, regeneration and defense reduction are visible in battle',
     await persistSave(save, previous.revision);
   });
   await page.reload(); await enterGame(page);
-  await expect(page.locator('.party-strip .unit-effects').first()).toContainText('障壁 40');
-  await expect(page.locator('.party-strip .unit-effects').first()).toContainText('再生');
+  const summary = page.locator('.party-strip .unit-effects-summary').first();
+  await expect(summary).toHaveAttribute('aria-label', /障壁 40/);
+  await expect(summary).toHaveAttribute('aria-label', /再生/);
+  await summary.click();
+  const details = page.getByRole('dialog', { name: '付与効果', exact: true });
+  await expect(details).toContainText('障壁 40');
+  await expect(details).toContainText('再生');
+  await details.getByRole('button', { name: '閉じる', exact: true }).click();
   await expect(page.locator('.enemy-carousel-status .unit-effects')).toContainText('防御↓');
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
 });
@@ -80,8 +86,8 @@ test('Athena rally explains its cooldown and shows the attack boost on every all
     await persistSave(save, previous.revision);
   });
   await page.reload(); await enterGame(page);
-  await expect(page.locator('.party-strip .unit-effects')).toHaveCount(4);
-  for (const effect of await page.locator('.party-strip .unit-effects').all()) await expect(effect).toContainText('攻撃↑');
+  await expect(page.locator('.party-strip .unit-effects-summary')).toHaveCount(4);
+  for (const effect of await page.locator('.party-strip .unit-effects-summary').all()) await expect(effect).toHaveAttribute('aria-label', /攻撃↑/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   await page.screenshot({ path: 'artifacts/rally/battle-390.png' });
 });

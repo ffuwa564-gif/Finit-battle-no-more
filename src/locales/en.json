@@ -2544,5 +2544,16 @@
   "目標の技効果": "Target skill effect",
   "手持ちの技効果": "Owned skill effect",
   "実演の舞台：{0}": "Demonstration location: {0}",
-  "T6の技効力と、狙った特性を磨く任意の長期目標。T6の技効力は新たなドロップで探す。最上階の突破を保証するものではない。": "An optional long-term goal: Tier 6 skill power and a refined desired trait. Find new drops for Tier 6 power. This does not guarantee clearing the summit."
+  "T6の技効力と、狙った特性を磨く任意の長期目標。T6の技効力は新たなドロップで探す。最上階の突破を保証するものではない。": "An optional long-term goal: Tier 6 skill power and a refined desired trait. Find new drops for Tier 6 power. This does not guarantee clearing the summit.",
+  "現在の編成": "Current Party",
+  "先頭は戦闘中の操作役、リーダーは全体効果を担当します。": "The first companion is directly controlled in battle. The leader provides the party bonus.",
+  "編成枠": "Party Slots",
+  "先頭・操作役": "First · Controlled",
+  "仲間を選ぶ": "Choose a companion",
+  "選択中": "Selected",
+  "詳細を見る": "View Details",
+  "先頭に設定済み": "Already First",
+  "この仲間を先頭に": "Move to First",
+  "リーダーに設定済み": "Current Leader",
+  "この仲間をリーダーに": "Make Leader"
 }

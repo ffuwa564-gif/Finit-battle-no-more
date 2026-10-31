@@ -1,3 +1,4 @@
+import { GameImage } from './GameMedia';
 import { MemoryGemSource } from './MemoryGemFind';
 import { useState } from 'react';
 import { ArrowRight, Check, Crown, Hexagon, LockKeyhole } from 'lucide-react';
@@ -33,12 +34,12 @@ export function CampaignDungeons({ content, save, busy, onSelect, onInspect }: {
       })}
     </div>
     <header className="chapter-heading"><span className="eyebrow">{tr(`第${chapter.number}章`)}</span><h2>{tr(chapter.title)}</h2><p>{tr(chapter.subtitle)}</p><div className="chapter-progress"><span>{tr(`踏破 ${cleared} / ${stages.length}`)}</span><span>{tr('各探索の初踏破で石3個')}</span></div><progress value={cleared} max={stages.length} aria-label={tr('章の踏破状況')} /></header>
-    <Panel className="chapter-boss"><Button variant="icon" className="chapter-boss__portrait" aria-label={tr(boss.name)} onClick={() => onInspect(boss)}><img src={assetPath(boss.artId)} alt="" style={{objectPosition:boss.id === 'stone-drake' ? '80% 20%' : '50% 0%'}} /></Button><div><span className="eyebrow"><Crown size={12} /> {tr('章末ボス')}</span><h3>{tr(boss.name)}</h3><p>{tr(chapter.bossHint)}</p></div></Panel>
+    <Panel className="chapter-boss"><Button variant="icon" className="chapter-boss__portrait" aria-label={tr(boss.name)} onClick={() => onInspect(boss)}><GameImage src={assetPath(boss.artId)} alt="" style={{objectPosition:boss.id === 'stone-drake' ? '80% 20%' : '50% 0%'}} /></Button><div><span className="eyebrow"><Crown size={12} /> {tr('章末ボス')}</span><h3>{tr(boss.name)}</h3><p>{tr(chapter.bossHint)}</p></div></Panel>
     <div className="dungeon-list">{stages.map((stage, index) => {
       const lock = dungeonLock(stage, save, content), complete = save.completedDungeonIds.includes(stage.id);
       const finale = stage.id === final.id;
       return <Panel className={`dungeon-card${finale ? ' dungeon-card--finale' : ''}`} key={stage.id}>
-        <div className="dungeon-image"><img src={assetPath(stage.artId)} alt="" /><span className="dungeon-index">{chapter.number}-{index + 1}</span>{complete && <span className="clear-label"><Check size={12} />{tr(' 踏破済')}</span>}</div>
+        <div className="dungeon-image"><GameImage src={assetPath(stage.artId)} alt="" /><span className="dungeon-index">{chapter.number}-{index + 1}</span>{complete && <span className="clear-label"><Check size={12} />{tr(' 踏破済')}</span>}</div>
         <div className="dungeon-info"><span className="eyebrow">{stage.waves.length} WAVES · {tr(finale ? '章末ボス' : '探索')}</span><h2>{tr(stage.name)}</h2><p>{tr(stage.subtitle)}</p>
           <div className="dungeon-meta"><span><Hexagon size={14} />{tr(' 難易度 ')}{dungeonDifficulty(stage, content).toFixed(1)}</span><span><CurrencyEmblem kind="stone" size={14} /> {tr(complete ? '初踏破報酬 受取済' : '初踏破 石3個')}</span></div>
           <MemoryGemSource dungeon={stage} compact />{stage.bossLoot && <p className="dungeon-loot">{stage.bossLoot.guaranteed.map(cost => `${tr(materialName(cost.materialId))} ×${cost.count}`).join(' / ')}</p>}
