@@ -1,0 +1,52 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 23.5,
+  "source": "v21 game-score.wav: exact familiar pre-ultimate charge resampled higher and stronger at each pass; synchronized cubic camera pulse; no bell motif",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 15.416666666666668,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 10.278170715192623
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 15.3359161462678
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 21.114639669137745
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 16.690119654884853
+    },
+    {
+      "at": 12.75,
+      "effectsOverMusicDb": 11.959413751865855
+    },
+    {
+      "at": 12.815000000000001,
+      "effectsOverMusicDb": 15.97625610987183
+    },
+    {
+      "at": 12.879999999999999,
+      "effectsOverMusicDb": 16.912450795783624
+    },
+    {
+      "at": 12.945,
+      "effectsOverMusicDb": 16.453151087949664
+    },
+    {
+      "at": 15.416666666666668,
+      "effectsOverMusicDb": 17.889247942258205
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1
+}

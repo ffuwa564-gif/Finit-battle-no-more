@@ -1,0 +1,25 @@
+{
+  "freshCapture": true,
+  "frames": 264,
+  "duration": 8.8,
+  "loopCameraPeaks": [
+    {
+      "pass": 1,
+      "peakZoom": 1.17939,
+      "frame": 145,
+      "sourceTime": 4.833333333333333,
+      "semitones": 0
+    },
+    {
+      "pass": 2,
+      "peakZoom": 1.31957,
+      "frame": 171,
+      "sourceTime": 5.7,
+      "semitones": 7
+    }
+  ],
+  "all9DamageSteps": true,
+  "totalHpLoss": 437,
+  "finalHitNoFlyingBolts": true,
+  "maxWhite": 1
+}
