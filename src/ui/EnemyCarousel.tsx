@@ -25,13 +25,14 @@ export interface EnemyCarouselProps {
   wave: number;
   waveCount: number;
   round: number;
+  roundLimit?: number;
   materials: number;
 }
 
 const actionKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue']);
 
 /** Browsing only changes the front illustration; a battle command commits its target. */
-export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, fixedNumbers = false, onTarget, onDisplay }: EnemyCarouselProps) {
+export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, roundLimit, materials, targetId, fixedNumbers = false, onTarget, onDisplay }: EnemyCarouselProps) {
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
@@ -180,7 +181,7 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
       <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{fixedNumbers && <span className="enemy-formation-number">#{formationNumber} </span>}{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
       <HPBar hp={front.hp} maxHp={front.maxHp} label={tr(`${character.name}のHP`)} />
       <div className="enemy-carousel-meta">
-        <span>Wave {localize(wave)}<small> / {localize(waveCount)}</small></span><span>ROUND {localize(round)}</span>
+        <span>Wave {localize(wave)}<small> / {localize(waveCount)}</small></span><span>ROUND {localize(round)}{roundLimit && <small> / {localize(roundLimit)}</small>}</span>
         <span className="enemy-carousel-meta__bag" data-bag aria-label={tr(`仮取得素材 ${materials}個`)}><Backpack size={15} /><strong>{localize(materials)}</strong></span>
       </div>
       <UnitEffects unit={front} round={round} />

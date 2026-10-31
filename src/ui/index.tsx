@@ -183,3 +183,5 @@ export { PartyCommandDial, CompanionChoice } from './PartyCommandDial';
 export { MemoryGems, MemoryGemSigil } from './MemoryGems';
 export { InventorySection, type InventorySectionProps } from './InventorySection';
 export { MemoryGemFind, MemoryGemSource, MemoryGemSummary } from './MemoryGemFind';
+
+export { IvoryTower } from './IvoryTower';

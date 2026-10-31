@@ -27,7 +27,8 @@
     "edit:cm": "python scripts/edit-heisei-cm.py",
     "export:motion-posters": "tsx scripts/export-motion-posters.ts",
     "capture:battle-guide": "tsx scripts/capture-battle-guide.ts && python scripts/edit-battle-guide.py",
-    "balance:difficulty": "tsx scripts/balance-difficulty.ts"
+    "balance:difficulty": "tsx scripts/balance-difficulty.ts",
+    "balance:tower": "tsx scripts/balance-tower.ts"
   },
   "dependencies": {
     "gsap": "^3.14.0",

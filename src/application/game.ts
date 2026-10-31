@@ -1,4 +1,5 @@
-import { emptyGemInventory, equipGem, salvageGem, lockGem, craftGem, rollGemDrop, dungeonGemFamily, gemName } from '../domain/memory-gems';
+import { towerDustReward } from '../domain/ivory-tower';
+import { emptyGemInventory, equipGem, salvageGem, lockGem, craftGem, rollGemDrop, dungeonGemFamily, gemName, startGemRefinement, resolveGemRefinement } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
 import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domain/novels';
 import { ultimateReady } from '../domain/ultimates';
@@ -53,7 +54,7 @@ function syncMemoryGems(save: GameSave): void {
 function secureMemoryChest(save: GameSave, wave: number, content: Content): void {
   const battle = save.battle!;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId)!;
-  if (dungeon.kind === 'trial') return;
+  if (dungeon.kind === 'trial' || dungeon.towerFloor && wave !== dungeon.waves.length - 1) return;
   const key = `${battle.id}:wave:${wave}`;
   if (battle.gemChestChecks?.includes(key)) return;
   battle.gemChestChecks = [...(battle.gemChestChecks ?? []), key];
@@ -89,6 +90,21 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
   switch (command.type) {
+    case 'startGemRefinement': {
+      town(save);
+      if (!['power', 'trait'].includes(command.mode)) fail('記憶石の調律方法が正しくありません。');
+      const result = startGemRefinement(save.memoryGems ??= emptyGemInventory(), command.gemId, command.mode, save.seed);
+      save.seed = result.seed;
+      log(save, '記憶石の調律結果を確認してください。');
+      break;
+    }
+    case 'resolveGemRefinement': {
+      town(save);
+      if (typeof command.accept !== 'boolean') fail('記憶石の調律結果を選んでください。');
+      resolveGemRefinement(save.memoryGems ??= emptyGemInventory(), command.accept);
+      log(save, command.accept ? '記憶石に新しい調律結果を採用しました。' : '記憶石の元の性能を残しました。');
+      break;
+    }
     case 'equipMemoryGem': {
       if (!save.ownedIds.includes(command.characterId)) fail('所持している仲間を選んでください。');
       if (save.battle && (save.battle.phase !== 'ready' || save.battle.round !== 1 || save.battle.potionUsed)) fail('記憶石は街かウェーブ開始時に装備してください。');
@@ -164,6 +180,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
 
     case 'depart': {
       town(save);
+      if (save.memoryGems?.pending) fail('記憶石の調律結果を選んでから探索に出発してください。');
       validateParty(save, save.partyIds, save.leaderId, content);
       const dungeon = content.dungeons.find(item => item.id === command.dungeonId && item.published);
       if (!dungeon) fail('このダンジョンには出発できません。');
@@ -262,7 +279,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
         save.gold += 20;
         const inventory = save.memoryGems ??= emptyGemInventory();
         const family = dungeonGemFamily(dungeon);
-        inventory.dust[family] = (inventory.dust[family] ?? 0) + 1;
+        inventory.dust[family] = (inventory.dust[family] ?? 0) + (dungeon.towerFloor ? towerDustReward(dungeon) : 1);
       }
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);

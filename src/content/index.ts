@@ -1,3 +1,4 @@
+import { ivoryTowerDungeons } from './ivory-tower';
 import { lunetteUltimateArt } from './lunette-ultimate';
 import { titleArt } from './title-art';
 import { storyMilestones } from './story-milestones';
@@ -256,7 +257,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...zakuroDungeons, ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, coordinationTrial];
+const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...zakuroDungeons, ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, coordinationTrial, ...ivoryTowerDungeons];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: rareEnemyArt[char.id] ? `art/${rareEnemyArt[char.id]}.png` : char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}),
