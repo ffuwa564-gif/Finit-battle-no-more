@@ -1,0 +1,20 @@
+[
+  {
+    "label": "A_Electric",
+    "width": 720,
+    "height": 1280,
+    "duration": 5,
+    "muted": false,
+    "error": null,
+    "seeks": "passed"
+  },
+  {
+    "label": "B_Pressure",
+    "width": 720,
+    "height": 1280,
+    "duration": 5,
+    "muted": false,
+    "error": null,
+    "seeks": "passed"
+  }
+]

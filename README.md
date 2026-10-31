@@ -1,3 +1,16 @@
+## 最新試作：ルネット必殺技・5秒の単体比較
+
+巻き鍵の合図→4体展開→連射ごとの敵の受け身→短い間→集中射撃・ホワイトアウトへ再構成。合計ダメージを最後まで待って表示します。同じ映像・同程度の音量、BGMなしの2案です。
+
+- [A：電撃寄りの射撃・720p](Lunette-Ultimate-Study-v1/STILLVEIL_Lunette_Ultimate_Study_v1_A_Electric_720p.mp4)
+- [B：圧力砲寄りの射撃・720p](Lunette-Ultimate-Study-v1/STILLVEIL_Lunette_Ultimate_Study_v1_B_Pressure_720p.mp4)
+- [制作・収録について](Lunette-Ultimate-Study-v1/README.txt)
+- [ゲーム側のPR #116](https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/116)
+
+新しい5秒演出を実際のゲームから撮影しました。PV全編の更新・itch.ioへの配信は行っていません。
+
+---
+
 ## 最新：ルネットPV v12（ホワイトアウト・射撃音再制作）
 
 最後の締め撃ちで戦闘画面全体をホワイトアウト。残していた召喚バフ音も外し、追加のbuff/confirm/select/tap音を撤去しました。射撃は下降する電気的な音程・中低域の圧力・立ち上がり・暗い残響を別々に合成し直しています。20秒です。

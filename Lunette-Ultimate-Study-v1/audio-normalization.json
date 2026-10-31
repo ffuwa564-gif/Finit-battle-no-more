@@ -1,0 +1,32 @@
+[
+  {
+    "flavor": "electric",
+    "measurement": {
+      "input_i": "-14.26",
+      "input_tp": "-1.16",
+      "input_lra": "1.50",
+      "input_thresh": "-25.25",
+      "output_i": "-15.29",
+      "output_tp": "-2.35",
+      "output_lra": "1.10",
+      "output_thresh": "-26.34",
+      "normalization_type": "dynamic",
+      "target_offset": "-0.71"
+    }
+  },
+  {
+    "flavor": "pressure",
+    "measurement": {
+      "input_i": "-14.35",
+      "input_tp": "-1.16",
+      "input_lra": "1.50",
+      "input_thresh": "-25.34",
+      "output_i": "-15.27",
+      "output_tp": "-2.09",
+      "output_lra": "1.10",
+      "output_thresh": "-26.32",
+      "normalization_type": "dynamic",
+      "target_offset": "-0.73"
+    }
+  }
+]

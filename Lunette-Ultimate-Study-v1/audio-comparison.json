@@ -1,0 +1,11 @@
+{
+  "A_Electric": {
+    "lowMidEnergyFraction": 0.18965496122837067,
+    "highEnergyFraction": 0.2842915952205658
+  },
+  "B_Pressure": {
+    "lowMidEnergyFraction": 0.48964643478393555,
+    "highEnergyFraction": 0.1797921359539032
+  },
+  "waveformCorrelation": 0.8808941504536828
+}
