@@ -27,6 +27,11 @@ export function createRabbitBattleMotion(root: HTMLElement, targetIds: string[],
     }
     frame=requestAnimationFrame(draw);
   };
-  frame=requestAnimationFrame(draw);
-  return()=>{cancelAnimationFrame(frame);for(const element of originals.keys())restore(element);};
+  const visibility=()=>{
+    cancelAnimationFrame(frame);
+    if(document.hidden){for(const element of originals.keys())restore(element);}
+    else frame=requestAnimationFrame(draw);
+  };
+  document.addEventListener('visibilitychange',visibility);visibility();
+  return()=>{cancelAnimationFrame(frame);document.removeEventListener('visibilitychange',visibility);for(const element of originals.keys())restore(element);};
 }
