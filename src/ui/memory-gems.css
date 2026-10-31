@@ -153,3 +153,5 @@
 @media(min-width:700px) { .memory-gems__grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media(max-width:360px) { .memory-gems { padding: 13px; } .memory-gems__grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .memory-gems__character-select { align-items: stretch; flex-direction: column; gap: 5px; } .memory-gems__character-select>svg { bottom: 12px; } .memory-gems__slot { flex-wrap: wrap; } .memory-gems__dust { gap: 4px; } }
 @media(prefers-reduced-motion:reduce) { .memory-gems *, .memory-gems *::before, .memory-gems *::after { transition:none!important; animation:none!important; } }
+
+.memory-gems__target-craft{border:1px solid #c9b38780;border-radius:15px;padding:16px;background:#243447;margin:14px 0;color:#e4e8ee}.memory-gems__target-craft h3{display:flex;align-items:center;gap:8px;margin:0;font:20px var(--font-display);color:#eddbb7}.memory-gems__target-craft p{font-size:12px;line-height:1.85;color:#cbd6e4}.memory-gems__target-craft>.button{width:100%;white-space:normal}

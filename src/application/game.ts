@@ -1,3 +1,4 @@
+import { getBuildDefinition, getBuildPlan, isBuildStage } from '../domain/builds';
 import { towerDustReward } from '../domain/ivory-tower';
 import { emptyGemInventory, equipGem, salvageGem, lockGem, craftGem, rollGemDrop, dungeonGemFamily, gemName, startGemRefinement, resolveGemRefinement } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
@@ -90,6 +91,32 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
   switch (command.type) {
+    case 'trackBuild': {
+      town(save);
+      const stage = command.stage ?? 'starter';
+      if (!isBuildStage(stage)) fail('ビルドの段階が正しくありません。');
+      if (command.buildId === null) { delete save.buildGoal; break; }
+      if (!getBuildDefinition(command.buildId)) fail('そのビルドは見つかりません。');
+      save.buildGoal = { buildId: command.buildId, stage };
+      log(save, '目標のビルドを記録しました。');
+      break;
+    }
+    case 'applyBuild': {
+      town(save);
+      if (!isBuildStage(command.stage) || !getBuildDefinition(command.buildId)) fail('そのビルドは見つかりません。');
+      if (save.memoryGems?.pending) fail('先に調律の結果を選んでください。');
+      const plan = getBuildPlan(content, save, command.buildId, command.stage);
+      if (!plan.canApply || !plan.leaderId || !save.memoryGems) fail('ビルドの核となる仲間と記憶石をそろえてください。');
+      validateParty(save, plan.partyIds, plan.leaderId, content);
+      for (const slot of plan.slots) {
+        if (!slot.characterId || !slot.gem) fail('ビルドの装備がそろっていません。');
+        equipGem(save.memoryGems, slot.characterId, slot.gem.id, { transfer: true });
+      }
+      save.partyIds = [...plan.partyIds];
+      save.leaderId = plan.leaderId;
+      log(save, '所持品でビルドを編成しました。');
+      break;
+    }
     case 'startGemRefinement': {
       town(save);
       if (!['power', 'trait'].includes(command.mode)) fail('記憶石の調律方法が正しくありません。');

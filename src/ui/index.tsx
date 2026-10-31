@@ -1,3 +1,5 @@
+export { BuildPlanner } from './BuildPlanner';
+export { BuildGoalSummary } from './BuildGoalSummary';
 export { VisualNovel, NovelLibrary } from './VisualNovel';
 export { FairyGuide, FairyGuideButton } from './FairyGuide';
 export { XRGacha } from './XRGacha';

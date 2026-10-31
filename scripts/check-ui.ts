@@ -46,14 +46,14 @@ function checkInventoryDefaults(node: ts.Node): void {
   ts.forEachChild(node, checkInventoryDefaults);
 }
 checkInventoryDefaults(inventorySource);
-for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['src/ui/MemoryGems.tsx', 'MemoryGems'], ['src/ui/IvoryTower.tsx', 'IvoryTower']]) {
+for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['src/ui/MemoryGems.tsx', 'MemoryGems'], ['src/ui/IvoryTower.tsx', 'IvoryTower'], ['src/ui/BuildPlanner.tsx', 'BuildPlanner']]) {
   const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   function visit(node: ts.Node, inInventory = false, collapsed = false): void {
     const scope = inInventory || ts.isFunctionDeclaration(node) && node.name?.text === functionName;
     const section = ts.isJsxElement(node) && node.openingElement.tagName.getText(source) === 'InventorySection';
     if (scope && !collapsed && ts.isJsxOpeningElement(node)) {
       const className = node.attributes.properties.find(prop => ts.isJsxAttribute(prop) && prop.name.getText(source) === 'className') as ts.JsxAttribute | undefined;
-      if (className?.initializer && ts.isStringLiteral(className.initializer) && ['resource-list', 'memory-gems__grid', 'memory-gems__recipes', 'memory-gems__sources', 'ivory-tower__floors'].includes(className.initializer.text)) report(file, node, source, 'Long inventory collections must be inside InventorySection.');
+      if (className?.initializer && ts.isStringLiteral(className.initializer) && ['resource-list', 'memory-gems__grid', 'memory-gems__recipes', 'memory-gems__sources', 'ivory-tower__floors', 'build-planner__recipe', 'build-planner__sources'].includes(className.initializer.text)) report(file, node, source, 'Long inventory collections must be inside InventorySection.');
     }
     ts.forEachChild(node, child => visit(child, scope, collapsed || section));
   }

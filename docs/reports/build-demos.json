@@ -1,0 +1,313 @@
+{
+  "kind": "real-domain-engine-fixture-demonstrations",
+  "seed": 109,
+  "stats": "Unmodified character and dungeon definitions",
+  "equipment": "Exact stage preferred recipe, fixture inventory only",
+  "orders": "Legal gem commands, guard when waiting for a shield, queue ready Lunette/tank ultimates; no potions, flowers, fairies or crystal bonus",
+  "limits": "Demonstrates mechanism occurrence, not optimal DPS, farming time, or a Tower clear",
+  "records": [
+    {
+      "build": "echo-chain",
+      "stage": "starter",
+      "dungeonId": "drowned-vestry",
+      "partyIds": [
+        "seris",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 1,
+        "echoHits": 1,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "chain",
+        null,
+        null,
+        "echo",
+        null
+      ],
+      "visibleEvents": 6,
+      "simulationEvents": 18
+    },
+    {
+      "build": "echo-chain",
+      "stage": "complete",
+      "dungeonId": "drowned-vestry",
+      "partyIds": [
+        "seris-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 1,
+        "echoHits": 1,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "chain",
+        null,
+        null,
+        "echo"
+      ],
+      "visibleEvents": 5,
+      "simulationEvents": 22
+    },
+    {
+      "build": "echo-chain",
+      "stage": "perfect",
+      "dungeonId": "drowned-vestry",
+      "partyIds": [
+        "seris-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 1,
+        "echoHits": 1,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "chain",
+        null,
+        null,
+        "echo"
+      ],
+      "visibleEvents": 5,
+      "simulationEvents": 22
+    },
+    {
+      "build": "shield-cannon",
+      "stage": "starter",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "seris",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 0,
+        "echoHits": 0,
+        "barrierCasts": 1,
+        "shieldShots": 1,
+        "consumedBarrier": 122,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "barrier",
+        null,
+        null,
+        "shield",
+        null
+      ],
+      "visibleEvents": 6,
+      "simulationEvents": 43
+    },
+    {
+      "build": "shield-cannon",
+      "stage": "complete",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "seris-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 0,
+        "echoHits": 0,
+        "barrierCasts": 1,
+        "shieldShots": 1,
+        "consumedBarrier": 131,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "barrier",
+        null,
+        null,
+        null,
+        "shield",
+        null
+      ],
+      "visibleEvents": 7,
+      "simulationEvents": 17
+    },
+    {
+      "build": "shield-cannon",
+      "stage": "perfect",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "seris-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 0,
+        "echoHits": 0,
+        "barrierCasts": 1,
+        "shieldShots": 1,
+        "consumedBarrier": 148,
+        "batteryCharges": 0,
+        "chargeReceived": 0,
+        "rabbitUltimates": 0
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "barrier",
+        null,
+        null,
+        null,
+        "shield",
+        null
+      ],
+      "visibleEvents": 7,
+      "simulationEvents": 17
+    },
+    {
+      "build": "rabbit-battery",
+      "stage": "starter",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "lunette",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 0,
+        "echoHits": 1,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 1,
+        "chargeReceived": 35,
+        "rabbitUltimates": 1
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "battery",
+        null,
+        null,
+        "echo",
+        null,
+        null,
+        "ultimate"
+      ],
+      "visibleEvents": 8,
+      "simulationEvents": 34
+    },
+    {
+      "build": "rabbit-battery",
+      "stage": "complete",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "lunette-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 1,
+        "echoHits": 0,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 1,
+        "chargeReceived": 61,
+        "rabbitUltimates": 1
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "battery",
+        null,
+        null,
+        "chain",
+        null,
+        null,
+        "ultimate"
+      ],
+      "visibleEvents": 8,
+      "simulationEvents": 27
+    },
+    {
+      "build": "rabbit-battery",
+      "stage": "perfect",
+      "dungeonId": "veiled-cloister",
+      "partyIds": [
+        "lunette-awakened",
+        "noelle",
+        "liora",
+        "elaine"
+      ],
+      "leaderId": "liora",
+      "proof": {
+        "chainHits": 1,
+        "echoHits": 0,
+        "barrierCasts": 0,
+        "shieldShots": 0,
+        "consumedBarrier": 0,
+        "batteryCharges": 1,
+        "chargeReceived": 70,
+        "rabbitUltimates": 1
+      },
+      "demonstrated": true,
+      "visibleHighlights": [
+        null,
+        "battery",
+        null,
+        null,
+        "chain",
+        null,
+        null,
+        "ultimate"
+      ],
+      "visibleEvents": 8,
+      "simulationEvents": 27
+    }
+  ]
+}

@@ -19,3 +19,5 @@
 @media(prefers-reduced-motion:reduce) { .memory-gem-find,.memory-gem-find svg { animation:none; } }
 
 .memory-gem-summary__quality { display:block; margin-top:3px; font-size:10px; color:#526073; }
+
+.memory-gem-summary__goal{display:block;color:#d8c39a;font-size:11px;line-height:1.8}
