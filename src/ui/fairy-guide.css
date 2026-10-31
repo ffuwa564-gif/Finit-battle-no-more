@@ -1,21 +1,22 @@
-.fairy-invitation { display: flex; align-items: center; gap: 14px; padding: 14px; margin: 12px 0; background: linear-gradient(120deg,#eff8f1,#fff8e8); border: 1px solid #bed5bd; border-radius: 18px; text-align: left; }
+/* Keep tutorial foregrounds and opaque backgrounds together, including the first invitation. */
+.fairy-invitation { display: flex; align-items: center; gap: 14px; padding: 14px; margin: 12px 0; color: #e1e9f4; background: linear-gradient(135deg,#263449,#142135); border: 1px solid #899fb9; border-radius: 18px; text-align: left; }
 .fairy-invitation > img { width: 86px; height: 100px; object-fit: cover; border-radius: 44px; flex-shrink: 0; }
-.fairy-invitation strong { font-size: 14px; color: #4f6a61; }
+.fairy-invitation strong { font-size: 14px; color: #e1e9f4; }
 .fairy-invitation p { font-size: 12px; line-height: 1.7; margin: 6px 0; }
 .fairy-invitation__actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .fairy-guide-launch { flex-shrink: 0; }
 .fairy-guide-highlight { position: fixed; z-index: 150; border: 2px solid #e3c87d; border-radius: 16px; box-shadow: 0 0 0 4px #e2fff26b,0 0 24px #d2fff1,0 0 0 9999px #13232c66; pointer-events: none; }
-.fairy-guide { position: fixed; z-index: 151; display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 10px 14px; padding: 18px; background: linear-gradient(135deg,#fffdf4,#eef8f0); color: #414e4b; border: 1px solid #c7cfaa; border-radius: 22px 22px 22px 5px; box-shadow: 0 12px 50px #172d3e44,inset 0 0 0 4px #ffffffa0; max-height: calc(100dvh - 100px); overflow-y: auto; }
+.fairy-guide { position: fixed; z-index: 151; display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 10px 14px; padding: 18px; background: linear-gradient(135deg,#263449,#142135); color: #e1e9f4; border: 1px solid #899fb9; border-radius: 22px 22px 22px 5px; box-shadow: 0 12px 50px #0007,inset 0 0 0 3px #a8c5e514; max-height: calc(100dvh - 100px); overflow-y: auto; }
 .fairy-guide__portrait img { display: block; width: 78px; height: 94px; object-fit: cover; border-radius: 35px 35px 14px 14px; border: 1px solid #c2d5be; }
-.fairy-guide__portrait span { display: block; font-size: 9px; text-align: center; margin-top: 6px; color: #627b69; }
+.fairy-guide__portrait span { display: block; font-size: 9px; text-align: center; margin-top: 6px; color: #bbcddd; }
 .fairy-guide__copy { min-width: 0; padding-right: 12px; }
-.fairy-guide__chapter { font-size: 10px; letter-spacing: .05em; color: #829378; }
+.fairy-guide__chapter { font-size: 10px; letter-spacing: .05em; color: #bbcddd; }
 .fairy-guide h2 { font: 19px/1.4 var(--font-display); margin: 6px 0 9px; outline: none; }
 .fairy-guide p { font-size: 13px; line-height: 1.85; margin: 0; }
 .fairy-guide__close { position: absolute; top: 5px; right: 5px; min-width: 28px; min-height: 28px; padding: 4px; }
 .fairy-guide__actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 7px; flex-wrap: wrap; padding-top: 5px; }
 .fairy-guide__actions .button { min-height: 38px; padding: 7px 10px; font-size: 11px; }
-.fairy-guide__hint { grid-column: 1 / -1; font-size: 10px; line-height: 1.6; color: #7b8d7b; }
+.fairy-guide__hint { grid-column: 1 / -1; font-size: 10px; line-height: 1.6; color: #bbcddd; }
 .fairy-guide--embedded { position: relative; width: 100%; max-height: none; margin-top: 22px; }
 .guide-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 @media(max-width:380px) { .fairy-guide { grid-template-columns: 62px minmax(0,1fr); padding: 14px; gap: 10px; } .fairy-guide__portrait img { width: 62px; height: 78px; } .fairy-guide h2 { font-size: 17px; } .fairy-invitation > img { width: 64px; height: 84px; } }

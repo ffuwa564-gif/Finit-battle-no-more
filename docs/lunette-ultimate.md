@@ -111,3 +111,10 @@ Render one original finishing blast, then repeat its actual waveform with softer
 ## Current direction: small copies of the final explosion for shooting (PV v24)
 
 The user dislikes the synthesized electronic shooting timbre and wants a quieter version of the final explosion itself. Regular shots now copy the actual `renderRabbitFinisher` waveform at roughly 48% amplitude, with a 140ms tail and 35ms release. No repitching, pulse-wave lead or separate electronic melody remains. The contact voice is an even smaller 12% copy, 80ms with a 25ms release, at the existing 75ms damage deadline. Subtle per-robot gain differences only; waveform and pitch match the final blast. The full final blast and its strong three echoes remain unchanged. Camera, charge, colors, timing, HP and existing PV pictures stay the same; PV v24 replaces audio only.
+
+
+## Game integration with current party commands
+
+Merge the PV implementation into the current game while preserving the leftmost party-command dial, companion intent bubbles, coordination/isolation rules, current target paging and both languages' compact battle UI. The merged BattleView retains `ImpactSnapshot` for all nine per-shot HP presentations and the current `viewedEnemyId` for the command target.
+
+Native game music now follows the same foregrounding intent as the approved PV: fade to 18% of the user's chosen BGM level during Lunette's sequence, reduce to 8% for the final blast/three echoes, hold until impact+900ms and restore over300ms. The source track and saved volume never change. Both standard and awakened Lunette use the same renderer. Speed changes follow the shared logical clock; muted SFX do not duck music; skip/event changes dispose the temporary gain. This mixing is independent of reduced-motion visual suppression. The PV-only stat/leader presentation remains the real CharacterDetail data already used in game.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, rabbitEnergyFrame, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, rabbitEnergyFrame, rabbitMusicGain, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
@@ -89,6 +89,13 @@ describe('ultimate presentation clock', () => {
     }
     expect(cues[1].zoom).toBeGreaterThan(cues[0].zoom);expect(cues[1].duration).toBeLessThan(cues[0].duration);
     expect(Math.abs(rabbitCameraZoom(5199)-rabbitCameraZoom(5201))).toBeLessThan(.01);
+  });
+  it('keeps the final three echoes above music, then restores the unchanged music level',()=>{
+    expect(rabbitMusicGain(0)).toBe(1);
+    expect(rabbitMusicGain(100)).toBeCloseTo(.18);
+    for(const echo of RABBIT_VOLLEY.echoes)expect(rabbitMusicGain(RABBIT_SEQUENCE.finish+echo*1000+80)).toBe(.08);
+    expect(rabbitMusicGain(RABBIT_SEQUENCE.finish+1050)).toBeCloseTo(.54);
+    expect(rabbitMusicGain(RABBIT_SEQUENCE.end)).toBe(1);
   });
   it('changes local energy color on each charge and keeps it for the next shots',()=>{
     expect(rabbitEnergyFrame(4200).color).toBe(0x9aeee7);

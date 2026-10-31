@@ -177,3 +177,5 @@ export { GachaResults } from './GachaResults';
 export { GoldExchange } from './GoldExchange';
 export { UltimateCutIn } from './UltimateCutIn';
 export { UltimateMeter } from './UltimateMeter';
+
+export { PartyCommandDial, CompanionChoice } from './PartyCommandDial';

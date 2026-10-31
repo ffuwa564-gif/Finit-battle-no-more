@@ -161,3 +161,14 @@ export function rabbitTargetFrame(elapsed: number) {
   const zoom=rabbitCameraZoom(elapsed);
   return {x:Math.max(-18,Math.min(18,x)),y:Math.max(-5,Math.min(5,y)),flash,zoom,shot,finish:finish>=0};
 }
+
+/** Keep shots/charges foregrounded and let all three final echoes finish before music returns. */
+export function rabbitMusicGain(elapsed:number):number {
+  if(elapsed<0||elapsed>=RABBIT_SEQUENCE.end)return 1;
+  const entry=1-.82*clamp01(elapsed/80);
+  const hit=elapsed-RABBIT_SEQUENCE.finish;
+  if(hit<0)return entry;
+  if(hit<30)return .18-(.18-.08)*hit/30;
+  if(hit<900)return .08;
+  return .08+.92*clamp01((hit-900)/300);
+}

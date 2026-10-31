@@ -1,6 +1,6 @@
 import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
-import { ultimateVisualFor } from './platform/ultimate-choreography';
+import { ultimateVisualFor, rabbitMusicGain } from './platform/ultimate-choreography';
 import { ultimateSoundFor } from './platform/ultimate-audio';
 import { ultimateTimingFor, UltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
@@ -12,7 +12,7 @@ import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
-import { configureBgm, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
+import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleSounds, commandSounds } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
@@ -76,6 +76,9 @@ export default function App() {
 
   const navigate = useCallback((target: Page) => { location.hash = target; setPage(target); window.scrollTo({ top: 0 }); document.getElementById('root')?.scrollTo({ top: 0 }); }, []);
   const command = useCallback(async (action: GameCommand, expectedEventId?: string) => {
+    if (action.type === 'partyOrder' || action.type === 'focusEnemy') {
+      for (let wait = 0; busyRef.current && wait < 100; wait++) await new Promise(resolve => setTimeout(resolve, 20));
+    }
     const previous = state.current;
     if (!previous || busyRef.current) return false;
     if (expectedEventId && previous.battle?.events[previous.battle.cursor]?.id !== expectedEventId) return false;
@@ -218,6 +221,18 @@ export default function App() {
       if (changed || !scheduled?.hasStarted()) activeUltimateSound.current = undefined;
     };
   }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
+
+  useEffect(()=>{
+    const actor=event?.ultimate?battle?.units.find(unit=>unit.uid===event.actorId):undefined;
+    if(!started||!event||!actor||!save||save.novels?.active||save.settings.seVolume<=0||ultimateVisualFor(characterById(actor.characterId),event)!=='rabbit-bits')return;
+    const duck=createBgmDucker();let frame=0;
+    const update=()=>{
+      duck.set(document.hidden?1:rabbitMusicGain(ultimateClock.current.position(performance.now())));
+      frame=requestAnimationFrame(update);
+    };
+    update();
+    return()=>{cancelAnimationFrame(frame);duck.dispose();};
+  },[started,event?.id,save?.settings.seVolume,save?.settings.speed,Boolean(save?.novels?.active)]);
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>{tr("データを守るため、停止しました。")}</h1><p role="alert">{localize(fatal)}</p><p className="subtle">{tr("セーブの初期化や上書きは行っていません。")}</p><Button variant="primary" onClick={() => location.reload()}>{tr("再読み込み")}</Button></Panel></div>;
   if (!save) return <div className="app-loading" role="status"><Moon size={38} strokeWidth={1} /><p>{tr("記憶をたどっています…")}</p></div>;
