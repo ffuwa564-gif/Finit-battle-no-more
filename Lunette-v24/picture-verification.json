@@ -1,0 +1,12 @@
+[
+  {
+    "label": "720p",
+    "videoStreamUnchanged": true,
+    "hash": "SHA256=a45fa574809c68993b9d60b5e97719e0f35374ef1a87304159fc30da7df60209"
+  },
+  {
+    "label": "1080p",
+    "videoStreamUnchanged": true,
+    "hash": "SHA256=c93925e881156ecb7a093bd968327298d005ef13a0dc5fc447089390eb2d6775"
+  }
+]

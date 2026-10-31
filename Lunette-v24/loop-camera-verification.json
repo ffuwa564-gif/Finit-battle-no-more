@@ -1,0 +1,29 @@
+{
+  "freshCapture": true,
+  "frames": 232,
+  "duration": 7.72,
+  "camera": "push in during each four-shot pass, pull out on its charge, final heavy flight pushes in again",
+  "passes": [
+    {
+      "pass": 1,
+      "shootStart": 1.08021,
+      "shootClose": 1.23,
+      "chargeWide": 1.035
+    },
+    {
+      "pass": 2,
+      "shootStart": 1.03518,
+      "shootClose": 1.32998,
+      "chargeWide": 1.01002
+    }
+  ],
+  "all9DamageSteps": true,
+  "totalHpLoss": 437,
+  "finalHitNoFlyingBolts": true,
+  "maxWhite": 1,
+  "energyColors": [
+    "9aeee7",
+    "bea2ff",
+    "ff9fbd"
+  ]
+}
