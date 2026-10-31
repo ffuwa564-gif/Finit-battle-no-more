@@ -5,13 +5,14 @@ import {partyOrderOptions} from '../src/domain/party-orders';
 import {mkdir,writeFile} from 'node:fs/promises';
 import type {Content,Battle} from '../src/domain/types';
 const mode=process.argv[2]??'controls';
-if (!['current','early','controls'].includes(mode)) throw Error('Use current, early, or controls.');
+if (!['current','early','controls','chapter3'].includes(mode)) throw Error('Use current, early, controls, or chapter3.');
 const content:Content=structuredClone(original);
 const parties=[{name:'initial',ids:['elaine','liora','seris','noelle'],leader:'liora'}, {name:'SSR',ids:['nox','athena','selene','asteria'],leader:'athena'}, {name:'awakened',ids:['seris-awakened','liora-awakened','elaine-awakened','noelle-awakened'],leader:'liora-awakened'}];
 const stages=['silent-cathedral','moon-garden','stone-fountain','thorn-court','pale-throne','kuzuha-advanced','kuzuha-awakening','lunette-awakening','goddess-procession'];
 if(mode==='early'){parties.splice(1);stages.splice(0,stages.length,...content.dungeons.slice(0,12).map(d=>d.id));}
 if(mode==='controls'){parties.splice(0,1);stages.splice(0,stages.length,'pale-throne','kuzuha-awakening','lunette-awakening');}
-const policies=mode==='controls'?['auto-items','read']:['auto','read'];
+if(mode==='chapter3'){parties.splice(0,1);parties[0].ids=['athena','nox','selene','asteria'];parties[1].ids=['liora-awakened','seris-awakened','elaine-awakened','noelle-awakened'];parties.push({name:'dual-heal',ids:['evelyn','astraea','selene','benzaiten'],leader:'evelyn'});stages.splice(0,stages.length,'silver-crypt','ashen-library','last-observatory','pale-throne','ritual-stone-grove','zakuro-procession');}
+const policies=mode==='controls'||mode==='chapter3'?['auto-items','read']:['auto','read'];
 const records=[];
 for(const party of parties)for(const stage of stages)for(const policy of policies){
  let wins=0,failed=0,stalled=0,rounds=0,deaths=0,potions=0,enemyActions=0,broken=0,fullStrikes=0;
@@ -34,6 +35,7 @@ for(const party of parties)for(const stage of stages)for(const policy of policie
     const ultimate=opts.find(o=>o.id==='ultimate');
     const damage=opts.filter(o=>o.order?.kind==='skill'&&['attack','area','pierce','drain','shatter','dawn'].includes(o.template)).at(-1);
     const boss=enemies.find(u=>u.boss); const pressure=boss&&strike?bossWindupStatus(boss,strike,b.round):undefined;
+    if(mode==='chapter3')for(const u of b.units.filter(u=>u.side==='party'&&u.hp>0&&u.uid!==pilot.uid&&u.ultimateCharge===100))if(content.characters.find(c=>c.id===u.characterId)!.role!=='healer'||b.units.some(a=>a.side==='party'&&a.hp>0&&a.hp<a.maxHp*.7))u.ultimateQueued=true;
     if(pressure?.phase==='charging')b.focusTargetId=boss?.uid;
     b.partyOrder=pressure?.phase==='charging'?ultimate?.order??damage?.order??{kind:'attack'}:pressure?.phase==='striking'?{kind:'guard'}:urgent&&heal?heal.order??undefined:ultimate?.order??damage?.order??undefined;
    }
