@@ -1,0 +1,353 @@
+{
+  "note": "Deterministic sampling of final-wave loot only, excluding the first guaranteed stone. Rates are per completed final-wave draw, not conditional on a stone. Waiting estimates assume independent equivalent runs, include no combat losses or elapsed time, and are not measured player retention.",
+  "samplesPerDestination": 100000,
+  "rows": [
+    {
+      "id": "silent-cathedral",
+      "name": "忘却の聖堂",
+      "profile": {
+        "tier4Chance": 0,
+        "tier5Chance": 0
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0,
+        "itemTier5": 0,
+        "powerTier4": 0,
+        "powerTier5": 0,
+        "traitTier4": 0,
+        "traitTier5": 0,
+        "featured": 0,
+        "featuredTier4Or5": 0
+      },
+      "waitingForAnyTier4Or5": null,
+      "waitingForAnyTier5": null,
+      "waitingForFeaturedTier4Or5": null
+    },
+    {
+      "id": "stone-fountain",
+      "name": "石燐の泉",
+      "profile": {
+        "tier4Chance": 0.06,
+        "tier5Chance": 0,
+        "featuredDefId": "dream-lace"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.05446,
+        "itemTier5": 0,
+        "powerTier4": 0.038,
+        "powerTier5": 0,
+        "traitTier4": 0.01738,
+        "traitTier5": 0,
+        "featured": 0.43219,
+        "featuredTier4Or5": 0.03654
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 18.4,
+        "runsFor95PercentChance": 54
+      },
+      "waitingForAnyTier5": null,
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 27.4,
+        "runsFor95PercentChance": 81
+      }
+    },
+    {
+      "id": "veiled-cloister",
+      "name": "白帳の回廊",
+      "profile": {
+        "tier4Chance": 0.1,
+        "tier5Chance": 0.005,
+        "featuredDefId": "pale-ward"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.0894,
+        "itemTier5": 0.00476,
+        "powerTier4": 0.06376,
+        "powerTier5": 0.00331,
+        "traitTier4": 0.02881,
+        "traitTier5": 0.00146,
+        "featured": 0.37534,
+        "featuredTier4Or5": 0.05439
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 10.6,
+        "runsFor95PercentChance": 31
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 210.1,
+        "runsFor95PercentChance": 628
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 18.4,
+        "runsFor95PercentChance": 54
+      }
+    },
+    {
+      "id": "hollow-gate",
+      "name": "虚ろの門",
+      "profile": {
+        "tier4Chance": 0.16,
+        "tier5Chance": 0.01,
+        "featuredDefId": "dawn-crown"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.14173,
+        "itemTier5": 0.00929,
+        "powerTier4": 0.10288,
+        "powerTier5": 0.00645,
+        "traitTier4": 0.04717,
+        "traitTier5": 0.00288,
+        "featured": 0.30581,
+        "featuredTier4Or5": 0.07169
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 6.6,
+        "runsFor95PercentChance": 19
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 107.6,
+        "runsFor95PercentChance": 321
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 13.9,
+        "runsFor95PercentChance": 41
+      }
+    },
+    {
+      "id": "pale-throne",
+      "name": "白夜の玉座",
+      "profile": {
+        "tier4Chance": 0.22,
+        "tier5Chance": 0.03,
+        "featuredDefId": "twin-tide"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.18852,
+        "itemTier5": 0.02717,
+        "powerTier4": 0.14158,
+        "powerTier5": 0.01895,
+        "traitTier4": 0.06464,
+        "traitTier5": 0.0084,
+        "featured": 0.30581,
+        "featuredTier4Or5": 0.10241
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 4.6,
+        "runsFor95PercentChance": 13
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 36.8,
+        "runsFor95PercentChance": 109
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 9.8,
+        "runsFor95PercentChance": 28
+      }
+    },
+    {
+      "id": "lunette-advanced",
+      "name": "時計庭のうさぎ姫・上級",
+      "profile": {
+        "tier4Chance": 0.12,
+        "tier5Chance": 0.005,
+        "featuredDefId": "hollow-lantern"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.10743,
+        "itemTier5": 0.00477,
+        "powerTier4": 0.07718,
+        "powerTier5": 0.00331,
+        "traitTier4": 0.03484,
+        "traitTier5": 0.00147,
+        "featured": 0.37534,
+        "featuredTier4Or5": 0.06495
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 8.9,
+        "runsFor95PercentChance": 26
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 209.6,
+        "runsFor95PercentChance": 627
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 15.4,
+        "runsFor95PercentChance": 45
+      }
+    },
+    {
+      "id": "lunette-awakening",
+      "name": "時計庭のうさぎ姫・覚醒級",
+      "profile": {
+        "tier4Chance": 0.25,
+        "tier5Chance": 0.04,
+        "featuredDefId": "star-furnace"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.21079,
+        "itemTier5": 0.03586,
+        "powerTier4": 0.1615,
+        "powerTier5": 0.02489,
+        "traitTier4": 0.07286,
+        "traitTier5": 0.01136,
+        "featured": 0.30581,
+        "featuredTier4Or5": 0.11673
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 4.1,
+        "runsFor95PercentChance": 11
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 27.9,
+        "runsFor95PercentChance": 83
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 8.6,
+        "runsFor95PercentChance": 25
+      }
+    },
+    {
+      "id": "event-whiteflower-path",
+      "name": "白花の祈り路",
+      "profile": {
+        "tier4Chance": 0.06,
+        "tier5Chance": 0,
+        "featuredDefId": "pale-ward"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 0.6484,
+        "itemTier4": 0.05446,
+        "itemTier5": 0,
+        "powerTier4": 0.038,
+        "powerTier5": 0,
+        "traitTier4": 0.01738,
+        "traitTier5": 0,
+        "featured": 0.37534,
+        "featuredTier4Or5": 0.03118
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 18.4,
+        "runsFor95PercentChance": 54
+      },
+      "waitingForAnyTier5": null,
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 32.1,
+        "runsFor95PercentChance": 95
+      }
+    },
+    {
+      "id": "ivory-tower-001",
+      "name": "白亜の塔・第1層",
+      "profile": {
+        "tier4Chance": 0.2,
+        "tier5Chance": 0.02,
+        "featuredDefId": "pale-ward"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.26927,
+        "itemTier5": 0.02809,
+        "powerTier4": 0.19903,
+        "powerTier5": 0.01956,
+        "traitTier4": 0.09166,
+        "traitTier5": 0.00869,
+        "featured": 0.57747,
+        "featuredTier4Or5": 0.17272
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 3.4,
+        "runsFor95PercentChance": 9
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 35.6,
+        "runsFor95PercentChance": 106
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 5.8,
+        "runsFor95PercentChance": 16
+      }
+    },
+    {
+      "id": "ivory-tower-020",
+      "name": "白亜の塔・第20層",
+      "profile": {
+        "tier4Chance": 0.2,
+        "tier5Chance": 0.02,
+        "featuredDefId": "hollow-lantern"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.27768,
+        "itemTier5": 0.0291,
+        "powerTier4": 0.19903,
+        "powerTier5": 0.01956,
+        "traitTier4": 0.10247,
+        "traitTier5": 0.00972,
+        "featured": 0.57747,
+        "featuredTier4Or5": 0.17794
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 3.3,
+        "runsFor95PercentChance": 9
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 34.4,
+        "runsFor95PercentChance": 102
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 5.6,
+        "runsFor95PercentChance": 16
+      }
+    },
+    {
+      "id": "ivory-tower-100",
+      "name": "白亜の塔・第100層",
+      "profile": {
+        "tier4Chance": 0.4,
+        "tier5Chance": 0.1,
+        "featuredDefId": "clear-tear"
+      },
+      "samples": 100000,
+      "perFinalWave": {
+        "stone": 1,
+        "itemTier4": 0.51879,
+        "itemTier5": 0.16751,
+        "powerTier4": 0.39927,
+        "powerTier5": 0.09962,
+        "traitTier4": 0.29804,
+        "traitTier5": 0.07531,
+        "featured": 0.57524,
+        "featuredTier4Or5": 0.39393
+      },
+      "waitingForAnyTier4Or5": {
+        "meanRuns": 1.5,
+        "runsFor95PercentChance": 3
+      },
+      "waitingForAnyTier5": {
+        "meanRuns": 6,
+        "runsFor95PercentChance": 17
+      },
+      "waitingForFeaturedTier4Or5": {
+        "meanRuns": 2.5,
+        "runsFor95PercentChance": 6
+      }
+    }
+  ]
+}

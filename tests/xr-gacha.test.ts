@@ -14,7 +14,7 @@ function futureContent(): Content {
     const stages = [1, 2].map(index => `${id}-${index}`);
     for (const [index, stage] of stages.entries()) {
       const original = definitions.dungeons.find(dungeon => dungeon.id === definitions.chapters!.at(-1)!.dungeonIds.at(-1))!;
-      definitions.dungeons.push({ ...structuredClone(original), id: stage, chapterId: id, previousDungeonId: index ? stages[index - 1] : definitions.chapters!.at(-1)!.dungeonIds.at(-1), ...(index === 0 ? { bossStrike: undefined, waves: [...original.waves.slice(0, -1), [original.waves.at(-1)![0]!]] } : {}) });
+      definitions.dungeons.push({ ...structuredClone(original), id: stage, chapterId: id, gemLoot: undefined, previousDungeonId: index ? stages[index - 1] : definitions.chapters!.at(-1)!.dungeonIds.at(-1), ...(index === 0 ? { bossStrike: undefined, waves: [...original.waves.slice(0, -1), [original.waves.at(-1)![0]!]] } : {}) });
     }
     definitions.chapters!.push({ id, number, title: id, subtitle: id, bossHint: id, dungeonIds: stages });
   }

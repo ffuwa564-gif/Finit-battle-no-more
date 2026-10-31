@@ -7,7 +7,7 @@ import { TOWER_ROUND_LIMIT } from './ivory-tower';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
-import { gemSkill, gemCooldown, gemDefinitionForSkill, gemVariantForSkill, gemRoll, gemPowerMultiplier } from './memory-gems';
+import { gemSkill, gemCooldown, gemDefinitionForSkill, gemVariantForSkill, gemRoll, gemPowerMultiplier, gemTraitAmount, gemSleepChargeBonus } from './memory-gems';
 import { duplicateFamily } from './events';
 import { orderSkillReady, orderTargets, memorySkillUsable } from './party-orders';
 import type { Ailment, Battle, BattleEvent, CharacterDef, Content, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
@@ -566,7 +566,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const memoryGem = equippedMemory && action.skill?.id === gemSkill(equippedMemory).id ? equippedMemory : undefined;
     const memoryRoll = memoryGem ? gemRoll(memoryGem) : undefined;
     const memoryPower = memoryGem ? gemPowerMultiplier(memoryGem) : 1;
-    const executionPower = (target: Unit) => memoryRoll?.trait === 'execution' && target.hp <= target.maxHp * .35 ? 1 + (20 + Math.round(memoryRoll.value * .4)) / 100 : 1;
+    const executionPower = (target: Unit) => memoryGem && memoryRoll?.trait === 'execution' && target.hp <= target.maxHp * .35 ? 1 + gemTraitAmount(memoryGem) / 100 : 1;
     const potency = memoryPower * (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
     const name = actorDef.name;
     const openedBarrier = Boolean(action.power && actor.barrier);
@@ -634,6 +634,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     } else if (isAilment(action.template)) {
       const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
       const success = (target.statusWardUntil ?? -1) < battle.round && !hasAilment(target) && roll.value * 100 < Math.min(memoryGem?.roll ? target.boss ? 60 : 95 : 100, ailmentChance(target) * potency);
+      if (memoryGem && memoryDef?.id === 'dream-lace' && !action.forcedBy && !action.ultimate) gainUltimate(actor, gemSleepChargeBonus(memoryGem));
       statusAction = success ? 'inflict' : 'resist'; targetIds.push(target.uid);
       if (success) {
         target.ailments ??= {}; target.ailments[action.template] = { turns: target.boss ? 1 : 2, sourceId: actor.uid };
@@ -707,14 +708,14 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       if (memoryRoll.trait === 'chain') {
         const target = alive(battle.units, 'enemy').filter(unit => !targetIds.includes(unit.uid) && !action.targets.some(primary => primary.uid === unit.uid)).sort((a,b) => a.hp - b.hp || byId(a,b))[0];
         if (target) {
-          const hit = damage(actor, target, 45 + Math.round(memoryRoll.value * .35), 100, battle, true, content);
+          const hit = damage(actor, target, gemTraitAmount(memoryGem), 100, battle, true, content);
           clearInvalidGuards(battle);
           emit(battle, { kind: 'attack', actorId: actor.uid, targetIds: [hit.unit.uid], skillId: action.skill!.id, amount: hit.amount, text: `${name} — ${actionName}・連鎖`, unitsAfter: clone(battle.units) });
         }
       } else if (memoryRoll.trait === 'mercy') {
         const target = alive(battle.units, 'party').filter(unit => unit.hp < unit.maxHp).sort(lowerHP)[0];
         if (target) {
-          const healed = Math.min(target.maxHp - target.hp, Math.floor(amount * (20 + Math.round(memoryRoll.value * .3)) / 100));
+          const healed = Math.min(target.maxHp - target.hp, Math.floor(amount * gemTraitAmount(memoryGem) / 100));
           if (healed > 0) { target.hp += healed; emit(battle, { kind: 'heal', actorId: actor.uid, targetIds: [target.uid], skillId: action.skill!.id, amount: healed, text: `${name} — ${actionName}・慈雨`, unitsAfter: clone(battle.units) }); }
         }
       }
@@ -723,7 +724,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const target = alive(battle.units, 'party').sort(lowerHP)[0];
       if (target) {
         const currentBarrier = (target.barrierUntil ?? -1) >= battle.round ? target.barrier ?? 0 : 0;
-        const granted = Math.floor(target.maxHp * (10 + Math.round(memoryRoll.value * .15)) / 100);
+        const granted = Math.floor(target.maxHp * gemTraitAmount(memoryGem) / 100);
         // Never lower an existing stronger shield, and bound cumulative shield growth.
         target.barrier = Math.max(currentBarrier, Math.min(Math.floor(target.maxHp * .6), currentBarrier + granted));
         target.barrierUntil = Math.max((target.barrierUntil ?? -1) >= battle.round ? target.barrierUntil! : 0, battle.round + 1);

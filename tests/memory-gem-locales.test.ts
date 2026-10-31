@@ -18,4 +18,14 @@ describe('Memory Gem English presentation', () => {
       expect(tr(`宝箱から${gemName(gem)}を確保しました。`, 'en')).not.toMatch(japanese);
     }
   });
+
+  it('explains the upper-tier Dream Gem charge bonus without implying a shorter cooldown', () => {
+    for (const [power, bonus] of [[120, 15], [160, 30]]) {
+      const gem = { id: 'dream-translation', defId: 'dream-lace', variant: 'pure' as const, roll: { power, trait: 'bulwark' as const, value: 50 } };
+      const description = tr(gemDescription(gem), 'en');
+      expect(description).not.toMatch(japanese);
+      expect(description).toContain(`Gain ${bonus} extra Ultimate charge whether sleep succeeds or fails.`);
+      expect(description).toContain('Reuse interval: 4 rounds.');
+    }
+  });
 });

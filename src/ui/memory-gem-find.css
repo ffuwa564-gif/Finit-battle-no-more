@@ -4,6 +4,12 @@
 .memory-gem-find__chest { position:relative; flex:0 0 31px; color:#dec995; }
 .memory-gem-find__chest > svg:last-child { position:absolute; left:8px; top:-9px; fill:#9cd0dc55; color:#a9dfeb; animation:memory-find-jewel 1.8s ease-in-out infinite; }
 .memory-gem-find--epic { border-color:#e9b7f0; box-shadow:0 0 25px #bc94e54d,inset 0 1px #ffffff2b; }
+.memory-gem-find--tier-4 { border-color:#e2bd78; box-shadow:0 0 25px #c7994040,inset 0 1px #fff0c52b; }
+.memory-gem-find--tier-5 { border-color:#dfb0ef; background:linear-gradient(120deg,#252338f5,#44304ff5); box-shadow:0 0 28px #bd83d44d,inset 0 1px #ffffff2b; }
+.memory-gem-find__name { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-bottom:4px; }
+.memory-gem-find > span[role="status"] { min-width:0; }
+.memory-gem-find__name strong { overflow-wrap:anywhere; }
+.memory-gem-source__tier { display:block; margin-top:3px; }
 .memory-gem-source { display:flex; align-items:center; gap:7px; margin:12px 0; font-size:12px; color:#42536b; line-height:1.6; }
 .memory-gem-source > svg { flex-shrink:0; color:#657b9d; }
 .memory-gem-source small { font-size:11px; color:#5d6777; }
