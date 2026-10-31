@@ -1,6 +1,19 @@
 /* OP art direction: cold moonlight, tarnished silver, damaged memories.
    Final theme layer; decorative distress stays inside illustrated scenes. */
 html { color-scheme: dark; }
+/* Game gestures must not start Safari text selection or image callouts. Portals
+   live outside #root; editable backup/name fields retain normal native editing. */
+#root, #root *, .command-dial-layer, .command-dial-layer * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+#root :is(input, textarea, select, [contenteditable]:not([contenteditable="false"])),
+#root [contenteditable]:not([contenteditable="false"]) * {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
 body {
   background: radial-gradient(ellipse at 50% 0, #25344b66, transparent 58%), #090e17;
   background-attachment: fixed;
