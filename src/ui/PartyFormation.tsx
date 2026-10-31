@@ -30,7 +30,7 @@ export function PartyFormation({ save, busy, onPartyChange, onInspect }: PartyFo
     <div className="party-formation__slots" role="group" aria-label={tr('編成枠')}>
       {save.partyIds.map((id, index) => {
         const character = characterById(id);
-        return <Button key={id} className="party-formation__slot" variant="secondary" selected={id === selected.id} aria-label={tr(character.name)} aria-pressed={id === selected.id} data-member-id={id} data-position={index + 1} onClick={() => select(id)}>
+        return <Button key={id} className="party-formation__slot" variant="secondary" selected={id === selected.id} aria-label={`${tr('編成枠')} ${index + 1} · ${tr(character.name)}`} aria-pressed={id === selected.id} data-member-id={id} data-position={index + 1} onClick={() => select(id)}>
           <span className="party-formation__portrait"><PortraitArt character={character} face /><span className="party-formation__number">{index + 1}</span></span>
           <span className="party-formation__member"><strong>{tr(character.name)}</strong><span className="party-formation__badges">{index === 0 && <span><Compass size={11} />{tr('先頭・操作役')}</span>}{id === save.leaderId && <span><Crown size={11} />{tr('リーダー')}</span>}</span></span>
         </Button>;
