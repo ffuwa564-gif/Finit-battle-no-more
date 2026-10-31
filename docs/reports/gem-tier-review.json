@@ -1,0 +1,36 @@
+{
+  "baseCommit": "3b49d56",
+  "scope": "Memory gem tiers, permanent saves, loot, crafting, combat and mobile UI",
+  "rounds": [
+    {
+      "round": 1,
+      "finding": "A raw 100 to 101 boundary would label a 0.6 percent improvement as a new upper tier.",
+      "revision": "Keep old raw 0..100 unchanged. Introduce T4 120..139 and T5 160..179, with invalid gaps. Start at 280 and 340 percent skill potency."
+    },
+    {
+      "round": 2,
+      "finding": "Saved pending refinement candidates were only checked for identity, permitting fabricated promotion and simultaneous affix changes.",
+      "revision": "Validate one changed attribute and its acquired tier band at both save import and direct acceptance. Add corruption regression coverage while accepting old legitimate offers."
+    },
+    {
+      "round": 3,
+      "finding": "Listing T1..T5 destinations without rates concealed substantial differences in upper-tier availability. A 320px English equipment button also broke inside words.",
+      "revision": "Show per-attribute conditional T4/T5 rates from the same content profile as drops, explain their denominator, and stack narrow-screen actions. Verify real equip/refine/reload flows."
+    },
+    {
+      "round": 4,
+      "finding": "Reducing Dream Lace cooldown increased control actions at the expense of attacks, even with AI avoiding immune targets. Paired winning AI samples increased from 15.29 to 16.38 rounds with T5.",
+      "revision": "Withdraw Dream Lace cooldown reductions. Preserve cooldown 4 and sleep caps/wards. Add self ultimate charge 15 at power T4 or 30 at T5 once per actual use, regardless of success, with charge capped at 100. Re-run combat comparisons."
+    },
+    {
+      "round": 5,
+      "finding": "For upper-tier rewind, furnace and sleep, every power roll inside one tier has the same capped effect. Charging dust to change only the number would not improve the stone.",
+      "revision": "Disable that power-refinement action in management UI with an explanation. Keep trait refinement, lower ordinary items and legacy pending acceptance available; preserve domain-command compatibility."
+    }
+  ],
+  "limits": [
+    "Tier item appearance rates are not adopted-upgrade rates or measured player time.",
+    "Fixed parties and policies do not establish optimal builds or universal monotonic win rates.",
+    "Passing tests and design review does not prove that the farming frequency is enjoyable."
+  ]
+}
