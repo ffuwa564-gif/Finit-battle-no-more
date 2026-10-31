@@ -1,0 +1,54 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 21.791666666666668,
+  "source": "v22 game-score.wav: 8-bit pulse/triangle shots, original charge with local mint/lilac/pink energy and accelerating camera, final charge flows directly into heavy flight",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 13.708333333333332,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 6.495802096308848
+    },
+    {
+      "at": 11.81537356321839,
+      "effectsOverMusicDb": 8.52919474335569
+    },
+    {
+      "at": 11.88074712643678,
+      "effectsOverMusicDb": 14.032157383217319
+    },
+    {
+      "at": 11.946120689655173,
+      "effectsOverMusicDb": 9.280803796828721
+    },
+    {
+      "at": 12.75574712643678,
+      "effectsOverMusicDb": 6.436774181239583
+    },
+    {
+      "at": 12.821120689655174,
+      "effectsOverMusicDb": 8.297568071515471
+    },
+    {
+      "at": 12.886494252873565,
+      "effectsOverMusicDb": 8.346554275462907
+    },
+    {
+      "at": 12.951867816091955,
+      "effectsOverMusicDb": 7.764482526074115
+    },
+    {
+      "at": 13.708333333333332,
+      "effectsOverMusicDb": 19.610457685573564
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1,
+  "encodedMixCorrelation": 0.9867878872090304,
+  "tailRmsAfterWhiteCut": 0.0673333927989006
+}

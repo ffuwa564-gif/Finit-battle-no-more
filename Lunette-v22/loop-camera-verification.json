@@ -1,0 +1,39 @@
+{
+  "freshCapture": true,
+  "frames": 232,
+  "duration": 7.72,
+  "loopCameraPeaks": [
+    {
+      "pass": 1,
+      "peakZoom": 1.18047,
+      "frame": 145,
+      "sourceTime": 4.833333333333333,
+      "semitones": 0
+    },
+    {
+      "pass": 2,
+      "peakZoom": 1.34918,
+      "frame": 177,
+      "sourceTime": 5.9,
+      "semitones": 7
+    }
+  ],
+  "all9DamageSteps": true,
+  "totalHpLoss": 437,
+  "finalHitNoFlyingBolts": true,
+  "maxWhite": 1,
+  "energyColors": [
+    "9aeee7",
+    "bea2ff",
+    "ff9fbd"
+  ],
+  "continuousFollowUpZoom": [
+    1.34918,
+    1.35004,
+    1.35072,
+    1.35305,
+    1.35803,
+    1.36668,
+    1.38
+  ]
+}
