@@ -274,3 +274,10 @@ settingsの音はcommandSoundに集約し、BGM音量変更も変更後のSE音�
 再生成は npm run export:portrait-quality（単体は末尾に -- nox 等）。既存の軽量版と、高解像度版を元サイズに縮めた先頭フレームのSSIMが0.90未満なら書き出しを失敗させ、構図を確認する。今回8体は0.948〜0.984、ノクスの別切り抜きもこの比較で検出・修正した。追加メディアは約24MiB。
 
 回帰検証は tests/interaction-feedback.test.ts、tests/portrait-quality.test.ts、e2e/ui-sound-ownership.spec.ts、e2e/portrait-quality.spec.ts。実際の装備/解除/保護で1操作1音、BGM変更とSEミュート、保存競合時に確定音なし・エラー音のみを確認する。DPR3の画面で動画失敗と動き軽減後にも640pxのposterを維持し、顔枠の寸法を変えないことを確認する。敵動画の停止ボタンは共鳴宝石と重ならない位置へ移す。
+
+### Mobile native selection and audio interruption recovery
+
+- The full game UI and the command-dial portal suppress native selection, callouts, and dragging. A shared guard also clears an in-flight selection inside game controls. Editable fields retain native selection/copy/paste; hold–drag party commands keep their existing behavior.
+- SE now recovers on foreground visibility, focus, and pageshow, and retries from trusted pointer/key gestures including touchend. Recovery is silent and preserves saved SE volume. Hidden-page cues are discarded.
+- A bounded, state-observing native resume avoids permanently waiting on WebKit's interrupted resume promise. New trusted gestures can call resume before the in-flight initialization guard. A closed native context rebuilds the Tone graph and resets its scheduling clock.
+- Regression coverage: `tests/audio-resume.test.ts` simulates interrupted, hanging, rejected, and closed resume states. `e2e/mobile-recovery.spec.ts` checks selection protections and editable exceptions, suspends/closes the actual synthesis context, verifies audible PCM after recovery, and preserves mute. Existing equipment-feedback and hold–drag tests remain in place. Native app switching on a physical iPhone is not available in the automated browser environment.

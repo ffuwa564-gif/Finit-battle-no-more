@@ -5,6 +5,7 @@ import { isUltimateSound, type UltimateSound } from './ultimate-audio';
 import type { SoundCue } from './sound-cues';
 import type { Rarity, SkillTemplate } from '../domain/types';
 import { createCombatSynth, type CombatSynth, type ScheduledUltimateVoice } from './combat-synth';
+import { resumeAudioContext } from './audio-resume';
 
 let Tone: typeof import('tone') | undefined;
 let gain: ToneTypes.Gain | undefined;
@@ -18,21 +19,31 @@ let active = false;
 let volume = 1;
 let enabling: Promise<void> | undefined;
 
-/** Only called in a trusted pointer/key gesture. Audio failure never blocks play. */
+/** Called from gestures and foreground recovery. Audio failure never blocks play. */
 export async function enableAudio(): Promise<void> {
   if (active && browserContext?.state === 'running') return;
+  // Retry resume *before* the in-flight guard: Safari may have left the previous
+  // promise pending outside a user gesture. A new tap must still reach resume().
+  if (!browserContext || browserContext.state === 'closed') {
+    if (browserContext) {
+      Tone?.getContext().dispose();
+      gain = undefined; voice = undefined; combat = undefined; limiter = undefined;
+      active = false; lastCueAt = 0; pending.length = 0; enabling = undefined;
+    }
+    try { browserContext = new window.AudioContext(); } catch { return; }
+  }
+  const context = browserContext;
+  const unlocked = resumeAudioContext(context);
   if (enabling) return enabling;
-  enabling = (async () => {
+  let attempt!: Promise<void>;
+  attempt = (async () => {
     try {
       // Unlock a native context synchronously in the gesture before downloading Tone.
       // This preserves Safari's gesture requirement while keeping the synth out of
       // the initial home-screen bundle.
-      if (!browserContext || browserContext.state === 'closed') browserContext = new window.AudioContext();
-      const unlocked = browserContext.resume().catch(() => undefined);
       const tone = await import('tone');
-      await unlocked;
-      if (!Tone) { Tone = tone; tone.setContext(browserContext); }
-      await tone.start();
+      if (!await unlocked || context !== browserContext) return;
+      if (!Tone || tone.getContext().rawContext !== context) { Tone = tone; tone.setContext(context); }
       if (!gain) {
         // The compressor can overshoot on overlapping sub-millisecond attacks.
         // Keep the approved isolated sounds unchanged below .88, and catch only
@@ -48,7 +59,11 @@ export async function enableAudio(): Promise<void> {
           volume: -3,
         }).connect(gain);
       }
-      if (!combat) combat = await createCombatSynth(tone, gain);
+      if (!combat) {
+        const synth = await createCombatSynth(tone, gain);
+        if (context !== browserContext) return;
+        combat = synth;
+      }
       active = tone.getContext().state === 'running';
       if (active) {
         const queued = pending.splice(0).filter(cue => performance.now() - cue.at < 2000);
@@ -56,12 +71,42 @@ export async function enableAudio(): Promise<void> {
         window.dispatchEvent(new Event('game:audio-ready'));
       }
     } catch {
-      active = false;
+      if (context === browserContext) active = false;
     } finally {
-      enabling = undefined;
+      if (enabling === attempt) enabling = undefined;
     }
   })();
+  enabling = attempt;
   return enabling;
+}
+
+/** Foreground recovery is silent and never changes the saved volume. Native
+ * gestures retry a blocked interruption even on controls with no UI sound. */
+export function installAudioRecovery(): () => void {
+  const foreground = () => {
+    pending.length = 0; lastCueAt = 0;
+    if (document.hidden) { active = false; return; }
+    if (browserContext) void enableAudio();
+  };
+  const gesture = (event: Event) => {
+    if (event.isTrusted && !document.hidden && browserContext && (!active || browserContext.state !== 'running')) void enableAudio();
+  };
+  document.addEventListener('visibilitychange', foreground);
+  window.addEventListener('pageshow', foreground);
+  window.addEventListener('focus', foreground);
+  window.addEventListener('pointerdown', gesture, true);
+  window.addEventListener('pointerup', gesture, true);
+  window.addEventListener('touchend', gesture, true);
+  window.addEventListener('keydown', gesture, true);
+  return () => {
+    document.removeEventListener('visibilitychange', foreground);
+    window.removeEventListener('pageshow', foreground);
+    window.removeEventListener('focus', foreground);
+    window.removeEventListener('pointerdown', gesture, true);
+    window.removeEventListener('pointerup', gesture, true);
+    window.removeEventListener('touchend', gesture, true);
+    window.removeEventListener('keydown', gesture, true);
+  };
 }
 
 export function setAudioVolume(next: number): void {
@@ -72,7 +117,7 @@ export function setAudioVolume(next: number): void {
 
 /** The sole synth dispatcher. It accepts game events, never character-specific code. */
 export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate, variationKey?: string, signature?: CombatSignature): void {
-  if (volume === 0) return;
+  if (volume === 0 || document.hidden) return;
   if (!active || !voice || !gain || !Tone || Tone.getContext().state !== 'running') {
     if (enabling) { pending.push({ kind, rarity, skill, variationKey, signature, at: performance.now() }); if (pending.length > 8) pending.shift(); }
     return;

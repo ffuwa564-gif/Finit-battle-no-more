@@ -12,7 +12,8 @@ import { VisualNovel, FairyGuide, FairyGuideButton, Button, MotionSettingsProvid
 import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
-import { enableAudio, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
+import { enableAudio, installAudioRecovery, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
+import { installGameInteractionGuards } from './platform/interaction-guards';
 import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleSounds, commandSound } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
@@ -30,6 +31,8 @@ const validPages = new Set<string>([...navigation.map(n => n.page), 'preview']);
 function currentPage(): Page { const route = location.hash.slice(1).split('/')[0]; return validPages.has(route) ? route as Page : 'home'; }
 
 export default function App() {
+  useEffect(installGameInteractionGuards, []);
+  useEffect(installAudioRecovery, []);
   const language = useLanguage();
   useEffect(() => { document.documentElement.lang = language; document.title = language === 'ja' ? 'STILLVEIL — 静謐の残響' : 'STILLVEIL — Echoes of Silence'; }, [language]);
   const [started, setStarted] = useState(false);
