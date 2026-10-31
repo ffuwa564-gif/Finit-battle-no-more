@@ -303,7 +303,10 @@ test('damage tint selects hurt party cards and omits healing and reduced motion'
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   const report=await page.evaluate(async()=>{
     const {flashDamage}=await import('/src/platform/damage-flash.ts');
-    const root=document.querySelector<HTMLElement>('.battle-layout')!;
+    // Use the rendered markup without the live replay's independently owned flashes.
+    // NEXT can start another hit while this dynamic import is resolving.
+    const root=document.querySelector<HTMLElement>('.battle-layout')!.cloneNode(true) as HTMLElement;
+    root.querySelectorAll('.damage-panel-flash').forEach(node=>node.remove());
     const card=root.querySelector<HTMLElement>('.party-unit')!;
     const change={unitId:card.dataset.unit!,characterId:'liora',side:'party' as const,amount:-5};
     const stop=flashDamage(root,[change],false);
