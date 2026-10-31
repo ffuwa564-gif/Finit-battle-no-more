@@ -1,3 +1,4 @@
+import { renderRabbitUltimate, renderRabbitBuff, RABBIT_BUFF_CUES } from '../src/platform/rabbit-ultimate-audio';
 import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
 import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
@@ -15,11 +16,11 @@ describe('authored ultimate sound materials', () => {
       expect(finite).toBe(true);expect(peak).toBeLessThanOrEqual(.831);
       expect(rms(pcm,rate,0,pcm.length/rate)).toBeGreaterThan(.02);
       expect(Math.abs(pcm[0])).toBe(0);expect(Math.abs(pcm[pcm.length-1])).toBe(0);
-      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?2.4:1.8);
+      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?5.1:1.8);
     }
   });
   it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
-    const rate=44100,pcm=renderUltimateSound('ultimate-rabbits',rate);
+    const rate=44100,pcm=renderRabbitVolley(rate);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,1.2,1.4)*5);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.19,RABBIT_VOLLEY.finale+.24)).toBeGreaterThan(.02);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.37,RABBIT_VOLLEY.finale+.42)).toBeGreaterThan(.01);
@@ -30,6 +31,14 @@ describe('authored ultimate sound materials', () => {
     const attack=rms(normal,rate,.003,.025),retimed=rms(slow,rate,.003,.025);
     expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
     expect(rms(slow,rate,1.8*RABBIT_VOLLEY.finale+.005,1.8*RABBIT_VOLLEY.finale+.06)).toBeGreaterThan(.05);
+  });
+  it('carries repeated bright buff phrases before and between the weapon bursts',()=>{
+    const rate=44100,voice=renderRabbitUltimate(rate),buff=renderRabbitBuff(rate);
+    expect(RABBIT_BUFF_CUES.length).toBeGreaterThanOrEqual(8);
+    expect(voice.length/rate).toBe(5);expect(renderRabbitUltimate(rate,1.25).length/rate).toBe(4);
+    expect(rms(voice,rate,.2,.4)).toBeGreaterThan(.04);
+    expect(rms(voice,rate,1.15,1.45)).toBeGreaterThan(.04);
+    expect(rms(buff,rate,.03,.2)).toBeGreaterThan(.05);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

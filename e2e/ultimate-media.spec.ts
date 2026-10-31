@@ -175,7 +175,7 @@ test('speed change after impact retains the voice so NEXT can stop its tail', as
   await expect.poll(()=>page.evaluate(()=>(window as any).__tailStops)).toBeGreaterThan(0);
 });
 
-test('Lunette has no extra buff cue and removes her whiteout when skipped', async ({page}) => {
+test('Lunette uses one soundtrack and removes her whiteout when skipped', async ({page}) => {
   await page.addInitScript(()=>{
     (window as any).__summonCues=[];
     window.addEventListener('game:se',event=>{if((event as CustomEvent).detail.kind==='buff')(window as any).__summonCues.push(performance.now());});
@@ -236,7 +236,7 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
     (window as any).__rabbitVoices=[];
     const start=AudioBufferSourceNode.prototype.start;
     AudioBufferSourceNode.prototype.start=function(...args:any[]){
-      if(this.buffer&&this.buffer.duration>1.8&&this.buffer.duration<2.3)(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0});
+      if(this.buffer&&this.buffer.duration>=3.99&&this.buffer.duration<=5.01)(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0});
       return start.apply(this,args as any);
     };
   });
@@ -244,10 +244,10 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
   await page.waitForTimeout(180);
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>v.offset>0).length)).toBeGreaterThan(0);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-4)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
   const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
-  expect(voices.some((v:any)=>Math.abs(v.duration-2.17)<.01)).toBe(true);
-  expect(voices.some((v:any)=>Math.abs(v.duration-1.808)<.01&&v.offset>.1)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-5)<.01)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-4)<.01&&v.offset>.1)).toBe(true);
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
   expect(await page.locator('[data-encounter-scene] > .enemy-page-art, [data-encounter-scene] > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});

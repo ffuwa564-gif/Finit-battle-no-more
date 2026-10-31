@@ -1,4 +1,4 @@
-import { renderRabbitVolley } from './rabbit-volley-audio';
+import { renderRabbitUltimate } from './rabbit-ultimate-audio';
 import { type UltimateVisual } from './ultimate-choreography';
 import { renderProtectionSound } from './protection-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
@@ -10,7 +10,7 @@ export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ bla
 
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
-  if (kind === 'ultimate-rabbits') return renderRabbitVolley(sampleRate);
+  if (kind === 'ultimate-rabbits') return renderRabbitUltimate(sampleRate);
   if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
   if (kind === 'ultimate') return renderUltimateCharge(sampleRate);
   const heal = kind === 'ultimate-sanctuary';

@@ -160,27 +160,31 @@ export default function App() {
     if (!save || save.novels?.active || !started || battle?.phase !== 'playing') return;
     // Old saves can be paused at the end of a Wave with no remaining event.
     if (!event) { void command({ type: 'replay' }); return; }
+    const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
+    const visual=actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
+    const timing=ultimateTimingFor(visual);
+    const rabbit=visual==='rabbit-bits';
+    const soundStart=rabbit?0:timing.impact;
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];
       const skill = event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template;
-      playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
+      if(!rabbit)playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};
-    const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
-    const visual=actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
-    const timing=ultimateTimingFor(visual);
     const impactCue = visual ? ultimateSoundFor(visual) : 'ultimate-strike';
     let scheduled = activeUltimateSound.current?.eventId === event.id ? activeUltimateSound.current.voice : undefined;
-    if(visual==='rabbit-bits'&&scheduled?.hasStarted())scheduled.retime?.(ultimateClock.current.position(performance.now())-timing.impact,ultimateClock.current.rate);
+    if(visual==='rabbit-bits'&&scheduled?.hasStarted())scheduled.retime?.(ultimateClock.current.position(performance.now())-soundStart,ultimateClock.current.rate);
     const reserveSound = () => {
-      if (!event.ultimate || heardImpact.current === event.id || document.hidden) return;
-      const remaining = ultimateClock.current.delay(timing.impact, performance.now());
+      if (!event.ultimate || scheduled || heardImpact.current === event.id || document.hidden) return;
+      const remaining = ultimateClock.current.delay(soundStart, performance.now());
       // Returning from a hidden tab never plays past impacts in a burst.
-      if (remaining <= 0) { heardImpact.current = event.id; return; }
-      scheduled = scheduleUltimateSound(impactCue, remaining, visual==='rabbit-bits'?ultimateClock.current.rate:1);
+      if (remaining <= 0 && !rabbit) { heardImpact.current = event.id; return; }
+      const offset=rabbit?ultimateClock.current.position(performance.now()):0;
+      if(rabbit&&offset>=timing.end)return;
+      scheduled = scheduleUltimateSound(impactCue, remaining, rabbit?ultimateClock.current.rate:1, offset);
       activeUltimateSound.current = scheduled ? { eventId: event.id, voice: scheduled } : undefined;
     };
     const visibility = () => {
@@ -188,11 +192,11 @@ export default function App() {
       else reserveSound();
     };
     reserveSound();
-    if (event.ultimate) document.addEventListener('visibilitychange', visibility);
+    if (event.ultimate) {document.addEventListener('visibilitychange', visibility);window.addEventListener('game:audio-ready',reserveSound);}
     const impactTimer = event.ultimate ? setTimeout(() => {
       if (soundedImpact.current === event.id) return;
       soundedImpact.current = event.id;
-      if (!scheduled && heardImpact.current !== event.id && !document.hidden) playSound(impactCue);
+      if (!scheduled && heardImpact.current !== event.id && !document.hidden) {if(rabbit)reserveSound();else playSound(impactCue);}
       heardImpact.current = event.id;
       cleanupImpact = animateEvent(event, save.settings.reducedMotion);
     }, ultimateClock.current.delay(timing.impact, performance.now())) : undefined;
@@ -205,7 +209,7 @@ export default function App() {
     timer = setTimeout(complete, duration);
     return () => {
       clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact();
-      document.removeEventListener('visibilitychange', visibility);
+      document.removeEventListener('visibilitychange', visibility);window.removeEventListener('game:audio-ready',reserveSound);
       if (scheduled?.hasStarted()) heardImpact.current = event.id;
       const current = state.current?.battle;
       // Speed/settings changes keep an already sounding tail; NEXT/event changes stop it.

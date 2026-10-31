@@ -53,6 +53,7 @@ export async function enableAudio(): Promise<void> {
       if (active) {
         const queued = pending.splice(0).filter(cue => performance.now() - cue.at < 2000);
         for (const cue of queued) playSound(cue.kind, cue.rarity, cue.skill, cue.variationKey, cue.signature);
+        window.dispatchEvent(new Event('game:audio-ready'));
       }
     } catch {
       active = false;
@@ -124,11 +125,11 @@ export function playSound(kind: SoundCue, rarity?: Rarity, skill?: SkillTemplate
 }
 
 /** Reserve the native voice at the visual impact deadline, before the frame arrives. */
-export function scheduleUltimateSound(kind: UltimateSound, delayMs: number, rate=1): ScheduledUltimateVoice | undefined {
+export function scheduleUltimateSound(kind: UltimateSound, delayMs: number, rate=1, elapsedMs=0): ScheduledUltimateVoice | undefined {
   if (!active || !combat || !Tone || Tone.getContext().state !== 'running') return;
   try {
     const delay = Math.max(.005, delayMs / 1000);
-    const voice = combat.scheduleUltimate(kind, Tone.immediate() + delay, rate);
+    const voice = combat.scheduleUltimate(kind, Tone.immediate() + delay, rate, elapsedMs);
     const notice = setTimeout(() => {
       if (volume > 0 && !document.hidden) window.dispatchEvent(new CustomEvent('game:se', { detail: { kind } }));
     }, delay * 1000);

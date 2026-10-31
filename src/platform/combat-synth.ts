@@ -1,4 +1,4 @@
-import { renderRabbitVolley } from './rabbit-volley-audio';
+import { renderRabbitUltimate } from './rabbit-ultimate-audio';
 import { combatSignature, renderCombatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily, renderCombatSound, type CombatFamily } from './combat-audio';
 import type * as Tone from 'tone';
@@ -44,7 +44,7 @@ export interface ScheduledUltimateVoice {
   retime?(elapsedMs: number, rate: number): void;
 }
 export interface CombatSynth {
-  scheduleUltimate(kind: UltimateSound, time: number, rate?: number): ScheduledUltimateVoice;
+  scheduleUltimate(kind: UltimateSound, time: number, rate?: number, elapsedMs?: number): ScheduledUltimateVoice;
   play(kind: SoundCue, skill: SkillTemplate | undefined, time: number, variationKey?: string, signature?: CombatSignature): boolean;
 }
 
@@ -70,7 +70,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   }
   // Retiming deadlines preserves pitch and each individual weapon transient.
   const rabbitBuffers=new Map<number,AudioBuffer>([[1,ultimateBuffers.get('ultimate-rabbits')!]]);
-  const fastRabbit=renderRabbitVolley(context.sampleRate,.8);
+  const fastRabbit=renderRabbitUltimate(context.sampleRate,1.25);
   const fastBuffer=context.createBuffer(1,fastRabbit.length,context.sampleRate);fastBuffer.getChannelData(0).set(fastRabbit);rabbitBuffers.set(1.25,fastBuffer);
   const normalBuffers = new Map<string, AudioBuffer>();
   const variations = new Map<string, number>();
@@ -139,7 +139,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   };
   await room.ready;
 
-  const scheduleUltimate = (kind: UltimateSound, time: number, playbackRate=1): ScheduledUltimateVoice => {
+  const scheduleUltimate = (kind: UltimateSound, time: number, playbackRate=1, elapsedMs=0): ScheduledUltimateVoice => {
     if(kind==='ultimate-rabbits'){
       type Voice={source:AudioBufferSourceNode;envelope:GainNode;startsAt:number};
       const voices=new Set<Voice>();let stopped=false,rate=playbackRate===1.25?1.25:1;
@@ -156,7 +156,7 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
         if(elapsedMs>0){envelope.gain.setValueAtTime(0,startsAt);envelope.gain.linearRampToValueAtTime(1,startsAt+.006);}
         source.start(startsAt,offset);
       };
-      launch(time,0);
+      launch(time,elapsedMs);
       return {hasStarted:()=>context.currentTime>=time,
         retime(elapsedMs,nextRate){const next=nextRate===1.25?1.25:1;if(stopped||rate===next)return;for(const voice of voices)stop(voice);rate=next;launch(context.currentTime+.003,elapsedMs);},
         cancel(stopActive=true){if(stopped||(!stopActive&&context.currentTime>=time))return;stopped=true;for(const voice of voices)stop(voice);}};
