@@ -2,3 +2,17 @@
 .portrait-art--face { transform: scale(var(--portrait-zoom,1)); transform-origin: var(--portrait-origin,50% 20%); }
 
 .portrait-art .animated-illustration__art { object-position: var(--portrait-anchor,50% 22%); }
+
+/* These are battle controls, including disabled companions, rather than image
+   links. Keep Safari's image callout and native dragging out of hold gestures. */
+.party-strip .character-portrait,
+.party-strip .character-portrait * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.party-strip .portrait-image img,
+.party-strip .portrait-image video {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
