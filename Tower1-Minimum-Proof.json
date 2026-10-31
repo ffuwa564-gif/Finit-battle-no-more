@@ -1,0 +1,41 @@
+{
+  "source": "616a074",
+  "seed": 54,
+  "battleId": "run-1000-54",
+  "config": {
+    "party": [
+      "freyja",
+      "liora-awakened"
+    ],
+    "leader": "liora-awakened",
+    "gems": [
+      {
+        "id": "gecho-shard",
+        "defId": "echo-shard",
+        "variant": "swift",
+        "roll": {
+          "power": 179,
+          "trait": "mercy",
+          "value": 33
+        }
+      },
+      null
+    ],
+    "policy": 0
+  },
+  "score": {
+    "C": 4.3,
+    "T": 6,
+    "score": 4.9
+  },
+  "rounds": 20,
+  "potions": 5,
+  "flowers": 9,
+  "fairies": 3,
+  "publicCommands": 187,
+  "allReadySnapshotsMatched": true,
+  "finalHPMatched": true,
+  "saveCompatibilityPassed": true,
+  "fixtureNotAcquiredProgress": true,
+  "passed": true
+}

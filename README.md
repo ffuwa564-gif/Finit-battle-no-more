@@ -56,3 +56,14 @@ Spoilers for the current opening and Chapters 1–4. Proposed Chapters 5–7 and
 
 Original candidate designs, not implemented or announced characters. Base statistics use the existing ver1.0 formulas; new skills are untested proposals. VOICEVOX Kasukabe Tsumugi appears in a fictional scout role, not as a statement or appearance by the real creator.
 
+## Tower 1 minimum-cost challenge — provisional score 4.9
+
+- [9:26 commentary video (720p)](STILLVEIL-Tower1-Minimum-720p.mp4)
+- [Full successful replay](Tower1-Minimum-Full-Replay.mp4)
+- [Formula, exact gear, methodology, limits](Tower1-Minimum-Notes.txt)
+- [Native command proof](Tower1-Minimum-Proof.json)
+- [Held-out comparison results](Tower1-Minimum-Validation.json)
+- [YouTube title and description](Tower1-Minimum-YouTube-description.txt)
+
+S = sum(character constants) + 0.1 * sum(gem power tier + trait tier). Freyja + awakened Liora, one swift Echo Shard (power179/mercy33), cleared in20rounds. This is a provisional minimum found, not a global optimality proof or a stable farm recommendation: 1 success in200 held-out conditions. Initial ownership and gear are a declared test fixture.
+

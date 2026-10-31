@@ -1,0 +1,740 @@
+[
+  {
+    "round": 1,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 371
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "moon-moth",
+        "hp": 1080
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 1440
+      }
+    ]
+  },
+  {
+    "round": 2,
+    "type": "potion",
+    "unitId": "party:liora-awakened"
+  },
+  {
+    "round": 2,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:2"
+  },
+  {
+    "round": 2,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-23"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 25
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 354,
+        "gauge": 35
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "moon-moth",
+        "hp": 687
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 1440
+      }
+    ]
+  },
+  {
+    "round": 3,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:3"
+  },
+  {
+    "round": 3,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 35
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 299,
+        "gauge": 80
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "moon-moth",
+        "hp": 550
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 1440
+      }
+    ]
+  },
+  {
+    "round": 4,
+    "type": "potion",
+    "unitId": "party:liora-awakened"
+  },
+  {
+    "round": 4,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-23"
+    },
+    "queued": [
+      "party:liora-awakened"
+    ],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 60
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 208,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "moon-moth",
+        "hp": 157
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 1440
+      }
+    ]
+  },
+  {
+    "round": 5,
+    "type": "potion",
+    "unitId": "party:liora-awakened"
+  },
+  {
+    "round": 5,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:5"
+  },
+  {
+    "round": 5,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:thorn-witch",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 85
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 252,
+        "gauge": 10
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 1365
+      }
+    ]
+  },
+  {
+    "round": 6,
+    "type": "battleFairy",
+    "fairyId": "run-1000-54:fairy:0:6"
+  },
+  {
+    "round": 6,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:thorn-witch",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 100
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 260,
+        "gauge": 60
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 981
+      }
+    ]
+  },
+  {
+    "round": 7,
+    "type": "potion",
+    "unitId": "party:liora-awakened"
+  },
+  {
+    "round": 7,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:thorn-witch",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 0
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 311,
+        "gauge": 95
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 603
+      }
+    ]
+  },
+  {
+    "round": 8,
+    "type": "potion",
+    "unitId": "party:liora-awakened"
+  },
+  {
+    "round": 8,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:8"
+  },
+  {
+    "round": 8,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:thorn-witch",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-23"
+    },
+    "queued": [
+      "party:liora-awakened"
+    ],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 25
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 247,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      },
+      {
+        "id": "thorn-witch",
+        "hp": 144
+      }
+    ]
+  },
+  {
+    "round": 9,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 50
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 247,
+        "gauge": 0
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3600
+      }
+    ]
+  },
+  {
+    "round": 10,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:10"
+  },
+  {
+    "round": 10,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "drain-23"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 202,
+        "gauge": 75
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 327,
+        "gauge": 35
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 3211
+      }
+    ]
+  },
+  {
+    "round": 11,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:11"
+  },
+  {
+    "round": 11,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 236,
+        "gauge": 100
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 199,
+        "gauge": 70
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 2977
+      }
+    ]
+  },
+  {
+    "round": 12,
+    "type": "battleFairy",
+    "fairyId": "run-1000-54:fairy:0:12"
+  },
+  {
+    "round": 12,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:12"
+  },
+  {
+    "round": 12,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [
+      "party:liora-awakened"
+    ],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 236,
+        "gauge": 15
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 142,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 2774
+      }
+    ]
+  },
+  {
+    "round": 13,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-23"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 236,
+        "gauge": 40
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 258,
+        "gauge": 0
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 2385
+      }
+    ]
+  },
+  {
+    "round": 14,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 236,
+        "gauge": 65
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 157,
+        "gauge": 35
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 2080
+      }
+    ]
+  },
+  {
+    "round": 15,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:15"
+  },
+  {
+    "round": 15,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "drain-23"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 236,
+        "gauge": 90
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 298,
+        "gauge": 70
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 1705
+      }
+    ]
+  },
+  {
+    "round": 16,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [
+      "party:liora-awakened"
+    ],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 100
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 176,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 1471
+      }
+    ]
+  },
+  {
+    "round": 17,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 0
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 169,
+        "gauge": 10
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 1225
+      }
+    ]
+  },
+  {
+    "round": 18,
+    "type": "battleFairy",
+    "fairyId": "run-1000-54:fairy:0:18"
+  },
+  {
+    "round": 18,
+    "type": "battleBloom",
+    "bloomId": "run-1000-54:flower:0:18"
+  },
+  {
+    "round": 18,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-23"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 40
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 244,
+        "gauge": 60
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 873
+      }
+    ]
+  },
+  {
+    "round": 19,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:swift:@roll=179~mercy~33:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 65
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 170,
+        "gauge": 95
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 568
+      }
+    ]
+  },
+  {
+    "round": 20,
+    "type": "round",
+    "strategy": "balanced",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:0:pale-wolf",
+    "order": {
+      "kind": "skill",
+      "skillId": "drain-23"
+    },
+    "queued": [
+      "party:liora-awakened"
+    ],
+    "before": [
+      {
+        "id": "freyja",
+        "hp": 267,
+        "gauge": 90
+      },
+      {
+        "id": "liora-awakened",
+        "hp": 92,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "pale-wolf",
+        "hp": 179
+      }
+    ]
+  }
+]
