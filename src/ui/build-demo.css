@@ -1,0 +1,36 @@
+.build-demo {margin:18px 0;padding:16px;border:1px solid #afc4da44;border-radius:18px;background:linear-gradient(150deg,#25354b,#152232);color:#e5eaf0;min-width:0;}
+.build-demo__heading {display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.build-demo__heading>span {display:flex;align-items:center;gap:7px;font:17px var(--font-display);color:#e7d7b8;}
+.build-demo__heading>small {font-size:10px;color:#bac8d6;letter-spacing:.06em;}
+.build-demo .build-demo__note {margin:9px 0 13px;font-size:11px;line-height:1.75;color:#bdcad8;}
+.build-demo__stage {position:relative;isolation:isolate;overflow:hidden;padding:12px 11px;border:1px solid #afc9dd33;border-radius:14px;background:radial-gradient(ellipse at 50% 38%,#455d734d,transparent 65%),linear-gradient(160deg,#111c2a,#203146);}
+.build-demo__stage:before {content:'';position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent,transparent 49px,#a5bdd007 50px,#a5bdd007 51px);z-index:-1;pointer-events:none;}
+.build-demo__position {font-size:9px;color:#aabed2;letter-spacing:.1em;text-align:center;margin-bottom:12px;}
+.build-demo__lineup {display:flex;justify-content:center;gap:9px;position:relative;z-index:1;}
+.build-demo__unit {width:calc((100% - 27px)/4);max-width:67px;min-width:0;text-align:center;transition:filter .18s;}
+.build-demo__portrait {aspect-ratio:1;position:relative;border-radius:10px;border:1px solid #c4d7e75c;background:#172739;}
+.build-demo__portrait img {display:block;width:100%;height:100%;object-fit:cover;border-radius:9px;}
+.build-demo__name {display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px;color:#cad7e4;margin:6px 0 3px;}
+.build-demo__unit meter {display:block;width:100%;height:5px;accent-color:#8cb5a5;}
+.build-demo__unit meter::-webkit-meter-bar {border:0;background:#b3c4d52b;border-radius:5px;}
+.build-demo__unit meter::-webkit-meter-optimum-value {background:#9bbfae;border-radius:5px;}
+.build-demo__lineup--enemy meter::-webkit-meter-optimum-value {background:#c18f9c;}
+.build-demo__charge {position:absolute;bottom:2px;right:3px;border-radius:4px;background:#0b1328dc;padding:1px 3px;font-size:9px;color:#f0ddad;}
+.build-demo__unit.is-actor .build-demo__portrait {border-color:#e7c986;box-shadow:0 0 15px #e4c68744;}
+.build-demo__unit.is-target .build-demo__portrait {box-shadow:0 0 18px #bd98e64d;}
+.build-demo__unit.is-fallen {filter:grayscale(1);opacity:.4;}
+.build-demo__number {position:absolute;inset:20% -5px auto;text-align:center;z-index:2;color:#fff1dd;font:26px var(--font-display);text-shadow:0 2px 5px #071325,0 0 9px #9b6e50;pointer-events:none;}
+.build-demo__number.is-support {color:#c3f1d1;}
+.build-demo__spell {position:relative;display:flex;align-items:center;justify-content:center;min-height:52px;text-align:center;}
+.build-demo__spell strong {position:relative;z-index:1;font:15px var(--font-display);letter-spacing:.04em;color:#ead7b7;text-shadow:0 2px 7px #0c142a;animation:build-demo-label .35s ease-out both;}
+.build-demo__spell>span:not(.build-demo__flare) {font-size:17px;color:#95afcc80;}
+.build-demo__flare {position:absolute;width:85%;height:2px;top:50%;background:linear-gradient(90deg,transparent,#d9c89a,transparent);box-shadow:0 0 22px 8px #c5a8ec26;animation:build-demo-flare .7s ease-out both;}
+.build-demo__stage--battery .build-demo__flare {background:linear-gradient(90deg,transparent,#a7e5e8,transparent);box-shadow:0 0 22px 8px #8abedc33;}
+.build-demo .build-demo__event {font-size:11px;line-height:1.7;color:#c7d6e3;min-height:38px;margin:13px 0 0;text-align:center;overflow-wrap:anywhere;}
+.build-demo__controls {display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.build-demo__controls>.button {min-height:38px;}
+.build-demo__controls>span {margin-left:auto;font-size:10px;color:#a9bed3;}
+.build-demo.is-reduced-motion *, .build-demo.is-reduced-motion *:before {animation:none!important;transition:none!important;}
+@keyframes build-demo-label {from {opacity:0;transform:translateY(4px);}to {opacity:1;transform:none;}}
+@keyframes build-demo-flare {from {opacity:0;transform:scaleX(.2);}35% {opacity:1;}to {opacity:.5;transform:scaleX(1);}}
+@media (prefers-reduced-motion:reduce) {.build-demo *, .build-demo *:before {animation:none!important;transition:none!important;}}

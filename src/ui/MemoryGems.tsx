@@ -20,9 +20,9 @@ export function MemoryGemSigil({ family = 'sanctuary', rare = false, className =
   </span>;
 }
 
-export interface MemoryGemsProps { save: GameSave; content: Content; dispatch: (command: GameCommand) => void; onClose?: () => void; busy?: boolean }
+export interface MemoryGemsProps { save: GameSave; content: Content; dispatch: (command: GameCommand) => void; onClose?: () => void; busy?: boolean; onBuilds?: () => void; targetDefId?: string }
 
-export function MemoryGems({ save, content, dispatch, onClose, busy = false }: MemoryGemsProps) {
+export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetDefId, busy = false }: MemoryGemsProps) {
   const inventory = save.memoryGems;
   const items = inventory?.items ?? [];
   const equipped = inventory?.equipped ?? {};
@@ -53,6 +53,7 @@ export function MemoryGems({ save, content, dispatch, onClose, busy = false }: M
   const equipmentOwner = (id: string) => characters.find(character => equipped[character.id] === id);
   const canEquip = !busy && (!save.battle || (save.battle.phase === 'ready' && save.battle.round === 1 && !save.battle.potionUsed));
   const canCraft = !busy && !save.battle;
+  const craftTarget = GEM_DEFINITIONS.find(def => def.id === targetDefId && !def.bossOnly);
   const selectedOwner = selected && equipmentOwner(selected.id);
   const needsTransfer = Boolean(selectedOwner && selectedOwner.id !== activeCharacterId);
   const stacks = memoryGemStacks([...items].reverse(), equipped);
@@ -89,8 +90,15 @@ export function MemoryGems({ save, content, dispatch, onClose, busy = false }: M
 
   return <section className="memory-gems" aria-label={tr('記憶石')} data-testid="memory-gems">
     <header className="memory-gems__header"><div><span className="memory-gems__eyebrow">MEMORY STONES</span><h2><Gem size={23} />{tr('記憶石')}</h2><p>{tr('ひとつの石が、旅の戦い方を変える。')}</p></div>{onClose && <Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button>}</header>
+    {onBuilds && !save.battle && <Button variant="secondary" onClick={onBuilds}><Sparkles size={16} />{tr('おすすめビルド')}</Button>}
     <p className="memory-gems__intro">{tr('仲間1人につき1個。能力値を上げず、新しいスキルを授けます。')}</p>
     <div className="memory-gems__collection"><span><Sparkles size={15} />{tr('発見した記憶')}</span><strong>{inventory?.seen.length ?? 0}<small> / {GEM_DEFINITIONS.length}</small></strong></div>
+
+    {craftTarget && <article className="memory-gems__target-craft" aria-label={tr('目標の石を製作')} data-testid="build-craft-target">
+      <h3><Gem size={18} />{tr(craftTarget.name)}</h3><p>{tr('澄明の基本石を製作します。必要な追加特性は、製作後に調律で狙えます。')}</p>
+      <p>{tr('必要な欠片：{0} / 所持：{1}').replace('{0}', String(GEM_CRAFT_COST)).replace('{1}', String(inventory?.dust[craftTarget.family] ?? 0))}</p>
+      <Button disabled={!canCraft || Boolean(pending) || (inventory?.dust[craftTarget.family] ?? 0) < GEM_CRAFT_COST} onClick={() => dispatch({type:'craftMemoryGem',defId:craftTarget.id,variant:'pure'})}>{tr('この石を製作')}</Button>
+    </article>}
 
     {pending && pendingOriginal && <article ref={offer} className="memory-gems__refinement-offer" aria-label={tr('調律結果の確認')} data-testid="gem-refinement-offer">
       <div className="memory-gems__refinement-title"><Sparkles size={20} /><div><span>{tr('確認待ちの調律')}</span><h3>{tr(gemName(pendingOriginal))}</h3></div></div>

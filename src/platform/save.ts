@@ -1,3 +1,4 @@
+import { validBuildGoal } from '../domain/builds';
 import { validMemoryGem, validGemInventory, gemSkill, gemDefinitionForSkill, gemRollKey } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
 import { validBattleFairies } from '../domain/battle-fairies';
@@ -83,6 +84,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
   if (partyIds.length < 1 || partyIds.length > 4 || !partyIds.includes(value.leaderId as string) || partyIds.some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('保存データの編成が不正です。');
+  if (value.buildGoal !== undefined && !validBuildGoal(value.buildGoal)) throw new Error('目標ビルドの保存状態が不正です。');
   if (value.memoryGems !== undefined) {
     if (!validGemInventory(value.memoryGems)) throw new Error('記憶石の保存状態が不正です。');
     const inventory = value.memoryGems as unknown as NonNullable<GameSave['memoryGems']>;
