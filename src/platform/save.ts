@@ -29,6 +29,8 @@ function validUnit(value: unknown): boolean {
   if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
   if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
+  if (value.bossWindup !== undefined && (!record(value.bossWindup) || value.side !== 'enemy' || !value.boss || !count(value.bossWindup.round) || value.bossWindup.round < 1 || !count(value.bossWindup.damage))) return false;
+  if (value.bossRecoveryUntil !== undefined && (value.side !== 'enemy' || !value.boss || !count(value.bossRecoveryUntil))) return false;
   if (value.defendingUntil !== undefined && !count(value.defendingUntil)) return false;
   if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
@@ -124,6 +126,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
+  if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
   if (battle.events.some(event => event.skillId && !skills.has(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');

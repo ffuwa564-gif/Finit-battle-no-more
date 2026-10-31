@@ -11,9 +11,9 @@ const mobs = (ids: string[]) => ids.map(characterId => ({ characterId }));
 const tiers = [
   { name: '初級', hp: 120, attack: 60, amount: 1, waves: [['pale-wolf']] },
   { name: '中級', hp: 250, attack: 90, amount: 2, waves: [['pale-wolf', 'moon-moth'], ['thorn-witch', 'hollow-keeper']] },
-  { name: '上級', hp: 400, attack: 120, amount: 3, waves: [['moon-moth', 'thorn-witch', 'hollow-keeper'], ['pale-wolf', 'veil-priestess', 'thorn-witch']] },
-  { name: '超級', hp: 650, attack: 160, amount: 5, waves: [['moon-moth', 'thorn-witch', 'pale-wolf'], ['hollow-keeper', 'veil-priestess', 'pale-wolf'], ['thorn-witch', 'moon-moth', 'pale-wolf']] },
-  { name: '覚醒級', hp: 700, attack: 120, amount: 1, waves: [['pale-wolf', 'thorn-witch', 'moon-moth'], ['hollow-keeper', 'veil-priestess', 'pale-wolf'], ['thorn-witch', 'thorn-witch', 'moon-moth'], ['veil-priestess', 'pale-wolf', 'moon-moth']] },
+  { name: '上級', hp: 500, attack: 140, amount: 3, waves: [['moon-moth', 'thorn-witch', 'hollow-keeper'], ['pale-wolf', 'veil-priestess', 'thorn-witch']] },
+  { name: '超級', hp: 700, attack: 180, amount: 5, waves: [['moon-moth', 'thorn-witch', 'pale-wolf'], ['hollow-keeper', 'veil-priestess', 'pale-wolf'], ['thorn-witch', 'moon-moth', 'pale-wolf']] },
+  { name: '覚醒級', hp: 700, attack: 200, amount: 1, waves: [['pale-wolf', 'thorn-witch', 'moon-moth'], ['hollow-keeper', 'veil-priestess', 'pale-wolf'], ['thorn-witch', 'thorn-witch', 'moon-moth'], ['veil-priestess', 'pale-wolf', 'moon-moth']] },
 ];
 export const eventDungeons: DungeonDef[] = tiers.map((tier, i) => ({
   id: kuzuhaEvent.dungeonIds[i]!, kind: 'event', name: `${kuzuhaEvent.name}・${tier.name}`, tierName: tier.name,
@@ -24,8 +24,9 @@ export const eventDungeons: DungeonDef[] = tiers.map((tier, i) => ({
   requiresOwnedId: i === 4 ? kuzuhaEvent.normalId : undefined,
   bossMusic: 'japanese',
   bossScale: { hp: tier.hp, attack: tier.attack },
+  ...(i >= 1 ? { bossStrike: { every: 3, power: i >= 3 ? 230 : 200, name: '宵宮・九尾の祓い', target: 'pilot' as const, windup: { breakPercent: 8, weakenedPower: 100, recoveryPercent: 25 } } } : {}),
   eventReward: { materialId: i === 4 ? kuzuhaEvent.core.id : kuzuhaEvent.fragment.id, count: tier.amount },
-  waves: [...tier.waves.map(mobs), [{ characterId: i === 4 ? kuzuhaEvent.awakenedId : kuzuhaEvent.normalId, boss: true }]],
+  waves: [...tier.waves.map(mobs), [{ characterId: i === 4 ? kuzuhaEvent.awakenedId : kuzuhaEvent.normalId, boss: true }, ...(i >= 2 ? [{ characterId: 'veil-priestess' }] : []), ...(i >= 3 ? [{ characterId: 'hollow-keeper' }] : [])]],
 }));
 
 /** Original clockwork inventor; her rabbits are devices, not additional enemy slots. */
@@ -41,9 +42,9 @@ export const lunetteEvent: EventDef = {
 const clockworkTiers = [
   { name: '初級', hp: 280, attack: 50, amount: 2, bits: 2, waves: [['moon-moth']] },
   { name: '中級', hp: 360, attack: 65, amount: 3, bits: 2, waves: [['moon-moth', 'pale-wolf']] },
-  { name: '上級', hp: 420, attack: 80, amount: 4, bits: 2, waves: [['hollow-keeper', 'moon-moth'], ['stone-drake', 'pale-wolf']] },
-  { name: '超級', hp: 600, attack: 95, amount: 6, bits: 3, waves: [['hollow-keeper', 'thorn-witch'], ['moon-moth', 'veil-priestess', 'pale-wolf']] },
-  { name: '覚醒級', hp: 700, attack: 85, amount: 1, bits: 3, waves: [['stone-drake', 'veil-priestess'], ['hollow-keeper', 'moon-moth', 'pale-wolf'], ['thorn-witch', 'moon-moth']] },
+  { name: '上級', hp: 420, attack: 110, amount: 4, bits: 2, waves: [['hollow-keeper', 'moon-moth'], ['stone-drake', 'pale-wolf']] },
+  { name: '超級', hp: 600, attack: 130, amount: 6, bits: 3, waves: [['hollow-keeper', 'thorn-witch'], ['moon-moth', 'veil-priestess', 'pale-wolf']] },
+  { name: '覚醒級', hp: 700, attack: 140, amount: 1, bits: 3, waves: [['stone-drake', 'veil-priestess'], ['hollow-keeper', 'moon-moth', 'pale-wolf'], ['thorn-witch', 'moon-moth']] },
 ];
 export const lunetteDungeons: DungeonDef[] = clockworkTiers.map((tier, i) => ({
   id: lunetteEvent.dungeonIds[i]!, kind: 'event', name: `${lunetteEvent.name}・${tier.name}`, tierName: tier.name,
@@ -52,7 +53,8 @@ export const lunetteDungeons: DungeonDef[] = clockworkTiers.map((tier, i) => ({
   artId: i === 4 ? 'lunette-awakened-art' : 'lunette-art', published: true, eventId: lunetteEvent.id,
   previousDungeonId: i === 0 ? lunetteEvent.entryDungeonId : lunetteEvent.dungeonIds[i - 1],
   requiresOwnedId: i === 4 ? lunetteEvent.normalId : undefined,
+  ...(i >= 2 ? { bossStrike: { every: 3, power: i >= 3 ? 200 : 180, name: '時計庭・零時の一撃', target: 'pilot' as const, windup: { breakPercent: 8, weakenedPower: 100, recoveryPercent: 25 } } } : {}),
   bossScale: { hp: tier.hp, attack: tier.attack }, bossBits: { every: 3, count: tier.bits, duration: 2, power: 65 },
   eventReward: { materialId: i === 4 ? lunetteEvent.core.id : lunetteEvent.fragment.id, count: tier.amount },
-  waves: [...tier.waves.map(mobs), [{ characterId: i === 4 ? lunetteEvent.awakenedId : lunetteEvent.normalId, boss: true }]],
+  waves: [...tier.waves.map(mobs), [{ characterId: i === 4 ? lunetteEvent.awakenedId : lunetteEvent.normalId, boss: true }, ...(i >= 2 ? [{ characterId: 'veil-priestess' }] : []), ...(i >= 3 ? [{ characterId: 'stone-drake' }] : [])]],
 }));

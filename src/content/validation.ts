@@ -179,7 +179,16 @@ export function validateContent(content: Content): string[] {
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
     if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
-    if (dungeon.bossStrike) { const strike = dungeon.bossStrike; reject((strike.target !== undefined && strike.target !== 'pilot') || !(dungeon.kind === 'trial' && (dungeon.tacticalCommands === true || Boolean(dungeon.coordination))) && (!dungeon.chapterId || !chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id)) || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`); }
+    if (dungeon.bossStrike) {
+      const strike = dungeon.bossStrike;
+      const allowed = dungeon.kind === 'trial' ? dungeon.tacticalCommands === true || Boolean(dungeon.coordination)
+        : Boolean(strike.windup) || Boolean(dungeon.chapterId && chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.dungeonIds.at(-1) === dungeon.id));
+      reject(!allowed || (strike.target !== undefined && strike.target !== 'pilot') || !Number.isSafeInteger(strike.every) || strike.every < 2 || strike.every > 5 || !Number.isSafeInteger(strike.power) || strike.power < 120 || strike.power > 300 || !plain(strike.name), `dungeons/${dungeon.id}: invalid chapter boss strike`);
+      if (strike.windup) {
+        const w = strike.windup;
+        reject(strike.every < 3 || ![w.breakPercent, w.weakenedPower, w.recoveryPercent].every(Number.isSafeInteger) || w.breakPercent < 1 || w.breakPercent > 30 || w.weakenedPower < 1 || w.weakenedPower >= strike.power || w.recoveryPercent < 1 || w.recoveryPercent > 100 || !dungeon.waves.at(-1)?.some(enemy => enemy.boss), `dungeons/${dungeon.id}: invalid boss windup`);
+      }
+    }
     if (dungeon.bossClock) {
       const clock = dungeon.bossClock;
       reject(dungeon.kind !== 'trial' || dungeon.waves.length !== 1 || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
@@ -213,7 +222,7 @@ export function validateContent(content: Content): string[] {
       }
     }
     const finalWave = dungeon.waves.at(-1);
-    if (!dungeon.coordination) reject(!finalWave || finalWave.length !== 1 || !finalWave[0].boss, `dungeons/${dungeon.id}: final wave must contain one boss`);
+    if (!dungeon.coordination) reject(!finalWave || !finalWave[0]?.boss || finalWave.slice(1).some(enemy => enemy.boss) || finalWave.length > (dungeon.bossStrike?.windup && dungeon.kind !== 'trial' ? 3 : 1), `dungeons/${dungeon.id}: final wave must contain one boss`);
   }
   allIds(content.awakenings ?? [], 'awakenings');
   const awakeningForms = new Set<string>();

@@ -2060,5 +2060,17 @@
   "左端の顔を長押しして、行動までドラッグして離すと指示できるよ。ATTACKで確定すると、仲間が選んだ技と対象が開くの。何も指示しなければ自動で動くよ。確定したラウンドへの指示変更はできないから、次の一手で合わせようね。": "Hold the leftmost portrait, drag to an action and release to give an order. ATTACK locks the round and reveals your companions' choices and targets. Leave her alone to act automatically. You cannot rewrite a committed round, so adjust with your next move.",
   "この試練では、実際に同じ敵への攻撃が続くと、後から攻撃した子のダメージが35%増えるよ。読み違いへの固定反撃はないけれど、3ターンごとの大技には注意してね。ヒーラーが別の子を助けることもあるから、自分で守るか、薬を使うかも大切だよ。": "In this trial, when different allies actually hit the same enemy in sequence, the later hit gains 35% damage. A wrong guess does not trigger a fixed counter, but watch for the heavy attacks every three turns. Your healer might help someone else, so defending yourself or using a potion can make all the difference.",
   "左端の顔を長押しして、技までドラッグして離すと予約できるよ。顔へ戻せば取消、触らなければ自動！ 演出中の予約は次ラウンドに反映されるの。ほかの仲間はゲージ100%で顔を押すと必殺技を予約・取消できるよ。枠の妖精は3ターン以内にタップすると全員のゲージが15%増えるよ！ 仲間の仕草を押せば、その子の戦い方も読めるよ。": "Hold the leftmost portrait, drag to an action and release to queue it. Move back to the portrait to cancel, or leave her on auto! Orders made during animations apply next round. Tap another ally at 100% gauge to queue or cancel their ultimate. Tap a fairy at the frame within three turns to give everyone 15% charge! Tap a companion's gesture to read her combat tendencies.",
-  "先頭狙い": "Targets lead"
+  "先頭狙い": "Targets lead",
+  "崩しまで {0}": "{0} HP to break",
+  "大技弱体": "Heavy attack weakened",
+  "攻撃後の隙 +{0}%": "Opening +{0}%",
+  "{0} — 溜めを崩した": "{0} — Charge broken",
+  "ITEMで生きている仲間を、1ラウンドに1回回復できるよ。ボスの溜め中は、予告の数字までHPを削ると次の大技が弱まるの。崩せそうにないなら、先頭の子に「身を守る」を指示して備えよう。大技の後の隙は、攻めるチャンスだよ！": "ITEM heals a living ally once per round. While a boss charges, deal the HP damage shown in the warning to weaken its next heavy attack. If you cannot break the charge, order your lead companion to Defend. Attack during the opening after the heavy strike!",
+  "封域の一撃": "Sealed Domain Strike",
+  "宵宮・九尾の祓い": "Evening Shrine: Nine-Tail Purification",
+  "時計庭・零時の一撃": "Clockwork Garden: Midnight Strike",
+  "3ターンごとの先頭狙いに備えよう。溜め中に集中して大技を弱めるか、防御でしのいで攻撃後の隙を狙おう。": "Prepare for a heavy strike against your lead every three turns. Focus damage during the charge to weaken it, or defend and counter during the opening afterward.",
+  "先頭狙いの大技に注意。護衛のかばう・回復を崩すか、ボスへ集中して溜めを崩そう。": "Watch for heavy attacks on your lead. Defeat the escorts to stop their cover and healing, or focus the boss to break her charge.",
+  "護衛の回復・妨害を見て狙う相手を決めよう。大技を弱めるか防御でしのぎ、攻撃後の隙に反撃しよう。": "Choose your target around the escorts’ healing and disruption. Weaken the heavy strike or defend through it, then counter during the opening.",
+  "ボスの予告状態が探索のラウンドと一致しません。": "The boss warning state does not match the current exploration round."
 }
