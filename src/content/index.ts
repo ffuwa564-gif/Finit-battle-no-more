@@ -6,7 +6,7 @@ import { openingNovel, campaignNovels } from './novels';
 import { xrGacha } from './xr-gacha';
 import { withMotionPosters } from './motion-posters';
 import { goldExchanges, goldExchangeArt } from './gold-exchanges';
-import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, trialDialogues } from './trials';
+import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, coordinationTrial, trialDialogues } from './trials';
 import { rareEnemyArt, rareEnemySpecies, rareEnemyMaterials, rareEncounterFor } from './rare-encounters';
 import { skillNames, skillTemplates, skillSoundProfiles } from '../domain/skill-info';
 import type { AssetDef, CharacterDef, Content, DungeonDef, Role, SkillDef, SkillTemplate } from '../domain/types';
@@ -255,7 +255,7 @@ const normalDungeons: DungeonDef[] = stages.map(([id, name, subtitle, main, seco
   [{ characterId: main === 'veil-priestess' ? second : main, boss: true }],
 ] }));
 
-const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...zakuroDungeons, ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock];
+const dungeons = [...expandCampaign(normalDungeons.map(storyEncounter)).map(chapterRoute).map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index) })), ...zakuroDungeons, ...dawnDungeons.map((stage, index) => ({ ...stage, rareEncounter: rareEncounterFor(index + normalDungeons.length) })), ...eventDungeons, ...lunetteDungeons, ...stoneEvents, goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial, tacticalTrial, frozenDawnClock, coordinationTrial];
 const encounterAssets: AssetDef[] = characters.flatMap(char => char.encounterArtId ? [{
   id: char.encounterArtId, path: rareEnemyArt[char.id] ? `art/${rareEnemyArt[char.id]}.png` : char.origin.includes('event') ? `art/event-${char.id}.png` : storyCharacters.includes(char.id) ? `art/${char.id}.png` : `art/${char.encounterArtId}.png`, kind: 'background' as const,
   width: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1024 : 1536, height: char.origin.includes('event') || rareEnemyArt[char.id] || storyCharacters.includes(char.id) ? 1536 : 1024, anchor: char.origin.includes('event') || storyCharacters.includes(char.id) ? '50% 0%' : '50% 50%', rights: 'Original AI-generated complete encounter painting for this project.', ...(char.id === 'lunette-awakened' ? lunetteLoopPoster : {}),

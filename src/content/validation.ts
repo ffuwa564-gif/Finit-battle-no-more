@@ -162,11 +162,19 @@ export function validateContent(content: Content): string[] {
   }
   for (const dungeon of content.dungeons) {
     if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || dungeon.kind !== 'trial' || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
+    if (dungeon.coordination) {
+      const rule = dungeon.coordination;
+      reject(dungeon.kind !== 'trial' || Boolean(dungeon.bossClock || dungeon.bossBits || dungeon.bossStrike) || !Number.isSafeInteger(rule.recoilPercent) || rule.recoilPercent < 10 || rule.recoilPercent > 60 || !Number.isSafeInteger(rule.bonusPercent) || rule.bonusPercent < 1 || rule.bonusPercent > 100 || !dungeon.waves.some(wave => wave.some(enemy => enemy.boss)), `dungeons/${dungeon.id}: invalid coordination trial`);
+    }
     if (dungeon.chapterId) reject(!chapterIds.has(dungeon.chapterId) || !campaignStages.has(dungeon.id), `dungeons/${dungeon.id}: unknown chapter`);
     reject(dungeon.kind !== undefined && !['normal', 'event', 'trial'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.kind === 'trial') {
       reject(Boolean(dungeon.eventId || dungeon.eventReward || dungeon.bossLoot || dungeon.rareEncounter || dungeon.bossBits || dungeon.storyId), `dungeons/${dungeon.id}: trials cannot carry loot or special encounters`);
-      reject(dungeon.waves.length < (dungeon.bossClock ? 1 : 2) || dungeon.waves.some(wave => wave.length !== 1 || !wave[0]?.boss || !content.characters.some(char => char.id === wave[0]!.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR')), `dungeons/${dungeon.id}: trials require sequential SSR goddess bosses`);
+      if (dungeon.coordination) {
+        reject(dungeon.waves.length < 1 || dungeon.waves.some(wave => wave.length < 2 || wave.length > 4 || wave.some(enemy => !enemy.boss || !content.characters.some(char => char.id === enemy.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR'))), `dungeons/${dungeon.id}: coordination trials require two to four SSR goddess bosses per wave`);
+      } else {
+        reject(dungeon.waves.length < (dungeon.bossClock ? 1 : 2) || dungeon.waves.some(wave => wave.length !== 1 || !wave[0]?.boss || !content.characters.some(char => char.id === wave[0]!.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR')), `dungeons/${dungeon.id}: trials require sequential SSR goddess bosses`);
+      }
     }
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
@@ -205,7 +213,7 @@ export function validateContent(content: Content): string[] {
       }
     }
     const finalWave = dungeon.waves.at(-1);
-    reject(!finalWave || finalWave.length !== 1 || !finalWave[0].boss, `dungeons/${dungeon.id}: final wave must contain one boss`);
+    if (!dungeon.coordination) reject(!finalWave || finalWave.length !== 1 || !finalWave[0].boss, `dungeons/${dungeon.id}: final wave must contain one boss`);
   }
   allIds(content.awakenings ?? [], 'awakenings');
   const awakeningForms = new Set<string>();
