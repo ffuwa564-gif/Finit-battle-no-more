@@ -9,8 +9,8 @@ export const isUltimateSound = (kind: string): kind is UltimateSound => (ultimat
 export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism', 'rabbit-bits': 'ultimate-rabbits' } as const)[theme];
 
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
-export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
-  if (kind === 'ultimate-rabbits') return renderRabbitUltimate(sampleRate);
+export function renderUltimateSound(kind: UltimateSound, sampleRate: number, buffSource?: Float32Array): Float32Array {
+  if (kind === 'ultimate-rabbits') return renderRabbitUltimate(sampleRate,1,buffSource);
   if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
   if (kind === 'ultimate') return renderUltimateCharge(sampleRate);
   const heal = kind === 'ultimate-sanctuary';

@@ -1,4 +1,5 @@
-import { renderRabbitUltimate, renderRabbitBuff, RABBIT_BUFF_CUES } from '../src/platform/rabbit-ultimate-audio';
+import {readFileSync} from 'node:fs';
+import { renderRabbitUltimate, enhanceRabbitBuff, RABBIT_BUFF_CUES } from '../src/platform/rabbit-ultimate-audio';
 import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
 import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
@@ -32,13 +33,15 @@ describe('authored ultimate sound materials', () => {
     expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
     expect(rms(slow,rate,1.8*RABBIT_VOLLEY.finale+.005,1.8*RABBIT_VOLLEY.finale+.06)).toBeGreaterThan(.05);
   });
-  it('carries repeated bright buff phrases before and between the weapon bursts',()=>{
-    const rate=44100,voice=renderRabbitUltimate(rate),buff=renderRabbitBuff(rate);
-    expect(RABBIT_BUFF_CUES.length).toBeGreaterThanOrEqual(8);
-    expect(voice.length/rate).toBe(5);expect(renderRabbitUltimate(rate,1.25).length/rate).toBe(4);
-    expect(rms(voice,rate,.2,.4)).toBeGreaterThan(.04);
-    expect(rms(voice,rate,1.15,1.45)).toBeGreaterThan(.04);
-    expect(rms(buff,rate,.03,.2)).toBeGreaterThan(.05);
+  it('strengthens the actual buff waveform without changing its notes or timing',()=>{
+    const bytes=readFileSync(new URL('../src/platform/assets/combat-buff.wav',import.meta.url));
+    const source=Float32Array.from({length:(bytes.length-44)/2},(_,i)=>bytes.readInt16LE(44+i*2)/32768);
+    const buff=enhanceRabbitBuff(source),voice=renderRabbitUltimate(48000,1,source);
+    expect(buff.length).toBe(source.length);expect(RABBIT_BUFF_CUES.length).toBe(5);
+    let xy=0,xx=0,yy=0;for(let i=0;i<source.length;i++){xy+=source[i]*buff[i];xx+=source[i]**2;yy+=buff[i]**2;}
+    expect(xy/Math.sqrt(xx*yy)).toBeGreaterThan(.995);
+    expect(rms(buff,48000,.02,.5)).toBeGreaterThan(rms(source,48000,.02,.5)*1.25);
+    expect(voice.length/48000).toBe(5);expect(renderRabbitUltimate(48000,1.25,source).length/48000).toBe(4);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

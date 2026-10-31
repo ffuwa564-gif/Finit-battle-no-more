@@ -61,16 +61,21 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   // Render once per unlocked audio context. Buffer playback avoids monophonic
   // synth scheduling conflicts and gives ultimates a completely separate timbre.
   const context = tone.getContext().rawContext;
+  let buffSource:Float32Array|undefined;
+  try{
+    const response=await fetch(new URL('./assets/combat-buff.wav',import.meta.url));
+    if(response.ok){const decoded=await context.decodeAudioData(await response.arrayBuffer());buffSource=decoded.getChannelData(0).slice();}
+  }catch{/* A missing optional accent must not block combat or the other sounds. */}
   const ultimateBuffers = new Map<UltimateSound, AudioBuffer>();
   for (const kind of ultimateSounds) {
-    const pcm = renderUltimateSound(kind, context.sampleRate);
+    const pcm = renderUltimateSound(kind, context.sampleRate, buffSource);
     const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
     buffer.getChannelData(0).set(pcm);
     ultimateBuffers.set(kind, buffer);
   }
   // Retiming deadlines preserves pitch and each individual weapon transient.
   const rabbitBuffers=new Map<number,AudioBuffer>([[1,ultimateBuffers.get('ultimate-rabbits')!]]);
-  const fastRabbit=renderRabbitUltimate(context.sampleRate,1.25);
+  const fastRabbit=renderRabbitUltimate(context.sampleRate,1.25,buffSource);
   const fastBuffer=context.createBuffer(1,fastRabbit.length,context.sampleRate);fastBuffer.getChannelData(0).set(fastRabbit);rabbitBuffers.set(1.25,fastBuffer);
   const normalBuffers = new Map<string, AudioBuffer>();
   const variations = new Map<string, number>();
