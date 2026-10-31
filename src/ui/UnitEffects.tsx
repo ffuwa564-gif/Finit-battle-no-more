@@ -10,6 +10,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   const [open, setOpen] = useState(false);
   if (unit.hp <= 0) return null;
   const effects: { label: string; title: string; bad?: boolean; ailment?: Ailment; icon?: typeof Shield }[] = [];
+  if ((unit.defendingUntil ?? -1) >= round) effects.push({ icon: Shield, label: '身を守る', title: '次の行動まで被ダメージを半減' });
   if ((unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= round) effects.push({ icon: Shield, label: `障壁 ${unit.barrier}`, title: `残り${unit.barrierUntil! - round + 1}ラウンド・${unit.barrier}ダメージを肩代わり` });
   if ((unit.regenUntil ?? -1) >= round) effects.push({ icon: HeartPulse, label: tr('status.regen'), title: `ラウンド終了時回復・残り${unit.regenUntil! - round + 1}回` });
   if (unit.guardTarget && (unit.guardUntil ?? -1) >= round) effects.push({ icon: ShieldCheck, label: 'かばう', title: '味方への単体攻撃を引き受ける' });

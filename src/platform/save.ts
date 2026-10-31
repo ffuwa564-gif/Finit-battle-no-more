@@ -4,6 +4,7 @@ import { validBattleBlooms } from '../domain/battle-blooms';
 import { validLegacyOmens } from '../domain/legacy-omens';
 import { ailments } from '../domain/ailments';
 import { duplicateFamily } from '../domain/events';
+import { validPartyOrder } from '../domain/party-orders';
 import type { Content, GameSave, GachaResult } from '../domain/types';
 
 export const SAVE_DATABASE = 'stillveil-save';
@@ -28,6 +29,7 @@ function validUnit(value: unknown): boolean {
   if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
   if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
+  if (value.defendingUntil !== undefined && !count(value.defendingUntil)) return false;
   if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
   for (const key of ['guardUntil', 'guardStrength', 'buffUntil', 'buffStrength', 'debuffUntil', 'debuffStrength', 'barrier', 'barrierUntil', 'regenStrength', 'regenUntil']) if (value[key] !== undefined && !count(value[key])) return false;
@@ -35,6 +37,7 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
+  if (record(value) && value.actionSelection !== undefined && typeof value.actionSelection !== 'boolean') return false;
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
   for (const key of ['actorId', 'skillId', 'materialId', 'ultimateName']) if (value[key] !== undefined && !nonempty(value[key])) return false;
   if (value.targetIds !== undefined && !stringArray(value.targetIds)) return false;
@@ -85,6 +88,8 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     const battle = value.battle;
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
     if (battle.crystalRole !== undefined && !validCrystalRole(battle.crystalRole)) throw new Error('宝石の共鳴状態が不正です。');
+    if (battle.partyOrder !== undefined && !validPartyOrder(battle.partyOrder)) throw new Error('行動の予約が正しくありません。');
+    if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
     if (battle.omens !== undefined && !validLegacyOmens(battle.omens, battle as unknown as Parameters<typeof validLegacyOmens>[1])) throw new Error('痕跡の保存状態が不正です。');
@@ -114,6 +119,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   const battle = save.battle;
   if (!battle) return;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
+  if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
   if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
