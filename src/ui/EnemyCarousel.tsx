@@ -153,7 +153,7 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     </div>
     {front.uid === targetId && front.hp > 0 && <><MapPin className="enemy-target-pin" aria-label={tr('狙っている敵')} /><span className="enemy-target-ring" aria-hidden="true" /></>}
     {onTarget && front.hp > 0 && <Button className="enemy-target-button" variant="icon" sound={false} selected={front.uid === targetId} aria-label={tr('この敵を狙う')} onClick={() => onTarget(front.uid)}><Crosshair size={18} /></Button>}
-    {front.boss && front.hp > 0 && bossStrike && <div className={`boss-strike-status${event?.bossStrike && event.actorId === front.uid ? ' is-striking' : ''}`} role="status" aria-label={tr('ボスの大技予告')}><Crown size={13} /><span><strong>{tr(bossStrike.name)}</strong>{tr((bossStrike.every - round % bossStrike.every) % bossStrike.every === 0 ? 'このターンに大技' : `大技まで${(bossStrike.every - round % bossStrike.every) % bossStrike.every}ターン`)}</span></div>}
+    {front.boss && front.hp > 0 && bossStrike && <div className={`boss-strike-status${event?.bossStrike && event.actorId === front.uid ? ' is-striking' : ''}`} role="status" aria-label={tr('ボスの大技予告')}><Crown size={13} /><span><strong>{tr(bossStrike.name)}</strong>{tr((bossStrike.every - round % bossStrike.every) % bossStrike.every === 0 ? 'このターンに大技' : `大技まで${(bossStrike.every - round % bossStrike.every) % bossStrike.every}ターン`)}{bossStrike.target === 'pilot' && <> · {tr('先頭狙い')}</>}</span></div>}
     <ClockBossStatus boss={front} pattern={bossClock} event={event} round={round} reducedMotion={reduced} />
     <ClockworkBits boss={front} pattern={bitPattern} event={event} round={round} />
     <div className="enemy-carousel-status">

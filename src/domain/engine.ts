@@ -7,7 +7,7 @@ import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentCha
 import { skillCooldown } from './skill-info';
 import { duplicateFamily } from './events';
 import { orderSkillReady, orderTargets } from './party-orders';
-import type { Ailment, Battle, BattleEvent, CharacterDef, Content, CoordinationPlan, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
+import type { Ailment, Battle, BattleEvent, CharacterDef, Content, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
 
 const BASE: Record<CharacterDef['role'], Stats> = {
   healer: { hp: 100, attack: 25, defense: 14, speed: 12 },
@@ -226,7 +226,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const allies = alive(battle.units, actor.side);
   const enemies = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
   const strike = actor.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
-  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [chooseTarget(enemies, 'balanced', content)], power: strike.power, name: strike.name };
+  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [strike.target === 'pilot' ? enemies.find(u => u.characterId === battle.partyIds[0]) ?? chooseTarget(enemies, 'balanced', content) : chooseTarget(enemies, 'balanced', content)], power: strike.power, name: strike.name };
   const role = character(content, actor.characterId).role;
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
   const skills = skillList(actor, content, battle.round);
@@ -351,24 +351,18 @@ function expireRoundEffects(battle: Battle): void {
     if ((unit.regenUntil ?? -1) < battle.round) { delete unit.regenUntil; delete unit.regenStrength; }
   }
 }
-const damagingTemplates: readonly SkillTemplate[] = ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'];
 
-/** UI and execution share a fixed, RNG-free intention for each companion. */
-export function coordinationPlan(input: Battle, content: Content): CoordinationPlan | undefined {
-  if (input.phase !== 'ready' || !dungeon(content, input.dungeonId).coordination || !input.units.some(u => u.side === 'party' && u.characterId === input.partyIds[0] && u.hp > 0)) return;
+/** Private commitments are computed only when resolving the round, after input is locked. */
+export function companionCommitments(input: Battle, content: Content): PlannedPartyAction[] {
+  if (input.phase !== 'ready' || !dungeon(content, input.dungeonId).coordination) return [];
   const battle = clone(input); expireRoundEffects(battle);
-  const intents: PlannedPartyAction[] = battle.partyIds.slice(1).flatMap(id => {
+  return battle.partyIds.slice(1).flatMap(id => {
     const actor = battle.units.find(u => u.side === 'party' && u.characterId === id && u.hp > 0);
     if (!actor) return [];
     const action = chooseAction(actor, battle, content);
     return [{ actorId: actor.uid, template: action.template, skillId: action.skill?.id, ultimate: action.ultimate,
       name: action.name ?? action.skill?.name ?? '通常攻撃', targetIds: action.targets.map(u => u.uid), blocked: hasAilment(actor) || undefined }];
   });
-  const available = intents.filter(i => !i.blocked && i.targetIds.length);
-  if (!available.length) return;
-  const partner = available[(battle.round - 1) % available.length];
-  const enemyTargets = partner.targetIds.filter(id => battle.units.some(u => u.uid === id && u.side === 'enemy'));
-  return { partnerId: partner.actorId, mode: enemyTargets.length ? 'strike' : 'shelter', targetIds: enemyTargets, intents };
 }
 
 function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, content: Content): Action | undefined {
@@ -382,15 +376,9 @@ function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, 
   return { template: intent.template, targets, skill, ultimate: intent.ultimate, name: intent.name };
 }
 
-/** Defensive choices are always safe; only an isolated offensive commitment is punished. */
-function coordinationResponse(plan: CoordinationPlan, action: Action, battle: Battle): NonNullable<BattleEvent['coordinationAction']> {
-  if (action.forcedBy) return 'interrupted';
-  if (!damagingTemplates.includes(action.template) || !action.targets.some(u => u.side === 'enemy')) return 'held';
-  if (plan.mode === 'strike' && !plan.targetIds.some(id => battle.units.some(u => u.uid === id && u.hp > 0))) return 'interrupted';
-  return plan.mode === 'strike' && action.targets.some(u => plan.targetIds.includes(u.uid)) ? 'linked' : 'isolated';
-}
+interface CoordinationHits { bonusPercent: number; hits: Map<string, Set<string>>; linked: Set<string> }
 
-function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1, fixedAmount?: number): { unit: Unit; amount: number; absorbed: number; shattered: number } {
+function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1, coordination?: CoordinationHits): { unit: Unit; amount: number; absorbed: number; shattered: number } {
   const guard = guardable ? battle.units.find(unit => unit.hp > 0 && unit.side === target.side && unit.uid !== target.uid && unit.guardTarget === target.uid && (unit.guardUntil ?? -1) >= battle.round) : undefined;
   const recipient = guard ?? target;
   const shattered = shattering && (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0;
@@ -402,8 +390,8 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const clock = dungeon(content, battle.dungeonId).bossClock;
   const defense = effectiveDefense(recipient, battle.round) * (clock && recipient.side === 'enemy' && recipient.boss && !recipient.barrier ? clock.brokenDefensePercent / 100 : 1);
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - defense * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
-  if (fixedAmount !== undefined) amount = Math.max(1, Math.floor(fixedAmount - defense / 2));
-  amount = Math.max(1, Math.floor(amount * potency));
+  const linked = actor.side === 'party' && recipient.side === 'enemy' && coordination && [...(coordination.hits.get(recipient.uid) ?? [])].some(id => id !== actor.uid);
+  amount = Math.max(1, Math.floor(amount * potency * (linked ? 1 + coordination!.bonusPercent / 100 : 1)));
   if ((recipient.defendingUntil ?? -1) >= battle.round) amount = Math.max(1, Math.floor(amount / 2));
   if (actor.side === 'party' && recipient.side !== actor.side && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
   if (guard) amount = Math.max(1, Math.floor(amount * (370 - (guard.guardStrength ?? 10)) / 400));
@@ -411,6 +399,10 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
+  if (coordination && actor.side === 'party' && recipient.side === 'enemy' && (actual > 0 || absorbed > 0)) {
+    const previous = coordination.hits.get(recipient.uid) ?? new Set<string>(); previous.add(actor.uid); coordination.hits.set(recipient.uid, previous);
+    if (linked) coordination.linked.add(actor.uid);
+  }
   if (actual > 0) gainUltimate(recipient, 10);
   if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
   if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
@@ -505,17 +497,21 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
 export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
-  const plan = coordinationPlan(input, content);
+  const commitments = companionCommitments(input, content);
   const battle = clone(input);
   delete battle.omens;
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
   expireRoundEffects(battle);
   restoreClockShield(battle, content, true);
-  let response: BattleEvent['coordinationAction'];
-  let partnerCompleted = false;
-  const pilotId = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0])?.uid;
-  const coordination = dungeon(content, battle.dungeonId).coordination;
+  const coordinationRule = dungeon(content, battle.dungeonId).coordination;
+  // A committed defensive stance prepares for a telegraphed strike, even from a faster boss.
+  // The pilot still spends her one normal action on guard later in the turn order.
+  if (coordinationRule && battle.partyOrder?.kind === 'guard') {
+    const pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
+    if (pilot && pilot.hp > 0 && !hasAilment(pilot)) pilot.defendingUntil = battle.round + 1;
+  }
+  const coordination: CoordinationHits | undefined = coordinationRule ? { bonusPercent: coordinationRule.bonusPercent, hits: new Map(), linked: new Set() } : undefined;
   const order = [...battle.units].filter((unit) => unit.hp > 0).sort((a, b) => b.speed - a.speed || a.tie - b.tie || byId(a, b));
   for (const actor of order) {
     if ((actor.defendingUntil ?? Infinity) <= battle.round) delete actor.defendingUntil;
@@ -529,18 +525,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       for (const id of recovered) emitRecovery(battle, actor, id, content);
       continue;
     }
-    const intent = plan?.intents.find(i => i.actorId === actor.uid);
-    let action = controlled.action ?? (intent && plannedAction(actor, intent, battle, content)) ?? chooseAction(actor, battle, content);
-    if (plan && actor.uid === pilotId && !controlled.action && !battle.partyOrder && !actor.ultimateQueued) {
-      const targets = plan.targetIds.flatMap(id => battle.units.filter(u => u.uid === id && u.hp > 0));
-      action = plan.mode === 'strike' && targets.length ? { template: 'attack', targets: targets.slice(0, 1) } : { template: 'guard', targets: [actor], manualGuard: true, name: '身を守る' };
-      if (!action.manualGuard) battle.focusTargetId = action.targets[0].uid;
-    }
-    const actorResponse = plan && actor.uid === pilotId ? coordinationResponse(plan, action, battle) : undefined;
-    if (actorResponse) response = actorResponse;
-    if (plan && actor.uid === plan.partnerId && intent) partnerCompleted = !action.forcedBy && action.template === intent.template && action.skill?.id === intent.skillId && Boolean(action.ultimate) === Boolean(intent.ultimate) && action.targets.some(u => intent.targetIds.includes(u.uid));
+    const intent = commitments.find(i => i.actorId === actor.uid);
+    const action = controlled.action ?? (intent && plannedAction(actor, intent, battle, content)) ?? chooseAction(actor, battle, content);
     const actorDef = character(content, actor.characterId);
-    const potency = (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1) * (actorResponse === 'linked' ? 1 + coordination!.bonusPercent / 100 : 1);
+    const potency = (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
     const name = actorDef.name;
     const openedBarrier = Boolean(action.power && actor.barrier);
     if (action.power) { delete actor.barrier; delete actor.barrierUntil; }
@@ -566,7 +554,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
             target.buffUntil = Math.max(target.buffUntil ?? 0, battle.round + 1);
           }
         } else {
-          const hit = damage(actor, target, role === 'attacker' ? 280 : role === 'area_attacker' ? 190 : 150, 100, battle, role === 'attacker', content, role === 'attacker', false, false, potency);
+          const hit = damage(actor, target, role === 'attacker' ? 280 : role === 'area_attacker' ? 190 : 150, 100, battle, role === 'attacker', content, role === 'attacker', false, false, potency, coordination);
           amount += hit.amount; absorbed += hit.absorbed;
           if (role === 'debuffer' && hit.unit.hp > 0) {
             hit.unit.debuffStrength = Math.max((hit.unit.debuffUntil ?? -1) >= battle.round ? hit.unit.debuffStrength ?? 10 : 0, Math.min(150, resonantStrength(40, potency)));
@@ -633,7 +621,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const numerator = action.power ?? (action.template === 'shatter' ? action.skill!.strength + 30 : (action.template === 'pierce' || action.template === 'dawn') ? action.skill!.strength + 30 : action.template === 'drain' ? 9 * (action.skill!.strength + 30) : action.template === 'area' ? 13 * (action.skill!.strength + 30) : action.skill ? 3 * (action.skill.strength + 30) : 1);
       const denominator = action.power ? 100 : action.template === 'shatter' ? 50 : (action.template === 'pierce' || action.template === 'dawn') ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
       for (const target of action.targets) {
-        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
+        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency, coordination); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
       }
     }
     if (action.template === 'drain' && amount > 0) {
@@ -643,7 +631,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     if (!action.ultimate && !action.forcedBy) gainUltimate(actor, 25);
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
-    emit(battle, { coordinationAction: actorResponse === 'isolated' ? undefined : actorResponse, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${actorResponse === 'linked' ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    emit(battle, { coordinationAction: coordination?.linked.has(actor.uid) ? 'linked' : undefined, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${coordination?.linked.has(actor.uid) ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
     if (actor.side === 'party' && dungeon(content, battle.dungeonId).bossClock) {
       for (const boss of battle.units.filter(unit => unit.side === 'enemy' && unit.boss && !unit.barrier && before.some(old => old.uid === unit.uid && (old.barrier ?? 0) > 0))) {
         emit(battle, { kind: 'debuff', clockAction: 'break', actorId: boss.uid, targetIds: [boss.uid], text: '時計の障壁が砕けた — このターンは防御低下', unitsAfter: clone(battle.units) });
@@ -658,23 +646,6 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const settled = settleAction(battle, content, before);
     goldEarned += settled.goldEarned;
     discoveredIds.push(...settled.discoveredIds.filter(id => !discoveredIds.includes(id)));
-  }
-  if (plan && response === 'isolated' && coordination) {
-    const pilot = battle.units.find(u => u.uid === pilotId)!;
-    const source = alive(battle.units, 'enemy').find(u => u.boss) ?? alive(battle.units, 'enemy')[0];
-    if (pilot.hp > 0 && source) {
-      if (partnerCompleted && battle.units.some(u => u.uid === plan.partnerId && u.hp > 0)) {
-        const before = clone(battle.units);
-        const hit = damage(source, pilot, 1, 1, battle, true, content, false, false, false, 1, Math.floor(pilot.maxHp * coordination.recoilPercent / 100));
-        clearInvalidGuards(battle);
-        const required = plan.targetIds.map(id => battle.initialUnits.filter(u => u.side === 'enemy').findIndex(u => u.uid === id) + 1).join('・');
-        emit(battle, { coordinationAction: 'isolated', kind: 'attack', actorId: source.uid, targetIds: [hit.unit.uid], amount: hit.amount,
-          text: plan.mode === 'shelter' ? '孤立反撃 — 仲間が支援中に単独攻撃' : `孤立反撃 — 連携対象${required}から外れた`, unitsAfter: clone(battle.units) });
-        emitCures(battle, before, content, source.uid);
-      } else {
-        emit(battle, { coordinationAction: 'interrupted', kind: 'buff', actorId: pilot.uid, targetIds: [pilot.uid], text: '連携中断 — 仲間の予定が成立しなかったため反撃なし' });
-      }
-    }
   }
   resolveBossBits(battle, content);
   for (const unit of battle.units.filter(unit => unit.hp > 0 && unit.hp < unit.maxHp && (unit.regenUntil ?? -1) >= battle.round)) {
