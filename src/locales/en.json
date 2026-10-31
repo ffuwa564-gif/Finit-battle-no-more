@@ -2020,5 +2020,6 @@
   "次の行動まで被ダメージを半減": "Halves incoming damage until the next action",
   "{0}：行動を選ぶ": "{0}: Choose an action",
   "左端の顔を長押しして、技までドラッグして離すと予約できるよ。顔へ戻せば取消、触らなければ自動！ 演出中の予約は次ラウンドに反映されるの。ほかの仲間はゲージ100%で顔を押すと必殺技を予約・取消できるよ。枠の妖精は3ターン以内にタップすると全員のゲージが15%増えるよ！": "Hold the leftmost portrait, drag to an action and release to queue it. Move back to the portrait to cancel, or leave her on auto! Orders made during animations apply next round. Tap another ally at 100% gauge to queue or cancel their ultimate. Tap a fairy at the frame within three turns to give everyone 15% charge!",
-  "仲間への指示": "Directing your party"
+  "仲間への指示": "Directing your party",
+  "味方{0}人": "{0} allies"
 }

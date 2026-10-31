@@ -63,7 +63,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'partyOrder': {
       const battle = save.battle;
       if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase)) fail('今は行動を予約できません。');
-      if (command.order === null) { delete battle.partyOrder; break; }
+      if (command.order === null) {
+        delete battle.partyOrder;
+        const pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
+        if (pilot) delete pilot.ultimateQueued;
+        break;
+      }
       if (!validPartyOrder(command.order)) fail('行動の予約が正しくありません。');
       const unit = commandUnits(battle).find(u => u.side === 'party' && u.characterId === battle.partyIds[0] && u.hp > 0);
       const optionId = command.order.kind === 'skill' ? 'skill:' + command.order.skillId : command.order.kind;

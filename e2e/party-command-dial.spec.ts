@@ -48,11 +48,12 @@ test('keyboard, unavailable skills, cancellation and save restore work on a narr
   await page.setViewportSize({width:320,height:740}); await setup(page,true);
   await page.evaluate(async()=>{
     const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!,revision=save.revision;
-    save.battle!.units.find(u=>u.characterId==='seris')!.cooldowns['pierce-14']=99;save.revision++;await persistSave(save,revision);
+    const pilot=save.battle!.units.find(u=>u.characterId==='seris')!;pilot.cooldowns['pierce-14']=99;pilot.ultimateCharge=100;pilot.ultimateQueued=true;save.revision++;await persistSave(save,revision);
   });
   await page.reload();await enterGame(page);
   const pilot=page.getByRole('button',{name:/行動を選ぶ$/}); await pilot.focus();await page.keyboard.press('Enter');
   await expect(page.locator('.command-dial')).toBeVisible();
+  await expect(page.locator('[data-command="ultimate"]')).toHaveAttribute('aria-pressed','true');
   const unavailable=page.locator('[data-command="skill:pierce-14"]');await expect(unavailable).toHaveAttribute('aria-disabled','true');
   await unavailable.dispatchEvent('click');await expect(page.locator('.command-dial')).toBeVisible();expect((await battle(page)).partyOrder).toBeUndefined();
   await page.keyboard.press('Escape');await expect(page.locator('.command-dial')).toHaveCount(0);

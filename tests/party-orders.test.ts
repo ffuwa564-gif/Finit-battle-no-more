@@ -28,6 +28,8 @@ describe('optional leftmost party commands', () => {
     const done = fire(queued); expect(actorEvent(done).skillId).toBeUndefined();
     expect(actorEvent(done).kind).toBe('attack'); expect(done.battle!.partyOrder).toBeUndefined();
     expect(save.battle!.partyOrder).toBeUndefined();
+    const legacy = ready(); const pilot = legacy.battle!.units[0]; pilot.ultimateCharge = 100; pilot.ultimateQueued = true;
+    expect(order(legacy, null).battle!.units[0].ultimateQueued).toBeUndefined();
   });
   it('targets the pinned enemy but retargets if a faster ally has defeated it', () => {
     let s = ready(); const enemy = s.battle!.units.find(u => u.side === 'enemy')!;
