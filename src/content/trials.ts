@@ -54,3 +54,14 @@ export const frozenDawnClock: DungeonDef = {
   bossDialogue: { intro: 'ここでは、夜明けさえ刻を忘れる。', threshold: '止めたはずの針が……あなたの祈りで、進んでいる。', defeat: '……ああ。朝とは、こんなにもあたたかい。' },
   waves: [[{ characterId: 'chrona', boss: true }]],
 };
+
+/** Read companion tendencies against clearly telegraphed boss pressure. */
+export const coordinationTrial: DungeonDef = {
+  id: 'oath-chain-rehearsal', kind: 'trial', name: '誓鎖の稽古', subtitle: '隣の一手を読み、同じ敵へ。',
+  description: 'アテナとアマテラスに同時に挑む連携の試練。仲間の仕草とHP、人物詳細の戦い方から一手を読み、左端に任意で指示します。仲間の技と対象が分かるのはATTACKで指示を確定した後。同じ敵に続けて攻撃すると、後に攻撃した仲間の与ダメージが35%上がります。読み違いへの固定反撃はありませんが、3ターンごとの大技を前に守りや回復を他人任せにすると崩れることも。自動行動も可能です。戦利品はなく、使用した薬は消費します。',
+  artId: 'athena-art', published: true, previousDungeonId: 'silent-cathedral',
+  coordination: { bonusPercent: 35 },
+  bossStrike: { every: 3, power: 220, name: '誓鎖・交差する光', target: 'pilot' },
+  bossScale: { hp: 220, attack: 70 },
+  waves: [[{ characterId: 'athena', boss: true }, { characterId: 'asteria', boss: true }]],
+};

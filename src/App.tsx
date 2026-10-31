@@ -1,8 +1,8 @@
 import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
-import { ultimateVisualFor } from './platform/ultimate-choreography';
+import { ultimateVisualFor, rabbitMusicGain } from './platform/ultimate-choreography';
 import { ultimateSoundFor } from './platform/ultimate-audio';
-import { ULTIMATE_TIMING, UltimateClock } from './platform/ultimate-timing';
+import { ultimateTimingFor, UltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -12,7 +12,7 @@ import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata } from './platform/save';
 import { enableAudio, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
-import { configureBgm, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
+import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleSounds, commandSounds } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
@@ -163,24 +163,31 @@ export default function App() {
     if (!save || save.novels?.active || !started || battle?.phase !== 'playing') return;
     // Old saves can be paused at the end of a Wave with no remaining event.
     if (!event) { void command({ type: 'replay' }); return; }
+    const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
+    const visual=actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
+    const timing=ultimateTimingFor(visual);
+    const rabbit=visual==='rabbit-bits';
+    const soundStart=rabbit?0:timing.impact;
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];
       const skill = event.ultimate ? undefined : content.skills.find(skill => skill.id === event.skillId)?.template;
-      playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
+      if(!rabbit)playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};
-    const actor = event.ultimate ? battle.units.find(unit => unit.uid === event.actorId) : undefined;
-    const impactCue = actor ? ultimateSoundFor(ultimateVisualFor(characterById(actor.characterId), event)) : 'ultimate-strike';
+    const impactCue = visual ? ultimateSoundFor(visual) : 'ultimate-strike';
     let scheduled = activeUltimateSound.current?.eventId === event.id ? activeUltimateSound.current.voice : undefined;
+    if(visual==='rabbit-bits'&&scheduled?.hasStarted())scheduled.retime?.(ultimateClock.current.position(performance.now())-soundStart,ultimateClock.current.rate);
     const reserveSound = () => {
-      if (!event.ultimate || heardImpact.current === event.id || document.hidden) return;
-      const remaining = ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now());
+      if (!event.ultimate || scheduled || heardImpact.current === event.id || document.hidden) return;
+      const remaining = ultimateClock.current.delay(soundStart, performance.now());
       // Returning from a hidden tab never plays past impacts in a burst.
-      if (remaining <= 0) { heardImpact.current = event.id; return; }
-      scheduled = scheduleUltimateSound(impactCue, remaining);
+      if (remaining <= 0 && !rabbit) { heardImpact.current = event.id; return; }
+      const offset=rabbit?ultimateClock.current.position(performance.now()):0;
+      if(rabbit&&offset>=timing.end)return;
+      scheduled = scheduleUltimateSound(impactCue, remaining, rabbit?ultimateClock.current.rate:1, offset);
       activeUltimateSound.current = scheduled ? { eventId: event.id, voice: scheduled } : undefined;
     };
     const visibility = () => {
@@ -188,15 +195,15 @@ export default function App() {
       else reserveSound();
     };
     reserveSound();
-    if (event.ultimate) document.addEventListener('visibilitychange', visibility);
+    if (event.ultimate) {document.addEventListener('visibilitychange', visibility);window.addEventListener('game:audio-ready',reserveSound);}
     const impactTimer = event.ultimate ? setTimeout(() => {
       if (soundedImpact.current === event.id) return;
       soundedImpact.current = event.id;
-      if (!scheduled && heardImpact.current !== event.id && !document.hidden) playSound(impactCue);
+      if (!scheduled && heardImpact.current !== event.id && !document.hidden) {if(rabbit)reserveSound();else playSound(impactCue);}
       heardImpact.current = event.id;
       cleanupImpact = animateEvent(event, save.settings.reducedMotion);
-    }, ultimateClock.current.delay(ULTIMATE_TIMING.impact, performance.now())) : undefined;
-    const duration = event.ultimate ? ultimateClock.current.delay(ULTIMATE_TIMING.end, performance.now()) : battleEventDuration(event, save.settings.speed);
+    }, ultimateClock.current.delay(timing.impact, performance.now())) : undefined;
+    const duration = event.ultimate ? ultimateClock.current.delay(timing.end, performance.now()) : battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current) { timer = setTimeout(complete, 100); return; }
@@ -205,7 +212,7 @@ export default function App() {
     timer = setTimeout(complete, duration);
     return () => {
       clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact();
-      document.removeEventListener('visibilitychange', visibility);
+      document.removeEventListener('visibilitychange', visibility);window.removeEventListener('game:audio-ready',reserveSound);
       if (scheduled?.hasStarted()) heardImpact.current = event.id;
       const current = state.current?.battle;
       // Speed/settings changes keep an already sounding tail; NEXT/event changes stop it.
@@ -214,6 +221,18 @@ export default function App() {
       if (changed || !scheduled?.hasStarted()) activeUltimateSound.current = undefined;
     };
   }, [started, event?.id, save?.settings.speed, save?.settings.reducedMotion, command]);
+
+  useEffect(()=>{
+    const actor=event?.ultimate?battle?.units.find(unit=>unit.uid===event.actorId):undefined;
+    if(!started||!event||!actor||!save||save.novels?.active||save.settings.seVolume<=0||ultimateVisualFor(characterById(actor.characterId),event)!=='rabbit-bits')return;
+    const duck=createBgmDucker();let frame=0;
+    const update=()=>{
+      duck.set(document.hidden?1:rabbitMusicGain(ultimateClock.current.position(performance.now())));
+      frame=requestAnimationFrame(update);
+    };
+    update();
+    return()=>{cancelAnimationFrame(frame);duck.dispose();};
+  },[started,event?.id,save?.settings.seVolume,save?.settings.speed,Boolean(save?.novels?.active)]);
 
   if (fatal) return <div className="app-loading"><Panel><Shield size={30} /><h1>{tr("データを守るため、停止しました。")}</h1><p role="alert">{localize(fatal)}</p><p className="subtle">{tr("セーブの初期化や上書きは行っていません。")}</p><Button variant="primary" onClick={() => location.reload()}>{tr("再読み込み")}</Button></Panel></div>;
   if (!save) return <div className="app-loading" role="status"><Moon size={38} strokeWidth={1} /><p>{tr("記憶をたどっています…")}</p></div>;

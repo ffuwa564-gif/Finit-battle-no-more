@@ -79,3 +79,17 @@
 
 .battle-directive { display: block; margin-top: 3px; color: #e0d2a7; font-size: 10px; letter-spacing: .1em; }
 .battle-layout[data-directive] .moon-command--strategy[aria-pressed="true"] { box-shadow: inset 0 0 0 1px #e4d6a0, 0 0 12px #d9c78b55; }
+
+.boss-strike-status { min-width:0; width:max-content; max-width:calc(100% - 36px); }
+.boss-strike-status > svg { flex-shrink:0; }
+.boss-strike-status > span { min-width:0; white-space:normal; }
+.boss-strike-status strong { overflow-wrap:anywhere; }
+.boss-strike-status__meter { display:block; width:100%; height:3px; margin-top:2px; overflow:hidden; border-radius:2px; background:#b4a2a43d; }
+.boss-strike-status__meter i { display:block; height:100%; background:#ebc494; }
+.boss-strike-status.is-broken { border-color:#abd8d5; background:#1d343de8; color:#d8f4eb; }
+.boss-strike-status.is-open { border-color:#e3d49b; background:#3b3422e8; color:#fff4c5; }
+
+
+.enemy-forecast-layout { position:absolute; z-index:4; left:18px; right:18px; bottom:18px; display:flex; flex-direction:column; align-items:center; gap:10px; pointer-events:none; }
+.enemy-forecast-layout .boss-strike-status { position:static; transform:none; max-width:100%; }
+.enemy-forecast-layout .enemy-carousel-controls { position:static; width:min(180px,70%); }

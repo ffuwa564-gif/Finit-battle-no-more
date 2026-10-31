@@ -60,7 +60,7 @@ test('chapter bosses visibly announce their periodic heavy attack and persist it
   });
   await page.reload();await enterGame(page);await expect(page.getByRole('status',{name:'ボスの大技予告',exact:true})).toContainText('このターンに大技');
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();await expect(page.locator('.boss-strike-status.is-striking')).toBeVisible({timeout:20000});
-  await expect(page.locator('.battle-toast')).toContainText('石燐の突進');await page.screenshot({path:testInfo.outputPath('chapter-boss-strike.png')});
+  await expect(page.locator('.ultimate-cinematic__title strong')).toContainText('石燐の突進');await page.screenshot({path:testInfo.outputPath('chapter-boss-strike.png')});
   const b=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.battle!);
   const strike=b.events.find(e=>e.bossStrike)!;expect(strike.kind).toBe('attack');expect(strike.amount).toBeGreaterThan(200);
 });

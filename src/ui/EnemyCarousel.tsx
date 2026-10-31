@@ -7,11 +7,13 @@ import { AnimatedIllustration } from './AnimatedIllustration';
 import { EncounterCrest } from './Sigils';
 import { assetPath, characterById, content } from '../content';
 import { ClockBossStatus } from './ClockBossStatus';
-import { ClockworkBits } from './ClockworkBits';
+import { ClockworkBits, ClockworkBitStatus } from './ClockworkBits';
+import { bossWindupStatus } from '../domain/boss-pressure';
 import type { BattleEvent, BossBitPattern, DungeonDef, Unit } from '../domain/types';
 
 export interface EnemyCarouselProps {
   targetId?: string;
+  fixedNumbers?: boolean;
   onTarget?: (unitId: string) => void;
   onDisplay?: (unitId: string) => void;
   units: Unit[];
@@ -29,7 +31,7 @@ export interface EnemyCarouselProps {
 const actionKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue']);
 
 /** Browsing only changes the front illustration; a battle command commits its target. */
-export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, onTarget, onDisplay }: EnemyCarouselProps) {
+export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event, reducedMotion = false, wave, waveCount, round, materials, targetId, fixedNumbers = false, onTarget, onDisplay }: EnemyCarouselProps) {
   const initial = units.find(unit => unit.hp > 0)?.uid ?? units[0]?.uid ?? '';
   const [selectedId, setSelectedId] = useState(initial);
   const selectedRef = useRef(initial);
@@ -137,7 +139,27 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
   const previousScene = content.assets.find(asset => asset.id === previousSceneId);
   const previousPortraitScene = Boolean(previousScene && previousScene.height > previousScene.width);
   const aliveIndex = available.findIndex(unit => unit.uid === front.uid);
-  const position = aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
+  const formationNumber = units.findIndex(unit => unit.uid === front.uid) + 1;
+  // Keep the threat visible while browsing a guard or healer in front of the boss.
+  const warningBoss = front.boss && front.hp > 0 ? front : available.find(unit => unit.boss);
+  const pressure = warningBoss && bossStrike ? bossWindupStatus(warningBoss, bossStrike, round) : undefined;
+  const turnsToStrike = bossStrike ? (bossStrike.every - round % bossStrike.every) % bossStrike.every : 0;
+  const pressureLabel = pressure?.phase === 'charging' ? tr('崩しまで {0}').replace('{0}', String(pressure.remaining))
+    : pressure?.phase === 'broken' ? tr('大技弱体')
+    : pressure?.phase === 'open' ? tr('攻撃後の隙 +{0}%').replace('{0}', String(bossStrike?.windup?.recoveryPercent ?? 0))
+    : tr(turnsToStrike === 0 ? 'このターンに大技' : `大技まで${turnsToStrike}ターン`);
+  const position = fixedNumbers ? `${formationNumber} / ${units.length}` : aliveIndex < 0 ? '撃破' : `${aliveIndex + 1} / ${available.length}`;
+  const forecast = warningBoss && bossStrike && <div className={`boss-strike-status${event?.bossStrike && event.actorId === warningBoss.uid ? ' is-striking' : ''}${pressure?.phase === 'open' ? ' is-open' : ''}${pressure?.phase === 'broken' ? ' is-broken' : ''}`} role="status" aria-label={tr('ボスの大技予告')} data-boss-id={warningBoss.uid} data-boss-pressure={pressure?.phase}>
+      <Crown size={13} /><span><strong>{tr(bossStrike.name)}</strong><span>{pressureLabel}{bossStrike.target === 'pilot' && pressure?.phase !== 'open' && <> · {tr('先頭狙い')}</>}</span>
+        <ClockworkBitStatus boss={warningBoss} pattern={bitPattern} event={event} round={round} inline />
+        {pressure?.phase === 'charging' && <span className="boss-strike-status__meter" aria-hidden="true"><i style={{ width: `${Math.min(100, pressure.damage / pressure.threshold * 100)}%` }} /></span>}
+      </span>
+    </div>;
+  const controls = localize(units.length > 1 && <div className="enemy-carousel-controls">
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("前の敵を表示")} disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
+      <div className="enemy-carousel-position" aria-live="polite" aria-atomic="true"><strong>{localize(position)}</strong></div>
+      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("次の敵を表示")} disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
+    </div>);
   return <div className={`enemy-carousel${portraitScene ? ' enemy-carousel--portrait' : ''}${reduced ? ' enemy-carousel--reduced' : ''}`}
     role="group" aria-label={tr("敵を切り替える")} tabIndex={canChange ? 0 : -1}
     onKeyDown={event => { if ((event.target as Element).closest('button')) return; if (event.key === 'ArrowLeft') { event.preventDefault(); changePage(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); changePage(1); } }}
@@ -151,11 +173,11 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
     </div>
     {front.uid === targetId && front.hp > 0 && <><MapPin className="enemy-target-pin" aria-label={tr('狙っている敵')} /><span className="enemy-target-ring" aria-hidden="true" /></>}
     {onTarget && front.hp > 0 && <Button className="enemy-target-button" variant="icon" sound={false} selected={front.uid === targetId} aria-label={tr('この敵を狙う')} onClick={() => onTarget(front.uid)}><Crosshair size={18} /></Button>}
-    {front.boss && front.hp > 0 && bossStrike && <div className={`boss-strike-status${event?.bossStrike && event.actorId === front.uid ? ' is-striking' : ''}`} role="status" aria-label={tr('ボスの大技予告')}><Crown size={13} /><span><strong>{tr(bossStrike.name)}</strong>{tr((bossStrike.every - round % bossStrike.every) % bossStrike.every === 0 ? 'このターンに大技' : `大技まで${(bossStrike.every - round % bossStrike.every) % bossStrike.every}ターン`)}</span></div>}
+
     <ClockBossStatus boss={front} pattern={bossClock} event={event} round={round} reducedMotion={reduced} />
-    <ClockworkBits boss={front} pattern={bitPattern} event={event} round={round} />
+    <ClockworkBits boss={warningBoss ?? front} pattern={bitPattern} event={event} round={round} hideStatus={Boolean(bossStrike)} />
     <div className="enemy-carousel-status">
-      <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
+      <div className="enemy-carousel-name">{localize(front.boss && <EncounterCrest />)}<strong>{fixedNumbers && <span className="enemy-formation-number">#{formationNumber} </span>}{localize(character.name)}{character.encounterLoot && <span className="enemy-rare-label" aria-label={tr("希少な敵")}>RARE</span>}</strong><span className="enemy-carousel-constant" aria-label={tr("難易度定数")}>{localize((character.strength / 10).toFixed(1))}</span></div>
       <HPBar hp={front.hp} maxHp={front.maxHp} label={tr(`${character.name}のHP`)} />
       <div className="enemy-carousel-meta">
         <span>Wave {localize(wave)}<small> / {localize(waveCount)}</small></span><span>ROUND {localize(round)}</span>
@@ -164,10 +186,6 @@ export function EnemyCarousel({ units, bitPattern, bossStrike, bossClock, event,
       <UnitEffects unit={front} round={round} />
     </div>
     {targetId && front.uid !== targetId && available.some(u => u.uid === targetId) && <Button className="enemy-target-return" variant="icon" sound="select" aria-label={tr('狙っている敵を表示')} onClick={() => focusUnit(targetId)}><MapPin size={15} /></Button>}
-    {localize(units.length > 1 && <div className="enemy-carousel-controls">
-      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("前の敵を表示")} disabled={!canChange} onClick={() => changePage(-1)}><ChevronLeft size={19} /></Button>
-      <div className="enemy-carousel-position" aria-live="polite" aria-atomic="true"><strong>{localize(position)}</strong></div>
-      <Button variant="icon" className="enemy-carousel-arrow" sound={false} aria-label={tr("次の敵を表示")} disabled={!canChange} onClick={() => changePage(1)}><ChevronRight size={19} /></Button>
-    </div>)}
+    {forecast ? <div className="enemy-forecast-layout">{controls}{forecast}</div> : controls}
   </div>;
 }

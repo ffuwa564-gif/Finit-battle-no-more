@@ -21,3 +21,6 @@
 @keyframes bit-shot { 0% { opacity:0; transform:scaleY(.1); } 20% { opacity:1; transform:scaleY(1); } 100% { opacity:0; transform:scaleY(1.15); } }
 html[data-motion='reduced'] .clockwork-bit,html[data-motion='reduced'] .clockwork-bit__beam { animation:none; }
 @media (prefers-reduced-motion:reduce) { .clockwork-bit,.clockwork-bit__beam { animation:none !important; } }
+
+.clockwork-bits__status--inline { position:static; transform:none; flex-direction:row; gap:6px; width:auto; max-width:100%; padding:3px 0 0; border:0; border-top:1px solid #c5dbe033; border-radius:0; background:none; box-shadow:none; font-size:10px; }
+.clockwork-bits__status--inline strong { flex-shrink:0; white-space:nowrap; font-size:9px; letter-spacing:0; }

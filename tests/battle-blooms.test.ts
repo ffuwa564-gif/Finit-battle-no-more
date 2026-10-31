@@ -99,9 +99,9 @@ describe('saved battle blossoms', () => {
   it('settles event boss cores through the ordinary reward pipeline, then permits one claim', () => {
     const save = fixture('strike', 'kuzuha-awakening', true);
     const enemies = save.battle!.units.filter(u => u.side === 'enemy');
-    for (const unit of enemies) { unit.hp = 1; delete unit.barrier; delete unit.barrierUntil; }
-    // Last wave is a single event boss, so the blossom can finish it.
-    expect(enemies).toHaveLength(1);
+    for (const unit of enemies) { unit.hp = unit.boss ? 1 : 0; delete unit.barrier; delete unit.barrierUntil; }
+    // With the escorts defeated, the blossom finishes the event boss and settles her core once.
+    expect(enemies.filter(unit => unit.hp > 0)).toHaveLength(1);
     const killed = tap(save);
     expect(killed.battle!.pendingMaterials['kuzuha-contract:epic']).toBe(1);
     const reward = finish(killed); expect(reward.battle!.phase).toBe('reward');

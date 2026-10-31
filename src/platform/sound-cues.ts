@@ -1,6 +1,6 @@
 import type { BattleEvent, GameCommand } from '../domain/types';
 
-export type SoundCue = 'ultimate-mechanism' | 'ultimate-stars' | 'ultimate-guard' | 'ultimate-rally' | 'ultimate-strike' | 'ultimate-magic' | 'ultimate-sanctuary' | 'ultimate' | 'confirm' | 'cancel' | 'select' | 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'drop' | 'dialogue' | 'wave' | 'defeat' | 'victory' | 'recruit' | 'gacha' | 'purchase' | 'exchange' | 'depart' | 'error';
+export type SoundCue = 'ultimate-rabbits' | 'ultimate-mechanism' | 'ultimate-stars' | 'ultimate-guard' | 'ultimate-rally' | 'ultimate-strike' | 'ultimate-magic' | 'ultimate-sanctuary' | 'ultimate' | 'confirm' | 'cancel' | 'select' | 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff' | 'drop' | 'dialogue' | 'wave' | 'defeat' | 'victory' | 'recruit' | 'gacha' | 'purchase' | 'exchange' | 'depart' | 'error';
 
 /** Exhaustive contracts: new actions/events must explicitly select a cue or opt out. */
 export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {

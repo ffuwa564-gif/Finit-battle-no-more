@@ -1,14 +1,16 @@
-import type { UltimateVisual } from './ultimate-choreography';
+import { renderRabbitUltimate } from './rabbit-ultimate-audio';
+import { type UltimateVisual } from './ultimate-choreography';
 import { renderProtectionSound } from './protection-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
 
-export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism'] as const;
+export const ultimateSounds = ['ultimate', 'ultimate-strike', 'ultimate-magic', 'ultimate-stars', 'ultimate-sanctuary', 'ultimate-guard', 'ultimate-rally', 'ultimate-mechanism', 'ultimate-rabbits'] as const;
 export type UltimateSound = typeof ultimateSounds[number];
 export const isUltimateSound = (kind: string): kind is UltimateSound => (ultimateSounds as readonly string[]).includes(kind);
-export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism' } as const)[theme];
+export const ultimateSoundFor = (theme: UltimateVisual): UltimateSound => ({ blade: 'ultimate-strike', stars: 'ultimate-stars', eclipse: 'ultimate-magic', bloom: 'ultimate-sanctuary', aegis: 'ultimate-guard', dawn: 'ultimate-rally', clockwork: 'ultimate-mechanism', 'rabbit-bits': 'ultimate-rabbits' } as const)[theme];
 
 /** Original sound design: separate materials, envelopes and midrange, not palette swaps. */
 export function renderUltimateSound(kind: UltimateSound, sampleRate: number): Float32Array {
+  if (kind === 'ultimate-rabbits') return renderRabbitUltimate(sampleRate);
   if (kind === 'ultimate-guard') return renderProtectionSound('guard', sampleRate, 0, { duration: 1.5, peak: .6 });
   if (kind === 'ultimate') return renderUltimateCharge(sampleRate);
   const heal = kind === 'ultimate-sanctuary';

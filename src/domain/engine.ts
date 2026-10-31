@@ -2,12 +2,13 @@ import { CRYSTAL_POWER, resonantStrength } from './crystal-resonance';
 import { clearBattleFairy, offerBattleFairy, FAIRY_CHARGE, FAIRY_STAY } from './battle-fairies';
 import { clearBattleBloom, offerBattleBloom, BLOOM_HEAL_PERCENT } from './battle-blooms';
 import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
+import { bossWindupStatus, recordBossWindupDamage } from './boss-pressure';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
 import { duplicateFamily } from './events';
 import { orderSkillReady, orderTargets } from './party-orders';
-import type { Ailment, Battle, BattleEvent, CharacterDef, Content, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
+import type { Ailment, Battle, BattleEvent, CharacterDef, Content, PlannedPartyAction, DungeonDef, LeaderStat, MaterialCost, RoundResult, SkillDef, SkillTemplate, Stats, Strategy, Unit } from './types';
 
 const BASE: Record<CharacterDef['role'], Stats> = {
   healer: { hp: 100, attack: 25, defense: 14, speed: 12 },
@@ -62,8 +63,9 @@ export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = 
 }
 export function dungeonDifficulty(def: DungeonDef, content: Content): number {
   const scale = def.bossScale ?? { hp: 300, attack: 120 };
+  const strikePressure = def.bossStrike?.windup ? (def.bossStrike.every - 1 + def.bossStrike.power / 100) / def.bossStrike.every : 1;
   const waves = def.waves.map((wave, index) => {
-    const base = wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack / 10_000) : 1), 0);
+    const base = wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack * strikePressure / 10_000) : 1), 0);
     if (!def.rareEncounter || index !== def.waves.length - 2) return base;
     // The displayed constant covers the hardest possible replacement, not just the common lineup.
     const rare = Math.max(...def.rareEncounter.characterIds.map(id => character(content, id).strength / 10));
@@ -93,6 +95,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
 function clearEffects(unit: Unit): void {
+  delete unit.bossWindup; delete unit.bossRecoveryUntil;
   delete unit.defendingUntil;
   delete unit.ultimateQueued;
   delete unit.ailments; delete unit.statusWardUntil;
@@ -226,7 +229,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const allies = alive(battle.units, actor.side);
   const enemies = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
   const strike = actor.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
-  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [chooseTarget(enemies, 'balanced', content)], power: strike.power, name: strike.name };
+  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [strike.target === 'pilot' ? enemies.find(u => u.characterId === battle.partyIds[0]) ?? chooseTarget(enemies, 'balanced', content) : chooseTarget(enemies, 'balanced', content)], power: strike.windup && bossWindupStatus(actor, strike, battle.round).phase === 'broken' ? strike.windup.weakenedPower : strike.power, name: strike.name };
   const role = character(content, actor.characterId).role;
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
   const skills = skillList(actor, content, battle.round);
@@ -341,7 +344,44 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   // Show a reason only when the two valid policies actually choose different skills.
   return ordinary.skill?.id !== comparison.skill?.id ? { ...chosen, directive: battle.strategy } : chosen;
 }
-function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1): { unit: Unit; amount: number; absorbed: number; shattered: number } {
+function expireRoundEffects(battle: Battle): void {
+  for (const unit of battle.units) {
+    if ((unit.statusWardUntil ?? -1) < battle.round) delete unit.statusWardUntil;
+    if ((unit.guardUntil ?? -1) < battle.round) { delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength; }
+    if ((unit.buffUntil ?? -1) < battle.round) { delete unit.buffUntil; delete unit.buffStrength; }
+    if ((unit.debuffUntil ?? -1) < battle.round) { delete unit.debuffUntil; delete unit.debuffStrength; }
+    if ((unit.barrierUntil ?? -1) < battle.round) { delete unit.barrierUntil; delete unit.barrier; }
+    if ((unit.regenUntil ?? -1) < battle.round) { delete unit.regenUntil; delete unit.regenStrength; }
+  }
+}
+
+/** Private commitments are computed only when resolving the round, after input is locked. */
+export function companionCommitments(input: Battle, content: Content): PlannedPartyAction[] {
+  if (input.phase !== 'ready' || !dungeon(content, input.dungeonId).coordination) return [];
+  const battle = clone(input); expireRoundEffects(battle);
+  return battle.partyIds.slice(1).flatMap(id => {
+    const actor = battle.units.find(u => u.side === 'party' && u.characterId === id && u.hp > 0);
+    if (!actor) return [];
+    const action = chooseAction(actor, battle, content);
+    return [{ actorId: actor.uid, template: action.template, skillId: action.skill?.id, ultimate: action.ultimate,
+      name: action.name ?? action.skill?.name ?? '通常攻撃', targetIds: action.targets.map(u => u.uid), blocked: hasAilment(actor) || undefined }];
+  });
+}
+
+function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, content: Content): Action | undefined {
+  if (intent.blocked) return;
+  const skill = intent.skillId ? skillList(actor, content, battle.round).find(s => s.id === intent.skillId) : undefined;
+  if (intent.skillId && (!skill || !orderSkillReady(actor, battle, skill))) return;
+  if (intent.ultimate && !ultimateReady(actor)) return;
+  let targets = intent.targetIds.flatMap(id => battle.units.filter(u => u.uid === id && u.hp > 0));
+  if (!targets.length) targets = orderTargets(actor, battle, intent.template);
+  if (!targets.length) return;
+  return { template: intent.template, targets, skill, ultimate: intent.ultimate, name: intent.name };
+}
+
+interface CoordinationHits { bonusPercent: number; hits: Map<string, Set<string>>; linked: Set<string> }
+
+function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1, coordination?: CoordinationHits): { unit: Unit; amount: number; absorbed: number; shattered: number } {
   const guard = guardable ? battle.units.find(unit => unit.hp > 0 && unit.side === target.side && unit.uid !== target.uid && unit.guardTarget === target.uid && (unit.guardUntil ?? -1) >= battle.round) : undefined;
   const recipient = guard ?? target;
   const shattered = shattering && (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0;
@@ -353,7 +393,10 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const clock = dungeon(content, battle.dungeonId).bossClock;
   const defense = effectiveDefense(recipient, battle.round) * (clock && recipient.side === 'enemy' && recipient.boss && !recipient.barrier ? clock.brokenDefensePercent / 100 : 1);
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - defense * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
-  amount = Math.max(1, Math.floor(amount * potency));
+  const pressure = recipient.side === 'enemy' && recipient.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
+  if (pressure?.windup && (recipient.bossRecoveryUntil ?? -1) >= battle.round) amount = Math.floor(amount * (100 + pressure.windup.recoveryPercent) / 100);
+  const linked = actor.side === 'party' && recipient.side === 'enemy' && coordination && [...(coordination.hits.get(recipient.uid) ?? [])].some(id => id !== actor.uid);
+  amount = Math.max(1, Math.floor(amount * potency * (linked ? 1 + coordination!.bonusPercent / 100 : 1)));
   if ((recipient.defendingUntil ?? -1) >= battle.round) amount = Math.max(1, Math.floor(amount / 2));
   if (actor.side === 'party' && recipient.side !== actor.side && passive === 'finisher' && recipient.hp <= recipient.maxHp * .35) amount = Math.max(1, Math.floor(amount * 120 / 100));
   if (guard) amount = Math.max(1, Math.floor(amount * (370 - (guard.guardStrength ?? 10)) / 400));
@@ -361,6 +404,11 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
+  if (actor.side === 'party' && recipient.side === 'enemy') recordBossWindupDamage(recipient, pressure, battle.round, actual);
+  if (coordination && actor.side === 'party' && recipient.side === 'enemy' && (actual > 0 || absorbed > 0)) {
+    const previous = coordination.hits.get(recipient.uid) ?? new Set<string>(); previous.add(actor.uid); coordination.hits.set(recipient.uid, previous);
+    if (linked) coordination.linked.add(actor.uid);
+  }
   if (actual > 0) gainUltimate(recipient, 10);
   if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
   if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
@@ -407,6 +455,13 @@ function resolveBossBits(battle: Battle, content: Content): void {
 }
 function settleAction(battle: Battle, content: Content, before: Unit[]) {
   let goldEarned = 0; const discoveredIds: string[] = [];
+  const strike = dungeon(content, battle.dungeonId).bossStrike;
+  if (strike?.windup) for (const boss of battle.units.filter(u => u.side === 'enemy' && u.boss && u.hp > 0)) {
+    const old = before.find(u => u.uid === boss.uid);
+    if (old && bossWindupStatus(boss, strike, battle.round).phase === 'broken' && bossWindupStatus(old, strike, battle.round).phase !== 'broken') {
+      emit(battle, { kind: 'debuff', actorId: boss.uid, targetIds: [boss.uid], text: `${character(content, boss.characterId).name} — 溜めを崩した`, unitsAfter: clone(battle.units) });
+    }
+  }
   const killed = battle.units.filter((unit) => unit.hp <= 0 && before.some((old) => old.uid === unit.uid && old.hp > 0));
   for (const boss of battle.units.filter((unit) => unit.boss && unit.hp > 0 && unit.hp <= unit.maxHp / 2 && before.some((old) => old.uid === unit.uid && old.hp > old.maxHp / 2))) {
     const flag = `${boss.uid}:half`;
@@ -455,19 +510,21 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
 export function resolveRound(input: Battle, content: Content): RoundResult {
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
+  const commitments = companionCommitments(input, content);
   const battle = clone(input);
   delete battle.omens;
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
-  for (const unit of battle.units) {
-    if ((unit.statusWardUntil ?? -1) < battle.round) delete unit.statusWardUntil;
-    if ((unit.guardUntil ?? -1) < battle.round) { delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength; }
-    if ((unit.buffUntil ?? -1) < battle.round) { delete unit.buffUntil; delete unit.buffStrength; }
-    if ((unit.debuffUntil ?? -1) < battle.round) { delete unit.debuffUntil; delete unit.debuffStrength; }
-    if ((unit.barrierUntil ?? -1) < battle.round) { delete unit.barrierUntil; delete unit.barrier; }
-    if ((unit.regenUntil ?? -1) < battle.round) { delete unit.regenUntil; delete unit.regenStrength; }
-  }
+  expireRoundEffects(battle);
   restoreClockShield(battle, content, true);
+  const coordinationRule = dungeon(content, battle.dungeonId).coordination;
+  // A committed defensive stance prepares for a telegraphed strike, even from a faster boss.
+  // The pilot still spends her one normal action on guard later in the turn order.
+  if (battle.partyOrder?.kind === 'guard') {
+    const pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
+    if (pilot && pilot.hp > 0 && !hasAilment(pilot)) pilot.defendingUntil = battle.round + 1;
+  }
+  const coordination: CoordinationHits | undefined = coordinationRule ? { bonusPercent: coordinationRule.bonusPercent, hits: new Map(), linked: new Set() } : undefined;
   const order = [...battle.units].filter((unit) => unit.hp > 0).sort((a, b) => b.speed - a.speed || a.tie - b.tie || byId(a, b));
   for (const actor of order) {
     if ((actor.defendingUntil ?? Infinity) <= battle.round) delete actor.defendingUntil;
@@ -481,12 +538,16 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       for (const id of recovered) emitRecovery(battle, actor, id, content);
       continue;
     }
-    const action = controlled.action ?? chooseAction(actor, battle, content);
+    const intent = commitments.find(i => i.actorId === actor.uid);
+    const action = controlled.action ?? (intent && plannedAction(actor, intent, battle, content)) ?? chooseAction(actor, battle, content);
     const actorDef = character(content, actor.characterId);
-    const potency = actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1;
+    const potency = (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
     const name = actorDef.name;
     const openedBarrier = Boolean(action.power && actor.barrier);
-    if (action.power) { delete actor.barrier; delete actor.barrierUntil; }
+    if (action.power) {
+      delete actor.barrier; delete actor.barrierUntil;
+      if (actor.side === 'enemy' && actor.boss && dungeon(content, battle.dungeonId).bossStrike?.windup && !action.clockFinale) actor.bossRecoveryUntil = battle.round + 1;
+    }
     const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.name ?? action.skill?.name ?? '通常攻撃';
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
@@ -509,7 +570,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
             target.buffUntil = Math.max(target.buffUntil ?? 0, battle.round + 1);
           }
         } else {
-          const hit = damage(actor, target, role === 'attacker' ? 280 : role === 'area_attacker' ? 190 : 150, 100, battle, role === 'attacker', content, role === 'attacker', false, false, potency);
+          const hit = damage(actor, target, role === 'attacker' ? 280 : role === 'area_attacker' ? 190 : 150, 100, battle, role === 'attacker', content, role === 'attacker', false, false, potency, coordination);
           amount += hit.amount; absorbed += hit.absorbed;
           if (role === 'debuffer' && hit.unit.hp > 0) {
             hit.unit.debuffStrength = Math.max((hit.unit.debuffUntil ?? -1) >= battle.round ? hit.unit.debuffStrength ?? 10 : 0, Math.min(150, resonantStrength(40, potency)));
@@ -576,7 +637,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const numerator = action.power ?? (action.template === 'shatter' ? action.skill!.strength + 30 : (action.template === 'pierce' || action.template === 'dawn') ? action.skill!.strength + 30 : action.template === 'drain' ? 9 * (action.skill!.strength + 30) : action.template === 'area' ? 13 * (action.skill!.strength + 30) : action.skill ? 3 * (action.skill.strength + 30) : 1);
       const denominator = action.power ? 100 : action.template === 'shatter' ? 50 : (action.template === 'pierce' || action.template === 'dawn') ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
       for (const target of action.targets) {
-        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
+        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency, coordination); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
       }
     }
     if (action.template === 'drain' && amount > 0) {
@@ -586,7 +647,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     if (!action.ultimate && !action.forcedBy) gainUltimate(actor, 25);
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
-    emit(battle, { actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
+    emit(battle, { coordinationAction: coordination?.linked.has(actor.uid) ? 'linked' : undefined, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${coordination?.linked.has(actor.uid) ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });
     if (actor.side === 'party' && dungeon(content, battle.dungeonId).bossClock) {
       for (const boss of battle.units.filter(unit => unit.side === 'enemy' && unit.boss && !unit.barrier && before.some(old => old.uid === unit.uid && (old.barrier ?? 0) > 0))) {
         emit(battle, { kind: 'debuff', clockAction: 'break', actorId: boss.uid, targetIds: [boss.uid], text: '時計の障壁が砕けた — このターンは防御低下', unitsAfter: clone(battle.units) });

@@ -1,3 +1,4 @@
+import { renderRabbitUltimate } from './rabbit-ultimate-audio';
 import { combatSignature, renderCombatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily, renderCombatSound, type CombatFamily } from './combat-audio';
 import type * as Tone from 'tone';
@@ -40,9 +41,10 @@ const scores: Record<CombatKey, CombatScore> = {
 export interface ScheduledUltimateVoice {
   hasStarted(): boolean;
   cancel(stopActive?: boolean): void;
+  retime?(elapsedMs: number, rate: number): void;
 }
 export interface CombatSynth {
-  scheduleUltimate(kind: UltimateSound, time: number): ScheduledUltimateVoice;
+  scheduleUltimate(kind: UltimateSound, time: number, rate?: number, elapsedMs?: number): ScheduledUltimateVoice;
   play(kind: SoundCue, skill: SkillTemplate | undefined, time: number, variationKey?: string, signature?: CombatSignature): boolean;
 }
 
@@ -66,6 +68,10 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
     buffer.getChannelData(0).set(pcm);
     ultimateBuffers.set(kind, buffer);
   }
+  // Retiming deadlines preserves pitch and each individual weapon transient.
+  const rabbitBuffers=new Map<number,AudioBuffer>([[1,ultimateBuffers.get('ultimate-rabbits')!]]);
+  const fastRabbit=renderRabbitUltimate(context.sampleRate,1.25);
+  const fastBuffer=context.createBuffer(1,fastRabbit.length,context.sampleRate);fastBuffer.getChannelData(0).set(fastRabbit);rabbitBuffers.set(1.25,fastBuffer);
   const normalBuffers = new Map<string, AudioBuffer>();
   const variations = new Map<string, number>();
   const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
@@ -133,7 +139,28 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   };
   await room.ready;
 
-  const scheduleUltimate = (kind: UltimateSound, time: number): ScheduledUltimateVoice => {
+  const scheduleUltimate = (kind: UltimateSound, time: number, playbackRate=1, elapsedMs=0): ScheduledUltimateVoice => {
+    if(kind==='ultimate-rabbits'){
+      type Voice={source:AudioBufferSourceNode;envelope:GainNode;startsAt:number};
+      const voices=new Set<Voice>();let stopped=false,rate=playbackRate===1.25?1.25:1;
+      const stop=(voice:Voice)=>{
+        const now=context.currentTime;
+        if(now<voice.startsAt)voice.source.stop();
+        else{voice.envelope.gain.cancelScheduledValues(now);voice.envelope.gain.setValueAtTime(1,now);voice.envelope.gain.linearRampToValueAtTime(0,now+.008);voice.source.stop(now+.01);}
+      };
+      const launch=(startsAt:number,elapsedMs:number)=>{
+        const buffer=rabbitBuffers.get(rate)!,offset=Math.max(0,elapsedMs/1000/rate);
+        if(offset>=buffer.duration)return;
+        const source=context.createBufferSource(),envelope=context.createGain();source.buffer=buffer;source.connect(envelope);tone.connect(envelope,output);
+        const voice={source,envelope,startsAt};voices.add(voice);source.onended=()=>{voices.delete(voice);source.disconnect();envelope.disconnect();};
+        if(elapsedMs>0){envelope.gain.setValueAtTime(0,startsAt);envelope.gain.linearRampToValueAtTime(1,startsAt+.006);}
+        source.start(startsAt,offset);
+      };
+      launch(time,elapsedMs);
+      return {hasStarted:()=>context.currentTime>=time,
+        retime(elapsedMs,nextRate){const next=nextRate===1.25?1.25:1;if(stopped||rate===next)return;for(const voice of voices)stop(voice);rate=next;launch(context.currentTime+.003,elapsedMs);},
+        cancel(stopActive=true){if(stopped||(!stopActive&&context.currentTime>=time))return;stopped=true;for(const voice of voices)stop(voice);}};
+    }
     const source = context.createBufferSource(), envelope = context.createGain();
     source.buffer = ultimateBuffers.get(kind)!;
     source.connect(envelope); tone.connect(envelope, output);
