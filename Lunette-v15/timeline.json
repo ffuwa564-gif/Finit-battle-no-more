@@ -1,0 +1,173 @@
+{
+  "duration": 23.0,
+  "fps": 24,
+  "frames": 552,
+  "musicSourceStart": 39.1,
+  "musicSourceEnd": 62.1,
+  "shots": [
+    {
+      "id": "01-taunt",
+      "kind": "intro",
+      "frames": 64,
+      "start": 3.1,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 0.0
+    },
+    {
+      "id": "02-name",
+      "kind": "title",
+      "frames": 64,
+      "at": 2.6666666666666665
+    },
+    {
+      "id": "03-one",
+      "kind": "count",
+      "count": 0,
+      "frames": 10,
+      "at": 5.333333333333333
+    },
+    {
+      "id": "04-two",
+      "kind": "count",
+      "count": 1,
+      "frames": 9,
+      "at": 5.75
+    },
+    {
+      "id": "05-three",
+      "kind": "count",
+      "count": 2,
+      "frames": 9,
+      "at": 6.125
+    },
+    {
+      "id": "06-fire",
+      "kind": "count",
+      "count": 3,
+      "frames": 10,
+      "start": 0.35,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 6.5
+    },
+    {
+      "id": "07-battle",
+      "kind": "battle",
+      "frames": 196,
+      "at": 6.916666666666667
+    },
+    {
+      "id": "08-respect",
+      "kind": "respect",
+      "frames": 44,
+      "start": 5.9,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 15.083333333333334
+    },
+    {
+      "id": "09-invite",
+      "kind": "invite",
+      "frames": 28,
+      "at": 16.916666666666668
+    },
+    {
+      "id": "10-gesture",
+      "kind": "gesture",
+      "frames": 35,
+      "start": 0.5,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 18.083333333333332
+    },
+    {
+      "id": "11-ending",
+      "kind": "end",
+      "frames": 83,
+      "at": 19.541666666666668
+    }
+  ],
+  "gameplay": {
+    "source": "lunette-ultimate-study-v6",
+    "firstSourceFrame": 0,
+    "lastSourceFrame": 208,
+    "sourceFps": 30,
+    "speed": "authored phase timing; native-rate crossfire",
+    "parts": [
+      {
+        "kind": "command",
+        "sourceStart": 0.0,
+        "sourceEnd": 1.1666666666666667,
+        "frames": 28,
+        "duration": 1.1666666666666667,
+        "speed": 1.0
+      },
+      {
+        "kind": "summon",
+        "sourceStart": 1.1666666666666667,
+        "sourceEnd": 3.1666666666666665,
+        "frames": 64,
+        "duration": 2.6666666666666665,
+        "speed": 0.75
+      },
+      {
+        "kind": "aim",
+        "sourceStart": 3.1666666666666665,
+        "sourceEnd": 4.166666666666667,
+        "frames": 24,
+        "duration": 1.0,
+        "speed": 1.0
+      },
+      {
+        "kind": "volley",
+        "sourceStart": 4.166666666666667,
+        "sourceEnd": 5.666666666666667,
+        "frames": 36,
+        "duration": 1.5,
+        "speed": 1.0
+      },
+      {
+        "kind": "wind-up",
+        "sourceStart": 5.666666666666667,
+        "sourceEnd": 6.766666666666667,
+        "frames": 40,
+        "duration": 1.6666666666666667,
+        "speed": 0.66
+      },
+      {
+        "kind": "whiteout",
+        "sourceStart": 6.766666666666667,
+        "sourceEnd": 6.933333333333334,
+        "frames": 4,
+        "duration": 0.16666666666666666,
+        "speed": 1.0
+      }
+    ],
+    "at": 6.916666666666667,
+    "whiteCutAt": 15.083333333333334,
+    "whiteFadeIntoLunetteSeconds": 0.25,
+    "lastSourceWhiteout": 1,
+    "preserveTailAcrossCut": true,
+    "gameplayContainsPerShotHP": true,
+    "noBattlefieldReturn": true
+  },
+  "newRunwayCredits": 0,
+  "cutin": "Fresh actual-game standard portrait cut-in, using character.artId like other characters; no transparent body/key override"
+}

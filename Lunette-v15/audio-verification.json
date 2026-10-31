@@ -1,0 +1,86 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 23.0,
+  "source": "v6 score.wav, same original game renderer",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 14.916666666666668,
+  "retimeMethod": "Copy original per-cue waveforms; preserve native weapon transients; place final charge to end on the finisher",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 7.10959243868604
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 9.214463402553292
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 14.275108044492253
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 10.012849063829421
+    },
+    {
+      "at": 12.15,
+      "effectsOverMusicDb": 8.8823873933009
+    },
+    {
+      "at": 12.215,
+      "effectsOverMusicDb": 11.442990183138232
+    },
+    {
+      "at": 12.280000000000001,
+      "effectsOverMusicDb": 12.30038126511095
+    },
+    {
+      "at": 12.344999999999999,
+      "effectsOverMusicDb": 10.054522178321694
+    },
+    {
+      "at": 12.55,
+      "effectsOverMusicDb": 5.157838969888885
+    },
+    {
+      "at": 12.615,
+      "effectsOverMusicDb": 8.635872221851146
+    },
+    {
+      "at": 12.68,
+      "effectsOverMusicDb": 9.72955272819557
+    },
+    {
+      "at": 12.745000000000001,
+      "effectsOverMusicDb": 9.890643283841506
+    },
+    {
+      "at": 12.95,
+      "effectsOverMusicDb": 8.96627489070762
+    },
+    {
+      "at": 13.015,
+      "effectsOverMusicDb": 8.382054845914764
+    },
+    {
+      "at": 13.08,
+      "effectsOverMusicDb": 8.626566372324454
+    },
+    {
+      "at": 13.145,
+      "effectsOverMusicDb": 11.01709310693745
+    },
+    {
+      "at": 14.916666666666668,
+      "effectsOverMusicDb": 15.274916320334487
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1,
+  "encodedMixCorrelation": 0.9856612732409651,
+  "tailRmsAfterWhiteCut": 0.05109425634145737
+}
