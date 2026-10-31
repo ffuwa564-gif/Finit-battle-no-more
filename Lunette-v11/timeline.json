@@ -1,0 +1,139 @@
+{
+  "duration": 20,
+  "fps": 24,
+  "musicSourceStart": 39.1,
+  "newGenerationCredits": 0,
+  "shots": [
+    {
+      "id": "01-taunt",
+      "kind": "intro",
+      "frames": 64,
+      "start": 3.1,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 0.0
+    },
+    {
+      "id": "02-name",
+      "kind": "title",
+      "frames": 64,
+      "at": 2.6666666666666665
+    },
+    {
+      "id": "03-one",
+      "kind": "count",
+      "count": 0,
+      "frames": 10,
+      "at": 5.333333333333333
+    },
+    {
+      "id": "04-two",
+      "kind": "count",
+      "count": 1,
+      "frames": 9,
+      "at": 5.75
+    },
+    {
+      "id": "05-three",
+      "kind": "count",
+      "count": 2,
+      "frames": 9,
+      "at": 6.125
+    },
+    {
+      "id": "06-fire",
+      "kind": "count",
+      "count": 3,
+      "frames": 10,
+      "start": 0.35,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 6.5
+    },
+    {
+      "id": "07-battle",
+      "kind": "battle",
+      "frames": 124,
+      "at": 6.916666666666667
+    },
+    {
+      "id": "08-respect",
+      "kind": "respect",
+      "frames": 44,
+      "start": 5.9,
+      "crop": [
+        450,
+        800,
+        135,
+        0
+      ],
+      "at": 12.083333333333334
+    },
+    {
+      "id": "09-invite",
+      "kind": "invite",
+      "frames": 28,
+      "at": 13.916666666666666
+    },
+    {
+      "id": "10-gesture",
+      "kind": "gesture",
+      "frames": 35,
+      "start": 0.5,
+      "crop": [
+        540,
+        960,
+        90,
+        0
+      ],
+      "at": 15.083333333333334
+    },
+    {
+      "id": "11-ending",
+      "kind": "end",
+      "frames": 83,
+      "at": 16.541666666666668
+    }
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 124,
+      "sourceStart": 1.333333,
+      "sourceEnd": 4.666667,
+      "impactAt": 2.0,
+      "summonAt": 1.0,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 24,
+          "sourceStart": 1.333333,
+          "sourceEnd": 2.333333,
+          "playbackRate": 1.0
+        },
+        {
+          "frames": 24,
+          "sourceStart": 2.333333,
+          "sourceEnd": 2.958333,
+          "playbackRate": 0.625
+        },
+        {
+          "frames": 76,
+          "sourceStart": 2.958333,
+          "sourceEnd": 4.666667,
+          "playbackRate": 0.5394738947368422
+        }
+      ],
+      "pixelReviewedBoundaries": true
+    }
+  ],
+  "polish": "Count-in visuals unchanged; added tap/confirm sounds removed. One allied Lunette ultimate: sixteen shots, pause, combined finisher and delay echoes. Enemy ultimate excluded. Filming uses an independent adjusted demo save, not fabricated abilities."
+}

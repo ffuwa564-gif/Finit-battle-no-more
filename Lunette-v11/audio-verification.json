@@ -1,0 +1,91 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "sourceEnd": 59.1,
+  "cutTimes": [
+    5.333333333333333,
+    5.75,
+    6.125,
+    6.5
+  ],
+  "gameplayEdit": [
+    {
+      "id": 0,
+      "frames": 124,
+      "sourceStart": 1.333333,
+      "sourceEnd": 4.666667,
+      "impactAt": 2.0,
+      "summonAt": 1.0,
+      "sound": "ultimate-rabbits",
+      "parts": [
+        {
+          "frames": 24,
+          "sourceStart": 1.333333,
+          "sourceEnd": 2.333333,
+          "playbackRate": 1.0
+        },
+        {
+          "frames": 24,
+          "sourceStart": 2.333333,
+          "sourceEnd": 2.958333,
+          "playbackRate": 0.625
+        },
+        {
+          "frames": 76,
+          "sourceStart": 2.958333,
+          "sourceEnd": 4.666667,
+          "playbackRate": 0.5394738947368422
+        }
+      ],
+      "pixelReviewedBoundaries": true
+    }
+  ],
+  "sfxTimes": [
+    8.916666666666668
+  ],
+  "effects": "Sixteen crossfire shots, a pause, combined finisher and two discrete delay echoes. No confirmation/tap pops. One original buff cue at summon only. Game voice time-stretched to match footage.",
+  "buffTimes": [
+    7.916666666666667
+  ],
+  "confirmationPops": false,
+  "finisherAt": 10.86300737053371,
+  "delayEchoesAt": [
+    11.17812919877885,
+    11.493251027023991
+  ],
+  "battleBgmBaseReductionDb": -6.020599913279624,
+  "additionalHitDuckDb": -16.478174818886377,
+  "impactWindows": [
+    {
+      "at": 8.916666666666668,
+      "effectsRmsDbFS": -14.208769581893023,
+      "musicRmsDbFS": -38.147143483913936,
+      "effectsOverMusicDb": 23.93837396773499
+    }
+  ],
+  "newRunwayCredits": 0,
+  "assets": "Existing v5 rabbit PNGs, original game Lunette animation, fresh actual game capture with enhanced gate, charge, burst and volley effects. No new generated images or motion.",
+  "encodedMixCorrelation": 0.9911480525376457,
+  "impactCorrelations": [
+    {
+      "at": 8.916666666666668,
+      "pcm": 0.9751760720183701,
+      "energyEnvelope": 0.9994969721653897
+    },
+    {
+      "at": 10.86300737053371,
+      "pcm": 0.9893262413968592,
+      "energyEnvelope": 0.9997607248458324
+    },
+    {
+      "at": 11.17812919877885,
+      "pcm": 0.9901516394925678,
+      "energyEnvelope": 0.9997932154743026
+    },
+    {
+      "at": 11.493251027023991,
+      "pcm": 0.9894318962005055,
+      "energyEnvelope": 0.9995382480149452
+    }
+  ]
+}
