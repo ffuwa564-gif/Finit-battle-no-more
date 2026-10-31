@@ -1,7 +1,7 @@
 import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
-import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCamera, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
 const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
@@ -48,7 +48,8 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
     if(visual==='rabbit-bits'&&!targets){
-      scene.pivot.set(w*.5,h*.46);scene.position.set(w*.5,h*.46);scene.scale.set(rabbitCameraZoom(elapsed));
+      const pulse=rabbitLoopCamera(elapsed);
+      scene.pivot.set(w*.5,h*.46);scene.position.set(w*.5+pulse.x,h*.46+pulse.y);scene.scale.set(rabbitCameraZoom(elapsed));
     }
     forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((RABBIT_SEQUENCE.tail-elapsed)/550):f.fade;
     if(visual==='rabbit-bits'){host.dataset.rabbitStage=rabbitStage(elapsed);host.dataset.rabbitFlight=String([0,1,2,3].filter(i=>rabbitBitFrame(i,elapsed).flight).length);}

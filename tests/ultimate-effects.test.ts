@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
@@ -70,10 +70,23 @@ describe('ultimate presentation clock', () => {
     const early=rabbitCameraZoom(3400)-rabbitCameraZoom(3200);
     const late=rabbitCameraZoom(4200)-rabbitCameraZoom(4000);
     expect(late).toBeGreaterThan(early*5);
-    expect(rabbitCameraZoom(6240)).toBeLessThan(rabbitCameraZoom(6000));
-    expect(rabbitCameraZoom(6880)).toBeCloseTo(1.24);
-    expect(rabbitCameraZoom(8000)).toBe(1);
-    for(let at=0;at<=8400;at+=10){expect(rabbitCameraZoom(at)).toBeGreaterThanOrEqual(1);expect(rabbitCameraZoom(at)).toBeLessThanOrEqual(1.241);}
+    expect(rabbitCameraZoom(RABBIT_SEQUENCE.charge+240)).toBeLessThan(rabbitCameraZoom(RABBIT_SEQUENCE.charge));
+    expect(rabbitCameraZoom(RABBIT_SEQUENCE.finish+80)).toBeCloseTo(1.38);
+    expect(rabbitCameraZoom(RABBIT_SEQUENCE.end)).toBeCloseTo(1,10);
+    for(let at=0;at<=RABBIT_SEQUENCE.end;at+=10){expect(rabbitCameraZoom(at)).toBeGreaterThanOrEqual(1-1e-10);expect(rabbitCameraZoom(at)).toBeLessThanOrEqual(1.381);}
+  });
+  it('accelerates the camera with the same rising charge after each pass',()=>{
+    let previous=0;
+    for(const cue of rabbitLoopCues()){
+      const at=RABBIT_SEQUENCE.fire+cue.at*1000;
+      const start=rabbitLoopCamera(at),peak=rabbitLoopCamera(at+cue.duration*1000*.55);
+      expect(start.power).toBeCloseTo(0);expect(peak.round).toBe(cue.round);
+      expect(peak.zoom).toBeCloseTo(cue.zoom);expect(peak.zoom).toBeGreaterThan(previous);previous=peak.zoom;
+      const early=rabbitLoopCamera(at+cue.duration*1000*.15).zoom;
+      const late=rabbitLoopCamera(at+cue.duration*1000*.45).zoom;
+      expect(late).toBeGreaterThan(early*10);
+      expect(rabbitLoopCamera(at+cue.duration*1000+1).round).toBe(-1);
+    }
   });
   it('launches from artwork clock faces, travels before damage and lands the heavy shot together',()=>{
     const first=RABBIT_TIMING.impact;
@@ -85,6 +98,7 @@ describe('ultimate presentation clock', () => {
       expect(rabbitBitFrame(bit,RABBIT_SEQUENCE.finish-90).flight).toBe(true);
       expect(rabbitBitFrame(bit,RABBIT_SEQUENCE.finish-90).final).toBe(true);
       expect(rabbitBitFrame(bit,RABBIT_SEQUENCE.finish).impact).toBe(1);
+      expect(rabbitBitFrame(bit,RABBIT_SEQUENCE.finish).flight).toBe(false);
       const m=rabbitMuzzle(bit,100,100,80,1,0);
       expect(Math.hypot(m.x-100,m.y-100)).toBeGreaterThan(5);
       const turned=rabbitMuzzle(bit,100,100,80,1,Math.PI);

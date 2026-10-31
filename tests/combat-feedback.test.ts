@@ -36,7 +36,7 @@ describe('Lunette per-shot actual HP snapshots',()=>{
     const after=structuredClone(before);after[0].hp=0;after[1].hp=562;
     const event:BattleEvent={id:'rabbit',kind:'area',text:'',amount:99999,unitsAfter:after};
     const original=structuredClone(before),steps=rabbitDamageSteps(event,before);
-    expect(steps).toHaveLength(17);expect(steps[0].at).toBe(4275);expect(steps.at(-1)!.at).toBe(6800);expect(steps.at(-1)!.units).toEqual(after);
+    expect(steps).toHaveLength(17);expect(steps[0].at).toBe(4275);expect(steps.at(-1)!.at).toBe(9200);expect(steps.at(-1)!.units).toEqual(after);
     for(const index of [0,1]){
       const id=before[index].uid;
       expect(steps.flatMap(step=>step.changes).filter(change=>change.unitId===id).reduce((sum,change)=>sum+change.amount,0)).toBe(after[index].hp-before[index].hp);

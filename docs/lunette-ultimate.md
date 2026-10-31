@@ -4,18 +4,18 @@
 
 Summoning and shooting are distinct scenes. Do not pad an arbitrary short clip by repeating charge sounds. The user calls the existing pre-ultimate ブオーン “buff”; this is `renderUltimateCharge`, never `CombatSynth.play('buff')` or a new arpeggio. Preserve its timbre, avoid excessive metallic ringing, and give every sound a visual cause. The previous five-second soundtrack with four repeated charges is superseded.
 
-## Authored sequence (normal speed: 8.4 seconds)
+## Authored sequence (normal speed: 10.8 seconds)
 
 | Time | Picture | Sound |
 | --- | --- | --- |
 | 0–1.2 s | Lunette original full illustration, using the same portrait/title cut-in as other characters | Brief opening space, then existing charge rises into gate opening |
 | 1.2–3.2 s | Four rabbits materialize successively, 360 ms apart, through local clock gates; each settles over 540 ms | A soft air/pressure arrival for each robot, no musical notes |
 | 3.2–4.2 s | All four remain readable; thin aiming lines converge and the reticle locks | Silence from this soundtrack: a deliberate contrast before firing |
-| 4.2–6.0 s | Four crossfire passes, sixteen distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; no charge layered over the barrage |
-| 6.0–6.62 s | Clock emitters gather light inward together | One familiar charge rises into heavy launch |
-| 6.62–6.8 s | Four heavy plasma bodies fly inward together | Departure pressure and a short air trail |
-| 6.8–7.8 s | Combined blast, held recoil, finishing damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
-| 7.8–8.4 s | Clear aftermath before replay continues | Let the tail end |
+| 4.2–8.4 s | Four crossfire passes, sixteen distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; no charge layered over the barrage |
+| 8.4–9.02 s | Clock emitters gather light inward together | One familiar charge rises into heavy launch |
+| 9.02–9.2 s | Four heavy plasma bodies fly inward together | Departure pressure and a short air trail |
+| 9.2–10.2 s | Combined blast, held recoil, finishing damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
+| 10.2–10.8 s | Clear aftermath before replay continues | Let the tail end |
 
 `RABBIT_SEQUENCE` owns the scene beats; `RABBIT_TIMING`, sound placement, Pixi, whiteout, per-shot HP presentation and replay duration derive from them. `rabbitStage` exposes command/summon/aim/volley/charge/finish/reveal for inspection without adding battle UI text. The SVG fallback uses the same clock for materialization and shots; it must not run an independent CSS firing loop. Other characters retain their normal ultimate timing.
 
@@ -31,7 +31,7 @@ Reactions affect only actual recipient art; HUD and commands stay fixed. All six
 
 All damaging combat feedback now creates a short translucent red overlay on the actual hurt enemy illustration or party card, never the HUD/controls. Healing, off-screen recipients and reduced-motion mode do not flash. Overlays replace rather than stack and are removed on event change/cleanup.
 
-`rabbitCameraZoom` authors eased framing: settle into summon, accelerate toward the firing cue, advance through crossfire, pull back for the final wind-up, then punch into the finisher (maximum 1.24×) and ease back to neutral. The enemy artwork and friendly rabbit effect scene share the zoom curve; party-target effects do not scale their whole UI. HUD/controls stay fixed. Reduced-motion/data-saving gates suppress camera motion. Native hidden/unmount cleanup restores the original artwork transforms.
+`rabbitCameraZoom` authors eased framing: settle into summon, accelerate toward the firing cue, advance through crossfire, pull back for the final wind-up, then punch into the finisher (maximum 1.38×) and ease back to neutral. The enemy artwork and friendly rabbit effect scene share the zoom curve; party-target effects do not scale their whole UI. HUD/controls stay fixed. Reduced-motion/data-saving gates suppress camera motion. Native hidden/unmount cleanup restores the original artwork transforms.
 
 Weapon synthesis separates discharge, flight, contact, final detonation and delay returns without metallic bells. Research consulted for methods only: [laser layers](https://www.daviddumaisaudio.com/how-to-create-laser-gun-sound-effect-layers/) and [gunshot layers](https://blog.prosoundeffects.com/how-to-sound-design-first-person-shooter-gunshot-sound-effects-with-mark-kilborn). No external sound recordings are reused.
 
@@ -64,3 +64,14 @@ The user prefers “ぽぽぽ” for the rabbit volley. This supersedes the dry 
 ## Loop-ending rising bells (PV v19)
 
 The latest user direction restores the v17 pre-pop weapon exactly and adds one soft three-note clock-bell flourish after each four-hit pass. This supersedes the v18 “ぽぽぽ” preference. The four cues follow the fourth contact by 15 ms, at .285/.685/1.085/1.485 seconds relative to first fire. Each 210 ms motif uses E5/F#5/G#5/B5 as its successive base, with the same three-note shape and restrained harmonic overtones. Bell pitch rises by loop; weapon pitch does not. The flourish belongs to the finished volley pass rather than being arbitrary buff/UI audio. Native speed variants retime cue positions while preserving bell pitch and attack lengths. The PV's native-speed crossfire includes all four motifs and their tails within the existing picture edit. No new visuals or generation are needed.
+
+
+## Current direction: rising ブオーン + accelerating camera after every pass (PV v20)
+
+The user clarified that the accent is the familiar pre-ultimate “buff” charge, not the v19 bell. Bells are removed. Four shots finish their contact, then the exact `renderUltimateCharge` waveform plays with a matching cubic camera pulse. Four passes now begin 1 second apart so a complete recognizable charge has room to sound. The original weapon timbre is unchanged; only the post-pass charge rises.
+
+`rabbitLoopCues` owns cue time, pitch, voice duration, camera zoom and pan together. Relative to first fire, each cue is at .285/1.285/2.285/3.285 seconds, 15 ms after its fourth contact. The whole familiar waveform is resampled at 0/2/4/7 semitones, preserving the identity of both its air and tonal components. The rising voice becomes shorter and stronger: about .68/.606/.540/.454 seconds, with a .05/.09/.14/.20 zoom accent and increasingly strong alternating pan. The first 55% accelerates cubically into the zoom peak, then releases. Later sweeps are therefore both larger and faster. No musical arpeggio, buff-skill recording or UI sample is used.
+
+Base setup: summon 1200, aim 3200, first fire 4200, final wind-up 8400, heavy launch 9020, impact 9200, tail 10200, end 10800 ms. HP totals, seventeen damage presentations and weapon/landing synchronization remain intact. Floating-point boundaries treat an exact landing as landed, never still in flight. Native fast playback compresses each charge envelope without adding a transport pitch shift, while the authored per-pass transposition remains. Camera motion stays on artwork/effects, not HUD or commands; reduced-motion/data-saving gates still suppress it.
+
+PV v20 uses a fresh game recording of the new camera and pacing, retaining the skill header, inset gameplay and lower-right transparent Lunette. Crossfire and four post-pass sweeps are shown at native speed. The final charge/flight and white-to-Lunette cut are edited separately. The longer pass spacing makes the PV 25.5 seconds; count-in and track starting position are preserved. A roughly 4.7-second BGM-free gameplay clip exposes all four audio/camera accents for review. No new generated assets or credits.

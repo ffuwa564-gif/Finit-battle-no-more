@@ -3,7 +3,7 @@ export const ULTIMATE_TIMING = { effect: 900, impact: 1450, tail: 2300, end: 320
 /** Authored scene beats; visuals and audio must derive from these, never arbitrary cue lists. */
 export const RABBIT_SEQUENCE = {
   summon: 1200, summonStep: 360, summonDuration: 540,
-  aim: 3200, fire: 4200, charge: 6000, finish: 6800, tail: 7800, end: 8400,
+  aim: 3200, fire: 4200, charge: 8400, finish: 9200, tail: 10200, end: 10800,
 } as const;
 export const RABBIT_TIMING = { effect: RABBIT_SEQUENCE.summon, impact: RABBIT_SEQUENCE.fire,
   damage: RABBIT_SEQUENCE.finish, tail: RABBIT_SEQUENCE.tail, end: RABBIT_SEQUENCE.end } as const;
