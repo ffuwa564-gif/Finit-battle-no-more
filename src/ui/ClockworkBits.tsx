@@ -3,17 +3,27 @@ import type { BattleEvent, BossBitPattern, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
 import './clockwork-bits.css';
 
+interface BitStatusProps { boss: Unit; pattern?: BossBitPattern; event?: BattleEvent; round: number }
+export function ClockworkBitStatus({ boss, pattern, event, round, inline = false }: BitStatusProps & { inline?: boolean }) {
+  if (!pattern || !boss.boss || boss.hp <= 0) return null;
+  const current = event?.bitAction && event.actorId === boss.uid ? event.unitsAfter?.find(unit => unit.uid === boss.uid) ?? boss : boss;
+  const bits = current.bits;
+  const deploying = event?.bitAction === 'deploy' && event.actorId === boss.uid;
+  const remaining = bits ? Math.max(0, bits.expiresRound - round + 1) : 0;
+  const next = (pattern.every - round % pattern.every) % pattern.every;
+  const compact = bits ? deploying ? tr('次ターン射撃') : tr('射撃 {0}T').replace('{0}', String(remaining)) : next === 0 ? tr('今ターン展開') : tr('展開 {0}T').replace('{0}', String(next));
+  return <span className={`clockwork-bits__status${inline ? ' clockwork-bits__status--inline' : ''}`} role="status" aria-label={tr('うさぎビットの状態')}>
+    <strong>{tr(inline ? 'ビット' : 'うさぎビット')}</strong><span>{inline ? compact : tr(bits ? deploying ? '展開完了 · 次ターン射撃' : `自動射撃 · 残り${remaining}ターン` : next === 0 ? 'このターンに展開' : `展開まで${next}ターン`)}</span>
+  </span>;
+}
+
 /** Device state comes from replay snapshots; animation never advances combat. */
-export function ClockworkBits({ boss, pattern, event, round }: {
-  boss: Unit; pattern?: BossBitPattern; event?: BattleEvent; round: number;
-}) {
+export function ClockworkBits({ boss, pattern, event, round, hideStatus = false }: BitStatusProps & { hideStatus?: boolean }) {
   if (!pattern || !boss.boss || boss.hp <= 0) return null;
   const current = event?.bitAction && event.actorId === boss.uid ? event.unitsAfter?.find(unit => unit.uid === boss.uid) ?? boss : boss;
   const bits = current.bits;
   const firing = event?.bitAction === 'fire' && event.actorId === boss.uid;
   const deploying = event?.bitAction === 'deploy' && event.actorId === boss.uid;
-  const remaining = bits ? Math.max(0, bits.expiresRound - round + 1) : 0;
-  const next = (pattern.every - round % pattern.every) % pattern.every;
   return <div className={`clockwork-bits${firing ? ' is-firing' : ''}${deploying ? ' is-deploying' : ''}`} data-bit-count={bits?.count ?? 0}>
     <div className="clockwork-bits__devices" aria-hidden="true">
       {Array.from({ length: bits?.count ?? 0 }, (_, index) => <div key={`${event?.bitAction ? event.id : 'idle'}:${index}`} className={`clockwork-bit${firing && event.bitIndex === index ? ' is-shooting' : ''}`} style={{ '--bit-index': index } as CSSProperties}>
@@ -21,8 +31,6 @@ export function ClockworkBits({ boss, pattern, event, round }: {
         <i className="clockwork-bit__beam" />
       </div>)}
     </div>
-    <div className="clockwork-bits__status" role="status" aria-label={tr('うさぎビットの状態')}>
-      <strong>{tr('うさぎビット')}</strong><span>{tr(bits ? deploying ? '展開完了 · 次ターン射撃' : `自動射撃 · 残り${remaining}ターン` : next === 0 ? 'このターンに展開' : `展開まで${next}ターン`)}</span>
-    </div>
+    {!hideStatus && <ClockworkBitStatus boss={boss} pattern={pattern} event={event} round={round} />}
   </div>;
 }
