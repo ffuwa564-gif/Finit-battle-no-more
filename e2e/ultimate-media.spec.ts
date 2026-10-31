@@ -59,6 +59,7 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
       observer.observe(element,{attributes:true,attributeFilter:['data-phase']});
     }));
     await expect(effect).toHaveAttribute('data-visual',theme);
+    await expect(effect.locator('.ultimate-intro-fx')).toHaveCount(1);
     await expect(effect.locator('video')).toHaveCount(0);
     await expect(effect).toHaveAttribute('data-fx-state', 'pixi');
     await expect(effect.locator('canvas')).toBeVisible();
@@ -125,6 +126,7 @@ test('data saving does not load Pixi or download effect videos', async ({ page }
   await prepare(page,'lunette');
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-fx-state', 'static');
   await expect(page.locator('.ultimate-pixi-canvas')).toHaveCount(0);
+  await expect(page.locator('.ultimate-intro-fx')).toHaveCount(0);
   await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
   expect(requests).toEqual([]);
 });

@@ -45,3 +45,12 @@ The four illustrations have clock faces rather than literal gun barrels. `RABBIT
 Rabbit effects draw at up to 60 fps and repaint on the combat-number event so an HP update cannot leave the previous flying-projectile image waiting for the next ticker beat. Hidden/skip/unmount cleanup removes that listener and restores artwork transforms. Motion/data-saving gates remain intact.
 
 The PV is re-recorded from the actual game with the shared full illustration cut-in. Its non-firing setup is retimed, crossfire stays at native speed, and final-flight and landing are edited separately. Native departure/charge/contact waveforms are placed separately; the finishing detonation and delays are positioned at landing and continue through the white-to-Lunette transition. No external VFX footage or new generated assets are used.
+
+
+## Ornate cut-in / embedded skill presentation (PV v17)
+
+The full original portrait stays in the shared layout. `UltimateIntroFx` adds fine clock arcs, rotating chapter marks, six small glints and one diagonal light pass behind the existing title. Its opacity and transforms use the same normalized presentation clock and do not restart at speed changes. It starts on the next animation frame so the parent clock has been initialized. Reduced-motion/data-saving gates omit the entire ornament. It disappears with the intro and cleans up its frame callback on skip/unmount. There is no new battle explanatory text.
+
+The rabbit weapon is revoiced: shorter electrical crack, reduced long laser pitch glide, a 95/190/380 Hz pressure body, a stronger 132/264/528 Hz landing, a short early pressure return and a larger harmonic finishing blast. There are no metallic bells, musical notes or UI cues. Flight/contact timing and total damage are unchanged. Normal attacks for other characters are unchanged.
+
+PV v17 frames the actual game as an inset on original cream/navy/lilac/mint editorial fields. Its upper header gives the actual ultimate name and a short summon/crossfire/finishing-shot description. The existing original alpha Lunette cutout sits at lower right, with her face outside the battlefield's focal area. These labels are PV graphics only. The recorded ornate intro replaces the first 35 source frames; the already recorded projectile gameplay remains valid. A fresh soundtrack comes from the revised game renderer. The entire composition follows the final whiteout into the existing animated Lunette scene. The 23-second timeline, count-in and music license credit stay intact; no generated image/video or Runway credits are added.
