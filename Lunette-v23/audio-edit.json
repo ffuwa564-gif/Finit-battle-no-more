@@ -1,0 +1,52 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 21.791666666666668,
+  "source": "v23 game-score.wav: rounded electronic pulse and mid body; three original-blast echoes at 220/440/660ms; camera pushes in on shots, out on charge; BGM holds through final repeat",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 13.708333333333332,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 14.330557809824946
+    },
+    {
+      "at": 11.81537356321839,
+      "effectsOverMusicDb": 15.214871968016359
+    },
+    {
+      "at": 11.88074712643678,
+      "effectsOverMusicDb": 20.54812912662895
+    },
+    {
+      "at": 11.946120689655173,
+      "effectsOverMusicDb": 16.173747178716823
+    },
+    {
+      "at": 12.75574712643678,
+      "effectsOverMusicDb": 14.711188371304837
+    },
+    {
+      "at": 12.821120689655174,
+      "effectsOverMusicDb": 14.885259379110455
+    },
+    {
+      "at": 12.886494252873565,
+      "effectsOverMusicDb": 15.071882769689813
+    },
+    {
+      "at": 12.951867816091955,
+      "effectsOverMusicDb": 14.232775045896993
+    },
+    {
+      "at": 13.708333333333332,
+      "effectsOverMusicDb": 20.248513140235996
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1
+}
