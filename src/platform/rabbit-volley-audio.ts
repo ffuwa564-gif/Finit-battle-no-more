@@ -1,33 +1,17 @@
 import { RABBIT_VOLLEY, RABBIT_FLIGHT, rabbitShotTimes } from './ultimate-choreography';
 
-/** A round electronic projectile with a small chip edge, not a four-note UI bleep. */
-export function renderRabbitShot(sampleRate:number,bit=0,round=0):Float32Array {
-  const pcm=new Float32Array(Math.ceil(.16*sampleRate));
-  const ratio=2**(((bit-1.5)*.06+round*.18)/12);
-  const lowA=1-Math.exp(-2*Math.PI*3400/sampleRate),dcA=1-Math.exp(-2*Math.PI*45/sampleRate);
-  let low=0,dc=0;
-  for(let i=0;i<pcm.length;i++){
-    const t=i/sampleRate;
-    // Integrate the pitch sweep continuously through the full release.
-    const cycles=ratio*(310*t+410*.008*(1-Math.exp(-t/.008))),phase=cycles%1;
-    const triangle=1-4*Math.abs(phase-.5);
-    const chip=Math.round((phase<.5?1:-1)*63)/63;
-    const body=Math.sin(2*Math.PI*(155*t+90*.012*(1-Math.exp(-t/.012))));
-    const envelope=(1-Math.exp(-t*650))*Math.exp(-t*26)*Math.max(0,Math.min(1,(.11-t)/.025));
-    const voice=(triangle*.66+chip*.16+body*.30)*envelope;
-    low+=lowA*(voice-low);dc+=dcA*(low-dc);
-    pcm[i]=(low-dc)*Math.min(1,(pcm.length-1-i)/(sampleRate*.015));
-  }
+/** Use the actual final blast at lower level, with a short release for rapid fire. */
+function quietBlast(sampleRate:number,gain:number,duration:number,release:number):Float32Array {
+  const source=renderRabbitFinisher(sampleRate),pcm=new Float32Array(Math.ceil(duration*sampleRate));
+  for(let i=0;i<pcm.length;i++)pcm[i]=source[i]*gain*Math.min(1,(pcm.length-1-i)/(sampleRate*release));
   return pcm;
 }
-/** A separate rounded landing body, so fast playback never detaches sound from damage. */
+export function renderRabbitShot(sampleRate:number,bit=0,round=0):Float32Array {
+  return quietBlast(sampleRate,.48*(.97+bit*.01+round*.02),.14,.035);
+}
+/** A smaller copy at contact preserves the same timbre and the shared damage deadline. */
 export function renderRabbitContact(sampleRate:number):Float32Array {
-  const pcm=new Float32Array(Math.ceil(.08*sampleRate));
-  for(let i=0;i<pcm.length;i++){
-    const t=i/sampleRate;
-    pcm[i]=Math.sin(2*Math.PI*238*t)*(1-Math.exp(-t*1100))*Math.exp(-t*65)*.20*Math.min(1,(pcm.length-1-i)/(sampleRate*.01));
-  }
-  return pcm;
+  return quietBlast(sampleRate,.12,.08,.025);
 }
 /** One original blast is reused by every repeat, including its exact pressure/noise contour. */
 export function renderRabbitFinisher(sampleRate:number):Float32Array {

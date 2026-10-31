@@ -5,7 +5,7 @@ import {renderUltimateCharge} from '../src/platform/ultimate-charge-audio';
 import { renderRabbitUltimate, enhanceRabbitCharge, RABBIT_CHARGE_CUES } from '../src/platform/rabbit-ultimate-audio';
 import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
 import { describe, expect, it } from 'vitest';
-import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
+import { renderRabbitVolley, renderRabbitShot, renderRabbitFinisher } from '../src/platform/rabbit-volley-audio';
 import { renderUltimateSound, ultimateSounds } from '../src/platform/ultimate-audio';
 
 const rms = (pcm: Float32Array, rate: number, start: number, end: number) => {
@@ -29,6 +29,15 @@ describe('authored ultimate sound materials', () => {
     const levels=RABBIT_VOLLEY.echoes.map(delay=>rms(pcm,rate,RABBIT_VOLLEY.finale+delay+.02,RABBIT_VOLLEY.finale+delay+.10));
     expect(levels[0]).toBeGreaterThan(.10);expect(levels[1]).toBeGreaterThan(.06);expect(levels[2]).toBeGreaterThan(.035);
     expect(levels[0]).toBeGreaterThan(levels[1]);expect(levels[1]).toBeGreaterThan(levels[2]);
+  });
+  it('uses a quieter copy of the final explosion for regular shots, preserving its waveform and pitch',()=>{
+    const rate=48000,blast=renderRabbitFinisher(rate),shot=renderRabbitShot(rate);
+    let dot=0,aa=0,bb=0;
+    for(let i=0;i<rate*.07;i++){dot+=blast[i]*shot[i];aa+=blast[i]**2;bb+=shot[i]**2;}
+    expect(dot/Math.sqrt(aa*bb)).toBeGreaterThan(.9999);
+    expect(rms(shot,rate,0,.07)/rms(blast,rate,0,.07)).toBeGreaterThan(.4);
+    expect(rms(shot,rate,0,.07)/rms(blast,rate,0,.07)).toBeLessThan(.5);
+    expect(shot.length/rate).toBeCloseTo(.14,4);expect(shot.at(-1)).toBe(0);
   });
   it('can retime the PV shot deadlines without stretching the individual shot attacks', () => {
     const rate=44100,normal=renderRabbitVolley(rate),slow=renderRabbitVolley(rate,1.8);
