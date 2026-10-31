@@ -1,3 +1,4 @@
+import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
 import { ultimateFrame, rabbitBitFrame, rabbitMount, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
@@ -44,7 +45,8 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const elapsed=position(),f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
     const w=host.clientWidth,h=host.clientHeight;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
-    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((2.3-hit)/.4):f.fade;
+    forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((RABBIT_SEQUENCE.tail-elapsed)/550):f.fade;
+    if(visual==='rabbit-bits')host.dataset.rabbitStage=rabbitStage(elapsed);
     for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
     for(const {sprite} of particles)sprite.alpha=0;
@@ -139,10 +141,11 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       }
     }else if(visual==='rabbit-bits'){
       // Lunette's four illustrated robots materialize around the actual target.
-      const mounts=[[-.34,-.27],[.34,-.27],[-.34,.29],[.34,.29]];
+      const aiming=clamp((elapsed-RABBIT_SEQUENCE.aim)/650);
+      const summoning=elapsed<RABBIT_SEQUENCE.aim;
       // An expanding clockwork seal binds the four gates before they open fire.
       // Keep all light local to the target: no full-screen white wash over HUD text.
-      const charge=hit<0?gather:decay(hit,5);
+      const charge=summoning?Math.sin(Math.PI*clamp((elapsed-RABBIT_SEQUENCE.summon)/2000))*.8:0;
       const seal=s*(.24+.055*gather);
       for(let segment=0;segment<16;segment++){
         const a=segment*Math.PI/8+elapsed*.00065;
@@ -181,11 +184,11 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
         bunny.scale.set(width/bunny.texture.width);bunny.alpha=state.summon*state.alpha;
         bunny.rotation=mount.rotation-state.recoil*.1*(bit%2?1:-1);
         // A small clock-shaped summon gate behind each rabbit, not a generic star.
-        const ring=s*.10*state.summon;
-        light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.alpha*state.summon*.65});
-        light.ellipse(x,y+s*.08,ring*1.22,ring*.34).stroke({width:1,color,alpha:state.alpha*state.summon*.45});
-        if(hit<0){
-          const power=clamp((gather-.4)/.6);
+        const ring=s*.10*(.6+.4*state.summon);
+        light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.gate*.85});
+        light.ellipse(x,y+s*.08,ring*1.22,ring*.34).stroke({width:1,color,alpha:state.gate*.55});
+        if(summoning && state.summon>0 && state.summon<1){
+          const power=state.summon;
           for(let spark=0;spark<5;spark++){
             const a=spark*Math.PI*.4+elapsed*.004+bit;
             const orbit=s*(.09-.045*power);
@@ -194,12 +197,18 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
           }
           light.circle(x,y,s*.035*power).fill({color,alpha:power*.4});
         }
-        if(hit<0 && gather>.55){
-          stroke([x,y,x+(cx-x)*gather,y+(cy-y)*gather],.65,(gather-.55)*.6);
+        if(hit<0 && aiming>0){
+          stroke([x,y,x+(cx-x)*aiming,y+(cy-y)*aiming],.65,aiming*.3);
         }
         if(state.finishCharge>0){
           light.circle(x,y,s*.055*state.finishCharge).fill({color,alpha:state.finishCharge*.7});
           stroke([x-s*.045,y,x+s*.045,y],1.5,state.finishCharge);
+          for(let spark=0;spark<8;spark++){
+            const a=spark*Math.PI/4+elapsed*.003;
+            const radius=s*(.13-.10*state.finishCharge);
+            light.circle(x+Math.cos(a)*radius,y+Math.sin(a)*radius*.7,1+state.finishCharge)
+              .fill({color:0xffffff,alpha:state.finishCharge*.8});
+          }
         }
         if(state.beam>.015){
           const width=state.final?8:3.8;
@@ -217,12 +226,12 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
           light.circle(cx,cy,s*(.035+.045*(1-state.beam))).stroke({color,width:2,alpha:state.beam});
         }
       }
-      if(hit<0 && gather>.3){
+      if(hit<0 && aiming>0){
         const r=s*.07;
-        light.circle(cx,cy,r).stroke({color,width:1.5,alpha:gather*.75});
+        light.circle(cx,cy,r).stroke({color,width:1.5,alpha:aiming*.75});
         for(let mark=0;mark<4;mark++){
-          const a=mark*Math.PI/2+gather*.35;
-          stroke([cx+Math.cos(a)*r*1.2,cy+Math.sin(a)*r*1.2,cx+Math.cos(a)*r*1.65,cy+Math.sin(a)*r*1.65],1.2,gather);
+          const a=mark*Math.PI/2+aiming*.35;
+          stroke([cx+Math.cos(a)*r*1.2,cy+Math.sin(a)*r*1.2,cx+Math.cos(a)*r*1.65,cy+Math.sin(a)*r*1.65],1.2,aiming);
         }
       }
     }else{

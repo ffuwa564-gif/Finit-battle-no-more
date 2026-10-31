@@ -1,7 +1,7 @@
 import type { BattleEvent, CharacterDef } from '../domain/types';
 import type { UltimateTheme } from '../domain/ultimates';
 import { ultimateFor } from '../domain/ultimates';
-import { RABBIT_TIMING, ultimateTimingFor } from './ultimate-timing';
+import { RABBIT_TIMING, RABBIT_SEQUENCE, ultimateTimingFor } from './ultimate-timing';
 
 export type UltimateVisual = UltimateTheme | 'clockwork' | 'rabbit-bits';
 export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent): UltimateVisual {
@@ -12,7 +12,7 @@ export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent):
   return event?.bossStrike && ['bloom', 'aegis', 'dawn'].includes(theme) ? 'eclipse' : theme;
 }
 /** Shared visual/audio deadlines, relative to the existing damage impact (seconds). */
-export const RABBIT_VOLLEY = { rounds: 4, spacing: .27, stagger: .042, finale: (RABBIT_TIMING.damage-RABBIT_TIMING.impact)/1000, echoes: [.18, .36] } as const;
+export const RABBIT_VOLLEY = { rounds: 4, spacing: .4, stagger: .065, finale: (RABBIT_TIMING.damage-RABBIT_TIMING.impact)/1000, echoes: [.18, .36] } as const;
 export const rabbitShotTimes = (index: number) => Array.from({length:RABBIT_VOLLEY.rounds},(_,round)=>round*RABBIT_VOLLEY.spacing+index*RABBIT_VOLLEY.stagger);
 /** Repeated crossfire, a short breath, then one combined finishing blast. */
 export function rabbitBitFrame(index: number, elapsed: number) {
@@ -23,12 +23,15 @@ export function rabbitBitFrame(index: number, elapsed: number) {
   const shotAge=lastShot===undefined?-1:Math.max(0,hit-lastShot);
   const final=lastShot===RABBIT_VOLLEY.finale;
   return {
-    summon: clamp01((elapsed - RABBIT_TIMING.effect - index * 65) / 350),
-    alpha: clamp01((2.3 - hit) / .4),
+    summon: clamp01((elapsed - RABBIT_SEQUENCE.summon - index * RABBIT_SEQUENCE.summonStep) / RABBIT_SEQUENCE.summonDuration),
+    alpha: clamp01((RABBIT_SEQUENCE.tail - elapsed) / 550),
+    aim: clamp01((elapsed-RABBIT_SEQUENCE.aim)/650),
+    gate: Math.sin(Math.PI*clamp01((elapsed-RABBIT_SEQUENCE.summon-index*RABBIT_SEQUENCE.summonStep)/850)),
     beam: shotAge<0?0:Math.exp(-shotAge*(final?10:33)),
     recoil: shotAge<0||shotAge>.09?0:Math.sin(shotAge/.09*Math.PI),
     shotAge, final, round: Math.max(0,fired.length-1),
-    finishCharge: hit>1.08&&hit<RABBIT_VOLLEY.finale?(hit-1.08)/(RABBIT_VOLLEY.finale-1.08):0,
+    finishCharge: elapsed>=RABBIT_SEQUENCE.charge&&elapsed<RABBIT_SEQUENCE.finish
+      ? (elapsed-RABBIT_SEQUENCE.charge)/(RABBIT_SEQUENCE.finish-RABBIT_SEQUENCE.charge):0,
   };
 }
 export const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
@@ -61,7 +64,7 @@ export function rabbitWhiteout(elapsed: number): number {
 export function rabbitMount(index: number, elapsed: number) {
   const hit=(elapsed-RABBIT_TIMING.impact)/1000;
   const base=[[-.35,-.26,.23],[.33,-.32,.18],[-.32,.29,.26],[.37,.22,.21]][index];
-  const deploy=clamp01((elapsed-RABBIT_TIMING.effect-index*65)/350);
+  const deploy=clamp01((elapsed-RABBIT_SEQUENCE.summon-index*RABBIT_SEQUENCE.summonStep)/RABBIT_SEQUENCE.summonDuration);
   const turn=hit<0?0:Math.sin(Math.min(hit,1.05)*2.2+index)*.055;
   return {x:base[0]+(index%2?1:-1)*.24*(1-deploy)+turn,
     y:base[1]-.09*(1-deploy)+Math.sin(elapsed*.002+index)*.012,

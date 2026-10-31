@@ -1,38 +1,31 @@
 # Lunette: rabbit-bit summon ultimate
 
-Lunette and awakened Lunette use the dedicated `rabbit-bits` presentation. Four illustrated mechanical rabbits materialize through small clock gates, aim at the target, fire sixteen short converging shots, pause briefly, then release a combined finishing blast, recoil, and fade away. An animated segmented seal connects the summon gates; spiraling charge sparks, broad muzzle blooms, a white-core burst, a dispersing shock ring and plasma fragments emphasize the volley. The current soundtrack repeats the existing pre-ultimate ブオーン charge waveform at its original pitch and duration, with strengthened gain at four selected moments. It does not grant additional gameplay buffs. A single finishing whiteout covers the battle layout, rises into white, briefly holds and reveals the battlefield before the next replay action. It follows the ultimate clock through speed changes, disappears on skip, and is omitted in reduced-motion/data-saving modes. The volley and finisher use the shared `RABBIT_VOLLEY` visual/audio deadlines. The dedicated synthesized `ultimate-rabbits` voice has sixteen plasma transients followed by a final low blast and two discrete delay echoes (+180 ms, +360 ms), without bell-like metallic ringing. The Pixi canvas owns the final fade so the generic tail transition cannot hide the finisher.
+## Direction and user preference
 
-This is the presentation of Lunette's existing single area-attack ultimate. Damage, target resolution, charge, and cooldown rules are unchanged. The transient visual rabbits do not add repeated battle actions or the persistent enemy-only automatic bits.
+Summoning and shooting are distinct scenes. Do not pad an arbitrary short clip by repeating charge sounds. The user calls the existing pre-ultimate ブオーン “buff”; this is `renderUltimateCharge`, never `CombatSynth.play('buff')` or a new arpeggio. Preserve its timbre, avoid excessive metallic ringing, and give every sound a visual cause. The previous five-second soundtrack with four repeated charges is superseded.
 
-The source artwork is the project's four transparent mechanical rabbits, generated for the Lunette PV from `public/art/event-lunette-awakened.png`. The accepted sheet was `/workspace/generated_images/exec-c28bdba1-4014-45f5-890f-58ce002beb5b.png`; separate alpha PNG exports were originally delivered in the `downloads/lunette-pv` media branch, `Lunette-v5/rabbits/`. Copies now live in `public/art/lunette-bit-{1,2,3,4}.png` and are registered as original project illustrations in `src/content/lunette-ultimate.ts`. No third-party character art, PV footage, or additional generation is used.
+## Authored sequence (normal speed: 8.4 seconds)
 
-Pixi loads these textures only for the rabbit presentation and keeps them in the asset cache. The SVG fallback also uses the four rabbit images rather than a star-burst substitute. Reduced-motion and data-saving modes keep the readable static cut-in without loading the rabbit effect textures. Existing enemy target routing is retained.
+| Time | Picture | Sound |
+| --- | --- | --- |
+| 0–1.2 s | Lunette command portrait; original body/key artwork, no key rotation | Brief opening space, then existing charge rises into gate opening |
+| 1.2–3.2 s | Four rabbits materialize successively, 360 ms apart, through local clock gates; each settles over 540 ms | A soft air/pressure arrival for each robot, no musical notes |
+| 3.2–4.2 s | All four remain readable; thin aiming lines converge and the reticle locks | Silence from this soundtrack: a deliberate contrast before firing |
+| 4.2–6.0 s | Four crossfire passes, sixteen distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; no charge layered over the barrage |
+| 6.0–6.8 s | The guns gather light inward together; a pause separates this from crossfire | One familiar charge rises into the finishing shot |
+| 6.8–7.8 s | Combined blast, held recoil, total damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
+| 7.8–8.4 s | Clear aftermath before replay continues | Let the tail end |
 
-## Weapon audio revision
+`RABBIT_SEQUENCE` owns the scene beats; `RABBIT_TIMING`, sound placement, Pixi, whiteout, damage presentation and replay duration derive from them. `rabbitStage` exposes command/summon/aim/volley/charge/finish/reveal for inspection without adding battle UI text. The SVG fallback uses the same clock for materialization and shots; it must not run an independent CSS firing loop. Other characters retain their normal ultimate timing.
 
-`rabbit-volley-audio.ts` separates each shot into a falling-pitch plasma core with harmonics, a low-mid pressure burst, and a restrained high-frequency attack. The finisher has a separate low detonation and two darker delay returns. No metallic bell or UI note layers are used. In PV edits, only shot deadlines are retimed; individual transients are synthesized at their original duration instead of stretching the entire gun recording. This avoids smearing the repeated attacks.
+The two existing 0.68-second charge waveforms end at gate opening and the finishing shot. Their gain is strengthened without new pitches or notes. Arrival audio is original filtered-noise/pressure synthesis, distinct from the weapon. The full mix uses a common peak scalar. Normal combat buff sounds are unchanged. Both native speed buffers and preview export use the same renderer. Speed changes crossfade at the current logical offset with pitch intact; skip cancels the complete soundtrack.
 
-Research consulted (methods only; no source audio reused):
+## Assets and rendering
 
-- David Dumais, [How to create laser gun sound effect layers](https://www.daviddumaisaudio.com/how-to-create-laser-gun-sound-effect-layers/): independent transient shaping and falling pitch contours.
-- Mark Kilborn / Pro Sound Effects, [FPS gunshot design](https://blog.prosoundeffects.com/how-to-sound-design-first-person-shooter-gunshot-sound-effects-with-mark-kilborn): separate transient, body, sub, mechanical and tail layers. We deliberately omit the metallic mechanical layer for this character.
+Both Lunette forms use `rabbit-bits`. The four original project illustrations are `public/art/lunette-bit-{1,2,3,4}.png`, registered in `src/content/lunette-ultimate.ts`; they originated in the approved Lunette PV. No new Runway generation, third-party character footage or extra credits are used.
 
-The filming source consists of JPEG screencast frames with no audio stream. The PV audio is assembled explicitly from the selected BGM, a non-melodic opening sweep and this original volley. V12 contains no added buff, confirm, select or tap cues. The BGM retains its own percussion. An isolated SFX-only gameplay clip is supplied separately for review.
+The awakened command portrait uses exact-pixel original cutouts `lunette-command-body` and `lunette-command-key`. The normal form keeps its own portrait and costume. Pixi caches the robot textures. Failure uses the same robot images in SVG. Reduced-motion/data-saving modes retain the readable static cut-in. The finishing whiteout and art motion are suppressed in those modes.
 
-## Five-second reaction study
+Reactions affect only actual recipient art; HUD and commands stay fixed. All sixteen shot deadlines, flashes and sounds share `RABBIT_VOLLEY`. Hidden/unmounted/skipped playback restores inline transforms. Enemy offensive effects remain on the party recipients. No new battle actions, repeated damage, cooldown, charge or persistent enemy-bit rules are introduced; the single existing result is displayed at the finishing hit.
 
-Lunette has a separate five-second presentation timeline: command/cut-in, deploy at 1000 ms, first shot at 1750 ms, combined finisher and HP/total number at 3200 ms, aftermath/tail at 4200 ms, end at 5000 ms. Other ultimates retain their existing timeline. The single combat result is unchanged; the HP presentation waits for the finisher.
-
-`rabbitTargetFrame` and the four rabbit mounts share all sixteen shot deadlines with the beams and audio. Every shot adds a bounded art-only recoil/brief brightness response, followed by a quiet gap and heavier held finishing recoil. Only the enemy illustration zooms/moves; commands and HUD remain fixed. The implementation uses current recipients and restores the original inline translate/scale/filter/origin when skipped, hidden or unmounted. Motion/data preferences suppress this layer.
-
-The awakened form's command uses the project's exact-pixel `Lunette_body_only.png` and `Lunette_winding_key.png` cutouts from `artifacts/lunette-cutout`, now registered as `lunette-command-body` and `lunette-command-key`. The key stays still; the earlier key-turn animation has been removed. The normal form retains its own original portrait; it does not borrow the awakened costume.
-
-Audio separates discharge, short flight, contact and the larger finishing blast. The game uses the electric flavor; a pressure flavor is provided for the isolated five-second A/B study. Native speed changes choose a buffer with retimed shot deadlines and crossfade from the current logical offset, preserving pitch and avoiding a restart of the volley. The latest study contains the repeated pre-ultimate charge sounds and no BGM or confirmation/tap cue. Delivery is matched to -16 LUFS / -1.5 dBTP.
-
-## Correct charge source and user terminology
-
-In this discussion the user calls the existing pre-ultimate ブオーン the “buff sound”. This specifically means `renderUltimateCharge` in `ultimate-charge-audio.ts`, not `CombatSynth.play('buff')`. The previous ascending-note reconstruction and combat-buff WAV were the wrong source and have been removed. Do not add buff-skill arpeggios or transpose the charge.
-
-`enhanceRabbitCharge` multiplies the original 0.68-second charge waveform by 1.65 (+4.35 dB), preserving every sample's pitch, timing and shape. Four placements at 0, .9, 1.8 and 2.55 seconds carry the charge through the summon, firing and finishing blast. The complete mix is peak-limited by a common scalar. Ordinary combat buff skills remain unchanged.
-
-Both native-speed buffers and the preview exporter call the same synthesis functions, with no WAV fetch or decode dependency. Speed changes resume from the current logical offset; skip cancels the soundtrack. Study v4 reuses v2's unchanged no-key-turn picture with the corrected charge soundtrack, plus a three-second original/enhanced comparison. The comparison applies one common gain to both excerpts so the level difference remains audible.
+Weapon synthesis separates discharge, flight, contact, final detonation and delay returns without metallic bells. Research consulted for methods only: [laser layers](https://www.daviddumaisaudio.com/how-to-create-laser-gun-sound-effect-layers/) and [gunshot layers](https://blog.prosoundeffects.com/how-to-sound-design-first-person-shooter-gunshot-sound-effects-with-mark-kilborn). No external sound recordings are reused.

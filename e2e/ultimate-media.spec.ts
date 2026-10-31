@@ -54,7 +54,7 @@ for (const [caster, clip, theme] of [['seris','blade','blade'],['noelle','arcane
     await expect(effect.locator('video')).toHaveCount(0);
     await expect(effect).toHaveAttribute('data-fx-state', 'pixi');
     await expect(effect.locator('canvas')).toBeVisible();
-    await expect(effect).toHaveAttribute('data-phase', 'impact');
+    await expect(effect).toHaveAttribute('data-phase', 'impact',{timeout:8000});
     if (['sanctuary','shield','rally'].includes(clip)) await expect(effect.locator('.ultimate-recipients .ultimate-recipient__art')).toHaveCount(4);
     await expect(effect.locator('.ultimate-cinematic__finish')).toHaveCount(0);
     await expect(effect.locator('.ultimate-cinematic__intro')).toHaveCSS('opacity', '0');
@@ -86,7 +86,7 @@ test('a failed renderer import uses the fallback and still finishes the round', 
   const effect = page.locator('.ultimate-cinematic');
   await expect(effect).toHaveAttribute('data-fx-state', 'fallback');
   await expect(effect.locator('.ultimate-fallback')).toBeAttached();
-  await expect(effect).toHaveAttribute('data-phase', 'impact');
+  await expect(effect).toHaveAttribute('data-phase', 'impact',{timeout:8000});
   await expect(page.locator('.combat-number--ultimate')).not.toHaveCount(0);
   await expect(page.getByRole('button', { name: 'ラウンドを進める', exact: true })).toBeVisible({ timeout: 20000 });
 });
@@ -169,7 +169,7 @@ test('speed change after impact retains the voice so NEXT can stop its tail', as
     };
   });
   await prepare(page);
-  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   await page.getByTitle('演出速度',{exact:true}).click();
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect.poll(()=>page.evaluate(()=>(window as any).__tailStops)).toBeGreaterThan(0);
@@ -185,7 +185,7 @@ test('Lunette uses one soundtrack and removes her whiteout when skipped', async 
   expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
   const peak=page.locator('.ultimate-whiteout').evaluate(e=>new Promise<boolean>(resolve=>{const watch=()=>{if(Number((e as HTMLElement).style.opacity)>.98){observer.disconnect();resolve(true);}};const observer=new MutationObserver(watch);observer.observe(e,{attributes:true,attributeFilter:['style']});watch();}));
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
   const whiteout=page.locator('.battle-layout > .ultimate-whiteout');
   expect(await peak).toBe(true);
@@ -205,7 +205,7 @@ test('Lunette uses one soundtrack and removes her whiteout when skipped', async 
 test('Lunette reacts through the late volley, holds HP until the finisher and cleans up on skip',async({page})=>{
   await page.setViewportSize({width:390,height:844});
   await prepare(page,'lunette-awakened');
-  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   await expect(page.locator('.combat-number--ultimate')).toHaveCount(0);
   const result=await page.evaluate(()=>new Promise<{shots:number[];motion:number;commands:number;hud:number;numberAt:number;finish:boolean}>(resolve=>{
     const art=document.querySelector<HTMLElement>('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration')!;
@@ -225,7 +225,7 @@ test('Lunette reacts through the late volley, holds HP until the finisher and cl
   }));
   expect(Math.max(...result.shots)).toBe(15);expect(result.shots.filter(x=>x>=0).length).toBeGreaterThanOrEqual(10);
   expect(result.motion).toBeGreaterThan(3);expect(result.commands).toBeLessThan(.1);expect(result.hud).toBeLessThan(.1);
-  expect(result.numberAt).toBeGreaterThan(1100);expect(result.finish).toBe(true);
+  expect(result.numberAt).toBeGreaterThan(1800);expect(result.finish).toBe(true);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
   expect(await page.locator('.enemy-page > .enemy-page-art, .enemy-page > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
@@ -236,18 +236,18 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
     (window as any).__rabbitVoices=[];
     const start=AudioBufferSourceNode.prototype.start;
     AudioBufferSourceNode.prototype.start=function(...args:any[]){
-      if(this.buffer&&!this.loop&&this.buffer.duration>=3.99&&this.buffer.duration<=5.01){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*1.1),hi=Math.floor(this.buffer.sampleRate*1.4);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
+      if(this.buffer&&!this.loop&&this.buffer.duration>=6.71&&this.buffer.duration<=8.41){const a=this.buffer.getChannelData(0),lo=Math.floor(this.buffer.sampleRate*.7),hi=Math.floor(this.buffer.sampleRate*1.1);let sum=0;for(let i=lo;i<hi;i++)sum+=a[i]*a[i];(window as any).__rabbitVoices.push({duration:this.buffer.duration,offset:args[1]??0,chargeRms:Math.sqrt(sum/(hi-lo))});}
       return start.apply(this,args as any);
     };
   });
   await prepare(page,'lunette');
-  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   await page.waitForTimeout(180);
   await page.getByTitle('演出速度',{exact:true}).click();
-  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-4)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
+  await expect.poll(()=>page.evaluate(()=>(window as any).__rabbitVoices.filter((v:any)=>Math.abs(v.duration-6.72)<.01&&v.offset>.1).length)).toBeGreaterThan(0);
   const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
-  expect(voices.some((v:any)=>Math.abs(v.duration-5)<.01&&v.chargeRms>.02)).toBe(true);
-  expect(voices.some((v:any)=>Math.abs(v.duration-4)<.01&&v.offset>.1)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-8.4)<.01&&v.chargeRms>.02)).toBe(true);
+  expect(voices.some((v:any)=>Math.abs(v.duration-6.72)<.01&&v.offset>.1)).toBe(true);
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
   expect(await page.locator('[data-encounter-scene] > .enemy-page-art, [data-encounter-scene] > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
   await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});

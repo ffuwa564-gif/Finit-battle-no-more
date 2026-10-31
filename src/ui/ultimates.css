@@ -89,3 +89,8 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 .lunette-command__body { animation: none; }
 .lunette-command__key { transform-origin: 37.4% 14.2%; animation: none; }
 @keyframes lunette-command-body { from { transform: scale(1.04) translateY(10px); } 45%,100% { transform: scale(1.09) translateY(0); } }
+
+/* Fallback shares the actual clock with Pixi: no autonomous CSS shooting loop. */
+.ultimate-fallback--rabbit-bits .rabbit-fallback-beam { animation: none !important; }
+.ultimate-fallback--rabbit-bits g { opacity: 0; }
+.ultimate-cinematic[data-visual="rabbit-bits"][data-stage="aim"]::before { background: radial-gradient(ellipse at 50% 46%,transparent 24%,#04101d99); }

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
-import { ULTIMATE_TIMING, RABBIT_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
+import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
 
 describe('ultimate presentation clock', () => {
   it('gives both Lunette forms their own rabbit summon and volley without replacing other characters', () => {
@@ -14,7 +14,7 @@ describe('ultimate presentation clock', () => {
     for (let i = 0; i < 4; i++) {
       expect(rabbitBitFrame(i, impact - 1).summon).toBe(1);
       expect(rabbitBitFrame(i, impact - 1).beam).toBe(0);
-      expect(rabbitBitFrame(i, impact + 140).beam).toBeGreaterThan(0);
+      expect(rabbitBitFrame(i, impact + 210).beam).toBeGreaterThan(0);
       expect(rabbitBitFrame(i, RABBIT_TIMING.end).alpha).toBe(0);
     }
     expect(rabbitBitFrame(0, impact).beam).toBe(1);
@@ -26,7 +26,7 @@ describe('ultimate presentation clock', () => {
     expect(shots.at(-1)).toBeLessThan(RABBIT_VOLLEY.finale-.25);
     for(let bit=0;bit<4;bit++){
       for(const at of rabbitShotTimes(bit))expect(rabbitBitFrame(bit,RABBIT_TIMING.impact+at*1000).beam).toBeCloseTo(1);
-      expect(rabbitBitFrame(bit,RABBIT_TIMING.impact+1300).finishCharge).toBeGreaterThan(.5);
+      expect(rabbitBitFrame(bit,RABBIT_SEQUENCE.finish-200).finishCharge).toBeGreaterThan(.5);
       const last=rabbitBitFrame(bit,RABBIT_TIMING.impact+RABBIT_VOLLEY.finale*1000);
       expect(last.final).toBe(true);expect(last.beam).toBe(1);expect(last.alpha).toBe(1);
     }
@@ -44,12 +44,26 @@ describe('ultimate presentation clock', () => {
       const state=rabbitTargetFrame(RABBIT_TIMING.impact+at*1000+.1);
       expect(state.flash).toBeGreaterThan(.1);expect(Math.abs(state.x)+Math.abs(state.y)).toBeGreaterThan(.3);
     }
-    const rest=rabbitTargetFrame(RABBIT_TIMING.impact+1200);
+    const rest=rabbitTargetFrame(RABBIT_SEQUENCE.charge+10);
     expect(rest.x).toBe(0);expect(rest.flash).toBe(0);
     const finish=rabbitTargetFrame(RABBIT_TIMING.damage+1);
     expect(finish.x).toBeGreaterThan(8);expect(finish.finish).toBe(true);
     expect(new Set([0,1,2,3].map(i=>rabbitMount(i,1700).size)).size).toBe(4);
     expect(RABBIT_TIMING.damage).toBe(RABBIT_TIMING.impact+RABBIT_VOLLEY.finale*1000);
+  });
+  it('separates materialization, aiming, crossfire and the final charge',()=>{
+    expect(rabbitStage(0)).toBe('command');
+    for(let bit=0;bit<4;bit++){
+      const at=RABBIT_SEQUENCE.summon+bit*RABBIT_SEQUENCE.summonStep;
+      expect(rabbitBitFrame(bit,at).summon).toBe(0);
+      expect(rabbitBitFrame(bit,at+RABBIT_SEQUENCE.summonDuration).summon).toBe(1);
+    }
+    expect(rabbitStage(RABBIT_SEQUENCE.aim)).toBe('aim');
+    expect(rabbitBitFrame(3,RABBIT_SEQUENCE.aim).summon).toBe(1);
+    expect(rabbitBitFrame(0,RABBIT_SEQUENCE.fire-1).beam).toBe(0);
+    expect(rabbitStage(RABBIT_SEQUENCE.fire)).toBe('volley');
+    expect(rabbitStage(RABBIT_SEQUENCE.charge)).toBe('charge');
+    expect(rabbitStage(RABBIT_SEQUENCE.finish)).toBe('finish');
   });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;

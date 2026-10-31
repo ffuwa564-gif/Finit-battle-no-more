@@ -1,6 +1,16 @@
 // One normalized timeline for particles, impact sound, HP numbers and replay advance.
 export const ULTIMATE_TIMING = { effect: 900, impact: 1450, tail: 2300, end: 3200 } as const;
-export const RABBIT_TIMING = { effect: 1000, impact: 1750, damage: 3200, tail: 4200, end: 5000 } as const;
+/** Authored scene beats; visuals and audio must derive from these, never arbitrary cue lists. */
+export const RABBIT_SEQUENCE = {
+  summon: 1200, summonStep: 360, summonDuration: 540,
+  aim: 3200, fire: 4200, charge: 6000, finish: 6800, tail: 7800, end: 8400,
+} as const;
+export const RABBIT_TIMING = { effect: RABBIT_SEQUENCE.summon, impact: RABBIT_SEQUENCE.fire,
+  damage: RABBIT_SEQUENCE.finish, tail: RABBIT_SEQUENCE.tail, end: RABBIT_SEQUENCE.end } as const;
+export const rabbitStage = (elapsed: number) => elapsed < RABBIT_SEQUENCE.summon ? 'command'
+  : elapsed < RABBIT_SEQUENCE.aim ? 'summon' : elapsed < RABBIT_SEQUENCE.fire ? 'aim'
+  : elapsed < RABBIT_SEQUENCE.charge ? 'volley' : elapsed < RABBIT_SEQUENCE.finish ? 'charge'
+  : elapsed < RABBIT_SEQUENCE.tail ? 'finish' : 'reveal';
 export const ultimateTimingFor = (visual?: string) => visual === 'rabbit-bits'
   ? RABBIT_TIMING : { ...ULTIMATE_TIMING, damage: ULTIMATE_TIMING.impact };
 export const ultimatePlaybackRate = (speed: 1 | 2) => speed === 2 ? 1.25 : 1;

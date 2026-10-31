@@ -5,19 +5,31 @@ import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
-import { ultimateVisualFor, rabbitWhiteout, type UltimateVisual } from '../platform/ultimate-choreography';
-import { ultimateTimingFor, UltimateClock } from '../platform/ultimate-timing';
+import { ultimateVisualFor, rabbitWhiteout, rabbitBitFrame, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateTimingFor, UltimateClock, RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
 
-function FallbackImpact({ theme, visual }: { theme: UltimateTheme; visual?: UltimateVisual }) {
-  if (visual === 'rabbit-bits') return <svg className="ultimate-fallback ultimate-fallback--rabbit-bits" viewBox="0 0 400 400" aria-hidden="true">
+function FallbackImpact({ theme, visual, position }: { theme: UltimateTheme; visual?: UltimateVisual; position?: () => number }) {
+  const fallback=useRef<SVGSVGElement>(null);
+  useEffect(()=>{
+    if(visual!=='rabbit-bits'||!position)return;
+    let frame=0;
+    const draw=()=>{
+      fallback.current?.querySelectorAll<SVGGElement>('g').forEach((group,index)=>{
+        const state=rabbitBitFrame(index,position());
+        group.style.opacity=String(document.hidden?0:state.summon*state.alpha);
+        const beam=group.querySelector<SVGPathElement>('.rabbit-fallback-beam');
+        if(beam){beam.style.opacity=String(state.beam);beam.style.strokeWidth=state.final?'9':'4';}
+      });frame=requestAnimationFrame(draw);
+    };draw();return()=>cancelAnimationFrame(frame);
+  },[visual,position]);
+  if (visual === 'rabbit-bits') return <svg ref={fallback} className="ultimate-fallback ultimate-fallback--rabbit-bits" viewBox="0 0 400 400" aria-hidden="true">
     {[[15,35],[255,35],[15,245],[255,245]].map(([x,y],index) => <g key={index}>
       <image href={assetPath(`lunette-bit-${index+1}`)} x={x} y={y} width="130" height="140" />
-      <path className="rabbit-fallback-beam" style={{ animationDelay: `${index * 35}ms` }} d={`M${x+65} ${y+70} 200 200`} />
-      <path className="rabbit-fallback-finale" d={`M${x+65} ${y+70} 200 200`} />
+      <path className="rabbit-fallback-beam" d={`M${x+65} ${y+70} 200 200`} />
+
     </g>)}
-    <circle cx="200" cy="200" r="20" />
   </svg>;
   return <svg className={`ultimate-fallback ultimate-fallback--${theme}`} viewBox="0 0 400 400" aria-hidden="true">
     {theme === 'blade' ? <><path d="M45 340 330 65 145 320 355 110" /><path d="M30 245 360 160" /><circle cx="200" cy="200" r="104" /></>
@@ -37,6 +49,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   const effectHost = useRef<HTMLDivElement>(null);
   const clock = useRef(new UltimateClock());
   const [phase, setPhase] = useState('intro');
+  const [stage,setStage]=useState('command');
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const whiteoutHost=useRef<HTMLDivElement>(null);
@@ -98,16 +111,19 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   useEffect(() => {
     clock.current.sync(eventId, speed, performance.now());
     const elapsed = clock.current.position(performance.now());
+    setStage(rabbitStage(elapsed));
     setPhase(elapsed < timing.effect ? 'intro' : elapsed < timing.impact ? 'effect' : elapsed < timing.tail ? 'impact' : 'tail');
     const timers = [
       setTimeout(() => setPhase('effect'), clock.current.delay(timing.effect, performance.now())),
       setTimeout(() => setPhase('impact'), clock.current.delay(timing.impact, performance.now())),
       setTimeout(() => setPhase('tail'), clock.current.delay(timing.tail, performance.now())),
     ];
+    if(visual==='rabbit-bits')for(const at of [RABBIT_SEQUENCE.summon,RABBIT_SEQUENCE.aim,RABBIT_SEQUENCE.fire,RABBIT_SEQUENCE.charge,RABBIT_SEQUENCE.finish,RABBIT_SEQUENCE.tail])
+      timers.push(setTimeout(()=>setStage(rabbitStage(at)),clock.current.delay(at,performance.now())));
     return () => timers.forEach(clearTimeout);
   }, [eventId, speed]);
 
-  return <><div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
+  return <><div className={`ultimate-cinematic ultimate-cinematic--${special.theme}${enemy ? ' ultimate-cinematic--enemy' : ''}${supporting ? ' ultimate-cinematic--support' : ''}${!allowed ? ' ultimate-cinematic--reduced' : ''}`} data-visual={visual} data-stage={visual==='rabbit-bits'?stage:undefined} data-phase={phase} data-fx-state={!allowed ? 'static' : failed ? 'fallback' : ready ? 'pixi' : 'loading'} role="status" aria-label={tr(`${character.name}の必殺技：${special.name}`)} style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
     <div className="ultimate-cinematic__intro">
       <div className={`ultimate-cinematic__portrait${visual==='rabbit-bits'?' lunette-command':''}`} aria-hidden="true">{character.id==='lunette-awakened' ? <><img className="lunette-command__body" src={assetPath('lunette-command-body')} alt="" /><img className="lunette-command__key" src={assetPath('lunette-command-key')} alt="" /></> : <img src={assetPath(character.artId)} style={{ objectPosition: anchor }} alt="" />}</div>
       <div className="ultimate-cinematic__title"><small>{enemy ? 'ENEMY ULTIMATE' : 'ULTIMATE'}</small><span>{tr(character.name)}</span><strong>{tr(special.name)}</strong></div>
@@ -115,13 +131,13 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
     {supporting && <div className="ultimate-recipients" aria-hidden="true"><small>{tr('パーティ')}</small><div>{allies.map(unit => <span key={unit.uid}><span className="ultimate-recipient__art"><PortraitArt character={characterById(unit.characterId)} face /></span><small>{tr(characterById(unit.characterId).name)}</small></span>)}</div></div>}
     {!enemy && <div className="ultimate-cinematic__effect" aria-hidden="true">
       {allowed && !failed && <div className="ultimate-pixi-host" ref={effectHost} /> }
-      {allowed && (!ready || failed) ? <FallbackImpact theme={special.theme} visual={visual} /> : null}
+      {allowed && (!ready || failed) ? <FallbackImpact theme={special.theme} visual={visual} position={()=>clock.current.position(performance.now())} /> : null}
     </div>}
   </div>{enemy && allowed && partyLayer && <>
     {createPortal(<div className="ultimate-party-effect" data-phase={phase} aria-hidden="true" style={{ '--ultimate-rate': speed === 2 ? .8 : 1 } as CSSProperties}>
       {!failed && <div className="ultimate-pixi-host" ref={effectHost} />}
     </div>, partyLayer)}
-    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} visual={visual} /></div>, element, element.dataset.unit))}
+    {(!ready || failed) && targetElements().map(element => createPortal(<div className="ultimate-target-fallback" data-phase={phase} aria-hidden="true"><FallbackImpact theme={special.theme} visual={visual} position={()=>clock.current.position(performance.now())} /></div>, element, element.dataset.unit))}
   </>}{allowed && visual==='rabbit-bits' && battleLayer && createPortal(<div ref={whiteoutHost} className="ultimate-whiteout" aria-hidden="true" />,battleLayer)}</>;
 }
 

@@ -1,3 +1,4 @@
+import {RABBIT_SEQUENCE} from '../src/platform/ultimate-timing';
 import {renderUltimateCharge} from '../src/platform/ultimate-charge-audio';
 import { renderRabbitUltimate, enhanceRabbitCharge, RABBIT_CHARGE_CUES } from '../src/platform/rabbit-ultimate-audio';
 import { RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
@@ -17,12 +18,12 @@ describe('authored ultimate sound materials', () => {
       expect(finite).toBe(true);expect(peak).toBeLessThanOrEqual(.831);
       expect(rms(pcm,rate,0,pcm.length/rate)).toBeGreaterThan(.02);
       expect(Math.abs(pcm[0])).toBe(0);expect(Math.abs(pcm[pcm.length-1])).toBe(0);
-      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?5.1:1.8);
+      expect(pcm.length/rate).toBeLessThan(kind==='ultimate-rabbits'?8.5:1.8);
     }
   });
   it('leaves a breath before the rabbit finisher and returns two discrete echoes', () => {
     const rate=44100,pcm=renderRabbitVolley(rate);
-    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,1.2,1.4)*5);
+    expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.005,RABBIT_VOLLEY.finale+.08)).toBeGreaterThan(rms(pcm,rate,2,2.2)*5);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.19,RABBIT_VOLLEY.finale+.24)).toBeGreaterThan(.02);
     expect(rms(pcm,rate,RABBIT_VOLLEY.finale+.37,RABBIT_VOLLEY.finale+.42)).toBeGreaterThan(.01);
   });
@@ -35,10 +36,16 @@ describe('authored ultimate sound materials', () => {
   });
   it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
     const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
-    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES).toEqual([0,.9,1.8,2.55]);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES).toEqual([.52,6.12]);
     for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
     expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
-    expect(voice.length/48000).toBe(5);expect(renderRabbitUltimate(48000,1.25).length/48000).toBe(4);
+    expect(voice.length/48000).toBe(8.4);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(6.72,4);
+  });
+  it('keeps aiming silent and lets crossfire breathe before the last charge',()=>{
+    const rate=48000,pcm=renderRabbitUltimate(rate);
+    expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
+    expect(rms(pcm,rate,5.9,6.1)).toBe(0);
+    expect(rms(pcm,rate,6.3,6.6)).toBeGreaterThan(.02);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;
