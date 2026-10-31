@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY } from '../src/platform/ultimate-choreography';
+import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
 import { ULTIMATE_TIMING, UltimateClock } from '../src/platform/ultimate-timing';
@@ -30,6 +30,14 @@ describe('ultimate presentation clock', () => {
       const last=rabbitBitFrame(bit,ULTIMATE_TIMING.impact+RABBIT_VOLLEY.finale*1000);
       expect(last.final).toBe(true);expect(last.beam).toBe(1);expect(last.alpha).toBe(1);
     }
+  });
+  it('whites out once at the finisher and reveals the battlefield before the replay advances', () => {
+    const start=ULTIMATE_TIMING.impact+RABBIT_VOLLEY.finale*1000;
+    expect(rabbitWhiteout(start)).toBe(0);
+    expect(rabbitWhiteout(start+70)).toBeGreaterThan(.5);
+    expect(rabbitWhiteout(start+150)).toBe(1);
+    expect(rabbitWhiteout(start+400)).toBeGreaterThan(0);
+    expect(rabbitWhiteout(ULTIMATE_TIMING.end)).toBe(0);
   });
   it('travels to the target, holds the impact and preserves time for readable results', () => {
     const impact = ULTIMATE_TIMING.impact;

@@ -45,3 +45,13 @@ export function ultimateFrame(visual: UltimateVisual, elapsed: number) {
     visible: elapsed >= ULTIMATE_TIMING.effect && elapsed < ULTIMATE_TIMING.end,
   };
 }
+
+/** A single finishing whiteout: rise, hold, then reveal the battlefield again. */
+export function rabbitWhiteout(elapsed: number): number {
+  const age=(elapsed-ULTIMATE_TIMING.impact)/1000-RABBIT_VOLLEY.finale;
+  if(age<.025||age>=.65)return 0;
+  if(age<.1)return clamp01((age-.025)/.075);
+  if(age<.23)return 1;
+  const fade=clamp01((age-.23)/.42);
+  return 1-fade*fade*(3-2*fade);
+}

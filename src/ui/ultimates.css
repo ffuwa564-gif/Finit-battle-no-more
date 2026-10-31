@@ -79,3 +79,5 @@ html[data-motion="reduced"] .battle-layout .party-strip .party-unit--ultimate-re
 .ultimate-cinematic[data-visual="rabbit-bits"][data-phase="tail"] { opacity: 1; transition: none; }
 
 .ultimate-cinematic:not([data-phase="intro"]):not([data-phase="effect"]) .rabbit-fallback-finale { stroke-width: 8; animation: rabbit-volley .4s ease-out 1.05s both; }
+
+.ultimate-whiteout { position: absolute; inset: 0; z-index: 60; pointer-events: none; background: #fff; opacity: 0; border-radius: inherit; }

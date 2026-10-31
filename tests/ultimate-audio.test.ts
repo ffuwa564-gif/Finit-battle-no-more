@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { renderRabbitVolley } from '../src/platform/rabbit-volley-audio';
 import { renderUltimateSound, ultimateSounds } from '../src/platform/ultimate-audio';
 
 const rms = (pcm: Float32Array, rate: number, start: number, end: number) => {
@@ -21,6 +22,13 @@ describe('authored ultimate sound materials', () => {
     expect(rms(pcm,rate,1.055,1.13)).toBeGreaterThan(rms(pcm,rate,.95,1.03)*5);
     expect(rms(pcm,rate,1.23,1.28)).toBeGreaterThan(.02);
     expect(rms(pcm,rate,1.40,1.45)).toBeGreaterThan(.01);
+  });
+  it('can retime the PV shot deadlines without stretching the individual shot attacks', () => {
+    const rate=44100,normal=renderRabbitVolley(rate),slow=renderRabbitVolley(rate,1.8);
+    expect(slow.length).toBeGreaterThan(normal.length*1.5);
+    const attack=rms(normal,rate,.003,.025),retimed=rms(slow,rate,.003,.025);
+    expect(retimed/attack).toBeGreaterThan(.7);expect(retimed/attack).toBeLessThan(1.4);
+    expect(rms(slow,rate,1.8*1.05+.005,1.8*1.05+.06)).toBeGreaterThan(.05);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {
     const rate=44100;

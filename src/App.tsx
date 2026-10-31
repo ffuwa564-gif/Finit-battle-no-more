@@ -153,7 +153,6 @@ export default function App() {
   const soundedEvent = useRef<string | null>(null);
   const soundedImpact = useRef<string | null>(null);
   const heardImpact = useRef<string | null>(null);
-  const soundedSummon = useRef<string | null>(null);
   const ultimateClock = useRef(new UltimateClock());
   const activeUltimateSound = useRef<{ eventId: string; voice: NonNullable<ReturnType<typeof scheduleUltimateSound>> } | undefined>(undefined);
   useEffect(() => () => activeUltimateSound.current?.voice.cancel(), []);
@@ -187,13 +186,6 @@ export default function App() {
     };
     reserveSound();
     if (event.ultimate) document.addEventListener('visibilitychange', visibility);
-    // Cosmetic power-up cue at Lunette's summon gates; grants no additional buff.
-    const summonRemaining = ultimateClock.current.delay(ULTIMATE_TIMING.effect, performance.now());
-    const summonTimer = event.ultimate && impactCue === 'ultimate-rabbits' && summonRemaining > 0 ? setTimeout(() => {
-      if (soundedSummon.current === event.id) return;
-      soundedSummon.current = event.id;
-      if (!document.hidden) playSound('buff');
-    }, summonRemaining) : undefined;
     const impactTimer = event.ultimate ? setTimeout(() => {
       if (soundedImpact.current === event.id) return;
       soundedImpact.current = event.id;
@@ -209,7 +201,7 @@ export default function App() {
     };
     timer = setTimeout(complete, duration);
     return () => {
-      clearTimeout(timer); clearTimeout(impactTimer); clearTimeout(summonTimer); cleanup(); cleanupImpact();
+      clearTimeout(timer); clearTimeout(impactTimer); cleanup(); cleanupImpact();
       document.removeEventListener('visibilitychange', visibility);
       if (scheduled?.hasStarted()) heardImpact.current = event.id;
       const current = state.current?.battle;

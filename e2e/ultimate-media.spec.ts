@@ -113,10 +113,11 @@ test('data saving does not load Pixi or download effect videos', async ({ page }
     Object.defineProperty(navigator, 'connection', { value: connection });
   });
   const requests: string[] = [];
-  page.on('request', request => { if (/ultimate-fx-.*\.mp4|ultimate-pixi/.test(request.url())) requests.push(request.url()); });
-  await prepare(page);
+  page.on('request', request => { if (/ultimate-fx-.*\.mp4|ultimate-pixi|lunette-bit-/.test(request.url())) requests.push(request.url()); });
+  await prepare(page,'lunette');
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-fx-state', 'static');
   await expect(page.locator('.ultimate-pixi-canvas')).toHaveCount(0);
+  await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
   expect(requests).toEqual([]);
 });
 
@@ -174,17 +175,25 @@ test('speed change after impact retains the voice so NEXT can stop its tail', as
   await expect.poll(()=>page.evaluate(()=>(window as any).__tailStops)).toBeGreaterThan(0);
 });
 
-test('Lunette summon cue plays once across speed changes and is cancelled on skip', async ({page}) => {
+test('Lunette has no extra buff cue and removes her whiteout when skipped', async ({page}) => {
   await page.addInitScript(()=>{
     (window as any).__summonCues=[];
     window.addEventListener('game:se',event=>{if((event as CustomEvent).detail.kind==='buff')(window as any).__summonCues.push(performance.now());});
   });
   await prepare(page,'lunette');
-  await expect.poll(()=>page.evaluate(()=>(window as any).__summonCues.length)).toBe(1);
+  await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','effect');
+  expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
   await page.getByTitle('演出速度',{exact:true}).click();
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact');
-  expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(1);
+  expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
+  const whiteout=page.locator('.battle-layout > .ultimate-whiteout');
+  await expect.poll(()=>whiteout.evaluate(e=>Number(getComputedStyle(e).opacity)),{intervals:[30],timeout:5000}).toBeGreaterThan(.98);
+  const flash=await whiteout.boundingBox(),battle=await page.locator('.battle-layout').boundingBox();
+  expect(flash!.width).toBeGreaterThan(battle!.width-5);
+  expect(flash!.height).toBeGreaterThan(battle!.height-5);
+  expect(flash!.y).toBeCloseTo(battle!.y+1,0);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
+  await expect(page.locator('.ultimate-whiteout')).toHaveCount(0);
   await prepare(page,'lunette');
   await page.evaluate(()=>(window as any).__summonCues=[]);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
