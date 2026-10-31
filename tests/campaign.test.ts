@@ -21,7 +21,7 @@ describe('normal campaign chapters',()=>{
     expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12,2]);expect(new Set(ids).size).toBe(38);
     const bosses=content.chapters!.map(ch=>content.dungeons.find(d=>d.id===ch.dungeonIds.at(-1))!);
     expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette','zakuro']);
-    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,500,650,650]);
+    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,500,1600,1200]);
     expect(bosses[1]!.bossLoot).toBeDefined();expect(bosses[2]!.bossLoot).toBeDefined();
   });
   it('opens only the first exploration for a new save and enforces the gate in real commands',()=>{
@@ -107,4 +107,15 @@ it('rejects missing story passages and invalid boss dialogue while accepting the
   const bad=structuredClone(content);bad.dungeons[0]!.narrative!.after='';bad.dungeons.find(d=>d.id==='hollow-gate')!.bossDialogue!.defeat='';
   expect(validateContent(bad)).toContain('dungeons/silent-cathedral: plain narrative before and after required');
   expect(validateContent(bad)).toContain('dungeons/hollow-gate: complete plain boss dialogue required');
+});
+
+
+it('allows the late-campaign damage ceiling without relaxing early chapters or events',()=>{
+  const c=structuredClone(content),late=c.dungeons.find(d=>d.id==='silver-crypt')!;
+  late.bossScale!.attack=800;expect(validateContent(c)).toEqual([]);
+  late.bossScale!.attack=801;expect(validateContent(c)).toContain('dungeons/silver-crypt: invalid event boss scale');
+  late.bossScale!.attack=650;c.dungeons.find(d=>d.id==='hollow-gate')!.bossScale!.attack=650;
+  expect(validateContent(c)).toContain('dungeons/hollow-gate: invalid event boss scale');
+  c.dungeons.find(d=>d.id==='kuzuha-awakening')!.bossScale!.attack=650;
+  expect(validateContent(c)).toContain('dungeons/kuzuha-awakening: invalid event boss scale');
 });

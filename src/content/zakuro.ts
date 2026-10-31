@@ -28,7 +28,7 @@ export const zakuroChapter: ChapterDef = {
   id: 'pomegranate-forest', number: 4, title: '柘榴の樹海',
   subtitle: 'リオラと新しい個体を迎えるため、契生石の眠る森へ。',
   dungeonIds: ['ritual-stone-grove', 'zakuro-procession'],
-  bossHint: '3ターンごとの全体攻撃。障壁と回復で備え、ザクロの障壁を砕いて反撃しよう。',
+  bossHint: '第3章を越えた編成で挑む高難度。全体攻撃と先頭狙いの大技に備え、溜め崩し・障壁・回復を使い分けよう。',
 };
 export const zakuroDungeons: DungeonDef[] = [
   {
@@ -36,7 +36,9 @@ export const zakuroDungeons: DungeonDef[] = [
     subtitle: 'ふたりの先へ続く可能性を、石に託す。',
     description: '第三章の先に開く樹海。リオラと特別な個体を生み出す儀式に必要な契生石を探す。クリア確認で契生石1個を獲得。',
     artId: 'encounter-zakuro', published: true, previousDungeonId: 'pale-throne',
-    waves: [[{ characterId: 'moon-moth' }, { characterId: 'pale-wolf' }], [{ characterId: 'stone-drake', boss: true }]],
+    waves: [[{ characterId: 'hollow-keeper' }, { characterId: 'veil-priestess' }, { characterId: 'thorn-witch' }, { characterId: 'moon-moth' }], [{ characterId: 'stone-drake', boss: true }, { characterId: 'veil-priestess' }, { characterId: 'thorn-witch' }]],
+    bossScale: { hp: 1500, attack: 650 },
+    bossStrike: { every: 3, power: 280, name: '封域の一撃', target: 'pilot', windup: { breakPercent: 8, weakenedPower: 100, recoveryPercent: 30 } },
     bossLoot: { guaranteed: [{ materialId: 'ritual-stone:rare', count: 1 }] },
     narrative: {
       before: '街に朝が来てからも、療養室へ通う日々は続いた。リオラと儀式の準備をしていた日、世話をする者の名を書くところで、彼女の筆が止まった。「護衛、と書こうとした。……違うな。その子に何をしたいか聞いてみたい。一緒にやれることもあるかもしれない」。そこへ自分の名を書き、私に筆を渡した。危険なら中断する合図も決め、二人で契生石を探しに樹海へ入った。',
@@ -48,8 +50,8 @@ export const zakuroDungeons: DungeonDef[] = [
     subtitle: '彼女は動かない。地も、空も、すでに配役の中。',
     description: '契生石の樹海を踏破して解放。神輿でくつろぐ怠惰姫ザクロが、統率した少女たちを差し向ける。地上と空からの連携攻撃と、仲間を守る障壁に備えよう。',
     artId: 'encounter-zakuro', published: true, previousDungeonId: 'ritual-stone-grove',
-    waves: [[{ characterId: 'zakuro', boss: true }]], bossScale: { hp: 650, attack: 140 },
-    bossStrike: { every: 3, power: 260, name: '総配役・地天の包囲' },
+    waves: [[{ characterId: 'zakuro', boss: true }, { characterId: 'hollow-keeper' }, { characterId: 'veil-priestess' }]], bossScale: { hp: 1200, attack: 170 },
+    bossStrike: { every: 3, power: 300, name: '総配役・地天の包囲', target: 'pilot', windup: { breakPercent: 8, weakenedPower: 100, recoveryPercent: 30 } },
     bossLoot: { guaranteed: [{ materialId: 'pomegranate:rare', count: 1 }], bonus: { chance: 20, reward: { materialId: 'pomegranate:epic', count: 1 } } },
     narrative: {
       before: 'リオラが最初の一撃を受け止めても、次の刃が迫る。神輿の女は盾と石包みを見て目を細め、「この子たちに近づけないで」と指を振った。枝に隠れていた標の先は、ザクロの行列が通る道だった。',
