@@ -3,7 +3,7 @@ import { enqueueMilestone, initialNovelProgress, novelAvailable } from '../domai
 import { ultimateReady } from '../domain/ultimates';
 import { commandUnits, partyOrderOptions, validPartyOrder } from '../domain/party-orders';
 import { pickXR, xrGachaLock } from '../domain/xr-gacha';
-import type { Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
+import type { Battle, Content, GameCommand, GameSave, GachaResult, Rarity } from '../domain/types';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonLock, duplicateFamily, eventExchangeLock } from '../domain/events';
 import { awakeningLock, isolatedMaterialSpecies } from '../domain/awakening';
@@ -13,6 +13,12 @@ import { advanceReplay, createBattle, recruitCost, resolveRound, rng, usePotion,
 function fail(message: string): never { throw new Error(message); }
 function natural(value: number, label: string, allowZero = false): void {
   if (!Number.isSafeInteger(value) || value < (allowZero ? 0 : 1)) fail(`${label}が正しくありません。`);
+}
+/** Target and command are committed in the same save, using the visible enemy snapshot. */
+function pinCommandTarget(battle: Battle, targetId?: string): void {
+  if (targetId === undefined) return;
+  if (!commandUnits(battle).some(u => u.uid === targetId && u.side === 'enemy' && u.hp > 0)) fail('狙う敵を選んでください。');
+  battle.focusTargetId = targetId;
 }
 function town(save: GameSave): void { if (save.battle) fail('探索を終了してから操作してください。'); }
 function log(save: GameSave, text: string, suffix: string | number = save.history.length): void {
@@ -63,6 +69,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     case 'partyOrder': {
       const battle = save.battle;
       if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase)) fail('今は行動を予約できません。');
+      pinCommandTarget(battle, command.targetId);
       if (command.order === null) {
         delete battle.partyOrder;
         const pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
@@ -151,7 +158,10 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       break;
     }
     case 'round': {
-      const result = resolveRound(ready(save), content);
+      const battle = ready(save);
+      if (command.battleId !== undefined && command.battleId !== battle.id) fail('今は行動を予約できません。');
+      pinCommandTarget(battle, command.targetId);
+      const result = resolveRound(battle, content);
       save.battle = result.battle;
       natural(result.goldEarned, '獲得ゴールド', true);
       save.gold += result.goldEarned;

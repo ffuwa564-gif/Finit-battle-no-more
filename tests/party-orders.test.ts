@@ -43,6 +43,25 @@ describe('optional leftmost party commands', () => {
     const done = fire(order(s, { kind: 'attack' }));
     expect(actorEvent(done).targetIds).toEqual([enemy.uid]);
   });
+  it('commits the displayed enemy and an order atomically, then lets ATTACK use a newly browsed enemy', () => {
+    const s = ready(); const enemies = s.battle!.units.filter(u => u.side === 'enemy');
+    const target = enemies[1];
+    const queued = applyCommand(s, { type: 'partyOrder', battleId: s.battle!.id, order: { kind: 'attack' }, targetId: target.uid }, content);
+    expect(queued.battle!.focusTargetId).toBe(target.uid);
+    expect(actorEvent(fire(queued)).targetIds).toEqual([target.uid]);
+    const switched = applyCommand(queued, { type: 'round', battleId: s.battle!.id, targetId: enemies[0].uid }, content);
+    expect(actorEvent(switched).targetIds).toEqual([enemies[0].uid]);
+    expect(s.battle!.focusTargetId).toBeUndefined();
+    assertSaveCompatibility(queued, content);
+  });
+  it('rejects invalid or stale command targets without partially saving an order or resolving a round', () => {
+    const s = ready(); const ally = s.battle!.units.find(u => u.side === 'party')!;
+    const before = structuredClone(s);
+    expect(() => applyCommand(s, { type: 'partyOrder', battleId: s.battle!.id, order: { kind: 'guard' }, targetId: ally.uid }, content)).toThrow();
+    expect(() => applyCommand(s, { type: 'round', battleId: 'old-run', targetId: s.battle!.units.find(u => u.side === 'enemy')!.uid }, content)).toThrow();
+    expect(() => applyCommand(s, { type: 'round', targetId: 'missing-enemy' }, content)).toThrow();
+    expect(s).toEqual(before);
+  });
   it('uses real owned skills, automatically heals the most injured ally and rejects unavailable skills', () => {
     let s = ready(['elaine', 'seris']); const patient = s.battle!.units.find(u => u.characterId === 'seris')!; patient.hp = 1;
     const done = fire(order(s, { kind: 'skill', skillId: 'heal-14' }));
