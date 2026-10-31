@@ -24,6 +24,26 @@ function replay(battle: Battle) { while (battle.phase === 'playing') battle = ad
 const action = (battle: Battle) => battle.events.find(event => event.actionSelection && event.actorId === 'party:seris')!;
 
 describe('memory gem combat integration', () => {
+  it('counts delayed HP damage toward the latest boss windup break without counting absorbed damage', () => {
+    const equipped = gem('echo-shard');
+    const battle = ready(equipped);
+    const actor = battle.units[0], boss = battle.units.find(unit => unit.side === 'enemy')!;
+    for (const unit of battle.units) if (unit.uid !== actor.uid && unit.uid !== boss.uid) unit.hp = 0;
+    boss.boss = true; boss.hp = boss.maxHp = 1000;
+    battle.round = 2;
+    battle.partyOrder = { kind: 'guard' };
+    battle.memoryEchoes = [{ actorId: actor.uid, targetId: boss.uid, dueRound: 2, power: 50, skillId: gemSkill(equipped).id, name: 'echo' }];
+    const local = structuredClone(content);
+    local.dungeons.find(dungeon => dungeon.id === battle.dungeonId)!.bossStrike = { every: 3, power: 100, name: 'strike', windup: { breakPercent: 5, weakenedPower: 50, recoveryPercent: 20 } };
+    const done = resolveRound(battle, local).battle;
+    expect(done.units.find(unit => unit.uid === boss.uid)!.bossWindup).toEqual({ round: 2, damage: 50 });
+    expect(done.events.filter(event => event.text.includes('溜めを崩した'))).toHaveLength(1);
+    const shielded = structuredClone(battle);
+    shielded.units.find(unit => unit.uid === boss.uid)!.barrier = 50;
+    shielded.units.find(unit => unit.uid === boss.uid)!.barrierUntil = 2;
+    expect(resolveRound(shielded, local).battle.units.find(unit => unit.uid === boss.uid)!.bossWindup).toBeUndefined();
+  });
+
   it('adds exactly one equipped active skill without changing permanent stats or granting extra actions', () => {
     const equipped = gem('night-dew'); const battle = ready(equipped);
     const actor = battle.units[0]; const stats = { attack: actor.attack, defense: actor.defense, speed: actor.speed, maxHp: actor.maxHp };

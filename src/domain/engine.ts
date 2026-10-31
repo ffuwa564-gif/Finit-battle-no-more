@@ -713,6 +713,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const absorbed = Math.min(strength, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
     if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
     const amount = Math.min(recipient.hp, strength - absorbed); recipient.hp -= amount;
+    recordBossWindupDamage(recipient, dungeon(content, battle.dungeonId).bossStrike, battle.round, amount);
     if (amount > 0) { gainUltimate(recipient, 10); if (recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; } }
     if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; }
     clearInvalidGuards(battle);
