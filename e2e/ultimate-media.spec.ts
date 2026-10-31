@@ -248,6 +248,10 @@ test('Lunette speed changes retime the sounding volley without restarting it fro
   const voices=await page.evaluate(()=>(window as any).__rabbitVoices);
   expect(voices.some((v:any)=>Math.abs(v.duration-2.17)<.01)).toBe(true);
   expect(voices.some((v:any)=>Math.abs(v.duration-1.808)<.01&&v.offset>.1)).toBe(true);
+  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
+  expect(await page.locator('[data-encounter-scene] > .enemy-page-art, [data-encounter-scene] > .animated-illustration').evaluate((e:HTMLElement)=>({translate:e.style.translate,scale:e.style.scale}))).toEqual({translate:'',scale:''});
+  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});
+  await expect(page.locator('[data-rabbit-shot]')).toHaveCount(1);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
   await expect(page.locator('[data-rabbit-shot]')).toHaveCount(0);
 });
