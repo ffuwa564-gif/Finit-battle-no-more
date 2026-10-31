@@ -46,6 +46,15 @@ function checkInventoryDefaults(node: ts.Node): void {
   ts.forEachChild(node, checkInventoryDefaults);
 }
 checkInventoryDefaults(inventorySource);
+const partyFile = 'src/screens/GameViews.tsx';
+const partySource = ts.createSourceFile(partyFile, readFileSync(partyFile, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+function checkPartyActions(node: ts.Node, inParty = false, inCard = false): void {
+  const party = inParty || ts.isFunctionDeclaration(node) && node.name?.text === 'PartyView';
+  const card = inCard || party && ts.isJsxElement(node) && node.openingElement.attributes.properties.some(prop => ts.isJsxAttribute(prop) && prop.name.getText(partySource) === 'className' && prop.initializer && ts.isStringLiteral(prop.initializer) && prop.initializer.text === 'character-card');
+  if (card && (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) && node.tagName.getText(partySource) === 'Button') report(partyFile, node, partySource, 'Roster actions must use PartyMemberActions; do not reintroduce competing flex buttons.');
+  ts.forEachChild(node, child => checkPartyActions(child, party, card));
+}
+checkPartyActions(partySource);
 for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['src/ui/MemoryGems.tsx', 'MemoryGems'], ['src/ui/IvoryTower.tsx', 'IvoryTower'], ['src/ui/BuildPlanner.tsx', 'BuildPlanner']]) {
   const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   function visit(node: ts.Node, inInventory = false, collapsed = false): void {

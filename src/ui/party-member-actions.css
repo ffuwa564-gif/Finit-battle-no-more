@@ -1,0 +1,23 @@
+.party-member-actions {
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:8px;
+  width:100%;
+  min-width:0;
+}
+.party-member-actions > .button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-width:0;
+  min-height:44px;
+  height:44px;
+  padding:7px 4px;
+  gap:4px;
+  font-size:11px;
+  line-height:1.4;
+  white-space:nowrap;
+}
+.party-member-actions__label { flex:0 0 auto; white-space:nowrap; }
+.party-member-actions > .button > svg { flex:0 0 auto; }
