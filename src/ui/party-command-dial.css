@@ -67,3 +67,9 @@ body:has(.command-dial-layer) :is(.companion-choice,.companion-choice__bubble) {
 .companion-choice__label { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
 
 .companion-choice__bubble[data-planned-blocked] { opacity:.75; border-color:#8fa4b7; }
+
+/* Before confirmation show body language, never a command or an enemy number. */
+.companion-choice__bubble.companion-signal { min-height:44px; pointer-events:auto; cursor:pointer; border-style:dotted; border-color:#91a9bb80; background:linear-gradient(145deg,#24374af5,#152437f5); color:#c5d4df; font-family:var(--font-body); }
+.companion-signal:hover,.companion-signal:focus-visible { outline:1px solid #c7dde9; outline-offset:2px; }
+.companion-signal:active { background:#2b4055; }
+.companion-choice__bubble .companion-choice__text { display:block; overflow:visible; -webkit-line-clamp:unset; }

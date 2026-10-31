@@ -55,12 +55,13 @@ export const frozenDawnClock: DungeonDef = {
   waves: [[{ characterId: 'chrona', boss: true }]],
 };
 
-/** Read a declared ally action before committing the pilot; no progression rewards. */
+/** Read companion tendencies against clearly telegraphed boss pressure. */
 export const coordinationTrial: DungeonDef = {
   id: 'oath-chain-rehearsal', kind: 'trial', name: '誓鎖の稽古', subtitle: '隣の一手を読み、同じ敵へ。',
-  description: 'アテナとアマテラスに同時に挑む連携の試練。印の付いた仲間の技と対象を見て、左端の行動を選びます。同じ敵への攻撃は35%強化。仲間が味方を支える時の攻撃や、別の敵への攻撃は、左端へ最大HP40%相当の反撃を招きます。防御・補助は安全。自動時は連携相手に合わせて攻撃か防御を選びます。1人編成では連携ルールなし。戦利品はなく、使用した薬は消費します。',
+  description: 'アテナとアマテラスに同時に挑む連携の試練。仲間の仕草とHP、人物詳細の戦い方から一手を読み、左端に任意で指示します。仲間の技と対象が分かるのはATTACKで指示を確定した後。同じ敵に続けて攻撃すると、後に攻撃した仲間の与ダメージが35%上がります。読み違いへの固定反撃はありませんが、3ターンごとの大技を前に守りや回復を他人任せにすると崩れることも。自動行動も可能です。戦利品はなく、使用した薬は消費します。',
   artId: 'athena-art', published: true, previousDungeonId: 'silent-cathedral',
-  coordination: { recoilPercent: 40, bonusPercent: 35 },
+  coordination: { bonusPercent: 35 },
+  bossStrike: { every: 3, power: 220, name: '誓鎖・交差する光', target: 'pilot' },
   bossScale: { hp: 220, attack: 70 },
   waves: [[{ characterId: 'athena', boss: true }, { characterId: 'asteria', boss: true }]],
 };

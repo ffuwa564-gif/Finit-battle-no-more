@@ -30,14 +30,6 @@ async function setup(page: Page, english = false) {
   else await enterGame(page);
 }
 async function battle(page: Page) { return page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!.battle!); }
-async function plan(page: Page) {
-  return page.evaluate(async () => {
-    const { coordinationPlan } = await import('/src/domain/engine.ts');
-    const { content } = await import('/src/content/index.ts');
-    const { loadSave } = await import('/src/platform/save.ts');
-    return coordinationPlan((await loadSave())!.battle!, content)!;
-  });
-}
 async function display(page: Page, id: string) {
   for (let attempts = 0; attempts < 8; attempts++) {
     if (await page.locator('.enemy-page').getAttribute('data-enemy-id') === id) return;
@@ -46,77 +38,57 @@ async function display(page: Page, id: string) {
   throw new Error('Expected target never appeared');
 }
 
-test('read an ally plan before committing, preserve it while choosing, and attack its numbered target together', async ({ page }, info) => {
-  await setup(page);
-  const before = await plan(page); expect(before.mode).toBe('strike');
-  const partner = page.locator(`.companion-choice__bubble[data-planned-actor="${before.partnerId}"]`);
-  await expect(partner).toBeVisible(); await expect(partner).toHaveAttribute('data-coordination-partner', 'strike');
-  const target = before.targetIds[0];
-  const enemyNumber = (await battle(page)).units.filter(unit => unit.side === 'enemy').findIndex(unit => unit.uid === target) + 1;
-  await expect(partner).toContainText('#' + enemyNumber);
-  await display(page, target);
-  await page.screenshot({ path: info.outputPath('coordination-ready-mobile.png') });
-  await page.locator('[data-pilot] .character-portrait').click();
-  await expect(page.locator('[data-coordination-reference]')).toBeVisible();
-  await expect(page.locator('[data-coordination-reference]')).toContainText('#' + enemyNumber);
-  await page.screenshot({ path: info.outputPath('coordination-palette-mobile.png') });
-  await page.locator('[data-command="attack"]').click();
-  expect(await plan(page)).toEqual(before);
-  await page.getByRole('button', { name: 'ラウンドを進める', exact: true }).click();
-  await expect.poll(async () => (await battle(page)).events.some(event => event.coordinationAction === 'linked')).toBe(true);
-  expect((await battle(page)).events.some(event => event.coordinationAction === 'isolated')).toBe(false);
+test('gestures hide exact commands and targets until the player commits the round', async ({page},info)=>{
+ await setup(page);
+ const signal=page.locator('.companion-signal').first();await expect(signal).toBeVisible();
+ await expect(signal).toHaveText('武器に手を添える');
+ expect(await signal.innerText()).not.toMatch(/#|銀閃|通常攻撃/);
+ await expect(page.locator('[data-choice-skill]')).toHaveCount(0);
+ await expect(page.locator('[data-planned-targets],[data-coordination-reference],[data-coordination-partner]')).toHaveCount(0);
+ await page.screenshot({path:info.outputPath('gestures-before-input.png')});
+ await page.getByRole('button',{name:/行動を選ぶ$/}).click();await page.locator('[data-command="attack"]').click();
+ await expect(signal).toHaveText('武器に手を添える');
+ await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
+ await expect(page.locator('.companion-signal')).toHaveCount(0);
+ const revealed=page.locator('.companion-choice__bubble[data-choice-state="selected"]').first();
+ await expect(revealed).toBeVisible();await expect(revealed).toContainText('銀閃の貫突');await expect(revealed).toContainText('#');
+ await page.screenshot({path:info.outputPath('commands-after-input.png')});
+ const committed=await battle(page);expect(committed.events.some(e=>e.coordinationAction==='linked')).toBe(true);
+ expect(committed.events.some(e=>e.coordinationAction==='isolated')).toBe(false);
 });
 
-test('choosing another visible enemy commits that target and causes the warned isolated counter', async ({ page }) => {
-  await setup(page);
-  const before = await plan(page);
-  const other = (await battle(page)).units.find(unit => unit.side === 'enemy' && !before.targetIds.includes(unit.uid))!;
-  expect(other).toBeDefined();
-  await display(page, other.uid);
-  await page.locator('[data-pilot] .character-portrait').click();
-  await page.locator('[data-command="attack"]').click();
-  expect((await battle(page)).focusTargetId).toBe(other.uid);
-  const hp = (await battle(page)).units.find(unit => unit.characterId === 'liora')!.hp;
-  await page.getByRole('button', { name: 'ラウンドを進める', exact: true }).click();
-  await expect.poll(async () => (await battle(page)).events.some(event => event.coordinationAction === 'isolated')).toBe(true);
-  const after = await battle(page);
-  const recoil = after.events.find(event => event.coordinationAction === 'isolated')!;
-  expect(recoil.targetIds).toContain('party:liora'); expect(recoil.amount).toBe(3600); // 40% of 10,000 HP, reduced by Liora's 10% leader protection.
-  expect(after.units.find(unit => unit.characterId === 'liora')!.hp).toBeLessThanOrEqual(hp - recoil.amount!);
-  expect(after.pendingMaterials).toEqual({});
+test('a gesture opens combat tendencies and changing targets no longer triggers a fixed penalty',async({page})=>{
+ await setup(page);await page.locator('.companion-signal').first().click();
+ await expect(page.locator('.companion-tendency')).toContainText('弱った敵');
+ await page.keyboard.press('Escape');
+ await page.getByRole('button',{name:'次の敵を表示',exact:true}).click();
+ const target=await page.locator('.enemy-page').getAttribute('data-enemy-id');
+ await page.getByRole('button',{name:/行動を選ぶ$/}).click();await page.locator('[data-command="attack"]').click();
+ await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
+ const after=await battle(page);expect(after.focusTargetId).toBe(target);
+ expect(after.events.some(e=>e.coordinationAction==='isolated')).toBe(false);
+ expect(after.units.find(u=>u.characterId==='liora')!.hp).toBeGreaterThan(9900);
 });
 
-test('narrow reduced-motion English plans remain readable and self-defense is a safe response', async ({ page }, info) => {
-  await page.setViewportSize({ width: 320, height: 740 }); await setup(page, true);
-  const before = await plan(page);
-  const partner = page.locator(`.companion-choice__bubble[data-planned-actor="${before.partnerId}"]`);
-  await expect(partner).toBeVisible();
-  expect(await partner.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
-  await page.locator('[data-pilot] .character-portrait').focus(); await page.keyboard.press('Enter');
-  const reference = page.locator('[data-coordination-reference]'); await expect(reference).toBeVisible();
-  expect(await reference.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
-  await page.screenshot({ path: info.outputPath('coordination-palette-english-320.png') });
-  await page.locator('[data-command="guard"]').click();
-  await page.getByRole('button', { name: 'Advance Round', exact: true }).click();
-  await expect.poll(async () => (await battle(page)).phase).toBe('playing');
-  expect((await battle(page)).events.some(event => event.coordinationAction === 'isolated')).toBe(false);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+test('English gestures and tendencies fit a narrow reduced-motion screen without exposing plans',async({page},info)=>{
+ await page.setViewportSize({width:320,height:740});await setup(page,true);
+ const signal=page.locator('.companion-signal').first();await expect(signal).toBeVisible();
+ expect(await signal.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
+ await signal.click();await expect(page.locator('.companion-tendency')).toContainText('weakened enemies');
+ await page.keyboard.press('Escape');
+ await page.locator('[data-pilot] .character-portrait').focus();
+ await page.keyboard.press('Enter');await expect(page.locator('[data-coordination-reference]')).toHaveCount(0);
+ await page.screenshot({path:info.outputPath('gesture-palette-english-320.png')});
+ await page.locator('[data-command="guard"]').click();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });
 
-test('defeated enemies do not renumber the surviving target or the ally declaration', async ({ page }) => {
-  await setup(page);
-  await page.evaluate(async () => {
-    const { loadSave, persistSave } = await import('/src/platform/save.ts');
-    const save = (await loadSave())!, revision = save.revision;
-    const battle = save.battle!;
-    battle.units.find(unit => unit.side === 'enemy')!.hp = 0;
-    battle.initialUnits = structuredClone(battle.units); save.revision++;
-    await persistSave(save, revision);
-  });
-  await page.reload(); await enterGame(page);
-  const expected = (await plan(page)).targetIds[0];
-  await expect(page.locator('.enemy-page')).toHaveAttribute('data-enemy-id', expected);
-  await expect(page.locator('.enemy-carousel-position')).toContainText('2 / 2');
-  await expect(page.locator('.enemy-formation-number')).toHaveText('#2');
-  await expect(page.locator('.companion-choice__bubble[data-choice-state="planned"]')).toContainText('#2');
+test('boss heavy attacks are warned independently of the hidden companion choices',async({page})=>{
+ await setup(page);
+ await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!,revision=save.revision;save.battle!.round=3;save.revision++;await persistSave(save,revision);});
+ await page.reload();await enterGame(page);
+ await expect(page.locator('.boss-strike-status')).toContainText('このターンに大技');
+ await expect(page.locator('.boss-strike-status')).toContainText('先頭狙い');
+ await expect(page.locator('.companion-signal')).toBeVisible();
+ await expect(page.locator('[data-choice-skill]')).toHaveCount(0);
 });

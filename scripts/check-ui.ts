@@ -37,6 +37,15 @@ for (const file of files) {
   };
   visit(source);
 }
+// Ready-state UI must consume public gestures, never the engine's private commitments.
+for (const file of [...walk('src/ui'), ...walk('src/screens')].filter(path => /\.tsx?$/.test(path))) {
+  const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
+  const visit = (node: ts.Node) => {
+    if (ts.isIdentifier(node) && ['companionCommitments', 'coordinationPlan'].includes(node.text)) report(file, node, source, 'Private companion commands must not be read by the presentation layer; use public companion signals.');
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+}
 if (errors.length) {
   console.error(`UI contract gate failed:\n${errors.map(error => `- ${error}`).join('\n')}`);
   process.exitCode = 1;
