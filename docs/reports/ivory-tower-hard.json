@@ -1,0 +1,3841 @@
+{
+  "implementation": "Harder shallow-floor tuning after ab82b62",
+  "kind": "real-domain-engine-seeded-simulation",
+  "curve": {
+    "hpBase": 9,
+    "hpGrowthDivisor": 85,
+    "attackBase": 3.8,
+    "attackGrowthDivisor": 80,
+    "defensePerFloor": 0.006
+  },
+  "seedsPerCondition": 10,
+  "policy": "read-boss-supports-gems-items-ultimates-and-frame-actions",
+  "assumptions": {
+    "potionsPerEncounter": 5,
+    "crystalResonance": "adaptive-healer-or-pilot",
+    "frameFlowers": true,
+    "fairyCharges": true,
+    "qualityChangesOnlyRolls": true,
+    "initialPartyReorderedForAttackPilot": true,
+    "XRProfileIsFutureStressTest": true
+  },
+  "frontierDefinitions": {
+    "frontier": "Highest contiguous floor with at least one win; retries can change turn-order seed.",
+    "reliableFrontier": "Highest contiguous floor won under every sampled seed.",
+    "majorityFrontier": "Highest contiguous floor won under at least half of sampled seeds.",
+    "floor100Wins": "Direct summit samples, not proof that earlier floors were cleared."
+  },
+  "loadout": [
+    "shield-break",
+    "pale-ward",
+    "hollow-lantern",
+    "dawn-crown"
+  ],
+  "qualities": [
+    {
+      "name": "bare",
+      "power": -1,
+      "value": 0
+    },
+    {
+      "name": "legacy-basic",
+      "power": 0,
+      "value": 0
+    },
+    {
+      "name": "practical",
+      "power": 35,
+      "value": 35
+    },
+    {
+      "name": "excellent",
+      "power": 75,
+      "value": 75
+    },
+    {
+      "name": "ideal",
+      "power": 100,
+      "value": 100
+    }
+  ],
+  "baseline": {
+    "implementation": "ab82b62 before hardening",
+    "sameSSRNoGems": {
+      "reliableFrontier": 58,
+      "majorityFrontier": 70,
+      "frontier": 73
+    },
+    "note": "Baseline uses the same tactical, flower, fairy, adaptive-crystal and five-potion policy."
+  },
+  "records": [
+    {
+      "party": "initial",
+      "gear": "bare",
+      "seeds": 10,
+      "frontier": 0,
+      "reliableFrontier": 0,
+      "majorityFrontier": 0,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.1,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "initial",
+      "gear": "legacy-basic",
+      "seeds": 10,
+      "frontier": 0,
+      "reliableFrontier": 0,
+      "majorityFrontier": 0,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.1,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "initial",
+      "gear": "practical",
+      "seeds": 10,
+      "frontier": 1,
+      "reliableFrontier": 0,
+      "majorityFrontier": 0,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 10.9,
+          "survivors": 0.4
+        },
+        {
+          "floor": 2,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 29.9,
+          "survivors": 1
+        }
+      ]
+    },
+    {
+      "party": "initial",
+      "gear": "excellent",
+      "seeds": 10,
+      "frontier": 5,
+      "reliableFrontier": 0,
+      "majorityFrontier": 1,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 13.8,
+          "survivors": 2.3
+        },
+        {
+          "floor": 2,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 29.9,
+          "survivors": 1.2
+        },
+        {
+          "floor": 3,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 9.7,
+          "survivors": 0.3
+        },
+        {
+          "floor": 4,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 8.6,
+          "survivors": 0.7
+        },
+        {
+          "floor": 5,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 31,
+          "survivors": 1.5
+        },
+        {
+          "floor": 6,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 8.7,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "initial",
+      "gear": "ideal",
+      "seeds": 10,
+      "frontier": 6,
+      "reliableFrontier": 0,
+      "majorityFrontier": 1,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 13.2,
+          "survivors": 2.3
+        },
+        {
+          "floor": 2,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 30,
+          "survivors": 1.2
+        },
+        {
+          "floor": 3,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 9.5,
+          "survivors": 0.3
+        },
+        {
+          "floor": 4,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 8.6,
+          "survivors": 0.7
+        },
+        {
+          "floor": 5,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 28,
+          "survivors": 1.2
+        },
+        {
+          "floor": 6,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 8.4,
+          "survivors": 0.2
+        },
+        {
+          "floor": 7,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.3,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "SSR",
+      "gear": "bare",
+      "seeds": 10,
+      "frontier": 11,
+      "reliableFrontier": 9,
+      "majorityFrontier": 10,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.3,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 27.5,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.7,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.8,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.3,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 30.2,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.6,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 26,
+          "survivors": 1.7
+        },
+        {
+          "floor": 11,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 38.9,
+          "survivors": 3.8
+        },
+        {
+          "floor": 12,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 40,
+          "survivors": 3.9
+        }
+      ]
+    },
+    {
+      "party": "SSR",
+      "gear": "legacy-basic",
+      "seeds": 10,
+      "frontier": 13,
+      "reliableFrontier": 9,
+      "majorityFrontier": 10,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.1,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 28.3,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.2,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25.9,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.2,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.1,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 30.4,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.9,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 29.4,
+          "survivors": 2
+        },
+        {
+          "floor": 11,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 39.1,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 39.5,
+          "survivors": 3.9
+        },
+        {
+          "floor": 13,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 20,
+          "survivors": 3
+        },
+        {
+          "floor": 14,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 40,
+          "survivors": 3.8
+        }
+      ]
+    },
+    {
+      "party": "SSR",
+      "gear": "practical",
+      "seeds": 10,
+      "frontier": 19,
+      "reliableFrontier": 9,
+      "majorityFrontier": 13,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.1,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 22.3,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 3.8
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.9,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 24.5,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.8,
+          "survivors": 3.9
+        },
+        {
+          "floor": 10,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 25,
+          "survivors": 3.1
+        },
+        {
+          "floor": 11,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 37,
+          "survivors": 3.9
+        },
+        {
+          "floor": 12,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 37.4,
+          "survivors": 4
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21,
+          "survivors": 3.5
+        },
+        {
+          "floor": 14,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 39.4,
+          "survivors": 3.7
+        },
+        {
+          "floor": 15,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 28.1,
+          "survivors": 2.4
+        },
+        {
+          "floor": 16,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 18.6,
+          "survivors": 2.7
+        },
+        {
+          "floor": 17,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 35.8,
+          "survivors": 3.8
+        },
+        {
+          "floor": 18,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 39.6,
+          "survivors": 4
+        },
+        {
+          "floor": 19,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 22,
+          "survivors": 2.5
+        },
+        {
+          "floor": 20,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 39.4,
+          "survivors": 1.6
+        }
+      ]
+    },
+    {
+      "party": "SSR",
+      "gear": "excellent",
+      "seeds": 10,
+      "frontier": 27,
+      "reliableFrontier": 9,
+      "majorityFrontier": 21,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.7,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.4,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 3.9
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.6,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.7,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.5,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.4,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.1,
+          "survivors": 3.9
+        },
+        {
+          "floor": 10,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 25.3,
+          "survivors": 3.5
+        },
+        {
+          "floor": 11,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 30.3,
+          "survivors": 3.9
+        },
+        {
+          "floor": 12,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 31.2,
+          "survivors": 4
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 18.2,
+          "survivors": 3.6
+        },
+        {
+          "floor": 14,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 35.8,
+          "survivors": 4
+        },
+        {
+          "floor": 15,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 28.9,
+          "survivors": 2.3
+        },
+        {
+          "floor": 16,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 18.1,
+          "survivors": 3.2
+        },
+        {
+          "floor": 17,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 34.2,
+          "survivors": 3.9
+        },
+        {
+          "floor": 18,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 34.9,
+          "survivors": 4
+        },
+        {
+          "floor": 19,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 19.4,
+          "survivors": 3.1
+        },
+        {
+          "floor": 20,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 40.5,
+          "survivors": 2.4
+        },
+        {
+          "floor": 21,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 20.5,
+          "survivors": 3.6
+        },
+        {
+          "floor": 22,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 11,
+          "survivors": 1.1
+        },
+        {
+          "floor": 23,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 29.6,
+          "survivors": 2.4
+        },
+        {
+          "floor": 24,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 16,
+          "survivors": 1.4
+        },
+        {
+          "floor": 25,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 10.2,
+          "survivors": 0.3
+        },
+        {
+          "floor": 26,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 31.6,
+          "survivors": 2.5
+        },
+        {
+          "floor": 27,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 21.6,
+          "survivors": 2.9
+        },
+        {
+          "floor": 28,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 4.4,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "SSR",
+      "gear": "ideal",
+      "seeds": 10,
+      "frontier": 27,
+      "reliableFrontier": 9,
+      "majorityFrontier": 21,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.3,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 18.1,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.7,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.9,
+          "survivors": 3.9
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 17.9,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.2,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.1,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 20.3,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 3.9
+        },
+        {
+          "floor": 10,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 20.7,
+          "survivors": 3.4
+        },
+        {
+          "floor": 11,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 27.3,
+          "survivors": 3.9
+        },
+        {
+          "floor": 12,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 31.4,
+          "survivors": 4
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.3,
+          "survivors": 3.9
+        },
+        {
+          "floor": 14,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 34,
+          "survivors": 4
+        },
+        {
+          "floor": 15,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 29.9,
+          "survivors": 3.8
+        },
+        {
+          "floor": 16,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 17.6,
+          "survivors": 3.2
+        },
+        {
+          "floor": 17,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 31.3,
+          "survivors": 3.9
+        },
+        {
+          "floor": 18,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 35.2,
+          "survivors": 4
+        },
+        {
+          "floor": 19,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 18.5,
+          "survivors": 3.6
+        },
+        {
+          "floor": 20,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 39.1,
+          "survivors": 2.2
+        },
+        {
+          "floor": 21,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 18.5,
+          "survivors": 3.6
+        },
+        {
+          "floor": 22,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 11.1,
+          "survivors": 1.1
+        },
+        {
+          "floor": 23,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 28.9,
+          "survivors": 2.4
+        },
+        {
+          "floor": 24,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 14.2,
+          "survivors": 1.6
+        },
+        {
+          "floor": 25,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 8.8,
+          "survivors": 0.7
+        },
+        {
+          "floor": 26,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 30.5,
+          "survivors": 2.7
+        },
+        {
+          "floor": 27,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 20.6,
+          "survivors": 2.9
+        },
+        {
+          "floor": 28,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 4.4,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "mixed-awakened",
+      "gear": "bare",
+      "seeds": 10,
+      "frontier": 19,
+      "reliableFrontier": 9,
+      "majorityFrontier": 10,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.9,
+          "survivors": 3.5
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25.6,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 23.6,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.1,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.4,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 27.6,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.7,
+          "survivors": 3.9
+        },
+        {
+          "floor": 10,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 25.5,
+          "survivors": 2.3
+        },
+        {
+          "floor": 11,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 38.8,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 37.3,
+          "survivors": 3.5
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.5,
+          "survivors": 4
+        },
+        {
+          "floor": 14,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 39.8,
+          "survivors": 3.5
+        },
+        {
+          "floor": 15,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 32.4,
+          "survivors": 2.4
+        },
+        {
+          "floor": 16,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 19.1,
+          "survivors": 1.9
+        },
+        {
+          "floor": 17,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 39.8,
+          "survivors": 4
+        },
+        {
+          "floor": 18,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 39.6,
+          "survivors": 3.6
+        },
+        {
+          "floor": 19,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 20.6,
+          "survivors": 3.5
+        },
+        {
+          "floor": 20,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 47.7,
+          "survivors": 3
+        }
+      ]
+    },
+    {
+      "party": "mixed-awakened",
+      "gear": "legacy-basic",
+      "seeds": 10,
+      "frontier": 13,
+      "reliableFrontier": 9,
+      "majorityFrontier": 13,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.1,
+          "survivors": 3.7
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25.6,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.4,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 22.6,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.9,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.9,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 28.1,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.3,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 26.2,
+          "survivors": 2.5
+        },
+        {
+          "floor": 11,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 39.2,
+          "survivors": 3.9
+        },
+        {
+          "floor": 12,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 37.9,
+          "survivors": 3.9
+        },
+        {
+          "floor": 13,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 17.7,
+          "survivors": 3.2
+        },
+        {
+          "floor": 14,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 40,
+          "survivors": 3.9
+        }
+      ]
+    },
+    {
+      "party": "mixed-awakened",
+      "gear": "practical",
+      "seeds": 10,
+      "frontier": 21,
+      "reliableFrontier": 9,
+      "majorityFrontier": 21,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.8,
+          "survivors": 3.6
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.3,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.9,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.3,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.9,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.8,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.6,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 24.5,
+          "survivors": 2
+        },
+        {
+          "floor": 11,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 29.8,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 33.2,
+          "survivors": 3.8
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.8,
+          "survivors": 3.8
+        },
+        {
+          "floor": 14,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 35.4,
+          "survivors": 3.9
+        },
+        {
+          "floor": 15,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 27.2,
+          "survivors": 3.9
+        },
+        {
+          "floor": 16,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 19.2,
+          "survivors": 3.1
+        },
+        {
+          "floor": 17,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 34.3,
+          "survivors": 4
+        },
+        {
+          "floor": 18,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 36.6,
+          "survivors": 3.9
+        },
+        {
+          "floor": 19,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.8,
+          "survivors": 3.5
+        },
+        {
+          "floor": 20,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 44.7,
+          "survivors": 3.5
+        },
+        {
+          "floor": 21,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 19,
+          "survivors": 2.6
+        },
+        {
+          "floor": 22,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.6,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "mixed-awakened",
+      "gear": "excellent",
+      "seeds": 10,
+      "frontier": 24,
+      "reliableFrontier": 9,
+      "majorityFrontier": 21,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.7,
+          "survivors": 3.7
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 17.1,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.4,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.6,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 17.1,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.6,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.6,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 18,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.8,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 21.6,
+          "survivors": 3.5
+        },
+        {
+          "floor": 11,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25.3,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 28.5,
+          "survivors": 3.9
+        },
+        {
+          "floor": 13,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 15.2,
+          "survivors": 3.5
+        },
+        {
+          "floor": 14,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 31.5,
+          "survivors": 3.9
+        },
+        {
+          "floor": 15,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 22.1,
+          "survivors": 4
+        },
+        {
+          "floor": 16,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.9,
+          "survivors": 3.8
+        },
+        {
+          "floor": 17,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 27.5,
+          "survivors": 4
+        },
+        {
+          "floor": 18,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 34.2,
+          "survivors": 3.9
+        },
+        {
+          "floor": 19,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 17.6,
+          "survivors": 2.9
+        },
+        {
+          "floor": 20,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 39.3,
+          "survivors": 3.9
+        },
+        {
+          "floor": 21,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 18.3,
+          "survivors": 3
+        },
+        {
+          "floor": 22,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 9.1,
+          "survivors": 0.4
+        },
+        {
+          "floor": 23,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 24.7,
+          "survivors": 3.4
+        },
+        {
+          "floor": 24,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 17.3,
+          "survivors": 2.7
+        },
+        {
+          "floor": 25,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.3,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "mixed-awakened",
+      "gear": "ideal",
+      "seeds": 10,
+      "frontier": 24,
+      "reliableFrontier": 9,
+      "majorityFrontier": 21,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9,
+          "survivors": 3.7
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.4,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 8.5,
+          "survivors": 4
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 8.9,
+          "survivors": 4
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.6,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 8.8,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.1,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 17.4,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.3,
+          "survivors": 4
+        },
+        {
+          "floor": 10,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 21.1,
+          "survivors": 3.5
+        },
+        {
+          "floor": 11,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.4,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 26.1,
+          "survivors": 3.9
+        },
+        {
+          "floor": 13,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.8,
+          "survivors": 3.9
+        },
+        {
+          "floor": 14,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 28.9,
+          "survivors": 3.9
+        },
+        {
+          "floor": 15,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.1,
+          "survivors": 4
+        },
+        {
+          "floor": 16,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.1,
+          "survivors": 4
+        },
+        {
+          "floor": 17,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 24.4,
+          "survivors": 4
+        },
+        {
+          "floor": 18,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 30.4,
+          "survivors": 3.9
+        },
+        {
+          "floor": 19,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.4,
+          "survivors": 3.5
+        },
+        {
+          "floor": 20,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 36.7,
+          "survivors": 3.9
+        },
+        {
+          "floor": 21,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 17.3,
+          "survivors": 3
+        },
+        {
+          "floor": 22,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 9.8,
+          "survivors": 1.2
+        },
+        {
+          "floor": 23,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 23.7,
+          "survivors": 3.3
+        },
+        {
+          "floor": 24,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 18,
+          "survivors": 2.9
+        },
+        {
+          "floor": 25,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 6.9,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "curse-burst",
+      "gear": "bare",
+      "seeds": 10,
+      "frontier": 10,
+      "reliableFrontier": 1,
+      "majorityFrontier": 10,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15,
+          "survivors": 3.9
+        },
+        {
+          "floor": 2,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 37,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.8,
+          "survivors": 3.7
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.3,
+          "survivors": 3.6
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 29.5,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.7,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.6,
+          "survivors": 3.7
+        },
+        {
+          "floor": 8,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 38.1,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 17.4,
+          "survivors": 3.3
+        },
+        {
+          "floor": 10,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 26.5,
+          "survivors": 1.6
+        },
+        {
+          "floor": 11,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 40,
+          "survivors": 3.6
+        }
+      ]
+    },
+    {
+      "party": "curse-burst",
+      "gear": "legacy-basic",
+      "seeds": 10,
+      "frontier": 10,
+      "reliableFrontier": 6,
+      "majorityFrontier": 9,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 14.4,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 32.4,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.5,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.4,
+          "survivors": 3.7
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 25.9,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 15.5,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 15.1,
+          "survivors": 3.6
+        },
+        {
+          "floor": 8,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 36.1,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 16.3,
+          "survivors": 3.5
+        },
+        {
+          "floor": 10,
+          "wins": 3,
+          "seeds": 10,
+          "rounds": 22.2,
+          "survivors": 1.2
+        },
+        {
+          "floor": 11,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 38.8,
+          "survivors": 3.2
+        }
+      ]
+    },
+    {
+      "party": "curse-burst",
+      "gear": "practical",
+      "seeds": 10,
+      "frontier": 15,
+      "reliableFrontier": 9,
+      "majorityFrontier": 9,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.3,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 22.7,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.8,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12,
+          "survivors": 3.7
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 21.2,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11.9,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 12.1,
+          "survivors": 3.9
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 24.2,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 13.1,
+          "survivors": 3.8
+        },
+        {
+          "floor": 10,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 21,
+          "survivors": 1.4
+        },
+        {
+          "floor": 11,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 37.4,
+          "survivors": 3.9
+        },
+        {
+          "floor": 12,
+          "wins": 6,
+          "seeds": 10,
+          "rounds": 33.8,
+          "survivors": 3.4
+        },
+        {
+          "floor": 13,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 19.5,
+          "survivors": 3
+        },
+        {
+          "floor": 14,
+          "wins": 5,
+          "seeds": 10,
+          "rounds": 34.7,
+          "survivors": 3.2
+        },
+        {
+          "floor": 15,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 30.6,
+          "survivors": 3.2
+        },
+        {
+          "floor": 16,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 7.8,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "curse-burst",
+      "gear": "excellent",
+      "seeds": 10,
+      "frontier": 15,
+      "reliableFrontier": 9,
+      "majorityFrontier": 9,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.2,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.7,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.6,
+          "survivors": 3.9
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 17.9,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.8,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.7,
+          "survivors": 3.9
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 20.8,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 11,
+          "survivors": 3.7
+        },
+        {
+          "floor": 10,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 20.3,
+          "survivors": 1.3
+        },
+        {
+          "floor": 11,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 31.1,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 28.2,
+          "survivors": 3.5
+        },
+        {
+          "floor": 13,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 16.9,
+          "survivors": 3
+        },
+        {
+          "floor": 14,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 32.5,
+          "survivors": 3.4
+        },
+        {
+          "floor": 15,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 24.5,
+          "survivors": 3.6
+        },
+        {
+          "floor": 16,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 8.5,
+          "survivors": 0
+        }
+      ]
+    },
+    {
+      "party": "curse-burst",
+      "gear": "ideal",
+      "seeds": 10,
+      "frontier": 21,
+      "reliableFrontier": 9,
+      "majorityFrontier": 9,
+      "floor100Wins": 0,
+      "byFloor": [
+        {
+          "floor": 1,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 8.9,
+          "survivors": 4
+        },
+        {
+          "floor": 2,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.8,
+          "survivors": 4
+        },
+        {
+          "floor": 3,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.5,
+          "survivors": 3.9
+        },
+        {
+          "floor": 4,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.9,
+          "survivors": 3.9
+        },
+        {
+          "floor": 5,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 16.2,
+          "survivors": 4
+        },
+        {
+          "floor": 6,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.7,
+          "survivors": 4
+        },
+        {
+          "floor": 7,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 9.8,
+          "survivors": 4
+        },
+        {
+          "floor": 8,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 19.1,
+          "survivors": 4
+        },
+        {
+          "floor": 9,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 10.8,
+          "survivors": 3.9
+        },
+        {
+          "floor": 10,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 20,
+          "survivors": 1.3
+        },
+        {
+          "floor": 11,
+          "wins": 10,
+          "seeds": 10,
+          "rounds": 22.5,
+          "survivors": 4
+        },
+        {
+          "floor": 12,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 27,
+          "survivors": 3.8
+        },
+        {
+          "floor": 13,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 14.9,
+          "survivors": 3.5
+        },
+        {
+          "floor": 14,
+          "wins": 7,
+          "seeds": 10,
+          "rounds": 32.8,
+          "survivors": 3.1
+        },
+        {
+          "floor": 15,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 23.2,
+          "survivors": 3.1
+        },
+        {
+          "floor": 16,
+          "wins": 1,
+          "seeds": 10,
+          "rounds": 8.3,
+          "survivors": 0.4
+        },
+        {
+          "floor": 17,
+          "wins": 9,
+          "seeds": 10,
+          "rounds": 27.2,
+          "survivors": 3.9
+        },
+        {
+          "floor": 18,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 31.8,
+          "survivors": 3.7
+        },
+        {
+          "floor": 19,
+          "wins": 8,
+          "seeds": 10,
+          "rounds": 17.2,
+          "survivors": 2.9
+        },
+        {
+          "floor": 20,
+          "wins": 4,
+          "seeds": 10,
+          "rounds": 36.5,
+          "survivors": 1.9
+        },
+        {
+          "floor": 21,
+          "wins": 2,
+          "seeds": 10,
+          "rounds": 9.5,
+          "survivors": 0.8
+        },
+        {
+          "floor": 22,
+          "wins": 0,
+          "seeds": 10,
+          "rounds": 4,
+          "survivors": 0
+        }
+      ]
+    }
+  ],
+  "summit": {
+    "kind": "direct-floor100-not-contiguous-frontier",
+    "assumptions": "Seven obtainable parties; four qualities; pilot/tank/adaptive crystal; 10 seeds each. Ideal rolls are supplied fixtures, not a measured acquisition time. Uses the same real engine and legal frame assistance.",
+    "totalBattles": 840,
+    "wins": 0,
+    "records": [
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "SSR-baseline",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "asteria"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "farmable-awakened",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.2,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.2,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.2,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.2,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "curse-burst",
+        "ids": [
+          "kuzuha-awakened",
+          "athena",
+          "selene",
+          "zakuro"
+        ],
+        "leader": "kuzuha-awakened",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.9,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "rabbits",
+        "ids": [
+          "lunette-awakened",
+          "athena",
+          "selene",
+          "seris-awakened"
+        ],
+        "leader": "lunette-awakened",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4,
+        "potions": 1.3,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.6,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.6,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.6,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.6,
+        "survivors": 0
+      },
+      {
+        "party": "battery",
+        "ids": [
+          "nox",
+          "athena",
+          "selene",
+          "vespera"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.2,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 4.3,
+        "potions": 1.1,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "double-tank",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "evelyn",
+          "selene"
+        ],
+        "leader": "athena",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 5,
+        "potions": 1.4,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "bare",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "bare",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "bare",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "practical",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "practical",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "practical",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "excellent",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "excellent",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "excellent",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "ideal",
+        "crystal": "pilot",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "ideal",
+        "crystal": "tank",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      },
+      {
+        "party": "acceleration",
+        "ids": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "eos"
+        ],
+        "leader": "eos",
+        "gear": "ideal",
+        "crystal": "adaptive",
+        "wins": 0,
+        "total": 10,
+        "rounds": 3.5,
+        "potions": 1,
+        "survivors": 0
+      }
+    ]
+  },
+  "limits": [
+    "Not an exhaustive search of all obtainable parties, gems or command policies.",
+    "Sampled wins are not human population win rates.",
+    "No playtime or farming-time guarantee. No player stats modified."
+  ],
+  "frontierBattles": 3210
+}

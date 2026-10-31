@@ -1,17 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import { emptyGemInventory, dungeonGemFamily, gemDefinition, rollGemDrop, startGemRefinement, resolveGemRefinement, equipGem, lockGem, validGemInventory } from '../src/domain/memory-gems';
-import { runFrameAssistedTower } from './helpers/tower-frame-policy';
 
 describe('tower loot safety', () => {
-  it('requires quality equipment at the sampled80th floor even when the same SSR party uses legal frame assistance', () => {
-    // This protects one late-floor challenge and gear difference, not an all-floor frontier claim.
-    for (const seed of [1, 2, 3]) {
-      expect(runFrameAssistedTower(80, { power:-1, value:0 }, seed).win).toBe(false);
-      expect(runFrameAssistedTower(80, { power:75, value:75 }, seed).win).toBe(true);
-    }
-  }, 15000);
-
   it('keeps all three families farmable throughout all100 floors despite their shared white tower name', () => {
     const families = ['sanctuary', 'clock', 'grave'];
     const floors = content.dungeons.filter(dungeon => dungeon.towerFloor).sort((a,b) => a.towerFloor! - b.towerFloor!);

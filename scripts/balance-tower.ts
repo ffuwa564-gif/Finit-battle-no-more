@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { content } from '../src/content';
 import { IVORY_TOWER_CURVE } from '../src/content/ivory-tower';
-import { advanceReplay, createBattle, resolveRound, usePotion } from '../src/domain/engine';
+import { advanceReplay, createBattle, resolveRound, usePotion, useBattleBloom, useBattleFairy } from '../src/domain/engine';
 import { bossWindupStatus } from '../src/domain/boss-pressure';
 import { partyOrderOptions } from '../src/domain/party-orders';
 import { ivoryTowerId, TOWER_ROUND_LIMIT } from '../src/domain/ivory-tower';
@@ -15,6 +15,8 @@ const selected = process.argv.find(arg => arg.startsWith('--party='))?.split('='
 export const towerBalanceParties = [
   { name:'initial', ids:['seris','liora','elaine','noelle'], leader:'liora' },
   { name:'SSR', ids:['nox','athena','selene','asteria'], leader:'athena' },
+  { name:'mixed-awakened', ids:['seris-awakened','athena','selene','zakuro'], leader:'athena' },
+  { name:'curse-burst', ids:['kuzuha-awakened','athena','selene','zakuro'], leader:'kuzuha-awakened' },
   { name:'awakened', ids:['seris-awakened','liora-awakened','elaine-awakened','noelle-awakened'], leader:'liora-awakened' },
   { name:'defensive-SSR', ids:['nox','evelyn','selene','benzaiten'], leader:'evelyn' },
   { name:'XR-ceiling', ids:['astraea','evelyn','selene','benzaiten'], leader:'evelyn' },
@@ -55,7 +57,7 @@ function prepareOrder(battle: Battle, c: Content): void {
   battle.partyOrder = pressure?.phase === 'striking' ? {kind:'guard'} : emergency && heal ? heal.order ?? undefined : ultimate?.order ?? gem?.order ?? attack?.order ?? undefined;
 }
 
-export function runTowerBattle(floor: number, party: typeof parties[number], quality: typeof towerBalanceQualities[number], seed: number) {
+export function runTowerBattle(floor: number, party: typeof parties[number], quality: typeof towerBalanceQualities[number], seed: number, frameActions = true) {
   let battle = createBattle(content,party.ids,party.leader,ivoryTowerId(floor),5,seed,`tower-balance-${floor}-${seed}`);
   if (quality.power >= 0) {
     // Identical base skills and variants isolate roll quality; no tier-specific gear swap.
@@ -68,6 +70,12 @@ export function runTowerBattle(floor: number, party: typeof parties[number], qua
   let rounds=0, guard=0, broken=0, steps=0;
   while (!['failed','reward'].includes(battle.phase) && steps++ < 3000) {
     if (battle.phase === 'playing') { battle=advanceReplay(battle,content); continue; }
+    if (frameActions) {
+      const wounded = battle.units.some(unit => unit.side === 'party' && unit.hp > 0 && unit.hp < unit.maxHp * .65);
+      battle.crystalRole = wounded ? 'healer' : content.characters.find(character => character.id === party.ids[0])!.role;
+      if (battle.fairies?.visitor) { battle = useBattleFairy(battle, battle.fairies.visitor.id, content); continue; }
+      if (battle.blooms?.flower) { battle = useBattleBloom(battle, battle.blooms.flower.id, content).battle; continue; }
+    }
     prepareOrder(battle,content);
     guard += Number(battle.partyOrder?.kind === 'guard');
     battle=resolveRound(battle,content).battle;
@@ -95,6 +103,6 @@ for (const party of parties) for (const quality of towerBalanceQualities) {
   records.push(result);console.log(JSON.stringify({...result,byFloor:undefined}));
 }
 await mkdir('artifacts/ivory-tower',{recursive:true});
-await writeFile(`artifacts/ivory-tower/balance${selected ? '-' + selected : ''}.json`,JSON.stringify({kind:'real-domain-engine',roundLimitPerWave:TOWER_ROUND_LIMIT,curve:IVORY_TOWER_CURVE,policy:'read-boss-supports-gems-items-ultimates',frontierDefinitions:{frontier:'Highest contiguous floor with at least one win; retries can change turn-order seed.',reliableFrontier:'Highest contiguous floor won under every sampled seed.',majorityFrontier:'Highest contiguous floor won under at least half of sampled seeds.',floor100Wins:'Direct summit samples, not proof that earlier floors were cleared.'},assumptions:{potionsPerEncounter:5,crystalResonance:false,frameFlowers:false,fairyCharges:false,qualityChangesOnlyRolls:true,initialPartyReorderedForAttackPilot:true,XRProfileIsFutureStressTest:true},loadout:['shield-break','pale-ward','hollow-lantern','dawn-crown'],qualities:towerBalanceQualities,records},null,2));
+await writeFile(`artifacts/ivory-tower/balance${selected ? '-' + selected : ''}.json`,JSON.stringify({kind:'real-domain-engine',roundLimitPerWave:TOWER_ROUND_LIMIT,curve:IVORY_TOWER_CURVE,policy:'read-boss-supports-gems-items-ultimates-and-frame-actions',frontierDefinitions:{frontier:'Highest contiguous floor with at least one win; retries can change turn-order seed.',reliableFrontier:'Highest contiguous floor won under every sampled seed.',majorityFrontier:'Highest contiguous floor won under at least half of sampled seeds.',floor100Wins:'Direct summit samples, not proof that earlier floors were cleared.'},assumptions:{potionsPerEncounter:5,crystalResonance:'adaptive-healer-or-pilot',frameFlowers:true,fairyCharges:true,qualityChangesOnlyRolls:true,initialPartyReorderedForAttackPilot:true,XRProfileIsFutureStressTest:true},loadout:['shield-break','pale-ward','hollow-lantern','dawn-crown'],qualities:towerBalanceQualities,records},null,2));
 
 }

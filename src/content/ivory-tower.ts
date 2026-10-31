@@ -15,9 +15,9 @@ const strata = [
 ] as const;
 
 export const IVORY_TOWER_CURVE = {
-  hpBase: 4, hpGrowthDivisor: 80,
-  attackBase: 1.05, attackGrowthDivisor: 60,
-  defensePerFloor: .005,
+  hpBase: 9, hpGrowthDivisor: 85,
+  attackBase: 3.8, attackGrowthDivisor: 80,
+  defensePerFloor: .006,
 } as const;
 
 /** HP is bounded for a 40-round encounter; attack keeps deep floors dangerous. */
@@ -34,16 +34,17 @@ export const ivoryTowerDungeons: DungeonDef[] = Array.from({ length: 100 }, (_, 
   const floor = index + 1, stratum = strata[Math.floor(index / 10)];
   const milestone = floor % 10 === 0;
   const main = floor % 3 === 1 && !milestone ? 'pale-wolf' : floor % 3 === 2 && !milestone ? 'stone-drake' : stratum[1];
-  const escorts = floor < 5 ? [] : floor >= 40 || milestone ? [stratum[2], floor % 2 ? 'moon-moth' : 'thorn-witch'] : [stratum[2]];
+  // Loot progression starts at the entrance, rather than after a long single-boss tutorial.
+  const escorts = floor >= 10 ? [stratum[2], floor % 2 ? 'moon-moth' : 'thorn-witch'] : [stratum[2]];
   const final: EnemyDef[] = [{ characterId: main, boss: true }, ...escorts.map(characterId => ({ characterId }))];
-  const pressure = floor >= 10 && floor % 5 === 0;
+  const pressure = floor % 5 === 0;
   return {
     id: ivoryTowerId(floor), towerFloor: floor, kind: 'normal', published: true,
     name: `白亜の塔・第${floor}層`, subtitle: stratum[0], artId: 'cathedral',
     description: milestone ? '節目の守護者。護衛を見極め、予告された大技を崩すか守り抜こう。各Wave40ラウンド以内に突破し、記憶石を磨いて次の層へ。' : '白亜の塔の一層に挑む。各Wave40ラウンド以内に突破し、記憶石を磨いてより深い層を解放しよう。',
     previousDungeonId: floor === 1 ? 'silent-cathedral' : ivoryTowerId(floor - 1),
     enemyScale: towerEnemyScale(floor),
-    waves: milestone && floor >= 30 ? [[{ characterId: 'moon-moth' }, { characterId: 'thorn-witch' }], final] : [final],
+    waves: milestone ? [[{ characterId: 'moon-moth' }, { characterId: 'thorn-witch' }], final] : [final],
     ...(pressure ? { bossStrike: { every: 3, power: 190 + Math.floor(floor / 10) * 3, name: '白亜の断罪', target: 'pilot' as const, windup: { breakPercent: floor < 30 ? 8 : 4, weakenedPower: 65, recoveryPercent: 50 } } } : {}),
     bossDialogue: { intro: 'ここから先へ、何を携えてゆく。', threshold: 'まだ、白亜の夜は深い。', defeat: 'その記憶が、次の扉を開く。' },
   };

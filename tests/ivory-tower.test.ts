@@ -22,7 +22,12 @@ describe('Ivory Tower structure and ascent', () => {
       }
     }
     expect(ivoryTowerDungeons[99].enemyScale!.hp/ivoryTowerDungeons[0].enemyScale!.hp).toBeGreaterThan(3);
-    expect(ivoryTowerDungeons[99].enemyScale!.attack/ivoryTowerDungeons[0].enemyScale!.attack).toBeGreaterThan(5);
+    // The entrance is already dangerous; deep floors still multiply that stronger baseline.
+    expect(ivoryTowerDungeons[99].enemyScale!.attack/ivoryTowerDungeons[0].enemyScale!.attack).toBeGreaterThan(3);
+    expect(ivoryTowerDungeons[0].waves[0]).toHaveLength(2);
+    expect(ivoryTowerDungeons[4].bossStrike?.windup).toBeDefined();
+    expect(ivoryTowerDungeons[9].waves).toHaveLength(2);
+    expect(ivoryTowerDungeons[9].waves.at(-1)).toHaveLength(3);
   });
 
   it('unlocks after the introductory clear, never skips missing floors, and preserves retries', () => {
@@ -58,14 +63,17 @@ describe('Ivory Tower real combat difficulty', () => {
   const excellent=towerBalanceQualities.find(item=>item.name==='excellent')!;
   const ideal=towerBalanceQualities.find(item=>item.name==='ideal')!;
   const bare=towerBalanceQualities.find(item=>item.name==='bare')!;
-  it('requires a better roll of the same counterbuild to cross a real upper-floor wall', () => {
-    const wins = (quality: typeof practical) => [1,2,3].filter(seed => runTowerBattle(72,party,quality,seed).win).length;
-    expect(wins(practical)).toBe(0);
-    expect(wins(excellent)).toBeGreaterThan(0);
-    expect(wins(ideal)).toBeGreaterThanOrEqual(2);
-  });
-  it('does not let a full SSR team clear the summit without loot, even with items and manual boss responses', () => {
-    for (const seed of [1,2,3]) expect(runTowerBattle(100,party,bare,seed).win).toBe(false);
-    expect(runTowerBattle(32,party,bare,1).win).toBe(false);
-  });
+  it('requires loot already at a shallow wall, with flowers, fairies, crystal switching, items and ultimates available', () => {
+    const wins = (quality: typeof practical) => Array.from({ length:10 }, (_, index) => runTowerBattle(12,party,quality,index+1)).filter(result => result.win).length;
+    expect(wins(bare)).toBe(0);
+    expect(wins(practical)).toBeGreaterThanOrEqual(6);
+    expect(wins(excellent)).toBe(10);
+    expect(wins(ideal)).toBeGreaterThanOrEqual(8);
+  }, 15000);
+  it('stops bare SSR teams in the shallows and keeps the summit beyond the sampled ideal counterbuilds', () => {
+    for (const seed of [1,2,3]) expect(runTowerBattle(20,party,bare,seed).win).toBe(false);
+    for (const profile of towerBalanceParties.filter(p => ['SSR','mixed-awakened','curse-burst'].includes(p.name))) {
+      for (const seed of [1,2,3]) expect(runTowerBattle(100,profile,ideal,seed).win).toBe(false);
+    }
+  }, 15000);
 });
