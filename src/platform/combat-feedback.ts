@@ -1,4 +1,4 @@
-import { rabbitShotTimes } from './ultimate-choreography';
+import { rabbitShotTimes, RABBIT_FLIGHT } from './ultimate-choreography';
 import { RABBIT_SEQUENCE } from './ultimate-timing';
 import type { BattleEvent, Unit } from '../domain/types';
 
@@ -22,7 +22,7 @@ export function rabbitDamageSteps(event: BattleEvent, before: Unit[]): RabbitDam
   if(!event.unitsAfter)return [];
   const after=event.unitsAfter;
   const shots=[0,1,2,3].flatMap(rabbitShotTimes).sort((a,b)=>a-b);
-  const deadlines=[...shots.map(at=>RABBIT_SEQUENCE.fire+at*1000),RABBIT_SEQUENCE.finish];
+  const deadlines=[...shots.map(at=>RABBIT_SEQUENCE.fire+(at+RABBIT_FLIGHT.shot)*1000),RABBIT_SEQUENCE.finish];
   const loss=eventHpChanges(event,before).filter(change=>change.amount<0);
   let previous=before;
   return deadlines.map((at,index)=>{

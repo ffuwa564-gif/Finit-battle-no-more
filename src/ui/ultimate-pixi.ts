@@ -1,7 +1,7 @@
 import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
 import { assetPath } from '../content';
-import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
 const palette: Record<UltimateVisual, number> = { blade: 0x87caff, stars: 0xb1b9ff, eclipse: 0xc37dff, bloom: 0x8aefca, aegis: 0x8fcfff, dawn: 0xffd68b, clockwork: 0xff9cbd, 'rabbit-bits': 0x9aeee7 };
 const decay = (age: number, rate = 3) => Math.exp(-Math.max(0,age)*rate);
@@ -31,6 +31,8 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const rabbits = rabbitTextures.map(texture => {
     const sprite = new Sprite(texture); sprite.anchor.set(.5); scene.addChild(sprite); return sprite;
   });
+  // Clock-face discharge, projectile and impact light must read above the robot artwork.
+  if(visual==='rabbit-bits')scene.addChild(light);
   let destroyed=false;
   const stroke=(points:number[],width:number,alpha:number,tint=color)=>{
     if(alpha<=0)return;
@@ -49,7 +51,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       scene.pivot.set(w*.5,h*.46);scene.position.set(w*.5,h*.46);scene.scale.set(rabbitCameraZoom(elapsed));
     }
     forms.clear();light.clear();scene.visible=f.visible;scene.alpha=visual==='rabbit-bits'?clamp((RABBIT_SEQUENCE.tail-elapsed)/550):f.fade;
-    if(visual==='rabbit-bits')host.dataset.rabbitStage=rabbitStage(elapsed);
+    if(visual==='rabbit-bits'){host.dataset.rabbitStage=rabbitStage(elapsed);host.dataset.rabbitFlight=String([0,1,2,3].filter(i=>rabbitBitFrame(i,elapsed).flight).length);}
     for(const rabbit of rabbits)rabbit.visible=false;
     if(!scene.visible){app.render();return;}
     for(const {sprite} of particles)sprite.alpha=0;
@@ -163,7 +165,10 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       if(finishAge>=0){
         // The finishing hit expands as a lens-shaped blast, not a static star icon.
         const blast=decay(finishAge,9),radius=s*(.07+clamp(finishAge*3)*.46);
-        light.ellipse(cx,cy,s*(.19+.12*clamp(finishAge*8)),s*.065).fill({color:0xffffff,alpha:blast*.8});
+        // Four heavy bolts crush to a narrow core, then bloom out across the target.
+        const expand=1-(1-clamp(finishAge/.12))**3;
+        light.ellipse(cx,cy,s*(.025+.31*expand),s*(.10+.10*expand)).fill({color,alpha:blast*.55});
+        light.ellipse(cx,cy,s*(.018+.22*expand),s*(.075-.025*expand)).fill({color:0xffffff,alpha:blast*.85});
         light.ellipse(cx,cy,radius,radius*.65).stroke({color,width:5*decay(finishAge,4)+.5,alpha:decay(finishAge,5)*.9});
         for(let shard=0;shard<14;shard++){
           const a=shard*2.39996,r=s*(.12+finishAge*(.32+(shard%3)*.1));
@@ -179,13 +184,18 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       for(let bit=0;bit<4;bit++){
         const state=rabbitBitFrame(bit,elapsed),mount=rabbitMount(bit,elapsed);
         const x=cx+mount.x*s,y=cy+mount.y*s;
-        const aimX=cx+(state.final?0:Math.sin(state.round*2.7+bit)*s*.055),aimY=cy+(state.final?0:Math.cos(state.round*3.1+bit)*s*.045);
-        const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.045;
+        const spread=state.round===3?.4:1;
+        const aimX=cx+(state.final?0:[-.09,.08,-.045,.055][bit]*s*spread);
+        const aimY=cy+(state.final?0:[-.055,-.015,.065,.09][bit]*s*spread);
+        const angle=Math.atan2(aimY-y,aimX-x),back=state.recoil*s*.035;
         const bunny=rabbits[bit];bunny.visible=true;
         bunny.position.set(x-Math.cos(angle)*back,y-Math.sin(angle)*back);
         const width=s*mount.size*(.35+.65*state.summon);
         bunny.scale.set(width/bunny.texture.width);bunny.alpha=state.summon*state.alpha;
-        bunny.rotation=mount.rotation-state.recoil*.1*(bit%2?1:-1);
+        bunny.rotation=mount.rotation-state.recoil*.065*(bit%2?1:-1);
+        const muzzle=rabbitMuzzle(bit,bunny.x,bunny.y,width,bunny.texture.height/bunny.texture.width,bunny.rotation);
+        const dx=aimX-muzzle.x,dy=aimY-muzzle.y,length=Math.max(1,Math.hypot(dx,dy));
+        const ux=dx/length,uy=dy/length,nx=-uy,ny=ux;
         // A small clock-shaped summon gate behind each rabbit, not a generic star.
         const ring=s*.10*(.6+.4*state.summon);
         light.ellipse(x,y+s*.08,ring,ring*.24).stroke({width:2,color,alpha:state.gate*.85});
@@ -204,29 +214,45 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
           stroke([x,y,x+(cx-x)*aiming,y+(cy-y)*aiming],.65,aiming*.3);
         }
         if(state.finishCharge>0){
-          light.circle(x,y,s*.055*state.finishCharge).fill({color,alpha:state.finishCharge*.7});
-          stroke([x-s*.045,y,x+s*.045,y],1.5,state.finishCharge);
+          light.circle(muzzle.x,muzzle.y,s*.04*state.finishCharge).fill({color,alpha:state.finishCharge*.7});
+          stroke([muzzle.x-nx*s*.035,muzzle.y-ny*s*.035,muzzle.x+nx*s*.035,muzzle.y+ny*s*.035],1.5,state.finishCharge);
           for(let spark=0;spark<8;spark++){
             const a=spark*Math.PI/4+elapsed*.003;
             const radius=s*(.13-.10*state.finishCharge);
-            light.circle(x+Math.cos(a)*radius,y+Math.sin(a)*radius*.7,1+state.finishCharge)
+            light.circle(muzzle.x+Math.cos(a)*radius,muzzle.y+Math.sin(a)*radius*.7,1+state.finishCharge)
               .fill({color:0xffffff,alpha:state.finishCharge*.8});
           }
         }
-        if(state.beam>.015){
-          const width=state.final?8:3.8;
-          stroke([x,y,aimX,aimY],width*state.beam,state.beam);
-          light.circle(aimX,aimY,s*.026*state.beam).fill({color:0xffffff,alpha:state.beam*.85});
-          // Broad muzzle bloom + a narrow white core, followed by a traveling echo.
-          light.circle(x,y,s*.047*state.beam).fill({color,alpha:state.beam*.45});
-          light.circle(x,y,s*.027*state.beam).fill({color:0xffffff,alpha:state.beam});
-          const shotAge=state.shotAge;
-          const echo=clamp(shotAge*6);
-          if(echo>0 && echo<1){
-            const ex=x+(aimX-x)*echo,ey=y+(aimY-y)*echo;
-            stroke([ex-Math.cos(angle)*s*.10,ey-Math.sin(angle)*s*.10,ex,ey],3,(1-echo)*.8);
+        if(state.muzzle>.02){
+          const radius=s*(state.final?.038:.019)*state.muzzle;
+          light.circle(muzzle.x,muzzle.y,radius*1.6).fill({color,alpha:state.muzzle*.35});
+          stroke([muzzle.x-ux*radius,muzzle.y-uy*radius,muzzle.x+ux*radius*2,muzzle.y+uy*radius*2],2.5,state.muzzle);
+          stroke([muzzle.x-nx*radius,muzzle.y-ny*radius,muzzle.x+nx*radius,muzzle.y+ny*radius],1.4,state.muzzle);
+        }
+        if(state.flight){
+          // A short moving bolt with a tail, never a full source-to-target line.
+          const head=state.travel,tail=Math.max(0,head-(state.final?.42:.23));
+          const hx=muzzle.x+dx*head,hy=muzzle.y+dy*head;
+          const tx=muzzle.x+dx*tail,ty=muzzle.y+dy*tail;
+          stroke([tx,ty,hx,hy],state.final?5:1.6,.75);
+          if(state.final){
+            const half=s*.025,body=s*.075;
+            const shape=[hx+ux*half,hy+uy*half,hx-ux*body+nx*half,hy-uy*body+ny*half,hx-ux*body*1.35,hy-uy*body*1.35,hx-ux*body-nx*half,hy-uy*body-ny*half];
+            light.poly(shape).fill({color,alpha:.85});
+            stroke([hx-ux*body,hy-uy*body,hx,hy],6,1);
+          }else stroke([hx-ux*s*.025,hy-uy*s*.025,hx,hy],3.5,1);
+        }
+        if(!state.final&&state.impact>.015){
+          const age=state.impactAge,power=state.impact;
+          light.circle(aimX,aimY,s*.014*power).fill({color:0xffffff,alpha:power});
+          // Directional fragments continue the incoming bolt through the contact.
+          for(let shard=0;shard<6;shard++){
+            const a=Math.atan2(uy,ux)+(shard-2.5)*.46;
+            const radius=s*(.009+age*(.35+shard*.06));
+            const px=aimX+Math.cos(a)*radius,py=aimY+Math.sin(a)*radius;
+            const size=s*.025*power;
+            stroke([px,py,px+Math.cos(a)*size,py+Math.sin(a)*size],1.1,power*.85);
           }
-          light.circle(cx,cy,s*(.035+.045*(1-state.beam))).stroke({color,width:2,alpha:state.beam});
         }
       }
       if(hit<0 && aiming>0){
@@ -248,11 +274,12 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
       }
       if(hit>=0)polygon([cx,cy-s*.08,cx+s*.025,cy-s*.025,cx+s*.08,cy,cx+s*.025,cy+s*.025,cx,cy+s*.08,cx-s*.025,cy+s*.025,cx-s*.08,cy,cx-s*.025,cy-s*.025],impact,0xffffff);
     }
-    if(!['bloom','aegis','dawn'].includes(visual)&&hit>=0){
+    if(!['bloom','aegis','dawn','rabbit-bits'].includes(visual)&&hit>=0){
       forms.circle(cx,cy,s*.026).fill({color:0xffffff,alpha:impact});
       stroke([cx-s*.12,cy,cx+s*.12,cy],2,impact);
     }
     for(let i=0;i<56;i++){
+      if(visual==='rabbit-bits')continue;
       const {sprite,angle,speed,size}=particles[targetIndex*56+i];
       const support=['bloom','aegis','dawn'].includes(visual);
       if(hit<0){const radius=s*(.5-gather*.43)*speed;sprite.position.set(cx+Math.cos(angle)*radius,cy+Math.sin(angle)*radius);sprite.alpha=gather*.35;}
@@ -264,9 +291,12 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     app.render();
   };
   const tick=()=>{try{draw();}catch{app.ticker.stop();onFailure();}};
-  app.ticker.remove(app.render,app);app.ticker.maxFPS=30;app.ticker.add(tick);
+  app.ticker.remove(app.render,app);app.ticker.maxFPS=visual==='rabbit-bits'?60:30;app.ticker.add(tick);
+  // A timed HP impact must paint its landing in the same frame, even between ticker beats.
+  const landing=()=>{if(visual==='rabbit-bits')tick();};
+  window.addEventListener('game:combat-numbers',landing);
   const visibility=()=>{if(document.hidden)app.ticker.stop();else{app.ticker.start();tick();}};
   const lost=(event:Event)=>{event.preventDefault();onFailure();};
   document.addEventListener('visibilitychange',visibility);canvas.addEventListener('webglcontextlost',lost);visibility();
-  return ()=>{if(destroyed)return;destroyed=true;document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);app.ticker.stop();app.destroy(true,{children:true});texture.destroy(true);};
+  return ()=>{if(destroyed)return;destroyed=true;window.removeEventListener('game:combat-numbers',landing);document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);app.ticker.stop();app.destroy(true,{children:true});texture.destroy(true);};
 }

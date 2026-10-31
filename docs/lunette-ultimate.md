@@ -12,13 +12,14 @@ Summoning and shooting are distinct scenes. Do not pad an arbitrary short clip b
 | 1.2–3.2 s | Four rabbits materialize successively, 360 ms apart, through local clock gates; each settles over 540 ms | A soft air/pressure arrival for each robot, no musical notes |
 | 3.2–4.2 s | All four remain readable; thin aiming lines converge and the reticle locks | Silence from this soundtrack: a deliberate contrast before firing |
 | 4.2–6.0 s | Four crossfire passes, sixteen distinct attacks, muzzle light and art-only target reactions | Individual electric shots, short flight and contact; no charge layered over the barrage |
-| 6.0–6.8 s | The guns gather light inward together; a pause separates this from crossfire | One familiar charge rises into the finishing shot |
+| 6.0–6.62 s | Clock emitters gather light inward together | One familiar charge rises into heavy launch |
+| 6.62–6.8 s | Four heavy plasma bodies fly inward together | Departure pressure and a short air trail |
 | 6.8–7.8 s | Combined blast, held recoil, finishing damage and whiteout; reveal the battlefield | Heavy detonation, two discrete delay returns (+180 / +360 ms) |
 | 7.8–8.4 s | Clear aftermath before replay continues | Let the tail end |
 
 `RABBIT_SEQUENCE` owns the scene beats; `RABBIT_TIMING`, sound placement, Pixi, whiteout, per-shot HP presentation and replay duration derive from them. `rabbitStage` exposes command/summon/aim/volley/charge/finish/reveal for inspection without adding battle UI text. The SVG fallback uses the same clock for materialization and shots; it must not run an independent CSS firing loop. Other characters retain their normal ultimate timing.
 
-The two existing 0.68-second charge waveforms end at gate opening and the finishing shot. Their gain is strengthened without new pitches or notes. Arrival audio is original filtered-noise/pressure synthesis, distinct from the weapon. The full mix uses a common peak scalar. Normal combat buff sounds are unchanged. Both native speed buffers and preview export use the same renderer. Speed changes crossfade at the current logical offset with pitch intact; skip cancels the complete soundtrack.
+The two existing 0.68-second charge waveforms end at gate opening and heavy projectile launch. Their gain is strengthened without new pitches or notes. Arrival audio is original filtered-noise/pressure synthesis, distinct from the weapon. The full mix uses a common peak scalar. Normal combat buff sounds are unchanged. Both native speed buffers and preview export use the same renderer. Speed changes crossfade at the current logical offset with pitch intact; skip cancels the complete soundtrack.
 
 ## Assets and rendering
 
@@ -33,3 +34,14 @@ All damaging combat feedback now creates a short translucent red overlay on the 
 `rabbitCameraZoom` authors eased framing: settle into summon, accelerate toward the firing cue, advance through crossfire, pull back for the final wind-up, then punch into the finisher (maximum 1.24×) and ease back to neutral. The enemy artwork and friendly rabbit effect scene share the zoom curve; party-target effects do not scale their whole UI. HUD/controls stay fixed. Reduced-motion/data-saving gates suppress camera motion. Native hidden/unmount cleanup restores the original artwork transforms.
 
 Weapon synthesis separates discharge, flight, contact, final detonation and delay returns without metallic bells. Research consulted for methods only: [laser layers](https://www.daviddumaisaudio.com/how-to-create-laser-gun-sound-effect-layers/) and [gunshot layers](https://blog.prosoundeffects.com/how-to-sound-design-first-person-shooter-gunshot-sound-effects-with-mark-kilborn). No external sound recordings are reused.
+
+
+## Projectile revision for PV v16
+
+The four illustrations have clock faces rather than literal gun barrels. `RABBIT_MUZZLES` anchors the energy discharge to each original clock face and rotates/translates it with that rabbit. Pixi light renders above the robots so the emitter is visible. Regular attacks are short white-core/mint bolts: compact muzzle discharge, 75 ms of travel, then directional contact fragments. There is no permanent full muzzle-to-target line or generic first-shot particle bloom. The SVG fallback also moves short segments.
+
+`RABBIT_FLIGHT` is shared by the visual state, HP deadlines, enemy recoil and synthesized contact sound. Normal HP loss is applied 75 ms after each launch. The four heavy finishing bodies launch 180 ms before the existing 6800 ms landing, crush into a narrow core, bloom outward and white out; the final HP deadline remains 6800 ms. The familiar charge ends on heavy launch. The native audio keeps weapon attacks at their original pitch and separately schedules departure pressure, landing and echoes. Gameplay calculations, total damage and cooldowns are unchanged.
+
+Rabbit effects draw at up to 60 fps and repaint on the combat-number event so an HP update cannot leave the previous flying-projectile image waiting for the next ticker beat. Hidden/skip/unmount cleanup removes that listener and restores artwork transforms. Motion/data-saving gates remain intact.
+
+The PV is re-recorded from the actual game with the shared full illustration cut-in. Its non-firing setup is retimed, crossfire stays at native speed, and final-flight and landing are edited separately. Native departure/charge/contact waveforms are placed separately; the finishing detonation and delays are positioned at landing and continue through the white-to-Lunette transition. No external VFX footage or new generated assets are used.

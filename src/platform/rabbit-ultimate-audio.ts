@@ -1,3 +1,4 @@
+import { RABBIT_FLIGHT } from './ultimate-choreography';
 import { RABBIT_TIMING, RABBIT_SEQUENCE } from './ultimate-timing';
 import { renderRabbitVolley } from './rabbit-volley-audio';
 import { renderUltimateCharge } from './ultimate-charge-audio';
@@ -6,9 +7,9 @@ import { renderUltimateCharge } from './ultimate-charge-audio';
 export function enhanceRabbitCharge(source: Float32Array): Float32Array {
   return Float32Array.from(source, value => value * 1.65);
 }
-// Each charge ends on a meaningful picture: opening the gates, then the final blast.
+// Each charge ends on a meaningful picture: opening the gates, then launching the heavy bolts.
 export const RABBIT_CHARGE_CUES = [(RABBIT_SEQUENCE.summon-680)/1000,
-  (RABBIT_SEQUENCE.finish-680)/1000] as const;
+  (RABBIT_SEQUENCE.finish-680)/1000-RABBIT_FLIGHT.finale] as const;
 
 /** Soft air/pressure materialization; no pitched arpeggio or metallic ringing. */
 function summonAir(sampleRate: number): Float32Array {

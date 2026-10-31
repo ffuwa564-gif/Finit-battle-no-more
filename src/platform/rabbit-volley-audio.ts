@@ -1,4 +1,4 @@
-import { RABBIT_VOLLEY, rabbitShotTimes } from './ultimate-choreography';
+import { RABBIT_VOLLEY, RABBIT_FLIGHT, rabbitShotTimes } from './ultimate-choreography';
 
 /** Original layered plasma weapon. Stretch deadlines, never the individual transients. */
 export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 'electric' | 'pressure' = 'electric'): Float32Array {
@@ -31,12 +31,18 @@ export function renderRabbitVolley(sampleRate: number, timingScale = 1, flavor: 
       // A separate short flight and contact, rather than one repeated UI-like note.
       const travel=age-.008;
       if(travel>0&&travel<.045)sound+=spark*.38*Math.sin(Math.PI*travel/.045)*(1-travel/.045);
-      const contact=age-.027;
+      const contact=age-RABBIT_FLIGHT.shot*scale;
       if(contact>0){
         const env=(1-Math.exp(-contact*850))*Math.exp(-contact*36);
         const thud=Math.sin(2*Math.PI*132*contact)+.25*Math.sin(2*Math.PI*264*contact);
         sound+=(grit*2.0+lo*.7+thud*(flavor==='electric'?.2:.4))*env;
       }
+    }
+    // Pressure leaving the four clock emitters precedes the combined landing.
+    const departure=t-(finish-RABBIT_FLIGHT.finale*scale);
+    if(departure>=0&&departure<RABBIT_FLIGHT.finale*scale){
+      const q=departure/(RABBIT_FLIGHT.finale*scale);
+      sound+=(grit*1.1+spark*.35)*Math.sin(Math.PI*q)**2;
     }
     // A broad detonation and two darker returns. No UI notes or metallic partials.
     for(const [at,strength] of [[finish,1],[finish+RABBIT_VOLLEY.echoes[0]*scale,.38],[finish+RABBIT_VOLLEY.echoes[1]*scale,.19]]){

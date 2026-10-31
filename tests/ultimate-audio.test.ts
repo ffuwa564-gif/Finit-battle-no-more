@@ -36,7 +36,7 @@ describe('authored ultimate sound materials', () => {
   });
   it('reuses the pre-ultimate charge exactly, without adding buff-skill notes',()=>{
     const source=renderUltimateCharge(48000),charge=enhanceRabbitCharge(source),voice=renderRabbitUltimate(48000);
-    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES).toEqual([.52,6.12]);
+    expect(charge.length).toBe(source.length);expect(RABBIT_CHARGE_CUES[0]).toBe(.52);expect(RABBIT_CHARGE_CUES[1]).toBeCloseTo(5.94);
     for(let i=0;i<source.length;i+=101)expect(charge[i]).toBeCloseTo(source[i]*1.65,6);
     expect(rms(charge,48000,0,.68)).toBeGreaterThan(rms(source,48000,0,.68)*1.6);
     expect(voice.length/48000).toBe(8.4);expect(renderRabbitUltimate(48000,1.25).length/48000).toBeCloseTo(6.72,4);
@@ -44,7 +44,7 @@ describe('authored ultimate sound materials', () => {
   it('keeps aiming silent and lets crossfire breathe before the last charge',()=>{
     const rate=48000,pcm=renderRabbitUltimate(rate);
     expect(rms(pcm,rate,RABBIT_SEQUENCE.aim/1000,RABBIT_SEQUENCE.fire/1000)).toBe(0);
-    expect(rms(pcm,rate,5.9,6.1)).toBe(0);
+    expect(rms(pcm,rate,5.87,5.93)).toBe(0);
     expect(rms(pcm,rate,6.3,6.6)).toBeGreaterThan(.02);
   });
   it('separates attack, thunder and healing waveforms rather than sharing a dominant bed', () => {

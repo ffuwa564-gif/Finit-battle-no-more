@@ -5,7 +5,7 @@ import { assetPath, characterById, content } from '../content';
 import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
-import { ultimateVisualFor, rabbitWhiteout, rabbitBitFrame, type UltimateVisual } from '../platform/ultimate-choreography';
+import { ultimateVisualFor, rabbitWhiteout, rabbitBitFrame, RABBIT_MUZZLES, type UltimateVisual } from '../platform/ultimate-choreography';
 import { ultimateTimingFor, UltimateClock, RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
@@ -20,7 +20,13 @@ function FallbackImpact({ theme, visual, position }: { theme: UltimateTheme; vis
         const state=rabbitBitFrame(index,position());
         group.style.opacity=String(document.hidden?0:state.summon*state.alpha);
         const beam=group.querySelector<SVGPathElement>('.rabbit-fallback-beam');
-        if(beam){beam.style.opacity=String(state.beam);beam.style.strokeWidth=state.final?'9':'4';}
+        if(beam){
+          const [bx,by]=[[15,35],[255,35],[15,245],[255,245]][index],anchor=RABBIT_MUZZLES[index];
+          const x=bx+130*anchor[0],y=by+140*anchor[1];
+          const head=state.travel,tail=Math.max(0,head-.23);
+          beam.setAttribute('d',state.flight?`M${x+(200-x)*tail} ${y+(200-y)*tail} ${x+(200-x)*head} ${y+(200-y)*head}`:'M190 200 210 200');
+          beam.style.opacity=String(state.flight?1:state.impact);beam.style.strokeWidth=state.final?'9':'4';
+        }
       });frame=requestAnimationFrame(draw);
     };draw();return()=>cancelAnimationFrame(frame);
   },[visual,position]);

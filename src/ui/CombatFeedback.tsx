@@ -5,7 +5,7 @@ import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BattleEvent, Unit } from '../domain/types';
 import { characterById } from '../content';
-import { eventHpChanges, rabbitDamageSteps, type HpChange, type ImpactSnapshot } from '../platform/combat-feedback';
+import { eventHpChanges, hpChanges, rabbitDamageSteps, type HpChange, type ImpactSnapshot } from '../platform/combat-feedback';
 import { shakeDamage } from '../platform/battle-shake';
 import './combat-feedback.css';
 
@@ -73,7 +73,11 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
       // Resume at the current snapshot; never replay a burst of past hit numbers.
       const caughtUp=steps.filter(step=>step.at<=elapsed).at(-1);
       if(caughtUp&&caughtUp.index>progress.current.index){
+        const previous=progress.current.index<0?latestBefore.current:steps[progress.current.index].units;
         progress.current.index=caughtUp.index;onImpact({eventId:event.id,units:caughtUp.units,hitIndex:caughtUp.index});
+        // A speed change may cancel a just-due timer. Preserve that visible loss
+        // as one current number rather than dropping it or replaying old flashes.
+        publish(`${event.id}:hit:${caughtUp.index}`,hpChanges(previous,caughtUp.units),caughtUp.final?undefined:caughtUp.index);
       }
       const pending=steps.filter(step=>step.index>progress.current.index).map(step=>setTimeout(()=>{
         if(step.index<=progress.current.index)return;

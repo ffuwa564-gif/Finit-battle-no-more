@@ -13,25 +13,40 @@ export function ultimateVisualFor(character: CharacterDef, event?: BattleEvent):
 }
 /** Shared visual/audio deadlines, relative to the existing damage impact (seconds). */
 export const RABBIT_VOLLEY = { rounds: 4, spacing: .4, stagger: .065, finale: (RABBIT_TIMING.damage-RABBIT_TIMING.impact)/1000, echoes: [.18, .36] } as const;
+/** All durations are logical seconds, so speed changes retime the complete shot. */
+export const RABBIT_FLIGHT = { shot: .075, finale: .18 } as const;
+/** Clock faces are the emitters in this original artwork, rather than invented gun barrels. */
+export const RABBIT_MUZZLES = [[.716,.62],[.28,.67],[.778,.61],[.475,.575]] as const;
+export function rabbitMuzzle(index:number,x:number,y:number,width:number,aspect:number,rotation:number){
+  const [u,v]=RABBIT_MUZZLES[index],lx=(u-.5)*width,ly=(v-.5)*width*aspect;
+  return {x:x+lx*Math.cos(rotation)-ly*Math.sin(rotation),y:y+lx*Math.sin(rotation)+ly*Math.cos(rotation)};
+}
 export const rabbitShotTimes = (index: number) => Array.from({length:RABBIT_VOLLEY.rounds},(_,round)=>round*RABBIT_VOLLEY.spacing+index*RABBIT_VOLLEY.stagger);
 /** Repeated crossfire, a short breath, then one combined finishing blast. */
 export function rabbitBitFrame(index: number, elapsed: number) {
   const hit = (elapsed - RABBIT_TIMING.impact) / 1000;
-  const times=[...rabbitShotTimes(index),RABBIT_VOLLEY.finale];
+  const finalLaunch=RABBIT_VOLLEY.finale-RABBIT_FLIGHT.finale;
+  const times=[...rabbitShotTimes(index),finalLaunch];
   const fired=times.filter(time=>time<=hit+1e-7);
   const lastShot=fired.at(-1);
   const shotAge=lastShot===undefined?-1:Math.max(0,hit-lastShot);
-  const final=lastShot===RABBIT_VOLLEY.finale;
+  const final=lastShot===finalLaunch;
+  const flightTime=final?RABBIT_FLIGHT.finale:RABBIT_FLIGHT.shot;
+  const impactAge=shotAge<0?-1:Math.abs(shotAge-flightTime)<1e-7?0:shotAge-flightTime;
+  const flight=shotAge>=0&&shotAge<flightTime;
+  const impact=impactAge>=0?Math.exp(-impactAge*(final?9:25)):0;
   return {
     summon: clamp01((elapsed - RABBIT_SEQUENCE.summon - index * RABBIT_SEQUENCE.summonStep) / RABBIT_SEQUENCE.summonDuration),
     alpha: clamp01((RABBIT_SEQUENCE.tail - elapsed) / 550),
     aim: clamp01((elapsed-RABBIT_SEQUENCE.aim)/650),
     gate: Math.sin(Math.PI*clamp01((elapsed-RABBIT_SEQUENCE.summon-index*RABBIT_SEQUENCE.summonStep)/850)),
-    beam: shotAge<0?0:Math.exp(-shotAge*(final?10:33)),
+    beam: flight?1:impact,
+    muzzle:shotAge>=0&&shotAge<.055?Math.exp(-shotAge*40):0,
+    flight,travel:shotAge<0?0:clamp01(shotAge/flightTime),impact,impactAge,
     recoil: shotAge<0||shotAge>.09?0:Math.sin(shotAge/.09*Math.PI),
     shotAge, final, round: Math.max(0,fired.length-1),
-    finishCharge: elapsed>=RABBIT_SEQUENCE.charge&&elapsed<RABBIT_SEQUENCE.finish
-      ? (elapsed-RABBIT_SEQUENCE.charge)/(RABBIT_SEQUENCE.finish-RABBIT_SEQUENCE.charge):0,
+    finishCharge: elapsed>=RABBIT_SEQUENCE.charge&&elapsed<RABBIT_SEQUENCE.finish-RABBIT_FLIGHT.finale*1000
+      ? (elapsed-RABBIT_SEQUENCE.charge)/(RABBIT_SEQUENCE.finish-RABBIT_FLIGHT.finale*1000-RABBIT_SEQUENCE.charge):0,
   };
 }
 export const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
@@ -89,7 +104,7 @@ export function rabbitTargetFrame(elapsed: number) {
   let x=0,y=0,flash=0,shot=-1;
   const times=[0,1,2,3].flatMap(bit=>rabbitShotTimes(bit).map((at,round)=>({at,bit,round}))).sort((a,b)=>a.at-b.at);
   times.forEach((entry,index)=>{
-    const age=hit-entry.at;if(age<0)return;shot=index;
+    const age=hit-entry.at-RABBIT_FLIGHT.shot;if(age<0)return;shot=index;
     if(age>.11)return;
     const pulse=Math.exp(-age*35),direction=entry.bit%2?1:-1;
     x+=direction*(2.3+entry.round*.55)*pulse*Math.cos(age*45);
