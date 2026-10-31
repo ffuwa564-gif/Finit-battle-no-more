@@ -1,0 +1,40 @@
+{
+  "freshCapture": true,
+  "frames": 324,
+  "duration": 10.8,
+  "loopCameraPeaks": [
+    {
+      "pass": 1,
+      "peakZoom": 1.15896,
+      "frame": 145,
+      "sourceTime": 4.833333333333333,
+      "semitones": 0
+    },
+    {
+      "pass": 2,
+      "peakZoom": 1.18936,
+      "frame": 174,
+      "sourceTime": 5.8,
+      "semitones": 2
+    },
+    {
+      "pass": 3,
+      "peakZoom": 1.24256,
+      "frame": 203,
+      "sourceTime": 6.766666666666667,
+      "semitones": 4
+    },
+    {
+      "pass": 4,
+      "peakZoom": 1.32983,
+      "frame": 231,
+      "sourceTime": 7.7,
+      "semitones": 7
+    }
+  ],
+  "all17DamageSteps": true,
+  "totalHpLoss": 437,
+  "finalHitNoFlyingBolts": true,
+  "maxWhite": 1,
+  "finisherBoundaryRecaptured": true
+}

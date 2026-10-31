@@ -1,0 +1,86 @@
+{
+  "track": "Twinkle Soda / FUJINEQo",
+  "sourceStart": 39.1,
+  "duration": 25.5,
+  "source": "v20 game-score.wav: exact familiar pre-ultimate charge resampled higher and stronger at each pass; synchronized cubic camera pulse; no bell motif",
+  "sourceTrimSeconds": 0.0,
+  "gameplaySoundAt": 6.916666666666667,
+  "finisherAt": 17.416666666666668,
+  "retimeMethod": "Copy native waveforms per launch/contact sequence; end charge on heavy projectile launch; place detonation on landing",
+  "tailUnderLunette": true,
+  "weaponWindows": [
+    {
+      "at": 11.75,
+      "effectsOverMusicDb": 10.263173984129239
+    },
+    {
+      "at": 11.815000000000001,
+      "effectsOverMusicDb": 15.320928082277419
+    },
+    {
+      "at": 11.879999999999999,
+      "effectsOverMusicDb": 21.099648615776157
+    },
+    {
+      "at": 11.945,
+      "effectsOverMusicDb": 16.675134940077577
+    },
+    {
+      "at": 12.75,
+      "effectsOverMusicDb": 11.944420870697304
+    },
+    {
+      "at": 12.815000000000001,
+      "effectsOverMusicDb": 15.961266946552916
+    },
+    {
+      "at": 12.879999999999999,
+      "effectsOverMusicDb": 16.897460600448575
+    },
+    {
+      "at": 12.945,
+      "effectsOverMusicDb": 16.438159737557434
+    },
+    {
+      "at": 13.75,
+      "effectsOverMusicDb": 10.602045182467261
+    },
+    {
+      "at": 13.815000000000001,
+      "effectsOverMusicDb": 13.665790628331521
+    },
+    {
+      "at": 13.879999999999999,
+      "effectsOverMusicDb": 14.822126364148327
+    },
+    {
+      "at": 13.945,
+      "effectsOverMusicDb": 15.782143727779683
+    },
+    {
+      "at": 14.75,
+      "effectsOverMusicDb": 13.579232215499605
+    },
+    {
+      "at": 14.815000000000001,
+      "effectsOverMusicDb": 18.905715689286843
+    },
+    {
+      "at": 14.88,
+      "effectsOverMusicDb": 18.656850873177117
+    },
+    {
+      "at": 14.945,
+      "effectsOverMusicDb": 18.193628467542514
+    },
+    {
+      "at": 17.416666666666668,
+      "effectsOverMusicDb": 17.65626983175553
+    }
+  ],
+  "additionalUIOrTapCues": false,
+  "countCutsUnchanged": true,
+  "headroomGain": 1,
+  "encodedMixCorrelation": 0.9899881226269219,
+  "tailRmsAfterWhiteCut": 0.06785609573125839
+}
