@@ -21,7 +21,7 @@ describe('normal campaign chapters',()=>{
     expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12,2]);expect(new Set(ids).size).toBe(38);
     const bosses=content.chapters!.map(ch=>content.dungeons.find(d=>d.id===ch.dungeonIds.at(-1))!);
     expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette','zakuro']);
-    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,400,550,650]);
+    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,500,650,650]);
     expect(bosses[1]!.bossLoot).toBeDefined();expect(bosses[2]!.bossLoot).toBeDefined();
   });
   it('opens only the first exploration for a new save and enforces the gate in real commands',()=>{

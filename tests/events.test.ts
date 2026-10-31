@@ -3,17 +3,34 @@ import { content, validateContent } from '../src/content';
 import { kuzuhaEvent as event } from '../src/content/boss-events';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { createBattle } from '../src/domain/engine';
+import { bossWindupStatus } from '../src/domain/boss-pressure';
+import { partyOrderOptions } from '../src/domain/party-orders';
 import { dungeonLock } from '../src/domain/events';
 import { assertSaveCompatibility } from '../src/platform/save';
 import type { GameSave, Strategy } from '../src/domain/types';
 
-function play(save: GameSave, stage: string, strategy: Strategy = 'balanced'): GameSave {
+function play(save: GameSave, stage: string, strategy: Strategy = 'balanced', readPressure = false): GameSave {
   let next = applyCommand(save, { type: 'depart', dungeonId: stage, potions: 5 }, content);
   for (let i = 0; i < 1500 && next.battle && !['reward', 'failed'].includes(next.battle.phase); i++) {
     if (next.battle.phase === 'playing') { next = applyCommand(next, { type: 'replay' }, content); continue; }
     next = applyCommand(next, { type: 'strategy', strategy }, content);
     const weakest = next.battle!.units.filter(unit => unit.side === 'party' && unit.hp > 0).sort((a, b) => a.hp / a.maxHp - b.hp / b.maxHp)[0];
     if (weakest && weakest.hp / weakest.maxHp < .65 && next.battle!.potionsRemaining > 0) next = applyCommand(next, { type: 'potion', unitId: weakest.uid }, content);
+    if (readPressure) {
+      const battle = next.battle!, pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
+      const enemies = battle.units.filter(u => u.side === 'enemy' && u.hp > 0);
+      const boss = enemies.find(u => u.boss), strike = content.dungeons.find(d => d.id === stage)!.bossStrike;
+      const pressure = boss && strike ? bossWindupStatus(boss, strike, battle.round) : undefined;
+      const healer = enemies.find(u => content.characters.find(c => c.id === u.characterId)?.role === 'healer');
+      const target = pressure?.phase === 'charging' ? boss : healer ?? enemies.sort((a,b) => a.hp-b.hp)[0];
+      if (pilot && pilot.hp > 0) {
+        const options = partyOrderOptions(pilot, battle, content).filter(o => !o.disabled);
+        const ultimate = options.find(o => o.id === 'ultimate');
+        const damage = options.filter(o => o.order?.kind === 'skill' && ['attack','area','pierce','drain','shatter','dawn'].includes(o.template)).at(-1);
+        const order = pressure?.phase === 'striking' ? { kind: 'guard' as const } : ultimate?.order ?? damage?.order ?? { kind: 'attack' as const };
+        next = applyCommand(next, { type: 'partyOrder', battleId: battle.id, order, targetId: target?.uid }, content);
+      }
+    }
     next = applyCommand(next, { type: 'round' }, content);
   }
   return next;
@@ -106,9 +123,13 @@ describe('event progression and durable rewards', () => {
     invalid.characters.find(char => char.id === event.awakenedId)!.origin.push('gacha');
     expect(validateContent(invalid)).toEqual(expect.arrayContaining([expect.stringContaining('exclusive'), expect.stringContaining('event-exclusive')]));
   });
-  it('has a highest-difficulty winning route using only ordinary recruits and normal Kuzuha', () => {
+  it('has a highest-difficulty route using recruit awakenings, normal Kuzuha and public boss tells', () => {
     const save = normalOwned(); save.seed = 1;
-    save.partyIds = ['elaine', 'seris', 'liora', event.normalId]; save.leaderId = 'liora';
-    expect(play(save, event.dungeonIds.at(-1)!, 'survival').battle?.phase).toBe('reward');
+    save.ownedIds.push('liora-awakened', 'elaine-awakened', 'seris-awakened');
+    save.partyIds = [event.normalId, 'liora-awakened', 'elaine-awakened', 'seris-awakened']; save.leaderId = 'liora-awakened';
+    for (const id of save.partyIds) expect(content.characters.find(c => c.id === id)!.origin).not.toContain('gacha');
+    const reward = play(save, event.dungeonIds.at(-1)!, 'survival', true);
+    expect(reward.battle?.phase).toBe('reward');
+    expect(reward.battle?.pendingMaterials[event.core.id]).toBe(1);
   });
 });

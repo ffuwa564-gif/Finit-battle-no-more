@@ -2,6 +2,7 @@ import { CRYSTAL_POWER, resonantStrength } from './crystal-resonance';
 import { clearBattleFairy, offerBattleFairy, FAIRY_CHARGE, FAIRY_STAY } from './battle-fairies';
 import { clearBattleBloom, offerBattleBloom, BLOOM_HEAL_PERCENT } from './battle-blooms';
 import { gainUltimate, ultimateCharge, ultimateFor, ultimateReady } from './ultimates';
+import { bossWindupStatus, recordBossWindupDamage } from './boss-pressure';
 import { activeAcceleration } from './acceleration';
 import { ailments, ailmentNames, isAilment, hasAilment, cureAilments, ailmentChance } from './ailments';
 import { skillCooldown } from './skill-info';
@@ -62,8 +63,9 @@ export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = 
 }
 export function dungeonDifficulty(def: DungeonDef, content: Content): number {
   const scale = def.bossScale ?? { hp: 300, attack: 120 };
+  const strikePressure = def.bossStrike?.windup ? (def.bossStrike.every - 1 + def.bossStrike.power / 100) / def.bossStrike.every : 1;
   const waves = def.waves.map((wave, index) => {
-    const base = wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack / 10_000) : 1), 0);
+    const base = wave.reduce((sum, enemy) => sum + character(content, enemy.characterId).strength / 10 * (enemy.boss ? Math.sqrt(scale.hp * scale.attack * strikePressure / 10_000) : 1), 0);
     if (!def.rareEncounter || index !== def.waves.length - 2) return base;
     // The displayed constant covers the hardest possible replacement, not just the common lineup.
     const rare = Math.max(...def.rareEncounter.characterIds.map(id => character(content, id).strength / 10));
@@ -93,6 +95,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
 function clearEffects(unit: Unit): void {
+  delete unit.bossWindup; delete unit.bossRecoveryUntil;
   delete unit.defendingUntil;
   delete unit.ultimateQueued;
   delete unit.ailments; delete unit.statusWardUntil;
@@ -226,7 +229,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const allies = alive(battle.units, actor.side);
   const enemies = alive(battle.units, actor.side === 'party' ? 'enemy' : 'party');
   const strike = actor.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
-  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [strike.target === 'pilot' ? enemies.find(u => u.characterId === battle.partyIds[0]) ?? chooseTarget(enemies, 'balanced', content) : chooseTarget(enemies, 'balanced', content)], power: strike.power, name: strike.name };
+  if (strike && battle.round % strike.every === 0) return { template: 'attack', targets: [strike.target === 'pilot' ? enemies.find(u => u.characterId === battle.partyIds[0]) ?? chooseTarget(enemies, 'balanced', content) : chooseTarget(enemies, 'balanced', content)], power: strike.windup && bossWindupStatus(actor, strike, battle.round).phase === 'broken' ? strike.windup.weakenedPower : strike.power, name: strike.name };
   const role = character(content, actor.characterId).role;
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
   const skills = skillList(actor, content, battle.round);
@@ -390,6 +393,8 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const clock = dungeon(content, battle.dungeonId).bossClock;
   const defense = effectiveDefense(recipient, battle.round) * (clock && recipient.side === 'enemy' && recipient.boss && !recipient.barrier ? clock.brokenDefensePercent / 100 : 1);
   let amount = Math.max(1, Math.floor((powerNumerator * 200 - defense * powerDenominator * (piercing ? 35 : 100)) / (powerDenominator * 200)));
+  const pressure = recipient.side === 'enemy' && recipient.boss ? dungeon(content, battle.dungeonId).bossStrike : undefined;
+  if (pressure?.windup && (recipient.bossRecoveryUntil ?? -1) >= battle.round) amount = Math.floor(amount * (100 + pressure.windup.recoveryPercent) / 100);
   const linked = actor.side === 'party' && recipient.side === 'enemy' && coordination && [...(coordination.hits.get(recipient.uid) ?? [])].some(id => id !== actor.uid);
   amount = Math.max(1, Math.floor(amount * potency * (linked ? 1 + coordination!.bonusPercent / 100 : 1)));
   if ((recipient.defendingUntil ?? -1) >= battle.round) amount = Math.max(1, Math.floor(amount / 2));
@@ -399,6 +404,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
   const actual = Math.min(recipient.hp, amount - absorbed); recipient.hp -= actual;
+  if (actor.side === 'party' && recipient.side === 'enemy') recordBossWindupDamage(recipient, pressure, battle.round, actual);
   if (coordination && actor.side === 'party' && recipient.side === 'enemy' && (actual > 0 || absorbed > 0)) {
     const previous = coordination.hits.get(recipient.uid) ?? new Set<string>(); previous.add(actor.uid); coordination.hits.set(recipient.uid, previous);
     if (linked) coordination.linked.add(actor.uid);
@@ -449,6 +455,13 @@ function resolveBossBits(battle: Battle, content: Content): void {
 }
 function settleAction(battle: Battle, content: Content, before: Unit[]) {
   let goldEarned = 0; const discoveredIds: string[] = [];
+  const strike = dungeon(content, battle.dungeonId).bossStrike;
+  if (strike?.windup) for (const boss of battle.units.filter(u => u.side === 'enemy' && u.boss && u.hp > 0)) {
+    const old = before.find(u => u.uid === boss.uid);
+    if (old && bossWindupStatus(boss, strike, battle.round).phase === 'broken' && bossWindupStatus(old, strike, battle.round).phase !== 'broken') {
+      emit(battle, { kind: 'debuff', actorId: boss.uid, targetIds: [boss.uid], text: `${character(content, boss.characterId).name} — 溜めを崩した`, unitsAfter: clone(battle.units) });
+    }
+  }
   const killed = battle.units.filter((unit) => unit.hp <= 0 && before.some((old) => old.uid === unit.uid && old.hp > 0));
   for (const boss of battle.units.filter((unit) => unit.boss && unit.hp > 0 && unit.hp <= unit.maxHp / 2 && before.some((old) => old.uid === unit.uid && old.hp > old.maxHp / 2))) {
     const flag = `${boss.uid}:half`;
@@ -507,7 +520,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   const coordinationRule = dungeon(content, battle.dungeonId).coordination;
   // A committed defensive stance prepares for a telegraphed strike, even from a faster boss.
   // The pilot still spends her one normal action on guard later in the turn order.
-  if (coordinationRule && battle.partyOrder?.kind === 'guard') {
+  if (battle.partyOrder?.kind === 'guard') {
     const pilot = battle.units.find(u => u.side === 'party' && u.characterId === battle.partyIds[0]);
     if (pilot && pilot.hp > 0 && !hasAilment(pilot)) pilot.defendingUntil = battle.round + 1;
   }
@@ -531,7 +544,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const potency = (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
     const name = actorDef.name;
     const openedBarrier = Boolean(action.power && actor.barrier);
-    if (action.power) { delete actor.barrier; delete actor.barrierUntil; }
+    if (action.power) {
+      delete actor.barrier; delete actor.barrierUntil;
+      if (actor.side === 'enemy' && actor.boss && dungeon(content, battle.dungeonId).bossStrike?.windup && !action.clockFinale) actor.bossRecoveryUntil = battle.round + 1;
+    }
     const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.name ?? action.skill?.name ?? '通常攻撃';
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0;
