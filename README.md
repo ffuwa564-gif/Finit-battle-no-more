@@ -27,3 +27,12 @@ iPhoneでは動画を開き、共有ボタンから「ファイルに保存」�
 ver1.0で入手導線のある69体が対象。4部門の上位3人、入手条件、Part 1の一人入れ替えと全員違う編成を解説します。XRアストレアと加入導線のないクローナは除外しています。
 
 明示した装備・相方・操作・場面での自動比較です。スコアは全場面の勝率ではありません。比較用の編成と装備を設定しており、全キャラを新規プレイで獲得した記録ではありません。成功数は各条件での結果です。
+
+## ver1.00 — Remaining challenges and future ideas
+
+- [12:37 commentary video (720p)](STILLVEIL-ver1-Retrospective-720p.mp4)
+- [Source notes and proposed designs](ver1-Retrospective-Notes.txt)
+- [YouTube title and description](Retrospective-YouTube-description.txt)
+
+VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Future skills and stones are proposals, not implemented updates.
+
