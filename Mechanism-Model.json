@@ -1,0 +1,3555 @@
+{
+  "status": "unimplemented toy damage-routing model, NOT tower victory simulation",
+  "parameters": {
+    "hp": [
+      160,
+      240,
+      240,
+      240
+    ],
+    "scatter": [
+      0.4,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "debtFraction": 0.5,
+    "debtCap": "target max HP",
+    "resourceCap": 1,
+    "debtPayment": "next round end, before outcome; cannot be shielded/redeferred"
+  },
+  "scenarios": [
+    {
+      "id": "single220",
+      "mode": "none",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            160,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "single220",
+      "mode": "scatter",
+      "hp": [
+        72,
+        196,
+        196,
+        196
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 0,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              72,
+              196,
+              196,
+              196
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            88,
+            44,
+            44,
+            44
+          ],
+          "hpLoss": [
+            88,
+            44,
+            44,
+            44
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    },
+    {
+      "id": "single220",
+      "mode": "debt",
+      "hp": [
+        50,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        110,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              50,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              110,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            110,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 110,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    },
+    {
+      "id": "single320",
+      "mode": "none",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 320,
+          "parts": [
+            320,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            160,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "single320",
+      "mode": "scatter",
+      "hp": [
+        32,
+        176,
+        176,
+        176
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 0,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              32,
+              176,
+              176,
+              176
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 320,
+          "parts": [
+            128,
+            64,
+            64,
+            64
+          ],
+          "hpLoss": [
+            128,
+            64,
+            64,
+            64
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    },
+    {
+      "id": "single320",
+      "mode": "debt",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        160,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              160,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 320,
+          "parts": [
+            320,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            160,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 160,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "double220",
+      "mode": "none",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            160,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "double220",
+      "mode": "scatter",
+      "hp": [
+        0,
+        196,
+        196,
+        196
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 0,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              72,
+              196,
+              196,
+              196
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            88,
+            44,
+            44,
+            44
+          ],
+          "hpLoss": [
+            88,
+            44,
+            44,
+            44
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": true,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              72,
+              196,
+              196,
+              196
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              196,
+              196,
+              196
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            72,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "double220",
+      "mode": "debt",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        110,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              50,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              110,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            110,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 110,
+          "triggered": true,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              50,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              110,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              110,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            50,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "wounded80",
+      "mode": "none",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              80,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            80,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "wounded80",
+      "mode": "scatter",
+      "hp": [
+        0,
+        196,
+        196,
+        196
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 0,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              80,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              196,
+              196,
+              196
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 0,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            88,
+            44,
+            44,
+            44
+          ],
+          "hpLoss": [
+            80,
+            44,
+            44,
+            44
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "wounded80",
+      "mode": "debt",
+      "hp": [
+        0,
+        240,
+        240,
+        240
+      ],
+      "debt": [
+        110,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              80,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              0,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              110,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              2,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": 1,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 220,
+          "parts": [
+            220,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            80,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 110,
+          "triggered": true,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 3
+    },
+    {
+      "id": "area100",
+      "mode": "none",
+      "hp": [
+        60,
+        140,
+        140,
+        140
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "hpLoss": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "hpLoss": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              140
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 40,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "hpLoss": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    },
+    {
+      "id": "area100",
+      "mode": "scatter",
+      "hp": [
+        60,
+        140,
+        140,
+        140
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "hpLoss": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "hpLoss": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              140
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 40,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "hpLoss": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    },
+    {
+      "id": "area100",
+      "mode": "debt",
+      "hp": [
+        60,
+        140,
+        140,
+        140
+      ],
+      "debt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "token": 1,
+      "events": [
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 0,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "hpLoss": [
+            100,
+            0,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              240,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 10,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "hpLoss": [
+            0,
+            100,
+            0,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              240,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 20,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "hpLoss": [
+            0,
+            0,
+            100,
+            0
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        },
+        {
+          "before": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              240
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 30,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "after": {
+            "max_hp": [
+              160,
+              240,
+              240,
+              240
+            ],
+            "hp": [
+              60,
+              140,
+              140,
+              140
+            ],
+            "barrier": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "debt": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "due": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "token": 1,
+            "last_borrow": -99,
+            "charge_awarded": 40,
+            "leader_alive": true,
+            "command_issued": false,
+            "bell_actor": null,
+            "bell_until": 0,
+            "last_refill": -99,
+            "last_aggregation": -99
+          },
+          "inputDamage": 100,
+          "parts": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "hpLoss": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "absorbed": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "deferred": 0,
+          "triggered": false,
+          "bossFlag": false
+        }
+      ],
+      "survivors": 4
+    }
+  ],
+  "debtTimeline": [
+    {
+      "healingRequested": 0,
+      "initial": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": -99,
+        "charge_awarded": 0,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "afterHit": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          50,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          110,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "healed": 0,
+      "beforePayment": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          50,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          110,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "paid": [
+        [
+          0,
+          50,
+          110
+        ]
+      ],
+      "final": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          0,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      }
+    },
+    {
+      "healingRequested": 80,
+      "initial": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": -99,
+        "charge_awarded": 0,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "afterHit": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          50,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          110,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "healed": 80,
+      "beforePayment": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          130,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          110,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      },
+      "paid": [
+        [
+          0,
+          110,
+          110
+        ]
+      ],
+      "final": {
+        "max_hp": [
+          160,
+          240,
+          240,
+          240
+        ],
+        "hp": [
+          20,
+          240,
+          240,
+          240
+        ],
+        "barrier": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "debt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "due": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "token": 1,
+        "last_borrow": 1,
+        "charge_awarded": 10,
+        "leader_alive": true,
+        "command_issued": false,
+        "bell_actor": null,
+        "bell_until": 0,
+        "last_refill": -99,
+        "last_aggregation": -99
+      }
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "randomConservationCases": 3000,
+    "normalAndBossFlagBothEligible": true,
+    "proposedStockWorksDuringCommand": true,
+    "bellRecordBridgesOneRound": true,
+    "bellRecordConsumedAndDistinct": true,
+    "maxOneRefillPerRound": true,
+    "roundEndAggregationIdempotent": true,
+    "aoeExcluded": true,
+    "friendlyFireExcluded": true,
+    "fourAliveRequiredForScatter": true,
+    "twoDistinctFollowersRequired": true,
+    "tokenCappedAtOne": true,
+    "aggregateSplitHitChargeCappedAt10": true,
+    "paymentIgnoresBarrierAndGainsNoCharge": true,
+    "earlyVictoryStillSettlesOutstandingDebt": true
+  }
+}

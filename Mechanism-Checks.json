@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "randomConservationCases": 3000,
+  "normalAndBossFlagBothEligible": true,
+  "proposedStockWorksDuringCommand": true,
+  "bellRecordBridgesOneRound": true,
+  "bellRecordConsumedAndDistinct": true,
+  "maxOneRefillPerRound": true,
+  "roundEndAggregationIdempotent": true,
+  "aoeExcluded": true,
+  "friendlyFireExcluded": true,
+  "fourAliveRequiredForScatter": true,
+  "twoDistinctFollowersRequired": true,
+  "tokenCappedAtOne": true,
+  "aggregateSplitHitChargeCappedAt10": true,
+  "paymentIgnoresBarrierAndGainsNoCharge": true,
+  "earlyVictoryStillSettlesOutstandingDebt": true
+}

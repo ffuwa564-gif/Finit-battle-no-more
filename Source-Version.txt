@@ -1,0 +1,5 @@
+Game: v1.10.0 / dec20ebbfb8d139713ffe847ebc48eefe8ff54ca
+Video production: 6792b826f4e381d7634df4466ad46e6ada65861a
+https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/6792b826f4e381d7634df4466ad46e6ada65861a/scripts/athena-council
+Prior diary production: cece05e04fb7b6a26926d05640f872bcbc5b6c68
+All six new design concepts remain unimplemented.

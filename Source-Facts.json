@@ -1,0 +1,50 @@
+{
+  "sourceCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+  "athena": {
+    "leader": {
+      "stat": "hp",
+      "percent": 18.4
+    },
+    "effect": "bulwark",
+    "stats": {
+      "hp": 368,
+      "attack": 41,
+      "defense": 60,
+      "speed": 18
+    },
+    "skills": [
+      "guard-23",
+      "rally-23"
+    ]
+  },
+  "tankUltimateShared": true,
+  "command": {
+    "base": 3,
+    "awakened": 4,
+    "loads": {
+      "seris-awakened": 1,
+      "iris": 1,
+      "fio": 2,
+      "nox": 3,
+      "athena": 3
+    },
+    "issuingSuppressesCurrentAdditionalLeaderEffect": true
+  },
+  "firstFloor": {
+    "hasBossStrike": false,
+    "priorRecordedBossStrikeEvents": 0
+  },
+  "noelleAwakening": {
+    "id": "awaken-noelle",
+    "baseId": "noelle",
+    "awakenedId": "noelle-awakened",
+    "cost": {
+      "materialId": "noelle-memory:rare",
+      "count": 40
+    },
+    "requiredOwnedIds": [],
+    "requiredDungeonIds": [
+      "last-observatory"
+    ]
+  }
+}

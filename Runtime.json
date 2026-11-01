@@ -1,0 +1,27 @@
+{
+  "durationSeconds": 1684.5333,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "gameVersion": "1.10.0",
+  "gameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+  "proposalStatus": "All six proposed skills/leader skills/gems are unimplemented",
+  "voicevoxVersion": "0.26.0",
+  "voiceRoles": {
+    "z": {
+      "name": "ずんだもん",
+      "id": 3
+    },
+    "m": {
+      "name": "四国めたん",
+      "id": 2
+    },
+    "u": {
+      "name": "中国うさぎ",
+      "id": 61
+    }
+  },
+  "gameModified": false
+}

@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "sourceCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+  "comparisonFixtures": true,
+  "rows": [
+    {
+      "build": "rewind",
+      "id": "baseline",
+      "wins": 51,
+      "total": 100,
+      "applicationCommandsMatched": true
+    },
+    {
+      "build": "rewind",
+      "id": "replace-athena-liora-awakened",
+      "wins": 10,
+      "total": 100,
+      "applicationCommandsMatched": true
+    },
+    {
+      "build": "flower",
+      "id": "baseline",
+      "wins": 71,
+      "total": 100,
+      "applicationCommandsMatched": true
+    },
+    {
+      "build": "flower",
+      "id": "replace-athena-liora-awakened",
+      "wins": 28,
+      "total": 100,
+      "applicationCommandsMatched": true
+    }
+  ]
+}

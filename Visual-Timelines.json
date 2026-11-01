@@ -1,0 +1,362 @@
+[
+  {
+    "chapterId": "opening",
+    "duration": 81.63333333333334,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 14.166
+      },
+      {
+        "phase": 2,
+        "time": 48.51
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "compression",
+    "duration": 88.9,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 28.116699999999994
+      },
+      {
+        "phase": 2,
+        "time": 51.293400000000005
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "diagnosis",
+    "duration": 100.7,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 32.820700000000016
+      },
+      {
+        "phase": 2,
+        "time": 61.500699999999995
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "missed-trigger",
+    "duration": 85.3,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 21.38670000000002
+      },
+      {
+        "phase": 2,
+        "time": 56.872000000000014
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "bad-solutions",
+    "duration": 77.5,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 21.44999999999999
+      },
+      {
+        "phase": 2,
+        "time": 45.608000000000004
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "doctrines",
+    "duration": 77.53333333333333,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 21.834699999999998
+      },
+      {
+        "phase": 2,
+        "time": 47.11270000000002
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "noelle",
+    "duration": 95.03333333333333,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 23.519999999999925
+      },
+      {
+        "phase": 2,
+        "time": 57.693299999999965
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "orders",
+    "duration": 144.5,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 31.189300000000003
+      },
+      {
+        "phase": 2,
+        "time": 86.55599999999993
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "bell-stone",
+    "duration": 116.2,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 29.1413
+      },
+      {
+        "phase": 2,
+        "time": 76.50869999999998
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "scatter-model",
+    "duration": 86.93333333333334,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 25.184000000000083
+      },
+      {
+        "phase": 2,
+        "time": 53.96070000000009
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "hecate",
+    "duration": 96.06666666666666,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 25.578700000000026
+      },
+      {
+        "phase": 2,
+        "time": 60.072700000000054
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "debt-timing",
+    "duration": 89.8,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 25.024000000000115
+      },
+      {
+        "phase": 2,
+        "time": 54.07730000000015
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "flora-receipt",
+    "duration": 101.73333333333333,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 26.901299999999992
+      },
+      {
+        "phase": 2,
+        "time": 64.89330000000018
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "why-these",
+    "duration": 97.5,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 27.754699999999957
+      },
+      {
+        "phase": 2,
+        "time": 61.1706999999999
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "adversarial",
+    "duration": 92.6,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 24.010700000000043
+      },
+      {
+        "phase": 2,
+        "time": 52.13670000000002
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "test-plan",
+    "duration": 91.36666666666666,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 24.501400000000103
+      },
+      {
+        "phase": 2,
+        "time": 63.080000000000155
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "decision",
+    "duration": 86.36666666666666,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 27.08270000000016
+      },
+      {
+        "phase": 2,
+        "time": 58.40869999999995
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  },
+  {
+    "chapterId": "ending",
+    "duration": 74.86666666666666,
+    "changes": [
+      {
+        "phase": 0,
+        "time": 0.0
+      },
+      {
+        "phase": 1,
+        "time": 24.181299999999965
+      },
+      {
+        "phase": 2,
+        "time": 49.9393
+      }
+    ],
+    "crossfadeSeconds": 0.15,
+    "unimplemented": true
+  }
+]

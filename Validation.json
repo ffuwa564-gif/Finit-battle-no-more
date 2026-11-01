@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "fullMovieDecoded": true,
+  "durationSeconds": 1684.554362,
+  "narrationSeconds": 1684.5333,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "lineCount": 194,
+  "voiceIds": {
+    "z": 3,
+    "m": 2,
+    "u": 61
+  },
+  "maximumNarrationGapSeconds": 1.1019999999999754,
+  "encodedSpeechSync": [
+    {
+      "speaker": "z",
+      "voiceId": 3,
+      "expectedStart": 0.45,
+      "encodedStart": 0.4713333333333333,
+      "offsetSeconds": 0.021333333333333315,
+      "normalizedCorrelation": 0.9664915830453273
+    },
+    {
+      "speaker": "m",
+      "voiceId": 2,
+      "expectedStart": 9.036,
+      "encodedStart": 9.057333333333334,
+      "offsetSeconds": 0.021333333333334537,
+      "normalizedCorrelation": 0.9907196110702243
+    },
+    {
+      "speaker": "u",
+      "voiceId": 61,
+      "expectedStart": 14.166,
+      "encodedStart": 14.187333333333335,
+      "offsetSeconds": 0.021333333333334537,
+      "normalizedCorrelation": 0.9884042674789925
+    },
+    {
+      "speaker": "u",
+      "voiceId": 61,
+      "expectedStart": 846.5087,
+      "encodedStart": 846.5300333333333,
+      "offsetSeconds": 0.021333333333359406,
+      "normalizedCorrelation": 0.9971207787519192
+    },
+    {
+      "speaker": "m",
+      "voiceId": 2,
+      "expectedStart": 1674.4633,
+      "encodedStart": 1674.4845916666666,
+      "offsetSeconds": 0.02129166666668425,
+      "normalizedCorrelation": 0.9807301449659171
+    },
+    {
+      "speaker": "u",
+      "voiceId": 61,
+      "expectedStart": 1667.9147,
+      "encodedStart": 1667.9359916666667,
+      "offsetSeconds": 0.02129166666668425,
+      "normalizedCorrelation": 0.9862756125246998
+    },
+    {
+      "speaker": "z",
+      "voiceId": 3,
+      "expectedStart": 1681.0013,
+      "encodedStart": 1681.0225916666666,
+      "offsetSeconds": 0.02129166666668425,
+      "normalizedCorrelation": 0.9779506422492515
+    }
+  ],
+  "maximumMeasuredSpeechOffsetSeconds": 0.021333333333359406,
+  "audio": {
+    "input_i": "-16.18",
+    "input_tp": "-2.10",
+    "input_lra": "4.10",
+    "input_thresh": "-26.60",
+    "output_i": "-16.15",
+    "output_tp": "-2.50",
+    "output_lra": "4.00",
+    "output_thresh": "-26.56",
+    "normalization_type": "dynamic",
+    "target_offset": "0.15"
+  },
+  "nativeApplicationComparisonsVerified": 400,
+  "toyModelIsNotTowerWinRate": true,
+  "allSixProposalsUnimplemented": true,
+  "gameModified": false,
+  "sourceGameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca"
+}
