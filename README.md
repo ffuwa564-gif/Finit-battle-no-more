@@ -1,4 +1,33 @@
-# STILLVEIL 白亜の塔攻略日記 Part 1
+# STILLVEIL 動画・解説資料
+
+## 最新の動画
+
+| 動画 | 長さ | ダウンロード・資料 |
+| --- | --- | --- |
+| 白亜の塔攻略日記 Part1.1：音声・実況同期修正版 | 20分51秒 | [動画 MP4](STILLVEIL-TowerDiary-Part1.1-SyncFixed-v3-720p.mp4) / [投稿文・チャプター](TowerDiary-Part1.1-YouTube-description.txt) / [サムネイル](TowerDiary-Part1.1-Thumbnail.jpg) |
+| ver1.10 更新ガイド：ずんだもん解説 | 13分58秒 | [動画 MP4](STILLVEIL-v1.10-Update-Guide-720p.mp4) / [投稿文・チャプター](v110-Update-YouTube-description.txt) / [サムネイル](v110-Update-Thumbnail.jpg) / [更新チェックリスト](v110-Update-Checklist.txt) |
+
+iPhoneでは動画を開き、共有ボタンから「ファイルに保存」してください。
+
+### 攻略日記 Part1.1 の同期確認
+
+配布する完成動画のゲーム音・映像15か所、ナレーション6か所を元の素材へ照合済みです。撃破の実況が表示より先に進まないよう、台詞を変えずに間を調整しています。
+
+- [完成ファイルの同期検査記録](Part1.1-Sync-Audit.txt) / [機械可読レポート](Part1.1-Sync-Audit.json)
+- [装備・攻略の詳細メモ](TowerDiary-Part1.1-Guide.txt) / [字幕](TowerDiary-Part1.1.srt)
+- [再発防止のツール・手順一式](Part1.1-Sync-Guardrails.zip)
+- [mainの制作ルール](https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/main/AGENTS.md) / [同期検査手順](https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/main/docs/media-sync.md) / [ツールの使い方](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/main/tools/media-sync)
+
+再生可能かどうかの検査と、完成ファイルの音声同期検査を分けています。GitHub Actionsの回帰試験はツールの検証であり、各動画の完成ファイルの照合を代替しません。
+
+## 過去の攻略・研究動画
+
+<details>
+<summary>ver1.0の攻略・研究、およびver1.10の開発中試走を開く</summary>
+
+以下は制作当時の版・条件での記録です。当時の提案を現行版の実装や攻略保証として扱わないでください。
+
+## 初代攻略日記 Part 1（ver1.0）
 
 ずんだもんと四国めたんの実況動画。10分6秒／720p／約40MB。
 
@@ -138,34 +167,13 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Fixed-seed automated trial 
 
 VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Continuation of the previous earned save; automatic trial and UI replay excerpts. Local development version, not a game release.
 
-## STILLVEIL Tower Diary — Part 1.1
 
-[Download Part 1.1 (20:51, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
+</details>
 
-[YouTube description and chapters](TowerDiary-Part1.1-YouTube-description.txt) / [Strategy guide](TowerDiary-Part1.1-Guide.txt) / [Thumbnail](TowerDiary-Part1.1-Thumbnail.jpg) / [Subtitles](TowerDiary-Part1.1.srt)
+## 制作・ゲーム
 
-VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Original Part 1 earned save migrated to ver1.10. 137 normal-dungeon clears, 91 refinements, 11 tower attempts; first-floor victory in 26 rounds. Automatic native trial with UI recording replays, excerpts and fast-forward. Previous T4 equipment carried over; not a fresh-save route or an RTA record. No game balance changes or game deployment.
+音声は各動画のクレジット・概要欄を参照してください。攻略日記は VOICEVOX:ずんだもん / VOICEVOX:四国めたん、更新ガイドは VOICEVOX:ずんだもんを使用しています。
 
-## STILLVEIL Tower Diary — Part 1.1 (audio sync revision)
+[ゲーム本体のソース](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/main) / [STILLVEILを遊ぶ](https://fluffy3546.itch.io/stillveil)
 
-[Download Part 1.1 (20:51, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
-
-[YouTube description and chapters](TowerDiary-Part1.1-YouTube-description.txt) / [Strategy guide](TowerDiary-Part1.1-Guide.txt) / [Thumbnail](TowerDiary-Part1.1-Thumbnail.jpg) / [Subtitles](TowerDiary-Part1.1.srt)
-
-VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Original Part 1 earned save migrated to ver1.10. 137 normal-dungeon clears, 91 refinements, 11 tower attempts; first-floor victory in 26 rounds. Automatic native trial with UI recording replays, excerpts and fast-forward. Previous T4 equipment carried over; not a fresh-save route or an RTA record. No game balance changes or game deployment.
-
-## STILLVEIL ver1.10 — Update guide with Zundamon
-
-[Download the 13:58 update guide (720p MP4)](STILLVEIL-v1.10-Update-Guide-720p.mp4)
-
-[YouTube description and chapters](v110-Update-YouTube-description.txt) / [Thumbnail](v110-Update-Thumbnail.jpg) / [Update checklist](v110-Update-Checklist.txt) / [Subtitles](v110-Update.srt)
-
-VOICEVOX:ずんだもん. Implemented features from main dec20eb, actual interface screenshots and labeled mechanism-demo fixtures. Does not publish or modify the game.
-
-## Tower Diary Part 1.1 — finished-file synchronization verified
-
-[Download the verified 20:51 revision (720p)](STILLVEIL-TowerDiary-Part1.1-SyncFixed-v3-720p.mp4)
-
-[Finished-file sync report](Part1.1-Sync-Audit.txt) / [Machine-readable audit](Part1.1-Sync-Audit.json) / [Updated YouTube description](TowerDiary-Part1.1-YouTube-description.txt) / [Prevention tools and rules](Part1.1-Sync-Guardrails.zip)
-
-Gameplay sound and picture checked at 15 actual finished-movie anchors; narration checked at 6. Same dialogue and game result, with pauses adjusted so defeat commentary follows the actual defeat. VOICEVOX:ずんだもん / VOICEVOX:四国めたん.
+このブランチは動画と資料の配布用です。動画の更新だけでゲーム本体を公開することはありません。
