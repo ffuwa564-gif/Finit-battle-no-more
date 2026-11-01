@@ -1,0 +1,29 @@
+{
+  "borrow": {
+    "status": "proposal-only",
+    "carrier": "echo-shard",
+    "name": "借光の残響石",
+    "cooldown": 3,
+    "tier": 3,
+    "power": 80,
+    "trait": "none",
+    "attackReference": "max(own base attack, min(60, floor(highest other living ally base attack *0.75))) only for this gem attack",
+    "echo": "35% next round, native nonrecursive"
+  },
+  "protect": {
+    "status": "proposal-only",
+    "selection": "training bottom25% of healers and tanks, ties deterministic",
+    "heal": "ordinary heal/mend_pair with positive healing: first target +8 gauge and status ward through next round; one recipient per action",
+    "guard": "ordinary guard: protected ally +12 gauge and self ward max(existing,20% maxHP) through next round",
+    "exclusions": "enemy, forced action, ultimate; no stats changed"
+  },
+  "bound": {
+    "name": "はじまりの借光石",
+    "status": "proposal-only",
+    "equipCondition": "R/SR and strength<=14 (constant<=1.4)",
+    "fixedGem": "T3 power80, no trait, pure; no upper-tier scaling proposed",
+    "active": "same bounded 75% donor base attack reference, cap60, cooldown3, one hit and native35% nonrecursive echo",
+    "opening": "barrier120 through round2, first wave only, max with existing not stacked; only wearer",
+    "acquisition": "deterministic early crafting proposed, material cost not decided"
+  }
+}

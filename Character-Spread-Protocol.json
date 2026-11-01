@@ -1,0 +1,1200 @@
+{
+  "source": "616a074",
+  "trainingSeeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "heldOutSeeds": [
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "choiceRule": "One fixed gem option per character across all6 contexts. Require >0.25 score-point training gain over current. Chosen before final held-out tests.",
+  "chars": [
+    {
+      "id": "elaine",
+      "role": "healer",
+      "means": {
+        "baseline": 53.84301990923823,
+        "echo": 51.65919991945574,
+        "borrow": 53.18110302912208,
+        "bound": 48.88815967094974
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 53.84301990923823,
+      "eligible": true
+    },
+    {
+      "id": "liora",
+      "role": "tank",
+      "means": {
+        "baseline": 37.179233698396466,
+        "echo": 37.10898006338767,
+        "borrow": 37.22058665986288,
+        "bound": 36.58744787264371
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 37.179233698396466,
+      "eligible": true
+    },
+    {
+      "id": "seris",
+      "role": "attacker",
+      "means": {
+        "baseline": 37.676178569846755,
+        "echo": 37.676178569846755,
+        "borrow": 37.676178569846755,
+        "bound": 41.283923359587725
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 37.676178569846755,
+      "eligible": true
+    },
+    {
+      "id": "noelle",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 37.130817219689334,
+        "echo": 37.130817219689334,
+        "borrow": 37.2249971336161,
+        "bound": 37.30720201017375
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 37.130817219689334,
+      "eligible": true
+    },
+    {
+      "id": "pale-wolf",
+      "role": "attacker",
+      "means": {
+        "baseline": 36.054141171894244,
+        "echo": 36.054141171894244,
+        "borrow": 36.14669867077376,
+        "bound": 36.79264798157905
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.054141171894244,
+      "eligible": true
+    },
+    {
+      "id": "stone-drake",
+      "role": "tank",
+      "means": {
+        "baseline": 36.05569142606099,
+        "echo": 36.05420593160089,
+        "borrow": 36.08803010299214,
+        "bound": 36.55215777328223
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.05569142606099,
+      "eligible": true
+    },
+    {
+      "id": "hollow-keeper",
+      "role": "tank",
+      "means": {
+        "baseline": 36.07454778129712,
+        "echo": 36.1843460721235,
+        "borrow": 36.23223635247671,
+        "bound": 37.077341935825565
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.07454778129712,
+      "eligible": true
+    },
+    {
+      "id": "moon-moth",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 36.74894691976185,
+        "echo": 36.74894691976185,
+        "borrow": 36.84263810381646,
+        "bound": 36.70563261325245
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 36.74894691976185,
+      "eligible": true
+    },
+    {
+      "id": "veil-priestess",
+      "role": "healer",
+      "means": {
+        "baseline": 49.47791059821206,
+        "echo": 48.39344501649528,
+        "borrow": 49.46289841594676,
+        "bound": 44.04119009285405
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 49.47791059821206,
+      "eligible": true
+    },
+    {
+      "id": "thorn-witch",
+      "role": "debuffer",
+      "means": {
+        "baseline": 46.85927532684778,
+        "echo": 44.237950621570675,
+        "borrow": 46.05349710437835,
+        "bound": 50.11031520917248
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 46.85927532684778,
+      "eligible": true
+    },
+    {
+      "id": "lisette",
+      "role": "debuffer",
+      "means": {
+        "baseline": 50.46407096340474,
+        "echo": 48.278681695593676,
+        "borrow": 48.41317860821333,
+        "bound": 48.278681695593676
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 50.46407096340474,
+      "eligible": false
+    },
+    {
+      "id": "lucielle",
+      "role": "supporter",
+      "means": {
+        "baseline": 39.40641625648886,
+        "echo": 42.83889692772271,
+        "borrow": 44.742632043168065,
+        "bound": 43.16813571793601
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "bound",
+      "currentScore": 42.83889692772271,
+      "eligible": true
+    },
+    {
+      "id": "nemuria",
+      "role": "debuffer",
+      "means": {
+        "baseline": 49.35713143027823,
+        "echo": 46.84610224940809,
+        "borrow": 47.43814480031047,
+        "bound": 46.8461022494081
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 49.35713143027823,
+      "eligible": false
+    },
+    {
+      "id": "zakuro",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 55.75649694720137,
+        "echo": 55.75649694720137,
+        "borrow": 55.75649694720137,
+        "bound": 55.75649694720137
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 55.75649694720137,
+      "eligible": false
+    },
+    {
+      "id": "selene",
+      "role": "healer",
+      "means": {
+        "baseline": 57.048570610556695,
+        "echo": 54.62137347412006,
+        "borrow": 56.454250808867414,
+        "bound": 54.62137347412007
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 57.048570610556695,
+      "eligible": false
+    },
+    {
+      "id": "athena",
+      "role": "tank",
+      "means": {
+        "baseline": 46.733792173413896,
+        "echo": 39.44245638536165,
+        "borrow": 39.4558643960282,
+        "bound": 39.44245638536166
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 46.733792173413896,
+      "eligible": false
+    },
+    {
+      "id": "flora",
+      "role": "healer",
+      "means": {
+        "baseline": 53.66261427492012,
+        "echo": 52.87712381275241,
+        "borrow": 52.40148155310506,
+        "bound": 52.87712381275242
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 53.66261427492012,
+      "eligible": false
+    },
+    {
+      "id": "rainbow-iris",
+      "role": "supporter",
+      "means": {
+        "baseline": 50.39183204765882,
+        "echo": 53.02893924373587,
+        "borrow": 53.64170778050588,
+        "bound": 53.0289392437359
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 53.02893924373587,
+      "eligible": false
+    },
+    {
+      "id": "eos",
+      "role": "supporter",
+      "means": {
+        "baseline": 40.094244541576074,
+        "echo": 42.25920541011851,
+        "borrow": 43.70261422769218,
+        "bound": 42.259205410118504
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 42.25920541011851,
+      "eligible": false
+    },
+    {
+      "id": "nike",
+      "role": "attacker",
+      "means": {
+        "baseline": 37.47255601782193,
+        "echo": 37.47255601782193,
+        "borrow": 37.47581677090019,
+        "bound": 37.26692091851883
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 37.47255601782193,
+      "eligible": true
+    },
+    {
+      "id": "artemis",
+      "role": "attacker",
+      "means": {
+        "baseline": 39.88791073697506,
+        "echo": 39.88791073697506,
+        "borrow": 39.88791073697506,
+        "bound": 39.887910736975094
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 39.88791073697506,
+      "eligible": false
+    },
+    {
+      "id": "persephone",
+      "role": "debuffer",
+      "means": {
+        "baseline": 49.35713143027823,
+        "echo": 46.84610224940809,
+        "borrow": 47.43814480031047,
+        "bound": 46.8461022494081
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 49.35713143027823,
+      "eligible": false
+    },
+    {
+      "id": "hestia",
+      "role": "tank",
+      "means": {
+        "baseline": 37.179233698396466,
+        "echo": 37.10898006338767,
+        "borrow": 37.22058665986288,
+        "bound": 36.58744787264371
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 37.179233698396466,
+      "eligible": true
+    },
+    {
+      "id": "hebe",
+      "role": "healer",
+      "means": {
+        "baseline": 52.149888761677815,
+        "echo": 50.62936104112694,
+        "borrow": 50.67515878409243,
+        "bound": 47.39389337406491
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 52.149888761677815,
+      "eligible": true
+    },
+    {
+      "id": "selene-standard",
+      "role": "healer",
+      "means": {
+        "baseline": 56.23713940962455,
+        "echo": 56.3610891188397,
+        "borrow": 57.25635766521576,
+        "bound": 56.36108911883972
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 56.23713940962455,
+      "eligible": false
+    },
+    {
+      "id": "athena-standard",
+      "role": "tank",
+      "means": {
+        "baseline": 37.3263171720047,
+        "echo": 37.3186579786375,
+        "borrow": 37.36076999764461,
+        "bound": 37.3186579786375
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 37.3263171720047,
+      "eligible": false
+    },
+    {
+      "id": "flora-standard",
+      "role": "healer",
+      "means": {
+        "baseline": 53.53740440419405,
+        "echo": 49.57543577201535,
+        "borrow": 51.579770440970435,
+        "bound": 43.750954221567845
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 53.53740440419405,
+      "eligible": true
+    },
+    {
+      "id": "amaterasu-standard",
+      "role": "supporter",
+      "means": {
+        "baseline": 49.08511166896886,
+        "echo": 45.82557849139896,
+        "borrow": 46.26781383546799,
+        "bound": 45.825578491398964
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 49.08511166896886,
+      "eligible": false
+    },
+    {
+      "id": "izanami-standard",
+      "role": "debuffer",
+      "means": {
+        "baseline": 43.47634986379709,
+        "echo": 45.56897893588163,
+        "borrow": 46.22546185826867,
+        "bound": 45.56897893588162
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 45.56897893588163,
+      "eligible": false
+    },
+    {
+      "id": "artemis-standard",
+      "role": "attacker",
+      "means": {
+        "baseline": 39.02808918123164,
+        "echo": 39.02808918123164,
+        "borrow": 39.02808918123164,
+        "bound": 39.02808918123166
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 39.02808918123164,
+      "eligible": false
+    },
+    {
+      "id": "persephone-standard",
+      "role": "debuffer",
+      "means": {
+        "baseline": 44.492406083460985,
+        "echo": 44.1557685999765,
+        "borrow": 44.753210896511014,
+        "bound": 44.15576859997648
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 44.492406083460985,
+      "eligible": false
+    },
+    {
+      "id": "hestia-standard",
+      "role": "tank",
+      "means": {
+        "baseline": 36.588151195833156,
+        "echo": 36.58902416287377,
+        "borrow": 36.640035796455386,
+        "bound": 37.005796875254426
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.588151195833156,
+      "eligible": true
+    },
+    {
+      "id": "hebe-standard",
+      "role": "healer",
+      "means": {
+        "baseline": 52.96469732475197,
+        "echo": 50.55889397683859,
+        "borrow": 52.49664296542572,
+        "bound": 44.88509835380826
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 52.96469732475197,
+      "eligible": true
+    },
+    {
+      "id": "eos-standard",
+      "role": "supporter",
+      "means": {
+        "baseline": 42.7764692117128,
+        "echo": 43.42713859206234,
+        "borrow": 44.34829396779288,
+        "bound": 46.91653477577587
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "bound",
+      "currentScore": 43.42713859206234,
+      "eligible": true
+    },
+    {
+      "id": "nike-standard",
+      "role": "attacker",
+      "means": {
+        "baseline": 37.67475334205963,
+        "echo": 37.67475334205963,
+        "borrow": 37.67475334205963,
+        "bound": 41.250139891465025
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 37.67475334205963,
+      "eligible": true
+    },
+    {
+      "id": "rainbow-iris-standard",
+      "role": "supporter",
+      "means": {
+        "baseline": 42.532023848215374,
+        "echo": 45.32144023114191,
+        "borrow": 45.85248886458705,
+        "bound": 45.32144023114191
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 45.32144023114191,
+      "eligible": false
+    },
+    {
+      "id": "toyotama-standard",
+      "role": "healer",
+      "means": {
+        "baseline": 54.397771760366815,
+        "echo": 54.11315869409598,
+        "borrow": 56.487437857064336,
+        "bound": 54.11315869409598
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 54.397771760366815,
+      "eligible": false
+    },
+    {
+      "id": "seoritsu-standard",
+      "role": "healer",
+      "means": {
+        "baseline": 54.22277624126433,
+        "echo": 53.88408246621259,
+        "borrow": 54.92652847067747,
+        "bound": 53.8840824662126
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 54.22277624126433,
+      "eligible": false
+    },
+    {
+      "id": "wakahirume-standard",
+      "role": "supporter",
+      "means": {
+        "baseline": 43.128639015990956,
+        "echo": 44.906728070102034,
+        "borrow": 44.952699682340906,
+        "bound": 44.90672807010204
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "echo",
+      "boundChoice": "echo",
+      "currentScore": 44.906728070102034,
+      "eligible": false
+    },
+    {
+      "id": "ukanomitama-standard",
+      "role": "supporter",
+      "means": {
+        "baseline": 39.867892800179234,
+        "echo": 41.71084793716336,
+        "borrow": 43.80637147507699,
+        "bound": 43.07237707154192
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "bound",
+      "currentScore": 41.71084793716336,
+      "eligible": true
+    },
+    {
+      "id": "hecate",
+      "role": "debuffer",
+      "means": {
+        "baseline": 54.2726792081525,
+        "echo": 53.7718796709356,
+        "borrow": 54.21982186564612,
+        "bound": 53.77187967093558
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 54.2726792081525,
+      "eligible": false
+    },
+    {
+      "id": "freyja",
+      "role": "attacker",
+      "means": {
+        "baseline": 55.74858868101424,
+        "echo": 55.74858868101424,
+        "borrow": 55.74858868101424,
+        "bound": 55.74858868101424
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 55.74858868101424,
+      "eligible": false
+    },
+    {
+      "id": "benzaiten",
+      "role": "healer",
+      "means": {
+        "baseline": 58.28080767248138,
+        "echo": 59.601603222308384,
+        "borrow": 61.98294013292997,
+        "bound": 59.60160322230836
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 59.601603222308384,
+      "eligible": false
+    },
+    {
+      "id": "iris",
+      "role": "supporter",
+      "means": {
+        "baseline": 42.56538886172459,
+        "echo": 40.458262480478254,
+        "borrow": 43.43221888059658,
+        "bound": 48.95948390600413
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "bound",
+      "currentScore": 42.56538886172459,
+      "eligible": true
+    },
+    {
+      "id": "mireille",
+      "role": "healer",
+      "means": {
+        "baseline": 54.61660946878318,
+        "echo": 54.229505654771735,
+        "borrow": 56.71328739792168,
+        "bound": 54.22950565477173
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 54.61660946878318,
+      "eligible": false
+    },
+    {
+      "id": "asteria",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 41.13637421183083,
+        "echo": 41.13637421183083,
+        "borrow": 41.13637421183083,
+        "bound": 41.13637421183082
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 41.13637421183083,
+      "eligible": false
+    },
+    {
+      "id": "evelyn",
+      "role": "tank",
+      "means": {
+        "baseline": 50.946617750298,
+        "echo": 42.25594316183073,
+        "borrow": 45.027695168531906,
+        "bound": 42.25594316183073
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 50.946617750298,
+      "eligible": false
+    },
+    {
+      "id": "toyotama",
+      "role": "healer",
+      "means": {
+        "baseline": 55.63219877168446,
+        "echo": 56.812134504580364,
+        "borrow": 58.73949211429092,
+        "bound": 56.81213450458037
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 56.812134504580364,
+      "eligible": false
+    },
+    {
+      "id": "wakahirume",
+      "role": "supporter",
+      "means": {
+        "baseline": 46.217769922919096,
+        "echo": 49.69894365782312,
+        "borrow": 50.67992898748312,
+        "bound": 49.69894365782313
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 49.69894365782312,
+      "eligible": false
+    },
+    {
+      "id": "iwanagahime",
+      "role": "tank",
+      "means": {
+        "baseline": 36.56565861858472,
+        "echo": 36.67568054947622,
+        "borrow": 36.76576777793012,
+        "bound": 37.25141330951299
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.56565861858472,
+      "eligible": true
+    },
+    {
+      "id": "kukurihime",
+      "role": "debuffer",
+      "means": {
+        "baseline": 41.373200416920945,
+        "echo": 42.485261937422415,
+        "borrow": 42.877780467468185,
+        "bound": 47.69152392095384
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "bound",
+      "currentScore": 42.485261937422415,
+      "eligible": true
+    },
+    {
+      "id": "seoritsu",
+      "role": "healer",
+      "means": {
+        "baseline": 57.882801683193286,
+        "echo": 56.077293194751654,
+        "borrow": 58.03606235399285,
+        "bound": 56.07729319475167
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 57.882801683193286,
+      "eligible": false
+    },
+    {
+      "id": "ukanomitama",
+      "role": "supporter",
+      "means": {
+        "baseline": 43.41775485707366,
+        "echo": 44.25607559740646,
+        "borrow": 43.861327506126045,
+        "bound": 44.25607559740644
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "echo",
+      "boundChoice": "echo",
+      "currentScore": 44.25607559740646,
+      "eligible": false
+    },
+    {
+      "id": "mizuhanome",
+      "role": "debuffer",
+      "means": {
+        "baseline": 43.08624114065222,
+        "echo": 42.87247707841137,
+        "borrow": 44.39051712021684,
+        "bound": 42.87247707841137
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 43.08624114065222,
+      "eligible": false
+    },
+    {
+      "id": "haniyasu",
+      "role": "tank",
+      "means": {
+        "baseline": 36.120016293279,
+        "echo": 36.19684074036145,
+        "borrow": 36.23905067677065,
+        "bound": 36.99034698865873
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 36.120016293279,
+      "eligible": true
+    },
+    {
+      "id": "nox",
+      "role": "attacker",
+      "means": {
+        "baseline": 54.683090492712864,
+        "echo": 54.683090492712864,
+        "borrow": 54.683090492712864,
+        "bound": 54.683090492712864
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 54.683090492712864,
+      "eligible": false
+    },
+    {
+      "id": "vespera",
+      "role": "supporter",
+      "means": {
+        "baseline": 51.257933245792096,
+        "echo": 51.37874229035295,
+        "borrow": 52.33137818696123,
+        "bound": 51.378742290352925
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "baseline",
+      "currentScore": 51.257933245792096,
+      "eligible": false
+    },
+    {
+      "id": "miette",
+      "role": "healer",
+      "means": {
+        "baseline": 54.53049655144912,
+        "echo": 56.151310084312506,
+        "borrow": 57.754547126728944,
+        "bound": 56.151310084312534
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 56.151310084312506,
+      "eligible": false
+    },
+    {
+      "id": "tikka",
+      "role": "debuffer",
+      "means": {
+        "baseline": 42.923978766552075,
+        "echo": 42.14454493922651,
+        "borrow": 42.41936271270079,
+        "bound": 44.52531531169172
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "bound",
+      "currentScore": 42.923978766552075,
+      "eligible": true
+    },
+    {
+      "id": "kuzuha",
+      "role": "debuffer",
+      "means": {
+        "baseline": 57.25721288515406,
+        "echo": 56.5829124928435,
+        "borrow": 56.5829124928435,
+        "bound": 56.5829124928435
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 57.25721288515406,
+      "eligible": false
+    },
+    {
+      "id": "kuzuha-awakened",
+      "role": "debuffer",
+      "means": {
+        "baseline": 54.97520115041899,
+        "echo": 59.00308142461372,
+        "borrow": 59.00308142461372,
+        "bound": 59.00308142461374
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "echo",
+      "boundChoice": "echo",
+      "currentScore": 59.00308142461372,
+      "eligible": false
+    },
+    {
+      "id": "lunette",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 39.373381414820095,
+        "echo": 39.373381414820095,
+        "borrow": 39.373381414820095,
+        "bound": 39.37338141482011
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 39.373381414820095,
+      "eligible": false
+    },
+    {
+      "id": "lunette-awakened",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 49.26881432728065,
+        "echo": 49.26881432728065,
+        "borrow": 49.26881432728065,
+        "bound": 49.26881432728066
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 49.26881432728065,
+      "eligible": false
+    },
+    {
+      "id": "elaine-awakened",
+      "role": "healer",
+      "means": {
+        "baseline": 55.58899964505794,
+        "echo": 59.25897169605615,
+        "borrow": 61.711172631299945,
+        "bound": 59.25897169605617
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "borrow",
+      "boundChoice": "echo",
+      "currentScore": 59.25897169605615,
+      "eligible": false
+    },
+    {
+      "id": "liora-awakened",
+      "role": "tank",
+      "means": {
+        "baseline": 39.233682266360965,
+        "echo": 37.28968600937496,
+        "borrow": 37.267729970443604,
+        "bound": 37.289686009374954
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 39.233682266360965,
+      "eligible": false
+    },
+    {
+      "id": "noelle-awakened",
+      "role": "area_attacker",
+      "means": {
+        "baseline": 39.03704082021128,
+        "echo": 39.03704082021128,
+        "borrow": 39.03704082021128,
+        "bound": 39.03704082021126
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 39.03704082021128,
+      "eligible": false
+    },
+    {
+      "id": "lisette-awakened",
+      "role": "debuffer",
+      "means": {
+        "baseline": 50.965209847358935,
+        "echo": 52.45354184197685,
+        "borrow": 51.94846063253832,
+        "bound": 52.45354184197685
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "echo",
+      "boundChoice": "echo",
+      "currentScore": 52.45354184197685,
+      "eligible": false
+    },
+    {
+      "id": "seris-awakened",
+      "role": "attacker",
+      "means": {
+        "baseline": 55.846037797835216,
+        "echo": 55.846037797835216,
+        "borrow": 55.846037797835216,
+        "bound": 55.84603779783519
+      },
+      "currentChoice": "baseline",
+      "unrestrictedChoice": "baseline",
+      "boundChoice": "baseline",
+      "currentScore": 55.846037797835216,
+      "eligible": false
+    },
+    {
+      "id": "fortuna",
+      "role": "supporter",
+      "means": {
+        "baseline": 50.681644327878594,
+        "echo": 51.88276532835356,
+        "borrow": 50.6036305057002,
+        "bound": 51.88276532835356
+      },
+      "currentChoice": "echo",
+      "unrestrictedChoice": "echo",
+      "boundChoice": "echo",
+      "currentScore": 51.88276532835356,
+      "eligible": false
+    }
+  ],
+  "targets": [
+    "veil-priestess",
+    "hebe",
+    "hebe-standard",
+    "flora-standard",
+    "stone-drake",
+    "hollow-keeper",
+    "haniyasu"
+  ],
+  "groups": [
+    {
+      "role": "area_attacker",
+      "bottom": [
+        "moon-moth",
+        "noelle"
+      ],
+      "top": [
+        "lunette-awakened",
+        "zakuro"
+      ]
+    },
+    {
+      "role": "attacker",
+      "bottom": [
+        "pale-wolf",
+        "nike",
+        "nike-standard"
+      ],
+      "top": [
+        "nox",
+        "freyja",
+        "seris-awakened"
+      ]
+    },
+    {
+      "role": "debuffer",
+      "bottom": [
+        "kukurihime",
+        "tikka",
+        "mizuhanome",
+        "persephone-standard"
+      ],
+      "top": [
+        "lisette-awakened",
+        "hecate",
+        "kuzuha",
+        "kuzuha-awakened"
+      ]
+    },
+    {
+      "role": "healer",
+      "bottom": [
+        "veil-priestess",
+        "hebe",
+        "hebe-standard",
+        "flora-standard"
+      ],
+      "top": [
+        "selene",
+        "seoritsu",
+        "elaine-awakened",
+        "benzaiten"
+      ]
+    },
+    {
+      "role": "supporter",
+      "bottom": [
+        "ukanomitama-standard",
+        "eos",
+        "iris",
+        "lucielle"
+      ],
+      "top": [
+        "wakahirume",
+        "vespera",
+        "fortuna",
+        "rainbow-iris"
+      ]
+    },
+    {
+      "role": "tank",
+      "bottom": [
+        "stone-drake",
+        "hollow-keeper",
+        "haniyasu"
+      ],
+      "top": [
+        "liora-awakened",
+        "athena",
+        "evelyn"
+      ]
+    }
+  ],
+  "engineSha256": "aa18668cd7814a3f630ccd9ed3b58c8151c4cadb88f9c18e0607e998c54158b5",
+  "prototypeSha256": "172544c8507767b7d06ff47b08516e9937ade02908be4d2b5fbddf7bf0b89576"
+}

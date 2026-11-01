@@ -79,3 +79,17 @@ S = sum(character constants) + 0.1 * sum(gem power tier + trait tier). Freyja + 
 
 Awakened Seris / nine-tailed Kuzuha / kimono Athena / Benzaiten; fixed four-member party, order, leader and gear. Two Echo Shards and two Dream Laces. Every floor from1 through59 has an individually verified successful example. Retries and per-floor tactics are allowed. This is a provisional best found, not a global optimum proof or an uninterrupted climb. Initial ownership, gear and prerequisites are declared test fixtures. The video also examines T5 gear, weaker traits, character requirements, gacha simulations and upper-tier loot rarity.
 
+## Character power spread and rescue proposals — ver1.0
+
+- [12:38 discussion video (720p)](STILLVEIL-Character-Spread-720p.mp4)
+- [Methods, findings, proposal definitions and limits](Character-Spread-Notes.txt)
+- [All69 forms: comparison CSV](Character-Spread-Comparison.csv)
+- [YouTube title, description and chapters](Character-Spread-YouTube-description.txt)
+- [Thumbnail](Character-Spread-Thumbnail.jpg)
+- [Detailed analysis and per-seed summaries](Character-Spread-Analysis.json)
+- [Frozen protocol](Character-Spread-Protocol.json)
+- [Constant distribution figure](Character-Spread-Constant-Distribution.png)
+- [Within-role distribution figure](Character-Spread-Role-Distribution.png)
+
+Zundamon and Shikoku Metan discuss the current roster and proposal-only rescue mechanics. The constant CV is26.7%; this is not a damage or win-rate gap. In the frozen T3 comparison, a restricted starter-stone option reduced the within-role score SD from5.036 to4.848 (about3.7%), with a modest lower-group gain and unchanged upper-group mean. Other additions had little effect or adverse examples. Final held-out comparison:69 forms x6 contexts x30 conditions x5 modes =62,100 simulated battles. These are limited-context test fixtures, not an exhaustive ranking. Proposal effects remain unimplemented; game main and itch.io were not changed.
+

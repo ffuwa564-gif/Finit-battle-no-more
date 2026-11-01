@@ -1,0 +1,40 @@
+--- a/src/domain/engine.ts
++++ b/src/domain/engine.ts
+@@ -1,3 +1,15 @@
++export let prototypeMode = 'off';
++let prototypeTargets = new Set<string>();
++let prototypeBorrower = ''; 
++export function configurePrototype(mode:string, targets:string[]=[], borrower=''){prototypeMode=mode;prototypeTargets=new Set(targets);prototypeBorrower=borrower;}
++export function applyPrototypeOpening(battle:Battle,content:Content){
++ if(!prototypeMode.includes('bound')||battle.wave!==0)return;
++ const actor=battle.units.find(u=>u.side==='party'&&u.characterId===prototypeBorrower);const def=content.characters.find(c=>c.id===prototypeBorrower);
++ if(!actor||!def||def.strength>14||!['R','SR'].includes(def.rarity))return;
++ actor.barrier=Math.max(actor.barrier??0,120);actor.barrierUntil=Math.max(actor.barrierUntil??0,2);
++ battle.initialUnits=clone(battle.units);for(const e of battle.events)if(e.unitsAfter)e.unitsAfter=clone(battle.units);
++}
++
+ import { CRYSTAL_POWER, resonantStrength } from './crystal-resonance';
+ import { clearBattleFairy, offerBattleFairy, FAIRY_CHARGE, FAIRY_STAY } from './battle-fairies';
+ import { clearBattleBloom, offerBattleBloom, BLOOM_HEAL_PERCENT } from './battle-blooms';
+@@ -682,7 +694,9 @@
+       const numerator = action.power ?? (action.template === 'shatter' ? action.skill!.strength + 30 : (action.template === 'pierce' || action.template === 'dawn') ? action.skill!.strength + 30 : action.template === 'drain' ? 9 * (action.skill!.strength + 30) : action.template === 'area' ? 13 * (action.skill!.strength + 30) : action.skill ? 3 * (action.skill.strength + 30) : 1);
+       const denominator = action.power ? 100 : action.template === 'shatter' ? 50 : (action.template === 'pierce' || action.template === 'dawn') ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
+       for (const target of action.targets) {
+-        const hit = damage(actor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency * executionPower(target), coordination); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
++        const donorAttack = Math.max(0,...alive(battle.units,'party').filter(u=>u.uid!==actor.uid).map(u=>u.attack));
++        const hitActor = (prototypeMode.includes('borrow')||prototypeMode.includes('bound')&&actorDef.strength<=14&&['R','SR'].includes(actorDef.rarity)) && actor.characterId===prototypeBorrower && actor.side==='party' && memoryDef?.id==='echo-shard' ? {...actor,attack:Math.max(actor.attack,Math.min(60,Math.floor(donorAttack*.75)))} : actor;
++        const hit = damage(hitActor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency * executionPower(target), coordination); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
+       }
+     }
+     if (action.skill && memoryDef && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && (memoryDef.id === 'echo-shard' || gemVariantForSkill(action.skill.id) === 'echo')) {
+@@ -701,6 +715,10 @@
+       if (gemDefinitionForSkill(action.skill.id)) actor.cooldowns['memory:slot'] = cooldown;
+     }
+     if (!action.ultimate && !action.forcedBy) gainUltimate(actor, 25);
++    if(prototypeMode.includes('protect') && actor.side==='party' && prototypeTargets.has(actor.characterId) && !action.forcedBy && !action.ultimate){
++      if(['heal','mend_pair'].includes(action.template) && amount>0){const friend=battle.units.find(u=>u.uid===targetIds[0]&&u.side==='party'&&u.hp>0);if(friend){gainUltimate(friend,8);friend.statusWardUntil=Math.max(friend.statusWardUntil??-1,battle.round+1);}}
++      if(action.template==='guard'){const friend=battle.units.find(u=>u.uid===targetIds[0]&&u.side==='party'&&u.hp>0);if(friend)gainUltimate(friend,12);const current=(actor.barrierUntil??-1)>=battle.round?actor.barrier??0:0;actor.barrier=Math.max(current,Math.floor(actor.maxHp*.2));actor.barrierUntil=Math.max(actor.barrierUntil??0,battle.round+1);}
++    }
+     clearInvalidGuards(battle);
+     const recovered = ageAilments(actor, battle.round);
+     emit(battle, { coordinationAction: coordination?.linked.has(actor.uid) ? 'linked' : undefined, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${coordination?.linked.has(actor.uid) ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount, unitsAfter: clone(battle.units) });

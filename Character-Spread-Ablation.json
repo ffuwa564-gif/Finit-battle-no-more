@@ -1,0 +1,14 @@
+{
+  "definition": "Wearers fixed from training; no reoptimization after removing effect",
+  "newTrials": 5400,
+  "modes": {
+    "opening-only": {
+      "mean": 46.92069954543428,
+      "withinRoleSD": 4.880839933568711
+    },
+    "reference-only": {
+      "mean": 46.669750690547744,
+      "withinRoleSD": 5.0262473516108805
+    }
+  }
+}
