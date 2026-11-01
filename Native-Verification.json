@@ -1,0 +1,96 @@
+{
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "passed": true,
+  "battles": [
+    {
+      "id": "gear-1",
+      "commands": 120,
+      "rounds": 10,
+      "won": true,
+      "potions": 0,
+      "flowers": 3,
+      "fairies": 1,
+      "passed": true
+    },
+    {
+      "id": "gear-2",
+      "commands": 136,
+      "rounds": 11,
+      "won": true,
+      "potions": 0,
+      "flowers": 4,
+      "fairies": 2,
+      "passed": true
+    },
+    {
+      "id": "gear-3",
+      "commands": 153,
+      "rounds": 13,
+      "won": true,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "passed": true
+    },
+    {
+      "id": "gear-4",
+      "commands": 150,
+      "rounds": 13,
+      "won": true,
+      "potions": 0,
+      "flowers": 3,
+      "fairies": 1,
+      "passed": true
+    },
+    {
+      "id": "first-try",
+      "commands": 466,
+      "rounds": 40,
+      "won": false,
+      "potions": 5,
+      "flowers": 17,
+      "fairies": 7,
+      "passed": true
+    },
+    {
+      "id": "heart-1",
+      "commands": 186,
+      "rounds": 16,
+      "won": true,
+      "potions": 0,
+      "flowers": 4,
+      "fairies": 2,
+      "passed": true
+    },
+    {
+      "id": "heart-2",
+      "commands": 170,
+      "rounds": 14,
+      "won": true,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "passed": true
+    },
+    {
+      "id": "heart-3",
+      "commands": 180,
+      "rounds": 15,
+      "won": true,
+      "potions": 1,
+      "flowers": 5,
+      "fairies": 2,
+      "passed": true
+    },
+    {
+      "id": "tower-1",
+      "commands": 296,
+      "rounds": 25,
+      "won": true,
+      "potions": 3,
+      "flowers": 11,
+      "fairies": 4,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "017a0ccca241d1ec6a72b8a73f63188fc1043875",
+  "sourceSha256": "226d8a8f305774156295062bc7d33049657c6a7b270af24ecbf05e695e6d1e6f",
+  "processingSha256": "0b8d3afa40dfd7e8a6038be608d15ecd45d8343c1499e7fbbcf375f05cfe62d4",
+  "frames": 690,
+  "duration": 23,
+  "finishedSha256": "46ec73f77f5404e0052136e4715b30988cd998be01bded01395c833d9915f2c9",
+  "bodyPcmSha256": "669ac4860fabb0fb4cc72d96cec3f1b97516bdf1504c62dc788781e494c75464",
+  "bodyVideoSha256": "bb9be843343dc2baff9f60b3346706fa754b990a8d28b31772fd13cd6772d16a",
+  "referenceSha256": "10942db24fffe8b86a2fbc7eeabe07269c7dfe7f4b8fb29b07b127a598130a14",
+  "reference": "artifacts/diary-part2/render/common-op.mov"
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "chapter": "first",
+    "start": 400.8333333333333,
+    "duration": 74.33333333333333,
+    "playDuration": 37.7,
+    "piece": "artifacts/diary-part2/render/first-game.mov",
+    "pieceHash": "fe6046f0da3744b87393f58390fb4c560456c2d1f7b2ebc540aa5bbae97474e1",
+    "source": "artifacts/diary-part2/capture/first-try.mov",
+    "sourceStart": 4.135791063308716,
+    "sourceEnd": 58.587790966033936,
+    "rate": 1.4442479728063047,
+    "gameCrop": "450:800:640:105"
+  },
+  {
+    "chapter": "awake",
+    "start": 570.0333333333333,
+    "duration": 85.76666666666667,
+    "playDuration": 32.666666666666664,
+    "piece": "artifacts/diary-part2/render/awake-game.mov",
+    "pieceHash": "48f791bccc0b000a7cc7fdbc43684f8c67d157dad21e87d2c423b2d86ec17e8e",
+    "source": "artifacts/diary-part2/capture/heart-3.mov",
+    "sourceStart": 4.149883031845093,
+    "sourceEnd": 36.828882932662964,
+    "rate": 1,
+    "gameCrop": "450:800:640:105"
+  },
+  {
+    "chapter": "battle1",
+    "start": 823.8666666666667,
+    "duration": 109.8,
+    "playDuration": 109.8,
+    "piece": "artifacts/diary-part2/render/battle1-game.mov",
+    "pieceHash": "420060b7a983efe5a317a5945ceb4b703666f94de0b563370aeb6e2db8b3e13e",
+    "source": "artifacts/diary-part2/capture/tower-1.mov",
+    "sourceStart": 4.701494932174683,
+    "sourceEnd": 139.0264949798584,
+    "rate": 1.223360656171983,
+    "gameCrop": "450:800:640:105"
+  },
+  {
+    "chapter": "ultimate",
+    "start": 933.6666666666666,
+    "duration": 94.1,
+    "playDuration": 8.0,
+    "piece": "artifacts/diary-part2/render/ultimate-game.mov",
+    "pieceHash": "bbee3fba67ff6db498e0a0ed14447bd9ca192d5673e45b2a7749139a148b0e6d",
+    "source": "artifacts/diary-part2/capture/tower-1.mov",
+    "sourceStart": 94.20539498329163,
+    "sourceEnd": 102.20539498329163,
+    "rate": 1,
+    "gameCrop": "450:800:640:105"
+  },
+  {
+    "chapter": "battle2",
+    "start": 1027.7666666666667,
+    "duration": 130.76666666666668,
+    "playDuration": 130.76666666666668,
+    "piece": "artifacts/diary-part2/render/battle2-game.mov",
+    "pieceHash": "326c80f2ba4ff114e7eb6da9f023e062d36db0c1221e8db89633f9185ffee537",
+    "source": "artifacts/diary-part2/capture/tower-1.mov",
+    "sourceStart": 139.0264949798584,
+    "sourceEnd": 302.9014949798584,
+    "rate": 1.2531863369869995,
+    "gameCrop": "450:800:640:105"
+  },
+  {
+    "chapter": "battle3",
+    "start": 1158.5333333333333,
+    "duration": 100.9,
+    "playDuration": 63.333333333333336,
+    "piece": "artifacts/diary-part2/render/battle3-game.mov",
+    "pieceHash": "5937898ca5fbe87096b31200ae2af7f75cdbafbd08da0848cc2d5f4a1d1d5e98",
+    "source": "artifacts/diary-part2/capture/tower-1.mov",
+    "sourceStart": 302.9014949798584,
+    "sourceEnd": 420.9784951210022,
+    "rate": 1.8641774572330851,
+    "gameCrop": "450:800:640:105"
+  }
+]

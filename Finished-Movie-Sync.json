@@ -1,0 +1,307 @@
+{
+  "passed": true,
+  "finishedSha256": "46ec73f77f5404e0052136e4715b30988cd998be01bded01395c833d9915f2c9",
+  "timelineSha256": "bb7a63ef1f92e7ac88fc0683a4bdbce496a94343c6873a9524586907f9599368",
+  "narrationSha256": "7e7273c71d0c2559b7a5e9619f53312a7ab70afa41b595bac6427714074e27ff",
+  "toleranceMs": 80,
+  "openingAnchors": [
+    {
+      "time": 1.3333333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9986272539604345,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 10.5,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9963447677376474,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 20.333333333333332,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9987831540912389,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    }
+  ],
+  "gameAnchors": [
+    {
+      "chapter": "first",
+      "part": 0,
+      "time": 408.96666666666664,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9919386406687091,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.6229167750870217,
+      "changingFrameMotion": 3.8725225225225226,
+      "passed": true
+    },
+    {
+      "chapter": "first",
+      "part": 1,
+      "time": 424.3333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9951829626318577,
+      "videoLagMs": -33.33333333333338,
+      "frameRMSE": 1.439912618303051,
+      "changingFrameMotion": 12.558483483483483,
+      "passed": true
+    },
+    {
+      "chapter": "first",
+      "part": 2,
+      "time": 433.66666666666663,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9812468208894399,
+      "videoLagMs": 33.33333333333333,
+      "frameRMSE": 1.5006505095964056,
+      "changingFrameMotion": 3.4024774774774773,
+      "passed": true
+    },
+    {
+      "chapter": "awake",
+      "part": 0,
+      "time": 574.8333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.993841583228243,
+      "videoLagMs": 33.33333333333333,
+      "frameRMSE": 1.3946487174357007,
+      "changingFrameMotion": 1.8457207207207207,
+      "passed": true
+    },
+    {
+      "chapter": "awake",
+      "part": 1,
+      "time": 584.5333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.997406286222419,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.4540509840663305,
+      "changingFrameMotion": 2.8316066066066066,
+      "passed": true
+    },
+    {
+      "chapter": "awake",
+      "part": 2,
+      "time": 594.5333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9921571574517517,
+      "videoLagMs": 33.33333333333333,
+      "frameRMSE": 1.420226053148597,
+      "changingFrameMotion": 1.2065315315315315,
+      "passed": true
+    },
+    {
+      "chapter": "battle1",
+      "part": 0,
+      "time": 842.3,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9910993073911548,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.1756730868771332,
+      "changingFrameMotion": 1.3665165165165165,
+      "passed": true
+    },
+    {
+      "chapter": "battle1",
+      "part": 1,
+      "time": 888.8666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9910890284174667,
+      "videoLagMs": 33.33333333333333,
+      "frameRMSE": 1.4036096751305613,
+      "changingFrameMotion": 3.393168168168168,
+      "passed": true
+    },
+    {
+      "chapter": "battle1",
+      "part": 2,
+      "time": 900.4666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9943534066547933,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.8149570433123394,
+      "changingFrameMotion": 10.384234234234235,
+      "passed": true
+    },
+    {
+      "chapter": "ultimate",
+      "part": 0,
+      "time": 937.8666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9955002830480021,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.688616719811345,
+      "changingFrameMotion": 10.383633633633634,
+      "passed": true
+    },
+    {
+      "chapter": "battle2",
+      "part": 0,
+      "time": 1044.3333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9932782115176011,
+      "videoLagMs": 33.33333333333333,
+      "frameRMSE": 1.4059611398352114,
+      "changingFrameMotion": 6.265165165165165,
+      "passed": true
+    },
+    {
+      "chapter": "battle2",
+      "part": 1,
+      "time": 1092.8333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.993716207195667,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.6196290310432813,
+      "changingFrameMotion": 8.937012012012012,
+      "passed": true
+    },
+    {
+      "chapter": "battle2",
+      "part": 2,
+      "time": 1145.3,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9944810990894928,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.6289885216304023,
+      "changingFrameMotion": 9.873573573573573,
+      "passed": true
+    },
+    {
+      "chapter": "battle3",
+      "part": 0,
+      "time": 1161.0666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9934661179759511,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.3785410314442494,
+      "changingFrameMotion": 4.794519519519519,
+      "passed": true
+    },
+    {
+      "chapter": "battle3",
+      "part": 1,
+      "time": 1189.8333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9928286367492597,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.3941103053716888,
+      "changingFrameMotion": 12.575750750750752,
+      "passed": true
+    },
+    {
+      "chapter": "battle3",
+      "part": 2,
+      "time": 1210.8666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9914346495728452,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.2867714563125734,
+      "changingFrameMotion": 1.2801801801801802,
+      "passed": true
+    }
+  ],
+  "voiceAnchors": [
+    {
+      "speaker": "z",
+      "time": 23.3,
+      "lagMs": 1.4432899320127035e-12,
+      "correlation": 0.9949956838298168,
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 761.26,
+      "lagMs": 2.275957200481571e-11,
+      "correlation": 0.9678364345050932,
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 1424.7933333333335,
+      "lagMs": -9.092726571680032e-11,
+      "correlation": 0.9686733700158842,
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 28.656,
+      "lagMs": 1.4432899320127035e-12,
+      "correlation": 0.992766244930202,
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 699.0759999999999,
+      "lagMs": 2.275957200481571e-11,
+      "correlation": 0.9853196215320671,
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 1418.1773333333335,
+      "lagMs": -9.092726571680032e-11,
+      "correlation": 0.9709033518720551,
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 35.17466666666667,
+      "lagMs": 1.4432899320127035e-12,
+      "correlation": 0.9844497446741135,
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 736.1813333333333,
+      "lagMs": 2.275957200481571e-11,
+      "correlation": 0.9901317148781622,
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 1420.418666666667,
+      "lagMs": -9.092726571680032e-11,
+      "correlation": 0.9832770492172814,
+      "passed": true
+    }
+  ],
+  "coveragePassed": true,
+  "ultimateReaction": {
+    "observedFinisherMovieTime": 939.0279383500417,
+    "spokenReactionTime": 939.0279383500416,
+    "deltaMs": -1.1368683772161603e-10,
+    "passed": true
+  },
+  "reactionVoiceAnchors": [
+    {
+      "speaker": "z",
+      "text": "当たったのだ！",
+      "time": 937.4566666666666,
+      "audioLagMs": 0.0,
+      "rawMixCorrelation": 0.3691232238588492,
+      "correlation": 0.9812115304988401,
+      "isolation": "Subtract the other pre-encode mix sources at the common sample clock; keep the target voice and AAC residual. This does not shift the candidate or lower the threshold.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "text": "最後の一発、でっか！",
+      "time": 938.9679383500417,
+      "audioLagMs": 0.0,
+      "rawMixCorrelation": 0.7649341203382287,
+      "correlation": 0.9988762808414031,
+      "isolation": "Subtract the other pre-encode mix sources at the common sample clock; keep the target voice and AAC residual. This does not shift the candidate or lower the threshold.",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "processingSha256": "65d11ec089a2c98d6f4da7efe8faee77e126d04bfa3a55b5801c036c37c53793"
+}
