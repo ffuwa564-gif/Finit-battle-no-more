@@ -1,5 +1,9 @@
 # STILLVEIL 動画・解説資料
 
+![Part1 新サムネイル](TowerDiary-Part1-Thumbnail.jpg)
+
+可愛いピンクのシリーズへサムネイルを更新しました。[Part1](TowerDiary-Part1-Thumbnail.jpg) ／ [補足編](TowerDiary-Part1-Supplement-Thumbnail.jpg) ／ [Part1.1](TowerDiary-Part1.1-Thumbnail.jpg) ／ [全5枚・JPEGとPNGの素材集](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails)
+
 ## 白亜の塔攻略日記 — 共通オープニング v4（編成ラッシュ1回）
 
 23秒 / 横型16:9。最初の編成ラッシュだけを撤去し、後半のラッシュ1回だけを残しました。必殺技は1秒・SEなし、最後のタイトルコールと「なのだ！」を維持。
