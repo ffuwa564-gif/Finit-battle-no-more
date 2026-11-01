@@ -1,0 +1,234 @@
+[
+  {
+    "label": "720p",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-v2-720p.mp4",
+    "finishedSha256": "dcce5f47d14a5f1f3bd6399e2404032c69faa137fbc2191bb9d4f93f81699d69",
+    "timelineSha256": "e3e737495159ebbad9c78163d0eda0ae138feabf3d627af5374ce6eb8276eab3",
+    "musicAnchors": [
+      {
+        "at": 0.4,
+        "lagSeconds": 0.0,
+        "correlation": 0.999435074055772,
+        "passed": true
+      },
+      {
+        "at": 4.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9904524564739945,
+        "passed": true
+      },
+      {
+        "at": 8.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9987071081413105,
+        "passed": true
+      },
+      {
+        "at": 11.75,
+        "lagSeconds": 0.0,
+        "correlation": 0.9988422529029066,
+        "passed": true
+      },
+      {
+        "at": 13.1,
+        "lagSeconds": 0.0,
+        "correlation": 0.9976472674959563,
+        "passed": true
+      },
+      {
+        "at": 15.3,
+        "lagSeconds": 0.0,
+        "correlation": 0.9985678511289996,
+        "passed": true
+      }
+    ],
+    "voices": [
+      {
+        "name": "z-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.9995138603848392,
+        "passed": true
+      },
+      {
+        "name": "m-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.9996083377640367,
+        "passed": true
+      },
+      {
+        "name": "z-nanoda",
+        "at": 20.8,
+        "lagSeconds": 0.0,
+        "correlation": 0.999818958911009,
+        "passed": true
+      }
+    ],
+    "gameVideoAnchors": [
+      {
+        "at": 11.875,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 3.4290123456790123,
+        "passed": true
+      },
+      {
+        "at": 12.25,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 3.371141975308642,
+        "passed": true
+      },
+      {
+        "at": 12.583333333333334,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 3.398341049382716,
+        "passed": true
+      }
+    ],
+    "noGameSfx": {
+      "gameSfxAbsent": true,
+      "bgmOnlyWindow": [
+        11.75,
+        12.75
+      ],
+      "residualToMusicRms": 0.06132141128182411,
+      "lossyAacTolerance": 0.12,
+      "pcmMusicResidual": 0.0,
+      "passed": true
+    },
+    "lateTag": {
+      "lagSeconds": 0.03333333333333144,
+      "pixelChange": 166.33140432098764,
+      "passed": true
+    },
+    "negativeControl": [
+      {
+        "at": 8.5,
+        "measuredSeconds": 0.2,
+        "passed": true
+      },
+      {
+        "at": 11.75,
+        "measuredSeconds": 0.2,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "label": "1080p",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-v2-1080p.mp4",
+    "finishedSha256": "b3f232e54fcf1bddd89e10c5ff2e751b693dde9325c6b75908db9f65d21c195c",
+    "timelineSha256": "e3e737495159ebbad9c78163d0eda0ae138feabf3d627af5374ce6eb8276eab3",
+    "musicAnchors": [
+      {
+        "at": 0.4,
+        "lagSeconds": 0.0,
+        "correlation": 0.999435074055772,
+        "passed": true
+      },
+      {
+        "at": 4.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9904524564739945,
+        "passed": true
+      },
+      {
+        "at": 8.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9987071081413105,
+        "passed": true
+      },
+      {
+        "at": 11.75,
+        "lagSeconds": 0.0,
+        "correlation": 0.9988422529029066,
+        "passed": true
+      },
+      {
+        "at": 13.1,
+        "lagSeconds": 0.0,
+        "correlation": 0.9976472674959563,
+        "passed": true
+      },
+      {
+        "at": 15.3,
+        "lagSeconds": 0.0,
+        "correlation": 0.9985678511289996,
+        "passed": true
+      }
+    ],
+    "voices": [
+      {
+        "name": "z-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.9995138603848392,
+        "passed": true
+      },
+      {
+        "name": "m-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.9996083377640367,
+        "passed": true
+      },
+      {
+        "name": "z-nanoda",
+        "at": 20.8,
+        "lagSeconds": 0.0,
+        "correlation": 0.999818958911009,
+        "passed": true
+      }
+    ],
+    "gameVideoAnchors": [
+      {
+        "at": 11.875,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 1.900462962962963,
+        "passed": true
+      },
+      {
+        "at": 12.25,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 1.7957175925925926,
+        "passed": true
+      },
+      {
+        "at": 12.583333333333334,
+        "bestOffsetFrames": 0,
+        "sameFrameError": 1.8506944444444444,
+        "passed": true
+      }
+    ],
+    "noGameSfx": {
+      "gameSfxAbsent": true,
+      "bgmOnlyWindow": [
+        11.75,
+        12.75
+      ],
+      "residualToMusicRms": 0.06132141128182411,
+      "lossyAacTolerance": 0.12,
+      "pcmMusicResidual": 0.0,
+      "passed": true
+    },
+    "lateTag": {
+      "lagSeconds": 0.03333333333333144,
+      "pixelChange": 166.69116512345678,
+      "passed": true
+    },
+    "negativeControl": [
+      {
+        "at": 8.5,
+        "measuredSeconds": 0.2,
+        "passed": true
+      },
+      {
+        "at": 11.75,
+        "measuredSeconds": 0.2,
+        "passed": true
+      }
+    ],
+    "passed": true
+  }
+]

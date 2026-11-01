@@ -1,16 +1,17 @@
 # STILLVEIL 動画・解説資料
 
-## 白亜の塔攻略日記 — 共通オープニング（パート2以降）
+## 白亜の塔攻略日記 — 共通オープニング v2（2人が主役）
 
-23秒 / 横型16:9。既存CM・女神アニメ・ルネット必殺技を再編集。最後は2人の「白亜の塔、攻略日記！」、遅れてずんだもんの「なのだ！」。
+23秒 / 横型16:9。ずんだもんとめたんの慌てる・泣く・笑う表情芝居を中心に再構成。必殺技は1秒・効果音なし、扉CMは1秒、立ち絵ラッシュは2秒。最後のタイトルコール＋遅れて「なのだ！」を維持。
 
-- [MP4をダウンロード：720p](STILLVEIL-TowerDiary-Opening-720p.mp4)
-- [MP4をダウンロード：1080p](STILLVEIL-TowerDiary-Opening-1080p.mp4)（720p合成マスターの拡大版）
-- [使い方・素材クレジット](TowerDiary-Opening-README.txt)
-- [YouTube説明欄用クレジット](TowerDiary-Opening-YouTube-description.txt)
-- [完成動画の同期検査](TowerDiary-Opening-Sync-Report.txt)
+- [MP4をダウンロード：720p](STILLVEIL-TowerDiary-Opening-v2-720p.mp4)
+- [MP4をダウンロード：1080p](STILLVEIL-TowerDiary-Opening-v2-1080p.mp4)（720p合成マスターの拡大版）
+- [使い方とクレジット](TowerDiary-Opening-v2-README.txt)
+- [YouTube説明欄用クレジット](TowerDiary-Opening-v2-YouTube-description.txt)
+- [完成動画の同期検査](TowerDiary-Opening-v2-Sync-Report.txt)
 
-![Opening cover](TowerDiary-Opening-Cover.jpg)
+![Opening v2 cover](TowerDiary-Opening-v2-Cover.jpg)
+
 
 ## 最新の動画
 
