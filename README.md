@@ -129,3 +129,11 @@ Zundamon and Shikoku Metan continue the character-rescue discussion. Six researc
 [Download video (720p, 12:40)](STILLVEIL-v1.10-Trial-Review-720p.mp4)
 
 VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Fixed-seed automated trial and UI replay excerpts. Local development version, not a game release.
+
+## STILLVEIL ver1.10 — Trial after preparation improvements
+
+[Download the 10:30 review video (720p)](STILLVEIL-v1.10-Retrial-Review-720p.mp4)
+
+[YouTube description and chapters](v110-Retrial-YouTube-description.txt) / [Thumbnail](v110-Retrial-Thumbnail.jpg)
+
+VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Continuation of the previous earned save; automatic trial and UI replay excerpts. Local development version, not a game release.
