@@ -1,9 +1,9 @@
 [
   {
     "label": "720p",
-    "finishedFile": "STILLVEIL-TowerDiary-Opening-v2-720p.mp4",
-    "finishedSha256": "dcce5f47d14a5f1f3bd6399e2404032c69faa137fbc2191bb9d4f93f81699d69",
-    "timelineSha256": "e3e737495159ebbad9c78163d0eda0ae138feabf3d627af5374ce6eb8276eab3",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-v3-720p.mp4",
+    "finishedSha256": "1ef2cc203464666e884567bb3cbb34bfff2b270bf2c4ca84b7d48799be0d33b6",
+    "timelineSha256": "e4d9d9a35c120b0a91f2196c2fd9ffc4ccd65ce56c7ad30550f5a783656e9281",
     "musicAnchors": [
       {
         "at": 0.4,
@@ -117,9 +117,9 @@
   },
   {
     "label": "1080p",
-    "finishedFile": "STILLVEIL-TowerDiary-Opening-v2-1080p.mp4",
-    "finishedSha256": "b3f232e54fcf1bddd89e10c5ff2e751b693dde9325c6b75908db9f65d21c195c",
-    "timelineSha256": "e3e737495159ebbad9c78163d0eda0ae138feabf3d627af5374ce6eb8276eab3",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-v3-1080p.mp4",
+    "finishedSha256": "c0e711e339a411a773e6e81c8e2a1d3b74ccbf14d61e0cc54de194a42ebff16b",
+    "timelineSha256": "e4d9d9a35c120b0a91f2196c2fd9ffc4ccd65ce56c7ad30550f5a783656e9281",
     "musicAnchors": [
       {
         "at": 0.4,

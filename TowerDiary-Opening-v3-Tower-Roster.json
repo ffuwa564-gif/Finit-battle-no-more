@@ -1,0 +1,781 @@
+{
+  "revision": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "floors": [
+    {
+      "floor": 1,
+      "name": "白亜の塔・第1層",
+      "wave": 1,
+      "allWaves": [
+        [
+          {
+            "characterId": "seris",
+            "boss": true
+          },
+          {
+            "characterId": "moon-moth"
+          },
+          {
+            "characterId": "thorn-witch"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "seris",
+          "name": "セリス",
+          "role": "剣士",
+          "boss": true,
+          "art": "art/seris.png",
+          "portrait": "art/seris.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "moon-moth",
+          "name": "月翅の蛾",
+          "role": "詠唱者",
+          "boss": false,
+          "art": "art/encounter-moon-moth.png",
+          "portrait": "art/encounter-moon-moth.png",
+          "anchor": "50% 50%"
+        },
+        {
+          "id": "thorn-witch",
+          "name": "荊の魔女",
+          "role": "呪術師",
+          "boss": false,
+          "art": "art/encounter-thorn-witch.png",
+          "portrait": "art/encounter-thorn-witch.png",
+          "anchor": "50% 50%"
+        }
+      ]
+    },
+    {
+      "floor": 4,
+      "name": "白亜の塔・第4層",
+      "wave": 1,
+      "allWaves": [
+        [
+          {
+            "characterId": "stone-drake",
+            "boss": true
+          },
+          {
+            "characterId": "seris"
+          },
+          {
+            "characterId": "elaine"
+          },
+          {
+            "characterId": "wakahirume"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "stone-drake",
+          "name": "石燐の幼竜",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/encounter-stone-drake.png",
+          "portrait": "art/encounter-stone-drake.png",
+          "anchor": "50% 50%"
+        },
+        {
+          "id": "seris",
+          "name": "セリス",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/seris.png",
+          "portrait": "art/seris.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "elaine",
+          "name": "エレイン",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/elaine.png",
+          "portrait": "art/elaine.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "wakahirume",
+          "name": "ワカヒルメ",
+          "role": "導き手",
+          "boss": false,
+          "art": "art/gacha-wakahirume.png",
+          "portrait": "art/gacha-wakahirume.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 5,
+      "name": "白亜の塔・第5層",
+      "wave": 1,
+      "allWaves": [
+        [
+          {
+            "characterId": "liora",
+            "boss": true
+          },
+          {
+            "characterId": "seris"
+          },
+          {
+            "characterId": "elaine"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "liora",
+          "name": "リオラ",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/liora.png",
+          "portrait": "art/liora.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "seris",
+          "name": "セリス",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/seris.png",
+          "portrait": "art/seris.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "elaine",
+          "name": "エレイン",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/elaine.png",
+          "portrait": "art/elaine.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 7,
+      "name": "白亜の塔・第7層",
+      "wave": 1,
+      "allWaves": [
+        [
+          {
+            "characterId": "hollow-keeper",
+            "boss": true
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "hollow-keeper",
+          "name": "虚ろの守り手",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/encounter-hollow-keeper.png",
+          "portrait": "art/encounter-hollow-keeper.png",
+          "anchor": "50% 22%"
+        }
+      ]
+    },
+    {
+      "floor": 10,
+      "name": "白亜の塔・第10層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "moon-moth"
+          },
+          {
+            "characterId": "eos-standard"
+          }
+        ],
+        [
+          {
+            "characterId": "noelle",
+            "boss": true
+          },
+          {
+            "characterId": "thorn-witch"
+          },
+          {
+            "characterId": "athena-standard"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "noelle",
+          "name": "ノエル",
+          "role": "詠唱者",
+          "boss": true,
+          "art": "art/noelle.png",
+          "portrait": "art/noelle.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "thorn-witch",
+          "name": "荊の魔女",
+          "role": "呪術師",
+          "boss": false,
+          "art": "art/encounter-thorn-witch.png",
+          "portrait": "art/encounter-thorn-witch.png",
+          "anchor": "50% 50%"
+        },
+        {
+          "id": "athena-standard",
+          "name": "アテナ",
+          "role": "守護者",
+          "boss": false,
+          "art": "art/gacha-athena-standard.webp",
+          "portrait": "art/gacha-athena-standard.webp",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 15,
+      "name": "白亜の塔・第15層",
+      "wave": 1,
+      "allWaves": [
+        [
+          {
+            "characterId": "lisette",
+            "boss": true
+          },
+          {
+            "characterId": "artemis-standard"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "lisette",
+          "name": "リゼット",
+          "role": "呪術師",
+          "boss": true,
+          "art": "art/lisette.png",
+          "portrait": "art/lisette.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "artemis-standard",
+          "name": "アルテミス",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/gacha-artemis-standard.webp",
+          "portrait": "art/gacha-artemis-standard.webp",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 20,
+      "name": "白亜の塔・第20層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "asteria"
+          },
+          {
+            "characterId": "iris"
+          }
+        ],
+        [
+          {
+            "characterId": "athena-standard",
+            "boss": true
+          },
+          {
+            "characterId": "artemis-standard"
+          },
+          {
+            "characterId": "mireille"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "athena-standard",
+          "name": "アテナ",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/gacha-athena-standard.webp",
+          "portrait": "art/gacha-athena-standard.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "artemis-standard",
+          "name": "アルテミス",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/gacha-artemis-standard.webp",
+          "portrait": "art/gacha-artemis-standard.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "mireille",
+          "name": "コノハナサクヤヒメ",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/gacha-sakuya.png",
+          "portrait": "art/gacha-sakuya.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 30,
+      "name": "白亜の塔・第30層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "noelle"
+          },
+          {
+            "characterId": "rainbow-iris"
+          }
+        ],
+        [
+          {
+            "characterId": "evelyn",
+            "boss": true
+          },
+          {
+            "characterId": "nike"
+          },
+          {
+            "characterId": "selene"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "evelyn",
+          "name": "イザナミ",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/gacha-izanami.png",
+          "portrait": "art/gacha-izanami.png",
+          "anchor": "50% 22%"
+        },
+        {
+          "id": "nike",
+          "name": "ニケ",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/gacha-nike-anime.webp",
+          "portrait": "art/gacha-nike-anime.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "selene",
+          "name": "セレネ",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/gacha-selene.webp",
+          "portrait": "art/gacha-selene.webp",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 40,
+      "name": "白亜の塔・第40層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "lunette"
+          },
+          {
+            "characterId": "vespera"
+          }
+        ],
+        [
+          {
+            "characterId": "athena",
+            "boss": true
+          },
+          {
+            "characterId": "artemis"
+          },
+          {
+            "characterId": "miette"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "athena",
+          "name": "アテナ",
+          "role": "守護者",
+          "boss": true,
+          "art": "art/gacha-athena-anime.webp",
+          "portrait": "art/gacha-athena-anime.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "artemis",
+          "name": "アルテミス",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/gacha-artemis.png",
+          "portrait": "art/gacha-artemis.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "miette",
+          "name": "ミエット",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/gacha-miette.png",
+          "portrait": "art/gacha-miette.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 50,
+      "name": "白亜の塔・第50層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "noelle-awakened"
+          },
+          {
+            "characterId": "iris"
+          }
+        ],
+        [
+          {
+            "characterId": "lunette",
+            "boss": true
+          },
+          {
+            "characterId": "nemuria"
+          },
+          {
+            "characterId": "liora-awakened"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "lunette",
+          "name": "ルネット",
+          "role": "詠唱者",
+          "boss": true,
+          "art": "art/event-lunette.png",
+          "portrait": "art/event-lunette.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "nemuria",
+          "name": "ネムリア",
+          "role": "呪術師",
+          "boss": false,
+          "art": "art/rare-nemuria.png",
+          "portrait": "art/rare-nemuria.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "liora-awakened",
+          "name": "リオラ",
+          "role": "守護者",
+          "boss": false,
+          "art": "art/liora-awakened.png",
+          "portrait": "art/liora-awakened.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 60,
+      "name": "白亜の塔・第60層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "noelle-awakened"
+          },
+          {
+            "characterId": "lucielle"
+          }
+        ],
+        [
+          {
+            "characterId": "lunette-awakened",
+            "boss": true
+          },
+          {
+            "characterId": "lisette-awakened"
+          },
+          {
+            "characterId": "neri"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "lunette-awakened",
+          "name": "星時計・ルネット",
+          "role": "詠唱者",
+          "boss": true,
+          "art": "art/event-lunette-awakened-loop-poster.png",
+          "portrait": "art/event-lunette-awakened-portrait-loop-poster.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "lisette-awakened",
+          "name": "リゼット",
+          "role": "呪術師",
+          "boss": false,
+          "art": "art/lisette-awakened.png",
+          "portrait": "art/lisette-awakened.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "neri",
+          "name": "ネリ",
+          "role": "守護者",
+          "boss": false,
+          "art": "art/scout-neri.webp",
+          "portrait": "art/scout-neri.webp",
+          "anchor": "50% 25%"
+        }
+      ]
+    },
+    {
+      "floor": 70,
+      "name": "白亜の塔・第70層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "chrona"
+          },
+          {
+            "characterId": "iris"
+          }
+        ],
+        [
+          {
+            "characterId": "kuzuha-awakened",
+            "boss": true
+          },
+          {
+            "characterId": "ruka"
+          },
+          {
+            "characterId": "ukanomitama"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "kuzuha-awakened",
+          "name": "九尾・葛葉",
+          "role": "呪術師",
+          "boss": true,
+          "art": "art/event-kuzuha-awakened.png",
+          "portrait": "art/event-kuzuha-awakened.png",
+          "anchor": "50% 22%"
+        },
+        {
+          "id": "ruka",
+          "name": "ルカ",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/scout-ruka.webp",
+          "portrait": "art/scout-ruka.webp",
+          "anchor": "50% 25%"
+        },
+        {
+          "id": "ukanomitama",
+          "name": "ウカノミタマ",
+          "role": "導き手",
+          "boss": false,
+          "art": "art/gacha-ukanomitama.png",
+          "portrait": "art/gacha-ukanomitama.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 80,
+      "name": "白亜の塔・第80層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "zakuro"
+          },
+          {
+            "characterId": "fortuna"
+          }
+        ],
+        [
+          {
+            "characterId": "chrona",
+            "boss": true
+          },
+          {
+            "characterId": "lisette-awakened"
+          },
+          {
+            "characterId": "haniyasu"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "chrona",
+          "name": "クローナ",
+          "role": "詠唱者",
+          "boss": true,
+          "art": "art/trial-chrona.webp",
+          "portrait": "art/trial-chrona.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "lisette-awakened",
+          "name": "リゼット",
+          "role": "呪術師",
+          "boss": false,
+          "art": "art/lisette-awakened.png",
+          "portrait": "art/lisette-awakened.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "haniyasu",
+          "name": "ハニヤスヒメ",
+          "role": "守護者",
+          "boss": false,
+          "art": "art/gacha-haniyasu.png",
+          "portrait": "art/gacha-haniyasu.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 90,
+      "name": "白亜の塔・第90層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "noelle-awakened"
+          },
+          {
+            "characterId": "rainbow-iris"
+          }
+        ],
+        [
+          {
+            "characterId": "vespera",
+            "boss": true
+          },
+          {
+            "characterId": "freyja"
+          },
+          {
+            "characterId": "elaine-awakened"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "vespera",
+          "name": "ヴェスパ",
+          "role": "導き手",
+          "boss": true,
+          "art": "art/gacha-vespera.png",
+          "portrait": "art/gacha-vespera.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "freyja",
+          "name": "フレイヤ",
+          "role": "剣士",
+          "boss": false,
+          "art": "art/gacha-freyja.webp",
+          "portrait": "art/gacha-freyja.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "elaine-awakened",
+          "name": "エレイン",
+          "role": "癒し手",
+          "boss": false,
+          "art": "art/elaine-awakened.png",
+          "portrait": "art/elaine-awakened.png",
+          "anchor": "50% 0%"
+        }
+      ]
+    },
+    {
+      "floor": 100,
+      "name": "白亜の塔・第100層",
+      "wave": 2,
+      "allWaves": [
+        [
+          {
+            "characterId": "noelle-awakened"
+          },
+          {
+            "characterId": "ukanomitama"
+          }
+        ],
+        [
+          {
+            "characterId": "astraea",
+            "boss": true
+          },
+          {
+            "characterId": "eos-standard"
+          },
+          {
+            "characterId": "athena-standard"
+          }
+        ]
+      ],
+      "foes": [
+        {
+          "id": "astraea",
+          "name": "アストレア",
+          "role": "剣士",
+          "boss": true,
+          "art": "art/xr-astraea.png",
+          "portrait": "art/xr-astraea.png",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "eos-standard",
+          "name": "エオス",
+          "role": "導き手",
+          "boss": false,
+          "art": "art/gacha-eos-standard.webp",
+          "portrait": "art/gacha-eos-standard.webp",
+          "anchor": "50% 0%"
+        },
+        {
+          "id": "athena-standard",
+          "name": "アテナ",
+          "role": "守護者",
+          "boss": false,
+          "art": "art/gacha-athena-standard.webp",
+          "portrait": "art/gacha-athena-standard.webp",
+          "anchor": "50% 0%"
+        }
+      ]
+    }
+  ]
+}

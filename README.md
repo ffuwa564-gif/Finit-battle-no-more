@@ -1,16 +1,16 @@
 # STILLVEIL 動画・解説資料
 
-## 白亜の塔攻略日記 — 共通オープニング v2（2人が主役）
+## 白亜の塔攻略日記 — 共通オープニング v3（敵編成ラッシュ）
 
-23秒 / 横型16:9。ずんだもんとめたんの慌てる・泣く・笑う表情芝居を中心に再構成。必殺技は1秒・効果音なし、扉CMは1秒、立ち絵ラッシュは2秒。最後のタイトルコール＋遅れて「なのだ！」を維持。
+23秒 / 横型16:9。欲望の扉CMを全撤去。2人の場面を減らして、塔の敵編成が一気に流れる約5秒の場面に差し替え。第1層から第100層までの15層の実編成を使用し、ずんだもんが攻略へ意気込む表情へつなぎます。必殺技は1秒・SEなし、最後のタイトルコールと「なのだ！」を維持。
 
-- [MP4をダウンロード：720p](STILLVEIL-TowerDiary-Opening-v2-720p.mp4)
-- [MP4をダウンロード：1080p](STILLVEIL-TowerDiary-Opening-v2-1080p.mp4)（720p合成マスターの拡大版）
-- [使い方とクレジット](TowerDiary-Opening-v2-README.txt)
-- [YouTube説明欄用クレジット](TowerDiary-Opening-v2-YouTube-description.txt)
-- [完成動画の同期検査](TowerDiary-Opening-v2-Sync-Report.txt)
+- [MP4をダウンロード：720p](STILLVEIL-TowerDiary-Opening-v3-720p.mp4)
+- [MP4をダウンロード：1080p](STILLVEIL-TowerDiary-Opening-v3-1080p.mp4)（720p合成マスターの拡大版）
+- [使い方・クレジット](TowerDiary-Opening-v3-README.txt)
+- [YouTube説明欄用クレジット](TowerDiary-Opening-v3-YouTube-description.txt)
+- [完成動画の検査](TowerDiary-Opening-v3-Sync-Report.txt)
 
-![Opening v2 cover](TowerDiary-Opening-v2-Cover.jpg)
+![Opening v3 cover](TowerDiary-Opening-v3-Cover.jpg)
 
 
 ## 最新の動画
