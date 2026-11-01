@@ -1,0 +1,65 @@
+【STILLVEIL】ver1.10更新ガイド｜新しい塔・灯芯・白花・号令・新4人【ずんだもん解説】
+
+ver1.10で何が変わった？ どこから試す？
+ずんだもんが、実装された更新内容をゲーム画面と図で約14分にまとめました。
+
+白亜の塔の再構築、既存6人の固有効果、固定製作の灯芯・摘まない白花、ノエルの星図の号令、新しい同行者4人と第5〜7章、装備の案内、戦闘結果と周回記録まで紹介します。
+
+【まず試すなら】
+カバン → 道具 → 次の装備実験
+灯芯か白花を選び、欠片を集める → 製作 → 装備 → 通常探索で使用。
+ビルドガイドや塔の偵察も、次の目標探しに使ってください。
+
+【チャプター】
+00:00 ver1.10、何が変わった？
+00:39 更新の地図
+01:09 白亜の塔を再構築
+02:35 手持ちの六人に、仕事を増やす
+03:43 灯芯の補助石
+04:53 摘まない白花
+06:03 ノエルの星図の号令
+07:41 新しい同行者、四人
+09:14 第5〜7章、少女だけの世界の続き
+10:09 集めた石を、次の実験へ
+11:21 敗戦も周回も、次の材料に
+12:36 更新後、まず試すなら
+
+【対象と画面の前提】
+・ゲームver1.10.0 / content v1.10-r1 / main dec20ebの実装内容です。
+・獲得済みセーブの操作画面と、操作・仕組み説明用のデモセーブを使用しています。初期配布や新規セーブの攻略順を示す動画ではありません。
+・白花の説明デモは、敵HP9999・全員の攻撃0・単独のエレインHP20から実処理を通し、20回復→防御で50回復を確認しています。敵の数値調整を含むため、塔攻略や難度の根拠には使いません。
+・時給図の「12個÷6分＝120個/時」は説明用の数値です。将来の収穫の予測ではありません。実画面の記録では未計測の周回もあります。
+・新塔の幻影からガチャキャラの加入素材を集めることはできません。塔の報酬とキャラの加入経路を分離しています。
+・新章の結末には踏み込まず、新しい仲間の役割・加入場所を紹介します。
+・公開中のゲームは更新時期により動画と版が異なる場合があります。
+
+【STILLVEILを遊ぶ】
+https://fluffy3546.itch.io/stillveil
+ブラウザで遊べる、少女だけの静謐な世界を旅するRPGです。
+
+【音声】
+VOICEVOX:ずんだもん
+https://voicevox.hiroshiba.jp/
+
+【立ち絵】
+東北ずん子・ずんだもんプロジェクト公式配布素材
+https://zunko.jp/
+
+【音楽】
+甘茶の音楽工房（作曲：甘茶）
+「フィヨルドの澄んだ風」
+https://amachamusic.chagasi.com/music_fjordnosundakaze.html
+「悲しみの曖昧な対象」
+https://amachamusic.chagasi.com/music_kanashiminoaimainataishou.html
+
+【ゲーム画面・キャラクター画像】
+STILLVEIL（生成AIで制作されたゲーム内イラストを含みます）
+
+【実装と更新資料】
+https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/dec20ebbfb8d139713ffe847ebc48eefe8ff54ca/docs/releases/v1.10.md
+https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/dec20ebbfb8d139713ffe847ebc48eefe8ff54ca/docs/releases/v1.10-video-update.md
+https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/dec20ebbfb8d139713ffe847ebc48eefe8ff54ca/docs/releases/v1.10-post-trial.md
+https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/dec20ebbfb8d139713ffe847ebc48eefe8ff54ca/docs/releases/v1.10-expedition-update.md
+https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/dec20ebbfb8d139713ffe847ebc48eefe8ff54ca/docs/releases/v1.10-release.md
+
+#STILLVEIL #ずんだもん #ゲームアップデート #インディーゲーム #RPG
