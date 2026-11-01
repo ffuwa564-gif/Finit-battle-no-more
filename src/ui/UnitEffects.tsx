@@ -1,7 +1,7 @@
 import { tr, localize } from '../locales/i18n';
 import { useState } from 'react';
 import { Modal } from './index';
-import { Shield, Sparkles, HeartPulse, Swords, ShieldCheck, ShieldOff, CloudFog, Moon, Zap, Heart } from 'lucide-react';
+import { Shield, Sparkles, HeartPulse, Swords, ShieldCheck, ShieldOff, CloudFog, Moon, Zap, Heart, Flag, Lamp, Scissors, Sprout } from 'lucide-react';
 import { ailments, ailmentNames, ailmentDescriptions } from '../domain/ailments';
 import type { Ailment, Unit } from '../domain/types';
 import './unit-effects.css';
@@ -16,6 +16,10 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   if (unit.guardTarget && (unit.guardUntil ?? -1) >= round) effects.push({ icon: ShieldCheck, label: 'かばう', title: '味方への単体攻撃を引き受ける' });
   if ((unit.buffUntil ?? -1) >= round) effects.push({ icon: Swords, label: '攻撃↑', title: '攻撃力上昇中' });
   if ((unit.debuffUntil ?? -1) >= round) effects.push({ icon: ShieldOff, label: '防御↓', title: '防御力低下中・浄化で解除できる', bad: true });
+  if (unit.scoutMark && unit.scoutMark.until >= round) effects.push({ icon: Flag, label: '宛先の標', title: '別の味方の通常攻撃・固有技でHPダメージを与えると回収し、必殺ゲージ+10。本人・石・必殺・追加攻撃は対象外。', bad: true });
+  if ((unit.scoutLanternUntil ?? -1) >= round) effects.push({ icon: Lamp, label: '交代の灯', title: '次の予告大技1回の被害を25%軽減。通常攻撃・ビット射撃は対象外。次ラウンド終了まで。' });
+  if ((unit.scoutThreadUntil ?? -1) >= round) effects.push({ icon: Scissors, label: '残り糸', title: '夜継ぎの鋏を1回だけ強化する。最大1つ、次ラウンド終了まで。' });
+  if (unit.whiteFlower && unit.whiteFlower.until >= round) effects.push({ icon: Sprout, label: '摘まない白花の種', title: `本人が通常の「身を守る」を実行するとHP${unit.whiteFlower.amount}回復。第${unit.whiteFlower.until}ラウンド終了まで。種は重ねず期限も更新しない。防御予約・作戦変更・戦場の花では開花しない。余剰回復は消える。` });
   for (const id of ailments) {
     const state = unit.ailments?.[id];
     if (state) effects.push({ label: `${ailmentNames[id]} · ${state.turns}`, title: `${ailmentDescriptions[id]} 残り${state.turns}回の行動。`, bad: true, ailment: id });
@@ -23,10 +27,11 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   if ((unit.statusWardUntil ?? -1) >= round) effects.push({ icon: Sparkles, label: '状態耐性', title: `混乱・睡眠・麻痺・魅了の再付与を防ぐ・残り${unit.statusWardUntil! - round + 1}ラウンド` });
   const icons = { confusion: CloudFog, sleep: Moon, paralysis: Zap, charm: Heart };
   if (!effects.length) return null;
-  if (compact) {
+  const scoutEffect = Boolean(unit.scoutMark && unit.scoutMark.until >= round || (unit.scoutLanternUntil ?? -1) >= round || (unit.scoutThreadUntil ?? -1) >= round);
+  if (compact || scoutEffect || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
     effects.sort((a, b) => Number(!!b.bad) - Number(!!a.bad));
     const iconFor = (effect: typeof effects[number]) => effect.ailment ? icons[effect.ailment] : effect.icon ?? Sparkles;
-    return <>
+    const controls = <>
       <button type="button" className="unit-effects-summary" aria-label={`${tr('付与効果')}: ${effects.map(effect => tr(effect.label)).join(', ')}`} aria-haspopup="dialog" onClick={() => setOpen(true)}>
         {effects.slice(0, 2).map(effect => { const Icon = iconFor(effect); return <span key={effect.label} className={effect.bad ? 'is-debuff' : ''} title={tr(effect.label)}><Icon size={12} aria-hidden="true" /></span>; })}
         {effects.length > 2 && <small>+{effects.length - 2}</small>}
@@ -35,6 +40,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
         <ul className="unit-effects-details">{effects.map(effect => { const Icon = iconFor(effect); return <li key={effect.label} className={effect.bad ? 'is-debuff' : ''}><Icon size={18} aria-hidden="true" /><div><strong>{localize(effect.label)}</strong><p>{localize(effect.title)}</p></div></li>; })}</ul>
       </Modal>
     </>;
+    return compact ? controls : <div className="unit-effects">{controls}</div>;
   }
   return <div className="unit-effects" role="group" tabIndex={0} aria-label={tr("付与効果")}>{localize(effects.map(effect => { const Icon = effect.ailment ? icons[effect.ailment] : null; return <span key={effect.label} className={`${effect.bad ? 'is-debuff' : ''}${effect.ailment ? ' is-ailment' : ''}`} data-ailment={effect.ailment} title={tr(effect.title)} aria-label={tr(effect.label) + ' / ' + tr(effect.title)}>{Icon && <Icon size={10} aria-hidden="true" />}{localize(effect.label)}</span>; }))}</div>;
 }

@@ -5,6 +5,7 @@ import { assetPath } from '../content';
 import type { Content, GameCommand, GameSave } from '../domain/types';
 import { BUILD_DEFINITIONS, findGemSources, getBuildPlan, targetNeedsNewTier, type BuildFarmSource, type BuildStage, type BuildSlotPlan } from '../domain/builds';
 import { dungeonLock } from '../domain/events';
+import { buildTactics } from '../domain/build-tactics';
 import { GEM_DEFINITIONS, GEM_VARIANTS, gemName, gemDescription, gemPowerRefinementIsFixed, gemPowerMultiplier, gemRoll, gemTraitDescription, gemTraitInfo, gemPowerTier, gemTraitTier, type MemoryGem } from '../domain/memory-gems';
 import { tr } from '../locales/i18n';
 import { Button, InventorySection } from './index';
@@ -34,6 +35,7 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
   const applySection = useRef<HTMLDivElement>(null);
   const plan = getBuildPlan(content, save, selectedId, stage);
   const definition = plan.definition;
+  const tactics = buildTactics(definition.id);
   const isTracked = save.buildGoal?.buildId === selectedId && save.buildGoal.stage === stage;
   const missingCharacter = plan.slots.find(slot => !slot.characterId);
   const nextGem = plan.slots.find(slot => slot.gemStatus === 'missing') ?? plan.slots.find(slot => slot.gemStatus === 'upgrade');
@@ -129,6 +131,8 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
         <p className="build-planner__muted">{tr('石の系統が合う探索を表示します。狙った石や特性の入手は保証されません。')}</p>{plan.slots.some(slot => gemPowerTier(targetGem(slot)) >= 4 || gemTraitTier(targetGem(slot)) >= 4) && <p className="build-planner__muted">{tr('上位Tier率は、踏破宝箱で石を得たときの各項目の確率です。1周あたりの入手率ではありません。追加特性がある石だけ、特性も抽選します。')}</p>}
         {requiredDefs.length === 0 ? <p>{tr('この段階で不足している石はありません。さらに上の段階も目指せます。')}</p> : requiredDefs.map(id => { const def=GEM_DEFINITIONS.find(gem=>gem.id===id)!; const sources=findGemSources(content,save,id,plan.slots.find(slot => slot.slot.gem.defId === id && slot.gemStatus !== 'ready')?.slot.gem); const shown=sources.slice(0,6); return <section key={id} className="build-planner__source-group"><h4><Gem size={16} />{tr(def.name)}</h4>{shown.map(source => <SourceRow key={source.id} source={source} />)}{sources.length > shown.length && <p className="build-planner__muted">{tr('ほかにも同じ系統の探索で抽選されます。')}</p>}{sources.length === 0 && <p>{tr('現在表示できる入手先はありません。')}</p>}</section>; })}
       </div></InventorySection>
+
+      {tactics && <InventorySection id="build-matchups" title="得意な相手と、持ち替えの注意" tone="night"><dl className="build-planner__tactics"><div><dt>{tr('得意な探索')}</dt><dd>{tr(tactics.goodAgainst)}</dd></div><div><dt>{tr('苦手な場面')}</dt><dd>{tr(tactics.beCareful)}</dd></div><div><dt>{tr('王冠を渡す代価')}</dt><dd>{tr(tactics.leaderCost)}</dd></div><div><dt>{tr('代替の仲間を選ぶ時')}</dt><dd>{tr(tactics.alternatives)}</dd></div></dl></InventorySection>}
 
       <InventorySection id="build-how-it-works" title="このビルドの使い方" tone="night"><div className="build-planner__mechanic"><p>{tr(definition.mechanic)}</p><ol>{definition.steps.map((step,index) => <li key={index}>{tr(step)}</li>)}</ol></div></InventorySection>
 

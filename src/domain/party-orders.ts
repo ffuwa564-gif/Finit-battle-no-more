@@ -19,6 +19,7 @@ export function orderTargets(actor: Unit, battle: Battle, template: SkillTemplat
   const friends = battle.units.filter(u => u.side === actor.side && u.hp > 0);
   const enemies = battle.units.filter(u => u.side !== actor.side && u.hp > 0);
   const wounded = [...friends].sort((a,b) => a.hp / a.maxHp - b.hp / b.maxHp || a.uid.localeCompare(b.uid));
+  if (skillId && gemDefinitionForSkill(skillId)?.id === 'white-flower-seed') return friends.filter(u => u.characterId === battle.partyIds[0]).slice(0, 1);
   if (skillId && gemDefinitionForSkill(skillId)?.id === 'rewind-thread') return friends.filter(u => u.uid !== actor.uid && Object.entries(u.cooldowns).some(([id, round]) => !id.startsWith('memory:') && round > battle.round)).sort((a,b) => b.attack - a.attack || a.uid.localeCompare(b.uid)).slice(0, 1);
   if (template === 'rally') return friends;
   if (template === 'mend_pair') return wounded.slice(0, 2);
@@ -57,6 +58,7 @@ export function memorySkillUsable(actor: Unit, battle: Battle, skill: SkillDef):
   const equipped = actor.side === 'party' && battle.partyIds.includes(actor.characterId) ? battle.memoryGems?.[actor.characterId] : undefined;
   if (!equipped || gemSkill(equipped).id !== skill.id) return false;
   const friends = battle.units.filter(u => u.side === actor.side && u.hp > 0);
+  if (def.id === 'white-flower-seed') return friends.some(u => u.characterId === battle.partyIds[0]);
   if (def.id === 'shield-break') return friends.some(u => (u.barrier ?? 0) > 0 && (u.barrierUntil ?? -1) >= battle.round);
   if (def.id === 'rewind-thread') return friends.some(u => u.uid !== actor.uid && Object.entries(u.cooldowns).some(([id, round]) => !id.startsWith('memory:') && round > battle.round));
   return true;

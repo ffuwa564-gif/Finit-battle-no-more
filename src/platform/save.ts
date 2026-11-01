@@ -1,3 +1,6 @@
+import { RELEASE } from '../content/version';
+import { validBattleReview, validExpeditionTracking } from '../domain/expedition-review';
+import { validateCommandOrder } from '../domain/command-doctrine';
 import { validBuildGoal } from '../domain/builds';
 import { validMemoryGem, validGemInventory, gemSkill, gemDefinitionForSkill, gemRollKey } from '../domain/memory-gems';
 import { validCrystalRole } from '../domain/crystal-resonance';
@@ -22,6 +25,20 @@ function count(value: unknown): value is number { return typeof value === 'numbe
 function nonempty(value: unknown): value is string { return typeof value === 'string' && value.length > 0; }
 function uniqueStrings(value: unknown): value is string[] { return stringArray(value) && new Set(value).size === value.length && value.every(nonempty); }
 function materialMap(value: unknown): boolean { return record(value) && Object.entries(value).every(([id, amount]) => /^[a-zA-Z0-9_-]+:(common|rare|epic)$/.test(id) && count(amount)); }
+function validExpeditionHistory(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length > 30) return false;
+  const ids = new Set<string>();
+  return value.every(item => {
+    if (!record(item) || Object.keys(item).some(key => !['runId', 'dungeonId', 'appVersion', 'contentVersion', 'rulesVersion', 'outcome', 'durationMs', 'review', 'earned', 'potionsUsed'].includes(key))) return false;
+    for (const key of ['runId', 'dungeonId', 'appVersion', 'contentVersion', 'rulesVersion']) if (!nonempty(item[key]) || String(item[key]).length > 256) return false;
+    if (ids.has(String(item.runId))) return false;
+    ids.add(String(item.runId));
+    if (!['victory', 'defeat', 'timeout', 'retreat'].includes(String(item.outcome)) || item.durationMs !== null && !count(item.durationMs) || item.potionsUsed !== null && (!count(item.potionsUsed) || Number(item.potionsUsed) > 5) || item.review !== undefined && !validBattleReview(item.review)) return false;
+    const earned = item.earned;
+    if (!record(earned) || Object.keys(earned).some(key => !['gold', 'stones', 'gemCount', 'materials', 'dust'].includes(key)) || !count(earned.gold) || !count(earned.stones) || !count(earned.gemCount) || !materialMap(earned.materials) || !record(earned.dust) || Object.entries(earned.dust).some(([id, amount]) => !['sanctuary', 'clock', 'grave'].includes(id) || !count(amount))) return false;
+    return true;
+  });
+}
 function validGachaResult(value: unknown): value is GachaResult { return record(value) && nonempty(value.characterId) && typeof value.duplicate === 'boolean' && count(value.refund) && value.refund <= 3 && (value.currency === undefined || ['stones', 'astralStones'].includes(value.currency as string)); }
 function validUnit(value: unknown): boolean {
   if (!record(value) || !nonempty(value.uid) || !nonempty(value.characterId) || !['party', 'enemy'].includes(value.side as string) || typeof value.boss !== 'boolean') return false;
@@ -35,12 +52,17 @@ function validUnit(value: unknown): boolean {
   if (value.bossRecoveryUntil !== undefined && (value.side !== 'enemy' || !value.boss || !count(value.bossRecoveryUntil))) return false;
   if (value.defendingUntil !== undefined && !count(value.defendingUntil)) return false;
   if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
+  if (value.towerSupportUsed !== undefined && (!record(value.towerSupportUsed) || value.side !== 'enemy' || !count(value.towerSupportUsed.healing) || !count(value.towerSupportUsed.barrier))) return false;
+  if (value.whiteFlower !== undefined && (!record(value.whiteFlower) || value.side !== 'party' || !count(value.whiteFlower.amount) || value.whiteFlower.amount !== 50 || !count(value.whiteFlower.until))) return false;
+  if (value.scoutMark !== undefined && (!record(value.scoutMark) || !nonempty(value.scoutMark.sourceId) || !count(value.scoutMark.until))) return false;
+  for (const key of ['scoutLanternUntil','scoutThreadUntil']) if (value[key] !== undefined && !count(value[key])) return false;
   if (value.guardTarget !== undefined && !nonempty(value.guardTarget)) return false;
   for (const key of ['guardUntil', 'guardStrength', 'buffUntil', 'buffStrength', 'debuffUntil', 'debuffStrength', 'barrier', 'barrierUntil', 'regenStrength', 'regenUntil']) if (value[key] !== undefined && !count(value[key])) return false;
   return true;
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
+  if (record(value) && ['absorbed', 'selfCost'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
   if (record(value) && value.actionSelection !== undefined && typeof value.actionSelection !== 'boolean') return false;
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
@@ -68,6 +90,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
   for (const key of ['revision', 'gold', 'potions', 'stones', 'drawCount', 'seed']) if (!count(value[key])) throw new Error('保存データの所持数または状態が不正です。');
   for (const key of ['astralStones', 'xrDrawCount']) if (value[key] !== undefined && !count(value[key])) throw new Error('星晶の所持数または状態が不正です。');
+  if (value.expeditionHistory !== undefined && !validExpeditionHistory(value.expeditionHistory)) throw new Error('周回の実績が不正です。');
   if (value.ssrPity !== undefined && (!count(value.ssrPity) || value.ssrPity >= 90 || value.ssrPity > Number(value.drawCount))) throw new Error('祈願の天井情報が不正です。');
   if (value.lastGachaResult !== undefined && !validGachaResult(value.lastGachaResult)) throw new Error('祈願の結果情報が不正です。');
   if (value.lastGachaResults !== undefined) {
@@ -84,6 +107,12 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   for (const key of ['ownedIds', 'partyIds', 'discoveredIds', 'completedDungeonIds', 'claimedExplorationIds']) if (!uniqueStrings(value[key])) throw new Error('保存データのキャラクター情報が不正です。');
   const partyIds = value.partyIds as string[];
   if (partyIds.length < 1 || partyIds.length > 4 || !partyIds.includes(value.leaderId as string) || partyIds.some(id => !(value.ownedIds as string[]).includes(id))) throw new Error('保存データの編成が不正です。');
+  if (value.towerRecord !== undefined) {
+    const r = value.towerRecord;
+    if (!record(r) || r.version !== '1.10' || !Array.isArray(r.completedFloors) || r.completedFloors.some(f => !count(f) || f < 1 || f > 100) || new Set(r.completedFloors).size !== r.completedFloors.length || !count(r.legacyHighest) || r.legacyHighest > 100) throw new Error('白亜の塔の記録が不正です。');
+    const floors = [...r.completedFloors].sort((a,b) => Number(a)-Number(b));
+    if (floors.some((f,i) => f !== i+1)) throw new Error('白亜の塔の記録が連続していません。');
+  }
   if (value.buildGoal !== undefined && !validBuildGoal(value.buildGoal)) throw new Error('目標ビルドの保存状態が不正です。');
   if (value.memoryGems !== undefined) {
     if (!validGemInventory(value.memoryGems)) throw new Error('記憶石の保存状態が不正です。');
@@ -98,7 +127,12 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (settings.homeCharacterId !== undefined && settings.homeCharacterId !== null && (!nonempty(settings.homeCharacterId) || !(value.ownedIds as string[]).includes(settings.homeCharacterId))) throw new Error('ホームの表示設定が不正です。');
   if (value.battle !== null) {
     const battle = value.battle;
+    if (record(battle) && (battle.tracking !== undefined && !validExpeditionTracking(battle.tracking) || battle.failureKind !== undefined && !['defeat', 'timeout', 'retreat'].includes(String(battle.failureKind)))) throw new Error('探索の集計状態が不正です。');
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if (battle.scoutState !== undefined) {
+      const s = battle.scoutState;
+      if (!record(s) || ['ioneLeaderTriggered','neriLeaderTriggered','fioLeaderTriggered'].some(k => s[k] !== undefined && typeof s[k] !== 'boolean') || s.rukaHeals !== undefined && (!count(s.rukaHeals) || s.rukaHeals > 3) || s.rukaHealRound !== undefined && !count(s.rukaHealRound)) throw new Error('仲間の固有技能の記録が不正です。');
+    }
     if (battle.memoryGems !== undefined && (!record(battle.memoryGems) || Object.entries(battle.memoryGems).some(([id, gem]) => !(battle.partyIds as string[]).includes(id) || !validMemoryGem(gem)))) throw new Error('戦闘の記憶石が不正です。');
     if (battle.memoryGems !== undefined && new Set(Object.values(battle.memoryGems as Record<string, { id: string }>).map(gem => gem.id)).size !== Object.values(battle.memoryGems).length) throw new Error('同じ記憶石が複数の仲間に装備されています。');
     if (battle.gemChestChecks !== undefined && !uniqueStrings(battle.gemChestChecks)) throw new Error('宝箱の開封記録が不正です。');
@@ -106,6 +140,8 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     if (battle.memoryEchoes !== undefined && (!Array.isArray(battle.memoryEchoes) || battle.memoryEchoes.some(echo => !record(echo) || !nonempty(echo.actorId) || !nonempty(echo.targetId) || !count(echo.dueRound) || !count(echo.power) || !nonempty(echo.skillId) || !gemDefinitionForSkill(echo.skillId) || !nonempty(echo.name)))) throw new Error('記憶石の残響状態が不正です。');
     if (battle.crystalRole !== undefined && !validCrystalRole(battle.crystalRole)) throw new Error('宝石の共鳴状態が不正です。');
     if (battle.partyOrder !== undefined && !validPartyOrder(battle.partyOrder)) throw new Error('行動の予約が正しくありません。');
+    if (battle.commandOrder !== undefined && (!record(battle.commandOrder) || !nonempty(battle.commandOrder.targetId) || !uniqueStrings(battle.commandOrder.followerIds) || !battle.commandOrder.followerIds.length || battle.commandOrder.followerIds.length > 3)) throw new Error('号令の予約が正しくありません。');
+    if (battle.commandIssuedRound !== undefined) throw new Error('号令の一時状態を保存できません。');
     if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
@@ -118,10 +154,20 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
 export function assertSaveCompatibility(save: GameSave, content: Content): void {
   assertValidSave(save);
   if (save.schemaVersion !== content.schemaVersion || save.appVersion !== content.appVersion || save.contentVersion !== content.contentVersion || save.rulesVersion !== content.rulesVersion) throw new Error('このセーブに対応するリリースで再開してください。');
+  if (content.appVersion === RELEASE.appVersion && save.towerRecord?.version !== '1.10') throw new Error('1.10の白亜の塔の記録がありません。');
   if (duplicateFamily(save.partyIds, content)) throw new Error('同じ仲間の複数形態が編成されています。セーブは保持しています。');
   const characters = new Set(content.characters.map(item => item.id));
   const skills = new Set(content.skills.map(item => item.id));
   const species = new Set(content.species.map(item => item.id));
+  const assertReviewReferences = (review: import('../domain/expedition-review').BattleReview | undefined) => {
+    const hit = review?.largestHit;
+    if (hit && (!characters.has(hit.targetCharacterId) || hit.actorCharacterId !== undefined && !characters.has(hit.actorCharacterId) || hit.skillId !== undefined && !skills.has(hit.skillId) && !gemDefinitionForSkill(hit.skillId))) throw new Error('探索の集計が参照する仲間や技がありません。');
+  };
+  for (const item of save.expeditionHistory ?? []) {
+    if (item.contentVersion !== content.contentVersion || item.rulesVersion !== content.rulesVersion) continue;
+    if (!content.dungeons.some(d => d.id === item.dungeonId) || Object.keys(item.earned.materials).some(id => !species.has(id.split(':')[0]!)) || item.review && item.potionsUsed !== null && item.review.potionsUsed !== item.potionsUsed) throw new Error('周回の実績の参照先が不正です。');
+    assertReviewReferences(item.review);
+  }
   const dungeonIds = new Set(content.dungeons.map(item => item.id));
   if ([...save.ownedIds, ...save.discoveredIds].some(id => !characters.has(id)) || save.completedDungeonIds.some(id => !dungeonIds.has(id)) || Object.keys(save.materials).some(id => !species.has(id.split(':')[0]!))) throw new Error('保存データが参照する定義がありません。セーブを保持して停止します。');
   if ([...(save.lastGachaResults ?? []), ...(save.lastGachaResult ? [save.lastGachaResult] : [])].some(result => !characters.has(result.characterId) || !save.ownedIds.includes(result.characterId))) throw new Error('祈願の結果が所持情報と一致しません。');
@@ -135,6 +181,8 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   }
   const battle = save.battle;
   if (!battle) return;
+  assertReviewReferences(battle.tracking?.review);
+  if (battle.commandOrder !== undefined) validateCommandOrder(battle.commandOrder, battle, content, { stored: true });
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
   if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
@@ -143,8 +191,10 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (battle.memoryEchoes?.some(echo => !battle.units.some(unit => unit.uid === echo.actorId && unit.side === 'party') || !battle.units.some(unit => unit.uid === echo.targetId && unit.side === 'enemy'))) throw new Error('記憶石の残響対象が戦闘データにありません。');
   if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
+  if (snapshots.some(units => units.some(unit => unit.whiteFlower && (unit.characterId !== battle.partyIds[0] || unit.whiteFlower.until > battle.round + 2)))) throw new Error('白花の種の対象か期限が正しくありません。');
   if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id) && id !== 'memory:slot' && !gemDefinitionForSkill(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
+  if (snapshots.some(units => units.some(unit => unit.scoutMark && !units.some(source => source.uid === unit.scoutMark!.sourceId && source.side === 'party')))) throw new Error('道標の付与者が探索に存在しません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
   if (battle.events.some(event => event.skillId && !skills.has(event.skillId) && !gemDefinitionForSkill(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');
 }
@@ -209,7 +259,7 @@ export async function readBootMetadata(): Promise<BootMetadata | null> {
 }
 
 /** Compare-and-swap and the save/boot write share one IndexedDB transaction. */
-export async function persistSave(save: GameSave, expectedRevision?: number): Promise<void> {
+export async function persistSave(save: GameSave, expectedRevision?: number, options: { legacySource?: GameSave } = {}): Promise<void> {
   assertValidSave(save);
   if (expectedRevision !== undefined && (!count(expectedRevision) || save.revision !== expectedRevision + 1)) throw new Error('保存の更新順序が正しくありません。');
   const db = await openDatabase();
@@ -229,6 +279,11 @@ export async function persistSave(save: GameSave, expectedRevision?: number): Pr
           if (previous.appVersion !== save.appVersion || previous.schemaVersion !== save.schemaVersion || previous.contentVersion !== save.contentVersion || previous.rulesVersion !== save.rulesVersion) throw new Error('異なる版から保存しようとしています。対応するリリースで再開してください。');
           store.put(previous, 'backup');
         }
+        if (options.legacySource) {
+          assertValidSave(options.legacySource);
+          if (!isLegacySaveVersion(options.legacySource)) throw new Error('移行元の版を確認できません。');
+          store.put(options.legacySource, 'migration-v1.0');
+        }
         store.put(save, 'save');
         store.put(bootMetadata(save), 'boot');
       } catch (error) {
@@ -239,4 +294,35 @@ export async function persistSave(save: GameSave, expectedRevision?: number): Pr
     transaction.oncomplete = () => { db.close(); resolve(); };
     transaction.onabort = transaction.onerror = () => { db.close(); reject(new Error(reason)); };
   });
+}
+
+/** Only the previously released 1.0 internal contract is an accepted upgrade source. */
+export function isLegacySaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
+  return value.schemaVersion === 1 && value.appVersion === '0.1.0' && value.contentVersion === 'initial-r1' && value.rulesVersion === '1';
+}
+/** Upgrade save, boot metadata and the permanent original in one compare-and-swap transaction. */
+export async function persistMigratedSave(next: GameSave, previous: GameSave): Promise<void> {
+  assertValidSave(previous); assertValidSave(next);
+  if (!isLegacySaveVersion(previous) || next.appVersion !== RELEASE.appVersion || next.contentVersion !== RELEASE.contentVersion || next.rulesVersion !== RELEASE.rulesVersion || next.schemaVersion !== RELEASE.schemaVersion || next.revision !== previous.revision + 1) throw new Error('保存データの移行順序が正しくありません。');
+  const db = await openDatabase();
+  return new Promise((resolve,reject) => {
+    const tx = db.transaction(SAVE_STORE,'readwrite'), store = tx.objectStore(SAVE_STORE), req = store.get('save');
+    let reason = '更新前の保存データを保持して、移行を中止しました。';
+    req.onsuccess = () => {
+      try {
+        if (JSON.stringify(req.result) !== JSON.stringify(previous)) throw new Error('別のタブで進行が更新されました。再読み込みしてください。');
+        store.put(previous,'migration-v1.0'); store.put(previous,'backup');
+        store.put(next,'save'); store.put(bootMetadata(next),'boot');
+      } catch (e) { reason = e instanceof Error ? e.message : reason; tx.abort(); }
+    };
+    tx.oncomplete = () => {db.close();resolve();};
+    tx.onabort = tx.onerror = () => {db.close();reject(new Error(reason));};
+  });
+}
+/** The original 1.0 record is never rotated by ordinary saves. */
+export async function loadMigrationBackup(): Promise<GameSave | null> {
+  const value = await readRecord('migration-v1.0');
+  if (value === undefined) return null;
+  assertValidSave(value);
+  return value;
 }

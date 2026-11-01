@@ -27,3 +27,25 @@
 .tower-entry .button { width:100%; min-height:50px; }
 
 .ivory-tower__limit { color:#d7c6a4; font-size:12px; margin:10px 4px; }
+
+.ivory-tower__legacy { border-top:1px solid #b8c9dc33; padding-top:11px; }
+.ivory-tower__selector { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 2px 13px; font-size:12px; color:#c6d3e2; }
+.ivory-tower__selector select { min-width:122px; max-width:55%; min-height:44px; border-radius:10px; border:1px solid #9fb3cf66; background:#18283b; color:#f1eee6; padding:8px 12px; font:inherit; }
+.ivory-tower__difficulty { display:flex; align-items:center; gap:7px; color:#d9c8a3; font-size:12px; }
+.ivory-tower__features { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:12px 0; }
+.ivory-tower__features li { padding:4px 8px; border:1px solid #a8bdd64d; border-radius:6px; background:#132233; color:#d4dfec; font-size:11px; }
+.ivory-tower__scout { margin:15px 0; border-top:1px solid #a8bad538; border-bottom:1px solid #a8bad538; }
+.ivory-tower__scout > summary { cursor:pointer; min-height:48px; padding:12px 0; color:#ede4d3; font-size:12px; }
+.ivory-tower__scout > summary small { float:right; color:#aebed3; font-size:10px; }
+.ivory-tower__phantom,.ivory-tower__rule { font-size:11px; line-height:1.85; color:#bccbdd; margin:11px 0; overflow-wrap:anywhere; }
+.ivory-tower__rule strong { color:#ddcfb3; }
+.ivory-tower__waves { list-style:none; padding:0; margin:12px 0; }
+.ivory-tower__waves h4 { color:#d7c6a2; font-size:11px; letter-spacing:.08em; margin:15px 0 8px; }
+.ivory-tower__enemies { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; list-style:none; padding:0; margin:0; }
+.ivory-tower__enemies > li { min-width:0; display:flex; gap:8px; align-items:flex-start; padding:7px; border:1px solid #a0b6d342; border-radius:9px; background:#142436; }
+.ivory-tower__enemies > li.is-guardian { border-color:#c9b68d80; }
+.ivory-tower__enemies img { flex:0 0 39px; width:39px; height:53px; object-fit:cover; border-radius:6px; }
+.ivory-tower__enemies > li > div { min-width:0; }
+.ivory-tower__enemies strong { display:flex; gap:3px; align-items:center; color:#e6e9ed; font-size:11px; line-height:1.5; overflow-wrap:anywhere; }
+.ivory-tower__enemies small { display:block; margin:4px 0; color:#b8c7d9; font-size:10px; }
+.ivory-tower__enemies span { display:block; color:#9eafc4; font-size:9px; line-height:1.7; overflow-wrap:anywhere; }

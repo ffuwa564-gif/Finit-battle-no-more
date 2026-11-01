@@ -14,7 +14,8 @@ describe('BGM scene transitions', () => {
     for (const dungeon of normal) {
       let battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, 0, 42, `fjord-${dungeon.id}`);
       for (let wave = 0; wave < dungeon.waves.length; wave++) {
-        const expected = battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss) ? 'boss' : 'normalBattle';
+        const hasBoss = battle.initialUnits.some(unit => unit.side === 'enemy' && unit.boss);
+        const expected = hasBoss ? dungeon.bossMusic === 'clock' ? 'clockBoss' : dungeon.bossMusic === 'japanese' ? 'japaneseBoss' : 'boss' : 'normalBattle';
         expect(getBgmScene(battle, dungeon), `${dungeon.id} wave ${wave}`).toBe(expected);
         expect(getBgmScene({ ...battle, phase: 'ready' }, dungeon)).toBe(expected);
         expect(getBgmScene({ ...battle, phase: 'reward' }, dungeon)).toBe('clear');
@@ -38,7 +39,18 @@ describe('BGM scene transitions', () => {
     expect(getBgmScene(null, clock)).toBe('home');
     expect(getBgmScene(battle, clock, true)).toBe('novel');
     expect(getBgmScene(battle)).toBe('boss');
-    expect(content.dungeons.filter(d => d.bossMusic === 'clock').map(d => d.id)).toEqual([clock.id]);
+    const clockStages=content.dungeons.filter(d=>d.bossMusic==='clock');
+    const towerClocks=content.dungeons.filter(d=>d.towerFloor&&d.bossClock);
+    expect(clockStages.map(d=>d.id)).toEqual([clock.id,...towerClocks.map(d=>d.id)]);
+    expect(towerClocks.length).toBeGreaterThanOrEqual(1);
+    for(const stage of towerClocks){
+      expect(stage.waves.at(-1)![0]!.characterId).toBe('chrona');
+      const approach=createBattle(content,save.partyIds,save.leaderId,stage.id,0,42,'tower-clock-'+stage.id);
+      if(stage.waves.length>1)expect(getBgmScene(approach,stage)).toBe('normalBattle');
+      let finale=approach;
+      for(let wave=1;wave<stage.waves.length;wave++)finale=advanceReplay({...finale,phase:'playing',nextPhase:'wave',cursor:finale.events.length},content);
+      expect(getBgmScene(finale,stage)).toBe('clockBoss');
+    }
   });
   it('keeps boss music through replay, plays clear only at rewards, and returns home on failure or claim', () => {
     const save = createInitialSave(content, 42);

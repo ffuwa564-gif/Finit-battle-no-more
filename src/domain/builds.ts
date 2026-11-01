@@ -80,6 +80,43 @@ export const BUILD_DEFINITIONS: BuildDefinition[] = [
       slot('healer', 'HP消費を支える祈り手', ['elaine', 'elaine-awakened', 'miette'], 'clear-tear', stage, stage === 'starter' ? undefined : 'bulwark'),
     ]),
   },
+
+  {
+    id: 'status-weave', name: '眠りを織る', tagline: '止める敵と、削る敵を分ける。',
+    description: '睡眠の通常技と夢織石で敵の行動を止め、残る敵を別の攻撃役で削る。状態異常は確率で、ボスには通りにくい。',
+    mechanic: '睡眠はHPダメージで解除され、障壁だけへのダメージでは解除されない。眠った敵へ残響や全体攻撃が当たると、次の行動前に起こすことがある。',
+    steps: ['睡眠役に夢織石を託す。通常技の睡眠と石の再使用待ちは別に管理する。', '眠らせたい敵と攻撃を集中する敵を分ける。睡眠を永久拘束として当てにしない。', '睡眠役が倒れる前に守りと回復を入れ、失敗したラウンドも耐えられる編成にする。'],
+    stages: defineStages(stage => [
+      slot('sleeper', '睡眠と夢織の起点', ['persephone', 'nemuria'], 'dream-lace', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('guardian', '妨害役を守る王冠', ['athena', 'athena-standard', 'liora'], 'pale-ward', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('striker', '起こす相手を選ぶ攻撃役', ['nox', 'seris-awakened', 'seris'], 'echo-shard', stage, stage === 'starter' ? undefined : 'mercy'),
+      slot('healer', '失敗したラウンドの支え', ['benzaiten', 'elaine-awakened', 'elaine'], 'twin-tide', stage, stage === 'starter' ? undefined : 'bulwark'),
+    ], 1),
+  },
+  {
+    id: 'enduring-tides', name: '吸収と再生の潮', tagline: '殴る役を癒し、傷を次へ残さない。',
+    description: '吸収の王冠と夜露石で攻撃役のHPを戻し、双潮と通常の再生で全体を支える。最大HPや攻撃力を直接増やす構成ではない。',
+    mechanic: '夜露の吸収は実際に与えたHPダメージに依存する。障壁や高防御で削れないと回復も伸びず、再生が来る前の致死ダメージは防げない。',
+    steps: ['吸収の王冠を担う仲間に夜露石を託し、攻撃と回復を同じ行動へまとめる。', '盾役と双潮の回復役を置き、回復が間に合うまでを支える。', '再生役が攻撃や別の支援をするラウンドもある。予告大技には回復待ちではなく守りを使う。'],
+    stages: defineStages(stage => [
+      slot('drainer', '吸収の王冠と主攻撃', ['freyja', 'evelyn'], 'night-dew', stage, stage === 'starter' ? undefined : 'mercy'),
+      slot('guardian', '回復までを支える守護', ['evelyn', 'liora-awakened', 'liora'], 'pale-ward', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('healer', '二人を戻す回復役', ['benzaiten', 'elaine-awakened', 'elaine'], 'twin-tide', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('regenerator', '通常技の再生と補助', ['ukanomitama', 'selene-standard'], 'echo-shard', stage, stage === 'starter' ? undefined : 'mercy'),
+    ], 0),
+  },
+  {
+    id: 'skill-rewind', name: '通常技の巻戻し', tagline: '待っている技へ、もう一度の出番を。',
+    description: '巻戻しの石で別の仲間の通常スキルを早める。攻撃だけでなく、回復や障壁の再使用も支える。',
+    mechanic: '巻戻しは自分以外の味方の通常スキルだけを短縮し、記憶石の技や必殺ゲージには作用しない。待機中の通常技がないと仕事がなく、送電とは別の仕組み。',
+    steps: ['支援役に巻戻しの石を託し、仲間が通常スキルを使うまで待つ。', '短縮役自身の強化や送電と、石を使う行動は競合する。毎回同じ技を押すより、今待っている通常技を見る。', '技が早く戻っても自動で追加行動はしない。次の行動まで守り、再使用の機会を作る。'],
+    stages: defineStages(stage => [
+      slot('rewinder', '通常技の待ちを短縮', ['vespera', 'iris', 'noelle'], 'rewind-thread', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('guardian', '再使用まで守る王冠', ['athena', 'athena-standard', 'liora'], 'pale-ward', stage, stage === 'starter' ? undefined : 'bulwark'),
+      slot('striker', '戻った通常技で攻める役', ['nox', 'seris-awakened', 'seris'], 'echo-shard', stage, stage === 'starter' ? undefined : 'mercy'),
+      slot('healer', '回復技の再使用を支える', ['benzaiten', 'elaine-awakened', 'elaine'], 'twin-tide', stage, stage === 'starter' ? undefined : 'bulwark'),
+    ], 1),
+  },
 ];
 
 export function isBuildStage(value: unknown): value is BuildStage { return typeof value === 'string' && stages.includes(value as BuildStage); }
@@ -223,8 +260,10 @@ export function findGemSources(content: Content, save: GameSave, defId: string, 
   const highTarget = targetTier !== undefined && targetTier >= 4;
   const targetInfo = target ? { targetTier,targetPowerTier,...(targetTraitTier ? {targetTraitTier} : {}) } : {};
   const bossOnly = Boolean(definition.bossOnly);
+  const fixedCraft = definition.fixedRoll;
+  if (fixedCraft && target && !gemMeetsBuildTarget({id:'fixed-craft-preview',defId,variant:'pure',roll:fixedCraft},target)) return [];
   const sources: BuildFarmSource[] = content.dungeons.filter(dungeon => {
-    if (!dungeon.published || dungeon.kind === 'trial' || !dungeon.waves.length || dungeonGemFamily(dungeon) !== definition.family) return false;
+    if (fixedCraft || !dungeon.published || dungeon.kind === 'trial' || !dungeon.waves.length || dungeonGemFamily(dungeon) !== definition.family) return false;
     if (!target) return true;
     const profile = dungeonGemLootProfile(dungeon);
     return canDropTargetValue(target.power,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0)
@@ -243,7 +282,7 @@ export function findGemSources(content: Content, save: GameSave, defId: string, 
     const variant = target?.variant ?? 'pure';
     const craftCost = GEM_CRAFT_COST + (variant === 'pure' ? 0 : 3);
     const lockReason = save.battle ? '探索を終了してから製作できます。' : (save.memoryGems?.dust[definition.family] ?? 0) < craftCost ? '同じ系統の欠片を集めて製作できます。' : null;
-    sources.unshift({id:`craft:${defId}`,kind:'craft',name:variant === 'swift' ? '速唱の石を製作' : variant === 'echo' ? '残響の石を製作' : '澄明の石を製作',description:'基本の術式を製作できます。追加特性は付かないため、必要な特性は調律で狙います。',family:definition.family,locked:Boolean(lockReason),lockReason,bossOnly:false,craftCost,maxTier:1,featured:false,tierChances:{tier4:0,tier5:0,tier6:0},...targetInfo});
+    sources.unshift({id:`craft:${defId}`,kind:'craft',name:variant === 'swift' ? '速唱の石を製作' : variant === 'echo' ? '残響の石を製作' : '澄明の石を製作',description:fixedCraft ? '完成した補助石を製作します。性能は固定で、調律や上位Tierには進みません。' : '基本の術式を製作できます。追加特性は付かないため、必要な特性は調律で狙います。',family:definition.family,locked:Boolean(lockReason),lockReason,bossOnly:false,craftCost,maxTier:fixedCraft ? gemPowerTier({id:'fixed-craft-preview',defId,variant:'pure',roll:fixedCraft}) : 1,featured:false,tierChances:{tier4:0,tier5:0,tier6:0},...targetInfo});
   }
   return sources;
 }

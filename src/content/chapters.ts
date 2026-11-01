@@ -1,4 +1,5 @@
 import { zakuroChapter } from './zakuro';
+import { lateCampaignChapters } from './late-chapters';
 import type { ChapterDef, DungeonDef } from '../domain/types';
 import { chapterStageIds } from './campaign-stages';
 
@@ -7,6 +8,7 @@ export const campaignChapters: ChapterDef[] = [
   { id: 'sealed-gate', number: 2, title: 'ふたりぶんの空席', subtitle: '温室に通い、荊の魔女と過ごす日々。', dungeonIds: chapterStageIds[1]!, bossHint: '先頭狙いの大技に注意。護衛のかばう・回復を崩すか、ボスへ集中して溜めを崩そう。' },
   { id: 'promise-of-dawn', number: 3, title: '白夜の約束', subtitle: '朝を取り戻すため、街に残された封印を調べる。', dungeonIds: chapterStageIds[2]!, bossHint: '第3章からは高難度。弔鐘の一閃に備え、先頭の耐久と回復役を整えよう。護衛の排除・溜め崩し・必殺技を使い分けよう。' },
   zakuroChapter,
+  ...lateCampaignChapters,
 ];
 /** Stable exploration IDs and reward records are preserved. */
 export function chapterRoute(stage: DungeonDef): DungeonDef {

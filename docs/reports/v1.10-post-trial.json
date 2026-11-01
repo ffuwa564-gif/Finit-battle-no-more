@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-01",
+  "localOnly": true,
+  "prCreated": false,
+  "deployed": false,
+  "fingerprint": "1c028b4ce2c4f8b5a954fa4c572e333ca4be599fd4b159c3b2cad72560861016",
+  "build": "passed",
+  "unitTests": {
+    "files": 88,
+    "passed": 709
+  },
+  "browserChecks": {
+    "chromiumNewFlow": 8,
+    "webkitNewFlow": 8,
+    "chromiumRegression": 14,
+    "widths": [
+      320,
+      390
+    ],
+    "languages": [
+      "ja",
+      "en"
+    ]
+  },
+  "nativeTrialReplay": {
+    "commands": 921,
+    "finalSaveExactlyMatchesOriginal": true
+  },
+  "gameplayBalanceChanged": false,
+  "saveSchemaChanged": false,
+  "notes": [
+    "A preliminary WebKit screenshot was interrupted by source hot reload; stable rerun passed.",
+    "A preliminary concurrent regression run lost its Playwright-owned web server; rerun using a persistent Vite server passed.",
+    "The final text pass replaced two caveats with practical instructions; final Chromium flow and locale/build checks passed."
+  ]
+}

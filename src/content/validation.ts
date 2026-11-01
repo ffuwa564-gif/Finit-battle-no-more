@@ -1,3 +1,4 @@
+import { scoutSkillContract } from '../domain/scout-skills';
 import { characterRarities } from '../domain/xr-gacha';
 import { IVORY_TOWER_FLOORS, ivoryTowerId } from '../domain/ivory-tower';
 import { GEM_DEFINITIONS, dungeonGemFamily } from '../domain/memory-gems';
@@ -13,7 +14,7 @@ const roles = new Set(Object.keys(required));
 const plain = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0 && !/<\/?[a-z!][^>]*>/i.test(value);
 const strengthValid = (value: number, maximum = 40, minimum = 10) => Number.isInteger(value) && value >= minimum && value <= maximum;
 
-/** Shared build/runtime validation. No character-specific validators or executable data. */
+/** Shared build/runtime validation; personal skills require a fixed, owned engine contract. */
 export function validateContent(content: Content): string[] {
   const errors: string[] = [];
   const reject = (condition: boolean, message: string) => { if (condition) errors.push(message); };
@@ -67,7 +68,8 @@ export function validateContent(content: Content): string[] {
     reject(!templates.has(skill.template), `skills/${skill.id}: unknown template`);
     reject(!strengthValid(skill.strength), `skills/${skill.id}: integer strength 10..40 required`);
     reject(!profiles.has(skill.soundProfile), `skills/${skill.id}: unknown sound profile`);
-    const key = `${skill.template}:${skill.strength}`;
+    const personal = scoutSkillContract(skill);
+    const key = personal ? `personal:${skill.id}` : `${skill.template}:${skill.strength}`;
     reject(semanticKeys.has(key), `skills/${skill.id}: duplicate semantic key ${key}`);
     semanticKeys.add(key);
     reject(Object.keys(skill).some(key => !['id', 'name', 'template', 'strength', 'soundProfile'].includes(key)), `skills/${skill.id}: derived effect overrides are forbidden`);
@@ -101,7 +103,7 @@ export function validateContent(content: Content): string[] {
     reject(char.origin.includes('awakening') && (char.origin.length !== 1 || !content.awakenings?.some(def => def.awakenedId === char.id)), `characters/${char.id}: awakening-exclusive form required`);
     reject(char.origin.includes('trial') && (char.origin.length !== 1 || char.rarity !== 'SSR' || !content.dungeons.some(stage => stage.kind === 'trial' && stage.waves.some(wave => wave.some(enemy => enemy.characterId === char.id)))), `characters/${char.id}: exclusive trial boss required`);
     reject(char.origin.includes('event') && char.origin.length !== 1, `characters/${char.id}: event-exclusive acquisition required`);
-    reject(char.origin.includes('gacha') && (char.origin.includes('recruit') || char.origin.includes('initial')), `characters/${char.id}: gacha-exclusive character has another route`);
+    reject(char.origin.includes('gacha') && char.origin.length !== 1, `characters/${char.id}: gacha-exclusive character has another route`);
     reject(!char.published && char.origin.includes('initial'), `characters/${char.id}: unpublished initial acquisition`);
     reject(char.skillIds.length !== 2 || new Set(char.skillIds).size !== 2, `characters/${char.id}: exactly two distinct skills required`);
     const selected = char.skillIds.map(id => content.skills.find(skill => skill.id === id));
@@ -109,11 +111,12 @@ export function validateContent(content: Content): string[] {
     const known = selected.filter((skill): skill is NonNullable<typeof skill> => Boolean(skill));
     reject(known.some(skill => Math.abs(skill.strength - char.strength) > 2), `characters/${char.id}: skill outside strength band`);
     reject(known.reduce((sum, skill) => sum + skill.strength, 0) > char.strength * 2, `characters/${char.id}: skill budget exceeded`);
-    reject(new Set(known.map(skill => skill.template)).size !== known.length, `characters/${char.id}: repeated effect template`);
+    reject(known.some(skill => Boolean(scoutSkillContract(skill) && scoutSkillContract(skill)!.characterId !== char.id)), `characters/${char.id}: personal skill belongs to another character`);
+    reject(new Set(known.map(skill => scoutSkillContract(skill) ? `personal:${skill.id}` : skill.template)).size !== known.length, `characters/${char.id}: repeated effect template`);
     if (roles.has(char.role)) {
       reject(!known.some(skill => skill.template === required[char.role]), `characters/${char.id}: role required skill missing`);
       const allowed: SkillTemplate[] = [required[char.role], 'overclock', 'barrier_mend', 'jam', 'rally', 'attack', 'area', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
-      reject(known.some(skill => !allowed.includes(skill.template)), `characters/${char.id}: unreachable second skill`);
+      reject(known.some(skill => !allowed.includes(skill.template) && !scoutSkillContract(skill)), `characters/${char.id}: unreachable second skill`);
     }
   }
   allIds(content.goldExchanges ?? [], 'goldExchanges');
@@ -180,8 +183,12 @@ export function validateContent(content: Content): string[] {
       const floor = dungeon.towerFloor;
       reject(!Number.isSafeInteger(floor) || floor < 1 || floor > IVORY_TOWER_FLOORS || dungeon.id !== ivoryTowerId(floor) || dungeon.kind !== 'normal' || Boolean(dungeon.chapterId || dungeon.eventId || dungeon.storyId) || !dungeon.enemyScale || dungeon.previousDungeonId !== (floor === 1 ? 'silent-cathedral' : ivoryTowerId(floor - 1)), `dungeons/${dungeon.id}: invalid ivory tower floor`);
     }
+    if (dungeon.towerBattle) {
+      const limits = dungeon.towerBattle;
+      reject(dungeon.towerFloor === undefined || ![limits.healLimit, limits.barrierLimit].every(limit => Number.isSafeInteger(limit) && limit >= 0 && limit <= 10), `dungeons/${dungeon.id}: invalid tower support budget`);
+    }
     if (dungeon.enemyScale) reject(dungeon.towerFloor === undefined || Object.values(dungeon.enemyScale).length !== 3 || ![dungeon.enemyScale.hp, dungeon.enemyScale.attack, dungeon.enemyScale.defense].every(value => Number.isFinite(value) && value > 0 && value <= 10000), `dungeons/${dungeon.id}: invalid tower enemy scale`);
-    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || dungeon.kind !== 'trial' || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
+    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || (dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
     if (dungeon.coordination) {
       const rule = dungeon.coordination;
       reject(dungeon.kind !== 'trial' || Boolean(dungeon.bossClock || dungeon.bossBits) || !Number.isSafeInteger(rule.bonusPercent) || rule.bonusPercent < 1 || rule.bonusPercent > 100 || !dungeon.waves.some(wave => wave.some(enemy => enemy.boss)), `dungeons/${dungeon.id}: invalid coordination trial`);
@@ -198,7 +205,7 @@ export function validateContent(content: Content): string[] {
     }
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
-    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial') || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.number >= 3) ? 800 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.number >= 3) ? 800 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
     if (dungeon.bossStrike) {
       const strike = dungeon.bossStrike;
       const allowed = dungeon.kind === 'trial' ? dungeon.tacticalCommands === true || Boolean(dungeon.coordination)
@@ -211,11 +218,11 @@ export function validateContent(content: Content): string[] {
     }
     if (dungeon.bossClock) {
       const clock = dungeon.bossClock;
-      reject(dungeon.kind !== 'trial' || dungeon.waves.length !== 1 || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
+      reject((dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || (dungeon.towerFloor === undefined && dungeon.waves.length !== 1) || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
     }
     if (dungeon.bossBits) {
       const bits = dungeon.bossBits;
-      reject(!dungeon.eventId || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
+      reject((!dungeon.eventId && dungeon.towerFloor === undefined) || ![bits.every, bits.count, bits.duration, bits.power].every(Number.isSafeInteger) || bits.every < 2 || bits.every > 6 || bits.count < 1 || bits.count > 4 || bits.duration < 1 || bits.duration >= bits.every || bits.power < 20 || bits.power > 80, `dungeons/${dungeon.id}: invalid boss bit pattern`);
     }
     if (dungeon.eventReward) reject(!dungeon.eventId || !Number.isSafeInteger(dungeon.eventReward.count) || dungeon.eventReward.count < 1, `dungeons/${dungeon.id}: invalid event reward`);
     if (dungeon.previousDungeonId) reject(!content.dungeons.some(item => item.id === dungeon.previousDungeonId && item.id !== dungeon.id), `dungeons/${dungeon.id}: missing unlock dungeon`);
@@ -227,8 +234,8 @@ export function validateContent(content: Content): string[] {
       for (const enemy of wave) {
         const char = content.characters.find(item => item.id === enemy.characterId);
         reject(!characterIds.has(enemy.characterId), `dungeons/${dungeon.id}: missing enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.published || !((dungeon.kind === 'trial' && char.rarity === 'SSR' && (char.origin.includes('gacha') || char.origin.includes('trial'))) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.encounterArtId && dungeon.kind !== 'trial', `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
+        if (dungeon.published && char) reject(!char.published || !((dungeon.towerFloor !== undefined) || (dungeon.kind === 'trial' && char.rarity === 'SSR' && (char.origin.includes('gacha') || char.origin.includes('trial'))) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
+        if (dungeon.published && char) reject(!char.encounterArtId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined, `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
         reject(Boolean(enemy.boss) && dungeon.kind !== 'trial' && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }
     });
@@ -242,7 +249,7 @@ export function validateContent(content: Content): string[] {
       }
     }
     const finalWave = dungeon.waves.at(-1);
-    if (!dungeon.coordination) reject(!finalWave || !finalWave[0]?.boss || finalWave.slice(1).some(enemy => enemy.boss) || finalWave.length > (dungeon.towerFloor || dungeon.bossStrike?.windup && dungeon.kind !== 'trial' ? 3 : 1), `dungeons/${dungeon.id}: final wave must contain one boss`);
+    if (!dungeon.coordination) reject(!finalWave || !finalWave[0]?.boss || finalWave.slice(1).some(enemy => enemy.boss) || finalWave.length > (dungeon.towerFloor ? 4 : dungeon.bossStrike?.windup && dungeon.kind !== 'trial' ? 3 : 1), `dungeons/${dungeon.id}: final wave must contain one boss`);
   }
   allIds(content.awakenings ?? [], 'awakenings');
   const awakeningForms = new Set<string>();

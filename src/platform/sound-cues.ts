@@ -9,7 +9,7 @@ export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
 export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
   trackBuild: 'select', applyBuild: 'confirm',
   startGemRefinement: 'exchange', resolveGemRefinement: 'confirm', equipMemoryGem: 'confirm', salvageMemoryGem: 'exchange', lockMemoryGem: 'select', craftMemoryGem: 'recruit',
-  partyOrder: 'select', focusEnemy: 'select',
+  commandOrder: 'select', partyOrder: 'select', focusEnemy: 'select',
   crystalRole: 'select', battleFairy: null, battleBloom: null, novelStart: 'select', novelNext: 'select', novelBack: 'select', novelFinish: 'confirm', ultimate: 'select', depart: 'depart', strategy: 'select', round: null, replay: null, potion: 'heal', retreat: 'cancel', claim: 'victory', leaveFailure: 'cancel', buyPotion: 'purchase', recruit: 'recruit', goldRecruit: 'victory', eventRecruit: 'recruit', awaken: 'victory', exchange: 'exchange', party: 'select', drawXR: 'gacha', draw: 'gacha', settings: null,
 };
 

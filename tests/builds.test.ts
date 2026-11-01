@@ -25,7 +25,7 @@ function withCustomSlots(change: (build: BuildDefinition) => void) {
 
 describe('build recipes and read-only planning', () => {
   it('only authors legal currently obtainable characters, compatible traits and a real core at every stage', () => {
-    expect(BUILD_DEFINITIONS).toHaveLength(3);
+    expect(BUILD_DEFINITIONS).toHaveLength(6);
     for (const build of BUILD_DEFINITIONS) for (const stage of ['starter','complete','perfect'] as const) {
       const recipe = build.stages[stage];
       expect(recipe.slots).toHaveLength(4);

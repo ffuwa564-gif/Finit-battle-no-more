@@ -1,0 +1,56 @@
+{
+  "version": "1.10-local-expedition-update",
+  "localOnly": true,
+  "committed": false,
+  "pushed": false,
+  "deployed": false,
+  "sourceBuildFingerprint": "ebd4123d82448989fa759ac2386d174febad8575756d552ba7c22ae4b191ebe5",
+  "checks": [
+    {
+      "name": "Full unit suite",
+      "files": 87,
+      "tests": 703,
+      "status": "pass",
+      "log": "artifacts/v110-update/run-review/unit-final.log"
+    },
+    {
+      "name": "Production build and gates",
+      "status": "pass",
+      "log": "artifacts/v110-update/run-review/build-final.log"
+    },
+    {
+      "name": "Local itch build and ZIP only",
+      "status": "pass",
+      "log": "artifacts/v110-update/run-review/build-itch.log"
+    },
+    {
+      "name": "Independent native command/save/clock/loot integration",
+      "tests": 11,
+      "status": "pass"
+    },
+    {
+      "name": "JA/EN320/390 expedition result and ledger",
+      "tests": 4,
+      "status": "pass"
+    },
+    {
+      "name": "Existing acceleration HUD regression",
+      "tests": 3,
+      "status": "pass",
+      "log": "artifacts/v110-update/run-review/acceleration-browser.log"
+    },
+    {
+      "name": "Chromium/WebKit common native interaction",
+      "tests": 8,
+      "status": "pass",
+      "log": "artifacts/v110-update/run-review/native-ui.log"
+    }
+  ],
+  "limits": [
+    "Existing untracked explorations are not reconstructed or entered into the farm ledger.",
+    "Elapsed time includes offline and idle time, excluding post-result claim waiting.",
+    "Unknown duration and zero duration are excluded from hourly numerator and denominator.",
+    "Observed HP deltas are not unmitigated attack values or inferred causes of defeat.",
+    "Linux browser tests, not physical iOS validation."
+  ]
+}

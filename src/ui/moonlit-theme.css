@@ -154,3 +154,11 @@ html[data-motion='reduced'] .scene-atmosphere__fracture,
   .scene-atmosphere > span { animation: none; }
   .scene-atmosphere__fracture { display: none; }
 }
+
+/* 1.10: preparation and journey guidance share the same readable moonlit surfaces. */
+:root .memory-gem-source { color: #d3dfed; }
+:root .memory-gem-source > svg { color: #b4cde5; }
+:root .memory-gem-source small { color: #b6c6d9; }
+:root .home-journey-goal { color: var(--ink); border-color: var(--border); background: var(--surface-moon); box-shadow: inset 0 1px #d2e2f51a,0 3px 12px #0003; }
+:root .home-journey-goal__copy > span, :root .home-journey-goal p { color: #c0cede; }
+:root .home-journey-goal h2 { color: var(--ink); }

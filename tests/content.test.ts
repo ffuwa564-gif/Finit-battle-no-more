@@ -3,9 +3,10 @@ import { content, materialName } from '../src/content';
 import { validateContent } from '../src/content/validation';
 
 describe('shared content contract', () => {
-  it('accepts the complete first playable registry and guarantees launch acquisition', () => {
+  it('accepts the seven-chapter1.10 registry and guarantees launch acquisition', () => {
     expect(validateContent(content)).toEqual([]);
-    expect(content.dungeons.filter(dungeon => Boolean(dungeon.chapterId))).toHaveLength(38);
+    expect(content.chapters?.map(chapter => chapter.number)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(content.dungeons.filter(dungeon => Boolean(dungeon.chapterId))).toHaveLength(68);
     const events = content.dungeons.filter(dungeon => dungeon.kind === 'event' && !dungeon.eventId);
     expect(events).toHaveLength(3);
     expect(events.every(dungeon => dungeon.waves.length === 2)).toBe(true);

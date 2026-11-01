@@ -1,0 +1,73 @@
+{
+  "version": "1.10-local-video-update",
+  "localOnly": true,
+  "committed": false,
+  "pushed": false,
+  "deployed": false,
+  "evidence": {
+    "youtubePlaylist": "Not fetched: environment CONNECT403; GitHub sources inspected instead.",
+    "githubCommits": {
+      "command": "ad81b5dbe415224aa5ae98a59570e767a8ff09da",
+      "myth": "931d58bcdb5e620ddeed5ac965a8686d499bdd7f",
+      "builds": "e3a16f7b85563cef5847170c3870d27eafa6b83a"
+    }
+  },
+  "checks": [
+    {
+      "name": "Complete unit suite",
+      "files": 84,
+      "tests": 655,
+      "status": "pass",
+      "log": "artifacts/v110-update/unit-final.log"
+    },
+    {
+      "name": "Production build",
+      "status": "pass",
+      "log": "artifacts/v110-update/build-final.log"
+    },
+    {
+      "name": "Local itch build and ZIP, no upload",
+      "status": "pass",
+      "log": "artifacts/v110-update/build-itch.log"
+    },
+    {
+      "name": "Independent new feature integration",
+      "tests": 13,
+      "status": "pass"
+    },
+    {
+      "name": "JA/EN320/390 command and whiteflower browser",
+      "tests": 8,
+      "status": "pass"
+    },
+    {
+      "name": "JA/EN320/390 whiteflower state browser",
+      "tests": 4,
+      "status": "pass"
+    },
+    {
+      "name": "Acceleration HUD and audio ownership regression",
+      "tests": 6,
+      "status": "pass"
+    },
+    {
+      "name": "Existing build planner browser regression",
+      "tests": 8,
+      "status": "pass"
+    },
+    {
+      "name": "Chromium/WebKit native UI",
+      "tests": 8,
+      "status": "pass",
+      "log": "artifacts/v110-update/native-ui.log"
+    }
+  ],
+  "sourceBuildFingerprint": "e34cff552b04ca32dc8a7924b06c5b0e0f3946762a87123dcf40a7ce3368fd54",
+  "limits": [
+    "Linux browsers; physical iOS not tested.",
+    "The source19-build video measures version1.00; its win rates are not current1.10 results.",
+    "Command doctrine source models and myth arithmetic are not native combat balance proof.",
+    "No claim of all24 myth proposals implemented, optimal parties, guaranteed tower clears or player retention."
+  ],
+  "finalVisualCorrection": "Cooldown badge only: 12px single line, verified within portrait; 8 demo tests, types and UI passed; both builds regenerated."
+}

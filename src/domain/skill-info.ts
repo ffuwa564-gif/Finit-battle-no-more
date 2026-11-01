@@ -1,3 +1,4 @@
+import { scoutSkillDescription, scoutLeaderDescription } from './scout-skills';
 import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
 
 export const skillTemplates: SkillTemplate[] = ['overclock', 'barrier_mend', 'jam', 'rally', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
@@ -33,6 +34,8 @@ const descriptions: Record<SkillTemplate, string> = {
 };
 export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['overclock', 'jam', 'rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
 export function skillDescription(skill: SkillDef): string {
+  const personal = scoutSkillDescription(skill.id);
+  if (personal) return personal;
   const effect = skill.template === 'rally' ? `${descriptions.rally} 攻撃力上昇量：${15 + skill.strength / 2}%。` : descriptions[skill.template];
   return `${effect}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`;
 }
@@ -45,6 +48,8 @@ const leaderDescriptions: Record<LeaderEffect, string> = {
   resonance: '星の共鳴：味方全員の全体攻撃の威力が15%上昇。',
 };
 export function leaderEffectDescription(character: CharacterDef): string {
+  const personal = scoutLeaderDescription(character.id);
+  if (personal) return `${personal} リーダー生存中のみ有効。`;
   return character.leaderEffect ? `${leaderDescriptions[character.leaderEffect]} リーダー生存中のみ有効。` : '';
 }
 

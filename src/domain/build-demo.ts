@@ -5,9 +5,9 @@ import { partyOrderOptions } from './party-orders';
 import { ultimateReady } from './ultimates';
 import type { Battle, BattleEvent, Content, Unit } from './types';
 
-export type BuildDemoHighlight = 'chain' | 'echo' | 'barrier' | 'shield' | 'battery' | 'ultimate';
+export type BuildDemoHighlight = 'chain' | 'echo' | 'barrier' | 'shield' | 'battery' | 'ultimate' | 'sleep' | 'drain' | 'regen' | 'rewind';
 export interface BuildDemoFrame { event: BattleEvent; units: Unit[]; before: Unit[]; wave: number; round: number; highlight?: BuildDemoHighlight }
-export interface BuildDemoProof { chainHits: number; echoHits: number; barrierCasts: number; shieldShots: number; consumedBarrier: number; batteryCharges: number; chargeReceived: number; rabbitUltimates: number }
+export interface BuildDemoProof { chainHits: number; echoHits: number; barrierCasts: number; shieldShots: number; consumedBarrier: number; batteryCharges: number; chargeReceived: number; rabbitUltimates: number; sleepApplications: number; drainHealing: number; regenerationHealing: number; rewindCasts: number; cooldownReduction: number }
 export interface BuildDemoResult { dungeonId: string; partyIds: string[]; leaderId: string; initialUnits: Unit[]; frames: BuildDemoFrame[]; events: BuildDemoFrame[]; proof: BuildDemoProof; demonstrated: boolean }
 
 /** Isolated fixture inventory. Never reads or writes a player's save, stats, seed or resources. */
@@ -26,7 +26,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   battle.memoryGems = fixtures;
   const initialUnits = structuredClone(battle.initialUnits);
   const frames: BuildDemoFrame[] = [];
-  const proof: BuildDemoProof = { chainHits:0, echoHits:0, barrierCasts:0, shieldShots:0, consumedBarrier:0, batteryCharges:0, chargeReceived:0, rabbitUltimates:0 };
+  const proof: BuildDemoProof = { chainHits:0, echoHits:0, barrierCasts:0, shieldShots:0, consumedBarrier:0, batteryCharges:0, chargeReceived:0, rabbitUltimates:0, sleepApplications:0, drainHealing:0, regenerationHealing:0, rewindCasts:0, cooldownReduction:0 };
   let steps = 0, rounds = 0;
   while (!['failed','reward'].includes(battle.phase) && steps++ < 1500 && rounds < 22) {
     if (battle.phase === 'playing') { battle = advanceReplay(battle,content); continue; }
@@ -54,7 +54,16 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
       const friendly = event.actorId?.startsWith('party:');
       let highlight: BuildDemoHighlight | undefined;
       const barrierGain = units.filter(unit=>unit.side==='party').reduce((sum,unit)=>sum + Math.max(0,(unit.barrier ?? 0)-(previous.find(old=>old.uid===unit.uid)?.barrier ?? 0)),0);
-      if (buildId === 'shield-cannon' && friendly && event.actionSelection && barrierGain > 0) { proof.barrierCasts++; highlight='barrier'; }
+      const actor = units.find(unit=>unit.uid===event.actorId), oldActor = previous.find(unit=>unit.uid===event.actorId);
+      const actualHealing = actor && oldActor ? Math.max(0,actor.hp-oldActor.hp) : 0;
+      const sleepApplied = event.ailment==='sleep' && event.statusAction!=='resist' && units.some(unit=>unit.side==='enemy' && event.targetIds?.includes(unit.uid) && unit.ailments?.sleep && !previous.find(old=>old.uid===unit.uid)?.ailments?.sleep);
+      const normalCooldownReduction = friendly && gem?.id==='rewind-thread' && event.actionSelection ? units.filter(unit=>event.targetIds?.includes(unit.uid)).reduce((sum,unit)=>sum+Object.entries(unit.cooldowns).filter(([id])=>content.characters.find(ch=>ch.id===unit.characterId)?.skillIds.includes(id)).reduce((n,[id,until])=>n+Math.max(0,(previous.find(old=>old.uid===unit.uid)?.cooldowns[id]??0)-until),0),0) : 0;
+      const damagedEnemy = units.some(unit=>unit.side==='enemy' && unit.hp<(previous.find(old=>old.uid===unit.uid)?.hp??unit.hp));
+      if(buildId==='status-weave' && friendly && sleepApplied){proof.sleepApplications++;highlight='sleep';}
+      else if(buildId==='enduring-tides' && friendly && event.actionSelection && gem?.skill.template==='drain' && damagedEnemy && actualHealing>0){proof.drainHealing+=actualHealing;highlight='drain';}
+      else if(buildId==='enduring-tides' && friendly && event.kind==='heal' && event.text.endsWith('月の雫の再生') && actualHealing>0){proof.regenerationHealing+=actualHealing;highlight='regen';}
+      else if(buildId==='skill-rewind' && normalCooldownReduction>0){proof.rewindCasts++;proof.cooldownReduction+=normalCooldownReduction;highlight='rewind';}
+      else if (buildId === 'shield-cannon'  && friendly && event.actionSelection && barrierGain > 0) { proof.barrierCasts++; highlight='barrier'; }
       else if (friendly && event.text.endsWith('・連鎖') && (event.amount ?? 0) > 0) { proof.chainHits++; highlight='chain'; }
       else if (friendly && event.text.endsWith('・残響') && (event.amount ?? 0) > 0) { proof.echoHits++; highlight='echo'; }
       else if (friendly && gem?.id === 'shield-break' && event.actionSelection && (event.amount ?? 0) > 0) {
@@ -70,11 +79,11 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
       previous = units;
     }
     rounds++;
-    if (buildId === 'echo-chain' && proof.chainHits && proof.echoHits || buildId === 'shield-cannon' && proof.shieldShots || buildId === 'rabbit-battery' && proof.batteryCharges && proof.rabbitUltimates) break;
+    if (mechanicDemonstrated(buildId,proof)) break;
   }
-  const demonstrated = buildId === 'echo-chain' ? proof.chainHits > 0 && proof.echoHits > 0 : buildId === 'shield-cannon' ? proof.shieldShots > 0 : proof.batteryCharges > 0 && proof.rabbitUltimates > 0;
+  const demonstrated = mechanicDemonstrated(buildId,proof);
   // Preserve event order while selecting the real lead-in and consequence around each synergy.
-  const required: BuildDemoHighlight[] = buildId === 'echo-chain' ? ['chain','echo'] : buildId === 'shield-cannon' ? ['barrier','shield'] : ['battery','ultimate'];
+  const required = buildDemoHighlights(buildId);
   const important = required.map(kind=>frames.findIndex(frame=>frame.highlight===kind)).filter(index=>index>=0);
   // Include the actual creation of the consumed shield, which may be several turns earlier.
   const shotIndex = frames.findIndex(frame=>frame.highlight==='shield');
@@ -92,4 +101,12 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   for (const [index,frame] of frames.entries()) if(frame.highlight) for(let offset=-1;offset<=1;offset++) if(selected.size<16&&index+offset>=0&&index+offset<frames.length) selected.add(index+offset);
   const excerpt = [...selected].sort((a,b)=>a-b).map(index=>frames[index]);
   return {dungeonId,partyIds,leaderId,initialUnits,frames:excerpt.length ? excerpt : frames.slice(0,12),events:frames,proof,demonstrated};
+}
+
+/** Each recipe declares its own observable mechanism; unknown recipes never inherit a success. */
+export function buildDemoHighlights(buildId:string): BuildDemoHighlight[] {
+ return ({'echo-chain':['chain','echo'],'shield-cannon':['barrier','shield'],'rabbit-battery':['battery','ultimate'],'status-weave':['sleep'],'enduring-tides':['drain','regen'],'skill-rewind':['rewind']} as Record<string,BuildDemoHighlight[]>)[buildId]??[];
+}
+function mechanicDemonstrated(id:string,p:BuildDemoProof):boolean {
+ return id==='echo-chain'?p.chainHits>0&&p.echoHits>0:id==='shield-cannon'?p.shieldShots>0:id==='rabbit-battery'?p.batteryCharges>0&&p.rabbitUltimates>0:id==='status-weave'?p.sleepApplications>0:id==='enduring-tides'?p.drainHealing>0&&p.regenerationHealing>0:id==='skill-rewind'?p.rewindCasts>0:false;
 }

@@ -1,6 +1,7 @@
 export { PartyMemberActions, type PartyMemberActionsProps } from './PartyMemberActions';
 export { PartyFormation, type PartyFormationProps } from './PartyFormation';
 export { BuildPlanner } from './BuildPlanner';
+export { HomeJourneyGoal, type HomeJourneyGoalProps } from './HomeJourneyGoal';
 export { GameImage, GameVideo, type GameImageProps, type GameVideoProps } from './GameMedia';
 export { BuildGoalSummary } from './BuildGoalSummary';
 export { VisualNovel, NovelLibrary } from './VisualNovel';
@@ -190,3 +191,10 @@ export { InventorySection, type InventorySectionProps } from './InventorySection
 export { MemoryGemFind, MemoryGemSource, MemoryGemSummary } from './MemoryGemFind';
 
 export { IvoryTower } from './IvoryTower';
+
+export { CommandDoctrine, type CommandDoctrineProps } from './CommandDoctrine';
+
+export { ExpeditionReview } from './ExpeditionReview';
+export { ExpeditionLedger } from './ExpeditionLedger';
+export { PreparationGuide, type PreparationGuideProps } from './PreparationGuide';
+export { ExpeditionNextStep } from './ExpeditionNextStep';

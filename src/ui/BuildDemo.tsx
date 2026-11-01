@@ -9,7 +9,7 @@ import { tr } from '../locales/i18n';
 import { Button } from './index';
 import './build-demo.css';
 
-const highlights: Record<BuildDemoHighlight,string> = {barrier:'味方に障壁を展開',chain:'別の敵へ連鎖',echo:'次のラウンドに追撃',shield:'障壁を砲撃へ変換',battery:'ルネットへゲージ供給',ultimate:'うさぎの必殺技へ'};
+const highlights: Record<BuildDemoHighlight,string> = {barrier:'味方に障壁を展開',chain:'別の敵へ連鎖',echo:'次のラウンドに追撃',shield:'障壁を砲撃へ変換',battery:'ルネットへゲージ供給',ultimate:'うさぎの必殺技へ',sleep:'睡眠を実際に付与',drain:'与えたHP被害から吸収',regen:'再生でHPが戻る',rewind:'通常技の待ちを短縮'};
 export interface BuildDemoProps { buildId: string; stage: BuildStage; content: Content; reducedMotion?: boolean }
 
 export function BuildDemo({buildId,stage,content,reducedMotion=false}:BuildDemoProps) {
@@ -38,10 +38,11 @@ export function BuildDemo({buildId,stage,content,reducedMotion=false}:BuildDemoP
       const hpDelta=before ? unit.hp-before.hp : 0;
       const shieldGain=before ? Math.max(0,(unit.barrier ?? 0)-(before.barrier ?? 0)) : 0;
       const chargeGain=before ? Math.max(0,(unit.ultimateCharge ?? 0)-(before.ultimateCharge ?? 0)) : 0;
-      const number=Math.abs(hpDelta) || (frame?.event.kind==='guard' ? shieldGain : frame?.event.kind==='buff' ? chargeGain : 0);
-      const support=hpDelta>0 || hpDelta===0 && (shieldGain>0 || chargeGain>0);
+      const cooldownReduction=before && highlight==='rewind' ? Object.entries(unit.cooldowns).filter(([id])=>character.skillIds.includes(id)).reduce((sum,[id,until])=>sum+Math.max(0,(before.cooldowns[id]??0)-until),0) : 0;
+      const number=cooldownReduction || Math.abs(hpDelta) || (frame?.event.kind==='guard' ? shieldGain : frame?.event.kind==='buff' ? chargeGain : 0);
+      const support=cooldownReduction>0 || hpDelta>0 || hpDelta===0 && (shieldGain>0 || chargeGain>0);
       return <div key={unit.uid} className={`build-demo__unit${target?' is-target':''}${actor?' is-actor':''}${unit.hp<=0?' is-fallen':''}`}>
-        <div className="build-demo__portrait"><GameImage src={assetPath(character.portraitId)} alt={displayName(unit)} style={{objectPosition:portrait?.anchor ?? '50% 22%'}} />{target && number>0 && <strong className={`build-demo__number${support?' is-support':''}`}>{support?'+':''}{number}</strong>}{unit.side==='party' && <span className="build-demo__charge">{unit.ultimateCharge ?? 0}%</span>}</div>
+        <div className="build-demo__portrait"><GameImage src={assetPath(character.portraitId)} alt={displayName(unit)} style={{objectPosition:portrait?.anchor ?? '50% 22%'}} />{(target || highlight==='drain' && actor && hpDelta>0) && number>0 && <strong className={`build-demo__number${support?' is-support':''}${cooldownReduction>0?' build-demo__number--cooldown':''}`}>{cooldownReduction>0?'CD −':support?'+':''}{number}</strong>}{unit.ailments?.sleep && <span className="build-demo__charge">{tr('睡眠')}</span>}{unit.side==='party' && <span className="build-demo__charge">{unit.ultimateCharge ?? 0}%</span>}</div>
         <span className="build-demo__name">{displayName(unit)}</span><meter min={0} max={unit.maxHp} value={Math.max(0,unit.hp)} aria-label={tr('{0}のHP').replace('{0}',displayName(unit))} />
       </div>;
     })}</div>;

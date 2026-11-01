@@ -1,7 +1,9 @@
 import type { NovelSceneDef } from '../domain/types';
+import { lateStoryMilestones } from './late-chapters';
 
 /** Mid-chapter scenes add time with the characters without changing exploration rewards. */
 export const storyMilestones: NovelSceneDef[] = [
+  ...lateStoryMilestones,
   {
     "id": "greenhouse-seat",
     "title": "温室の席",

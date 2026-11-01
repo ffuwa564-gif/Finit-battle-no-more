@@ -1,0 +1,814 @@
+[
+  {
+    "key": "story110.lateCampaignChapters.0.title",
+    "text": "空欄の名簿"
+  },
+  {
+    "key": "story110.lateCampaignChapters.0.subtitle",
+    "text": "記録の帰還先と、いまの本人の返事を確かめる。"
+  },
+  {
+    "key": "story110.lateCampaignChapters.0.bossHint",
+    "text": "守護と回復の連携を崩そう。回復役を先に狙うか、破砕で守りを開き、予告大技のあとに攻めよう。"
+  },
+  {
+    "key": "story110.lateCampaignChapters.1.title",
+    "text": "灯を返す夜"
+  },
+  {
+    "key": "story110.lateCampaignChapters.1.subtitle",
+    "text": "一晩の役目を預け、次の番と帰る道を作る。"
+  },
+  {
+    "key": "story110.lateCampaignChapters.1.bossHint",
+    "text": "交代する護衛と予告射撃に備えよう。連戦の回復薬と、攻撃後の隙を使う必殺の時機を分けて考えよう。"
+  },
+  {
+    "key": "story110.lateCampaignChapters.2.title",
+    "text": "ふたりの署名"
+  },
+  {
+    "key": "story110.lateCampaignChapters.2.subtitle",
+    "text": "昔の願いでは埋められない余白へ、二人で戻る。"
+  },
+  {
+    "key": "story110.lateCampaignChapters.2.bossHint",
+    "text": "先頭を狙う大技の溜めを崩すか、防御で受けよう。障壁・解除・回復の役割を揃え、決着を急ぎすぎないこと。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.0.name",
+    "text": "空欄の依頼書"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.0.description",
+    "text": "第5章・1。ザクロの庭から戻ったギルドに、帰還先の書かれていない依頼書があった。書記イオネは、名前を書く前に本人へ聞くと言う。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.0.bossStrike.name",
+    "text": "返還印の重撃"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.0.narrative.before",
+    "text": "ザクロの庭から戻ったギルドに、帰還先の書かれていない依頼書があった。書記イオネは、名前を書く前に本人へ聞くと言う。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.0.narrative.after",
+    "text": "古い名簿の返還先は閉じた庭だった。いま街にいる少女は、そこへ戻るとは答えていない。私たちは迎えの列を止め、聞き取りの時間を取った。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.1.name",
+    "text": "名簿の回廊"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.1.description",
+    "text": "第5章・2。イオネと記録庫へ向かう。廊下の壁には、少女たちの所在と休息の引き継ぎが並んでいた。空欄だけが、赤い糸で囲まれている。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.1.narrative.before",
+    "text": "イオネと記録庫へ向かう。廊下の壁には、少女たちの所在と休息の引き継ぎが並んでいた。空欄だけが、赤い糸で囲まれている。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.1.narrative.after",
+    "text": "迷った人を探すために役立った記録もあった。「消せばいい、ではないのね」。イオネは古い頁を残し、その隣に今の返事を書く紙を綴じた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.2.name",
+    "text": "療養室への小包"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.2.description",
+    "text": "第5章・3。療養室へ運ぶ薬布を、薬草師フィオから預かった。荊の魔女の棚にも届けるものがある。彼女が今ほしいものを、古い栽培ノートだけで決めないことにした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.2.narrative.before",
+    "text": "療養室へ運ぶ薬布を、薬草師フィオから預かった。荊の魔女の棚にも届けるものがある。彼女が今ほしいものを、古い栽培ノートだけで決めないことにした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.2.narrative.after",
+    "text": "魔女は私の持つ茶碗より、鉢の土を先に見た。「今日はこっちを手伝って」。私は茶碗を置き、フィオに土を運ぶ袋を借りた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.3.name",
+    "text": "引取人のいない中庭"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.3.description",
+    "text": "第5章・4。中庭で待つ少女は、名簿に書かれた役目を読めなかった。リオラが門を見張る間、イオネは帰りたい場所ではなく、今夜どこで休みたいかを尋ねた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.3.narrative.before",
+    "text": "中庭で待つ少女は、名簿に書かれた役目を読めなかった。リオラが門を見張る間、イオネは帰りたい場所ではなく、今夜どこで休みたいかを尋ねた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.3.narrative.after",
+    "text": "彼女は街の寝台を指した。名簿の庭を嫌いになったとは言わない。それでも、今夜はそこへ行かないという返事を、私たちは書き留めた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.4.name",
+    "text": "薬布の引き継ぎ"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.4.description",
+    "text": "第5章・5。フィオの棚には、どの部屋へ届けたか分からなくなった包帯が積まれていた。全部を自分で覚えていようとして、彼女は食事を忘れていた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.4.narrative.before",
+    "text": "フィオの棚には、どの部屋へ届けたか分からなくなった包帯が積まれていた。全部を自分で覚えていようとして、彼女は食事を忘れていた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.4.narrative.after",
+    "text": "届け先と受け取る人を、一枚ずつ確かめた。フィオは同行のための薬布を私へ預ける。「次は一緒に行こう。私も、戻って休みたいから」。同行の支度が整った。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.5.name",
+    "text": "古い返還印"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.5.description",
+    "text": "第5章・6。返還印は、名簿にある庭へ少女を戻そうとする。本人の声より先に印が門を閉じた。セリスは剣を抜くが、イオネは結界の書き換え欄を探した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.5.narrative.before",
+    "text": "返還印は、名簿にある庭へ少女を戻そうとする。本人の声より先に印が門を閉じた。セリスは剣を抜くが、イオネは結界の書き換え欄を探した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.5.narrative.after",
+    "text": "返還先を書いた人の名は残っていた。今の本人の返事を書く場所だけがない。「ここへ足そう」。イオネは空欄を切り取らず、頁を一枚増やした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.6.name",
+    "text": "借りた寝台"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.6.description",
+    "text": "第5章・7。街の寝台は一つ空いていた。エレインは、使えると言う前に明日の世話番を確かめる。「泊まっていい、と私だけで決めると、次の人が困るから」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.6.narrative.before",
+    "text": "街の寝台は一つ空いていた。エレインは、使えると言う前に明日の世話番を確かめる。「泊まっていい、と私だけで決めると、次の人が困るから」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.6.narrative.after",
+    "text": "一晩の休息と、朝に確かめ直す時刻を決めた。ずっと守れるとは約束しなかった。待っていた少女は、初めて荷物を床へ下ろした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.7.name",
+    "text": "いまの宛先"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.7.description",
+    "text": "第5章・8。帰還を告げる鐘が鳴り、古い庭の守りが動き出した。私は連れていく少女の手を引く前に、彼女の顔を見た。「街に戻る。それでいい？」"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.7.narrative.before",
+    "text": "帰還を告げる鐘が鳴り、古い庭の守りが動き出した。私は連れていく少女の手を引く前に、彼女の顔を見た。「街に戻る。それでいい？」"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.7.narrative.after",
+    "text": "頷きを確かめ、イオネが現在の宛先を書き込む。リオラは道を塞ぐ盾の残響を受けた。「決まったなら、帰路は私が開ける」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.8.name",
+    "text": "帳簿の門口"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.8.description",
+    "text": "第5章・9。記録庫の奥で、保護の結界が退路まで閉ざした。昔ここへ人を戻した祈りだけが、命令を繰り返している。私たちは本人の返事を挟んだ新しい頁を掲げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.8.narrative.before",
+    "text": "記録庫の奥で、保護の結界が退路まで閉ざした。昔ここへ人を戻した祈りだけが、命令を繰り返している。私たちは本人の返事を挟んだ新しい頁を掲げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.8.narrative.after",
+    "text": "結界の一角に、紙一枚ぶんの隙間が開く。すべての名前を書き換える時間はない。今ここにいる一人を通すため、皆でその隙間を支えた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.9.name",
+    "text": "空欄を返す日"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.9.description",
+    "text": "第5章・10。帰還印を守る古い盾の残響が立ち上がった。イオネは頁を押さえ、私たちは門の外へ続く道を守る。記録を全部壊すための戦いにはしなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.9.narrative.before",
+    "text": "帰還印を守る古い盾の残響が立ち上がった。イオネは頁を押さえ、私たちは門の外へ続く道を守る。記録を全部壊すための戦いにはしなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.9.narrative.after",
+    "text": "少女は自分で街の側へ歩いた。イオネは同行に使う名簿の綴じ目を私へ渡す。空欄はまだ多い。けれど、今夜の宛先を本人と確かめる仕事を、私たちは一緒に続けることにした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.10.name",
+    "text": "夜番の依頼"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.10.description",
+    "text": "第6章・1。イオネがギルドへ戻した帳簿に、灯祭の夜番の空欄があった。リオラは先に庭園への報告を済ませ、今夜は街へ戻ると、自分から告げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.10.bossStrike.name",
+    "text": "帰路を閉じる灯"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.10.narrative.before",
+    "text": "イオネがギルドへ戻した帳簿に、灯祭の夜番の空欄があった。リオラは先に庭園への報告を済ませ、今夜は街へ戻ると、自分から告げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.10.narrative.after",
+    "text": "門で待っていた夜番ネリは、人数よりも休む順番を先に数えた。「一晩だけ、役目を預ける祭りなんだ。預ける相手も、休めないとね」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.11.name",
+    "text": "灯油の倉"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.11.description",
+    "text": "第6章・2。灯油の倉では、昔の当番表だけが回り続けていた。ネリは自分の名の上に重なった古い印を剥がし、今日の残量を書き直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.11.narrative.before",
+    "text": "灯油の倉では、昔の当番表だけが回り続けていた。ネリは自分の名の上に重なった古い印を剥がし、今日の残量を書き直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.11.narrative.after",
+    "text": "足りるのは、すべてを灯し続ける分ではなかった。帰路と療養室の灯を残し、使わない通路の灯を一つ消した。暗くした場所を、ノエルが図へ記した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.12.name",
+    "text": "祭りの食卓"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.12.description",
+    "text": "第6章・3。祭りの机に椀を並べる。フィオは余った薬布で滑り止めを縫い、エレインは療養室から戻る時刻を決めた。空席を、急いで埋める人はいなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.12.narrative.before",
+    "text": "祭りの机に椀を並べる。フィオは余った薬布で滑り止めを縫い、エレインは療養室から戻る時刻を決めた。空席を、急いで埋める人はいなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.12.narrative.after",
+    "text": "私が荊の魔女の分を取ろうとすると、「食べるか、聞いてからね」とフィオが言った。私は一人ぶんの返事を、他の人の喜びで代わりにしないよう、椀を脇へ置いた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.13.name",
+    "text": "会わない日の印"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.13.description",
+    "text": "第6章・4。扉に下がる白い布は、会わずに休む日の印だという。ネリは挨拶のために何度も戸を叩く私を止めた。「返事をしない時間も、残しておこう」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.13.narrative.before",
+    "text": "扉に下がる白い布は、会わずに休む日の印だという。ネリは挨拶のために何度も戸を叩く私を止めた。「返事をしない時間も、残しておこう」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.13.narrative.after",
+    "text": "戸の前に、返却する袋だけを置いた。受け取ったかどうかは、明日確かめる。今日のうちに安心したいのは、私の方なのだと気づいた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.14.name",
+    "text": "灯の交代"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.14.description",
+    "text": "第6章・5。夜番の交代時刻になっても、古い祈りがネリの名を門へ縛りつけた。誰かが休むと、残った者へすべての役目を移す仕組みだった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.14.narrative.before",
+    "text": "夜番の交代時刻になっても、古い祈りがネリの名を門へ縛りつけた。誰かが休むと、残った者へすべての役目を移す仕組みだった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.14.narrative.after",
+    "text": "ネリは自分を当番表から消さず、次の二人の名を並べた。リオラが門を受け持ち、私が道を巡る。一人へ全部を返さない形で、交代を始めた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.15.name",
+    "text": "灯さない灯"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.15.description",
+    "text": "第6章・6。供物棚に、火を入れない灯が一つあった。イオネは由来を尋ね、名前を伏せて休んだ人のために置くものだと聞いた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.15.narrative.before",
+    "text": "供物棚に、火を入れない灯が一つあった。イオネは由来を尋ね、名前を伏せて休んだ人のために置くものだと聞いた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.15.narrative.after",
+    "text": "役目のない灯も、祭りから片づけなかった。ネリはその隣へ腰を下ろし、冷めかけた食事を食べた。休むための印が、ようやく一人に届いた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.16.name",
+    "text": "閉じた帰り道"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.16.description",
+    "text": "第6章・7。祭りの回路が帰路を閉ざす。帰った人を休息中として扱えず、全員が持ち場にいると数え続けていた。私たちは古い灯の残響を止めに向かった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.16.narrative.before",
+    "text": "祭りの回路が帰路を閉ざす。帰った人を休息中として扱えず、全員が持ち場にいると数え続けていた。私たちは古い灯の残響を止めに向かった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.16.narrative.after",
+    "text": "ノエルは生きている人の数と、灯の数を別に記した。空の灯まで当番に数えていたことが分かる。道の向こうへ、短い合図を送り直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.17.name",
+    "text": "命令のない祈り"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.17.description",
+    "text": "第6章・8。休みを取り戻すため、リオラの交代も必要になった。彼女は庭園の方向を見たまま盾を下ろせない。「あの方に、何も言われていない」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.17.narrative.before",
+    "text": "休みを取り戻すため、リオラの交代も必要になった。彼女は庭園の方向を見たまま盾を下ろせない。「あの方に、何も言われていない」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.17.narrative.after",
+    "text": "「祈りまで預けなくていい。見張りだけ、私に」。ネリの言葉に、リオラは盾を渡した。彼女が黙って祈る間、私は隣の椀を温め直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.18.name",
+    "text": "最後の灯守"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.18.description",
+    "text": "第6章・9。閉じた回路の中心で、灯を守る祈りの残響が集まった。祭りを終わらせるのではなく、今夜を終えて帰るため、皆で通路を開く。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.18.narrative.before",
+    "text": "閉じた回路の中心で、灯を守る祈りの残響が集まった。祭りを終わらせるのではなく、今夜を終えて帰るため、皆で通路を開く。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.18.narrative.after",
+    "text": "消した灯と、残した灯を一つずつ数えた。門へ伝えるのは、誰が欠けたかではない。誰が、いま休んでいるかだった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.19.description",
+    "text": "第6章・10。最後の祈りが、帰還の列を当番の列へ戻そうとする。ネリは皆の前に立ち、次の番を呼んだ。リオラも、その呼びかけへ盾を上げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.19.narrative.before",
+    "text": "最後の祈りが、帰還の列を当番の列へ戻そうとする。ネリは皆の前に立ち、次の番を呼んだ。リオラも、その呼びかけへ盾を上げた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.19.narrative.after",
+    "text": "ネリは夜番の引き継ぎ札を私へ預ける。「守るよ。でも、次は頼むね」。ギルドで同行を頼める支度が整った。祭りはまた来る。空の灯を一つ残し、私たちは朝食へ戻った。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.20.name",
+    "text": "帰還の仕立て室"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.20.description",
+    "text": "第7章・1。祭りを終えた服を、仕立て屋ルカの部屋へ運んだ。彼女は裂け目へ鋏を入れる前に、残したい部分があるかと尋ねた。リオラは、私の袖を見た。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.20.bossStrike.name",
+    "text": "契印の一閃"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.20.narrative.before",
+    "text": "祭りを終えた服を、仕立て屋ルカの部屋へ運んだ。彼女は裂け目へ鋏を入れる前に、残したい部分があるかと尋ねた。リオラは、私の袖を見た。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.20.narrative.after",
+    "text": "ルカは古い布を無理に新しくしなかった。つないだ糸の色は少し違う。「戻った跡まで、消さなくていい」。リオラは直された袖を、何度も確かめた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.21.name",
+    "text": "契生石の点検"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.21.description",
+    "text": "第7章・2。樹海で持ち帰った契生石を、もう一度卓へ出した。かつて炉を止める約束を先延ばしにした夜の鍵も、同じ鞄に残っていた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.21.narrative.before",
+    "text": "樹海で持ち帰った契生石を、もう一度卓へ出した。かつて炉を止める約束を先延ばしにした夜の鍵も、同じ鞄に残っていた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.21.narrative.after",
+    "text": "石を磨く前に、停止の手順を別の紙へ写した。始めたら最後まで進む、とは決めない。今日は手順を読むだけにして、石を布へ戻した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.22.name",
+    "text": "世話をする名"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.22.description",
+    "text": "第7章・3。儀式の欄に世話人の名を書く。リオラは護衛と書きかけ、消した。イオネは消し跡を隠さず、いま引き受けたいことを隣へ書けるよう、余白を残した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.22.narrative.before",
+    "text": "儀式の欄に世話人の名を書く。リオラは護衛と書きかけ、消した。イオネは消し跡を隠さず、いま引き受けたいことを隣へ書けるよう、余白を残した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.22.narrative.after",
+    "text": "リオラは「話を聞く」と書いた。私は「やめたいと言われたら、止める」と書いた。まだいない誰かの役目は、空けたままにした。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.23.name",
+    "text": "ふたつの望み"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.23.description",
+    "text": "第7章・4。庭園の女に見せる報告を、二人で読んだ。リオラの筆は、あの方が望むなら、と始まりかけて止まる。私は続きを、代わりに書かなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.23.narrative.before",
+    "text": "庭園の女に見せる報告を、二人で読んだ。リオラの筆は、あの方が望むなら、と始まりかけて止まる。私は続きを、代わりに書かなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.23.narrative.after",
+    "text": "「あの方への祈りは、私がする」。リオラは紙を引き寄せた。「そのそばで、おまえと帰ることも、私は望んでいる」。どちらかを消す返事ではなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.24.name",
+    "text": "署名の余白"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.24.description",
+    "text": "第7章・5。名を二つ書けば、答えが一つになるわけではなかった。私たちは、迎える人に聞かなければ埋まらない欄を、イオネと選び直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.24.narrative.before",
+    "text": "名を二つ書けば、答えが一つになるわけではなかった。私たちは、迎える人に聞かなければ埋まらない欄を、イオネと選び直した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.24.narrative.after",
+    "text": "休む場所、名乗る名前、したいこと。そこは二人で決めない。リオラは紙を折らず、空欄が見える向きで卓へ残した。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.25.name",
+    "text": "温室の戸を開けて"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.25.description",
+    "text": "第7章・6。帰りに温室へ寄った。魔女は今日も、昨日の私と同じ約束をしているわけではない。私は古い鍵を見せ、どこへ置いておくのがいいか尋ねた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.25.narrative.before",
+    "text": "帰りに温室へ寄った。魔女は今日も、昨日の私と同じ約束をしているわけではない。私は古い鍵を見せ、どこへ置いておくのがいいか尋ねた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.25.narrative.after",
+    "text": "「戸が閉まらないようにして」。私は鍵を持ったまま、つっかえを差した。返事を昔の声と照らし合わせず、鉢を運ぶ道を空けた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.26.name",
+    "text": "使わなかった糸"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.26.description",
+    "text": "第7章・7。ルカは儀式の支度に、余った糸を持ってきた。予備を残すのは、失敗を待つためではないという。「途中で帰っても、服は要るでしょう」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.26.narrative.before",
+    "text": "ルカは儀式の支度に、余った糸を持ってきた。予備を残すのは、失敗を待つためではないという。「途中で帰っても、服は要るでしょう」。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.26.narrative.after",
+    "text": "リオラが笑った。短い声だった。私はその声を記録へ留める代わりに、糸を巻く手を貸した。ルカは残った布を、旅の袋へ継いだ。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.27.name",
+    "text": "止めるための合図"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.27.description",
+    "text": "第7章・8。守りの結界が、契生石へ近づく私たちを試す。進む合図だけでは開かない。どちらかが止めたら、もう片方も戻ることを、皆の前で確かめた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.27.narrative.before",
+    "text": "守りの結界が、契生石へ近づく私たちを試す。進む合図だけでは開かない。どちらかが止めたら、もう片方も戻ることを、皆の前で確かめた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.27.narrative.after",
+    "text": "リオラが先に合図を出した。私は石へ伸ばした手を止め、隣へ戻った。始める勇気だけを、試されたのではなかった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.28.name",
+    "text": "まだ書かない名"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.28.description",
+    "text": "第7章・9。最後の結界には、古い願いで埋められた名が浮かんでいた。失った誰かを、そのまま帰すための名だった。私は、炉の鍵を鞄の底へしまった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.28.narrative.before",
+    "text": "最後の結界には、古い願いで埋められた名が浮かんでいた。失った誰かを、そのまま帰すための名だった。私は、炉の鍵を鞄の底へしまった。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.28.narrative.after",
+    "text": "その名を、新しく迎える誰かへ渡さなかった。リオラは盾を横へずらす。空欄のまま、結界の前を歩ける道が見えた。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.29.description",
+    "text": "第7章・10。契印を守る石の残響が、帰路を塞いだ。私たちは誰かを生むことを約束するためではなく、共に止まり、共に帰る道を残すために向き合った。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.29.narrative.before",
+    "text": "契印を守る石の残響が、帰路を塞いだ。私たちは誰かを生むことを約束するためではなく、共に止まり、共に帰る道を残すために向き合った。"
+  },
+  {
+    "key": "story110.lateCampaignDungeons.29.narrative.after",
+    "text": "結界は静まり、石は布の中に残った。今日は迎える儀式を進めない。二人でそう決め、帰還の欄へ名を記す。ルカが夜継ぎの糸を手渡し、次の旅にも同行すると答えた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.title",
+    "text": "名前より先に"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.pages.0.text",
+    "text": "イオネが筆を置くと、待っていた少女はようやく顔を上げた。\n名を問われるより前に、今夜は誰にも会いたくないと答えた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.pages.1.text",
+    "text": "分かりました。名前を言わないまま休める場所があるか、先に聞いてきます。\nここにいることまで、いま書いていいですか。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.pages.1.speaker",
+    "text": "イオネ"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.pages.2.text",
+    "text": "少女は、少し考えてから頷いた。リオラは入口へ立ち、迎えに来た者を待たせていた。\n「話している。後にしろ」。その一言が、紙の空欄を守った。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.0.pages.3.text",
+    "text": "私の名も、庭園の女に聞かれる前は、ただの空欄だったのかもしれない。\n私は返答を急がせず、隣の椅子へ腰を下ろした。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.title",
+    "text": "次の人へ渡す布"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.pages.0.text",
+    "text": "フィオが薬布の棚へ、小さな札を結んだ。\n誰のために残したか、本人に聞いたか。分からない包みは、分からないまま一段分けた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.pages.1.text",
+    "text": "全部、私が持っていれば安心だと思ってた。\nでも、それだと、私が眠ったら誰にも見つからないんだね。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.pages.1.speaker",
+    "text": "フィオ"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.pages.2.text",
+    "text": "札には、次に届ける場所と、戻ってくる時刻がある。\n私の分は、ここへ戻すことにした。「帰ったら、お茶もいれよう」とフィオが言った。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.1.pages.3.text",
+    "text": "この薬布があれば、同行の支度はできるよ。\nギルドで声をかけて。ひとりで全部運ぶより、帰りに話せる人がいる方がいい。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.2.title",
+    "text": "帰りたいとは、まだ言っていない"
+  },
+  {
+    "key": "story110.lateStoryMilestones.2.pages.0.text",
+    "text": "古い頁には、丁寧な字で庭の名が書かれていた。\nここへ帰せば探せるから、と、かつて誰かが用意したものだ。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.2.pages.1.text",
+    "text": "この記録が、助けた人もいると思う。\nだから捨てない。でも、今の返事を、昔の字の下へ隠さないようにしたい。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.2.pages.2.text",
+    "text": "リオラが、庭園へ出す報告を折り直した。\n私はその字を、もう所有者へ戻す印とは思わなかった。彼女が帰りたいと願う場所も、本人のものだった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.2.pages.3.text",
+    "text": "「今夜の宛先」を、隣へ書いた。\n書き終えても、筆は返せるところに置いておいた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.title",
+    "text": "朝食までの夜番"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.pages.0.text",
+    "text": "ネリは門の見取り図より先に、食事の包みを開いた。\n「立つ前に食べて」。半分を差し出され、私は受け取った。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.pages.1.text",
+    "text": "長く立てるのが、偉いわけじゃないんだ。\n次へ渡すまで倒れないこと。その次は、自分も戻ってくること。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.pages.1.speaker",
+    "text": "ネリ"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.pages.2.text",
+    "text": "リオラは門の幅を測り、交代する位置へ印を付けた。\n命じられるのを待たず、私の背丈に合う場所を一つ足す。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.3.pages.3.text",
+    "text": "祭りが終わったら、朝食を買いに行こう。\n夜番の札は、返すところまで一緒にね。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.4.title",
+    "text": "休む人の名も残す"
+  },
+  {
+    "key": "story110.lateStoryMilestones.4.pages.0.text",
+    "text": "当番表へ、ネリが自分の名を書いた。\n次の欄には、休息、とある。消された名ではないことを、彼女は門番へ示した。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.4.pages.1.text",
+    "text": "いない人と、休んでいる人を、同じ空欄にすると困るの。\n戻るまでの間を、誰かが覚えていてくれればいい。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.4.pages.2.text",
+    "text": "私はネリの代わりの札を受け取った。\n彼女は何度も門を振り返ったが、呼び戻す声はなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.4.pages.3.text",
+    "text": "椀が机へ触れる音がした。\n一人の役目が終わったとき、街が終わるわけではなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.title",
+    "text": "祈りを預けずに"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.pages.0.text",
+    "text": "リオラは祈るとき、私の方を見なかった。\nそれを寂しく思っていたことに、彼女が目を閉じてから気づいた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.pages.1.text",
+    "text": "あの方への気持ちは、私が引き受ける。\nおまえに、同じものを望んではいない。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.pages.1.speaker",
+    "text": "リオラ"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.pages.2.text",
+    "text": "「終わったら、ここへ戻ってきて」\nそう答えると、彼女は少しだけ肩を緩めた。「ああ」。それ以上の返事を、私は求めなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.5.pages.3.text",
+    "text": "ネリが交代を告げた。\nリオラは盾を受け取り、私の隣へ戻った。祈りが、なくなったからではなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.title",
+    "text": "裂け目の残し方"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.pages.0.text",
+    "text": "ルカは袖を裏返し、残っていた糸へ指を添えた。\n「ここを全部替えると、少し軽くなるよ」。リオラは、その部分を残してほしいと言った。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.pages.1.text",
+    "text": "誰かが、急いで縫ってくれたところだ。\nまだ、ほどきたくない。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.pages.2.text",
+    "text": "ルカは理由を聞き返さず、別の糸で端を留めた。\n新しい縫い目が、古いものを飲み込まないように。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.pages.3.text",
+    "text": "直せるところと、残したいところは、別だから。\n次に戻ってきたときも、先に聞くね。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.6.pages.3.speaker",
+    "text": "ルカ"
+  },
+  {
+    "key": "story110.lateStoryMilestones.7.title",
+    "text": "同じ欄に、違う字で"
+  },
+  {
+    "key": "story110.lateStoryMilestones.7.pages.0.text",
+    "text": "署名の字の大きさが違った。\nリオラは私の字へ揃えようとして、イオネに止められた。「読む人には、違いも必要です」。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.7.pages.1.text",
+    "text": "二人で名を書いたからといって、どちらかの返事を代わりにしない。\n私が止めたいときは、私の声で言う。おまえも、そうしてくれ。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.7.pages.2.text",
+    "text": "私は頁をめくり、炉の停止手順を見せた。\nあの夜は、分かっていながら閉じた頁だった。今日は、二人から見えるところへ開いた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.7.pages.3.text",
+    "text": "「明日には」じゃなく、今、止めるんだね。\nそう言うと、リオラは一度だけ頷いた。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.8.title",
+    "text": "戻る合図を先に"
+  },
+  {
+    "key": "story110.lateStoryMilestones.8.pages.0.text",
+    "text": "リオラが合図を出し、私はすぐに手を止めた。\n止まった回路の上を、静かな光が通り過ぎた。誰の名も、呼ばれなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.8.pages.1.text",
+    "text": "嫌だったのではない。まだ、私には分からないところがある。\nそれを隠したまま、先へ行きたくなかった。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.8.pages.2.text",
+    "text": "「言ってくれて、よかった」。私は石を布へ戻した。\n迎える人を、二人の不安を埋めるために呼ぶのは違う。"
+  },
+  {
+    "key": "story110.lateStoryMilestones.8.pages.3.text",
+    "text": "止まれると分かったから、また話せる。\n私は帰る道を見た。リオラが隣で、盾の紐を直していた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.0.text",
+    "text": "イオネは新しい頁をギルドへ戻した。少女の今夜の寝台と、明日尋ねる人の名が書かれている。\n永久の帰還先は、まだ決めなかった。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.1.text",
+    "text": "一度の返事で、一生ぶん埋めなくてよかったんですね。\n私も、帰る庭の欄はまだ空けておきます。同行の支度ができたら、ギルドで呼んでください。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.2.text",
+    "text": "リオラが庭園へ送る報告を書いた。私は隣で、少女の休む部屋を記す。\n彼女は二枚の紙を重ねず、それぞれの封筒へ入れた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.3.text",
+    "text": "あの方には、私が見たことを伝える。\nだが、この部屋の場所は、おまえと本人が決めたことだ。報告へ写す前に、聞いておく。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.4.text",
+    "text": "庭園の女は、頁を求める代わりに私の話を待った。\n私は名前を伏せたまま、今夜ひとりが自分で寝台を選んだことを話した。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.5.text",
+    "text": "そう。空欄が残ったのね。\nなら、次に聞いたとき、返事が変わっているかもしれないわね。"
+  },
+  {
+    "key": "story110.lateChapterReturns.5.5.speaker",
+    "text": "庭園の女"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.0.text",
+    "text": "祭りの後、ネリは門の鍵を次の番へ渡した。\n戻る途中、私たちは療養室へ薬布を置いた。扉の白い布は、そのままにした。"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.1.text",
+    "text": "守る役を、嫌いになったわけじゃないよ。\n明日も立つために、今日の番を終わりにしたいんだ。"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.2.text",
+    "text": "リオラは食卓で手を合わせた。祈りが終わるまで、誰も彼女を呼ばなかった。\n終えると、彼女は私の方へ椀を寄せる。「冷める前に食べろ」。"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.3.text",
+    "text": "今夜は、街へ帰りたいと思った。\nあの方への祈りを忘れたのではない。……そのことを、わざわざ断る必要もないのだな。"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.4.text",
+    "text": "ネリの引き継ぎ札を、ギルドの同行欄へ置いた。\n「また一緒に行こう。次は朝食を買ってからね」。約束の中に、仕事ではない時間が一つ増えた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.6.5.text",
+    "text": "窓辺には、灯を入れなかった器が残っている。\nその空きが、祭りから誰かを追い出した印でないことを、私は今夜の手帳へ書いた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.0.text",
+    "text": "契生石は、帰ってきたときと同じ重さだった。\n二人で始めなかったことを、失敗とは書かなかった。今日は支度と、止める合図を確かめた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.1.text",
+    "text": "おまえが、もう少し待ちたいと言ったら、待つ。\n私がそう言ったときも、同じようにしてくれ。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.2.text",
+    "text": "私は頷いた。今度は、明日には止める、とは答えなかった。\n署名の横へ、今日やめた時刻を書く。リオラがその紙を、自分の旅の袋へしまった。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.3.text",
+    "text": "服は直せたよ。裂け目を残すところは、二人で決めた通りに。\n次の旅も、呼んで。帰ってきた服を、私も一緒に持ち帰りたい。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.4.text",
+    "text": "ルカが預けた糸で、袋のほつれを一つ綴じた。ギルドで同行を頼むための支度が整う。\n私は二つの茶碗を持ち、温室へ寄ってから帰るとリオラに伝えた。"
+  },
+  {
+    "key": "story110.lateChapterReturns.7.5.text",
+    "text": "私も行く。あの方への報告は、そのあとにする。\n……おまえが何を望むか、戻ってからも聞けるように。"
+  },
+  {
+    "key": "story110.lateChapterBridge.0.text",
+    "text": "ギルドへ戻ると、契生石の包みを置く場所が用意されていた。\nけれど、その隣には別の名簿が開いている。帰還先の欄だけ、何行も空いたままだった。"
+  },
+  {
+    "key": "story110.lateChapterBridge.1.text",
+    "text": "庭園への報告は、済ませてくる。\nそのあと、おまえの話を聞こう。儀式の支度も、二人だけで決めてよいことばかりではない。"
+  },
+  {
+    "key": "story110.lateChapterBridge.2.text",
+    "text": "帳簿を抱えた書記が、入口から顔を出した。\n「名前を書く前に、本人へ聞きたいんです」。私は石包みを閉じ、リオラが帰るまでの間、その少女の話を聞くことにした。"
+  },
+  {
+    "key": "story110.lateChapterBridge.3.text",
+    "text": "イオネです。今夜の宛先がまだ決まらない人がいます。\n古い名簿を、いまの返事で書き直す仕事を、手伝ってもらえますか。"
+  }
+]

@@ -110,3 +110,8 @@
 .build-planner__source-profile > div { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
 .build-planner__source-profile > div > span { display:inline-flex; align-items:center; gap:4px; }
 .build-planner__source-profile > small { color:#b9c9dc; font-size:9px; line-height:1.8; }
+
+.build-planner__tactics { margin:0; padding-top:6px; }
+.build-planner__tactics > div { padding:12px 0; border-top:1px solid #8ea5c12b; }
+.build-planner__tactics dt { font-size:12px; color:#e2cfaa; margin-bottom:6px; }
+.build-planner__tactics dd { margin:0; font-size:12px; color:#d2deeb; line-height:1.9; overflow-wrap:anywhere; }

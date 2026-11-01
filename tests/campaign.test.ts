@@ -16,18 +16,18 @@ function finish(save: GameSave): GameSave {
   expect(save.battle?.phase).toBe('reward'); return save;
 }
 describe('normal campaign chapters',()=>{
-  it('extends the thirty-six stable routes with the two-stage Zakuro chapter and distinct scaled finale bosses',()=>{
-    expect(validateContent(content)).toEqual([]);expect(content.chapters).toHaveLength(4);
-    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12,2]);expect(new Set(ids).size).toBe(38);
+  it('preserves the first four chapters and adds three ten-stage continuations with scaled finale bosses',()=>{
+    expect(validateContent(content)).toEqual([]);expect(content.chapters).toHaveLength(7);
+    expect(content.chapters!.map(ch=>ch.dungeonIds.length)).toEqual([12,12,12,2,10,10,10]);expect(new Set(ids).size).toBe(68);
     const bosses=content.chapters!.map(ch=>content.dungeons.find(d=>d.id===ch.dungeonIds.at(-1))!);
-    expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette','zakuro']);
-    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,500,1600,1200]);
+    expect(bosses.map(d=>d.waves.at(-1)![0]!.characterId)).toEqual(['stone-drake','liora','lisette','zakuro','hollow-keeper','veil-priestess','stone-drake']);
+    expect(bosses.map(d=>d.bossScale!.hp)).toEqual([320,500,1600,1200,2000,2000,2000]);
     expect(bosses[1]!.bossLoot).toBeDefined();expect(bosses[2]!.bossLoot).toBeDefined();
   });
   it('opens only the first exploration for a new save and enforces the gate in real commands',()=>{
     const save=createInitialSave(content),before=structuredClone(save);
     expect(ids.filter(id=>!dungeonLock(content.dungeons.find(d=>d.id===id)!,save,content))).toEqual([ids[0]]);
-    expect(content.chapters!.map(ch=>chapterUnlocked(ch,save,content))).toEqual([true,false,false,false]);
+    expect(content.chapters!.map(ch=>chapterUnlocked(ch,save,content))).toEqual([true,false,false,false,false,false,false]);
     for(const id of ids.slice(1))expect(()=>applyCommand(save,{type:'depart',dungeonId:id,potions:0},content)).toThrow('解放');
     expect(save).toEqual(before);
   });
@@ -43,7 +43,7 @@ describe('normal campaign chapters',()=>{
     }
     expect(save.materials['lisette-memory:rare']).toBeGreaterThanOrEqual(6);
     const repeat=applyCommand(finish(applyCommand(save,{type:'depart',dungeonId:ids[0]!,potions:0},content)),{type:'claim'},content);
-    expect(repeat.stones).toBe(114);assertSaveCompatibility(repeat,content);
+    expect(repeat.stones).toBe(204);assertSaveCompatibility(repeat,content);
   });
   it('does not unlock a route after retreat or failure',()=>{
     let save=applyCommand(createInitialSave(content),{type:'depart',dungeonId:ids[0]!,potions:0},content);

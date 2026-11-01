@@ -59,7 +59,7 @@ test('zero-stone inventory exposes build goals, preserves the chosen stage, and 
   await page.getByRole('button',{name:'おすすめビルド',exact:true}).click();
   const planner=page.getByTestId('build-planner');
   await expect(planner).toBeVisible();
-  await expect(planner.locator('[data-testid^="build-card-"]')).toHaveCount(3);
+  await expect(planner.locator('[data-testid^="build-card-"]')).toHaveCount(6);
   await expect(planner.getByRole('button',{name:'編成の変更内容を確認',exact:true})).toBeDisabled();
   for(const section of await planner.locator('[data-inventory-section]').all()) await expect(section).not.toHaveAttribute('open');
   await planner.getByRole('button',{name:'厳選',exact:true}).click();

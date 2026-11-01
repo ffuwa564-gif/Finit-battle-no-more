@@ -1,0 +1,103 @@
+{
+  "version": "1.10-local",
+  "scope": "Local only; no PR, push or deployment. All prior research series confirmed by user; YouTube fetch blocked403.",
+  "checks": [
+    {
+      "check": "Independent integration",
+      "tests": 14,
+      "status": "pass",
+      "log": "artifacts/v110-qa/integration-tests.log"
+    },
+    {
+      "check": "Existing save/backup/build application regression",
+      "tests": 14,
+      "status": "pass",
+      "log": "artifacts/v110-qa/baseline-tests.log"
+    },
+    {
+      "check": "Migration/new scouts details JA/EN 320/390",
+      "tests": 6,
+      "status": "pass",
+      "log": "artifacts/v110-qa/browser-tests-retest.log"
+    },
+    {
+      "check": "Equipment management/build guides JA/EN 320/390",
+      "tests": 4,
+      "status": "pass",
+      "log": "artifacts/v110-qa/browser-tests.log"
+    },
+    {
+      "check": "Home first campaign CTA EN320",
+      "tests": 1,
+      "status": "pass",
+      "log": "artifacts/v110-qa/browser-home-final.log"
+    },
+    {
+      "check": "Tower prepare contrast EN320 recheck",
+      "tests": 1,
+      "status": "pass",
+      "log": "artifacts/v110-qa/browser-final.log"
+    },
+    {
+      "check": "Content graph:75 characters/7 chapters/100 tower floors",
+      "status": "pass",
+      "log": "artifacts/v110-qa/content-contract.json"
+    },
+    {
+      "check": "Existing tower gating/EN320/locked80 preview/claim next floor",
+      "tests": 4,
+      "status": "pass",
+      "logs": [
+        "artifacts/v110-qa/tower-browser.log",
+        "artifacts/v110-qa/tower-claim-final.log"
+      ]
+    },
+    {
+      "check": "AGENTS acceleration battle HUD non-display, wave reset, leader explanation",
+      "tests": 3,
+      "status": "pass",
+      "log": "artifacts/v110-qa/acceleration-browser.log"
+    },
+    {
+      "check": "Final complete unit suite",
+      "files": 80,
+      "tests": 591,
+      "status": "pass",
+      "log": "artifacts/v1.10/unit-final.log"
+    },
+    {
+      "check": "Final production build including type/content/UI/locales",
+      "status": "pass",
+      "log": "artifacts/v1.10/build-final.log"
+    },
+    {
+      "check": "Native UI Chromium/WebKit existing contracts",
+      "tests": 8,
+      "status": "pass",
+      "logs": [
+        "artifacts/v1.10/native-ui.log",
+        "artifacts/v1.10/native-ui-webkit.log"
+      ],
+      "note": "Chromium4; WebKit4 after local runtime library installation; actual Linux WebKit, not physical iOS."
+    },
+    {
+      "check": "Final itch-compatible local package, no upload",
+      "status": "pass",
+      "log": "artifacts/v1.10/build-itch.log"
+    }
+  ],
+  "limits": [
+    "Lifecycle integration uses boosted fixture damage and is not balance evidence.",
+    "All-party global optimization, continuous human tower climb and retention are unverified."
+  ],
+  "findings": [
+    {
+      "finding": "Memory gem source dark text in moonlit prepare dialog",
+      "resolution": "Root corrected theme text colors; independent EN320 screenshot rechecked."
+    },
+    {
+      "finding": "Legacy tower e2e old Wave wording assert",
+      "resolution": "Owner updated stale wording assertion; real departure, battle replay, claim, and floor2 departure retest passed."
+    }
+  ]
+}

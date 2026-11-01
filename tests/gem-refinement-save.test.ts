@@ -105,6 +105,7 @@ describe('persistent gem refinement and tower rewards', () => {
     const floor = content.dungeons.find(dungeon => dungeon.towerFloor && dungeon.waves.length > 1)!;
     const initial = fixture();
     initial.completedDungeonIds = ['silent-cathedral', ...content.dungeons.filter(dungeon => dungeon.towerFloor && dungeon.towerFloor < floor.towerFloor!).map(dungeon => dungeon.id)];
+    initial.towerRecord={version:'1.10',completedFloors:Array.from({length:floor.towerFloor!-1},(_,index)=>index+1),legacyHighest:0};
     const ready = replay(act(initial, { type:'depart', dungeonId:floor.id, potions:0 }));
     const next = wonWave(ready, false);
     expect(next.memoryGems!.items).toHaveLength(1);

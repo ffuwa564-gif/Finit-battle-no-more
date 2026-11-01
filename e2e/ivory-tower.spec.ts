@@ -15,7 +15,7 @@ test('all100 floors exist without dumping100 rows and entry is gated by the firs
   await expect(tower).toBeVisible();
   await expect(tower.locator('.ivory-tower__limit')).toHaveText('各ウェーブ40ラウンド以内に踏破');
   await expect(page.getByRole('button', { name:'次の階層に挑む', exact:true })).toBeDisabled();
-  const bands = tower.locator('[data-inventory-section]');
+  const bands = tower.locator('.ivory-tower__bands [data-inventory-section]');
   await expect(bands).toHaveCount(10);
   for (const band of await bands.all()) await expect(band).not.toHaveAttribute('open');
   await expect(page.getByTestId('tower-floor-1')).toBeHidden();
@@ -38,7 +38,7 @@ test('claiming one floor saves progress and exposes the next challenge rather th
   });
   await openTower(page);
   await page.getByRole('button', { name:'次の階層に挑む', exact:true }).click();
-  await expect(page.getByRole('dialog')).toContainText('各Wave40ラウンド以内');
+  await expect(page.getByRole('dialog')).toContainText('各ウェーブ40ラウンド以内');
   await page.locator('[data-guide="depart"]').click();
   await expect.poll(async () => (await save(page)).battle?.phase).toBe('ready');
   await expect(page.locator('.enemy-carousel-meta')).toContainText('ROUND 1 / 40');
@@ -58,6 +58,8 @@ test('claiming one floor saves progress and exposes the next challenge rather th
   await page.getByRole('button', { name:'ラウンドを進める', exact:true }).click();
   await expect(page.locator('[data-guide="claim"]')).toBeVisible({timeout:40000});
   expect((await save(page)).completedDungeonIds).not.toContain(first);
+  expect((await save(page)).battle!.pendingMaterials).toEqual({});
+  await expect(page.getByRole('heading', { name:'塔の報酬', exact:true })).toBeVisible();
   await page.locator('[data-guide="claim"]').click();
   await expect.poll(async () => (await save(page)).completedDungeonIds.includes(first)).toBe(true);
   await openTower(page);
@@ -76,6 +78,7 @@ test('English tower progress and locked bands remain readable at320px', async ({
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const value = (await loadSave())!, revision=value.revision;
     value.completedDungeonIds=['silent-cathedral', ...Array.from({length:31}, (_, index) => `ivory-tower-${String(index+1).padStart(3,'0')}`)];
+    value.towerRecord={version:'1.10',completedFloors:Array.from({length:31},(_,index)=>index+1),legacyHighest:59};
     value.revision++;
     await persistSave(value, revision);
   });
@@ -89,4 +92,19 @@ test('English tower progress and locked bands remain readable at320px', async ({
   expect(await page.evaluate(() => document.documentElement.scrollWidth>innerWidth)).toBe(false);
   await mkdir('artifacts/ivory-tower/UI', {recursive:true});
   await page.screenshot({path:'artifacts/ivory-tower/UI/tower-mobile-320-en.png',fullPage:true});
+});
+
+
+test('locked future floors can be scouted without unlocking or departing, with all waves and finite support explained', async ({ page }) => {
+  const tower=await openTower(page);
+  await tower.getByRole('combobox', {name:'階層の編成を調べる'}).selectOption('80');
+  await expect(tower.getByRole('button', {name:'この階層に挑む',exact:true})).toBeDisabled();
+  await tower.locator('.ivory-tower__scout > summary').click();
+  await expect(tower.locator('.ivory-tower__waves > li')).toHaveCount(2);
+  await expect(tower.locator('.ivory-tower__waves')).toContainText('クローナ');
+  await expect(tower.locator('.ivory-tower__scout')).toContainText('回復・再生は3回、障壁は2回まで。');
+  await expect(tower.locator('.ivory-tower__scout')).toContainText('終鐘まで19ラウンド。');
+  expect((await save(page)).battle).toBeNull();
+  expect((await save(page)).towerRecord?.completedFloors).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });

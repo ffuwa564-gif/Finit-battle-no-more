@@ -1,3 +1,7 @@
+import { scoutRecruitments } from '../content/scout-maidens';
+import { createExpeditionTracking, finishTracking, trackEventBatch, trackPotion } from '../domain/expedition-review';
+import { finalizeExpedition } from '../domain/expedition-ledger';
+import { validateCommandOrder } from '../domain/command-doctrine';
 import { getBuildDefinition, getBuildPlan, isBuildStage } from '../domain/builds';
 import { towerDustReward } from '../domain/ivory-tower';
 import { emptyGemInventory, equipGem, salvageGem, lockGem, craftGem, rollGemDrop, dungeonGemFamily, gemName, startGemRefinement, resolveGemRefinement } from '../domain/memory-gems';
@@ -78,13 +82,14 @@ export function createInitialSave(content: Content, seed = 0x584a39b1, options: 
     schemaVersion: content.schemaVersion, appVersion: content.appVersion, contentVersion: content.contentVersion,
     rulesVersion: content.rulesVersion, revision: 0, gold: 100, potions: 10, stones: 0, astralStones: 0, xrDrawCount: 0,
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
+    towerRecord: { version: '1.10', completedFloors: [], legacyHighest: 0 },
     completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
     memoryGems: emptyGemInventory(), battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
   };
 }
 
 /** All accepted mutations produce one complete save for an atomic persistence transaction. */
-export function applyCommand(previous: GameSave, command: GameCommand, content: Content): GameSave {
+export function applyCommand(previous: GameSave, command: GameCommand, content: Content, context: { now?: number } = {}): GameSave {
   if (previous.schemaVersion !== content.schemaVersion || previous.appVersion !== content.appVersion || previous.contentVersion !== content.contentVersion || previous.rulesVersion !== content.rulesVersion) fail('保存データに対応するリリースで再開してください。');
   const save = structuredClone(previous);
   if (save.novels?.active && !['novelNext', 'novelBack', 'novelFinish', 'settings'].includes(command.type)) fail('物語を閉じてから操作してください。');
@@ -161,6 +166,13 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       battle.focusTargetId = command.unitId;
       break;
     }
+    case 'commandOrder': {
+      const battle = ready(save);
+      if (battle.id !== command.battleId) fail('今は行動を予約できません。');
+      if (command.order === null) delete battle.commandOrder;
+      else battle.commandOrder = validateCommandOrder(command.order, battle, content);
+      break;
+    }
     case 'partyOrder': {
       const battle = save.battle;
       if (!battle || battle.id !== command.battleId || !['ready', 'playing'].includes(battle.phase)) fail('今は行動を予約できません。');
@@ -176,6 +188,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const optionId = command.order.kind === 'skill' ? 'skill:' + command.order.skillId : command.order.kind;
       if (!unit || !partyOrderOptions(unit, { ...battle, units: commandUnits(battle) }, content).some(o => !o.disabled && o.id === optionId)) fail('この行動はまだ使えません。');
       battle.partyOrder = command.order;
+      if (unit.characterId === battle.leaderId) delete battle.commandOrder;
       const actual = battle.units.find(u => u.uid === unit.uid);
       if (actual) delete actual.ultimateQueued;
       break;
@@ -218,6 +231,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const next = rng(save.seed);
       save.seed = next.seed;
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
+      save.battle.tracking = createExpeditionTracking(context.now);
       syncMemoryGems(save);
       log(save, `${dungeon.name}へ出発しました。`);
       break;
@@ -240,6 +254,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       const unit = battle.units.find(unit => unit.uid === command.unitId);
       if (!unit || !ultimateReady(unit)) fail('必殺技の準備ができている仲間を選んでください。');
       unit.ultimateQueued = !unit.ultimateQueued;
+      if (unit.ultimateQueued && unit.characterId === battle.leaderId) delete battle.commandOrder;
       break;
     }
     case 'battleFairy': {
@@ -284,6 +299,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'retreat': {
       const battle = ready(save);
+      battle.failureKind = 'retreat';
       if (battle.blooms) delete battle.blooms.flower;
       if (battle.fairies) delete battle.fairies.visitor;
       battle.phase = 'failed'; battle.nextPhase = 'failed'; battle.failureReason = content.dungeons.find(item => item.id === battle.dungeonId)?.kind === 'trial' ? '試練から撤退しました。' : '撤退しました。今回の仮取得素材は失われました。';
@@ -311,6 +327,12 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
+      if (dungeon.towerFloor) {
+        save.towerRecord ??= { version: '1.10', completedFloors: [], legacyHighest: 0 };
+        if (!save.towerRecord.completedFloors.includes(dungeon.towerFloor)) save.towerRecord.completedFloors.push(dungeon.towerFloor);
+        save.towerRecord.completedFloors.sort((a,b) => a-b);
+      }
+      for (const offer of scoutRecruitments) if (offer.dungeonId === dungeon.id && !save.discoveredIds.includes(offer.characterId)) save.discoveredIds.push(offer.characterId);
       save.claimedExplorationIds.push(battle.id);
       log(save, dungeon.kind === 'trial' ? '女神の試練を踏破しました。' : '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
       save.battle = null;
@@ -345,7 +367,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     case 'recruit': {
       town(save);
-      const character = content.characters.find(item => item.id === command.characterId && item.published && item.origin.includes('recruit'));
+      const character = content.characters.find(item => item.id === command.characterId && item.published && item.origin.includes('recruit') && !item.origin.includes('gacha') && !item.origin.includes('xr_gacha'));
       if (!character || !save.discoveredIds.includes(character.id)) fail('一度倒した仲間化可能なキャラクターを選んでください。');
       if (save.ownedIds.includes(character.id)) fail('このキャラクターはすでに仲間です。');
       spendMaterials(save, recruitCost(character));
@@ -485,6 +507,17 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
     }
     default: fail('不明な操作です。');
   }
+  // Account for generated actions once. Replaying their visuals never adds them again.
+  const active = save.battle;
+  if (active?.tracking) {
+    if (previous.battle && ['round', 'battleBloom', 'battleFairy'].includes(command.type)) {
+      trackEventBatch(active.tracking, active, { round: previous.battle.round, wave: previous.battle.wave });
+      if (command.type === 'round') active.tracking.review.rounds++;
+    }
+    if (command.type === 'potion' && previous.battle) trackPotion(active.tracking, previous.battle.units, active.units);
+    if (active.phase === 'reward' || active.phase === 'failed') finishTracking(active.tracking, context.now);
+  }
+  if ((command.type === 'claim' || command.type === 'leaveFailure') && previous.battle) finalizeExpedition(previous, save, previous.battle, content);
   if (!Number.isSafeInteger(save.gold) || !Number.isSafeInteger(save.stones)) fail('所持数の上限を超えています。');
   save.revision = previous.revision + 1;
   return save;

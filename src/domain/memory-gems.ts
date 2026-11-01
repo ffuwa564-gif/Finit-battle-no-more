@@ -13,7 +13,7 @@ export interface GemRoll { power: number; trait: GemTrait; value: number }
 export type GemRefinementMode = 'power' | 'trait';
 export interface MemoryGem { id: string; defId: string; variant: GemVariant; locked?: boolean; roll?: GemRoll }
 export interface GemInventory { items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number; pending?: { gemId: string; candidate: MemoryGem } }
-export interface GemDefinition { id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
+export interface GemDefinition { fixedRoll?: GemRoll; id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
 
 export const GEM_CRAFT_COST = 6;
 export const GEM_FAMILIES: Record<GemFamily, { name: string; description: string; color: string }> = {
@@ -27,9 +27,9 @@ export const GEM_VARIANTS: Record<GemVariant, { name: string; description: strin
   swift: { name: '速唱', description: '攻撃の威力を抑え、再使用が1ラウンド早まる。' },
 };
 
-function definition(id: string, name: string, description: string, family: GemFamily, template: SkillDef['template'], cooldown: number, strength = 14, options: { variants?: GemVariant[]; bossOnly?: boolean; rarity?: GemDefinition['rarity'] } = {}): GemDefinition {
-  const soundProfile = ['barrier'].includes(template) ? 'guard' : ['cleanse', 'overclock', 'buff'].includes(template) ? 'buff' : template === 'mend_pair' ? 'heal' : ['dispel', 'sleep'].includes(template) ? 'debuff' : 'attack';
-  return { id, name, description, family, rarity: options.rarity ?? 'common', skill: { id: `memory:${id}:pure:catalogue`, name, template, strength, soundProfile }, cooldown, variants: options.variants ?? ['pure'], ...(options.bossOnly ? { bossOnly: true } : {}) };
+function definition(id: string, name: string, description: string, family: GemFamily, template: SkillDef['template'], cooldown: number, strength = 14, options: { variants?: GemVariant[]; bossOnly?: boolean; rarity?: GemDefinition['rarity']; fixedRoll?: GemRoll } = {}): GemDefinition {
+  const soundProfile = ['barrier'].includes(template) ? 'guard' : ['cleanse', 'overclock', 'buff'].includes(template) ? 'buff' : ['heal', 'mend_pair'].includes(template) ? 'heal' : ['dispel', 'sleep'].includes(template) ? 'debuff' : 'attack';
+  return { id, name, description, family, rarity: options.rarity ?? 'common', skill: { id: `memory:${id}:pure:catalogue`, name, template, strength, soundProfile }, cooldown, variants: options.variants ?? ['pure'], ...(options.bossOnly ? { bossOnly: true } : {}), ...(options.fixedRoll ? { fixedRoll: options.fixedRoll } : {}) };
 }
 
 /** Loot changes available actions, never the wearer's permanent statistics. */
@@ -45,6 +45,8 @@ export const GEM_DEFINITIONS: GemDefinition[] = [
   definition('dawn-crown', '暁冠の記憶', '敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。', 'sanctuary', 'dawn', 4, 26, { bossOnly: true, rarity: 'epic', variants: ['pure', 'echo', 'swift'] }),
   definition('star-furnace', '星炉の記憶', '自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを35充填する。自分のHPが20%より多い時に使用できる。', 'clock', 'overclock', 5, 14, { bossOnly: true, rarity: 'epic' }),
   definition('twin-tide', '双潮の記憶', '傷ついた味方2人を同時に回復する。1人ずつへの回復量は単体回復より控えめ。', 'grave', 'mend_pair', 3, 22, { bossOnly: true, rarity: 'epic' }),
+  definition('wick-stone', '灯芯の補助石', '攻撃の参照値を最大24補い、参照値65まで引き上げて敵1体を攻撃する。元の攻撃は下げない。実際のHPダメージの35%で次ラウンドに追撃し、追撃は連鎖しない。固定T3製作品で、調律はできない。覚醒後も装備でき、高い攻撃には補助が自然に減る。', 'clock', 'attack', 3, 14, { fixedRoll: { power: 80, trait: 'none', value: 0 } }),
+  definition('white-flower-seed', '摘まない白花', '出発時の先頭の生存者を20回復し、種を1個預ける。付与から2ラウンド後の終了までに本人が通常の防御を実行すると、種を消費して50回復。防御の予約だけでは咲かない。種は重ねず更新しない。回復量は固定で、石や結晶の倍率はかからない。固定T3製作品で、調律はできない。', 'sanctuary', 'heal', 4, 14, { fixedRoll: { power: 80, trait: 'none', value: 0 } }),
 ];
 
 const definitions = new Map(GEM_DEFINITIONS.map(def => [def.id, def]));
@@ -88,9 +90,10 @@ const defaultRoll: GemRoll = { power: 0, trait: 'none', value: 0 };
 export function supportedGemTraits(gem: Pick<MemoryGem, 'defId'> | GemDefinition | string): GemTrait[] {
   const id = typeof gem === 'string' ? gem : 'defId' in gem ? gem.defId : gem.id;
   const def = definitions.get(id);
+  if (def?.fixedRoll) return ['none'];
   return def && damagingTemplates.has(def.skill.template) ? ['none', 'chain', 'bulwark', 'execution', 'mercy'] : ['none', 'bulwark'];
 }
-export function gemRoll(gem: MemoryGem): GemRoll { return gem.roll ? { ...gem.roll } : { ...defaultRoll }; }
+export function gemRoll(gem: MemoryGem): GemRoll { return { ...(gem.roll ?? gemDefinition(gem).fixedRoll ?? defaultRoll) }; }
 function tierForValue(value: number): GemTier {
   if (value >= TIER_RANGES[6][0]) return 6;
   if (value >= TIER_RANGES[5][0]) return 5;
@@ -103,7 +106,7 @@ export function gemTraitTier(gem: MemoryGem): GemTier | 0 { const roll = gemRoll
 export function gemTier(gem: MemoryGem): GemTier { return Math.max(gemPowerTier(gem), gemTraitTier(gem)) as GemTier; }
 /** Every raw value within these acquired tiers has the same capped effect/cadence. */
 export function gemPowerRefinementIsFixed(gem: MemoryGem): boolean {
-  return gemPowerTier(gem) >= 4 && ['rewind-thread', 'star-furnace', 'dream-lace'].includes(gem.defId);
+  return Boolean(gemDefinition(gem).fixedRoll) || gemPowerTier(gem) >= 4 && ['rewind-thread', 'star-furnace', 'dream-lace'].includes(gem.defId);
 }
 /** Dream-lace keeps its original cadence; higher power rewards the same action. */
 export function gemSleepChargeBonus(gem: MemoryGem): number {
@@ -123,7 +126,7 @@ export function gemTraitAmount(gem: MemoryGem): number {
   if (trait === 'mercy') return 20 + Math.round(value * .3);
   return 0;
 }
-export function gemPowerMultiplier(gem: MemoryGem): number { return 1 + gemRoll(gem).power * .015; }
+export function gemPowerMultiplier(gem: MemoryGem): number { return gem.defId === 'white-flower-seed' ? 1 : 1 + gemRoll(gem).power * .015; }
 export function gemRollKey(gem: MemoryGem): string {
   const roll = gemRoll(gem), key = `${gem.defId}:${gem.variant}`;
   return roll.power === 0 && roll.trait === 'none' && roll.value === 0 ? key : `${key}:${roll.power}:${roll.trait}:${roll.value}`;
@@ -142,7 +145,7 @@ export function gemRollDescription(gem: MemoryGem): string {
 export function gemSkill(gem: MemoryGem): SkillDef {
   const def = gemDefinition(gem);
   const r = gemRoll(gem);
-  const roll = gem.roll ? `@roll=${r.power}~${r.trait}~${r.value}:` : '';
+  const roll = gem.roll || def.fixedRoll ? `@roll=${r.power}~${r.trait}~${r.value}:` : '';
   return { ...def.skill, id: `memory:${gem.defId}:${gem.variant}:${roll}${gem.id}`, name: gemName(gem), strength: gem.variant === 'swift' ? Math.max(1, def.skill.strength - 10) : def.skill.strength };
 }
 /** A reserved marker separates rolls from legacy IDs, which may themselves contain colons. */
@@ -180,7 +183,9 @@ export function gemCooldown(skillId: string): number | undefined {
 
 export function validMemoryGem(value: unknown): value is MemoryGem {
   if (!record(value) || typeof value.id !== 'string' || !value.id.length || value.id.length > 300 || typeof value.defId !== 'string' || !variants.includes(value.variant as GemVariant) || value.locked !== undefined && typeof value.locked !== 'boolean') return false;
-  return Boolean(definitions.get(value.defId)?.variants.includes(value.variant as GemVariant)) && (value.roll === undefined || validGemRoll(value.roll, value.defId));
+  const def = definitions.get(value.defId);
+  if (def?.fixedRoll && (!record(value.roll) || value.roll.power !== def.fixedRoll.power || value.roll.trait !== def.fixedRoll.trait || value.roll.value !== def.fixedRoll.value)) return false;
+  return Boolean(def?.variants.includes(value.variant as GemVariant)) && (value.roll === undefined || validGemRoll(value.roll, value.defId));
 }
 function validGemRoll(value: unknown, defId: string): value is GemRoll {
   const validValue = (amount: unknown): amount is number => count(amount) && Object.values(TIER_RANGES).some(([low, high]) => amount >= low && amount <= high);
@@ -204,6 +209,7 @@ export function validGemInventory(value: unknown): value is GemInventory {
 
 /** A saved offer cannot manufacture or transfer a drop-only affix tier. */
 function validRefinementCandidate(current: MemoryGem, candidate: MemoryGem): boolean {
+  if (gemDefinition(current).fixedRoll) return false;
   if (!validMemoryGem(candidate) || !candidate.roll || candidate.id !== current.id || candidate.defId !== current.defId || candidate.variant !== current.variant) return false;
   const before = gemRoll(current), after = gemRoll(candidate);
   const powerOnly = before.trait === after.trait && before.value === after.value && (gemPowerTier(current) <= 3 ? after.power <= 100 : gemPowerTier(current) === gemPowerTier(candidate));
@@ -232,7 +238,7 @@ export function dungeonGemLootProfile(dungeon: DungeonDef): GemLootProfile {
   const tier6Chance = profile.tier6Chance === undefined ? 0 : profile.tier6Chance;
   if (!validChance(profile.tier4Chance) || !validChance(profile.tier5Chance) || !validChance(tier6Chance) || profile.tier4Chance + profile.tier5Chance + tier6Chance > 1) throw new Error('記憶石のTier排出率が不正です。');
   const featured = profile.featuredDefId ? definitions.get(profile.featuredDefId) : undefined;
-  if (profile.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))) throw new Error('記憶石の注目入手先が系統と一致しません。');
+  if (profile.featuredDefId && (!featured || featured.fixedRoll || featured.family !== dungeonGemFamily(dungeon))) throw new Error('記憶石の注目入手先が系統と一致しません。');
   return { tier4Chance: profile.tier4Chance, tier5Chance: profile.tier5Chance, ...(profile.tier6Chance === undefined ? {} : { tier6Chance }), ...(featured ? { featuredDefId: featured.id } : {}) };
 }
 
@@ -276,7 +282,7 @@ export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, o
   }
   random = nextRandom(random.seed);
   const unique = options.boss && !options.first && random.value < .12;
-  const candidates = GEM_DEFINITIONS.filter(def => def.family === family && Boolean(def.bossOnly) === Boolean(unique));
+  const candidates = GEM_DEFINITIONS.filter(def => !def.fixedRoll && def.family === family && Boolean(def.bossOnly) === Boolean(unique));
   random = nextRandom(random.seed);
   const firstId = { sanctuary: 'pale-ward', clock: 'echo-shard', grave: 'night-dew' }[family];
   const def = options.first ? definitions.get(firstId)! : featured ?? candidates[Math.min(candidates.length - 1, Math.floor(random.value * candidates.length))];
@@ -321,7 +327,7 @@ export function craftGem(inventory: GemInventory, defId: string, variant: GemVar
   if ((inventory.dust[def.family] ?? 0) < cost) throw new Error('製作に必要な記憶の欠片が足りません。');
   let serial = inventory.craftSerial ?? inventory.items.length + inventory.seen.length;
   while (inventory.items.some(item => item.id === `crafted-${serial}`)) serial++;
-  const gem: MemoryGem = { id: `crafted-${serial}`, defId, variant, roll: { power: 20, trait: 'none', value: 0 } };
+  const gem: MemoryGem = { id: `crafted-${serial}`, defId, variant, roll: def.fixedRoll ? { ...def.fixedRoll } : { power: 20, trait: 'none', value: 0 } };
   inventory.dust[def.family] -= cost;
   inventory.items.push(gem);
   inventory.craftSerial = serial + 1;
@@ -332,6 +338,7 @@ export function craftGem(inventory: GemInventory, defId: string, variant: GemVar
 /** Ordinary affixes span T1–T3; deeper floors improve that distribution. Boss profiles add higher tiers separately. */
 export function rollGemCandidate(gem: MemoryGem, seed: number, towerFloor = 0): { gem: MemoryGem; seed: number } {
   if (!Number.isSafeInteger(towerFloor) || towerFloor < 0 || towerFloor > 100) throw new Error('記憶石の探索階層が正しくありません。');
+  if (gemDefinition(gem).fixedRoll) return { gem: { ...gem, roll: { ...gemDefinition(gem).fixedRoll! } }, seed: seed >>> 0 };
   const floor = Math.max(0, Math.min(100, Math.floor(towerFloor)));
   let random = nextRandom(seed);
   const minimum = 5 + Math.min(30, Math.floor(floor / 3));
@@ -356,6 +363,7 @@ export function startGemRefinement(inventory: GemInventory, gemId: string, mode:
   if (inventory.pending) throw new Error('先に調律の結果を選んでください。');
   const gem = findGem(inventory, gemId), def = gemDefinition(gem), cost = refinementCost(gem, mode);
   if ((inventory.dust[def.family] ?? 0) < cost) throw new Error('調律に必要な記憶の欠片が足りません。');
+  if (def.fixedRoll) throw new Error('固定製作品は調律できません。');
   const previous = gemRoll(gem);
   let random = nextRandom(seed), roll = { ...previous };
   if (mode === 'power') {
@@ -393,4 +401,9 @@ export function resolveGemRefinement(inventory: GemInventory, accept: boolean): 
     inventory.items[index] = replacement;
   }
   delete inventory.pending;
+}
+
+/** A low-reference-attack boost that naturally fades out; awakening never invalidates equipment. */
+export function gemAttackReference(gem: MemoryGem, actor: { attack: number }): number {
+  return gem.defId === 'wick-stone' ? Math.max(actor.attack, Math.min(65, actor.attack + 24)) : actor.attack;
 }
