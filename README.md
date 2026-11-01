@@ -93,3 +93,18 @@ Awakened Seris / nine-tailed Kuzuha / kimono Athena / Benzaiten; fixed four-memb
 
 Zundamon and Shikoku Metan discuss the current roster and proposal-only rescue mechanics. The constant CV is26.7%; this is not a damage or win-rate gap. In the frozen T3 comparison, a restricted starter-stone option reduced the within-role score SD from5.036 to4.848 (about3.7%), with a modest lower-group gain and unchanged upper-group mean. Other additions had little effect or adverse examples. Final held-out comparison:69 forms x6 contexts x30 conditions x5 modes =62,100 simulated battles. These are limited-context test fixtures, not an exhaustive ranking. Proposal effects remain unimplemented; game main and itch.io were not changed.
 
+## Ivory Tower hardcore redesign discussion
+
+- [15:10 discussion video (720p)](STILLVEIL-Tower-Redesign-720p.mp4)
+- [100-floor blueprint CSV](Tower-Redesign-100-Floors.csv)
+- [Methods, proposals and limitations](Tower-Redesign-Notes.txt)
+- [YouTube description and chapters](Tower-Redesign-YouTube-description.txt)
+- [Thumbnail](Tower-Redesign-Thumbnail.jpg)
+- [Full 71-form enemy gallery](Tower-Redesign-All-71-Enemies.png)
+- [Difficulty curve](Tower-Redesign-Difficulty-Curve.png)
+- [Fixed-build win-rate comparison](Tower-Redesign-Winrates.png)
+- [Analysis](Tower-Redesign-Analysis.json)
+- [Proposed native content definitions](Tower-Redesign-Plan.json)
+
+Zundamon and Shikoku Metan discuss a hardcore 100-floor redesign using all71 existing combat forms as main enemies, including69 currently obtainable forms, Chrona and unreleased-recruit Astraea. The content-only prototype is not release ready. Native comparisons and counter screening total49,340 fights. The previous fixed build has per-floor success prefixes59/34/20 under current/roster-pattern changes at old difficulty/full raised curve; these are not continuous climbs or global best records. A separately validated offensive counter won21F60/100, but35F remained0/100 in the selected counter. New enemy gauges/personal ultimates/finite-heal windows are design-only and excluded from measurements. Game main and itch.io were not changed.
+

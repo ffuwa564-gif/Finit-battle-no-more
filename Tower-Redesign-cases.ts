@@ -1,0 +1,2 @@
+import{content}from'../../src/content';import{proposed,plan}from'./plan';import type{Content}from'../../src/domain/types';
+export const cases:Record<string,Content>={current:content,roster:{...proposed,dungeons:proposed.dungeons.map(d=>{if(!d.towerFloor)return d;const r=plan[d.towerFloor-1],q=r.oldConstant/r.nativeConstant;return{...d,enemyScale:{...d.enemyScale!,hp:d.enemyScale!.hp*q,attack:d.enemyScale!.attack*q}};})},hard:proposed};
