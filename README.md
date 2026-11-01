@@ -67,3 +67,15 @@ Original candidate designs, not implemented or announced characters. Base statis
 
 S = sum(character constants) + 0.1 * sum(gem power tier + trait tier). Freyja + awakened Liora, one swift Echo Shard (power179/mercy33), cleared in20rounds. This is a provisional minimum found, not a global optimality proof or a stable farm recommendation: 1 success in200 held-out conditions. Initial ownership and gear are a declared test fixture.
 
+## Tower maximum-floor build — provisional floor59
+
+- [12:26 narrated build commentary (720p)](STILLVEIL-Tower-Maximum-720p.mp4)
+- [Floor59 successful battle, complete replay with native game sounds](Tower-Maximum-Full-Replay.mp4)
+- [Exact gear, acquisition burden, methodology and limits](Tower-Maximum-Notes.txt)
+- [YouTube title, description and chapters](Tower-Maximum-YouTube-description.txt)
+- [Thumbnail](Tower-Maximum-Thumbnail.jpg)
+- [All59 native command proofs](Tower-Maximum-Proof.json)
+- [Held-out results and gear comparisons](Tower-Maximum-Validation.json)
+
+Awakened Seris / nine-tailed Kuzuha / kimono Athena / Benzaiten; fixed four-member party, order, leader and gear. Two Echo Shards and two Dream Laces. Every floor from1 through59 has an individually verified successful example. Retries and per-floor tactics are allowed. This is a provisional best found, not a global optimum proof or an uninterrupted climb. Initial ownership, gear and prerequisites are declared test fixtures. The video also examines T5 gear, weaker traits, character requirements, gacha simulations and upper-tier loot rarity.
+

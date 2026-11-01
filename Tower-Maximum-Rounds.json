@@ -1,0 +1,1616 @@
+[
+  {
+    "round": 1,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355
+      },
+      {
+        "id": "athena",
+        "hp": 436
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 12536
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4559
+      },
+      {
+        "id": "moon-moth",
+        "hp": 2137
+      }
+    ]
+  },
+  {
+    "round": 2,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 70
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 11638
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4559
+      },
+      {
+        "id": "moon-moth",
+        "hp": 2137
+      }
+    ]
+  },
+  {
+    "round": 3,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 50
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 50
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 50
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 95
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 11436
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4231
+      },
+      {
+        "id": "moon-moth",
+        "hp": 2137
+      }
+    ]
+  },
+  {
+    "round": 4,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:4"
+  },
+  {
+    "round": 4,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 50
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 75
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 75
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 11436
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4231
+      },
+      {
+        "id": "moon-moth",
+        "hp": 1486
+      }
+    ]
+  },
+  {
+    "round": 5,
+    "type": "potion",
+    "unitId": "party:benzaiten"
+  },
+  {
+    "round": 5,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "healer",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [
+      "party:athena",
+      "party:benzaiten"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 173,
+        "gauge": 85
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 210,
+        "gauge": 85
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 100
+      },
+      {
+        "id": "benzaiten",
+        "hp": 191,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 11436
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4231
+      },
+      {
+        "id": "moon-moth",
+        "hp": 921
+      }
+    ]
+  },
+  {
+    "round": 6,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:6"
+  },
+  {
+    "round": 6,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 0
+      },
+      {
+        "id": "benzaiten",
+        "hp": 224,
+        "gauge": 10
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 10862
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4231
+      },
+      {
+        "id": "moon-moth",
+        "hp": 921
+      }
+    ]
+  },
+  {
+    "round": 7,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:7"
+  },
+  {
+    "round": 7,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "healer",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 0
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      },
+      {
+        "id": "benzaiten",
+        "hp": 168,
+        "gauge": 45
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 10521
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4052
+      },
+      {
+        "id": "moon-moth",
+        "hp": 728
+      }
+    ]
+  },
+  {
+    "round": 8,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 50
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 9412
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 4052
+      },
+      {
+        "id": "moon-moth",
+        "hp": 728
+      }
+    ]
+  },
+  {
+    "round": 9,
+    "type": "battleFairy",
+    "fairyId": "run-1000-1:fairy:0:9"
+  },
+  {
+    "round": 9,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [
+      "party:benzaiten"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 65
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 65
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 90
+      },
+      {
+        "id": "benzaiten",
+        "hp": 198,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 9210
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3657
+      },
+      {
+        "id": "moon-moth",
+        "hp": 728
+      }
+    ]
+  },
+  {
+    "round": 10,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:10"
+  },
+  {
+    "round": 10,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [
+      "party:athena"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 90
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 90
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 100
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 0
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 8639
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3657
+      },
+      {
+        "id": "moon-moth",
+        "hp": 728
+      }
+    ]
+  },
+  {
+    "round": 11,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:11"
+  },
+  {
+    "round": 11,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 0
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 35
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 7879
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3557
+      },
+      {
+        "id": "moon-moth",
+        "hp": 639
+      }
+    ]
+  },
+  {
+    "round": 12,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 0
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 7538
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3283
+      },
+      {
+        "id": "moon-moth",
+        "hp": 538
+      }
+    ]
+  },
+  {
+    "round": 13,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 50
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 6913
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3227
+      },
+      {
+        "id": "moon-moth",
+        "hp": 538
+      }
+    ]
+  },
+  {
+    "round": 14,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:14"
+  },
+  {
+    "round": 14,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 50
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 50
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 75
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5971
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 3095
+      },
+      {
+        "id": "moon-moth",
+        "hp": 538
+      }
+    ]
+  },
+  {
+    "round": 15,
+    "type": "battleFairy",
+    "fairyId": "run-1000-1:fairy:0:15"
+  },
+  {
+    "round": 15,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:15"
+  },
+  {
+    "round": 15,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [
+      "party:athena"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 65
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 65
+      },
+      {
+        "id": "athena",
+        "hp": 417,
+        "gauge": 100
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5971
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2840
+      },
+      {
+        "id": "moon-moth",
+        "hp": 449
+      }
+    ]
+  },
+  {
+    "round": 16,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:2:moon-moth",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 65
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 90
+      },
+      {
+        "id": "athena",
+        "hp": 417,
+        "gauge": 0
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5675
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2840
+      },
+      {
+        "id": "moon-moth",
+        "hp": 449
+      }
+    ]
+  },
+  {
+    "round": 17,
+    "type": "battleFairy",
+    "fairyId": "run-1000-1:fairy:0:17"
+  },
+  {
+    "round": 17,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:17"
+  },
+  {
+    "round": 17,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 40
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5675
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2714
+      }
+    ]
+  },
+  {
+    "round": 18,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 0
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 65
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5178
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2599
+      }
+    ]
+  },
+  {
+    "round": 19,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 90
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5178
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2599
+      }
+    ]
+  },
+  {
+    "round": 20,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:20"
+  },
+  {
+    "round": 20,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [
+      "party:athena"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 50
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 100
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5178
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 2524
+      }
+    ]
+  },
+  {
+    "round": 21,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:21"
+  },
+  {
+    "round": 21,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 50
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 75
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 0
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 5178
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 1435
+      }
+    ]
+  },
+  {
+    "round": 22,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 75
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 4591
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 1435
+      }
+    ]
+  },
+  {
+    "round": 23,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 50
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 4187
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 1435
+      }
+    ]
+  },
+  {
+    "round": 24,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:24"
+  },
+  {
+    "round": 24,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 0
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 75
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 3441
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 1360
+      }
+    ]
+  },
+  {
+    "round": 25,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [
+      "party:athena"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 25
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 50
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 100
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 3293
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 666
+      }
+    ]
+  },
+  {
+    "round": 26,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 50
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 75
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 0
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 2573
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 666
+      }
+    ]
+  },
+  {
+    "round": 27,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:27"
+  },
+  {
+    "round": 27,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 75
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 2240
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 666
+      }
+    ]
+  },
+  {
+    "round": 28,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 50
+      },
+      {
+        "id": "benzaiten",
+        "hp": 260,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 1300
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 666
+      }
+    ]
+  },
+  {
+    "round": 29,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:29"
+  },
+  {
+    "round": 29,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 0
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 25
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 75
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 554
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 331
+      }
+    ]
+  },
+  {
+    "round": 30,
+    "type": "battleFairy",
+    "fairyId": "run-1000-1:fairy:0:30"
+  },
+  {
+    "round": 30,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:30"
+  },
+  {
+    "round": 30,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "memory:echo-shard:pure:@roll=239~mercy~239:slot-0"
+    },
+    "queued": [
+      "party:athena"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 40
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 65
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 100
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 320
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 199
+      }
+    ]
+  },
+  {
+    "round": 31,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:31"
+  },
+  {
+    "round": 31,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "attack-27"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 65
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 90
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 0
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 320
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 121
+      }
+    ]
+  },
+  {
+    "round": 32,
+    "type": "battleBloom",
+    "bloomId": "run-1000-1:flower:0:32"
+  },
+  {
+    "round": 32,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "skill",
+      "skillId": "dawn-27"
+    },
+    "queued": [
+      "party:kuzuha-awakened"
+    ],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 90
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 100
+      },
+      {
+        "id": "athena",
+        "hp": 436,
+        "gauge": 25
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "stone-drake",
+        "hp": 250
+      },
+      {
+        "id": "hollow-keeper",
+        "hp": 121
+      }
+    ]
+  },
+  {
+    "round": 33,
+    "type": "potion",
+    "unitId": "party:athena"
+  },
+  {
+    "round": 33,
+    "type": "round",
+    "strategy": "survival",
+    "crystalRole": "attacker",
+    "focus": "enemy:w0:1:hollow-keeper",
+    "order": {
+      "kind": "ultimate"
+    },
+    "queued": [],
+    "before": [
+      {
+        "id": "seris-awakened",
+        "hp": 320,
+        "gauge": 100
+      },
+      {
+        "id": "kuzuha-awakened",
+        "hp": 355,
+        "gauge": 0
+      },
+      {
+        "id": "athena",
+        "hp": 235,
+        "gauge": 70
+      }
+    ],
+    "enemyHP": [
+      {
+        "id": "hollow-keeper",
+        "hp": 6
+      }
+    ]
+  }
+]

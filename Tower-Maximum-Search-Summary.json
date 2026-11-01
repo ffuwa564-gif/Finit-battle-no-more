@@ -1,0 +1,55 @@
+{
+  "source": "616a074",
+  "countMeaning": "Persisted completed native battle evaluations; includes repeated configurations/conditions, not unique states or exhaustive enumeration",
+  "phases": [
+    {
+      "file": "grid-state.json",
+      "battleEvaluations": 3933
+    },
+    {
+      "file": "prefix-state.json",
+      "battleEvaluations": 16323
+    },
+    {
+      "file": "retry-screen.json",
+      "battleEvaluations": 3563
+    },
+    {
+      "file": "extended-record.json",
+      "battleEvaluations": 1238
+    },
+    {
+      "file": "frontier-state.json",
+      "battleEvaluations": 15196
+    },
+    {
+      "file": "frontier-check.json",
+      "battleEvaluations": 2312
+    },
+    {
+      "file": "frontier-check-final.json",
+      "battleEvaluations": 9900
+    },
+    {
+      "file": "extended-final.json",
+      "battleEvaluations": 1534
+    },
+    {
+      "file": "extended-best.json",
+      "battleEvaluations": 1010
+    },
+    {
+      "file": "validation-54.json",
+      "battleEvaluations": 9792
+    },
+    {
+      "file": "peak-validation.json",
+      "battleEvaluations": 8785
+    }
+  ],
+  "probeBattles": 150,
+  "publicCommandProofs": 59,
+  "publicCommands": 18456,
+  "scope": "Heuristic evolution and targeted neighbors, then contiguous floor-prefix checks and held-out validation. Not exhaustive global optimization.",
+  "persistedNativeBattles": 73736
+}

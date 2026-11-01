@@ -1,0 +1,18 @@
+[
+  {
+    "id": "lunette-awakening",
+    "defId": "echo-shard",
+    "variant": "swift",
+    "samples": 20000000,
+    "power": 7926,
+    "both": 34
+  },
+  {
+    "id": "kuzuha-awakening",
+    "defId": "dream-lace",
+    "variant": "pure",
+    "samples": 20000000,
+    "power": 34377,
+    "both": 155
+  }
+]

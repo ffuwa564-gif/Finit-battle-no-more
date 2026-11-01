@@ -1,0 +1,4021 @@
+{
+  "passed": true,
+  "highestVerifiedFloor": 59,
+  "allFloorsChecked": true,
+  "continuousSingleJourney": false,
+  "fixtureNotAcquiredProgress": true,
+  "proofs": [
+    {
+      "source": "616a074",
+      "floor": 1,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 9,
+      "potions": 0,
+      "flowers": 3,
+      "fairies": 1,
+      "publicCommands": 114,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 2,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 19,
+      "potions": 0,
+      "flowers": 8,
+      "fairies": 3,
+      "publicCommands": 242,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 3,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 0,
+      "flowers": 4,
+      "fairies": 1,
+      "publicCommands": 128,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 4,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 131,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 5,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 19,
+      "potions": 0,
+      "flowers": 8,
+      "fairies": 3,
+      "publicCommands": 238,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 6,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 11,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 137,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 7,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 11,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 137,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 8,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 19,
+      "potions": 0,
+      "flowers": 9,
+      "fairies": 3,
+      "publicCommands": 253,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 9,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 11,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 139,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 10,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 23,
+      "potions": 1,
+      "flowers": 10,
+      "fairies": 3,
+      "publicCommands": 262,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 11,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 32,
+      "potions": 2,
+      "flowers": 16,
+      "fairies": 4,
+      "publicCommands": 463,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 12,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 34,
+      "potions": 2,
+      "flowers": 17,
+      "fairies": 5,
+      "publicCommands": 501,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 13,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 0,
+      "flowers": 4,
+      "fairies": 1,
+      "publicCommands": 126,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 14,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 35,
+      "potions": 2,
+      "flowers": 17,
+      "fairies": 6,
+      "publicCommands": 516,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 15,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 24,
+      "potions": 3,
+      "flowers": 11,
+      "fairies": 3,
+      "publicCommands": 356,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 16,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 130,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 17,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 33,
+      "potions": 2,
+      "flowers": 16,
+      "fairies": 4,
+      "publicCommands": 486,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 18,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 35,
+      "potions": 0,
+      "flowers": 17,
+      "fairies": 6,
+      "publicCommands": 518,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 19,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 11,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 137,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 20,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 20,
+      "potions": 1,
+      "flowers": 8,
+      "fairies": 3,
+      "publicCommands": 285,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 21,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 14,
+      "potions": 0,
+      "flowers": 6,
+      "fairies": 1,
+      "publicCommands": 168,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 22,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 1,
+      "flowers": 4,
+      "fairies": 1,
+      "publicCommands": 126,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 23,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 28,
+      "potions": 3,
+      "flowers": 12,
+      "fairies": 3,
+      "publicCommands": 383,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 24,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 14,
+      "potions": 0,
+      "flowers": 6,
+      "fairies": 1,
+      "publicCommands": 168,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 25,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 16,
+      "potions": 2,
+      "flowers": 7,
+      "fairies": 2,
+      "publicCommands": 188,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 26,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 29,
+      "potions": 3,
+      "flowers": 13,
+      "fairies": 3,
+      "publicCommands": 401,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 27,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 15,
+      "potions": 0,
+      "flowers": 7,
+      "fairies": 2,
+      "publicCommands": 180,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 28,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 10,
+      "potions": 2,
+      "flowers": 4,
+      "fairies": 1,
+      "publicCommands": 130,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 29,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      },
+      "rounds": 21,
+      "potions": 3,
+      "flowers": 10,
+      "fairies": 3,
+      "publicCommands": 290,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 30,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 19,
+      "potions": 2,
+      "flowers": 8,
+      "fairies": 3,
+      "publicCommands": 254,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 31,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 11,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 143,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 32,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 0
+      },
+      "rounds": 37,
+      "potions": 0,
+      "flowers": 19,
+      "fairies": 6,
+      "publicCommands": 506,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 33,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 13,
+      "potions": 3,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 173,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 34,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 12,
+      "potions": 0,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 151,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 35,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 595,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 36,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 14,
+      "potions": 5,
+      "flowers": 6,
+      "fairies": 1,
+      "publicCommands": 183,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 37,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 13,
+      "potions": 1,
+      "flowers": 5,
+      "fairies": 1,
+      "publicCommands": 164,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 38,
+      "seed": 14,
+      "battleId": "run-1000-14",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      },
+      "rounds": 34,
+      "potions": 3,
+      "flowers": 18,
+      "fairies": 3,
+      "publicCommands": 450,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 39,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 16,
+      "potions": 5,
+      "flowers": 7,
+      "fairies": 2,
+      "publicCommands": 194,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 40,
+      "seed": 3,
+      "battleId": "run-1000-3",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      },
+      "rounds": 20,
+      "potions": 5,
+      "flowers": 8,
+      "fairies": 5,
+      "publicCommands": 271,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 41,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 560,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 42,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 558,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 43,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 14,
+      "potions": 1,
+      "flowers": 6,
+      "fairies": 1,
+      "publicCommands": 178,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 44,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 561,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 45,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 501,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 46,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 16,
+      "potions": 1,
+      "flowers": 7,
+      "fairies": 2,
+      "publicCommands": 204,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 47,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 20,
+      "fairies": 7,
+      "publicCommands": 571,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 48,
+      "seed": 5,
+      "battleId": "run-1000-5",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 3
+      },
+      "rounds": 40,
+      "potions": 5,
+      "flowers": 19,
+      "fairies": 8,
+      "publicCommands": 567,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 49,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 16,
+      "potions": 4,
+      "flowers": 7,
+      "fairies": 2,
+      "publicCommands": 212,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 50,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 39,
+      "potions": 5,
+      "flowers": 19,
+      "fairies": 6,
+      "publicCommands": 525,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 51,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 39,
+      "potions": 5,
+      "flowers": 19,
+      "fairies": 7,
+      "publicCommands": 534,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 52,
+      "seed": 2,
+      "battleId": "run-1000-2",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 21,
+      "potions": 5,
+      "flowers": 9,
+      "fairies": 6,
+      "publicCommands": 288,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 53,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 28,
+      "potions": 1,
+      "flowers": 12,
+      "fairies": 3,
+      "publicCommands": 372,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 54,
+      "seed": 4,
+      "battleId": "run-1000-4",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      },
+      "rounds": 38,
+      "potions": 5,
+      "flowers": 19,
+      "fairies": 8,
+      "publicCommands": 511,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 55,
+      "seed": 6,
+      "battleId": "run-1000-6",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 20,
+      "potions": 5,
+      "flowers": 9,
+      "fairies": 2,
+      "publicCommands": 275,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 56,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 2
+      },
+      "rounds": 29,
+      "potions": 1,
+      "flowers": 14,
+      "fairies": 4,
+      "publicCommands": 391,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 57,
+      "seed": 4,
+      "battleId": "run-1000-4",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      },
+      "rounds": 39,
+      "potions": 5,
+      "flowers": 19,
+      "fairies": 8,
+      "publicCommands": 524,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 58,
+      "seed": 27,
+      "battleId": "run-1000-27",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 21,
+      "potions": 5,
+      "flowers": 8,
+      "fairies": 2,
+      "publicCommands": 278,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    },
+    {
+      "source": "616a074",
+      "floor": 59,
+      "seed": 1,
+      "battleId": "run-1000-1",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "kuzuha-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "swift",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 5
+      },
+      "rounds": 33,
+      "potions": 2,
+      "flowers": 16,
+      "fairies": 4,
+      "publicCommands": 429,
+      "allReadySnapshotsMatched": true,
+      "finalHPMatched": true,
+      "saveCompatibilityPassed": true,
+      "fixtureNotAcquiredProgress": true,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "assumptions": "Fresh introductory guarantee, fixed flower banner, native SSR rate and pickSSR, duplicate refunds included in net, grants excluded",
+  "results": [
+    {
+      "targets": [
+        "athena",
+        "benzaiten"
+      ],
+      "samples": 100000,
+      "mean": 206.06845,
+      "median": 161,
+      "p90": 431,
+      "p95": 546,
+      "meanNetStones": 816.45521,
+      "netMedian": 650,
+      "netP90": 1676
+    },
+    {
+      "targets": [
+        "athena",
+        "selene"
+      ],
+      "samples": 100000,
+      "mean": 121.65715,
+      "median": 87,
+      "p90": 271,
+      "p95": 349,
+      "meanNetStones": 491.9796,
+      "netMedian": 364,
+      "netP90": 1068
+    }
+  ]
+}

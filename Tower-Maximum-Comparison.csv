@@ -1,0 +1,15 @@
+kind,floor_or_config,successes_or_highest,trials
+held-out,1,200,200
+held-out,10,197,200
+held-out,20,138,200
+held-out,30,156,200
+held-out,40,39,200
+held-out,50,35,200
+held-out,59,122,200
+held-out,60,0,200
+gear-comparison,ideal239,59,up to100 seeds x8 policies per floor
+gear-comparison,low220,54,up to100 seeds x8 policies per floor
+gear-comparison,T5,50,up to100 seeds x8 policies per floor
+gear-comparison,T3,31,up to100 seeds x8 policies per floor
+gear-comparison,traitT3,54,up to100 seeds x8 policies per floor
+gear-comparison,noTraits,21,up to100 seeds x8 policies per floor
