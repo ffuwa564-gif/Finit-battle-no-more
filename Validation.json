@@ -1,0 +1,35 @@
+{
+  "complete": true,
+  "chapters": 22,
+  "utterances": 429,
+  "duration": 3030.508724,
+  "bytes": 98867415,
+  "sha256": "3d67ff362f92ae759df2a238547ca7e931e71af3c97cbb369e08e056ceab5832",
+  "video": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1"
+  },
+  "audio": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 2
+  },
+  "maxScheduledSpeechGapSeconds": 1.086,
+  "audioMeasurement": {
+    "input_i": "-16.18",
+    "input_tp": "-0.95",
+    "input_lra": "3.50",
+    "input_thresh": "-26.56",
+    "output_i": "-16.05",
+    "output_tp": "-1.50",
+    "output_lra": "3.50",
+    "output_thresh": "-26.44",
+    "normalization_type": "dynamic",
+    "target_offset": "0.05"
+  },
+  "fullDecodePassed": true,
+  "newAbilitiesImplemented": false,
+  "scope": "Video/source/timeline validation and separate arithmetic models; not a gameplay balance or win-rate test."
+}

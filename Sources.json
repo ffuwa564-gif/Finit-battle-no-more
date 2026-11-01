@@ -1,0 +1,503 @@
+[
+  {
+    "id": "S01",
+    "category": "game-original",
+    "subject": "セリス",
+    "file": "src/content/seris-story.ts",
+    "line": 17,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L17",
+    "factSummary": "覚醒したセリスは仲間の後ろにつき、道を教えてもらってよいか尋ねる。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S02",
+    "category": "game-original",
+    "subject": "リオラ",
+    "file": "src/content/seris-story.ts",
+    "line": 19,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L19",
+    "factSummary": "閉ざせと命じられた門を内側から開け、全員が通るまで戸口を空けている。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S03",
+    "category": "game-original",
+    "subject": "ノエル",
+    "file": "src/content/seris-story.ts",
+    "line": 20,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L20",
+    "factSummary": "一人へ代償を負わせる計算を捨て、四人の役目と退避の合図を星図へ書く。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S04",
+    "category": "game-original",
+    "subject": "エレイン",
+    "file": "src/content/seris-story.ts",
+    "line": 18,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L18",
+    "factSummary": "一緒に花を摘む約束が果たせそうでも、療養室に必要な鉢を残し、水を替える。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S05",
+    "category": "game-original",
+    "subject": "リゼット",
+    "file": "src/content/seris-story.ts",
+    "line": 21,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L21",
+    "factSummary": "朝の封印を斬る前に水が引くのを待たせ、弟子が斬る間も帰路を見る。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S06",
+    "category": "game-original",
+    "subject": "ルネット",
+    "file": "src/content/index.ts",
+    "line": 190,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/index.ts#L190",
+    "factSummary": "壊れたうさぎを放っておけない発明家。覚醒後は誰かを置いていかないと誓う。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S07",
+    "category": "game-original",
+    "subject": "ノクス",
+    "file": "src/content/index.ts",
+    "line": 154,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/index.ts#L154",
+    "factSummary": "表情に歓びや怒りを浮かべず、標的を排除して命令を完遂する。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S08",
+    "category": "game-original",
+    "subject": "庭園の女",
+    "file": "src/content/novels.ts",
+    "line": 18,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/novels.ts#L18",
+    "factSummary": "世界の可能性を探り、主人公から客観的な報告だけでなく本人の考えも聞こうとする。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S09",
+    "category": "game-original",
+    "subject": "味方ルネットとビット",
+    "file": "src/content/boss-events.ts",
+    "line": 36,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/boss-events.ts#L36",
+    "factSummary": "現行の仲間ルネットは全体攻撃と障壁を使い、敵専用ビットを展開しない。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S10",
+    "category": "game-original",
+    "subject": "庭園の女とザクロの区別",
+    "file": "src/content/zakuro.ts",
+    "line": 81,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/zakuro.ts#L81",
+    "factSummary": "庭園の女がザクロについて別の管理者として語る。二人は同一人物ではない。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "S11",
+    "category": "game-system",
+    "subject": "現行の行動順と速度",
+    "file": "src/domain/engine.ts",
+    "line": 15,
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/domain/engine.ts#L15",
+    "factSummary": "役割固定速度は守護者18、呪術師15、剣士14、導き手13、癒し手12、詠唱者11。",
+    "retrieval": "Local repository text read and checked; the proposed effects are separate creative interpretations.",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+    "checkedDate": "2026-11-01"
+  },
+  {
+    "id": "JP01",
+    "title": "天宇受売命",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/amenouzumenomikoto/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 天の石屋／天孫降臨／猿女の君",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.522995+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/site-1.html",
+    "sha256": "c79aa759d0bf7fab1c0a7e886fc70933ea3e6480b47817b2a1a5a47b3b84eac8",
+    "bytes": 36947,
+    "short_quote": "諸神の笑いを誘う",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP02",
+    "title": "豊玉毘売",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/toyotamabime/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 豊玉毘売の出産・離別",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.523241+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/toyotamabime.html",
+    "sha256": "8308a65ac515f7be3b994654034af69b3eb19d5aa7722090a00ba634adbae183",
+    "bytes": 43755,
+    "short_quote": "海坂（海神の国と現し国の境）を往来ができないように塞ぎ",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP03",
+    "title": "宇迦之御魂神",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/ukanomitamanokami/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 須佐之男命の系譜／日本書紀 五段一書六",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.523559+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/ukanomitamanokami.html",
+    "sha256": "1e9f3a64d04aca1292a9a0290c9a39c122601e58df87fbc528bc530a53ff5a7e",
+    "bytes": 39791,
+    "short_quote": "特には収穫された稲の穀霊",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP04",
+    "title": "石長比売",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/iwanagahime/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 木花之佐久夜毘売との短命起源譚",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.523741+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/iwanagahime.html",
+    "sha256": "7d4b65a719e1abc73fe491aa5297e72da2d534252f3e8bdc711ed880cae7e8a7",
+    "bytes": 44841,
+    "short_quote": "",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP05",
+    "title": "木花之佐久夜毘売",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/konohananosakuyabime/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 木花之佐久夜毘売／火中出産",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.523869+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/konohananosakuyabime.html",
+    "sha256": "198aa7cc201e1a4ed3e0b48580099ea930fe3b7db95cdbf1e9c43a46622852da",
+    "bytes": 45306,
+    "short_quote": "戸口の無い八尋殿",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP06",
+    "title": "天照大御神",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/amaterasuomikami/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 みそぎ／天石屋戸／天孫降臨",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.523937+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/amaterasuomikami.html",
+    "sha256": "ba48c1e2edebe0fb24165674debda98dced9c3869121c247a3823550bb562d8e",
+    "bytes": 41779,
+    "short_quote": "高天原と葦原中国が照り明るくなった",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP07",
+    "title": "伊耶那美神",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/izanaminokami/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 伊耶那美命の死／黄泉の国",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.524002+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/site-2.html",
+    "sha256": "4124408aaa2ecc606d5ac801462d9826bad7679284a0410ca738075be8b1240b",
+    "bytes": 49529,
+    "short_quote": "黄泉つひら坂を塞がれる",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "JP08",
+    "title": "意富加牟豆美命",
+    "publisher": "國學院大學 古典文化学 神名データベース",
+    "url": "https://kojiki.kokugakuin.ac.jp/shinmei/okamuzuminomikoto/",
+    "source_type": "academic encyclopedia; summary and scholarship with primary-text section references",
+    "primary_locus": "古事記上巻 黄泉の国／日本書紀五段一書六・九",
+    "verified_http_status": 200,
+    "retrieved_utc": "2026-11-01T03:03:09.524064+00:00",
+    "local_archive": "/workspace/shared/myth-video-evidence/japanese/okamuzuminomikoto.html",
+    "sha256": "f4a1a20550ce751de76394c1166b4100a919627ed5d44455580ac68885351c94",
+    "bytes": 41237,
+    "short_quote": "桃の実を三つ取って迎え撃つ",
+    "usage": "Use brief citation and paraphrase. Local full HTML is research evidence, not a public redistribution asset."
+  },
+  {
+    "id": "O01",
+    "title": "The Prose Edda: Gylfaginning",
+    "author": "Snorri Sturluson",
+    "translator": "Arthur Gilchrist Brodeur",
+    "editionYear": 1916,
+    "url": "https://sacred-texts.com/neu/pre/pre04.htm",
+    "sections": [
+      "XXIV",
+      "XXXV"
+    ],
+    "kind": "primary text in historical English translation",
+    "file": "gy24.txt",
+    "verifiedFacts": [
+      "Freyja receives half of the slain in Folkvangr; she rides in a cat-drawn chariot.",
+      "Freyja seeks the travelling Odr and weeps red-gold tears. The passage names her Brisingamen."
+    ],
+    "limits": [
+      "A medieval literary record, not a single exhaustive account of all Norse religion.",
+      "The passage does not establish that Brisingamen is amber.",
+      "No HP debt, revival, copied skill, or speed-exchange game mechanic is stated."
+    ],
+    "accessed": "2026-11-01",
+    "httpStatus": 200,
+    "bytes": 387237,
+    "sha256": "3b2ebced5d25e71782c611735f4af1e31ad620c525d9959c486984fa22789a3a",
+    "localEvidence": "/workspace/shared/myth-video/sources-other/gy24.txt"
+  },
+  {
+    "id": "O02",
+    "title": "The Younger Edda",
+    "author": "Snorri Sturluson",
+    "translator": "Rasmus B. Anderson",
+    "editionYear": 1901,
+    "url": "https://www.gutenberg.org/files/18947/18947-h/18947-h.htm",
+    "sections": [
+      "Gylfaginning: Freyja and the Asynjur",
+      "Skaldskaparmal: Idunn and Thjazi narrative"
+    ],
+    "kind": "primary text in historical English translation",
+    "file": "gutenberg.txt",
+    "verifiedFacts": [
+      "Gold tears while seeking Oder.",
+      "Loki borrows Freyja's falcon-guise in the Idunn rescue narrative."
+    ],
+    "limits": [
+      "Spellings and chapter divisions differ from other translations.",
+      "Action-order exchange is a creative adaptation, not a claimed mythical power."
+    ],
+    "accessed": "2026-11-01",
+    "httpStatus": 200,
+    "bytes": 535611,
+    "sha256": "e0f3bf75f0bde2548c96aaa5c9ec960e724891c7dc1abe338848fa9621464270",
+    "localEvidence": "/workspace/shared/myth-video/sources-other/gutenberg.txt",
+    "originalTranslationCopyrightYear": 1879,
+    "editionNote": "The fetched Gutenberg e-text is based on the 1901 Scott, Foresman and Company printing; the copyright page gives 1879. The e-text transcriber explicitly distinguishes the original 1879 book and the 1901 printing."
+  },
+  {
+    "id": "O03",
+    "title": "Thrym's Poem (Þrymskviða)",
+    "author": "D. L. Ashliman, University of Pittsburgh",
+    "edition": "Retelling based on Olive Bray, The Elder or Poetic Edda (1908), pp.126–137; revised 2009-11-20",
+    "url": "https://sites.pitt.edu/~dash/thrym.html",
+    "sections": [
+      "Freyja lends the feathered coat; Loki flies to Jotunheim"
+    ],
+    "kind": "university-hosted retelling with stated source edition",
+    "file": "pitt.txt",
+    "verifiedFacts": [
+      "Freyja lends a feathered coat that Loki wears."
+    ],
+    "limits": [
+      "This page is a retelling, not a literal translation of the Old Norse poem."
+    ],
+    "accessed": "2026-11-01",
+    "httpStatus": 200,
+    "bytes": 6663,
+    "sha256": "6d6af78a7c0dd7b5d37233bdd6592e003af7bca494a76ea503965c054fc8ea82",
+    "localEvidence": "/workspace/shared/myth-video/sources-other/pitt.txt"
+  },
+  {
+    "id": "O04",
+    "title": "Fishing at Iwaya on Enoshima",
+    "author": "The Cleveland Museum of Art",
+    "object": {
+      "artist": "Kitagawa Utamaro",
+      "date": "c.1790",
+      "accession": "1921.407"
+    },
+    "url": "https://www.clevelandart.org/art/1921.407",
+    "api": "https://openaccess-api.clevelandart.org/api/artworks/?q=Benzaiten&limit=5",
+    "kind": "museum collection interpretation of Japanese reception",
+    "file": "cma-enoshima.txt",
+    "verifiedFacts": [
+      "The description associates Benzaiten with water, music, and entertainment in the Japanese Enoshima setting."
+    ],
+    "limits": [
+      "This is evidence for Japanese reception/iconography, not an ancient Sanskrit textual episode.",
+      "It does not license treating all Sarasvati and Benzaiten traditions as identical.",
+      "HP redistribution is an original design metaphor."
+    ],
+    "accessed": "2026-11-01",
+    "httpStatus": 200,
+    "bytes": 79705,
+    "sha256": "b8b23c66a1ed347711dad46b2c5edf47afec1846e2eb22d383c69fb801f803d6",
+    "localEvidence": "/workspace/shared/myth-video/sources-other/cma-enoshima.txt"
+  },
+  {
+    "id": "PG-HH2",
+    "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+    "title": "Homeric Hymn 2 to Demeter",
+    "translator": "H. G. Evelyn-White",
+    "loci": [
+      "40–73",
+      "370–404",
+      "405–433",
+      "438–440",
+      "441–459"
+    ],
+    "claims": [
+      "Hecate hears but does not see the abduction; brings a torch and accompanies the search",
+      "Pomegranate binding involves concealment and force in Persephone testimony",
+      "One third of the year below, two thirds above",
+      "Hecate becomes minister and companion to Persephone"
+    ],
+    "shortEvidence": [
+      "I heard her voice, yet saw not with my eyes",
+      "a pomegranate seed",
+      "for the third part of the circling year",
+      "minister and companion to Persephone"
+    ],
+    "status": 200,
+    "kind": "古代一次資料の近代英訳",
+    "retrievedAtUTC": "2026-11-01T03:03:09.411227+00:00",
+    "effectsAreCreative": true
+  },
+  {
+    "id": "PG-HH5",
+    "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+    "title": "Homeric Hymn 5 to Aphrodite",
+    "translator": "H. G. Evelyn-White",
+    "loci": [
+      "218–238"
+    ],
+    "claims": [
+      "Eos asks immortality for Tithonus but omits youth; aging continues"
+    ],
+    "shortEvidence": [
+      "she thought not in her heart to ask youth for him"
+    ],
+    "status": 200,
+    "kind": "古代一次資料の近代英訳",
+    "limits": [
+      "Do not claim this passage necessarily includes transformation into a cicada",
+      "The proposed in-game rescue is creative, not the source ending"
+    ],
+    "retrievedAtUTC": "2026-11-01T03:03:09.411241+00:00",
+    "effectsAreCreative": true
+  },
+  {
+    "id": "PG-HH29",
+    "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+    "title": "Homeric Hymn 29 to Hestia",
+    "translator": "H. G. Evelyn-White",
+    "loci": [
+      "1–6"
+    ],
+    "claims": [
+      "Hestia receives wine offerings both first and last at feasts"
+    ],
+    "shortEvidence": [
+      "both first and last"
+    ],
+    "status": 200,
+    "kind": "古代一次資料の近代英訳",
+    "retrievedAtUTC": "2026-11-01T03:03:09.411244+00:00",
+    "effectsAreCreative": true
+  },
+  {
+    "id": "PG-HH32",
+    "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+    "title": "Homeric Hymn 32 to Selene",
+    "translator": "H. G. Evelyn-White",
+    "loci": [
+      "1–13"
+    ],
+    "claims": [
+      "Selene is full and brightest at mid-month"
+    ],
+    "shortEvidence": [
+      "at eventime in the mid-month"
+    ],
+    "status": 200,
+    "kind": "古代一次資料の近代英訳",
+    "limits": [
+      "Banked healing is a game metaphor, not an ancient attributed power"
+    ],
+    "retrievedAtUTC": "2026-11-01T03:03:09.411245+00:00",
+    "effectsAreCreative": true
+  },
+  {
+    "id": "PG-CYPRIA",
+    "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+    "title": "The Cypria, Proclus summary, Aulis/Iphigeneia episode",
+    "translator": "H. G. Evelyn-White",
+    "loci": [
+      "Proclus summary: second muster at Aulis"
+    ],
+    "claims": [
+      "Artemis removes Iphigeneia, transports her to the Tauri and substitutes a stag on the altar in this summary"
+    ],
+    "shortEvidence": [
+      "putting a stag in place of the girl upon the altar"
+    ],
+    "status": 200,
+    "kind": "散逸叙事詩の古代梗概の近代英訳",
+    "limits": [
+      "Do not call the accessed text the complete lost Cypria",
+      "Other surviving works have different details about Iphigeneia"
+    ],
+    "retrievedAtUTC": "2026-11-01T03:03:09.411247+00:00",
+    "effectsAreCreative": true
+  },
+  {
+    "id": "MIT-ILIAD5",
+    "url": "https://classics.mit.edu/Homer/iliad.5.v.html",
+    "title": "Homer, Iliad, Book V",
+    "translator": "Samuel Butler",
+    "loci": [
+      "Athena removes the veil from Diomedes eyes (normally c.127–132)",
+      "Athena joins Diomedes in chariot against Ares near end of Book V"
+    ],
+    "claims": [
+      "Athena enables distinction between gods and men, with restrictions on combat",
+      "Athena supports Diomedes in the chariot conflict with Ares"
+    ],
+    "shortEvidence": [
+      "I have withdrawn the veil from your eyes",
+      "that you know gods and men apart"
+    ],
+    "status": 200,
+    "kind": "古代一次資料の大学公開英訳",
+    "limits": [
+      "Translation uses Latin names Minerva/Jove/Mars etc.; Athena/Zeus/Ares are the corresponding Greek names",
+      "Intents-as-committed-commands is a creative game proposal"
+    ],
+    "retrievedAtUTC": "2026-11-01T03:03:09.411248+00:00",
+    "effectsAreCreative": true
+  }
+]

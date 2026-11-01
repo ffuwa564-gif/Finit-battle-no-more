@@ -1,0 +1,134 @@
+[
+  {
+    "id": "opening",
+    "title": "回復していないのに、HPが増えた？",
+    "start": 0,
+    "duration": 77.916
+  },
+  {
+    "id": "rules",
+    "title": "ユニークさは、何を選び直すか",
+    "start": 77.916,
+    "duration": 69.533333
+  },
+  {
+    "id": "liora",
+    "title": "リオラ — 門を開け、一手を譲る",
+    "start": 147.4493,
+    "duration": 156.511
+  },
+  {
+    "id": "hecate",
+    "title": "速い一手を、あえて最後へ送る",
+    "start": 303.9603,
+    "duration": 141.166667
+  },
+  {
+    "id": "uzume",
+    "title": "笑いで注意を引く、受け止めるのは誰？",
+    "start": 445.127,
+    "duration": 140.204
+  },
+  {
+    "id": "elaine",
+    "title": "エレイン — 摘まない白花を、次の一手へ",
+    "start": 585.331,
+    "duration": 133.766667
+  },
+  {
+    "id": "toyotama",
+    "title": "海坂の便りは、誰の傷へ届く？",
+    "start": 719.0977,
+    "duration": 171.866667
+  },
+  {
+    "id": "hp_transfer",
+    "title": "傷を消すか、引き受ける人を選ぶか",
+    "start": 890.9643,
+    "duration": 199.635
+  },
+  {
+    "id": "selene",
+    "title": "満ちる月へ、今の一手を預ける",
+    "start": 1090.5993,
+    "duration": 146.8
+  },
+  {
+    "id": "lunette",
+    "title": "ルネット — 二機のうさぎを、どこへ送る？",
+    "start": 1237.3993,
+    "duration": 150.033333
+  },
+  {
+    "id": "nox",
+    "title": "ノクス — 標的を変えるなら、予告を捨てる",
+    "start": 1387.4327,
+    "duration": 127.267
+  },
+  {
+    "id": "garden",
+    "title": "庭園の女 — 観測の栞で、届け先を選ぶ",
+    "start": 1514.6997,
+    "duration": 128.5
+  },
+  {
+    "id": "uka",
+    "title": "蔵にしまうのは、次の一手？",
+    "start": 1643.1997,
+    "duration": 144.268
+  },
+  {
+    "id": "myth_limits",
+    "title": "元ネタがあるなら、すぐ実装できる？",
+    "start": 1787.4677,
+    "duration": 164.033333
+  },
+  {
+    "id": "immortality",
+    "title": "死なない、長生きする、帰ってくる",
+    "start": 1951.501,
+    "duration": 202.033333
+  },
+  {
+    "id": "deer",
+    "title": "鹿の身代わりに、何を払える？",
+    "start": 2153.5343,
+    "duration": 137.8
+  },
+  {
+    "id": "gauge_lab",
+    "title": "全員へゲージ30なら、永久機関？",
+    "start": 2291.3343,
+    "duration": 140.939
+  },
+  {
+    "id": "future_control",
+    "title": "セリスとノエル — 物語に合っても、大型の提案",
+    "start": 2432.2733,
+    "duration": 130.933333
+  },
+  {
+    "id": "retreat_economy",
+    "title": "帰り道を守る技が、周回を壊す？",
+    "start": 2563.2067,
+    "duration": 159.833333
+  },
+  {
+    "id": "party_lab",
+    "title": "この案で、どんな編成を組みたくなる？",
+    "start": 2723.04,
+    "duration": 123.3
+  },
+  {
+    "id": "shortlist",
+    "title": "最初に触って確かめたい、三つの模型",
+    "start": 2846.34,
+    "duration": 89.381
+  },
+  {
+    "id": "closing",
+    "title": "強い仲間より、選びたくなる仲間へ",
+    "start": 2935.721,
+    "duration": 94.777
+  }
+]

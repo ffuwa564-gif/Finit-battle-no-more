@@ -1,0 +1,247 @@
+{
+  "allUnimplemented": true,
+  "numbersAreIllustrative": true,
+  "note": "Related alternatives are compared together; this is not a count of independent systems or a release plan. Full draft reports contain additional research-only alternatives.",
+  "proposals": [
+    {
+      "chapter": "liora",
+      "type": "固有技能",
+      "subject": "リオラ",
+      "name": "開門・先へ行け",
+      "choice": "自分の一手で遅い味方の一手を直後へ運ぶ",
+      "costOrUnknown": "自分の攻撃・かばう等を失う",
+      "meetingVerdict": "最初の模型",
+      "sources": "S02;S11"
+    },
+    {
+      "chapter": "liora",
+      "type": "記憶石",
+      "subject": "フレイヤ由来",
+      "name": "鷹羽の借衣",
+      "choice": "次Rの味方二人の行動順の席を交換",
+      "costOrUnknown": "準備一手・速い側は遅くなる",
+      "meetingVerdict": "リオラ案との代替比較",
+      "sources": "O02;O03"
+    },
+    {
+      "chapter": "hecate",
+      "type": "リーダー効果",
+      "subject": "ヘカテ",
+      "name": "帰り道の灯",
+      "choice": "先頭の予約済み一手をR末へ送る",
+      "costOrUnknown": "待つ間の被弾・行動不能",
+      "meetingVerdict": "次に比較試作",
+      "sources": "PG-HH2"
+    },
+    {
+      "chapter": "uzume",
+      "type": "固有技能",
+      "subject": "アメノウズメ",
+      "name": "舞台への招待",
+      "choice": "適合する敵単体ダメージ一件を本人へ誘導",
+      "costOrUnknown": "本人の耐久・一手・期限",
+      "meetingVerdict": "次に比較試作",
+      "sources": "JP01"
+    },
+    {
+      "chapter": "elaine",
+      "type": "記憶石",
+      "subject": "エレイン由来",
+      "name": "摘まない白花",
+      "choice": "先頭へ種を置き、防御の一手で開花",
+      "costOrUnknown": "準備と防御の二手・期限",
+      "meetingVerdict": "最初の模型",
+      "sources": "S04"
+    },
+    {
+      "chapter": "toyotama",
+      "type": "リーダー効果",
+      "subject": "トヨタマヒメ",
+      "name": "海坂の便り",
+      "choice": "予定回復量を出発時の先頭と末尾へ分配",
+      "costOrUnknown": "単独への緊急回復も半減",
+      "meetingVerdict": "最初の模型",
+      "sources": "JP02"
+    },
+    {
+      "chapter": "hp_transfer",
+      "type": "固有技能",
+      "subject": "弁財天",
+      "name": "水鏡の調律",
+      "choice": "生存二人の総HPを保存して再配分",
+      "costOrUnknown": "本人の一手・渡す側の危険",
+      "meetingVerdict": "HP移転系で一方を比較",
+      "sources": "O04"
+    },
+    {
+      "chapter": "hp_transfer",
+      "type": "記憶石",
+      "subject": "ヘスティア由来",
+      "name": "炉辺の分け杯",
+      "choice": "装備者の実HPを弱った生存味方へ渡す",
+      "costOrUnknown": "本人の一手と実HP・石一枠",
+      "meetingVerdict": "HP移転系で一方を比較",
+      "sources": "PG-HH29"
+    },
+    {
+      "chapter": "selene",
+      "type": "固有技能",
+      "subject": "セレネ",
+      "name": "満ちるまでの一手",
+      "choice": "今の一手を次R操作待ちの回復へ預ける",
+      "costOrUnknown": "今は回復0・期限・異常時不可",
+      "meetingVerdict": "次に比較試作",
+      "sources": "PG-HH32"
+    },
+    {
+      "chapter": "lunette",
+      "type": "固有技能",
+      "subject": "ルネット",
+      "name": "うさぎ隊、持ち場交代！",
+      "choice": "有限二機を攻撃と護衛へ配属",
+      "costOrUnknown": "準備一手・再帰なし・有限消費",
+      "meetingVerdict": "修正条件付きで試作",
+      "sources": "S06;S09"
+    },
+    {
+      "chapter": "nox",
+      "type": "固有技能",
+      "subject": "ノクス",
+      "name": "零式・執行予告",
+      "choice": "一手で標的を宣告し、次の一手を拘束",
+      "costOrUnknown": "標的死亡で不発・必殺へ切替時は予告破棄",
+      "meetingVerdict": "修正条件付きで試作",
+      "sources": "S07"
+    },
+    {
+      "chapter": "garden",
+      "type": "記憶石",
+      "subject": "庭園の観測由来",
+      "name": "観測の栞",
+      "choice": "他の味方の次の適合技能の宛先選好を予約",
+      "costOrUnknown": "準備一手・不成立でも費用を返さない",
+      "meetingVerdict": "操作域拡張の比較",
+      "sources": "S08;S10"
+    },
+    {
+      "chapter": "uka",
+      "type": "リーダー効果",
+      "subject": "ウカノミタマ",
+      "name": "蔵開き",
+      "choice": "所持予備石一個をWave間に一度交換",
+      "costOrUnknown": "他LSの機会費用・待ち時間・保存拡張",
+      "meetingVerdict": "中期の基盤研究",
+      "sources": "JP03"
+    },
+    {
+      "chapter": "myth_limits",
+      "type": "固有技能",
+      "subject": "アマテラス",
+      "name": "朝を閉ざす岩戸",
+      "choice": "敵味方の通常技能CD自然進行を一時停止",
+      "costOrUnknown": "味方も遅延・敵CD非公開・jamに近い",
+      "meetingVerdict": "情報設計から保留",
+      "sources": "JP06"
+    },
+    {
+      "chapter": "myth_limits",
+      "type": "固有技能",
+      "subject": "コノハナサクヤヒメ",
+      "name": "火中の産屋",
+      "choice": "孤立して耐えた後の通常技能予約を検討",
+      "costOrUnknown": "火属性分類なし・AI/救命への問題",
+      "meetingVerdict": "原案を見直す保留",
+      "sources": "JP05"
+    },
+    {
+      "chapter": "myth_limits",
+      "type": "固有技能",
+      "subject": "イザナミ",
+      "name": "千引の帰還門",
+      "choice": "生存味方を探索から帰し、有限の門を残す",
+      "costOrUnknown": "一行の人数減・退場/保存の新設計",
+      "meetingVerdict": "独立した離脱設計として保留",
+      "sources": "JP07"
+    },
+    {
+      "chapter": "immortality",
+      "type": "リーダー効果",
+      "subject": "イワナガヒメ",
+      "name": "朽ちぬ器",
+      "choice": "致死分を固定HP債務へ繰り延べる",
+      "costOrUnknown": "返済優先・勝利前精算の不快さ",
+      "meetingVerdict": "UI/清算の検証まで保留",
+      "sources": "JP04;JP05"
+    },
+    {
+      "chapter": "immortality",
+      "type": "記憶石",
+      "subject": "エオス由来",
+      "name": "朽ちぬ命の欠片",
+      "choice": "致死保留と行動停止の老い、介助による復帰案",
+      "costOrUnknown": "薬二個/別R・最大HP減は仮",
+      "meetingVerdict": "費用過大も含め保留",
+      "sources": "PG-HH5"
+    },
+    {
+      "chapter": "immortality",
+      "type": "記憶石",
+      "subject": "ペルセポネ由来",
+      "name": "柘榴の帰還門",
+      "choice": "一時不在と帰還の周期を検討",
+      "costOrUnknown": "大技完全回避・不在処理の問題",
+      "meetingVerdict": "原案のままは保留",
+      "sources": "PG-HH2"
+    },
+    {
+      "chapter": "deer",
+      "type": "記憶石",
+      "subject": "アルテミス由来",
+      "name": "祭壇の置き鹿",
+      "choice": "必殺資源と一手で自分への単体処理一件を置換",
+      "costOrUnknown": "弱い攻撃で消費・費用100は仮",
+      "meetingVerdict": "費用を盛り過ぎない比較試作",
+      "sources": "PG-CYPRIA"
+    },
+    {
+      "chapter": "future_control",
+      "type": "リーダー効果",
+      "subject": "セリス",
+      "name": "今日は、道を教えて",
+      "choice": "一巡後に先頭交代を一度解放する案",
+      "costOrUnknown": "編成/操作/保存の拡張",
+      "meetingVerdict": "長期の操作域研究",
+      "sources": "S01"
+    },
+    {
+      "chapter": "future_control",
+      "type": "固有技能",
+      "subject": "ノエル",
+      "name": "余白の観測",
+      "choice": "敵一体の次行動の分類と標的を観測",
+      "costOrUnknown": "一手・敵予定保存/無効化処理",
+      "meetingVerdict": "敵情報基盤から保留",
+      "sources": "S03"
+    },
+    {
+      "chapter": "retreat_economy",
+      "type": "リーダー効果",
+      "subject": "リゼット",
+      "name": "帰路の確保",
+      "choice": "途中で確保した通常素材の一部を手動撤退時へ",
+      "costOrUnknown": "短い撤退周回が最適になる恐れ",
+      "meetingVerdict": "素材経済の検証まで保留",
+      "sources": "S05"
+    },
+    {
+      "chapter": "retreat_economy",
+      "type": "記憶石",
+      "subject": "黄泉の桃由来",
+      "name": "三つ桃の路標",
+      "choice": "明示された敵の追撃だけを有限回防ぐ",
+      "costOrUnknown": "多段と追撃の区別・対応敵が必要",
+      "meetingVerdict": "敵分類を整えてから",
+      "sources": "JP08"
+    }
+  ]
+}
