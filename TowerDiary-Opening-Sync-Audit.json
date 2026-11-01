@@ -1,0 +1,308 @@
+[
+  {
+    "label": "720p",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-720p.mp4",
+    "finishedSha256": "66e6f173b37f90aa30ec535431244bd4ca36968d9a1b4084884b593ad51ead3c",
+    "timelineSha256": "c4162defdbf0dc67686e05e6e5e67ca3a7cf4490cc3ac2f7dbea538e8fbb1beb",
+    "audioAnchors": [
+      {
+        "kind": "gameAudio",
+        "name": "cut-in",
+        "at": 7.1,
+        "lagSeconds": 0.0,
+        "correlation": 0.9987620471345926,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "summoning",
+        "at": 8.9,
+        "lagSeconds": 0.0,
+        "correlation": 0.9985532821014146,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "volley 1",
+        "at": 11.65,
+        "lagSeconds": 0.0,
+        "correlation": 0.999489536202623,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "volley 2",
+        "at": 12.65,
+        "lagSeconds": 0.0,
+        "correlation": 0.9994873540903316,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "final delayed impact",
+        "at": 13.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9937836849812305,
+        "passed": true
+      }
+    ],
+    "voices": [
+      {
+        "kind": "voice",
+        "name": "z-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.5083873177399201,
+        "passed": true
+      },
+      {
+        "kind": "voice",
+        "name": "m-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.5663621456917294,
+        "passed": true
+      },
+      {
+        "kind": "voice",
+        "name": "z-nanoda",
+        "at": 20.8,
+        "lagSeconds": 0.0,
+        "correlation": 0.8841272926824184,
+        "passed": true
+      }
+    ],
+    "frames": [
+      {
+        "kind": "gameFrame",
+        "frame": 180,
+        "at": 7.5,
+        "bestOffsetFrames": 0,
+        "bestError": 3.277199074074074,
+        "sameFrameError": 3.277199074074074,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 218,
+        "at": 9.083333333333334,
+        "bestOffsetFrames": 1,
+        "bestError": 3.298611111111111,
+        "sameFrameError": 3.3051697530864197,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 284,
+        "at": 11.833333333333334,
+        "bestOffsetFrames": 0,
+        "bestError": 3.390432098765432,
+        "sameFrameError": 3.390432098765432,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 307,
+        "at": 12.791666666666666,
+        "bestOffsetFrames": 0,
+        "bestError": 3.4033564814814814,
+        "sameFrameError": 3.4033564814814814,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 329,
+        "at": 13.708333333333334,
+        "bestOffsetFrames": 0,
+        "bestError": 3.8977623456790123,
+        "sameFrameError": 3.8977623456790123,
+        "passed": true
+      }
+    ],
+    "lateTag": {
+      "kind": "lateTagVisual",
+      "voiceAt": 20.8,
+      "firstVisibleFrame": 500,
+      "lagSeconds": 0.03333333333333144,
+      "pixelChange": 166.24189814814815,
+      "passed": true
+    },
+    "negativeControl": [
+      {
+        "at": 7.1,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9979139975280451,
+        "passed": true
+      },
+      {
+        "at": 11.65,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9994979488639916,
+        "passed": true
+      },
+      {
+        "at": 13.5,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9925212523185499,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "label": "1080p",
+    "finishedFile": "STILLVEIL-TowerDiary-Opening-1080p.mp4",
+    "finishedSha256": "f33bb96f8c50b01837608a9c97758097b178cbb5a97b911415b5f150a0df0bd7",
+    "timelineSha256": "c4162defdbf0dc67686e05e6e5e67ca3a7cf4490cc3ac2f7dbea538e8fbb1beb",
+    "audioAnchors": [
+      {
+        "kind": "gameAudio",
+        "name": "cut-in",
+        "at": 7.1,
+        "lagSeconds": 0.0,
+        "correlation": 0.9987620471345926,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "summoning",
+        "at": 8.9,
+        "lagSeconds": 0.0,
+        "correlation": 0.9985532821014146,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "volley 1",
+        "at": 11.65,
+        "lagSeconds": 0.0,
+        "correlation": 0.999489536202623,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "volley 2",
+        "at": 12.65,
+        "lagSeconds": 0.0,
+        "correlation": 0.9994873540903316,
+        "passed": true
+      },
+      {
+        "kind": "gameAudio",
+        "name": "final delayed impact",
+        "at": 13.5,
+        "lagSeconds": 0.0,
+        "correlation": 0.9937836849812305,
+        "passed": true
+      }
+    ],
+    "voices": [
+      {
+        "kind": "voice",
+        "name": "z-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.5083873177399201,
+        "passed": true
+      },
+      {
+        "kind": "voice",
+        "name": "m-title",
+        "at": 18,
+        "lagSeconds": 0.0,
+        "correlation": 0.5663621456917294,
+        "passed": true
+      },
+      {
+        "kind": "voice",
+        "name": "z-nanoda",
+        "at": 20.8,
+        "lagSeconds": 0.0,
+        "correlation": 0.8841272926824184,
+        "passed": true
+      }
+    ],
+    "frames": [
+      {
+        "kind": "gameFrame",
+        "frame": 180,
+        "at": 7.5,
+        "bestOffsetFrames": 0,
+        "bestError": 1.6261574074074074,
+        "sameFrameError": 1.6261574074074074,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 218,
+        "at": 9.083333333333334,
+        "bestOffsetFrames": 1,
+        "bestError": 1.8805941358024691,
+        "sameFrameError": 1.8954475308641976,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 284,
+        "at": 11.833333333333334,
+        "bestOffsetFrames": 0,
+        "bestError": 1.8607253086419753,
+        "sameFrameError": 1.8607253086419753,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 307,
+        "at": 12.791666666666666,
+        "bestOffsetFrames": 0,
+        "bestError": 1.8179012345679013,
+        "sameFrameError": 1.8179012345679013,
+        "passed": true
+      },
+      {
+        "kind": "gameFrame",
+        "frame": 329,
+        "at": 13.708333333333334,
+        "bestOffsetFrames": 0,
+        "bestError": 1.908179012345679,
+        "sameFrameError": 1.908179012345679,
+        "passed": true
+      }
+    ],
+    "lateTag": {
+      "kind": "lateTagVisual",
+      "voiceAt": 20.8,
+      "firstVisibleFrame": 500,
+      "lagSeconds": 0.03333333333333144,
+      "pixelChange": 166.57986111111111,
+      "passed": true
+    },
+    "negativeControl": [
+      {
+        "at": 7.1,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9979139975280451,
+        "passed": true
+      },
+      {
+        "at": 11.65,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9994979488639916,
+        "passed": true
+      },
+      {
+        "at": 13.5,
+        "injectedSeconds": 0.2,
+        "measuredSeconds": 0.19999999999999996,
+        "correlation": 0.9925212523185499,
+        "passed": true
+      }
+    ],
+    "passed": true
+  }
+]
