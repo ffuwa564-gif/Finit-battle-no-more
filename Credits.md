@@ -10,3 +10,6 @@
 - ゲーム・参照実装：dec20ebbfb8d139713ffe847ebc48eefe8ff54ca のsrc/domain/engine.ts、memory-gems.ts、white-flower.ts、scout-skills.ts、command-doctrine.ts、src/application/game.ts。
 
 素材の単体再配布を避けるため、公式立ち絵・単体BGMはProduction-Inputs.zipに含めません。bootstrapと固定ゲームtreeから取得してください。
+
+
+最新サムネイル：生成AI（image_gen）によるちびキャラのアレンジ。ユーザー指定の共通OPのピンクの場面を参考に制作。原本・生成指示・利用元リンク：https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails

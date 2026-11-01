@@ -1,5 +1,9 @@
 # 白亜の塔攻略日記 Part1.1.1
 
+![最新サムネイル](Thumbnail.jpg)
+
+最新の可愛いピンク版：[YouTube向けJPEG（2MB未満）](Thumbnail.jpg) ／ [PNG原本](Thumbnail.png) ／ [全5枚・生成指示の素材集](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails)。Production-Inputs.zipは本編制作時点の原本です。
+
 **19分28秒・ずんだもん × 四国めたん・日本語解説。** Part1.1の章立てを踏襲し、敵の分析、キャラを選んだ理由、装備、失敗、本走、振り返りをまとめました。
 
 - [完成動画 MP4](https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/refs/heads/downloads/tower-diary-1-1-1/STILLVEIL-TowerDiary-Part1.1.1.mp4)
