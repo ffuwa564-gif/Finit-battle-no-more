@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "chapter": "battle1",
+  "durationSeconds": 109.43333333333334,
+  "maxChildRssKiB": 703148,
+  "elapsedSeconds": 118.29983711242676,
+  "denseSources": "30fps H.264 plate plus lossless alpha QTRLE actor layers before final composition",
+  "processingSha256": "9dc6171412f0bd119a34066b7743e419a385bf919e05e10b1870e5ba44973687"
+}

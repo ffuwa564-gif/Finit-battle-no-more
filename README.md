@@ -1,34 +1,17 @@
-# 白亜の塔 攻略日記 Part2 — 第二層とルネットの必殺技
+# 白亜の塔攻略日記 Part2 改良版
 
-最新の可愛いピンク版：[YouTube向けJPEG（2MB未満）](Thumbnail.jpg) ／ [PNG原本](Thumbnail.png) ／ [全5枚・生成指示の素材集](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails)。Production-Inputs.zipは本編制作時点の原本です。
+**19分19秒・1080p30・日本語／ずんだもん／四国めたん／春日部つむぎ**
 
-![Part2 サムネイル](Thumbnail.png)
+[▶ 改良版をダウンロード](https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/refs/heads/downloads/tower-diary-part2/STILLVEIL-TowerDiary-Part2.mp4) ｜ [サムネイル](https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/refs/heads/downloads/tower-diary-part2/Thumbnail.jpg)
 
-共通OP v4（23秒）を冒頭に収録。サムネイルはOP内の淡いピンクの場面に合わせた、可愛いちびキャラのデザインへ更新しました。
+![改良版の画面](Preview.jpg)
 
-完成動画 **23:48 / 1920×1080 / 30fps / 48kHz**。
-ずんだもん・四国めたん・春日部つむぎの三人で、第二層「旅立ちの残響」に挑戦します。Part1.1の敵調査→準備→試行→成功→振り返りの構成を参考に制作。
+可愛いピンクの本編、会話ごとの表情、編成・敵役割・素材・実戦HPの図解、作戦会議とお買い物の挿絵。OP直後に失敗ダイジェストを入れ、重複説明を整理しました。元の第二層実戦を再編集した版で、ゲーム本体と戦闘結果は変えていません。
 
-[動画をダウンロード](https://github.com/ffuwa564-gif/Finit-battle-no-more/raw/refs/heads/downloads/tower-diary-part2/STILLVEIL-TowerDiary-Part2.mp4) / [字幕](Subtitles-ja.srt) / [台本](Script.md) / [章一覧](Chapters.txt) / [サムネイル](Thumbnail.png)
+[字幕](Subtitles-ja.srt)／[チャプター](Chapters.txt)／[台本](Script.md)／[YouTube説明文](YouTube-Description.txt)／[制作素材ZIP](Production-Inputs.zip)／[録画素材](Recording-Sources.txt)／[制作コード](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/d9c3410e70ae5940f39d1cc3692597abbd810583/scripts/diary-part2-v2)
 
-[ゲームを無料で遊ぶ](https://fluffy3546.itch.io/stillveil)
+[開始条件・検証](Methods.md)／[クレジット](Credits.md)／[参照した動画と調査範囲](Research.md)。外部YouTube本編は接続制限で視聴できず、公開情報と実際に確認できたPart1.1のレイアウトを区別しています。
 
-## 内容
+配布MP4自体の映像・実SE・全3話者、必殺着弾同期を照合。全体デコードとChromium/WebKitの開始・中間・終了再生／シークを確認。頭の安全域・字幕2行・話者の表情切替も検査。各JSONは完成SHA256に紐づきます。
 
-通常ルネットを迎えた最初の挑戦は40Rで時間切れ。覚醒に加え、ノクスを残してフィオと交代し、先頭への予約操作を見直して再挑戦。25R、薬3個、4人生存でクリアしました。妖精4回・戦場の花11回も利用しています。ルネットの必殺技は実機映像を再掲し、連射・着弾・最後の一撃にリアクションを合わせています。
-
-開始データはPart1.1.1で明示した比較用の所持条件を継続したもので、新規プレイやPart1.1そのものの実終了セーブではありません。既存T4装備を引き継ぎ、今回の素材・加入・覚醒・T1巻戻し製作は通常のゲーム処理で実施。9戦の入力を再実行して結果一致を検証しました。最適編成・完全放置・アテナ依存解消・覚醒単独の効果を主張するものではありません。
-
-## 同梱資料
-
-- [開始条件・素材・音声同期の方法](Methods.md)
-- [9戦のネイティブ再実行検証](Native-Verification.json)
-- [配布完成動画の実フレーム・実SE・3話者の照合](Finished-Movie-Sync.json)
-- [全体デコードとChromium/WebKit再生・シーク](Validation.json)
-- [制作入力集](Production-Inputs.zip)：台本・制作コード・実戦証跡・音声FLAC
-- [録画元](Recording-Sources.zip)：H.264＋可逆FLACのMKV、録画時刻・同期データ
-- [動画説明文](YouTube-Description.txt)、[クレジット](Credits.md)、[元ゲーム版](Source-Version.txt)
-
-## 再編集
-
-制作ソース：[`video/tower-diary-part2`](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/video/tower-diary-part2)。そのリポジトリのルートへ2つのZIPを展開し、Node依存・Pythonのnumpy/Pillow/scipy・FFmpegを用意。VOICEVOX0.26.0をlocalhost:50021へ起動して`python scripts/diary-part2/bootstrap.py`を実行すると、公式立ち絵の取得と音声・録画元の可逆復元を行えます。その後`python scripts/diary-part2/render.py`、`python scripts/diary-part2/audit.py`、`node scripts/diary-part2/validate.mjs`で再制作・照合できます。ブラウザ検査用にViteをport4328で起動してください。立ち絵や楽曲の単体再配布は含みません。各権利元の利用規約はCredits.mdを確認してください。
+完成SHA256: `7e100076b74c510752c40209c343cbb9f2172f62dc3628c2269ac91d1b9aba1e`

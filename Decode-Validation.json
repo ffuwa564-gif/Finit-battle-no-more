@@ -1,8 +1,6 @@
 {
   "passed": true,
-  "finishedSha256": "46ec73f77f5404e0052136e4715b30988cd998be01bded01395c833d9915f2c9",
-  "command": "ffmpeg -v error -xerror -i artifacts/diary-part2/delivery/STILLVEIL-TowerDiary-Part2.mp4 -f null -",
-  "exitCode": 0,
-  "validatorCodeSha256": "d9bf383d8b85d5b0663430f3a6b5d48a79547e96b865c86e3b9fbff4e5b39a15",
-  "evidence": "Successful full decode and Chromium playback were completed before WebKit reported missing host libraries."
+  "finishedSha256": "7e100076b74c510752c40209c343cbb9f2172f62dc3628c2269ac91d1b9aba1e",
+  "command": "ffmpeg full decode with -xerror",
+  "exitCode": 0
 }

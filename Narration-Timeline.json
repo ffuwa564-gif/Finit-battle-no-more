@@ -1,14 +1,58 @@
 {
-  "duration": 1428.3666666666668,
   "chapters": [
     {
       "id": "series-op",
-      "title": "00 共通オープニング v4",
+      "title": "共通オープニング v4",
       "start": 0,
       "duration": 23,
-      "lines": [],
-      "clip": null,
-      "bullets": []
+      "lines": []
+    },
+    {
+      "id": "hook",
+      "title": "まずは、この失敗から。",
+      "bullets": [
+        "守りは厚い。なのに、40Rで時間切れ。"
+      ],
+      "clip": "hook",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "回復も守りも厚い。なのに、四十ラウンドで時間切れなのだ！",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/4b68ef9ba9753f046c047a9e.flac",
+          "duration": 4.949333,
+          "voice_id": 3,
+          "start": 23.18,
+          "end": 28.129333
+        },
+        {
+          "speaker": "t",
+          "text": "守りが厚いのに、締め切りは守れてないじゃん！",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/7027f5c4293966a1bb5c3184.flac",
+          "duration": 2.762667,
+          "voice_id": 8,
+          "start": 28.219333,
+          "end": 30.982
+        },
+        {
+          "speaker": "m",
+          "text": "今日は、攻撃を一人に任せない編成へ作り直すわ。",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/eff771a6a50bfc9c937916a5.flac",
+          "duration": 3.637333,
+          "voice_id": 2,
+          "start": 31.072,
+          "end": 34.709333
+        }
+      ],
+      "start": 23.0,
+      "duration": 12.1,
+      "rate": 1.4876033057851241,
+      "playDuration": 12.1
     },
     {
       "id": "opening",
@@ -25,104 +69,88 @@
           "text": "白亜の塔、攻略日記パートツー！　今日は第二層に挑戦するのだ！",
           "voice_id": 3,
           "spoken": "白亜の塔、攻略日記パートツー！　今日は第二層に挑戦するのだ！",
-          "wav": "artifacts/diary-part2/speech/85f4ef47c841aa9fc5906aee.wav",
+          "wav": "artifacts/diary-part2/speech/85f4ef47c841aa9fc5906aee.flac",
           "duration": 5.216,
-          "start": 23.3,
-          "end": 28.516
-        },
-        {
-          "speaker": "m",
-          "text": "前回と同じように、敵を調べて、編成を考えて、準備から攻略まで追っていくわ。",
-          "voice_id": 2,
-          "spoken": "前回と同じように、敵を調べて、編成を考えて、準備から攻略まで追っていくわ。",
-          "wav": "artifacts/diary-part2/speech/2ef34050d3c7d06dfa5eea1a.wav",
-          "duration": 6.378666666666667,
-          "start": 28.656,
-          "end": 35.034666666666666
+          "start": 35.28,
+          "end": 40.496,
+          "sourceChapter": "opening",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "ちょい待ち！　その会議、うちも混ざっていい？　春日部つむぎでーす。よろしくね！",
           "voice_id": 8,
           "spoken": "ちょい待ち！　その会議、うちも混ざっていい？　春日部つむぎでーす。よろしくね！",
-          "wav": "artifacts/diary-part2/speech/3bd1a2c75a5716f97c3d4cbb.wav",
+          "wav": "artifacts/diary-part2/speech/3bd1a2c75a5716f97c3d4cbb.flac",
           "duration": 5.8453333333333335,
-          "start": 35.17466666666667,
-          "end": 41.019999999999996
+          "start": 40.626000000000005,
+          "end": 46.47133333333334,
+          "sourceChapter": "opening",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "ギャルが来たのだ！　白亜の塔が急に放課後になったのだ！",
           "voice_id": 3,
           "spoken": "ギャルが来たのだ！　白亜の塔が急に放課後になったのだ！",
-          "wav": "artifacts/diary-part2/speech/b1065bb83aa32c01be2d12fa.wav",
+          "wav": "artifacts/diary-part2/speech/b1065bb83aa32c01be2d12fa.flac",
           "duration": 4.042666666666666,
-          "start": 41.16,
-          "end": 45.202666666666666
+          "start": 46.601333333333336,
+          "end": 50.644000000000005,
+          "sourceChapter": "opening",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "攻略も一緒に考えるよ。かわいい子を並べて終わり、じゃ勝てないっしょ？",
           "voice_id": 8,
           "spoken": "攻略も一緒に考えるよ。かわいい子を並べて終わり、じゃ勝てないっしょ？",
-          "wav": "artifacts/diary-part2/speech/d913f52c7979a54b13e6adaf.wav",
+          "wav": "artifacts/diary-part2/speech/d913f52c7979a54b13e6adaf.flac",
           "duration": 4.8213333333333335,
-          "start": 45.342666666666666,
-          "end": 50.164
+          "start": 50.774,
+          "end": 55.595333333333336,
+          "sourceChapter": "opening",
+          "sourceLine": 4
         },
         {
           "speaker": "m",
           "text": "頼もしいわね。今回はルネットの必殺技も、実際の戦闘で見せたいの。",
           "voice_id": 2,
           "spoken": "頼もしいわね。今回はルネットの必殺技も、実際の戦闘で見せたいの。",
-          "wav": "artifacts/diary-part2/speech/6b6db7feeef1f78ba2c63990.wav",
+          "wav": "artifacts/diary-part2/speech/6b6db7feeef1f78ba2c63990.flac",
           "duration": 5.333333333333333,
-          "start": 50.304,
-          "end": 55.63733333333333
+          "start": 55.72533333333334,
+          "end": 61.058666666666674,
+          "sourceChapter": "opening",
+          "sourceLine": 5
         },
         {
           "speaker": "t",
           "text": "うさぎの子だよね？　かわいさ、もう優勝じゃん。あとはちゃんと活躍させよ！",
           "voice_id": 8,
           "spoken": "うさぎの子だよね？　かわいさ、もう優勝じゃん。あとはちゃんと活躍させよ！",
-          "wav": "artifacts/diary-part2/speech/c3abeeb4cab079dfa961650b.wav",
+          "wav": "artifacts/diary-part2/speech/c3abeeb4cab079dfa961650b.flac",
           "duration": 5.333333333333333,
-          "start": 55.77733333333333,
-          "end": 61.11066666666667
-        },
-        {
-          "speaker": "z",
-          "text": "かわいいと強いを両立するのだ！　でも、最初からうまくはいかなかったのだ。",
-          "voice_id": 3,
-          "spoken": "かわいいと強いを両立するのだ！　でも、最初からうまくはいかなかったのだ。",
-          "wav": "artifacts/diary-part2/speech/595a2a4323121d1ce5f52389.wav",
-          "duration": 5.6,
-          "start": 61.25066666666666,
-          "end": 66.85066666666665
-        },
-        {
-          "speaker": "m",
-          "text": "最初の挑戦は時間切れ。準備と役割を見直して、二回目の挑戦へ進んだ記録よ。",
-          "voice_id": 2,
-          "spoken": "最初の挑戦は時間切れ。準備と役割を見直して、二回目の挑戦へ進んだ記録よ。",
-          "wav": "artifacts/diary-part2/speech/37cc17268ac50f748fc4f398.wav",
-          "duration": 6.250666666666667,
-          "start": 66.99066666666667,
-          "end": 73.24133333333333
+          "start": 61.18866666666667,
+          "end": 66.522,
+          "sourceChapter": "opening",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "失敗も見せるの、いいじゃん。何を変えたら良くなったか、一緒に見よ！",
           "voice_id": 8,
           "spoken": "失敗も見せるの、いいじゃん。何を変えたら良くなったか、一緒に見よ！",
-          "wav": "artifacts/diary-part2/speech/92d81bc5f7aef5f29836a59e.wav",
+          "wav": "artifacts/diary-part2/speech/92d81bc5f7aef5f29836a59e.flac",
           "duration": 5.333333333333333,
-          "start": 73.38133333333333,
-          "end": 78.71466666666666
+          "start": 66.652,
+          "end": 71.98533333333333,
+          "sourceChapter": "opening",
+          "sourceLine": 9
         }
       ],
-      "start": 23,
-      "duration": 56.233333333333334
+      "start": 35.1,
+      "duration": 37.3
     },
     {
       "id": "carry",
@@ -139,114 +167,64 @@
           "text": "まず、今回の開始条件をはっきりさせるわ。前回パート一・一・一の、白花編成で第一層に勝った状態から始めているの。",
           "voice_id": 2,
           "spoken": "まず、今回の開始条件をはっきりさせるわ。前回パート一・一・一の、白花編成で第一層に勝った状態から始めているの。",
-          "wav": "artifacts/diary-part2/speech/df174f670a69586ec11f4825.wav",
+          "wav": "artifacts/diary-part2/speech/df174f670a69586ec11f4825.flac",
           "duration": 9.536,
-          "start": 79.53333333333333,
-          "end": 89.06933333333333
-        },
-        {
-          "speaker": "z",
-          "text": "前回の終わりから、そのまま報酬を受け取って、第二層を開けたのだ。",
-          "voice_id": 3,
-          "spoken": "前回の終わりから、そのまま報酬を受け取って、第二層を開けたのだ。",
-          "wav": "artifacts/diary-part2/speech/d49fbb7506b6bb9e3942a88f.wav",
-          "duration": 5.344,
-          "start": 89.20933333333333,
-          "end": 94.55333333333333
+          "start": 72.58000000000001,
+          "end": 82.11600000000001,
+          "sourceChapter": "carry",
+          "sourceLine": 0
         },
         {
           "speaker": "m",
           "text": "ただし、その前回のデータ自体が、比較用に所持キャラと装備を揃えたデータよ。完全な新規スタートではないわ。",
           "voice_id": 2,
           "spoken": "ただし、その前回のデータ自体が、比較用に所持キャラと装備を揃えたデータよ。完全な新規スタートではないわ。",
-          "wav": "artifacts/diary-part2/speech/aa0fb4df06822fd6854ad781.wav",
+          "wav": "artifacts/diary-part2/speech/aa0fb4df06822fd6854ad781.flac",
           "duration": 7.637333333333333,
-          "start": 94.69333333333333,
-          "end": 102.33066666666666
-        },
-        {
-          "speaker": "t",
-          "text": "じゃあ、始めたばかりの人が、同じ手順ですぐ行ける、って話じゃないんだね。",
-          "voice_id": 8,
-          "spoken": "じゃあ、始めたばかりの人が、同じ手順ですぐ行ける、って話じゃないんだね。",
-          "wav": "artifacts/diary-part2/speech/c639036a2a0ae8c14705ff17.wav",
-          "duration": 5.461333333333333,
-          "start": 102.47066666666666,
-          "end": 107.93199999999999
-        },
-        {
-          "speaker": "m",
-          "text": "ええ。通常ダンジョンやイベントの開放状況も、前回の比較条件を引き継いでいるわ。",
-          "voice_id": 2,
-          "spoken": "ええ。通常ダンジョンやイベントの開放状況も、前回の比較条件を引き継いでいるわ。",
-          "wav": "artifacts/diary-part2/speech/c4695655a56816c94aefa215.wav",
-          "duration": 6.336,
-          "start": 108.072,
-          "end": 114.408
+          "start": 82.24600000000001,
+          "end": 89.88333333333334,
+          "sourceChapter": "carry",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "今回は、そこからルネットの素材を集めて、加入してもらって、覚醒して、第二層に挑むのだ。",
           "voice_id": 3,
           "spoken": "今回は、そこからルネットの素材を集めて、加入してもらって、覚醒して、第二層に挑むのだ。",
-          "wav": "artifacts/diary-part2/speech/ae2b1cfef96018cae001557d.wav",
+          "wav": "artifacts/diary-part2/speech/ae2b1cfef96018cae001557d.flac",
           "duration": 7.722666666666667,
-          "start": 114.548,
-          "end": 122.27066666666667
+          "start": 90.01333333333334,
+          "end": 97.736,
+          "sourceChapter": "carry",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "その追加分は、実際のゲームのコマンドで進めた記録。素材を直接足したり、敵の体力を減らしたりはしていないわ。",
           "voice_id": 2,
           "spoken": "その追加分は、実際のゲームのコマンドで進めた記録。素材を直接足したり、敵の体力を減らしたりはしていないわ。",
-          "wav": "artifacts/diary-part2/speech/3838f9cd10da107ee4b10c11.wav",
+          "wav": "artifacts/diary-part2/speech/3838f9cd10da107ee4b10c11.flac",
           "duration": 8.032,
-          "start": 122.41066666666667,
-          "end": 130.44266666666667
-        },
-        {
-          "speaker": "t",
-          "text": "持ってたものと、今回手に入れたものを分けて見ればいいんだね。了解！",
-          "voice_id": 8,
-          "spoken": "持ってたものと、今回手に入れたものを分けて見ればいいんだね。了解！",
-          "wav": "artifacts/diary-part2/speech/df337697337d95dfeb718f03.wav",
-          "duration": 4.597333333333333,
-          "start": 130.58266666666668,
-          "end": 135.18
+          "start": 97.86600000000001,
+          "end": 105.89800000000001,
+          "sourceChapter": "carry",
+          "sourceLine": 6
         },
         {
           "speaker": "m",
           "text": "ゲームは今回確認した最新版、バージョン一・十・〇。前回の議論動画で出した新スキル案は、まだ入っていないわ。",
           "voice_id": 2,
           "spoken": "ゲームは今回確認した最新版、バージョン一・十・〇。前回の議論動画で出した新スキル案は、まだ入っていないわ。",
-          "wav": "artifacts/diary-part2/speech/38bb44defed0c094dd335bda.wav",
+          "wav": "artifacts/diary-part2/speech/38bb44defed0c094dd335bda.flac",
           "duration": 9.557333333333334,
-          "start": 135.32,
-          "end": 144.87733333333333
-        },
-        {
-          "speaker": "z",
-          "text": "アイデアを、もう実装された能力として説明しないのだ。ここは大事なのだ。",
-          "voice_id": 3,
-          "spoken": "アイデアを、もう実装された能力として説明しないのだ。ここは大事なのだ。",
-          "wav": "artifacts/diary-part2/speech/fe76de8a4127737f2821a048.wav",
-          "duration": 5.706666666666667,
-          "start": 145.01733333333334,
-          "end": 150.724
-        },
-        {
-          "speaker": "t",
-          "text": "じゃ、現実の手持ちでどう盛るか、作戦会議いってみよ！",
-          "voice_id": 8,
-          "spoken": "じゃ、現実の手持ちでどう盛るか、作戦会議いってみよ！",
-          "wav": "artifacts/diary-part2/speech/f1999ff769854764f5981480.wav",
-          "duration": 4.2026666666666666,
-          "start": 150.864,
-          "end": 155.06666666666666
+          "start": 106.028,
+          "end": 115.58533333333334,
+          "sourceChapter": "carry",
+          "sourceLine": 8
         }
       ],
-      "start": 79.23333333333333,
-      "duration": 76.33333333333333
+      "start": 72.4,
+      "duration": 43.6
     },
     {
       "id": "enemy",
@@ -263,154 +241,136 @@
           "text": "第二層も、一つのウェーブに敵が三体。第一層と似て見えるのだ。",
           "voice_id": 3,
           "spoken": "第二層も、一つのウェーブに敵が三体。第一層と似て見えるのだ。",
-          "wav": "artifacts/diary-part2/speech/83b799bb3c1b068a28e76ba4.wav",
+          "wav": "artifacts/diary-part2/speech/83b799bb3c1b068a28e76ba4.flac",
           "duration": 5.354666666666667,
-          "start": 155.86666666666667,
-          "end": 161.22133333333335
+          "start": 116.18,
+          "end": 121.53466666666668,
+          "sourceChapter": "enemy",
+          "sourceLine": 0
         },
         {
           "speaker": "m",
           "text": "月翅の蛾と荊の魔女に、今回はリオラが加わるわ。この守り役の違いがポイントよ。",
           "voice_id": 2,
           "spoken": "月翅の蛾と荊の魔女に、今回はリオラが加わるわ。この守り役の違いがポイントよ。",
-          "wav": "artifacts/diary-part2/speech/2da02f2e138b969ee055392a.wav",
+          "wav": "artifacts/diary-part2/speech/2da02f2e138b969ee055392a.flac",
           "duration": 5.8453333333333335,
-          "start": 161.36133333333333,
-          "end": 167.20666666666668
-        },
-        {
-          "speaker": "t",
-          "text": "敵にもタンクいるんだ。こっちだけ前衛ガチガチ、とはいかないね。",
-          "voice_id": 8,
-          "spoken": "敵にもタンクいるんだ。こっちだけ前衛ガチガチ、とはいかないね。",
-          "wav": "artifacts/diary-part2/speech/5cbcf08917a1e655179a4c48.wav",
-          "duration": 4.373333333333333,
-          "start": 167.34666666666666,
-          "end": 171.72
+          "start": 121.66466666666666,
+          "end": 127.50999999999999,
+          "sourceChapter": "enemy",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "この条件の蛾は、最大体力三千三百六十八。全体攻撃と睡眠を持っているわ。長く残すほど、行動を止められる機会も増えるの。",
           "voice_id": 2,
           "spoken": "この条件の蛾は、最大体力三千三百六十八。全体攻撃と睡眠を持っているわ。長く残すほど、行動を止められる機会も増えるの。",
-          "wav": "artifacts/diary-part2/speech/fe584d67cdc9f382c76fadad.wav",
+          "wav": "artifacts/diary-part2/speech/fe584d67cdc9f382c76fadad.flac",
           "duration": 10.133333333333333,
-          "start": 171.85999999999999,
-          "end": 181.9933333333333
-        },
-        {
-          "speaker": "z",
-          "text": "眠っている間も、制限ラウンドは待ってくれないのだ。",
-          "voice_id": 3,
-          "spoken": "眠っている間も、制限ラウンドは待ってくれないのだ。",
-          "wav": "artifacts/diary-part2/speech/52f94a56788fec00e5338ff1.wav",
-          "duration": 3.968,
-          "start": 182.13333333333333,
-          "end": 186.10133333333332
+          "start": 127.64,
+          "end": 137.77333333333334,
+          "sourceChapter": "enemy",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "魔女は体力千四百九十七。体力だけ見れば一番低いけれど、弱体と魅了が厄介ね。",
           "voice_id": 2,
           "spoken": "魔女は体力千四百九十七。体力だけ見れば一番低いけれど、弱体と魅了が厄介ね。",
-          "wav": "artifacts/diary-part2/speech/724b9ce5cb77df6e432cb83c.wav",
+          "wav": "artifacts/diary-part2/speech/724b9ce5cb77df6e432cb83c.flac",
           "duration": 6.741333333333333,
-          "start": 186.24133333333333,
-          "end": 192.98266666666666
-        },
-        {
-          "speaker": "t",
-          "text": "少ない体力の子を先に落として、面倒な仕事を減らす。そこは分かりやすいじゃん。",
-          "voice_id": 8,
-          "spoken": "少ない体力の子を先に落として、面倒な仕事を減らす。そこは分かりやすいじゃん。",
-          "wav": "artifacts/diary-part2/speech/2866b77989ade4a09bb9fc45.wav",
-          "duration": 5.461333333333333,
-          "start": 193.12266666666665,
-          "end": 198.58399999999997
+          "start": 137.90333333333334,
+          "end": 144.64466666666667,
+          "sourceChapter": "enemy",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "ただし、リオラが味方をかばうの。狙った相手に単体攻撃がそのまま通るとは限らないわ。",
           "voice_id": 2,
           "spoken": "ただし、リオラが味方をかばうの。狙った相手に単体攻撃がそのまま通るとは限らないわ。",
-          "wav": "artifacts/diary-part2/speech/7f260f004f7967335dcdf2db.wav",
+          "wav": "artifacts/diary-part2/speech/7f260f004f7967335dcdf2db.flac",
           "duration": 6.272,
-          "start": 198.724,
-          "end": 204.99599999999998
+          "start": 144.77466666666666,
+          "end": 151.04666666666665,
+          "sourceChapter": "enemy",
+          "sourceLine": 7
         },
         {
           "speaker": "z",
           "text": "一番倒したい魔女を狙っても、守り役に受けられちゃうのだ。",
           "voice_id": 3,
           "spoken": "一番倒したい魔女を狙っても、守り役に受けられちゃうのだ。",
-          "wav": "artifacts/diary-part2/speech/25c1cb36a6d0f3eddaec7028.wav",
+          "wav": "artifacts/diary-part2/speech/25c1cb36a6d0f3eddaec7028.flac",
           "duration": 4.234666666666667,
-          "start": 205.136,
-          "end": 209.37066666666666
+          "start": 151.17666666666668,
+          "end": 155.41133333333335,
+          "sourceChapter": "enemy",
+          "sourceLine": 8
         },
         {
           "speaker": "m",
           "text": "リオラ自身も体力二千七百九十四、防御三十六。三体の中では防御が高いわ。正面から単体攻撃だけで急ぐと、詰まりやすい構成ね。",
           "voice_id": 2,
           "spoken": "リオラ自身も体力二千七百九十四、防御三十六。三体の中では防御が高いわ。正面から単体攻撃だけで急ぐと、詰まりやすい構成ね。",
-          "wav": "artifacts/diary-part2/speech/f08eee72ea07df823c09a8d0.wav",
+          "wav": "artifacts/diary-part2/speech/f08eee72ea07df823c09a8d0.flac",
           "duration": 11.008,
-          "start": 209.51066666666665,
-          "end": 220.51866666666666
+          "start": 155.54133333333334,
+          "end": 166.54933333333335,
+          "sourceChapter": "enemy",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "じゃあ、守り役を無視して全員に当たる攻撃、見せ場じゃない？",
           "voice_id": 8,
           "spoken": "じゃあ、守り役を無視して全員に当たる攻撃、見せ場じゃない？",
-          "wav": "artifacts/diary-part2/speech/521bb977a3e03d96ce9cb010.wav",
+          "wav": "artifacts/diary-part2/speech/521bb977a3e03d96ce9cb010.flac",
           "duration": 4.458666666666667,
-          "start": 220.65866666666665,
-          "end": 225.1173333333333
+          "start": 166.67933333333332,
+          "end": 171.13799999999998,
+          "sourceChapter": "enemy",
+          "sourceLine": 10
         },
         {
           "speaker": "m",
           "text": "その通り。全体攻撃は、このかばうで一体へ引き受けられない。ルネットを使う理由の一つがそこよ。",
           "voice_id": 2,
           "spoken": "その通り。全体攻撃は、このかばうで一体へ引き受けられない。ルネットを使う理由の一つがそこよ。",
-          "wav": "artifacts/diary-part2/speech/8c563b44f47ab79b4b3fd91a.wav",
+          "wav": "artifacts/diary-part2/speech/8c563b44f47ab79b4b3fd91a.flac",
           "duration": 7.2,
-          "start": 225.25733333333332,
-          "end": 232.4573333333333
-        },
-        {
-          "speaker": "z",
-          "text": "単純にレアリティを上げる話じゃなくて、敵の守り方と攻め方を合わせるのだ。",
-          "voice_id": 3,
-          "spoken": "単純にレアリティを上げる話じゃなくて、敵の守り方と攻め方を合わせるのだ。",
-          "wav": "artifacts/diary-part2/speech/2e728ec6c55ec09a7834b623.wav",
-          "duration": 5.664,
-          "start": 232.59733333333332,
-          "end": 238.2613333333333
+          "start": 171.268,
+          "end": 178.468,
+          "sourceChapter": "enemy",
+          "sourceLine": 11
         },
         {
           "speaker": "m",
           "text": "それと、この層には四十ラウンドの制限があるわ。全員生きていても、倒し切れなければ負けるの。",
           "voice_id": 2,
           "spoken": "それと、この層には四十ラウンドの制限があるわ。全員生きていても、倒し切れなければ負けるの。",
-          "wav": "artifacts/diary-part2/speech/3c54bdd2c0a23cc7dff92445.wav",
+          "wav": "artifacts/diary-part2/speech/3c54bdd2c0a23cc7dff92445.flac",
           "duration": 6.72,
-          "start": 238.40133333333333,
-          "end": 245.12133333333333
+          "start": 178.598,
+          "end": 185.318,
+          "sourceChapter": "enemy",
+          "sourceLine": 13
         },
         {
           "speaker": "t",
           "text": "生存できる編成と、制限内に終わらせる編成。両方いるってことね。",
           "voice_id": 8,
           "spoken": "生存できる編成と、制限内に終わらせる編成。両方いるってことね。",
-          "wav": "artifacts/diary-part2/speech/5a3f98efce908da0fd2099a1.wav",
+          "wav": "artifacts/diary-part2/speech/5a3f98efce908da0fd2099a1.flac",
           "duration": 5.248,
-          "start": 245.2613333333333,
-          "end": 250.5093333333333
+          "start": 185.44799999999998,
+          "end": 190.69599999999997,
+          "sourceChapter": "enemy",
+          "sourceLine": 14
         }
       ],
-      "start": 155.56666666666666,
-      "duration": 95.43333333333334
+      "start": 116.0,
+      "duration": 75.1
     },
     {
       "id": "jobs",
@@ -427,114 +387,88 @@
           "text": "前回はフィオを先頭に、ノクス、アテナ、弁才天。白花の石を活かして守ったのだ。",
           "voice_id": 3,
           "spoken": "前回はフィオを先頭に、ノクス、アテナ、弁才天。白花の石を活かして守ったのだ。",
-          "wav": "artifacts/diary-part2/speech/2f75fc511e3080e486064a72.wav",
+          "wav": "artifacts/diary-part2/speech/2f75fc511e3080e486064a72.flac",
           "duration": 7.1786666666666665,
-          "start": 251.3,
-          "end": 258.47866666666664
-        },
-        {
-          "speaker": "m",
-          "text": "今回も素材集めには、その四人を使ったわ。守りと回復の土台があるから、準備の戦闘を続けやすかったの。",
-          "voice_id": 2,
-          "spoken": "今回も素材集めには、その四人を使ったわ。守りと回復の土台があるから、準備の戦闘を続けやすかったの。",
-          "wav": "artifacts/diary-part2/speech/9c1d03569f18249b15d1f5eb.wav",
-          "duration": 7.872,
-          "start": 258.6186666666666,
-          "end": 266.49066666666664
+          "start": 191.28,
+          "end": 198.45866666666666,
+          "sourceChapter": "jobs",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "そこにルネットを入れると五人。誰か一人、外さないとなんだね。",
           "voice_id": 8,
           "spoken": "そこにルネットを入れると五人。誰か一人、外さないとなんだね。",
-          "wav": "artifacts/diary-part2/speech/f133c8bf768c0e61d08e32da.wav",
+          "wav": "artifacts/diary-part2/speech/f133c8bf768c0e61d08e32da.flac",
           "duration": 4.309333333333333,
-          "start": 266.6306666666667,
-          "end": 270.94
+          "start": 198.58866666666665,
+          "end": 202.898,
+          "sourceChapter": "jobs",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "なら、攻撃役のノクスと入れ替えれば、同じ枠に収まるのだ？",
           "voice_id": 3,
           "spoken": "なら、攻撃役のノクスと入れ替えれば、同じ枠に収まるのだ？",
-          "wav": "artifacts/diary-part2/speech/b6b32ea863cf03d8a352a225.wav",
+          "wav": "artifacts/diary-part2/speech/b6b32ea863cf03d8a352a225.flac",
           "duration": 5.0986666666666665,
-          "start": 271.08,
-          "end": 276.1786666666667
+          "start": 203.028,
+          "end": 208.12666666666667,
+          "sourceChapter": "jobs",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "見た目は分かりやすいけれど、それだと攻撃の手数を減らす危険もあるわ。ルネットは攻撃だけでなく、障壁を使う場面もあるの。",
           "voice_id": 2,
           "spoken": "見た目は分かりやすいけれど、それだと攻撃の手数を減らす危険もあるわ。ルネットは攻撃だけでなく、障壁を使う場面もあるの。",
-          "wav": "artifacts/diary-part2/speech/b931382554f0d9ec2342df36.wav",
+          "wav": "artifacts/diary-part2/speech/b931382554f0d9ec2342df36.flac",
           "duration": 8.618666666666666,
-          "start": 276.3186666666667,
-          "end": 284.93733333333336
+          "start": 208.25666666666666,
+          "end": 216.87533333333332,
+          "sourceChapter": "jobs",
+          "sourceLine": 4
         },
         {
           "speaker": "t",
           "text": "攻撃役って書いてあるから、毎回ずっと攻撃してくれる、とは限らないんだ。",
           "voice_id": 8,
           "spoken": "攻撃役って書いてあるから、毎回ずっと攻撃してくれる、とは限らないんだ。",
-          "wav": "artifacts/diary-part2/speech/8ee43ea80d3a7c0e8e811d67.wav",
+          "wav": "artifacts/diary-part2/speech/8ee43ea80d3a7c0e8e811d67.flac",
           "duration": 5.088,
-          "start": 285.07733333333334,
-          "end": 290.16533333333336
+          "start": 217.00533333333334,
+          "end": 222.09333333333333,
+          "sourceChapter": "jobs",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "そう。先頭への行動予約も重要よ。キャラクターと装備だけ同じにして、操作を全部お任せにすると、今回の結果は再現できないわ。",
           "voice_id": 2,
           "spoken": "そう。先頭への行動予約も重要よ。キャラクターと装備だけ同じにして、操作を全部お任せにすると、今回の結果は再現できないわ。",
-          "wav": "artifacts/diary-part2/speech/011171cd7ca030b8dda28e36.wav",
+          "wav": "artifacts/diary-part2/speech/011171cd7ca030b8dda28e36.flac",
           "duration": 9.717333333333332,
-          "start": 290.30533333333335,
-          "end": 300.0226666666667
+          "start": 222.22333333333333,
+          "end": 231.94066666666666,
+          "sourceChapter": "jobs",
+          "sourceLine": 6
         },
         {
           "speaker": "z",
           "text": "編成画面で完成、じゃないのだ。誰を先頭にして、何を予約するかまでセットなのだ。",
           "voice_id": 3,
           "spoken": "編成画面で完成、じゃないのだ。誰を先頭にして、何を予約するかまでセットなのだ。",
-          "wav": "artifacts/diary-part2/speech/fbcdb744cdeb3315ac55e78b.wav",
+          "wav": "artifacts/diary-part2/speech/fbcdb744cdeb3315ac55e78b.flac",
           "duration": 6.912,
-          "start": 300.16266666666667,
-          "end": 307.07466666666664
-        },
-        {
-          "speaker": "t",
-          "text": "服だけ揃えて、動き方がバラバラ、みたいな。パーティにも着こなしが必要じゃん。",
-          "voice_id": 8,
-          "spoken": "服だけ揃えて、動き方がバラバラ、みたいな。パーティにも着こなしが必要じゃん。",
-          "wav": "artifacts/diary-part2/speech/e918c7d3195531eb450e5311.wav",
-          "duration": 5.525333333333333,
-          "start": 307.2146666666667,
-          "end": 312.74
-        },
-        {
-          "speaker": "m",
-          "text": "いい例えね。なお今回、守りの中心とリーダーはアテナのまま。アテナ一強を解消できた、という動画にはしないわ。",
-          "voice_id": 2,
-          "spoken": "いい例えね。なお今回、守りの中心とリーダーはアテナのまま。アテナ一強を解消できた、という動画にはしないわ。",
-          "wav": "artifacts/diary-part2/speech/3456c31c995bd69e4d4cbcc2.wav",
-          "duration": 8.053333333333333,
-          "start": 312.88,
-          "end": 320.93333333333334
-        },
-        {
-          "speaker": "z",
-          "text": "今回は第二層とルネットの攻略日記。前回のバランス議論とは、目的を分けるのだ。",
-          "voice_id": 3,
-          "spoken": "今回は第二層とルネットの攻略日記。前回のバランス議論とは、目的を分けるのだ。",
-          "wav": "artifacts/diary-part2/speech/c9a4e77a5f7839fe81b4725d.wav",
-          "duration": 7.050666666666666,
-          "start": 321.0733333333333,
-          "end": 328.12399999999997
+          "start": 232.07066666666665,
+          "end": 238.98266666666666,
+          "sourceChapter": "jobs",
+          "sourceLine": 7
         }
       ],
-      "start": 251.0,
-      "duration": 77.63333333333334
+      "start": 191.1,
+      "duration": 48.3
     },
     {
       "id": "farm",
@@ -551,114 +485,109 @@
           "text": "ルネットを持っていない状態から、準備を始めたわ。大時計のイベントへ行って、まず通常のルネットを迎えるの。",
           "voice_id": 2,
           "spoken": "ルネットを持っていない状態から、準備を始めたわ。大時計のイベントへ行って、まず通常のルネットを迎えるの。",
-          "wav": "artifacts/diary-part2/speech/8999d957c32cd2432505a8cc.wav",
+          "wav": "artifacts/diary-part2/speech/8999d957c32cd2432505a8cc.flac",
           "duration": 7.445333333333333,
-          "start": 328.93333333333334,
-          "end": 336.3786666666667
+          "start": 239.57999999999998,
+          "end": 247.02533333333332,
+          "sourceChapter": "farm",
+          "sourceLine": 0
         },
         {
           "speaker": "z",
           "text": "必要なのは、うさぎの歯車二十個。今回は超級を四回クリアしたのだ。",
           "voice_id": 3,
           "spoken": "必要なのは、うさぎの歯車二十個。今回は超級を四回クリアしたのだ。",
-          "wav": "artifacts/diary-part2/speech/752574a055fb3bdfcd9286be.wav",
+          "wav": "artifacts/diary-part2/speech/752574a055fb3bdfcd9286be.flac",
           "duration": 6.037333333333334,
-          "start": 336.51866666666666,
-          "end": 342.556
+          "start": 247.15533333333332,
+          "end": 253.19266666666664,
+          "sourceChapter": "farm",
+          "sourceLine": 1
+        },
+        {
+          "speaker": "z",
+          "text": "十八個！　これで帰れるのだ！",
+          "new": true,
+          "tag": "gear18",
+          "wav": "artifacts/diary-part2-v2/speech/bf8fd1b90f95440da5a55de8.flac",
+          "duration": 2.378667,
+          "voice_id": 3,
+          "start": 253.32266666666663,
+          "end": 255.70133366666664
+        },
+        {
+          "speaker": "m",
+          "text": "二個足りないわ。",
+          "new": true,
+          "tag": "gear18",
+          "wav": "artifacts/diary-part2-v2/speech/a0deb09bfc299223217b5894.flac",
+          "duration": 0.917333,
+          "voice_id": 2,
+          "start": 255.79133366666665,
+          "end": 256.70866666666666
         },
         {
           "speaker": "t",
-          "text": "一回六個なら、六、十二、十八、二十四。三回だと二個足りないやつだ。",
+          "text": "はい、もう一周！",
+          "new": true,
+          "tag": "gear18",
+          "wav": "artifacts/diary-part2-v2/speech/57e902c134f148e380d64423.flac",
+          "duration": 1.536,
           "voice_id": 8,
-          "spoken": "一回六個なら、六、十二、十八、二十四。三回だと二個足りないやつだ。",
-          "wav": "artifacts/diary-part2/speech/5fafc99b412342f5333ea45a.wav",
-          "duration": 6.8373333333333335,
-          "start": 342.69599999999997,
-          "end": 349.5333333333333
+          "start": 256.79866666666663,
+          "end": 258.33466666666664
         },
         {
           "speaker": "m",
           "text": "そう。四回で二十四個を確保し、二十個を使って加入。四個が残る計算ね。",
           "voice_id": 2,
           "spoken": "そう。四回で二十四個を確保し、二十個を使って加入。四個が残る計算ね。",
-          "wav": "artifacts/diary-part2/speech/db37a95ee84733f822f488cc.wav",
+          "wav": "artifacts/diary-part2/speech/db37a95ee84733f822f488cc.flac",
           "duration": 6.314666666666667,
-          "start": 349.67333333333335,
-          "end": 355.988
-        },
-        {
-          "speaker": "z",
-          "text": "三回でたぶん足りる、って出発しないのだ。必要数を見てから周回するのだ。",
-          "voice_id": 3,
-          "spoken": "三回でたぶん足りる、って出発しないのだ。必要数を見てから周回するのだ。",
-          "wav": "artifacts/diary-part2/speech/7a56d6731d1864fa230f8061.wav",
-          "duration": 6.112,
-          "start": 356.128,
-          "end": 362.24
+          "start": 258.42466666666667,
+          "end": 264.7393333333333,
+          "sourceChapter": "farm",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "準備の四戦は、十、十一、十三、十三ラウンドで勝利。持ち込んだ回復薬は使わずに終えられたわ。",
           "voice_id": 2,
           "spoken": "準備の四戦は、十、十一、十三、十三ラウンドで勝利。持ち込んだ回復薬は使わずに終えられたわ。",
-          "wav": "artifacts/diary-part2/speech/2638d7fc2f23d423a5ba2f08.wav",
+          "wav": "artifacts/diary-part2/speech/2638d7fc2f23d423a5ba2f08.flac",
           "duration": 8.661333333333333,
-          "start": 362.38,
-          "end": 371.04133333333334
+          "start": 264.8693333333333,
+          "end": 273.53066666666666,
+          "sourceChapter": "farm",
+          "sourceLine": 5
         },
         {
           "speaker": "t",
           "text": "前回育てた編成が、次の子を迎えに行く役になるの、ちょっといいね。",
           "voice_id": 8,
           "spoken": "前回育てた編成が、次の子を迎えに行く役になるの、ちょっといいね。",
-          "wav": "artifacts/diary-part2/speech/33065415311f48a14626d800.wav",
+          "wav": "artifacts/diary-part2/speech/33065415311f48a14626d800.flac",
           "duration": 4.917333333333334,
-          "start": 371.1813333333333,
-          "end": 376.09866666666665
-        },
-        {
-          "speaker": "z",
-          "text": "周回の数字だけじゃなくて、仲間が仲間を連れてくるのだ。",
-          "voice_id": 3,
-          "spoken": "周回の数字だけじゃなくて、仲間が仲間を連れてくるのだ。",
-          "wav": "artifacts/diary-part2/speech/c28e81699264cede93a4ffc4.wav",
-          "duration": 4.266666666666667,
-          "start": 376.23866666666663,
-          "end": 380.5053333333333
-        },
-        {
-          "speaker": "m",
-          "text": "ただし、これは前回からの装備がある条件。初めて超級に行く人へ、無条件に薬なしで勝てると保証するものではないわ。",
-          "voice_id": 2,
-          "spoken": "ただし、これは前回からの装備がある条件。初めて超級に行く人へ、無条件に薬なしで勝てると保証するものではないわ。",
-          "wav": "artifacts/diary-part2/speech/87bef7368743f1b633987734.wav",
-          "duration": 8.618666666666666,
-          "start": 380.6453333333333,
-          "end": 389.264
-        },
-        {
-          "speaker": "t",
-          "text": "そのへん、ちゃんと線引くの大事。準備が違えば、しんどさも違うもん。",
-          "voice_id": 8,
-          "spoken": "そのへん、ちゃんと線引くの大事。準備が違えば、しんどさも違うもん。",
-          "wav": "artifacts/diary-part2/speech/304704433398c8b1d6b6b139.wav",
-          "duration": 5.226666666666667,
-          "start": 389.404,
-          "end": 394.6306666666667
+          "start": 273.66066666666666,
+          "end": 278.578,
+          "sourceChapter": "farm",
+          "sourceLine": 6
         },
         {
           "speaker": "z",
           "text": "加入できたら、いよいよ第二層へ。まずは通常ルネットで試してみるのだ。",
           "voice_id": 3,
           "spoken": "加入できたら、いよいよ第二層へ。まずは通常ルネットで試してみるのだ。",
-          "wav": "artifacts/diary-part2/speech/e9f2875e470433af2a60abf1.wav",
+          "wav": "artifacts/diary-part2/speech/e9f2875e470433af2a60abf1.flac",
           "duration": 5.546666666666667,
-          "start": 394.77066666666667,
-          "end": 400.31733333333335
+          "start": 278.70799999999997,
+          "end": 284.25466666666665,
+          "sourceChapter": "farm",
+          "sourceLine": 10
         }
       ],
-      "start": 328.6333333333333,
-      "duration": 72.2
+      "start": 239.39999999999998,
+      "duration": 45.266666666666666
     },
     {
       "id": "first",
@@ -675,116 +604,138 @@
           "text": "最初の挑戦は、ルネット、フィオ、アテナ、弁才天。ノクスの石も、ルネットへ渡したのだ。",
           "voice_id": 3,
           "spoken": "最初の挑戦は、ルネット、フィオ、アテナ、弁才天。ノクスの石も、ルネットへ渡したのだ。",
-          "wav": "artifacts/diary-part2/speech/b8298df16fbf0270e7955af4.wav",
+          "wav": "artifacts/diary-part2/speech/b8298df16fbf0270e7955af4.flac",
           "duration": 8.149333333333333,
-          "start": 401.1333333333333,
-          "end": 409.28266666666667
+          "start": 284.84666666666664,
+          "end": 292.996,
+          "sourceChapter": "first",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "回復と守り、かなり厚くない？　これ、攻撃する子だけワンオペじゃん。ブラック部活は禁止だよ！",
           "voice_id": 8,
           "spoken": "回復と守り、かなり厚くない？　これ、攻撃する子だけワンオペじゃん。ブラック部活は禁止だよ！",
-          "wav": "artifacts/diary-part2/speech/bc081e3a83add4bba425deea.wav",
+          "wav": "artifacts/diary-part2/speech/bc081e3a83add4bba425deea.flac",
           "duration": 6.986666666666666,
-          "start": 409.42266666666666,
-          "end": 416.40933333333334
+          "start": 293.126,
+          "end": 300.11266666666666,
+          "sourceChapter": "first",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "その安心感で、攻撃の不足を見落としたわ。これは終盤の実際の映像よ。途中は省略しているけれど、挑戦自体は最初から記録しているの。",
           "voice_id": 2,
           "spoken": "その安心感で、攻撃の不足を見落としたわ。これは終盤の実際の映像よ。途中は省略しているけれど、挑戦自体は最初から記録しているの。",
-          "wav": "artifacts/diary-part2/speech/3180971dd92fed96c8a7e5bc.wav",
+          "wav": "artifacts/diary-part2/speech/3180971dd92fed96c8a7e5bc.flac",
           "duration": 10.176,
-          "start": 416.5493333333333,
-          "end": 426.7253333333333
+          "start": 300.24266666666665,
+          "end": 310.41866666666664,
+          "sourceChapter": "first",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "まだ蛾が残っているのだ。味方も耐えてるけど、時間が迫っているのだ。",
           "voice_id": 3,
           "spoken": "まだ蛾が残っているのだ。味方も耐えてるけど、時間が迫っているのだ。",
-          "wav": "artifacts/diary-part2/speech/954c018bff2678ca26ab6082.wav",
+          "wav": "artifacts/diary-part2/speech/954c018bff2678ca26ab6082.flac",
           "duration": 5.248,
-          "start": 426.8653333333333,
-          "end": 432.1133333333333
+          "start": 310.54866666666663,
+          "end": 315.7966666666666,
+          "sourceChapter": "first",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "体力バー、思ったほど減ってないね。これ、守り勝ちはできても、時間に勝てなくない？",
           "voice_id": 8,
           "spoken": "体力バー、思ったほど減ってないね。これ、守り勝ちはできても、時間に勝てなくない？",
-          "wav": "artifacts/diary-part2/speech/8a1dca45742a29f1aa90c2d8.wav",
+          "wav": "artifacts/diary-part2/speech/8a1dca45742a29f1aa90c2d8.flac",
           "duration": 6.442666666666667,
-          "start": 432.25333333333333,
-          "end": 438.69599999999997
+          "start": 315.9266666666666,
+          "end": 322.36933333333326,
+          "sourceChapter": "first",
+          "sourceLine": 4
         },
         {
           "speaker": "m",
           "text": "結果は四十ラウンドで時間切れ。回復薬は五個使い、フィオは倒れて、蛾の体力は千四十二残ったわ。",
           "voice_id": 2,
           "spoken": "結果は四十ラウンドで時間切れ。回復薬は五個使い、フィオは倒れて、蛾の体力は千四十二残ったわ。",
-          "wav": "artifacts/diary-part2/speech/21209539c588901279f7caa0.wav",
+          "wav": "artifacts/diary-part2/speech/21209539c588901279f7caa0.flac",
           "duration": 7.584,
-          "start": 438.836,
-          "end": 446.42
+          "start": 322.4993333333333,
+          "end": 330.0833333333333,
+          "sourceChapter": "first",
+          "sourceLine": 5
         },
         {
           "speaker": "z",
           "text": "千ちょっと残ったのだ。あと一発、で片付けられる差ではなかったのだ。",
           "voice_id": 3,
           "spoken": "千ちょっと残ったのだ。あと一発、で片付けられる差ではなかったのだ。",
-          "wav": "artifacts/diary-part2/speech/f7bbdcc79dc4ce0714bc7150.wav",
+          "wav": "artifacts/diary-part2/speech/f7bbdcc79dc4ce0714bc7150.flac",
           "duration": 5.184,
-          "start": 446.56,
-          "end": 451.744
+          "start": 330.2133333333333,
+          "end": 335.39733333333334,
+          "sourceChapter": "first",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "これ、ルネットが弱い、って決めるのは早くない？　攻撃を一人に寄せすぎた可能性あるじゃん。",
           "voice_id": 8,
           "spoken": "これ、ルネットが弱い、って決めるのは早くない？　攻撃を一人に寄せすぎた可能性あるじゃん。",
-          "wav": "artifacts/diary-part2/speech/a5b49d424af4a068da3060de.wav",
+          "wav": "artifacts/diary-part2/speech/a5b49d424af4a068da3060de.flac",
           "duration": 6.432,
-          "start": 451.88399999999996,
-          "end": 458.316
+          "start": 335.5273333333333,
+          "end": 341.9593333333333,
+          "sourceChapter": "first",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "その通り。新しいキャラを入れて負けたことと、そのキャラに価値がないことは違うわ。",
           "voice_id": 2,
           "spoken": "その通り。新しいキャラを入れて負けたことと、そのキャラに価値がないことは違うわ。",
-          "wav": "artifacts/diary-part2/speech/b65fdfc0a8fdccec4a0a8241.wav",
+          "wav": "artifacts/diary-part2/speech/b65fdfc0a8fdccec4a0a8241.flac",
           "duration": 5.226666666666667,
-          "start": 458.45599999999996,
-          "end": 463.68266666666665
+          "start": 342.0893333333333,
+          "end": 347.316,
+          "sourceChapter": "first",
+          "sourceLine": 8
         },
         {
           "speaker": "z",
           "text": "守る人を全部残して、攻める人だけ交代したのが、今回の反省なのだ。",
           "voice_id": 3,
           "spoken": "守る人を全部残して、攻める人だけ交代したのが、今回の反省なのだ。",
-          "wav": "artifacts/diary-part2/speech/4e6188bf5ee4bf26c71dafae.wav",
+          "wav": "artifacts/diary-part2/speech/4e6188bf5ee4bf26c71dafae.flac",
           "duration": 5.866666666666666,
-          "start": 463.82266666666663,
-          "end": 469.6893333333333
+          "start": 347.44599999999997,
+          "end": 353.31266666666664,
+          "sourceChapter": "first",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "誰を足すかだけじゃなくて、何の役割を減らせるか。そこから組み直そ！",
           "voice_id": 8,
           "spoken": "誰を足すかだけじゃなくて、何の役割を減らせるか。そこから組み直そ！",
-          "wav": "artifacts/diary-part2/speech/7f961ee5623dff8725edb8df.wav",
+          "wav": "artifacts/diary-part2/speech/7f961ee5623dff8725edb8df.flac",
           "duration": 4.8213333333333335,
-          "start": 469.8293333333333,
-          "end": 474.6506666666666
+          "start": 353.44266666666664,
+          "end": 358.26399999999995,
+          "sourceChapter": "first",
+          "sourceLine": 10
         }
       ],
-      "start": 400.8333333333333,
-      "duration": 74.33333333333333,
-      "rate": 1.4442479728063047,
-      "playDuration": 37.7
+      "start": 284.66666666666663,
+      "duration": 74.0,
+      "rate": 1.450789531858253,
+      "playDuration": 37.53333333333333
     },
     {
       "id": "rebuild",
@@ -801,134 +752,135 @@
           "text": "うちの案、ルネットだけに全部お願いしないで、ノクスも残そう。かわいい主役には、ちゃんと相方がいるっしょ。",
           "voice_id": 8,
           "spoken": "うちの案、ルネットだけに全部お願いしないで、ノクスも残そう。かわいい主役には、ちゃんと相方がいるっしょ。",
-          "wav": "artifacts/diary-part2/speech/2b7eecfeb8088e3d83f5b71e.wav",
+          "wav": "artifacts/diary-part2/speech/2b7eecfeb8088e3d83f5b71e.flac",
           "duration": 7.552,
-          "start": 475.46666666666664,
-          "end": 483.01866666666666
+          "start": 358.84666666666664,
+          "end": 366.39866666666666,
+          "sourceChapter": "rebuild",
+          "sourceLine": 0
         },
         {
           "speaker": "z",
           "text": "攻撃を二人にするのだ？　でも、フィオを外して回復が足りるのだ？",
           "voice_id": 3,
           "spoken": "攻撃を二人にするのだ？　でも、フィオを外して回復が足りるのだ？",
-          "wav": "artifacts/diary-part2/speech/edea6b5b768befb7f6d17666.wav",
+          "wav": "artifacts/diary-part2/speech/edea6b5b768befb7f6d17666.flac",
           "duration": 5.333333333333333,
-          "start": 483.15866666666665,
-          "end": 488.49199999999996
+          "start": 366.52866666666665,
+          "end": 371.86199999999997,
+          "sourceChapter": "rebuild",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "そこが比較すべき点ね。弁才天の回復と、ノクスが持つ石の回復特性を残して、攻撃の比率を上げる方針よ。",
           "voice_id": 2,
           "spoken": "そこが比較すべき点ね。弁才天の回復と、ノクスが持つ石の回復特性を残して、攻撃の比率を上げる方針よ。",
-          "wav": "artifacts/diary-part2/speech/9bf10912474d0ecece4728cd.wav",
+          "wav": "artifacts/diary-part2/speech/9bf10912474d0ecece4728cd.flac",
           "duration": 8.394666666666666,
-          "start": 488.63199999999995,
-          "end": 497.02666666666664
+          "start": 371.99199999999996,
+          "end": 380.38666666666666,
+          "sourceChapter": "rebuild",
+          "sourceLine": 2
+        },
+        {
+          "speaker": "t",
+          "text": "主役に仕事を全部乗せない。チームなんだから、相方も連れてこ！",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/7221f9edc9b179b052fa056c.flac",
+          "duration": 4.288,
+          "voice_id": 8,
+          "start": 380.51666666666665,
+          "end": 384.80466666666666
         },
         {
           "speaker": "t",
           "text": "アテナも残るから、守りがゼロになるわけじゃない。回復を一枚減らして、その分、敵が動く回数を減らすの。",
           "voice_id": 8,
           "spoken": "アテナも残るから、守りがゼロになるわけじゃない。回復を一枚減らして、その分、敵が動く回数を減らすの。",
-          "wav": "artifacts/diary-part2/speech/38d9d7dc159819ec0020f5b7.wav",
+          "wav": "artifacts/diary-part2/speech/38d9d7dc159819ec0020f5b7.flac",
           "duration": 7.658666666666667,
-          "start": 497.16666666666663,
-          "end": 504.8253333333333
+          "start": 384.89466666666664,
+          "end": 392.5533333333333,
+          "sourceChapter": "rebuild",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "ノクスを選ぶのは、単体の相手を削る役と、引き継いだ装備を活かせるから。ルネットは敵が複数いる間の全体攻撃を担当するわ。",
           "voice_id": 2,
           "spoken": "ノクスを選ぶのは、単体の相手を削る役と、引き継いだ装備を活かせるから。ルネットは敵が複数いる間の全体攻撃を担当するわ。",
-          "wav": "artifacts/diary-part2/speech/b780ac9b0222875588226736.wav",
+          "wav": "artifacts/diary-part2/speech/b780ac9b0222875588226736.flac",
           "duration": 9.312,
-          "start": 504.9653333333333,
-          "end": 514.2773333333333
+          "start": 392.6833333333333,
+          "end": 401.9953333333333,
+          "sourceChapter": "rebuild",
+          "sourceLine": 4
         },
         {
           "speaker": "z",
           "text": "全体で広く削る人と、一体を減らす人。役割が重なりすぎないようにするのだ。",
           "voice_id": 3,
           "spoken": "全体で広く削る人と、一体を減らす人。役割が重なりすぎないようにするのだ。",
-          "wav": "artifacts/diary-part2/speech/c5074e568d7a718b3b0743ac.wav",
+          "wav": "artifacts/diary-part2/speech/c5074e568d7a718b3b0743ac.flac",
           "duration": 6.634666666666667,
-          "start": 514.4173333333333,
-          "end": 521.0519999999999
+          "start": 402.1253333333333,
+          "end": 408.75999999999993,
+          "sourceChapter": "rebuild",
+          "sourceLine": 5
         },
         {
           "speaker": "t",
           "text": "逆に、フィオに仕事がないって話じゃないよ。前回の白花編成では、フィオを先頭にしたからできた動きがあったんだから。",
           "voice_id": 8,
           "spoken": "逆に、フィオに仕事がないって話じゃないよ。前回の白花編成では、フィオを先頭にしたからできた動きがあったんだから。",
-          "wav": "artifacts/diary-part2/speech/730d590983b1248ce2edf1c8.wav",
+          "wav": "artifacts/diary-part2/speech/730d590983b1248ce2edf1c8.flac",
           "duration": 8.010666666666667,
-          "start": 521.192,
-          "end": 529.2026666666666
-        },
-        {
-          "speaker": "m",
-          "text": "ええ。今回は制限時間と敵の守り方に合わせて、その枠を使い直すだけ。キャラクターの価値を一回の勝敗で決めないわ。",
-          "voice_id": 2,
-          "spoken": "ええ。今回は制限時間と敵の守り方に合わせて、その枠を使い直すだけ。キャラクターの価値を一回の勝敗で決めないわ。",
-          "wav": "artifacts/diary-part2/speech/3a12095c153f3be269e6f354.wav",
-          "duration": 8.864,
-          "start": 529.3426666666667,
-          "end": 538.2066666666666
+          "start": 408.89,
+          "end": 416.90066666666667,
+          "sourceChapter": "rebuild",
+          "sourceLine": 6
         },
         {
           "speaker": "z",
           "text": "先頭はルネット、リーダーはアテナ。この二つも、同じ意味じゃないのだ。",
           "voice_id": 3,
           "spoken": "先頭はルネット、リーダーはアテナ。この二つも、同じ意味じゃないのだ。",
-          "wav": "artifacts/diary-part2/speech/f74d646340a74536a2dcc16d.wav",
+          "wav": "artifacts/diary-part2/speech/f74d646340a74536a2dcc16d.flac",
           "duration": 5.706666666666667,
-          "start": 538.3466666666666,
-          "end": 544.0533333333333
+          "start": 417.0306666666666,
+          "end": 422.73733333333325,
+          "sourceChapter": "rebuild",
+          "sourceLine": 8
         },
         {
           "speaker": "m",
           "text": "先頭は行動予約を操作する仲間。リーダーは、リーダースキルの担当よ。今回はそこを分けているわ。",
           "voice_id": 2,
           "spoken": "先頭は行動予約を操作する仲間。リーダーは、リーダースキルの担当よ。今回はそこを分けているわ。",
-          "wav": "artifacts/diary-part2/speech/cb76e1e9ba9b9d2cdfb702bc.wav",
+          "wav": "artifacts/diary-part2/speech/cb76e1e9ba9b9d2cdfb702bc.flac",
           "duration": 7.1146666666666665,
-          "start": 544.1933333333333,
-          "end": 551.308
+          "start": 422.8673333333333,
+          "end": 429.98199999999997,
+          "sourceChapter": "rebuild",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "センターで踊る子と、チームの土台を作る子。別々でいいじゃん！",
           "voice_id": 8,
           "spoken": "センターで踊る子と、チームの土台を作る子。別々でいいじゃん！",
-          "wav": "artifacts/diary-part2/speech/ee88a44ad7c3ea7bdae02eaf.wav",
+          "wav": "artifacts/diary-part2/speech/ee88a44ad7c3ea7bdae02eaf.flac",
           "duration": 4.576,
-          "start": 551.448,
-          "end": 556.024
-        },
-        {
-          "speaker": "m",
-          "text": "ここから覚醒も進めるけれど、編成と操作方針も同時に変えるわ。勝っても、覚醒だけのおかげとは断言できないの。",
-          "voice_id": 2,
-          "spoken": "ここから覚醒も進めるけれど、編成と操作方針も同時に変えるわ。勝っても、覚醒だけのおかげとは断言できないの。",
-          "wav": "artifacts/diary-part2/speech/7764f9c36e663958703ff38f.wav",
-          "duration": 8.202666666666667,
-          "start": 556.164,
-          "end": 564.3666666666667
-        },
-        {
-          "speaker": "z",
-          "text": "条件がいくつも変わるから、これは攻略の改善記録として見るのだ。",
-          "voice_id": 3,
-          "spoken": "条件がいくつも変わるから、これは攻略の改善記録として見るのだ。",
-          "wav": "artifacts/diary-part2/speech/92aeaf6a3936b9461476daf1.wav",
-          "duration": 5.013333333333334,
-          "start": 564.5066666666667,
-          "end": 569.52
+          "start": 430.11199999999997,
+          "end": 434.688,
+          "sourceChapter": "rebuild",
+          "sourceLine": 10
         }
       ],
-      "start": 475.16666666666663,
-      "duration": 94.86666666666666
+      "start": 358.66666666666663,
+      "duration": 76.43333333333334
     },
     {
       "id": "awake",
@@ -945,134 +897,124 @@
           "text": "次は、通常ルネットの加入を済ませた状態で、覚醒級を三回クリアしたわ。",
           "voice_id": 2,
           "spoken": "次は、通常ルネットの加入を済ませた状態で、覚醒級を三回クリアしたわ。",
-          "wav": "artifacts/diary-part2/speech/ec34248390abfef34fa03c6d.wav",
+          "wav": "artifacts/diary-part2/speech/ec34248390abfef34fa03c6d.flac",
           "duration": 5.685333333333333,
-          "start": 570.3333333333333,
-          "end": 576.0186666666666
+          "start": 435.28,
+          "end": 440.9653333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 0
         },
         {
           "speaker": "z",
           "text": "ここで必要なのは、星時計の心臓を三個。一回クリアで一個なので、三回なのだ。",
           "voice_id": 3,
           "spoken": "ここで必要なのは、星時計の心臓を三個。一回クリアで一個なので、三回なのだ。",
-          "wav": "artifacts/diary-part2/speech/87c18ac4893b05e2be0a1131.wav",
+          "wav": "artifacts/diary-part2/speech/87c18ac4893b05e2be0a1131.flac",
           "duration": 7.104,
-          "start": 576.1586666666666,
-          "end": 583.2626666666666
+          "start": 441.0953333333333,
+          "end": 448.1993333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 1
         },
         {
           "speaker": "t",
           "text": "歯車とは別素材なんだね。余った歯車を持っていけば覚醒、じゃないんだ。",
           "voice_id": 8,
           "spoken": "歯車とは別素材なんだね。余った歯車を持っていけば覚醒、じゃないんだ。",
-          "wav": "artifacts/diary-part2/speech/e9092e96fba33ab8fe427430.wav",
+          "wav": "artifacts/diary-part2/speech/e9092e96fba33ab8fe427430.flac",
           "duration": 5.12,
-          "start": 583.4026666666666,
-          "end": 588.5226666666666
+          "start": 448.3293333333333,
+          "end": 453.4493333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 2
         },
         {
           "speaker": "m",
           "text": "ええ。覚醒級をクリアする条件も満たしてから、心臓三個を使って覚醒形態を迎えるの。",
           "voice_id": 2,
           "spoken": "ええ。覚醒級をクリアする条件も満たしてから、心臓三個を使って覚醒形態を迎えるの。",
-          "wav": "artifacts/diary-part2/speech/dc2e100fd700e8dfb5cf0848.wav",
+          "wav": "artifacts/diary-part2/speech/dc2e100fd700e8dfb5cf0848.flac",
           "duration": 6.88,
-          "start": 588.6626666666666,
-          "end": 595.5426666666666
+          "start": 453.5793333333333,
+          "end": 460.4593333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 3
         },
         {
           "speaker": "z",
           "text": "三戦の記録は十六、十四、十五ラウンド。最後の一戦では、回復薬を一個使ったのだ。",
           "voice_id": 3,
           "spoken": "三戦の記録は十六、十四、十五ラウンド。最後の一戦では、回復薬を一個使ったのだ。",
-          "wav": "artifacts/diary-part2/speech/bd21b4522edfcd1af65efca5.wav",
+          "wav": "artifacts/diary-part2/speech/bd21b4522edfcd1af65efca5.flac",
           "duration": 8.256,
-          "start": 595.6826666666666,
-          "end": 603.9386666666666
+          "start": 460.5893333333333,
+          "end": 468.8453333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 4
         },
         {
           "speaker": "t",
           "text": "準備にもちゃんと戦闘があるんだね。塔の中で急に覚醒ボタンが降ってくるわけじゃない、と。",
           "voice_id": 8,
           "spoken": "準備にもちゃんと戦闘があるんだね。塔の中で急に覚醒ボタンが降ってくるわけじゃない、と。",
-          "wav": "artifacts/diary-part2/speech/ae4953b9b625031923ef9d1c.wav",
+          "wav": "artifacts/diary-part2/speech/ae4953b9b625031923ef9d1c.flac",
           "duration": 5.984,
-          "start": 604.0786666666667,
-          "end": 610.0626666666667
-        },
-        {
-          "speaker": "m",
-          "text": "映像は、その最後の戦闘の終盤。三回分の結果と消費は、公開する記録にも残すわ。",
-          "voice_id": 2,
-          "spoken": "映像は、その最後の戦闘の終盤。三回分の結果と消費は、公開する記録にも残すわ。",
-          "wav": "artifacts/diary-part2/speech/3d1069817e509870487813ea.wav",
-          "duration": 6.88,
-          "start": 610.2026666666667,
-          "end": 617.0826666666667
+          "start": 468.9753333333333,
+          "end": 474.9593333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 5
         },
         {
           "speaker": "z",
           "text": "イベントの敵ルネットは、うさぎのビットも使ってくるのだ。かわいいのに容赦ないのだ。",
           "voice_id": 3,
           "spoken": "イベントの敵ルネットは、うさぎのビットも使ってくるのだ。かわいいのに容赦ないのだ。",
-          "wav": "artifacts/diary-part2/speech/a5373d9755a1c813b3c52046.wav",
+          "wav": "artifacts/diary-part2/speech/a5373d9755a1c813b3c52046.flac",
           "duration": 6.048,
-          "start": 617.2226666666667,
-          "end": 623.2706666666667
+          "start": 475.0893333333333,
+          "end": 481.1373333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "注意してほしいのは、敵の行動と、仲間にしたときの能力は同じとは限らないこと。敵の常設ビットが、そのまま味方に付く説明にはしないわ。",
           "voice_id": 2,
           "spoken": "注意してほしいのは、敵の行動と、仲間にしたときの能力は同じとは限らないこと。敵の常設ビットが、そのまま味方に付く説明にはしないわ。",
-          "wav": "artifacts/diary-part2/speech/a8e5b755693df749a4a672fd.wav",
+          "wav": "artifacts/diary-part2/speech/a8e5b755693df749a4a672fd.flac",
           "duration": 9.952,
-          "start": 623.4106666666667,
-          "end": 633.3626666666667
-        },
-        {
-          "speaker": "t",
-          "text": "仲間になったら、仲間としての技を見る。見た目から、都合のいい能力を足しちゃだめってことね。",
-          "voice_id": 8,
-          "spoken": "仲間になったら、仲間としての技を見る。見た目から、都合のいい能力を足しちゃだめってことね。",
-          "wav": "artifacts/diary-part2/speech/bf9b050baa48eff29efe5c40.wav",
-          "duration": 6.282666666666667,
-          "start": 633.5026666666666,
-          "end": 639.7853333333333
+          "start": 481.2673333333333,
+          "end": 491.2193333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 8
         },
         {
           "speaker": "m",
           "text": "これで、星時計・ルネットの準備ができたわ。通常形態と覚醒形態を同時に並べる編成にもしていないわよ。",
           "voice_id": 2,
           "spoken": "これで、星時計・ルネットの準備ができたわ。通常形態と覚醒形態を同時に並べる編成にもしていないわよ。",
-          "wav": "artifacts/diary-part2/speech/218a7ae54467324f54eabfb6.wav",
+          "wav": "artifacts/diary-part2/speech/218a7ae54467324f54eabfb6.flac",
           "duration": 7.968,
-          "start": 639.9253333333334,
-          "end": 647.8933333333333
-        },
-        {
-          "speaker": "z",
-          "text": "うさぎを二人並べて倍にする作戦は、できないのだ。",
-          "voice_id": 3,
-          "spoken": "うさぎを二人並べて倍にする作戦は、できないのだ。",
-          "wav": "artifacts/diary-part2/speech/abf06b2fca4277995d44e7e2.wav",
-          "duration": 4.0,
-          "start": 648.0333333333333,
-          "end": 652.0333333333333
+          "start": 491.3493333333333,
+          "end": 499.3173333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 10
         },
         {
           "speaker": "t",
           "text": "そこは欲張りすぎ！　一人をちゃんと輝かせよ！",
           "voice_id": 8,
           "spoken": "そこは欲張りすぎ！　一人をちゃんと輝かせよ！",
-          "wav": "artifacts/diary-part2/speech/99dfe26b95bd4b8268ff6df2.wav",
+          "wav": "artifacts/diary-part2/speech/99dfe26b95bd4b8268ff6df2.flac",
           "duration": 3.136,
-          "start": 652.1733333333333,
-          "end": 655.3093333333333
+          "start": 499.4473333333333,
+          "end": 502.5833333333333,
+          "sourceChapter": "awake",
+          "sourceLine": 12
         }
       ],
-      "start": 570.0333333333333,
-      "duration": 85.76666666666667,
+      "start": 435.09999999999997,
+      "duration": 67.9,
       "rate": 1,
       "playDuration": 32.666666666666664
     },
@@ -1091,154 +1033,124 @@
           "text": "覚醒したルネットに、どんな石を渡すのだ？　すごい石を急に生やすのだ？",
           "voice_id": 3,
           "spoken": "覚醒したルネットに、どんな石を渡すのだ？　すごい石を急に生やすのだ？",
-          "wav": "artifacts/diary-part2/speech/cde4c52cc8d55cf675bc2fb7.wav",
+          "wav": "artifacts/diary-part2/speech/cde4c52cc8d55cf675bc2fb7.flac",
           "duration": 5.717333333333333,
-          "start": 656.0999999999999,
-          "end": 661.8173333333333
+          "start": 503.18,
+          "end": 508.89733333333334,
+          "sourceChapter": "stones",
+          "sourceLine": 0
         },
         {
           "speaker": "m",
           "text": "生やさないわ。今回のイベント七回のクリアで集まった、時計の素材を六つ使って、巻戻しの石を製作したの。",
           "voice_id": 2,
           "spoken": "生やさないわ。今回のイベント七回のクリアで集まった、時計の素材を六つ使って、巻戻しの石を製作したの。",
-          "wav": "artifacts/diary-part2/speech/b705256e73e4eb82998fff3f.wav",
+          "wav": "artifacts/diary-part2/speech/b705256e73e4eb82998fff3f.flac",
           "duration": 7.808,
-          "start": 661.9573333333333,
-          "end": 669.7653333333333
-        },
-        {
-          "speaker": "t",
-          "text": "前から持ってた強い石と、今作った石を混ぜないの、分かりやすいね。",
-          "voice_id": 8,
-          "spoken": "前から持ってた強い石と、今作った石を混ぜないの、分かりやすいね。",
-          "wav": "artifacts/diary-part2/speech/657bc02230218831376eb111.wav",
-          "duration": 4.746666666666667,
-          "start": 669.9053333333333,
-          "end": 674.6519999999999
+          "start": 509.02733333333333,
+          "end": 516.8353333333333,
+          "sourceChapter": "stones",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "今回の製作品はティア一、出力の値は二十、追加特性なし。前回からあるティア四の石と同じ品質ではないわ。",
           "voice_id": 2,
           "spoken": "今回の製作品はティア一、出力の値は二十、追加特性なし。前回からあるティア四の石と同じ品質ではないわ。",
-          "wav": "artifacts/diary-part2/speech/44696e1e23a5ba237b2f7a1d.wav",
+          "wav": "artifacts/diary-part2/speech/44696e1e23a5ba237b2f7a1d.flac",
           "duration": 8.650666666666666,
-          "start": 674.7919999999999,
-          "end": 683.4426666666666
-        },
-        {
-          "speaker": "z",
-          "text": "じゃあ、最高品質を掘り当てて勝った動画でもないのだ。",
-          "voice_id": 3,
-          "spoken": "じゃあ、最高品質を掘り当てて勝った動画でもないのだ。",
-          "wav": "artifacts/diary-part2/speech/3ba059ce0a42242f2c2770aa.wav",
-          "duration": 4.309333333333333,
-          "start": 683.5826666666666,
-          "end": 687.8919999999999
+          "start": 516.9653333333333,
+          "end": 525.616,
+          "sourceChapter": "stones",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "巻戻しって、昨日の衝動買いも戻せたりする？",
           "voice_id": 8,
           "spoken": "巻戻しって、昨日の衝動買いも戻せたりする？",
-          "wav": "artifacts/diary-part2/speech/b4cabdac7b1baffe870360db.wav",
+          "wav": "artifacts/diary-part2/speech/b4cabdac7b1baffe870360db.flac",
           "duration": 3.3706666666666667,
-          "start": 688.0319999999999,
-          "end": 691.4026666666666
+          "start": 525.746,
+          "end": 529.1166666666667,
+          "sourceChapter": "stones",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "戻せるのはスキルの待ち時間よ。レシートの相談は、お店にして。",
           "voice_id": 2,
           "spoken": "戻せるのはスキルの待ち時間よ。レシートの相談は、お店にして。",
-          "wav": "artifacts/diary-part2/speech/3e473725b3132eaac88a45c2.wav",
+          "wav": "artifacts/diary-part2/speech/3e473725b3132eaac88a45c2.flac",
           "duration": 4.682666666666667,
-          "start": 691.5426666666666,
-          "end": 696.2253333333333
+          "start": 529.2466666666667,
+          "end": 533.9293333333334,
+          "sourceChapter": "stones",
+          "sourceLine": 6
         },
         {
           "speaker": "z",
           "text": "現実のクールダウンは厳しいのだ。",
           "voice_id": 3,
           "spoken": "現実のクールダウンは厳しいのだ。",
-          "wav": "artifacts/diary-part2/speech/b837861478e0f3f27479a872.wav",
+          "wav": "artifacts/diary-part2/speech/b837861478e0f3f27479a872.flac",
           "duration": 2.570666666666667,
-          "start": 696.3653333333333,
-          "end": 698.9359999999999
+          "start": 534.0593333333334,
+          "end": 536.63,
+          "sourceChapter": "stones",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "そう。この巻戻しは、他の味方の通常スキルの待ち時間を短くするための石よ。ティア一では一つ短縮するわ。",
           "voice_id": 2,
           "spoken": "そう。この巻戻しは、他の味方の通常スキルの待ち時間を短くするための石よ。ティア一では一つ短縮するわ。",
-          "wav": "artifacts/diary-part2/speech/e83bdab784f8541eb9e903e7.wav",
+          "wav": "artifacts/diary-part2/speech/e83bdab784f8541eb9e903e7.flac",
           "duration": 7.904,
-          "start": 699.0759999999999,
-          "end": 706.9799999999999
+          "start": 536.76,
+          "end": 544.664,
+          "sourceChapter": "stones",
+          "sourceLine": 8
         },
         {
           "speaker": "t",
           "text": "必殺ゲージが満タンになったり、石そのものの待ち時間まで全部なくなるわけじゃないんだね。",
           "voice_id": 8,
           "spoken": "必殺ゲージが満タンになったり、石そのものの待ち時間まで全部なくなるわけじゃないんだね。",
-          "wav": "artifacts/diary-part2/speech/59ac500a3d60f424acb816a3.wav",
+          "wav": "artifacts/diary-part2/speech/59ac500a3d60f424acb816a3.flac",
           "duration": 5.376,
-          "start": 707.1199999999999,
-          "end": 712.4959999999999
-        },
-        {
-          "speaker": "m",
-          "text": "ええ。その二つは違う仕組み。巻戻しという名前から、何でも戻せると考えないでね。",
-          "voice_id": 2,
-          "spoken": "ええ。その二つは違う仕組み。巻戻しという名前から、何でも戻せると考えないでね。",
-          "wav": "artifacts/diary-part2/speech/0aa3fea5b0ea6d8975d5c6af.wav",
-          "duration": 6.410666666666667,
-          "start": 712.636,
-          "end": 719.0466666666666
+          "start": 544.794,
+          "end": 550.17,
+          "sourceChapter": "stones",
+          "sourceLine": 9
         },
         {
           "speaker": "z",
           "text": "ノクスには前からの残響の欠片。アテナには守りの石。弁才天には回復側の石を、そのまま残したのだ。",
           "voice_id": 3,
           "spoken": "ノクスには前からの残響の欠片。アテナには守りの石。弁才天には回復側の石を、そのまま残したのだ。",
-          "wav": "artifacts/diary-part2/speech/cfaf1989c59847cd947639da.wav",
+          "wav": "artifacts/diary-part2/speech/cfaf1989c59847cd947639da.flac",
           "duration": 8.608,
-          "start": 719.1866666666666,
-          "end": 727.7946666666666
+          "start": 550.3,
+          "end": 558.9079999999999,
+          "sourceChapter": "stones",
+          "sourceLine": 11
         },
         {
           "speaker": "m",
           "text": "この三つは、前回の比較条件から引き継いだ装備。今回の七周で同じものを作れる、という説明にはしないわ。",
           "voice_id": 2,
           "spoken": "この三つは、前回の比較条件から引き継いだ装備。今回の七周で同じものを作れる、という説明にはしないわ。",
-          "wav": "artifacts/diary-part2/speech/57bbfb92e9066378631f134d.wav",
+          "wav": "artifacts/diary-part2/speech/57bbfb92e9066378631f134d.flac",
           "duration": 8.106666666666667,
-          "start": 727.9346666666667,
-          "end": 736.0413333333333
-        },
-        {
-          "speaker": "t",
-          "text": "新しく手に入れたものを、手持ちの完成品に合わせる。攻略って、全部を一気に更新するより、そういう組み方が多いよね。",
-          "voice_id": 8,
-          "spoken": "新しく手に入れたものを、手持ちの完成品に合わせる。攻略って、全部を一気に更新するより、そういう組み方が多いよね。",
-          "wav": "artifacts/diary-part2/speech/601e0193268a94c6d0d47350.wav",
-          "duration": 8.725333333333333,
-          "start": 736.1813333333333,
-          "end": 744.9066666666666
-        },
-        {
-          "speaker": "m",
-          "text": "最強の石を決める回ではなく、今回の所持条件で次へ進む準備よ。",
-          "voice_id": 2,
-          "spoken": "最強の石を決める回ではなく、今回の所持条件で次へ進む準備よ。",
-          "wav": "artifacts/diary-part2/speech/ca1f2106f99ffa9f38642062.wav",
-          "duration": 5.077333333333334,
-          "start": 745.0466666666666,
-          "end": 750.1239999999999
+          "start": 559.038,
+          "end": 567.1446666666667,
+          "sourceChapter": "stones",
+          "sourceLine": 12
         }
       ],
-      "start": 655.8,
-      "duration": 94.83333333333333
+      "start": 503.0,
+      "duration": 64.56666666666666
     },
     {
       "id": "controls",
@@ -1255,104 +1167,88 @@
           "text": "最後に、操作方針を揃えるわ。今回の成功編成では、ルネットを先頭にして、敵が複数いるときは全体攻撃を優先して予約したの。",
           "voice_id": 2,
           "spoken": "最後に、操作方針を揃えるわ。今回の成功編成では、ルネットを先頭にして、敵が複数いるときは全体攻撃を優先して予約したの。",
-          "wav": "artifacts/diary-part2/speech/bee1fcfe05e30c3cbd79da00.wav",
+          "wav": "artifacts/diary-part2/speech/bee1fcfe05e30c3cbd79da00.flac",
           "duration": 10.186666666666667,
-          "start": 750.9333333333333,
-          "end": 761.1199999999999
+          "start": 567.7466666666666,
+          "end": 577.9333333333332,
+          "sourceChapter": "controls",
+          "sourceLine": 0
         },
         {
           "speaker": "z",
           "text": "最初の編成みたいに、守りの行動に寄りすぎないようにするのだ。",
           "voice_id": 3,
           "spoken": "最初の編成みたいに、守りの行動に寄りすぎないようにするのだ。",
-          "wav": "artifacts/diary-part2/speech/7bf65c8da7c59d046ffbd315.wav",
+          "wav": "artifacts/diary-part2/speech/7bf65c8da7c59d046ffbd315.flac",
           "duration": 4.96,
-          "start": 761.26,
-          "end": 766.22
+          "start": 578.0633333333333,
+          "end": 583.0233333333333,
+          "sourceChapter": "controls",
+          "sourceLine": 1
         },
         {
           "speaker": "t",
           "text": "ルネットを入れたのに、見たい攻撃を全然使わない。そういうすれ違いを、操作で減らすんだね。",
           "voice_id": 8,
           "spoken": "ルネットを入れたのに、見たい攻撃を全然使わない。そういうすれ違いを、操作で減らすんだね。",
-          "wav": "artifacts/diary-part2/speech/6d53965e43b1c0463f679f1e.wav",
+          "wav": "artifacts/diary-part2/speech/6d53965e43b1c0463f679f1e.flac",
           "duration": 6.293333333333333,
-          "start": 766.36,
-          "end": 772.6533333333333
+          "start": 583.1533333333333,
+          "end": 589.4466666666666,
+          "sourceChapter": "controls",
+          "sourceLine": 2
         },
         {
           "speaker": "m",
           "text": "そう。必殺が使えるときは必殺を予約。回復薬も使うし、他の仲間の必殺も、準備ができたら戦況を見て使っているわ。",
           "voice_id": 2,
           "spoken": "そう。必殺が使えるときは必殺を予約。回復薬も使うし、他の仲間の必殺も、準備ができたら戦況を見て使っているわ。",
-          "wav": "artifacts/diary-part2/speech/129877ed843cef02d8e4bf22.wav",
+          "wav": "artifacts/diary-part2/speech/129877ed843cef02d8e4bf22.flac",
           "duration": 9.344,
-          "start": 772.7933333333333,
-          "end": 782.1373333333333
-        },
-        {
-          "speaker": "z",
-          "text": "ゲージが溜まったら、どんなときでも全員即発動、とはしていないのだ。回復担当は、回復が必要かも見るのだ。",
-          "voice_id": 3,
-          "spoken": "ゲージが溜まったら、どんなときでも全員即発動、とはしていないのだ。回復担当は、回復が必要かも見るのだ。",
-          "wav": "artifacts/diary-part2/speech/52d24a43d276525b730db25b.wav",
-          "duration": 8.874666666666666,
-          "start": 782.2773333333333,
-          "end": 791.152
-        },
-        {
-          "speaker": "m",
-          "text": "狙う敵も選ぶけれど、かばうによって単体攻撃の行き先が変わる場面があるわ。狙いと実際の着弾は、分けて見ましょう。",
-          "voice_id": 2,
-          "spoken": "狙う敵も選ぶけれど、かばうによって単体攻撃の行き先が変わる場面があるわ。狙いと実際の着弾は、分けて見ましょう。",
-          "wav": "artifacts/diary-part2/speech/f95456894c281aba0f9aa1b7.wav",
-          "duration": 8.341333333333333,
-          "start": 791.292,
-          "end": 799.6333333333333
-        },
-        {
-          "speaker": "t",
-          "text": "あと、アテナのリーダースキルを使いながら、ルネットのリーダースキルまで同時に使った気にならないことね。",
-          "voice_id": 8,
-          "spoken": "あと、アテナのリーダースキルを使いながら、ルネットのリーダースキルまで同時に使った気にならないことね。",
-          "wav": "artifacts/diary-part2/speech/8296b98e48d6d27245f1d5e9.wav",
-          "duration": 6.453333333333333,
-          "start": 799.7733333333333,
-          "end": 806.2266666666667
+          "start": 589.5766666666666,
+          "end": 598.9206666666666,
+          "sourceChapter": "controls",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "まさにそれ。今回のリーダーはアテナ。ルネットのリーダー効果を、この編成の火力として数えないわ。",
           "voice_id": 2,
           "spoken": "まさにそれ。今回のリーダーはアテナ。ルネットのリーダー効果を、この編成の火力として数えないわ。",
-          "wav": "artifacts/diary-part2/speech/f2ea790387199d0abb744734.wav",
+          "wav": "artifacts/diary-part2/speech/f2ea790387199d0abb744734.flac",
           "duration": 6.709333333333333,
-          "start": 806.3666666666667,
-          "end": 813.076
+          "start": 599.0506666666666,
+          "end": 605.76,
+          "sourceChapter": "controls",
+          "sourceLine": 7
         },
         {
           "speaker": "z",
           "text": "好きなキャラの能力を、説明だけで二重取りしないのだ。",
           "voice_id": 3,
           "spoken": "好きなキャラの能力を、説明だけで二重取りしないのだ。",
-          "wav": "artifacts/diary-part2/speech/f64ff9d0b8459a0b9c84d1e5.wav",
+          "wav": "artifacts/diary-part2/speech/f64ff9d0b8459a0b9c84d1e5.flac",
           "duration": 4.1386666666666665,
-          "start": 813.216,
-          "end": 817.3546666666667
+          "start": 605.89,
+          "end": 610.0286666666667,
+          "sourceChapter": "controls",
+          "sourceLine": 8
         },
         {
           "speaker": "t",
           "text": "よし、かわいさも役割も準備できた！　今度は、時間切れになる前に終わらせよ！",
           "voice_id": 8,
           "spoken": "よし、かわいさも役割も準備できた！　今度は、時間切れになる前に終わらせよ！",
-          "wav": "artifacts/diary-part2/speech/3761c8f1a4c6d39d8f334ac6.wav",
+          "wav": "artifacts/diary-part2/speech/3761c8f1a4c6d39d8f334ac6.flac",
           "duration": 5.8773333333333335,
-          "start": 817.4946666666667,
-          "end": 823.3720000000001
+          "start": 610.1586666666666,
+          "end": 616.036,
+          "sourceChapter": "controls",
+          "sourceLine": 9
         }
       ],
-      "start": 750.6333333333333,
-      "duration": 73.23333333333333
+      "start": 567.5666666666666,
+      "duration": 48.9
     },
     {
       "id": "battle1",
@@ -1369,166 +1265,198 @@
           "text": "それじゃあ、再挑戦なのだ！　覚醒ルネット、ノクス、アテナ、弁才天で出発するのだ！",
           "voice_id": 3,
           "spoken": "それじゃあ、再挑戦なのだ！　覚醒ルネット、ノクス、アテナ、弁才天で出発するのだ！",
-          "wav": "artifacts/diary-part2/speech/8b3170d66089aaeb0fdd192b.wav",
+          "wav": "artifacts/diary-part2/speech/8b3170d66089aaeb0fdd192b.flac",
           "duration": 7.562666666666667,
-          "start": 824.1666666666666,
-          "end": 831.7293333333333
+          "start": 616.6466666666665,
+          "end": 624.2093333333332,
+          "sourceChapter": "battle1",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "前より攻撃する人が増えたね。まずは全員に当てて、守りの外から削ろ！",
           "voice_id": 8,
           "spoken": "前より攻撃する人が増えたね。まずは全員に当てて、守りの外から削ろ！",
-          "wav": "artifacts/diary-part2/speech/41748f2ea8e5491ea55e0233.wav",
+          "wav": "artifacts/diary-part2/speech/41748f2ea8e5491ea55e0233.flac",
           "duration": 5.141333333333334,
-          "start": 831.8693333333333,
-          "end": 837.0106666666667
+          "start": 624.3393333333332,
+          "end": 629.4806666666666,
+          "sourceChapter": "battle1",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "ここからは、実際の再挑戦を順番に追うわ。戦闘の区切りで解説を挟むけれど、別の勝ち戦をつなぎ合わせた映像ではないの。",
           "voice_id": 2,
           "spoken": "ここからは、実際の再挑戦を順番に追うわ。戦闘の区切りで解説を挟むけれど、別の勝ち戦をつなぎ合わせた映像ではないの。",
-          "wav": "artifacts/diary-part2/speech/449a2cc97088fa5fc5331c41.wav",
+          "wav": "artifacts/diary-part2/speech/449a2cc97088fa5fc5331c41.flac",
           "duration": 9.269333333333334,
-          "start": 837.1506666666667,
-          "end": 846.42
+          "start": 629.6106666666666,
+          "end": 638.8799999999999,
+          "sourceChapter": "battle1",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "ルネットの予約を選んで、ラウンドを進めるのだ。見た目が派手でも、相手の体力はまだ多いのだ。",
           "voice_id": 3,
           "spoken": "ルネットの予約を選んで、ラウンドを進めるのだ。見た目が派手でも、相手の体力はまだ多いのだ。",
-          "wav": "artifacts/diary-part2/speech/58b05c65fcb46d0bb8a0023d.wav",
+          "wav": "artifacts/diary-part2/speech/58b05c65fcb46d0bb8a0023d.flac",
           "duration": 7.402666666666667,
-          "start": 846.5600000000001,
-          "end": 853.9626666666667
+          "start": 639.0099999999999,
+          "end": 646.4126666666665,
+          "sourceChapter": "battle1",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "最初の一発で終わらないからこそ、次の動きまで考えたいじゃん。ルネットが待ってる間も、ノクスが働けるのがいいね。",
           "voice_id": 8,
           "spoken": "最初の一発で終わらないからこそ、次の動きまで考えたいじゃん。ルネットが待ってる間も、ノクスが働けるのがいいね。",
-          "wav": "artifacts/diary-part2/speech/c66552643f136c83910790c4.wav",
+          "wav": "artifacts/diary-part2/speech/c66552643f136c83910790c4.flac",
           "duration": 7.850666666666666,
-          "start": 854.1026666666667,
-          "end": 861.9533333333334
+          "start": 646.5426666666666,
+          "end": 654.3933333333333,
+          "sourceChapter": "battle1",
+          "sourceLine": 4
         },
         {
           "speaker": "m",
           "text": "全体攻撃で三体を削りながら、単体攻撃で数を減らす準備をする。この二つを同時に進めたいの。",
           "voice_id": 2,
           "spoken": "全体攻撃で三体を削りながら、単体攻撃で数を減らす準備をする。この二つを同時に進めたいの。",
-          "wav": "artifacts/diary-part2/speech/c003626128201d441eb39566.wav",
+          "wav": "artifacts/diary-part2/speech/c003626128201d441eb39566.flac",
           "duration": 7.232,
-          "start": 862.0933333333334,
-          "end": 869.3253333333333
+          "start": 654.5233333333333,
+          "end": 661.7553333333333,
+          "sourceChapter": "battle1",
+          "sourceLine": 5
         },
         {
           "speaker": "z",
           "text": "リオラが守っているから、狙った魔女だけ一直線に削れるわけじゃないのだ。",
           "voice_id": 3,
           "spoken": "リオラが守っているから、狙った魔女だけ一直線に削れるわけじゃないのだ。",
-          "wav": "artifacts/diary-part2/speech/ee0d63824802d9006ddc3018.wav",
+          "wav": "artifacts/diary-part2/speech/ee0d63824802d9006ddc3018.flac",
           "duration": 5.237333333333333,
-          "start": 869.4653333333333,
-          "end": 874.7026666666667
+          "start": 661.8853333333333,
+          "end": 667.1226666666666,
+          "sourceChapter": "battle1",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "その分、全体が削れてれば、守る人も守られる人も、ずっと無傷じゃいられないね。",
           "voice_id": 8,
           "spoken": "その分、全体が削れてれば、守る人も守られる人も、ずっと無傷じゃいられないね。",
-          "wav": "artifacts/diary-part2/speech/2c7f3ec17db7d5fbb093717c.wav",
+          "wav": "artifacts/diary-part2/speech/2c7f3ec17db7d5fbb093717c.flac",
           "duration": 5.984,
-          "start": 874.8426666666667,
-          "end": 880.8266666666667
+          "start": 667.2526666666666,
+          "end": 673.2366666666667,
+          "sourceChapter": "battle1",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "ただし、こちらも無傷で進む保証はないわ。睡眠や魅了で、予定通りに動けないことがあるの。",
           "voice_id": 2,
           "spoken": "ただし、こちらも無傷で進む保証はないわ。睡眠や魅了で、予定通りに動けないことがあるの。",
-          "wav": "artifacts/diary-part2/speech/6723228ec740269c3a045d6f.wav",
+          "wav": "artifacts/diary-part2/speech/6723228ec740269c3a045d6f.flac",
           "duration": 6.762666666666667,
-          "start": 880.9666666666667,
-          "end": 887.7293333333333
+          "start": 673.3666666666666,
+          "end": 680.1293333333332,
+          "sourceChapter": "battle1",
+          "sourceLine": 8
         },
         {
           "speaker": "z",
           "text": "行動を予約したら、絶対にそのまま成功する、じゃないのだ。",
           "voice_id": 3,
           "spoken": "行動を予約したら、絶対にそのまま成功する、じゃないのだ。",
-          "wav": "artifacts/diary-part2/speech/3baee8be4fa4ac4f678d6762.wav",
+          "wav": "artifacts/diary-part2/speech/3baee8be4fa4ac4f678d6762.flac",
           "duration": 4.970666666666666,
-          "start": 887.8693333333333,
-          "end": 892.84
+          "start": 680.2593333333333,
+          "end": 685.23,
+          "sourceChapter": "battle1",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "状態異常を、気合いで無視する解説にしないのがいいね。実際の動きが変わったら、そこを見る。",
           "voice_id": 8,
           "spoken": "状態異常を、気合いで無視する解説にしないのがいいね。実際の動きが変わったら、そこを見る。",
-          "wav": "artifacts/diary-part2/speech/481a6179e193400087f45a25.wav",
+          "wav": "artifacts/diary-part2/speech/481a6179e193400087f45a25.flac",
           "duration": 6.602666666666667,
-          "start": 892.98,
-          "end": 899.5826666666667
+          "start": 685.3599999999999,
+          "end": 691.9626666666666,
+          "sourceChapter": "battle1",
+          "sourceLine": 10
         },
         {
           "speaker": "m",
           "text": "回復薬を使う場面では、体力の割合が低い仲間を優先したわ。薬を使わないことを目標にすると、今回の編成では別の難しさが増えるの。",
           "voice_id": 2,
           "spoken": "回復薬を使う場面では、体力の割合が低い仲間を優先したわ。薬を使わないことを目標にすると、今回の編成では別の難しさが増えるの。",
-          "wav": "artifacts/diary-part2/speech/37ffe481430b60eb2e8a4691.wav",
+          "wav": "artifacts/diary-part2/speech/37ffe481430b60eb2e8a4691.flac",
           "duration": 10.4,
-          "start": 899.7226666666667,
-          "end": 910.1226666666666
+          "start": 692.0926666666666,
+          "end": 702.4926666666665,
+          "sourceChapter": "battle1",
+          "sourceLine": 11
         },
         {
           "speaker": "z",
           "text": "まずは勝てる形を作るのだ。節約は、そのあとに考えるのだ。",
           "voice_id": 3,
           "spoken": "まずは勝てる形を作るのだ。節約は、そのあとに考えるのだ。",
-          "wav": "artifacts/diary-part2/speech/78d410317da66758e1c3a967.wav",
+          "wav": "artifacts/diary-part2/speech/78d410317da66758e1c3a967.flac",
           "duration": 5.109333333333334,
-          "start": 910.2626666666666,
-          "end": 915.372
+          "start": 702.6226666666666,
+          "end": 707.732,
+          "sourceChapter": "battle1",
+          "sourceLine": 12
         },
         {
           "speaker": "t",
           "text": "分かる。初回から、速い、無傷、薬なし、全部盛りはしんどいって！",
           "voice_id": 8,
           "spoken": "分かる。初回から、速い、無傷、薬なし、全部盛りはしんどいって！",
-          "wav": "artifacts/diary-part2/speech/44e34e0ffd8c18349c721b6d.wav",
+          "wav": "artifacts/diary-part2/speech/44e34e0ffd8c18349c721b6d.flac",
           "duration": 6.037333333333334,
-          "start": 915.5120000000001,
-          "end": 921.5493333333334
+          "start": 707.862,
+          "end": 713.8993333333333,
+          "sourceChapter": "battle1",
+          "sourceLine": 13
         },
         {
           "speaker": "m",
           "text": "それでも、薬を使った回数は結果で確認するわ。便利だったものを、なかったことにはしないの。",
           "voice_id": 2,
           "spoken": "それでも、薬を使った回数は結果で確認するわ。便利だったものを、なかったことにはしないの。",
-          "wav": "artifacts/diary-part2/speech/2cfd716bddbf06d40357ba9b.wav",
+          "wav": "artifacts/diary-part2/speech/2cfd716bddbf06d40357ba9b.flac",
           "duration": 6.581333333333333,
-          "start": 921.6893333333334,
-          "end": 928.2706666666667
+          "start": 714.0293333333333,
+          "end": 720.6106666666666,
+          "sourceChapter": "battle1",
+          "sourceLine": 14
         },
         {
           "speaker": "z",
           "text": "今の必殺は、次の章で場面を戻して、詳しく見るのだ！",
           "voice_id": 3,
           "spoken": "今の必殺は、次の章で場面を戻して、詳しく見るのだ！",
-          "wav": "artifacts/diary-part2/speech/ccc924c6b898f3525eeb3360.wav",
+          "wav": "artifacts/diary-part2/speech/ccc924c6b898f3525eeb3360.flac",
           "duration": 4.736,
-          "start": 928.4106666666667,
-          "end": 933.1466666666666
+          "start": 720.7406666666666,
+          "end": 725.4766666666666,
+          "sourceChapter": "battle1",
+          "sourceLine": 15
         }
       ],
-      "start": 823.8666666666667,
-      "duration": 109.8,
-      "rate": 1.223360656171983,
-      "playDuration": 109.8
+      "start": 616.4666666666666,
+      "duration": 109.43333333333334,
+      "rate": 1.22745964100838,
+      "playDuration": 109.43333333333334
     },
     {
       "id": "ultimate",
@@ -1545,154 +1473,181 @@
           "text": "必殺来たのだ！",
           "voice_id": 3,
           "spoken": "必殺来たのだ！",
-          "wav": "artifacts/diary-part2/speech/838dbc720a18f82de6613af0.wav",
+          "wav": "artifacts/diary-part2/speech/838dbc720a18f82de6613af0.flac",
           "duration": 1.3013333333333332,
-          "start": 933.9666666666666,
-          "end": 935.2679999999999
+          "start": 726.0799999999998,
+          "end": 727.3813333333331,
+          "sourceChapter": "ultimate",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "うさぎ、かわいっ！",
           "voice_id": 8,
           "spoken": "うさぎ、かわいっ！",
-          "wav": "artifacts/diary-part2/speech/4a351933253b6e8398048cf3.wav",
+          "wav": "artifacts/diary-part2/speech/4a351933253b6e8398048cf3.flac",
           "duration": 1.3973333333333333,
-          "start": 935.408,
-          "end": 936.8053333333334
+          "start": 727.5113333333331,
+          "end": 728.9086666666665,
+          "sourceChapter": "ultimate",
+          "sourceLine": 1
         },
         {
           "speaker": "z",
           "text": "当たったのだ！",
           "voice_id": 3,
           "spoken": "当たったのだ！",
-          "wav": "artifacts/diary-part2/speech/1b89b110c12d5c080d65a5cb.wav",
+          "wav": "artifacts/diary-part2/speech/1b89b110c12d5c080d65a5cb.flac",
           "duration": 1.024,
-          "start": 937.4566666666666,
-          "end": 938.4806666666666
+          "start": 729.6899999999998,
+          "end": 730.7139999999998,
+          "sourceChapter": "ultimate",
+          "sourceLine": 2
         },
         {
           "speaker": "t",
           "text": "最後の一発、でっか！",
           "voice_id": 8,
           "spoken": "最後の一発、でっか！",
-          "wav": "artifacts/diary-part2/speech/33eb29788fc182249f379ee4.wav",
+          "wav": "artifacts/diary-part2/speech/33eb29788fc182249f379ee4.flac",
           "duration": 1.9733333333333334,
-          "start": 938.9679383500417,
-          "end": 940.941271683375
+          "start": 731.2012716833749,
+          "end": 733.1746050167083,
+          "sourceChapter": "ultimate",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "星時計、うさぎ座の大行進。連射と最後の一撃に合わせて、元のダメージが分割表示されているわ。弾の数だけ、新しい追加攻撃が増えたわけではないの。",
           "voice_id": 2,
           "spoken": "星時計、うさぎ座の大行進。連射と最後の一撃に合わせて、元のダメージが分割表示されているわ。弾の数だけ、新しい追加攻撃が増えたわけではないの。",
-          "wav": "artifacts/diary-part2/speech/e5fb48e2b2ce0b63fc98e0c3.wav",
+          "wav": "artifacts/diary-part2/speech/e5fb48e2b2ce0b63fc98e0c3.flac",
           "duration": 11.530666666666667,
-          "start": 941.081271683375,
-          "end": 952.6119383500417
+          "start": 733.3046050167083,
+          "end": 744.8352716833749,
+          "sourceChapter": "ultimate",
+          "sourceLine": 4
         },
         {
           "speaker": "t",
           "text": "これは気分上がる！　うさぎ、ちゃんと照準合わせてるじゃん。かわいさで油断させるタイプだ！",
           "voice_id": 8,
           "spoken": "これは気分上がる！　うさぎ、ちゃんと照準合わせてるじゃん。かわいさで油断させるタイプだ！",
-          "wav": "artifacts/diary-part2/speech/2139df4703769b5b2cd5dea2.wav",
+          "wav": "artifacts/diary-part2/speech/2139df4703769b5b2cd5dea2.flac",
           "duration": 5.888,
-          "start": 952.7519383500417,
-          "end": 958.6399383500417
+          "start": 744.9652716833749,
+          "end": 750.8532716833749,
+          "sourceChapter": "ultimate",
+          "sourceLine": 5
+        },
+        {
+          "speaker": "t",
+          "text": "うさぎの出勤だけ、統率めっちゃ良くない？",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/4cdba9f9f7086a9b36142b8f.flac",
+          "duration": 2.901333,
+          "voice_id": 8,
+          "start": 750.9832716833749,
+          "end": 753.884604683375
+        },
+        {
+          "speaker": "z",
+          "text": "うちの編成より、連携できてるのだ！",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/6f40dc8cecf3d8b7559c11cf.flac",
+          "duration": 3.029333,
+          "voice_id": 3,
+          "start": 753.9746046833749,
+          "end": 757.0039376833748
+        },
+        {
+          "speaker": "m",
+          "text": "その反省を、次のラウンドに活かして。",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/ae0d2dc269326154cee66ab0.flac",
+          "duration": 2.688,
+          "voice_id": 2,
+          "start": 757.0939376833749,
+          "end": 759.7819376833748
         },
         {
           "speaker": "m",
           "text": "基礎になるのは、攻撃力の百九十パーセントの全体必殺。かばうで一人に引き受けられないのが、この相手には分かりやすい利点よ。",
           "voice_id": 2,
           "spoken": "基礎になるのは、攻撃力の百九十パーセントの全体必殺。かばうで一人に引き受けられないのが、この相手には分かりやすい利点よ。",
-          "wav": "artifacts/diary-part2/speech/94363d0488b63734028d15d9.wav",
+          "wav": "artifacts/diary-part2/speech/94363d0488b63734028d15d9.flac",
           "duration": 8.821333333333333,
-          "start": 958.7799383500417,
-          "end": 967.601271683375
+          "start": 759.8719376833749,
+          "end": 768.6932710167082,
+          "sourceChapter": "ultimate",
+          "sourceLine": 6
         },
         {
           "speaker": "z",
           "text": "百九十っていうのは、画面に毎回同じダメージが出るって意味ではないのだ？",
           "voice_id": 3,
           "spoken": "百九十っていうのは、画面に毎回同じダメージが出るって意味ではないのだ？",
-          "wav": "artifacts/diary-part2/speech/8b0b1de6c659b66ee8ebf47d.wav",
+          "wav": "artifacts/diary-part2/speech/8b0b1de6c659b66ee8ebf47d.flac",
           "duration": 5.664,
-          "start": 967.741271683375,
-          "end": 973.405271683375
+          "start": 768.8232710167082,
+          "end": 774.4872710167082,
+          "sourceChapter": "ultimate",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "ええ。実際のダメージは、攻撃側の状態や、敵の防御、ほかの補正でも変わるわ。今回の画面の数字が、そのまま全員の固定値ではないの。",
           "voice_id": 2,
           "spoken": "ええ。実際のダメージは、攻撃側の状態や、敵の防御、ほかの補正でも変わるわ。今回の画面の数字が、そのまま全員の固定値ではないの。",
-          "wav": "artifacts/diary-part2/speech/c169832cde504da4bb360b19.wav",
+          "wav": "artifacts/diary-part2/speech/c169832cde504da4bb360b19.flac",
           "duration": 10.890666666666666,
-          "start": 973.545271683375,
-          "end": 984.4359383500416
-        },
-        {
-          "speaker": "t",
-          "text": "あと、うさぎがいっぱい見えるから、ずっと追加攻撃してくれる、とは限らないんだよね。",
-          "voice_id": 8,
-          "spoken": "あと、うさぎがいっぱい見えるから、ずっと追加攻撃してくれる、とは限らないんだよね。",
-          "wav": "artifacts/diary-part2/speech/ca5f1388fa846146bb1b4ff1.wav",
-          "duration": 6.058666666666666,
-          "start": 984.5759383500417,
-          "end": 990.6346050167084
+          "start": 774.6172710167082,
+          "end": 785.5079376833748,
+          "sourceChapter": "ultimate",
+          "sourceLine": 8
         },
         {
           "speaker": "m",
           "text": "そう。この必殺は、複数のビットが登場する演出を持つ全体攻撃。常設の敵ビットを味方に増やす能力としては数えないわ。",
           "voice_id": 2,
           "spoken": "そう。この必殺は、複数のビットが登場する演出を持つ全体攻撃。常設の敵ビットを味方に増やす能力としては数えないわ。",
-          "wav": "artifacts/diary-part2/speech/6dfe9824cba7ce4a5464d908.wav",
+          "wav": "artifacts/diary-part2/speech/6dfe9824cba7ce4a5464d908.flac",
           "duration": 9.205333333333334,
-          "start": 990.7746050167084,
-          "end": 999.9799383500417
-        },
-        {
-          "speaker": "z",
-          "text": "演出の弾が何個もあるから、全部が独立した通常攻撃、という解説もしないのだ。",
-          "voice_id": 3,
-          "spoken": "演出の弾が何個もあるから、全部が独立した通常攻撃、という解説もしないのだ。",
-          "wav": "artifacts/diary-part2/speech/2c8a94b60eb0f6da54a6234d.wav",
-          "duration": 6.890666666666666,
-          "start": 1000.1199383500417,
-          "end": 1007.0106050167084
-        },
-        {
-          "speaker": "t",
-          "text": "盛れるところと、盛っちゃだめな説明、分けるやつね。見た目は思いっきり盛ってて最高！",
-          "voice_id": 8,
-          "spoken": "盛れるところと、盛っちゃだめな説明、分けるやつね。見た目は思いっきり盛ってて最高！",
-          "wav": "artifacts/diary-part2/speech/6f3c8187a4eb4fc12e677272.wav",
-          "duration": 5.866666666666666,
-          "start": 1007.1506050167084,
-          "end": 1013.017271683375
+          "start": 785.637937683375,
+          "end": 794.8432710167083,
+          "sourceChapter": "ultimate",
+          "sourceLine": 10
         },
         {
           "speaker": "m",
           "text": "それと、睡眠や魅了をまとめて治す必殺ではないわ。全体に当たることと、味方の状態を治すことは、別の仕事よ。",
           "voice_id": 2,
           "spoken": "それと、睡眠や魅了をまとめて治す必殺ではないわ。全体に当たることと、味方の状態を治すことは、別の仕事よ。",
-          "wav": "artifacts/diary-part2/speech/e1fc6f76c467c5390d88303f.wav",
+          "wav": "artifacts/diary-part2/speech/e1fc6f76c467c5390d88303f.flac",
           "duration": 8.586666666666666,
-          "start": 1013.157271683375,
-          "end": 1021.7439383500417
+          "start": 794.9732710167083,
+          "end": 803.559937683375,
+          "sourceChapter": "ultimate",
+          "sourceLine": 13
         },
         {
           "speaker": "z",
           "text": "ルネットの仕事をちゃんと分けると、他の三人が必要な理由も分かるのだ。",
           "voice_id": 3,
           "spoken": "ルネットの仕事をちゃんと分けると、他の三人が必要な理由も分かるのだ。",
-          "wav": "artifacts/diary-part2/speech/88aaa0ef429c54b3e599dcc2.wav",
+          "wav": "artifacts/diary-part2/speech/88aaa0ef429c54b3e599dcc2.flac",
           "duration": 5.376,
-          "start": 1021.8839383500417,
-          "end": 1027.2599383500417
+          "start": 803.6899376833749,
+          "end": 809.0659376833748,
+          "sourceChapter": "ultimate",
+          "sourceLine": 14
         }
       ],
-      "start": 933.6666666666666,
-      "duration": 94.1,
+      "start": 725.8999999999999,
+      "duration": 83.56666666666666,
       "rate": 1,
       "playDuration": 8.0
     },
@@ -1711,196 +1666,248 @@
           "text": "さっきの必殺で終わり、じゃなくて、このあとも戦闘が続くんだね。",
           "voice_id": 8,
           "spoken": "さっきの必殺で終わり、じゃなくて、このあとも戦闘が続くんだね。",
-          "wav": "artifacts/diary-part2/speech/557711377f97bf705191403b.wav",
+          "wav": "artifacts/diary-part2/speech/557711377f97bf705191403b.flac",
           "duration": 4.554666666666667,
-          "start": 1028.0666666666666,
-          "end": 1032.6213333333333
+          "start": 809.6466666666664,
+          "end": 814.2013333333331,
+          "sourceChapter": "battle2",
+          "sourceLine": 0
         },
         {
           "speaker": "m",
           "text": "ええ。敵はまだ耐えるわ。ここからは、一体ずつ数が減ったときに、全体攻撃と単体攻撃の価値がどう変わるかを見るの。",
           "voice_id": 2,
           "spoken": "ええ。敵はまだ耐えるわ。ここからは、一体ずつ数が減ったときに、全体攻撃と単体攻撃の価値がどう変わるかを見るの。",
-          "wav": "artifacts/diary-part2/speech/7e05eac352428cef03143580.wav",
+          "wav": "artifacts/diary-part2/speech/7e05eac352428cef03143580.flac",
           "duration": 8.906666666666666,
-          "start": 1032.7613333333334,
-          "end": 1041.6680000000001
+          "start": 814.3313333333332,
+          "end": 823.2379999999998,
+          "sourceChapter": "battle2",
+          "sourceLine": 1
         },
         {
           "speaker": "z",
           "text": "三体に当たる攻撃が、一体にしか当たらなくなったら、同じ得した感ではないのだ。",
           "voice_id": 3,
           "spoken": "三体に当たる攻撃が、一体にしか当たらなくなったら、同じ得した感ではないのだ。",
-          "wav": "artifacts/diary-part2/speech/9b5dd54c86ea37ac2c90bf78.wav",
+          "wav": "artifacts/diary-part2/speech/9b5dd54c86ea37ac2c90bf78.flac",
           "duration": 6.314666666666667,
-          "start": 1041.808,
-          "end": 1048.1226666666666
+          "start": 823.3679999999998,
+          "end": 829.6826666666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 2
         },
         {
           "speaker": "m",
           "text": "敵の数が少なくなれば、ノクスのように一体を削る役の比重も上がるわ。だから、ルネットとノクスを両方残したの。",
           "voice_id": 2,
           "spoken": "敵の数が少なくなれば、ノクスのように一体を削る役の比重も上がるわ。だから、ルネットとノクスを両方残したの。",
-          "wav": "artifacts/diary-part2/speech/c488b4e2c21b07818ff32df1.wav",
+          "wav": "artifacts/diary-part2/speech/c488b4e2c21b07818ff32df1.flac",
           "duration": 7.808,
-          "start": 1048.2626666666667,
-          "end": 1056.0706666666667
+          "start": 829.8126666666665,
+          "end": 837.6206666666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "ずっと同じ子だけが主役、じゃなくて、敵が減ると見せ場が移る。パーティっぽくていいじゃん。",
           "voice_id": 8,
           "spoken": "ずっと同じ子だけが主役、じゃなくて、敵が減ると見せ場が移る。パーティっぽくていいじゃん。",
-          "wav": "artifacts/diary-part2/speech/9358d5837cd9bde896de9ed0.wav",
+          "wav": "artifacts/diary-part2/speech/9358d5837cd9bde896de9ed0.flac",
           "duration": 5.9093333333333335,
-          "start": 1056.2106666666666,
-          "end": 1062.12
+          "start": 837.7506666666665,
+          "end": 843.6599999999997,
+          "sourceChapter": "battle2",
+          "sourceLine": 4
         },
         {
           "speaker": "z",
           "text": "リオラが倒れると、かばうで受けられる心配も変わるのだ。狙ってた相手に攻撃を通しやすくなるのだ。",
           "voice_id": 3,
           "spoken": "リオラが倒れると、かばうで受けられる心配も変わるのだ。狙ってた相手に攻撃を通しやすくなるのだ。",
-          "wav": "artifacts/diary-part2/speech/43f2ccd53fd76803c30bd9ee.wav",
+          "wav": "artifacts/diary-part2/speech/43f2ccd53fd76803c30bd9ee.flac",
           "duration": 7.530666666666667,
-          "start": 1062.26,
-          "end": 1069.7906666666668
+          "start": 843.7899999999998,
+          "end": 851.3206666666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "ただ、リオラが倒れたから、残りの睡眠や魅了まで消える、という意味ではないわ。まだ残っている敵の技を確認するの。",
           "voice_id": 2,
           "spoken": "ただ、リオラが倒れたから、残りの睡眠や魅了まで消える、という意味ではないわ。まだ残っている敵の技を確認するの。",
-          "wav": "artifacts/diary-part2/speech/7f76a68f997d8fbb2c384528.wav",
+          "wav": "artifacts/diary-part2/speech/7f76a68f997d8fbb2c384528.flac",
           "duration": 8.149333333333333,
-          "start": 1069.9306666666666,
-          "end": 1078.08
+          "start": 851.4506666666665,
+          "end": 859.5999999999998,
+          "sourceChapter": "battle2",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "タンク倒した！　勝った！　で気を抜いたら、蛾に寝かされるやつだ。",
           "voice_id": 8,
           "spoken": "タンク倒した！　勝った！　で気を抜いたら、蛾に寝かされるやつだ。",
-          "wav": "artifacts/diary-part2/speech/74e11d0d43cd77f330a441b1.wav",
+          "wav": "artifacts/diary-part2/speech/74e11d0d43cd77f330a441b1.flac",
           "duration": 4.416,
-          "start": 1078.22,
-          "end": 1082.636
+          "start": 859.7299999999998,
+          "end": 864.1459999999998,
+          "sourceChapter": "battle2",
+          "sourceLine": 7
         },
         {
           "speaker": "z",
           "text": "お祝いしてる場合じゃないのだ。操作するのだ。",
           "voice_id": 3,
           "spoken": "お祝いしてる場合じゃないのだ。操作するのだ。",
-          "wav": "artifacts/diary-part2/speech/65225a843bba0825b7e06df9.wav",
+          "wav": "artifacts/diary-part2/speech/65225a843bba0825b7e06df9.flac",
           "duration": 3.2533333333333334,
-          "start": 1082.776,
-          "end": 1086.0293333333334
+          "start": 864.2759999999998,
+          "end": 867.5293333333332,
+          "sourceChapter": "battle2",
+          "sourceLine": 8
         },
         {
           "speaker": "m",
           "text": "回復が必要な場面では、火力だけを追いすぎない。攻撃役を増やしても、倒れれば手数が減るのは同じだからね。",
           "voice_id": 2,
           "spoken": "回復が必要な場面では、火力だけを追いすぎない。攻撃役を増やしても、倒れれば手数が減るのは同じだからね。",
-          "wav": "artifacts/diary-part2/speech/559efd1d9ae00374d0095efe.wav",
+          "wav": "artifacts/diary-part2/speech/559efd1d9ae00374d0095efe.flac",
           "duration": 7.733333333333333,
-          "start": 1086.1693333333333,
-          "end": 1093.9026666666666
+          "start": 867.6593333333332,
+          "end": 875.3926666666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "守りすぎて時間切れもだめ、攻めすぎて倒れるのもだめ。今回はその間を探してるんだね。",
           "voice_id": 8,
           "spoken": "守りすぎて時間切れもだめ、攻めすぎて倒れるのもだめ。今回はその間を探してるんだね。",
-          "wav": "artifacts/diary-part2/speech/1e69eb028643a1d697a30896.wav",
+          "wav": "artifacts/diary-part2/speech/1e69eb028643a1d697a30896.flac",
           "duration": 5.898666666666666,
-          "start": 1094.0426666666667,
-          "end": 1099.9413333333334
+          "start": 875.5226666666665,
+          "end": 881.4213333333332,
+          "sourceChapter": "battle2",
+          "sourceLine": 10
         },
         {
           "speaker": "m",
           "text": "巻戻しの石があっても、使える行動は毎回同じではないわ。通常スキルの待ち時間と、石の待ち時間、必殺ゲージを別々に見るの。",
           "voice_id": 2,
           "spoken": "巻戻しの石があっても、使える行動は毎回同じではないわ。通常スキルの待ち時間と、石の待ち時間、必殺ゲージを別々に見るの。",
-          "wav": "artifacts/diary-part2/speech/d7524c3b48df6f7336d50a81.wav",
+          "wav": "artifacts/diary-part2/speech/d7524c3b48df6f7336d50a81.flac",
           "duration": 9.738666666666667,
-          "start": 1100.0813333333333,
-          "end": 1109.82
+          "start": 881.5513333333331,
+          "end": 891.2899999999997,
+          "sourceChapter": "battle2",
+          "sourceLine": 11
         },
         {
           "speaker": "z",
           "text": "全部ひとまとめに、もう一回使える、って思わないのだ。",
           "voice_id": 3,
           "spoken": "全部ひとまとめに、もう一回使える、って思わないのだ。",
-          "wav": "artifacts/diary-part2/speech/62e0108fb3b4caf1220660f3.wav",
+          "wav": "artifacts/diary-part2/speech/62e0108fb3b4caf1220660f3.flac",
           "duration": 4.693333333333333,
-          "start": 1109.96,
-          "end": 1114.6533333333334
-        },
-        {
-          "speaker": "t",
-          "text": "妖精さんも来てる！　ちっちゃくてかわいいじゃん。こういう助けもあるんだね。",
-          "voice_id": 8,
-          "spoken": "妖精さんも来てる！　ちっちゃくてかわいいじゃん。こういう助けもあるんだね。",
-          "wav": "artifacts/diary-part2/speech/3bfe2a2efaf1da6e2966025f.wav",
-          "duration": 4.501333333333333,
-          "start": 1114.7933333333333,
-          "end": 1119.2946666666667
-        },
-        {
-          "speaker": "m",
-          "text": "今回の成功戦では、訪れた妖精の助けを四回使っているわ。さらに戦場の花も十一回利用したわ。出会いを含んだ結果で、こうした助けを抜いた確定手順ではないの。",
-          "voice_id": 2,
-          "spoken": "今回の成功戦では、訪れた妖精の助けを四回使っているわ。さらに戦場の花も十一回利用したわ。出会いを含んだ結果で、こうした助けを抜いた確定手順ではないの。",
-          "wav": "artifacts/diary-part2/speech/1e010c06021d42b85c3880a1.wav",
-          "duration": 11.925333333333333,
-          "start": 1119.4346666666665,
-          "end": 1131.36
-        },
-        {
-          "speaker": "z",
-          "text": "ぼくも妖精なのだ。でも、ゲームの中に入って助けたわけじゃないのだ。",
-          "voice_id": 3,
-          "spoken": "ぼくも妖精なのだ。でも、ゲームの中に入って助けたわけじゃないのだ。",
-          "wav": "artifacts/diary-part2/speech/6fb0f6edbebd4225d1281e0a.wav",
-          "duration": 5.354666666666667,
-          "start": 1131.5,
-          "end": 1136.8546666666666
-        },
-        {
-          "speaker": "t",
-          "text": "そこは分かるって！　画面の派手さだけじゃなく、小さい判断と出会いも、勝ちにつながったんだね。",
-          "voice_id": 8,
-          "spoken": "そこは分かるって！　画面の派手さだけじゃなく、小さい判断と出会いも、勝ちにつながったんだね。",
-          "wav": "artifacts/diary-part2/speech/a916ca5c9b5f5fb828c733ef.wav",
-          "duration": 6.24,
-          "start": 1136.9946666666667,
-          "end": 1143.2346666666667
-        },
-        {
-          "speaker": "m",
-          "text": "そして、前回の編成でも第二層に勝つ条件はあるわ。今回は、前の編成では絶対勝てない、と証明した動画ではないの。",
-          "voice_id": 2,
-          "spoken": "そして、前回の編成でも第二層に勝つ条件はあるわ。今回は、前の編成では絶対勝てない、と証明した動画ではないの。",
-          "wav": "artifacts/diary-part2/speech/0f738862789ece549a77d7fd.wav",
-          "duration": 8.981333333333334,
-          "start": 1143.3746666666666,
-          "end": 1152.356
+          "start": 891.4199999999998,
+          "end": 896.1133333333332,
+          "sourceChapter": "battle2",
+          "sourceLine": 12
         },
         {
           "speaker": "z",
           "text": "新しい仲間を使って、違う役割分担で勝つ。それを見せたいのだ。",
           "voice_id": 3,
           "spoken": "新しい仲間を使って、違う役割分担で勝つ。それを見せたいのだ。",
-          "wav": "artifacts/diary-part2/speech/f6b6e03d6e2b4da42c247166.wav",
+          "wav": "artifacts/diary-part2/speech/f6b6e03d6e2b4da42c247166.flac",
           "duration": 5.514666666666667,
-          "start": 1152.4959999999999,
-          "end": 1158.0106666666666
+          "start": 896.2433333333331,
+          "end": 901.7579999999998,
+          "sourceChapter": "battle2",
+          "sourceLine": 18
         }
       ],
-      "start": 1027.7666666666667,
-      "duration": 130.76666666666668,
-      "rate": 1.2531863369869995,
-      "playDuration": 130.76666666666668
+      "start": 809.4666666666665,
+      "duration": 92.7,
+      "rate": 1.767799352750809,
+      "playDuration": 92.7
+    },
+    {
+      "id": "fairy",
+      "title": "ちょっと待って、妖精さん！",
+      "bullets": [
+        "再掲：この戦いで使った助け",
+        "妖精4回／戦場の花11回"
+      ],
+      "clip": "fairy",
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "妖精が来た場面を、ここでもう一度。",
+          "new": true,
+          "tag": "",
+          "wav": "artifacts/diary-part2-v2/speech/87fbb5b06dca08e7e6403ae3.flac",
+          "duration": 2.602667,
+          "voice_id": 2,
+          "start": 902.3466666666665,
+          "end": 904.9493336666665
+        },
+        {
+          "speaker": "t",
+          "text": "妖精さんも来てる！　ちっちゃくてかわいいじゃん。こういう助けもあるんだね。",
+          "voice_id": 8,
+          "spoken": "妖精さんも来てる！　ちっちゃくてかわいいじゃん。こういう助けもあるんだね。",
+          "wav": "artifacts/diary-part2/speech/3bfe2a2efaf1da6e2966025f.flac",
+          "duration": 4.501333333333333,
+          "start": 905.0393336666665,
+          "end": 909.5406669999999,
+          "sourceChapter": "battle2",
+          "sourceLine": 13
+        },
+        {
+          "speaker": "z",
+          "text": "ぼくも妖精なのだ。でも、ゲームの中に入って助けたわけじゃないのだ。",
+          "voice_id": 3,
+          "spoken": "ぼくも妖精なのだ。でも、ゲームの中に入って助けたわけじゃないのだ。",
+          "wav": "artifacts/diary-part2/speech/6fb0f6edbebd4225d1281e0a.flac",
+          "duration": 5.354666666666667,
+          "start": 909.6706669999999,
+          "end": 915.0253336666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 15
+        },
+        {
+          "speaker": "t",
+          "text": "そこは分かるって！　画面の派手さだけじゃなく、小さい判断と出会いも、勝ちにつながったんだね。",
+          "voice_id": 8,
+          "spoken": "そこは分かるって！　画面の派手さだけじゃなく、小さい判断と出会いも、勝ちにつながったんだね。",
+          "wav": "artifacts/diary-part2/speech/a916ca5c9b5f5fb828c733ef.flac",
+          "duration": 6.24,
+          "start": 915.1553336666665,
+          "end": 921.3953336666665,
+          "sourceChapter": "battle2",
+          "sourceLine": 16
+        },
+        {
+          "speaker": "m",
+          "text": "今回の成功戦では、訪れた妖精の助けを四回使っているわ。さらに戦場の花も十一回利用したわ。出会いを含んだ結果で、こうした助けを抜いた確定手順ではないの。",
+          "voice_id": 2,
+          "spoken": "今回の成功戦では、訪れた妖精の助けを四回使っているわ。さらに戦場の花も十一回利用したわ。出会いを含んだ結果で、こうした助けを抜いた確定手順ではないの。",
+          "wav": "artifacts/diary-part2/speech/1e010c06021d42b85c3880a1.flac",
+          "duration": 11.925333333333333,
+          "start": 921.5253336666665,
+          "end": 933.4506669999998,
+          "sourceChapter": "battle2",
+          "sourceLine": 14
+        }
+      ],
+      "start": 902.1666666666665,
+      "duration": 31.7,
+      "rate": 1,
+      "playDuration": 8.866666666666667
     },
     {
       "id": "battle3",
@@ -1917,166 +1924,198 @@
           "text": "さあ、終盤なのだ。最初に時間切れになったときと、残り体力の減り方を見比べたいのだ。",
           "voice_id": 3,
           "spoken": "さあ、終盤なのだ。最初に時間切れになったときと、残り体力の減り方を見比べたいのだ。",
-          "wav": "artifacts/diary-part2/speech/082ee8e9adcaceeb1632d562.wav",
+          "wav": "artifacts/diary-part2/speech/082ee8e9adcaceeb1632d562.flac",
           "duration": 7.232,
-          "start": 1158.8333333333333,
-          "end": 1166.0653333333332
+          "start": 934.0466666666665,
+          "end": 941.2786666666665,
+          "sourceChapter": "battle3",
+          "sourceLine": 0
         },
         {
           "speaker": "t",
           "text": "蛾が残っても、今度は削る人が二人いる。守るだけでラウンドが過ぎないの、やっぱ違うね。",
           "voice_id": 8,
           "spoken": "蛾が残っても、今度は削る人が二人いる。守るだけでラウンドが過ぎないの、やっぱ違うね。",
-          "wav": "artifacts/diary-part2/speech/45456de35d258acc324f4151.wav",
+          "wav": "artifacts/diary-part2/speech/45456de35d258acc324f4151.flac",
           "duration": 6.24,
-          "start": 1166.2053333333333,
-          "end": 1172.4453333333333
+          "start": 941.4086666666666,
+          "end": 947.6486666666666,
+          "sourceChapter": "battle3",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "ただし、この一戦だけから、誰の変更が何ラウンド分効いたかまでは分からないわ。覚醒、編成、先頭の操作を、まとめて見直しているからね。",
           "voice_id": 2,
           "spoken": "ただし、この一戦だけから、誰の変更が何ラウンド分効いたかまでは分からないわ。覚醒、編成、先頭の操作を、まとめて見直しているからね。",
-          "wav": "artifacts/diary-part2/speech/f1a705ff4115f1e25886a11a.wav",
+          "wav": "artifacts/diary-part2/speech/f1a705ff4115f1e25886a11a.flac",
           "duration": 10.197333333333333,
-          "start": 1172.5853333333332,
-          "end": 1182.7826666666665
+          "start": 947.7786666666666,
+          "end": 957.9759999999999,
+          "sourceChapter": "battle3",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "二十五ラウンドになった差を、全部ルネットの覚醒だけに配るのは違うのだ。",
           "voice_id": 3,
           "spoken": "二十五ラウンドになった差を、全部ルネットの覚醒だけに配るのは違うのだ。",
-          "wav": "artifacts/diary-part2/speech/b67f3bc9fe1add02704b5ee0.wav",
+          "wav": "artifacts/diary-part2/speech/b67f3bc9fe1add02704b5ee0.flac",
           "duration": 5.450666666666667,
-          "start": 1182.9226666666666,
-          "end": 1188.3733333333332
+          "start": 958.1059999999999,
+          "end": 963.5566666666665,
+          "sourceChapter": "battle3",
+          "sourceLine": 3
         },
         {
           "speaker": "t",
           "text": "でも、改善の方向は分かるね。火力を一人に背負わせず、守りの土台を残して、使いたい技は予約する。",
           "voice_id": 8,
           "spoken": "でも、改善の方向は分かるね。火力を一人に背負わせず、守りの土台を残して、使いたい技は予約する。",
-          "wav": "artifacts/diary-part2/speech/0a4a87b38e58215ccd411470.wav",
+          "wav": "artifacts/diary-part2/speech/0a4a87b38e58215ccd411470.flac",
           "duration": 7.712,
-          "start": 1188.5133333333333,
-          "end": 1196.2253333333333
+          "start": 963.6866666666666,
+          "end": 971.3986666666666,
+          "sourceChapter": "battle3",
+          "sourceLine": 4
         },
         {
           "speaker": "m",
           "text": "その方針で実際に戦って、今回は最後まで進めた。大事なのは、説明だけで勝ったことにしていない点よ。",
           "voice_id": 2,
           "spoken": "その方針で実際に戦って、今回は最後まで進めた。大事なのは、説明だけで勝ったことにしていない点よ。",
-          "wav": "artifacts/diary-part2/speech/0ca1f9c86efcbcc87133656f.wav",
+          "wav": "artifacts/diary-part2/speech/0ca1f9c86efcbcc87133656f.flac",
           "duration": 7.701333333333333,
-          "start": 1196.3653333333334,
-          "end": 1204.0666666666668
+          "start": 971.5286666666666,
+          "end": 979.2299999999999,
+          "sourceChapter": "battle3",
+          "sourceLine": 5
         },
         {
           "speaker": "z",
           "text": "あと少しなのだ。ここで寝て足踏みすると、焦るのだ。",
           "voice_id": 3,
           "spoken": "あと少しなのだ。ここで寝て足踏みすると、焦るのだ。",
-          "wav": "artifacts/diary-part2/speech/e31e23c6b1349d065c561477.wav",
+          "wav": "artifacts/diary-part2/speech/e31e23c6b1349d065c561477.flac",
           "duration": 4.1066666666666665,
-          "start": 1204.2066666666667,
-          "end": 1208.3133333333333
+          "start": 979.3599999999999,
+          "end": 983.4666666666666,
+          "sourceChapter": "battle3",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "焦ると連打しがちだけど、回復とゲージ、ちゃんと見てこ！　せっかくここまで来たんだから。",
           "voice_id": 8,
           "spoken": "焦ると連打しがちだけど、回復とゲージ、ちゃんと見てこ！　せっかくここまで来たんだから。",
-          "wav": "artifacts/diary-part2/speech/858a328373156be956ecb0be.wav",
+          "wav": "artifacts/diary-part2/speech/858a328373156be956ecb0be.flac",
           "duration": 6.165333333333334,
-          "start": 1208.4533333333334,
-          "end": 1214.6186666666667
+          "start": 983.5966666666666,
+          "end": 989.762,
+          "sourceChapter": "battle3",
+          "sourceLine": 7
         },
         {
           "speaker": "m",
           "text": "残り一体でも、敵が倒れるまでは戦闘が続くわ。結果画面を確認するところまで、攻略にしましょう。",
           "voice_id": 2,
           "spoken": "残り一体でも、敵が倒れるまでは戦闘が続くわ。結果画面を確認するところまで、攻略にしましょう。",
-          "wav": "artifacts/diary-part2/speech/7a1cfbc35883cadcfc9b5e0b.wav",
+          "wav": "artifacts/diary-part2/speech/7a1cfbc35883cadcfc9b5e0b.flac",
           "duration": 7.274666666666667,
-          "start": 1214.7586666666666,
-          "end": 1222.0333333333333
+          "start": 989.8919999999999,
+          "end": 997.1666666666666,
+          "sourceChapter": "battle3",
+          "sourceLine": 8
         },
         {
           "speaker": "z",
           "text": "よし、撃破なのだ！　第二層、突破なのだ！",
           "voice_id": 3,
           "spoken": "よし、撃破なのだ！　第二層、突破なのだ！",
-          "wav": "artifacts/diary-part2/speech/543d61232f04e7f4c7954671.wav",
+          "wav": "artifacts/diary-part2/speech/543d61232f04e7f4c7954671.flac",
           "duration": 3.9146666666666667,
-          "start": 1222.1733333333334,
-          "end": 1226.088
+          "start": 997.2966666666665,
+          "end": 1001.2113333333332,
+          "sourceChapter": "battle3",
+          "sourceLine": 9
         },
         {
           "speaker": "t",
           "text": "やったじゃん！　しかも集合写真、全員いる！　これは大優勝！",
           "voice_id": 8,
           "spoken": "やったじゃん！　しかも集合写真、全員いる！　これは大優勝！",
-          "wav": "artifacts/diary-part2/speech/7ece15fe72ee37ddeafa31c4.wav",
+          "wav": "artifacts/diary-part2/speech/7ece15fe72ee37ddeafa31c4.flac",
           "duration": 4.768,
-          "start": 1226.228,
-          "end": 1230.996
+          "start": 1001.3413333333332,
+          "end": 1006.1093333333332,
+          "sourceChapter": "battle3",
+          "sourceLine": 10
         },
         {
           "speaker": "m",
           "text": "記録は二十五ラウンド、回復薬三個。四人とも生存してのクリアよ。",
           "voice_id": 2,
           "spoken": "記録は二十五ラウンド、回復薬三個。四人とも生存してのクリアよ。",
-          "wav": "artifacts/diary-part2/speech/ed0041903170510a232178c7.wav",
+          "wav": "artifacts/diary-part2/speech/ed0041903170510a232178c7.flac",
           "duration": 5.344,
-          "start": 1231.136,
-          "end": 1236.48
+          "start": 1006.2393333333332,
+          "end": 1011.5833333333333,
+          "sourceChapter": "battle3",
+          "sourceLine": 11
         },
         {
           "speaker": "z",
           "text": "最初は四十ラウンドで時間切れ。今回は制限に余裕を残して勝てたのだ。",
           "voice_id": 3,
           "spoken": "最初は四十ラウンドで時間切れ。今回は制限に余裕を残して勝てたのだ。",
-          "wav": "artifacts/diary-part2/speech/40c637386cc7da4318d2ebac.wav",
+          "wav": "artifacts/diary-part2/speech/40c637386cc7da4318d2ebac.flac",
           "duration": 5.674666666666667,
-          "start": 1236.62,
-          "end": 1242.2946666666667
+          "start": 1011.7133333333333,
+          "end": 1017.3879999999999,
+          "sourceChapter": "battle3",
+          "sourceLine": 12
         },
         {
           "speaker": "t",
           "text": "生き残って勝つ、だけじゃなく、ちゃんと倒し切るところまで形になったね。",
           "voice_id": 8,
           "spoken": "生き残って勝つ、だけじゃなく、ちゃんと倒し切るところまで形になったね。",
-          "wav": "artifacts/diary-part2/speech/5dadcc06ad347844d7180b56.wav",
+          "wav": "artifacts/diary-part2/speech/5dadcc06ad347844d7180b56.flac",
           "duration": 4.661333333333333,
-          "start": 1242.4346666666665,
-          "end": 1247.0959999999998
+          "start": 1017.5179999999999,
+          "end": 1022.1793333333333,
+          "sourceChapter": "battle3",
+          "sourceLine": 13
         },
         {
           "speaker": "m",
           "text": "最後に報酬を確定すると、第二層のクリアが記録されて、第三層へ進めるわ。勝利画面だけ見て、受け取りを忘れないでね。",
           "voice_id": 2,
           "spoken": "最後に報酬を確定すると、第二層のクリアが記録されて、第三層へ進めるわ。勝利画面だけ見て、受け取りを忘れないでね。",
-          "wav": "artifacts/diary-part2/speech/c5d4a09eafb8a4b30ea3e833.wav",
+          "wav": "artifacts/diary-part2/speech/c5d4a09eafb8a4b30ea3e833.flac",
           "duration": 8.981333333333334,
-          "start": 1247.2359999999999,
-          "end": 1256.2173333333333
+          "start": 1022.3093333333333,
+          "end": 1031.2906666666665,
+          "sourceChapter": "battle3",
+          "sourceLine": 14
         },
         {
           "speaker": "z",
           "text": "ちゃんと持ち帰るまでが攻略なのだ！",
           "voice_id": 3,
           "spoken": "ちゃんと持ち帰るまでが攻略なのだ！",
-          "wav": "artifacts/diary-part2/speech/212e5aaf84a3199c03274521.wav",
+          "wav": "artifacts/diary-part2/speech/212e5aaf84a3199c03274521.flac",
           "duration": 2.570666666666667,
-          "start": 1256.3573333333334,
-          "end": 1258.928
+          "start": 1031.4206666666666,
+          "end": 1033.9913333333334,
+          "sourceChapter": "battle3",
+          "sourceLine": 15
         }
       ],
-      "start": 1158.5333333333333,
-      "duration": 100.9,
-      "rate": 1.8641774572330851,
-      "playDuration": 63.333333333333336
+      "start": 933.8666666666666,
+      "duration": 100.53333333333333,
+      "rate": 1.8703785861103102,
+      "playDuration": 63.13333333333333
     },
     {
       "id": "review",
@@ -2093,124 +2132,100 @@
           "text": "では、なぜ他のキャラではなく、この四人だったのかを、もう一度整理するわ。",
           "voice_id": 2,
           "spoken": "では、なぜ他のキャラではなく、この四人だったのかを、もう一度整理するわ。",
-          "wav": "artifacts/diary-part2/speech/3b4876cee77d61bd9e583a37.wav",
+          "wav": "artifacts/diary-part2/speech/3b4876cee77d61bd9e583a37.flac",
           "duration": 5.184,
-          "start": 1259.7333333333333,
-          "end": 1264.9173333333333
+          "start": 1034.58,
+          "end": 1039.764,
+          "sourceChapter": "review",
+          "sourceLine": 0
         },
         {
           "speaker": "z",
           "text": "ルネットは、敵が複数いる間に全体を削る役。第二層のかばうを、正面から受けない攻撃ができたのだ。",
           "voice_id": 3,
           "spoken": "ルネットは、敵が複数いる間に全体を削る役。第二層のかばうを、正面から受けない攻撃ができたのだ。",
-          "wav": "artifacts/diary-part2/speech/183d905db7f548a6d4fa20ca.wav",
+          "wav": "artifacts/diary-part2/speech/183d905db7f548a6d4fa20ca.flac",
           "duration": 8.437333333333333,
-          "start": 1265.0573333333334,
-          "end": 1273.4946666666667
-        },
-        {
-          "speaker": "t",
-          "text": "しかも今回は、本人を紹介したい回。使ってみて、どう活躍するかを見せる目的もあったんだよね。",
-          "voice_id": 8,
-          "spoken": "しかも今回は、本人を紹介したい回。使ってみて、どう活躍するかを見せる目的もあったんだよね。",
-          "wav": "artifacts/diary-part2/speech/4f9e2ebf3fada0209bd50949.wav",
-          "duration": 6.965333333333334,
-          "start": 1273.6346666666668,
-          "end": 1280.6000000000001
+          "start": 1039.8939999999998,
+          "end": 1048.331333333333,
+          "sourceChapter": "review",
+          "sourceLine": 1
         },
         {
           "speaker": "m",
           "text": "ノクスは、一体を倒す手数を確保するために残したわ。前回からの石もあり、攻撃と回復特性の両方を引き継げたの。",
           "voice_id": 2,
           "spoken": "ノクスは、一体を倒す手数を確保するために残したわ。前回からの石もあり、攻撃と回復特性の両方を引き継げたの。",
-          "wav": "artifacts/diary-part2/speech/d113d3d3a83b5e60b2e58a1d.wav",
+          "wav": "artifacts/diary-part2/speech/d113d3d3a83b5e60b2e58a1d.flac",
           "duration": 8.512,
-          "start": 1280.74,
-          "end": 1289.252
-        },
-        {
-          "speaker": "z",
-          "text": "だから、ルネットを入れるときに、同じ攻撃役だから外す、で止まらなかったのだ。",
-          "voice_id": 3,
-          "spoken": "だから、ルネットを入れるときに、同じ攻撃役だから外す、で止まらなかったのだ。",
-          "wav": "artifacts/diary-part2/speech/e389110155d95a769bb639d7.wav",
-          "duration": 6.368,
-          "start": 1289.392,
-          "end": 1295.76
+          "start": 1048.4613333333332,
+          "end": 1056.9733333333331,
+          "sourceChapter": "review",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "アテナはリーダーと守りの土台。弁才天は回復の担当。攻撃役を二人にしても、ここまで同時に崩さないようにしたわ。",
           "voice_id": 2,
           "spoken": "アテナはリーダーと守りの土台。弁才天は回復の担当。攻撃役を二人にしても、ここまで同時に崩さないようにしたわ。",
-          "wav": "artifacts/diary-part2/speech/e62ade36ff0992d720ba945c.wav",
+          "wav": "artifacts/diary-part2/speech/e62ade36ff0992d720ba945c.flac",
           "duration": 8.373333333333333,
-          "start": 1295.9,
-          "end": 1304.2733333333333
-        },
-        {
-          "speaker": "t",
-          "text": "一回に全部変えると、何が足りないか分からなくなるもんね。今回は土台を使って、上の組み方を変えたんだ。",
-          "voice_id": 8,
-          "spoken": "一回に全部変えると、何が足りないか分からなくなるもんね。今回は土台を使って、上の組み方を変えたんだ。",
-          "wav": "artifacts/diary-part2/speech/afb5c761cd34b3be4a77a436.wav",
-          "duration": 7.541333333333333,
-          "start": 1304.4133333333334,
-          "end": 1311.9546666666668
+          "start": 1057.1033333333332,
+          "end": 1065.4766666666665,
+          "sourceChapter": "review",
+          "sourceLine": 5
         },
         {
           "speaker": "m",
           "text": "ただし、これでアテナ依存が解消したとは言わないわ。アテナに代わる守り方は、前回の議論と同じく別の課題として残るの。",
           "voice_id": 2,
           "spoken": "ただし、これでアテナ依存が解消したとは言わないわ。アテナに代わる守り方は、前回の議論と同じく別の課題として残るの。",
-          "wav": "artifacts/diary-part2/speech/c6290faa19317424ec4823b9.wav",
+          "wav": "artifacts/diary-part2/speech/c6290faa19317424ec4823b9.flac",
           "duration": 8.341333333333333,
-          "start": 1312.0946666666666,
-          "end": 1320.436
+          "start": 1065.6066666666666,
+          "end": 1073.9479999999999,
+          "sourceChapter": "review",
+          "sourceLine": 7
         },
         {
           "speaker": "z",
           "text": "フィオも、弱いから捨てたんじゃないのだ。白花を使って守る編成とは、今回の欲しい役割が違ったのだ。",
           "voice_id": 3,
           "spoken": "フィオも、弱いから捨てたんじゃないのだ。白花を使って守る編成とは、今回の欲しい役割が違ったのだ。",
-          "wav": "artifacts/diary-part2/speech/3ed19be54806c0d5ddc83915.wav",
+          "wav": "artifacts/diary-part2/speech/3ed19be54806c0d5ddc83915.flac",
           "duration": 8.085333333333333,
-          "start": 1320.576,
-          "end": 1328.6613333333335
+          "start": 1074.078,
+          "end": 1082.1633333333334,
+          "sourceChapter": "review",
+          "sourceLine": 8
         },
         {
           "speaker": "t",
           "text": "キャラの席を作るって、必ず誰かを下げる話じゃないんだね。相手と目的で、欲しい仕事が変わるだけ。",
           "voice_id": 8,
           "spoken": "キャラの席を作るって、必ず誰かを下げる話じゃないんだね。相手と目的で、欲しい仕事が変わるだけ。",
-          "wav": "artifacts/diary-part2/speech/beb54b684700223789cc3614.wav",
+          "wav": "artifacts/diary-part2/speech/beb54b684700223789cc3614.flac",
           "duration": 7.029333333333334,
-          "start": 1328.8013333333333,
-          "end": 1335.8306666666667
-        },
-        {
-          "speaker": "m",
-          "text": "今回の動画は、全キャラと全装備を調べた最適解でも、必ず同じ結果になる完全放置の手順でもないわ。",
-          "voice_id": 2,
-          "spoken": "今回の動画は、全キャラと全装備を調べた最適解でも、必ず同じ結果になる完全放置の手順でもないわ。",
-          "wav": "artifacts/diary-part2/speech/4ef9a7c15429b281829f7b6d.wav",
-          "duration": 7.669333333333333,
-          "start": 1335.9706666666668,
-          "end": 1343.64
+          "start": 1082.2933333333333,
+          "end": 1089.3226666666667,
+          "sourceChapter": "review",
+          "sourceLine": 9
         },
         {
           "speaker": "z",
           "text": "手持ちと操作が近い人には、編成を考える材料として使ってほしいのだ。",
           "voice_id": 3,
           "spoken": "手持ちと操作が近い人には、編成を考える材料として使ってほしいのだ。",
-          "wav": "artifacts/diary-part2/speech/3563cdd0c69a0a1989e1e681.wav",
+          "wav": "artifacts/diary-part2/speech/3563cdd0c69a0a1989e1e681.flac",
           "duration": 5.770666666666667,
-          "start": 1343.78,
-          "end": 1349.5506666666665
+          "start": 1089.4526666666666,
+          "end": 1095.2233333333331,
+          "sourceChapter": "review",
+          "sourceLine": 11
         }
       ],
-      "start": 1259.4333333333334,
-      "duration": 90.63333333333334
+      "start": 1034.3999999999999,
+      "duration": 61.233333333333334
     },
     {
       "id": "ending",
@@ -2227,144 +2242,147 @@
           "text": "今回のまとめなのだ。通常ルネットを迎えて、第一回の挑戦は時間切れ。そこから覚醒と役割を見直して、第二層を突破したのだ！",
           "voice_id": 3,
           "spoken": "今回のまとめなのだ。通常ルネットを迎えて、第一回の挑戦は時間切れ。そこから覚醒と役割を見直して、第二層を突破したのだ！",
-          "wav": "artifacts/diary-part2/speech/63fe4aa811a74abd8cdf265b.wav",
+          "wav": "artifacts/diary-part2/speech/63fe4aa811a74abd8cdf265b.flac",
           "duration": 10.826666666666666,
-          "start": 1350.3666666666668,
-          "end": 1361.1933333333334
+          "start": 1095.8133333333333,
+          "end": 1106.6399999999999,
+          "sourceChapter": "ending",
+          "sourceLine": 0
         },
         {
           "speaker": "m",
           "text": "準備は超級四回と覚醒級三回。新しく作った巻戻しの石は、ティア一のまま使ったわ。",
           "voice_id": 2,
           "spoken": "準備は超級四回と覚醒級三回。新しく作った巻戻しの石は、ティア一のまま使ったわ。",
-          "wav": "artifacts/diary-part2/speech/045c41f2852e9bb5ebebafb6.wav",
+          "wav": "artifacts/diary-part2/speech/045c41f2852e9bb5ebebafb6.flac",
           "duration": 6.72,
-          "start": 1361.3333333333335,
-          "end": 1368.0533333333335
+          "start": 1106.77,
+          "end": 1113.49,
+          "sourceChapter": "ending",
+          "sourceLine": 1
         },
         {
           "speaker": "t",
           "text": "かわいい主役を足すだけじゃなくて、相方を残す。減らしていい守りと、残したい守りを分ける。そこが今回のポイントだね。",
           "voice_id": 8,
           "spoken": "かわいい主役を足すだけじゃなくて、相方を残す。減らしていい守りと、残したい守りを分ける。そこが今回のポイントだね。",
-          "wav": "artifacts/diary-part2/speech/7dd5e94532f6f2d805e1c8a9.wav",
+          "wav": "artifacts/diary-part2/speech/7dd5e94532f6f2d805e1c8a9.flac",
           "duration": 8.16,
-          "start": 1368.1933333333336,
-          "end": 1376.3533333333337
+          "start": 1113.62,
+          "end": 1121.78,
+          "sourceChapter": "ending",
+          "sourceLine": 2
         },
         {
           "speaker": "z",
           "text": "つむぎちゃんのギャルパワーで、勝率が上がったのだ！",
           "voice_id": 3,
           "spoken": "つむぎちゃんのギャルパワーで、勝率が上がったのだ！",
-          "wav": "artifacts/diary-part2/speech/d0e90a5137564fc8e3fda803.wav",
+          "wav": "artifacts/diary-part2/speech/d0e90a5137564fc8e3fda803.flac",
           "duration": 3.552,
-          "start": 1376.4933333333336,
-          "end": 1380.0453333333335
+          "start": 1121.9099999999999,
+          "end": 1125.4619999999998,
+          "sourceChapter": "ending",
+          "sourceLine": 3
         },
         {
           "speaker": "m",
           "text": "ゲームの中に、ギャルパワーという補正はないわよ。",
           "voice_id": 2,
           "spoken": "ゲームの中に、ギャルパワーという補正はないわよ。",
-          "wav": "artifacts/diary-part2/speech/800aea7ec68869628d169873.wav",
+          "wav": "artifacts/diary-part2/speech/800aea7ec68869628d169873.flac",
           "duration": 3.477333333333333,
-          "start": 1380.1853333333336,
-          "end": 1383.6626666666668
+          "start": 1125.5919999999999,
+          "end": 1129.0693333333331,
+          "sourceChapter": "ending",
+          "sourceLine": 4
         },
         {
           "speaker": "t",
           "text": "そこまで数値にしなくていいって！　でも、一人で全部やらせない作戦会議には、うちも役立ったっしょ？",
           "voice_id": 8,
           "spoken": "そこまで数値にしなくていいって！　でも、一人で全部やらせない作戦会議には、うちも役立ったっしょ？",
-          "wav": "artifacts/diary-part2/speech/7d35dabf0233b71d6779745c.wav",
+          "wav": "artifacts/diary-part2/speech/7d35dabf0233b71d6779745c.flac",
           "duration": 6.9013333333333335,
-          "start": 1383.802666666667,
-          "end": 1390.7040000000002
+          "start": 1129.1993333333332,
+          "end": 1136.1006666666665,
+          "sourceChapter": "ending",
+          "sourceLine": 5
         },
         {
           "speaker": "z",
           "text": "役立ったのだ！　必殺のうさぎたちも、最高だったのだ！",
           "voice_id": 3,
           "spoken": "役立ったのだ！　必殺のうさぎたちも、最高だったのだ！",
-          "wav": "artifacts/diary-part2/speech/54d39f4433bd2892e3344267.wav",
+          "wav": "artifacts/diary-part2/speech/54d39f4433bd2892e3344267.flac",
           "duration": 4.288,
-          "start": 1390.844,
-          "end": 1395.132
-        },
-        {
-          "speaker": "m",
-          "text": "実戦の記録と台本、字幕、素材の集め方は、動画と一緒に公開するわ。開始条件や操作方針も確認できるようにしておくの。",
-          "voice_id": 2,
-          "spoken": "実戦の記録と台本、字幕、素材の集め方は、動画と一緒に公開するわ。開始条件や操作方針も確認できるようにしておくの。",
-          "wav": "artifacts/diary-part2/speech/9c31553a67016f47ff6704b2.wav",
-          "duration": 9.546666666666667,
-          "start": 1395.2720000000002,
-          "end": 1404.8186666666668
+          "start": 1136.2306666666666,
+          "end": 1140.5186666666666,
+          "sourceChapter": "ending",
+          "sourceLine": 6
         },
         {
           "speaker": "t",
           "text": "次の層でも、同じメンツで絶対いける、とは限らないよね。敵を見て、また相談しよ！",
           "voice_id": 8,
           "spoken": "次の層でも、同じメンツで絶対いける、とは限らないよね。敵を見て、また相談しよ！",
-          "wav": "artifacts/diary-part2/speech/ebccc480acc2afe0180de05a.wav",
+          "wav": "artifacts/diary-part2/speech/ebccc480acc2afe0180de05a.flac",
           "duration": 6.634666666666667,
-          "start": 1404.9586666666669,
-          "end": 1411.5933333333335
+          "start": 1140.6486666666665,
+          "end": 1147.283333333333,
+          "sourceChapter": "ending",
+          "sourceLine": 8
         },
         {
           "speaker": "z",
           "text": "次は第三層。まだこの動画では攻略していないけど、続きも考えていくのだ。",
           "voice_id": 3,
           "spoken": "次は第三層。まだこの動画では攻略していないけど、続きも考えていくのだ。",
-          "wav": "artifacts/diary-part2/speech/a098f104aa2f39b647a5d81a.wav",
+          "wav": "artifacts/diary-part2/speech/a098f104aa2f39b647a5d81a.flac",
           "duration": 6.304,
-          "start": 1411.7333333333336,
-          "end": 1418.0373333333337
+          "start": 1147.4133333333332,
+          "end": 1153.7173333333333,
+          "sourceChapter": "ending",
+          "sourceLine": 9
         },
         {
           "speaker": "m",
           "text": "ここまで見てくれて、ありがとう。",
           "voice_id": 2,
           "spoken": "ここまで見てくれて、ありがとう。",
-          "wav": "artifacts/diary-part2/speech/6619a8ed1534b06e15a3d9a9.wav",
+          "wav": "artifacts/diary-part2/speech/6619a8ed1534b06e15a3d9a9.flac",
           "duration": 2.1013333333333333,
-          "start": 1418.1773333333335,
-          "end": 1420.2786666666668
-        },
-        {
-          "speaker": "t",
-          "text": "ルネット、気になった人は、実際の編成でも試してみてね！",
-          "voice_id": 8,
-          "spoken": "ルネット、気になった人は、実際の編成でも試してみてね！",
-          "wav": "artifacts/diary-part2/speech/c3d458f8ae9fcab524b5b983.wav",
-          "duration": 4.234666666666667,
-          "start": 1420.418666666667,
-          "end": 1424.6533333333336
+          "start": 1153.8473333333332,
+          "end": 1155.9486666666664,
+          "sourceChapter": "ending",
+          "sourceLine": 10
         },
         {
           "speaker": "z",
           "text": "スティルヴェイルで検索！　また次回なのだ！",
           "voice_id": 3,
           "spoken": "スティルヴェイルで検索！　また次回なのだ！",
-          "wav": "artifacts/diary-part2/speech/eb7df7a46b522b960665f70e.wav",
+          "wav": "artifacts/diary-part2/speech/eb7df7a46b522b960665f70e.flac",
           "duration": 3.050666666666667,
-          "start": 1424.7933333333335,
-          "end": 1427.8440000000003
+          "start": 1156.0786666666665,
+          "end": 1159.1293333333333,
+          "sourceChapter": "ending",
+          "sourceLine": 12
         }
       ],
-      "start": 1350.0666666666668,
-      "duration": 78.3
+      "start": 1095.6333333333332,
+      "duration": 63.9
     }
   ],
-  "unimplemented": false,
   "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "sameNativeRunAsPart2": true,
   "voicevoxVersion": "0.26.0",
+  "referencePart11": "cd6854ccc870a6ec5c973d5be88ffc9bbf4f62cd",
+  "duration": 1159.5333333333333,
   "commonOpening": {
-    "sourceCommit": "017a0ccca241d1ec6a72b8a73f63188fc1043875",
-    "file": "STILLVEIL-TowerDiary-Opening-v4-1080p.mp4",
     "duration": 23,
-    "originalFps": 24,
-    "outputFps": 30
-  }
+    "frames": 690,
+    "sourceCommit": "017a0ccca241d1ec6a72b8a73f63188fc1043875"
+  },
+  "edit": "pastel visual-led re-edit; same recorded native run"
 }

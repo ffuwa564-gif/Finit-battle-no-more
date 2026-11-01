@@ -1,7 +1,7 @@
 {
-  "durationSeconds": 1428.3666666666668,
-  "chapters": 17,
-  "lines": 211,
+  "durationSeconds": 1159.5333333333333,
+  "chapters": 19,
+  "lines": 176,
   "speakers": [
     "ずんだもん",
     "四国めたん",
@@ -9,5 +9,6 @@
   ],
   "resolution": "1920x1080",
   "fps": 30,
-  "audioHz": 48000
+  "audioHz": 48000,
+  "finishedSha256": "7e100076b74c510752c40209c343cbb9f2172f62dc3628c2269ac91d1b9aba1e"
 }

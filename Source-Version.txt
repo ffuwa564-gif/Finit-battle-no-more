@@ -1,9 +1,7 @@
 Game v1.10.0
 Game source: 1f4e970117c95a11ef38c8f1e12fe232e5a7b964
-Reference Part1.1: cd6854ccc870a6ec5c973d5be88ffc9bbf4f62cd / downloads/tower-diary-part1
-Continuation: Part1.1.1 declared-comparison flower victory
-New gameplay mechanisms: none
-
-Production code: 7af2e4571f96c23866610cda8c12ffce27ba2321
-https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/7af2e4571f96c23866610cda8c12ffce27ba2321
-Common OP v4: 017a0ccca241d1ec6a72b8a73f63188fc1043875
+Original Part2 production: 7af2e4571f96c23866610cda8c12ffce27ba2321
+Native footage: same verified run as original Part2
+Re-edit source branch: video/tower-diary-part2-v2
+Re-edit source commit: d9c3410e70ae5940f39d1cc3692597abbd810583
+Game code changes: none
