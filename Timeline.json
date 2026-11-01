@@ -1,0 +1,122 @@
+{
+  "duration": 1167.8,
+  "chapters": [
+    {
+      "id": "opening",
+      "title": "01 また、第一層へ",
+      "start": 0,
+      "duration": 61.766666666666666,
+      "footage": null
+    },
+    {
+      "id": "conditions",
+      "title": "02 今回の持ち物と比較条件",
+      "start": 61.7667,
+      "duration": 69.0,
+      "footage": null
+    },
+    {
+      "id": "enemies",
+      "title": "03 三人を一体の敵として見る",
+      "start": 130.7667,
+      "duration": 75.4,
+      "footage": null
+    },
+    {
+      "id": "rewind-plan",
+      "title": "04 作戦会議・なぜこの四人？",
+      "start": 206.1667,
+      "duration": 95.06666666666666,
+      "footage": null
+    },
+    {
+      "id": "flower-plan",
+      "title": "05 新要素・フィオを先頭に",
+      "start": 301.2333,
+      "duration": 99.5,
+      "footage": null
+    },
+    {
+      "id": "equipment",
+      "title": "06 二つの石を替え、土台は残す",
+      "start": 400.7333,
+      "duration": 76.93333333333334,
+      "footage": null
+    },
+    {
+      "id": "preparation",
+      "title": "07 準備チェック・周回との境界",
+      "start": 477.6667,
+      "duration": 74.93333333333334,
+      "footage": null
+    },
+    {
+      "id": "failure",
+      "title": "08 勝ったのに実験はやり直し",
+      "start": 552.6,
+      "duration": 74.23333333333333,
+      "footage": null
+    },
+    {
+      "id": "command",
+      "title": "09 指揮なら解決、とはならなかった",
+      "start": 626.8333,
+      "duration": 82.8,
+      "footage": null
+    },
+    {
+      "id": "rewind-early",
+      "title": "10 巻戻し本走・状態異常は入る",
+      "start": 709.6333,
+      "duration": 75.5,
+      "footage": {
+        "id": "rewind",
+        "section": "early"
+      }
+    },
+    {
+      "id": "rewind-clear",
+      "title": "11 二十二ラウンド・三人生還",
+      "start": 785.1333,
+      "duration": 63.6,
+      "footage": {
+        "id": "rewind",
+        "section": "late"
+      }
+    },
+    {
+      "id": "flower-early",
+      "title": "12 白花本走・植えてからが本番",
+      "start": 848.7333,
+      "duration": 72.66666666666667,
+      "footage": {
+        "id": "flower",
+        "section": "early"
+      }
+    },
+    {
+      "id": "flower-clear",
+      "title": "13 二十七ラウンド・四人で帰る",
+      "start": 921.4,
+      "duration": 78.1,
+      "footage": {
+        "id": "flower",
+        "section": "late"
+      }
+    },
+    {
+      "id": "comparison",
+      "title": "14 勝った一回と、別乱数百回",
+      "start": 999.5,
+      "duration": 83.6,
+      "footage": null
+    },
+    {
+      "id": "ending",
+      "title": "15 今回の収穫と、次の宿題",
+      "start": 1083.1,
+      "duration": 84.7,
+      "footage": null
+    }
+  ]
+}

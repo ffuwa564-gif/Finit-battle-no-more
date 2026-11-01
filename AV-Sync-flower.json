@@ -1,0 +1,21 @@
+{
+  "id": "flower",
+  "passed": true,
+  "maximumAllowedSeconds": 0.075,
+  "endpoints": [
+    {
+      "encodedVideoOnset": 0.36666666666666664,
+      "encodedAudioOnset": 0.3453541666666667,
+      "residual": -0.021312499999999956
+    },
+    {
+      "encodedVideoOnset": 659.2402966181437,
+      "encodedAudioOnset": 659.202317451477,
+      "residual": -0.037979166666673336
+    }
+  ],
+  "originalClockRatio": 1.0002326649012765,
+  "rawDriftSeconds": 0.15329289372764315,
+  "packetTimelinePreserved": true,
+  "calibrationMarkersExcludedFromGameplay": true
+}

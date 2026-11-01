@@ -1,0 +1,4 @@
+Game: v1.10.0 / dec20ebbfb8d139713ffe847ebc48eefe8ff54ca
+Video production: cece05e04fb7b6a26926d05640f872bcbc5b6c68
+https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/cece05e04fb7b6a26926d05640f872bcbc5b6c68/scripts/diary-111
+Reference Part1.1: cd6854ccc870a6ec5c973d5be88ffc9bbf4f62cd

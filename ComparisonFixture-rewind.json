@@ -1,0 +1,591 @@
+{
+  "format": "stillveil-save",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-01T00:00:00.000Z",
+  "save": {
+    "schemaVersion": 1,
+    "appVersion": "1.10.0",
+    "contentVersion": "v1.10-r1",
+    "rulesVersion": "2",
+    "revision": 1000,
+    "gold": 100,
+    "potions": 10,
+    "stones": 0,
+    "astralStones": 0,
+    "xrDrawCount": 0,
+    "ownedIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle",
+      "seris-awakened",
+      "iris",
+      "athena",
+      "benzaiten"
+    ],
+    "partyIds": [
+      "seris-awakened",
+      "iris",
+      "athena",
+      "benzaiten"
+    ],
+    "leaderId": "athena",
+    "materials": {},
+    "discoveredIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle",
+      "seris-awakened",
+      "iris",
+      "athena",
+      "benzaiten"
+    ],
+    "towerRecord": {
+      "version": "1.10",
+      "completedFloors": [],
+      "legacyHighest": 0
+    },
+    "completedDungeonIds": [
+      "silent-cathedral",
+      "chapel-approach",
+      "bell-stairs",
+      "moon-garden",
+      "root-waterway",
+      "drowned-vestry",
+      "blue-lantern-path",
+      "sealed-arbor",
+      "scale-bridge",
+      "withered-nursery",
+      "fountain-threshold",
+      "stone-fountain",
+      "veiled-cloister",
+      "rain-glasshouse",
+      "two-teacups",
+      "thorn-court",
+      "unwritten-cradle",
+      "memory-grafting",
+      "closed-consultation",
+      "borrowed-lullaby",
+      "missing-name",
+      "overwritten-room",
+      "last-safety-key",
+      "hollow-gate",
+      "silver-crypt",
+      "nameless-graves",
+      "soot-corridor",
+      "ashen-library",
+      "unburned-letter",
+      "pendulum-hall",
+      "starless-terrace",
+      "erased-star-chart",
+      "last-observatory",
+      "dawn-sluice",
+      "bell-sword-approach",
+      "pale-throne",
+      "ritual-stone-grove",
+      "zakuro-procession",
+      "memory-elaine",
+      "memory-liora",
+      "memory-noelle",
+      "memory-lisette",
+      "memory-seris",
+      "kuzuha-beginner",
+      "kuzuha-intermediate",
+      "kuzuha-advanced",
+      "kuzuha-expert",
+      "kuzuha-awakening",
+      "lunette-beginner",
+      "lunette-intermediate",
+      "lunette-advanced",
+      "lunette-expert",
+      "lunette-awakening",
+      "event-stardust-garden",
+      "event-whiteflower-path",
+      "event-silver-lantern",
+      "guild-blank-request",
+      "registry-corridor",
+      "infirmary-delivery",
+      "unclaimed-courtyard",
+      "infirmary-handover",
+      "old-return-seal",
+      "borrowed-bed",
+      "present-address",
+      "registry-threshold",
+      "register-return",
+      "night-watch-request",
+      "lantern-oil-store",
+      "festival-table",
+      "resting-sign",
+      "watch-relay",
+      "unlit-lantern",
+      "closed-homeward-lane",
+      "prayer-without-order",
+      "last-lantern-watch",
+      "lantern-return",
+      "mending-room",
+      "ritual-stone-check",
+      "care-names",
+      "two-wishes",
+      "signature-margin",
+      "open-greenhouse-door",
+      "unspent-thread",
+      "stop-signal",
+      "unfinished-name",
+      "two-signatures"
+    ],
+    "claimedExplorationIds": [],
+    "drawCount": 0,
+    "ssrPity": 0,
+    "seed": 2683422798,
+    "memoryGems": {
+      "items": [
+        {
+          "id": "slot-0",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "mercy",
+            "value": 125
+          }
+        },
+        {
+          "id": "slot-1",
+          "defId": "rewind-thread",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        },
+        {
+          "id": "slot-2",
+          "defId": "pale-ward",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        },
+        {
+          "id": "slot-3",
+          "defId": "twin-tide",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        }
+      ],
+      "equipped": {
+        "seris-awakened": "slot-0",
+        "iris": "slot-1",
+        "athena": "slot-2",
+        "benzaiten": "slot-3"
+      },
+      "dust": {
+        "sanctuary": 0,
+        "clock": 0,
+        "grave": 0
+      },
+      "seen": [
+        "echo-shard",
+        "rewind-thread",
+        "pale-ward",
+        "twin-tide"
+      ]
+    },
+    "battle": {
+      "id": "run-1000-2683422798",
+      "dungeonId": "ivory-tower-001",
+      "contentVersion": "v1.10-r1",
+      "rulesVersion": "2",
+      "wave": 0,
+      "round": 1,
+      "units": [
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 1092825941,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:iris",
+          "characterId": "iris",
+          "side": "party",
+          "boss": false,
+          "hp": 156,
+          "maxHp": 156,
+          "attack": 26,
+          "defense": 19,
+          "speed": 13,
+          "tie": 2499374256,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 436,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 3415709775,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 3649579362,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:0:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": true,
+          "hp": 4786,
+          "maxHp": 4786,
+          "attack": 246,
+          "defense": 17,
+          "speed": 14,
+          "tie": 2473072985,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:1:moon-moth",
+          "characterId": "moon-moth",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1026,
+          "maxHp": 1026,
+          "attack": 128,
+          "defense": 10,
+          "speed": 11,
+          "tie": 2894246628,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:2:thorn-witch",
+          "characterId": "thorn-witch",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1367,
+          "maxHp": 1367,
+          "attack": 132,
+          "defense": 14,
+          "speed": 15,
+          "tie": 2325537011,
+          "cooldowns": {}
+        }
+      ],
+      "initialUnits": [
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 1092825941,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:iris",
+          "characterId": "iris",
+          "side": "party",
+          "boss": false,
+          "hp": 156,
+          "maxHp": 156,
+          "attack": 26,
+          "defense": 19,
+          "speed": 13,
+          "tie": 2499374256,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 436,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 3415709775,
+          "cooldowns": {}
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 3649579362,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:0:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": true,
+          "hp": 4786,
+          "maxHp": 4786,
+          "attack": 246,
+          "defense": 17,
+          "speed": 14,
+          "tie": 2473072985,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:1:moon-moth",
+          "characterId": "moon-moth",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1026,
+          "maxHp": 1026,
+          "attack": 128,
+          "defense": 10,
+          "speed": 11,
+          "tie": 2894246628,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:2:thorn-witch",
+          "characterId": "thorn-witch",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1367,
+          "maxHp": 1367,
+          "attack": 132,
+          "defense": 14,
+          "speed": 15,
+          "tie": 2325537011,
+          "cooldowns": {}
+        }
+      ],
+      "partyIds": [
+        "seris-awakened",
+        "iris",
+        "athena",
+        "benzaiten"
+      ],
+      "leaderId": "athena",
+      "strategy": "balanced",
+      "potionsRemaining": 5,
+      "potionUsed": false,
+      "pendingMaterials": {},
+      "seed": 2325537011,
+      "talkFlags": [
+        "enemy:w0:0:seris:enter"
+      ],
+      "phase": "playing",
+      "nextPhase": "ready",
+      "events": [
+        {
+          "kind": "wave",
+          "text": "Wave 1 / 1",
+          "unitsAfter": [
+            {
+              "uid": "party:seris-awakened",
+              "characterId": "seris-awakened",
+              "side": "party",
+              "boss": false,
+              "hp": 320,
+              "maxHp": 320,
+              "attack": 86,
+              "defense": 32,
+              "speed": 14,
+              "tie": 1092825941,
+              "cooldowns": {}
+            },
+            {
+              "uid": "party:iris",
+              "characterId": "iris",
+              "side": "party",
+              "boss": false,
+              "hp": 156,
+              "maxHp": 156,
+              "attack": 26,
+              "defense": 19,
+              "speed": 13,
+              "tie": 2499374256,
+              "cooldowns": {}
+            },
+            {
+              "uid": "party:athena",
+              "characterId": "athena",
+              "side": "party",
+              "boss": false,
+              "hp": 436,
+              "maxHp": 436,
+              "attack": 41,
+              "defense": 60,
+              "speed": 18,
+              "tie": 3415709775,
+              "cooldowns": {}
+            },
+            {
+              "uid": "party:benzaiten",
+              "characterId": "benzaiten",
+              "side": "party",
+              "boss": false,
+              "hp": 260,
+              "maxHp": 260,
+              "attack": 55,
+              "defense": 31,
+              "speed": 12,
+              "tie": 3649579362,
+              "cooldowns": {}
+            },
+            {
+              "uid": "enemy:w0:0:seris",
+              "characterId": "seris",
+              "side": "enemy",
+              "boss": true,
+              "hp": 4786,
+              "maxHp": 4786,
+              "attack": 246,
+              "defense": 17,
+              "speed": 14,
+              "tie": 2473072985,
+              "cooldowns": {}
+            },
+            {
+              "uid": "enemy:w0:1:moon-moth",
+              "characterId": "moon-moth",
+              "side": "enemy",
+              "boss": false,
+              "hp": 1026,
+              "maxHp": 1026,
+              "attack": 128,
+              "defense": 10,
+              "speed": 11,
+              "tie": 2894246628,
+              "cooldowns": {}
+            },
+            {
+              "uid": "enemy:w0:2:thorn-witch",
+              "characterId": "thorn-witch",
+              "side": "enemy",
+              "boss": false,
+              "hp": 1367,
+              "maxHp": 1367,
+              "attack": 132,
+              "defense": 14,
+              "speed": 15,
+              "tie": 2325537011,
+              "cooldowns": {}
+            }
+          ],
+          "id": "run-1000-2683422798:w0:r1:wave:752903242:e0"
+        },
+        {
+          "kind": "dialogue",
+          "actorId": "enemy:w0:0:seris",
+          "text": "セリス「この幻影を越えて、何を持ち帰る。」",
+          "id": "run-1000-2683422798:w0:r1:dialogue:263332987:e1"
+        }
+      ],
+      "cursor": 0,
+      "goldEarned": 0,
+      "tracking": {
+        "review": {
+          "rounds": 0,
+          "partyDamageTaken": 0,
+          "enemyDamageTaken": 0,
+          "partyHealing": 0,
+          "partyBarrierAbsorbed": 0,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0
+        }
+      },
+      "memoryGems": {
+        "seris-awakened": {
+          "id": "slot-0",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "mercy",
+            "value": 125
+          }
+        },
+        "iris": {
+          "id": "slot-1",
+          "defId": "rewind-thread",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        },
+        "athena": {
+          "id": "slot-2",
+          "defId": "pale-ward",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        },
+        "benzaiten": {
+          "id": "slot-3",
+          "defId": "twin-tide",
+          "variant": "pure",
+          "roll": {
+            "power": 125,
+            "trait": "bulwark",
+            "value": 125
+          }
+        }
+      }
+    },
+    "history": [
+      {
+        "id": "1000-0",
+        "text": "白亜の塔・第1層へ出発しました。"
+      }
+    ],
+    "settings": {
+      "bgmVolume": 0,
+      "seVolume": 1,
+      "speed": 1,
+      "reducedMotion": false
+    },
+    "novels": {
+      "seen": []
+    }
+  }
+}

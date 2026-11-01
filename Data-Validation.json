@@ -1,0 +1,46 @@
+{
+  "rewind": {
+    "rounds": 22,
+    "survivors": 3,
+    "phase": "reward",
+    "nativeVerified": true
+  },
+  "flower": {
+    "rounds": 27,
+    "survivors": 4,
+    "phase": "reward",
+    "nativeVerified": true
+  },
+  "command": {
+    "rounds": 19,
+    "survivors": 0,
+    "phase": "failed",
+    "nativeVerified": true
+  },
+  "flowerObserved": {
+    "seedUses": 7,
+    "actualImmediateHealing": 33,
+    "bloomHealing": [
+      50,
+      0,
+      42
+    ],
+    "totalActualHealing": 125,
+    "overflowAdditionalBarrier": 5,
+    "overflowSkillUses": 4
+  },
+  "confirmation": [
+    {
+      "id": "rewind",
+      "wins": 61,
+      "total": 100,
+      "seeds": "70001..70100"
+    },
+    {
+      "id": "flower",
+      "wins": 76,
+      "total": 100,
+      "seeds": "70001..70100"
+    }
+  ]
+}

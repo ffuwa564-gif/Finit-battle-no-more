@@ -1,0 +1,21 @@
+{
+  "id": "rewind",
+  "passed": true,
+  "maximumAllowedSeconds": 0.075,
+  "endpoints": [
+    {
+      "encodedVideoOnset": 1.333280086517334,
+      "encodedAudioOnset": 1.3120092531840006,
+      "residual": -0.02127083333333335
+    },
+    {
+      "encodedVideoOnset": 278.5388593991598,
+      "encodedAudioOnset": 278.4851302324931,
+      "residual": -0.0537291666666988
+    }
+  ],
+  "originalClockRatio": 1.000045488635823,
+  "rawDriftSeconds": 0.012608187357601386,
+  "packetTimelinePreserved": true,
+  "calibrationMarkersExcludedFromGameplay": true
+}

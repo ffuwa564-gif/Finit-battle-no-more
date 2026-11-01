@@ -1,0 +1,12 @@
+{
+  "episode": "1.1.1",
+  "gameVersion": "1.10.0",
+  "gameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+  "durationSeconds": 1167.8,
+  "fps": 30,
+  "frameSize": [
+    1600,
+    900
+  ],
+  "fixtureNotPreviousSave": true
+}
