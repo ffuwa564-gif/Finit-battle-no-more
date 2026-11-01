@@ -124,3 +124,8 @@ Zundamon and Shikoku Metan discuss a hardcore 100-floor redesign using all71 exi
 
 Zundamon and Shikoku Metan continue the character-rescue discussion. Six research agents plus integration explored6 ordinary-skill,2 stone and4 leader prototypes, then diagnosed adverse shielding interactions, rebuilt healer ideas and tested existing stones, role reassignment and shatter-aware orders. The final comparison dataset comprises117,040 simulated battle executions; mechanism QA and reused result rows are excluded from that count. A restricted T3 stone reduced within-role score SD from5.030 to4.900 (~2.6%) with modest gains. Leader opportunity costs, failed deputy-equipment choices, and individual healer regressions are disclosed. This is finite-context exploratory research, not exhaustive optimal balance or a simultaneous roster rollout. Base character constants, game main and itch.io remain unchanged; proposed new effects are unimplemented in the published game.
 
+## STILLVEIL ver1.10 local development trial review
+
+[Download video (720p, 12:40)](STILLVEIL-v1.10-Trial-Review-720p.mp4)
+
+VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Fixed-seed automated trial and UI replay excerpts. Local development version, not a game release.
