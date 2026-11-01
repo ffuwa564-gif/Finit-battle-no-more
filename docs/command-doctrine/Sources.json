@@ -1,0 +1,181 @@
+[
+  {
+    "id": "E01",
+    "publisher": "Beyond All Reason project",
+    "title": "Official command pages: Attack; Target Set; Fight",
+    "kind": "official_game_manual",
+    "retrieved_on": "2026-11-01",
+    "url": "https://www.beyondallreason.info/commands/set-target",
+    "assets": [
+      {
+        "url": "https://www.beyondallreason.info/commands/set-target",
+        "httpStatus": 200,
+        "type": "text/html",
+        "bytes": 98381,
+        "sha256": "c404cf34174e8e03bea3161a6cefdf44826b5ef7402300a7a0b57ee3585c23e3",
+        "local": "/workspace/shared/command-video/editorial-evidence/bar-settarget.html"
+      },
+      {
+        "url": "https://www.beyondallreason.info/commands/attack",
+        "httpStatus": 200,
+        "type": "text/html",
+        "bytes": 99761,
+        "sha256": "39ab83cc9fefe42d5e1123e410207a8ef30df51d344e2a82bf301ca7a3ded6c2",
+        "local": "/workspace/shared/command-video/editorial-evidence/bar-attack.html"
+      },
+      {
+        "url": "https://www.beyondallreason.info/commands/fight",
+        "httpStatus": 200,
+        "type": "text/html",
+        "bytes": 99576,
+        "sha256": "405321cab6412beccd9d5747300402f5eeb06886fd095f0435284f5ad9e69aa0",
+        "local": "/workspace/shared/command-video/editorial-evidence/bar-fight.html"
+      }
+    ],
+    "locus": "各ページのコマンド本文。Target Set: preferred target even while moving; Attack: target and queued order; Fight: movement plus autonomous engagement.",
+    "summary_ja": "明示的対象指定、移動中の優先対象、自律的遭遇攻撃を別の命令として説明する。",
+    "application_ja": "技能を本人に選ばせたまま、宛先だけに介入する指揮の境界を説明する比較。",
+    "limits_ja": "RTSの射程・移動・同時行動に依存。希少度別服従や必ず命中する強制対象を裏付けない。複数ページは1系統。"
+  },
+  {
+    "id": "E02",
+    "publisher": "Zero-K project",
+    "title": "Keep Target / Target Priority, official source code",
+    "kind": "official_primary_implementation",
+    "retrieved_on": "2026-11-01",
+    "url": "https://github.com/ZeroK-RTS/Zero-K/blob/3029db77433ed5fee197a6d41546dd5104870794/LuaUI/Widgets/cmd_keep_target.lua",
+    "commit": "3029db77433ed5fee197a6d41546dd5104870794",
+    "assets": [
+      {
+        "url": "https://raw.githubusercontent.com/ZeroK-RTS/Zero-K/3029db77433ed5fee197a6d41546dd5104870794/LuaUI/Widgets/cmd_keep_target.lua",
+        "httpStatus": 200,
+        "type": "text/plain",
+        "bytes": 5776,
+        "sha256": "57cccee7c4225c81fd2a0f94284fbe8ef1c7edd251f6b4840c46a1e3303a58c5",
+        "local": "/workspace/shared/command-video/editorial-evidence/zk-settarget.lua"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/ZeroK-RTS/Zero-K/3029db77433ed5fee197a6d41546dd5104870794/LuaRules/Gadgets/unit_target_priority.lua",
+        "httpStatus": 200,
+        "type": "text/plain",
+        "bytes": 16396,
+        "sha256": "7123fa9fa43c33ffccc510dcf7763d9fbc595e365e18c440c4797dddb90d685c",
+        "local": "/workspace/shared/command-video/editorial-evidence/zk-priority.lua"
+      }
+    ],
+    "locus": "cmd_keep_target.lua options.keepTarget, options.removeTarget; unit_target_priority.lua GetNormalWeaponPriorityModifier等",
+    "summary_ja": "移動命令に上書きされた攻撃対象への意図保持、解除する命令、通常の対象評価を別層として持つ。",
+    "application_ja": "指揮の持続と失効をプレイヤーに示し、通常AIと明示意図を混同しない。",
+    "limits_ja": "ソースの記述は効果を測った実験ではない。BARと同系RTS技術。コメントをエンジンの一般事実として扱わず、コードの無断流用をしない。"
+  },
+  {
+    "id": "E03",
+    "publisher": "UK Ministry of Defence / DCDC",
+    "title": "JDP 0-01 UK Defence Doctrine, Sixth Edition",
+    "published": "2022-11",
+    "kind": "official_military_doctrine",
+    "retrieved_on": "2026-11-01",
+    "url": "https://www.gov.uk/government/publications/uk-defence-doctrine-jdp-0-01",
+    "assets": [
+      {
+        "url": "https://assets.publishing.service.gov.uk/media/63776f4de90e0728553b568b/UK_Defence_Doctrine_Ed6.pdf",
+        "httpStatus": 200,
+        "type": "application/pdf",
+        "bytes": 2183500,
+        "sha256": "04a137dd5e908dfa4fb70ee493f7b58fd630d98b8659bcaa6503a416e6acf760",
+        "local": "/workspace/shared/command-video/editorial-evidence/uk-pdf.pdf"
+      }
+    ],
+    "locus": "2.16–2.17 Mission command; 2.30–2.33 Concentration of effect / Economy of effort",
+    "summary_ja": "明確な意図、裁量、相互信頼、主体性を任務型指揮の柱とし、集中には他所の節約が伴うと説明。",
+    "application_ja": "盲従の一択にせず、意図共有と直接命令の違い、集中の機会費用を動画の反論に使う。",
+    "limits_ja": "現代英国ドクトリンはゲーム数式でも歴史上の全勝因の証明でもない。PDF図版・長文は転載せず要約する。"
+  },
+  {
+    "id": "E04",
+    "publisher": "Project Gutenberg (public-domain historical text)",
+    "author": "Carl von Clausewitz",
+    "translator": "J. J. Graham",
+    "title": "On War",
+    "kind": "primary_historical_theory_translation",
+    "retrieved_on": "2026-11-01",
+    "url": "https://www.gutenberg.org/files/1946/1946-h/1946-h.htm#chap22",
+    "assets": [
+      {
+        "url": "https://www.gutenberg.org/files/1946/1946-h/1946-h.htm",
+        "httpStatus": 200,
+        "type": "text/html",
+        "bytes": 1803857,
+        "sha256": "4662db65b5c42dfb3c2477c382cdb6b5387eb63cb7ad111f5da1ef9e94eaced3",
+        "local": "/workspace/shared/command-video/editorial-evidence/clausewitz.html"
+      }
+    ],
+    "locus": "Book III, VIII Superiority of Numbers (chap22); XI Assembly of Forces in Space (chap25); XII Assembly of Forces in Time (chap26)",
+    "summary_ja": "数的優勢と決定的地点への集中を重視し、他の条件や投入時点を区別する。大きい数的差を才能のみで簡単に覆せるとは述べない。",
+    "application_ja": "局所優位の連想に限定し、弱い編成の逆転はゲームルールと対照実験から説明する。",
+    "limits_ja": "19世紀理論と当時の事例評価。兵数・文化観や2対1の記述を現在の史学の確定事実やゲーム倍率にしない。"
+  },
+  {
+    "id": "G01",
+    "title": "現行の対象選択・行動処理",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/domain/engine.ts#L185",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "通常攻撃の作戦、先頭の指定、技能別対象、協撃限定の保存、かばう、通常25充填と役割速度。指揮・服従は未実装。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "S01",
+    "title": "ノエルの覚醒後の物語",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L20",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "四人の役目と退避の合図を星図へ書く。指揮枠という新能力は創作。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "S02",
+    "title": "ノクスの人物像",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/index.ts#L154",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "命令完遂を存在理由とするSSR。SSRが一律に命令嫌いという解釈の反例。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "S03",
+    "title": "ザクロの統率描写",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/zakuro.ts#L13",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "少女たちを従える庭園管理者。庭園の女とは別人。新しい軍制の実装とは別。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "S04",
+    "title": "セリスの覚醒後の物語",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/seris-story.ts#L17",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "仲間へ道を教えてほしいと頼む。技能選択と指揮を分ける翻案の起点。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "S05",
+    "title": "低レアの技能とノエルの役割",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/index.ts#L76",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "ティッカのjam、ニケのshatter、ノエルはarea_attacker。速度はengineの役割値11。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  },
+  {
+    "id": "G02",
+    "title": "限定的な協撃試練",
+    "kind": "game_original_or_implementation",
+    "url": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/616a0747c4118a991770226d37347f34b31e2ec6/src/content/trials.ts#L59",
+    "retrieved_on": "2026-11-01",
+    "summary_ja": "誓鎖の稽古のcoordination35。一般的なレア別指揮や全戦闘への恒常効果ではない。",
+    "baseCommit": "616a0747c4118a991770226d37347f34b31e2ec6"
+  }
+]

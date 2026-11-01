@@ -1,0 +1,252 @@
+{
+  "agreementCases": {
+    "R-no-command": {
+      "payload": 40,
+      "command": false,
+      "reservedFollowers": [],
+      "reservedCapacity": 0,
+      "originalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 0,
+        "C": 140
+      },
+      "totalAllocatedDamage": 140,
+      "commanderAction": "attack C for 20"
+    },
+    "SSR-no-command": {
+      "payload": 55,
+      "command": false,
+      "reservedFollowers": [],
+      "reservedCapacity": 0,
+      "originalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 0,
+        "C": 185
+      },
+      "totalAllocatedDamage": 185,
+      "commanderAction": "attack C for 20"
+    },
+    "R-command": {
+      "payload": 40,
+      "command": true,
+      "reservedFollowers": [
+        0,
+        1,
+        2
+      ],
+      "reservedCapacity": 3,
+      "originalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 0,
+        "C": 120
+      },
+      "totalAllocatedDamage": 120,
+      "commanderAction": "command; no damage"
+    },
+    "SSR-command": {
+      "payload": 55,
+      "command": true,
+      "reservedFollowers": [
+        0
+      ],
+      "reservedCapacity": 3,
+      "originalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 0,
+        "C": 165
+      },
+      "totalAllocatedDamage": 165,
+      "commanderAction": "command; no damage"
+    }
+  },
+  "scope": "Unimplemented target-allocation model. NOT STILLVEIL combat or existing AI.\nThree supplied intentions A/B/C, equalized single-target attack payloads, one\ncommander action sacrificed. All follower actions precede target C. No defense,\nstatus, misses, healing, gems, coordination bonus or dynamic AI is simulated.\n",
+  "provisional": true,
+  "rules": {
+    "capacity": 3,
+    "R_cost": 1,
+    "SSR_cost": 3,
+    "commandConsumesCommanderNormalAction": true,
+    "commanderNormalDamage": 20,
+    "damageValuesAreNotCharacterStats": true,
+    "intentionsAreSuppliedNotCurrentAI": true,
+    "enemyActsAfterAllFollowers": true,
+    "noPostKillRetargetSimulation": true
+  },
+  "cases": {
+    "R-no-command": {
+      "payload": 40,
+      "command": false,
+      "reservedFollowers": [],
+      "reservedCapacity": 0,
+      "originalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "finalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 60,
+        "B": 40,
+        "C": 40
+      },
+      "totalAllocatedDamage": 140,
+      "commanderAction": "attack A for 20",
+      "targetHp115RemovedBeforeItsAction": false
+    },
+    "SSR-no-command": {
+      "payload": 55,
+      "command": false,
+      "reservedFollowers": [],
+      "reservedCapacity": 0,
+      "originalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "finalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "actualTargetChanges": 0,
+      "allocatedDamage": {
+        "A": 75,
+        "B": 55,
+        "C": 55
+      },
+      "totalAllocatedDamage": 185,
+      "commanderAction": "attack A for 20",
+      "targetHp115RemovedBeforeItsAction": false
+    },
+    "R-command": {
+      "payload": 40,
+      "command": true,
+      "reservedFollowers": [
+        0,
+        1,
+        2
+      ],
+      "reservedCapacity": 3,
+      "originalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "C",
+        "C"
+      ],
+      "actualTargetChanges": 2,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 0,
+        "C": 120
+      },
+      "totalAllocatedDamage": 120,
+      "commanderAction": "command; no damage",
+      "targetHp115RemovedBeforeItsAction": true
+    },
+    "SSR-command": {
+      "payload": 55,
+      "command": true,
+      "reservedFollowers": [
+        0
+      ],
+      "reservedCapacity": 3,
+      "originalIntentions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "finalIntentions": [
+        "C",
+        "B",
+        "C"
+      ],
+      "actualTargetChanges": 1,
+      "allocatedDamage": {
+        "A": 0,
+        "B": 55,
+        "C": 110
+      },
+      "totalAllocatedDamage": 165,
+      "commanderAction": "command; no damage",
+      "targetHp115RemovedBeforeItsAction": false
+    }
+  },
+  "SSR_random_p05_two_mismatches": {
+    "distribution": {
+      "55": 0.25,
+      "110": 0.5,
+      "165": 0.25
+    },
+    "removeHp115Probability": 0.25,
+    "allThreeNeedChangingProbability": 0.125
+  },
+  "boundary": {
+    "R_command_C": 120,
+    "SSR_command_C": "2 × SSR_payload",
+    "R_onlyWindowAtSSR55": "HP111–120 (10 integer HP values)",
+    "parityAtSSRPayload": 60,
+    "fullAgreementNoCommand": {
+      "R": 140,
+      "SSR": 185
+    },
+    "fullAgreementCommand": {
+      "R": 120,
+      "SSR": 165
+    }
+  },
+  "sweepRows": 7380,
+  "noGameWinRateClaim": true
+}

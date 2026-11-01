@@ -1,0 +1,86 @@
+[
+  {
+    "id": "opening",
+    "title": "強い三人を、従う三人が破る？",
+    "start": 0,
+    "duration": 64.733333
+  },
+  {
+    "id": "current",
+    "title": "今の仲間は、本当にバラバラなのか",
+    "start": 64.7333,
+    "duration": 104.783
+  },
+  {
+    "id": "reference",
+    "title": "名将は、全部を決める人なのか",
+    "start": 169.5163,
+    "duration": 111.666667
+  },
+  {
+    "id": "random",
+    "title": "高レアは、命令を聞かない？",
+    "start": 281.183,
+    "duration": 109.347
+  },
+  {
+    "id": "slots",
+    "title": "命令できる相手を、先に選ぶ",
+    "start": 390.53,
+    "duration": 106.766667
+  },
+  {
+    "id": "contract",
+    "title": "ラウンドの最初に、指令する",
+    "start": 497.2967,
+    "duration": 145.846
+  },
+  {
+    "id": "lab",
+    "title": "同じ意図で、四つの軍を比べる",
+    "start": 643.1427,
+    "duration": 131.683
+  },
+  {
+    "id": "limits",
+    "title": "その逆転は、どれほど狭いか",
+    "start": 774.8257,
+    "duration": 107.769
+  },
+  {
+    "id": "agency",
+    "title": "育てたら、従わなくなるのか",
+    "start": 882.5947,
+    "duration": 109.433333
+  },
+  {
+    "id": "characters",
+    "title": "誰が、どんな軍を率いるのか",
+    "start": 992.028,
+    "duration": 114.447
+  },
+  {
+    "id": "counterplay",
+    "title": "良い命令ほど、裏目も見せる",
+    "start": 1106.475,
+    "duration": 105.233333
+  },
+  {
+    "id": "ui",
+    "title": "命令は、結果のあとではなく前に見せる",
+    "start": 1211.7083,
+    "duration": 87.943
+  },
+  {
+    "id": "testplan",
+    "title": "採用する前に、負ける条件を決める",
+    "start": 1299.6513,
+    "duration": 86.236
+  },
+  {
+    "id": "closing",
+    "title": "名将は、仲間の役目をつなぐ",
+    "start": 1385.8873,
+    "duration": 70.9
+  }
+]

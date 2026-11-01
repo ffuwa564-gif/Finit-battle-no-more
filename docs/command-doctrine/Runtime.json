@@ -1,0 +1,12 @@
+{
+  "python": "Python 3.12.14",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "voicevox": "0.26.0",
+  "cpu": 4,
+  "memoryGiB": 16,
+  "sourceGameCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "duration": 1456.787333,
+  "chapters": 14,
+  "utterances": 212,
+  "newSystemImplemented": false
+}

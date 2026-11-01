@@ -1,0 +1,36 @@
+{
+  "scope": "Unimplemented local probability toy. Three eligible single-target actors plus the same commander. All naturally choose A; commander asks B. Damage and obedience numbers are invented illustrations, not game character stats or observed rarity rates. The distribution records POTENTIAL packets before HP caps and death/retargeting. The probability that packets can meet a threshold is meaningful only with no intervening enemy actions/healing or other effects. Once B dies, remaining real actions should use normal retargeting, so values above its HP are not actual HP damage. Metrics are requested-target threshold probability, NOT battle win probability.",
+  "models": {
+    "three_R": {
+      "actorDamage": 40,
+      "changeProbability": 1.0,
+      "threshold110KillProbability": 1.0,
+      "potentialRequestedTargetDamageDistribution": {
+        "0": 0.0,
+        "40": 0.0,
+        "80": 0.0,
+        "120": 1.0
+      },
+      "meanPotentialTargetDamage": 120.0,
+      "sdPotentialTargetDamage": 0.0,
+      "meanCappedHPDamageAt110": 110.0,
+      "totalPotentialDamageAllTargets": 120
+    },
+    "three_SSR": {
+      "actorDamage": 90,
+      "changeProbability": 0.5,
+      "threshold110KillProbability": 0.5,
+      "potentialRequestedTargetDamageDistribution": {
+        "0": 0.125,
+        "90": 0.375,
+        "180": 0.375,
+        "270": 0.125
+      },
+      "meanPotentialTargetDamage": 135.0,
+      "sdPotentialTargetDamage": 77.94228634059948,
+      "meanCappedHPDamageAt110": 88.75,
+      "totalPotentialDamageAllTargets": 270
+    }
+  },
+  "same_target_control": "If the normal target is already B, no obedience roll and no change-trigger. This toy does not model the future fixed-capacity occupancy cost; the chosen capacity remains reserved even when no change occurs."
+}
