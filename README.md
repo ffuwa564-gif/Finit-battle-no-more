@@ -1,8 +1,10 @@
 # 白亜の塔 攻略日記 Part2 — 第二層とルネットの必殺技
 
+最新の可愛いピンク版：[YouTube向けJPEG（2MB未満）](Thumbnail.jpg) ／ [PNG原本](Thumbnail.png) ／ [全5枚・生成指示の素材集](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails)。Production-Inputs.zipは本編制作時点の原本です。
+
 ![Part2 サムネイル](Thumbnail.png)
 
-共通OP v4（23秒）を冒頭に収録。サムネイルもOPの星空・軌道線・金とアイボリーの文字に合わせています。
+共通OP v4（23秒）を冒頭に収録。サムネイルはOP内の淡いピンクの場面に合わせた、可愛いちびキャラのデザインへ更新しました。
 
 完成動画 **23:48 / 1920×1080 / 30fps / 48kHz**。
 ずんだもん・四国めたん・春日部つむぎの三人で、第二層「旅立ちの残響」に挑戦します。Part1.1の敵調査→準備→試行→成功→振り返りの構成を参考に制作。

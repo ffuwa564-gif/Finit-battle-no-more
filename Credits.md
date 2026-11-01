@@ -23,3 +23,6 @@ https://amachamusic.chagasi.com/
 ゲーム画面・ゲーム効果音：STILLVEIL v1.10.0、実機録画。イラスト・制作補助に生成AIを使用。一部原画のアニメーションはRunway。
 
 本動画はキャラクターによる創作の攻略日記です。音声・キャラクター権利者がゲームを推薦したことを示すものではありません。立ち絵・楽曲の単体ファイルは公開素材集に含めていません。
+
+
+最新サムネイル：生成AI（image_gen）によるちびキャラのアレンジ。ユーザー指定の共通OPのピンクの場面を参考に制作。原本・生成指示・利用元リンク：https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/tower-diary-thumbnails
