@@ -137,3 +137,11 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Fixed-seed automated trial 
 [YouTube description and chapters](v110-Retrial-YouTube-description.txt) / [Thumbnail](v110-Retrial-Thumbnail.jpg)
 
 VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Continuation of the previous earned save; automatic trial and UI replay excerpts. Local development version, not a game release.
+
+## STILLVEIL Tower Diary — Part 1.1
+
+[Download Part 1.1 (20:07, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
+
+[YouTube description and chapters](TowerDiary-Part1.1-YouTube-description.txt) / [Strategy guide](TowerDiary-Part1.1-Guide.txt) / [Thumbnail](TowerDiary-Part1.1-Thumbnail.jpg) / [Subtitles](TowerDiary-Part1.1.srt)
+
+VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Original Part 1 earned save migrated to ver1.10. 137 normal-dungeon clears, 91 refinements, 11 tower attempts; first-floor victory in 26 rounds. Automatic native trial with UI recording replays, excerpts and fast-forward. Previous T4 equipment carried over; not a fresh-save route or an RTA record. No game balance changes or game deployment.
