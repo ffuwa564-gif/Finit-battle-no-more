@@ -1,0 +1,6 @@
+{
+  "sha256": "3d67ff362f92ae759df2a238547ca7e931e71af3c97cbb369e08e056ceab5832",
+  "fullDecodePassed": true,
+  "decoder": "ffmpeg -xerror; all video frames and audio packets",
+  "evidence": "First validator completed subprocess.run(check=True) for full decode, then failed only when parsing the subsequent audio loudnorm JSON (extra trailing FFmpeg log text). Decode result reused for identical bytes."
+}

@@ -1,0 +1,168 @@
+{
+  "sources": [
+    {
+      "id": "PG-HH2",
+      "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+      "title": "Homeric Hymn 2 to Demeter",
+      "translator": "H. G. Evelyn-White",
+      "loci": [
+        "40–73",
+        "370–404",
+        "405–433",
+        "438–440",
+        "441–459"
+      ],
+      "claims": [
+        "Hecate hears but does not see the abduction; brings a torch and accompanies the search",
+        "Pomegranate binding involves concealment and force in Persephone testimony",
+        "One third of the year below, two thirds above",
+        "Hecate becomes minister and companion to Persephone"
+      ],
+      "shortEvidence": [
+        "I heard her voice, yet saw not with my eyes",
+        "a pomegranate seed",
+        "for the third part of the circling year",
+        "minister and companion to Persephone"
+      ],
+      "status": 200,
+      "kind": "古代一次資料の近代英訳",
+      "retrievedAtUTC": "2026-11-01T03:03:09.411227+00:00",
+      "effectsAreCreative": true
+    },
+    {
+      "id": "PG-HH5",
+      "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+      "title": "Homeric Hymn 5 to Aphrodite",
+      "translator": "H. G. Evelyn-White",
+      "loci": [
+        "218–238"
+      ],
+      "claims": [
+        "Eos asks immortality for Tithonus but omits youth; aging continues"
+      ],
+      "shortEvidence": [
+        "she thought not in her heart to ask youth for him"
+      ],
+      "status": 200,
+      "kind": "古代一次資料の近代英訳",
+      "limits": [
+        "Do not claim this passage necessarily includes transformation into a cicada",
+        "The proposed in-game rescue is creative, not the source ending"
+      ],
+      "retrievedAtUTC": "2026-11-01T03:03:09.411241+00:00",
+      "effectsAreCreative": true
+    },
+    {
+      "id": "PG-HH29",
+      "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+      "title": "Homeric Hymn 29 to Hestia",
+      "translator": "H. G. Evelyn-White",
+      "loci": [
+        "1–6"
+      ],
+      "claims": [
+        "Hestia receives wine offerings both first and last at feasts"
+      ],
+      "shortEvidence": [
+        "both first and last"
+      ],
+      "status": 200,
+      "kind": "古代一次資料の近代英訳",
+      "retrievedAtUTC": "2026-11-01T03:03:09.411244+00:00",
+      "effectsAreCreative": true
+    },
+    {
+      "id": "PG-HH32",
+      "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+      "title": "Homeric Hymn 32 to Selene",
+      "translator": "H. G. Evelyn-White",
+      "loci": [
+        "1–13"
+      ],
+      "claims": [
+        "Selene is full and brightest at mid-month"
+      ],
+      "shortEvidence": [
+        "at eventime in the mid-month"
+      ],
+      "status": 200,
+      "kind": "古代一次資料の近代英訳",
+      "limits": [
+        "Banked healing is a game metaphor, not an ancient attributed power"
+      ],
+      "retrievedAtUTC": "2026-11-01T03:03:09.411245+00:00",
+      "effectsAreCreative": true
+    },
+    {
+      "id": "PG-CYPRIA",
+      "url": "https://www.gutenberg.org/files/348/348-h/348-h.htm",
+      "title": "The Cypria, Proclus summary, Aulis/Iphigeneia episode",
+      "translator": "H. G. Evelyn-White",
+      "loci": [
+        "Proclus summary: second muster at Aulis"
+      ],
+      "claims": [
+        "Artemis removes Iphigeneia, transports her to the Tauri and substitutes a stag on the altar in this summary"
+      ],
+      "shortEvidence": [
+        "putting a stag in place of the girl upon the altar"
+      ],
+      "status": 200,
+      "kind": "散逸叙事詩の古代梗概の近代英訳",
+      "limits": [
+        "Do not call the accessed text the complete lost Cypria",
+        "Other surviving works have different details about Iphigeneia"
+      ],
+      "retrievedAtUTC": "2026-11-01T03:03:09.411247+00:00",
+      "effectsAreCreative": true
+    },
+    {
+      "id": "MIT-ILIAD5",
+      "url": "https://classics.mit.edu/Homer/iliad.5.v.html",
+      "title": "Homer, Iliad, Book V",
+      "translator": "Samuel Butler",
+      "loci": [
+        "Athena removes the veil from Diomedes eyes (normally c.127–132)",
+        "Athena joins Diomedes in chariot against Ares near end of Book V"
+      ],
+      "claims": [
+        "Athena enables distinction between gods and men, with restrictions on combat",
+        "Athena supports Diomedes in the chariot conflict with Ares"
+      ],
+      "shortEvidence": [
+        "I have withdrawn the veil from your eyes",
+        "that you know gods and men apart"
+      ],
+      "status": 200,
+      "kind": "古代一次資料の大学公開英訳",
+      "limits": [
+        "Translation uses Latin names Minerva/Jove/Mars etc.; Athena/Zeus/Ares are the corresponding Greek names",
+        "Intents-as-committed-commands is a creative game proposal"
+      ],
+      "retrievedAtUTC": "2026-11-01T03:03:09.411248+00:00",
+      "effectsAreCreative": true
+    }
+  ],
+  "failedRetrievals": [
+    {
+      "url": "https://www.theoi.com/Text/HomericHymns1.html",
+      "status": 403,
+      "usedAsRetrievedEvidence": false
+    },
+    {
+      "url": "https://www.theoi.com/Text/PindarOlympianOdes1.html",
+      "status": 403,
+      "usedAsRetrievedEvidence": false
+    }
+  ],
+  "cachedPrimaryTexts": [
+    {
+      "path": "greek-sources/evelyn-white.txt",
+      "sha256": "13745b9a6fc29be7807e586c5308293edb94ca2a9535534286eb171609ce972e"
+    },
+    {
+      "path": "greek-sources/iliad5.txt",
+      "sha256": "131c6117b4e92c103a951ada1db44138f7d775dd7c4b900bd3c8fb7239d1c5ba"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "sources": [
+    {
+      "id": "O01",
+      "title": "The Prose Edda: Gylfaginning",
+      "author": "Snorri Sturluson",
+      "translator": "Arthur Gilchrist Brodeur",
+      "editionYear": 1916,
+      "url": "https://sacred-texts.com/neu/pre/pre04.htm",
+      "sections": [
+        "XXIV",
+        "XXXV"
+      ],
+      "kind": "primary text in historical English translation",
+      "file": "gy24.txt",
+      "verifiedFacts": [
+        "Freyja receives half of the slain in Folkvangr; she rides in a cat-drawn chariot.",
+        "Freyja seeks the travelling Odr and weeps red-gold tears. The passage names her Brisingamen."
+      ],
+      "limits": [
+        "A medieval literary record, not a single exhaustive account of all Norse religion.",
+        "The passage does not establish that Brisingamen is amber.",
+        "No HP debt, revival, copied skill, or speed-exchange game mechanic is stated."
+      ],
+      "accessed": "2026-11-01",
+      "httpStatus": 200,
+      "bytes": 387237,
+      "sha256": "3b2ebced5d25e71782c611735f4af1e31ad620c525d9959c486984fa22789a3a",
+      "localEvidence": "/workspace/shared/myth-video/sources-other/gy24.txt"
+    },
+    {
+      "id": "O02",
+      "title": "The Younger Edda",
+      "author": "Snorri Sturluson",
+      "translator": "Rasmus B. Anderson",
+      "editionYear": 1901,
+      "url": "https://www.gutenberg.org/files/18947/18947-h/18947-h.htm",
+      "sections": [
+        "Gylfaginning: Freyja and the Asynjur",
+        "Skaldskaparmal: Idunn and Thjazi narrative"
+      ],
+      "kind": "primary text in historical English translation",
+      "file": "gutenberg.txt",
+      "verifiedFacts": [
+        "Gold tears while seeking Oder.",
+        "Loki borrows Freyja's falcon-guise in the Idunn rescue narrative."
+      ],
+      "limits": [
+        "Spellings and chapter divisions differ from other translations.",
+        "Action-order exchange is a creative adaptation, not a claimed mythical power."
+      ],
+      "accessed": "2026-11-01",
+      "httpStatus": 200,
+      "bytes": 535611,
+      "sha256": "e0f3bf75f0bde2548c96aaa5c9ec960e724891c7dc1abe338848fa9621464270",
+      "localEvidence": "/workspace/shared/myth-video/sources-other/gutenberg.txt",
+      "originalTranslationCopyrightYear": 1879,
+      "editionNote": "The fetched Gutenberg e-text is based on the 1901 Scott, Foresman and Company printing; the copyright page gives 1879. The e-text transcriber explicitly distinguishes the original 1879 book and the 1901 printing."
+    },
+    {
+      "id": "O03",
+      "title": "Thrym's Poem (Þrymskviða)",
+      "author": "D. L. Ashliman, University of Pittsburgh",
+      "edition": "Retelling based on Olive Bray, The Elder or Poetic Edda (1908), pp.126–137; revised 2009-11-20",
+      "url": "https://sites.pitt.edu/~dash/thrym.html",
+      "sections": [
+        "Freyja lends the feathered coat; Loki flies to Jotunheim"
+      ],
+      "kind": "university-hosted retelling with stated source edition",
+      "file": "pitt.txt",
+      "verifiedFacts": [
+        "Freyja lends a feathered coat that Loki wears."
+      ],
+      "limits": [
+        "This page is a retelling, not a literal translation of the Old Norse poem."
+      ],
+      "accessed": "2026-11-01",
+      "httpStatus": 200,
+      "bytes": 6663,
+      "sha256": "6d6af78a7c0dd7b5d37233bdd6592e003af7bca494a76ea503965c054fc8ea82",
+      "localEvidence": "/workspace/shared/myth-video/sources-other/pitt.txt"
+    },
+    {
+      "id": "O04",
+      "title": "Fishing at Iwaya on Enoshima",
+      "author": "The Cleveland Museum of Art",
+      "object": {
+        "artist": "Kitagawa Utamaro",
+        "date": "c.1790",
+        "accession": "1921.407"
+      },
+      "url": "https://www.clevelandart.org/art/1921.407",
+      "api": "https://openaccess-api.clevelandart.org/api/artworks/?q=Benzaiten&limit=5",
+      "kind": "museum collection interpretation of Japanese reception",
+      "file": "cma-enoshima.txt",
+      "verifiedFacts": [
+        "The description associates Benzaiten with water, music, and entertainment in the Japanese Enoshima setting."
+      ],
+      "limits": [
+        "This is evidence for Japanese reception/iconography, not an ancient Sanskrit textual episode.",
+        "It does not license treating all Sarasvati and Benzaiten traditions as identical.",
+        "HP redistribution is an original design metaphor."
+      ],
+      "accessed": "2026-11-01",
+      "httpStatus": 200,
+      "bytes": 79705,
+      "sha256": "b8b23c66a1ed347711dad46b2c5edf47afec1846e2eb22d383c69fb801f803d6",
+      "localEvidence": "/workspace/shared/myth-video/sources-other/cma-enoshima.txt"
+    }
+  ],
+  "failedOrExcluded": [
+    {
+      "url": "https://www.kyohaku.go.jp/eng/dictio/choukoku/benzai.html",
+      "status": 404,
+      "usedAsEvidence": false
+    },
+    {
+      "url": "https://collectionapi.metmuseum.org/public/collection/v1/search?q=Sarasvati",
+      "status": 410,
+      "usedAsEvidence": false
+    },
+    {
+      "url": "https://openaccess-api.clevelandart.org/api/artworks/?q=Sarasvati&limit=20",
+      "status": 403,
+      "usedAsEvidence": false
+    }
+  ],
+  "gameEvidence": {
+    "file": "src/content/index.ts",
+    "lines": [
+      199,
+      200
+    ],
+    "freyja": "琥珀の首飾り、二匹の猫、失われる痛み、帰る場所",
+    "benzaiten": "水鏡、琵琶、離れた心の傷、最後の一音まで席を立たない"
+  },
+  "proposalsAreUnimplemented": true
+}

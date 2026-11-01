@@ -1,0 +1,1609 @@
+{
+  "scope": "Abstract model of an unimplemented proposed leader skill: each ultimate gives all four allies 30 charge AFTER paying its own 100. Charge is capped at 100. Fixed A-B-C-D order. No enemies, status, damage intake, cooldowns, role crystal, or equipment. Ordinary action grants self 25. ready_at_action is NOT the current game reservation rule. reserve_at_round_start preserves only the current requirement that an ultimate be reserved when ready before the round; this is still not a full game simulation.",
+  "models": {
+    "ready_at_action": [
+      {
+        "round": 1,
+        "opening": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "reserved": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 1,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              100,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              100,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 1,
+            "actor": "B",
+            "reservedAtRoundStart": true,
+            "before": [
+              30,
+              100,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 1,
+            "actor": "C",
+            "reservedAtRoundStart": true,
+            "before": [
+              60,
+              30,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 1,
+            "actor": "D",
+            "reservedAtRoundStart": true,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 2,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 2,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 2,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 2,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 3,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 3,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 3,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 3,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 4,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 4,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 4,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 4,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 5,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 5,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 5,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 5,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 6,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 6,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 6,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 6,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 7,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 7,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 7,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 7,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 8,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "ready_at_action",
+            "round": 8,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 8,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              90
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 8,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              30,
+              100,
+              90
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "ready_at_action",
+            "round": 8,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      }
+    ],
+    "reserve_at_round_start": [
+      {
+        "round": 1,
+        "opening": [
+          100,
+          100,
+          100,
+          100
+        ],
+        "reserved": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "ultimates": 4,
+        "ending": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 1,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              100,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              100,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 1,
+            "actor": "B",
+            "reservedAtRoundStart": true,
+            "before": [
+              30,
+              100,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              30,
+              100,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 1,
+            "actor": "C",
+            "reservedAtRoundStart": true,
+            "before": [
+              60,
+              30,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              90,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 1,
+            "actor": "D",
+            "reservedAtRoundStart": true,
+            "before": [
+              90,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              90,
+              60,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "opening": [
+          100,
+          90,
+          60,
+          30
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "ultimates": 1,
+        "ending": [
+          30,
+          100,
+          100,
+          85
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 2,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              90,
+              60,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 2,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              90,
+              60
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 2,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              90,
+              60
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              100,
+              60
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 2,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              100,
+              60
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              100,
+              85
+            ]
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "opening": [
+          30,
+          100,
+          100,
+          85
+        ],
+        "reserved": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "ultimates": 2,
+        "ending": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 3,
+            "actor": "A",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              100,
+              85
+            ],
+            "action": "ordinary",
+            "after": [
+              55,
+              100,
+              100,
+              85
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 3,
+            "actor": "B",
+            "reservedAtRoundStart": true,
+            "before": [
+              55,
+              100,
+              100,
+              85
+            ],
+            "action": "ultimate",
+            "after": [
+              85,
+              30,
+              100,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 3,
+            "actor": "C",
+            "reservedAtRoundStart": true,
+            "before": [
+              85,
+              30,
+              100,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              60,
+              30,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 3,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              100,
+              60,
+              30,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              100,
+              60,
+              30,
+              100
+            ]
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "opening": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          true
+        ],
+        "ultimates": 2,
+        "ending": [
+          60,
+          100,
+          100,
+          30
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 4,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              90,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 4,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              90,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 4,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              85,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 4,
+            "actor": "D",
+            "reservedAtRoundStart": true,
+            "before": [
+              30,
+              100,
+              85,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              100,
+              100,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "opening": [
+          60,
+          100,
+          100,
+          30
+        ],
+        "reserved": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "ultimates": 2,
+        "ending": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 5,
+            "actor": "A",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              100,
+              100,
+              30
+            ],
+            "action": "ordinary",
+            "after": [
+              85,
+              100,
+              100,
+              30
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 5,
+            "actor": "B",
+            "reservedAtRoundStart": true,
+            "before": [
+              85,
+              100,
+              100,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              30,
+              100,
+              60
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 5,
+            "actor": "C",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              30,
+              100,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              60,
+              30,
+              90
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 5,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              100,
+              60,
+              30,
+              90
+            ],
+            "action": "ordinary",
+            "after": [
+              100,
+              60,
+              30,
+              100
+            ]
+          }
+        ]
+      },
+      {
+        "round": 6,
+        "opening": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          true
+        ],
+        "ultimates": 2,
+        "ending": [
+          60,
+          100,
+          100,
+          30
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 6,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              90,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 6,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              90,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 6,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              85,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 6,
+            "actor": "D",
+            "reservedAtRoundStart": true,
+            "before": [
+              30,
+              100,
+              85,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              100,
+              100,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "round": 7,
+        "opening": [
+          60,
+          100,
+          100,
+          30
+        ],
+        "reserved": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "ultimates": 2,
+        "ending": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 7,
+            "actor": "A",
+            "reservedAtRoundStart": false,
+            "before": [
+              60,
+              100,
+              100,
+              30
+            ],
+            "action": "ordinary",
+            "after": [
+              85,
+              100,
+              100,
+              30
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 7,
+            "actor": "B",
+            "reservedAtRoundStart": true,
+            "before": [
+              85,
+              100,
+              100,
+              30
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              30,
+              100,
+              60
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 7,
+            "actor": "C",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              30,
+              100,
+              60
+            ],
+            "action": "ultimate",
+            "after": [
+              100,
+              60,
+              30,
+              90
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 7,
+            "actor": "D",
+            "reservedAtRoundStart": false,
+            "before": [
+              100,
+              60,
+              30,
+              90
+            ],
+            "action": "ordinary",
+            "after": [
+              100,
+              60,
+              30,
+              100
+            ]
+          }
+        ]
+      },
+      {
+        "round": 8,
+        "opening": [
+          100,
+          60,
+          30,
+          100
+        ],
+        "reserved": [
+          true,
+          false,
+          false,
+          true
+        ],
+        "ultimates": 2,
+        "ending": [
+          60,
+          100,
+          100,
+          30
+        ],
+        "events": [
+          {
+            "model": "reserve_at_round_start",
+            "round": 8,
+            "actor": "A",
+            "reservedAtRoundStart": true,
+            "before": [
+              100,
+              60,
+              30,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              30,
+              90,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 8,
+            "actor": "B",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              90,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              60,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 8,
+            "actor": "C",
+            "reservedAtRoundStart": false,
+            "before": [
+              30,
+              100,
+              60,
+              100
+            ],
+            "action": "ordinary",
+            "after": [
+              30,
+              100,
+              85,
+              100
+            ]
+          },
+          {
+            "model": "reserve_at_round_start",
+            "round": 8,
+            "actor": "D",
+            "reservedAtRoundStart": true,
+            "before": [
+              30,
+              100,
+              85,
+              100
+            ],
+            "action": "ultimate",
+            "after": [
+              60,
+              100,
+              100,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
