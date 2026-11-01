@@ -140,7 +140,7 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Continuation of the previou
 
 ## STILLVEIL Tower Diary — Part 1.1
 
-[Download Part 1.1 (20:26, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
+[Download Part 1.1 (20:51, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
 
 [YouTube description and chapters](TowerDiary-Part1.1-YouTube-description.txt) / [Strategy guide](TowerDiary-Part1.1-Guide.txt) / [Thumbnail](TowerDiary-Part1.1-Thumbnail.jpg) / [Subtitles](TowerDiary-Part1.1.srt)
 
@@ -148,7 +148,7 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Original Part 1 earned save
 
 ## STILLVEIL Tower Diary — Part 1.1 (audio sync revision)
 
-[Download Part 1.1 (20:26, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
+[Download Part 1.1 (20:51, 720p MP4)](STILLVEIL-TowerDiary-Part1.1-720p.mp4)
 
 [YouTube description and chapters](TowerDiary-Part1.1-YouTube-description.txt) / [Strategy guide](TowerDiary-Part1.1-Guide.txt) / [Thumbnail](TowerDiary-Part1.1-Thumbnail.jpg) / [Subtitles](TowerDiary-Part1.1.srt)
 
@@ -161,3 +161,11 @@ VOICEVOX:ずんだもん / VOICEVOX:四国めたん. Original Part 1 earned save
 [YouTube description and chapters](v110-Update-YouTube-description.txt) / [Thumbnail](v110-Update-Thumbnail.jpg) / [Update checklist](v110-Update-Checklist.txt) / [Subtitles](v110-Update.srt)
 
 VOICEVOX:ずんだもん. Implemented features from main dec20eb, actual interface screenshots and labeled mechanism-demo fixtures. Does not publish or modify the game.
+
+## Tower Diary Part 1.1 — finished-file synchronization verified
+
+[Download the verified 20:51 revision (720p)](STILLVEIL-TowerDiary-Part1.1-SyncFixed-v3-720p.mp4)
+
+[Finished-file sync report](Part1.1-Sync-Audit.txt) / [Machine-readable audit](Part1.1-Sync-Audit.json) / [Updated YouTube description](TowerDiary-Part1.1-YouTube-description.txt) / [Prevention tools and rules](Part1.1-Sync-Guardrails.zip)
+
+Gameplay sound and picture checked at 15 actual finished-movie anchors; narration checked at 6. Same dialogue and game result, with pauses adjusted so defeat commentary follows the actual defeat. VOICEVOX:ずんだもん / VOICEVOX:四国めたん.
