@@ -1,0 +1,3 @@
+import{readFileSync,writeFileSync}from'node:fs';import{run}from'./core';
+const row=JSON.parse(readFileSync('artifacts/diary-111/search/command.json','utf8')).find((x:any)=>x.id==='nox-benzaiten-true');const candidates=Array.from({length:16},(_,i)=>({seed:1001+i,result:run(row.config,1001+i,true)})).filter(o=>!o.result.win&&o.result.events.some((e:any)=>e?.text?.includes('号令の宛先')));
+const pick=candidates.sort((a,b)=>a.result.remaining-b.result.remaining)[0];if(!pick)throw Error('No actual command sample');writeFileSync('artifacts/diary-111/search/command-representative.json',JSON.stringify({id:'command',config:row.config,...pick},null,2));console.log(pick.seed,pick.result.rounds,pick.result.events.filter((e:any)=>e?.text?.includes('号令の宛先')).length);

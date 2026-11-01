@@ -1,0 +1,4 @@
+import {content} from '../../src/content';import {writeFileSync} from 'node:fs';import {createBattle,dungeonDifficulty} from '../../src/domain/engine';
+writeFileSync('artifacts/diary-111/content.json',JSON.stringify(content));
+for(const c of content.characters.filter(c=>['athena','ruka','hecate','fio','liora','liora-awakened','persephone','noelle-awakened','benzaiten','seris-awakened','vespera','flora','elaine-awakened','nox','neri','ione','iris'].includes(c.id)))console.log(c.id,c.name,c.rarity,c.strength,c.role,c.leaderEffect,c.skillIds);
+const b=createBattle(content,['athena','nox','hecate','flora'],'hecate','ivory-tower-001',5,1001,'inspect');console.log('Enemy',b.units.filter(x=>x.side==='enemy').map(x=>[x.characterId,x.hp,x.attack,x.defense,x.speed]));console.log('Tower',content.dungeons.find(x=>x.id==='ivory-tower-001'));
