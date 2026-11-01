@@ -1,0 +1,1771 @@
+{
+  "sourceCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "dungeonId": "ivory-tower-001",
+  "searchSeeds": [
+    1001,
+    1012
+  ],
+  "heldOutSeeds": [
+    70001,
+    70060
+  ],
+  "note": "Fixed automated native-legal policy, prepared ownership and tier-range-end equipment. Representative win footage is selected; held-out count includes all losses. These are not population win probabilities or equipment-acquisition runs. Builds overlap in supports and equipment. No optimality claim.",
+  "builds": [
+    {
+      "id": "initial",
+      "title": "覚醒した初期の四人",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "liora-awakened",
+          "elaine-awakened",
+          "noelle-awakened"
+        ],
+        "leader": "liora-awakened",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "chain",
+              "value": 179
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "mercy",
+              "value": 179
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "none",
+              "value": 0
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "execution",
+              "value": 179
+            }
+          }
+        ],
+        "prefer": [],
+        "policy": 0
+      },
+      "tier": 5,
+      "seed": 1005,
+      "rounds": 11,
+      "survivors": 3,
+      "potions": 4,
+      "holdoutWins": 30,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-20": 5,
+        "charm:resist": 2,
+        "skill:attack-10": 4,
+        "memory:echo-shard": 9,
+        "skill:heal-20": 1,
+        "skill:area-20": 3,
+        "sleep:inflict": 1,
+        "skill:barrier-20": 3,
+        "skill:debuff-12": 1,
+        "skill:drain-10": 4,
+        "sleep:skip": 1,
+        "memory:dawn-crown": 3,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:dawn-27": 3,
+        "memory:twin-tide": 1,
+        "skill:pierce-20": 2,
+        "ultimate:party:liora-awakened": 2,
+        "ultimate:party:noelle-awakened": 2,
+        "ultimate:party:seris-awakened": 2,
+        "memory:night-dew": 2,
+        "skill:attack-27": 1
+      }
+    },
+    {
+      "id": "echo",
+      "title": "残響と連鎖",
+      "config": {
+        "party": [
+          "nox",
+          "athena",
+          "benzaiten",
+          "hecate"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          }
+        ],
+        "prefer": [],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1005,
+      "rounds": 14,
+      "survivors": 4,
+      "potions": 2,
+      "holdoutWins": 54,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 6,
+        "skill:debuff-24": 3,
+        "charm:resist": 2,
+        "skill:attack-10": 5,
+        "memory:echo-shard": 11,
+        "skill:heal-22": 3,
+        "sleep:inflict": 1,
+        "skill:rally-23": 3,
+        "memory:dawn-crown": 5,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 5,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:pierce-25": 4,
+        "memory:twin-tide": 1,
+        "ultimate:party:athena": 3,
+        "ultimate:party:hecate": 3,
+        "ultimate:party:benzaiten": 2,
+        "ultimate:party:nox": 2,
+        "memory:night-dew": 4,
+        "skill:attack-25": 2
+      }
+    },
+    {
+      "id": "shield",
+      "title": "障壁を砲弾に",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "athena",
+          "selene",
+          "lunette-awakened"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gshield-break",
+            "defId": "shield-break",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "execution",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gpale-ward",
+            "defId": "pale-ward",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          }
+        ],
+        "prefer": [],
+        "policy": 2
+      },
+      "tier": 3,
+      "seed": 1009,
+      "rounds": 12,
+      "survivors": 4,
+      "potions": 0,
+      "holdoutWins": 46,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 6,
+        "charm:resist": 2,
+        "skill:attack-10": 4,
+        "skill:dawn-27": 3,
+        "skill:heal-21": 4,
+        "sleep:inflict": 1,
+        "skill:barrier-24": 4,
+        "skill:rally-23": 3,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 4,
+        "sleep:skip": 1,
+        "memory:pale-ward": 6,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "memory:echo-shard": 9,
+        "skill:attack-27": 3,
+        "skill:barrier-21": 2,
+        "skill:area-24": 2,
+        "ultimate:party:athena": 2,
+        "memory:shield-break": 3,
+        "ultimate:party:seris-awakened": 2,
+        "ultimate:party:selene": 2,
+        "ultimate:party:lunette-awakened": 2,
+        "memory:night-dew": 1
+      }
+    },
+    {
+      "id": "drain",
+      "title": "吸収で殴り続ける",
+      "config": {
+        "party": [
+          "freyja",
+          "evelyn",
+          "benzaiten",
+          "hecate"
+        ],
+        "leader": "freyja",
+        "gems": [
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "mercy",
+              "value": 139
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "mercy",
+              "value": 139
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "none",
+              "value": 0
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "mercy",
+              "value": 139
+            }
+          }
+        ],
+        "prefer": [
+          "drain"
+        ],
+        "policy": 0
+      },
+      "tier": 4,
+      "seed": 1009,
+      "rounds": 16,
+      "survivors": 4,
+      "potions": 2,
+      "holdoutWins": 50,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-24": 8,
+        "charm:resist": 2,
+        "memory:echo-shard": 11,
+        "skill:attack-10": 5,
+        "skill:drain-23": 5,
+        "skill:heal-22": 5,
+        "sleep:inflict": 1,
+        "memory:night-dew": 14,
+        "skill:debuff-12": 2,
+        "skill:debuff-24": 3,
+        "skill:drain-10": 5,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "memory:twin-tide": 1,
+        "ultimate:party:evelyn": 4,
+        "ultimate:party:hecate": 3,
+        "ultimate:party:freyja": 3,
+        "skill:attack-23": 2,
+        "ultimate:party:benzaiten": 1
+      }
+    },
+    {
+      "id": "dawn",
+      "title": "弱体から暁冠",
+      "config": {
+        "party": [
+          "seris-awakened",
+          "athena",
+          "hecate",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "execution",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [],
+        "policy": 1
+      },
+      "tier": 3,
+      "seed": 1001,
+      "rounds": 14,
+      "survivors": 4,
+      "potions": 5,
+      "holdoutWins": 46,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 7,
+        "charm:resist": 1,
+        "memory:echo-shard": 10,
+        "memory:dawn-crown": 3,
+        "skill:attack-10": 5,
+        "sleep:inflict": 1,
+        "skill:rally-23": 3,
+        "skill:debuff-12": 2,
+        "skill:debuff-24": 3,
+        "sleep:skip": 1,
+        "skill:drain-10": 4,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:dawn-27": 3,
+        "ultimate:party:athena": 3,
+        "skill:attack-27": 3,
+        "skill:heal-22": 2,
+        "charm:inflict": 1,
+        "ultimate:party:hecate": 2,
+        "charm:friendly_fire": 1,
+        "ultimate:party:benzaiten": 2,
+        "charm:recover": 1,
+        "ultimate:party:seris-awakened": 2,
+        "memory:night-dew": 2
+      }
+    },
+    {
+      "id": "area",
+      "title": "全体攻撃で取り巻き処理",
+      "config": {
+        "party": [
+          "asteria",
+          "athena",
+          "lunette-awakened",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "area"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1001,
+      "rounds": 16,
+      "survivors": 4,
+      "potions": 3,
+      "holdoutWins": 48,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 8,
+        "charm:resist": 2,
+        "skill:attack-10": 6,
+        "skill:heal-22": 4,
+        "skill:area-22": 6,
+        "skill:barrier-24": 5,
+        "sleep:inflict": 1,
+        "skill:rally-23": 4,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 5,
+        "memory:echo-shard": 10,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "memory:twin-tide": 2,
+        "skill:pierce-22": 3,
+        "skill:area-24": 4,
+        "ultimate:party:athena": 4,
+        "ultimate:party:benzaiten": 2,
+        "ultimate:party:asteria": 3,
+        "ultimate:party:lunette-awakened": 3,
+        "memory:dawn-crown": 4
+      }
+    },
+    {
+      "id": "sleep",
+      "title": "眠りで敵の手数を減らす",
+      "config": {
+        "party": [
+          "persephone",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "sleep"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1006,
+      "rounds": 19,
+      "survivors": 4,
+      "potions": 2,
+      "holdoutWins": 47,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 9,
+        "charm:inflict": 1,
+        "sleep:inflict": 2,
+        "skill:attack-10": 7,
+        "charm:friendly_fire": 2,
+        "skill:heal-22": 3,
+        "sleep:skip": 5,
+        "skill:rally-23": 4,
+        "skill:debuff-12": 2,
+        "memory:dream-lace": 8,
+        "skill:drain-10": 6,
+        "charm:recover": 1,
+        "memory:twin-tide": 1,
+        "sleep:recover": 4,
+        "skill:debuff-18": 4,
+        "memory:echo-shard": 13,
+        "ultimate:party:athena": 4,
+        "skill:attack-25": 4,
+        "skill:area-10": 1,
+        "charm:resist": 2,
+        "ultimate:party:persephone": 3,
+        "skill:pierce-25": 4,
+        "sleep:resist": 3,
+        "ultimate:party:benzaiten": 2,
+        "ultimate:party:nox": 3,
+        "memory:night-dew": 3
+      }
+    },
+    {
+      "id": "confuse",
+      "title": "混乱を軸に崩す",
+      "config": {
+        "party": [
+          "seoritsu",
+          "athena",
+          "nox",
+          "selene"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "confusion"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1007,
+      "rounds": 17,
+      "survivors": 4,
+      "potions": 0,
+      "holdoutWins": 55,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 8,
+        "charm:resist": 2,
+        "skill:attack-10": 5,
+        "skill:attack-25": 4,
+        "skill:heal-21": 4,
+        "confusion:inflict": 3,
+        "skill:rally-23": 4,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 5,
+        "memory:dawn-crown": 6,
+        "skill:barrier-21": 4,
+        "memory:echo-shard": 9,
+        "confusion:friendly_fire": 2,
+        "confusion:recover": 3,
+        "skill:pierce-25": 4,
+        "memory:twin-tide": 1,
+        "ultimate:party:athena": 4,
+        "ultimate:party:nox": 3,
+        "confusion:resist": 1,
+        "ultimate:party:seoritsu": 1,
+        "ultimate:party:selene": 1,
+        "memory:night-dew": 2
+      }
+    },
+    {
+      "id": "paralysis",
+      "title": "麻痺で行動を妨害",
+      "config": {
+        "party": [
+          "mizuhanome",
+          "athena",
+          "seris-awakened",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "paralysis"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1004,
+      "rounds": 17,
+      "survivors": 4,
+      "potions": 2,
+      "holdoutWins": 54,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 8,
+        "paralysis:inflict": 3,
+        "charm:inflict": 2,
+        "skill:attack-10": 6,
+        "charm:friendly_fire": 3,
+        "skill:heal-22": 4,
+        "paralysis:skip": 3,
+        "skill:rally-23": 4,
+        "memory:echo-shard": 10,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 6,
+        "charm:recover": 2,
+        "memory:twin-tide": 1,
+        "sleep:inflict": 1,
+        "paralysis:recover": 2,
+        "skill:debuff-15": 4,
+        "memory:dawn-crown": 6,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "ultimate:party:athena": 4,
+        "ultimate:party:mizuhanome": 3,
+        "skill:dawn-27": 3,
+        "skill:mend-pair-22": 1,
+        "ultimate:party:benzaiten": 1,
+        "skill:attack-27": 3,
+        "ultimate:party:seris-awakened": 3,
+        "paralysis:resist": 1,
+        "memory:night-dew": 2
+      }
+    },
+    {
+      "id": "charm",
+      "title": "魅了で同士討ちを狙う",
+      "config": {
+        "party": [
+          "thorn-witch",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "charm"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1009,
+      "rounds": 17,
+      "survivors": 4,
+      "potions": 4,
+      "holdoutWins": 56,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 8,
+        "charm:resist": 3,
+        "charm:inflict": 3,
+        "skill:attack-25": 4,
+        "skill:attack-10": 6,
+        "skill:heal-22": 2,
+        "charm:friendly_fire": 6,
+        "skill:rally-23": 3,
+        "skill:debuff-12": 5,
+        "memory:echo-shard": 9,
+        "memory:dawn-crown": 6,
+        "skill:drain-10": 6,
+        "charm:recover": 3,
+        "skill:pierce-25": 4,
+        "sleep:inflict": 1,
+        "ultimate:party:athena": 4,
+        "sleep:skip": 2,
+        "skill:area-10": 1,
+        "ultimate:party:thorn-witch": 3,
+        "sleep:recover": 1,
+        "ultimate:party:nox": 3,
+        "ultimate:party:benzaiten": 3,
+        "memory:night-dew": 4
+      }
+    },
+    {
+      "id": "cleanse",
+      "title": "解除と立て直し",
+      "config": {
+        "party": [
+          "hecate",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gclear-tear",
+            "defId": "clear-tear",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "cleanse"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1001,
+      "rounds": 18,
+      "survivors": 4,
+      "potions": 3,
+      "holdoutWins": 56,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 9,
+        "skill:debuff-24": 5,
+        "charm:resist": 1,
+        "skill:attack-10": 6,
+        "memory:echo-shard": 13,
+        "skill:heal-22": 5,
+        "sleep:inflict": 1,
+        "skill:rally-23": 4,
+        "memory:clear-tear": 4,
+        "sleep:recover": 1,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 6,
+        "skill:attack-25": 3,
+        "skill:area-10": 1,
+        "skill:pierce-25": 4,
+        "memory:twin-tide": 2,
+        "ultimate:party:athena": 4,
+        "ultimate:party:hecate": 3,
+        "charm:inflict": 1,
+        "charm:friendly_fire": 1,
+        "ultimate:party:benzaiten": 2,
+        "charm:recover": 1,
+        "ultimate:party:nox": 3,
+        "skill:mend-pair-22": 1,
+        "memory:night-dew": 1
+      }
+    },
+    {
+      "id": "regen",
+      "title": "再生で粘る",
+      "config": {
+        "party": [
+          "selene-standard",
+          "evelyn",
+          "nox",
+          "ukanomitama"
+        ],
+        "leader": "evelyn",
+        "gems": [
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gpale-ward",
+            "defId": "pale-ward",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          }
+        ],
+        "prefer": [
+          "regen"
+        ],
+        "policy": 2
+      },
+      "tier": 3,
+      "seed": 1005,
+      "rounds": 19,
+      "survivors": 4,
+      "potions": 0,
+      "holdoutWins": 45,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-24": 9,
+        "charm:resist": 2,
+        "skill:attack-10": 7,
+        "memory:echo-shard": 17,
+        "memory:pale-ward": 10,
+        "skill:regen-19": 6,
+        "sleep:inflict": 1,
+        "memory:night-dew": 5,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 6,
+        "sleep:skip": 1,
+        "skill:buff-16": 4,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:attack-25": 4,
+        "skill:regen-16": 1,
+        "skill:heal-19": 4,
+        "ultimate:party:evelyn": 4,
+        "ultimate:party:ukanomitama": 3,
+        "ultimate:party:selene-standard": 1,
+        "ultimate:party:nox": 3,
+        "skill:pierce-25": 4,
+        "charm:inflict": 1,
+        "charm:friendly_fire": 1,
+        "charm:recover": 1,
+        "skill:drain-24": 1
+      }
+    },
+    {
+      "id": "rewind",
+      "title": "巻戻しで通常スキル回転",
+      "config": {
+        "party": [
+          "vespera",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "grewind-thread",
+            "defId": "rewind-thread",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "bulwark",
+              "value": 179
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "mercy",
+              "value": 179
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "chain",
+              "value": 179
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "buff"
+        ],
+        "policy": 0
+      },
+      "tier": 5,
+      "seed": 1009,
+      "rounds": 14,
+      "survivors": 4,
+      "potions": 1,
+      "holdoutWins": 53,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 7,
+        "charm:resist": 2,
+        "memory:echo-shard": 10,
+        "skill:attack-10": 5,
+        "skill:buff-24": 5,
+        "skill:heal-22": 3,
+        "sleep:inflict": 1,
+        "skill:rally-23": 2,
+        "skill:debuff-12": 2,
+        "sleep:skip": 1,
+        "skill:drain-10": 5,
+        "memory:rewind-thread": 8,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:attack-25": 3,
+        "skill:overclock-24": 3,
+        "ultimate:party:athena": 3,
+        "ultimate:party:nox": 3,
+        "memory:twin-tide": 2,
+        "ultimate:party:vespera": 2,
+        "ultimate:party:benzaiten": 2,
+        "memory:night-dew": 3,
+        "skill:pierce-25": 3
+      }
+    },
+    {
+      "id": "battery",
+      "title": "星炉から兎の必殺",
+      "config": {
+        "party": [
+          "vespera",
+          "athena",
+          "lunette-awakened",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gstar-furnace",
+            "defId": "star-furnace",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "bulwark",
+              "value": 179
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "mercy",
+              "value": 179
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "chain",
+              "value": 179
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "overclock"
+        ],
+        "policy": 0
+      },
+      "tier": 5,
+      "seed": 1005,
+      "rounds": 19,
+      "survivors": 4,
+      "potions": 1,
+      "holdoutWins": 19,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 8,
+        "charm:resist": 2,
+        "skill:attack-10": 7,
+        "skill:overclock-24": 4,
+        "skill:heal-22": 4,
+        "sleep:inflict": 1,
+        "sleep:skip": 1,
+        "skill:rally-23": 4,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 6,
+        "memory:star-furnace": 7,
+        "memory:twin-tide": 3,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:barrier-24": 3,
+        "skill:mend-pair-22": 1,
+        "ultimate:party:lunette-awakened": 5,
+        "ultimate:party:athena": 4,
+        "ultimate:party:vespera": 4,
+        "ultimate:party:benzaiten": 2,
+        "memory:echo-shard": 10,
+        "sleep:resist": 1,
+        "skill:area-24": 4,
+        "memory:night-dew": 5,
+        "skill:buff-24": 3,
+        "charm:inflict": 1,
+        "charm:friendly_fire": 1,
+        "charm:recover": 1
+      }
+    },
+    {
+      "id": "rally",
+      "title": "号令で攻撃を底上げ",
+      "config": {
+        "party": [
+          "athena",
+          "nox",
+          "freyja",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "bulwark",
+              "value": 100
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "chain",
+              "value": 100
+            }
+          },
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "mercy",
+              "value": 100
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 100,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "rally"
+        ],
+        "policy": 0
+      },
+      "tier": 3,
+      "seed": 1009,
+      "rounds": 11,
+      "survivors": 4,
+      "potions": 2,
+      "holdoutWins": 54,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:rally-23": 3,
+        "charm:resist": 2,
+        "skill:attack-23": 3,
+        "skill:attack-10": 4,
+        "memory:echo-shard": 8,
+        "skill:heal-22": 3,
+        "sleep:inflict": 1,
+        "memory:night-dew": 6,
+        "skill:debuff-12": 1,
+        "skill:drain-23": 3,
+        "skill:drain-10": 4,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:guard-23": 3,
+        "memory:dawn-crown": 6,
+        "skill:attack-25": 2,
+        "memory:twin-tide": 1,
+        "ultimate:party:athena": 2,
+        "ultimate:party:benzaiten": 1,
+        "ultimate:party:freyja": 2,
+        "ultimate:party:nox": 2,
+        "skill:pierce-25": 2
+      }
+    },
+    {
+      "id": "accel",
+      "title": "加速の両刃",
+      "config": {
+        "party": [
+          "eos",
+          "evelyn",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "eos",
+        "gems": [
+          {
+            "id": "gpale-ward",
+            "defId": "pale-ward",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "bulwark",
+              "value": 179
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "mercy",
+              "value": 179
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "chain",
+              "value": 179
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 179,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "buff"
+        ],
+        "policy": 0
+      },
+      "tier": 5,
+      "seed": 1006,
+      "rounds": 18,
+      "survivors": 3,
+      "potions": 2,
+      "holdoutWins": 26,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-24": 8,
+        "charm:inflict": 2,
+        "skill:attack-10": 6,
+        "charm:friendly_fire": 3,
+        "skill:buff-15": 1,
+        "skill:heal-22": 5,
+        "sleep:inflict": 1,
+        "memory:night-dew": 8,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 6,
+        "charm:recover": 2,
+        "memory:pale-ward": 1,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "memory:echo-shard": 12,
+        "memory:twin-tide": 1,
+        "ultimate:party:evelyn": 4,
+        "skill:attack-25": 4,
+        "ultimate:party:benzaiten": 2,
+        "sleep:resist": 1,
+        "ultimate:party:nox": 3,
+        "skill:pierce-25": 2,
+        "skill:drain-24": 1
+      }
+    },
+    {
+      "id": "recycle",
+      "title": "障壁を回復へ変える",
+      "config": {
+        "party": [
+          "miette",
+          "liora-awakened",
+          "nox",
+          "lunette-awakened"
+        ],
+        "leader": "liora-awakened",
+        "gems": [
+          {
+            "id": "grewind-thread",
+            "defId": "rewind-thread",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "bulwark",
+              "value": 139
+            }
+          },
+          {
+            "id": "gpale-ward",
+            "defId": "pale-ward",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "bulwark",
+              "value": 139
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "bulwark",
+              "value": 139
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "bulwark",
+              "value": 139
+            }
+          }
+        ],
+        "prefer": [
+          "barrier_mend"
+        ],
+        "policy": 2
+      },
+      "tier": 4,
+      "seed": 1002,
+      "rounds": 21,
+      "survivors": 4,
+      "potions": 3,
+      "holdoutWins": 45,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-20": 10,
+        "charm:inflict": 3,
+        "charm:friendly_fire": 6,
+        "skill:attack-10": 7,
+        "skill:heal-18": 4,
+        "skill:barrier-24": 6,
+        "sleep:inflict": 1,
+        "memory:pale-ward": 9,
+        "skill:debuff-12": 3,
+        "charm:recover": 3,
+        "skill:drain-10": 7,
+        "skill:barrier-mend-18": 3,
+        "sleep:skip": 2,
+        "skill:area-10": 2,
+        "skill:attack-25": 7,
+        "memory:rewind-thread": 10,
+        "sleep:recover": 1,
+        "ultimate:party:liora-awakened": 5,
+        "memory:echo-shard": 13,
+        "sleep:resist": 1,
+        "ultimate:party:miette": 3,
+        "skill:area-24": 4,
+        "ultimate:party:lunette-awakened": 4,
+        "ultimate:party:nox": 3,
+        "skill:pierce-25": 3,
+        "memory:night-dew": 4,
+        "skill:barrier-20": 1
+      }
+    },
+    {
+      "id": "execute",
+      "title": "処刑で終盤を刈り取る",
+      "config": {
+        "party": [
+          "artemis",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gdawn-crown",
+            "defId": "dawn-crown",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "execution",
+              "value": 139
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "bulwark",
+              "value": 139
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "execution",
+              "value": 139
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 139,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [],
+        "policy": 1
+      },
+      "tier": 4,
+      "seed": 1005,
+      "rounds": 10,
+      "survivors": 4,
+      "potions": 5,
+      "holdoutWins": 52,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 5,
+        "charm:resist": 2,
+        "skill:attack-10": 4,
+        "memory:dawn-crown": 3,
+        "memory:echo-shard": 6,
+        "sleep:inflict": 1,
+        "skill:rally-23": 3,
+        "skill:debuff-12": 2,
+        "skill:drain-10": 3,
+        "skill:pierce-19": 2,
+        "sleep:skip": 1,
+        "skill:area-10": 1,
+        "sleep:recover": 1,
+        "skill:attack-19": 2,
+        "skill:pierce-25": 3,
+        "ultimate:party:athena": 2,
+        "ultimate:party:artemis": 2,
+        "ultimate:party:benzaiten": 2,
+        "ultimate:party:nox": 2,
+        "skill:attack-25": 1
+      }
+    },
+    {
+      "id": "dream6",
+      "title": "T6夢織で必殺加速",
+      "config": {
+        "party": [
+          "persephone",
+          "athena",
+          "nox",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gdream-lace",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gnight-dew",
+            "defId": "night-dew",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "chain",
+              "value": 239
+            }
+          },
+          {
+            "id": "gtwin-tide",
+            "defId": "twin-tide",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        ],
+        "prefer": [
+          "sleep"
+        ],
+        "policy": 0
+      },
+      "tier": 6,
+      "seed": 1011,
+      "rounds": 13,
+      "survivors": 4,
+      "potions": 1,
+      "holdoutWins": 56,
+      "holdoutCount": 60,
+      "nativeVerified": true,
+      "eventCounts": {
+        "skill:guard-23": 6,
+        "charm:resist": 1,
+        "sleep:inflict": 4,
+        "memory:echo-shard": 10,
+        "sleep:recover": 4,
+        "skill:attack-10": 5,
+        "skill:heal-22": 4,
+        "skill:rally-23": 3,
+        "skill:debuff-12": 2,
+        "memory:dream-lace": 6,
+        "sleep:skip": 1,
+        "skill:drain-10": 4,
+        "skill:area-10": 1,
+        "ultimate:party:persephone": 3,
+        "skill:attack-25": 2,
+        "memory:twin-tide": 1,
+        "ultimate:party:athena": 3,
+        "charm:inflict": 1,
+        "sleep:resist": 1,
+        "charm:friendly_fire": 1,
+        "ultimate:party:benzaiten": 2,
+        "charm:recover": 1,
+        "skill:pierce-25": 3,
+        "ultimate:party:nox": 2,
+        "memory:night-dew": 1
+      }
+    }
+  ]
+}
