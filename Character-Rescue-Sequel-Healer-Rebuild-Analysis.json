@@ -1,0 +1,308 @@
+{
+  "proposalOnly": true,
+  "stage1SourceUnchanged": true,
+  "screenTrials": 1440,
+  "heldoutTrials": 4320,
+  "totalTrials": 5760,
+  "heldoutSeeds": [
+    15001,
+    15002,
+    15003,
+    15004,
+    15005,
+    15006,
+    15007,
+    15008,
+    15009,
+    15010,
+    15011,
+    15012,
+    15013,
+    15014,
+    15015,
+    15016,
+    15017,
+    15018,
+    15019,
+    15020,
+    15021,
+    15022,
+    15023,
+    15024,
+    15025,
+    15026,
+    15027,
+    15028,
+    15029,
+    15030
+  ],
+  "scope": "Focused follow-up on four fixed weak healers and six fixed contexts. No roster-wide balance or all possible builds claim. All modes compared, no heldout selection. Seed-block bootstrap reflects conditional random-seed variability only.",
+  "modes": {
+    "off": {
+      "meanScore": 51.31225785005772,
+      "scoreDelta": 0.0,
+      "wins": 345,
+      "total": 720,
+      "winRate": 0.4791666666666667,
+      "pairedImproved": 0,
+      "pairedWorsened": 0,
+      "pairedSame": 720,
+      "seedBlockScoreDelta95CI": [
+        0.0,
+        0.0
+      ],
+      "triggers": {},
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 50.14710122338458,
+          "delta": 0.0,
+          "wins": 84,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 51.967510844187515,
+          "delta": 0.0,
+          "wins": 88,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 51.79495283378139,
+          "delta": 0.0,
+          "wins": 87,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 51.33946649887738,
+          "delta": 0.0,
+          "wins": 86,
+          "total": 180
+        }
+      }
+    },
+    "aftercare": {
+      "meanScore": 47.84385721633407,
+      "scoreDelta": -3.4684006337236446,
+      "wins": 318,
+      "total": 720,
+      "winRate": 0.44166666666666665,
+      "pairedImproved": 99,
+      "pairedWorsened": 160,
+      "pairedSame": 461,
+      "seedBlockScoreDelta95CI": [
+        -5.427897885448486,
+        -1.6074313016098756
+      ],
+      "triggers": {
+        "eligibleHealTargets": 708,
+        "aftercareShield": 658,
+        "aftercareShieldAmount": 30173
+      },
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 49.636610351674676,
+          "delta": -0.5104908717099045,
+          "wins": 83,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 47.31158955306141,
+          "delta": -4.655921291126109,
+          "wins": 79,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 47.64451028364748,
+          "delta": -4.150442550133908,
+          "wins": 79,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 46.78271867695272,
+          "delta": -4.556747821924656,
+          "wins": 77,
+          "total": 180
+        }
+      }
+    },
+    "aftercare-heal": {
+      "meanScore": 52.4374353953373,
+      "scoreDelta": 1.125177545279589,
+      "wins": 355,
+      "total": 720,
+      "winRate": 0.4930555555555556,
+      "pairedImproved": 90,
+      "pairedWorsened": 113,
+      "pairedSame": 517,
+      "seedBlockScoreDelta95CI": [
+        0.15431335723262937,
+        2.1923378189983933
+      ],
+      "triggers": {
+        "aftercareExtraHeal": 741,
+        "aftercareExtraHealAmount": 20548
+      },
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 50.75374548770287,
+          "delta": 0.606644264318288,
+          "wins": 85,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 51.787607040154825,
+          "delta": -0.1799038040326942,
+          "wins": 88,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 54.033012044917484,
+          "delta": 2.238059211136098,
+          "wins": 92,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 53.17537700857404,
+          "delta": 1.8359105096966633,
+          "wins": 90,
+          "total": 180
+        }
+      }
+    },
+    "thin-shield-ai": {
+      "meanScore": 51.31225785005772,
+      "scoreDelta": 0.0,
+      "wins": 345,
+      "total": 720,
+      "winRate": 0.4791666666666667,
+      "pairedImproved": 0,
+      "pairedWorsened": 0,
+      "pairedSame": 720,
+      "seedBlockScoreDelta95CI": [
+        0.0,
+        0.0
+      ],
+      "triggers": {
+        "thinShieldUpgrade": 3
+      },
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 50.14710122338458,
+          "delta": 0.0,
+          "wins": 84,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 51.967510844187515,
+          "delta": 0.0,
+          "wins": 88,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 51.79495283378139,
+          "delta": 0.0,
+          "wins": 87,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 51.33946649887738,
+          "delta": 0.0,
+          "wins": 86,
+          "total": 180
+        }
+      }
+    },
+    "aftercare-upgrade": {
+      "meanScore": 51.79583783711462,
+      "scoreDelta": 0.48357998705690364,
+      "wins": 349,
+      "total": 720,
+      "winRate": 0.4847222222222222,
+      "pairedImproved": 28,
+      "pairedWorsened": 38,
+      "pairedSame": 654,
+      "seedBlockScoreDelta95CI": [
+        0.11868787853263255,
+        0.9616520236231213
+      ],
+      "triggers": {
+        "eligibleHealTargets": 775,
+        "aftercareShield": 710,
+        "aftercareShieldAmount": 33161,
+        "thinShieldUpgrade": 326
+      },
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 50.712083641127634,
+          "delta": 0.5649824177430509,
+          "wins": 85,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 52.81386214934272,
+          "delta": 0.8463513051552018,
+          "wins": 90,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 51.828909598929144,
+          "delta": 0.033956765147760075,
+          "wins": 87,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 51.828495959058976,
+          "delta": 0.48902946018160176,
+          "wins": 87,
+          "total": 180
+        }
+      }
+    },
+    "aftercare-gauge": {
+      "meanScore": 48.41077351989253,
+      "scoreDelta": -2.901484330165184,
+      "wins": 322,
+      "total": 720,
+      "winRate": 0.44722222222222224,
+      "pairedImproved": 106,
+      "pairedWorsened": 152,
+      "pairedSame": 462,
+      "seedBlockScoreDelta95CI": [
+        -4.6089355378779375,
+        -1.2759993962513076
+      ],
+      "triggers": {
+        "eligibleHealTargets": 717,
+        "aftercareShield": 665,
+        "aftercareShieldAmount": 30380,
+        "compensatedHitGauge": 50,
+        "compensatedHitGaugeAmount": 420
+      },
+      "characters": {
+        "veil-priestess": {
+          "meanScore": 48.723901564456085,
+          "delta": -1.4231996589284956,
+          "wins": 81,
+          "total": 180
+        },
+        "hebe": {
+          "meanScore": 48.36124460026547,
+          "delta": -3.6062662439220423,
+          "wins": 81,
+          "total": 180
+        },
+        "hebe-standard": {
+          "meanScore": 48.73791986970412,
+          "delta": -3.0570329640772633,
+          "wins": 81,
+          "total": 180
+        },
+        "flora-standard": {
+          "meanScore": 47.82002804514444,
+          "delta": -3.5194384537329353,
+          "wins": 79,
+          "total": 180
+        }
+      }
+    }
+  }
+}

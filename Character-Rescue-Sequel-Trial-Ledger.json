@@ -1,0 +1,218 @@
+{
+  "status": "final research dataset simulation executions; not117040 independent human players or distinct party builds",
+  "totalDatasetBattleExecutions": 117040,
+  "groups": [
+    {
+      "name": "stage1 candidate screening",
+      "trials": 20280,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/screen-area-mark.json",
+        "artifacts/rescue-sequel/benchmark/screen-overheal.json",
+        "artifacts/rescue-sequel/benchmark/screen-leader_overflow.json",
+        "artifacts/rescue-sequel/benchmark/screen-leader_unity.json",
+        "artifacts/rescue-sequel/benchmark/screen-control-fallback.json",
+        "artifacts/rescue-sequel/benchmark/screen-leader_guidance.json",
+        "artifacts/rescue-sequel/benchmark/screen-aftercare.json",
+        "artifacts/rescue-sequel/benchmark/screen-buff-preserve.json",
+        "artifacts/rescue-sequel/benchmark/screen-guard-counter.json",
+        "artifacts/rescue-sequel/benchmark/screen-leader_pledge.json",
+        "artifacts/rescue-sequel/benchmark/screen-shared-gem.json",
+        "artifacts/rescue-sequel/benchmark/screen-flat-gem.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/screen-area-mark.json": "83cf2c7de781c4229f92421c464e1f17300fb0cf9b74dadc6e9abc8d004fe151",
+        "artifacts/rescue-sequel/benchmark/screen-overheal.json": "7a8caf031240d00e28be17f43d548eb210f6feb4cbba0ac8155ee94b50388d3d",
+        "artifacts/rescue-sequel/benchmark/screen-leader_overflow.json": "9a93e5f84d454fc64a4f067ebcf2cb6499498ae2b4afeb52bc1810f51b45f2cf",
+        "artifacts/rescue-sequel/benchmark/screen-leader_unity.json": "3cfdf670adbb6428685a6814c0b3954df7fb36ff3511d8184605c34029fa7c24",
+        "artifacts/rescue-sequel/benchmark/screen-control-fallback.json": "a6787184023845eb98f53e462027bc4ef1d7c3a6d6e91a06c48b62777e970eeb",
+        "artifacts/rescue-sequel/benchmark/screen-leader_guidance.json": "aa25e41526879873a4b589d14b43ccd79918fe1ccae6599b4bb22e106e07a8c0",
+        "artifacts/rescue-sequel/benchmark/screen-aftercare.json": "25473982e64a1cb399365ba6e38083c003cca07fa5239021efd86891787b7aec",
+        "artifacts/rescue-sequel/benchmark/screen-buff-preserve.json": "6dd0ee23294fd7a9a49fe0218406c3e2cb5bbc53862619cff1afc8333407469e",
+        "artifacts/rescue-sequel/benchmark/screen-guard-counter.json": "5b8f8f4cefd1af23a1d1619e46c42956d12171bb0e62865e46d55e4d8caffcca",
+        "artifacts/rescue-sequel/benchmark/screen-leader_pledge.json": "9af2e27583f75f7ef144e1f536b2f3460a6d10144d46b4bf8085d4c0f45dba7b",
+        "artifacts/rescue-sequel/benchmark/screen-shared-gem.json": "f29a6e5ea60f7a75df2b1542c7de1c21a24b0a952f26789d854e0d5a756b39ef",
+        "artifacts/rescue-sequel/benchmark/screen-flat-gem.json": "7a9788e1d424f9a68fbabdccb1523069a3a774083b7686e6a8c2c8dea64a68e9"
+      },
+      "scope": "12 proposals:2stones69forms and10skill/leader proposals20forms; training10 seeds ×6contexts"
+    },
+    {
+      "name": "stage1 native screening",
+      "trials": 4140,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/native-screen.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/native-screen.json": "c2a9146992689bdc2ce7b3c357728ac68bf5539b4fdef708d1885d5892f40b3a"
+      },
+      "scope": "all69 training6contexts×10seeds"
+    },
+    {
+      "name": "stage1 own-crown native screening",
+      "trials": 1200,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/native-self-screen.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/native-self-screen.json": "017130129d9a83c5d24b1415b5def29f56c990520a1162f94438a53dad4e78e0"
+      },
+      "scope": "fixed20 only; crown opportunity control"
+    },
+    {
+      "name": "stage1 native independent confirmation",
+      "trials": 12420,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/native-heldout.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/native-heldout.json": "df041c785b00f180e848406d0983814b25727b4bacbcaedf1c2625fbf6d8778a"
+      },
+      "scope": "69×6×30 fresh seeds"
+    },
+    {
+      "name": "stage1 selected candidates + rejected-leader follow-up",
+      "trials": 37260,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/heldout-flat-gem.json",
+        "artifacts/rescue-sequel/benchmark/heldout-guard-counter.json",
+        "artifacts/rescue-sequel/benchmark/heldout-leader_pledge.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/heldout-flat-gem.json": "74cc6684388f581b74b2faae5550610654ce97f4f6794ae142bfb79161d46db3",
+        "artifacts/rescue-sequel/benchmark/heldout-guard-counter.json": "5f5eee0b55a3f78c74b28e31124ba6b0a37ce8d78a027f6559283386d1cf939c",
+        "artifacts/rescue-sequel/benchmark/heldout-leader_pledge.json": "7e3a1b3ba71be265ffb7971dc6ebf6d6decbd00cef7e739ae318ae85f9d3bac2"
+      },
+      "scope": "three69×6×30 confirmation datasets; pledged leader remains rejected by first-stage global criterion"
+    },
+    {
+      "name": "stage1 own-crown native independent control",
+      "trials": 3600,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/native-self-heldout.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/native-self-heldout.json": "8169666b9bcb65240b0bc970c553118dd8ec3ec07ebc8ae78fb8ec89a50fc89d"
+      },
+      "scope": "20×6×30; other49rows reused from native for global metrics without extra simulations"
+    },
+    {
+      "name": "stage1 existing-echo mechanism ablation",
+      "trials": 4500,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/echo-ablation.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/echo-ablation.json": "e5ba058527d33e4f8023d96c28effc7a26c3aed4e80f7fcebb36ae517d2d5deb"
+      },
+      "scope": "25 eligible forms×6×30; same-seed fixed T3 echo, no reselection; other44 reuse native"
+    },
+    {
+      "name": "stage2 existing-stone screening",
+      "trials": 12480,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-utility.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-legacy.json",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-legacy.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-legacy.json": "1c0cd4029799e5a3961ddc4597d29b0bd14fed89d2317ac6586b19e6d8fcb9ae",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-utility.json": "c54264141bb6a986658eef23673ef0020f35fd29f647b6245710769d6316a477",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-utility.json": "567c03a507cd53defc1b0fd9e97af8e9aefaf167fbc27a0ad24a2d4ef69bffa4",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-legacy.json": "a21f8f2365cea9eb17a0c58acedce828eeeb01e9f1a887f7ed4050f45f9d5c80",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-utility.json": "0b8273f4a70b5e03149d0984b14d636bd924b13c5ba8a125b810e527b89d4312",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-utility.json": "eac50eac44f1a5666e1368fdacfd04b50a63488996a72158b883969c343cdc68",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-utility.json": "3f74a8770cac495f90d27ef285bcda2904beac6bfc42d7d3cd9010ceb3a3f200",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-legacy.json": "a10d2ba0e60473d46dc445fee33f8ae4465cd611901f496dfce85e77de36b3fb",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-utility.json": "150ed39bc9de2d3e5c7f74d7623b787a76e58126bb2395052280e87b4d5abc30",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-legacy.json": "422d07fdf4e9d55ed063c607aa23673b8e428847b87c277539228feef5cb2444",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-legacy.json": "905740abb1ce4af75d5876056ff2750966a0886e43a4b170150ab1c5f953e7ed",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-utility.json": "4967f36e4bda06ae811854f830a07a8635456a3da25784d9185c7613ef919cf1",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-legacy.json": "bcbfd60e0705ea4ebbd4b9c5a9f195244c07b968d77b5a75dce9ebdb93496150",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-utility.json": "06a1874dc5a434992dcf2be8071caa56bc2254d53e2bb930b095db0bd5a27a02",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-legacy.json": "1f9a5b68ec85382242f37fa6be3ae163a232db117acea1562e6be52165869784",
+        "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-legacy.json": "354675e6c147c5b24bc7cf96b3a7106e03467afc51e66ef30f8a5ad658726830"
+      },
+      "scope": "8conditions×20main+6auxiliary×6contexts×10new seeds; no new skills active"
+    },
+    {
+      "name": "stage2 independent chosen-stone and command controls",
+      "trials": 14040,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/stage2-heldout-main.json",
+        "artifacts/rescue-sequel/benchmark/stage2-heldout-auxiliary.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/stage2-heldout-main.json": "90d83389ab957a844d43e442e0e31e2982d4a5ace1cffbb8598141a42ffb4613",
+        "artifacts/rescue-sequel/benchmark/stage2-heldout-auxiliary.json": "6b9a8aa54adac766243135d126c7a904c793f441020207ce1242f0c0b59e6d16"
+      },
+      "scope": "deduplicated native legacy/native utility/chosen/matched opposite-policy per candidate,30fresh seeds"
+    },
+    {
+      "name": "separate shatter-use exploratory check",
+      "trials": 640,
+      "files": [
+        "artifacts/rescue-sequel/benchmark/shatter-exploration.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/benchmark/shatter-exploration.json": "480cfefe38ec27a5b5913ba421d1f58deffe73989dc1c828acfec15f1434aa30"
+      },
+      "scope": "2Nike forms×2party cores×2trials×2policies×40seeds; outside main SD evidence"
+    },
+    {
+      "name": "skills stage2 aftercare repair",
+      "trials": 5760,
+      "files": [
+        "artifacts/rescue-sequel/skills/stage2/screen.json",
+        "artifacts/rescue-sequel/skills/stage2/heldout.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/skills/stage2/screen.json": "ac75bc56884233c2bb9221109af7c4dfeb3276a1154e63791c2be81afaa595dd",
+        "artifacts/rescue-sequel/skills/stage2/heldout.json": "b413573ff745c29c0eaaf1bb61f03b82ad3ff3e62fba27d8c595bdec9857f952"
+      },
+      "scope": "4healers×6contexts×6conditions×screen10+confirmation30; all six compared, not selected on heldout"
+    },
+    {
+      "name": "leaders separate team-format stress",
+      "trials": 720,
+      "files": [
+        "artifacts/rescue-sequel/leaders/stress-results.json"
+      ],
+      "fileSHA256": {
+        "artifacts/rescue-sequel/leaders/stress-results.json": "54aa8f896e09eb3d5c92b1329e43c35837a96f6119aa94627ab543c922706f1a"
+      },
+      "scope": "separate paired team constraints, not merged into primary dispersion result"
+    }
+  ],
+  "reusedDerivedRowsNotAdded": [
+    "option-preserving datasets choose the same native/proposal heldout rows under a frozen training decision",
+    "native-self global matrix fills49unmodified candidate rows from native",
+    "echo-ablation global matrix fills44noneligible candidates from native",
+    "same selected-star reverse-policy aliases reuse actual matching heldout simulations when identical mode",
+    "plots/tables/CI/bootstrap reanalysis add no battle executions"
+  ],
+  "excludedFromTotal": [
+    "all mode-off native parity comparison runs and micro mechanism fixtures",
+    "stage2-core108full-history native policy parity pairs",
+    "diagnostic and causal-proof traces used to explain aftercare failure",
+    "manual browser/game profile capture and presentation replay",
+    "any publishing/download/media QA"
+  ],
+  "interpretation": [
+    "Repeated seeded executions under different modes/gear/crowns are counted as simulation runs, not independent randomized players",
+    "No full all-build/all-stone exhaustive optimality claim",
+    "Phase1/phase2 contexts and seed blocks have separate analysis baselines and are not pooled into a single global SD",
+    "Skill stage2 and leader stress are separate evidence and do not automatically update the69-form global dispersion"
+  ]
+}

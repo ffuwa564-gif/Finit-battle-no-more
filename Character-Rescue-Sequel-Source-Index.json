@@ -1,0 +1,3572 @@
+{
+  "archive": "Character-Rescue-Sequel-Research.tar.gz",
+  "source": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "restore": "Extract preserving paths into source616a074 checkout. Existing prior helper sources needed by runners are included. Install repository dependencies and run tsx scripts. No published game changes.",
+  "entries": [
+    {
+      "path": "artifacts/character-ranking-v1/availability.json",
+      "bytes": 9724,
+      "sha256": "2ecce52c04e0cd4630aa308cf16517f8502dcd19e72d8542e1a7d27fddb443a3"
+    },
+    {
+      "path": "artifacts/character-ranking-v1/characters.json",
+      "bytes": 99784,
+      "sha256": "58f047b78843f680872d29cc554b76cd19246263b4536718162b34c46a360e6c"
+    },
+    {
+      "path": "artifacts/character-spread/core.ts",
+      "bytes": 5715,
+      "sha256": "abb4bf0f988f9838e7f7806179bce82c69372a55fda056605c1a15e6a3846976"
+    },
+    {
+      "path": "artifacts/character-spread/frozen-protocol.json",
+      "bytes": 30606,
+      "sha256": "a7bf8163898a3bf012fc1cafbf05c00cef0285c710821af78a4daff8e4cbb952"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/audit-notes.txt",
+      "bytes": 10433,
+      "sha256": "f57d0957e2b9b173ad2f787a3d6be011a2cafba23bbde6733e6de98823f9b863"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/audit.json",
+      "bytes": 24745,
+      "sha256": "3358a2fbbdfd93e9f28b3486d38aea9e1f6ee7cbbd0af63bbff1f07ff1a6ccc0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/existing-gem-audit.txt",
+      "bytes": 6661,
+      "sha256": "e7796eecc572ee1b877acc8b6dba11b126734ccc0a45465eee11fa98397381d8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/prior-roster-summary.json",
+      "bytes": 18644,
+      "sha256": "308c88a42aef0d29ea6d78a4cc323de7d6d3efd51745cb3cb622e169d0ea3d74"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/source-to-spec.json",
+      "bytes": 7504,
+      "sha256": "95140cad86c91be54d543f51b92433c9239047ce59e85becdcd97e56d0d435f5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/audit/source-to-spec.txt",
+      "bytes": 5932,
+      "sha256": "6aeb50baf1d64c02667009c0cd762b2a975b34ca2e8adb49caaf5b324a9caa50"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/Character-Rescue-Sequel-Comparison.csv",
+      "bytes": 12166,
+      "sha256": "075a65d67eabccd5f4c0836f18bd608c4f9a053718969c4e730245b3aa8f41c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/Existing-Gems-and-Auxiliary-Comparison.csv",
+      "bytes": 3713,
+      "sha256": "4960b3ed52666a658e07bc8f5d32cbf8d59100c482a82e87436b425feeb07815"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/analysis.json",
+      "bytes": 394665,
+      "sha256": "b5d3827ecf955c0d4d6eb7a38f4d539af0b085bdeed260bc9df95c558975025a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/analyze.py",
+      "bytes": 8373,
+      "sha256": "32b3b8b8315fa2cdf166b63642e3d3ebd8335a751193198a1c92f958c99b9faa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/baseline.ts",
+      "bytes": 1162,
+      "sha256": "1df1e23d6b4c62d19d5b1f88cb6720b90216b25c0b09012f4903b234cb2d0b7a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/check-stage2.ts",
+      "bytes": 936,
+      "sha256": "65444c3dc79a1aa1f6a86d6203f5925b76630fc8e300a298c66ae252d9292c8b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/core.ts",
+      "bytes": 5859,
+      "sha256": "463659814ab5f9338b88bf880006c00a14aaf45f76c9a32f983f1d43a6967888"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/echo-ablation.json",
+      "bytes": 946115,
+      "sha256": "e5ba058527d33e4f8023d96c28effc7a26c3aed4e80f7fcebb36ae517d2d5deb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/echo-ablation.ts",
+      "bytes": 994,
+      "sha256": "3ee85a0f45946297bd8504007bb12388a83a61dd62d3038c1d9753f7cde06752"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/heldout-flat-gem.json",
+      "bytes": 3148889,
+      "sha256": "74cc6684388f581b74b2faae5550610654ce97f4f6794ae142bfb79161d46db3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/heldout-guard-counter.json",
+      "bytes": 2962567,
+      "sha256": "5f5eee0b55a3f78c74b28e31124ba6b0a37ce8d78a027f6559283386d1cf939c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/heldout-leader_pledge.json",
+      "bytes": 4633408,
+      "sha256": "7e3a1b3ba71be265ffb7971dc6ebf6d6decbd00cef7e739ae318ae85f9d3bac2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/leader-screen-decomposition.json",
+      "bytes": 1189,
+      "sha256": "1f8f718bf6bf6a5815aa517f8467e1867074191728b107bb7f0746603b65adc3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/ledger.py",
+      "bytes": 4018,
+      "sha256": "7450623a5199a48fca9efd11967379ab809505e734ba49a742a61325afa36576"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/native-heldout.json",
+      "bytes": 2611808,
+      "sha256": "df041c785b00f180e848406d0983814b25727b4bacbcaedf1c2625fbf6d8778a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/native-screen.json",
+      "bytes": 904472,
+      "sha256": "c2a9146992689bdc2ce7b3c357728ac68bf5539b4fdef708d1885d5892f40b3a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/native-self-heldout.json",
+      "bytes": 726120,
+      "sha256": "8169666b9bcb65240b0bc970c553118dd8ec3ec07ebc8ae78fb8ec89a50fc89d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/native-self-screen.json",
+      "bytes": 254814,
+      "sha256": "017130129d9a83c5d24b1415b5def29f56c990520a1162f94438a53dad4e78e0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/protocol.json",
+      "bytes": 3929,
+      "sha256": "5e1b5c9599ce96646f71ec1f01959d364a5208f804346f566c53fd7d42fafd9d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/run-mode.ts",
+      "bytes": 1073,
+      "sha256": "ae130cdb7e8c0feaaeeb9267f8b4fd2e7576b58daba52ef2e37f7778208379e2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-aftercare.json",
+      "bytes": 293323,
+      "sha256": "25473982e64a1cb399365ba6e38083c003cca07fa5239021efd86891787b7aec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-area-mark.json",
+      "bytes": 286225,
+      "sha256": "83cf2c7de781c4229f92421c464e1f17300fb0cf9b74dadc6e9abc8d004fe151"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-buff-preserve.json",
+      "bytes": 285374,
+      "sha256": "6dd0ee23294fd7a9a49fe0218406c3e2cb5bbc53862619cff1afc8333407469e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-control-fallback.json",
+      "bytes": 288276,
+      "sha256": "a6787184023845eb98f53e462027bc4ef1d7c3a6d6e91a06c48b62777e970eeb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-flat-gem.json",
+      "bytes": 1072877,
+      "sha256": "7a9788e1d424f9a68fbabdccb1523069a3a774083b7686e6a8c2c8dea64a68e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-group.ts",
+      "bytes": 614,
+      "sha256": "f4fbe18f46ebb0a5a30c95f1cf1a1935a8fca14a0c8962302b7d90b5e3086697"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-guard-counter.json",
+      "bytes": 288573,
+      "sha256": "5b8f8f4cefd1af23a1d1619e46c42956d12171bb0e62865e46d55e4d8caffcca"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-leader_guidance.json",
+      "bytes": 447345,
+      "sha256": "aa25e41526879873a4b589d14b43ccd79918fe1ccae6599b4bb22e106e07a8c0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-leader_overflow.json",
+      "bytes": 445122,
+      "sha256": "9a93e5f84d454fc64a4f067ebcf2cb6499498ae2b4afeb52bc1810f51b45f2cf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-leader_pledge.json",
+      "bytes": 452062,
+      "sha256": "9af2e27583f75f7ef144e1f536b2f3460a6d10144d46b4bf8085d4c0f45dba7b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-leader_unity.json",
+      "bytes": 444614,
+      "sha256": "3cfdf670adbb6428685a6814c0b3954df7fb36ff3511d8184605c34029fa7c24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-overheal.json",
+      "bytes": 290601,
+      "sha256": "7a8caf031240d00e28be17f43d548eb210f6feb4cbba0ac8155ee94b50388d3d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/screen-shared-gem.json",
+      "bytes": 1058569,
+      "sha256": "f29a6e5ea60f7a75df2b1542c7de1c21a24b0a952f26789d854e0d5a756b39ef"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/select.ts",
+      "bytes": 2992,
+      "sha256": "cf82174359d1fa34c9562e2f78cea677955db3c83f5a65cf1741aea1b3c7babe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/selection.json",
+      "bytes": 26334,
+      "sha256": "4a3b3f2ad90e6c5b809c623d6dc8627cddfef1d6ffa5556eec46249f9d085a22"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/shatter-exploration.json",
+      "bytes": 148893,
+      "sha256": "480cfefe38ec27a5b5913ba421d1f58deffe73989dc1c828acfec15f1434aa30"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/shatter-exploration.ts",
+      "bytes": 812,
+      "sha256": "895e4702802813082888a28dbce3acc2156f443f1fa57563f76ae4fc0cbdda65"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-analysis.json",
+      "bytes": 204392,
+      "sha256": "ab5e2dee23c3e13317c67bda156726232ad3b9ecf8a6471b9db74d5984f92672"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-analyze.py",
+      "bytes": 5882,
+      "sha256": "85825b9f76a94f62d47c52de688ab03461671222564f559c9cce3f60846c45bb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-core.ts",
+      "bytes": 6879,
+      "sha256": "479bed59198facae301f17fc30f1890ee2619ca4f63a5f80d0b1b630a77ec920"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-heldout-auxiliary.json",
+      "bytes": 664764,
+      "sha256": "6b9a8aa54adac766243135d126c7a904c793f441020207ce1242f0c0b59e6d16"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-heldout-main.json",
+      "bytes": 2226754,
+      "sha256": "90d83389ab957a844d43e442e0e31e2982d4a5ace1cffbb8598141a42ffb4613"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-native-parity.json",
+      "bytes": 112,
+      "sha256": "fbe0e0b8aceab96c2b5a90ea4f0bab150e2d259cadb40548784e701b3de688d7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-protocol.json",
+      "bytes": 3003,
+      "sha256": "4dbcdbec534bff975287aaba9b3c7b64f22ea7d19b75a4fdf08b64255aa1c04a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-run.ts",
+      "bytes": 1352,
+      "sha256": "1b4981621ecb1f62b692a60c3777e0d01c00be23a25b6c36ab01560aaec5d2da"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-legacy.json",
+      "bytes": 67788,
+      "sha256": "a21f8f2365cea9eb17a0c58acedce828eeeb01e9f1a887f7ed4050f45f9d5c80"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-hollow-lantern-utility.json",
+      "bytes": 67825,
+      "sha256": "150ed39bc9de2d3e5c7f74d7623b787a76e58126bb2395052280e87b4d5abc30"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-legacy.json",
+      "bytes": 75943,
+      "sha256": "bcbfd60e0705ea4ebbd4b9c5a9f195244c07b968d77b5a75dce9ebdb93496150"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-native-utility.json",
+      "bytes": 75980,
+      "sha256": "567c03a507cd53defc1b0fd9e97af8e9aefaf167fbc27a0ad24a2d4ef69bffa4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-legacy.json",
+      "bytes": 82149,
+      "sha256": "1f9a5b68ec85382242f37fa6be3ae163a232db117acea1562e6be52165869784"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-rewind-thread-utility.json",
+      "bytes": 82186,
+      "sha256": "eac50eac44f1a5666e1368fdacfd04b50a63488996a72158b883969c343cdc68"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-legacy.json",
+      "bytes": 82029,
+      "sha256": "1c0cd4029799e5a3961ddc4597d29b0bd14fed89d2317ac6586b19e6d8fcb9ae"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-auxiliary-star-furnace-utility.json",
+      "bytes": 82066,
+      "sha256": "3f74a8770cac495f90d27ef285bcda2904beac6bfc42d7d3cd9010ceb3a3f200"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-group.ts",
+      "bytes": 635,
+      "sha256": "6a9106af1f24b722cea6790fd96744b89f993eb2729f1d3753491a8ce4596ab3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-legacy.json",
+      "bytes": 229766,
+      "sha256": "905740abb1ce4af75d5876056ff2750966a0886e43a4b170150ab1c5f953e7ed"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-hollow-lantern-utility.json",
+      "bytes": 234000,
+      "sha256": "0b8273f4a70b5e03149d0984b14d636bd924b13c5ba8a125b810e527b89d4312"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-legacy.json",
+      "bytes": 257258,
+      "sha256": "422d07fdf4e9d55ed063c607aa23673b8e428847b87c277539228feef5cb2444"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-native-utility.json",
+      "bytes": 257379,
+      "sha256": "4967f36e4bda06ae811854f830a07a8635456a3da25784d9185c7613ef919cf1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-legacy.json",
+      "bytes": 267855,
+      "sha256": "a10d2ba0e60473d46dc445fee33f8ae4465cd611901f496dfce85e77de36b3fb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-rewind-thread-utility.json",
+      "bytes": 273248,
+      "sha256": "06a1874dc5a434992dcf2be8071caa56bc2254d53e2bb930b095db0bd5a27a02"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-legacy.json",
+      "bytes": 268346,
+      "sha256": "354675e6c147c5b24bc7cf96b3a7106e03467afc51e66ef30f8a5ad658726830"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-screen-main-star-furnace-utility.json",
+      "bytes": 273687,
+      "sha256": "c54264141bb6a986658eef23673ef0020f35fd29f647b6245710769d6316a477"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-select.py",
+      "bytes": 1236,
+      "sha256": "c7f747c55804c567790128c05c4086589ced8ced081178b024097d686e6b60e4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-selection.json",
+      "bytes": 35892,
+      "sha256": "4bf36554ca0b07b6edf994505f193e97bf441420b4341d9e72181cdc36b195f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/stage2-validate.ts",
+      "bytes": 1355,
+      "sha256": "2721029e944b46df0f919bc6a988c7315fec6b24cc2f963ff2d877926e45db20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/trial-ledger.json",
+      "bytes": 13671,
+      "sha256": "0940560dc8d9f8bf86be2fb32556fc0e46377232919dbc6999b91300fb985cef"
+    },
+    {
+      "path": "artifacts/rescue-sequel/benchmark/variants.ts",
+      "bytes": 1904,
+      "sha256": "e9df72ef2d293c12738083d255f54ea464f8840272ad66d6f8b2c5d64e758295"
+    },
+    {
+      "path": "artifacts/rescue-sequel/create-video.py",
+      "bytes": 11326,
+      "sha256": "bbe5e671a9b986162761081ed2e50644d38d43f9b09b3b48cb54170c58488d66"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/debate-lines.json",
+      "bytes": 3551,
+      "sha256": "06bd8c1ea2f077d5d1979f44a9343c368df61e45ed8854f4227a9d1b40db213a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/prior-facts.json",
+      "bytes": 21043,
+      "sha256": "b34ce82d51a4a69f2ce89004e4a0dea8c98da18dc42c737f57d8c48d0f1f2bdd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/review.txt",
+      "bytes": 10723,
+      "sha256": "cd9840192459e7f200d6e6b8c1a2970023c1aa637c481e822ea31da30cbad3ff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/stage1-review.json",
+      "bytes": 2897,
+      "sha256": "15f2c4fa0222fddd0b7af45ff1ff94fef0f7fdc2d964aff170ba87ca5880db7a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/transcript-review.json",
+      "bytes": 1085,
+      "sha256": "0592cd2124a47b3cf36e0e88956cf9877b9dd65beb6c69ad24869d1417c678c3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/critic/unexplored-space.json",
+      "bytes": 4137,
+      "sha256": "02538a4a977e063c650968601ff57b1f9bae7576dcdd7d64201ff5955df3f790"
+    },
+    {
+      "path": "artifacts/rescue-sequel/dialogue.txt",
+      "bytes": 37191,
+      "sha256": "e97544e2bd0ebdbe988193673cc04915c8ee86404ceab51c9056d86956ad15b0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/assets.json",
+      "bytes": 3316,
+      "sha256": "07c977255b9ff514c4f2d72d5f972ff3322c5780cda0592c8ebd84c961f2393d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/character-concepts.json",
+      "bytes": 20498,
+      "sha256": "7762849f4570660de4c5dbe95b565f8d8175701c888362fcdf2d61814e2ec02b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/director-guide.txt",
+      "bytes": 7876,
+      "sha256": "3f719e744758b08471a48e247920b1cdf1a04fdc30ef2d911b22d452b1fa74c3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/draw-diagrams.py",
+      "bytes": 11996,
+      "sha256": "494606ea7cc2de74cfef4eae74275c4c8777fed182c71b5d662f003a924d0682"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/draw-existing-stones.py",
+      "bytes": 4400,
+      "sha256": "6650bd094d564afb32800d2fb0407fdf5f57c6a33e24e18a5f7521b9742d9c8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/figures-manifest.json",
+      "bytes": 3747,
+      "sha256": "cfd80cf8fe88b25184793d87cb4e8008ce30348459687297eae618f7efc2b2b5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/director/make-materials.py",
+      "bytes": 12666,
+      "sha256": "651f0e1fc19a48c9f484da05cc01c624a151b1a5463361ca2d97c55b066ac77d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/extend-ending.py",
+      "bytes": 12006,
+      "sha256": "c59b5b1a01b242e29c04c5270257af8cd7ed4503b74c0643882ba016747ccbd3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/extend-results.py",
+      "bytes": 14432,
+      "sha256": "afc9f3d84dfb2150830b0c12afa355a94115168c7d5a0a4e3f2367d2a6708ad9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/extend-workshop.py",
+      "bytes": 14145,
+      "sha256": "e8eb4008d080341cd06a80a53848d7b9bc8adae71073bb93d2cef284eab39ac3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/fact-check.json",
+      "bytes": 628,
+      "sha256": "88779cae4f77ebd7f34e9a167457cbb3ceb146302a5ab5f58763c4f6c9a6afe6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/build-prototypes.py",
+      "bytes": 9236,
+      "sha256": "e006e468b583bec2c73cd54cd375fcb1b8b08ee6384b4ced41434ca5d813428f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/check.ts",
+      "bytes": 7507,
+      "sha256": "6c90f86cb9fc29cf2a78ceeec7faed7d1b08180803b85f50fafb3c03a6a5c544"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/engine.patch",
+      "bytes": 9730,
+      "sha256": "f61c40297b5f3358a2620382fe4f5a1a2784f7a5f36001b0b800342293aeec0b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/engine.ts",
+      "bytes": 45,
+      "sha256": "37a22120e315c7c15aa59c5b915d9a6850e540e63f890af612459a8fffb74818"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/manifest.json",
+      "bytes": 4883,
+      "sha256": "a4a49bdfbc34e0abd56aa9cfdc39e82dff8464ed529bb6b2e983a50fba6bac7c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/notes.txt",
+      "bytes": 6731,
+      "sha256": "2d5fcd11d248f9756696bc4fb34e100121b3bf8db85d7460f528bdab09e52d36"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/prototype-check.json",
+      "bytes": 3727,
+      "sha256": "b28cf14e918515f4be3a719d7d935c8bd1b91d91ff6360b0a3a87e3046f70ccf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/App.tsx",
+      "bytes": 20975,
+      "sha256": "f51feb4e1447eb0dd64795af20cf6a41ae4dd673464085ac63a45e59ae4ecb37"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/application/game.ts",
+      "bytes": 30559,
+      "sha256": "80a6395c34b944fac301ec04c6251460566a50ad12888828030f2536d1222b58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/boss-events.ts",
+      "bytes": 6543,
+      "sha256": "f0c549f31d1e262a3238ac84d7c1e3df6ba3ce658704dbbb9be498ade4d12a8b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/campaign-stages.ts",
+      "bytes": 22270,
+      "sha256": "9c2221ce2f49ba4fc5c9b30a0f10b68b33da203e612a767bb61ab75524195f24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/chapters.ts",
+      "bytes": 4074,
+      "sha256": "0fe11b729a727e69a9b9d7be25a12fa7b4f4e50310e54be682c5c0159641848d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/events.ts",
+      "bytes": 1801,
+      "sha256": "2483b52a246ab4fc61d120834414211b14d79d6878e8aa95ac845eec12e82563"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/gacha.ts",
+      "bytes": 6961,
+      "sha256": "bea673a3219f13b0e890253423f48cd510345e5ad9277d131e86c502042dd699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/gem-loot.ts",
+      "bytes": 2804,
+      "sha256": "9b27123150505c27445b20620fd9d18ebb9580b14752ead19fd08e2c29f8da72"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/gold-exchanges.ts",
+      "bytes": 386,
+      "sha256": "13de80fe94fd109e7011e00ca1344f4e7d3638e5e971a305e33f2fc191d159ee"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/index.ts",
+      "bytes": 64642,
+      "sha256": "bca69034c7bccb89391da57d0bbf7991af2daf961d7110e49783df4f62ff50e8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/ivory-tower.ts",
+      "bytes": 3187,
+      "sha256": "915b2287c4eeb14072095f4b19e4c055a9d29e7d271458c9c72cecfc377e1247"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/living-garden.ts",
+      "bytes": 5250,
+      "sha256": "d6e1584a86b16fb522fb1a9737673ac7e550982f3b236ab8ced8b1e42f26c6c1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/lunette-ultimate.ts",
+      "bytes": 932,
+      "sha256": "497a7a3ddb99b8dacd34b5bea4ac6eb797612fb21f67d81ebf908a639d024cfa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/motion-posters.ts",
+      "bytes": 687,
+      "sha256": "c7ca61ca9a7dda660083624aa3c7c3bfb4adce7e9a23495c822b10892692492e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/novels.ts",
+      "bytes": 14675,
+      "sha256": "cef2cad6bf14fe0f440827e9d68436394e04f2136cd965ce4999494f7d39361e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/rare-encounters.ts",
+      "bytes": 920,
+      "sha256": "fffc3f012ada3df49e048f83e612ab9170eed314df8a3eba72346f6418c2afb6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/seris-story.ts",
+      "bytes": 8885,
+      "sha256": "6924028dac90dd90224960b6ece7e5598d6b90e72571f866483ed476f4cfd953"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/story-milestones.ts",
+      "bytes": 6034,
+      "sha256": "0f12c39761ba7355b7b27f1655b434d18d9e0d998fa4c56ab2ed77f19500463f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/title-art.ts",
+      "bytes": 1559,
+      "sha256": "11fc725836b81b04a1c5ebd36ba2d5c92d5fe49889bbc9d559ec4cfd7fcc255b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/trials.ts",
+      "bytes": 6592,
+      "sha256": "8dfa84dc1d85010c6c9e6d49fa31457909996702abf82f22dc2f273593a9b51c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/validation.ts",
+      "bytes": 37189,
+      "sha256": "a560b22109f7fb41c07c21dc729554ded6dbbc54a1590c0a1e636d061471d732"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/xr-gacha.ts",
+      "bytes": 509,
+      "sha256": "e64db11027fceb02269287883692f3f7c66c370c2e9f8bf1ed91709ca0605a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/content/zakuro.ts",
+      "bytes": 11067,
+      "sha256": "2997a7ae975f9d693ee33140d9679f290a99c8f45068a4a890d4df2329ab5228"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/acceleration.ts",
+      "bytes": 878,
+      "sha256": "93b1cbe2284e37cbf0d10aa63f6780957e8e09fdc31142e27780c27a7d915149"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/ailments.ts",
+      "bytes": 1277,
+      "sha256": "4b8baf1768bca9174962516a53e1f8eee9931a31c4ec142e2088b4b5e718df68"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/awakening.ts",
+      "bytes": 2231,
+      "sha256": "0547ef2097eca4d44e69ec64aca8ca83b62b6661485c86b5b064c383eda82e2e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/battle-blooms.ts",
+      "bytes": 2784,
+      "sha256": "d387e8f69d4215c1fc7e9cbc33ebda04fd2e9062e2e99eff15a3e01144ef7ab9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/battle-fairies.ts",
+      "bytes": 2470,
+      "sha256": "20c404a6a16fb790317cd2cba6a488d35b8be8e5487f8f4b5c61e31fadb34648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/boss-pressure.ts",
+      "bytes": 1558,
+      "sha256": "4093cf304605e720bcca49111b30ef5d17184041322a7614d65974c9aad004e2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/build-demo.ts",
+      "bytes": 8398,
+      "sha256": "7be97781502fbf36dbb1881591a18035823808dedf96b8141c425d3bcf52a1d5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/builds.ts",
+      "bytes": 21053,
+      "sha256": "25486c876e28f246f0514c75ebdc9028ef34c55c490c0c1831b36f2945a55844"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/campaign.ts",
+      "bytes": 1304,
+      "sha256": "e8373adbc3b8aa1991bcc5ad35cb2dca8caf4340500e3e0b5e259f2791cb29a9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/companion-behavior.ts",
+      "bytes": 2411,
+      "sha256": "53b8d98b1798ceefec557259c74a7355dde9e222481ac4adfb747f9e8906f369"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/crystal-resonance.ts",
+      "bytes": 609,
+      "sha256": "ead6fa282e6b6638f328610f6384fd94115abe182e969abddffa3cfd31a55072"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/engine.ts",
+      "bytes": 76128,
+      "sha256": "d16aa72a5bb9922009b3cb8cece0612a8335c8889e80fc232e77c23383b26e87"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/events.ts",
+      "bytes": 2273,
+      "sha256": "0e25615b21f33441117d4d3aefc6e2a6eb5ac346f4ad35acd0b0f77156b191ad"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/ivory-tower.ts",
+      "bytes": 1554,
+      "sha256": "e9258d88106287afb7289f1f5c01eca2c458526abbb075e0afb34189f6261418"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/legacy-omens.ts",
+      "bytes": 1751,
+      "sha256": "abe4c9354afa17f6cfd0a2309644862a6e5699a08c78d4f479335c58118e77c6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/memory-gems.ts",
+      "bytes": 29879,
+      "sha256": "be54443fd235c713ccac2a31f543668c1acf214872172601edb2fe3280194d94"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/novels.ts",
+      "bytes": 956,
+      "sha256": "fe9d9c582d2657636d5ef1c13e6ade74d03f965fb4a98247d088a5f53f218904"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/party-orders.ts",
+      "bytes": 5327,
+      "sha256": "c54bdd231bb1e233be9b0f2f53f073f15139d770f72d27d0f650b0f37a77571f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/rewards.ts",
+      "bytes": 406,
+      "sha256": "973c7c87408ddfd4264587b01027441b4c24df592fb6f91d0190f11211012510"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/skill-info.ts",
+      "bytes": 6762,
+      "sha256": "1a3ce8ffbfe5fc3962d65e6b66a565befbf63fa0d8018732d053c4b567114e28"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/types.ts",
+      "bytes": 12080,
+      "sha256": "730ba802f73d382528485f4d6ea8b162c1cb1b854de7d41c3cd1c00f9853f17b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/ultimates.ts",
+      "bytes": 3143,
+      "sha256": "831631ba1c3aba368e67f09354e7b0f8c61f6b99b0e31211465018dcf6222d51"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/domain/xr-gacha.ts",
+      "bytes": 2097,
+      "sha256": "503b90e9ecae5c4120460fccf132c307ed9e993a0c68bb5ea4d3d86923cfea19"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/locales/en.json",
+      "bytes": 425285,
+      "sha256": "67570ce6f413c18fb19500e9ae87873f54653951d1653d428139c6ab6249f582"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/locales/i18n.ts",
+      "bytes": 3654,
+      "sha256": "2ed62b443f0d82ea6af5de5e17a37c0951542bc6f7127ca0787b91111c57f61f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/main.tsx",
+      "bytes": 458,
+      "sha256": "583bc438db6447c78ab443fc66ef31a88b1a88c999767df29643bc5fe5e42595"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/audio-resume.ts",
+      "bytes": 1130,
+      "sha256": "ec1bb49625fa143b76d4e4b1a9ce18d2aeba1074687f3c737d482ebb6a01406d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/audio.ts",
+      "bytes": 9981,
+      "sha256": "3cd329112c9865ff14323567fde686b2483bb3df85321f12da9c589e32b52219"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/battle-shake.ts",
+      "bytes": 2109,
+      "sha256": "ebaa094dd75bcd7cd838dcca55f6dd693d17efc541a9594293f2b5c9c155ef12"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/battle-timing.ts",
+      "bytes": 632,
+      "sha256": "7e7764a2a8ea97b4a33142bde3c304b8c8a2f6bac05b6a902596495770c0c833"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/bgm.ts",
+      "bytes": 4097,
+      "sha256": "2bab355e6e0591d50a44ec1cb79901972cc44178a596eaa8ee157a3a6ee3b8dd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/combat-audio.ts",
+      "bytes": 8624,
+      "sha256": "4d6913527b92ed49a57f8769687643f852203c0796ae088c01610603eb7e6983"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/combat-feedback.ts",
+      "bytes": 2403,
+      "sha256": "b65e0172927b337d8558fd53a6e6e54b0429f4edaf2b5dedf9fae41c2609821b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/combat-signatures.ts",
+      "bytes": 4200,
+      "sha256": "a830f531d6b4f7328a3b199654eab26330a04d1032b8011b457fc69dc817c7b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/combat-synth.ts",
+      "bytes": 14635,
+      "sha256": "0d04285801136b18a0f33f061c989f6a4ecb0755e90ec8cc8d5477bd459a0927"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/damage-flash.ts",
+      "bytes": 1120,
+      "sha256": "dbb64bddb6f30a7058113501668d6c0792146aa24df9c8836f755c537b27b194"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/fx-renderer.ts",
+      "bytes": 15449,
+      "sha256": "9113d718b2503ba1d89a870d5998e6fe55c4d0166fc1892d34c1df797c777ed5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/interaction-guards.ts",
+      "bytes": 1378,
+      "sha256": "42988f4efd25bea0c39a27b62c886d6087f87872c559531f0a2d8018c42e4313"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/presentation.ts",
+      "bytes": 3152,
+      "sha256": "faea9860cd20fc346a116304bcf6d38f44fd5a2f7c554054cd7993e1f5264f8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/protection-audio.ts",
+      "bytes": 490,
+      "sha256": "121c68c817cdcebf2e8b3c0165973acd9a271ab957b27b80359d9a7942508456"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/rabbit-battle-motion.ts",
+      "bytes": 2301,
+      "sha256": "4459e5b3fbc1a349ed9cde19496b629259625ae52f9dd04cfe63fe77e51733db"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/rabbit-loop-charge.ts",
+      "bytes": 1322,
+      "sha256": "d8009b888eeb32fe120ad25a2d5e8bd6a69556a58962ff42acca18d5c8379a62"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/rabbit-ultimate-audio.ts",
+      "bytes": 2472,
+      "sha256": "0b929954affea021f7085cf76cf0fe9474b2a7de32072335bafa71768fcca5e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/rabbit-volley-audio.ts",
+      "bytes": 4038,
+      "sha256": "204fa834093ac2f37dbc12af64c2532c381da3c040c9ed4924d7115e744fa74a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/save-backup.ts",
+      "bytes": 2183,
+      "sha256": "67b154b26fd95324cd2cdb5fd24f199591cd71f975328b52bfc570851ffb1628"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/save.ts",
+      "bytes": 26662,
+      "sha256": "3f10b620e72846420508c1e615bbf883a54ee7d243c1be604eead72a6c819a69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/sound-cues.ts",
+      "bytes": 1971,
+      "sha256": "104130c7448d73e63767c5ff68cd15981912368f81ad94aa803b7cafb836aaa7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/ultimate-audio.ts",
+      "bytes": 5592,
+      "sha256": "aa151876acebc1ee39b8b9a426146539213046330538c71ccdcd005e9ad3d797"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/ultimate-charge-audio.ts",
+      "bytes": 1311,
+      "sha256": "41c85c31728652997e4e0312784d440546d2816b06592ebb97f6a6c0e3f7e09e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/ultimate-choreography.ts",
+      "bytes": 10025,
+      "sha256": "a729d7c15766b7b170ff4a2121b4d5a8204883abaf46fea2ba5357b034c68ba5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/platform/ultimate-timing.ts",
+      "bytes": 1850,
+      "sha256": "e85882da4272d0088d72cb4bb90c5d2477c7664b1fa804a98b2c823586a98b24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/screens/GameViews.tsx",
+      "bytes": 50908,
+      "sha256": "829c57b59882cd03689606b1fe2af9e4ce18efdd069fd6a1f85410a4a987bd7c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/AnimatedIllustration.tsx",
+      "bytes": 5787,
+      "sha256": "1500a2ae8ff46fd2f9a592fcd856ad513aee9e245146f9a9c40a6a064893e900"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/AtlasIcon.tsx",
+      "bytes": 1106,
+      "sha256": "5009986736cf6b42d915bfffd682b9ce70145956062b069d0bb92000f819a78e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/BattleControlPad.tsx",
+      "bytes": 3203,
+      "sha256": "b66fe89771518da2a46c34616a26ceed0f379f6388141e857124dd10e347a7ac"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/BuildDemo.tsx",
+      "bytes": 5723,
+      "sha256": "16123293a7caa658a9b1096b85b5fdd1414ce511d2e5b08c70ff3df758084fb8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/BuildGoalSummary.tsx",
+      "bytes": 1817,
+      "sha256": "cccdb972a8dd25ce949248068a6dbbb2425ac2c205071022fcfffc7f4117dc69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/BuildPlanner.tsx",
+      "bytes": 22368,
+      "sha256": "d27590c3f516c6a9d0906a8b34147da9accfa775851a330ceac7e581af2fff4b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/CampaignDungeons.tsx",
+      "bytes": 5260,
+      "sha256": "e276dadcb838bfffbac42ccc6f9a9c1fd8b1948ffc45d2b05261cad31ce40145"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/CampaignStory.tsx",
+      "bytes": 558,
+      "sha256": "1400ca7923ffed01cd0378c5a6ab02da8641d768170617121329374152be9f4a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/CharacterArtwork.tsx",
+      "bytes": 1423,
+      "sha256": "8c6c632c7f80f3a1bdc67ceefeeb74ebb05b967ce19292516faf905e5699c3f1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/ClockBossStatus.tsx",
+      "bytes": 1637,
+      "sha256": "4c14189329c04fdab82116446ed8ed205e5c63e1c6650dbd7fe5b9f5658b0c06"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/ClockworkBits.tsx",
+      "bytes": 3392,
+      "sha256": "51c775eee67af19913e99f67b43a781aea718a9c00b2fa96290edf72e1ad9ebe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/CombatFeedback.tsx",
+      "bytes": 8237,
+      "sha256": "e84c21e037d95738013eb8c24b992617a6be87c483fd4e0251a48be611a476fb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/CommandEmblem.tsx",
+      "bytes": 596,
+      "sha256": "b3759d64b0d2480274344e268d11334243724b742ec693a342b5878c6470eddd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/EnemyCarousel.tsx",
+      "bytes": 14279,
+      "sha256": "f2ab1e727e1b854bc075eb41ca09ca323e6f69e6ca14e7b00ab6db0615dbf6be"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/EventDungeons.tsx",
+      "bytes": 4584,
+      "sha256": "2efe5ed8c3db9a09371d0b1c4ae67dff8d3b8091a647862076dbed1cd87056c9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/FairyGuide.tsx",
+      "bytes": 12307,
+      "sha256": "7ce3a873abc49a88ccb97cd64ff3655c403ee916ba03f8dd5685237937d2fc13"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GachaResults.tsx",
+      "bytes": 6816,
+      "sha256": "dd489232c8f631528ace06debbd3d45d5f170213dba68b33e3572d476bd756cf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GachaReveal.tsx",
+      "bytes": 3643,
+      "sha256": "f05022a61a62a05928fadde03f61cdff723f962cf2a72637f6718f07c05d390d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GachaShowcase.tsx",
+      "bytes": 3668,
+      "sha256": "ad2b619f155464fa1645b7bd8bd248bd81894bdcc24efb55020e972d8a02e017"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GameMedia.tsx",
+      "bytes": 1274,
+      "sha256": "7cce31eee54fbad99f3d0c4b807a09369f02f4361b50b2ff4f78cd12ac287e23"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GamePortal.tsx",
+      "bytes": 504,
+      "sha256": "27407e9b469944e27a7866d87db716becfdd6ebd248c4275166a7dab7018e5ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/GoldExchange.tsx",
+      "bytes": 4011,
+      "sha256": "69843badfee59b5028df6642825cb35af2907b4c90e8882891593430321c2308"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/HomeArtwork.tsx",
+      "bytes": 3144,
+      "sha256": "0e0d16a1214587df621dfbbd7f608e42da132933d6d2271ac78fa4f0e7bbe1f0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/InventorySection.tsx",
+      "bytes": 861,
+      "sha256": "06f804e7c6f41c07ddeb702c2f33c5ca045079cb73dd982abf1c73fa0d585e2d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/IvoryTower.tsx",
+      "bytes": 4229,
+      "sha256": "246d1570b777800f614bfe3e1134f75e74b0b07e2e38f0c9d720de1846ab41e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/LanguageSwitch.tsx",
+      "bytes": 642,
+      "sha256": "feccae5276c26d6b56feb59583f40991e96192169e2aadd338e5fe92cb8c8947"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/LivingBattleFrame.tsx",
+      "bytes": 9404,
+      "sha256": "d2a6845c8818082807dead911514a2cab1a03688fd7ffa8f137d0cc27655a430"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/MemoryGemFind.tsx",
+      "bytes": 4318,
+      "sha256": "292d892c1c40f7f3df7b51a15d4254b76fee0a1814fd3694cb4758d08bd8dce3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/MemoryGemTier.tsx",
+      "bytes": 323,
+      "sha256": "07e270b8911f7b71274ed6adc5915784d3a1f268de48a628eadb55e472a5decb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/MemoryGems.tsx",
+      "bytes": 27985,
+      "sha256": "ddcda41ac32500ff5ffd953a5af2b1248924c76f9066fdcca2a4d6203e2a0ac5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/MenuEmblem.tsx",
+      "bytes": 510,
+      "sha256": "03f3fdda851ae046be71b730ff24e8a806637d56a0cdeb78d71c1ecde282c542"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/NoticeSurface.tsx",
+      "bytes": 1357,
+      "sha256": "3725fd70f45df0398e2102a11ec75d8ddbb8ae35d47aecde0bce5407b7ac1fde"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/PartyCommandDial.tsx",
+      "bytes": 16115,
+      "sha256": "d6b930ea30f955356448e0e68e9cde0935a1644d2eabeaab57c2a14d422ce648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/PartyFormation.tsx",
+      "bytes": 4149,
+      "sha256": "683fa86ea24a6f0d7c1a0f92aa96088521c4e9d24e1e521f6f2aac983aca6faa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/PartyMemberActions.tsx",
+      "bytes": 1239,
+      "sha256": "a43f74b3044b53a0f8fe196a6ba10d242cc8e85d149465b676ae7033806e4f6d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/PortraitArt.tsx",
+      "bytes": 1685,
+      "sha256": "6d6576f603754f8b60ea6743940e7dfe5bc5e412a3bd64def36181810b18a8ff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/QuickGuide.tsx",
+      "bytes": 2100,
+      "sha256": "5fb15dcda5af4a9d997351e5666f2810e6eaf74432380e612d81949bb9e85f58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/RarityFrame.tsx",
+      "bytes": 880,
+      "sha256": "a6e00af64d353da55896289f617071fdd0e39efb4cccdfb662bd0fe31b3dbfe6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/SaveBackup.tsx",
+      "bytes": 3711,
+      "sha256": "5ec88b811640ef68cdb1587a84a31f1832ff7200513d449b038296d14137709d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/SceneAtmosphere.tsx",
+      "bytes": 590,
+      "sha256": "124bfcbd4a0a10f0eeaeb6518947abecdc3d3253b86b5054d7fc58de79f0970d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/SceneEffects.tsx",
+      "bytes": 4361,
+      "sha256": "7afca65d1e19bb8f51420d8823cbb753bc4d1bcaa5155c9692f34d264b410e1c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/Sigils.tsx",
+      "bytes": 2810,
+      "sha256": "77ee3751355dcba97d064cb676e7e11d71cdc4681381ffb2bddf84466decbe8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/StoryAwakening.tsx",
+      "bytes": 4479,
+      "sha256": "5c3ecea7ca837e33be3eca56b19cc96ccf36cf97f2e9e8025b7b87d528e2a3b2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/TitleBirthScene.tsx",
+      "bytes": 2894,
+      "sha256": "78fdc91a97e768d1a641a59a30473a7bcadbba66ee9368d6467796ae075d764a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/TitleScreen.tsx",
+      "bytes": 2499,
+      "sha256": "c69f7e376ea85a218b216d479c865a68d8cca148f2543aa6df07d2e62c9436fe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/TownNavigation.tsx",
+      "bytes": 1433,
+      "sha256": "0940740d43eef115e65f8d94a83e5d65dd0265818ab865f9582b1952df04843f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/UltimateCutIn.tsx",
+      "bytes": 11656,
+      "sha256": "49a0cf7daf52522468a7d4dd5eaa4f50cd758586f2649fa1974d53ef51c0b968"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/UltimateIntroFx.tsx",
+      "bytes": 2401,
+      "sha256": "67de9218e13e2cde9f3b0933761391dd85258667baecba67b8a705d50b3a2bb7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/UltimateMeter.tsx",
+      "bytes": 744,
+      "sha256": "4a637f22f82611704e3f6b81f54a4aeeca9a0eb143e0b39bfa3cdebf06666699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/UnitEffects.tsx",
+      "bytes": 4029,
+      "sha256": "5e8798cd06a7abaabad7d311327f5201705c684caa4c91aad05a9cd918321f1d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/VisualNovel.tsx",
+      "bytes": 7592,
+      "sha256": "0c9afbc566f9e52237aaa46700adab964ec68861f5fc16d47d3c94c79228c375"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/XRGacha.tsx",
+      "bytes": 2883,
+      "sha256": "ea1c7e07e4e19778076362906e0bfae96fc2e263dc4be6640cc2b125f848b299"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/animated-illustration.css",
+      "bytes": 1055,
+      "sha256": "9ca10b248198857aec0565629d42b9c4b986eafc8950170a246abd9ee56dff52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/animation-settings.tsx",
+      "bytes": 731,
+      "sha256": "7e55dd1561220a7158dfb33c5a70c8ce2109901191fbce0c87841a67aba8b470"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/atlas-icon.css",
+      "bytes": 123,
+      "sha256": "63a9f8f47d85a61ad551336cc0bb5b4b7c127308ef3ff429e93c7225aa7375c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/battle-control-pad.css",
+      "bytes": 5923,
+      "sha256": "240996c94da4e0cdafaa0ada32d857e9cf314d561e06a8b8934aadee39bd4ba0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/battle.css",
+      "bytes": 7483,
+      "sha256": "f3eaaf6d938c73f73af6a27968fc65c85b1dec99a640790bc68ce7978c5ed4de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/build-demo.css",
+      "bytes": 4309,
+      "sha256": "30c12a64a7a656625f3c4ca9cc082a90293b37580178855a5c945419df99c965"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/build-goal-summary.css",
+      "bytes": 702,
+      "sha256": "24bb4bc18820d1c2086bcfcbbb83a84dbe07723848318199cc925b62248537a3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/build-planner.css",
+      "bytes": 10677,
+      "sha256": "c1dc8a4e26e2f56cedf95deca5ab88b5fe8b21fbe96d966342448fd02cb82f22"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/campaign-dungeons.css",
+      "bytes": 3021,
+      "sha256": "d76bef4829a740a289ed17e9f417b54c65cb96ca0a2dc6c5ec5c784008af4a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/character-artwork.css",
+      "bytes": 996,
+      "sha256": "6cc4b238681e72c2066873cb68671ca3025aa4e10de15110bec26fa96ff3ae52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/clock-boss.css",
+      "bytes": 1664,
+      "sha256": "dc1348f3fe8d540b06a3c8ad60a34db698d6a04f50bce4410a79f1f4894d423f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/clockwork-bits.css",
+      "bytes": 2959,
+      "sha256": "0190392033761f09a42d5bdaae3763514ed65a33f1806a85b441ab38bbca0cbf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/close-button.css",
+      "bytes": 1025,
+      "sha256": "a4541bd22d4f6c7a6bb54e0371ee450423576945583a0ed163214df11b46657b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/combat-feedback.css",
+      "bytes": 3090,
+      "sha256": "77eba46cfdacea540d011ef85933ba882de559d6dd9a791520c3f7ada64b8c3d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/command-emblem.css",
+      "bytes": 63,
+      "sha256": "b3846214cfb806aa3195a34fd4923973356318cc46e70ed11f2064c52bc8cf02"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/enemy-carousel.css",
+      "bytes": 8886,
+      "sha256": "660c192a5581dd5179a3e55ff0c4694eea0e6f05b83e2dd04f756b7bb2f335b3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/event-dungeons.css",
+      "bytes": 4017,
+      "sha256": "ba32c273629e5797da891156a56a6258a8b4e2bdfdf2d771b02ac2a6307c96eb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/fairy-guide.css",
+      "bytes": 2972,
+      "sha256": "4da3f8320ef5e10b8f3757057fe33b570bfdf647427eae176b83830d89b1c27a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/fairy-tutorial-data.ts",
+      "bytes": 10421,
+      "sha256": "dac7a45eb43cfeba90d124837d496b09f1b5a3089f341f5b4bbc9563b49e87ca"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/gacha-results.css",
+      "bytes": 7919,
+      "sha256": "634a54c01e80c24741ba8e1d5d9567035db4af0079750761b42e700161dddae0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/gacha-reveal.css",
+      "bytes": 6550,
+      "sha256": "94af2bf599fa216f7115bdaa1e1abe4eeb41992173de4d54af41072ae435f081"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/gacha-showcase.css",
+      "bytes": 6803,
+      "sha256": "70a4e380ca940422ca58c343aaa7e03423e0585190f1d9cecd973041dd25bb31"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/game-frame.css",
+      "bytes": 1867,
+      "sha256": "9062dac5021b37794357495f49f954e1c52fa63140bf0d7319432ec7452781da"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/game-interaction.css",
+      "bytes": 588,
+      "sha256": "0ab0ed611c7631a6cd1abbba719fd59a167e1cc949262fb82c1df2e074947b78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/gold-exchange.css",
+      "bytes": 2380,
+      "sha256": "2af715d07aab5dddec2d01ab67da101738ff66b85483b36d42ea7c75adc66c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/home-artwork.css",
+      "bytes": 2432,
+      "sha256": "9c00b11ce5c74106a799a34c33df6eeddeefc7ae5a0f2efe36b3f0db48b71bcf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/home.css",
+      "bytes": 8943,
+      "sha256": "5c923cf137d638fa338fdfb898cbedb70c1475cfad7ba6feb2bb1008823317f3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/index.tsx",
+      "bytes": 13749,
+      "sha256": "cc0053ef0ac80ac515cdb0618baf5a3d99f00a02278ed7cef2c5ac27e8316f6a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/interaction.ts",
+      "bytes": 1061,
+      "sha256": "70c6e9f824d79803a42a047bf97573f41d734cde5a559859c66e6c831f355c10"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/inventory-section.css",
+      "bytes": 1368,
+      "sha256": "fdf2cb6be3b9cb8719ef539dc9e9c5ac966f3c0cda525c516f5f3b37e8b2d65c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/ivory-tower.css",
+      "bytes": 2573,
+      "sha256": "addef098202d4d688f492130463b8232fb8533633c83d1cd63aa187f9acaa8f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/living-battle-frame.css",
+      "bytes": 6066,
+      "sha256": "80f3626be245c077353d261f32ca43af50d58da821bcc3319b73c16a92ff6d2f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/materials.css",
+      "bytes": 572,
+      "sha256": "40564e705a27d622737266c252fbe15b184902fb56af547230d3ce6dfec8bd78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/memory-gem-find.css",
+      "bytes": 3151,
+      "sha256": "41eae75c7a5080e4078f958e70e402f7b9d264edfd41c76233fd0ea18a6a25bd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/memory-gem-stacks.ts",
+      "bytes": 1535,
+      "sha256": "2b0a9230b07cb23d988a5c29640a4cac407316b39bc8bc084c6156f3d17780a6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/memory-gem-tier.css",
+      "bytes": 1157,
+      "sha256": "e286c29e6eafb1607cad3e666ea56b47973482ba0624a3e3f68cc07243d703cd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/memory-gems.css",
+      "bytes": 19301,
+      "sha256": "9ac797b478c5d79f6f94553985537377bc8b87531fd57ce0eb5e209a2327af88"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/moonlit-theme.css",
+      "bytes": 11498,
+      "sha256": "646f132226d04f470b94d08214b18434779d4b5a4edc12e7af6adc635fbabef1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/notice-surface.css",
+      "bytes": 2540,
+      "sha256": "1b99b4113162d529d0273bc02e1f19db6a7bf25002df65a71d61a406ffdd6473"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/party-command-dial.css",
+      "bytes": 9440,
+      "sha256": "65892d0b58e8eb65ea32f0561620ba199d4337cfb8aafd2ecf967364ff4e5285"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/party-formation.css",
+      "bytes": 2560,
+      "sha256": "27b57ac422a4ede9b27bd1f76070c1a8c1c8d1bd9471a9b56400c5243e1464ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/party-member-actions.css",
+      "bytes": 498,
+      "sha256": "b683dc0b356e007f8f361cefe1559f6a9cd3a243c5b18ccbda369be0539f8c0d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/portrait-art.css",
+      "bytes": 753,
+      "sha256": "e832be0bdf0282bfd4f4f2aed8d68cfc89577341d92de670504e1fddb4e0b9b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/rarity-frame.css",
+      "bytes": 3141,
+      "sha256": "8f28016d396daea0989c892d09bedb8d575372e46b55cee09081fe2f2cb87fec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/release-prep.css",
+      "bytes": 2165,
+      "sha256": "88af5a1da6f1cd6e9f46c5070363f1ff5f4e8d1f841671f3d8b82553b8a9beed"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/scene-effects.css",
+      "bytes": 1041,
+      "sha256": "5909ea5887824fc1a3f0bf0ca34a45a0dd1f7c92999cb7450dfa977c0317cbf2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/screens.css",
+      "bytes": 28165,
+      "sha256": "20c34c06d4c8dadcd23bf7ce4382a57c33a159b556a5c0b66912e8b2423c539a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/sigils.css",
+      "bytes": 387,
+      "sha256": "feaf3e5dcd52296a51639b421abce3b8b5d35c11de133f6f5ab606863ee54cff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/story-awakening.css",
+      "bytes": 2735,
+      "sha256": "adb0bde13d33b2cd9278b7f2173094a314ab55ff535a071037958e9a69c852de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/styles.css",
+      "bytes": 38854,
+      "sha256": "bbeb5e5b417c9938bfd3b88970311bcb75b7f9a1f8e0b2d881806beb033836f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/title-birth-rig.ts",
+      "bytes": 6344,
+      "sha256": "9178b0a666932c1c15946502cc0335b6db7fced51a4c371a96b6012e1430dc2c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/title-character-video.ts",
+      "bytes": 3521,
+      "sha256": "0a034d5ce4269652ee47e745a28c5d1e2355c2e94026344491c7edf376322940"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/title-screen.css",
+      "bytes": 8242,
+      "sha256": "980d65dd8541e24e6dc46715ad6d66dbf9488957c39a5abb77b5f95cd5e97fbd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/tokens.css",
+      "bytes": 900,
+      "sha256": "d0cc15f5260c633108c19b6437434d1be2c526c642b08c54a4632b100fa94367"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/town-navigation.css",
+      "bytes": 1384,
+      "sha256": "95bbf6994d68a5f4e3b532bb1fca63ee465f36386e1e57cfd87e3ad32d803f73"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/typography.css",
+      "bytes": 224,
+      "sha256": "f3b8faa9ad75b8c8bdb60be9cf196ba16d65a74fe4e4b998891cd159987d62b9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/ultimate-pixi.ts",
+      "bytes": 20253,
+      "sha256": "6252a8bfc99391bbb1468e8935fa9d32e6197e3c9d312beafc99d6e841bcf003"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/ultimates.css",
+      "bytes": 10131,
+      "sha256": "fce28926b93bd6e089f5f025d11150aff18be24d730bfb907e83a0f0dff91fd7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/unit-effects.css",
+      "bytes": 3067,
+      "sha256": "2a6d693fbd72417c29c8826e896c7e845410855b3816fd897233fdbeb6a10c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/visual-novel.css",
+      "bytes": 4841,
+      "sha256": "88d627bbd6a6add8335e285f51a438b0b028651726674939c47dabc56f120522"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/sandbox/src/ui/xr-gacha.css",
+      "bytes": 1341,
+      "sha256": "9c7c8ef94c4f7e434087d2a1d7911c021eeb2661455dedef0c139fd0118abfc6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-analyze.py",
+      "bytes": 5229,
+      "sha256": "bf91bd2c5d28794628e9e71c7de008efdb12def3f5c7007f67a9a2659f435301"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-core.ts",
+      "bytes": 4962,
+      "sha256": "60d91a6cd898f472623e212913bb1980c7df1bfab6a24541188359ac9693808c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-figure.py",
+      "bytes": 1764,
+      "sha256": "fcd0c5db1f3f177a2ae3fc5496ef2208585fff777b6c31d22e902df839f14698"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-notes.txt",
+      "bytes": 2808,
+      "sha256": "7d5c3d15bcbbe37a495cc2bedee426df9824282b64260f41f04fbb1f795be1ba"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-protocol.json",
+      "bytes": 1545,
+      "sha256": "81ded6ccb3c7063af7acf6def4110b6009b331134f8c9a64a21069b55074dc12"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-results.json",
+      "bytes": 470244,
+      "sha256": "54aa8f896e09eb3d5c92b1329e43c35837a96f6119aa94627ab543c922706f1a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-summary.csv",
+      "bytes": 3477,
+      "sha256": "9de5b2372eef07a71a434a0219515e33a3f817c497207fbc03998bd83db6527c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress-summary.json",
+      "bytes": 14765,
+      "sha256": "af8685b8e6820ac8c845923a13a65c0dc959ce9df0056a296e8692dfdfb406ea"
+    },
+    {
+      "path": "artifacts/rescue-sequel/leaders/stress.ts",
+      "bytes": 3080,
+      "sha256": "7d016fc9f53f3a215a2f904853d531e48260e94e08da6ec4e5506484b5449252"
+    },
+    {
+      "path": "artifacts/rescue-sequel/metadata.py",
+      "bytes": 20791,
+      "sha256": "e7f5e745791712279a77c9e3883a1c6416cb66aa1c8443df888b154cc5d7cff9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/prepare-base.py",
+      "bytes": 3627,
+      "sha256": "a2db0ff4596272651137779eb661df87ed61d7f19355ac5cd4fd4a9e8240c5b6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/prepare-edit.py",
+      "bytes": 6446,
+      "sha256": "b1774a59ca4f6696ad3d536a025a6079da80abc35e40a3a6a72c8dbbd6430a9c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/prepare-extra.py",
+      "bytes": 6132,
+      "sha256": "489ae6a6d92fe3c03087476ac3350c26b960f15e454ee4ceff9800223c71ea00"
+    },
+    {
+      "path": "artifacts/rescue-sequel/prepare-graphs.py",
+      "bytes": 9638,
+      "sha256": "38144453cdac638b661eb82557453a765209fc043cdc7faeb4c5169deb558a4b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/sections.json",
+      "bytes": 57381,
+      "sha256": "5a445ceecbaae5192ef485e30023883e73ebc96faf27dbefbfdb9fc37d5e4233"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/aftercare-diagnosis.json",
+      "bytes": 1522343,
+      "sha256": "2178f35025b83776b1dd9fd8fcaf84c43fe5602d0d1f4cfba85f182a50214414"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/build.py",
+      "bytes": 10748,
+      "sha256": "76447c8e480e34795fac39adc5c7f29030cf70a0bfe4c207903a26d3d0b568e3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/check-native.ts",
+      "bytes": 805,
+      "sha256": "ca89abeb55d815823479ed6cb3a0b353a6f05f06b207fbd1eedc6015237e76ae"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/check-prototype.ts",
+      "bytes": 8463,
+      "sha256": "bbd86bc75235e792feafc2b3cd4d22ec8e5069facdaa81ec83ff71f683bf04c7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/describe.ts",
+      "bytes": 2682,
+      "sha256": "2eb5f1125e94f83fde5e615da6a3443f5444fc0d496ef0f9287f95cf92830c6a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/diagnose-core.ts",
+      "bytes": 6001,
+      "sha256": "4db0d49aa3c6f4bc81f50ddfda5940c7faeb2f3522a8d859c36d4ad7600bc78f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/diagnose.ts",
+      "bytes": 1371,
+      "sha256": "6a5642fdc38a905d583b1c992204b58307eb5536415d85fc56661b090ad8a84e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/engine.patch",
+      "bytes": 9641,
+      "sha256": "2156c54377127df0b0d97259f84dde743e89a2c4ef901ae6ec0a5ec0fe789ae5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/manifest.json",
+      "bytes": 15237,
+      "sha256": "3e53759c038187e14ffdad40e94f23e959484c8c9db77a6659c53277aa9abee0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/native-parity.json",
+      "bytes": 100,
+      "sha256": "b0004d941fd2cc068974af837cbbd004c3bf9be19a490471685dd0bcdfc544c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/prototype-check.json",
+      "bytes": 2022,
+      "sha256": "bd801d6d35c5f83aef0cba68b9b60e229fe7ae550a810f4f6bfc62b83c25b957"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/App.tsx",
+      "bytes": 20975,
+      "sha256": "f51feb4e1447eb0dd64795af20cf6a41ae4dd673464085ac63a45e59ae4ecb37"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/application/game.ts",
+      "bytes": 30559,
+      "sha256": "80a6395c34b944fac301ec04c6251460566a50ad12888828030f2536d1222b58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/boss-events.ts",
+      "bytes": 6543,
+      "sha256": "f0c549f31d1e262a3238ac84d7c1e3df6ba3ce658704dbbb9be498ade4d12a8b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/campaign-stages.ts",
+      "bytes": 22270,
+      "sha256": "9c2221ce2f49ba4fc5c9b30a0f10b68b33da203e612a767bb61ab75524195f24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/chapters.ts",
+      "bytes": 4074,
+      "sha256": "0fe11b729a727e69a9b9d7be25a12fa7b4f4e50310e54be682c5c0159641848d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/events.ts",
+      "bytes": 1801,
+      "sha256": "2483b52a246ab4fc61d120834414211b14d79d6878e8aa95ac845eec12e82563"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/gacha.ts",
+      "bytes": 6961,
+      "sha256": "bea673a3219f13b0e890253423f48cd510345e5ad9277d131e86c502042dd699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/gem-loot.ts",
+      "bytes": 2804,
+      "sha256": "9b27123150505c27445b20620fd9d18ebb9580b14752ead19fd08e2c29f8da72"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/gold-exchanges.ts",
+      "bytes": 386,
+      "sha256": "13de80fe94fd109e7011e00ca1344f4e7d3638e5e971a305e33f2fc191d159ee"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/index.ts",
+      "bytes": 64642,
+      "sha256": "bca69034c7bccb89391da57d0bbf7991af2daf961d7110e49783df4f62ff50e8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/ivory-tower.ts",
+      "bytes": 3187,
+      "sha256": "915b2287c4eeb14072095f4b19e4c055a9d29e7d271458c9c72cecfc377e1247"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/living-garden.ts",
+      "bytes": 5250,
+      "sha256": "d6e1584a86b16fb522fb1a9737673ac7e550982f3b236ab8ced8b1e42f26c6c1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/lunette-ultimate.ts",
+      "bytes": 932,
+      "sha256": "497a7a3ddb99b8dacd34b5bea4ac6eb797612fb21f67d81ebf908a639d024cfa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/motion-posters.ts",
+      "bytes": 687,
+      "sha256": "c7ca61ca9a7dda660083624aa3c7c3bfb4adce7e9a23495c822b10892692492e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/novels.ts",
+      "bytes": 14675,
+      "sha256": "cef2cad6bf14fe0f440827e9d68436394e04f2136cd965ce4999494f7d39361e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/rare-encounters.ts",
+      "bytes": 920,
+      "sha256": "fffc3f012ada3df49e048f83e612ab9170eed314df8a3eba72346f6418c2afb6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/seris-story.ts",
+      "bytes": 8885,
+      "sha256": "6924028dac90dd90224960b6ece7e5598d6b90e72571f866483ed476f4cfd953"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/story-milestones.ts",
+      "bytes": 6034,
+      "sha256": "0f12c39761ba7355b7b27f1655b434d18d9e0d998fa4c56ab2ed77f19500463f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/title-art.ts",
+      "bytes": 1559,
+      "sha256": "11fc725836b81b04a1c5ebd36ba2d5c92d5fe49889bbc9d559ec4cfd7fcc255b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/trials.ts",
+      "bytes": 6592,
+      "sha256": "8dfa84dc1d85010c6c9e6d49fa31457909996702abf82f22dc2f273593a9b51c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/validation.ts",
+      "bytes": 37189,
+      "sha256": "a560b22109f7fb41c07c21dc729554ded6dbbc54a1590c0a1e636d061471d732"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/xr-gacha.ts",
+      "bytes": 509,
+      "sha256": "e64db11027fceb02269287883692f3f7c66c370c2e9f8bf1ed91709ca0605a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/content/zakuro.ts",
+      "bytes": 11067,
+      "sha256": "2997a7ae975f9d693ee33140d9679f290a99c8f45068a4a890d4df2329ab5228"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/acceleration.ts",
+      "bytes": 878,
+      "sha256": "93b1cbe2284e37cbf0d10aa63f6780957e8e09fdc31142e27780c27a7d915149"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/ailments.ts",
+      "bytes": 1277,
+      "sha256": "4b8baf1768bca9174962516a53e1f8eee9931a31c4ec142e2088b4b5e718df68"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/awakening.ts",
+      "bytes": 2231,
+      "sha256": "0547ef2097eca4d44e69ec64aca8ca83b62b6661485c86b5b064c383eda82e2e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/battle-blooms.ts",
+      "bytes": 2784,
+      "sha256": "d387e8f69d4215c1fc7e9cbc33ebda04fd2e9062e2e99eff15a3e01144ef7ab9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/battle-fairies.ts",
+      "bytes": 2470,
+      "sha256": "20c404a6a16fb790317cd2cba6a488d35b8be8e5487f8f4b5c61e31fadb34648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/boss-pressure.ts",
+      "bytes": 1558,
+      "sha256": "4093cf304605e720bcca49111b30ef5d17184041322a7614d65974c9aad004e2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/build-demo.ts",
+      "bytes": 8398,
+      "sha256": "7be97781502fbf36dbb1881591a18035823808dedf96b8141c425d3bcf52a1d5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/builds.ts",
+      "bytes": 21053,
+      "sha256": "25486c876e28f246f0514c75ebdc9028ef34c55c490c0c1831b36f2945a55844"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/campaign.ts",
+      "bytes": 1304,
+      "sha256": "e8373adbc3b8aa1991bcc5ad35cb2dca8caf4340500e3e0b5e259f2791cb29a9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/companion-behavior.ts",
+      "bytes": 2411,
+      "sha256": "53b8d98b1798ceefec557259c74a7355dde9e222481ac4adfb747f9e8906f369"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/crystal-resonance.ts",
+      "bytes": 609,
+      "sha256": "ead6fa282e6b6638f328610f6384fd94115abe182e969abddffa3cfd31a55072"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/engine.ts",
+      "bytes": 77039,
+      "sha256": "59a5905e87fa6f62973fb69e1467a303b73a132d1f1f61033a399a8fa37a5ee8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/events.ts",
+      "bytes": 2273,
+      "sha256": "0e25615b21f33441117d4d3aefc6e2a6eb5ac346f4ad35acd0b0f77156b191ad"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/ivory-tower.ts",
+      "bytes": 1554,
+      "sha256": "e9258d88106287afb7289f1f5c01eca2c458526abbb075e0afb34189f6261418"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/legacy-omens.ts",
+      "bytes": 1751,
+      "sha256": "abe4c9354afa17f6cfd0a2309644862a6e5699a08c78d4f479335c58118e77c6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/memory-gems.ts",
+      "bytes": 29879,
+      "sha256": "be54443fd235c713ccac2a31f543668c1acf214872172601edb2fe3280194d94"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/novels.ts",
+      "bytes": 956,
+      "sha256": "fe9d9c582d2657636d5ef1c13e6ade74d03f965fb4a98247d088a5f53f218904"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/party-orders.ts",
+      "bytes": 5327,
+      "sha256": "c54bdd231bb1e233be9b0f2f53f073f15139d770f72d27d0f650b0f37a77571f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/rewards.ts",
+      "bytes": 406,
+      "sha256": "973c7c87408ddfd4264587b01027441b4c24df592fb6f91d0190f11211012510"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/skill-info.ts",
+      "bytes": 6762,
+      "sha256": "1a3ce8ffbfe5fc3962d65e6b66a565befbf63fa0d8018732d053c4b567114e28"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/types.ts",
+      "bytes": 12080,
+      "sha256": "730ba802f73d382528485f4d6ea8b162c1cb1b854de7d41c3cd1c00f9853f17b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/ultimates.ts",
+      "bytes": 3143,
+      "sha256": "831631ba1c3aba368e67f09354e7b0f8c61f6b99b0e31211465018dcf6222d51"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/domain/xr-gacha.ts",
+      "bytes": 2097,
+      "sha256": "503b90e9ecae5c4120460fccf132c307ed9e993a0c68bb5ea4d3d86923cfea19"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/locales/en.json",
+      "bytes": 425285,
+      "sha256": "67570ce6f413c18fb19500e9ae87873f54653951d1653d428139c6ab6249f582"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/locales/i18n.ts",
+      "bytes": 3654,
+      "sha256": "2ed62b443f0d82ea6af5de5e17a37c0951542bc6f7127ca0787b91111c57f61f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/main.tsx",
+      "bytes": 458,
+      "sha256": "583bc438db6447c78ab443fc66ef31a88b1a88c999767df29643bc5fe5e42595"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/audio-resume.ts",
+      "bytes": 1130,
+      "sha256": "ec1bb49625fa143b76d4e4b1a9ce18d2aeba1074687f3c737d482ebb6a01406d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/audio.ts",
+      "bytes": 9981,
+      "sha256": "3cd329112c9865ff14323567fde686b2483bb3df85321f12da9c589e32b52219"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/battle-shake.ts",
+      "bytes": 2109,
+      "sha256": "ebaa094dd75bcd7cd838dcca55f6dd693d17efc541a9594293f2b5c9c155ef12"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/battle-timing.ts",
+      "bytes": 632,
+      "sha256": "7e7764a2a8ea97b4a33142bde3c304b8c8a2f6bac05b6a902596495770c0c833"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/bgm.ts",
+      "bytes": 4097,
+      "sha256": "2bab355e6e0591d50a44ec1cb79901972cc44178a596eaa8ee157a3a6ee3b8dd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/combat-audio.ts",
+      "bytes": 8624,
+      "sha256": "4d6913527b92ed49a57f8769687643f852203c0796ae088c01610603eb7e6983"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/combat-feedback.ts",
+      "bytes": 2403,
+      "sha256": "b65e0172927b337d8558fd53a6e6e54b0429f4edaf2b5dedf9fae41c2609821b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/combat-signatures.ts",
+      "bytes": 4200,
+      "sha256": "a830f531d6b4f7328a3b199654eab26330a04d1032b8011b457fc69dc817c7b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/combat-synth.ts",
+      "bytes": 14635,
+      "sha256": "0d04285801136b18a0f33f061c989f6a4ecb0755e90ec8cc8d5477bd459a0927"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/damage-flash.ts",
+      "bytes": 1120,
+      "sha256": "dbb64bddb6f30a7058113501668d6c0792146aa24df9c8836f755c537b27b194"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/fx-renderer.ts",
+      "bytes": 15449,
+      "sha256": "9113d718b2503ba1d89a870d5998e6fe55c4d0166fc1892d34c1df797c777ed5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/interaction-guards.ts",
+      "bytes": 1378,
+      "sha256": "42988f4efd25bea0c39a27b62c886d6087f87872c559531f0a2d8018c42e4313"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/presentation.ts",
+      "bytes": 3152,
+      "sha256": "faea9860cd20fc346a116304bcf6d38f44fd5a2f7c554054cd7993e1f5264f8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/protection-audio.ts",
+      "bytes": 490,
+      "sha256": "121c68c817cdcebf2e8b3c0165973acd9a271ab957b27b80359d9a7942508456"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/rabbit-battle-motion.ts",
+      "bytes": 2301,
+      "sha256": "4459e5b3fbc1a349ed9cde19496b629259625ae52f9dd04cfe63fe77e51733db"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/rabbit-loop-charge.ts",
+      "bytes": 1322,
+      "sha256": "d8009b888eeb32fe120ad25a2d5e8bd6a69556a58962ff42acca18d5c8379a62"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/rabbit-ultimate-audio.ts",
+      "bytes": 2472,
+      "sha256": "0b929954affea021f7085cf76cf0fe9474b2a7de32072335bafa71768fcca5e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/rabbit-volley-audio.ts",
+      "bytes": 4038,
+      "sha256": "204fa834093ac2f37dbc12af64c2532c381da3c040c9ed4924d7115e744fa74a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/save-backup.ts",
+      "bytes": 2183,
+      "sha256": "67b154b26fd95324cd2cdb5fd24f199591cd71f975328b52bfc570851ffb1628"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/save.ts",
+      "bytes": 26662,
+      "sha256": "3f10b620e72846420508c1e615bbf883a54ee7d243c1be604eead72a6c819a69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/sound-cues.ts",
+      "bytes": 1971,
+      "sha256": "104130c7448d73e63767c5ff68cd15981912368f81ad94aa803b7cafb836aaa7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/ultimate-audio.ts",
+      "bytes": 5592,
+      "sha256": "aa151876acebc1ee39b8b9a426146539213046330538c71ccdcd005e9ad3d797"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/ultimate-charge-audio.ts",
+      "bytes": 1311,
+      "sha256": "41c85c31728652997e4e0312784d440546d2816b06592ebb97f6a6c0e3f7e09e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/ultimate-choreography.ts",
+      "bytes": 10025,
+      "sha256": "a729d7c15766b7b170ff4a2121b4d5a8204883abaf46fea2ba5357b034c68ba5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/platform/ultimate-timing.ts",
+      "bytes": 1850,
+      "sha256": "e85882da4272d0088d72cb4bb90c5d2477c7664b1fa804a98b2c823586a98b24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/screens/GameViews.tsx",
+      "bytes": 50908,
+      "sha256": "829c57b59882cd03689606b1fe2af9e4ce18efdd069fd6a1f85410a4a987bd7c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/AnimatedIllustration.tsx",
+      "bytes": 5787,
+      "sha256": "1500a2ae8ff46fd2f9a592fcd856ad513aee9e245146f9a9c40a6a064893e900"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/AtlasIcon.tsx",
+      "bytes": 1106,
+      "sha256": "5009986736cf6b42d915bfffd682b9ce70145956062b069d0bb92000f819a78e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/BattleControlPad.tsx",
+      "bytes": 3203,
+      "sha256": "b66fe89771518da2a46c34616a26ceed0f379f6388141e857124dd10e347a7ac"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/BuildDemo.tsx",
+      "bytes": 5723,
+      "sha256": "16123293a7caa658a9b1096b85b5fdd1414ce511d2e5b08c70ff3df758084fb8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/BuildGoalSummary.tsx",
+      "bytes": 1817,
+      "sha256": "cccdb972a8dd25ce949248068a6dbbb2425ac2c205071022fcfffc7f4117dc69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/BuildPlanner.tsx",
+      "bytes": 22368,
+      "sha256": "d27590c3f516c6a9d0906a8b34147da9accfa775851a330ceac7e581af2fff4b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/CampaignDungeons.tsx",
+      "bytes": 5260,
+      "sha256": "e276dadcb838bfffbac42ccc6f9a9c1fd8b1948ffc45d2b05261cad31ce40145"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/CampaignStory.tsx",
+      "bytes": 558,
+      "sha256": "1400ca7923ffed01cd0378c5a6ab02da8641d768170617121329374152be9f4a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/CharacterArtwork.tsx",
+      "bytes": 1423,
+      "sha256": "8c6c632c7f80f3a1bdc67ceefeeb74ebb05b967ce19292516faf905e5699c3f1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/ClockBossStatus.tsx",
+      "bytes": 1637,
+      "sha256": "4c14189329c04fdab82116446ed8ed205e5c63e1c6650dbd7fe5b9f5658b0c06"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/ClockworkBits.tsx",
+      "bytes": 3392,
+      "sha256": "51c775eee67af19913e99f67b43a781aea718a9c00b2fa96290edf72e1ad9ebe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/CombatFeedback.tsx",
+      "bytes": 8237,
+      "sha256": "e84c21e037d95738013eb8c24b992617a6be87c483fd4e0251a48be611a476fb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/CommandEmblem.tsx",
+      "bytes": 596,
+      "sha256": "b3759d64b0d2480274344e268d11334243724b742ec693a342b5878c6470eddd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/EnemyCarousel.tsx",
+      "bytes": 14279,
+      "sha256": "f2ab1e727e1b854bc075eb41ca09ca323e6f69e6ca14e7b00ab6db0615dbf6be"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/EventDungeons.tsx",
+      "bytes": 4584,
+      "sha256": "2efe5ed8c3db9a09371d0b1c4ae67dff8d3b8091a647862076dbed1cd87056c9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/FairyGuide.tsx",
+      "bytes": 12307,
+      "sha256": "7ce3a873abc49a88ccb97cd64ff3655c403ee916ba03f8dd5685237937d2fc13"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GachaResults.tsx",
+      "bytes": 6816,
+      "sha256": "dd489232c8f631528ace06debbd3d45d5f170213dba68b33e3572d476bd756cf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GachaReveal.tsx",
+      "bytes": 3643,
+      "sha256": "f05022a61a62a05928fadde03f61cdff723f962cf2a72637f6718f07c05d390d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GachaShowcase.tsx",
+      "bytes": 3668,
+      "sha256": "ad2b619f155464fa1645b7bd8bd248bd81894bdcc24efb55020e972d8a02e017"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GameMedia.tsx",
+      "bytes": 1274,
+      "sha256": "7cce31eee54fbad99f3d0c4b807a09369f02f4361b50b2ff4f78cd12ac287e23"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GamePortal.tsx",
+      "bytes": 504,
+      "sha256": "27407e9b469944e27a7866d87db716becfdd6ebd248c4275166a7dab7018e5ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/GoldExchange.tsx",
+      "bytes": 4011,
+      "sha256": "69843badfee59b5028df6642825cb35af2907b4c90e8882891593430321c2308"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/HomeArtwork.tsx",
+      "bytes": 3144,
+      "sha256": "0e0d16a1214587df621dfbbd7f608e42da132933d6d2271ac78fa4f0e7bbe1f0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/InventorySection.tsx",
+      "bytes": 861,
+      "sha256": "06f804e7c6f41c07ddeb702c2f33c5ca045079cb73dd982abf1c73fa0d585e2d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/IvoryTower.tsx",
+      "bytes": 4229,
+      "sha256": "246d1570b777800f614bfe3e1134f75e74b0b07e2e38f0c9d720de1846ab41e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/LanguageSwitch.tsx",
+      "bytes": 642,
+      "sha256": "feccae5276c26d6b56feb59583f40991e96192169e2aadd338e5fe92cb8c8947"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/LivingBattleFrame.tsx",
+      "bytes": 9404,
+      "sha256": "d2a6845c8818082807dead911514a2cab1a03688fd7ffa8f137d0cc27655a430"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/MemoryGemFind.tsx",
+      "bytes": 4318,
+      "sha256": "292d892c1c40f7f3df7b51a15d4254b76fee0a1814fd3694cb4758d08bd8dce3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/MemoryGemTier.tsx",
+      "bytes": 323,
+      "sha256": "07e270b8911f7b71274ed6adc5915784d3a1f268de48a628eadb55e472a5decb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/MemoryGems.tsx",
+      "bytes": 27985,
+      "sha256": "ddcda41ac32500ff5ffd953a5af2b1248924c76f9066fdcca2a4d6203e2a0ac5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/MenuEmblem.tsx",
+      "bytes": 510,
+      "sha256": "03f3fdda851ae046be71b730ff24e8a806637d56a0cdeb78d71c1ecde282c542"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/NoticeSurface.tsx",
+      "bytes": 1357,
+      "sha256": "3725fd70f45df0398e2102a11ec75d8ddbb8ae35d47aecde0bce5407b7ac1fde"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/PartyCommandDial.tsx",
+      "bytes": 16115,
+      "sha256": "d6b930ea30f955356448e0e68e9cde0935a1644d2eabeaab57c2a14d422ce648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/PartyFormation.tsx",
+      "bytes": 4149,
+      "sha256": "683fa86ea24a6f0d7c1a0f92aa96088521c4e9d24e1e521f6f2aac983aca6faa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/PartyMemberActions.tsx",
+      "bytes": 1239,
+      "sha256": "a43f74b3044b53a0f8fe196a6ba10d242cc8e85d149465b676ae7033806e4f6d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/PortraitArt.tsx",
+      "bytes": 1685,
+      "sha256": "6d6576f603754f8b60ea6743940e7dfe5bc5e412a3bd64def36181810b18a8ff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/QuickGuide.tsx",
+      "bytes": 2100,
+      "sha256": "5fb15dcda5af4a9d997351e5666f2810e6eaf74432380e612d81949bb9e85f58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/RarityFrame.tsx",
+      "bytes": 880,
+      "sha256": "a6e00af64d353da55896289f617071fdd0e39efb4cccdfb662bd0fe31b3dbfe6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/SaveBackup.tsx",
+      "bytes": 3711,
+      "sha256": "5ec88b811640ef68cdb1587a84a31f1832ff7200513d449b038296d14137709d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/SceneAtmosphere.tsx",
+      "bytes": 590,
+      "sha256": "124bfcbd4a0a10f0eeaeb6518947abecdc3d3253b86b5054d7fc58de79f0970d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/SceneEffects.tsx",
+      "bytes": 4361,
+      "sha256": "7afca65d1e19bb8f51420d8823cbb753bc4d1bcaa5155c9692f34d264b410e1c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/Sigils.tsx",
+      "bytes": 2810,
+      "sha256": "77ee3751355dcba97d064cb676e7e11d71cdc4681381ffb2bddf84466decbe8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/StoryAwakening.tsx",
+      "bytes": 4479,
+      "sha256": "5c3ecea7ca837e33be3eca56b19cc96ccf36cf97f2e9e8025b7b87d528e2a3b2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/TitleBirthScene.tsx",
+      "bytes": 2894,
+      "sha256": "78fdc91a97e768d1a641a59a30473a7bcadbba66ee9368d6467796ae075d764a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/TitleScreen.tsx",
+      "bytes": 2499,
+      "sha256": "c69f7e376ea85a218b216d479c865a68d8cca148f2543aa6df07d2e62c9436fe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/TownNavigation.tsx",
+      "bytes": 1433,
+      "sha256": "0940740d43eef115e65f8d94a83e5d65dd0265818ab865f9582b1952df04843f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/UltimateCutIn.tsx",
+      "bytes": 11656,
+      "sha256": "49a0cf7daf52522468a7d4dd5eaa4f50cd758586f2649fa1974d53ef51c0b968"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/UltimateIntroFx.tsx",
+      "bytes": 2401,
+      "sha256": "67de9218e13e2cde9f3b0933761391dd85258667baecba67b8a705d50b3a2bb7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/UltimateMeter.tsx",
+      "bytes": 744,
+      "sha256": "4a637f22f82611704e3f6b81f54a4aeeca9a0eb143e0b39bfa3cdebf06666699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/UnitEffects.tsx",
+      "bytes": 4029,
+      "sha256": "5e8798cd06a7abaabad7d311327f5201705c684caa4c91aad05a9cd918321f1d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/VisualNovel.tsx",
+      "bytes": 7592,
+      "sha256": "0c9afbc566f9e52237aaa46700adab964ec68861f5fc16d47d3c94c79228c375"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/XRGacha.tsx",
+      "bytes": 2883,
+      "sha256": "ea1c7e07e4e19778076362906e0bfae96fc2e263dc4be6640cc2b125f848b299"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/animated-illustration.css",
+      "bytes": 1055,
+      "sha256": "9ca10b248198857aec0565629d42b9c4b986eafc8950170a246abd9ee56dff52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/animation-settings.tsx",
+      "bytes": 731,
+      "sha256": "7e55dd1561220a7158dfb33c5a70c8ce2109901191fbce0c87841a67aba8b470"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/atlas-icon.css",
+      "bytes": 123,
+      "sha256": "63a9f8f47d85a61ad551336cc0bb5b4b7c127308ef3ff429e93c7225aa7375c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/battle-control-pad.css",
+      "bytes": 5923,
+      "sha256": "240996c94da4e0cdafaa0ada32d857e9cf314d561e06a8b8934aadee39bd4ba0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/battle.css",
+      "bytes": 7483,
+      "sha256": "f3eaaf6d938c73f73af6a27968fc65c85b1dec99a640790bc68ce7978c5ed4de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/build-demo.css",
+      "bytes": 4309,
+      "sha256": "30c12a64a7a656625f3c4ca9cc082a90293b37580178855a5c945419df99c965"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/build-goal-summary.css",
+      "bytes": 702,
+      "sha256": "24bb4bc18820d1c2086bcfcbbb83a84dbe07723848318199cc925b62248537a3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/build-planner.css",
+      "bytes": 10677,
+      "sha256": "c1dc8a4e26e2f56cedf95deca5ab88b5fe8b21fbe96d966342448fd02cb82f22"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/campaign-dungeons.css",
+      "bytes": 3021,
+      "sha256": "d76bef4829a740a289ed17e9f417b54c65cb96ca0a2dc6c5ec5c784008af4a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/character-artwork.css",
+      "bytes": 996,
+      "sha256": "6cc4b238681e72c2066873cb68671ca3025aa4e10de15110bec26fa96ff3ae52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/clock-boss.css",
+      "bytes": 1664,
+      "sha256": "dc1348f3fe8d540b06a3c8ad60a34db698d6a04f50bce4410a79f1f4894d423f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/clockwork-bits.css",
+      "bytes": 2959,
+      "sha256": "0190392033761f09a42d5bdaae3763514ed65a33f1806a85b441ab38bbca0cbf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/close-button.css",
+      "bytes": 1025,
+      "sha256": "a4541bd22d4f6c7a6bb54e0371ee450423576945583a0ed163214df11b46657b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/combat-feedback.css",
+      "bytes": 3090,
+      "sha256": "77eba46cfdacea540d011ef85933ba882de559d6dd9a791520c3f7ada64b8c3d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/command-emblem.css",
+      "bytes": 63,
+      "sha256": "b3846214cfb806aa3195a34fd4923973356318cc46e70ed11f2064c52bc8cf02"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/enemy-carousel.css",
+      "bytes": 8886,
+      "sha256": "660c192a5581dd5179a3e55ff0c4694eea0e6f05b83e2dd04f756b7bb2f335b3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/event-dungeons.css",
+      "bytes": 4017,
+      "sha256": "ba32c273629e5797da891156a56a6258a8b4e2bdfdf2d771b02ac2a6307c96eb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/fairy-guide.css",
+      "bytes": 2972,
+      "sha256": "4da3f8320ef5e10b8f3757057fe33b570bfdf647427eae176b83830d89b1c27a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/fairy-tutorial-data.ts",
+      "bytes": 10421,
+      "sha256": "dac7a45eb43cfeba90d124837d496b09f1b5a3089f341f5b4bbc9563b49e87ca"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/gacha-results.css",
+      "bytes": 7919,
+      "sha256": "634a54c01e80c24741ba8e1d5d9567035db4af0079750761b42e700161dddae0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/gacha-reveal.css",
+      "bytes": 6550,
+      "sha256": "94af2bf599fa216f7115bdaa1e1abe4eeb41992173de4d54af41072ae435f081"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/gacha-showcase.css",
+      "bytes": 6803,
+      "sha256": "70a4e380ca940422ca58c343aaa7e03423e0585190f1d9cecd973041dd25bb31"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/game-frame.css",
+      "bytes": 1867,
+      "sha256": "9062dac5021b37794357495f49f954e1c52fa63140bf0d7319432ec7452781da"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/game-interaction.css",
+      "bytes": 588,
+      "sha256": "0ab0ed611c7631a6cd1abbba719fd59a167e1cc949262fb82c1df2e074947b78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/gold-exchange.css",
+      "bytes": 2380,
+      "sha256": "2af715d07aab5dddec2d01ab67da101738ff66b85483b36d42ea7c75adc66c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/home-artwork.css",
+      "bytes": 2432,
+      "sha256": "9c00b11ce5c74106a799a34c33df6eeddeefc7ae5a0f2efe36b3f0db48b71bcf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/home.css",
+      "bytes": 8943,
+      "sha256": "5c923cf137d638fa338fdfb898cbedb70c1475cfad7ba6feb2bb1008823317f3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/index.tsx",
+      "bytes": 13749,
+      "sha256": "cc0053ef0ac80ac515cdb0618baf5a3d99f00a02278ed7cef2c5ac27e8316f6a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/interaction.ts",
+      "bytes": 1061,
+      "sha256": "70c6e9f824d79803a42a047bf97573f41d734cde5a559859c66e6c831f355c10"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/inventory-section.css",
+      "bytes": 1368,
+      "sha256": "fdf2cb6be3b9cb8719ef539dc9e9c5ac966f3c0cda525c516f5f3b37e8b2d65c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/ivory-tower.css",
+      "bytes": 2573,
+      "sha256": "addef098202d4d688f492130463b8232fb8533633c83d1cd63aa187f9acaa8f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/living-battle-frame.css",
+      "bytes": 6066,
+      "sha256": "80f3626be245c077353d261f32ca43af50d58da821bcc3319b73c16a92ff6d2f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/materials.css",
+      "bytes": 572,
+      "sha256": "40564e705a27d622737266c252fbe15b184902fb56af547230d3ce6dfec8bd78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/memory-gem-find.css",
+      "bytes": 3151,
+      "sha256": "41eae75c7a5080e4078f958e70e402f7b9d264edfd41c76233fd0ea18a6a25bd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/memory-gem-stacks.ts",
+      "bytes": 1535,
+      "sha256": "2b0a9230b07cb23d988a5c29640a4cac407316b39bc8bc084c6156f3d17780a6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/memory-gem-tier.css",
+      "bytes": 1157,
+      "sha256": "e286c29e6eafb1607cad3e666ea56b47973482ba0624a3e3f68cc07243d703cd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/memory-gems.css",
+      "bytes": 19301,
+      "sha256": "9ac797b478c5d79f6f94553985537377bc8b87531fd57ce0eb5e209a2327af88"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/moonlit-theme.css",
+      "bytes": 11498,
+      "sha256": "646f132226d04f470b94d08214b18434779d4b5a4edc12e7af6adc635fbabef1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/notice-surface.css",
+      "bytes": 2540,
+      "sha256": "1b99b4113162d529d0273bc02e1f19db6a7bf25002df65a71d61a406ffdd6473"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/party-command-dial.css",
+      "bytes": 9440,
+      "sha256": "65892d0b58e8eb65ea32f0561620ba199d4337cfb8aafd2ecf967364ff4e5285"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/party-formation.css",
+      "bytes": 2560,
+      "sha256": "27b57ac422a4ede9b27bd1f76070c1a8c1c8d1bd9471a9b56400c5243e1464ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/party-member-actions.css",
+      "bytes": 498,
+      "sha256": "b683dc0b356e007f8f361cefe1559f6a9cd3a243c5b18ccbda369be0539f8c0d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/portrait-art.css",
+      "bytes": 753,
+      "sha256": "e832be0bdf0282bfd4f4f2aed8d68cfc89577341d92de670504e1fddb4e0b9b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/rarity-frame.css",
+      "bytes": 3141,
+      "sha256": "8f28016d396daea0989c892d09bedb8d575372e46b55cee09081fe2f2cb87fec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/release-prep.css",
+      "bytes": 2165,
+      "sha256": "88af5a1da6f1cd6e9f46c5070363f1ff5f4e8d1f841671f3d8b82553b8a9beed"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/scene-effects.css",
+      "bytes": 1041,
+      "sha256": "5909ea5887824fc1a3f0bf0ca34a45a0dd1f7c92999cb7450dfa977c0317cbf2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/screens.css",
+      "bytes": 28165,
+      "sha256": "20c34c06d4c8dadcd23bf7ce4382a57c33a159b556a5c0b66912e8b2423c539a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/sigils.css",
+      "bytes": 387,
+      "sha256": "feaf3e5dcd52296a51639b421abce3b8b5d35c11de133f6f5ab606863ee54cff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/story-awakening.css",
+      "bytes": 2735,
+      "sha256": "adb0bde13d33b2cd9278b7f2173094a314ab55ff535a071037958e9a69c852de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/styles.css",
+      "bytes": 38854,
+      "sha256": "bbeb5e5b417c9938bfd3b88970311bcb75b7f9a1f8e0b2d881806beb033836f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/title-birth-rig.ts",
+      "bytes": 6344,
+      "sha256": "9178b0a666932c1c15946502cc0335b6db7fced51a4c371a96b6012e1430dc2c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/title-character-video.ts",
+      "bytes": 3521,
+      "sha256": "0a034d5ce4269652ee47e745a28c5d1e2355c2e94026344491c7edf376322940"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/title-screen.css",
+      "bytes": 8242,
+      "sha256": "980d65dd8541e24e6dc46715ad6d66dbf9488957c39a5abb77b5f95cd5e97fbd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/tokens.css",
+      "bytes": 900,
+      "sha256": "d0cc15f5260c633108c19b6437434d1be2c526c642b08c54a4632b100fa94367"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/town-navigation.css",
+      "bytes": 1384,
+      "sha256": "95bbf6994d68a5f4e3b532bb1fca63ee465f36386e1e57cfd87e3ad32d803f73"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/typography.css",
+      "bytes": 224,
+      "sha256": "f3b8faa9ad75b8c8bdb60be9cf196ba16d65a74fe4e4b998891cd159987d62b9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/ultimate-pixi.ts",
+      "bytes": 20253,
+      "sha256": "6252a8bfc99391bbb1468e8935fa9d32e6197e3c9d312beafc99d6e841bcf003"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/ultimates.css",
+      "bytes": 10131,
+      "sha256": "fce28926b93bd6e089f5f025d11150aff18be24d730bfb907e83a0f0dff91fd7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/unit-effects.css",
+      "bytes": 3067,
+      "sha256": "2a6d693fbd72417c29c8826e896c7e845410855b3816fd897233fdbeb6a10c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/visual-novel.css",
+      "bytes": 4841,
+      "sha256": "88d627bbd6a6add8335e285f51a438b0b028651726674939c47dabc56f120522"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/sandbox/src/ui/xr-gacha.css",
+      "bytes": 1341,
+      "sha256": "9c7c8ef94c4f7e434087d2a1d7911c021eeb2661455dedef0c139fd0118abfc6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/specification.txt",
+      "bytes": 6678,
+      "sha256": "0d20bc690e6ce31e09bb48cfd686a0a3f3f6c9dc371a8990943f5514c2305804"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/Notes.txt",
+      "bytes": 4056,
+      "sha256": "dae8b48fd25a6c37628eb535c7238cd3347c02de56644e8e9f1c7b33b545989c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/analysis.json",
+      "bytes": 7518,
+      "sha256": "7afd8a4810826ae8b4e11acb04cb6e4b6afdfbfade5b05f55aa1ec9d6c8ed4e4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/analyze.py",
+      "bytes": 2339,
+      "sha256": "b32e81e571eb36a2431577a9d22663b2f6cf3bf3c5966ff930db552718a62a5c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/build.py",
+      "bytes": 4995,
+      "sha256": "a5f53a27cfa0351fc1727cb9108fbd380ab9c20ce1816bd771e8f90d2947fbf2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/causal-chain.csv",
+      "bytes": 2451,
+      "sha256": "f9278b5b0b6362edeaceb11235e833f552b7aed64f309a8177681bfc0a38495d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/causal-proof.json",
+      "bytes": 1578,
+      "sha256": "1ef80666ed241e68e872bbf74d84976a1946e9cc64b0464f55eca3ec762c2e14"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/check-native.ts",
+      "bytes": 815,
+      "sha256": "5a5fa666b765edf8ec7978d3f78c3c53534ae4023768f2cca0213683869bb647"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/check-prototype.ts",
+      "bytes": 9646,
+      "sha256": "67a19e53a849cbe5f16ff0252f7654d9298eb5ea00b432e94fab344df3fc94a7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/comparison.csv",
+      "bytes": 21394,
+      "sha256": "12ac4da5456b457e50d028299c52020c1c1aca2ff7a203dc9e9bc35aa1116235"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/diagnose.ts",
+      "bytes": 1674,
+      "sha256": "c9c2f873ab4eb8452abcf1793333a33ea1e95c58c34f784a4e46229653b025b6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/diagnosis-summary.json",
+      "bytes": 293975,
+      "sha256": "83b3bb6d03d997d2b705cddda7cc2a609592ad8f02ac9205b48acb3ddcca882f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/diagnosis.json",
+      "bytes": 1951459,
+      "sha256": "b3b00e0e84bbbbc5ac2fc998d4a8f7ed83195ca9405f707a9d7685dd6760d34f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/heldout.json",
+      "bytes": 988064,
+      "sha256": "b413573ff745c29c0eaaf1bb61f03b82ad3ff3e62fba27d8c595bdec9857f952"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/manifest.json",
+      "bytes": 5037,
+      "sha256": "91ec6a366ff44df6c9bbd4d241cefcb0b63a005fdc8ed0bfe09f622a449f1b79"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/native-parity.json",
+      "bytes": 100,
+      "sha256": "b0004d941fd2cc068974af837cbbd004c3bf9be19a490471685dd0bcdfc544c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/prototype-check.json",
+      "bytes": 2367,
+      "sha256": "e1dc9cf8ff4243354186101979a6c139285d7628dd941dc815fa5639914e1707"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/run.ts",
+      "bytes": 1500,
+      "sha256": "60a42d21118ee81168a51e5ad29a797cda8df2efb95f6aa88abaa6b4b64eb4a1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/App.tsx",
+      "bytes": 20975,
+      "sha256": "f51feb4e1447eb0dd64795af20cf6a41ae4dd673464085ac63a45e59ae4ecb37"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/application/game.ts",
+      "bytes": 30559,
+      "sha256": "80a6395c34b944fac301ec04c6251460566a50ad12888828030f2536d1222b58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/boss-events.ts",
+      "bytes": 6543,
+      "sha256": "f0c549f31d1e262a3238ac84d7c1e3df6ba3ce658704dbbb9be498ade4d12a8b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/campaign-stages.ts",
+      "bytes": 22270,
+      "sha256": "9c2221ce2f49ba4fc5c9b30a0f10b68b33da203e612a767bb61ab75524195f24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/chapters.ts",
+      "bytes": 4074,
+      "sha256": "0fe11b729a727e69a9b9d7be25a12fa7b4f4e50310e54be682c5c0159641848d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/events.ts",
+      "bytes": 1801,
+      "sha256": "2483b52a246ab4fc61d120834414211b14d79d6878e8aa95ac845eec12e82563"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/gacha.ts",
+      "bytes": 6961,
+      "sha256": "bea673a3219f13b0e890253423f48cd510345e5ad9277d131e86c502042dd699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/gem-loot.ts",
+      "bytes": 2804,
+      "sha256": "9b27123150505c27445b20620fd9d18ebb9580b14752ead19fd08e2c29f8da72"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/gold-exchanges.ts",
+      "bytes": 386,
+      "sha256": "13de80fe94fd109e7011e00ca1344f4e7d3638e5e971a305e33f2fc191d159ee"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/index.ts",
+      "bytes": 64642,
+      "sha256": "bca69034c7bccb89391da57d0bbf7991af2daf961d7110e49783df4f62ff50e8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/ivory-tower.ts",
+      "bytes": 3187,
+      "sha256": "915b2287c4eeb14072095f4b19e4c055a9d29e7d271458c9c72cecfc377e1247"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/living-garden.ts",
+      "bytes": 5250,
+      "sha256": "d6e1584a86b16fb522fb1a9737673ac7e550982f3b236ab8ced8b1e42f26c6c1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/lunette-ultimate.ts",
+      "bytes": 932,
+      "sha256": "497a7a3ddb99b8dacd34b5bea4ac6eb797612fb21f67d81ebf908a639d024cfa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/motion-posters.ts",
+      "bytes": 687,
+      "sha256": "c7ca61ca9a7dda660083624aa3c7c3bfb4adce7e9a23495c822b10892692492e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/novels.ts",
+      "bytes": 14675,
+      "sha256": "cef2cad6bf14fe0f440827e9d68436394e04f2136cd965ce4999494f7d39361e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/rare-encounters.ts",
+      "bytes": 920,
+      "sha256": "fffc3f012ada3df49e048f83e612ab9170eed314df8a3eba72346f6418c2afb6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/seris-story.ts",
+      "bytes": 8885,
+      "sha256": "6924028dac90dd90224960b6ece7e5598d6b90e72571f866483ed476f4cfd953"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/story-milestones.ts",
+      "bytes": 6034,
+      "sha256": "0f12c39761ba7355b7b27f1655b434d18d9e0d998fa4c56ab2ed77f19500463f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/title-art.ts",
+      "bytes": 1559,
+      "sha256": "11fc725836b81b04a1c5ebd36ba2d5c92d5fe49889bbc9d559ec4cfd7fcc255b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/trials.ts",
+      "bytes": 6592,
+      "sha256": "8dfa84dc1d85010c6c9e6d49fa31457909996702abf82f22dc2f273593a9b51c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/validation.ts",
+      "bytes": 37189,
+      "sha256": "a560b22109f7fb41c07c21dc729554ded6dbbc54a1590c0a1e636d061471d732"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/xr-gacha.ts",
+      "bytes": 509,
+      "sha256": "e64db11027fceb02269287883692f3f7c66c370c2e9f8bf1ed91709ca0605a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/content/zakuro.ts",
+      "bytes": 11067,
+      "sha256": "2997a7ae975f9d693ee33140d9679f290a99c8f45068a4a890d4df2329ab5228"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/acceleration.ts",
+      "bytes": 878,
+      "sha256": "93b1cbe2284e37cbf0d10aa63f6780957e8e09fdc31142e27780c27a7d915149"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/ailments.ts",
+      "bytes": 1277,
+      "sha256": "4b8baf1768bca9174962516a53e1f8eee9931a31c4ec142e2088b4b5e718df68"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/awakening.ts",
+      "bytes": 2231,
+      "sha256": "0547ef2097eca4d44e69ec64aca8ca83b62b6661485c86b5b064c383eda82e2e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/battle-blooms.ts",
+      "bytes": 2784,
+      "sha256": "d387e8f69d4215c1fc7e9cbc33ebda04fd2e9062e2e99eff15a3e01144ef7ab9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/battle-fairies.ts",
+      "bytes": 2470,
+      "sha256": "20c404a6a16fb790317cd2cba6a488d35b8be8e5487f8f4b5c61e31fadb34648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/boss-pressure.ts",
+      "bytes": 1558,
+      "sha256": "4093cf304605e720bcca49111b30ef5d17184041322a7614d65974c9aad004e2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/build-demo.ts",
+      "bytes": 8398,
+      "sha256": "7be97781502fbf36dbb1881591a18035823808dedf96b8141c425d3bcf52a1d5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/builds.ts",
+      "bytes": 21053,
+      "sha256": "25486c876e28f246f0514c75ebdc9028ef34c55c490c0c1831b36f2945a55844"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/campaign.ts",
+      "bytes": 1304,
+      "sha256": "e8373adbc3b8aa1991bcc5ad35cb2dca8caf4340500e3e0b5e259f2791cb29a9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/companion-behavior.ts",
+      "bytes": 2411,
+      "sha256": "53b8d98b1798ceefec557259c74a7355dde9e222481ac4adfb747f9e8906f369"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/crystal-resonance.ts",
+      "bytes": 609,
+      "sha256": "ead6fa282e6b6638f328610f6384fd94115abe182e969abddffa3cfd31a55072"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/engine.ts",
+      "bytes": 78852,
+      "sha256": "b58dc90cadcd920f1e1618777a60bf5b39188ecc11afde0ebce95a561c991a30"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/events.ts",
+      "bytes": 2273,
+      "sha256": "0e25615b21f33441117d4d3aefc6e2a6eb5ac346f4ad35acd0b0f77156b191ad"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/ivory-tower.ts",
+      "bytes": 1554,
+      "sha256": "e9258d88106287afb7289f1f5c01eca2c458526abbb075e0afb34189f6261418"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/legacy-omens.ts",
+      "bytes": 1751,
+      "sha256": "abe4c9354afa17f6cfd0a2309644862a6e5699a08c78d4f479335c58118e77c6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/memory-gems.ts",
+      "bytes": 29879,
+      "sha256": "be54443fd235c713ccac2a31f543668c1acf214872172601edb2fe3280194d94"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/novels.ts",
+      "bytes": 956,
+      "sha256": "fe9d9c582d2657636d5ef1c13e6ade74d03f965fb4a98247d088a5f53f218904"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/party-orders.ts",
+      "bytes": 5327,
+      "sha256": "c54bdd231bb1e233be9b0f2f53f073f15139d770f72d27d0f650b0f37a77571f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/rewards.ts",
+      "bytes": 406,
+      "sha256": "973c7c87408ddfd4264587b01027441b4c24df592fb6f91d0190f11211012510"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/skill-info.ts",
+      "bytes": 6762,
+      "sha256": "1a3ce8ffbfe5fc3962d65e6b66a565befbf63fa0d8018732d053c4b567114e28"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/types.ts",
+      "bytes": 12080,
+      "sha256": "730ba802f73d382528485f4d6ea8b162c1cb1b854de7d41c3cd1c00f9853f17b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/ultimates.ts",
+      "bytes": 3143,
+      "sha256": "831631ba1c3aba368e67f09354e7b0f8c61f6b99b0e31211465018dcf6222d51"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/domain/xr-gacha.ts",
+      "bytes": 2097,
+      "sha256": "503b90e9ecae5c4120460fccf132c307ed9e993a0c68bb5ea4d3d86923cfea19"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/locales/en.json",
+      "bytes": 425285,
+      "sha256": "67570ce6f413c18fb19500e9ae87873f54653951d1653d428139c6ab6249f582"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/locales/i18n.ts",
+      "bytes": 3654,
+      "sha256": "2ed62b443f0d82ea6af5de5e17a37c0951542bc6f7127ca0787b91111c57f61f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/main.tsx",
+      "bytes": 458,
+      "sha256": "583bc438db6447c78ab443fc66ef31a88b1a88c999767df29643bc5fe5e42595"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/audio-resume.ts",
+      "bytes": 1130,
+      "sha256": "ec1bb49625fa143b76d4e4b1a9ce18d2aeba1074687f3c737d482ebb6a01406d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/audio.ts",
+      "bytes": 9981,
+      "sha256": "3cd329112c9865ff14323567fde686b2483bb3df85321f12da9c589e32b52219"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/battle-shake.ts",
+      "bytes": 2109,
+      "sha256": "ebaa094dd75bcd7cd838dcca55f6dd693d17efc541a9594293f2b5c9c155ef12"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/battle-timing.ts",
+      "bytes": 632,
+      "sha256": "7e7764a2a8ea97b4a33142bde3c304b8c8a2f6bac05b6a902596495770c0c833"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/bgm.ts",
+      "bytes": 4097,
+      "sha256": "2bab355e6e0591d50a44ec1cb79901972cc44178a596eaa8ee157a3a6ee3b8dd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/combat-audio.ts",
+      "bytes": 8624,
+      "sha256": "4d6913527b92ed49a57f8769687643f852203c0796ae088c01610603eb7e6983"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/combat-feedback.ts",
+      "bytes": 2403,
+      "sha256": "b65e0172927b337d8558fd53a6e6e54b0429f4edaf2b5dedf9fae41c2609821b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/combat-signatures.ts",
+      "bytes": 4200,
+      "sha256": "a830f531d6b4f7328a3b199654eab26330a04d1032b8011b457fc69dc817c7b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/combat-synth.ts",
+      "bytes": 14635,
+      "sha256": "0d04285801136b18a0f33f061c989f6a4ecb0755e90ec8cc8d5477bd459a0927"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/damage-flash.ts",
+      "bytes": 1120,
+      "sha256": "dbb64bddb6f30a7058113501668d6c0792146aa24df9c8836f755c537b27b194"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/fx-renderer.ts",
+      "bytes": 15449,
+      "sha256": "9113d718b2503ba1d89a870d5998e6fe55c4d0166fc1892d34c1df797c777ed5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/interaction-guards.ts",
+      "bytes": 1378,
+      "sha256": "42988f4efd25bea0c39a27b62c886d6087f87872c559531f0a2d8018c42e4313"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/presentation.ts",
+      "bytes": 3152,
+      "sha256": "faea9860cd20fc346a116304bcf6d38f44fd5a2f7c554054cd7993e1f5264f8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/protection-audio.ts",
+      "bytes": 490,
+      "sha256": "121c68c817cdcebf2e8b3c0165973acd9a271ab957b27b80359d9a7942508456"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/rabbit-battle-motion.ts",
+      "bytes": 2301,
+      "sha256": "4459e5b3fbc1a349ed9cde19496b629259625ae52f9dd04cfe63fe77e51733db"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/rabbit-loop-charge.ts",
+      "bytes": 1322,
+      "sha256": "d8009b888eeb32fe120ad25a2d5e8bd6a69556a58962ff42acca18d5c8379a62"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/rabbit-ultimate-audio.ts",
+      "bytes": 2472,
+      "sha256": "0b929954affea021f7085cf76cf0fe9474b2a7de32072335bafa71768fcca5e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/rabbit-volley-audio.ts",
+      "bytes": 4038,
+      "sha256": "204fa834093ac2f37dbc12af64c2532c381da3c040c9ed4924d7115e744fa74a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/save-backup.ts",
+      "bytes": 2183,
+      "sha256": "67b154b26fd95324cd2cdb5fd24f199591cd71f975328b52bfc570851ffb1628"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/save.ts",
+      "bytes": 26662,
+      "sha256": "3f10b620e72846420508c1e615bbf883a54ee7d243c1be604eead72a6c819a69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/sound-cues.ts",
+      "bytes": 1971,
+      "sha256": "104130c7448d73e63767c5ff68cd15981912368f81ad94aa803b7cafb836aaa7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/ultimate-audio.ts",
+      "bytes": 5592,
+      "sha256": "aa151876acebc1ee39b8b9a426146539213046330538c71ccdcd005e9ad3d797"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/ultimate-charge-audio.ts",
+      "bytes": 1311,
+      "sha256": "41c85c31728652997e4e0312784d440546d2816b06592ebb97f6a6c0e3f7e09e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/ultimate-choreography.ts",
+      "bytes": 10025,
+      "sha256": "a729d7c15766b7b170ff4a2121b4d5a8204883abaf46fea2ba5357b034c68ba5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/platform/ultimate-timing.ts",
+      "bytes": 1850,
+      "sha256": "e85882da4272d0088d72cb4bb90c5d2477c7664b1fa804a98b2c823586a98b24"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/screens/GameViews.tsx",
+      "bytes": 50908,
+      "sha256": "829c57b59882cd03689606b1fe2af9e4ce18efdd069fd6a1f85410a4a987bd7c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/AnimatedIllustration.tsx",
+      "bytes": 5787,
+      "sha256": "1500a2ae8ff46fd2f9a592fcd856ad513aee9e245146f9a9c40a6a064893e900"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/AtlasIcon.tsx",
+      "bytes": 1106,
+      "sha256": "5009986736cf6b42d915bfffd682b9ce70145956062b069d0bb92000f819a78e"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/BattleControlPad.tsx",
+      "bytes": 3203,
+      "sha256": "b66fe89771518da2a46c34616a26ceed0f379f6388141e857124dd10e347a7ac"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/BuildDemo.tsx",
+      "bytes": 5723,
+      "sha256": "16123293a7caa658a9b1096b85b5fdd1414ce511d2e5b08c70ff3df758084fb8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/BuildGoalSummary.tsx",
+      "bytes": 1817,
+      "sha256": "cccdb972a8dd25ce949248068a6dbbb2425ac2c205071022fcfffc7f4117dc69"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/BuildPlanner.tsx",
+      "bytes": 22368,
+      "sha256": "d27590c3f516c6a9d0906a8b34147da9accfa775851a330ceac7e581af2fff4b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/CampaignDungeons.tsx",
+      "bytes": 5260,
+      "sha256": "e276dadcb838bfffbac42ccc6f9a9c1fd8b1948ffc45d2b05261cad31ce40145"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/CampaignStory.tsx",
+      "bytes": 558,
+      "sha256": "1400ca7923ffed01cd0378c5a6ab02da8641d768170617121329374152be9f4a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/CharacterArtwork.tsx",
+      "bytes": 1423,
+      "sha256": "8c6c632c7f80f3a1bdc67ceefeeb74ebb05b967ce19292516faf905e5699c3f1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/ClockBossStatus.tsx",
+      "bytes": 1637,
+      "sha256": "4c14189329c04fdab82116446ed8ed205e5c63e1c6650dbd7fe5b9f5658b0c06"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/ClockworkBits.tsx",
+      "bytes": 3392,
+      "sha256": "51c775eee67af19913e99f67b43a781aea718a9c00b2fa96290edf72e1ad9ebe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/CombatFeedback.tsx",
+      "bytes": 8237,
+      "sha256": "e84c21e037d95738013eb8c24b992617a6be87c483fd4e0251a48be611a476fb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/CommandEmblem.tsx",
+      "bytes": 596,
+      "sha256": "b3759d64b0d2480274344e268d11334243724b742ec693a342b5878c6470eddd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/EnemyCarousel.tsx",
+      "bytes": 14279,
+      "sha256": "f2ab1e727e1b854bc075eb41ca09ca323e6f69e6ca14e7b00ab6db0615dbf6be"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/EventDungeons.tsx",
+      "bytes": 4584,
+      "sha256": "2efe5ed8c3db9a09371d0b1c4ae67dff8d3b8091a647862076dbed1cd87056c9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/FairyGuide.tsx",
+      "bytes": 12307,
+      "sha256": "7ce3a873abc49a88ccb97cd64ff3655c403ee916ba03f8dd5685237937d2fc13"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GachaResults.tsx",
+      "bytes": 6816,
+      "sha256": "dd489232c8f631528ace06debbd3d45d5f170213dba68b33e3572d476bd756cf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GachaReveal.tsx",
+      "bytes": 3643,
+      "sha256": "f05022a61a62a05928fadde03f61cdff723f962cf2a72637f6718f07c05d390d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GachaShowcase.tsx",
+      "bytes": 3668,
+      "sha256": "ad2b619f155464fa1645b7bd8bd248bd81894bdcc24efb55020e972d8a02e017"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GameMedia.tsx",
+      "bytes": 1274,
+      "sha256": "7cce31eee54fbad99f3d0c4b807a09369f02f4361b50b2ff4f78cd12ac287e23"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GamePortal.tsx",
+      "bytes": 504,
+      "sha256": "27407e9b469944e27a7866d87db716becfdd6ebd248c4275166a7dab7018e5ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/GoldExchange.tsx",
+      "bytes": 4011,
+      "sha256": "69843badfee59b5028df6642825cb35af2907b4c90e8882891593430321c2308"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/HomeArtwork.tsx",
+      "bytes": 3144,
+      "sha256": "0e0d16a1214587df621dfbbd7f608e42da132933d6d2271ac78fa4f0e7bbe1f0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/InventorySection.tsx",
+      "bytes": 861,
+      "sha256": "06f804e7c6f41c07ddeb702c2f33c5ca045079cb73dd982abf1c73fa0d585e2d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/IvoryTower.tsx",
+      "bytes": 4229,
+      "sha256": "246d1570b777800f614bfe3e1134f75e74b0b07e2e38f0c9d720de1846ab41e9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/LanguageSwitch.tsx",
+      "bytes": 642,
+      "sha256": "feccae5276c26d6b56feb59583f40991e96192169e2aadd338e5fe92cb8c8947"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/LivingBattleFrame.tsx",
+      "bytes": 9404,
+      "sha256": "d2a6845c8818082807dead911514a2cab1a03688fd7ffa8f137d0cc27655a430"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/MemoryGemFind.tsx",
+      "bytes": 4318,
+      "sha256": "292d892c1c40f7f3df7b51a15d4254b76fee0a1814fd3694cb4758d08bd8dce3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/MemoryGemTier.tsx",
+      "bytes": 323,
+      "sha256": "07e270b8911f7b71274ed6adc5915784d3a1f268de48a628eadb55e472a5decb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/MemoryGems.tsx",
+      "bytes": 27985,
+      "sha256": "ddcda41ac32500ff5ffd953a5af2b1248924c76f9066fdcca2a4d6203e2a0ac5"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/MenuEmblem.tsx",
+      "bytes": 510,
+      "sha256": "03f3fdda851ae046be71b730ff24e8a806637d56a0cdeb78d71c1ecde282c542"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/NoticeSurface.tsx",
+      "bytes": 1357,
+      "sha256": "3725fd70f45df0398e2102a11ec75d8ddbb8ae35d47aecde0bce5407b7ac1fde"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/PartyCommandDial.tsx",
+      "bytes": 16115,
+      "sha256": "d6b930ea30f955356448e0e68e9cde0935a1644d2eabeaab57c2a14d422ce648"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/PartyFormation.tsx",
+      "bytes": 4149,
+      "sha256": "683fa86ea24a6f0d7c1a0f92aa96088521c4e9d24e1e521f6f2aac983aca6faa"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/PartyMemberActions.tsx",
+      "bytes": 1239,
+      "sha256": "a43f74b3044b53a0f8fe196a6ba10d242cc8e85d149465b676ae7033806e4f6d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/PortraitArt.tsx",
+      "bytes": 1685,
+      "sha256": "6d6576f603754f8b60ea6743940e7dfe5bc5e412a3bd64def36181810b18a8ff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/QuickGuide.tsx",
+      "bytes": 2100,
+      "sha256": "5fb15dcda5af4a9d997351e5666f2810e6eaf74432380e612d81949bb9e85f58"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/RarityFrame.tsx",
+      "bytes": 880,
+      "sha256": "a6e00af64d353da55896289f617071fdd0e39efb4cccdfb662bd0fe31b3dbfe6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/SaveBackup.tsx",
+      "bytes": 3711,
+      "sha256": "5ec88b811640ef68cdb1587a84a31f1832ff7200513d449b038296d14137709d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/SceneAtmosphere.tsx",
+      "bytes": 590,
+      "sha256": "124bfcbd4a0a10f0eeaeb6518947abecdc3d3253b86b5054d7fc58de79f0970d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/SceneEffects.tsx",
+      "bytes": 4361,
+      "sha256": "7afca65d1e19bb8f51420d8823cbb753bc4d1bcaa5155c9692f34d264b410e1c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/Sigils.tsx",
+      "bytes": 2810,
+      "sha256": "77ee3751355dcba97d064cb676e7e11d71cdc4681381ffb2bddf84466decbe8d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/StoryAwakening.tsx",
+      "bytes": 4479,
+      "sha256": "5c3ecea7ca837e33be3eca56b19cc96ccf36cf97f2e9e8025b7b87d528e2a3b2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/TitleBirthScene.tsx",
+      "bytes": 2894,
+      "sha256": "78fdc91a97e768d1a641a59a30473a7bcadbba66ee9368d6467796ae075d764a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/TitleScreen.tsx",
+      "bytes": 2499,
+      "sha256": "c69f7e376ea85a218b216d479c865a68d8cca148f2543aa6df07d2e62c9436fe"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/TownNavigation.tsx",
+      "bytes": 1433,
+      "sha256": "0940740d43eef115e65f8d94a83e5d65dd0265818ab865f9582b1952df04843f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/UltimateCutIn.tsx",
+      "bytes": 11656,
+      "sha256": "49a0cf7daf52522468a7d4dd5eaa4f50cd758586f2649fa1974d53ef51c0b968"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/UltimateIntroFx.tsx",
+      "bytes": 2401,
+      "sha256": "67de9218e13e2cde9f3b0933761391dd85258667baecba67b8a705d50b3a2bb7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/UltimateMeter.tsx",
+      "bytes": 744,
+      "sha256": "4a637f22f82611704e3f6b81f54a4aeeca9a0eb143e0b39bfa3cdebf06666699"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/UnitEffects.tsx",
+      "bytes": 4029,
+      "sha256": "5e8798cd06a7abaabad7d311327f5201705c684caa4c91aad05a9cd918321f1d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/VisualNovel.tsx",
+      "bytes": 7592,
+      "sha256": "0c9afbc566f9e52237aaa46700adab964ec68861f5fc16d47d3c94c79228c375"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/XRGacha.tsx",
+      "bytes": 2883,
+      "sha256": "ea1c7e07e4e19778076362906e0bfae96fc2e263dc4be6640cc2b125f848b299"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/animated-illustration.css",
+      "bytes": 1055,
+      "sha256": "9ca10b248198857aec0565629d42b9c4b986eafc8950170a246abd9ee56dff52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/animation-settings.tsx",
+      "bytes": 731,
+      "sha256": "7e55dd1561220a7158dfb33c5a70c8ce2109901191fbce0c87841a67aba8b470"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/atlas-icon.css",
+      "bytes": 123,
+      "sha256": "63a9f8f47d85a61ad551336cc0bb5b4b7c127308ef3ff429e93c7225aa7375c4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/battle-control-pad.css",
+      "bytes": 5923,
+      "sha256": "240996c94da4e0cdafaa0ada32d857e9cf314d561e06a8b8934aadee39bd4ba0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/battle.css",
+      "bytes": 7483,
+      "sha256": "f3eaaf6d938c73f73af6a27968fc65c85b1dec99a640790bc68ce7978c5ed4de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/build-demo.css",
+      "bytes": 4309,
+      "sha256": "30c12a64a7a656625f3c4ca9cc082a90293b37580178855a5c945419df99c965"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/build-goal-summary.css",
+      "bytes": 702,
+      "sha256": "24bb4bc18820d1c2086bcfcbbb83a84dbe07723848318199cc925b62248537a3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/build-planner.css",
+      "bytes": 10677,
+      "sha256": "c1dc8a4e26e2f56cedf95deca5ab88b5fe8b21fbe96d966342448fd02cb82f22"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/campaign-dungeons.css",
+      "bytes": 3021,
+      "sha256": "d76bef4829a740a289ed17e9f417b54c65cb96ca0a2dc6c5ec5c784008af4a20"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/character-artwork.css",
+      "bytes": 996,
+      "sha256": "6cc4b238681e72c2066873cb68671ca3025aa4e10de15110bec26fa96ff3ae52"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/clock-boss.css",
+      "bytes": 1664,
+      "sha256": "dc1348f3fe8d540b06a3c8ad60a34db698d6a04f50bce4410a79f1f4894d423f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/clockwork-bits.css",
+      "bytes": 2959,
+      "sha256": "0190392033761f09a42d5bdaae3763514ed65a33f1806a85b441ab38bbca0cbf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/close-button.css",
+      "bytes": 1025,
+      "sha256": "a4541bd22d4f6c7a6bb54e0371ee450423576945583a0ed163214df11b46657b"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/combat-feedback.css",
+      "bytes": 3090,
+      "sha256": "77eba46cfdacea540d011ef85933ba882de559d6dd9a791520c3f7ada64b8c3d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/command-emblem.css",
+      "bytes": 63,
+      "sha256": "b3846214cfb806aa3195a34fd4923973356318cc46e70ed11f2064c52bc8cf02"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/enemy-carousel.css",
+      "bytes": 8886,
+      "sha256": "660c192a5581dd5179a3e55ff0c4694eea0e6f05b83e2dd04f756b7bb2f335b3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/event-dungeons.css",
+      "bytes": 4017,
+      "sha256": "ba32c273629e5797da891156a56a6258a8b4e2bdfdf2d771b02ac2a6307c96eb"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/fairy-guide.css",
+      "bytes": 2972,
+      "sha256": "4da3f8320ef5e10b8f3757057fe33b570bfdf647427eae176b83830d89b1c27a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/fairy-tutorial-data.ts",
+      "bytes": 10421,
+      "sha256": "dac7a45eb43cfeba90d124837d496b09f1b5a3089f341f5b4bbc9563b49e87ca"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/gacha-results.css",
+      "bytes": 7919,
+      "sha256": "634a54c01e80c24741ba8e1d5d9567035db4af0079750761b42e700161dddae0"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/gacha-reveal.css",
+      "bytes": 6550,
+      "sha256": "94af2bf599fa216f7115bdaa1e1abe4eeb41992173de4d54af41072ae435f081"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/gacha-showcase.css",
+      "bytes": 6803,
+      "sha256": "70a4e380ca940422ca58c343aaa7e03423e0585190f1d9cecd973041dd25bb31"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/game-frame.css",
+      "bytes": 1867,
+      "sha256": "9062dac5021b37794357495f49f954e1c52fa63140bf0d7319432ec7452781da"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/game-interaction.css",
+      "bytes": 588,
+      "sha256": "0ab0ed611c7631a6cd1abbba719fd59a167e1cc949262fb82c1df2e074947b78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/gold-exchange.css",
+      "bytes": 2380,
+      "sha256": "2af715d07aab5dddec2d01ab67da101738ff66b85483b36d42ea7c75adc66c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/home-artwork.css",
+      "bytes": 2432,
+      "sha256": "9c00b11ce5c74106a799a34c33df6eeddeefc7ae5a0f2efe36b3f0db48b71bcf"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/home.css",
+      "bytes": 8943,
+      "sha256": "5c923cf137d638fa338fdfb898cbedb70c1475cfad7ba6feb2bb1008823317f3"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/index.tsx",
+      "bytes": 13749,
+      "sha256": "cc0053ef0ac80ac515cdb0618baf5a3d99f00a02278ed7cef2c5ac27e8316f6a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/interaction.ts",
+      "bytes": 1061,
+      "sha256": "70c6e9f824d79803a42a047bf97573f41d734cde5a559859c66e6c831f355c10"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/inventory-section.css",
+      "bytes": 1368,
+      "sha256": "fdf2cb6be3b9cb8719ef539dc9e9c5ac966f3c0cda525c516f5f3b37e8b2d65c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/ivory-tower.css",
+      "bytes": 2573,
+      "sha256": "addef098202d4d688f492130463b8232fb8533633c83d1cd63aa187f9acaa8f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/living-battle-frame.css",
+      "bytes": 6066,
+      "sha256": "80f3626be245c077353d261f32ca43af50d58da821bcc3319b73c16a92ff6d2f"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/materials.css",
+      "bytes": 572,
+      "sha256": "40564e705a27d622737266c252fbe15b184902fb56af547230d3ce6dfec8bd78"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/memory-gem-find.css",
+      "bytes": 3151,
+      "sha256": "41eae75c7a5080e4078f958e70e402f7b9d264edfd41c76233fd0ea18a6a25bd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/memory-gem-stacks.ts",
+      "bytes": 1535,
+      "sha256": "2b0a9230b07cb23d988a5c29640a4cac407316b39bc8bc084c6156f3d17780a6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/memory-gem-tier.css",
+      "bytes": 1157,
+      "sha256": "e286c29e6eafb1607cad3e666ea56b47973482ba0624a3e3f68cc07243d703cd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/memory-gems.css",
+      "bytes": 19301,
+      "sha256": "9ac797b478c5d79f6f94553985537377bc8b87531fd57ce0eb5e209a2327af88"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/moonlit-theme.css",
+      "bytes": 11498,
+      "sha256": "646f132226d04f470b94d08214b18434779d4b5a4edc12e7af6adc635fbabef1"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/notice-surface.css",
+      "bytes": 2540,
+      "sha256": "1b99b4113162d529d0273bc02e1f19db6a7bf25002df65a71d61a406ffdd6473"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/party-command-dial.css",
+      "bytes": 9440,
+      "sha256": "65892d0b58e8eb65ea32f0561620ba199d4337cfb8aafd2ecf967364ff4e5285"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/party-formation.css",
+      "bytes": 2560,
+      "sha256": "27b57ac422a4ede9b27bd1f76070c1a8c1c8d1bd9471a9b56400c5243e1464ec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/party-member-actions.css",
+      "bytes": 498,
+      "sha256": "b683dc0b356e007f8f361cefe1559f6a9cd3a243c5b18ccbda369be0539f8c0d"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/portrait-art.css",
+      "bytes": 753,
+      "sha256": "e832be0bdf0282bfd4f4f2aed8d68cfc89577341d92de670504e1fddb4e0b9b8"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/rarity-frame.css",
+      "bytes": 3141,
+      "sha256": "8f28016d396daea0989c892d09bedb8d575372e46b55cee09081fe2f2cb87fec"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/release-prep.css",
+      "bytes": 2165,
+      "sha256": "88af5a1da6f1cd6e9f46c5070363f1ff5f4e8d1f841671f3d8b82553b8a9beed"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/scene-effects.css",
+      "bytes": 1041,
+      "sha256": "5909ea5887824fc1a3f0bf0ca34a45a0dd1f7c92999cb7450dfa977c0317cbf2"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/screens.css",
+      "bytes": 28165,
+      "sha256": "20c34c06d4c8dadcd23bf7ce4382a57c33a159b556a5c0b66912e8b2423c539a"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/sigils.css",
+      "bytes": 387,
+      "sha256": "feaf3e5dcd52296a51639b421abce3b8b5d35c11de133f6f5ab606863ee54cff"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/story-awakening.css",
+      "bytes": 2735,
+      "sha256": "adb0bde13d33b2cd9278b7f2173094a314ab55ff535a071037958e9a69c852de"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/styles.css",
+      "bytes": 38854,
+      "sha256": "bbeb5e5b417c9938bfd3b88970311bcb75b7f9a1f8e0b2d881806beb033836f4"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/title-birth-rig.ts",
+      "bytes": 6344,
+      "sha256": "9178b0a666932c1c15946502cc0335b6db7fced51a4c371a96b6012e1430dc2c"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/title-character-video.ts",
+      "bytes": 3521,
+      "sha256": "0a034d5ce4269652ee47e745a28c5d1e2355c2e94026344491c7edf376322940"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/title-screen.css",
+      "bytes": 8242,
+      "sha256": "980d65dd8541e24e6dc46715ad6d66dbf9488957c39a5abb77b5f95cd5e97fbd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/tokens.css",
+      "bytes": 900,
+      "sha256": "d0cc15f5260c633108c19b6437434d1be2c526c642b08c54a4632b100fa94367"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/town-navigation.css",
+      "bytes": 1384,
+      "sha256": "95bbf6994d68a5f4e3b532bb1fca63ee465f36386e1e57cfd87e3ad32d803f73"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/typography.css",
+      "bytes": 224,
+      "sha256": "f3b8faa9ad75b8c8bdb60be9cf196ba16d65a74fe4e4b998891cd159987d62b9"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/ultimate-pixi.ts",
+      "bytes": 20253,
+      "sha256": "6252a8bfc99391bbb1468e8935fa9d32e6197e3c9d312beafc99d6e841bcf003"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/ultimates.css",
+      "bytes": 10131,
+      "sha256": "fce28926b93bd6e089f5f025d11150aff18be24d730bfb907e83a0f0dff91fd7"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/unit-effects.css",
+      "bytes": 3067,
+      "sha256": "2a6d693fbd72417c29c8826e896c7e845410855b3816fd897233fdbeb6a10c86"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/visual-novel.css",
+      "bytes": 4841,
+      "sha256": "88d627bbd6a6add8335e285f51a438b0b028651726674939c47dabc56f120522"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/sandbox/src/ui/xr-gacha.css",
+      "bytes": 1341,
+      "sha256": "9c7c8ef94c4f7e434087d2a1d7911c021eeb2661455dedef0c139fd0118abfc6"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/screen.json",
+      "bytes": 343089,
+      "sha256": "ac75bc56884233c2bb9221109af7c4dfeb3276a1154e63791c2be81afaa595dd"
+    },
+    {
+      "path": "artifacts/rescue-sequel/skills/stage2/stage2.patch",
+      "bytes": 6654,
+      "sha256": "c745699c964227f1678eb096b4081be45f314e7b608cd264d46b9ae3b52218e7"
+    }
+  ]
+}

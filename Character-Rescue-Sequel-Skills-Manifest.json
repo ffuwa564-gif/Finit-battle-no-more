@@ -1,0 +1,516 @@
+{
+  "proposalOnly": true,
+  "source": "616a074",
+  "engine": "artifacts/rescue-sequel/skills/sandbox/src/domain/engine.ts",
+  "interface": {
+    "configure": "configurePrototype(mode,targets=[],candidateId=\"\")",
+    "stats": "getPrototypeStats()",
+    "opening": "applyPrototypeOpening(battle,content) is no-op"
+  },
+  "modes": [
+    {
+      "id": "flat-gem",
+      "name": "灯芯の補助石",
+      "kind": "gem",
+      "candidateGem": "echo-shard",
+      "targetScope": "R/SR and base constant<=1.4; active wearer only",
+      "description": "echo attack reference = max(own unbuffed battle attack after leader stat bonus,min(65,own unbuffed battle attack after leader stat bonus+24)); native cooldown3 and35% nonrecursive echo; fixed crafted T3 proxy power80/traitnone/pure only; no opening barrier The65/70 bound caps the substituted reference floor, NOT final damage or buff/acceleration. Original own attack is never reduced.",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "elaine",
+          "name": "エレイン"
+        },
+        {
+          "id": "liora",
+          "name": "リオラ"
+        },
+        {
+          "id": "seris",
+          "name": "セリス"
+        },
+        {
+          "id": "noelle",
+          "name": "ノエル"
+        },
+        {
+          "id": "pale-wolf",
+          "name": "白霧の狼"
+        },
+        {
+          "id": "stone-drake",
+          "name": "石燐の幼竜"
+        },
+        {
+          "id": "hollow-keeper",
+          "name": "虚ろの守り手"
+        },
+        {
+          "id": "moon-moth",
+          "name": "月翅の蛾"
+        },
+        {
+          "id": "veil-priestess",
+          "name": "帳の巫女"
+        },
+        {
+          "id": "thorn-witch",
+          "name": "荊の魔女"
+        },
+        {
+          "id": "lucielle",
+          "name": "リュシエル"
+        },
+        {
+          "id": "nike",
+          "name": "ニケ"
+        },
+        {
+          "id": "hestia",
+          "name": "ヘスティア"
+        },
+        {
+          "id": "hebe",
+          "name": "ヘベ"
+        },
+        {
+          "id": "flora-standard",
+          "name": "フローラ"
+        },
+        {
+          "id": "hestia-standard",
+          "name": "ヘスティア"
+        },
+        {
+          "id": "hebe-standard",
+          "name": "ヘベ"
+        },
+        {
+          "id": "eos-standard",
+          "name": "エオス"
+        },
+        {
+          "id": "nike-standard",
+          "name": "ニケ"
+        },
+        {
+          "id": "ukanomitama-standard",
+          "name": "ウカノミタマ"
+        },
+        {
+          "id": "iris",
+          "name": "アメノウズメ"
+        },
+        {
+          "id": "iwanagahime",
+          "name": "イワナガヒメ"
+        },
+        {
+          "id": "kukurihime",
+          "name": "ククリヒメ"
+        },
+        {
+          "id": "haniyasu",
+          "name": "ハニヤスヒメ"
+        },
+        {
+          "id": "tikka",
+          "name": "ティッカ"
+        }
+      ],
+      "potentialCandidateCount": 25
+    },
+    {
+      "id": "shared-gem",
+      "name": "分灯の共鳴石",
+      "kind": "gem",
+      "candidateGem": "echo-shard",
+      "targetScope": "R/SR and base constant<=1.4; active wearer only",
+      "description": "echo attack reference = max(own unbuffed battle attack after leader stat bonus,min(70,floor(mean other living ally unbuffed battle attack after leader stat bonus*0.9))); native cooldown3 and35% nonrecursive echo; fixed crafted T3 proxy power80/traitnone/pure only; no opening barrier The65/70 bound caps the substituted reference floor, NOT final damage or buff/acceleration. Original own attack is never reduced.",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "elaine",
+          "name": "エレイン"
+        },
+        {
+          "id": "liora",
+          "name": "リオラ"
+        },
+        {
+          "id": "seris",
+          "name": "セリス"
+        },
+        {
+          "id": "noelle",
+          "name": "ノエル"
+        },
+        {
+          "id": "pale-wolf",
+          "name": "白霧の狼"
+        },
+        {
+          "id": "stone-drake",
+          "name": "石燐の幼竜"
+        },
+        {
+          "id": "hollow-keeper",
+          "name": "虚ろの守り手"
+        },
+        {
+          "id": "moon-moth",
+          "name": "月翅の蛾"
+        },
+        {
+          "id": "veil-priestess",
+          "name": "帳の巫女"
+        },
+        {
+          "id": "thorn-witch",
+          "name": "荊の魔女"
+        },
+        {
+          "id": "lucielle",
+          "name": "リュシエル"
+        },
+        {
+          "id": "nike",
+          "name": "ニケ"
+        },
+        {
+          "id": "hestia",
+          "name": "ヘスティア"
+        },
+        {
+          "id": "hebe",
+          "name": "ヘベ"
+        },
+        {
+          "id": "flora-standard",
+          "name": "フローラ"
+        },
+        {
+          "id": "hestia-standard",
+          "name": "ヘスティア"
+        },
+        {
+          "id": "hebe-standard",
+          "name": "ヘベ"
+        },
+        {
+          "id": "eos-standard",
+          "name": "エオス"
+        },
+        {
+          "id": "nike-standard",
+          "name": "ニケ"
+        },
+        {
+          "id": "ukanomitama-standard",
+          "name": "ウカノミタマ"
+        },
+        {
+          "id": "iris",
+          "name": "アメノウズメ"
+        },
+        {
+          "id": "iwanagahime",
+          "name": "イワナガヒメ"
+        },
+        {
+          "id": "kukurihime",
+          "name": "ククリヒメ"
+        },
+        {
+          "id": "haniyasu",
+          "name": "ハニヤスヒメ"
+        },
+        {
+          "id": "tikka",
+          "name": "ティッカ"
+        }
+      ],
+      "potentialCandidateCount": 25
+    },
+    {
+      "id": "area-mark",
+      "name": "星図の露出",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "ordinary personal area hitting>=2 enemies leaves strength30 defense debuff through next round on surviving targets; preserves stronger effect",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "noelle",
+          "name": "ノエル"
+        },
+        {
+          "id": "moon-moth",
+          "name": "月翅の蛾"
+        }
+      ],
+      "potentialCandidateCount": 2
+    },
+    {
+      "id": "overheal",
+      "name": "余光の包帯",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "ordinary personal heal/mend_pair excess raw healing*0.6 -> barrier capped min60,20% recipient maxHP; max with existing, through next round Shield helper replaces only if new capped amount>old active amount; expiry=max(old expiry,next round). Otherwise amount and expiry remain unchanged. This single native barrier layer can inherit an existing longer duration.",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "veil-priestess",
+          "name": "帳の巫女"
+        },
+        {
+          "id": "hebe",
+          "name": "ヘベ"
+        },
+        {
+          "id": "flora-standard",
+          "name": "フローラ"
+        },
+        {
+          "id": "hebe-standard",
+          "name": "ヘベ"
+        }
+      ],
+      "potentialCandidateCount": 4
+    },
+    {
+      "id": "aftercare",
+      "name": "祈りの余韻",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "ordinary personal heal/mend_pair grants barrier min55,18% recipient maxHP; max with existing, through next round; no charge Shield helper replaces only if new capped amount>old active amount; expiry=max(old expiry,next round). Otherwise amount and expiry remain unchanged. This single native barrier layer can inherit an existing longer duration.",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "veil-priestess",
+          "name": "帳の巫女"
+        },
+        {
+          "id": "hebe",
+          "name": "ヘベ"
+        },
+        {
+          "id": "flora-standard",
+          "name": "フローラ"
+        },
+        {
+          "id": "hebe-standard",
+          "name": "ヘベ"
+        }
+      ],
+      "potentialCandidateCount": 4
+    },
+    {
+      "id": "guard-counter",
+      "name": "守りの返し",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "after actual intercepted ordinary enemy HP damage and surviving, one counter per guardian per round, reference attack min60,20% guardian maxHP; native armor/barrier/guard apply; no counter recursion; no bossStrike or bits hook",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "stone-drake",
+          "name": "石燐の幼竜"
+        },
+        {
+          "id": "hollow-keeper",
+          "name": "虚ろの守り手"
+        },
+        {
+          "id": "haniyasu",
+          "name": "ハニヤスヒメ"
+        }
+      ],
+      "potentialCandidateCount": 3
+    },
+    {
+      "id": "control-fallback",
+      "name": "再診の呪印",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "ordinary personal ailment failed (including random miss) -> strength20 defense debuff next round, max with stronger; no effect on success; ward/existing/random failures counted separately; not jam",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "hollow-keeper",
+          "name": "虚ろの守り手"
+        },
+        {
+          "id": "moon-moth",
+          "name": "月翅の蛾"
+        },
+        {
+          "id": "iris",
+          "name": "アメノウズメ"
+        },
+        {
+          "id": "mizuhanome",
+          "name": "ミヅハノメ"
+        }
+      ],
+      "potentialCandidateCount": 4
+    },
+    {
+      "id": "buff-preserve",
+      "name": "重ならない祈り",
+      "kind": "skill",
+      "candidateGem": null,
+      "targetScope": "frozen previous bottom20 and current candidate only",
+      "description": "ordinary personal buff cannot lower existing stronger buff and duration; no free extension beyond max old/native duration; no added gauge Only strictly stronger previous buffs are protected; equal-strength expiry shortening is not fixed.",
+      "ready": true,
+      "potentialCandidates": [
+        {
+          "id": "lucielle",
+          "name": "リュシエル"
+        },
+        {
+          "id": "eos",
+          "name": "エオス"
+        },
+        {
+          "id": "ukanomitama-standard",
+          "name": "ウカノミタマ"
+        },
+        {
+          "id": "iris",
+          "name": "アメノウズメ"
+        }
+      ],
+      "potentialCandidateCount": 4
+    }
+  ],
+  "warnings": [
+    "No game main or live content changed",
+    "Fixed bottom20 skill targets are a research instrument for individualized redesign, not a proposed invisible equip restriction",
+    "Stone cutoff is explicit but still creates an eligibility cliff; exact UI/acquisition unresolved",
+    "Effects keep the original ordinary skill action and cooldown; no permanent stats changed",
+    "No claim that these are all possible rescue designs"
+  ],
+  "fixedTargetIds": [
+    "moon-moth",
+    "noelle",
+    "pale-wolf",
+    "nike",
+    "nike-standard",
+    "kukurihime",
+    "tikka",
+    "mizuhanome",
+    "persephone-standard",
+    "veil-priestess",
+    "hebe",
+    "hebe-standard",
+    "flora-standard",
+    "ukanomitama-standard",
+    "eos",
+    "iris",
+    "lucielle",
+    "stone-drake",
+    "hollow-keeper",
+    "haniyasu"
+  ],
+  "getPrototypeStatsInterpretation": {
+    "stoneReference": "one per boosted primary gem hit; never native echo tick",
+    "areaMark": "one per surviving marked recipient, not per action",
+    "eligibleHealTargets": "one per recipient of an ordinary personal heal/mend_pair",
+    "overhealShield/aftercareShield": "one per successful amount increase, existing stronger barrier can suppress it",
+    "guardCounter": "one actual intercepted HP-hit-triggered counter per round; no shield-only, bossStrike, bits or recursion",
+    "controlWardResist/controlExistingResist/controlRollResist": "reason subdivisions for failed ordinary ailment, not jam",
+    "fallbackDebuff": "one per failed ordinary ailment; success gives zero",
+    "preservedBuff": "only strictly stronger existing buff protected"
+  },
+  "engineSha256": "59a5905e87fa6f62973fb69e1467a303b73a132d1f1f61033a399a8fa37a5ee8",
+  "mechanismQA": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "flat stone adds an active reference without persistent stat changes",
+        "passed": true
+      },
+      {
+        "name": "shared stone requires living peers and bounded reference",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects high-tier",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects high-constant",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects swift",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects high-tier",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects high-constant",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects swift",
+        "passed": true
+      },
+      {
+        "name": "area marking needs multiple enemy targets and preserves stronger debuffs",
+        "passed": true
+      },
+      {
+        "name": "overheal is capped and never stacks or downgrades existing barrier",
+        "passed": true
+      },
+      {
+        "name": "aftercare can trigger without overhealing and keeps limits",
+        "passed": true
+      },
+      {
+        "name": "guard counter fires once despite two intercepted HP hits",
+        "passed": true
+      },
+      {
+        "name": "absorbed guard hits do not trigger a counter",
+        "passed": true
+      },
+      {
+        "name": "control fallback discriminates ward and random failures; successes get nothing",
+        "passed": true
+      },
+      {
+        "name": "buff preservation protects strong value and old expiry without extra extension",
+        "passed": true
+      },
+      {
+        "name": "individual skill prototypes do not apply to an unselected candidate",
+        "passed": true
+      },
+      {
+        "name": "active stone and custom content remain active after wave transition",
+        "passed": true
+      },
+      {
+        "name": "documented limitation: equal strength previous buff duration is not protected",
+        "passed": true
+      }
+    ],
+    "scope": "micro fixtures deliberately set trigger conditions; not representative win-rate tests"
+  },
+  "nativeParity": {
+    "passed": true,
+    "trials": 108,
+    "offEqualsNative": true,
+    "includesTower10Multiwave": true
+  }
+}

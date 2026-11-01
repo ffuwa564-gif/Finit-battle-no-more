@@ -108,3 +108,19 @@ Zundamon and Shikoku Metan discuss the current roster and proposal-only rescue m
 
 Zundamon and Shikoku Metan discuss a hardcore 100-floor redesign using all71 existing combat forms as main enemies, including69 currently obtainable forms, Chrona and unreleased-recruit Astraea. The content-only prototype is not release ready. Native comparisons and counter screening total49,340 fights. The previous fixed build has per-floor success prefixes59/34/20 under current/roster-pattern changes at old difficulty/full raised curve; these are not continuous climbs or global best records. A separately validated offensive counter won21F60/100, but35F remained0/100 in the selected counter. New enemy gauges/personal ultimates/finite-heal windows are design-only and excluded from measurements. Game main and itch.io were not changed.
 
+## Character rescue workshop II — skills, leaders, stones and failed hypotheses
+
+- [33:43 discussion video (720p)](STILLVEIL-Character-Rescue-Sequel-720p.mp4)
+- [Research notes and limits](Character-Rescue-Sequel-Notes.txt)
+- [29-page figures PDF](Character-Rescue-Sequel-Figures.pdf)
+- [69-form comparison CSV](Character-Rescue-Sequel-Comparison.csv)
+- [Existing stones and auxiliary roles CSV](Character-Rescue-Sequel-Existing-Gems-Comparison.csv)
+- [Healer rebuild CSV](Character-Rescue-Sequel-Healer-Rebuild.csv)
+- [YouTube description and chapters](Character-Rescue-Sequel-YouTube-description.txt)
+- [Thumbnail](Character-Rescue-Sequel-Thumbnail.jpg)
+- [Reproducible research archive](Character-Rescue-Sequel-Research.tar.gz)
+- [Archive source index and checksums](Character-Rescue-Sequel-Source-Index.json)
+- [Dataset execution ledger](Character-Rescue-Sequel-Trial-Ledger.json)
+
+Zundamon and Shikoku Metan continue the character-rescue discussion. Six research agents plus integration explored6 ordinary-skill,2 stone and4 leader prototypes, then diagnosed adverse shielding interactions, rebuilt healer ideas and tested existing stones, role reassignment and shatter-aware orders. The final comparison dataset comprises117,040 simulated battle executions; mechanism QA and reused result rows are excluded from that count. A restricted T3 stone reduced within-role score SD from5.030 to4.900 (~2.6%) with modest gains. Leader opportunity costs, failed deputy-equipment choices, and individual healer regressions are disclosed. This is finite-context exploratory research, not exhaustive optimal balance or a simultaneous roster rollout. Base character constants, game main and itch.io remain unchanged; proposed new effects are unimplemented in the published game.
+

@@ -1,0 +1,178 @@
+{
+  "proposalOnly": true,
+  "source": "616a074",
+  "stage1Unchanged": true,
+  "engineSha256": "b58dc90cadcd920f1e1618777a60bf5b39188ecc11afde0ebce95a561c991a30",
+  "modes": [
+    {
+      "id": "aftercare-heal",
+      "name": "祈りの後押し",
+      "description": "候補本人の通常heal/mend_pairの回復後、最大HP10%・上限35を追加回復。障壁は付けない。通常技能は固定下位20のうち候補1名だけ。"
+    },
+    {
+      "id": "thin-shield-ai",
+      "name": "薄い障壁の更新AI",
+      "description": "AIが障壁の対象を選ぶ時、最大HP20%未満の障壁は保護完了と扱わない。全味方の障壁選択の方針変更でありキャラ固有救済ではない。追加の回復障壁なし。"
+    },
+    {
+      "id": "aftercare-upgrade",
+      "name": "祈りの余韻＋更新AI",
+      "description": "第1試案aftercareに上記薄盾更新AIを併用。AI単独との比較で救済効果と方針変更効果を分離する。"
+    },
+    {
+      "id": "aftercare-gauge",
+      "name": "被弾充填だけ補う反実仮想",
+      "description": "診断専用。aftercare由来障壁がなければHP被害が発生した同じ一撃を、仮想の既存障壁残量で追跡し、完全吸収時に失った被弾10充填だけ補う。通常の新スキルとして採用を提案する案ではない。AIは旧まま。"
+    }
+  ],
+  "subjects": [
+    "veil-priestess",
+    "hebe",
+    "hebe-standard",
+    "flora-standard"
+  ],
+  "contexts": "2 existing parties x event whiteflower / tower1 / tower10",
+  "screenSeeds": [
+    12001,
+    12002,
+    12003,
+    12004,
+    12005,
+    12006,
+    12007,
+    12008,
+    12009,
+    12010
+  ],
+  "heldoutSeeds": [
+    15001,
+    15002,
+    15003,
+    15004,
+    15005,
+    15006,
+    15007,
+    15008,
+    15009,
+    15010,
+    15011,
+    15012,
+    15013,
+    15014,
+    15015,
+    15016,
+    15017,
+    15018,
+    15019,
+    15020,
+    15021,
+    15022,
+    15023,
+    15024,
+    15025,
+    15026,
+    15027,
+    15028,
+    15029,
+    15030
+  ],
+  "choice": "All4 stages are compared; none selected on heldout. No stage1 seeds reused. Diagnostic gauge mode is not a gameplay-ready recommendation.",
+  "microQA": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "flat stone adds an active reference without persistent stat changes",
+        "passed": true
+      },
+      {
+        "name": "shared stone requires living peers and bounded reference",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects high-tier",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects high-constant",
+        "passed": true
+      },
+      {
+        "name": "flat-gem rejects swift",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects high-tier",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects high-constant",
+        "passed": true
+      },
+      {
+        "name": "shared-gem rejects swift",
+        "passed": true
+      },
+      {
+        "name": "area marking needs multiple enemy targets and preserves stronger debuffs",
+        "passed": true
+      },
+      {
+        "name": "overheal is capped and never stacks or downgrades existing barrier",
+        "passed": true
+      },
+      {
+        "name": "aftercare can trigger without overhealing and keeps limits",
+        "passed": true
+      },
+      {
+        "name": "guard counter fires once despite two intercepted HP hits",
+        "passed": true
+      },
+      {
+        "name": "absorbed guard hits do not trigger a counter",
+        "passed": true
+      },
+      {
+        "name": "control fallback discriminates ward and random failures; successes get nothing",
+        "passed": true
+      },
+      {
+        "name": "buff preservation protects strong value and old expiry without extra extension",
+        "passed": true
+      },
+      {
+        "name": "individual skill prototypes do not apply to an unselected candidate",
+        "passed": true
+      },
+      {
+        "name": "active stone and custom content remain active after wave transition",
+        "passed": true
+      },
+      {
+        "name": "documented limitation: equal strength previous buff duration is not protected",
+        "passed": true
+      },
+      {
+        "name": "stage2 healing supplement adds HP instead of barriers",
+        "passed": true
+      },
+      {
+        "name": "stage2 thin shield AI actually upgrades a thin barrier",
+        "passed": true
+      },
+      {
+        "name": "stage2 diagnostic compensates only complete absorption of the new aftercare shield",
+        "passed": true
+      }
+    ],
+    "scope": "micro fixtures deliberately set trigger conditions; not representative win-rate tests"
+  },
+  "offParity": {
+    "passed": true,
+    "trials": 108,
+    "offEqualsNative": true,
+    "includesTower10Multiwave": true
+  },
+  "stage1Sha256Still": "59a5905e87fa6f62973fb69e1467a303b73a132d1f1f61033a399a8fa37a5ee8",
+  "stage1SourceStillUnchanged": true
+}

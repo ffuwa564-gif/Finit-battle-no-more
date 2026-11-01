@@ -1,0 +1,38 @@
+{
+  "chapters": 36,
+  "lines": 144,
+  "reviewed": true,
+  "numericSources": [
+    "benchmark/analysis.json",
+    "benchmark/stage2-analysis.json",
+    "skills/stage2/analysis.json",
+    "skills/aftercare-diagnosis.json",
+    "leaders/stress-summary.json"
+  ],
+  "checks": [
+    {
+      "id": "guardian",
+      "test": true,
+      "scope": "counter respects native armor/barrier"
+    },
+    {
+      "id": "rebuild",
+      "test": true,
+      "scope": "meanScore delta1.1251775"
+    },
+    {
+      "id": "deputy",
+      "test": true,
+      "scope": "negative equipment effect, not general deputy-placement failure"
+    }
+  ],
+  "majorConclusion": "No unsupported global success claim; provisional isolated effects and crown/equipment opportunity costs differentiated",
+  "limitsDisclosed": [
+    "candidate-only effects, not simultaneous rollout",
+    "fixed-target high group unchanged partly by eligibility",
+    "finite parameter search",
+    "base constant unchanged",
+    "not69-roster SD conclusion from focused followups",
+    "trial count excludes independent mechanism QA"
+  ]
+}
