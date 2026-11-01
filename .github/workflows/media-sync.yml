@@ -1,0 +1,38 @@
+name: Verify media synchronization tools
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/media-sync/**'
+      - 'docs/media-sync.md'
+      - 'AGENTS.md'
+      - '.github/workflows/media-sync.yml'
+  pull_request:
+    paths:
+      - 'tools/media-sync/**'
+      - 'docs/media-sync.md'
+      - 'AGENTS.md'
+      - '.github/workflows/media-sync.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: tools/media-sync/requirements.txt
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check -r tools/media-sync/requirements.txt
+      - name: Detect deliberate audio slips and clock drift
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+        run: python tools/media-sync/test_media_sync.py
