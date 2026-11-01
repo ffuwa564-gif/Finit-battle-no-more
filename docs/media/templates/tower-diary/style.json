@@ -1,0 +1,98 @@
+{
+  "templateVersion": "1.0",
+  "referenceMediaCommit": "588105cf95eb0619fc382e9a00d07fa314be6bba",
+  "usage": "Design reference only; the Part2 renderer does not load this JSON automatically.",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "palette": {
+    "background": "#f9e8ef",
+    "stripe": "#f4dfe9",
+    "panel": "#fffaf4",
+    "subtitleBand": "#fff8f2",
+    "plum": "#642c4e",
+    "pink": "#b84b82",
+    "ink": "#4e2942",
+    "edge": "#dca9c0"
+  },
+  "layout": {
+    "mainPanel": [
+      296,
+      73,
+      1328,
+      850
+    ],
+    "game": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "leftAvatar": [
+      0,
+      470,
+      320,
+      440
+    ],
+    "rightAvatar": [
+      1600,
+      470,
+      320,
+      440
+    ],
+    "fullIllustration": [
+      320,
+      98,
+      1280,
+      790
+    ],
+    "subtitleBandTop": 935
+  },
+  "images": {
+    "fit": "contain",
+    "minimumAvatarInnerPadding": 30,
+    "recommendedPadding": 32,
+    "maxBobPixels": 3,
+    "fullSceneHideSideAvatars": true,
+    "manualOriginalAndFinishedFrameReviewRequired": true
+  },
+  "subtitles": {
+    "font": "Noto Sans CJK JP",
+    "fontSize": 48,
+    "maxLines": 2,
+    "outline": 3,
+    "speakerNameSize": 22,
+    "speakerColors": {
+      "zundamon": "#3e7543",
+      "metan": "#aa3c76",
+      "tsumugi": "#986110"
+    }
+  },
+  "audio": {
+    "sampleRate": 48000,
+    "samplesPerFrame": 1600,
+    "voiceGainBeforeMaster": 0.98,
+    "gameGainBeforeMaster": 0.45,
+    "musicGainBeforeMaster": 0.045,
+    "gameRelativeGainWhileSpeaking": 0.72,
+    "gameRelativeGainForUltimateReactions": 0.46,
+    "duckAttackMs": 20,
+    "duckReleaseMs": 80,
+    "peakCeiling": 0.91,
+    "losslessMix": "FLAC",
+    "deliveryAudio": "AAC, encode once"
+  },
+  "validation": {
+    "syncToleranceMs": 80,
+    "videoSequenceFrames": 9,
+    "voiceCoverage": "Every speaker: beginning, middle, end",
+    "gameCoverage": "Each major battle: beginning, middle, end; dedicated event shots as needed",
+    "browsers": [
+      "Chromium",
+      "WebKit"
+    ],
+    "finishedSha256Required": true
+  }
+}

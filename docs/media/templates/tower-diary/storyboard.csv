@@ -1,0 +1,9 @@
+scene_id,purpose,speaker,dialogue,source_id,source_in_seconds,source_out_seconds,playback_rate,diagram_or_illustration,expression,event_target_source_seconds,evidence,notes
+op,指定OP,,,OP_TO_CONFIRM,,,1,approved_opening,,,,実尺と版を確認
+hook,今回の問い,z,見せ場に合う一言,CAPTURE_TO_CONFIRM,,,,,,,,ゲーム音も同時に編集
+strategy,なぜこのキャラか,m,,,,,,party_roles,thinking,,,採用しない候補との比較
+cutaway,会話に変化,guest,,,,,,strategy_meeting,happy,,,左右の立ち絵を隠す
+battle,実戦と要点,z,,CAPTURE_TO_CONFIRM,,,,current_goal,happy,,,倍速・再掲を明記
+ultimate,着弾への反応,guest,,CAPTURE_TO_CONFIRM,,,1,ultimate_roles,excited,,,実フレームから反応時刻を決める
+review,結果を確かめる,m,,,,,,measured_hp_graph,thinking,,,実測ログと開始条件
+ending,次の目標,z,,,,,,closing_illustration,happy,,,短く締める
