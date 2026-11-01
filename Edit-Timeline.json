@@ -1,0 +1,162 @@
+[
+  {
+    "chapter": "hook",
+    "start": 23.0,
+    "duration": 12.1,
+    "source": "artifacts/diary-part2/capture/first-try.mkv",
+    "sourceStart": 40.587790966033936,
+    "sourceEnd": 58.587790966033936,
+    "rate": 1.4876033057851241,
+    "leadInFrames": 0,
+    "frames": 363,
+    "playDuration": 12.1,
+    "piece": "artifacts/diary-part2-v2/render/hook-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "e1d32b7285356de73d371f91a9b6c598a9c60a324b6e607c1e39b12459feed93"
+  },
+  {
+    "chapter": "first",
+    "start": 284.66666666666663,
+    "duration": 74.0,
+    "source": "artifacts/diary-part2/capture/first-try.mkv",
+    "sourceStart": 4.135791063308716,
+    "sourceEnd": 58.587790966033936,
+    "rate": 1.450789531858253,
+    "leadInFrames": 0,
+    "frames": 1126,
+    "playDuration": 37.53333333333333,
+    "piece": "artifacts/diary-part2-v2/render/first-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "924a126d9ec7dcd1a1e74a0463a97bf77baef6516d8a3f1d6a94b02aaa8cfd51"
+  },
+  {
+    "chapter": "awake",
+    "start": 435.09999999999997,
+    "duration": 67.9,
+    "source": "artifacts/diary-part2/capture/heart-3.mkv",
+    "sourceStart": 4.149883031845093,
+    "sourceEnd": 36.828882932662964,
+    "rate": 1,
+    "leadInFrames": 0,
+    "frames": 980,
+    "playDuration": 32.666666666666664,
+    "piece": "artifacts/diary-part2-v2/render/awake-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "98e54d23a80fedd945d3e02c6e9122893268f38418d5eeea3abb07c15cabf537"
+  },
+  {
+    "chapter": "battle1",
+    "start": 616.4666666666666,
+    "duration": 109.43333333333334,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 4.701494932174683,
+    "sourceEnd": 139.0264949798584,
+    "rate": 1.22745964100838,
+    "leadInFrames": 0,
+    "frames": 3283,
+    "playDuration": 109.43333333333334,
+    "piece": "artifacts/diary-part2-v2/render/battle1-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "cef20cf498101911110f8bbd15fbc20ee4cbde6f47a2469a5a870fbb0263e381"
+  },
+  {
+    "chapter": "ultimate",
+    "start": 725.8999999999999,
+    "duration": 83.56666666666666,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 94.20539498329163,
+    "sourceEnd": 102.20539498329163,
+    "rate": 1,
+    "leadInFrames": 0,
+    "frames": 240,
+    "playDuration": 8.0,
+    "piece": "artifacts/diary-part2-v2/render/ultimate-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "d9c7317d99ae58e7207c8fd3276b538654ecd20b2b63e447a3535644e24b8074"
+  },
+  {
+    "chapter": "battle2",
+    "start": 809.4666666666665,
+    "duration": 92.7,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 139.0264949798584,
+    "sourceEnd": 302.9014949798584,
+    "rate": 1.767799352750809,
+    "leadInFrames": 0,
+    "frames": 2781,
+    "playDuration": 92.7,
+    "piece": "artifacts/diary-part2-v2/render/battle2-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "ec0889959c2072cfcc8160d35789a860a501f6abb54d221374c28597ce0533c8"
+  },
+  {
+    "chapter": "fairy",
+    "start": 902.1666666666665,
+    "duration": 31.7,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 132.1514949798584,
+    "sourceEnd": 139.1514949798584,
+    "rate": 1,
+    "leadInFrames": 56,
+    "frames": 266,
+    "playDuration": 8.866666666666667,
+    "piece": "artifacts/diary-part2-v2/render/fairy-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "826145244f74cea2818d0b4b365bd58ee69559225822066ff9da99720ec9484b"
+  },
+  {
+    "chapter": "battle3",
+    "start": 933.8666666666666,
+    "duration": 100.53333333333333,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 302.9014949798584,
+    "sourceEnd": 420.9784951210022,
+    "rate": 1.8703785861103102,
+    "leadInFrames": 0,
+    "frames": 1894,
+    "playDuration": 63.13333333333333,
+    "piece": "artifacts/diary-part2-v2/render/battle3-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "9b1a5c3aba5ee7f2e10ce066c51ad707afbc2121eafd97d802713fcdad6e3eb1"
+  }
+]

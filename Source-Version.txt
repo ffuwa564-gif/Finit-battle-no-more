@@ -1,0 +1,7 @@
+Game v1.10.0
+Game source: 1f4e970117c95a11ef38c8f1e12fe232e5a7b964
+Original Part2 production: 7af2e4571f96c23866610cda8c12ffce27ba2321
+Native footage: same verified run as original Part2
+Re-edit source branch: video/tower-diary-part2-v2
+Re-edit source commit: d9c3410e70ae5940f39d1cc3692597abbd810583
+Game code changes: none

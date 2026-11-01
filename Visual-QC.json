@@ -1,0 +1,2070 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "z-happy",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "z-panic",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "m-happy",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "m-deadpan",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "t-happy",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "asset": "t-think",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "hook",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "hook",
+      "start": 5.233333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "hook",
+      "start": 8.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "hook",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "hook",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "hook",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "hook",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 5.533333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 11.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 15.666666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 20.633333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 26.1,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "opening",
+      "start": 31.566666666666666,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "opening",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "carry",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "carry",
+      "start": 9.833333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "carry",
+      "start": 17.6,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "carry",
+      "start": 25.466666666666665,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "carry",
+      "start": 33.63333333333333,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "carry",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 5.666666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 11.633333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 21.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 28.766666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 35.166666666666664,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 39.53333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 50.666666666666664,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 55.266666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 62.6,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "enemy",
+      "start": 69.43333333333334,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "enemy",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 7.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 11.933333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 17.166666666666668,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 25.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 31.133333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "jobs",
+      "start": 40.96666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "jobs",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 7.766666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 13.933333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 16.4,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 17.4,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 19.033333333333335,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 25.466666666666665,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 34.266666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "farm",
+      "start": 39.3,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "farm",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 8.466666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 15.566666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 25.866666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 31.266666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 37.833333333333336,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 45.53333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 50.86666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 57.43333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 62.766666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "first",
+      "start": 68.76666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "first",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 7.866666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 13.333333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 21.866666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 26.233333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 34.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 43.46666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 50.233333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 58.36666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 64.2,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "rebuild",
+      "start": 71.43333333333334,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "rebuild",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 6.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 13.233333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 18.466666666666665,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 25.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 33.86666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 40.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 46.166666666666664,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 56.233333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "awake",
+      "start": 64.33333333333333,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "awake",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 6.033333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 13.966666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 22.733333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 26.233333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 31.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 33.766666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 41.8,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 47.3,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "stones",
+      "start": 56.03333333333333,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "stones",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 10.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 15.6,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 22.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 31.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 38.333333333333336,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "controls",
+      "start": 42.6,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "controls",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 7.866666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 13.133333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 22.533333333333335,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 30.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 38.06666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 45.43333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 50.8,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 56.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 63.8,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 68.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 75.63333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 86.16666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 91.4,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 97.56666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle1",
+      "start": 104.26666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "battle1",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 1.6,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 3.8,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 5.3,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 7.4,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 19.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 25.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 28.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 31.2,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 33.96666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 42.93333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 48.733333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 59.733333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 69.06666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ultimate",
+      "start": 77.8,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "ultimate",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 4.866666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 13.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 20.333333333333332,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 28.3,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 34.333333333333336,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 42.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 50.266666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 54.8,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 58.2,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 66.06666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 72.1,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 81.96666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle2",
+      "start": 86.76666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "battle2",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "fairy",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "fairy",
+      "start": 2.8666666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "fairy",
+      "start": 7.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "fairy",
+      "start": 13.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "fairy",
+      "start": 19.366666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "fairy",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 7.533333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 13.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 24.233333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 29.833333333333332,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 37.666666666666664,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 45.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 49.733333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 56.03333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 63.43333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 67.46666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 72.36666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 77.83333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 83.66666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 88.43333333333334,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "battle3",
+      "start": 97.56666666666666,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "battle3",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 5.5,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 14.066666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 22.7,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 31.2,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 39.666666666666664,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 47.9,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "review",
+      "start": 55.06666666666667,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "review",
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 11.133333333333333,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 18.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 26.266666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 29.966666666666665,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 33.56666666666667,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 40.6,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 45.0,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 51.766666666666666,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 58.2,
+      "passed": true
+    },
+    {
+      "type": "speaking_portrait",
+      "chapter": "ending",
+      "start": 60.43333333333333,
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "caption_max_two_lines",
+      "chapter": "ending",
+      "passed": true
+    },
+    {
+      "type": "whole_frame_chapter",
+      "chapter": "ending",
+      "passed": true
+    }
+  ],
+  "sourceHeadSafetySha256": "cdc5c8d272c34c6b1bd3da7b56032c7cecc54130b53d1326ffc2faa3aee9894e",
+  "finishedSha256": "7e100076b74c510752c40209c343cbb9f2172f62dc3628c2269ac91d1b9aba1e",
+  "processingSha256": "471de4b02a198406afc034b73b282c4bc0c6ed32b9cfef40ad05b37975d01ab0",
+  "manualReview": "All six expression originals, both cutaway originals and distributed-movie contact sheet reviewed for complete ears, hats and heads. Contain is used for game illustrations."
+}

@@ -1,0 +1,4 @@
+同じ実戦録画を使用。SHA256 39d3f793d9c08d4d4421373bee9ee13cc9d0c131eb81985e5691d43efb0b3bc9
+https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/21e02698d863391716664fc1145366f44d81e526/Recording-Sources.zip
+全9戦の元の入力・証拠・制作コード：
+https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/21e02698d863391716664fc1145366f44d81e526/Production-Inputs.zip
