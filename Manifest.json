@@ -1,0 +1,70 @@
+{
+  "sourceCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "videoSeconds": 1441.356,
+  "files": {
+    "Native-Proofs.json.gz": {
+      "sha256": "368b6d17a0a72f1393c86e5fc15d966431e0a2b2e12e6e1ddc7732dce6cab1e1",
+      "bytes": 502796
+    },
+    "Subtitles-ja.srt": {
+      "sha256": "38d7a0e8e9818b805e86534bb0140f725d4fa6cf9f44d8a4dc3ec9cf37d62d19",
+      "bytes": 38971
+    },
+    "Description.txt": {
+      "sha256": "e60b07c6ff1875826ffec598cdae6da1e1565ff548d82d324832966f4a9ecc20",
+      "bytes": 3018
+    },
+    "Credits.txt": {
+      "sha256": "9ee43050f6c0aad97053d7806e730e53e62c25a09063436d5e6c407fa23c2908",
+      "bytes": 959
+    },
+    "Builds.csv": {
+      "sha256": "8a4f514ba1dc03b09d73941976a3cfb3c7514d07005ac379504849ba44adb4fe",
+      "bytes": 9665
+    },
+    "Timeline.json": {
+      "sha256": "cc4744ea3c4f631f12ae77bbcc5c60345d79fc093301c661b220a387f0f95d9e",
+      "bytes": 2611
+    },
+    "Chapters.txt": {
+      "sha256": "1917cfc36e34bd34f1b24bbae05d0af6a47302391a03b9e2088cdd6f44e47f44",
+      "bytes": 731
+    },
+    "STILLVEIL-Tower1-19Builds-720p.mp4": {
+      "sha256": "8531a81906cf2715c9787bb770772dfd2806e74bda85e726343bffbb05687704",
+      "bytes": 64303336
+    },
+    "Runtime.json": {
+      "sha256": "841af35f79b76b5dac49837761025cde623e3b92e369b10c87c18b798afa056b",
+      "bytes": 273
+    },
+    "Production-Inputs.zip": {
+      "sha256": "86f643bdda5aad747b91baa99a6f5b961aca9c4bc3d0916f954e378bab086ae6",
+      "bytes": 56464446
+    },
+    "Validation.json": {
+      "sha256": "be84e98b35253111fc5d897fe650eed4fc4af19c9469fd540267881db155b345",
+      "bytes": 13831
+    },
+    "Results.json": {
+      "sha256": "e5d22c857277be623d0e710e60313cd900f7a6a5d3ff0ab55378f4cf921fb0d6",
+      "bytes": 43739
+    },
+    "README.md": {
+      "sha256": "f731aac29809332d61646e78738f38e05b072eac44dc277f4b6f0baafc9389b9",
+      "bytes": 1887
+    },
+    "Gameplay-Excerpts.zip": {
+      "sha256": "e154e763f2ebbec1a8efd1af14ecfe197b4683bd63134d807552ea07188ccd16",
+      "bytes": 92981277
+    },
+    "Thumbnail.png": {
+      "sha256": "501035cd72a7311bde48753fe71d47215c482dca1f4be1d49a555a4f3205ddac",
+      "bytes": 791026
+    },
+    "Review-Contact.png": {
+      "sha256": "18e536a3707bc224482d9ec4a7c65b316c1f40ca4f3f83503d8c2ca148c38afb",
+      "bytes": 2994555
+    }
+  }
+}

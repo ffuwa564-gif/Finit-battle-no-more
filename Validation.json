@@ -1,0 +1,405 @@
+{
+  "passed": true,
+  "sourceCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "chapters": 21,
+  "builds": 19,
+  "maxScheduledSpeechGap": 1.2600000000000477,
+  "errors": [],
+  "checks": [
+    {
+      "id": "intro",
+      "duration": 81.473,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000"
+    },
+    {
+      "id": "initial",
+      "duration": 71.681,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Complete native battle capture",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.039332999999999174,
+      "sourceClockOffset": 0.04631304740905762,
+      "nativeSEMeanDB": -28.5
+    },
+    {
+      "id": "echo",
+      "duration": 69.58,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Complete native battle capture",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.010666999999983773,
+      "sourceClockOffset": 0.06854510307312012,
+      "nativeSEMeanDB": -26.0
+    },
+    {
+      "id": "shield",
+      "duration": 65.815,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.004364999999999952,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -27.2
+    },
+    {
+      "id": "drain",
+      "duration": 63.105,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.014690000000001646,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -27.3
+    },
+    {
+      "id": "dawn",
+      "duration": 69.004,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.00301600000000235,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -28.1
+    },
+    {
+      "id": "area",
+      "duration": 68.215,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.00966900000000237,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -24.7
+    },
+    {
+      "id": "sleep",
+      "duration": 64.236,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.031656000000005236,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -29.2
+    },
+    {
+      "id": "confuse",
+      "duration": 64.375,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.051664000000002375,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -27.1
+    },
+    {
+      "id": "paralysis",
+      "duration": 63.566667,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.0040000000000048885,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -27.6
+    },
+    {
+      "id": "charm",
+      "duration": 62.3,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.0046449999999964575,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -27.6
+    },
+    {
+      "id": "cleanse",
+      "duration": 67.18,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.024637999999999494,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -26.2
+    },
+    {
+      "id": "regen",
+      "duration": 65.772,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.023335999999993362,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -26.0
+    },
+    {
+      "id": "rewind",
+      "duration": 65.833333,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.024647999999999115,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -26.5
+    },
+    {
+      "id": "battery",
+      "duration": 68.833333,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.02865099999999643,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -25.2
+    },
+    {
+      "id": "rally",
+      "duration": 70.039,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.04297599999999946,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -25.8
+    },
+    {
+      "id": "accel",
+      "duration": 65.733333,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.03234899999999996,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -25.1
+    },
+    {
+      "id": "recycle",
+      "duration": 66.7,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.018672000000002242,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -24.6
+    },
+    {
+      "id": "execute",
+      "duration": 66.633333,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.04902799999999985,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -26.4
+    },
+    {
+      "id": "dream6",
+      "duration": 67.969,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000",
+      "nativeFullRunVerified": true,
+      "nativeBrowserVerified": true,
+      "captureMethod": "Excerpts from exact native full-run round checkpoints; unfilmed round remainders advanced with native NEXT; main game code unmodified; normal App commands and automatic replay; clip boundaries are time jumps, not consecutive rounds.",
+      "sourcePhase": "reward",
+      "sourceAVDurationDifference": 0.03967200000000304,
+      "sourceClockOffset": 0,
+      "nativeSEMeanDB": -25.4
+    },
+    {
+      "id": "outro",
+      "duration": 93.281,
+      "codec": "h264",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frameRate": "30/1",
+      "audioCodec": "aac",
+      "sampleRate": "48000"
+    }
+  ],
+  "final": {
+    "duration": 1441.356,
+    "expectedDuration": 1441.324999,
+    "bytes": 64303336,
+    "fullyDecoded": true,
+    "maxDBFS": -0.7,
+    "silencesOver2p5Seconds": [],
+    "masterTargetLUFS": -16,
+    "masterTargetTruePeakDB": -1.5
+  }
+}

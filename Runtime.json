@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "Pillow": "12.3.0",
+  "node": "v24.19.0",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "sourceCommit": "616a0747c4118a991770226d37347f34b31e2ec6",
+  "voicevoxEngine": "0.26.0"
+}

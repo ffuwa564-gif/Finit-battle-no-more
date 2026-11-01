@@ -1,0 +1,14 @@
+音声：VOICEVOX:ずんだもん / VOICEVOX:四国めたん（ノーマル、ID 3 / 2）
+VOICEVOX ENGINE 0.26.0
+https://voicevox.hiroshiba.jp/term/
+https://zunko.jp/con_ongen_kiyaku.html
+立ち絵：東北ずん子・ずんだもんプロジェクト 公式配布素材 zunmon003 / met012
+https://zunko.jp/con_illust.html
+https://zunko.jp/guideline.html
+音楽：甘茶の音楽工房（作曲：甘茶）「フィヨルドの澄んだ風」
+https://amachamusic.chagasi.com/music_fjordnosundakaze.html
+ゲーム映像・SE：STILLVEIL
+一部のゲーム内イラスト・文章・プログラミング支援には生成AIを使用しています。
+一部のキャラクターアニメーションにはRunwayを使用しています。
+今回の動画は、仲間と装備を用意した検証用データで実アプリを収録しています。
+戦闘の途中を省略し、操作待ち・報酬画面を保持して解説する場面があります。

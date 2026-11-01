@@ -1,0 +1,128 @@
+[
+  {
+    "id": "intro",
+    "title": "白亜の塔、第1層を19編成で攻略",
+    "start": 0,
+    "duration": 81.473
+  },
+  {
+    "id": "initial",
+    "title": "01 覚醒した初期の四人",
+    "start": 81.473,
+    "duration": 71.681
+  },
+  {
+    "id": "echo",
+    "title": "02 残響と連鎖",
+    "start": 153.154,
+    "duration": 69.58
+  },
+  {
+    "id": "shield",
+    "title": "03 障壁を砲弾に",
+    "start": 222.73399999999998,
+    "duration": 65.815
+  },
+  {
+    "id": "drain",
+    "title": "04 吸収で殴り続ける",
+    "start": 288.549,
+    "duration": 63.105
+  },
+  {
+    "id": "dawn",
+    "title": "05 弱体から暁冠",
+    "start": 351.654,
+    "duration": 69.004
+  },
+  {
+    "id": "area",
+    "title": "06 全体攻撃で取り巻き処理",
+    "start": 420.658,
+    "duration": 68.215
+  },
+  {
+    "id": "sleep",
+    "title": "07 眠りで敵の手数を減らす",
+    "start": 488.87300000000005,
+    "duration": 64.236
+  },
+  {
+    "id": "confuse",
+    "title": "08 混乱を軸に崩す",
+    "start": 553.109,
+    "duration": 64.375
+  },
+  {
+    "id": "paralysis",
+    "title": "09 麻痺で行動を妨害",
+    "start": 617.484,
+    "duration": 63.566667
+  },
+  {
+    "id": "charm",
+    "title": "10 魅了で同士討ちを狙う",
+    "start": 681.0506670000001,
+    "duration": 62.3
+  },
+  {
+    "id": "cleanse",
+    "title": "11 解除と立て直し",
+    "start": 743.350667,
+    "duration": 67.18
+  },
+  {
+    "id": "regen",
+    "title": "12 再生で粘る",
+    "start": 810.530667,
+    "duration": 65.772
+  },
+  {
+    "id": "rewind",
+    "title": "13 巻戻しで通常スキル回転",
+    "start": 876.302667,
+    "duration": 65.833333
+  },
+  {
+    "id": "battery",
+    "title": "14 星炉から兎の必殺",
+    "start": 942.1360000000001,
+    "duration": 68.833333
+  },
+  {
+    "id": "rally",
+    "title": "15 号令で攻撃を底上げ",
+    "start": 1010.9693330000001,
+    "duration": 70.039
+  },
+  {
+    "id": "accel",
+    "title": "16 加速の両刃",
+    "start": 1081.0083330000002,
+    "duration": 65.733333
+  },
+  {
+    "id": "recycle",
+    "title": "17 障壁を回復へ変える",
+    "start": 1146.7416660000001,
+    "duration": 66.7
+  },
+  {
+    "id": "execute",
+    "title": "18 処刑で終盤を刈り取る",
+    "start": 1213.4416660000002,
+    "duration": 66.633333
+  },
+  {
+    "id": "dream6",
+    "title": "19 T6夢織で必殺加速",
+    "start": 1280.0749990000002,
+    "duration": 67.969
+  },
+  {
+    "id": "outro",
+    "title": "どの編成から試す？",
+    "start": 1348.0439990000002,
+    "duration": 93.281
+  }
+]
