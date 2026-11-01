@@ -58,7 +58,9 @@ def chart(d,kind):
   _text(d,405,818,'行動順・敵AIを再現しない固定例。ゲームの勝率ではない。',23,MUTED)
 
 def draw_plate(chapter,phase,output_path):
- kind=phase['kind'];label,accent=KINDS[kind];base=background(chapter['character_id']).copy();d=ImageDraw.Draw(base)
+ kind=phase['kind'];label,accent=KINDS[kind]
+ if phase.get('chart') in {'scatter','debt'}:label,accent='未実装の処理模型','#d5c3ee'
+ base=background(chapter['character_id']).copy();d=ImageDraw.Draw(base)
  _text(d,35,25,'STILLVEIL ／ アテナ依存対策会議',31,GOLD)
  d.rounded_rectangle((1245,20,1880,82),radius=14,fill='#29313c',outline='#a69471',width=1);_text(d,1270,34,'仕様検討 ／ 提案部分は未実装',29,GOLD)
  d.line((35,106,1880,106),fill='#a18c64',width=1)
