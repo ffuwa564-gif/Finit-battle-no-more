@@ -26,7 +26,11 @@ def main():
  sources += [p for source in captures for p in [source,source.with_suffix('.json')]]
  sources += [ROOT/name for name in r.render_plan().get('inputHashes',{})]
  sources += [r.O/'roster-ready.json',r.O/'gem-audit.json',r.O/'assets/artwork-provenance.json',r.O/'assets/reused-artwork-provenance.json',r.O/'music-source.json',r.R/'opening/Opening-QC.json']
- sources += [r.O/'research'/name for name in ['research-story-cues.json','research-summary.json','research-cross-audit.json','research-necessity-certificate.json','research-sufficiency-certificate.json','research-edge-checks.json','research-lab-content.json','research-prototype-hashes.json','research-ruka-base-hashes.json','capture-source-qa.json','episode-evidence.json','independent-research-review.json','independent-contract-v2-recheck.json','capture-contract-revalidation.json']]
+ sources += [r.O/'research'/name for name in ['research-story-cues.json','research-summary.json','research-cross-audit.json','research-necessity-certificate.json','research-sufficiency-certificate.json','research-edge-checks.json','research-lab-content.json','research-prototype-hashes.json','research-ruka-base-hashes.json','capture-source-qa.json','episode-evidence.json','independent-research-review.json','independent-contract-v2-recheck.json','capture-contract-revalidation.json','independent-necessity-recheck.json','independent-evidence-refresh.json']]
+ sources += [ROOT/'scripts/build-diary-02/independent-necessity-recheck.mts',r.O/'proofs/live-neri.json.gz']
+ for source in captures:
+  meta=json.loads(source.with_suffix('.json').read_text())
+  if meta.get('sourceLog'):sources.append(ROOT/meta['sourceLog'])
  assert all(p.exists()for p in sources),'A finalized source or research proof is missing'
  frozen={str(p):r.sha256(p)for p in sorted(set(sources))};manifest={'inputs':frozen,'codeHashes':r.CODE_HASHES,'timelineSha256':r.sha256(r.O/'timeline-narration.json'),'editConditions':rows,'frames':round(n['duration']*30),'duration':n['duration'],'workers':2,'rule':'Freeze before scheduling; workers edit only their distinct chapter outputs; build() joins only after all workers finish.'};(r.O/'render-input-freeze.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
  by={v['chapter']:v for v in rows};assetnames=[str(p.relative_to(ROOT))for p in assets];jobs=[(ch,by.get(ch['id']),assetnames)for ch in n['chapters']if ch['id']!='series-op']
