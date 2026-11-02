@@ -1,0 +1,170 @@
+[
+  {
+    "chapter": "first",
+    "start": 64.1,
+    "duration": 46.6,
+    "source": "artifacts/diary-part3/capture/attempt-1.mov",
+    "sourceStart": 4.187286853790283,
+    "sourceEnd": 49.87428689002991,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 1371,
+    "playDuration": 45.7,
+    "piece": "artifacts/diary-part3/render/first-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "9d4a168965ddfaa3418a94e52a8fb26e92035885f77dab9725503ef75ec24de8"
+  },
+  {
+    "chapter": "farm",
+    "start": 217.36666666666667,
+    "duration": 40.0,
+    "source": "artifacts/diary-part3/capture/farm-7.mov",
+    "sourceStart": 4.217104911804199,
+    "sourceEnd": 41.95610499382019,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 1132,
+    "playDuration": 37.733333333333334,
+    "piece": "artifacts/diary-part3/render/farm-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "5c6addc3a52c4ddb8ef366cfa8b3e8285bfdd496cbed22cb2dc87ea81f552af2"
+  },
+  {
+    "chapter": "fourth-a",
+    "start": 301.3666666666667,
+    "duration": 41.13333333333333,
+    "source": "artifacts/diary-part3/capture/attempt-4.mov",
+    "sourceStart": 4.119402885437012,
+    "sourceEnd": 45.0,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 1226,
+    "playDuration": 40.86666666666667,
+    "piece": "artifacts/diary-part3/render/fourth-a-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "ae287fe83b036c2f86bbaf490848e222a12749656b86bb4f25894b48c7d37d4a"
+  },
+  {
+    "chapter": "fourth-b",
+    "start": 342.5,
+    "duration": 34.53333333333333,
+    "source": "artifacts/diary-part3/capture/attempt-4.mov",
+    "sourceStart": 98.8,
+    "sourceEnd": 114.17940306663513,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 461,
+    "playDuration": 15.366666666666667,
+    "piece": "artifacts/diary-part3/render/fourth-b-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "4cddfd0a76312aee97bea273a5d4dacf6f386287e809a4ce3d1c1e2987fd0ca6"
+  },
+  {
+    "chapter": "ninth",
+    "start": 436.7333333333333,
+    "duration": 83.16666666666667,
+    "source": "artifacts/diary-part3/capture/attempt-9.mov",
+    "sourceStart": 4.137558937072754,
+    "sourceEnd": 84.47955894470215,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 2410,
+    "playDuration": 80.33333333333333,
+    "piece": "artifacts/diary-part3/render/ninth-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "dac106d086f419d26a3059ea947667d1b7439d7bdf5fd4522d7c41d4fa54c65f"
+  },
+  {
+    "chapter": "final-a",
+    "start": 634.3333333333334,
+    "duration": 114.4,
+    "source": "artifacts/diary-part3/capture/attempt-10.mov",
+    "sourceStart": 4.469403028488159,
+    "sourceEnd": 118.76666666666667,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 3429,
+    "playDuration": 114.3,
+    "piece": "artifacts/diary-part3/render/final-a-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "e788f39f8946b4710a0dc5b26fd9985ab578a521413d7dccb912318a4999a128"
+  },
+  {
+    "chapter": "final-b",
+    "start": 748.7333333333333,
+    "duration": 95.43333333333334,
+    "source": "artifacts/diary-part3/capture/attempt-10.mov",
+    "sourceStart": 118.76666666666667,
+    "sourceEnd": 213.36666666666667,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 2838,
+    "playDuration": 94.6,
+    "piece": "artifacts/diary-part3/render/final-b-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "f9ac22303ae2231b1225abd0977de7d8cc8ee7126a6740e086cb01f642fdafff"
+  },
+  {
+    "chapter": "final-c",
+    "start": 844.1666666666667,
+    "duration": 89.86666666666666,
+    "source": "artifacts/diary-part3/capture/attempt-10.mov",
+    "sourceStart": 213.36666666666667,
+    "sourceEnd": 301.5554029941559,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 2646,
+    "playDuration": 88.2,
+    "piece": "artifacts/diary-part3/render/final-c-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "318a8db294cc1395eac31b2cadcd999424ae02053dc0f5233d001bb4c90caf99"
+  }
+]

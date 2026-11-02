@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "chapters": [
+    {
+      "chapter": "opening",
+      "maximumVoiceGapSeconds": 0.488000999999997,
+      "passed": true
+    },
+    {
+      "chapter": "first",
+      "maximumVoiceGapSeconds": 1.1999999999999886,
+      "passed": true
+    },
+    {
+      "chapter": "intrusion",
+      "maximumVoiceGapSeconds": 0.4900003333333416,
+      "passed": true
+    },
+    {
+      "chapter": "wall",
+      "maximumVoiceGapSeconds": 0.4806663333333461,
+      "passed": true
+    },
+    {
+      "chapter": "farm",
+      "maximumVoiceGapSeconds": 2.566666666666663,
+      "passed": true
+    },
+    {
+      "chapter": "awaken",
+      "maximumVoiceGapSeconds": 0.4866660000000138,
+      "passed": true
+    },
+    {
+      "chapter": "fourth-a",
+      "maximumVoiceGapSeconds": 0.5666666666666629,
+      "passed": true
+    },
+    {
+      "chapter": "fourth-b",
+      "maximumVoiceGapSeconds": 0.47400033333332203,
+      "passed": true
+    },
+    {
+      "chapter": "trials",
+      "maximumVoiceGapSeconds": 0.4819999999999709,
+      "passed": true
+    },
+    {
+      "chapter": "ninth",
+      "maximumVoiceGapSeconds": 3.1333333333333258,
+      "passed": true
+    },
+    {
+      "chapter": "stone",
+      "maximumVoiceGapSeconds": 0.4833340000000135,
+      "passed": true
+    },
+    {
+      "chapter": "recipe",
+      "maximumVoiceGapSeconds": 0.46666733333336197,
+      "passed": true
+    },
+    {
+      "chapter": "final-a",
+      "maximumVoiceGapSeconds": 3.2491338352050434,
+      "passed": true
+    },
+    {
+      "chapter": "final-b",
+      "maximumVoiceGapSeconds": 1.1333333333334394,
+      "passed": true
+    },
+    {
+      "chapter": "final-c",
+      "maximumVoiceGapSeconds": 1.966666666666697,
+      "passed": true
+    },
+    {
+      "chapter": "result",
+      "maximumVoiceGapSeconds": 0.4866663333333463,
+      "passed": true
+    },
+    {
+      "chapter": "ending",
+      "maximumVoiceGapSeconds": 0.4733329999999114,
+      "passed": true
+    }
+  ],
+  "note": "Short game-SE-only listening gaps are retained; common OP is intentionally outside commentary."
+}

@@ -1,0 +1,32 @@
+{
+  "attempt-1": {
+    "originalPcmMovSha256": "3d1430ff613bd5d7bfa1aaa186d63abe415ed2e69453ecfc23354a7db497c839",
+    "losslessFlacMkvSha256": "ff63fe8cb9958ee3b8464f809f3cbb6617e160e9c09fe0fb132e5c0fccc3d0f5",
+    "videoCopied": true,
+    "audioLossless": true
+  },
+  "farm-7": {
+    "originalPcmMovSha256": "edcd132768cc6fdae94527cce5a9cb547e88563ea5188e0a95b48ff803e509b9",
+    "losslessFlacMkvSha256": "c14f090719a57e01d5fc229c2b26e65cbdaba6f56d0d81ad700b72d6381b672f",
+    "videoCopied": true,
+    "audioLossless": true
+  },
+  "attempt-4": {
+    "originalPcmMovSha256": "22d6646c78e9158492876c44e60fe28e3077ed7feb0df737f5ae19e438c303b0",
+    "losslessFlacMkvSha256": "46914757a5dd444fd4aece50758ce52c378cd6fda912c5aab155c448aa0d9e66",
+    "videoCopied": true,
+    "audioLossless": true
+  },
+  "attempt-9": {
+    "originalPcmMovSha256": "5c3c417f77f95b50b2ac863925128bc3f6c388b073fdb74e497ca5fc5715a801",
+    "losslessFlacMkvSha256": "547d6af25b40371d86d3a8bf01fe9526da2c288201e2f999af50851d37e56b27",
+    "videoCopied": true,
+    "audioLossless": true
+  },
+  "attempt-10": {
+    "originalPcmMovSha256": "1c0252399025dd0776c3b1686234f6be53855d3cbac2ad64002a70447e258aba",
+    "losslessFlacMkvSha256": "be633d2c535e96850e1cebacce7ed6435b3e4c02e7bc8cc42b0bc7cc3fced195",
+    "videoCopied": true,
+    "audioLossless": true
+  }
+}

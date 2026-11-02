@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "battles": [
+    {
+      "id": "attempt-1",
+      "rounds": 4,
+      "win": false,
+      "commands": 39,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-2",
+      "rounds": 4,
+      "win": false,
+      "commands": 35,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-3",
+      "rounds": 4,
+      "win": false,
+      "commands": 40,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-1",
+      "rounds": 12,
+      "win": true,
+      "commands": 147,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-2",
+      "rounds": 12,
+      "win": true,
+      "commands": 156,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-3",
+      "rounds": 12,
+      "win": true,
+      "commands": 156,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-4",
+      "rounds": 13,
+      "win": true,
+      "commands": 171,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-5",
+      "rounds": 13,
+      "win": true,
+      "commands": 179,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-6",
+      "rounds": 15,
+      "win": true,
+      "commands": 204,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "farm-7",
+      "rounds": 12,
+      "win": true,
+      "commands": 151,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-4",
+      "rounds": 9,
+      "win": false,
+      "commands": 88,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-5",
+      "rounds": 7,
+      "win": false,
+      "commands": 75,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-6",
+      "rounds": 9,
+      "win": false,
+      "commands": 92,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-7",
+      "rounds": 6,
+      "win": false,
+      "commands": 58,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-8",
+      "rounds": 6,
+      "win": false,
+      "commands": 66,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-9",
+      "rounds": 7,
+      "win": false,
+      "commands": 69,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    },
+    {
+      "id": "attempt-10",
+      "rounds": 19,
+      "win": true,
+      "commands": 212,
+      "athenaAbsent": true,
+      "continuityPassed": true,
+      "passed": true
+    }
+  ],
+  "athenaBan": "No Athena family in any tower or preparation battle, leader or active units; inherited ownership may retain Athena on the bench",
+  "rngRewinds": false,
+  "source": "Part2 route-final after floor2 claim",
+  "floor3Attempts": 10,
+  "farmingClears": 7,
+  "finalFloor": 3
+}

@@ -1,0 +1,1006 @@
+{
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "sourceFixture": "artifacts/diary-part2/proofs/route-final.json.save",
+  "battles": [
+    {
+      "id": "attempt-1",
+      "win": false,
+      "rounds": 4,
+      "potions": 1,
+      "party": [
+        "lunette-awakened",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "liora",
+      "remaining": [
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 240
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 278
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 249
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 245
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4063,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 1052,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "777f045cde843563fc67df44cf6981994ef26607263a279d054114348ae94d4d"
+    },
+    {
+      "id": "attempt-2",
+      "win": false,
+      "rounds": 4,
+      "potions": 0,
+      "party": [
+        "lunette-awakened",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 254
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 259
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4063,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 990,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "5839b40b6730b77dfebc12b861df43b18170041a9b8547025892accfbff6ebd5"
+    },
+    {
+      "id": "attempt-3",
+      "win": false,
+      "rounds": 4,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 259
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4020,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 873,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "ed03c62608d055bec7da935bd8a53896ef95200a30f4856690f8c5855258313b"
+    },
+    {
+      "id": "farm-1",
+      "win": true,
+      "rounds": 12,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 229,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "4fea0a7d78d2c9c85f5bac99af67834b0b2ece510c037c93ea26a814f2f105f9"
+    },
+    {
+      "id": "farm-2",
+      "win": true,
+      "rounds": 12,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 229,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "014a150322602459dee5e62dd168045104153576771307c0bf07a997e46f3eb2"
+    },
+    {
+      "id": "farm-3",
+      "win": true,
+      "rounds": 12,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 229,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "b9c3ececdbc0ebf81a6049e7722832b968af40fda477ff87277c481579ba34c0"
+    },
+    {
+      "id": "farm-4",
+      "win": true,
+      "rounds": 13,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 263,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "8ca7dcca37b62ce35ad83cc3ef8f25856fe5f75b54da851bd882088099496a7f"
+    },
+    {
+      "id": "farm-5",
+      "win": true,
+      "rounds": 13,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 263,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "76ed15f0e421222c2e47e60068ba4182c6a728f3cec0954e2666758d575c0445"
+    },
+    {
+      "id": "farm-6",
+      "win": true,
+      "rounds": 15,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 243,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "ee0807ef64de6845b2e8e170ff74641d3221734400c78540d6006c3501eef093"
+    },
+    {
+      "id": "farm-7",
+      "win": true,
+      "rounds": 12,
+      "potions": 0,
+      "party": [
+        "fio",
+        "nox",
+        "liora",
+        "benzaiten"
+      ],
+      "leader": "benzaiten",
+      "remaining": [
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 200,
+          "maxHp": 200
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 294,
+          "maxHp": 294
+        },
+        {
+          "characterId": "liora",
+          "side": "party",
+          "hp": 229,
+          "maxHp": 263
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 259,
+          "maxHp": 259
+        },
+        {
+          "characterId": "liora",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 1120
+        },
+        {
+          "characterId": "hollow-keeper",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 192
+        },
+        {
+          "characterId": "veil-priestess",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 110
+        }
+      ],
+      "proofSha256": "53deff8d4a7d842308f0624bd0da4fdeb02fbe29a0c7dcf1827ca440c771d239"
+    },
+    {
+      "id": "attempt-4",
+      "win": false,
+      "rounds": 9,
+      "potions": 2,
+      "party": [
+        "lunette-awakened",
+        "nox",
+        "liora-awakened",
+        "benzaiten"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 251
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 3808,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "b8cb0eeedad7ff0529578cbdbbc7ce5e7e8e01cc8be372e58923ebc9d05bca51"
+    },
+    {
+      "id": "attempt-5",
+      "win": false,
+      "rounds": 7,
+      "potions": 2,
+      "party": [
+        "lunette-awakened",
+        "nox",
+        "liora-awakened",
+        "benzaiten"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 251
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 3829,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "6fe244a57502b9ef24e8ab94fb4ea7e0a6f115a66c7212496d73042ed771fdf7"
+    },
+    {
+      "id": "attempt-6",
+      "win": false,
+      "rounds": 9,
+      "potions": 2,
+      "party": [
+        "liora-awakened",
+        "lunette-awakened",
+        "nox",
+        "benzaiten"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 251
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 3895,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "173f2ead7e3c10327812a371754e49ef7a4f3669e2728428feef8c5e3a42cc6a"
+    },
+    {
+      "id": "attempt-7",
+      "win": false,
+      "rounds": 6,
+      "potions": 0,
+      "party": [
+        "liora-awakened",
+        "fio",
+        "nox",
+        "benzaiten"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "fio",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 197
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4063,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 453,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "5789af6e78dafb363a57c32d21d5598c844fc2ea7ab92639b60d5ae114f4c6e1"
+    },
+    {
+      "id": "attempt-8",
+      "win": false,
+      "rounds": 6,
+      "potions": 2,
+      "party": [
+        "lunette-awakened",
+        "nox",
+        "liora-awakened",
+        "benzaiten"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 251
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4063,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 387,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "7732698d03285cdb247486549fc0ae46d3fbda6af3a6dda3a9bedbe0540ec80b"
+    },
+    {
+      "id": "attempt-9",
+      "win": false,
+      "rounds": 7,
+      "potions": 0,
+      "party": [
+        "benzaiten",
+        "nox",
+        "liora-awakened",
+        "lunette-awakened"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 255
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 290
+        },
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 371
+        },
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 0,
+          "maxHp": 251
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 4019,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 455,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "23589b096a1074e8a38b1d0bf0e58c46cc4258f148b6cb0e6d655894497309eb"
+    },
+    {
+      "id": "attempt-10",
+      "win": true,
+      "rounds": 19,
+      "potions": 5,
+      "party": [
+        "benzaiten",
+        "nox",
+        "liora-awakened",
+        "lunette-awakened"
+      ],
+      "leader": "liora-awakened",
+      "remaining": [
+        {
+          "characterId": "benzaiten",
+          "side": "party",
+          "hp": 255,
+          "maxHp": 255
+        },
+        {
+          "characterId": "nox",
+          "side": "party",
+          "hp": 290,
+          "maxHp": 290
+        },
+        {
+          "characterId": "liora-awakened",
+          "side": "party",
+          "hp": 371,
+          "maxHp": 371
+        },
+        {
+          "characterId": "lunette-awakened",
+          "side": "party",
+          "hp": 230,
+          "maxHp": 251
+        },
+        {
+          "characterId": "pale-wolf",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 4063
+        },
+        {
+          "characterId": "rainbow-iris-standard",
+          "side": "enemy",
+          "hp": 0,
+          "maxHp": 2384
+        }
+      ],
+      "proofSha256": "7dfa76a050056cf112d99fead3704cb9a2a9e86a4376c6283828701cba9155ce"
+    }
+  ],
+  "captures": {
+    "attempt-1": {
+      "sha256": "3d1430ff613bd5d7bfa1aaa186d63abe415ed2e69453ecfc23354a7db497c839",
+      "gameplayWindow": [
+        4.187286853790283,
+        49.87428689002991
+      ],
+      "anchors": 8,
+      "maxCalibrationResidualMs": 1.667000000004748,
+      "nativeBrowserVerified": true,
+      "claimVerified": false
+    },
+    "farm-7": {
+      "sha256": "edcd132768cc6fdae94527cce5a9cb547e88563ea5188e0a95b48ff803e509b9",
+      "gameplayWindow": [
+        4.217104911804199,
+        41.95610499382019
+      ],
+      "anchors": 7,
+      "maxCalibrationResidualMs": 1.667000000004748,
+      "nativeBrowserVerified": true,
+      "claimVerified": false
+    },
+    "attempt-4": {
+      "sha256": "22d6646c78e9158492876c44e60fe28e3077ed7feb0df737f5ae19e438c303b0",
+      "gameplayWindow": [
+        4.119402885437012,
+        114.17940306663513
+      ],
+      "anchors": 10,
+      "maxCalibrationResidualMs": 3.33299999999781,
+      "nativeBrowserVerified": true,
+      "claimVerified": false
+    },
+    "attempt-9": {
+      "sha256": "5c3c417f77f95b50b2ac863925128bc3f6c388b073fdb74e497ca5fc5715a801",
+      "gameplayWindow": [
+        4.137558937072754,
+        84.47955894470215
+      ],
+      "anchors": 9,
+      "maxCalibrationResidualMs": 3.3330000000004745,
+      "nativeBrowserVerified": true,
+      "claimVerified": false
+    },
+    "attempt-10": {
+      "sha256": "1c0252399025dd0776c3b1686234f6be53855d3cbac2ad64002a70447e258aba",
+      "gameplayWindow": [
+        4.469403028488159,
+        301.5554029941559
+      ],
+      "anchors": 17,
+      "maxCalibrationResidualMs": 3.33299999999781,
+      "nativeBrowserVerified": true,
+      "claimVerified": true
+    }
+  },
+  "finalPotionRounds": [
+    2,
+    4,
+    5,
+    6,
+    7
+  ],
+  "minimumGuardianRoundEndHP": 37,
+  "guardianMaxHP": 371,
+  "nativeBattleCount": 17,
+  "towerAttempts": 10,
+  "noAthenaAllBattles": true,
+  "rngReset": false,
+  "comparisonFixtureHasInheritedT4Stones": 3,
+  "scope": "Scripted legal commands; commentary after recording. No human-first-play claim. No causal estimate from different configurations/sequential RNG.",
+  "limits": "One successful run, not a measured win rate. End HP is healthy; the narrow margin is early survival. T6 was tried but not used in the winning run. Guardian swift echo stone power9 / bulwark100 is not a whole-item T1 budget guarantee.",
+  "proofVerificationSha256": "be0f326b56a52af7ad51334ebd48e257431fa422a5eeae19358ffe0e00af7fe4"
+}

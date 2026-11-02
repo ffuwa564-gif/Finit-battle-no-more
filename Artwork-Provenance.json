@@ -1,0 +1,34 @@
+{
+  "images": [
+    {
+      "asset": "artifacts/diary-part3/assets/u-angry.png",
+      "sha256": "8776b546e1090147926d4a0920f6b160422b06efcdaa9c465a77eb85ffc0205f",
+      "generatedOriginal": "/workspace/generated_images/exec-abf74de6-66c2-48b6-ab61-6087384937ce.png",
+      "productionBrief": "中国うさぎの全身ちび立ち絵。怒り、動物耳なし、白いうさぎのぬいぐるみ、透過、頭から足まで余白。",
+      "briefIsVerbatimPrompt": false
+    },
+    {
+      "asset": "artifacts/diary-part3/assets/u-think.png",
+      "sha256": "042e49ec8684b94d092a50d9b961b54f606e338f55dc9345349c5fd69c6ee335",
+      "generatedOriginal": "/workspace/generated_images/exec-9657152e-586f-41b8-b50a-3dde8b23b69e.png",
+      "productionBrief": "同じ中国うさぎの思案表情。公式衣装とぬいぐるみを区別。透過、全身contain。",
+      "briefIsVerbatimPrompt": false
+    },
+    {
+      "asset": "artifacts/diary-part3/assets/clubroom.png",
+      "sha256": "caac20496201878b169e44b1fd2faf20be50f7846e75e097ed663b4fc6a939fa",
+      "generatedOriginal": "/workspace/generated_images/exec-5c54e14a-d9af-4f7c-a345-bce53812debf.png",
+      "productionBrief": "承認済みピンクの部屋で四人の作戦会議。中国うさぎが怒りの参加。頭を見切らせない。",
+      "briefIsVerbatimPrompt": false
+    },
+    {
+      "asset": "artifacts/diary-part3/assets/thumbnail-original.png",
+      "sha256": "8c3f0d28eb0a4f2c1c640d665af854fc157c7fd0e0e4f1aad0fb677e02570f62",
+      "generatedOriginal": "/workspace/generated_images/exec-be3a4244-f0c2-477c-8b57-2e0866f29720.png",
+      "productionBrief": "Part3・第3層、アテナ禁止、4R全滅から立て直せ。ピンクの可愛い攻略日記サムネ。",
+      "briefIsVerbatimPrompt": false
+    }
+  ],
+  "reference": "VOICEVOX official Chinese Usagi portrait and approved Part2 cute illustrations",
+  "method": "Image generation tool; original outputs preserved; no programmatic editing of character artwork."
+}

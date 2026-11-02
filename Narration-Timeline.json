@@ -1,0 +1,1484 @@
+{
+  "chapters": [
+    {
+      "id": "series-op",
+      "title": "共通オープニング v4",
+      "start": 0,
+      "duration": 23,
+      "lines": []
+    },
+    {
+      "id": "opening",
+      "title": "第3層。今日はアテナ、お留守番。",
+      "topic": "intro",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "白亜の塔、第三層！　今日は、アテナを使わずに挑むのだ！",
+          "wav": "artifacts/diary-part3/speech/ed5a71dd023b7ca35e397240.flac",
+          "duration": 4.725333,
+          "voiceId": 3,
+          "start": 23.4,
+          "end": 28.125332999999998
+        },
+        {
+          "speaker": "t",
+          "text": "前回の反省、覚えてる？　説明の前に、まず実際に戦ってみよ！",
+          "wav": "artifacts/diary-part3/speech/a884df398e85da4adb858992.flac",
+          "duration": 5.450667,
+          "voiceId": 8,
+          "start": 28.235333,
+          "end": 33.686
+        },
+        {
+          "speaker": "m",
+          "text": "第二層の報酬を受け取ったデータから続行よ。比較用に引き継いだ、ティア四の石三つと、所持キャラを使うわ。",
+          "wav": "artifacts/diary-part3/speech/5c322603fc64994da3f780da.flac",
+          "duration": 7.381333,
+          "voiceId": 2,
+          "start": 33.796,
+          "end": 41.177333
+        },
+        {
+          "speaker": "z",
+          "text": "編成は覚醒ルネット、ノクス、リオラ、弁財天。最初のリーダーは、まだ覚醒前のリオラなのだ。",
+          "wav": "artifacts/diary-part3/speech/bbfed0f77b8b8b9823d35634.flac",
+          "duration": 7.989333,
+          "voiceId": 3,
+          "start": 41.287333000000004,
+          "end": 49.276666000000006
+        },
+        {
+          "speaker": "m",
+          "text": "記録した操作と判断を、後から四人で振り返る実況よ。失敗も進行も巻き戻さず、十回の挑戦を追うわ。",
+          "wav": "artifacts/diary-part3/speech/58cb88c3f074bb935d935d5c.flac",
+          "duration": 8.0,
+          "voiceId": 2,
+          "start": 49.386666,
+          "end": 57.386666
+        },
+        {
+          "speaker": "t",
+          "text": "四人？　今、三人しかいないけど？",
+          "wav": "artifacts/diary-part3/speech/0b7b520631dda156f2640913.flac",
+          "duration": 3.104,
+          "voiceId": 8,
+          "start": 57.496666,
+          "end": 60.600666
+        },
+        {
+          "speaker": "z",
+          "text": "細かいことは、勝ってから考えるのだ！",
+          "wav": "artifacts/diary-part3/speech/2ae2dc55e676f08c67a2ef9f.flac",
+          "duration": 2.901333,
+          "voiceId": 3,
+          "start": 60.710665999999996,
+          "end": 63.611999
+        }
+      ],
+      "start": 23.0,
+      "duration": 41.1
+    },
+    {
+      "id": "first",
+      "title": "第1戦：守れば、間に合う？",
+      "topic": "first",
+      "clip": "first",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "まず、ノクスとルネットで、相手の支援役を削るのだ。狼を残して、二対一を終わらせたいのだ！",
+          "wav": "artifacts/diary-part3/speech/63468a4c00f27f5d73108764.flac",
+          "duration": 7.530667,
+          "voiceId": 3,
+          "start": 64.5,
+          "end": 72.030667
+        },
+        {
+          "speaker": "m",
+          "text": "狼は体力四千六十三。隣の虹の支援役も二千三百八十四ある。先に一体落とすにも、時間が要るわね。",
+          "wav": "artifacts/diary-part3/speech/a4d96ccd6ea3a4949a31a381.flac",
+          "duration": 8.586667,
+          "voiceId": 2,
+          "start": 72.85333349999999,
+          "end": 81.4400005
+        },
+        {
+          "speaker": "t",
+          "text": "リオラが受けてる！　でも、一撃の減り方が怖いって！",
+          "wav": "artifacts/diary-part3/speech/038b1fc956fb90b4a74a4e5f.flac",
+          "duration": 3.754667,
+          "voiceId": 8,
+          "start": 82.262667,
+          "end": 86.01733399999999
+        },
+        {
+          "speaker": "z",
+          "text": "守り役がいるのに、回復が追いつかないのだ。必殺まで持ってほしいのだ！",
+          "wav": "artifacts/diary-part3/speech/6f97294f3e7be3a372989694.flac",
+          "duration": 5.333333,
+          "voiceId": 3,
+          "start": 86.8400005,
+          "end": 92.1733335
+        },
+        {
+          "speaker": "m",
+          "text": "耐える手段にも再使用待ちがある。守る人を置いただけで、毎回安全になるわけではないのね。",
+          "wav": "artifacts/diary-part3/speech/6c4750d6b482aaf52aa57118.flac",
+          "duration": 6.144,
+          "voiceId": 2,
+          "start": 92.996,
+          "end": 99.14
+        },
+        {
+          "speaker": "z",
+          "text": "あっ、待って！　まだ狼、全然削ってないのだ！",
+          "wav": "artifacts/diary-part3/speech/03bb1542d947395dad53e4cc.flac",
+          "duration": 4.512,
+          "voiceId": 3,
+          "start": 99.9626665,
+          "end": 104.4746665
+        },
+        {
+          "speaker": "t",
+          "text": "四ラウンドで全滅！？　前回の成功体験、いったん置こ！",
+          "wav": "artifacts/diary-part3/speech/e4236d8c9ea53cda26def194.flac",
+          "duration": 4.202667,
+          "voiceId": 8,
+          "start": 105.297333,
+          "end": 109.5
+        }
+      ],
+      "start": 64.1,
+      "duration": 46.6,
+      "rate": 1,
+      "playDuration": 45.7,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "intrusion",
+      "title": "怒りの中国うさぎ、乱入。",
+      "topic": "intrusion",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "u",
+          "text": "ちょっと待って。アテナがいないと、四ラウンドで終わりなの？",
+          "wav": "artifacts/diary-part3/speech/56e74769ccb352068e160455.flac",
+          "duration": 4.650667,
+          "voiceId": 62,
+          "start": 111.1,
+          "end": 115.75066699999999
+        },
+        {
+          "speaker": "z",
+          "text": "う、うさぎ！？　ルネットの親戚なのだ？",
+          "wav": "artifacts/diary-part3/speech/dc748f99dc476c5adbdd7f0f.flac",
+          "duration": 3.904,
+          "voiceId": 3,
+          "start": 115.86066699999999,
+          "end": 119.76466699999999
+        },
+        {
+          "speaker": "u",
+          "text": "中国うさぎ。抱えているのは、ぬいぐるみ。ルネットとは別。",
+          "wav": "artifacts/diary-part3/speech/23a4fe2edb778c5571c79fda.flac",
+          "duration": 5.781333,
+          "voiceId": 61,
+          "start": 119.87466699999999,
+          "end": 125.65599999999999
+        },
+        {
+          "speaker": "m",
+          "text": "それと、ずんだもん。あなたは妖精でしょう。",
+          "wav": "artifacts/diary-part3/speech/2cdb6e69a2cca992d4bb768f.flac",
+          "duration": 3.253333,
+          "voiceId": 2,
+          "start": 125.76599999999999,
+          "end": 129.019333
+        },
+        {
+          "speaker": "t",
+          "text": "おこってる子、来ちゃった！　でも今日の検証には、むしろ心強いかも。",
+          "wav": "artifacts/diary-part3/speech/0a3ccf3564f66858086abe0b.flac",
+          "duration": 4.938667,
+          "voiceId": 8,
+          "start": 129.129333,
+          "end": 134.068
+        },
+        {
+          "speaker": "u",
+          "text": "守りを一人替えて、あとは前と同じ。それでアテナ問題を解決した顔、しないで。",
+          "wav": "artifacts/diary-part3/speech/dd5db524bf7b00a6d0e8acc7.flac",
+          "duration": 6.922667,
+          "voiceId": 62,
+          "start": 134.178,
+          "end": 141.100667
+        },
+        {
+          "speaker": "z",
+          "text": "まだ、解決したとは言っていないのだ！　ここから、ちゃんと頑張るのだ！",
+          "wav": "artifacts/diary-part3/speech/b8bdeba38dbfb7ee76395709.flac",
+          "duration": 4.970667,
+          "voiceId": 3,
+          "start": 141.210667,
+          "end": 146.181334
+        },
+        {
+          "speaker": "u",
+          "text": "じゃあ見る。勝った編成の一覧じゃなくて、負けて、何を変えたかを。",
+          "wav": "artifacts/diary-part3/speech/7dbd8b3ef0a3c3926176e3c5.flac",
+          "duration": 6.357333,
+          "voiceId": 61,
+          "start": 146.291334,
+          "end": 152.64866700000002
+        },
+        {
+          "speaker": "m",
+          "text": "今回の約束にしましょう。アテナは周回にも出さない。乱数や所持品を、都合よく戻さない。",
+          "wav": "artifacts/diary-part3/speech/3ecbdb497684414c5a6e44ee.flac",
+          "duration": 6.677333,
+          "voiceId": 2,
+          "start": 152.758667,
+          "end": 159.436
+        },
+        {
+          "speaker": "t",
+          "text": "ツッコミ担当が増えた！　ずんだもん、今日、逃げ道ないね！",
+          "wav": "artifacts/diary-part3/speech/7300316b6b80367560d8ff12.flac",
+          "duration": 4.597333,
+          "voiceId": 8,
+          "start": 159.546,
+          "end": 164.14333299999998
+        }
+      ],
+      "start": 110.69999999999999,
+      "duration": 53.93333333333333
+    },
+    {
+      "id": "wall",
+      "title": "3連敗。石の大きな数字だけでは。",
+      "topic": "wall",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "二戦目は弁財天をリーダーに。三戦目はフィオを入れ、ノクスに以前拾ったティア六の石も試した。",
+          "wav": "artifacts/diary-part3/speech/31d61772543d6c3c72550d24.flac",
+          "duration": 6.250667,
+          "voiceId": 2,
+          "start": 165.03333333333333,
+          "end": 171.28400033333332
+        },
+        {
+          "speaker": "z",
+          "text": "でも、どちらも四ラウンドで負けたのだ。三戦目も、支援役の体力を八百七十三、残したのだ。",
+          "wav": "artifacts/diary-part3/speech/f6bb18b95c86a4ceec0e8f25.flac",
+          "duration": 7.818667,
+          "voiceId": 3,
+          "start": 171.39400033333334,
+          "end": 179.21266733333334
+        },
+        {
+          "speaker": "u",
+          "text": "ティア六を持てば突破、にはならなかった。攻撃が強くても、動く前に倒れたら終わり。",
+          "wav": "artifacts/diary-part3/speech/b0e323d23c05b21129a6c175.flac",
+          "duration": 7.925333,
+          "voiceId": 61,
+          "start": 179.32266733333333,
+          "end": 187.24800033333332
+        },
+        {
+          "speaker": "t",
+          "text": "じゃあ、守り役を育てよう！　リオラって、覚醒できるんだよね？",
+          "wav": "artifacts/diary-part3/speech/6854a710501e9be0661b248f.flac",
+          "duration": 4.757333,
+          "voiceId": 8,
+          "start": 187.35800033333334,
+          "end": 192.11533333333333
+        },
+        {
+          "speaker": "m",
+          "text": "できるわ。ただし必要なのは、リオラの記憶四十個。今はゼロ。ここは実際に集める。",
+          "wav": "artifacts/diary-part3/speech/f2001e852fcc6f971c1416d1.flac",
+          "duration": 6.314667,
+          "voiceId": 2,
+          "start": 192.2253333333333,
+          "end": 198.5400003333333
+        },
+        {
+          "speaker": "z",
+          "text": "アテナを解禁して、素材だけ集めるのも、今回は無しなのだ！",
+          "wav": "artifacts/diary-part3/speech/4d222137940f2cde2569a6be.flac",
+          "duration": 4.608,
+          "voiceId": 3,
+          "start": 198.6500003333333,
+          "end": 203.2580003333333
+        },
+        {
+          "speaker": "u",
+          "text": "そこは、えらい。縛りは、苦しいところだけ外さないで。",
+          "wav": "artifacts/diary-part3/speech/62f37957e436a4d4eaaae587.flac",
+          "duration": 5.717333,
+          "voiceId": 61,
+          "start": 203.36800033333333,
+          "end": 209.08533333333332
+        },
+        {
+          "speaker": "m",
+          "text": "なお、三戦とも編成や操作、進む乱数が異なる。石一個だけの性能比較としては、扱わないわ。",
+          "wav": "artifacts/diary-part3/speech/af00287f983fa86e342dd282.flac",
+          "duration": 7.690667,
+          "voiceId": 2,
+          "start": 209.19533333333334,
+          "end": 216.88600033333333
+        }
+      ],
+      "start": 164.63333333333333,
+      "duration": 52.733333333333334
+    },
+    {
+      "id": "farm",
+      "title": "寄り道にも、アテナなし。",
+      "topic": "farm",
+      "clip": "farm",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "虚ろの門を七回クリア！　ここは七周目、終盤の実際の映像だよ。",
+          "wav": "artifacts/diary-part3/speech/2ff6f823372e4466341b4bc6.flac",
+          "duration": 5.002667,
+          "voiceId": 8,
+          "start": 217.76666666666668,
+          "end": 222.76933366666668
+        },
+        {
+          "speaker": "z",
+          "text": "一回でリオラの記憶を六個。七回で四十二個、集めたのだ！",
+          "wav": "artifacts/diary-part3/speech/543a45671f5a23378ca4eb4a.flac",
+          "duration": 5.088,
+          "voiceId": 3,
+          "start": 224.961,
+          "end": 230.049
+        },
+        {
+          "speaker": "u",
+          "text": "塔に戻る前に、守りの仕事を作る。今回は、寄り道にも目的がある。",
+          "wav": "artifacts/diary-part3/speech/e055913f87e8fd316321ade5.flac",
+          "duration": 7.242667,
+          "voiceId": 61,
+          "start": 232.24066633333334,
+          "end": 239.48333333333335
+        },
+        {
+          "speaker": "m",
+          "text": "全七戦を、アテナ抜きで踏破した記録も残したわ。戦闘の報酬と購入だけで進めている。",
+          "wav": "artifacts/diary-part3/speech/12d6f1c5649582a5b4a3383f.flac",
+          "duration": 6.250667,
+          "voiceId": 2,
+          "start": 241.67499966666668,
+          "end": 247.92566666666667
+        },
+        {
+          "speaker": "t",
+          "text": "素材が、何のために欲しいか分かると、周回も少し違って見えるね！",
+          "wav": "artifacts/diary-part3/speech/61a46ed2eacd981016cf6dca.flac",
+          "duration": 4.682667,
+          "voiceId": 8,
+          "start": 250.117333,
+          "end": 254.8
+        }
+      ],
+      "start": 217.36666666666667,
+      "duration": 40.0,
+      "rate": 1,
+      "playDuration": 37.733333333333334,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "awaken",
+      "title": "リオラ覚醒！ でも、万能ではない。",
+      "topic": "awaken",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "記憶四十個を使って、リオラ覚醒！　二個、手元に残ったのだ！",
+          "wav": "artifacts/diary-part3/speech/12b295802e345dcb07fc8661.flac",
+          "duration": 5.408,
+          "voiceId": 3,
+          "start": 257.76666666666665,
+          "end": 263.17466666666667
+        },
+        {
+          "speaker": "t",
+          "text": "おめでとー！　ここから、今日の守り役、頼んだ！",
+          "wav": "artifacts/diary-part3/speech/1c91b369698b8f8238b4d562.flac",
+          "duration": 3.466667,
+          "voiceId": 8,
+          "start": 263.2846666666667,
+          "end": 266.75133366666665
+        },
+        {
+          "speaker": "m",
+          "text": "この条件では、最大体力は二百四十九から三百七十一へ。リーダーの体力補正も、十一点二パーセントから十六パーセントになる。",
+          "wav": "artifacts/diary-part3/speech/9f5ec676651788787b395c6c.flac",
+          "duration": 9.802667,
+          "voiceId": 2,
+          "start": 266.86133366666667,
+          "end": 276.66400066666665
+        },
+        {
+          "speaker": "u",
+          "text": "でも、減った体力を戻す役は別に要る。体力が増えたから、雑に受けていいわけじゃない。",
+          "wav": "artifacts/diary-part3/speech/0fd0d2eb9122ce2124bb246a.flac",
+          "duration": 8.106667,
+          "voiceId": 61,
+          "start": 276.77400066666667,
+          "end": 284.8806676666667
+        },
+        {
+          "speaker": "z",
+          "text": "なるほど。耐える器が大きくなっても、中身が空なら倒れるのだ。",
+          "wav": "artifacts/diary-part3/speech/d4631433c1778136570b9bbb.flac",
+          "duration": 4.917333,
+          "voiceId": 3,
+          "start": 284.9906676666667,
+          "end": 289.9080006666667
+        },
+        {
+          "speaker": "m",
+          "text": "まずは同じ攻撃役と回復役に戻し、覚醒リオラをリーダーにして再挑戦するわ。",
+          "wav": "artifacts/diary-part3/speech/edaace7255a34e5f0c38d419.flac",
+          "duration": 5.738667,
+          "voiceId": 2,
+          "start": 290.0180006666667,
+          "end": 295.7566676666667
+        },
+        {
+          "speaker": "t",
+          "text": "強くなりました、終了、じゃなくて。どの壁を越えられたか、見よう！",
+          "wav": "artifacts/diary-part3/speech/748dbb0a7125f1f44e2d1ff1.flac",
+          "duration": 5.013333,
+          "voiceId": 8,
+          "start": 295.8666676666667,
+          "end": 300.88000066666666
+        }
+      ],
+      "start": 257.3666666666667,
+      "duration": 44.0
+    },
+    {
+      "id": "fourth-a",
+      "title": "第4戦：一体、落とせた。その先は？",
+      "topic": "fourth",
+      "clip": "fourth-a",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "覚醒リオラで、もう一度なのだ！　まずは支援役を落とすまで、四人を残したいのだ。",
+          "wav": "artifacts/diary-part3/speech/63ad5926957b1a10666e586b.flac",
+          "duration": 6.261333,
+          "voiceId": 3,
+          "start": 301.76666666666665,
+          "end": 308.02799966666663
+        },
+        {
+          "speaker": "m",
+          "text": "先ほどより、受けた後の体力に余地がある。ただ、回復と障壁がいつ戻るかは、毎回見ておきたいわ。",
+          "wav": "artifacts/diary-part3/speech/bb44efd019bada103a9426b9.flac",
+          "duration": 7.328,
+          "voiceId": 2,
+          "start": 308.2341328,
+          "end": 315.5621328
+        },
+        {
+          "speaker": "t",
+          "text": "ノクスが攻撃して、味方の体力も戻る！　攻撃の仕事が、守りにもつながってるね。",
+          "wav": "artifacts/diary-part3/speech/02375392c6f5b4daa9fc9b0a.flac",
+          "duration": 5.802667,
+          "voiceId": 8,
+          "start": 315.76826593333334,
+          "end": 321.5709329333333
+        },
+        {
+          "speaker": "u",
+          "text": "それがノクスに慈悲の石を持たせる理由。攻撃役を残すことが、回復の手数を残すことにもなる。",
+          "wav": "artifacts/diary-part3/speech/4ef1f8dbe01f47b680be71f2.flac",
+          "duration": 8.778667,
+          "voiceId": 61,
+          "start": 321.7770660666667,
+          "end": 330.5557330666667
+        },
+        {
+          "speaker": "z",
+          "text": "ここで必殺なのだ！　先に倒れていたら、この一手も撃てなかったのだ！",
+          "wav": "artifacts/diary-part3/speech/e0b5e34a2c768985ed7ead04.flac",
+          "duration": 4.874667,
+          "voiceId": 3,
+          "start": 330.7618662,
+          "end": 335.6365332
+        },
+        {
+          "speaker": "m",
+          "text": "ルネットは全体へ、ノクスは単体へ。両方を使い、支援役を先に削る方針よ。",
+          "wav": "artifacts/diary-part3/speech/d348699a650afede70ab27ee.flac",
+          "duration": 6.090667,
+          "voiceId": 2,
+          "start": 335.84266633333334,
+          "end": 341.93333333333334
+        }
+      ],
+      "start": 301.3666666666667,
+      "duration": 41.13333333333333,
+      "rate": 1,
+      "playDuration": 40.86666666666667,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "fourth-b",
+      "title": "第4戦・終盤：一体落とした、けれど。",
+      "topic": "fourth",
+      "clip": "fourth-b",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "おっ、支援役、落ちた！？　一回目より、ちゃんと進んでる！",
+          "wav": "artifacts/diary-part3/speech/984036c364e60ade65a2e1e4.flac",
+          "duration": 4.714667,
+          "voiceId": 8,
+          "start": 342.9,
+          "end": 347.614667
+        },
+        {
+          "speaker": "u",
+          "text": "喜ぶのはいい。でも、残った狼の体力を見て。",
+          "wav": "artifacts/diary-part3/speech/6ef38fd761a71aed27b6992c.flac",
+          "duration": 5.013333,
+          "voiceId": 61,
+          "start": 347.724667,
+          "end": 352.738
+        },
+        {
+          "speaker": "z",
+          "text": "まだ、ほとんど残っているのだ……。",
+          "wav": "artifacts/diary-part3/speech/618c76b5381e40248465bacb.flac",
+          "duration": 2.304,
+          "voiceId": 3,
+          "start": 352.848,
+          "end": 355.152
+        },
+        {
+          "speaker": "m",
+          "text": "九ラウンドで敗北。支援役は倒したけれど、狼は四千六十三のうち、三千八百八、残ったわ。",
+          "wav": "artifacts/diary-part3/speech/65c46f1ddd4bdf545649248b.flac",
+          "duration": 7.968,
+          "voiceId": 2,
+          "start": 355.262,
+          "end": 363.23
+        },
+        {
+          "speaker": "t",
+          "text": "二体から一体にはできた。でも、あと少し、ではないね。",
+          "wav": "artifacts/diary-part3/speech/9add46c7c134a0bea8b165de.flac",
+          "duration": 4.288,
+          "voiceId": 8,
+          "start": 363.34000000000003,
+          "end": 367.62800000000004
+        },
+        {
+          "speaker": "u",
+          "text": "そこを、ごまかさないで。今の課題は、一体落とすまで耐え、その後も回る守りを作ること。",
+          "wav": "artifacts/diary-part3/speech/4e1fd2028336a3e65763eab4.flac",
+          "duration": 8.821333,
+          "voiceId": 61,
+          "start": 367.738,
+          "end": 376.559333
+        }
+      ],
+      "start": 342.5,
+      "duration": 34.53333333333333,
+      "rate": 1,
+      "playDuration": 15.366666666666667,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "trials",
+      "title": "第5〜8戦：思いついた案を、試す。",
+      "topic": "trials",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "五戦目、ティア六のノクスでも七ラウンドで敗北。六戦目はリオラを先頭にして、防御も混ぜたけれど、九ラウンドで敗れた。",
+          "wav": "artifacts/diary-part3/speech/7d7dd7cb4285b41c3a95671b.flac",
+          "duration": 8.330667,
+          "voiceId": 2,
+          "start": 377.4333333333333,
+          "end": 385.7640003333333
+        },
+        {
+          "speaker": "z",
+          "text": "防御と、かばうを交互にすれば、両方ずっと続くと思っていたのだ。でも、そうはならなかったのだ。",
+          "wav": "artifacts/diary-part3/speech/d57ca765b9807450a573a0a2.flac",
+          "duration": 7.328,
+          "voiceId": 3,
+          "start": 385.8740003333333,
+          "end": 393.2020003333333
+        },
+        {
+          "speaker": "m",
+          "text": "防御の状態は自分の次の行動で切れる。敵が動くときまで、都合よく両方を重ね続けられるわけではない。",
+          "wav": "artifacts/diary-part3/speech/45717365cfe7f79075729c7f.flac",
+          "duration": 7.338667,
+          "voiceId": 2,
+          "start": 393.3120003333333,
+          "end": 400.6506673333333
+        },
+        {
+          "speaker": "u",
+          "text": "それ、思い込みを、そのまま攻略法にしなくてよかった。",
+          "wav": "artifacts/diary-part3/speech/a6fcb6d143b4413f44e70a6d.flac",
+          "duration": 5.290667,
+          "voiceId": 61,
+          "start": 400.7606673333333,
+          "end": 406.0513343333333
+        },
+        {
+          "speaker": "t",
+          "text": "七戦目は回復役を増やしたけど、六ラウンド。回復役が多いだけでは、間に合わないんだね。",
+          "wav": "artifacts/diary-part3/speech/930eea963f86da5038b3489e.flac",
+          "duration": 6.293333,
+          "voiceId": 8,
+          "start": 406.1613343333333,
+          "end": 412.4546673333333
+        },
+        {
+          "speaker": "m",
+          "text": "八戦目では、回復薬を使う目安も早めた。ただ、ルネットを先頭にした構成では、六ラウンドで終わったわ。",
+          "wav": "artifacts/diary-part3/speech/7289fa64940c7d449ba4947e.flac",
+          "duration": 7.733333,
+          "voiceId": 2,
+          "start": 412.5646673333333,
+          "end": 420.29800033333333
+        },
+        {
+          "speaker": "z",
+          "text": "攻撃、回復、体力。数字は増やしているのに、どの行動が、いつ必要かが、まだ合っていないのだ。",
+          "wav": "artifacts/diary-part3/speech/e5c7893ac6e4da5f6a47bec6.flac",
+          "duration": 8.533333,
+          "voiceId": 3,
+          "start": 420.4080003333333,
+          "end": 428.9413333333333
+        },
+        {
+          "speaker": "u",
+          "text": "なら、先頭で指示できる役を替える。守り役に全部背負わせるのを、やめてみたら。",
+          "wav": "artifacts/diary-part3/speech/f59aaac3fe610367a40dc06a.flac",
+          "duration": 7.2,
+          "voiceId": 61,
+          "start": 429.05133333333333,
+          "end": 436.2513333333333
+        }
+      ],
+      "start": 377.0333333333333,
+      "duration": 59.7
+    },
+    {
+      "id": "ninth",
+      "title": "第9戦：弁財天の障壁。あと一手の穴。",
+      "topic": "ninth",
+      "clip": "ninth",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "今度は弁財天を先頭に！　リーダーの補正は、覚醒リオラのままだよ。",
+          "wav": "artifacts/diary-part3/speech/e02b2c24a8185d8159a716fe.flac",
+          "duration": 4.832,
+          "voiceId": 8,
+          "start": 437.13333333333327,
+          "end": 441.96533333333326
+        },
+        {
+          "speaker": "m",
+          "text": "先頭とリーダーは別。操作する弁財天に白灯石を持たせ、危ないときに障壁を選ぶ方針よ。",
+          "wav": "artifacts/diary-part3/speech/12d74be672591eed6c246bc9.flac",
+          "duration": 6.677333,
+          "voiceId": 2,
+          "start": 444.74350012499997,
+          "end": 451.42083312499994
+        },
+        {
+          "speaker": "z",
+          "text": "最初の障壁、二百六十七！　こんなに張れるのだ！？",
+          "wav": "artifacts/diary-part3/speech/7ece0578433b5a8e88a2bbef.flac",
+          "duration": 4.437333,
+          "voiceId": 3,
+          "start": 454.1989999166666,
+          "end": 458.6363329166666
+        },
+        {
+          "speaker": "u",
+          "text": "同じ障壁でも、使い手と石で厚さが変わる。弁財天の回復役としての補正を、守りにも使う。",
+          "wav": "artifacts/diary-part3/speech/a7a170d4de2495bf3340e3f4.flac",
+          "duration": 9.333333,
+          "voiceId": 61,
+          "start": 461.41449970833327,
+          "end": 470.74783270833325
+        },
+        {
+          "speaker": "m",
+          "text": "ただ、ここでは薬を使う基準が遅かった。体力が残って見えても、狼が弁財天より先に動くと、間に合わない。",
+          "wav": "artifacts/diary-part3/speech/72d5968982fa2275be3614ea.flac",
+          "duration": 7.989333,
+          "voiceId": 2,
+          "start": 473.52599949999995,
+          "end": 481.51533249999994
+        },
+        {
+          "speaker": "t",
+          "text": "回復できるか、じゃなくて、回復する順番まで生きていられるか、かあ。",
+          "wav": "artifacts/diary-part3/speech/be25f2828191462ea3ecc451.flac",
+          "duration": 5.034667,
+          "voiceId": 8,
+          "start": 484.29349929166665,
+          "end": 489.32816629166666
+        },
+        {
+          "speaker": "z",
+          "text": "薬を残したまま、守り役が倒れたのだ。節約したかったのに、使う機会ごと失ったのだ。",
+          "wav": "artifacts/diary-part3/speech/2523b7e3a4d82eb5d6806901.flac",
+          "duration": 6.944,
+          "voiceId": 3,
+          "start": 492.1063330833333,
+          "end": 499.0503330833333
+        },
+        {
+          "speaker": "u",
+          "text": "持って帰る薬を守るために、味方を倒れさせないで。",
+          "wav": "artifacts/diary-part3/speech/e7d53e88f1c1493681778d18.flac",
+          "duration": 4.0,
+          "voiceId": 62,
+          "start": 501.8284998749999,
+          "end": 505.8284998749999
+        },
+        {
+          "speaker": "m",
+          "text": "七ラウンドで敗北。次は同じ方向の編成で、ラウンドの合間の薬を早める。次の敵の一撃も考えるわ。",
+          "wav": "artifacts/diary-part3/speech/61bd2f933090096e4d027842.flac",
+          "duration": 8.16,
+          "voiceId": 2,
+          "start": 508.6066666666666,
+          "end": 516.7666666666667
+        }
+      ],
+      "start": 436.7333333333333,
+      "duration": 83.16666666666667,
+      "rate": 1,
+      "playDuration": 80.33333333333333,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "stone",
+      "title": "石の小部屋：白灯石、誰が使う？",
+      "topic": "stone",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "ここで石の小部屋！　同じ守りの石なら、守り役に持たせればいいんじゃないの？",
+          "wav": "artifacts/diary-part3/speech/10c827fc94ba3f38cca1a7fa.flac",
+          "duration": 4.981333,
+          "voiceId": 8,
+          "start": 520.3,
+          "end": 525.2813329999999
+        },
+        {
+          "speaker": "m",
+          "text": "今回の障壁は、対象の最大体力と、使い手の攻撃力が元になる。そこへ石の威力と、使い手の補正が掛かるの。",
+          "wav": "artifacts/diary-part3/speech/bc7a86226b06f233c882bee0.flac",
+          "duration": 8.554667,
+          "voiceId": 2,
+          "start": 525.391333,
+          "end": 533.946
+        },
+        {
+          "speaker": "z",
+          "text": "守られるリオラの体力だけでなく、張る弁財天の性能も、大事なのだな。",
+          "wav": "artifacts/diary-part3/speech/a764b5cbecece72d3fa1a6d3.flac",
+          "duration": 5.472,
+          "voiceId": 3,
+          "start": 534.0559999999999,
+          "end": 539.5279999999999
+        },
+        {
+          "speaker": "u",
+          "text": "威力百二十五の石なら、計算上の威力倍率は二点八七五。二百二十五パーセント、とは違う。",
+          "wav": "artifacts/diary-part3/speech/87cece54de4d95cf52982623.flac",
+          "duration": 9.973333,
+          "voiceId": 61,
+          "start": 539.6379999999999,
+          "end": 549.611333
+        },
+        {
+          "speaker": "m",
+          "text": "ただし、障壁は張った直後だけで勝てるものではない。再使用待ちの穴を、薬や吸収回復でつなぐ必要があるわ。",
+          "wav": "artifacts/diary-part3/speech/ab4fbef1f567483e0adf75d1.flac",
+          "duration": 7.968,
+          "voiceId": 2,
+          "start": 549.721333,
+          "end": 557.6893329999999
+        },
+        {
+          "speaker": "t",
+          "text": "石を誰に渡すかで、四人の連携が変わる。これ、今回の組んでみたいポイントだね！",
+          "wav": "artifacts/diary-part3/speech/c537f5b346107640712072a7.flac",
+          "duration": 5.717333,
+          "voiceId": 8,
+          "start": 557.7993329999999,
+          "end": 563.516666
+        }
+      ],
+      "start": 519.9,
+      "duration": 44.1
+    },
+    {
+      "id": "recipe",
+      "title": "第10戦のレシピ：四人で、守りを回す。",
+      "topic": "recipe",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "最終構成を一枚で。先頭の弁財天が白灯石の障壁と回復。ノクスは単体攻撃と、慈悲の吸収回復。",
+          "wav": "artifacts/diary-part3/speech/bc26ba255fc1a3065d17a719.flac",
+          "duration": 8.437333,
+          "voiceId": 2,
+          "start": 564.4,
+          "end": 572.837333
+        },
+        {
+          "speaker": "t",
+          "text": "リーダーの覚醒リオラが受け持ち、覚醒ルネットが全体攻撃と、双潮の石で支えるんだね。",
+          "wav": "artifacts/diary-part3/speech/1865bab7b4be05146c87eddd.flac",
+          "duration": 5.973333,
+          "voiceId": 8,
+          "start": 572.947333,
+          "end": 578.920666
+        },
+        {
+          "speaker": "z",
+          "text": "じゃあ、フィオではなく弁財天なのは、今回ほしい厚い障壁を、自分で選ぶためなのだ？",
+          "wav": "artifacts/diary-part3/speech/48caa9294462f0090f3277f6.flac",
+          "duration": 6.997333,
+          "voiceId": 3,
+          "start": 579.030666,
+          "end": 586.027999
+        },
+        {
+          "speaker": "m",
+          "text": "そう。ノクスも、単なる二人目の攻撃役ではない。支援役を狙う単体攻撃と、攻撃に伴う回復を両立するために残した。",
+          "wav": "artifacts/diary-part3/speech/58f448c6026116dc4323a8d2.flac",
+          "duration": 9.130667,
+          "voiceId": 2,
+          "start": 586.137999,
+          "end": 595.268666
+        },
+        {
+          "speaker": "u",
+          "text": "リオラは覚醒して、受ける体力を増やせた。ルネットの全体攻撃なら、狼も少しずつ削れる。四人に、今回の仕事がある。",
+          "wav": "artifacts/diary-part3/speech/37acf3b39910935af87c04a1.flac",
+          "duration": 11.989333,
+          "voiceId": 61,
+          "start": 595.378666,
+          "end": 607.3679989999999
+        },
+        {
+          "speaker": "m",
+          "text": "なお、リオラの残響石は威力九。堅牢の特性は百ある。低い威力の石だけで、安く誰でも勝てるという意味ではないわ。",
+          "wav": "artifacts/diary-part3/speech/41f9f49b7a0f6aa1c61370ca.flac",
+          "duration": 8.714667,
+          "voiceId": 2,
+          "start": 607.477999,
+          "end": 616.1926659999999
+        },
+        {
+          "speaker": "z",
+          "text": "ほかの三人は、引き継いだティア四の石。試していたティア六は、最後は使っていないのだ。",
+          "wav": "artifacts/diary-part3/speech/7d14f66e7015340b0b3243ac.flac",
+          "duration": 6.784,
+          "voiceId": 3,
+          "start": 616.302666,
+          "end": 623.086666
+        },
+        {
+          "speaker": "t",
+          "text": "あとは薬の判断！　危なくなってから、じゃなくて、次に倒される前に使お！",
+          "wav": "artifacts/diary-part3/speech/756a5d2574f22837e9689861.flac",
+          "duration": 5.248,
+          "voiceId": 8,
+          "start": 623.196666,
+          "end": 628.4446660000001
+        },
+        {
+          "speaker": "u",
+          "text": "ここまで九敗。次で、何が変わるか。見届ける。",
+          "wav": "artifacts/diary-part3/speech/c771b950372eca51424c9d02.flac",
+          "duration": 5.312,
+          "voiceId": 61,
+          "start": 628.554666,
+          "end": 633.866666
+        }
+      ],
+      "start": 564.0,
+      "duration": 70.33333333333333
+    },
+    {
+      "id": "final-a",
+      "title": "第10戦・序盤：37HPで、つなぐ。",
+      "topic": "final",
+      "clip": "final-a",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "最後の挑戦、行くのだ！　まず、弁財天の障壁で、リオラが受ける時間を作るのだ。",
+          "wav": "artifacts/diary-part3/speech/e9b158d84376fdd2ea13838d.flac",
+          "duration": 6.976,
+          "voiceId": 3,
+          "start": 634.7333333333333,
+          "end": 641.7093333333333
+        },
+        {
+          "speaker": "m",
+          "text": "回復薬は最大五個。体力の割合だけでなく、次の攻撃順も見て、ラウンドの合間に使う方針へ変えたわ。",
+          "wav": "artifacts/diary-part3/speech/47bf5aa12b9f12f120154a99.flac",
+          "duration": 7.914667,
+          "voiceId": 2,
+          "start": 642.7085751003087,
+          "end": 650.6232421003087
+        },
+        {
+          "speaker": "z",
+          "text": "薬、一個目。今回は、まだ体力が残っていても使うのだ。持ったまま倒れるのは、もう嫌なのだ。",
+          "wav": "artifacts/diary-part3/speech/68906ac282ca92867e798903.flac",
+          "duration": 8.021333,
+          "voiceId": 3,
+          "start": 651.6224838672841,
+          "end": 659.6438168672842
+        },
+        {
+          "speaker": "t",
+          "text": "支援役に、ノクスの一撃！　攻撃しながら、減ってる味方も戻してる！",
+          "wav": "artifacts/diary-part3/speech/bc56d24492423d9c150ccc47.flac",
+          "duration": 5.077333,
+          "voiceId": 8,
+          "start": 660.6430586342595,
+          "end": 665.7203916342595
+        },
+        {
+          "speaker": "t",
+          "text": "リオラ、三十七！？　今、三百七十一のうち、三十七だったよ！",
+          "wav": "artifacts/diary-part3/speech/4929328ea3a44b6dfcfa40f8.flac",
+          "duration": 5.877333,
+          "voiceId": 8,
+          "start": 666.839633401235,
+          "end": 672.716966401235
+        },
+        {
+          "speaker": "u",
+          "text": "生きてる。ここを、絶対に落とさないで。",
+          "wav": "artifacts/diary-part3/speech/d947c71e65f80f99f634703b.flac",
+          "duration": 3.541333,
+          "voiceId": 62,
+          "start": 672.836966401235,
+          "end": 676.378299401235
+        },
+        {
+          "speaker": "u",
+          "text": "慈悲の回復は、与えたダメージから計算する。今の実回復が百九十八。攻撃役を残す価値が、ここにある。",
+          "wav": "artifacts/diary-part3/speech/d45edd06eadadeb72b7294f7.flac",
+          "duration": 11.104,
+          "voiceId": 61,
+          "start": 679.6274332364401,
+          "end": 690.7314332364401
+        },
+        {
+          "speaker": "z",
+          "text": "回復、回復なのだ！　守り役が倒れたら、全員の順番が崩れるのだ！",
+          "wav": "artifacts/diary-part3/speech/513c914c27c6bc43366c978e.flac",
+          "duration": 5.834667,
+          "voiceId": 3,
+          "start": 692.7608475359963,
+          "end": 698.5955145359962
+        },
+        {
+          "speaker": "m",
+          "text": "狼と支援役が続く時間帯が危険ね。障壁が消えた後に、次の手が戻っているかも見たいわ。",
+          "wav": "artifacts/diary-part3/speech/33b7b470d4f4b8eb75973184.flac",
+          "duration": 6.656,
+          "voiceId": 2,
+          "start": 700.6249288355525,
+          "end": 707.2809288355525
+        },
+        {
+          "speaker": "m",
+          "text": "序盤を無傷で抜ける編成ではない。薬も、石も、行動の予約も使って、この危険な区間をつなぐわ。",
+          "wav": "artifacts/diary-part3/speech/cf100cf9ea6ae5c50e5e734a.flac",
+          "duration": 7.370667,
+          "voiceId": 2,
+          "start": 709.3103431351087,
+          "end": 716.6810101351087
+        },
+        {
+          "speaker": "t",
+          "text": "さっきまでの失敗、無駄じゃなかったね。今は、誰を何で守るかが、ちゃんと見える！",
+          "wav": "artifacts/diary-part3/speech/4c0bd5c297abbeddd4caf8b1.flac",
+          "duration": 5.877333,
+          "voiceId": 8,
+          "start": 718.7104244346649,
+          "end": 724.5877574346649
+        },
+        {
+          "speaker": "z",
+          "text": "この薬で、次の必殺までつなぐのだ。使える手があるうちは、諦めないのだ。",
+          "wav": "artifacts/diary-part3/speech/d1197c94852f3e06d4c40b20.flac",
+          "duration": 6.112,
+          "voiceId": 3,
+          "start": 726.6171717342211,
+          "end": 732.729171734221
+        },
+        {
+          "speaker": "t",
+          "text": "薬が減るのは怖いけど、四人が動ける時間を買ってるんだね！",
+          "wav": "artifacts/diary-part3/speech/5a8e25659da398f266fd417a.flac",
+          "duration": 3.904,
+          "voiceId": 8,
+          "start": 734.7585860337772,
+          "end": 738.6625860337772
+        },
+        {
+          "speaker": "u",
+          "text": "まだ勝ってない。支援役を落として、守りが回り始めるところまで、気を抜かないで。",
+          "wav": "artifacts/diary-part3/speech/02e6be28847de6c40fc91257.flac",
+          "duration": 7.541333,
+          "voiceId": 61,
+          "start": 740.6920003333333,
+          "end": 748.2333333333333
+        }
+      ],
+      "start": 634.3333333333334,
+      "duration": 114.4,
+      "rate": 1,
+      "playDuration": 114.3,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "final-b",
+      "title": "第10戦・中盤：薬が尽きても。",
+      "topic": "final",
+      "clip": "final-b",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "ここから、薬なしで続けるのだ。五個とも、リオラを残すために使ったのだ。",
+          "wav": "artifacts/diary-part3/speech/c17c514fb1e089473bc99425.flac",
+          "duration": 5.589333,
+          "voiceId": 3,
+          "start": 749.1333333333333,
+          "end": 754.7226663333333
+        },
+        {
+          "speaker": "m",
+          "text": "使用したのは、二、四、五、六、七ラウンドの合間。八ラウンド目から先は、もう薬を足せない。",
+          "wav": "artifacts/diary-part3/speech/9ed73f44378804e9623c348b.flac",
+          "duration": 8.202667,
+          "voiceId": 2,
+          "start": 755.5043633333333,
+          "end": 763.7070303333334
+        },
+        {
+          "speaker": "t",
+          "text": "七ラウンドで、持ち込み全部！？　残りを考えると、結構怖いって！",
+          "wav": "artifacts/diary-part3/speech/7a15d8ad60c4facef7991ff8.flac",
+          "duration": 5.056,
+          "voiceId": 8,
+          "start": 764.4887273333334,
+          "end": 769.5447273333334
+        },
+        {
+          "speaker": "u",
+          "text": "でも、節約して倒れた九戦目とは違う。四人が残れば、通常スキルや必殺の順番が回ってくる。",
+          "wav": "artifacts/diary-part3/speech/f33838f161932e507c6fe45a.flac",
+          "duration": 9.493333,
+          "voiceId": 61,
+          "start": 770.3264243333333,
+          "end": 779.8197573333333
+        },
+        {
+          "speaker": "z",
+          "text": "ノクスの攻撃と回復。弁財天の障壁。ルネットの手数。ここからは、それを途切れさせたくないのだ。",
+          "wav": "artifacts/diary-part3/speech/363c4d585bb1cc0eb5796fed.flac",
+          "duration": 8.117333,
+          "voiceId": 3,
+          "start": 780.6014543333333,
+          "end": 788.7187873333334
+        },
+        {
+          "speaker": "m",
+          "text": "相手の支援役を落とせれば、敵の手数が減る。序盤を越えるための消耗と、その後の安定を分けて考えた構成ね。",
+          "wav": "artifacts/diary-part3/speech/0adb859d1577a92f7a7a102b.flac",
+          "duration": 7.882667,
+          "voiceId": 2,
+          "start": 789.5004843333334,
+          "end": 797.3831513333333
+        },
+        {
+          "speaker": "t",
+          "text": "同じ四人でも、薬を使う場所で、戦いの長さが変わったんだね。",
+          "wav": "artifacts/diary-part3/speech/24132b13da392ecd405117d1.flac",
+          "duration": 4.512,
+          "voiceId": 8,
+          "start": 798.1648483333333,
+          "end": 802.6768483333333
+        },
+        {
+          "speaker": "m",
+          "text": "ただし、試行ごとに乱数も進んでいるわ。薬だけが唯一の原因だと、今回の二戦から断言はしない。",
+          "wav": "artifacts/diary-part3/speech/e21dd1d8c3478004c81d1587.flac",
+          "duration": 7.168,
+          "voiceId": 2,
+          "start": 803.4585453333334,
+          "end": 810.6265453333334
+        },
+        {
+          "speaker": "u",
+          "text": "それでも、薬を使わず失った機会を、今度は使って残した。その判断の違いは、記録から追える。",
+          "wav": "artifacts/diary-part3/speech/394dfb0bb19f7ae11521cf3b.flac",
+          "duration": 9.589333,
+          "voiceId": 61,
+          "start": 811.4082423333333,
+          "end": 820.9975753333333
+        },
+        {
+          "speaker": "z",
+          "text": "必殺も回ってきたのだ！　ルネット、今度こそ長く戦えるところを見せるのだ！",
+          "wav": "artifacts/diary-part3/speech/6b599e8ee5d9f1f6bd5f3096.flac",
+          "duration": 5.792,
+          "voiceId": 3,
+          "start": 821.7792723333333,
+          "end": 827.5712723333334
+        },
+        {
+          "speaker": "t",
+          "text": "この子の攻撃を、何回も見られるようにする。守りを組む楽しさって、こういうことかも！",
+          "wav": "artifacts/diary-part3/speech/a051a35441b10082a7f97469.flac",
+          "duration": 5.802667,
+          "voiceId": 8,
+          "start": 828.3529693333334,
+          "end": 834.1556363333334
+        },
+        {
+          "speaker": "u",
+          "text": "強い人を四人並べるより、この四人の仕事が、続くように。今は、そこが大事。",
+          "wav": "artifacts/diary-part3/speech/6319863b0a2613f27a88995b.flac",
+          "duration": 8.096,
+          "voiceId": 61,
+          "start": 834.9373333333333,
+          "end": 843.0333333333333
+        }
+      ],
+      "start": 748.7333333333333,
+      "duration": 95.43333333333334,
+      "rate": 1,
+      "playDuration": 94.6,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "final-c",
+      "title": "第10戦・終盤：狼の向こうへ。",
+      "topic": "final",
+      "clip": "final-c",
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "最初は、ほぼ削れなかった狼。今は、ちゃんと体力が減ってきているのだ！",
+          "wav": "artifacts/diary-part3/speech/7b7b65c6a12b1b8e1d0e1eb9.flac",
+          "duration": 5.898667,
+          "voiceId": 3,
+          "start": 844.5666666666667,
+          "end": 850.4653336666668
+        },
+        {
+          "speaker": "m",
+          "text": "ここまで四人を残せている。火力だけを足した試行では届かなかった、長く攻撃する時間を作れたわ。",
+          "wav": "artifacts/diary-part3/speech/cc95bf96084229e7e851bfa0.flac",
+          "duration": 6.72,
+          "voiceId": 2,
+          "start": 852.0690003333334,
+          "end": 858.7890003333334
+        },
+        {
+          "speaker": "t",
+          "text": "守りの一手が、後の攻撃につながってる！　さっきの四ラウンド全滅から見ると、全然違うね！",
+          "wav": "artifacts/diary-part3/speech/8378fb3e1e1ad43ca739f090.flac",
+          "duration": 6.581333,
+          "voiceId": 8,
+          "start": 860.3926670000001,
+          "end": 866.974
+        },
+        {
+          "speaker": "u",
+          "text": "勝てそうに見えても、攻撃だけに寄せないで。残った再使用待ちを見て。",
+          "wav": "artifacts/diary-part3/speech/e3e7d5ab5a21500284a9a5ff.flac",
+          "duration": 6.282667,
+          "voiceId": 61,
+          "start": 868.5776666666667,
+          "end": 874.8603336666666
+        },
+        {
+          "speaker": "z",
+          "text": "うさぎ、最後まで厳しいのだ！",
+          "wav": "artifacts/diary-part3/speech/51fc9fc23c1203da88a8d199.flac",
+          "duration": 2.4,
+          "voiceId": 3,
+          "start": 876.4640003333334,
+          "end": 878.8640003333334
+        },
+        {
+          "speaker": "u",
+          "text": "九回、負けたから。十回目を、雑に終わらせたくない。",
+          "wav": "artifacts/diary-part3/speech/5bcb389c9b84cce2aaa9280b.flac",
+          "duration": 5.568,
+          "voiceId": 61,
+          "start": 880.4676670000001,
+          "end": 886.0356670000001
+        },
+        {
+          "speaker": "m",
+          "text": "障壁を張る人、受ける人、攻撃で回復をつなぐ人。その分担で、次の行動まで待てるわ。",
+          "wav": "artifacts/diary-part3/speech/25dbb43869d2154f165db6f5.flac",
+          "duration": 7.018667,
+          "voiceId": 2,
+          "start": 887.6393336666667,
+          "end": 894.6580006666668
+        },
+        {
+          "speaker": "t",
+          "text": "妖精や花の助けも含めて、今回の一本の結果だよ。毎回、同じ展開になる保証はないけどね。",
+          "wav": "artifacts/diary-part3/speech/fd6a3ce371300c851ce4317d.flac",
+          "duration": 6.784,
+          "voiceId": 8,
+          "start": 896.2616673333334,
+          "end": 903.0456673333334
+        },
+        {
+          "speaker": "z",
+          "text": "薬はないけど、四人の仕事は残っているのだ。ここまで来たら、最後まで行くのだ！",
+          "wav": "artifacts/diary-part3/speech/b9a697e4bb92786292c7c436.flac",
+          "duration": 6.154667,
+          "voiceId": 3,
+          "start": 904.6493340000001,
+          "end": 910.8040010000001
+        },
+        {
+          "speaker": "u",
+          "text": "あと少し。今度の、あと少しは、本当にそう言える。",
+          "wav": "artifacts/diary-part3/speech/0c2d6d6f4114b5d5db378176.flac",
+          "duration": 5.301333,
+          "voiceId": 61,
+          "start": 912.4076676666667,
+          "end": 917.7090006666667
+        },
+        {
+          "speaker": "m",
+          "text": "最後の一手まで、ゲームの順番で見届けましょう。",
+          "wav": "artifacts/diary-part3/speech/65c6f905bcbe95f863320fc6.flac",
+          "duration": 3.285333,
+          "voiceId": 2,
+          "start": 919.3126673333334,
+          "end": 922.5980003333334
+        },
+        {
+          "speaker": "z",
+          "text": "いっけー！　アテナ抜きで、第三層を越えるのだ！",
+          "wav": "artifacts/diary-part3/speech/dbec703e9894c7b42ce9a78e.flac",
+          "duration": 3.733333,
+          "voiceId": 3,
+          "start": 924.201667,
+          "end": 927.9350000000001
+        },
+        {
+          "speaker": "t",
+          "text": "やった！？　報酬まで、受け取ろ！",
+          "wav": "artifacts/diary-part3/speech/77e2fcd2c91e916bc83e69a3.flac",
+          "duration": 2.528,
+          "voiceId": 8,
+          "start": 929.5386666666667,
+          "end": 932.0666666666667
+        }
+      ],
+      "start": 844.1666666666667,
+      "duration": 89.86666666666666,
+      "rate": 1,
+      "playDuration": 88.2,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "result",
+      "title": "19R、4人生存。怒りの、そのあと。",
+      "topic": "result",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "第三層、突破なのだ！　十回目、十九ラウンド、四人生存なのだ！",
+          "wav": "artifacts/diary-part3/speech/c60c1f4a4b1a708ee6238337.flac",
+          "duration": 6.048,
+          "voiceId": 3,
+          "start": 934.4333333333334,
+          "end": 940.4813333333334
+        },
+        {
+          "speaker": "t",
+          "text": "やったー！　うさぎちゃん、今のは、褒めていいやつじゃない！？",
+          "wav": "artifacts/diary-part3/speech/f75747612228acae8663bce5.flac",
+          "duration": 4.0,
+          "voiceId": 8,
+          "start": 940.5913333333334,
+          "end": 944.5913333333334
+        },
+        {
+          "speaker": "u",
+          "text": "……うん。最後まで、アテナは使わなかった。お疲れさま。",
+          "wav": "artifacts/diary-part3/speech/50a0c97cca83258dc3cb816a.flac",
+          "duration": 5.269333,
+          "voiceId": 61,
+          "start": 944.7013333333334,
+          "end": 949.9706663333334
+        },
+        {
+          "speaker": "m",
+          "text": "最終戦の消耗は、回復薬五個。妖精一回、花九回の助けも含む。第四層の開放と、報酬の受け取りまで確認したわ。",
+          "wav": "artifacts/diary-part3/speech/ce34391edd56c17f86f0fb30.flac",
+          "duration": 9.674667,
+          "voiceId": 2,
+          "start": 950.0806663333334,
+          "end": 959.7553333333334
+        },
+        {
+          "speaker": "z",
+          "text": "最後は体力一、みたいな勝ち方ではなかったのだ。ギリギリだったのは、序盤の生き残りと、そこへ届くまでの試行錯誤なのだ。",
+          "wav": "artifacts/diary-part3/speech/5d5d6c7264ded349408ed06d.flac",
+          "duration": 9.397333,
+          "voiceId": 3,
+          "start": 959.8653333333334,
+          "end": 969.2626663333334
+        },
+        {
+          "speaker": "u",
+          "text": "アテナがいなくても勝てた。でも、アテナ一強の問題が、これで解決したとは言わない。",
+          "wav": "artifacts/diary-part3/speech/6afc0733b57daa76c18dd1c3.flac",
+          "duration": 8.0,
+          "voiceId": 61,
+          "start": 969.3726663333334,
+          "end": 977.3726663333334
+        },
+        {
+          "speaker": "m",
+          "text": "覚醒の準備と、引き継いだ三つのティア四石に支えられた、今回の一例。別の手持ちや低い装備での再現は、まだ未検証よ。",
+          "wav": "artifacts/diary-part3/speech/8fa8fd33f417176c535a9265.flac",
+          "duration": 9.162667,
+          "voiceId": 2,
+          "start": 977.4826663333334,
+          "end": 986.6453333333335
+        },
+        {
+          "speaker": "t",
+          "text": "それでも、誰を入れるかだけじゃなくて、誰を先頭にして、どこで守るか。考える楽しさは、今回かなり見えたね！",
+          "wav": "artifacts/diary-part3/speech/fb7bb82efc6a8c4e26708273.flac",
+          "duration": 8.064,
+          "voiceId": 8,
+          "start": 986.7553333333334,
+          "end": 994.8193333333334
+        },
+        {
+          "speaker": "z",
+          "text": "ぼくも、ノクスと弁財天の組み合わせを、また使いたくなったのだ！",
+          "wav": "artifacts/diary-part3/speech/a77c33b350b46676f4211da0.flac",
+          "duration": 4.650667,
+          "voiceId": 3,
+          "start": 994.9293333333334,
+          "end": 999.5800003333334
+        }
+      ],
+      "start": 934.0333333333334,
+      "duration": 66.03333333333333
+    },
+    {
+      "id": "ending",
+      "title": "次の階へ。今日は、ここまで。",
+      "topic": "ending",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "u",
+          "text": "次も、勝ったところだけ見せないで。うまくいかなかった手から、何を学んだかが見たい。",
+          "wav": "artifacts/diary-part3/speech/b58bd5014da3f3380eb053e6.flac",
+          "duration": 7.488,
+          "voiceId": 61,
+          "start": 1000.4666666666667,
+          "end": 1007.9546666666668
+        },
+        {
+          "speaker": "z",
+          "text": "うさぎ、怒りながら、最後まで付き合ってくれたのだ。ありがとうなのだ！",
+          "wav": "artifacts/diary-part3/speech/3a12a104c52b81d5b074f990.flac",
+          "duration": 5.066667,
+          "voiceId": 3,
+          "start": 1008.0646666666668,
+          "end": 1013.1313336666668
+        },
+        {
+          "speaker": "t",
+          "text": "じゃあ、お疲れのお茶会！　ぬいぐるみちゃんの分も、席、作っとくね！",
+          "wav": "artifacts/diary-part3/speech/f84e90e980f7dbef006f8c0f.flac",
+          "duration": 5.525333,
+          "voiceId": 8,
+          "start": 1013.2413336666667,
+          "end": 1018.7666666666668
+        },
+        {
+          "speaker": "m",
+          "text": "白亜の塔攻略日記、パートスリー。ご視聴、ありがとうございました。",
+          "wav": "artifacts/diary-part3/speech/513aaa8085c6b58671406942.flac",
+          "duration": 5.034667,
+          "voiceId": 2,
+          "start": 1018.8766666666668,
+          "end": 1023.9113336666668
+        },
+        {
+          "speaker": "z",
+          "text": "次の階でも、四人の仕事を探すのだ。なのだ！",
+          "wav": "artifacts/diary-part3/speech/13436d55d394ed852430f973.flac",
+          "duration": 3.872,
+          "voiceId": 3,
+          "start": 1024.0213336666668,
+          "end": 1027.8933336666669
+        }
+      ],
+      "start": 1000.0666666666667,
+      "duration": 28.3
+    }
+  ],
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "type": "Native legal-command play followed by four-voice commentary; sequential attempts without seed resets; Athena prohibited including farms",
+  "voicevoxVersion": "0.26.0",
+  "duration": 1028.3666666666668,
+  "commonOpening": {
+    "duration": 23,
+    "frames": 690,
+    "sourceCommit": "017a0ccca241d1ec6a72b8a73f63188fc1043875"
+  },
+  "templateCommit": "745c2d099d3c0a99f6a2eb1cd3a93a87147c27e6"
+}
