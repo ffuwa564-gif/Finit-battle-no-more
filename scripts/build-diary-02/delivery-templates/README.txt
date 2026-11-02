@@ -21,3 +21,5 @@
 [完成動画の同期](Finished-Movie-Sync.json) · [デコード](Decode-Validation.json) · [ブラウザ](Validation.json) · [画面](Visual-QC.json) · [全員表示](Roster-Coverage.json) · [目視レビュー](Manual-Visual-Review.json)
 
 各検査は同一完成動画の SHA に固定。[公開ファイル SHA](SHA256SUMS.txt) · [梱包台帳](Packaging-Manifest.json)。再編集した場合は全検査を更新してください。
+
+表示修正の追加工程：[最終cue配置修正](Post-Cue-Fix.json) · [基礎レンダーの入力凍結](Render-Input-Freeze.json)。修正版ASS/小素材はrender/cue-fixへ分離し、元のrender/素材を保存しています。

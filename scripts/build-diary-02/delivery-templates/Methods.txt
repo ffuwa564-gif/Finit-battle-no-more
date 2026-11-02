@@ -15,3 +15,5 @@ LABは12ラウンドの護衛試練を使う未実装研究です。実際のシ
 この制作ブランチは動画と研究の保存用です。ゲーム本体の変更やitch.ioへの配信更新は含みません。
 
 休番の操作契約は、収録後の別隔離版patched-v2で補修しました。休番中の手動防御とノエルの号令が通る抜け道を拒否し、休番中の指揮対象も行動しないことを11件の対象検査と独立再現で確認。今回の本命と失敗例はその操作を使っておらず、captureFixture/captureSteps/finalBattleが保存済み記録と同じであることをcapture-contract-revalidation.jsonに記録しています。全ての合法入力の網羅を主張するものではありません。
+
+最終表示修正：B章の黄金色cueと平均薬数footnoteが実フレームで重なったため、cue_fix.pyを追加工程として適用。cueをy765へ移し、修正版ASS/visual/plateはrender/cue-fixへ分離、元レンダー入力は変更していません。その他章とAAC packets/decoded PCMを保ち、最終SHAで全検査をやり直しています。Post-Cue-Fix.jsonとRender-Input-Freeze.jsonで基礎版と配布版を区別します。
