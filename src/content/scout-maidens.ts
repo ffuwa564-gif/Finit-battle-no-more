@@ -1,3 +1,5 @@
+import { createFacePortrait } from './portrait-framing';
+import type { PortraitHeadBounds } from '../domain/types';
 import type { AssetDef, CharacterDef, MaterialCost, NamedMaterialDef, SkillDef } from '../domain/types';
 import { SCOUT_SKILLS } from '../domain/scout-skills';
 
@@ -38,10 +40,17 @@ export const scoutMaidenMaterials: NamedMaterialDef[] = [
   { id: 'name-register:rare', name: '名簿の綴じ紐' }, { id: 'night-watch:rare', name: '返された夜番灯' },
   { id: 'herbal-cloth:rare', name: '薬草と余り布' }, { id: 'night-thread:rare', name: '帰還の残り糸' },
 ];
-export const scoutMaidenAssets: AssetDef[] = ['ione', 'neri', 'fio', 'ruka'].flatMap(id => {
+// Reviewed on the 1024x1536 originals: include the complete hair/head, not the torso.
+const scoutHeads: Record<typeof scoutRecruitments[number]['characterId'], PortraitHeadBounds> = {
+  ione: { x: .43, y: .01, width: .24, height: .19 },
+  neri: { x: .38, y: .01, width: .24, height: .19 },
+  fio: { x: .39, y: .01, width: .24, height: .19 },
+  ruka: { x: .42, y: .01, width: .24, height: .19 },
+};
+export const scoutMaidenAssets: AssetDef[] = scoutRecruitments.flatMap(({ characterId: id }) => {
   const source = { path: `art/scout-${id}.webp`, width: 1024, height: 1536, rights: 'Original AI-generated adult female character artwork created for the STILLVEIL scout conference and reused for version1.10.' };
   return [
     { ...source, id: `${id}-art`, kind: 'illustration' as const, anchor: '50% 25%' },
-    { ...source, id: `${id}-portrait`, kind: 'portrait' as const, anchor: '50% 16%', portraitZoom: 2.8, portraitOrigin: '50% 16%' },
+    createFacePortrait(source, `${id}-portrait`, scoutHeads[id]),
   ];
 });
