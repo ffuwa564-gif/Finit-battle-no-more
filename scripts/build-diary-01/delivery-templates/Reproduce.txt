@@ -12,3 +12,5 @@
 8. `python scripts/build-diary-01/package.py --check-inputs` は必要な完成ファイル検証を確認するだけです。引数なしは再梱包を実行します。`python scripts/build-diary-01/publish.py --check-only` は公開用ファイルのローカル整合性検査だけを行い、push は行いません。
 
 Production-Inputs.json は編集入力のハッシュ、Recording-Sources.json は元収録のストリーム情報、Packaging-Manifest.json は納品ファイル構成、SHA256SUMS.txt は公開ファイルのハッシュを記録します。最終ミックスの音声だけのファイルは音楽の再配布を避けるため同梱していません。原音源から再生成してください。
+
+初回の見出し修正：基礎レンダー完走後に `python scripts/build-diary-01/header_fix.py` を1回実行。後半・対照の2行ラベルがLAB見出しと重なったため、元のヘッダーを復元し短い1行へ修正する。AACのpacketとdecode後PCMは元完成版と完全一致を検証。`render-input-freeze.json` は基礎レンダー、`post-header-fix.json` は配布完成版のSHAと追加工程を記録する。全ての完成動画検査は後者の後で実行する。

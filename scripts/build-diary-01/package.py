@@ -43,6 +43,9 @@ def snapshot(files):return{rel(p):{'sha256':sha(p),'bytes':p.stat().st_size}for 
 def validate_inputs():
  assert MOV.is_file(),'Finished movie is not ready';assert MOV.stat().st_size<LIMIT,'MP4 exceeds GitHub100MiB; re-export, then repeat every finished-file check'
  finished=sha(MOV);checks={}
+ post=read(safe_file(O/'post-header-fix.json'));assert post['passed']and post['finishedSha256']==finished and post['audioPacketsAndDecodedSamplesUnchanged']
+ assert post['processingSha256']==sha(SCRIPT/'header_fix.py')
+ for name,digest in post['inputHashes'].items():assert sha(safe_file(path(name)))==digest,'Header repair input changed: '+name
  for name in FINAL_CHECKS:
   r=read(safe_file(D/name));assert r.get('passed')is True and r.get('finishedSha256')==finished,name+' must pass for this exact MP4';checks[name]=r
  registry=read(safe_file(O/'registry.json'));gems=read(safe_file(O/'gem-audit.json'))
