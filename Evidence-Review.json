@@ -1,0 +1,388 @@
+{
+  "passed": true,
+  "episode": "BRD-002",
+  "sourceMain": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "appVersion": "1.11.0",
+  "contentVersion": "v1.10-r1",
+  "rulesVersion": "2",
+  "presentationChangeOnlyVerified": {
+    "productionSourceNotModifiedByResearch": true,
+    "nativeEngineCopiedFromCurrentMain": true,
+    "latestPortraitHeadMetadataAvailable": true
+  },
+  "certification": {
+    "productionCertified": [],
+    "prototypeCertified": [
+      "ruka",
+      "neri"
+    ]
+  },
+  "newCertification": {
+    "characterId": "neri",
+    "witnessId": "LAB-NERI-001",
+    "stage": "research-watch-relay",
+    "conditionsHash": "b793af5e2c2aef4f13b6f76053e1d3922b947034c56d394fe7da40b94853eb58",
+    "necessityCertificate": {
+      "path": "artifacts/build-diary-02/research/research-necessity-certificate.json",
+      "sha256": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd",
+      "passed": true
+    },
+    "sufficiencyEvidence": {
+      "path": "artifacts/build-diary-02/research/research-summary.json",
+      "sha256": "070bbbc94178d9ee7ec7ed08a5ea4df21386cbc71122219a886665d38e59be29",
+      "sampleSize": 100,
+      "wins": 100,
+      "universalWinTheorem": false
+    },
+    "edgeChecks": {
+      "path": "artifacts/build-diary-02/research/research-edge-checks.json",
+      "sha256": "afb52017ace4c12dde183143a463917ac6241296e740de173fc7a53e14fcdfb7",
+      "passed": true
+    }
+  },
+  "priorCertificationReview": {
+    "ruka": {
+      "conditionsHash": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+      "checks": [
+        {
+          "id": "LAB-RUKA-001",
+          "result": "exclusive-revalidated",
+          "sameConditions": true,
+          "source": "artifacts/build-diary-02/research/research-cross-audit.json",
+          "oldCertificate": "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+          "oldCertificateSha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+          "explanation": "旧ルカ主編成の同条件100/100・平均11.63Rを再現。新休番ネリでは0/100。休番は敵HP回復/被害上限を変えず、各4R窓の最大1200<4800という旧必須性を維持。",
+          "mainWins": 100,
+          "mainMeanRounds": 11.63,
+          "newNeriCompetitorWins": 0,
+          "crossNecessityBound": {
+            "damageCapPerRound": 300,
+            "period": 4,
+            "maximumDamageBetweenRestores": 1200,
+            "enemyMaxHp": 4800
+          }
+        }
+      ]
+    }
+  },
+  "samples": [
+    {
+      "id": "neri-main",
+      "displayLabel": "neri-main",
+      "opt": {},
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 1.02,
+      "meanMinimumHpRatio": 0.5026418278113067,
+      "meanEndHpRatio": 0.9630065278975244
+    },
+    {
+      "id": "no-rest",
+      "displayLabel": "no-rest",
+      "opt": {
+        "mode": "no-rest"
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 6,
+      "meanPotions": 0.0,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.0
+    },
+    {
+      "id": "never-self",
+      "displayLabel": "never-self",
+      "opt": {
+        "mode": "never-self"
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 12,
+      "meanPotions": 0.49,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.10503623188405797
+    },
+    {
+      "id": "same-only",
+      "displayLabel": "same-only",
+      "opt": {
+        "mode": "same-only"
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 11.28,
+      "meanPotions": 2.22,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.0
+    },
+    {
+      "id": "rest-order-reversed",
+      "displayLabel": "rest-order-reversed",
+      "opt": {
+        "plan": [
+          "fio",
+          "liora-awakened",
+          "nox",
+          "neri",
+          null
+        ]
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 1.62,
+      "meanMinimumHpRatio": 0.4525633698731371,
+      "meanEndHpRatio": 0.9163481647986206
+    },
+    {
+      "id": "neri-all-partners-replaced",
+      "displayLabel": "他2枠変更（覚醒リオラ共通）",
+      "opt": {
+        "party": [
+          "neri",
+          "seris-awakened",
+          "liora-awakened",
+          "benzaiten"
+        ]
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 0.69,
+      "meanMinimumHpRatio": 0.6295729769676068,
+      "meanEndHpRatio": 0.9832082152974505
+    },
+    {
+      "id": "no-neri-t6",
+      "displayLabel": "no-neri-t6",
+      "opt": {
+        "party": [
+          "astraea",
+          "seris-awakened",
+          "nox",
+          "eos"
+        ],
+        "leader": "astraea",
+        "tier": 6,
+        "mode": "no-rest"
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 6,
+      "meanPotions": 2.46,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.0
+    },
+    {
+      "id": "athena-t6",
+      "displayLabel": "athena-t6",
+      "opt": {
+        "party": [
+          "athena",
+          "selene",
+          "elaine-awakened",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "tier": 6,
+        "mode": "no-rest"
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 6,
+      "meanPotions": 0.0,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.0
+    },
+    {
+      "id": "solo-neri",
+      "displayLabel": "solo-neri",
+      "opt": {
+        "party": [
+          "neri"
+        ],
+        "plan": [
+          "neri",
+          null
+        ],
+        "tier": 6
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 4.56,
+      "meanPotions": 3.02,
+      "meanMinimumHpRatio": 0.0,
+      "meanEndHpRatio": 0.0
+    },
+    {
+      "id": "no-side-actions",
+      "displayLabel": "no-side-actions",
+      "opt": {
+        "sideActions": false
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 0.0,
+      "meanMinimumHpRatio": 0.5421800714373691,
+      "meanEndHpRatio": 1.0
+    },
+    {
+      "id": "tier1",
+      "displayLabel": "tier1",
+      "opt": {
+        "tier": 1
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 1.57,
+      "meanMinimumHpRatio": 0.43995960093607583,
+      "meanEndHpRatio": 0.9632572976967607
+    },
+    {
+      "id": "tier3",
+      "displayLabel": "tier3",
+      "opt": {
+        "tier": 3
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 1.04,
+      "meanMinimumHpRatio": 0.5026418278113067,
+      "meanEndHpRatio": 0.9630065278975244
+    },
+    {
+      "id": "tier6",
+      "displayLabel": "tier6",
+      "opt": {
+        "tier": 6
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 12,
+      "meanPotions": 1.02,
+      "meanMinimumHpRatio": 0.5026418278113067,
+      "meanEndHpRatio": 0.9630065278975244
+    },
+    {
+      "id": "two-healers-no-guard",
+      "displayLabel": "two-healers-no-guard",
+      "opt": {
+        "party": [
+          "neri",
+          "nox",
+          "elaine-awakened",
+          "fio"
+        ]
+      },
+      "n": 100,
+      "wins": 88,
+      "meanRounds": 12,
+      "meanPotions": 1.38,
+      "meanMinimumHpRatio": 0.6073663274745607,
+      "meanEndHpRatio": 0.9179782608695652
+    },
+    {
+      "id": "two-healers-no-guard-reverse",
+      "displayLabel": "two-healers-no-guard-reverse",
+      "opt": {
+        "party": [
+          "neri",
+          "nox",
+          "elaine-awakened",
+          "fio"
+        ],
+        "plan": [
+          "fio",
+          "elaine-awakened",
+          "nox",
+          "neri",
+          null
+        ]
+      },
+      "n": 100,
+      "wins": 57,
+      "meanRounds": 11.14,
+      "meanPotions": 1.65,
+      "meanMinimumHpRatio": 0.23204070305272897,
+      "meanEndHpRatio": 0.5048586956521739
+    }
+  ],
+  "corrections": [
+    "neri-all-partners-replacedは本命変更前の内部ID。最終本命と覚醒リオラが共通なので他2枠変更が正しい。3枠全交換の証明ではない。"
+  ],
+  "codeInputs": [
+    {
+      "path": "scripts/build-diary-02/research-contract-v2.py",
+      "sha256": "ce5f19226af6df0573c95a8144c4474e3976d56c54fae9d712a6dba03f80e911"
+    },
+    {
+      "path": "scripts/build-diary-02/research-certificate.mts",
+      "sha256": "364bb4a96df6f04977e0bbc0b6036114ae1e6acd4d9cd8fb1f8ccbaf918f3e3c"
+    },
+    {
+      "path": "scripts/build-diary-02/research-runner.mts",
+      "sha256": "e960cf97d7b48104e49ea3f94428fcb5541240074bfaeef86ef8347d6e4d87d5"
+    },
+    {
+      "path": "scripts/build-diary-02/research-finalize.py",
+      "sha256": "5a53c8ce0f08db60aef478ebc05be3b3f3de1427aa311e59e5343aee2a689cd2"
+    },
+    {
+      "path": "scripts/build-diary-02/research-contract-v2.mts",
+      "sha256": "f0751f73ac0533fee27a800894f31918a8fb905afc36c087501a50202b856e5b"
+    },
+    {
+      "path": "scripts/build-diary-02/research-edge.mts",
+      "sha256": "8be76d78ed2aa868b2b2e84dca692288e83bdbef8e301a0e928d4acc0c446135"
+    },
+    {
+      "path": "scripts/build-diary-02/research-bootstrap.py",
+      "sha256": "8b59162087b77632e08a70d5e2dc7cabec15311c7e5ef4d1ac370ad6148375cf"
+    },
+    {
+      "path": "scripts/build-diary-02/research-tuning.mts",
+      "sha256": "5935fde80ae0df14cefa83826bdb2123921248c9dedbced36c41c07cc7ef7a0e"
+    },
+    {
+      "path": "scripts/build-diary-02/research-cross.mts",
+      "sha256": "15cc3c6b4267839f556a1c2ae017e98b92ba42744d4ca188026ecd24bad53977"
+    },
+    {
+      "path": "scripts/build-diary-02/research-rules.mts",
+      "sha256": "501a02375c436997fc1a49fa43f2b48a548cefccc43b84d1aa40ae9c4101e036"
+    }
+  ],
+  "codeHashes": {
+    "scripts/build-diary-02/research-contract-v2.py": "ce5f19226af6df0573c95a8144c4474e3976d56c54fae9d712a6dba03f80e911",
+    "scripts/build-diary-02/research-certificate.mts": "364bb4a96df6f04977e0bbc0b6036114ae1e6acd4d9cd8fb1f8ccbaf918f3e3c",
+    "scripts/build-diary-02/research-runner.mts": "e960cf97d7b48104e49ea3f94428fcb5541240074bfaeef86ef8347d6e4d87d5",
+    "scripts/build-diary-02/research-finalize.py": "5a53c8ce0f08db60aef478ebc05be3b3f3de1427aa311e59e5343aee2a689cd2",
+    "scripts/build-diary-02/research-contract-v2.mts": "f0751f73ac0533fee27a800894f31918a8fb905afc36c087501a50202b856e5b",
+    "scripts/build-diary-02/research-edge.mts": "8be76d78ed2aa868b2b2e84dca692288e83bdbef8e301a0e928d4acc0c446135",
+    "scripts/build-diary-02/research-bootstrap.py": "8b59162087b77632e08a70d5e2dc7cabec15311c7e5ef4d1ac370ad6148375cf",
+    "scripts/build-diary-02/research-tuning.mts": "5935fde80ae0df14cefa83826bdb2123921248c9dedbced36c41c07cc7ef7a0e",
+    "scripts/build-diary-02/research-cross.mts": "15cc3c6b4267839f556a1c2ae017e98b92ba42744d4ca188026ecd24bad53977",
+    "scripts/build-diary-02/research-rules.mts": "501a02375c436997fc1a49fa43f2b48a548cefccc43b84d1aa40ae9c4101e036"
+  },
+  "limits": [
+    "すべて新技・新試練は隔離LABの研究案。現行ゲームへの実装/公開はしていない。",
+    "過労6R離脱・12R3人生存・倒せない規模の敵HPは、この固有の遊びを検証するために設計した人工的な制約。既存ステージの必要性ではない。",
+    "100固定seedは実測であり真の普遍的勝率ではない。",
+    "本命はT1でも100/100。極端な石厳選を要求するエンドコンテンツになったとは言えない。",
+    "本命編成は逆順/補助なしも100/100。順番の最適解が常に厳密に問われるゲームになったとは言えない。",
+    "新休息能力/蘇生が別の少女へ追加されたら必須性を再審し、反例が出れば宝石を取り下げる。"
+  ],
+  "captureContractRevalidation": {
+    "path": "artifacts/build-diary-02/research/capture-contract-revalidation.json",
+    "sha256": "d93888a98574e8328e9702cf703d86fa96935eac5a48dfd966cceb54060ae108",
+    "passed": true,
+    "variant": "patched-v2",
+    "existingCaptureLogsUnchanged": true,
+    "targetedChecks": 11,
+    "exhaustiveCommandCoverage": false
+  }
+}

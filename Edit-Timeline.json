@@ -1,0 +1,90 @@
+[
+  {
+    "chapter": "neri-now",
+    "start": 81.36666666666667,
+    "duration": 58.6,
+    "source": "artifacts/build-diary-02/capture/live-neri.mov",
+    "sourceStart": 4.7,
+    "sourceEnd": 62.166666666666664,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 1724,
+    "playDuration": 57.46666666666667,
+    "piece": "artifacts/build-diary-02/render/neri-now-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": false,
+    "pieceHash": "499e9f0640cde1b3ac6cff2e382de1c715379347614d47fd04de655ab529be5f"
+  },
+  {
+    "chapter": "failed-draft",
+    "start": 188.93333333333334,
+    "duration": 67.83333333333333,
+    "source": "artifacts/build-diary-02/capture/lab-counter.mov",
+    "sourceStart": 27.066666666666666,
+    "sourceEnd": 58.46666666666667,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 942,
+    "playDuration": 31.4,
+    "piece": "artifacts/build-diary-02/render/failed-draft-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "e220ad42057dfbbfec79c2deff41abc3fb07120f19ca9cd017e518628794de81"
+  },
+  {
+    "chapter": "lab-victory-a",
+    "start": 465.5333333333333,
+    "duration": 72.83333333333333,
+    "source": "artifacts/build-diary-02/capture/lab-victory.mov",
+    "sourceStart": 3.433333333333333,
+    "sourceEnd": 72.73333333333333,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 2079,
+    "playDuration": 69.3,
+    "piece": "artifacts/build-diary-02/render/lab-victory-a-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "ced83add5627b148aed9b7a26b93ac78c730b3169348a744456709b69e17d9b6"
+  },
+  {
+    "chapter": "lab-victory-b",
+    "start": 538.3666666666667,
+    "duration": 62.6,
+    "source": "artifacts/build-diary-02/capture/lab-victory.mov",
+    "sourceStart": 133.86666666666667,
+    "sourceEnd": 183.73333333333332,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 1496,
+    "playDuration": 49.86666666666667,
+    "piece": "artifacts/build-diary-02/render/lab-victory-b-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "5d190cd7f8fd65d4a1fdab2022cb8f6e42d6309435398e95942baa968b2110fb"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "scope": "This manifest covers reused series assets only. New Part2 artwork has its own artwork-provenance.json. No new paid music generation.",
+  "inputs": {
+    "artifacts/build-diary-02/assets/z-panic.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/z-panic.png",
+      "sha256": "0ad8b7bf7e6b5da3efd1e6e25f36fa231d3efa7986b8d812ff4f6d4f8ad4993e"
+    },
+    "artifacts/build-diary-02/assets/t-research-think.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/t-research-think.png",
+      "sha256": "7060c68b46304454a0305b2703273d5d30839109e227b22b57582c663cd50748"
+    },
+    "artifacts/build-diary-02/assets/opening-original.mp3": {
+      "reusedFrom": "artifacts/build-diary-01/assets/opening-original.mp3",
+      "sha256": "542268fcbbc9f735025dd8fbc8f7835598cf7c2766aa7156f2657d15b11732ca"
+    },
+    "artifacts/build-diary-02/assets/research-lab.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/research-lab.png",
+      "sha256": "60ea1d9952f40a0259a91e58f36c4116e14722f2af0e2299433f8a695cc0a26e"
+    },
+    "artifacts/build-diary-02/assets/m-happy.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/m-happy.png",
+      "sha256": "7f9cbf0adcc07567fc326e75b378bb9389b1e4180f0965303b515750994302d5"
+    },
+    "artifacts/build-diary-02/assets/m-deadpan.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/m-deadpan.png",
+      "sha256": "e4fcb035dcddbf3591e6de9d8305552f1e04505cdfb49ce3f5d4a9ef17d7c04c"
+    },
+    "artifacts/build-diary-02/assets/z-happy.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/z-happy.png",
+      "sha256": "b51f9b8747b2b43f303facec5fd72bb04f2a5431cffc2c62a418db2944b935da"
+    },
+    "artifacts/build-diary-02/assets/t-research-care.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/t-research-care.png",
+      "sha256": "cee26bbbda6649f4aebf9a064405efc01963f405bf203afab1865068920b9bcb"
+    },
+    "artifacts/build-diary-02/assets/t-research-happy.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/t-research-happy.png",
+      "sha256": "d76bdbd3a40f3350b8bde8ed6a336c9dc72d44f94e5067050db2500f369f7905"
+    },
+    "artifacts/build-diary-02/assets/t-research-determined.png": {
+      "reusedFrom": "artifacts/build-diary-01/assets/t-research-determined.png",
+      "sha256": "d85daebbfeb97a9a2e1cc4a73384443b112b134d8e8a180624b190a3ed315d0a"
+    },
+    "artifacts/build-diary-02/assets/reused-artwork-provenance.json": {
+      "reusedFrom": "artifacts/build-diary-01/assets/artwork-provenance.json",
+      "sha256": "57bf2c04fb3cde952d310272110dc3581a7a08ffdef2b7b427a681403c8c9d86"
+    }
+  },
+  "newPaidMusicGeneration": false
+}

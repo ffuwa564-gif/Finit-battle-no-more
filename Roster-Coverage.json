@@ -1,0 +1,2666 @@
+{
+  "passed": true,
+  "finishedSha256": "264ff183af3e31d7f9ececc09c13f50f0d5810fae236ba9387015f976b2722b9",
+  "registrySha256": "2a03740dad18a25f738ee89e5ad104190779cec27da9845ce4d1b5b79b940318",
+  "sourceRosterSha256": "ef4be4dffd8d1ea9fa3a24d56538bf11743c8d8a54411415e571aa0a6993cb35",
+  "sourceMetadataSha256": "5592eb9217990cb20faa444643133df5b6054495376cd878767c312814bdc383",
+  "expectedSeriesIds": [
+    "BD001",
+    "BD002",
+    "BD003",
+    "BD004",
+    "BD005",
+    "BD006",
+    "BD007",
+    "BD008",
+    "BD009",
+    "BD010",
+    "BD011",
+    "BD012",
+    "BD013",
+    "BD014",
+    "BD015",
+    "BD016",
+    "BD017",
+    "BD018",
+    "BD019",
+    "BD020",
+    "BD021",
+    "BD022",
+    "BD023",
+    "BD024",
+    "BD025",
+    "BD026",
+    "BD027",
+    "BD028",
+    "BD029",
+    "BD030",
+    "BD031",
+    "BD032",
+    "BD033",
+    "BD034",
+    "BD035",
+    "BD036",
+    "BD037",
+    "BD038",
+    "BD039",
+    "BD040",
+    "BD041",
+    "BD042",
+    "BD043",
+    "BD044",
+    "BD045",
+    "BD046",
+    "BD047",
+    "BD048",
+    "BD049",
+    "BD050",
+    "BD051",
+    "BD052",
+    "BD053",
+    "BD054",
+    "BD055",
+    "BD056",
+    "BD057",
+    "BD058",
+    "BD059",
+    "BD060",
+    "BD061",
+    "BD062",
+    "BD063",
+    "BD064",
+    "BD065",
+    "BD066",
+    "BD067",
+    "BD068",
+    "BD069",
+    "BD070",
+    "BD071",
+    "BD072"
+  ],
+  "shownSeriesIds": [
+    "BD001",
+    "BD002",
+    "BD003",
+    "BD004",
+    "BD005",
+    "BD006",
+    "BD007",
+    "BD008",
+    "BD009",
+    "BD010",
+    "BD011",
+    "BD012",
+    "BD013",
+    "BD014",
+    "BD015",
+    "BD016",
+    "BD017",
+    "BD018",
+    "BD019",
+    "BD020",
+    "BD021",
+    "BD022",
+    "BD023",
+    "BD024",
+    "BD025",
+    "BD026",
+    "BD027",
+    "BD028",
+    "BD029",
+    "BD030",
+    "BD031",
+    "BD032",
+    "BD033",
+    "BD034",
+    "BD035",
+    "BD036",
+    "BD037",
+    "BD038",
+    "BD039",
+    "BD040",
+    "BD041",
+    "BD042",
+    "BD043",
+    "BD044",
+    "BD045",
+    "BD046",
+    "BD047",
+    "BD048",
+    "BD049",
+    "BD050",
+    "BD051",
+    "BD052",
+    "BD053",
+    "BD054",
+    "BD055",
+    "BD056",
+    "BD057",
+    "BD058",
+    "BD059",
+    "BD060",
+    "BD061",
+    "BD062",
+    "BD063",
+    "BD064",
+    "BD065",
+    "BD066",
+    "BD067",
+    "BD068",
+    "BD069",
+    "BD070",
+    "BD071",
+    "BD072"
+  ],
+  "checks": [
+    {
+      "type": "exact_finalized_registry",
+      "passed": true
+    },
+    {
+      "type": "roster_is_first_complete_chapter",
+      "passed": true
+    },
+    {
+      "type": "source_movie_sha256",
+      "passed": true
+    },
+    {
+      "type": "metadata_passed",
+      "passed": true
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "scripts/build-diary-02/roster.py"
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "scripts/build-diary-02/visuals.py"
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "artifacts/build-diary-02/render-plan.json"
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "artifacts/build-diary-02/registry.json"
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
+    },
+    {
+      "type": "producer_input_unchanged",
+      "passed": true,
+      "path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
+    },
+    {
+      "type": "producer_registry_bound",
+      "passed": true
+    },
+    {
+      "type": "all_ids_once",
+      "passed": true
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD001",
+      "fullSeconds": 3.033333333333333,
+      "cardRect": [
+        320,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 45
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD001",
+      "characterId": "elaine",
+      "badge": "outline-weak",
+      "artSha256": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD002",
+      "fullSeconds": 4.6,
+      "cardRect": [
+        590,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 69
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD002",
+      "characterId": "liora",
+      "badge": "outline-weak",
+      "artSha256": "5b85db4b3047094a833c7592bc603f771907acb2408e8543f11b55ffcdda60c1"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD003",
+      "fullSeconds": 6.2,
+      "cardRect": [
+        843,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 93
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD003",
+      "characterId": "seris",
+      "badge": "outline-weak",
+      "artSha256": "4955d37d4b3665bb13b0a0ae3774d7c3ba3f9b5e75b0536a4d28ed27530e86a9"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD004",
+      "fullSeconds": 7.8,
+      "cardRect": [
+        978,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 117
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD004",
+      "characterId": "noelle",
+      "badge": "outline-weak",
+      "artSha256": "5697468ce5b3ac063c111cf62a0a3967714c451d8d229bf95f3ab536ff41615e"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD005",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 190
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD005",
+      "characterId": "hollow-keeper",
+      "badge": "none",
+      "artSha256": "15c47ebe4ed621083843bf0a9875d4576c9294bc07d0190726c8a36ccb47f83e"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD006",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 238
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD006",
+      "characterId": "veil-priestess",
+      "badge": "none",
+      "artSha256": "d3a271b2acc7702220a1ce8ea3d86dfc6489515de0f1d35e451198ac2cb04077"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD007",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 286
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD007",
+      "characterId": "thorn-witch",
+      "badge": "none",
+      "artSha256": "fc0479f4f40978963b518a2dcb31154f336fa41a7eb0ed31d899058b541ea9b3"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD008",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 334
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD008",
+      "characterId": "iris",
+      "badge": "outline-weak",
+      "artSha256": "430cec7b851d80a821ebe394d97b8b2bfe0c5dfaad44a8ad754dc1b6809f505e"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD009",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 382
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD009",
+      "characterId": "mireille",
+      "badge": "none",
+      "artSha256": "6a88e0730d9712352846736778ced81316d963f5bfa5ecb132a2d1432347c557"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD010",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 430
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD010",
+      "characterId": "asteria",
+      "badge": "outline-weak",
+      "artSha256": "fa8b83059bebf6dff99114b17a2211619fc57629dfb22f2305644f60c1aba275"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD011",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 478
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD011",
+      "characterId": "evelyn",
+      "badge": "outline-weak",
+      "artSha256": "8288456a045bde93683d43d2679f2705c61cc78b40df2719a584d5f927860a2a"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD012",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 525
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD012",
+      "characterId": "selene",
+      "badge": "outline-weak",
+      "artSha256": "2ba6fe50c146e6959acf6ba18772be9e9aa25bcab368b377460acb1b4a36056c"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD013",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 573
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD013",
+      "characterId": "athena",
+      "badge": "outline-weak",
+      "artSha256": "178d38a939b4befa2543a00e50132248b5269e07ea0d1325815f6045550d9338"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD014",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 621
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD014",
+      "characterId": "flora",
+      "badge": "none",
+      "artSha256": "f9763bdcb0f6f27f2dcc7020300e8aeda43a8b897dc269a8e806bcb47febf913"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD015",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 669
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD015",
+      "characterId": "rainbow-iris",
+      "badge": "none",
+      "artSha256": "20f24c47c22fe7297742088750127a70b2f69cd2bda3002d16b4178024a6ce2a"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD016",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 717
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD016",
+      "characterId": "eos",
+      "badge": "none",
+      "artSha256": "5628e3b31601f44acddb067ca2175b65a785c5223a7e341bad07303ab2c2c6c5"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD017",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 765
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD017",
+      "characterId": "nike",
+      "badge": "none",
+      "artSha256": "347e2dab02a2ea0aba1054172a838021145f1d76d1186f692595204b9d2aa8a3"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD018",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 813
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD018",
+      "characterId": "vespera",
+      "badge": "outline-weak",
+      "artSha256": "39e8178b84320a824b59957af3f0f3639fd87f5d322acbade28b7a798de4cedc"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD019",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 861
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD019",
+      "characterId": "miette",
+      "badge": "outline-weak",
+      "artSha256": "7a9f78de67573076fa2f65b89af6b283ab730771f7b0199793f73a326fa210a6"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD020",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 908
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD020",
+      "characterId": "tikka",
+      "badge": "none",
+      "artSha256": "bcb503909026844374c23768e60caf0b2c538e71eac605205133cd25d7a2134c"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD021",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 956
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD021",
+      "characterId": "nox",
+      "badge": "outline-weak",
+      "artSha256": "7dad95f3990ba36410e7d5b33dcc1b2d1cdb6cd315ad2df370116e031cf195fc"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD022",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1004
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD022",
+      "characterId": "kuzuha",
+      "badge": "none",
+      "artSha256": "c31c10f55a340fdfd5396cae840af674ed23e5b3ae2f50ae5f42646cb3c09ad5"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD023",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1052
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD023",
+      "characterId": "kuzuha-awakened",
+      "badge": "none",
+      "artSha256": "9df3ffcfeead8288e1f37e9a38fe5d46f3c198c07376db1a4dfc0b202434b694"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD024",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1100
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD024",
+      "characterId": "artemis",
+      "badge": "none",
+      "artSha256": "9eb8b0747acd2696a2677e1c0b44e4cdda8aae0a1a48351d03f05b36668d1b79"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD025",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1148
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD025",
+      "characterId": "persephone",
+      "badge": "outline-weak",
+      "artSha256": "01bf52367fdcc0faf1d9a842dc63d0552917980e30f2a4064a7248cf1650819f"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD026",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1196
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD026",
+      "characterId": "hestia",
+      "badge": "none",
+      "artSha256": "c1515e05cfcdac5e2842c4c6cdfa9fc284e4772a07ef8734c5b1641df0515ffb"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD027",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1244
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD027",
+      "characterId": "hebe",
+      "badge": "none",
+      "artSha256": "e52a08abbccb23a37ac782ba092b3c61dad13f64c258b4d61d06e78dbd5df3ab"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD028",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1291
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD028",
+      "characterId": "seoritsu",
+      "badge": "none",
+      "artSha256": "d2a6c844dad4cbb12b347c5978434918cdf6b54840fbc79175f161ed74b59b5a"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD029",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1339
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD029",
+      "characterId": "ukanomitama",
+      "badge": "outline-weak",
+      "artSha256": "3fef848456e07cf928372daf3e863a092461334cf87eaea8738a4fa1683693b0"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD030",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1387
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD030",
+      "characterId": "mizuhanome",
+      "badge": "none",
+      "artSha256": "332ceaf8bb6906ab0d74700db5a6a288f92e2a0b7c7d1b50a2a4250b2f2f15d4"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD031",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1435
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD031",
+      "characterId": "haniyasu",
+      "badge": "none",
+      "artSha256": "752853552d6e3b6945f011b323c0ac853f617572676321533281e5a157fee292"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD032",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1483
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD032",
+      "characterId": "toyotama",
+      "badge": "none",
+      "artSha256": "e8be7def6fd6bd2f35e32bca63cda27acd7bb7dc487b5cdfa4ccc71c1e006fe2"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD033",
+      "fullSeconds": 7.766666666666667,
+      "cardRect": [
+        692,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1556
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD033",
+      "characterId": "wakahirume",
+      "badge": "none",
+      "artSha256": "f956a1cbc2afd3770cbe93e1784e885ac971eaddc8d04af28b704e6645867cbd"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD034",
+      "fullSeconds": 6.166666666666667,
+      "cardRect": [
+        827,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1580
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD034",
+      "characterId": "iwanagahime",
+      "badge": "none",
+      "artSha256": "e229f490de1a6a33d19fd82a92f4d102f9392a23ee69bbf190ceeb47ce5d934f"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD035",
+      "fullSeconds": 4.566666666666666,
+      "cardRect": [
+        1080,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1604
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD035",
+      "characterId": "kukurihime",
+      "badge": "none",
+      "artSha256": "9c617b4c65d3a7c85c561e91532617315ecea6e96bc6c3ef33e0200802cb2ec5"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD036",
+      "fullSeconds": 3.0,
+      "cardRect": [
+        1350,
+        125,
+        250,
+        365
+      ],
+      "sampleFrame": 1628
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD036",
+      "characterId": "lisette",
+      "badge": "none",
+      "artSha256": "29a76bc025d163e85eea3282457af695103d585753fb53f5878aa86e371186f5"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD037",
+      "fullSeconds": 3.033333333333333,
+      "cardRect": [
+        320,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 45
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD037",
+      "characterId": "elaine-awakened",
+      "badge": "outline-weak",
+      "artSha256": "20d3c1870441df92fd8bed0bfd4d3d291bd3027f490d9b401b0eed5573212369"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD038",
+      "fullSeconds": 4.6,
+      "cardRect": [
+        590,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 69
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD038",
+      "characterId": "liora-awakened",
+      "badge": "outline-weak",
+      "artSha256": "0cc9e66dd0050d86241ae25a933cf6302d6b3514051c4fda1358758ba7e59c9d"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD039",
+      "fullSeconds": 6.2,
+      "cardRect": [
+        843,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 93
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD039",
+      "characterId": "noelle-awakened",
+      "badge": "outline-weak",
+      "artSha256": "cc88ff5ef8a6dcc56a647381d87b61ece9bc15ceb3e96e139b3d23fb210a40fd"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD040",
+      "fullSeconds": 7.8,
+      "cardRect": [
+        978,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 117
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD040",
+      "characterId": "lisette-awakened",
+      "badge": "none",
+      "artSha256": "9d015060cd6608f2091c8af85c52453ca5e880a2001be2cfbeaaee20c21be0f7"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD041",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 190
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD041",
+      "characterId": "seris-awakened",
+      "badge": "outline-weak",
+      "artSha256": "bd4dc1f2bbeb1fd846dbd8c23283d3be3c64024565daf5927d9e002782782582"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD042",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 238
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD042",
+      "characterId": "selene-standard",
+      "badge": "outline-weak",
+      "artSha256": "be17885f915e2b32f75685910f8aac56580c32802f992332c326e2c69d31f217"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD043",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 286
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD043",
+      "characterId": "athena-standard",
+      "badge": "outline-weak",
+      "artSha256": "2bd1ab9092eac97947e9bca9e3b30a01bd615177ebda5cc151bc9aea24ec698c"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD044",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 334
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD044",
+      "characterId": "flora-standard",
+      "badge": "none",
+      "artSha256": "6ba32c307967de8c3c0c6d308e5a891cb894a635effb37cdf769dcd69f45281d"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD045",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 382
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD045",
+      "characterId": "amaterasu-standard",
+      "badge": "outline-weak",
+      "artSha256": "bb40ea31f4f5aa4af53bca3c60d496bdbb74bd241419dc90f33b8c109e7c39b6"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD046",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 430
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD046",
+      "characterId": "izanami-standard",
+      "badge": "outline-weak",
+      "artSha256": "2429c3fcab8cca7db9961cbfb332bf6bf3e35aad28e9aec24a7bf46eb5e67d8e"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD047",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 478
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD047",
+      "characterId": "artemis-standard",
+      "badge": "none",
+      "artSha256": "278c87611a379ad565766d8c92a0f0fa010ea0281ba9fbcdebdbb7f9f8284bde"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD048",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 525
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD048",
+      "characterId": "persephone-standard",
+      "badge": "outline-weak",
+      "artSha256": "5562f408310d13a1368057357b19c12a04e91f3c0dde03939e974dd62536b3c0"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD049",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 573
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD049",
+      "characterId": "hestia-standard",
+      "badge": "none",
+      "artSha256": "c231a730bcee1faa875712d58d84cf8eee2af12f67f28c1aa5c5dd3923481f91"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD050",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 621
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD050",
+      "characterId": "hebe-standard",
+      "badge": "none",
+      "artSha256": "27ba90cec97d91a637a4161c80162cbc4157c05f2ea52b12dbc6890e38655c58"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD051",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 669
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD051",
+      "characterId": "eos-standard",
+      "badge": "none",
+      "artSha256": "39f11121937f2905e57db4bb1440d86796acf19870840e59c918d2bbba0d9b82"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD052",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 717
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD052",
+      "characterId": "nike-standard",
+      "badge": "none",
+      "artSha256": "e6510a6cc1c008c1c9819f1619d2213fc85ed2d82e089e8800b55158d0736939"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD053",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 765
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD053",
+      "characterId": "rainbow-iris-standard",
+      "badge": "none",
+      "artSha256": "fa3b8bae044283e97f723673bbb46cbf73b68b373b531e50448e65240cf1a7d4"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD054",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 813
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD054",
+      "characterId": "toyotama-standard",
+      "badge": "none",
+      "artSha256": "8c88a61c48321457da1872552e00a7c95b4c163896752f8552261cd2cd7b61a1"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD055",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 861
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD055",
+      "characterId": "lunette",
+      "badge": "outline-weak",
+      "artSha256": "3c042600954fc271a7f92de78945c900913405b7780537a0d5a6227041699a59"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD056",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 908
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD056",
+      "characterId": "lunette-awakened",
+      "badge": "outline-weak",
+      "artSha256": "6684072d8e11eab32ac990c03c6198c6702ff8200a992ea1cf1fd40c371b4f76"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD057",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 956
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD057",
+      "characterId": "lucielle",
+      "badge": "none",
+      "artSha256": "0cf3b618cde0ee23cda18b3bb371dbe92e709fcbfcca9dc17f1252bacd355b7c"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD058",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1004
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD058",
+      "characterId": "nemuria",
+      "badge": "outline-weak",
+      "artSha256": "0232f690a4048b7201403917bae92d91c6f1e094dabb26f9e505db36a8e0b9af"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD059",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1052
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD059",
+      "characterId": "chrona",
+      "badge": "none",
+      "artSha256": "4a4da4d41d9cd07e88bd042436370a83ea398738c4abaa1fb1198b9bd4003434"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD060",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1100
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD060",
+      "characterId": "fortuna",
+      "badge": "none",
+      "artSha256": "427efb9cef66ad58def9e71114780aa0cd97f7877bfe81f219dfac847e994541"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD061",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1148
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD061",
+      "characterId": "hecate",
+      "badge": "none",
+      "artSha256": "458d60c5a97c1b9d9f651339b79a3b03251d1a7de1edc2d9205fcd0c303a580c"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD062",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1196
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD062",
+      "characterId": "freyja",
+      "badge": "outline-weak",
+      "artSha256": "de0df7d0b0ae2530bcc857978b0e72c653422ebcf460964c92463e4c1c00fb24"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD063",
+      "fullSeconds": 6.066666666666666,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1244
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD063",
+      "characterId": "benzaiten",
+      "badge": "outline-weak",
+      "artSha256": "54a8a3efca86f1e6c4d81dca24da5d7a64ef612fe905624bad99ae11e9ebade7"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD064",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1291
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD064",
+      "characterId": "seoritsu-standard",
+      "badge": "none",
+      "artSha256": "4de35b7179d72ab8243227275df0801ed54f442d1bed1a3643497ea0c0f761a5"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD065",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1339
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD065",
+      "characterId": "wakahirume-standard",
+      "badge": "none",
+      "artSha256": "0686dd032f0c49f7cecb3f9bc3f08a8bef2450bc19cc8544a5e59a4301cb4ecb"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD066",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1387
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD066",
+      "characterId": "ukanomitama-standard",
+      "badge": "outline-weak",
+      "artSha256": "d078c2b269f6065fa32bf4a6241424483212187f28339341716803fc5222f4fb"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD067",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1435
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD067",
+      "characterId": "astraea",
+      "badge": "none",
+      "artSha256": "e68de0799153f54a71b742c794f70bc82e75ad0f14115b21187b284154b47751"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD068",
+      "fullSeconds": 6.1,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1483
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD068",
+      "characterId": "zakuro",
+      "badge": "none",
+      "artSha256": "332686ad7a3f11958410b86a7b38a719db9c5991f9a6b3deff36c42408df519d"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD069",
+      "fullSeconds": 7.766666666666667,
+      "cardRect": [
+        692,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1556
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD069",
+      "characterId": "ione",
+      "badge": "none",
+      "artSha256": "a9adca89409ddd8be4a0c55e3e08c56755e63080adbd548fd8beeb4d07627039"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD070",
+      "fullSeconds": 6.166666666666667,
+      "cardRect": [
+        827,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1580
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD070",
+      "characterId": "neri",
+      "badge": "solid-amber",
+      "artSha256": "72cab4c66571b3121f194c22eb1b8d9bd621881a95d05348609c0c723d4a578b"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD071",
+      "fullSeconds": 4.566666666666666,
+      "cardRect": [
+        1080,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1604
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD071",
+      "characterId": "fio",
+      "badge": "outline-weak",
+      "artSha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1"
+    },
+    {
+      "type": "complete_visible_three_seconds",
+      "passed": true,
+      "seriesId": "BD072",
+      "fullSeconds": 3.0,
+      "cardRect": [
+        1350,
+        510,
+        250,
+        365
+      ],
+      "sampleFrame": 1628
+    },
+    {
+      "type": "original_art_and_gem_chain",
+      "passed": true,
+      "seriesId": "BD072",
+      "characterId": "ruka",
+      "badge": "solid-amber",
+      "artSha256": "db66a2e1bfc269f6219de2f93926ac4288753587c39a176f41aa0a2d90e89798"
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD001",
+      "sampleTime": 1.5,
+      "cardRect": [
+        320,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.517271518707275
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD037",
+      "sampleTime": 1.5,
+      "cardRect": [
+        320,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.30300235748291
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD002",
+      "sampleTime": 2.3,
+      "cardRect": [
+        590,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.649534225463867
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD038",
+      "sampleTime": 2.3,
+      "cardRect": [
+        590,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.705772399902344
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD003",
+      "sampleTime": 3.1,
+      "cardRect": [
+        843,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.9754180908203125
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD039",
+      "sampleTime": 3.1,
+      "cardRect": [
+        843,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.600393295288086
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD004",
+      "sampleTime": 3.9,
+      "cardRect": [
+        978,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.58618688583374
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD040",
+      "sampleTime": 3.9,
+      "cardRect": [
+        978,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.354639530181885
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD005",
+      "sampleTime": 6.333333333333333,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 4.727818489074707
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD041",
+      "sampleTime": 6.333333333333333,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.7830095291137695
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD006",
+      "sampleTime": 7.933333333333334,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 4.949000358581543
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD042",
+      "sampleTime": 7.933333333333334,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.34524393081665
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD007",
+      "sampleTime": 9.533333333333333,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 3.8882265090942383
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD043",
+      "sampleTime": 9.533333333333333,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.766358375549316
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD008",
+      "sampleTime": 11.133333333333333,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.903696537017822
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD044",
+      "sampleTime": 11.133333333333333,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.607926845550537
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD009",
+      "sampleTime": 12.733333333333333,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 7.555654048919678
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD045",
+      "sampleTime": 12.733333333333333,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.85971736907959
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD010",
+      "sampleTime": 14.333333333333334,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 7.500471115112305
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD046",
+      "sampleTime": 14.333333333333334,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.119570732116699
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD011",
+      "sampleTime": 15.933333333333334,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.640536308288574
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD047",
+      "sampleTime": 15.933333333333334,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.906987190246582
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD012",
+      "sampleTime": 17.5,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.58909797668457
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD048",
+      "sampleTime": 17.5,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.887490272521973
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD013",
+      "sampleTime": 19.1,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.8277997970581055
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD049",
+      "sampleTime": 19.1,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.745680332183838
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD014",
+      "sampleTime": 20.7,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.677105903625488
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD050",
+      "sampleTime": 20.7,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.128839492797852
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD015",
+      "sampleTime": 22.3,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 7.027668476104736
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD051",
+      "sampleTime": 22.3,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.169341564178467
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD016",
+      "sampleTime": 23.9,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.899034023284912
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD052",
+      "sampleTime": 23.9,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.359971523284912
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD017",
+      "sampleTime": 25.5,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.41702938079834
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD053",
+      "sampleTime": 25.5,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.570425033569336
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD018",
+      "sampleTime": 27.1,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.720546245574951
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD054",
+      "sampleTime": 27.1,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.591169834136963
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD019",
+      "sampleTime": 28.7,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.260150909423828
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD055",
+      "sampleTime": 28.7,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.876582622528076
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD020",
+      "sampleTime": 30.266666666666666,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.0461931228637695
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD056",
+      "sampleTime": 30.266666666666666,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 8.48838996887207
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD021",
+      "sampleTime": 31.866666666666667,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.01872444152832
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD057",
+      "sampleTime": 31.866666666666667,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.235766410827637
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD022",
+      "sampleTime": 33.46666666666667,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.3866753578186035
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD058",
+      "sampleTime": 33.46666666666667,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.050722599029541
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD023",
+      "sampleTime": 35.06666666666667,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.927361965179443
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD059",
+      "sampleTime": 35.06666666666667,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 4.734845161437988
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD024",
+      "sampleTime": 36.666666666666664,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.028264999389648
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD060",
+      "sampleTime": 36.666666666666664,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.130801677703857
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD025",
+      "sampleTime": 38.266666666666666,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.76316499710083
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD061",
+      "sampleTime": 38.266666666666666,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.661196708679199
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD026",
+      "sampleTime": 39.86666666666667,
+      "cardRect": [
+        833,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.806915283203125
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD062",
+      "sampleTime": 39.86666666666667,
+      "cardRect": [
+        833,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.556380748748779
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD027",
+      "sampleTime": 41.46666666666667,
+      "cardRect": [
+        832,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.595518112182617
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD063",
+      "sampleTime": 41.46666666666667,
+      "cardRect": [
+        832,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.704717636108398
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD028",
+      "sampleTime": 43.03333333333333,
+      "cardRect": [
+        837,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.038095474243164
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD064",
+      "sampleTime": 43.03333333333333,
+      "cardRect": [
+        837,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.257540702819824
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD029",
+      "sampleTime": 44.63333333333333,
+      "cardRect": [
+        836,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.898777484893799
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD065",
+      "sampleTime": 44.63333333333333,
+      "cardRect": [
+        836,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 5.595285892486572
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD030",
+      "sampleTime": 46.233333333333334,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.557939052581787
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD066",
+      "sampleTime": 46.233333333333334,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 7.799149036407471
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD031",
+      "sampleTime": 47.833333333333336,
+      "cardRect": [
+        835,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.575242042541504
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD067",
+      "sampleTime": 47.833333333333336,
+      "cardRect": [
+        835,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.708607196807861
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD032",
+      "sampleTime": 49.43333333333333,
+      "cardRect": [
+        834,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 7.270086765289307
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD068",
+      "sampleTime": 49.43333333333333,
+      "cardRect": [
+        834,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 6.162778854370117
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD033",
+      "sampleTime": 51.86666666666667,
+      "cardRect": [
+        692,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 5.283543586730957
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD069",
+      "sampleTime": 51.86666666666667,
+      "cardRect": [
+        692,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 3.4916467666625977
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD034",
+      "sampleTime": 52.666666666666664,
+      "cardRect": [
+        827,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 4.892827987670898
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD070",
+      "sampleTime": 52.666666666666664,
+      "cardRect": [
+        827,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 4.787345886230469
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD035",
+      "sampleTime": 53.46666666666667,
+      "cardRect": [
+        1080,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.891608715057373
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD071",
+      "sampleTime": 53.46666666666667,
+      "cardRect": [
+        1080,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 4.373887062072754
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD036",
+      "sampleTime": 54.266666666666666,
+      "cardRect": [
+        1350,
+        125,
+        250,
+        365
+      ],
+      "frameRMSE": 6.223172187805176
+    },
+    {
+      "type": "finished_card_pixels",
+      "passed": true,
+      "seriesId": "BD072",
+      "sampleTime": 54.266666666666666,
+      "cardRect": [
+        1350,
+        510,
+        250,
+        365
+      ],
+      "frameRMSE": 4.811651706695557
+    },
+    {
+      "type": "finished_all_72_shown",
+      "passed": true
+    }
+  ],
+  "processingSha256": "3c89e77294e7194e8f70c870845892d3fe186643d89ff83d17566f9524c2d34e",
+  "uniqueFramePairs": 36,
+  "method": "Independent 30fps full-card visibility enumeration and exact-time original/final RGB card comparison. Source art, registry, producer code and gem metadata hashes bound; actors/subtitles remain outside the card viewport."
+}

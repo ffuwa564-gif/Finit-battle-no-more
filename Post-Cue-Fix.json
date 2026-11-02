@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "sourceFinishedSha256": "a62dce0e7133d650acb86e37f1e90a63b1d8ff0fa55669184a25969ac0810707",
+  "finishedSha256": "264ff183af3e31d7f9ececc09c13f50f0d5810fae236ba9387015f976b2722b9",
+  "sourceMoviePreserved": "artifacts/build-diary-02/render/pre-cue-correction.mp4",
+  "processingSha256": "fb29889faa6278ed9573321005a671ed0ac6e6f4b40cf5ff3d58dffc9e6d24b4",
+  "inputHashes": {
+    "artifacts/build-diary-02/approved-cuts.json": "79f6f2113fcf5da686547212abe9e3376929d988bdcee7c00f5303b9222b5660",
+    "artifacts/build-diary-02/assets/blank-avatar.png": "4c5d001c3fd1ea31400995fff618b9221801b3e2b6acf821733c66a30383f073",
+    "artifacts/build-diary-02/assets/m-deadpan-avatar.png": "7c568e3f6ec6ffdf933ad1aa1b94383f46937db02600fb5fc9a0f6ed01c2a505",
+    "artifacts/build-diary-02/assets/m-happy-avatar.png": "baf6e2a0bdfa5991fe6662936327aa2dd1b14fdc119a72123f9c0b80384b40c3",
+    "artifacts/build-diary-02/assets/t-research-care-avatar.png": "f781ffd697d7197de812885f83a89c5a215bda889ef8177374de0df8483972f9",
+    "artifacts/build-diary-02/assets/t-research-determined-avatar.png": "49203d616bc33d1a68bf5836d5dede79a714a9d65925df970f02ea183f20bec3",
+    "artifacts/build-diary-02/assets/t-research-happy-avatar.png": "2db2d125a79ddc19407cb7b78ba622dbe25256a44000665f45e5ae7c29dad00e",
+    "artifacts/build-diary-02/assets/t-research-think-avatar.png": "3d8549a20596c9b08fc5f8aa58952ce0fb1843537df5810e6d4788908754f16b",
+    "artifacts/build-diary-02/assets/z-happy-avatar.png": "85fda8a33af9f4a6d11716ffd64f8d052c6374745c4f2cd83a02573e2fb96112",
+    "artifacts/build-diary-02/assets/z-panic-avatar.png": "abcacf289062811fbf2877f1d9780074506a419d256acb3a69ab9749e3514c90",
+    "artifacts/build-diary-02/capture/lab-victory.mov": "a07fc43abfb927a9545269d58b2e45afd6b6d541de7272b0643ba0092c3d4043",
+    "artifacts/build-diary-02/edit-timeline.json": "274a6d52f5b293b03474d596a9776e24a12c31faa0218c2112ec349854bd5fde",
+    "artifacts/build-diary-02/event-cues.json": "3980254d145bbc278685bc16adb22e3c61984a35bee66d24a70030de76060a6f",
+    "artifacts/build-diary-02/render/comparisons.mp4": "fe352a52af9136c0381f2965899105d46e88e69078c537c9a6b0f85e6aea6b73",
+    "artifacts/build-diary-02/render/failed-draft.mp4": "4508ea8698988a345110a152c5492e3e52074b5d23cd53f4da59b6af7d384bf2",
+    "artifacts/build-diary-02/render/future.mp4": "1a06ead9e1b3c29e2be0d41f3091a600c310f413a7b3d33ae20b0110503ca4d1",
+    "artifacts/build-diary-02/render/growth.mp4": "65a252cb78b7f7d2311fa67a1cd4089523c5c6b069cc30d94e6dc3abb7997420",
+    "artifacts/build-diary-02/render/lab-victory-a.mp4": "565219b51ccfbb934bf8d13fee0b6c66c21fed8410e62227db8dc34d3de2d8b5",
+    "artifacts/build-diary-02/render/lab-victory-b-game.mov": "5d190cd7f8fd65d4a1fdab2022cb8f6e42d6309435398e95942baa968b2110fb",
+    "artifacts/build-diary-02/render/lab-victory-b.ass": "a03c7189aba902dda514d185b8fed3cd03f66d7fdb3fa9bf47faf97009408491",
+    "artifacts/build-diary-02/render/lab-victory-b.mp4": "7176b940e6091fad6edaa5c26c5e83fff57de7c691737bc8b17129066204472d",
+    "artifacts/build-diary-02/render/limits.mp4": "c4569e7c1ee778b616ff4fa2baf554cb247b92ba9bd21dd28178f78f6bafb84e",
+    "artifacts/build-diary-02/render/necessity.mp4": "3b7b02d6d9dc0876e01ce6c34cf51d26bba35df6aab00ae1a8514495e99e8e12",
+    "artifacts/build-diary-02/render/neri-now.mp4": "095ffdbb2e72b8191bec07f3c8a32442d38ea3268333ddf3851139c5c54f425c",
+    "artifacts/build-diary-02/render/new-skill.mp4": "b1958b0f260c1a1e51fb40c1fc5441739bbdf8031eb769e1afb7d6be37d4ca08",
+    "artifacts/build-diary-02/render/op-video.mp4": "43d524f5c3a75ea16117644cc611df778c44c4e1b24c75f35c8d2f8e4cb74721",
+    "artifacts/build-diary-02/render/question.mp4": "d617dda47fe182598ab6498e88e174bdcc30f292ecff01522f5d85b80ff67377",
+    "artifacts/build-diary-02/render/recipe.mp4": "edf6c87139b52c24f6948a574dc409b15a1fc6541693558745f43b337a45c028",
+    "artifacts/build-diary-02/render/roster.mp4": "3795af50261c097cef62547c775284b873266c4cc3a203bd0c35adca3519442d",
+    "artifacts/build-diary-02/render/ruka-audit.mp4": "af040356832ccbfc9278188d10de53a1107bb6c7c8c5e36ed6fe1e4b617fd7a6",
+    "artifacts/build-diary-02/render/trial.mp4": "ed555d455e4d1bbb00723b8de99df997a38bad9b4c8439cc3805a1e4320aaa04",
+    "artifacts/build-diary-02/render-input-freeze.json": "56a2c0bf072b645aeed215eaec3a59c54376b86934c3181829e7dd63c4e6ff90",
+    "artifacts/build-diary-02/render-plan.json": "b2e62c568d191ffdc49b6b755a7cda5fdb9955be1c5889b88e05e324a3b4d59d",
+    "artifacts/build-diary-02/timeline-narration.json": "305c8e542f93598220607700ec09f1fecc1c5cee68c45a0b209d54eb8611fb85",
+    "scripts/build-diary-02/cue_fix.py": "fb29889faa6278ed9573321005a671ed0ac6e6f4b40cf5ff3d58dffc9e6d24b4",
+    "scripts/build-diary-02/render.py": "00e2eeb2de55e174a93b62595b01074a9606cb6cd36fb14be1eaa3518a38761f",
+    "scripts/build-diary-02/roster.py": "ac141ad7339fb8611d1e16ef2b246fc6665f6a211a35aa64beb2d13540824ef7",
+    "scripts/build-diary-02/story.py": "251ed5ff77238d13d29be98c8268b9a49a424a58150e4840347acbeb3baaa405",
+    "scripts/build-diary-02/visuals.py": "88125f98467abc2c7d0181c77ebfab6a0df684f7eac65700842f3a94446dafe5",
+    "artifacts/build-diary-02/render/pre-cue-correction.mp4": "a62dce0e7133d650acb86e37f1e90a63b1d8ff0fa55669184a25969ac0810707"
+  },
+  "chapterRepair": {
+    "chapter": "lab-victory-b",
+    "originalChapterSha256": "7176b940e6091fad6edaa5c26c5e83fff57de7c691737bc8b17129066204472d",
+    "originalPieceSha256": "5d190cd7f8fd65d4a1fdab2022cb8f6e42d6309435398e95942baa968b2110fb",
+    "sourceCaptureSha256": "a07fc43abfb927a9545269d58b2e45afd6b6d541de7272b0643ba0092c3d4043",
+    "editConditions": {
+      "sourceStart": 133.86666666666667,
+      "sourceEnd": 183.73333333333332,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 1496,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    "output": "artifacts/build-diary-02/render/cue-fix/lab-victory-b.mp4",
+    "outputSha256": "e7d1a19172c29c89bb82d926fe1ea7071d007755838b17b8f2a041ad1f7a592d",
+    "frames": 1878,
+    "sourceAssSha256": "a03c7189aba902dda514d185b8fed3cd03f66d7fdb3fa9bf47faf97009408491",
+    "fixedAssSha256": "e6f60e0e9370e9e679883f3cb0c5e2ba98547e3db5468a76bcc1a0b8e14ba6d5",
+    "cuePositions": {
+      "from": [
+        1200,
+        825
+      ],
+      "to": [
+        1200,
+        765
+      ],
+      "changedLines": 3
+    },
+    "cleanPlatesMatchOriginal": true,
+    "nativePieceUnchanged": true
+  },
+  "audioDecodedSha256": "SHA256=81c5654442fe632d14688e728eeb881dd76ef46f941676ad642cbeebc93f46bd",
+  "audioPacketSha256": "SHA256=1d37e58a1ca0b27dc7ac11bded3920f2f5c317de2eb60aa59a6ac1352aa1764b",
+  "audioPacketsAndDecodedSamplesUnchanged": true,
+  "originalFrozenInputsUnchanged": true,
+  "finalFrames": 29985,
+  "reason": "Gold B event cues overlapped the grey average-potion note; move those event cues upward 60px.",
+  "rule": "Only B is recomposed from clean original figures, actors and the approved native cut. All other chapter video and every original AAC packet are copied. Original render inputs and their historical freeze remain unchanged."
+}

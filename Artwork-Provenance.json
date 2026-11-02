@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "episode": "ビルド研究日誌 #02 ネリ",
+  "generationTool": "image_gen.imagegen",
+  "characterConfirmedByParent": true,
+  "character": {
+    "characterId": "neri",
+    "seriesId": "BD070",
+    "copy": "守る子にも、休む番を。"
+  },
+  "scope": "Illustration of an unimplemented research idea: scheduled rest and handoff. Not evidence of a shipped mechanic or a certified win.",
+  "generations": [
+    {
+      "kind": "thumbnail-first-draft",
+      "original": "/workspace/generated_images/exec-8a2cddc1-d5ab-4aad-ba06-12277c208b82.png",
+      "prompt": "Create a polished Japanese YouTube thumbnail for Episode 02 of the supplied approved ビルド研究日誌 thumbnail. Match its ornamental cute pastel laboratory illustration style, cream/pink/mint/amber, lively attractive composition. This is an image edit/new episode composition based on references. Main host is the EXACT approved kind glasses-wearing scientist gyaru Tsumugi: pale blonde to pink hair, blue eyes visible through clear thin gold round glasses, yellow cardigan and loose white lab coat. She gently teaches with a notebook and pointer, large center-right, not stern. Zundamon and Shikoku Metan in the exact approved cute chibi appearance support her below, whole heads and ornaments inside the image. Featured heroine is NERI from supplied original artwork: brown skin, amber eyes, silver-white side braid with small brass hair ornament, blue-gray scarf and layered coat, aged brass armor, very long blue-gray shield with gold decoration and warm lantern. Preserve Neri's identity and outfit accurately; do not turn her into Ruka or another heroine. Place Neri at the left seated resting on a comfortable chair, gentle tired relieved smile, lantern safely on table and shield beside chair. This is a research proposal that defenders need scheduled rests, not invincibility. A beautiful little clock and twelve simple blank squares on a schedule board, warm lantern passing a soft light to one neutral silhouette on the board. No gem certification, no victory claim, no numerical mechanics. EXACT Japanese text only: large top title 『ビルド研究日誌』, subtitle 『みんなが輝くRPGを！』, episode plaque 『#02 ネリ』, attractive large bottom banner 『守る子にも、休む番を。』. Text must be clear and correctly written. Composition wide landscape 16:9, all characters' entire heads, ahoge, hair ornaments, braid, glasses safely within frame with at least 5% blank visual margin at outer edges; do not cover heads with titles. Keep all shield and lantern inside frame. All pink-haired Metan heart-head ornaments must be fully visible. Do not simply alter old thumbnail text; make a distinct new scene with Neri, rest and handoff.",
+      "references": [
+        "artifacts/build-diary-01/assets/thumbnail-original.png",
+        "public/art/scout-neri.webp",
+        "artifacts/build-diary-01/assets/t-research-happy.png"
+      ],
+      "accepted": false,
+      "reason": "Metan rightmost hair and left lantern/long shield clipped at frame edges; revised.",
+      "originalSha256": "4872bc5199cde74363eb7c057df4a1e890f8f7adb684728d614a750b44716c05",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "referenceHashes": {
+        "artifacts/build-diary-01/assets/thumbnail-original.png": "ee6d2801ed65a679e806fbd5471a527dbf31f3cc6257e216c54ba3341b6c68ea",
+        "public/art/scout-neri.webp": "72cab4c66571b3121f194c22eb1b8d9bd621881a95d05348609c0c723d4a578b",
+        "artifacts/build-diary-01/assets/t-research-happy.png": "d76bdbd3a40f3350b8bde8ed6a336c9dc72d44f94e5067050db2500f369f7905"
+      }
+    },
+    {
+      "kind": "lab-first-draft",
+      "original": "/workspace/generated_images/exec-48451095-62b3-412b-a028-a7206fb8c210.png",
+      "prompt": "New full scene illustration, match the approved pastel chibi research laboratory reference style exactly. Landscape 16:9. Main host is the approved kind, thoughtful glasses-wearing scientist gyaru Tsumugi with blonde-to-pink hair, blue eyes visible through clear gold round glasses, yellow cardigan, loose white laboratory coat. In the CENTER she enthusiastically writes observations in a notebook. Zundamon at left and Shikoku Metan at right assist with a shift schedule and small cards. The featured game heroine NERI is seated resting on a comfortable chair at mid-left behind the desk, eyes gently half closed and a relieved kind smile, faithful to supplied game artwork: brown skin, amber eyes, silver-white side braid with brass hair ornament, blue-gray scarf and long layered coat, aged brass armor, dark gloves, long blue-gray shield with brass ornament resting beside her. Preserve these identity details. A warm small lantern on the desk near Neri glows along a faint amber path to a mint lamp beside another character card, representing sharing guard duty and handing over the lamp. The team studies when everyone should take turns resting: a simple twelve-cell circular schedule drawn without any written labels, small clock, four character cards, some rest-moon symbols. Tsumugi kindly points out a rest symbol while writing. This is a research illustration, not a shipped game screenshot or verified win. No award gems, no victory claims, no large text, no invented numbers or skills. Gentle wholesome energy, not battle action, no invincible shields. Soft pink, cream, mint and amber, warm sunlit shelves, flowers, cute stationary. FOUR characters all present: Neri, Tsumugi, Zundamon, Metan. IMPORTANT staging: all four heads, hair tips, ahoge, braid, Metan's full heart hair ornaments remain inside the central 80 percent of the image, with generous 10 percent clear space at outer left and right. Heads do not touch any edge. All shield and lantern inside frame. Frame a slightly wider room view rather than close-up. Keep table edges low so faces and notebook visible. Tsumugi is central main host; Neri is the featured restful night-watch heroine, not replaced by Ruka.",
+      "references": [
+        "artifacts/build-diary-01/assets/research-lab.png",
+        "public/art/scout-neri.webp",
+        "artifacts/build-diary-01/assets/t-research-think.png"
+      ],
+      "accepted": false,
+      "reason": "Metan rightmost curls clipped at right edge; revised.",
+      "originalSha256": "d94f888340f516426294fc599dbe862041b10afeeefea29fdfaa68b9eb364a4c",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "referenceHashes": {
+        "artifacts/build-diary-01/assets/research-lab.png": "60ea1d9952f40a0259a91e58f36c4116e14722f2af0e2299433f8a695cc0a26e",
+        "public/art/scout-neri.webp": "72cab4c66571b3121f194c22eb1b8d9bd621881a95d05348609c0c723d4a578b",
+        "artifacts/build-diary-01/assets/t-research-think.png": "7060c68b46304454a0305b2703273d5d30839109e227b22b57582c663cd50748"
+      }
+    },
+    {
+      "kind": "thumbnail-approved",
+      "original": "/workspace/generated_images/exec-941c12dd-d92e-4c42-9a24-0d02fdd5e470.png",
+      "output": "artifacts/build-diary-02/assets/thumbnail-before-glasses-clarity.png",
+      "prompt": "Edit the supplied Episode02 thumbnail to fix the layout safety. Preserve EXACT existing Japanese text, characters, colors and design, especially 『ビルド研究日誌』『みんなが輝くRPGを！』『#02 ネリ』『守る子にも、休む番を。』. The current image clips pink-haired Metan's rightmost hair at the right border and Neri's lantern and shield at the left border. Recompose by moving Metan leftwards into the scene and making her about 20 percent smaller, with at least 100 pixels of room on her right at a 1672 pixel wide canvas. Entire pink curls and both heart head ornaments must be fully shown. Move Neri's shield and lantern inward and make the entire left cluster 10 percent smaller so there is clear background room at the left edge too. Leave all character heads and all hair tips safely contained, no cropped ornaments. Keep Tsumugi main host big center-right, Neri seated resting at left, Zundamon below-left, Metan below-right, shield and lantern visibly complete. Maintain elegant cozy cute pastel lab and the warm handoff schedule concept. Widen the room background around all subjects; do not magnify the scene. Wide16:9. This is a safety-layout edit, preserve heroine likeness and original copy exactly.",
+      "references": [
+        "/workspace/generated_images/exec-8a2cddc1-d5ab-4aad-ba06-12277c208b82.png"
+      ],
+      "accepted": true,
+      "originalSha256": "31ddf76d79652eb3591f781227b06599a98e74688a336cbc510077301dd8e72f",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "referenceHashes": {
+        "/workspace/generated_images/exec-8a2cddc1-d5ab-4aad-ba06-12277c208b82.png": "4872bc5199cde74363eb7c057df4a1e890f8f7adb684728d614a750b44716c05"
+      },
+      "outputSha256": "31ddf76d79652eb3591f781227b06599a98e74688a336cbc510077301dd8e72f",
+      "superseded": true,
+      "supersededReason": "Actual bridge and rims exist, but thin warm gold rims are difficult to read at thumbnail scale. Retained approved previous original, then focused tool edit for clearer series signature."
+    },
+    {
+      "kind": "lab-approved",
+      "original": "/workspace/generated_images/exec-aad8b2da-f62c-4445-89bb-5ad6e4a04e87.png",
+      "output": "artifacts/build-diary-02/assets/research-lab-handoff.png",
+      "prompt": "Edit the supplied cute Episode02 laboratory illustration only to make the entire character layout safely contained. Preserve all characters, identities, gentle expressions, notebook with the shift clock, lantern and research story. CURRENT PROBLEM: rightmost pink-haired Metan's curls are cut off at right edge. Move her leftward and reduce her scale about 20 percent so the complete left and right hair curls and both heart head ornaments have at least 80 pixels of clear background before the right border on a 1672px image. Move Zundamon slightly left and slightly reduce all four characters' scene scale if needed. Make this a slightly wider view of the same room; heads and hair tips may NOT touch any edge. Preserve Neri brown skin, silver-white side braid, amber eyes, scarf/armor and restful chair at left; keep her entire long shield visibly inside the room. Preserve Tsumugi glasses and labcoat as central kind main host, Zundamon helping and Metan taking notes. No added text. The cards and circular rest timetable are metaphors; do not add jewels or badges. Pink cream mint amber. All four characters' full heads with hair ornaments and ahoge must be wholly visible with generous outer margins, plus the entire lantern. Wide landscape16:9. Do not crop or extend by merely blurring the edge; coherently recompose the illustration.",
+      "references": [
+        "/workspace/generated_images/exec-48451095-62b3-412b-a028-a7206fb8c210.png"
+      ],
+      "accepted": true,
+      "originalSha256": "bad65519c8f23449a8cbf5f687b6517baf902454ba3ac22b1344bdc358f72f34",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "referenceHashes": {
+        "/workspace/generated_images/exec-48451095-62b3-412b-a028-a7206fb8c210.png": "d94f888340f516426294fc599dbe862041b10afeeefea29fdfaa68b9eb364a4c"
+      },
+      "outputSha256": "bad65519c8f23449a8cbf5f687b6517baf902454ba3ac22b1344bdc358f72f34"
+    },
+    {
+      "kind": "thumbnail-glasses-clarity-approved",
+      "original": "/workspace/generated_images/exec-f0794e84-5331-42ef-be1a-27553757f946.png",
+      "originalSha256": "36c5eecae8002aabb1625ba6724c951904aabadafda4b2a219b07ba070100ed3",
+      "output": "artifacts/build-diary-02/assets/thumbnail-original.png",
+      "outputSha256": "36c5eecae8002aabb1625ba6724c951904aabadafda4b2a219b07ba070100ed3",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "prompt": "Make one focused edit to the supplied finished Japanese Episode02 thumbnail: improve ONLY main host Tsumugi's round eyeglasses readability. She is the large blonde-pink-haired chibi scientist in white coat at center-right. Her current thin gold frames blend into her skin and hair. Give her clearly visible, elegant full ROUND glasses with a moderately thicker warm dark-brown/dark-bronze rim around BOTH eyes, a clearly visible matching bridge above the nose, and subtle matching temples to the ears. The rims should be distinctly readable even when the thumbnail is small, about 3 to 4 pixel equivalent at this resolution, but friendly and stylish rather than heavy goggles. Lenses fully transparent, blue eyes and gentle happy expression unobscured, no glare hiding the eyes. Her glasses are a recognizable signature of this kind science gyaru host. Preserve her eye positions, face, hair, skin, clothing, pose and personality. Preserve EVERY other part of the existing image as faithfully as possible: Japanese title ビルド研究日誌, subtitle みんなが輝くRPGを！, label #02 ネリ, bottom caption 守る子にも、休む番を。, Neri seated at left with silver braid brown skin armor and lantern, Zundamon, Metan, room, schedule, pink cream mint amber colors. Do not change layout or zoom, do not enlarge heads, maintain generous full-head and hair-ornament margins. Wide16:9 same composition. No additional text or objects. It must remain an ordinary pair of cute round spectacles, not sunglasses or lab safety goggles.",
+      "references": [
+        "artifacts/build-diary-02/assets/thumbnail-before-glasses-clarity.png"
+      ],
+      "referenceHashes": {
+        "artifacts/build-diary-02/assets/thumbnail-before-glasses-clarity.png": "31ddf76d79652eb3591f781227b06599a98e74688a336cbc510077301dd8e72f"
+      },
+      "accepted": true
+    }
+  ],
+  "review": {
+    "reviewer": "/root/build_diary_art",
+    "method": "Manually viewed all generated originals at source size. Rejected both first drafts for edge clipping, then reviewed both revised compositions.",
+    "checks": {
+      "allFourMainHeadsAndHairOrnamentsContained": true,
+      "metanHeartHeadOrnamentsAndCurlsContained": true,
+      "tsumugiGlassesVisibleAndKind": true,
+      "neriIdentityPreserved": true,
+      "neriSeatedResting": true,
+      "lanternContained": true,
+      "exactEpisode02CopyOnThumbnail": true,
+      "noAwardedGemClaims": true,
+      "part01FilesUnchangedByThisTask": true,
+      "thumbnailRoundGlassesClearlyReadable": true
+    },
+    "notes": "Waist-up desk staging intentionally occludes lower bodies; no floating cropped heads. Schedule symbols and small portraits are illustrative, not exact UI or numerical mechanics. Independent detail review found original thin glasses present but weak at reduced scale. Edited only thumbnail through imagegen to clearly visible warm bronze full round rims and bridge. Rechecked both transparent lenses, blue eyes, unchanged text, four whole heads and hair ornaments."
+  },
+  "derivedThumbnail": {
+    "path": "artifacts/build-diary-02/delivery/Thumbnail-BuildResearchDiary-02.jpg",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "processing": "Pillow ImageOps.contain on cream canvas; no crop or source overwrite.",
+    "sha256": "385572a42377fe560ccfdb1a81fdeec6269fa39bde98c8d17556b36ad602e879"
+  }
+}
