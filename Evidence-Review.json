@@ -1,0 +1,344 @@
+{
+  "passed": true,
+  "episode": "BRD-003",
+  "sourceMain": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "appVersion": "1.11.0",
+  "contentVersion": "v1.10-r1",
+  "rulesVersion": "2",
+  "presentationChangeOnlyVerified": {
+    "productionSourceNotModifiedByResearch": true,
+    "nativeCopiedFromCurrentMain": true,
+    "inheritedNeriContract": "patched-v2",
+    "changedCopiedDomainFiles": [
+      "engine.ts",
+      "memory-gems.ts",
+      "scout-skills.ts"
+    ],
+    "latestScoutPortraitMetadataCopiedExactly": true
+  },
+  "certification": {
+    "productionCertified": [],
+    "prototypeCertified": [
+      "ruka",
+      "neri"
+    ],
+    "pending": [
+      "ione"
+    ]
+  },
+  "newCertification": {
+    "characterId": "ione",
+    "witnessId": "LAB-IONE-001",
+    "stage": "research-return-to-sender",
+    "status": "pending-counterexample-found",
+    "conditionsHash": "2ca249e22beadb51ec5eb6882617c64c1697ab4886d6c5b1084c422b7231f252",
+    "necessityCertificate": {
+      "path": "artifacts/build-diary-03/research/research-necessity-certificate.json",
+      "sha256": "5f772534cc3c2c219930baf268eadac66663face049f7ab1d9216f52f6c158a8",
+      "passed": false
+    },
+    "sufficiencyEvidence": {
+      "path": "artifacts/build-diary-03/research/research-sufficiency-certificate.json",
+      "sha256": "1c01f75af085f2414991f2a9bb7d56d414a65e0db6f6f360ad5e1dc36367ff48",
+      "sampleSize": 100,
+      "wins": 100,
+      "universalWinTheorem": false
+    },
+    "edgeChecks": {
+      "path": "artifacts/build-diary-03/research/research-edge-checks.json",
+      "sha256": "0567468ce9c094481e8266f896db46a8199ca11fc8384a96fd41b8212ebef396",
+      "passed": true
+    },
+    "counterexampleEvidence": {
+      "path": "artifacts/build-diary-03/research/research-counterexamples.json",
+      "sha256": "0ac8c02b08569a83393eba9a17c6db1246b92a74be6cc6f728de3ca0e8aeae25",
+      "passed": true
+    }
+  },
+  "priorCertificationReview": {
+    "ruka": {
+      "conditionsHash": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+      "checks": [
+        {
+          "id": "LAB-RUKA-001",
+          "result": "exclusive-revalidated",
+          "sameConditions": true,
+          "source": "artifacts/build-diary-03/research/research-cross-audit.json",
+          "oldCertificate": "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+          "oldCertificateSha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+          "mainWins": 100,
+          "mainMeanRounds": 11.63,
+          "newIoneCompetitorWins": 0,
+          "competitorCanonicalGirlId": "ione",
+          "explanation": "Target-only correction creates neither Ruka wound nor Neri voluntary rest. Both old native witnesses still win100/100 under the same conditions; Ione substitution wins0/100."
+        }
+      ]
+    },
+    "neri": {
+      "conditionsHash": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd",
+      "checks": [
+        {
+          "id": "LAB-NERI-001",
+          "result": "exclusive-revalidated",
+          "sameConditions": true,
+          "source": "artifacts/build-diary-03/research/research-cross-audit.json",
+          "oldCertificate": "artifacts/build-diary-02/research/research-necessity-certificate.json",
+          "oldCertificateSha256": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd",
+          "mainWins": 100,
+          "mainMeanRounds": 12,
+          "newIoneCompetitorWins": 0,
+          "competitorCanonicalGirlId": "ione",
+          "explanation": "Target-only correction creates neither Ruka wound nor Neri voluntary rest. Both old native witnesses still win100/100 under the same conditions; Ione substitution wins0/100."
+        }
+      ]
+    }
+  },
+  "samples": [
+    {
+      "id": "ione-main",
+      "opt": {},
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 6.03,
+      "meanFriendlyDamage": 0,
+      "meanCorrections": 2.13,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "safety-without-finishing-hit",
+      "opt": {
+        "defensiveUltimate": true
+      },
+      "n": 100,
+      "wins": 94,
+      "meanRounds": 6.09,
+      "meanFriendlyDamage": 0,
+      "meanCorrections": 2.13,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "same-party-without-new-skill",
+      "opt": {
+        "skill": false
+      },
+      "n": 100,
+      "wins": 98,
+      "meanRounds": 5.84,
+      "meanFriendlyDamage": 81.28,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "receipt-too-late",
+      "opt": {
+        "mode": "late"
+      },
+      "n": 100,
+      "wins": 99,
+      "meanRounds": 5.87,
+      "meanFriendlyDamage": 38.41,
+      "meanCorrections": 0.96,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "wrong-recipient",
+      "opt": {
+        "mode": "wrong-recipient"
+      },
+      "n": 100,
+      "wins": 58,
+      "meanRounds": 6.74,
+      "meanFriendlyDamage": 114.89,
+      "meanCorrections": 0,
+      "meanPotions": 0.06
+    },
+    {
+      "id": "cleanse-tikka",
+      "opt": {
+        "party": [
+          "tikka",
+          "nox",
+          "liora-awakened",
+          "fio"
+        ],
+        "cleanse": true
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 5.97,
+      "meanFriendlyDamage": 31.91,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "cleanse-fast-tank",
+      "opt": {
+        "party": [
+          "athena",
+          "nox",
+          "liora-awakened",
+          "fio"
+        ],
+        "cleanse": true
+      },
+      "n": 100,
+      "wins": 57,
+      "meanRounds": 6.79,
+      "meanFriendlyDamage": 51.27,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "noelle-command",
+      "opt": {
+        "party": [
+          "noelle",
+          "nox",
+          "liora-awakened",
+          "fio"
+        ],
+        "command": true
+      },
+      "n": 100,
+      "wins": 54,
+      "meanRounds": 6.93,
+      "meanFriendlyDamage": 80.85,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "low-speed-damage",
+      "opt": {
+        "party": [
+          "ione",
+          "noelle-awakened",
+          "liora-awakened",
+          "fio"
+        ]
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 8,
+      "meanFriendlyDamage": 18.86,
+      "meanCorrections": 1.34,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "t6-burst-no-ione",
+      "opt": {
+        "party": [
+          "astraea",
+          "seris-awakened",
+          "nox",
+          "eos"
+        ],
+        "tier": 6
+      },
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 1,
+      "meanFriendlyDamage": 0,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "athena-turtle-no-ione",
+      "opt": {
+        "party": [
+          "athena",
+          "selene",
+          "elaine-awakened",
+          "benzaiten"
+        ],
+        "tier": 6
+      },
+      "n": 100,
+      "wins": 0,
+      "meanRounds": 8,
+      "meanFriendlyDamage": 56.76,
+      "meanCorrections": 0,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "ione-no-side-actions",
+      "opt": {
+        "sideActions": false
+      },
+      "n": 100,
+      "wins": 57,
+      "meanRounds": 6.81,
+      "meanFriendlyDamage": 0,
+      "meanCorrections": 2.24,
+      "meanPotions": 0.0
+    },
+    {
+      "id": "ione-tier1",
+      "opt": {
+        "tier": 1
+      },
+      "n": 100,
+      "wins": 25,
+      "meanRounds": 7.72,
+      "meanFriendlyDamage": 0,
+      "meanCorrections": 2.66,
+      "meanPotions": 0.0
+    }
+  ],
+  "codeInputs": [
+    {
+      "path": "scripts/build-diary-03/research-bootstrap.py",
+      "sha256": "6e9166a7dc2049e1b7e2bc048dbadac09ead52457d4ecf08636f6e8d0cf81088"
+    },
+    {
+      "path": "scripts/build-diary-03/research-content-check.mts",
+      "sha256": "33fd69402df80f471f8fdc10a9330c9125e9d72c148a4e98ab9cf95de7afa306"
+    },
+    {
+      "path": "scripts/build-diary-03/research-cross.mts",
+      "sha256": "abc37b96b27821ea6a14fb03d3da5f1478d68b03e8dc5d330b94d5c5823e9a3b"
+    },
+    {
+      "path": "scripts/build-diary-03/research-edge.mts",
+      "sha256": "aa8779a46e783952399cebec9e0cb52d30d5d5dc11751e32ef2053b0ca7eeb18"
+    },
+    {
+      "path": "scripts/build-diary-03/research-finalize.py",
+      "sha256": "c73561421a77a2bc59ff3f290aac23b3ef92abd2f48d557186f8864c8bdf0c9f"
+    },
+    {
+      "path": "scripts/build-diary-03/research-inherited-neri.mts",
+      "sha256": "138c08bba028090c895795fefbd590410dea18bf0c330f582254eaba5398b4ea"
+    },
+    {
+      "path": "scripts/build-diary-03/research-inherited-ruka.mts",
+      "sha256": "a8f4f4632db055009107ecc431a61da2701121810af093ba6ea2d68ba9d5aa17"
+    },
+    {
+      "path": "scripts/build-diary-03/research-rules.mts",
+      "sha256": "f4aeea41da0bf4822075adb9617b6fe61b1d63f59637506cacb642c5c31c72bc"
+    },
+    {
+      "path": "scripts/build-diary-03/research-runner.mts",
+      "sha256": "9fa3c991a8548b2b808b01728a6983243df9a1ad3f36202cd2d7721b13e769c4"
+    }
+  ],
+  "codeHashes": {
+    "scripts/build-diary-03/research-bootstrap.py": "6e9166a7dc2049e1b7e2bc048dbadac09ead52457d4ecf08636f6e8d0cf81088",
+    "scripts/build-diary-03/research-content-check.mts": "33fd69402df80f471f8fdc10a9330c9125e9d72c148a4e98ab9cf95de7afa306",
+    "scripts/build-diary-03/research-cross.mts": "abc37b96b27821ea6a14fb03d3da5f1478d68b03e8dc5d330b94d5c5823e9a3b",
+    "scripts/build-diary-03/research-edge.mts": "aa8779a46e783952399cebec9e0cb52d30d5d5dc11751e32ef2053b0ca7eeb18",
+    "scripts/build-diary-03/research-finalize.py": "c73561421a77a2bc59ff3f290aac23b3ef92abd2f48d557186f8864c8bdf0c9f",
+    "scripts/build-diary-03/research-inherited-neri.mts": "138c08bba028090c895795fefbd590410dea18bf0c330f582254eaba5398b4ea",
+    "scripts/build-diary-03/research-inherited-ruka.mts": "a8f4f4632db055009107ecc431a61da2701121810af093ba6ea2d68ba9d5aa17",
+    "scripts/build-diary-03/research-rules.mts": "f4aeea41da0bf4822075adb9617b6fe61b1d63f59637506cacb642c5c31c72bc",
+    "scripts/build-diary-03/research-runner.mts": "9fa3c991a8548b2b808b01728a6983243df9a1ad3f36202cd2d7721b13e769c4"
+  },
+  "limits": [
+    "New skill/enemy/stage are research-only; no game source or production save contract was changed.",
+    "Ione has useful target-correction evidence, but no exclusive witness. Keep her gemstone unfilled.",
+    "The initial94/100 safety policy is preserved; final100/100 comes from a public round7 finishing decision, without enemy/stat/loadout changes.",
+    "Same-T3 Tikka cleanse100/100 is a fair alternative; T6R1 burst is a separately labelled higher-budget alternative.",
+    "100 fixed seeds are not a universal win theorem.",
+    "Old Ruka/Neri certification remains conditional on their original deliberately constructed prototype rules."
+  ]
+}

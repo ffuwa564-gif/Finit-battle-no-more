@@ -1,0 +1,2472 @@
+{
+  "passed": true,
+  "finishedSha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463",
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "sourceCodeCommit": "84f541a031b7992fffd329e9447f4af9f067e1e7",
+  "sourceBranch": "video/build-research-diary-03",
+  "mediaBranch": "downloads/build-research-diary-03",
+  "inputs": {
+    "AGENTS.md": {
+      "sha256": "38301bf06a452825cc705c6b58293dbbe0d2b446556022bf10eea226390d92c6",
+      "bytes": 7056
+    },
+    "artifacts/build-diary-01/research/revalidation-necessity-certificate.json": {
+      "sha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+      "bytes": 8340
+    },
+    "artifacts/build-diary-02/research/research-necessity-certificate.json": {
+      "sha256": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd",
+      "bytes": 4220
+    },
+    "artifacts/build-diary-03/approved-cuts.json": {
+      "sha256": "96fef59fa544db8183c3623c1593c2acab19305e47464e4bccda8a98d1416567",
+      "bytes": 1373
+    },
+    "artifacts/build-diary-03/asset-reuse.json": {
+      "sha256": "75f6348d9d75e85cea0fed7ee159c04de6d3e46a9b4ffc3e4439c70b6e9c4f13",
+      "bytes": 2622
+    },
+    "artifacts/build-diary-03/assets/art-production-plan.json": {
+      "sha256": "fb0f38b0bb6aa8d046f73d8491ac67ec031fb25b877fa8d9835229fbe43d632a",
+      "bytes": 3849
+    },
+    "artifacts/build-diary-03/assets/artwork-provenance.json": {
+      "sha256": "b9b91321e092cf42ba238f7b03bdfb8d58a9ae2f1ddb4f2e16fd683a1e9a7e4c",
+      "bytes": 9501
+    },
+    "artifacts/build-diary-03/assets/blank-avatar.png": {
+      "sha256": "4c5d001c3fd1ea31400995fff618b9221801b3e2b6acf821733c66a30383f073",
+      "bytes": 626
+    },
+    "artifacts/build-diary-03/assets/m-deadpan-avatar.png": {
+      "sha256": "7c568e3f6ec6ffdf933ad1aa1b94383f46937db02600fb5fc9a0f6ed01c2a505",
+      "bytes": 134777
+    },
+    "artifacts/build-diary-03/assets/m-deadpan.png": {
+      "sha256": "e4fcb035dcddbf3591e6de9d8305552f1e04505cdfb49ce3f5d4a9ef17d7c04c",
+      "bytes": 1873226
+    },
+    "artifacts/build-diary-03/assets/m-happy-avatar.png": {
+      "sha256": "baf6e2a0bdfa5991fe6662936327aa2dd1b14fdc119a72123f9c0b80384b40c3",
+      "bytes": 132007
+    },
+    "artifacts/build-diary-03/assets/m-happy.png": {
+      "sha256": "7f9cbf0adcc07567fc326e75b378bb9389b1e4180f0965303b515750994302d5",
+      "bytes": 2006220
+    },
+    "artifacts/build-diary-03/assets/opening-original.mp3": {
+      "sha256": "542268fcbbc9f735025dd8fbc8f7835598cf7c2766aa7156f2657d15b11732ca",
+      "bytes": 746250
+    },
+    "artifacts/build-diary-03/assets/research-lab-register.png": {
+      "sha256": "da5a71c3441c4bbb75fa1367340492463c049ea7cfbec31f32cb99dca3e7d8bd",
+      "bytes": 3124466
+    },
+    "artifacts/build-diary-03/assets/research-lab.png": {
+      "sha256": "60ea1d9952f40a0259a91e58f36c4116e14722f2af0e2299433f8a695cc0a26e",
+      "bytes": 2876875
+    },
+    "artifacts/build-diary-03/assets/reused-artwork-provenance.json": {
+      "sha256": "57bf2c04fb3cde952d310272110dc3581a7a08ffdef2b7b427a681403c8c9d86",
+      "bytes": 7087
+    },
+    "artifacts/build-diary-03/assets/t-research-care-avatar.png": {
+      "sha256": "f781ffd697d7197de812885f83a89c5a215bda889ef8177374de0df8483972f9",
+      "bytes": 143677
+    },
+    "artifacts/build-diary-03/assets/t-research-care.png": {
+      "sha256": "cee26bbbda6649f4aebf9a064405efc01963f405bf203afab1865068920b9bcb",
+      "bytes": 1595497
+    },
+    "artifacts/build-diary-03/assets/t-research-determined-avatar.png": {
+      "sha256": "49203d616bc33d1a68bf5836d5dede79a714a9d65925df970f02ea183f20bec3",
+      "bytes": 135303
+    },
+    "artifacts/build-diary-03/assets/t-research-determined.png": {
+      "sha256": "d85daebbfeb97a9a2e1cc4a73384443b112b134d8e8a180624b190a3ed315d0a",
+      "bytes": 1618182
+    },
+    "artifacts/build-diary-03/assets/t-research-happy-avatar.png": {
+      "sha256": "2db2d125a79ddc19407cb7b78ba622dbe25256a44000665f45e5ae7c29dad00e",
+      "bytes": 142652
+    },
+    "artifacts/build-diary-03/assets/t-research-happy.png": {
+      "sha256": "d76bdbd3a40f3350b8bde8ed6a336c9dc72d44f94e5067050db2500f369f7905",
+      "bytes": 1536109
+    },
+    "artifacts/build-diary-03/assets/t-research-think-avatar.png": {
+      "sha256": "3d8549a20596c9b08fc5f8aa58952ce0fb1843537df5810e6d4788908754f16b",
+      "bytes": 143086
+    },
+    "artifacts/build-diary-03/assets/t-research-think.png": {
+      "sha256": "7060c68b46304454a0305b2703273d5d30839109e227b22b57582c663cd50748",
+      "bytes": 1566031
+    },
+    "artifacts/build-diary-03/assets/thumbnail-original.png": {
+      "sha256": "971c793e603f7b904cf98767f52092f319fa28708575f4124dda46045d00f917",
+      "bytes": 3241887
+    },
+    "artifacts/build-diary-03/assets/z-happy-avatar.png": {
+      "sha256": "85fda8a33af9f4a6d11716ffd64f8d052c6374745c4f2cd83a02573e2fb96112",
+      "bytes": 118369
+    },
+    "artifacts/build-diary-03/assets/z-happy.png": {
+      "sha256": "b51f9b8747b2b43f303facec5fd72bb04f2a5431cffc2c62a418db2944b935da",
+      "bytes": 1163076
+    },
+    "artifacts/build-diary-03/assets/z-panic-avatar.png": {
+      "sha256": "abcacf289062811fbf2877f1d9780074506a419d256acb3a69ab9749e3514c90",
+      "bytes": 131818
+    },
+    "artifacts/build-diary-03/assets/z-panic.png": {
+      "sha256": "0ad8b7bf7e6b5da3efd1e6e25f36fa231d3efa7986b8d812ff4f6d4f8ad4993e",
+      "bytes": 1290514
+    },
+    "artifacts/build-diary-03/capture/lab-counter.json": {
+      "sha256": "63d803440968384e5d4f943af9fd1cf6880e1193d3923941c0efaa60b1e995fa",
+      "bytes": 101246
+    },
+    "artifacts/build-diary-03/capture/lab-counter.json.tmporiginal": {
+      "sha256": "c6ea735fe2714fb0f1c145a4b09399f6f6c5e0a3c0ef36a8bf020c690f026d87",
+      "bytes": 99399
+    },
+    "artifacts/build-diary-03/capture/lab-counter.mov": {
+      "sha256": "e16b1d5ccf1d03bef1f3825f2bea35301ef644e403c0d216e823fa59a38b8a7d",
+      "bytes": 8724299
+    },
+    "artifacts/build-diary-03/capture/lab-counter.mov.tmporiginal": {
+      "sha256": "1171f0b6f815899f68fd040a5dfffabf347ac1a1f5a18b0789725140c22d7f5e",
+      "bytes": 8695678
+    },
+    "artifacts/build-diary-03/capture/lab-victory.json": {
+      "sha256": "f9e672a028f3376c97dca5382f72e4190bcf516df476a04e827f82ab9a92fa27",
+      "bytes": 254936
+    },
+    "artifacts/build-diary-03/capture/lab-victory.json.tmporiginal": {
+      "sha256": "4e49b0dd4c8e47ea90e7c14d3c6de25d4a5dc3703f07c0646d3487db5fe63608",
+      "bytes": 253073
+    },
+    "artifacts/build-diary-03/capture/lab-victory.mov": {
+      "sha256": "808b00397b4c6d58d6869b4e5669c79aa1e9ab49fce04ee73c3ed334bc361dd0",
+      "bytes": 19691303
+    },
+    "artifacts/build-diary-03/capture/lab-victory.mov.tmporiginal": {
+      "sha256": "a5aa045a00035b79b36fd6ec62405d8abbc980a88ada2bc07a28c7b45342fba2",
+      "bytes": 19674203
+    },
+    "artifacts/build-diary-03/capture/live-ione.json": {
+      "sha256": "97e7fc3515adb4f8374861488b84e804b5a7ff335abab84bbd29ec657867d33a",
+      "bytes": 221734
+    },
+    "artifacts/build-diary-03/capture/live-ione.json.tmporiginal": {
+      "sha256": "96a6f87796e6eab684b71bec5ec4e0818efc2d8d5c0b85b2a79b4ce1a28a8f02",
+      "bytes": 219878
+    },
+    "artifacts/build-diary-03/capture/live-ione.mov": {
+      "sha256": "0b20611d573523a424bb6a0817f1304d1ea5be626b516b97e2856c7a3674b1be",
+      "bytes": 14343875
+    },
+    "artifacts/build-diary-03/capture/live-ione.mov.tmporiginal": {
+      "sha256": "6c6030748578639f5aadccb04d3a833f221d90ed9313bd548dfd2ebddf2c2b38",
+      "bytes": 14655806
+    },
+    "artifacts/build-diary-03/chapter-ready-failed-draft.json": {
+      "sha256": "a4976834ff98133e32d6c81c6e8e424efa3deefa0dcf4b35940391ef9ec5e3a1",
+      "bytes": 4037
+    },
+    "artifacts/build-diary-03/chapter-ready-ione-now.json": {
+      "sha256": "7247884ed9b09f5fafb1542554e25a4c6728a563b1e51a3dd42fe375a0b638c6",
+      "bytes": 3799
+    },
+    "artifacts/build-diary-03/chapter-ready-lab-victory-a.json": {
+      "sha256": "8747b9486f7b2cddf043a2e2164b32d02f61b7ce1f742a25bd91bbf2ac6f9875",
+      "bytes": 4281
+    },
+    "artifacts/build-diary-03/chapter-ready-lab-victory-b.json": {
+      "sha256": "d6e276da289e42490611a187d2a96910cc3806f5bc9cce943f3e2dffa99935a1",
+      "bytes": 4338
+    },
+    "artifacts/build-diary-03/delivery/Artwork-Provenance.json": {
+      "sha256": "b9b91321e092cf42ba238f7b03bdfb8d58a9ae2f1ddb4f2e16fd683a1e9a7e4c",
+      "bytes": 9501
+    },
+    "artifacts/build-diary-03/delivery/Asset-Reuse.json": {
+      "sha256": "75f6348d9d75e85cea0fed7ee159c04de6d3e46a9b4ffc3e4439c70b6e9c4f13",
+      "bytes": 2622
+    },
+    "artifacts/build-diary-03/delivery/Chapters.txt": {
+      "sha256": "2fcda4187a7863020147b1c4e5242a32e9c6cf5212f7875779941d519fa7e086",
+      "bytes": 710
+    },
+    "artifacts/build-diary-03/delivery/Character-Registry.json": {
+      "sha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81",
+      "bytes": 187045
+    },
+    "artifacts/build-diary-03/delivery/Credits.md": {
+      "sha256": "84b2be8fb9721d64e641b1e25ddb1dc61d8495cbe45de86aefcbea6b4f779a69",
+      "bytes": 1880
+    },
+    "artifacts/build-diary-03/delivery/Decode-Validation.json": {
+      "sha256": "15e5fb7a44c3a47f83a35d7f54dcee162e5c77d5a616068d459cfca197a10b3d",
+      "bytes": 173
+    },
+    "artifacts/build-diary-03/delivery/Edit-Timeline.json": {
+      "sha256": "2315df81d10b317706b73cd801937ba4073700b25a6becd69acc51f80e8797fb",
+      "bytes": 2444
+    },
+    "artifacts/build-diary-03/delivery/Evidence-Review.json": {
+      "sha256": "349fcf1fe42cddf525dd95f1ad22b645e07a3126c0a976bc1e17501ca700386e",
+      "bytes": 10759
+    },
+    "artifacts/build-diary-03/delivery/External-Assets.json": {
+      "sha256": "07bf487f78812a7275cefa3bcf003e6d980a3e6b7a0c8988d1809fe6fd1ce055",
+      "bytes": 25797
+    },
+    "artifacts/build-diary-03/delivery/Finished-Movie-Sync.json": {
+      "sha256": "9e1a22eba5883bce04207fcd51ccb46b5e69b41e479d904b8a7a15b2789f74f7",
+      "bytes": 10706
+    },
+    "artifacts/build-diary-03/delivery/Game-Source.json": {
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21",
+      "bytes": 481
+    },
+    "artifacts/build-diary-03/delivery/Gem-Audit.json": {
+      "sha256": "685624d9a7badf6674d93b31f4ef223990f4fbb55ab4605e0193e2e831aae82a",
+      "bytes": 79179
+    },
+    "artifacts/build-diary-03/delivery/Head-Safety.json": {
+      "sha256": "da862efc9f979a09aa7d5f28c6726af39d1e1b332c4dae7574911f3a39f9a795",
+      "bytes": 872
+    },
+    "artifacts/build-diary-03/delivery/Manual-Visual-Review.json": {
+      "sha256": "40679aeffa15927754e0770a6e7c53a8dd3e3aa4184a6f331a905cc8f0f21000",
+      "bytes": 25610
+    },
+    "artifacts/build-diary-03/delivery/Metadata-SourceGame.json": {
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21",
+      "bytes": 481
+    },
+    "artifacts/build-diary-03/delivery/Methods.md": {
+      "sha256": "1f750c4955cb967a59340079a18bed5627ac0ae688e81ee34d467e160118e92d",
+      "bytes": 3051
+    },
+    "artifacts/build-diary-03/delivery/Mix-Manifest.json": {
+      "sha256": "5572680d5e9d6686caafab3b66e7e5ca743d12dfd5d1d69439db7696edfd750d",
+      "bytes": 44021
+    },
+    "artifacts/build-diary-03/delivery/Music-Source.json": {
+      "sha256": "b42e5e4ec40906f71a9df8412c171ede5625205b34d3fe3162459195c38068f4",
+      "bytes": 385
+    },
+    "artifacts/build-diary-03/delivery/Narration-Timeline.json": {
+      "sha256": "f14584fd205b58741aa57a5e7b5a689f45b1cdfc643c780c84d4ea2417b7d16a",
+      "bytes": 65506
+    },
+    "artifacts/build-diary-03/delivery/Recording-Sources.json": {
+      "sha256": "8a6c3f7100acb47fa2ae520ad939bf256d421ee8c633a498a5d23b941542f781",
+      "bytes": 6567
+    },
+    "artifacts/build-diary-03/delivery/Render-Input-Freeze.json": {
+      "sha256": "b011f8e64418aa3fdcb5bdac79f3690d8ed9b5eb95e04798f041a07d51e238d7",
+      "bytes": 44787
+    },
+    "artifacts/build-diary-03/delivery/Reproduce.md": {
+      "sha256": "e3ad75f60367b92de13f0dce384ddc0ca4837d996add64a2cfd6433a1fcc35cf",
+      "bytes": 4874
+    },
+    "artifacts/build-diary-03/delivery/Roster-Coverage.json": {
+      "sha256": "99c5b65a401258af7dd9bb31c67ebf9fee72296561216c0cd9daac4aabc12270",
+      "bytes": 58784
+    },
+    "artifacts/build-diary-03/delivery/STILLVEIL-BuildResearchDiary-03.mp4": {
+      "sha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463",
+      "bytes": 39288093
+    },
+    "artifacts/build-diary-03/delivery/Script.md": {
+      "sha256": "4d657945d2ce9a505d77d8667d3e37084d0aa012d01f004c426729862e1a46c7",
+      "bytes": 17894
+    },
+    "artifacts/build-diary-03/delivery/Subtitles-ja.srt": {
+      "sha256": "87aa83e361ed9780b57c976a24a4b7489d386dad889e0e644fa1f2490496b1cf",
+      "bytes": 18442
+    },
+    "artifacts/build-diary-03/delivery/Validation.json": {
+      "sha256": "eb0fc31f1bdaa0f7b3c1b39ac45d0aab8ce61cca5f96e7aa2c2c4b064657028a",
+      "bytes": 1912
+    },
+    "artifacts/build-diary-03/delivery/Visual-QC.json": {
+      "sha256": "c3464ad43f61c2e97e3d058b68a9bbb47e3b108b1876c1f63aad7149372d83e4",
+      "bytes": 56232
+    },
+    "artifacts/build-diary-03/delivery/YouTube-Description.txt": {
+      "sha256": "b20e55fb37b6c7ea964c0bc901918df1524360f218f647d08509062908460029",
+      "bytes": 2428
+    },
+    "artifacts/build-diary-03/edit-timeline.json": {
+      "sha256": "2315df81d10b317706b73cd801937ba4073700b25a6becd69acc51f80e8797fb",
+      "bytes": 2444
+    },
+    "artifacts/build-diary-03/event-cues.json": {
+      "sha256": "2c419e557756ebe3e3098aace97104d88140561e55d3cba363161c21bf7059f4",
+      "bytes": 1463
+    },
+    "artifacts/build-diary-03/gem-audit.json": {
+      "sha256": "685624d9a7badf6674d93b31f4ef223990f4fbb55ab4605e0193e2e831aae82a",
+      "bytes": 79179
+    },
+    "artifacts/build-diary-03/head-safety.json": {
+      "sha256": "da862efc9f979a09aa7d5f28c6726af39d1e1b332c4dae7574911f3a39f9a795",
+      "bytes": 872
+    },
+    "artifacts/build-diary-03/metadataSourceGame.json": {
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21",
+      "bytes": 481
+    },
+    "artifacts/build-diary-03/mix-manifest.json": {
+      "sha256": "5572680d5e9d6686caafab3b66e7e5ca743d12dfd5d1d69439db7696edfd750d",
+      "bytes": 44021
+    },
+    "artifacts/build-diary-03/music-source.json": {
+      "sha256": "b42e5e4ec40906f71a9df8412c171ede5625205b34d3fe3162459195c38068f4",
+      "bytes": 385
+    },
+    "artifacts/build-diary-03/narration.json": {
+      "sha256": "368e6097246bfb029828340a53c85d916b5d83294218d367933034620c5e8242",
+      "bytes": 55271
+    },
+    "artifacts/build-diary-03/proofs/live-ione.json.gz": {
+      "sha256": "581a562ebc8f7dac903d2152ac80c87dd0ca24f19acedebb458b7c5c73edcbba",
+      "bytes": 8124
+    },
+    "artifacts/build-diary-03/registry-finalization.json": {
+      "sha256": "9bc0eecac7593538be419d563d486b2e33f9231fc0fb49c90f58176b02d7b1b9",
+      "bytes": 7683
+    },
+    "artifacts/build-diary-03/registry.json": {
+      "sha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81",
+      "bytes": 187045
+    },
+    "artifacts/build-diary-03/render/comparisons-scene-0.png": {
+      "sha256": "3ec8b8dafe0c6a2d16441b335f2642f0ef690653108feb07938a0531faa40fac",
+      "bytes": 121206
+    },
+    "artifacts/build-diary-03/render/comparisons-scene-1.png": {
+      "sha256": "803fb4cabe19c37dc9ac87d29fb038d7d6dd286459fdd7fe0133f16f77ac4529",
+      "bytes": 124168
+    },
+    "artifacts/build-diary-03/render/comparisons-scene-2.png": {
+      "sha256": "72ee72df79fc62c2b5fd53cec1f7e62035023ed95a4cf4f5c64b6fe0353636d7",
+      "bytes": 130339
+    },
+    "artifacts/build-diary-03/render/comparisons-visual.json": {
+      "sha256": "72d1dea4e615831bff66eb1c479c0e1923ed636e8427ff853c3b8c4bfb6ae564",
+      "bytes": 1879
+    },
+    "artifacts/build-diary-03/render/comparisons.ass": {
+      "sha256": "aa4723bea3dfbc9d9b6e4b5903af65f0732fa6b92e8c001e5aa6736b80325f6d",
+      "bytes": 3170
+    },
+    "artifacts/build-diary-03/render/counterexample-scene-0.png": {
+      "sha256": "b6e556d6382ced0879f9ee8e1af6d904fd13708b14a5913662c09616b473c287",
+      "bytes": 298889
+    },
+    "artifacts/build-diary-03/render/counterexample-scene-1.png": {
+      "sha256": "db1e09b89a66317a8ca930936ac107fd9df4effe2a1aebeba290bc524371bc1a",
+      "bytes": 234393
+    },
+    "artifacts/build-diary-03/render/counterexample-visual.json": {
+      "sha256": "0f2f40136c7e2f23b510e4c75e02dfb7fb95644615daaccdd43776fb86071f50",
+      "bytes": 1759
+    },
+    "artifacts/build-diary-03/render/counterexample.ass": {
+      "sha256": "6b3e533ee74bd75728517031666ae91b04bbe098416200fcd26f2eefff7d030b",
+      "bytes": 3120
+    },
+    "artifacts/build-diary-03/render/failed-draft-scene-0.png": {
+      "sha256": "475951bfa686feaeea5cffa70b784cc699352bee502160096d97fb9feec5802d",
+      "bytes": 105698
+    },
+    "artifacts/build-diary-03/render/failed-draft-scene-1.png": {
+      "sha256": "475951bfa686feaeea5cffa70b784cc699352bee502160096d97fb9feec5802d",
+      "bytes": 105698
+    },
+    "artifacts/build-diary-03/render/failed-draft-scene-2.png": {
+      "sha256": "475951bfa686feaeea5cffa70b784cc699352bee502160096d97fb9feec5802d",
+      "bytes": 105698
+    },
+    "artifacts/build-diary-03/render/failed-draft-scene-3.png": {
+      "sha256": "edcec79034e1f4ee921c215a6c1ce5d6934f76b4682084f0f772493c81bc6987",
+      "bytes": 167093
+    },
+    "artifacts/build-diary-03/render/failed-draft-visual.json": {
+      "sha256": "0429ec505458809718c2e13f33cb22877ee2939fab9e38ad774db5f02f840e86",
+      "bytes": 2009
+    },
+    "artifacts/build-diary-03/render/failed-draft.ass": {
+      "sha256": "4eae3d34b115ec4a2523e963bbfb2c1a3d1430fbca25cfb18a093816768c62df",
+      "bytes": 3048
+    },
+    "artifacts/build-diary-03/render/future-scene-0.png": {
+      "sha256": "3d3078879a9f1027a41deddba2037e31c1f447c2921cf2b9ceb62c90f5ce5261",
+      "bytes": 110163
+    },
+    "artifacts/build-diary-03/render/future-scene-1.png": {
+      "sha256": "3d3078879a9f1027a41deddba2037e31c1f447c2921cf2b9ceb62c90f5ce5261",
+      "bytes": 110163
+    },
+    "artifacts/build-diary-03/render/future-scene-2.png": {
+      "sha256": "1ec38a11990b2b7758a04e50c1c686cbbe1f7e3836bbabb269582c8958838b25",
+      "bytes": 1824881
+    },
+    "artifacts/build-diary-03/render/future-scene-3.png": {
+      "sha256": "1ec38a11990b2b7758a04e50c1c686cbbe1f7e3836bbabb269582c8958838b25",
+      "bytes": 1824881
+    },
+    "artifacts/build-diary-03/render/future-visual.json": {
+      "sha256": "639f4d5266406604b77c2686fa3dc1d632e5c9a96a7c5b1e1f8a2a2ae0fab499",
+      "bytes": 1747
+    },
+    "artifacts/build-diary-03/render/future.ass": {
+      "sha256": "41885802b17d1dc856f74123860c6e14f2da07c889237fdf81b6dbbb12b342d5",
+      "bytes": 2536
+    },
+    "artifacts/build-diary-03/render/growth-scene-0.png": {
+      "sha256": "ad6015330f93054dc0f9bd21961685a810a8d414915a4f464ce1e8adc55a75cb",
+      "bytes": 126368
+    },
+    "artifacts/build-diary-03/render/growth-scene-1.png": {
+      "sha256": "ad6015330f93054dc0f9bd21961685a810a8d414915a4f464ce1e8adc55a75cb",
+      "bytes": 126368
+    },
+    "artifacts/build-diary-03/render/growth-scene-2.png": {
+      "sha256": "ad6015330f93054dc0f9bd21961685a810a8d414915a4f464ce1e8adc55a75cb",
+      "bytes": 126368
+    },
+    "artifacts/build-diary-03/render/growth-visual.json": {
+      "sha256": "49157823ad084dae50b72b621b7990ca53726c3714071aa534622857f0fdea1c",
+      "bytes": 1562
+    },
+    "artifacts/build-diary-03/render/growth.ass": {
+      "sha256": "b55e6863d8df084b4f6e41c366143e2a9a25da2d239261d6a6c7f8a98186da28",
+      "bytes": 2668
+    },
+    "artifacts/build-diary-03/render/ione-now-scene-0.png": {
+      "sha256": "1a48bc931eb498b6f471df889a090bd59506e65dbb60c98a6f619097e4fc81fa",
+      "bytes": 118602
+    },
+    "artifacts/build-diary-03/render/ione-now-scene-1.png": {
+      "sha256": "1a48bc931eb498b6f471df889a090bd59506e65dbb60c98a6f619097e4fc81fa",
+      "bytes": 118602
+    },
+    "artifacts/build-diary-03/render/ione-now-scene-2.png": {
+      "sha256": "1a48bc931eb498b6f471df889a090bd59506e65dbb60c98a6f619097e4fc81fa",
+      "bytes": 118602
+    },
+    "artifacts/build-diary-03/render/ione-now-scene-3.png": {
+      "sha256": "5821dd7df01f6af834424f91c7a4a53f7f6cdf6242abbfd2fe6d9b0bb0e9fb46",
+      "bytes": 253332
+    },
+    "artifacts/build-diary-03/render/ione-now-visual.json": {
+      "sha256": "6d2c656f9ac8ec7c7e8379f3a7587c20290dc3017c11763f8cf795f161a48636",
+      "bytes": 1841
+    },
+    "artifacts/build-diary-03/render/ione-now.ass": {
+      "sha256": "8a045b6e81327e93b24153e6cd325fe056ea278f99a05b78de641b023a9c55e2",
+      "bytes": 2827
+    },
+    "artifacts/build-diary-03/render/lab-victory-a-scene-0.png": {
+      "sha256": "6f37535cdda66d20cad941b3a0e7344bef9c9c9f4b72baab90f5c8269236557d",
+      "bytes": 131371
+    },
+    "artifacts/build-diary-03/render/lab-victory-a-scene-1.png": {
+      "sha256": "6f37535cdda66d20cad941b3a0e7344bef9c9c9f4b72baab90f5c8269236557d",
+      "bytes": 131371
+    },
+    "artifacts/build-diary-03/render/lab-victory-a-scene-2.png": {
+      "sha256": "39ee68d003ffbdca666cf6eb0f090dcd820da22b9a15013a3965e997864fac5d",
+      "bytes": 119578
+    },
+    "artifacts/build-diary-03/render/lab-victory-a-visual.json": {
+      "sha256": "b19ee1f24fced9cc25fa93722091b7aa2f27b19840c0458c3ac9afd97362c306",
+      "bytes": 1764
+    },
+    "artifacts/build-diary-03/render/lab-victory-a.ass": {
+      "sha256": "9c535ecde1ced6f57ff04895569d46ff7dbbae90dfed127de2ea8dc5adf46cf0",
+      "bytes": 3325
+    },
+    "artifacts/build-diary-03/render/lab-victory-b-scene-0.png": {
+      "sha256": "5b0ccc853bbe2bf104ceff1d4c13939f22fd0aeb5fd0f534a066eaef532d2a83",
+      "bytes": 141013
+    },
+    "artifacts/build-diary-03/render/lab-victory-b-scene-1.png": {
+      "sha256": "5b0ccc853bbe2bf104ceff1d4c13939f22fd0aeb5fd0f534a066eaef532d2a83",
+      "bytes": 141013
+    },
+    "artifacts/build-diary-03/render/lab-victory-b-scene-2.png": {
+      "sha256": "5b0ccc853bbe2bf104ceff1d4c13939f22fd0aeb5fd0f534a066eaef532d2a83",
+      "bytes": 141013
+    },
+    "artifacts/build-diary-03/render/lab-victory-b-scene-3.png": {
+      "sha256": "11aca75f538b8ddef42020f47a97b586632b13d445b7f835b3b05b7dd1cfdf4f",
+      "bytes": 151614
+    },
+    "artifacts/build-diary-03/render/lab-victory-b-visual.json": {
+      "sha256": "f52b0b6aa0a089ba0e6e1a5296888fd900f02718ca622ffcbd24fff61748a4bc",
+      "bytes": 1962
+    },
+    "artifacts/build-diary-03/render/lab-victory-b.ass": {
+      "sha256": "c824b2ecb1d33038f57f32b931cda749794606e9bfe71c03f4044d6393bea61e",
+      "bytes": 3620
+    },
+    "artifacts/build-diary-03/render/legacy-audit-scene-0.png": {
+      "sha256": "ad4cc2cf38207c2b276ecfbeefc5c77525912dbf35bfd64a83b3bb73e2324b2a",
+      "bytes": 265234
+    },
+    "artifacts/build-diary-03/render/legacy-audit-scene-1.png": {
+      "sha256": "ad4cc2cf38207c2b276ecfbeefc5c77525912dbf35bfd64a83b3bb73e2324b2a",
+      "bytes": 265234
+    },
+    "artifacts/build-diary-03/render/legacy-audit-scene-2.png": {
+      "sha256": "ad4cc2cf38207c2b276ecfbeefc5c77525912dbf35bfd64a83b3bb73e2324b2a",
+      "bytes": 265234
+    },
+    "artifacts/build-diary-03/render/legacy-audit-scene-3.png": {
+      "sha256": "ad4cc2cf38207c2b276ecfbeefc5c77525912dbf35bfd64a83b3bb73e2324b2a",
+      "bytes": 265234
+    },
+    "artifacts/build-diary-03/render/legacy-audit-visual.json": {
+      "sha256": "9a910dbb04f93632e78f41659de4a8cd58fbf9ae0b488874f6546f20d83ad723",
+      "bytes": 2002
+    },
+    "artifacts/build-diary-03/render/legacy-audit.ass": {
+      "sha256": "d1ea0ece6d948ebade48a2167c13770ccd4ef309a8fa52bcad5ee1373c1c49a8",
+      "bytes": 2817
+    },
+    "artifacts/build-diary-03/render/new-skill-scene-0.png": {
+      "sha256": "79bacd386144342e41f7a6588728c680a6a021a698f3ca611b0f98837ee68ab5",
+      "bytes": 137464
+    },
+    "artifacts/build-diary-03/render/new-skill-scene-1.png": {
+      "sha256": "1f36482ab25ad6e70501bb7a34e5fc76db9e6e33d76459d10360ed30ae461927",
+      "bytes": 157558
+    },
+    "artifacts/build-diary-03/render/new-skill-scene-2.png": {
+      "sha256": "246b4042adb2b4ce02b5f3f615b55e4e4a8c53ec65e755e2f0bda6a2466a8c3d",
+      "bytes": 136413
+    },
+    "artifacts/build-diary-03/render/new-skill-visual.json": {
+      "sha256": "9e41e1cccb7f24da54ccd5e5fab469f0bb05adaebc507b3badf5bfd3ce02a278",
+      "bytes": 1769
+    },
+    "artifacts/build-diary-03/render/new-skill.ass": {
+      "sha256": "05e2651776f197cff3e99aa71f25d30cc0cfdc6f63c619c44469b83dd8e2f2ca",
+      "bytes": 2939
+    },
+    "artifacts/build-diary-03/render/next-episode-preview.json": {
+      "sha256": "656ff17070feb62ff3c7336f56e41985930684ca83fe4687eb1e0f37b74ac276",
+      "bytes": 1372
+    },
+    "artifacts/build-diary-03/render/next-episode-scene-0.png": {
+      "sha256": "593639ee34a3437678b2d553d8215c3525b7ba1af7fde720046c7f6a3908846d",
+      "bytes": 442465
+    },
+    "artifacts/build-diary-03/render/next-episode-scene-1.png": {
+      "sha256": "593639ee34a3437678b2d553d8215c3525b7ba1af7fde720046c7f6a3908846d",
+      "bytes": 442465
+    },
+    "artifacts/build-diary-03/render/next-episode-scene-2.png": {
+      "sha256": "593639ee34a3437678b2d553d8215c3525b7ba1af7fde720046c7f6a3908846d",
+      "bytes": 442465
+    },
+    "artifacts/build-diary-03/render/next-episode-visual.json": {
+      "sha256": "8043e1768ade8222a9a4c26e0c7f9b9111cd9d9655abe8bdbb3843021ea8bff5",
+      "bytes": 1480
+    },
+    "artifacts/build-diary-03/render/next-episode.ass": {
+      "sha256": "1925bece12f77ff04d7faab40682d5b1bc1029d87ce3e721fb04a0681607d7b9",
+      "bytes": 2127
+    },
+    "artifacts/build-diary-03/render/opening/Opening-QC.json": {
+      "sha256": "095a1e4d2a01159107c57ae9e38f5903e702bd59e311272d61509d1baf8ccbb0",
+      "bytes": 908
+    },
+    "artifacts/build-diary-03/render/opening/op-video.mp4.cache.json": {
+      "sha256": "afb8ba1493bebd0ef9ca95c0154d895cd9739a2a3edd4063faf42134b717b327",
+      "bytes": 159
+    },
+    "artifacts/build-diary-03/render/opening/opening-audio.wav.cache.json": {
+      "sha256": "4d02f26e41032fb202fdb99b917792c2337948cd32ef99e728fe33f9a61f23a2",
+      "bytes": 159
+    },
+    "artifacts/build-diary-03/render/opening/opening.mov": {
+      "sha256": "6f402e643fccdfc42bc91c8e0a7e89bd6e7af3e52affa5e6efceff5938c8226d",
+      "bytes": 7374054
+    },
+    "artifacts/build-diary-03/render/opening/opening.mov.cache.json": {
+      "sha256": "738d50cff4ed201280e70f6dc6bb2bae7cd7a66ce0acac6c06796ad0d2d238df",
+      "bytes": 159
+    },
+    "artifacts/build-diary-03/render/opening/provenance.json": {
+      "sha256": "1ef6938168873fffbc513548eff24008893805d2cacc22bfd189bd9e209af0f3",
+      "bytes": 6669
+    },
+    "artifacts/build-diary-03/render/opening/registry-input.json": {
+      "sha256": "ff3dd4f518c3230bd41642cb090e2ae2a9997a8546fc09ef244ceb496eb81d02",
+      "bytes": 1765
+    },
+    "artifacts/build-diary-03/render/recipe-scene-0.png": {
+      "sha256": "a2af54fd67815eba8e86d526d8d15ed1da0d6a7b574a47da77fbf5fb656f4627",
+      "bytes": 655003
+    },
+    "artifacts/build-diary-03/render/recipe-scene-1.png": {
+      "sha256": "81ed6524af482963911e61a44120e88f5f9783dfe54f9b3d7782a2759bb4d914",
+      "bytes": 134507
+    },
+    "artifacts/build-diary-03/render/recipe-scene-2.png": {
+      "sha256": "a2af54fd67815eba8e86d526d8d15ed1da0d6a7b574a47da77fbf5fb656f4627",
+      "bytes": 655003
+    },
+    "artifacts/build-diary-03/render/recipe-scene-3.png": {
+      "sha256": "81ed6524af482963911e61a44120e88f5f9783dfe54f9b3d7782a2759bb4d914",
+      "bytes": 134507
+    },
+    "artifacts/build-diary-03/render/recipe-visual.json": {
+      "sha256": "afeec755be394dfd8737d18fced58bc0f8c3351268c961ff5a5279c03951d5bf",
+      "bytes": 2092
+    },
+    "artifacts/build-diary-03/render/recipe.ass": {
+      "sha256": "da01e8146c59612cdb10f3cf01898b9f54c0de422b161c4c4c41cb99ab241cf9",
+      "bytes": 3385
+    },
+    "artifacts/build-diary-03/render/roster-scene-0.png": {
+      "sha256": "aecb980358bed9eae43b94d4356d7b2b7fb129e53295d02db2be5daa9bc66f0d",
+      "bytes": 50793
+    },
+    "artifacts/build-diary-03/render/roster-scene-1.png": {
+      "sha256": "aecb980358bed9eae43b94d4356d7b2b7fb129e53295d02db2be5daa9bc66f0d",
+      "bytes": 50793
+    },
+    "artifacts/build-diary-03/render/roster-scene-2.png": {
+      "sha256": "aecb980358bed9eae43b94d4356d7b2b7fb129e53295d02db2be5daa9bc66f0d",
+      "bytes": 50793
+    },
+    "artifacts/build-diary-03/render/roster-scene-3.png": {
+      "sha256": "aecb980358bed9eae43b94d4356d7b2b7fb129e53295d02db2be5daa9bc66f0d",
+      "bytes": 50793
+    },
+    "artifacts/build-diary-03/render/roster-visual.json": {
+      "sha256": "1f2b8d6d5f6542e6a9a64985c6235095856da3b8e4d9aca9e9575ecf11036841",
+      "bytes": 2049
+    },
+    "artifacts/build-diary-03/render/roster.ass": {
+      "sha256": "cf6dc67d24bfd1e4afc708d17b75547fc33eb54f8a3491f3f7e64b4ca0214e1b",
+      "bytes": 2875
+    },
+    "artifacts/build-diary-03/render/trial-scene-0.png": {
+      "sha256": "abeab3c957cd5c8e88f3571c496bbbd9fc0727e90de2826cf4c16ff8adb449f1",
+      "bytes": 123738
+    },
+    "artifacts/build-diary-03/render/trial-scene-1.png": {
+      "sha256": "abeab3c957cd5c8e88f3571c496bbbd9fc0727e90de2826cf4c16ff8adb449f1",
+      "bytes": 123738
+    },
+    "artifacts/build-diary-03/render/trial-scene-2.png": {
+      "sha256": "abeab3c957cd5c8e88f3571c496bbbd9fc0727e90de2826cf4c16ff8adb449f1",
+      "bytes": 123738
+    },
+    "artifacts/build-diary-03/render/trial-visual.json": {
+      "sha256": "5300f321555553af71377f8929b3259aa9ccd2bba1928887b5952e3d7638909c",
+      "bytes": 1451
+    },
+    "artifacts/build-diary-03/render/trial.ass": {
+      "sha256": "ac5bb91f47e48c631d2592639c6ac94eff79d783d01616a4555033d45fe14541",
+      "bytes": 2318
+    },
+    "artifacts/build-diary-03/render-input-freeze.json": {
+      "sha256": "b011f8e64418aa3fdcb5bdac79f3690d8ed9b5eb95e04798f041a07d51e238d7",
+      "bytes": 44787
+    },
+    "artifacts/build-diary-03/render-plan.json": {
+      "sha256": "9ee17aaf0bde6606af0a2735ea34c437885c34dc118386e8700a5604eb46a2e4",
+      "bytes": 11473
+    },
+    "artifacts/build-diary-03/research/Speech-QC.json": {
+      "sha256": "6114e582c2d796982b8f9927e7961bcd4c91e63a5727c0dd037611aca3360ade",
+      "bytes": 48590
+    },
+    "artifacts/build-diary-03/research/athena-turtle-no-ione-seed1.json": {
+      "sha256": "215821a6a0b19231fa80667ff9d1b62481f381bae73c7d15864a90e30ca4bf61",
+      "bytes": 490097
+    },
+    "artifacts/build-diary-03/research/capture-cfr-normalization.json": {
+      "sha256": "34fe0d9e3b71019042ce3d1f100bd99e3a8a5e4307879e69116bce2acf5436a9",
+      "bytes": 4296
+    },
+    "artifacts/build-diary-03/research/capture-source-qa.json": {
+      "sha256": "fd924d2b7b68f9ab63264c0d1ee670d1a8f3a0171b82a78a5545bcd2cfba95d0",
+      "bytes": 13677
+    },
+    "artifacts/build-diary-03/research/cleanse-fast-tank-seed1.json": {
+      "sha256": "efa4e648124057d91f16c2089b7127a692b2108265db1cdfae95d1cc42c8354d",
+      "bytes": 607158
+    },
+    "artifacts/build-diary-03/research/cleanse-tikka-seed1.json": {
+      "sha256": "69b6e72ca95bf5acb40d79af82902cfb86d4ba02ae6cbb06c3316cde5fd71a08",
+      "bytes": 532749
+    },
+    "artifacts/build-diary-03/research/critic-final/final-end-contact.jpg": {
+      "sha256": "6db93f0321502568dad51045c6bc3072daaaa79cb7d8b91ff0acd04fb0b40dc1",
+      "bytes": 1186260
+    },
+    "artifacts/build-diary-03/research/critic-final/final-mid-contact.jpg": {
+      "sha256": "79b44a926a87ef0f71bb028fc2e15a05c10ead30dc3fc06660d20ce497f76ac4",
+      "bytes": 1292484
+    },
+    "artifacts/build-diary-03/research/critic-final/final-start-contact.jpg": {
+      "sha256": "2c75433997f26117938086959d490a50698656687bc5cc06c522e91b59b33ee7",
+      "bytes": 1289860
+    },
+    "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg": {
+      "sha256": "c3bb5c6b90452f7680ca37d7b21d793b1b80624311141a31d046686f9b684f84",
+      "bytes": 225319
+    },
+    "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg": {
+      "sha256": "1d8d2e6949352f401f2097a27d7abe5e938d3fdfd386b688d78fe4e4330bbde4",
+      "bytes": 229473
+    },
+    "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg": {
+      "sha256": "0c033937d4695334cae97adbb138fd99b8b6c9900d22aee5ee547603d27c709f",
+      "bytes": 222881
+    },
+    "artifacts/build-diary-03/research/episode-evidence.json": {
+      "sha256": "349fcf1fe42cddf525dd95f1ad22b645e07a3126c0a976bc1e17501ca700386e",
+      "bytes": 10759
+    },
+    "artifacts/build-diary-03/research/independent-preview-review.json": {
+      "sha256": "09048e027e8798f6c2120aab5e24a2e8032deb1f41366dd93fa105d9c4100ea4",
+      "bytes": 3537
+    },
+    "artifacts/build-diary-03/research/independent-recheck.json": {
+      "sha256": "2c4ede9fc2d08ded826624b27cd08dac8ec805bf2f181a5c1a5c50cb7b7e1182",
+      "bytes": 3342
+    },
+    "artifacts/build-diary-03/research/independent-research-review.json": {
+      "sha256": "688edba0cd48801c867851d2b304325a19d8542cfad584ef34efb3ddbae89e7e",
+      "bytes": 5705
+    },
+    "artifacts/build-diary-03/research/ione-main-seed1.json": {
+      "sha256": "ca15857d8de4bf83b617ba3706c44f96b3db8bbf80ca44f7e24ef5c48ed632cf",
+      "bytes": 622641
+    },
+    "artifacts/build-diary-03/research/ione-no-neri-old-escort-seed1.json": {
+      "sha256": "eeb9ae4fcd6323fb21eb287ef81c3b055b5df6f81626748a205c6bcb1822aab0",
+      "bytes": 658231
+    },
+    "artifacts/build-diary-03/research/ione-no-ruka-old-loom-seed1.json": {
+      "sha256": "020d3e7bbe4ea7318a8aa364938ad0b70510aa24641595fe935edbc2018b4fe9",
+      "bytes": 3325499
+    },
+    "artifacts/build-diary-03/research/ione-no-side-actions-seed1.json": {
+      "sha256": "e9919c08f90854cb41686f6a39bdf13aba5263598cb24b396ca5f3762da980be",
+      "bytes": 625700
+    },
+    "artifacts/build-diary-03/research/ione-tier1-seed1.json": {
+      "sha256": "63ae198b7311516c3897fec574703314b9acf04e076ee2ba4580ccf30b67668e",
+      "bytes": 711131
+    },
+    "artifacts/build-diary-03/research/low-speed-damage-seed1.json": {
+      "sha256": "317d13017a31764251f100013f2f030a1e1afe6011f82ac46073fe6502ec47a8",
+      "bytes": 668868
+    },
+    "artifacts/build-diary-03/research/noelle-command-seed1.json": {
+      "sha256": "98fd527721f03a829f03bceca0595a9aa3e4dc081c9ada7801ea885234d691f7",
+      "bytes": 581020
+    },
+    "artifacts/build-diary-03/research/old-neri-same-conditions-seed1.json": {
+      "sha256": "665c902272a76e6f6c7171e1f1a15cd793525bee840dbf05ea0f42b68a6c0b1e",
+      "bytes": 1498813
+    },
+    "artifacts/build-diary-03/research/old-ruka-same-conditions-seed1.json": {
+      "sha256": "8a625bbea70c77f3399db07722c06dd8be2a9f55f29e2e6746ccfe3a30362b7e",
+      "bytes": 980002
+    },
+    "artifacts/build-diary-03/research/pipeline-preparation.json": {
+      "sha256": "eeadefb112d813ca79f389de6622505b795ace3ea8d61190c879bc0ecb0685b2",
+      "bytes": 1349
+    },
+    "artifacts/build-diary-03/research/receipt-too-late-seed1.json": {
+      "sha256": "9ee27fc1c20d21b85e64a5f3edc8645f85db55ac56c5a1ec4e2a3bbe7b445ae6",
+      "bytes": 613305
+    },
+    "artifacts/build-diary-03/research/research-content-consistency.json": {
+      "sha256": "36ad810b01dc43eaaa2003aa22dc1cf2914035cd686e70c6aa1d6a59c50db547",
+      "bytes": 1327
+    },
+    "artifacts/build-diary-03/research/research-counterexamples.json": {
+      "sha256": "0ac8c02b08569a83393eba9a17c6db1246b92a74be6cc6f728de3ca0e8aeae25",
+      "bytes": 3757
+    },
+    "artifacts/build-diary-03/research/research-cross-audit.json": {
+      "sha256": "0d033563d9fca0074e48143317ce43817d6bd2c7fd62901dfbb36fed3fcbab31",
+      "bytes": 118344
+    },
+    "artifacts/build-diary-03/research/research-edge-checks.json": {
+      "sha256": "0567468ce9c094481e8266f896db46a8199ca11fc8384a96fd41b8212ebef396",
+      "bytes": 1982
+    },
+    "artifacts/build-diary-03/research/research-initial-source.json": {
+      "sha256": "30b87db1668c2fdb4609341db64f02fc42e4dc464d737571e215e63165a09d69",
+      "bytes": 301
+    },
+    "artifacts/build-diary-03/research/research-initial-summary.json": {
+      "sha256": "dd490a73db071dd009665bc4b253765d397d7109b358f61291ea2efabc809d41",
+      "bytes": 358319
+    },
+    "artifacts/build-diary-03/research/research-lab-content.json": {
+      "sha256": "faa154e7be70ac77093e4c532970797a7c2c15c5ad0cfd352a0d2e8799863860",
+      "bytes": 629855
+    },
+    "artifacts/build-diary-03/research/research-necessity-certificate.json": {
+      "sha256": "5f772534cc3c2c219930baf268eadac66663face049f7ab1d9216f52f6c158a8",
+      "bytes": 2452
+    },
+    "artifacts/build-diary-03/research/research-prototype-hashes.json": {
+      "sha256": "3a9bed86226ebd7719a65456731f6977c1787316461ac01a43ac01bfdf8a1942",
+      "bytes": 9978
+    },
+    "artifacts/build-diary-03/research/research-ruka-base-hashes.json": {
+      "sha256": "7fa85d37550affd07697995f40ea8646edaaba14114bbd608e36ab5592e09ebd",
+      "bytes": 9937
+    },
+    "artifacts/build-diary-03/research/research-story-cues.json": {
+      "sha256": "bf63abb67143ef6477dd1bceb016599d8aada9b784d6e828fad5c573093201f6",
+      "bytes": 9810
+    },
+    "artifacts/build-diary-03/research/research-sufficiency-certificate.json": {
+      "sha256": "1c01f75af085f2414991f2a9bb7d56d414a65e0db6f6f360ad5e1dc36367ff48",
+      "bytes": 1140
+    },
+    "artifacts/build-diary-03/research/research-summary.json": {
+      "sha256": "57bad63c1e21c017ddf62a5648d2839d4314221f190d9f78275a703f14591861",
+      "bytes": 387897
+    },
+    "artifacts/build-diary-03/research/safety-without-finishing-hit-seed1.json": {
+      "sha256": "69511816cee64122be4cda8bf5942d5f3b204755ba150d761e499eb227b58a31",
+      "bytes": 695655
+    },
+    "artifacts/build-diary-03/research/same-party-without-new-skill-seed1.json": {
+      "sha256": "66a0f899c73d336195f43689b2410daeb31169e46611de16fd7e57d5f4a5d224",
+      "bytes": 548297
+    },
+    "artifacts/build-diary-03/research/source-game.json": {
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21",
+      "bytes": 481
+    },
+    "artifacts/build-diary-03/research/t6-burst-no-ione-seed1.json": {
+      "sha256": "aca234586aa41f925d676a91bd6d2aab6d1154b4e3890505702e0c727ad9779e",
+      "bytes": 57592
+    },
+    "artifacts/build-diary-03/research/wrong-recipient-seed1.json": {
+      "sha256": "3d05c64eed999f15feae8ebe7c5b8adfe1b8dd9939c3ae530ad9f7b87f315d6e",
+      "bytes": 676212
+    },
+    "artifacts/build-diary-03/roster-ready.json": {
+      "sha256": "1af6cfab1c41c1905813f85dbf6188afc615ea8997a53c94228428ef8f4891d6",
+      "bytes": 5249
+    },
+    "artifacts/build-diary-03/speech/0116f5083a828ac520378fc9.flac": {
+      "sha256": "5a410b201e3b6c0d862574c57ceeb6d83babff76a1aedc5741d60196cd35f2d0",
+      "bytes": 168795
+    },
+    "artifacts/build-diary-03/speech/0116f5083a828ac520378fc9.key": {
+      "sha256": "6b27873ac801b8d35b1e1a70e18d03aa4096997947db0cf3f0bd3c52ed250678",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/01e45d32825dd8971372c1a4.flac": {
+      "sha256": "6bd542a541051b207d22a0af4212c90f5753407fca544d746a858b5f50f246ce",
+      "bytes": 384327
+    },
+    "artifacts/build-diary-03/speech/01e45d32825dd8971372c1a4.key": {
+      "sha256": "c52ebf1b864096e0d496bd2fce9e310c1da8f2c7407c3a48359cb1bd7e211dcc",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/02dee3ea253b3417a00922d1.flac": {
+      "sha256": "e90cbabaf1a8e7b35e6f18bda4f6ef40668aa43aaf48898a0d0cb70a9ab838f8",
+      "bytes": 276684
+    },
+    "artifacts/build-diary-03/speech/02dee3ea253b3417a00922d1.key": {
+      "sha256": "961c39caca05a31f06562046e369c2fcc326213048fb4beb7bf98e09c0c84c1c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/06b103d14375585cf4a737dc.flac": {
+      "sha256": "9925515175cb4ebc87c22cba3f907339e535c9d8f9515560f813ec370c829eda",
+      "bytes": 244016
+    },
+    "artifacts/build-diary-03/speech/06b103d14375585cf4a737dc.key": {
+      "sha256": "03d61b2684116fbed69a9f358a41c8c52578f7f7c89ada821aa7f2df43b9a005",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/09d86ef78c0cb46abf27ece8.flac": {
+      "sha256": "1613048d07fd721e8bf827dfdcfa012f15d0c240980d8b6147e27854701a0cda",
+      "bytes": 223147
+    },
+    "artifacts/build-diary-03/speech/09d86ef78c0cb46abf27ece8.key": {
+      "sha256": "c3c1ca91843ae86f1268ee1453ed27e9c995cbd57827f978c220e394b925fc1f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/0a3016453bcdfbfb6ee0e590.flac": {
+      "sha256": "7c81f52aa096310119c13319ff20a82765b1a63b94543e0155cd5375a86dfb23",
+      "bytes": 231760
+    },
+    "artifacts/build-diary-03/speech/0a3016453bcdfbfb6ee0e590.key": {
+      "sha256": "58238232bdd1ebb1e94ea7838eb53f826cfe8ea087ac47efa346cf9aff2b93b7",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/0aac0a340812275c673b84a6.flac": {
+      "sha256": "dbc656c4dc15f7a3ddfffd7c5a12e408ecf400fa953b8e90dc2f5d4fb4b6c2c0",
+      "bytes": 279798
+    },
+    "artifacts/build-diary-03/speech/0aac0a340812275c673b84a6.key": {
+      "sha256": "e9ef9a5dcbc32cecc6d5b13e4c23d162a3a0f5174cfe5a5f916505c75c7087db",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/0bf4e168f37fcb35baad6a5e.flac": {
+      "sha256": "4b7bf491de84c3e12c327eb8d6fa8a7eabe2ded8c963038f6c13795470a6d7ba",
+      "bytes": 188137
+    },
+    "artifacts/build-diary-03/speech/0bf4e168f37fcb35baad6a5e.key": {
+      "sha256": "16c72a71ab6c80598bf026b10d1bef7681ca0857677701492c10a0490c9c874e",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/0ec622d79f3ca7ca0259d924.flac": {
+      "sha256": "4e6ba7bda8dc23c8ad0fad55902a281f36e1e64a7896007559eac9f728d92955",
+      "bytes": 219635
+    },
+    "artifacts/build-diary-03/speech/0ec622d79f3ca7ca0259d924.key": {
+      "sha256": "2634070418c131eb494c5fe127f640b9d48de9073c06a51f3f660e4e58090a7d",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/1282c9627c51f32cbb1a0e21.flac": {
+      "sha256": "4936bdce66d130bcc791fc7d83f02e8b9cd94c7e11850cf6e3dd619a11843c5e",
+      "bytes": 253838
+    },
+    "artifacts/build-diary-03/speech/1282c9627c51f32cbb1a0e21.key": {
+      "sha256": "489ca65a7dde9b107913acecf8b987278cc327c0e39664c5ab9c7cf2d69b0ea7",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/1eb5cf3b881c6c75352a38ed.flac": {
+      "sha256": "904717809790b92a4fa85ff06081d13f0ec2e69d726d2dc466aedad716681ccb",
+      "bytes": 264193
+    },
+    "artifacts/build-diary-03/speech/1eb5cf3b881c6c75352a38ed.key": {
+      "sha256": "cf38a3ae9847ed50f925b2679718e5cd0b6a41dc76e4e1a2c256f6e52d3c567e",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/1f5f9eb2eaff8002632a8ed2.flac": {
+      "sha256": "dbaf02d28f4f0187508d9444ebb59dda8baa844b13836d0212a2fbffdefd172d",
+      "bytes": 205285
+    },
+    "artifacts/build-diary-03/speech/1f5f9eb2eaff8002632a8ed2.key": {
+      "sha256": "bd74a9826381d7bacb27fe07cb408ff7010df27282aefb1a5b26f99d28b09b89",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/20913eb1ce978825cbaed2bd.flac": {
+      "sha256": "6bef95c793110617f823cc53a57678f93b411f289468bfff0c2b7af2905022b0",
+      "bytes": 249762
+    },
+    "artifacts/build-diary-03/speech/20913eb1ce978825cbaed2bd.key": {
+      "sha256": "0a54fdb5daa3fc4606bb5e3906c8ca45c86501dfd386ed4457e16011d856c45c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/24a4bf0b9856d54b37bde94a.flac": {
+      "sha256": "ea0f0d4331a30a3e30518e67f6050f8bd2ced227810456d7317af0614e0da6c4",
+      "bytes": 218540
+    },
+    "artifacts/build-diary-03/speech/24a4bf0b9856d54b37bde94a.key": {
+      "sha256": "6042f8842d9c820e65e56336a45d8e1844441078edb2641c8c257c92f352c48d",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/275d228289d3e226cb5b6b31.flac": {
+      "sha256": "f4e15bdef594ae140c1421896372630d27cf6aa307a804289c1fff057f5deb45",
+      "bytes": 203026
+    },
+    "artifacts/build-diary-03/speech/275d228289d3e226cb5b6b31.key": {
+      "sha256": "2c694db9d6e3624aef20166bc748d437ecaa1be8d473c83ab1b37f544a6dbb1f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/28e27edbae74256895b1f329.flac": {
+      "sha256": "669d4d715e3115ec9036b799bdee8a8b553adfce41843dd0f68b5d75a351088e",
+      "bytes": 167882
+    },
+    "artifacts/build-diary-03/speech/28e27edbae74256895b1f329.key": {
+      "sha256": "35cb3efc9ac2413162ae0e9c8cf52bd6982384c83c5df4eebef901e7b248cd5d",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/2f0cff54afa56275f4c2a6b2.flac": {
+      "sha256": "83233624c0bc97b3605e12c9cd8a08467250a924c441815c12bd73bde9777878",
+      "bytes": 271283
+    },
+    "artifacts/build-diary-03/speech/2f0cff54afa56275f4c2a6b2.key": {
+      "sha256": "18345f7865541a3f4214bb66f87b8afa50d02e15633856dbe852e26080efe6a0",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3459cc0b256b72b9e482b988.flac": {
+      "sha256": "3bbae7265d1ae773906c2eb71f8defc1bf461306fcf836f839323303a90b86d9",
+      "bytes": 285906
+    },
+    "artifacts/build-diary-03/speech/3459cc0b256b72b9e482b988.key": {
+      "sha256": "696c57a60eb5934ff438fc2151a66a032235f8c2d4e6881b00a0cf8cb07f54d8",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/353b6c0d337e8aacf32fc1e9.flac": {
+      "sha256": "3af8691a30361503a87f63068af2b140e8d157a42ae228b30b0f61872dd40859",
+      "bytes": 223029
+    },
+    "artifacts/build-diary-03/speech/353b6c0d337e8aacf32fc1e9.key": {
+      "sha256": "152fef53f5879fa0dd74bf8e96a9fed5826edccce01fb5040d5e641653726cb3",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3794f102f8364fd7122de3e6.flac": {
+      "sha256": "025be6341bf35999cd89ce718f7c3f72e1103c854e456782a5654fd5f8bb619f",
+      "bytes": 256243
+    },
+    "artifacts/build-diary-03/speech/3794f102f8364fd7122de3e6.key": {
+      "sha256": "a36f90472dafccc34ea123ac863aea6963c5234da37585083c7f88c958764c8b",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3990d2f7ef07d4e1335bb784.flac": {
+      "sha256": "410d567a20f68176d9fc6849d94c8ab72d13deb682fcd04aaa3bfbc638daf6a6",
+      "bytes": 209460
+    },
+    "artifacts/build-diary-03/speech/3990d2f7ef07d4e1335bb784.key": {
+      "sha256": "7c0c37ea228da03a83f2f8e9e192354b3ca9f4085ddff4943b937230a9a142f9",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3ade12241e8f58bd2dd4657c.flac": {
+      "sha256": "91b8a3f3be3070b4073f7383ea77f3543675a0f70154d8fa5a2d0f46c0fdb3df",
+      "bytes": 223649
+    },
+    "artifacts/build-diary-03/speech/3ade12241e8f58bd2dd4657c.key": {
+      "sha256": "2829ae2c9c6089b333491c9afe4febee665534e47a33958b646e2cf498835060",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3b2c88fc538284bc4b19bf59.flac": {
+      "sha256": "29081dfd3699269825ecab281b88678d40938681436711dc0db077148cfbe6ea",
+      "bytes": 203970
+    },
+    "artifacts/build-diary-03/speech/3b2c88fc538284bc4b19bf59.key": {
+      "sha256": "b41bef0cdf595a726e4cbd5a38a6116be65544bc9ad7aa24b507dd288d552e3d",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3d1e02385f41d3dc35f93698.flac": {
+      "sha256": "be6c1ab7f67f6036cd28d585f7f3cb3e60891598b33d05c3a03b09d22306f6bc",
+      "bytes": 216383
+    },
+    "artifacts/build-diary-03/speech/3d1e02385f41d3dc35f93698.key": {
+      "sha256": "16584e1c868dec0b2146c0e705a640f96932c404936542f83df50bcd9fc2e439",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3d5bcd6a98f0fd977ec817fd.flac": {
+      "sha256": "22c102812190a6cb4dfd2415f0af88f5dee548d7c40e692305021c91368d2efe",
+      "bytes": 244598
+    },
+    "artifacts/build-diary-03/speech/3d5bcd6a98f0fd977ec817fd.key": {
+      "sha256": "4b02cc59d6353c46d5213691541b2cf2db28713c5a1bebcf4f00f42ab4be28ab",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/3da2064d5ff1a9a8cda6eb72.flac": {
+      "sha256": "2001c3182ef8da8255adbe4276897b30607c717002f8819587b986ab01ffd4fa",
+      "bytes": 273603
+    },
+    "artifacts/build-diary-03/speech/3da2064d5ff1a9a8cda6eb72.key": {
+      "sha256": "8f9923f6873022a0a3cd70b20ccf47e516dbb03fc5f85fafdd5d302da1e83493",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/41d5ef69cccd1f68b597416d.flac": {
+      "sha256": "c369d7da88661275ac647acdc2fe11bba0c9a2c65b901bf042ddde535ebf30d9",
+      "bytes": 186108
+    },
+    "artifacts/build-diary-03/speech/41d5ef69cccd1f68b597416d.key": {
+      "sha256": "1da88b5be16f80fa13c694f88e9ed71024bcb17aa57724504b44fb8f79635a1c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/426567466bf214a1e4261cfb.flac": {
+      "sha256": "a614724cb2e69745fb3fd9efac9e015051e4c98715cbd1c6d6d48050c78e3470",
+      "bytes": 287216
+    },
+    "artifacts/build-diary-03/speech/426567466bf214a1e4261cfb.key": {
+      "sha256": "21916aaf648d9a91a5a526d16b439a298d3170b381aa9a5c5227944ad22a0a6f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/4329c44936f49afdd32c1d39.flac": {
+      "sha256": "aa3f0964c4baffbc28fd92d26c911aaa2f281d92a92395f8cb561877e1a590c0",
+      "bytes": 171122
+    },
+    "artifacts/build-diary-03/speech/4329c44936f49afdd32c1d39.key": {
+      "sha256": "f1b521721ec7a345d416413196bb1393a99e408865e4155327d48cd5222f6017",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/43a21d4a593ada80abad8ad7.flac": {
+      "sha256": "55d24df2064d290d117e45c33000e2800c2cd6d85076cfd72177b749f9cfd8e5",
+      "bytes": 153800
+    },
+    "artifacts/build-diary-03/speech/43a21d4a593ada80abad8ad7.key": {
+      "sha256": "c9a1cc28917cfc9f95bb57310315856765e98bad5dafd1c06ba21a60d6d52952",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/44ca1c08521f61eb85e910e1.flac": {
+      "sha256": "6171f509bb7a03581254bd54a14118a07095327fe0081618c6e856a982606245",
+      "bytes": 245125
+    },
+    "artifacts/build-diary-03/speech/44ca1c08521f61eb85e910e1.key": {
+      "sha256": "5534e15dc9c2406480aa3755c8fd4d0d33205f269a261db40c58d32d02187d91",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/457a8b801f9c9d49abb034e0.flac": {
+      "sha256": "56e85e42fd7967fe2464ba51e0de872679eca7a1a30817802d8b598cee69ddb5",
+      "bytes": 267921
+    },
+    "artifacts/build-diary-03/speech/457a8b801f9c9d49abb034e0.key": {
+      "sha256": "c8ccad3dd5c389458d0fe7a39caadcc4fb3c96a7d165a52ac1753ce69565baf9",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/47e0669ec5414529976caa58.flac": {
+      "sha256": "ecd3cc8813b3cd64c9d8960b511bdb54442d57e5cf16eafaf0f8293dd30e5515",
+      "bytes": 285496
+    },
+    "artifacts/build-diary-03/speech/47e0669ec5414529976caa58.key": {
+      "sha256": "f5cb8d0ddc1bc728b68de7bd8c2b345a2c3229ae1323fd4bc3258993a187a265",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/49f2664959a2972fcfb5b0a9.flac": {
+      "sha256": "a739ef3d09027088f7f7a6b99a0b103617d491c95f8e31c458f33cfd4e143ac0",
+      "bytes": 195125
+    },
+    "artifacts/build-diary-03/speech/49f2664959a2972fcfb5b0a9.key": {
+      "sha256": "4d4e561cc5ed28918e627a0cf32e9c651b5fa2c9afcdd355b43fad318b084e3c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/4c6c66e19f843c833f0022ad.flac": {
+      "sha256": "35aacdca89dd8fd2d0bf9f7d2e4ecbf99dfa73669446efec7c523ab13a45606f",
+      "bytes": 291644
+    },
+    "artifacts/build-diary-03/speech/4c6c66e19f843c833f0022ad.key": {
+      "sha256": "03a23c2a72819c640f5e08078d8d34efdd93f860bbbfc69002aedc17adea6de3",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/4cae314ac8b47c7138feac45.flac": {
+      "sha256": "551ff91ca1bf461cf7ca2a76ec75880f9ee8dfd20daae93184926b3c90dd3e49",
+      "bytes": 255145
+    },
+    "artifacts/build-diary-03/speech/4cae314ac8b47c7138feac45.key": {
+      "sha256": "4452649b767e1da579a4ce8b58676de4437c42b723fff07ed727d7dadb5076db",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/4d05b91a0718877b48ebeedb.flac": {
+      "sha256": "e360717d38af1a8dc520a1f90b33caaa68baf415536b21dcbe6e5424cb7d62e3",
+      "bytes": 130824
+    },
+    "artifacts/build-diary-03/speech/4d05b91a0718877b48ebeedb.key": {
+      "sha256": "38790e956f5d9df4d2b9c6674e4c135fb85413a19472e801f5231a0f7aa586ca",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/50e293f2440f2afd65d24f22.flac": {
+      "sha256": "122d6ebd1ffd7b107e03a816f5b65ca3eb4e65e8ba03dd2c19a90874db917ef6",
+      "bytes": 243607
+    },
+    "artifacts/build-diary-03/speech/50e293f2440f2afd65d24f22.key": {
+      "sha256": "d1def5f69568813c9ad23ab2bcd214611806993380fb9657d90b065205564927",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/519e0ee8be71eee5486f873f.flac": {
+      "sha256": "a92923d3c24346c9b9d28fffc691ac92887eff84490f59df71425048dd6d6b01",
+      "bytes": 241273
+    },
+    "artifacts/build-diary-03/speech/519e0ee8be71eee5486f873f.key": {
+      "sha256": "6d882dcb3e5c1d19330310da01cefb15b31112451b2afd20e4841b4436ef7d26",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/58eba8879458005b206a8863.flac": {
+      "sha256": "a9c076a31a5b1cd246c78c43975a80202cf6880570d77a662623c384cf33998c",
+      "bytes": 275990
+    },
+    "artifacts/build-diary-03/speech/58eba8879458005b206a8863.key": {
+      "sha256": "042bdb9a6a7dfa97164f0c263523db10df0150c6db44bac9224e283c51cbd5ab",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/599066056156510d2742911b.flac": {
+      "sha256": "9ca59fabce0e9104fa39445a26be1b9d39e843f5bd6397664eaa34bb0f42e697",
+      "bytes": 229323
+    },
+    "artifacts/build-diary-03/speech/599066056156510d2742911b.key": {
+      "sha256": "05a3bd460ab63ac988d112bc2ef461d43acae47736bec762939564afb31602bb",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/5a3a31b08c7c2bcb4777914a.flac": {
+      "sha256": "c20fa5649e5b3c39a5a11c163b465460feeec1241915059ea74d7c99fc1f7612",
+      "bytes": 307363
+    },
+    "artifacts/build-diary-03/speech/5a3a31b08c7c2bcb4777914a.key": {
+      "sha256": "1f1b72324e8a0770fb1a34863a44c5c6c517a488ee6f37d4ea175dbef141a4a7",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/5aa4922fa1bd039e94c98b67.flac": {
+      "sha256": "036404639bbb7b900be654c0224accff1b668f9b7f73871d02fe6b169e336223",
+      "bytes": 291543
+    },
+    "artifacts/build-diary-03/speech/5aa4922fa1bd039e94c98b67.key": {
+      "sha256": "04c3f691c8e403f0e86d41e49f7b4e6fdc745fe582c3ccfab4eee4601a3649a2",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/5c01e9284a2040e7476fa448.flac": {
+      "sha256": "dd917bbe9df743502899fb0e0eaa1e80f27dcc2829225e139e880964e88213e6",
+      "bytes": 117665
+    },
+    "artifacts/build-diary-03/speech/5c01e9284a2040e7476fa448.key": {
+      "sha256": "980662f79d95d297efcd3deb4582d8da3e7d3a0cb1ec0025a541811d2f3e0526",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/6834493932b4205af526ea66.flac": {
+      "sha256": "065b199e2c6f6c43373bc35d83854a8f4f402c94e3ea32a79207fea5b0e8dc5c",
+      "bytes": 387063
+    },
+    "artifacts/build-diary-03/speech/6834493932b4205af526ea66.key": {
+      "sha256": "b7554ba0661ba23f3790e494b851c949279ca5ba3b549c34d82e1656b5bd6ddc",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/68ee40102e2f48ff3fb8bfc9.flac": {
+      "sha256": "3c5b07d4030b781b6bb9d272c8e928cd77929a5c0279dfe17fa6ecdc50424437",
+      "bytes": 152618
+    },
+    "artifacts/build-diary-03/speech/68ee40102e2f48ff3fb8bfc9.key": {
+      "sha256": "26b26d08c1a0ea754dbf8f17add985d5ab07ce22226f1b51fa4189e610d04401",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/6d4176417b8a7b60f37e8567.flac": {
+      "sha256": "ecaca099d9b1a6360b53af5a85243369597d2d2217587cc7bea0766e5937bd91",
+      "bytes": 272388
+    },
+    "artifacts/build-diary-03/speech/6d4176417b8a7b60f37e8567.key": {
+      "sha256": "5e46609409ef47dae798b5aa93d41dcc4c0c60fc5896910faf70e3bd2502540c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/7555f3d0bbb3f12a0152f941.flac": {
+      "sha256": "b4c53a03c96764e0a453a3866c40c15e9d9089d24f4283ada9406533c9ec5beb",
+      "bytes": 228668
+    },
+    "artifacts/build-diary-03/speech/7555f3d0bbb3f12a0152f941.key": {
+      "sha256": "28dcb8268e885755db782daa17d26459dcc04ae160adb7bb97c07752c33be09b",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/7c4abbeca074745a032e6bf9.flac": {
+      "sha256": "7d9501b9cea79294dd33b913a66955d5f30315a72f1299b28f5828c33e64b01b",
+      "bytes": 253887
+    },
+    "artifacts/build-diary-03/speech/7c4abbeca074745a032e6bf9.key": {
+      "sha256": "3a457f0a6b7861d833f1df6d62c5099f10084cadf23a421e36d578e9d1fe091f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/8322cc78ec18e24bb7fdb64c.flac": {
+      "sha256": "fb6e7237e10b1e15852862af263b95c76261f6f197bea67093a0578ade71d9f1",
+      "bytes": 314172
+    },
+    "artifacts/build-diary-03/speech/8322cc78ec18e24bb7fdb64c.key": {
+      "sha256": "d949ef3d7b162396408359856ade27560da862f94571e366d30c6cb363b11f44",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/84b376942ddada0e14d0ec00.flac": {
+      "sha256": "2ccccbf102c0d456ca78f174447991278ba8a0a5e2e3e53384482a4f66ce86e0",
+      "bytes": 175487
+    },
+    "artifacts/build-diary-03/speech/84b376942ddada0e14d0ec00.key": {
+      "sha256": "ae4cae0085866da2bb3fb9cd83952cbca022a9b6b3ba935482ed3f1058b23d2f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/88df2f3cbc195dca52dd4e21.flac": {
+      "sha256": "1f70baa9b4a6753c5897c59f4b0b1fe39b1d0f6896c223a1ac0dea9154e2fde6",
+      "bytes": 302846
+    },
+    "artifacts/build-diary-03/speech/88df2f3cbc195dca52dd4e21.key": {
+      "sha256": "d9759988e5ce908b42996a935e3f76a86b3fd366869addb5a2b6260dac1fc8dd",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/8d5c484f04cce598a6b78012.flac": {
+      "sha256": "3903a3daff3479653d1ced435a6634a2af14ef7e9204691c1dfce413dee06e9d",
+      "bytes": 138702
+    },
+    "artifacts/build-diary-03/speech/8d5c484f04cce598a6b78012.key": {
+      "sha256": "da4b6cce2048fda7e29798aa841934eba4145fcc6791021e4ee4be0259dce7ae",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/91ccd675661785368350e084.flac": {
+      "sha256": "b65d4d7fd9f64780d0f781a4218d45095d4a92f20737268a809c85546326be58",
+      "bytes": 159162
+    },
+    "artifacts/build-diary-03/speech/91ccd675661785368350e084.key": {
+      "sha256": "6331457b0b2b5028bf5a3fb0df328b02a70468cfe2ed9dd16d345517055ca79a",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/9244ab2687acf9bfb0182805.flac": {
+      "sha256": "4028ca7eb5b975d522ec5473fa79042d534bfb48e0d8b648094d6bcbe714fa14",
+      "bytes": 186944
+    },
+    "artifacts/build-diary-03/speech/9244ab2687acf9bfb0182805.key": {
+      "sha256": "4cd36d86d36fffe3717f950b3ecf443381b2e3d97c68cec9b7a36bfa418946b4",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/946ce2413865d4add9db092e.flac": {
+      "sha256": "b30d3293b88110cf8e7ece8301b4b8ddd21cae6fa6a6d926ec8da63284a6999e",
+      "bytes": 216812
+    },
+    "artifacts/build-diary-03/speech/946ce2413865d4add9db092e.key": {
+      "sha256": "5405182b1fdefdd1fcf3b473982eb0a7677bfe1e457b0f0b87b6e76f8fd239c9",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/94dc7dba42b4cd629974d283.flac": {
+      "sha256": "24d8a5c04957f6b4d4b0a0b9bb9f9413d6e7694323a19f8432b148e65bfa1cad",
+      "bytes": 216786
+    },
+    "artifacts/build-diary-03/speech/94dc7dba42b4cd629974d283.key": {
+      "sha256": "53d6554e61b4672d0d8c24dab364e9642e51b1f2eefae0e129ed979183b15e8f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/9874e45e5268eec5827e5dc7.flac": {
+      "sha256": "545deeafdabf9c16615154a0d7f722d0f27f988380b4799b4d52b1db1f07d5a3",
+      "bytes": 287427
+    },
+    "artifacts/build-diary-03/speech/9874e45e5268eec5827e5dc7.key": {
+      "sha256": "e37b2a7e7f3e93260e85a03caa1530d87f7aa91538779486f5f19d936db7e376",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/9b4292f1b6e0b5ba5d489cf1.flac": {
+      "sha256": "585dd71ce84a69797d7c55ead55cf8de60ea8d3e1475c22a9d3c32f6b2419d37",
+      "bytes": 242051
+    },
+    "artifacts/build-diary-03/speech/9b4292f1b6e0b5ba5d489cf1.key": {
+      "sha256": "17f274fc41cd9240e962698f788f7ccace6b7c54ced950c422f73c151c8fd1de",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/9be59bab6c3c137907f5b72d.flac": {
+      "sha256": "16e6e27c820ddcf7caef019eecef367a7a3a6afc21c26979f0a399c26e070205",
+      "bytes": 240230
+    },
+    "artifacts/build-diary-03/speech/9be59bab6c3c137907f5b72d.key": {
+      "sha256": "a13b1534381abfdcb84932b15477b70c5772dfd70080d5dd5c0ac9123f8a0e39",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/9f877c30dfa6cc6c49134a6c.flac": {
+      "sha256": "c99f50402f46c95cdd03957ed440e38cb25622cd3b6110a7690108a0606a82ee",
+      "bytes": 293521
+    },
+    "artifacts/build-diary-03/speech/9f877c30dfa6cc6c49134a6c.key": {
+      "sha256": "7439590f94e913586986f9c5a21b369e8d39ecbc4aa0bfff0f1b9c456d5f6a98",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a05593c020250ee17176eb77.flac": {
+      "sha256": "ae764d9de8d47b3d0d63dcd159e518efe8c4147859283cd8a872397e9d076790",
+      "bytes": 316827
+    },
+    "artifacts/build-diary-03/speech/a05593c020250ee17176eb77.key": {
+      "sha256": "aeb7b73d40e1bd1db5bf17c10525b15f4fa673d358ef68e257eaa41b8e4b9d73",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a152317fa8934ea6dd17f390.flac": {
+      "sha256": "b0750ad94bc5b0f285a83a7224c9f0f89583ed1443738580c5d1905b28924c9c",
+      "bytes": 199697
+    },
+    "artifacts/build-diary-03/speech/a152317fa8934ea6dd17f390.key": {
+      "sha256": "dc1786f2eaedec89cdaf1055b373e3b6376fccf9c67c25e40cebe97acc66b218",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a18a7165b7215b43685e8b00.flac": {
+      "sha256": "686a13438b5c7c374092d03cd2c67dcb955521ceb0ae6eca02a29558131d1942",
+      "bytes": 120166
+    },
+    "artifacts/build-diary-03/speech/a18a7165b7215b43685e8b00.key": {
+      "sha256": "03b49faa4cf79611af6c414087d2713c575a683ea7706cbe824b1b3be54d569b",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a52249af8f9b35dc58cfba92.flac": {
+      "sha256": "ebf611ee683babefe9ee8e59242ebac1697da9e8f9b45791084808317a644c16",
+      "bytes": 166240
+    },
+    "artifacts/build-diary-03/speech/a52249af8f9b35dc58cfba92.key": {
+      "sha256": "5392789a4d1e8ef8c4a13fa3b61c4f719ec5274e1be8fa4f9e39cbb025b8eab3",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a6e724de3ceb3b08b97724a2.flac": {
+      "sha256": "412b9063afcbfb7d3fd55ad7d1c1ec65fa8c9abf0246cf1609f07664f07c134d",
+      "bytes": 285105
+    },
+    "artifacts/build-diary-03/speech/a6e724de3ceb3b08b97724a2.key": {
+      "sha256": "914933d8db81448c5b8caf088947d97730675de0abcc7baeb046850648c10360",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/a6f5705ca3927993101e3d74.flac": {
+      "sha256": "08b6965112320188458860dee395d2f518ba5a948640f36e507ecd6bf99b9380",
+      "bytes": 245330
+    },
+    "artifacts/build-diary-03/speech/a6f5705ca3927993101e3d74.key": {
+      "sha256": "5bcb6150bf72fcb90960fe2c2d8078048865069d03f0e32d41c81af86c91a1e9",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/acbfd129dd0cce74546d94f3.flac": {
+      "sha256": "e7cf1ba8a986b58ca0c527469d76cae5477bcc62c398779bfefb2ef9bd96cb31",
+      "bytes": 135997
+    },
+    "artifacts/build-diary-03/speech/acbfd129dd0cce74546d94f3.key": {
+      "sha256": "dac67c0e71bd7f6c27a121d1a00d02e447e83abf747d82f866cb7ca5e805096c",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/adfb60ea38d41048b3f2e0c3.flac": {
+      "sha256": "45ad3ab8b7ad74be909d514bd0d7d70d629148f10984f3de8f23e12425747d6e",
+      "bytes": 288289
+    },
+    "artifacts/build-diary-03/speech/adfb60ea38d41048b3f2e0c3.key": {
+      "sha256": "1733963ff72730a7faeb42eda19a5f12389801d8c6914adb4b419737000cc3b6",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/aee69517eda4a63e3f7b7058.flac": {
+      "sha256": "9cb0ddb0841d4abbed01d959ec77c501926dc8f8df52b059487af5628d767c2b",
+      "bytes": 157594
+    },
+    "artifacts/build-diary-03/speech/aee69517eda4a63e3f7b7058.key": {
+      "sha256": "7df79deaac00c94f984ea87956750b2602f592d95ac3c51246b06a506342f7e5",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/afb259f01f4504fa2c163e10.flac": {
+      "sha256": "a09ca91e59f640648470d1b6fb03790a2b605f9325d76fc68badaff1f45a3bdb",
+      "bytes": 140081
+    },
+    "artifacts/build-diary-03/speech/afb259f01f4504fa2c163e10.key": {
+      "sha256": "41eef8ec0cfaebe4f0b6e115c074d286f53747061773d88eae12a7c1a54b25dd",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/b2cde36ae807e864b3ab4a46.flac": {
+      "sha256": "bf83e028563ed05c8d5914f7efc53a88681fe94a17e1f266371c28568fc2b892",
+      "bytes": 134487
+    },
+    "artifacts/build-diary-03/speech/b2cde36ae807e864b3ab4a46.key": {
+      "sha256": "259a5702a0cd7c4e81e5dd20dbfe14628f93b4505ca1af16163222a648837c22",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/b3867033b23c4bd2b3e20e35.flac": {
+      "sha256": "714a4182f05c7ae580d3c4198e10b83008174b09f7e6b535ab23c9f411a43835",
+      "bytes": 195002
+    },
+    "artifacts/build-diary-03/speech/b3867033b23c4bd2b3e20e35.key": {
+      "sha256": "9c8d517a4d5c47843e6b1c671baed2010310ebc409d0c5037226ecada5adb5ea",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/b4a86b86333cecbaf07221af.flac": {
+      "sha256": "a499a2edb5fd6d25a218bc5027e28b445543d3ca42ce30d9fb0af14b17430235",
+      "bytes": 169892
+    },
+    "artifacts/build-diary-03/speech/b4a86b86333cecbaf07221af.key": {
+      "sha256": "76c78fa81cf2aee87160d167fea31e4443dab3520fa9bc2ff9dabbb872a7fafb",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/beafc662236a508372e59085.flac": {
+      "sha256": "620f23ef3ba205b285e0748910ca4247b9fdfbe429b3b396208799eac992e01b",
+      "bytes": 221491
+    },
+    "artifacts/build-diary-03/speech/beafc662236a508372e59085.key": {
+      "sha256": "b623b7d2cf435a52336a29056bfbc47e23ec4f64a562d79af042607a571aba98",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/bf93ce33ecd90c7d5376677b.flac": {
+      "sha256": "15e7f05d40a02b9f18a8343318a2dbe25d3c5ae02509c6aa2f4dcf3aff2f42e6",
+      "bytes": 258129
+    },
+    "artifacts/build-diary-03/speech/bf93ce33ecd90c7d5376677b.key": {
+      "sha256": "4bb5213ee9a3df51b2f9cbe693076ff8729639013619a2af68d0ee5a1ed9849a",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/c0057f8c9ef9b0b8ff166024.flac": {
+      "sha256": "90e6e777ec71f8cdb1e817b35dbd2b476f01faf72e8710daabf280647372b637",
+      "bytes": 185332
+    },
+    "artifacts/build-diary-03/speech/c0057f8c9ef9b0b8ff166024.key": {
+      "sha256": "ea5895d0f8e0cc702bbce0cace062a4e86c6c9028f2b01031c46e791ad6c5a77",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/c08b7f3214c797bc56f675a6.flac": {
+      "sha256": "f1d9deb8de3fbd477fa4bb6ec16ff0371e71df2ca315dc80408d9d1bf8af3807",
+      "bytes": 243616
+    },
+    "artifacts/build-diary-03/speech/c08b7f3214c797bc56f675a6.key": {
+      "sha256": "103edebc46c07350049711a187de06c8d3e6e493558303af08559b019987b574",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/c74fd2c2f41218ef5bfd92f5.flac": {
+      "sha256": "d4b5767b786b95c349df296426916da9ed9b95db69bb13e9620d4c01e525dde6",
+      "bytes": 221173
+    },
+    "artifacts/build-diary-03/speech/c74fd2c2f41218ef5bfd92f5.key": {
+      "sha256": "dab967acfc13265efaf365df587d220cd831d92685c133c98e0efd2a76012109",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/cabfc9e7b19ceecd48418a01.flac": {
+      "sha256": "cb80ae8e54ca0d38883868a3c70c4672dbb6f57c2eb2759a11d7f4032e0a54b3",
+      "bytes": 242606
+    },
+    "artifacts/build-diary-03/speech/cabfc9e7b19ceecd48418a01.key": {
+      "sha256": "0778e04034a0579187b2b5eb8f6f6be65c5fa618fcb8dbabe61d3c2915eced59",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/d2350276e8fc88e548e9046c.flac": {
+      "sha256": "a85b4487d758513542d6f6f573516f5b07fff5e6a99d343dba86d0f8e2da8af5",
+      "bytes": 250870
+    },
+    "artifacts/build-diary-03/speech/d2350276e8fc88e548e9046c.key": {
+      "sha256": "0b901d7a40d82dd190a9656119d91fdea174d6e0cb62429c2359e332cd0bd7bf",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/d465c72105a7b8df7416d356.flac": {
+      "sha256": "462606edf224eb2becb41ca05ac52f478b8d0c4607585a6bd60d689dd0975a8e",
+      "bytes": 218380
+    },
+    "artifacts/build-diary-03/speech/d465c72105a7b8df7416d356.key": {
+      "sha256": "ffc6739dd608bd09c4b4134cd41eb4e642bb64e29d74fd213d5d9c20d91f5a68",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/d581016665b8c4832d6b47d6.flac": {
+      "sha256": "f9b69b05c7229602a36b948f572b7ade191c38713c0ebb87cea878391d12ae2e",
+      "bytes": 210460
+    },
+    "artifacts/build-diary-03/speech/d581016665b8c4832d6b47d6.key": {
+      "sha256": "e0e111959b0d925f6a627edc2baf8e12539e4775b55363ad1031dc1a9a1b0937",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/d7c541fb9a8351e3fb031bd8.flac": {
+      "sha256": "adfc9d40180dbc8783ddf492012545b476bd8511420b8c0bd65b3e126cf6b86a",
+      "bytes": 192229
+    },
+    "artifacts/build-diary-03/speech/d7c541fb9a8351e3fb031bd8.key": {
+      "sha256": "8a35d5aa8ed95cd947ff7606beac39e2a8808ad3fa2dd0381f16c8ef893337fd",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/dae8b611c3514b6c20a74c06.flac": {
+      "sha256": "c797b1dc6ebd9673083b7f8d313a98e05ce34981fdac28c6e2c5869740ff6be3",
+      "bytes": 296197
+    },
+    "artifacts/build-diary-03/speech/dae8b611c3514b6c20a74c06.key": {
+      "sha256": "a365a298d2e70a41048df062c203a84c3475081c8b94a1b1cc84cab93e2f4e1a",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/e273244a06cbf2620ab3499a.flac": {
+      "sha256": "9a01ca9233cd1d07bef891d809d90feb5c0530176ae71046b4145432e02eae69",
+      "bytes": 241299
+    },
+    "artifacts/build-diary-03/speech/e273244a06cbf2620ab3499a.key": {
+      "sha256": "5e7dbaaab668d3829ed9c1f2a817dbc70a01384a5a458965db29e5a715facaad",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/e29c7253731463b7293399a9.flac": {
+      "sha256": "da924f5c0fe24d3a3b7ff2e2c8000b570c283524763a99bf50805e8b083212b4",
+      "bytes": 192242
+    },
+    "artifacts/build-diary-03/speech/e29c7253731463b7293399a9.key": {
+      "sha256": "5c26413c80a777e326248d938593881489d58fefc867ee1648177e834972a134",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/e6fbf739ef13d1c73ce3c031.flac": {
+      "sha256": "4828b63ca84b41e6c0ff7fbb16deb06c097912dd6a5aff3db5f9d80ae3140b63",
+      "bytes": 139636
+    },
+    "artifacts/build-diary-03/speech/e6fbf739ef13d1c73ce3c031.key": {
+      "sha256": "0607153e90db48515da2bc50bab44f2fa7bd6370e53be09d357f368fbb36c572",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/e9a55f2f08aef75306dd3842.flac": {
+      "sha256": "ee14ea08c8587d14775e348b97110a78cdd1f5332233ffcae15908674e7da2fb",
+      "bytes": 338420
+    },
+    "artifacts/build-diary-03/speech/e9a55f2f08aef75306dd3842.key": {
+      "sha256": "55db787110c9e80304d2198f2f0af73345297a6872cbc852c1b175aa277d2e5f",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/eb85f652927fb69d15bad41e.flac": {
+      "sha256": "8c6aab9771b14941134a779ea837b86ef7953dcf545886a4f81341776d184774",
+      "bytes": 243456
+    },
+    "artifacts/build-diary-03/speech/eb85f652927fb69d15bad41e.key": {
+      "sha256": "b3463264618d7c5ea4bd1136cbe9d0d9616f2f1e7b72d3a662b8c4de20954fac",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/f009e202b702ced0e317f01a.flac": {
+      "sha256": "02a57db601d30205a844e3b6d2d92032be19f4f8089293073588fa474f42a563",
+      "bytes": 275162
+    },
+    "artifacts/build-diary-03/speech/f009e202b702ced0e317f01a.key": {
+      "sha256": "81f844193721a5258c06330889be12a3de8b7a4a8cb33f5f4d5d8578d145811e",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/f4f2aa2c8561a9937f223ce5.flac": {
+      "sha256": "192fadec16565c294203406284416c909b5c045d15544114596ba16227a8721a",
+      "bytes": 232991
+    },
+    "artifacts/build-diary-03/speech/f4f2aa2c8561a9937f223ce5.key": {
+      "sha256": "5e0db007e9230b91cc2f87f5d690af35a5d27e656972952d00987e68a7eb65bc",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/f69bfaec4515996481accc71.flac": {
+      "sha256": "971a1c4a489caf647d1cdcb438f86dd05d5aa7cbc0017d3d541b61229827235a",
+      "bytes": 237245
+    },
+    "artifacts/build-diary-03/speech/f69bfaec4515996481accc71.key": {
+      "sha256": "692df4841058da7e7c9636d25279f175d69474ca518985f31c02c277e7879457",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/f8379c4c684798eeb3351744.flac": {
+      "sha256": "5576ef71b8df28bd92ab9ceae4fe738428b9c0a1b068d09778766276648996ac",
+      "bytes": 287661
+    },
+    "artifacts/build-diary-03/speech/f8379c4c684798eeb3351744.key": {
+      "sha256": "445c13df52ef19535310746fca9079a013204fb2c294a3a1556afa34d46fef23",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/speech/fb5b0eaac2514cb1a4ced6b0.flac": {
+      "sha256": "969a7a93a9c150d3578a7950c4ac40d3fc3a84c27eb111aa357e9e9cd5825677",
+      "bytes": 379568
+    },
+    "artifacts/build-diary-03/speech/fb5b0eaac2514cb1a4ced6b0.key": {
+      "sha256": "a647322252b78876435709e2285c5c5b65bf865903ed19fc59be34cf775ab4d0",
+      "bytes": 24
+    },
+    "artifacts/build-diary-03/storyboard.csv": {
+      "sha256": "c246bc0624eb289ca6071269e38d804f30946a0e1fd7d2e720fab0dfa9ddbeee",
+      "bytes": 22580
+    },
+    "artifacts/build-diary-03/timeline-narration.json": {
+      "sha256": "f14584fd205b58741aa57a5e7b5a689f45b1cdfc643c780c84d4ea2417b7d16a",
+      "bytes": 65506
+    },
+    "docs/media/build-research-diary/episodes/02/gem-audit.json": {
+      "sha256": "e09541c3acb783b2020a65d6bb8c80242230e9dcba477bb3360225c89f169fa3",
+      "bytes": 73147
+    },
+    "docs/media/build-research-diary/episodes/02/registry.json": {
+      "sha256": "2a03740dad18a25f738ee89e5ad104190779cec27da9845ce4d1b5b79b940318",
+      "bytes": 186270
+    },
+    "docs/media/build-research-diary/episodes/03/README.md": {
+      "sha256": "9167375d0b0a9fc7e953fa384a1c3f0d13da678610fb807096c3b999beb23be8",
+      "bytes": 2957
+    },
+    "docs/media/build-research-diary/episodes/03/VIDEO-QA.md": {
+      "sha256": "b06dfab8de6808a970f70938ab8d4e025e5d30f0c07ed916d90133df7460629a",
+      "bytes": 3876
+    },
+    "docs/media/build-research-diary/episodes/03/gem-audit.json": {
+      "sha256": "685624d9a7badf6674d93b31f4ef223990f4fbb55ab4605e0193e2e831aae82a",
+      "bytes": 79179
+    },
+    "docs/media/build-research-diary/episodes/03/girl-eligibility.snapshot.json": {
+      "sha256": "b64c9037ec2adbe13555a9bcdd117530d77d83390f48c9d29e7d56731aea5ea9",
+      "bytes": 28878
+    },
+    "docs/media/build-research-diary/episodes/03/registry-finalization.json": {
+      "sha256": "9bc0eecac7593538be419d563d486b2e33f9231fc0fb49c90f58176b02d7b1b9",
+      "bytes": 7683
+    },
+    "docs/media/build-research-diary/episodes/03/registry.json": {
+      "sha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81",
+      "bytes": 187045
+    },
+    "docs/media/build-research-diary/episodes/03/serial-map.snapshot.json": {
+      "sha256": "639aefe7e3636567aab96719539f75f0db788a27e537eb7ca975fbdfce6eee14",
+      "bytes": 9698
+    },
+    "docs/media/build-research-diary/girl-eligibility.json": {
+      "sha256": "b64c9037ec2adbe13555a9bcdd117530d77d83390f48c9d29e7d56731aea5ea9",
+      "bytes": 28878
+    },
+    "docs/media/build-research-diary/serial-map.json": {
+      "sha256": "639aefe7e3636567aab96719539f75f0db788a27e537eb7ca975fbdfce6eee14",
+      "bytes": 9698
+    },
+    "docs/media-sync.md": {
+      "sha256": "7317ce43a9ad169414e147ebaefeccd45ea3d28732310b8cb684fef7e5a45aa7",
+      "bytes": 3047
+    },
+    "package-lock.json": {
+      "sha256": "fb32bff8baf3579e8bcfd1307f050a0212bab617b7193ae6c43b43a001383cdd",
+      "bytes": 96762
+    },
+    "package.json": {
+      "sha256": "6e7f6a2f906fef11acf5ee715ccef299d2eb350e5194aeb22dedde9295104e7a",
+      "bytes": 2621
+    },
+    "scripts/build-diary-01/registry.mts": {
+      "sha256": "d7981520fbf31809e8f1a681f2540c00bfdebe947b692453564d97ee7150bec6",
+      "bytes": 21464
+    },
+    "scripts/build-diary-03/.gitignore": {
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "bytes": 19
+    },
+    "scripts/build-diary-03/audit.py": {
+      "sha256": "d60722719e90c1535449d35ab3a920dc5ed60c97f86ff318d71d4173a1f85cbe",
+      "bytes": 11789
+    },
+    "scripts/build-diary-03/bootstrap_inputs.py": {
+      "sha256": "67def317305efcaebcadc5961791f257012f2021aa2c2aa5d03a5168ca35c89f",
+      "bytes": 3029
+    },
+    "scripts/build-diary-03/capture-lab.mjs": {
+      "sha256": "d6441fca8635f80fe9d63fc94f2e2a0e4968aad95eae5707c95ac2c7cdd3f29d",
+      "bytes": 8244
+    },
+    "scripts/build-diary-03/capture-live.mjs": {
+      "sha256": "3a6cdbc6eb74a9e8b148f047c0d3b07f80372106aaffe0e32012bcbc90bd0aa0",
+      "bytes": 8969
+    },
+    "scripts/build-diary-03/capture-source-qa.py": {
+      "sha256": "77054fdf7fa963f1ae6585df9c4cbaba072769fd66e7c22883739287bf45e3c5",
+      "bytes": 3433
+    },
+    "scripts/build-diary-03/delivery-templates/Credits.txt": {
+      "sha256": "84b2be8fb9721d64e641b1e25ddb1dc61d8495cbe45de86aefcbea6b4f779a69",
+      "bytes": 1880
+    },
+    "scripts/build-diary-03/delivery-templates/Methods.txt": {
+      "sha256": "1f750c4955cb967a59340079a18bed5627ac0ae688e81ee34d467e160118e92d",
+      "bytes": 3051
+    },
+    "scripts/build-diary-03/delivery-templates/README.txt": {
+      "sha256": "ee4cfb4b3faeb113d70d2244b2e608a97efad6cc82eaa7d61b8d41aac3856242",
+      "bytes": 2238
+    },
+    "scripts/build-diary-03/delivery-templates/Reproduce.txt": {
+      "sha256": "e3ad75f60367b92de13f0dce384ddc0ca4837d996add64a2cfd6433a1fcc35cf",
+      "bytes": 4874
+    },
+    "scripts/build-diary-03/delivery-templates/YouTube-Description.txt": {
+      "sha256": "19aa1c8e6b80572122abe30636389ef524a91e6f948452642fe7268c543dd4da",
+      "bytes": 1759
+    },
+    "scripts/build-diary-03/independent-recheck.mts": {
+      "sha256": "b08298385670fbbecf6fdfa6a7142f8df37475f58a43438e3a5cb3b4e51070b3",
+      "bytes": 4678
+    },
+    "scripts/build-diary-03/lab-harness.tsx": {
+      "sha256": "4903f936dbbd972a8cd60d0c4f99b6697f6c248f05e988930afe89eb26b045a3",
+      "bytes": 5678
+    },
+    "scripts/build-diary-03/lab.css": {
+      "sha256": "95d80a1c58c93a6a59d0cb3ad9ff194f6c01193377a2d405223bf5ad6dd531c6",
+      "bytes": 3866
+    },
+    "scripts/build-diary-03/lab.html": {
+      "sha256": "1af4f69382c95052a3952568467d9d95d8898b4a9d21c4851a2b52be449d0239",
+      "bytes": 247
+    },
+    "scripts/build-diary-03/normalize_capture.py": {
+      "sha256": "c666163a4db2858892ff2d53e1dd2552f93417f0db704774009c3c961c78f385",
+      "bytes": 5278
+    },
+    "scripts/build-diary-03/opening.py": {
+      "sha256": "03381aa28b8e521838e08a3f1fb8c476934ed70d78edad6f5db2238f7dffaa2b",
+      "bytes": 10379
+    },
+    "scripts/build-diary-03/opening_visuals.py": {
+      "sha256": "0ee8c4a081cc29ceda371958267f23e67208ae56ccadefb0e1f51a2e5330a201",
+      "bytes": 11020
+    },
+    "scripts/build-diary-03/package.py": {
+      "sha256": "e4df1a9dc73f3dfa5308d776ce1be663635c64b9f33478b12850784b21624dda",
+      "bytes": 24476
+    },
+    "scripts/build-diary-03/prepare-live.mts": {
+      "sha256": "1c1250a9d7e0f661fb1f4d7a17f897e0bba1abc12ef281753fa4004f1c2b2694",
+      "bytes": 1552
+    },
+    "scripts/build-diary-03/prepare_render_plan.py": {
+      "sha256": "965fb5becc53dca30427de096a096d10f861fc64fe20ffd0680e62479b9bc167",
+      "bytes": 5196
+    },
+    "scripts/build-diary-03/publish.py": {
+      "sha256": "892ac3ac678b08e9b26e174b0bd8c05fc42b04f421bfc0943d70c1736137ba46",
+      "bytes": 2024
+    },
+    "scripts/build-diary-03/qa_contract.py": {
+      "sha256": "59ef5b7a4073ffc7515ef256505805288186cf5661cb6230cbce83d4c71b61cc",
+      "bytes": 2218
+    },
+    "scripts/build-diary-03/registry.mts": {
+      "sha256": "61d32592eeb5c73abdaf44f17d5ad40a44379bb2c7c918154fcf42f45d04e7cc",
+      "bytes": 17804
+    },
+    "scripts/build-diary-03/render-plan.example.json": {
+      "sha256": "a9d84161f38388fb19ea170458475e1a737610a9260b366346278c37986430aa",
+      "bytes": 1403
+    },
+    "scripts/build-diary-03/render.py": {
+      "sha256": "a0268d03b9e841a4668a7da48c55be2dfc7f26d251f319754fa731e1535742a1",
+      "bytes": 22843
+    },
+    "scripts/build-diary-03/render_parallel.py": {
+      "sha256": "95363b76bc854429bb58340050b3cd08a370f00f89c7746197a28c0db943f51b",
+      "bytes": 4292
+    },
+    "scripts/build-diary-03/research-bootstrap.py": {
+      "sha256": "6e9166a7dc2049e1b7e2bc048dbadac09ead52457d4ecf08636f6e8d0cf81088",
+      "bytes": 2618
+    },
+    "scripts/build-diary-03/research-content-check.mts": {
+      "sha256": "33fd69402df80f471f8fdc10a9330c9125e9d72c148a4e98ab9cf95de7afa306",
+      "bytes": 1797
+    },
+    "scripts/build-diary-03/research-cross.mts": {
+      "sha256": "abc37b96b27821ea6a14fb03d3da5f1478d68b03e8dc5d330b94d5c5823e9a3b",
+      "bytes": 3345
+    },
+    "scripts/build-diary-03/research-edge.mts": {
+      "sha256": "aa8779a46e783952399cebec9e0cb52d30d5d5dc11751e32ef2053b0ca7eeb18",
+      "bytes": 5701
+    },
+    "scripts/build-diary-03/research-finalize.py": {
+      "sha256": "c73561421a77a2bc59ff3f290aac23b3ef92abd2f48d557186f8864c8bdf0c9f",
+      "bytes": 12714
+    },
+    "scripts/build-diary-03/research-inherited-neri.mts": {
+      "sha256": "138c08bba028090c895795fefbd590410dea18bf0c330f582254eaba5398b4ea",
+      "bytes": 7112
+    },
+    "scripts/build-diary-03/research-inherited-ruka.mts": {
+      "sha256": "a8f4f4632db055009107ecc431a61da2701121810af093ba6ea2d68ba9d5aa17",
+      "bytes": 12830
+    },
+    "scripts/build-diary-03/research-rules.mts": {
+      "sha256": "f4aeea41da0bf4822075adb9617b6fe61b1d63f59637506cacb642c5c31c72bc",
+      "bytes": 1539
+    },
+    "scripts/build-diary-03/research-runner.mts": {
+      "sha256": "9fa3c991a8548b2b808b01728a6983243df9a1ad3f36202cd2d7721b13e769c4",
+      "bytes": 8672
+    },
+    "scripts/build-diary-03/roster.py": {
+      "sha256": "ac141ad7339fb8611d1e16ef2b246fc6665f6a211a35aa64beb2d13540824ef7",
+      "bytes": 7043
+    },
+    "scripts/build-diary-03/roster_qc.py": {
+      "sha256": "41e8c727c2683e592f0a5747cb13ab789687e74d3278134473ae69e897b8e2e7",
+      "bytes": 5713
+    },
+    "scripts/build-diary-03/serve.py": {
+      "sha256": "272a041e1e47ef4cfb9c3ce619c135e576995fecedf8fe726dc38a7262ad954b",
+      "bytes": 1576
+    },
+    "scripts/build-diary-03/speech_qc.py": {
+      "sha256": "b5bf7b20306356960d16c987ee398071d4e3626b6a33e65bbe934b6f91e3ca61",
+      "bytes": 5883
+    },
+    "scripts/build-diary-03/story.py": {
+      "sha256": "4ae0ec4e82c097fafaa50f43553437889c1c977286ec68306ea8f69762d469af",
+      "bytes": 19537
+    },
+    "scripts/build-diary-03/sync_capture.py": {
+      "sha256": "939e3adecaafcac266878c778e1e336025aee9b80ab344f5f84b59203fa1dfba",
+      "bytes": 4509
+    },
+    "scripts/build-diary-03/synth.py": {
+      "sha256": "16836c271b556d0b7879bc84f58f436baa26209ae05a5ac028b2dc4828a68219",
+      "bytes": 5002
+    },
+    "scripts/build-diary-03/validate.mjs": {
+      "sha256": "174ae7433f570c992dd5ed1366b32efc17d1ad87e391d9b76ec8c9522b6347b5",
+      "bytes": 4023
+    },
+    "scripts/build-diary-03/visual_qc.py": {
+      "sha256": "539ebcfa15a2eacfd44f01fa706eb8092a3d159d5955f583c2a1182e5c502141",
+      "bytes": 6365
+    },
+    "scripts/build-diary-03/visuals.py": {
+      "sha256": "58920a37fe3d91e173456695aa675c92fff62c5379dd0c8f210d7eb1379836b4",
+      "bytes": 22422
+    },
+    "scripts/diary-part3/core.ts": {
+      "sha256": "7e1fe97ecf75002625a12c175f52bc261e9b9d42ea138be80623a6e9a7a2907c",
+      "bytes": 10018
+    },
+    "scripts/diary-part3/native.ts": {
+      "sha256": "96c4f79275e8acd4c988d950e36802306fce91ed3298c9af62f2559f74649a3f",
+      "bytes": 2684
+    },
+    "tools/media-sync/.gitignore": {
+      "sha256": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b",
+      "bytes": 13
+    },
+    "tools/media-sync/README.md": {
+      "sha256": "9ec581a25860c0eec26f2b50b38942939a9682eca1ea3b3337241ac63a996776",
+      "bytes": 1897
+    },
+    "tools/media-sync/audit_movie.py": {
+      "sha256": "90c147c5ebb80d259c342c1dad1399a73600f236de79c3b5e40a7941bd693e88",
+      "bytes": 4733
+    },
+    "tools/media-sync/build_soundtrack.py": {
+      "sha256": "d1cd9fd179b3859e3c1bec698d9e38f32111f4fe645ca7b934c319b449d3e539",
+      "bytes": 1011
+    },
+    "tools/media-sync/media_sync.py": {
+      "sha256": "dc138909741ae6f200b90d9568b782d6dd619b06cb2016e6d59526ecfc48ef36",
+      "bytes": 3848
+    },
+    "tools/media-sync/requirements.txt": {
+      "sha256": "5d31a6e64f4859296f2e0f06b352c450ea3fb5490da3c3cf46e397ec4eb24bc2",
+      "bytes": 29
+    },
+    "tools/media-sync/test_media_sync.py": {
+      "sha256": "5029e7c9a31f5c4a9acea228f225483460e7895e419027e443158099f87face8",
+      "bytes": 2167
+    },
+    "tsconfig.json": {
+      "sha256": "88d91cef80b466db51b7c87d42e7df36ef7eec8f48021942daf330059de7f3f7",
+      "bytes": 331
+    },
+    "vite.config.ts": {
+      "sha256": "7b501188935cde6cfd6c3a4f27501b5a8e6f110d20341b14fbfd85d6d807a7eb",
+      "bytes": 202
+    }
+  },
+  "archives": [
+    {
+      "file": "Production-Materials.zip",
+      "bytes": 62022432,
+      "sha256": "87313fcebe0520723f1399cef99bd9bc7c91d6fea48320f7734ea172b8198592",
+      "members": [
+        "AGENTS.md",
+        "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+        "artifacts/build-diary-02/research/research-necessity-certificate.json",
+        "artifacts/build-diary-03/approved-cuts.json",
+        "artifacts/build-diary-03/asset-reuse.json",
+        "artifacts/build-diary-03/assets/art-production-plan.json",
+        "artifacts/build-diary-03/assets/artwork-provenance.json",
+        "artifacts/build-diary-03/assets/blank-avatar.png",
+        "artifacts/build-diary-03/assets/m-deadpan-avatar.png",
+        "artifacts/build-diary-03/assets/m-deadpan.png",
+        "artifacts/build-diary-03/assets/m-happy-avatar.png",
+        "artifacts/build-diary-03/assets/m-happy.png",
+        "artifacts/build-diary-03/assets/opening-original.mp3",
+        "artifacts/build-diary-03/assets/research-lab-register.png",
+        "artifacts/build-diary-03/assets/research-lab.png",
+        "artifacts/build-diary-03/assets/reused-artwork-provenance.json",
+        "artifacts/build-diary-03/assets/t-research-care-avatar.png",
+        "artifacts/build-diary-03/assets/t-research-care.png",
+        "artifacts/build-diary-03/assets/t-research-determined-avatar.png",
+        "artifacts/build-diary-03/assets/t-research-determined.png",
+        "artifacts/build-diary-03/assets/t-research-happy-avatar.png",
+        "artifacts/build-diary-03/assets/t-research-happy.png",
+        "artifacts/build-diary-03/assets/t-research-think-avatar.png",
+        "artifacts/build-diary-03/assets/t-research-think.png",
+        "artifacts/build-diary-03/assets/thumbnail-original.png",
+        "artifacts/build-diary-03/assets/z-happy-avatar.png",
+        "artifacts/build-diary-03/assets/z-happy.png",
+        "artifacts/build-diary-03/assets/z-panic-avatar.png",
+        "artifacts/build-diary-03/assets/z-panic.png",
+        "artifacts/build-diary-03/chapter-ready-failed-draft.json",
+        "artifacts/build-diary-03/chapter-ready-ione-now.json",
+        "artifacts/build-diary-03/chapter-ready-lab-victory-a.json",
+        "artifacts/build-diary-03/chapter-ready-lab-victory-b.json",
+        "artifacts/build-diary-03/delivery/Artwork-Provenance.json",
+        "artifacts/build-diary-03/delivery/Asset-Reuse.json",
+        "artifacts/build-diary-03/delivery/Chapters.txt",
+        "artifacts/build-diary-03/delivery/Character-Registry.json",
+        "artifacts/build-diary-03/delivery/Credits.md",
+        "artifacts/build-diary-03/delivery/Decode-Validation.json",
+        "artifacts/build-diary-03/delivery/Edit-Timeline.json",
+        "artifacts/build-diary-03/delivery/Evidence-Review.json",
+        "artifacts/build-diary-03/delivery/External-Assets.json",
+        "artifacts/build-diary-03/delivery/Finished-Movie-Sync.json",
+        "artifacts/build-diary-03/delivery/Game-Source.json",
+        "artifacts/build-diary-03/delivery/Gem-Audit.json",
+        "artifacts/build-diary-03/delivery/Head-Safety.json",
+        "artifacts/build-diary-03/delivery/Manual-Visual-Review.json",
+        "artifacts/build-diary-03/delivery/Metadata-SourceGame.json",
+        "artifacts/build-diary-03/delivery/Methods.md",
+        "artifacts/build-diary-03/delivery/Mix-Manifest.json",
+        "artifacts/build-diary-03/delivery/Music-Source.json",
+        "artifacts/build-diary-03/delivery/Narration-Timeline.json",
+        "artifacts/build-diary-03/delivery/Production-Inputs.json",
+        "artifacts/build-diary-03/delivery/Recording-Sources.json",
+        "artifacts/build-diary-03/delivery/Render-Input-Freeze.json",
+        "artifacts/build-diary-03/delivery/Reproduce.md",
+        "artifacts/build-diary-03/delivery/Roster-Coverage.json",
+        "artifacts/build-diary-03/delivery/Script.md",
+        "artifacts/build-diary-03/delivery/Subtitles-ja.srt",
+        "artifacts/build-diary-03/delivery/Validation.json",
+        "artifacts/build-diary-03/delivery/Visual-QC.json",
+        "artifacts/build-diary-03/delivery/YouTube-Description.txt",
+        "artifacts/build-diary-03/edit-timeline.json",
+        "artifacts/build-diary-03/event-cues.json",
+        "artifacts/build-diary-03/gem-audit.json",
+        "artifacts/build-diary-03/head-safety.json",
+        "artifacts/build-diary-03/metadataSourceGame.json",
+        "artifacts/build-diary-03/mix-manifest.json",
+        "artifacts/build-diary-03/music-source.json",
+        "artifacts/build-diary-03/narration.json",
+        "artifacts/build-diary-03/proofs/live-ione.json.gz",
+        "artifacts/build-diary-03/registry-finalization.json",
+        "artifacts/build-diary-03/registry.json",
+        "artifacts/build-diary-03/render/comparisons-scene-0.png",
+        "artifacts/build-diary-03/render/comparisons-scene-1.png",
+        "artifacts/build-diary-03/render/comparisons-scene-2.png",
+        "artifacts/build-diary-03/render/comparisons-visual.json",
+        "artifacts/build-diary-03/render/comparisons.ass",
+        "artifacts/build-diary-03/render/counterexample-scene-0.png",
+        "artifacts/build-diary-03/render/counterexample-scene-1.png",
+        "artifacts/build-diary-03/render/counterexample-visual.json",
+        "artifacts/build-diary-03/render/counterexample.ass",
+        "artifacts/build-diary-03/render/failed-draft-scene-0.png",
+        "artifacts/build-diary-03/render/failed-draft-scene-1.png",
+        "artifacts/build-diary-03/render/failed-draft-scene-2.png",
+        "artifacts/build-diary-03/render/failed-draft-scene-3.png",
+        "artifacts/build-diary-03/render/failed-draft-visual.json",
+        "artifacts/build-diary-03/render/failed-draft.ass",
+        "artifacts/build-diary-03/render/future-scene-0.png",
+        "artifacts/build-diary-03/render/future-scene-1.png",
+        "artifacts/build-diary-03/render/future-scene-2.png",
+        "artifacts/build-diary-03/render/future-scene-3.png",
+        "artifacts/build-diary-03/render/future-visual.json",
+        "artifacts/build-diary-03/render/future.ass",
+        "artifacts/build-diary-03/render/growth-scene-0.png",
+        "artifacts/build-diary-03/render/growth-scene-1.png",
+        "artifacts/build-diary-03/render/growth-scene-2.png",
+        "artifacts/build-diary-03/render/growth-visual.json",
+        "artifacts/build-diary-03/render/growth.ass",
+        "artifacts/build-diary-03/render/ione-now-scene-0.png",
+        "artifacts/build-diary-03/render/ione-now-scene-1.png",
+        "artifacts/build-diary-03/render/ione-now-scene-2.png",
+        "artifacts/build-diary-03/render/ione-now-scene-3.png",
+        "artifacts/build-diary-03/render/ione-now-visual.json",
+        "artifacts/build-diary-03/render/ione-now.ass",
+        "artifacts/build-diary-03/render/lab-victory-a-scene-0.png",
+        "artifacts/build-diary-03/render/lab-victory-a-scene-1.png",
+        "artifacts/build-diary-03/render/lab-victory-a-scene-2.png",
+        "artifacts/build-diary-03/render/lab-victory-a-visual.json",
+        "artifacts/build-diary-03/render/lab-victory-a.ass",
+        "artifacts/build-diary-03/render/lab-victory-b-scene-0.png",
+        "artifacts/build-diary-03/render/lab-victory-b-scene-1.png",
+        "artifacts/build-diary-03/render/lab-victory-b-scene-2.png",
+        "artifacts/build-diary-03/render/lab-victory-b-scene-3.png",
+        "artifacts/build-diary-03/render/lab-victory-b-visual.json",
+        "artifacts/build-diary-03/render/lab-victory-b.ass",
+        "artifacts/build-diary-03/render/legacy-audit-scene-0.png",
+        "artifacts/build-diary-03/render/legacy-audit-scene-1.png",
+        "artifacts/build-diary-03/render/legacy-audit-scene-2.png",
+        "artifacts/build-diary-03/render/legacy-audit-scene-3.png",
+        "artifacts/build-diary-03/render/legacy-audit-visual.json",
+        "artifacts/build-diary-03/render/legacy-audit.ass",
+        "artifacts/build-diary-03/render/new-skill-scene-0.png",
+        "artifacts/build-diary-03/render/new-skill-scene-1.png",
+        "artifacts/build-diary-03/render/new-skill-scene-2.png",
+        "artifacts/build-diary-03/render/new-skill-visual.json",
+        "artifacts/build-diary-03/render/new-skill.ass",
+        "artifacts/build-diary-03/render/next-episode-preview.json",
+        "artifacts/build-diary-03/render/next-episode-scene-0.png",
+        "artifacts/build-diary-03/render/next-episode-scene-1.png",
+        "artifacts/build-diary-03/render/next-episode-scene-2.png",
+        "artifacts/build-diary-03/render/next-episode-visual.json",
+        "artifacts/build-diary-03/render/next-episode.ass",
+        "artifacts/build-diary-03/render/opening/Opening-QC.json",
+        "artifacts/build-diary-03/render/opening/op-video.mp4.cache.json",
+        "artifacts/build-diary-03/render/opening/opening-audio.wav.cache.json",
+        "artifacts/build-diary-03/render/opening/opening.mov.cache.json",
+        "artifacts/build-diary-03/render/opening/provenance.json",
+        "artifacts/build-diary-03/render/opening/registry-input.json",
+        "artifacts/build-diary-03/render/recipe-scene-0.png",
+        "artifacts/build-diary-03/render/recipe-scene-1.png",
+        "artifacts/build-diary-03/render/recipe-scene-2.png",
+        "artifacts/build-diary-03/render/recipe-scene-3.png",
+        "artifacts/build-diary-03/render/recipe-visual.json",
+        "artifacts/build-diary-03/render/recipe.ass",
+        "artifacts/build-diary-03/render/roster-scene-0.png",
+        "artifacts/build-diary-03/render/roster-scene-1.png",
+        "artifacts/build-diary-03/render/roster-scene-2.png",
+        "artifacts/build-diary-03/render/roster-scene-3.png",
+        "artifacts/build-diary-03/render/roster-visual.json",
+        "artifacts/build-diary-03/render/roster.ass",
+        "artifacts/build-diary-03/render/trial-scene-0.png",
+        "artifacts/build-diary-03/render/trial-scene-1.png",
+        "artifacts/build-diary-03/render/trial-scene-2.png",
+        "artifacts/build-diary-03/render/trial-visual.json",
+        "artifacts/build-diary-03/render/trial.ass",
+        "artifacts/build-diary-03/render-input-freeze.json",
+        "artifacts/build-diary-03/render-plan.json",
+        "artifacts/build-diary-03/research/Speech-QC.json",
+        "artifacts/build-diary-03/research/athena-turtle-no-ione-seed1.json",
+        "artifacts/build-diary-03/research/capture-cfr-normalization.json",
+        "artifacts/build-diary-03/research/capture-source-qa.json",
+        "artifacts/build-diary-03/research/cleanse-fast-tank-seed1.json",
+        "artifacts/build-diary-03/research/cleanse-tikka-seed1.json",
+        "artifacts/build-diary-03/research/critic-final/final-end-contact.jpg",
+        "artifacts/build-diary-03/research/critic-final/final-mid-contact.jpg",
+        "artifacts/build-diary-03/research/critic-final/final-start-contact.jpg",
+        "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+        "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg",
+        "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg",
+        "artifacts/build-diary-03/research/episode-evidence.json",
+        "artifacts/build-diary-03/research/independent-preview-review.json",
+        "artifacts/build-diary-03/research/independent-recheck.json",
+        "artifacts/build-diary-03/research/independent-research-review.json",
+        "artifacts/build-diary-03/research/ione-main-seed1.json",
+        "artifacts/build-diary-03/research/ione-no-neri-old-escort-seed1.json",
+        "artifacts/build-diary-03/research/ione-no-ruka-old-loom-seed1.json",
+        "artifacts/build-diary-03/research/ione-no-side-actions-seed1.json",
+        "artifacts/build-diary-03/research/ione-tier1-seed1.json",
+        "artifacts/build-diary-03/research/low-speed-damage-seed1.json",
+        "artifacts/build-diary-03/research/noelle-command-seed1.json",
+        "artifacts/build-diary-03/research/old-neri-same-conditions-seed1.json",
+        "artifacts/build-diary-03/research/old-ruka-same-conditions-seed1.json",
+        "artifacts/build-diary-03/research/pipeline-preparation.json",
+        "artifacts/build-diary-03/research/receipt-too-late-seed1.json",
+        "artifacts/build-diary-03/research/research-content-consistency.json",
+        "artifacts/build-diary-03/research/research-counterexamples.json",
+        "artifacts/build-diary-03/research/research-cross-audit.json",
+        "artifacts/build-diary-03/research/research-edge-checks.json",
+        "artifacts/build-diary-03/research/research-initial-source.json",
+        "artifacts/build-diary-03/research/research-initial-summary.json",
+        "artifacts/build-diary-03/research/research-lab-content.json",
+        "artifacts/build-diary-03/research/research-necessity-certificate.json",
+        "artifacts/build-diary-03/research/research-prototype-hashes.json",
+        "artifacts/build-diary-03/research/research-ruka-base-hashes.json",
+        "artifacts/build-diary-03/research/research-story-cues.json",
+        "artifacts/build-diary-03/research/research-sufficiency-certificate.json",
+        "artifacts/build-diary-03/research/research-summary.json",
+        "artifacts/build-diary-03/research/safety-without-finishing-hit-seed1.json",
+        "artifacts/build-diary-03/research/same-party-without-new-skill-seed1.json",
+        "artifacts/build-diary-03/research/source-game.json",
+        "artifacts/build-diary-03/research/t6-burst-no-ione-seed1.json",
+        "artifacts/build-diary-03/research/wrong-recipient-seed1.json",
+        "artifacts/build-diary-03/roster-ready.json",
+        "artifacts/build-diary-03/speech/0116f5083a828ac520378fc9.flac",
+        "artifacts/build-diary-03/speech/0116f5083a828ac520378fc9.key",
+        "artifacts/build-diary-03/speech/01e45d32825dd8971372c1a4.flac",
+        "artifacts/build-diary-03/speech/01e45d32825dd8971372c1a4.key",
+        "artifacts/build-diary-03/speech/02dee3ea253b3417a00922d1.flac",
+        "artifacts/build-diary-03/speech/02dee3ea253b3417a00922d1.key",
+        "artifacts/build-diary-03/speech/06b103d14375585cf4a737dc.flac",
+        "artifacts/build-diary-03/speech/06b103d14375585cf4a737dc.key",
+        "artifacts/build-diary-03/speech/09d86ef78c0cb46abf27ece8.flac",
+        "artifacts/build-diary-03/speech/09d86ef78c0cb46abf27ece8.key",
+        "artifacts/build-diary-03/speech/0a3016453bcdfbfb6ee0e590.flac",
+        "artifacts/build-diary-03/speech/0a3016453bcdfbfb6ee0e590.key",
+        "artifacts/build-diary-03/speech/0aac0a340812275c673b84a6.flac",
+        "artifacts/build-diary-03/speech/0aac0a340812275c673b84a6.key",
+        "artifacts/build-diary-03/speech/0bf4e168f37fcb35baad6a5e.flac",
+        "artifacts/build-diary-03/speech/0bf4e168f37fcb35baad6a5e.key",
+        "artifacts/build-diary-03/speech/0ec622d79f3ca7ca0259d924.flac",
+        "artifacts/build-diary-03/speech/0ec622d79f3ca7ca0259d924.key",
+        "artifacts/build-diary-03/speech/1282c9627c51f32cbb1a0e21.flac",
+        "artifacts/build-diary-03/speech/1282c9627c51f32cbb1a0e21.key",
+        "artifacts/build-diary-03/speech/1eb5cf3b881c6c75352a38ed.flac",
+        "artifacts/build-diary-03/speech/1eb5cf3b881c6c75352a38ed.key",
+        "artifacts/build-diary-03/speech/1f5f9eb2eaff8002632a8ed2.flac",
+        "artifacts/build-diary-03/speech/1f5f9eb2eaff8002632a8ed2.key",
+        "artifacts/build-diary-03/speech/20913eb1ce978825cbaed2bd.flac",
+        "artifacts/build-diary-03/speech/20913eb1ce978825cbaed2bd.key",
+        "artifacts/build-diary-03/speech/24a4bf0b9856d54b37bde94a.flac",
+        "artifacts/build-diary-03/speech/24a4bf0b9856d54b37bde94a.key",
+        "artifacts/build-diary-03/speech/275d228289d3e226cb5b6b31.flac",
+        "artifacts/build-diary-03/speech/275d228289d3e226cb5b6b31.key",
+        "artifacts/build-diary-03/speech/28e27edbae74256895b1f329.flac",
+        "artifacts/build-diary-03/speech/28e27edbae74256895b1f329.key",
+        "artifacts/build-diary-03/speech/2f0cff54afa56275f4c2a6b2.flac",
+        "artifacts/build-diary-03/speech/2f0cff54afa56275f4c2a6b2.key",
+        "artifacts/build-diary-03/speech/3459cc0b256b72b9e482b988.flac",
+        "artifacts/build-diary-03/speech/3459cc0b256b72b9e482b988.key",
+        "artifacts/build-diary-03/speech/353b6c0d337e8aacf32fc1e9.flac",
+        "artifacts/build-diary-03/speech/353b6c0d337e8aacf32fc1e9.key",
+        "artifacts/build-diary-03/speech/3794f102f8364fd7122de3e6.flac",
+        "artifacts/build-diary-03/speech/3794f102f8364fd7122de3e6.key",
+        "artifacts/build-diary-03/speech/3990d2f7ef07d4e1335bb784.flac",
+        "artifacts/build-diary-03/speech/3990d2f7ef07d4e1335bb784.key",
+        "artifacts/build-diary-03/speech/3ade12241e8f58bd2dd4657c.flac",
+        "artifacts/build-diary-03/speech/3ade12241e8f58bd2dd4657c.key",
+        "artifacts/build-diary-03/speech/3b2c88fc538284bc4b19bf59.flac",
+        "artifacts/build-diary-03/speech/3b2c88fc538284bc4b19bf59.key",
+        "artifacts/build-diary-03/speech/3d1e02385f41d3dc35f93698.flac",
+        "artifacts/build-diary-03/speech/3d1e02385f41d3dc35f93698.key",
+        "artifacts/build-diary-03/speech/3d5bcd6a98f0fd977ec817fd.flac",
+        "artifacts/build-diary-03/speech/3d5bcd6a98f0fd977ec817fd.key",
+        "artifacts/build-diary-03/speech/3da2064d5ff1a9a8cda6eb72.flac",
+        "artifacts/build-diary-03/speech/3da2064d5ff1a9a8cda6eb72.key",
+        "artifacts/build-diary-03/speech/41d5ef69cccd1f68b597416d.flac",
+        "artifacts/build-diary-03/speech/41d5ef69cccd1f68b597416d.key",
+        "artifacts/build-diary-03/speech/426567466bf214a1e4261cfb.flac",
+        "artifacts/build-diary-03/speech/426567466bf214a1e4261cfb.key",
+        "artifacts/build-diary-03/speech/4329c44936f49afdd32c1d39.flac",
+        "artifacts/build-diary-03/speech/4329c44936f49afdd32c1d39.key",
+        "artifacts/build-diary-03/speech/43a21d4a593ada80abad8ad7.flac",
+        "artifacts/build-diary-03/speech/43a21d4a593ada80abad8ad7.key",
+        "artifacts/build-diary-03/speech/44ca1c08521f61eb85e910e1.flac",
+        "artifacts/build-diary-03/speech/44ca1c08521f61eb85e910e1.key",
+        "artifacts/build-diary-03/speech/457a8b801f9c9d49abb034e0.flac",
+        "artifacts/build-diary-03/speech/457a8b801f9c9d49abb034e0.key",
+        "artifacts/build-diary-03/speech/47e0669ec5414529976caa58.flac",
+        "artifacts/build-diary-03/speech/47e0669ec5414529976caa58.key",
+        "artifacts/build-diary-03/speech/49f2664959a2972fcfb5b0a9.flac",
+        "artifacts/build-diary-03/speech/49f2664959a2972fcfb5b0a9.key",
+        "artifacts/build-diary-03/speech/4c6c66e19f843c833f0022ad.flac",
+        "artifacts/build-diary-03/speech/4c6c66e19f843c833f0022ad.key",
+        "artifacts/build-diary-03/speech/4cae314ac8b47c7138feac45.flac",
+        "artifacts/build-diary-03/speech/4cae314ac8b47c7138feac45.key",
+        "artifacts/build-diary-03/speech/4d05b91a0718877b48ebeedb.flac",
+        "artifacts/build-diary-03/speech/4d05b91a0718877b48ebeedb.key",
+        "artifacts/build-diary-03/speech/50e293f2440f2afd65d24f22.flac",
+        "artifacts/build-diary-03/speech/50e293f2440f2afd65d24f22.key",
+        "artifacts/build-diary-03/speech/519e0ee8be71eee5486f873f.flac",
+        "artifacts/build-diary-03/speech/519e0ee8be71eee5486f873f.key",
+        "artifacts/build-diary-03/speech/58eba8879458005b206a8863.flac",
+        "artifacts/build-diary-03/speech/58eba8879458005b206a8863.key",
+        "artifacts/build-diary-03/speech/599066056156510d2742911b.flac",
+        "artifacts/build-diary-03/speech/599066056156510d2742911b.key",
+        "artifacts/build-diary-03/speech/5a3a31b08c7c2bcb4777914a.flac",
+        "artifacts/build-diary-03/speech/5a3a31b08c7c2bcb4777914a.key",
+        "artifacts/build-diary-03/speech/5aa4922fa1bd039e94c98b67.flac",
+        "artifacts/build-diary-03/speech/5aa4922fa1bd039e94c98b67.key",
+        "artifacts/build-diary-03/speech/5c01e9284a2040e7476fa448.flac",
+        "artifacts/build-diary-03/speech/5c01e9284a2040e7476fa448.key",
+        "artifacts/build-diary-03/speech/6834493932b4205af526ea66.flac",
+        "artifacts/build-diary-03/speech/6834493932b4205af526ea66.key",
+        "artifacts/build-diary-03/speech/68ee40102e2f48ff3fb8bfc9.flac",
+        "artifacts/build-diary-03/speech/68ee40102e2f48ff3fb8bfc9.key",
+        "artifacts/build-diary-03/speech/6d4176417b8a7b60f37e8567.flac",
+        "artifacts/build-diary-03/speech/6d4176417b8a7b60f37e8567.key",
+        "artifacts/build-diary-03/speech/7555f3d0bbb3f12a0152f941.flac",
+        "artifacts/build-diary-03/speech/7555f3d0bbb3f12a0152f941.key",
+        "artifacts/build-diary-03/speech/7c4abbeca074745a032e6bf9.flac",
+        "artifacts/build-diary-03/speech/7c4abbeca074745a032e6bf9.key",
+        "artifacts/build-diary-03/speech/8322cc78ec18e24bb7fdb64c.flac",
+        "artifacts/build-diary-03/speech/8322cc78ec18e24bb7fdb64c.key",
+        "artifacts/build-diary-03/speech/84b376942ddada0e14d0ec00.flac",
+        "artifacts/build-diary-03/speech/84b376942ddada0e14d0ec00.key",
+        "artifacts/build-diary-03/speech/88df2f3cbc195dca52dd4e21.flac",
+        "artifacts/build-diary-03/speech/88df2f3cbc195dca52dd4e21.key",
+        "artifacts/build-diary-03/speech/8d5c484f04cce598a6b78012.flac",
+        "artifacts/build-diary-03/speech/8d5c484f04cce598a6b78012.key",
+        "artifacts/build-diary-03/speech/91ccd675661785368350e084.flac",
+        "artifacts/build-diary-03/speech/91ccd675661785368350e084.key",
+        "artifacts/build-diary-03/speech/9244ab2687acf9bfb0182805.flac",
+        "artifacts/build-diary-03/speech/9244ab2687acf9bfb0182805.key",
+        "artifacts/build-diary-03/speech/946ce2413865d4add9db092e.flac",
+        "artifacts/build-diary-03/speech/946ce2413865d4add9db092e.key",
+        "artifacts/build-diary-03/speech/94dc7dba42b4cd629974d283.flac",
+        "artifacts/build-diary-03/speech/94dc7dba42b4cd629974d283.key",
+        "artifacts/build-diary-03/speech/9874e45e5268eec5827e5dc7.flac",
+        "artifacts/build-diary-03/speech/9874e45e5268eec5827e5dc7.key",
+        "artifacts/build-diary-03/speech/9b4292f1b6e0b5ba5d489cf1.flac",
+        "artifacts/build-diary-03/speech/9b4292f1b6e0b5ba5d489cf1.key",
+        "artifacts/build-diary-03/speech/9be59bab6c3c137907f5b72d.flac",
+        "artifacts/build-diary-03/speech/9be59bab6c3c137907f5b72d.key",
+        "artifacts/build-diary-03/speech/9f877c30dfa6cc6c49134a6c.flac",
+        "artifacts/build-diary-03/speech/9f877c30dfa6cc6c49134a6c.key",
+        "artifacts/build-diary-03/speech/a05593c020250ee17176eb77.flac",
+        "artifacts/build-diary-03/speech/a05593c020250ee17176eb77.key",
+        "artifacts/build-diary-03/speech/a152317fa8934ea6dd17f390.flac",
+        "artifacts/build-diary-03/speech/a152317fa8934ea6dd17f390.key",
+        "artifacts/build-diary-03/speech/a18a7165b7215b43685e8b00.flac",
+        "artifacts/build-diary-03/speech/a18a7165b7215b43685e8b00.key",
+        "artifacts/build-diary-03/speech/a52249af8f9b35dc58cfba92.flac",
+        "artifacts/build-diary-03/speech/a52249af8f9b35dc58cfba92.key",
+        "artifacts/build-diary-03/speech/a6e724de3ceb3b08b97724a2.flac",
+        "artifacts/build-diary-03/speech/a6e724de3ceb3b08b97724a2.key",
+        "artifacts/build-diary-03/speech/a6f5705ca3927993101e3d74.flac",
+        "artifacts/build-diary-03/speech/a6f5705ca3927993101e3d74.key",
+        "artifacts/build-diary-03/speech/acbfd129dd0cce74546d94f3.flac",
+        "artifacts/build-diary-03/speech/acbfd129dd0cce74546d94f3.key",
+        "artifacts/build-diary-03/speech/adfb60ea38d41048b3f2e0c3.flac",
+        "artifacts/build-diary-03/speech/adfb60ea38d41048b3f2e0c3.key",
+        "artifacts/build-diary-03/speech/aee69517eda4a63e3f7b7058.flac",
+        "artifacts/build-diary-03/speech/aee69517eda4a63e3f7b7058.key",
+        "artifacts/build-diary-03/speech/afb259f01f4504fa2c163e10.flac",
+        "artifacts/build-diary-03/speech/afb259f01f4504fa2c163e10.key",
+        "artifacts/build-diary-03/speech/b2cde36ae807e864b3ab4a46.flac",
+        "artifacts/build-diary-03/speech/b2cde36ae807e864b3ab4a46.key",
+        "artifacts/build-diary-03/speech/b3867033b23c4bd2b3e20e35.flac",
+        "artifacts/build-diary-03/speech/b3867033b23c4bd2b3e20e35.key",
+        "artifacts/build-diary-03/speech/b4a86b86333cecbaf07221af.flac",
+        "artifacts/build-diary-03/speech/b4a86b86333cecbaf07221af.key",
+        "artifacts/build-diary-03/speech/beafc662236a508372e59085.flac",
+        "artifacts/build-diary-03/speech/beafc662236a508372e59085.key",
+        "artifacts/build-diary-03/speech/bf93ce33ecd90c7d5376677b.flac",
+        "artifacts/build-diary-03/speech/bf93ce33ecd90c7d5376677b.key",
+        "artifacts/build-diary-03/speech/c0057f8c9ef9b0b8ff166024.flac",
+        "artifacts/build-diary-03/speech/c0057f8c9ef9b0b8ff166024.key",
+        "artifacts/build-diary-03/speech/c08b7f3214c797bc56f675a6.flac",
+        "artifacts/build-diary-03/speech/c08b7f3214c797bc56f675a6.key",
+        "artifacts/build-diary-03/speech/c74fd2c2f41218ef5bfd92f5.flac",
+        "artifacts/build-diary-03/speech/c74fd2c2f41218ef5bfd92f5.key",
+        "artifacts/build-diary-03/speech/cabfc9e7b19ceecd48418a01.flac",
+        "artifacts/build-diary-03/speech/cabfc9e7b19ceecd48418a01.key",
+        "artifacts/build-diary-03/speech/d2350276e8fc88e548e9046c.flac",
+        "artifacts/build-diary-03/speech/d2350276e8fc88e548e9046c.key",
+        "artifacts/build-diary-03/speech/d465c72105a7b8df7416d356.flac",
+        "artifacts/build-diary-03/speech/d465c72105a7b8df7416d356.key",
+        "artifacts/build-diary-03/speech/d581016665b8c4832d6b47d6.flac",
+        "artifacts/build-diary-03/speech/d581016665b8c4832d6b47d6.key",
+        "artifacts/build-diary-03/speech/d7c541fb9a8351e3fb031bd8.flac",
+        "artifacts/build-diary-03/speech/d7c541fb9a8351e3fb031bd8.key",
+        "artifacts/build-diary-03/speech/dae8b611c3514b6c20a74c06.flac",
+        "artifacts/build-diary-03/speech/dae8b611c3514b6c20a74c06.key",
+        "artifacts/build-diary-03/speech/e273244a06cbf2620ab3499a.flac",
+        "artifacts/build-diary-03/speech/e273244a06cbf2620ab3499a.key",
+        "artifacts/build-diary-03/speech/e29c7253731463b7293399a9.flac",
+        "artifacts/build-diary-03/speech/e29c7253731463b7293399a9.key",
+        "artifacts/build-diary-03/speech/e6fbf739ef13d1c73ce3c031.flac",
+        "artifacts/build-diary-03/speech/e6fbf739ef13d1c73ce3c031.key",
+        "artifacts/build-diary-03/speech/e9a55f2f08aef75306dd3842.flac",
+        "artifacts/build-diary-03/speech/e9a55f2f08aef75306dd3842.key",
+        "artifacts/build-diary-03/speech/eb85f652927fb69d15bad41e.flac",
+        "artifacts/build-diary-03/speech/eb85f652927fb69d15bad41e.key",
+        "artifacts/build-diary-03/speech/f009e202b702ced0e317f01a.flac",
+        "artifacts/build-diary-03/speech/f009e202b702ced0e317f01a.key",
+        "artifacts/build-diary-03/speech/f4f2aa2c8561a9937f223ce5.flac",
+        "artifacts/build-diary-03/speech/f4f2aa2c8561a9937f223ce5.key",
+        "artifacts/build-diary-03/speech/f69bfaec4515996481accc71.flac",
+        "artifacts/build-diary-03/speech/f69bfaec4515996481accc71.key",
+        "artifacts/build-diary-03/speech/f8379c4c684798eeb3351744.flac",
+        "artifacts/build-diary-03/speech/f8379c4c684798eeb3351744.key",
+        "artifacts/build-diary-03/speech/fb5b0eaac2514cb1a4ced6b0.flac",
+        "artifacts/build-diary-03/speech/fb5b0eaac2514cb1a4ced6b0.key",
+        "artifacts/build-diary-03/storyboard.csv",
+        "artifacts/build-diary-03/timeline-narration.json",
+        "docs/media/build-research-diary/episodes/02/gem-audit.json",
+        "docs/media/build-research-diary/episodes/02/registry.json",
+        "docs/media/build-research-diary/episodes/03/README.md",
+        "docs/media/build-research-diary/episodes/03/VIDEO-QA.md",
+        "docs/media/build-research-diary/episodes/03/gem-audit.json",
+        "docs/media/build-research-diary/episodes/03/girl-eligibility.snapshot.json",
+        "docs/media/build-research-diary/episodes/03/registry-finalization.json",
+        "docs/media/build-research-diary/episodes/03/registry.json",
+        "docs/media/build-research-diary/episodes/03/serial-map.snapshot.json",
+        "docs/media/build-research-diary/girl-eligibility.json",
+        "docs/media/build-research-diary/serial-map.json",
+        "docs/media-sync.md",
+        "package-lock.json",
+        "package.json",
+        "scripts/build-diary-01/registry.mts",
+        "scripts/build-diary-03/.gitignore",
+        "scripts/build-diary-03/audit.py",
+        "scripts/build-diary-03/bootstrap_inputs.py",
+        "scripts/build-diary-03/capture-lab.mjs",
+        "scripts/build-diary-03/capture-live.mjs",
+        "scripts/build-diary-03/capture-source-qa.py",
+        "scripts/build-diary-03/delivery-templates/Credits.txt",
+        "scripts/build-diary-03/delivery-templates/Methods.txt",
+        "scripts/build-diary-03/delivery-templates/README.txt",
+        "scripts/build-diary-03/delivery-templates/Reproduce.txt",
+        "scripts/build-diary-03/delivery-templates/YouTube-Description.txt",
+        "scripts/build-diary-03/independent-recheck.mts",
+        "scripts/build-diary-03/lab-harness.tsx",
+        "scripts/build-diary-03/lab.css",
+        "scripts/build-diary-03/lab.html",
+        "scripts/build-diary-03/normalize_capture.py",
+        "scripts/build-diary-03/opening.py",
+        "scripts/build-diary-03/opening_visuals.py",
+        "scripts/build-diary-03/package.py",
+        "scripts/build-diary-03/prepare-live.mts",
+        "scripts/build-diary-03/prepare_render_plan.py",
+        "scripts/build-diary-03/publish.py",
+        "scripts/build-diary-03/qa_contract.py",
+        "scripts/build-diary-03/registry.mts",
+        "scripts/build-diary-03/render-plan.example.json",
+        "scripts/build-diary-03/render.py",
+        "scripts/build-diary-03/render_parallel.py",
+        "scripts/build-diary-03/research-bootstrap.py",
+        "scripts/build-diary-03/research-content-check.mts",
+        "scripts/build-diary-03/research-cross.mts",
+        "scripts/build-diary-03/research-edge.mts",
+        "scripts/build-diary-03/research-finalize.py",
+        "scripts/build-diary-03/research-inherited-neri.mts",
+        "scripts/build-diary-03/research-inherited-ruka.mts",
+        "scripts/build-diary-03/research-rules.mts",
+        "scripts/build-diary-03/research-runner.mts",
+        "scripts/build-diary-03/roster.py",
+        "scripts/build-diary-03/roster_qc.py",
+        "scripts/build-diary-03/serve.py",
+        "scripts/build-diary-03/speech_qc.py",
+        "scripts/build-diary-03/story.py",
+        "scripts/build-diary-03/sync_capture.py",
+        "scripts/build-diary-03/synth.py",
+        "scripts/build-diary-03/validate.mjs",
+        "scripts/build-diary-03/visual_qc.py",
+        "scripts/build-diary-03/visuals.py",
+        "scripts/diary-part3/core.ts",
+        "scripts/diary-part3/native.ts",
+        "tools/media-sync/.gitignore",
+        "tools/media-sync/README.md",
+        "tools/media-sync/audit_movie.py",
+        "tools/media-sync/build_soundtrack.py",
+        "tools/media-sync/media_sync.py",
+        "tools/media-sync/requirements.txt",
+        "tools/media-sync/test_media_sync.py",
+        "tsconfig.json",
+        "vite.config.ts"
+      ]
+    },
+    {
+      "file": "Recording-Sources.zip",
+      "bytes": 37432513,
+      "sha256": "2ea43789f635012c1d7dbeca95e7a1527e8322223aa463147c89363aea6c0f6b",
+      "members": [
+        "artifacts/build-diary-03/capture/lab-counter.json",
+        "artifacts/build-diary-03/capture/lab-counter.json.tmporiginal",
+        "artifacts/build-diary-03/capture/lab-counter.mov",
+        "artifacts/build-diary-03/capture/lab-counter.mov.tmporiginal",
+        "artifacts/build-diary-03/capture/lab-victory.json",
+        "artifacts/build-diary-03/capture/lab-victory.json.tmporiginal",
+        "artifacts/build-diary-03/capture/lab-victory.mov",
+        "artifacts/build-diary-03/capture/lab-victory.mov.tmporiginal",
+        "artifacts/build-diary-03/capture/live-ione.json",
+        "artifacts/build-diary-03/capture/live-ione.json.tmporiginal",
+        "artifacts/build-diary-03/capture/live-ione.mov",
+        "artifacts/build-diary-03/capture/live-ione.mov.tmporiginal",
+        "artifacts/build-diary-03/render/opening/opening.mov"
+      ]
+    }
+  ],
+  "publicFiles": [
+    "Artwork-Provenance.json",
+    "Asset-Reuse.json",
+    "Chapters.txt",
+    "Character-Registry.json",
+    "Credits.md",
+    "Decode-Validation.json",
+    "Edit-Timeline.json",
+    "Evidence-Review.json",
+    "External-Assets.json",
+    "Finished-Movie-Sync.json",
+    "Game-Source.json",
+    "Gem-Audit.json",
+    "Head-Safety.json",
+    "Manual-Visual-Review.json",
+    "Material-Archives.json",
+    "Metadata-SourceGame.json",
+    "Methods.md",
+    "Mix-Manifest.json",
+    "Music-Source.json",
+    "Narration-Timeline.json",
+    "Packaging-Manifest.json",
+    "Preview.jpg",
+    "Production-Inputs.json",
+    "Production-Materials.zip",
+    "README.md",
+    "Recording-Sources.json",
+    "Recording-Sources.zip",
+    "Render-Input-Freeze.json",
+    "Reproduce.md",
+    "Roster-Coverage.json",
+    "SHA256SUMS.txt",
+    "STILLVEIL-BuildResearchDiary-03.mp4",
+    "Script.md",
+    "Subtitles-ja.srt",
+    "Thumbnail-BuildResearchDiary-03.jpg",
+    "Validation.json",
+    "Visual-QC.json",
+    "YouTube-Description.txt"
+  ],
+  "gameSrcUnchangedFromPinnedRelease": true
+}

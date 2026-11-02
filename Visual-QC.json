@@ -1,0 +1,1992 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "type": "safe_portrait_contract",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-panic"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-deadpan"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-think"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-determined"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-care"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 9.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 15.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 22.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 31.666666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 39.1
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 44.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 50.1
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "series-op"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 8.466666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 14.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 24.133333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 32.63333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 38.56666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failed-draft",
+      "start": 47.06666666666667
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "failed-draft"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 11.1
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 19.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 32.4
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 41.166666666666664
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ione-now",
+      "start": 50.333333333333336
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "ione-now"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 12.333333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 22.366666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 26.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 36.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 45.46666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 55.1
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 9.466666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 20.066666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 26.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 36.0
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 9.633333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 19.466666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 25.033333333333335
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 34.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 45.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 57.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 67.7
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 9.966666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 18.4
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 26.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 36.56666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 47.733333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 56.166666666666664
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 10.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 21.066666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 29.366666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 38.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 48.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 59.4
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 13.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 18.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 30.033333333333335
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 43.4
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 54.833333333333336
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 62.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "comparisons",
+      "start": 70.33333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "comparisons"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 4.833333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 14.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 23.966666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 33.63333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 38.766666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 48.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "counterexample",
+      "start": 55.333333333333336
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "counterexample"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 10.633333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 17.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 28.933333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 39.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 48.96666666666667
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 9.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 16.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 21.266666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 32.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 41.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 50.266666666666666
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 10.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 17.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 27.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 35.733333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 42.6
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 12.566666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 19.766666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 26.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 36.43333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "roster_then_opening",
+      "passed": true
+    },
+    {
+      "type": "current_registry_finalized",
+      "passed": true
+    },
+    {
+      "type": "no_unproven_live_certificates",
+      "passed": true
+    },
+    {
+      "type": "all_girl_forms_retained",
+      "passed": true
+    },
+    {
+      "type": "manual_review_exact_finished_file",
+      "passed": true
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/final-start-contact.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/final-mid-contact.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/final-end-contact.jpg"
+    },
+    {
+      "type": "fio_existing_idea_only",
+      "passed": true
+    },
+    {
+      "type": "next_episode_final_chapter",
+      "passed": true
+    },
+    {
+      "type": "next_episode_actual_fio_original",
+      "passed": true
+    },
+    {
+      "type": "next_episode_contain_geometry",
+      "passed": true
+    },
+    {
+      "type": "next_episode_question_matches",
+      "passed": true
+    },
+    {
+      "type": "next_episode_layout_original_bound",
+      "passed": true
+    },
+    {
+      "type": "next_episode_plate_unchanged",
+      "passed": true
+    },
+    {
+      "type": "next_episode_manual_full_head_name_id_unverified",
+      "passed": true
+    },
+    {
+      "type": "next_episode_final_frame_evidence",
+      "passed": true
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg",
+      "time": 826.1
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg",
+      "time": 846.3666666666667
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+      "time": 866.6333333333333
+    }
+  ],
+  "sourceHeadSafetySha256": "da862efc9f979a09aa7d5f28c6726af39d1e1b332c4dae7574911f3a39f9a795",
+  "sourceRegistrySha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81",
+  "finishedSha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463",
+  "sourceNextEpisodeLayoutSha256": "656ff17070feb62ff3c7336f56e41985930684ca83fe4687eb1e0f37b74ac276",
+  "processingSha256": "539ebcfa15a2eacfd44f01fa706eb8092a3d159d5955f583c2a1182e5c502141",
+  "manualReview": {
+    "passed": true,
+    "finishedSha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463",
+    "reviewer": "/root/build_diary_critic — independent exact-final-file manual review",
+    "reviewedAtUTC": "2026-11-02T19:53:15.222900+00:00",
+    "method": "All62 final-movie frame samples were independently extracted from the exact distributed MP4 and actually viewed in3 contact sheets; Fio start/mid/end and critical combat frames were also viewed full resolution. New distributed thumbnail and new illustration source were separately viewed. No older chapter encode or preview was substituted for final-MP4 review.",
+    "reviewedAssets": [
+      {
+        "id": "roster-start",
+        "time": 1.0,
+        "kind": "chapter-start",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-03/research/critic-final/roster-start.jpg",
+        "sha256": "237841b66814610183062f6cf4ab0b25972f201499416fbd0cbfbb5d71ae06a9"
+      },
+      {
+        "id": "roster-mid",
+        "time": 27.95,
+        "kind": "chapter-mid",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-03/research/critic-final/roster-mid.jpg",
+        "sha256": "576efbf42b096614596bec8b3049ed340767426c8349f6241956651ab180d957"
+      },
+      {
+        "id": "roster-end",
+        "time": 54.9,
+        "kind": "chapter-end",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-03/research/critic-final/roster-end.jpg",
+        "sha256": "bfc28346665758f5036f6b5b7a8c28bfbd4e90e0c801b29eb84abdbaa81053f5"
+      },
+      {
+        "id": "series-op-start",
+        "time": 56.9,
+        "kind": "chapter-start",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-03/research/critic-final/series-op-start.jpg",
+        "sha256": "caf497e4bb4b2bffdb1aa4cca11933142455b079edaf621096bf04378322f51f"
+      },
+      {
+        "id": "series-op-mid",
+        "time": 68.7,
+        "kind": "chapter-mid",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-03/research/critic-final/series-op-mid.jpg",
+        "sha256": "82750451c67d44cec983a5d2842836b7bb487b7c7450af53ca83eeacaf1969ad"
+      },
+      {
+        "id": "series-op-end",
+        "time": 80.5,
+        "kind": "chapter-end",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-03/research/critic-final/series-op-end.jpg",
+        "sha256": "201db8416b84c0f7dba088db8a9a14e9e3fb96ee44c71ca1d9b54f99c57acb44"
+      },
+      {
+        "id": "failed-draft-start",
+        "time": 82.5,
+        "kind": "chapter-start",
+        "chapter": "failed-draft",
+        "path": "artifacts/build-diary-03/research/critic-final/failed-draft-start.jpg",
+        "sha256": "b142c3603ddf978bfe72a0b04067f044799b43ad87058a3188e039d899b274f8"
+      },
+      {
+        "id": "failed-draft-mid",
+        "time": 110.26666666666667,
+        "kind": "chapter-mid",
+        "chapter": "failed-draft",
+        "path": "artifacts/build-diary-03/research/critic-final/failed-draft-mid.jpg",
+        "sha256": "d1369116c1948698e57fea5cd00e6c1ba89d3ed4deadadd337c8750dfa580cec"
+      },
+      {
+        "id": "failed-draft-end",
+        "time": 138.03333333333333,
+        "kind": "chapter-end",
+        "chapter": "failed-draft",
+        "path": "artifacts/build-diary-03/research/critic-final/failed-draft-end.jpg",
+        "sha256": "c6b94007d0c071b54f7c83fff9b84351f50d9cf3e59611b6a4cf97ca19ed64b6"
+      },
+      {
+        "id": "ione-now-start",
+        "time": 140.03333333333333,
+        "kind": "chapter-start",
+        "chapter": "ione-now",
+        "path": "artifacts/build-diary-03/research/critic-final/ione-now-start.jpg",
+        "sha256": "d8bf51d3822b0de8b027286d9b65fa1a229120f5f84c792c02a1e7d8c5d905d1"
+      },
+      {
+        "id": "ione-now-mid",
+        "time": 168.66666666666666,
+        "kind": "chapter-mid",
+        "chapter": "ione-now",
+        "path": "artifacts/build-diary-03/research/critic-final/ione-now-mid.jpg",
+        "sha256": "8e7d737a805581c2b912e664c23d19365c2f5ddd70eca2f2f779791deda14b68"
+      },
+      {
+        "id": "ione-now-end",
+        "time": 197.3,
+        "kind": "chapter-end",
+        "chapter": "ione-now",
+        "path": "artifacts/build-diary-03/research/critic-final/ione-now-end.jpg",
+        "sha256": "43fb42b74f39e00bccd0f4121b627d6254af7c41f04b3b051d331fe1471b9fbd"
+      },
+      {
+        "id": "new-skill-start",
+        "time": 199.3,
+        "kind": "chapter-start",
+        "chapter": "new-skill",
+        "path": "artifacts/build-diary-03/research/critic-final/new-skill-start.jpg",
+        "sha256": "e765c4fdeef7a3c791be688198a9c5663312ea53db24a29b99e9a4acc1c84dc7"
+      },
+      {
+        "id": "new-skill-mid",
+        "time": 230.68333333333334,
+        "kind": "chapter-mid",
+        "chapter": "new-skill",
+        "path": "artifacts/build-diary-03/research/critic-final/new-skill-mid.jpg",
+        "sha256": "94a8cc763c18d366bfa3018ca0295dccaebd347578bbc65eee619b136a3092ee"
+      },
+      {
+        "id": "new-skill-end",
+        "time": 262.06666666666666,
+        "kind": "chapter-end",
+        "chapter": "new-skill",
+        "path": "artifacts/build-diary-03/research/critic-final/new-skill-end.jpg",
+        "sha256": "2ceb9baf38ab6f8c2f890b2822e88cd20d70552a3ba65e64a05268a1f2e1c139"
+      },
+      {
+        "id": "trial-start",
+        "time": 264.06666666666666,
+        "kind": "chapter-start",
+        "chapter": "trial",
+        "path": "artifacts/build-diary-03/research/critic-final/trial-start.jpg",
+        "sha256": "b98f42198f5a01372a3b73ce2ee47ebabf6909e36aa64ec1f2bd3245add140b7"
+      },
+      {
+        "id": "trial-mid",
+        "time": 285.8333333333333,
+        "kind": "chapter-mid",
+        "chapter": "trial",
+        "path": "artifacts/build-diary-03/research/critic-final/trial-mid.jpg",
+        "sha256": "204b66d7f0cacbff44b098e4fa3836f0cbf4fd737dbb5fbb605d07fce84d5a01"
+      },
+      {
+        "id": "trial-end",
+        "time": 307.6,
+        "kind": "chapter-end",
+        "chapter": "trial",
+        "path": "artifacts/build-diary-03/research/critic-final/trial-end.jpg",
+        "sha256": "fc4eac8dfc183b4c532738150b5ee0b60ba485f9365e6cea5fb7f9ef2d2ae49e"
+      },
+      {
+        "id": "recipe-start",
+        "time": 309.6,
+        "kind": "chapter-start",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-03/research/critic-final/recipe-start.jpg",
+        "sha256": "7b8a022ddb7f093bbcc1809a1e50fd66595577de4a50f2ab7784277faebcf303"
+      },
+      {
+        "id": "recipe-mid",
+        "time": 345.90000000000003,
+        "kind": "chapter-mid",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-03/research/critic-final/recipe-mid.jpg",
+        "sha256": "2d66e150478b8817902ccde69720e404c323e71c6b9fedee82c3aeef563d13d4"
+      },
+      {
+        "id": "recipe-end",
+        "time": 382.20000000000005,
+        "kind": "chapter-end",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-03/research/critic-final/recipe-end.jpg",
+        "sha256": "c800a481546411142d6cc81dea0e401c393ca48fd35d810ef3a88c1461aba203"
+      },
+      {
+        "id": "lab-victory-a-start",
+        "time": 384.20000000000005,
+        "kind": "chapter-start",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-a-start.jpg",
+        "sha256": "9d644f30e92f7c9fa1cbf192470eb9a91c1777d7dc6b2fda30d9d5098e7f53bb"
+      },
+      {
+        "id": "lab-victory-a-mid",
+        "time": 415.9666666666667,
+        "kind": "chapter-mid",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-a-mid.jpg",
+        "sha256": "6108699b83c926d42f582846f7aefa8fde17abeec70f4a8f4fba8cc773f77059"
+      },
+      {
+        "id": "lab-victory-a-end",
+        "time": 447.73333333333335,
+        "kind": "chapter-end",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-a-end.jpg",
+        "sha256": "bbd82ac2927b664027fcf113c3e56a180eb50b5fbedfdbd6738929e2bfca7c98"
+      },
+      {
+        "id": "lab-victory-b-start",
+        "time": 449.73333333333335,
+        "kind": "chapter-start",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-b-start.jpg",
+        "sha256": "4ed1f04eb902f7b75778d5622b142064e22670989d024f39972ba9ce71a24162"
+      },
+      {
+        "id": "lab-victory-b-mid",
+        "time": 482.40000000000003,
+        "kind": "chapter-mid",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-b-mid.jpg",
+        "sha256": "39006fa5ceac5eeb242e0e6ccebae65b675694ae88a40da1f71fd948cde61908"
+      },
+      {
+        "id": "lab-victory-b-end",
+        "time": 515.0666666666667,
+        "kind": "chapter-end",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-03/research/critic-final/lab-victory-b-end.jpg",
+        "sha256": "8184d0312bf2925d07719aa3a0ece9b49bd8a77b0a7943f22157961ce4646e4f"
+      },
+      {
+        "id": "comparisons-start",
+        "time": 517.0666666666667,
+        "kind": "chapter-start",
+        "chapter": "comparisons",
+        "path": "artifacts/build-diary-03/research/critic-final/comparisons-start.jpg",
+        "sha256": "530480c60c7cac238f5c74a08c2c0f5213ad41eb042abbc106b8cf49173431d1"
+      },
+      {
+        "id": "comparisons-mid",
+        "time": 554.5333333333334,
+        "kind": "chapter-mid",
+        "chapter": "comparisons",
+        "path": "artifacts/build-diary-03/research/critic-final/comparisons-mid.jpg",
+        "sha256": "cea7840ba752c275f9c40224d3700f2ff16c2892525b5ec9d90cf6b88de0a5d1"
+      },
+      {
+        "id": "comparisons-end",
+        "time": 592.0,
+        "kind": "chapter-end",
+        "chapter": "comparisons",
+        "path": "artifacts/build-diary-03/research/critic-final/comparisons-end.jpg",
+        "sha256": "a2ba042600d0102f4c05be1d1971019ed5aeff47cbc4150e02dbeb6ef1702771"
+      },
+      {
+        "id": "counterexample-start",
+        "time": 594.0,
+        "kind": "chapter-start",
+        "chapter": "counterexample",
+        "path": "artifacts/build-diary-03/research/critic-final/counterexample-start.jpg",
+        "sha256": "6cf6839b2fccfafa059e88791c949d8ee3dfc9e93f72a2bf81329f0f18da80a8"
+      },
+      {
+        "id": "counterexample-mid",
+        "time": 625.45,
+        "kind": "chapter-mid",
+        "chapter": "counterexample",
+        "path": "artifacts/build-diary-03/research/critic-final/counterexample-mid.jpg",
+        "sha256": "ed4102da2526957ee3584ac59b186bf9070ac5ac3fb5acc38211f14ee561e4f2"
+      },
+      {
+        "id": "counterexample-end",
+        "time": 656.9,
+        "kind": "chapter-end",
+        "chapter": "counterexample",
+        "path": "artifacts/build-diary-03/research/critic-final/counterexample-end.jpg",
+        "sha256": "760db50eead24ed6694f344273075511980ed9f06ec1120d610cb211be507900"
+      },
+      {
+        "id": "growth-start",
+        "time": 658.9,
+        "kind": "chapter-start",
+        "chapter": "growth",
+        "path": "artifacts/build-diary-03/research/critic-final/growth-start.jpg",
+        "sha256": "ba9eede5c9c12225be99a1cdc81aa586f28c73da7199189e477a23e582f44803"
+      },
+      {
+        "id": "growth-mid",
+        "time": 686.0666666666666,
+        "kind": "chapter-mid",
+        "chapter": "growth",
+        "path": "artifacts/build-diary-03/research/critic-final/growth-mid.jpg",
+        "sha256": "eebd023916bbc244ec34f98ecd76538fed13a85c6a3e979d92df1fe8f0c45116"
+      },
+      {
+        "id": "growth-end",
+        "time": 713.2333333333333,
+        "kind": "chapter-end",
+        "chapter": "growth",
+        "path": "artifacts/build-diary-03/research/critic-final/growth-end.jpg",
+        "sha256": "de64f7865a7758e0df923c2c5b7b1283289a3f4719290e312b6590ea17334a8b"
+      },
+      {
+        "id": "legacy-audit-start",
+        "time": 715.2333333333333,
+        "kind": "chapter-start",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-03/research/critic-final/legacy-audit-start.jpg",
+        "sha256": "ec8a0d4123606bccb42531b8e425964706f4fb2700b9fba9579233bc289d2040"
+      },
+      {
+        "id": "legacy-audit-mid",
+        "time": 743.7666666666667,
+        "kind": "chapter-mid",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-03/research/critic-final/legacy-audit-mid.jpg",
+        "sha256": "3464225726952da54a66d29693c2ace57870e516b5bfb8df883416732953e83c"
+      },
+      {
+        "id": "legacy-audit-end",
+        "time": 772.3000000000001,
+        "kind": "chapter-end",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-03/research/critic-final/legacy-audit-end.jpg",
+        "sha256": "8447ebae3e821f4ebe2fe897dc1bf389345eb67551f1ac85e4c459c3d8930fdf"
+      },
+      {
+        "id": "future-start",
+        "time": 774.3000000000001,
+        "kind": "chapter-start",
+        "chapter": "future",
+        "path": "artifacts/build-diary-03/research/critic-final/future-start.jpg",
+        "sha256": "5fd4ff5124a11d315c69e7c4cd30d95bf0321ff3ead8496e1545e85210996339"
+      },
+      {
+        "id": "future-mid",
+        "time": 799.2,
+        "kind": "chapter-mid",
+        "chapter": "future",
+        "path": "artifacts/build-diary-03/research/critic-final/future-mid.jpg",
+        "sha256": "e134711bbc8a909d6bd7f4e28acd958f844471b35132d1fb221ae5401ddd0623"
+      },
+      {
+        "id": "future-end",
+        "time": 824.1,
+        "kind": "chapter-end",
+        "chapter": "future",
+        "path": "artifacts/build-diary-03/research/critic-final/future-end.jpg",
+        "sha256": "95badcf55a3daf7b3c7fb2ee40587930ffabe6f7d21052e49f93d754e06d3b6d"
+      },
+      {
+        "id": "next-episode-start",
+        "time": 826.1,
+        "kind": "chapter-start",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg",
+        "sha256": "0c033937d4695334cae97adbb138fd99b8b6c9900d22aee5ee547603d27c709f"
+      },
+      {
+        "id": "next-episode-mid",
+        "time": 846.3666666666667,
+        "kind": "chapter-mid",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg",
+        "sha256": "1d8d2e6949352f401f2097a27d7abe5e938d3fdfd386b688d78fe4e4330bbde4"
+      },
+      {
+        "id": "next-episode-end",
+        "time": 866.6333333333333,
+        "kind": "chapter-end",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+        "sha256": "c3bb5c6b90452f7680ca37d7b21d793b1b80624311141a31d046686f9b684f84"
+      },
+      {
+        "id": "pose-t-research-think",
+        "time": 4.65,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-t-research-think.jpg",
+        "sha256": "227f0c43485e87f233e21d8b0a3a33f5687d71947de226fcf6f713add16966ac"
+      },
+      {
+        "id": "pose-m-happy",
+        "time": 4.65,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-m-happy.jpg",
+        "sha256": "227f0c43485e87f233e21d8b0a3a33f5687d71947de226fcf6f713add16966ac"
+      },
+      {
+        "id": "pose-t-research-happy",
+        "time": 12.600000000000001,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-t-research-happy.jpg",
+        "sha256": "89a044e2d9d28f9a1aa935e94933da4bcc6c4a4825af7892f413c4f254d0c7b7"
+      },
+      {
+        "id": "pose-z-happy",
+        "time": 12.600000000000001,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-z-happy.jpg",
+        "sha256": "89a044e2d9d28f9a1aa935e94933da4bcc6c4a4825af7892f413c4f254d0c7b7"
+      },
+      {
+        "id": "pose-t-research-determined",
+        "time": 109.88333333333333,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-t-research-determined.jpg",
+        "sha256": "0fdb6ca3fc64868caaccb36ae3bdd965bb6cbb0f74adc1f2d4e57210c99a495a"
+      },
+      {
+        "id": "pose-m-deadpan",
+        "time": 184.78333333333333,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-m-deadpan.jpg",
+        "sha256": "00a1be4f7a70dec27dfcdb6f5187cb6cf60506e9eb4095ee7abcec9484b4c396"
+      },
+      {
+        "id": "pose-t-research-care",
+        "time": 397.3833333333334,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-t-research-care.jpg",
+        "sha256": "a41a5b7a3d646febcfc59d92489fcd384a9a4db5352065d56e6715130bc63707"
+      },
+      {
+        "id": "pose-z-panic",
+        "time": 574.5166666666668,
+        "kind": "actor-pose",
+        "path": "artifacts/build-diary-03/research/critic-final/pose-z-panic.jpg",
+        "sha256": "0c4ac5301371d42e7bc2ff789d244912d1ba978e48b4315ad7914bab67a0aceb"
+      },
+      {
+        "id": "illustration-1",
+        "time": 801.7333333333333,
+        "kind": "illustration",
+        "illustration": "research-lab-register",
+        "path": "artifacts/build-diary-03/research/critic-final/illustration-1.jpg",
+        "sha256": "9be9a5a8abba38f4c6cf6fa13f477935bd3e8f61cbc1b66bbe71d2f8c9dcba6f"
+      },
+      {
+        "id": "failed-r8",
+        "time": 114.1,
+        "kind": "critical-fullres",
+        "chapter": "failed-draft",
+        "localTime": 32.6,
+        "path": "artifacts/build-diary-03/research/critic-final/failed-r8.jpg",
+        "sha256": "25064d4fe1374928b78ef84084033ac48739d092b630e0761a9be869da9f6c38"
+      },
+      {
+        "id": "charm-r2",
+        "time": 398.70000000000005,
+        "kind": "critical-fullres",
+        "chapter": "lab-victory-a",
+        "localTime": 15.5,
+        "path": "artifacts/build-diary-03/research/critic-final/charm-r2.jpg",
+        "sha256": "4f70efba658769480c22f633186735822986c680bd4a775ddbc9934fcb06fc5a"
+      },
+      {
+        "id": "charm-r6",
+        "time": 482.53333333333336,
+        "kind": "critical-fullres",
+        "chapter": "lab-victory-b",
+        "localTime": 33.8,
+        "path": "artifacts/build-diary-03/research/critic-final/charm-r6.jpg",
+        "sha256": "22f3112ce3df74c59ab58a3db46cfd199a6a06ece0d6137b37b61b78d7686d23"
+      },
+      {
+        "id": "nox-hp12",
+        "time": 493.83333333333337,
+        "kind": "critical-fullres",
+        "chapter": "lab-victory-b",
+        "localTime": 45.1,
+        "path": "artifacts/build-diary-03/research/critic-final/nox-hp12.jpg",
+        "sha256": "e39ea41a70f9d72ef087511d11a61505178167664a979bb2ed9e964d04c01aca"
+      },
+      {
+        "id": "ione-finishing12",
+        "time": 497.6333333333333,
+        "kind": "critical-fullres",
+        "chapter": "lab-victory-b",
+        "localTime": 48.9,
+        "path": "artifacts/build-diary-03/research/critic-final/ione-finishing12.jpg",
+        "sha256": "78b5e19d438b6d5675d409f32812306132a92aa3b7b2c85d25200fa425e91506"
+      },
+      {
+        "id": "gem-status",
+        "time": 652.9,
+        "kind": "critical-fullres",
+        "chapter": "counterexample",
+        "localTime": 59.900000000000006,
+        "path": "artifacts/build-diary-03/research/critic-final/gem-status.jpg",
+        "sha256": "ecbfc5f56334b0ccabc84811b22a83f1edb1cbf2bad38b71b84b94a70cb2de54"
+      },
+      {
+        "id": "legacy-gems",
+        "time": 754.2333333333333,
+        "kind": "critical-fullres",
+        "chapter": "legacy-audit",
+        "localTime": 40,
+        "path": "artifacts/build-diary-03/research/critic-final/legacy-gems.jpg",
+        "sha256": "878440af6ff22846f772cb9579f545dbccc077c5e55219b0485ab6d1d19dc8c0"
+      },
+      {
+        "id": "fio-at8",
+        "time": 833.1,
+        "kind": "critical-fullres",
+        "chapter": "next-episode",
+        "localTime": 8,
+        "path": "artifacts/build-diary-03/research/critic-final/fio-at8.jpg",
+        "sha256": "3babd4356310b5234cf456956fcb435d645f4c4f0c79d0b8273e05e13a535922"
+      },
+      {
+        "path": "artifacts/build-diary-03/delivery/Thumbnail-BuildResearchDiary-03.jpg",
+        "sha256": "b997ac62f889665452f0cfab557cf32e576072a4f397ce4a00994ed70580e25a",
+        "kind": "new-delivery-thumbnail"
+      },
+      {
+        "path": "artifacts/build-diary-03/assets/research-lab-register.png",
+        "sha256": "da5a71c3441c4bbb75fa1367340492463c049ea7cfbec31f32cb99dca3e7d8bd",
+        "kind": "new-research-illustration-source"
+      }
+    ],
+    "contactSheetPaths": [
+      "artifacts/build-diary-03/research/critic-final/final-start-contact.jpg",
+      "artifacts/build-diary-03/research/critic-final/final-mid-contact.jpg",
+      "artifacts/build-diary-03/research/critic-final/final-end-contact.jpg"
+    ],
+    "contactSheetSha256": {
+      "artifacts/build-diary-03/research/critic-final/final-start-contact.jpg": "2c75433997f26117938086959d490a50698656687bc5cc06c522e91b59b33ee7",
+      "artifacts/build-diary-03/research/critic-final/final-mid-contact.jpg": "79b44a926a87ef0f71bb028fc2e15a05c10ead30dc3fc06660d20ce497f76ac4",
+      "artifacts/build-diary-03/research/critic-final/final-end-contact.jpg": "6db93f0321502568dad51045c6bc3072daaaa79cb7d8b91ff0acd04fb0b40dc1"
+    },
+    "fullResolutionReviewed": [
+      "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg",
+      "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg",
+      "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+      "artifacts/build-diary-03/research/critic-final/charm-r2.jpg",
+      "artifacts/build-diary-03/research/critic-final/ione-finishing12.jpg",
+      "artifacts/build-diary-03/research/critic-final/failed-r8.jpg"
+    ],
+    "coverage": {
+      "timelineSections": 15,
+      "mainChapters": 14,
+      "openingSections": 1,
+      "anchorsPerSection": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "chapterFrames": 45,
+      "actualUsedActorPoses": 8,
+      "distinctNewIllustrations": 1,
+      "criticalFrames": 8,
+      "totalFinalMovieFrameSamples": 62,
+      "additionalNewArtSources": 2,
+      "actorPoses": [
+        "t-research-think",
+        "t-research-happy",
+        "t-research-determined",
+        "t-research-care",
+        "z-happy",
+        "z-panic",
+        "m-happy",
+        "m-deadpan"
+      ]
+    },
+    "nextEpisodePreview": {
+      "chapter": "next-episode",
+      "characterId": "fio",
+      "seriesId": "BD071",
+      "artPath": "art/scout-fio.webp",
+      "artSha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1",
+      "presentation": "contain",
+      "fullHeadVisible": true,
+      "nameAndIdVisible": true,
+      "unverifiedLabelVisible": true,
+      "noNewGemClaim": true,
+      "question": "余った回復は、どんな勝ち筋になる？",
+      "unverifiedLabel": "次回の新ビルドは未検証・認定前",
+      "samples": [
+        {
+          "timeSeconds": 826.1,
+          "path": "artifacts/build-diary-03/research/critic-final/next-episode-start.jpg",
+          "sha256": "0c033937d4695334cae97adbb138fd99b8b6c9900d22aee5ee547603d27c709f"
+        },
+        {
+          "timeSeconds": 846.3666666666667,
+          "path": "artifacts/build-diary-03/research/critic-final/next-episode-mid.jpg",
+          "sha256": "1d8d2e6949352f401f2097a27d7abe5e938d3fdfd386b688d78fe4e4330bbde4"
+        },
+        {
+          "timeSeconds": 866.6333333333333,
+          "path": "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+          "sha256": "c3bb5c6b90452f7680ca37d7b21d793b1b80624311141a31d046686f9b684f84"
+        }
+      ],
+      "notes": "Original full artwork retained, including full hair/ribbon and both boots. Small grey scope pill, one NEXT EPISODE heading, no large negative stamp, no solid new gemstone or claimed victory. Existing Fio idea status is not promoted."
+    },
+    "notes": [
+      "All sampled actor heads, ears, hats, hair and shoes retain safe margins. Full-scene research illustration hides duplicate side actors. Current native portraits and full-art cards retain complete heads.",
+      "All sampled dialogue captions are at most2 lines within footer. Clip headers remain single line. Event cues are separated from right-side footnotes; no repetition of episode2 cue collision was found.",
+      "Failure is clearlyR8 wipe with boss12HP; successfulR7 reserved attack ends at0HP. Public input beforeR7 is distinguished from observing12HP later. Displayed12 is actual remaining-HP damage, not normal gem power.",
+      "94safety versus98originalbuff shows two-condition confounding; matched ending-policy100 versus98 and0 versus81.28 friendly-fire are distinguished. Same-T3Tikka counterexample is separated from higher-budgetT6R1 burst.",
+      "Ione remains a hollow idea gem. Ruka/Neri retain amber prototype recognition, current-production exclusive certificates remain0. Fio is explicitly an unverified next research candidate.",
+      "New thumbnail has correct#03Ione/title, intact Ione small glasses and black/purple bob, Tsumugi glasses, Zundamon ears and Metan hair ornament. New illustration has complete heads and no text stamp over girls.",
+      "Roster/OP and all15 sections were visually sampled. Full72-card exposure is a separate Roster-Coverage gate; sampled contacts alone do not establish complete exposure.",
+      "This is sampled visual approval of the stated SHA only. Full decode, browser seeking, audio/visual synchronization and public-file readback remain separate gates."
+    ],
+    "minorFindings": [
+      {
+        "id": "lab-floating-damage-top-clipped",
+        "frame": "artifacts/build-diary-03/research/critic-final/ione-finishing12.jpg",
+        "description": "The top of the small floating12 in the left LAB event area is clipped by the inherited event overflow layout. Right diagram/cue/footnote and narration explicitly identify remaining12 and actual12damage, and bossHP0/event name are readable. Root also viewed and accepted as nonblocking; improve future LAB layout without rewriting this verified capture."
+      },
+      {
+        "id": "teaser-final-punctuation-wrap",
+        "frame": "artifacts/build-diary-03/research/critic-final/next-episode-end.jpg",
+        "description": "Final exclamation mark is alone on the second caption line; both lines remain in the footer and no information is lost. Root accepted as nonblocking."
+      }
+    ],
+    "criticalUnresolvedFindings": [],
+    "preview": {
+      "path": "artifacts/build-diary-03/delivery/Preview.jpg",
+      "sha256": "254badfa234c41476f077f0babac168be12f5572d637f6e0350ab1a8ce4daf1e",
+      "sourceFinalSha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463"
+    }
+  }
+}

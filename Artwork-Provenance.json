@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 2,
+  "episode": "ビルド研究日誌 #03 イオネ",
+  "status": "active-approved-originals",
+  "tool": "image_gen.imagegen",
+  "scope": "Unimplemented research concept 宛先の控え. Envelope/address correction is an illustration; no released mechanics, numerical results or awarded gems are asserted.",
+  "character": {
+    "id": "ione",
+    "seriesId": "BD069",
+    "theme": "狙いを、届ける。",
+    "thumbnailCopy": "その一撃を、届けたい。"
+  },
+  "active": [
+    {
+      "kind": "thumbnail",
+      "original": "/workspace/generated_images/exec-3f1148da-6956-4227-8f14-f85f44146009.png",
+      "output": "artifacts/build-diary-03/assets/thumbnail-original.png",
+      "prompt": "Create a beautiful Episode03 Japanese YouTube thumbnail for the supplied approved ビルド研究日誌 series. Match the approved cute ornamental pastel laboratory illustration style and host identities, but make a distinct new scene about mail addresses and delivering an intended action. Main host is the approved kind scientist gyaru Tsumugi, center-right, blonde-to-pink hair, blue eyes, white laboratory coat over yellow cardigan. IMPORTANT she wears clearly readable LARGE FULL ROUND glasses with warm DARK BRONZE rims and visible bridge, clear lenses and no glare obscuring blue eyes. Featured game heroine IONE stands at left holding an open dark leather register and a golden quill: faithfully preserve supplied original Ione BLACK BOB haircut with lavender-purple side streak, violet eyes, SMALL thin GOLD round spectacles (distinct from host's larger dark glasses), hanging gold hair ornament/chains, white and deep-purple scholarly coat, long plum skirt, brass accents. Do not draw previous heroine Neri or her lantern. Zundamon and pink-haired Shikoku Metan assist kindly with envelopes and cards at the desk, small but identifiable chibi appearance from approved thumbnail. A simple research board shows one red dashed misdelivery arrow gently corrected to a mint envelope target, with two abstract neutral destination silhouettes; no actual game UI or result claims. Tsumugi kindly explains with a notebook and pointer, Ione thoughtfully checks an address, helpers enthusiastic. This symbolizes correcting the target of an attack, not changing its power or gifting an ultimate. No awarded gems, certification badges, victory stamps or promises of exclusive wins. EXACT four Japanese text elements only: top large title 『ビルド研究日誌』, subtitle 『みんなが輝くRPGを！』, episode plaque 『#03 イオネ』, bottom large banner 『その一撃を、届けたい。』. All exact Japanese lettering clear and readable. Palette cream, pink, mint, amber; lovely books, stationery, flowers, cozy room. CRITICAL wide landscape16:9 safe staging: group takes only central80% width; every one of all four heads, hair curls, ahoge and Metan's FULL heart head ornaments has at least100 pixels room from any outer edge at 1672px width. Metan must sit inward, never against right border. Full Ione bob and dangling ornament visible. Both Tsumugi and Ione have their respective clearly visible round eyeglasses and bridges. Do not enlarge faces or crop heads to fill canvas. Foreground may naturally occlude lower bodies at the desk. Generous room above all heads, bottom banner below faces.",
+      "references": [
+        "artifacts/build-diary-02/assets/thumbnail-original.png",
+        "public/art/scout-ione.webp"
+      ],
+      "accepted": true,
+      "originalSha256": "971c793e603f7b904cf98767f52092f319fa28708575f4124dda46045d00f917",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "971c793e603f7b904cf98767f52092f319fa28708575f4124dda46045d00f917",
+      "referenceHashes": {
+        "artifacts/build-diary-02/assets/thumbnail-original.png": "36c5eecae8002aabb1625ba6724c951904aabadafda4b2a219b07ba070100ed3",
+        "public/art/scout-ione.webp": "a9adca89409ddd8be4a0c55e3e08c56755e63080adbd548fd8beeb4d07627039"
+      }
+    },
+    {
+      "kind": "research-lab",
+      "original": "/workspace/generated_images/exec-bf7491ee-b696-4731-b7bd-15b565e9c601.png",
+      "output": "artifacts/build-diary-03/assets/research-lab-register.png",
+      "prompt": "Create a new Episode03 illustration in the supplied approved cute pastel research laboratory style, landscape16:9, wide room view. A warm kind research meeting about correcting a misaddressed delivery: four characters sit around a desk with a big open register, envelopes, four destination cards and gentle red dashed/mint arrows. Featured game heroine IONE sits at left examining the register with a golden quill; faithfully reproduce supplied Ione identity: BLACK BOB with one lavender-purple side streak, violet eyes, SMALL thin GOLD round spectacles and visible bridge, gold hair ornament with dangling chains, white and deep plum scholarly coat with brass accents. Do not use Neri, do not use gray-haired lantern guard. Main host Tsumugi is CENTER, the approved kind science gyaru in yellow cardigan and white lab coat, blonde-pink hair and blue eyes. IMPORTANT her round glasses must have clearly visible warm DARK BRONZE FULL round rims around BOTH eyes and a visible bridge, transparent lenses, distinct from Ione's tiny gold spectacles. Zundamon and Shikoku Metan are the exact approved cute chibi friends; they help to check an envelope and a card, smiling thoughtfully. Tsumugi kindly holds one envelope over an intended destination card, Ione compares the written record, helpers reconsider a mistaken arrow instead of fighting. Research metaphor: an intended target recorded beforehand can be restored once after a mistaken destination; this is NOT changing action content, damage power or gifting a free ultimate. Convey only address checking and gentle correction with icons, no real game UI and NO written text, numbers, awarded gems, certification or victory claims. Pink cream mint amber, small books, flowers, cozy sunlit laboratory, cute stationery. Distinct new scene, no clock schedule or resting guard from Episode02. CRITICAL head safety: all FOUR characters have entire heads, hair curls, ahoge and all Metan heart head ornaments clearly inside CENTRAL 80 percent of the frame, at least100 pixels away from image edge at width1672. In particular put Metan inward with background visible beyond her complete right curls; never against right edge. Keep everyone slightly smaller with room overhead and at both sides. Desk naturally occludes lower bodies, but hands/books/envelopes legible. No cropping or enlargement. Ione holds her open book; Tsumugi remains gentle protagonist teacher. The scene should feel like all girls' intentions matter and they carefully return an action to its intended recipient.",
+      "references": [
+        "artifacts/build-diary-02/assets/research-lab-handoff.png",
+        "public/art/scout-ione.webp",
+        "artifacts/build-diary-02/assets/thumbnail-original.png"
+      ],
+      "accepted": true,
+      "originalSha256": "da5a71c3441c4bbb75fa1367340492463c049ea7cfbec31f32cb99dca3e7d8bd",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "da5a71c3441c4bbb75fa1367340492463c049ea7cfbec31f32cb99dca3e7d8bd",
+      "referenceHashes": {
+        "artifacts/build-diary-02/assets/research-lab-handoff.png": "bad65519c8f23449a8cbf5f687b6517baf902454ba3ac22b1344bdc358f72f34",
+        "public/art/scout-ione.webp": "a9adca89409ddd8be4a0c55e3e08c56755e63080adbd548fd8beeb4d07627039",
+        "artifacts/build-diary-02/assets/thumbnail-original.png": "36c5eecae8002aabb1625ba6724c951904aabadafda4b2a219b07ba070100ed3"
+      }
+    }
+  ],
+  "superseded": [],
+  "review": {
+    "reviewer": "/root/build_diary_art",
+    "method": "Direct visual inspection of both imagegen outputs at1672x941. Neither first draft required safety revision.",
+    "checks": {
+      "allFourHeadSilhouettesContained": true,
+      "allHairOrnamentsAndAhogeContained": true,
+      "metanRightHairSafetyMarginAbove80px": true,
+      "tsumugiDarkBronzeFullRoundRimsAndBridgeClear": true,
+      "ioneSmallGoldGlassesVisibleDistinctFromHost": true,
+      "ioneBlackBobPurpleSideStreakAndBookIdentityPreserved": true,
+      "japaneseFourThumbnailTextElementsCorrect": true,
+      "noGemCertificationBadges": true,
+      "noOldNeriLanternOrRestScheduleAsMainConcept": true
+    },
+    "notes": "Thumbnail metaphoric destination board has neutral silhouettes; lab illustration has postcard-style destinations. Lower bodies naturally occluded by desk, all heads and ornaments whole. Tiny background decor is illustrative and carries no game-rule claim. Pink cream mint amber style and gentle main-host personality maintained."
+  },
+  "derivedThumbnail": {
+    "path": "artifacts/build-diary-03/delivery/Thumbnail-BuildResearchDiary-03.jpg",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "processing": "Pillow ImageOps.contain on cream canvas, no crop, source originals copied byte-for-byte unchanged.",
+    "sha256": "b997ac62f889665452f0cfab557cf32e576072a4f397ce4a00994ed70580e25a"
+  },
+  "preview": {
+    "characterId": "fio",
+    "seriesId": "BD071",
+    "source": "public/art/scout-fio.webp",
+    "generation": "none; original inspected for future full-head contain use",
+    "sha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1"
+  },
+  "unchanged": [
+    "src",
+    "artifacts/build-diary-01",
+    "artifacts/build-diary-02"
+  ]
+}

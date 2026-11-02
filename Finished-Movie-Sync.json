@@ -1,0 +1,332 @@
+{
+  "passed": true,
+  "finishedSha256": "032c0f693ea74411d155e0d7fc504a503b219f5b8b0a0341acfdb3ca67b04463",
+  "timelineSha256": "2315df81d10b317706b73cd801937ba4073700b25a6becd69acc51f80e8797fb",
+  "narrationSha256": "f14584fd205b58741aa57a5e7b5a689f45b1cdfc643c780c84d4ea2417b7d16a",
+  "toleranceMs": 80,
+  "videoMatch": "Nine consecutive real frames (0.3 seconds) straddling the strongest actual visible transition in each third, independently selected from the audio peak; audio candidate is never moved to manufacture a match.",
+  "openingAnchors": [
+    {
+      "time": 57.46666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9998777163582945,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 67.93333333333334,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9995944170820059,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 79.4,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9983943439922053,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    }
+  ],
+  "gameAnchors": [
+    {
+      "chapter": "failed-draft",
+      "part": 0,
+      "time": 88.23333333333333,
+      "audioReferenceTime": 83.4,
+      "videoReferenceTime": 88.23333333333333,
+      "sourceTransitionTime": 6.866666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.996835748435813,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.3344996150452384,
+      "changingFrameMotion": 2.036861861861862,
+      "passed": true
+    },
+    {
+      "chapter": "failed-draft",
+      "part": 1,
+      "time": 97.76666666666667,
+      "audioReferenceTime": 94.47777777777779,
+      "videoReferenceTime": 97.76666666666667,
+      "sourceTransitionTime": 16.4,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.995306617009249,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.0492620983104988,
+      "changingFrameMotion": 2.2787537537537537,
+      "passed": true
+    },
+    {
+      "chapter": "failed-draft",
+      "part": 2,
+      "time": 111.73333333333333,
+      "audioReferenceTime": 110.5555555555555,
+      "videoReferenceTime": 111.73333333333333,
+      "sourceTransitionTime": 30.366666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9913470906666468,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.018534443409948,
+      "changingFrameMotion": 5.467117117117117,
+      "passed": true
+    },
+    {
+      "chapter": "ione-now",
+      "part": 0,
+      "time": 147.7,
+      "audioReferenceTime": 142.58333333333334,
+      "videoReferenceTime": 147.7,
+      "sourceTransitionTime": 8.8,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9981344030459713,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.5452171463463302,
+      "changingFrameMotion": 17.18033033033033,
+      "passed": true
+    },
+    {
+      "chapter": "ione-now",
+      "part": 1,
+      "time": 161.53333333333333,
+      "audioReferenceTime": 160.9611111111111,
+      "videoReferenceTime": 161.53333333333333,
+      "sourceTransitionTime": 22.633333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9900787552239813,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.180302820035263,
+      "changingFrameMotion": 15.929354354354354,
+      "passed": true
+    },
+    {
+      "chapter": "ione-now",
+      "part": 2,
+      "time": 180.43333333333334,
+      "audioReferenceTime": 178.4888888888888,
+      "videoReferenceTime": 180.43333333333334,
+      "sourceTransitionTime": 41.53333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9890531033444527,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.00793387967129,
+      "changingFrameMotion": 16.269369369369368,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 0,
+      "time": 391.9666666666667,
+      "audioReferenceTime": 383.6,
+      "videoReferenceTime": 391.9666666666667,
+      "sourceTransitionTime": 8.9,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9951451142382434,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.8491295666863927,
+      "changingFrameMotion": 1.3048048048048049,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 1,
+      "time": 399.5666666666667,
+      "audioReferenceTime": 396.0277777777778,
+      "videoReferenceTime": 399.5666666666667,
+      "sourceTransitionTime": 16.5,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9888461784996098,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.0593971504220325,
+      "changingFrameMotion": 1.8574324324324325,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 2,
+      "time": 410.9333333333334,
+      "audioReferenceTime": 407.90555555555557,
+      "videoReferenceTime": 410.9333333333334,
+      "sourceTransitionTime": 27.866666666666667,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9940703741510433,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.043766152504692,
+      "changingFrameMotion": 2.24496996996997,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 0,
+      "time": 452.6333333333333,
+      "audioReferenceTime": 464.8833333333333,
+      "videoReferenceTime": 452.6333333333333,
+      "sourceTransitionTime": 4.033333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9929028900801261,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.234986582325975,
+      "changingFrameMotion": 2.395870870870871,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 1,
+      "time": 471.53333333333336,
+      "audioReferenceTime": 478.4222222222221,
+      "videoReferenceTime": 471.53333333333336,
+      "sourceTransitionTime": 22.933333333333334,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9927466698165963,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.0633503878687938,
+      "changingFrameMotion": 2.226801801801802,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 2,
+      "time": 493.23333333333335,
+      "audioReferenceTime": 489.9111111111111,
+      "videoReferenceTime": 493.23333333333335,
+      "sourceTransitionTime": 44.63333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9949003689068046,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.0248619461543795,
+      "changingFrameMotion": 2.292342342342342,
+      "passed": true
+    }
+  ],
+  "voiceAnchors": [
+    {
+      "speaker": "z",
+      "time": 9.297333,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.996205291295637,
+      "correlation": 0.9998175687643291,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 469.7997712881185,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.8576132830768862,
+      "correlation": 0.9994233295567476,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 837.682667,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9953443503657561,
+      "correlation": 0.99983274668219,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 22.857332999999997,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9934267277019352,
+      "correlation": 0.9997815999909034,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 449.1333333333333,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9080933497568411,
+      "correlation": 0.9987399829552376,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 851.6906670000001,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9979716971521893,
+      "correlation": 0.9998097774087248,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 0.4,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.998719568685088,
+      "correlation": 0.9998998021303154,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 430.92400000000004,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9975917189819152,
+      "correlation": 0.9999559261477514,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 861.548,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9964824346656042,
+      "correlation": 0.9998836053569532,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    }
+  ],
+  "independentMixReconstructionRMSE": 2.1613586795865558e-05,
+  "backgroundMethod": "Independent original-source reconstruction; never derive background by subtracting the target from the recorded full mix.",
+  "coveragePassed": true,
+  "requiredCoverage": {
+    "gameCutCount": 4,
+    "gameAnchorsPerCut": 3,
+    "openingAnchors": 3,
+    "voiceSpeakers": [
+      "t",
+      "z",
+      "m"
+    ],
+    "voiceAnchorsPerSpeaker": 3,
+    "musicAnchors": 3,
+    "rosterForms": 72,
+    "nextEpisodePreview": true
+  },
+  "renderPlanSha256": "9ee17aaf0bde6606af0a2735ea34c437885c34dc118386e8700a5604eb46a2e4",
+  "fjordMusicAnchors": [
+    {
+      "time": 33.0,
+      "audioLagMs": 0.0,
+      "correlation": 0.9898331871370238,
+      "referenceRms": 0.00732331071048975,
+      "passed": true
+    },
+    {
+      "time": 433.81666666666666,
+      "audioLagMs": 0.0,
+      "correlation": 0.9893586046682873,
+      "referenceRms": 0.0046552252024412155,
+      "passed": true
+    },
+    {
+      "time": 859.6333333333333,
+      "audioLagMs": 0.0,
+      "correlation": 0.9520871022143519,
+      "referenceRms": 0.0057143052108585835,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "sourceOpeningSha256": "6f402e643fccdfc42bc91c8e0a7e89bd6e7af3e52affa5e6efceff5938c8226d",
+  "sourceMixSha256": "e17f982fe129bbb5f75ba749fe3ecaad7e30cc3f93572c581f806dc820417f93",
+  "processingSha256": "d60722719e90c1535449d35ab3a920dc5ed60c97f86ff318d71d4173a1f85cbe"
+}
