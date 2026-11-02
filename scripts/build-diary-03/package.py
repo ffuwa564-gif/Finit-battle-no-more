@@ -61,11 +61,15 @@ def validate_inputs():
  for name,item in reuse['inputs'].items():
   assert item['reusedFrom'].startswith(('artifacts/build-diary-01/','artifacts/build-diary-02/')) and sha(safe_file(path(name)))==item['sha256'],'Reused asset differs from pinned source'
   previous=path(item['reusedFrom'])
-  if previous.exists():assert sha(safe_file(previous))==item['sha256'],'Historical reuse source drift'
- art=read(safe_file(O/'assets/artwork-provenance.json'));assert art['character']['characterId']=='ione'and art['character']['seriesId']=='BD069'
- assert art['characterConfirmedByParent'] and all(art['review']['checks'].values())
- accepted=[g for g in art['generations']if g.get('accepted')and not g.get('supersededReason')]
- assert len(accepted)>=1 and 'thumbnail-original.png'in{Path(g['output']).name for g in accepted}
+  if previous.exists():
+   # Historical series assets may live in their own /tmp-backed workspace.
+   # Permit only the exact assets directories named by the frozen reuse manifest.
+   assert previous.parent in [ROOT/'artifacts/build-diary-01/assets',ROOT/'artifacts/build-diary-02/assets'] and previous.is_file(),'Invalid historical asset path'
+   assert sha(previous)==item['sha256'],'Historical reuse source drift'
+ art=read(safe_file(O/'assets/artwork-provenance.json'));assert art['schemaVersion']==2 and art['character']['id']=='ione'and art['character']['seriesId']=='BD069'
+ assert art['status']=='active-approved-originals' and all(art['review']['checks'].values())
+ accepted=[g for g in art['active']if g.get('accepted')and not g.get('supersededReason')]
+ assert len(accepted)==2 and {Path(g['output']).name for g in accepted}=={'thumbnail-original.png','research-lab-register.png'} and art['superseded']==[]
  for g in accepted:assert sha(safe_file(path(g['output'])))==g['outputSha256']==g['originalSha256'],'New original art changed'
  for p in RAW_ASSETS:safe_file(O/'assets'/p)
  n=read(safe_file(O/'timeline-narration.json'));edits=read(safe_file(O/'edit-timeline.json'));safe_file(O/'mix-manifest.json');safe_file(O/'head-safety.json')

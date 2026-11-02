@@ -32,7 +32,8 @@ def main(fetch=False):
  reuse=json.loads((ROOT/'artifacts/build-diary-03/asset-reuse.json').read_text())
  for name,item in reuse['inputs'].items():assert sha(target(name))==item['sha256'],'Reused asset differs: '+name
  provenance=json.loads((ROOT/'artifacts/build-diary-03/assets/artwork-provenance.json').read_text())
- for item in provenance['generations']:
+ assert provenance['schemaVersion']==2 and provenance['character']['id']=='ione'
+ for item in provenance['active']:
   if item.get('accepted')and not item.get('supersededReason'):assert sha(target(item['output']))==item['outputSha256']==item['originalSha256'],'New illustration differs'
  recordings=json.loads((D/'Recording-Sources.json').read_text())
  for row in recordings['sources']:
