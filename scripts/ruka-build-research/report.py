@@ -14,7 +14,7 @@ for name in [*counts,'example-trace.json','prototype-hashes.json','prototype-v1-
  data=(A/name).read_bytes();(DATA/(name+'.gz')).write_bytes(gzip.compress(data,mtime=0))
 for name in ['necessity-certificate.json','edge-checks.json']:(DATA/name).write_bytes((A/name).read_bytes())
 with(DATA/'final-summary.csv').open('w',newline='')as f:
- w=csv.writer(f);w.writerow(['condition','label','wins','trials','mean_rounds_including_failures','minimum_rounds','maximum_rounds','mean_blocked_restorations','mean_restorations'])
+ w=csv.writer(f,lineterminator="\n");w.writerow(['condition','label','wins','trials','mean_rounds_including_failures','minimum_rounds','maximum_rounds','mean_blocked_restorations','mean_restorations'])
  for id,label in labels:
   r=rows[id];w.writerow([id,label,r['wins'],r['n'],r['meanRounds'],r['minRounds'],r['maxRounds'],r['meanBlocked'],r['meanResets']])
 manifest={'sourceGameCommit':'1f4e970117c95a11ef38c8f1e12fe232e5a7b964','researchParentCommit':'8ad00f6b97245b8829d3ada2ab03fc30dd6aa3e4','liveSrcDiff':subprocess.check_output(['git','diff','--name-only','1f4e970117c95a11ef38c8f1e12fe232e5a7b964','--','src'],cwd=ROOT,text=True).strip(),'totalSimulationsIncludingRepeatedControls':total,'counts':counts,'ruleScope':'Prototype only; no deployed gameplay or human play-test claim. Necessary archetype, not one fixed four-person party.','files':{str(p.relative_to(D)):hashlib.sha256(p.read_bytes()).hexdigest()for p in sorted(DATA.iterdir())if p.is_file()}};assert not manifest['liveSrcDiff'];(D/'Research-Manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2));print('RESEARCH REPORT READY',total,'simulations',len(manifest['files']),'data files')
