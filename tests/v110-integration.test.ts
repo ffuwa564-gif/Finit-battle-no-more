@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { content } from '../src/content';
 import { createInitialSave, applyCommand } from '../src/application/game';
 import { assertSaveCompatibility, assertValidSave } from '../src/platform/save';
@@ -35,7 +35,8 @@ function clearCurrentExploration(input: GameSave): GameSave {
 
 describe('1.10 integrated local release contracts', () => {
   it('identifies the new game version without changing the save schema silently', () => {
-    expect(content.appVersion).toMatch(/^1\.10(?:\.0)?$/);
+    expect(content.appVersion).toBe(JSON.parse(readFileSync(new URL('../package.json',import.meta.url),'utf8')).version);
+    expect(content.appVersion).toMatch(/^1\.\d+\.\d+$/);
     const save = createInitialSave(content, 0x12345678);
     expect(save.appVersion).toBe(content.appVersion);
     expect(save.schemaVersion).toBe(content.schemaVersion);

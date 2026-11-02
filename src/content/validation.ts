@@ -1,3 +1,4 @@
+import { FACE_FRAME_ASPECTS, portraitHeadFits } from './portrait-framing';
 import { scoutSkillContract } from '../domain/scout-skills';
 import { characterRarities } from '../domain/xr-gacha';
 import { IVORY_TOWER_FLOORS, ivoryTowerId } from '../domain/ivory-tower';
@@ -38,6 +39,8 @@ export function validateContent(content: Content): string[] {
     reject(asset.portraitZoom !== undefined && (!Number.isFinite(asset.portraitZoom) || asset.portraitZoom < 1 || asset.portraitZoom > 3), `assets/${asset.id}: portrait zoom must be 1..3`);
     reject(asset.portraitOrigin !== undefined && !/^\d+(?:\.\d+)?% \d+(?:\.\d+)?%$/.test(asset.portraitOrigin), `assets/${asset.id}: portrait origin must use percentage coordinates`);
     reject(!plain(asset.anchor) || !plain(asset.rights), `assets/${asset.id}: anchor and rights required`);
+    reject(asset.kind === 'portrait' && asset.path.startsWith('art/scout-') && !asset.portraitHead, `assets/${asset.id}: reviewed portrait head bounds required`);
+    if (asset.portraitHead) reject(asset.kind !== 'portrait' || FACE_FRAME_ASPECTS.some(aspect=>!portraitHeadFits(asset,aspect)), `assets/${asset.id}: portrait head clipped by face framing`);
     if (asset.kind === 'video') {
       const poster = content.assets.find(item => item.id === asset.posterId);
       reject(!poster || poster.kind === 'video' || !poster.path.endsWith('.png'), `assets/${asset.id}: lossless video poster required`);
