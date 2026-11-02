@@ -67,7 +67,11 @@ def validate_inputs():
    assert previous.parent in [ROOT/'artifacts/build-diary-01/assets',ROOT/'artifacts/build-diary-02/assets',ROOT/'artifacts/build-diary-03/assets'] and previous.is_file(),'Invalid historical asset path'
    assert sha(previous)==item['sha256'],'Historical reuse source drift'
  art=read(safe_file(O/'assets/artwork-provenance.json'));assert art['schemaVersion']==2 and art['character']['id']=='fio'and art['character']['seriesId']=='BD071'
- assert art['status']=='active-approved-originals' and all(art['review']['checks'].values())
+ assert art['status']in['active-approved-originals','active-approved-originals-awaiting-root-review'] and all(art['review']['checks'].values())
+ approval=read(safe_file(O/'assets/root-artwork-approval.json'))
+ assert approval['passed'] and approval['reviewer']=='/root' and all(approval['checks'].values())
+ assert approval['generationProvenanceSha256']==sha(O/'assets/artwork-provenance.json')
+ assert approval['outputs']=={g['output']:g['outputSha256']for g in art['active']},'Root approval must bind both unchanged active originals'
  accepted=[g for g in art['active']if g.get('accepted')and not g.get('supersededReason')]
  assert len(art['active'])==2 and len(accepted)==2 and {Path(g['output']).name for g in accepted}=={'thumbnail-original.png','research-lab-overflow.png'}
  for g in accepted:assert sha(safe_file(path(g['output'])))==g['outputSha256']==g['originalSha256'],'New original art changed'
@@ -197,7 +201,7 @@ def write_editorial(n,registry):
  (D/'Script.md').write_text('# ビルド研究日誌 #04 — みんなが輝くRPGを！\n\n'+'\n\n'.join('## '+c['title']+'\n\n'+'\n\n'.join(NAMES[l['speaker']]+'：'+l['text']for l in c['lines'])for c in n['chapters']))
  (D/'Subtitles-ja.srt').write_text('\n\n'.join(f"{i+1}\n{srt(l['start'])} --> {srt(l['end'])}\n{l['text']}"for i,l in enumerate(lines))+'\n');(D/'Chapters.txt').write_text(chapters)
  for src,dst in [('registry.json','Character-Registry.json'),('gem-audit.json','Gem-Audit.json'),('timeline-narration.json','Narration-Timeline.json'),('edit-timeline.json','Edit-Timeline.json'),('mix-manifest.json','Mix-Manifest.json'),('head-safety.json','Head-Safety.json'),('music-source.json','Music-Source.json'),('metadataSourceGame.json','Metadata-SourceGame.json'),('render-input-freeze.json','Render-Input-Freeze.json')]:shutil.copy2(O/src,D/dst)
- shutil.copy2(O/'assets/artwork-provenance.json',D/'Artwork-Provenance.json');shutil.copy2(O/'asset-reuse.json',D/'Asset-Reuse.json');shutil.copy2(O/'research/source-game.json',D/'Game-Source.json');shutil.copy2(O/'research/episode-evidence.json',D/'Evidence-Review.json')
+ shutil.copy2(O/'assets/root-artwork-approval.json',D/'Artwork-Root-Approval.json');shutil.copy2(O/'assets/artwork-provenance.json',D/'Artwork-Provenance.json');shutil.copy2(O/'asset-reuse.json',D/'Asset-Reuse.json');shutil.copy2(O/'research/source-game.json',D/'Game-Source.json');shutil.copy2(O/'research/episode-evidence.json',D/'Evidence-Review.json')
  for name in ['Credits','Methods','Reproduce']:(D/(name+'.md')).write_text((SCRIPT/'delivery-templates'/(name+'.txt')).read_text())
  summary=registry['summary'];description=(SCRIPT/'delivery-templates/YouTube-Description.txt').read_text();description=description.replace('@@CHAPTERS@@',chapters).replace('@@GIRL_FORMS@@',str(summary['girlRegistrations'])).replace('@@CANONICAL_GIRLS@@',str(summary['canonicalGirls']))
  assert '@@'not in description;(D/'YouTube-Description.txt').write_text(description)
