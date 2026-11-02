@@ -1,0 +1,137 @@
+{
+  "format": "Original calibrated PCM MOV and generated sources, exact bytes",
+  "sources": [
+    {
+      "path": "artifacts/build-diary-01/capture/lab-counter.mov",
+      "sha256": "10a51c9a644fcd0b6704d223a795b688ddd5ce4fa4866a8f535157954d63bfb5",
+      "bytes": 13350222,
+      "preservation": "Exact original bytes: no remux, re-encode or timebase change",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "r_frame_rate": "30/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "1969",
+          "duration": "65.633333"
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "pcm_s16le",
+          "r_frame_rate": "0/0",
+          "sample_rate": "48000",
+          "channels": 2,
+          "nb_frames": "3150400",
+          "duration": "65.633333"
+        }
+      ],
+      "kind": "LAB-log-playback",
+      "captureMetadata": "artifacts/build-diary-01/capture/lab-counter.json"
+    },
+    {
+      "path": "artifacts/build-diary-01/capture/lab-victory.mov",
+      "sha256": "6d5835e083cfeda0cccfdbb36697632ee7495535522287b5ca02de92a508aee1",
+      "bytes": 32071164,
+      "preservation": "Exact original bytes: no remux, re-encode or timebase change",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "r_frame_rate": "30/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "4711",
+          "duration": "157.033333"
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "pcm_s16le",
+          "r_frame_rate": "0/0",
+          "sample_rate": "48000",
+          "channels": 2,
+          "nb_frames": "7537600",
+          "duration": "157.033333"
+        }
+      ],
+      "kind": "LAB-log-playback",
+      "captureMetadata": "artifacts/build-diary-01/capture/lab-victory.json"
+    },
+    {
+      "path": "artifacts/build-diary-01/capture/live-ruka.mov",
+      "sha256": "8861dcd49d7625914d7778e0b15dfa95862c04eda69da36037adf73a78d35079",
+      "bytes": 18024629,
+      "preservation": "Exact original bytes: no remux, re-encode or timebase change",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "r_frame_rate": "30/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "2077",
+          "duration": "69.233333"
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "pcm_s16le",
+          "r_frame_rate": "0/0",
+          "sample_rate": "48000",
+          "channels": 2,
+          "nb_frames": "3323200",
+          "duration": "69.233333"
+        }
+      ],
+      "kind": "current-app",
+      "captureMetadata": "artifacts/build-diary-01/capture/live-ruka.json"
+    },
+    {
+      "path": "artifacts/build-diary-01/render/opening/opening.mov",
+      "sha256": "0d9cbab1043b7a53420267c0ac9a6c1365217ad393241c4aa4da1cb27abc3433",
+      "bytes": 7310422,
+      "preservation": "Exact original bytes: no remux, re-encode or timebase change",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "r_frame_rate": "30/1",
+          "sample_rate": null,
+          "channels": null,
+          "nb_frames": "768",
+          "duration": "25.600000"
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "pcm_s16le",
+          "r_frame_rate": "0/0",
+          "sample_rate": "48000",
+          "channels": 2,
+          "nb_frames": "1228800",
+          "duration": "25.600000"
+        }
+      ],
+      "kind": "series-opening"
+    },
+    {
+      "path": "artifacts/build-diary-01/capture/live-ruka.mov.tmporiginal",
+      "sha256": "63d613798665d2c46dc6f7614dca8cd25f268cbdb7e60019dd97e8638ff09d6b",
+      "bytes": 18485332,
+      "kind": "pre-normalization-original",
+      "preservation": "Original calibrated capture before CFR normalization; retained for complete processing provenance"
+    },
+    {
+      "path": "artifacts/build-diary-01/capture/lab-victory.mov.tmporiginal",
+      "sha256": "8f6ff21fed045d98bc993b03fffd16ebb7694410040e8994149229baf91c1e17",
+      "bytes": 32091836,
+      "kind": "pre-normalization-original",
+      "preservation": "Original calibrated capture before CFR normalization; retained for complete processing provenance"
+    },
+    {
+      "path": "artifacts/build-diary-01/capture/lab-counter.mov.tmporiginal",
+      "sha256": "15e98b11a8ba156341527feabec222f0e79d7a889bb074b2dbf95f81c58c150c",
+      "bytes": 13352208,
+      "kind": "pre-normalization-original",
+      "preservation": "Original calibrated capture before CFR normalization; retained for complete processing provenance"
+    }
+  ]
+}

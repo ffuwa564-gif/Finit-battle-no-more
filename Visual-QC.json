@@ -1,0 +1,2518 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "type": "safe_portrait_contract",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-panic"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-deadpan"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-think"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-determined"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-care"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 10.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 15.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 21.666666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 29.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 36.833333333333336
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 43.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 50.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 58.56666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 64.76666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 71.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 78.53333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 86.76666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 94.13333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 101.56666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 109.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 114.96666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 122.43333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 126.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 133.3
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "series-op"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 7.766666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 12.166666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 19.366666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 26.7
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 36.7
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "question",
+      "start": 40.2
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "question"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 7.166666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 12.166666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 19.633333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 25.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 32.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 39.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 47.63333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "ruka-now",
+      "start": 56.5
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "ruka-now"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 10.633333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 17.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 25.166666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 35.06666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 41.733333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "candidates",
+      "start": 49.166666666666664
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "candidates"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 5.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 13.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 20.133333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 27.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 35.7
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 42.96666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "revoke",
+      "start": 48.1
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "revoke"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 8.533333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 17.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 23.133333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 30.466666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 39.766666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "resource",
+      "start": 46.833333333333336
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "resource"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 9.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 17.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 24.533333333333335
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 33.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 41.666666666666664
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 48.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 56.36666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "new-skill",
+      "start": 65.93333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "new-skill"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 9.533333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 18.333333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 26.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 35.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 42.03333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 51.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 59.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "trial",
+      "start": 65.13333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "trial"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 9.033333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 19.966666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 27.7
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 35.1
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 43.3
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 5.033333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 12.166666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 21.333333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 27.333333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 35.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 43.53333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "first-draft",
+      "start": 51.733333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "first-draft"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 8.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 18.7
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 25.833333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 33.46666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 43.03333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 51.46666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 59.9
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 8.566666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 17.666666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 28.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 38.36666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 49.46666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 55.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 59.833333333333336
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 65.83333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 74.7
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 7.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 16.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 25.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 34.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 41.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 50.93333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 58.333333333333336
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 64.26666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 72.9
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 9.533333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 21.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 31.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 43.43333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "no-ruka",
+      "start": 51.1
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "no-ruka"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 9.333333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 18.833333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 27.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 36.96666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 45.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 55.666666666666664
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "alternatives",
+      "start": 63.63333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "alternatives"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 10.966666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 20.966666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 27.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 38.266666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 47.233333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "growth",
+      "start": 56.733333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "growth"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 10.1
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 15.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 25.366666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 33.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 44.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 50.833333333333336
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 61.86666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "audit",
+      "start": 71.13333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "audit"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 8.4
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 17.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 28.933333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 38.9
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 44.6
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 53.56666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 62.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 68.2
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 73.56666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 83.4
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "roster_then_opening",
+      "passed": true
+    },
+    {
+      "type": "current_registry_finalized",
+      "passed": true
+    },
+    {
+      "type": "no_unproven_live_certificates",
+      "passed": true
+    },
+    {
+      "type": "all_girl_forms_retained",
+      "passed": true
+    },
+    {
+      "type": "manual_review_exact_finished_file",
+      "passed": true
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-01/research/final-critic-frames/final-start-contact.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-01/research/final-critic-frames/final-mid-contact.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-01/research/final-critic-frames/final-end-contact.jpg"
+    }
+  ],
+  "sourceHeadSafetySha256": "da862efc9f979a09aa7d5f28c6726af39d1e1b332c4dae7574911f3a39f9a795",
+  "sourceRegistrySha256": "0fbee86c95bb821f34f6e3325819fa2520f92643fdd91b4ab407a7a2eedb9499",
+  "finishedSha256": "cc5d6d717338934e4ec58e96f79e1efe006b0b5680396049ed737f94d1f7bdf9",
+  "processingSha256": "ba4df841c156f95e838ca74abbebd0a1240829a14c9f31bc2308db58dd93137f",
+  "manualReview": {
+    "passed": true,
+    "finishedSha256": "cc5d6d717338934e4ec58e96f79e1efe006b0b5680396049ed737f94d1f7bdf9",
+    "reviewer": "/root/build_diary_critic — independent manual visual review",
+    "reviewedAtUTC": "2026-11-02T13:40:59.864851+00:00",
+    "method": "Extracted and actually viewed three contact sheets and full-resolution critical frames from the exact final distributed MP4. Did not reuse older per-chapter encodes.",
+    "reviewedAssets": [
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/roster-start.jpg",
+        "timeSeconds": 1.0,
+        "kind": "chapter-start",
+        "sha256": "8bf1d655fa585141c5fb53e1e844d40d422f8f5711aef40c22b7cc62c3ac75b0"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/roster-mid.jpg",
+        "timeSeconds": 70.28333333333333,
+        "kind": "chapter-mid",
+        "sha256": "88df72bda32fa3090cd5a141d3042d0990d0eb7ffda284695d7750bad0be4bda"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/roster-end.jpg",
+        "timeSeconds": 139.56666666666666,
+        "kind": "chapter-end",
+        "sha256": "273b1d0b55caa7aef508f9a396e70b3a4d33ad6aaa98fc04b3d714f69fb0bdaa"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/series-op-start.jpg",
+        "timeSeconds": 141.56666666666666,
+        "kind": "chapter-start",
+        "sha256": "9c93c2c37da0bc707500007acf1641d94e5692e85613451bdf369e830cfe7bcf"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/series-op-mid.jpg",
+        "timeSeconds": 153.36666666666667,
+        "kind": "chapter-mid",
+        "sha256": "7473a1dd74d2539a4e1cba0432f23f4e38182702eb9092710e96378611fb0db9"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/series-op-end.jpg",
+        "timeSeconds": 165.16666666666666,
+        "kind": "chapter-end",
+        "sha256": "11b627b8ac057d7cac09c946630e28c90ce83608158c59a2a62a5c5a1703b984"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/question-start.jpg",
+        "timeSeconds": 167.16666666666666,
+        "kind": "chapter-start",
+        "sha256": "a0112213b2f4cd46d70292840795e8c643c7a3898a8f7a5d4734de1599d58e1f"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/question-mid.jpg",
+        "timeSeconds": 189.64999999999998,
+        "kind": "chapter-mid",
+        "sha256": "260b9371c50db9ef4590fe9404553391d6d7b9df0cbb9ea4c2a2f265f2c629c1"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/question-end.jpg",
+        "timeSeconds": 212.13333333333333,
+        "kind": "chapter-end",
+        "sha256": "6d6ef55b03be76aa009803579424c85f6cf1eef81c1944b6e0534e65afa93406"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/ruka-now-start.jpg",
+        "timeSeconds": 214.13333333333333,
+        "kind": "chapter-start",
+        "sha256": "98591b7ec22434bf5ae092594d2e281de36be72c4ba2a74afe49754deef5ab66"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/ruka-now-mid.jpg",
+        "timeSeconds": 245.46666666666667,
+        "kind": "chapter-mid",
+        "sha256": "a5c584c68fac23974910a18b30cd2a2bbdf3d252fd1fd1e3caf55d29bd28acfc"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/ruka-now-end.jpg",
+        "timeSeconds": 276.8,
+        "kind": "chapter-end",
+        "sha256": "bab61bcc3d7ff5cbde0476b0af6e696b8f387e936c9cf55d9372569f39894af6"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/candidates-start.jpg",
+        "timeSeconds": 278.8,
+        "kind": "chapter-start",
+        "sha256": "f6fa8e3e398068d6bee0a363f016e021a485fd07e247b80b3439c7d9eaabdbbf"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/candidates-mid.jpg",
+        "timeSeconds": 305.8,
+        "kind": "chapter-mid",
+        "sha256": "b939a04e376e3aabfadf34cd073787340f6058c38e2e5c611a8c6c0afef4af4b"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/candidates-end.jpg",
+        "timeSeconds": 332.8,
+        "kind": "chapter-end",
+        "sha256": "46207cb6e63ea2b53c0402de92841638280f82f4810bec8c8c0786b3860b9283"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/revoke-start.jpg",
+        "timeSeconds": 334.8,
+        "kind": "chapter-start",
+        "sha256": "1983a457ba1530b44491b94dbde6a95468a3056441d4923f4b9a19924e136ef4"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/revoke-mid.jpg",
+        "timeSeconds": 361.48333333333335,
+        "kind": "chapter-mid",
+        "sha256": "78154c16ae0a2f0304817527f52c46263b534d67a902a723b215cedd6f187530"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/revoke-end.jpg",
+        "timeSeconds": 388.1666666666667,
+        "kind": "chapter-end",
+        "sha256": "c057ab706b962a46e85c247b1dbb062d54f161f32de24e7bac6c22d90f459956"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/resource-start.jpg",
+        "timeSeconds": 390.1666666666667,
+        "kind": "chapter-start",
+        "sha256": "b8274429acd8010411e8d03bf764a381590cfa4442df8f9e15b5ac02622d02bd"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/resource-mid.jpg",
+        "timeSeconds": 416.8833333333333,
+        "kind": "chapter-mid",
+        "sha256": "aa2d0dc6b3d6bf017bd751389fb9e15546cd944b6945d60c2ea11f7dd0b19617"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/resource-end.jpg",
+        "timeSeconds": 443.6,
+        "kind": "chapter-end",
+        "sha256": "736aed6280804bfbdd4fdbf1213a6d144ef932797bcbc1c0d50210a109edf930"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/new-skill-start.jpg",
+        "timeSeconds": 445.6,
+        "kind": "chapter-start",
+        "sha256": "232a0462d8d2d6f2e5537add8107edc46bc5eebdb671951b6e1ad4083467d841"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/new-skill-mid.jpg",
+        "timeSeconds": 481.03333333333336,
+        "kind": "chapter-mid",
+        "sha256": "b954e231ace99599cbf3b0780c9fa46117dee25ef0a99c06cf61e77a72e7f500"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/new-skill-end.jpg",
+        "timeSeconds": 516.4666666666667,
+        "kind": "chapter-end",
+        "sha256": "61f7573afedbae119267fff0f118279b29ba29107606f5c264c6543b6acae81e"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/trial-start.jpg",
+        "timeSeconds": 518.4666666666667,
+        "kind": "chapter-start",
+        "sha256": "12b4a98e3aa69f7750bfce3c06b5df14f933576050ba5829a905ff512ed760a8"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/trial-mid.jpg",
+        "timeSeconds": 555.8000000000001,
+        "kind": "chapter-mid",
+        "sha256": "9e5deae64dc6c8761e53db176741dbf3365cd3c1012feaecd95223081689427f"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/trial-end.jpg",
+        "timeSeconds": 593.1333333333333,
+        "kind": "chapter-end",
+        "sha256": "63d451aa61ddad6239eeb45389be57e61f0df6d424248c1833ed0909c76e89aa"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/necessity-start.jpg",
+        "timeSeconds": 595.1333333333333,
+        "kind": "chapter-start",
+        "sha256": "e83c747e2ac6e7388dc5585bcc397583fee0514487ebe9a82d7b9078ad4d8f64"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/necessity-mid.jpg",
+        "timeSeconds": 619.3666666666667,
+        "kind": "chapter-mid",
+        "sha256": "bd4643ac24e15de3a6dfa1678091e6fb3b5e7fac47a952e9d3e9dcf6cea6d7d0"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/necessity-end.jpg",
+        "timeSeconds": 643.6,
+        "kind": "chapter-end",
+        "sha256": "b0ad717f7c82c93f55a927b021f5955c058e6e8ff082884a8a4cc60fbb9be38e"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/first-draft-start.jpg",
+        "timeSeconds": 645.6,
+        "kind": "chapter-start",
+        "sha256": "62ecc918987d6e91d6baeb104dd6492e73310207b01400bd5af50591802c973c"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/first-draft-mid.jpg",
+        "timeSeconds": 672.9333333333334,
+        "kind": "chapter-mid",
+        "sha256": "25bfa8d8f5e73cb89ea39e80a5d989405f0fc600ff3500d4e6b1107a548ad72c"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/first-draft-end.jpg",
+        "timeSeconds": 700.2666666666667,
+        "kind": "chapter-end",
+        "sha256": "68023b642dc01f2215e08a4da344b35134a45f8f1cee69f3981d0a86167570b2"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/recipe-start.jpg",
+        "timeSeconds": 702.2666666666667,
+        "kind": "chapter-start",
+        "sha256": "88cec467d43d8cfde196ebf924f7f64bc488c6d428a8f1a5bdfc4f9adebd149c"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/recipe-mid.jpg",
+        "timeSeconds": 734.1166666666667,
+        "kind": "chapter-mid",
+        "sha256": "a1e759173766423c8294f0ba18bf57ec79f40852c17b65e708cb062126f4832e"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/recipe-end.jpg",
+        "timeSeconds": 765.9666666666667,
+        "kind": "chapter-end",
+        "sha256": "0c3c1a42720a1ae10a095575beeb39dc10302b62e99f6ea29cae81bd24a47ba5"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-a-start.jpg",
+        "timeSeconds": 767.9666666666667,
+        "kind": "chapter-start",
+        "sha256": "f07afceb02a2bc3c33d579808a9b5c6f64d1edbd0e1ef07d3121e19a7e13fb63"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-a-mid.jpg",
+        "timeSeconds": 808.6166666666667,
+        "kind": "chapter-mid",
+        "sha256": "06fa810b0ebb888da6593f776332db3e036d3ef28cc66e8ad461d1a751165e99"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-a-end.jpg",
+        "timeSeconds": 849.2666666666667,
+        "kind": "chapter-end",
+        "sha256": "b63292b728abd0adcecdd294f4a43deb59c33f16ad80a1a11eca8429193b49ae"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-b-start.jpg",
+        "timeSeconds": 851.2666666666667,
+        "kind": "chapter-start",
+        "sha256": "212005debf3cbbc84cfb66fe13658b2104080ec152b630f186bebaee58a1e567"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-b-mid.jpg",
+        "timeSeconds": 890.9833333333333,
+        "kind": "chapter-mid",
+        "sha256": "ace8784f52e3a46a0b7531899d1179441642274b18ba25cbd2c2b4b43962e35a"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/lab-victory-b-end.jpg",
+        "timeSeconds": 930.7,
+        "kind": "chapter-end",
+        "sha256": "6a0f9f591477a35e840f36b9e515fb7c6a7673218ac03fdb10bc701ac0848134"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/no-ruka-start.jpg",
+        "timeSeconds": 932.7,
+        "kind": "chapter-start",
+        "sha256": "1f7b04271156bc6eddb57de15fe72bfeeebc0114ecab730460a15043e7bee7a1"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/no-ruka-mid.jpg",
+        "timeSeconds": 961.8333333333334,
+        "kind": "chapter-mid",
+        "sha256": "b50dabc89ec19b39354d6f01091a119c9eafce67fc55c22c5bfdd461dfd0873f"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/no-ruka-end.jpg",
+        "timeSeconds": 990.9666666666667,
+        "kind": "chapter-end",
+        "sha256": "0abaf19beb5ad709fb4fabfdc2b78aeb404a2d57240083059e8506129abce66f"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/alternatives-start.jpg",
+        "timeSeconds": 992.9666666666667,
+        "kind": "chapter-start",
+        "sha256": "7827cbc22bd6e258b9f740a09b99f4ee1619c2d6ddd64844023d1f1239fd9432"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/alternatives-mid.jpg",
+        "timeSeconds": 1026.65,
+        "kind": "chapter-mid",
+        "sha256": "4dac9abbc5f268f5daf210bfe73b396fac90293aad42327a311edc6498846746"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/alternatives-end.jpg",
+        "timeSeconds": 1060.3333333333333,
+        "kind": "chapter-end",
+        "sha256": "0b9f8d58f64f472d8744ec446d697c457106b6569bcb759586c581132ab9e0d4"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/growth-start.jpg",
+        "timeSeconds": 1062.3333333333333,
+        "kind": "chapter-start",
+        "sha256": "485ffda3fe49b6133abc5b967c0196b1da2ed1df83541f460814f1b4ac5233bc"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/growth-mid.jpg",
+        "timeSeconds": 1093.55,
+        "kind": "chapter-mid",
+        "sha256": "a0b83c5f473bfb86925dd9b7968b0cff4ec094f48e76b1d5f31c006a64611bdc"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/growth-end.jpg",
+        "timeSeconds": 1124.7666666666667,
+        "kind": "chapter-end",
+        "sha256": "28ac9127d57c1caaa115680e7e2b379f4624e1826f96b14722f71b4475d1b52e"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/audit-start.jpg",
+        "timeSeconds": 1126.7666666666667,
+        "kind": "chapter-start",
+        "sha256": "be3abb5171d8843dd421ee298537e73378a34e9f313186fe970ccf5419be21c2"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/audit-mid.jpg",
+        "timeSeconds": 1164.9,
+        "kind": "chapter-mid",
+        "sha256": "f985f186ad5bc6929e821b474bd919003eed7031c234017366d864dca41a7197"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/audit-end.jpg",
+        "timeSeconds": 1203.0333333333333,
+        "kind": "chapter-end",
+        "sha256": "2538a0be5cf6957c4fe97d395b6622aa50a577f1d678603ec0ef79774d192ec8"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/future-start.jpg",
+        "timeSeconds": 1205.0333333333333,
+        "kind": "chapter-start",
+        "sha256": "19bd2525ae6a2fcb759eeb6273d8a67ed33cf22763509733393ee87d3705a546"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/future-mid.jpg",
+        "timeSeconds": 1247.5,
+        "kind": "chapter-mid",
+        "sha256": "d69fda060b21016f020a30852baea3d1b5d57f448ffe9c281526b658728b34ae"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/future-end.jpg",
+        "timeSeconds": 1289.9666666666667,
+        "kind": "chapter-end",
+        "sha256": "122d367f762ca2ab7932c12dba9c3856082aab2f18e929112b9cbc7c3c57b90b"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-t-research-think.jpg",
+        "timeSeconds": 5.3,
+        "kind": "actor-pose",
+        "sha256": "d3b4be6c4855454d5068ec3f29f8017b57f9a7af577269deb20444d1e6278d2d"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-m-happy.jpg",
+        "timeSeconds": 5.3,
+        "kind": "actor-pose",
+        "sha256": "d3b4be6c4855454d5068ec3f29f8017b57f9a7af577269deb20444d1e6278d2d"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-z-happy.jpg",
+        "timeSeconds": 12.899999999999999,
+        "kind": "actor-pose",
+        "sha256": "90699cb79fcd8b1557b39271e84365798f2211c74200abc54fa6c61801138ee7"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-t-research-happy.jpg",
+        "timeSeconds": 18.433333333333334,
+        "kind": "actor-pose",
+        "sha256": "5a74398973d427f64fa107b1b992dd3a976337035fc9e300325c0660b498bee6"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-z-panic.jpg",
+        "timeSeconds": 124.46666666666667,
+        "kind": "actor-pose",
+        "sha256": "9833fc57aac83df722d6e2cd006144334de145bd9e92073b1e9230d189619ccb"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-t-research-determined.jpg",
+        "timeSeconds": 170.04999999999998,
+        "kind": "actor-pose",
+        "sha256": "78029a1baae94667570f138b4423bed1a5b2ef52c267859869d20a046a3dd950"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-m-deadpan.jpg",
+        "timeSeconds": 343.4666666666667,
+        "kind": "actor-pose",
+        "sha256": "9bd29f5526a6f236ce23d895374b90090593054fb21aa879c88684c3f3d82229"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/pose-t-research-care.jpg",
+        "timeSeconds": 1192.2666666666667,
+        "kind": "actor-pose",
+        "sha256": "8a51ac9f721528aa0d859c843246f8b348afd1323fdefbe05cbe59ce1219905c"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/illustration-1.jpg",
+        "timeSeconds": 354.93333333333334,
+        "kind": "illustration",
+        "sha256": "f19d44742f2ece2bff9944c5a747dda399ca87fc6d9258d00a053ab6fcface91"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/critical-b15.jpg",
+        "timeSeconds": 865.2666666666667,
+        "kind": "critical-fullres",
+        "sha256": "de5ce1f6f67cf4fa9620eea2dc6f7cbdad410efa385c68e3e5595cc71888450f"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/critical-no-ruka18.jpg",
+        "timeSeconds": 949.7,
+        "kind": "critical-fullres",
+        "sha256": "9a2da54f887b55586941d4c2f45f87f836d9975077f75a4e34eea545d32b9ed0"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/critical-block-a50.jpg",
+        "timeSeconds": 816.9666666666667,
+        "kind": "critical-fullres",
+        "sha256": "ad719a2b1810cba92f9b28c2a43b2a061812cbb2a9070ed4d98034fae6a649ff"
+      },
+      {
+        "path": "artifacts/build-diary-01/research/final-critic-frames/final-ending.jpg",
+        "timeSeconds": 1288.9666666666667,
+        "kind": "critical-fullres",
+        "sha256": "122d367f762ca2ab7932c12dba9c3856082aab2f18e929112b9cbc7c3c57b90b"
+      }
+    ],
+    "contactSheetPaths": [
+      "artifacts/build-diary-01/research/final-critic-frames/final-start-contact.jpg",
+      "artifacts/build-diary-01/research/final-critic-frames/final-mid-contact.jpg",
+      "artifacts/build-diary-01/research/final-critic-frames/final-end-contact.jpg"
+    ],
+    "fullResolutionReviewed": [
+      "critical-b15.jpg",
+      "critical-no-ruka18.jpg",
+      "final-ending.jpg",
+      "question-end.jpg"
+    ],
+    "coverage": {
+      "timelineSections": 19,
+      "mainChapters": 18,
+      "opSections": 1,
+      "anchorsPerSection": [
+        "start",
+        "mid",
+        "end"
+      ],
+      "chapterFrames": 57,
+      "actorPoses": 8,
+      "distinctIllustrations": 1,
+      "additionalCriticalFrames": 4,
+      "totalReviewedFrameSamples": 70,
+      "actorAssets": [
+        "t-research-think",
+        "t-research-happy",
+        "t-research-determined",
+        "t-research-care",
+        "z-happy",
+        "z-panic",
+        "m-happy",
+        "m-deadpan"
+      ]
+    },
+    "notes": [
+      "All sampled actor heads, ears, hats, hair and shoes are complete; contain placement and margins remain intact. Full-scene laboratory illustration hides duplicate side actors.",
+      "All sampled dialogue captions remain at most two lines inside the cream footer; no sampled diagram/caption overlap or overflowing panel text.",
+      "Header correction verified at final movie B15 and no-ruka18: short single-line prototype label no longer overlaps BUILD RESEARCH LAB; continuation moved into the right diagram.",
+      "Prototype/new skill/stage disclosure remains visible. Current1.11 game footage and research-use native-engine log playback are distinguished.",
+      "Actual R4 restoration-block event and matching Tsumugi reaction are visible together at lab-victory-a50; seed1 fairy2/bloom6/potion0 displayed.",
+      "No-ruka diagram explicitly states 1–5R excerpt, full record10R wipe; upper-bound proof and fixed-policy sampling are distinguished.",
+      "Roster beginning/middle/end show distinct serial cards and gem legend; final cards include Fio and Ruka. Full all72 coverage depends additionally on roster regression report, not these three visual samples alone.",
+      "This manual review certifies sampled visual presentation of the stated SHA only; audio synchronization, full-decode and browser playback remain separate gates.",
+      "No remaining critical visual defect was found in the reviewed final-file samples."
+    ]
+  }
+}

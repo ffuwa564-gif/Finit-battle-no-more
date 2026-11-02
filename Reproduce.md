@@ -1,0 +1,16 @@
+# 再現手順
+
+1. ffuwa564-gif/Finit-battle-no-more の `video/build-research-diary-01` ブランチを取得します（正確なリポジトリ URL は External-Assets.json の各 URL を参照）。Node.js／npm、Python 3、ffmpeg／ffprobe、利用フォントが必要です。Python では Pillow／numpy／scipy／soundfile を使用します。
+2. Production-Materials*.zip と Recording-Sources*.zip を全て、同じリポジトリルートへ展開します。複数 ZIP は分割バイト列ではなく、独立したファイル単位のアーカイブです。元のディレクトリ構造を維持してください。
+3. `python scripts/build-diary-01/bootstrap_inputs.py` で SHA を検査します。72 姿のゲーム原画は ZIP 内で重複配布せず、External-Assets.json の固定コミット URL と SHA で復元します。欠落原画の取得は `--fetch-art` を付けた場合だけ行います。通常の Git clone で原画が揃っていれば取得不要です。
+4. 本編の「フィヨルドの澄んだ風」は公式配布先から取得するか、適切な既存のゲーム用コピーを使用してください。自動ダウンロードしません。必要パスと期待 SHA は External-Assets.json。新しいオリジナル OP 音源と全ナレーション音声は同梱しています。
+5. `npm ci`。現在の render.py は、既存のナレーション音声・収録 MOV・研究台帳を入力にします。VOICEVOX 再合成が必要な場合は synth.py の 0.26.0 と各スタイル指定を合わせてください。再合成により波形が変われば関連する同期検証をやり直します。
+6. 元の収録を取り直す場合は `capture-live.mjs` と `capture-lab.mjs`（勝利・反例の両方）を使用し、内部の sync_capture.py の後に必ず `python scripts/build-diary-01/normalize_capture.py` を実行します。sync_capture.py 単独では VFR が残る場合があり、CFR 化の後処理は省略できません。正規化時は原音声を再圧縮せずコピーし、正規化前の収録原本も保持します。手順・対象は normalize_capture.py の CLI を参照。配布される入力 MOV はこの CFR 処理後の確定版です。capture-cfr-normalization.json と capture-source-qa.json に検証を残しています。
+
+   `python scripts/build-diary-01/opening.py`、`python scripts/build-diary-01/render.py` で再描画します。opening.py の元音楽は assets/opening-original.mp3。元 MOV は Recording-Sources.json に記載されたパスへ、そのまま置きます。再圧縮や MOV→MKV 変換を行わないでください。
+7. 完成後は audit.py、visual_qc.py、roster_qc.py、validate.mjs の検査を実行し、デコード検査と目視レビューを更新します。各プログラムの CLI とコードを参照してください。以前の完成 SHA に対する合格を使い回すことはできません。
+8. `python scripts/build-diary-01/package.py --check-inputs` は必要な完成ファイル検証を確認するだけです。引数なしは再梱包を実行します。`python scripts/build-diary-01/publish.py --check-only` は公開用ファイルのローカル整合性検査だけを行い、push は行いません。
+
+Production-Inputs.json は編集入力のハッシュ、Recording-Sources.json は元収録のストリーム情報、Packaging-Manifest.json は納品ファイル構成、SHA256SUMS.txt は公開ファイルのハッシュを記録します。最終ミックスの音声だけのファイルは音楽の再配布を避けるため同梱していません。原音源から再生成してください。
+
+初回の見出し修正：基礎レンダー完走後に `python scripts/build-diary-01/header_fix.py` を1回実行。後半・対照の2行ラベルがLAB見出しと重なったため、元のヘッダーを復元し短い1行へ修正する。AACのpacketとdecode後PCMは元完成版と完全一致を検証。`render-input-freeze.json` は基礎レンダー、`post-header-fix.json` は配布完成版のSHAと追加工程を記録する。全ての完成動画検査は後者の後で実行する。

@@ -1,0 +1,90 @@
+[
+  {
+    "chapter": "ruka-now",
+    "start": 213.13333333333333,
+    "duration": 64.66666666666667,
+    "source": "artifacts/build-diary-01/capture/live-ruka.mov",
+    "sourceStart": 4.859435081481934,
+    "sourceEnd": 64.5914351940155,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 1792,
+    "playDuration": 59.733333333333334,
+    "piece": "artifacts/build-diary-01/render/ruka-now-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": false,
+    "pieceHash": "d12164c39648003381453923b6b040ea4ec17a41a0203871d63e7a7ddae3991a"
+  },
+  {
+    "chapter": "lab-victory-a",
+    "start": 766.9666666666667,
+    "duration": 83.3,
+    "source": "artifacts/build-diary-01/capture/lab-victory.mov",
+    "sourceStart": 3.4560279846191406,
+    "sourceEnd": 79.2,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 2272,
+    "playDuration": 75.73333333333333,
+    "piece": "artifacts/build-diary-01/render/lab-victory-a-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "7098baf353f1828aaf498a0c021227693d16f3d51cfe942b4b7707b772da1b31"
+  },
+  {
+    "chapter": "lab-victory-b",
+    "start": 850.2666666666667,
+    "duration": 81.43333333333334,
+    "source": "artifacts/build-diary-01/capture/lab-victory.mov",
+    "sourceStart": 79.2,
+    "sourceEnd": 155.0270278453827,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 2275,
+    "playDuration": 75.83333333333333,
+    "piece": "artifacts/build-diary-01/render/lab-victory-b-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "72325a8ea27b47bd1d2cd7c719a53e4d455f4f19f8f439ebd5320a8eecfd391d"
+  },
+  {
+    "chapter": "no-ruka",
+    "start": 931.7,
+    "duration": 60.266666666666666,
+    "source": "artifacts/build-diary-01/capture/lab-counter.mov",
+    "sourceStart": 3.467613935470581,
+    "sourceEnd": 63.62261390686035,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 1805,
+    "playDuration": 60.166666666666664,
+    "piece": "artifacts/build-diary-01/render/no-ruka-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "4a467905d4f92b930770c4687ff5f4b4a34dff6dd26d95d0d2c842ebb76440c2"
+  }
+]

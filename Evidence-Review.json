@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "sourceMain": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "appVersion": "1.11.0",
+  "contentVersion": "v1.10-r1",
+  "rulesVersion": "2",
+  "presentationChangeOnlyVerified": {
+    "domainBehaviorFilesEqual": true,
+    "gameplayDefinitionsEqual": true,
+    "portraitHeadBoundsFitAllSupportedFrames": true,
+    "excludedTypeFile": "AssetDef portraitHead metadata only",
+    "changedDomain": [],
+    "changedDefinitions": []
+  },
+  "lab": {
+    "trial": "ほどける回廊",
+    "hp": 4800,
+    "attack": 160,
+    "roundDamageCapClosed": 300,
+    "restorationEvery": 4,
+    "woundDurationRounds": 2,
+    "releaseCapOnWound": true,
+    "newLeaderStock": false,
+    "emergencyHealingFirst": true
+  },
+  "certification": {
+    "productionCertified": [],
+    "prototypeCertified": [
+      "ruka"
+    ],
+    "legacyIdeasAreNotExclusiveCertificates": true
+  },
+  "currentCandidateCounterexamples": [
+    {
+      "floor": 20,
+      "ruka": {
+        "floor": 20,
+        "id": "ruka",
+        "name": "ルカ",
+        "n": 20,
+        "wins": 6,
+        "meanRounds": 21.55
+      },
+      "awakenedSeris": {
+        "floor": 20,
+        "id": "seris-awakened",
+        "name": "セリス",
+        "n": 20,
+        "wins": 3,
+        "meanRounds": 17.45
+      },
+      "awakenedElaine": {
+        "floor": 20,
+        "id": "elaine-awakened",
+        "name": "エレイン",
+        "n": 20,
+        "wins": 11,
+        "meanRounds": 28.3
+      }
+    },
+    {
+      "floor": 30,
+      "ruka": {
+        "floor": 30,
+        "id": "ruka",
+        "name": "ルカ",
+        "n": 20,
+        "wins": 8,
+        "meanRounds": 20.6
+      },
+      "awakenedSeris": {
+        "floor": 30,
+        "id": "seris-awakened",
+        "name": "セリス",
+        "n": 20,
+        "wins": 2,
+        "meanRounds": 18.85
+      },
+      "awakenedElaine": {
+        "floor": 30,
+        "id": "elaine-awakened",
+        "name": "エレイン",
+        "n": 20,
+        "wins": 11,
+        "meanRounds": 30.4
+      }
+    }
+  ],
+  "samples": [
+    {
+      "id": "main-t4",
+      "party": [
+        "ruka",
+        "nox",
+        "athena",
+        "fio"
+      ],
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 11.63
+    },
+    {
+      "id": "all-partners-replaced-t4",
+      "party": [
+        "ruka",
+        "seris-awakened",
+        "liora-awakened",
+        "benzaiten"
+      ],
+      "n": 100,
+      "wins": 100,
+      "meanRounds": 11.71
+    }
+  ],
+  "limits": [
+    "New skill, gem and encounter are research-only; they are not shipped v1.11 content.",
+    "100 fixed seeds are an empirical sample, not a universal win-rate theorem.",
+    "Exclusive necessity applies to the declared prototype rules; no existing stage is certified Ruka-only.",
+    "Other characters built in earlier episodes lack exclusive-stage certification; unverified claims may not receive a production diamond."
+  ],
+  "codeHashes": {
+    "bootstrap": "61244978b2b63f9dab72c1279aef58be6e3f693ee1ef0d709c5eac6192407d0c",
+    "rules": "568d699bd0f6cce2957da2c535addb0ba34494f53858983e42d0489fc64efaab",
+    "experiment": "8d64877135a1e0bc306dcdb161054d0d237126578e7881417b25465aa4f4aece",
+    "revalidate": "b00a62e241f12e722c98379c23b951e4fe3f08d26d2679b5982ea3b2fe23b479"
+  }
+}

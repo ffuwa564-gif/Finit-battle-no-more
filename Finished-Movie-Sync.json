@@ -1,0 +1,317 @@
+{
+  "passed": true,
+  "finishedSha256": "cc5d6d717338934e4ec58e96f79e1efe006b0b5680396049ed737f94d1f7bdf9",
+  "timelineSha256": "fee4a6737d456a3713ae4fc21f4051250333e9fe12ba0d70e6159de3c128ee5c",
+  "narrationSha256": "ea491a16e8430964b25e3e8af12d486ee0248820b3c76e293a1bea20aac5ac2d",
+  "toleranceMs": 80,
+  "videoMatch": "Nine consecutive real frames (0.3 seconds) straddling the strongest actual visible transition in each third, independently selected from the audio peak; audio candidate is never moved to manufacture a match.",
+  "openingAnchors": [
+    {
+      "time": 142.03333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9998746781476784,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 152.6,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9996169325273022,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    },
+    {
+      "time": 164.06666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9983611369711659,
+      "videoLagMs": 0.0,
+      "frameRMSE": 0.0,
+      "passed": true
+    }
+  ],
+  "gameAnchors": [
+    {
+      "chapter": "ruka-now",
+      "part": 0,
+      "time": 222.29999999999998,
+      "audioReferenceTime": 217.73333333333332,
+      "videoReferenceTime": 222.29999999999998,
+      "sourceTransitionTime": 9.3,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9952075969886113,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.238983336184762,
+      "changingFrameMotion": 17.5012012012012,
+      "passed": true
+    },
+    {
+      "chapter": "ruka-now",
+      "part": 1,
+      "time": 241.1,
+      "audioReferenceTime": 237.74444444444438,
+      "videoReferenceTime": 241.1,
+      "sourceTransitionTime": 28.1,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9925216057871994,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.030155132790726,
+      "changingFrameMotion": 14.93993993993994,
+      "passed": true
+    },
+    {
+      "chapter": "ruka-now",
+      "part": 2,
+      "time": 272.16666666666663,
+      "audioReferenceTime": 257.5055555555555,
+      "videoReferenceTime": 272.16666666666663,
+      "sourceTransitionTime": 59.166666666666664,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9903116460668032,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.7831258708247542,
+      "changingFrameMotion": 20.593018018018018,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 0,
+      "time": 788.3000000000001,
+      "audioReferenceTime": 774.5666666666667,
+      "videoReferenceTime": 788.3000000000001,
+      "sourceTransitionTime": 21.466666666666665,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.995696144109995,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.363344677148339,
+      "changingFrameMotion": 3.023798798798799,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 1,
+      "time": 793.4,
+      "audioReferenceTime": 813.5611111111109,
+      "videoReferenceTime": 793.4,
+      "sourceTransitionTime": 26.566666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9959915835122122,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.3901285758725548,
+      "changingFrameMotion": 3.3984234234234236,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-a",
+      "part": 2,
+      "time": 836.1666666666667,
+      "audioReferenceTime": 823.5055555555555,
+      "videoReferenceTime": 836.1666666666667,
+      "sourceTransitionTime": 69.33333333333333,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9904480099529374,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.268302773496373,
+      "changingFrameMotion": 3.295045045045045,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 0,
+      "time": 874.3333333333334,
+      "audioReferenceTime": 860.1166666666667,
+      "videoReferenceTime": 874.3333333333334,
+      "sourceTransitionTime": 24.2,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9940366890473441,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.7047990124957075,
+      "changingFrameMotion": 3.3585585585585584,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 1,
+      "time": 896.5333333333333,
+      "audioReferenceTime": 877.2444444444444,
+      "videoReferenceTime": 896.5333333333333,
+      "sourceTransitionTime": 46.4,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9938804398408572,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.758541289668078,
+      "changingFrameMotion": 3.2292792792792793,
+      "passed": true
+    },
+    {
+      "chapter": "lab-victory-b",
+      "part": 2,
+      "time": 916.1333333333333,
+      "audioReferenceTime": 902.2222222222222,
+      "videoReferenceTime": 916.1333333333333,
+      "sourceTransitionTime": 66.0,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9906799457256221,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.8094333502643996,
+      "changingFrameMotion": 2.8171921921921923,
+      "passed": true
+    },
+    {
+      "chapter": "no-ruka",
+      "part": 0,
+      "time": 938.1333333333333,
+      "audioReferenceTime": 939.6,
+      "videoReferenceTime": 938.1333333333333,
+      "sourceTransitionTime": 6.566666666666666,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9926298239641399,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.1611618682136284,
+      "changingFrameMotion": 2.954129129129129,
+      "passed": true
+    },
+    {
+      "chapter": "no-ruka",
+      "part": 1,
+      "time": 969.7333333333333,
+      "audioReferenceTime": 966.5055555555555,
+      "videoReferenceTime": 969.7333333333333,
+      "sourceTransitionTime": 38.166666666666664,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9923669082823825,
+      "videoLagMs": 0.0,
+      "frameRMSE": 1.8505358186615797,
+      "changingFrameMotion": 3.348123123123123,
+      "passed": true
+    },
+    {
+      "chapter": "no-ruka",
+      "part": 2,
+      "time": 981.2666666666668,
+      "audioReferenceTime": 986.111111111111,
+      "videoReferenceTime": 981.2666666666668,
+      "sourceTransitionTime": 49.7,
+      "audioLagMs": 0.0,
+      "audioCorrelation": 0.9831031024327972,
+      "videoLagMs": 0.0,
+      "frameRMSE": 2.0421219181516226,
+      "changingFrameMotion": 2.7625375375375376,
+      "passed": true
+    }
+  ],
+  "voiceAnchors": [
+    {
+      "speaker": "z",
+      "time": 10.614737210526314,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9672489189585541,
+      "correlation": 0.9998241161808926,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 665.942667,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9949638837143867,
+      "correlation": 0.9997979819953392,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "z",
+      "time": 1287.4439983333332,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9967815339170938,
+      "correlation": 0.9998720409123234,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 21.678877631578942,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9188271401210866,
+      "correlation": 0.9997502335875834,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 679.844,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9946638119574679,
+      "correlation": 0.9998403691735643,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "m",
+      "time": 1272.2413323333333,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9973429033884952,
+      "correlation": 0.9998214861093915,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 0.4,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9986041457025502,
+      "correlation": 0.9998831140236655,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 594.5333333333333,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9895989994120683,
+      "correlation": 0.9998508721297649,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    },
+    {
+      "speaker": "t",
+      "time": 1277.5866653333333,
+      "lagMs": 0.0,
+      "rawMixCorrelation": 0.9974987973933029,
+      "correlation": 0.9999032343475063,
+      "isolation": "Other sources reconstructed independently from the original sources, on the unchanged common sample clock.",
+      "passed": true
+    }
+  ],
+  "independentMixReconstructionRMSE": 2.133689667971339e-05,
+  "backgroundMethod": "Independent original-source reconstruction; never derive background by subtracting the target from the recorded full mix.",
+  "coveragePassed": true,
+  "fjordMusicAnchors": [
+    {
+      "time": 33.0,
+      "audioLagMs": 0.0,
+      "correlation": 0.9942395077336439,
+      "referenceRms": 0.00732331071048975,
+      "passed": true
+    },
+    {
+      "time": 645.4833333333333,
+      "audioLagMs": 0.0,
+      "correlation": 0.973349935541076,
+      "referenceRms": 0.004645570646971464,
+      "passed": true
+    },
+    {
+      "time": 1282.9666666666667,
+      "audioLagMs": 0.0,
+      "correlation": 0.9962503811904652,
+      "referenceRms": 0.006225013639777899,
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "sourceOpeningSha256": "0d9cbab1043b7a53420267c0ac9a6c1365217ad393241c4aa4da1cb27abc3433",
+  "sourceMixSha256": "b39bd1d6a6aec4c673fe7b2743aa00b99d295b860ccc6424aa860efe9f1e3c9f",
+  "processingSha256": "3791b680ef788b07720da989a0238747f4709c03fe1460dea2b87c16684c94d6"
+}
