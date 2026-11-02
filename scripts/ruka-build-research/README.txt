@@ -5,7 +5,10 @@ Read docs/research/ruka-exclusive-build/README.md first.
 The shipped game's src/ and player saves are untouched. bootstrap.py copies only source text into /tmp/stillveil-ruka-build-lab, patches two native HP-loss paths and native HP-heal writes, and adds a research-only module. The native turn order, actions, cooldowns, ultimates, potions, fairies, flowers and gems still resolve through that copied engine. No changes to main or itch.io are part of this research.
 
 Run from repository root with installed npm dependencies:
+  mkdir -p artifacts/ruka-build-research
   node_modules/.bin/tsx scripts/ruka-build-research/baseline.ts
+  node_modules/.bin/tsx scripts/ruka-build-research/tower-sweep.ts
+  node_modules/.bin/tsx scripts/ruka-build-research/candidate-counters.ts
   python scripts/ruka-build-research/bootstrap.py
   VERSION=v4 node_modules/.bin/tsx scripts/ruka-build-research/experiment.ts
   LIB_ONLY=1 node_modules/.bin/tsx scripts/ruka-build-research/adversarial.ts
