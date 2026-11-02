@@ -1,0 +1,5627 @@
+{
+  "schemaVersion": 1,
+  "seriesTitle": "ビルド研究日誌",
+  "subtitle": "みんなが輝くRPGを！",
+  "episode": "BRD-002",
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "sourceAppVersion": "1.11.0",
+  "sourceContentVersion": "v1.10-r1",
+  "sourceRulesVersion": "2",
+  "finalized": true,
+  "evidenceCodeMatches": true,
+  "sourceTreeMatches": true,
+  "gameplayConditionsHash": "a191324c41f67bcef60de7c39921de0e35fab56be9264ffd813d5195491b6b46",
+  "serialMapSha256": "639aefe7e3636567aab96719539f75f0db788a27e537eb7ca975fbdfce6eee14",
+  "eligibilitySha256": "b64c9037ec2adbe13555a9bcdd117530d77d83390f48c9d29e7d56731aea5ea9",
+  "identityPolicy": "Series IDs refer to implementation forms. Recognition refers to explicitly linked girls, with verified form IDs retained. No automatic win claim for another form.",
+  "badgeLegend": {
+    "none": "未研究。価値が低いという意味ではない。",
+    "outline-weak": "◇ ビルド案あり。固有の唯一解は未確認。",
+    "outline-amber": "◇ 試作の再検証待ち。",
+    "solid-cyan": "💎 現行版で必要性を認定。",
+    "solid-amber": "◆ 試作認定。研究用ステージに限る。"
+  },
+  "entries": [
+    {
+      "seriesId": "BD001",
+      "characterId": "elaine",
+      "name": "エレイン",
+      "displayName": "エレイン",
+      "epithet": "白花の祈り手",
+      "role": "healer",
+      "rarity": "R",
+      "published": true,
+      "artId": "elaine-art",
+      "artPath": "art/elaine.png",
+      "artSha256": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "elaine",
+        "explicitFamilyId": "elaine",
+        "linkedFormIds": [
+          "elaine",
+          "elaine-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "elaine",
+          "elaine-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD002",
+      "characterId": "liora",
+      "name": "リオラ",
+      "displayName": "リオラ",
+      "epithet": "錆銀の守護者",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "liora-art",
+      "artPath": "art/liora.png",
+      "artSha256": "5b85db4b3047094a833c7592bc603f771907acb2408e8543f11b55ffcdda60c1",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "liora",
+        "explicitFamilyId": "liora",
+        "linkedFormIds": [
+          "liora",
+          "liora-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "liora",
+          "liora-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "athena-free-third-floor",
+          "name": "アテナ抜き第3層の受け役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part3/script.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD003",
+      "characterId": "seris",
+      "name": "セリス",
+      "displayName": "セリス",
+      "epithet": "薄明の剣",
+      "role": "attacker",
+      "rarity": "R",
+      "published": true,
+      "artId": "seris-art",
+      "artPath": "art/seris.png",
+      "artSha256": "4955d37d4b3665bb13b0a0ae3774d7c3ba3f9b5e75b0536a4d28ed27530e86a9",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "seris",
+        "explicitFamilyId": "seris",
+        "linkedFormIds": [
+          "seris",
+          "seris-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "seris",
+          "seris-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD004",
+      "characterId": "noelle",
+      "name": "ノエル",
+      "displayName": "ノエル",
+      "epithet": "星読みの残響",
+      "role": "area_attacker",
+      "rarity": "R",
+      "published": true,
+      "artId": "noelle-art",
+      "artPath": "art/noelle.png",
+      "artSha256": "5697468ce5b3ac063c111cf62a0a3967714c451d8d229bf95f3ab536ff41615e",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "noelle",
+        "explicitFamilyId": "noelle",
+        "linkedFormIds": [
+          "noelle",
+          "noelle-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "noelle",
+          "noelle-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令・覚醒",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD005",
+      "characterId": "hollow-keeper",
+      "name": "虚ろの守り手",
+      "displayName": "虚ろの守り手",
+      "epithet": "帰らぬ主への誓い",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "hollow-keeper-art",
+      "artPath": "art/encounter-hollow-keeper.png",
+      "artSha256": "15c47ebe4ed621083843bf0a9875d4576c9294bc07d0190726c8a36ccb47f83e",
+      "artWidth": 1536,
+      "artHeight": 1024,
+      "presentation": "full-original-contain",
+      "originalComposition": "landscape_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "hollow-keeper",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "hollow-keeper"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD006",
+      "characterId": "veil-priestess",
+      "name": "帳の巫女",
+      "displayName": "帳の巫女",
+      "epithet": "届かない祈り",
+      "role": "healer",
+      "rarity": "R",
+      "published": true,
+      "artId": "veil-priestess-art",
+      "artPath": "art/encounter-veil-priestess.png",
+      "artSha256": "d3a271b2acc7702220a1ce8ea3d86dfc6489515de0f1d35e451198ac2cb04077",
+      "artWidth": 1536,
+      "artHeight": 1024,
+      "presentation": "full-original-contain",
+      "originalComposition": "landscape_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "veil-priestess",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "veil-priestess"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD007",
+      "characterId": "thorn-witch",
+      "name": "荊の魔女",
+      "displayName": "荊の魔女",
+      "epithet": "枯園の記憶",
+      "role": "debuffer",
+      "rarity": "R",
+      "published": true,
+      "artId": "thorn-witch-art",
+      "artPath": "art/encounter-thorn-witch.png",
+      "artSha256": "fc0479f4f40978963b518a2dcb31154f336fa41a7eb0ed31d899058b541ea9b3",
+      "artWidth": 1536,
+      "artHeight": 1024,
+      "presentation": "full-original-contain",
+      "originalComposition": "landscape_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "thorn-witch",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "thorn-witch"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD008",
+      "characterId": "iris",
+      "name": "アメノウズメ",
+      "displayName": "アメノウズメ",
+      "epithet": "薄明の鈴舞",
+      "role": "supporter",
+      "rarity": "R",
+      "published": true,
+      "artId": "iris-art",
+      "artPath": "art/gacha-uzume.png",
+      "artSha256": "430cec7b851d80a821ebe394d97b8b2bfe0c5dfaad44a8ad754dc1b6809f505e",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "iris",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "iris"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "iris"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "low-rarity-rewind",
+          "name": "低レア巻戻しの使い手",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-111/chapters.py",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "iris"
+        },
+        {
+          "id": "low-rarity-rewind",
+          "name": "低レア巻戻しの使い手",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-111/chapters.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "iris"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD009",
+      "characterId": "mireille",
+      "name": "コノハナサクヤヒメ",
+      "displayName": "コノハナサクヤヒメ",
+      "epithet": "黒桜の花守",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "mireille-art",
+      "artPath": "art/gacha-sakuya.png",
+      "artSha256": "6a88e0730d9712352846736778ced81316d963f5bfa5ecb132a2d1432347c557",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "mireille",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "mireille"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD010",
+      "characterId": "asteria",
+      "name": "アマテラス",
+      "displayName": "アマテラス",
+      "epithet": "黒レースの暁光",
+      "role": "area_attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "asteria-art",
+      "artPath": "art/gacha-amaterasu.png",
+      "artSha256": "fa8b83059bebf6dff99114b17a2211619fc57629dfb22f2305644f60c1aba275",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "asteria",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "asteria",
+          "amaterasu-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "asteria"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "asteria"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD011",
+      "characterId": "evelyn",
+      "name": "イザナミ",
+      "displayName": "イザナミ",
+      "epithet": "黄泉のフリル",
+      "role": "tank",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "evelyn-art",
+      "artPath": "art/gacha-izanami.png",
+      "artSha256": "8288456a045bde93683d43d2679f2705c61cc78b40df2719a584d5f927860a2a",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "evelyn",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "evelyn",
+          "izanami-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "evelyn"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "吸収の王冠と主攻撃",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "吸収の王冠と主攻撃",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "evelyn"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "evelyn"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD012",
+      "characterId": "selene",
+      "name": "セレネ",
+      "displayName": "セレネ",
+      "epithet": "月白の振袖",
+      "role": "healer",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "selene-art",
+      "artPath": "art/gacha-selene.webp",
+      "artSha256": "2ba6fe50c146e6959acf6ba18772be9e9aa25bcab368b377460acb1b4a36056c",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "selene",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "selene",
+          "selene-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり・別の姿",
+        "ideaSourceFormIds": [
+          "selene-standard"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。"
+      },
+      "status": "idea",
+      "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "selene-standard"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD013",
+      "characterId": "athena",
+      "name": "アテナ",
+      "displayName": "アテナ",
+      "epithet": "知恵咲く羽織",
+      "role": "tank",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "athena-art",
+      "artPath": "art/gacha-athena-anime.webp",
+      "artSha256": "178d38a939b4befa2543a00e50132248b5269e07ea0d1325815f6045550d9338",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "athena",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "athena",
+          "athena-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "athena",
+          "athena-standard"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena-standard"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena-standard"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD014",
+      "characterId": "flora",
+      "name": "フローラ",
+      "displayName": "フローラ",
+      "epithet": "百花の晴れ衣",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "flora-art",
+      "artPath": "art/gacha-flora-anime.webp",
+      "artSha256": "f9763bdcb0f6f27f2dcc7020300e8aeda43a8b897dc269a8e806bcb47febf913",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "flora",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "flora",
+          "flora-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD015",
+      "characterId": "rainbow-iris",
+      "name": "イリス",
+      "displayName": "イリス",
+      "epithet": "虹織の訪れ",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "rainbow-iris-art",
+      "artPath": "art/gacha-rainbow-iris-anime.webp",
+      "artSha256": "20f24c47c22fe7297742088750127a70b2f69cd2bda3002d16b4178024a6ce2a",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "rainbow-iris",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "rainbow-iris",
+          "rainbow-iris-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD016",
+      "characterId": "eos",
+      "name": "エオス",
+      "displayName": "エオス",
+      "epithet": "曙染めの小袖",
+      "role": "supporter",
+      "rarity": "R",
+      "published": true,
+      "artId": "eos-art",
+      "artPath": "art/gacha-eos-anime.webp",
+      "artSha256": "5628e3b31601f44acddb067ca2175b65a785c5223a7e341bad07303ab2c2c6c5",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "eos",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "eos",
+          "eos-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD017",
+      "characterId": "nike",
+      "name": "ニケ",
+      "displayName": "ニケ",
+      "epithet": "風結びの羽織",
+      "role": "attacker",
+      "rarity": "R",
+      "published": true,
+      "artId": "nike-art",
+      "artPath": "art/gacha-nike-anime.webp",
+      "artSha256": "347e2dab02a2ea0aba1054172a838021145f1d76d1186f692595204b9d2aa8a3",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "nike",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "nike",
+          "nike-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD018",
+      "characterId": "vespera",
+      "name": "ヴェスパ",
+      "displayName": "ヴェスパ",
+      "epithet": "星炉の調律師",
+      "role": "supporter",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "vespera-art",
+      "artPath": "art/gacha-vespera.png",
+      "artSha256": "39e8178b84320a824b59957af3f0f3639fd87f5d322acbade28b7a798de4cedc",
+      "artWidth": 1086,
+      "artHeight": 1448,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "vespera",
+        "explicitFamilyId": "vespera",
+        "linkedFormIds": [
+          "vespera"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "vespera"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "vespera"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD019",
+      "characterId": "miette",
+      "name": "ミエット",
+      "displayName": "ミエット",
+      "epithet": "修繕庭の縫い手",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "miette-art",
+      "artPath": "art/gacha-miette.png",
+      "artSha256": "7a9f78de67573076fa2f65b89af6b283ab730771f7b0199793f73a326fa210a6",
+      "artWidth": 1086,
+      "artHeight": 1448,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "miette",
+        "explicitFamilyId": "miette",
+        "linkedFormIds": [
+          "miette"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "miette"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "miette"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "miette"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "miette"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD020",
+      "characterId": "tikka",
+      "name": "ティッカ",
+      "displayName": "ティッカ",
+      "epithet": "秒針のいたずら",
+      "role": "debuffer",
+      "rarity": "R",
+      "published": true,
+      "artId": "tikka-art",
+      "artPath": "art/gacha-tikka.png",
+      "artSha256": "bcb503909026844374c23768e60caf0b2c538e71eac605205133cd25d7a2134c",
+      "artWidth": 1086,
+      "artHeight": 1448,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "tikka",
+        "explicitFamilyId": "tikka",
+        "linkedFormIds": [
+          "tikka"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD021",
+      "characterId": "nox",
+      "name": "ノクス",
+      "displayName": "ノクス",
+      "epithet": "零式・無赦の執行者",
+      "role": "attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "nox-art",
+      "artPath": "art/gacha-nox.png",
+      "artSha256": "7dad95f3990ba36410e7d5b33dcc1b2d1cdb6cd315ad2df370116e031cf195fc",
+      "artWidth": 1440,
+      "artHeight": 1920,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "nox",
+        "explicitFamilyId": "nox",
+        "linkedFormIds": [
+          "nox"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "nox"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "nox"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "nox"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "nox"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "nox"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD022",
+      "characterId": "kuzuha",
+      "name": "葛葉",
+      "displayName": "葛葉",
+      "epithet": "宵宮の妖狐姫",
+      "role": "debuffer",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "kuzuha-art",
+      "artPath": "art/event-kuzuha.png",
+      "artSha256": "c31c10f55a340fdfd5396cae840af674ed23e5b3ae2f50ae5f42646cb3c09ad5",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "kuzuha",
+        "explicitFamilyId": "kuzuha",
+        "linkedFormIds": [
+          "kuzuha",
+          "kuzuha-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD023",
+      "characterId": "kuzuha-awakened",
+      "name": "九尾・葛葉",
+      "displayName": "九尾・葛葉",
+      "epithet": "月蝕にひらく九つの契り",
+      "role": "debuffer",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "kuzuha-awakened-art",
+      "artPath": "art/event-kuzuha-awakened.png",
+      "artSha256": "9df3ffcfeead8288e1f37e9a38fe5d46f3c198c07376db1a4dfc0b202434b694",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "kuzuha",
+        "explicitFamilyId": "kuzuha",
+        "linkedFormIds": [
+          "kuzuha",
+          "kuzuha-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD024",
+      "characterId": "artemis",
+      "name": "アルテミス",
+      "displayName": "アルテミス",
+      "epithet": "月弓の狩衣",
+      "role": "attacker",
+      "rarity": "SR",
+      "published": true,
+      "artId": "artemis-art",
+      "artPath": "art/gacha-artemis.png",
+      "artSha256": "9eb8b0747acd2696a2677e1c0b44e4cdda8aae0a1a48351d03f05b36668d1b79",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "artemis",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "artemis",
+          "artemis-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD025",
+      "characterId": "persephone",
+      "name": "ペルセポネ",
+      "displayName": "ペルセポネ",
+      "epithet": "柘榴咲く境界",
+      "role": "debuffer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "persephone-art",
+      "artPath": "art/gacha-persephone.png",
+      "artSha256": "01bf52367fdcc0faf1d9a842dc63d0552917980e30f2a4064a7248cf1650819f",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "persephone",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "persephone",
+          "persephone-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "persephone"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "睡眠と夢織の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "睡眠と夢織の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "persephone"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD026",
+      "characterId": "hestia",
+      "name": "ヘスティア",
+      "displayName": "ヘスティア",
+      "epithet": "帰り灯の小袖",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "hestia-art",
+      "artPath": "art/gacha-hestia.png",
+      "artSha256": "c1515e05cfcdac5e2842c4c6cdfa9fc284e4772a07ef8734c5b1641df0515ffb",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "hestia",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "hestia",
+          "hestia-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD027",
+      "characterId": "hebe",
+      "name": "ヘベ",
+      "displayName": "ヘベ",
+      "epithet": "祝杯の水衣",
+      "role": "healer",
+      "rarity": "R",
+      "published": true,
+      "artId": "hebe-art",
+      "artPath": "art/gacha-hebe.png",
+      "artSha256": "e52a08abbccb23a37ac782ba092b3c61dad13f64c258b4d61d06e78dbd5df3ab",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "hebe",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "hebe",
+          "hebe-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD028",
+      "characterId": "seoritsu",
+      "name": "セオリツヒメ",
+      "displayName": "セオリツヒメ",
+      "epithet": "白瀬にほどく禊",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "seoritsu-art",
+      "artPath": "art/gacha-seoritsu.png",
+      "artSha256": "d2a6c844dad4cbb12b347c5978434918cdf6b54840fbc79175f161ed74b59b5a",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "seoritsu",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "seoritsu",
+          "seoritsu-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD029",
+      "characterId": "ukanomitama",
+      "name": "ウカノミタマ",
+      "displayName": "ウカノミタマ",
+      "epithet": "宵倉の稲穂守り",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "ukanomitama-art",
+      "artPath": "art/gacha-ukanomitama.png",
+      "artSha256": "3fef848456e07cf928372daf3e863a092461334cf87eaea8738a4fa1683693b0",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "ukanomitama",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "ukanomitama",
+          "ukanomitama-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "ukanomitama"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "ukanomitama"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD030",
+      "characterId": "mizuhanome",
+      "name": "ミヅハノメ",
+      "displayName": "ミヅハノメ",
+      "epithet": "雨帳の水鏡",
+      "role": "debuffer",
+      "rarity": "R",
+      "published": true,
+      "artId": "mizuhanome-art",
+      "artPath": "art/gacha-mizuhanome.png",
+      "artSha256": "332ceaf8bb6906ab0d74700db5a6a288f92e2a0b7c7d1b50a2a4250b2f2f15d4",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "mizuhanome",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "mizuhanome"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD031",
+      "characterId": "haniyasu",
+      "name": "ハニヤスヒメ",
+      "displayName": "ハニヤスヒメ",
+      "epithet": "金継ぎの埴土",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "haniyasu-art",
+      "artPath": "art/gacha-haniyasu.png",
+      "artSha256": "752853552d6e3b6945f011b323c0ac853f617572676321533281e5a157fee292",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "haniyasu",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "haniyasu"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD032",
+      "characterId": "toyotama",
+      "name": "トヨタマヒメ",
+      "displayName": "トヨタマヒメ",
+      "epithet": "真珠に眠る返し潮",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "toyotama-art",
+      "artPath": "art/gacha-toyotama.png",
+      "artSha256": "e8be7def6fd6bd2f35e32bca63cda27acd7bb7dc487b5cdfa4ccc71c1e006fe2",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "toyotama",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "toyotama",
+          "toyotama-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD033",
+      "characterId": "wakahirume",
+      "name": "ワカヒルメ",
+      "displayName": "ワカヒルメ",
+      "epithet": "ほどけぬ暁の織り手",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "wakahirume-art",
+      "artPath": "art/gacha-wakahirume.png",
+      "artSha256": "f956a1cbc2afd3770cbe93e1784e885ac971eaddc8d04af28b704e6645867cbd",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "wakahirume",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "wakahirume",
+          "wakahirume-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD034",
+      "characterId": "iwanagahime",
+      "name": "イワナガヒメ",
+      "displayName": "イワナガヒメ",
+      "epithet": "朽ちぬ石の黒レース",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "iwanagahime-art",
+      "artPath": "art/gacha-iwanagahime.png",
+      "artSha256": "e229f490de1a6a33d19fd82a92f4d102f9392a23ee69bbf190ceeb47ce5d934f",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "iwanagahime",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "iwanagahime"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD035",
+      "characterId": "kukurihime",
+      "name": "ククリヒメ",
+      "displayName": "ククリヒメ",
+      "epithet": "月夜にほどく紅の契り",
+      "role": "debuffer",
+      "rarity": "R",
+      "published": true,
+      "artId": "kukurihime-art",
+      "artPath": "art/gacha-kukurihime.png",
+      "artSha256": "9c617b4c65d3a7c85c561e91532617315ecea6e96bc6c3ef33e0200802cb2ec5",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "kukurihime",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "kukurihime"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD036",
+      "characterId": "lisette",
+      "name": "リゼット",
+      "displayName": "リゼット",
+      "epithet": "弔鐘の剣姫",
+      "role": "debuffer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "lisette-art",
+      "artPath": "art/lisette.png",
+      "artSha256": "29a76bc025d163e85eea3282457af695103d585753fb53f5878aa86e371186f5",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "lisette",
+        "explicitFamilyId": "lisette",
+        "linkedFormIds": [
+          "lisette",
+          "lisette-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD037",
+      "characterId": "elaine-awakened",
+      "name": "エレイン",
+      "displayName": "覚醒エレイン",
+      "epithet": "朝露を待つ白花",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "elaine-awakened-art",
+      "artPath": "art/elaine-awakened.png",
+      "artSha256": "20d3c1870441df92fd8bed0bfd4d3d291bd3027f490d9b401b0eed5573212369",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "elaine",
+        "explicitFamilyId": "elaine",
+        "linkedFormIds": [
+          "elaine",
+          "elaine-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "elaine",
+          "elaine-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "回復と吸収の支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "砲撃後の立て直し",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "HP消費を支える祈り手",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "elaine-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD038",
+      "characterId": "liora-awakened",
+      "name": "リオラ",
+      "displayName": "覚醒リオラ",
+      "epithet": "帰還を迎える銀盾",
+      "role": "tank",
+      "rarity": "SR",
+      "published": true,
+      "artId": "liora-awakened-art",
+      "artPath": "art/liora-awakened.png",
+      "artSha256": "0cc9e66dd0050d86241ae25a933cf6302d6b3514051c4fda1358758ba7e59c9d",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "liora",
+        "explicitFamilyId": "liora",
+        "linkedFormIds": [
+          "liora",
+          "liora-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "liora",
+          "liora-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "athena-free-third-floor",
+          "name": "アテナ抜き第3層の受け役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part3/script.py",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "守りを維持する盾役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "送電役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        },
+        {
+          "id": "athena-free-third-floor",
+          "name": "アテナ抜き第3層の受け役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part3/script.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "liora-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD039",
+      "characterId": "noelle-awakened",
+      "name": "ノエル",
+      "displayName": "覚醒ノエル",
+      "epithet": "明け星を記す者",
+      "role": "area_attacker",
+      "rarity": "SR",
+      "published": true,
+      "artId": "noelle-awakened-art",
+      "artPath": "art/noelle-awakened.png",
+      "artSha256": "cc88ff5ef8a6dcc56a647381d87b61ece9bc15ceb3e96e139b3d23fb210a40fd",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "noelle",
+        "explicitFamilyId": "noelle",
+        "linkedFormIds": [
+          "noelle",
+          "noelle-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "noelle",
+          "noelle-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令・覚醒",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "通常技の待ちを短縮",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "白灯石で障壁を補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "星炉からゲージを補給",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        },
+        {
+          "id": "command-doctrine",
+          "name": "星図の号令・覚醒",
+          "scope": "recorded-or-designed-build",
+          "evidence": "src/domain/command-doctrine.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "noelle-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD040",
+      "characterId": "lisette-awakened",
+      "name": "リゼット",
+      "displayName": "覚醒リゼット",
+      "epithet": "朝を告げる弔鐘",
+      "role": "debuffer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "lisette-awakened-art",
+      "artPath": "art/lisette-awakened.png",
+      "artSha256": "9d015060cd6608f2091c8af85c52453ca5e880a2001be2cfbeaaee20c21be0f7",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "lisette",
+        "explicitFamilyId": "lisette",
+        "linkedFormIds": [
+          "lisette",
+          "lisette-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD041",
+      "characterId": "seris-awakened",
+      "name": "セリス",
+      "displayName": "覚醒セリス",
+      "epithet": "暁を返す剣",
+      "role": "attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "seris-awakened-art",
+      "artPath": "art/seris-awakened.png",
+      "artSha256": "bd4dc1f2bbeb1fd846dbd8c23283d3be3c64024565daf5927d9e002782782582",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "seris",
+        "explicitFamilyId": "seris",
+        "linkedFormIds": [
+          "seris",
+          "seris-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "seris",
+          "seris-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris"
+        },
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残響と連鎖の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "shield-cannon",
+          "name": "障壁砲台",
+          "scope": "live-recipe",
+          "role": "障壁を撃ち出す砲撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "起こす相手を選ぶ攻撃役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "戻った通常技で攻める役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "seris-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD042",
+      "characterId": "selene-standard",
+      "name": "セレネ",
+      "displayName": "セレネ〈通常衣装〉",
+      "epithet": "月明かりの導き手",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "selene-standard-art",
+      "artPath": "art/gacha-selene-standard.webp",
+      "artSha256": "be17885f915e2b32f75685910f8aac56580c32802f992332c326e2c69d31f217",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "selene",
+        "explicitFamilyId": "selene",
+        "linkedFormIds": [
+          "selene",
+          "selene-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "selene-standard"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "selene-standard"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD043",
+      "characterId": "athena-standard",
+      "name": "アテナ",
+      "displayName": "アテナ〈通常衣装〉",
+      "epithet": "静謐の知恵",
+      "role": "tank",
+      "rarity": "SR",
+      "published": true,
+      "artId": "athena-standard-art",
+      "artPath": "art/gacha-athena-standard.webp",
+      "artSha256": "2bd1ab9092eac97947e9bca9e3b30a01bd615177ebda5cc151bc9aea24ec698c",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "athena",
+        "explicitFamilyId": "athena",
+        "linkedFormIds": [
+          "athena",
+          "athena-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "athena",
+          "athena-standard"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "攻撃役を守る盾",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena"
+        },
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "妨害役を守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena-standard"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "再使用まで守る王冠",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "athena-standard"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD044",
+      "characterId": "flora-standard",
+      "name": "フローラ",
+      "displayName": "フローラ〈通常衣装〉",
+      "epithet": "朝庭の花守り",
+      "role": "healer",
+      "rarity": "R",
+      "published": true,
+      "artId": "flora-standard-art",
+      "artPath": "art/gacha-flora-standard.webp",
+      "artSha256": "6ba32c307967de8c3c0c6d308e5a891cb894a635effb37cdf769dcd69f45281d",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "flora",
+        "explicitFamilyId": "flora",
+        "linkedFormIds": [
+          "flora",
+          "flora-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD045",
+      "characterId": "amaterasu-standard",
+      "name": "アマテラス",
+      "displayName": "アマテラス〈通常衣装〉",
+      "epithet": "暁を照らす光",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "amaterasu-standard-art",
+      "artPath": "art/gacha-amaterasu-standard.webp",
+      "artSha256": "bb40ea31f4f5aa4af53bca3c60d496bdbb74bd241419dc90f33b8c109e7c39b6",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "asteria",
+        "explicitFamilyId": "asteria",
+        "linkedFormIds": [
+          "asteria",
+          "amaterasu-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり・別の姿",
+        "ideaSourceFormIds": [
+          "asteria"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。"
+      },
+      "status": "idea",
+      "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": [
+        {
+          "id": "echo-chain",
+          "name": "残響連鎖",
+          "scope": "live-recipe",
+          "role": "残った敵を削る範囲役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "asteria"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD046",
+      "characterId": "izanami-standard",
+      "name": "イザナミ",
+      "displayName": "イザナミ〈通常衣装〉",
+      "epithet": "静かな境の守り手",
+      "role": "debuffer",
+      "rarity": "R",
+      "published": true,
+      "artId": "izanami-standard-art",
+      "artPath": "art/gacha-izanami-standard.webp",
+      "artSha256": "2429c3fcab8cca7db9961cbfb332bf6bf3e35aad28e9aec24a7bf46eb5e67d8e",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "evelyn",
+        "explicitFamilyId": "evelyn",
+        "linkedFormIds": [
+          "evelyn",
+          "izanami-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり・別の姿",
+        "ideaSourceFormIds": [
+          "evelyn"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。"
+      },
+      "status": "idea",
+      "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "吸収の王冠と主攻撃",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "evelyn"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "回復までを支える守護",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "evelyn"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD047",
+      "characterId": "artemis-standard",
+      "name": "アルテミス",
+      "displayName": "アルテミス〈通常衣装〉",
+      "epithet": "月森の道しるべ",
+      "role": "attacker",
+      "rarity": "SR",
+      "published": true,
+      "artId": "artemis-standard-art",
+      "artPath": "art/gacha-artemis-standard.webp",
+      "artSha256": "278c87611a379ad565766d8c92a0f0fa010ea0281ba9fbcdebdbb7f9f8284bde",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "artemis",
+        "explicitFamilyId": "artemis",
+        "linkedFormIds": [
+          "artemis",
+          "artemis-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD048",
+      "characterId": "persephone-standard",
+      "name": "ペルセポネ",
+      "displayName": "ペルセポネ〈通常衣装〉",
+      "epithet": "芽吹きを待つ庭",
+      "role": "debuffer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "persephone-standard-art",
+      "artPath": "art/gacha-persephone-standard.webp",
+      "artSha256": "5562f408310d13a1368057357b19c12a04e91f3c0dde03939e974dd62536b3c0",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "persephone",
+        "explicitFamilyId": "persephone",
+        "linkedFormIds": [
+          "persephone",
+          "persephone-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり・別の姿",
+        "ideaSourceFormIds": [
+          "persephone"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。"
+      },
+      "status": "idea",
+      "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "睡眠と夢織の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "persephone"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD049",
+      "characterId": "hestia-standard",
+      "name": "ヘスティア",
+      "displayName": "ヘスティア〈通常衣装〉",
+      "epithet": "帰り道の灯火",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "hestia-standard-art",
+      "artPath": "art/gacha-hestia-standard.webp",
+      "artSha256": "c231a730bcee1faa875712d58d84cf8eee2af12f67f28c1aa5c5dd3923481f91",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "hestia",
+        "explicitFamilyId": "hestia",
+        "linkedFormIds": [
+          "hestia",
+          "hestia-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD050",
+      "characterId": "hebe-standard",
+      "name": "ヘベ",
+      "displayName": "ヘベ〈通常衣装〉",
+      "epithet": "ひと息の茶会",
+      "role": "healer",
+      "rarity": "R",
+      "published": true,
+      "artId": "hebe-standard-art",
+      "artPath": "art/gacha-hebe-standard.webp",
+      "artSha256": "27ba90cec97d91a637a4161c80162cbc4157c05f2ea52b12dbc6890e38655c58",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "hebe",
+        "explicitFamilyId": "hebe",
+        "linkedFormIds": [
+          "hebe",
+          "hebe-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD051",
+      "characterId": "eos-standard",
+      "name": "エオス",
+      "displayName": "エオス〈通常衣装〉",
+      "epithet": "朝風の旅人",
+      "role": "supporter",
+      "rarity": "R",
+      "published": true,
+      "artId": "eos-standard-art",
+      "artPath": "art/gacha-eos-standard.webp",
+      "artSha256": "39f11121937f2905e57db4bb1440d86796acf19870840e59c918d2bbba0d9b82",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "eos",
+        "explicitFamilyId": "eos",
+        "linkedFormIds": [
+          "eos",
+          "eos-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD052",
+      "characterId": "nike-standard",
+      "name": "ニケ",
+      "displayName": "ニケ〈通常衣装〉",
+      "epithet": "若葉の誓い",
+      "role": "attacker",
+      "rarity": "R",
+      "published": true,
+      "artId": "nike-standard-art",
+      "artPath": "art/gacha-nike-standard.webp",
+      "artSha256": "e6510a6cc1c008c1c9819f1619d2213fc85ed2d82e089e8800b55158d0736939",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "nike",
+        "explicitFamilyId": "nike",
+        "linkedFormIds": [
+          "nike",
+          "nike-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD053",
+      "characterId": "rainbow-iris-standard",
+      "name": "イリス",
+      "displayName": "イリス〈通常衣装〉",
+      "epithet": "雨上がりの便り",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "rainbow-iris-standard-art",
+      "artPath": "art/gacha-rainbow-iris-standard.webp",
+      "artSha256": "fa3b8bae044283e97f723673bbb46cbf73b68b373b531e50448e65240cf1a7d4",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "rainbow-iris",
+        "explicitFamilyId": "rainbow-iris",
+        "linkedFormIds": [
+          "rainbow-iris",
+          "rainbow-iris-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD054",
+      "characterId": "toyotama-standard",
+      "name": "トヨタマヒメ",
+      "displayName": "トヨタマヒメ〈通常衣装〉",
+      "epithet": "凪を運ぶ旅衣",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "toyotama-standard-art",
+      "artPath": "art/gacha-toyotama-standard.webp",
+      "artSha256": "8c88a61c48321457da1872552e00a7c95b4c163896752f8552261cd2cd7b61a1",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "toyotama",
+        "explicitFamilyId": "toyotama",
+        "linkedFormIds": [
+          "toyotama",
+          "toyotama-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD055",
+      "characterId": "lunette",
+      "name": "ルネット",
+      "displayName": "ルネット",
+      "epithet": "時計庭のうさぎ姫",
+      "role": "area_attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "lunette-art",
+      "artPath": "art/event-lunette.png",
+      "artSha256": "3c042600954fc271a7f92de78945c900913405b7780537a0d5a6227041699a59",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "lunette",
+        "explicitFamilyId": "lunette",
+        "linkedFormIds": [
+          "lunette",
+          "lunette-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "lunette",
+          "lunette-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette-awakened"
+        },
+        {
+          "id": "second-floor-awakened",
+          "name": "第2層の全体攻撃役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part2/chapters.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD056",
+      "characterId": "lunette-awakened",
+      "name": "星時計・ルネット",
+      "displayName": "星時計・ルネット",
+      "epithet": "夜明けを刻むうさぎ隊",
+      "role": "area_attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "lunette-awakened-art",
+      "artPath": "art/event-lunette-awakened-loop-poster.png",
+      "artSha256": "6684072d8e11eab32ac990c03c6198c6702ff8200a992ea1cf1fd40c371b4f76",
+      "artWidth": 720,
+      "artHeight": 960,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "awakened",
+      "shortFormLabel": "覚醒",
+      "family": {
+        "canonicalGirlId": "lunette",
+        "explicitFamilyId": "lunette",
+        "linkedFormIds": [
+          "lunette",
+          "lunette-awakened"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "lunette",
+          "lunette-awakened"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "second-floor-awakened",
+          "name": "第2層の全体攻撃役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part2/chapters.py",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette"
+        },
+        {
+          "id": "rabbit-battery",
+          "name": "うさぎの星炉",
+          "scope": "live-recipe",
+          "role": "うさぎ隊を呼ぶ主役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette-awakened"
+        },
+        {
+          "id": "second-floor-awakened",
+          "name": "第2層の全体攻撃役",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-part2/chapters.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "lunette-awakened"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD057",
+      "characterId": "lucielle",
+      "name": "リュシエル",
+      "displayName": "リュシエル",
+      "epithet": "銀灯に迷う訪問者",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "lucielle-art",
+      "artPath": "art/rare-lucielle.png",
+      "artSha256": "0cf3b618cde0ee23cda18b3bb371dbe92e709fcbfcca9dc17f1252bacd355b7c",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "lucielle",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "lucielle"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD058",
+      "characterId": "nemuria",
+      "name": "ネムリア",
+      "displayName": "ネムリア",
+      "epithet": "夢蛾を連れる夜の客人",
+      "role": "debuffer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "nemuria-art",
+      "artPath": "art/rare-nemuria.png",
+      "artSha256": "0232f690a4048b7201403917bae92d91c6f1e094dabb26f9e505db36a8e0b9af",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "nemuria",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "nemuria"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "nemuria"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "睡眠と夢織の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "睡眠と夢織の起点",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "nemuria"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD059",
+      "characterId": "chrona",
+      "name": "クローナ",
+      "displayName": "クローナ",
+      "epithet": "凍暁の機巧聖女",
+      "role": "area_attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "chrona-art",
+      "artPath": "art/trial-chrona.webp",
+      "artSha256": "4a4da4d41d9cd07e88bd042436370a83ea398738c4abaa1fb1198b9bd4003434",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "chrona",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "chrona"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD060",
+      "characterId": "fortuna",
+      "name": "フォルトゥナ",
+      "displayName": "フォルトゥナ",
+      "epithet": "朽ちた金貨に宿る祈り",
+      "role": "supporter",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "fortuna-art",
+      "artPath": "art/gold-fortuna.webp",
+      "artSha256": "427efb9cef66ad58def9e71114780aa0cd97f7877bfe81f219dfac847e994541",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "fortuna",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "fortuna"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD061",
+      "characterId": "hecate",
+      "name": "ヘカテ",
+      "displayName": "ヘカテ",
+      "epithet": "三叉路に灯す蒼火",
+      "role": "debuffer",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "hecate-art",
+      "artPath": "art/gacha-hecate.webp",
+      "artSha256": "458d60c5a97c1b9d9f651339b79a3b03251d1a7de1edc2d9205fcd0c303a580c",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "hecate",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "hecate"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD062",
+      "characterId": "freyja",
+      "name": "フレイヤ",
+      "displayName": "フレイヤ",
+      "epithet": "琥珀に眠る鷹の歌",
+      "role": "attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "freyja-art",
+      "artPath": "art/gacha-freyja.webp",
+      "artSha256": "de0df7d0b0ae2530bcc857978b0e72c653422ebcf460964c92463e4c1c00fb24",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "freyja",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "freyja"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "freyja"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "吸収の王冠と主攻撃",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "吸収の王冠と主攻撃",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "freyja"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD063",
+      "characterId": "benzaiten",
+      "name": "弁財天",
+      "displayName": "弁財天",
+      "epithet": "水鏡にほどける琵琶",
+      "role": "healer",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "benzaiten-art",
+      "artPath": "art/gacha-benzaiten.webp",
+      "artSha256": "54a8a3efca86f1e6c4d81dca24da5d7a64ef612fe905624bad99ae11e9ebade7",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "benzaiten",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "benzaiten"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "benzaiten"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "status-weave",
+          "name": "眠りを織る",
+          "scope": "live-recipe",
+          "role": "失敗したラウンドの支え",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "benzaiten"
+        },
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "二人を戻す回復役",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "benzaiten"
+        },
+        {
+          "id": "skill-rewind",
+          "name": "通常技の巻戻し",
+          "scope": "live-recipe",
+          "role": "回復技の再使用を支える",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "benzaiten"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD064",
+      "characterId": "seoritsu-standard",
+      "name": "セオリツヒメ",
+      "displayName": "セオリツヒメ〈通常衣装〉",
+      "epithet": "清流を渡る旅衣",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "seoritsu-standard-art",
+      "artPath": "art/gacha-seoritsu-standard.webp",
+      "artSha256": "4de35b7179d72ab8243227275df0801ed54f442d1bed1a3643497ea0c0f761a5",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "seoritsu",
+        "explicitFamilyId": "seoritsu",
+        "linkedFormIds": [
+          "seoritsu",
+          "seoritsu-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD065",
+      "characterId": "wakahirume-standard",
+      "name": "ワカヒルメ",
+      "displayName": "ワカヒルメ〈通常衣装〉",
+      "epithet": "朝糸を結ぶ旅人",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "wakahirume-standard-art",
+      "artPath": "art/gacha-wakahirume-standard.webp",
+      "artSha256": "0686dd032f0c49f7cecb3f9bc3f08a8bef2450bc19cc8544a5e59a4301cb4ecb",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "wakahirume",
+        "explicitFamilyId": "wakahirume",
+        "linkedFormIds": [
+          "wakahirume",
+          "wakahirume-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD066",
+      "characterId": "ukanomitama-standard",
+      "name": "ウカノミタマ",
+      "displayName": "ウカノミタマ〈通常衣装〉",
+      "epithet": "実りを分ける旅支度",
+      "role": "supporter",
+      "rarity": "R",
+      "published": true,
+      "artId": "ukanomitama-standard-art",
+      "artPath": "art/gacha-ukanomitama-standard.webp",
+      "artSha256": "d078c2b269f6065fa32bf4a6241424483212187f28339341716803fc5222f4fb",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "standard-costume",
+      "shortFormLabel": "通常衣装",
+      "family": {
+        "canonicalGirlId": "ukanomitama",
+        "explicitFamilyId": "ukanomitama",
+        "linkedFormIds": [
+          "ukanomitama",
+          "ukanomitama-standard"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり・別の姿",
+        "ideaSourceFormIds": [
+          "ukanomitama"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。"
+      },
+      "status": "idea",
+      "reason": "同じ少女の別形態に案がある。この形態での適性・勝利・必須性を実証したという意味ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": [
+        {
+          "id": "enduring-tides",
+          "name": "吸収と再生の潮",
+          "scope": "live-recipe",
+          "role": "通常技の再生と補助",
+          "evidence": "src/domain/builds.ts",
+          "exclusiveClaim": false,
+          "sourceFormId": "ukanomitama"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD067",
+      "characterId": "astraea",
+      "name": "アストレア",
+      "displayName": "アストレア",
+      "epithet": "終天を裁く星冠",
+      "role": "attacker",
+      "rarity": "XR",
+      "published": true,
+      "artId": "astraea-art",
+      "artPath": "art/xr-astraea.png",
+      "artSha256": "e68de0799153f54a71b742c794f70bc82e75ad0f14115b21187b284154b47751",
+      "artWidth": 1280,
+      "artHeight": 1920,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "astraea",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "astraea"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD068",
+      "characterId": "zakuro",
+      "name": "ザクロ",
+      "displayName": "ザクロ",
+      "epithet": "怠惰姫",
+      "role": "area_attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "zakuro-art",
+      "artPath": "art/zakuro.webp",
+      "artSha256": "332686ad7a3f11958410b86a7b38a719db9c5991f9a6b3deff36c42408df519d",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "zakuro",
+        "explicitFamilyId": null,
+        "linkedFormIds": [
+          "zakuro"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD069",
+      "characterId": "ione",
+      "name": "イオネ",
+      "displayName": "イオネ",
+      "epithet": "空欄を預かる書記",
+      "role": "supporter",
+      "rarity": "SR",
+      "published": true,
+      "artId": "ione-art",
+      "artPath": "art/scout-ione.webp",
+      "artSha256": "a9adca89409ddd8be4a0c55e3e08c56755e63080adbd548fd8beeb4d07627039",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "ione",
+        "explicitFamilyId": "ione",
+        "linkedFormIds": [
+          "ione"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "unresearched",
+        "scope": "none",
+        "badge": "none",
+        "symbol": "",
+        "label": "これから研究",
+        "glow": {
+          "enabled": false,
+          "color": "#bce6e1",
+          "strength": 0
+        },
+        "verifiedFormIds": [],
+        "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。"
+      },
+      "status": "unresearched",
+      "reason": "この台帳に固有のビルド案や専用攻略先の証拠はまだ登録していない。キャラクターの強弱・価値の判定ではない。",
+      "buildIdeas": [],
+      "familyBuildIdeas": []
+    },
+    {
+      "seriesId": "BD070",
+      "characterId": "neri",
+      "name": "ネリ",
+      "displayName": "ネリ",
+      "epithet": "灯を返す夜番",
+      "role": "tank",
+      "rarity": "R",
+      "published": true,
+      "artId": "neri-art",
+      "artPath": "art/scout-neri.webp",
+      "artSha256": "72cab4c66571b3121f194c22eb1b8d9bd621881a95d05348609c0c723d4a578b",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "neri",
+        "explicitFamilyId": "neri",
+        "linkedFormIds": [
+          "neri"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "prototype-certified",
+        "scope": "prototype",
+        "badge": "solid-amber",
+        "symbol": "◆",
+        "label": "試作認定",
+        "glow": {
+          "enabled": true,
+          "color": "#efb34c",
+          "strength": 0.9
+        },
+        "certificationId": "LAB-NERI-001",
+        "verifiedFormIds": [
+          "neri"
+        ],
+        "notALiveGameCertificate": true,
+        "conditionsHash": "b793af5e2c2aef4f13b6f76053e1d3922b947034c56d394fe7da40b94853eb58",
+        "reason": "12R護衛LABで、休番を配る能力の条件付き必須性を確認。100固定seedで主編成と相方2枠変更が成功（リオラは共通）。配信済みステージの唯一解・全乱数勝利の主張ではない。"
+      },
+      "status": "prototype-certified",
+      "reason": "12R護衛LABで、休番を配る能力の条件付き必須性を確認。100固定seedで主編成と相方2枠変更が成功（リオラは共通）。配信済みステージの唯一解・全乱数勝利の主張ではない。",
+      "buildIdeas": [
+        {
+          "id": "neri-lantern-research-02",
+          "name": "ネリの灯を返す仕組みを研究",
+          "scope": "prototype-research",
+          "evidence": "scripts/build-diary-02/registry.mts",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "neri-lantern-research-02",
+          "name": "ネリの灯を返す仕組みを研究",
+          "scope": "prototype-research",
+          "evidence": "scripts/build-diary-02/registry.mts",
+          "exclusiveClaim": false,
+          "sourceFormId": "neri"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD071",
+      "characterId": "fio",
+      "name": "フィオ",
+      "displayName": "フィオ",
+      "epithet": "余り布の薬草師",
+      "role": "healer",
+      "rarity": "SR",
+      "published": true,
+      "artId": "fio-art",
+      "artPath": "art/scout-fio.webp",
+      "artSha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "fio",
+        "explicitFamilyId": "fio",
+        "linkedFormIds": [
+          "fio"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "idea",
+        "scope": "idea",
+        "badge": "outline-weak",
+        "symbol": "◇",
+        "label": "案あり",
+        "ideaSourceFormIds": [
+          "fio"
+        ],
+        "glow": {
+          "enabled": true,
+          "color": "#bce6e1",
+          "strength": 0.28
+        },
+        "verifiedFormIds": [],
+        "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。"
+      },
+      "status": "idea",
+      "reason": "実装されたレシピまたは既存研究に役割案がある。代替不能な攻略先の認定ではない。",
+      "buildIdeas": [
+        {
+          "id": "white-flower-overflow",
+          "name": "白花と余り布",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-111/chapters.py",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "white-flower-overflow",
+          "name": "白花と余り布",
+          "scope": "recorded-or-designed-build",
+          "evidence": "scripts/diary-111/chapters.py",
+          "exclusiveClaim": false,
+          "sourceFormId": "fio"
+        }
+      ]
+    },
+    {
+      "seriesId": "BD072",
+      "characterId": "ruka",
+      "name": "ルカ",
+      "displayName": "ルカ",
+      "epithet": "夜継ぎの仕立て屋",
+      "role": "attacker",
+      "rarity": "SSR",
+      "published": true,
+      "artId": "ruka-art",
+      "artPath": "art/scout-ruka.webp",
+      "artSha256": "db66a2e1bfc269f6219de2f93926ac4288753587c39a176f41aa0a2d90e89798",
+      "artWidth": 1024,
+      "artHeight": 1536,
+      "presentation": "full-original-contain",
+      "originalComposition": "portrait_original",
+      "form": "base-or-original-costume",
+      "shortFormLabel": "登録形態",
+      "family": {
+        "canonicalGirlId": "ruka",
+        "explicitFamilyId": "ruka",
+        "linkedFormIds": [
+          "ruka"
+        ],
+        "noClaimThatUntestedFormsWon": true
+      },
+      "gems": {
+        "status": "prototype-certified",
+        "scope": "prototype",
+        "badge": "solid-amber",
+        "symbol": "◆",
+        "label": "試作認定・再審済",
+        "glow": {
+          "enabled": true,
+          "color": "#efb34c",
+          "strength": 0.9
+        },
+        "certificationId": "LAB-RUKA-001",
+        "verifiedFormIds": [
+          "ruka"
+        ],
+        "notALiveGameCertificate": true,
+        "reason": "前回の研究用攻略先を、新しい研究条件で再確認した。現行ゲームの専用攻略先ではない。"
+      },
+      "status": "prototype-certified",
+      "reason": "前回の研究用攻略先を、新しい研究条件で再確認した。現行ゲームの専用攻略先ではない。",
+      "buildIdeas": [
+        {
+          "id": "backstitch-lab",
+          "name": "残り糸・留め縫い",
+          "scope": "prototype",
+          "evidence": "docs/research/ruka-exclusive-build/README.md",
+          "exclusiveClaim": false
+        }
+      ],
+      "familyBuildIdeas": [
+        {
+          "id": "backstitch-lab",
+          "name": "残り糸・留め縫い",
+          "scope": "prototype",
+          "evidence": "docs/research/ruka-exclusive-build/README.md",
+          "exclusiveClaim": false,
+          "sourceFormId": "ruka"
+        }
+      ],
+      "previousRecognition": {
+        "episode": "BRD-001",
+        "state": "prototype-certified",
+        "badge": "solid-amber",
+        "certificationId": "LAB-RUKA-001",
+        "evidencePath": "docs/media/build-research-diary/gem-audit.json",
+        "evidenceSha256": "8da5179bf332b4812f6905a5a142f3bbe5720caad92353cf9635f00e4427fdd8"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "characterId": "pale-wolf",
+      "name": "白霧の狼",
+      "reason": "原画は四足の狼。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "artPath": "art/encounter-pale-wolf.png",
+      "artSha256": "7a49ff4a207cc277f2e1a516b9dccc3cb6ac79f5779e4a962ac9bda4e756c57c",
+      "stillIncludedInLegalBuildComparisons": true
+    },
+    {
+      "characterId": "stone-drake",
+      "name": "石燐の幼竜",
+      "reason": "原画は竜。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "artPath": "art/encounter-stone-drake.png",
+      "artSha256": "38896e50e48879a4c43690968f8e1cb1930965001319e8aabe3cc4f803e50a24",
+      "stillIncludedInLegalBuildComparisons": true
+    },
+    {
+      "characterId": "moon-moth",
+      "name": "月翅の蛾",
+      "reason": "原画は蛾。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "artPath": "art/encounter-moon-moth.png",
+      "artSha256": "bad8b59670064d53dde09e1f408733c3f7a410348665c1186f1e2f1e4b958479",
+      "stillIncludedInLegalBuildComparisons": true
+    }
+  ],
+  "comparisonRoster": [
+    {
+      "characterId": "elaine",
+      "canonicalGirlId": "elaine",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "liora",
+      "canonicalGirlId": "liora",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "seris",
+      "canonicalGirlId": "seris",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "noelle",
+      "canonicalGirlId": "noelle",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "pale-wolf",
+      "canonicalGirlId": "pale-wolf",
+      "displayedInGirlParade": false
+    },
+    {
+      "characterId": "stone-drake",
+      "canonicalGirlId": "stone-drake",
+      "displayedInGirlParade": false
+    },
+    {
+      "characterId": "hollow-keeper",
+      "canonicalGirlId": "hollow-keeper",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "moon-moth",
+      "canonicalGirlId": "moon-moth",
+      "displayedInGirlParade": false
+    },
+    {
+      "characterId": "veil-priestess",
+      "canonicalGirlId": "veil-priestess",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "thorn-witch",
+      "canonicalGirlId": "thorn-witch",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "iris",
+      "canonicalGirlId": "iris",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "mireille",
+      "canonicalGirlId": "mireille",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "asteria",
+      "canonicalGirlId": "asteria",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "evelyn",
+      "canonicalGirlId": "evelyn",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "selene",
+      "canonicalGirlId": "selene",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "athena",
+      "canonicalGirlId": "athena",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "flora",
+      "canonicalGirlId": "flora",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "rainbow-iris",
+      "canonicalGirlId": "rainbow-iris",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "eos",
+      "canonicalGirlId": "eos",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "nike",
+      "canonicalGirlId": "nike",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "vespera",
+      "canonicalGirlId": "vespera",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "miette",
+      "canonicalGirlId": "miette",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "tikka",
+      "canonicalGirlId": "tikka",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "nox",
+      "canonicalGirlId": "nox",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "kuzuha",
+      "canonicalGirlId": "kuzuha",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "kuzuha-awakened",
+      "canonicalGirlId": "kuzuha",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "artemis",
+      "canonicalGirlId": "artemis",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "persephone",
+      "canonicalGirlId": "persephone",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "hestia",
+      "canonicalGirlId": "hestia",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "hebe",
+      "canonicalGirlId": "hebe",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "seoritsu",
+      "canonicalGirlId": "seoritsu",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "ukanomitama",
+      "canonicalGirlId": "ukanomitama",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "mizuhanome",
+      "canonicalGirlId": "mizuhanome",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "haniyasu",
+      "canonicalGirlId": "haniyasu",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "toyotama",
+      "canonicalGirlId": "toyotama",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "wakahirume",
+      "canonicalGirlId": "wakahirume",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "iwanagahime",
+      "canonicalGirlId": "iwanagahime",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "kukurihime",
+      "canonicalGirlId": "kukurihime",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "lisette",
+      "canonicalGirlId": "lisette",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "elaine-awakened",
+      "canonicalGirlId": "elaine",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "liora-awakened",
+      "canonicalGirlId": "liora",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "noelle-awakened",
+      "canonicalGirlId": "noelle",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "lisette-awakened",
+      "canonicalGirlId": "lisette",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "seris-awakened",
+      "canonicalGirlId": "seris",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "selene-standard",
+      "canonicalGirlId": "selene",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "athena-standard",
+      "canonicalGirlId": "athena",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "flora-standard",
+      "canonicalGirlId": "flora",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "amaterasu-standard",
+      "canonicalGirlId": "asteria",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "izanami-standard",
+      "canonicalGirlId": "evelyn",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "artemis-standard",
+      "canonicalGirlId": "artemis",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "persephone-standard",
+      "canonicalGirlId": "persephone",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "hestia-standard",
+      "canonicalGirlId": "hestia",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "hebe-standard",
+      "canonicalGirlId": "hebe",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "eos-standard",
+      "canonicalGirlId": "eos",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "nike-standard",
+      "canonicalGirlId": "nike",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "rainbow-iris-standard",
+      "canonicalGirlId": "rainbow-iris",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "toyotama-standard",
+      "canonicalGirlId": "toyotama",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "lunette",
+      "canonicalGirlId": "lunette",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "lunette-awakened",
+      "canonicalGirlId": "lunette",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "lucielle",
+      "canonicalGirlId": "lucielle",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "nemuria",
+      "canonicalGirlId": "nemuria",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "chrona",
+      "canonicalGirlId": "chrona",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "fortuna",
+      "canonicalGirlId": "fortuna",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "hecate",
+      "canonicalGirlId": "hecate",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "freyja",
+      "canonicalGirlId": "freyja",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "benzaiten",
+      "canonicalGirlId": "benzaiten",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "seoritsu-standard",
+      "canonicalGirlId": "seoritsu",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "wakahirume-standard",
+      "canonicalGirlId": "wakahirume",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "ukanomitama-standard",
+      "canonicalGirlId": "ukanomitama",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "astraea",
+      "canonicalGirlId": "astraea",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "zakuro",
+      "canonicalGirlId": "zakuro",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "ione",
+      "canonicalGirlId": "ione",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "neri",
+      "canonicalGirlId": "neri",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "fio",
+      "canonicalGirlId": "fio",
+      "displayedInGirlParade": true
+    },
+    {
+      "characterId": "ruka",
+      "canonicalGirlId": "ruka",
+      "displayedInGirlParade": true
+    }
+  ],
+  "summary": {
+    "publishedCharacters": 75,
+    "girlRegistrations": 72,
+    "canonicalGirls": 49,
+    "excludedCreatures": 3,
+    "ideaRegistrations": 30,
+    "ideaGirls": 19,
+    "researchStartedGirls": 21,
+    "liveCertifiedGirls": 0,
+    "prototypeCertifiedGirls": 2,
+    "prototypePendingGirls": 0
+  },
+  "priorEpisode": {
+    "episode": "BRD-001",
+    "registryPath": "docs/media/build-research-diary/registry.json",
+    "registrySha256": "0fbee86c95bb821f34f6e3325819fa2520f92643fdd91b4ab407a7a2eedb9499",
+    "gemAuditSha256": "8da5179bf332b4812f6905a5a142f3bbe5720caad92353cf9635f00e4427fdd8"
+  },
+  "episodeResearch": {
+    "interfaceRevalidation": {
+      "path": "artifacts/build-diary-02/research/capture-contract-revalidation.json",
+      "sha256": "d93888a98574e8328e9702cf703d86fa96935eac5a48dfd966cceb54060ae108",
+      "passed": true,
+      "variant": "patched-v2",
+      "existingCaptureLogsUnchanged": true,
+      "targetedChecks": 11,
+      "exhaustiveCommandCoverage": false,
+      "independentRecheck": {
+        "path": "artifacts/build-diary-02/research/independent-contract-v2-recheck.json",
+        "sha256": "63aca1a985a9f5c169c4974de5c97192edb836831c8610f32c89d9691a05fe68",
+        "passed": true
+      },
+      "independentReview": {
+        "path": "artifacts/build-diary-02/research/independent-research-review.json",
+        "sha256": "226123428c79dd95dda88aa5fc20235a991d090143840ca4b7b2148d42bd9cf5",
+        "passed": true
+      },
+      "limits": "11 targeted interface checks and matching seed1 capture traces. Not exhaustive verification of all present/future commands."
+    },
+    "protagonistCharacterId": "neri",
+    "protagonistSeriesId": "BD070",
+    "stage": "research-certified-prototype-only",
+    "currentEvidenceValidated": true
+  }
+}

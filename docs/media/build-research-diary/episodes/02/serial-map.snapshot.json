@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "prefix": "BD",
+  "nextSerial": 73,
+  "allocationRule": "Immutable per implementation characterId. Append only; no recycling or renumbering. Awakened forms and costumes have separate serials, explicit family links remain available.",
+  "entries": [
+    {
+      "seriesId": "BD001",
+      "characterId": "elaine",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD002",
+      "characterId": "liora",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD003",
+      "characterId": "seris",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD004",
+      "characterId": "noelle",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD005",
+      "characterId": "hollow-keeper",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD006",
+      "characterId": "veil-priestess",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD007",
+      "characterId": "thorn-witch",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD008",
+      "characterId": "iris",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD009",
+      "characterId": "mireille",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD010",
+      "characterId": "asteria",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD011",
+      "characterId": "evelyn",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD012",
+      "characterId": "selene",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD013",
+      "characterId": "athena",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD014",
+      "characterId": "flora",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD015",
+      "characterId": "rainbow-iris",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD016",
+      "characterId": "eos",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD017",
+      "characterId": "nike",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD018",
+      "characterId": "vespera",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD019",
+      "characterId": "miette",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD020",
+      "characterId": "tikka",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD021",
+      "characterId": "nox",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD022",
+      "characterId": "kuzuha",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD023",
+      "characterId": "kuzuha-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD024",
+      "characterId": "artemis",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD025",
+      "characterId": "persephone",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD026",
+      "characterId": "hestia",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD027",
+      "characterId": "hebe",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD028",
+      "characterId": "seoritsu",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD029",
+      "characterId": "ukanomitama",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD030",
+      "characterId": "mizuhanome",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD031",
+      "characterId": "haniyasu",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD032",
+      "characterId": "toyotama",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD033",
+      "characterId": "wakahirume",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD034",
+      "characterId": "iwanagahime",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD035",
+      "characterId": "kukurihime",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD036",
+      "characterId": "lisette",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD037",
+      "characterId": "elaine-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD038",
+      "characterId": "liora-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD039",
+      "characterId": "noelle-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD040",
+      "characterId": "lisette-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD041",
+      "characterId": "seris-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD042",
+      "characterId": "selene-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD043",
+      "characterId": "athena-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD044",
+      "characterId": "flora-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD045",
+      "characterId": "amaterasu-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD046",
+      "characterId": "izanami-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD047",
+      "characterId": "artemis-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD048",
+      "characterId": "persephone-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD049",
+      "characterId": "hestia-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD050",
+      "characterId": "hebe-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD051",
+      "characterId": "eos-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD052",
+      "characterId": "nike-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD053",
+      "characterId": "rainbow-iris-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD054",
+      "characterId": "toyotama-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD055",
+      "characterId": "lunette",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD056",
+      "characterId": "lunette-awakened",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD057",
+      "characterId": "lucielle",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD058",
+      "characterId": "nemuria",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD059",
+      "characterId": "chrona",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD060",
+      "characterId": "fortuna",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD061",
+      "characterId": "hecate",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD062",
+      "characterId": "freyja",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD063",
+      "characterId": "benzaiten",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD064",
+      "characterId": "seoritsu-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD065",
+      "characterId": "wakahirume-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD066",
+      "characterId": "ukanomitama-standard",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD067",
+      "characterId": "astraea",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD068",
+      "characterId": "zakuro",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD069",
+      "characterId": "ione",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD070",
+      "characterId": "neri",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD071",
+      "characterId": "fio",
+      "registeredIn": "BRD-001",
+      "retired": false
+    },
+    {
+      "seriesId": "BD072",
+      "characterId": "ruka",
+      "registeredIn": "BRD-001",
+      "retired": false
+    }
+  ]
+}
