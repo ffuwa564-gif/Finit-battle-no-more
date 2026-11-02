@@ -1,0 +1,15 @@
+STILLVEIL 白亜の塔攻略日記 Part3
+
+This episode continues the floor-2 claimed save from Part2. All tower attempts and all seven preparation clears prohibit Athena, including as leader and active unit. Existing ownership on the bench is not removed. No RNG reset, inventory gifts or application changes.
+
+1. Native proofs and continuity: attempt.ts, prepare.ts, awaken.ts, core.ts, native.ts; verify.ts replays all 17 battles in chronological order. Ledger/proofs are in the production archive.
+2. Capture: Vite4328, capture.mjs ID 2. Five native recordings, multi-anchor 16kHz calibration, no heavy synthesis/render alongside capture. sync_capture_initial.py is the exact original processing code for the four early recordings. sync_capture.py documents sustained-clock verification for the final recording. Independent finished native-SE matching remains required.
+3. Start existing stillveil-tower-voicevox Docker engine0.26.0. python scripts/diary-part3/script.py creates four-voice narration; then run python scripts/diary-part3/extras.py for the two short round-by-round bridges. Chinese Usagi normal61 and surprise62, all explicitly credited.
+4. python scripts/diary-part3/evidence.py
+5. python scripts/diary-part3/render.py; freeze render.py and visuals.py while rendering. Source/audio/edit/code hashes define caches. Native game and SE use the same cuts. No intermediate AAC. OP v4 first, pastel template, contained complete heads, two-line subtitles.
+6. python scripts/diary-part3/audit.py and visual_qc.py. The exact distributed MP4 must pass real changing frames and actual game-SE at beginning/interior/end of all seven cuts, twelve voice anchors, and common OP. 80ms max; fail closed. Independently reconstruct other audio sources before matching each target.
+7. Run python scripts/diary-part3/serve.py at http://127.0.0.1:4329 (byte-range serving supports browser seeks and this task's /tmp media symlinks). Run node scripts/diary-part3/validate.mjs with the established local WebKit libraries. Full decode and Chromium/WebKit playback/seek are separate checks.
+8. python scripts/diary-part3/package.py; only after exact-MP4 SHA-bound checks. Packages are split into production materials and five lossless-source recordings, below GitHub's 100MiB per-file limit. Music source and music-only mix are excluded.
+9. Publish source branch video/tower-diary-part3, new media branch downloads/tower-diary-part3, then stream-read remote movie/archive SHA256. Do not overwrite Part2, deploy the game, or merge main as part of this media task.
+
+Editorial facts: 10 tower tries, victory19R/four survivors, potions5 (R2/4/5/6/7), fairy1, blooms9. Early guardian37/371HP; healthy end HP. Three inherited T4 stones; no T6 in winning run. Guardian stone is swift echo power9/bulwark100, not rewind and not a whole-item budget T1 claim. Different RNG/configurations do not isolate potion-only causality or establish win rate. Prerecorded legal-command play with post-recorded commentary, not a human first-time livestream.
