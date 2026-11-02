@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "scope": "Existing records and source review; no fresh gameplay or new balance trials in this retrospective",
+  "firstLayerComparison": {
+    "rewind": 61,
+    "flower": 76,
+    "trialsEach": 100,
+    "condition": "Declared T4 fixture and fixed legal policy, seeds70001-70100; not general player win rates or stone-only effects"
+  },
+  "secondLayer": {
+    "failedRounds": 40,
+    "clearRounds": 25,
+    "potions": 3,
+    "fairies": 4,
+    "flowers": 11,
+    "causality": "Awakening, party and controls changed together"
+  },
+  "existingMechanics": {
+    "windupExamples": [
+      {
+        "id": "blue-lantern-path",
+        "strike": {
+          "every": 3,
+          "power": 180,
+          "name": "封域の一撃",
+          "target": "pilot",
+          "windup": {
+            "breakPercent": 8,
+            "weakenedPower": 100,
+            "recoveryPercent": 25
+          }
+        }
+      },
+      {
+        "id": "sealed-arbor",
+        "strike": {
+          "every": 3,
+          "power": 180,
+          "name": "封域の一撃",
+          "target": "pilot",
+          "windup": {
+            "breakPercent": 8,
+            "weakenedPower": 100,
+            "recoveryPercent": 25
+          }
+        }
+      },
+      {
+        "id": "scale-bridge",
+        "strike": {
+          "every": 3,
+          "power": 180,
+          "name": "封域の一撃",
+          "target": "pilot",
+          "windup": {
+            "breakPercent": 8,
+            "weakenedPower": 100,
+            "recoveryPercent": 25
+          }
+        }
+      }
+    ],
+    "implementation": [
+      "src/domain/boss-pressure.ts",
+      "src/domain/engine.ts",
+      "src/ui/IvoryTower.tsx"
+    ],
+    "note": "Telegraphed strikes, defensive stance and damaging a charging boss already exist; proposals concern presentation, encounter-role variety and tuning."
+  },
+  "sources": {
+    "artifacts/diary-111/search/confirmatory.json": "ea429a9762bf89038612aa5a6b5ed5f315ddcff5620cd2a60fcdddf8fe29c70b",
+    "artifacts/diary-111/delivery/Methods.md": "355b2a2ffdefccf921898130edc7daa78614fc6f247cc80333e5a08cbf068d4f",
+    "artifacts/diary-part2-v2/delivery/Methods.md": "c174415a6de9b600317e60cd14c66635b25e64e19b6a171d308d5e1254df6537",
+    "artifacts/diary-part2/content.json": "59992e51517be7fbcd2513cf03684800da61e1edb2bca68df93ea4902d692980",
+    "src/domain/boss-pressure.ts": "4093cf304605e720bcca49111b30ef5d17184041322a7614d65974c9aad004e2"
+  }
+}

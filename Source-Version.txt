@@ -1,0 +1,5 @@
+Video: Part2までの反省会 / source commit 0ec90b09e83e33c5cfe9dc52296de42b1bfdc424
+Approved template: 745c2d099d3c0a99f6a2eb1cd3a93a87147c27e6
+Part1.1.1 game: dec20ebbfb8d139713ffe847ebc48eefe8ff54ca
+Part2 game: 1f4e970117c95a11ef38c8f1e12fe232e5a7b964
+Game changes / new gameplay trials in this episode: none

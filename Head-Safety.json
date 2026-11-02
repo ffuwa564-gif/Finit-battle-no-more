@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "avatarCanvas": [
+    320,
+    440
+  ],
+  "placements": [
+    [
+      0,
+      470
+    ],
+    [
+      1600,
+      470
+    ]
+  ],
+  "opaqueBounds": {
+    "z-happy": [
+      52,
+      39,
+      268,
+      373
+    ],
+    "z-panic": [
+      57,
+      36,
+      263,
+      375
+    ],
+    "m-happy": [
+      37,
+      71,
+      283,
+      338
+    ],
+    "m-deadpan": [
+      37,
+      65,
+      283,
+      345
+    ],
+    "t-happy": [
+      38,
+      40,
+      282,
+      368
+    ],
+    "t-think": [
+      44,
+      35,
+      276,
+      376
+    ]
+  },
+  "bobMaxPixels": 3,
+  "minimumInnerPadding": 30,
+  "method": "Padded contain. No cover crop, no zoom beyond the safe avatar canvas."
+}

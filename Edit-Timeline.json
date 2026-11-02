@@ -1,0 +1,107 @@
+[
+  {
+    "chapter": "build",
+    "start": 144.7,
+    "duration": 28.233333333333334,
+    "source": "artifacts/diary-111/delivery/FullReplay-rewind.mp4",
+    "sourceStart": 17,
+    "sourceEnd": 29,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 360,
+    "playDuration": 12.0,
+    "piece": "artifacts/diary-retrospective/render/build-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "04998c62cb54a264d5da7db5ff423b24252a2b9591ada7e8e084cb9cdd92b552"
+  },
+  {
+    "chapter": "build_flower",
+    "start": 172.93333333333334,
+    "duration": 49.5,
+    "source": "artifacts/diary-111/delivery/FullReplay-flower.mp4",
+    "sourceStart": 64,
+    "sourceEnd": 80,
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 480,
+    "playDuration": 16.0,
+    "piece": "artifacts/diary-retrospective/render/build_flower-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "ea0be994193e09674815fa9fe6208b365d45b47812525148f1ee42e6eee0598c"
+  },
+  {
+    "chapter": "ultimate",
+    "start": 309.4666666666667,
+    "duration": 20.0,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 94.20539498329163,
+    "sourceEnd": 102.20539498329163,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 240,
+    "playDuration": 8.0,
+    "piece": "artifacts/diary-retrospective/render/ultimate-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "d9c7317d99ae58e7207c8fd3276b538654ecd20b2b63e447a3535644e24b8074"
+  },
+  {
+    "chapter": "difficulty_result",
+    "start": 362.4666666666667,
+    "duration": 55.86666666666667,
+    "source": "artifacts/diary-part2/capture/first-try.mkv",
+    "sourceStart": 40.587790966033936,
+    "sourceEnd": 58.587790966033936,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 540,
+    "playDuration": 18.0,
+    "piece": "artifacts/diary-retrospective/render/difficulty_result-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "94686841ffcd9bf2d77dc016873353152dfcca9f8cb861e291a7f03df21c0035"
+  },
+  {
+    "chapter": "play",
+    "start": 525.0666666666667,
+    "duration": 82.63333333333334,
+    "source": "artifacts/diary-part2/capture/tower-1.mkv",
+    "sourceStart": 8,
+    "sourceEnd": 28,
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 600,
+    "playDuration": 20.0,
+    "piece": "artifacts/diary-retrospective/render/play-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "pieceHash": "c6b231b37d85c206e0e2c9c31a2dd186874b6b75c145e967b8f673ad86a685b1"
+  }
+]

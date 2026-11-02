@@ -1,0 +1,1180 @@
+{
+  "chapters": [
+    {
+      "id": "series-op",
+      "title": "共通オープニング v4",
+      "start": 0,
+      "duration": 23.0,
+      "lines": []
+    },
+    {
+      "id": "opening",
+      "title": "可愛くなった。その先は？",
+      "topic": "opening",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "白亜の塔、パートツーまで、お疲れさまなのだ！　今回は三人で反省会なのだ。",
+          "wav": "artifacts/diary-retrospective/speech/8cfd2d96e69055bdb6d9c42e.flac",
+          "duration": 6.250667,
+          "voiceId": 3,
+          "start": 24.0,
+          "end": 30.250667
+        },
+        {
+          "speaker": "t",
+          "text": "画面はかわいくなった！　でも、そのビルド、作ってみたいって思ってもらえた？",
+          "wav": "artifacts/diary-retrospective/speech/7bc6b98b1fa2bd991484e1c1.flac",
+          "duration": 5.098667,
+          "voiceId": 8,
+          "start": 30.360667,
+          "end": 35.459334
+        },
+        {
+          "speaker": "z",
+          "text": "うっ。かわいい部屋に三人で座れたから、もう優勝だと思っていたのだ。",
+          "wav": "artifacts/diary-retrospective/speech/945673447f6760f0a8bfb9cd.flac",
+          "duration": 5.376,
+          "voiceId": 3,
+          "start": 35.569334,
+          "end": 40.945333999999995
+        },
+        {
+          "speaker": "m",
+          "text": "そこから反省ね。今日は、いただいた四つの指摘に、具体的な次の一手を出しましょう。",
+          "wav": "artifacts/diary-retrospective/speech/45ddc0204100742074c7403d.flac",
+          "duration": 5.738667,
+          "voiceId": 2,
+          "start": 41.055334,
+          "end": 46.794001
+        },
+        {
+          "speaker": "t",
+          "text": "ビルドの魅力、難しさ、遊んでる感じ、それから途中のコーナー。全部つながってると思うな。",
+          "wav": "artifacts/diary-retrospective/speech/b3f37345d52a7c57cd708d39.flac",
+          "duration": 6.944,
+          "voiceId": 8,
+          "start": 46.904001,
+          "end": 53.848001000000004
+        },
+        {
+          "speaker": "m",
+          "text": "今回の映像は、これまでの実戦の再掲。これから話す改修案は提案で、実装済みの新機能ではないわ。",
+          "wav": "artifacts/diary-retrospective/speech/5098b48d50b66ea63e69db65.flac",
+          "duration": 7.754667,
+          "voiceId": 2,
+          "start": 53.958001,
+          "end": 61.712668
+        },
+        {
+          "speaker": "z",
+          "text": "リコーダーが、ぼくの心のように、へにゃへにゃなのだ。",
+          "wav": "artifacts/diary-retrospective/speech/607425989263b41bd4ad472a.flac",
+          "duration": 3.733333,
+          "voiceId": 3,
+          "start": 61.82266800000001,
+          "end": 65.55600100000001
+        },
+        {
+          "speaker": "t",
+          "text": "音程の反省は曲に任せて、うちらは動画とゲームを直す話しよ！",
+          "wav": "artifacts/diary-retrospective/speech/c9c7630447b50899bc5bca7a.flac",
+          "duration": 4.426667,
+          "voiceId": 8,
+          "start": 65.66600100000001,
+          "end": 70.092668
+        }
+      ],
+      "start": 23.0,
+      "duration": 47.5
+    },
+    {
+      "id": "recap",
+      "title": "ここまで、何を見せてきた？",
+      "topic": "recap",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "第一層では、敵三人をどう倒すかを考え、巻戻しと白花の編成を比較した。第二層では、ルネットの加入、覚醒、編成の見直しを追ったわ。",
+          "wav": "artifacts/diary-retrospective/speech/cff812a7b468fc78c033e792.flac",
+          "duration": 10.901333,
+          "voiceId": 2,
+          "start": 70.68,
+          "end": 81.581333
+        },
+        {
+          "speaker": "z",
+          "text": "巻戻しの使い手に、低レアのウズメを残す理由も調べたのだ。白花とフィオの回復にも、出番を作れたのだ。",
+          "wav": "artifacts/diary-retrospective/speech/ebd043d33a2f30987f116b80.flac",
+          "duration": 8.373333,
+          "voiceId": 3,
+          "start": 81.691333,
+          "end": 90.064666
+        },
+        {
+          "speaker": "t",
+          "text": "その積み重ね自体はいいじゃん。じゃあ、なんで自分も組もうって気分になりきらないんだろ？",
+          "wav": "artifacts/diary-retrospective/speech/9fbfe4d919cd4d5a731b74bc.flac",
+          "duration": 5.738667,
+          "voiceId": 8,
+          "start": 90.174666,
+          "end": 95.91333300000001
+        },
+        {
+          "speaker": "m",
+          "text": "説明したのは、主に勝てた編成の仕組み。作り始めて、少しずつ噛み合っていく過程は、十分に見せられていなかった。",
+          "wav": "artifacts/diary-retrospective/speech/e4d5e03a5ebe23d43576401a.flac",
+          "duration": 8.106667,
+          "voiceId": 2,
+          "start": 96.02333300000001,
+          "end": 104.13000000000001
+        },
+        {
+          "speaker": "z",
+          "text": "比較用のデータでは、必要な仲間や、ティア四の装備が、最初から揃っていたのだ。",
+          "wav": "artifacts/diary-retrospective/speech/02242d2e049ba5d5b0bc8fb1.flac",
+          "duration": 6.4,
+          "voiceId": 3,
+          "start": 104.24000000000001,
+          "end": 110.64000000000001
+        },
+        {
+          "speaker": "m",
+          "text": "その条件は開示した。でも、条件を説明することと、そこへ辿り着きたくなることは、別なのよね。",
+          "wav": "artifacts/diary-retrospective/speech/aee1d46a4778ad6f4745497b.flac",
+          "duration": 6.944,
+          "voiceId": 2,
+          "start": 110.75,
+          "end": 117.694
+        },
+        {
+          "speaker": "t",
+          "text": "完成した料理の成分表はあった。でも、最初の一口と、うちでも作れるレシピが、遠かった感じ！",
+          "wav": "artifacts/diary-retrospective/speech/bb35f6cd6684943efb1b4cfa.flac",
+          "duration": 7.189333,
+          "voiceId": 8,
+          "start": 117.804,
+          "end": 124.993333
+        },
+        {
+          "speaker": "z",
+          "text": "反省会なのに、お腹が空いてきたのだ。",
+          "wav": "artifacts/diary-retrospective/speech/b84453af121ed7a2b439bf50.flac",
+          "duration": 3.018667,
+          "voiceId": 3,
+          "start": 125.103333,
+          "end": 128.122
+        },
+        {
+          "speaker": "m",
+          "text": "まずはこの差を、動画の責任として考えるわ。入手の楽しさまで伝わらなかった理由を、全部ゲームへ預けないことね。",
+          "wav": "artifacts/diary-retrospective/speech/469b7de75b4cca742226b131.flac",
+          "duration": 8.085333,
+          "voiceId": 2,
+          "start": 128.232,
+          "end": 136.317333
+        }
+      ],
+      "start": 70.5,
+      "duration": 66.2
+    },
+    {
+      "id": "build_intro",
+      "title": "作りたくなる瞬間は？",
+      "topic": "build",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "ビルドの魅力って、数字が大きいことだけ？　うちは、この子がいるから別の子まで働ける、って瞬間が見たい！",
+          "wav": "artifacts/diary-retrospective/speech/9cf39ab1fed05cb92c9b9c13.flac",
+          "duration": 7.413333,
+          "voiceId": 8,
+          "start": 136.88,
+          "end": 144.293333
+        }
+      ],
+      "start": 136.7,
+      "duration": 8.0
+    },
+    {
+      "id": "build",
+      "title": "守る行動を、次の回復へ",
+      "topic": "build",
+      "clip": "rewind",
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "たとえば巻戻しなら、守る行動が味方の通常スキルを早く戻し、その次の回復へつながる。説明を、その場の映像と結びたいわ。",
+          "wav": "artifacts/diary-retrospective/speech/1f1a207b3fa3de25c0c23b5e.flac",
+          "duration": 9.536,
+          "voiceId": 2,
+          "start": 144.88,
+          "end": 154.416
+        },
+        {
+          "speaker": "z",
+          "text": "石の名前を先に全部読むより、回復がまだ戻らない、ここで防御、次の手が戻った、って見せるのだな。",
+          "wav": "artifacts/diary-retrospective/speech/58b34c070b804196feaa86c6.flac",
+          "duration": 8.117333,
+          "voiceId": 3,
+          "start": 154.52599999999998,
+          "end": 162.64333299999998
+        },
+        {
+          "speaker": "m",
+          "text": "ええ。意図、入力、発動、結果を一本につなぐ。実際に短縮が起きたログとゲージを確認して、その場面だけ拡大するの。",
+          "wav": "artifacts/diary-retrospective/speech/aeaac6771ac8c5bdebf4e4f1.flac",
+          "duration": 9.781333,
+          "voiceId": 2,
+          "start": 162.753333,
+          "end": 172.534666
+        }
+      ],
+      "start": 144.7,
+      "duration": 28.233333333333334,
+      "rate": 1,
+      "playDuration": 12.0,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "build_flower",
+      "title": "今の小さな回復が、あとで咲く",
+      "topic": "build",
+      "clip": "flower",
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "白花なら、今は小さくても、あとで咲いて助かった！　そこで一回、気持ちよくさせてほしい。",
+          "wav": "artifacts/diary-retrospective/speech/7124696244acb5e771247440.flac",
+          "duration": 6.304,
+          "voiceId": 8,
+          "start": 173.11333333333334,
+          "end": 179.41733333333335
+        },
+        {
+          "speaker": "m",
+          "text": "以前の白花の成功例では、即時回復三十三と、開花の合計九十二を記録した。合計百二十五という説明にも、実際の出番を添えるわ。",
+          "wav": "artifacts/diary-retrospective/speech/80245b7dc8a60c66aae55a20.flac",
+          "duration": 10.538667,
+          "voiceId": 2,
+          "start": 179.52733333333333,
+          "end": 190.06600033333333
+        },
+        {
+          "speaker": "z",
+          "text": "さらに、良いところだけでは駄目なのだ。ウズメは耐久が低く、撮影した勝利回でも倒れていたのだ。",
+          "wav": "artifacts/diary-retrospective/speech/911ac756979d06b822d6123c.flac",
+          "duration": 7.509333,
+          "voiceId": 3,
+          "start": 190.17600033333335,
+          "end": 197.68533333333335
+        },
+        {
+          "speaker": "t",
+          "text": "弱点があると、守ってあげる工夫も自分の遊びになるね。完璧だから入れる、だけより気になる！",
+          "wav": "artifacts/diary-retrospective/speech/a079deefe4433b7332913aa5.flac",
+          "duration": 6.314667,
+          "voiceId": 8,
+          "start": 197.79533333333333,
+          "end": 204.11000033333335
+        },
+        {
+          "speaker": "m",
+          "text": "次は、核になる一つの連携、支える仲間、苦手な状況、最初の代用品までを、短い一枚のレシピにする。",
+          "wav": "artifacts/diary-retrospective/speech/47babe90305b60230e5112b1.flac",
+          "duration": 8.309333,
+          "voiceId": 2,
+          "start": 204.22000033333333,
+          "end": 212.52933333333334
+        },
+        {
+          "speaker": "z",
+          "text": "ただし、代用品で本当に勝てるかは、まだ検証が必要なのだ。試していない安い装備で、絶対勝てるとは言わないのだ。",
+          "wav": "artifacts/diary-retrospective/speech/8f84be591552ca9fac415e6f.flac",
+          "duration": 9.397333,
+          "voiceId": 3,
+          "start": 212.63933333333335,
+          "end": 222.03666633333336
+        }
+      ],
+      "start": 172.93333333333334,
+      "duration": 49.5,
+      "rate": 1,
+      "playDuration": 16.0,
+      "sourceApplicationSpeed": 1
+    },
+    {
+      "id": "causes",
+      "title": "ゲームの課題？ 動画の課題？",
+      "topic": "causes",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "では、魅力が伝わらないのは、ゲームと動画、どっちが原因なのだ？",
+          "wav": "artifacts/diary-retrospective/speech/d3017a1d00e536c23ad591b0.flac",
+          "duration": 5.365333,
+          "voiceId": 3,
+          "start": 222.61333333333334,
+          "end": 227.97866633333334
+        },
+        {
+          "speaker": "m",
+          "text": "今の記録だけで、割合は決められない。別の編集で同じビルドを見せた比較も、同じ見せ方で仕組みを変えた比較も、していないからね。",
+          "wav": "artifacts/diary-retrospective/speech/4e92081defe970caf7df0d05.flac",
+          "duration": 9.056,
+          "voiceId": 2,
+          "start": 228.08866633333335,
+          "end": 237.14466633333336
+        },
+        {
+          "speaker": "t",
+          "text": "でも、疑わしい場所は分けられるよ。入手先が見えない、発動を見逃す、は動画でも改善できる。",
+          "wav": "artifacts/diary-retrospective/speech/e4d06adb8b1e50a3b5e4ae68.flac",
+          "duration": 7.008,
+          "voiceId": 8,
+          "start": 237.25466633333335,
+          "end": 244.26266633333336
+        },
+        {
+          "speaker": "m",
+          "text": "ゲーム側では、違う編成にしても、共通の強い守り役が中心に残る。そこは、ビルドごとの違いを感じにくくする可能性があるわ。",
+          "wav": "artifacts/diary-retrospective/speech/fd6896a4df8621b82cfdd872.flac",
+          "duration": 9.141333,
+          "voiceId": 2,
+          "start": 244.37266633333334,
+          "end": 253.51399933333335
+        },
+        {
+          "speaker": "z",
+          "text": "アテナを土台に、攻撃役と回復役を変える形が多かったのだ。第二層でも、アテナ依存を解消したわけではないのだ。",
+          "wav": "artifacts/diary-retrospective/speech/ac135f240a0387b6bea77e5e.flac",
+          "duration": 8.853333,
+          "voiceId": 3,
+          "start": 253.62399933333333,
+          "end": 262.4773323333333
+        },
+        {
+          "speaker": "m",
+          "text": "役割分担は必要。でも、毎回同じ土台が最も楽なら、違う連携を作る誘惑が弱くなる。その点はゲームの設計課題として検証したい。",
+          "wav": "artifacts/diary-retrospective/speech/8095303442d1fea2b0483b52.flac",
+          "duration": 10.357333,
+          "voiceId": 2,
+          "start": 262.58733233333334,
+          "end": 272.9446653333333
+        },
+        {
+          "speaker": "t",
+          "text": "じゃあ、動画を面白くするだけで全部解決、とも言えないね。まだ無い気持ちよさを、編集であったことにはできないし。",
+          "wav": "artifacts/diary-retrospective/speech/e53a8a737b18db4bad595e5b.flac",
+          "duration": 7.882667,
+          "voiceId": 8,
+          "start": 273.05466533333333,
+          "end": 280.93733233333336
+        },
+        {
+          "speaker": "m",
+          "text": "次は同じ条件で一か所だけ変え、どの連携が働いたかを見せる。石だけ、仲間だけ、リーダーだけの比較を分けるわ。",
+          "wav": "artifacts/diary-retrospective/speech/064f7b40898050f231c3dc63.flac",
+          "duration": 8.330667,
+          "voiceId": 2,
+          "start": 281.0473323333333,
+          "end": 289.3779993333333
+        },
+        {
+          "speaker": "z",
+          "text": "ゲームには違う勝ち筋を。動画には、その勝ち筋が動く瞬間を。両方を確かめるのだ。",
+          "wav": "artifacts/diary-retrospective/speech/db88251b03e5465f5b5ec971.flac",
+          "duration": 6.848,
+          "voiceId": 3,
+          "start": 289.48799933333333,
+          "end": 296.33599933333335
+        }
+      ],
+      "start": 222.43333333333334,
+      "duration": 74.3
+    },
+    {
+      "id": "corner_intro",
+      "title": "ここで、小さなコーナーです",
+      "topic": "corner_intro",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "説明が続いたから、ここで二十秒！　今の話を、ルネットの必殺で実演してみよ！",
+          "wav": "artifacts/diary-retrospective/speech/212bfaa75d7ac4ec29a1db18.flac",
+          "duration": 5.962667,
+          "voiceId": 8,
+          "start": 296.91333333333336,
+          "end": 302.87600033333337
+        },
+        {
+          "speaker": "z",
+          "text": "今週の、必殺図鑑なのだ！　短く、かわいく、何に効くかを見せるのだ！",
+          "wav": "artifacts/diary-retrospective/speech/b3cef7a64231c9fbc2531b59.flac",
+          "duration": 6.090667,
+          "voiceId": 3,
+          "start": 302.9860003333333,
+          "end": 309.0766673333333
+        }
+      ],
+      "start": 296.73333333333335,
+      "duration": 12.733333333333333
+    },
+    {
+      "id": "ultimate",
+      "title": "20秒・必殺図鑑：ルネット",
+      "topic": "ultimate",
+      "clip": "ultimate",
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "ルネット、出番なのだ！",
+          "wav": "artifacts/diary-retrospective/speech/d71458c57af0fe415c4fc74b.flac",
+          "duration": 1.994667,
+          "voiceId": 3,
+          "start": 309.6466666666667,
+          "end": 311.6413336666667
+        },
+        {
+          "speaker": "m",
+          "text": "敵全体へ。かばうの外へ届くわ。",
+          "wav": "artifacts/diary-retrospective/speech/de87ed7c07c7bcf061ad8239.flac",
+          "duration": 2.496,
+          "voiceId": 2,
+          "start": 311.7513336666667,
+          "end": 314.2473336666667
+        },
+        {
+          "speaker": "t",
+          "text": "最後の一発、でっか！",
+          "wav": "artifacts/diary-retrospective/speech/b57bb07d1215f10936358c81.flac",
+          "duration": 1.898667,
+          "voiceId": 8,
+          "start": 314.76793835004173,
+          "end": 316.6666053500417
+        },
+        {
+          "speaker": "m",
+          "text": "基礎百九十パーセント。連射は演出の配分で、弾の数だけ追加攻撃が増える技ではないわ。",
+          "wav": "artifacts/diary-retrospective/speech/64e29728cb4c078ed9652605.flac",
+          "duration": 6.848,
+          "voiceId": 2,
+          "start": 316.77660535004173,
+          "end": 323.62460535004175
+        },
+        {
+          "speaker": "z",
+          "text": "敵が並ぶときの仕事を見せて、どこで使いたいかまで、伝えるのだ！",
+          "wav": "artifacts/diary-retrospective/speech/a65488e8c13b842909669d3c.flac",
+          "duration": 4.992,
+          "voiceId": 3,
+          "start": 323.73460535004176,
+          "end": 328.7266053500418
+        }
+      ],
+      "start": 309.4666666666667,
+      "duration": 20.0,
+      "rate": 1,
+      "playDuration": 8.0,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "difficulty",
+      "title": "勝てた動画だけで、難しさは測れない",
+      "topic": "difficulty",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "次は、どれほど難しいゲームなのかが伝わらなかった点。まず、勝利映像の一本だけでは、難易度を代表できないわ。",
+          "wav": "artifacts/diary-retrospective/speech/7f82f03fc136b27087aeb601.flac",
+          "duration": 8.16,
+          "voiceId": 2,
+          "start": 329.6466666666667,
+          "end": 337.80666666666673
+        },
+        {
+          "speaker": "z",
+          "text": "第一層の別乱数百通りでは、巻戻し編成が六十一勝、白花編成が七十六勝だったのだ。",
+          "wav": "artifacts/diary-retrospective/speech/8978aae818380f4d067fc2e8.flac",
+          "duration": 8.053333,
+          "voiceId": 3,
+          "start": 337.9166666666667,
+          "end": 345.9699996666667
+        },
+        {
+          "speaker": "m",
+          "text": "ただし、比較用の所持条件と装備、固定した操作方針での結果よ。全プレイヤーの勝率でも、白花の石だけの効果でもない。",
+          "wav": "artifacts/diary-retrospective/speech/87c7a06fb3d49c06bfb194d1.flac",
+          "duration": 9.077333,
+          "voiceId": 2,
+          "start": 346.0799996666667,
+          "end": 355.1573326666667
+        },
+        {
+          "speaker": "t",
+          "text": "初心者が百回やったら、七十六回勝てる、って意味じゃないんだね。装備を揃える難しさも別だし。",
+          "wav": "artifacts/diary-retrospective/speech/133b806ac4b84516fb6971f8.flac",
+          "duration": 6.805333,
+          "voiceId": 8,
+          "start": 355.2673326666667,
+          "end": 362.0726656666667
+        }
+      ],
+      "start": 329.4666666666667,
+      "duration": 33.0
+    },
+    {
+      "id": "difficulty_result",
+      "title": "第二層、40Rと25Rの意味",
+      "topic": "difficulty",
+      "clip": "failure",
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "第二層は通常ルネットの編成で四十ラウンド時間切れ。その後、覚醒と攻撃役追加、操作も変えた回では、二十五ラウンドで勝った。",
+          "wav": "artifacts/diary-retrospective/speech/153793d522a0493823719fc9.flac",
+          "duration": 9.365333,
+          "voiceId": 2,
+          "start": 362.6466666666667,
+          "end": 372.0119996666667
+        },
+        {
+          "speaker": "z",
+          "text": "だから、覚醒しただけで十五ラウンドも縮んだ、とは言えないのだ。",
+          "wav": "artifacts/diary-retrospective/speech/3b5e9b32d0ab2ea7b5115dce.flac",
+          "duration": 4.757333,
+          "voiceId": 3,
+          "start": 372.1219996666667,
+          "end": 376.8793326666667
+        },
+        {
+          "speaker": "m",
+          "text": "勝利回には薬三個、妖精四回、花十一回の助けも含まれる。これを省いて余裕の攻略に見せれば、難しさの印象は変わってしまうわ。",
+          "wav": "artifacts/diary-retrospective/speech/11c253ad6d9edfe4e3176a62.flac",
+          "duration": 10.197333,
+          "voiceId": 2,
+          "start": 376.9893326666667,
+          "end": 387.1866656666667
+        },
+        {
+          "speaker": "t",
+          "text": "次の動画は、必要な準備、操作の忙しさ、負け方を分けて見せたい！　難しいです、の一言じゃ分からないもん。",
+          "wav": "artifacts/diary-retrospective/speech/7e7821afc9b67f747fa9ba35.flac",
+          "duration": 8.064,
+          "voiceId": 8,
+          "start": 387.2966656666667,
+          "end": 395.3606656666667
+        },
+        {
+          "speaker": "m",
+          "text": "同じ装備での再挑戦と、装備を落とした比較も必要ね。何を変えれば越えられる壁なのかを、映像と条件表で示すわ。",
+          "wav": "artifacts/diary-retrospective/speech/776442f0bc8d7e79284fb434.flac",
+          "duration": 8.650667,
+          "voiceId": 2,
+          "start": 395.4706656666667,
+          "end": 404.1213326666667
+        },
+        {
+          "speaker": "m",
+          "text": "今回見せた塔の入口だけで、百層全体の難しさまでは分からない。未攻略の後半を、簡単とも難しいとも決めつけないでおくわ。",
+          "wav": "artifacts/diary-retrospective/speech/829c5e15f9fdc94a7609c5c0.flac",
+          "duration": 9.312,
+          "voiceId": 2,
+          "start": 404.2313326666667,
+          "end": 413.5433326666667
+        },
+        {
+          "speaker": "z",
+          "text": "たくさん負けたことを自慢するより、負けを読めるようにするのだ。",
+          "wav": "artifacts/diary-retrospective/speech/4401a0499c12b729ce8ee675.flac",
+          "duration": 4.277333,
+          "voiceId": 3,
+          "start": 413.6533326666667,
+          "end": 417.9306656666667
+        }
+      ],
+      "start": 362.4666666666667,
+      "duration": 55.86666666666667,
+      "rate": 1,
+      "playDuration": 18.0,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "strategy",
+      "title": "難しくするなら、選択の意味を増やす",
+      "topic": "strategy",
+      "clip": null,
+      "proposal": true,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "今後もっと戦略的にするなら、敵の体力を増やして、制限を短くするのだ？",
+          "wav": "artifacts/diary-retrospective/speech/c3696201980fa3ce80ba7456.flac",
+          "duration": 6.165333,
+          "voiceId": 3,
+          "start": 418.5133333333334,
+          "end": 424.67866633333335
+        },
+        {
+          "speaker": "t",
+          "text": "それだけだと、今より強い装備が必要になった、で終わっちゃわない？　うちは悩んで、判断で助かったって感じたいな。",
+          "wav": "artifacts/diary-retrospective/speech/2d2ef1d9867f87c3926c5b7f.flac",
+          "duration": 7.957333,
+          "voiceId": 8,
+          "start": 424.78866633333337,
+          "end": 432.7459993333334
+        },
+        {
+          "speaker": "m",
+          "text": "既に一部の敵に、予告大技や、溜め中に攻撃で削ると大技が弱まる仕組みがある。そこを十分に見せず、新しい仕組みが無いように語るのも反省ね。",
+          "wav": "artifacts/diary-retrospective/speech/d574ed10507d649ad3a34231.flac",
+          "duration": 10.634667,
+          "voiceId": 2,
+          "start": 432.8559993333334,
+          "end": 443.49066633333337
+        },
+        {
+          "speaker": "z",
+          "text": "なら、予告を見て、防御で耐えるか、溜めを削って弱めるか。今ある選択を、まず動画でも遊びでも、分かる形にするのだ。",
+          "wav": "artifacts/diary-retrospective/speech/d372a335c5e66f2643e3f281.flac",
+          "duration": 10.069333,
+          "voiceId": 3,
+          "start": 443.6006663333334,
+          "end": 453.6699993333334
+        },
+        {
+          "speaker": "m",
+          "text": "そのうえで次版では、必要な役割が違う敵や、対処の選び方を増やす案を試す。守りや火力の一つの軸だけが最適にならないかを点検したい。",
+          "wav": "artifacts/diary-retrospective/speech/160ea642e1fa83ce2aeb29c1.flac",
+          "duration": 10.058667,
+          "voiceId": 2,
+          "start": 453.77999933333336,
+          "end": 463.8386663333334
+        },
+        {
+          "speaker": "t",
+          "text": "最強の守りを連れてきたら全部安心、より、今度は速く倒す仕事、今度は解除する仕事、って席が変わると集めたくなるね！",
+          "wav": "artifacts/diary-retrospective/speech/f152420be12c3f0c5062d1c4.flac",
+          "duration": 8.757333,
+          "voiceId": 8,
+          "start": 463.9486663333334,
+          "end": 472.7059993333334
+        },
+        {
+          "speaker": "m",
+          "text": "敵を倒す順番や、短い危険な時間帯などで、必要な仕事を変える案はある。ただし、必須キャラの所持確認になる設計は避けたいわ。",
+          "wav": "artifacts/diary-retrospective/speech/869dc099a9ed19167dcaca0c.flac",
+          "duration": 9.6,
+          "voiceId": 2,
+          "start": 472.81599933333337,
+          "end": 482.4159993333334
+        },
+        {
+          "speaker": "z",
+          "text": "低レアにも、安く使える妨害や、短い周期で味方を助ける仕事があれば、レア度だけで席が決まらないのだ。",
+          "wav": "artifacts/diary-retrospective/speech/b0413b04cd70a9004e9b60d9.flac",
+          "duration": 8.405333,
+          "voiceId": 3,
+          "start": 482.52599933333335,
+          "end": 490.93133233333333
+        },
+        {
+          "speaker": "m",
+          "text": "難しさは段階を作る。通常の進行では仕組みを覚え、任意の高難度では、見えた危険にどう対応するかを問う。",
+          "wav": "artifacts/diary-retrospective/speech/9bb4855b1716872a0bf290e8.flac",
+          "duration": 8.074667,
+          "voiceId": 2,
+          "start": 491.04133233333334,
+          "end": 499.1159993333333
+        },
+        {
+          "speaker": "t",
+          "text": "失敗したら、装備不足だったのか、判断が遅れたのかを知りたい！　理由が見えないお祈りだけだと、次が考えにくいもん。",
+          "wav": "artifacts/diary-retrospective/speech/af312fa311c2fae0b61ac816.flac",
+          "duration": 8.074667,
+          "voiceId": 8,
+          "start": 499.22599933333333,
+          "end": 507.3006663333333
+        },
+        {
+          "speaker": "m",
+          "text": "既存の予告、選択肢、代償、結果の振り返りを点検し、調整後に判断の幅が増えたかを確かめる。どんな変更も、難しくしただけで成功とはしないわ。",
+          "wav": "artifacts/diary-retrospective/speech/09fece32c28084b4e913b47d.flac",
+          "duration": 11.616,
+          "voiceId": 2,
+          "start": 507.4106663333334,
+          "end": 519.0266663333334
+        },
+        {
+          "speaker": "z",
+          "text": "難しくした、ではなく、次はこうしようが増えた、を目標にするのだ。",
+          "wav": "artifacts/diary-retrospective/speech/447151f01969ee8a4c011314.flac",
+          "duration": 5.546667,
+          "voiceId": 3,
+          "start": 519.1366663333333,
+          "end": 524.6833333333333
+        }
+      ],
+      "start": 418.33333333333337,
+      "duration": 106.73333333333333
+    },
+    {
+      "id": "play",
+      "title": "遊んでいる感じが、どうして薄い？",
+      "topic": "play",
+      "clip": "pilot",
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "それから、実際に遊んでもらってる感じが薄かった、って指摘。ここは、結構大事じゃない？",
+          "wav": "artifacts/diary-retrospective/speech/b1871fe7483fb92dde96ae6d.flac",
+          "duration": 6.549333,
+          "voiceId": 8,
+          "start": 525.2466666666667,
+          "end": 531.7959996666667
+        },
+        {
+          "speaker": "m",
+          "text": "実際のゲームと正規の操作を記録していた。でも、成功する手順を先に固めて、あとから説明を合わせる部分が多かったの。",
+          "wav": "artifacts/diary-retrospective/speech/e8e90eeb7cad10c340dc3a74.flac",
+          "duration": 8.448,
+          "voiceId": 2,
+          "start": 531.9059996666667,
+          "end": 540.3539996666667
+        },
+        {
+          "speaker": "z",
+          "text": "実況の口調でも、見え方は検証報告に寄っていたのだ。ぼくがその場で迷った生配信、と同じではなかったのだ。",
+          "wav": "artifacts/diary-retrospective/speech/551a9f5c87a6fab100bcc066.flac",
+          "duration": 8.426667,
+          "voiceId": 3,
+          "start": 540.4639996666667,
+          "end": 548.8906666666667
+        },
+        {
+          "speaker": "m",
+          "text": "次は、意図、入力、予想外の結果、その次の判断を、少なくとも一ラウンドは続けて見せる。大事な失敗まで切り落とさないわ。",
+          "wav": "artifacts/diary-retrospective/speech/71ea5db11a66ebb182e09425.flac",
+          "duration": 9.845333,
+          "voiceId": 2,
+          "start": 549.0006666666667,
+          "end": 558.8459996666667
+        },
+        {
+          "speaker": "t",
+          "text": "今、回復待つ？　いや、この子が落ちる！　みたいな判断が見たい。答えを知ってる先生だけだと、一緒に遊ぶ余地が少ないんだよね。",
+          "wav": "artifacts/diary-retrospective/speech/7b0b29a37a853f38f5e2b42a.flac",
+          "duration": 9.589333,
+          "voiceId": 8,
+          "start": 558.9559996666667,
+          "end": 568.5453326666667
+        },
+        {
+          "speaker": "z",
+          "text": "ただし、その場で起きていない迷いを、初見のふりで足すのは違うのだ。プレイ時の判断メモを残して、そこから会話にするのだ。",
+          "wav": "artifacts/diary-retrospective/speech/f72049139febeea388cc4407.flac",
+          "duration": 9.141333,
+          "voiceId": 3,
+          "start": 568.6553326666667,
+          "end": 577.7966656666667
+        },
+        {
+          "speaker": "m",
+          "text": "解説のために後から止める場面は、振り返りだと分かるようにする。初挑戦、再挑戦、再掲を、編集で混ぜないことね。",
+          "wav": "artifacts/diary-retrospective/speech/da0c1ee3403c888e051e5d42.flac",
+          "duration": 9.152,
+          "voiceId": 2,
+          "start": 577.9066656666668,
+          "end": 587.0586656666668
+        },
+        {
+          "speaker": "t",
+          "text": "うちらが相談する前に、視聴者にも、この二択どっち？って一瞬考える時間があると、一緒に参加できそう！",
+          "wav": "artifacts/diary-retrospective/speech/f04db1a836c43b6829e56839.flac",
+          "duration": 7.754667,
+          "voiceId": 8,
+          "start": 587.1686656666667,
+          "end": 594.9233326666667
+        },
+        {
+          "speaker": "m",
+          "text": "その問いも、ゲームで実際に選べる操作から出す。存在しない自由な指示や、未実装の技を選べるようには見せないわ。",
+          "wav": "artifacts/diary-retrospective/speech/c7888fdb918951a43940c800.flac",
+          "duration": 7.968,
+          "voiceId": 2,
+          "start": 595.0333326666668,
+          "end": 603.0013326666667
+        },
+        {
+          "speaker": "z",
+          "text": "勝った結果だけでなく、プレイヤーが決めた跡を残すのだ。",
+          "wav": "artifacts/diary-retrospective/speech/d296bc6e4a553251826d558d.flac",
+          "duration": 4.181333,
+          "voiceId": 3,
+          "start": 603.1113326666667,
+          "end": 607.2926656666667
+        }
+      ],
+      "start": 525.0666666666667,
+      "duration": 82.63333333333334,
+      "rate": 1,
+      "playDuration": 20.0,
+      "sourceApplicationSpeed": 2
+    },
+    {
+      "id": "split",
+      "title": "準備編と攻略編、分ける？",
+      "topic": "split",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "なら、準備編と攻略編を、別の動画にすればいいのだ？",
+          "wav": "artifacts/diary-retrospective/speech/345602f9db2f2687b223562d.flac",
+          "duration": 4.810667,
+          "voiceId": 3,
+          "start": 607.88,
+          "end": 612.690667
+        },
+        {
+          "speaker": "m",
+          "text": "長い素材集めや厳選は、別動画に分ける価値がある。でも、攻略を見るのに前の一本が必須だと、入口も増えてしまうわ。",
+          "wav": "artifacts/diary-retrospective/speech/bc8851e1c5fe883f39108148.flac",
+          "duration": 8.778667,
+          "voiceId": 2,
+          "start": 612.8006670000001,
+          "end": 621.5793340000001
+        },
+        {
+          "speaker": "t",
+          "text": "うちは、攻略編だけでも楽しめるのがいい！　最初は一枚で、誰が何をするか見せて、すぐ挑戦しよ。",
+          "wav": "artifacts/diary-retrospective/speech/7e7a67482b793d4d237f76cf.flac",
+          "duration": 7.232,
+          "voiceId": 8,
+          "start": 621.689334,
+          "end": 628.921334
+        },
+        {
+          "speaker": "m",
+          "text": "次回の攻略編は、オープニング後、最初の一分ほどで狙いと最低限の条件を示す。そのまま最初の判断へ進む構成を試したい。",
+          "wav": "artifacts/diary-retrospective/speech/4bf8c0113299c6e032e39909.flac",
+          "duration": 9.248,
+          "voiceId": 2,
+          "start": 629.031334,
+          "end": 638.2793340000001
+        },
+        {
+          "speaker": "z",
+          "text": "詳しい入手先、素材、妥協できる装備は、準備編で丁寧に扱うのだな。",
+          "wav": "artifacts/diary-retrospective/speech/d1971f41b2195e0816120089.flac",
+          "duration": 6.346667,
+          "voiceId": 3,
+          "start": 638.3893340000001,
+          "end": 644.7360010000001
+        },
+        {
+          "speaker": "m",
+          "text": "ええ。準備編は、完成品の一覧ではなく、最初の一個が手に入り、連携が動き始めるところまでを一つの楽しみにする。",
+          "wav": "artifacts/diary-retrospective/speech/da18c92553fc1a958e4b4717.flac",
+          "duration": 9.162667,
+          "voiceId": 2,
+          "start": 644.846001,
+          "end": 654.0086680000001
+        },
+        {
+          "speaker": "t",
+          "text": "攻略編の途中で気になったら、あとで自分も作れる準備編へ行ける。順番を強制しない方が、入りやすそう！",
+          "wav": "artifacts/diary-retrospective/speech/4aeaf1ea02c2f583a169f99c.flac",
+          "duration": 7.274667,
+          "voiceId": 8,
+          "start": 654.1186680000001,
+          "end": 661.3933350000001
+        },
+        {
+          "speaker": "z",
+          "text": "準備を切ったらビルドの説明がなくなる、という分け方にはしないのだ。核になる連携は本編でも見せるのだ。",
+          "wav": "artifacts/diary-retrospective/speech/99fb9f210d3fe07b2035734f.flac",
+          "duration": 7.701333,
+          "voiceId": 3,
+          "start": 661.503335,
+          "end": 669.204668
+        },
+        {
+          "speaker": "m",
+          "text": "毎回必ず二本にするわけではない。準備自体に見せ場がある長さかを見て、章分けで足りる回は一本にまとめる。",
+          "wav": "artifacts/diary-retrospective/speech/c0ee005983a1e103032be686.flac",
+          "duration": 7.434667,
+          "voiceId": 2,
+          "start": 669.314668,
+          "end": 676.749335
+        },
+        {
+          "speaker": "t",
+          "text": "本編は決断のドキドキ、準備編は自分も組めるワクワク。役目を分ける感じね！",
+          "wav": "artifacts/diary-retrospective/speech/bdffd60a038ea60209d4804d.flac",
+          "duration": 5.408,
+          "voiceId": 8,
+          "start": 676.8593350000001,
+          "end": 682.2673350000001
+        }
+      ],
+      "start": 607.7,
+      "duration": 74.96666666666667
+    },
+    {
+      "id": "price",
+      "title": "ミニコーナー：そのビルド、どこから作る？",
+      "topic": "price",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "もう一つだけ短いコーナー！　そのルネット、どこから来たの？　かわいいだけで加入しないよね？",
+          "wav": "artifacts/diary-retrospective/speech/ce258dd74d9bb00ea0acdf74.flac",
+          "duration": 6.144,
+          "voiceId": 8,
+          "start": 682.8466666666667,
+          "end": 688.9906666666667
+        },
+        {
+          "speaker": "z",
+          "text": "今回の記録は、歯車二十個で加入、心臓三個で覚醒。巻戻しには時計素材を六個使ったのだ。",
+          "wav": "artifacts/diary-retrospective/speech/c8f377e300a68b732afc6d7b.flac",
+          "duration": 8.298667,
+          "voiceId": 3,
+          "start": 689.1006666666667,
+          "end": 697.3993336666667
+        },
+        {
+          "speaker": "m",
+          "text": "ただし、既に開放済みの条件と、前回からの装備を含む記録よ。新規スタートで何分かかるかは、まだ測っていない。",
+          "wav": "artifacts/diary-retrospective/speech/23a57baba516d0798e63afa5.flac",
+          "duration": 8.512,
+          "voiceId": 2,
+          "start": 697.5093336666667,
+          "end": 706.0213336666668
+        },
+        {
+          "speaker": "t",
+          "text": "ここが知りたかった！　持ち物が一瞬で揃う魔法より、最初の一歩が見える方が、うちもやろうってなる！",
+          "wav": "artifacts/diary-retrospective/speech/4e0af0172ba8271b4d38b836.flac",
+          "duration": 6.656,
+          "voiceId": 8,
+          "start": 706.1313336666667,
+          "end": 712.7873336666667
+        },
+        {
+          "speaker": "z",
+          "text": "次は、その最初の一歩を実際に辿るのだ。かわいさだけで素材代は払えなかったのだ。",
+          "wav": "artifacts/diary-retrospective/speech/085db670e4ffbf067d0f1ac1.flac",
+          "duration": 6.304,
+          "voiceId": 3,
+          "start": 712.8973336666668,
+          "end": 719.2013336666668
+        }
+      ],
+      "start": 682.6666666666667,
+      "duration": 36.93333333333333
+    },
+    {
+      "id": "next",
+      "title": "次の一本で、何を確かめる？",
+      "topic": "next",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "最後に、次の制作で試すことを三つに絞るわ。まず、早い段階で、そのビルドが働く短い実戦を見せる。",
+          "wav": "artifacts/diary-retrospective/speech/f0acbbb890a097a06a4dffc9.flac",
+          "duration": 8.053333,
+          "voiceId": 2,
+          "start": 719.78,
+          "end": 727.8333329999999
+        },
+        {
+          "speaker": "z",
+          "text": "そのあと、なぜその仲間かを一枚で示すのだ。技と石の説明を、先に全部積まないのだ。",
+          "wav": "artifacts/diary-retrospective/speech/f2207ddb0018585c0ac2c2cf.flac",
+          "duration": 7.146667,
+          "voiceId": 3,
+          "start": 727.943333,
+          "end": 735.09
+        },
+        {
+          "speaker": "t",
+          "text": "二つ目は、判断の途中を残す！　少なくとも一ラウンドは、入力から結果、次の相談まで追いたい。",
+          "wav": "artifacts/diary-retrospective/speech/df6020c311ae8f37235c8a9b.flac",
+          "duration": 7.210667,
+          "voiceId": 8,
+          "start": 735.2,
+          "end": 742.410667
+        },
+        {
+          "speaker": "m",
+          "text": "三つ目は、作り始めの道筋を出すこと。準備編か短い入手案内で、必要な条件と、未検証の代用品を区別する。",
+          "wav": "artifacts/diary-retrospective/speech/05658823df4d7070222adec5.flac",
+          "duration": 9.173333,
+          "voiceId": 2,
+          "start": 742.520667,
+          "end": 751.694
+        },
+        {
+          "speaker": "z",
+          "text": "ゲーム側では、既存の予告と防御、溜めを削る対応を、小さな比較戦で確認するのだ。同じ装備でも判断が結果に出るか、見せたいのだ。",
+          "wav": "artifacts/diary-retrospective/speech/bc0a24df55ab58a5c0b3ddf5.flac",
+          "duration": 10.890667,
+          "voiceId": 3,
+          "start": 751.804,
+          "end": 762.694667
+        },
+        {
+          "speaker": "m",
+          "text": "新しい敵の役割や見せ方の調整は、次版への提案。今ある機能の確認と、これから実装する案を分けて進めましょう。",
+          "wav": "artifacts/diary-retrospective/speech/f61909bb984d40fd5aa3c509.flac",
+          "duration": 8.810667,
+          "voiceId": 2,
+          "start": 762.804667,
+          "end": 771.615334
+        },
+        {
+          "speaker": "t",
+          "text": "コーナーは二十秒くらいで一つの見せ場。必殺図鑑や、石が働いた瞬間なら、攻略の話も途切れにくそう！",
+          "wav": "artifacts/diary-retrospective/speech/90bf36f672ded776e69b86e0.flac",
+          "duration": 7.402667,
+          "voiceId": 8,
+          "start": 771.725334,
+          "end": 779.1280009999999
+        },
+        {
+          "speaker": "m",
+          "text": "公開後は、どこで離脱したかと、どのビルドを作りたくなったかを確かめたい。今は視聴維持率のデータが無いので、改善したと断言はしないわ。",
+          "wav": "artifacts/diary-retrospective/speech/f36d8759fe1d0be6295d0446.flac",
+          "duration": 9.258667,
+          "voiceId": 2,
+          "start": 779.238001,
+          "end": 788.496668
+        },
+        {
+          "speaker": "z",
+          "text": "勝利画面を見た、から、自分ならどう組もう、まで。次の動画は、そこを目指すのだ。",
+          "wav": "artifacts/diary-retrospective/speech/ecaf0b055e04ad90b44ae7ec.flac",
+          "duration": 6.762667,
+          "voiceId": 3,
+          "start": 788.606668,
+          "end": 795.369335
+        }
+      ],
+      "start": 719.6,
+      "duration": 76.16666666666667
+    },
+    {
+      "id": "ending",
+      "title": "反省を、次の一手へ",
+      "topic": "ending",
+      "clip": null,
+      "proposal": false,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "反省って、全部ダメでしたって座り込むより、次に一個試せる形にした方が楽しくない？",
+          "wav": "artifacts/diary-retrospective/speech/b8fcc1af4e634a00411b681c.flac",
+          "duration": 5.962667,
+          "voiceId": 8,
+          "start": 795.9466666666666,
+          "end": 801.9093336666666
+        },
+        {
+          "speaker": "m",
+          "text": "そうね。今ある連携を見えるようにし、足りない選択はゲームで育てる。どちらも実際の結果で確かめましょう。",
+          "wav": "artifacts/diary-retrospective/speech/fd22eae6b64a25f2faadf386.flac",
+          "duration": 7.456,
+          "voiceId": 2,
+          "start": 802.0193336666666,
+          "end": 809.4753336666666
+        },
+        {
+          "speaker": "z",
+          "text": "ぼくは、とりあえず完成装備を並べて、説明だけで大満足する癖を反省するのだ。",
+          "wav": "artifacts/diary-retrospective/speech/30895fca709d0094c9aa780e.flac",
+          "duration": 6.453333,
+          "voiceId": 3,
+          "start": 809.5853336666667,
+          "end": 816.0386666666667
+        },
+        {
+          "speaker": "t",
+          "text": "あと、リコーダーにまで反省を任せないことね！",
+          "wav": "artifacts/diary-retrospective/speech/84f3a0cd461d3b8969cc7294.flac",
+          "duration": 3.072,
+          "voiceId": 8,
+          "start": 816.1486666666666,
+          "end": 819.2206666666666
+        },
+        {
+          "speaker": "z",
+          "text": "そこは、いい味だったのだ！　パートツーまで見てくれて、ありがとうなのだ！",
+          "wav": "artifacts/diary-retrospective/speech/c3588a6716830f209bc4d61b.flac",
+          "duration": 5.205333,
+          "voiceId": 3,
+          "start": 819.3306666666666,
+          "end": 824.5359996666666
+        },
+        {
+          "speaker": "m",
+          "text": "気になった連携や、次に見たい挑戦があったら、ぜひ教えてね。",
+          "wav": "artifacts/diary-retrospective/speech/2b5c0d653a0308124efe24eb.flac",
+          "duration": 4.597333,
+          "voiceId": 2,
+          "start": 824.6459996666666,
+          "end": 829.2433326666667
+        },
+        {
+          "speaker": "z",
+          "text": "次は、自分も作りたくなる一戦へ。なのだ！",
+          "wav": "artifacts/diary-retrospective/speech/787ff64f8b02723433359792.flac",
+          "duration": 3.776,
+          "voiceId": 3,
+          "start": 829.3533326666667,
+          "end": 833.1293326666666
+        }
+      ],
+      "start": 795.7666666666667,
+      "duration": 38.4
+    }
+  ],
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "type": "Retrospective using previously recorded gameplay; no new live play or implemented proposals",
+  "voicevoxVersion": "0.26.0",
+  "approvedSpeechReuse": "Approved existing chunks retained only for exact speaker/text matches with unchanged synthesis settings; corrected and additional lines synthesized anew.",
+  "sourceGames": {
+    "Part1.1.1": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+    "Part2": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964"
+  },
+  "duration": 834.1666666666666,
+  "commonOpening": {
+    "duration": 23.0,
+    "frames": 690,
+    "sourceCommit": "017a0ccca241d1ec6a72b8a73f63188fc1043875"
+  },
+  "templateCommit": "745c2d099d3c0a99f6a2eb1cd3a93a87147c27e6"
+}

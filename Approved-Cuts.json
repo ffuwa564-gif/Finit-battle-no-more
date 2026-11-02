@@ -1,0 +1,82 @@
+{
+  "build": {
+    "sha256": "04998c62cb54a264d5da7db5ff423b24252a2b9591ada7e8e084cb9cdd92b552",
+    "conditions": {
+      "sourceStart": 17,
+      "sourceEnd": 29,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 360,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  },
+  "build_flower": {
+    "sha256": "ea0be994193e09674815fa9fe6208b365d45b47812525148f1ee42e6eee0598c",
+    "conditions": {
+      "sourceStart": 64,
+      "sourceEnd": 80,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 480,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  },
+  "ultimate": {
+    "sha256": "d9c7317d99ae58e7207c8fd3276b538654ecd20b2b63e447a3535644e24b8074",
+    "conditions": {
+      "sourceStart": 94.20539498329163,
+      "sourceEnd": 102.20539498329163,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 240,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  },
+  "difficulty_result": {
+    "sha256": "94686841ffcd9bf2d77dc016873353152dfcca9f8cb861e291a7f03df21c0035",
+    "conditions": {
+      "sourceStart": 40.587790966033936,
+      "sourceEnd": 58.587790966033936,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 540,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  },
+  "play": {
+    "sha256": "c6b231b37d85c206e0e2c9c31a2dd186874b6b75c145e967b8f673ad86a685b1",
+    "conditions": {
+      "sourceStart": 8,
+      "sourceEnd": 28,
+      "rate": 1,
+      "leadInFrames": 0,
+      "frames": 600,
+      "gameRect": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  }
+}

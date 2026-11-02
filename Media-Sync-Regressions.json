@@ -1,0 +1,6 @@
+{
+  "command": "python tools/media-sync/test_media_sync.py",
+  "tests": 6,
+  "passed": true,
+  "codeSha256": "dc138909741ae6f200b90d9568b782d6dd619b06cb2016e6d59526ecfc48ef36"
+}
