@@ -1,4 +1,4 @@
-import{trial}from'./experiment';import{gem}from'/tmp/stillveil-ruka-build-lab/scripts/diary-part3/core';import{SPOOL}from'/tmp/stillveil-ruka-build-lab/src/domain/research-ruka';import{writeFileSync}from'node:fs';
+import{trial}from'./experiment.mts';import{gem}from'/tmp/stillveil-ruka-build-lab/scripts/diary-part3/core';import{SPOOL}from'/tmp/stillveil-ruka-build-lab/src/domain/research-ruka';import{writeFileSync}from'node:fs';
 const cases=[
  {id:'healer-benzaiten',party:['ruka','nox','athena','benzaiten']},
  {id:'healer-elaine',party:['ruka','nox','athena','elaine']},

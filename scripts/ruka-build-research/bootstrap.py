@@ -3,7 +3,7 @@ from pathlib import Path
 import shutil,json,hashlib
 ROOT=Path(__file__).resolve().parents[2];LAB=Path('/tmp/stillveil-ruka-build-lab');LAB.mkdir(exist_ok=True)
 shutil.copytree(ROOT/'src',LAB/'src',dirs_exist_ok=True);(LAB/'scripts/diary-part3').mkdir(parents=True,exist_ok=True)
-shutil.copy2(ROOT/'scripts/diary-part3/core.ts',LAB/'scripts/diary-part3/core.ts');shutil.copy2(Path(__file__).with_name('prototype-rules.ts'),LAB/'src/domain/research-ruka.ts');(LAB/'package.json').write_text('{"type":"module"}')
+shutil.copy2(ROOT/'scripts/diary-part3/core.ts',LAB/'scripts/diary-part3/core.ts');shutil.copy2(Path(__file__).with_name('prototype-rules.mts'),LAB/'src/domain/research-ruka.ts');(LAB/'package.json').write_text('{"type":"module"}')
 deps=(ROOT/'node_modules').resolve();assert(deps/'tsx/package.json').exists(),'Install dependencies at the repository root first.'
 if (LAB/'node_modules').is_symlink()and(LAB/'node_modules').resolve()!=deps:(LAB/'node_modules').unlink()
 if not(LAB/'node_modules').exists():(LAB/'node_modules').symlink_to(deps)
