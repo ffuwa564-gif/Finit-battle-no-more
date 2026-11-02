@@ -13,7 +13,7 @@ import { Backpack, BookOpen, ChevronRight, Compass, Heart, Home, Moon, Settings,
 import { VisualNovel, FairyGuide, FairyGuideButton, Button, MotionSettingsProvider, Panel, StatBadge, Toast, TownNavigation, CurrencyEmblem, TitleScreen, GachaResults, claimCommandFeedback } from './ui';
 import { content, validateContent, characterById } from './content';
 import { createInitialSave, applyCommand } from './application/game';
-import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata, isLegacySaveVersion, persistMigratedSave } from './platform/save';
+import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata, isUpgradeableSaveVersion, persistMigratedSave } from './platform/save';
 import { enableAudio, installAudioRecovery, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
 import { installGameInteractionGuards } from './platform/interaction-guards';
 import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
@@ -61,7 +61,7 @@ export default function App() {
       const errors = validateContent(content);
       if (errors.length) throw new Error(`コンテンツを読み込めません。${errors[0]}`);
       const metadata = await readBootMetadata();
-      if (metadata && (metadata.appVersion !== content.appVersion || metadata.contentVersion !== content.contentVersion || metadata.rulesVersion !== content.rulesVersion || metadata.schemaVersion !== content.schemaVersion) && !isLegacySaveVersion(metadata)) throw new Error('このセーブは別のリリースで作成されています。本番の起動ページから対応する版を開いてください。セーブは保持しています。');
+      if (metadata && (metadata.appVersion !== content.appVersion || metadata.contentVersion !== content.contentVersion || metadata.rulesVersion !== content.rulesVersion || metadata.schemaVersion !== content.schemaVersion) && !isUpgradeableSaveVersion(metadata)) throw new Error('このセーブは別のリリースで作成されています。本番の起動ページから対応する版を開いてください。セーブは保持しています。');
       const loaded = await loadSave();
       const existing = loaded ? migrateSaveTo110(loaded, content) : null;
       if (loaded && existing && loaded !== existing) await persistMigratedSave(existing, loaded);

@@ -1,5 +1,5 @@
 import type { Content, GameSave } from '../domain/types';
-import { assertValidSave, assertSaveCompatibility, isLegacySaveVersion } from './save';
+import { assertValidSave, assertSaveCompatibility, isLegacySaveVersion, isPortraitHotfixSaveVersion } from './save';
 import { highestTowerFloor } from '../domain/ivory-tower';
 import { dungeonStoneReward } from '../domain/rewards';
 import { dungeonGemFamily, emptyGemInventory } from '../domain/memory-gems';
@@ -11,6 +11,15 @@ export function migrateSaveTo110(value: GameSave, content: Content): GameSave {
   assertValidSave(value);
   const current = value.schemaVersion === content.schemaVersion && value.appVersion === content.appVersion && value.contentVersion === content.contentVersion && value.rulesVersion === content.rulesVersion;
   if (current) { assertSaveCompatibility(value, content); return value; }
+  if (isPortraitHotfixSaveVersion(value) && content.appVersion === RELEASE.appVersion && content.contentVersion === RELEASE.contentVersion && content.rulesVersion === RELEASE.rulesVersion && content.schemaVersion === RELEASE.schemaVersion) {
+    assertSaveCompatibility(value, { ...content, appVersion: value.appVersion });
+    const next = structuredClone(value);
+    next.appVersion = content.appVersion;
+    next.revision++;
+    // Preserve the exact battle cursor, tower record, RNG, ledger and equipment.
+    assertSaveCompatibility(next, content);
+    return next;
+  }
   if (!isLegacySaveVersion(value) || content.appVersion !== RELEASE.appVersion || content.contentVersion !== RELEASE.contentVersion || content.rulesVersion !== RELEASE.rulesVersion || content.schemaVersion !== RELEASE.schemaVersion) throw new Error('このセーブに対応するリリースで再開してください。');
   // Validate old snapshots and equipment too; only tower wave count changed between releases.
   const legacyContent: Content = { ...content, schemaVersion: value.schemaVersion, appVersion: value.appVersion, contentVersion: value.contentVersion, rulesVersion: value.rulesVersion,

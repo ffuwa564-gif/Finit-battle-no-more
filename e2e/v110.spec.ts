@@ -42,7 +42,7 @@ for (const language of ['ja','en'] as const) for(const width of [320,390]) {
     const old=await installLegacyRecord(page);
     await page.goto('/#dungeons/tower');await page.reload();await enter(page);
     const migrated=await saveNow(page);
-    expect(migrated.appVersion).toMatch(/^1\.10(?:\.0)?$/);
+    expect(migrated.appVersion).toBe(await page.evaluate(async()=>(await import('/src/content/index.ts')).content.appVersion));
     expect(migrated.towerRecord).toEqual({version:'1.10',completedFloors:[],legacyHighest:59});
     for(const key of ['ownedIds','partyIds','gold','stones','seed','memoryGems'] as const) expect(migrated[key],key).toEqual(old[key]);
     const retained=await page.evaluate(async()=>{const {SAVE_DATABASE,SAVE_STORE}=await import('/src/platform/save.ts');const db=await new Promise<IDBDatabase>((resolve,reject)=>{const q=indexedDB.open(SAVE_DATABASE);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});return new Promise<unknown>((resolve,reject)=>{const tx=db.transaction(SAVE_STORE,'readonly');const q=tx.objectStore(SAVE_STORE).get('migration-v1.0');tx.oncomplete=()=>{db.close();resolve(q.result);};tx.onerror=()=>reject(tx.error);});});

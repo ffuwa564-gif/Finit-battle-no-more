@@ -1,0 +1,1398 @@
+{
+  "schemaVersion": 1,
+  "episode": "BRD-001",
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "sourceAppVersion": "1.11.0",
+  "evidenceCodeMatches": true,
+  "sourceTreeMatches": true,
+  "gameplayConditionsHash": "a191324c41f67bcef60de7c39921de0e35fab56be9264ffd813d5195491b6b46",
+  "liveCertifications": [],
+  "prototypeCertifications": [
+    {
+      "id": "LAB-RUKA-001",
+      "canonicalGirlId": "ruka",
+      "verifiedFormIds": [
+        "ruka"
+      ],
+      "archetype": "自然失効した障壁→残り糸→留め縫い",
+      "scope": "prototype",
+      "stageId": "research-loom-final",
+      "stageLabel": "ほどける回廊・研究用V4",
+      "conditions": {
+        "hp": 4800,
+        "attack": 160,
+        "closedRoundDamageCap": 300,
+        "restoreEvery": 4,
+        "roundLimit": 40,
+        "woundDurationRounds": 2,
+        "experimentalNewLeaderSkill": false,
+        "emergencyHealingFirst": true
+      },
+      "necessity": {
+        "certificate": "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+        "sha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+        "formula": "4 × 300 = 1200 < 4800",
+        "claim": "Without the unique Ruka wound mechanism in this closed proposed ruleset, no legal build can kill before restoration. Not a claim about currently deployed stages."
+      },
+      "sufficiency": {
+        "reference": "docs/research/ruka-exclusive-build/data/prototype-v4-results.json.gz",
+        "sha256": "976779733ba8c7524d1bbf51131ced650790ba339aaa81369c6734fa2d544351",
+        "mainCase": {
+          "id": "v4-tier4",
+          "opt": {
+            "party": [
+              "ruka",
+              "nox",
+              "athena",
+              "fio"
+            ],
+            "tier": 4,
+            "stock": false,
+            "releaseCapOnWound": true,
+            "stage": "research-loom-final",
+            "emergencyFirst": true
+          },
+          "n": 100,
+          "wins": 100,
+          "meanRounds": 11.63,
+          "minRounds": 10,
+          "maxRounds": 15,
+          "meanBlocked": 2.16,
+          "meanResets": 0,
+          "rows": [
+            {
+              "seed": 1,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 2,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 3,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 4,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 5,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 6,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 7,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 8,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 9,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 9,
+              "fairies": 1,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 10,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 11,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 5,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 12,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 13,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 14,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 15,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 16,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 17,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 18,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 3,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 19,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 20,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 21,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 22,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 23,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 24,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 25,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 26,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 27,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 5,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 28,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 29,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 30,
+              "win": true,
+              "rounds": 10,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 31,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 32,
+              "win": true,
+              "rounds": 14,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 6,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 33,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 34,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 35,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 36,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 37,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 38,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 39,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 40,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 41,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 42,
+              "win": true,
+              "rounds": 15,
+              "pots": 0,
+              "flowers": 8,
+              "fairies": 3,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 43,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 4,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 44,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 3,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 45,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 46,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 47,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 48,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 49,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 50,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 51,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 52,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 53,
+              "win": true,
+              "rounds": 14,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 54,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 2,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 55,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 56,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 57,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 58,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 59,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 60,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 61,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 62,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 63,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 64,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 5,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 65,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 66,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 67,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 68,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 69,
+              "win": true,
+              "rounds": 10,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 70,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 71,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 72,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 73,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 74,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 75,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 5,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 76,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 5,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 77,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 78,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 79,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 80,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 81,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 82,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 83,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 84,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 5,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 85,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 86,
+              "win": true,
+              "rounds": 14,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 87,
+              "win": true,
+              "rounds": 14,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 3,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 88,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 89,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 90,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 91,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 92,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 7,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 93,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 94,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 1,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 95,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 96,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 0,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 97,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 5,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 98,
+              "win": true,
+              "rounds": 12,
+              "pots": 0,
+              "flowers": 5,
+              "fairies": 2,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 99,
+              "win": true,
+              "rounds": 13,
+              "pots": 0,
+              "flowers": 6,
+              "fairies": 0,
+              "blocked": 3,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            },
+            {
+              "seed": 100,
+              "win": true,
+              "rounds": 11,
+              "pots": 0,
+              "flowers": 4,
+              "fairies": 4,
+              "blocked": 2,
+              "resets": 0,
+              "bossHP": 0,
+              "survivors": 4
+            }
+          ]
+        },
+        "samplingCaveat": "100 fixed seeds demonstrate samples, not universal win probability."
+      },
+      "latestEvidence": "artifacts/build-diary-01/research/episode-evidence.json",
+      "latestEvidenceSha256": "6565c9ccb3a9803db6560884cfdd26d9e248ca2d7cf736589067b1c000dec259",
+      "latestEdgeChecksSha256": "0626c459c73371581fa5f10bf7121a85424d3cd6470c1c842ee6d8991e559c2b",
+      "latestSourcePresentationOnlyVerified": true
+    }
+  ],
+  "historicalHypotheses": [
+    {
+      "id": "RUKA-TOWER20-30-HYPOTHESIS",
+      "canonicalGirlId": "ruka",
+      "initialStatus": "hypothesis-only",
+      "initialBadge": "outline-weak",
+      "finalStatus": "rejected",
+      "revokedActualCertification": false,
+      "reason": "初期のエオス1編成との小標本比較で候補に見えたが、覚醒エレイン等の反例で棄却。正式な💎を新研究が奪った実例ではない。",
+      "results": [
+        {
+          "floor": 20,
+          "results": [
+            {
+              "characterId": "ruka",
+              "name": "ルカ",
+              "wins": 6,
+              "trials": 20
+            },
+            {
+              "characterId": "seris-awakened",
+              "name": "セリス",
+              "wins": 3,
+              "trials": 20
+            },
+            {
+              "characterId": "elaine-awakened",
+              "name": "エレイン",
+              "wins": 11,
+              "trials": 20
+            }
+          ]
+        },
+        {
+          "floor": 30,
+          "results": [
+            {
+              "characterId": "ruka",
+              "name": "ルカ",
+              "wins": 8,
+              "trials": 20
+            },
+            {
+              "characterId": "seris-awakened",
+              "name": "セリス",
+              "wins": 2,
+              "trials": 20
+            },
+            {
+              "characterId": "elaine-awakened",
+              "name": "エレイン",
+              "wins": 11,
+              "trials": 20
+            }
+          ]
+        }
+      ],
+      "adjudication": {
+        "state": "revoked",
+        "filledGem": false,
+        "witnesses": [
+          {
+            "id": "tower20",
+            "state": "counterexample"
+          },
+          {
+            "id": "tower30",
+            "state": "counterexample"
+          }
+        ],
+        "reason": "登録した全攻略先に、同じ条件で別の少女による有効な突破例が現れた。"
+      }
+    }
+  ],
+  "legacyEvidenceNotes": [
+    {
+      "characterIds": [
+        "noelle",
+        "noelle-awakened"
+      ],
+      "status": "idea",
+      "reason": "号令は固有の通常行動宛先操作だが、独占攻略先の証明は登録されていない。"
+    },
+    {
+      "characterIds": [
+        "iris"
+      ],
+      "status": "idea",
+      "reason": "Part1.1.1で低レア巻戻し役として比較・採用。同条件のヴェスペラ案も勝っており、唯一解認定はしない。"
+    },
+    {
+      "characterIds": [
+        "fio"
+      ],
+      "status": "idea",
+      "reason": "白花と余り布のビルドを実戦で紹介。フィオ本人だけが必要な攻略先の証明ではない。"
+    }
+  ],
+  "rulesForNextEpisode": [
+    "新しい少女・技・石・敵・予算を追加したら、全旧認定witnessの条件を更新し、対抗攻略と必須性を再審査する。",
+    "有効な別の少女の勝利例が1つ出れば、その攻略先の独占認定は解除する。0勝の有限試行だけでは独占を証明しない。",
+    "同じ少女の別形態の勝利は、他の少女による代替とは分ける。実証フォームを更新し、古い特定ビルドの主張は別途見直す。",
+    "最後の有効な攻略先がなくなったら塗り宝石を剥奪。未検証・条件違いは保留。",
+    "顔グラやBGMなどの見た目だけを、戦闘条件の変更として扱わない。画像の版と撮影版は別に追跡する。",
+    "liveとprototypeは別台帳。研究用試練が残っても、それを理由に現行ゲームの認定を維持しない。",
+    "剥奪するのは研究側の認定。少女の価値を下げる演出にしない。"
+  ],
+  "regressionChecks": [
+    {
+      "name": "counterexampleOnLastWitnessRevokes",
+      "passed": true
+    },
+    {
+      "name": "oneSurvivingWitnessRetains",
+      "passed": true
+    },
+    {
+      "name": "newEpochNeedsFreshEvidence",
+      "passed": true
+    },
+    {
+      "name": "sameGirlFormNotOtherGirl",
+      "passed": true
+    }
+  ]
+}
