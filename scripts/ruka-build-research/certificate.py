@@ -1,0 +1,12 @@
+"""Independent finite-state over-approximation: no wound => no kill, whatever the inputs/RNG."""
+from pathlib import Path
+import json,hashlib
+ROOT=Path(__file__).resolve().parents[2];O=ROOT/'artifacts/ruka-build-research';H=4800;C=300;P=4;N=40
+states={H};rows=[]
+for turn in range(1,N+1):
+ after={hp-d for hp in states for d in range(min(C,hp)+1)};assert min(after)>0,(turn,min(after));rows.append({'round':turn,'reachableHPStatesBeforeReset':len(after),'minimumHpBeforeReset':min(after),'maximumHpBeforeReset':max(after),'rewindsAtEnd':turn%P==0});states={H}if turn%P==0 else after
+# Audit the exact native HP-decrease routes patched by the prototype, not just the cap formula.
+p=Path('/tmp/stillveil-ruka-build-lab/src/domain/engine.ts');s=p.read_text();assert s.count('recipient.hp -=')==2;assert 'capResearchDamage(battle,recipient,Math.min(recipient.hp, amount - absorbed))'in s;assert 'capResearchDamage(battle,recipient,Math.min(recipient.hp, strength - absorbed))'in s
+assert s.count('actor.hp = Math.max(1, actor.hp -')==1
+rules=(Path(__file__).with_name('prototype-rules.ts')).read_text();assert rules.count('researchWoundUntil=')==1;assert "id===STITCH&&u.characterId==='ruka'"in rules
+r={'passed':True,'kind':'Constructive necessity proof for the proposed closed ruleset; not a theorem about the currently deployed game','hp':H,'roundDamageCap':C,'rewindPeriod':P,'roundLimit':N,'inequality':f'{P} × {C} = {P*C} < {H}','strongerOpponent':'Adversary is immortal and may deal ANY integer HP damage0..300 each round, without action/CD/gear limits. This covers more opportunities than every legal current party/seed.','minimumHPBeforeReset':H-P*C,'allDamageChoicesEnumeratedByStateMerging':True,'rounds':rows,'assumptions':['No wound/anti-heal effect is applied. Only Ruka can apply the new personal skill in this proposal.','All boss HP loss, including echo and flower attacks, passes through the common cap.','The boss has attack-10/drain-10 only, so the native overclock self-HP-cost path is unavailable.','The periodic restoration is an encounter effect after all actions, not the boss turn; sleep/paralysis/charm/jam do not postpone it.','Future new healing denial, damage routes, boss self-costs, phases or passive rewrites require this certificate to be rechecked.'],'nativeEnginePrototypeSha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rulesSha256':hashlib.sha256(rules.encode()).hexdigest()};(O/'necessity-certificate.json').write_text(json.dumps(r,ensure_ascii=False,indent=2));print('NECESSITY CERTIFIED',P*C,'<',H,'minimumHP',H-P*C)

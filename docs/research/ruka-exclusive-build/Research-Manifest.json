@@ -1,0 +1,35 @@
+{
+  "sourceGameCommit": "1f4e970117c95a11ef38c8f1e12fe232e5a7b964",
+  "researchParentCommit": "8ad00f6b97245b8829d3ada2ab03fc30dd6aa3e4",
+  "liveSrcDiff": "",
+  "totalSimulationsIncludingRepeatedControls": 14640,
+  "counts": {
+    "prototype-v1-results.json": 2000,
+    "prototype-v2-results.json": 2900,
+    "prototype-v3-results.json": 2100,
+    "prototype-v4-results.json": 2100,
+    "timing-results.json": 600,
+    "variation-results.json": 400,
+    "baseline.json": 2840,
+    "adversarial-results.json": 1700
+  },
+  "ruleScope": "Prototype only; no deployed gameplay or human play-test claim. Necessary archetype, not one fixed four-person party.",
+  "files": {
+    "data/adversarial-results.json.gz": "047bffa86fd6b473c3c32d582aed8268465e9222e7ef02319c85e8ac9ea7fa48",
+    "data/baseline.json.gz": "5021d1369b7c5e17c4b9c52f21370ced7ab50eda22e89ee357fd5ba6311050cd",
+    "data/edge-checks.json": "0626c459c73371581fa5f10bf7121a85424d3cd6470c1c842ee6d8991e559c2b",
+    "data/example-trace.json.gz": "d92e48dac23dc2a4d1eb499707162e664291f12884fe925670e959f0ad3821cf",
+    "data/final-summary.csv": "ac66b58d57a2fca520cd301bf3956f1e40cd6d388cd5b515c1015d77b8c6cd7f",
+    "data/necessity-certificate.json": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb",
+    "data/prototype-hashes.json.gz": "9ca9c3f0e61d9f50e692aa3d16a686ecc9029c7f43fa28eced92742b5ac8097d",
+    "data/prototype-v1-hashes.json.gz": "11eb3d1fb91fdf3ccc5f7e2ceea19fbb61e05c708200470234093d9866fbe713",
+    "data/prototype-v1-results.json.gz": "0f05fb00d860f9f729f4f7a930dbd0c033cefc06ebe16b24af5ced13a5365c6a",
+    "data/prototype-v2-hashes.json.gz": "0c4a7688af2e809948150b83ea48f97b7a185b903486e8d31b7a485cdbaf57cf",
+    "data/prototype-v2-results.json.gz": "25a3a36b49a160eaa7df476d3e6e8edeb8b6febc83900dda48b41e44698650f4",
+    "data/prototype-v3-hashes.json.gz": "aec10d897a34b354eb05c8b505f7f5a6dfb720f7661eec0bc91e34366aab6358",
+    "data/prototype-v3-results.json.gz": "36c61ce2e5d4c80d408422b5e43505635526f980fbbf0ff0a1f4cafba30b293f",
+    "data/prototype-v4-results.json.gz": "976779733ba8c7524d1bbf51131ced650790ba339aaa81369c6734fa2d544351",
+    "data/timing-results.json.gz": "0cb9d26c96e31469809423c88b027ccd30d36d30acd6da3c8c229f0f258354c4",
+    "data/variation-results.json.gz": "4ddc72ed93738541b8023153b6e246c4e4e528d57330cfdeffef7fc2a8d3134d"
+  }
+}

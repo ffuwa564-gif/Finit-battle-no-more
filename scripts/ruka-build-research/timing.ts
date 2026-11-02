@@ -1,0 +1,3 @@
+import{trial}from'./experiment';import{writeFileSync}from'node:fs';
+const result=[];for(const tier of[3,4,6])for(const hold of[false,true]){const rows=[];for(let seed=1;seed<=100;seed++)rows.push(trial({party:['ruka','nox','athena','fio'],tier,stock:false,releaseCapOnWound:true,stage:'research-loom-final',holdDPSUlt:hold},seed));result.push({tier,holdDPSUlt:hold,n:100,wins:rows.filter(r=>r.win).length,meanRounds:rows.reduce((s,r)=>s+r.rounds,0)/100,meanBlocked:rows.reduce((s,r)=>s+r.blocked,0)/100,rows});}
+writeFileSync('artifacts/ruka-build-research/timing-results.json',JSON.stringify({cases:result},null,2));console.log(result.map(({rows,...x})=>x));

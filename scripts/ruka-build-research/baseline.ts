@@ -1,0 +1,6 @@
+import{content,run,gem}from'../diary-part3/core';
+import{writeFileSync}from'node:fs';
+const chars=content.characters.filter(c=>c.published&&!['nox','athena','benzaiten'].includes(c.id)&&!['nox','athena','benzaiten'].includes(c.familyId??c.id));
+const rows:any[]=[];
+for(const floor of[1,3])for(const char of chars){let wins=0,totalR=0,threads=0;for(let seed=1;seed<=20;seed++){const r=run({party:[char.id,'nox','athena','benzaiten'],leader:'athena',gems:[gem('echo-shard',4,'bulwark',4),gem('echo-shard',4,'mercy',4),gem('pale-ward',4,'bulwark',4),gem('twin-tide',4,'bulwark',4)],autoPilot:true,policy:2},seed,char.id==='ruka',floor);wins+=+r.win;totalR+=r.rounds;if(char.id==='ruka')threads+=(r.events??[]).filter(e=>e.text.includes('残り糸')).length;}rows.push({floor,character:char.id,name:char.name,wins,n:20,meanRounds:totalR/20,threads});}
+writeFileSync('artifacts/ruka-build-research/baseline.json',JSON.stringify({gameCommit:'1f4e970117c95a11ef38c8f1e12fe232e5a7b964',condition:'Synthetic ownership, T4 maximum affixes139, fixed controller, seeds1..20, each replacement uses its own native skills; not exhaustive controls or a fresh save',characters:chars.length,rows},null,2));console.log('BASELINE COMPLETE',rows.length*20,'battles',rows.filter(r=>r.character==='ruka'),rows.filter(r=>r.floor===3).sort((a,b)=>b.wins-a.wins).slice(0,5));

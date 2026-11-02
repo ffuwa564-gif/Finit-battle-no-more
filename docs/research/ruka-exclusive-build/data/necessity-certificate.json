@@ -1,0 +1,303 @@
+{
+  "passed": true,
+  "kind": "Constructive necessity proof for the proposed closed ruleset; not a theorem about the currently deployed game",
+  "hp": 4800,
+  "roundDamageCap": 300,
+  "rewindPeriod": 4,
+  "roundLimit": 40,
+  "inequality": "4 × 300 = 1200 < 4800",
+  "strongerOpponent": "Adversary is immortal and may deal ANY integer HP damage0..300 each round, without action/CD/gear limits. This covers more opportunities than every legal current party/seed.",
+  "minimumHPBeforeReset": 3600,
+  "allDamageChoicesEnumeratedByStateMerging": true,
+  "rounds": [
+    {
+      "round": 1,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 2,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 3,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 4,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 5,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 6,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 7,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 8,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 9,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 10,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 11,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 12,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 13,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 14,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 15,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 16,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 17,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 18,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 19,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 20,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 21,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 22,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 23,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 24,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 25,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 26,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 27,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 28,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 29,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 30,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 31,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 32,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 33,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 34,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 35,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 36,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    },
+    {
+      "round": 37,
+      "reachableHPStatesBeforeReset": 301,
+      "minimumHpBeforeReset": 4500,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 38,
+      "reachableHPStatesBeforeReset": 601,
+      "minimumHpBeforeReset": 4200,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 39,
+      "reachableHPStatesBeforeReset": 901,
+      "minimumHpBeforeReset": 3900,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": false
+    },
+    {
+      "round": 40,
+      "reachableHPStatesBeforeReset": 1201,
+      "minimumHpBeforeReset": 3600,
+      "maximumHpBeforeReset": 4800,
+      "rewindsAtEnd": true
+    }
+  ],
+  "assumptions": [
+    "No wound/anti-heal effect is applied. Only Ruka can apply the new personal skill in this proposal.",
+    "All boss HP loss, including echo and flower attacks, passes through the common cap.",
+    "The boss has attack-10/drain-10 only, so the native overclock self-HP-cost path is unavailable.",
+    "The periodic restoration is an encounter effect after all actions, not the boss turn; sleep/paralysis/charm/jam do not postpone it.",
+    "Future new healing denial, damage routes, boss self-costs, phases or passive rewrites require this certificate to be rechecked."
+  ],
+  "nativeEnginePrototypeSha256": "21fc59c48180a97fc0c3567de1150f3f3519148f0acca1071a1bcdfec2a68968",
+  "rulesSha256": "568d699bd0f6cce2957da2c535addb0ba34494f53858983e42d0489fc64efaab"
+}
