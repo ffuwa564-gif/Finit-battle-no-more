@@ -1,0 +1,23 @@
+"""Bind Part3's actual CFR sources, clear excerpts and honest commentary references."""
+from pathlib import Path
+import json,hashlib,math
+ROOT=Path(__file__).resolve().parents[2];O=ROOT/'artifacts/build-diary-03'
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def build():
+ reg=json.loads((O/'registry.json').read_text());assert reg['finalized'],'Await reviewed final registry'
+ metas={name:json.loads((O/'capture'/f'{name}.json').read_text())for name in ['live-ione','lab-victory','lab-counter']}
+ def bounds(name):
+  a,b=metas[name]['gameplayWindow'];return math.ceil(a*30)/30,math.floor(b*30)/30
+ def clip(name,chapter,label,disclosure,rounds,start=None,end=None,lab=True):
+  a,b=bounds(name);return {'sourceId':name,'chapter':chapter,'sourceSha256':sha(O/'capture'/f'{name}.mov'),'sourceStart':a if start is None else start,'sourceEnd':b if end is None else end,'logPlayback':lab,'sourceApplicationSpeed':1 if lab else metas[name].get('applicationSpeed',2),'shortLabel':label,'disclosure':disclosure,'displayedRounds':rounds}
+ m=metas['lab-victory'];boundary=next(v['time']-m['initialOffset']for v in m['marks']if v['kind']=='round'and v['round']==4)
+ ready=O/'chapter-ready-lab-victory-b.json';assert ready.exists(),'Await the fixed B voice durations for a natural chronological split'
+ b=json.loads(ready.read_text())['chapter'];index=next(i for i,l in enumerate(b['lines'])if 'この記録は7ラウンドで勝利'in l['text']);prefix=sum(l['duration']for l in b['lines'][:index]);event=next(v['time']-m['initialOffset']for v in m['battleEvents']if v['round']==7 and 'イオネ — 澄明の残響石'in v['event'].get('text',''))
+ split=round((event+.1-(.4+prefix+index*.25))*30)/30
+ assert boundary-5<=split<=boundary,'The split must remain in the quiet end ofR3, without repeating or skipping source footage'
+ clips={'live-ione':clip('live-ione','ione-now','最新版1.11・比較用所持データ','現行1.11／比較用所持データ・序盤3R',[1,3],lab=False),'lab-failure':clip('lab-counter','failed-draft','研究試作・実ログ再生','失敗例seed1・R6〜8抜粋／R8全滅・敵HP12',[6,8]),'lab-victory-a':clip('lab-victory','lab-victory-a','研究試作・実ログ再生','前半R1〜3途中／成功例seed1・T3',[1,3],end=split),'lab-victory-b':clip('lab-victory','lab-victory-b','研究試作・実ログ再生','後半R3終盤〜7／R7開始前の攻撃予約',[3,7],start=split)}
+ research={str(p.relative_to(ROOT)):sha(p)for p in sorted((O/'research').glob('*.json'))if p.name not in ['pipeline-preparation.json','Speech-QC.json']}
+ research.update({str(p.relative_to(ROOT)):sha(p)for p in sorted((ROOT/'scripts/build-diary-03').glob('*.mts'))if p.name.startswith(('research-','independent-'))})
+ plan={'finalized':True,'header':'#03 イオネ／その一撃を、届けたい。','subjectId':'ione','rosterTargetSeconds':55,'rosterHook':'その一撃を、届けたい。宛先を残す書記の研究。','insertOpAfter':'roster','templateCommit':'f787aa638e0041d2efd0db7400cd1507d8b281a5','clips':clips,'lineOrder':{},'chapterTargetSeconds':{'next-episode':37},'nextEpisodePreview':{'chapter':'next-episode','characterId':'fio','seriesId':'BD071','status':'unverified','question':'余った回復は、どんな勝ち筋になる？','newCertificationGranted':False},'reactions':[{'chapter':'failed-draft','lineTextContains':'この記録では、8ラウンド目に全滅','event':{'textContains':'全滅','round':8},'offsetSeconds':.1,'maxPrefixSpacing':1.5,'mode':'retrospective'},{'chapter':'lab-victory-a','lineTextContains':'控えを使った攻撃でも','event':{'textContains':'誤配を差戻し','round':2},'offsetSeconds':.1,'maxPrefixSpacing':1.5,'mode':'auto'},{'chapter':'lab-victory-b','lineTextContains':'この記録は7ラウンドで勝利','event':{'textContains':'イオネ — 澄明の残響石','round':7},'offsetSeconds':.1,'maxPrefixSpacing':1.5,'mode':'auto'}],'eventLabels':[{'sourceId':'lab-victory','textContains':'誤配を差戻し','label':'魅了のまま、宛先だけ差戻し'},{'sourceId':'lab-victory','textContains':'イオネ — 澄明の残響石','round':7,'label':'予約した一手で、残HP12を削る'},{'sourceId':'lab-counter','textContains':'全滅','round':8,'label':'誤撃0でも、HP12を残して全滅'}],'requiredCoverage':{'gameCutCount':4,'gameAnchorsPerCut':3,'openingAnchors':3,'voiceSpeakers':['t','z','m'],'voiceAnchorsPerSpeaker':3,'musicAnchors':3,'rosterForms':72,'nextEpisodePreview':True},'researchInputs':research,'inputHashes':{str(p.relative_to(ROOT)):sha(p)for p in [Path(__file__),O/'registry.json',O/'gem-audit.json',ready,*[O/'capture'/f'{name}.json'for name in metas]]},'editorialRule':'Success A/B are consecutive pieces of one source. Speech is approved retrospective record explanation. Exact event alignment is used only when prefix spacing fits; otherwise the actual event remains an honest commentary reference, with no artificial silence or real-time reaction claim.'}
+ (O/'render-plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2));print('PLAN READY',len(research),'research/code inputs',split)
+if __name__=='__main__':build()

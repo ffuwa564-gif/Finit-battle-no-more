@@ -1,0 +1,607 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-02",
+  "scope": "Video full-original-art parade only. Not a restriction on legal party/proof roster.",
+  "entries": [
+    {
+      "characterId": "elaine",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/elaine.png",
+      "reviewedArtSha256": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "liora",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/liora.png",
+      "reviewedArtSha256": "5b85db4b3047094a833c7592bc603f771907acb2408e8543f11b55ffcdda60c1",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "seris",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/seris.png",
+      "reviewedArtSha256": "4955d37d4b3665bb13b0a0ae3774d7c3ba3f9b5e75b0536a4d28ed27530e86a9",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "noelle",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/noelle.png",
+      "reviewedArtSha256": "5697468ce5b3ac063c111cf62a0a3967714c451d8d229bf95f3ab536ff41615e",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "pale-wolf",
+      "eligibleGirl": false,
+      "reason": "原画は四足の狼。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "reviewedArtPath": "art/encounter-pale-wolf.png",
+      "reviewedArtSha256": "7a49ff4a207cc277f2e1a516b9dccc3cb6ac79f5779e4a962ac9bda4e756c57c",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "stone-drake",
+      "eligibleGirl": false,
+      "reason": "原画は竜。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "reviewedArtPath": "art/encounter-stone-drake.png",
+      "reviewedArtSha256": "38896e50e48879a4c43690968f8e1cb1930965001319e8aabe3cc4f803e50a24",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "hollow-keeper",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/encounter-hollow-keeper.png",
+      "reviewedArtSha256": "15c47ebe4ed621083843bf0a9875d4576c9294bc07d0190726c8a36ccb47f83e",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "moon-moth",
+      "eligibleGirl": false,
+      "reason": "原画は蛾。少女の立ち絵パレードから除外するが、ビルドの合法候補比較からは除外しない。",
+      "reviewedArtPath": "art/encounter-moon-moth.png",
+      "reviewedArtSha256": "bad8b59670064d53dde09e1f408733c3f7a410348665c1186f1e2f1e4b958479",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "veil-priestess",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/encounter-veil-priestess.png",
+      "reviewedArtSha256": "d3a271b2acc7702220a1ce8ea3d86dfc6489515de0f1d35e451198ac2cb04077",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "thorn-witch",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/encounter-thorn-witch.png",
+      "reviewedArtSha256": "fc0479f4f40978963b518a2dcb31154f336fa41a7eb0ed31d899058b541ea9b3",
+      "originalComposition": "landscape_original"
+    },
+    {
+      "characterId": "iris",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-uzume.png",
+      "reviewedArtSha256": "430cec7b851d80a821ebe394d97b8b2bfe0c5dfaad44a8ad754dc1b6809f505e",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "mireille",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-sakuya.png",
+      "reviewedArtSha256": "6a88e0730d9712352846736778ced81316d963f5bfa5ecb132a2d1432347c557",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "asteria",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-amaterasu.png",
+      "reviewedArtSha256": "fa8b83059bebf6dff99114b17a2211619fc57629dfb22f2305644f60c1aba275",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "evelyn",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-izanami.png",
+      "reviewedArtSha256": "8288456a045bde93683d43d2679f2705c61cc78b40df2719a584d5f927860a2a",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "selene",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-selene.webp",
+      "reviewedArtSha256": "2ba6fe50c146e6959acf6ba18772be9e9aa25bcab368b377460acb1b4a36056c",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "athena",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-athena-anime.webp",
+      "reviewedArtSha256": "178d38a939b4befa2543a00e50132248b5269e07ea0d1325815f6045550d9338",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "flora",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-flora-anime.webp",
+      "reviewedArtSha256": "f9763bdcb0f6f27f2dcc7020300e8aeda43a8b897dc269a8e806bcb47febf913",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "rainbow-iris",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-rainbow-iris-anime.webp",
+      "reviewedArtSha256": "20f24c47c22fe7297742088750127a70b2f69cd2bda3002d16b4178024a6ce2a",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "eos",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-eos-anime.webp",
+      "reviewedArtSha256": "5628e3b31601f44acddb067ca2175b65a785c5223a7e341bad07303ab2c2c6c5",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "nike",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-nike-anime.webp",
+      "reviewedArtSha256": "347e2dab02a2ea0aba1054172a838021145f1d76d1186f692595204b9d2aa8a3",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "vespera",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-vespera.png",
+      "reviewedArtSha256": "39e8178b84320a824b59957af3f0f3639fd87f5d322acbade28b7a798de4cedc",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "miette",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-miette.png",
+      "reviewedArtSha256": "7a9f78de67573076fa2f65b89af6b283ab730771f7b0199793f73a326fa210a6",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "tikka",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-tikka.png",
+      "reviewedArtSha256": "bcb503909026844374c23768e60caf0b2c538e71eac605205133cd25d7a2134c",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "nox",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-nox.png",
+      "reviewedArtSha256": "7dad95f3990ba36410e7d5b33dcc1b2d1cdb6cd315ad2df370116e031cf195fc",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "kuzuha",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/event-kuzuha.png",
+      "reviewedArtSha256": "c31c10f55a340fdfd5396cae840af674ed23e5b3ae2f50ae5f42646cb3c09ad5",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "kuzuha-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/event-kuzuha-awakened.png",
+      "reviewedArtSha256": "9df3ffcfeead8288e1f37e9a38fe5d46f3c198c07376db1a4dfc0b202434b694",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "artemis",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-artemis.png",
+      "reviewedArtSha256": "9eb8b0747acd2696a2677e1c0b44e4cdda8aae0a1a48351d03f05b36668d1b79",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "persephone",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-persephone.png",
+      "reviewedArtSha256": "01bf52367fdcc0faf1d9a842dc63d0552917980e30f2a4064a7248cf1650819f",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "hestia",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-hestia.png",
+      "reviewedArtSha256": "c1515e05cfcdac5e2842c4c6cdfa9fc284e4772a07ef8734c5b1641df0515ffb",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "hebe",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-hebe.png",
+      "reviewedArtSha256": "e52a08abbccb23a37ac782ba092b3c61dad13f64c258b4d61d06e78dbd5df3ab",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "seoritsu",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-seoritsu.png",
+      "reviewedArtSha256": "d2a6c844dad4cbb12b347c5978434918cdf6b54840fbc79175f161ed74b59b5a",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "ukanomitama",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-ukanomitama.png",
+      "reviewedArtSha256": "3fef848456e07cf928372daf3e863a092461334cf87eaea8738a4fa1683693b0",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "mizuhanome",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-mizuhanome.png",
+      "reviewedArtSha256": "332ceaf8bb6906ab0d74700db5a6a288f92e2a0b7c7d1b50a2a4250b2f2f15d4",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "haniyasu",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-haniyasu.png",
+      "reviewedArtSha256": "752853552d6e3b6945f011b323c0ac853f617572676321533281e5a157fee292",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "toyotama",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-toyotama.png",
+      "reviewedArtSha256": "e8be7def6fd6bd2f35e32bca63cda27acd7bb7dc487b5cdfa4ccc71c1e006fe2",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "wakahirume",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-wakahirume.png",
+      "reviewedArtSha256": "f956a1cbc2afd3770cbe93e1784e885ac971eaddc8d04af28b704e6645867cbd",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "iwanagahime",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-iwanagahime.png",
+      "reviewedArtSha256": "e229f490de1a6a33d19fd82a92f4d102f9392a23ee69bbf190ceeb47ce5d934f",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "kukurihime",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-kukurihime.png",
+      "reviewedArtSha256": "9c617b4c65d3a7c85c561e91532617315ecea6e96bc6c3ef33e0200802cb2ec5",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "lisette",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/lisette.png",
+      "reviewedArtSha256": "29a76bc025d163e85eea3282457af695103d585753fb53f5878aa86e371186f5",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "elaine-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/elaine-awakened.png",
+      "reviewedArtSha256": "20d3c1870441df92fd8bed0bfd4d3d291bd3027f490d9b401b0eed5573212369",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "liora-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/liora-awakened.png",
+      "reviewedArtSha256": "0cc9e66dd0050d86241ae25a933cf6302d6b3514051c4fda1358758ba7e59c9d",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "noelle-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/noelle-awakened.png",
+      "reviewedArtSha256": "cc88ff5ef8a6dcc56a647381d87b61ece9bc15ceb3e96e139b3d23fb210a40fd",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "lisette-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/lisette-awakened.png",
+      "reviewedArtSha256": "9d015060cd6608f2091c8af85c52453ca5e880a2001be2cfbeaaee20c21be0f7",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "seris-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/seris-awakened.png",
+      "reviewedArtSha256": "bd4dc1f2bbeb1fd846dbd8c23283d3be3c64024565daf5927d9e002782782582",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "selene-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-selene-standard.webp",
+      "reviewedArtSha256": "be17885f915e2b32f75685910f8aac56580c32802f992332c326e2c69d31f217",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "athena-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-athena-standard.webp",
+      "reviewedArtSha256": "2bd1ab9092eac97947e9bca9e3b30a01bd615177ebda5cc151bc9aea24ec698c",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "flora-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-flora-standard.webp",
+      "reviewedArtSha256": "6ba32c307967de8c3c0c6d308e5a891cb894a635effb37cdf769dcd69f45281d",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "amaterasu-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-amaterasu-standard.webp",
+      "reviewedArtSha256": "bb40ea31f4f5aa4af53bca3c60d496bdbb74bd241419dc90f33b8c109e7c39b6",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "izanami-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-izanami-standard.webp",
+      "reviewedArtSha256": "2429c3fcab8cca7db9961cbfb332bf6bf3e35aad28e9aec24a7bf46eb5e67d8e",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "artemis-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-artemis-standard.webp",
+      "reviewedArtSha256": "278c87611a379ad565766d8c92a0f0fa010ea0281ba9fbcdebdbb7f9f8284bde",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "persephone-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-persephone-standard.webp",
+      "reviewedArtSha256": "5562f408310d13a1368057357b19c12a04e91f3c0dde03939e974dd62536b3c0",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "hestia-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-hestia-standard.webp",
+      "reviewedArtSha256": "c231a730bcee1faa875712d58d84cf8eee2af12f67f28c1aa5c5dd3923481f91",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "hebe-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-hebe-standard.webp",
+      "reviewedArtSha256": "27ba90cec97d91a637a4161c80162cbc4157c05f2ea52b12dbc6890e38655c58",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "eos-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-eos-standard.webp",
+      "reviewedArtSha256": "39f11121937f2905e57db4bb1440d86796acf19870840e59c918d2bbba0d9b82",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "nike-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-nike-standard.webp",
+      "reviewedArtSha256": "e6510a6cc1c008c1c9819f1619d2213fc85ed2d82e089e8800b55158d0736939",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "rainbow-iris-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-rainbow-iris-standard.webp",
+      "reviewedArtSha256": "fa3b8bae044283e97f723673bbb46cbf73b68b373b531e50448e65240cf1a7d4",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "toyotama-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-toyotama-standard.webp",
+      "reviewedArtSha256": "8c88a61c48321457da1872552e00a7c95b4c163896752f8552261cd2cd7b61a1",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "lunette",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/event-lunette.png",
+      "reviewedArtSha256": "3c042600954fc271a7f92de78945c900913405b7780537a0d5a6227041699a59",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "lunette-awakened",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/event-lunette-awakened-loop-poster.png",
+      "reviewedArtSha256": "6684072d8e11eab32ac990c03c6198c6702ff8200a992ea1cf1fd40c371b4f76",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "lucielle",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/rare-lucielle.png",
+      "reviewedArtSha256": "0cf3b618cde0ee23cda18b3bb371dbe92e709fcbfcca9dc17f1252bacd355b7c",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "nemuria",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/rare-nemuria.png",
+      "reviewedArtSha256": "0232f690a4048b7201403917bae92d91c6f1e094dabb26f9e505db36a8e0b9af",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "chrona",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/trial-chrona.webp",
+      "reviewedArtSha256": "4a4da4d41d9cd07e88bd042436370a83ea398738c4abaa1fb1198b9bd4003434",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "fortuna",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gold-fortuna.webp",
+      "reviewedArtSha256": "427efb9cef66ad58def9e71114780aa0cd97f7877bfe81f219dfac847e994541",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "hecate",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-hecate.webp",
+      "reviewedArtSha256": "458d60c5a97c1b9d9f651339b79a3b03251d1a7de1edc2d9205fcd0c303a580c",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "freyja",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-freyja.webp",
+      "reviewedArtSha256": "de0df7d0b0ae2530bcc857978b0e72c653422ebcf460964c92463e4c1c00fb24",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "benzaiten",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-benzaiten.webp",
+      "reviewedArtSha256": "54a8a3efca86f1e6c4d81dca24da5d7a64ef612fe905624bad99ae11e9ebade7",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "seoritsu-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-seoritsu-standard.webp",
+      "reviewedArtSha256": "4de35b7179d72ab8243227275df0801ed54f442d1bed1a3643497ea0c0f761a5",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "wakahirume-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-wakahirume-standard.webp",
+      "reviewedArtSha256": "0686dd032f0c49f7cecb3f9bc3f08a8bef2450bc19cc8544a5e59a4301cb4ecb",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "ukanomitama-standard",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/gacha-ukanomitama-standard.webp",
+      "reviewedArtSha256": "d078c2b269f6065fa32bf4a6241424483212187f28339341716803fc5222f4fb",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "astraea",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/xr-astraea.png",
+      "reviewedArtSha256": "e68de0799153f54a71b742c794f70bc82e75ad0f14115b21187b284154b47751",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "zakuro",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/zakuro.webp",
+      "reviewedArtSha256": "332686ad7a3f11958410b86a7b38a719db9c5991f9a6b3deff36c42408df519d",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "ione",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/scout-ione.webp",
+      "reviewedArtSha256": "a9adca89409ddd8be4a0c55e3e08c56755e63080adbd548fd8beeb4d07627039",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "neri",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/scout-neri.webp",
+      "reviewedArtSha256": "72cab4c66571b3121f194c22eb1b8d9bd621881a95d05348609c0c723d4a578b",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "fio",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/scout-fio.webp",
+      "reviewedArtSha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1",
+      "originalComposition": "portrait_original"
+    },
+    {
+      "characterId": "ruka",
+      "eligibleGirl": true,
+      "reason": "公開された人型の少女キャラクター。原画全体をcontainで見せる。",
+      "reviewedArtPath": "art/scout-ruka.webp",
+      "reviewedArtSha256": "db66a2e1bfc269f6219de2f93926ac4288753587c39a176f41aa0a2d90e89798",
+      "originalComposition": "portrait_original"
+    }
+  ]
+}

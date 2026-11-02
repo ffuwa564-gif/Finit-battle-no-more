@@ -1,0 +1,49 @@
+{
+  "finalized": false,
+  "header": "#03 ビルド研究",
+  "subjectId": "ione",
+  "rosterTargetSeconds": 55,
+  "rosterHook": "少女の新しい仕事を、一緒に探してみよう。",
+  "insertOpAfter": "roster",
+  "templateCommit": "b070d39c312faf72b02ca20dc78bc597223699fb",
+  "clips": {},
+  "lineOrder": {},
+  "reactions": [],
+  "eventLabels": [],
+  "exampleClipSchema": {
+    "sourceId": "actual-capture-id",
+    "sourceStart": 3.5,
+    "sourceEnd": 60.0,
+    "logPlayback": true,
+    "sourceApplicationSpeed": 1,
+    "shortLabel": "研究試作・ログ再生",
+    "disclosure": "右側に抜粋範囲・比較条件を表示"
+  },
+  "exampleReactionSchema": {
+    "chapter": "actual-chapter-id",
+    "lineTextContains": "この台詞を実イベントに合わせる",
+    "event": {
+      "textContains": "actual-log-text",
+      "round": 4
+    },
+    "eventOccurrence": 0,
+    "offsetSeconds": 0.1,
+    "maxPrefixSpacing": 4.2
+  },
+  "exampleEventLabelSchema": {
+    "sourceId": "actual-capture-id",
+    "textContains": "actual-log-text",
+    "label": "実ログに対応する短い注釈"
+  },
+  "researchInputs": {},
+  "nextEpisodePreview": {
+    "chapter": "next-episode",
+    "characterId": "fio",
+    "seriesId": "BD071",
+    "status": "unverified",
+    "question": "余った回復は、どんな勝ち筋になる？"
+  },
+  "chapterTargetSeconds": {
+    "next-episode": 37
+  }
+}

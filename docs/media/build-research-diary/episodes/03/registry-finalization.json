@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "episode": "BRD-003",
+  "decision": "Ione remains an idea because a legal same-budget counterexample exists; old Ruka/Neri prototype recognition retained; Fio preview has no advance award.",
+  "summary": {
+    "publishedCharacters": 75,
+    "girlRegistrations": 72,
+    "canonicalGirls": 49,
+    "excludedCreatures": 3,
+    "ideaRegistrations": 31,
+    "ideaGirls": 20,
+    "researchStartedGirls": 22,
+    "liveCertifiedGirls": 0,
+    "prototypeCertifiedGirls": 2,
+    "prototypePendingGirls": 0
+  },
+  "inputs": {
+    "priorRegistry": {
+      "path": "docs/media/build-research-diary/episodes/02/registry.json",
+      "sha256": "2a03740dad18a25f738ee89e5ad104190779cec27da9845ce4d1b5b79b940318"
+    },
+    "priorGemAudit": {
+      "path": "docs/media/build-research-diary/episodes/02/gem-audit.json",
+      "sha256": "e09541c3acb783b2020a65d6bb8c80242230e9dcba477bb3360225c89f169fa3"
+    },
+    "permanentSerials": {
+      "path": "docs/media/build-research-diary/serial-map.json",
+      "sha256": "639aefe7e3636567aab96719539f75f0db788a27e537eb7ca975fbdfce6eee14"
+    },
+    "eligibility": {
+      "path": "docs/media/build-research-diary/girl-eligibility.json",
+      "sha256": "b64c9037ec2adbe13555a9bcdd117530d77d83390f48c9d29e7d56731aea5ea9"
+    },
+    "registry": {
+      "path": "artifacts/build-diary-03/registry.json",
+      "sha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81"
+    },
+    "gemAudit": {
+      "path": "artifacts/build-diary-03/gem-audit.json",
+      "sha256": "685624d9a7badf6674d93b31f4ef223990f4fbb55ab4605e0193e2e831aae82a"
+    },
+    "sourceGame": {
+      "path": "artifacts/build-diary-03/metadataSourceGame.json",
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21"
+    },
+    "sourceGameResearch": {
+      "path": "artifacts/build-diary-03/research/source-game.json",
+      "sha256": "1e4c17be294e4d6f276f303caf76308f33b2cfc10df85524a6f3ea4f53aa8b21"
+    },
+    "registryCode": {
+      "path": "scripts/build-diary-03/registry.mts",
+      "sha256": "61d32592eeb5c73abdaf44f17d5ad40a44379bb2c7c918154fcf42f45d04e7cc"
+    },
+    "story": {
+      "path": "scripts/build-diary-03/story.py",
+      "sha256": "4ae0ec4e82c097fafaa50f43553437889c1c977286ec68306ea8f69762d469af"
+    },
+    "recognitionHelper": {
+      "path": "scripts/build-diary-01/registry.mts",
+      "sha256": "d7981520fbf31809e8f1a681f2540c00bfdebe947b692453564d97ee7150bec6"
+    },
+    "evidence": {
+      "path": "artifacts/build-diary-03/research/episode-evidence.json",
+      "sha256": "349fcf1fe42cddf525dd95f1ad22b645e07a3126c0a976bc1e17501ca700386e"
+    },
+    "independentReview": {
+      "path": "artifacts/build-diary-03/research/independent-research-review.json",
+      "sha256": "688edba0cd48801c867851d2b304325a19d8542cfad584ef34efb3ddbae89e7e"
+    },
+    "independentRecheck": {
+      "path": "artifacts/build-diary-03/research/independent-recheck.json",
+      "sha256": "2c4ede9fc2d08ded826624b27cd08dac8ec805bf2f181a5c1a5c50cb7b7e1182"
+    },
+    "research:episode-evidence.json": {
+      "path": "artifacts/build-diary-03/research/episode-evidence.json",
+      "sha256": "349fcf1fe42cddf525dd95f1ad22b645e07a3126c0a976bc1e17501ca700386e"
+    },
+    "research:research-summary.json": {
+      "path": "artifacts/build-diary-03/research/research-summary.json",
+      "sha256": "57bad63c1e21c017ddf62a5648d2839d4314221f190d9f78275a703f14591861"
+    },
+    "research:research-edge-checks.json": {
+      "path": "artifacts/build-diary-03/research/research-edge-checks.json",
+      "sha256": "0567468ce9c094481e8266f896db46a8199ca11fc8384a96fd41b8212ebef396"
+    },
+    "research:research-cross-audit.json": {
+      "path": "artifacts/build-diary-03/research/research-cross-audit.json",
+      "sha256": "0d033563d9fca0074e48143317ce43817d6bd2c7fd62901dfbb36fed3fcbab31"
+    },
+    "research:research-content-consistency.json": {
+      "path": "artifacts/build-diary-03/research/research-content-consistency.json",
+      "sha256": "36ad810b01dc43eaaa2003aa22dc1cf2914035cd686e70c6aa1d6a59c50db547"
+    },
+    "research:research-counterexamples.json": {
+      "path": "artifacts/build-diary-03/research/research-counterexamples.json",
+      "sha256": "0ac8c02b08569a83393eba9a17c6db1246b92a74be6cc6f728de3ca0e8aeae25"
+    },
+    "research:research-necessity-certificate.json": {
+      "path": "artifacts/build-diary-03/research/research-necessity-certificate.json",
+      "sha256": "5f772534cc3c2c219930baf268eadac66663face049f7ab1d9216f52f6c158a8"
+    },
+    "research:research-sufficiency-certificate.json": {
+      "path": "artifacts/build-diary-03/research/research-sufficiency-certificate.json",
+      "sha256": "1c01f75af085f2414991f2a9bb7d56d414a65e0db6f6f360ad5e1dc36367ff48"
+    },
+    "research:research-story-cues.json": {
+      "path": "artifacts/build-diary-03/research/research-story-cues.json",
+      "sha256": "bf63abb67143ef6477dd1bceb016599d8aada9b784d6e828fad5c573093201f6"
+    },
+    "research:research-lab-content.json": {
+      "path": "artifacts/build-diary-03/research/research-lab-content.json",
+      "sha256": "faa154e7be70ac77093e4c532970797a7c2c15c5ad0cfd352a0d2e8799863860"
+    },
+    "prior-proof:ruka": {
+      "path": "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+      "sha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb"
+    },
+    "prior-proof:neri": {
+      "path": "artifacts/build-diary-02/research/research-necessity-certificate.json",
+      "sha256": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd"
+    }
+  },
+  "researchCodeInputs": [
+    {
+      "path": "scripts/build-diary-03/research-bootstrap.py",
+      "sha256": "6e9166a7dc2049e1b7e2bc048dbadac09ead52457d4ecf08636f6e8d0cf81088"
+    },
+    {
+      "path": "scripts/build-diary-03/research-content-check.mts",
+      "sha256": "33fd69402df80f471f8fdc10a9330c9125e9d72c148a4e98ab9cf95de7afa306"
+    },
+    {
+      "path": "scripts/build-diary-03/research-cross.mts",
+      "sha256": "abc37b96b27821ea6a14fb03d3da5f1478d68b03e8dc5d330b94d5c5823e9a3b"
+    },
+    {
+      "path": "scripts/build-diary-03/research-edge.mts",
+      "sha256": "aa8779a46e783952399cebec9e0cb52d30d5d5dc11751e32ef2053b0ca7eeb18"
+    },
+    {
+      "path": "scripts/build-diary-03/research-finalize.py",
+      "sha256": "c73561421a77a2bc59ff3f290aac23b3ef92abd2f48d557186f8864c8bdf0c9f"
+    },
+    {
+      "path": "scripts/build-diary-03/research-inherited-neri.mts",
+      "sha256": "138c08bba028090c895795fefbd590410dea18bf0c330f582254eaba5398b4ea"
+    },
+    {
+      "path": "scripts/build-diary-03/research-inherited-ruka.mts",
+      "sha256": "a8f4f4632db055009107ecc431a61da2701121810af093ba6ea2d68ba9d5aa17"
+    },
+    {
+      "path": "scripts/build-diary-03/research-rules.mts",
+      "sha256": "f4aeea41da0bf4822075adb9617b6fe61b1d63f59637506cacb642c5c31c72bc"
+    },
+    {
+      "path": "scripts/build-diary-03/research-runner.mts",
+      "sha256": "9fa3c991a8548b2b808b01728a6983243df9a1ad3f36202cd2d7721b13e769c4"
+    }
+  ],
+  "nextEpisodePreview": {
+    "characterId": "fio",
+    "seriesId": "BD071",
+    "name": "フィオ",
+    "artPath": "art/scout-fio.webp",
+    "artSha256": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1",
+    "status": "idea",
+    "newCertificationGranted": false,
+    "requiredLabel": "次回の研究候補・未検証",
+    "question": "余った回復は、どんな勝ち筋になる？",
+    "requiredPresentation": "Actual full original, contain with full head, name and immutable ID. Separate final NEXT EPISODE chapter."
+  },
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44"
+}
