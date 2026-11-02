@@ -1,0 +1,1383 @@
+{
+  "sampleRate": 48000,
+  "startSample": 0,
+  "samples": 41004800,
+  "gameGain": 0.5,
+  "voiceGain": 0.98,
+  "musicGain": 0.045,
+  "masterGain": 1,
+  "gameDucking": [
+    {
+      "startSample": 19200,
+      "endSample": 323328,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 330048,
+      "endSample": 681792,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 688512,
+      "endSample": 951168,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 957888,
+      "endSample": 1452992,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 1459712,
+      "endSample": 1818112,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 1824832,
+      "endSample": 2163264,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 2169984,
+      "endSample": 2466944,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 2473664,
+      "endSample": 2745024,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 4017600,
+      "endSample": 4465600,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 4472320,
+      "endSample": 4729856,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 4736576,
+      "endSample": 5289024,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 5295744,
+      "endSample": 5654144,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 5660864,
+      "endSample": 6240960,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 6247680,
+      "endSample": 6618368,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 6662400,
+      "endSample": 7133440,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 7140160,
+      "endSample": 7487808,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 7494528,
+      "endSample": 8162176,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 8168896,
+      "endSample": 8561088,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 8567808,
+      "endSample": 9154048,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 9196800,
+      "endSample": 9613568,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 9620288,
+      "endSample": 9864512,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 9871232,
+      "endSample": 10491776,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 10498496,
+      "endSample": 10955712,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 10962432,
+      "endSample": 11537408,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 11544128,
+      "endSample": 11832896,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 11839616,
+      "endSample": 12277376,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 12321600,
+      "endSample": 12874560,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 12881280,
+      "endSample": 13361536,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 13368256,
+      "endSample": 13843904,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 13850624,
+      "endSample": 14105600,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 14112320,
+      "endSample": 14491200,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 14497920,
+      "endSample": 15124096,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 15130816,
+      "endSample": 15613120,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 15656000,
+      "endSample": 16139840,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 16146560,
+      "endSample": 16371328,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 16378048,
+      "endSample": 16864960,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 16871680,
+      "endSample": 17349376,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 17356096,
+      "endSample": 17778496,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 17785216,
+      "endSample": 18289024,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 18295744,
+      "endSample": 18825152,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 18868800,
+      "endSample": 19316800,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 19321661,
+      "endSample": 19779389,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 19784250,
+      "endSample": 20081722,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 20088442,
+      "endSample": 20275322,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 20282042,
+      "endSample": 20836026,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 20842746,
+      "endSample": 21179130,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 21185850,
+      "endSample": 21830970,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 21837690,
+      "endSample": 22368634,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 22412800,
+      "endSample": 22737408,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 22744128,
+      "endSample": 23044672,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 23051392,
+      "endSample": 23573120,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 23579840,
+      "endSample": 23922368,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 23929088,
+      "endSample": 24334592,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 24341312,
+      "endSample": 24819008,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 24862400,
+      "endSample": 25364160,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 25370880,
+      "endSample": 25639680,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 25646400,
+      "endSample": 26062656,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 26069376,
+      "endSample": 26782592,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 26789312,
+      "endSample": 27185088,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 27191808,
+      "endSample": 27568128,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 27611200,
+      "endSample": 28151872,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 28158592,
+      "endSample": 28402304,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 28409024,
+      "endSample": 28860608,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 28867328,
+      "endSample": 29412608,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 29419328,
+      "endSample": 29868864,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 29875584,
+      "endSample": 30347648,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 30354368,
+      "endSample": 30794176,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 30838400,
+      "endSample": 31036032,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 31042752,
+      "endSample": 31575232,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 31581952,
+      "endSample": 32088320,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 32095040,
+      "endSample": 32545600,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 32552320,
+      "endSample": 33052032,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 33058752,
+      "endSample": 33644992,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 33651712,
+      "endSample": 34139648,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 34182400,
+      "endSample": 34620160,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 34626880,
+      "endSample": 35137856,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 35144576,
+      "endSample": 35350912,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 35357632,
+      "endSample": 35807168,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 35813888,
+      "endSample": 36377600,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 36384320,
+      "endSample": 36825152,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 36868800,
+      "endSample": 37198016,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 37204736,
+      "endSample": 37647104,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 37653824,
+      "endSample": 38220608,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 38227328,
+      "endSample": 38694784,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 38701504,
+      "endSample": 38996928,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 39040000,
+      "endSample": 39668224,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 39674944,
+      "endSample": 39975488,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 39982208,
+      "endSample": 40325760,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 40332480,
+      "endSample": 40693952,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    },
+    {
+      "startSample": 40700672,
+      "endSample": 40981248,
+      "relativeGain": 0.72,
+      "attackSamples": 960,
+      "releaseSamples": 3840
+    }
+  ],
+  "musicDucking": [
+    {
+      "startSample": 19200,
+      "endSample": 323328,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 330048,
+      "endSample": 681792,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 688512,
+      "endSample": 951168,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 957888,
+      "endSample": 1452992,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 1459712,
+      "endSample": 1818112,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 1824832,
+      "endSample": 2163264,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 2169984,
+      "endSample": 2466944,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 2473664,
+      "endSample": 2745024,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 4017600,
+      "endSample": 4465600,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 4472320,
+      "endSample": 4729856,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 4736576,
+      "endSample": 5289024,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 5295744,
+      "endSample": 5654144,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 5660864,
+      "endSample": 6240960,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 6247680,
+      "endSample": 6618368,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 6662400,
+      "endSample": 7133440,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 7140160,
+      "endSample": 7487808,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 7494528,
+      "endSample": 8162176,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 8168896,
+      "endSample": 8561088,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 8567808,
+      "endSample": 9154048,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 9196800,
+      "endSample": 9613568,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 9620288,
+      "endSample": 9864512,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 9871232,
+      "endSample": 10491776,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 10498496,
+      "endSample": 10955712,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 10962432,
+      "endSample": 11537408,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 11544128,
+      "endSample": 11832896,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 11839616,
+      "endSample": 12277376,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 12321600,
+      "endSample": 12874560,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 12881280,
+      "endSample": 13361536,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 13368256,
+      "endSample": 13843904,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 13850624,
+      "endSample": 14105600,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 14112320,
+      "endSample": 14491200,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 14497920,
+      "endSample": 15124096,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 15130816,
+      "endSample": 15613120,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 15656000,
+      "endSample": 16139840,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 16146560,
+      "endSample": 16371328,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 16378048,
+      "endSample": 16864960,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 16871680,
+      "endSample": 17349376,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 17356096,
+      "endSample": 17778496,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 17785216,
+      "endSample": 18289024,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 18295744,
+      "endSample": 18825152,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 18868800,
+      "endSample": 19316800,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 19321661,
+      "endSample": 19779389,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 19784250,
+      "endSample": 20081722,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 20088442,
+      "endSample": 20275322,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 20282042,
+      "endSample": 20836026,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 20842746,
+      "endSample": 21179130,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 21185850,
+      "endSample": 21830970,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 21837690,
+      "endSample": 22368634,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 22412800,
+      "endSample": 22737408,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 22744128,
+      "endSample": 23044672,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 23051392,
+      "endSample": 23573120,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 23579840,
+      "endSample": 23922368,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 23929088,
+      "endSample": 24334592,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 24341312,
+      "endSample": 24819008,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 24862400,
+      "endSample": 25364160,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 25370880,
+      "endSample": 25639680,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 25646400,
+      "endSample": 26062656,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 26069376,
+      "endSample": 26782592,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 26789312,
+      "endSample": 27185088,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 27191808,
+      "endSample": 27568128,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 27611200,
+      "endSample": 28151872,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 28158592,
+      "endSample": 28402304,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 28409024,
+      "endSample": 28860608,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 28867328,
+      "endSample": 29412608,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 29419328,
+      "endSample": 29868864,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 29875584,
+      "endSample": 30347648,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 30354368,
+      "endSample": 30794176,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 30838400,
+      "endSample": 31036032,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 31042752,
+      "endSample": 31575232,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 31581952,
+      "endSample": 32088320,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 32095040,
+      "endSample": 32545600,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 32552320,
+      "endSample": 33052032,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 33058752,
+      "endSample": 33644992,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 33651712,
+      "endSample": 34139648,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 34182400,
+      "endSample": 34620160,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 34626880,
+      "endSample": 35137856,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 35144576,
+      "endSample": 35350912,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 35357632,
+      "endSample": 35807168,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 35813888,
+      "endSample": 36377600,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 36384320,
+      "endSample": 36825152,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 36868800,
+      "endSample": 37198016,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 37204736,
+      "endSample": 37647104,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 37653824,
+      "endSample": 38220608,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 38227328,
+      "endSample": 38694784,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 38701504,
+      "endSample": 38996928,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 39040000,
+      "endSample": 39668224,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 39674944,
+      "endSample": 39975488,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 39982208,
+      "endSample": 40325760,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 40332480,
+      "endSample": 40693952,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    },
+    {
+      "startSample": 40700672,
+      "endSample": 40981248,
+      "relativeGain": 0.75,
+      "attackSamples": 2400,
+      "releaseSamples": 9600
+    }
+  ],
+  "musicPlan": {
+    "source": "public/audio/fjordnosundakaze.mp3",
+    "sourceSha256": "d4e3e4f43a7c9ccaa1586c1646a91c6bb67a7d61dca6aa42a9161940ea574c9d",
+    "offsetSeconds": 0,
+    "mutedOpening": {
+      "start": 57.7,
+      "duration": 25.6,
+      "frames": 768,
+      "source": "artifacts/build-diary-04/render/opening/opening.mov"
+    },
+    "loopCrossfadeSeconds": 0.25,
+    "fadeInSeconds": 0.6,
+    "fadeOutSeconds": 1,
+    "ultimateRelativeGain": 1
+  },
+  "mixSha256": "c6bfcef3d5aa8728eac26e9d634cda4b283e2f8cbe1ce7f582d4c7b2229b781c",
+  "processingSha256": "6df8e086805bce6cf98fee5b1292a4f1afd832b29c3684c222856be587d8b4ea",
+  "voiceInputs": {
+    "artifacts/build-diary-04/speech/4f09fe5bc960af0885796611.flac": "39cd48394f59f48da4ffacb9e8f59be2cf763ef0c2a1fa2d14ff51b256870fe3",
+    "artifacts/build-diary-04/speech/b212d7aca94b3a5cef7d7338.flac": "5a2c1694f3057efbc21055a2b84e1677f645564926a6a1b882615ee98c9747ce",
+    "artifacts/build-diary-04/speech/912b7005ddfc13f53f0255aa.flac": "5abd00dba1983e40c8f66e9b888507dd892351caf83381e3c4bcb5dcafe7e843",
+    "artifacts/build-diary-04/speech/b9bfca24eedb2f628db81804.flac": "cddd6b830f401975a1be37174136443cc1c0338ab29c2911fc3dce3f05cc7d9c",
+    "artifacts/build-diary-04/speech/8d51599259632857eccdd2d1.flac": "c2c3d9373d8e1a5752118d073b7e385ba84affdcfde9efdc001442b99271910d",
+    "artifacts/build-diary-04/speech/4a1253e4a288d566247fd2bc.flac": "1e2b8d518f3e8df144ca2d347f7ff27893344a721d97e38aa05b2e03a246f838",
+    "artifacts/build-diary-04/speech/8588b8417b6eaf1396b45d8e.flac": "ba7aa922cfe990e7e8274958739fc2e80fcf2bfd372be9de824b33b1c7becc95",
+    "artifacts/build-diary-04/speech/e55049e98ee3d186ba6451ba.flac": "e1eaab71e85d23274889551655e531745688b88e931f3532076565b3463f6822",
+    "artifacts/build-diary-04/speech/db0c510c002f97e5c40397cb.flac": "24d5672bdc3adf267d008a8a847dd58bf086ccbdf27b7fd48f903a54ff892059",
+    "artifacts/build-diary-04/speech/247a289e2b4dc76556204ade.flac": "bb86293194360960918d575d3efb7494ca541c725934b3ed124e367c1daca9b4",
+    "artifacts/build-diary-04/speech/351fe8fe7f1ee1ec09b8cfe7.flac": "025eb50a4bccbcf0280f9f2447709b53d6889a1b864a0c6f0f7edd1094269d1a",
+    "artifacts/build-diary-04/speech/a00d4fc2562b807ecdd2118a.flac": "7f460875a6b033b36aa3bf5567779464b5a17e647ddd8fcc8fe59f3bbc4f24b1",
+    "artifacts/build-diary-04/speech/7d8fef3830e01113c5d059da.flac": "2057f442c10d3a8f7619348dbd797bb3d794ad1024cdc99b8010a3270ca7a72c",
+    "artifacts/build-diary-04/speech/cfd063173edc9e44727cf465.flac": "5df40b9dcba973c20487aa9b60dea3b164fd4c21e1c9834a7ce2dd2f08277531",
+    "artifacts/build-diary-04/speech/391df3b0e3fa77982e17f2c4.flac": "a7cd8e684270e5d92df57380423769c06011166bb707363c1b012ae113952d6a",
+    "artifacts/build-diary-04/speech/3559d4cdf3d9ddedcc3063a1.flac": "4194a17647fc743a969f56232cd8fe035cb8ec76ceb664d6c2955a70dec75d02",
+    "artifacts/build-diary-04/speech/92d5f5d46aa589166ddff957.flac": "b5f0d29aacfc48d578149acdb58e54cd8aeb694217105e90365854ecfeefe8f6",
+    "artifacts/build-diary-04/speech/bc928c205cbd45160e39d4fd.flac": "10ed402ca2ff89a765b7f48c59ac9cc422b8b1ab2545a01d9f322f7d9be78180",
+    "artifacts/build-diary-04/speech/e8a0c2dc9f2225be388ae6d8.flac": "e71f9ea0a1ab0b18bbbb953ddd9948063d394e81337d4906a0cfc4d82e4c0911",
+    "artifacts/build-diary-04/speech/1777256e0d46f9cfc1b9b5e3.flac": "bad0ba3819c1909278131dab8f22f99a9b37483a1706df3a8257622c939e97ba",
+    "artifacts/build-diary-04/speech/7eeaac37e0240d4779abf78e.flac": "49b495511c577ed427a85f1c4018608b4db5c870303c8e4b22c51610b1dbe129",
+    "artifacts/build-diary-04/speech/0bd5be75301209c8d0260a5c.flac": "45be104d6cb1a699933f16a0c84390e30ec6ec7039e3f8ab197e12d61f55fda8",
+    "artifacts/build-diary-04/speech/7316a20ba7c41dd129825c53.flac": "6f65d5eb5fb163cd782122189e72b2da4435a4b9e8b7d2bb92a324683d15ea1e",
+    "artifacts/build-diary-04/speech/717ef9d174f1cdc80c49f8c4.flac": "5c083701df772d426fbc715f2293ccda8b8391a9a88897ccbe396e7152f138b4",
+    "artifacts/build-diary-04/speech/f621dcc181672f162167e4f0.flac": "47c68b6a8cd7a7e01eaf9f7bfa0b0309887605bbc2b3fd906eef63fd2cd32a23",
+    "artifacts/build-diary-04/speech/704f2f7d88e489eb23122bd8.flac": "80f4117b7b78658027129a450d34f88c8a7bbc6844cae63fe47c6bc099e97ae9",
+    "artifacts/build-diary-04/speech/9c6e75f863f447bf91a1d407.flac": "be7ae020250e67a7a4d969c5fe00afa6a3377b37179f9ae89c858e1fa8230a94",
+    "artifacts/build-diary-04/speech/e26f2f9cbbeab7550925e19c.flac": "7c37171c9dbf271510104540bf1be6b5032a228f5d42805e03261b69701e8553",
+    "artifacts/build-diary-04/speech/ec37ca6527d70c604e6c7b4a.flac": "03a342a6d0db1e4e5738e066edcb77ee2b0e638b5389b59fc2772b2e96a3c1c8",
+    "artifacts/build-diary-04/speech/e398e9c63dc2d354bb9dbba7.flac": "72d6a65498945fa3477c188932ed8d40b72394f38c8a24c9605c28d0c33b8e66",
+    "artifacts/build-diary-04/speech/275c285188fe34a5e9705a3c.flac": "dfa7045d8830dae7452070103710d7440b0b45729f6d7833328294138cc88946",
+    "artifacts/build-diary-04/speech/ccadb511e0e5a189a72d7991.flac": "eb0b15673ede66c736997d8a8c4bbef8a7138c48591e48e980bc525b40acd918",
+    "artifacts/build-diary-04/speech/6e3d1b0d3554139ba3465413.flac": "860a2f1c075115f37de6b5e93785c995cef852e44353339faeb4ce79d1870ece",
+    "artifacts/build-diary-04/speech/d9ec0990989c03bb73cbf68f.flac": "4d186ad61874fcd26a89953d9527a90b908a5de128e01b1822048868d2225cb7",
+    "artifacts/build-diary-04/speech/3599f7a461c7b1bbb192dc43.flac": "6bf114c69d5f9f510de4b35c5884fce41f2d5ba9b2c4b762dd8dfa0247a20f2f",
+    "artifacts/build-diary-04/speech/0bd036f089addc973d177307.flac": "5e68cea88e250f7c0c7c91f4762e7715e6d4d9d2118f96e62fc6a2508c350743",
+    "artifacts/build-diary-04/speech/c5cb27eae81f32889b2c27d8.flac": "e8ea0193e86e0a4d367e40304cb1cdf9683f41c82bb5fb3dffa5d5987496d3fe",
+    "artifacts/build-diary-04/speech/4119795a1f3a9b8d15e7cc22.flac": "6c7c7e84828b716ce3a809478c19836434dc973a966afbae7a2c73b363d2936c",
+    "artifacts/build-diary-04/speech/0f91c872cadc612a630c075d.flac": "227cb838cd4adf4a750b72d001ac71c8e982e2db4a772b98bc578dd598979b8f",
+    "artifacts/build-diary-04/speech/a41f83c30f830c5e73141ba0.flac": "d42aa6c4de225e0b24c4a5a3bd9cdb837a7f5c9ee20b359624a4b70049cd4161",
+    "artifacts/build-diary-04/speech/b1dc625a6796fac16dbe35bd.flac": "887a7407a7af1fb008162278c9badf93d0b1b836401e72a0f535c11ae7d13f09",
+    "artifacts/build-diary-04/speech/47ae78dbe3d42c4dc4d2f807.flac": "1edde94565be8e804e1d7da7b74d134c5aee8cd98a23c3f09858c39f1e5f6f96",
+    "artifacts/build-diary-04/speech/ff7c922ad7edacd8b63c0f87.flac": "ac7f94c1519ea18c8332ace30f6655ebe6c3854f9deaff2aa54fef55c4c58ef4",
+    "artifacts/build-diary-04/speech/03b465c44a2a95f8dbe1e6a1.flac": "e5a41cc3064dc617c09f6b5052b655347e66d81b2b1f36d0fee53b6ef309074b",
+    "artifacts/build-diary-04/speech/3a1fd3f94b2f327cbe576058.flac": "165c2e86e9afa9ca14f7cbfd32b264f7b4081740139ea1da1fa742e4e80bfe9d",
+    "artifacts/build-diary-04/speech/87a2fa2c4b0250cc61ee7652.flac": "a6ba28209a78003d0c2134613341db35a22d766053d941f2e0c734ed1ec18b2f",
+    "artifacts/build-diary-04/speech/6f98e02855407dae76b82229.flac": "9c63cf5e35f495b46fdef7618ebecc5a1cb3553a5e14c0f9499abc94a27fd0ae",
+    "artifacts/build-diary-04/speech/83b20d081dcba532fabf10d5.flac": "5c91e5d4ba5fa7f499ffa20dc33605598cd2101541b11c398d3490b2c6ee3923",
+    "artifacts/build-diary-04/speech/c3314435f7ae1d3d19821f44.flac": "64df7643765982b32cf3c318fcd260707f94608efc1e433915f47abf9e648fc7",
+    "artifacts/build-diary-04/speech/f0f83fc12fb91b4a36f3488b.flac": "00b02788e28c1b717f82b5a2cdebe8ceb2cd0c363a111f3fade4fa77f427c4d2",
+    "artifacts/build-diary-04/speech/e61c1d74dd27345dc31cf35e.flac": "9229106d13c6067cbc1cfcd59b7dc427a37655ba81cedfadb3a652ea86329a0e",
+    "artifacts/build-diary-04/speech/e753e12a8eb686b4c5bf4fb2.flac": "4c0b176c46d0ceb7adbe9260c93bd90007ffa0b2926c0ce51030cc718b75fc3d",
+    "artifacts/build-diary-04/speech/eeb644c06abbb10f1124ea27.flac": "e9a087a2b5a3359a50e55426e6b36a3cb51c6f47d62fa66a650ecea334d350fb",
+    "artifacts/build-diary-04/speech/31abfed2a59883f16c8a8be3.flac": "96cdbd903e6903ac496a600efd4c1313aa8ddb6b21ccef4b31f2db64eafee78e",
+    "artifacts/build-diary-04/speech/0b53ff2b12aae990e5d2332a.flac": "18ce3e452d668657cc0202e520f1bf9a8d47d3b5ec38c916da5d42bc4e4521c3",
+    "artifacts/build-diary-04/speech/6e11f4f2c2d88dafa6b9e343.flac": "04f57c344bdd41e8985d3b3d3bc58b32ab1c3075bb7bd29235e29348079af236",
+    "artifacts/build-diary-04/speech/1f9a23de5e5dc3d9a20fca5a.flac": "78b733f40ae3b0b8e657f229fd52bd79fcd83ab6350773024cc28e41dd1f577d",
+    "artifacts/build-diary-04/speech/75ef154c7cbbeb32b50c53b8.flac": "0a9ec68ebdb192e26ebe05e045c81326888c82cbcfc66d684c3b2a332683cba8",
+    "artifacts/build-diary-04/speech/4305acf97ce16dbed22b51c2.flac": "32c639f4c9a297b474e47f937a4ee9af1a766fff85f920ea517b2ff2d617f21a",
+    "artifacts/build-diary-04/speech/09dcebeef0255aea222c55e7.flac": "597993fa535a8e31e2e45f71bc8f63f45e0ba5e1a8132a5903f0525a19fc98a5",
+    "artifacts/build-diary-04/speech/5121349011d1576172f48fb0.flac": "7b168cf707b642f70e0e919d0d18d04ed6dfbe2391eca1439045f4a1714e1cc5",
+    "artifacts/build-diary-04/speech/0c6060634f8a86116930a934.flac": "bf38e8fbc1acee0c042bd433055b3a41e67cb40a674c82b3eeca330f109614ed",
+    "artifacts/build-diary-04/speech/f16ae398bbcbd34225ddf3f2.flac": "43678849675a145784b4ccd9e59d1604bcddc174e409c35206746b520330ba43",
+    "artifacts/build-diary-04/speech/c76034be6efb527fda27d77e.flac": "264063dee4503a339a30ecdf4c4bfbfb03698658fd747dfa3ddb0dde7f89e6de",
+    "artifacts/build-diary-04/speech/1507474a83901a9eac0c83fd.flac": "b72272bd2432caf4b46934ed5fe0ed3afbcf42aa983061c00c4f4303b26ead33",
+    "artifacts/build-diary-04/speech/ba6deba843041e71ff887500.flac": "b3eea851189d7620a13484f982db1f93f1f8ad78ffbc1834b1162216afeb949b",
+    "artifacts/build-diary-04/speech/71af9044a2d484d6eb5ee21d.flac": "5549bbbfd1f36f4796cf64aef3a20a5c4a0faf20881cfc9a31c9a3725c3f363d",
+    "artifacts/build-diary-04/speech/b9549566f758b246405a86e5.flac": "d0bfa3ebf9e851ab163e9e367162e4e4fd76172fe0876b441c4d75f29097a21d",
+    "artifacts/build-diary-04/speech/eb28f8b5c674ff90f654fe0a.flac": "73ca134eae72e2e8afe2f9d11e5ecbd2ef28ae78e6f2e46ced973a9822a7c0e6",
+    "artifacts/build-diary-04/speech/970c36ffbca0c95f0e8f3c96.flac": "34b34a4508988ff4ee1a9558a24c48fb35010dfbb21015e9fcf67f831bdd8077",
+    "artifacts/build-diary-04/speech/0cf6a25692c0ffc63dda4fad.flac": "2b2324d3dad71d14977da28d46b6e119b0a5495abcc5a8c77380c924a2decf78",
+    "artifacts/build-diary-04/speech/1ea046bee729f7ec8c1caf82.flac": "efbffb3d4863a0d861e0e36101a32d42ebf42b9a48e7b6550696caa0b07b5f68",
+    "artifacts/build-diary-04/speech/a38320a65f737f6c8cb85b39.flac": "dc8b6ef8957548e5f192697fc3df4fd497ecac52d1745af35ff57641a0f2a093",
+    "artifacts/build-diary-04/speech/2d0679c09713a302d2309633.flac": "aef5ca515bbcf5b6c55a2dccd4c50f4640dfb52f138456a32869565feccf092c",
+    "artifacts/build-diary-04/speech/8aa756d5184f804b263caa65.flac": "818eb6cf46652484e9016e8351a6483dd41a257c0a02e679c18e8726ec935ddf",
+    "artifacts/build-diary-04/speech/e9b2e4e8c393c6592fb26074.flac": "49a0d3e7482641b09044f0f187fa49a87a9b51fba77a59779fda380c821bb29f",
+    "artifacts/build-diary-04/speech/45230ceb17f3e112085d653c.flac": "a3ba7cd7110f02400a2364d39568cea8be9ee9b84ce338622349db66f57f7fc8",
+    "artifacts/build-diary-04/speech/1d9d20d6ae44625cf89ecc6a.flac": "1afc8372c6621b4201953f582641a532c665ca8f742633b4fc09565c3a147adb",
+    "artifacts/build-diary-04/speech/59d3e4c8ea15ad8e65577d33.flac": "11695d7b829ecb26a1ef24cac41558af08836c44ea763eaabab72290f32622de",
+    "artifacts/build-diary-04/speech/5fa8f568d7af8eb5e1eb2d69.flac": "3f8e4f16e8c6fb9ad75721d4c8bffae2afd6359efe8ee9350f3fab5cdbc04ad2",
+    "artifacts/build-diary-04/speech/b4a4935742335635f22e648b.flac": "9607ba7739cfc25902365c90557fb61095c8cb6136a04246b3e90dfe81195236",
+    "artifacts/build-diary-04/speech/e64ef156094e847e1fbcb1db.flac": "1f0edf438abfa357c4e71f06646f094022f4b6b1158c12e4e48cb6e0a6957e41",
+    "artifacts/build-diary-04/speech/f1be0248bbe5e35700fd5925.flac": "9546a459aa5a6252e05ef74d633905307814e90d7c65dfcff77982dea4481ef4",
+    "artifacts/build-diary-04/speech/12e9353f29630c17ad4020cc.flac": "69cd12176e85f5379341332e1325a92e788ac34c1a8f3f1022f2b53aec03ec90",
+    "artifacts/build-diary-04/speech/595f2da318e78e9ce05f673c.flac": "969295a07965902b7c75aa545e3226bd74c463183ee9d577a0027d47f4ffe62a",
+    "artifacts/build-diary-04/speech/dc8f404085b9c8b3bc78ebfc.flac": "df3f1bd22a07cc7aafb002d3963a9cac1c7bffabd4064b94d175bde403fe33d2",
+    "artifacts/build-diary-04/speech/aaca5d0f56baaad1baaf0650.flac": "40818047de1cd681a42e88a988bd2e3363f406c4a177ac4cbff202cd0d6c2d3c",
+    "artifacts/build-diary-04/speech/bbc9a79384f511de906b7e42.flac": "a4ecedb02e1b1573f9e0fb668cdde0446581b1a659adb2f7a811df2a5675d438",
+    "artifacts/build-diary-04/speech/b6ce43af9c2a844849af4f18.flac": "03284848c3163b98d927ab00232024e9a710c75e4cc317ee306c53bdd2a24bc1",
+    "artifacts/build-diary-04/speech/099debe06b12696f6adfa267.flac": "7dbe28906bfb30e2943f4f457f2e34d2409b9bcff224023a57f2167dcd9e3ba0"
+  },
+  "rule": "OP, Fjord BGM, native game SE and three voices mixed once on the common 48kHz sample clock; AAC only at the final mux."
+}

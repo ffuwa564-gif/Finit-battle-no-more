@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "episode": "ビルド研究日誌 #04 フィオ",
+  "status": "active-approved-originals-awaiting-root-review",
+  "tool": "image_gen.imagegen",
+  "scope": "Illustrative unimplemented research proposal: finite reserve of spare care/cloth for the next companion. Not an implemented feature, numerical mechanic, win result or new gem certification.",
+  "character": {
+    "id": "fio",
+    "seriesId": "BD071",
+    "epithet": "余り布の薬草師",
+    "thumbnailCopy": "その余りを、次の誰かへ。"
+  },
+  "active": [
+    {
+      "kind": "thumbnail",
+      "original": "/workspace/generated_images/exec-27a26e02-6f79-4e22-b572-a5c8927898bb.png",
+      "output": "artifacts/build-diary-04/assets/thumbnail-original.png",
+      "prompt": "Create a polished Japanese Episode04 YouTube thumbnail in the supplied approved ビルド研究日誌 cute ornamental pastel laboratory style. Distinct NEW scene about keeping a small finite spare care bundle for the next companion. Featured game heroine FIO at left faithfully reproduces supplied original art: brown-pink wavy hair braided back with a white bow, GREEN eyes, sage GREEN dress over cream blouse, WHITE botanical embroidered APRON, brown medical pouch with glass bottles/scissors, rolled white bandage and fresh herbs. She is a gentle young herbalist, not previous Ione or Neri. She offers a small tidy wooden care box containing a few clean folded cloth strips, a rolled bandage and herbs, with a kind reassuring smile. Main host Tsumugi center-right is the approved kind science gyaru: blonde-to-pink hair, blue eyes, yellow cardigan and loose white lab coat. IMPORTANT her glasses have clearly readable large FULL round dark warm BRONZE rims on BOTH eyes with visible bridge, clear lenses and blue eyes unobscured. Support Zundamon and pink-haired Shikoku Metan are smaller cute approved chibi helpers with envelopes replaced by cloth bundles; Z holds a little clean care bundle and Metan notes observations. Simple notebook diagram shows a small spare cloth -> small box -> a companion card, as a research metaphor. This is keeping a FINITE care reserve, NOT an infinite source and NOT magical barrier/shield; do not draw energy domes, damage numbers, hearts meters, or a victory result. No diamond gems, certification marks or awarded badges. It is an unimplemented research proposal, show warm thoughtful care. EXACT Japanese text only: top title 『ビルド研究日誌』, subtitle 『みんなが輝くRPGを！』, episode plaque 『#04 フィオ』, big bottom banner 『その余りを、次の誰かへ。』. Elegant readable lettering, not crowded. Pink cream mint amber colors, cozy flowers and herb shelves, notebooks, warm daylight. WIDE LANDSCAPE16:9. Critical safety: ALL FOUR complete heads, ahoge, braids, WHITE BOW, all Metan heart head ornaments and outermost curls must remain at least100 pixels inside every outer edge at1672px width. Put the entire group in central80% and reduce characters rather than clipping. Metan must be placed inward, not against right border. Titles do not cover faces. All Fio identity details and Tsumugi clear round glasses preserved. No extra mechanic text, no episode03 address envelope diagram.",
+      "references": [
+        "artifacts/build-diary-03/assets/thumbnail-original.png",
+        "public/art/scout-fio.webp"
+      ],
+      "accepted": true,
+      "originalSha256": "04aa0d42ea3cce815ad32d14568c2aeaa651d78522519ca6e536bea727a267ea",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "04aa0d42ea3cce815ad32d14568c2aeaa651d78522519ca6e536bea727a267ea",
+      "referenceHashes": {
+        "artifacts/build-diary-03/assets/thumbnail-original.png": "971c793e603f7b904cf98767f52092f319fa28708575f4124dda46045d00f917",
+        "public/art/scout-fio.webp": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1"
+      }
+    },
+    {
+      "kind": "research-lab",
+      "original": "/workspace/generated_images/exec-4a6a0dc3-bd16-4f2e-b92f-ec6ab1d3e1f4.png",
+      "output": "artifacts/build-diary-04/assets/research-lab-overflow.png",
+      "prompt": "Focused safe-layout edit of this approved Episode04 herbalist research-room illustration. Keep ALL four identities, kind expressions, host Tsumugi dark bronze full round eyeglasses and bridge, Fio brown-pink braid white bow green apron dress, Zundamon, Metan, finite bandage care box, herb tools, notebook cloth-to-box-to-companion metaphor. The current rightmost Metan hair curls are too near right edge. Make the entire four-person group about15 percent smaller and inward, or equivalently show a coherently wider room around them. Move Metan about100px LEFT at original1672px width and keep at least120pixels of visible room/background beyond her COMPLETE outer right curls. Put Fio's complete outer left waves at least120pixels INSIDE left edge as well. All four characters' full heads, bows, ahoge and Metan heart ornaments must fit with at least100px safety distance from ALL outer borders. Tsumugi main host still central and glasses readable. Do NOT crop or pad by blurring, do not enlarge faces. Recompose the room naturally wider, keep table and finite care box / herbs, no added text, no diamonds/gem certification, no shields or victory claims. Wide16:9, same pink cream mint amber cute approved art style. This edit is only for clear head/hair margins; retain core content and all features.",
+      "references": [
+        "/workspace/generated_images/exec-0b16d96e-f723-4343-a235-20e0c1ce464d.png"
+      ],
+      "accepted": true,
+      "originalSha256": "7bbf796cbed12825545c1cb3fdfc831dc8b1442890bedde3f90c46bc1d0ea57a",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "7bbf796cbed12825545c1cb3fdfc831dc8b1442890bedde3f90c46bc1d0ea57a",
+      "referenceHashes": {
+        "/workspace/generated_images/exec-0b16d96e-f723-4343-a235-20e0c1ce464d.png": "9c7e479fd2aea7681eb4a790bcbe0936fb267d1856772bf3c282d3e979e3b311"
+      }
+    }
+  ],
+  "superseded": [
+    {
+      "kind": "research-lab-first-draft",
+      "original": "/workspace/generated_images/exec-0b16d96e-f723-4343-a235-20e0c1ce464d.png",
+      "retainedCopy": "artifacts/build-diary-04/assets/research-lab-overflow-superseded-01.png",
+      "prompt": "Create a NEW Episode04 full-scene illustration in the supplied approved cute pastel research laboratory style. Four characters kindly study saving a small FINITE spare care bundle for the next companion. Landscape16:9, wide room with all characters inside central80% and100-pixel clear margin around all heads/hair/ornaments at1672px width. Featured herbalist FIO sits LEFT: faithfully preserve supplied actual game original, brown-pink wavy hair with braided sides and WHITE bow, green eyes, sage GREEN dress over cream blouse, WHITE botanical-embroidered APRON, brown herbal medical pouch. She gently places a neatly folded clean strip of bandage and herbs into a small OPEN wooden care box on the desk, a kind hopeful smile. She is not Ione, no black bob or scholarly gold spectacles, no ledger. Main protagonist host Tsumugi CENTER in white lab coat over yellow cardigan, blonde-to-pink hair, blue eyes, LARGE clear full ROUND eyeglasses with distinct dark warm BRONZE rims around BOTH eyes and clearly readable bridge; not thin invisible glasses. Tsumugi writes careful research notes, kindly thinking through when to use the spare care package, holding a small cloth. Zundamon and pink-haired Shikoku Metan help on the right: Zundamon compares two folded cloth bundles, Metan draws a small plan in her notebook. Metan MUST be inward with her entire right curls and both heart head ornaments at least100px away from outer right edge; never clip. All four full heads and Fio white bow are visible with generous overhead room. The central desk has herbs, mortar and pestle, few little medicine bottles, only a SMALL finite box with two or three folded bandages, one spare rolled bandage, and four abstract companion cards. One simple mint arrow on the open notebook leads from spare cloth to box to a companion icon: visual metaphor, not actual game UI. No text or numbers. Warm pink/cream/mint/amber, sunlit window, flowers, cute stationery and botanical shelves. No magical shields or energy domes, no unlimited healing, no victory stamps, no diamond gems or awarded certification. This is a compassionate unimplemented research concept of choosing immediate care versus a later prepared helping hand, not a claim of a released mechanic. No envelope/address diagram, no clock shift schedule, no combat violence. Host Tsumugi stays kind and energetic scientist gyaru. Wider composition ensures complete hair silhouettes, ribbons and all head ornaments, keep all visible hands and the care box natural.",
+      "references": [
+        "artifacts/build-diary-03/assets/research-lab-register.png",
+        "public/art/scout-fio.webp",
+        "artifacts/build-diary-03/assets/thumbnail-original.png"
+      ],
+      "accepted": false,
+      "reason": "All heads present, but outermost Metan right curls approached frame edge and did not meet the100px safety margin. Replaced by wider scene.",
+      "originalSha256": "9c7e479fd2aea7681eb4a790bcbe0936fb267d1856772bf3c282d3e979e3b311",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "9c7e479fd2aea7681eb4a790bcbe0936fb267d1856772bf3c282d3e979e3b311",
+      "referenceHashes": {
+        "artifacts/build-diary-03/assets/research-lab-register.png": "da5a71c3441c4bbb75fa1367340492463c049ea7cfbec31f32cb99dca3e7d8bd",
+        "public/art/scout-fio.webp": "25d05266243ddd247c2d20102f8cc01b8eb0794459d79851a1544af0f4fef4b1",
+        "artifacts/build-diary-03/assets/thumbnail-original.png": "971c793e603f7b904cf98767f52092f319fa28708575f4124dda46045d00f917"
+      }
+    }
+  ],
+  "review": {
+    "reviewer": "/root/build_diary_art",
+    "method": "Visual inspection of every tool-produced original and revised scene. Thumbnail first draft approved, lab first draft superseded to enforce head/hair100px margin.",
+    "checks": {
+      "allFourHeadSilhouettesContained": true,
+      "allHairBowsAhogeAndHeartOrnamentsContained": true,
+      "activeSceneHeadHairMargin100pxOrMore": true,
+      "tsumugiDarkBronzeFullRoundRimsAndBridgeClear": true,
+      "fioBrownPinkBraidsWhiteBowGreenEyesDressAndBotanicalApronPreserved": true,
+      "fioBandageHerbsAndMedicalPouchVisible": true,
+      "exactFourThumbnailTextElementsCorrect": true,
+      "noAwardedGemsOrVictoryClaims": true,
+      "noMagicBarrierOrInfiniteSupplyClaim": true
+    },
+    "notes": "Finite care box and cloth handoff are metaphors only. Body lower parts are naturally occluded by research table. Superseded draft is retained byte-exact and excluded from active list. Root final approval pending."
+  },
+  "derivedThumbnail": {
+    "path": "artifacts/build-diary-04/delivery/Thumbnail-BuildResearchDiary-04.jpg",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "processing": "Pillow ImageOps.contain on cream canvas, no crop or source overwrite.",
+    "sha256": "313bd6ef135503590e531d70ed80ca36d3d5dadf28614ccf6cf8b0254a8ee61b"
+  },
+  "nextPreview": {
+    "characterId": "elaine",
+    "seriesId": "BD001",
+    "generation": "none requested; original game art reused by episode renderer"
+  },
+  "unchanged": [
+    "src",
+    "artifacts/build-diary-01",
+    "artifacts/build-diary-02",
+    "artifacts/build-diary-03"
+  ]
+}

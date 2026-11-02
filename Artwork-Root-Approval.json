@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "reviewer": "/root",
+  "recordedAtUTC": "2026-11-02T21:59:09.399916+00:00",
+  "method": "Direct original-resolution inspection of both active imagegen originals during production and final1280x720 thumbnail reinspection. Approval documented separately to preserve frozen generation provenance exactly.",
+  "outputs": {
+    "artifacts/build-diary-04/assets/thumbnail-original.png": "04aa0d42ea3cce815ad32d14568c2aeaa651d78522519ca6e536bea727a267ea",
+    "artifacts/build-diary-04/assets/research-lab-overflow.png": "7bbf796cbed12825545c1cb3fdfc831dc8b1442890bedde3f90c46bc1d0ea57a"
+  },
+  "checks": {
+    "allFourHeadsAndHairOrnamentsContained": true,
+    "fioIdentityMatchesOriginal": true,
+    "tsumugiRoundGlassesClear": true,
+    "episode04NameAndTitleCorrect": true,
+    "finiteCareResearchMetaphorOnly": true,
+    "supersededOriginalNotUsed": true
+  },
+  "generationProvenanceSha256": "e48b9fe3d0cdd0bc4acbb9ab5a5df2e39b57ff01713d2ac0e882c8973a76f671"
+}

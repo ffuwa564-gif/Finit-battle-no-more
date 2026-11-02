@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "finishedSha256": "2b22f551baccd1059989428cf47f152cad2a4afb1f504103060abc7c9333ca92",
+  "fullDecodePassed": true,
+  "expectedDuration": 854.2666666666667,
+  "browserChecks": [
+    {
+      "browser": "Chromium",
+      "duration": 854.266667,
+      "width": 1920,
+      "height": 1080,
+      "points": [
+        {
+          "fraction": 0.02,
+          "advanced": 1.0063710000000015,
+          "readyState": 4,
+          "pixelRange": 218.66666666666669,
+          "decodedFrames": 51,
+          "muted": true
+        },
+        {
+          "fraction": 0.5,
+          "advanced": 0.9608299999999872,
+          "readyState": 4,
+          "pixelRange": 222,
+          "decodedFrames": 118,
+          "muted": true
+        },
+        {
+          "fraction": 0.97,
+          "advanced": 0.9456030000000055,
+          "readyState": 4,
+          "pixelRange": 195.66666666666666,
+          "decodedFrames": 373,
+          "muted": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "browser": "WebKit",
+      "duration": 854.267,
+      "width": 1920,
+      "height": 1080,
+      "points": [
+        {
+          "fraction": 0.02,
+          "advanced": 0.9724629640000018,
+          "readyState": 4,
+          "pixelRange": 237.66666666666669,
+          "decodedFrames": 30,
+          "muted": true
+        },
+        {
+          "fraction": 0.5,
+          "advanced": 0.94516669799998,
+          "readyState": 2,
+          "pixelRange": 249.66666666666666,
+          "decodedFrames": 29,
+          "muted": true
+        },
+        {
+          "fraction": 0.97,
+          "advanced": 0.9446721049999951,
+          "readyState": 2,
+          "pixelRange": 224.33333333333334,
+          "decodedFrames": 29,
+          "muted": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "note": "Headless browser playback is muted; actual audio is separately decoded and waveform-matched in Finished-Movie-Sync.json."
+}
