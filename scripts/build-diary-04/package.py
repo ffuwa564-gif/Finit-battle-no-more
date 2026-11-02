@@ -239,6 +239,11 @@ def production_files(n,manual):
  for name in read(O/'render/opening/provenance.json').get('inputs',{}):
   p=Path(name)
   if not p.is_absolute()and name.startswith('artifacts/')and p.suffix.lower()in['.png','.jpg','.webp','.json']:files.add(ROOT/p)
+ # Preserve the exact reviewed frames as well as the contact sheets they form.
+ for item in manual['reviewedAssets']:
+  reviewed=safe_file(path(item['path']));assert sha(reviewed)==item['sha256'],'Reviewed visual input changed'
+  files.add(reviewed)
+ files.update((O/'capture').glob('*.png'))
  for p in manual['contactSheetPaths']:files.add(path(p))
  for sample in manual['nextEpisodePreview']['samples']:files.add(path(sample['path']))
  # Public editorial/QC metadata is also available inside the production archive.
