@@ -30,4 +30,6 @@ python scripts/build-diary-02/publish.py --check-only
 
 新原画は`assets/artwork-provenance.json`、再利用は`asset-reuse.json`で別に追跡。旧provenanceは`reused-artwork-provenance.json`を再利用原本として保持し、新原画を前回制作と偽装しない。
 
-梱包はsourceHEADとゲーム原本main489を分けて記録。3収録MOV＋OPのPCM原本、CFR前`.tmporiginal`をそのまま保ち、90MiB raw予算でZIPを分ける。各配布ファイルは100MiB未満。今回はheader_fix後段・旧masterの退避工程を使わない。`publish.py`は読み取り専用ローカルgateで、pushやitch更新を行わない。
+梱包はsourceHEADとゲーム原本main489を分けて記録。3収録MOV＋OPのPCM原本、CFR前`.tmporiginal`をそのまま保ち、90MiB raw予算でZIPを分ける。各配布ファイルは100MiB未満。初回には重なりが見つかり、最終版にcue_fix.pyの追加stageを採用した。歴史の基礎masterはrender/pre-cue-correction.mp4に保持し、元256入力を変えない。post-cue-fix.jsonを最終source/hash gateへ必須にする。`publish.py`は読み取り専用ローカルgateで、pushやitch更新を行わない。
+
+再発防止：Bの黄金色cueは(1200,765)を専用slotとする。右下の薬数footnoteが使うy825近傍へイベントcueを配置しない。ASS cueとplate footnoteを別検査せず、完成frame上で両方の文字境界が重ならないことを確認する。修正版は他章・元native映像・AAC packets/PCM不変を検査し、Sync/Roster/Visual/Decode/Browser/Manualを全て新完成SHAで再実行する。

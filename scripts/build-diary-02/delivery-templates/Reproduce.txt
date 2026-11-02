@@ -16,3 +16,5 @@ Production-Inputs.json は編集入力のハッシュ、Recording-Sources.json �
 研究の再検証は research-bootstrap.py → research-runner.mts → research-edge.mts → research-certificate.mts → research-cross.mts の原典手順と、research-contract-v2.py / research-contract-v2.mts の操作契約補修検査を分けて実行します。後者は元LABから別の隔離コピーを作り、収録元ログは書き換えません。11対象検査と本命/失敗seed1のJSON同一性を確認します。
 
 今回counterの校正には capture-counter-calibrate.py を使用しました。最初の実在start校正点をwarmupとして無条件に除く旧処理を避け、6個の観測済み映像・音点を保持し、60ms以上の持続音だけで独立確認しています。許容80msと最低6点の基準は変更していません。元録画を取り直す場合は実在する校正点を確認し、既存の通過報告を転用しないでください。
+
+完成版のcue配置修正：基礎レンダー後に `python scripts/build-diary-02/cue_fix.py` を実行する追加工程があります。lab-victory-bの黄金色イベントcueだけを(1200,825)から(1200,765)へ移し、右下の平均薬数footnoteとの実重なりを解消します。凍結済みrender.py/visuals/台本/plan/元256入力を変更せず、clean plate・actor・同一native pieceから該当章を再合成。その他章はcopy、AAC packetsとdecoded PCMは修正前と完全同一を検査します。旧SHAはrender-input-freeze.json、配布SHAと入力/helperハッシュはpost-cue-fix.jsonが持ちます。完成版の全QAは追加工程の後に実行し、旧版の合格を流用しません。

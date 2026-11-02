@@ -44,6 +44,16 @@ def snapshot(files):return{rel(p):{'sha256':sha(p),'bytes':p.stat().st_size}for 
 def validate_inputs():
  assert MOV.is_file(),'Finished movie is not ready';assert MOV.stat().st_size<LIMIT,'MP4 exceeds GitHub100MiB; re-export, then repeat every finished-file check'
  finished=sha(MOV);checks={}
+ post=read(safe_file(O/'post-cue-fix.json'));assert post['passed']and post['finishedSha256']==finished
+ assert post['audioPacketsAndDecodedSamplesUnchanged']and post['originalFrozenInputsUnchanged']
+ assert post['processingSha256']==sha(SCRIPT/'cue_fix.py')
+ assert sha(safe_file(path(post['sourceMoviePreserved'])))==post['sourceFinishedSha256']
+ frozen=read(safe_file(O/'render-input-freeze.json'));assert frozen['inputsUnchangedAfterRender']and frozen['finishedSha256']==post['sourceFinishedSha256']
+ for name,digest in frozen['inputs'].items():assert sha(safe_file(path(name)))==digest,'Frozen original input changed: '+name
+ for name,digest in post['inputHashes'].items():assert sha(safe_file(path(name)))==digest,'Cue repair input changed: '+name
+ repair=post['chapterRepair'];assert repair['chapter']=='lab-victory-b'and repair['cuePositions']['from']==[1200,825]and repair['cuePositions']['to']==[1200,765]
+ assert repair['cleanPlatesMatchOriginal']and repair['nativePieceUnchanged']and sha(safe_file(path(repair['output'])))==repair['outputSha256']
+
  for name in FINAL_CHECKS:
   r=read(safe_file(D/name));assert r.get('passed')is True and r.get('finishedSha256')==finished,name+' must pass for this exact MP4';checks[name]=r
  registry=read(safe_file(O/'registry.json'));gems=read(safe_file(O/'gem-audit.json'))
@@ -151,7 +161,7 @@ def write_editorial(n,registry):
  lines=[l for c in n['chapters']for l in c['lines']];chapters='\n'.join(stamp(c['start'])+' '+c['title']for c in n['chapters'])+'\n'
  (D/'Script.md').write_text('# ビルド研究日誌 #02 — みんなが輝くRPGを！\n\n'+'\n\n'.join('## '+c['title']+'\n\n'+'\n\n'.join(NAMES[l['speaker']]+'：'+l['text']for l in c['lines'])for c in n['chapters']))
  (D/'Subtitles-ja.srt').write_text('\n\n'.join(f"{i+1}\n{srt(l['start'])} --> {srt(l['end'])}\n{l['text']}"for i,l in enumerate(lines))+'\n');(D/'Chapters.txt').write_text(chapters)
- for src,dst in [('registry.json','Character-Registry.json'),('gem-audit.json','Gem-Audit.json'),('timeline-narration.json','Narration-Timeline.json'),('edit-timeline.json','Edit-Timeline.json'),('mix-manifest.json','Mix-Manifest.json'),('head-safety.json','Head-Safety.json'),('music-source.json','Music-Source.json')]:shutil.copy2(O/src,D/dst)
+ for src,dst in [('registry.json','Character-Registry.json'),('gem-audit.json','Gem-Audit.json'),('timeline-narration.json','Narration-Timeline.json'),('edit-timeline.json','Edit-Timeline.json'),('mix-manifest.json','Mix-Manifest.json'),('head-safety.json','Head-Safety.json'),('music-source.json','Music-Source.json'),('post-cue-fix.json','Post-Cue-Fix.json'),('render-input-freeze.json','Render-Input-Freeze.json')]:shutil.copy2(O/src,D/dst)
  shutil.copy2(O/'assets/artwork-provenance.json',D/'Artwork-Provenance.json');shutil.copy2(O/'asset-reuse.json',D/'Asset-Reuse.json');shutil.copy2(O/'research/source-game.json',D/'Game-Source.json');shutil.copy2(O/'research/episode-evidence.json',D/'Evidence-Review.json')
  for name in ['Credits','Methods','Reproduce']:(D/(name+'.md')).write_text((SCRIPT/'delivery-templates'/(name+'.txt')).read_text())
  summary=registry['summary'];description=(SCRIPT/'delivery-templates/YouTube-Description.txt').read_text();description=description.replace('@@CHAPTERS@@',chapters).replace('@@GIRL_FORMS@@',str(summary['girlRegistrations'])).replace('@@CANONICAL_GIRLS@@',str(summary['canonicalGirls']))
@@ -183,6 +193,8 @@ def production_files(n,manual):
    if key.exists():files.add(key)
  for pattern in ['*-scene-*.png','*.ass','*-visual.json']:
   files.update((O/'render').glob(pattern))
+ for p in (O/'render/cue-fix').rglob('*'):
+  if p.is_file()and p.suffix.lower()in ['.ass','.json','.png','.txt','.ffconcat','.key']:files.add(p)
  for folder in ['charts','figures']:
   if(O/folder).exists():files.update(p for p in(O/folder).rglob('*')if p.is_file())
  for p in(O/'render/opening').glob('*.json'):files.add(p)
