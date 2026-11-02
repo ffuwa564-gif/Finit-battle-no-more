@@ -1,0 +1,7 @@
+.memory-gem-tier { --tier-ink:#bdcad8; --tier-glow:#899fb6; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; gap:4px; min-width:31px; padding:2px 6px; border:1px solid color-mix(in srgb,var(--tier-glow) 55%,transparent); border-radius:3px 8px 3px 8px; background:linear-gradient(125deg,color-mix(in srgb,var(--tier-glow) 13%,#121f30),#142031); color:var(--tier-ink); font:600 10px/1.35 var(--font-body,sans-serif); letter-spacing:.04em; white-space:nowrap; vertical-align:middle; }
+.memory-gem-tier > i { width:3px; height:3px; background:currentColor; transform:rotate(45deg); }
+.memory-gem-tier--2 { --tier-ink:#b8dcf0; --tier-glow:#8cbcd9; }
+.memory-gem-tier--3 { --tier-ink:#e5dfb6; --tier-glow:#c6ba84; }
+.memory-gem-tier--4 { --tier-ink:#ffe2a5; --tier-glow:#e1b668; box-shadow:inset 0 0 8px #e2b45712; }
+.memory-gem-tier--5 { --tier-ink:#f6d6ff; --tier-glow:#d0a1e0; box-shadow:inset 0 0 10px #d1a2e31c,0 0 9px #d1a2e315; }
+.memory-gem-tier--6 { --tier-ink:#e7fdff; --tier-glow:#8fdde8; border-color:#9ce5ed; background:linear-gradient(125deg,#26434a,#172b3a); box-shadow:inset 0 0 11px #a1ecf521,0 0 10px #8bdde51c; }

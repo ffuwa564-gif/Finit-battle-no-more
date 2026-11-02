@@ -1,0 +1,63 @@
+import { scoutSkillDescription, scoutLeaderDescription } from './scout-skills';
+import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
+
+export const skillTemplates: SkillTemplate[] = ['overclock', 'barrier_mend', 'jam', 'rally', 'attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'pierce', 'drain', 'regen', 'barrier', 'cleanse', 'mend_pair', 'shatter', 'dispel', 'dawn', 'confusion', 'sleep', 'paralysis', 'charm'];
+export const skillNames: Record<SkillTemplate, string> = {
+  confusion: '迷いの霧', sleep: 'まどろみの花', paralysis: '痺れる閃光', charm: '惑いの旋律',
+  overclock: '星炉の過充填', barrier_mend: '装甲リサイクル', jam: '秒針ジャミング',
+  rally: '軍神の号令',
+  dawn: '約束の朝',
+  attack: '月影の一閃', area: '静寂の雨', heal: '白花の祈り', guard: '守りの誓い', buff: '星灯の導き', debuff: '朽ちゆく祝福',
+  mend_pair: '返し潮の抱擁', shatter: '磐砕き', dispel: '結び直す指先',
+  pierce: '銀閃の貫突', drain: '夜露の吸命', regen: '巡る月の雫', barrier: '月光の障壁', cleanse: '白花の浄化',
+};
+const descriptions: Record<SkillTemplate, string> = {
+  overclock: '自分の最大HPの10%を消費し、自分以外の攻撃力が高い味方1人の必殺ゲージを35充填。自身のHPが20%より多く、味方のゲージが65以下のときに使用。自分の必殺ゲージは通常どおり増加。',
+  barrier_mend: 'HP75%以下で障壁がある味方1人の障壁を、最大HPの15%分まで消費して、その2倍のHPへ変換。必要な分だけ消費し、HP30%以下の味方への通常回復を優先する。',
+  jam: '敵1体の通常スキルを次ラウンド終了まで使用不能にする。使えるスキルがある敵を狙う。通常攻撃・ボスの予告大技・ビット射撃は止められない。',
+  rally: '生存中の味方全員の攻撃力を次ラウンド終了まで強化。攻撃強化は重複せず、強い効果を優先。味方が2人以上で、強化できる相手がいるときに使用する。',
+  confusion: '敵1体を混乱させる。2回の行動でスキルを使わず、50%で味方（自分を含む）、それ以外は敵に通常攻撃。',
+  sleep: '敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。',
+  paralysis: '敵1体を麻痺させる。2回の行動の間、毎回40%の確率で行動できない。',
+  charm: '敵1体を魅了する。2回の行動で自分以外の味方に通常攻撃。味方がいなければ行動不可。付与者が倒れると解除。',
+  dawn: '敵1体の防御を65%無視する攻撃。実際に攻撃を受ける敵が防御低下中なら威力が25%上昇。ボス・弱体化中の敵や攻撃重視で優先する。',
+  attack: '敵1体に強力な攻撃。', area: '敵全体を攻撃。かばうを無視する。', heal: 'HPが低い味方1人を回復。生存重視では早めに使用する。',
+  guard: '味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。', buff: '攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。', debuff: '敵1体の防御力を次ラウンドまで下げる。',
+  mend_pair: '傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。',
+  shatter: '敵1体の障壁を破壊してから控えめな攻撃。障壁がある敵へ使用し、かばうがあれば引き受けた相手の障壁を破壊する。',
+  dispel: '敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。',
+  pierce: '敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。',
+  drain: '敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。',
+  regen: '負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。',
+  barrier: '味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。',
+  cleanse: '味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。',
+};
+export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['overclock', 'jam', 'rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
+export function skillDescription(skill: SkillDef): string {
+  const personal = scoutSkillDescription(skill.id);
+  if (personal) return personal;
+  const effect = skill.template === 'rally' ? `${descriptions.rally} 攻撃力上昇量：${15 + skill.strength / 2}%。` : descriptions[skill.template];
+  return `${effect}${['confusion', 'sleep', 'paralysis', 'charm'].includes(skill.template) ? ' 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。' : ''} 再使用まで${skillCooldown(skill.template)}ラウンド。`;
+}
+const leaderDescriptions: Record<LeaderEffect, string> = {
+  acceleration: '曙の加速：各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。',
+  regeneration: '月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。',
+  finisher: '薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。',
+  lifesteal: '黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。',
+  bulwark: '銀灯の庇護：味方全員の被ダメージを10%軽減。',
+  resonance: '星の共鳴：味方全員の全体攻撃の威力が15%上昇。',
+};
+export function leaderEffectDescription(character: CharacterDef): string {
+  const personal = scoutLeaderDescription(character.id);
+  if (personal) return `${personal} リーダー生存中のみ有効。`;
+  return character.leaderEffect ? `${leaderDescriptions[character.leaderEffect]} リーダー生存中のみ有効。` : '';
+}
+
+/** Every template explicitly declares its shared sound and presentation family. */
+export const skillSoundProfiles: Record<SkillTemplate, 'attack' | 'area' | 'heal' | 'guard' | 'buff' | 'debuff'> = {
+  overclock: 'buff', barrier_mend: 'heal', jam: 'debuff',
+  rally: 'buff', confusion: 'debuff', sleep: 'debuff', paralysis: 'debuff', charm: 'debuff',
+  attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff',
+  pierce: 'attack', drain: 'attack', regen: 'heal', barrier: 'guard', cleanse: 'buff',
+  mend_pair: 'heal', shatter: 'attack', dispel: 'debuff', dawn: 'attack',
+};

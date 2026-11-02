@@ -1,0 +1,891 @@
+{
+  "passed": true,
+  "episode": "BRD-004",
+  "decision": {
+    "subject": "pending-counterexample-found",
+    "priorWitnesses": {
+      "ruka": "retained",
+      "neri": "retained"
+    },
+    "legacyIoneRole": "reviewed",
+    "nextPreview": "Elaine BD001; no advance award"
+  },
+  "summary": {
+    "publishedCharacters": 75,
+    "girlRegistrations": 72,
+    "canonicalGirls": 49,
+    "excludedCreatures": 3,
+    "ideaRegistrations": 31,
+    "ideaGirls": 20,
+    "researchStartedGirls": 22,
+    "liveCertifiedGirls": 0,
+    "prototypeCertifiedGirls": 2,
+    "prototypePendingGirls": 0
+  },
+  "inputs": {
+    "priorRegistry": {
+      "path": "docs/media/build-research-diary/episodes/03/registry.json",
+      "sha256": "2c03a12c6842a72804ee48b9e77d5fb7a3e5da520d0060af27452dbb7e9b6c81"
+    },
+    "priorGemAudit": {
+      "path": "docs/media/build-research-diary/episodes/03/gem-audit.json",
+      "sha256": "685624d9a7badf6674d93b31f4ef223990f4fbb55ab4605e0193e2e831aae82a"
+    },
+    "permanentSerials": {
+      "path": "docs/media/build-research-diary/serial-map.json",
+      "sha256": "639aefe7e3636567aab96719539f75f0db788a27e537eb7ca975fbdfce6eee14"
+    },
+    "eligibility": {
+      "path": "docs/media/build-research-diary/girl-eligibility.json",
+      "sha256": "b64c9037ec2adbe13555a9bcdd117530d77d83390f48c9d29e7d56731aea5ea9"
+    },
+    "registry": {
+      "path": "artifacts/build-diary-04/registry.json",
+      "sha256": "0c29c1d82e1a861d0c9bacb1dc9e5a59816d040a76ea2b1c2562cb0e40018731"
+    },
+    "gemAudit": {
+      "path": "artifacts/build-diary-04/gem-audit.json",
+      "sha256": "4115bc50c97168d4348006efa34e08e818f48e4f10c6578755a0674db86ad2b4"
+    },
+    "sourceGame": {
+      "path": "artifacts/build-diary-04/metadataSourceGame.json",
+      "sha256": "38ca8b37e70fdbe1eadc3514200c067e406558bcfd01122862a2dc2687db6bae"
+    },
+    "sourceGameResearch": {
+      "path": "artifacts/build-diary-04/research/source-game.json",
+      "sha256": "38ca8b37e70fdbe1eadc3514200c067e406558bcfd01122862a2dc2687db6bae"
+    },
+    "registryCode": {
+      "path": "scripts/build-diary-04/registry.mts",
+      "sha256": "07efe7f172bb59dc249fabdb54eed4c45d710432d7784384fedfde3cff45bad6"
+    },
+    "story": {
+      "path": "scripts/build-diary-04/story.py",
+      "sha256": "cce445adcbde7fa297e26a8a0e14e8654e2c1962f67e26b0a5fa8fa8518ad791"
+    },
+    "recognitionHelper": {
+      "path": "scripts/build-diary-01/registry.mts",
+      "sha256": "d7981520fbf31809e8f1a681f2540c00bfdebe947b692453564d97ee7150bec6"
+    },
+    "evidence": {
+      "path": "artifacts/build-diary-04/research/episode-evidence.json",
+      "sha256": "81486d3abeb2cc67f8b71143f67b55fce690321f6297fcbae6fe7744dc577214"
+    },
+    "independentReview": {
+      "path": "artifacts/build-diary-04/research/independent-research-review.json",
+      "sha256": "f0338373c56206a3fffa751272ebc5737567687ac5ed02ac3b394a2aca23e95e"
+    },
+    "independentRecheck": {
+      "path": "artifacts/build-diary-04/research/independent-recheck.json",
+      "sha256": "a0ad06f16844eacd526403335e9eadea723033871e66d4c2d83ce27e9c001beb"
+    },
+    "legacy-idea-review:ione": {
+      "path": "artifacts/build-diary-04/research/legacy-ione-role-review.json",
+      "sha256": "a899c1a2c89072c76567f514f190d773174a79af25086a4345b72a9af951d2cd"
+    },
+    "research:episode-evidence.json": {
+      "path": "artifacts/build-diary-04/research/episode-evidence.json",
+      "sha256": "81486d3abeb2cc67f8b71143f67b55fce690321f6297fcbae6fe7744dc577214"
+    },
+    "research:research-summary.json": {
+      "path": "artifacts/build-diary-04/research/research-summary.json",
+      "sha256": "9f7e5211718a214326765bde94c4b1ed350af5f47c4aa394c30e4d5b2a5a4b7e"
+    },
+    "research:research-edge-checks.json": {
+      "path": "artifacts/build-diary-04/research/research-edge-checks.json",
+      "sha256": "4c89f7280a4d4a522a066b3e094fb1bb910a29daa1a9e968044e4de5fd4bd066"
+    },
+    "research:research-cross-audit.json": {
+      "path": "artifacts/build-diary-04/research/research-cross-audit.json",
+      "sha256": "b28ac7a964428ecbe61f2c0a41c0759ddb06c0bbbfb9d25aa247e10fe0fa6d7b"
+    },
+    "research:research-content-consistency.json": {
+      "path": "artifacts/build-diary-04/research/research-content-consistency.json",
+      "sha256": "a73effc139770b0bb7fa4c795bc539905883d833a66bd2a1bbade80125f47104"
+    },
+    "research:research-counterexamples.json": {
+      "path": "artifacts/build-diary-04/research/research-counterexamples.json",
+      "sha256": "340050c44b0edc7333bf27a254884d449c533ce91b8fdbede10860eccdb22737"
+    },
+    "research:research-necessity-certificate.json": {
+      "path": "artifacts/build-diary-04/research/research-necessity-certificate.json",
+      "sha256": "a36b9469f7941cff887591f40252f61cfb815c2c50b6a8e975183bb52fb17fff"
+    },
+    "research:research-sufficiency-certificate.json": {
+      "path": "artifacts/build-diary-04/research/research-sufficiency-certificate.json",
+      "sha256": "10ee3e7b99f6a5b77fe01483e81d0aa0f12706dda7fa8704a7c4618b4d0cc4ed"
+    },
+    "research:research-story-cues.json": {
+      "path": "artifacts/build-diary-04/research/research-story-cues.json",
+      "sha256": "e8c0411e739fb43eeeeb37bbb926de768d4743db8de0e34eb418287f8adb3dc7"
+    },
+    "research:research-lab-content.json": {
+      "path": "artifacts/build-diary-04/research/research-lab-content.json",
+      "sha256": "69047aeb9114c375a06b0b5c67ec2df9b79a4100334f61ef25fbd2f2c6c3d7c3"
+    },
+    "research:research-causal-witness.json": {
+      "path": "artifacts/build-diary-04/research/research-causal-witness.json",
+      "sha256": "eadd1b52f2789de98e1bdb57c6101d9b42febd810dec8a5a6cf894d25b6c8d82"
+    },
+    "research:legacy-ione-role-review.json": {
+      "path": "artifacts/build-diary-04/research/legacy-ione-role-review.json",
+      "sha256": "a899c1a2c89072c76567f514f190d773174a79af25086a4345b72a9af951d2cd"
+    },
+    "prior-proof:ruka": {
+      "path": "artifacts/build-diary-01/research/revalidation-necessity-certificate.json",
+      "sha256": "1a18a58ffabc0ed3259196048132a675a6c4218187a76c3bba7dd355ca4e65fb"
+    },
+    "prior-proof:neri": {
+      "path": "artifacts/build-diary-02/research/research-necessity-certificate.json",
+      "sha256": "2f46bfccf79d3080a039e788ffc705d240d32785220a320820a03c1ba5069ccd"
+    }
+  },
+  "researchCodeInputs": [
+    {
+      "path": "scripts/build-diary-04/research-area-grid.mts",
+      "sha256": "3d901f13c1bdc4a9ee4a19721fa95577b5209daa80ebbbb83cf54465c8d45c4e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-bootstrap.py",
+      "sha256": "0714214e57eaa655f697afc647a9f6515aa1e7b5374cbcb06512067605deca3a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-causal.py",
+      "sha256": "2ce168d8c79f290871eded7f653e39f15bd48dbdfdc3ff794f1c64e707124115"
+    },
+    {
+      "path": "scripts/build-diary-04/research-content-check.mts",
+      "sha256": "133f24ac86b20f0d43f4fae2d8833148d8137bea58d30acce5fdf6cd8a327e0f"
+    },
+    {
+      "path": "scripts/build-diary-04/research-cross.mts",
+      "sha256": "1a08015f8d73b47ec558c8fd088e6c04763cf3138747bbde3e2bc7a12e2f4a4e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-edge.mts",
+      "sha256": "9d7b5d2b2ae900fbe1d88a20df265183913dd9433f74ca8dbbc96fcf656a78c5"
+    },
+    {
+      "path": "scripts/build-diary-04/research-extra-alternatives.mts",
+      "sha256": "026d81414ea7dab28f2b4ddd0879c7db06a050f80d07f18f4d9fee3a73460cba"
+    },
+    {
+      "path": "scripts/build-diary-04/research-final-samples.mts",
+      "sha256": "1880c9ee7e006251e4b90852013cf42c4c01c6612612723ca83dacf5b8e3080a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-finalize.py",
+      "sha256": "cf80f4ccb976bbedf6d49cdab68cae109cda2aa628d7831c2e59348f8ec20882"
+    },
+    {
+      "path": "scripts/build-diary-04/research-inherited-ione.mts",
+      "sha256": "ba4c2157b8fa3bf874a4d154d69f2640f8716a5bb2283fd576df31dada6c5219"
+    },
+    {
+      "path": "scripts/build-diary-04/research-inherited-neri.mts",
+      "sha256": "b25ba324d7d05c2aa8fa87390d64bdfceeaf50bd89c1c47b1d93be51bed672df"
+    },
+    {
+      "path": "scripts/build-diary-04/research-inherited-ruka.mts",
+      "sha256": "dea06b23fb3ef3623c4b44248619b73308622171b68adb8d679072757bb111db"
+    },
+    {
+      "path": "scripts/build-diary-04/research-inspect.mts",
+      "sha256": "3cbdc34905ba2b345ce13e392b57f08a3d39feaa7e5939d20ab51f7f4b1e6fb7"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/package.json",
+      "sha256": "6dc1b06d6b093e9cccb20bee06a93836eee0420ae26803ca2ce4065d82f070d1"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/scripts/diary-part3/core.ts",
+      "sha256": "7e1fe97ecf75002625a12c175f52bc261e9b9d42ea138be80623a6e9a7a2907c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/App.tsx",
+      "sha256": "967b4a1a0c19b1225acebde67b2e27cf9ec6aa0e8a5b8d6f8cab0d49969037b5"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/application/game.ts",
+      "sha256": "1ab44971db41c2f084fd8df8c8c2383d78d237f9ede60a1ccfd5d865822c3f76"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/boss-events.ts",
+      "sha256": "f0c549f31d1e262a3238ac84d7c1e3df6ba3ce658704dbbb9be498ade4d12a8b"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/campaign-stages.ts",
+      "sha256": "9c2221ce2f49ba4fc5c9b30a0f10b68b33da203e612a767bb61ab75524195f24"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/chapters.ts",
+      "sha256": "fd78f00bc1dafdc71327c88e58c4840badfb58c3ae428dfddc818d21c3736ad6"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/events.ts",
+      "sha256": "2483b52a246ab4fc61d120834414211b14d79d6878e8aa95ac845eec12e82563"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/gacha.ts",
+      "sha256": "bea673a3219f13b0e890253423f48cd510345e5ad9277d131e86c502042dd699"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/gem-loot.ts",
+      "sha256": "9b27123150505c27445b20620fd9d18ebb9580b14752ead19fd08e2c29f8da72"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/gold-exchanges.ts",
+      "sha256": "13de80fe94fd109e7011e00ca1344f4e7d3638e5e971a305e33f2fc191d159ee"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/index.ts",
+      "sha256": "968467bfbf406bec9d8acbc87eabd66ea01f1fcac15fb57fdeadab5894e04d90"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/ivory-tower.ts",
+      "sha256": "b4d33a65a561af19796cd8afd56440803270df9e1541ec9b20934db097d4e63c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/late-chapters.ts",
+      "sha256": "3f55fe90882bf323c0c94654d8547bbfd52d187017995ac76a71a8215d6018bf"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/living-garden.ts",
+      "sha256": "d6e1584a86b16fb522fb1a9737673ac7e550982f3b236ab8ced8b1e42f26c6c1"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/lunette-ultimate.ts",
+      "sha256": "497a7a3ddb99b8dacd34b5bea4ac6eb797612fb21f67d81ebf908a639d024cfa"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/motion-posters.ts",
+      "sha256": "c7ca61ca9a7dda660083624aa3c7c3bfb4adce7e9a23495c822b10892692492e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/novels.ts",
+      "sha256": "f47cdd18e7eb3ef4972660bcf54d0304fedbc7e218ab98d0f16aafce92be5d5c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/portrait-framing.ts",
+      "sha256": "6eadd19ff1d306d25883806427da597be9982a1968d627349aeb7d57739f0be4"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/rare-encounters.ts",
+      "sha256": "fffc3f012ada3df49e048f83e612ab9170eed314df8a3eba72346f6418c2afb6"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/scout-maidens.ts",
+      "sha256": "5d843713c32e5f05b59bc084714c32a02e93434f837114a50f23ad0ccaeeeb9a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/seris-story.ts",
+      "sha256": "6924028dac90dd90224960b6ece7e5598d6b90e72571f866483ed476f4cfd953"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/story-milestones.ts",
+      "sha256": "08b483e147525ecd66aae6d88551e3b7bdc886742add66e2ab2dd8c42675b45d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/title-art.ts",
+      "sha256": "11fc725836b81b04a1c5ebd36ba2d5c92d5fe49889bbc9d559ec4cfd7fcc255b"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/trials.ts",
+      "sha256": "8dfa84dc1d85010c6c9e6d49fa31457909996702abf82f22dc2f273593a9b51c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/validation.ts",
+      "sha256": "2ce93c23a7c4af4439a59cb25842f6083e5cc0046ecefa1832176fe9c2a43f78"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/version.ts",
+      "sha256": "46dd53b40c1f6a3c6f360c659c05b8585c52320ae819c74fe953a0caf34ca661"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/xr-gacha.ts",
+      "sha256": "e64db11027fceb02269287883692f3f7c66c370c2e9f8bf1ed91709ca0605a20"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/content/zakuro.ts",
+      "sha256": "2997a7ae975f9d693ee33140d9679f290a99c8f45068a4a890d4df2329ab5228"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/acceleration.ts",
+      "sha256": "93b1cbe2284e37cbf0d10aa63f6780957e8e09fdc31142e27780c27a7d915149"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/ailments.ts",
+      "sha256": "4b8baf1768bca9174962516a53e1f8eee9931a31c4ec142e2088b4b5e718df68"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/awakening.ts",
+      "sha256": "0547ef2097eca4d44e69ec64aca8ca83b62b6661485c86b5b064c383eda82e2e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/battle-blooms.ts",
+      "sha256": "d387e8f69d4215c1fc7e9cbc33ebda04fd2e9062e2e99eff15a3e01144ef7ab9"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/battle-fairies.ts",
+      "sha256": "20c404a6a16fb790317cd2cba6a488d35b8be8e5487f8f4b5c61e31fadb34648"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/boss-pressure.ts",
+      "sha256": "4093cf304605e720bcca49111b30ef5d17184041322a7614d65974c9aad004e2"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/build-demo.ts",
+      "sha256": "05f4b966c419cdb4a85cd1807f894cfe5a74d7ce14e9eea5a58496a5e227f9e1"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/build-tactics.ts",
+      "sha256": "f1bb3e1ef2446dfc8c7b28e9403b9c0b6316c7f21ad31db498d88cef2c12e252"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/builds.ts",
+      "sha256": "c5ba9322ec305497894cfc3d6b4e4519fe0da5c5fef4d3aabb008abe2308a26b"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/campaign.ts",
+      "sha256": "e8373adbc3b8aa1991bcc5ad35cb2dca8caf4340500e3e0b5e259f2791cb29a9"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/character-rescue.ts",
+      "sha256": "bed4bfda6f965283500559db4e0817479bf5834b6a1bbaa37eda8e4f57bbaae7"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/command-doctrine.ts",
+      "sha256": "8bbd0653e6bb5ab5529d0e4ec8bd4e43b2fb076ec93116d1f9eef7455b145c8a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/companion-behavior.ts",
+      "sha256": "53b8d98b1798ceefec557259c74a7355dde9e222481ac4adfb747f9e8906f369"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/crystal-resonance.ts",
+      "sha256": "ead6fa282e6b6638f328610f6384fd94115abe182e969abddffa3cfd31a55072"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/enemy-support.ts",
+      "sha256": "d50c11d9cd36cd78ebb7ba9f5d4eeacd614a1927cf87de6163b2adbf62f6a529"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/engine.ts",
+      "sha256": "967a95d7f1afa05b204189974346841adeaaf5c4690863ef30c21460aef53df3"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/events.ts",
+      "sha256": "0e25615b21f33441117d4d3aefc6e2a6eb5ac346f4ad35acd0b0f77156b191ad"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/expedition-ledger.ts",
+      "sha256": "ca3d705468c5b45a300f05d3ae39679d9fc35c0de3942d2f9552c80fb4b72b7c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/expedition-review.ts",
+      "sha256": "5687a911d1d979443d1a565afb62012150fab4162398ae09756c7593387a3537"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/gem-tactics.ts",
+      "sha256": "dccb290e2444af0e758bbbf8132fb4c569d66a93cf9835e4e3516b247b4b05d8"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/home-journey.ts",
+      "sha256": "7e5169088528ea9328fda7354e81b583a4fea6e30cacedd7801cc76e613b0d2d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/ivory-tower.ts",
+      "sha256": "d4a5e61e14578f539da1afdcd8f82adc7a5362f1f1226cdd0ae8d3974f179b8e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/legacy-omens.ts",
+      "sha256": "abe4c9354afa17f6cfd0a2309644862a6e5699a08c78d4f479335c58118e77c6"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/memory-gems.ts",
+      "sha256": "c52b1d6162cf9465b59c6cb089bdad81b6d79eb3607de4a1eac9e970394e3143"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/novels.ts",
+      "sha256": "fe9d9c582d2657636d5ef1c13e6ade74d03f965fb4a98247d088a5f53f218904"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/party-orders.ts",
+      "sha256": "7ee3b458b5c95ed10846a471bfe7add95407a8d833776ad372c0300e267c9430"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/preparation.ts",
+      "sha256": "2a1554f903c07cb112c8265242bfdd39a7254c72b8292c32b586018ffe9d4ca0"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/research-fio.ts",
+      "sha256": "b1f5b4e824f04726f523923a34436e1caac57c688ad5d82dd287c48e1dd30473"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/research-ione.ts",
+      "sha256": "f4aeea41da0bf4822075adb9617b6fe61b1d63f59637506cacb642c5c31c72bc"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/research-neri.ts",
+      "sha256": "501a02375c436997fc1a49fa43f2b48a548cefccc43b84d1aa40ae9c4101e036"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/research-ruka.ts",
+      "sha256": "568d699bd0f6cce2957da2c535addb0ba34494f53858983e42d0489fc64efaab"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/rewards.ts",
+      "sha256": "973c7c87408ddfd4264587b01027441b4c24df592fb6f91d0190f11211012510"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/scout-skills.ts",
+      "sha256": "f173ad341ca2376bcc514c8b79032909517a4e68af6e6e4a0c8d9cf8843a1a14"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/skill-info.ts",
+      "sha256": "271584c10684f8526d105661c3c1058780baafc043793ae10df10e3b9e6f6bab"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/types.ts",
+      "sha256": "1a9fbcea8a5b3f491d4174ed0a4548701e0109fb43473bf544941fad6e2da25c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/ultimates.ts",
+      "sha256": "831631ba1c3aba368e67f09354e7b0f8c61f6b99b0e31211465018dcf6222d51"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/white-flower.ts",
+      "sha256": "4016daf45ad5b89ed4cf67feaceb6e68426164af11c1ed297f4ccb53c1390f95"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/domain/xr-gacha.ts",
+      "sha256": "503b90e9ecae5c4120460fccf132c307ed9e993a0c68bb5ea4d3d86923cfea19"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/locales/en.json",
+      "sha256": "84ec834f603431176dd98295f6a165ee5037c5fd1799ef35ba6777ea983ee9f4"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/locales/i18n.ts",
+      "sha256": "2ed62b443f0d82ea6af5de5e17a37c0951542bc6f7127ca0787b91111c57f61f"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/main.tsx",
+      "sha256": "583bc438db6447c78ab443fc66ef31a88b1a88c999767df29643bc5fe5e42595"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/audio-resume.ts",
+      "sha256": "ec1bb49625fa143b76d4e4b1a9ce18d2aeba1074687f3c737d482ebb6a01406d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/audio.ts",
+      "sha256": "3cd329112c9865ff14323567fde686b2483bb3df85321f12da9c589e32b52219"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/battle-shake.ts",
+      "sha256": "ebaa094dd75bcd7cd838dcca55f6dd693d17efc541a9594293f2b5c9c155ef12"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/battle-timing.ts",
+      "sha256": "7e7764a2a8ea97b4a33142bde3c304b8c8a2f6bac05b6a902596495770c0c833"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/bgm.ts",
+      "sha256": "2bab355e6e0591d50a44ec1cb79901972cc44178a596eaa8ee157a3a6ee3b8dd"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/combat-audio.ts",
+      "sha256": "4d6913527b92ed49a57f8769687643f852203c0796ae088c01610603eb7e6983"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/combat-feedback.ts",
+      "sha256": "b65e0172927b337d8558fd53a6e6e54b0429f4edaf2b5dedf9fae41c2609821b"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/combat-signatures.ts",
+      "sha256": "a830f531d6b4f7328a3b199654eab26330a04d1032b8011b457fc69dc817c7b8"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/combat-synth.ts",
+      "sha256": "0d04285801136b18a0f33f061c989f6a4ecb0755e90ec8cc8d5477bd459a0927"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/damage-flash.ts",
+      "sha256": "dbb64bddb6f30a7058113501668d6c0792146aa24df9c8836f755c537b27b194"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/fx-renderer.ts",
+      "sha256": "9113d718b2503ba1d89a870d5998e6fe55c4d0166fc1892d34c1df797c777ed5"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/interaction-guards.ts",
+      "sha256": "42988f4efd25bea0c39a27b62c886d6087f87872c559531f0a2d8018c42e4313"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/presentation.ts",
+      "sha256": "faea9860cd20fc346a116304bcf6d38f44fd5a2f7c554054cd7993e1f5264f8d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/protection-audio.ts",
+      "sha256": "121c68c817cdcebf2e8b3c0165973acd9a271ab957b27b80359d9a7942508456"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/rabbit-battle-motion.ts",
+      "sha256": "4459e5b3fbc1a349ed9cde19496b629259625ae52f9dd04cfe63fe77e51733db"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/rabbit-loop-charge.ts",
+      "sha256": "d8009b888eeb32fe120ad25a2d5e8bd6a69556a58962ff42acca18d5c8379a62"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/rabbit-ultimate-audio.ts",
+      "sha256": "0b929954affea021f7085cf76cf0fe9474b2a7de32072335bafa71768fcca5e9"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/rabbit-volley-audio.ts",
+      "sha256": "204fa834093ac2f37dbc12af64c2532c381da3c040c9ed4924d7115e744fa74a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/save-backup.ts",
+      "sha256": "a8993247f97519bd5c0b8afaa0b5a4c23bd3f6ef48a2859c4c655f73c316af5a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/save-migration.ts",
+      "sha256": "437dd30d5ed7bfeeecd0b4052ec29a96b8bed07c4acde573a222a2354f181c3e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/save.ts",
+      "sha256": "12aa3af790cad947ab37d4d56c42930d04dcc674e7797a744220a6921a136ad3"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/sound-cues.ts",
+      "sha256": "4f0f439f544c817f80665e49e4e944007579091c4fb18803872eefa2fdaea5a3"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/ultimate-audio.ts",
+      "sha256": "aa151876acebc1ee39b8b9a426146539213046330538c71ccdcd005e9ad3d797"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/ultimate-charge-audio.ts",
+      "sha256": "41c85c31728652997e4e0312784d440546d2816b06592ebb97f6a6c0e3f7e09e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/ultimate-choreography.ts",
+      "sha256": "a729d7c15766b7b170ff4a2121b4d5a8204883abaf46fea2ba5357b034c68ba5"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/platform/ultimate-timing.ts",
+      "sha256": "e85882da4272d0088d72cb4bb90c5d2477c7664b1fa804a98b2c823586a98b24"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/screens/GameViews.tsx",
+      "sha256": "cdb5be8d20d05cd0461911c936eda1d8a7d053b15587ffcd478d2810f9c18b2f"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/AnimatedIllustration.tsx",
+      "sha256": "1500a2ae8ff46fd2f9a592fcd856ad513aee9e245146f9a9c40a6a064893e900"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/AtlasIcon.tsx",
+      "sha256": "5009986736cf6b42d915bfffd682b9ce70145956062b069d0bb92000f819a78e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/BattleControlPad.tsx",
+      "sha256": "b66fe89771518da2a46c34616a26ceed0f379f6388141e857124dd10e347a7ac"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/BuildDemo.tsx",
+      "sha256": "49d9437d758977141a52139adfe58e597c50ab56a7dc2462eb80a4aad7e1c85a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/BuildGoalSummary.tsx",
+      "sha256": "cccdb972a8dd25ce949248068a6dbbb2425ac2c205071022fcfffc7f4117dc69"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/BuildPlanner.tsx",
+      "sha256": "9af44be42dde45d688d39ea1c1143f0f2fdec0bda9c3d39471e53d9de0ac0778"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CampaignDungeons.tsx",
+      "sha256": "e276dadcb838bfffbac42ccc6f9a9c1fd8b1948ffc45d2b05261cad31ce40145"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CampaignStory.tsx",
+      "sha256": "1400ca7923ffed01cd0378c5a6ab02da8641d768170617121329374152be9f4a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CharacterArtwork.tsx",
+      "sha256": "8c6c632c7f80f3a1bdc67ceefeeb74ebb05b967ce19292516faf905e5699c3f1"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ClockBossStatus.tsx",
+      "sha256": "4c14189329c04fdab82116446ed8ed205e5c63e1c6650dbd7fe5b9f5658b0c06"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ClockworkBits.tsx",
+      "sha256": "51c775eee67af19913e99f67b43a781aea718a9c00b2fa96290edf72e1ad9ebe"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CombatFeedback.tsx",
+      "sha256": "e84c21e037d95738013eb8c24b992617a6be87c483fd4e0251a48be611a476fb"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CommandDoctrine.tsx",
+      "sha256": "4a42f2073444c7a68a26c1d1c2666e4b95945904923cd6688b0ae229e553ac7d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/CommandEmblem.tsx",
+      "sha256": "b3759d64b0d2480274344e268d11334243724b742ec693a342b5878c6470eddd"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/EnemyCarousel.tsx",
+      "sha256": "f2ab1e727e1b854bc075eb41ca09ca323e6f69e6ca14e7b00ab6db0615dbf6be"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/EventDungeons.tsx",
+      "sha256": "2efe5ed8c3db9a09371d0b1c4ae67dff8d3b8091a647862076dbed1cd87056c9"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ExpeditionLedger.tsx",
+      "sha256": "18697f8515d87e225b311510674ce5809207523417dd5b949674726cf656dbb7"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ExpeditionNextStep.tsx",
+      "sha256": "b6fbb34908a100a5a0b0e74b46eddfc52e6e8c602f4023210f0b116642eb7a28"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ExpeditionReview.tsx",
+      "sha256": "e37eaba42ec0f8a00b6a07099b586b61c72501980710ec5b8d080685b27d8543"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/FairyGuide.tsx",
+      "sha256": "7ce3a873abc49a88ccb97cd64ff3655c403ee916ba03f8dd5685237937d2fc13"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GachaResults.tsx",
+      "sha256": "dd489232c8f631528ace06debbd3d45d5f170213dba68b33e3572d476bd756cf"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GachaReveal.tsx",
+      "sha256": "f05022a61a62a05928fadde03f61cdff723f962cf2a72637f6718f07c05d390d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GachaShowcase.tsx",
+      "sha256": "ad2b619f155464fa1645b7bd8bd248bd81894bdcc24efb55020e972d8a02e017"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GameMedia.tsx",
+      "sha256": "7cce31eee54fbad99f3d0c4b807a09369f02f4361b50b2ff4f78cd12ac287e23"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GamePortal.tsx",
+      "sha256": "27407e9b469944e27a7866d87db716becfdd6ebd248c4275166a7dab7018e5ec"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/GoldExchange.tsx",
+      "sha256": "69843badfee59b5028df6642825cb35af2907b4c90e8882891593430321c2308"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/HomeArtwork.tsx",
+      "sha256": "0e0d16a1214587df621dfbbd7f608e42da132933d6d2271ac78fa4f0e7bbe1f0"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/HomeJourneyGoal.tsx",
+      "sha256": "e9206ff9d414bc613b1ea83f06f36e8422a1107db6fbc78dac9a9f9d8ab86c1f"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/InventorySection.tsx",
+      "sha256": "06f804e7c6f41c07ddeb702c2f33c5ca045079cb73dd982abf1c73fa0d585e2d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/IvoryTower.tsx",
+      "sha256": "58377523f689bcafa05f41af13fa5e58dab7a47be694d9afe1a3e82cd3d84c38"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/LanguageSwitch.tsx",
+      "sha256": "feccae5276c26d6b56feb59583f40991e96192169e2aadd338e5fe92cb8c8947"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/LivingBattleFrame.tsx",
+      "sha256": "d2a6845c8818082807dead911514a2cab1a03688fd7ffa8f137d0cc27655a430"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/MemoryGemFind.tsx",
+      "sha256": "292d892c1c40f7f3df7b51a15d4254b76fee0a1814fd3694cb4758d08bd8dce3"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/MemoryGemTier.tsx",
+      "sha256": "07e270b8911f7b71274ed6adc5915784d3a1f268de48a628eadb55e472a5decb"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/MemoryGems.tsx",
+      "sha256": "8446424b1f411cf2436379f0e18d44eddf00363c915a321a7d4b2e0b1284a1f3"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/MenuEmblem.tsx",
+      "sha256": "03f3fdda851ae046be71b730ff24e8a806637d56a0cdeb78d71c1ecde282c542"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/NoticeSurface.tsx",
+      "sha256": "3725fd70f45df0398e2102a11ec75d8ddbb8ae35d47aecde0bce5407b7ac1fde"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/PartyCommandDial.tsx",
+      "sha256": "d6b930ea30f955356448e0e68e9cde0935a1644d2eabeaab57c2a14d422ce648"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/PartyFormation.tsx",
+      "sha256": "683fa86ea24a6f0d7c1a0f92aa96088521c4e9d24e1e521f6f2aac983aca6faa"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/PartyMemberActions.tsx",
+      "sha256": "a43f74b3044b53a0f8fe196a6ba10d242cc8e85d149465b676ae7033806e4f6d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/PortraitArt.tsx",
+      "sha256": "6d6576f603754f8b60ea6743940e7dfe5bc5e412a3bd64def36181810b18a8ff"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/PreparationGuide.tsx",
+      "sha256": "4d3edce107ed1ffbe91836fbf544d9c9125670529fed74e70c5945ba5971cb04"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/QuickGuide.tsx",
+      "sha256": "5fb15dcda5af4a9d997351e5666f2810e6eaf74432380e612d81949bb9e85f58"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/RarityFrame.tsx",
+      "sha256": "a6e00af64d353da55896289f617071fdd0e39efb4cccdfb662bd0fe31b3dbfe6"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/SaveBackup.tsx",
+      "sha256": "7e4bbc4722ca83a964d832f88d9ea22c53ab7fde4bb929374fefc9435bcb4bc4"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/SceneAtmosphere.tsx",
+      "sha256": "124bfcbd4a0a10f0eeaeb6518947abecdc3d3253b86b5054d7fc58de79f0970d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/SceneEffects.tsx",
+      "sha256": "7afca65d1e19bb8f51420d8823cbb753bc4d1bcaa5155c9692f34d264b410e1c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/Sigils.tsx",
+      "sha256": "77ee3751355dcba97d064cb676e7e11d71cdc4681381ffb2bddf84466decbe8d"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/StoryAwakening.tsx",
+      "sha256": "5c3ecea7ca837e33be3eca56b19cc96ccf36cf97f2e9e8025b7b87d528e2a3b2"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/TitleBirthScene.tsx",
+      "sha256": "78fdc91a97e768d1a641a59a30473a7bcadbba66ee9368d6467796ae075d764a"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/TitleScreen.tsx",
+      "sha256": "c69f7e376ea85a218b216d479c865a68d8cca148f2543aa6df07d2e62c9436fe"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/TownNavigation.tsx",
+      "sha256": "0940740d43eef115e65f8d94a83e5d65dd0265818ab865f9582b1952df04843f"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/UltimateCutIn.tsx",
+      "sha256": "49a0cf7daf52522468a7d4dd5eaa4f50cd758586f2649fa1974d53ef51c0b968"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/UltimateIntroFx.tsx",
+      "sha256": "67de9218e13e2cde9f3b0933761391dd85258667baecba67b8a705d50b3a2bb7"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/UltimateMeter.tsx",
+      "sha256": "4a637f22f82611704e3f6b81f54a4aeeca9a0eb143e0b39bfa3cdebf06666699"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/UnitEffects.tsx",
+      "sha256": "b80f7cee7b650a64fb7ba5d169474ab5bd450eda3e0847ffed311b5ad6a92a5b"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/VisualNovel.tsx",
+      "sha256": "0c9afbc566f9e52237aaa46700adab964ec68861f5fc16d47d3c94c79228c375"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/XRGacha.tsx",
+      "sha256": "ea1c7e07e4e19778076362906e0bfae96fc2e263dc4be6640cc2b125f848b299"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/animation-settings.tsx",
+      "sha256": "7e55dd1561220a7158dfb33c5a70c8ce2109901191fbce0c87841a67aba8b470"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/fairy-tutorial-data.ts",
+      "sha256": "dac7a45eb43cfeba90d124837d496b09f1b5a3089f341f5b4bbc9563b49e87ca"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/index.tsx",
+      "sha256": "3ac3cf5da1d3b728c39debac51d3a55d260684443f341db95e4758a4adb9d777"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/interaction.ts",
+      "sha256": "70c6e9f824d79803a42a047bf97573f41d734cde5a559859c66e6c831f355c10"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/memory-gem-stacks.ts",
+      "sha256": "2b0a9230b07cb23d988a5c29640a4cac407316b39bc8bc084c6156f3d17780a6"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/title-birth-rig.ts",
+      "sha256": "9178b0a666932c1c15946502cc0335b6db7fced51a4c371a96b6012e1430dc2c"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/title-character-video.ts",
+      "sha256": "0a034d5ce4269652ee47e745a28c5d1e2355c2e94026344491c7edf376322940"
+    },
+    {
+      "path": "scripts/build-diary-04/research-native/src/ui/ultimate-pixi.ts",
+      "sha256": "6252a8bfc99391bbb1468e8935fa9d32e6197e3c9d312beafc99d6e841bcf003"
+    },
+    {
+      "path": "scripts/build-diary-04/research-pressure-grid.mts",
+      "sha256": "b1b8a97515388db6fb2afe9596d599e6b3e988cbb6f5378570438c5fc57bf9ad"
+    },
+    {
+      "path": "scripts/build-diary-04/research-role-grid.mts",
+      "sha256": "77f3fe272a12c5a4f97435bd67326601c0b91cf0e2cb9e704aca255cddc25d35"
+    },
+    {
+      "path": "scripts/build-diary-04/research-rules.mts",
+      "sha256": "b1f5b4e824f04726f523923a34436e1caac57c688ad5d82dd287c48e1dd30473"
+    },
+    {
+      "path": "scripts/build-diary-04/research-runner.mts",
+      "sha256": "b2cac36ac18b2e2dc5ff63610398c74a6b2d7037ef0f319ba096304d94ceb39e"
+    },
+    {
+      "path": "scripts/build-diary-04/research-sleep-grid.mts",
+      "sha256": "c13665af00478f3bd369e79b8aadac31a05da1bc470820189eb233afcafb1a29"
+    },
+    {
+      "path": "scripts/build-diary-04/research-timing-grid.mts",
+      "sha256": "055872c5e7c4c0995587edcd363bfaca283dff3bd2406bff16513e1c4d0e6625"
+    },
+    {
+      "path": "scripts/build-diary-04/research-tuning.mts",
+      "sha256": "570ef3c98ad630ac3d6d5bcb7401003a409a92d83796c352f2a5985b651e8f97"
+    }
+  ],
+  "nextEpisodePreview": {
+    "confirmed": true,
+    "characterId": "elaine",
+    "seriesId": "BD001",
+    "name": "エレイン",
+    "artPath": "art/elaine.png",
+    "artSha256": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a",
+    "status": "idea",
+    "newCertificationGranted": false,
+    "requiredLabel": "次回の新ビルドは未検証・認定前",
+    "question": "同じ回復役、エレインだから出来ることは？",
+    "requiredPresentation": "Actual full original, contain with full head, name and immutable ID. Separate final NEXT EPISODE chapter."
+  },
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44"
+}

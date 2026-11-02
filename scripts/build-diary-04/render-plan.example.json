@@ -1,0 +1,28 @@
+{
+  "finalized": false,
+  "episode": "BRD-004",
+  "templateCommit": "SET_TO_APPROVED_PART3_COMMIT",
+  "clips": {},
+  "mainClipKeys": [
+    "lab-victory-a",
+    "lab-victory-b"
+  ],
+  "reactions": [],
+  "eventLabels": [],
+  "lineOrder": {},
+  "previewTargetSeconds": 37,
+  "researchPaths": [],
+  "timingInputs": [],
+  "nextEpisodeReference": {
+    "characterId": "elaine",
+    "seriesId": "BD001",
+    "question": "同じ回復役、エレインだから出来ることは？",
+    "newCertificationGranted": false
+  },
+  "instructions": "Fill four reviewed clips over three CFR30 sources. Main A usesR1–3 and B usesR9–11; disclose omittedR4–8 in both. Keep three actual-event speech references and current evidence/code paths, then freeze once.",
+  "allowMainGap": true,
+  "omittedRounds": [
+    4,
+    8
+  ]
+}

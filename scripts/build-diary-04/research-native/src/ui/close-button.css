@@ -1,0 +1,21 @@
+/* Close controls use a plain surface, separate from illustrated notices. */
+.button.button--icon.close-button {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  margin: 0;
+  border: 1px solid #c2cacd;
+  border-radius: 50%;
+  background: #edf0ee;
+  color: #536373;
+  box-shadow: none;
+  text-shadow: none;
+}
+.button.button--icon.close-button:hover:not(:disabled) { background: #dce4e5; border-color: #94a5af; box-shadow: none; }
+.button.button--icon.close-button:active:not(:disabled) { background: #d0dcdf; }
+.toast.notice-surface .button.close-button { background: #344459; color: #f4f2eb; border: 1px solid #8796a8; box-shadow: none; }
+.toast.notice-surface .button.close-button:hover:not(:disabled) { background: #465b74; border-color: #c2cedb; }
+.toast.notice-surface .button.close-button:active:not(:disabled) { background: #27384d; }
+.button.close-button:focus-visible { outline: 2px solid #8faac5; outline-offset: 3px; }
+.button.close-button > svg { width: 20px; height: 20px; stroke-width: 1.5; }

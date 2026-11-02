@@ -1,0 +1,43 @@
+.command-doctrine { display:flex; justify-content:flex-end; align-items:center; width:100%; padding:3px 9px; box-sizing:border-box; }
+.command-doctrine .command-doctrine__trigger { position:relative; min-width:44px; min-height:44px; padding:10px; color:#d4dfec; }
+.command-doctrine .command-doctrine__trigger.is-selected { border-color:#d4bd8c; color:#f2dbad; background:#3b4252; }
+.command-doctrine__queued { position:absolute; width:6px; height:6px; right:7px; top:7px; border-radius:50%; background:#dfc792; box-shadow:0 0 5px #e2c99c66; }
+.command-doctrine-modal { max-width:540px; }
+.command-doctrine-modal .modal__body { background:linear-gradient(145deg,#1a2a3d,#101c2c); color:#dce5ee; }
+.command-doctrine__leader { display:flex; flex-wrap:wrap; align-items:center; gap:6px; color:#e0c89a; }
+.command-doctrine__leader strong { color:#f0e8d8; font-size:16px; }
+.command-doctrine__leader > span { font-size:11px; color:#b8c8da; margin-left:auto; }
+.command-doctrine__intro,.command-doctrine__hint { color:#c6d3e3; font-size:12px; line-height:1.85; margin:10px 0; }
+.command-doctrine__hint { font-size:11px; color:#adbed3; }
+.command-doctrine__capacity { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; margin:16px 0 7px; padding:12px; border:1px solid #9bb2ce59; border-radius:12px; background:#24384b; }
+.command-doctrine__capacity > span { display:flex; align-items:center; gap:6px; color:#d6e1ed; font-size:12px; }
+.command-doctrine__capacity strong { color:#f0d9ac; font-size:22px; margin-left:auto; }
+.command-doctrine__capacity small { color:#c7d7e7; font-size:11px; }
+.command-doctrine__selection { min-width:0; padding:0; margin:20px 0; border:0; }
+.command-doctrine__selection legend { display:flex; align-items:center; gap:7px; color:#e0caa2; font-size:13px; margin-bottom:10px; padding:0; }
+.command-doctrine__enemies { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+.command-doctrine__enemies .button { min-width:0; min-height:48px; padding:9px 8px; display:flex; gap:5px; white-space:normal; color:#d8e3ef; text-align:left; font-size:12px; }
+.command-doctrine__enemy-index { font-size:10px; color:#aebfd3; flex:none; }
+.command-doctrine__enemies .button > span:nth-child(2) { min-width:0; flex:1; overflow-wrap:anywhere; }
+.command-doctrine__enemies .button svg { flex:none; color:#dcca9f; }
+.command-doctrine__followers { display:grid; gap:8px; }
+.command-doctrine__followers .command-doctrine__follower { display:grid; grid-template-columns:36px minmax(0,1fr) 17px; align-items:center; gap:9px; width:100%; min-height:65px; padding:10px; color:#dfE7f0; text-align:left; border-color:#7e98b358; background:#203246; }
+.command-doctrine__followers .command-doctrine__follower.is-selected { border-color:#dcc393; box-shadow:inset 3px 0 #d3bb8c; background:#354050; }
+.command-doctrine__portrait { display:block; width:36px; height:42px; overflow:hidden; border:1px solid #a4bbd06b; border-radius:7px; }
+.command-doctrine__portrait img,.command-doctrine__portrait video { width:100%; height:100%; object-fit:cover; }
+.command-doctrine__member { display:flex; flex-direction:column; gap:3px; min-width:0; white-space:normal; overflow-wrap:anywhere; }
+.command-doctrine__member strong { color:#f0e7d6; font-size:13px; font-weight:500; }
+.command-doctrine__member > span { color:#c2d1e4; font-size:11px; }
+.command-doctrine__member small { color:#d8c49f; font-size:10px; line-height:1.65; }
+.command-doctrine__check { color:#e0c996; }
+.command-doctrine__rules { border-top:1px solid #96acc640; margin-top:18px; padding-top:10px; }
+.command-doctrine__rules p { margin:8px 0; color:#c3d0e1; font-size:11px; line-height:1.9; }
+.command-doctrine__tradeoff { margin:12px 0; padding:12px; background:#283649; border:1px solid #d5bd865e; border-radius:10px; color:#eddbb8; }
+.command-doctrine__tradeoff strong { font-size:12px; line-height:1.8; }
+.command-doctrine__tradeoff p,.command-doctrine__reservation-summary { color:#d5e1ef; font-size:12px; line-height:1.9; overflow-wrap:anywhere; }
+.command-doctrine__tradeoff p { margin:7px 0 0; }
+.command-doctrine__reservation-summary { padding:10px; border-left:2px solid #cfb98e; background:#243449; }
+.command-doctrine__reason { margin:15px 0 0; padding:11px; border-radius:9px; border:1px solid #c7ae834a; background:#4a3a2e46; color:#e4ccad; font-size:12px; line-height:1.85; }
+.command-doctrine__actions { display:grid; gap:8px; width:100%; }
+.command-doctrine__actions .button { min-width:0; width:100%; min-height:44px; padding:10px; font-size:13px; white-space:normal; }
+@media(max-width:350px) { .command-doctrine__capacity { gap:6px; padding:10px; } .command-doctrine__capacity small { width:100%; } .command-doctrine__followers .command-doctrine__follower { gap:7px; padding:9px; } }
