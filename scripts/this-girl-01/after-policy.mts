@@ -26,10 +26,11 @@ export function run(c:Config,seed:number,keep=false,floor:number|string=2){
  b.memoryGems=Object.fromEntries(c.party.flatMap((id,i)=>c.gems[i]?[[id,{...c.gems[i]!,id:'slot-'+i}]]:[]));
  return play(c,b,keep);
 }
-export function play(c:Config,input:Battle,keep=false,maxActions=Infinity){
+export function play(c:Config,input:Battle,keep=false,maxActions=Infinity,researchTransform?:(battle:Battle)=>void){
  let b=structuredClone(input);
  let steps=0,rounds=0;const history:any[]=[];const recordedEvents:any[]=[];const seenEvents=new Set<string>();let flower=0,fairy=0,pots=0;const pol=c.policy??0;const commandEnabled=!!c.command&&c.commandMode!=='never';const telemetry:any={issuedCommands:0,commandedActions:0,actualRedirects:0,redirectObservable:false,petalsStored:0,petalsSpent:0,returnDamage:0,absorbedDamage:0};
  while(!['reward','failed'].includes(b.phase)&&steps++<2000&&history.length<maxActions){
+  researchTransform?.(b);
   if(b.phase==='playing'){if(keep)for(const e of b.events)if(!seenEvents.has(e.id)){seenEvents.add(e.id);recordedEvents.push(e);}b=boundary(b);continue;}
   const allies=b.units.filter(u=>u.side==='party'&&u.hp>0),enemies=b.units.filter(u=>u.side==='enemy'&&u.hp>0);
   if(!allies.length||!enemies.length)throw Error('Bad phase');

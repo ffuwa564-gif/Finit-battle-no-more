@@ -1,10 +1,13 @@
-import{fixedBank,key,CORES,mutationBank}from'./study-space.mts';import{OUT,write,summary,rankFast,rankSafe,rankFrugal,frontier,sha}from'./study-io.mts';
+import{fixedBank,key,CORES,mutationBank}from'./study-space.mts';import{OUT,read,write,summary,rankFast,rankSafe,rankFrugal,frontier,sha}from'./study-io.mts';import{existsSync}from'node:fs';
 const stage=process.argv[2]!,tier=Number(process.argv[3]),mode=process.argv[4]!,coreId=process.argv[5]!;
 const lib=await import(mode==='before'?'./before-policy.mts':'./after-policy.mts');const core=CORES[coreId];if(!core)throw Error('Unknown core');
-const sourceInputs={policy:sha(`scripts/this-girl-01/${mode}-policy.mts`),space:sha('scripts/this-girl-01/study-space.mts'),optimizer:sha('scripts/this-girl-01/optimize.mts')};
-const d=lib.content.dungeons.find((d:any)=>d.id===stage)!;const forms=lib.content.characters.filter((c:any)=>c.published&&c.role==='healer'&&(mode==='before'||c.id==='mireille'));const results=[];const started=performance.now();
+const sourcePaths=[`scripts/this-girl-01/${mode}-policy.mts`,'scripts/this-girl-01/study-space.mts','scripts/this-girl-01/optimize.mts',`${mode==='before'?'artifacts/this-girl-01/baseline/':''}src/domain/engine.ts`,`${mode==='before'?'artifacts/this-girl-01/baseline/':''}src/content/index.ts`];
+if(mode==='after')sourcePaths.push('src/domain/barrier-return.ts');
+const sourceInputs=Object.fromEntries(sourcePaths.map(p=>[p,sha(p)]));
+const d=lib.content.dungeons.find((d:any)=>d.id===stage)!;const forms=lib.content.characters.filter((c:any)=>c.published&&c.role==='healer'&&(mode==='before'||c.id==='mireille'));const progressPath=`${OUT}/optimization-progress/${stage}-${tier}-${mode}-${coreId}.json.gz`;const prior=existsSync(progressPath)?read(progressPath):null;const results:any[]=prior&&JSON.stringify(prior.sourceInputs)===JSON.stringify(sourceInputs)?prior.results:[];const started=performance.now();
 function evaluate(config:any,seeds:number[]){return summary(config,key(config),seeds.map(seed=>{const r=lib.run(config,seed,false,stage);return{seed,applicationSeed:seed,win:r.win,rounds:r.rounds,cappedRounds:r.win?r.rounds:d.waves.length*40,potionsUsed:r.pots,survivors:r.survivors,flowersUsed:r.flower,fairiesUsed:r.fairy,telemetry:r.telemetry};}));}
 for(const character of forms){
+ if(results.some((r:any)=>r.id===character.id)){console.log('RESUME',stage,tier,mode,coreId,character.id);continue;}
  const configs=fixedBank(tier,character.id,core);const train=configs.map(c=>evaluate(c,[910001,910002,910003,910004])).sort(rankFast);
  const selected:any[]=[];const add=(v:any)=>{if(v&&!selected.some(c=>c.key===v.key))selected.push(v);};for(const leader of [...core,character.id])add(train.find(t=>t.config.leader===leader));add([...train].sort(rankSafe)[0]);add([...train].sort(rankFrugal)[0]);for(const v of train)if(selected.length<6)add(v);if(selected.length!==6)throw Error('Selection budget not six');
  const evaluated=selected.map(c=>evaluate(c.config,Array.from({length:100},(_,i)=>920001+i))).sort(rankFast);let mutation:any=null;
@@ -13,5 +16,5 @@ for(const character of forms){
  console.log(stage,tier,mode,coreId,character.id,evaluated[0].wins,evaluated[0].meanCappedRounds.toFixed(2));
  write(`${OUT}/optimization-progress/${stage}-${tier}-${mode}-${coreId}.json.gz`,{stage,tier,mode,coreId,sourceInputs,status:'development/selection only; no held-out confirmation',results});
 }
-if(sourceInputs.policy!==sha(`scripts/this-girl-01/${mode}-policy.mts`)||sourceInputs.space!==sha('scripts/this-girl-01/study-space.mts')||sourceInputs.optimizer!==sha('scripts/this-girl-01/optimize.mts'))throw Error('Research code changed while job was running');
+for(const[p,s]of Object.entries(sourceInputs))if(sha(p)!==s)throw Error('Research code changed while job was running: '+p);
 write(`${OUT}/optimization/${stage}-${tier}-${mode}-${coreId}.json.gz`,{stage,tier,mode,coreId,core,sourceInputs,versions:{app:lib.content.appVersion,content:lib.content.contentVersion,rules:lib.content.rulesVersion},seconds:(performance.now()-started)/1000,status:'development/selection only; no held-out confirmation',results});
