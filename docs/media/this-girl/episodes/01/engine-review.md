@@ -55,3 +55,11 @@ Duration    4.31s
 - 研究の最終確認、勝率、代替比較、全キャラ監査、認定。
 
 この11件の合格を、全体の検査完了やサクヤヒメの採用価値の認定としない。比較研究では、固有追加効果を中立化しても印/消費/AI/CD/90%障壁という費用を残す。確認データ取得後にphysicsを変更した場合、その版に依存する計測を再実行する。
+
+## 実行環境復旧後の追加確認（2026-11-03 13:18 UTC）
+
+`src` 全体がHEADと一致し、engine blobが上記凍結値のままであることを確認した。研究opt-inと通常envの双方で新規2ファイル・11件の試験が合格した。opt-in時のpublic比較fixtureは、flagを一時0にして実際の公開moduleを独立ロードする。異なるmodule間のダンジョン定義は参照同一性ではなく深い一致を検査する。公開内容の再構成やproduction sourceの変更は行っていない。
+
+`VITE_SAKUYA_RESEARCH=1` を全工程へ適用し、typecheck・content（75キャラ/445技能/192ダンジョン、sakuya-research-v2）・UI契約・localesとVite buildが成功した。出力先は `/tmp/stillveil-sakuya-research-dist` であり、公開配信物ではない。標準stamp/release・視覚音声承認を行ったという意味ではない。
+
+実行コマンド、全src SHA-256、試験source SHA-256、実ログのSHA-256を `artifacts/this-girl-01/research/engine-verification-current.json` に保存した。ログは同ディレクトリの `engine-tests-current.log`、`engine-tests-public-current.log`、`research-build-current.log`。WebKit/nativeUIと最新CIのE2E完了・全体試験件数は引き続き未確認であり、別途記録する。
