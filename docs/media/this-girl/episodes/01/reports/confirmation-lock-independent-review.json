@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/sakuya_critic",
+  "reviewedAtUtc": "2026-11-03T13:22:09.354950+00:00",
+  "passed": true,
+  "approvedForConfirmation": true,
+  "lockSha256": "bc86fe204966cc1adc5468ea6720815bbeb999498e11d053ec1341268711a020",
+  "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+  "confirmationResultsPresentAtReview": false,
+  "scope": "Prospective protocol/source/selection audit only. No measured efficacy verdict. Approval binds this exact lock SHA; any source/seed/config/protocol change requires new review.",
+  "checks": {
+    "all33InputHashesMatch": true,
+    "main12CasesAnd72Comparisons": true,
+    "growth12Comparisons": true,
+    "main288Growth48SeparateHolm": true,
+    "global516SimultaneousIntervals": true,
+    "seed768MapIndependentlyRecomputed": true,
+    "seedApplicationUniqueness": true,
+    "all17HealersEqual64PlusT6MutationBudget": true,
+    "allSelectedRows100DevelopmentOnlySeeds": true,
+    "AFiniteArchiveUnionRecomputed": true,
+    "DfastSafeFrugalRanksIndependentlyRecomputed": true,
+    "BCWinnersMatchInputs": true,
+    "EPayoutOnlyNeutralization": true,
+    "coreAndTierBudgetPreserved": true,
+    "nonSStructuralAndNativeTraceScopeReviewed": true,
+    "T6AllFourGatesAndAllTierReportingFixed": true,
+    "recordingPriorityFixedBeforeOutcomes": true,
+    "all457SourceHashesMatch": true,
+    "preregistrationAddedToSourceClosure": true,
+    "relockBeforeAnyConfirmation": true
+  },
+  "unresolvedEfficacyQuestions": [
+    "endgame viable adoption value",
+    "causal payout contribution",
+    "T3/T4/T6 growth",
+    "relative adoption value of other characters",
+    "whole-roster lexicographic optimization"
+  ],
+  "overallCertification": "none; research pending",
+  "supersededBeforeConfirmation": false,
+  "priorReviews": [
+    {
+      "lockSha256": "248bbc12f92697e6e01825aaf10681eace4460adef42537c12bcc88dd7e63f9a",
+      "approvedForConfirmation": false,
+      "supersededBeforeConfirmation": true,
+      "supersededReason": "Parent held approval before any confirmation because exploratory landscape also reads preregistration.json, which must be added to source lock. Main comparisons, budget and seed plan unchanged. A new exact-SHA review is required."
+    }
+  ]
+}
