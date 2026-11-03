@@ -1,0 +1,27 @@
+"""Generate an isolated current-main capacity study; old source/episodes remain untouched."""
+from pathlib import Path
+import shutil,json,hashlib
+ROOT=Path(__file__).resolve().parents[2];LAB=Path('/tmp/build-diary-05-lab');OUT=ROOT/'artifacts/build-diary-05/research';SNAP=ROOT/'scripts/build-diary-05/research-native';OUT.mkdir(parents=True,exist_ok=True)
+s=(ROOT/'scripts/build-diary-04/research-bootstrap.py').read_text().replace("ROOT=Path(__file__).resolve().parents[2]",f'ROOT=Path({str(ROOT)!r})').replace('/tmp/build-diary-04-lab',str(LAB)).replace("ROOT/'artifacts/build-diary-04/research'",f'Path({str(OUT)!r})').replace("ROOT/'scripts/build-diary-04/research-native'",f'Path({str(SNAP)!r})');exec(compile(s,'inherited-04-bootstrap','exec'))
+def patch(rel,a,b):
+ p=LAB/rel;s=p.read_text();assert s.count(a)==1,(rel,a,s.count(a));p.write_text(s.replace(a,b))
+e='src/domain/engine.ts'
+patch(e,'import{SUPPLY,supplySkill',"import{CARE,careSkill,careSuggested,capacityWeather,escortFinish,escortFailed,escortCanReward,capacitySnapshot}from'./research-elaine';\nimport{SUPPLY,supplySkill")
+patch(e,".sort((a,b) => a.hp / a.maxHp - b.hp / b.maxHp || a.hp - b.hp || byId(a,b))[0];",".sort((a,b) => (((b as any).researchCapacity?.exposure??0)-((a as any).researchCapacity?.exposure??0)) || a.hp / a.maxHp - b.hp / b.maxHp || a.hp - b.hp || byId(a,b))[0];")
+patch(e,"  if (!alive(battle.units, 'enemy').length) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';","  if (!alive(battle.units, 'enemy').length && !(battle as any).researchEscort) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';")
+patch(e,"  switch (battle.nextPhase) {","  if((battle as any).researchEscort&&['reward','wave'].includes(battle.nextPhase))battle.nextPhase=escortFailed(battle)?'failed':escortCanReward(battle)?'reward':'ready';\n  switch (battle.nextPhase) {")
+patch(e,'(supplySkill(battle,actor,action.skill.id,potency)??receiptSkill','(careSkill(battle,actor,action.skill.id)??supplySkill(battle,actor,action.skill.id,potency)??receiptSkill')
+patch(e,'(action.skill.id===SUPPLY?4:', '(action.skill.id===CARE?2:action.skill.id===SUPPLY?4:')
+patch(e,'  const preparedSupply=supplySuggested', '  const plannedCare=careSuggested(battle,actor,skills);if(plannedCare)return plannedCare;\n  const preparedSupply=supplySuggested')
+patch(e,"    if (actor.hp <= 0 || issued && actor.uid === commander!.uid) continue;", "    if (actor.hp <= 0 || (actor as any).researchNoncombatant || issued && actor.uid === commander!.uid) continue;")
+patch(e,"    if (!alive(battle.units, 'party').length || !alive(battle.units, 'enemy').length) break;", "    if (!alive(battle.units, 'party').length || (!alive(battle.units, 'enemy').length && !(battle as any).researchEscort) || escortFailed(battle)) break;")
+patch(e,"  const memory = skills.find(skill => ['shield-break'", "  const memory = skills.find(skill => enemies.length>0 && ['shield-break'")
+patch(e,"  const target = chooseTarget(enemies, strategy, content);\n  const drain", "  if(!enemies.length)return{template:'guard',targets:[actor],manualGuard:true,name:'療養を見守る'};\n  const target = chooseTarget(enemies, strategy, content);\n  const drain")
+patch(e,"  if (order?.kind === 'attack') return { template: 'attack', targets: orderTargets(actor, battle, 'attack') };", "  if (order?.kind === 'attack' && (battle as any).researchEscort && !alive(battle.units,'enemy').length)return{template:'guard',targets:[actor],manualGuard:true,name:'療養を見守る'};\n  if (order?.kind === 'attack') return { template: 'attack', targets: orderTargets(actor, battle, 'attack') };")
+patch(e,"...(text.startsWith('研究：預かり箱')?", "...(text.startsWith('研究：帰還の鉢皿')?{researchCapacityAfter:capacitySnapshot(battle)}:{}), ...(text.startsWith('研究：預かり箱')?")
+patch(e,"  if (!alive(battle.units, 'party').length || (battle as any).researchDutyRules?.objectiveFailed) {", "  for(const ev of capacityWeather(battle))emit(battle,{...ev,unitsAfter:clone(battle.units)});\n  for(const ev of escortFinish(battle))emit(battle,{...ev,unitsAfter:clone(battle.units)});\n  if (!alive(battle.units, 'party').length || (battle as any).researchDutyRules?.objectiveFailed || escortFailed(battle)) {")
+patch(e,"battle.failureReason = 'パーティが全滅しました';", "battle.failureReason = escortFailed(battle)?'保護対象または付き添いを失いました':'パーティが全滅しました';")
+patch(e,"text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — パーティが全滅しました' : '探索失敗 — 今回の素材はすべて失われます'", "text: escortFailed(battle)?'護衛終了 — 白花を帰せませんでした':dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — パーティが全滅しました' : '探索失敗 — 今回の素材はすべて失われます'")
+patch(e,"  } else if (!alive(battle.units, 'enemy').length) {", "  } else if ((battle as any).researchEscort) {\n    if(escortCanReward(battle))battle.nextPhase='reward';\n  } else if (!alive(battle.units, 'enemy').length) {")
+shutil.copy2(ROOT/'scripts/build-diary-05/research-rules.mts',LAB/'src/domain/research-elaine.ts');shutil.copytree(LAB/'src',SNAP/'src',dirs_exist_ok=True);shutil.copytree(LAB/'scripts',SNAP/'scripts',dirs_exist_ok=True);shutil.copy2(LAB/'package.json',SNAP/'package.json')
+files={str(p.relative_to(SNAP)):hashlib.sha256(p.read_bytes()).hexdigest()for p in SNAP.rglob('*.ts')};(OUT/'research-prototype-hashes.json').write_text(json.dumps({'liveGameSourceUnchanged':True,'snapshotRoot':str(SNAP.relative_to(ROOT)),'files':files},indent=2));print('ELAINE NATIVE SNAPSHOT READY',SNAP)

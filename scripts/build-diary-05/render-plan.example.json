@@ -1,0 +1,32 @@
+{
+  "finalized": false,
+  "episode": "BRD-005",
+  "templateCommit": "SET_TO_APPROVED_PART4_COMMIT",
+  "clips": {},
+  "mainClipKeys": [
+    "lab-victory-a",
+    "lab-victory-b"
+  ],
+  "reactions": [],
+  "eventLabels": [],
+  "lineOrder": {},
+  "previewTargetSeconds": 37,
+  "researchPaths": [],
+  "timingInputs": [],
+  "nextEpisodeReference": {
+    "characterId": "seris",
+    "seriesId": "BD003",
+    "question": "強い仲間が増えても、セリスを選ぶ理由は？",
+    "newCertificationGranted": false
+  },
+  "instructions": "Await frozen research and actual source times. Define four reviewed cuts over three CFR30 sources; declare any main-source gap. Align each short diagram scene with one spoken concept. Do not invent HP values, certification or success. See visual-first-guide.md.",
+  "allowMainGap": true,
+  "omittedRounds": [],
+  "visualScenes": {},
+  "previewQuestionLines": [
+    "強い仲間が",
+    "増えても、",
+    "セリスを",
+    "選ぶ理由は？"
+  ]
+}

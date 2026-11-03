@@ -1,0 +1,23 @@
+.expedition-ledger { color:#d6e1ef; font-size:12px; line-height:1.85; overflow-wrap:anywhere; }
+.expedition-ledger h3 { margin:22px 0 9px; font-size:14px; font-weight:500; color:#e4d0aa; }
+.expedition-ledger__filters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.expedition-ledger__filters label { display:flex; flex-direction:column; min-width:0; gap:5px; color:#c4d1e1; }
+.expedition-ledger__filters select { min-width:0; width:100%; min-height:44px; padding:9px 5px; background:#1d2c3f; color:#dfE7f2; border:1px solid #91a7c06b; border-radius:8px; font-size:12px; }
+.expedition-ledger__note { color:#adbed2; font-size:11px; }
+.expedition-ledger__stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:15px 0; }
+.expedition-ledger__stats > div { padding:11px; border:1px solid #91a8c13d; border-radius:9px; background:#203145; }
+.expedition-ledger__stats dt { color:#bdccdf; font-size:11px; }
+.expedition-ledger__stats dd { margin:3px 0 0; color:#f0e2c8; font-size:18px; font-variant-numeric:tabular-nums; }
+.expedition-ledger__outcomes { color:#c6d5e5; }
+.expedition-ledger__yields { display:grid; gap:10px; }
+.expedition-ledger__yields section { border:1px solid #8ea4be39; border-radius:10px; padding:11px; }
+.expedition-ledger__yields h4 { margin:0 0 5px; color:#d5c49f; font-size:12px; font-weight:500; }
+.expedition-ledger__yields ul { padding:0; margin:0; list-style:none; }
+.expedition-ledger__yields li { display:flex; justify-content:space-between; gap:10px; padding:5px 0; }
+.expedition-ledger__yields li span { min-width:0; }
+.expedition-ledger__yields strong { color:#e8e5dc; font-weight:500; font-variant-numeric:tabular-nums; flex:none; }
+.expedition-ledger__history { margin:8px 0 0; padding:0; list-style:none; }
+.expedition-ledger__history li { display:flex; flex-direction:column; gap:3px; padding:12px 0; border-bottom:1px solid #91a8bd2e; }
+.expedition-ledger__history strong { color:#e1d2b4; font-weight:500; }
+.expedition-ledger__history small { color:#a3b5cb; }
+@media(max-width:350px) { .expedition-ledger__filters { grid-template-columns:1fr; } .expedition-ledger__stats dd { font-size:16px; } }

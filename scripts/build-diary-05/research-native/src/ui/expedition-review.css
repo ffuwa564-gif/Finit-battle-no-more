@@ -1,0 +1,20 @@
+.expedition-review { color:#d7e2ef; font-size:12px; line-height:1.85; overflow-wrap:anywhere; }
+.expedition-review__result { margin:0 0 14px; color:#c3d0e1; }
+.expedition-review__result strong { color:#e9d2a7; }
+.expedition-review__stats { margin:0; display:grid; gap:0; }
+.expedition-review__stats > div { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; padding:9px 0; border-bottom:1px solid #a4b7cc29; }
+.expedition-review__stats dt { color:#c2cfe0; font-size:12px; }
+.expedition-review__stats dd { margin:0; color:#f0e6d3; font-variant-numeric:tabular-nums; }
+.expedition-review__note { color:#aebfd4; font-size:11px; }
+.expedition-review__hit { margin-top:15px; padding:12px; border:1px solid #b3c4da39; border-radius:10px; background:#203145; }
+.expedition-review__hit h4 { margin:0 0 8px; color:#dbc49b; font-size:12px; font-weight:500; }
+.expedition-review__hit > strong { font-size:20px; font-weight:500; }
+.expedition-review__hit p { margin:5px 0; }
+.expedition-review__hit small { color:#adbed3; }
+.expedition-next-step { margin:15px 0; padding:14px; border:1px solid #b3c4da48; border-radius:13px; background:#172a3d; color:#dde7f3; text-align:left; overflow-wrap:anywhere; }
+.expedition-next-step h3 { margin:0 0 9px; color:#ecd6ae; font-size:16px; }
+.expedition-next-step__summary { color:#d2deed; font-size:12px; line-height:1.85; }
+.expedition-next-step ul { margin:0; padding-left:18px; color:#d2deed; font-size:12px; line-height:1.9; }
+.expedition-next-step li + li { margin-top:10px; }
+.expedition-next-step__actions { display:grid; gap:9px; margin-top:12px; }
+.expedition-next-step__actions > .button { width:100%; min-height:44px; white-space:normal; }

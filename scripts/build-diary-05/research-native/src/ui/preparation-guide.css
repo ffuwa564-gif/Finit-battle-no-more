@@ -1,0 +1,11 @@
+.preparation-guide { margin:14px 0; padding:15px; border:1px solid #a5bed54d; border-radius:15px; background:#182a3b; color:#e2eaf3; overflow-wrap:anywhere; text-align:left; }
+.preparation-guide header { display:flex; flex-wrap:wrap; align-items:center; gap:7px; color:#ebd5aa; }
+.preparation-guide h3 { margin:0; font-size:15px; }
+.preparation-guide header > span { margin-left:auto; color:#c6d4e4; font-size:11px; }
+.preparation-guide__choices { display:flex; flex-wrap:wrap; gap:7px; margin:12px 0; }
+.preparation-guide__choices > .button { flex:1; min-height:44px; white-space:normal; line-height:1.6; }
+.preparation-guide h4 { margin:10px 0 5px; color:#f4e5ca; font-size:16px; }
+.preparation-guide p { margin:8px 0; color:#d4deeb; font-size:12px; line-height:1.85; }
+.preparation-guide .preparation-guide__progress { color:#f3dfa8; font-variant-numeric:tabular-nums; }
+.preparation-guide > .button { width:100%; min-height:44px; margin:6px 0; white-space:normal; }
+.preparation-guide > small { display:block; margin-top:9px; color:#b9c9dc; font-size:10px; line-height:1.8; }

@@ -1,0 +1,12 @@
+.clock-boss-status { position: absolute; z-index: 5; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; gap: 14px; width: max-content; max-width: 94%; padding: 8px 14px; border: 1px solid #b9d6e799; border-radius: 20px; background: #1a293de6; color: #dcebf2; font-size: 10px; box-shadow: 0 2px 18px #07172744; pointer-events: none; }
+.clock-boss-status > span { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.clock-boss-status.is-broken { border-color: #efcf8ec9; color: #f8e3b8; background: #413446e8; }
+.clock-boss-status.is-striking { border-color: #efa6b6; background: #5e283eea; color: #ffe1e6; }
+.clock-ward { position: absolute; z-index: 3; inset: 36% 16% 15%; border: 1px solid #d2e7ff59; border-radius: 50%; background: radial-gradient(ellipse, #8dc5ef09 40%, #a6d7ff18 68%, transparent 72%); box-shadow: 0 0 25px #8ed0fb16, inset 0 0 22px #b6d7ff18; pointer-events: none; animation: clock-ward-breathe 4s ease-in-out infinite; }
+.clock-ward::after { content: ''; position: absolute; inset: 9px; border: 1px dashed #b8ddff40; border-radius: inherit; }
+.clock-ward.is-broken, .clock-ward.is-pending { opacity: 0; animation: none; }
+.clock-ward.is-breaking:not(.is-reduced) { animation: clock-ward-break .7s ease-out both; }
+.clock-ward.is-reduced { animation: none; }
+@keyframes clock-ward-breathe { 50% { opacity: .55; } }
+@keyframes clock-ward-break { from { opacity: .8; transform: scale(1); filter: brightness(1.8); } to { opacity: 0; transform: scale(1.18); } }
+@media (prefers-reduced-motion: reduce) { .clock-ward, .clock-ward.is-breaking { animation: none; } }

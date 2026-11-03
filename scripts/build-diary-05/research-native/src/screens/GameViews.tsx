@@ -1,0 +1,270 @@
+import { PreparationGuide, ExpeditionNextStep } from '../ui';
+import { commandCapacity, commandDoctrineDescription } from '../domain/command-doctrine';
+import { RELEASE_LABEL } from '../content/version';
+import { HomeJourneyGoal, CommandDoctrine, ExpeditionReview, ExpeditionLedger } from '../ui';
+import { characterRescueDefinition } from '../domain/character-rescue';
+import { PartyFormation, PartyMemberActions } from '../ui';
+import { GameImage } from '../ui';
+import { highestTowerFloor, towerDustReward, TOWER_ROUND_LIMIT } from '../domain/ivory-tower';
+import type { ImpactSnapshot } from '../platform/combat-feedback';
+import { companionSignals, companionTendency } from '../domain/companion-behavior';
+import { ultimateFor, ultimateReady } from '../domain/ultimates';
+import { tr, localize } from '../locales/i18n';
+import { isolatedMaterialSpecies, memoryChapters } from '../domain/awakening';
+import { dungeonLock, duplicateFamily } from '../domain/events';
+import { leaderEffectDescription, skillDescription } from '../domain/skill-info';
+import { dungeonStoneReward } from '../domain/rewards';
+import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, sharedSSRIds, gachaBaseChance, gachaPoolIds } from '../content/gacha';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather, Link2, Unlink } from 'lucide-react';
+import { BuildPlanner, BuildGoalSummary, IvoryTower, InventorySection, MemoryGems, MemoryGemFind, MemoryGemSource, MemoryGemSummary, PartyCommandDial, CompanionChoice, LivingBattleFrame, SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CampaignStory, CampaignDungeons, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
+import { bgmTracks } from '../platform/bgm';
+import { content, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
+import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
+import type { Battle, CharacterDef, GameCommand, GameSave, Rarity, Unit } from '../domain/types';
+
+export type Page = 'home' | 'dungeons' | 'party' | 'bag' | 'recruit' | 'codex' | 'gacha' | 'settings' | 'preview';
+export interface ViewProps { artworkSuspended?: boolean; save: GameSave; busy: boolean; command: (c: GameCommand) => Promise<boolean>; navigate: (page: Page) => void; inspect: (character: CharacterDef) => void }
+const rarities: Rarity[] = ['common', 'rare', 'epic'];
+const statNames = { hp: '最大HP', attack: '攻撃力', defense: '防御力' };
+const menu = [
+  { page: 'party', title: 'パーティ', emblem: 'party' },
+  { page: 'recruit', title: '仲間を迎える', emblem: 'monster' },
+  { page: 'bag', title: 'カバン・道具', emblem: 'bag' },
+  { page: 'gacha', title: '女神の祈願', emblem: 'wish' },
+  { page: 'codex', title: '記憶の図鑑', emblem: 'codex' },
+  { page: 'settings', title: '設定', emblem: 'settings' },
+] as const;
+
+function PageTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+  return <div className="page-header"><span className="eyebrow">{localize(eyebrow)}</span><h1>{localize(title)}</h1>{localize(text && <p>{localize(text)}</p>)}</div>;
+}
+
+export function HomeView(p: ViewProps) {
+  const leader = characterById(p.save.leaderId);
+  return <section className="home-hub game-frame" aria-labelledby="home-title">
+    <h1 id="home-title" className="sr-only">{tr("旅の支度")}</h1>
+    <div className="hub-illustration">
+      <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
+      <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
+      <SceneAtmosphere reducedMotion={p.save.settings.reducedMotion} />
+      <div className="hub-profile">
+        <div className="hub-profile-person">
+          <span className="hub-profile-avatar"><PortraitArt character={leader} face /></span>
+          <div className="hub-profile-copy"><strong>{localize(leader.name)}</strong><span><Crown size={10} />{tr(" パーティリーダー")}</span></div>
+        </div>
+        <div className="hub-currencies"><span><CurrencyEmblem kind="stone" size={13} /><span className="sr-only">{tr("祈願石 ")}</span><strong>{localize(p.save.stones.toLocaleString())}</strong></span><span><CurrencyEmblem kind="gold" size={13} /><span className="sr-only">{tr("ゴールド ")}</span><strong>{localize(p.save.gold.toLocaleString())}</strong></span></div>
+      </div>
+    </div>
+    <HomeJourneyGoal save={p.save} busy={p.busy} onNavigate={id => { p.navigate('dungeons'); location.hash = `dungeons/prepare/${encodeURIComponent(id)}`; }} />
+    <div className="home-hub-menu">{localize(menu.map(item => <Button variant="secondary" className="hub-menu-tile" data-guide={`home-${item.page}`} key={item.page} onClick={() => p.navigate(item.page)}><MenuEmblem kind={item.emblem} /><strong>{localize(item.title)}</strong></Button>))}</div>
+    <Button variant="secondary" className="hub-dungeon-entry" data-guide="home-dungeons" onClick={() => p.navigate('dungeons')}><GameImage src={assetPath('cathedral')} alt={tr("")} /><span><strong>{tr("ダンジョンへ")}</strong></span><ChevronRight size={24} /></Button>
+    <div className="guide-actions"><QuickGuide /><FairyGuideButton /></div>
+    <div data-guide="welcome-slot" />
+    <TownNavigation active="home" onNavigate={p.navigate} embedded />
+  </section>;
+}
+
+function requestedFarmDungeon() {
+  const prefix = '#dungeons/prepare/';
+  if (!location.hash.startsWith(prefix)) return undefined;
+  try { const id = decodeURIComponent(location.hash.slice(prefix.length)); return content.dungeons.find(d => d.published && d.id === id); } catch { return undefined; }
+}
+function openBuilds(p: ViewProps) { p.navigate('bag'); location.hash = 'bag/builds'; }
+function BuildPlannerView({ p, onClose, onGems }: { p: ViewProps; onClose: () => void; onGems?: (defId?: string) => void }) {
+  return <BuildPlanner save={p.save} content={content} dispatch={p.command} busy={p.busy} onClose={onClose}
+    onGems={onGems ?? (defId => { p.navigate('bag'); location.hash = defId ? `bag/gems/${encodeURIComponent(defId)}` : 'bag/gems'; })}
+    onDungeon={id => { p.navigate('dungeons'); location.hash = `dungeons/prepare/${encodeURIComponent(id)}`; }}
+    onRecruit={id => {
+      const character = content.characters.find(c => c.id === id);
+      if (content.events?.some(e => e.normalId === id || e.awakenedId === id)) { p.navigate('dungeons'); location.hash = 'dungeons/boss-events'; }
+      else if (character?.origin.includes('awakening')) { p.navigate('dungeons'); location.hash = 'dungeons/memories'; }
+      else p.navigate(character?.origin.includes('gacha') ? 'gacha' : 'recruit');
+    }} />;
+}
+
+export function DungeonsView(p: ViewProps) {
+  const requested = requestedFarmDungeon();
+  const [mode, setMode] = useState(requested ? requested.towerFloor ? 'tower' : requested.eventId ? 'boss-events' : requested.kind ?? 'normal' : location.hash.includes('/tower') ? 'tower' : location.hash.includes('/trials') ? 'trial' : location.hash.includes('/boss-events') ? 'boss-events' : location.hash.includes('/events') ? 'event' : 'normal');
+  const [memories, setMemories] = useState(location.hash.includes('/memories'));
+  const [selected, setSelected] = useState<string | null>(requested?.id ?? null);
+  const [carry, setCarry] = useState(Math.min(5, p.save.potions));
+  useEffect(() => {
+    const open = () => { const target = requestedFarmDungeon(); if (target) { setSelected(target.id); setMode(target.towerFloor ? 'tower' : target.eventId ? 'boss-events' : target.kind ?? 'normal'); } };
+    window.addEventListener('hashchange', open);
+    return () => window.removeEventListener('hashchange', open);
+  }, []);
+  const dungeon = content.dungeons.find(d => d.id === selected);
+  return <><PageTitle eyebrow="THE FORGOTTEN DEPTHS" title={tr("ダンジョン")} /><BuildGoalSummary save={p.save} content={content} onOpen={() => openBuilds(p)} /><div className="tower-entry"><Button variant={mode === 'tower' ? 'primary' : 'secondary'} aria-label={tr("白亜の塔")} onClick={() => { setMode('tower'); setMemories(false); location.hash = 'dungeons/tower'; }}><Crown size={18} />{tr("白亜の塔")} · {highestTowerFloor(p.save)} / 100<ChevronRight size={16} /></Button></div><div className="dungeon-mode-tabs" role="group" aria-label={tr("ダンジョンの種類")}><Button variant={mode === 'normal' ? 'primary' : 'secondary'} selected={mode === 'normal'} aria-label={tr("通常ダンジョン")} onClick={() => { setMode('normal'); setMemories(false); location.hash = 'dungeons'; }}>{tr("通常")}</Button><Button variant={mode === 'boss-events' ? 'primary' : 'secondary'} selected={mode === 'boss-events'} onClick={() => { setMode('boss-events'); location.hash = 'dungeons/boss-events'; }}>{tr("イベント")}</Button><Button variant={mode === 'event' ? 'primary' : 'secondary'} selected={mode === 'event'} aria-label={tr("祈願石イベント")} onClick={() => { setMode('event'); location.hash = 'dungeons/events'; }}>{tr("祈願石")}</Button><Button variant={mode === 'trial' ? 'primary' : 'secondary'} selected={mode === 'trial'} onClick={() => { setMode('trial'); location.hash = 'dungeons/trials'; }}>{tr("腕試し")}</Button></div>{localize(mode === 'normal' && <div className="normal-subtabs" role="group" aria-label={tr("通常ルートの種類")}><Button size="sm" variant={memories ? 'secondary' : 'primary'} selected={!memories} onClick={() => { setMemories(false); location.hash = 'dungeons'; }}>{tr("探索")}</Button><Button size="sm" variant={memories ? 'primary' : 'secondary'} selected={memories} onClick={() => { setMemories(true); location.hash = 'dungeons/memories'; }}>{tr("追憶・覚醒")}</Button></div>)}{localize(mode === 'normal' && memories && <StoryAwakening content={content} save={p.save} busy={p.busy} suspended={Boolean(p.artworkSuspended || dungeon)} inspect={p.inspect} command={p.command} />)}{localize(mode === 'tower' ? <IvoryTower content={content} save={p.save} busy={p.busy} onSelect={setSelected} onEquipment={id => { p.navigate('bag'); location.hash = id ? `bag/gems/${encodeURIComponent(id)}` : 'bag/gems'; }} /> : mode === 'boss-events' ? <EventDungeons content={content} save={p.save} busy={p.busy} suspended={Boolean(p.artworkSuspended || dungeon)} onSelect={setSelected} onInspect={p.inspect} command={p.command} /> : mode === 'normal' && !memories ? <CampaignDungeons content={content} save={p.save} busy={p.busy} onSelect={setSelected} onInspect={p.inspect} /> : <div className="dungeon-list">{localize(content.dungeons.filter(d => d.published && !d.towerFloor && !d.eventId && (d.kind ?? 'normal') === mode && (mode !== 'normal' || (!d.chapterId && Boolean(d.previousDungeonId)) === memories)).map((d, index) => <Panel className="dungeon-card" key={d.id}><div className="dungeon-image"><GameImage src={assetPath(d.artId)} alt={tr("")} /><span className="dungeon-index">{localize(String(index + 1).padStart(2, '0'))}</span>{localize(p.save.completedDungeonIds.includes(d.id) && <span className="clear-label"><Check size={12} />{tr(" 踏破済")}</span>)}</div><div className="dungeon-info"><span className="eyebrow">{localize(d.waves.length)} {d.kind === 'trial' ? 'WAVES · BOSS RUSH' : 'WAVES · BOSS'}</span><h2>{localize(d.name)}</h2><p>{localize(d.subtitle)}</p><div className="dungeon-meta"><span><Hexagon size={14} />{tr(" 難易度 ")}{localize(dungeonDifficulty(d, content).toFixed(1))}</span><span>{d.kind !== 'trial' && <CurrencyEmblem kind="stone" size={14} />} {localize(d.kind === 'trial' ? '報酬なし' : d.kind === 'event' ? '毎回 石1個' : p.save.completedDungeonIds.includes(d.id) ? '初踏破報酬 受取済' : '初踏破 石3個')}</span></div><>{localize(d.bossLoot && <p className="dungeon-loot">{localize(d.bossLoot.guaranteed.map(cost => `${materialName(cost.materialId)} ×${cost.count}`).join(' ／ '))}</p>)}{localize(dungeonLock(d, p.save, content) && <p className="dungeon-lock">{localize(dungeonLock(d, p.save, content))}</p>)}<Button variant="secondary" disabled={Boolean(dungeonLock(d, p.save, content))} onClick={() => setSelected(d.id)}>{tr("探索の準備 ")}<ArrowRight size={15} /></Button></></div></Panel>))}</div>)}
+    <Modal open={!!dungeon} onClose={() => setSelected(null)} title={tr(dungeon?.name ?? '探索の準備')}>{localize(dungeon && <><CampaignStory dungeon={dungeon} phase="before" />{!dungeon.narrative && <p>{localize(dungeon.description)}</p>}<p className="dungeon-reward-note">{dungeon.kind !== 'trial' && <CurrencyEmblem kind="stone" size={17} />} {localize(dungeon.towerFloor ? '踏破で記憶石と調律用の欠片を獲得' : dungeon.kind === 'trial' ? '戦利品なし・踏破の記録のみ' : dungeon.kind === 'event' ? '踏破報酬：毎回 石1個' : dungeonStoneReward(dungeon, p.save.completedDungeonIds) ? '初踏破報酬：石3個' : '初踏破報酬は受取済み')}</p><MemoryGemSource dungeon={dungeon} /><div className="notice"><Shield size={18} /><span>{tr("全回復で出発。")}<br />{tr(dungeon.kind === 'trial' ? "HPは連戦で引き継ぎます。使用した薬は消費します。" : "全滅・撤退で今回の素材をすべて失います。")}</span></div><p>{tr("持ち込む回復薬 ")}<strong>{localize(carry)}{tr(" 個")}</strong>{tr(" / 所持 ")}{localize(p.save.potions)}{tr(" 個")}</p><div className="toolbar" data-guide="supplies"><Button variant="secondary" disabled={carry <= 0} onClick={() => setCarry(n => n - 1)}>−</Button><Button variant="secondary" disabled={carry >= Math.min(5, p.save.potions)} onClick={() => setCarry(n => n + 1)}>＋</Button></div><div className="home-party">{localize(p.save.partyIds.map(id => <CharacterPortrait key={id} character={characterById(id)} leader={id === p.save.leaderId} />))}</div><Button data-guide="depart" size="lg" disabled={p.busy || Boolean(dungeonLock(dungeon, p.save, content))} onClick={async () => { if (await p.command({ type: 'depart', dungeonId: dungeon.id, potions: carry })) setSelected(null); }}><Compass size={18} />{tr(" 探索を始める")}</Button></>)}</Modal>
+  </>;
+}
+
+export function PartyView(p: ViewProps) {
+  const [builds, setBuilds] = useState(() => location.hash === '#party/builds');
+  useEffect(() => { const sync = () => setBuilds(location.hash === '#party/builds'); window.addEventListener('hashchange', sync); return () => window.removeEventListener('hashchange', sync); }, []);
+  if (builds) return <BuildPlannerView p={p} onClose={() => { setBuilds(false); location.hash = 'party'; }} />;
+
+  async function toggle(id: string) {
+    const ids = p.save.partyIds.includes(id) ? p.save.partyIds.filter(x => x !== id) : [...p.save.partyIds, id];
+    await p.command({ type: 'party', partyIds: ids, leaderId: ids.includes(p.save.leaderId) ? p.save.leaderId : ids[0] });
+  }
+  return <><PageTitle eyebrow="COMPANIONS" title={tr("パーティ")} text={tr(`編成 ${p.save.partyIds.length} / 4`)} /><PartyFormation save={p.save} busy={p.busy} onPartyChange={(partyIds, leaderId) => p.command({ type: 'party', partyIds, leaderId })} onInspect={p.inspect} /><div className="story-link"><Button variant="secondary" onClick={() => { setBuilds(true); location.hash = 'party/builds'; }}><BookOpen size={16} />{tr("おすすめビルド")}</Button></div><BuildGoalSummary save={p.save} content={content} onOpen={() => { setBuilds(true); location.hash = 'party/builds'; }} /><div className="story-link"><Button variant="secondary" onClick={() => { p.navigate('dungeons'); location.hash = 'dungeons/memories'; }}><Sparkles size={15} />{tr("追憶・覚醒")}</Button></div><div className="character-grid" data-guide="party-members">{localize(p.save.ownedIds.map(id => { const ch = characterById(id), active = p.save.partyIds.includes(id); return <Panel className="character-card" key={id}><CharacterPortrait character={ch} selected={active} leader={p.save.leaderId === id} onClick={() => p.inspect(ch)} /><h3>{localize(ch.name)}</h3>{localize(ch.origin.includes('awakening') && <span className="story-form-label">{tr("覚醒 · ")}{localize(ch.epithet)}</span>)}<p className="character-leader-hint">{localize(leaderEffectDescription(ch))}</p><p>{localize(roleName(ch.role))}{tr(" · 定数 ")}{localize((ch.strength / 10).toFixed(1))}</p><PartyMemberActions membership={p.save.leaderId === id ? 'leader' : active ? 'member' : 'available'} toggleDisabled={p.busy || (!active && (p.save.partyIds.length >= 4 || duplicateFamily([...p.save.partyIds, id], content))) || (active && p.save.partyIds.length === 1)} leaderDisabled={!active || p.busy || id === p.save.leaderId} onToggle={() => { void toggle(id); }} onLeader={() => { void p.command({ type: 'party', partyIds: p.save.partyIds, leaderId: id }); }} /></Panel>; }))}</div></>;
+}
+
+export function BagView(p: ViewProps) {
+  const [tab, setTab] = useState(() => location.hash.includes('/builds') ? 'builds' : location.hash.includes('/gems') ? 'gems' : 'items');
+  useEffect(() => { const sync = () => setTab(location.hash.includes('/builds') ? 'builds' : location.hash.includes('/gems') ? 'gems' : 'items'); window.addEventListener('hashchange', sync); return () => window.removeEventListener('hashchange', sync); }, []);
+  if (tab === 'builds') return <BuildPlannerView p={p} onClose={() => { setTab('items'); location.hash = 'bag'; }} onGems={defId => { setTab('gems'); location.hash = defId ? `bag/gems/${encodeURIComponent(defId)}` : 'bag/gems'; }} />;
+  const entries = Object.entries(p.save.materials).filter(([, n]) => n > 0);
+  const exchangeSpecies = content.species.filter(s => !isolatedMaterialSpecies(content, s.id) && rarities.some(r => (p.save.materials[`${s.id}:${r}`] ?? 0) > 0));
+  return <>
+    <PageTitle eyebrow="COLLECTED MEMORIES" title={tr("カバン・道具")} />
+    <div className="bag-gem-entry"><Button onClick={() => setTab('gems')}><Hexagon size={21} />{tr('記憶石の管理')}<span className="bag-gem-entry__count">{p.save.memoryGems?.items.length ?? 0}</span><ChevronRight size={18} /></Button></div>
+    <div className="bag-gem-entry"><Button variant="secondary" onClick={() => { setTab('builds'); location.hash = 'bag/builds'; }}><BookOpen size={21} />{tr('おすすめビルド')}<ChevronRight size={18} /></Button></div>
+    <BuildGoalSummary save={p.save} content={content} onOpen={() => { setTab('builds'); location.hash = 'bag/builds'; }} />
+    {tab === 'items' && <><PreparationGuide save={p.save} content={content} busy={p.busy}
+      onGems={id => { setTab('gems'); location.hash = `bag/gems/${encodeURIComponent(id)}`; }}
+      onDungeon={id => { p.navigate('dungeons'); location.hash = `dungeons/prepare/${encodeURIComponent(id)}`; }} />
+      <ExpeditionLedger save={p.save} content={content} /></>}
+    <div className="dungeon-mode-tabs" role="group" aria-label={tr("カバンの種類")}>
+      <Button selected={tab === 'gems'} variant={tab === 'gems' ? 'primary' : 'secondary'} onClick={() => setTab('gems')}>{tr("記憶石")}</Button>
+      <Button selected={tab === 'items'} variant={tab === 'items' ? 'primary' : 'secondary'} onClick={() => setTab('items')}>{tr("道具・素材")}</Button>
+    </div>
+    {tab === 'gems' ? <MemoryGems targetDefId={location.hash.startsWith('#bag/gems/') ? location.hash.slice('#bag/gems/'.length) : undefined} save={p.save} content={content} dispatch={p.command} busy={p.busy} onBuilds={() => { setTab('builds'); location.hash = 'bag/builds'; }} /> : <>
+      <Panel className="shop-panel" data-guide="bag-potions"><div className="shop-item"><FlaskConical size={32} /><div><h2>{tr("回復薬")}</h2><p>{tr("味方1人のHPを30%回復。持込は最大5個。")}</p><span className="subtle">{tr("所持 ")}{p.save.potions}{tr(" 個")}</span></div></div><Button disabled={p.busy || p.save.gold < 10} onClick={() => p.command({ type: 'buyPotion', count: 1 })}><CurrencyEmblem kind="gold" size={16} />{tr(" 10 G で購入")}</Button></Panel>
+      <div className="story-link"><Button variant="secondary" onClick={() => p.navigate('recruit')}><CurrencyEmblem kind="gold" size={16} />{tr('ゴールド交換')}</Button></div>
+      <InventorySection id="materials" title="所持素材" count={entries.length}>
+        {entries.length ? <div className="resource-list">{entries.map(([id, n]) => <Panel className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><div><strong>{tr(materialName(id))}</strong><p className="subtle">× {n}</p></div></Panel>)}</div> : <p className="subtle">{tr("素材はまだありません。")}</p>}
+      </InventorySection>
+      <InventorySection id="material-exchange" title="素材の合成・分解" count={exchangeSpecies.length}>
+        <p className="subtle">{tr("同種族の素材：合成 5 → 1 ／ 分解 1 → 3")}</p>
+        <div className="resource-list">{exchangeSpecies.map(s => <Panel key={s.id}><h3>{tr(s.name)}</h3>{rarities.map(r => <div className="exchange-row" key={r}><span>{tr(materialName(`${s.id}:${r}`))} ×{p.save.materials[`${s.id}:${r}`] ?? 0}</span><div className="toolbar">{r !== 'epic' && <Button size="sm" variant="secondary" disabled={p.busy || (p.save.materials[`${s.id}:${r}`] ?? 0) < 5} onClick={() => p.command({ type: 'exchange', speciesId: s.id, rarity: r, direction: 'up' })}>{tr("5個を合成")}</Button>}{r !== 'common' && <Button size="sm" variant="secondary" disabled={p.busy || !(p.save.materials[`${s.id}:${r}`] > 0)} onClick={() => p.command({ type: 'exchange', speciesId: s.id, rarity: r, direction: 'down' })}>{tr("1個を分解")}</Button>}</div></div>)}</Panel>)}</div>
+      </InventorySection>
+    </>}
+  </>;
+}
+
+export function RecruitView(p: ViewProps) {
+  const chars = content.characters.filter(c => c.published && c.origin.includes('recruit') && p.save.discoveredIds.includes(c.id));
+  return <><PageTitle eyebrow="A NEW BOND" title={tr("仲間を迎える")} /><GoldExchange content={content} save={p.save} busy={p.busy} command={p.command} onInspect={p.inspect} />{localize(!chars.length && <Panel><p>{tr("仲間候補はまだいません。")}</p><Button onClick={() => p.navigate('dungeons')}>{tr("出会いを探す ")}<ArrowRight size={15} /></Button></Panel>)}<div className="character-grid">{localize(chars.map(ch => { const owned = p.save.ownedIds.includes(ch.id), costs = recruitCost(ch); return <Panel key={ch.id} className="character-card"><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><h3>{localize(ch.name)}</h3><p className="character-leader-hint">{localize(leaderEffectDescription(ch))}</p><p>{localize(roleName(ch.role))}{tr(" · 定数 ")}{localize((ch.strength / 10).toFixed(1))}</p><div className="cost-list">{localize(costs.map(cost => <div key={cost.materialId}><MaterialIcon rarity={cost.materialId.split(':')[1] as Rarity} /><span>{localize(materialName(cost.materialId))}</span><strong>{localize(p.save.materials[cost.materialId] ?? 0)}/{localize(cost.count)}</strong></div>))}</div><Button disabled={owned || p.busy || costs.some(cost => (p.save.materials[cost.materialId] ?? 0) < cost.count)} onClick={() => p.command({ type: 'recruit', characterId: ch.id })}>{localize(owned ? <Check size={16} /> : <Heart size={16} />)}{localize(owned ? '仲間になっています' : '仲間に迎える')}</Button></Panel>; }))}</div></>;
+}
+
+export function CodexView(p: ViewProps) { return <><PageTitle eyebrow="THE ARCHIVE" title={tr("記憶の図鑑")} /><div className="character-grid">{localize(content.characters.filter(ch => ch.published || p.save.ownedIds.includes(ch.id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.epithet)}</span><h3>{localize(ch.name)}</h3><p>{localize(roleName(ch.role))} · {localize(ch.origin.includes('trial') ? '試練の敵' : ch.origin.includes('gold_exchange') ? 'ゴールド交換限定' : ch.origin.includes('xr_gacha') ? 'XR祈願限定' : ch.origin.includes('gacha') ? '祈願限定' : ch.origin.includes('event') ? 'イベント限定' : ch.origin.includes('awakening') ? `覚醒 · ${ch.epithet}` : p.save.discoveredIds.includes(ch.id) ? '出会った記憶' : 'まだ見ぬ縁')}</p><Button variant="secondary" onClick={() => p.inspect(ch)}>{tr("物語を読む ")}<BookOpen size={14} /></Button></Panel>))}</div></>; }
+
+export function GachaView(p: ViewProps) {
+  const [collectionId, setCollectionId] = useState(flowerGacha.id);
+  const [confirmIntro, setConfirmIntro] = useState<1 | 10 | null>(null);
+  const collection = gachaCollections.find(item => item.id === collectionId)!;
+  const pool = content.characters.filter(c => c.published && gachaPoolIds(collection).includes(c.id));
+  const baseChance = (char: CharacterDef) => gachaBaseChance(char, collection, pool).toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+  const intro = introductoryGuarantee(p.save);
+  async function draw(count: 1 | 10 = 1) {
+    if (p.save.drawCount < 2 && p.save.drawCount + count >= 2) { setConfirmIntro(count); return; }
+    await p.command({ type: 'draw', collectionId, count });
+  }
+  const featured = collection.featuredIds.map(characterById);
+  const exclusiveOthers = pool.filter(character => character.rarity !== 'SSR' && !sharedGoddessIds.includes(character.id));
+  return <><PageTitle eyebrow="SUMMON" title={tr('祈願')} />
+    <div className="gacha-collections" data-guide="gacha-series" role="group" aria-label={tr('祈願シリーズ')}>
+      {localize(gachaCollections.map(item => <Button key={item.id} variant={collectionId === item.id ? 'primary' : 'secondary'} selected={collectionId === item.id} disabled={p.busy || Boolean(confirmIntro)} onClick={() => setCollectionId(item.id)}>{tr(item.title)}</Button>))}
+    </div>
+    <GachaShowcase key={collectionId} reducedMotion={p.save.settings.reducedMotion} suspended={Boolean(p.artworkSuspended) || Boolean(confirmIntro)} collection={collection} featured={featured} featuredBaseChance={baseChance(featured[0]!)} stones={p.save.stones} drawCount={p.save.drawCount} ownedIds={p.save.ownedIds} pity={gachaPity(p.save)} busy={p.busy} onDraw={() => draw(1)} onDrawTen={() => draw(10)} onInspect={p.inspect} />
+    <XRGacha save={p.save} busy={p.busy} onDraw={count => { void p.command({ type: 'drawXR', count }); }} />
+    <Panel><h3>{tr('全シリーズ共通の天井')}</h3>
+      <p className="gacha-guarantee-status" role="status">{tr(p.save.drawCount >= 2 ? '初回SSR保証は使用済みです。以降は共通90回天井です。' : intro ? '次の祈願で、全ガチャ共通・一度きりの初回SSR保証を使用します。' : '全ガチャを合計して2回目だけ、初回SSR保証を使用できます。')}</p>
+      <p>{tr('シリーズを切り替えても、祈願回数とSSR天井の進行は引き継ぎます。初回保証はシリーズごとには復活しません。')}</p>
+      <h3>{tr('通常の基準排出率')}</h3><div className="goddess-rates">{(['R','SR','SSR'] as const).filter(rarity => collection.rates[rarity] > 0).map(rarity => <span key={rarity}>{rarity} {collection.rates[rarity]}%</span>)}</div>
+      <p>{tr('SSR未獲得90回目でSSR確定。74回目からSSR率が1回ごとに6ポイント上昇し、SSR獲得で天井カウントが0に戻ります。')}</p>
+      <p>{tr('通常SSR抽選はピックアップ50%・共通SSR50%。各グループ内は均等抽選です。初回保証・90回天井はピックアップSSRが確定します。')}</p>
+      <p>{tr('重複時は祈願石をR 1個・SR 2個・SSR 3個還元します。')}</p><p>{tr('10連は単発10回と同じ抽選です。追加のレアリティ保証はありません。開始時に石50個が必要です。')}</p><p className="subtle">{tr(`石${collection.stoneCost}個で1回。祈願石は通常ダンジョン初踏破で3個、イベント踏破で毎回1個獲得できます。`)}</p>
+    </Panel>
+    <section className="gacha-common-ssr" aria-label={tr('共通SSR')}><h2>{tr('共通SSR')}</h2><div className="character-grid">{sharedSSRIds.map(characterById).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">SSR · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('どのシリーズからも迎えられます。共通SSR獲得でも天井はリセットされ、次回のピックアップ保証は発生しません。')}</p></section>
+    {exclusiveOthers.length > 0 && <><h2>{tr(collection.id === 'clockwork-maidens' ? 'ほかの機巧少女' : 'ほかの女神')}</h2><div className="character-grid gacha-exclusive-pool">{localize(exclusiveOthers.map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.rarity)} · {tr('シリーズ限定')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>))}</div></>}
+    <section className="gacha-common-section" aria-label={tr('通常の姿・共通プール')}><h2>{tr('通常の姿・共通プール')}</h2><p className="subtle">{tr('特別な装いを離れた、女神たちのいつもの姿。どのシリーズからも迎えられます。')}</p><div className="character-grid gacha-common-pool">{sharedGoddessIds.map(id => characterById(id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait label={tr(`${ch.name}／${ch.epithet}の詳細`)} character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{ch.rarity} · {tr('通常の姿')} · {tr('共通')}</span><h3>{tr(ch.name)}</h3><p>{tr(ch.epithet)}</p><small>{tr('基準排出率 {0}%').replace('{0}', baseChance(ch))}</small></Panel>)}</div><p className="subtle">{tr('表示は通常時の基準値です。SSR確率上昇中はR・SRの確率も変動し、SSR保証時は共通プールから排出されません。')}</p></section>
+    <Modal open={!!confirmIntro} title={tr('一度きりの初回SSR保証を使いますか？')} onClose={() => { if (!p.busy) setConfirmIntro(null); }}>
+      <p>{tr(collection.title)}</p><p role="alert">{tr('この祈願で、全ガチャ共通の初回SSR保証を消費します。他のシリーズでは再使用できず、次回からはSSR未獲得90回天井になります。')}</p>
+      <p>{confirmIntro === 10 ? tr('石50個で10連祈願します。途中で一度きりの初回SSR保証を使用します。重複あり。取消では石も保証も消費しません。') : tr('石5個を消費して、選択中のシリーズのSSRを1人迎えます。重複する場合があります。取消では石も保証も消費しません。')}</p>
+      <div className="toolbar"><Button disabled={p.busy} onClick={async () => { if (await p.command({ type: 'draw', collectionId, count: confirmIntro ?? 1 })) setConfirmIntro(null); }}>{tr('保証を使って祈願する')}</Button><Button variant="secondary" disabled={p.busy} onClick={() => setConfirmIntro(null)}>{tr('取消')}</Button></div>
+    </Modal>
+  </>;
+}
+
+export function SettingsView(p: ViewProps) {
+  return <><PageTitle eyebrow={`STILLVEIL ${RELEASE_LABEL}`} title={tr("設定")} /><Panel><h3>{tr("言語")}</h3><LanguageSwitch /></Panel><NovelLibrary save={p.save} busy={p.busy} command={p.command} /><Panel><h3>{tr("妖精の案内")}</h3><FairyGuideButton /></Panel><div data-guide="settings-backup"><SaveBackup revision={p.save.revision} /></div><Panel data-guide="settings-motion"><div className="setting-row"><div><h3>{tr("効果音")}</h3></div><div className="toolbar" role="group" aria-label={tr("効果音")}>{localize([0, 0.25, 0.5, 1].map(v => <Button sound={false} selected={p.save.settings.seVolume === v} variant={p.save.settings.seVolume === v ? 'primary' : 'secondary'} size="sm" key={v} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: v } })}>{localize(v === 0 ? <VolumeX size={15} /> : <Volume2 size={15} />)}{localize(Math.round(v * 100))}%</Button>))}</div></div><div className="setting-row"><div><h3>{tr("演出速度")}</h3></div><div className="toolbar">{localize(([1, 2] as const).map(speed => <Button variant={p.save.settings.speed === speed ? 'primary' : 'secondary'} key={speed} onClick={() => p.command({ type: 'settings', settings: { speed } })}>×{localize(speed)}</Button>))}</div></div><div className="setting-row"><div><h3>{tr("動きを控えめに")}</h3></div><Button variant="secondary" onClick={() => p.command({ type: 'settings', settings: { reducedMotion: !p.save.settings.reducedMotion } })}>{localize(p.save.settings.reducedMotion ? 'オン' : 'オフ')}</Button></div></Panel><Panel><div className="setting-row"><div><h3>BGM</h3></div><div className="toolbar" role="group" aria-label={tr("BGM音量")}>{localize([0, 0.25, 0.5, 1].map(v => <Button sound={false} variant={p.save.settings.bgmVolume === v ? 'primary' : 'secondary'} selected={p.save.settings.bgmVolume === v} size="sm" key={v} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { bgmVolume: v } })}>{localize(v === 0 ? <VolumeX size={15} /> : <Volume2 size={15} />)}{localize(Math.round(v * 100))}%</Button>))}</div></div><p>{tr("音楽：")}<a href="https://amachamusic.chagasi.com/" target="_blank" rel="noreferrer">{tr("甘茶の音楽工房")}</a>{tr("（作曲：甘茶）")}</p><p>{tr("ホーム：")}<a href={bgmTracks.home.source} target="_blank" rel="noreferrer">{localize(bgmTracks.home.title)}</a>{tr(" ／ 通常戦闘：")}<a href={bgmTracks.normalBattle.source} target="_blank" rel="noreferrer">{localize(bgmTracks.normalBattle.title)}</a></p><p>{tr("その他の戦闘：")}<a href={bgmTracks.battle.source} target="_blank" rel="noreferrer">{localize(bgmTracks.battle.title)}</a></p><p>{tr("ボス戦：")}<a href={bgmTracks.boss.source} target="_blank" rel="noreferrer">{localize(bgmTracks.boss.title)}</a>{tr(" ／ クリア：")}<a href={bgmTracks.clear.source} target="_blank" rel="noreferrer">{localize(bgmTracks.clear.title)}</a></p><p>{tr("和風ボス戦：")}<a href={bgmTracks.japaneseBoss.source} target="_blank" rel="noreferrer">{localize(bgmTracks.japaneseBoss.title)}</a></p><p>{tr("物語：")}<a href={bgmTracks.novel.source} target="_blank" rel="noreferrer">{localize(bgmTracks.novel.title)}</a></p><p>{tr("大時計の腕試し：")}<a href={bgmTracks.clockBoss.source} target="_blank" rel="noreferrer">{localize(bgmTracks.clockBoss.title)}</a></p><h3>{tr("セーブ")}</h3><p>{tr("このブラウザーに自動保存。データ削除で失われます。ほかの端末・ブラウザーとは共有されません。")}</p></Panel></>;
+}
+
+export function CharacterDetail({ character: ch, onClose, onInspect, reducedMotion, save }: { character: CharacterDef | null; onClose: () => void; onInspect: (character: CharacterDef) => void; reducedMotion: boolean; save: GameSave }) {
+  if (!ch) return null;
+  const rescue = characterRescueDefinition(ch.id);
+  const forms = content.characters.filter(c => c.origin.includes('gacha') && (c.familyId ?? c.id) === (ch.familyId ?? ch.id));
+  const stats = characterStats(ch), bonus = leaderBonus(ch);
+  const awakening = content.awakenings?.find(def => def.baseId === ch.id || def.awakenedId === ch.id);
+  const memory = content.memories?.find(item => item.characterId === (awakening?.baseId ?? ch.id));
+  return <Modal open={true} title={tr(ch.name)} onClose={onClose}><div className="character-detail"><CharacterArtwork className="detail-art" character={ch} reducedMotion={reducedMotion} /><div><span className="eyebrow">{localize(ch.rarity)} · {localize(ch.epithet)}</span><p>{localize(roleName(ch.role))}{tr(" · 難易度定数 ")}{localize((ch.strength / 10).toFixed(1))}</p><div className="stat-grid"><span>HP <strong>{localize(stats.hp)}</strong></span><span>{tr("攻撃 ")}<strong>{localize(stats.attack)}</strong></span><span>{tr("防御 ")}<strong>{localize(stats.defense)}</strong></span><span>{tr("素早さ ")}<strong>{localize(stats.speed)}</strong></span></div><h3><Crown size={16} />{tr(" リーダースキル")}</h3><p>{tr("パーティ全員の")}{localize(statNames[bonus.stat])}{tr("を")}{localize(bonus.percent)}{tr("%上昇")}</p><p>{localize(leaderEffectDescription(ch))}</p>{commandCapacity(ch.id) > 0 && <div className="skill-description"><h3>{tr("星図の号令")}</h3><p>{tr(commandDoctrineDescription)}</p></div>}<h3>{tr("必殺技")}</h3><div className="skill-description"><p><Sparkles size={15} /> {tr(ultimateFor(ch).name)}</p><small>{tr(ultimateFor(ch).description)}</small></div><h3>{tr("戦い方")}</h3><p className="companion-tendency">{tr(companionTendency(ch))}</p><h3>{tr("スキル")}</h3>{rescue && <section className="character-talent"><h4>{tr(rescue.name)}</h4><p className="subtle">{tr(rescue.description)}</p></section>}{localize(ch.skillIds.map(id => { const sk = content.skills.find(s => s.id === id)!; return <div className="skill-description" key={id}><p><WandSparkles size={13} /> {localize(sk.name)} <span className="subtle">{tr("強さ ")}{localize((sk.strength / 10).toFixed(1))}</span></p><small>{localize(skillDescription(sk))}</small></div>; }))}</div></div>{localize(memory ? <section className="character-memories" aria-label={tr("人物の記憶")}>{localize(memoryChapters(memory, save, content).map((chapter, index) => <div className={`memory-chapter${chapter.unlocked ? '' : ' is-locked'}`} key={chapter.title}><h3><Feather size={14} /> {localize(chapter.title)}</h3><p>{localize(chapter.unlocked ? chapter.text : index === 0 ? '出会うと開放' : index === 1 ? '仲間にすると開放' : '覚醒すると開放')}</p></div>))}</section> : <div className="flavor-text"><Feather size={18} /><p>{localize(ch.flavor)}</p></div>)}{forms.length > 1 && <section className="goddess-forms" aria-label={tr('同じ女神の姿')}><h3>{tr('同じ女神の姿')}</h3><p className="subtle">{tr('通常の姿と特別な装いは別々に迎えられます。同じ女神の異なる姿は同時に編成できません。')}</p><div className="goddess-forms__grid">{forms.map(form => <Button key={form.id} className="goddess-form" variant="secondary" selected={form.id === ch.id} aria-label={tr(`${form.name}／${form.epithet}の姿を見る`)} onClick={() => onInspect(form)}><span className="goddess-form__portrait"><GameImage src={assetPath(form.portraitId)} alt="" loading="lazy" /></span><span><small>{tr(sharedGoddessIds.includes(form.id) ? '通常の姿' : '特別な装い')} · {form.rarity}</small><strong>{tr(form.epithet)}</strong><small>{tr(save.ownedIds.includes(form.id) ? '迎え入れ済み' : '未所持')}</small></span></Button>)}</div></section>}</Modal>;
+}
+
+export function visibleUnits(battle: Battle): Unit[] {
+  let units = battle.initialUnits;
+  for (const event of battle.events.slice(0, battle.cursor)) if (event.unitsAfter) units = event.unitsAfter;
+  return battle.phase === 'playing' ? units : battle.units;
+}
+
+export function BattleView(p: ViewProps) {
+  const battle = p.save.battle!;
+  const [usingPotion, setUsingPotion] = useState(false);
+  const [retreat, setRetreat] = useState(false);
+  const [gemBag, setGemBag] = useState(false);
+  const [impact, setImpact] = useState<ImpactSnapshot>();
+  const [viewedEnemyId, setViewedEnemyId] = useState<string>();
+  const dungeon = content.dungeons.find(d => d.id === battle.dungeonId)!;
+  const before = visibleUnits(battle), event = battle.phase === 'playing' ? battle.events[battle.cursor] : undefined;
+  // Publish the current snapshot at the hit, without advancing or rewriting the replay.
+  const units = event && event.id === impact?.eventId ? impact.units ?? event.unitsAfter ?? before : before;
+  const party = units.filter(u => u.side === 'party'), enemies = units.filter(u => u.side === 'enemy');
+  const signals = companionSignals(battle, content);
+  const commandTargetId = enemies.find(u => u.uid === viewedEnemyId && u.hp > 0)?.uid ?? enemies.find(u => u.hp > 0)?.uid;
+  const focusedEnemyId = enemies.find(u => u.uid === battle.focusTargetId && u.hp > 0)?.uid ?? (battle.focusTargetId ? enemies.find(u => u.hp > 0)?.uid : undefined);
+  const items = Object.entries(battle.pendingMaterials).filter(([, n]) => n > 0);
+  const total = items.reduce((n, [, amount]) => n + amount, 0) - (battle.phase === 'playing' ? battle.events.slice(battle.cursor).filter(e => e.kind === 'drop').reduce((sum, e) => sum + (e.amount ?? 1), 0) : 0);
+  const displayRound = battle.phase === 'playing' && battle.events.some(e => !e.bloomAction && !e.fairyAction && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(e.kind)) ? Math.max(1, battle.round - 1) : battle.round;
+  const reward = battle.phase === 'reward', failed = battle.phase === 'failed';
+  async function prepareAfterFailure(builds = false) {
+    if (await p.command({ type: 'leaveFailure' })) {
+      p.navigate('bag'); location.hash = builds ? 'bag/builds' : 'bag';
+    }
+  }
+  const nextExperiment = <ExpeditionNextStep battle={battle} busy={p.busy}
+    onPrepare={() => { void prepareAfterFailure(); }} onBuilds={() => { void prepareAfterFailure(true); }} />;
+  if (dungeon.kind === 'trial' && (reward || failed)) return <><PageTitle eyebrow="GODDESS TRIAL" title={tr(reward ? '試練踏破' : '挑戦終了')} text={tr(dungeon.name)} /><Panel className="result-panel">{reward ? <Sparkles size={38} /> : <Moon size={38} />}<h2>{tr(`勝ち抜き ${battle.wave + (reward ? 1 : 0)} / ${dungeon.waves.length}`)}</h2><p>{tr('戦利品なし・踏破の記録のみ')}</p><ExpeditionReview battle={battle} content={content} />{nextExperiment}{!reward && <p>{tr(battle.failureReason ?? 'パーティは廃都から帰還しました。')}</p>}<Button data-guide="trial-result" size="lg" disabled={p.busy} onClick={() => p.command({ type: reward ? 'claim' : 'leaveFailure' })}>{tr(reward ? '踏破を記録して戻る' : '街へ戻る')}</Button></Panel></>;
+  if (reward || failed) return <><PageTitle eyebrow={reward ? 'EXPLORATION COMPLETE' : 'THE JOURNEY CONTINUES'} title={tr(reward ? '探索の記録' : '探索終了')} text={tr(dungeon.name)} />{reward && <CampaignStory dungeon={dungeon} phase="after" />}<Panel className="result-panel">{localize(reward ? <Sparkles size={38} /> : <Moon size={38} />)}<MemoryGemSummary battle={battle} buildGoal={p.save.buildGoal} /><ExpeditionReview battle={battle} content={content} />{nextExperiment}<h2>{localize(reward ? dungeon.towerFloor ? '塔の報酬' : '獲得素材' : '今回の素材は失われました。')}</h2>{localize(reward ? <><div className="resource-list">{localize(items.map(([id, n]) => <div className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><span>{localize(materialName(id))}</span><strong>×{localize(n)}</strong></div>))}</div><div className="reward-summary"><span>{tr("記憶の欠片")} +{towerDustReward(dungeon) || 1}</span><span><CurrencyEmblem kind="gold" size={17} />{tr(" 撃破 ")}{localize(battle.goldEarned)}{tr(" G（取得済み）")}</span><span>{tr("クリア +20 G")}</span>{localize(dungeonStoneReward(dungeon, p.save.completedDungeonIds) > 0 && <span><CurrencyEmblem kind="stone" size={17} /> {localize(dungeon.kind === 'event' ? 'イベント踏破' : '初踏破')} +{localize(dungeonStoneReward(dungeon, p.save.completedDungeonIds))}</span>)}</div><p className="subtle">{tr("確定するまで素材と祈願石は未獲得です。")}</p><Button data-guide="claim" size="lg" disabled={p.busy} onClick={() => p.command({ type: 'claim' })}><Check size={18} />{tr(" 獲得を確定")}</Button></> : <><p>{localize(battle.failureReason ?? 'パーティは廃都から帰還しました。')}</p><p className="subtle">{tr("ゴールド・敵の記録は保持。次回は全回復で出発します。")}</p><Button data-guide="return-town" size="lg" disabled={p.busy} onClick={() => p.command({ type: 'leaveFailure' })}>{tr("街へ戻る ")}<ArrowRight size={16} /></Button></>)}</Panel></>;
+  return <div className="battle-layout game-frame" data-directive={event?.directive} data-hit-index={event?.id===impact?.eventId?impact?.hitIndex:undefined}>
+    <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label={tr("敵の戦場")}>
+      <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} roundLimit={dungeon.towerFloor ? TOWER_ROUND_LIMIT : undefined} materials={total} targetId={focusedEnemyId} fixedNumbers={Boolean(dungeon.coordination)} onDisplay={setViewedEnemyId} />
+      <MemoryGemFind battle={battle} reducedMotion={p.save.settings.reducedMotion} onOpen={() => setGemBag(true)} />
+      <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
+      <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
+      <SceneAtmosphere mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
+      <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} onCrystal={role => { void p.command({ type: 'crystalRole', role }); }} onFairy={fairyId => { void p.command({ type: 'battleFairy', fairyId }); }} onBloom={bloomId => { void p.command({ type: 'battleBloom', bloomId }); }} />
+      <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}${event?.coordinationAction ? ' coordination-toast coordination-toast--' + event.coordinationAction : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{event?.coordinationAction && (event.coordinationAction === 'isolated' ? <Unlink size={15} /> : <Link2 size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
+      {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
+    </section>
+    <div data-guide="battle-party" className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label={tr("パーティメンバー")} onContextMenuCapture={event => event.preventDefault()} onDragStartCapture={event => event.preventDefault()}>
+      {localize(party.map((unit, index) => <div data-unit={unit.uid} className={`party-unit ${unit.hp <= 0 ? 'is-defeated' : ''}${ultimateReady(unit) ? ' party-unit--ultimate-ready' : ''}${unit.ultimateQueued ? ' party-unit--ultimate-queued' : ''}`} key={unit.uid}>
+        <>{index === 0 && !usingPotion ? <PartyCommandDial unit={unit} battle={battle} targetId={commandTargetId} onOrder={order => { void p.command({ type: 'partyOrder', battleId: battle.id, order, targetId: commandTargetId }); }} /> : <CharacterPortrait variant="face" compact showRole={false} showName={false} character={characterById(unit.characterId)} leader={unit.characterId === battle.leaderId} hp={unit.hp} maxHp={unit.maxHp} selected={!!unit.ultimateQueued} disabled={p.busy || battle.phase !== 'ready' || unit.hp <= 0 || (!usingPotion && !ultimateReady(unit))} label={tr(usingPotion ? `${characterById(unit.characterId).name}を回復` : unit.ultimateQueued ? `${characterById(unit.characterId).name}：必殺技の予約を解除` : `${characterById(unit.characterId).name}：必殺技を予約`)} onClick={async () => { if (usingPotion) { if (await p.command({ type: 'potion', unitId: unit.uid })) setUsingPotion(false); } else await p.command({ type: 'ultimate', unitId: unit.uid }); }} />}{index > 0 && <CompanionChoice unit={unit} battle={battle} index={index - 1} signal={signals.find(s => s.actorId === unit.uid)} onInspect={() => p.inspect(characterById(unit.characterId))} reducedMotion={p.save.settings.reducedMotion} hidden={usingPotion || !!event?.ultimate} />}</>
+        <UltimateMeter unit={unit} /><span className="party-hp">{localize(unit.hp)} / {localize(unit.maxHp)}</span><div className="party-unit__effects"><UnitEffects unit={unit} round={displayRound} compact /></div>
+      </div>))}
+    </div>
+    <CommandDoctrine battle={battle} content={content} busy={p.busy} onOrder={order => { void p.command({ type: 'commandOrder', battleId: battle.id, order }); }} />
+    <CombatFeedback event={event} before={before} onImpact={setImpact} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
+    <BattleControlPad strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
+      advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command(battle.phase === 'playing' ? { type: 'replay' } : { type: 'round', battleId: battle.id, targetId: commandTargetId }); }}
+      potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.phase !== 'ready' || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}
+      retreatDisabled={p.busy || battle.phase !== 'ready'} onRetreat={() => setRetreat(true)}
+      toolbar={<><FairyGuideButton compact /><Button size="sm" variant="icon" title={tr("記憶石")} aria-label={tr("記憶石を開く")} onClick={() => setGemBag(true)}><Hexagon size={17} /></Button>{localize(usingPotion && <><span className="sr-only">{tr("回復する仲間を選択")}</span><Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>{tr("取消")}</Button></>)}<Button sound={false} variant="icon" title={tr(p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button><Button size="sm" variant="secondary" disabled={p.busy} title={tr("演出速度")} onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{localize(p.save.settings.speed)}</Button></>} />
+    <Modal className="memory-gem-modal" open={gemBag} onClose={() => setGemBag(false)} title={tr("記憶石")}><MemoryGems save={p.save} content={content} dispatch={p.command} busy={p.busy} /></Modal>
+    <Modal className="retreat-confirm" open={retreat} onClose={() => setRetreat(false)} title={tr("探索から撤退しますか？")} footer={<><BackupExportButton /><Button variant="danger" disabled={p.busy} onClick={async () => { if (await p.command({ type: 'retreat' })) setRetreat(false); }}>{tr("撤退する")}</Button></>}><p>{tr("今回の素材をすべて失います。記憶石・ゴールド・敵の記録は残ります。")}</p></Modal>
+  </div>;
+}
+
+export function PreviewView(p: ViewProps) { return <><PageTitle eyebrow="SHARED DESIGN SYSTEM" title={tr("共通プレビュー")} /><Panel><div className="toolbar"><Button>{tr("主操作")}</Button><Button variant="secondary">{tr("補助操作")}</Button><Button variant="danger">{tr("危険な操作")}</Button><Button disabled>{tr("無効")}</Button></div><div className="toolbar">{localize(rarities.map(r => <MaterialIcon key={r} rarity={r} />))}</div><HPBar hp={65} maxHp={100} /></Panel><div className="character-grid">{localize(content.characters.map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><h3>{localize(ch.name)}</h3><p>{localize(ch.flavor)}</p></Panel>))}</div></>; }

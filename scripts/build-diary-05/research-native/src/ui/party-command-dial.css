@@ -1,0 +1,75 @@
+.party-pilot { position:relative; width:100%; touch-action:none; -webkit-touch-callout:none; user-select:none; }
+.battle-layout .party-pilot > .character-portrait { width:100%; padding:0; gap:0; border:0; background:transparent; box-shadow:none; border-radius:6px; }
+.party-pilot.is-commanding .portrait-image { outline:2px solid #c8e8ef; box-shadow:0 0 18px #96d2e779; }
+.party-pilot__mark { position:absolute; left:4px; bottom:15px; width:15px; height:15px; border:1px solid #cddfe2; border-radius:50%; background:#122536de; color:#eef8ff; font:10px/13px serif; text-align:center; pointer-events:none; }
+.command-dial-layer { position:fixed; inset:0; z-index:95; pointer-events:none; }
+.command-dial-dismiss { position:absolute; inset:0; width:100%; height:100%; border:0; background:#08111d33; pointer-events:auto; padding:0; }
+.command-dial { position:absolute; width:1px; height:1px; pointer-events:auto; }
+.command-dial__arc { position:absolute; width:224px; height:224px; left:-112px; top:-112px; overflow:visible; pointer-events:none; }
+.command-dial__arc path { fill:none; stroke:#a9cbd9; stroke-width:1; opacity:.35; }
+.command-dial .command-dial__choice { position:absolute; transform:translate(-50%,-50%); width:44px; height:44px; min-width:44px; padding:0; border-radius:15px; border:1px solid #9ebccc80; color:#e8f2f8; background:linear-gradient(145deg,#2a4054f5,#111f31fa); box-shadow:inset 0 1px 0 #e3f5ff1c,0 3px 10px #03091370; touch-action:none; transition:box-shadow .12s,background .12s,border-color .12s; }
+.command-dial .command-dial__choice svg { width:18px; height:18px; stroke-width:1.6; }
+.command-dial .command-dial__choice.is-selected { border-color:#bddce9; box-shadow:inset 0 -2px 0 #c5e6f0,0 3px 10px #03091370; }
+.command-dial .command-dial__choice.is-hovered { color:#102436; border-color:#e7f7fc; background:linear-gradient(145deg,#e4f5f9,#a6c9da); box-shadow:0 0 0 3px #b8e5f122,0 0 18px #b8e5f13b; }
+.command-dial .command-dial__choice.is-ultimate { color:#e3c897; border-color:#c5a87080; }
+.command-dial .command-dial__choice.is-ultimate.is-hovered { color:#45351b; background:linear-gradient(145deg,#f3e5c4,#cbb281); }
+.command-dial .command-dial__choice.is-unavailable { opacity:.4; filter:grayscale(1); }
+.command-dial .command-dial__cancel { position:absolute; transform:translate(-50%,-50%); border:1px solid #9ebccc66; border-radius:50%; width:30px; height:30px; min-width:30px; padding:0; background:#101d2fe8; color:#c4d8e4; }
+/* Pressing a floating choice must not inherit the shared button translation. */
+.command-dial .command-dial__choice:active:not(:disabled), .command-dial .command-dial__cancel:active:not(:disabled) { transform:translate(-50%,-50%); }
+.command-dial__caption { position:absolute; left:-22px; bottom:112px; width:174px; min-height:46px; padding:7px 10px; border-left:2px solid #b3d3df; border-radius:2px 10px 10px 2px; background:linear-gradient(110deg,#122133fa,#182a3def); color:#edf4fa; box-shadow:0 3px 14px #0004; pointer-events:none; }
+.command-dial__caption strong { display:block; font-size:12px; line-height:1.5; overflow-wrap:anywhere; }
+.command-dial__caption small { display:block; margin-top:2px; color:#b8cbd6; font-size:9px; line-height:1.5; }
+.command-dial__caption .command-dial__timing { color:#94b8cc; font-size:8px; letter-spacing:.03em; }
+.party-command-badge,.companion-choice__badge { position:absolute; right:3px; bottom:15px; width:23px; height:23px; display:grid; place-items:center; background:#192d42ed; border:1px solid #cee6ea; border-radius:50%; color:#dceef1; box-shadow:0 0 9px #9cc4ce55; pointer-events:none; }
+.party-command-badge svg,.companion-choice__badge svg { width:13px; height:13px; }
+.party-unit { position:relative; }
+.companion-choice { position:absolute; inset:0 0 20px; pointer-events:none; z-index:7; }
+.companion-choice__badge { bottom:0; }
+.companion-choice__bubble { position:fixed; z-index:90; transform:translate(-50%,-100%); min-height:35px; display:flex; align-items:center; justify-content:center; gap:4px; padding:7px 5px; border:1px solid #aac9d3a6; border-radius:10px; background:linear-gradient(145deg,#263b50fa,#122134fa); color:#ecf5fa; box-shadow:inset 0 1px 0 #e6f7ff1a,0 4px 14px #030a1680; pointer-events:none; font-size:10px; line-height:1.4; text-align:center; }
+.companion-choice__bubble::after { content:''; position:absolute; bottom:-5px; left:calc(50% - 4px); width:8px; height:8px; transform:rotate(45deg); background:#17283b; border-right:1px solid #aac9d3a6; border-bottom:1px solid #aac9d3a6; }
+.companion-choice__bubble > svg { flex-shrink:0; width:13px; height:13px; stroke-width:1.6; }
+.companion-choice__bubble > span:not(.companion-choice__options) { min-width:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+.companion-choice__bubble[data-choice-state='waiting'] { visibility:hidden; }
+.companion-choice__bubble[data-choice-state='selected'] { border-color:#c0dce5; }
+.companion-choice__options { position:relative; display:flex; align-items:center; justify-content:space-between; gap:7px; width:62px; height:19px; color:#acc1d0; }
+.companion-choice__options svg { width:13px; height:13px; }
+.companion-choice__options i { position:absolute; top:-2px; left:-3px; width:20px; height:23px; border:1px solid #e2f5fa; border-radius:6px; background:#c6effb12; box-shadow:0 0 8px #b8e5f144; animation:companion-drag .62s ease-in-out both; }
+@keyframes companion-drag { from{transform:translateX(0);opacity:.35}45%{transform:translateX(23px);opacity:1}to{transform:translateX(47px);opacity:1} }
+.is-choosing .companion-choice__badge { box-shadow:0 0 12px #b9deef80; }
+@media(prefers-reduced-motion:reduce){.companion-choice__options i{animation:none}.command-dial .command-dial__choice{transition:none}}
+.enemy-target-pin { position:absolute; z-index:8; left:50%; top:132px; width:26px; height:30px; margin-left:-13px; color:#d6f0ef; filter:drop-shadow(0 1px 5px #000); pointer-events:none; }
+.enemy-target-button { position:absolute; z-index:9; right:12px; top:123px; border-radius:50%; width:37px; height:37px; padding:0; color:#d6f0ef; background:#152539a9; }
+.enemy-target-ring { position:absolute; z-index:4; width:110px; height:18px; border:1px solid #d0eeea88; border-radius:50%; left:calc(50% - 55px); bottom:34px; box-shadow:0 0 12px #aed9d533; pointer-events:none; }
+.enemy-target-return { position:absolute; bottom:18px; left:12px; z-index:9; border-radius:50%; width:32px; height:32px; padding:0; color:#d6f0ef; background:#152539c9; }
+
+body:has(.command-dial-layer) :is(.companion-choice,.companion-choice__bubble) { visibility:hidden; }
+
+/* The ready-state plan stays outside portrait bounds; the partner remains identifiable while choosing. */
+.party-unit[data-coordination-partner] .portrait-image { outline:1px solid #d5c08e; outline-offset:1px; box-shadow:0 0 12px #d3bf8833; }
+.companion-choice__bubble[data-choice-state='planned'] { border-style:dashed; background:linear-gradient(145deg,#283a4ffa,#142236fa); }
+.companion-choice__bubble[data-coordination-partner] { border-style:solid; border-color:#d5c08e; color:#f2e6c5; box-shadow:inset 0 1px 0 #fff3cd1a,0 0 14px #c5ad6d2e,0 4px 14px #030a1680; }
+.companion-choice__bubble[data-coordination-partner]::after { border-color:#d5c08e; }
+.companion-choice__bubble .companion-choice__text { min-width:0; }
+.companion-choice__target { display:block; margin-top:3px; font-size:9px; line-height:1.35; letter-spacing:.015em; color:#afccd9; }
+.companion-choice__bubble[data-coordination-partner] .companion-choice__target { color:#e0cfa9; }
+.command-dial__coordination { display:flex; align-items:flex-start; gap:6px; margin-top:6px; padding-top:6px; border-top:1px solid #9ebccc44; color:#e7d5a9; }
+.command-dial__coordination > svg { flex-shrink:0; margin-top:2px; }
+.command-dial__coordination b { display:block; font-size:10px; font-weight:500; }
+.command-dial__caption .command-dial__coordination small { font-size:9px; color:#c2d6df; }
+.enemy-formation-number { color:#c8dce7; font:11px/1.4 var(--font-body); letter-spacing:.02em; }
+
+.battle-layout .battle-toast.coordination-toast--linked { border-color:#d5c08e; color:#f2e6c5; }
+.battle-layout .battle-toast.coordination-toast--isolated { border-color:#dca49e; color:#f5c8c3; box-shadow:0 0 16px #d8726838; }
+.battle-layout .battle-toast.coordination-toast > svg { display:inline-block; vertical-align:middle; margin-right:5px; }
+
+.companion-choice__bubble[data-choice-state='planned'] .companion-choice__text { display:block; overflow:visible; -webkit-line-clamp:unset; }
+.companion-choice__label { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+
+.companion-choice__bubble[data-planned-blocked] { opacity:.75; border-color:#8fa4b7; }
+
+/* Before confirmation show body language, never a command or an enemy number. */
+.companion-choice__bubble.companion-signal { min-height:44px; pointer-events:auto; cursor:pointer; border-style:dotted; border-color:#91a9bb80; background:linear-gradient(145deg,#24374af5,#152437f5); color:#c5d4df; font-family:var(--font-body); }
+.companion-signal:hover,.companion-signal:focus-visible { outline:1px solid #c7dde9; outline-offset:2px; }
+.companion-signal:active { background:#2b4055; }
+.companion-choice__bubble .companion-choice__text { display:block; overflow:visible; -webkit-line-clamp:unset; }
