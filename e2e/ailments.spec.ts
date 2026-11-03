@@ -13,7 +13,12 @@ test('four distinct ailment badges survive reload and translate without overflow
     b.initialUnits=structuredClone(b.units);save.battle=b;save.settings.reducedMotion=true;save.revision++;await persistSave(save,revision);
   });
   await page.reload();await enterGame(page);
-  for(const [id,name] of [['confusion','混乱'],['sleep','睡眠'],['paralysis','麻痺'],['charm','魅了']])await expect(page.locator(`[data-ailment="${id}"]`)).toHaveText(`${name} · 2`);
+  for(const name of ['混乱','睡眠','麻痺','魅了']) {
+    const badge=page.getByRole('button',{name:`付与効果: ${name} · 2`,exact:true});
+    await expect(badge).toBeVisible();await badge.click();
+    await expect(page.getByRole('dialog')).toContainText(`${name} · 2`);
+    await page.getByRole('dialog').getByRole('button',{name:'閉じる',exact:true}).click();
+  }
   await page.screenshot({path:testInfo.outputPath('four-ailments-mobile.png')});
   await page.getByRole('button',{name:'ラウンドを進める',exact:true}).click();
   await expect(page.locator('.battle-toast')).toContainText('睡眠で行動できない');
@@ -23,7 +28,9 @@ test('four distinct ailment badges survive reload and translate without overflow
   const after=await page.evaluate(async()=> (await(await import('/src/platform/save.ts')).loadSave())!.battle!);
   expect(after.units).toEqual(before.units);expect(after.seed).toBe(before.seed);
   await page.evaluate(()=>localStorage.setItem('stillveil-language','en'));await page.reload();await page.locator('.title-screen__start').click();await expect(page.locator('.title-screen')).toHaveCount(0);
-  for(const text of await page.locator('[data-ailment]').evaluateAll(nodes=>nodes.map(node=>(node.textContent??'')+' '+node.getAttribute('title'))))expect(text).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
+  const summaries=page.locator('.party-strip .unit-effects-summary');
+  expect(await summaries.count()).toBeGreaterThan(0);
+  for(const text of await summaries.evaluateAll(nodes=>nodes.map(node=>(node.textContent??'')+' '+node.getAttribute('aria-label'))))expect(text).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });
 

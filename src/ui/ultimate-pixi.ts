@@ -1,5 +1,6 @@
 import { RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
-import { Application, Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
+import { Assets, Container, Graphics, Sprite, Texture } from 'pixi.js';
+import { acquireUltimateRenderer, releaseUltimateRenderer } from './ultimate-renderer';
 import { assetPath } from '../content';
 import { ultimateFrame, rabbitBitFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCamera, rabbitEnergyFrame, rabbitMuzzle, RABBIT_VOLLEY, clamp01 as clamp, type UltimateVisual } from '../platform/ultimate-choreography';
 
@@ -11,19 +12,17 @@ export interface UltimateTargetPoint { x: number; y: number; size: number }
 export async function createUltimateEffect(host: HTMLElement, visual: UltimateVisual, position: () => number, onFailure: () => void, targets?: () => UltimateTargetPoint[]) {
   const rabbitTextures = visual === 'rabbit-bits'
     ? await Promise.all([1,2,3,4].map(index => Assets.load<Texture>(assetPath(`lunette-bit-${index}`)))) : [];
-  const app = new Application();
-  try {
-    await app.init({ width: Math.max(1,host.clientWidth),height: Math.max(1,host.clientHeight),backgroundAlpha:0,
-      resolution:Math.min(devicePixelRatio||1,1.5),autoDensity:true,antialias:true,preference:'webgl',powerPreference:'low-power',autoStart:false });
-  } catch(error) { try{app.destroy(true);}catch{/* partially initialized */} throw error; }
+  const lease = await acquireUltimateRenderer(Math.max(1,host.clientWidth), Math.max(1,host.clientHeight));
+  const { app } = lease;
   const canvas=app.canvas;canvas.className='ultimate-pixi-canvas';canvas.setAttribute('aria-hidden','true');host.appendChild(canvas);
   const scene=new Container(), forms=new Graphics(), light=new Graphics();
   light.blendMode='add';scene.addChild(forms,light);app.stage.addChild(scene);
-  const glow=document.createElement('canvas');glow.width=glow.height=64;
-  const ctx=glow.getContext('2d')!,gradient=ctx.createRadialGradient(32,32,0,32,32,32);
-  gradient.addColorStop(0,'#ffffff');gradient.addColorStop(.14,'#ffffffff');gradient.addColorStop(.35,'#ffffff70');gradient.addColorStop(1,'#ffffff00');
-  ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);
-  const texture=Texture.from(glow);let color=palette[visual];
+  const texture=lease.glow;let color=palette[visual];
+  let width=Math.max(1,host.clientWidth),height=Math.max(1,host.clientHeight);
+  const sizeObserver = new ResizeObserver(() => {
+    width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);
+  });
+  sizeObserver.observe(host);
   const particles=Array.from({length:56*(targets?4:1)},(_,i)=>{
     const sprite=new Sprite(texture);sprite.anchor.set(.5);sprite.blendMode='add';sprite.tint=i%4?color:0xffffff;scene.addChild(sprite);
     return {sprite,angle:i*2.39996,speed:.35+(i*37%73)/100,size:3+i%5};
@@ -47,7 +46,7 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
     const elapsed=position();
     if(visual==='rabbit-bits'){const energy=rabbitEnergyFrame(elapsed);color=energy.color;host.dataset.rabbitColor=color.toString(16).padStart(6,'0');host.dataset.rabbitEnergy=String(energy.phase);}
     const f=ultimateFrame(visual,elapsed),{hit,action:age,gather,travel}=f;
-    const w=host.clientWidth,h=host.clientHeight;
+    const w=width,h=height;
     if(w!==app.screen.width||h!==app.screen.height)app.renderer.resize(w,h);
     if(visual==='rabbit-bits'&&!targets){
       const pulse=rabbitLoopCamera(elapsed);
@@ -312,5 +311,5 @@ export async function createUltimateEffect(host: HTMLElement, visual: UltimateVi
   const visibility=()=>{if(document.hidden)app.ticker.stop();else{app.ticker.start();tick();}};
   const lost=(event:Event)=>{event.preventDefault();onFailure();};
   document.addEventListener('visibilitychange',visibility);canvas.addEventListener('webglcontextlost',lost);visibility();
-  return ()=>{if(destroyed)return;destroyed=true;window.removeEventListener('game:combat-numbers',landing);document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);app.ticker.stop();app.destroy(true,{children:true});texture.destroy(true);};
+  return ()=>{if(destroyed)return;destroyed=true;window.removeEventListener('game:combat-numbers',landing);document.removeEventListener('visibilitychange',visibility);canvas.removeEventListener('webglcontextlost',lost);sizeObserver.disconnect();app.ticker.remove(tick);app.stage.removeChild(scene);scene.destroy({children:true});releaseUltimateRenderer(lease);};
 }

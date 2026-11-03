@@ -197,7 +197,7 @@ test('Lunette uses one soundtrack and removes her whiteout when skipped', async 
   await page.getByTitle('演出速度',{exact:true}).click();
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-phase','impact',{timeout:8000});
   expect(await page.evaluate(()=>(window as any).__summonCues.length)).toBe(0);
-  const whiteout=page.locator('.battle-layout > .ultimate-whiteout');
+  const whiteout=page.locator('.battle-layout > .game-portal > .ultimate-whiteout');
   expect(await peak).toBe(true);
   const flash=await whiteout.boundingBox(),battle=await page.locator('.battle-layout').boundingBox();
   expect(flash!.width).toBeGreaterThan(battle!.width-5);
