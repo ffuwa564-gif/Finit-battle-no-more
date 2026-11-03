@@ -312,9 +312,9 @@ export async function persistSave(save: GameSave, expectedRevision?: number, opt
 export function isLegacySaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return value.schemaVersion === 1 && value.appVersion === '0.1.0' && value.contentVersion === 'initial-r1' && value.rulesVersion === '1';
 }
-/** 1.11 only changes presentation; 1.10 combat/farming snapshots remain valid. */
+/** Presentation-only releases preserve 1.10/1.11 combat and farming snapshots. */
 export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
-  return RELEASE.appVersion === '1.11.0' && value.schemaVersion === RELEASE.schemaVersion && value.appVersion === '1.10.0' && value.contentVersion === RELEASE.contentVersion && value.rulesVersion === RELEASE.rulesVersion;
+  return value.schemaVersion === RELEASE.schemaVersion && ['1.10.0', '1.11.0'].includes(value.appVersion) && value.contentVersion === RELEASE.contentVersion && value.rulesVersion === RELEASE.rulesVersion;
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return isLegacySaveVersion(value) || isPortraitHotfixSaveVersion(value);
@@ -330,7 +330,7 @@ export async function persistMigratedSave(next: GameSave, previous: GameSave): P
     req.onsuccess = () => {
       try {
         if (JSON.stringify(req.result) !== JSON.stringify(previous)) throw new Error('別のタブで進行が更新されました。再読み込みしてください。');
-        store.put(previous,isLegacySaveVersion(previous) ? 'migration-v1.0' : 'migration-v1.10'); store.put(previous,'backup');
+        store.put(previous,isLegacySaveVersion(previous) ? 'migration-v1.0' : `migration-v${previous.appVersion.replace(/\.0$/, '')}`); store.put(previous,'backup');
         store.put(next,'save'); store.put(bootMetadata(next),'boot');
       } catch (e) { reason = e instanceof Error ? e.message : reason; tx.abort(); }
     };

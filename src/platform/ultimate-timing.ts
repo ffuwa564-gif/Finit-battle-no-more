@@ -28,3 +28,16 @@ export class UltimateClock {
   position(now: number): number { return this.elapsed + Math.max(0, now - this.updatedAt) * this.rate; }
   delay(target: number, now: number): number { return Math.max(0, Math.ceil((target - this.position(now)) / this.rate)); }
 }
+
+// A bounded presentation-only registry gives audio, HP and Pixi the same origin,
+// regardless of React child/parent effect ordering. No battle/save data is cached.
+const presentationClocks = new Map<string, UltimateClock>();
+export function sharedUltimateClock(eventId: string): UltimateClock {
+  let clock = presentationClocks.get(eventId);
+  if (!clock) {
+    clock = new UltimateClock();
+    if (presentationClocks.size >= 4) presentationClocks.delete(presentationClocks.keys().next().value!);
+    presentationClocks.set(eventId, clock);
+  }
+  return clock;
+}

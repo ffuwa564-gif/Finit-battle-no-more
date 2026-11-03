@@ -1,6 +1,6 @@
 import { flashDamage } from '../platform/damage-flash';
 import { ultimateVisualFor } from '../platform/ultimate-choreography';
-import { ultimateTimingFor, UltimateClock } from '../platform/ultimate-timing';
+import { ultimateTimingFor, UltimateClock, sharedUltimateClock } from '../platform/ultimate-timing';
 import { tr, localize } from '../locales/i18n';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BattleEvent, Unit } from '../domain/types';
@@ -57,7 +57,7 @@ export function CombatFeedback({ event, before, onImpact, reducedMotion, speed =
   useEffect(() => {
     if (!event) return;
     const changes = eventHpChanges(event, latestBefore.current);
-    if (event.ultimate) clock.current.sync(event.id, speed, performance.now());
+    if (event.ultimate) { clock.current = sharedUltimateClock(event.id); clock.current.sync(event.id, speed, performance.now()); }
     const actor=latestBefore.current.find(unit=>unit.uid===event.actorId);
     const visual=event.ultimate&&actor?ultimateVisualFor(characterById(actor.characterId),event):undefined;
     const timing=ultimateTimingFor(visual);

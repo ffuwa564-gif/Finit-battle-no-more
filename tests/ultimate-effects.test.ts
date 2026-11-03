@@ -2,9 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { ultimateFrame, ultimateVisualFor, rabbitBitFrame, rabbitShotTimes, RABBIT_VOLLEY, rabbitWhiteout, rabbitTargetFrame, rabbitMount, rabbitCameraZoom, rabbitLoopCues, rabbitLoopCamera, rabbitEnergyFrame, rabbitMusicGain, RABBIT_FLIGHT, rabbitMuzzle } from '../src/platform/ultimate-choreography';
 import { content } from '../src/content';
 import { ultimateSoundFor } from '../src/platform/ultimate-audio';
-import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock } from '../src/platform/ultimate-timing';
+import { ULTIMATE_TIMING, RABBIT_TIMING, RABBIT_SEQUENCE, rabbitStage, UltimateClock, sharedUltimateClock } from '../src/platform/ultimate-timing';
 
 describe('ultimate presentation clock', () => {
+  it('shares an origin across late subscribers and applies a speed change once', () => {
+    const audio=sharedUltimateClock('clock-test'), hp=sharedUltimateClock('clock-test');
+    audio.sync('clock-test',1,1000);hp.sync('clock-test',1,1075);
+    expect(hp).toBe(audio);expect(hp.position(1100)).toBe(100);
+    audio.sync('clock-test',2,1200);hp.sync('clock-test',2,1250);
+    expect(audio.position(1400)).toBe(450);
+    const next=sharedUltimateClock('clock-next');next.sync('clock-next',1,1400);
+    expect(next.position(1400)).toBe(0);expect(audio.position(1400)).toBe(450);
+  });
   it('gives both Lunette forms their own rabbit summon and volley without replacing other characters', () => {
     for (const id of ['lunette', 'lunette-awakened']) expect(ultimateVisualFor(content.characters.find(c => c.id === id)!)).toBe('rabbit-bits');
     expect(ultimateVisualFor(content.characters.find(c => c.id === 'noelle')!)).toBe('stars');
