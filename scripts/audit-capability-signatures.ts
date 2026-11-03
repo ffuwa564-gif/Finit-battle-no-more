@@ -3,7 +3,6 @@
  * Same role/templates/leader/stat CAN hide distinct ID-specific mechanics.
  */
 import {content} from '../src/content';
-import type {CharacterDef} from '../src/domain/types';
 
 const skills = new Map(content.skills.map(skill => [skill.id,skill]));
 const entries = content.characters.filter(c=>c.published).map(character=>{
@@ -15,7 +14,8 @@ const entries = content.characters.filter(c=>c.published).map(character=>{
     templates,role:character.role,leaderEffect:character.leaderEffect??null,
   };
 });
-const groups = Map.groupBy(entries,item=>item.signature);
+const groups = new Map<string, typeof entries>();
+for (const item of entries) groups.set(item.signature,[...(groups.get(item.signature)??[]),item]);
 const overlaps = [...groups.entries()].filter(([,members])=>members.length>1).map(([signature,members])=>({
   signature,
   members:members.sort((a,b)=>b.strength-a.strength),
