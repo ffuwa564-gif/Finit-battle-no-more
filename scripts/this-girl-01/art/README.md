@@ -30,7 +30,7 @@ Mechanics wording: the mark does not stack; reserve power may accumulate from mu
 
 `roster.frame(t,duration,judgment)` returns a silent ledger frame; `roster.render(judgment,duration=40,path=...)` streams a30fps CRF20 H.264 source and creates `research/roster-visibility.json`.
 
-The input is the critic's finalized `research/reports/judgment.json` or its parsed dict. `overall.certified` must agree with `overall.status`. Unmet research remains outline `研究中`. A new solid gem means only `限定検証済み` under the report's explicit scope. Old amber remains labeled `旧LAB／限定検証`; it never counts as a new current endgame award. Historical build names keep `（仮）`; the new Sakuya provisional name is read directly from `judgment.subject.buildName` (the current design record uses `桜守りの返礼`); it is not hard-coded by the renderer.
+The input is the critic's finalized `research/reports/judgment.json` or its parsed dict. `overall.certified` must agree with `overall.status`. Unmet research remains outline `研究中`. A new solid gem means only `限定検証済み` under the report's explicit scope. Old amber remains labeled `旧LAB／限定検証`; it never counts as a new current endgame award. Historical build names keep `（仮）`; the new Sakuya provisional name is read directly from `judgment.subject.buildName` (the current design record uses `花守の返礼`); it is not hard-coded by the renderer.
 
 The ledger holds its first/last positions4 seconds. A40-second pan gives every card at least3 seconds fully within the viewport; duration below26 seconds is rejected. Metadata records each card's full-visibility interval. Actual final encoding/legibility/head/subtitle QA is still required after the editor composes the MP4.
 

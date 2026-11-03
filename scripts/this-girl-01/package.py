@@ -58,7 +58,12 @@ def validate():
     freeze = read(local(R / 'render-input-freeze.json'))
     assert freeze['passed'] and freeze['finishedSha256'] == digest
     for name, expected in freeze['inputs'].items():
-        assert sha(local(name)) == expected, ('Changed render input', name)
+        p = Path(name)
+        if p.is_absolute() and p.parent == Path('/usr/share/fonts/opentype/noto'):
+            assert p.name in [f'Noto{family}CJK-{weight}.ttc' for family in ['Sans', 'Serif'] for weight in ['Regular', 'Bold']]
+        else:
+            p = local(name)
+        assert sha(p) == expected, ('Changed render input', name)
     qa = read(local(R / 'final-independent-qa.json'))
     browser = read(local(R / 'final-browser-qa.json'))
     visual = read(local(R / 'final-visual-review.json'))
@@ -141,6 +146,12 @@ def validate():
         assert spec['stageId'] == case['stage'] and spec['applicationSeed'] == seed['applicationSeed']
         assert spec['logicalSeed'] == seed['logical']
         assert proof['sourceTreeSha256'] == info['sourceTreeSha256']
+        native_audio = read(local(R / ('native-buffer-qa-' + ident + '.json')))
+        assert native_audio['passed'] and native_audio['rawOnly'] is False
+        assert native_audio['partialPreflight'] is False and native_audio['sampleContinuity']
+        assert native_audio['sourceSha256'] == sha(source)
+        assert native_audio['metadataSha256'] == sha(O / 'capture' / (ident + '.json'))
+        assert native_audio['pcmSha256'] == sha(local(O / 'capture' / (ident + '.pcm')))
         measured = next(r for r in chosen[2]['arms'][arm]['rows'] if r['seed'] == seed['logical'])
         summary = proof['nativeSummary']
         assert (summary['win'], summary['rounds'], summary['pots'], summary['survivors']) == (
@@ -156,16 +167,32 @@ def validate():
 def sources():
     """Explicit rights-aware archive; no raw BGM, generated voice, or music-only mix."""
     files = set()
-    for folder in [ROOT / 'scripts/this-girl-01', ROOT / 'docs/media/this-girl/episodes/01', R, O / 'proofs', O / 'assets']:
+    for folder in [ROOT / 'scripts/this-girl-01', ROOT / 'docs/media/this-girl/episodes/01',
+                   ROOT / 'src', O / 'baseline/src', ROOT / 'tools/media-sync',
+                   ROOT / 'tests', ROOT / 'e2e', ROOT / 'itch-e2e', R, O / 'proofs', O / 'assets']:
         for p in folder.rglob('*'):
             if not p.is_file() or '__pycache__' in p.parts or p.name.endswith(('.partial', '.pyc')):
                 continue
             if p.suffix.lower() in ['.mp3', '.wav', '.flac', '.ogg', '.webm']:
                 continue
             files.add(local(p))
+    for p in [ROOT / 'package.json', ROOT / 'package-lock.json', ROOT / 'tsconfig.json',
+              ROOT / '.github/workflows/sakuya-research-search.yml',
+              ROOT / '.github/workflows/sakuya-research-confirm.yml']:
+        files.add(local(p))
+    for p in ROOT.glob('playwright*.config.ts'):
+        files.add(local(p))
     # Preserve the normalized native footage and its calibrated pre-normalization original.
     for p in (O / 'capture').glob('*'):
-        if p.is_file() and (p.suffix in ['.mov', '.json'] or p.name.endswith(('.mov.tmporiginal', '.json.tmporiginal'))):
+        final_capture = any(p.name.startswith(ident + '.') for ident in ['reference', 'sakuya'])
+        if p.is_file() and final_capture and (p.suffix in ['.mov', '.json', '.pcm'] or p.name.endswith(('.mov.tmporiginal', '.json.tmporiginal'))):
+            files.add(local(p))
+    for ident in ['reference', 'sakuya']:
+        pcm = local(O / 'capture' / (ident + '.pcm'))
+        metadata = read(O / 'capture' / (ident + '.json'))
+        assert sha(pcm) == metadata['audioCapture']['sha256']
+        files.add(pcm)
+        for p in (O / 'capture' / ('native-references-' + ident)).glob('*.f32'):
             files.add(local(p))
     for p in [O / 'render/timeline.json', O / 'narration.json', O / 'editorial.json']:
         files.add(local(p))
@@ -174,7 +201,7 @@ def sources():
 
 def archive(files):
     """Split any large byte stream losslessly; every Git blob remains below the limit."""
-    folder = O / 'package-staging'
+    folder = O / 'render/package-staging'
     folder.mkdir(exist_ok=True)
     stream = folder / 'Production-and-Evidence.zip'
     with zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED, compresslevel=5) as z:
@@ -183,8 +210,15 @@ def archive(files):
     parts = []
     with stream.open('rb') as f:
         while block := f.read(CHUNK):
-            part = D / f'Production-and-Evidence.zip.part{len(parts) + 1:03d}'
-            part.write_bytes(block)
+            name = f'Production-and-Evidence.zip.part{len(parts) + 1:03d}'
+            physical = folder / name
+            physical.write_bytes(block)
+            part = D / name
+            if part.is_symlink():
+                assert part.resolve() == physical.resolve(), 'Unexpected prior delivery symlink'
+                part.unlink()
+            assert not part.exists(), 'Refuse to overwrite an unrelated delivery file'
+            part.symlink_to(physical.resolve())
             parts.append({'file': part.name, 'bytes': len(block), 'sha256': sha(part)})
     result = {'file': stream.name, 'bytes': stream.stat().st_size, 'sha256': sha(stream), 'parts': parts,
               'restore': 'Concatenate .part001, .part002, ... in numeric order, verify whole ZIP SHA256, then unzip.'}
@@ -194,6 +228,14 @@ def archive(files):
 
 def package():
     movie, digest, locksha = validate()
+    render_path = local(R / 'render-manifest.json')
+    rendered = read(render_path)
+    assert rendered['renderComplete'] and rendered['sha256'] == digest
+    rendered.update(finalized=True, finalQaComplete=True,
+                    note='Exact finished-file sync, decode, browser and visual QA passed. This finalizes the media only; the separate research judgment can remain research ongoing.',
+                    finalQa={name: sha(R / name) for name in [
+                        'final-independent-qa.json', 'final-browser-qa.json', 'final-visual-review.json']})
+    write(render_path, rendered)
     required = ['Script.md', 'Subtitles-ja.srt', 'Chapters.txt', 'YouTube-Description.txt', 'Credits.md',
                 'Reproduce.md', 'ResearchReport.md', 'Character-Judgment.json', 'Design-Decisions.md',
                 'Roster-Audit.md', 'Stone-Goals.md', 'Thumbnail-ThisGirl-01.png']

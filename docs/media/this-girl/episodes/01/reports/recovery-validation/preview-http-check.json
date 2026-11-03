@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "index_sha256": "cf2b63dcc2d07b306a8f9dc2f53336f3d647de4a518003aa688330fdeed5d163",
+  "same_as_research_build": true,
+  "helper_sha256": "afe9047edb10dcad9d364591d21f85b5d433167f19bf4b3818c53f450e3c6d6e",
+  "port": 4197
+}

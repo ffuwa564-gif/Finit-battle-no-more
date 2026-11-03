@@ -63,3 +63,11 @@ Duration    4.31s
 `VITE_SAKUYA_RESEARCH=1` を全工程へ適用し、typecheck・content（75キャラ/445技能/192ダンジョン、sakuya-research-v2）・UI契約・localesとVite buildが成功した。出力先は `/tmp/stillveil-sakuya-research-dist` であり、公開配信物ではない。標準stamp/release・視覚音声承認を行ったという意味ではない。
 
 実行コマンド、全src SHA-256、試験source SHA-256、実ログのSHA-256を `artifacts/this-girl-01/research/engine-verification-current.json` に保存した。ログは同ディレクトリの `engine-tests-current.log`、`engine-tests-public-current.log`、`research-build-current.log`。WebKit/nativeUIと最新CIのE2E完了・全体試験件数は引き続き未確認であり、別途記録する。
+
+## 研究UIのWebKit確認（2026-11-03 13:27 UTC）
+
+別originの研究buildでnativeUI既存4件が合格した。操作portalの画像・文字の選択防止、入力欄の選択維持、先頭とleaderの独立操作・保存、320/390pxの日英編成ボタンを実際のWebKitで検査した。追加の研究UI試験1件も合格し、実図鑑の個別技能名と90%説明、未充填印の非表示、充填した小花、タップ先の説明、操作列の位置/高さの維持、横overflowと長押し選択防止を確認した。これはUI用の人工状態fixtureであり、攻略成績の証拠ではない。
+
+不足していたliblzo2とlibGLESv2は公式Debian debを `/tmp` に展開した。両libraryを実ロード後、ldconfigキャッシュだけを見るPlaywrightの事前判定をこの実行に限り省略し、実ブラウザ試験は全件実行した。URL/SHAは `webkit-library-provenance.json`、実ログは `research-webkit-current.log`（4件）、`research-flower-webkit-current.log`（1件）。資源イベントが追加の効果音を要求しないnative assertionも追加し、最終sourceで通常/研究envの双方の11件合格を再確認した。実音声の最終動画との照合は収録担当の別検査である。
+
+再現時は研究build後、`VITE_SAKUYA_RESEARCH=1` を指定し `playwright test --config playwright.sakuya-research.config.ts` を実行する。恒久helperは `scripts/this-girl-01/verify/preview.mjs`、手順は同ディレクトリのREADME。`SAKUYA_UI_DIST` / `SAKUYA_UI_PORT` で研究buildと隔離originを指定できる。不足libraryを一時展開したhostでは同じLD_LIBRARY_PATHも指定する。configはworker1・WebKit1台・port4197を既定とする。helperの移動後はnode構文検査と実HTTP 200応答が研究indexとbyte一致することを確認し、`preview-http-check.json` に保存した。公開版の保存領域や配信物を書き換えない。
