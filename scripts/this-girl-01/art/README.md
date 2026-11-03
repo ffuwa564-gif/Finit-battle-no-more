@@ -1,6 +1,8 @@
 # Quiet notebook art API — THIS-GIRL-001
 
-`python scripts/this-girl-01/art/prepare.py` verifies the fixed art inputs and all72 original-art hashes, then exports the1280×720 thumbnail. The generated originals are inputs, not a promise that an image model can regenerate identical pixels. The previous exact generation prompts were lost; they are not invented here. Reproduction packages must supply the originals and `Artwork-Provenance.json`.
+`python scripts/this-girl-01/art/prepare.py` verifies the fixed art inputs and all72 original-art hashes, then exports the1280×720 thumbnail. When the former `/workspace/generated_images` files are absent, `prepare.py` loads both originals and their provenance from `docs/media/this-girl/episodes/01/assets/`. It restores the old roster with `git show a5573e67d9ceb29de8de6c9166a6524ad41548b5:docs/media/build-research-diary/episodes/05/registry.json` and verifies its fixed SHA. A shallow clone can fetch the exact source object with `git fetch origin a5573e67d9ceb29de8de6c9166a6524ad41548b5`; the script never substitutes the current roster. All original portraits under `public/` must also be present.
+
+The generated originals are inputs, not a promise that an image model can regenerate identical pixels. The previous exact generation prompts were lost; they are not invented here. Reproduction packages must supply the originals and `Artwork-Provenance.json`.
 
 The old roster is fixed to source commit `a5573e67d9ceb29de8de6c9166a6524ad41548b5`, `docs/media/build-research-diary/episodes/05/registry.json`, SHA256 `4fd1c99e1866b5c1e3e6554c2d806e624247967a220b1ec07972110fe76a00ee`. Its72 girl forms/49 canonical girls and stable BD IDs are retained. Three other game entities are not silently turned into registered girl forms.
 
@@ -14,9 +16,9 @@ Add this directory to `sys.path`, then import `visuals`.
 
 Scene kinds: `desk`, `subject`, `party`, `conditions`, `delta`, `concept`, `choice`, `metrics`, `goal`, `battle`, `summary`, `preview`.
 
-`party` accepts one to four `characters` with real `characterId`, optional `subject:true` rose outline, optional `leader:true`, and optional short `role` override. Actual name, stable BD ID, rarity and game role come from the verified art map. Use it for the fixed-three-companions comparison; it does not assert that a pictured party is optimal.
+`party` accepts one to four `characters` with real `characterId`, the alias `id` is also accepted, optional `subject:true` rose outline, optional `leader:true`, and optional short `role` override. Actual name, stable BD ID, rarity and game role come from the verified art map. Use it for the fixed-three-companions comparison; it does not assert that a pictured party is optimal.
 
-The header is a short single line. Body text remains large; overflow raises an error instead of shrinking into an unreadable panel. A metric scene requires a real `evidence` file, at most3 rows, and optional precomputed CIs. The renderer does not compute or certify statistics. Numeric labels and the evidence bindings must be reviewed against the actual research report. Never put fabricated placeholder results into a final plate.
+The header is a short single line. Body text remains large; overflow raises an error instead of shrinking into an unreadable panel. A metric scene requires a real `evidence` file and its frozen `evidenceSha256` in the spec, at most3 rows, and optional precomputed CIs. Missing or changed evidence hashes are rejected before cache reuse or new rendering. The renderer does not compute or certify statistics. Numeric labels and the evidence bindings must be reviewed against the actual research report. Never put fabricated placeholder results into a final plate.
 
 The only formula provided by the vocabulary is `Δ = Pサクヤ入り − P最強候補`. Other concepts use simple shield/petal/attack diagrams. The title thumbnail's fictional notebook marks are never reused as an evidence/math slide.
 
@@ -28,7 +30,7 @@ Mechanics wording: the mark does not stack; reserve power may accumulate from mu
 
 `roster.frame(t,duration,judgment)` returns a silent ledger frame; `roster.render(judgment,duration=40,path=...)` streams a30fps CRF20 H.264 source and creates `research/roster-visibility.json`.
 
-The input is the critic's finalized `research/reports/judgment.json` or its parsed dict. `overall.certified` must agree with `overall.status`. Unmet research remains outline `研究中`. A new solid gem means only `限定検証済み` under the report's explicit scope. Old amber remains labeled `旧LAB／限定検証`; it never counts as a new current endgame award. Historical build names keep `（仮）`; the new Sakuya provisional name is `花守の返礼`.
+The input is the critic's finalized `research/reports/judgment.json` or its parsed dict. `overall.certified` must agree with `overall.status`. Unmet research remains outline `研究中`. A new solid gem means only `限定検証済み` under the report's explicit scope. Old amber remains labeled `旧LAB／限定検証`; it never counts as a new current endgame award. Historical build names keep `（仮）`; the new Sakuya provisional name is read directly from `judgment.subject.buildName` (the current design record uses `桜守りの返礼`); it is not hard-coded by the renderer.
 
 The ledger holds its first/last positions4 seconds. A40-second pan gives every card at least3 seconds fully within the viewport; duration below26 seconds is rejected. Metadata records each card's full-visibility interval. Actual final encoding/legibility/head/subtitle QA is still required after the editor composes the MP4.
 

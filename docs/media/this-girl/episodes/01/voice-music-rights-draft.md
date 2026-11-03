@@ -1,5 +1,9 @@
 # 音声・音楽の利用条件と制作クレジット（制作途中）
 
+後続確認：公式SPA本文のChromium再取得・楽曲取得・SHA記録を完了。
+現行の条件と記録は [rights-confirmed.md](rights-confirmed.md) を参照。
+以下は再取得前の作業途中メモで、現在の残工程一覧ではない。
+
 確認日：2026-11-03。完成素材リストは最終書き出し時に固定する。
 
 - 音声：**VOICEVOX:春日部つむぎ**、予定エンジン0.26.0、style8。商用・非商用を問わず使えるが、音声ライブラリ個別の条件にも従う。VOICEVOXを使ったクレジットを付ける。[VOICEVOX公式規約](https://voicevox.hiroshiba.jp/term/) を今回web openで確認した。

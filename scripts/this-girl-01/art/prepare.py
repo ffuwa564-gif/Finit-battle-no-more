@@ -6,6 +6,7 @@ layout. Missing previous generation prompts are never reconstructed as facts.
 from pathlib import Path
 import json,hashlib,shutil,subprocess
 ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-01';A=O/'assets'
+PACKAGED=ROOT/'docs/media/this-girl/episodes/01/assets'
 ROSTER_COMMIT='a5573e67d9ceb29de8de6c9166a6524ad41548b5'
 ROSTER_PATH='docs/media/build-research-diary/episodes/05/registry.json'
 ROSTER_SHA='4fd1c99e1866b5c1e3e6554c2d806e624247967a220b1ec07972110fe76a00ee'
@@ -17,15 +18,24 @@ INPUTS=[
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def main():
  A.mkdir(parents=True,exist_ok=True);(O/'delivery').mkdir(exist_ok=True)
- old_manifest=json.loads((A/'Artwork-Provenance.json').read_text())if(A/'Artwork-Provenance.json').exists()else None
+ manifest_path=next((p for p in [PACKAGED/'Artwork-Provenance.json',A/'Artwork-Provenance.json']if p.exists()),None)
+ old_manifest=json.loads(manifest_path.read_text())if manifest_path else None
  known={Path(x['destination']).name:x['sha256']for x in old_manifest['images']}if old_manifest else{}
  for name,source in INPUTS:
   source=Path(source);destination=A/name
+  if not source.exists()and(PACKAGED/name).exists():source=PACKAGED/name
+  if name=='reference-roster-05.json'and not source.exists()and not destination.exists():
+   # A full clone with this pinned object is sufficient; no mutable HEAD fallback.
+   result=subprocess.run(['git','show',ROSTER_COMMIT+':'+ROSTER_PATH],cwd=ROOT,capture_output=True)
+   assert result.returncode==0,'Fetch the pinned roster commit documented in art/README.md'
+   assert hashlib.sha256(result.stdout).hexdigest()==ROSTER_SHA,'Pinned roster bytes changed'
+   destination.write_bytes(result.stdout)
   if source.exists():
    if name in known:assert sha(source)==known[name],('Input original changed',name)
    shutil.copy2(source,destination)
   else:
-   assert destination.exists()and name in known and sha(destination)==known[name],('Supply the packaged fixed original and provenance manifest',name)
+   expected=ROSTER_SHA if name=='reference-roster-05.json'else known.get(name)
+   assert destination.exists()and expected and sha(destination)==expected,('Supply the packaged fixed original and provenance manifest',name)
  assert sha(A/'reference-roster-05.json')==ROSTER_SHA
  old=json.loads((A/'reference-roster-05.json').read_text())
  assert len(old['entries'])==72 and old['summary']['canonicalGirls']==49

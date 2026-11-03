@@ -15,7 +15,7 @@ const ROOT=resolve(fileURLToPath(new URL('../../../',import.meta.url))),O=resolv
 const sha=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
 function walk(p:string):string[]{return readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(resolve(p,e.name)):[resolve(p,e.name)]).sort();}
 export function sourceFingerprint(){const files=Object.fromEntries(walk(resolve(ROOT,'src')).map(p=>[relative(ROOT,p),sha(p)]));return{sha256:createHash('sha256').update(JSON.stringify(files)).digest('hex'),files};}
-export interface ProofSpec { id:string;stageId:string;applicationSeed:number;logicalSeed?:number;config:Config;model?:'before'|'after';preflight?:boolean;sourceGameCommit?:string; }
+export interface ProofSpec { id:string;stageId:string;applicationSeed:number;logicalSeed?:number;config:Config;model?:'before'|'after';preflight?:boolean;sourceGameCommit?:string;caseId?:string;arm?:'A'|'C'; }
 export async function prepare(spec:ProofSpec){
  if(!/^[a-z0-9-]+$/.test(spec.id))throw Error('Unsafe proof ID');
  const source=sourceFingerprint(),sourceGameCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();

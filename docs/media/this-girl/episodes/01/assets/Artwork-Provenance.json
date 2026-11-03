@@ -1,0 +1,73 @@
+{
+  "episode": "THIS-GIRL-001",
+  "title": "この子で、勝ちたい。",
+  "images": [
+    {
+      "destination": "artifacts/this-girl-01/assets/thumbnail-original.png",
+      "source": "/workspace/generated_images/exec-1a577164-736c-4a1a-9624-d4378889fbbf.png",
+      "sha256": "15a80b167278cab60e87a93ace41e7231342e85317bc8e1674a039cb4fed29ab",
+      "origin": "Existing image_gen output for this same request, preserved as a fixed reproduction input."
+    },
+    {
+      "destination": "artifacts/this-girl-01/assets/research-desk-original.png",
+      "source": "/workspace/generated_images/exec-cedfb000-c025-441b-b20c-cf2995cd4cd7.png",
+      "sha256": "7ac4514e4252bbd77a4a28cc79f0046328a27686d220c3ccc773b3c1ac31b62b",
+      "origin": "Existing image_gen output for this same request, preserved as a fixed reproduction input."
+    },
+    {
+      "destination": "artifacts/this-girl-01/assets/reference-roster-05.json",
+      "source": "/workspace/stillveil-diary-111/docs/media/build-research-diary/episodes/05/registry.json",
+      "sha256": "4fd1c99e1866b5c1e3e6554c2d806e624247967a220b1ec07972110fe76a00ee",
+      "origin": "Existing image_gen output for this same request, preserved as a fixed reproduction input."
+    }
+  ],
+  "thumbnail": {
+    "path": "artifacts/this-girl-01/delivery/Thumbnail-ThisGirl-01.png",
+    "width": 1280,
+    "height": 720,
+    "sha256": "c6ca2740f1a735154797ab480e647cbf5157ceee77426348b340964f34257549",
+    "transform": "Contain scaling with pale paper pad; no creative modification or crop.",
+    "composition": "First-person Tsumugi desk POV: hair at the edges, hand with pen, notebook, small Sakuya illustration."
+  },
+  "rosterSource": {
+    "sourceCommit": "a5573e67d9ceb29de8de6c9166a6524ad41548b5",
+    "path": "docs/media/build-research-diary/episodes/05/registry.json",
+    "sha256": "4fd1c99e1866b5c1e3e6554c2d806e624247967a220b1ec07972110fe76a00ee",
+    "forms": 72,
+    "canonicalGirls": 49,
+    "meaning": "Historical LAB recognition is not current endgame recognition."
+  },
+  "fonts": [
+    {
+      "name": "NotoSansCJK-Regular.ttc",
+      "sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+      "license": "SIL Open Font License1.1"
+    },
+    {
+      "name": "NotoSansCJK-Bold.ttc",
+      "sha256": "faa5f3656a78b2e2d450d27fe8382c778bc2b6bb5ea29c986664a6a435056ceb",
+      "license": "SIL Open Font License1.1"
+    },
+    {
+      "name": "NotoSerifCJK-Regular.ttc",
+      "sha256": "5d9c31a059600193c9d7968a998bde886ccdc77e934006ad243b41794c496a7d",
+      "license": "SIL Open Font License1.1"
+    },
+    {
+      "name": "NotoSerifCJK-Bold.ttc",
+      "sha256": "1505ee3b9c0890fae6302ee0e9c6fd74d690f4a55a6ace1d9944f3f6352d622d",
+      "license": "SIL Open Font License1.1"
+    }
+  ],
+  "limitations": [
+    "The title image contains decorative fictional notebook writing, not measured research data. It is never used as a video evidence/math slide.",
+    "The exact previous generation prompts were lost with temporary storage. No invented original prompt is supplied; the fixed delivered originals reproduce the edit."
+  ],
+  "checks": {
+    "allOriginalArtHashesMatch": true,
+    "thumbnailExportSize": [
+      1280,
+      720
+    ]
+  }
+}

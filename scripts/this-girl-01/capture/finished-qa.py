@@ -45,7 +45,11 @@ def main():
   t=json.loads(tp.read_text());assert t['finalized']and t['episode']=='THIS-GIRL-001';n=t['durationFrames']*SPF
   p=probe(movie);v=next(s for s in p['streams']if s['codec_type']=='video');au=next(s for s in p['streams']if s['codec_type']=='audio')
   assert (v['width'],v['height'])==(1920,1080)and v['avg_frame_rate']=='30/1'and int(v['nb_read_frames'])==t['durationFrames'];assert int(au['sample_rate'])==SR
-  subprocess.run(['ffmpeg','-v','error','-threads','1','-i',str(movie),'-f','null','-'],check=True)
+  subprocess.run(['ffmpeg','-v','error','-xerror','-threads','1','-i',str(movie),'-f','null','-'],check=True)
+  timestamps=json.loads(run(['ffprobe','-v','error','-select_streams','v:0','-show_entries','frame=best_effort_timestamp_time','-of','json',str(movie)]))['frames']
+  pts=np.array([float(f['best_effort_timestamp_time'])for f in timestamps]);assert len(pts)==t['durationFrames']
+  assert np.max(np.abs(pts-np.arange(len(pts))/FPS))<=.001,'Final output is not on the30fps frame grid'
+  report['constantFrameRateVerified']=True
   spec=importlib.util.spec_from_file_location('independent_source_mixer',ROOT/'scripts/this-girl-01/editor/mixer.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
   components=m.reconstruct_components(t);manifest=O/'research/audio-mix.json';report['audioMixSha256']=sha(manifest)
   final=audio(movie);assert len(final)>=n,'Truncated output audio';final=final[:n]
@@ -64,7 +68,7 @@ def main():
     off=max(candidates,key=lambda i:float(np.mean(np.abs(np.diff(x[i:i+9],axis=0)))))
     ref=x[off:off+9];activity=float(np.mean(np.abs(np.diff(ref,axis=0))))
     assert activity>.4 and len({f.tobytes()for f in ref})>=4,('Static/non-discriminating native window',cut['id'],third,activity)
-    target=cut['startFrame']+off;pad=min(18,target);out=gray(movie,target-pad,9+pad+18,box)
+    target=cut['startFrame']+off;pad=min(18,target);right=min(18,t['durationFrames']-target-9);out=gray(movie,target-pad,9+pad+right,box)
     errors=[float(np.sqrt(np.mean((out[j:j+9]-ref)**2)))for j in range(len(out)-8)];idx=int(np.argmin(errors));lag=(idx-pad)/FPS
     passed=abs(lag)<=.08 and errors[idx]<=12
     report['video'].append({'cut':cut['id'],'third':third,'sourceFrame':sa+off,'outputFrame':target,'nineFrameCount':9,'sourceActivity':activity,'lagSeconds':lag,'rmse':errors[idx],'passed':passed})

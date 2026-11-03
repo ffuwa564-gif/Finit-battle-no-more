@@ -138,7 +138,9 @@ def scene(spec):
   card_width=330;gap=45;left=(W-(card_width*len(people)+gap*(len(people)-1)))/2
   role_names={'tank':'守り','attacker':'単体攻撃','area_attacker':'全体攻撃','healer':'回復','supporter':'支援','debuffer':'弱体化'}
   for i,person in enumerate(people):
-   cid=person['id'];record=art_map()[cid];x=round(left+i*(card_width+gap));color=ROSE if person.get('subject')else EDGE
+   cid=person.get('characterId',person.get('id'));assert cid,'A party member needs characterId or id'
+   if person.get('characterId')and person.get('id'):assert person['characterId']==person['id'],'Conflicting character IDs'
+   record=art_map()[cid];x=round(left+i*(card_width+gap));color=ROSE if person.get('subject')else EDGE
    draw.rounded_rectangle((x,285,x+card_width,830),20,fill='#fffdf8',outline=color,width=3 if person.get('subject')else 2)
    character(out,cid,(x+12,300,card_width-24,375),15)
    name=person.get('name',record.get('displayName',record['name']))
@@ -180,6 +182,7 @@ def scene(spec):
   rows=spec.get('rows',[]);assert 1<=len(rows)<=3
   assert spec.get('evidence'),'A measured graph requires an evidence file'
   evidence=ROOT/spec['evidence'];assert evidence.is_file(),('Evidence unavailable',evidence)
+  assert spec.get('evidenceSha256')==sha(evidence),'Graph evidence hash missing or changed; regenerate rows from frozen evidence'
   values=[float(row['value'])for row in rows]
   maximum=float(spec.get('maximum',max([1,*values,*[float(row['ci'][1])for row in rows if row.get('ci')]])))
   minimum=float(spec.get('minimum',0));assert maximum>minimum
@@ -218,7 +221,9 @@ def scene(spec):
 def render_scene(spec,path):
  path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
  inputs={'code':sha(__file__),'desk':sha(A/'research-desk-original.png'),'artMap':sha(A/'art-map.json')}
- if spec.get('evidence'):inputs['evidence']=sha(ROOT/spec['evidence'])
+ if spec.get('evidence'):
+  inputs['evidence']=sha(ROOT/spec['evidence'])
+  assert spec.get('evidenceSha256')==inputs['evidence'],'Evidence hash missing or changed; regenerate the frozen graph specification'
  for family in ['NotoSansCJK','NotoSerifCJK']:
   for weight in ['Regular','Bold']:
    name=family+'-'+weight+'.ttc';inputs[name]=sha(Path('/usr/share/fonts/opentype/noto')/name)
