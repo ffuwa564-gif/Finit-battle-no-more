@@ -1,0 +1,326 @@
+[
+  {
+    "file": "assets/game-home.png",
+    "sha256": "bf7d263f9e35965a7f262eb564b60cac504c22f1ad294e2d5ba73027de79f130",
+    "width": 780,
+    "height": 1688,
+    "mode": "RGB",
+    "source": {
+      "kind": "actual game UI capture",
+      "gameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+      "record": "reference/ui-capture.json"
+    }
+  },
+  {
+    "file": "assets/game-party.png",
+    "sha256": "a60a1c544bca988366da2da1727c485f910f3b67cad29a83874ae384b90b83d4",
+    "width": 780,
+    "height": 1688,
+    "mode": "RGB",
+    "source": {
+      "kind": "actual game UI capture",
+      "gameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+      "record": "reference/ui-capture.json"
+    }
+  },
+  {
+    "file": "assets/m-deadpan-avatar.png",
+    "sha256": "7c568e3f6ec6ffdf933ad1aa1b94383f46937db02600fb5fc9a0f6ed01c2a505",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/m-deadpan-avatar.png"
+    },
+    "strongAlphaBounds": [
+      37,
+      65,
+      283,
+      345
+    ]
+  },
+  {
+    "file": "assets/m-deadpan.png",
+    "sha256": "e4fcb035dcddbf3591e6de9d8305552f1e04505cdfb49ce3f5d4a9ef17d7c04c",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/m-deadpan.png"
+    },
+    "strongAlphaBounds": [
+      118,
+      17,
+      1188,
+      1239
+    ]
+  },
+  {
+    "file": "assets/m-happy-avatar.png",
+    "sha256": "baf6e2a0bdfa5991fe6662936327aa2dd1b14fdc119a72123f9c0b80384b40c3",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/m-happy-avatar.png"
+    },
+    "strongAlphaBounds": [
+      37,
+      71,
+      283,
+      338
+    ]
+  },
+  {
+    "file": "assets/m-happy.png",
+    "sha256": "7f9cbf0adcc07567fc326e75b378bb9389b1e4180f0965303b515750994302d5",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/m-happy.png"
+    },
+    "strongAlphaBounds": [
+      83,
+      14,
+      1212,
+      1242
+    ]
+  },
+  {
+    "file": "assets/research-lab.png",
+    "sha256": "60ea1d9952f40a0259a91e58f36c4116e14722f2af0e2299433f8a695cc0a26e",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/research-lab.png"
+    }
+  },
+  {
+    "file": "assets/t-research-care-avatar.png",
+    "sha256": "f781ffd697d7197de812885f83a89c5a215bda889ef8177374de0df8483972f9",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-care-avatar.png"
+    },
+    "strongAlphaBounds": [
+      38,
+      47,
+      282,
+      360
+    ]
+  },
+  {
+    "file": "assets/t-research-care.png",
+    "sha256": "cee26bbbda6649f4aebf9a064405efc01963f405bf203afab1865068920b9bcb",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-care.png"
+    },
+    "strongAlphaBounds": [
+      165,
+      10,
+      1118,
+      1234
+    ]
+  },
+  {
+    "file": "assets/t-research-determined-avatar.png",
+    "sha256": "49203d616bc33d1a68bf5836d5dede79a714a9d65925df970f02ea183f20bec3",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-determined-avatar.png"
+    },
+    "strongAlphaBounds": [
+      38,
+      55,
+      282,
+      355
+    ]
+  },
+  {
+    "file": "assets/t-research-determined.png",
+    "sha256": "d85daebbfeb97a9a2e1cc4a73384443b112b134d8e8a180624b190a3ed315d0a",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-determined.png"
+    },
+    "strongAlphaBounds": [
+      143,
+      15,
+      1141,
+      1240
+    ]
+  },
+  {
+    "file": "assets/t-research-happy-avatar.png",
+    "sha256": "2db2d125a79ddc19407cb7b78ba622dbe25256a44000665f45e5ae7c29dad00e",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-happy-avatar.png"
+    },
+    "strongAlphaBounds": [
+      38,
+      46,
+      282,
+      362
+    ]
+  },
+  {
+    "file": "assets/t-research-happy.png",
+    "sha256": "d76bdbd3a40f3350b8bde8ed6a336c9dc72d44f94e5067050db2500f369f7905",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-happy.png"
+    },
+    "strongAlphaBounds": [
+      171,
+      17,
+      1109,
+      1232
+    ]
+  },
+  {
+    "file": "assets/t-research-think-avatar.png",
+    "sha256": "3d8549a20596c9b08fc5f8aa58952ce0fb1843537df5810e6d4788908754f16b",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-think-avatar.png"
+    },
+    "strongAlphaBounds": [
+      38,
+      46,
+      282,
+      362
+    ]
+  },
+  {
+    "file": "assets/t-research-think.png",
+    "sha256": "7060c68b46304454a0305b2703273d5d30839109e227b22b57582c663cd50748",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/t-research-think.png"
+    },
+    "strongAlphaBounds": [
+      198,
+      16,
+      1139,
+      1236
+    ]
+  },
+  {
+    "file": "assets/z-happy-avatar.png",
+    "sha256": "85fda8a33af9f4a6d11716ffd64f8d052c6374745c4f2cd83a02573e2fb96112",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/z-happy-avatar.png"
+    },
+    "strongAlphaBounds": [
+      52,
+      39,
+      268,
+      373
+    ]
+  },
+  {
+    "file": "assets/z-happy.png",
+    "sha256": "b51f9b8747b2b43f303facec5fd72bb04f2a5431cffc2c62a418db2944b935da",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/z-happy.png"
+    },
+    "strongAlphaBounds": [
+      259,
+      27,
+      1043,
+      1237
+    ]
+  },
+  {
+    "file": "assets/z-panic-avatar.png",
+    "sha256": "abcacf289062811fbf2877f1d9780074506a419d256acb3a69ab9749e3514c90",
+    "width": 320,
+    "height": 440,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/z-panic-avatar.png"
+    },
+    "strongAlphaBounds": [
+      57,
+      36,
+      263,
+      375
+    ]
+  },
+  {
+    "file": "assets/z-panic.png",
+    "sha256": "0ad8b7bf7e6b5da3efd1e6e25f36fa231d3efa7986b8d812ff4f6d4f8ad4993e",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "source": {
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0f2036c079cf3b4a979838dc7435ed9e94ef2a3b/Production-Materials-01.zip",
+      "archiveSha256": "bf98dd13dc4b011409b202c764f4ba38a952438bdc7bd8a5bddd136d4b488ce4",
+      "member": "artifacts/build-diary-05/assets/z-panic.png"
+    },
+    "strongAlphaBounds": [
+      266,
+      16,
+      1016,
+      1245
+    ]
+  }
+]

@@ -1,0 +1,791 @@
+{
+  "sampleRate": 48000,
+  "samples": 94283200,
+  "duration": 1964.2333333333333,
+  "masterGain": 1,
+  "rawPeak": 0.8007184267044067,
+  "narration": [
+    {
+      "id": "00-00",
+      "atFrame": 0,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-00-671a60dd730e.wav",
+      "sourceSha256": "f38c88b0cdca9751ef8d0cc4145c7a2324e3bf0a16b51d03f77ad4b75a7007bd",
+      "gain": 2.0433302665894657,
+      "samples": 196096,
+      "speaker": "t"
+    },
+    {
+      "id": "00-01",
+      "atFrame": 138,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-01-b247eca1ebba.wav",
+      "sourceSha256": "2ac6bc4cfbf0064627d63ea3077be44156f30a45ff94e9257ae1847d47ae0ae7",
+      "gain": 1.8495390267705654,
+      "samples": 239104,
+      "speaker": "z"
+    },
+    {
+      "id": "00-02",
+      "atFrame": 303,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-02-76d2e16380f5.wav",
+      "sourceSha256": "b8cb3b37945e63755bade6758fab9f492885f76dba33df1250ec2fc659142f50",
+      "gain": 2.425088007825826,
+      "samples": 228864,
+      "speaker": "m"
+    },
+    {
+      "id": "00-03",
+      "atFrame": 462,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-03-7940876732e7.wav",
+      "sourceSha256": "7677d0e677a0c7896ebdbf022e9080ce034a3d4375270882e82050a8124ca804",
+      "gain": 1.9809704268300952,
+      "samples": 272896,
+      "speaker": "t"
+    },
+    {
+      "id": "00-04",
+      "atFrame": 648,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-04-1d8f93d752f4.wav",
+      "sourceSha256": "9dbf6374af5b9bc78c501f305f6c7f4c0fec73e065c9bdef3b0bdb626919ef1f",
+      "gain": 2.621478746518635,
+      "samples": 272896,
+      "speaker": "t"
+    },
+    {
+      "id": "00-05",
+      "atFrame": 834,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/00-05-db4daad2ff92.wav",
+      "sourceSha256": "b086fdaeaa87c5610a6c37b75bbb9d3d643434ed1c09c6e5cf7bb0cf464427d2",
+      "gain": 1.8614794284100542,
+      "samples": 236544,
+      "speaker": "m"
+    },
+    {
+      "id": "01-00",
+      "atFrame": 1011,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-00-6b6c56903c0d.wav",
+      "sourceSha256": "e509e7ddaa0d3b735a823f88b1e75eef9160598b185599ade3c6c887f0017dfa",
+      "gain": 2.787494571294787,
+      "samples": 259584,
+      "speaker": "t"
+    },
+    {
+      "id": "01-01",
+      "atFrame": 1189,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-01-4b310f345679.wav",
+      "sourceSha256": "ce5002a4628cfdb6456968636786481cc0ba4a3e6ca04ddd72cab6844dac878c",
+      "gain": 2.495104774127733,
+      "samples": 273920,
+      "speaker": "m"
+    },
+    {
+      "id": "01-02",
+      "atFrame": 1376,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-02-dc28791cb745.wav",
+      "sourceSha256": "d24b412db85a34d6785d5ef6c0f76df0a8c28bca778f0b4dd12a92a2fbd3080b",
+      "gain": 2.8487391264691695,
+      "samples": 178688,
+      "speaker": "z"
+    },
+    {
+      "id": "01-03",
+      "atFrame": 1503,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-03-b004b8edf8ee.wav",
+      "sourceSha256": "606e2b9aa8049cabccc7fc8cb6bcb88231b8fddfd8e124b52c9a4cd329c21d56",
+      "gain": 2.199101919210706,
+      "samples": 345088,
+      "speaker": "t"
+    },
+    {
+      "id": "01-04",
+      "atFrame": 1734,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-04-b87e1f00dacb.wav",
+      "sourceSha256": "6b013d9e6306104420675b17798236862f569cd4ad1a94461c819fc285486edb",
+      "gain": 2.5869269747808197,
+      "samples": 305152,
+      "speaker": "m"
+    },
+    {
+      "id": "01-05",
+      "atFrame": 1940,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/01-05-1c0b0f24d5f3.wav",
+      "sourceSha256": "509e6802e2896c64b43de92f0230a2323617398c3e2c5a505a7e02a8f245e44d",
+      "gain": 2.21078681577453,
+      "samples": 243712,
+      "speaker": "t"
+    },
+    {
+      "id": "02-00",
+      "atFrame": 2122,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-00-777bbfd77592.wav",
+      "sourceSha256": "30747183ca1d5cf31cf7d9055939f46f0543dbb9afc61b4562581534533c3aab",
+      "gain": 2.522763960065899,
+      "samples": 292352,
+      "speaker": "t"
+    },
+    {
+      "id": "02-01",
+      "atFrame": 2320,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-01-c5e5a95c8d52.wav",
+      "sourceSha256": "731fce4591ef741e503bf54555a0b715394a810809f7c120da15c2a9e2e4abfe",
+      "gain": 2.1867301829919397,
+      "samples": 304640,
+      "speaker": "m"
+    },
+    {
+      "id": "02-02",
+      "atFrame": 2526,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-02-84ab53c76b5c.wav",
+      "sourceSha256": "f8a2a5ab8d89851207e27e7406ddf75a11bb5bc06eec57cf5ad945d5f0ad2803",
+      "gain": 1.9820703821034231,
+      "samples": 252416,
+      "speaker": "z"
+    },
+    {
+      "id": "02-03",
+      "atFrame": 2699,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-03-0652bccd176a.wav",
+      "sourceSha256": "442302c308857722d110150de2c4307ec8205da438916ab3e7768133ee9b3f5f",
+      "gain": 2.1779709647637064,
+      "samples": 270336,
+      "speaker": "t"
+    },
+    {
+      "id": "02-04",
+      "atFrame": 2883,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-04-d6299708009a.wav",
+      "sourceSha256": "c2fc582353c57adae4680935ec4feb946899fda4634ec8eb6a9d3c8f235f5e1f",
+      "gain": 2.0632798800569003,
+      "samples": 259584,
+      "speaker": "m"
+    },
+    {
+      "id": "02-05",
+      "atFrame": 3061,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-05-e50598cb5d83.wav",
+      "sourceSha256": "e9a39ad39fbf912f8b4aa91af10fa3e222c2f7528b2b92ceace68b5c9a1d6878",
+      "gain": 2.2388395313836145,
+      "samples": 253952,
+      "speaker": "t"
+    },
+    {
+      "id": "02-06",
+      "atFrame": 3235,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-06-9457672be1b1.wav",
+      "sourceSha256": "b9cbb10ace34a54faf929798279ea52b1343897202ead8ad76e52fa49d84b8db",
+      "gain": 2.185957636741423,
+      "samples": 295424,
+      "speaker": "z"
+    },
+    {
+      "id": "02-07",
+      "atFrame": 3435,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-07-5a9fa35d4f9e.wav",
+      "sourceSha256": "e2290dd41e0bed469b53dade1a4b0007ef512e2a1b5277b2476c8f328c1539e2",
+      "gain": 2.300107545258946,
+      "samples": 226816,
+      "speaker": "m"
+    },
+    {
+      "id": "02-08",
+      "atFrame": 3592,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/02-08-593f0d6d65b2.wav",
+      "sourceSha256": "0e871d76dfc182201b86867fdd572252e2fab4adb0cff4f9148c78bb63feaf52",
+      "gain": 2.275064336958613,
+      "samples": 223744,
+      "speaker": "t"
+    },
+    {
+      "id": "03-00",
+      "atFrame": 3761,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-00-f65992907046.wav",
+      "sourceSha256": "90935743cef9af4953d12a01b85b58c370c4645be26517ba2fe5d69809653a1e",
+      "gain": 1.8331175781445235,
+      "samples": 248832,
+      "speaker": "t"
+    },
+    {
+      "id": "03-01",
+      "atFrame": 3932,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-01-58f8e62d2757.wav",
+      "sourceSha256": "feb4f95dbd5568e95aac2605dbd189a2f6a1a74b1838bf62d35ac86dea7a827b",
+      "gain": 2.529373166658042,
+      "samples": 224256,
+      "speaker": "m"
+    },
+    {
+      "id": "03-02",
+      "atFrame": 4088,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-02-2268aee6a2af.wav",
+      "sourceSha256": "a77fc6ee736ab3e220e8306186c4d482140593a06716f8688e1f3a29f6b6c54a",
+      "gain": 2.5425308167033074,
+      "samples": 241664,
+      "speaker": "t"
+    },
+    {
+      "id": "03-03",
+      "atFrame": 4255,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-03-6e9f78fd1b96.wav",
+      "sourceSha256": "62c9e59cfae64baf91e03dadc3d76a4e6e51cc4766bd5bbb1b47faafe9ad5709",
+      "gain": 3.2119794852159087,
+      "samples": 102400,
+      "speaker": "z"
+    },
+    {
+      "id": "03-04",
+      "atFrame": 4334,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-04-e3fb564d9190.wav",
+      "sourceSha256": "25ed74cbaad40b4fe2c237003533fe913a16a63510bab54c27bdcc5ca54c4452",
+      "gain": 2.3148974305953463,
+      "samples": 275968,
+      "speaker": "t"
+    },
+    {
+      "id": "03-05",
+      "atFrame": 4522,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-05-1ef14fc4535a.wav",
+      "sourceSha256": "63925d3044e794d7915c77a6c0d55629b27e798d42a2802a8e0606184fdd09eb",
+      "gain": 2.4645898782031863,
+      "samples": 236032,
+      "speaker": "m"
+    },
+    {
+      "id": "03-06",
+      "atFrame": 4685,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-06-433c646eb076.wav",
+      "sourceSha256": "16c0dfccc4e2be1353ff70e6f34567cd306a90107f57bf064069f5507f2ed771",
+      "gain": 1.7710335272912978,
+      "samples": 231424,
+      "speaker": "z"
+    },
+    {
+      "id": "03-07",
+      "atFrame": 4845,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-07-1f45a7a28c50.wav",
+      "sourceSha256": "6974295e15a78fe8f9604f5478f544d9b894a722411401af5866d1d730b632ab",
+      "gain": 2.021355932755301,
+      "samples": 248832,
+      "speaker": "t"
+    },
+    {
+      "id": "03-08",
+      "atFrame": 5016,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/03-08-ac3dc6ac750c.wav",
+      "sourceSha256": "6d9d68414a8c496d00b8dc917dd676f29548d08e0f7d2f9e634af070073ff748",
+      "gain": 2.0814643687156495,
+      "samples": 279040,
+      "speaker": "m"
+    },
+    {
+      "id": "04-00",
+      "atFrame": 5220,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-00-efb44a06ad40.wav",
+      "sourceSha256": "77491e6f222fc152b673219a209aafeecc67e257759e97640c970a66914ae571",
+      "gain": 2.306605408078769,
+      "samples": 258048,
+      "speaker": "t"
+    },
+    {
+      "id": "04-01",
+      "atFrame": 5397,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-01-9a8bc2a978c3.wav",
+      "sourceSha256": "122aa90bdb49683fb74d351163b118c5f54f37f853deb9892a54f63f09daed57",
+      "gain": 3.3163096260378793,
+      "samples": 192000,
+      "speaker": "z"
+    },
+    {
+      "id": "04-02",
+      "atFrame": 5532,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-02-9fa7cba5f649.wav",
+      "sourceSha256": "4155d1461130ec2e81a2217d936c8a95235635cf05918a6d962d09530a7d5b2c",
+      "gain": 2.598161874020599,
+      "samples": 216576,
+      "speaker": "m"
+    },
+    {
+      "id": "04-03",
+      "atFrame": 5683,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-03-571cc2ba9090.wav",
+      "sourceSha256": "6001f3ea4cb73c9dac4864904e215d5b478f0ac00591672bf229c7069afd7fa1",
+      "gain": 2.1851973669504368,
+      "samples": 284160,
+      "speaker": "t"
+    },
+    {
+      "id": "04-04",
+      "atFrame": 5876,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-04-27403d6cde86.wav",
+      "sourceSha256": "c78fca7efbbb236e204a2c877d5c0117776960f3d10373d93f4ec895f0a81cd4",
+      "gain": 2.235525757684342,
+      "samples": 314880,
+      "speaker": "m"
+    },
+    {
+      "id": "04-05",
+      "atFrame": 6088,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-05-2a11b69791d7.wav",
+      "sourceSha256": "cf9498fe22260cb94b38bff04a18da54e2b4d984b2ebeb7458078c8430791025",
+      "gain": 1.7690371459418546,
+      "samples": 255488,
+      "speaker": "z"
+    },
+    {
+      "id": "04-06",
+      "atFrame": 6263,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-06-67d1bc430dab.wav",
+      "sourceSha256": "f627c2b1912de257e46c98dc27ccf5afcbc7d242f11754fa508ee7a85db169a7",
+      "gain": 2.2300792248500776,
+      "samples": 350208,
+      "speaker": "t"
+    },
+    {
+      "id": "04-07",
+      "atFrame": 6497,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-07-84f7cdf0b4ed.wav",
+      "sourceSha256": "ba7d3cac6ea1c53295ccc610e2d83c837ff99c01b800441fd2229d91564563cd",
+      "gain": 2.853381803121631,
+      "samples": 361984,
+      "speaker": "m"
+    },
+    {
+      "id": "04-08",
+      "atFrame": 6739,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-08-e93476b78e63.wav",
+      "sourceSha256": "f73585e232e6b75adb526cb46e6d288295536998fff22eaf2d9a6f7c0797e379",
+      "gain": 2.3089983040259066,
+      "samples": 294912,
+      "speaker": "t"
+    },
+    {
+      "id": "04-09",
+      "atFrame": 6939,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-09-4e465114aa03.wav",
+      "sourceSha256": "6e4cdea9abd9da7dd49b9e2f4ffbd7b760ee84f255d7f4cffc691d96f85e5c3c",
+      "gain": 1.8236707059208037,
+      "samples": 233984,
+      "speaker": "z"
+    },
+    {
+      "id": "04-10",
+      "atFrame": 7101,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-10-63d2ef1f831f.wav",
+      "sourceSha256": "f00403d806baede29c0286d884a38d739d134206fd0583a65434418a847d61d7",
+      "gain": 1.7679179045987277,
+      "samples": 323584,
+      "speaker": "t"
+    },
+    {
+      "id": "04-11",
+      "atFrame": 7319,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/04-11-3576f794d66f.wav",
+      "sourceSha256": "0be05360d921b63c8ac0ccdf5db38c04c71750cea9dcd600a11ad5b2f0d9280d",
+      "gain": 2.9226194520438624,
+      "samples": 245248,
+      "speaker": "m"
+    },
+    {
+      "id": "05-00",
+      "atFrame": 7502,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-00-041d5ef19da5.wav",
+      "sourceSha256": "ba79a99bcb3544dd7504743730fa6114c0628388ddac8c81769fa3abbb1a62bb",
+      "gain": 2.7396717708473184,
+      "samples": 202752,
+      "speaker": "t"
+    },
+    {
+      "id": "05-01",
+      "atFrame": 7644,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-01-8fabdd827729.wav",
+      "sourceSha256": "2e54654f8389024ce6fac7a55ed31fdd98fa47ce77f189fe7e413153483804cf",
+      "gain": 2.598708434477387,
+      "samples": 206336,
+      "speaker": "m"
+    },
+    {
+      "id": "05-02",
+      "atFrame": 7788,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-02-89a9ef98449d.wav",
+      "sourceSha256": "5d327fd9ec06bb08b5ec04a2d42b4ff68b48c7f45c72c30c4682eb091375e88b",
+      "gain": 2.1854008488730043,
+      "samples": 244736,
+      "speaker": "t"
+    },
+    {
+      "id": "05-03",
+      "atFrame": 7956,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-03-e00ca37a6203.wav",
+      "sourceSha256": "59487222862be0b1d6e5a79e2ccf9deaf0e8bebc1297d161b37417704906cd26",
+      "gain": 1.980153840988659,
+      "samples": 195072,
+      "speaker": "z"
+    },
+    {
+      "id": "05-04",
+      "atFrame": 8093,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-04-500bbbb88de1.wav",
+      "sourceSha256": "81c6b3b1a8e3e78eb6bd70a45b18022407e3dbe44ba63d6b3172d8a1582edbc6",
+      "gain": 2.265312622849403,
+      "samples": 257024,
+      "speaker": "m"
+    },
+    {
+      "id": "05-05",
+      "atFrame": 8269,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-05-6e59b123be84.wav",
+      "sourceSha256": "4752d5d392fa4fe838b288be79b04d42030c23e03061eb0b54834b96dd7def3c",
+      "gain": 2.121595503874538,
+      "samples": 285184,
+      "speaker": "t"
+    },
+    {
+      "id": "05-06",
+      "atFrame": 8463,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-06-c2cce9bc8c75.wav",
+      "sourceSha256": "f038985dabcb24a05d18c6b43864e88bdaaffb71d76ee1ecef8e2166fc62327e",
+      "gain": 2.5341387592208493,
+      "samples": 275968,
+      "speaker": "t"
+    },
+    {
+      "id": "05-07",
+      "atFrame": 8651,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-07-0f00e4b136ed.wav",
+      "sourceSha256": "a016cfb57f7c666d9e452472e6c4a044843a67f7d1b8787ecdedbb9fe267372d",
+      "gain": 2.4261004904322045,
+      "samples": 433664,
+      "speaker": "m"
+    },
+    {
+      "id": "05-08",
+      "atFrame": 8938,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-08-710da076b0a8.wav",
+      "sourceSha256": "4610676cf830d37cfa105c1ba6448215a3eead46f40cc43002f6ea3b6ff83a9c",
+      "gain": 2.881069968368923,
+      "samples": 255488,
+      "speaker": "z"
+    },
+    {
+      "id": "05-09",
+      "atFrame": 9113,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-09-0654fdc0e451.wav",
+      "sourceSha256": "71d053191127fe19830f73c7a46fcdf9ee235db71a614b6761ef3b88db1c7e6e",
+      "gain": 2.427524458452139,
+      "samples": 307712,
+      "speaker": "t"
+    },
+    {
+      "id": "05-10",
+      "atFrame": 9321,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-10-ab52695486a5.wav",
+      "sourceSha256": "1bd6759273c4cf2125dbe1abc39fc2e65eef181552f0499c0004015a315f756f",
+      "gain": 2.1428671014489002,
+      "samples": 312832,
+      "speaker": "m"
+    },
+    {
+      "id": "05-11",
+      "atFrame": 9532,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-11-86269fb521e2.wav",
+      "sourceSha256": "1214fc728a7723c44a22c8a01c6765e68d32b6b4aeec8f1f6735da05cb3994c2",
+      "gain": 2.4825331878514194,
+      "samples": 221184,
+      "speaker": "t"
+    },
+    {
+      "id": "05-12",
+      "atFrame": 9686,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/05-12-9ad3eb6b7be0.wav",
+      "sourceSha256": "cbd9455c1ee094650a6ba6fe9466e9ab73ee6b948fbef97a0179e67071a98555",
+      "gain": 2.306702262995283,
+      "samples": 268800,
+      "speaker": "z"
+    },
+    {
+      "id": "06-00",
+      "atFrame": 9883,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-00-01c273608378.wav",
+      "sourceSha256": "886a6bb69eff211b9aefbf8eed744daf107aa596ed67450361a4160e593f21b4",
+      "gain": 2.5216346995774708,
+      "samples": 214528,
+      "speaker": "t"
+    },
+    {
+      "id": "06-01",
+      "atFrame": 10033,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-01-08e2634fd23b.wav",
+      "sourceSha256": "9eafd1bcc74d9dae2927810c5200c1fb67df8461017f6cc347d21c9bf3644f71",
+      "gain": 2.569866852796207,
+      "samples": 278016,
+      "speaker": "m"
+    },
+    {
+      "id": "06-02",
+      "atFrame": 10222,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-02-72ee64be05a7.wav",
+      "sourceSha256": "96ce9f950ad17ccaa59abfd37149b8acaf8745a9f3cb5d3981d6fefdddb35021",
+      "gain": 1.6425019196483617,
+      "samples": 273920,
+      "speaker": "z"
+    },
+    {
+      "id": "06-03",
+      "atFrame": 10409,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-03-569d476c110b.wav",
+      "sourceSha256": "f68aa8ddddc10ac4488214c0442aa928d154d90641f40622e6eecab8aa7d6359",
+      "gain": 2.2309740783139453,
+      "samples": 377856,
+      "speaker": "t"
+    },
+    {
+      "id": "06-04",
+      "atFrame": 10661,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-04-ea583c4af17f.wav",
+      "sourceSha256": "48688ce8e075c3d1d1407d560af982a1d398fb7ee436178444c3ebe9ab0b998e",
+      "gain": 2.308468719671474,
+      "samples": 282624,
+      "speaker": "m"
+    },
+    {
+      "id": "06-05",
+      "atFrame": 10853,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-05-51c4ee33593f.wav",
+      "sourceSha256": "4e168c86800b2b75ce85c39d9323ad59321d36bd9518ae8c9b2bf2988bc382ec",
+      "gain": 2.599587219932443,
+      "samples": 281600,
+      "speaker": "t"
+    },
+    {
+      "id": "06-06",
+      "atFrame": 11044,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/06-06-24e2a419b86d.wav",
+      "sourceSha256": "05a3b87f0f80a5a08fea57958a0eeb38fca668c4221dd73d1ab309d55dd1c2db",
+      "gain": 1.5817068635239955,
+      "samples": 284160,
+      "speaker": "z"
+    },
+    {
+      "id": "07-00",
+      "atFrame": 11251,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-00-d1e6e8eb417d.wav",
+      "sourceSha256": "196e6f1b4aee2013eae79b29f13e78333757d2fcf43f1d4073599a6635465d10",
+      "gain": 1.7255725427599078,
+      "samples": 271872,
+      "speaker": "t"
+    },
+    {
+      "id": "07-01",
+      "atFrame": 11436,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-01-11aaafd5419d.wav",
+      "sourceSha256": "a7d9c358d03a603559c0f552e8200509c418465545f6c04456e68e4d5610ce99",
+      "gain": 2.84301002682421,
+      "samples": 265216,
+      "speaker": "m"
+    },
+    {
+      "id": "07-02",
+      "atFrame": 11617,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-02-433dd1f3ebfc.wav",
+      "sourceSha256": "f15fe2c705851b8edfc44a56a8a14fef7e25533a9f15fd741c4bbd1bdaf5d938",
+      "gain": 2.4180510669493636,
+      "samples": 376832,
+      "speaker": "t"
+    },
+    {
+      "id": "07-03",
+      "atFrame": 11868,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-03-d13f8d4a99d8.wav",
+      "sourceSha256": "ddb894fa7b7d9eda7e97019175571489dc277a93ac659899ef452792f42e929b",
+      "gain": 1.6945181678554548,
+      "samples": 282112,
+      "speaker": "z"
+    },
+    {
+      "id": "07-04",
+      "atFrame": 12060,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-04-1c880948c626.wav",
+      "sourceSha256": "cc6e0c8a8a06c6caf1ce90d0ad25e696ef89aa5dcbb0350b1b3fdacae06754a7",
+      "gain": 2.108997834713,
+      "samples": 308736,
+      "speaker": "t"
+    },
+    {
+      "id": "07-05",
+      "atFrame": 12268,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-05-b55b49806bd9.wav",
+      "sourceSha256": "e59e456d7840ecebae3a97d6844e346b149835c9021eb61cf50df6022dc2ad82",
+      "gain": 1.9646120374055387,
+      "samples": 251392,
+      "speaker": "m"
+    },
+    {
+      "id": "07-06",
+      "atFrame": 12441,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-06-b7b7441c5724.wav",
+      "sourceSha256": "9a6aa83977eadd0705c1f96051d5f2a617103864a16c256fa962c68b16065a9c",
+      "gain": 2.2749305187424493,
+      "samples": 376832,
+      "speaker": "t"
+    },
+    {
+      "id": "07-07",
+      "atFrame": 12692,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-07-4378949e82ab.wav",
+      "sourceSha256": "7b8a1780362391f22417f3ac0adde37a445bdfbf366843883a5c1c7243459322",
+      "gain": 2.5085811279435717,
+      "samples": 209408,
+      "speaker": "z"
+    },
+    {
+      "id": "07-08",
+      "atFrame": 12838,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-08-82177ecdab3d.wav",
+      "sourceSha256": "d443335d0cc4fc0e7a19f854c4ce4c5c285285acfad2f4b40c81fe13c86990cc",
+      "gain": 2.6322002858179006,
+      "samples": 228352,
+      "speaker": "t"
+    },
+    {
+      "id": "07-09",
+      "atFrame": 12996,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-09-96800fa95f4c.wav",
+      "sourceSha256": "50e88a2c1b46f7ef49adf1295b5e45f607a0e60375b7056b5d9bce523385b45b",
+      "gain": 2.419039534240276,
+      "samples": 393728,
+      "speaker": "m"
+    },
+    {
+      "id": "07-10",
+      "atFrame": 13258,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-10-b2cc975bf0b7.wav",
+      "sourceSha256": "2ff2c1d8f6fc8dbcdf6ffe4a25417eeb036ba55f5e4135fba6e7a80e80ecdcf8",
+      "gain": 2.674850310792991,
+      "samples": 324608,
+      "speaker": "t"
+    },
+    {
+      "id": "07-11",
+      "atFrame": 13476,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-11-fbce4144d626.wav",
+      "sourceSha256": "b53340571be59830c7432bf1914154935e36765ef9ef2c74a3b5c7428b563933",
+      "gain": 2.1620878619769304,
+      "samples": 368640,
+      "speaker": "m"
+    },
+    {
+      "id": "07-12",
+      "atFrame": 13722,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-12-f46a16f9583d.wav",
+      "sourceSha256": "24c4850c753e14c6f6493d56a40f94ab9f6c0ad353e1d23c54acc4127718ad3c",
+      "gain": 2.5488713868710926,
+      "samples": 309760,
+      "speaker": "t"
+    },
+    {
+      "id": "07-13",
+      "atFrame": 13931,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-13-f02410998bf0.wav",
+      "sourceSha256": "f6584b6ce94e3caf6c791e75f32f482411d938de64b2b899786bc0fa6c2dc28f",
+      "gain": 2.674143222552718,
+      "samples": 375296,
+      "speaker": "m"
+    },
+    {
+      "id": "07-14",
+      "atFrame": 14181,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-14-746ecfcdb30e.wav",
+      "sourceSha256": "2234a8d7570103ef3199ba79d46e3f53711f809b43cae1a7850047453133b3b0",
+      "gain": 2.22976921924024,
+      "samples": 368640,
+      "speaker": "t"
+    },
+    {
+      "id": "07-15",
+      "atFrame": 14427,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-15-6b32e18406a8.wav",
+      "sourceSha256": "125c4dca2a47cdaf09a0e85821acd268aa615d1c46d2a50c31c83066c990fad5",
+      "gain": 2.203075067761762,
+      "samples": 324096,
+      "speaker": "t"
+    },
+    {
+      "id": "07-16",
+      "atFrame": 14645,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-16-791b8c302254.wav",
+      "sourceSha256": "b332bd9e9447c771fe1216de68c7530266dd574e00c00b08eefe12b8ba72a840",
+      "gain": 2.3332233620402083,
+      "samples": 330752,
+      "speaker": "m"
+    },
+    {
+      "id": "07-17",
+      "atFrame": 14867,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/07-17-334328ff2013.wav",
+      "sourceSha256": "3e8538adad60d7e8ba52fe900fab28e9a8f63d9447167a098010ef9687211f42",
+      "gain": 2.4327021391340944,
+      "samples": 276992,
+      "speaker": "t"
+    },
+    {
+      "id": "08-00",
+      "atFrame": 15070,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-00-7b109603fdb2.wav",
+      "sourceSha256": "aab45ae4ae0465522edb93826c4c2f3f3897a7492c15ecdff12d65cee62705cd",
+      "gain": 1.9388007742622606,
+      "samples": 279040,
+      "speaker": "t"
+    },
+    {
+      "id": "08-01",
+      "atFrame": 15260,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-01-cbf19c2a3357.wav",
+      "sourceSha256": "65b1a8bf4bbee3cd1c3df39527552589e367529f6a955882634ee3aff47bec44",
+      "gain": 2.515489351890405,
+      "samples": 214016,
+      "speaker": "z"
+    },
+    {
+      "id": "08-02",
+      "atFrame": 15409,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-02-0866ac5d16ea.wav",
+      "sourceSha256": "6e161f85d4d1068a1a46c7dc9b88e0163b3324069c23851cb9ac9f28072fe27d",
+      "gain": 2.45238734997198,
+      "samples": 279552,
+      "speaker": "m"
+    },
+    {
+      "id": "08-03",
+      "atFrame": 15599,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-03-809877923dbc.wav",
+      "sourceSha256": "7eb7653be1780c4846721a8bc502c3801dc1e7958bf5943dcafda8bcc7418082",
+      "gain": 2.416867665770142,
+      "samples": 284672,
+      "speaker": "t"
+    },
+    {
+      "id": "08-04",
+      "atFrame": 15792,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-04-8ba123aecb59.wav",
+      "sourceSha256": "091978c2f5cbb6fd78cf7c212ab6ee1539d5c7ae86cb1b632acbc699ef81fb5e",
+      "gain": 1.8600122236558978,
+      "samples": 223744,
+      "speaker": "z"
+    },
+    {
+      "id": "08-05",
+      "atFrame": 15947,
+      "source": "/workspace/STILLVEIL-v1.10/artifacts/build-diary-00/speech/08-05-6e431c706fa1.wav",
+      "sourceSha256": "29a441cf189da7b19aed8fecbffa813e1f12ce0377b046d6d4419a56698b7313",
+      "gain": 2.264764050363115,
+      "samples": 128512,
+      "speaker": "t"
+    }
+  ],
+  "musicSource": "/workspace/STILLVEIL-v1.10/public/audio/fjordnosundakaze.mp3",
+  "musicSha256": "d4e3e4f43a7c9ccaa1586c1646a91c6bb67a7d61dca6aa42a9161940ea574c9d",
+  "bodyMusicTargetRms": 0.018,
+  "appendixMusicTargetRms": 0.065,
+  "loopCrossfadeSeconds": 2,
+  "soundtrackSha256": "8968c2e3d49b55288c2b258e55855ee4473be7e80496a13a22ded07597701267",
+  "backgroundSha256": "da7f0ceb6d05c6153f1e5a3a51c0107cca066fc4cbe7e2a5c2f26799a3b650b4",
+  "timelineSha256": "dcaebe641ffae74fcde7f4d508f683785465c72daea5eec959d557f95929a669"
+}

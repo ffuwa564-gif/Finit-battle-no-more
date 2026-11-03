@@ -1,0 +1,10 @@
+[
+  {
+    "label": "1080p",
+    "passed": true
+  },
+  {
+    "label": "720p",
+    "passed": true
+  }
+]

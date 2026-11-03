@@ -1,0 +1,18 @@
+{
+  "reviewer": "AI production agent",
+  "method": "Finished-video stable frame contact sheet plus exact frame audits; no claim of human listening",
+  "visualInspection": "passed",
+  "points": [
+    "Main four-element diagrams visible; speaker avatars use contain and heads fit",
+    "Main captions maximum two lines; appendix cards display all text",
+    "Reference art, gem effect and command exclusions visible",
+    "No new battle results or certification shown"
+  ],
+  "completeDecode": "Decode-Validation.json",
+  "synchronization": "Finished-Movie-Sync.json",
+  "browserPlayback": "Validation.json",
+  "movies": {
+    "STILLVEIL-BuildResearchDiary-00-1080p.mp4": "b9d0b0efebf4d45abff341a03711e01a6cfb67e47cd2a0b9c3428933211320c8",
+    "STILLVEIL-BuildResearchDiary-00-720p.mp4": "106510048558e9c06bcb23de12acefaa4a015a40ffca4a0658296cfdff7c1a08"
+  }
+}

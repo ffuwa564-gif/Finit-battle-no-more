@@ -1,0 +1,3620 @@
+{
+  "gameCommit": "dec20ebbfb8d139713ffe847ebc48eefe8ff54ca",
+  "version": "1.10.0",
+  "contentVersion": "v1.10-r1",
+  "characters": [
+    {
+      "id": "elaine",
+      "name": "エレイン",
+      "epithet": "白花の祈り手",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "癒し手",
+      "origin": [
+        "initial",
+        "recruit"
+      ],
+      "art": "art/elaine.png",
+      "stats": {
+        "hp": 140,
+        "attack": 35,
+        "defense": 20,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-14",
+          "name": "白花の祈り",
+          "strength": 1.4,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "cleanse-14",
+          "name": "白花の浄化",
+          "strength": 1.4,
+          "description": "味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを11.2%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "白花・命を結ぶ祈り",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "liora",
+      "name": "リオラ",
+      "epithet": "錆銀の守護者",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "守護者",
+      "origin": [
+        "initial",
+        "recruit"
+      ],
+      "art": "art/liora.png",
+      "stats": {
+        "hp": 224,
+        "attack": 25,
+        "defense": 36,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-14",
+          "name": "守りの誓い",
+          "strength": 1.4,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-14",
+          "name": "月光の障壁",
+          "strength": 1.4,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを11.2%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "錆銀・帰還の聖盾",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "seris",
+      "name": "セリス",
+      "epithet": "薄明の剣",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "剣士",
+      "origin": [
+        "initial",
+        "recruit"
+      ],
+      "art": "art/seris.png",
+      "stats": {
+        "hp": 140,
+        "attack": 45,
+        "defense": 17,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-14",
+          "name": "月影の一閃",
+          "strength": 1.4,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-14",
+          "name": "銀閃の貫突",
+          "strength": 1.4,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を4.2%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "薄明・夜を断つ剣",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "noelle",
+      "name": "ノエル",
+      "epithet": "星読みの残響",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "詠唱者",
+      "origin": [
+        "initial",
+        "recruit"
+      ],
+      "art": "art/noelle.png",
+      "stats": {
+        "hp": 126,
+        "attack": 39,
+        "defense": 14,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-14",
+          "name": "静寂の雨",
+          "strength": 1.4,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "attack-14",
+          "name": "月影の一閃",
+          "strength": 1.4,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を4.2%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "星詠・失われた天河",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 3,
+      "commandCost": 1
+    },
+    {
+      "id": "pale-wolf",
+      "name": "白霧の狼",
+      "epithet": "聖堂に残る遠吠え",
+      "rarity": "R",
+      "strength": 1,
+      "role": "剣士",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-pale-wolf.png",
+      "stats": {
+        "hp": 100,
+        "attack": 32,
+        "defense": 12,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-10",
+          "name": "月影の一閃",
+          "strength": 1,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "drain-10",
+          "name": "夜露の吸命",
+          "strength": 1,
+          "description": "敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を3%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "聖堂に残る遠吠え・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "stone-drake",
+      "name": "石燐の幼竜",
+      "epithet": "眠れる庭の番人",
+      "rarity": "R",
+      "strength": 1.1,
+      "role": "守護者",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-stone-drake.png",
+      "stats": {
+        "hp": 176,
+        "attack": 20,
+        "defense": 29,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-11",
+          "name": "守りの誓い",
+          "strength": 1.1,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-11",
+          "name": "月光の障壁",
+          "strength": 1.1,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを8.8%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "眠れる庭の番人・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "hollow-keeper",
+      "name": "虚ろの守り手",
+      "epithet": "帰らぬ主への誓い",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "守護者",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-hollow-keeper.png",
+      "stats": {
+        "hp": 192,
+        "attack": 22,
+        "defense": 31,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-12",
+          "name": "守りの誓い",
+          "strength": 1.2,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "paralysis-12",
+          "name": "痺れる閃光",
+          "strength": 1.2,
+          "description": "敵1体を麻痺させる。2回の行動の間、毎回40%の確率で行動できない。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを9.6%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "帰らぬ主への誓い・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "moon-moth",
+      "name": "月翅の蛾",
+      "epithet": "欠けた月の使者",
+      "rarity": "R",
+      "strength": 1,
+      "role": "詠唱者",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-moon-moth.png",
+      "stats": {
+        "hp": 90,
+        "attack": 28,
+        "defense": 10,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-10",
+          "name": "静寂の雨",
+          "strength": 1,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "sleep-10",
+          "name": "まどろみの花",
+          "strength": 1,
+          "description": "敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を3%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "欠けた月の使者・星降る終奏",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "veil-priestess",
+      "name": "帳の巫女",
+      "epithet": "届かない祈り",
+      "rarity": "R",
+      "strength": 1.1,
+      "role": "癒し手",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-veil-priestess.png",
+      "stats": {
+        "hp": 110,
+        "attack": 28,
+        "defense": 15,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-11",
+          "name": "白花の祈り",
+          "strength": 1.1,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "regen-11",
+          "name": "巡る月の雫",
+          "strength": 1.1,
+          "description": "負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを8.8%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "届かない祈り・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "thorn-witch",
+      "name": "荊の魔女",
+      "epithet": "枯園の記憶",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "呪術師",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/encounter-thorn-witch.png",
+      "stats": {
+        "hp": 120,
+        "attack": 29,
+        "defense": 14,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-12",
+          "name": "朽ちゆく祝福",
+          "strength": 1.2,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "charm-12",
+          "name": "惑いの旋律",
+          "strength": 1.2,
+          "description": "敵1体を魅了する。2回の行動で自分以外の味方に通常攻撃。味方がいなければ行動不可。付与者が倒れると解除。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を12%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "枯園の記憶・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "iris",
+      "name": "アメノウズメ",
+      "epithet": "薄明の鈴舞",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-uzume.png",
+      "stats": {
+        "hp": 132,
+        "attack": 26,
+        "defense": 19,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-12",
+          "name": "神楽鈴の祝福",
+          "strength": 1.2,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "charm-12",
+          "name": "惑いの旋律",
+          "strength": 1.2,
+          "description": "敵1体を魅了する。2回の行動で自分以外の味方に通常攻撃。味方がいなければ行動不可。付与者が倒れると解除。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を12%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "薄明の鈴舞・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "mireille",
+      "name": "コノハナサクヤヒメ",
+      "epithet": "黒桜の花守",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-sakuya.png",
+      "stats": {
+        "hp": 180,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-18",
+          "name": "桜花の祈り",
+          "strength": 1.8,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-18",
+          "name": "月光の障壁",
+          "strength": 1.8,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを14.4%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "黒桜の花守・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "asteria",
+      "name": "アマテラス",
+      "epithet": "黒レースの暁光",
+      "rarity": "SSR",
+      "strength": 2.2,
+      "role": "詠唱者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-amaterasu.png",
+      "stats": {
+        "hp": 198,
+        "attack": 62,
+        "defense": 22,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-22",
+          "name": "天照・暁のレース",
+          "strength": 2.2,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-22",
+          "name": "銀閃の貫突",
+          "strength": 2.2,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を6.6%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "黒レースの暁光・星降る終奏",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "evelyn",
+      "name": "イザナミ",
+      "epithet": "黄泉のフリル",
+      "rarity": "SSR",
+      "strength": 2.4,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-izanami.png",
+      "stats": {
+        "hp": 384,
+        "attack": 43,
+        "defense": 62,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-24",
+          "name": "黄泉のヴェール",
+          "strength": 2.4,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "drain-24",
+          "name": "夜露の吸命",
+          "strength": 2.4,
+          "description": "敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを19.2%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "黄泉のフリル・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "selene",
+      "name": "セレネ",
+      "epithet": "月白の振袖",
+      "rarity": "SSR",
+      "strength": 2.1,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-selene.webp",
+      "stats": {
+        "hp": 210,
+        "attack": 53,
+        "defense": 29,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-21",
+          "name": "月白のやすらぎ",
+          "strength": 2.1,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-21",
+          "name": "三日月の袖守り",
+          "strength": 2.1,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを16.8%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月宴・永遠の抱擁",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "athena",
+      "name": "アテナ",
+      "epithet": "知恵咲く羽織",
+      "rarity": "SSR",
+      "strength": 2.3,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-athena-anime.webp",
+      "stats": {
+        "hp": 368,
+        "attack": 41,
+        "defense": 60,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-23",
+          "name": "梟の見守り",
+          "strength": 2.3,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "rally-23",
+          "name": "軍神の号令",
+          "strength": 2.3,
+          "description": "生存中の味方全員の攻撃力を次ラウンド終了まで強化。攻撃強化は重複せず、強い効果を優先。味方が2人以上で、強化できる相手がいるときに使用する。 攻撃力上昇量：26.5%。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを18.4%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "軍神・蒼天の絶対守護",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "flora",
+      "name": "フローラ",
+      "epithet": "百花の晴れ衣",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-flora-anime.webp",
+      "stats": {
+        "hp": 160,
+        "attack": 40,
+        "defense": 22,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-16",
+          "name": "百花のぬくもり",
+          "strength": 1.6,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "cleanse-16",
+          "name": "花風の浄め",
+          "strength": 1.6,
+          "description": "味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを12.8%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "百花の晴れ衣・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "rainbow-iris",
+      "name": "イリス",
+      "epithet": "虹織の訪れ",
+      "rarity": "SR",
+      "strength": 2,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-rainbow-iris-anime.webp",
+      "stats": {
+        "hp": 220,
+        "attack": 44,
+        "defense": 32,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-20",
+          "name": "虹糸の便り",
+          "strength": 2,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-20",
+          "name": "晴れ渡る空",
+          "strength": 2,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を20%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "虹織の訪れ・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "eos",
+      "name": "エオス",
+      "epithet": "曙染めの小袖",
+      "rarity": "R",
+      "strength": 1.5,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-eos-anime.webp",
+      "stats": {
+        "hp": 165,
+        "attack": 33,
+        "defense": 24,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-15",
+          "name": "曙の彩り",
+          "strength": 1.5,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-15",
+          "name": "朝霞の袖守り",
+          "strength": 1.5,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を15%上昇。曙の加速：各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "曙染めの小袖・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "nike",
+      "name": "ニケ",
+      "epithet": "風結びの羽織",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-nike-anime.webp",
+      "stats": {
+        "hp": 130,
+        "attack": 42,
+        "defense": 16,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-13",
+          "name": "追い風の一閃",
+          "strength": 1.3,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "shatter-13",
+          "name": "磐砕き",
+          "strength": 1.3,
+          "description": "敵1体の障壁を破壊してから控えめな攻撃。障壁がある敵へ使用し、かばうがあれば引き受けた相手の障壁を破壊する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を3.9%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "風結びの羽織・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "vespera",
+      "name": "ヴェスパ",
+      "epithet": "星炉の調律師",
+      "rarity": "SSR",
+      "strength": 2.4,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-vespera.png",
+      "stats": {
+        "hp": 264,
+        "attack": 53,
+        "defense": 38,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-24",
+          "name": "星灯の導き",
+          "strength": 2.4,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "overclock-24",
+          "name": "星炉の過充填",
+          "strength": 2.4,
+          "description": "自分の最大HPの10%を消費し、自分以外の攻撃力が高い味方1人の必殺ゲージを35充填。自身のHPが20%より多く、味方のゲージが65以下のときに使用。自分の必殺ゲージは通常どおり増加。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を24%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "星炉・限界臨界の夜明け",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "miette",
+      "name": "ミエット",
+      "epithet": "修繕庭の縫い手",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-miette.png",
+      "stats": {
+        "hp": 180,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-18",
+          "name": "桜花の祈り",
+          "strength": 1.8,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-mend-18",
+          "name": "装甲リサイクル",
+          "strength": 1.8,
+          "description": "HP75%以下で障壁がある味方1人の障壁を、最大HPの15%分まで消費して、その2倍のHPへ変換。必要な分だけ消費し、HP30%以下の味方への通常回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを14.4%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "修繕・世界を縫う金糸",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "tikka",
+      "name": "ティッカ",
+      "epithet": "秒針のいたずら",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-tikka.png",
+      "stats": {
+        "hp": 140,
+        "attack": 34,
+        "defense": 17,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-14",
+          "name": "縁結びのほどき",
+          "strength": 1.4,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "jam-14",
+          "name": "秒針ジャミング",
+          "strength": 1.4,
+          "description": "敵1体の通常スキルを次ラウンド終了まで使用不能にする。使えるスキルがある敵を狙う。通常攻撃・ボスの予告大技・ビット射撃は止められない。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を14%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "秒針・零時の侵入者",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "nox",
+      "name": "ノクス",
+      "epithet": "零式・無赦の執行者",
+      "rarity": "SSR",
+      "strength": 2.5,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-nox.png",
+      "stats": {
+        "hp": 250,
+        "attack": 80,
+        "defense": 30,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-25",
+          "name": "無赦の裁断",
+          "strength": 2.5,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-25",
+          "name": "零式・穿孔",
+          "strength": 2.5,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を7.5%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "零式・終極執行",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "kuzuha",
+      "name": "葛葉",
+      "epithet": "宵宮の妖狐姫",
+      "rarity": "SSR",
+      "strength": 2.6,
+      "role": "呪術師",
+      "origin": [
+        "event"
+      ],
+      "art": "art/event-kuzuha.png",
+      "stats": {
+        "hp": 260,
+        "attack": 62,
+        "defense": 31,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-26",
+          "name": "宵宮の幻惑",
+          "strength": 2.6,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "attack-26",
+          "name": "紅蓮の狐火",
+          "strength": 2.6,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を26%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "宵宮の妖狐姫・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "kuzuha-awakened",
+      "name": "九尾・葛葉",
+      "epithet": "月蝕にひらく九つの契り",
+      "rarity": "SSR",
+      "strength": 3,
+      "role": "呪術師",
+      "origin": [
+        "event"
+      ],
+      "art": "art/event-kuzuha-awakened.png",
+      "stats": {
+        "hp": 300,
+        "attack": 72,
+        "defense": 36,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-30",
+          "name": "九尾・夢幻結界",
+          "strength": 3,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "attack-30",
+          "name": "月蝕の狐火",
+          "strength": 3,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を30%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月蝕にひらく九つの契り・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "artemis",
+      "name": "アルテミス",
+      "epithet": "月弓の狩衣",
+      "rarity": "SR",
+      "strength": 1.9,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-artemis.png",
+      "stats": {
+        "hp": 190,
+        "attack": 61,
+        "defense": 23,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-19",
+          "name": "月影の一閃",
+          "strength": 1.9,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-19",
+          "name": "銀閃の貫突",
+          "strength": 1.9,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を5.7%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月弓の狩衣・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "persephone",
+      "name": "ペルセポネ",
+      "epithet": "柘榴咲く境界",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-persephone.png",
+      "stats": {
+        "hp": 180,
+        "attack": 43,
+        "defense": 22,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-18",
+          "name": "朽ちゆく祝福",
+          "strength": 1.8,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "sleep-18",
+          "name": "まどろみの花",
+          "strength": 1.8,
+          "description": "敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を18%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "柘榴咲く境界・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "hestia",
+      "name": "ヘスティア",
+      "epithet": "帰り灯の小袖",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-hestia.png",
+      "stats": {
+        "hp": 224,
+        "attack": 25,
+        "defense": 36,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-14",
+          "name": "守りの誓い",
+          "strength": 1.4,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-14",
+          "name": "月光の障壁",
+          "strength": 1.4,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを11.2%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "帰り灯の小袖・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "hebe",
+      "name": "ヘベ",
+      "epithet": "祝杯の水衣",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-hebe.png",
+      "stats": {
+        "hp": 130,
+        "attack": 33,
+        "defense": 18,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-13",
+          "name": "白花の祈り",
+          "strength": 1.3,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "mend-pair-13",
+          "name": "返し潮の抱擁",
+          "strength": 1.3,
+          "description": "傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを10.4%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "祝杯の水衣・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "seoritsu",
+      "name": "セオリツヒメ",
+      "epithet": "白瀬にほどく禊",
+      "rarity": "SR",
+      "strength": 1.9,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-seoritsu.png",
+      "stats": {
+        "hp": 190,
+        "attack": 48,
+        "defense": 27,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-19",
+          "name": "白花の祈り",
+          "strength": 1.9,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "confusion-19",
+          "name": "迷いの霧",
+          "strength": 1.9,
+          "description": "敵1体を混乱させる。2回の行動でスキルを使わず、50%で味方（自分を含む）、それ以外は敵に通常攻撃。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを15.2%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "白瀬にほどく禊・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "ukanomitama",
+      "name": "ウカノミタマ",
+      "epithet": "宵倉の稲穂守り",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-ukanomitama.png",
+      "stats": {
+        "hp": 176,
+        "attack": 35,
+        "defense": 26,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-16",
+          "name": "星灯の導き",
+          "strength": 1.6,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "regen-16",
+          "name": "巡る月の雫",
+          "strength": 1.6,
+          "description": "負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を16%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "宵倉の稲穂守り・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "mizuhanome",
+      "name": "ミヅハノメ",
+      "epithet": "雨帳の水鏡",
+      "rarity": "R",
+      "strength": 1.5,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-mizuhanome.png",
+      "stats": {
+        "hp": 150,
+        "attack": 36,
+        "defense": 18,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-15",
+          "name": "朽ちゆく祝福",
+          "strength": 1.5,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "paralysis-15",
+          "name": "痺れる閃光",
+          "strength": 1.5,
+          "description": "敵1体を麻痺させる。2回の行動の間、毎回40%の確率で行動できない。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を15%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "雨帳の水鏡・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "haniyasu",
+      "name": "ハニヤスヒメ",
+      "epithet": "金継ぎの埴土",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-haniyasu.png",
+      "stats": {
+        "hp": 192,
+        "attack": 22,
+        "defense": 31,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-12",
+          "name": "守りの誓い",
+          "strength": 1.2,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-12",
+          "name": "月光の障壁",
+          "strength": 1.2,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを9.6%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "金継ぎの埴土・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "toyotama",
+      "name": "トヨタマヒメ",
+      "epithet": "真珠に眠る返し潮",
+      "rarity": "SR",
+      "strength": 1.7,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-toyotama.png",
+      "stats": {
+        "hp": 170,
+        "attack": 43,
+        "defense": 24,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-17",
+          "name": "真珠の祈り",
+          "strength": 1.7,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "mend-pair-17",
+          "name": "返し潮の抱擁",
+          "strength": 1.7,
+          "description": "傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを13.6%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "真珠に眠る返し潮・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "wakahirume",
+      "name": "ワカヒルメ",
+      "epithet": "ほどけぬ暁の織り手",
+      "rarity": "SR",
+      "strength": 1.9,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-wakahirume.png",
+      "stats": {
+        "hp": 209,
+        "attack": 42,
+        "defense": 30,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-19",
+          "name": "暁の綾織",
+          "strength": 1.9,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-19",
+          "name": "天衣の結界",
+          "strength": 1.9,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を19%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "ほどけぬ暁の織り手・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "iwanagahime",
+      "name": "イワナガヒメ",
+      "epithet": "朽ちぬ石の黒レース",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-iwanagahime.png",
+      "stats": {
+        "hp": 208,
+        "attack": 23,
+        "defense": 34,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-13",
+          "name": "不変の岩守",
+          "strength": 1.3,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "shatter-13",
+          "name": "磐砕き",
+          "strength": 1.3,
+          "description": "敵1体の障壁を破壊してから控えめな攻撃。障壁がある敵へ使用し、かばうがあれば引き受けた相手の障壁を破壊する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを10.4%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "朽ちぬ石の黒レース・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "kukurihime",
+      "name": "ククリヒメ",
+      "epithet": "月夜にほどく紅の契り",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-kukurihime.png",
+      "stats": {
+        "hp": 140,
+        "attack": 34,
+        "defense": 17,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-14",
+          "name": "縁結びのほどき",
+          "strength": 1.4,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-14",
+          "name": "結び直す指先",
+          "strength": 1.4,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を14%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月夜にほどく紅の契り・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "lisette",
+      "name": "リゼット",
+      "epithet": "弔鐘の剣姫",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "呪術師",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/lisette.png",
+      "stats": {
+        "hp": 180,
+        "attack": 43,
+        "defense": 22,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-18",
+          "name": "朽ちゆく祝福",
+          "strength": 1.8,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-18",
+          "name": "結び直す指先",
+          "strength": 1.8,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を18%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "弔鐘の剣姫・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "elaine-awakened",
+      "name": "エレイン",
+      "epithet": "朝露を待つ白花",
+      "rarity": "SR",
+      "strength": 2,
+      "role": "癒し手",
+      "origin": [
+        "awakening"
+      ],
+      "art": "art/elaine-awakened.png",
+      "stats": {
+        "hp": 200,
+        "attack": 50,
+        "defense": 28,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-20",
+          "name": "白花の祈り",
+          "strength": 2,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "mend-pair-20",
+          "name": "返し潮の抱擁",
+          "strength": 2,
+          "description": "傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを16%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "白暁・還り咲く命",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "liora-awakened",
+      "name": "リオラ",
+      "epithet": "帰還を迎える銀盾",
+      "rarity": "SR",
+      "strength": 2,
+      "role": "守護者",
+      "origin": [
+        "awakening"
+      ],
+      "art": "art/liora-awakened.png",
+      "stats": {
+        "hp": 320,
+        "attack": 36,
+        "defense": 52,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-20",
+          "name": "守りの誓い",
+          "strength": 2,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-20",
+          "name": "月光の障壁",
+          "strength": 2,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを16%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "銀誓・不滅の帰還門",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "noelle-awakened",
+      "name": "ノエル",
+      "epithet": "明け星を記す者",
+      "rarity": "SR",
+      "strength": 2,
+      "role": "詠唱者",
+      "origin": [
+        "awakening"
+      ],
+      "art": "art/noelle-awakened.png",
+      "stats": {
+        "hp": 180,
+        "attack": 56,
+        "defense": 20,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-20",
+          "name": "静寂の雨",
+          "strength": 2,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-20",
+          "name": "銀閃の貫突",
+          "strength": 2,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を6%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "星録・夜明けの天河",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 4,
+      "commandCost": 1
+    },
+    {
+      "id": "lisette-awakened",
+      "name": "リゼット",
+      "epithet": "朝を告げる弔鐘",
+      "rarity": "SR",
+      "strength": 2.2,
+      "role": "呪術師",
+      "origin": [
+        "awakening"
+      ],
+      "art": "art/lisette-awakened.png",
+      "stats": {
+        "hp": 220,
+        "attack": 53,
+        "defense": 26,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-22",
+          "name": "朽ちゆく祝福",
+          "strength": 2.2,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-22",
+          "name": "結び直す指先",
+          "strength": 2.2,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を22%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "朝を告げる弔鐘・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "seris-awakened",
+      "name": "セリス",
+      "epithet": "暁を返す剣",
+      "rarity": "SSR",
+      "strength": 2.7,
+      "role": "剣士",
+      "origin": [
+        "awakening"
+      ],
+      "art": "art/seris-awakened.png",
+      "stats": {
+        "hp": 270,
+        "attack": 86,
+        "defense": 32,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-27",
+          "name": "暁を返す一閃",
+          "strength": 2.7,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dawn-27",
+          "name": "約束の朝",
+          "strength": 2.7,
+          "description": "敵1体の防御を65%無視する攻撃。実際に攻撃を受ける敵が防御低下中なら威力が25%上昇。ボス・弱体化中の敵や攻撃重視で優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を8.1%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "約束・明日を拓く剣",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "selene-standard",
+      "name": "セレネ",
+      "epithet": "月明かりの導き手",
+      "rarity": "SR",
+      "strength": 1.9,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-selene-standard.webp",
+      "stats": {
+        "hp": 190,
+        "attack": 48,
+        "defense": 27,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-19",
+          "name": "白花の祈り",
+          "strength": 1.9,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "regen-19",
+          "name": "巡る月の雫",
+          "strength": 1.9,
+          "description": "負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを15.2%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月白・静寂の祝福",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "athena-standard",
+      "name": "アテナ",
+      "epithet": "静謐の知恵",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-athena-standard.webp",
+      "stats": {
+        "hp": 288,
+        "attack": 32,
+        "defense": 47,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-18",
+          "name": "守りの誓い",
+          "strength": 1.8,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "rally-18",
+          "name": "軍神の号令",
+          "strength": 1.8,
+          "description": "生存中の味方全員の攻撃力を次ラウンド終了まで強化。攻撃強化は重複せず、強い効果を優先。味方が2人以上で、強化できる相手がいるときに使用する。 攻撃力上昇量：24%。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを14.4%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "梟翼・知恵の城塞",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "flora-standard",
+      "name": "フローラ",
+      "epithet": "朝庭の花守り",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-flora-standard.webp",
+      "stats": {
+        "hp": 120,
+        "attack": 30,
+        "defense": 17,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-12",
+          "name": "白花の祈り",
+          "strength": 1.2,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "cleanse-12",
+          "name": "白花の浄化",
+          "strength": 1.2,
+          "description": "味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを9.6%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "朝庭の花守り・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "amaterasu-standard",
+      "name": "アマテラス",
+      "epithet": "暁を照らす光",
+      "rarity": "SR",
+      "strength": 1.7,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-amaterasu-standard.webp",
+      "stats": {
+        "hp": 187,
+        "attack": 37,
+        "defense": 27,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-17",
+          "name": "星灯の導き",
+          "strength": 1.7,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-17",
+          "name": "月光の障壁",
+          "strength": 1.7,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を17%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "暁を照らす光・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "izanami-standard",
+      "name": "イザナミ",
+      "epithet": "静かな境の守り手",
+      "rarity": "R",
+      "strength": 1.5,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-izanami-standard.webp",
+      "stats": {
+        "hp": 150,
+        "attack": 36,
+        "defense": 18,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-15",
+          "name": "朽ちゆく祝福",
+          "strength": 1.5,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "drain-15",
+          "name": "夜露の吸命",
+          "strength": 1.5,
+          "description": "敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を15%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "静かな境の守り手・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "artemis-standard",
+      "name": "アルテミス",
+      "epithet": "月森の道しるべ",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-artemis-standard.webp",
+      "stats": {
+        "hp": 180,
+        "attack": 58,
+        "defense": 22,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-18",
+          "name": "散り桜の一閃",
+          "strength": 1.8,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-18",
+          "name": "銀閃の貫突",
+          "strength": 1.8,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を5.4%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "月森の道しるべ・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "persephone-standard",
+      "name": "ペルセポネ",
+      "epithet": "芽吹きを待つ庭",
+      "rarity": "SR",
+      "strength": 1.7,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-persephone-standard.webp",
+      "stats": {
+        "hp": 170,
+        "attack": 41,
+        "defense": 20,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-17",
+          "name": "朽ちゆく祝福",
+          "strength": 1.7,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "regen-17",
+          "name": "巡る月の雫",
+          "strength": 1.7,
+          "description": "負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を17%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "芽吹きを待つ庭・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "hestia-standard",
+      "name": "ヘスティア",
+      "epithet": "帰り道の灯火",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "守護者",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-hestia-standard.webp",
+      "stats": {
+        "hp": 208,
+        "attack": 23,
+        "defense": 34,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-13",
+          "name": "不変の岩守",
+          "strength": 1.3,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "barrier-13",
+          "name": "月光の障壁",
+          "strength": 1.3,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを10.4%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "帰り道の灯火・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "hebe-standard",
+      "name": "ヘベ",
+      "epithet": "ひと息の茶会",
+      "rarity": "R",
+      "strength": 1.2,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-hebe-standard.webp",
+      "stats": {
+        "hp": 120,
+        "attack": 30,
+        "defense": 17,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-12",
+          "name": "白花の祈り",
+          "strength": 1.2,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "mend-pair-12",
+          "name": "返し潮の抱擁",
+          "strength": 1.2,
+          "description": "傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを9.6%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "ひと息の茶会・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "eos-standard",
+      "name": "エオス",
+      "epithet": "朝風の旅人",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-eos-standard.webp",
+      "stats": {
+        "hp": 154,
+        "attack": 31,
+        "defense": 22,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-14",
+          "name": "星灯の導き",
+          "strength": 1.4,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "cleanse-14",
+          "name": "白花の浄化",
+          "strength": 1.4,
+          "description": "味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を14%上昇。曙の加速：各Waveの2ターン目から、敵味方全員の攻撃力が毎ターン5%上昇。Wave切替でリセット。回復量は増えません。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "朝風の旅人・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "nike-standard",
+      "name": "ニケ",
+      "epithet": "若葉の誓い",
+      "rarity": "R",
+      "strength": 1.4,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-nike-standard.webp",
+      "stats": {
+        "hp": 140,
+        "attack": 45,
+        "defense": 17,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-14",
+          "name": "月影の一閃",
+          "strength": 1.4,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "shatter-14",
+          "name": "磐砕き",
+          "strength": 1.4,
+          "description": "敵1体の障壁を破壊してから控えめな攻撃。障壁がある敵へ使用し、かばうがあれば引き受けた相手の障壁を破壊する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を4.2%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "若葉の誓い・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "rainbow-iris-standard",
+      "name": "イリス",
+      "epithet": "雨上がりの便り",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-rainbow-iris-standard.webp",
+      "stats": {
+        "hp": 176,
+        "attack": 35,
+        "defense": 26,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-16",
+          "name": "星灯の導き",
+          "strength": 1.6,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-16",
+          "name": "結び直す指先",
+          "strength": 1.6,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を16%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "雨上がりの便り・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "toyotama-standard",
+      "name": "トヨタマヒメ",
+      "epithet": "凪を運ぶ旅衣",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-toyotama-standard.webp",
+      "stats": {
+        "hp": 160,
+        "attack": 40,
+        "defense": 22,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-16",
+          "name": "百花のぬくもり",
+          "strength": 1.6,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-16",
+          "name": "月光の障壁",
+          "strength": 1.6,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを12.8%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "凪を運ぶ旅衣・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "lunette",
+      "name": "ルネット",
+      "epithet": "時計庭のうさぎ姫",
+      "rarity": "SSR",
+      "strength": 2,
+      "role": "詠唱者",
+      "origin": [
+        "event"
+      ],
+      "art": "art/event-lunette.png",
+      "stats": {
+        "hp": 180,
+        "attack": 56,
+        "defense": 20,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-20",
+          "name": "静寂の雨",
+          "strength": 2,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-20",
+          "name": "月光の障壁",
+          "strength": 2,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を6%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "うさぎ隊・いっせいほうげき！",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "lunette-awakened",
+      "name": "星時計・ルネット",
+      "epithet": "夜明けを刻むうさぎ隊",
+      "rarity": "SSR",
+      "strength": 2.4,
+      "role": "詠唱者",
+      "origin": [
+        "event"
+      ],
+      "art": "art/event-lunette-awakened-loop-poster.png",
+      "stats": {
+        "hp": 216,
+        "attack": 67,
+        "defense": 24,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-24",
+          "name": "静寂の雨",
+          "strength": 2.4,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-24",
+          "name": "月光の障壁",
+          "strength": 2.4,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を7.2%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "星時計・うさぎ座の大行進！",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "lucielle",
+      "name": "リュシエル",
+      "epithet": "銀灯に迷う訪問者",
+      "rarity": "SR",
+      "strength": 1.4,
+      "role": "導き手",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/rare-lucielle.png",
+      "stats": {
+        "hp": 154,
+        "attack": 31,
+        "defense": 22,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-14",
+          "name": "星灯の導き",
+          "strength": 1.4,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-14",
+          "name": "月光の障壁",
+          "strength": 1.4,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を14%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "銀灯に迷う訪問者・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "nemuria",
+      "name": "ネムリア",
+      "epithet": "夢蛾を連れる夜の客人",
+      "rarity": "SR",
+      "strength": 1.8,
+      "role": "呪術師",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/rare-nemuria.png",
+      "stats": {
+        "hp": 180,
+        "attack": 43,
+        "defense": 22,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-18",
+          "name": "朽ちゆく祝福",
+          "strength": 1.8,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "sleep-18",
+          "name": "まどろみの花",
+          "strength": 1.8,
+          "description": "敵1体を眠らせ、2回の行動を止める。HPにダメージを受けると解除。障壁だけへのダメージでは解除されない。 成功率は通常70%・ボス35%。ボスには1回の行動まで。解除後は次ラウンド終了まで状態耐性。 再使用まで4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を18%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "夢蛾を連れる夜の客人・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "chrona",
+      "name": "クローナ",
+      "epithet": "凍暁の機巧聖女",
+      "rarity": "SSR",
+      "strength": 2.4,
+      "role": "詠唱者",
+      "origin": [
+        "trial"
+      ],
+      "art": "art/trial-chrona.webp",
+      "stats": {
+        "hp": 216,
+        "attack": 67,
+        "defense": 24,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-24",
+          "name": "静寂の雨",
+          "strength": 2.4,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "attack-24",
+          "name": "黄泉路の黒薔薇",
+          "strength": 2.4,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を7.2%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "凍暁の機巧聖女・星降る終奏",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "fortuna",
+      "name": "フォルトゥナ",
+      "epithet": "朽ちた金貨に宿る祈り",
+      "rarity": "SSR",
+      "strength": 2.3,
+      "role": "導き手",
+      "origin": [
+        "gold_exchange"
+      ],
+      "art": "art/gold-fortuna.webp",
+      "stats": {
+        "hp": 253,
+        "attack": 51,
+        "defense": 37,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-23",
+          "name": "星灯の導き",
+          "strength": 2.3,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-23",
+          "name": "月光の障壁",
+          "strength": 2.3,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を23%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "運命・黄金の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "hecate",
+      "name": "ヘカテ",
+      "epithet": "三叉路に灯す蒼火",
+      "rarity": "SSR",
+      "strength": 2.4,
+      "role": "呪術師",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-hecate.webp",
+      "stats": {
+        "hp": 240,
+        "attack": 58,
+        "defense": 29,
+        "speed": 15
+      },
+      "skills": [
+        {
+          "id": "debuff-24",
+          "name": "朽ちゆく祝福",
+          "strength": 2.4,
+          "description": "敵1体の防御力を次ラウンドまで下げる。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "dispel-24",
+          "name": "結び直す指先",
+          "strength": 2.4,
+          "description": "敵1体の攻撃強化と再生を同時に解除。該当する効果がある敵へ優先使用。ダメージは与えず、障壁・かばう・リーダー効果は解除しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を24%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "三叉路に灯す蒼火・夜をほどく呪詩",
+        "description": "敵全体に攻撃力の150%で攻撃し、防御を35%低下させる。次ラウンド終了まで有効。",
+        "template": "area",
+        "theme": "eclipse"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "freyja",
+      "name": "フレイヤ",
+      "epithet": "琥珀に眠る鷹の歌",
+      "rarity": "SSR",
+      "strength": 2.3,
+      "role": "剣士",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-freyja.webp",
+      "stats": {
+        "hp": 230,
+        "attack": 74,
+        "defense": 28,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-23",
+          "name": "月影の一閃",
+          "strength": 2.3,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "drain-23",
+          "name": "夜露の吸命",
+          "strength": 2.3,
+          "description": "敵1体を攻撃し、実際に与えたダメージの35%を自分のHPに吸収。負傷時に優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を6.9%上昇。黄泉の契り：味方の攻撃で与えた実ダメージの8%を、攻撃した本人のHPに吸収。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "琥珀に眠る鷹の歌・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "benzaiten",
+      "name": "弁財天",
+      "epithet": "水鏡にほどける琵琶",
+      "rarity": "SSR",
+      "strength": 2.2,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-benzaiten.webp",
+      "stats": {
+        "hp": 220,
+        "attack": 55,
+        "defense": 31,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-22",
+          "name": "白花の祈り",
+          "strength": 2.2,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "mend-pair-22",
+          "name": "返し潮の抱擁",
+          "strength": 2.2,
+          "description": "傷ついた味方2人を、各々単体回復の半分の威力で同時回復。負傷者が2人以上のときに使用し、瀕死の味方への単体回復を優先する。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを17.6%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "水鏡にほどける琵琶・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "seoritsu-standard",
+      "name": "セオリツヒメ",
+      "epithet": "清流を渡る旅衣",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "癒し手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-seoritsu-standard.webp",
+      "stats": {
+        "hp": 160,
+        "attack": 40,
+        "defense": 22,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-16",
+          "name": "百花のぬくもり",
+          "strength": 1.6,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "cleanse-16",
+          "name": "花風の浄め",
+          "strength": 1.6,
+          "description": "味方1人の混乱・睡眠・麻痺・魅了と防御低下をまとめて解除し、小回復。重傷者がいる時は通常の回復を優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを12.8%上昇。月の慈愛：ラウンド終了時、味方全員の最大HPの3%を回復。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "清流を渡る旅衣・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "wakahirume-standard",
+      "name": "ワカヒルメ",
+      "epithet": "朝糸を結ぶ旅人",
+      "rarity": "SR",
+      "strength": 1.7,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-wakahirume-standard.webp",
+      "stats": {
+        "hp": 187,
+        "attack": 37,
+        "defense": 27,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-17",
+          "name": "星灯の導き",
+          "strength": 1.7,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "regen-17",
+          "name": "巡る月の雫",
+          "strength": 1.7,
+          "description": "負傷した味方1人に3回のラウンド終了時回復。回復量は最大HPの約5〜7%。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を17%上昇。星の共鳴：味方全員の全体攻撃の威力が15%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "朝糸を結ぶ旅人・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "ukanomitama-standard",
+      "name": "ウカノミタマ",
+      "epithet": "実りを分ける旅支度",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "導き手",
+      "origin": [
+        "gacha"
+      ],
+      "art": "art/gacha-ukanomitama-standard.webp",
+      "stats": {
+        "hp": 143,
+        "attack": 29,
+        "defense": 21,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-13",
+          "name": "星灯の導き",
+          "strength": 1.3,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-13",
+          "name": "月光の障壁",
+          "strength": 1.3,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を13%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "実りを分ける旅支度・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "astraea",
+      "name": "アストレア",
+      "epithet": "終天を裁く星冠",
+      "rarity": "XR",
+      "strength": 3.6,
+      "role": "剣士",
+      "origin": [
+        "xr_gacha"
+      ],
+      "art": "art/xr-astraea.png",
+      "stats": {
+        "hp": 360,
+        "attack": 115,
+        "defense": 43,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "attack-36",
+          "name": "星律の断罪",
+          "strength": 3.6,
+          "description": "敵1体に強力な攻撃。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "pierce-36",
+          "name": "終天の一閃",
+          "strength": 3.6,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を10.8%上昇。薄明の追撃：残りHP35%以下の敵へのダメージが20%上昇。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "終天を裁く星冠・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 4
+    },
+    {
+      "id": "zakuro",
+      "name": "ザクロ",
+      "epithet": "怠惰姫",
+      "rarity": "SSR",
+      "strength": 2.8,
+      "role": "詠唱者",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/zakuro.webp",
+      "stats": {
+        "hp": 252,
+        "attack": 78,
+        "defense": 28,
+        "speed": 11
+      },
+      "skills": [
+        {
+          "id": "area-28",
+          "name": "配役・天よりの葬列",
+          "strength": 2.8,
+          "description": "敵全体を攻撃。かばうを無視する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "barrier-28",
+          "name": "愛護・一人も欠けぬ庭",
+          "strength": 2.8,
+          "description": "味方1人に最大HPの12%＋使用者の攻撃力の60%の障壁。次ラウンド終了までダメージを肩代わり。重ね掛けは増加しない。 再使用まで3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を28%上昇。銀灯の庇護：味方全員の被ダメージを10%軽減。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "柘榴庭・誰ひとり欠かさぬ葬列",
+        "description": "敵全体に攻撃力の190%で攻撃。かばうを無視する。",
+        "template": "area",
+        "theme": "stars"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    },
+    {
+      "id": "ione",
+      "name": "イオネ",
+      "epithet": "空欄を預かる書記",
+      "rarity": "SR",
+      "strength": 1.6,
+      "role": "導き手",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/scout-ione.webp",
+      "stats": {
+        "hp": 176,
+        "attack": 35,
+        "defense": 26,
+        "speed": 13
+      },
+      "skills": [
+        {
+          "id": "buff-16",
+          "name": "星灯の導き",
+          "strength": 1.6,
+          "description": "攻撃力が高い味方1人の攻撃力を次ラウンドまで強化。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "scout-ione-mark",
+          "name": "宛先の余白",
+          "strength": 1.6,
+          "description": "敵1体へ次ラウンド終了まで標を残す。別の味方の通常攻撃・キャラクター通常技が実HPダメージを与えると1回消費し、その味方の必殺ゲージ+10。本人・石・必殺・追加攻撃では回収しない。同時に標は1つ、再使用4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の防御力を16%上昇。名前の余白：戦闘中最初に標を回収した時、生存味方全員の必殺ゲージ+5。リーダー生存中のみ。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "空欄を預かる書記・黎明の祝祭",
+        "description": "生存中の味方全員の攻撃力を40%上昇し、最大HPの15%の障壁を付与。次ラウンド終了まで有効。強化は重複せず強い効果を優先する。",
+        "template": "rally",
+        "theme": "dawn"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "neri",
+      "name": "ネリ",
+      "epithet": "灯を返す夜番",
+      "rarity": "R",
+      "strength": 1.3,
+      "role": "守護者",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/scout-neri.webp",
+      "stats": {
+        "hp": 208,
+        "attack": 23,
+        "defense": 34,
+        "speed": 18
+      },
+      "skills": [
+        {
+          "id": "guard-13",
+          "name": "不変の岩守",
+          "strength": 1.3,
+          "description": "味方1人への単体攻撃を次ラウンドまで引き受け、ダメージを軽減。 再使用まで2ラウンド。"
+        },
+        {
+          "id": "scout-neri-lantern",
+          "name": "交代の灯",
+          "strength": 1.3,
+          "description": "先頭の仲間へ次ラウンド終了まで灯を託す。敵の予告大技1回だけ被害25%軽減。通常攻撃・ビット射撃は対象外。同じ灯は重複せず、再使用4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを10.4%上昇。夜番の引き継ぎ：予告中の初めての防御時、自身へ最大HP10%の障壁。戦闘中1回。強い既存障壁を弱めない。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "灯を返す夜番・不落の誓約",
+        "description": "生存中の味方全員に最大HPの30%と使用者の防御力2倍の障壁。次ラウンド終了まで有効。",
+        "template": "barrier",
+        "theme": "aegis"
+      },
+      "commandCapacity": 0,
+      "commandCost": 1
+    },
+    {
+      "id": "fio",
+      "name": "フィオ",
+      "epithet": "余り布の薬草師",
+      "rarity": "SR",
+      "strength": 1.7,
+      "role": "癒し手",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/scout-fio.webp",
+      "stats": {
+        "hp": 170,
+        "attack": 43,
+        "defense": 24,
+        "speed": 12
+      },
+      "skills": [
+        {
+          "id": "heal-17",
+          "name": "真珠の祈り",
+          "strength": 1.7,
+          "description": "HPが低い味方1人を回復。生存重視では早めに使用する。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "scout-fio-overflow",
+          "name": "余花の包帯",
+          "strength": 1.7,
+          "description": "通常単体回復の半量で手当し、本当に余った回復の30%を障壁へ変える。対象最大HP15%まで、次ラウンド終了まで。強い既存障壁を弱めたり延長しない。再使用4ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の最大HPを13.6%上昇。余り布の支度：余花の包帯で実際に新しい障壁を作れた時、本人の必殺ゲージ+10。戦闘中1回。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "余り布の薬草師・命花の奇跡",
+        "description": "生存中の味方全員を最大HPの40%回復し、状態異常と防御低下を解除する。",
+        "template": "heal",
+        "theme": "bloom"
+      },
+      "commandCapacity": 0,
+      "commandCost": 2
+    },
+    {
+      "id": "ruka",
+      "name": "ルカ",
+      "epithet": "夜継ぎの仕立て屋",
+      "rarity": "SSR",
+      "strength": 1.9,
+      "role": "剣士",
+      "origin": [
+        "recruit"
+      ],
+      "art": "art/scout-ruka.webp",
+      "stats": {
+        "hp": 190,
+        "attack": 61,
+        "defense": 23,
+        "speed": 14
+      },
+      "skills": [
+        {
+          "id": "pierce-19",
+          "name": "銀閃の貫突",
+          "strength": 1.9,
+          "description": "敵1体の防御力を65%無視する攻撃。堅い敵・ボスや攻撃重視で優先。 再使用まで3ラウンド。"
+        },
+        {
+          "id": "scout-ruka-shear",
+          "name": "夜継ぎの鋏",
+          "strength": 1.9,
+          "description": "単体へ通常スキルの1.3倍の攻撃。残り糸を1つ使うとさらに威力30%増。味方の正の残量の障壁が自然失効すると糸を得る。糸は1つまで、次ラウンド終了まで。破壊・上書き・砕盾消費では得ない。再使用3ラウンド。"
+        }
+      ],
+      "leader": "パーティ全員の攻撃力を5.7%上昇。継がれる灯：残り糸を使った夜継ぎの鋏が実HPダメージを与えると、HP割合が最も低い味方を最大HP5%回復。1ラウンド1回・戦闘中3回。 リーダー生存中のみ有効。",
+      "ultimate": {
+        "name": "夜継ぎの仕立て屋・終夜の一閃",
+        "description": "敵1体に攻撃力の280%で攻撃し、防御の65%を無視する。",
+        "template": "pierce",
+        "theme": "blade"
+      },
+      "commandCapacity": 0,
+      "commandCost": 3
+    }
+  ],
+  "gems": [
+    {
+      "id": "shield-break",
+      "variant": "pure",
+      "name": "澄明の砕盾石",
+      "baseName": "砕盾石",
+      "family": "聖域",
+      "baseDescription": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。",
+      "description": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "shield-break",
+      "variant": "echo",
+      "name": "残響の砕盾石",
+      "baseName": "砕盾石",
+      "family": "聖域",
+      "baseDescription": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。",
+      "description": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。 実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。再使用が1ラウンド延びる。 再使用まで5ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "shield-break",
+      "variant": "swift",
+      "name": "速唱の砕盾石",
+      "baseName": "砕盾石",
+      "family": "聖域",
+      "baseDescription": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。",
+      "description": "味方の最も大きい障壁を消費し、敵1体への砲撃に変える。障壁があるときだけ使用できる。 攻撃の威力を抑え、再使用が1ラウンド早まる。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "echo-shard",
+      "variant": "pure",
+      "name": "澄明の残響石",
+      "baseName": "残響石",
+      "family": "機巧",
+      "baseDescription": "敵1体を攻撃し、実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。追撃は新たな行動や追撃を生まない。",
+      "description": "敵1体を攻撃し、実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。追撃は新たな行動や追撃を生まない。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "echo-shard",
+      "variant": "swift",
+      "name": "速唱の残響石",
+      "baseName": "残響石",
+      "family": "機巧",
+      "baseDescription": "敵1体を攻撃し、実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。追撃は新たな行動や追撃を生まない。",
+      "description": "敵1体を攻撃し、実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。追撃は新たな行動や追撃を生まない。 攻撃の威力を抑え、再使用が1ラウンド早まる。 再使用まで2ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "rewind-thread",
+      "variant": "pure",
+      "name": "澄明の巻戻しの石",
+      "baseName": "巻戻しの石",
+      "family": "機巧",
+      "baseDescription": "自分以外の味方1人の通常スキルの再使用待ちを1ラウンド短縮する。記憶石の技には作用しない。",
+      "description": "自分以外の味方1人の通常スキルの再使用待ちを2ラウンド短縮する。記憶石の技には作用しない。 再使用まで5ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "clear-tear",
+      "variant": "pure",
+      "name": "澄明の祓いの涙石",
+      "baseName": "祓いの涙石",
+      "family": "聖域",
+      "baseDescription": "味方1人の状態異常と防御低下を解除し、小回復する。",
+      "description": "味方1人の状態異常と防御低下を解除し、小回復する。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "pale-ward",
+      "variant": "pure",
+      "name": "澄明の白灯石",
+      "baseName": "白灯石",
+      "family": "聖域",
+      "baseDescription": "味方1人に次ラウンド終了までダメージを肩代わりする障壁を張る。障壁の重ね掛けでは量は増えない。",
+      "description": "味方1人に次ラウンド終了までダメージを肩代わりする障壁を張る。障壁の重ね掛けでは量は増えない。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "hollow-lantern",
+      "variant": "pure",
+      "name": "澄明の奪灯石",
+      "baseName": "奪灯石",
+      "family": "機巧",
+      "baseDescription": "敵1体の攻撃強化と再生を解除し、その灯を攻撃力の高い味方へ移す。障壁は奪えない。",
+      "description": "敵1体の攻撃強化と再生を解除し、その灯を攻撃力の高い味方へ移す。障壁は奪えない。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "dream-lace",
+      "variant": "pure",
+      "name": "澄明の夢織石",
+      "baseName": "夢織石",
+      "family": "黄昏",
+      "baseDescription": "敵1体を眠らせる。ダメージで目覚めるため、攻撃する順番が重要。ボスには効きにくい。",
+      "description": "敵1体を眠らせる。ダメージで目覚めるため、攻撃する順番が重要。ボスには効きにくい。 成功率は通常95%・ボス60%。ボスの睡眠は1回の行動まで。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "night-dew",
+      "variant": "pure",
+      "name": "澄明の夜露石",
+      "baseName": "夜露石",
+      "family": "黄昏",
+      "baseDescription": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。",
+      "description": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "night-dew",
+      "variant": "echo",
+      "name": "残響の夜露石",
+      "baseName": "夜露石",
+      "family": "黄昏",
+      "baseDescription": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。",
+      "description": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。 実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。再使用が1ラウンド延びる。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "night-dew",
+      "variant": "swift",
+      "name": "速唱の夜露石",
+      "baseName": "夜露石",
+      "family": "黄昏",
+      "baseDescription": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。",
+      "description": "敵1体を攻撃し、与えたダメージの35%を自分のHPに吸収する。 攻撃の威力を抑え、再使用が1ラウンド早まる。 再使用まで2ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "dawn-crown",
+      "variant": "pure",
+      "name": "澄明の暁冠の記憶",
+      "baseName": "暁冠の記憶",
+      "family": "聖域",
+      "baseDescription": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。",
+      "description": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": true
+    },
+    {
+      "id": "dawn-crown",
+      "variant": "echo",
+      "name": "残響の暁冠の記憶",
+      "baseName": "暁冠の記憶",
+      "family": "聖域",
+      "baseDescription": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。",
+      "description": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。 実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。再使用が1ラウンド延びる。 再使用まで5ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": true
+    },
+    {
+      "id": "dawn-crown",
+      "variant": "swift",
+      "name": "速唱の暁冠の記憶",
+      "baseName": "暁冠の記憶",
+      "family": "聖域",
+      "baseDescription": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。",
+      "description": "敵1体の防御を65%無視して攻撃する。防御低下中の敵なら威力が上昇する。 攻撃の威力を抑え、再使用が1ラウンド早まる。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "連鎖",
+        "庇護",
+        "処刑",
+        "慈雨"
+      ],
+      "bossOnly": true
+    },
+    {
+      "id": "star-furnace",
+      "variant": "pure",
+      "name": "澄明の星炉の記憶",
+      "baseName": "星炉の記憶",
+      "family": "機巧",
+      "baseDescription": "自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを35充填する。自分のHPが20%より多い時に使用できる。",
+      "description": "自分の最大HPの10%を消費して、別の味方1人の必殺ゲージを70充填する。自分のHPが20%より多い時に使用できる。 再使用まで5ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": true
+    },
+    {
+      "id": "twin-tide",
+      "variant": "pure",
+      "name": "澄明の双潮の記憶",
+      "baseName": "双潮の記憶",
+      "family": "黄昏",
+      "baseDescription": "傷ついた味方2人を同時に回復する。1人ずつへの回復量は単体回復より控えめ。",
+      "description": "傷ついた味方2人を同時に回復する。1人ずつへの回復量は単体回復より控えめ。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": false,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし",
+        "庇護"
+      ],
+      "bossOnly": true
+    },
+    {
+      "id": "wick-stone",
+      "variant": "pure",
+      "name": "澄明の灯芯の補助石",
+      "baseName": "灯芯の補助石",
+      "family": "機巧",
+      "baseDescription": "攻撃の参照値を最大24補い、参照値65まで引き上げて敵1体を攻撃する。元の攻撃は下げない。実際のHPダメージの35%で次ラウンドに追撃し、追撃は連鎖しない。固定T3製作品で、調律はできない。覚醒後も装備でき、高い攻撃には補助が自然に減る。",
+      "description": "攻撃の参照値を最大24補い、参照値65まで引き上げて敵1体を攻撃する。元の攻撃は下げない。実際のHPダメージの35%で次ラウンドに追撃し、追撃は連鎖しない。固定T3製作品で、調律はできない。覚醒後も装備でき、高い攻撃には補助が自然に減る。 再使用まで3ラウンド。",
+      "rollDescription": "技の威力220%。特性：なし。追加特性なし。",
+      "fixed": true,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし"
+      ],
+      "bossOnly": false
+    },
+    {
+      "id": "white-flower-seed",
+      "variant": "pure",
+      "name": "澄明の摘まない白花",
+      "baseName": "摘まない白花",
+      "family": "聖域",
+      "baseDescription": "出発時の先頭の生存者を20回復し、種を1個預ける。付与から2ラウンド後の終了までに本人が通常の防御を実行すると、種を消費して50回復。防御の予約だけでは咲かない。種は重ねず更新しない。回復量は固定で、石や結晶の倍率はかからない。固定T3製作品で、調律はできない。",
+      "description": "出発時の先頭の生存者を20回復し、種を1個預ける。付与から2ラウンド後の終了までに本人が通常の防御を実行すると、種を消費して50回復。防御の予約だけでは咲かない。種は重ねず更新しない。回復量は固定で、石や結晶の倍率はかからない。固定T3製作品で、調律はできない。 再使用まで4ラウンド。",
+      "rollDescription": "技の威力100%。特性：なし。追加特性なし。",
+      "fixed": true,
+      "roll": {
+        "power": 80,
+        "trait": "none",
+        "value": 0
+      },
+      "supportedTraits": [
+        "なし"
+      ],
+      "bossOnly": false
+    }
+  ],
+  "gemBaseCount": 13,
+  "gemFamilies": {
+    "sanctuary": {
+      "name": "聖域",
+      "description": "障壁と祈りを宿す記憶",
+      "color": "#d9cba0"
+    },
+    "clock": {
+      "name": "機巧",
+      "description": "時と残響を操る記憶",
+      "color": "#95cbd9"
+    },
+    "grave": {
+      "name": "黄昏",
+      "description": "夢と命を結ぶ記憶",
+      "color": "#bda7d6"
+    }
+  },
+  "gemVariants": {
+    "pure": {
+      "name": "澄明",
+      "description": "基本の術式。"
+    },
+    "echo": {
+      "name": "残響",
+      "description": "実際に与えたダメージの35%で次ラウンドに追撃（障壁・かばうは有効）。再使用が1ラウンド延びる。"
+    },
+    "swift": {
+      "name": "速唱",
+      "description": "攻撃の威力を抑え、再使用が1ラウンド早まる。"
+    }
+  },
+  "gemTraits": {
+    "none": {
+      "name": "なし",
+      "description": "追加特性なし。"
+    },
+    "chain": {
+      "name": "連鎖",
+      "description": "別の敵1体へ攻撃力の45〜129%で追加攻撃。追加攻撃から特性は再発動しない。"
+    },
+    "bulwark": {
+      "name": "庇護",
+      "description": "HP割合が最も低い味方に最大HPの10〜46%の障壁を追加。障壁の合計上限は最大HPの60%。"
+    },
+    "execution": {
+      "name": "処刑",
+      "description": "残りHP35%以下の敵への技の威力が20〜116%上昇。"
+    },
+    "mercy": {
+      "name": "慈雨",
+      "description": "実際に与えたHPダメージの20〜92%で、HP割合が最も低い味方を回復。"
+    }
+  },
+  "tiers": {
+    "1": [
+      0,
+      33
+    ],
+    "2": [
+      34,
+      66
+    ],
+    "3": [
+      67,
+      100
+    ],
+    "4": [
+      120,
+      139
+    ],
+    "5": [
+      160,
+      179
+    ],
+    "6": [
+      220,
+      239
+    ]
+  },
+  "commandDescription": "星図の号令：ノエルは3枠、覚醒後は4枠。受領者の負荷はR1・SR2・SSR3・XR4で、明示的な覚醒前の負荷を引き継ぎ、別衣装は別に数える。発令時に本人の通常1手とそのラウンドの追加リーダー効果を使い、生存中の指定敵へ、予約した味方の通常単体行動の宛先だけを確実に合わせる。石・追撃・範囲・支援・異常強制行動・予約必殺・先頭本人の明示操作は奪わない。対象死亡後は通常判断へ戻り、枠と本人の一手は返らない。"
+}
