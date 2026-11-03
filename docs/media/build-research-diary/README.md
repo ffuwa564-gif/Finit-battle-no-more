@@ -71,6 +71,10 @@ node_modules/.bin/tsx scripts/build-diary-01/registry.mts
 
 検証元は`artifacts/build-diary-01/research/episode-evidence.json`、`revalidation-necessity-certificate.json`、`revalidation-edge-checks.json`。いずれも最新版のソース・版と一致して成功している場合にのみ、ルカへ試作認定を付ける。証拠の生成コード4本のハッシュと、戦闘ソースが撮影元コミットと一致することも照合する。証拠ファイルが存在するだけでは合格にしない。
 
+## 視聴の負荷を下げる新しい標準
+
+Part5以降は[図を中心に説明する制作方針](visual-first-guide.md)を適用する。長い説明・表・脚注を同時に読ませず、一場面一つの問いと段階的な図で因果を見せる。2026-11-03のユーザー指示に基づく。
+
 ## 映像シリーズの型
 
 主役は眼鏡と白衣の春日部つむぎ。ずんだもんと四国めたんが疑問と比較を手伝う。強さの順位ではなく、少女ごとの仕事を見つける研究日誌として続ける。
