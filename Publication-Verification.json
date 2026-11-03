@@ -1,0 +1,202 @@
+{
+  "downloadCommit": "19bdf9cd7ba4e0fadf65329f96e96b8288b169dd",
+  "fullRemoteReadback": [
+    {
+      "file": "STILLVEIL-BuildResearchDiary-00-1080p.mp4",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/STILLVEIL-BuildResearchDiary-00-1080p.mp4",
+      "size": 96428413,
+      "sha256": "32344355600d195ecb53b00a864b6b162259328e729a584a004eb16e4dce77bc",
+      "passed": true
+    },
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/README.md",
+      "size": 2186,
+      "sha256": "e92eaba4828eac2629a0c58e22477a1ad89f2c6dfa66009347515c527829a81c",
+      "passed": true
+    },
+    {
+      "file": "STILLVEIL-BuildResearchDiary-00-720p.mp4",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/STILLVEIL-BuildResearchDiary-00-720p.mp4",
+      "size": 80688743,
+      "sha256": "106510048558e9c06bcb23de12acefaa4a015a40ffca4a0658296cfdff7c1a08",
+      "passed": true
+    },
+    {
+      "file": "Thumbnail-BuildResearchDiary-00.png",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Thumbnail-BuildResearchDiary-00.png",
+      "size": 1277995,
+      "sha256": "4d9b1a6391b28db546e86692e729462510264b306b4c7f250d6b781d7216ac55",
+      "passed": true
+    },
+    {
+      "file": "Preview.jpg",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Preview.jpg",
+      "size": 656033,
+      "sha256": "d3f32d1f0d4ae3c233165b824dbe4a97923d73744072a5717899bbffab1fba5d",
+      "passed": true
+    },
+    {
+      "file": "Script.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Script.md",
+      "size": 10609,
+      "sha256": "4cffdd858624e17f4d94e5082846dd877a37fd7b598da9df451ceda41a2b164d",
+      "passed": true
+    },
+    {
+      "file": "Subtitles-ja.srt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Subtitles-ja.srt",
+      "size": 11788,
+      "sha256": "f9142b38e6ce2ce14d8b86f57ae08d6a369d619342c3ffb95fea3f70d518970b",
+      "passed": true
+    },
+    {
+      "file": "Chapters.txt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Chapters.txt",
+      "size": 627,
+      "sha256": "10c8e66e242dffc284062fd2a58f0f931e0dacfe32f5e7b684a0d6176070ee51",
+      "passed": true
+    },
+    {
+      "file": "YouTube-Description.txt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/YouTube-Description.txt",
+      "size": 1960,
+      "sha256": "68373ee600b2eafaf6793cb1e9fffc467652af87a3724849a4ecb14d13bc44b2",
+      "passed": true
+    },
+    {
+      "file": "Complete-Catalogue.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Complete-Catalogue.md",
+      "size": 64759,
+      "sha256": "8db86a9a8433a7fa6b8ffa338f7d38de3e9a9749b223acb748a7540cf44af174",
+      "passed": true
+    },
+    {
+      "file": "Catalogue-Index.csv",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Catalogue-Index.csv",
+      "size": 5091,
+      "sha256": "6450b16bdc6f84b57939ee7fad9e31075ff03972b1e147918415226ed7aeadfc",
+      "passed": true
+    },
+    {
+      "file": "Research-Direction.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Research-Direction.md",
+      "size": 2787,
+      "sha256": "0d231c6c748e23fd390488001452b08375d2fd92d3e5f44cd83e445284bfec2b",
+      "passed": true
+    },
+    {
+      "file": "Credits.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Credits.md",
+      "size": 1364,
+      "sha256": "5aee79396ebe60cb1cdcbfdbd14361f8bbacdceebcc0379003eee44f7d534cf4",
+      "passed": true
+    },
+    {
+      "file": "Reproduce.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Reproduce.md",
+      "size": 2941,
+      "sha256": "032d9092214bc7bcf47ab6a697907971fda6043177d44d74ee6419caeb74ad9b",
+      "passed": true
+    },
+    {
+      "file": "catalogue.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/catalogue.json",
+      "size": 132177,
+      "sha256": "8c9da57ffd97b618ab548311c7246dbd84236aa7d2c32ff96d6ecdfe711a5f86",
+      "passed": true
+    },
+    {
+      "file": "Assets.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Assets.json",
+      "size": 10910,
+      "sha256": "35b00802c13911d638e3e7358890fa8dc051d3adcda3512f509a81aa6e974efe",
+      "passed": true
+    },
+    {
+      "file": "External-Game-Assets.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/External-Game-Assets.json",
+      "size": 25452,
+      "sha256": "fe92968d413bda04bd09df23a1d2f96fbccb702ad44cb6488d011bc5785d1219",
+      "passed": true
+    },
+    {
+      "file": "Production-Materials.zip",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Production-Materials.zip",
+      "size": 36651694,
+      "sha256": "7c93706c6b5d2b615de14386975b4a50ca083d508064bf926639e16f11493812",
+      "passed": true
+    },
+    {
+      "file": "Finished-Movie-Sync.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Finished-Movie-Sync.json",
+      "size": 241767,
+      "sha256": "b11e78821c344a6e1ade023631feb14ab7dc07a012ef3edf4e8d88e73f16f3ef",
+      "passed": true
+    },
+    {
+      "file": "Validation.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Validation.json",
+      "size": 1832,
+      "sha256": "cd1275ffffbc483ed4d4447043abdcc3a84182ecb5959992125fedf37802c5f2",
+      "passed": true
+    },
+    {
+      "file": "Decode-Validation.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Decode-Validation.json",
+      "size": 1019,
+      "sha256": "449830ea245f3914380645689d2570893e6071f39c7b35bfc5b0ac5dbd3096c5",
+      "passed": true
+    },
+    {
+      "file": "Visual-QC.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Visual-QC.json",
+      "size": 1044,
+      "sha256": "3c912a30c37a85ebcbeb5f1da01ded0878c9544324fb5bd1a0db37f95f062e80",
+      "passed": true
+    },
+    {
+      "file": "Size-Adjustment.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/Size-Adjustment.json",
+      "size": 257,
+      "sha256": "35aa0f19cd8e4cc8802be927ec6e0bc14a3c3d18e78572b3f7633710c14e03a0",
+      "passed": true
+    },
+    {
+      "file": "render-inputs.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/render-inputs.json",
+      "size": 720,
+      "sha256": "2b5ce36f2728cc2c8ca54b1c0c160c8ea9a86d413ee93531ebe2969c26a78919",
+      "passed": true
+    },
+    {
+      "file": "soundtrack-manifest.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/soundtrack-manifest.json",
+      "size": 28870,
+      "sha256": "9a11d72b40dda7a6c258200b29d53aa318785eb9bb774b77cdd2fef7f5bdf043",
+      "passed": true
+    },
+    {
+      "file": "narration.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/narration.json",
+      "size": 56835,
+      "sha256": "7ead8ff63cdf0d50fdae74268429f559ed492aedcb67b48acd2d8819ee5a237c",
+      "passed": true
+    },
+    {
+      "file": "timeline.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/timeline.json",
+      "size": 227541,
+      "sha256": "dcaebe641ffae74fcde7f4d508f683785465c72daea5eec959d557f95929a669",
+      "passed": true
+    },
+    {
+      "file": "production-commit.txt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/19bdf9cd7ba4e0fadf65329f96e96b8288b169dd/production-commit.txt",
+      "size": 41,
+      "sha256": "bba8d4013a24ccaff5021b97be82fc2a2838b1e9a268c559385e702f425062ac",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
