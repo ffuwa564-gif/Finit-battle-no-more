@@ -12,7 +12,8 @@
   "synchronization": "Finished-Movie-Sync.json",
   "browserPlayback": "Validation.json",
   "movies": {
-    "STILLVEIL-BuildResearchDiary-00-1080p.mp4": "b9d0b0efebf4d45abff341a03711e01a6cfb67e47cd2a0b9c3428933211320c8",
+    "STILLVEIL-BuildResearchDiary-00-1080p.mp4": "32344355600d195ecb53b00a864b6b162259328e729a584a004eb16e4dce77bc",
     "STILLVEIL-BuildResearchDiary-00-720p.mp4": "106510048558e9c06bcb23de12acefaa4a015a40ffca4a0658296cfdff7c1a08"
-  }
+  },
+  "compressionReview": "Native 1080p compressed output: final skill diagram and memory-gem detail visually inspected; readable text, contained art. Preview regenerated from final MP4."
 }

@@ -2,7 +2,7 @@
   {
     "label": "1080p",
     "finishedFile": "STILLVEIL-BuildResearchDiary-00-1080p.mp4",
-    "finishedSha256": "b9d0b0efebf4d45abff341a03711e01a6cfb67e47cd2a0b9c3428933211320c8",
+    "finishedSha256": "32344355600d195ecb53b00a864b6b162259328e729a584a004eb16e4dce77bc",
     "timelineSha256": "dcaebe641ffae74fcde7f4d508f683785465c72daea5eec959d557f95929a669",
     "soundtrackSha256": "8968c2e3d49b55288c2b258e55855ee4473be7e80496a13a22ded07597701267",
     "voiceChecks": [
@@ -700,14 +700,14 @@
         "id": "line-00-00",
         "kind": "dialogue",
         "at": 0.5,
-        "error": 2.729906121399177,
-        "correlation": 0.993554756026115,
+        "error": 2.757024819958848,
+        "correlation": 0.9935019947680166,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3409722222222222,
-            "correlation": 0.9915327575748202,
+            "error": 1.3627314814814815,
+            "correlation": 0.9914644034030303,
             "passed": true
           }
         ]
@@ -716,14 +716,14 @@
         "id": "line-00-01",
         "kind": "dialogue",
         "at": 5.1,
-        "error": 2.704619984567901,
-        "correlation": 0.9938432033004214,
+        "error": 2.7356127829218106,
+        "correlation": 0.9937859806182652,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.1613425925925926,
-            "correlation": 0.997581016545954,
+            "error": 1.1984953703703705,
+            "correlation": 0.9974312528104184,
             "passed": true
           }
         ]
@@ -732,14 +732,14 @@
         "id": "line-00-02",
         "kind": "dialogue",
         "at": 10.6,
-        "error": 2.7083654835390947,
-        "correlation": 0.9937307484043163,
+        "error": 2.7254854681069958,
+        "correlation": 0.9936968052627997,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3282407407407408,
-            "correlation": 0.9949203509780042,
+            "error": 1.3657407407407407,
+            "correlation": 0.9947536581422648,
             "passed": true
           }
         ]
@@ -748,14 +748,14 @@
         "id": "line-00-03",
         "kind": "dialogue",
         "at": 15.9,
-        "error": 0.7866190843621399,
-        "correlation": 0.9953691651605623,
+        "error": 0.8470293209876543,
+        "correlation": 0.9951946279746923,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.499074074074074,
-            "correlation": 0.9922691969891911,
+            "error": 1.5327546296296297,
+            "correlation": 0.9921561375868165,
             "passed": true
           }
         ]
@@ -764,14 +764,14 @@
         "id": "line-00-04",
         "kind": "dialogue",
         "at": 22.1,
-        "error": 0.7885963220164609,
-        "correlation": 0.995055959872732,
+        "error": 0.8750160751028807,
+        "correlation": 0.9948086290256898,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4940972222222222,
-            "correlation": 0.9930094628454115,
+            "error": 1.5215277777777778,
+            "correlation": 0.9928853030429525,
             "passed": true
           }
         ]
@@ -780,14 +780,14 @@
         "id": "line-00-05",
         "kind": "dialogue",
         "at": 28.3,
-        "error": 0.7568640689300411,
-        "correlation": 0.9962650373200689,
+        "error": 0.7822627314814815,
+        "correlation": 0.996170729631267,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.369560185185185,
-            "correlation": 0.9959394433995007,
+            "error": 1.3822916666666667,
+            "correlation": 0.9958429111789014,
             "passed": true
           }
         ]
@@ -796,14 +796,14 @@
         "id": "line-01-00",
         "kind": "dialogue",
         "at": 34.2,
-        "error": 0.8385577417695473,
-        "correlation": 0.9989302346014831,
+        "error": 0.8995466820987654,
+        "correlation": 0.9988834921620744,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6099537037037037,
-            "correlation": 0.9920339148920818,
+            "error": 1.6313657407407407,
+            "correlation": 0.9919427887688247,
             "passed": true
           }
         ]
@@ -812,14 +812,14 @@
         "id": "line-01-01",
         "kind": "dialogue",
         "at": 40.13333333333333,
-        "error": 0.7940779320987654,
-        "correlation": 0.9993067950828193,
+        "error": 0.8356320730452675,
+        "correlation": 0.999284415839899,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3041666666666667,
-            "correlation": 0.9960176147906695,
+            "error": 1.322337962962963,
+            "correlation": 0.9958980574638288,
             "passed": true
           }
         ]
@@ -828,14 +828,14 @@
         "id": "line-01-02",
         "kind": "dialogue",
         "at": 46.36666666666667,
-        "error": 0.7760095164609053,
-        "correlation": 0.9993402307807209,
+        "error": 0.8207143775720165,
+        "correlation": 0.999314645433556,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0002314814814814,
-            "correlation": 0.9974561028056409,
+            "error": 1.0373842592592593,
+            "correlation": 0.9972973553518616,
             "passed": true
           }
         ]
@@ -844,14 +844,14 @@
         "id": "line-01-03",
         "kind": "dialogue",
         "at": 50.6,
-        "error": 0.9592656893004116,
-        "correlation": 0.9988668783719976,
+        "error": 1.005031507201646,
+        "correlation": 0.9988270603990146,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.9350694444444445,
-            "correlation": 0.9915238803293642,
+            "error": 1.9706018518518518,
+            "correlation": 0.9913880619109805,
             "passed": true
           }
         ]
@@ -860,14 +860,14 @@
         "id": "line-01-04",
         "kind": "dialogue",
         "at": 58.3,
-        "error": 0.9118441358024691,
-        "correlation": 0.9991185212604544,
+        "error": 0.9501671810699589,
+        "correlation": 0.9990936912968051,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4063657407407408,
-            "correlation": 0.9958482328799487,
+            "error": 1.4300925925925927,
+            "correlation": 0.9957786272202626,
             "passed": true
           }
         ]
@@ -876,14 +876,14 @@
         "id": "line-01-05",
         "kind": "dialogue",
         "at": 65.16666666666667,
-        "error": 0.9312950102880658,
-        "correlation": 0.9989119204090021,
+        "error": 0.9656153549382716,
+        "correlation": 0.9988877405796692,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.570138888888889,
-            "correlation": 0.9927095368464592,
+            "error": 1.5909722222222222,
+            "correlation": 0.9926294594095487,
             "passed": true
           }
         ]
@@ -892,14 +892,14 @@
         "id": "line-02-00",
         "kind": "dialogue",
         "at": 71.23333333333333,
-        "error": 0.8768004115226338,
-        "correlation": 0.9983031753910268,
+        "error": 0.9071019804526749,
+        "correlation": 0.9982603694757836,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6210648148148148,
-            "correlation": 0.9932869520272553,
+            "error": 1.6423611111111112,
+            "correlation": 0.9932058570089016,
             "passed": true
           }
         ]
@@ -908,14 +908,14 @@
         "id": "line-02-01",
         "kind": "dialogue",
         "at": 77.83333333333333,
-        "error": 0.8808513374485597,
-        "correlation": 0.9985435709735657,
+        "error": 0.9119566615226338,
+        "correlation": 0.9985020810536129,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.5854166666666667,
-            "correlation": 0.9959450684442671,
+            "error": 1.6155092592592593,
+            "correlation": 0.9958549664672612,
             "passed": true
           }
         ]
@@ -924,14 +924,14 @@
         "id": "line-02-02",
         "kind": "dialogue",
         "at": 84.7,
-        "error": 0.7931777263374485,
-        "correlation": 0.9987254228718756,
+        "error": 0.8278838734567902,
+        "correlation": 0.9986793970509306,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 0.9946759259259259,
-            "correlation": 0.9981438234816596,
+            "error": 1.0439814814814814,
+            "correlation": 0.9979910170362828,
             "passed": true
           }
         ]
@@ -940,14 +940,14 @@
         "id": "line-02-03",
         "kind": "dialogue",
         "at": 90.46666666666667,
-        "error": 0.9480291923868313,
-        "correlation": 0.9974200676734303,
+        "error": 0.999244470164609,
+        "correlation": 0.9973244043978154,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.650462962962963,
-            "correlation": 0.9922803439835618,
+            "error": 1.674537037037037,
+            "correlation": 0.9921557416413707,
             "passed": true
           }
         ]
@@ -956,14 +956,14 @@
         "id": "line-02-04",
         "kind": "dialogue",
         "at": 96.6,
-        "error": 0.8916698816872428,
-        "correlation": 0.9978932497886562,
+        "error": 0.9278870884773662,
+        "correlation": 0.9978380146957335,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.315162037037037,
-            "correlation": 0.9959888824589692,
+            "error": 1.3333333333333333,
+            "correlation": 0.9958660539774459,
             "passed": true
           }
         ]
@@ -972,14 +972,14 @@
         "id": "line-02-05",
         "kind": "dialogue",
         "at": 102.53333333333333,
-        "error": 0.7954764660493827,
-        "correlation": 0.994699077843811,
+        "error": 0.8339441872427984,
+        "correlation": 0.9945275239108691,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.7577546296296296,
-            "correlation": 0.9928578149165795,
+            "error": 1.794212962962963,
+            "correlation": 0.992701351596449,
             "passed": true
           }
         ]
@@ -988,14 +988,14 @@
         "id": "line-02-06",
         "kind": "dialogue",
         "at": 108.33333333333333,
-        "error": 0.7250996656378601,
-        "correlation": 0.9957655569243694,
+        "error": 0.7510448816872428,
+        "correlation": 0.9956461535395407,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0314814814814814,
-            "correlation": 0.9979244743328273,
+            "error": 1.0649305555555555,
+            "correlation": 0.9977666966116654,
             "passed": true
           }
         ]
@@ -1004,14 +1004,14 @@
         "id": "line-02-07",
         "kind": "dialogue",
         "at": 115.0,
-        "error": 0.71606545781893,
-        "correlation": 0.9959041768829452,
+        "error": 0.7588413065843621,
+        "correlation": 0.9957478386270243,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2547453703703704,
-            "correlation": 0.9956265098212232,
+            "error": 1.264351851851852,
+            "correlation": 0.9955456352166554,
             "passed": true
           }
         ]
@@ -1020,14 +1020,14 @@
         "id": "line-02-08",
         "kind": "dialogue",
         "at": 120.23333333333333,
-        "error": 0.8619309413580247,
-        "correlation": 0.998240166811733,
+        "error": 0.8974247685185185,
+        "correlation": 0.9981996082691896,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.520138888888889,
-            "correlation": 0.9921298156416237,
+            "error": 1.5409722222222222,
+            "correlation": 0.992052525055513,
             "passed": true
           }
         ]
@@ -1036,14 +1036,14 @@
         "id": "line-03-00",
         "kind": "dialogue",
         "at": 125.86666666666666,
-        "error": 0.885304140946502,
-        "correlation": 0.9966380928187096,
+        "error": 0.936085390946502,
+        "correlation": 0.9965238999386289,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.5096064814814816,
-            "correlation": 0.9927847382750591,
+            "error": 1.5380787037037038,
+            "correlation": 0.9926576675365477,
             "passed": true
           }
         ]
@@ -1052,14 +1052,14 @@
         "id": "line-03-01",
         "kind": "dialogue",
         "at": 131.56666666666666,
-        "error": 0.9024723508230452,
-        "correlation": 0.9991604831493276,
+        "error": 0.9460841049382716,
+        "correlation": 0.9991307341126963,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.134837962962963,
-            "correlation": 0.995844077708553,
+            "error": 1.1461805555555555,
+            "correlation": 0.9957658391871047,
             "passed": true
           }
         ]
@@ -1068,14 +1068,14 @@
         "id": "line-03-02",
         "kind": "dialogue",
         "at": 136.76666666666668,
-        "error": 0.9168113425925926,
-        "correlation": 0.9966009790703966,
+        "error": 0.9677533436213992,
+        "correlation": 0.9964900025015957,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.7425925925925927,
-            "correlation": 0.9925375456485231,
+            "error": 1.7784722222222222,
+            "correlation": 0.9924202192703465,
             "passed": true
           }
         ]
@@ -1084,14 +1084,14 @@
         "id": "line-03-03",
         "kind": "dialogue",
         "at": 142.33333333333334,
-        "error": 0.7959908693415638,
-        "correlation": 0.9975072382883462,
+        "error": 0.8456147119341564,
+        "correlation": 0.9973929771271307,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 0.7612268518518519,
-            "correlation": 0.9977848683462714,
+            "error": 0.7858796296296297,
+            "correlation": 0.9976308819132219,
             "passed": true
           }
         ]
@@ -1100,14 +1100,14 @@
         "id": "line-03-04",
         "kind": "dialogue",
         "at": 144.96666666666667,
-        "error": 0.9301697530864198,
-        "correlation": 0.9963060532457233,
+        "error": 0.9606802983539094,
+        "correlation": 0.9962422679311762,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.9253472222222223,
-            "correlation": 0.9905108513676116,
+            "error": 1.9481481481481482,
+            "correlation": 0.9904450333370489,
             "passed": true
           }
         ]
@@ -1116,14 +1116,14 @@
         "id": "line-03-05",
         "kind": "dialogue",
         "at": 151.23333333333332,
-        "error": 0.8818479938271605,
-        "correlation": 0.9977488623056215,
+        "error": 0.914818029835391,
+        "correlation": 0.9976955768348347,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2850694444444444,
-            "correlation": 0.9954276125479123,
+            "error": 1.302662037037037,
+            "correlation": 0.9953562906003511,
             "passed": true
           }
         ]
@@ -1132,14 +1132,14 @@
         "id": "line-03-06",
         "kind": "dialogue",
         "at": 156.66666666666666,
-        "error": 0.868505658436214,
-        "correlation": 0.9980706641785446,
+        "error": 0.906909079218107,
+        "correlation": 0.9979964836668658,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0840277777777778,
-            "correlation": 0.997641766742202,
+            "error": 1.1291666666666667,
+            "correlation": 0.9974929096099326,
             "passed": true
           }
         ]
@@ -1148,14 +1148,14 @@
         "id": "line-03-07",
         "kind": "dialogue",
         "at": 162.0,
-        "error": 0.9072305812757202,
-        "correlation": 0.9973415566959839,
+        "error": 0.9405703446502057,
+        "correlation": 0.9972862157646183,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.5780092592592592,
-            "correlation": 0.9926302373339925,
+            "error": 1.604050925925926,
+            "correlation": 0.9924913700445738,
             "passed": true
           }
         ]
@@ -1164,14 +1164,14 @@
         "id": "line-03-08",
         "kind": "dialogue",
         "at": 167.7,
-        "error": 0.8761252572016461,
-        "correlation": 0.9979193578954637,
+        "error": 0.9025045010288066,
+        "correlation": 0.9978805945689135,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4538194444444446,
-            "correlation": 0.9957226629545692,
+            "error": 1.4800925925925925,
+            "correlation": 0.9956224347303203,
             "passed": true
           }
         ]
@@ -1180,14 +1180,14 @@
         "id": "line-04-00",
         "kind": "dialogue",
         "at": 174.5,
-        "error": 0.8043820730452675,
-        "correlation": 0.9980027010451655,
+        "error": 0.8409207818930041,
+        "correlation": 0.9979454313898517,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.5594907407407408,
-            "correlation": 0.9929804679267629,
+            "error": 1.5935185185185186,
+            "correlation": 0.9928497496043011,
             "passed": true
           }
         ]
@@ -1196,14 +1196,14 @@
         "id": "line-04-01",
         "kind": "dialogue",
         "at": 180.4,
-        "error": 0.7384741512345679,
-        "correlation": 0.9984883499144929,
+        "error": 0.7642264660493827,
+        "correlation": 0.9984451660550874,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 0.986574074074074,
-            "correlation": 0.9976098213430271,
+            "error": 1.016550925925926,
+            "correlation": 0.9974817010714988,
             "passed": true
           }
         ]
@@ -1212,14 +1212,14 @@
         "id": "line-04-02",
         "kind": "dialogue",
         "at": 184.9,
-        "error": 0.7168531378600823,
-        "correlation": 0.9960789040324699,
+        "error": 0.7483442644032922,
+        "correlation": 0.9959540670498495,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2483796296296297,
-            "correlation": 0.9959107742942027,
+            "error": 1.2608796296296296,
+            "correlation": 0.9958287561309793,
             "passed": true
           }
         ]
@@ -1228,14 +1228,14 @@
         "id": "line-04-03",
         "kind": "dialogue",
         "at": 189.93333333333334,
-        "error": 0.7837737911522634,
-        "correlation": 0.9947421586141011,
+        "error": 0.8246527777777778,
+        "correlation": 0.9945831849753174,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.7798611111111111,
-            "correlation": 0.9920949357468664,
+            "error": 1.8190972222222221,
+            "correlation": 0.9919262957893826,
             "passed": true
           }
         ]
@@ -1244,14 +1244,14 @@
         "id": "line-04-04",
         "kind": "dialogue",
         "at": 196.36666666666667,
-        "error": 0.7897537294238683,
-        "correlation": 0.9962270732036103,
+        "error": 0.8471739969135802,
+        "correlation": 0.9960535897385517,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4287037037037038,
-            "correlation": 0.99611476761661,
+            "error": 1.455787037037037,
+            "correlation": 0.9959983286438474,
             "passed": true
           }
         ]
@@ -1260,14 +1260,14 @@
         "id": "line-04-05",
         "kind": "dialogue",
         "at": 203.43333333333334,
-        "error": 0.770093878600823,
-        "correlation": 0.9965898275196193,
+        "error": 0.7980002572016461,
+        "correlation": 0.9964832161623084,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.179513888888889,
-            "correlation": 0.9976871106973553,
+            "error": 1.2259259259259259,
+            "correlation": 0.9975595568454715,
             "passed": true
           }
         ]
@@ -1276,14 +1276,14 @@
         "id": "line-04-06",
         "kind": "dialogue",
         "at": 209.26666666666668,
-        "error": 0.8095904063786008,
-        "correlation": 0.99523716458871,
+        "error": 0.8394740226337448,
+        "correlation": 0.9951181119297776,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8028935185185184,
-            "correlation": 0.9931297874673294,
+            "error": 1.8355324074074073,
+            "correlation": 0.9930116232618064,
             "passed": true
           }
         ]
@@ -1292,14 +1292,14 @@
         "id": "line-04-07",
         "kind": "dialogue",
         "at": 217.06666666666666,
-        "error": 0.7429269547325102,
-        "correlation": 0.9959460386789695,
+        "error": 0.7841435185185185,
+        "correlation": 0.9957992013816456,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4244212962962963,
-            "correlation": 0.9963806863475861,
+            "error": 1.4482638888888888,
+            "correlation": 0.9962843041605318,
             "passed": true
           }
         ]
@@ -1308,14 +1308,14 @@
         "id": "line-04-08",
         "kind": "dialogue",
         "at": 225.13333333333333,
-        "error": 0.7966017232510288,
-        "correlation": 0.9948158009833008,
+        "error": 0.8191068672839507,
+        "correlation": 0.9947155653170519,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.821412037037037,
-            "correlation": 0.9929505836737161,
+            "error": 1.8644675925925926,
+            "correlation": 0.9928061807142168,
             "passed": true
           }
         ]
@@ -1324,14 +1324,14 @@
         "id": "line-04-09",
         "kind": "dialogue",
         "at": 231.8,
-        "error": 0.7334587191358025,
-        "correlation": 0.9962512253566733,
+        "error": 0.7568962191358025,
+        "correlation": 0.9961463763321664,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.188773148148148,
-            "correlation": 0.9973818997238171,
+            "error": 1.2355324074074074,
+            "correlation": 0.9972126296128193,
             "passed": true
           }
         ]
@@ -1340,14 +1340,14 @@
         "id": "line-04-10",
         "kind": "dialogue",
         "at": 237.2,
-        "error": 0.8054751800411523,
-        "correlation": 0.9945975090860305,
+        "error": 0.8268711419753086,
+        "correlation": 0.9944886300977945,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8859953703703705,
-            "correlation": 0.9922979748892269,
+            "error": 1.9186342592592593,
+            "correlation": 0.9921412371615376,
             "passed": true
           }
         ]
@@ -1356,14 +1356,14 @@
         "id": "line-04-11",
         "kind": "dialogue",
         "at": 244.46666666666667,
-        "error": 0.7468171296296297,
-        "correlation": 0.9960637314564306,
+        "error": 0.7971322016460906,
+        "correlation": 0.9958945370972366,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2719907407407407,
-            "correlation": 0.9963738104025591,
+            "error": 1.285763888888889,
+            "correlation": 0.9962916602152943,
             "passed": true
           }
         ]
@@ -1372,14 +1372,14 @@
         "id": "line-05-00",
         "kind": "dialogue",
         "at": 250.56666666666666,
-        "error": 0.8069701646090535,
-        "correlation": 0.9982712658124474,
+        "error": 0.8454539609053497,
+        "correlation": 0.9982230733719196,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2600694444444445,
-            "correlation": 0.9943810905725567,
+            "error": 1.2831018518518518,
+            "correlation": 0.9943039702551755,
             "passed": true
           }
         ]
@@ -1388,14 +1388,14 @@
         "id": "line-05-01",
         "kind": "dialogue",
         "at": 255.3,
-        "error": 0.8047839506172839,
-        "correlation": 0.9983842045395699,
+        "error": 0.8261638374485597,
+        "correlation": 0.998355409869609,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.176388888888889,
-            "correlation": 0.9957202952447135,
+            "error": 1.1956018518518519,
+            "correlation": 0.9956084343560112,
             "passed": true
           }
         ]
@@ -1404,14 +1404,14 @@
         "id": "line-05-02",
         "kind": "dialogue",
         "at": 260.1,
-        "error": 0.8940329218106996,
-        "correlation": 0.9978347722418602,
+        "error": 0.9182902520576132,
+        "correlation": 0.997792977706703,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8190972222222221,
-            "correlation": 0.9922444080586389,
+            "error": 1.8582175925925926,
+            "correlation": 0.9920900533132926,
             "passed": true
           }
         ]
@@ -1420,14 +1420,14 @@
         "id": "line-05-03",
         "kind": "dialogue",
         "at": 265.7,
-        "error": 0.787647890946502,
-        "correlation": 0.9984870985070714,
+        "error": 0.8170492541152263,
+        "correlation": 0.9984392345976374,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 0.9804398148148148,
-            "correlation": 0.9979580463206643,
+            "error": 1.0172453703703703,
+            "correlation": 0.997794628229889,
             "passed": true
           }
         ]
@@ -1436,14 +1436,14 @@
         "id": "line-05-04",
         "kind": "dialogue",
         "at": 270.26666666666665,
-        "error": 0.7483764146090535,
-        "correlation": 0.9962991681262677,
+        "error": 0.788499871399177,
+        "correlation": 0.9961635640956633,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2438657407407407,
-            "correlation": 0.9963866636131019,
+            "error": 1.2637731481481482,
+            "correlation": 0.9962639101612386,
             "passed": true
           }
         ]
@@ -1452,14 +1452,14 @@
         "id": "line-05-05",
         "kind": "dialogue",
         "at": 276.1333333333333,
-        "error": 0.8115676440329218,
-        "correlation": 0.9950418196068198,
+        "error": 0.8376575360082305,
+        "correlation": 0.9949326557120054,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8534722222222222,
-            "correlation": 0.9923683025795668,
+            "error": 1.8789351851851852,
+            "correlation": 0.9922610428997667,
             "passed": true
           }
         ]
@@ -1468,14 +1468,14 @@
         "id": "line-05-06",
         "kind": "dialogue",
         "at": 282.6,
-        "error": 0.8050572273662552,
-        "correlation": 0.9948139081769928,
+        "error": 0.8514499742798354,
+        "correlation": 0.9946542352377128,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.7559027777777778,
-            "correlation": 0.9928939373265951,
+            "error": 1.7778935185185185,
+            "correlation": 0.9928274861437167,
             "passed": true
           }
         ]
@@ -1484,14 +1484,14 @@
         "id": "line-05-07",
         "kind": "dialogue",
         "at": 288.8666666666667,
-        "error": 0.7663001543209876,
-        "correlation": 0.9956251902613745,
+        "error": 0.7919560185185185,
+        "correlation": 0.9955410169831678,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.442939814814815,
-            "correlation": 0.9958437000634875,
+            "error": 1.4626157407407407,
+            "correlation": 0.9957861207040649,
             "passed": true
           }
         ]
@@ -1500,14 +1500,14 @@
         "id": "line-05-08",
         "kind": "dialogue",
         "at": 298.43333333333334,
-        "error": 0.7480066872427984,
-        "correlation": 0.9962748098755962,
+        "error": 0.7768293467078189,
+        "correlation": 0.9961435778586616,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.1936342592592593,
-            "correlation": 0.997963162636382,
+            "error": 1.2409722222222221,
+            "correlation": 0.9977836258570919,
             "passed": true
           }
         ]
@@ -1516,14 +1516,14 @@
         "id": "line-05-09",
         "kind": "dialogue",
         "at": 304.26666666666665,
-        "error": 0.8796778549382716,
-        "correlation": 0.9946767526821959,
+        "error": 0.9380787037037037,
+        "correlation": 0.994467459403421,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.912962962962963,
-            "correlation": 0.9913339122254207,
+            "error": 1.9479166666666667,
+            "correlation": 0.9911788807513014,
             "passed": true
           }
         ]
@@ -1532,14 +1532,14 @@
         "id": "line-05-10",
         "kind": "dialogue",
         "at": 311.2,
-        "error": 0.8474794238683128,
-        "correlation": 0.9957603698088198,
+        "error": 0.8635063014403292,
+        "correlation": 0.9956925625007801,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.567013888888889,
-            "correlation": 0.9954586463658238,
+            "error": 1.5954861111111112,
+            "correlation": 0.9953457275748422,
             "passed": true
           }
         ]
@@ -1548,14 +1548,14 @@
         "id": "line-05-11",
         "kind": "dialogue",
         "at": 318.23333333333335,
-        "error": 0.8306005658436214,
-        "correlation": 0.9956874872927042,
+        "error": 0.8515303497942387,
+        "correlation": 0.9955922567705489,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.4832175925925926,
-            "correlation": 0.994279870991736,
+            "error": 1.5170138888888889,
+            "correlation": 0.9941244138474711,
             "passed": true
           }
         ]
@@ -1564,14 +1564,14 @@
         "id": "line-05-12",
         "kind": "dialogue",
         "at": 323.3666666666667,
-        "error": 0.8002346965020576,
-        "correlation": 0.996539639245988,
+        "error": 0.8282857510288066,
+        "correlation": 0.996430688547368,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.24375,
-            "correlation": 0.9975246185598204,
+            "error": 1.2872685185185184,
+            "correlation": 0.9973723170245488,
             "passed": true
           }
         ]
@@ -1580,14 +1580,14 @@
         "id": "line-06-00",
         "kind": "dialogue",
         "at": 329.93333333333334,
-        "error": 0.7710744598765432,
-        "correlation": 0.9954781390981854,
+        "error": 0.8020511831275721,
+        "correlation": 0.9953448482216936,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3494212962962964,
-            "correlation": 0.9930773066820483,
+            "error": 1.3721064814814814,
+            "correlation": 0.992952524259519,
             "passed": true
           }
         ]
@@ -1596,14 +1596,14 @@
         "id": "line-06-01",
         "kind": "dialogue",
         "at": 334.93333333333334,
-        "error": 0.7696437757201646,
-        "correlation": 0.9961291379243543,
+        "error": 0.7901556069958847,
+        "correlation": 0.9960585717133861,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3527777777777779,
-            "correlation": 0.9957461745373463,
+            "error": 1.3518518518518519,
+            "correlation": 0.9957103951109871,
             "passed": true
           }
         ]
@@ -1612,14 +1612,14 @@
         "id": "line-06-02",
         "kind": "dialogue",
         "at": 341.23333333333335,
-        "error": 0.7333783436213992,
-        "correlation": 0.9965196565124178,
+        "error": 0.7622653034979424,
+        "correlation": 0.9964000906880514,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0431712962962962,
-            "correlation": 0.997472702702473,
+            "error": 1.0747685185185185,
+            "correlation": 0.9973625272864874,
             "passed": true
           }
         ]
@@ -1628,14 +1628,14 @@
         "id": "line-06-03",
         "kind": "dialogue",
         "at": 347.46666666666664,
-        "error": 0.8274337705761317,
-        "correlation": 0.9948392715913724,
+        "error": 0.852880658436214,
+        "correlation": 0.9947350714911333,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.9034722222222222,
-            "correlation": 0.9915228517804208,
+            "error": 1.9230324074074074,
+            "correlation": 0.991446936469268,
             "passed": true
           }
         ]
@@ -1644,14 +1644,14 @@
         "id": "line-06-04",
         "kind": "dialogue",
         "at": 355.8666666666667,
-        "error": 0.8655478395061729,
-        "correlation": 0.9979721627077776,
+        "error": 0.8984375,
+        "correlation": 0.9979181491239869,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.355787037037037,
-            "correlation": 0.9956555427292285,
+            "error": 1.3805555555555555,
+            "correlation": 0.9955447266094432,
             "passed": true
           }
         ]
@@ -1660,14 +1660,14 @@
         "id": "line-06-05",
         "kind": "dialogue",
         "at": 362.26666666666665,
-        "error": 0.8876993312757202,
-        "correlation": 0.997575272943164,
+        "error": 0.9213927469135802,
+        "correlation": 0.9975166770699658,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6703703703703703,
-            "correlation": 0.9921565149260394,
+            "error": 1.7068287037037038,
+            "correlation": 0.9920085711039667,
             "passed": true
           }
         ]
@@ -1676,14 +1676,14 @@
         "id": "line-06-06",
         "kind": "dialogue",
         "at": 368.6333333333333,
-        "error": 0.9334651491769548,
-        "correlation": 0.9990567686324993,
+        "error": 0.9840052726337448,
+        "correlation": 0.9990177806231636,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.2756944444444445,
-            "correlation": 0.9976796703132437,
+            "error": 1.320486111111111,
+            "correlation": 0.9975587374869967,
             "passed": true
           }
         ]
@@ -1692,14 +1692,14 @@
         "id": "line-07-00",
         "kind": "dialogue",
         "at": 375.53333333333336,
-        "error": 0.8084169238683128,
-        "correlation": 0.9950410763094627,
+        "error": 0.8441518775720165,
+        "correlation": 0.9948875175191272,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6613425925925926,
-            "correlation": 0.9926653559881771,
+            "error": 1.68125,
+            "correlation": 0.9925595578729727,
             "passed": true
           }
         ]
@@ -1708,14 +1708,14 @@
         "id": "line-07-01",
         "kind": "dialogue",
         "at": 381.7,
-        "error": 0.7967303240740741,
-        "correlation": 0.9958680756761112,
+        "error": 0.8511606224279835,
+        "correlation": 0.9956654426038186,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3908564814814814,
-            "correlation": 0.9957030731679484,
+            "error": 1.4133101851851853,
+            "correlation": 0.9956436121029927,
             "passed": true
           }
         ]
@@ -1724,14 +1724,14 @@
         "id": "line-07-02",
         "kind": "dialogue",
         "at": 387.73333333333335,
-        "error": 0.9172775205761317,
-        "correlation": 0.9947518873421277,
+        "error": 0.9480291923868313,
+        "correlation": 0.9946604479284347,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 2.371064814814815,
-            "correlation": 0.991780516903178,
+            "error": 2.413310185185185,
+            "correlation": 0.9916984192191547,
             "passed": true
           }
         ]
@@ -1740,14 +1740,14 @@
         "id": "line-07-03",
         "kind": "dialogue",
         "at": 396.1,
-        "error": 0.785960005144033,
-        "correlation": 0.9964827867975461,
+        "error": 0.814477237654321,
+        "correlation": 0.9963689437859728,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3140046296296297,
-            "correlation": 0.9973203717922962,
+            "error": 1.35625,
+            "correlation": 0.9971839300414752,
             "passed": true
           }
         ]
@@ -1756,14 +1756,14 @@
         "id": "line-07-04",
         "kind": "dialogue",
         "at": 402.5,
-        "error": 0.900414737654321,
-        "correlation": 0.9949600907600696,
+        "error": 0.9560667438271605,
+        "correlation": 0.9947744452635787,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8856481481481482,
-            "correlation": 0.9927987721518798,
+            "error": 1.9261574074074075,
+            "correlation": 0.992654147566302,
             "passed": true
           }
         ]
@@ -1772,14 +1772,14 @@
         "id": "line-07-05",
         "kind": "dialogue",
         "at": 409.43333333333334,
-        "error": 0.8259870113168725,
-        "correlation": 0.9960835512286187,
+        "error": 0.8528163580246914,
+        "correlation": 0.9960116895885338,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3888888888888888,
-            "correlation": 0.9958432471073212,
+            "error": 1.4056712962962963,
+            "correlation": 0.9957787854472445,
             "passed": true
           }
         ]
@@ -1788,14 +1788,14 @@
         "id": "line-07-06",
         "kind": "dialogue",
         "at": 415.2,
-        "error": 1.0091788837448559,
-        "correlation": 0.9933948621869849,
+        "error": 1.062966177983539,
+        "correlation": 0.9932012876057332,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 2.3270833333333334,
-            "correlation": 0.9919154737714145,
+            "error": 2.363888888888889,
+            "correlation": 0.9918560632633374,
             "passed": true
           }
         ]
@@ -1804,14 +1804,14 @@
         "id": "line-07-07",
         "kind": "dialogue",
         "at": 423.56666666666666,
-        "error": 0.8139467592592593,
-        "correlation": 0.9957989254480815,
+        "error": 0.8552436985596708,
+        "correlation": 0.9956342606860716,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 0.9599537037037037,
-            "correlation": 0.9981745342844918,
+            "error": 1.0024305555555555,
+            "correlation": 0.9980102123334986,
             "passed": true
           }
         ]
@@ -1820,14 +1820,14 @@
         "id": "line-07-08",
         "kind": "dialogue",
         "at": 428.43333333333334,
-        "error": 0.7724086934156379,
-        "correlation": 0.9946379031468819,
+        "error": 0.8281089248971193,
+        "correlation": 0.9944479385349966,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.3466435185185186,
-            "correlation": 0.9936771237496079,
+            "error": 1.3653935185185184,
+            "correlation": 0.9935442670263678,
             "passed": true
           }
         ]
@@ -1836,14 +1836,14 @@
         "id": "line-07-09",
         "kind": "dialogue",
         "at": 433.7,
-        "error": 0.7951710390946503,
-        "correlation": 0.995676148939708,
+        "error": 0.8231738683127572,
+        "correlation": 0.9955929882384578,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6357638888888888,
-            "correlation": 0.9956042641705685,
+            "error": 1.657523148148148,
+            "correlation": 0.9954915540263015,
             "passed": true
           }
         ]
@@ -1852,14 +1852,14 @@
         "id": "line-07-10",
         "kind": "dialogue",
         "at": 442.43333333333334,
-        "error": 0.9276941872427984,
-        "correlation": 0.9951151968168562,
+        "error": 0.9784754372427984,
+        "correlation": 0.9949574060033435,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.9517361111111111,
-            "correlation": 0.9922945752133215,
+            "error": 1.977662037037037,
+            "correlation": 0.9921652106302962,
             "passed": true
           }
         ]
@@ -1868,14 +1868,14 @@
         "id": "line-07-11",
         "kind": "dialogue",
         "at": 449.7,
-        "error": 0.8836484053497943,
-        "correlation": 0.9957808971974651,
+        "error": 0.9145447530864198,
+        "correlation": 0.9956839166341779,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.5341435185185186,
-            "correlation": 0.996191459389967,
+            "error": 1.564699074074074,
+            "correlation": 0.9960930213850249,
             "passed": true
           }
         ]
@@ -1884,14 +1884,14 @@
         "id": "line-07-12",
         "kind": "dialogue",
         "at": 457.9,
-        "error": 0.8604359567901234,
-        "correlation": 0.9947883787113024,
+        "error": 0.8887602880658436,
+        "correlation": 0.9946695102036569,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6996527777777777,
-            "correlation": 0.994144166621679,
+            "error": 1.7364583333333334,
+            "correlation": 0.9940152923160429,
             "passed": true
           }
         ]
@@ -1900,14 +1900,14 @@
         "id": "line-07-13",
         "kind": "dialogue",
         "at": 464.8666666666667,
-        "error": 0.8359696502057613,
-        "correlation": 0.9956252934635913,
+        "error": 0.860789609053498,
+        "correlation": 0.995546137929853,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.63125,
-            "correlation": 0.9960829127296649,
+            "error": 1.6490740740740741,
+            "correlation": 0.9960234723728392,
             "passed": true
           }
         ]
@@ -1916,14 +1916,14 @@
         "id": "line-07-14",
         "kind": "dialogue",
         "at": 473.2,
-        "error": 1.0267971965020577,
-        "correlation": 0.9971080360036061,
+        "error": 1.0716949588477367,
+        "correlation": 0.9970242608742361,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 2.075578703703704,
-            "correlation": 0.9925824949552096,
+            "error": 2.1118055555555557,
+            "correlation": 0.9924603239181106,
             "passed": true
           }
         ]
@@ -1932,14 +1932,14 @@
         "id": "line-07-15",
         "kind": "dialogue",
         "at": 481.4,
-        "error": 0.9121656378600823,
-        "correlation": 0.9955857111111669,
+        "error": 0.9447980967078189,
+        "correlation": 0.9955007319432492,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8899305555555554,
-            "correlation": 0.9916805122139033,
+            "error": 1.9143518518518519,
+            "correlation": 0.9915779181698966,
             "passed": true
           }
         ]
@@ -1948,14 +1948,14 @@
         "id": "line-07-16",
         "kind": "dialogue",
         "at": 488.6666666666667,
-        "error": 0.8598572530864198,
-        "correlation": 0.9965845154239343,
+        "error": 0.883985982510288,
+        "correlation": 0.9965255147316392,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6166666666666667,
-            "correlation": 0.9952231652441892,
+            "error": 1.636111111111111,
+            "correlation": 0.9951584254115102,
             "passed": true
           }
         ]
@@ -1964,14 +1964,14 @@
         "id": "line-07-17",
         "kind": "dialogue",
         "at": 496.06666666666666,
-        "error": 0.8823463220164609,
-        "correlation": 0.9960149886688137,
+        "error": 0.9082593878600823,
+        "correlation": 0.9959333258507206,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.8083333333333333,
-            "correlation": 0.9924843874291585,
+            "error": 1.835763888888889,
+            "correlation": 0.992366440610457,
             "passed": true
           }
         ]
@@ -1980,14 +1980,14 @@
         "id": "line-08-00",
         "kind": "dialogue",
         "at": 502.8333333333333,
-        "error": 2.777199074074074,
-        "correlation": 0.9935011966481692,
+        "error": 2.84667566872428,
+        "correlation": 0.9934190588396223,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.6679398148148148,
-            "correlation": 0.9927057575930116,
+            "error": 1.7278935185185185,
+            "correlation": 0.99261371447646,
             "passed": true
           }
         ]
@@ -1996,14 +1996,14 @@
         "id": "line-08-01",
         "kind": "dialogue",
         "at": 509.1666666666667,
-        "error": 2.6917277520576133,
-        "correlation": 0.9938485452317959,
+        "error": 2.760127314814815,
+        "correlation": 0.9937652605932501,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0546296296296296,
-            "correlation": 0.9974714333723047,
+            "error": 1.1260416666666666,
+            "correlation": 0.9972664340935271,
             "passed": true
           }
         ]
@@ -2012,14 +2012,14 @@
         "id": "line-08-02",
         "kind": "dialogue",
         "at": 514.1333333333333,
-        "error": 0.8079025205761317,
-        "correlation": 0.9960841994676877,
+        "error": 0.8460808899176955,
+        "correlation": 0.9959464052503988,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.410648148148148,
-            "correlation": 0.9958576323117665,
+            "error": 1.4379629629629629,
+            "correlation": 0.9957489179467958,
             "passed": true
           }
         ]
@@ -2028,14 +2028,14 @@
         "id": "line-08-03",
         "kind": "dialogue",
         "at": 520.4666666666667,
-        "error": 0.846338091563786,
-        "correlation": 0.9948138534018046,
+        "error": 0.8708686985596708,
+        "correlation": 0.994723763265375,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.790162037037037,
-            "correlation": 0.9909681709620126,
+            "error": 1.8152777777777778,
+            "correlation": 0.9908637914258315,
             "passed": true
           }
         ]
@@ -2044,14 +2044,14 @@
         "id": "line-08-04",
         "kind": "dialogue",
         "at": 526.9,
-        "error": 2.701581790123457,
-        "correlation": 0.993858396588723,
+        "error": 2.7699331275720165,
+        "correlation": 0.9937709773999731,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.111574074074074,
-            "correlation": 0.9976399078594168,
+            "error": 1.166087962962963,
+            "correlation": 0.9974662707909803,
             "passed": true
           }
         ]
@@ -2060,14 +2060,14 @@
         "id": "line-08-05",
         "kind": "dialogue",
         "at": 532.0666666666667,
-        "error": 2.6966145833333335,
-        "correlation": 0.9936867960431259,
+        "error": 2.7627797067901234,
+        "correlation": 0.9936064958219215,
         "passed": true,
         "regions": [
           {
             "region": "subtitle",
-            "error": 1.0797453703703703,
-            "correlation": 0.9919892333176439,
+            "error": 1.124074074074074,
+            "correlation": 0.991838041057618,
             "passed": true
           }
         ]
@@ -2076,26 +2076,26 @@
         "id": "elaine",
         "kind": "character",
         "at": 541.9333333333333,
-        "error": 0.6250321502057613,
-        "correlation": 0.9997909910584941,
+        "error": 0.6679044495884774,
+        "correlation": 0.9997594767688958,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6130769230769231,
-            "correlation": 0.9929276250507331,
+            "error": 0.6225641025641026,
+            "correlation": 0.9928174376721446,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.9099505125486037,
-            "correlation": 0.9997462419792832,
+            "error": 0.9627076705549664,
+            "correlation": 0.9997228550380127,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.616977466977467,
-            "correlation": 0.9990917625526136,
+            "error": 0.6616161616161617,
+            "correlation": 0.9989261649416789,
             "passed": true
           }
         ]
@@ -2104,26 +2104,26 @@
         "id": "liora",
         "kind": "character",
         "at": 554.1333333333333,
-        "error": 0.6475533693415638,
-        "correlation": 0.9998354498925894,
+        "error": 0.6878858024691358,
+        "correlation": 0.9998156375950507,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.548974358974359,
-            "correlation": 0.9925759224011831,
+            "error": 0.5576923076923077,
+            "correlation": 0.9923895616549745,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.020767055496642,
-            "correlation": 0.9998105452299882,
+            "error": 1.1119653587840226,
+            "correlation": 0.999784860105024,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.637995337995338,
-            "correlation": 0.9989975431187423,
+            "error": 0.6739704739704739,
+            "correlation": 0.9988383463743258,
             "passed": true
           }
         ]
@@ -2132,26 +2132,26 @@
         "id": "seris",
         "kind": "character",
         "at": 566.3333333333334,
-        "error": 0.6337448559670782,
-        "correlation": 0.9998291614951266,
+        "error": 0.6731288580246914,
+        "correlation": 0.9998082952398101,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6107692307692307,
-            "correlation": 0.9910404776572581,
+            "error": 0.6189743589743589,
+            "correlation": 0.9907175052787242,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.105072463768116,
-            "correlation": 0.9997692625719686,
+            "error": 1.1858430540827147,
+            "correlation": 0.9997372385946378,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5589355089355089,
-            "correlation": 0.9990427641002938,
+            "error": 0.5944832944832945,
+            "correlation": 0.9988654844111804,
             "passed": true
           }
         ]
@@ -2160,26 +2160,26 @@
         "id": "noelle",
         "kind": "character",
         "at": 578.5333333333333,
-        "error": 0.6161908436213992,
-        "correlation": 0.9998423984292891,
+        "error": 0.6596579218106996,
+        "correlation": 0.9998213227601506,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5110256410256411,
-            "correlation": 0.9947039184029159,
+            "error": 0.5225641025641026,
+            "correlation": 0.9945646721262358,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.9949628844114529,
-            "correlation": 0.9997923016666311,
+            "error": 1.0916401555319901,
+            "correlation": 0.9997612314321085,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5767676767676768,
-            "correlation": 0.999040233225915,
+            "error": 0.6168997668997669,
+            "correlation": 0.9988556026865559,
             "passed": true
           }
         ]
@@ -2188,26 +2188,26 @@
         "id": "pale-wolf",
         "kind": "character",
         "at": 590.7333333333333,
-        "error": 0.5764049639917695,
-        "correlation": 0.9997714694200711,
+        "error": 0.6086998456790124,
+        "correlation": 0.9997481720903321,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7171794871794872,
-            "correlation": 0.9953481987819967,
+            "error": 0.7330769230769231,
+            "correlation": 0.9952380563596729,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.7296747967479674,
-            "correlation": 0.9997714032556666,
+            "error": 0.777306468716861,
+            "correlation": 0.9997479133656768,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5654234654234654,
-            "correlation": 0.9990270955321182,
+            "error": 0.5977466977466978,
+            "correlation": 0.9988624288200616,
             "passed": true
           }
         ]
@@ -2216,26 +2216,26 @@
         "id": "stone-drake",
         "kind": "character",
         "at": 602.9333333333333,
-        "error": 0.6024787808641975,
-        "correlation": 0.9997669248122537,
+        "error": 0.6398855452674898,
+        "correlation": 0.9997419845352254,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.852051282051282,
-            "correlation": 0.994886527417035,
+            "error": 0.8517948717948718,
+            "correlation": 0.9948260054200695,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.6750618593142453,
-            "correlation": 0.9998328763305857,
+            "error": 0.7251679038529516,
+            "correlation": 0.9998146464131036,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6346930846930847,
-            "correlation": 0.9989989582030478,
+            "error": 0.6815073815073815,
+            "correlation": 0.9988169128173098,
             "passed": true
           }
         ]
@@ -2244,26 +2244,26 @@
         "id": "hollow-keeper",
         "kind": "character",
         "at": 615.1333333333333,
-        "error": 0.6093106995884774,
-        "correlation": 0.9997612970567727,
+        "error": 0.6411715534979424,
+        "correlation": 0.9997383611620578,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9146153846153846,
-            "correlation": 0.9935233179624802,
+            "error": 0.9182051282051282,
+            "correlation": 0.9934818444280804,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.6460763520678685,
-            "correlation": 0.9998550113227829,
+            "error": 0.6901732060798869,
+            "correlation": 0.9998357595554598,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6547397047397048,
-            "correlation": 0.9990776187192022,
+            "error": 0.69001554001554,
+            "correlation": 0.9989400214299877,
             "passed": true
           }
         ]
@@ -2272,26 +2272,26 @@
         "id": "moon-moth",
         "kind": "character",
         "at": 627.3333333333334,
-        "error": 0.6154996141975309,
-        "correlation": 0.9997577370308801,
+        "error": 0.6528420781893004,
+        "correlation": 0.9997312283265032,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.735897435897436,
-            "correlation": 0.9953381999747217,
+            "error": 0.7443589743589744,
+            "correlation": 0.9952787489231769,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.7126193001060446,
-            "correlation": 0.9997945351422912,
+            "error": 0.7607811947684694,
+            "correlation": 0.9997722358249486,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6651903651903652,
-            "correlation": 0.9990483789293607,
+            "error": 0.7104118104118105,
+            "correlation": 0.9988859754486793,
             "passed": true
           }
         ]
@@ -2300,26 +2300,26 @@
         "id": "veil-priestess",
         "kind": "character",
         "at": 639.5333333333333,
-        "error": 0.5740097736625515,
-        "correlation": 0.9997756519890145,
+        "error": 0.6063850308641975,
+        "correlation": 0.9997489599672081,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.69,
-            "correlation": 0.9958206223544352,
+            "error": 0.7051282051282052,
+            "correlation": 0.9957026828309761,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.6550901378579003,
-            "correlation": 0.9997991130681674,
+            "error": 0.6895546129374337,
+            "correlation": 0.9997752369674562,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5996114996114996,
-            "correlation": 0.999022661619453,
+            "error": 0.6381507381507382,
+            "correlation": 0.9988429099775334,
             "passed": true
           }
         ]
@@ -2328,26 +2328,26 @@
         "id": "thorn-witch",
         "kind": "character",
         "at": 651.7333333333333,
-        "error": 0.6115129886831275,
-        "correlation": 0.9997925712763824,
+        "error": 0.6535333076131687,
+        "correlation": 0.9997655117168965,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6874358974358974,
-            "correlation": 0.9959984611478447,
+            "error": 0.7002564102564103,
+            "correlation": 0.9958988293989357,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.6300813008130082,
-            "correlation": 0.999883768104821,
+            "error": 0.6781548250265111,
+            "correlation": 0.9998678724439838,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.7012820512820512,
-            "correlation": 0.9990492721450941,
+            "error": 0.7581585081585082,
+            "correlation": 0.9988647484252009,
             "passed": true
           }
         ]
@@ -2356,26 +2356,26 @@
         "id": "iris",
         "kind": "character",
         "at": 663.9333333333333,
-        "error": 0.9188368055555556,
-        "correlation": 0.9994816280697797,
+        "error": 0.9603427211934157,
+        "correlation": 0.9994575597377218,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.8066666666666666,
-            "correlation": 0.991961278045867,
+            "error": 0.8179487179487179,
+            "correlation": 0.9918080334077511,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.309384941675504,
-            "correlation": 0.9986717010768166,
+            "error": 2.3733651466949452,
+            "correlation": 0.9986397641771926,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6885003885003885,
-            "correlation": 0.9990801702889924,
+            "error": 0.738073038073038,
+            "correlation": 0.9989089455661433,
             "passed": true
           }
         ]
@@ -2384,26 +2384,26 @@
         "id": "mireille",
         "kind": "character",
         "at": 676.1333333333333,
-        "error": 0.8668177726337448,
-        "correlation": 0.9994680010758193,
+        "error": 0.9081468621399177,
+        "correlation": 0.9994342597314406,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0315384615384615,
-            "correlation": 0.992235136877261,
+            "error": 1.0435897435897437,
+            "correlation": 0.9921365612713854,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.063538352774832,
-            "correlation": 0.9986146076960797,
+            "error": 2.126546482856133,
+            "correlation": 0.9985511297069665,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6365190365190365,
-            "correlation": 0.9990341409311901,
+            "error": 0.6841491841491841,
+            "correlation": 0.9988583617707313,
             "passed": true
           }
         ]
@@ -2412,26 +2412,26 @@
         "id": "asteria",
         "kind": "character",
         "at": 688.3333333333334,
-        "error": 0.7934831532921811,
-        "correlation": 0.9995381820425637,
+        "error": 0.8288483796296297,
+        "correlation": 0.9995107175828233,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6651282051282051,
-            "correlation": 0.9939363742485763,
+            "error": 0.6707692307692308,
+            "correlation": 0.993921968229819,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.920908448214917,
-            "correlation": 0.9987981618783109,
+            "error": 1.9825910215623896,
+            "correlation": 0.9987503206687761,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5717560217560218,
-            "correlation": 0.9990286265760585,
+            "error": 0.6052836052836053,
+            "correlation": 0.9988575211242484,
             "passed": true
           }
         ]
@@ -2440,26 +2440,26 @@
         "id": "evelyn",
         "kind": "character",
         "at": 700.5333333333333,
-        "error": 0.7093139146090535,
-        "correlation": 0.9997994639208314,
+        "error": 0.7522505144032922,
+        "correlation": 0.9997825929965254,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6310256410256411,
-            "correlation": 0.992812209829626,
+            "error": 0.6376923076923077,
+            "correlation": 0.9926462542376203,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.364528101802757,
-            "correlation": 0.9996425894398073,
+            "error": 1.446800989749028,
+            "correlation": 0.9996209430763262,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6188811188811189,
-            "correlation": 0.999018831477804,
+            "error": 0.6651515151515152,
+            "correlation": 0.99883930647167,
             "passed": true
           }
         ]
@@ -2468,26 +2468,26 @@
         "id": "selene",
         "kind": "character",
         "at": 712.7333333333333,
-        "error": 0.7821823559670782,
-        "correlation": 0.999637606689184,
+        "error": 0.8225630144032922,
+        "correlation": 0.9996078838264287,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5861538461538461,
-            "correlation": 0.9928409800428758,
+            "error": 0.5992307692307692,
+            "correlation": 0.9927138676633706,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.7141215977377164,
-            "correlation": 0.9991829684952024,
+            "error": 1.7712972781901732,
+            "correlation": 0.9991340805575112,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6492618492618493,
-            "correlation": 0.9989608527234276,
+            "error": 0.6967754467754468,
+            "correlation": 0.9987731539442779,
             "passed": true
           }
         ]
@@ -2496,26 +2496,26 @@
         "id": "athena",
         "kind": "character",
         "at": 724.9333333333333,
-        "error": 0.8745177469135802,
-        "correlation": 0.9995821407296812,
+        "error": 0.9162487139917695,
+        "correlation": 0.9995603723225552,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5007692307692307,
-            "correlation": 0.9945579639052243,
+            "error": 0.5043589743589744,
+            "correlation": 0.9945513712653866,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.2119123365146693,
-            "correlation": 0.9989542640775908,
+            "error": 2.288706256627784,
+            "correlation": 0.9989219298028699,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6667055167055167,
-            "correlation": 0.9990645186842989,
+            "error": 0.713053613053613,
+            "correlation": 0.9989055379423245,
             "passed": true
           }
         ]
@@ -2524,26 +2524,26 @@
         "id": "flora",
         "kind": "character",
         "at": 737.1333333333333,
-        "error": 0.8673643261316872,
-        "correlation": 0.9993681987032078,
+        "error": 0.9010095164609053,
+        "correlation": 0.9993316634897713,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5802564102564103,
-            "correlation": 0.9942439659024782,
+            "error": 0.5982051282051282,
+            "correlation": 0.9938778138884193,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.2169494521032167,
-            "correlation": 0.9978059806579477,
+            "error": 2.2540650406504064,
+            "correlation": 0.9977338424024016,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6371794871794871,
-            "correlation": 0.9989955778634063,
+            "error": 0.6764568764568765,
+            "correlation": 0.9988350704129082,
             "passed": true
           }
         ]
@@ -2552,26 +2552,26 @@
         "id": "rainbow-iris",
         "kind": "character",
         "at": 749.3333333333334,
-        "error": 0.8620113168724279,
-        "correlation": 0.9992573348044461,
+        "error": 0.8847093621399177,
+        "correlation": 0.9992436601300402,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6117948717948718,
-            "correlation": 0.989482432132353,
+            "error": 0.6097435897435898,
+            "correlation": 0.9896350870810392,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.2211912336514668,
-            "correlation": 0.9971284561928877,
+            "error": 2.2416048073524215,
+            "correlation": 0.99711878984616,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6185314685314686,
-            "correlation": 0.9991162981143925,
+            "error": 0.6437839937839938,
+            "correlation": 0.9990232698054463,
             "passed": true
           }
         ]
@@ -2580,26 +2580,26 @@
         "id": "eos",
         "kind": "character",
         "at": 761.5333333333333,
-        "error": 0.9125032150205762,
-        "correlation": 0.9992818473239347,
+        "error": 0.9488811728395061,
+        "correlation": 0.9992484726913072,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5761538461538461,
-            "correlation": 0.9931756321988355,
+            "error": 0.5738461538461539,
+            "correlation": 0.9933477084402319,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.4004065040650406,
-            "correlation": 0.9974924403710803,
+            "error": 2.440615058324496,
+            "correlation": 0.9974387645641802,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6657731157731158,
-            "correlation": 0.9990752619850027,
+            "error": 0.7137140637140638,
+            "correlation": 0.9989060225547652,
             "passed": true
           }
         ]
@@ -2608,26 +2608,26 @@
         "id": "nike",
         "kind": "character",
         "at": 773.7333333333333,
-        "error": 0.846997170781893,
-        "correlation": 0.999316494366872,
+        "error": 0.8724922839506173,
+        "correlation": 0.9992979966659136,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.43435897435897436,
-            "correlation": 0.9953004976153604,
+            "error": 0.43923076923076926,
+            "correlation": 0.9951890999469232,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.310710498409332,
-            "correlation": 0.9977022543369009,
+            "error": 2.333775185577943,
+            "correlation": 0.9976771440478572,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5716783216783217,
-            "correlation": 0.9991647831038174,
+            "error": 0.6012043512043512,
+            "correlation": 0.9990521145506062,
             "passed": true
           }
         ]
@@ -2636,26 +2636,26 @@
         "id": "vespera",
         "kind": "character",
         "at": 785.9333333333333,
-        "error": 0.752491640946502,
-        "correlation": 0.9997381345181507,
+        "error": 0.7961998456790124,
+        "correlation": 0.9997160982775306,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6551282051282051,
-            "correlation": 0.9922521611135947,
+            "error": 0.6617948717948718,
+            "correlation": 0.9921265783238356,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.487363025804171,
-            "correlation": 0.9995677065147947,
+            "error": 1.554612937433722,
+            "correlation": 0.9995477524542238,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6658508158508158,
-            "correlation": 0.9990376837086888,
+            "error": 0.7168220668220668,
+            "correlation": 0.9988408475254443,
             "passed": true
           }
         ]
@@ -2664,26 +2664,26 @@
         "id": "miette",
         "kind": "character",
         "at": 798.1333333333333,
-        "error": 0.7478459362139918,
-        "correlation": 0.9997045868045734,
+        "error": 0.7927758487654321,
+        "correlation": 0.9996778398091622,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5738461538461539,
-            "correlation": 0.9941612919909707,
+            "error": 0.5846153846153846,
+            "correlation": 0.9939269930904803,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.492665252739484,
-            "correlation": 0.9994533407683964,
+            "error": 1.549575821845175,
+            "correlation": 0.9994250939837183,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6684537684537685,
-            "correlation": 0.9990163269459307,
+            "error": 0.7252913752913753,
+            "correlation": 0.998817962670602,
             "passed": true
           }
         ]
@@ -2692,26 +2692,26 @@
         "id": "tikka",
         "kind": "character",
         "at": 810.3333333333334,
-        "error": 0.7404513888888888,
-        "correlation": 0.9997704776780403,
+        "error": 0.7802211934156379,
+        "correlation": 0.9997530008527153,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6505128205128206,
-            "correlation": 0.9913228924791189,
+            "error": 0.6615384615384615,
+            "correlation": 0.991064259925382,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.480823612583952,
-            "correlation": 0.9996280201697351,
+            "error": 1.5463944856839873,
+            "correlation": 0.9996099185626093,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6452214452214452,
-            "correlation": 0.9989839370497055,
+            "error": 0.6898989898989899,
+            "correlation": 0.9988112756725963,
             "passed": true
           }
         ]
@@ -2720,26 +2720,26 @@
         "id": "nox",
         "kind": "character",
         "at": 822.5333333333333,
-        "error": 0.6187307098765432,
-        "correlation": 0.9998591273004304,
+        "error": 0.6561374742798354,
+        "correlation": 0.9998437310508267,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5805128205128205,
-            "correlation": 0.9911632582052051,
+            "error": 0.5912820512820512,
+            "correlation": 0.9907647163278067,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.022887946270767,
-            "correlation": 0.9998371605503689,
+            "error": 1.110197949805585,
+            "correlation": 0.9998191690534683,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.562975912975913,
-            "correlation": 0.9990268337994282,
+            "error": 0.5900543900543901,
+            "correlation": 0.9988712434071464,
             "passed": true
           }
         ]
@@ -2748,26 +2748,26 @@
         "id": "kuzuha",
         "kind": "character",
         "at": 834.7333333333333,
-        "error": 0.888133359053498,
-        "correlation": 0.9995724702578844,
+        "error": 0.9174704218106996,
+        "correlation": 0.999557343995045,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.4584615384615385,
-            "correlation": 0.9981856053779095,
+            "error": 0.47307692307692306,
+            "correlation": 0.9980134368825027,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.5540827147401908,
-            "correlation": 0.9988572299198356,
+            "error": 2.5893425238600214,
+            "correlation": 0.9988353475385472,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5545066045066045,
-            "correlation": 0.9989246320515387,
+            "error": 0.5854312354312354,
+            "correlation": 0.9987623067042037,
             "passed": true
           }
         ]
@@ -2776,26 +2776,26 @@
         "id": "kuzuha-awakened",
         "kind": "character",
         "at": 846.9333333333333,
-        "error": 1.0291923868312758,
-        "correlation": 0.9992167050079349,
+        "error": 1.0515689300411524,
+        "correlation": 0.9991978900418872,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.798974358974359,
-            "correlation": 0.9944663371021643,
+            "error": 0.8028205128205128,
+            "correlation": 0.9944670787706429,
             "passed": true
           },
           {
             "region": "art",
-            "error": 3.200424178154825,
-            "correlation": 0.997895865001164,
+            "error": 3.2436373276776247,
+            "correlation": 0.9978557459132337,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5602952602952603,
-            "correlation": 0.9989121108686891,
+            "error": 0.572999222999223,
+            "correlation": 0.9988200214730247,
             "passed": true
           }
         ]
@@ -2804,26 +2804,26 @@
         "id": "artemis",
         "kind": "character",
         "at": 859.1333333333333,
-        "error": 0.6349344135802469,
-        "correlation": 0.999859047547553,
+        "error": 0.6764242541152263,
+        "correlation": 0.9998410543792622,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6994871794871795,
-            "correlation": 0.9933890184062303,
+            "error": 0.7158974358974359,
+            "correlation": 0.99320188676878,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.0707847295864263,
-            "correlation": 0.999824003843306,
+            "error": 1.1696712619300107,
+            "correlation": 0.9997957149680052,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5636363636363636,
-            "correlation": 0.9990257430843973,
+            "error": 0.5947940947940948,
+            "correlation": 0.9988586748667537,
             "passed": true
           }
         ]
@@ -2832,26 +2832,26 @@
         "id": "persephone",
         "kind": "character",
         "at": 871.3333333333334,
-        "error": 0.8464023919753086,
-        "correlation": 0.9996992913260248,
+        "error": 0.8943544238683128,
+        "correlation": 0.9996763488190828,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7912820512820513,
-            "correlation": 0.9923144893840161,
+            "error": 0.8071794871794872,
+            "correlation": 0.9919822843528046,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.9004065040650406,
-            "correlation": 0.9993978019880516,
+            "error": 1.9761399787910923,
+            "correlation": 0.9993698367352329,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6925407925407926,
-            "correlation": 0.9990135229359134,
+            "error": 0.7495726495726496,
+            "correlation": 0.9988132365540502,
             "passed": true
           }
         ]
@@ -2860,26 +2860,26 @@
         "id": "hestia",
         "kind": "character",
         "at": 883.5333333333333,
-        "error": 0.8788258744855967,
-        "correlation": 0.9996285655109705,
+        "error": 0.9203800154320988,
+        "correlation": 0.9996088702051075,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.651025641025641,
-            "correlation": 0.9927835952407101,
+            "error": 0.6630769230769231,
+            "correlation": 0.9925235193669486,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.269794980558501,
-            "correlation": 0.9991177511726936,
+            "error": 2.3313008130081303,
+            "correlation": 0.9990936002907963,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6332556332556333,
-            "correlation": 0.9990010309802945,
+            "error": 0.6818181818181818,
+            "correlation": 0.9988078165594386,
             "passed": true
           }
         ]
@@ -2888,26 +2888,26 @@
         "id": "hebe",
         "kind": "character",
         "at": 895.7333333333333,
-        "error": 0.8448591820987654,
-        "correlation": 0.9994572614036539,
+        "error": 0.8801761831275721,
+        "correlation": 0.9994258788921663,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.4805128205128205,
-            "correlation": 0.9917442695320884,
+            "error": 0.48923076923076925,
+            "correlation": 0.991426816002358,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.109579356663132,
-            "correlation": 0.9983866038053711,
+            "error": 2.1572993990809475,
+            "correlation": 0.9983319969403142,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6485625485625486,
-            "correlation": 0.9990599942130589,
+            "error": 0.6873348873348873,
+            "correlation": 0.9989074289454422,
             "passed": true
           }
         ]
@@ -2916,26 +2916,26 @@
         "id": "seoritsu",
         "kind": "character",
         "at": 907.9333333333333,
-        "error": 0.7312885802469136,
-        "correlation": 0.9997310798957982,
+        "error": 0.7780832047325102,
+        "correlation": 0.9997036658698907,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.8456410256410256,
-            "correlation": 0.9912994830762282,
+            "error": 0.8615384615384616,
+            "correlation": 0.9910992241091207,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.2615765288087664,
-            "correlation": 0.9996059867446409,
+            "error": 1.3553375751148815,
+            "correlation": 0.9995690791734069,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6878787878787879,
-            "correlation": 0.9990533678338491,
+            "error": 0.7344988344988345,
+            "correlation": 0.9988889396397629,
             "passed": true
           }
         ]
@@ -2944,26 +2944,26 @@
         "id": "ukanomitama",
         "kind": "character",
         "at": 920.1333333333333,
-        "error": 0.8635063014403292,
-        "correlation": 0.9996069163268715,
+        "error": 0.9021186985596708,
+        "correlation": 0.9995877121368234,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.838974358974359,
-            "correlation": 0.9920955932800715,
+            "error": 0.8461538461538461,
+            "correlation": 0.992001288877454,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.225698126546483,
-            "correlation": 0.9990610161423954,
+            "error": 2.2948038176033934,
+            "correlation": 0.9990333690333034,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5856643356643356,
-            "correlation": 0.9990393781850724,
+            "error": 0.6257964257964258,
+            "correlation": 0.99885490326849,
             "passed": true
           }
         ]
@@ -2972,26 +2972,26 @@
         "id": "mizuhanome",
         "kind": "character",
         "at": 932.3333333333334,
-        "error": 0.7197788065843621,
-        "correlation": 0.9997716158168619,
+        "error": 0.7613168724279835,
+        "correlation": 0.9997485604824333,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.735897435897436,
-            "correlation": 0.9911264448438966,
+            "error": 0.7453846153846154,
+            "correlation": 0.9908272901222801,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.3492400141392717,
-            "correlation": 0.9995976781894671,
+            "error": 1.4194945210321668,
+            "correlation": 0.9995640306018794,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6398601398601399,
-            "correlation": 0.9990714210226584,
+            "error": 0.6843434343434344,
+            "correlation": 0.9988997642991363,
             "passed": true
           }
         ]
@@ -3000,26 +3000,26 @@
         "id": "haniyasu",
         "kind": "character",
         "at": 944.5333333333333,
-        "error": 0.7980806327160493,
-        "correlation": 0.9997464622492677,
+        "error": 0.8441518775720165,
+        "correlation": 0.999727532851477,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7882051282051282,
-            "correlation": 0.9924998589250106,
+            "error": 0.8033333333333333,
+            "correlation": 0.9923946700077985,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.7745669848002827,
-            "correlation": 0.999501036336375,
+            "error": 1.862495581477554,
+            "correlation": 0.9994750403185433,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6336829836829837,
-            "correlation": 0.9989997513043961,
+            "error": 0.6797979797979798,
+            "correlation": 0.99881979744548,
             "passed": true
           }
         ]
@@ -3028,26 +3028,26 @@
         "id": "toyotama",
         "kind": "character",
         "at": 956.7333333333333,
-        "error": 0.8779256687242798,
-        "correlation": 0.9994728343985068,
+        "error": 0.9139821244855967,
+        "correlation": 0.9994456016672041,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7948717948717948,
-            "correlation": 0.9928899416375894,
+            "error": 0.8038461538461539,
+            "correlation": 0.9927970485917911,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.170289855072464,
-            "correlation": 0.9986029860321302,
+            "error": 2.221279604100389,
+            "correlation": 0.9985590981877703,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6491452991452992,
-            "correlation": 0.9990495300457999,
+            "error": 0.6897824397824398,
+            "correlation": 0.9988971003248943,
             "passed": true
           }
         ]
@@ -3056,26 +3056,26 @@
         "id": "wakahirume",
         "kind": "character",
         "at": 968.9333333333333,
-        "error": 0.8171939300411523,
-        "correlation": 0.9995804035382395,
+        "error": 0.8591660236625515,
+        "correlation": 0.9995529762332239,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7715384615384615,
-            "correlation": 0.9922368549051062,
+            "error": 0.7815384615384615,
+            "correlation": 0.9922446501024761,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.9224991162955107,
-            "correlation": 0.9990358512390146,
+            "error": 1.9935489572287026,
+            "correlation": 0.9989962166553267,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6167055167055167,
-            "correlation": 0.9990842280623591,
+            "error": 0.6623154623154623,
+            "correlation": 0.9988995629436764,
             "passed": true
           }
         ]
@@ -3084,26 +3084,26 @@
         "id": "iwanagahime",
         "kind": "character",
         "at": 981.1333333333333,
-        "error": 0.6551086676954733,
-        "correlation": 0.9998303219753751,
+        "error": 0.7022890946502057,
+        "correlation": 0.9998101251815388,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.8694871794871795,
-            "correlation": 0.9909539568658976,
+            "error": 0.8715384615384615,
+            "correlation": 0.9908746341452962,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.9736656062212796,
-            "correlation": 0.9998417458451401,
+            "error": 1.080682219865677,
+            "correlation": 0.999814992349422,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6261849261849262,
-            "correlation": 0.9990827170692699,
+            "error": 0.6698135198135198,
+            "correlation": 0.9989113917351419,
             "passed": true
           }
         ]
@@ -3112,26 +3112,26 @@
         "id": "kukurihime",
         "kind": "character",
         "at": 993.3333333333334,
-        "error": 0.8651138117283951,
-        "correlation": 0.9996299170323664,
+        "error": 0.9038708847736625,
+        "correlation": 0.9996091563386021,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7692307692307693,
-            "correlation": 0.9910028559077988,
+            "error": 0.7771794871794871,
+            "correlation": 0.9908056460183001,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.152792506185931,
-            "correlation": 0.9991411680651922,
+            "error": 2.225609756097561,
+            "correlation": 0.999108523157569,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6298756798756798,
-            "correlation": 0.9990345563695877,
+            "error": 0.6687645687645688,
+            "correlation": 0.9988790141669138,
             "passed": true
           }
         ]
@@ -3140,26 +3140,26 @@
         "id": "lisette",
         "kind": "character",
         "at": 1005.5333333333333,
-        "error": 0.6834329989711934,
-        "correlation": 0.9998164211194498,
+        "error": 0.7099086934156379,
+        "correlation": 0.9998077259123558,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5946153846153847,
-            "correlation": 0.9926805646065522,
+            "error": 0.6033333333333334,
+            "correlation": 0.9925953086733091,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.2576882290562037,
-            "correlation": 0.9996881278631498,
+            "error": 1.2931247790738778,
+            "correlation": 0.9996810107390826,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6139860139860139,
-            "correlation": 0.9990918464334588,
+            "error": 0.6383061383061384,
+            "correlation": 0.9989988851931967,
             "passed": true
           }
         ]
@@ -3168,26 +3168,26 @@
         "id": "elaine-awakened",
         "kind": "character",
         "at": 1017.7333333333333,
-        "error": 0.7063078703703703,
-        "correlation": 0.9996683534718299,
+        "error": 0.7419463734567902,
+        "correlation": 0.9996368556848023,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6056410256410256,
-            "correlation": 0.9930462466325383,
+            "error": 0.615897435897436,
+            "correlation": 0.9929845258307578,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.3065570873100036,
-            "correlation": 0.9992510692298635,
+            "error": 1.3591375044185225,
+            "correlation": 0.9991900380337277,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6475135975135975,
-            "correlation": 0.999051000568443,
+            "error": 0.6887334887334887,
+            "correlation": 0.9988893718500625,
             "passed": true
           }
         ]
@@ -3196,26 +3196,26 @@
         "id": "liora-awakened",
         "kind": "character",
         "at": 1029.9333333333334,
-        "error": 0.7931455761316872,
-        "correlation": 0.9996264957899333,
+        "error": 0.8354070216049383,
+        "correlation": 0.9995995155835885,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5520512820512821,
-            "correlation": 0.9925971448272156,
+            "error": 0.5615384615384615,
+            "correlation": 0.9924487454078389,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.8464121597737717,
-            "correlation": 0.9991171308127225,
+            "error": 1.919406150583245,
+            "correlation": 0.9990789615821652,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6296425796425796,
-            "correlation": 0.9990155104866947,
+            "error": 0.6730380730380731,
+            "correlation": 0.9988491933168879,
             "passed": true
           }
         ]
@@ -3224,26 +3224,26 @@
         "id": "noelle-awakened",
         "kind": "character",
         "at": 1042.1333333333334,
-        "error": 0.7208558384773662,
-        "correlation": 0.999709134686081,
+        "error": 0.760304140946502,
+        "correlation": 0.9996863345393783,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5123076923076924,
-            "correlation": 0.9947882858937818,
+            "error": 0.5230769230769231,
+            "correlation": 0.994539126679864,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.4929303640862495,
-            "correlation": 0.9993506858245316,
+            "error": 1.5726405090137858,
+            "correlation": 0.99931216211849,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6131701631701632,
-            "correlation": 0.999078281279004,
+            "error": 0.6501942501942501,
+            "correlation": 0.9989369979708287,
             "passed": true
           }
         ]
@@ -3252,26 +3252,26 @@
         "id": "lisette-awakened",
         "kind": "character",
         "at": 1054.3333333333333,
-        "error": 0.7658982767489712,
-        "correlation": 0.9997318741732617,
+        "error": 0.8106835133744856,
+        "correlation": 0.999708571181337,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6064102564102564,
-            "correlation": 0.9925366211779854,
+            "error": 0.611025641025641,
+            "correlation": 0.9925682990787882,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.681336161187699,
-            "correlation": 0.999495438688029,
+            "error": 1.7682043124779074,
+            "correlation": 0.9994634693476959,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6228826728826728,
-            "correlation": 0.9990461461181297,
+            "error": 0.6657731157731158,
+            "correlation": 0.9988634215345344,
             "passed": true
           }
         ]
@@ -3280,26 +3280,26 @@
         "id": "seris-awakened",
         "kind": "character",
         "at": 1066.5333333333333,
-        "error": 0.7782118055555556,
-        "correlation": 0.9996826102037455,
+        "error": 0.8140110596707819,
+        "correlation": 0.9996610251681647,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6125641025641025,
-            "correlation": 0.9910465968219534,
+            "error": 0.6197435897435898,
+            "correlation": 0.9909976591245439,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.7804878048780488,
-            "correlation": 0.9993373127459825,
+            "error": 1.8383704489218806,
+            "correlation": 0.9993067412138095,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6096348096348096,
-            "correlation": 0.9990909408464834,
+            "error": 0.6481740481740482,
+            "correlation": 0.9989369639371348,
             "passed": true
           }
         ]
@@ -3308,26 +3308,26 @@
         "id": "selene-standard",
         "kind": "character",
         "at": 1078.7333333333333,
-        "error": 0.7166441615226338,
-        "correlation": 0.9996614808344351,
+        "error": 0.7575552983539094,
+        "correlation": 0.9996346165109309,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.591025641025641,
-            "correlation": 0.9927139006466342,
+            "error": 0.5920512820512821,
+            "correlation": 0.9927708058771425,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.4711028632025451,
-            "correlation": 0.9992484380198104,
+            "error": 1.552580417108519,
+            "correlation": 0.9992051003237384,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6013209013209013,
-            "correlation": 0.9990136136795105,
+            "error": 0.6402097902097902,
+            "correlation": 0.9988411035408225,
             "passed": true
           }
         ]
@@ -3336,26 +3336,26 @@
         "id": "athena-standard",
         "kind": "character",
         "at": 1090.9333333333334,
-        "error": 0.7993344907407407,
-        "correlation": 0.9996126964021994,
+        "error": 0.8434927983539094,
+        "correlation": 0.9995846386630036,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5023076923076923,
-            "correlation": 0.9945168674519909,
+            "error": 0.5064102564102564,
+            "correlation": 0.9945092735330039,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.7872039589961117,
-            "correlation": 0.9991049334546542,
+            "error": 1.867532697066101,
+            "correlation": 0.9990644940435494,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6762626262626262,
-            "correlation": 0.9990098771442453,
+            "error": 0.7254467754467755,
+            "correlation": 0.9988367800529521,
             "passed": true
           }
         ]
@@ -3364,26 +3364,26 @@
         "id": "flora-standard",
         "kind": "character",
         "at": 1103.1333333333334,
-        "error": 0.8325135030864198,
-        "correlation": 0.9993601027874306,
+        "error": 0.8669624485596708,
+        "correlation": 0.9993261480917203,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.58,
-            "correlation": 0.9942851856811676,
+            "error": 0.5892307692307692,
+            "correlation": 0.9940557479149873,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.0516967126193,
-            "correlation": 0.9976984829995831,
+            "error": 2.1024213503004594,
+            "correlation": 0.9976235492110391,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.625951825951826,
-            "correlation": 0.9990579537608204,
+            "error": 0.664024864024864,
+            "correlation": 0.9989112058336268,
             "passed": true
           }
         ]
@@ -3392,26 +3392,26 @@
         "id": "amaterasu-standard",
         "kind": "character",
         "at": 1115.3333333333333,
-        "error": 0.9126318158436214,
-        "correlation": 0.9992207565786181,
+        "error": 0.9517264660493827,
+        "correlation": 0.9991839239259384,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6582051282051282,
-            "correlation": 0.9939976586846051,
+            "error": 0.676923076923077,
+            "correlation": 0.9938261190640311,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.4723400494874515,
-            "correlation": 0.9973458305788971,
+            "error": 2.5387946270767054,
+            "correlation": 0.9972732326846533,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6243589743589744,
-            "correlation": 0.9990427771258079,
+            "error": 0.6626262626262627,
+            "correlation": 0.9988736617787219,
             "passed": true
           }
         ]
@@ -3420,26 +3420,26 @@
         "id": "izanami-standard",
         "kind": "character",
         "at": 1127.5333333333333,
-        "error": 0.7196180555555556,
-        "correlation": 0.9997529529019535,
+        "error": 0.7595807613168725,
+        "correlation": 0.9997323807249797,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6333333333333333,
-            "correlation": 0.9927371091895182,
+            "error": 0.6356410256410256,
+            "correlation": 0.9927478544645896,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.4766702014846236,
-            "correlation": 0.9995150910638133,
+            "error": 1.5554082714740192,
+            "correlation": 0.9994860455508405,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5971639471639472,
-            "correlation": 0.9990235640093433,
+            "error": 0.6374902874902875,
+            "correlation": 0.9988361523969038,
             "passed": true
           }
         ]
@@ -3448,26 +3448,26 @@
         "id": "artemis-standard",
         "kind": "character",
         "at": 1139.7333333333333,
-        "error": 0.6668274176954733,
-        "correlation": 0.999827480357492,
+        "error": 0.7116287294238683,
+        "correlation": 0.9998078003702527,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6933333333333334,
-            "correlation": 0.9933898805578079,
+            "error": 0.717948717948718,
+            "correlation": 0.9930492818469923,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.2583951926475787,
-            "correlation": 0.9997258933234601,
+            "error": 1.3781371509367268,
+            "correlation": 0.9996925362273746,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5578477078477079,
-            "correlation": 0.9990461379371065,
+            "error": 0.5868686868686869,
+            "correlation": 0.9989048009473108,
             "passed": true
           }
         ]
@@ -3476,26 +3476,26 @@
         "id": "persephone-standard",
         "kind": "character",
         "at": 1151.9333333333334,
-        "error": 0.8561439043209876,
-        "correlation": 0.9995775635372549,
+        "error": 0.8910108024691358,
+        "correlation": 0.9995535490642631,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7928205128205128,
-            "correlation": 0.9922973296487487,
+            "error": 0.8066666666666666,
+            "correlation": 0.9920067122485797,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.1861965358784023,
-            "correlation": 0.998976666526007,
+            "error": 2.2412513255567337,
+            "correlation": 0.9989348506207768,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5898212898212898,
-            "correlation": 0.9990096662866724,
+            "error": 0.6239316239316239,
+            "correlation": 0.9988524113258678,
             "passed": true
           }
         ]
@@ -3504,26 +3504,26 @@
         "id": "hestia-standard",
         "kind": "character",
         "at": 1164.1333333333334,
-        "error": 0.9016042952674898,
-        "correlation": 0.9995432750037094,
+        "error": 0.9458912037037037,
+        "correlation": 0.9995205613760226,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6492307692307693,
-            "correlation": 0.9927923037348472,
+            "error": 0.6656410256410257,
+            "correlation": 0.9926035524427675,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.394308943089431,
-            "correlation": 0.9988794078915005,
+            "error": 2.4597030752916225,
+            "correlation": 0.9988494809790271,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6334110334110334,
-            "correlation": 0.9990185652773449,
+            "error": 0.6853146853146853,
+            "correlation": 0.998822799622279,
             "passed": true
           }
         ]
@@ -3532,26 +3532,26 @@
         "id": "hebe-standard",
         "kind": "character",
         "at": 1176.3333333333333,
-        "error": 0.7995916923868313,
-        "correlation": 0.9995166776264002,
+        "error": 0.8362268518518519,
+        "correlation": 0.9994861699975157,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.48102564102564105,
-            "correlation": 0.9917028699668968,
+            "error": 0.4894871794871795,
+            "correlation": 0.991362675257273,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.8672675857193355,
-            "correlation": 0.9985839140749512,
+            "error": 1.917992223400495,
+            "correlation": 0.9985298409508254,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.643978243978244,
-            "correlation": 0.9990624820115369,
+            "error": 0.6846930846930847,
+            "correlation": 0.9989149520839341,
             "passed": true
           }
         ]
@@ -3560,26 +3560,26 @@
         "id": "eos-standard",
         "kind": "character",
         "at": 1188.5333333333333,
-        "error": 0.9373392489711934,
-        "correlation": 0.9991620851895378,
+        "error": 0.9742316100823045,
+        "correlation": 0.9991256384322696,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5671794871794872,
-            "correlation": 0.9933435990139206,
+            "error": 0.583076923076923,
+            "correlation": 0.9931810054351938,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.5552315305761755,
-            "correlation": 0.9968806754082685,
+            "error": 2.6008306822198657,
+            "correlation": 0.9968199096227824,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6609557109557109,
-            "correlation": 0.9990903639894678,
+            "error": 0.7055944055944056,
+            "correlation": 0.9989099887706758,
             "passed": true
           }
         ]
@@ -3588,26 +3588,26 @@
         "id": "nike-standard",
         "kind": "character",
         "at": 1200.7333333333333,
-        "error": 0.8491351594650206,
-        "correlation": 0.9992876337160783,
+        "error": 0.8835198045267489,
+        "correlation": 0.9992563671008095,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.43615384615384617,
-            "correlation": 0.995275954211326,
+            "error": 0.441025641025641,
+            "correlation": 0.9951574068957904,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.264934605867798,
-            "correlation": 0.9975876881163672,
+            "error": 2.3246730293389892,
+            "correlation": 0.9975231417298596,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5945998445998446,
-            "correlation": 0.999085340700356,
+            "error": 0.6296037296037296,
+            "correlation": 0.9989322799447837,
             "passed": true
           }
         ]
@@ -3616,26 +3616,26 @@
         "id": "rainbow-iris-standard",
         "kind": "character",
         "at": 1212.9333333333334,
-        "error": 0.8433320473251029,
-        "correlation": 0.9993586090678,
+        "error": 0.8839216820987654,
+        "correlation": 0.9993237278507137,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6125641025641025,
-            "correlation": 0.9894949500812552,
+            "error": 0.6182051282051282,
+            "correlation": 0.9893955725244469,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.0870448921880524,
-            "correlation": 0.9979009471585348,
+            "error": 2.1463414634146343,
+            "correlation": 0.9978406309506731,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6297202797202798,
-            "correlation": 0.9990721687725733,
+            "error": 0.6775835275835276,
+            "correlation": 0.9988916385702725,
             "passed": true
           }
         ]
@@ -3644,26 +3644,26 @@
         "id": "toyotama-standard",
         "kind": "character",
         "at": 1225.1333333333334,
-        "error": 0.8257619598765432,
-        "correlation": 0.9994841210642158,
+        "error": 0.8679751800411523,
+        "correlation": 0.9994509815078046,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7951282051282051,
-            "correlation": 0.9928842864101486,
+            "error": 0.8056410256410257,
+            "correlation": 0.9927464077879492,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.9317780134323081,
-            "correlation": 0.998575045992031,
+            "error": 2.0202368328031106,
+            "correlation": 0.9985093653184087,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6297979797979798,
-            "correlation": 0.9990191638850748,
+            "error": 0.668919968919969,
+            "correlation": 0.998863089347627,
             "passed": true
           }
         ]
@@ -3672,26 +3672,26 @@
         "id": "lunette",
         "kind": "character",
         "at": 1237.3333333333333,
-        "error": 0.8340406378600823,
-        "correlation": 0.9995679198696897,
+        "error": 0.8572530864197531,
+        "correlation": 0.99955589367115,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6223076923076923,
-            "correlation": 0.9930819261439375,
+            "error": 0.6256410256410256,
+            "correlation": 0.9930380155598402,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.123453517143867,
-            "correlation": 0.998849349627298,
+            "error": 2.152173913043478,
+            "correlation": 0.9988320201352316,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5901709401709402,
-            "correlation": 0.9991098295567153,
+            "error": 0.6086635586635587,
+            "correlation": 0.9990305929912755,
             "passed": true
           }
         ]
@@ -3700,26 +3700,26 @@
         "id": "lunette-awakened",
         "kind": "character",
         "at": 1249.5333333333333,
-        "error": 0.8807227366255144,
-        "correlation": 0.9993574642962387,
+        "error": 0.9112975823045267,
+        "correlation": 0.9993314349436707,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9166666666666666,
-            "correlation": 0.9943357093777061,
+            "error": 0.9194871794871795,
+            "correlation": 0.9941791380634639,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.2624602332979853,
-            "correlation": 0.9982932548421988,
+            "error": 2.322287027218098,
+            "correlation": 0.9982448506757813,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5942113442113443,
-            "correlation": 0.9991136480422029,
+            "error": 0.6178321678321679,
+            "correlation": 0.9990049924008227,
             "passed": true
           }
         ]
@@ -3728,26 +3728,26 @@
         "id": "lucielle",
         "kind": "character",
         "at": 1261.7333333333333,
-        "error": 0.6627764917695473,
-        "correlation": 0.9997860347836702,
+        "error": 0.6892361111111112,
+        "correlation": 0.9997738122241121,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6787179487179488,
-            "correlation": 0.9924462411760243,
+            "error": 0.6866666666666666,
+            "correlation": 0.9923330014008483,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.1192117355956168,
-            "correlation": 0.9996915846640549,
+            "error": 1.156769176387416,
+            "correlation": 0.999677804181302,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.612975912975913,
-            "correlation": 0.9990974716226597,
+            "error": 0.6362082362082362,
+            "correlation": 0.9990118748979101,
             "passed": true
           }
         ]
@@ -3756,26 +3756,26 @@
         "id": "nemuria",
         "kind": "character",
         "at": 1273.9333333333334,
-        "error": 0.7440200617283951,
-        "correlation": 0.9997984204822663,
+        "error": 0.7879372427983539,
+        "correlation": 0.999778857779621,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6361538461538462,
-            "correlation": 0.9932505888375972,
+            "error": 0.6441025641025641,
+            "correlation": 0.9930914323777315,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.4229409685401202,
-            "correlation": 0.9996611562628411,
+            "error": 1.5031813361611877,
+            "correlation": 0.9996349781613071,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6773892773892773,
-            "correlation": 0.9990101084404486,
+            "error": 0.725951825951826,
+            "correlation": 0.9988373294065152,
             "passed": true
           }
         ]
@@ -3784,26 +3784,26 @@
         "id": "chrona",
         "kind": "character",
         "at": 1286.1333333333334,
-        "error": 0.6342753343621399,
-        "correlation": 0.9997850011578888,
+        "error": 0.6690297067901234,
+        "correlation": 0.9997636247278869,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5756410256410256,
-            "correlation": 0.9942966525469142,
+            "error": 0.5876923076923077,
+            "correlation": 0.9940417721145104,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.164192294096854,
-            "correlation": 0.9996073745448365,
+            "error": 1.2316189466242489,
+            "correlation": 0.9995702043150477,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5324397824397824,
-            "correlation": 0.9989605963080661,
+            "error": 0.5603341103341103,
+            "correlation": 0.998804576718418,
             "passed": true
           }
         ]
@@ -3812,26 +3812,26 @@
         "id": "fortuna",
         "kind": "character",
         "at": 1298.3333333333333,
-        "error": 0.7511413323045267,
-        "correlation": 0.9997487428520078,
+        "error": 0.7964248971193416,
+        "correlation": 0.9997261859600024,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7858974358974359,
-            "correlation": 0.9922782394336677,
+            "error": 0.8005128205128205,
+            "correlation": 0.99206593443549,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.5493990809473313,
-            "correlation": 0.9995443404552463,
+            "error": 1.6222163308589608,
+            "correlation": 0.9995168268936273,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6175213675213675,
-            "correlation": 0.9990474032697815,
+            "error": 0.67000777000777,
+            "correlation": 0.9988416899989503,
             "passed": true
           }
         ]
@@ -3840,26 +3840,26 @@
         "id": "hecate",
         "kind": "character",
         "at": 1310.5333333333333,
-        "error": 0.6747524434156379,
-        "correlation": 0.999830806363756,
+        "error": 0.7169013631687243,
+        "correlation": 0.9998138371154583,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5553846153846154,
-            "correlation": 0.9924466327923738,
+            "error": 0.5594871794871795,
+            "correlation": 0.99243246703502,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.1778897136797455,
-            "correlation": 0.9997319465396687,
+            "error": 1.277394839165783,
+            "correlation": 0.9997064845632117,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6264957264957265,
-            "correlation": 0.9990339993229974,
+            "error": 0.6621989121989122,
+            "correlation": 0.9988707452625786,
             "passed": true
           }
         ]
@@ -3868,26 +3868,26 @@
         "id": "freyja",
         "kind": "character",
         "at": 1322.7333333333333,
-        "error": 0.7849794238683128,
-        "correlation": 0.9997175588213932,
+        "error": 0.8162776491769548,
+        "correlation": 0.9997015474910366,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6317948717948718,
-            "correlation": 0.9922832701664218,
+            "error": 0.6428205128205128,
+            "correlation": 0.9920399973240326,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.8687698833510074,
-            "correlation": 0.9993579817576763,
+            "error": 1.921438670908448,
+            "correlation": 0.9993327651325071,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5809246309246309,
-            "correlation": 0.9990322050508823,
+            "error": 0.6100621600621601,
+            "correlation": 0.9988969930758173,
             "passed": true
           }
         ]
@@ -3896,26 +3896,26 @@
         "id": "benzaiten",
         "kind": "character",
         "at": 1334.9333333333334,
-        "error": 0.8013278034979424,
-        "correlation": 0.9997021988713655,
+        "error": 0.8485082304526749,
+        "correlation": 0.999680161432231,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6315384615384615,
-            "correlation": 0.9949529419637745,
+            "error": 0.6374358974358975,
+            "correlation": 0.9948288148171018,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.782520325203252,
-            "correlation": 0.9993452831782611,
+            "error": 1.8711558854718982,
+            "correlation": 0.9993149969400057,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6547397047397048,
-            "correlation": 0.9990370574126993,
+            "error": 0.7083916083916084,
+            "correlation": 0.9988373975157038,
             "passed": true
           }
         ]
@@ -3924,26 +3924,26 @@
         "id": "seoritsu-standard",
         "kind": "character",
         "at": 1347.1333333333334,
-        "error": 0.742235725308642,
-        "correlation": 0.9996784479734661,
+        "error": 0.7806230709876543,
+        "correlation": 0.9996518045139182,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.8461538461538461,
-            "correlation": 0.9912950679435032,
+            "error": 0.8592307692307692,
+            "correlation": 0.9910964765890242,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.4375220926122305,
-            "correlation": 0.9994056296040761,
+            "error": 1.506627783669141,
+            "correlation": 0.9993618079115869,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6366355866355866,
-            "correlation": 0.9990096897379976,
+            "error": 0.6740481740481741,
+            "correlation": 0.9988598485010396,
             "passed": true
           }
         ]
@@ -3952,26 +3952,26 @@
         "id": "wakahirume-standard",
         "kind": "character",
         "at": 1359.3333333333333,
-        "error": 0.8307613168724279,
-        "correlation": 0.9995396281581265,
+        "error": 0.8660461676954733,
+        "correlation": 0.9995157577538675,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.7805128205128206,
-            "correlation": 0.9921090056076575,
+            "error": 0.7864102564102564,
+            "correlation": 0.9922301400203382,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.068752209261223,
-            "correlation": 0.9988646715928224,
+            "error": 2.1303464121597737,
+            "correlation": 0.9988228920183992,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5832167832167832,
-            "correlation": 0.9990342135252938,
+            "error": 0.6196581196581197,
+            "correlation": 0.998868372745006,
             "passed": true
           }
         ]
@@ -3980,26 +3980,26 @@
         "id": "ukanomitama-standard",
         "kind": "character",
         "at": 1371.5333333333333,
-        "error": 0.9067965534979424,
-        "correlation": 0.9994872676090809,
+        "error": 0.9420010288065843,
+        "correlation": 0.9994678721339304,
         "passed": true,
         "regions": [
           {
             "region": "name",
             "error": 0.8356410256410256,
-            "correlation": 0.9921902794145934,
+            "correlation": 0.9921386822347529,
             "passed": true
           },
           {
             "region": "art",
-            "error": 2.380965005302227,
-            "correlation": 0.9987178210021341,
+            "error": 2.447596323789325,
+            "correlation": 0.9986904113795363,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6214452214452214,
-            "correlation": 0.999047815767485,
+            "error": 0.6543512043512043,
+            "correlation": 0.9988981124154817,
             "passed": true
           }
         ]
@@ -4008,26 +4008,26 @@
         "id": "astraea",
         "kind": "character",
         "at": 1383.7333333333333,
-        "error": 0.7957979681069959,
-        "correlation": 0.9995787318471095,
+        "error": 0.8326099537037037,
+        "correlation": 0.9995598790430347,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6784615384615384,
-            "correlation": 0.9923599831864695,
+            "error": 0.6882051282051282,
+            "correlation": 0.9922907071420335,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.9678331565924354,
-            "correlation": 0.9989553908348433,
+            "error": 2.038971367974549,
+            "correlation": 0.9989275447938784,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5586635586635587,
-            "correlation": 0.9990762768175313,
+            "error": 0.5926961926961927,
+            "correlation": 0.9989039563232971,
             "passed": true
           }
         ]
@@ -4036,26 +4036,26 @@
         "id": "zakuro",
         "kind": "character",
         "at": 1395.9333333333334,
-        "error": 0.6896540637860082,
-        "correlation": 0.999831796701538,
+        "error": 0.7301793981481481,
+        "correlation": 0.9998143729237481,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6025641025641025,
-            "correlation": 0.9934759288849552,
+            "error": 0.6123076923076923,
+            "correlation": 0.9934276956873214,
             "passed": true
           },
           {
             "region": "art",
-            "error": 1.2445210321668434,
-            "correlation": 0.9997614824460156,
+            "error": 1.3138918345705197,
+            "correlation": 0.9997401315339268,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6264568764568764,
-            "correlation": 0.9989239437530933,
+            "error": 0.6691530691530692,
+            "correlation": 0.9987338138020585,
             "passed": true
           }
         ]
@@ -4064,26 +4064,26 @@
         "id": "ione",
         "kind": "character",
         "at": 1408.1333333333334,
-        "error": 0.6252732767489712,
-        "correlation": 0.9998810367538865,
+        "error": 0.6747685185185185,
+        "correlation": 0.9998618939736867,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.6038461538461538,
-            "correlation": 0.991816453534054,
+            "error": 0.6015384615384616,
+            "correlation": 0.9917655582041032,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8135383527748321,
-            "correlation": 0.9999013448542545,
+            "error": 0.9132202191587133,
+            "correlation": 0.9998794362769743,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6633255633255634,
-            "correlation": 0.9990599785290569,
+            "error": 0.7145687645687646,
+            "correlation": 0.9988505553243866,
             "passed": true
           }
         ]
@@ -4092,26 +4092,26 @@
         "id": "neri",
         "kind": "character",
         "at": 1420.3333333333333,
-        "error": 0.635352366255144,
-        "correlation": 0.9998853924875517,
+        "error": 0.6847511574074074,
+        "correlation": 0.9998697943122545,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.488974358974359,
-            "correlation": 0.9933920970644885,
+            "error": 0.48512820512820515,
+            "correlation": 0.993367953563603,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8664722516790385,
-            "correlation": 0.9998788041629767,
+            "error": 0.937875574407918,
+            "correlation": 0.9998663405553302,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6853146853146853,
-            "correlation": 0.9990650998728051,
+            "error": 0.7501165501165501,
+            "correlation": 0.99885817587763,
             "passed": true
           }
         ]
@@ -4120,26 +4120,26 @@
         "id": "fio",
         "kind": "character",
         "at": 1432.5333333333333,
-        "error": 0.6318319187242798,
-        "correlation": 0.999885488071564,
+        "error": 0.6727912808641975,
+        "correlation": 0.9998695809615529,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5535897435897436,
-            "correlation": 0.9929383902006975,
+            "error": 0.5661538461538461,
+            "correlation": 0.9926645943006293,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.81954754330152,
-            "correlation": 0.9999181187645712,
+            "error": 0.8834393778720396,
+            "correlation": 0.9999047871348427,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6854312354312354,
-            "correlation": 0.9990577136307229,
+            "error": 0.7307303807303808,
+            "correlation": 0.9988874487519857,
             "passed": true
           }
         ]
@@ -4148,26 +4148,26 @@
         "id": "ruka",
         "kind": "character",
         "at": 1444.7333333333333,
-        "error": 0.6383905606995884,
-        "correlation": 0.9998917725181844,
+        "error": 0.6880947788065843,
+        "correlation": 0.999875896600223,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.5184615384615384,
-            "correlation": 0.9927011067505068,
+            "error": 0.5258974358974359,
+            "correlation": 0.9924103209765582,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.7177447861435136,
-            "correlation": 0.9999258717733324,
+            "error": 0.7969247083775186,
+            "correlation": 0.9999138198875723,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.7497280497280497,
-            "correlation": 0.9990753584564681,
+            "error": 0.8118881118881119,
+            "correlation": 0.9988940954861438,
             "passed": true
           }
         ]
@@ -4176,26 +4176,26 @@
         "id": "ultimate-bloom",
         "kind": "ultimate",
         "at": 1462.1333333333334,
-        "error": 0.5603620113168725,
-        "correlation": 0.9995032342082779,
+        "error": 0.59765625,
+        "correlation": 0.9994564675683469,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9371794871794872,
-            "correlation": 0.9953257800186099,
+            "error": 0.9625641025641025,
+            "correlation": 0.9951971976509802,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8274125132555673,
-            "correlation": 0.9953530650805252,
+            "error": 0.8481795687522092,
+            "correlation": 0.9952737890406891,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.44922299922299924,
-            "correlation": 0.999057039946247,
+            "error": 0.47303807303807305,
+            "correlation": 0.9988971541377217,
             "passed": true
           }
         ]
@@ -4204,26 +4204,26 @@
         "id": "ultimate-aegis",
         "kind": "ultimate",
         "at": 1473.3333333333333,
-        "error": 0.5622588734567902,
-        "correlation": 0.9995042551715574,
+        "error": 0.5786554783950617,
+        "correlation": 0.9994914944551716,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9033333333333333,
-            "correlation": 0.9961074549675726,
+            "error": 0.9164102564102564,
+            "correlation": 0.9961156266840221,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8155708731000354,
-            "correlation": 0.9953877856321165,
+            "error": 0.8206963591375044,
+            "correlation": 0.9953549719545237,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.4613053613053613,
-            "correlation": 0.999055831285222,
+            "error": 0.4751748251748252,
+            "correlation": 0.998957993684578,
             "passed": true
           }
         ]
@@ -4232,26 +4232,26 @@
         "id": "ultimate-blade",
         "kind": "ultimate",
         "at": 1484.5333333333333,
-        "error": 0.5615837191358025,
-        "correlation": 0.9994761224806719,
+        "error": 0.578784079218107,
+        "correlation": 0.9994605903306237,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0217948717948717,
-            "correlation": 0.9937019050229243,
+            "error": 1.031025641025641,
+            "correlation": 0.9935581862480255,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8155708731000354,
-            "correlation": 0.9953879146392425,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554534376291,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.44145299145299144,
-            "correlation": 0.9989366605796393,
+            "error": 0.4574592074592075,
+            "correlation": 0.9987965576102787,
             "passed": true
           }
         ]
@@ -4260,26 +4260,26 @@
         "id": "ultimate-stars",
         "kind": "ultimate",
         "at": 1495.7333333333333,
-        "error": 0.5515689300411523,
-        "correlation": 0.9995077282462942,
+        "error": 0.5670492541152263,
+        "correlation": 0.9994931962736792,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9205128205128205,
-            "correlation": 0.9961974729792538,
+            "error": 0.9471794871794872,
+            "correlation": 0.9960137786258901,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8156592435489572,
-            "correlation": 0.995387977734772,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554420648859,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.43162393162393164,
-            "correlation": 0.9989480705011108,
+            "error": 0.44079254079254077,
+            "correlation": 0.9988572040256242,
             "passed": true
           }
         ]
@@ -4288,26 +4288,26 @@
         "id": "ultimate-eclipse",
         "kind": "ultimate",
         "at": 1506.9333333333334,
-        "error": 0.5636895576131687,
-        "correlation": 0.9994972668243852,
+        "error": 0.5832208076131687,
+        "correlation": 0.9994800615469966,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9423076923076923,
-            "correlation": 0.9958807722222329,
+            "error": 0.9484615384615385,
+            "correlation": 0.9958158325281272,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8157476139978791,
-            "correlation": 0.9953867319044861,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554420648859,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.4581196581196581,
-            "correlation": 0.9989875608927009,
+            "error": 0.48053613053613053,
+            "correlation": 0.9988278892678739,
             "passed": true
           }
         ]
@@ -4316,26 +4316,26 @@
         "id": "ultimate-dawn",
         "kind": "ultimate",
         "at": 1518.1333333333334,
-        "error": 0.5796039094650206,
-        "correlation": 0.9994929363396251,
+        "error": 0.6019161522633745,
+        "correlation": 0.9994726647738075,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9261538461538461,
-            "correlation": 0.9956230165707421,
+            "error": 0.9433333333333334,
+            "correlation": 0.9956058678375139,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8149522799575822,
-            "correlation": 0.995392337519239,
+            "error": 0.8223753976670202,
+            "correlation": 0.9953252553709627,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5000388500388501,
-            "correlation": 0.9990869473443486,
+            "error": 0.5227272727272727,
+            "correlation": 0.9989624582809978,
             "passed": true
           }
         ]
@@ -4344,26 +4344,26 @@
         "id": "gem-shield-break-pure",
         "kind": "gem",
         "at": 1535.5333333333333,
-        "error": 0.5401716820987654,
-        "correlation": 0.9996389244085728,
+        "error": 0.5752314814814815,
+        "correlation": 0.999596307668734,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.901025641025641,
-            "correlation": 0.9950645974244466,
+            "error": 0.9197435897435897,
+            "correlation": 0.995035392021377,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5577942735949099,
-            "correlation": 0.9979738633964488,
+            "error": 0.5630965005302226,
+            "correlation": 0.9979424459642493,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5201631701631702,
-            "correlation": 0.9989277489853732,
+            "error": 0.545027195027195,
+            "correlation": 0.9987796401238297,
             "passed": true
           }
         ]
@@ -4372,26 +4372,26 @@
         "id": "gem-shield-break-echo",
         "kind": "gem",
         "at": 1549.7333333333333,
-        "error": 0.565088091563786,
-        "correlation": 0.9996218394427935,
+        "error": 0.5838638117283951,
+        "correlation": 0.9996061448109891,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9053846153846153,
-            "correlation": 0.9951986891542984,
+            "error": 0.9141025641025641,
+            "correlation": 0.9951909846648379,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5509013785790032,
-            "correlation": 0.9979805702220588,
+            "error": 0.5565570873100035,
+            "correlation": 0.9979676435938791,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5825563325563325,
-            "correlation": 0.9990346057967275,
+            "error": 0.6014374514374514,
+            "correlation": 0.9989377588590157,
             "passed": true
           }
         ]
@@ -4400,26 +4400,26 @@
         "id": "gem-shield-break-swift",
         "kind": "gem",
         "at": 1563.9333333333334,
-        "error": 0.5497685185185185,
-        "correlation": 0.9996309876054751,
+        "error": 0.5688175154320988,
+        "correlation": 0.9996158374198653,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.89,
-            "correlation": 0.9952953146026787,
+            "error": 0.8951282051282051,
+            "correlation": 0.9953251778605463,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5510781194768469,
-            "correlation": 0.9979794294759219,
+            "error": 0.5565570873100035,
+            "correlation": 0.9979678078439099,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.548018648018648,
-            "correlation": 0.9990106801155357,
+            "error": 0.568065268065268,
+            "correlation": 0.9989007863925001,
             "passed": true
           }
         ]
@@ -4428,26 +4428,26 @@
         "id": "gem-echo-shard-pure",
         "kind": "gem",
         "at": 1578.1333333333334,
-        "error": 0.5521154835390947,
-        "correlation": 0.9996308585687791,
+        "error": 0.5755690586419753,
+        "correlation": 0.9996089967658024,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9092307692307692,
-            "correlation": 0.9952328591631665,
+            "error": 0.9248717948717948,
+            "correlation": 0.9951234573175358,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5815659243548957,
-            "correlation": 0.9978657630944199,
+            "error": 0.5962354188759279,
+            "correlation": 0.9978211401840197,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.536946386946387,
-            "correlation": 0.9989761790911029,
+            "error": 0.5622377622377622,
+            "correlation": 0.9988406736735577,
             "passed": true
           }
         ]
@@ -4456,26 +4456,26 @@
         "id": "gem-echo-shard-swift",
         "kind": "gem",
         "at": 1592.3333333333333,
-        "error": 0.5625321502057613,
-        "correlation": 0.9996299931290568,
+        "error": 0.5847961676954733,
+        "correlation": 0.9996094449320662,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.8907692307692308,
-            "correlation": 0.9954746019278986,
+            "error": 0.9097435897435897,
+            "correlation": 0.9953750941240792,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5752032520325203,
-            "correlation": 0.9978866412064256,
+            "error": 0.5775892541534111,
+            "correlation": 0.9978740947633187,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5684926184926185,
-            "correlation": 0.9990309945980484,
+            "error": 0.5957264957264957,
+            "correlation": 0.998902989849004,
             "passed": true
           }
         ]
@@ -4484,26 +4484,26 @@
         "id": "gem-rewind-thread-pure",
         "kind": "gem",
         "at": 1606.5333333333333,
-        "error": 0.5486754115226338,
-        "correlation": 0.9996193301669204,
+        "error": 0.56909079218107,
+        "correlation": 0.9996002077744512,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0471794871794873,
-            "correlation": 0.9949457919533287,
+            "error": 1.0564102564102564,
+            "correlation": 0.9949350243438614,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5745846588900672,
-            "correlation": 0.9978904452444869,
+            "error": 0.5767055496641923,
+            "correlation": 0.9978725593289035,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.511926961926962,
-            "correlation": 0.9988359706288614,
+            "error": 0.5374902874902875,
+            "correlation": 0.9986605981285065,
             "passed": true
           }
         ]
@@ -4512,26 +4512,26 @@
         "id": "gem-clear-tear-pure",
         "kind": "gem",
         "at": 1620.7333333333333,
-        "error": 0.5281314300411523,
-        "correlation": 0.9996295210652092,
+        "error": 0.5453317901234568,
+        "correlation": 0.9996148668798522,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0135897435897436,
-            "correlation": 0.9950441260260384,
+            "error": 1.018974358974359,
+            "correlation": 0.9950191753107843,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5519618239660657,
-            "correlation": 0.9979893509780196,
+            "error": 0.557705903145988,
+            "correlation": 0.9979518292612528,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.47684537684537687,
-            "correlation": 0.998798384838258,
+            "error": 0.4920745920745921,
+            "correlation": 0.9986900206846567,
             "passed": true
           }
         ]
@@ -4540,26 +4540,26 @@
         "id": "gem-pale-ward-pure",
         "kind": "gem",
         "at": 1634.9333333333334,
-        "error": 0.5364261831275721,
-        "correlation": 0.9996285481507403,
+        "error": 0.5571630658436214,
+        "correlation": 0.9996116795741457,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9069230769230769,
-            "correlation": 0.9943581444138212,
+            "error": 0.9205128205128205,
+            "correlation": 0.9942416745684505,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5511664899257688,
-            "correlation": 0.9979789148035566,
+            "error": 0.5567338282078473,
+            "correlation": 0.9979673552425204,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.512937062937063,
-            "correlation": 0.9988657538384447,
+            "error": 0.5355866355866356,
+            "correlation": 0.9987379565231941,
             "passed": true
           }
         ]
@@ -4568,26 +4568,26 @@
         "id": "gem-hollow-lantern-pure",
         "kind": "gem",
         "at": 1649.1333333333334,
-        "error": 0.5367155349794238,
-        "correlation": 0.9996386731638808,
+        "error": 0.5561342592592593,
+        "correlation": 0.9996204378998826,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.912051282051282,
-            "correlation": 0.99480809245694,
+            "error": 0.921025641025641,
+            "correlation": 0.9946528256247443,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5824496288441146,
-            "correlation": 0.9978717093317073,
+            "error": 0.5972074938140686,
+            "correlation": 0.997814284369161,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5001554001554002,
-            "correlation": 0.9988949206957268,
+            "error": 0.5164335664335664,
+            "correlation": 0.998798850858833,
             "passed": true
           }
         ]
@@ -4596,26 +4596,26 @@
         "id": "gem-dream-lace-pure",
         "kind": "gem",
         "at": 1663.3333333333333,
-        "error": 0.5405735596707819,
-        "correlation": 0.9996634391364266,
+        "error": 0.5654256687242798,
+        "correlation": 0.999640671760924,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.884102564102564,
-            "correlation": 0.9956241825256263,
+            "error": 0.8884615384615384,
+            "correlation": 0.995570534519844,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5076882290562036,
-            "correlation": 0.9980556995232762,
+            "error": 0.5166136443973135,
+            "correlation": 0.9980317349476239,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5459207459207459,
-            "correlation": 0.9989401082468166,
+            "error": 0.5787101787101787,
+            "correlation": 0.9987680891145124,
             "passed": true
           }
         ]
@@ -4624,26 +4624,26 @@
         "id": "gem-night-dew-pure",
         "kind": "gem",
         "at": 1677.5333333333333,
-        "error": 0.5213798868312757,
-        "correlation": 0.9996655848308794,
+        "error": 0.5385480967078189,
+        "correlation": 0.9996532968396062,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9417948717948718,
-            "correlation": 0.9947288181512912,
+            "error": 0.9487179487179487,
+            "correlation": 0.9946971995421882,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5070696359137504,
-            "correlation": 0.9980671986917927,
+            "error": 0.5136090491339697,
+            "correlation": 0.9980619801459915,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.48997668997668997,
-            "correlation": 0.998863011943696,
+            "error": 0.5048951048951049,
+            "correlation": 0.9987728027414529,
             "passed": true
           }
         ]
@@ -4652,26 +4652,26 @@
         "id": "gem-night-dew-echo",
         "kind": "gem",
         "at": 1691.7333333333333,
-        "error": 0.5550572273662552,
-        "correlation": 0.9996436854893895,
+        "error": 0.5813239454732511,
+        "correlation": 0.9996202195258607,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9535897435897436,
-            "correlation": 0.9948331425563592,
+            "error": 0.9658974358974359,
+            "correlation": 0.99476505175145,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5069812654648286,
-            "correlation": 0.9980687528626441,
+            "error": 0.5137857900318133,
+            "correlation": 0.9980614494108645,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5704351204351205,
-            "correlation": 0.9989254249539501,
+            "error": 0.6058275058275058,
+            "correlation": 0.9987515848675909,
             "passed": true
           }
         ]
@@ -4680,26 +4680,26 @@
         "id": "gem-night-dew-swift",
         "kind": "gem",
         "at": 1705.9333333333334,
-        "error": 0.5368923611111112,
-        "correlation": 0.9996573834635288,
+        "error": 0.5610693158436214,
+        "correlation": 0.9996359790884577,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 0.9346153846153846,
-            "correlation": 0.9949437574082038,
+            "error": 0.9474358974358974,
+            "correlation": 0.9949084951894254,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5069812654648286,
-            "correlation": 0.9980687528626441,
+            "error": 0.5137857900318133,
+            "correlation": 0.9980614494108645,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5284770784770785,
-            "correlation": 0.9989201590194287,
+            "error": 0.5588578088578089,
+            "correlation": 0.9987380918668278,
             "passed": true
           }
         ]
@@ -4708,26 +4708,26 @@
         "id": "gem-dawn-crown-pure",
         "kind": "gem",
         "at": 1720.1333333333334,
-        "error": 0.5403967335390947,
-        "correlation": 0.9996297649494528,
+        "error": 0.5623553240740741,
+        "correlation": 0.999610093136075,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0517948717948717,
-            "correlation": 0.9956196961402589,
+            "error": 1.0746153846153845,
+            "correlation": 0.9955037186372588,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5523153057617533,
-            "correlation": 0.9979889346867179,
+            "error": 0.5623011664899258,
+            "correlation": 0.9979533575986078,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5008158508158508,
-            "correlation": 0.9989507661858722,
+            "error": 0.5235042735042735,
+            "correlation": 0.9988211095901152,
             "passed": true
           }
         ]
@@ -4736,26 +4736,26 @@
         "id": "gem-dawn-crown-echo",
         "kind": "gem",
         "at": 1734.3333333333333,
-        "error": 0.5704571759259259,
-        "correlation": 0.9996106276178657,
+        "error": 0.5968203446502057,
+        "correlation": 0.9995861290514426,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0569230769230769,
-            "correlation": 0.9956713524511515,
+            "error": 1.0646153846153845,
+            "correlation": 0.9956026664014893,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5509013785790032,
-            "correlation": 0.9979833798304926,
+            "error": 0.5563803464121597,
+            "correlation": 0.9979658944602078,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5738539238539239,
-            "correlation": 0.9990006688005323,
+            "error": 0.6113830613830614,
+            "correlation": 0.9988336863874366,
             "passed": true
           }
         ]
@@ -4764,26 +4764,26 @@
         "id": "gem-dawn-crown-swift",
         "kind": "gem",
         "at": 1748.5333333333333,
-        "error": 0.5536586934156379,
-        "correlation": 0.9996225769746385,
+        "error": 0.5745402520576132,
+        "correlation": 0.9996051494536048,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0343589743589743,
-            "correlation": 0.9957612736059722,
+            "error": 1.0469230769230768,
+            "correlation": 0.9957130514866297,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5509013785790032,
-            "correlation": 0.9979794144761287,
+            "error": 0.5565570873100035,
+            "correlation": 0.9979678078439099,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5371794871794872,
-            "correlation": 0.999000234772814,
+            "error": 0.5601398601398602,
+            "correlation": 0.9988826940064687,
             "passed": true
           }
         ]
@@ -4792,26 +4792,26 @@
         "id": "gem-star-furnace-pure",
         "kind": "gem",
         "at": 1762.7333333333333,
-        "error": 0.5532246656378601,
-        "correlation": 0.9996117365079317,
+        "error": 0.5798128858024691,
+        "correlation": 0.9995853496086605,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0853846153846154,
-            "correlation": 0.9949925628828343,
+            "error": 1.0953846153846154,
+            "correlation": 0.9948788614317995,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5819194061505832,
-            "correlation": 0.9978663255077014,
+            "error": 0.5967656415694592,
+            "correlation": 0.9978128990141465,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5147241647241647,
-            "correlation": 0.998905703639138,
+            "error": 0.548057498057498,
+            "correlation": 0.998715284004627,
             "passed": true
           }
         ]
@@ -4820,26 +4820,26 @@
         "id": "gem-twin-tide-pure",
         "kind": "gem",
         "at": 1776.9333333333334,
-        "error": 0.5300604423868313,
-        "correlation": 0.9996575233609656,
+        "error": 0.5505240483539094,
+        "correlation": 0.9996390044506188,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.035897435897436,
-            "correlation": 0.9955326424469566,
+            "error": 1.047948717948718,
+            "correlation": 0.9954327476261511,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5083951926475786,
-            "correlation": 0.998056060215796,
+            "error": 0.5172322375397667,
+            "correlation": 0.9980299585297993,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.49852369852369854,
-            "correlation": 0.9988365855124045,
+            "error": 0.5191530691530691,
+            "correlation": 0.998704204353935,
             "passed": true
           }
         ]
@@ -4848,26 +4848,26 @@
         "id": "gem-wick-stone-pure",
         "kind": "gem",
         "at": 1791.1333333333334,
-        "error": 0.5906635802469136,
-        "correlation": 0.9995902049281541,
+        "error": 0.6226208847736625,
+        "correlation": 0.9995601114030512,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.165128205128205,
-            "correlation": 0.9948993523705654,
+            "error": 1.1807692307692308,
+            "correlation": 0.9948231517127728,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5785613290915518,
-            "correlation": 0.9978797079630223,
+            "error": 0.5884588193708024,
+            "correlation": 0.9978478020585221,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.604933954933955,
-            "correlation": 0.9990566334275496,
+            "error": 0.652020202020202,
+            "correlation": 0.9988708037416187,
             "passed": true
           }
         ]
@@ -4876,26 +4876,26 @@
         "id": "gem-white-flower-seed-pure",
         "kind": "gem",
         "at": 1805.3333333333333,
-        "error": 0.5961773405349794,
-        "correlation": 0.9995835454389566,
+        "error": 0.6171071244855967,
+        "correlation": 0.9995661322472781,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.1502564102564103,
-            "correlation": 0.9944836034196278,
+            "error": 1.1666666666666667,
+            "correlation": 0.994386042821334,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.5509013785790032,
-            "correlation": 0.9979805702220588,
+            "error": 0.5565570873100035,
+            "correlation": 0.9979676435938791,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6334887334887335,
-            "correlation": 0.9990619402925488,
+            "error": 0.6555555555555556,
+            "correlation": 0.9989828730062523,
             "passed": true
           }
         ]
@@ -4904,26 +4904,26 @@
         "id": "variants",
         "kind": "reference",
         "at": 1819.5333333333333,
-        "error": 0.5793306327160493,
-        "correlation": 0.9994649074803452,
+        "error": 0.6039094650205762,
+        "correlation": 0.9994387059273577,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.1764102564102563,
-            "correlation": 0.995197337801347,
+            "error": 1.1971794871794872,
+            "correlation": 0.9950912620419149,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8263520678685048,
-            "correlation": 0.995363595735925,
+            "error": 0.8470307529162248,
+            "correlation": 0.9952820329864387,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.46682206682206684,
-            "correlation": 0.9989564313878591,
+            "error": 0.4893939393939394,
+            "correlation": 0.9987700626409545,
             "passed": true
           }
         ]
@@ -4932,26 +4932,26 @@
         "id": "traits",
         "kind": "reference",
         "at": 1839.7333333333333,
-        "error": 0.6342914094650206,
-        "correlation": 0.9994451384672399,
+        "error": 0.6637088477366255,
+        "correlation": 0.999414476577964,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.118974358974359,
-            "correlation": 0.9950561352839778,
+            "error": 1.1333333333333333,
+            "correlation": 0.9950042827755962,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8157476139978791,
-            "correlation": 0.9953878020616461,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554420648859,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.6059829059829059,
-            "correlation": 0.9991293584722183,
+            "error": 0.6503885003885004,
+            "correlation": 0.9989360943740956,
             "passed": true
           }
         ]
@@ -4960,26 +4960,26 @@
         "id": "tiers",
         "kind": "reference",
         "at": 1859.9333333333334,
-        "error": 0.6129918981481481,
-        "correlation": 0.999455676324476,
+        "error": 0.6384066358024691,
+        "correlation": 0.9994307115815642,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0366666666666666,
-            "correlation": 0.9950217755675019,
+            "error": 1.0566666666666666,
+            "correlation": 0.9949416381155126,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8158359844468009,
-            "correlation": 0.9953869246697647,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554420648859,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5753302253302254,
-            "correlation": 0.9989716533067866,
+            "error": 0.6091686091686092,
+            "correlation": 0.998796156480181,
             "passed": true
           }
         ]
@@ -4988,26 +4988,26 @@
         "id": "command-rule",
         "kind": "reference",
         "at": 1880.1333333333334,
-        "error": 0.5884934413580247,
-        "correlation": 0.999465580912049,
+        "error": 0.6094553755144033,
+        "correlation": 0.999442669978675,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.0276923076923077,
-            "correlation": 0.9950826142169042,
+            "error": 1.054102564102564,
+            "correlation": 0.9948891361651483,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8153057617532697,
-            "correlation": 0.9953883397262066,
+            "error": 0.8203428773418169,
+            "correlation": 0.9953566021037208,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5147241647241647,
-            "correlation": 0.9989816679256754,
+            "error": 0.5381895881895882,
+            "correlation": 0.9988206397465191,
             "passed": true
           }
         ]
@@ -5016,26 +5016,26 @@
         "id": "command-boundaries",
         "kind": "reference",
         "at": 1898.3333333333333,
-        "error": 0.6254340277777778,
-        "correlation": 0.9994231251806249,
+        "error": 0.6522151491769548,
+        "correlation": 0.999395801601451,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.113076923076923,
-            "correlation": 0.9943017024544193,
+            "error": 1.1246153846153846,
+            "correlation": 0.9941791811672497,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8157476139978791,
-            "correlation": 0.9953877913900222,
+            "error": 0.8203428773418169,
+            "correlation": 0.9953566021037208,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5773504273504273,
-            "correlation": 0.9988672097268939,
+            "error": 0.6137529137529137,
+            "correlation": 0.9987031564554457,
             "passed": true
           }
         ]
@@ -5044,26 +5044,26 @@
         "id": "command-costs",
         "kind": "reference",
         "at": 1916.5333333333333,
-        "error": 0.6208043981481481,
-        "correlation": 0.9994093294114326,
+        "error": 0.6430523405349794,
+        "correlation": 0.9993871817746492,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.3084615384615386,
-            "correlation": 0.9940251572813561,
+            "error": 1.327948717948718,
+            "correlation": 0.9938980720176368,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8152173913043478,
-            "correlation": 0.9953883960504427,
+            "error": 0.8204312477907387,
+            "correlation": 0.9953554420648859,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5412198912198912,
-            "correlation": 0.9989585792781416,
+            "error": 0.5672494172494172,
+            "correlation": 0.9988270511658545,
             "passed": true
           }
         ]
@@ -5072,26 +5072,26 @@
         "id": "command-choice",
         "kind": "reference",
         "at": 1934.7333333333333,
-        "error": 0.6353845164609053,
-        "correlation": 0.9994040733924008,
+        "error": 0.6605420524691358,
+        "correlation": 0.9993730939900409,
         "passed": true,
         "regions": [
           {
             "region": "name",
-            "error": 1.3971794871794871,
-            "correlation": 0.9949419337791142,
+            "error": 1.432820512820513,
+            "correlation": 0.9947640297653979,
             "passed": true
           },
           {
             "region": "art",
-            "error": 0.8145987981618946,
-            "correlation": 0.9953943745957965,
+            "error": 0.8228172499116295,
+            "correlation": 0.9953255563201336,
             "passed": true
           },
           {
             "region": "body",
-            "error": 0.5632090132090132,
-            "correlation": 0.9988187885527781,
+            "error": 0.5891996891996892,
+            "correlation": 0.9986412608429928,
             "passed": true
           }
         ]
@@ -5102,7 +5102,7 @@
         "chapter": "game",
         "atFrame": 1005,
         "bestOffsetFrames": 0,
-        "meanError": 0.9329989711934157,
+        "meanError": 0.9811171124828533,
         "variation": 1.8399803883744856,
         "passed": true
       },
@@ -5110,7 +5110,7 @@
         "chapter": "leaders",
         "atFrame": 3755,
         "bestOffsetFrames": 0,
-        "meanError": 0.9591335162322817,
+        "meanError": 1.0027792066758117,
         "variation": 1.4517746913580247,
         "passed": true
       },
@@ -5118,7 +5118,7 @@
         "chapter": "command",
         "atFrame": 7496,
         "bestOffsetFrames": 0,
-        "meanError": 0.9024348422496571,
+        "meanError": 0.9320416095107453,
         "variation": 1.301199202674897,
         "passed": true
       },
@@ -5126,7 +5126,7 @@
         "chapter": "future",
         "atFrame": 11245,
         "bestOffsetFrames": 0,
-        "meanError": 0.8978409350708734,
+        "meanError": 0.9456375743026978,
         "variation": 2.6433256172839505,
         "passed": true
       }

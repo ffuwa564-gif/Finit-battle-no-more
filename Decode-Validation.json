@@ -1,10 +1,38 @@
 [
   {
     "label": "1080p",
+    "sha256": "32344355600d195ecb53b00a864b6b162259328e729a584a004eb16e4dce77bc",
+    "fullDecode": "passed with no diagnostics",
+    "bodyLoudness": {
+      "input_i": "-16.61",
+      "input_tp": "-1.91",
+      "input_lra": "4.70",
+      "input_thresh": "-27.31",
+      "output_i": "-15.98",
+      "output_tp": "-1.02",
+      "output_lra": "4.80",
+      "output_thresh": "-26.68",
+      "normalization_type": "dynamic",
+      "target_offset": "-0.02"
+    },
     "passed": true
   },
   {
     "label": "720p",
+    "sha256": "106510048558e9c06bcb23de12acefaa4a015a40ffca4a0658296cfdff7c1a08",
+    "fullDecode": "passed with no diagnostics",
+    "bodyLoudness": {
+      "input_i": "-16.61",
+      "input_tp": "-1.91",
+      "input_lra": "4.70",
+      "input_thresh": "-27.31",
+      "output_i": "-15.98",
+      "output_tp": "-1.02",
+      "output_lra": "4.80",
+      "output_thresh": "-26.68",
+      "normalization_type": "dynamic",
+      "target_offset": "-0.02"
+    },
     "passed": true
   }
 ]
