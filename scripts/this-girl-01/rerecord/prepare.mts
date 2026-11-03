@@ -1,4 +1,4 @@
-import{readFileSync,writeFileSync,mkdirSync,copyFileSync}from'node:fs';
+import{readFileSync,writeFileSync,mkdirSync,copyFileSync,existsSync}from'node:fs';
 import{createHash}from'node:crypto';import{gunzipSync}from'node:zlib';import{execFileSync}from'node:child_process';import{isDeepStrictEqual}from'node:util';
 import{prepare}from'../capture/prepare-proof.mts';
 const O='artifacts/this-girl-01',R=O+'/rerecord';const sha=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex');
@@ -10,8 +10,8 @@ const lock={...original,sourceGameCommit:head,sources:Object.fromEntries(Object.
 const lockPath=R+'/capture-source-lock.json';writeFileSync(lockPath,JSON.stringify(lock,null,2));process.env.RERECORD_CAPTURE_LOCK='rerecord/capture-source-lock.json';const lockSha=sha(lockPath);const comparisons=[];
 mkdirSync(R+'/reference/proofs',{recursive:true});
 for(const [id,arm]of[['reference','A'],['sakuya','C']]as const){
- const file=O+'/proofs/'+id+'.json.gz';const archived=R+'/reference/proofs/'+id+'.json.gz';copyFileSync(file,archived);const old=JSON.parse(gunzipSync(readFileSync(file)).toString());
+ const file=O+'/proofs/'+id+'.json.gz';const archived=R+'/reference/proofs/'+id+'.json.gz';if(!existsSync(archived))copyFileSync(file,archived);const old=JSON.parse(gunzipSync(readFileSync(archived)).toString());
  const spec={...old.spec,sourceGameCommit:head,researchLockCommit:head,researchLockSha256:lockSha,preflight:false};writeFileSync(O+'/proofs/spec-'+id+'.json',JSON.stringify(spec,null,2));const fresh=await prepare(spec);
- const checks={units:isDeepStrictEqual(old.final.battle.units,fresh.final.battle.units),events:isDeepStrictEqual(old.events,fresh.events),history:isDeepStrictEqual(old.allCommands,fresh.allCommands),summary:isDeepStrictEqual(old.nativeSummary,fresh.nativeSummary),rng:old.final.battle.seed===fresh.final.battle.seed};if(!Object.values(checks).every(Boolean))throw Error('Old/new engine replay diverged '+JSON.stringify(checks));comparisons.push({id,arm,checks,summary:fresh.nativeSummary});
+ const checks={units:isDeepStrictEqual(old.final.battle.units,fresh.final.battle.units),events:isDeepStrictEqual(old.events,JSON.parse(JSON.stringify(fresh.events))),history:isDeepStrictEqual(old.allCommands,fresh.allCommands),summary:isDeepStrictEqual(old.nativeSummary,fresh.nativeSummary),rng:old.final.battle.seed===fresh.final.battle.seed};if(!Object.values(checks).every(Boolean))throw Error('Old/new engine replay diverged '+JSON.stringify(checks));comparisons.push({id,arm,checks,summary:fresh.nativeSummary});
 }
 writeFileSync(R+'/engine-invariance.json',JSON.stringify({passed:true,gameCommit:head,optimizationBase:'1dff730',selectedCase:selected.caseId,logicalSeed:selected.logicalSeed,applicationSeed:selected.applicationSeed,comparisons,scope:'Same selected A/C real application replays. Old 256-seed study numbers remain historical; no new statistical certification.'},null,2));
