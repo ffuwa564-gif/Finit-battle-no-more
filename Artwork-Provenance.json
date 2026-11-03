@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "episode": "ビルド研究日誌 #05 エレイン",
+  "status": "artist-reviewed-awaiting-separate-root-approval",
+  "tool": "image_gen.imagegen",
+  "scope": "Flower pot and water saucer are metaphors for researching restoration of lost maximum capacity before ordinary care. No implemented feature, universal win, amber award or new gem certification asserted.",
+  "character": {
+    "id": "elaine",
+    "seriesId": "BD001",
+    "epithet": "白花の祈り手",
+    "thumbnailCopy": "また、咲ける場所を。"
+  },
+  "active": [
+    {
+      "kind": "thumbnail",
+      "original": "/workspace/generated_images/exec-f78896e3-b189-4ca1-af56-5dd247ca8025.png",
+      "output": "artifacts/build-diary-05/assets/thumbnail-original.png",
+      "prompt": "Edit this Episode05 thumbnail to fix the final approved bottom copy AND generous safety margins. EXACT bottom caption MUST now be 『また、咲ける場所を。』. Delete the old caption 花が、また開く場所へ。 entirely and replace it with that shorter exact phrase. Keep title 『ビルド研究日誌』, subtitle 『みんなが輝くRPGを！』 and episode label 『#05 エレイン』 unchanged. Recompose the WHOLE illustration with a much wider camera view: make all four character clusters about25 percent SMALLER and MOVE INWARD. ALL of Elaine's flowing silver hair, both pointed ears and hair ornament must be fully contained with at least120 pixels of visible room/background on LEFT, not cut by canvas. ALL of Tsumugi's pink curls and ahoge must have at least120pixels visible room on RIGHT, not close to border. Every hair ornament, head and ear on ALL FOUR characters must be at least100pixels inside canvas edges. You MUST add real visible room around the subjects, not blurred padding. White flowing hair cannot touch frame. Tsumugi dark bronze FULL round rims and bridge stay very clear and blue eyes visible. Elaine silver-white hair pointed ears white/gold/black robe and white flower hair ornament preserved. Zundamon and Metan remain small friendly supporters. Keep potted WHITE FLOWER and WATER SAUCER, Elaine changing saucer water, simple board of3poticons: missing rim -> complete rim -> white flower. Calmer uncluttered composition, cream pink mint amber lab. No awarded gem, amber badge, win stamp or implemented claim. Large blank breathing space rather than face closeups. Landscape16:9. Preserve identities and gentle mood, use the new exact bottom copy ONLY.",
+      "references": [
+        "/workspace/generated_images/exec-bdd01723-beda-4f67-b9ae-93b70010acce.png"
+      ],
+      "accepted": true,
+      "originalSha256": "2479764e14ff9aaaf92f04542a82d19c9f3784183ab6a4caaf506029aad10b89",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "2479764e14ff9aaaf92f04542a82d19c9f3784183ab6a4caaf506029aad10b89",
+      "referenceHashes": {
+        "/workspace/generated_images/exec-bdd01723-beda-4f67-b9ae-93b70010acce.png": "a47c1f05d0f8fe7b99cce88475d299e8f178d57a2af270e5b6201c79805ea0de"
+      }
+    },
+    {
+      "kind": "research-lab",
+      "original": "/workspace/generated_images/exec-829d7fbd-9eed-4e60-8255-b6d7615163bc.png",
+      "output": "artifacts/build-diary-05/assets/research-lab-saucer.png",
+      "prompt": "Create a calm, clear NEW Episode05 research-room illustration matching the supplied approved cute pastel laboratory series style. WIDE landscape16:9, show more room with a SMALLER four-character group centered, all heads, pointed ears and every strand/ornament safely at least120pixels inside all image edges at1672px width. Featured ELAINE sits LEFT, faithfully preserving supplied actual original: LONG SILVER-WHITE hair with complete flowing silhouette, pointed elf-like ears, pale gray-violet eyes, white robe/dress with delicate GOLD botanical embroidery and BLACK ribbons, small WHITE FLOWER with gold/silver hair jewelry. Elaine gently CHANGES WATER IN A SAUCER beneath a small living white-flower pot; she does not cut or pluck the plant. Main kind researcher TSUMUGI center-left/center in yellow cardigan and white lab coat, blonde-to-pink hair and blue eyes, very clear full ROUND dark BRONZE eyeglass rims on both eyes and readable bridge, transparent lenses. Tsumugi carefully notes observations and gently points to the pot. Zundamon and pink-haired Shikoku Metan are friendly small chibi support on right, helping observe the white flower. Place Metan inward, leave120pixels of real background beyond her complete curls and both heart head ornaments. Both Elaine pointed ears fully inside the image, long silver hair never touches left border. All FOUR characters belong within central75% width, maintain ample overhead room. Main visual has ONLY a white flower, a small cream pot, water saucer, small glass jug, one open notebook, and a simple three-icon research sketch: pot with a small missing rim segment -> restored complete pot -> ordinary watering/flower. This is a metaphor for researching restoration of lost capacity before ordinary care, not an implemented game screen. Do not depict injuries, cut roots, revival from death, victory, diamond gems, amber awards or certified results. No written text or numerical mechanics. Fewer items and less visual noise than previous episodes, clean table and a soft cream board, small flowers on shelves. Pink cream mint amber gentle lab style, warm window light. Lower bodies may be occluded by desk naturally; do not crop heads or hair. Tsumugi is kind main host, Elaine's own design stays faithful and not Fio green apron or Ione glasses. Calm thoughtful research, not exuberant win celebration. Wide room, slightly smaller characters with lots of breathing room and unmistakable glasses.",
+      "references": [
+        "artifacts/build-diary-04/assets/research-lab-overflow.png",
+        "public/art/elaine.png",
+        "artifacts/build-diary-04/assets/thumbnail-original.png"
+      ],
+      "accepted": true,
+      "originalSha256": "4dba30024183db4a3013636b563933c5aaf9e3db948350cbfe0bdb36bafde048",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "4dba30024183db4a3013636b563933c5aaf9e3db948350cbfe0bdb36bafde048",
+      "referenceHashes": {
+        "artifacts/build-diary-04/assets/research-lab-overflow.png": "7bbf796cbed12825545c1cb3fdfc831dc8b1442890bedde3f90c46bc1d0ea57a",
+        "public/art/elaine.png": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a",
+        "artifacts/build-diary-04/assets/thumbnail-original.png": "04aa0d42ea3cce815ad32d14568c2aeaa651d78522519ca6e536bea727a267ea"
+      }
+    }
+  ],
+  "superseded": [
+    {
+      "kind": "thumbnail-first-draft",
+      "original": "/workspace/generated_images/exec-bdd01723-beda-4f67-b9ae-93b70010acce.png",
+      "retainedCopy": "artifacts/build-diary-05/assets/thumbnail-superseded-01.png",
+      "prompt": "Create an Episode05 Japanese YouTube thumbnail in the supplied approved ビルド研究日誌 cute pastel laboratory series style, but calmer and visually simpler with fewer objects and clear silhouettes. Main featured heroine ELAINE at LEFT is faithful to supplied actual game original: long SILVER-WHITE flowing hair, pointed elf-like EARS, pale gray-violet eyes, white elegant dress/robe with delicate GOLD botanical embroidery and BLACK ribbons, small WHITE FLOWER and gold/silver jewel hair ornament. Do not use green-apron Fio, do not use awakened Elaine art. Elaine kindly tends a single small living WHITE FLOWER in a cream ceramic POT and WATER SAUCER on the table, gently placing fresh water into the saucer, not plucking the flower. Main host TSUMUGI center-right is approved kind scientist gyaru with blonde-to-pink hair, blue eyes, yellow cardigan and white lab coat. Clearly readable large FULL ROUND dark warm BRONZE eyeglass rims around BOTH eyes plus visible bridge, transparent lenses and visible blue eyes. Zundamon and pink-haired Shikoku Metan are small cute support friends below, kind and thoughtful, all four characters complete heads visible. Simple cream board behind shows ONLY three large gentle icons: a pot with a missing rim segment -> repaired complete pot -> watered white flower, as a research metaphor about restoring capacity before ordinary care. The missing rim is a simple diagram, no injured person or violent damage. No technical text or numerical mechanic. Do not show diamond gems, amber award badges, victory stamps or implemented-feature claims. This is a research proposal, not verified success. EXACT FOUR Japanese text elements only: large title 『ビルド研究日誌』, subtitle 『みんなが輝くRPGを！』, episode plaque 『#05 エレイン』, large bottom banner 『花が、また開く場所へ。』. Preserve exact correct legible wording. Pink/cream/mint/amber cozy warm lab, simple shelves and a few flowers, do not overcrowd with bottles or paper. Use comfortable empty space around faces and flower. WIDE LANDSCAPE16:9. All FOUR full heads, pointed EARS, ahoge, hair tips, all hair ornaments and Metan's full heart headpieces must remain at least120 pixels INSIDE any outer boundary at1672px width. Entire group occupies central78% width, put Metan inward and small, never at right edge. Both Elaine ears and long hair safely contained. Titles never crop faces. Keep the source heroine identity and host round glasses, gentle welcoming scientist atmosphere. Do not reuse previous bandage box or envelope subject.",
+      "references": [
+        "artifacts/build-diary-04/assets/thumbnail-original.png",
+        "public/art/elaine.png"
+      ],
+      "accepted": false,
+      "reason": "Root intermediate copy direction changed after generation had begun: story relayed 花が、また開く場所へ。 as confirmed, root then fixed final また、咲ける場所を。. Earlier copy superseded at root request, not a generation transcription error. Draft also had silver hair edge clipping and inadequate host-hair margins; both corrected in wider edit.",
+      "originalSha256": "a47c1f05d0f8fe7b99cce88475d299e8f178d57a2af270e5b6201c79805ea0de",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "outputSha256": "a47c1f05d0f8fe7b99cce88475d299e8f178d57a2af270e5b6201c79805ea0de",
+      "referenceHashes": {
+        "artifacts/build-diary-04/assets/thumbnail-original.png": "04aa0d42ea3cce815ad32d14568c2aeaa651d78522519ca6e536bea727a267ea",
+        "public/art/elaine.png": "81d4b73c07e2aba0c5b9fb0cf2e3ce21b20418aa934f13ef152786af88c9719a"
+      }
+    }
+  ],
+  "review": {
+    "reviewer": "/root/build_diary_art",
+    "method": "Direct inspection of all three generated images; final thumbnail wide layout and lab scene assessed independently. Root approval not claimed.",
+    "checks": {
+      "allFourHeadSilhouettesContained": true,
+      "allVisiblePointedEarsHairJewelryAhogeAndHeartOrnamentsContained": true,
+      "activeSceneHairHeadMarginsAtLeast100px": true,
+      "tsumugiBronzeFullRoundRimsAndBridgeClear": true,
+      "elaineOriginalSilverHairWhiteGoldRobeBlackRibbonsWhiteFlowerIdentityPreserved": true,
+      "finalThumbnailJapaneseCopyMatchesRoot": true,
+      "potSaucerLivingWhiteFlowersAndSimpleCapacityMetaphor": true,
+      "noNewAmberGemAwardVictoryOrShippedClaim": true
+    },
+    "notes": "Thumbnail deliberately uses a broad uncluttered room view after root prioritized safety and reduced visual load. Long silver hair is fully in-frame. Side angle may naturally hide one far ear; no visible ear is clipped. Lower bodies naturally occluded by table. Separate root review report must close final approval."
+  },
+  "rootApproval": {
+    "status": "pending",
+    "reportPath": null,
+    "required": "Root independently views both active originals and records acceptance with their exact SHA in a separate report."
+  },
+  "derivedThumbnail": {
+    "path": "artifacts/build-diary-05/delivery/Thumbnail-BuildResearchDiary-05.jpg",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "processing": "Pillow ImageOps.contain on cream canvas; no crop; original generated PNGs copied byte-exact.",
+    "sha256": "b5579c8c0e49823c7ce8a14cfa76f4ee795df148fefe2dc79bd9a9adba917b30"
+  },
+  "unchanged": [
+    "src",
+    "artifacts/build-diary-01",
+    "artifacts/build-diary-02",
+    "artifacts/build-diary-03",
+    "artifacts/build-diary-04"
+  ]
+}

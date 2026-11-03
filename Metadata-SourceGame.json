@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "episode": "BRD-005",
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "sourceMain": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "appVersion": "1.11.0",
+  "contentVersion": "v1.10-r1",
+  "rulesVersion": "2",
+  "sourceTreeObject": "7d84fd2f4ca44bdb04b9abbe7df6287a55953850",
+  "productionSourceUnchanged": true,
+  "portraitFixIncluded": true,
+  "purpose": "Current-app capture source, distinct from the later video source-code HEAD."
+}

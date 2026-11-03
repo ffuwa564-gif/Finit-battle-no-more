@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "finishedSha256": "37a0f0df332b5697d8dedce66a480db252846d69e28ee5837bb7a858d6f7c70f",
+  "command": "ffmpeg full decode with -xerror",
+  "exitCode": 0
+}

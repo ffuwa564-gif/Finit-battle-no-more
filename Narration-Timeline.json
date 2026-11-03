@@ -1,0 +1,817 @@
+{
+  "processingSha256": "a61f138a794cadb6bf3813bb5fbb2dbed54523d3aca22fd869a3cdbb007e8873",
+  "storySha256": "0065c1d61f9a9b33830e1c33f146a4427c4fbf5acc089f5a686362ee580310d0",
+  "chapters": [
+    {
+      "id": "roster",
+      "title": "また、咲ける場所を。",
+      "topic": "roster",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "回復を重ねても、HPの入れ物が小さいままだったら？　今日は、エレインの祈りを研究するよ。",
+          "ttsText": "回復を重ねても、エイチピーの入れ物が小さいままだったら？　今日は、エレインの祈りを研究するよ。",
+          "wav": "artifacts/build-diary-05/speech/0cfb8ce18df4185adfac3886.flac",
+          "duration": 6.794667,
+          "voiceId": 8,
+          "start": 0.4,
+          "end": 7.194667
+        },
+        {
+          "speaker": "z",
+          "text": "フィオとは同じ回復役。でも、同じ仕事に並べて終わらせたくないのだ。",
+          "ttsText": "フィオとは同じ回復役。でも、同じ仕事に並べて終わらせたくないのだ。",
+          "wav": "artifacts/build-diary-05/speech/c0616539b444e7782611376e.flac",
+          "duration": 5.6,
+          "voiceId": 3,
+          "start": 7.732952714285714,
+          "end": 13.332952714285714
+        },
+        {
+          "speaker": "t",
+          "text": "うん。白い花を育てる子だから、花を使い切るより、育つ場所を残す戦い方を考えてみたいんだ。",
+          "ttsText": "うん。白い花を育てる子だから、花を使い切るより、育つ場所を残す戦い方を考えてみたいんだ。",
+          "wav": "artifacts/build-diary-05/speech/2901b869bd8565e4fc79674a.flac",
+          "duration": 6.912,
+          "voiceId": 8,
+          "start": 13.871238428571427,
+          "end": 20.783238428571426
+        },
+        {
+          "speaker": "m",
+          "text": "BD001。この回は図を見ながら、減ったHPと、戻らない器を分けてみましょう。",
+          "ttsText": "ビー・ディー・ゼロ・ゼロ・イチ。この回は図を見ながら、減ったエイチピーと、戻らない器を分けてみましょう。",
+          "wav": "artifacts/build-diary-05/speech/dbb632e4818614762fbd2f3b.flac",
+          "duration": 8.565333,
+          "voiceId": 2,
+          "start": 21.321524142857143,
+          "end": 29.886857142857146
+        },
+        {
+          "speaker": "z",
+          "text": "減ったHPは治せても、入れ物は別なのだ？　鉢の絵を見れば、分かるかな。",
+          "ttsText": "減ったエイチピーは治せても、入れ物は別なのだ？　鉢の絵を見れば、分かるかな。",
+          "wav": "artifacts/build-diary-05/speech/08d261fbfd24344310a3ae22.flac",
+          "duration": 6.186667,
+          "voiceId": 3,
+          "start": 30.42514285714286,
+          "end": 36.61180985714286
+        },
+        {
+          "speaker": "t",
+          "text": "今日は、琥珀の印に届く理由まで探したい。みんなを選べるRPGに近づくためにね。",
+          "ttsText": "今日は、琥珀の印に届く理由まで探したい。みんなを選べるアールピージーに近づくためにね。",
+          "wav": "artifacts/build-diary-05/speech/9036eb22ea50c7394eb809d3.flac",
+          "duration": 5.888,
+          "voiceId": 8,
+          "start": 37.15009557142857,
+          "end": 43.03809557142857
+        },
+        {
+          "speaker": "m",
+          "text": "前の四人の役割も確かめる。新しい案が誰かの仕事を奪っていないか、ノートへ残すわ。",
+          "ttsText": "前の四人の役割も確かめる。新しい案が誰かの仕事を奪っていないか、ノートへ残すわ。",
+          "wav": "artifacts/build-diary-05/speech/b6e8588ccecf5b12086ca8e9.flac",
+          "duration": 6.133333,
+          "voiceId": 2,
+          "start": 43.576381285714284,
+          "end": 49.709714285714284
+        },
+        {
+          "speaker": "t",
+          "text": "ひとつずつ、絵で見ていこう。メガネをかけて、研究開始！",
+          "ttsText": "ひとつずつ、絵で見ていこう。メガネをかけて、研究開始！",
+          "wav": "artifacts/build-diary-05/speech/3733586239a11e4ba8e1144a.flac",
+          "duration": 4.352,
+          "voiceId": 8,
+          "start": 50.248,
+          "end": 54.599999999999994
+        }
+      ],
+      "start": 0.0,
+      "duration": 55.5
+    },
+    {
+      "id": "series-op",
+      "title": "ビルド研究日誌 OP",
+      "start": 55.5,
+      "duration": 25.6,
+      "lines": []
+    },
+    {
+      "id": "failure",
+      "title": "敵を倒した。それでも、帰れない？",
+      "topic": "failure",
+      "clip": "lab-failure",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "敵は倒せたのに、白花を帰せなかった。まずは、この護衛の記録を見て。付き添った三人は、まだ生きているんだ。",
+          "ttsText": "敵は倒せたのに、白花を帰せなかった。まずは、この護衛の記録を見て。付き添った三人は、まだ生きているんだ。",
+          "wav": "artifacts/build-diary-05/speech/358a3d467c8931e09a227c68.flac",
+          "duration": 8.106667,
+          "voiceId": 8,
+          "start": 81.5,
+          "end": 89.606667
+        },
+        {
+          "speaker": "z",
+          "text": "戦闘に勝ったら終わり、ではないのだ？　花のほうが、しおれてしまったのだ。",
+          "ttsText": "戦闘に勝ったら終わり、ではないのだ？　花のほうが、しおれてしまったのだ。",
+          "wav": "artifacts/build-diary-05/speech/ad97da5cd9145b0fa42e2721.flac",
+          "duration": 5.664,
+          "voiceId": 3,
+          "start": 90.406667,
+          "end": 96.070667
+        },
+        {
+          "speaker": "m",
+          "text": "今回は、白花を帰る時刻まで守る研究用の護衛。敵が消えても、最大HPの器を削る夜露は続くの。",
+          "ttsText": "今回は、白花を帰る時刻まで守る研究用の護衛。敵が消えても、最大エイチピーの器を削る夜露は続くの。",
+          "wav": "artifacts/build-diary-05/speech/28e0b22cf1bae13d051f8c0a.flac",
+          "duration": 8.245333,
+          "voiceId": 2,
+          "start": 97.170667,
+          "end": 105.416
+        },
+        {
+          "speaker": "t",
+          "text": "中身だけを治しても、育つ場所がなくなる。だったら、そこを戻す一手を作れないかな、って考えたよ。",
+          "ttsText": "中身だけを治しても、育つ場所がなくなる。だったら、そこを戻す一手を作れないかな、って考えたよ。",
+          "wav": "artifacts/build-diary-05/speech/e528f2b401118858db803ef6.flac",
+          "duration": 7.104,
+          "voiceId": 8,
+          "start": 106.216,
+          "end": 113.32
+        }
+      ],
+      "start": 81.1,
+      "duration": 33.7,
+      "rate": 1,
+      "playDuration": 32.6,
+      "sourceApplicationSpeed": 1,
+      "logPlayback": true,
+      "lab": true,
+      "clipLabel": "研究用護衛・対照の実記録",
+      "clipDisclosure": "対照 R5–7 抜粋",
+      "clipDisplayedRounds": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "elaine-now",
+      "title": "帰ってきたら、また花を。",
+      "topic": "elaine-now",
+      "clip": "live-elaine",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "エレインは、花を育て、療養室で手当をする祈り手。セリスと、帰ったら一緒に花を摘む約束もしている子だよ。",
+          "ttsText": "エレインは、花を育て、療養室で手当をするいのりて。セリスと、帰ったら一緒に花を摘む約束もしている子だよ。",
+          "wav": "artifacts/build-diary-05/speech/6a6f3341d823b840bfd72436.flac",
+          "duration": 8.149333,
+          "voiceId": 8,
+          "start": 115.2,
+          "end": 123.349333
+        },
+        {
+          "speaker": "m",
+          "text": "これは今のゲームの回復。減ったHPを戻している。先ほどの、器がしおれる研究用の護衛とは別の場面よ。",
+          "ttsText": "これは今のゲームの回復。減ったエイチピーを戻している。先ほどの、器がしおれる研究用の護衛とは別の場面よ。",
+          "wav": "artifacts/build-diary-05/speech/ca665c3bca8e23095377fda7.flac",
+          "duration": 8.096,
+          "voiceId": 2,
+          "start": 124.29330433209736,
+          "end": 132.38930433209737
+        },
+        {
+          "speaker": "z",
+          "text": "いまある手当を、ただ大きくする研究ではないのだ？",
+          "ttsText": "いまある手当を、ただ大きくする研究ではないのだ？",
+          "wav": "artifacts/build-diary-05/speech/6124501a0fe7b0376621a13c.flac",
+          "duration": 3.797333,
+          "voiceId": 3,
+          "start": 133.18930433209738,
+          "end": 136.9866373320974
+        },
+        {
+          "speaker": "t",
+          "text": "うん。今日は、花がまた育つ場所を世話する案。今の回復が届く、その先の場所を考えてみたいんだ。",
+          "ttsText": "うん。今日は、花がまた育つ場所を世話する案。今の回復が届く、その先の場所を考えてみたいんだ。",
+          "wav": "artifacts/build-diary-05/speech/c1a6724d50cc6d06c719802b.flac",
+          "duration": 7.381333,
+          "voiceId": 8,
+          "start": 137.78663733209737,
+          "end": 145.16797033209738
+        }
+      ],
+      "reactionReferences": [
+        {
+          "eventLocalTime": 9.393304332097372,
+          "lineTextContains": "これは今のゲームの回復",
+          "mode": "exact-event-offset",
+          "event": {
+            "skillId": "heal-14",
+            "round": 1
+          },
+          "voiceLocalTime": 9.493304332097372
+        }
+      ],
+      "start": 114.8,
+      "duration": 31.533333333333335,
+      "rate": 1,
+      "playDuration": 28.866666666666667,
+      "sourceApplicationSpeed": 2,
+      "logPlayback": false,
+      "lab": false,
+      "clipLabel": "現行1.11・エレイン紹介",
+      "clipDisclosure": "現行R1–2抜粋 ／ 研究用の護衛とは別",
+      "clipDisplayedRounds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "capacity",
+      "title": "中身と、入る場所を分けよう。",
+      "topic": "capacity",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "青い器が最大HP。緑が、いまのHP。同じ鉢を、順番に見てみましょう。",
+          "ttsText": "青い器が最大エイチピー。緑が、いまのエイチピー。同じ鉢を、順番に見てみましょう。",
+          "wav": "artifacts/build-diary-05/speech/09c20edfe6bfb1ad3e062f71.flac",
+          "duration": 6.72,
+          "voiceId": 2,
+          "start": 146.73333333333335,
+          "end": 153.45333333333335
+        },
+        {
+          "speaker": "z",
+          "text": "緑は満タン。でも、青い器ごと小さくなっているのだ。ここへ水を足すだけでは、元の大きさにならないのだ。",
+          "ttsText": "緑は満タン。でも、青い器ごと小さくなっているのだ。ここへ水を足すだけでは、元の大きさにならないのだ。",
+          "wav": "artifacts/build-diary-05/speech/73a79c1f7a8ca31c683cfe23.flac",
+          "duration": 8.490667,
+          "voiceId": 3,
+          "start": 154.55333333333334,
+          "end": 163.04400033333334
+        },
+        {
+          "speaker": "t",
+          "text": "そこで、エレインが器を戻す一手を使う。入る場所だけを、少し広げるよ。",
+          "ttsText": "そこで、エレインが器を戻す一手を使う。入る場所だけを、少し広げるよ。",
+          "wav": "artifacts/build-diary-05/speech/8d48ef33cde31baa2f373db1.flac",
+          "duration": 5.429333,
+          "voiceId": 8,
+          "start": 164.14400033333334,
+          "end": 169.57333333333332
+        },
+        {
+          "speaker": "z",
+          "text": "青だけ広がった！　緑の中身は、そのままなのだ。HPをいっぺんに治したわけじゃないのだ。",
+          "ttsText": "青だけ広がった！　緑の中身は、そのままなのだ。エイチピーをいっぺんに治したわけじゃないのだ。",
+          "wav": "artifacts/build-diary-05/speech/1147d479d1c8ab1e8ca4e4b6.flac",
+          "duration": 6.965333,
+          "voiceId": 3,
+          "start": 170.67333333333335,
+          "end": 177.63866633333333
+        },
+        {
+          "speaker": "t",
+          "text": "そう。HPを足すなら、それは別の手当の番。器を戻す役と、中身を満たす役を、分けて見てみよう。",
+          "ttsText": "そう。エイチピーを足すなら、それは別の手当の番。器を戻す役と、中身を満たす役を、分けて見てみよう。",
+          "wav": "artifacts/build-diary-05/speech/b6cf98f1e815320c4164e1a2.flac",
+          "duration": 8.010667,
+          "voiceId": 8,
+          "start": 178.73866633333336,
+          "end": 186.74933333333337
+        }
+      ],
+      "start": 146.33333333333334,
+      "duration": 41.86666666666667
+    },
+    {
+      "id": "recipe",
+      "title": "白花を帰す、役割の分担。",
+      "topic": "recipe",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "仮名は、白花の帰還便。エレインを核に器を戻す案で、相方はこの二人だけに固定しないよ。",
+          "ttsText": "仮名は、白花の帰還便。エレインを核に器を戻す案で、相方はこの二人だけに固定しないよ。",
+          "wav": "artifacts/build-diary-05/speech/bc6f727f30e51184f7e49bef.flac",
+          "duration": 6.752,
+          "voiceId": 8,
+          "start": 188.60000000000002,
+          "end": 195.35200000000003
+        },
+        {
+          "speaker": "m",
+          "text": "今回はエレイン、フィオ、覚醒リオラと、守る白花の鉢。三人で一つの護衛対象を支える研究編成よ。",
+          "ttsText": "今回はエレイン、フィオ、覚醒リオラと、守る白花の鉢。三人で一つの護衛対象を支える研究編成よ。",
+          "wav": "artifacts/build-diary-05/speech/4c5574462e82907241735a0e.flac",
+          "duration": 8.522667,
+          "voiceId": 2,
+          "start": 196.15200000000002,
+          "end": 204.67466700000003
+        },
+        {
+          "speaker": "t",
+          "text": "フィオはHPを足したい場面を支える。リオラは花をかばい、器が減る勢いを緩める。今回は、この分担で選んだよ。",
+          "ttsText": "フィオはエイチピーを足したい場面を支える。リオラは花をかばい、器が減る勢いを緩める。今回は、この分担で選んだよ。",
+          "wav": "artifacts/build-diary-05/speech/f0a4630f6ece55216a2c6d45.flac",
+          "duration": 8.394667,
+          "voiceId": 8,
+          "start": 205.474667,
+          "end": 213.869334
+        },
+        {
+          "speaker": "z",
+          "text": "同じ回復役が二人いても、同じ仕事を重ねているだけではないのだ。",
+          "ttsText": "同じ回復役が二人いても、同じ仕事を重ねているだけではないのだ。",
+          "wav": "artifacts/build-diary-05/speech/ece1b0f97e06020e0fa741c1.flac",
+          "duration": 5.130667,
+          "voiceId": 3,
+          "start": 214.00933400000002,
+          "end": 219.140001
+        },
+        {
+          "speaker": "m",
+          "text": "新しいケアは、エレインの祓いの枠と交換する。普通の回復は残すけれど、元の仕事を全部持ったまま増やす案ではないわ。",
+          "ttsText": "新しいケアは、エレインの祓いの枠と交換する。普通の回復は残すけれど、元の仕事を全部持ったまま増やす案ではないわ。",
+          "wav": "artifacts/build-diary-05/speech/b2017bfb33ca2c06c3f93bca.flac",
+          "duration": 8.48,
+          "voiceId": 2,
+          "start": 219.94000100000002,
+          "end": 228.420001
+        }
+      ],
+      "start": 188.20000000000002,
+      "duration": 41.4
+    },
+    {
+      "id": "lab-victory-a",
+      "title": "この一手を、どこへ使う？",
+      "topic": "lab-victory-a",
+      "clip": "lab-victory-a",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "この記録は、最初の二ラウンドまで旧例と同じ。三ラウンド目に、器を戻す一手を選んだよ。",
+          "ttsText": "この記録は、最初の二ラウンドまで旧例と同じ。三ラウンド目に、器を戻す一手を選んだよ。",
+          "wav": "artifacts/build-diary-05/speech/8031c0b28800c6f3ed7792e1.flac",
+          "duration": 6.666667,
+          "voiceId": 8,
+          "start": 230.00000000000003,
+          "end": 236.66666700000002
+        },
+        {
+          "speaker": "m",
+          "text": "旧例の同じ場面は、普通の攻撃。そちらが回復ボタンを押した映像として、比べているわけではないの。",
+          "ttsText": "旧例の同じ場面は、普通の攻撃。そちらが回復ボタンを押した映像として、比べているわけではないの。",
+          "wav": "artifacts/build-diary-05/speech/cfbe55047f463aab159d6772.flac",
+          "duration": 7.2,
+          "voiceId": 2,
+          "start": 237.6650577735613,
+          "end": 244.8650577735613
+        },
+        {
+          "speaker": "t",
+          "text": "中身は減っても増えてもいない。HPを足す回復や再生は、別の効果。図でも、器を戻す動きとは分けて見るよ。",
+          "ttsText": "中身は減っても増えてもいない。エイチピーを足す回復や再生は、別の効果。図でも、器を戻す動きとは分けて見るよ。",
+          "wav": "artifacts/build-diary-05/speech/e37028f8758a874268b066de.flac",
+          "duration": 8.405333,
+          "voiceId": 8,
+          "start": 245.86344854712254,
+          "end": 254.26878154712256
+        },
+        {
+          "speaker": "z",
+          "text": "器が広がったのだ！　満タンに見えた緑の外へ、また入る場所ができたのだ。",
+          "ttsText": "器が広がったのだ！　満タンに見えた緑の外へ、また入る場所ができたのだ。",
+          "wav": "artifacts/build-diary-05/speech/a5217311657e0c0adcdb7d69.flac",
+          "duration": 5.738667,
+          "voiceId": 3,
+          "start": 255.2671723206838,
+          "end": 261.00583932068383
+        },
+        {
+          "speaker": "m",
+          "text": "エレインのケアが、次の手当の入る場所を残した。行動回数を増やしたのではなく、この一手の仕事を変えたのね。",
+          "ttsText": "エレインのケアが、次の手当の入る場所を残した。行動回数を増やしたのではなく、この一手の仕事を変えたのね。",
+          "wav": "artifacts/build-diary-05/speech/5ce01ef5273f3923a6858d62.flac",
+          "duration": 7.466667,
+          "voiceId": 2,
+          "start": 262.1058393206838,
+          "end": 269.5725063206838
+        },
+        {
+          "speaker": "t",
+          "text": "ここからは、守りとケアを続けるよ。この順番だけが正解ではないから、図では一つずつ、役目を追ってみよう。",
+          "ttsText": "ここからは、守りとケアを続けるよ。この順番だけが正解ではないから、図では一つずつ、役目を追ってみよう。",
+          "wav": "artifacts/build-diary-05/speech/09fb73a05b92ef928afa7d27.flac",
+          "duration": 7.626667,
+          "voiceId": 8,
+          "start": 270.67250632068385,
+          "end": 278.29917332068385
+        }
+      ],
+      "reactionReferences": [
+        {
+          "eventLocalTime": 25.567172320683795,
+          "lineTextContains": "器が広がったのだ！",
+          "mode": "exact-event-offset",
+          "event": {
+            "skillId": "research-elaine-returning-saucer",
+            "round": 3
+          },
+          "voiceLocalTime": 25.667172320683797
+        }
+      ],
+      "start": 229.60000000000002,
+      "duration": 49.86666666666667,
+      "rate": 1,
+      "playDuration": 34.2,
+      "sourceApplicationSpeed": 1,
+      "logPlayback": true,
+      "lab": true,
+      "clipLabel": "研究用護衛・実記録 A",
+      "clipDisclosure": "R1–3 抜粋 ／ R4–8 は省略",
+      "clipDisplayedRounds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "lab-victory-b",
+      "title": "また、咲ける場所が残った。",
+      "topic": "lab-victory-b",
+      "clip": "lab-victory-b",
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "同じ記録の終盤へ進むわ。途中は省略。守って、器を戻して、必要な手当をする流れが続いている。",
+          "ttsText": "同じ記録の終盤へ進むわ。途中は省略。守って、器を戻して、必要な手当をする流れが続いている。",
+          "wav": "artifacts/build-diary-05/speech/24fe398154d2697b256d096f.flac",
+          "duration": 7.808,
+          "voiceId": 2,
+          "start": 279.8666666666667,
+          "end": 287.67466666666667
+        },
+        {
+          "speaker": "z",
+          "text": "敵がいなくなっても、花を見ていないといけないのだ。帰るまでが、みんなのお仕事なのだ。",
+          "ttsText": "敵がいなくなっても、花を見ていないといけないのだ。帰るまでが、みんなのお仕事なのだ。",
+          "wav": "artifacts/build-diary-05/speech/388067275e1f1f3ecd16996a.flac",
+          "duration": 6.389333,
+          "voiceId": 3,
+          "start": 289.6334354304369,
+          "end": 296.02276843043694
+        },
+        {
+          "speaker": "m",
+          "text": "この例では、花と妖精の助けも使っている。勝った一例だけで認定せず、別の相方やタイミングも確かめたわ。",
+          "ttsText": "この例では、花と妖精の助けも使っている。勝った一例だけで認定せず、別の相方やタイミングも確かめたわ。",
+          "wav": "artifacts/build-diary-05/speech/d598d81bffbc751dee3405f5.flac",
+          "duration": 7.989333,
+          "voiceId": 2,
+          "start": 297.98153719420714,
+          "end": 305.9708701942071
+        },
+        {
+          "speaker": "t",
+          "text": "帰れたよ。元の大きさ全部には戻っていないけど、白花の器と命は残った。付き添った三人も、一緒だね。",
+          "ttsText": "帰れたよ。元の大きさ全部には戻っていないけど、白花の器と命は残った。付き添った三人も、一緒だね。",
+          "wav": "artifacts/build-diary-05/speech/b94b3a81e06110e3050b8003.flac",
+          "duration": 8.085333,
+          "voiceId": 8,
+          "start": 307.9296389579773,
+          "end": 316.0149719579773
+        },
+        {
+          "speaker": "t",
+          "text": "エレインが全部を満たしたんじゃない。彼女の一手のあとに、ほかの手当が届く。こういうつながりを、組んでみたかったんだ。",
+          "ttsText": "エレインが全部を満たしたんじゃない。彼女の一手のあとに、ほかの手当が届く。こういうつながりを、組んでみたかったんだ。",
+          "wav": "artifacts/build-diary-05/speech/e3717b9c8e6ac858c3a23274.flac",
+          "duration": 7.562667,
+          "voiceId": 8,
+          "start": 317.11497195797733,
+          "end": 324.6776389579773
+        }
+      ],
+      "reactionReferences": [
+        {
+          "eventLocalTime": 28.362972291310626,
+          "lineTextContains": "帰れたよ。",
+          "mode": "exact-event-offset",
+          "event": {
+            "textContains": "研究：白花の帰還",
+            "round": 12
+          },
+          "voiceLocalTime": 28.462972291310628
+        }
+      ],
+      "start": 279.4666666666667,
+      "duration": 46.36666666666667,
+      "rate": 1,
+      "playDuration": 33.1,
+      "sourceApplicationSpeed": 1,
+      "logPlayback": true,
+      "lab": true,
+      "clipLabel": "研究用護衛・実記録 B",
+      "clipDisclosure": "R9–12 抜粋 ／ R4–8 は省略",
+      "clipDisplayedRounds": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": "necessity",
+      "title": "なぜ、この役が必要？",
+      "topic": "necessity",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "もっと大きく回復する子や、硬い守りで、代わりにはできないのだ？",
+          "ttsText": "もっと大きく回復する子や、硬い守りで、代わりにはできないのだ？",
+          "wav": "artifacts/build-diary-05/speech/c69e47d091d2aedf66c385ec.flac",
+          "duration": 5.290667,
+          "voiceId": 3,
+          "start": 326.23333333333335,
+          "end": 331.52400033333333
+        },
+        {
+          "speaker": "m",
+          "text": "最大限守っても、戻さない器は帰る時刻より前に尽きる。この研究の候補では、器を戻すエレインの役が必要なの。",
+          "ttsText": "最大限守っても、戻さない器は帰る時刻より前に尽きる。この研究の候補では、器を戻すエレインの役が必要なの。",
+          "wav": "artifacts/build-diary-05/speech/f32b8f61b309da37c34064eb.flac",
+          "duration": 8.586667,
+          "voiceId": 2,
+          "start": 332.32400033333334,
+          "end": 340.9106673333333
+        },
+        {
+          "speaker": "t",
+          "text": "この庭は役割を試す専用の護衛。新技も舞台も、今のゲームにはまだ未搭載の研究案だよ。",
+          "ttsText": "この庭は役割を試す専用の護衛。新技も舞台も、今のゲームにはまだ未搭載の研究案だよ。",
+          "wav": "artifacts/build-diary-05/speech/b4e9f856c738ae540c8d0a2c.flac",
+          "duration": 6.752,
+          "voiceId": 8,
+          "start": 342.01066733333334,
+          "end": 348.76266733333335
+        },
+        {
+          "speaker": "m",
+          "text": "勝利と必要性、抜け道、以前の役割も確認した。琥珀は、この研究護衛と、今日確かめた最初の姿のエレインへの認定よ。",
+          "ttsText": "勝利と必要性、抜け道、以前の役割も確認した。琥珀は、この研究護衛と、今日確かめた最初の姿のエレインへの認定よ。",
+          "wav": "artifacts/build-diary-05/speech/ddf095073438aecb5891e6f4.flac",
+          "duration": 9.749333,
+          "voiceId": 2,
+          "start": 349.56266733333337,
+          "end": 359.31200033333334
+        },
+        {
+          "speaker": "z",
+          "text": "やったのだ、琥珀色！　名前だけじゃなくて、連れていく理由を残せたのだ！",
+          "ttsText": "やったのだ、こはくいろ！　名前だけじゃなくて、連れていく理由を残せたのだ！",
+          "wav": "artifacts/build-diary-05/speech/ba0e4ace631862159ac4a19d.flac",
+          "duration": 5.557333,
+          "voiceId": 3,
+          "start": 360.11200033333336,
+          "end": 365.6693333333334
+        }
+      ],
+      "start": 325.83333333333337,
+      "duration": 41.0
+    },
+    {
+      "id": "tradeoff",
+      "title": "元の役目を、誰へ預ける？",
+      "topic": "tradeoff",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "ただ、器のケアを選んだぶん、元の祓いは使えない。相手が変われば、その穴も考えたいね。",
+          "ttsText": "ただ、器のケアを選んだぶん、元の祓いは使えない。相手が変われば、その穴も考えたいね。",
+          "wav": "artifacts/build-diary-05/speech/5ef597b1389d9f10a79404dd.flac",
+          "duration": 6.784,
+          "voiceId": 8,
+          "start": 367.23333333333335,
+          "end": 374.01733333333334
+        },
+        {
+          "speaker": "m",
+          "text": "別の状態異常の試練では、元の技が助ける場面もあった。器を戻す案が、何にでも強いという結果ではないわ。",
+          "ttsText": "別の状態異常の試練では、元の技が助ける場面もあった。器を戻す案が、何にでも強いという結果ではないわ。",
+          "wav": "artifacts/build-diary-05/speech/7a14ea7b3053914a5adbce7e.flac",
+          "duration": 7.936,
+          "voiceId": 2,
+          "start": 374.81733333333335,
+          "end": 382.75333333333333
+        },
+        {
+          "speaker": "z",
+          "text": "だから、ほかの仲間や石に、祓いを頼む組み方も考えるのだ。",
+          "ttsText": "だから、ほかの仲間や石に、祓いを頼む組み方も考えるのだ。",
+          "wav": "artifacts/build-diary-05/speech/401a4253f70ab185b0b15c22.flac",
+          "duration": 4.917333,
+          "voiceId": 3,
+          "start": 383.5533333333334,
+          "end": 388.4706663333334
+        },
+        {
+          "speaker": "t",
+          "text": "一人で全部を持たせるより、誰に何を預けると楽しくなるか。そこまで含めて、選びたくなる編成にしたいな。",
+          "ttsText": "一人で全部を持たせるより、誰に何を預けると楽しくなるか。そこまで含めて、選びたくなる編成にしたいな。",
+          "wav": "artifacts/build-diary-05/speech/a9901528a2cc9d89ad5d7892.flac",
+          "duration": 7.253333,
+          "voiceId": 8,
+          "start": 389.2706663333334,
+          "end": 396.5239993333334
+        }
+      ],
+      "start": 366.83333333333337,
+      "duration": 30.866666666666667
+    },
+    {
+      "id": "legacy-audit",
+      "title": "前のノートも、開き直す。",
+      "topic": "legacy-audit",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "前の四人の仕事も、新しい案で消えていないか、確かめたよ。",
+          "ttsText": "前の四人の仕事も、新しい案で消えていないか、確かめたよ。",
+          "wav": "artifacts/build-diary-05/speech/208834b47a8489e92736b307.flac",
+          "duration": 4.234667,
+          "voiceId": 8,
+          "start": 398.1,
+          "end": 402.334667
+        },
+        {
+          "speaker": "m",
+          "text": "ルカとネリの試作認定は、再審して維持。イオネとフィオの案も、役目を勝手に消したり、認定を先に付けたりしていないわ。",
+          "ttsText": "ルカとネリの試作認定は、再審して維持。イオネとフィオの案も、役目を勝手に消したり、認定を先に付けたりしていないわ。",
+          "wav": "artifacts/build-diary-05/speech/5390b6cff9dc6cdc465121dd.flac",
+          "duration": 8.448,
+          "voiceId": 2,
+          "start": 403.13466700000004,
+          "end": 411.582667
+        },
+        {
+          "speaker": "z",
+          "text": "器を戻せても、糸や交代、宛先や備蓄は、それぞれ別のお仕事なのだ。",
+          "ttsText": "器を戻せても、糸や交代、宛先や備蓄は、それぞれ別のお仕事なのだ。",
+          "wav": "artifacts/build-diary-05/speech/e595005e81dcba6baa357ef4.flac",
+          "duration": 6.154667,
+          "voiceId": 3,
+          "start": 412.382667,
+          "end": 418.53733400000004
+        },
+        {
+          "speaker": "t",
+          "text": "印は、一度付けて終わりじゃない。次に別の子を調べるときも、同じノートを開いて、また考えようね。",
+          "ttsText": "印は、一度付けて終わりじゃない。次に別の子を調べるときも、同じノートを開いて、また考えようね。",
+          "wav": "artifacts/build-diary-05/speech/f3e145d78fccd11705ea7149.flac",
+          "duration": 7.296,
+          "voiceId": 8,
+          "start": 419.33733400000006,
+          "end": 426.63333400000005
+        }
+      ],
+      "start": 397.70000000000005,
+      "duration": 30.1
+    },
+    {
+      "id": "future",
+      "title": "また咲ける、という約束。",
+      "topic": "future",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "エレインの花を、ただ使い切る力にはしたくなかった。仲間の手当が届く場所を、もう一度残す役にできたね。",
+          "ttsText": "エレインの花を、ただ使い切る力にはしたくなかった。仲間の手当が届く場所を、もう一度残す役にできたね。",
+          "wav": "artifacts/build-diary-05/speech/00883c12581c37474bfafa3c.flac",
+          "duration": 7.264,
+          "voiceId": 8,
+          "start": 428.20000000000005,
+          "end": 435.46400000000006
+        },
+        {
+          "speaker": "z",
+          "text": "白い花も、その子の役目も、また咲く余地があるのだ。次は、どんな子に会いにいくのだ？",
+          "ttsText": "白い花も、その子の役目も、また咲く余地があるのだ。次は、どんな子に会いにいくのだ？",
+          "wav": "artifacts/build-diary-05/speech/b13213f3c134ef1c34fc8e96.flac",
+          "duration": 6.858667,
+          "voiceId": 3,
+          "start": 436.26400000000007,
+          "end": 443.1226670000001
+        },
+        {
+          "speaker": "t",
+          "text": "今度は、最初から一緒だった剣士のノートへ。強い姿があることと、その子らしい出番を探すことを、一緒に考えたいな。",
+          "ttsText": "今度は、最初から一緒だった剣士のノートへ。強い姿があることと、その子らしい出番を探すことを、一緒に考えたいな。",
+          "wav": "artifacts/build-diary-05/speech/43692a056223013bc2d909eb.flac",
+          "duration": 8.501333,
+          "voiceId": 8,
+          "start": 443.92266700000005,
+          "end": 452.42400000000004
+        }
+      ],
+      "start": 427.80000000000007,
+      "duration": 25.8
+    },
+    {
+      "id": "next-episode",
+      "title": "NEXT EPISODE｜薄明の剣へ。",
+      "topic": "next-episode",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "次の主役はセリス。BD003、薄明の剣。最初から旅をしてきた剣士だよ。",
+          "ttsText": "次の主役はセリス。ビー・ディー・ゼロ・ゼロ・サン、薄明の剣。最初から旅をしてきた剣士だよ。",
+          "wav": "artifacts/build-diary-05/speech/b278d64f72d6a4f07f199b10.flac",
+          "duration": 8.736,
+          "voiceId": 8,
+          "start": 454.00000000000006,
+          "end": 462.73600000000005
+        },
+        {
+          "speaker": "z",
+          "text": "強い仲間が増えたら、最初の子の席がなくなるのは寂しいのだ。",
+          "ttsText": "強い仲間が増えたら、最初の子の席がなくなるのは寂しいのだ。",
+          "wav": "artifacts/build-diary-05/speech/9d4c15447d7dc53b88041f9b.flac",
+          "duration": 4.672,
+          "voiceId": 3,
+          "start": 463.6520000000001,
+          "end": 468.3240000000001
+        },
+        {
+          "speaker": "t",
+          "text": "次の問いは、強い仲間が増えても、セリスを選ぶ理由は？　一緒に旅した子と、また組みたくなる研究にしたいな。",
+          "ttsText": "次の問いは、強い仲間が増えても、セリスを選ぶ理由は？　一緒に旅した子と、また組みたくなる研究にしたいな。",
+          "wav": "artifacts/build-diary-05/speech/b5afb384c3add11cb2c5e487.flac",
+          "duration": 7.936,
+          "voiceId": 8,
+          "start": 469.24000000000007,
+          "end": 477.17600000000004
+        },
+        {
+          "speaker": "m",
+          "text": "セリスには、既存の強い姿もあるわ。次の新しい案と専用の攻略先は、まだ未検証よ。",
+          "ttsText": "セリスには、既存の強い姿もあるわ。次の新しい案と専用の攻略先は、まだ未検証よ。",
+          "wav": "artifacts/build-diary-05/speech/e9687d12f67c4c39cfae058c.flac",
+          "duration": 6.730667,
+          "voiceId": 2,
+          "start": 478.0920000000001,
+          "end": 484.8226670000001
+        },
+        {
+          "speaker": "t",
+          "text": "朝を探す剣士に、どんな一手を預けよう。次のノートも、一緒に開こう！",
+          "ttsText": "朝を探す剣士に、どんな一手を預けよう。次のノートも、一緒に開こう！",
+          "wav": "artifacts/build-diary-05/speech/22d00eee617427b95cdd3623.flac",
+          "duration": 5.461333,
+          "voiceId": 8,
+          "start": 485.7386670000001,
+          "end": 491.2000000000001
+        }
+      ],
+      "start": 453.6000000000001,
+      "duration": 38.86666666666667,
+      "previewQuestion": "強い仲間が増えても、セリスを選ぶ理由は？",
+      "previewQuestionLines": [
+        "強い仲間が",
+        "増えても、",
+        "セリスを",
+        "選ぶ理由は？"
+      ]
+    }
+  ],
+  "sourceGameCommit": "489d5a4b15f02385c7229a2b2ff29f76da0abf44",
+  "appVersion": "1.11.0",
+  "voicevoxVersion": "0.26.0",
+  "scope": "Current app footage plus explicitly labelled prototype log playback. Research commentary after the native engine tests.",
+  "duration": 492.46666666666675,
+  "commonOpening": {
+    "start": 55.5,
+    "duration": 25.6,
+    "frames": 768,
+    "source": "artifacts/build-diary-05/render/opening/opening.mov"
+  },
+  "templateCommit": "455e128e501b50dfe82a4ddaa47d1c8d4fadecb4",
+  "renderPlanSha256": "1dda53bfc3460d57076ff256fc92eee0bdc1862afadb3553a7b0bf57220f26b7"
+}

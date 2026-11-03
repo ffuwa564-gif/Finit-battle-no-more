@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "reviewer": "/root",
+  "recordedAtUTC": "2026-11-03T03:51:16.496197+00:00",
+  "method": "Direct original-resolution inspection of both active imagegen originals. Separate approval preserves the generation history, including the superseded copy draft.",
+  "outputs": {
+    "artifacts/build-diary-05/assets/thumbnail-original.png": "2479764e14ff9aaaf92f04542a82d19c9f3784183ab6a4caaf506029aad10b89",
+    "artifacts/build-diary-05/assets/research-lab-saucer.png": "4dba30024183db4a3013636b563933c5aaf9e3db948350cbfe0bdb36bafde048"
+  },
+  "checks": {
+    "allFourHeadsEarsHairOrnamentsContained": true,
+    "elaineIdentityMatchesOriginal": true,
+    "tsumugiRoundGlassesClear": true,
+    "episode05NameAndFinalCopyCorrect": true,
+    "potSaucerCareResearchMetaphorOnly": true,
+    "noPrematureAmberOrVictoryClaim": true,
+    "supersededOriginalNotUsed": true
+  },
+  "generationProvenanceSha256": "d35d782f05db4cc0b5b7fba8c57f13fb9e64959ce7243f2bf46754fdf4151bc4"
+}

@@ -1,0 +1,1778 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "type": "safe_portrait_contract",
+      "passed": true
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "z-panic"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "m-deadpan"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-happy"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-think"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-determined"
+    },
+    {
+      "type": "head_safe_at_all_bob_extremes",
+      "passed": true,
+      "asset": "t-research-care"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 7.733333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 13.866666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 21.333333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 30.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 37.166666666666664
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 43.56666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "roster",
+      "start": 50.233333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "roster"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "series-op"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failure",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failure",
+      "start": 9.3
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failure",
+      "start": 16.066666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "failure",
+      "start": 25.1
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "failure"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "elaine-now",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "elaine-now",
+      "start": 9.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "elaine-now",
+      "start": 18.4
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "elaine-now",
+      "start": 23.0
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "elaine-now"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "capacity",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "capacity",
+      "start": 8.233333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "capacity",
+      "start": 17.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "capacity",
+      "start": 24.333333333333332
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "capacity",
+      "start": 32.4
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "capacity"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 7.966666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 17.266666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 25.8
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "recipe",
+      "start": 31.733333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "recipe"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 8.066666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 16.266666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 25.666666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 32.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-a",
+      "start": 41.06666666666667
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-a"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 10.166666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 18.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 28.466666666666665
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "lab-victory-b",
+      "start": 37.63333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "honest_capture_label",
+      "passed": true,
+      "chapter": "lab-victory-b"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 6.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 16.166666666666668
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 23.733333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "necessity",
+      "start": 34.266666666666666
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "necessity"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "tradeoff",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "tradeoff",
+      "start": 8.0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "tradeoff",
+      "start": 16.733333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "tradeoff",
+      "start": 22.433333333333334
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "tradeoff"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 5.433333333333334
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 14.666666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "legacy-audit",
+      "start": 21.633333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "legacy-audit"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "active_illustration_only",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 8.466666666666667
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "future",
+      "start": 16.133333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "future"
+    },
+    {
+      "type": "whole_frame_chapter",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "actor_coverage",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 0
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 10.066666666666666
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 15.633333333333333
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 24.5
+    },
+    {
+      "type": "speaking_portrait",
+      "passed": true,
+      "chapter": "next-episode",
+      "start": 32.13333333333333
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "caption_max_two_lines",
+      "passed": true,
+      "chapter": "next-episode"
+    },
+    {
+      "type": "roster_then_opening",
+      "passed": true
+    },
+    {
+      "type": "current_registry_finalized",
+      "passed": true
+    },
+    {
+      "type": "no_unproven_live_certificates",
+      "passed": true
+    },
+    {
+      "type": "all_girl_forms_retained",
+      "passed": true
+    },
+    {
+      "type": "manual_review_exact_finished_file",
+      "passed": true
+    },
+    {
+      "type": "visual_first_policy_bound",
+      "passed": true
+    },
+    {
+      "type": "sampled_scenes_follow_visual_first_policy",
+      "passed": true
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/contact-1.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/contact-2.jpg"
+    },
+    {
+      "type": "review_contact_exists",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/contact-3.jpg"
+    },
+    {
+      "type": "seris_existing_idea_only",
+      "passed": true
+    },
+    {
+      "type": "next_episode_final_chapter",
+      "passed": true
+    },
+    {
+      "type": "next_episode_actual_seris_original",
+      "passed": true
+    },
+    {
+      "type": "next_episode_contain_geometry",
+      "passed": true
+    },
+    {
+      "type": "next_episode_question_matches",
+      "passed": true
+    },
+    {
+      "type": "next_episode_layout_original_bound",
+      "passed": true
+    },
+    {
+      "type": "next_episode_plate_unchanged",
+      "passed": true
+    },
+    {
+      "type": "next_episode_manual_full_head_name_id_unverified",
+      "passed": true
+    },
+    {
+      "type": "next_episode_final_frame_evidence",
+      "passed": true
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-start.jpg",
+      "time": 454.6
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-mid.jpg",
+      "time": 473.033333
+    },
+    {
+      "type": "next_episode_actual_final_chapter_sample",
+      "passed": true,
+      "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-end.jpg",
+      "time": 491.466667
+    }
+  ],
+  "sourceHeadSafetySha256": "da862efc9f979a09aa7d5f28c6726af39d1e1b332c4dae7574911f3a39f9a795",
+  "sourceRegistrySha256": "4fd1c99e1866b5c1e3e6554c2d806e624247967a220b1ec07972110fe76a00ee",
+  "finishedSha256": "37a0f0df332b5697d8dedce66a480db252846d69e28ee5837bb7a858d6f7c70f",
+  "sourceNextEpisodeLayoutSha256": "493eb207377f65330db87e101a79a6fd6362d5609bddfd70e069f11d77b5b1f9",
+  "processingSha256": "ceab3d7d5fe41e0027c1be52e6a756a434e7ff131474df33670fb33bb08c2c50",
+  "manualReview": {
+    "schemaVersion": 2,
+    "passed": true,
+    "finishedSha256": "37a0f0df332b5697d8dedce66a480db252846d69e28ee5837bb7a858d6f7c70f",
+    "reviewer": "/root/build_diary_critic — independent final-file visual review",
+    "method": "65 fresh samples extracted from the exact quality-improved final MP4; three contact sheets viewed individually, 15 critical/name/next-episode frames additionally viewed at full resolution. This is sampled manual review, not a claim to have visually examined every frame. Previous failed first-pass frames are excluded from final approval.",
+    "reviewedAssets": [
+      {
+        "id": "roster-start",
+        "timeSeconds": 1.0,
+        "kind": "chapter-start",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/roster-start.jpg",
+        "sha256": "1555d9141899ec026e6d565a485c62f9d5e5e0088a4595446319fabc36e59430"
+      },
+      {
+        "id": "roster-mid",
+        "timeSeconds": 27.75,
+        "kind": "chapter-mid",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/roster-mid.jpg",
+        "sha256": "5ff975b9ebc0c79726b8c5f9e96b0afa501e4d72c47c98797e5d6fcaa9d98366"
+      },
+      {
+        "id": "roster-end",
+        "timeSeconds": 54.5,
+        "kind": "chapter-end",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/roster-end.jpg",
+        "sha256": "0033fa7296679fb23219f071a451843f7d62dbaae27edda33c95a31dd4f90a93"
+      },
+      {
+        "id": "pose-t-research-think",
+        "timeSeconds": 3.866667,
+        "kind": "pose",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-t-research-think.jpg",
+        "sha256": "cbe33fbfcf76e1c3d659a20b347cf4674d46c54602e8b9fa6159a3c91919d910"
+      },
+      {
+        "id": "pose-m-happy",
+        "timeSeconds": 3.866667,
+        "kind": "pose",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-m-happy.jpg",
+        "sha256": "cbe33fbfcf76e1c3d659a20b347cf4674d46c54602e8b9fa6159a3c91919d910"
+      },
+      {
+        "id": "pose-t-research-happy",
+        "timeSeconds": 10.8,
+        "kind": "pose",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-t-research-happy.jpg",
+        "sha256": "09a7f676c57c5ec600c814c643e075b494c2276142fa9bc353dc4e75256434f6"
+      },
+      {
+        "id": "pose-z-happy",
+        "timeSeconds": 10.8,
+        "kind": "pose",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-z-happy.jpg",
+        "sha256": "09a7f676c57c5ec600c814c643e075b494c2276142fa9bc353dc4e75256434f6"
+      },
+      {
+        "id": "pose-t-research-determined",
+        "timeSeconds": 25.883333,
+        "kind": "pose",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-t-research-determined.jpg",
+        "sha256": "4e0e3467e6f9d99ab0c69d234434e048aacd9fa2061dcdc6f50e0df2365cf3c6"
+      },
+      {
+        "id": "series-op-start",
+        "timeSeconds": 56.5,
+        "kind": "chapter-start",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/series-op-start.jpg",
+        "sha256": "e63d9431a3cac7444c3a7e1daba29c4c71c0f0995be4b9d5d7ff4f478fb2c7ed"
+      },
+      {
+        "id": "series-op-mid",
+        "timeSeconds": 68.3,
+        "kind": "chapter-mid",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/series-op-mid.jpg",
+        "sha256": "5c72d978dc136c90bc41d72387154e9f16a9dec03dab41010ca780c199d4909b"
+      },
+      {
+        "id": "series-op-end",
+        "timeSeconds": 80.1,
+        "kind": "chapter-end",
+        "chapter": "series-op",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/series-op-end.jpg",
+        "sha256": "cf7b3a2424a5dab53b2808d55637fef2b963d6ec98e15f118ede3544d58f10a1"
+      },
+      {
+        "id": "failure-start",
+        "timeSeconds": 82.1,
+        "kind": "chapter-start",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/failure-start.jpg",
+        "sha256": "46585194bdab025144e8808532ec042dd3c0deea63be686ee3c824318d76eba5"
+      },
+      {
+        "id": "failure-mid",
+        "timeSeconds": 97.95,
+        "kind": "chapter-mid",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/failure-mid.jpg",
+        "sha256": "92a15922e1460b8369408764b908d76f9697a409bfe5889c89ceba022db5db8e"
+      },
+      {
+        "id": "failure-end",
+        "timeSeconds": 113.8,
+        "kind": "chapter-end",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/failure-end.jpg",
+        "sha256": "54b0f4e39a6f5d4d8b74f33730cb99215568745c660d0af29330cc39d0bf99a8"
+      },
+      {
+        "id": "pose-t-research-care",
+        "timeSeconds": 101.683333,
+        "kind": "pose",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-t-research-care.jpg",
+        "sha256": "6c0f1453d5ea98eca9006e29b11aea13c42b1700a2db7faf66803736ba7a2586"
+      },
+      {
+        "id": "elaine-now-start",
+        "timeSeconds": 115.8,
+        "kind": "chapter-start",
+        "chapter": "elaine-now",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/elaine-now-start.jpg",
+        "sha256": "3ec906821754022d9420608b431bb4517264a740bd0ba8372a032d98bf412234"
+      },
+      {
+        "id": "elaine-now-mid",
+        "timeSeconds": 130.566667,
+        "kind": "chapter-mid",
+        "chapter": "elaine-now",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/elaine-now-mid.jpg",
+        "sha256": "afc916a578fb03e9cbf41c674b432e9599ea6b51e98cb813c89643cabd9655f6"
+      },
+      {
+        "id": "elaine-now-end",
+        "timeSeconds": 145.333333,
+        "kind": "chapter-end",
+        "chapter": "elaine-now",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/elaine-now-end.jpg",
+        "sha256": "c14e992c7ab55862d7446e16fb29c26dc28a13bcd8cc7d38fed5f453e47d53d8"
+      },
+      {
+        "id": "pose-m-deadpan",
+        "timeSeconds": 128.75,
+        "kind": "pose",
+        "chapter": "elaine-now",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-m-deadpan.jpg",
+        "sha256": "0ded0a243b8c5d71bfa4b07999dbe6ceb1d76b5790ae07f703566aad76ab1231"
+      },
+      {
+        "id": "capacity-start",
+        "timeSeconds": 147.333333,
+        "kind": "chapter-start",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-start.jpg",
+        "sha256": "45f7e648da9529562b18fb15befa8f704caf2c0566db8dca2928dc8412380454"
+      },
+      {
+        "id": "capacity-mid",
+        "timeSeconds": 167.266667,
+        "kind": "chapter-mid",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-mid.jpg",
+        "sha256": "899844e23b2c9d8827de0902c57fde9ab70de32e65422bd12b2e9c073e466750"
+      },
+      {
+        "id": "capacity-end",
+        "timeSeconds": 187.2,
+        "kind": "chapter-end",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-end.jpg",
+        "sha256": "40914aed03713f6d0d71d4fd51e40dbebf0558d5cb1692039322cc380f160d3c"
+      },
+      {
+        "id": "capacity-phase0",
+        "timeSeconds": 150.45,
+        "kind": "critical-concept",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-phase0.jpg",
+        "sha256": "6c849435ae6ba77816dcf36b6647297a291efaf17dc064c3216109f29beca4cc"
+      },
+      {
+        "id": "capacity-phase1",
+        "timeSeconds": 159.35,
+        "kind": "critical-concept",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-phase1.jpg",
+        "sha256": "1c65b0bd55fa76e772bec71f5c97fcd8d475a5c34936af8e558e6d456d80dc3c"
+      },
+      {
+        "id": "capacity-phase2",
+        "timeSeconds": 167.4,
+        "kind": "critical-concept",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-phase2.jpg",
+        "sha256": "8c5b3a59e1e3dc7c05f3deb358dd33d27d7a5119f6d8b5963811d071e06a9a25"
+      },
+      {
+        "id": "capacity-phase3",
+        "timeSeconds": 174.7,
+        "kind": "critical-concept",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-phase3.jpg",
+        "sha256": "4df78cd7e92316594b24c0cafb088f5739360ef8dcaebbebfab56714fc51f50b"
+      },
+      {
+        "id": "capacity-phase4",
+        "timeSeconds": 183.466667,
+        "kind": "critical-concept",
+        "chapter": "capacity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/capacity-phase4.jpg",
+        "sha256": "7279d0b50b7ca2e7451b4c46139bc18ce196a6ce1944e172eb556360af724244"
+      },
+      {
+        "id": "recipe-start",
+        "timeSeconds": 189.2,
+        "kind": "chapter-start",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/recipe-start.jpg",
+        "sha256": "2dee7d4d79644d19f40a1918dc9a888681bd77b3bebe6ff226078c6a6bffbaa9"
+      },
+      {
+        "id": "recipe-mid",
+        "timeSeconds": 208.9,
+        "kind": "chapter-mid",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/recipe-mid.jpg",
+        "sha256": "ceb56eeb47f97c817b4a2d981397e26848dab706eddddc1dada532a393b4c085"
+      },
+      {
+        "id": "recipe-end",
+        "timeSeconds": 228.6,
+        "kind": "chapter-end",
+        "chapter": "recipe",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/recipe-end.jpg",
+        "sha256": "c898d1f698c2ed3363374cfa05a5b36ed437ae72e575bed5e5b48706267efa42"
+      },
+      {
+        "id": "lab-victory-a-start",
+        "timeSeconds": 230.6,
+        "kind": "chapter-start",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-a-start.jpg",
+        "sha256": "e311d980c836b2ecc7e7aaf640aad1b3e8bafc02c6382bebf41967784e991902"
+      },
+      {
+        "id": "lab-victory-a-mid",
+        "timeSeconds": 254.533333,
+        "kind": "chapter-mid",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-a-mid.jpg",
+        "sha256": "0dc646184297d8bf6b33b20dafe0a914e35a5a283285232eb6ffccc42d7aba23"
+      },
+      {
+        "id": "lab-victory-a-end",
+        "timeSeconds": 278.466667,
+        "kind": "chapter-end",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-a-end.jpg",
+        "sha256": "d1658028c4d7e7dd3fe61340a9c13173bcd5a9787fc7ce87c38f2ae0c7c1669d"
+      },
+      {
+        "id": "lab-victory-b-start",
+        "timeSeconds": 280.466667,
+        "kind": "chapter-start",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-b-start.jpg",
+        "sha256": "e2f109baea2c1221f91833783208976d5c4f4be0d51e3b36f8815a7c8a8dca23"
+      },
+      {
+        "id": "lab-victory-b-mid",
+        "timeSeconds": 302.65,
+        "kind": "chapter-mid",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-b-mid.jpg",
+        "sha256": "2b3a451c5c28176ae362b6cadfc24477b526ba1c8ff33536a74e88616680d9d1"
+      },
+      {
+        "id": "lab-victory-b-end",
+        "timeSeconds": 324.833333,
+        "kind": "chapter-end",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/lab-victory-b-end.jpg",
+        "sha256": "6b2084dc1f588c2038e1af4202a2d871c440938e9fc6efe6bcd8f403d3cbddc0"
+      },
+      {
+        "id": "pose-z-panic",
+        "timeSeconds": 293.8,
+        "kind": "pose",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/pose-z-panic.jpg",
+        "sha256": "05a1742c77448c43c887f13f6452e41c916494cd0ef87d70d05dd69e6c334bcf"
+      },
+      {
+        "id": "necessity-start",
+        "timeSeconds": 326.833333,
+        "kind": "chapter-start",
+        "chapter": "necessity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/necessity-start.jpg",
+        "sha256": "47cab3f39f4e4fe624a1bff198a0fe332ce4f70f9d12d6198cf602541e75ebd6"
+      },
+      {
+        "id": "necessity-mid",
+        "timeSeconds": 346.333333,
+        "kind": "chapter-mid",
+        "chapter": "necessity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/necessity-mid.jpg",
+        "sha256": "5253a33e9b56985fcc38dd0d4ec9b9f4ca920ec6b9b55e60d9c02d0c0a5448dc"
+      },
+      {
+        "id": "necessity-end",
+        "timeSeconds": 365.833333,
+        "kind": "chapter-end",
+        "chapter": "necessity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/necessity-end.jpg",
+        "sha256": "981d610d323cd2a46a3cc8b01769d76cb669d2e80bf946d48af96b67676cfb91"
+      },
+      {
+        "id": "tradeoff-start",
+        "timeSeconds": 367.833333,
+        "kind": "chapter-start",
+        "chapter": "tradeoff",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/tradeoff-start.jpg",
+        "sha256": "de9b5b7eee0f5c18e479bcdcd3a490bf0de937c4522557cc6b3122678a4f79d3"
+      },
+      {
+        "id": "tradeoff-mid",
+        "timeSeconds": 382.266667,
+        "kind": "chapter-mid",
+        "chapter": "tradeoff",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/tradeoff-mid.jpg",
+        "sha256": "14ef62a0cdc73d21f994720d9e83921857d0ed76475fd73f808b044242ef6a5c"
+      },
+      {
+        "id": "tradeoff-end",
+        "timeSeconds": 396.7,
+        "kind": "chapter-end",
+        "chapter": "tradeoff",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/tradeoff-end.jpg",
+        "sha256": "fc70a8ea233227c33eeca43f018046de2439d89ccebecf67fb13b20860272dc9"
+      },
+      {
+        "id": "legacy-audit-start",
+        "timeSeconds": 398.7,
+        "kind": "chapter-start",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/legacy-audit-start.jpg",
+        "sha256": "07c74e8a7f8051cc790060e2edeee30967a550f356383cb160add13c0af251a4"
+      },
+      {
+        "id": "legacy-audit-mid",
+        "timeSeconds": 412.75,
+        "kind": "chapter-mid",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/legacy-audit-mid.jpg",
+        "sha256": "30caa23c56700d290ace322e5b7e8920b0ec44e03a28d94ca876196ca34ad22c"
+      },
+      {
+        "id": "legacy-audit-end",
+        "timeSeconds": 426.8,
+        "kind": "chapter-end",
+        "chapter": "legacy-audit",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/legacy-audit-end.jpg",
+        "sha256": "1a355fdee2f512d4a6be861c10c962f7e053c7d34f522d6e3238f4b2f37f9ffa"
+      },
+      {
+        "id": "future-start",
+        "timeSeconds": 428.8,
+        "kind": "chapter-start",
+        "chapter": "future",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/future-start.jpg",
+        "sha256": "c0935423739fae6204a4311f5dcee603f71e6c58f96cb7bc7923608186070ace"
+      },
+      {
+        "id": "future-mid",
+        "timeSeconds": 440.7,
+        "kind": "chapter-mid",
+        "chapter": "future",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/future-mid.jpg",
+        "sha256": "4d435ce62084c3bf471e1f5816bc2d3bee6b38f47656e9f863d11492c999c6ac"
+      },
+      {
+        "id": "future-end",
+        "timeSeconds": 452.6,
+        "kind": "chapter-end",
+        "chapter": "future",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/future-end.jpg",
+        "sha256": "ad719e6505014824dd0df46cefdbda4d01ef3731b1f503ae78281c27fdbe7341"
+      },
+      {
+        "id": "illustration-research-lab-saucer",
+        "timeSeconds": 448.766667,
+        "kind": "illustration",
+        "chapter": "future",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/illustration-research-lab-saucer.jpg",
+        "sha256": "716d6faf4081eeedb75110f8f5d422bbfdc8af0a7c22e771b0aa82dd76cb0b8e"
+      },
+      {
+        "id": "next-episode-start",
+        "timeSeconds": 454.6,
+        "kind": "chapter-start",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-start.jpg",
+        "sha256": "26d1441e29d3da41561d7229a6fd563587c92fb61ca805fd58e50eb369917c86"
+      },
+      {
+        "id": "next-episode-mid",
+        "timeSeconds": 473.033333,
+        "kind": "chapter-mid",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-mid.jpg",
+        "sha256": "8551a9f032186bce15d2ca9313c7d7e14b7b30e49d54fa37687cf1de55de9335"
+      },
+      {
+        "id": "next-episode-end",
+        "timeSeconds": 491.466667,
+        "kind": "chapter-end",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-end.jpg",
+        "sha256": "396b30b2cbf1a23ee58530a638d8548d5e7543bd619450b071d5b093833cb18f"
+      },
+      {
+        "id": "a-effect-explanation",
+        "timeSeconds": 250,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-effect-explanation.jpg",
+        "sha256": "b61e98ad2132520959a90082a5d962cedb6fd5bc0e42afe2081be1927d762cab"
+      },
+      {
+        "id": "a-actual-care",
+        "timeSeconds": 255.95,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-actual-care.jpg",
+        "sha256": "66d500efd51e52631ab0c3a087aa63fb13a3b286b7c9ff676533ee7163fecc8c"
+      },
+      {
+        "id": "a-fio-separate-heal",
+        "timeSeconds": 258.1,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-fio-separate-heal.jpg",
+        "sha256": "8e2742f80f1978eaf7a5cb35c3daf6500939905232e8d701bbdade9446ad2172"
+      },
+      {
+        "id": "b-actual-return",
+        "timeSeconds": 308.1,
+        "kind": "critical",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/b-actual-return.jpg",
+        "sha256": "85445a235dc7d893776cb0fec4d31832037b0559120c84af23362e1f605505d6"
+      },
+      {
+        "id": "conditional-amber",
+        "timeSeconds": 359,
+        "kind": "critical",
+        "chapter": "necessity",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/conditional-amber.jpg",
+        "sha256": "8b6b7f2a42c377b693a15b23bdacdaaa0232a3cfbd05c523f0e64b5ccd4e2088"
+      },
+      {
+        "id": "tradeoff-lost-slot",
+        "timeSeconds": 371,
+        "kind": "critical",
+        "chapter": "tradeoff",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/tradeoff-lost-slot.jpg",
+        "sha256": "cb52de39ac1abb349b253b4d2ff4f8a7f2965dc0514161066db0c1997cb4a3b9"
+      },
+      {
+        "id": "old-pot-failure-heroes-live",
+        "timeSeconds": 108.785533,
+        "kind": "critical",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/old-pot-failure-heroes-live.jpg",
+        "sha256": "361e49fcd19a7367fdf9a95c5e8fe7f7ba3c16455bbaa1fd332d09ac344de737"
+      },
+      {
+        "id": "named-card-elaine",
+        "timeSeconds": 1.5,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-elaine.jpg",
+        "characterId": "elaine",
+        "sha256": "b218f4eda1b6c5b953daf4d4f6e1fabd71af77533d6b0457a769293270d075a9"
+      },
+      {
+        "id": "named-card-ruka",
+        "timeSeconds": 54.0,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ruka.jpg",
+        "characterId": "ruka",
+        "sha256": "2810c5c8686e9e6e5c0a6d1195563561d104d8cbd0d2deef4808ed094f340978"
+      },
+      {
+        "id": "named-card-neri",
+        "timeSeconds": 52.4,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-neri.jpg",
+        "characterId": "neri",
+        "sha256": "b5d1532f5076a83dff7e0f90172ac440c6dbc4b9b467db1be4ddaacd291c7021"
+      },
+      {
+        "id": "named-card-ione",
+        "timeSeconds": 51.633333,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ione.jpg",
+        "characterId": "ione",
+        "sha256": "06e4f254d0383624ca9fd99eee35ee9e8edc531b895ad47583966ecf2063da17"
+      },
+      {
+        "id": "named-card-fio",
+        "timeSeconds": 53.2,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-fio.jpg",
+        "characterId": "fio",
+        "sha256": "151e5d69508603d08efffb3d4d96980506d7a7a2f65f572b0a4aff38e93f14be"
+      },
+      {
+        "kind": "thumbnail",
+        "path": "artifacts/build-diary-05/delivery/Thumbnail-BuildResearchDiary-05.jpg",
+        "sha256": "b5579c8c0e49823c7ce8a14cfa76f4ee795df148fefe2dc79bd9a9adba917b30"
+      },
+      {
+        "kind": "thumbnail",
+        "path": "artifacts/build-diary-05/assets/thumbnail-original.png",
+        "sha256": "2479764e14ff9aaaf92f04542a82d19c9f3784183ab6a4caaf506029aad10b89",
+        "headsAndAccessoriesContained": true
+      },
+      {
+        "kind": "research-lab",
+        "path": "artifacts/build-diary-05/assets/research-lab-saucer.png",
+        "sha256": "4dba30024183db4a3013636b563933c5aaf9e3db948350cbfe0bdb36bafde048",
+        "headsAndAccessoriesContained": true
+      }
+    ],
+    "contactSheetPaths": [
+      "artifacts/build-diary-05/research/critic-final-v2/contact-1.jpg",
+      "artifacts/build-diary-05/research/critic-final-v2/contact-2.jpg",
+      "artifacts/build-diary-05/research/critic-final-v2/contact-3.jpg"
+    ],
+    "coverage": {
+      "sections": 13,
+      "chapterBoundarySamples": 39,
+      "totalMovieSamples": 65,
+      "actualUsedPoseCount": 8,
+      "actualUsedPoses": [
+        "m-deadpan",
+        "m-happy",
+        "t-research-care",
+        "t-research-determined",
+        "t-research-happy",
+        "t-research-think",
+        "z-happy",
+        "z-panic"
+      ],
+      "activeArtworkCount": 2,
+      "provisionalNamedCards": 5,
+      "nextEpisodeSamples": 3
+    },
+    "fullResolutionReviewed": [
+      {
+        "id": "a-actual-care",
+        "timeSeconds": 255.95,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-actual-care.jpg",
+        "sha256": "66d500efd51e52631ab0c3a087aa63fb13a3b286b7c9ff676533ee7163fecc8c"
+      },
+      {
+        "id": "a-effect-explanation",
+        "timeSeconds": 250,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-effect-explanation.jpg",
+        "sha256": "b61e98ad2132520959a90082a5d962cedb6fd5bc0e42afe2081be1927d762cab"
+      },
+      {
+        "id": "a-fio-separate-heal",
+        "timeSeconds": 258.1,
+        "kind": "critical",
+        "chapter": "lab-victory-a",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/a-fio-separate-heal.jpg",
+        "sha256": "8e2742f80f1978eaf7a5cb35c3daf6500939905232e8d701bbdade9446ad2172"
+      },
+      {
+        "id": "b-actual-return",
+        "timeSeconds": 308.1,
+        "kind": "critical",
+        "chapter": "lab-victory-b",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/b-actual-return.jpg",
+        "sha256": "85445a235dc7d893776cb0fec4d31832037b0559120c84af23362e1f605505d6"
+      },
+      {
+        "id": "old-pot-failure-heroes-live",
+        "timeSeconds": 108.785533,
+        "kind": "critical",
+        "chapter": "failure",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/old-pot-failure-heroes-live.jpg",
+        "sha256": "361e49fcd19a7367fdf9a95c5e8fe7f7ba3c16455bbaa1fd332d09ac344de737"
+      },
+      {
+        "id": "elaine-now-mid",
+        "timeSeconds": 130.566667,
+        "kind": "chapter-mid",
+        "chapter": "elaine-now",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/elaine-now-mid.jpg",
+        "sha256": "afc916a578fb03e9cbf41c674b432e9599ea6b51e98cb813c89643cabd9655f6"
+      },
+      {
+        "id": "illustration-research-lab-saucer",
+        "timeSeconds": 448.766667,
+        "kind": "illustration",
+        "chapter": "future",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/illustration-research-lab-saucer.jpg",
+        "sha256": "716d6faf4081eeedb75110f8f5d422bbfdc8af0a7c22e771b0aa82dd76cb0b8e"
+      },
+      {
+        "id": "named-card-ruka",
+        "timeSeconds": 54.0,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ruka.jpg",
+        "characterId": "ruka",
+        "sha256": "2810c5c8686e9e6e5c0a6d1195563561d104d8cbd0d2deef4808ed094f340978"
+      },
+      {
+        "id": "named-card-elaine",
+        "timeSeconds": 1.5,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-elaine.jpg",
+        "characterId": "elaine",
+        "sha256": "b218f4eda1b6c5b953daf4d4f6e1fabd71af77533d6b0457a769293270d075a9"
+      },
+      {
+        "id": "named-card-neri",
+        "timeSeconds": 52.4,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-neri.jpg",
+        "characterId": "neri",
+        "sha256": "b5d1532f5076a83dff7e0f90172ac440c6dbc4b9b467db1be4ddaacd291c7021"
+      },
+      {
+        "id": "named-card-ione",
+        "timeSeconds": 51.633333,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ione.jpg",
+        "characterId": "ione",
+        "sha256": "06e4f254d0383624ca9fd99eee35ee9e8edc531b895ad47583966ecf2063da17"
+      },
+      {
+        "id": "named-card-fio",
+        "timeSeconds": 53.2,
+        "kind": "provisional-card",
+        "chapter": "roster",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-fio.jpg",
+        "characterId": "fio",
+        "sha256": "151e5d69508603d08efffb3d4d96980506d7a7a2f65f572b0a4aff38e93f14be"
+      },
+      {
+        "id": "next-episode-start",
+        "timeSeconds": 454.6,
+        "kind": "chapter-start",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-start.jpg",
+        "sha256": "26d1441e29d3da41561d7229a6fd563587c92fb61ca805fd58e50eb369917c86"
+      },
+      {
+        "id": "next-episode-mid",
+        "timeSeconds": 473.033333,
+        "kind": "chapter-mid",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-mid.jpg",
+        "sha256": "8551a9f032186bce15d2ca9313c7d7e14b7b30e49d54fa37687cf1de55de9335"
+      },
+      {
+        "id": "next-episode-end",
+        "timeSeconds": 491.466667,
+        "kind": "chapter-end",
+        "chapter": "next-episode",
+        "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-end.jpg",
+        "sha256": "396b30b2cbf1a23ee58530a638d8548d5e7543bd619450b071d5b093833cb18f"
+      }
+    ],
+    "visualFirstReview": {
+      "guideSha256": "a5c2c8ee744b86b9a5b818b8b97808de99f931fd67c321a2cb12764f719ddd66",
+      "diagramsLeadExplanation": true,
+      "oneQuestionPerScene": true,
+      "sampledScenesAvoidDenseConcurrentText": true,
+      "conditionsDeferredToMaterials": true,
+      "noMeaninglessPadding": true
+    },
+    "nextEpisodePreview": {
+      "chapter": "next-episode",
+      "characterId": "seris",
+      "seriesId": "BD003",
+      "artPath": "art/seris.png",
+      "artSha256": "4955d37d4b3665bb13b0a0ae3774d7c3ba3f9b5e75b0536a4d28ed27530e86a9",
+      "presentation": "contain",
+      "fullHeadVisible": true,
+      "nameAndIdVisible": true,
+      "unverifiedLabelVisible": true,
+      "noNewGemClaim": true,
+      "question": "強い仲間が増えても、セリスを選ぶ理由は？",
+      "samples": [
+        {
+          "id": "next-episode-start",
+          "timeSeconds": 454.6,
+          "kind": "chapter-start",
+          "chapter": "next-episode",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-start.jpg",
+          "sha256": "26d1441e29d3da41561d7229a6fd563587c92fb61ca805fd58e50eb369917c86"
+        },
+        {
+          "id": "next-episode-mid",
+          "timeSeconds": 473.033333,
+          "kind": "chapter-mid",
+          "chapter": "next-episode",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-mid.jpg",
+          "sha256": "8551a9f032186bce15d2ca9313c7d7e14b7b30e49d54fa37687cf1de55de9335"
+        },
+        {
+          "id": "next-episode-end",
+          "timeSeconds": 491.466667,
+          "kind": "chapter-end",
+          "chapter": "next-episode",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/next-episode-end.jpg",
+          "sha256": "396b30b2cbf1a23ee58530a638d8548d5e7543bd619450b071d5b093833cb18f"
+        }
+      ]
+    },
+    "provisionalBuildReview": {
+      "allFiveNamesVisible": true,
+      "namesRemainExplicitlyProvisional": true,
+      "namesIndependentOfCertification": true,
+      "elaineBaseOnlyAmber": true,
+      "awakenedElaineNotAwarded": true,
+      "rukaNeriAmberMaintained": true,
+      "ioneFioOutlineMaintained": true,
+      "liveCertifiedCountDisplayedZero": true,
+      "samples": [
+        {
+          "id": "named-card-elaine",
+          "timeSeconds": 1.5,
+          "kind": "provisional-card",
+          "chapter": "roster",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-elaine.jpg",
+          "characterId": "elaine",
+          "sha256": "b218f4eda1b6c5b953daf4d4f6e1fabd71af77533d6b0457a769293270d075a9"
+        },
+        {
+          "id": "named-card-ruka",
+          "timeSeconds": 54.0,
+          "kind": "provisional-card",
+          "chapter": "roster",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ruka.jpg",
+          "characterId": "ruka",
+          "sha256": "2810c5c8686e9e6e5c0a6d1195563561d104d8cbd0d2deef4808ed094f340978"
+        },
+        {
+          "id": "named-card-neri",
+          "timeSeconds": 52.4,
+          "kind": "provisional-card",
+          "chapter": "roster",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-neri.jpg",
+          "characterId": "neri",
+          "sha256": "b5d1532f5076a83dff7e0f90172ac440c6dbc4b9b467db1be4ddaacd291c7021"
+        },
+        {
+          "id": "named-card-ione",
+          "timeSeconds": 51.633333,
+          "kind": "provisional-card",
+          "chapter": "roster",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-ione.jpg",
+          "characterId": "ione",
+          "sha256": "06e4f254d0383624ca9fd99eee35ee9e8edc531b895ad47583966ecf2063da17"
+        },
+        {
+          "id": "named-card-fio",
+          "timeSeconds": 53.2,
+          "kind": "provisional-card",
+          "chapter": "roster",
+          "path": "artifacts/build-diary-05/research/critic-final-v2/named-card-fio.jpg",
+          "characterId": "fio",
+          "sha256": "151e5d69508603d08efffb3d4d96980506d7a7a2f65f572b0a4aff38e93f14be"
+        }
+      ]
+    },
+    "artworkReview": {
+      "active": [
+        {
+          "kind": "thumbnail",
+          "path": "artifacts/build-diary-05/assets/thumbnail-original.png",
+          "sha256": "2479764e14ff9aaaf92f04542a82d19c9f3784183ab6a4caaf506029aad10b89",
+          "headsAndAccessoriesContained": true
+        },
+        {
+          "kind": "research-lab",
+          "path": "artifacts/build-diary-05/assets/research-lab-saucer.png",
+          "sha256": "4dba30024183db4a3013636b563933c5aaf9e3db948350cbfe0bdb36bafde048",
+          "headsAndAccessoriesContained": true
+        }
+      ],
+      "activeResearchIllustrationsInMovie": [
+        "research-lab-saucer"
+      ],
+      "supersededNotUsed": true,
+      "thumbnailReviewed": true
+    },
+    "criticalUnresolvedFindings": [],
+    "minorFindings": [],
+    "notes": [
+      "All 13 sections sampled at start/middle/end, including roster and OP; eight actual speaking poses retain complete heads, ears, hair ornaments and glasses inside the frame.",
+      "Native Elaine section has no LAB badge and explicitly says current 1.11, distinct from the research escort.",
+      "CARE at R3 shows capacity 115 of original 122 while current HP stays 84. Earlier explanatory diagram is explicitly labelled as explanation; after Fio heals, the briefly retained right-hand 84 snapshot is explicitly labelled R3 immediately after CARE, not a live HP mirror. Separate Fio-heal concept follows.",
+      "12R return shows capacity/current HP 49 and three living heroes; counterexample shows dead pot and three living heroes, rather than a false party-wipe claim.",
+      "Amber is explicitly conditional on the undeployed dedicated research escort and base Elaine; no universal live-game certification or unique-partner claim is displayed.",
+      "Five provisional names are readable beside their correct form/gem state. Ruka full-resolution final-file sample was separately inspected after the roster quality improvement.",
+      "Seris original head and silhouette fit contain placement; BD003, name, exact question and small unverified label are readable in all three final-chapter samples, without a new amber award.",
+      "Review approves only final SHA 37a0f0df…; earlier eaa05712… remains a failed historical baseline and its samples are not reused here."
+    ]
+  }
+}

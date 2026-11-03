@@ -1,0 +1,110 @@
+[
+  {
+    "chapter": "failure",
+    "start": 81.1,
+    "duration": 33.7,
+    "source": "artifacts/build-diary-05/capture/lab-counter.mov",
+    "sourceStart": 4.966666666666667,
+    "sourceEnd": 37.56666666666667,
+    "displayedRounds": [
+      5,
+      6,
+      7
+    ],
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 978,
+    "playDuration": 32.6,
+    "piece": "artifacts/build-diary-05/render/failure-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "69b1de01068a16aa81e085e598821e00b4a830b054b8aaa235e41cfec8367268"
+  },
+  {
+    "chapter": "elaine-now",
+    "start": 114.8,
+    "duration": 31.533333333333335,
+    "source": "artifacts/build-diary-05/capture/live-elaine.mov",
+    "sourceStart": 7.766666666666667,
+    "sourceEnd": 36.63333333333333,
+    "displayedRounds": [
+      1,
+      2
+    ],
+    "rate": 1,
+    "sourceApplicationSpeed": 2,
+    "leadInFrames": 0,
+    "frames": 866,
+    "playDuration": 28.866666666666667,
+    "piece": "artifacts/build-diary-05/render/elaine-now-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": false,
+    "pieceHash": "f58e2c78bafdf40abca8e7e1a810852a4cfd9dc6a560e28294eecf19ba6fc101"
+  },
+  {
+    "chapter": "lab-victory-a",
+    "start": 229.60000000000002,
+    "duration": 49.86666666666667,
+    "source": "artifacts/build-diary-05/capture/lab-victory.mov",
+    "sourceStart": 4.966666666666667,
+    "sourceEnd": 39.166666666666664,
+    "displayedRounds": [
+      1,
+      2,
+      3
+    ],
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 1026,
+    "playDuration": 34.2,
+    "piece": "artifacts/build-diary-05/render/lab-victory-a-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "593cffb4076467f620067031556033515c2c0596dac10a72e67c8db8e1e1e3d9"
+  },
+  {
+    "chapter": "lab-victory-b",
+    "start": 279.4666666666667,
+    "duration": 46.36666666666667,
+    "source": "artifacts/build-diary-05/capture/lab-victory.mov",
+    "sourceStart": 95.46666666666667,
+    "sourceEnd": 128.56666666666666,
+    "displayedRounds": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "rate": 1,
+    "sourceApplicationSpeed": 1,
+    "leadInFrames": 0,
+    "frames": 993,
+    "playDuration": 33.1,
+    "piece": "artifacts/build-diary-05/render/lab-victory-b-game.mov",
+    "gameRect": [
+      310,
+      66,
+      486,
+      864
+    ],
+    "logPlayback": true,
+    "pieceHash": "f5b6bc20737bd2acce4ade4c448af5f78872fed14aa6a7ec81b76eabbc85d71f"
+  }
+]
