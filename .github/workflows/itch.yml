@@ -5,6 +5,13 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      webkit_runner:
+        description: 'Mac runner for the same required WebKit checks (use macos-15 if latest is queued)'
+        type: choice
+        options:
+          - macos-latest
+          - macos-15
+        default: macos-latest
       upload:
         description: 'Upload the reviewed build to fluffy3546/stillveil:html'
         type: boolean
@@ -27,7 +34,7 @@ concurrency:
 
 jobs:
   native-webkit:
-    runs-on: macos-latest
+    runs-on: ${{ inputs.webkit_runner == 'macos-15' && 'macos-15' || 'macos-latest' }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
