@@ -1,3 +1,4 @@
+import { characterSkills } from '../domain/character-skills';
 import { gemSkill } from '../domain/memory-gems';
 import { createGamePortal } from './GamePortal';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
@@ -143,7 +144,7 @@ export function CompanionChoice({ unit, battle, index, reducedMotion, hidden, si
   const stage = signal ? 'reading' : cue?.id === upcoming?.id ? cue!.stage : 'waiting';
   const memory = battle.memoryGems?.[unit.characterId];
   const memorySkill = memory ? gemSkill(memory) : undefined;
-  const skill = content.skills.find(s => s.id === upcoming?.skillId) ?? (memorySkill?.id === upcoming?.skillId ? memorySkill : undefined);
+  const skill = characterSkills(characterById(unit.characterId), content).find(s => s.id === upcoming?.skillId) ?? (memorySkill?.id === upcoming?.skillId ? memorySkill : undefined);
   const label = signal?.label ?? (upcoming!.ultimate ? ultimateLabel(upcoming!, unit) : skill?.name ?? (upcoming!.kind === 'guard' ? '身を守る' : '通常攻撃'));
   const template = upcoming?.ultimate ? 'ultimate' : skill?.template ?? (upcoming?.kind === 'guard' ? 'guard' : 'attack');
   const target = upcoming ? revealedTargets(upcoming.targetIds ?? [], battle) : '';

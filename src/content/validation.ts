@@ -1,3 +1,4 @@
+import { validBarrierReturnContract } from '../domain/barrier-return';
 import { FACE_FRAME_ASPECTS, portraitHeadFits } from './portrait-framing';
 import { scoutSkillContract } from '../domain/scout-skills';
 import { characterRarities } from '../domain/xr-gacha';
@@ -78,6 +79,15 @@ export function validateContent(content: Content): string[] {
     reject(Object.keys(skill).some(key => !['id', 'name', 'template', 'strength', 'soundProfile'].includes(key)), `skills/${skill.id}: derived effect overrides are forbidden`);
   }
   for (const char of content.characters) {
+    for(const[id,override]of Object.entries(char.skillOverrides??{})){
+      if(!override||typeof override!=='object'||Array.isArray(override)){errors.push(`characters/${char.id}: personal override must be an object`);continue;}
+      const base=content.skills.find(skill=>skill.id===id);
+      reject(!char.skillIds.includes(id)||!base,`characters/${char.id}: override must reference an owned skill`);
+      reject(Object.keys(override).some(key=>!['name','description','barrierReturn'].includes(key)),`characters/${char.id}: unsupported personal override`);
+      reject(override.name!==undefined&&!plain(override.name)||override.description!==undefined&&!plain(override.description),`characters/${char.id}: plain override text required`);
+      reject(override.barrierReturn!==undefined&&(base?.template!=='barrier'||!validBarrierReturnContract(override.barrierReturn)),`characters/${char.id}: invalid barrier return contract`);
+    }
+
     if (char.encounterLoot) {
       const loot = char.encounterLoot;
       reject(!char.origin.includes('recruit') || !Number.isSafeInteger(loot.gold) || loot.gold < 0 || loot.gold > 10000 || !loot.guaranteed.length || loot.guaranteed.length > 3, `characters/${char.id}: invalid encounter loot`);

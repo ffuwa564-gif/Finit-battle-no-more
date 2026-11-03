@@ -34,6 +34,7 @@ const descriptions: Record<SkillTemplate, string> = {
 };
 export function skillCooldown(template: SkillTemplate): number { return template === 'guard' ? 2 : ['overclock', 'jam', 'rally', 'confusion', 'sleep', 'paralysis', 'charm'].includes(template) ? 4 : 3; }
 export function skillDescription(skill: SkillDef): string {
+  if(skill.description)return `${skill.description} 再使用まで${skillCooldown(skill.template)}ラウンド。`;
   const personal = scoutSkillDescription(skill.id);
   if (personal) return personal;
   const effect = skill.template === 'rally' ? `${descriptions.rally} 攻撃力上昇量：${15 + skill.strength / 2}%。` : descriptions[skill.template];

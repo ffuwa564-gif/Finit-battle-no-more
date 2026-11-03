@@ -1,3 +1,4 @@
+import { characterSkills } from '../domain/character-skills';
 import { useState } from 'react';
 import { tr, localize } from '../locales/i18n';
 import type { CharacterDef, Content, GameCommand, GameSave } from '../domain/types';
@@ -24,7 +25,7 @@ export function GoldExchange({ content, save, busy, command, onInspect }: {
         <div className="gold-exchange-card__art"><CharacterArtwork character={character} reducedMotion={true} /></div>
         <div className="gold-exchange-card__copy"><span className="eyebrow">SSR · {tr('交換限定')}</span><p className="gold-exchange-card__epithet">{localize(character.epithet)}</p><h3>{localize(character.name)}</h3>
           <p>{localize(roleName(character.role))} · {localize((character.strength / 10).toFixed(1))}</p>
-          <div className="gold-exchange-card__skills">{character.skillIds.map(id => { const skill = content.skills.find(item => item.id === id)!; return <p key={id}><strong>{localize(skill.name)}</strong><small>{localize(skillDescription(skill))}</small></p>; })}</div>
+          <div className="gold-exchange-card__skills">{characterSkills(character, content).map(skill => { const id = skill.id; return <p key={id}><strong>{localize(skill.name)}</strong><small>{localize(skillDescription(skill))}</small></p>; })}</div>
           <p className="gold-exchange-card__leader">{localize(leaderEffectDescription(character))}</p>
           <Button size="sm" variant="secondary" onClick={() => onInspect(character)}>{tr('物語と能力を見る')}</Button>
           <div className="gold-exchange-card__cost"><CurrencyEmblem kind="gold" size={20} /><strong>{localize(offer.goldCost.toLocaleString())} G</strong><span>{tr('常設・1回限り')}</span></div>

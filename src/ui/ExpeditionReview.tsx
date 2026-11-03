@@ -1,3 +1,4 @@
+import { characterSkills } from '../domain/character-skills';
 import type { Battle, Content } from '../domain/types';
 import { tr } from '../locales/i18n';
 import { InventorySection } from './InventorySection';
@@ -8,7 +9,8 @@ export function ExpeditionReview({battle,content}:{battle:Battle;content:Content
   const characterName=(id?:string)=>id?tr(content.characters.find(character=>character.id===id)?.name??id):tr('不明');
   const result=battle.phase==='reward'?'踏破':battle.failureKind==='timeout'?'期限到達':battle.failureKind==='retreat'?'撤退':battle.failureKind==='defeat'?'全滅':'終了理由の記録なし';
   const hit=review?.largestHit;
-  const skill=hit?.skillId?content.skills.find(item=>item.id===hit.skillId):undefined;
+  const actor=content.characters.find(character=>character.id===hit?.actorCharacterId);
+  const skill=hit?.skillId?(actor?characterSkills(actor,content):content.skills).find(item=>item.id===hit.skillId):undefined;
   return <InventorySection id="expedition-review" title="今回の振り返り" tone="night">
     <div className="expedition-review" data-testid="expedition-review">
       <p className="expedition-review__result">{tr('記録された結果')}：<strong>{tr(result)}</strong></p>

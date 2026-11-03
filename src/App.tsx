@@ -17,7 +17,7 @@ import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata, isUpg
 import { enableAudio, installAudioRecovery, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
 import { installGameInteractionGuards } from './platform/interaction-guards';
 import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
-import { battleSounds, commandSound } from './platform/sound-cues';
+import { battleEventSound, commandSound } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
 import type { CharacterDef, GameCommand, GameSave, GachaResult } from './domain/types';
@@ -182,9 +182,9 @@ export default function App() {
     if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
-      const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];
+      const cue = battleEventSound(event);
       const skill = event.ultimate ? undefined : (content.skills.find(skill => skill.id === event.skillId)?.template ?? gemDefinitionForSkill(event.skillId ?? '')?.skill.template);
-      if(!rabbit)playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
+      if(!rabbit && cue)playSound(cue, event.rarity, skill, event.ultimate ? undefined : event.actorId, combatSignature(cue, skill));
     }
     const cleanup = event.ultimate ? () => {} : animateEvent(event, save.settings.reducedMotion);
     let cleanupImpact = () => {};

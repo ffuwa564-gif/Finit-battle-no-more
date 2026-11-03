@@ -1,3 +1,4 @@
+import { characterSkills } from './character-skills';
 import { gemSkill, gemDefinitionForSkill } from './memory-gems';
 import { ultimateFor, ultimateReady } from './ultimates';
 import type { Battle, Content, PartyOrder, SkillDef, SkillTemplate, Unit } from './types';
@@ -40,7 +41,7 @@ export function orderSkillReady(actor: Unit, battle: Battle, skill: SkillDef): b
 export function partyOrderOptions(actor: Unit, battle: Battle, content: Content): OrderOption[] {
   const def = content.characters.find(c => c.id === actor.characterId)!;
   const equipped = actor.side === 'party' && battle.partyIds.includes(actor.characterId) ? battle.memoryGems?.[actor.characterId] : undefined;
-  const skills = def.skillIds.map(id => content.skills.find(s => s.id === id)!);
+  const skills = characterSkills(def, content);
   if (equipped) skills.push(gemSkill(equipped));
   return [
     { id: 'auto', label: 'おまかせ', template: 'auto', order: null, disabled: false },

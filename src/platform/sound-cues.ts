@@ -17,3 +17,6 @@ export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
 export function commandSound(command: GameCommand, settings: GameSettings): SoundCue | null {
   return command.type === 'settings' ? settings.seVolume > 0 ? 'confirm' : null : commandSounds[command.type];
 }
+
+/** Reserve updates do not cast a skill again or duplicate its sound. */
+export function battleEventSound(event:BattleEvent):SoundCue|null{return event.barrierReturnAction?null:event.ultimate?'ultimate':event.fairyAction?'heal':battleSounds[event.kind];}

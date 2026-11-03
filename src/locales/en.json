@@ -3160,5 +3160,13 @@
   "性能は固定。追加の調律をせずに使える、入門用の製作品です。": "A crafted starter stone with fixed properties. Ready to use without further refinement.",
   "一度に変える要素を絞り、次の記録と比べましょう。": "Change fewer things at once and compare the next record.",
   "塔の幻影から仲間加入用の素材は得られません。記憶石・調律用の欠片・ゴールドを集める場所です。": "Tower phantoms do not drop recruitment materials. Earn memory stones, refinement dust, and gold here.",
-  "塔の報酬": "Tower rewards"
+  "塔の報酬": "Tower rewards",
+  "研究版・未公開仕様": "Research build · Unreleased rules",
+  "桜の返礼": "Sakura Requital",
+  "桜の返礼 +{0}%": "Sakura Requital +{0}%",
+  "返礼の印が付与者の技能と一致しません。": "The requital mark does not match its source skill.",
+  "次の主攻撃の最初の対象への実HPダメージを強化。追撃は対象外。第{0}ラウンド終了まで。": "Empowers actual HP damage to the first target of the next primary attack. Extra hits do not count. Expires after round {0}.",
+  "{0} — 守った力で花びらが咲いた": "{0} — Absorbed damage blooms into petals",
+  "{0} — 蓄えた花びらを一撃へ": "{0} — Stored petals empower one strike",
+  "味方1人に通常の90%の障壁と、重ならない返礼の印を付与。印は2ラウンド後まで。敵の主攻撃を障壁で実際に防ぐと、守ったHP割合の5倍を花びらとして最大100%まで蓄える。次の主攻撃の最初の相手への実ダメージに、その割合を一度だけ追加する。印は消費時か期限・戦闘不能で消える。追撃や花の攻撃からは蓄えず、追加分から追撃・石特性・追加ゲージを作らない。": "Grants one ally 90% of the usual barrier and a nonstacking mark through two rounds later. Real hostile primary barrier absorption stores five times the fraction of maximum HP absorbed, capped at100%. Empowers actual HP damage to the first target of the next primary attack once. Expires on use, timeout or defeat. Extra hits, flowers and automatic bits do not fill it. The bonus produces no further hits, gem triggers or ultimate charge."
 }

@@ -1,3 +1,5 @@
+import { characterSkills } from '../domain/character-skills';
+import { validBarrierReturnState } from '../domain/barrier-return';
 import { RELEASE } from '../content/version';
 import { validBattleReview, validExpeditionTracking } from '../domain/expedition-review';
 import { validateCommandOrder } from '../domain/command-doctrine';
@@ -47,6 +49,7 @@ function validUnit(value: unknown): boolean {
   if (value.ailments !== undefined && (!record(value.ailments) || Object.entries(value.ailments).some(([id,state]) => !(ailments as readonly string[]).includes(id) || !record(state) || !count(state.turns) || state.turns < 1 || state.turns > 2 || !nonempty(state.sourceId)))) return false;
   if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
   if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
+  if(value.barrierReturn!==undefined&&!validBarrierReturnState(value.barrierReturn))return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
   if (value.bossWindup !== undefined && (!record(value.bossWindup) || value.side !== 'enemy' || !value.boss || !count(value.bossWindup.round) || value.bossWindup.round < 1 || !count(value.bossWindup.damage))) return false;
   if (value.bossRecoveryUntil !== undefined && (value.side !== 'enemy' || !value.boss || !count(value.bossRecoveryUntil))) return false;
@@ -62,8 +65,10 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
-  if (record(value) && ['absorbed', 'selfCost'].some(key => value[key] !== undefined && !count(value[key]))) return false;
+  if (record(value) && ['absorbed', 'selfCost', 'resourceAmount', 'returnDamage'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
+  if(record(value)&&value.barrierReturnAction!==undefined&&(!['capture','consume'].includes(String(value.barrierReturnAction))||value.kind!=='buff'||!count(value.resourceAmount)))return false;
+  if(record(value)&&value.commandRedirected!==undefined&&typeof value.commandRedirected!=='boolean')return false;
   if (record(value) && value.actionSelection !== undefined && typeof value.actionSelection !== 'boolean') return false;
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
   for (const key of ['actorId', 'skillId', 'materialId', 'ultimateName']) if (value[key] !== undefined && !nonempty(value[key])) return false;
@@ -194,6 +199,13 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (snapshots.some(units => units.some(unit => unit.whiteFlower && (unit.characterId !== battle.partyIds[0] || unit.whiteFlower.until > battle.round + 2)))) throw new Error('白花の種の対象か期限が正しくありません。');
   if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id) && id !== 'memory:slot' && !gemDefinitionForSkill(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
+  if(snapshots.some(units=>units.some(unit=>{
+    const state=unit.barrierReturn;if(!state)return false;
+    const source=units.find(source=>source.uid===state.sourceId&&source.side===unit.side);
+    const owner=source&&content.characters.find(character=>character.id===source.characterId);
+    const contract=owner&&characterSkills(owner,content).find(skill=>skill.id===state.skillId)?.barrierReturn;
+    return !contract||contract.conversionPercent!==state.conversionPercent||contract.capacityPercent!==state.capacityPercent||contract.payoutPercent!==state.payoutPercent;
+  })))throw new Error('返礼の印が付与者の技能と一致しません。');
   if (snapshots.some(units => units.some(unit => unit.scoutMark && !units.some(source => source.uid === unit.scoutMark!.sourceId && source.side === 'party')))) throw new Error('道標の付与者が探索に存在しません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
   if (battle.events.some(event => event.skillId && !skills.has(event.skillId) && !gemDefinitionForSkill(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');
