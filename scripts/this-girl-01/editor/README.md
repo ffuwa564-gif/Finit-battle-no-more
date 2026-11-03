@@ -52,6 +52,7 @@ reproduce identical pixels. Read `../art/README.md` for the renderer API.
 
    ```sh
    python scripts/this-girl-01/editor/synth.py scripts/this-girl-01/editor/story.json
+   python scripts/this-girl-01/editor/voice_qa.py
    python scripts/this-girl-01/editor/plan.py artifacts/this-girl-01/editorial.json
    python scripts/this-girl-01/editor/mixer.py
    python scripts/this-girl-01/editor/render.py
@@ -61,6 +62,12 @@ reproduce identical pixels. Read `../art/README.md` for the renderer API.
    Captions are at most two lines at46px. Their within-line pages are reading
    timing proportional to text length, not claimed phoneme alignment. Event
    commentary uses explicit actual frame offsets and enough reading time.
+   If the final50 utterances are exactly those already synthesized in the reviewed
+   draft, `finalize_narration.py` can promote their existing metadata after final
+   story approval. It verifies every word/reading, parameters, engine binding,
+   code, cache key, query and audio SHA; any changed utterance is rejected and
+   must first pass through `synth.py`. This saves a container restart for zero
+   new audio and never claims a fresh synthesis.
 5. `mixer.py` constructs all components once at48kHz, with mild voice ducking,
    a quiet piano loop, final fade and a single linear master gain. It saves a
    lossless master; only the finished MP4 encode produces AAC. Its exported

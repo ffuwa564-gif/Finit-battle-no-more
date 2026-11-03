@@ -32,9 +32,11 @@ const groups=partialGroups?proof.groups.slice(0,partialGroups):proof.groups,expe
 const pcmFile=resolve(capture,id+'.pcm'),referenceFolder=resolve(capture,'native-references-'+id);mkdirSync(referenceFolder,{recursive:true});writeFileSync(pcmFile,Buffer.alloc(0));
 const pcmChunks=[],nativeBuffers=[],bufferFiles=new Map();
 proof.fixture.settings={...proof.fixture.settings,speed:applicationSpeed,bgmVolume:0,seVolume:1,reducedMotion:process.env.CAPTURE_REDUCED_MOTION==='1'};
-const browser=await chromium.launch({headless:false,ignoreDefaultArgs:['--mute-audio'],args:['--autoplay-policy=no-user-gesture-required','--no-sandbox','--kiosk','--start-fullscreen','--window-position=0,0','--window-size=450,848','--force-device-scale-factor=1']});
+const captureProfile={prefersReducedMotion:'reduce',requestedPulseLatencyMsec:Number(process.env.PULSE_LATENCY_MSEC??0),requestedAudioBufferSize:512};const pulseLatencyProbes=[];
+const pulseProbe=label=>{try{pulseLatencyProbes.push({label,wallTime:Date.now()/1000,sinkInputs:JSON.parse(execFileSync('pactl',['--format=json','list','sink-inputs'],{encoding:'utf8'}))});}catch(e){pulseLatencyProbes.push({label,wallTime:Date.now()/1000,error:String(e)});}};
+const browser=await chromium.launch({headless:false,ignoreDefaultArgs:['--mute-audio'],args:['--autoplay-policy=no-user-gesture-required','--no-sandbox','--kiosk','--start-fullscreen','--window-position=0,0','--window-size=450,848','--force-device-scale-factor=1','--audio-buffer-size=512']});
 try{
- const context=await browser.newContext({viewport:{width:450,height:848},deviceScaleFactor:1,locale:'ja-JP'});
+ const context=await browser.newContext({viewport:{width:450,height:848},deviceScaleFactor:1,locale:'ja-JP',reducedMotion:'reduce'});
  await context.addInitScript(()=>{
   window.__name=f=>f;localStorage.setItem('stillveil-language','ja');
   localStorage.setItem('stillveil-fairy-tutorial-v1',JSON.stringify({version:2,enrolled:false,dismissed:true,seen:[]}));
@@ -81,7 +83,7 @@ try{
  if(await page.evaluate(()=>window.__view().save.appVersion)!==proof.fixture.appVersion)throw Error('Browser content version mismatch');
  await page.locator('body').screenshot({path:resolve(capture,id+'-start.png')});
  const cdp=await context.newCDPSession(outer);const{windowId}=await cdp.send('Browser.getWindowForTarget');await cdp.send('Browser.setWindowBounds',{windowId,bounds:{windowState:'fullscreen'}});await page.waitForTimeout(1000);
- const geometry=await outer.evaluate(()=>({innerWidth,innerHeight,outerWidth,outerHeight,screenX,screenY,devicePixelRatio}));if(geometry.innerWidth!==450||geometry.innerHeight!==848||geometry.devicePixelRatio!==1)throw Error('Native viewport mismatch '+JSON.stringify(geometry));
+ const geometry=await outer.evaluate(()=>({innerWidth,innerHeight,outerWidth,outerHeight,screenX,screenY,devicePixelRatio,mediaReducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}));if(geometry.innerWidth!==450||geometry.innerHeight!==848||geometry.devicePixelRatio!==1)throw Error('Native viewport mismatch '+JSON.stringify(geometry));
  await outer.screenshot({path:resolve(capture,id+'-golden.png')});
  execFileSync('ffmpeg',['-v','error','-y','-threads','2','-f','x11grab','-video_size','450x848','-i',(process.env.DISPLAY??':93')+'.0+0,0','-frames:v','1',resolve(capture,id+'-os-golden.png')]);
  execFileSync('python',['scripts/this-girl-01/capture/golden-qa.py',id],{cwd:ROOT,stdio:'inherit'});
@@ -110,7 +112,7 @@ try{
    }catch{}w.__monitor=requestAnimationFrame(monitor);
   };monitor();return zero;
  },readFileSync(workletPath,'utf8'));
- const camera=startNativeCapture({file:resolve(capture,id+'-os-raw.mkv'),width:450,height:848,fps:30,rate:48000});await page.waitForTimeout(1500);
+ pulseProbe('before-record');const camera=startNativeCapture({file:resolve(capture,id+'-os-raw.mkv'),width:450,height:848,fps:30,rate:48000});await page.waitForTimeout(1500);
  async function calibrate(label){
   await page.evaluate(async label=>{
    const w=window,{ctx,dest}=w.__tap,box=parent.document.getElementById('clock');
@@ -128,6 +130,7 @@ try{
   await waitPhase(['ready']);if(group.kind==='round'&&rounds++%3===0)await calibrate('interior-'+rounds);
   await page.waitForTimeout(90);marks.push({wave:group.wave,round:group.round,kind:group.kind,time:Date.now()/1000-audioZero});
   for(const command of group.commands){const ok=await page.evaluate(async c=>await window.__view().command(c),command);if(!ok)throw Error('Rejected native command '+JSON.stringify(command));await page.waitForTimeout(65);}
+  if(group.kind==='round')pulseProbe('wave-'+group.wave+'-round-'+group.round);
   if(group.kind==='round')console.log(id,'Wave',group.wave,'R',group.round,Math.round(Date.now()/1000-audioZero));
  }
  await waitPhase([expectedFinal.battle.phase]);await page.waitForTimeout(900);
@@ -136,16 +139,16 @@ try{
  if(JSON.stringify(projection(final))!==JSON.stringify(projection(expectedFinal)))throw Error('Browser/native application mismatch');
  const gameplayEnd=Date.now()/1000-audioZero;await page.waitForTimeout(1400);
  for(let i=0;i<5;i++)await calibrate('end-'+i);
- await page.waitForTimeout(200);const cameraResult=await camera.stop();
+ await page.waitForTimeout(200);const cameraResult=await camera.stop();pulseProbe('after-record');
  const audio=await page.evaluate(async()=>{
   const w=window;w.__recordNative=false;w.__pcmRecorder.port.postMessage('stop');const end=await Promise.race([w.__pcmEnd,new Promise((_,reject)=>setTimeout(()=>reject(Error('Worklet stop timed out')),15000))]);await w.__pcmChain;if(w.__pcmFailure)throw Error(w.__pcmFailure);cancelAnimationFrame(w.__monitor);
-  return{events:w.__nativeEvents,battleEvents:w.__battleEvents,ultimates:w.__ultimates,markers:w.__calibration,duration:(performance.timeOrigin+performance.now())/1000-w.__recordEpoch,audioCapture:{kind:'audio-worklet-pcm16',startContextFrame:w.__pcmStartFrame,sampleRate:w.__pcmSampleRate,endContextFrame:end.nextFrame,warmupDiscardedChunks:w.__pcmWarmup},nativeBufferStarts:w.__nativeBufferStarts};
+  return{events:w.__nativeEvents,battleEvents:w.__battleEvents,ultimates:w.__ultimates,markers:w.__calibration,duration:(performance.timeOrigin+performance.now())/1000-w.__recordEpoch,audioCapture:{kind:'audio-worklet-pcm16',baseLatency:w.__tap.ctx.baseLatency,outputLatency:w.__tap.ctx.outputLatency,startContextFrame:w.__pcmStartFrame,sampleRate:w.__pcmSampleRate,endContextFrame:end.nextFrame,warmupDiscardedChunks:w.__pcmWarmup},nativeBufferStarts:w.__nativeBufferStarts};
  });
  await page.locator('body').screenshot({path:resolve(capture,id+'-result.png')});
  const frames=[];
  if(fingerprint(resolve(ROOT,'src')).sha256!==source.sha256||fingerprint(resolve(ROOT,'public')).sha256!==assets.sha256||hash(fileURLToPath(import.meta.url))!==codeHash||hashWorklet()!==workletHash||hash(observerPath)!==observerHash)throw Error('Source changed during capture');
  const metadata={...audio,audioCapture:{...audio.audioCapture,chunks:pcmChunks,continuous:pcmChunks.every((c,i)=>!i||pcmChunks[i-1].firstFrame+pcmChunks[i-1].frames===c.firstFrame),totalFrames:pcmChunks.reduce((n,c)=>n+c.frames,0),sha256:hash(pcmFile),workletSha256:workletHash},nativeReferenceBuffers:[...bufferFiles.values()],partialPreflight:!!partialGroups};
- writeFileSync(resolve(capture,id+'.json'),JSON.stringify({...metadata,frames,camera:cameraResult,geometry,goldenQaFile:'research/golden-'+id+'.json',audioZero,initialOffset:null,gameplayStart,gameplayEnd,marks,nativeBrowserVerified:true,researchFixture:true,productionAppVersion:proof.fixture.appVersion,contentVersion:proof.fixture.contentVersion,rulesVersion:proof.fixture.rulesVersion,unreleasedRules:true,sourceGameCommit:proof.sourceGameCommit,sourceTreeSha256:source.sha256,sourceAssetSha256:assets.sha256,sourceAssets:assets.files,proofSha256:proofHash,captureCodeSha256:codeHash,nativeObserverCodeSha256:observerHash,applicationSpeed,reducedMotion:proof.fixture.settings.reducedMotion,viewport:{width:450,height:800,deviceScaleFactor:1},captureSurface:{width:450,height:848,diagnosticStripHeight:48,frameClock:{kind:'raf-utc-ms-barcode',top:824,height:24,cellWidth:8,bits:56,prefix:'101011',timeBits:42,checksumBits:8}}},null,2));
+ writeFileSync(resolve(capture,id+'.json'),JSON.stringify({...metadata,frames,camera:cameraResult,geometry,captureProfile,pulseLatencyProbes,goldenQaFile:'research/golden-'+id+'.json',audioZero,initialOffset:null,gameplayStart,gameplayEnd,marks,nativeBrowserVerified:true,researchFixture:true,productionAppVersion:proof.fixture.appVersion,contentVersion:proof.fixture.contentVersion,rulesVersion:proof.fixture.rulesVersion,unreleasedRules:true,sourceGameCommit:proof.sourceGameCommit,sourceTreeSha256:source.sha256,sourceAssetSha256:assets.sha256,sourceAssets:assets.files,proofSha256:proofHash,captureCodeSha256:codeHash,nativeObserverCodeSha256:observerHash,applicationSpeed,reducedMotion:proof.fixture.settings.reducedMotion,viewport:{width:450,height:800,deviceScaleFactor:1},captureSurface:{width:450,height:848,diagnosticStripHeight:48,frameClock:{kind:'raf-utc-ms-barcode',top:824,height:24,cellWidth:8,bits:56,prefix:'101011',timeBits:42,checksumBits:8}}},null,2));
  await browser.close();
  execFileSync('python',['scripts/this-girl-01/capture/native-clean.py',id],{cwd:ROOT,stdio:'inherit'});
  execFileSync('python',['scripts/this-girl-01/capture/normalize_capture.py',id],{cwd:ROOT,stdio:'inherit'});

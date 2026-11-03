@@ -35,26 +35,34 @@ def captions(text,start,end,battle):
   assert last>cursor
   out.append({'startFrame':cursor,'endFrame':last,'text':p,'battle':battle});cursor=last
  return out
-def build(editorial,narration):
+def build(editorial,narration,pending_calibration=False):
  assert editorial['episode']==narration['episode']=='THIS-GIRL-001'
- assert editorial['finalized'] and narration['finalized'],'Final evidence-reviewed inputs required'
+ assert narration['finalized']and(editorial['finalized']or pending_calibration),'Final reviewed dialogue is required; pending calibration may only prepare static caches'
  lines={l['lineId']:l for c in narration['chapters']for l in c['lines']};used=set();cursor=0
- timeline={'episode':'THIS-GIRL-001','finalized':True,'fps':30,'sampleRate':48000,'gameBox':[40,28,576,1024],'pages':[],'voice':[],'gameCuts':[],'captions':[],'music':editorial['music'],'chapters':[]}
- for page in editorial['pages']:
-  local=round(page.get('leadSeconds',.35)*30);voices=[];battle=page['spec']['kind']=='battle'
+ timeline={'episode':'THIS-GIRL-001','finalized':not pending_calibration,'pendingCalibration':pending_calibration,'fps':30,'sampleRate':48000,'gameBox':[40,28,576,1024],'gameFadeFrames':14,'pages':[],'voice':[],'gameCuts':[],'captions':[],'music':editorial['music'],'chapters':[]}
+ for page_index,page in enumerate(editorial['pages']):
+  local=round(page.get('leadSeconds',.25)*30);voices=[];battle=page['spec']['kind']=='battle'
   for ref in page.get('lines',[]):
    ref={'lineId':ref}if isinstance(ref,str)else ref;ident=ref['lineId'];assert ident not in used;used.add(ident);line=lines[ident]
    assert sha(ROOT/line['file'])==line['sha256'],'Narration changed'
    at=ref.get('offsetFrames',local);duration=math.ceil(line['duration']*30)
    assert at>=local or ref.get('allowOverlap',False),'Unintended overlapping narration'
    row={'lineId':ident,'file':line['file'],'startFrame':cursor+at,'durationFrames':duration,'text':line['text']}
-   voices.append(row);local=max(local,at+duration+round(page.get('lineGapSeconds',.27)*30))
-  duration=page.get('durationFrames',local+round(page.get('tailSeconds',.55)*30));assert duration>=local-8
+   voices.append(row);local=max(local,at+duration+round(page.get('lineGapSeconds',.2)*30))
+  duration=page.get('durationFrames',local+round(page.get('tailSeconds',.35)*30))
+  if page.get('allowVoiceCarry'):
+   following=editorial['pages'][page_index+1]
+   assert battle and following['id']==page['carryIntoPageId']and not following.get('lines')
+   assert following['spec']['kind']=='mechanism-note'and local-duration<following['durationFrames']
+  else:assert duration>=local-8
   if page['spec']['kind']=='roster':assert duration>=26*30
   cut=page.get('gameCut')
   if battle:
    assert cut and cut['sourceEndFrame']-cut['sourceStartFrame']==duration,'Whole battle page must share exact video/audio interval'
-   timeline['gameCuts'].append({**cut,'id':page['id'],'startFrame':cursor,'sourceApplicationSpeed':cut.get('sourceApplicationSpeed',1)})
+   assert duration>=180,'A major native cut needs room for independent thirds-based sync QA'
+   assert 'sourceApplicationSpeed'in cut,'Disclose the recorded application speed separately from editorial speed'
+   if not pending_calibration:assert isinstance(cut.get('audioSourceOffsetSamples'),int)and cut.get('audioCalibrationEvidence'),'Freeze source synchronization evidence and one fixed audio sample offset per shot'
+   timeline['gameCuts'].append({**cut,'id':page['id'],'startFrame':cursor,'editorialPlaybackRate':1})
   else:assert cut is None
   timeline['pages'].append({**page,'startFrame':cursor,'durationFrames':duration})
   if page.get('chapter'):timeline['chapters'].append({'startFrame':cursor,'title':page['chapter']})
@@ -63,6 +71,8 @@ def build(editorial,narration):
   cursor+=duration
  assert used==set(lines),'Every narration line must appear exactly once'
  timeline['durationFrames']=cursor
+ ordered=sorted(timeline['voice'],key=lambda v:v['startFrame'])
+ assert all(a['startFrame']+a['durationFrames']<=b['startFrame']for a,b in zip(ordered,ordered[1:])),'Unintended cross-page narration overlap'
  timeline['inputHashes']={'editorialCode':sha(__file__),'captionFont':sha(FONT)}
  return timeline
 def srt_time(frame):
@@ -78,7 +88,7 @@ def deliver(timeline):
    if page['startFrame']<=row['startFrame']<page['startFrame']+page['durationFrames']:out+=[srt_time(row['startFrame'])+'　つむぎ「'+row['text']+'」','']
  (d/'Script.md').write_text('\n'.join(out))
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('editorial');a=ap.parse_args();p=Path(a.editorial);n=O/'narration.json'
- t=build(json.loads(p.read_text()),json.loads(n.read_text()));t['inputHashes'].update(editorial=sha(p),narration=sha(n));(O/'render').mkdir(exist_ok=True);(O/'render/timeline.json').write_text(json.dumps(t,ensure_ascii=False,indent=2));deliver(t)
+ ap=argparse.ArgumentParser();ap.add_argument('editorial');ap.add_argument('--pending-calibration',action='store_true');a=ap.parse_args();p=Path(a.editorial);n=O/'narration.json'
+ t=build(json.loads(p.read_text()),json.loads(n.read_text()),a.pending_calibration);t['inputHashes'].update(editorial=sha(p),narration=sha(n));(O/'render').mkdir(exist_ok=True);(O/'render/timeline.json').write_text(json.dumps(t,ensure_ascii=False,indent=2));deliver(t)
  print('Timeline frames',t['durationFrames'],'seconds',t['durationFrames']/30)
 if __name__=='__main__':main()

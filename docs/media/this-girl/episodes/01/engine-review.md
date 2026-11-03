@@ -71,3 +71,13 @@ Duration    4.31s
 不足していたliblzo2とlibGLESv2は公式Debian debを `/tmp` に展開した。両libraryを実ロード後、ldconfigキャッシュだけを見るPlaywrightの事前判定をこの実行に限り省略し、実ブラウザ試験は全件実行した。URL/SHAは `webkit-library-provenance.json`、実ログは `research-webkit-current.log`（4件）、`research-flower-webkit-current.log`（1件）。資源イベントが追加の効果音を要求しないnative assertionも追加し、最終sourceで通常/研究envの双方の11件合格を再確認した。実音声の最終動画との照合は収録担当の別検査である。
 
 再現時は研究build後、`VITE_SAKUYA_RESEARCH=1` を指定し `playwright test --config playwright.sakuya-research.config.ts` を実行する。恒久helperは `scripts/this-girl-01/verify/preview.mjs`、手順は同ディレクトリのREADME。`SAKUYA_UI_DIST` / `SAKUYA_UI_PORT` で研究buildと隔離originを指定できる。不足libraryを一時展開したhostでは同じLD_LIBRARY_PATHも指定する。configはworker1・WebKit1台・port4197を既定とする。helperの移動後はnode構文検査と実HTTP 200応答が研究indexとbyte一致することを確認し、`preview-http-check.json` に保存した。公開版の保存領域や配信物を書き換えない。
+
+## 公開envのCIとbaseline比較
+
+head `caf86e2e1d9a27dfeab3cd2e1459707c7ad37120` のVerify run `41643875506`（job `125943990331`）の実ログでは、94ファイル/734件のnative試験とbuildが成功した。Chromium E2Eは268件成功・13件失敗（21.0分）で、Verify全体はfailureである。
+
+比較元 `f6595da6c5f4bd3950e412d92e3e08f3529e0706` のVerify run `41605773361` はnative723件とbuildが成功し、E2E268成功・13失敗（21.5分）だった。失敗テスト名集合は機械比較で完全一致し、今回新規の失敗名は0件。ただし、この一致をgreen CIや既存問題の解消と扱わない。比較の詳細は `baseline-verify-summary.json` / `verify-ci-summary.json` に保存した。4194未起動のv110試験、portalの旧direct-child selector、常時inline状態表示を期待する旧テストなどは別途修復対象であり、研究数値を変更して回避しない。
+
+後続head `f303db1e6c5aaea707bbf5cbff1a80df813e548b` のrun `41646963242` はnative734件/build成功、E2E267成功・14失敗（23.0分）だった。上記13件に加え `ultimates.spec.ts:27` の音声source deadlineとdamage number時刻差が102.93msとなり、60ms閾値を超えた。同試験は先行caf runで成功しているが、負荷依存の揺らぎと断定せず原因未確定として扱う。最新headについて失敗集合がbaselineと一致したとは言えない。実結果は `verify-ci-final-summary.json`。ゲームのphysics変更や閾値緩和で回避せず、最終動画のPCM・実フレーム検査を別途必要とする。
+
+caf→f303では `src` / `public` / `e2e` / `.github` のtree SHAとpackage.json/package-lock.json/通常Playwright configのblob SHAが全て一致した。GitHub compareも107件の差分にこれらのruntime対象を含まない。証跡は `caf-f303-runtime-identity.json`。内容が同じことは、追加timing失敗の原因が解明されたという意味ではない。録画の独占処理後、同じsourceで当該1件だけworker1・3回反復し、60ms閾値を変えず調査する案を準備した（この追記時点で未実行）。既存13件の修復はこの動画制作の範囲に追加しない。

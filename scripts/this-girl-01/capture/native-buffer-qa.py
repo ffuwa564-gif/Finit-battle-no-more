@@ -37,6 +37,10 @@ def main():
   ref=resample(buf,e['sampleRate']);count=min(len(ref),round(.55*16000))
   if e.get('effectiveStopContextTime')is not None:
    active=e['effectiveStopContextTime']-e.get('effectiveStartContextTime',e['scheduledContextTime']);count=min(count,max(0,round((active-.015)*16000)))
+  scheduled_now=e.get('effectiveStartContextTime',e['scheduledContextTime'])
+  peers=[(j,z.get('effectiveStartContextTime',z['scheduledContextTime']))for j,z in enumerate(m['nativeBufferStarts'])if j!=idx and z['bufferId']==e['bufferId']and not z.get('cancelledBeforeStart')and not z.get('loop')]
+  next_same=[t for _,t in peers if t>scheduled_now+1e-6]
+  if next_same:count=min(count,max(0,round((min(next_same)-scheduled_now-.015)*16000)))
   ref=ref[:count]
   raw_expected=e.get('effectiveStartContextTime',max(e['scheduledContextTime'],e['contextTime']))-ac['startContextFrame']/sr
   wall_expected=e['wallTime']-m['audioZero']-m['initialOffset']+max(0,e['scheduledContextTime']-e['contextTime'])
@@ -45,8 +49,10 @@ def main():
   result={'nativeIndex':idx,'bufferId':e['bufferId'],'bufferSha256':sha(p),'scheduledContextTime':e['scheduledContextTime'],'wallExpected':wall_expected,'rawExpected':raw_expected}
   tests=[('rawClock',raw,raw_expected,ref)]
   if not a.raw_only and os_clock:
-   result['referenceClockTransform']={'method':'Native OS record: fixed sample-rate conversion only; no graph/wall time warp'}
-   tests.append(('calibratedWallClock',final,wall_expected,ref))
+   graph_start=round(raw_expected*16000);graph_reference=raw[graph_start:graph_start+round(.5*16000)]
+   assert len(graph_reference)==round(.5*16000)
+   result['referenceClockTransform']={'method':'Independent actual post-limiter graph PCM mixture, fixed ctx scheduled sample index and500ms window; fixed sample-rate conversion only, no OS/final audio used as reference','graphReferenceStartSample16000':graph_start,'graphReferenceFrames16000':len(graph_reference)}
+   tests.append(('calibratedWallClock',final,wall_expected,graph_reference))
   elif not a.raw_only:
    scheduled=e.get('effectiveStartContextTime',max(e['scheduledContextTime'],e['contextTime']));duration_ctx=count/16000
    hardware_start=np.interp(scheduled,clock_ctx,clock_wall);hardware_end=np.interp(scheduled+duration_ctx,clock_ctx,clock_wall)
@@ -56,9 +62,15 @@ def main():
    tests.append(('calibratedWallClock',final,wall_expected,reference_wall))
   for name,samples,nominal,test_ref in tests:
    count=len(test_ref)
-   start=round((nominal-.6)*16000);end=start+count+round(1.2*16000)
+   pad=.08 if name=='rawClock'else .6
+   start=round((nominal-pad)*16000);end=start+count+round(2*pad*16000)
    if end>len(samples):result[name]={'passed':False,'reason':'Incomplete search window'};continue
-   pos,c=correlation(test_ref,samples[start:end]);lag=pos-.6;result[name]={'lagSeconds':lag,'correlation':c,'passed':bool(abs(lag)<=.08 and c>=.65)}
+   pos,c=correlation(test_ref,samples[start:end]);lag=pos-pad;result[name]={'lagSeconds':lag,'correlation':c,'passed':bool(abs(lag)<=.08 and c>=.65)}
+   if name=='rawClock':
+    full_start=round((nominal-.6)*16000);full_end=full_start+count+round(1.2*16000);gpos,gcorr=correlation(test_ref,samples[full_start:full_end]);glag=gpos-.6
+    competitors=[j for j,t in peers if abs((t-scheduled_now+.006)-glag)<.025]
+    result[name].update(contextSearchPriorSeconds=.08,unrestrictedLagSeconds=glag,unrestrictedCorrelation=gcorr,competingObservedSameBufferStarts=competitors,referencePrefixFrames=count,scope='Original buffer consistency near observed native schedule; not a claim of unique source onset identity',ambiguousReuse=bool(competitors),priorReason='Exact native scheduled ctx time and continuous graph sample index bound the identity search; known other starts are reported rather than stolen')
+    if abs(glag)>.08 and gcorr>c+.02 and not competitors:result[name]['passed']=False;result[name]['ambiguity']='Unexplained stronger waveform outside own scheduled context window'
   ctx=e['scheduledContextTime'];near=sorted(m['events'],key=lambda x:abs(x.get('audioContextTime',-999)-ctx));event=near[0]if near and abs(near[0].get('audioContextTime',-999)-ctx)<.15 else None;result['nativeCue']=event
   result['passed']=bool(result['rawClock']['passed']and(a.raw_only or result['calibratedWallClock']['passed']));entries.append(result)
  selected=[];gs,ge=m['gameplayWindow']

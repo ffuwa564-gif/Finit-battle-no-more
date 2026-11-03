@@ -39,7 +39,9 @@ python3 -m pip install -r scripts/this-girl-01/requirements-media.txt
 
 録画対象は事前の優先順と昇順seed規則から選び、`recording-selection.json` に保存しています。同一敵・同一seed・同等予算のA/Cを実際のアプリで再生し、`applyCommand` とnative結果のHP/乱数/薬/宝箱/石の一致を確認します。実戦例1つを勝率の証拠として扱いません。
 
-ゲーム画像と実際のゲームSEは同じ録画から取得します。開始・中間・末尾の信号で同期を測り、診断用の帯と音を除去し、CFR 30fps・48kHz PCMへ正規化します。各frameは1600 audio samples、映像と音に同じcutを適用します。失敗した校正を合格へ書き換えず、必要な修正・再実行を記録します。
+ゲーム画像と実際のゲームSEは同じOS録画から取得します。開始・中間・末尾の信号で同期を測り、診断用の帯と音を除去し、CFR 30fps・48kHz PCMへ正規化します。各frameは1600 audio samples。元音のsample clockと共通開始PTSを保ち、途中の時間伸縮はしません。
+
+完成動画は戦闘の抜粋です。元録画全域の未達・FAILは保存し、使用区間を先に固定してから、その全eligible cueと境界tailを別に検証します。収録音声の固定遅延は、独立graph PCM参照の全測定から決めた**shotごと1つの整数sample補正**で編集します。`audioSourceOffsetSamples` が正なら、映像sourceFrameより後ろの実音を同じ長さだけ読み、音を前へ寄せます。波形・tempo・pitch・順序は変えず、音の再演やcue別補正を行いません。元全域をPASSへ書き換えず、「使用区間・編集補正後」のscopeを示し、補正前後と最終MP4の両方を検査します。
 
 ## 4. 映像・音声の再構築
 

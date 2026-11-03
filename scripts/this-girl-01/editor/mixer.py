@@ -46,11 +46,19 @@ def _components(timeline,frozen=None):
  duck=np.clip(uniform_filter1d(occupied,size=round(.12*SR),mode='constant'),0,1)
  for cut in timeline['gameCuts']:
   p=path(cut['file']);hashes[cut['file']]=sha(p);x=audio(p)
-  a=cut['sourceStartFrame']*SPF;b=cut['sourceEndFrame']*SPF;start=cut['startFrame']*SPF;count=b-a
+  offset=cut.get('audioSourceOffsetSamples',0);assert isinstance(offset,int),'One fixed integer sample offset per shot'
+  if offset or cut.get('audioCalibrationEvidence'):
+   evidence=cut['audioCalibrationEvidence'];ep=path(evidence['file']);hashes[evidence['file']]=sha(ep)
+   assert hashes[evidence['file']]==evidence['sha256'],'Audio calibration evidence changed'
+   assert json.loads(ep.read_text())['passed']is True,'Used-source synchronization has not passed'
+  video_a=cut['sourceStartFrame']*SPF;video_b=cut['sourceEndFrame']*SPF
+  # Positive reads later original audio, advancing it relative to the video.
+  # Every sample retains its original order/spacing; no per-cue warp is used.
+  a=video_a+offset;b=video_b+offset;start=cut['startFrame']*SPF;count=video_b-video_a
   assert 0<=a<b<=len(x)and start+count<=n,'Invalid common-clock game cut'
   envelope=.24-(.24-.14)*duck[start:start+count]
   game[start:start+count]+=x[a:b]*envelope[:,None]
-  games.append({**cut,'baseGain':.24,'duringVoiceGain':.14,'sampleStart':start,'sampleEnd':start+count,'sourceSampleStart':a,'sourceSampleEnd':b,'sourceSha256':hashes[cut['file']]})
+  games.append({**cut,'baseGain':.24,'duringVoiceGain':.14,'sampleStart':start,'sampleEnd':start+count,'sourceVideoSampleStart':video_a,'sourceVideoSampleEnd':video_b,'audioSourceOffsetSamples':offset,'sourceSampleStart':a,'sourceSampleEnd':b,'sourceSha256':hashes[cut['file']]})
  p=path(timeline['music']['file']);hashes[timeline['music']['file']]=sha(p);x=audio(p)
  rms=float(np.sqrt(np.mean(x*x)));assert rms>.00001
  gain=frozen['music']['rmsGain']if frozen else 10**(-35/20)/rms
@@ -69,7 +77,7 @@ def _components(timeline,frozen=None):
  master=frozen['masterGain']if frozen else min(1,.85/max(.00001,peak))
  components={'voice':voice*master,'game':game*master,'music':music*master}
  if frozen:assert hashes==frozen['inputHashes'],'Frozen audio sources changed'
- info={'sampleRate':SR,'fps':FPS,'samplesPerFrame':SPF,'sampleCount':n,'voice':voices,'gameCuts':games,'music':{'file':timeline['music']['file'],'sourceSha256':hashes[timeline['music']['file']],'rmsGain':gain,'overlapSamples':overlap,'loopStartSamples':positions,'baseRmsDbFS':-35,'duringVoiceFactor':.65,'fadeInSamples':fadein,'fadeOutSamples':fadeout},'masterGain':master,'preMasterPeak':peak,'outputPeak':float(abs(components['voice']+components['game']+components['music']).max()),'inputHashes':hashes,'canonicalTimelineSha256':canonical(timeline),'codeSha256':sha(__file__),'ffmpegVersion':subprocess.check_output(['ffmpeg','-version']).decode().splitlines()[0],'policy':'Every game audio cut uses exactly the same frame interval as its video. All sources share sample0 at48kHz. No nonlinear post-mix repair. Background components come only from independent raw source files.'}
+ info={'sampleRate':SR,'fps':FPS,'samplesPerFrame':SPF,'sampleCount':n,'voice':voices,'gameCuts':games,'music':{'file':timeline['music']['file'],'sourceSha256':hashes[timeline['music']['file']],'rmsGain':gain,'overlapSamples':overlap,'loopStartSamples':positions,'baseRmsDbFS':-35,'duringVoiceFactor':.65,'fadeInSamples':fadein,'fadeOutSamples':fadeout},'masterGain':master,'preMasterPeak':peak,'outputPeak':float(abs(components['voice']+components['game']+components['music']).max()),'inputHashes':hashes,'canonicalTimelineSha256':canonical(timeline),'codeSha256':sha(__file__),'ffmpegVersion':subprocess.check_output(['ffmpeg','-version']).decode().splitlines()[0],'policy':'Each game shot shares its video frame interval plus one independently measured fixed audio-source sample offset. All sources share sample0 at48kHz; waveform spacing/order, tempo and pitch are preserved. No per-cue warp or nonlinear post-mix repair. Background components come only from independent raw source files.'}
  return components,info
 
 def reconstruct_components(timeline):

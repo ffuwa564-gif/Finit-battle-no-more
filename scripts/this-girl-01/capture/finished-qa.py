@@ -63,17 +63,23 @@ def main():
    box=cut.get('box',t.get('gameBox'));assert box and len(box)==4,'Explicit game geometry required'
    assert box[2]*800==box[3]*450,'Native viewport aspect changed'
    x=gray(source,sa,length)
+   assert 'fadeFrames'in cut or'gameFadeFrames'in t,'Renderer fade interval must be explicit'
+   fade=cut.get('fadeFrames',t.get('gameFadeFrames',0));assert 0<=fade<=15
+   visible=length-2*fade;assert visible>=27
    for third in range(3):
-    fade=cut.get('fadeFrames',t.get('gameFadeFrames',0));assert 0<=fade<=15
-    lo=max(third*length//3,fade);hi=min((third+1)*length//3-9,length-9-fade);assert hi>=lo
+    lo=fade+third*visible//3;hi=fade+(third+1)*visible//3-9;assert hi>=lo
     candidates=range(lo,hi+1)
     off=max(candidates,key=lambda i:float(np.mean(np.abs(np.diff(x[i:i+9],axis=0)))))
     ref=x[off:off+9];activity=float(np.mean(np.abs(np.diff(ref,axis=0))))
-    assert activity>.4 and len({f.tobytes()for f in ref})>=4,('Static/non-discriminating native window',cut['id'],third,activity)
+    unique=len({f.tobytes()for f in ref})
+    assert activity>.4 and unique>=2,('Static/non-discriminating native window',cut['id'],third,activity)
     target=cut['startFrame']+off;pad=min(18,target);right=min(18,t['durationFrames']-target-9);out=gray(movie,target-pad,9+pad+right,box)
     errors=[float(np.sqrt(np.mean((out[j:j+9]-ref)**2)))for j in range(len(out)-8)];idx=int(np.argmin(errors));lag=(idx-pad)/FPS
-    passed=abs(lag)<=.08 and errors[idx]<=12
-    report['video'].append({'cut':cut['id'],'third':third,'sourceFrame':sa+off,'outputFrame':target,'nineFrameCount':9,'sourceActivity':activity,'lagSeconds':lag,'rmse':errors[idx],'passed':passed})
+    outside=[error for j,error in enumerate(errors)if abs((j-pad)/FPS)>.08]
+    assert outside,'Wrong-lag candidates required for timing discrimination'
+    margin=min(outside)-errors[idx]
+    passed=abs(lag)<=.08 and errors[idx]<=12 and margin>=1
+    report['video'].append({'cut':cut['id'],'third':third,'sourceFrame':sa+off,'outputFrame':target,'nineFrameCount':9,'uniqueSourceFrames':unique,'sourceActivity':activity,'lagSeconds':lag,'rmse':errors[idx],'outside80msMinimumRmse':min(outside),'timingDiscriminationMargin':margin,'minimumMargin':1,'sourceOnlyWindowSelection':True,'visibleInterval':[sa+fade,sb-fade],'excludedFadeFramesPerEdge':fade,'fadeExclusionReason':'Renderer-declared paper alpha transition','thirdCandidateRange':[sa+lo,sa+hi],'passed':passed})
   # Per-component NCC against its frozen source-only reconstruction. Independent other sources cancel background.
   anchors=[]
   for cut in t['gameCuts']:

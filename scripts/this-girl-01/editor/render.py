@@ -4,8 +4,8 @@ All cuts and audio use the same integer frame ranges. Input/code hashes guard
 reuse. This does not certify research results or replace final movie QA.
 """
 from pathlib import Path
-import argparse,hashlib,json,subprocess,sys
-import freeze
+import argparse,hashlib,json,subprocess,sys,shutil
+import freeze,data_plates
 ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-01'
 sys.path.insert(0,str(ROOT/'scripts/this-girl-01/art'));import visuals,roster
 FPS=30
@@ -51,12 +51,27 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
  p=O/'render/subtitles.ass';p.write_text(header+'\n'.join(events)+'\n');return p
 def render_page(page,game,t):
  out=O/'render'/('page-'+page['id']+'.mp4');spec=page['spec'];kind=spec['kind'];count=page['durationFrames'];seconds=count/30
- contract={'page':page,'code':sha(__file__),'artCode':sha(visuals.__file__),'rosterCode':sha(roster.__file__),'font':sha('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')}
+ contract={'page':page,'code':sha(__file__),'artCode':sha(visuals.__file__),'rosterCode':sha(roster.__file__),'dataPlateCode':sha(data_plates.__file__),'font':sha('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')}
  if kind=='roster':
   judgment=ROOT/spec['judgment'];contract['judgment']=sha(judgment)
-  if not cached(out,contract):roster.render(judgment,duration=seconds,path=out);finish(out,contract)
+  if not cached(out,contract):
+   report=O/'research/roster-visibility.json';reused=False
+   if report.exists():
+    r=json.loads(report.read_text());source=O/'render/roster-input.mp4';expected={'code':sha(roster.__file__),'visuals':sha(visuals.__file__),'oldRegistry':sha(O/'assets/reference-roster-05.json'),'judgment':sha(judgment)}
+    if r['frames']==count and r['inputHashes']==expected and not source.exists():
+     original=Path(r['renderedFile'])
+     if original.is_file()and sha(original)==r['sha256']:shutil.copyfile(original,source)
+    if r['frames']==count and r['inputHashes']==expected and source.is_file()and sha(source)==r['sha256']:
+     if out.resolve()!=source.resolve():shutil.copyfile(source,out)
+     reused=True
+   if not reused:roster.render(judgment,duration=seconds,path=out)
+   finish(out,contract)
   return out
- plate=O/'render'/('plate-'+page['id']+'.png');visuals.render_scene(spec,plate);contract['plate']=sha(plate)
+ plate=O/'render/plates'/(page['id']+'.png');plate.parent.mkdir(exist_ok=True)
+ if kind=='data-table':data_plates.render_scene(spec,plate)
+ elif kind=='mechanism-note':data_plates.render_mechanism_note(spec,plate)
+ else:visuals.render_scene(spec,plate)
+ contract['plate']=sha(plate)
  args=['-loop','1','-framerate',30,'-i',plate]
  filter_='[0:v]format=yuv420p[v]'
  if game:
@@ -64,13 +79,26 @@ def render_page(page,game,t):
   args+=['-i',source]
   a=game['sourceStartFrame'];b=game['sourceEndFrame'];x,y,w,h=game.get('box',t['gameBox'])
   filter_=f'[1:v]trim=start_frame={a}:end_frame={b},setpts=PTS-STARTPTS,scale={w}:{h}:flags=lanczos,setsar=1[g];[0:v][g]overlay={x}:{y}:shortest=1,format=yuv420p[v]'
+  if page.get('flow'):
+   flow=O/'render'/('flow-'+page['id']+'.png');binding=data_plates.render_flow(page['flow'],flow,game)
+   contract['flow']={'sha256':sha(flow),'binding':binding};args+=['-loop','1','-framerate',30,'-i',flow]
+   filter_+=f";[v][2:v]overlay=0:0:enable='gte(n,{binding['startFrame']})*lt(n,{binding['endFrame']})'[vflow]"
  if cached(out,contract):return out
  # Slow fades to paper at page edges; native content is never spatially cropped.
  fade=min(.45,seconds/5);last=page['id']==t['pages'][-1]['id'];outfade=min(2.5,seconds/3)if last else fade;color='0x211b17'if last else'0xfffaf2'
- filter_+=f';[v]fade=t=in:st=0:d={fade}:color=0xfffaf2,fade=t=out:st={seconds-outfade}:d={outfade}:color={color}[out]'
+ label='vflow'if game and page.get('flow')else'v'
+ filter_+=f';[{label}]fade=t=in:st=0:d={fade}:color=0xfffaf2,fade=t=out:st={seconds-outfade}:d={outfade}:color={color}[out]'
  run([*args,'-filter_complex_threads','1','-filter_complex',filter_,'-map','[out]','-an','-frames:v',count,'-r',30,'-c:v','libx264','-threads','2','-preset','fast','-crf','19','-pix_fmt','yuv420p','-video_track_timescale','15360',out]);finish(out,contract);return out
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--timeline',default=str(O/'render/timeline.json'));a=ap.parse_args();p=Path(a.timeline);t=json.loads(p.read_text());assert t['finalized']and t['episode']=='THIS-GIRL-001';initial=sha(p);code=sha(__file__)
+ ap=argparse.ArgumentParser();ap.add_argument('--timeline',default=str(O/'render/timeline.json'));ap.add_argument('--static-only',action='store_true');a=ap.parse_args();p=Path(a.timeline);t=json.loads(p.read_text());assert t['episode']=='THIS-GIRL-001';initial=sha(p);code=sha(__file__)
+ if a.static_only:
+  assert json.loads((O/'narration.json').read_text())['finalized'];files=[]
+  for page in t['pages']:
+   if page['spec']['kind']=='battle':continue
+   result=render_page(page,None,t);inspect_page(result,page['durationFrames']);files.append({'id':page['id'],'file':str(result.relative_to(ROOT)),'sha256':sha(result)});print('Static cache',page['id'],flush=True)
+  assert code==sha(__file__)and initial==sha(p),'Static plan changed while caching'
+  (O/'research/static-cache-manifest.json').write_text(json.dumps({'passed':True,'movieComplete':False,'timelineSha256':initial,'rendererSha256':code,'files':files,'scope':'Static pages only. Native cuts, fixed audio offsets, final assembly and final-file QA remain pending.'},ensure_ascii=False,indent=2));return
+ assert t['finalized']and not t.get('pendingCalibration')
  frozen=freeze.freeze_inputs(t,p)
  cuts={c['id']:c for c in t['gameCuts']};files=[]
  for page in t['pages']:

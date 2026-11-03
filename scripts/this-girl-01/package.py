@@ -40,7 +40,7 @@ def local(value):
     assert p.is_file(), ('Missing input', value)
     assert not any(x in p.relative_to(ROOT).parts for x in ['.git', 'node_modules', '__pycache__'])
     # Heavy media may be /tmp-backed, but only through this episode's directories.
-    allowed = [ROOT] + [(O / x).resolve() for x in ['render', 'capture', 'assets', 'proofs', 'research', 'speech']]
+    allowed = [ROOT, (ROOT / 'public').resolve()] + [(O / x).resolve() for x in ['render', 'capture', 'assets', 'proofs', 'research', 'speech']]
     assert any(p.resolve().is_relative_to(a) for a in allowed), ('Unapproved symlink', value)
     return p
 
@@ -127,10 +127,30 @@ def validate():
     seed = next(s for s in read(lock)['seedMap'] if s['logical'] == selection['logicalSeed'])
     assert selection['applicationSeed'] == seed['applicationSeed'] and selection['stageId'] == case['stage']
     assert selection['arms'] == {k: case['arms'][k] for k in ['A', 'C']}
+    catalog = read(local(R / 'source-catalog.json'))
+    assert set(catalog['sources']) == {'reference', 'sakuya'}
+    assert sha(local(catalog['frozenIntervals'])) == catalog['frozenIntervalsSha256']
+    offset_plan = read(local(R / 'used-audio-offset-plan.json'))
+    assert offset_plan['finalized'] and offset_plan['passed'] and not offset_plan['globalSourcePassClaimed']
+    assert offset_plan['codeSha256'] == sha(ROOT / 'scripts/this-girl-01/media/plan_audio_offsets.py')
+    for evidence in offset_plan['inputs'].values():
+        assert sha(local(evidence['path'])) == evidence['sha256']
+    plans = {s['id']: s for s in offset_plan['shots']}
+    assert set(plans) == {c['id'] for c in timeline['gameCuts']}
+    for cut in timeline['gameCuts']:
+        s = plans[cut['id']]
+        assert s['passed'] and s['tailsIncluded'] and s['allEligibleResidualsWithin80ms'] and s['allCorrelationsPassed']
+        assert (cut['file'], cut['sourceStartFrame'], cut['sourceEndFrame'], cut['audioSourceOffsetSamples']) == (
+            s['file'], s['sourceStartFrame'], s['sourceEndFrame'], s['audioSourceOffsetSamples'])
+        assert sha(local(cut['file'])) == s['sourceSha256']
+        assert s['measurements'] and all(m['passed'] and abs(m['residualSeconds']) <= .08 and m['correlation'] >= .65 for m in s['measurements'])
     for ident, arm in [('reference', 'A'), ('sakuya', 'C')]:
-        source = local(O / 'capture' / (ident + '.mov'))
-        info = read(local(R / ('capture-source-' + ident + '.json')))
-        proof = read(local(R / ('proof-' + ident + '.json')))
+        item = catalog['sources'][ident]
+        for name, expected in item['hashes'].items():
+            assert sha(local(item[name])) == expected, ('Source catalog input changed', ident, name)
+        source = local(item['movie'])
+        info = read(local(item['metadata']))
+        proof = read(local(item['proofReport']))
         assert info['nativeBrowserVerified'] and info['cleanSha256'] == sha(source)
         assert info['calibration']['passed'] and max(map(abs, info['calibration']['encodedResidualMs'])) <= 80
         norm = info['sourceNormalization']
@@ -138,7 +158,7 @@ def validate():
         assert norm['outputSha256'] == sha(source) and norm['allFramesCompared'] > 0
         assert proof['passed'] and all(proof['checks'].values())
         assert info['proofSha256'] == proof['proofSha256']
-        assert sha(local(O / 'proofs' / (ident + '.json.gz'))) == proof['proofSha256']
+        assert sha(local(item['proofGzip'])) == proof['proofSha256']
         spec = proof['spec']
         assert spec.get('preflight') is not True and spec['model'] == case['arms'][arm]['mode'] == 'after'
         assert spec['caseId'] == case['id'] and spec['arm'] == arm
@@ -146,12 +166,18 @@ def validate():
         assert spec['stageId'] == case['stage'] and spec['applicationSeed'] == seed['applicationSeed']
         assert spec['logicalSeed'] == seed['logical']
         assert proof['sourceTreeSha256'] == info['sourceTreeSha256']
-        native_audio = read(local(R / ('native-buffer-qa-' + ident + '.json')))
-        assert native_audio['passed'] and native_audio['rawOnly'] is False
+        native_audio = read(local(item['nativeQa']))
+        assert native_audio['rawOnly'] is False
         assert native_audio['partialPreflight'] is False and native_audio['sampleContinuity']
         assert native_audio['sourceSha256'] == sha(source)
-        assert native_audio['metadataSha256'] == sha(O / 'capture' / (ident + '.json'))
-        assert native_audio['pcmSha256'] == sha(local(O / 'capture' / (ident + '.pcm')))
+        assert native_audio['metadataSha256'] == sha(local(item['metadata']))
+        assert native_audio['pcmSha256'] == sha(local(item['graphPcm']))
+        assert item['fullSourcePassed'] == native_audio['passed'], 'Do not relabel a global source failure'
+        packet_pcm = read(local(item['packetQa']))
+        assert packet_pcm['passed'] and packet_pcm['packetClock']['passed'] and packet_pcm['pcmIdentity']['passed']
+        assert packet_pcm['rawMovieSha256'] == sha(local(item['rawMovie']))
+        assert packet_pcm['canonicalMovieSha256'] == sha(local(item['preNotchMovie']))
+        assert packet_pcm['metadataSha256'] == sha(local(item['metadata']))
         measured = next(r for r in chosen[2]['arms'][arm]['rows'] if r['seed'] == seed['logical'])
         summary = proof['nativeSummary']
         assert (summary['win'], summary['rounds'], summary['pots'], summary['survivors']) == (
@@ -184,18 +210,30 @@ def sources():
         files.add(local(p))
     # Preserve the normalized native footage and its calibrated pre-normalization original.
     for p in (O / 'capture').glob('*'):
-        final_capture = any(p.name.startswith((ident + '.', ident + '-os-raw.')) for ident in ['reference', 'sakuya'])
+        final_capture = any(p.name.startswith((ident + '.', ident + '-os-raw.', ident + '-native-calibration.')) for ident in ['reference', 'sakuya'])
         if p.is_file() and final_capture and (p.suffix in ['.mov', '.mkv', '.json', '.pcm'] or p.name.endswith(('.mov.tmporiginal', '.json.tmporiginal'))):
             files.add(local(p))
-    for ident in ['reference', 'sakuya']:
-        pcm = local(O / 'capture' / (ident + '.pcm'))
-        metadata = read(O / 'capture' / (ident + '.json'))
+    catalog = read(local(R / 'source-catalog.json'))
+    for ident, item in catalog['sources'].items():
+        for key in item['hashes']:
+            files.add(local(item[key]))
+        pcm = local(item['graphPcm'])
+        metadata = read(local(item['metadata']))
         assert sha(pcm) == metadata['audioCapture']['sha256']
         files.add(pcm)
-        for p in (O / 'capture' / ('native-references-' + ident)).glob('*.f32'):
-            files.add(local(p))
+        for record in metadata['nativeReferenceBuffers']:
+            p = local(record['file'])
+            assert sha(p) == record['sha256']
+            files.add(p)
+        for key in ['originalMovie', 'originalMetadata']:
+            files.add(local(metadata['sourceNormalization'][key]))
     for p in [O / 'render/timeline.json', O / 'narration.json', O / 'editorial.json']:
         files.add(local(p))
+    for chapter in read(O / 'narration.json')['chapters']:
+        for line in chapter['lines']:
+            p = local(line['queryFile'])
+            assert sha(p) == line['querySha256']
+            files.add(p)
     return sorted(files)
 
 

@@ -16,9 +16,13 @@ def main():
   game=np.zeros((48000*2,2),np.float32);game[10*1600]=.2
   for name,x in [('music',music),('voice',voice),('game',game)]:flac(d/(name+'.flac'),x)
   timeline={'finalized':True,'episode':'THIS-GIRL-001','durationFrames':240,'voice':[{'lineId':'synthetic-test-tone','file':str(d/'voice.flac'),'startFrame':90}],'gameCuts':[{'id':'test-cut','file':str(d/'game.flac'),'startFrame':20,'sourceStartFrame':5,'sourceEndFrame':35}],'music':{'file':str(d/'music.flac')}}
+  unshifted,_=m._components(timeline)
+  assert int(np.argmax(abs(unshifted['game'][:,0])))==(20+10-5)*1600
+  calibration=d/'synthetic-calibration.json';calibration.write_text(json.dumps({'passed':True,'scope':'Synthetic fixture, not production synchronization evidence'}))
+  timeline['gameCuts'][0].update(audioSourceOffsetSamples=37,audioCalibrationEvidence={'file':str(calibration),'sha256':m.sha(calibration)})
   components,info=m._components(timeline)
   assert components['game'].shape==(240*1600,2)
-  expected=(20+10-5)*1600
+  expected=(20+10-5)*1600-37
   assert int(np.argmax(abs(components['game'][:,0])))==expected
   assert np.allclose(components['game'][expected],.2*.24*info['masterGain'],atol=2e-6)
   assert np.count_nonzero(components['game'][:,0])==1
@@ -29,6 +33,6 @@ def main():
   try:m.reconstruct_components(timeline)
   except (AssertionError,subprocess.CalledProcessError):pass
   else:raise AssertionError('Changed audio source was silently accepted')
-  result={'passed':True,'mixerCodeSha256':m.sha(HERE/'mixer.py'),'testCodeSha256':m.sha(__file__),'scope':'Synthetic fixture only. Exact frame-to-sample trim/placement; independent-source reconstruction; modified-source refusal. No game outcome or final-movie sync claim.','expectedImpulseSample':expected,'samplesPerFrame':1600}
+  result={'passed':True,'mixerCodeSha256':m.sha(HERE/'mixer.py'),'testCodeSha256':m.sha(__file__),'scope':'Synthetic fixture only. Exact frame/sample trim/placement; one fixed subframe source-audio offset preserving spacing; independent-source reconstruction; modified-source refusal. No game outcome or final-movie sync claim.','expectedImpulseSample':expected,'unshiftedImpulseSample':40000,'audioSourceOffsetSamples':37,'samplesPerFrame':1600}
   (HERE.parents[2]/'artifacts/this-girl-01/research/editor-mixer-test.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))
 if __name__=='__main__':main()
