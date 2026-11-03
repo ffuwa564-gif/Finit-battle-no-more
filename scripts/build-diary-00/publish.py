@@ -9,7 +9,10 @@ def sha(p):
  return h.hexdigest()
 def pushbranch(branch,files,base=None):
  existing=git('ls-remote','--heads','origin',branch)
- if existing:raise RuntimeError('Refusing to replace existing branch '+branch)
+ if existing:
+  tracked=B/('production-commit.txt' if branch.startswith('video/') else 'download-commit.txt')
+  assert tracked.exists() and existing.split()[0]==tracked.read_text().strip(),'Refusing unexpected branch update'
+  base=existing.split()[0]
  idx=B/('index-'+branch.replace('/','-'));idx.unlink(missing_ok=True);env={**os.environ,'GIT_INDEX_FILE':str(idx)}
  git('read-tree',base or '--empty',env=env)
  for path,name in files:
@@ -26,6 +29,6 @@ if __name__=='__main__':
   files +=[(B/p,'docs/media/build-research-diary/episodes/00/'+p)for p in ['Research-Direction.md','Reproduce.md','Credits.md']]
   commit=pushbranch('video/build-research-diary-00',files,git('rev-parse','origin/main'));(B/'production-commit.txt').write_text(commit+'\n');print(commit)
  elif sys.argv[1]=='download':
-  names=['README.md','STILLVEIL-BuildResearchDiary-00-720p.mp4','Thumbnail-BuildResearchDiary-00.png','Preview.jpg','Script.md','Subtitles-ja.srt','Chapters.txt','YouTube-Description.txt','Complete-Catalogue.md','Catalogue-Index.csv','Research-Direction.md','Credits.md','Reproduce.md','catalogue.json','Assets.json','External-Game-Assets.json','Production-Materials.zip','Finished-Movie-Sync.json','Validation.json','Decode-Validation.json','Visual-QC.json','render-inputs.json','soundtrack-manifest.json','narration.json','timeline.json','production-commit.txt']
-  hashes={p.name:sha(p)for p in [B/n for n in names]+[B/'STILLVEIL-BuildResearchDiary-00-1080p.mp4']};(B/'SHA256.json').write_text(json.dumps(hashes,indent=2));names+=['SHA256.json']
+  names=['STILLVEIL-BuildResearchDiary-00-1080p.mp4','README.md','STILLVEIL-BuildResearchDiary-00-720p.mp4','Thumbnail-BuildResearchDiary-00.png','Preview.jpg','Script.md','Subtitles-ja.srt','Chapters.txt','YouTube-Description.txt','Complete-Catalogue.md','Catalogue-Index.csv','Research-Direction.md','Credits.md','Reproduce.md','catalogue.json','Assets.json','External-Game-Assets.json','Production-Materials.zip','Finished-Movie-Sync.json','Validation.json','Decode-Validation.json','Visual-QC.json','Size-Adjustment.json','render-inputs.json','soundtrack-manifest.json','narration.json','timeline.json','production-commit.txt']
+  hashes={p.name:sha(p)for p in [B/n for n in names]};(B/'SHA256.json').write_text(json.dumps(hashes,indent=2));names+=['SHA256.json']
   commit=pushbranch('downloads/build-research-diary-00',[(B/n,n)for n in names]+[(B/'reference/source-contract.json','Source-Contract.json')]);(B/'download-commit.txt').write_text(commit+'\n');print(commit)

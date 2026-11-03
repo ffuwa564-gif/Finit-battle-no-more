@@ -2,12 +2,12 @@
 
 1. ソース用ブランチ `video/build-research-diary-00` を取得します。
 2. Production-Materials.zip をリポジトリのルートへ展開します。`artifacts/build-diary-00`へ既存素材・合成済みの各発話・台本・制作コードが復元されます。VOICEVOXモデルと原曲MP3は含みません。
-3. PythonのPillow/numpy/scipy、ffmpeg/ffprobe、Node依存を用意してください。`tools/media-sync/`はソースブランチにあります。
+3. PythonのPillow/numpy/scipy、ffmpeg/ffprobe、Node依存とNoto Sans CJKフォントを用意してください。`tools/media-sync/`はソースブランチにあります。
 4. `git worktree add --detach /workspace/STILLVEIL-part0-source dec20ebbfb8d139713ffe847ebc48eefe8ff54ca` でver1.10を取り出します。別の場所なら `STILLVEIL_SOURCE` を指定してください。原画を外部リンクで取り出す場合はExternal-Game-Assets.jsonのSHAを必ず照合します。
 5. BGM「フィヨルドの澄んだ風」は公式配布元と利用条件を確認して取得し、プロジェクトの `public/audio/fjordnosundakaze.mp3`へ置きます。既存ゲームチェックアウトにも同じ音源が入っています。
 6. `python artifacts/build-diary-00/rebase-inputs.py` で展開先の発話パスを付け直します。
-7. `python artifacts/build-diary-00/prepare.py` → `mix.py` → `render.py` → `audit.py` → `write-documents.py` の順で実行します。各コマンドには同じディレクトリの接頭辞を付けます。
-8. `npx tsx artifacts/build-diary-00/verify.ts`、全体デコード、音量・目視検査も完成ファイルそのものへ実行してください。再書き出し前の検査結果を再利用しません。
+7. `python artifacts/build-diary-00/prepare.py` → `mix.py` → `render.py` → `fit-github.py` → `audit.py` → `write-documents.py` の順で実行します。各コマンドには同じディレクトリの接頭辞を付けます。
+8. `python artifacts/build-diary-00/finalize-quality.py` で完成動画の同期・全資料カード・Chromium/WebKit再生・全体デコード・音量を検査します。Playwrightの両ブラウザとWebKit依存ライブラリが必要です。スクリプト内の依存ライブラリ位置を環境へ合わせ、最後に完成ファイルそのものを目視検査してください。再書き出し前の検査結果を再利用しません。
 
 物語を変更して再合成する場合は、VOICEVOX CoreのPython環境・OpenJTalk辞書・モデルが別途必要です。`synth.py`のローカルランタイム位置を環境に合わせ、話者3/2/8とライセンスを確認してください。発話キャッシュはテキスト・コード・条件のハッシュで判定します。
 
