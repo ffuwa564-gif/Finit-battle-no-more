@@ -32,6 +32,8 @@ for c in lock['cases']:
 adjust_family(comparisons,expected_hypotheses=288,expected_comparison_ids=expected)
 save(out/'analysis/main.json',{'lockSha':locksha,'status':'partial measured claims only; whole-character certification requires all gates and audit','comparisons':comparisons,'absolute':absolute})
 recording.sort(key=lambda r:([6,4,3].index(r['tier']),['ivory-tower-010','kuzuha-awakening'].index(r['stageId']),0 if r['caseId'].endswith('-F1')else 1))
+for r in recording:
+    r['specs']=[{'id':'reference'if n=='A'else'sakuya','caseId':r['caseId'],'arm':n,'stageId':r['stageId'],'applicationSeed':r['applicationSeed'],'logicalSeed':r['logicalSeed'],'config':r['arms'][n]['config'],'sourceGameCommit':r['sourceGameCommit']}for n in ['A','C']]
 save(out/'recording-candidates.json',recording)
 growth=[];gids=[]
 for g in lock['growth']:
