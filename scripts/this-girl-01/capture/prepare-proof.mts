@@ -15,12 +15,21 @@ const ROOT=resolve(fileURLToPath(new URL('../../../',import.meta.url))),O=resolv
 const sha=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
 function walk(p:string):string[]{return readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(resolve(p,e.name)):[resolve(p,e.name)]).sort();}
 export function sourceFingerprint(){const files=Object.fromEntries(walk(resolve(ROOT,'src')).map(p=>[relative(ROOT,p),sha(p)]));return{sha256:createHash('sha256').update(JSON.stringify(files)).digest('hex'),files};}
-export interface ProofSpec { id:string;stageId:string;applicationSeed:number;logicalSeed?:number;config:Config;model?:'before'|'after';preflight?:boolean;sourceGameCommit?:string;caseId?:string;arm?:'A'|'C'; }
+export interface ProofSpec { id:string;stageId:string;applicationSeed:number;logicalSeed?:number;config:Config;model?:'before'|'after';preflight?:boolean;sourceGameCommit?:string;caseId?:string;arm?:'A'|'C';researchLockCommit?:string;researchLockSha256?:string; }
 export async function prepare(spec:ProofSpec){
  if(!/^[a-z0-9-]+$/.test(spec.id))throw Error('Unsafe proof ID');
  const source=sourceFingerprint(),sourceGameCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();
+ if(!spec.preflight&&(!spec.caseId||!['A','C'].includes(spec.arm??'')||spec.model!=='after'||!Number.isInteger(spec.logicalSeed)))throw Error('Final proof requires locked caseId, A/C arm, after model and logical seed');
  if(!spec.preflight){execFileSync('git',['diff','--quiet','HEAD','--','src'],{cwd:ROOT});if(execFileSync('git',['ls-files','--others','--exclude-standard','src'],{cwd:ROOT,encoding:'utf8'}).trim())throw Error('Freeze source before final proof');}
- if(spec.sourceGameCommit&&spec.sourceGameCommit!==sourceGameCommit)throw Error('Different source commit');
+ if(spec.sourceGameCommit&&spec.sourceGameCommit!==sourceGameCommit)throw Error('Different capture commit');
+ let researchLock:any;
+ if(!spec.preflight){
+  const lockPath=resolve(O,'research/confirmation-lock.json');
+  if(!spec.researchLockSha256||sha(lockPath)!==spec.researchLockSha256)throw Error('Missing or different frozen research lock');
+  researchLock=JSON.parse(readFileSync(lockPath,'utf8'));
+  if(spec.researchLockCommit!==researchLock.sourceGameCommit)throw Error('Research lock commit mismatch');
+  for(const [path,expected]of Object.entries(researchLock.sources))if(sha(resolve(ROOT,path))!==expected)throw Error('Locked research source changed '+path);
+ };
  const lib=await import(spec.model==='before'?'../before-policy.mts':'../after-policy.mts'),content=lib.content;
  const native=lib.run(spec.config,spec.applicationSeed,true,spec.stageId);
  if(!native.battle||!native.history)throw Error('Native trace missing');
@@ -68,10 +77,11 @@ export async function prepare(spec:ProofSpec){
  if(!Object.values(checks).every(Boolean))throw Error('Native/application mismatch '+JSON.stringify(checks));
  assertSaveCompatibility(s,content);
  if(sourceFingerprint().sha256!==source.sha256)throw Error('Source changed during proof preparation');
- const out={schemaVersion:1,episode:'THIS-GIRL-001',id:spec.id,spec,initial,fixture,final:structuredClone(s),groups,events,allCommands,config:spec.config,nativeSummary:{win:native.win,rounds:native.rounds,pots:native.pots,survivors:native.survivors,telemetry:native.telemetry},nativeVerified:true,applicationVerified:true,checks,sourceGameCommit,sourceTreeSha256:source.sha256,sourceFiles:source.files,disclosure:'Hypothetical endgame comparison fixture: all75 published forms including currently unobtainable XR, all gem definitions seen, legal family/slot rules,5potions. Real application commands, no enemy/stage edits. Not naturally acquired player progress.'};
+ if(!spec.preflight&&sha(resolve(O,'research/confirmation-lock.json'))!==spec.researchLockSha256)throw Error('Research lock changed during proof preparation');
+ const out={schemaVersion:1,episode:'THIS-GIRL-001',id:spec.id,spec,initial,fixture,final:structuredClone(s),groups,events,allCommands,config:spec.config,nativeSummary:{win:native.win,rounds:native.rounds,pots:native.pots,survivors:native.survivors,telemetry:native.telemetry},nativeVerified:true,applicationVerified:true,checks,sourceGameCommit,researchLockSha256:spec.researchLockSha256,researchLockCommit:spec.researchLockCommit,sourceTreeSha256:source.sha256,sourceFiles:source.files,disclosure:'Hypothetical endgame comparison fixture: all75 published forms including currently unobtainable XR, all gem definitions seen, legal family/slot rules,5potions. Real application commands, no enemy/stage edits. Not naturally acquired player progress.'};
  mkdirSync(resolve(O,'proofs'),{recursive:true});mkdirSync(resolve(O,'research'),{recursive:true});
  const path=resolve(O,`proofs/${spec.id}.json.gz`);writeFileSync(path,gzipSync(JSON.stringify(out)));
- writeFileSync(resolve(O,`research/proof-${spec.id}.json`),JSON.stringify({id:spec.id,passed:true,checks,spec,nativeSummary:out.nativeSummary,sourceGameCommit,sourceTreeSha256:source.sha256,proofSha256:sha(path),bytes:readFileSync(path).length},null,2));
+ writeFileSync(resolve(O,`research/proof-${spec.id}.json`),JSON.stringify({id:spec.id,passed:true,checks,spec,nativeSummary:out.nativeSummary,sourceGameCommit,researchLockSha256:spec.researchLockSha256,researchLockCommit:spec.researchLockCommit,sourceTreeSha256:source.sha256,proofSha256:sha(path),bytes:readFileSync(path).length},null,2));
  console.log('APPLICATION PROOF',spec.id,checks,native.win,native.rounds);return out;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){

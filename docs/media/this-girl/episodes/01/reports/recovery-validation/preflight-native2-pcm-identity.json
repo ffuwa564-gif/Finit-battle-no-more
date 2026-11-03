@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "Entire pre-notch canonical PCM bitwise matches every actual Pulse input sample. Leading/trailing zero padding only; no tempo/sample waveform changes.",
+  "rawFrames": 1294395,
+  "canonicalFrames": 1328000,
+  "expectedStartPaddingFromPtsFloor": 4463,
+  "nearestRoundedPadding": 4464,
+  "quantizationDifferenceSamples": -1,
+  "startZeroPaddingFrames": 4463,
+  "rawLeadingTrimFrames": 0,
+  "comparedFrames": 1294395,
+  "bitwiseIdenticalPrefixFrames": 1294395,
+  "changedFrames": 0,
+  "rawComparedSha256": "f536e4f7f4a26f866e88d1d77c1456d784c04a5ed89b396b07f8769c65b6cf5c",
+  "canonicalComparedSha256": "f536e4f7f4a26f866e88d1d77c1456d784c04a5ed89b396b07f8769c65b6cf5c",
+  "leadingPaddingIsZero": true,
+  "trailingZeroPaddingFrames": 29142,
+  "trailingPaddingIsZero": true
+}

@@ -184,8 +184,8 @@ def sources():
         files.add(local(p))
     # Preserve the normalized native footage and its calibrated pre-normalization original.
     for p in (O / 'capture').glob('*'):
-        final_capture = any(p.name.startswith(ident + '.') for ident in ['reference', 'sakuya'])
-        if p.is_file() and final_capture and (p.suffix in ['.mov', '.json', '.pcm'] or p.name.endswith(('.mov.tmporiginal', '.json.tmporiginal'))):
+        final_capture = any(p.name.startswith((ident + '.', ident + '-os-raw.')) for ident in ['reference', 'sakuya'])
+        if p.is_file() and final_capture and (p.suffix in ['.mov', '.mkv', '.json', '.pcm'] or p.name.endswith(('.mov.tmporiginal', '.json.tmporiginal'))):
             files.add(local(p))
     for ident in ['reference', 'sakuya']:
         pcm = local(O / 'capture' / (ident + '.pcm'))

@@ -27,9 +27,10 @@ def gray(p,frame,count,box=None):
  return x.reshape(count,160,90).astype(np.float32)
 def corr(ref,candidate):
  a=resample_poly(np.mean(ref,axis=1),1,3);b=resample_poly(np.mean(candidate,axis=1),1,3)
- a=a-a.mean();b=b-b.mean()
+ a=a.astype(np.float64);b=b.astype(np.float64);a=a-a.mean();b=b-b.mean()
  c=fftconvolve(b,a[::-1],mode='valid');e=fftconvolve(b*b,np.ones(len(a)),mode='valid')
- c/=np.sqrt(np.maximum(1e-25,e*np.sum(a*a)));i=int(np.argmax(c))
+ ref_energy=float(np.sum(a*a));assert ref_energy>1e-12
+ c/=np.sqrt(np.maximum(1e-20,e*ref_energy));c[e<ref_energy*1e-6]=-1;i=int(np.argmax(c));assert c[i]<=1.00001
  return i/16000,float(c[i])
 def best_active_interval(component,a,b,seconds=2):
  length=seconds*SR;assert b-a>=length,'Insufficient source interval'
@@ -63,7 +64,8 @@ def main():
    assert box[2]*800==box[3]*450,'Native viewport aspect changed'
    x=gray(source,sa,length)
    for third in range(3):
-    lo=third*length//3;hi=(third+1)*length//3-9;assert hi>=lo
+    fade=cut.get('fadeFrames',t.get('gameFadeFrames',0));assert 0<=fade<=15
+    lo=max(third*length//3,fade);hi=min((third+1)*length//3-9,length-9-fade);assert hi>=lo
     candidates=range(lo,hi+1)
     off=max(candidates,key=lambda i:float(np.mean(np.abs(np.diff(x[i:i+9],axis=0)))))
     ref=x[off:off+9];activity=float(np.mean(np.abs(np.diff(ref,axis=0))))
