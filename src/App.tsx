@@ -5,7 +5,7 @@ import { initialNovelProgress } from './domain/novels';
 import { combatSignature } from './platform/combat-signatures';
 import { ultimateVisualFor, rabbitMusicGain } from './platform/ultimate-choreography';
 import { ultimateSoundFor } from './platform/ultimate-audio';
-import { ultimateTimingFor, UltimateClock } from './platform/ultimate-timing';
+import { ultimateTimingFor, UltimateClock, sharedUltimateClock } from './platform/ultimate-timing';
 import { battleEventDuration } from './platform/battle-timing';
 import { tr, localize, useLanguage } from './locales/i18n';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -179,7 +179,7 @@ export default function App() {
     const timing=ultimateTimingFor(visual);
     const rabbit=visual==='rabbit-bits';
     const soundStart=rabbit?0:timing.impact;
-    if (event.ultimate) ultimateClock.current.sync(event.id, save.settings.speed, performance.now());
+    if (event.ultimate) { ultimateClock.current = sharedUltimateClock(event.id); ultimateClock.current.sync(event.id, save.settings.speed, performance.now()); }
     if (soundedEvent.current !== event.id) {
       soundedEvent.current = event.id;
       const cue = event.ultimate ? 'ultimate' : event.fairyAction ? 'heal' : battleSounds[event.kind];

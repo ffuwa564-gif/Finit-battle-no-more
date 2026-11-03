@@ -8,7 +8,7 @@ import { ultimateFor, type UltimateTheme } from '../domain/ultimates';
 import type { BattleEvent, CharacterDef, Unit } from '../domain/types';
 import { tr } from '../locales/i18n';
 import { ultimateVisualFor, rabbitWhiteout, rabbitBitFrame, rabbitEnergyFrame, RABBIT_MUZZLES, type UltimateVisual } from '../platform/ultimate-choreography';
-import { ultimateTimingFor, UltimateClock, RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
+import { ultimateTimingFor, sharedUltimateClock, RABBIT_SEQUENCE, rabbitStage } from '../platform/ultimate-timing';
 import { PortraitArt } from './PortraitArt';
 import './ultimates.css';
 
@@ -56,7 +56,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   const special = { ...form, name: event.ultimateName ?? form.name, theme: visual === 'clockwork' || visual === 'rabbit-bits' ? 'stars' as const : visual };
   const supporting = !enemy && ['bloom', 'aegis', 'dawn'].includes(special.theme);
   const effectHost = useRef<HTMLDivElement>(null);
-  const clock = useRef(new UltimateClock());
+  const clock = useRef(sharedUltimateClock(eventId));
   const [phase, setPhase] = useState('intro');
   const [stage,setStage]=useState('command');
   const [ready, setReady] = useState(false);
@@ -118,6 +118,7 @@ function UltimateSequence({ event, character, allies, speed, reducedMotion }: { 
   }, [allowed, failed, visual, partyLayer]);
 
   useEffect(() => {
+    clock.current = sharedUltimateClock(eventId);
     clock.current.sync(eventId, speed, performance.now());
     const elapsed = clock.current.position(performance.now());
     setStage(rabbitStage(elapsed));

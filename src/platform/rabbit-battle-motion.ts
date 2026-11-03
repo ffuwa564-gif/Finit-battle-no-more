@@ -4,6 +4,9 @@ import { rabbitTargetFrame } from './ultimate-choreography';
 export function createRabbitBattleMotion(root: HTMLElement, targetIds: string[], position: () => number) {
   const originals=new Map<HTMLElement,{translate:string;scale:string;filter:string;origin:string;baseFilter:string}>();
   let frame=0;
+  const recipients=[...new Set(targetIds)].map(id=>({
+    selector:`[data-encounter-scene][data-unit="${CSS.escape(id)}"]`, art: null as HTMLElement|null,
+  }));
   const restore=(element:HTMLElement)=>{
     const original=originals.get(element)!;
     for(const [property,value] of [['translate',original.translate],['scale',original.scale],['filter',original.filter],['transform-origin',original.origin]]){
@@ -13,9 +16,12 @@ export function createRabbitBattleMotion(root: HTMLElement, targetIds: string[],
   };
   const draw=()=>{
     const state=rabbitTargetFrame(position());
-    for(const id of new Set(targetIds)){
-      const page=root.querySelector<HTMLElement>(`[data-encounter-scene][data-unit="${CSS.escape(id)}"]`);
-      const art=page?.querySelector<HTMLElement>(':scope > .enemy-page-art, :scope > .animated-illustration');
+    for(const recipient of recipients){
+      if(!recipient.art?.isConnected){
+        const page=root.querySelector<HTMLElement>(recipient.selector);
+        recipient.art=page?.querySelector<HTMLElement>(':scope > .enemy-page-art, :scope > .animated-illustration')??null;
+      }
+      const art=recipient.art;
       if(!art)continue;
       if(!originals.has(art))originals.set(art,{translate:art.style.translate,scale:art.style.scale,filter:art.style.filter,origin:art.style.transformOrigin,baseFilter:getComputedStyle(art).filter});
       const original=originals.get(art)!;

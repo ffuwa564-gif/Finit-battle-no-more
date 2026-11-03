@@ -1,3 +1,4 @@
+import { RELEASE } from '../src/content/version';
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
 
@@ -97,6 +98,6 @@ test('1.10 boot upgrades atomically without losing tower progress, a battle, or 
     const db=await new Promise<IDBDatabase>((resolve,reject)=>{const q=indexedDB.open(SAVE_DATABASE);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});
     return new Promise<any>((resolve,reject)=>{const tx=db.transaction(SAVE_STORE,'readonly'),store=tx.objectStore(SAVE_STORE),old=store.get('migration-v1.10'),original=store.get('migration-v1.0');tx.oncomplete=()=>{db.close();resolve({save,old:old.result,original:original.result});};tx.onerror=()=>reject(tx.error);});
   });
-  expect(records.save).toEqual({...fixture.old,appVersion:'1.11.0',revision:fixture.old.revision+1});
+  expect(records.save).toEqual({...fixture.old,appVersion:RELEASE.appVersion,revision:fixture.old.revision+1});
   expect(records.old).toEqual(fixture.old);expect(records.original).toEqual(fixture.original);
 });

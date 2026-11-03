@@ -1,8 +1,8 @@
 import { RABBIT_VOLLEY, RABBIT_FLIGHT, rabbitShotTimes } from './ultimate-choreography';
 
 /** Use the actual final blast at lower level, with a short release for rapid fire. */
-function quietBlast(sampleRate:number,gain:number,duration:number,release:number):Float32Array {
-  const source=renderRabbitFinisher(sampleRate),pcm=new Float32Array(Math.ceil(duration*sampleRate));
+function quietBlast(sampleRate:number,gain:number,duration:number,release:number,source=renderRabbitFinisher(sampleRate)):Float32Array {
+  const pcm=new Float32Array(Math.ceil(duration*sampleRate));
   for(let i=0;i<pcm.length;i++)pcm[i]=source[i]*gain*Math.min(1,(pcm.length-1-i)/(sampleRate*release));
   return pcm;
 }
@@ -46,12 +46,13 @@ export function renderRabbitVolley(sampleRate:number,timingScale=1):Float32Array
     const offset=Math.round(at*sampleRate);
     for(let i=0;i<voice.length&&offset+i<pcm.length;i++)pcm[offset+i]+=voice[i]*gain;
   };
-  const contact=renderRabbitContact(sampleRate);
+  const blast=renderRabbitFinisher(sampleRate);
+  const contact=quietBlast(sampleRate,.12,.08,.025,blast);
   for(let bit=0;bit<4;bit++)for(const [round,at] of rabbitShotTimes(bit).entries()){
-    add(renderRabbitShot(sampleRate,bit,round),at*scale,1.25);
+    add(quietBlast(sampleRate,.48*(.97+bit*.01+round*.02),.14,.035,blast),at*scale,1.25);
     add(contact,(at+RABBIT_FLIGHT.shot)*scale,1.25);
   }
-  const finish=RABBIT_VOLLEY.finale*scale,blast=renderRabbitFinisher(sampleRate);
+  const finish=RABBIT_VOLLEY.finale*scale;
   // Brief rounded departure pressure before the four heavy bodies land.
   const flight=new Float32Array(Math.ceil(RABBIT_FLIGHT.finale*scale*sampleRate));
   for(let i=0;i<flight.length;i++){const u=i/flight.length,t=i/sampleRate;flight[i]=Math.sin(2*Math.PI*(210*t+90*t*t))*.16*Math.sin(Math.PI*u)**2;}

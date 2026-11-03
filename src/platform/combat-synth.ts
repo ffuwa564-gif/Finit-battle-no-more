@@ -1,10 +1,10 @@
-import { renderRabbitUltimate } from './rabbit-ultimate-audio';
+import { prepareCombatPcm } from './combat-pcm';
 import { combatSignature, renderCombatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily, renderCombatSound, type CombatFamily } from './combat-audio';
 import type * as Tone from 'tone';
 import type { SkillTemplate } from '../domain/types';
 import type { SoundCue } from './sound-cues';
-import { isUltimateSound, renderUltimateSound, ultimateSounds, type UltimateSound } from './ultimate-audio';
+import { isUltimateSound, ultimateSounds, type UltimateSound } from './ultimate-audio';
 
 interface CombatScore {
   // Filtered white noise supplies motion, while the membrane supplies the hit.
@@ -61,18 +61,16 @@ export async function createCombatSynth(tone: typeof Tone, output: Tone.Gain): P
   // Render once per unlocked audio context. Buffer playback avoids monophonic
   // synth scheduling conflicts and gives ultimates a completely separate timbre.
   const context = tone.getContext().rawContext;
-  const ultimateBuffers = new Map<UltimateSound, AudioBuffer>();
-  for (const kind of ultimateSounds) {
-    const pcm = renderUltimateSound(kind, context.sampleRate);
+  const preparedScores = await prepareCombatPcm(context.sampleRate);
+  const buffers = new Map<string, AudioBuffer>();
+  for (const [key, pcm] of preparedScores) {
     const buffer = context.createBuffer(1, pcm.length, context.sampleRate);
-    buffer.getChannelData(0).set(pcm);
-    ultimateBuffers.set(kind, buffer);
+    buffer.getChannelData(0).set(pcm); buffers.set(key, buffer);
   }
+  const ultimateBuffers = new Map(ultimateSounds.map(kind => [kind, buffers.get(kind)!]));
   // Retiming deadlines preserves pitch and each individual weapon transient.
-  const rabbitBuffers=new Map<number,AudioBuffer>([[1,ultimateBuffers.get('ultimate-rabbits')!]]);
-  const fastRabbit=renderRabbitUltimate(context.sampleRate,1.25);
-  const fastBuffer=context.createBuffer(1,fastRabbit.length,context.sampleRate);fastBuffer.getChannelData(0).set(fastRabbit);rabbitBuffers.set(1.25,fastBuffer);
-  const normalBuffers = new Map<string, AudioBuffer>();
+  const rabbitBuffers = new Map([[1, buffers.get('ultimate-rabbits')!], [1.25, buffers.get('rabbit:1.25')!]]);
+  const normalBuffers = buffers;
   const variations = new Map<string, number>();
   const normalVoices = new Set<{ startsAt: number; source: ReturnType<typeof context.createBufferSource>; envelope: ReturnType<typeof context.createGain> }>();
   const ordinaryBuffer = (family: CombatFamily | CombatSignature, variant: number) => {
