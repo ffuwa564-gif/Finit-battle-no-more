@@ -70,7 +70,9 @@ AACは修正した無損失masterから生成し、元動画の圧縮音声の�
         for n in changed:
             blob=cmd(['git','hash-object','-w','--',str(public[n])],env)
             cmd(['git','update-index','--add','--cacheinfo','100644,'+blob+','+n],env)
-        tree=cmd(['git','write-tree'],env);commit=cmd(['git','commit-tree',tree,'-p',BASE],env,'media: 慈雨の読みをジウに修正\n')
+        # Unchanged blobs already exist in the leased remote base. Do not lazily
+        # fetch the large original evidence ZIPs just to verify local existence.
+        tree=cmd(['git','write-tree','--missing-ok'],env);commit=cmd(['git','commit-tree',tree,'-p',BASE],env,'media: 慈雨の読みをジウに修正\n')
         cmd(['git','push','--force-with-lease=refs/heads/'+BRANCH+':'+BASE,'origin',commit+':refs/heads/'+BRANCH],env)
     receipts=[]
     for n in changed:
