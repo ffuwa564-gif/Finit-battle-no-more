@@ -67,6 +67,7 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
+  if(record(value)&&value.commandAction!==undefined&&(value.commandAction!=='resource-fallback'||value.kind!=='buff'||!nonempty(value.actorId)||value.actionSelection||value.ultimate||value.bossStrike))return false;
   if(record(value)&&value.jamDampenedPercent!==undefined&&(!count(value.jamDampenedPercent)||value.jamDampenedPercent<1||value.jamDampenedPercent>75||value.kind!=='attack'||value.skillId!==undefined||value.ultimate||value.bossStrike||value.bitAction))return false;
   if (record(value) && ['absorbed', 'selfCost', 'resourceAmount', 'returnDamage'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;

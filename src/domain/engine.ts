@@ -1,3 +1,4 @@
+import { commandYieldsToResources } from './command-resource-safety';
 import { applyJamDampening, consumeJamDampening } from './jam-dampening';
 import { characterSkills } from './character-skills';
 import { markBarrierReturn, canMarkBarrierReturn, expireBarrierReturn, storeBarrierAbsorption, takeBarrierReturn, barrierReturnDamage } from './barrier-return';
@@ -605,7 +606,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   const commander = commandCommander(battle);
   const commandTargetAlive = Boolean(command && battle.units.some(unit => unit.uid === command.targetId && unit.side === 'enemy' && unit.hp > 0));
   const commandHasRecipient = Boolean(command && command.followerIds.some(id => battle.units.some(unit => unit.uid === id && unit.side === 'party' && unit.hp > 0)));
-  const issued = command && commander && !commandUnavailableReason(input) && commandTargetAlive && commandHasRecipient ? command : undefined;
+  const requested = command && commander && !commandUnavailableReason(input) && commandTargetAlive && commandHasRecipient ? command : undefined;
+  const resourceFallback = requested && commandYieldsToResources(battle,content,requested);
+  const issued = resourceFallback ? undefined : requested;
+  if(resourceFallback)emit(battle,{kind:'buff',commandAction:'resource-fallback',actorId:commander!.uid,targetIds:requested!.followerIds,text:`${character(content,commander!.characterId).name} — 資源を守る号令（発令を見送り、通常行動へ）`,unitsAfter:clone(battle.units)});
   if (issued) {
     battle.commandIssuedRound = battle.round;
     gainUltimate(commander!, 25);

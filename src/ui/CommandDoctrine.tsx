@@ -1,3 +1,4 @@
+import { commandResourceDescription } from '../domain/command-resource-safety';
 import { useEffect, useState } from 'react';
 import { Check, Crown, Megaphone, Target, Users } from 'lucide-react';
 import { content as currentContent } from '../content';
@@ -56,7 +57,7 @@ export function CommandDoctrine({battle,content=currentContent,busy=false,onOrde
     <Modal open={open} title={tr('号令指揮')} className="command-doctrine-modal" onClose={()=>setOpen(false)} footer={<div className="command-doctrine__actions"><Button disabled={!canReserve} onClick={()=>{onOrder({targetId,followerIds:[...currentFollowerIds]});setOpen(false);}}>{tr(battle.commandOrder?'号令の予約を更新':'この号令を予約')}<Check size={16}/></Button>{battle.commandOrder&&<Button variant="secondary" disabled={!editable} onClick={()=>{onOrder(null);setOpen(false);}}>{tr('号令の予約を解除')}</Button>}</div>}>
       <div className="command-doctrine__leader"><Crown size={17} aria-hidden="true"/><strong>{commander?tr(name(commander)):tr('指揮役')}</strong><span>{tr('指揮役')}</span></div>
       <p className="command-doctrine__intro">{tr('標的と、号令に従う仲間を選びます。実際に使う技を先に決めるものではありません。')}</p>
-      <div className="command-doctrine__tradeoff" data-testid="command-tradeoff"><strong>{tr('集中する代わりに、指揮役は行動を使います')}</strong><p>{tr('このラウンドは指揮役の通常1手と追加リーダー効果を使います。回復や範囲技を単体攻撃に変える号令ではありません。')}</p></div>
+      <div className="command-doctrine__tradeoff" data-testid="command-tradeoff"><strong>{tr(content.commandRules?.respectReadyResources?'発令する場合は、指揮役の行動を使います':'集中する代わりに、指揮役は行動を使います')}</strong><p>{tr('このラウンドは指揮役の通常1手と追加リーダー効果を使います。回復や範囲技を単体攻撃に変える号令ではありません。')}</p></div>
       <div className="command-doctrine__capacity" aria-label={tr('連携負荷')} data-testid="command-load"><span><Users size={16} aria-hidden="true"/>{tr('連携負荷')}</span><strong>{load} / {capacity}</strong><small>{tr('残り{0}枠').replace('{0}',String(remaining))}</small></div>
       <p className="command-doctrine__hint">{tr('負荷はR 1・SR 2・SSR 3・XR 4。覚醒前の負荷を引き継ぎ、別衣装は別に数えます。')}</p>
       <fieldset className="command-doctrine__selection"><legend><Target size={16} aria-hidden="true"/>{tr('狙う敵')}</legend><div className="command-doctrine__enemies">{enemies.map((unit,index)=><Button key={unit.uid} variant="secondary" selected={targetId===unit.uid} disabled={!editable} aria-pressed={targetId===unit.uid} data-command-target={unit.uid} onClick={()=>setTargetId(unit.uid)}><span className="command-doctrine__enemy-index">#{index+1}</span><span>{tr(name(unit))}</span>{targetId===unit.uid&&<Check size={14} aria-hidden="true"/>}</Button>)}</div></fieldset>
@@ -69,8 +70,8 @@ export function CommandDoctrine({battle,content=currentContent,busy=false,onOrde
           <span className="command-doctrine__check" aria-hidden="true">{selected?<Check size={17}/>:null}</span>
         </Button>;
       })}</div></fieldset>
-      <div className="command-doctrine__rules"><p>{tr('号令は本人の通常行動1回を使います。そのラウンドは固有リーダー効果を休み、基本の能力補正は残ります。')}</p><p>{tr('必殺予約・先頭への明示指示・石の使用などを上書きしません。選んだ全員が同じ技を使う保証はありません。')}</p></div>
-      {canReserve&&<p className="command-doctrine__reservation-summary" data-testid="command-reservation-summary">{tr('{0}人の通常単体行動の宛先を「{1}」へ。指揮役の通常1手を消費。').replace('{0}',String(currentFollowerIds.length)).replace('{1}',tr(name(enemies.find(unit=>unit.uid===targetId)!)))}</p>}
+      <div className="command-doctrine__rules">{content.commandRules?.respectReadyResources&&<p>{tr(commandResourceDescription)}</p>}<p>{tr('号令は本人の通常行動1回を使います。そのラウンドは固有リーダー効果を休み、基本の能力補正は残ります。')}</p><p>{tr('必殺予約・先頭への明示指示・石の使用などを上書きしません。選んだ全員が同じ技を使う保証はありません。')}</p></div>
+      {canReserve&&<p className="command-doctrine__reservation-summary" data-testid="command-reservation-summary">{tr(content.commandRules?.respectReadyResources?'{0}人へ予約。全員の石・必殺が準備済みなら見送り、それ以外は「{1}」へ発令して通常1手を消費。':'{0}人の通常単体行動の宛先を「{1}」へ。指揮役の通常1手を消費。').replace('{0}',String(currentFollowerIds.length)).replace('{1}',tr(name(enemies.find(unit=>unit.uid===targetId)!)))}</p>}
       {reason&&<p className="command-doctrine__reason" role="status" data-testid="command-unavailable">{tr(reason)}</p>}
     </Modal>
   </span>;
