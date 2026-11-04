@@ -6,6 +6,7 @@ reuse. This does not certify research results or replace final movie QA.
 from pathlib import Path
 import argparse,hashlib,json,subprocess,sys,shutil
 import freeze,data_plates
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'rerecord'));import pause
 ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-01'
 sys.path.insert(0,str(ROOT/'scripts/this-girl-01/art'));import visuals,roster
 FPS=30
@@ -68,10 +69,12 @@ def render_page(page,game,t):
    finish(out,contract)
   return out
  plate=O/'render/plates'/(page['id']+'.png');plate.parent.mkdir(exist_ok=True)
- if kind=='data-table':data_plates.render_scene(spec,plate)
+ if kind=='battle-pause':pause.render(spec,plate)
+ elif kind=='data-table':data_plates.render_scene(spec,plate)
  elif kind=='mechanism-note':data_plates.render_mechanism_note(spec,plate)
  else:visuals.render_scene(spec,plate)
  contract['plate']=sha(plate)
+ if kind=='battle-pause':contract['pauseCode']=sha(pause.__file__)
  args=['-loop','1','-framerate',30,'-i',plate]
  filter_='[0:v]format=yuv420p[v]'
  if game:
@@ -87,7 +90,7 @@ def render_page(page,game,t):
  # Slow fades to paper at page edges; native content is never spatially cropped.
  fade=min(.45,seconds/5);last=page['id']==t['pages'][-1]['id'];outfade=min(2.5,seconds/3)if last else fade;color='0x211b17'if last else'0xfffaf2'
  label='vflow'if game and page.get('flow')else'v'
- filter_+=f';[{label}]fade=t=in:st=0:d={fade}:color=0xfffaf2,fade=t=out:st={seconds-outfade}:d={outfade}:color={color}[out]'
+ filter_+=f';[{label}]null[out]' if kind in ['battle','battle-pause'] else f';[{label}]fade=t=in:st=0:d={fade}:color=0xfffaf2,fade=t=out:st={seconds-outfade}:d={outfade}:color={color}[out]'
  run([*args,'-filter_complex_threads','1','-filter_complex',filter_,'-map','[out]','-an','-frames:v',count,'-r',30,'-c:v','libx264','-threads','2','-preset','fast','-crf','19','-pix_fmt','yuv420p','-video_track_timescale','15360',out]);finish(out,contract);return out
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--timeline',default=str(O/'render/timeline.json'));ap.add_argument('--static-only',action='store_true');a=ap.parse_args();p=Path(a.timeline);t=json.loads(p.read_text());assert t['episode']=='THIS-GIRL-001';initial=sha(p);code=sha(__file__)
@@ -109,7 +112,7 @@ def main():
  mix=json.loads((O/'research/audio-mix.json').read_text());assert sha(master)==mix['outputSha256']
  movie=O/'render/ThisGirl-01.mp4'
  # The final encode is the only AAC generation. No post-sync repair is applied.
- run(['-i',deck,'-i',master,'-vf',f"subtitles=filename='{ass}':fontsdir='/usr/share/fonts/opentype/noto'",'-map','0:v:0','-map','1:a:0','-frames:v',t['durationFrames'],'-c:v','libx264','-threads','2','-preset','slow','-crf','18','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-ar','48000','-ac','2','-movflags','+faststart',movie])
+ run(['-i',deck,'-i',master,'-vf',f"subtitles=filename='{ass}':fontsdir='/usr/share/fonts/opentype/noto'",'-map','0:v:0','-map','1:a:0','-frames:v',t['durationFrames'],'-c:v','libx264','-threads','2','-preset','fast','-profile:v','baseline','-level:v','4.0','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-ar','48000','-ac','2','-movflags','+faststart',movie])
  delivery=O/'delivery/ThisGirl-01.mp4'
  if delivery.is_symlink():delivery.unlink()
  assert not delivery.exists(),'Refuse to overwrite an unrelated delivery file'
