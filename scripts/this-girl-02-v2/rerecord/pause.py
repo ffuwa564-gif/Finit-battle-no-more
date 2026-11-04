@@ -8,7 +8,7 @@ def render(spec,path):
  source=ROOT/spec['freeze']['file'];f=spec['freeze']['sourceFrame'];assert sha(source)==spec['freeze']['sha256'];image=O/'rerecord'/f'freeze-{spec["pauseId"]}.png'
  subprocess.run(['ffmpeg','-v','error','-y','-ss',str(f/30),'-i',str(source),'-frames:v','1',str(image)],check=True)
  original=Image.open(image).convert('RGBA');assert original.size==(450,800)
- im=visuals.scene({'kind':'battle','title':spec['title'],'section':('研究版・未公開仕様'if spec.get('researchMode','after')=='after'else'公開版1.12 / 改修前'),'body':[],'unreleased':spec.get('researchMode','after')=='after'});im.alpha_composite(original.resize((576,1024),Image.Resampling.LANCZOS),(40,28));d=ImageDraw.Draw(im)
+ im=visuals.scene({'kind':'battle','title':spec['title'],'section':('白亜の塔10層 / 全所持を仮定した研究'if spec.get('researchMode','after')=='after'else'公開版1.12 / 改修前'),'body':[],'unreleased':spec.get('researchMode','after')=='after'});im.alpha_composite(original.resize((576,1024),Image.Resampling.LANCZOS),(40,28));d=ImageDraw.Draw(im)
  d.rounded_rectangle((690,250,940,300),14,fill='#b97c88');visuals.text(d,(710,255),spec.get('pauseLabel','一時停止 · 解説'),30,'#fffaf2',True)
  for i,(x,y,w,h)in enumerate(spec['focus']):
   x=40+round(x*1.28);y=28+round(y*1.28);w=round(w*1.28);h=round(h*1.28);d.rounded_rectangle((x-5,y-5,x+w+5,y+h+5),10,outline='#f8e2c0',width=12);d.rounded_rectangle((x-5,y-5,x+w+5,y+h+5),10,outline='#b45c78',width=6)

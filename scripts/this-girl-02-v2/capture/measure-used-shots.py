@@ -35,7 +35,12 @@ for shot in frozen['shots']:
   # Measure the part actually used; finite short sounds are still represented in
   # their actual500ms mixed context, with the shot boundary clipping explicit.
   ref_start=max(wall,lo);ref_end=min(ref_start+.5,hi)
-  if ref_start>=ref_end:
+  if wall<lo:
+   # The audible head may precede a cut while its nominal fade tail overlaps.
+   # Bind that boundary tail to the independently recorded onset context,
+   # rather than pretending an all-silent clipped tail can be correlated.
+   ref_start=wall;ref_end=wall+min(.5,duration);boundary_guard=True
+  elif ref_start>=ref_end:
    # A near-boundary onset outside the visible interval is conservatively
    # measured in its full context to verify its head cannot drift into the cut.
    ref_start=wall;ref_end=wall+.5;boundary_guard=True

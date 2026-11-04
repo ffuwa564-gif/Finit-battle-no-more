@@ -11,7 +11,7 @@ def cut(id,src,a,b,lines,title,body,replay=False):
  proof=O/f'research/native-buffer-qa-{src}.json';assert json.load(open(proof))['passed'];p=add(id,'battle',title,lines,section='白亜の塔10層 · T6 / 編成1',body=body,note=('直前の場面を再掲 · ゲーム設定×1'if replay else'実戦の抜粋 · ゲーム設定×1 · 途中を省略'),unreleased=src=='miette');p['durationFrames']=b-a;p['gameCut']={'file':f'artifacts/this-girl-02-v2/capture/{src}.mov','sourceStartFrame':a,'sourceEndFrame':b,'sourceApplicationSpeed':1,'audioSourceOffsetSamples':0,'audioCalibrationEvidence':{'file':str(proof.relative_to(ROOT)),'sha256':sha(proof)}};assert b-a>=180
  assert sum(math.ceil(L[x]['duration']*30)+9 for x in lines)+11<=b-a,(id,b-a,lines);return p
 def pause(id,src,f,title,lines,focus,inset,explain):return add(id,'battle-pause',title,lines,pauseId=id,researchMode='after'if src=='miette'else'before',freeze={'file':f'artifacts/this-girl-02-v2/capture/{src}.mov','sourceFrame':f,'sha256':sha(O/f'capture/{src}.mov')},focus=focus,inset=inset,explain=explain)
-def card(index):return[18+105*index,414,101,122]
+def card(index):return[18+105*index,466,101,122]
 add('opening','desk','消える盾を、命に縫う。',refs('question',0,1),'消える盾を、命に縫う。')
 add('subject','subject','ミエットの、一手を変える。',refs('question',1,4),characterId='miette',body=['SR · 定数1.8 / 回復役','前のパート2は、測定で止まっていた。','今回は技能を変え、実戦で確かめる。'])
 add('old-cost','choice','仲間の盾を、奪わないために。',refs('design',0,2),'技能を実際に改修する',cards=[{'title':'従来の修繕','body':['対象の障壁を消費して回復。','守りと回復が、競合する。'],'status':'改修前の実装'},{'title':'採らなかった案','body':['仲間の有効な障壁を借りる。','守る仕事を壊す危険があった。'],'status':'試作は見送り'},{'title':'今回の入口','body':['使われず、期限の切れた盾。','消えるはずの力だけを残す。'],'status':'余り糸の修繕'}])
