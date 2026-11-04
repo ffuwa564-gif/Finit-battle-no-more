@@ -50,6 +50,7 @@ function validUnit(value: unknown): boolean {
   if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
   if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
   if(value.barrierReturn!==undefined&&!validBarrierReturnState(value.barrierReturn))return false;
+  if(value.mendThread!==undefined&&(!record(value.mendThread)||Object.keys(value.mendThread).sort().join(',')!=='amount,until'||!count(value.mendThread.amount)||value.mendThread.amount<1||value.mendThread.amount>Number(value.maxHp)||!count(value.mendThread.until)))return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
   if (value.bossWindup !== undefined && (!record(value.bossWindup) || value.side !== 'enemy' || !value.boss || !count(value.bossWindup.round) || value.bossWindup.round < 1 || !count(value.bossWindup.damage))) return false;
   if (value.bossRecoveryUntil !== undefined && (value.side !== 'enemy' || !value.boss || !count(value.bossRecoveryUntil))) return false;

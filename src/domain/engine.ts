@@ -1,5 +1,6 @@
 import { characterSkills } from './character-skills';
 import { markBarrierReturn, canMarkBarrierReturn, expireBarrierReturn, storeBarrierAbsorption, takeBarrierReturn, barrierReturnDamage } from './barrier-return';
+import { quoteBarrierMend, applyBarrierMend, barrierMendTarget, harvestMendThreads } from './barrier-mend';
 import { CRYSTAL_POWER, resonantStrength } from './crystal-resonance';
 import { applyCharacterRescue } from './character-rescue';
 import { commandCommander, commandUnavailableReason, validateCommandOrder } from './command-doctrine';
@@ -128,7 +129,7 @@ function clearEffects(unit: Unit): void {
   delete unit.bits;
   delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength;
   delete unit.buffUntil; delete unit.buffStrength; delete unit.debuffUntil; delete unit.debuffStrength;
-  delete unit.barrier; delete unit.barrierUntil; delete unit.regenUntil; delete unit.regenStrength;
+  delete unit.mendThread; delete unit.barrier; delete unit.barrierUntil; delete unit.regenUntil; delete unit.regenStrength;
 }
 function restoreClockShield(battle: Battle, content: Content, present: boolean): void {
   const clock = dungeon(content, battle.dungeonId).bossClock;
@@ -276,8 +277,18 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const scoutAction = scoutSuggestedAction(actor, battle, skills, forecast);
   if (scoutAction) return scoutAction;
   const recycling = get('barrier_mend');
-  const salvage = allies.filter(unit => unit.hp <= unit.maxHp * .75 && (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort(lowerHP)[0];
-  if (recycling && salvage && !(get('heal') && allies.some(unit => unit.hp <= unit.maxHp * .3))) return { skill: recycling, template: 'barrier_mend', targets: [salvage] };
+  const salvage = recycling?.barrierMend ? barrierMendTarget(allies, battle.round, recycling) : allies.filter(unit => unit.hp <= unit.maxHp * .75 && (unit.barrier ?? 0) > 0 && (unit.barrierUntil ?? -1) >= battle.round).sort(lowerHP)[0];
+  if (recycling && salvage && !(get('heal') && allies.some(unit => unit.hp <= unit.maxHp * .3))) {
+    const heal = get('heal');
+    // Ordinary healing is preferable when a tiny conversion restores at most half as much.
+    // Both choices share the same healer/crystal potency; use actual healing, not nominal power.
+    const threshold = strategy === 'aggressive' ? .3 : strategy === 'survival' ? .8 : .6;
+    const healingPotency = actor.side === 'party' && battle.crystalRole === role ? CRYSTAL_POWER : 1;
+    const direct = heal ? Math.min(salvage.maxHp - salvage.hp, Math.max(1, Math.floor(effectiveAttack(actor, battle.round) * (heal.strength + 30) / 20 * healingPotency))) : 0;
+    const recycled = quoteBarrierMend(salvage, allies, battle.round, recycling, healingPotency).healed;
+    if (!recycling.barrierMend?.healingFirst || !heal || direct < recycled * 2) return { skill: recycling, template: 'barrier_mend', targets: [salvage] };
+    if (salvage.hp <= salvage.maxHp * threshold) return { skill: heal, template: 'heal', targets: [salvage] };
+  }
   if (role === 'healer') {
     const target = [...allies].sort(lowerHP)[0];
     const threshold = strategy === 'aggressive' ? 0.3 : strategy === 'survival' ? 0.8 : 0.6;
@@ -376,7 +387,7 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   if (order?.kind === 'attack') return { template: 'attack', targets: orderTargets(actor, battle, 'attack') };
   if (order?.kind === 'skill') {
     const skill = skillList(actor, content, battle).find(s => s.id === order.skillId);
-    if (skill && orderSkillReady(actor, battle, skill)) return { template: skill.template, skill, targets: orderTargets(actor, battle, skill.template, skill.id) };
+    if (skill && orderSkillReady(actor, battle, skill)) return { template: skill.template, skill, targets: orderTargets(actor, battle, skill.template, skill.id, skill) };
   }
   if ((actor.ultimateQueued || order?.kind === 'ultimate') && ultimateReady(actor)) {
     const special = ultimateFor(character(content, actor.characterId));
@@ -401,9 +412,11 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   // Show a reason only when the two valid policies actually choose different skills.
   return ordinary.skill?.id !== comparison.skill?.id ? { ...chosen, directive: battle.strategy } : chosen;
 }
-function expireRoundEffects(battle: Battle): void {
+function expireRoundEffects(battle: Battle, content: Content) {
+  const stored = harvestMendThreads(battle.units, battle.round, content);
   for (const unit of battle.units) {
     expireWhiteFlower(unit, battle.round); expireBarrierReturn(unit, battle.round);
+    if (unit.mendThread && (unit.hp <= 0 || unit.mendThread.until < battle.round)) delete unit.mendThread;
     if ((unit.statusWardUntil ?? -1) < battle.round) delete unit.statusWardUntil;
     if ((unit.guardUntil ?? -1) < battle.round) { delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength; }
     if ((unit.buffUntil ?? -1) < battle.round) { delete unit.buffUntil; delete unit.buffStrength; }
@@ -411,12 +424,13 @@ function expireRoundEffects(battle: Battle): void {
     if ((unit.barrierUntil ?? -1) < battle.round) { delete unit.barrierUntil; delete unit.barrier; }
     if ((unit.regenUntil ?? -1) < battle.round) { delete unit.regenUntil; delete unit.regenStrength; }
   }
+  return stored;
 }
 
 /** Private commitments are computed only when resolving the round, after input is locked. */
 export function companionCommitments(input: Battle, content: Content): PlannedPartyAction[] {
   if (input.phase !== 'ready' || !dungeon(content, input.dungeonId).coordination) return [];
-  const battle = clone(input); expireScoutEffects(battle); expireRoundEffects(battle);
+  const battle = clone(input); expireScoutEffects(battle); expireRoundEffects(battle, content);
   return battle.partyIds.slice(1).flatMap(id => {
     const actor = battle.units.find(u => u.side === 'party' && u.characterId === id && u.hp > 0);
     if (!actor) return [];
@@ -432,7 +446,7 @@ function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, 
   if (intent.skillId && (!skill || !orderSkillReady(actor, battle, skill))) return;
   if (intent.ultimate && !ultimateReady(actor)) return;
   let targets = intent.targetIds.flatMap(id => battle.units.filter(u => u.uid === id && u.hp > 0));
-  if (!targets.length) targets = orderTargets(actor, battle, intent.template, skill?.id);
+  if (!targets.length) targets = orderTargets(actor, battle, intent.template, skill?.id, skill);
   if (!targets.length) return;
   return { template: intent.template, targets, skill, ultimate: intent.ultimate, name: intent.name };
 }
@@ -471,7 +485,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   }
   if (actual > 0) gainUltimate(recipient, 10);
   if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
-  if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; delete recipient.barrierReturn; }
+  if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; delete recipient.barrierReturn; delete recipient.mendThread; }
   return { unit: recipient, amount: actual, absorbed, shattered };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
@@ -582,7 +596,8 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0; battle.phase = 'playing'; battle.nextPhase = 'ready';
   let goldEarned = 0; const discoveredIds: string[] = [];
   for (const text of expireScoutEffects(battle)) emit(battle, { kind: 'buff', text, unitsAfter: clone(battle.units) });
-  expireRoundEffects(battle);
+  const storedThreads = expireRoundEffects(battle, content);
+  for (const stored of storedThreads) emit(battle, { kind: 'buff', actorId: stored.unitId, targetIds: [stored.unitId], resourceAmount: stored.added, text: `${character(content, battle.units.find(u => u.uid === stored.unitId)!.characterId).name} — 修繕糸を保存（${stored.added}）`, unitsAfter: clone(battle.units) });
   restoreClockShield(battle, content, true);
   const commander = commandCommander(battle);
   const commandTargetAlive = Boolean(command && battle.units.some(unit => unit.uid === command.targetId && unit.side === 'enemy' && unit.hp > 0));
@@ -702,9 +717,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       targetIds.push(target.uid);
     } else if (action.template === 'barrier_mend') {
       const target = action.targets[0]!;
-      const consumed = Math.min(target.barrier ?? 0, Math.max(1, Math.floor(target.maxHp * .15)), Math.ceil((target.maxHp - target.hp) / (2 * potency)));
-      target.barrier = (target.barrier ?? 0) - consumed;
-      amount = Math.min(target.maxHp - target.hp, Math.floor(consumed * 2 * potency)); target.hp += amount; targetIds.push(target.uid);
+      amount = applyBarrierMend(target, battle.units, battle.round, action.skill!, potency).healed; targetIds.push(target.uid);
     } else if (action.template === 'jam') {
       const target = action.targets[0]!;
       for (const id of character(content, target.characterId).skillIds) target.cooldowns[id] = Math.max(target.cooldowns[id] ?? 0, battle.round + 2);
@@ -863,7 +876,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const amount = Math.min(recipient.hp, strength - absorbed); recipient.hp -= amount;
     recordBossWindupDamage(recipient, dungeon(content, battle.dungeonId).bossStrike, battle.round, amount);
     if (amount > 0) { gainUltimate(recipient, 10); if (recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; } }
-    if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; delete recipient.barrierReturn; }
+    if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; delete recipient.barrierReturn; delete recipient.mendThread; }
     clearInvalidGuards(battle);
     emit(battle, { kind: 'attack', actorId: actor.uid, targetIds: [recipient.uid], skillId: echo.skillId, amount, absorbed: absorbed || undefined, text: `${character(content, actor.characterId).name} — ${echo.name}・残響`, unitsAfter: clone(battle.units) });
     emitCures(battle, before, content, actor.uid);
@@ -966,6 +979,7 @@ export function advanceReplay(input: Battle, content: Content): Battle {
       break;
   }
   if (battle.phase === 'failed' || battle.phase === 'reward') delete battle.partyOrder;
+  if (battle.phase === 'ready') harvestMendThreads(battle.units, battle.round, content);
   return battle;
 }
 export function usePotion(input: Battle, unitId: string): Battle {

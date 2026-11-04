@@ -1,6 +1,6 @@
 import { scoutMaidenCharacters, scoutMaidenSkills, scoutMaidenAssets, scoutMaidenMaterials } from './scout-maidens';
 import { lateCampaignDungeons } from './late-chapters';
-import { PUBLIC_RELEASE, SAKUYA_RESEARCH_RELEASE, SAKUYA_RESEARCH_ENABLED } from './version';
+import { PUBLIC_RELEASE, SAKUYA_RESEARCH_RELEASE, SAKUYA_RESEARCH_ENABLED, MIETTE_RESEARCH_RELEASE, MIETTE_RESEARCH_ENABLED } from './version';
 import { buildIvoryTowerDungeons } from './ivory-tower';
 import { withGemLoot } from './gem-loot';
 import { lunetteUltimateArt } from './lunette-ultimate';
@@ -313,4 +313,5 @@ releasedContent.novels = [openingNovel, ...milestones.sort((a, b) => milestoneOr
 
 /** Research data is explicit and opt-in, never silently enabled for old public saves. */
 export const researchContent: Content={...releasedContent,...SAKUYA_RESEARCH_RELEASE,characters:releasedContent.characters.map(character=>character.id==='mireille'?{...character,skillOverrides:{'barrier-18':{name:'桜の返礼',description:'味方1人に通常の90%の障壁と、重ならない返礼の印を付与。印は2ラウンド後まで。敵の主攻撃を障壁で実際に防ぐと、守ったHP割合の5倍を花びらとして最大100%まで蓄える。次の主攻撃の最初の相手への実ダメージに、その割合を一度だけ追加する。印は消費時か期限・戦闘不能で消える。追撃や花の攻撃からは蓄えず、追加分から追撃・石特性・追加ゲージを作らない。',barrierReturn:{shieldPercent:90,conversionPercent:500,capacityPercent:100,windowRounds:2,payoutPercent:100}}}}:character)};
-export const content: Content=SAKUYA_RESEARCH_ENABLED?researchContent:releasedContent;
+export const mietteResearchContent: Content={...releasedContent,...MIETTE_RESEARCH_RELEASE,characters:releasedContent.characters.map(character=>character.id==='miette'?{...character,skillOverrides:{'barrier-mend-18':{name:'余り糸の修繕',description:'HP75%以下の味方1人を修繕する。ミエットが生存中、味方の障壁の失効残量を各自の最大HPまで修繕糸として3ラウンド保持する。修繕時は糸を先に使い、不足分だけ回復対象自身の有効な障壁を消費する。他の味方の有効な障壁は削らない。総消費は対象の最大HPの15%まで、基礎回復量は消費の3倍。通常回復が2倍以上を回復できる少量変換は自動で避ける。緊急時以外は従来の盾持ち対象を優先。糸はWave・戦闘不能で消え、自動回復や追加行動は発生しない。',barrierMend:{donorScope:'party',carryRounds:3,conversionPercent:300,healingFirst:true}}}}:character)};
+export const content: Content=MIETTE_RESEARCH_ENABLED?mietteResearchContent:SAKUYA_RESEARCH_ENABLED?researchContent:releasedContent;

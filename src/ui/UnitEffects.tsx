@@ -21,6 +21,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   if ((unit.scoutThreadUntil ?? -1) >= round) effects.push({ icon: Scissors, label: '残り糸', title: '夜継ぎの鋏を1回だけ強化する。最大1つ、次ラウンド終了まで。' });
   if (unit.whiteFlower && unit.whiteFlower.until >= round) effects.push({ icon: Sprout, label: '摘まない白花の種', title: `本人が通常の「身を守る」を実行するとHP${unit.whiteFlower.amount}回復。第${unit.whiteFlower.until}ラウンド終了まで。種は重ねず期限も更新しない。防御予約・作戦変更・戦場の花では開花しない。余剰回復は消える。` });
   if(unit.barrierReturn&&unit.barrierReturn.power>0&&unit.barrierReturn.until>=round)effects.push({icon:Flower2,label:`桜の返礼 +${unit.barrierReturn.power}%`,title:`次の主攻撃の最初の対象への実HPダメージを強化。追撃は対象外。第${unit.barrierReturn.until}ラウンド終了まで。`});
+  if(unit.mendThread&&unit.mendThread.amount>0&&unit.mendThread.until>=round)effects.push({icon:Scissors,label:`修繕糸 ${unit.mendThread.amount}`,title:`失効した障壁の残り。第${unit.mendThread.until}ラウンド終了まで修繕に使用できる。有効な障壁とは別の有限資源。`});
   for (const id of ailments) {
     const state = unit.ailments?.[id];
     if (state) effects.push({ label: `${ailmentNames[id]} · ${state.turns}`, title: `${ailmentDescriptions[id]} 残り${state.turns}回の行動。`, bad: true, ailment: id });
@@ -29,7 +30,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   const icons = { confusion: CloudFog, sleep: Moon, paralysis: Zap, charm: Heart };
   if (!effects.length) return null;
   const scoutEffect = Boolean(unit.scoutMark && unit.scoutMark.until >= round || (unit.scoutLanternUntil ?? -1) >= round || (unit.scoutThreadUntil ?? -1) >= round);
-  if (compact || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
+  if (compact || Boolean(unit.mendThread && unit.mendThread.until >= round) || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
     effects.sort((a, b) => Number(!!b.bad) - Number(!!a.bad));
     const iconFor = (effect: typeof effects[number]) => effect.ailment ? icons[effect.ailment] : effect.icon ?? Sparkles;
     const controls = <>
