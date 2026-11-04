@@ -9,3 +9,5 @@
 [完成MP4](https://github.com/ffuwa564-gif/Finit-battle-no-more/raw/refs/heads/downloads/this-girl-03/ThisGirl-03.mp4) / [サムネイル・字幕・投稿文・研究資料](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/this-girl-03)
 
 7分40.5秒・1080p。全48発話・全4停止像・実映像SEの同期・全編デコード・Chromium/WebKit各3点が同じ完成SHAで合格。
+
+公開commit `a9138808b21ccc96f55d284149754b2d53297d80` の全31ファイルを最後まで読み戻し、SHA256一致を確認。Publication-Verification.jsonを参照。

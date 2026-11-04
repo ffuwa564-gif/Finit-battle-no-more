@@ -1,0 +1,192 @@
+{
+  "passed": true,
+  "commit": "a9138808b21ccc96f55d284149754b2d53297d80",
+  "fullPublicReadback": [
+    {
+      "file": "Browser-QA.json",
+      "sha256": "86054643171518ae7087bf47cae150ff2384bf01d627d2a7a4539aec062bb408",
+      "bytes": 1478,
+      "passed": true
+    },
+    {
+      "file": "Chapters.txt",
+      "sha256": "083085400fdab72aa5dee2fba38e89d67ff49d278da8f7d1ff046a346bddea13",
+      "bytes": 477,
+      "passed": true
+    },
+    {
+      "file": "Character-Judgment.json",
+      "sha256": "615542413340a6f1b78018be726f186926d0d2ee689382a287d7ff5774fe799f",
+      "bytes": 1738,
+      "passed": true
+    },
+    {
+      "file": "Credits.md",
+      "sha256": "ab6e55b8ef33ee9c349e082c38459081fadd602b1786a35d398b48499d04d92b",
+      "bytes": 1135,
+      "passed": true
+    },
+    {
+      "file": "Design-Decisions.md",
+      "sha256": "4299b36b24c26326a7c0ec9d57ae0b6f91184f2c3c63a57ee35426d4ae63c7cd",
+      "bytes": 1091,
+      "passed": true
+    },
+    {
+      "file": "Final-Media-QA.json",
+      "sha256": "f4e4c7052e2ed293abd82a0f8dad12323ac13334c9306ddb9d4f760dcb3ffda4",
+      "bytes": 11361,
+      "passed": true
+    },
+    {
+      "file": "Font-Copyright.txt",
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+      "bytes": 14712,
+      "passed": true
+    },
+    {
+      "file": "Freeze-Voice-QA.json",
+      "sha256": "573c4d531142384b7c43c8ac317f3200210bf7145a08556f180233e9f90a3d12",
+      "bytes": 11404,
+      "passed": true
+    },
+    {
+      "file": "Mechanism-Tikka.json",
+      "sha256": "90be7882081d202b95755fa93beb545c2982de5eecacd9025e805f738f9fe077",
+      "bytes": 2796,
+      "passed": true
+    },
+    {
+      "file": "Packaging-Manifest.json",
+      "sha256": "4b2be784afdfc4c4ac7d83683729ec3c25ce29c2781aad972874d7a196dc6a8b",
+      "bytes": 1236,
+      "passed": true
+    },
+    {
+      "file": "Pause-Preview.jpg",
+      "sha256": "b4014fee4439823ced12318e6220c1489442ab11ef05dd36ce5cf6708b85c99a",
+      "bytes": 611751,
+      "passed": true
+    },
+    {
+      "file": "Preview.jpg",
+      "sha256": "0b218158349914c5f9567c11ecc5294971db9006f2caefaf09300e0c85efbd72",
+      "bytes": 1111234,
+      "passed": true
+    },
+    {
+      "file": "Production-and-Evidence.zip.part001",
+      "sha256": "e36ee11baa19cf55dac7871ec2b81f42b6655515053b84ff3ea6fcf7d91ab8d2",
+      "bytes": 92274688,
+      "passed": true
+    },
+    {
+      "file": "Production-and-Evidence.zip.part002",
+      "sha256": "a727a6ebd74a60e1d46315010145ce9355680ba58e9cc8b01a40048dbe488bf9",
+      "bytes": 13256276,
+      "passed": true
+    },
+    {
+      "file": "README.md",
+      "sha256": "13dc670593adc781565ab4efbe88f5e7610d39b8457df074843d04f7aee0eb79",
+      "bytes": 1820,
+      "passed": true
+    },
+    {
+      "file": "Render-Input-Freeze.json",
+      "sha256": "4d3f28276d3787d91431f9fa9acfd87b36e4a3655a7f6bae0e1f5ed3e9673f86",
+      "bytes": 70336,
+      "passed": true
+    },
+    {
+      "file": "Reproduce.md",
+      "sha256": "58bccd2e1c435e20fbbae1289ce624bd7f300613040fe35dd55406b18c72186f",
+      "bytes": 2661,
+      "passed": true
+    },
+    {
+      "file": "ResearchReport.md",
+      "sha256": "d3f1ce2327a3e2f163251ed409ac4e9d05df615bde460e39bcd2db42233ef0ec",
+      "bytes": 4120,
+      "passed": true
+    },
+    {
+      "file": "Roster-Audit.md",
+      "sha256": "72fded862c05cc8561c4ae209e44473cb6e66b07c0cd871a0defdd588403bd16",
+      "bytes": 345,
+      "passed": true
+    },
+    {
+      "file": "SHA256SUMS.txt",
+      "sha256": "1d5ec500ca6deb7afee8596c4ee58fb4455d3521da11e9afb00c5ca83090bc68",
+      "bytes": 2582,
+      "passed": true
+    },
+    {
+      "file": "Script.md",
+      "sha256": "7817e5b486d211c9f84b2972fd611010b5a66d3f286e5fdec91957952018689c",
+      "bytes": 16220,
+      "passed": true
+    },
+    {
+      "file": "Stone-Goals.md",
+      "sha256": "25b0e0a91292f85355ea6a8faac4ce950cb9e8939b0eb73671ca329ecdb432b8",
+      "bytes": 1043,
+      "passed": true
+    },
+    {
+      "file": "Subtitles-ja.srt",
+      "sha256": "1a4e394419cdd74d0c1c009bc9b68bc7bdd09ab4fba82bfa51d7102ae9638234",
+      "bytes": 7485,
+      "passed": true
+    },
+    {
+      "file": "ThisGirl-03.mp4",
+      "sha256": "cf5fcaef8ed9d2c630936984c3a65f2fdc3f9bd295672803bfe34401403a53bc",
+      "bytes": 60498499,
+      "passed": true
+    },
+    {
+      "file": "Thumbnail-ThisGirl-03.png",
+      "sha256": "c7be7e91fec1fbc46037692799a3429eb8dadfbcee1fd41581bd139f412790fc",
+      "bytes": 1272645,
+      "passed": true
+    },
+    {
+      "file": "Used-Audio-Plan.json",
+      "sha256": "b6a4441abb2dbce93875009e1b68e34a4e01e281d7b527e3e23ebe3a846f6af7",
+      "bytes": 111954,
+      "passed": true
+    },
+    {
+      "file": "Visual-QC.json",
+      "sha256": "d8e2253b553996d70085ff801c25f1e6595dc312e42e0fee69380aaba8a76d5c",
+      "bytes": 1323,
+      "passed": true
+    },
+    {
+      "file": "YouTube-Description.txt",
+      "sha256": "20ea42ae72bb989852732bacbce01b7c13d4445afe5ea316e48993621c905a73",
+      "bytes": 1709,
+      "passed": true
+    },
+    {
+      "file": "combat-portfolio-research.md",
+      "sha256": "be2d3a784f5d6fabaed6bdccd1ba79513d6e1c4a532adc8fb0e789c305da0e68",
+      "bytes": 9811,
+      "passed": true
+    },
+    {
+      "file": "endgame-invariance-v03.md",
+      "sha256": "d84449bdda27df2393eebbe29fdbd967be0253e7da535f38df54470ae2b1531e",
+      "bytes": 19500,
+      "passed": true
+    },
+    {
+      "file": "portfolio-optimization-v02.md",
+      "sha256": "06b4033e323ba4d9dce916be93e241497186a9058206b79c3f3e39a12c9c2c91",
+      "bytes": 14340,
+      "passed": true
+    }
+  ]
+}
