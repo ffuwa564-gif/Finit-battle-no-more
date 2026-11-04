@@ -1,0 +1,51 @@
+{
+  "finalized": true,
+  "episode": "THIS-GIRL-003-V2",
+  "sourceLockSha256": "7150f390c12a677538ef8e03116974307239aab3a720d38203938407260fafc8",
+  "subject": {
+    "characterId": "tikka",
+    "seriesId": "BD020",
+    "buildName": "秒針の余白"
+  },
+  "overall": {
+    "status": "research",
+    "certified": false,
+    "label": "改修採用／研究中",
+    "reason": "Implemented one-use dampening meets locked practical and same-config causal benefit gates; all-roster endgame value remains unverified."
+  },
+  "implementation": {
+    "status": "adopted-scoped",
+    "ability": "秒針の余白",
+    "publiclyReleased": false,
+    "flag": "VITE_TIKKA_RESEARCH=1",
+    "gameCommit": "de639b1",
+    "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/145"
+  },
+  "scope": {
+    "stages": [
+      "ivory-tower-010",
+      "lunette-awakening"
+    ],
+    "tiers": [
+      3,
+      4,
+      6
+    ],
+    "seedCount": 512,
+    "ownership": "Hypothetical all published forms including unavailable XR;4legal gem slots/5potions",
+    "limitations": [
+      "Equal finite18config x32 development +3diverse x64 selection. Not global optimum.",
+      "Same512 inputs across80 groups,40960 executions are not independent observations.",
+      "C-B and C-X jointly Holm96 corrected; E no-dampening exactly matches X.",
+      "Previous opened panels became development and were not reused for confirmation.",
+      "All unfavorable conditions retained; all-roster endgame optimization unverified."
+    ]
+  },
+  "nextEpisode": {
+    "characterId": "noelle",
+    "seriesId": "BD004",
+    "status": "unverified",
+    "certified": false,
+    "label": "次回：ノエルの改修研究・未検証"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "finalized": true,
+  "renderComplete": true,
+  "finalQaComplete": true,
+  "episode": "THIS-GIRL-003-V2",
+  "movie": "artifacts/this-girl-03-v2/render/ThisGirl-03-v2.mp4",
+  "sha256": "5249ac08962c2a8ca0eabe40ab39e4df2d4d04a4210f396731fad947ca9fac92",
+  "timelineSha256": "61bbabdcdfb8183a0b8f3d942b625cae9583a303fd23fc6972c33f8252f7668c",
+  "rendererSha256": "a261acf911b6dc8f48d0ff4191705afce7fcdb82b995550e87e9238c4f2f146c",
+  "audioMixSha256": "d80e5148d6f2962bd7bd16bd7f153c29fa96ab2cb66b05d399ccafcd769e1b21",
+  "captionAssSha256": "cae45c3181beaefdde88f7a78e5024e0af176d17a7e4533d105727e350ab1633",
+  "pages": [
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-opening.mp4",
+      "sha256": "354a689811ae6da31ce9f984303fca70e8ba2b4bee469e82f07e9ee80f861d3e"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-subject.mp4",
+      "sha256": "0e25ef2eb655916cfb2b00dfe34efec4161455f345b23f2bff8480c76ad26a7a"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-rejected.mp4",
+      "sha256": "b0ebfc465eb93c38c0b33e621580d5597d59b5c1f5424217031c9091cf5eae2b"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-new-skill.mp4",
+      "sha256": "763b558d6c30f8f428436ec8dc2c8f468f5e5ae35793a60645059055e84524fc"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-method.mp4",
+      "sha256": "cf03710adef772e2aedf0ec6501cb92a5bc78ae5614a5fcd47a783540ffe78f7"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-conditions.mp4",
+      "sha256": "73d442ce855c30803a722b70081fbc4e2f1135b10f704da5291b3c62c356efe1"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-elements.mp4",
+      "sha256": "2cac5e446d7ea919a72a9bc84c6314c48f594c4b5a61afae510ed2ec2bff3333"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-owned-scope.mp4",
+      "sha256": "1b6e0490276a5502c11a4d673bbef7688ec52df2e58348dd6651a14f8f99a087"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-battle-reference.mp4",
+      "sha256": "507e129746fac3077081e1120f9ecafa5de9fe108444552ba9b0944981fd3d89"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-pause-reference.mp4",
+      "sha256": "5c31c9acbc3fc6b683022b419741031378d27258b5d92c53f431adc58577df0b"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-tikka-party.mp4",
+      "sha256": "a529422e3a7e9e756d48fdcbd7f78d599831de3f0331265679b5a2bdb40c2617"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-battle-jam.mp4",
+      "sha256": "0aedaf4c7e8d474ea839ef45d10236571a5a774a79692fbfe36bcb1c7b792558"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-pause-mark.mp4",
+      "sha256": "40711453becf852c8b9a1ba6698950914cbec54bb183d037cdd0e36dcfe59ff7"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-battle-hit.mp4",
+      "sha256": "effd3b0d8f03cfe4c1802ea8e3f5c45055ad067fb3a422e62c9c9b7326900a8b"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-pause-hp.mp4",
+      "sha256": "aac64d85add99c2938e2184759244968bfe306e55f54b1426ce308dfa9e8ac82"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-pause-spent.mp4",
+      "sha256": "bcf377a05ac82d75a56ba45e4f2e8129c0c862b2256a50eddae911b1fe3769dd"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-battle-finish.mp4",
+      "sha256": "d36afc1e6d0501c1cd88b9df4a4ec47dc6e548b5c6ebc0b3db3ca969055e818b"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-sample.mp4",
+      "sha256": "c9f7cf82b1b55cf65f1575e9a0a7fda2b9fcc8f6aff017a2bbb5775e727718cc"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-one-example.mp4",
+      "sha256": "329df8f8ece14ebefccd657a492211561620ffd6a174b648e3575b414fdfc46b"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-main-results.mp4",
+      "sha256": "61881bbe0c6812b02e14f77f7337a8ae605eb384d8eb77ade87c64e5ca99fb49"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-causal.mp4",
+      "sha256": "c059390d46787df49faf2f9f706bd38510d0e8471254cd301fbca075c2e2b75f"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-criteria.mp4",
+      "sha256": "0a12425d0d9fb22e622532aa4e17b50fd062af72b969ab4b6547e780a30a0a8c"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-negative.mp4",
+      "sha256": "a260cc254ecd7c0a0a86270e72dd906c2fccbb844d95b3bcb7e42d1bf6e7ac19"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-panel.mp4",
+      "sha256": "f5db275f5caeb07111b96f10674938f3074ffcdaaa03e2c8faecd80f866b1010"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-growth.mp4",
+      "sha256": "3ccbdf9b535012458223ac5fcdcd4bbf88fb4ee69c568c97fcc2c178bc38bbfa"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-stone-goal.mp4",
+      "sha256": "171a8bb8041e0d0b895a0c996684815d22694c6aaa52022dfe95874349b107d3"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-replacement.mp4",
+      "sha256": "8dccf8b6689a6a3bfa8295efd8ed7ef90bf2e420ee36315f07d90ab7af41426a"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-scope.mp4",
+      "sha256": "9d12569eacd6cc0a129d2c5575e38297ad68638fb5367b156479a2c307e510af"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-farewell.mp4",
+      "sha256": "fb77cbae70d01fce53cb9e8bca8f493352ede6f6dc20086b776237ad6af3b205"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-next-preview.mp4",
+      "sha256": "442a9ebe51b4709a1e24b58dc00d19a69bcfebd48560b77e309b8fcd82d9aedb"
+    },
+    {
+      "file": "artifacts/this-girl-03-v2/render/page-ledger.mp4",
+      "sha256": "aca297526d0d9e7216ca63e9ea9efd02022e2322ae80e35ae9e6cb8c60ec8caa"
+    }
+  ],
+  "note": "Actual gameplay implementation, locked independent confirmation, newly recorded before/after footage and exact finished-file QA complete. Scoped adoption only; no endgame certification.",
+  "implementationReceiptSha256": "85dac7a92402f69763ca68fe6948c349dc9fda4dc0dfd2b18bf4c6bf37cba1f6",
+  "finalQaEvidence": {
+    "artifacts/this-girl-03-v2/research/final-independent-qa.json": "421b2ea824927d459903a34d32c01397ca05d66f62261ae151c36f43a180347c",
+    "artifacts/this-girl-03-v2/research/freeze-and-voice-qa.json": "c4131789dc6cc452a1707334cdd8b88557751b83da58e11f36387b3512f4d156",
+    "artifacts/this-girl-03-v2/research/final-browser-qa.json": "4e81f62006de958775b2cc1a9765d0ccae3bff82595be81fe155f1a63d12c009",
+    "artifacts/this-girl-03-v2/research/visual-qa.json": "6d9dc21454fb210d1db84539095706ab9d524e85245b618413e2201da50a9175",
+    "render-input-freeze.json": "c3fa1a288bf4f7169852df266b31b267e27c0e7114d7849d83a2fe67b42d5588"
+  }
+}

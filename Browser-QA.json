@@ -1,0 +1,317 @@
+{
+  "passed": true,
+  "movieSha256": "5249ac08962c2a8ca0eabe40ab39e4df2d4d04a4210f396731fad947ca9fac92",
+  "qaCodeSha256": "53e43256791706f39e7785a6afd48a7ce3023616055d5b46d35d46c5ef50d74f",
+  "checks": [
+    {
+      "engine": "chromium",
+      "fraction": 0.05,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 26.105000000000004,
+      "startupMilliseconds": 201.89999999850988,
+      "stableWallSeconds": 2.0399000000059604,
+      "stableMediaAdvance": 2.0400899999999993,
+      "stableRate": 1.000093141817755,
+      "samples": [
+        {
+          "wall": 435.09999999403954,
+          "time": 26.265585,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 842,
+          "time": 26.67273,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1249.8999999985099,
+          "time": 27.080585,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1656.5999999940395,
+          "time": 27.487273,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2068.1999999955297,
+          "time": 27.898868,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2475,
+          "time": 28.305675,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.5,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 261.05,
+      "startupMilliseconds": 199.5,
+      "stableWallSeconds": 2.0378000000044705,
+      "stableMediaAdvance": 2.0388169999999946,
+      "stableRate": 1.0004990676197476,
+      "samples": [
+        {
+          "wall": 404.8999999985099,
+          "time": 261.208109,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 812.2999999970198,
+          "time": 261.616524,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1222,
+          "time": 262.026308,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1629.3999999985099,
+          "time": 262.433612,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2036,
+          "time": 262.840279,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2442.7000000029802,
+          "time": 263.246926,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.9,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 469.89000000000004,
+      "startupMilliseconds": 204.79999999701977,
+      "stableWallSeconds": 2.03610000000149,
+      "stableMediaAdvance": 2.0358469999999897,
+      "stableRate": 0.9998757428409704,
+      "samples": [
+        {
+          "wall": 428.09999999403954,
+          "time": 470.054485,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 833.5999999940395,
+          "time": 470.460059,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1241,
+          "time": 470.867531,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 1648.0999999940395,
+          "time": 471.274608,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2057.2999999970198,
+          "time": 471.683697,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2464.1999999955297,
+          "time": 472.090332,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.05,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 26.105000000000004,
+      "startupMilliseconds": 1740,
+      "stableWallSeconds": 2.056,
+      "stableMediaAdvance": 2.056747999999999,
+      "stableRate": 1.0003638132295714,
+      "samples": [
+        {
+          "wall": 2168,
+          "time": 26.266465,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2583,
+          "time": 26.681757,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2989,
+          "time": 27.08784,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3400,
+          "time": 27.499431,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3816,
+          "time": 27.914957,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 4224,
+          "time": 28.323213,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.5,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 261.05,
+      "startupMilliseconds": 1259,
+      "stableWallSeconds": 2.041,
+      "stableMediaAdvance": 2.0413540000000125,
+      "stableRate": 1.000173444390011,
+      "samples": [
+        {
+          "wall": 1709,
+          "time": 261.210452,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2116,
+          "time": 261.617679,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2523,
+          "time": 262.024652,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2930,
+          "time": 262.431433,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3343,
+          "time": 262.845022,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3750,
+          "time": 263.251806,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.9,
+      "passed": true,
+      "duration": 522.1,
+      "width": 1920,
+      "height": 1080,
+      "target": 469.89000000000004,
+      "startupMilliseconds": 1330,
+      "stableWallSeconds": 2.041,
+      "stableMediaAdvance": 2.0406830000000014,
+      "stableRate": 0.9998446839784426,
+      "samples": [
+        {
+          "wall": 1704,
+          "time": 470.053648,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2112,
+          "time": 470.461451,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2519,
+          "time": 470.868777,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 2932,
+          "time": 471.281755,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3339,
+          "time": 471.687969,
+          "ready": 4,
+          "paused": false
+        },
+        {
+          "wall": 3745,
+          "time": 472.094331,
+          "ready": 4,
+          "paused": false
+        }
+      ]
+    }
+  ],
+  "unchangedDuringQA": true,
+  "transport": "downloaded-local-file",
+  "freshPlayerPerCheckpoint": true,
+  "method": "Separate bounded<=5s seek/play startup, then2s sustained playback with0.85–1.15 media/wall speed and no400ms checkpoint below0.5x. First concurrent/instant-start failures retained; same unchanged MP4."
+}

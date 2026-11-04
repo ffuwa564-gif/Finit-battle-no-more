@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "movieSha256": "5249ac08962c2a8ca0eabe40ab39e4df2d4d04a4210f396731fad947ca9fac92",
+  "inspectedFinalPageCount": 31,
+  "finalContactSheetSha256": "4c900bc5a0e3f2998070df3025bd7946ead85fd7ab85ea120ba9fe77668231ef",
+  "finalPauseSheetSha256": "79038867be9f2a17f858108f17057ff74c0ace6770352fd92cf6b59b7ad49af6",
+  "thumbnailSha256": "102903804c8d5218d4b5954b5b228c29258c9700ae83829c9c9a488213b8c617",
+  "thumbnailSource": "docs/media/this-girl/episodes/03-v2/thumbnail.py",
+  "inspection": [
+    "Final31-page contact and all4 freeze pages inspected",
+    "Full clock mark retained; attack digits faded before Athena close-up",
+    "External HP436→405/31 annotation matches actual event, compact native HUD is not painted over",
+    "All captions<=2 lines, bounded native portrait ratio preserved",
+    "Research-only labels and all-owned/selected-policy disclosures present",
+    "Unfavorable one-battle result and full-panel limits remain visible",
+    "Next Noelle preview unverified; zero new endgame gem awards",
+    "Thumbnail shows hair, hands, pen and Tikka notebook without a face cut"
+  ],
+  "scope": "Visual/manual page and final freeze inspection plus caption/roster contracts; separate exact-file audio/decode/browser reports required"
+}

@@ -1,0 +1,718 @@
+{
+  "passed": true,
+  "scope": "Actual engine/application snapshots, source recording frame linkage. A single softened hit is an observed sequence, not a win-rate proof.",
+  "reference": {
+    "party": [
+      "seris-awakened",
+      "athena",
+      "benzaiten",
+      "tikka"
+    ],
+    "leader": "athena",
+    "jam": {
+      "kind": "jam",
+      "eventId": "run-1000-175315567:w0:r1:debuff:2600335382:e1",
+      "eventIndex": 2,
+      "wave": 0,
+      "round": 1,
+      "targetId": "enemy:w0:1:eos-standard",
+      "targetCharacterId": "eos-standard",
+      "extendedSkillIds": [
+        "buff-14",
+        "cleanse-14"
+      ],
+      "cooldownsBefore": {},
+      "cooldownsAfter": {
+        "buff-14": 3,
+        "cleanse-14": 3
+      },
+      "markApplied": false,
+      "actorGaugeBefore": 0,
+      "actorGaugeAfter": 33,
+      "sourceFrame": 287,
+      "event": {
+        "actionSelection": true,
+        "kind": "debuff",
+        "bossStrike": false,
+        "text": "ティッカ — 秒針ジャミング（故障診断）",
+        "actorId": "party:tikka",
+        "targetIds": [
+          "enemy:w0:1:eos-standard"
+        ],
+        "skillId": "jam-14",
+        "amount": 0,
+        "unitsAfter": [
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 900105474,
+            "cooldowns": {}
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 436,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1276412025,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "guardTarget": "party:tikka",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 25
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 3497701252,
+            "cooldowns": {}
+          },
+          {
+            "uid": "party:tikka",
+            "characterId": "tikka",
+            "side": "party",
+            "boss": false,
+            "hp": 166,
+            "maxHp": 166,
+            "attack": 34,
+            "defense": 17,
+            "speed": 15,
+            "tie": 3632035091,
+            "cooldowns": {
+              "jam-14": 5
+            },
+            "ultimateCharge": 33
+          },
+          {
+            "uid": "enemy:w0:0:moon-moth",
+            "characterId": "moon-moth",
+            "side": "enemy",
+            "boss": false,
+            "hp": 861,
+            "maxHp": 861,
+            "attack": 109,
+            "defense": 11,
+            "speed": 11,
+            "tie": 1078032214,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:1:eos-standard",
+            "characterId": "eos-standard",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1473,
+            "maxHp": 1473,
+            "attack": 120,
+            "defense": 23,
+            "speed": 13,
+            "tie": 1018447549,
+            "cooldowns": {
+              "buff-14": 3,
+              "cleanse-14": 3
+            }
+          }
+        ],
+        "id": "run-1000-175315567:w0:r1:debuff:2600335382:e1"
+      }
+    },
+    "hit": null,
+    "allTraces": [
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w0:r1:debuff:2600335382:e1",
+        "eventIndex": 2,
+        "wave": 0,
+        "round": 1,
+        "targetId": "enemy:w0:1:eos-standard",
+        "targetCharacterId": "eos-standard",
+        "extendedSkillIds": [
+          "buff-14",
+          "cleanse-14"
+        ],
+        "cooldownsBefore": {},
+        "cooldownsAfter": {
+          "buff-14": 3,
+          "cleanse-14": 3
+        },
+        "markApplied": false,
+        "actorGaugeBefore": 0,
+        "actorGaugeAfter": 33
+      },
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w1:r1:debuff:2600335382:e3",
+        "eventIndex": 37,
+        "wave": 1,
+        "round": 1,
+        "targetId": "enemy:w1:0:noelle",
+        "targetCharacterId": "noelle",
+        "extendedSkillIds": [
+          "area-14",
+          "attack-14"
+        ],
+        "cooldownsBefore": {},
+        "cooldownsAfter": {
+          "area-14": 3,
+          "attack-14": 3
+        },
+        "markApplied": false,
+        "actorGaugeBefore": 40,
+        "actorGaugeAfter": 73
+      },
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w1:r5:debuff:2600335382:e4",
+        "eventIndex": 76,
+        "wave": 1,
+        "round": 5,
+        "targetId": "enemy:w1:0:noelle",
+        "targetCharacterId": "noelle",
+        "extendedSkillIds": [
+          "area-14",
+          "attack-14"
+        ],
+        "cooldownsBefore": {
+          "area-14": 6,
+          "attack-14": 3
+        },
+        "cooldownsAfter": {
+          "area-14": 7,
+          "attack-14": 7
+        },
+        "markApplied": false,
+        "actorGaugeBefore": 60,
+        "actorGaugeAfter": 93
+      },
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w1:r9:debuff:2600335382:e1",
+        "eventIndex": 105,
+        "wave": 1,
+        "round": 9,
+        "targetId": "enemy:w1:0:noelle",
+        "targetCharacterId": "noelle",
+        "extendedSkillIds": [
+          "area-14",
+          "attack-14"
+        ],
+        "cooldownsBefore": {
+          "area-14": 10,
+          "attack-14": 7
+        },
+        "cooldownsAfter": {
+          "area-14": 11,
+          "attack-14": 11
+        },
+        "markApplied": false,
+        "actorGaugeBefore": 25,
+        "actorGaugeAfter": 58
+      }
+    ],
+    "proofSha256": "1a39a953c62b7472cacf6e5726ffe9a67d4b345ef4e0607d9600ce489725d553",
+    "metadataSha256": "3c7c1ba37f1f427785c3d2864789372747eaba1255b6829442198b2abfd55c8b",
+    "sourceSha256": "47d48fd463ca1db28241dc23d7fc89a9b5367bfacbbcd2499496922be6277851"
+  },
+  "tikka": {
+    "party": [
+      "tikka",
+      "seris-awakened",
+      "athena",
+      "benzaiten"
+    ],
+    "leader": "athena",
+    "jam": {
+      "kind": "jam",
+      "eventId": "run-1000-175315567:w1:r1:debuff:4276037079:e2",
+      "eventIndex": 31,
+      "wave": 1,
+      "round": 1,
+      "targetId": "enemy:w1:1:thorn-witch",
+      "targetCharacterId": "thorn-witch",
+      "extendedSkillIds": [
+        "debuff-12",
+        "charm-12"
+      ],
+      "cooldownsBefore": {},
+      "cooldownsAfter": {
+        "debuff-12": 3,
+        "charm-12": 3
+      },
+      "markApplied": true,
+      "mark": {
+        "percent": 50,
+        "until": 2,
+        "sourceId": "party:tikka"
+      },
+      "actorGaugeBefore": 15,
+      "actorGaugeAfter": 48,
+      "sourceFrame": 1968,
+      "event": {
+        "actionSelection": true,
+        "kind": "debuff",
+        "bossStrike": false,
+        "text": "ティッカ — 秒針の余白（故障診断）",
+        "actorId": "party:tikka",
+        "targetIds": [
+          "enemy:w1:1:thorn-witch"
+        ],
+        "skillId": "jam-14",
+        "amount": 0,
+        "unitsAfter": [
+          {
+            "uid": "party:tikka",
+            "characterId": "tikka",
+            "side": "party",
+            "boss": false,
+            "hp": 166,
+            "maxHp": 166,
+            "attack": 34,
+            "defense": 17,
+            "speed": 15,
+            "tie": 900105474,
+            "cooldowns": {
+              "jam-14": 5
+            },
+            "ultimateCharge": 48
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 1276412025,
+            "cooldowns": {},
+            "ultimateCharge": 15
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 436,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3497701252,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "ultimateCharge": 40,
+            "guardTarget": "party:tikka",
+            "guardUntil": 2,
+            "guardStrength": 23
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 3632035091,
+            "cooldowns": {},
+            "ultimateCharge": 100
+          },
+          {
+            "uid": "enemy:w1:0:noelle",
+            "characterId": "noelle",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3615,
+            "maxHp": 3615,
+            "attack": 182,
+            "defense": 15,
+            "speed": 11,
+            "tie": 2422375658,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w1:1:thorn-witch",
+            "characterId": "thorn-witch",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1147,
+            "maxHp": 1147,
+            "attack": 112,
+            "defense": 15,
+            "speed": 15,
+            "tie": 3443453761,
+            "cooldowns": {
+              "debuff-12": 3,
+              "charm-12": 3
+            },
+            "jamDampening": {
+              "percent": 50,
+              "until": 2,
+              "sourceId": "party:tikka"
+            }
+          },
+          {
+            "uid": "enemy:w1:2:athena-standard",
+            "characterId": "athena-standard",
+            "side": "enemy",
+            "boss": false,
+            "hp": 2754,
+            "maxHp": 2754,
+            "attack": 124,
+            "defense": 50,
+            "speed": 18,
+            "tie": 424542124,
+            "cooldowns": {
+              "guard-18": 3
+            },
+            "guardTarget": "enemy:w1:1:thorn-witch",
+            "guardUntil": 2,
+            "guardStrength": 18
+          }
+        ],
+        "id": "run-1000-175315567:w1:r1:debuff:4276037079:e2"
+      }
+    },
+    "hit": {
+      "kind": "softened-attack",
+      "eventId": "run-1000-175315567:w1:r1:attack:946269476:e3",
+      "eventIndex": 32,
+      "wave": 1,
+      "round": 1,
+      "actorId": "enemy:w1:1:thorn-witch",
+      "percent": 50,
+      "targetIds": [
+        "party:athena"
+      ],
+      "actualHpDamage": 31,
+      "actualAbsorbed": 0,
+      "targetsBefore": [
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 436,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 3497701252,
+          "cooldowns": {
+            "guard-23": 3
+          },
+          "ultimateCharge": 40,
+          "guardTarget": "party:tikka",
+          "guardUntil": 2,
+          "guardStrength": 23
+        }
+      ],
+      "targetsAfter": [
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 405,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 3497701252,
+          "cooldowns": {
+            "guard-23": 3
+          },
+          "ultimateCharge": 50,
+          "guardTarget": "party:tikka",
+          "guardUntil": 2,
+          "guardStrength": 23
+        }
+      ],
+      "sourceFrame": 2013,
+      "event": {
+        "jamDampenedPercent": 50,
+        "actionSelection": true,
+        "kind": "attack",
+        "bossStrike": false,
+        "text": "荊の魔女 — 通常攻撃（余白の緩衝50%）",
+        "actorId": "enemy:w1:1:thorn-witch",
+        "targetIds": [
+          "party:athena"
+        ],
+        "amount": 31,
+        "unitsAfter": [
+          {
+            "uid": "party:tikka",
+            "characterId": "tikka",
+            "side": "party",
+            "boss": false,
+            "hp": 166,
+            "maxHp": 166,
+            "attack": 34,
+            "defense": 17,
+            "speed": 15,
+            "tie": 900105474,
+            "cooldowns": {
+              "jam-14": 5
+            },
+            "ultimateCharge": 48
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 1276412025,
+            "cooldowns": {},
+            "ultimateCharge": 15
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 405,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3497701252,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "ultimateCharge": 50,
+            "guardTarget": "party:tikka",
+            "guardUntil": 2,
+            "guardStrength": 23
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 3632035091,
+            "cooldowns": {},
+            "ultimateCharge": 100
+          },
+          {
+            "uid": "enemy:w1:0:noelle",
+            "characterId": "noelle",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3615,
+            "maxHp": 3615,
+            "attack": 182,
+            "defense": 15,
+            "speed": 11,
+            "tie": 2422375658,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w1:1:thorn-witch",
+            "characterId": "thorn-witch",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1147,
+            "maxHp": 1147,
+            "attack": 112,
+            "defense": 15,
+            "speed": 15,
+            "tie": 3443453761,
+            "cooldowns": {
+              "debuff-12": 3,
+              "charm-12": 3
+            }
+          },
+          {
+            "uid": "enemy:w1:2:athena-standard",
+            "characterId": "athena-standard",
+            "side": "enemy",
+            "boss": false,
+            "hp": 2754,
+            "maxHp": 2754,
+            "attack": 124,
+            "defense": 50,
+            "speed": 18,
+            "tie": 424542124,
+            "cooldowns": {
+              "guard-18": 3
+            },
+            "guardTarget": "enemy:w1:1:thorn-witch",
+            "guardUntil": 2,
+            "guardStrength": 18
+          }
+        ],
+        "id": "run-1000-175315567:w1:r1:attack:946269476:e3"
+      }
+    },
+    "allTraces": [
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w0:r1:debuff:4276037079:e1",
+        "eventIndex": 2,
+        "wave": 0,
+        "round": 1,
+        "targetId": "enemy:w0:0:moon-moth",
+        "targetCharacterId": "moon-moth",
+        "extendedSkillIds": [
+          "area-10",
+          "sleep-10"
+        ],
+        "cooldownsBefore": {},
+        "cooldownsAfter": {
+          "area-10": 3,
+          "sleep-10": 3
+        },
+        "markApplied": true,
+        "mark": {
+          "percent": 50,
+          "until": 2,
+          "sourceId": "party:tikka"
+        },
+        "actorGaugeBefore": 0,
+        "actorGaugeAfter": 33
+      },
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w1:r1:debuff:4276037079:e2",
+        "eventIndex": 31,
+        "wave": 1,
+        "round": 1,
+        "targetId": "enemy:w1:1:thorn-witch",
+        "targetCharacterId": "thorn-witch",
+        "extendedSkillIds": [
+          "debuff-12",
+          "charm-12"
+        ],
+        "cooldownsBefore": {},
+        "cooldownsAfter": {
+          "debuff-12": 3,
+          "charm-12": 3
+        },
+        "markApplied": true,
+        "mark": {
+          "percent": 50,
+          "until": 2,
+          "sourceId": "party:tikka"
+        },
+        "actorGaugeBefore": 15,
+        "actorGaugeAfter": 48
+      },
+      {
+        "kind": "softened-attack",
+        "eventId": "run-1000-175315567:w1:r1:attack:946269476:e3",
+        "eventIndex": 32,
+        "wave": 1,
+        "round": 1,
+        "actorId": "enemy:w1:1:thorn-witch",
+        "percent": 50,
+        "targetIds": [
+          "party:athena"
+        ],
+        "actualHpDamage": 31,
+        "actualAbsorbed": 0,
+        "targetsBefore": [
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 436,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3497701252,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "ultimateCharge": 40,
+            "guardTarget": "party:tikka",
+            "guardUntil": 2,
+            "guardStrength": 23
+          }
+        ],
+        "targetsAfter": [
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 405,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3497701252,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "ultimateCharge": 50,
+            "guardTarget": "party:tikka",
+            "guardUntil": 2,
+            "guardStrength": 23
+          }
+        ]
+      },
+      {
+        "kind": "jam",
+        "eventId": "run-1000-175315567:w1:r5:debuff:3172327040:e3",
+        "eventIndex": 69,
+        "wave": 1,
+        "round": 5,
+        "targetId": "enemy:w1:1:thorn-witch",
+        "targetCharacterId": "thorn-witch",
+        "extendedSkillIds": [],
+        "cooldownsBefore": {
+          "debuff-12": 7,
+          "charm-12": 7
+        },
+        "cooldownsAfter": {
+          "debuff-12": 7,
+          "charm-12": 7
+        },
+        "markApplied": false,
+        "actorGaugeBefore": 15,
+        "actorGaugeAfter": 40
+      }
+    ],
+    "proofSha256": "9dcf7244451df68c87e3e3aa1194cbd9121b71973d3e9f56e4273e53375055a8",
+    "metadataSha256": "869cc9cca286df826b903c1a8f27533ab7f445b74a715a4f4122a7063aa1ebbb",
+    "sourceSha256": "fc2dde6e0151e81bca98682ec4c52b4bc5453654bed1a8ccbffbad528247801f"
+  }
+}
