@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "movieSha256": "2dcf51dc2885fc219331f9abf6659c78a79be902a9410108c6573f6b9df905c3",
+  "checks": [
+    {
+      "engine": "chromium",
+      "fraction": 0.05,
+      "passed": true,
+      "duration": 466.633333,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 24.772323
+      }
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.5,
+      "passed": true,
+      "duration": 466.633333,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 234.801544
+      }
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.9,
+      "passed": true,
+      "duration": 466.633333,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 421.441284
+      }
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.05,
+      "passed": true,
+      "duration": 466.634,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 24.890593504
+      }
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.5,
+      "passed": true,
+      "duration": 466.634,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 234.879692145
+      }
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.9,
+      "passed": true,
+      "duration": 466.634,
+      "width": 1920,
+      "height": 1080,
+      "current": {
+        "time": 421.483204088
+      }
+    }
+  ],
+  "unchangedDuringQA": true,
+  "transport": "downloaded-local-file",
+  "freshPlayerPerCheckpoint": true
+}

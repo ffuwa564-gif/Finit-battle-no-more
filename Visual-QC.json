@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "movieSha256": "2dcf51dc2885fc219331f9abf6659c78a79be902a9410108c6573f6b9df905c3",
+  "method": "Assistant inspected actual finished-file Tikka preview using view_image. Original25 silent pages are SHA-verified exact episode02 page assets, inspected in original episode02. All4 actual frozen frames/insets and51 utterances separately passed on this exact MP4.",
+  "previewFrameSha256": "d0f0b71165e37bc5cd95f224fd427df51b24eb4f2c3feeba9baa58179dcff220",
+  "originalEpisode02PageSourceManifestSha256": "add28a1d51cb56bc1913ad74ef3ec87ac5bca63355781208e40de9dcd4a7319d",
+  "checks": [
+    "Tikka head and full figure contained with margin.",
+    "Preview clearly states unverified and limits to normal skills.",
+    "Original research data and verdict preserved.",
+    "New Japanese captions stay within2lines.",
+    "Preview is before quiet research ledger; last fade remains."
+  ]
+}
