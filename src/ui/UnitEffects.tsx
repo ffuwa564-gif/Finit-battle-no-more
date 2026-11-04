@@ -1,7 +1,7 @@
 import { tr, localize } from '../locales/i18n';
 import { useState } from 'react';
 import { Modal } from './index';
-import { Shield, Sparkles, HeartPulse, Swords, ShieldCheck, ShieldOff, CloudFog, Moon, Zap, Heart, Flag, Lamp, Scissors, Sprout, Flower2 } from 'lucide-react';
+import { Clock3, Shield, Sparkles, HeartPulse, Swords, ShieldCheck, ShieldOff, CloudFog, Moon, Zap, Heart, Flag, Lamp, Scissors, Sprout, Flower2 } from 'lucide-react';
 import { ailments, ailmentNames, ailmentDescriptions } from '../domain/ailments';
 import type { Ailment, Unit } from '../domain/types';
 import './unit-effects.css';
@@ -15,6 +15,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   if ((unit.regenUntil ?? -1) >= round) effects.push({ icon: HeartPulse, label: tr('status.regen'), title: `ラウンド終了時回復・残り${unit.regenUntil! - round + 1}回` });
   if (unit.guardTarget && (unit.guardUntil ?? -1) >= round) effects.push({ icon: ShieldCheck, label: 'かばう', title: '味方への単体攻撃を引き受ける' });
   if ((unit.buffUntil ?? -1) >= round) effects.push({ icon: Swords, label: '攻撃↑', title: '攻撃力上昇中' });
+  if(unit.jamDampening&&unit.jamDampening.until>=round)effects.push({icon:Clock3,label:`余白の緩衝 ${unit.jamDampening.percent}%`,title:`次の通常攻撃1回を軽減。第${unit.jamDampening.until}ラウンド終了まで。スキル・必殺・予告大技・ビットは対象外。`,bad:true});
   if ((unit.debuffUntil ?? -1) >= round) effects.push({ icon: ShieldOff, label: '防御↓', title: '防御力低下中・浄化で解除できる', bad: true });
   if (unit.scoutMark && unit.scoutMark.until >= round) effects.push({ icon: Flag, label: '宛先の標', title: '別の味方の通常攻撃・固有技でHPダメージを与えると回収し、必殺ゲージ+10。本人・石・必殺・追加攻撃は対象外。', bad: true });
   if ((unit.scoutLanternUntil ?? -1) >= round) effects.push({ icon: Lamp, label: '交代の灯', title: '次の予告大技1回の被害を25%軽減。通常攻撃・ビット射撃は対象外。次ラウンド終了まで。' });
@@ -30,7 +31,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   const icons = { confusion: CloudFog, sleep: Moon, paralysis: Zap, charm: Heart };
   if (!effects.length) return null;
   const scoutEffect = Boolean(unit.scoutMark && unit.scoutMark.until >= round || (unit.scoutLanternUntil ?? -1) >= round || (unit.scoutThreadUntil ?? -1) >= round);
-  if (compact || Boolean(unit.mendThread && unit.mendThread.until >= round) || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
+  if (compact || Boolean(unit.jamDampening&&unit.jamDampening.until>=round) || Boolean(unit.mendThread && unit.mendThread.until >= round) || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
     effects.sort((a, b) => Number(!!b.bad) - Number(!!a.bad));
     const iconFor = (effect: typeof effects[number]) => effect.ailment ? icons[effect.ailment] : effect.icon ?? Sparkles;
     const controls = <>
