@@ -8,4 +8,4 @@ def job(i):
  if r.returncode:raise RuntimeError(log.read_text())
  print('CONFIRMED CASE',i,flush=True)
 with concurrent.futures.ThreadPoolExecutor(max_workers=3)as ex:list(ex.map(job,range(12)))
-print('ALL12 CASES512PAIRED SEEDS7PLUSGROWTHARMS COMPLETE',flush=True)
+print('ALL12 CASES512PAIRED SEEDS6PLUSGROWTHARMS COMPLETE',flush=True)

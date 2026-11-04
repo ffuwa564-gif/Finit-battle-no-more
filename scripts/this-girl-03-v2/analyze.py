@@ -20,29 +20,34 @@ def compare(a,b,primary=False):
     signs=rng.choice(np.array([-1,1],np.int8),size=(10000,len(a)));null=(signs@x)/len(a);d['pairedP']=float((1+np.sum(np.abs(null)>=abs(x.mean())-1e-12))/10001);d['method']='Two-sided paired sign-flip mean randomization;10000 deterministic MC draws.'
    else:d['pairedP']=1.
   delta[key]=d
- return{'delta':delta,'scope':'Paired common inputs; bootstrap intervals descriptive. Primary C-B p values corrected across12conditions x4metrics. Finite search, no global-optimality claim.'}
+ return{'delta':delta,'scope':'Paired common inputs; bootstrap intervals descriptive. C-B and C-X p values jointly corrected across12conditions x4metrics x2comparisons. Finite search, no global-optimality claim.'}
 cases=[];inputs={};pool=[]
 for spec in lock['cases']:
  p=R/'confirmation'/(spec['id']+'.json.gz');d=json.load(gzip.open(p));assert d['lockSha']==digest;arms=d['arms'];expected=[x['applicationSeed']for x in lock['seedMap']]
  for key,arm in arms.items():
   rows=arm['rows'];assert len(rows)==n and[x['seed']for x in rows]==expected;assert all(0<=x['pots']<=5 and 0<=x['survivors']<=4 and 0<=x['relayGrants']<=x['jamUses'] and 0<=x['relayCharge']<=25*x['relayGrants']for x in rows)
   if key in ['B','X','E','J','A']:assert all(x['relayCharge']==0 for x in rows)
+ assert arms['E']['rows']==arms['X']['rows'],'No-relay must match same-config public mechanism exactly'
  c={**spec,'summaries':{k:summary(v['rows'])for k,v in arms.items()},'C-B':compare(arms['C']['rows'],arms['B']['rows'],True)}
- for other in ['X','E','N','J','A',*(['G3','G4']if spec['tier']==6 else[])]:c['C-'+other]=compare(arms['C']['rows'],arms[other]['rows'])
- for key in ['win','fullAliveWin','pots','cappedRounds']:pool.append((c['C-B']['delta'][key]['pairedP'],len(cases),key))
+ for other in ['X','E','J','A',*(['G3','G4']if spec['tier']==6 else[])]:c['C-'+other]=compare(arms['C']['rows'],arms[other]['rows'],other=='X')
+ for contrast in ['C-B','C-X']:
+  for key in ['win','fullAliveWin','pots','cappedRounds']:pool.append((c[contrast]['delta'][key]['pairedP'],len(cases),contrast,key))
  cases.append(c);inputs[str(p.relative_to(ROOT))]=sha(p)
 running=0
-for i,(p,case,key)in enumerate(sorted(pool)):
- running=max(running,min(1,p*(len(pool)-i)));cases[case]['C-B']['delta'][key]['holm48P']=running
+for i,(p,case,contrast,key)in enumerate(sorted(pool)):
+ running=max(running,min(1,p*(len(pool)-i)));cases[case][contrast]['delta'][key]['holm96P']=running
+def meaningful(d):
+ safe=d['win']['mean']>=-.02 and d['fullAliveWin']['mean']>=-.05
+ pot=safe and d['pots']['mean']<=-.15 and d['pots']['holm96P']<.05 and d['cappedRounds']['mean']<=1
+ alive=d['win']['mean']>=-.02 and d['fullAliveWin']['mean']>=.05 and d['fullAliveWin']['holm96P']<.05 and d['pots']['mean']<=.5 and d['cappedRounds']['mean']<=2
+ speed=safe and d['cappedRounds']['mean']<=-1 and d['cappedRounds']['holm96P']<.05 and d['pots']['mean']<=.2
+ return {'potions':pot,'fourAlive':alive,'speed':speed}
 witnesses=[]
 for c in cases:
- s=c['summaries'];d=c['C-B']['delta'];safe=d['win']['mean']>=-.02 and d['fullAliveWin']['mean']>=-.05
- goodPot=safe and d['pots']['mean']<=-.15 and d['pots']['holm48P']<.05 and d['cappedRounds']['mean']<=1
- goodAlive=d['win']['mean']>=-.02 and d['fullAliveWin']['mean']>=.05 and d['fullAliveWin']['holm48P']<.05 and d['pots']['mean']<=.5 and d['cappedRounds']['mean']<=2
- goodSpeed=safe and d['cappedRounds']['mean']<=-1 and d['cappedRounds']['holm48P']<.05 and d['pots']['mean']<=.2
- if goodPot or goodAlive or goodSpeed:witnesses.append({'caseId':c['id'],'potions':goodPot,'fourAlive':goodAlive,'speed':goodSpeed})
-regressions=[c['id']for c in cases if c['C-B']['delta']['win']['mean']<-.05];mechanism=sum(c['summaries']['C']['meanRelayGrants']*n for c in cases)>0 and sum(c['summaries']['C']['meanExposureApplied']*n for c in cases)>0
-adoption={'passed':bool(witnesses)and not regressions and mechanism,'status':'adopted-scoped'if witnesses and not regressions and mechanism else'development-required','witnesses':witnesses,'observedWinRegressionsOver5pp':regressions,'realRelayAndExposureObserved':mechanism,'endgameCertified':False,'scope':'Adoption of implemented research change in tested conditions; not noninferiority proof or all-character endgame certification.'}
+ practical=meaningful(c['C-B']['delta']);causal=meaningful(c['C-X']['delta'])
+ if any(practical.values())and any(causal.values()):witnesses.append({'caseId':c['id'],**practical,'sameConfigCausalBenefits':causal})
+regressions=[c['id']for c in cases if c['C-B']['delta']['win']['mean']<-.05];mechanism=sum(c['summaries']['C']['meanRelayGrants']*n for c in cases)>0
+adoption={'passed':bool(witnesses)and not regressions and mechanism,'status':'adopted-scoped'if witnesses and not regressions and mechanism else'development-required','witnesses':witnesses,'observedWinRegressionsOver5pp':regressions,'realRelayObserved':mechanism,'endgameCertified':False,'scope':'Adoption of implemented research change in tested conditions; not noninferiority proof or all-character endgame certification.'}
 out={'episode':'THIS-GIRL-003-V2','passedDataValidation':True,'lockSha256':digest,'inputs':inputs,'cases':cases,'seedCountPerCondition':n,'distinctHeldoutSeeds':n,'independence':'Same independent input panel reused across arms and conditions; total runs are not independent observations.','adoption':adoption};(R/'analysis').mkdir(exist_ok=True);(R/'analysis/main.json').write_text(json.dumps(out,ensure_ascii=False,indent=2));print('CASE Cwin Bwin Awin Calive Balive Cpot Bpot CR BR Crelay')
 for c in cases:
  s=c['summaries'];print(c['id'],s['C']['wins'],s['B']['wins'],s['A']['wins'],s['C']['fourAliveWins'],s['B']['fourAliveWins'],round(s['C']['meanPotions'],3),round(s['B']['meanPotions'],3),round(s['C']['meanCappedRounds'],3),round(s['B']['meanCappedRounds'],3),round(s['C']['meanRelayGrants'],3))
