@@ -1,0 +1,295 @@
+{
+  "episode": "THIS-GIRL-004-V2",
+  "status": "complete",
+  "title": "その一手を、失わないために。",
+  "implementationReceipt": "research/episode-implementation.json",
+  "implementationReceiptSha256": "04281af553aa457f4a57ac89fe76af2e354d3ac4eede779e98015e5a126d24fe",
+  "movieSha256": "b4d564d08de1efd4ea30c31aa63487854639f83cc92499720a10327b87a7df24",
+  "movie": "ThisGirl-04-v2.mp4",
+  "finalQaEvidence": {
+    "artifacts/this-girl-04-v2/research/final-independent-qa.json": "f6b1b41f0120acf385d204f1648e486efeabb9244d76977497a6f10468283b60",
+    "artifacts/this-girl-04-v2/research/freeze-and-voice-qa.json": "6312ab04169dc34d374964252072d759cbc6b521ed6533512b9663857103b3cd",
+    "artifacts/this-girl-04-v2/research/final-browser-qa.json": "b1607084ce65ecb1f9727774b00168cc947226df75e735511849e92eb0b29b1e",
+    "artifacts/this-girl-04-v2/research/visual-qa.json": "35fa4934cec60fce343290d3852c6f3eb9c8f0d882cfeb3a0236ae65870636b9",
+    "render-input-freeze.json": "75c7c069eca6cbc4209eb01c4081cdeff7a89f17994b222316eca763e4b004e9"
+  },
+  "gameMainMerged": false,
+  "itchDeployed": false,
+  "scopedAdoption": true,
+  "endgameCertified": false,
+  "priorEpisodePreserved": true,
+  "nextEpisodePreview": "リゼットの改修研究・未検証",
+  "implementation": {
+    "episode": "THIS-GIRL-004-V2",
+    "status": "implementation-complete",
+    "adoptionScope": "scoped-not-endgame-certified",
+    "baseEngineCommit": "53c4cd0",
+    "implementationCommit": "568c57f",
+    "policyCommit": "96d2e00",
+    "freezeCommit": "98273ae",
+    "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/146",
+    "changedEngineFiles": [
+      "src/content/index.ts",
+      "src/content/validation.ts",
+      "src/content/version.ts",
+      "src/domain/command-resource-safety.ts",
+      "src/domain/engine.ts",
+      "src/domain/types.ts",
+      "src/locales/en.json",
+      "src/platform/save.ts",
+      "src/screens/GameViews.tsx",
+      "src/ui/CommandDoctrine.tsx"
+    ],
+    "evidence": {
+      "artifacts/this-girl-04-v2/research/analysis/main.json": "06217d754fde52d1f4892f9958b1f95d3caa9d7ece3e4f18a0bfb77040fa1603",
+      "artifacts/this-girl-04-v2/research/confirmation-lock.json": "9d1ebe7fdb248c4541718dd49e656c2452f12ab37827ff4e5174e63d58896c79",
+      "artifacts/this-girl-04-v2/research/reports/adoption.json": "c633aeb9cd9ff14d0ff3883383c6e739bc6e07f7366cacf9f7d772c5f2666ee8",
+      "artifacts/this-girl-04-v2/research/reports/judgment.json": "a053041202040d70fec6ab38718fb2d077c659fe3b0f0adca894645562e12ad6",
+      "artifacts/this-girl-04-v2/research/reports/ResearchReport.md": "d7af68c02eb6693a737032b13142decaf7431d4a50a6de50565b84dcf24eb261",
+      "artifacts/this-girl-04-v2/research/baseline-equivalence.json": "cb8885d70d20262d72c9e745991b45983ce6a60db44a5023d0e47a9caa3d9db6",
+      "artifacts/this-girl-04-v2/research/full-public-tests.log": "a7d461a0e2c501368467a8b495ae851c75bd278222da9e0a47af16013a05d5cb",
+      "artifacts/this-girl-04-v2/research/game-browser-tests.log": "c4f24d43fba4d20f2486e5f743a8937b91e21055e79f391fe72002fcb842984d",
+      "artifacts/this-girl-04-v2/research/research-build.log": "7c7cecf7ae8344ebffe402cd020e0bdf7c0e2a13799faa3134318bb7a68f37d1",
+      "artifacts/this-girl-04-v2/research/public-build.log": "41453bb1bcf1d5d181b1c36afeca0fbc7da8aa5b1d99d656e1f674dc547b4322",
+      "artifacts/this-girl-04-v2/research/recording-selection.json": "d58e4bb75b20e8bfc60a572753158597530af8a4625fc0e8261dd0e660518139",
+      "artifacts/this-girl-04-v2/research/code-pr.json": "7a6d304ab3c599baf89a092ab08e0850279036b8a55764cb788d4ff11c147c70",
+      "artifacts/this-girl-04-v2/proofs/reference.json.gz": "6a79c528bb4cf6c8bedcdaad9b5cee0c6b9286a786d24ff810145bfdda5c2f45",
+      "artifacts/this-girl-04-v2/proofs/noelle.json.gz": "e433eb47cc74c64d7919ce68bd5bbb5e30b49e5e9b2eee0a8fb54f04d212dac6"
+    },
+    "verification": {
+      "publicUnitTests": 775,
+      "newMechanicTestsIncluded": 12,
+      "gameBrowserTests": 2,
+      "legacyOutcomeMatches": 72
+    },
+    "negativeConditionDisclosed": "All12 conditions are in ResearchReport and analysis. Scoped adoption is not universal noninferiority or endgame uniqueness.",
+    "gamePublished": false
+  },
+  "publicVersion": "1.12.0",
+  "researchVersion": "1.12.0-noelle-research.1",
+  "publication": {
+    "passed": true,
+    "commit": "e09483d8db784a065f7a1ca14b39294d28d9994a",
+    "fullPublicReadback": [
+      {
+        "file": "Artwork-Provenance.json",
+        "sha256": "f9f3afc47070449fd2946f806583328edbad594119d7f2b9de7005743ab47d7c",
+        "bytes": 688,
+        "passed": true
+      },
+      {
+        "file": "Browser-QA.json",
+        "sha256": "b1607084ce65ecb1f9727774b00168cc947226df75e735511849e92eb0b29b1e",
+        "bytes": 7344,
+        "passed": true
+      },
+      {
+        "file": "Chapters.txt",
+        "sha256": "5354a1fc75ba775c9c263f616864a3c6f22a3e2196d0cde3b8cacbd1cbd81a3e",
+        "bytes": 362,
+        "passed": true
+      },
+      {
+        "file": "Character-Judgment.json",
+        "sha256": "a053041202040d70fec6ab38718fb2d077c659fe3b0f0adca894645562e12ad6",
+        "bytes": 1555,
+        "passed": true
+      },
+      {
+        "file": "Credits.md",
+        "sha256": "8a4ed89e8f7c699ef8e8f3c8d600dec565f2a9180ba7aeea96a8666579c6f84d",
+        "bytes": 976,
+        "passed": true
+      },
+      {
+        "file": "Design-Decisions.md",
+        "sha256": "6cf736d22c8f796f8627d67d9b06d5d1df9b39e8285d9b26b0f1374a24d2153e",
+        "bytes": 654,
+        "passed": true
+      },
+      {
+        "file": "Episode-Completion.json",
+        "sha256": "76d56ca0e08c3e31f0005c742d3fee3e51ab09309a9cced9d94e3274b9d74efc",
+        "bytes": 4305,
+        "passed": true
+      },
+      {
+        "file": "Episode-Implementation.json",
+        "sha256": "04281af553aa457f4a57ac89fe76af2e354d3ac4eede779e98015e5a126d24fe",
+        "bytes": 2851,
+        "passed": true
+      },
+      {
+        "file": "Final-Media-QA.json",
+        "sha256": "f6b1b41f0120acf385d204f1648e486efeabb9244d76977497a6f10468283b60",
+        "bytes": 14193,
+        "passed": true
+      },
+      {
+        "file": "Font-Copyright.txt",
+        "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+        "bytes": 14712,
+        "passed": true
+      },
+      {
+        "file": "Freeze-Voice-QA.json",
+        "sha256": "6312ab04169dc34d374964252072d759cbc6b521ed6533512b9663857103b3cd",
+        "bytes": 10121,
+        "passed": true
+      },
+      {
+        "file": "Mechanism-Noelle.json",
+        "sha256": "0e925e371e3d1ac6cc595ed929fe01071535367e227c3814b6334ad432755b5a",
+        "bytes": 17820,
+        "passed": true
+      },
+      {
+        "file": "Packaging-Manifest.json",
+        "sha256": "d3773d18973093451a2d7b73e748d5ce7a08dcc7fdaa7d966eaedd3494176aa3",
+        "bytes": 1240,
+        "passed": true
+      },
+      {
+        "file": "Pause-Preview.jpg",
+        "sha256": "4b8b528f5beabba9d2a782e4ff9eb235407a4fb53885a1a82f951c09267da203",
+        "bytes": 624970,
+        "passed": true
+      },
+      {
+        "file": "Preview.jpg",
+        "sha256": "12f1aa010bdea2d857bf71f1321f527e58ed70e54a82be99f974b06cc775b741",
+        "bytes": 1643625,
+        "passed": true
+      },
+      {
+        "file": "Production-and-Evidence.zip.part001",
+        "sha256": "e55ccf14c7ed4035caaeeb51a4d9c9a47726743ff9913f313eae0a53a5fe5c52",
+        "bytes": 92274688,
+        "passed": true
+      },
+      {
+        "file": "Production-and-Evidence.zip.part002",
+        "sha256": "7b827568ee4c31e639beb024e83d1b7dd2b0f9fd23de83065609aa93493a9b5e",
+        "bytes": 26251184,
+        "passed": true
+      },
+      {
+        "file": "README.md",
+        "sha256": "2e77f9877628c56d1c2fa0a3e96145b3ffca9086fae84032c6ba8238a8ca2dbb",
+        "bytes": 1734,
+        "passed": true
+      },
+      {
+        "file": "Render-Input-Freeze.json",
+        "sha256": "75c7c069eca6cbc4209eb01c4081cdeff7a89f17994b222316eca763e4b004e9",
+        "bytes": 67806,
+        "passed": true
+      },
+      {
+        "file": "Render-Manifest.json",
+        "sha256": "5b1de06be3d62fde1a2219b8212449d2bc50605c40a8fa948fb1587358652389",
+        "bytes": 6215,
+        "passed": true
+      },
+      {
+        "file": "Reproduce.md",
+        "sha256": "666e20c040aa488c19ade0efca4e6a34992c27e5e7b4b54e54a2067153d6db02",
+        "bytes": 2874,
+        "passed": true
+      },
+      {
+        "file": "ResearchReport.md",
+        "sha256": "d7af68c02eb6693a737032b13142decaf7431d4a50a6de50565b84dcf24eb261",
+        "bytes": 4494,
+        "passed": true
+      },
+      {
+        "file": "Roster-Audit.md",
+        "sha256": "6bd6adeddbc3bc52aa0da5ce5b620bcb984eb62c3dc7f12bc0ea5e9b48925793",
+        "bytes": 553,
+        "passed": true
+      },
+      {
+        "file": "SHA256SUMS.txt",
+        "sha256": "66b8d3090c6cafec8e6e5e8a2e65ad61b5e75b2943cdb1b3421cc88bdfd415ed",
+        "bytes": 2950,
+        "passed": true
+      },
+      {
+        "file": "Script.md",
+        "sha256": "323a550392bde7233b40fda954e21f8afbc8334db1116e6ceb0dfeeda1f2754a",
+        "bytes": 16910,
+        "passed": true
+      },
+      {
+        "file": "Stone-Goals.md",
+        "sha256": "615cae8260202491a186b9c29dcef40c756a240ba7503cf258e34092a7cb13ae",
+        "bytes": 1526,
+        "passed": true
+      },
+      {
+        "file": "Subtitles-ja.srt",
+        "sha256": "fa9b7c7cf24add9b6baf4bb126041fd7d0e25118639cfb0ae4b8d7272202383f",
+        "bytes": 6830,
+        "passed": true
+      },
+      {
+        "file": "ThisGirl-04-v2.mp4",
+        "sha256": "b4d564d08de1efd4ea30c31aa63487854639f83cc92499720a10327b87a7df24",
+        "bytes": 64860163,
+        "passed": true
+      },
+      {
+        "file": "Thumbnail-ThisGirl-04-v2.png",
+        "sha256": "aa61df66e146421190289b476d80e77aa6d18c8f0ab7d14b1a29af536adec0eb",
+        "bytes": 1504353,
+        "passed": true
+      },
+      {
+        "file": "Used-Audio-Plan.json",
+        "sha256": "c3ac39c6cd8ac6dfb8beda28c17ecae4d84809db5ce1cfc6ee386d183974a3ce",
+        "bytes": 128112,
+        "passed": true
+      },
+      {
+        "file": "Visual-QC.json",
+        "sha256": "35fa4934cec60fce343290d3852c6f3eb9c8f0d882cfeb3a0236ae65870636b9",
+        "bytes": 1201,
+        "passed": true
+      },
+      {
+        "file": "YouTube-Description.txt",
+        "sha256": "2645b03698ed9b888b1c6ab1b7e72129e697eea051480cb81a6a273c9d24f04e",
+        "bytes": 1705,
+        "passed": true
+      },
+      {
+        "file": "combat-portfolio-research.md",
+        "sha256": "be2d3a784f5d6fabaed6bdccd1ba79513d6e1c4a532adc8fb0e789c305da0e68",
+        "bytes": 9811,
+        "passed": true
+      },
+      {
+        "file": "endgame-invariance-v03.md",
+        "sha256": "d84449bdda27df2393eebbe29fdbd967be0253e7da535f38df54470ae2b1531e",
+        "bytes": 19500,
+        "passed": true
+      },
+      {
+        "file": "portfolio-optimization-v02.md",
+        "sha256": "06b4033e323ba4d9dce916be93e241497186a9058206b79c3f3e39a12c9c2c91",
+        "bytes": 14340,
+        "passed": true
+      }
+    ]
+  },
+  "publicHeader": {
+    "passed": true,
+    "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/e09483d8db784a065f7a1ca14b39294d28d9994a/ThisGirl-04-v2.mp4",
+    "httpStatus": 206,
+    "firstMiBSha256": "db027a6fb2be0a1cc7a652ef98953e1410c2a551dc510171c493d29837f7ab36",
+    "moovOffset": 36,
+    "mdatOffset": 380825,
+    "scope": "Public MP4 header and fast-start moov before media payload; complete readback SHA is independently required."
+  }
+}
