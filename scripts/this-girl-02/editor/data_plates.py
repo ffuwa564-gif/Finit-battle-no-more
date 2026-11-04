@@ -8,7 +8,7 @@ def render_scene(spec,path):
  def table(headers,rows,xs=None):
   xs=xs or [175,740,1060,1400]
   for x,t in zip(xs,headers):v.text(d,(x,280),t,32,v.MUTED,True,width=530 if x==175 else 310,max_lines=1)
-  step=min(140,400/max(1,len(rows)-1));size=43 if len(rows)<=3 else 35
+  step=min(140,330/max(1,len(rows)-1));size=43 if len(rows)<=3 else 35
   for i,row in enumerate(rows):
    y=375+i*step;d.line((165,y-20,1760,y-20),fill=v.EDGE,width=2)
    for j,(x,t)in enumerate(zip(xs,row)):v.text(d,(x,y),str(t),size,v.ROSE if i==0 else v.INK,True,width=(530 if j==0 else 310),max_lines=1)
