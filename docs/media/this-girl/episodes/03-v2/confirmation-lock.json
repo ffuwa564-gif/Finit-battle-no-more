@@ -1,9 +1,9 @@
 {
   "episode": "THIS-GIRL-003-V2",
-  "sourceGameCommit": "ffbdef7e8af5c32fd6cbf942bfc93f86346ccd5e",
-  "sourceAppVersion": "1.12.0-tikka-research.3",
+  "sourceGameCommit": "281d71f68eb187e3603a523e496741b49d9965ee",
+  "sourceAppVersion": "1.12.0-tikka-research.4",
   "publicMechanics": false,
-  "revision": 3,
+  "revision": 4,
   "unreleased": true,
   "sources": {
     "src/App.tsx": "1c0b6125d96aadadac4c3cf228bf9f4373da58b6e04715075d89a43e17cb6cc8",
@@ -15,7 +15,7 @@
     "src/content/gacha.ts": "bea673a3219f13b0e890253423f48cd510345e5ad9277d131e86c502042dd699",
     "src/content/gem-loot.ts": "9b27123150505c27445b20620fd9d18ebb9580b14752ead19fd08e2c29f8da72",
     "src/content/gold-exchanges.ts": "13de80fe94fd109e7011e00ca1344f4e7d3638e5e971a305e33f2fc191d159ee",
-    "src/content/index.ts": "51995e9f5526b8cdd080a97a80f99caa6e5d8d24f9cf5e4046686bbc67c5d334",
+    "src/content/index.ts": "43d1e854994756a7e5808390aa2622c144ac5e5e0a8aaa474f731d79b8a6523e",
     "src/content/ivory-tower.ts": "b4d33a65a561af19796cd8afd56440803270df9e1541ec9b20934db097d4e63c",
     "src/content/late-chapters.ts": "3f55fe90882bf323c0c94654d8547bbfd52d187017995ac76a71a8215d6018bf",
     "src/content/living-garden.ts": "d6e1584a86b16fb522fb1a9737673ac7e550982f3b236ab8ced8b1e42f26c6c1",
@@ -29,8 +29,8 @@
     "src/content/story-milestones.ts": "08b483e147525ecd66aae6d88551e3b7bdc886742add66e2ab2dd8c42675b45d",
     "src/content/title-art.ts": "11fc725836b81b04a1c5ebd36ba2d5c92d5fe49889bbc9d559ec4cfd7fcc255b",
     "src/content/trials.ts": "8dfa84dc1d85010c6c9e6d49fa31457909996702abf82f22dc2f273593a9b51c",
-    "src/content/validation.ts": "c767ccbe7594cf4b7296d4fdd39ac3887b8edde43cb4541c709543d12fbd0076",
-    "src/content/version.ts": "dbe4e9d79960a888c35f2b6911dce28084c5665eb2e5a0be8ff20ef023e7142b",
+    "src/content/validation.ts": "89ca1c289df2a57f9338d1dbc37beffc2ca4a1a2f800369d4aa3cb0f67d70ae4",
+    "src/content/version.ts": "4d2d705912c223278ca2d4d776e15b2f81746b4fabbac13d4b2f23b1b601623a",
     "src/content/xr-gacha.ts": "e64db11027fceb02269287883692f3f7c66c370c2e9f8bf1ed91709ca0605a20",
     "src/content/zakuro.ts": "2997a7ae975f9d693ee33140d9679f290a99c8f45068a4a890d4df2329ab5228",
     "src/domain/acceleration.ts": "93b1cbe2284e37cbf0d10aa63f6780957e8e09fdc31142e27780c27a7d915149",
@@ -51,14 +51,14 @@
     "src/domain/companion-behavior.ts": "53b8d98b1798ceefec557259c74a7355dde9e222481ac4adfb747f9e8906f369",
     "src/domain/crystal-resonance.ts": "ead6fa282e6b6638f328610f6384fd94115abe182e969abddffa3cfd31a55072",
     "src/domain/enemy-support.ts": "d50c11d9cd36cd78ebb7ba9f5d4eeacd614a1927cf87de6163b2adbf62f6a529",
-    "src/domain/engine.ts": "2ac2cbdaee2ffbea06b9ac1dbce4c3603677441da2e56f4e62085ff3324830c2",
+    "src/domain/engine.ts": "e54f598113f27c801affac62b14d255de1cc0c62533723289078f04289744ff0",
     "src/domain/events.ts": "0e25615b21f33441117d4d3aefc6e2a6eb5ac346f4ad35acd0b0f77156b191ad",
     "src/domain/expedition-ledger.ts": "ca3d705468c5b45a300f05d3ae39679d9fc35c0de3942d2f9552c80fb4b72b7c",
     "src/domain/expedition-review.ts": "5687a911d1d979443d1a565afb62012150fab4162398ae09756c7593387a3537",
     "src/domain/gem-tactics.ts": "dccb290e2444af0e758bbbf8132fb4c569d66a93cf9835e4e3516b247b4b05d8",
     "src/domain/home-journey.ts": "7e5169088528ea9328fda7354e81b583a4fea6e30cacedd7801cc76e613b0d2d",
     "src/domain/ivory-tower.ts": "d4a5e61e14578f539da1afdcd8f82adc7a5362f1f1226cdd0ae8d3974f179b8e",
-    "src/domain/jam-relay.ts": "b5af869c1332eea99c4f8da8d8c070cc8bbed12395fde5c63da0c4352d4c8a3c",
+    "src/domain/jam-dampening.ts": "ee09d765ed3e491508a91ece5d2a3678bd60db6493f8021088e780cff149fb0c",
     "src/domain/legacy-omens.ts": "abe4c9354afa17f6cfd0a2309644862a6e5699a08c78d4f479335c58118e77c6",
     "src/domain/memory-gems.ts": "03bb6b73158e855ab11806ed025544cc14b306bd2d8278dd80f5e2ee06fe6eb5",
     "src/domain/novels.ts": "fe9d9c582d2657636d5ef1c13e6ade74d03f965fb4a98247d088a5f53f218904",
@@ -67,11 +67,11 @@
     "src/domain/rewards.ts": "973c7c87408ddfd4264587b01027441b4c24df592fb6f91d0190f11211012510",
     "src/domain/scout-skills.ts": "f1e2e76c462f02da57649958aead6f38e5599daa97c163f8db6fe09daa4dcb01",
     "src/domain/skill-info.ts": "c6173abf1d45b2c7aecccbf3a1744bb21980136ff8314fd7c22633b6a0c7331e",
-    "src/domain/types.ts": "df3e8162a7b3c3f5001bfffa196b8e3f3c14f0a464b462dcb746fd509ed484d8",
+    "src/domain/types.ts": "4036921d50238ea594844a4d3cb76fcb989a41dfe188d09ddf12e2f524d3bb17",
     "src/domain/ultimates.ts": "831631ba1c3aba368e67f09354e7b0f8c61f6b99b0e31211465018dcf6222d51",
     "src/domain/white-flower.ts": "4016daf45ad5b89ed4cf67feaceb6e68426164af11c1ed297f4ccb53c1390f95",
     "src/domain/xr-gacha.ts": "503b90e9ecae5c4120460fccf132c307ed9e993a0c68bb5ea4d3d86923cfea19",
-    "src/locales/en.json": "139e23fc976b5cad1cb0c54f4003349d2362fdbbd47f315d8e7e0fe93ef622ba",
+    "src/locales/en.json": "c70384c781479bf2d3621475e29ef4b198ceae77db4c53685d53fa4b529749cf",
     "src/locales/i18n.ts": "2ed62b443f0d82ea6af5de5e17a37c0951542bc6f7127ca0787b91111c57f61f",
     "src/main.tsx": "583bc438db6447c78ab443fc66ef31a88b1a88c999767df29643bc5fe5e42595",
     "src/platform/audio-resume.ts": "ec1bb49625fa143b76d4e4b1a9ce18d2aeba1074687f3c737d482ebb6a01406d",
@@ -97,7 +97,7 @@
     "src/platform/rabbit-volley-audio.ts": "cde73f0cef39d3a1b2d71f6917da64b7e0e1ca41de6f369b7dade1c7d287e13a",
     "src/platform/save-backup.ts": "a8993247f97519bd5c0b8afaa0b5a4c23bd3f6ef48a2859c4c655f73c316af5a",
     "src/platform/save-migration.ts": "437dd30d5ed7bfeeecd0b4052ec29a96b8bed07c4acde573a222a2354f181c3e",
-    "src/platform/save.ts": "1143fb8eebde0217cf31c4dc9227f090fd32f5926d02c035072e3297c55da3c2",
+    "src/platform/save.ts": "1ea24a4b058932fa86411b098c7e89c7c0320dded40980014c4876d392f939bd",
     "src/platform/sound-cues.ts": "bc279f0e265a59c519442ed09f9f1d9310eb354ab7a1f39a7b41c3ea672206f4",
     "src/platform/ultimate-audio.ts": "aa151876acebc1ee39b8b9a426146539213046330538c71ccdcd005e9ad3d797",
     "src/platform/ultimate-charge-audio.ts": "41c85c31728652997e4e0312784d440546d2816b06592ebb97f6a6c0e3f7e09e",
@@ -159,7 +159,7 @@
     "src/ui/UltimateCutIn.tsx": "aa2a70d8bce6a0bde6d91ed5720bb53f77075ca621827908504e21381b9b1d5d",
     "src/ui/UltimateIntroFx.tsx": "67de9218e13e2cde9f3b0933761391dd85258667baecba67b8a705d50b3a2bb7",
     "src/ui/UltimateMeter.tsx": "4a637f22f82611704e3f6b81f54a4aeeca9a0eb143e0b39bfa3cdebf06666699",
-    "src/ui/UnitEffects.tsx": "59e8de68bdb4f1f216ac2c6afa4418242414442dc94d5076ffb32746b4bce0d8",
+    "src/ui/UnitEffects.tsx": "bb555cf862940ce82d6ee6fdd2c62a6ae8ad74ced535c0b13a0609baf5eddfb3",
     "src/ui/VisualNovel.tsx": "0c9afbc566f9e52237aaa46700adab964ec68861f5fc16d47d3c94c79228c375",
     "src/ui/XRGacha.tsx": "ea1c7e07e4e19778076362906e0bfae96fc2e263dc4be6640cc2b125f848b299",
     "src/ui/animated-illustration.css": "9ca10b248198857aec0565629d42b9c4b986eafc8950170a246abd9ee56dff52",
@@ -232,14 +232,14 @@
     "src/ui/visual-novel.css": "88d627bbd6a6add8335e285f51a438b0b028651726674939c47dabc56f120522",
     "src/ui/xr-gacha.css": "9c7c8ef94c4f7e434087d2a1d7911c021eeb2661455dedef0c139fd0118abfc6",
     "scripts/this-girl-03-v2/policy.mts": "dfffd95701bf10181d82681f1ae14c0db0a80f8ad0aeb6c002388c2e0bdeee9e",
-    "scripts/this-girl-03-v2/modes.mts": "4ffdbb21afa6315f5d0edb259e344a0296b7d3768d9e00f401155cb2d2a5bcc6",
-    "scripts/this-girl-03-v2/trace-jam.mts": "1bbb2c6134df18fc69241cde25f0f47c558db2eb335bd4a77cd0c9cef2b14988",
-    "scripts/this-girl-03-v2/confirm.mts": "c5ddae605418022c4ead030d07128a6d2dcddc181a01850b573dd906391dbf3a",
-    "scripts/this-girl-03-v2/lock.mts": "3d879f4e9846b27000915e51d6ec7551c5578551284bd2b28fb4b67f793209da",
-    "scripts/this-girl-03-v2/protocol.md": "63bc5332d22cddff375eef8733e286d2d808220bd0edc299579a2d373e357a98",
-    "scripts/this-girl-03-v2/search.mts": "8ea5b67f00bde55f31bbaf75c5c23668fd04b61d20b791758c06c75153c2a560",
+    "scripts/this-girl-03-v2/modes.mts": "1fbf613b60ba5c2be84f4427623838e02a4d9a5e11d4090ca7833a9efee1f6ca",
+    "scripts/this-girl-03-v2/trace-jam.mts": "ab33633243c8f9b9b9e93cdc75e63e683b10f1cc0e5e44f6b3a161fce24f836d",
+    "scripts/this-girl-03-v2/confirm.mts": "0ec82432926c70f17eca0bf6d318d67786539d16764df5972f483a8895d166e6",
+    "scripts/this-girl-03-v2/lock.mts": "69015bc5991730a99cd23d63f1ae2320b3fba1e421200b4d18b9a205d266ef1a",
+    "scripts/this-girl-03-v2/protocol.md": "53014a36bfe682c80cd11e08120e8fcd42198299c6f2fe4f117cf38fac676ade",
+    "scripts/this-girl-03-v2/search.mts": "fe8109c2f14c4c3e16dfc84a6a1f42e9fa884e2d64f5f4714f0a73741c80fe60",
     "scripts/this-girl-03-v2/select-diverse.mts": "b41adda1fcf3b42417b6b370c40ee33fd9dbd97e1ff3f018c6657d7398b001e4",
-    "scripts/this-girl-03-v2/analyze.py": "d0b20ec856e68390fce028661935cf0998731abccfd5b3a09e1db914ef0350f2"
+    "scripts/this-girl-03-v2/analyze.py": "b73d4990babef3b7b3a3580462a3280feff08efdf72dc456eced4581e9e83050"
   },
   "cases": [
     {
@@ -483,7 +483,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -599,7 +599,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "b57caf768df7c0d415ea775a17ef2d5dc94b801482b6693c27c79ed10e39c59f"
+      "selectionInputSha256": "1093dc1665759badf6ce791203d73d2e18242eebf509af22401ba3b86ae074fc"
     },
     {
       "id": "ivory-tower-010-T3-F2",
@@ -842,7 +842,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -958,7 +958,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "73aa250c48415bf795d14ef115e2386f3339118882dedd72150f57f672fc7290"
+      "selectionInputSha256": "d6fb7feb1875a7fa855577d32d5377aad4f117473cfcecba234cce4817d25f18"
     },
     {
       "id": "ivory-tower-010-T4-F1",
@@ -974,10 +974,10 @@
         "C": {
           "config": {
             "party": [
-              "tikka",
               "seris-awakened",
               "athena",
-              "benzaiten"
+              "benzaiten",
+              "tikka"
             ],
             "leader": "athena",
             "gems": [
@@ -988,16 +988,6 @@
                 "roll": {
                   "power": 139,
                   "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "mercy",
                   "value": 139
                 }
               },
@@ -1017,15 +1007,22 @@
                 "variant": "pure",
                 "roll": {
                   "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
                   "trait": "mercy",
                   "value": 139
                 }
               }
             ],
-            "policy": 0,
-            "prefer": [
-              "jam"
-            ]
+            "policy": 0
           },
           "mode": "after"
         },
@@ -1090,10 +1087,10 @@
         "X": {
           "config": {
             "party": [
-              "tikka",
               "seris-awakened",
               "athena",
-              "benzaiten"
+              "benzaiten",
+              "tikka"
             ],
             "leader": "athena",
             "gems": [
@@ -1104,16 +1101,6 @@
                 "roll": {
                   "power": 139,
                   "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "mercy",
                   "value": 139
                 }
               },
@@ -1133,25 +1120,32 @@
                 "variant": "pure",
                 "roll": {
                   "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
                   "trait": "mercy",
                   "value": 139
                 }
               }
             ],
-            "policy": 0,
-            "prefer": [
-              "jam"
-            ]
+            "policy": 0
           },
           "mode": "before"
         },
         "E": {
           "config": {
             "party": [
-              "tikka",
               "seris-awakened",
               "athena",
-              "benzaiten"
+              "benzaiten",
+              "tikka"
             ],
             "leader": "athena",
             "gems": [
@@ -1162,16 +1156,6 @@
                 "roll": {
                   "power": 139,
                   "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "mercy",
                   "value": 139
                 }
               },
@@ -1191,25 +1175,32 @@
                 "variant": "pure",
                 "roll": {
                   "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
                   "trait": "mercy",
                   "value": 139
                 }
               }
             ],
-            "policy": 0,
-            "prefer": [
-              "jam"
-            ]
+            "policy": 0
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
             "party": [
-              "tikka",
               "seris-awakened",
               "athena",
-              "benzaiten"
+              "benzaiten",
+              "tikka"
             ],
             "leader": "athena",
             "gems": [
@@ -1220,16 +1211,6 @@
                 "roll": {
                   "power": 139,
                   "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "mercy",
                   "value": 139
                 }
               },
@@ -1249,15 +1230,22 @@
                 "variant": "pure",
                 "roll": {
                   "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
                   "trait": "mercy",
                   "value": 139
                 }
               }
             ],
-            "policy": 0,
-            "prefer": [
-              "jam"
-            ]
+            "policy": 0
           },
           "mode": "no-jam"
         },
@@ -1317,7 +1305,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "55ec48d36986b16106a5af30fdd351c660e2247541b3b306b47048d880e6551e"
+      "selectionInputSha256": "0ce53de47f18ed9e656d01dd75437c3bd6f45d64e48b9e1362d1512ea2f9ca38"
     },
     {
       "id": "ivory-tower-010-T4-F2",
@@ -1560,7 +1548,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -1676,7 +1664,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "7768a37aff2087b95e178bd4483538bcbc27df5428ba9f3086cae3a373457d4a"
+      "selectionInputSha256": "9e21f90f9f6fea9fe33b5ee143922a57f3b75e9962c40c1e22884ce051a980da"
     },
     {
       "id": "ivory-tower-010-T6-F1",
@@ -1700,8 +1688,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1720,8 +1708,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1813,8 +1801,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1833,8 +1821,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1871,8 +1859,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1891,8 +1879,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1916,7 +1904,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -1929,8 +1917,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -1949,8 +1937,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2045,8 +2033,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2065,8 +2053,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2103,8 +2091,8 @@
             "leader": "athena",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
@@ -2123,8 +2111,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
@@ -2151,7 +2139,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "405d8df941b240791d9a8e97d08de1a0a7bc5d75186477350fead44d513bea28"
+      "selectionInputSha256": "70281ac4b42e87f30b6679180f5d9e845cf52799f3621385e0085f2d9cac83aa"
     },
     {
       "id": "ivory-tower-010-T6-F2",
@@ -2175,8 +2163,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2195,8 +2183,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2291,8 +2279,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2311,8 +2299,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2349,8 +2337,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2369,8 +2357,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2394,7 +2382,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -2407,8 +2395,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2427,8 +2415,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 239,
@@ -2520,8 +2508,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2540,8 +2528,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2578,8 +2566,8 @@
             "leader": "liora-awakened",
             "gems": [
               {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
@@ -2598,8 +2586,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
@@ -2626,7 +2614,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "35fe03431df5e1d4cb218c34f6187c4ffa6839513f9827a9881eece19c158eea"
+      "selectionInputSha256": "90ce03f1a649fddd4517ae3751c11d48dfee859235955788b9e71abb5b9a5686"
     },
     {
       "id": "lunette-awakening-T3-F1",
@@ -2670,8 +2658,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2786,8 +2774,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2844,8 +2832,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2869,7 +2857,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -2902,8 +2890,8 @@
                 }
               },
               {
-                "id": "gpale-ward",
-                "defId": "pale-ward",
+                "id": "gecho-shard",
+                "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 100,
@@ -2988,7 +2976,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "371c367e243668d036cc2c63e815a2537882304ab64bbf1fa4e2c090e3d28bb3"
+      "selectionInputSha256": "357c893f835050369f233f07a5cdbdde9676384f79bbd01087ef389f531449e1"
     },
     {
       "id": "lunette-awakening-T3-F2",
@@ -3052,7 +3040,7 @@
                 }
               }
             ],
-            "policy": 0
+            "policy": 1
           },
           "mode": "after"
         },
@@ -3162,7 +3150,7 @@
                 }
               }
             ],
-            "policy": 0
+            "policy": 1
           },
           "mode": "before"
         },
@@ -3217,9 +3205,9 @@
                 }
               }
             ],
-            "policy": 0
+            "policy": 1
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -3272,7 +3260,7 @@
                 }
               }
             ],
-            "policy": 0
+            "policy": 1
           },
           "mode": "no-jam"
         },
@@ -3335,7 +3323,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "955722468296a1a2ef442eeed54a119beaaa697d4d06e1e58d449ba09d3f93c5"
+      "selectionInputSha256": "1a99ea6ba817ec44f89a68bafe1965cbc57d7055dec2f51d55e6f51c17879ed3"
     },
     {
       "id": "lunette-awakening-T4-F1",
@@ -3578,7 +3566,7 @@
               "jam"
             ]
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -3697,7 +3685,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "6a0da8dfd63a258eab25f01624dc7bc5a65e1f3123c2a87e9213e317b683ba1e"
+      "selectionInputSha256": "9c46f9a61664a8a3673b540f6b8061ec3bf95edfc7640b94cb897fc6c5d3c8fe"
     },
     {
       "id": "lunette-awakening-T4-F2",
@@ -3731,32 +3719,32 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
                   "trait": "mercy",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
                   "value": 139
                 }
               }
@@ -3841,32 +3829,32 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
                   "trait": "mercy",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
                   "value": 139
                 }
               }
@@ -3896,6 +3884,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -3904,31 +3912,11 @@
                   "trait": "mercy",
                   "value": 139
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
               }
             ],
             "policy": 0
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -3951,32 +3939,32 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
                 "roll": {
                   "power": 139,
                   "trait": "mercy",
-                  "value": 139
-                }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
                   "value": 139
                 }
               }
@@ -4044,7 +4032,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "3b612b17e27feb1eea5d32a9b5944c650caa6ffd038f72163389fa509b862783"
+      "selectionInputSha256": "5c18dd15f58f3250c2de06f169cf42328bea996f902c16676deb1ef23cb6ea5e"
     },
     {
       "id": "lunette-awakening-T6-F1",
@@ -4275,7 +4263,7 @@
             ],
             "policy": 0
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -4501,7 +4489,7 @@
           "mode": "after"
         }
       },
-      "selectionInputSha256": "1374094527af84a02efe157ec503ca0c455c3b0f0f98360577673cfe53327fb4"
+      "selectionInputSha256": "d0e3a17f5557cfe77b814e5297c10a4748d8f8cf3d389d993e49f8bad476856b"
     },
     {
       "id": "lunette-awakening-T6-F2",
@@ -4535,6 +4523,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4543,29 +4551,9 @@
                   "trait": "mercy",
                   "value": 239
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
           "mode": "after"
         },
@@ -4645,6 +4633,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4653,29 +4661,9 @@
                   "trait": "mercy",
                   "value": 239
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
           "mode": "before"
         },
@@ -4700,6 +4688,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4708,31 +4716,11 @@
                   "trait": "mercy",
                   "value": 239
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
-          "mode": "no-relay"
+          "mode": "no-guard"
         },
         "J": {
           "config": {
@@ -4755,6 +4743,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4763,29 +4771,9 @@
                   "trait": "mercy",
                   "value": 239
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 239,
-                  "trait": "bulwark",
-                  "value": 239
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
           "mode": "no-jam"
         },
@@ -4868,6 +4856,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4876,29 +4884,9 @@
                   "trait": "mercy",
                   "value": 100
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 100,
-                  "trait": "bulwark",
-                  "value": 100
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 100,
-                  "trait": "bulwark",
-                  "value": 100
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
           "mode": "after"
         },
@@ -4923,6 +4911,26 @@
                 }
               },
               {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
                 "id": "gecho-shard",
                 "defId": "echo-shard",
                 "variant": "pure",
@@ -4931,2084 +4939,2064 @@
                   "trait": "mercy",
                   "value": 139
                 }
-              },
-              {
-                "id": "gecho-shard",
-                "defId": "echo-shard",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
-              },
-              {
-                "id": "ghollow-lantern",
-                "defId": "hollow-lantern",
-                "variant": "pure",
-                "roll": {
-                  "power": 139,
-                  "trait": "bulwark",
-                  "value": 139
-                }
               }
             ],
-            "policy": 1
+            "policy": 0
           },
           "mode": "after"
         }
       },
-      "selectionInputSha256": "589e21e8768e54515f35b516b4c8e4ce720235982ed9c80aeb5681043a2162b2"
+      "selectionInputSha256": "452919b188cf1bc15f4423e923198c2c61266aa50c26ea1b394a8117e427c2df"
     }
   ],
   "seedMap": [
     {
       "logical": 960001,
-      "applicationSeed": 3928372669
+      "applicationSeed": 1485686316
     },
     {
       "logical": 960002,
-      "applicationSeed": 134872865
+      "applicationSeed": 77565776
     },
     {
       "logical": 960003,
-      "applicationSeed": 34253571
+      "applicationSeed": 1382051887
     },
     {
       "logical": 960004,
-      "applicationSeed": 484660941
+      "applicationSeed": 3178994285
     },
     {
       "logical": 960005,
-      "applicationSeed": 2150295263
+      "applicationSeed": 3292630371
     },
     {
       "logical": 960006,
-      "applicationSeed": 3024121969
+      "applicationSeed": 4154504075
     },
     {
       "logical": 960007,
-      "applicationSeed": 3326948121
+      "applicationSeed": 1582300637
     },
     {
       "logical": 960008,
-      "applicationSeed": 3675714421
+      "applicationSeed": 424315401
     },
     {
       "logical": 960009,
-      "applicationSeed": 2875137890
+      "applicationSeed": 2658207059
     },
     {
       "logical": 960010,
-      "applicationSeed": 1880547132
+      "applicationSeed": 3742534064
     },
     {
       "logical": 960011,
-      "applicationSeed": 3304937415
+      "applicationSeed": 1083663907
     },
     {
       "logical": 960012,
-      "applicationSeed": 324925895
+      "applicationSeed": 1705684273
     },
     {
       "logical": 960013,
-      "applicationSeed": 3208241246
+      "applicationSeed": 1874540265
     },
     {
       "logical": 960014,
-      "applicationSeed": 2360406018
+      "applicationSeed": 217447670
     },
     {
       "logical": 960015,
-      "applicationSeed": 1458047971
+      "applicationSeed": 3638163686
     },
     {
       "logical": 960016,
-      "applicationSeed": 3463158558
+      "applicationSeed": 2125242014
     },
     {
       "logical": 960017,
-      "applicationSeed": 3385842387
+      "applicationSeed": 1366622727
     },
     {
       "logical": 960018,
-      "applicationSeed": 1612131512
+      "applicationSeed": 4154336433
     },
     {
       "logical": 960019,
-      "applicationSeed": 3939589322
+      "applicationSeed": 466772405
     },
     {
       "logical": 960020,
-      "applicationSeed": 1569116796
+      "applicationSeed": 1682790557
     },
     {
       "logical": 960021,
-      "applicationSeed": 670707809
+      "applicationSeed": 3688809530
     },
     {
       "logical": 960022,
-      "applicationSeed": 4185300341
+      "applicationSeed": 2810330627
     },
     {
       "logical": 960023,
-      "applicationSeed": 3176626180
+      "applicationSeed": 356950184
     },
     {
       "logical": 960024,
-      "applicationSeed": 415547088
+      "applicationSeed": 1247539536
     },
     {
       "logical": 960025,
-      "applicationSeed": 195337158
+      "applicationSeed": 2848631172
     },
     {
       "logical": 960026,
-      "applicationSeed": 4195644523
+      "applicationSeed": 532038087
     },
     {
       "logical": 960027,
-      "applicationSeed": 4194479276
+      "applicationSeed": 1052745176
     },
     {
       "logical": 960028,
-      "applicationSeed": 3651358066
+      "applicationSeed": 454189070
     },
     {
       "logical": 960029,
-      "applicationSeed": 1324024522
+      "applicationSeed": 1247876471
     },
     {
       "logical": 960030,
-      "applicationSeed": 1145872197
+      "applicationSeed": 3084129673
     },
     {
       "logical": 960031,
-      "applicationSeed": 687680203
+      "applicationSeed": 2690822100
     },
     {
       "logical": 960032,
-      "applicationSeed": 50171064
+      "applicationSeed": 443252303
     },
     {
       "logical": 960033,
-      "applicationSeed": 3745385250
+      "applicationSeed": 1816012021
     },
     {
       "logical": 960034,
-      "applicationSeed": 3135140487
+      "applicationSeed": 1283348977
     },
     {
       "logical": 960035,
-      "applicationSeed": 3768854585
+      "applicationSeed": 2201632761
     },
     {
       "logical": 960036,
-      "applicationSeed": 329396579
+      "applicationSeed": 2673821279
     },
     {
       "logical": 960037,
-      "applicationSeed": 2206885559
+      "applicationSeed": 4028113167
     },
     {
       "logical": 960038,
-      "applicationSeed": 1481496244
+      "applicationSeed": 2574884234
     },
     {
       "logical": 960039,
-      "applicationSeed": 1450719409
+      "applicationSeed": 428292291
     },
     {
       "logical": 960040,
-      "applicationSeed": 3526404664
+      "applicationSeed": 1374715166
     },
     {
       "logical": 960041,
-      "applicationSeed": 706527294
+      "applicationSeed": 836186617
     },
     {
       "logical": 960042,
-      "applicationSeed": 314286648
+      "applicationSeed": 1515247809
     },
     {
       "logical": 960043,
-      "applicationSeed": 1524044842
+      "applicationSeed": 1541493047
     },
     {
       "logical": 960044,
-      "applicationSeed": 200409878
+      "applicationSeed": 3329220680
     },
     {
       "logical": 960045,
-      "applicationSeed": 4087782263
+      "applicationSeed": 2029598502
     },
     {
       "logical": 960046,
-      "applicationSeed": 3189884854
+      "applicationSeed": 876436812
     },
     {
       "logical": 960047,
-      "applicationSeed": 1943913216
+      "applicationSeed": 1361358721
     },
     {
       "logical": 960048,
-      "applicationSeed": 2098536602
+      "applicationSeed": 2870637137
     },
     {
       "logical": 960049,
-      "applicationSeed": 3147525103
+      "applicationSeed": 1131800842
     },
     {
       "logical": 960050,
-      "applicationSeed": 3940617961
+      "applicationSeed": 3204487507
     },
     {
       "logical": 960051,
-      "applicationSeed": 124145622
+      "applicationSeed": 2537446276
     },
     {
       "logical": 960052,
-      "applicationSeed": 3509617432
+      "applicationSeed": 3498073345
     },
     {
       "logical": 960053,
-      "applicationSeed": 3481945300
+      "applicationSeed": 769369470
     },
     {
       "logical": 960054,
-      "applicationSeed": 623649594
+      "applicationSeed": 429618364
     },
     {
       "logical": 960055,
-      "applicationSeed": 246826186
+      "applicationSeed": 3147281854
     },
     {
       "logical": 960056,
-      "applicationSeed": 2890960530
+      "applicationSeed": 2228426905
     },
     {
       "logical": 960057,
-      "applicationSeed": 3230678678
+      "applicationSeed": 1853709514
     },
     {
       "logical": 960058,
-      "applicationSeed": 695788101
+      "applicationSeed": 2212794330
     },
     {
       "logical": 960059,
-      "applicationSeed": 3390392139
+      "applicationSeed": 4086345909
     },
     {
       "logical": 960060,
-      "applicationSeed": 3121933827
+      "applicationSeed": 75731660
     },
     {
       "logical": 960061,
-      "applicationSeed": 1438121906
+      "applicationSeed": 242174533
     },
     {
       "logical": 960062,
-      "applicationSeed": 624128383
+      "applicationSeed": 2422207471
     },
     {
       "logical": 960063,
-      "applicationSeed": 4206544922
+      "applicationSeed": 718544676
     },
     {
       "logical": 960064,
-      "applicationSeed": 1592765471
+      "applicationSeed": 3593811853
     },
     {
       "logical": 960065,
-      "applicationSeed": 310720303
+      "applicationSeed": 445555073
     },
     {
       "logical": 960066,
-      "applicationSeed": 2133885955
+      "applicationSeed": 498606465
     },
     {
       "logical": 960067,
-      "applicationSeed": 496290882
+      "applicationSeed": 2936805332
     },
     {
       "logical": 960068,
-      "applicationSeed": 2765181863
+      "applicationSeed": 2503590828
     },
     {
       "logical": 960069,
-      "applicationSeed": 1684467710
+      "applicationSeed": 573392406
     },
     {
       "logical": 960070,
-      "applicationSeed": 2525025503
+      "applicationSeed": 4044033997
     },
     {
       "logical": 960071,
-      "applicationSeed": 651771755
+      "applicationSeed": 1887487368
     },
     {
       "logical": 960072,
-      "applicationSeed": 3923600434
+      "applicationSeed": 451216295
     },
     {
       "logical": 960073,
-      "applicationSeed": 2480747207
+      "applicationSeed": 4205661832
     },
     {
       "logical": 960074,
-      "applicationSeed": 3568679293
+      "applicationSeed": 1944323856
     },
     {
       "logical": 960075,
-      "applicationSeed": 544744656
+      "applicationSeed": 2093257472
     },
     {
       "logical": 960076,
-      "applicationSeed": 3836938872
+      "applicationSeed": 2725525481
     },
     {
       "logical": 960077,
-      "applicationSeed": 756605008
+      "applicationSeed": 2331452680
     },
     {
       "logical": 960078,
-      "applicationSeed": 521158139
+      "applicationSeed": 1660965326
     },
     {
       "logical": 960079,
-      "applicationSeed": 431567264
+      "applicationSeed": 163877983
     },
     {
       "logical": 960080,
-      "applicationSeed": 3171485189
+      "applicationSeed": 1923347954
     },
     {
       "logical": 960081,
-      "applicationSeed": 3052595300
+      "applicationSeed": 2693604682
     },
     {
       "logical": 960082,
-      "applicationSeed": 3469185274
+      "applicationSeed": 2383922048
     },
     {
       "logical": 960083,
-      "applicationSeed": 228888867
+      "applicationSeed": 3325578597
     },
     {
       "logical": 960084,
-      "applicationSeed": 2423280191
+      "applicationSeed": 3325815343
     },
     {
       "logical": 960085,
-      "applicationSeed": 155817432
+      "applicationSeed": 1358938991
     },
     {
       "logical": 960086,
-      "applicationSeed": 1994091387
+      "applicationSeed": 3126111641
     },
     {
       "logical": 960087,
-      "applicationSeed": 963449172
+      "applicationSeed": 1984740974
     },
     {
       "logical": 960088,
-      "applicationSeed": 73313361
+      "applicationSeed": 2342218825
     },
     {
       "logical": 960089,
-      "applicationSeed": 3290306829
+      "applicationSeed": 4049056131
     },
     {
       "logical": 960090,
-      "applicationSeed": 132172434
+      "applicationSeed": 76750038
     },
     {
       "logical": 960091,
-      "applicationSeed": 2266692572
+      "applicationSeed": 3045108971
     },
     {
       "logical": 960092,
-      "applicationSeed": 3527030052
+      "applicationSeed": 857306391
     },
     {
       "logical": 960093,
-      "applicationSeed": 1305659244
+      "applicationSeed": 4023787418
     },
     {
       "logical": 960094,
-      "applicationSeed": 1996090240
+      "applicationSeed": 3119692840
     },
     {
       "logical": 960095,
-      "applicationSeed": 510892136
+      "applicationSeed": 1829310334
     },
     {
       "logical": 960096,
-      "applicationSeed": 202560832
+      "applicationSeed": 2338818579
     },
     {
       "logical": 960097,
-      "applicationSeed": 370184040
+      "applicationSeed": 212963938
     },
     {
       "logical": 960098,
-      "applicationSeed": 2154337074
+      "applicationSeed": 1020261358
     },
     {
       "logical": 960099,
-      "applicationSeed": 1757951003
+      "applicationSeed": 2031757150
     },
     {
       "logical": 960100,
-      "applicationSeed": 1106274413
+      "applicationSeed": 3908137974
     },
     {
       "logical": 960101,
-      "applicationSeed": 1864035018
+      "applicationSeed": 322941712
     },
     {
       "logical": 960102,
-      "applicationSeed": 2156172470
+      "applicationSeed": 3585270722
     },
     {
       "logical": 960103,
-      "applicationSeed": 231375557
+      "applicationSeed": 3266010542
     },
     {
       "logical": 960104,
-      "applicationSeed": 2299859781
+      "applicationSeed": 1465758533
     },
     {
       "logical": 960105,
-      "applicationSeed": 1304217349
+      "applicationSeed": 4162111375
     },
     {
       "logical": 960106,
-      "applicationSeed": 3750142378
+      "applicationSeed": 3647595039
     },
     {
       "logical": 960107,
-      "applicationSeed": 244014869
+      "applicationSeed": 2705161535
     },
     {
       "logical": 960108,
-      "applicationSeed": 25627872
+      "applicationSeed": 373509916
     },
     {
       "logical": 960109,
-      "applicationSeed": 3384768876
+      "applicationSeed": 3136459540
     },
     {
       "logical": 960110,
-      "applicationSeed": 3114800011
+      "applicationSeed": 125134839
     },
     {
       "logical": 960111,
-      "applicationSeed": 2510679693
+      "applicationSeed": 865004428
     },
     {
       "logical": 960112,
-      "applicationSeed": 2471206131
+      "applicationSeed": 828019735
     },
     {
       "logical": 960113,
-      "applicationSeed": 640559442
+      "applicationSeed": 284628432
     },
     {
       "logical": 960114,
-      "applicationSeed": 2491944976
+      "applicationSeed": 2453117556
     },
     {
       "logical": 960115,
-      "applicationSeed": 82535178
+      "applicationSeed": 2453882357
     },
     {
       "logical": 960116,
-      "applicationSeed": 2215510074
+      "applicationSeed": 3256005460
     },
     {
       "logical": 960117,
-      "applicationSeed": 1660619717
+      "applicationSeed": 3484552559
     },
     {
       "logical": 960118,
-      "applicationSeed": 779142308
+      "applicationSeed": 1596624122
     },
     {
       "logical": 960119,
-      "applicationSeed": 856478550
+      "applicationSeed": 554705864
     },
     {
       "logical": 960120,
-      "applicationSeed": 565162114
+      "applicationSeed": 444525140
     },
     {
       "logical": 960121,
-      "applicationSeed": 3571953087
+      "applicationSeed": 3665069549
     },
     {
       "logical": 960122,
-      "applicationSeed": 3819954964
+      "applicationSeed": 3725940252
     },
     {
       "logical": 960123,
-      "applicationSeed": 1577184487
+      "applicationSeed": 4054360203
     },
     {
       "logical": 960124,
-      "applicationSeed": 330341008
+      "applicationSeed": 2310934027
     },
     {
       "logical": 960125,
-      "applicationSeed": 4002703691
+      "applicationSeed": 12289429
     },
     {
       "logical": 960126,
-      "applicationSeed": 1297968817
+      "applicationSeed": 3665543049
     },
     {
       "logical": 960127,
-      "applicationSeed": 4211636316
+      "applicationSeed": 3960521032
     },
     {
       "logical": 960128,
-      "applicationSeed": 2848084427
+      "applicationSeed": 219505796
     },
     {
       "logical": 960129,
-      "applicationSeed": 2668596483
+      "applicationSeed": 3319197779
     },
     {
       "logical": 960130,
-      "applicationSeed": 525024925
+      "applicationSeed": 1237307262
     },
     {
       "logical": 960131,
-      "applicationSeed": 4194223488
+      "applicationSeed": 405200829
     },
     {
       "logical": 960132,
-      "applicationSeed": 216534488
+      "applicationSeed": 859125770
     },
     {
       "logical": 960133,
-      "applicationSeed": 3808434394
+      "applicationSeed": 3085966178
     },
     {
       "logical": 960134,
-      "applicationSeed": 1348633197
+      "applicationSeed": 3521557518
     },
     {
       "logical": 960135,
-      "applicationSeed": 2552704660
+      "applicationSeed": 670444595
     },
     {
       "logical": 960136,
-      "applicationSeed": 1465515009
+      "applicationSeed": 2566196826
     },
     {
       "logical": 960137,
-      "applicationSeed": 3869629574
+      "applicationSeed": 2629050123
     },
     {
       "logical": 960138,
-      "applicationSeed": 2671868857
+      "applicationSeed": 2006633176
     },
     {
       "logical": 960139,
-      "applicationSeed": 1132718328
+      "applicationSeed": 3897123639
     },
     {
       "logical": 960140,
-      "applicationSeed": 3164744662
+      "applicationSeed": 3964979259
     },
     {
       "logical": 960141,
-      "applicationSeed": 3193250926
+      "applicationSeed": 1192429672
     },
     {
       "logical": 960142,
-      "applicationSeed": 1130054351
+      "applicationSeed": 3129739611
     },
     {
       "logical": 960143,
-      "applicationSeed": 3990073886
+      "applicationSeed": 3567953351
     },
     {
       "logical": 960144,
-      "applicationSeed": 2594019323
+      "applicationSeed": 2381484963
     },
     {
       "logical": 960145,
-      "applicationSeed": 2238135570
+      "applicationSeed": 3098687219
     },
     {
       "logical": 960146,
-      "applicationSeed": 1895511076
+      "applicationSeed": 2523406914
     },
     {
       "logical": 960147,
-      "applicationSeed": 3070993509
+      "applicationSeed": 4114724113
     },
     {
       "logical": 960148,
-      "applicationSeed": 4025887190
+      "applicationSeed": 2588822540
     },
     {
       "logical": 960149,
-      "applicationSeed": 1069765237
+      "applicationSeed": 2547493039
     },
     {
       "logical": 960150,
-      "applicationSeed": 2769438625
+      "applicationSeed": 1774558341
     },
     {
       "logical": 960151,
-      "applicationSeed": 2766841013
+      "applicationSeed": 1126462349
     },
     {
       "logical": 960152,
-      "applicationSeed": 2740408395
+      "applicationSeed": 2650078824
     },
     {
       "logical": 960153,
-      "applicationSeed": 1040067678
+      "applicationSeed": 1689137650
     },
     {
       "logical": 960154,
-      "applicationSeed": 3801563787
+      "applicationSeed": 664614805
     },
     {
       "logical": 960155,
-      "applicationSeed": 86851260
+      "applicationSeed": 2923181304
     },
     {
       "logical": 960156,
-      "applicationSeed": 3685349380
+      "applicationSeed": 858783144
     },
     {
       "logical": 960157,
-      "applicationSeed": 3788161109
+      "applicationSeed": 460330338
     },
     {
       "logical": 960158,
-      "applicationSeed": 3279613452
+      "applicationSeed": 3904566199
     },
     {
       "logical": 960159,
-      "applicationSeed": 2931307219
+      "applicationSeed": 3020819762
     },
     {
       "logical": 960160,
-      "applicationSeed": 1052872315
+      "applicationSeed": 1185716116
     },
     {
       "logical": 960161,
-      "applicationSeed": 1358888335
+      "applicationSeed": 3188439614
     },
     {
       "logical": 960162,
-      "applicationSeed": 3587046546
+      "applicationSeed": 446031362
     },
     {
       "logical": 960163,
-      "applicationSeed": 2674250656
+      "applicationSeed": 2397731666
     },
     {
       "logical": 960164,
-      "applicationSeed": 3465970361
+      "applicationSeed": 3566919052
     },
     {
       "logical": 960165,
-      "applicationSeed": 1194596478
+      "applicationSeed": 4092910047
     },
     {
       "logical": 960166,
-      "applicationSeed": 1824125433
+      "applicationSeed": 2067178337
     },
     {
       "logical": 960167,
-      "applicationSeed": 4194642100
+      "applicationSeed": 3480802388
     },
     {
       "logical": 960168,
-      "applicationSeed": 1500880047
+      "applicationSeed": 2140577702
     },
     {
       "logical": 960169,
-      "applicationSeed": 486178213
+      "applicationSeed": 624174487
     },
     {
       "logical": 960170,
-      "applicationSeed": 1840693404
+      "applicationSeed": 2772645428
     },
     {
       "logical": 960171,
-      "applicationSeed": 3543991908
+      "applicationSeed": 1490747800
     },
     {
       "logical": 960172,
-      "applicationSeed": 2906901340
+      "applicationSeed": 3972686209
     },
     {
       "logical": 960173,
-      "applicationSeed": 864462796
+      "applicationSeed": 852485384
     },
     {
       "logical": 960174,
-      "applicationSeed": 501650929
+      "applicationSeed": 2151431820
     },
     {
       "logical": 960175,
-      "applicationSeed": 4198076892
+      "applicationSeed": 1561755035
     },
     {
       "logical": 960176,
-      "applicationSeed": 2377539922
+      "applicationSeed": 2405178844
     },
     {
       "logical": 960177,
-      "applicationSeed": 380013730
+      "applicationSeed": 654584864
     },
     {
       "logical": 960178,
-      "applicationSeed": 3381498555
+      "applicationSeed": 2236847235
     },
     {
       "logical": 960179,
-      "applicationSeed": 4097923538
+      "applicationSeed": 1223093069
     },
     {
       "logical": 960180,
-      "applicationSeed": 717806386
+      "applicationSeed": 4191954483
     },
     {
       "logical": 960181,
-      "applicationSeed": 2866892589
+      "applicationSeed": 1119856964
     },
     {
       "logical": 960182,
-      "applicationSeed": 1467142719
+      "applicationSeed": 3462431093
     },
     {
       "logical": 960183,
-      "applicationSeed": 3208338080
+      "applicationSeed": 2186299011
     },
     {
       "logical": 960184,
-      "applicationSeed": 3610484225
+      "applicationSeed": 1679721856
     },
     {
       "logical": 960185,
-      "applicationSeed": 896809499
+      "applicationSeed": 118456268
     },
     {
       "logical": 960186,
-      "applicationSeed": 2330313086
+      "applicationSeed": 4222719404
     },
     {
       "logical": 960187,
-      "applicationSeed": 113226822
+      "applicationSeed": 3368308441
     },
     {
       "logical": 960188,
-      "applicationSeed": 1284203299
+      "applicationSeed": 3991472158
     },
     {
       "logical": 960189,
-      "applicationSeed": 1224673218
+      "applicationSeed": 2120626533
     },
     {
       "logical": 960190,
-      "applicationSeed": 2075090336
+      "applicationSeed": 421230030
     },
     {
       "logical": 960191,
-      "applicationSeed": 1119652858
+      "applicationSeed": 1811464451
     },
     {
       "logical": 960192,
-      "applicationSeed": 2451448882
+      "applicationSeed": 3436560124
     },
     {
       "logical": 960193,
-      "applicationSeed": 344379519
+      "applicationSeed": 3346722053
     },
     {
       "logical": 960194,
-      "applicationSeed": 4255701390
+      "applicationSeed": 2782443009
     },
     {
       "logical": 960195,
-      "applicationSeed": 3584148102
+      "applicationSeed": 614650525
     },
     {
       "logical": 960196,
-      "applicationSeed": 3200025162
+      "applicationSeed": 1675537557
     },
     {
       "logical": 960197,
-      "applicationSeed": 75205863
+      "applicationSeed": 2830454584
     },
     {
       "logical": 960198,
-      "applicationSeed": 2280274767
+      "applicationSeed": 132799018
     },
     {
       "logical": 960199,
-      "applicationSeed": 1227152526
+      "applicationSeed": 2265097242
     },
     {
       "logical": 960200,
-      "applicationSeed": 1417410055
+      "applicationSeed": 442509864
     },
     {
       "logical": 960201,
-      "applicationSeed": 1964975443
+      "applicationSeed": 3898130458
     },
     {
       "logical": 960202,
-      "applicationSeed": 3526042811
+      "applicationSeed": 3969323307
     },
     {
       "logical": 960203,
-      "applicationSeed": 3801886923
+      "applicationSeed": 1796178728
     },
     {
       "logical": 960204,
-      "applicationSeed": 1067480238
+      "applicationSeed": 3014112546
     },
     {
       "logical": 960205,
-      "applicationSeed": 3814171042
+      "applicationSeed": 17069281
     },
     {
       "logical": 960206,
-      "applicationSeed": 1090789522
+      "applicationSeed": 3226131314
     },
     {
       "logical": 960207,
-      "applicationSeed": 3982407909
+      "applicationSeed": 3602687477
     },
     {
       "logical": 960208,
-      "applicationSeed": 2737486633
+      "applicationSeed": 2545340002
     },
     {
       "logical": 960209,
-      "applicationSeed": 2045193804
+      "applicationSeed": 1771264737
     },
     {
       "logical": 960210,
-      "applicationSeed": 2262178139
+      "applicationSeed": 2414031065
     },
     {
       "logical": 960211,
-      "applicationSeed": 2491082876
+      "applicationSeed": 1404314302
     },
     {
       "logical": 960212,
-      "applicationSeed": 4172233266
+      "applicationSeed": 292553367
     },
     {
       "logical": 960213,
-      "applicationSeed": 1966738799
+      "applicationSeed": 49123169
     },
     {
       "logical": 960214,
-      "applicationSeed": 3215672983
+      "applicationSeed": 591106577
     },
     {
       "logical": 960215,
-      "applicationSeed": 4078454592
+      "applicationSeed": 2754450473
     },
     {
       "logical": 960216,
-      "applicationSeed": 3634344672
+      "applicationSeed": 1315629209
     },
     {
       "logical": 960217,
-      "applicationSeed": 1217007794
+      "applicationSeed": 2325472919
     },
     {
       "logical": 960218,
-      "applicationSeed": 4282541079
+      "applicationSeed": 107880201
     },
     {
       "logical": 960219,
-      "applicationSeed": 3461993035
+      "applicationSeed": 3773427751
     },
     {
       "logical": 960220,
-      "applicationSeed": 1703959783
+      "applicationSeed": 4099769604
     },
     {
       "logical": 960221,
-      "applicationSeed": 3976539288
+      "applicationSeed": 2515249071
     },
     {
       "logical": 960222,
-      "applicationSeed": 2141199135
+      "applicationSeed": 929039596
     },
     {
       "logical": 960223,
-      "applicationSeed": 3261442097
+      "applicationSeed": 3276406898
     },
     {
       "logical": 960224,
-      "applicationSeed": 1320459200
+      "applicationSeed": 2848861673
     },
     {
       "logical": 960225,
-      "applicationSeed": 3418118682
+      "applicationSeed": 3647921760
     },
     {
       "logical": 960226,
-      "applicationSeed": 1687701343
+      "applicationSeed": 3260861047
     },
     {
       "logical": 960227,
-      "applicationSeed": 3697586993
+      "applicationSeed": 376975185
     },
     {
       "logical": 960228,
-      "applicationSeed": 537456369
+      "applicationSeed": 2204120253
     },
     {
       "logical": 960229,
-      "applicationSeed": 2907308886
+      "applicationSeed": 450710231
     },
     {
       "logical": 960230,
-      "applicationSeed": 995968982
+      "applicationSeed": 1570104536
     },
     {
       "logical": 960231,
-      "applicationSeed": 3125990820
+      "applicationSeed": 501346346
     },
     {
       "logical": 960232,
-      "applicationSeed": 355631776
+      "applicationSeed": 795893130
     },
     {
       "logical": 960233,
-      "applicationSeed": 1669989302
+      "applicationSeed": 1853314431
     },
     {
       "logical": 960234,
-      "applicationSeed": 3557504168
+      "applicationSeed": 1147253997
     },
     {
       "logical": 960235,
-      "applicationSeed": 1384544644
+      "applicationSeed": 969939213
     },
     {
       "logical": 960236,
-      "applicationSeed": 2069341015
+      "applicationSeed": 518443049
     },
     {
       "logical": 960237,
-      "applicationSeed": 237640823
+      "applicationSeed": 3723177519
     },
     {
       "logical": 960238,
-      "applicationSeed": 2297493422
+      "applicationSeed": 2799878097
     },
     {
       "logical": 960239,
-      "applicationSeed": 1415819252
+      "applicationSeed": 1968250202
     },
     {
       "logical": 960240,
-      "applicationSeed": 2410581255
+      "applicationSeed": 2423108824
     },
     {
       "logical": 960241,
-      "applicationSeed": 1043011009
+      "applicationSeed": 2034345800
     },
     {
       "logical": 960242,
-      "applicationSeed": 320827535
+      "applicationSeed": 2151546451
     },
     {
       "logical": 960243,
-      "applicationSeed": 2868249214
+      "applicationSeed": 1160574552
     },
     {
       "logical": 960244,
-      "applicationSeed": 3110691887
+      "applicationSeed": 2926221276
     },
     {
       "logical": 960245,
-      "applicationSeed": 179848589
+      "applicationSeed": 452370954
     },
     {
       "logical": 960246,
-      "applicationSeed": 257004329
+      "applicationSeed": 3236558923
     },
     {
       "logical": 960247,
-      "applicationSeed": 2291949623
+      "applicationSeed": 4017465080
     },
     {
       "logical": 960248,
-      "applicationSeed": 4292312690
+      "applicationSeed": 4084432620
     },
     {
       "logical": 960249,
-      "applicationSeed": 4079263509
+      "applicationSeed": 3792565461
     },
     {
       "logical": 960250,
-      "applicationSeed": 1868306354
+      "applicationSeed": 2599747756
     },
     {
       "logical": 960251,
-      "applicationSeed": 1817959051
+      "applicationSeed": 968721827
     },
     {
       "logical": 960252,
-      "applicationSeed": 3196145906
+      "applicationSeed": 2653005428
     },
     {
       "logical": 960253,
-      "applicationSeed": 3063120740
+      "applicationSeed": 1897548256
     },
     {
       "logical": 960254,
-      "applicationSeed": 3151412619
+      "applicationSeed": 685304652
     },
     {
       "logical": 960255,
-      "applicationSeed": 1538036353
+      "applicationSeed": 1572584580
     },
     {
       "logical": 960256,
-      "applicationSeed": 2903001767
+      "applicationSeed": 862512446
     },
     {
       "logical": 960257,
-      "applicationSeed": 250964526
+      "applicationSeed": 4157731197
     },
     {
       "logical": 960258,
-      "applicationSeed": 2547386142
+      "applicationSeed": 1271221558
     },
     {
       "logical": 960259,
-      "applicationSeed": 3939314055
+      "applicationSeed": 3012490919
     },
     {
       "logical": 960260,
-      "applicationSeed": 3681338454
+      "applicationSeed": 915573511
     },
     {
       "logical": 960261,
-      "applicationSeed": 555729438
+      "applicationSeed": 273460099
     },
     {
       "logical": 960262,
-      "applicationSeed": 284623082
+      "applicationSeed": 1585675407
     },
     {
       "logical": 960263,
-      "applicationSeed": 3029633150
+      "applicationSeed": 2030783405
     },
     {
       "logical": 960264,
-      "applicationSeed": 3556735554
+      "applicationSeed": 2839319298
     },
     {
       "logical": 960265,
-      "applicationSeed": 3981513072
+      "applicationSeed": 3307251212
     },
     {
       "logical": 960266,
-      "applicationSeed": 2451638809
+      "applicationSeed": 1123578967
     },
     {
       "logical": 960267,
-      "applicationSeed": 3941452289
+      "applicationSeed": 3943202877
     },
     {
       "logical": 960268,
-      "applicationSeed": 2648280717
+      "applicationSeed": 801002137
     },
     {
       "logical": 960269,
-      "applicationSeed": 2520529467
+      "applicationSeed": 692561858
     },
     {
       "logical": 960270,
-      "applicationSeed": 1774253710
+      "applicationSeed": 3768427224
     },
     {
       "logical": 960271,
-      "applicationSeed": 1791421200
+      "applicationSeed": 1888435603
     },
     {
       "logical": 960272,
-      "applicationSeed": 674945186
+      "applicationSeed": 1162603568
     },
     {
       "logical": 960273,
-      "applicationSeed": 2359777199
+      "applicationSeed": 3091543607
     },
     {
       "logical": 960274,
-      "applicationSeed": 314175315
+      "applicationSeed": 3235076608
     },
     {
       "logical": 960275,
-      "applicationSeed": 2853660580
+      "applicationSeed": 993891974
     },
     {
       "logical": 960276,
-      "applicationSeed": 3503611784
+      "applicationSeed": 1128075869
     },
     {
       "logical": 960277,
-      "applicationSeed": 2932124900
+      "applicationSeed": 2841425018
     },
     {
       "logical": 960278,
-      "applicationSeed": 3840615757
+      "applicationSeed": 2234396832
     },
     {
       "logical": 960279,
-      "applicationSeed": 43319109
+      "applicationSeed": 3393724857
     },
     {
       "logical": 960280,
-      "applicationSeed": 2311545391
+      "applicationSeed": 3450505866
     },
     {
       "logical": 960281,
-      "applicationSeed": 1467502063
+      "applicationSeed": 1768827107
     },
     {
       "logical": 960282,
-      "applicationSeed": 4239054907
+      "applicationSeed": 1879872805
     },
     {
       "logical": 960283,
-      "applicationSeed": 776968352
+      "applicationSeed": 62372670
     },
     {
       "logical": 960284,
-      "applicationSeed": 3686511824
+      "applicationSeed": 2569719310
     },
     {
       "logical": 960285,
-      "applicationSeed": 2206164185
+      "applicationSeed": 1851556800
     },
     {
       "logical": 960286,
-      "applicationSeed": 3193791741
+      "applicationSeed": 703039310
     },
     {
       "logical": 960287,
-      "applicationSeed": 4008427301
+      "applicationSeed": 3461653028
     },
     {
       "logical": 960288,
-      "applicationSeed": 3294554064
+      "applicationSeed": 4149207507
     },
     {
       "logical": 960289,
-      "applicationSeed": 2568547269
+      "applicationSeed": 1423819667
     },
     {
       "logical": 960290,
-      "applicationSeed": 3934446680
+      "applicationSeed": 438990264
     },
     {
       "logical": 960291,
-      "applicationSeed": 487932102
+      "applicationSeed": 3699665534
     },
     {
       "logical": 960292,
-      "applicationSeed": 3159014648
+      "applicationSeed": 1654839266
     },
     {
       "logical": 960293,
-      "applicationSeed": 4287679327
+      "applicationSeed": 334660960
     },
     {
       "logical": 960294,
-      "applicationSeed": 3468300072
+      "applicationSeed": 392070871
     },
     {
       "logical": 960295,
-      "applicationSeed": 2299567492
+      "applicationSeed": 2412985577
     },
     {
       "logical": 960296,
-      "applicationSeed": 740140610
+      "applicationSeed": 2674856838
     },
     {
       "logical": 960297,
-      "applicationSeed": 2714860662
+      "applicationSeed": 1143741509
     },
     {
       "logical": 960298,
-      "applicationSeed": 3195624995
+      "applicationSeed": 4249677423
     },
     {
       "logical": 960299,
-      "applicationSeed": 822881371
+      "applicationSeed": 1147603503
     },
     {
       "logical": 960300,
-      "applicationSeed": 1375089354
+      "applicationSeed": 2236298893
     },
     {
       "logical": 960301,
-      "applicationSeed": 3346639929
+      "applicationSeed": 3096260497
     },
     {
       "logical": 960302,
-      "applicationSeed": 1666825943
+      "applicationSeed": 2184563864
     },
     {
       "logical": 960303,
-      "applicationSeed": 2202967987
+      "applicationSeed": 1747702076
     },
     {
       "logical": 960304,
-      "applicationSeed": 1604765069
+      "applicationSeed": 4071320981
     },
     {
       "logical": 960305,
-      "applicationSeed": 2986130093
+      "applicationSeed": 1049788536
     },
     {
       "logical": 960306,
-      "applicationSeed": 3725933566
+      "applicationSeed": 816194467
     },
     {
       "logical": 960307,
-      "applicationSeed": 3060044529
+      "applicationSeed": 591006025
     },
     {
       "logical": 960308,
-      "applicationSeed": 922513588
+      "applicationSeed": 1032533527
     },
     {
       "logical": 960309,
-      "applicationSeed": 615856377
+      "applicationSeed": 1384267934
     },
     {
       "logical": 960310,
-      "applicationSeed": 2604696553
+      "applicationSeed": 2054210064
     },
     {
       "logical": 960311,
-      "applicationSeed": 2514241347
+      "applicationSeed": 2411147932
     },
     {
       "logical": 960312,
-      "applicationSeed": 3448974416
+      "applicationSeed": 1085354080
     },
     {
       "logical": 960313,
-      "applicationSeed": 4273032608
+      "applicationSeed": 3932265367
     },
     {
       "logical": 960314,
-      "applicationSeed": 4223110107
+      "applicationSeed": 2377944399
     },
     {
       "logical": 960315,
-      "applicationSeed": 1435555424
+      "applicationSeed": 1095339803
     },
     {
       "logical": 960316,
-      "applicationSeed": 1452540509
+      "applicationSeed": 968250054
     },
     {
       "logical": 960317,
-      "applicationSeed": 3196650105
+      "applicationSeed": 1193147540
     },
     {
       "logical": 960318,
-      "applicationSeed": 2720799603
+      "applicationSeed": 274832685
     },
     {
       "logical": 960319,
-      "applicationSeed": 2846210258
+      "applicationSeed": 1534235270
     },
     {
       "logical": 960320,
-      "applicationSeed": 358517422
+      "applicationSeed": 2611167711
     },
     {
       "logical": 960321,
-      "applicationSeed": 100129822
+      "applicationSeed": 3597351146
     },
     {
       "logical": 960322,
-      "applicationSeed": 2122844763
+      "applicationSeed": 3547178571
     },
     {
       "logical": 960323,
-      "applicationSeed": 154938273
+      "applicationSeed": 2044723653
     },
     {
       "logical": 960324,
-      "applicationSeed": 362266896
+      "applicationSeed": 936312117
     },
     {
       "logical": 960325,
-      "applicationSeed": 1179525756
+      "applicationSeed": 2363505336
     },
     {
       "logical": 960326,
-      "applicationSeed": 1296315857
+      "applicationSeed": 2473602816
     },
     {
       "logical": 960327,
-      "applicationSeed": 3010592544
+      "applicationSeed": 263920628
     },
     {
       "logical": 960328,
-      "applicationSeed": 3082674174
+      "applicationSeed": 2597658593
     },
     {
       "logical": 960329,
-      "applicationSeed": 3900319386
+      "applicationSeed": 4064315282
     },
     {
       "logical": 960330,
-      "applicationSeed": 81493108
+      "applicationSeed": 1513661879
     },
     {
       "logical": 960331,
-      "applicationSeed": 1259041270
+      "applicationSeed": 2237674108
     },
     {
       "logical": 960332,
-      "applicationSeed": 1453598079
+      "applicationSeed": 2761716966
     },
     {
       "logical": 960333,
-      "applicationSeed": 427792121
+      "applicationSeed": 440478219
     },
     {
       "logical": 960334,
-      "applicationSeed": 3419509826
+      "applicationSeed": 3193555520
     },
     {
       "logical": 960335,
-      "applicationSeed": 772287542
+      "applicationSeed": 3554017125
     },
     {
       "logical": 960336,
-      "applicationSeed": 2984238954
+      "applicationSeed": 1790169727
     },
     {
       "logical": 960337,
-      "applicationSeed": 3347021250
+      "applicationSeed": 2830758777
     },
     {
       "logical": 960338,
-      "applicationSeed": 2051255515
+      "applicationSeed": 1800472466
     },
     {
       "logical": 960339,
-      "applicationSeed": 1665954151
+      "applicationSeed": 2598840229
     },
     {
       "logical": 960340,
-      "applicationSeed": 1321837061
+      "applicationSeed": 3259653051
     },
     {
       "logical": 960341,
-      "applicationSeed": 1775521295
+      "applicationSeed": 1652965863
     },
     {
       "logical": 960342,
-      "applicationSeed": 3115096171
+      "applicationSeed": 2034028094
     },
     {
       "logical": 960343,
-      "applicationSeed": 3535933271
+      "applicationSeed": 4052159351
     },
     {
       "logical": 960344,
-      "applicationSeed": 3126773215
+      "applicationSeed": 2332319416
     },
     {
       "logical": 960345,
-      "applicationSeed": 3870851525
+      "applicationSeed": 4255125883
     },
     {
       "logical": 960346,
-      "applicationSeed": 739382280
+      "applicationSeed": 3528279633
     },
     {
       "logical": 960347,
-      "applicationSeed": 3004154457
+      "applicationSeed": 1167770225
     },
     {
       "logical": 960348,
-      "applicationSeed": 3624570355
+      "applicationSeed": 2479579040
     },
     {
       "logical": 960349,
-      "applicationSeed": 1860177074
+      "applicationSeed": 9061621
     },
     {
       "logical": 960350,
-      "applicationSeed": 73305262
+      "applicationSeed": 2710318222
     },
     {
       "logical": 960351,
-      "applicationSeed": 122054207
+      "applicationSeed": 2125228335
     },
     {
       "logical": 960352,
-      "applicationSeed": 4262302386
+      "applicationSeed": 1140821673
     },
     {
       "logical": 960353,
-      "applicationSeed": 2426090830
+      "applicationSeed": 1867659031
     },
     {
       "logical": 960354,
-      "applicationSeed": 2285685596
+      "applicationSeed": 2346331527
     },
     {
       "logical": 960355,
-      "applicationSeed": 204843140
+      "applicationSeed": 273111965
     },
     {
       "logical": 960356,
-      "applicationSeed": 3260912992
+      "applicationSeed": 957697599
     },
     {
       "logical": 960357,
-      "applicationSeed": 2228698707
+      "applicationSeed": 3216619052
     },
     {
       "logical": 960358,
-      "applicationSeed": 2259925764
+      "applicationSeed": 3918786577
     },
     {
       "logical": 960359,
-      "applicationSeed": 1577455145
+      "applicationSeed": 2778409297
     },
     {
       "logical": 960360,
-      "applicationSeed": 3099296351
+      "applicationSeed": 2607344879
     },
     {
       "logical": 960361,
-      "applicationSeed": 4018431228
+      "applicationSeed": 4181046387
     },
     {
       "logical": 960362,
-      "applicationSeed": 1805722173
+      "applicationSeed": 3533164402
     },
     {
       "logical": 960363,
-      "applicationSeed": 2001582772
+      "applicationSeed": 4236700576
     },
     {
       "logical": 960364,
-      "applicationSeed": 3124003015
+      "applicationSeed": 3949375234
     },
     {
       "logical": 960365,
-      "applicationSeed": 2280187925
+      "applicationSeed": 3277470718
     },
     {
       "logical": 960366,
-      "applicationSeed": 3656879831
+      "applicationSeed": 3095553281
     },
     {
       "logical": 960367,
-      "applicationSeed": 2006239614
+      "applicationSeed": 696871578
     },
     {
       "logical": 960368,
-      "applicationSeed": 1909486160
+      "applicationSeed": 1041369246
     },
     {
       "logical": 960369,
-      "applicationSeed": 3156048312
+      "applicationSeed": 1174044208
     },
     {
       "logical": 960370,
-      "applicationSeed": 2591560269
+      "applicationSeed": 886942917
     },
     {
       "logical": 960371,
-      "applicationSeed": 836025654
+      "applicationSeed": 1751472743
     },
     {
       "logical": 960372,
-      "applicationSeed": 667035002
+      "applicationSeed": 465659056
     },
     {
       "logical": 960373,
-      "applicationSeed": 1297862806
+      "applicationSeed": 212230988
     },
     {
       "logical": 960374,
-      "applicationSeed": 328620333
+      "applicationSeed": 2333954216
     },
     {
       "logical": 960375,
-      "applicationSeed": 976524443
+      "applicationSeed": 1310700696
     },
     {
       "logical": 960376,
-      "applicationSeed": 1153871735
+      "applicationSeed": 1490245738
     },
     {
       "logical": 960377,
-      "applicationSeed": 1792133254
+      "applicationSeed": 2859934165
     },
     {
       "logical": 960378,
-      "applicationSeed": 808968431
+      "applicationSeed": 2376680939
     },
     {
       "logical": 960379,
-      "applicationSeed": 3885224746
+      "applicationSeed": 2889763541
     },
     {
       "logical": 960380,
-      "applicationSeed": 1214938574
+      "applicationSeed": 1111858756
     },
     {
       "logical": 960381,
-      "applicationSeed": 1711632377
+      "applicationSeed": 2476444132
     },
     {
       "logical": 960382,
-      "applicationSeed": 339887988
+      "applicationSeed": 500370650
     },
     {
       "logical": 960383,
-      "applicationSeed": 1011206978
+      "applicationSeed": 3891709535
     },
     {
       "logical": 960384,
-      "applicationSeed": 3775184508
+      "applicationSeed": 2822502708
     },
     {
       "logical": 960385,
-      "applicationSeed": 3289996337
+      "applicationSeed": 340612101
     },
     {
       "logical": 960386,
-      "applicationSeed": 3933428859
+      "applicationSeed": 2418341527
     },
     {
       "logical": 960387,
-      "applicationSeed": 1136182759
+      "applicationSeed": 2176606269
     },
     {
       "logical": 960388,
-      "applicationSeed": 2023459916
+      "applicationSeed": 1840697203
     },
     {
       "logical": 960389,
-      "applicationSeed": 189856356
+      "applicationSeed": 664966359
     },
     {
       "logical": 960390,
-      "applicationSeed": 2147422164
+      "applicationSeed": 973204075
     },
     {
       "logical": 960391,
-      "applicationSeed": 2384886679
+      "applicationSeed": 583774913
     },
     {
       "logical": 960392,
-      "applicationSeed": 586235585
+      "applicationSeed": 2320910973
     },
     {
       "logical": 960393,
-      "applicationSeed": 2558592614
+      "applicationSeed": 3903466735
     },
     {
       "logical": 960394,
-      "applicationSeed": 3898883072
+      "applicationSeed": 2279553888
     },
     {
       "logical": 960395,
-      "applicationSeed": 3327169506
+      "applicationSeed": 2947712948
     },
     {
       "logical": 960396,
-      "applicationSeed": 957667866
+      "applicationSeed": 1962814652
     },
     {
       "logical": 960397,
-      "applicationSeed": 3789967044
+      "applicationSeed": 3481072624
     },
     {
       "logical": 960398,
-      "applicationSeed": 3449793450
+      "applicationSeed": 2669416612
     },
     {
       "logical": 960399,
-      "applicationSeed": 559079708
+      "applicationSeed": 3117255212
     },
     {
       "logical": 960400,
-      "applicationSeed": 2852646528
+      "applicationSeed": 3264929295
     },
     {
       "logical": 960401,
-      "applicationSeed": 1520320906
+      "applicationSeed": 4211465034
     },
     {
       "logical": 960402,
-      "applicationSeed": 394220081
+      "applicationSeed": 3469581168
     },
     {
       "logical": 960403,
-      "applicationSeed": 1622978629
+      "applicationSeed": 81988323
     },
     {
       "logical": 960404,
-      "applicationSeed": 2339662801
+      "applicationSeed": 1797887284
     },
     {
       "logical": 960405,
-      "applicationSeed": 1417121618
+      "applicationSeed": 3154170909
     },
     {
       "logical": 960406,
-      "applicationSeed": 951791847
+      "applicationSeed": 872477777
     },
     {
       "logical": 960407,
-      "applicationSeed": 519961173
+      "applicationSeed": 1195606554
     },
     {
       "logical": 960408,
-      "applicationSeed": 3443062990
+      "applicationSeed": 707750593
     },
     {
       "logical": 960409,
-      "applicationSeed": 4190141625
+      "applicationSeed": 2003852545
     },
     {
       "logical": 960410,
-      "applicationSeed": 3172599006
+      "applicationSeed": 793231371
     },
     {
       "logical": 960411,
-      "applicationSeed": 3111972505
+      "applicationSeed": 2091715215
     },
     {
       "logical": 960412,
-      "applicationSeed": 3232069590
+      "applicationSeed": 1514107339
     },
     {
       "logical": 960413,
-      "applicationSeed": 2309330849
+      "applicationSeed": 2086616612
     },
     {
       "logical": 960414,
-      "applicationSeed": 1470710184
+      "applicationSeed": 878378614
     },
     {
       "logical": 960415,
-      "applicationSeed": 2079347117
+      "applicationSeed": 3308315052
     },
     {
       "logical": 960416,
-      "applicationSeed": 3788310796
+      "applicationSeed": 438307740
     },
     {
       "logical": 960417,
-      "applicationSeed": 3834745597
+      "applicationSeed": 3789497389
     },
     {
       "logical": 960418,
-      "applicationSeed": 2897492713
+      "applicationSeed": 2678534398
     },
     {
       "logical": 960419,
-      "applicationSeed": 352541740
+      "applicationSeed": 605859667
     },
     {
       "logical": 960420,
-      "applicationSeed": 3416116533
+      "applicationSeed": 309513260
     },
     {
       "logical": 960421,
-      "applicationSeed": 3335689373
+      "applicationSeed": 4192776289
     },
     {
       "logical": 960422,
-      "applicationSeed": 1856565107
+      "applicationSeed": 4168714276
     },
     {
       "logical": 960423,
-      "applicationSeed": 1503773544
+      "applicationSeed": 2991436696
     },
     {
       "logical": 960424,
-      "applicationSeed": 201389949
+      "applicationSeed": 2701804682
     },
     {
       "logical": 960425,
-      "applicationSeed": 869880499
+      "applicationSeed": 508430150
     },
     {
       "logical": 960426,
-      "applicationSeed": 2412458615
+      "applicationSeed": 4194732337
     },
     {
       "logical": 960427,
-      "applicationSeed": 3186516901
+      "applicationSeed": 4052559813
     },
     {
       "logical": 960428,
-      "applicationSeed": 585513725
+      "applicationSeed": 3476521971
     },
     {
       "logical": 960429,
-      "applicationSeed": 1381687071
+      "applicationSeed": 1228053101
     },
     {
       "logical": 960430,
-      "applicationSeed": 708616454
+      "applicationSeed": 361059386
     },
     {
       "logical": 960431,
-      "applicationSeed": 1158422479
+      "applicationSeed": 307948043
     },
     {
       "logical": 960432,
-      "applicationSeed": 3219995699
+      "applicationSeed": 246933026
     },
     {
       "logical": 960433,
-      "applicationSeed": 829087661
+      "applicationSeed": 994394928
     },
     {
       "logical": 960434,
-      "applicationSeed": 2553431413
+      "applicationSeed": 1020935418
     },
     {
       "logical": 960435,
-      "applicationSeed": 785163007
+      "applicationSeed": 2734378726
     },
     {
       "logical": 960436,
-      "applicationSeed": 487829859
+      "applicationSeed": 1171428931
     },
     {
       "logical": 960437,
-      "applicationSeed": 3024937193
+      "applicationSeed": 1891680026
     },
     {
       "logical": 960438,
-      "applicationSeed": 1483296901
+      "applicationSeed": 2091645968
     },
     {
       "logical": 960439,
-      "applicationSeed": 3592532832
+      "applicationSeed": 3521834783
     },
     {
       "logical": 960440,
-      "applicationSeed": 779927545
+      "applicationSeed": 3662653326
     },
     {
       "logical": 960441,
-      "applicationSeed": 3315348751
+      "applicationSeed": 1113634767
     },
     {
       "logical": 960442,
-      "applicationSeed": 3576575372
+      "applicationSeed": 3580623664
     },
     {
       "logical": 960443,
-      "applicationSeed": 1773074387
+      "applicationSeed": 3084652388
     },
     {
       "logical": 960444,
-      "applicationSeed": 3725652339
+      "applicationSeed": 1673875450
     },
     {
       "logical": 960445,
-      "applicationSeed": 3713131979
+      "applicationSeed": 1181807295
     },
     {
       "logical": 960446,
-      "applicationSeed": 1081525296
+      "applicationSeed": 2867547438
     },
     {
       "logical": 960447,
-      "applicationSeed": 2969115549
+      "applicationSeed": 981123499
     },
     {
       "logical": 960448,
-      "applicationSeed": 897099360
+      "applicationSeed": 1074868672
     },
     {
       "logical": 960449,
-      "applicationSeed": 1518356678
+      "applicationSeed": 1598085509
     },
     {
       "logical": 960450,
-      "applicationSeed": 1835602323
+      "applicationSeed": 301276621
     },
     {
       "logical": 960451,
-      "applicationSeed": 3685585659
+      "applicationSeed": 1382041556
     },
     {
       "logical": 960452,
-      "applicationSeed": 2295633672
+      "applicationSeed": 3474115396
     },
     {
       "logical": 960453,
-      "applicationSeed": 3148226699
+      "applicationSeed": 1315905600
     },
     {
       "logical": 960454,
-      "applicationSeed": 2782443020
+      "applicationSeed": 2743667829
     },
     {
       "logical": 960455,
-      "applicationSeed": 1380500681
+      "applicationSeed": 803513415
     },
     {
       "logical": 960456,
-      "applicationSeed": 1136072077
+      "applicationSeed": 924918284
     },
     {
       "logical": 960457,
-      "applicationSeed": 225050498
+      "applicationSeed": 3305415359
     },
     {
       "logical": 960458,
-      "applicationSeed": 376482301
+      "applicationSeed": 1459325359
     },
     {
       "logical": 960459,
-      "applicationSeed": 1018293596
+      "applicationSeed": 2637324856
     },
     {
       "logical": 960460,
-      "applicationSeed": 1533352189
+      "applicationSeed": 4066319897
     },
     {
       "logical": 960461,
-      "applicationSeed": 1674950755
+      "applicationSeed": 3061078918
     },
     {
       "logical": 960462,
-      "applicationSeed": 2034140701
+      "applicationSeed": 1731115925
     },
     {
       "logical": 960463,
-      "applicationSeed": 2734828235
+      "applicationSeed": 3328390676
     },
     {
       "logical": 960464,
-      "applicationSeed": 929832612
+      "applicationSeed": 2480608869
     },
     {
       "logical": 960465,
-      "applicationSeed": 3466699353
+      "applicationSeed": 315910195
     },
     {
       "logical": 960466,
-      "applicationSeed": 1515533508
+      "applicationSeed": 1256647771
     },
     {
       "logical": 960467,
-      "applicationSeed": 355759218
+      "applicationSeed": 1001213762
     },
     {
       "logical": 960468,
-      "applicationSeed": 2764900703
+      "applicationSeed": 1927555833
     },
     {
       "logical": 960469,
-      "applicationSeed": 2355640345
+      "applicationSeed": 4209180518
     },
     {
       "logical": 960470,
-      "applicationSeed": 2900661267
+      "applicationSeed": 609566187
     },
     {
       "logical": 960471,
-      "applicationSeed": 4155640873
+      "applicationSeed": 3964779022
     },
     {
       "logical": 960472,
-      "applicationSeed": 2162409865
+      "applicationSeed": 2478510435
     },
     {
       "logical": 960473,
-      "applicationSeed": 3129469254
+      "applicationSeed": 402086945
     },
     {
       "logical": 960474,
-      "applicationSeed": 1176595065
+      "applicationSeed": 3387358428
     },
     {
       "logical": 960475,
-      "applicationSeed": 2360227495
+      "applicationSeed": 3227533817
     },
     {
       "logical": 960476,
-      "applicationSeed": 1625909779
+      "applicationSeed": 659755953
     },
     {
       "logical": 960477,
-      "applicationSeed": 1242344458
+      "applicationSeed": 500067744
     },
     {
       "logical": 960478,
-      "applicationSeed": 2981921531
+      "applicationSeed": 107870501
     },
     {
       "logical": 960479,
-      "applicationSeed": 3101340459
+      "applicationSeed": 407018719
     },
     {
       "logical": 960480,
-      "applicationSeed": 877674608
+      "applicationSeed": 1673144729
     },
     {
       "logical": 960481,
-      "applicationSeed": 2488329738
+      "applicationSeed": 191763711
     },
     {
       "logical": 960482,
-      "applicationSeed": 702148367
+      "applicationSeed": 1200248661
     },
     {
       "logical": 960483,
-      "applicationSeed": 2878305919
+      "applicationSeed": 2203312248
     },
     {
       "logical": 960484,
-      "applicationSeed": 3635110786
+      "applicationSeed": 2121068510
     },
     {
       "logical": 960485,
-      "applicationSeed": 271768671
+      "applicationSeed": 1732414477
     },
     {
       "logical": 960486,
-      "applicationSeed": 3169055482
+      "applicationSeed": 128655073
     },
     {
       "logical": 960487,
-      "applicationSeed": 1431187910
+      "applicationSeed": 3106681599
     },
     {
       "logical": 960488,
-      "applicationSeed": 4084379969
+      "applicationSeed": 2930057795
     },
     {
       "logical": 960489,
-      "applicationSeed": 2537102275
+      "applicationSeed": 2681568166
     },
     {
       "logical": 960490,
-      "applicationSeed": 2559885670
+      "applicationSeed": 2698148376
     },
     {
       "logical": 960491,
-      "applicationSeed": 3590017054
+      "applicationSeed": 730044246
     },
     {
       "logical": 960492,
-      "applicationSeed": 633651334
+      "applicationSeed": 730224477
     },
     {
       "logical": 960493,
-      "applicationSeed": 73200380
+      "applicationSeed": 63902306
     },
     {
       "logical": 960494,
-      "applicationSeed": 749126020
+      "applicationSeed": 30177304
     },
     {
       "logical": 960495,
-      "applicationSeed": 593971295
+      "applicationSeed": 2842583322
     },
     {
       "logical": 960496,
-      "applicationSeed": 3674013553
+      "applicationSeed": 3528834135
     },
     {
       "logical": 960497,
-      "applicationSeed": 3295371587
+      "applicationSeed": 2927155
     },
     {
       "logical": 960498,
-      "applicationSeed": 2314747527
+      "applicationSeed": 1954028437
     },
     {
       "logical": 960499,
-      "applicationSeed": 1912241624
+      "applicationSeed": 1320296578
     },
     {
       "logical": 960500,
-      "applicationSeed": 3062200247
+      "applicationSeed": 3971051264
     },
     {
       "logical": 960501,
-      "applicationSeed": 2967124308
+      "applicationSeed": 1489119044
     },
     {
       "logical": 960502,
-      "applicationSeed": 4025091217
+      "applicationSeed": 3755268393
     },
     {
       "logical": 960503,
-      "applicationSeed": 4028142837
+      "applicationSeed": 2028046211
     },
     {
       "logical": 960504,
-      "applicationSeed": 4235730656
+      "applicationSeed": 681987802
     },
     {
       "logical": 960505,
-      "applicationSeed": 3415086675
+      "applicationSeed": 3870436723
     },
     {
       "logical": 960506,
-      "applicationSeed": 808104612
+      "applicationSeed": 3786081818
     },
     {
       "logical": 960507,
-      "applicationSeed": 2386619672
+      "applicationSeed": 2857535433
     },
     {
       "logical": 960508,
-      "applicationSeed": 337214179
+      "applicationSeed": 1328253078
     },
     {
       "logical": 960509,
-      "applicationSeed": 336411947
+      "applicationSeed": 3595967276
     },
     {
       "logical": 960510,
-      "applicationSeed": 1494289466
+      "applicationSeed": 300617111
     },
     {
       "logical": 960511,
-      "applicationSeed": 3433455980
+      "applicationSeed": 3128732110
     },
     {
       "logical": 960512,
-      "applicationSeed": 475889303
+      "applicationSeed": 3104124889
     }
   ],
   "developmentSeeds": [
@@ -7113,10 +7101,10 @@
   ],
   "heldoutPreviouslyOpened": false,
   "optimization": "equal18 candidates;32development;3 diverse x64 selection; wins/four-alive/potions/capped-rounds",
-  "primary": "C vs independently reoptimized B AND same-config before X: wins, four-alive, potions, capped-rounds with Holm96 across12conditions x4metrics x2contrasts; descriptive bootstrap intervals. X same-policy baseline, E no relay, J no jam, A finite alternative.",
+  "primary": "C vs independently reoptimized B AND same-config before X: wins, four-alive, potions, capped-rounds with Holm96 across12conditions x4metrics x2contrasts; descriptive bootstrap intervals. X same-policy baseline, E no dampening, J no jam, A finite alternative.",
   "acceptance": {
     "maximumObservedWinDrop": 0.05,
-    "witness": "One prelisted condition: survival +.05 OR medicines -.15 OR cappedRounds -1, Holm96 p<.05 in both C-B and same-config C-X (benefit metric may differ), without material win/survival regression; actual positive relay trace. Not endgame certification."
+    "witness": "One prelisted condition: survival +.05 OR medicines -.15 OR cappedRounds -1, Holm96 p<.05 in both C-B and same-config C-X (benefit metric may differ), without material win/survival regression; actual mark and softened ordinary attack trace. Not endgame certification."
   },
-  "recordingSelection": "First restrict to scoped adoption witness conditions, prioritized TowerT6F1,TowerT6F2,LunetteT6F2,TowerT4F1,LunetteT4F2,TowerT4F2,TowerT3F2 then remaining sorted case IDs. If no representable adoption witness, report and review recording protocol rather than invent. First ascending logical input with C/B wins, both<=20rounds, C real positive relay grant  (prefer100 crossing followed by the same recipient’s same-wave ultimate within same first eligible priority). No fabricated HUD or outcome. Reference B is independently reoptimized baseline, not replacement A."
+  "recordingSelection": "First restrict to scoped adoption witness conditions, prioritized TowerT6F1,TowerT6F2,LunetteT6F2,TowerT4F1,LunetteT4F2,TowerT4F2,TowerT3F2 then remaining sorted case IDs. If no representable adoption witness, report and review recording protocol rather than invent. First ascending logical input with C/B wins, both<=20rounds, C real mark and softened ordinary attack (prefer positive HP damage within same first eligible priority). No fabricated HUD or outcome. Reference B is independently reoptimized baseline, not replacement A."
 }
