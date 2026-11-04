@@ -1,0 +1,41 @@
+name: Battle load investigation
+on:
+  push:
+    branches:
+      - 'investigate/battle-load-20261104-165464'
+    paths:
+      - '.github/workflows/battle-load-profile.yml'
+      - 'scripts/performance/battle-load.mts'
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      CI: 'true'
+      VITE_SAKUYA_RESEARCH: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Dependencies
+        run: npm ci
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build the unchanged production game
+        run: npm run build
+      - name: Measure matched rendering conditions
+        run: npx tsx scripts/performance/battle-load.mts
+      - name: Preserve raw observations and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: battle-load-profile
+          path: artifacts/battle-load-profile/
+          retention-days: 30
