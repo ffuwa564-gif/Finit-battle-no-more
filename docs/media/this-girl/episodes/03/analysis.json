@@ -1,0 +1,6766 @@
+{
+  "episode": "THIS-GIRL-003",
+  "passedDataValidation": true,
+  "lockSha256": "c5b183bfb07b075e7ea09b45ab85a1659230e498564e32eb7417b2369acbe26f",
+  "inputs": {
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T3-F1.json.gz": "396b7a817d5485320ed6a1cf3ee5e73fcfd44e1f8cd3154de858795bc5de7f05",
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T3-F2.json.gz": "9f47d72981dfbce930d38562b366fcad34ed85dcd75acb1c12af8c78454e30bd",
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T4-F1.json.gz": "3ac0e31d00f4d817c42e9ea87cf7d45ec67db1964cd9c16634e9954bb2a06213",
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T4-F2.json.gz": "92db082b299b60da454b69513b6b4ff7d54245ea16ac2ec29ab07508e0f3ae3c",
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T6-F1.json.gz": "80545351003cb0e8fc1bcaacddf7af138948ba3a71d061e54c176f03d2fd67b4",
+    "artifacts/this-girl-03/research/confirmation/ivory-tower-010-T6-F2.json.gz": "6d75a165d783ca530a1015c8187cda80b585e64086c2390b0b6cc1653ebbe804",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T3-F1.json.gz": "5ea70bd6296a6df0f6cd6db92818948c959b4aa24b5ae2afb3778915510bc3d5",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T3-F2.json.gz": "efb12c7e190bea2e67069bd17c2cbfaa64d07c048a75210b4a82dc5bf661792d",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T4-F1.json.gz": "6b9a6121cd8b6d6f908c2013dab685c027375b5a2cf3efeafed69a94eca3ecd9",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T4-F2.json.gz": "852c6d3d2b500aacfb85cf24da836a370b3118fcaa6412e357c84409448ce4c4",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T6-F1.json.gz": "a68d4af16c3858e818fe1cb5fb9c1c0c90a7902760d8c0e396a5934729288058",
+    "artifacts/this-girl-03/research/confirmation/lunette-awakening-T6-F2.json.gz": "9630b2777074eb6b5ea9b13687a9d457acbeadb7e35e76cec376ca5051af7589"
+  },
+  "cases": [
+    {
+      "id": "ivory-tower-010-T3-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 3,
+      "stage": "ivory-tower-010",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "astraea"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "astraea"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        }
+      },
+      "selectionInputSha256": "4205c2d977a43ea160c84ba9721538937c958ed9b8c1b937948981664e2dd033",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 174,
+          "winRate": 0.6796875,
+          "winWilson95": [
+            0.6202359049379224,
+            0.73382614665903
+          ],
+          "meanCappedRounds": 56.35546875,
+          "meanPotions": 4.94140625,
+          "fourAliveWins": 1,
+          "meanJamUses": 2.703125,
+          "meanJamExtended": 2.72265625,
+          "meanDiagnosisUses": 2.4765625
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 14.04296875,
+          "meanPotions": 3.71875,
+          "fourAliveWins": 215,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 165,
+          "winRate": 0.64453125,
+          "winWilson95": [
+            0.5841561693914309,
+            0.7006328721104657
+          ],
+          "meanCappedRounds": 59.41796875,
+          "meanPotions": 4.96484375,
+          "fourAliveWins": 1,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 174,
+          "winRate": 0.6796875,
+          "winWilson95": [
+            0.6202359049379224,
+            0.73382614665903
+          ],
+          "meanCappedRounds": 56.35546875,
+          "meanPotions": 4.94140625,
+          "fourAliveWins": 1,
+          "meanJamUses": 2.703125,
+          "meanJamExtended": 2.72265625,
+          "meanDiagnosisUses": 2.4765625
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 14.9140625,
+          "meanPotions": 4.14453125,
+          "fourAliveWins": 234,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 174,
+          "winRate": 0.6796875,
+          "winWilson95": [
+            0.6202359049379224,
+            0.73382614665903
+          ],
+          "meanCappedRounds": 56.35546875,
+          "meanPotions": 4.94140625,
+          "fourAliveWins": 1,
+          "meanJamUses": 2.703125,
+          "meanJamExtended": 2.72265625,
+          "meanDiagnosisUses": 2.4765625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 14.04296875,
+          "meanPotions": 3.71875,
+          "fourAliveWins": 215,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.3203125,
+        "familyConservativeWinDeltaCI": [
+          -0.4151061330137422,
+          -0.2026553546179417
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 82,
+        "pairedWinP": 4.1359030627651384e-25,
+        "delta": {
+          "cappedRounds": {
+            "mean": 42.3125,
+            "bootstrap95": [
+              37.2068359375,
+              47.399023437500006
+            ]
+          },
+          "pots": {
+            "mean": 1.22265625,
+            "bootstrap95": [
+              1.07421875,
+              1.375
+            ]
+          },
+          "survivors": {
+            "mean": -1.93359375,
+            "bootstrap95": [
+              -2.09765625,
+              -1.75
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 4.549493369041652e-24
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 174,
+          "winRate": 0.6796875,
+          "winWilson95": [
+            0.6202359049379224,
+            0.73382614665903
+          ],
+          "meanCappedRounds": 56.35546875,
+          "meanPotions": 4.94140625,
+          "fourAliveWins": 1,
+          "meanJamUses": 2.703125,
+          "meanJamExtended": 2.72265625,
+          "meanDiagnosisUses": 2.4765625
+        },
+        "right": {
+          "n": 256,
+          "wins": 165,
+          "winRate": 0.64453125,
+          "winWilson95": [
+            0.5841561693914309,
+            0.7006328721104657
+          ],
+          "meanCappedRounds": 59.41796875,
+          "meanPotions": 4.96484375,
+          "fourAliveWins": 1,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.03515625,
+        "familyConservativeWinDeltaCI": [
+          -0.14505192894657326,
+          0.2128550190524896
+        ],
+        "observedOnlyLeftWins": 24,
+        "observedOnlyRightWins": 15,
+        "pairedWinP": 0.19959086691960698,
+        "delta": {
+          "cappedRounds": {
+            "mean": -3.0625,
+            "bootstrap95": [
+              -7.44931640625,
+              1.301074218750001
+            ]
+          },
+          "pots": {
+            "mean": -0.0234375,
+            "bootstrap95": [
+              -0.05859375,
+              0.01171875
+            ]
+          },
+          "survivors": {
+            "mean": 0.0625,
+            "bootstrap95": [
+              -0.07421875,
+              0.203125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 174,
+          "winRate": 0.6796875,
+          "winWilson95": [
+            0.6202359049379224,
+            0.73382614665903
+          ],
+          "meanCappedRounds": 56.35546875,
+          "meanPotions": 4.94140625,
+          "fourAliveWins": 1,
+          "meanJamUses": 2.703125,
+          "meanJamExtended": 2.72265625,
+          "meanDiagnosisUses": 2.4765625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 14.9140625,
+          "meanPotions": 4.14453125,
+          "fourAliveWins": 234,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.3203125,
+        "familyConservativeWinDeltaCI": [
+          -0.4151061330137422,
+          -0.2026553546179417
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 82,
+        "pairedWinP": 4.1359030627651384e-25,
+        "delta": {
+          "cappedRounds": {
+            "mean": 41.44140625,
+            "bootstrap95": [
+              36.12490234375,
+              46.85205078125
+            ]
+          },
+          "pots": {
+            "mean": 0.796875,
+            "bootstrap95": [
+              0.6756835937500001,
+              0.92578125
+            ]
+          },
+          "survivors": {
+            "mean": -2.01953125,
+            "bootstrap95": [
+              -2.1875,
+              -1.859375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "ivory-tower-010-T3-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 3,
+      "stage": "ivory-tower-010",
+      "alternative": "nox",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "nox"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "nox"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        }
+      },
+      "selectionInputSha256": "c979e105f2a81f29df1aabd2ad81264906cc89d5c02e85bbe78be4f15a6a57e9",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 93,
+          "winRate": 0.36328125,
+          "winWilson95": [
+            0.3067900082905613,
+            0.4238149524508879
+          ],
+          "meanCappedRounds": 90.0546875,
+          "meanPotions": 4.85546875,
+          "fourAliveWins": 42,
+          "meanJamUses": 5.4765625,
+          "meanJamExtended": 7.296875,
+          "meanDiagnosisUses": 4.30859375
+        },
+        "A": {
+          "n": 256,
+          "wins": 94,
+          "winRate": 0.3671875,
+          "winWilson95": [
+            0.3105076134241139,
+            0.4277943484390082
+          ],
+          "meanCappedRounds": 85.04296875,
+          "meanPotions": 4.9921875,
+          "fourAliveWins": 17,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 119,
+          "winRate": 0.46484375,
+          "winWilson95": [
+            0.4047172917918608,
+            0.5260096981130833
+          ],
+          "meanCappedRounds": 81.828125,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 59,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 93,
+          "winRate": 0.36328125,
+          "winWilson95": [
+            0.3067900082905613,
+            0.4238149524508879
+          ],
+          "meanCappedRounds": 90.0546875,
+          "meanPotions": 4.85546875,
+          "fourAliveWins": 42,
+          "meanJamUses": 5.4765625,
+          "meanJamExtended": 7.296875,
+          "meanDiagnosisUses": 4.30859375
+        },
+        "AF": {
+          "n": 256,
+          "wins": 94,
+          "winRate": 0.3671875,
+          "winWilson95": [
+            0.3105076134241139,
+            0.4277943484390082
+          ],
+          "meanCappedRounds": 85.04296875,
+          "meanPotions": 4.9921875,
+          "fourAliveWins": 17,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 93,
+          "winRate": 0.36328125,
+          "winWilson95": [
+            0.3067900082905613,
+            0.4238149524508879
+          ],
+          "meanCappedRounds": 90.0546875,
+          "meanPotions": 4.85546875,
+          "fourAliveWins": 42,
+          "meanJamUses": 5.4765625,
+          "meanJamExtended": 7.296875,
+          "meanDiagnosisUses": 4.30859375
+        },
+        "right": {
+          "n": 256,
+          "wins": 94,
+          "winRate": 0.3671875,
+          "winWilson95": [
+            0.3105076134241139,
+            0.4277943484390082
+          ],
+          "meanCappedRounds": 85.04296875,
+          "meanPotions": 4.9921875,
+          "fourAliveWins": 17,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.00390625,
+        "familyConservativeWinDeltaCI": [
+          -0.18594428825808013,
+          0.17841061157964494
+        ],
+        "observedOnlyLeftWins": 59,
+        "observedOnlyRightWins": 60,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 5.01171875,
+            "bootstrap95": [
+              -2.44599609375,
+              12.669140625000004
+            ]
+          },
+          "pots": {
+            "mean": -0.13671875,
+            "bootstrap95": [
+              -0.21484375,
+              -0.06640625
+            ]
+          },
+          "survivors": {
+            "mean": 0.09765625,
+            "bootstrap95": [
+              -0.17587890624999997,
+              0.36328125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 93,
+          "winRate": 0.36328125,
+          "winWilson95": [
+            0.3067900082905613,
+            0.4238149524508879
+          ],
+          "meanCappedRounds": 90.0546875,
+          "meanPotions": 4.85546875,
+          "fourAliveWins": 42,
+          "meanJamUses": 5.4765625,
+          "meanJamExtended": 7.296875,
+          "meanDiagnosisUses": 4.30859375
+        },
+        "right": {
+          "n": 256,
+          "wins": 119,
+          "winRate": 0.46484375,
+          "winWilson95": [
+            0.4047172917918608,
+            0.5260096981130833
+          ],
+          "meanCappedRounds": 81.828125,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 59,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.1015625,
+        "familyConservativeWinDeltaCI": [
+          -0.28315981574982385,
+          0.08728422211050946
+        ],
+        "observedOnlyLeftWins": 48,
+        "observedOnlyRightWins": 74,
+        "pairedWinP": 0.023216360221353722,
+        "delta": {
+          "cappedRounds": {
+            "mean": 8.2265625,
+            "bootstrap95": [
+              1.2302734375000002,
+              15.098144531250002
+            ]
+          },
+          "pots": {
+            "mean": -0.0546875,
+            "bootstrap95": [
+              -0.14853515624999997,
+              0.04296875
+            ]
+          },
+          "survivors": {
+            "mean": -0.42578125,
+            "bootstrap95": [
+              -0.7227539062499999,
+              -0.12890625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 93,
+          "winRate": 0.36328125,
+          "winWilson95": [
+            0.3067900082905613,
+            0.4238149524508879
+          ],
+          "meanCappedRounds": 90.0546875,
+          "meanPotions": 4.85546875,
+          "fourAliveWins": 42,
+          "meanJamUses": 5.4765625,
+          "meanJamExtended": 7.296875,
+          "meanDiagnosisUses": 4.30859375
+        },
+        "right": {
+          "n": 256,
+          "wins": 94,
+          "winRate": 0.3671875,
+          "winWilson95": [
+            0.3105076134241139,
+            0.4277943484390082
+          ],
+          "meanCappedRounds": 85.04296875,
+          "meanPotions": 4.9921875,
+          "fourAliveWins": 17,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.00390625,
+        "familyConservativeWinDeltaCI": [
+          -0.18594428825808013,
+          0.17841061157964494
+        ],
+        "observedOnlyLeftWins": 59,
+        "observedOnlyRightWins": 60,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 5.01171875,
+            "bootstrap95": [
+              -2.4142578125,
+              12.551171875000001
+            ]
+          },
+          "pots": {
+            "mean": -0.13671875,
+            "bootstrap95": [
+              -0.2109375,
+              -0.0703125
+            ]
+          },
+          "survivors": {
+            "mean": 0.09765625,
+            "bootstrap95": [
+              -0.16806640624999997,
+              0.3671875
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "ivory-tower-010-T4-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 4,
+      "stage": "ivory-tower-010",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "tikka",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "astraea"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "tikka",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "tikka",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "astraea"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          }
+        }
+      },
+      "selectionInputSha256": "0b87a4fff66163a82d91c767a44a826930fe2a4fc2cc11483981c72e5f7ff1fb",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 244,
+          "winRate": 0.953125,
+          "winWilson95": [
+            0.9198669811156821,
+            0.9729851489983719
+          ],
+          "meanCappedRounds": 29.35546875,
+          "meanPotions": 4.546875,
+          "fourAliveWins": 73,
+          "meanJamUses": 3.96875,
+          "meanJamExtended": 5.25,
+          "meanDiagnosisUses": 3.33203125
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.2421875,
+          "meanPotions": 3.69140625,
+          "fourAliveWins": 242,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 242,
+          "winRate": 0.9453125,
+          "winWilson95": [
+            0.9103104192747177,
+            0.9671477085959906
+          ],
+          "meanCappedRounds": 28.6484375,
+          "meanPotions": 4.1484375,
+          "fourAliveWins": 140,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 244,
+          "winRate": 0.953125,
+          "winWilson95": [
+            0.9198669811156821,
+            0.9729851489983719
+          ],
+          "meanCappedRounds": 29.35546875,
+          "meanPotions": 4.546875,
+          "fourAliveWins": 73,
+          "meanJamUses": 3.96875,
+          "meanJamExtended": 5.25,
+          "meanDiagnosisUses": 3.33203125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.125,
+          "meanPotions": 3.1640625,
+          "fourAliveWins": 215,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 244,
+          "winRate": 0.953125,
+          "winWilson95": [
+            0.9198669811156821,
+            0.9729851489983719
+          ],
+          "meanCappedRounds": 29.35546875,
+          "meanPotions": 4.546875,
+          "fourAliveWins": 73,
+          "meanJamUses": 3.96875,
+          "meanJamExtended": 5.25,
+          "meanDiagnosisUses": 3.33203125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.2421875,
+          "meanPotions": 3.69140625,
+          "fourAliveWins": 242,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.046875,
+        "familyConservativeWinDeltaCI": [
+          -0.10612861024762155,
+          0.015724490106399536
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 12,
+        "pairedWinP": 0.00048828125,
+        "delta": {
+          "cappedRounds": {
+            "mean": 16.11328125,
+            "bootstrap95": [
+              13.8201171875,
+              18.7658203125
+            ]
+          },
+          "pots": {
+            "mean": 0.85546875,
+            "bootstrap95": [
+              0.68359375,
+              1.0234375
+            ]
+          },
+          "survivors": {
+            "mean": -0.95703125,
+            "bootstrap95": [
+              -1.07421875,
+              -0.8359375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 0.00439453125
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 244,
+          "winRate": 0.953125,
+          "winWilson95": [
+            0.9198669811156821,
+            0.9729851489983719
+          ],
+          "meanCappedRounds": 29.35546875,
+          "meanPotions": 4.546875,
+          "fourAliveWins": 73,
+          "meanJamUses": 3.96875,
+          "meanJamExtended": 5.25,
+          "meanDiagnosisUses": 3.33203125
+        },
+        "right": {
+          "n": 256,
+          "wins": 242,
+          "winRate": 0.9453125,
+          "winWilson95": [
+            0.9103104192747177,
+            0.9671477085959906
+          ],
+          "meanCappedRounds": 28.6484375,
+          "meanPotions": 4.1484375,
+          "fourAliveWins": 140,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0078125,
+        "familyConservativeWinDeltaCI": [
+          -0.08134786869934962,
+          0.09641522205622
+        ],
+        "observedOnlyLeftWins": 13,
+        "observedOnlyRightWins": 11,
+        "pairedWinP": 0.8388197422027588,
+        "delta": {
+          "cappedRounds": {
+            "mean": 0.70703125,
+            "bootstrap95": [
+              -2.8870117187499997,
+              4.117578125000001
+            ]
+          },
+          "pots": {
+            "mean": 0.3984375,
+            "bootstrap95": [
+              0.265625,
+              0.53515625
+            ]
+          },
+          "survivors": {
+            "mean": -0.328125,
+            "bootstrap95": [
+              -0.4609375,
+              -0.18359375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 244,
+          "winRate": 0.953125,
+          "winWilson95": [
+            0.9198669811156821,
+            0.9729851489983719
+          ],
+          "meanCappedRounds": 29.35546875,
+          "meanPotions": 4.546875,
+          "fourAliveWins": 73,
+          "meanJamUses": 3.96875,
+          "meanJamExtended": 5.25,
+          "meanDiagnosisUses": 3.33203125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.125,
+          "meanPotions": 3.1640625,
+          "fourAliveWins": 215,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.046875,
+        "familyConservativeWinDeltaCI": [
+          -0.10612861024762155,
+          0.015724490106399536
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 12,
+        "pairedWinP": 0.00048828125,
+        "delta": {
+          "cappedRounds": {
+            "mean": 16.23046875,
+            "bootstrap95": [
+              13.9216796875,
+              18.73046875
+            ]
+          },
+          "pots": {
+            "mean": 1.3828125,
+            "bootstrap95": [
+              1.19921875,
+              1.5625
+            ]
+          },
+          "survivors": {
+            "mean": -0.85546875,
+            "bootstrap95": [
+              -0.98046875,
+              -0.73046875
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "ivory-tower-010-T4-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 4,
+      "stage": "ivory-tower-010",
+      "alternative": "nox",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "nox"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "nox"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          }
+        }
+      },
+      "selectionInputSha256": "04451acdd06e08aa45d60f34a044c7903ef235546e5841837819819d7bec1f88",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 106,
+          "winRate": 0.4140625,
+          "winWilson95": [
+            0.3554297681158383,
+            0.4752362072073583
+          ],
+          "meanCappedRounds": 84.7265625,
+          "meanPotions": 4.91796875,
+          "fourAliveWins": 40,
+          "meanJamUses": 5.0078125,
+          "meanJamExtended": 6.98046875,
+          "meanDiagnosisUses": 4.125
+        },
+        "A": {
+          "n": 256,
+          "wins": 172,
+          "winRate": 0.671875,
+          "winWilson95": [
+            0.6121878040809798,
+            0.7264802452726269
+          ],
+          "meanCappedRounds": 54.53515625,
+          "meanPotions": 4.8828125,
+          "fourAliveWins": 29,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 118,
+          "winRate": 0.4609375,
+          "winWilson95": [
+            0.40090361566150806,
+            0.5221263731217632
+          ],
+          "meanCappedRounds": 80.28125,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 56,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 106,
+          "winRate": 0.4140625,
+          "winWilson95": [
+            0.3554297681158383,
+            0.4752362072073583
+          ],
+          "meanCappedRounds": 84.7265625,
+          "meanPotions": 4.91796875,
+          "fourAliveWins": 40,
+          "meanJamUses": 5.0078125,
+          "meanJamExtended": 6.98046875,
+          "meanDiagnosisUses": 4.125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 172,
+          "winRate": 0.671875,
+          "winWilson95": [
+            0.6121878040809798,
+            0.7264802452726269
+          ],
+          "meanCappedRounds": 54.53515625,
+          "meanPotions": 4.8828125,
+          "fourAliveWins": 29,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 106,
+          "winRate": 0.4140625,
+          "winWilson95": [
+            0.3554297681158383,
+            0.4752362072073583
+          ],
+          "meanCappedRounds": 84.7265625,
+          "meanPotions": 4.91796875,
+          "fourAliveWins": 40,
+          "meanJamUses": 5.0078125,
+          "meanJamExtended": 6.98046875,
+          "meanDiagnosisUses": 4.125
+        },
+        "right": {
+          "n": 256,
+          "wins": 172,
+          "winRate": 0.671875,
+          "winWilson95": [
+            0.6121878040809798,
+            0.7264802452726269
+          ],
+          "meanCappedRounds": 54.53515625,
+          "meanPotions": 4.8828125,
+          "fourAliveWins": 29,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.2578125,
+        "familyConservativeWinDeltaCI": [
+          -0.4306282318538776,
+          -0.06659442892284373
+        ],
+        "observedOnlyLeftWins": 46,
+        "observedOnlyRightWins": 112,
+        "pairedWinP": 1.554094082826557e-07,
+        "delta": {
+          "cappedRounds": {
+            "mean": 30.19140625,
+            "bootstrap95": [
+              21.941015625,
+              38.258398437500006
+            ]
+          },
+          "pots": {
+            "mean": 0.03515625,
+            "bootstrap95": [
+              -0.0390625,
+              0.109375
+            ]
+          },
+          "survivors": {
+            "mean": -0.703125,
+            "bootstrap95": [
+              -0.9921875,
+              -0.40224609374999964
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1.554094082826557e-06
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 106,
+          "winRate": 0.4140625,
+          "winWilson95": [
+            0.3554297681158383,
+            0.4752362072073583
+          ],
+          "meanCappedRounds": 84.7265625,
+          "meanPotions": 4.91796875,
+          "fourAliveWins": 40,
+          "meanJamUses": 5.0078125,
+          "meanJamExtended": 6.98046875,
+          "meanDiagnosisUses": 4.125
+        },
+        "right": {
+          "n": 256,
+          "wins": 118,
+          "winRate": 0.4609375,
+          "winWilson95": [
+            0.40090361566150806,
+            0.5221263731217632
+          ],
+          "meanCappedRounds": 80.28125,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 56,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.046875,
+        "familyConservativeWinDeltaCI": [
+          -0.2324848966865029,
+          0.14208077654528084
+        ],
+        "observedOnlyLeftWins": 38,
+        "observedOnlyRightWins": 50,
+        "pairedWinP": 0.2407931245390016,
+        "delta": {
+          "cappedRounds": {
+            "mean": 4.4453125,
+            "bootstrap95": [
+              -1.61748046875,
+              10.421875
+            ]
+          },
+          "pots": {
+            "mean": 0.0078125,
+            "bootstrap95": [
+              -0.06640625,
+              0.078125
+            ]
+          },
+          "survivors": {
+            "mean": -0.20703125,
+            "bootstrap95": [
+              -0.43359375,
+              0.0390625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 106,
+          "winRate": 0.4140625,
+          "winWilson95": [
+            0.3554297681158383,
+            0.4752362072073583
+          ],
+          "meanCappedRounds": 84.7265625,
+          "meanPotions": 4.91796875,
+          "fourAliveWins": 40,
+          "meanJamUses": 5.0078125,
+          "meanJamExtended": 6.98046875,
+          "meanDiagnosisUses": 4.125
+        },
+        "right": {
+          "n": 256,
+          "wins": 172,
+          "winRate": 0.671875,
+          "winWilson95": [
+            0.6121878040809798,
+            0.7264802452726269
+          ],
+          "meanCappedRounds": 54.53515625,
+          "meanPotions": 4.8828125,
+          "fourAliveWins": 29,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.2578125,
+        "familyConservativeWinDeltaCI": [
+          -0.4306282318538776,
+          -0.06659442892284373
+        ],
+        "observedOnlyLeftWins": 46,
+        "observedOnlyRightWins": 112,
+        "pairedWinP": 1.554094082826557e-07,
+        "delta": {
+          "cappedRounds": {
+            "mean": 30.19140625,
+            "bootstrap95": [
+              22.30068359375,
+              38.8634765625
+            ]
+          },
+          "pots": {
+            "mean": 0.03515625,
+            "bootstrap95": [
+              -0.04296875,
+              0.109375
+            ]
+          },
+          "survivors": {
+            "mean": -0.703125,
+            "bootstrap95": [
+              -1.0234375,
+              -0.41015625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "ivory-tower-010-T6-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 6,
+      "stage": "ivory-tower-010",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "tikka",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "0f0c20fe9a8f6f158003f5abe7475850cf5609ae57b4948d122aa2c94516ec20",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 16.60546875,
+          "meanPotions": 3.1328125,
+          "fourAliveWins": 87,
+          "meanJamUses": 2.65234375,
+          "meanJamExtended": 5.2578125,
+          "meanDiagnosisUses": 2.25
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.66015625,
+          "meanPotions": 2.3515625,
+          "fourAliveWins": 200,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 254,
+          "winRate": 0.9921875,
+          "winWilson95": [
+            0.9719672316984642,
+            0.9978549096323186
+          ],
+          "meanCappedRounds": 17.6640625,
+          "meanPotions": 3.3046875,
+          "fourAliveWins": 37,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 16.9375,
+          "meanPotions": 2.8515625,
+          "fourAliveWins": 204,
+          "meanJamUses": 3.73046875,
+          "meanJamExtended": 4.296875,
+          "meanDiagnosisUses": 2.875
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.66015625,
+          "meanPotions": 2.3515625,
+          "fourAliveWins": 200,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 16.60546875,
+          "meanPotions": 3.1328125,
+          "fourAliveWins": 87,
+          "meanJamUses": 2.65234375,
+          "meanJamExtended": 5.2578125,
+          "meanDiagnosisUses": 2.25
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.66015625,
+          "meanPotions": 2.3515625,
+          "fourAliveWins": 200,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 5.9453125,
+            "bootstrap95": [
+              5.7109375,
+              6.18359375
+            ]
+          },
+          "pots": {
+            "mean": 0.78125,
+            "bootstrap95": [
+              0.59765625,
+              0.96875
+            ]
+          },
+          "survivors": {
+            "mean": -0.4609375,
+            "bootstrap95": [
+              -0.546875,
+              -0.37109375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 16.60546875,
+          "meanPotions": 3.1328125,
+          "fourAliveWins": 87,
+          "meanJamUses": 2.65234375,
+          "meanJamExtended": 5.2578125,
+          "meanDiagnosisUses": 2.25
+        },
+        "right": {
+          "n": 256,
+          "wins": 254,
+          "winRate": 0.9921875,
+          "winWilson95": [
+            0.9719672316984642,
+            0.9978549096323186
+          ],
+          "meanCappedRounds": 17.6640625,
+          "meanPotions": 3.3046875,
+          "fourAliveWins": 37,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0078125,
+        "familyConservativeWinDeltaCI": [
+          -0.03450202202330355,
+          0.04956937538017392
+        ],
+        "observedOnlyLeftWins": 2,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 0.5,
+        "delta": {
+          "cappedRounds": {
+            "mean": -1.05859375,
+            "bootstrap95": [
+              -2.3126953125,
+              -0.17958984374999964
+            ]
+          },
+          "pots": {
+            "mean": -0.171875,
+            "bootstrap95": [
+              -0.32431640624999997,
+              -0.0234375
+            ]
+          },
+          "survivors": {
+            "mean": 0.3125,
+            "bootstrap95": [
+              0.24609375,
+              0.3828125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 16.9375,
+          "meanPotions": 2.8515625,
+          "fourAliveWins": 204,
+          "meanJamUses": 3.73046875,
+          "meanJamExtended": 4.296875,
+          "meanDiagnosisUses": 2.875
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.66015625,
+          "meanPotions": 2.3515625,
+          "fourAliveWins": 200,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 6.27734375,
+            "bootstrap95": [
+              6.10537109375,
+              6.4609375
+            ]
+          },
+          "pots": {
+            "mean": 0.5,
+            "bootstrap95": [
+              0.296875,
+              0.69140625
+            ]
+          },
+          "survivors": {
+            "mean": 0.02734375,
+            "bootstrap95": [
+              -0.04296875,
+              0.09765625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "ivory-tower-010-T6-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 6,
+      "stage": "ivory-tower-010",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "astraea"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "tikka",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "jam"
+            ]
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "astraea"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        }
+      },
+      "selectionInputSha256": "ff10568d69c2662bd373799b0cb310b913c8a6ca3938a2cc2a323924529e360c",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 117,
+          "winRate": 0.45703125,
+          "winWilson95": [
+            0.3970936285540288,
+            0.5182393591075696
+          ],
+          "meanCappedRounds": 77.73828125,
+          "meanPotions": 4.9296875,
+          "fourAliveWins": 15,
+          "meanJamUses": 3.5,
+          "meanJamExtended": 4.77734375,
+          "meanDiagnosisUses": 2.9453125
+        },
+        "A": {
+          "n": 256,
+          "wins": 253,
+          "winRate": 0.98828125,
+          "winWilson95": [
+            0.9661184273321177,
+            0.9960067128769923
+          ],
+          "meanCappedRounds": 17.515625,
+          "meanPotions": 3.60546875,
+          "fourAliveWins": 54,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 57,
+          "winRate": 0.22265625,
+          "winWilson95": [
+            0.17600601030365376,
+            0.27750691005757183
+          ],
+          "meanCappedRounds": 100.16796875,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 19,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 117,
+          "winRate": 0.45703125,
+          "winWilson95": [
+            0.3970936285540288,
+            0.5182393591075696
+          ],
+          "meanCappedRounds": 77.73828125,
+          "meanPotions": 4.9296875,
+          "fourAliveWins": 15,
+          "meanJamUses": 3.5,
+          "meanJamExtended": 4.77734375,
+          "meanDiagnosisUses": 2.9453125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 253,
+          "winRate": 0.98828125,
+          "winWilson95": [
+            0.9661184273321177,
+            0.9960067128769923
+          ],
+          "meanCappedRounds": 17.515625,
+          "meanPotions": 3.60546875,
+          "fourAliveWins": 54,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 117,
+          "winRate": 0.45703125,
+          "winWilson95": [
+            0.3970936285540288,
+            0.5182393591075696
+          ],
+          "meanCappedRounds": 77.73828125,
+          "meanPotions": 4.9296875,
+          "fourAliveWins": 15,
+          "meanJamUses": 3.5,
+          "meanJamExtended": 4.77734375,
+          "meanDiagnosisUses": 2.9453125
+        },
+        "right": {
+          "n": 256,
+          "wins": 253,
+          "winRate": 0.98828125,
+          "winWilson95": [
+            0.9661184273321177,
+            0.9960067128769923
+          ],
+          "meanCappedRounds": 17.515625,
+          "meanPotions": 3.60546875,
+          "fourAliveWins": 54,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.53125,
+        "familyConservativeWinDeltaCI": [
+          -0.6331883747349267,
+          -0.39139165353225636
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 136,
+        "pairedWinP": 2.2958874039497803e-41,
+        "delta": {
+          "cappedRounds": {
+            "mean": 60.22265625,
+            "bootstrap95": [
+              54.4724609375,
+              65.89873046875
+            ]
+          },
+          "pots": {
+            "mean": 1.32421875,
+            "bootstrap95": [
+              1.12890625,
+              1.5235351562500004
+            ]
+          },
+          "survivors": {
+            "mean": -1.80859375,
+            "bootstrap95": [
+              -2.0,
+              -1.62109375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 2.7550648847397363e-40
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 117,
+          "winRate": 0.45703125,
+          "winWilson95": [
+            0.3970936285540288,
+            0.5182393591075696
+          ],
+          "meanCappedRounds": 77.73828125,
+          "meanPotions": 4.9296875,
+          "fourAliveWins": 15,
+          "meanJamUses": 3.5,
+          "meanJamExtended": 4.77734375,
+          "meanDiagnosisUses": 2.9453125
+        },
+        "right": {
+          "n": 256,
+          "wins": 57,
+          "winRate": 0.22265625,
+          "winWilson95": [
+            0.17600601030365376,
+            0.27750691005757183
+          ],
+          "meanCappedRounds": 100.16796875,
+          "meanPotions": 4.91015625,
+          "fourAliveWins": 19,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.234375,
+        "familyConservativeWinDeltaCI": [
+          0.05267349043938241,
+          0.3993471102667277
+        ],
+        "observedOnlyLeftWins": 88,
+        "observedOnlyRightWins": 28,
+        "pairedWinP": 2.0883550312393552e-08,
+        "delta": {
+          "cappedRounds": {
+            "mean": -22.4296875,
+            "bootstrap95": [
+              -29.11728515625,
+              -15.487988281249999
+            ]
+          },
+          "pots": {
+            "mean": 0.01953125,
+            "bootstrap95": [
+              -0.04296875,
+              0.0859375
+            ]
+          },
+          "survivors": {
+            "mean": 0.5390625,
+            "bootstrap95": [
+              0.30859375,
+              0.765625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 117,
+          "winRate": 0.45703125,
+          "winWilson95": [
+            0.3970936285540288,
+            0.5182393591075696
+          ],
+          "meanCappedRounds": 77.73828125,
+          "meanPotions": 4.9296875,
+          "fourAliveWins": 15,
+          "meanJamUses": 3.5,
+          "meanJamExtended": 4.77734375,
+          "meanDiagnosisUses": 2.9453125
+        },
+        "right": {
+          "n": 256,
+          "wins": 253,
+          "winRate": 0.98828125,
+          "winWilson95": [
+            0.9661184273321177,
+            0.9960067128769923
+          ],
+          "meanCappedRounds": 17.515625,
+          "meanPotions": 3.60546875,
+          "fourAliveWins": 54,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": -0.53125,
+        "familyConservativeWinDeltaCI": [
+          -0.6331883747349267,
+          -0.39139165353225636
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 136,
+        "pairedWinP": 2.2958874039497803e-41,
+        "delta": {
+          "cappedRounds": {
+            "mean": 60.22265625,
+            "bootstrap95": [
+              54.67177734375,
+              65.92998046875
+            ]
+          },
+          "pots": {
+            "mean": 1.32421875,
+            "bootstrap95": [
+              1.12890625,
+              1.515625
+            ]
+          },
+          "survivors": {
+            "mean": -1.80859375,
+            "bootstrap95": [
+              -1.99609375,
+              -1.62890625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T3-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 3,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "astraea",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 1
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "astraea",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "e0154fbb64965383894effaf6f7f8f15bed8c04a437029512b216f8767928227",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.53125,
+          "meanPotions": 0.52734375,
+          "fourAliveWins": 229,
+          "meanJamUses": 2.0,
+          "meanJamExtended": 3.0,
+          "meanDiagnosisUses": 1.87890625
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.23046875,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.515625,
+          "meanPotions": 0.546875,
+          "fourAliveWins": 231,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.1953125,
+          "meanPotions": 0.1875,
+          "fourAliveWins": 256,
+          "meanJamUses": 4.01171875,
+          "meanJamExtended": 6.86328125,
+          "meanDiagnosisUses": 3.203125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.23046875,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.53125,
+          "meanPotions": 0.52734375,
+          "fourAliveWins": 229,
+          "meanJamUses": 2.0,
+          "meanJamExtended": 3.0,
+          "meanDiagnosisUses": 1.87890625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.23046875,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.30078125,
+            "bootstrap95": [
+              2.2265625,
+              2.37109375
+            ]
+          },
+          "pots": {
+            "mean": 0.52734375,
+            "bootstrap95": [
+              0.46484375,
+              0.58984375
+            ]
+          },
+          "survivors": {
+            "mean": -0.10546875,
+            "bootstrap95": [
+              -0.14453125,
+              -0.0703125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.53125,
+          "meanPotions": 0.52734375,
+          "fourAliveWins": 229,
+          "meanJamUses": 2.0,
+          "meanJamExtended": 3.0,
+          "meanDiagnosisUses": 1.87890625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.515625,
+          "meanPotions": 0.546875,
+          "fourAliveWins": 231,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 0.015625,
+            "bootstrap95": [
+              0.00390625,
+              0.03125
+            ]
+          },
+          "pots": {
+            "mean": -0.01953125,
+            "bootstrap95": [
+              -0.046875,
+              0.0078125
+            ]
+          },
+          "survivors": {
+            "mean": -0.0078125,
+            "bootstrap95": [
+              -0.01953125,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.1953125,
+          "meanPotions": 0.1875,
+          "fourAliveWins": 256,
+          "meanJamUses": 4.01171875,
+          "meanJamExtended": 6.86328125,
+          "meanDiagnosisUses": 3.203125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.23046875,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.96484375,
+            "bootstrap95": [
+              2.8359375,
+              3.09375
+            ]
+          },
+          "pots": {
+            "mean": 0.1875,
+            "bootstrap95": [
+              0.12890625,
+              0.25
+            ]
+          },
+          "survivors": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T3-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 3,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "astraea",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 1
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "bulwark",
+                  "value": 100
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 100,
+                  "trait": "mercy",
+                  "value": 100
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "7a82c2e6503fc9cb8c1a8204bc1731246e38ba07a4413735ef411ec7314809e2",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 12.0859375,
+          "meanPotions": 1.62109375,
+          "fourAliveWins": 249,
+          "meanJamUses": 2.7890625,
+          "meanJamExtended": 3.39453125,
+          "meanDiagnosisUses": 2.04296875
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.5,
+          "meanPotions": 0.03125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 12.3828125,
+          "meanPotions": 1.69921875,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.73828125,
+          "meanPotions": 1.046875,
+          "fourAliveWins": 243,
+          "meanJamUses": 4.6484375,
+          "meanJamExtended": 8.078125,
+          "meanDiagnosisUses": 4.31640625
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.5625,
+          "meanPotions": 0.00390625,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 12.0859375,
+          "meanPotions": 1.62109375,
+          "fourAliveWins": 249,
+          "meanJamUses": 2.7890625,
+          "meanJamExtended": 3.39453125,
+          "meanDiagnosisUses": 2.04296875
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.5,
+          "meanPotions": 0.03125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 4.5859375,
+            "bootstrap95": [
+              4.390625,
+              4.78515625
+            ]
+          },
+          "pots": {
+            "mean": 1.58984375,
+            "bootstrap95": [
+              1.45703125,
+              1.7265625
+            ]
+          },
+          "survivors": {
+            "mean": -0.02734375,
+            "bootstrap95": [
+              -0.046875,
+              -0.0078125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 12.0859375,
+          "meanPotions": 1.62109375,
+          "fourAliveWins": 249,
+          "meanJamUses": 2.7890625,
+          "meanJamExtended": 3.39453125,
+          "meanDiagnosisUses": 2.04296875
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 12.3828125,
+          "meanPotions": 1.69921875,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": -0.296875,
+            "bootstrap95": [
+              -0.38671875,
+              -0.20703125
+            ]
+          },
+          "pots": {
+            "mean": -0.078125,
+            "bootstrap95": [
+              -0.1796875,
+              0.011816406250000355
+            ]
+          },
+          "survivors": {
+            "mean": -0.02734375,
+            "bootstrap95": [
+              -0.05078125,
+              -0.0078125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 13.73828125,
+          "meanPotions": 1.046875,
+          "fourAliveWins": 243,
+          "meanJamUses": 4.6484375,
+          "meanJamExtended": 8.078125,
+          "meanDiagnosisUses": 4.31640625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.5625,
+          "meanPotions": 0.00390625,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 6.17578125,
+            "bootstrap95": [
+              5.95703125,
+              6.39072265625
+            ]
+          },
+          "pots": {
+            "mean": 1.04296875,
+            "bootstrap95": [
+              0.9453125,
+              1.1407226562500004
+            ]
+          },
+          "survivors": {
+            "mean": -0.05078125,
+            "bootstrap95": [
+              -0.078125,
+              -0.02734375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T4-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 4,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 1
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "ghollow-lantern",
+                "defId": "hollow-lantern",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 1
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "869de465d754293b2cb3f16b398b98233b2e397d9f0773c39e1e3cb3e4d6f5b4",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.2578125,
+          "meanPotions": 0.4140625,
+          "fourAliveWins": 241,
+          "meanJamUses": 1.94921875,
+          "meanJamExtended": 2.8984375,
+          "meanDiagnosisUses": 1.86328125
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.0,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.03125,
+          "meanPotions": 0.125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.70703125,
+          "meanPotions": 0.16796875,
+          "fourAliveWins": 256,
+          "meanJamUses": 3.953125,
+          "meanJamExtended": 6.8046875,
+          "meanDiagnosisUses": 3.1484375
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.0,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.2578125,
+          "meanPotions": 0.4140625,
+          "fourAliveWins": 241,
+          "meanJamUses": 1.94921875,
+          "meanJamExtended": 2.8984375,
+          "meanDiagnosisUses": 1.86328125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.0,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.2578125,
+            "bootstrap95": [
+              2.20703125,
+              2.3125
+            ]
+          },
+          "pots": {
+            "mean": 0.4140625,
+            "bootstrap95": [
+              0.35537109375000003,
+              0.4765625
+            ]
+          },
+          "survivors": {
+            "mean": -0.05859375,
+            "bootstrap95": [
+              -0.08984375,
+              -0.03125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.2578125,
+          "meanPotions": 0.4140625,
+          "fourAliveWins": 241,
+          "meanJamUses": 1.94921875,
+          "meanJamExtended": 2.8984375,
+          "meanDiagnosisUses": 1.86328125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.03125,
+          "meanPotions": 0.125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 0.2265625,
+            "bootstrap95": [
+              0.17578125,
+              0.28125
+            ]
+          },
+          "pots": {
+            "mean": 0.2890625,
+            "bootstrap95": [
+              0.234375,
+              0.34375
+            ]
+          },
+          "survivors": {
+            "mean": -0.05859375,
+            "bootstrap95": [
+              -0.08984375,
+              -0.03125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 8.70703125,
+          "meanPotions": 0.16796875,
+          "fourAliveWins": 256,
+          "meanJamUses": 3.953125,
+          "meanJamExtended": 6.8046875,
+          "meanDiagnosisUses": 3.1484375
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.0,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.70703125,
+            "bootstrap95": [
+              2.58984375,
+              2.82421875
+            ]
+          },
+          "pots": {
+            "mean": 0.16796875,
+            "bootstrap95": [
+              0.09765625,
+              0.24609375
+            ]
+          },
+          "survivors": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T4-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 4,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "astraea",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gpale-ward",
+                "defId": "pale-ward",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "bulwark",
+                  "value": 139
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 139,
+                  "trait": "mercy",
+                  "value": 139
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "d980d9fdc50cd657057dea1478bb2e26d7362eedc6cbdb3bbe9076ddd6f7f59e",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.1484375,
+          "meanPotions": 1.13671875,
+          "fourAliveWins": 239,
+          "meanJamUses": 2.05859375,
+          "meanJamExtended": 2.77734375,
+          "meanDiagnosisUses": 1.92578125
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.20703125,
+          "meanPotions": 0.02734375,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.7421875,
+          "meanPotions": 1.19921875,
+          "fourAliveWins": 243,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.24609375,
+          "meanPotions": 1.00390625,
+          "fourAliveWins": 242,
+          "meanJamUses": 2.0859375,
+          "meanJamExtended": 2.828125,
+          "meanDiagnosisUses": 1.9453125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.21484375,
+          "meanPotions": 0.00390625,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.1484375,
+          "meanPotions": 1.13671875,
+          "fourAliveWins": 239,
+          "meanJamUses": 2.05859375,
+          "meanJamExtended": 2.77734375,
+          "meanDiagnosisUses": 1.92578125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.20703125,
+          "meanPotions": 0.02734375,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.94140625,
+            "bootstrap95": [
+              2.734375,
+              3.1446289062500004
+            ]
+          },
+          "pots": {
+            "mean": 1.109375,
+            "bootstrap95": [
+              1.00390625,
+              1.21875
+            ]
+          },
+          "survivors": {
+            "mean": -0.06640625,
+            "bootstrap95": [
+              -0.1015625,
+              -0.0390625
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.1484375,
+          "meanPotions": 1.13671875,
+          "fourAliveWins": 239,
+          "meanJamUses": 2.05859375,
+          "meanJamExtended": 2.77734375,
+          "meanDiagnosisUses": 1.92578125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.7421875,
+          "meanPotions": 1.19921875,
+          "fourAliveWins": 243,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": -0.59375,
+            "bootstrap95": [
+              -0.671875,
+              -0.51953125
+            ]
+          },
+          "pots": {
+            "mean": -0.0625,
+            "bootstrap95": [
+              -0.1640625,
+              0.04296875
+            ]
+          },
+          "survivors": {
+            "mean": -0.015625,
+            "bootstrap95": [
+              -0.04296875,
+              0.0078125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 10.24609375,
+          "meanPotions": 1.00390625,
+          "fourAliveWins": 242,
+          "meanJamUses": 2.0859375,
+          "meanJamExtended": 2.828125,
+          "meanDiagnosisUses": 1.9453125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.21484375,
+          "meanPotions": 0.00390625,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 3.03125,
+            "bootstrap95": [
+              2.83984375,
+              3.234375
+            ]
+          },
+          "pots": {
+            "mean": 1.0,
+            "bootstrap95": [
+              0.8984375,
+              1.1015625
+            ]
+          },
+          "survivors": {
+            "mean": -0.0546875,
+            "bootstrap95": [
+              -0.08203125,
+              -0.02734375
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T6-F1",
+      "core": [
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "tier": 6,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "tikka",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "seris-awakened",
+              "athena",
+              "benzaiten",
+              "tikka"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "seris-awakened",
+              "athena",
+              "benzaiten"
+            ],
+            "leader": "athena",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "bf80c55aba19b545af795aa297df1651706646b873982a923bb7efe9fa182945",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.671875,
+          "meanPotions": 0.09375,
+          "fourAliveWins": 256,
+          "meanJamUses": 1.671875,
+          "meanJamExtended": 2.34375,
+          "meanDiagnosisUses": 1.6015625
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 5.3515625,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.671875,
+          "meanPotions": 0.09375,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.84375,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 1.84375,
+          "meanJamExtended": 2.6875,
+          "meanDiagnosisUses": 1.7734375
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 5.3515625,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.671875,
+          "meanPotions": 0.09375,
+          "fourAliveWins": 256,
+          "meanJamUses": 1.671875,
+          "meanJamExtended": 2.34375,
+          "meanDiagnosisUses": 1.6015625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 5.3515625,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.3203125,
+            "bootstrap95": [
+              2.22265625,
+              2.41796875
+            ]
+          },
+          "pots": {
+            "mean": 0.09375,
+            "bootstrap95": [
+              0.05859375,
+              0.12890625
+            ]
+          },
+          "survivors": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.671875,
+          "meanPotions": 0.09375,
+          "fourAliveWins": 256,
+          "meanJamUses": 1.671875,
+          "meanJamExtended": 2.34375,
+          "meanDiagnosisUses": 1.6015625
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.671875,
+          "meanPotions": 0.09375,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "pots": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "survivors": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 7.84375,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 1.84375,
+          "meanJamExtended": 2.6875,
+          "meanDiagnosisUses": 1.7734375
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 5.3515625,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.4921875,
+            "bootstrap95": [
+              2.40625,
+              2.578125
+            ]
+          },
+          "pots": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          },
+          "survivors": {
+            "mean": 0.0,
+            "bootstrap95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    },
+    {
+      "id": "lunette-awakening-T6-F2",
+      "core": [
+        "lunette-awakened",
+        "liora-awakened",
+        "mireille"
+      ],
+      "tier": 6,
+      "stage": "lunette-awakening",
+      "alternative": "astraea",
+      "arms": {
+        "M": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "A": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        },
+        "E": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          },
+          "ablation": "remove-tikka-jam-only"
+        },
+        "MF": {
+          "config": {
+            "party": [
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille",
+              "tikka"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0
+          }
+        },
+        "AF": {
+          "config": {
+            "party": [
+              "astraea",
+              "lunette-awakened",
+              "liora-awakened",
+              "mireille"
+            ],
+            "leader": "liora-awakened",
+            "gems": [
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "bulwark",
+                  "value": 239
+                }
+              },
+              {
+                "id": "gecho-shard",
+                "defId": "echo-shard",
+                "variant": "pure",
+                "roll": {
+                  "power": 239,
+                  "trait": "mercy",
+                  "value": 239
+                }
+              }
+            ],
+            "policy": 0,
+            "prefer": [
+              "pierce"
+            ]
+          }
+        }
+      },
+      "selectionInputSha256": "574a370cda081e0a7cf0586f2b83841bf2538650442e58a3d71f4d4f2a59321d",
+      "summaries": {
+        "M": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.16015625,
+          "meanPotions": 0.875,
+          "fourAliveWins": 245,
+          "meanJamUses": 1.3671875,
+          "meanJamExtended": 2.0859375,
+          "meanDiagnosisUses": 1.28125
+        },
+        "A": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.55078125,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "E": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.390625,
+          "meanPotions": 0.83203125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "MF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.16015625,
+          "meanPotions": 0.875,
+          "fourAliveWins": 245,
+          "meanJamUses": 1.3671875,
+          "meanJamExtended": 2.0859375,
+          "meanDiagnosisUses": 1.28125
+        },
+        "AF": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.55078125,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        }
+      },
+      "M-A": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.16015625,
+          "meanPotions": 0.875,
+          "fourAliveWins": 245,
+          "meanJamUses": 1.3671875,
+          "meanJamExtended": 2.0859375,
+          "meanDiagnosisUses": 1.28125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.55078125,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.609375,
+            "bootstrap95": [
+              2.4609375,
+              2.7578125
+            ]
+          },
+          "pots": {
+            "mean": 0.875,
+            "bootstrap95": [
+              0.796875,
+              0.953125
+            ]
+          },
+          "survivors": {
+            "mean": -0.04296875,
+            "bootstrap95": [
+              -0.0703125,
+              -0.01953125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate.",
+        "holmPairedWinP": 1
+      },
+      "M-E": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.16015625,
+          "meanPotions": 0.875,
+          "fourAliveWins": 245,
+          "meanJamUses": 1.3671875,
+          "meanJamExtended": 2.0859375,
+          "meanDiagnosisUses": 1.28125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.390625,
+          "meanPotions": 0.83203125,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": -0.23046875,
+            "bootstrap95": [
+              -0.3046875,
+              -0.15625
+            ]
+          },
+          "pots": {
+            "mean": 0.04296875,
+            "bootstrap95": [
+              -0.046875,
+              0.1328125
+            ]
+          },
+          "survivors": {
+            "mean": -0.04296875,
+            "bootstrap95": [
+              -0.0703125,
+              -0.01953125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      },
+      "MF-AF": {
+        "left": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 9.16015625,
+          "meanPotions": 0.875,
+          "fourAliveWins": 245,
+          "meanJamUses": 1.3671875,
+          "meanJamExtended": 2.0859375,
+          "meanDiagnosisUses": 1.28125
+        },
+        "right": {
+          "n": 256,
+          "wins": 256,
+          "winRate": 1.0,
+          "winWilson95": [
+            0.9852161435741286,
+            0.9999999999999999
+          ],
+          "meanCappedRounds": 6.55078125,
+          "meanPotions": 0.0,
+          "fourAliveWins": 256,
+          "meanJamUses": 0.0,
+          "meanJamExtended": 0.0,
+          "meanDiagnosisUses": 0.0
+        },
+        "winDelta": 0.0,
+        "familyConservativeWinDeltaCI": [
+          -0.035689385160298404,
+          0.035689385160298404
+        ],
+        "observedOnlyLeftWins": 0,
+        "observedOnlyRightWins": 0,
+        "pairedWinP": 1.0,
+        "delta": {
+          "cappedRounds": {
+            "mean": 2.609375,
+            "bootstrap95": [
+              2.4609375,
+              2.765625
+            ]
+          },
+          "pots": {
+            "mean": 0.875,
+            "bootstrap95": [
+              0.796875,
+              0.953125
+            ]
+          },
+          "survivors": {
+            "mean": -0.04296875,
+            "bootstrap95": [
+              -0.0703125,
+              -0.01953125
+            ]
+          }
+        },
+        "scope": "Paired256 seeds. Conservative simultaneous Wilson-envelope primary win interval. Secondary percentile bootstrap is descriptive, not a global superiority certificate."
+      }
+    }
+  ],
+  "seedCountPerCondition": 256,
+  "distinctHeldoutSeeds": 256,
+  "independence": "Arms paired; same seed panel reused across cases, NOT15360 independent observations. Holm permits dependent primary tests.",
+  "secondaryIntervalPolicy": "Bootstrap secondary intervals are descriptive. No overall award based on exploratory metric selection."
+}

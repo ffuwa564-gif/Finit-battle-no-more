@@ -1,0 +1,16 @@
+{
+  "episode": "THIS-GIRL-003",
+  "images": [
+    {
+      "destination": "artifacts/this-girl-03/assets/research-desk-original.png",
+      "sha256": "b0b29ee42b34477f6088bc58d102ca58bd51970389ec82c44faac3a580e185b9",
+      "source": "/workspace/generated_images/exec-9f1f2041-dad8-4de5-92fe-ac436c7b9c1b.png",
+      "method": "image_gen edit of episode02 first-person desk and public Tikka original, once for episode03"
+    }
+  ],
+  "references": [
+    "artifacts/this-girl-02/assets/research-desk-original.png",
+    "public/art/gacha-tikka.png"
+  ],
+  "newRunwayVideoGeneration": false
+}
