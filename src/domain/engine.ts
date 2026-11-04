@@ -1,3 +1,4 @@
+import { applyJamExposure, grantJamRelay } from './jam-relay';
 import { characterSkills } from './character-skills';
 import { markBarrierReturn, canMarkBarrierReturn, expireBarrierReturn, storeBarrierAbsorption, takeBarrierReturn, barrierReturnDamage } from './barrier-return';
 import { quoteBarrierMend, applyBarrierMend, barrierMendTarget, harvestMendThreads } from './barrier-mend';
@@ -654,6 +655,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     }
     const actionName = action.forcedBy ? `${ailmentNames[action.forcedBy]}による通常攻撃` : action.name ?? action.skill?.name ?? '通常攻撃';
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
+    let jamExtended = false;
     const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0; let selfCost = 0;
     const memoryDef = action.skill ? gemDefinitionForSkill(action.skill.id) : undefined;
     const customScout = action.skill && !memoryDef && !action.ultimate && !action.forcedBy ? scoutSkillAction(battle, actor, action.skill.id, potency, action.targets.map(target => target.uid)) : undefined;
@@ -720,7 +722,12 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       amount = applyBarrierMend(target, battle.units, battle.round, action.skill!, potency).healed; targetIds.push(target.uid);
     } else if (action.template === 'jam') {
       const target = action.targets[0]!;
-      for (const id of character(content, target.characterId).skillIds) target.cooldowns[id] = Math.max(target.cooldowns[id] ?? 0, battle.round + 2);
+      for (const id of character(content, target.characterId).skillIds) {
+        const old=target.cooldowns[id]??0;
+        target.cooldowns[id]=Math.max(old,battle.round+2);
+        jamExtended ||= target.cooldowns[id]>old;
+      }
+      if(action.skill && !action.ultimate && !action.forcedBy && !memoryDef) applyJamExposure(target,battle.round,action.skill,jamExtended);
       targetIds.push(target.uid);
     } else if (isAilment(action.template)) {
       const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
@@ -810,6 +817,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
     emit(battle, { commandRedirected: action.commanded ? Boolean(action.commandRedirected) : undefined, returnDamage: returnDamage || undefined, coordinationAction: coordination?.linked.has(actor.uid) ? 'linked' : undefined, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${action.commanded ? '（号令の宛先）' : ''}${rescue.note ? `（${rescue.note}）` : ''}${coordination?.linked.has(actor.uid) ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount: amount + returnDamage, absorbed: absorbed || undefined, selfCost: selfCost || undefined, unitsAfter: clone(battle.units) });
+    if (action.template==='jam' && action.skill && !action.ultimate && !action.forcedBy && !memoryDef) {
+      const relay=grantJamRelay(battle,actor,action.skill,jamExtended);
+      if(relay)emit(battle,{kind:'buff',actorId:actor.uid,targetIds:[relay.recipientId],jamRelay:relay,text:`${name} — 時送りの充填（+${relay.charge}）`,unitsAfter:clone(battle.units)});
+    }
     if(returnGift)emit(battle,{kind:'buff',actorId:actor.uid,targetIds:returnTarget?[returnTarget.uid]:[],skillId:returnGift.skillId,barrierReturnAction:'consume',resourceAmount:returnGift.power,text:`${returnGift.name} — 蓄えた花びらを一撃へ`,unitsAfter:clone(battle.units)});
     // The ordinary guard snapshot precedes the seed's independent HP change.
     if (action.manualGuard) {
@@ -992,3 +1003,4 @@ export function usePotion(input: Battle, unitId: string): Battle {
   battle.potionsRemaining -= 1; battle.potionUsed = true; battle.initialUnits = clone(battle.units);
   return battle;
 }
+

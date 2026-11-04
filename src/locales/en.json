@@ -3174,5 +3174,8 @@
   "HP75%以下の味方1人を修繕する。ミエットが生存中、味方の障壁の失効残量を各自の最大HPまで修繕糸として3ラウンド保持する。修繕時は糸を先に使い、不足分だけ回復対象自身の有効な障壁を消費する。他の味方の有効な障壁は削らない。総消費は対象の最大HPの15%まで、基礎回復量は消費の3倍。通常回復が2倍以上を回復できる少量変換は自動で避ける。緊急時以外は従来の盾持ち対象を優先。糸はWave・戦闘不能で消え、自動回復や追加行動は発生しない。": "Repair one ally at 75% HP or less. While Miette lives, leftover expired barriers become thread, capped at each carrier’s max HP, for 3 rounds. Spend thread first, then only the recipient’s own active barrier. Never consume another ally’s active barrier. Total spending is capped at 15% of the recipient’s max HP; base healing is three times the amount spent. Avoid tiny conversions when normal healing restores at least twice as much. Outside emergencies, prioritize the previous shielded recipient. Thread clears on a new wave or death; no automatic healing or extra actions.",
   "修繕糸 {0}": "Mending thread {0}",
   "失効した障壁の残り。第{0}ラウンド終了まで修繕に使用できる。有効な障壁とは別の有限資源。": "Leftover expired barrier. Available for mending through round {0}. A finite resource separate from active barriers.",
-  "{0} — 修繕糸を保存（{1}）": "{0} — Mending thread saved ({1})"
+  "{0} — 修繕糸を保存（{1}）": "{0} — Mending thread saved ({1})",
+  "時送りの合図": "Signal Across a Second",
+  "{0} — 時送りの充填（+{1}）": "{0} — Temporal relay (+{1})",
+  "敵1体の通常スキルの再使用を現在ラウンド+2まで延長する。実際に延びた時は、対象へ次ラウンド終了まで強さ14の防御低下を付与し、より強い既存の弱体は上書き・延長しない。さらに、生存中・必殺未予約・ゲージ100未満の他の味方から攻撃力が最も高い1人へ必殺ゲージを15充填。1行動1回、上限100。通常攻撃・ボス大技・ビットを止めず、追加行動や自動の必殺予約はしない。本人の故障診断+8は別。再使用4ラウンド。": "Delay one enemy’s ordinary skill cooldowns until the current round plus two. Only after a real extension, apply strength14 defense weakness until the next round ends without replacing or extending a stronger active weakness. Then charge15 ultimate gauge for the highest-attack living, unqueued other ally below100 gauge. Once per action, capped at100. Does not stop normal attacks, boss arts or bits, grant actions, or queue ultimates. Tikka’s existing self diagnosis8 is separate. Cooldown4 rounds."
 }

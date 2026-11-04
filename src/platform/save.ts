@@ -66,6 +66,7 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
+  if (record(value) && value.jamRelay !== undefined && (!record(value.jamRelay) || !nonempty(value.jamRelay.recipientId) || !count(value.jamRelay.charge) || value.jamRelay.charge<1 || value.jamRelay.charge>25 || value.kind!=='buff' || !Array.isArray(value.targetIds) || !value.targetIds.includes(value.jamRelay.recipientId))) return false;
   if (record(value) && ['absorbed', 'selfCost', 'resourceAmount', 'returnDamage'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
   if(record(value)&&value.barrierReturnAction!==undefined&&(!['capture','consume'].includes(String(value.barrierReturnAction))||value.kind!=='buff'||!count(value.resourceAmount)))return false;

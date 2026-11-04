@@ -1,4 +1,5 @@
 import { validBarrierReturnContract } from '../domain/barrier-return';
+import { validJamRelayContract } from '../domain/jam-relay';
 import { validBarrierMendContract } from '../domain/barrier-mend';
 import { FACE_FRAME_ASPECTS, portraitHeadFits } from './portrait-framing';
 import { scoutSkillContract } from '../domain/scout-skills';
@@ -84,9 +85,10 @@ export function validateContent(content: Content): string[] {
       if(!override||typeof override!=='object'||Array.isArray(override)){errors.push(`characters/${char.id}: personal override must be an object`);continue;}
       const base=content.skills.find(skill=>skill.id===id);
       reject(!char.skillIds.includes(id)||!base,`characters/${char.id}: override must reference an owned skill`);
-      reject(Object.keys(override).some(key=>!['name','description','barrierReturn','barrierMend'].includes(key)),`characters/${char.id}: unsupported personal override`);
+      reject(Object.keys(override).some(key=>!['name','description','barrierReturn','barrierMend','jamRelay'].includes(key)),`characters/${char.id}: unsupported personal override`);
       reject(override.name!==undefined&&!plain(override.name)||override.description!==undefined&&!plain(override.description),`characters/${char.id}: plain override text required`);
       reject(override.barrierReturn!==undefined&&(base?.template!=='barrier'||!validBarrierReturnContract(override.barrierReturn)),`characters/${char.id}: invalid barrier return contract`);
+      reject(override.jamRelay!==undefined&&(base?.template!=='jam'||!validJamRelayContract(override.jamRelay)),`characters/${char.id}: invalid jam relay contract`);
       reject(override.barrierMend!==undefined&&(base?.template!=='barrier_mend'||!validBarrierMendContract(override.barrierMend)),`characters/${char.id}: invalid barrier mend contract`);
     }
 
