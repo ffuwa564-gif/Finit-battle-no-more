@@ -1,0 +1,143 @@
+{
+  "caseId": "ivory-tower-010-T6-F1",
+  "stageId": "ivory-tower-010",
+  "logicalSeed": 940001,
+  "applicationSeed": 3368187330,
+  "arms": {
+    "A": {
+      "config": {
+        "party": [
+          "seris-awakened",
+          "athena",
+          "astraea",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      }
+    },
+    "M": {
+      "config": {
+        "party": [
+          "seris-awakened",
+          "athena",
+          "astraea",
+          "miette"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 1
+      }
+    }
+  },
+  "rowA": {
+    "logical": 940001,
+    "seed": 3368187330,
+    "win": true,
+    "rounds": 9,
+    "cappedRounds": 9,
+    "pots": 2,
+    "survivors": 4,
+    "fullAliveWin": true,
+    "mendUses": 0,
+    "mendHealing": 0,
+    "mendBarrierSpent": 0
+  },
+  "rowM": {
+    "logical": 940001,
+    "seed": 3368187330,
+    "win": true,
+    "rounds": 9,
+    "cappedRounds": 9,
+    "pots": 4,
+    "survivors": 4,
+    "fullAliveWin": true,
+    "mendUses": 2,
+    "mendHealing": 211,
+    "mendBarrierSpent": 96
+  },
+  "selectionPolicy": "Priority T6 tower F1 then T6 kuzuha F1, then T4 tower F1. First ascending logical seed with both wins and at least one positive Miette barrier_mend conversion. Otherwise retain failure/no-mechanism result; no fabricated demonstration."
+}

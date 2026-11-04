@@ -1,6 +1,6 @@
 # Quiet notebook art API — THIS-GIRL-002
 
-`python scripts/this-girl-02/art/prepare.py` verifies the fixed art inputs and all72 original-art hashes, then exports the1280×720 thumbnail. When the former `/workspace/generated_images` files are absent, `prepare.py` loads both originals and their provenance from `docs/media/this-girl/episodes/01/assets/`. It restores the old roster with `git show a5573e67d9ceb29de8de6c9166a6524ad41548b5:docs/media/build-research-diary/episodes/05/registry.json` and verifies its fixed SHA. A shallow clone can fetch the exact source object with `git fetch origin a5573e67d9ceb29de8de6c9166a6524ad41548b5`; the script never substitutes the current roster. All original portraits under `public/` must also be present.
+`python scripts/this-girl-02/art/thumbnail.py` exports the1280×720 thumbnail from the new fixed Miette research-desk original. All72 game-art hashes are checked by editor/freeze.py. Originals and provenance are provided by the production archive, not regenerated from text.
 
 The generated originals are inputs, not a promise that an image model can regenerate identical pixels. The previous exact generation prompts were lost; they are not invented here. Reproduction packages must supply the originals and `Artwork-Provenance.json`.
 

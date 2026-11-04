@@ -110,10 +110,10 @@ def main():
  deck=O/'render/deck.mp4';run(['-f','concat','-safe','0','-i',listing,'-c','copy',deck])
  ass=subtitles(t);master=O/'render/master.flac';assert master.exists(),'Run mixer.py first'
  mix=json.loads((O/'research/audio-mix.json').read_text());assert sha(master)==mix['outputSha256']
- movie=O/'render/ThisGirl-01.mp4'
+ movie=O/'render/ThisGirl-02.mp4'
  # The final encode is the only AAC generation. No post-sync repair is applied.
  run(['-i',deck,'-i',master,'-vf',f"subtitles=filename='{ass}':fontsdir='/usr/share/fonts/opentype/noto'",'-map','0:v:0','-map','1:a:0','-frames:v',t['durationFrames'],'-c:v','libx264','-threads','2','-preset','fast','-profile:v','baseline','-level:v','4.0','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-ar','48000','-ac','2','-movflags','+faststart',movie])
- delivery=O/'delivery/ThisGirl-01.mp4'
+ delivery=O/'delivery/ThisGirl-02.mp4'
  if delivery.is_symlink():delivery.unlink()
  assert not delivery.exists(),'Refuse to overwrite an unrelated delivery file'
  delivery.symlink_to(movie.resolve())

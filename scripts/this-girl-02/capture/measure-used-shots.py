@@ -9,7 +9,7 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 spec=importlib.util.spec_from_file_location('sourceqa',ROOT/'scripts/this-girl-02/capture/native-buffer-qa.py');qa=importlib.util.module_from_spec(spec);spec.loader.exec_module(qa)
 frozen=json.loads(fp.read_text());catalog=json.loads(cp.read_text());assert frozen['selectionFinalized'];cache={};shots=[]
 for shot in frozen['shots']:
- logical='reference'if shot['id']=='battle-reference'else'sakuya';src=catalog['sources'][logical];mp=ROOT/shot['metadata'];movie=ROOT/shot['file'];assert sha(mp)==shot['metadataSha256']and sha(movie)==shot['sourceSha256']
+ logical='reference'if shot['id']=='battle-reference'else'miette';src=catalog['sources'][logical];mp=ROOT/shot['metadata'];movie=ROOT/shot['file'];assert sha(mp)==shot['metadataSha256']and sha(movie)==shot['sourceSha256']
  if logical not in cache:
   m=json.loads(mp.read_text());ac=m['audioCapture'];p=ROOT/src['graphPcm'];assert sha(p)==ac['sha256'];graph=qa.resample(np.fromfile(p,'<i2').reshape(-1,2).mean(axis=1).astype(np.float32)/32767,ac['sampleRate']);os=np.frombuffer(subprocess.check_output(['ffmpeg','-v','error','-threads','2','-i',str(movie),'-vn','-ar','16000','-ac','1','-f','f32le','-']),'<f4');cache[logical]=(m,graph,os)
  m,graph,os=cache[logical];ac=m['audioCapture'];lo=shot['sourceStartFrame']/30;hi=shot['sourceEndFrame']/30;eligible=[];measurements=[];exclusions=[]
