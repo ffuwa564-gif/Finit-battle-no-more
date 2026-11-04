@@ -1,0 +1,172 @@
+{
+  "passed": false,
+  "video": [
+    2.666667,
+    3.4,
+    4.133333,
+    4.9,
+    5.666667,
+    6.9,
+    45.433333,
+    97.9,
+    141.566667,
+    179.866667,
+    180.6,
+    181.333333,
+    182.066667,
+    182.8
+  ],
+  "audio": [
+    2.615,
+    3.345,
+    4.115,
+    4.88,
+    5.6450000000000005,
+    6.82,
+    45.385,
+    97.85000000000001,
+    141.485,
+    179.875,
+    180.615,
+    181.345,
+    182.07500000000002,
+    182.805
+  ],
+  "encodedResidualMs": [
+    -51.66699999999969,
+    -54.999999999999716,
+    -18.333000000000155,
+    -20.000000000000462,
+    -21.66699999999988,
+    -80.00000000000007,
+    -48.332999999999515,
+    -49.99999999999716,
+    -81.66699999998173,
+    8.332999999993262,
+    15.00000000001478,
+    11.666999999988548,
+    8.333000000021684,
+    4.9999999999954525
+  ],
+  "firstObservedPulseExcludedBeforeGameplay": null,
+  "markerCoverage": {
+    "expected": 14,
+    "observed": 14,
+    "allLabelsMatched": true,
+    "labels": [
+      {
+        "label": "start-0",
+        "videoSeconds": 2.666667,
+        "audioSeconds": 2.615,
+        "residualMs": -51.66699999999969
+      },
+      {
+        "label": "start-1",
+        "videoSeconds": 3.4,
+        "audioSeconds": 3.345,
+        "residualMs": -54.999999999999716
+      },
+      {
+        "label": "start-2",
+        "videoSeconds": 4.133333,
+        "audioSeconds": 4.115,
+        "residualMs": -18.333000000000155
+      },
+      {
+        "label": "start-3",
+        "videoSeconds": 4.9,
+        "audioSeconds": 4.88,
+        "residualMs": -20.000000000000462
+      },
+      {
+        "label": "start-4",
+        "videoSeconds": 5.666667,
+        "audioSeconds": 5.6450000000000005,
+        "residualMs": -21.66699999999988
+      },
+      {
+        "label": "interior-1",
+        "videoSeconds": 6.9,
+        "audioSeconds": 6.82,
+        "residualMs": -80.00000000000007
+      },
+      {
+        "label": "interior-4",
+        "videoSeconds": 45.433333,
+        "audioSeconds": 45.385,
+        "residualMs": -48.332999999999515
+      },
+      {
+        "label": "interior-7",
+        "videoSeconds": 97.9,
+        "audioSeconds": 97.85000000000001,
+        "residualMs": -49.99999999999716
+      },
+      {
+        "label": "interior-10",
+        "videoSeconds": 141.566667,
+        "audioSeconds": 141.485,
+        "residualMs": -81.66699999998173
+      },
+      {
+        "label": "end-0",
+        "videoSeconds": 179.866667,
+        "audioSeconds": 179.875,
+        "residualMs": 8.332999999993262
+      },
+      {
+        "label": "end-1",
+        "videoSeconds": 180.6,
+        "audioSeconds": 180.615,
+        "residualMs": 15.00000000001478
+      },
+      {
+        "label": "end-2",
+        "videoSeconds": 181.333333,
+        "audioSeconds": 181.345,
+        "residualMs": 11.666999999988548
+      },
+      {
+        "label": "end-3",
+        "videoSeconds": 182.066667,
+        "audioSeconds": 182.07500000000002,
+        "residualMs": 8.333000000021684
+      },
+      {
+        "label": "end-4",
+        "videoSeconds": 182.8,
+        "audioSeconds": 182.805,
+        "residualMs": 4.9999999999954525
+      }
+    ],
+    "excludedMarkers": []
+  },
+  "clockDomain": "native OS X11 and PulseAudio shared Unix demuxer timestamps",
+  "verificationMethod": "Independent first sustained16kHz carrier versus actual OS white-frame onset. No marker offset fit, no dense time warp.",
+  "boundaryAudio": {
+    "inputFrames": 8818100,
+    "sampleRate": 48000,
+    "initialOffsetSamples": 4367,
+    "leadingZeroSamples": 4367,
+    "leadingTrimSamples": 0,
+    "copiedFrames": 8818033,
+    "trailingZeroSamples": 0,
+    "trailingTrimSamples": 67,
+    "rawCopiedSha256": "ed21f3c20e21e6a202f9d703831c3cdc08465a5ef94e60e335952e57a2833fff",
+    "placedCopiedSha256": "ed21f3c20e21e6a202f9d703831c3cdc08465a5ef94e60e335952e57a2833fff",
+    "interiorSamplesInsertedOrDropped": 0,
+    "tempoMultiplier": 1,
+    "packetMaxAbsGapSeconds": 0.002437500000003069,
+    "packetDurationMinusSampleSeconds": -0.019979166659879866
+  },
+  "commonWindow": {
+    "videoStartPts": 0.733,
+    "audioStartPts": 0.824,
+    "cameraWallEpoch": 1793750040,
+    "firstVideoWallTime": 1793750040.733,
+    "frames": 5514,
+    "samples": 8822400
+  },
+  "audioPolicy": "Unchanged physical48kHz PCM sample clock; initial common-PTS boundary padding/trimming only, no interior compensation or tempo change.",
+  "scope": "FAILED full-source marker gate. Canonicalization is not approval; only independently checked frozen used shots may be approved."
+}

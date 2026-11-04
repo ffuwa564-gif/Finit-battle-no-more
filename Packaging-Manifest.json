@@ -1,0 +1,36 @@
+{
+  "revision": "v112-freeze-explanation-01",
+  "passed": true,
+  "finishedSha256": "50c6ae08c468e5f6820ea530a8e8a7c1fc1bef269850fbe1a76634e05ede0a4c",
+  "recordedGameCommit": "264ef08df541ff50af4bdd691479620ad0c5bdbe",
+  "productionCommit": "c4a26368ec90f6ab434c4b5bc66eaf1db7641b1d",
+  "durationFrames": 14991,
+  "fps": 30,
+  "fullMotion": true,
+  "applicationSpeed": 1,
+  "nativeSourceIds": [
+    "reference-full",
+    "sakuya-full"
+  ],
+  "freezeExplanations": 4,
+  "statisticalResults": "Original locked256-seed study retained; no new certification",
+  "archive": {
+    "sha256": "d54251cee8e5438dfd3fba3b73150af1afafe0373393a16ba5d6e7d0bc4cd91a",
+    "parts": [
+      {
+        "file": "Production-and-Evidence-v112.zip.part001",
+        "bytes": 92274688,
+        "sha256": "c9781ff68af5eac50626b96639aba17cb5c0797476437a1c41c70820fb80c60a"
+      },
+      {
+        "file": "Production-and-Evidence-v112.zip.part002",
+        "bytes": 15024775,
+        "sha256": "49286a90215c8a877f64245d931f99cf5c9eead47f7f8ba96ee7b78ed314e121"
+      }
+    ],
+    "files": 645,
+    "excluded": "OS raw MKV kept locally; original music, raw voice and VOICEVOX model not redistributed. Canonical30fps PCM MOV and independent graph references included."
+  },
+  "rawGlobalFailureRetained": true,
+  "gameMainOrItchUpdated": false
+}

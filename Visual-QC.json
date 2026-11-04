@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "movieSha256": "50c6ae08c468e5f6820ea530a8e8a7c1fc1bef269850fbe1a76634e05ede0a4c",
+  "reviewer": "/root",
+  "reviewMethod": "AI inspection of actual completed-video contact sheets and detailed freeze source frames; not a claim of human listening",
+  "contactSheets": [
+    "delivery/Preview.jpg",
+    "delivery/Pause-Preview.jpg"
+  ],
+  "checks": {
+    "fourEvidenceBoundPauses": true,
+    "highlightedPartyMemberMatchesTrace": true,
+    "number1443VisibleInActualFootage": true,
+    "650NotDoubleCounted": true,
+    "captionsWithinSafeArea": true,
+    "headsContainedInExplanatoryArt": true,
+    "unreleasedRulesAndXROwnershipDisclosed": true,
+    "researchVerdictRemainsResearch": true,
+    "normalMotionSettingsUsed": true,
+    "noNewStatisticalClaims": true
+  }
+}
