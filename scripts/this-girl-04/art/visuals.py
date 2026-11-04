@@ -9,7 +9,7 @@ import json,math,re,hashlib
 from PIL import Image,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-04';A=O/'assets'
 W,H=1920,1080
-INK='#594638';MUTED='#89776a';ROSE='#9a7caa';SAGE='#687e74'
+INK='#594638';MUTED='#89776a';ROSE='#7a8fa8';SAGE='#687e74'
 GOLD='#ae8b4d';PAPER='#fffaf2';EDGE='#dfd2c0'
 GAME=(40,28,576,1024);BATTLE_PANEL=(650,85,1190,785);BATTLE_CAPTION=(650,910,1190,150)
 
@@ -126,7 +126,7 @@ def scene(spec):
   return out
  out=sheet(title,section,battle=kind=='battle');draw=ImageDraw.Draw(out)
  if kind in ['subject','preview']:
-  cid=spec.get('characterId','tikka'if kind=='subject'else'noelle')
+  cid=spec.get('characterId','noelle'if kind=='subject'else'lisette')
   character(out,cid,(160,245,500,635),30);x=750
   text(draw,(x,275),art_map()[cid]['name'],46,INK,True,width=970,max_lines=1)
   text(draw,(x,345),art_map()[cid]['seriesId'],27,SAGE)
@@ -157,7 +157,7 @@ def scene(spec):
    text(draw,(x+230-width/2,495),label,43,color,True)
   if spec.get('note'):text(draw,(205,765),spec['note'],34,MUTED,width=1500,max_lines=2)
  elif kind=='delta':
-  text(draw,(255,360),'Δ = Pティッカ入り − P最強候補',68,INK,width=1450,max_lines=1)
+  text(draw,(255,360),'Δ = Pノエル入り − P最強候補',68,INK,width=1450,max_lines=1)
   body(draw,spec.get('body',['同じ条件・同じ出発シードで比べる。']),255,590,1400,39)
  elif kind=='concept':
   labels=spec.get('labels',['障壁で防ぐ','花びらを蓄える','次の主攻撃へ'])

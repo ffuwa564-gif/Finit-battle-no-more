@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT=resolve(fileURLToPath(new URL('../../../',import.meta.url))),OUT=resolve(ROOT,'artifacts/this-girl-04');
 const workletPath=resolve(ROOT,'scripts/this-girl-04/capture/pcm-worklet.js'),workletHash=hashWorklet();
 function hashWorklet(){return createHash('sha256').update(readFileSync(workletPath)).digest('hex');}
-const id=process.argv[2]??'miette',applicationSpeed=Number(process.argv[3]??2),origin=process.env.CAPTURE_BASE_URL??'http://127.0.0.1:4456';
+const id=process.argv[2]??'noelle',applicationSpeed=Number(process.argv[3]??1),origin=process.env.CAPTURE_BASE_URL??'http://127.0.0.1:4456';
 if(!/^[a-z0-9-]+$/.test(id)||![1,2].includes(applicationSpeed))throw Error('Invalid capture arguments');
 const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
 const walk=p=>readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(resolve(p,e.name)):[resolve(p,e.name)]).sort();
@@ -18,7 +18,7 @@ const fingerprint=p=>{const files=Object.fromEntries(walk(p).map(f=>[relative(RO
 const proofPath=resolve(OUT,`proofs/${id}.json.gz`),proof=JSON.parse(gunzipSync(readFileSync(proofPath)));
 if(!proof.applicationVerified||!proof.nativeVerified)throw Error('Prepare a verified application proof first');
 if(proof.spec.preflight&&!id.startsWith('preflight-'))throw Error('Preflight cannot be a final capture');
-if(proof.fixture.appVersion!=='1.12.0'||proof.fixture.rulesVersion!=='2')throw Error('Episode02 uses public1.12 mechanics on an isolated research origin');
+if(proof.fixture.appVersion!=='1.12.0'||proof.fixture.rulesVersion!=='2')throw Error('Episode04 uses public1.12 mechanics on an isolated research origin');
 const source=fingerprint(resolve(ROOT,'src')),assets=fingerprint(resolve(ROOT,'public'));
 if(source.sha256!==proof.sourceTreeSha256)throw Error('Proof and capture source differ');
 const capture=resolve(OUT,'capture');mkdirSync(capture,{recursive:true});

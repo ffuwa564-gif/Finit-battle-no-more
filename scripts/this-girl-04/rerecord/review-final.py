@@ -1,7 +1,7 @@
 from pathlib import Path
 import json,subprocess,math
 from PIL import Image,ImageDraw
-ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-04';T=json.load(open(O/'render/timeline.json'));ids=['opening','subject','skill','method','elements','battle-reference','pause-reference','pause-target','pause-jam','battle-tikka','pause-ordinary','main-results','frugal-results','all-results','ablation','growth','judgment','next-preview','ledger'];pics=[]
+ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-04';T=json.load(open(O/'render/timeline.json'));ids=[p['id']for p in T['pages']];pics=[]
 for id in ids:
  p=next(p for p in T['pages']if p['id']==id);f=p['startFrame']+min(75,p['durationFrames']//2);path=O/f'rerecord/final-frame-{id}.jpg';subprocess.run(['ffmpeg','-v','error','-y','-threads','1','-ss',str(f/30),'-i',str(O/'render/ThisGirl-04.mp4'),'-frames:v','1',str(path)],check=True);pics.append((path,f,id))
 sheet=Image.new('RGB',(1920,math.ceil(len(pics)/3)*380),'#fffaf2');d=ImageDraw.Draw(sheet)

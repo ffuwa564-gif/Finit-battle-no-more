@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-04'
 PARAMS={'speedScale':.98,'pitchScale':-.015,'intonationScale':.85,'prePhonemeLength':.08,'postPhonemeLength':.15,'outputSamplingRate':24000,'volumeScale':1.0}
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def reading(text):
- for old,new in [('1.12','いってんいちに'),('Tier3','ティア三'),('Tier4','ティア四'),('コノハナサクヤヒメ','このはなさくやひめ'),('SSR','エスエスアール'),('SR','エスアール'),('XR','エックスアール'),('白灯石','はくとうせき'),('桜の返礼','さくらのへんれい'),('花宴の循環','かえんのじゅんかん'),('庇護','ひご'),('慈雨','じう'),('残響石','ざんきょうせき'),('Tier6','ティア六'),('T6','ティア六'),('T4','ティア四'),('T3','ティア三'),('HP','エイチピー')]:text=text.replace(old,new)
+ for old,new in [('1.12','いってんいちに'),('Tier3','ティア三'),('Tier4','ティア四'),('コノハナサクヤヒメ','このはなさくやひめ'),('SSR','エスエスアール'),('SR','エスアール'),('XR','エックスアール'),('白灯石','はくとうせき'),('桜の返礼','さくらのへんれい'),('花宴の循環','かえんのじゅんかん'),('庇護','ひご'),('慈雨','じう'),('残響石','ざんきょうせき'),('Tier6','ティア六'),('T6','ティア六'),('T4','ティア四'),('T3','ティア三'),('Tier','ティア'),('塔十層','とうじゅっそう'),('HP','エイチピー')]:text=text.replace(old,new)
  return text
 
 def call(path,data=b''):

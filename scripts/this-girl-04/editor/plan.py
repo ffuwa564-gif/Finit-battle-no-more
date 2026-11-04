@@ -88,7 +88,7 @@ def deliver(timeline):
  d=O/'delivery';d.mkdir(exist_ok=True)
  (d/'Subtitles-ja.srt').write_text('\n\n'.join(f"{i}\n{srt_time(c['startFrame'])} --> {srt_time(c['endFrame'])}\n{c['text']}"for i,c in enumerate(timeline['captions'],1))+'\n')
  (d/'Chapters.txt').write_text('\n'.join(srt_time(c['startFrame']).split(',')[0]+' '+c['title']for c in timeline['chapters'])+'\n')
- out=['# この子で、勝ちたい。','', 'みんなが輝くRPGをつくる研究独白 #02 【STILLVEIL】','', '音声：VOICEVOX:春日部つむぎ。字幕のページ分けは発話全体の読書用タイミングで、単語単位の強制アライメントではありません。','']
+ out=['# この子で、勝ちたい。','', 'みんなが輝くRPGをつくる研究独白 #04 【STILLVEIL】','', '音声：VOICEVOX:春日部つむぎ。字幕のページ分けは発話全体の読書用タイミングで、単語単位の強制アライメントではありません。','']
  for page in timeline['pages']:
   out+=['## '+page.get('chapter',page['id']),'', '映像：`'+json.dumps(page['spec'],ensure_ascii=False)+'`','']
   for row in timeline['voice']:

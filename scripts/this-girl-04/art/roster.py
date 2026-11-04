@@ -17,7 +17,7 @@ def judgment(value):
     overall=data['overall']
     assert overall['status'] in ['research','verified-scoped']
     assert bool(overall['certified'])==(overall['status']=='verified-scoped'),'Inconsistent certification status'
-    assert data['subject']['characterId']=='tikka'and data['subject']['seriesId']=='BD020'
+    assert data['subject']['characterId']=='noelle'and data['subject']['seriesId']=='BD004'
     assert data['nextEpisode']['certified'] is False
     assert data['nextEpisode']['status']=='unverified'
     return data
@@ -39,7 +39,7 @@ def entries(value):
         if e['characterId']in prior:
             previous=prior[e['characterId']]
             row.update(solid=False,color=v.ROSE,label=previous['overall']['label'],scope='previous-episode-scoped-research',buildName=previous['subject']['buildName'],newEndgameAward=False,currentJudgment=previous['overall'])
-        if e['characterId']=='tikka':
+        if e['characterId']=='noelle':
             certified=result['overall']['certified']
             row.update(solid=certified,color=v.ROSE,label='限定検証済み'if certified else'研究中',
                 scope=result['scope'],buildName=result['subject']['buildName'],newEndgameAward=certified,

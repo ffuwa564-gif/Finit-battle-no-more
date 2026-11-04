@@ -11,7 +11,7 @@ for p in sorted(D.iterdir()):
  if not p.is_file():continue
  assert p.stat().st_size<100*1024*1024
  blob=git('hash-object','-w',str(p));entries.append('100644 blob '+blob+'\t'+p.name+'\n');expected[p.name]=sha(p)
-tree=git('mktree',input=''.join(entries).encode());commit=git('commit-tree',tree,'-m','Publish research monologue 02: Miette, observed barrier conversion and held-out results');git('push','origin',commit+':refs/heads/'+branch);(O/'rerecord/download-commit.txt').write_text(commit+'\n');print('PUSHED',commit,flush=True)
+tree=git('mktree',input=''.join(entries).encode());commit=git('commit-tree',tree,'-m','Publish research monologue 04: Noelle, actual commands and measured opportunity costs');git('push','origin',commit+':refs/heads/'+branch);(O/'rerecord/download-commit.txt').write_text(commit+'\n');print('PUSHED',commit,flush=True)
 results=[]
 for name,digest in expected.items():
  url='https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/'+commit+'/'+urllib.parse.quote(name);h=hashlib.sha256();size=0
