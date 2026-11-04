@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "episode": "THIS-GIRL-003",
+  "finishedSha256": "cf5fcaef8ed9d2c630936984c3a65f2fdc3f9bd295672803bfe34401403a53bc",
+  "productionCommit": "f321d975bef4d8a9b8f42451375affa6b9901b12",
+  "sourceLockSha256": "c5b183bfb07b075e7ea09b45ab85a1659230e498564e32eb7417b2369acbe26f",
+  "durationFrames": 13815,
+  "fps": 30,
+  "fullMotion": true,
+  "applicationSpeed": 1,
+  "nativeSourceIds": [
+    "reference",
+    "tikka"
+  ],
+  "freezeExplanations": 4,
+  "researchVerdict": "research; no certification",
+  "archive": {
+    "sha256": "374f128648149dec8058db5b61b0a37a482ecd903121b269dfc0a1daa8817c48",
+    "parts": [
+      {
+        "file": "Production-and-Evidence.zip.part001",
+        "bytes": 92274688,
+        "sha256": "e36ee11baa19cf55dac7871ec2b81f42b6655515053b84ff3ea6fcf7d91ab8d2"
+      },
+      {
+        "file": "Production-and-Evidence.zip.part002",
+        "bytes": 13256276,
+        "sha256": "a727a6ebd74a60e1d46315010145ce9355680ba58e9cc8b01a40048dbe488bf9"
+      }
+    ],
+    "files": 343,
+    "excluded": "OS raw MKV retained locally; original music, voice models and raw synthesized narration excluded. Canonical PCM MOV and independent graph references included."
+  },
+  "gameMainOrItchUpdated": false
+}
