@@ -36,7 +36,7 @@ for(let repetition=0;repetition<3;repetition++) {
   const launched=await chromium.launchServer({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage']});
   const browser=await chromium.connect(launched.wsEndpoint());
   try{
-   const context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true,reducedMotion:'no-preference'});
+   const context=await browser.newContext({locale:'ja-JP',viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true,reducedMotion:'no-preference'});
    let replaced=0;
    if(mode==='no-garden')await context.route('**/art/living-garden/*.webp',async route=>{
     const url=new URL(route.request().url());const file=url.pathname.split('/').pop()!;
