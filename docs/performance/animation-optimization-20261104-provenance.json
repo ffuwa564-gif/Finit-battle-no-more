@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "96d2e00899b6bcbff31f47433a59d4aec8268988",
+  "optimizedSourceSha256": {
+    "src/platform/fx-renderer.ts": "635d520abb07b16eb358008888045be9c9657512da356be39b17342a85e05d9b",
+    "src/ui/SceneEffects.tsx": "e3fd94bc44ed887830378686ebddbbe2abe114e7255dbf33d4408d2ed2a9e504",
+    "src/ui/SceneAtmosphere.tsx": "e6a2b963f797cbd6e900cfffd3e87407972dd95f666e89d6ea339ac3fca60d9b",
+    "src/ui/moonlit-theme.css": "0132cfac6b1223c0ca4c18b73a7289180336f5918bc98c894bff05f5bd4888b2",
+    "src/screens/GameViews.tsx": "4bd9a858ec60942cc727a7127553f5e68d76f87431841299dee74587315e39ac",
+    "scripts/performance/animation-optimization.mts": "f65a1ce6661c027caa3d2c529555b8f6c7f7b223230dd4587f662e785bfc4063"
+  },
+  "originalRendererFixtureSha256": "9113d718b2503ba1d89a870d5998e6fe55c4d0166fc1892d34c1df797c777ed5",
+  "cpuQuota": "400000 100000",
+  "originalMediaUnmodified": true,
+  "testLastRun": {
+    "status": "passed",
+    "failedTests": []
+  }
+}

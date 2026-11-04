@@ -1,0 +1,236 @@
+diff --git a/src/platform/fx-renderer.ts b/src/platform/fx-renderer.ts
+index d589f0a..b590c0b 100644
+--- a/src/platform/fx-renderer.ts
++++ b/src/platform/fx-renderer.ts
+@@ -8,7 +8,7 @@ export interface FxCue {
+ }
+ export interface SceneRenderer {
+   resize(width: number, height: number, pixelRatio: number): void;
+-  cue(cue: FxCue): void;
++  cue(cue: FxCue, timeMs?: number): void;
+   render(timeMs: number): void;
+   dispose(): void;
+ }
+@@ -59,6 +59,9 @@ void main() {
+   for(int i=0;i<5;i++) {
+     vec4 event=u_events[i];
+     float age=t-event.z;
++    // Uniform per event: skip the expensive shapes when no visible burst exists.
++    // Their previous contribution was exactly zero outside this same lifetime.
++    if(age<0. || age>=1.8) continue;
+     float alive=step(0.,age)*(1.-step(1.8,age));
+     float p=clamp(age/1.8,0.,1.);
+     vec2 d=(uv-event.xy)*vec2(aspect,1.);
+@@ -123,6 +126,8 @@ precision mediump float;
+ varying mediump vec4 v_color;
+ varying mediump float v_style;
+ void main() {
++  // Expired particles have zero alpha over their entire point quad.
++  if(v_color.a<=0.) discard;
+   vec2 p=gl_PointCoord*2.-1.;
+   float r=length(p);
+   float glow=exp(-r*r*5.)*(1.-smoothstep(.75,1.,r));
+@@ -245,8 +250,33 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, mode: FxMode): Sc
+       if (canvas.height !== height) canvas.height=height;
+       context.viewport(0,0,width,height);
+     };
+-    const cue = (effect: FxCue) => {
++    const updateClock = (timeMs: number) => {
++      if (baseline===undefined) baseline=timeMs;
++      now=Math.max(now,(timeMs-baseline)/1000-clockOffset);
++      // Keep shader times below 64 seconds, including on GPUs without fragment highp.
++      // Birth times move together with the clock, preserving live bursts across the boundary.
++      const shift=Math.floor(now/64)*64;
++      if(shift>0) {
++        now-=shift;
++        clockOffset+=shift;
++        for(let i=0;i<PARTICLE_COUNT;i++) {
++          const offset=i*STRIDE;
++          const life=data[offset+5];
++          const birth=data[offset+4]-shift;
++          data[offset+4]=i<AMBIENT_COUNT
++            ? now-((now-birth)%life)
++            : Math.max(birth,now-life-1);
++        }
++        for(let i=0;i<EVENT_COUNT;i++) {
++          const offset=i*4+2;
++          events[offset]=Math.max(events[offset]-shift,now-2);
++        }
++        dirty=true;
++      }
++    };
++    const cue = (effect: FxCue, timeMs?: number) => {
+       if (disposed || !Number.isFinite(effect.x) || !Number.isFinite(effect.y)) return;
++      if (timeMs !== undefined && Number.isFinite(timeMs)) updateClock(timeMs);
+       const x=clamp(effect.x,0,1), y=clamp(effect.y,0,1);
+       const kinds: FxCue['kind'][]=['attack','area','heal','guard','buff','debuff','drop','wave','defeat'];
+       let type=kinds.indexOf(effect.kind);
+@@ -282,28 +312,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, mode: FxMode): Sc
+     };
+     const render = (timeMs: number) => {
+       if (disposed || context.isContextLost() || !Number.isFinite(timeMs)) return;
+-      if (baseline===undefined) baseline=timeMs;
+-      now=Math.max(now,(timeMs-baseline)/1000-clockOffset);
+-      // Keep shader times below 64 seconds, including on GPUs without fragment highp.
+-      // Birth times move together with the clock, preserving live bursts across the boundary.
+-      const shift=Math.floor(now/64)*64;
+-      if(shift>0) {
+-        now-=shift;
+-        clockOffset+=shift;
+-        for(let i=0;i<PARTICLE_COUNT;i++) {
+-          const offset=i*STRIDE;
+-          const life=data[offset+5];
+-          const birth=data[offset+4]-shift;
+-          data[offset+4]=i<AMBIENT_COUNT
+-            ? now-((now-birth)%life)
+-            : Math.max(birth,now-life-1);
+-        }
+-        for(let i=0;i<EVENT_COUNT;i++) {
+-          const offset=i*4+2;
+-          events[offset]=Math.max(events[offset]-shift,now-2);
+-        }
+-        dirty=true;
+-      }
++      updateClock(timeMs);
+       context.disable(context.DEPTH_TEST);
+       context.disable(context.CULL_FACE);
+       context.enable(context.BLEND);
+diff --git a/src/screens/GameViews.tsx b/src/screens/GameViews.tsx
+index ed57d2c..a3359f3 100644
+--- a/src/screens/GameViews.tsx
++++ b/src/screens/GameViews.tsx
+@@ -47,7 +47,7 @@ export function HomeView(p: ViewProps) {
+     <div className="hub-illustration">
+       <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
+       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
+-      <SceneAtmosphere reducedMotion={p.save.settings.reducedMotion} />
++      <SceneAtmosphere suspendWithScene reducedMotion={p.save.settings.reducedMotion} />
+       <div className="hub-profile">
+         <div className="hub-profile-person">
+           <span className="hub-profile-avatar"><PortraitArt character={leader} face /></span>
+@@ -244,7 +244,7 @@ export function BattleView(p: ViewProps) {
+       <MemoryGemFind battle={battle} reducedMotion={p.save.settings.reducedMotion} onOpen={() => setGemBag(true)} />
+       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
+       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
+-      <SceneAtmosphere mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
++      <SceneAtmosphere suspendWithScene mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
+       <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} onCrystal={role => { void p.command({ type: 'crystalRole', role }); }} onFairy={fairyId => { void p.command({ type: 'battleFairy', fairyId }); }} onBloom={bloomId => { void p.command({ type: 'battleBloom', bloomId }); }} />
+       <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}${event?.coordinationAction ? ' coordination-toast coordination-toast--' + event.coordinationAction : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{event?.coordinationAction && (event.coordinationAction === 'isolated' ? <Unlink size={15} /> : <Link2 size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
+       {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
+diff --git a/src/ui/SceneAtmosphere.tsx b/src/ui/SceneAtmosphere.tsx
+index c46f1ad..ffff55f 100644
+--- a/src/ui/SceneAtmosphere.tsx
++++ b/src/ui/SceneAtmosphere.tsx
+@@ -1,10 +1,14 @@
++import { useAnimationSettings } from './animation-settings';
++
+ /** Texture belongs to the illustration, never to input, text or combat state. */
+-export function SceneAtmosphere({ mode = 'quiet', reducedMotion = false, disturbance = false }: {
++export function SceneAtmosphere({ mode = 'quiet', reducedMotion = false, disturbance = false, suspendWithScene = false }: {
+   mode?: 'quiet' | 'memory' | 'battle';
+   reducedMotion?: boolean;
+   disturbance?: boolean;
++  suspendWithScene?: boolean;
+ }) {
+-  return <div className={`scene-atmosphere scene-atmosphere--${mode}`} aria-hidden="true" data-reduced={reducedMotion} data-disturbance={disturbance}>
++  const { suspended } = useAnimationSettings();
++  return <div className={`scene-atmosphere scene-atmosphere--${mode}`} aria-hidden="true" data-reduced={reducedMotion} data-disturbance={disturbance} data-suspended={suspendWithScene && suspended}>
+     <span className="scene-atmosphere__grain" />
+     <span className="scene-atmosphere__shade" />
+     <span className="scene-atmosphere__fracture" />
+diff --git a/src/ui/SceneEffects.tsx b/src/ui/SceneEffects.tsx
+index 9adeb1d..957db88 100644
+--- a/src/ui/SceneEffects.tsx
++++ b/src/ui/SceneEffects.tsx
+@@ -1,5 +1,6 @@
+ import { useEffect, useRef, useState } from 'react';
+ import { createSceneRenderer, type FxCue, type FxMode } from '../platform/fx-renderer';
++import { useAnimationSettings } from './animation-settings';
+ import './scene-effects.css';
+ 
+ export interface SceneEffectsProps { mode: FxMode; reducedMotion: boolean }
+@@ -9,6 +10,14 @@ const cueKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', '
+ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
+   const canvasRef = useRef<HTMLCanvasElement>(null);
+   const [backend, setBackend] = useState<'webgl' | 'static'>('static');
++  const { suspended } = useAnimationSettings();
++  const paused = useRef(suspended);
++  const updatePlayback = useRef<(() => void) | undefined>(undefined);
++
++  useEffect(() => {
++    paused.current = suspended;
++    updatePlayback.current?.();
++  }, [suspended]);
+ 
+   useEffect(() => {
+     const canvas = canvasRef.current;
+@@ -17,19 +26,25 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
+     let renderer: ReturnType<typeof createSceneRenderer> = null;
+     let frame = 0;
+     let lastFrame = -Infinity;
++    let burstUntil = -Infinity;
+     let inViewport = true;
+     let hasSize = false;
+     let stopped = false;
+     let contextLost = false;
+ 
+     const cancelFrame = () => { cancelAnimationFrame(frame); frame = 0; };
+-    const canAnimate = () => !stopped && !document.hidden && inViewport && hasSize && !!renderer;
++    const canAnimate = () => !stopped && !paused.current && !document.hidden && inViewport && hasSize && !!renderer;
+     const tick = (time: number) => {
+       frame = 0;
+       if (!canAnimate()) return;
+-      if (time - lastFrame >= 1000 / 30 - 1) {
++      // Slow ambient drift stays animated; real combat bursts retain 30fps.
++      const fps = time < burstUntil ? 30 : 15;
++      const interval = 1000 / fps;
++      const elapsed = time - lastFrame;
++      if (elapsed >= interval - 1) {
+         renderer!.render(time);
+-        lastFrame = time;
++        // Carry the remainder rather than rounding each interval to rAF ticks.
++        lastFrame = Number.isFinite(lastFrame) ? lastFrame + Math.max(1, Math.floor(elapsed / interval)) * interval : time;
+       }
+       frame = requestAnimationFrame(tick);
+     };
+@@ -37,6 +52,7 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
+       if (canAnimate()) { if (!frame) frame = requestAnimationFrame(tick); }
+       else cancelFrame();
+     };
++    updatePlayback.current = resume;
+     const measure = () => {
+       const rect = canvas.getBoundingClientRect();
+       hasSize = rect.width > 0 && rect.height > 0;
+@@ -66,7 +82,11 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
+       const rect = canvas.getBoundingClientRect();
+       const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+       const rarity = detail.rarity === 'common' || detail.rarity === 'rare' || detail.rarity === 'epic' ? detail.rarity : undefined;
+-      renderer!.cue({ kind: detail.kind as FxCue['kind'], x: clamp((detail.x! - rect.left) / rect.width, .06, .94), y: clamp((detail.y! - rect.top) / rect.height, .18, .85), rarity });
++      const now = performance.now();
++      renderer!.cue({ kind: detail.kind as FxCue['kind'], x: clamp((detail.x! - rect.left) / rect.width, .06, .94), y: clamp((detail.y! - rect.top) / rect.height, .18, .85), rarity }, now);
++      burstUntil = now + 2800;
++      lastFrame = -Infinity; // Do not delay an impact until the next ambient beat.
++      resume();
+     };
+     const resizeObserver = new ResizeObserver(measure);
+     resizeObserver.observe(canvas);
+@@ -83,6 +103,7 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
+     reconcile();
+     return () => {
+       stopped = true;
++      updatePlayback.current = undefined;
+       cancelFrame();
+       resizeObserver.disconnect();
+       intersectionObserver.disconnect();
+diff --git a/src/ui/moonlit-theme.css b/src/ui/moonlit-theme.css
+index 4a43565..94b9016 100644
+--- a/src/ui/moonlit-theme.css
++++ b/src/ui/moonlit-theme.css
+@@ -128,6 +128,7 @@ body {
+ .scene-atmosphere--memory .scene-atmosphere__grain { opacity: .19; animation-duration: 1s; }
+ .scene-atmosphere--memory .scene-atmosphere__shade { background: radial-gradient(ellipse at 50% 40%,#080e1b12 10%,#02050cba 100%),repeating-linear-gradient(0deg,#0000000c 0 1px,transparent 1px 5px); }
+ .scene-atmosphere--battle .scene-atmosphere__grain { opacity: .075; }
++.scene-atmosphere[data-suspended='true'] > span { animation-play-state: paused; }
+ .scene-atmosphere[data-disturbance='true'] .scene-atmosphere__fracture { background: linear-gradient(180deg,transparent 28%,#8eb2d433 29%,#030812d9 30%,transparent 33%),#040811; animation: memory-fracture 650ms ease-out both; }
+ .visual-novel .scene-atmosphere { position: fixed; z-index: 0; }
+ .novel-header, .novel-message { position: relative; z-index: 1; }

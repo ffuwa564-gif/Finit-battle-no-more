@@ -84,7 +84,7 @@ export function createInitialSave(content: Content, seed = 0x584a39b1, options: 
     ownedIds: initial, partyIds: [...initial], leaderId: leader, materials: {}, discoveredIds: [...initial],
     towerRecord: { version: '1.10', completedFloors: [], legacyHighest: 0 },
     completedDungeonIds: [], claimedExplorationIds: [], drawCount: 0, ssrPity: 0, seed: seed >>> 0,
-    memoryGems: emptyGemInventory(), battle: null, history: [], settings: { bgmVolume: 0.4, seVolume: 1, reducedMotion: false, speed: 1 },
+    memoryGems: emptyGemInventory(), battle: null, history: [], settings: { bgmVolume: 0.5, seVolume: 1, reducedMotion: false, speed: 1 },
   };
 }
 

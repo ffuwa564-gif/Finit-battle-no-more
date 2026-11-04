@@ -1,10 +1,14 @@
+import { useAnimationSettings } from './animation-settings';
+
 /** Texture belongs to the illustration, never to input, text or combat state. */
-export function SceneAtmosphere({ mode = 'quiet', reducedMotion = false, disturbance = false }: {
+export function SceneAtmosphere({ mode = 'quiet', reducedMotion = false, disturbance = false, suspendWithScene = false }: {
   mode?: 'quiet' | 'memory' | 'battle';
   reducedMotion?: boolean;
   disturbance?: boolean;
+  suspendWithScene?: boolean;
 }) {
-  return <div className={`scene-atmosphere scene-atmosphere--${mode}`} aria-hidden="true" data-reduced={reducedMotion} data-disturbance={disturbance}>
+  const { suspended } = useAnimationSettings();
+  return <div className={`scene-atmosphere scene-atmosphere--${mode}`} aria-hidden="true" data-reduced={reducedMotion} data-disturbance={disturbance} data-suspended={suspendWithScene && suspended}>
     <span className="scene-atmosphere__grain" />
     <span className="scene-atmosphere__shade" />
     <span className="scene-atmosphere__fracture" />
