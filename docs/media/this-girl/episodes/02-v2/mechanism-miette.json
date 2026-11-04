@@ -1,0 +1,731 @@
+{
+  "passed": true,
+  "scope": "Actual application event snapshots. Resource amounts are not painted into the native HUD. Expired thread and active barrier are separate.",
+  "reference": {
+    "eventId": "run-1000-1190149991:w1:r2:heal:1046977546:e6",
+    "actorId": "party:miette",
+    "targetId": "party:seris-awakened",
+    "targetCharacterId": "seris-awakened",
+    "beforeHp": 219,
+    "afterHp": 309,
+    "maxHp": 309,
+    "beforeBarrier": 113,
+    "afterBarrier": 75,
+    "resourceSpent": 38,
+    "barrierSpent": 38,
+    "hpHealed": 90,
+    "borrowed": 0,
+    "donors": [
+      {
+        "unitId": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "barrierBefore": 113,
+        "barrierAfter": 75,
+        "spent": 38,
+        "source": "barrier",
+        "isRecipient": true,
+        "activeBarrierBefore": 113,
+        "activeBarrierAfter": 75
+      }
+    ],
+    "round": 2,
+    "allTraces": [
+      {
+        "eventId": "run-1000-1190149991:w1:r2:heal:1046977546:e6",
+        "actorId": "party:miette",
+        "targetId": "party:seris-awakened",
+        "targetCharacterId": "seris-awakened",
+        "beforeHp": 219,
+        "afterHp": 309,
+        "maxHp": 309,
+        "beforeBarrier": 113,
+        "afterBarrier": 75,
+        "resourceSpent": 38,
+        "barrierSpent": 38,
+        "hpHealed": 90,
+        "borrowed": 0,
+        "donors": [
+          {
+            "unitId": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "barrierBefore": 113,
+            "barrierAfter": 75,
+            "spent": 38,
+            "source": "barrier",
+            "isRecipient": true
+          }
+        ],
+        "round": 2
+      }
+    ],
+    "proofSha256": "a2de962dac508ccd6d88d382ffc966cde0c1b90b52cd9a3e77e797d3e965855f",
+    "sourceFrame": 2219,
+    "sourceSha256": "0f1f0345058b6e828ff944ab65e9da4c673e0b710432a7f534a6dea8264305f4",
+    "metadataSha256": "046ea04ed8d08aade8de5c3da01edb8c489c23b49151de0afd4e80a45886994a",
+    "party": [
+      "miette",
+      "seris-awakened",
+      "athena",
+      "astraea"
+    ],
+    "beforeUnits": [
+      {
+        "uid": "party:miette",
+        "characterId": "miette",
+        "side": "party",
+        "boss": false,
+        "hp": 156,
+        "maxHp": 206,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12,
+        "tie": 3237229978,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0": 4,
+          "memory:slot": 4
+        },
+        "ultimateCharge": 100,
+        "barrier": 181,
+        "barrierUntil": 3
+      },
+      {
+        "uid": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "side": "party",
+        "boss": false,
+        "hp": 219,
+        "maxHp": 309,
+        "attack": 86,
+        "defense": 32,
+        "speed": 14,
+        "tie": 2453342257,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+          "memory:slot": 4
+        },
+        "ultimateCharge": 0,
+        "barrier": 113,
+        "barrierUntil": 3
+      },
+      {
+        "uid": "party:athena",
+        "characterId": "athena",
+        "side": "party",
+        "boss": false,
+        "hp": 333,
+        "maxHp": 421,
+        "attack": 41,
+        "defense": 60,
+        "speed": 18,
+        "tie": 4219134940,
+        "cooldowns": {
+          "guard-23": 3
+        },
+        "ultimateCharge": 0,
+        "guardTarget": "party:miette",
+        "guardUntil": 2,
+        "guardStrength": 23,
+        "barrier": 246,
+        "barrierUntil": 3,
+        "debuffUntil": 3,
+        "debuffStrength": 12
+      },
+      {
+        "uid": "party:astraea",
+        "characterId": "astraea",
+        "side": "party",
+        "boss": false,
+        "hp": 316,
+        "maxHp": 412,
+        "attack": 115,
+        "defense": 43,
+        "speed": 14,
+        "tie": 955395467,
+        "cooldowns": {},
+        "ultimateCharge": 100,
+        "ultimateQueued": true,
+        "barrier": 243,
+        "barrierUntil": 3,
+        "statusWardUntil": 3
+      },
+      {
+        "uid": "enemy:w1:0:noelle",
+        "characterId": "noelle",
+        "side": "enemy",
+        "boss": true,
+        "hp": 3615,
+        "maxHp": 3615,
+        "attack": 182,
+        "defense": 15,
+        "speed": 11,
+        "tie": 4139665538,
+        "cooldowns": {
+          "area-14": 4
+        },
+        "buffStrength": 18,
+        "buffUntil": 3
+      },
+      {
+        "uid": "enemy:w1:1:thorn-witch",
+        "characterId": "thorn-witch",
+        "side": "enemy",
+        "boss": false,
+        "hp": 1147,
+        "maxHp": 1147,
+        "attack": 112,
+        "defense": 15,
+        "speed": 15,
+        "tie": 2846780921,
+        "cooldowns": {
+          "charm-12": 5,
+          "debuff-12": 5
+        },
+        "buffStrength": 18,
+        "buffUntil": 3
+      },
+      {
+        "uid": "enemy:w1:2:athena-standard",
+        "characterId": "athena-standard",
+        "side": "enemy",
+        "boss": false,
+        "hp": 1847,
+        "maxHp": 2754,
+        "attack": 124,
+        "defense": 50,
+        "speed": 18,
+        "tie": 393002756,
+        "cooldowns": {
+          "guard-18": 3,
+          "rally-18": 6
+        },
+        "guardTarget": "enemy:w1:1:thorn-witch",
+        "guardUntil": 2,
+        "guardStrength": 18,
+        "buffStrength": 18,
+        "buffUntil": 3
+      }
+    ],
+    "afterUnits": [
+      {
+        "uid": "party:miette",
+        "characterId": "miette",
+        "side": "party",
+        "boss": false,
+        "hp": 156,
+        "maxHp": 206,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12,
+        "tie": 3237229978,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0": 4,
+          "memory:slot": 4,
+          "barrier-mend-18": 5
+        },
+        "ultimateCharge": 100,
+        "barrier": 181,
+        "barrierUntil": 3
+      },
+      {
+        "uid": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "side": "party",
+        "boss": false,
+        "hp": 309,
+        "maxHp": 309,
+        "attack": 86,
+        "defense": 32,
+        "speed": 14,
+        "tie": 2453342257,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+          "memory:slot": 4
+        },
+        "ultimateCharge": 0,
+        "barrier": 75,
+        "barrierUntil": 3
+      },
+      {
+        "uid": "party:athena",
+        "characterId": "athena",
+        "side": "party",
+        "boss": false,
+        "hp": 333,
+        "maxHp": 421,
+        "attack": 41,
+        "defense": 60,
+        "speed": 18,
+        "tie": 4219134940,
+        "cooldowns": {
+          "guard-23": 3
+        },
+        "ultimateCharge": 0,
+        "guardTarget": "party:miette",
+        "guardUntil": 2,
+        "guardStrength": 23,
+        "barrier": 246,
+        "barrierUntil": 3,
+        "debuffUntil": 3,
+        "debuffStrength": 12
+      },
+      {
+        "uid": "party:astraea",
+        "characterId": "astraea",
+        "side": "party",
+        "boss": false,
+        "hp": 316,
+        "maxHp": 412,
+        "attack": 115,
+        "defense": 43,
+        "speed": 14,
+        "tie": 955395467,
+        "cooldowns": {},
+        "ultimateCharge": 100,
+        "ultimateQueued": true,
+        "barrier": 243,
+        "barrierUntil": 3,
+        "statusWardUntil": 3
+      },
+      {
+        "uid": "enemy:w1:0:noelle",
+        "characterId": "noelle",
+        "side": "enemy",
+        "boss": true,
+        "hp": 3615,
+        "maxHp": 3615,
+        "attack": 182,
+        "defense": 15,
+        "speed": 11,
+        "tie": 4139665538,
+        "cooldowns": {
+          "area-14": 4
+        },
+        "buffStrength": 18,
+        "buffUntil": 3
+      },
+      {
+        "uid": "enemy:w1:1:thorn-witch",
+        "characterId": "thorn-witch",
+        "side": "enemy",
+        "boss": false,
+        "hp": 1147,
+        "maxHp": 1147,
+        "attack": 112,
+        "defense": 15,
+        "speed": 15,
+        "tie": 2846780921,
+        "cooldowns": {
+          "charm-12": 5,
+          "debuff-12": 5
+        },
+        "buffStrength": 18,
+        "buffUntil": 3
+      },
+      {
+        "uid": "enemy:w1:2:athena-standard",
+        "characterId": "athena-standard",
+        "side": "enemy",
+        "boss": false,
+        "hp": 1847,
+        "maxHp": 2754,
+        "attack": 124,
+        "defense": 50,
+        "speed": 18,
+        "tie": 393002756,
+        "cooldowns": {
+          "guard-18": 3,
+          "rally-18": 6
+        },
+        "guardTarget": "enemy:w1:1:thorn-witch",
+        "guardUntil": 2,
+        "guardStrength": 18,
+        "buffStrength": 18,
+        "buffUntil": 3
+      }
+    ]
+  },
+  "miette": {
+    "eventId": "run-1000-1190149991:w0:r3:heal:1343248524:e4",
+    "actorId": "party:miette",
+    "targetId": "party:athena",
+    "targetCharacterId": "athena",
+    "beforeHp": 255,
+    "afterHp": 421,
+    "maxHp": 421,
+    "beforeBarrier": 0,
+    "afterBarrier": 0,
+    "resourceSpent": 47,
+    "barrierSpent": 0,
+    "hpHealed": 166,
+    "borrowed": 47,
+    "donors": [
+      {
+        "unitId": "party:astraea",
+        "characterId": "astraea",
+        "threadBefore": 189,
+        "threadAfter": 142,
+        "spent": 47,
+        "source": "thread",
+        "isRecipient": false,
+        "activeBarrierBefore": 0,
+        "activeBarrierAfter": 0
+      }
+    ],
+    "round": 3,
+    "allTraces": [
+      {
+        "eventId": "run-1000-1190149991:w0:r3:heal:1343248524:e4",
+        "actorId": "party:miette",
+        "targetId": "party:athena",
+        "targetCharacterId": "athena",
+        "beforeHp": 255,
+        "afterHp": 421,
+        "maxHp": 421,
+        "beforeBarrier": 0,
+        "afterBarrier": 0,
+        "resourceSpent": 47,
+        "barrierSpent": 0,
+        "hpHealed": 166,
+        "borrowed": 47,
+        "donors": [
+          {
+            "unitId": "party:astraea",
+            "characterId": "astraea",
+            "threadBefore": 189,
+            "threadAfter": 142,
+            "spent": 47,
+            "source": "thread",
+            "isRecipient": false
+          }
+        ],
+        "round": 3
+      },
+      {
+        "eventId": "run-1000-1190149991:w1:r3:heal:1343248524:e5",
+        "actorId": "party:miette",
+        "targetId": "party:athena",
+        "targetCharacterId": "athena",
+        "beforeHp": 277,
+        "afterHp": 421,
+        "maxHp": 421,
+        "beforeBarrier": 245,
+        "afterBarrier": 245,
+        "resourceSpent": 41,
+        "barrierSpent": 0,
+        "hpHealed": 144,
+        "borrowed": 41,
+        "donors": [
+          {
+            "unitId": "party:astraea",
+            "characterId": "astraea",
+            "threadBefore": 139,
+            "threadAfter": 98,
+            "spent": 41,
+            "source": "thread",
+            "isRecipient": false
+          }
+        ],
+        "round": 3
+      },
+      {
+        "eventId": "run-1000-1190149991:w1:r6:heal:1343248524:e5",
+        "actorId": "party:miette",
+        "targetId": "party:athena",
+        "targetCharacterId": "athena",
+        "beforeHp": 298,
+        "afterHp": 421,
+        "maxHp": 421,
+        "beforeBarrier": 152,
+        "afterBarrier": 117,
+        "resourceSpent": 35,
+        "barrierSpent": 35,
+        "hpHealed": 123,
+        "borrowed": 0,
+        "donors": [
+          {
+            "unitId": "party:athena",
+            "characterId": "athena",
+            "barrierBefore": 152,
+            "barrierAfter": 117,
+            "spent": 35,
+            "source": "barrier",
+            "isRecipient": true
+          }
+        ],
+        "round": 6
+      },
+      {
+        "eventId": "run-1000-1190149991:w1:r9:heal:1343248524:e4",
+        "actorId": "party:miette",
+        "targetId": "party:athena",
+        "targetCharacterId": "athena",
+        "beforeHp": 302,
+        "afterHp": 421,
+        "maxHp": 421,
+        "beforeBarrier": 246,
+        "afterBarrier": 246,
+        "resourceSpent": 34,
+        "barrierSpent": 0,
+        "hpHealed": 119,
+        "borrowed": 34,
+        "donors": [
+          {
+            "unitId": "party:astraea",
+            "characterId": "astraea",
+            "threadBefore": 135,
+            "threadAfter": 101,
+            "spent": 34,
+            "source": "thread",
+            "isRecipient": false
+          }
+        ],
+        "round": 9
+      }
+    ],
+    "proofSha256": "873f9a349bf41f7d13963059aab058798eff81bded5f6936a71a4005206d887a",
+    "sourceFrame": 1040,
+    "sourceSha256": "4c9307266ed7ec0cae14cdbdf8e0c25ac96e43505fd23d0f78c6bca4b4664c06",
+    "metadataSha256": "07bb03bf209befb4d6248a5c1fb5cc2a85f03a9e7d45702450fab544f1d32f77",
+    "party": [
+      "miette",
+      "seris-awakened",
+      "athena",
+      "astraea"
+    ],
+    "beforeUnits": [
+      {
+        "uid": "party:miette",
+        "characterId": "miette",
+        "side": "party",
+        "boss": false,
+        "hp": 206,
+        "maxHp": 206,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12,
+        "tie": 3237229978,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0": 4,
+          "memory:slot": 4
+        },
+        "ultimateCharge": 50,
+        "buffStrength": 23,
+        "buffUntil": 3
+      },
+      {
+        "uid": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "side": "party",
+        "boss": false,
+        "hp": 309,
+        "maxHp": 309,
+        "attack": 86,
+        "defense": 32,
+        "speed": 14,
+        "tie": 2453342257,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+          "memory:slot": 4,
+          "attack-27": 5,
+          "dawn-27": 6
+        },
+        "ultimateCharge": 75,
+        "buffStrength": 23,
+        "buffUntil": 3
+      },
+      {
+        "uid": "party:athena",
+        "characterId": "athena",
+        "side": "party",
+        "boss": false,
+        "hp": 255,
+        "maxHp": 421,
+        "attack": 41,
+        "defense": 60,
+        "speed": 18,
+        "tie": 4219134940,
+        "cooldowns": {
+          "guard-23": 5,
+          "rally-23": 6
+        },
+        "ultimateCharge": 95,
+        "buffStrength": 23,
+        "buffUntil": 3,
+        "guardTarget": "party:miette",
+        "guardUntil": 4,
+        "guardStrength": 23
+      },
+      {
+        "uid": "party:astraea",
+        "characterId": "astraea",
+        "side": "party",
+        "boss": false,
+        "hp": 412,
+        "maxHp": 412,
+        "attack": 115,
+        "defense": 43,
+        "speed": 14,
+        "tie": 955395467,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-3": 4,
+          "memory:slot": 4,
+          "attack-36": 5,
+          "pierce-36": 6
+        },
+        "ultimateCharge": 75,
+        "buffStrength": 23,
+        "buffUntil": 3,
+        "mendThread": {
+          "amount": 189,
+          "until": 5
+        }
+      },
+      {
+        "uid": "enemy:w0:0:moon-moth",
+        "characterId": "moon-moth",
+        "side": "enemy",
+        "boss": false,
+        "hp": 0,
+        "maxHp": 861,
+        "attack": 109,
+        "defense": 11,
+        "speed": 11,
+        "tie": 292791662,
+        "cooldowns": {}
+      },
+      {
+        "uid": "enemy:w0:1:eos-standard",
+        "characterId": "eos-standard",
+        "side": "enemy",
+        "boss": false,
+        "hp": 14,
+        "maxHp": 1473,
+        "attack": 120,
+        "defense": 23,
+        "speed": 13,
+        "tie": 1526083061,
+        "cooldowns": {
+          "buff-14": 4
+        }
+      }
+    ],
+    "afterUnits": [
+      {
+        "uid": "party:miette",
+        "characterId": "miette",
+        "side": "party",
+        "boss": false,
+        "hp": 206,
+        "maxHp": 206,
+        "attack": 45,
+        "defense": 25,
+        "speed": 12,
+        "tie": 3237229978,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0": 4,
+          "memory:slot": 4,
+          "barrier-mend-18": 6
+        },
+        "ultimateCharge": 75,
+        "buffStrength": 23,
+        "buffUntil": 3
+      },
+      {
+        "uid": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "side": "party",
+        "boss": false,
+        "hp": 309,
+        "maxHp": 309,
+        "attack": 86,
+        "defense": 32,
+        "speed": 14,
+        "tie": 2453342257,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+          "memory:slot": 4,
+          "attack-27": 5,
+          "dawn-27": 6
+        },
+        "ultimateCharge": 75,
+        "buffStrength": 23,
+        "buffUntil": 3
+      },
+      {
+        "uid": "party:athena",
+        "characterId": "athena",
+        "side": "party",
+        "boss": false,
+        "hp": 421,
+        "maxHp": 421,
+        "attack": 41,
+        "defense": 60,
+        "speed": 18,
+        "tie": 4219134940,
+        "cooldowns": {
+          "guard-23": 5,
+          "rally-23": 6
+        },
+        "ultimateCharge": 95,
+        "buffStrength": 23,
+        "buffUntil": 3,
+        "guardTarget": "party:miette",
+        "guardUntil": 4,
+        "guardStrength": 23
+      },
+      {
+        "uid": "party:astraea",
+        "characterId": "astraea",
+        "side": "party",
+        "boss": false,
+        "hp": 412,
+        "maxHp": 412,
+        "attack": 115,
+        "defense": 43,
+        "speed": 14,
+        "tie": 955395467,
+        "cooldowns": {
+          "memory:echo-shard:pure:@roll=239~mercy~239:slot-3": 4,
+          "memory:slot": 4,
+          "attack-36": 5,
+          "pierce-36": 6
+        },
+        "ultimateCharge": 75,
+        "buffStrength": 23,
+        "buffUntil": 3,
+        "mendThread": {
+          "amount": 142,
+          "until": 5
+        }
+      },
+      {
+        "uid": "enemy:w0:0:moon-moth",
+        "characterId": "moon-moth",
+        "side": "enemy",
+        "boss": false,
+        "hp": 0,
+        "maxHp": 861,
+        "attack": 109,
+        "defense": 11,
+        "speed": 11,
+        "tie": 292791662,
+        "cooldowns": {}
+      },
+      {
+        "uid": "enemy:w0:1:eos-standard",
+        "characterId": "eos-standard",
+        "side": "enemy",
+        "boss": false,
+        "hp": 14,
+        "maxHp": 1473,
+        "attack": 120,
+        "defense": 23,
+        "speed": 13,
+        "tie": 1526083061,
+        "cooldowns": {
+          "buff-14": 4
+        }
+      }
+    ]
+  }
+}
