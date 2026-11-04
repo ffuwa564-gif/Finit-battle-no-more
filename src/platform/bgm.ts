@@ -28,10 +28,12 @@ export function getBgmScene(battle: Pick<Battle, 'phase' | 'initialUnits'> | nul
 }
 let player: HTMLAudioElement | undefined;
 let scene: BgmScene = 'home';
-let volume = 0.4;
+let volume = 0.5;
+// Global mix trim: settings remain 0–100%, independently of sound effects.
+const BGM_MASTER_GAIN = 0.5;
 let unlocked = false;
 const ducks=new Map<symbol,number>();
-function applyVolume():void { if(player)player.volume=volume*Math.min(1,...ducks.values()); }
+function applyVolume():void { if(player)player.volume=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values()); }
 /** Temporary mix gain never changes the player's saved music setting or track position. */
 export function createBgmDucker(){
   const key=Symbol();ducks.set(key,1);
