@@ -8,7 +8,7 @@ def add(id,kind,title,lines,chapter=None,**spec):
  pages.append(p);return p
 def table(id,title,mode,lines,**kw):return add(id,'data-table',title,lines,evidence=str(A.relative_to(ROOT)),evidenceSha256=sha(A),mode=mode,caseId=C['caseId'],**kw)
 def cut(id,src,a,b,lines,title,body,replay=False):
- proof=O/f'research/native-buffer-qa-{src}.json';assert json.load(open(proof))['passed'];p=add(id,'battle',title,lines,section='白亜の塔10層 · T6 / 編成1',body=body,note=('同じ場面の再掲 · ゲーム設定×1'if replay else'実戦の抜粋 · ゲーム設定×1 · 途中を省略'),unreleased=src=='tikka');p['durationFrames']=b-a;p['gameCut']={'file':f'artifacts/this-girl-03-v2/capture/{src}.mov','sourceStartFrame':a,'sourceEndFrame':b,'sourceApplicationSpeed':1,'audioSourceOffsetSamples':0,'audioCalibrationEvidence':{'file':str(proof.relative_to(ROOT)),'sha256':sha(proof)}};assert b-a>=180
+ proof=O/f'capture/{src}.json';m=json.load(open(proof));assert m['calibration']['passed'] and m['sourceNormalization']['passed'];p=add(id,'battle',title,lines,section='白亜の塔10層 · T6 / 編成1',body=body,note=('同じ場面の再掲 · ゲーム設定×1'if replay else'実戦の抜粋 · ゲーム設定×1 · 途中を省略'),unreleased=src=='tikka');p['durationFrames']=b-a;p['gameCut']={'file':f'artifacts/this-girl-03-v2/capture/{src}.mov','sourceStartFrame':a,'sourceEndFrame':b,'sourceApplicationSpeed':1,'audioSourceOffsetSamples':0,'audioCalibrationEvidence':{'file':str(proof.relative_to(ROOT)),'sha256':sha(proof)}};assert b-a>=180
  assert sum(math.ceil(L[x]['duration']*30)+9 for x in lines)+11<=b-a,(id,b-a,lines);return p
 def pause(id,src,f,title,lines,focus,inset,explain):return add(id,'battle-pause',title,lines,pauseId=id,researchMode='after'if src=='tikka'else'before',freeze={'file':f'artifacts/this-girl-03-v2/capture/{src}.mov','sourceFrame':f,'sha256':sha(O/f'capture/{src}.mov')},focus=focus,inset=inset,explain=explain)
 def card(i):return[18+105*i,466,101,122]
@@ -23,12 +23,12 @@ add('owned-scope','summary','全所持を仮定した、研究の実戦。',refs
 b=J['reference']['jam']['sourceFrame'];j=J['tikka']['jam']['sourceFrame'];h=J['tikka']['hit']['sourceFrame'];assert all(f is not None for f in [b,j,h])
 cut('battle-reference','reference',b-60,b+330,refs('battle',1,2),'まずは、改修前。',['通常技の待ち時間を延ばす。','通常攻撃まで、止める技ではない。'])
 pause('pause-reference','reference',b+10,'三十三は、もともとの働き。',refs('battle',2,3),[card(3)],card(3),['ティッカのゲージ。','0 → 33。','通常行動25 + 既存診断8。'])
-add('tikka-party','party','研究版へ。同じ四人、選抜は別。',refs('battle',3,4),characters=[{'id':id,'leader':id==J['tikka']['leader'],'subject':id=='tikka'}for id in J['tikka']['party']],note='リーダーは両版アテナ。並びと優先方針は異なります。')
+add('tikka-party','party','研究版へ。同じ四人、選抜は別。',refs('battle',3,4),characters=[{'id':id,'leader':id==J['tikka']['leader'],'subject':id=='tikka'}for id in J['tikka']['party']],note='リーダーは両版アテナ。並び・石特性・優先方針は異なります。')
 cut('battle-jam','tikka',j-120,j+270,[],'封印の先に、印を残す。',['ここからは、新しい研究版。','次に止めて、敵の状態を見ます。'])
-pause('pause-mark','tikka',j+8,'実際に封印した相手だけ。',refs('battle',4,5),[[75,15,300,105]],[75,15,300,105],['通常技の再使用が延びた。','余白の緩衝50%。','次の通常攻撃、一回だけ。'])
+pause('pause-mark','tikka',j+8,'実際に封印した相手だけ。',refs('battle',4,5),[[75,15,300,150]],[75,15,300,150],['通常技の再使用が延びた。','余白の緩衝50%。','次の通常攻撃、一回だけ。'])
 cut('battle-hit','tikka',j-30,h+360,refs('battle',5,6),'その印を、敵が使い切る。',['印を付けた直後の攻撃を再掲。','命中した後、もう一度止めます。'],replay=True)
-pause('pause-hp','tikka',h+10,'一撃を受けた、アテナを見る。',refs('battle',6,8),[card(2)],card(2),['HP436 → 405。','実HPダメージ31。','50%は障壁より前の補正。'])
-pause('pause-spent','tikka',h+10,'一回で消える、有限の守り。',refs('battle',8,9),[[75,15,300,105]],[75,15,300,105],['使った印は消えた。','通常の一行動を使う。','再使用は4ラウンド後。'])
+pause('pause-hp','tikka',h+33,'一撃を受けた、アテナを見る。',refs('battle',6,8),[card(2)],card(2),['HP436 → 405。','実HPダメージ31。','50%は障壁より前の補正。'])
+pause('pause-spent','tikka',h+33,'一回で消える、有限の守り。',refs('battle',8,9),[[75,15,300,150]],[75,15,300,150],['使った印は消えた。','通常の一行動を使う。','再使用は4ラウンド後。'])
 meta=json.load(open(O/'capture/tikka.json'));frames={x['event']['id']:x['sourceFrame']for x in meta['battleEvents']};proof=json.loads(gzip.decompress((O/'proofs/tikka.json.gz').read_bytes()));dead=[e for e in proof['events']if e.get('actorId','').startswith('party:')and(e.get('amount')or 0)>0 and e.get('unitsAfter')and not any(u['side']=='enemy'and u['hp']>0 for u in e['unitsAfter'])];last=frames[dead[-1]['id']]
 cut('battle-finish','tikka',last-390,last+24,[],'最後まで、結果を残す。',['この一戦は、改修後の方が苦しかった。','都合の良い戦いに差し替えません。'])
 table('sample','この一戦は、改修前の方が良かった。','example',refs('battle',9,10))
