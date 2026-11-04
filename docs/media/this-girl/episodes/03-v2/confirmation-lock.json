@@ -1,6 +1,6 @@
 {
   "episode": "THIS-GIRL-003-V2",
-  "sourceGameCommit": "b6de12b73a95931a82d475f31eed3f7cf73df4a8",
+  "sourceGameCommit": "ca806987585f15c82228f6ddfe68d661a8282974",
   "sourceAppVersion": "1.12.0-tikka-research.2",
   "publicMechanics": false,
   "revision": 2,
@@ -233,7 +233,7 @@
     "src/ui/xr-gacha.css": "9c7c8ef94c4f7e434087d2a1d7911c021eeb2661455dedef0c139fd0118abfc6",
     "scripts/this-girl-03-v2/policy.mts": "dfffd95701bf10181d82681f1ae14c0db0a80f8ad0aeb6c002388c2e0bdeee9e",
     "scripts/this-girl-03-v2/modes.mts": "d07860ef5a399ac129b633c032d4b4917326f9d4a34df2d448aef50e27b90b30",
-    "scripts/this-girl-03-v2/trace-jam.mts": "1e4884281bf4ba4b4c60f84776daaafb73326790d47bd41cc1aed682dad617b4",
+    "scripts/this-girl-03-v2/trace-jam.mts": "1bbb2c6134df18fc69241cde25f0f47c558db2eb335bd4a77cd0c9cef2b14988",
     "scripts/this-girl-03-v2/confirm.mts": "c5ddae605418022c4ead030d07128a6d2dcddc181a01850b573dd906391dbf3a",
     "scripts/this-girl-03-v2/lock.mts": "90a3faccaf8767af1101f0712b5273f377f0d453f314a1492f3346b9e0aa9d5e",
     "scripts/this-girl-03-v2/protocol.md": "123fd017398947c95cd77e1cb86e82a54e91f4b07d7ee0440c16d48c807eae23",
