@@ -1,8 +1,0 @@
-{
-  "passed": true,
-  "mixerCodeSha256": "5d6bb153bb3aac22bc0ffb5c436e758b9bf9a90f05a545966d5770d33cb58530",
-  "testCodeSha256": "aecdc141a58baf634f1b7fa37702ac369b9daa3aea826d76ed8337b76d94fcb0",
-  "scope": "Synthetic fixture only. Exact frame-to-sample trim/placement; independent-source reconstruction; modified-source refusal. No game outcome or final-movie sync claim.",
-  "expectedImpulseSample": 40000,
-  "samplesPerFrame": 1600
-}

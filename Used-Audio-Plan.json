@@ -1,0 +1,3664 @@
+{
+  "schemaVersion": 1,
+  "episode": "THIS-GIRL-002-V2",
+  "finalized": true,
+  "passed": true,
+  "scope": "使用区間・編集補正後。Planning only; exact finished-file verification remains mandatory.",
+  "codeSha256": "8ea74a1f678d6be4ca76d88fa715c0938607a1f5c0b398aee5e0dc136c0c77ff",
+  "inputs": {
+    "shotFreeze": {
+      "path": "artifacts/this-girl-02-v2/capture/used-intervals.json",
+      "sha256": "c22a9f95769a505dda74c0e82c8a9990f7d355b238cf61be47890f3a7e1ef899"
+    },
+    "sourceCatalog": {
+      "path": "artifacts/this-girl-02-v2/research/source-catalog.json",
+      "sha256": "2f85d5a5990fd4002ec2fce3ba8b2160b7319b84b2fe41f088eff27c9615bdfb"
+    },
+    "measurements": {
+      "path": "artifacts/this-girl-02-v2/research/used-shot-audio-measurements.json",
+      "sha256": "d2d40084185af026890341259727cf65925e6172b66c8228cc274b603affeae7"
+    },
+    "measurementCode": {
+      "path": "scripts/this-girl-02-v2/capture/measure-used-shots.py",
+      "sha256": "13a2375335f5c916719dd6fbf43d134980d60d79b39a490bdc1d21e8277c0c52"
+    },
+    "waveformTools": {
+      "path": "scripts/this-girl-02-v2/capture/native-buffer-qa.py",
+      "sha256": "21a48fa97dd68edfb3b0570148a36ed36432b788725a00a0d706ed0a52b20244"
+    }
+  },
+  "thresholds": {
+    "sampleRate": 48000,
+    "maxResidualSeconds": 0.08,
+    "minimumCorrelation": 0.65
+  },
+  "offsetSign": "Positive reads later source audio and advances game audio; residual=measuredLag-offset/sampleRate",
+  "correctionPolicy": "One minimax integer sample shift per prospectively frozen shot; no pitch/tempo/warp/replay/reordering",
+  "globalSourcePassClaimed": false,
+  "shots": [
+    {
+      "id": "battle-reference",
+      "file": "artifacts/this-girl-02-v2/capture/reference.mov",
+      "sourceStartFrame": 2039,
+      "sourceEndFrame": 2429,
+      "sourceSha256": "0f1f0345058b6e828ff944ab65e9da4c673e0b710432a7f534a6dea8264305f4",
+      "metadataSha256": "046ea04ed8d08aade8de5c3da01edb8c489c23b49151de0afd4e80a45886994a",
+      "audioSourceOffsetSamples": 2275,
+      "sampleRate": 48000,
+      "shiftedSourceAudioStartSample": 3264675,
+      "shiftedSourceAudioEndSample": 3888675,
+      "eligibleNativeIndices": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "metadataRequiredNativeIndices": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "minimumLagSeconds": 0.04268749999999999,
+      "maximumLagSeconds": 0.05212499999999998,
+      "minimaxCenterSeconds": 0.04740624999999998,
+      "maximumResidualSeconds": 0.004729166666666645,
+      "allEligibleResidualsWithin80ms": true,
+      "allCorrelationsPassed": true,
+      "tailsIncluded": true,
+      "coverage": {
+        "allMetadataEligibleIncluded": true,
+        "independentGraphReferences": true,
+        "boundaryTailsIncluded": true
+      },
+      "measurements": [
+        {
+          "nativeIndex": 27,
+          "sourceNodeId": 28,
+          "bufferId": 3,
+          "wallExpected": 67.64169991493225,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            67.64169991493225,
+            68.32172259066921
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 67.92336734693878,
+          "referenceStartWallSeconds": 67.64169991493225,
+          "referenceEndWallSeconds": 68.14169991493225,
+          "graphReferenceStartSample16000": 1086774,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": false,
+          "boundaryGuardOnly": true,
+          "crossesStartBoundary": true,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07310804823438186,
+          "lagSeconds": 0.04349999999999998,
+          "correlation": 0.9670264008709482,
+          "lagBeforeSeconds": 0.04349999999999998,
+          "residualSeconds": -0.0038958333333333484,
+          "passed": true
+        },
+        {
+          "nativeIndex": 28,
+          "sourceNodeId": 29,
+          "bufferId": 8,
+          "wallExpected": 70.6377998638153,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            70.6377998638153,
+            71.31782253955227
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 70.91874149659864,
+          "referenceStartWallSeconds": 70.6377998638153,
+          "referenceEndWallSeconds": 71.1377998638153,
+          "graphReferenceStartSample16000": 1134700,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.04735657093745278,
+          "lagSeconds": 0.042750000000000066,
+          "correlation": 0.9183676014893839,
+          "lagBeforeSeconds": 0.042750000000000066,
+          "residualSeconds": -0.004645833333333266,
+          "passed": true
+        },
+        {
+          "nativeIndex": 29,
+          "sourceNodeId": 30,
+          "bufferId": 10,
+          "wallExpected": 72.08089976119994,
+          "durationSeconds": 1.05,
+          "activeSpan": [
+            72.08089976119994,
+            73.13089976119994
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 72.36174149659864,
+          "referenceStartWallSeconds": 72.08089976119994,
+          "referenceEndWallSeconds": 72.58089976119994,
+          "graphReferenceStartSample16000": 1157788,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.12296307586157657,
+          "lagSeconds": 0.04268749999999999,
+          "correlation": 0.8874835737112198,
+          "lagBeforeSeconds": 0.04268749999999999,
+          "residualSeconds": -0.004708333333333342,
+          "passed": true
+        },
+        {
+          "nativeIndex": 30,
+          "sourceNodeId": 31,
+          "bufferId": 11,
+          "wallExpected": 74.15750001907348,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            74.15750001907348,
+            74.83752269481045
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 74.44207482993197,
+          "referenceStartWallSeconds": 74.15750001907348,
+          "referenceEndWallSeconds": 74.65750001907348,
+          "graphReferenceStartSample16000": 1191073,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.10290889233745114,
+          "lagSeconds": 0.046375000000000055,
+          "correlation": 0.9184077468229747,
+          "lagBeforeSeconds": 0.046375000000000055,
+          "residualSeconds": -0.0010208333333332764,
+          "passed": true
+        },
+        {
+          "nativeIndex": 31,
+          "sourceNodeId": 32,
+          "bufferId": 3,
+          "wallExpected": 75.56630003929138,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            75.56630003929138,
+            76.24632271502834
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 75.85298185941043,
+          "referenceStartWallSeconds": 75.56630003929138,
+          "referenceEndWallSeconds": 76.06630003929138,
+          "graphReferenceStartSample16000": 1213648,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07310258106692782,
+          "lagSeconds": 0.04849999999999999,
+          "correlation": 0.9673292961814164,
+          "lagBeforeSeconds": 0.04849999999999999,
+          "residualSeconds": 0.001104166666666656,
+          "passed": true
+        },
+        {
+          "nativeIndex": 32,
+          "sourceNodeId": 33,
+          "bufferId": 4,
+          "wallExpected": 77.06039989471435,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            77.06039989471435,
+            77.74042257045132
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 77.35066893424036,
+          "referenceStartWallSeconds": 77.06039989471435,
+          "referenceEndWallSeconds": 77.56039989471435,
+          "graphReferenceStartSample16000": 1237611,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06219114268833583,
+          "lagSeconds": 0.05212499999999998,
+          "correlation": 0.9659580642371954,
+          "lagBeforeSeconds": 0.05212499999999998,
+          "residualSeconds": 0.004729166666666645,
+          "passed": true
+        },
+        {
+          "nativeIndex": 33,
+          "sourceNodeId": 34,
+          "bufferId": 3,
+          "wallExpected": 78.57749999046325,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            78.57749999046325,
+            79.25752266620022
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 78.85996598639456,
+          "referenceStartWallSeconds": 78.57749999046325,
+          "referenceEndWallSeconds": 79.07749999046325,
+          "graphReferenceStartSample16000": 1261759,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07306561677671629,
+          "lagSeconds": 0.04425000000000001,
+          "correlation": 0.9674660702004693,
+          "lagBeforeSeconds": 0.04425000000000001,
+          "residualSeconds": -0.00314583333333332,
+          "passed": true
+        }
+      ],
+      "exclusions": [
+        {
+          "nativeIndex": 0,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 7.992399816513062,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 1,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 9.490300064086913,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 2,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 11.014099960327147,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 3,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 14.012499933242797,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 4,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 15.556999807357787,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 5,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 18.92929995536804,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 6,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 20.423699741363524,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 7,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 21.923100118637084,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 8,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 23.456299905776977,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 9,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 24.98829997062683,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 10,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 28.29969990730286,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 11,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 29.830500011444094,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 12,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 31.36230004310608,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 13,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 32.893299942016604,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 14,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 34.37899983406067,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 15,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 37.4621999168396,
+          "durationSeconds": 0.2984693877550981
+        },
+        {
+          "nativeIndex": 16,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 43.22419989585877,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 17,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 44.76019990921021,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 18,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 47.7592998790741,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 19,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 49.234499816894534,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 20,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 50.75169981002808,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 21,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 52.29369986534119,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 22,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 53.849099998474124,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 23,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 55.3761998462677,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 24,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 62.773599987030025,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 25,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 64.2178000202179,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 26,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 66.20719980239868,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 34,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 85.55829990386962,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 35,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 87.06229985237121,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 36,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 88.55729997634887,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 37,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 90.08210003852844,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 38,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 91.52619993591308,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 39,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 93.41799986839294,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 40,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 94.94529998779296,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 41,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 96.38939988517761,
+          "durationSeconds": 1.7
+        },
+        {
+          "nativeIndex": 42,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 98.29419982910156,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 43,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 102.42119992256164,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 44,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 103.98739970207214,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 45,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 105.48619974136352,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 46,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 106.96839988708496,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 47,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 108.46299994468689,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 48,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 109.98569977760314,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 49,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 111.48969996452331,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 50,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 112.95480001449585,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 51,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 114.46010005950927,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 52,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 115.90410005950928,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 53,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 119.80489981651306,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 54,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 121.2491000881195,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 55,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 124.63019979476928,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 56,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 126.15269983291626,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 57,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 127.64189970970153,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 58,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 129.1568998146057,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 59,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 130.85289991378784,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 60,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 132.56129992485046,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 61,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 134.19160007476805,
+          "durationSeconds": 0.32168934240363
+        },
+        {
+          "nativeIndex": 62,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 135.60979998588562,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 63,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 138.72529995918273,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 64,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 140.2115999507904,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 65,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 141.7586997795105,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 66,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 146.03239977836608,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 67,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 147.52800000190734,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 68,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 149.03680003166198,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 69,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 150.5512999343872,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 70,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 152.06860006332397,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 71,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 153.51269996070863,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 72,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 155.38209999084472,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 73,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 156.8834999847412,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 74,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 158.48639987945555,
+          "durationSeconds": 0.29846938775511944
+        },
+        {
+          "nativeIndex": 75,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 159.90489972114563,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 76,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 161.66099989891052,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 77,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 163.17010009765625,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 78,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 164.6860998916626,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 79,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 166.23579991340637,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 80,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 167.7731999206543,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 81,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 169.2171999206543,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 82,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 171.10039985656738,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 83,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 172.79939973831176,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 84,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 176.08299983024597,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 85,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 180.8958998966217,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 86,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 182.44119990348815,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 87,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 183.94329989433288,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 88,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 185.451799993515,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 89,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 191.91049993515014,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 90,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 193.35460007095338,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 91,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 195.267699842453,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 92,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 196.71179997825624,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 93,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 198.589499835968,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 94,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 200.12559998512268,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 95,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 201.56969988250734,
+          "durationSeconds": 1.7
+        },
+        {
+          "nativeIndex": 96,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 203.4771999168396,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 97,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 209.14199984550476,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 98,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 210.67250001907348,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 99,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 212.19809997558593,
+          "durationSeconds": 0.6800226757369614
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "battle-mend",
+      "file": "artifacts/this-girl-02-v2/capture/miette.mov",
+      "sourceStartFrame": 860,
+      "sourceEndFrame": 1070,
+      "sourceSha256": "4c9307266ed7ec0cae14cdbdf8e0c25ac96e43505fd23d0f78c6bca4b4664c06",
+      "metadataSha256": "07bb03bf209befb4d6248a5c1fb5cc2a85f03a9e7d45702450fab544f1d32f77",
+      "audioSourceOffsetSamples": 1934,
+      "sampleRate": 48000,
+      "shiftedSourceAudioStartSample": 1377934,
+      "shiftedSourceAudioEndSample": 1713934,
+      "eligibleNativeIndices": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "metadataRequiredNativeIndices": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "minimumLagSeconds": 0.034937500000000066,
+      "maximumLagSeconds": 0.04562500000000003,
+      "minimaxCenterSeconds": 0.040281250000000046,
+      "maximumResidualSeconds": 0.005354166666666604,
+      "allEligibleResidualsWithin80ms": true,
+      "allCorrelationsPassed": true,
+      "tailsIncluded": true,
+      "coverage": {
+        "allMetadataEligibleIncluded": true,
+        "independentGraphReferences": true,
+        "boundaryTailsIncluded": true
+      },
+      "measurements": [
+        {
+          "nativeIndex": 10,
+          "sourceNodeId": 11,
+          "bufferId": 5,
+          "wallExpected": 28.517700080871585,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            28.517700080871585,
+            29.197722756608545
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 28.820963718820863,
+          "referenceStartWallSeconds": 28.517700080871585,
+          "referenceEndWallSeconds": 29.017700080871585,
+          "graphReferenceStartSample16000": 461135,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": false,
+          "boundaryGuardOnly": true,
+          "crossesStartBoundary": true,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.09982310674137009,
+          "lagSeconds": 0.04562500000000003,
+          "correlation": 0.9974733801629213,
+          "lagBeforeSeconds": 0.04562500000000003,
+          "residualSeconds": 0.005333333333333357,
+          "passed": true
+        },
+        {
+          "nativeIndex": 11,
+          "sourceNodeId": 12,
+          "bufferId": 4,
+          "wallExpected": 30.084100131988528,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            30.084100131988528,
+            30.76412280772549
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 30.376700680272116,
+          "referenceStartWallSeconds": 30.084100131988528,
+          "referenceEndWallSeconds": 30.584100131988528,
+          "graphReferenceStartSample16000": 486027,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06226662781404328,
+          "lagSeconds": 0.034937500000000066,
+          "correlation": 0.9988200816722984,
+          "lagBeforeSeconds": 0.034937500000000066,
+          "residualSeconds": -0.005354166666666604,
+          "passed": true
+        },
+        {
+          "nativeIndex": 12,
+          "sourceNodeId": 13,
+          "bufferId": 4,
+          "wallExpected": 31.606400136947634,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            31.606400136947634,
+            32.2864228126846
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 31.909217687074836,
+          "referenceStartWallSeconds": 31.606400136947634,
+          "referenceEndWallSeconds": 32.106400136947634,
+          "graphReferenceStartSample16000": 510547,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06224838809528761,
+          "lagSeconds": 0.04518750000000005,
+          "correlation": 0.9989544958034378,
+          "lagBeforeSeconds": 0.04518750000000005,
+          "residualSeconds": 0.004895833333333377,
+          "passed": true
+        },
+        {
+          "nativeIndex": 13,
+          "sourceNodeId": 14,
+          "bufferId": 3,
+          "wallExpected": 33.1564003276825,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            33.1564003276825,
+            33.83642300341946
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 33.45334467120182,
+          "referenceStartWallSeconds": 33.1564003276825,
+          "referenceEndWallSeconds": 33.6564003276825,
+          "graphReferenceStartSample16000": 535254,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.0730735902353339,
+          "lagSeconds": 0.03937500000000005,
+          "correlation": 0.9990213616065702,
+          "lagBeforeSeconds": 0.03937500000000005,
+          "residualSeconds": -0.0009166666666666212,
+          "passed": true
+        },
+        {
+          "nativeIndex": 14,
+          "sourceNodeId": 15,
+          "bufferId": 6,
+          "wallExpected": 34.79650019645691,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            34.79650019645691,
+            35.476522872193875
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 35.09586167800454,
+          "referenceStartWallSeconds": 34.79650019645691,
+          "referenceEndWallSeconds": 35.29650019645691,
+          "graphReferenceStartSample16000": 561534,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.10295107416946497,
+          "lagSeconds": 0.041750000000000065,
+          "correlation": 0.9974374594833296,
+          "lagBeforeSeconds": 0.041750000000000065,
+          "residualSeconds": 0.0014583333333333948,
+          "passed": true
+        }
+      ],
+      "exclusions": [
+        {
+          "nativeIndex": 0,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 8.129900341033936,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 1,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 9.651600246429444,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 2,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 11.216300134658812,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 3,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 14.213500146865844,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 4,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 15.759000186920165,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 5,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 18.993797678093248,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 6,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 20.562700157165526,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 7,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 22.11080015182495,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 8,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 23.64840019226074,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 9,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 25.231600170135497,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 15,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 38.276199941635134,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 16,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 39.876500120162966,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 17,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 45.79000008583069,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 18,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 47.32700002670288,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 19,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 48.771200059890745,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 20,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 52.313500051498416,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 21,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 53.80630004882813,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 22,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 55.33980024337769,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 23,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 56.805000190734866,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 24,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 58.329600219726565,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 25,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 65.22730005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 26,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 66.83490013122558,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 27,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 68.240600233078,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 28,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 71.33390033721923,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 29,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 72.77790033721924,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 30,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 74.7235001373291,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 31,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 76.23350012779235,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 32,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 77.71019995689392,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 33,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 79.2837001132965,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 34,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 82.76170003890991,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 35,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 84.28890026092529,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 36,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 85.78760016441345,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 37,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 87.30210030555725,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 38,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 88.74630010032654,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 39,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 90.64820015907287,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 40,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 92.31620000839233,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 41,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 93.72650015830993,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 42,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 97.04000008583068,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 43,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 99.68450010299682,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 44,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 101.24080026626586,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 45,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 102.78940022468566,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 46,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 104.33180010795593,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 47,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 105.83670008659362,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 48,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 107.41719997406005,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 49,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 108.9498001384735,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 50,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 110.51770008087158,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 51,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 111.9618002166748,
+          "durationSeconds": 1.7
+        },
+        {
+          "nativeIndex": 52,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 113.84840023994445,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 53,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 115.2925001373291,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 54,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 119.51479758654051,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 55,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 120.96070008087158,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 56,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 124.35030019760131,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 57,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 125.88130009651184,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 58,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 127.39680016517639,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 59,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 128.9075001525879,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 60,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 130.42590034484863,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 61,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 133.86480010032653,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 62,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 135.4713001155853,
+          "durationSeconds": 0.32168934240363
+        },
+        {
+          "nativeIndex": 63,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 136.91080010414123,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 64,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 140.01680005073547,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 65,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 141.6776001358032,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 66,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 143.07470000267028,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 67,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 144.59250009536743,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 68,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 147.9492000389099,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 69,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 150.5528000640869,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 70,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 152.05300009727478,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 71,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 153.5707000541687,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 72,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 155.08980024337768,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 73,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 156.63430011749267,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 74,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 158.0774002532959,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 75,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 159.96319997787475,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 76,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 161.49010026931762,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 77,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 163.28070009231567,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 78,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 165.11940014839172,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 79,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 166.61440027236938,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 80,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 168.1413000869751,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 81,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 169.64170015335083,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 82,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 171.22600019454956,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 83,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 172.7548002052307,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 84,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 174.199,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 85,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 180.01020014762878,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 86,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 181.45440018081666,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 87,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 183.33940017700195,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 88,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 188.20270002365112,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 89,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 189.89219998359678,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 90,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 191.34060013771057,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 91,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 192.88830006599426,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 92,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 194.41480005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 93,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 198.82010019302368,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 94,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 200.38740027427673,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 95,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 201.8315001716614,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 96,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 203.68640029907226,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 97,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 205.19620001792907,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 98,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 206.71120012283325,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 99,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 210.00600016593933,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 100,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 212.11860025405883,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 101,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 213.6060000705719,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 102,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 215.1083000946045,
+          "durationSeconds": 0.6800226757369614
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "battle-replay",
+      "file": "artifacts/this-girl-02-v2/capture/miette.mov",
+      "sourceStartFrame": 890,
+      "sourceEndFrame": 1130,
+      "sourceSha256": "4c9307266ed7ec0cae14cdbdf8e0c25ac96e43505fd23d0f78c6bca4b4664c06",
+      "metadataSha256": "07bb03bf209befb4d6248a5c1fb5cc2a85f03a9e7d45702450fab544f1d32f77",
+      "audioSourceOffsetSamples": 1923,
+      "sampleRate": 48000,
+      "shiftedSourceAudioStartSample": 1425923,
+      "shiftedSourceAudioEndSample": 1809923,
+      "eligibleNativeIndices": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "metadataRequiredNativeIndices": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "minimumLagSeconds": 0.034937500000000066,
+      "maximumLagSeconds": 0.04518750000000005,
+      "minimaxCenterSeconds": 0.040062500000000056,
+      "maximumResidualSeconds": 0.005125000000000046,
+      "allEligibleResidualsWithin80ms": true,
+      "allCorrelationsPassed": true,
+      "tailsIncluded": true,
+      "coverage": {
+        "allMetadataEligibleIncluded": true,
+        "independentGraphReferences": true,
+        "boundaryTailsIncluded": true
+      },
+      "measurements": [
+        {
+          "nativeIndex": 11,
+          "sourceNodeId": 12,
+          "bufferId": 4,
+          "wallExpected": 30.084100131988528,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            30.084100131988528,
+            30.76412280772549
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 30.376700680272116,
+          "referenceStartWallSeconds": 30.084100131988528,
+          "referenceEndWallSeconds": 30.584100131988528,
+          "graphReferenceStartSample16000": 486027,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06226662781404328,
+          "lagSeconds": 0.034937500000000066,
+          "correlation": 0.9988200816722984,
+          "lagBeforeSeconds": 0.034937500000000066,
+          "residualSeconds": -0.005124999999999935,
+          "passed": true
+        },
+        {
+          "nativeIndex": 12,
+          "sourceNodeId": 13,
+          "bufferId": 4,
+          "wallExpected": 31.606400136947634,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            31.606400136947634,
+            32.2864228126846
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 31.909217687074836,
+          "referenceStartWallSeconds": 31.606400136947634,
+          "referenceEndWallSeconds": 32.106400136947634,
+          "graphReferenceStartSample16000": 510547,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06224838809528761,
+          "lagSeconds": 0.04518750000000005,
+          "correlation": 0.9989544958034378,
+          "lagBeforeSeconds": 0.04518750000000005,
+          "residualSeconds": 0.005125000000000046,
+          "passed": true
+        },
+        {
+          "nativeIndex": 13,
+          "sourceNodeId": 14,
+          "bufferId": 3,
+          "wallExpected": 33.1564003276825,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            33.1564003276825,
+            33.83642300341946
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 33.45334467120182,
+          "referenceStartWallSeconds": 33.1564003276825,
+          "referenceEndWallSeconds": 33.6564003276825,
+          "graphReferenceStartSample16000": 535254,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.0730735902353339,
+          "lagSeconds": 0.03937500000000005,
+          "correlation": 0.9990213616065702,
+          "lagBeforeSeconds": 0.03937500000000005,
+          "residualSeconds": -0.000687499999999952,
+          "passed": true
+        },
+        {
+          "nativeIndex": 14,
+          "sourceNodeId": 15,
+          "bufferId": 6,
+          "wallExpected": 34.79650019645691,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            34.79650019645691,
+            35.476522872193875
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 35.09586167800454,
+          "referenceStartWallSeconds": 34.79650019645691,
+          "referenceEndWallSeconds": 35.29650019645691,
+          "graphReferenceStartSample16000": 561534,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.10295107416946497,
+          "lagSeconds": 0.041750000000000065,
+          "correlation": 0.9974374594833296,
+          "lagBeforeSeconds": 0.041750000000000065,
+          "residualSeconds": 0.001687500000000064,
+          "passed": true
+        }
+      ],
+      "exclusions": [
+        {
+          "nativeIndex": 0,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 8.129900341033936,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 1,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 9.651600246429444,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 2,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 11.216300134658812,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 3,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 14.213500146865844,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 4,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 15.759000186920165,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 5,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 18.993797678093248,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 6,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 20.562700157165526,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 7,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 22.11080015182495,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 8,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 23.64840019226074,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 9,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 25.231600170135497,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 10,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 28.517700080871585,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 15,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 38.276199941635134,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 16,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 39.876500120162966,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 17,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 45.79000008583069,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 18,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 47.32700002670288,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 19,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 48.771200059890745,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 20,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 52.313500051498416,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 21,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 53.80630004882813,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 22,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 55.33980024337769,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 23,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 56.805000190734866,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 24,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 58.329600219726565,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 25,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 65.22730005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 26,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 66.83490013122558,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 27,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 68.240600233078,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 28,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 71.33390033721923,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 29,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 72.77790033721924,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 30,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 74.7235001373291,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 31,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 76.23350012779235,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 32,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 77.71019995689392,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 33,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 79.2837001132965,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 34,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 82.76170003890991,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 35,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 84.28890026092529,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 36,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 85.78760016441345,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 37,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 87.30210030555725,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 38,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 88.74630010032654,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 39,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 90.64820015907287,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 40,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 92.31620000839233,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 41,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 93.72650015830993,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 42,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 97.04000008583068,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 43,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 99.68450010299682,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 44,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 101.24080026626586,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 45,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 102.78940022468566,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 46,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 104.33180010795593,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 47,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 105.83670008659362,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 48,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 107.41719997406005,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 49,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 108.9498001384735,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 50,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 110.51770008087158,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 51,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 111.9618002166748,
+          "durationSeconds": 1.7
+        },
+        {
+          "nativeIndex": 52,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 113.84840023994445,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 53,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 115.2925001373291,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 54,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 119.51479758654051,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 55,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 120.96070008087158,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 56,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 124.35030019760131,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 57,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 125.88130009651184,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 58,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 127.39680016517639,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 59,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 128.9075001525879,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 60,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 130.42590034484863,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 61,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 133.86480010032653,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 62,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 135.4713001155853,
+          "durationSeconds": 0.32168934240363
+        },
+        {
+          "nativeIndex": 63,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 136.91080010414123,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 64,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 140.01680005073547,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 65,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 141.6776001358032,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 66,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 143.07470000267028,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 67,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 144.59250009536743,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 68,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 147.9492000389099,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 69,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 150.5528000640869,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 70,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 152.05300009727478,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 71,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 153.5707000541687,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 72,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 155.08980024337768,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 73,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 156.63430011749267,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 74,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 158.0774002532959,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 75,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 159.96319997787475,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 76,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 161.49010026931762,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 77,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 163.28070009231567,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 78,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 165.11940014839172,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 79,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 166.61440027236938,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 80,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 168.1413000869751,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 81,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 169.64170015335083,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 82,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 171.22600019454956,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 83,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 172.7548002052307,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 84,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 174.199,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 85,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 180.01020014762878,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 86,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 181.45440018081666,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 87,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 183.33940017700195,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 88,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 188.20270002365112,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 89,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 189.89219998359678,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 90,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 191.34060013771057,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 91,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 192.88830006599426,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 92,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 194.41480005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 93,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 198.82010019302368,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 94,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 200.38740027427673,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 95,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 201.8315001716614,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 96,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 203.68640029907226,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 97,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 205.19620001792907,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 98,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 206.71120012283325,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 99,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 210.00600016593933,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 100,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 212.11860025405883,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 101,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 213.6060000705719,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 102,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 215.1083000946045,
+          "durationSeconds": 0.6800226757369614
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "battle-finish",
+      "file": "artifacts/this-girl-02-v2/capture/miette.mov",
+      "sourceStartFrame": 6032,
+      "sourceEndFrame": 6476,
+      "sourceSha256": "4c9307266ed7ec0cae14cdbdf8e0c25ac96e43505fd23d0f78c6bca4b4664c06",
+      "metadataSha256": "07bb03bf209befb4d6248a5c1fb5cc2a85f03a9e7d45702450fab544f1d32f77",
+      "audioSourceOffsetSamples": 2691,
+      "sampleRate": 48000,
+      "shiftedSourceAudioStartSample": 9653891,
+      "shiftedSourceAudioEndSample": 10364291,
+      "eligibleNativeIndices": [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ],
+      "metadataRequiredNativeIndices": [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ],
+      "minimumLagSeconds": 0.04993749999999997,
+      "maximumLagSeconds": 0.06218750000000006,
+      "minimaxCenterSeconds": 0.056062500000000015,
+      "maximumResidualSeconds": 0.006125000000000061,
+      "allEligibleResidualsWithin80ms": true,
+      "allCorrelationsPassed": true,
+      "tailsIncluded": true,
+      "coverage": {
+        "allMetadataEligibleIncluded": true,
+        "independentGraphReferences": true,
+        "boundaryTailsIncluded": true
+      },
+      "measurements": [
+        {
+          "nativeIndex": 94,
+          "sourceNodeId": 95,
+          "bufferId": 8,
+          "wallExpected": 200.38740027427673,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            200.38740027427673,
+            201.06742295001368
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 200.69506802721088,
+          "referenceStartWallSeconds": 200.38740027427673,
+          "referenceEndWallSeconds": 200.88740027427673,
+          "graphReferenceStartSample16000": 3211121,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": false,
+          "boundaryGuardOnly": true,
+          "crossesStartBoundary": true,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.04734404871122181,
+          "lagSeconds": 0.05006250000000001,
+          "correlation": 0.9974901482952753,
+          "lagBeforeSeconds": 0.05006250000000001,
+          "residualSeconds": -0.0059999999999999915,
+          "passed": true
+        },
+        {
+          "nativeIndex": 95,
+          "sourceNodeId": 96,
+          "bufferId": 11,
+          "wallExpected": 201.8315001716614,
+          "durationSeconds": 1.05,
+          "activeSpan": [
+            201.8315001716614,
+            202.8815001716614
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 202.1390680272109,
+          "referenceStartWallSeconds": 201.8315001716614,
+          "referenceEndWallSeconds": 202.3315001716614,
+          "graphReferenceStartSample16000": 3234225,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.12407497331017334,
+          "lagSeconds": 0.04993749999999997,
+          "correlation": 0.9961436453904444,
+          "lagBeforeSeconds": 0.04993749999999997,
+          "residualSeconds": -0.006125000000000033,
+          "passed": true
+        },
+        {
+          "nativeIndex": 96,
+          "sourceNodeId": 97,
+          "bufferId": 3,
+          "wallExpected": 203.68640029907226,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            203.68640029907226,
+            204.3664229748092
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 204.00391156462584,
+          "referenceStartWallSeconds": 203.68640029907226,
+          "referenceEndWallSeconds": 204.18640029907226,
+          "graphReferenceStartSample16000": 3264063,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07308474350886454,
+          "lagSeconds": 0.05993749999999998,
+          "correlation": 0.9990001735008215,
+          "lagBeforeSeconds": 0.05993749999999998,
+          "residualSeconds": 0.0038749999999999757,
+          "passed": true
+        },
+        {
+          "nativeIndex": 97,
+          "sourceNodeId": 98,
+          "bufferId": 2,
+          "wallExpected": 205.19620001792907,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            205.19620001792907,
+            205.87622269366602
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 205.51320861678005,
+          "referenceStartWallSeconds": 205.19620001792907,
+          "referenceEndWallSeconds": 205.69620001792907,
+          "graphReferenceStartSample16000": 3288211,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06635792534699725,
+          "lagSeconds": 0.05937500000000007,
+          "correlation": 0.9990498850043554,
+          "lagBeforeSeconds": 0.05937500000000007,
+          "residualSeconds": 0.0033125000000000654,
+          "passed": true
+        },
+        {
+          "nativeIndex": 98,
+          "sourceNodeId": 99,
+          "bufferId": 3,
+          "wallExpected": 206.71120012283325,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            206.71120012283325,
+            207.3912227985702
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 207.02250566893423,
+          "referenceStartWallSeconds": 206.71120012283325,
+          "referenceEndWallSeconds": 207.21120012283325,
+          "graphReferenceStartSample16000": 3312360,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07308148714494414,
+          "lagSeconds": 0.0536875,
+          "correlation": 0.9990890153814571,
+          "lagBeforeSeconds": 0.0536875,
+          "residualSeconds": -0.002375000000000002,
+          "passed": true
+        },
+        {
+          "nativeIndex": 99,
+          "sourceNodeId": 100,
+          "bufferId": 3,
+          "wallExpected": 210.00600016593933,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            210.00600016593933,
+            210.68602284167628
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 210.31973922902495,
+          "referenceStartWallSeconds": 210.00600016593933,
+          "referenceEndWallSeconds": 210.50600016593933,
+          "graphReferenceStartSample16000": 3365116,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07310927453982434,
+          "lagSeconds": 0.05612499999999998,
+          "correlation": 0.9990017394063166,
+          "lagBeforeSeconds": 0.05612499999999998,
+          "residualSeconds": 6.249999999997924e-05,
+          "passed": true
+        },
+        {
+          "nativeIndex": 100,
+          "sourceNodeId": 101,
+          "bufferId": 15,
+          "wallExpected": 212.11860025405883,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            212.11860025405883,
+            212.79862292979578
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 212.4327551020408,
+          "referenceStartWallSeconds": 212.11860025405883,
+          "referenceEndWallSeconds": 212.61860025405883,
+          "graphReferenceStartSample16000": 3398924,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.09816989553643826,
+          "lagSeconds": 0.056499999999999995,
+          "correlation": 0.9975589907988354,
+          "lagBeforeSeconds": 0.056499999999999995,
+          "residualSeconds": 0.00043749999999999345,
+          "passed": true
+        },
+        {
+          "nativeIndex": 101,
+          "sourceNodeId": 102,
+          "bufferId": 3,
+          "wallExpected": 213.6060000705719,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            213.6060000705719,
+            214.28602274630884
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 213.91883219954647,
+          "referenceStartWallSeconds": 213.6060000705719,
+          "referenceEndWallSeconds": 214.1060000705719,
+          "graphReferenceStartSample16000": 3422701,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.07305773555568419,
+          "lagSeconds": 0.055187500000000056,
+          "correlation": 0.9990892685181093,
+          "lagBeforeSeconds": 0.055187500000000056,
+          "residualSeconds": -0.0008749999999999453,
+          "passed": true
+        },
+        {
+          "nativeIndex": 102,
+          "sourceNodeId": 103,
+          "bufferId": 4,
+          "wallExpected": 215.1083000946045,
+          "durationSeconds": 0.6800226757369614,
+          "activeSpan": [
+            215.1083000946045,
+            215.78832277034144
+          ],
+          "loop": false,
+          "rawContextExpectedSeconds": 215.42812925170068,
+          "referenceStartWallSeconds": 215.1083000946045,
+          "referenceEndWallSeconds": 215.6083000946045,
+          "graphReferenceStartSample16000": 3446850,
+          "graphReferenceLength16000": 8000,
+          "referenceClippedToUsedShot": true,
+          "boundaryGuardOnly": false,
+          "crossesStartBoundary": false,
+          "crossesEndBoundary": false,
+          "independentGraphReference": true,
+          "referenceScope": "Separately captured actual post-limiter graphPCM mixture at the observed native ctx sample index; not OS or finished audio",
+          "ambiguous": false,
+          "referenceRms": 0.06223209527974101,
+          "lagSeconds": 0.06218750000000006,
+          "correlation": 0.998854914477677,
+          "lagBeforeSeconds": 0.06218750000000006,
+          "residualSeconds": 0.006125000000000061,
+          "passed": true
+        }
+      ],
+      "exclusions": [
+        {
+          "nativeIndex": 0,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 8.129900341033936,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 1,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 9.651600246429444,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 2,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 11.216300134658812,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 3,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 14.213500146865844,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 4,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 15.759000186920165,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 5,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 18.993797678093248,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 6,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 20.562700157165526,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 7,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 22.11080015182495,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 8,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 23.64840019226074,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 9,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 25.231600170135497,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 10,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 28.517700080871585,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 11,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 30.084100131988528,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 12,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 31.606400136947634,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 13,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 33.1564003276825,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 14,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 34.79650019645691,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 15,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 38.276199941635134,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 16,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 39.876500120162966,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 17,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 45.79000008583069,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 18,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 47.32700002670288,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 19,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 48.771200059890745,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 20,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 52.313500051498416,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 21,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 53.80630004882813,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 22,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 55.33980024337769,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 23,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 56.805000190734866,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 24,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 58.329600219726565,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 25,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 65.22730005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 26,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 66.83490013122558,
+          "durationSeconds": 0.26363945578231096
+        },
+        {
+          "nativeIndex": 27,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 68.240600233078,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 28,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 71.33390033721923,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 29,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 72.77790033721924,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 30,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 74.7235001373291,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 31,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 76.23350012779235,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 32,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 77.71019995689392,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 33,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 79.2837001132965,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 34,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 82.76170003890991,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 35,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 84.28890026092529,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 36,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 85.78760016441345,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 37,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 87.30210030555725,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 38,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 88.74630010032654,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 39,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 90.64820015907287,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 40,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 92.31620000839233,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 41,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 93.72650015830993,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 42,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 97.04000008583068,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 43,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 99.68450010299682,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 44,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 101.24080026626586,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 45,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 102.78940022468566,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 46,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 104.33180010795593,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 47,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 105.83670008659362,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 48,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 107.41719997406005,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 49,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 108.9498001384735,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 50,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 110.51770008087158,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 51,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 111.9618002166748,
+          "durationSeconds": 1.7
+        },
+        {
+          "nativeIndex": 52,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 113.84840023994445,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 53,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 115.2925001373291,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 54,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 119.51479758654051,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 55,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 120.96070008087158,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 56,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 124.35030019760131,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 57,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 125.88130009651184,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 58,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 127.39680016517639,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 59,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 128.9075001525879,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 60,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 130.42590034484863,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 61,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 133.86480010032653,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 62,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 135.4713001155853,
+          "durationSeconds": 0.32168934240363
+        },
+        {
+          "nativeIndex": 63,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 136.91080010414123,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 64,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 140.01680005073547,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 65,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 141.6776001358032,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 66,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 143.07470000267028,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 67,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 144.59250009536743,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 68,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 147.9492000389099,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 69,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 150.5528000640869,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 70,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 152.05300009727478,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 71,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 153.5707000541687,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 72,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 155.08980024337768,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 73,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 156.63430011749267,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 74,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 158.0774002532959,
+          "durationSeconds": 1.05
+        },
+        {
+          "nativeIndex": 75,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 159.96319997787475,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 76,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 161.49010026931762,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 77,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 163.28070009231567,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 78,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 165.11940014839172,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 79,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 166.61440027236938,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 80,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 168.1413000869751,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 81,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 169.64170015335083,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 82,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 171.22600019454956,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 83,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 172.7548002052307,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 84,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 174.199,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 85,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 180.01020014762878,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 86,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 181.45440018081666,
+          "durationSeconds": 1.5
+        },
+        {
+          "nativeIndex": 87,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 183.33940017700195,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 88,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 188.20270002365112,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 89,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 189.89219998359678,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 90,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 191.34060013771057,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 91,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 192.88830006599426,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 92,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 194.41480005264282,
+          "durationSeconds": 0.6800226757369614
+        },
+        {
+          "nativeIndex": 93,
+          "reason": "Metadata effective active span does not intersect frozen shot plus80ms boundary guard",
+          "status": "out-of-used-range",
+          "wallExpected": 198.82010019302368,
+          "durationSeconds": 0.6800226757369614
+        }
+      ],
+      "problems": [],
+      "passed": true
+    }
+  ]
+}
