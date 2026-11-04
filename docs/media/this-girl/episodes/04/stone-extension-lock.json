@@ -1,0 +1,664 @@
+{
+  "sourceCommit": "6a3f7af2bffb36bbadb5f460d54e2bd130043133",
+  "primaryLockSha256": "dc592c3cf6c48734314f5ebb2200c3743707d53af77b189ac64e7ebfbedbcc2d",
+  "codeSha256": "d2f697f76d16e4e8ad774c84c8293e2e3e0e7ad3e149235f364c1716b773f06a",
+  "policySha256": "e6ea373e1ad9c97e2d163270af9603ea2166cd468f5e1ae4e8e337727caf03a0",
+  "designedAfterPrimary": true,
+  "reason": "Primary G arm filled empty slots, but selected mainM has no empty slots. Secondary question removes follower stones; new independent confirmation seeds, no retuning primary.",
+  "cases": [
+    {
+      "id": "kuzuha-awakening-T6-F2",
+      "stage": "kuzuha-awakening",
+      "arms": {
+        "M": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": true,
+          "commandMode": "conditional",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "E": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": false,
+          "commandMode": "never",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "H": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            null,
+            null,
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": true,
+          "commandMode": "conditional",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "HE": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            null,
+            null,
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": false,
+          "commandMode": "never",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        }
+      }
+    },
+    {
+      "id": "ivory-tower-010-T6-F2",
+      "stage": "ivory-tower-010",
+      "arms": {
+        "M": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "ghollow-lantern",
+              "defId": "hollow-lantern",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": true,
+          "commandMode": "conditional",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "E": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "ghollow-lantern",
+              "defId": "hollow-lantern",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": false,
+          "commandMode": "never",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "H": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "ghollow-lantern",
+              "defId": "hollow-lantern",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            null,
+            null,
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": true,
+          "commandMode": "conditional",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        },
+        "HE": {
+          "party": [
+            "noelle",
+            "seris-awakened",
+            "lisette-awakened",
+            "mireille"
+          ],
+          "leader": "noelle",
+          "gems": [
+            {
+              "id": "ghollow-lantern",
+              "defId": "hollow-lantern",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            null,
+            null,
+            {
+              "id": "gecho-shard",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 0,
+          "autoPilot": true,
+          "command": false,
+          "commandMode": "never",
+          "commandSelective": false,
+          "commandTarget": "priority"
+        }
+      }
+    }
+  ],
+  "seeds": [
+    1654058543,
+    2269377794,
+    686860186,
+    1229044906,
+    1532198817,
+    4202322,
+    1271127703,
+    2084434959,
+    3324233675,
+    497171787,
+    2541840192,
+    2086648238,
+    1440083035,
+    235176415,
+    1463947675,
+    1150119037,
+    1582366038,
+    458480596,
+    765150177,
+    983795901,
+    3457976904,
+    2724303095,
+    1379256,
+    2653220917,
+    2946065752,
+    685266705,
+    2871935205,
+    3994458168,
+    861153106,
+    3093318870,
+    3899736468,
+    4074968461,
+    2811086613,
+    3290323159,
+    700471320,
+    3301891551,
+    2080432790,
+    530015049,
+    2906190248,
+    1290958837,
+    1786760005,
+    3322358080,
+    3815318634,
+    1633621320,
+    503263337,
+    1782028252,
+    2480391419,
+    409266959,
+    3316547485,
+    3044626712,
+    2754586729,
+    393528924,
+    2834566080,
+    3932087884,
+    1553210840,
+    661296587,
+    2822414333,
+    3952511392,
+    467428306,
+    2636214127,
+    3225905029,
+    97416615,
+    1380937844,
+    1260926204,
+    3236626147,
+    2621812735,
+    1918507188,
+    3522883541,
+    647466174,
+    1286021758,
+    1155864771,
+    1829471700,
+    1933364859,
+    2471503909,
+    527628397,
+    3130786597,
+    482346803,
+    1136777023,
+    3661556885,
+    2497354363,
+    2088860109,
+    1823091386,
+    3525389361,
+    4279965748,
+    3713799013,
+    2998116984,
+    1421692477,
+    552781104,
+    463378819,
+    2099130698,
+    2632020,
+    1909523618,
+    3039911133,
+    2364537913,
+    1253348273,
+    2478455303,
+    2836543508,
+    3600810801,
+    1166144750,
+    1081700638,
+    1895452327,
+    1804174595,
+    2377193701,
+    3702771593,
+    1736963427,
+    4276368503,
+    415463437,
+    1128374008,
+    277265726,
+    965567668,
+    285426310,
+    3090322312,
+    3964259330,
+    4086674252,
+    3304010360,
+    3545549733,
+    1025374770,
+    1260328139,
+    2691080433,
+    1680048065,
+    4131270490,
+    594514587,
+    2790148544,
+    3060391496,
+    3626180042,
+    3197557614,
+    4090166948,
+    1677783024,
+    4033363306,
+    1683896523,
+    1286970454,
+    3761169361,
+    3782001968,
+    2753721866,
+    1355900753,
+    792731993,
+    2381927047,
+    3049417137,
+    3754720367,
+    3330241480,
+    2043902871,
+    846104742,
+    893256996,
+    1773385674,
+    3520787071,
+    2516720733,
+    680044281,
+    1140047099,
+    328326777,
+    2550886652,
+    1646150977,
+    2055617145,
+    1741263735,
+    439366291,
+    754160205,
+    522805312,
+    2453961852,
+    1563798510,
+    4122455297,
+    1420423605,
+    1032283679,
+    1545788238,
+    1560702003,
+    3356303988,
+    2384886452,
+    873626020,
+    1071479966,
+    539136297,
+    3620694661,
+    403552692,
+    2671369562,
+    749486810,
+    140889236,
+    3824526617,
+    2933767662,
+    3073816038,
+    2211643367,
+    2703800044,
+    3762759423,
+    3658850131,
+    805727152,
+    3615608876,
+    3120446234,
+    1393245660,
+    3188317582,
+    241866016,
+    1576306632,
+    2036756249,
+    787908783,
+    3102911299,
+    3748911343,
+    119825730,
+    731811694,
+    4067159233,
+    3967838271,
+    2248616255,
+    2830160126,
+    1873327660,
+    743771537,
+    517294923,
+    2327772527,
+    4266953486,
+    2100047417,
+    3886677173,
+    623493241,
+    2664741523,
+    1569978499,
+    2652066485,
+    2573176217,
+    504819904,
+    2764177158,
+    115815934,
+    3845848336,
+    3203510162,
+    3171466367,
+    2383433431,
+    1838246656,
+    4221384959,
+    3404928719,
+    1263307198,
+    1125087687,
+    1315009592,
+    3151797050,
+    1193188049,
+    3694195133,
+    2638071562,
+    2829495920,
+    2976996892,
+    3465468594,
+    651734002,
+    3575559193,
+    794396649,
+    717464841,
+    2686812078,
+    1802263607,
+    3341517,
+    3456178777,
+    2311933764,
+    2646153371,
+    2842415692,
+    1614837088,
+    4294703981,
+    1268922162,
+    3425329588,
+    2891627522,
+    2257755652,
+    862490666,
+    1850030221,
+    3185156356,
+    1332315020,
+    3484620033,
+    1927735384,
+    246462954,
+    4170862692,
+    3364240015,
+    686307575
+  ]
+}
