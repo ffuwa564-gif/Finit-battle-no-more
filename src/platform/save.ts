@@ -43,6 +43,7 @@ function validExpeditionHistory(value: unknown): boolean {
 }
 function validGachaResult(value: unknown): value is GachaResult { return record(value) && nonempty(value.characterId) && typeof value.duplicate === 'boolean' && count(value.refund) && value.refund <= 3 && (value.currency === undefined || ['stones', 'astralStones'].includes(value.currency as string)); }
 function validUnit(value: unknown): boolean {
+  if(record(value)&&value.jamDampening!==undefined&&(!record(value.jamDampening)||!count(value.jamDampening.percent)||value.jamDampening.percent<1||value.jamDampening.percent>75||!count(value.jamDampening.until)||!nonempty(value.jamDampening.sourceId)))return false;
   if (!record(value) || !nonempty(value.uid) || !nonempty(value.characterId) || !['party', 'enemy'].includes(value.side as string) || typeof value.boss !== 'boolean') return false;
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
   if (Number(value.maxHp) < 1 || Number(value.hp) > Number(value.maxHp) || !record(value.cooldowns) || Object.values(value.cooldowns).some(item => !count(item))) return false;
@@ -66,7 +67,7 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
-  if (record(value) && value.jamRelay !== undefined && (!record(value.jamRelay) || !nonempty(value.jamRelay.recipientId) || !count(value.jamRelay.charge) || value.jamRelay.charge<1 || value.jamRelay.charge>25 || value.kind!=='buff' || !Array.isArray(value.targetIds) || !value.targetIds.includes(value.jamRelay.recipientId))) return false;
+  if(record(value)&&value.jamDampenedPercent!==undefined&&(!count(value.jamDampenedPercent)||value.jamDampenedPercent<1||value.jamDampenedPercent>75||value.kind!=='attack'||value.skillId!==undefined||value.ultimate||value.bossStrike||value.bitAction))return false;
   if (record(value) && ['absorbed', 'selfCost', 'resourceAmount', 'returnDamage'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
   if(record(value)&&value.barrierReturnAction!==undefined&&(!['capture','consume'].includes(String(value.barrierReturnAction))||value.kind!=='buff'||!count(value.resourceAmount)))return false;

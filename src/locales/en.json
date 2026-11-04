@@ -3177,5 +3177,9 @@
   "{0} — 修繕糸を保存（{1}）": "{0} — Mending thread saved ({1})",
   "時送りの合図": "Signal Across a Second",
   "{0} — 時送りの充填（+{1}）": "{0} — Temporal relay (+{1})",
-  "敵1体の通常スキルの再使用を現在ラウンド+2まで延長する。実際に延びた時だけ、生存中・必殺未予約・ゲージ100未満の他の味方から攻撃力が最も高い1人へ必殺ゲージを15充填。1行動1回、上限100。通常攻撃・ボス大技・ビットを止めず、追加行動や自動の必殺予約はしない。本人の故障診断+8は別。再使用4ラウンド。": "Delay one enemy’s ordinary skill cooldowns until the current round plus two. Only after a real extension, charge15 ultimate gauge for the highest-attack living, unqueued other ally below100 gauge. Once per action, capped at100. Does not stop normal attacks, boss arts or bits, grant actions, or queue ultimates. Tikka’s existing self diagnosis8 is separate. Cooldown4 rounds."
+  "敵1体の通常スキルの再使用を現在ラウンド+2まで延長する。実際に延びた時だけ、対象の次の通常攻撃1回の算出ダメージを50%低下。最低1ダメージ。次ラウンド終了まで、重ねず、既存の強い緩衝は上書き・延長しない。スキル・必殺・予告大技・ビット・状態異常による強制攻撃は軽減しない。使われなかった緩衝は失効し、戦闘不能・Wave切替で消える。本人の故障診断+8は従来どおり。通常の1行動と再使用4ラウンドを使う。": "Delay one enemy’s ordinary skill cooldowns until the current round plus two. Only after a genuine extension, reduce its next ordinary attack’s calculated damage by50%, minimum1. The mark expires after the next round, never stacks or refreshes an equal/stronger active mark, and does not affect skills, ultimates, boss arts, bits or forced attacks. Clear on expiry, defeat or a new wave. Existing self diagnosis8 remains. One ordinary action and cooldown4 rounds.",
+  "秒針の余白": "A Second of Shelter",
+  "余白の緩衝 {0}%": "Dampening {0}%",
+  "次の通常攻撃1回を軽減。第{0}ラウンド終了まで。スキル・必殺・予告大技・ビットは対象外。": "Reduce the next ordinary attack. Expires after round{0}. Skills, ultimates, boss arts and bits are unaffected.",
+  "{0}（余白の緩衝{1}%）": "{0} (Dampened {1}%)"
 }
