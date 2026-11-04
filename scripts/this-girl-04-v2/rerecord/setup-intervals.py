@@ -7,6 +7,6 @@ for id in ['reference','noelle']:
 shots=[]
 for c in t['gameCuts']:
  s=sources['reference'if c['id']=='battle-reference'else'noelle'];shots.append({**c,'sourceSha256':s['hashes']['movie'],'metadata':s['metadata'],'metadataSha256':s['hashes']['metadata'],'durationFrames':c['sourceEndFrame']-c['sourceStartFrame'],'sampleRate':48000,'editorialPlaybackRate':1})
-(O/'research/source-catalog.json').write_text(json.dumps({'episode':'THIS-GIRL-004-V2','schemaVersion':1,'sources':sources,'sourceOfStatistics':'New frozen 512-seed study per condition, seed panels shared across cases and arms.','captureGameCommit':json.loads((O/'proofs/spec-noelle.json').read_text())['sourceGameCommit']},indent=2))
+(O/'research/source-catalog.json').write_text(json.dumps({'episode':'THIS-GIRL-004-V2','schemaVersion':1,'sources':sources,'sourceOfStatistics':'New frozen 256-seed study per condition, seed panels shared across cases and arms.','captureGameCommit':json.loads((O/'proofs/spec-noelle.json').read_text())['sourceGameCommit']},indent=2))
 (O/'capture/used-intervals.json').write_text(json.dumps({'episode':'THIS-GIRL-004-V2','selectionFinalized':True,'sampleRate':48000,'fps':30,'shots':shots,'sourceSelectionPolicy':'Same predeclared native/application seed and actual resource-aware withholding and same-round normal commander action. Source frames fixed for legibility before audio-offset measurements.'},indent=2))
 print([(x['id'],x['sourceStartFrame'],x['sourceEndFrame'])for x in shots])
