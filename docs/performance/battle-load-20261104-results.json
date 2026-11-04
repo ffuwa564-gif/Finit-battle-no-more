@@ -1,0 +1,4232 @@
+{
+  "status": "completed-scoped-measurement",
+  "sourceGameCommit": "96d2e00899b6bcbff31f47433a59d4aec8268988",
+  "gameFilesChanged": false,
+  "publicGameDeployment": false,
+  "scope": "Cloud Linux Chromium software SwiftShader CPU workload in an idle production battle, not an iPhone temperature or power measurement.",
+  "primary": {
+    "run": 41856444324,
+    "job": 126666259750,
+    "summary": {
+      "complete": true,
+      "sourceCommit": "8776ab4cbf729ca5bb1b0e2be70435f01778ce9f",
+      "gameVersion": "1.12.0",
+      "node": "v24.22.1",
+      "chromium": "/home/runner/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome",
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "logicalCores": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "warmupSeconds": 5,
+      "sampleSeconds": 8,
+      "repetitions": 3,
+      "orderPolicy": "Cyclic balanced ordering by repetition",
+      "fixture": {
+        "party": [
+          "athena",
+          "nox",
+          "lunette-awakened",
+          "seris-awakened"
+        ],
+        "seed": 42,
+        "stage": "silent-cathedral",
+        "phase": "ready",
+        "audio": "muted"
+      },
+      "scope": "Production build, idle battle at a fixed legal engine-generated state; Linux Chromium with explicit software SwiftShader. Browser process CPU comparison only. No real-device GPU power/temperature measurement; results must not be represented as iPhone thermal savings. No battle action/save costs measured.",
+      "summary": [
+        {
+          "mode": "normal",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 389.1413071710252,
+          "minCpuPercent": 355.21833921181695,
+          "maxCpuPercent": 389.8981338231152,
+          "medianDrawCallsPerSecond": 24.235445775659354,
+          "medianTaskSeconds": 0.19656500000000002
+        },
+        {
+          "mode": "no-garden",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 392.84435884615397,
+          "minCpuPercent": 390.3896493386008,
+          "maxCpuPercent": 393.55085796998986,
+          "medianDrawCallsPerSecond": 30.244302200297728,
+          "medianTaskSeconds": 0.114621
+        },
+        {
+          "mode": "no-portraits",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 392.26688805848363,
+          "minCpuPercent": 390.2004311556083,
+          "maxCpuPercent": 392.5951256702096,
+          "medianDrawCallsPerSecond": 26.99256063097562,
+          "medianTaskSeconds": 0.086972
+        },
+        {
+          "mode": "no-background-fx",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 259.32295043229817,
+          "minCpuPercent": 221.23169879868564,
+          "maxCpuPercent": 259.91427046183804,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.052384
+        },
+        {
+          "mode": "reduced-motion",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 5.2482176554261395,
+          "minCpuPercent": 4.496994388268533,
+          "maxCpuPercent": 5.371565691489493,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.014502
+        }
+      ]
+    },
+    "observations": [
+      {
+        "mode": "normal",
+        "repetition": 0,
+        "elapsed": 8.000713043999998,
+        "cpuSeconds": 28.419999999999995,
+        "cpuPercentOfOneCore": 355.21833921181695,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3481,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 3535,
+            "cpuSeconds": 2.7800000000000002
+          },
+          {
+            "type": "GPU",
+            "id": 3503,
+            "cpuSeconds": 25.569999999999997
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3511,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3557,
+            "cpuSeconds": 0.06000000000000001
+          }
+        ],
+        "drawCallsPerSecond": 22.497994742479612,
+        "taskSeconds": 0.19656500000000002,
+        "scriptSeconds": 0.024172,
+        "layoutSeconds": 0,
+        "heapBytes": 9460812,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5923
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6638
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6106
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5992
+            }
+          ],
+          "draws": 49,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5913
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5243
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6668
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.597
+            }
+          ],
+          "draws": 229,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-garden",
+        "repetition": 0,
+        "elapsed": 8.001507140000001,
+        "cpuSeconds": 31.490000000000002,
+        "cpuPercentOfOneCore": 393.55085796998986,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3588,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 3634,
+            "cpuSeconds": 1.7800000000000002
+          },
+          {
+            "type": "GPU",
+            "id": 3614,
+            "cpuSeconds": 29.640000000000004
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3616,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3666,
+            "cpuSeconds": 0.06000000000000001
+          }
+        ],
+        "drawCallsPerSecond": 30.244302200297728,
+        "taskSeconds": 0.111699,
+        "scriptSeconds": 0.025338,
+        "layoutSeconds": 0,
+        "heapBytes": 9526140,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8224
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8213
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7446
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7815
+            }
+          ],
+          "draws": 61,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.7798
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.7071
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.7623
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.7407
+            }
+          ],
+          "draws": 303,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-portraits",
+        "repetition": 0,
+        "elapsed": 8.003579060000003,
+        "cpuSeconds": 31.229999999999997,
+        "cpuPercentOfOneCore": 390.2004311556083,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3700,
+            "cpuSeconds": 0.009999999999999981
+          },
+          {
+            "type": "renderer",
+            "id": 3749,
+            "cpuSeconds": 2.49
+          },
+          {
+            "type": "GPU",
+            "id": 3720,
+            "cpuSeconds": 28.669999999999998
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3721,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3777,
+            "cpuSeconds": 0.06
+          }
+        ],
+        "drawCallsPerSecond": 26.987926074163113,
+        "taskSeconds": 0.086685,
+        "scriptSeconds": 0.016943,
+        "layoutSeconds": 0,
+        "heapBytes": 9404884,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 125,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 341,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-background-fx",
+        "repetition": 0,
+        "elapsed": 8.00546190200001,
+        "cpuSeconds": 20.76,
+        "cpuPercentOfOneCore": 259.32295043229817,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3799,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 3843,
+            "cpuSeconds": 3.01
+          },
+          {
+            "type": "GPU",
+            "id": 3824,
+            "cpuSeconds": 17.69
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3825,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3875,
+            "cpuSeconds": 0.06000000000000001
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.052384,
+        "scriptSeconds": 0.013855,
+        "layoutSeconds": 0,
+        "heapBytes": 9405260,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6795
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.67
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6731
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6633
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.635
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5617
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6761
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6263
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "reduced-motion",
+        "repetition": 0,
+        "elapsed": 8.00534688099999,
+        "cpuSeconds": 0.3599999999999996,
+        "cpuPercentOfOneCore": 4.496994388268533,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3905,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 3949,
+            "cpuSeconds": 0.22999999999999998
+          },
+          {
+            "type": "GPU",
+            "id": 3933,
+            "cpuSeconds": 0.05999999999999961
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3934,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3972,
+            "cpuSeconds": 0.07
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.015013,
+        "scriptSeconds": 0.007051,
+        "layoutSeconds": 0,
+        "heapBytes": 9632316,
+        "state": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-portraits",
+        "repetition": 1,
+        "elapsed": 8.000608756000002,
+        "cpuSeconds": 31.41,
+        "cpuPercentOfOneCore": 392.5951256702096,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3995,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4070,
+            "cpuSeconds": 2.05
+          },
+          {
+            "type": "GPU",
+            "id": 4041,
+            "cpuSeconds": 29.31
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4045,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4093,
+            "cpuSeconds": 0.04999999999999999
+          }
+        ],
+        "drawCallsPerSecond": 26.997945604828168,
+        "taskSeconds": 0.086972,
+        "scriptSeconds": 0.016075,
+        "layoutSeconds": 0,
+        "heapBytes": 10725948,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 127,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 343,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-background-fx",
+        "repetition": 1,
+        "elapsed": 8.002638701999997,
+        "cpuSeconds": 20.799999999999997,
+        "cpuPercentOfOneCore": 259.91427046183804,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4115,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4166,
+            "cpuSeconds": 3.2199999999999998
+          },
+          {
+            "type": "GPU",
+            "id": 4138,
+            "cpuSeconds": 17.5
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4143,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4187,
+            "cpuSeconds": 0.08
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.057249,
+        "scriptSeconds": 0.014265,
+        "layoutSeconds": 0,
+        "heapBytes": 9471608,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6869
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6691
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6442
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6503
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6388
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5576
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6568
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6025
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "reduced-motion",
+        "repetition": 1,
+        "elapsed": 8.00271687600002,
+        "cpuSeconds": 0.42000000000000026,
+        "cpuPercentOfOneCore": 5.2482176554261395,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4217,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4272,
+            "cpuSeconds": 0.29000000000000004
+          },
+          {
+            "type": "GPU",
+            "id": 4247,
+            "cpuSeconds": 0.03000000000000025
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4255,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4286,
+            "cpuSeconds": 0.1
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.014502,
+        "scriptSeconds": 0.00674,
+        "layoutSeconds": 0,
+        "heapBytes": 9617240,
+        "state": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "normal",
+        "repetition": 1,
+        "elapsed": 8.004804277000018,
+        "cpuSeconds": 31.15,
+        "cpuPercentOfOneCore": 389.1413071710252,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4308,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4357,
+            "cpuSeconds": 2.99
+          },
+          {
+            "type": "GPU",
+            "id": 4341,
+            "cpuSeconds": 28.09
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4343,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4387,
+            "cpuSeconds": 0.06999999999999999
+          }
+        ],
+        "drawCallsPerSecond": 24.235445775659354,
+        "taskSeconds": 0.22529200000000002,
+        "scriptSeconds": 0.026241,
+        "layoutSeconds": 0,
+        "heapBytes": 9468288,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5953
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6419
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6174
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.593
+            }
+          ],
+          "draws": 53,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5458
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5114
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6344
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5452
+            }
+          ],
+          "draws": 247,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-garden",
+        "repetition": 1,
+        "elapsed": 8.002261343999999,
+        "cpuSeconds": 31.24,
+        "cpuPercentOfOneCore": 390.3896493386008,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4418,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 4461,
+            "cpuSeconds": 1.83
+          },
+          {
+            "type": "GPU",
+            "id": 4444,
+            "cpuSeconds": 29.33
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4446,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4492,
+            "cpuSeconds": 0.07
+          }
+        ],
+        "drawCallsPerSecond": 30.24145170932823,
+        "taskSeconds": 0.133576,
+        "scriptSeconds": 0.035615,
+        "layoutSeconds": 0,
+        "heapBytes": 9612344,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9743
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9561
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9523
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9621
+            }
+          ],
+          "draws": 63,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.9702
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.8172
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 3.016
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.9642
+            }
+          ],
+          "draws": 305,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "reduced-motion",
+        "repetition": 2,
+        "elapsed": 8.005114796999987,
+        "cpuSeconds": 0.43000000000000005,
+        "cpuPercentOfOneCore": 5.371565691489493,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4548,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4602,
+            "cpuSeconds": 0.27
+          },
+          {
+            "type": "GPU",
+            "id": 4575,
+            "cpuSeconds": 0.08000000000000007
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4577,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4616,
+            "cpuSeconds": 0.07999999999999999
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.013168,
+        "scriptSeconds": 0.006353,
+        "layoutSeconds": 0,
+        "heapBytes": 9624052,
+        "state": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-poster.png",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-poster.png",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "normal",
+        "repetition": 2,
+        "elapsed": 8.004654881000024,
+        "cpuSeconds": 31.209999999999994,
+        "cpuPercentOfOneCore": 389.8981338231152,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4648,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 4686,
+            "cpuSeconds": 4.069999999999999
+          },
+          {
+            "type": "GPU",
+            "id": 4675,
+            "cpuSeconds": 27.059999999999995
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4677,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4724,
+            "cpuSeconds": 0.06999999999999999
+          }
+        ],
+        "drawCallsPerSecond": 24.485752716863374,
+        "taskSeconds": 0.11286500000000001,
+        "scriptSeconds": 0.021402,
+        "layoutSeconds": 0,
+        "heapBytes": 9469620,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7341
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7175
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7057
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6748
+            }
+          ],
+          "draws": 51,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.648
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5995
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.7164
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6285
+            }
+          ],
+          "draws": 247,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-garden",
+        "repetition": 2,
+        "elapsed": 8.003169522999961,
+        "cpuSeconds": 31.439999999999994,
+        "cpuPercentOfOneCore": 392.84435884615397,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4759,
+            "cpuSeconds": 0.009999999999999981
+          },
+          {
+            "type": "renderer",
+            "id": 4814,
+            "cpuSeconds": 1.7200000000000006
+          },
+          {
+            "type": "GPU",
+            "id": 4784,
+            "cpuSeconds": 29.649999999999995
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4786,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4839,
+            "cpuSeconds": 0.06
+          }
+        ],
+        "drawCallsPerSecond": 30.987722962419273,
+        "taskSeconds": 0.114621,
+        "scriptSeconds": 0.025896,
+        "layoutSeconds": 0,
+        "heapBytes": 9537344,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8552
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8233
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7862
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8296
+            }
+          ],
+          "draws": 65,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8421
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.7562
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8396
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8396
+            }
+          ],
+          "draws": 313,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-portraits",
+        "repetition": 2,
+        "elapsed": 8.002204864999978,
+        "cpuSeconds": 31.389999999999997,
+        "cpuPercentOfOneCore": 392.26688805848363,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4869,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4910,
+            "cpuSeconds": 1.83
+          },
+          {
+            "type": "GPU",
+            "id": 4896,
+            "cpuSeconds": 29.5
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4898,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4948,
+            "cpuSeconds": 0.06000000000000001
+          }
+        ],
+        "drawCallsPerSecond": 26.99256063097562,
+        "taskSeconds": 0.092749,
+        "scriptSeconds": 0.018239,
+        "layoutSeconds": 0,
+        "heapBytes": 9395712,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 125,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 341,
+          "fxBackend": "webgl",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-background-fx",
+        "repetition": 2,
+        "elapsed": 8.005181941000046,
+        "cpuSeconds": 17.71,
+        "cpuPercentOfOneCore": 221.23169879868564,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4972,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 5028,
+            "cpuSeconds": 2.92
+          },
+          {
+            "type": "GPU",
+            "id": 5003,
+            "cpuSeconds": 14.700000000000001
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 5005,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 5049,
+            "cpuSeconds": 0.08
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.050108999999999994,
+        "scriptSeconds": 0.01293,
+        "layoutSeconds": 0,
+        "heapBytes": 9352448,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6025
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5917
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5843
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.581
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5547
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.4822
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5836
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5266
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      }
+    ]
+  },
+  "focused": {
+    "run": 41858277630,
+    "job": 126672761921,
+    "summary": {
+      "complete": true,
+      "sourceCommit": "0bb6b2ce2feaefbd0f56c1ee57691a47c0690999",
+      "gameVersion": "1.12.0",
+      "node": "v24.22.1",
+      "chromium": "/home/runner/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome",
+      "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C",
+      "logicalCores": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 3
+      },
+      "warmupSeconds": 5,
+      "sampleSeconds": 8,
+      "repetitions": 3,
+      "orderPolicy": "Cyclic rotated ordering by repetition; focused 2x2 after disabling background FX to avoid CPU saturation",
+      "fixture": {
+        "party": [
+          "athena",
+          "nox",
+          "lunette-awakened",
+          "seris-awakened"
+        ],
+        "seed": 42,
+        "stage": "silent-cathedral",
+        "phase": "ready",
+        "audio": "muted"
+      },
+      "scope": "Focused production idle-battle 2x2: background WebGL FX disabled in all cases, independently stop garden WebP and portrait videos; CSS motion remains enabled. Same fixed legal engine-generated state; Linux Chromium with explicit software SwiftShader. Browser process CPU comparison only. No real-device GPU power/temperature measurement; results must not be represented as iPhone thermal savings. No battle action/save costs measured.",
+      "summary": [
+        {
+          "mode": "no-background-fx",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 296.01982361184,
+          "minCpuPercent": 265.3105117035241,
+          "maxCpuPercent": 301.58889290984536,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.043922
+        },
+        {
+          "mode": "no-fx-no-garden",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 118.89561805920893,
+          "minCpuPercent": 115.66566629759362,
+          "maxCpuPercent": 123.67289891381256,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.03733
+        },
+        {
+          "mode": "no-fx-no-portraits",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 239.6853060596706,
+          "minCpuPercent": 208.38951253167312,
+          "maxCpuPercent": 253.71091734814047,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.018843000000000002
+        },
+        {
+          "mode": "no-fx-no-motion",
+          "n": 3,
+          "medianCpuPercentOfOneCore": 51.713998298126015,
+          "minCpuPercent": 50.988733382878976,
+          "maxCpuPercent": 53.48729214815003,
+          "medianDrawCallsPerSecond": 0,
+          "medianTaskSeconds": 0.016100999999999997
+        }
+      ]
+    },
+    "observations": [
+      {
+        "mode": "no-background-fx",
+        "repetition": 0,
+        "elapsed": 8.001944538,
+        "cpuSeconds": 21.23,
+        "cpuPercentOfOneCore": 265.3105117035241,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3738,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 3794,
+            "cpuSeconds": 3.5100000000000007
+          },
+          {
+            "type": "GPU",
+            "id": 3759,
+            "cpuSeconds": 17.66
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3761,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3816,
+            "cpuSeconds": 0.06
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.046508,
+        "scriptSeconds": 0.009339,
+        "layoutSeconds": 0,
+        "heapBytes": 9406748,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6647
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6518
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6424
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6806
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5988
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5252
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6409
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6141
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-garden",
+        "repetition": 0,
+        "elapsed": 8.007023434000002,
+        "cpuSeconds": 9.519999999999998,
+        "cpuPercentOfOneCore": 118.89561805920893,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3850,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 3892,
+            "cpuSeconds": 1.75
+          },
+          {
+            "type": "GPU",
+            "id": 3876,
+            "cpuSeconds": 7.719999999999999
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3878,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 3922,
+            "cpuSeconds": 0.039999999999999994
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.035053999999999995,
+        "scriptSeconds": 0.008855,
+        "layoutSeconds": 0,
+        "heapBytes": 12438784,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9004
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8892
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9023
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8985
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8512
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.7817
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.9145
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8475
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-fx-no-portraits",
+        "repetition": 0,
+        "elapsed": 8.002159296000006,
+        "cpuSeconds": 19.179999999999996,
+        "cpuPercentOfOneCore": 239.6853060596706,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 3953,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 3997,
+            "cpuSeconds": 2.0199999999999996
+          },
+          {
+            "type": "GPU",
+            "id": 3982,
+            "cpuSeconds": 17.099999999999998
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 3984,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4029,
+            "cpuSeconds": 0.06
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.019552,
+        "scriptSeconds": 0.004781,
+        "layoutSeconds": 0,
+        "heapBytes": 11259528,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-motion",
+        "repetition": 0,
+        "elapsed": 8.005569355,
+        "cpuSeconds": 4.139999999999998,
+        "cpuPercentOfOneCore": 51.713998298126015,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4055,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4091,
+            "cpuSeconds": 0.25
+          },
+          {
+            "type": "GPU",
+            "id": 4083,
+            "cpuSeconds": 3.849999999999998
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4085,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4130,
+            "cpuSeconds": 0.039999999999999994
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.01485,
+        "scriptSeconds": 0.003408,
+        "layoutSeconds": 0,
+        "heapBytes": 10358736,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-fx-no-portraits",
+        "repetition": 1,
+        "elapsed": 8.004241574999993,
+        "cpuSeconds": 16.68,
+        "cpuPercentOfOneCore": 208.38951253167312,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4153,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4204,
+            "cpuSeconds": 1.9500000000000002
+          },
+          {
+            "type": "GPU",
+            "id": 4177,
+            "cpuSeconds": 14.68
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4180,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4225,
+            "cpuSeconds": 0.05
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.018843000000000002,
+        "scriptSeconds": 0.004684,
+        "layoutSeconds": 0,
+        "heapBytes": 10360956,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-motion",
+        "repetition": 1,
+        "elapsed": 8.00176770300002,
+        "cpuSeconds": 4.079999999999999,
+        "cpuPercentOfOneCore": 50.988733382878976,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4250,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4305,
+            "cpuSeconds": 0.25
+          },
+          {
+            "type": "GPU",
+            "id": 4279,
+            "cpuSeconds": 3.789999999999999
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4280,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4326,
+            "cpuSeconds": 0.039999999999999994
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.016828,
+        "scriptSeconds": 0.004132,
+        "layoutSeconds": 0,
+        "heapBytes": 11993576,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-background-fx",
+        "repetition": 1,
+        "elapsed": 8.009598719000001,
+        "cpuSeconds": 23.71,
+        "cpuPercentOfOneCore": 296.01982361184,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4348,
+            "cpuSeconds": 0.009999999999999981
+          },
+          {
+            "type": "renderer",
+            "id": 4407,
+            "cpuSeconds": 3.33
+          },
+          {
+            "type": "GPU",
+            "id": 4382,
+            "cpuSeconds": 20.32
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4384,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4424,
+            "cpuSeconds": 0.04999999999999999
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.040318,
+        "scriptSeconds": 0.012162,
+        "layoutSeconds": 0,
+        "heapBytes": 9025588,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5745
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5742
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5745
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.5745
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5243
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.5356
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.583
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.5256
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-garden",
+        "repetition": 1,
+        "elapsed": 8.005832928999997,
+        "cpuSeconds": 9.260000000000002,
+        "cpuPercentOfOneCore": 115.66566629759362,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4461,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 4518,
+            "cpuSeconds": 1.7200000000000006
+          },
+          {
+            "type": "GPU",
+            "id": 4483,
+            "cpuSeconds": 7.48
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4486,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4540,
+            "cpuSeconds": 0.05
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.042136,
+        "scriptSeconds": 0.009122,
+        "layoutSeconds": 0,
+        "heapBytes": 9437220,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9194
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.9184
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8686
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.8579
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.863
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.8054
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8762
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.8113
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-background-fx",
+        "repetition": 2,
+        "elapsed": 8.004273554999992,
+        "cpuSeconds": 24.14,
+        "cpuPercentOfOneCore": 301.58889290984536,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4570,
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "id": 4620,
+            "cpuSeconds": 3.3999999999999995
+          },
+          {
+            "type": "GPU",
+            "id": 4596,
+            "cpuSeconds": 20.67
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4599,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4644,
+            "cpuSeconds": 0.06
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.043922,
+        "scriptSeconds": 0.012579,
+        "layoutSeconds": 0,
+        "heapBytes": 9412456,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7236
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7293
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7183
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.7188
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6671
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.6223
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.7207
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6551
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-garden",
+        "repetition": 2,
+        "elapsed": 8.00498741999999,
+        "cpuSeconds": 9.9,
+        "cpuPercentOfOneCore": 123.67289891381256,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4681,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4735,
+            "cpuSeconds": 1.7599999999999998
+          },
+          {
+            "type": "GPU",
+            "id": 4702,
+            "cpuSeconds": 8.09
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4712,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4755,
+            "cpuSeconds": 0.05
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.03733,
+        "scriptSeconds": 0.009403,
+        "layoutSeconds": 0,
+        "heapBytes": 8959604,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6862
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6918
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6609
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 2.6607
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.6363
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 4.6441
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.6618
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": true,
+              "width": 640,
+              "height": 960,
+              "time": 0.6119
+            }
+          ],
+          "draws": 0,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      },
+      {
+        "mode": "no-fx-no-portraits",
+        "repetition": 2,
+        "elapsed": 8.005173845999991,
+        "cpuSeconds": 20.309999999999995,
+        "cpuPercentOfOneCore": 253.71091734814047,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4816,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4871,
+            "cpuSeconds": 1.9800000000000004
+          },
+          {
+            "type": "GPU",
+            "id": 4846,
+            "cpuSeconds": 18.289999999999996
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4848,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4893,
+            "cpuSeconds": 0.039999999999999994
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.018262,
+        "scriptSeconds": 0.004399,
+        "layoutSeconds": 0,
+        "heapBytes": 11058060,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 0
+      },
+      {
+        "mode": "no-fx-no-motion",
+        "repetition": 2,
+        "elapsed": 8.001900690999989,
+        "cpuSeconds": 4.28,
+        "cpuPercentOfOneCore": 53.48729214815003,
+        "processes": [
+          {
+            "type": "browser",
+            "id": 4918,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "id": 4970,
+            "cpuSeconds": 0.25
+          },
+          {
+            "type": "GPU",
+            "id": 4948,
+            "cpuSeconds": 3.99
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "id": 4950,
+            "cpuSeconds": 0
+          },
+          {
+            "type": "audio.mojom.AudioService",
+            "id": 4995,
+            "cpuSeconds": 0.04000000000000001
+          }
+        ],
+        "drawCallsPerSecond": 0,
+        "taskSeconds": 0.016100999999999997,
+        "scriptSeconds": 0.003925,
+        "layoutSeconds": 0,
+        "heapBytes": 10645692,
+        "state": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "after": {
+          "videos": [
+            {
+              "src": "http://127.0.0.1:4317/video/athena-portrait-anime-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/nox-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/lunette-awakened-portrait-loop-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            },
+            {
+              "src": "http://127.0.0.1:4317/video/seris-awakened-portrait-hq.mp4",
+              "playing": false,
+              "width": 0,
+              "height": 0,
+              "time": 0
+            }
+          ],
+          "draws": 3,
+          "fxBackend": "static",
+          "renderer": null,
+          "garden": [
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/frame-circulating-light.webp",
+              "width": 720,
+              "height": 960
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/flower-bud-poster.png",
+              "width": 512,
+              "height": 512
+            },
+            {
+              "src": "http://127.0.0.1:4317/art/living-garden/crystal-motion.webp",
+              "width": 512,
+              "height": 512
+            }
+          ],
+          "visibility": "visible"
+        },
+        "gardenReplacements": 3
+      }
+    ],
+    "matchedComparisons": [
+      {
+        "mode": "no-background-fx",
+        "cpuIndexBackgroundOff100": 100,
+        "percentReductionAgainstMatchedBackgroundOff": 0
+      },
+      {
+        "mode": "no-fx-no-garden",
+        "cpuIndexBackgroundOff100": 40.16474863356193,
+        "percentReductionAgainstMatchedBackgroundOff": 59.83525136643808
+      },
+      {
+        "mode": "no-fx-no-portraits",
+        "cpuIndexBackgroundOff100": 80.96934290926448,
+        "percentReductionAgainstMatchedBackgroundOff": 19.030657090735524
+      },
+      {
+        "mode": "no-fx-no-motion",
+        "cpuIndexBackgroundOff100": 17.46977539110242,
+        "percentReductionAgainstMatchedBackgroundOff": 82.53022460889758
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "run": 41856444324,
+      "data": {
+        "artifacts": [
+          {
+            "id": 13339155054,
+            "name": "battle-load-profile",
+            "size_in_bytes": 52068871,
+            "url": "https://api.github.com/repos/ffuwa564-gif/Finit-battle-no-more/actions/artifacts/13339155054",
+            "archive_download_url": "https://api.github.com/repos/ffuwa564-gif/Finit-battle-no-more/actions/artifacts/13339155054/zip",
+            "expired": false,
+            "created_at": "2026-11-04T15:26:08Z",
+            "expires_at": "2026-12-04T15:26:05Z",
+            "updated_at": "2026-11-04T15:26:08Z",
+            "digest": "sha256:609de71ba3d6fb03ab7bd7e39bb524471b582771f940371f926c9a483b92b602",
+            "workflow_run": {
+              "id": 41856444324,
+              "repository_id": 1432009669,
+              "head_repository_id": 1432009669,
+              "head_branch": "investigate/battle-load-20261104-165464",
+              "head_sha": "8776ab4cbf729ca5bb1b0e2be70435f01778ce9f"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "run": 41858277630,
+      "data": {
+        "artifacts": [
+          {
+            "id": 13339006861,
+            "name": "battle-load-profile",
+            "size_in_bytes": 41908774,
+            "url": "https://api.github.com/repos/ffuwa564-gif/Finit-battle-no-more/actions/artifacts/13339006861",
+            "archive_download_url": "https://api.github.com/repos/ffuwa564-gif/Finit-battle-no-more/actions/artifacts/13339006861/zip",
+            "expired": false,
+            "created_at": "2026-11-04T15:35:27Z",
+            "expires_at": "2026-12-04T15:35:24Z",
+            "updated_at": "2026-11-04T15:35:27Z",
+            "digest": "sha256:fe9cc82f30bcd0e748f6b9c177247bea8af4278a8acb5e5edacf67fd80b877f5",
+            "workflow_run": {
+              "id": 41858277630,
+              "repository_id": 1432009669,
+              "head_repository_id": 1432009669,
+              "head_branch": "investigate/battle-load-20261104-165464",
+              "head_sha": "0bb6b2ce2feaefbd0f56c1ee57691a47c0690999"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "failedInitialHarnessAttempt": {
+    "run": 41855760446,
+    "job": 126663814466,
+    "error": "English browser locale did not match existing Japanese enterGame helper. No measurements were produced.",
+    "changed": "Set browser locale ja-JP; game and comparison conditions unchanged."
+  },
+  "conclusions": {
+    "supported": [
+      "Motion reduction greatly lowered cloud browser CPU workload in the primary experiment.",
+      "Primary normal rendering saturated almost four CPU cores; a garden-only or portrait-only stop increased background draw throughput instead of lowering total CPU. These are not evidence that the removed components are free.",
+      "With background WebGL disabled in all focused conditions, stopping garden WebP reduced median CPU by about 60%, portrait videos by about 19%, and both by about 83%, each against its same-run control.",
+      "No game logic, saves, artwork resolution, or public deployment was changed. Interventions only affect disposable profiling browser contexts."
+    ],
+    "limitations": [
+      "The runs used different physical runner CPU models (AMD versus Intel); do not directly compare absolute CPU percentages across runs.",
+      "Software rendering overstates some CPU costs relative to a phone with a real GPU. Percent reductions must not be treated as iPhone temperature, power or battery savings.",
+      "Only three samples per group, 8-second windows after 5-second warmup. CPU scheduling and playback throughput vary.",
+      "A fixed ready/idle battle was measured with audio volume muted; attack simulation, long-session leaks, actual phone temperature, charging and screen brightness were not measured.",
+      "Stopping all garden WebP together does not identify how much belongs to the frame versus the crystal separately."
+    ]
+  },
+  "reproduction": {
+    "commands": [
+      "npm ci",
+      "npx playwright install --with-deps chromium",
+      "npm run build",
+      "npx tsx scripts/performance/battle-load.mts",
+      "npx tsx scripts/performance/battle-load-focused.mts"
+    ],
+    "browserCpuMetric": "Sum of Chrome SystemInfo.getProcessInfo CPU time deltas divided by measured wall time. 100% means one full core; four logical cores can approach 400%.",
+    "fixture": {
+      "party": [
+        "athena",
+        "nox",
+        "lunette-awakened",
+        "seris-awakened"
+      ],
+      "seed": 42,
+      "stage": "silent-cathedral",
+      "phase": "ready",
+      "audio": "muted"
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "dpr": 3
+    }
+  }
+}
