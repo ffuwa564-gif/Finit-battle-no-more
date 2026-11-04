@@ -1,0 +1,234 @@
+{
+  "passed": true,
+  "commit": "2e1f6d5b276221164ee594e34f02359ef48da6c3",
+  "fullPublicReadback": [
+    {
+      "file": "Artwork-Provenance.json",
+      "sha256": "60f98dbe5b33c995df57adf3d25a3110b8750825020e68b78f060b6d22bf4391",
+      "bytes": 735,
+      "passed": true
+    },
+    {
+      "file": "Browser-QA-Source.mjs",
+      "sha256": "53e43256791706f39e7785a6afd48a7ce3023616055d5b46d35d46c5ef50d74f",
+      "bytes": 3384,
+      "passed": true
+    },
+    {
+      "file": "Browser-QA.json",
+      "sha256": "4e81f62006de958775b2cc1a9765d0ccae3bff82595be81fe155f1a63d12c009",
+      "bytes": 7397,
+      "passed": true
+    },
+    {
+      "file": "Chapters.txt",
+      "sha256": "44affd812ac54c270280045787524ee30e1d7c0eb817bcacac0978b8735e1f18",
+      "bytes": 421,
+      "passed": true
+    },
+    {
+      "file": "Character-Judgment.json",
+      "sha256": "85de8d1cee39f58eabb8a8d23f48e996829c004b681cd422289d6bda7ff8ce71",
+      "bytes": 1710,
+      "passed": true
+    },
+    {
+      "file": "Comparison-Configurations.md",
+      "sha256": "6a2938227212a57cbb06a586f18df84a179b26ea68f446b553b8a7d4c009a25c",
+      "bytes": 2266,
+      "passed": true
+    },
+    {
+      "file": "Credits.md",
+      "sha256": "c45d4e79106d1c14a44f3a01729a8840e4894910e88383bebcf564974e4c0fc3",
+      "bytes": 992,
+      "passed": true
+    },
+    {
+      "file": "Design-Decisions.md",
+      "sha256": "b13b1717909ad771d9b7529a415b6f2f73b854394794612ca9476fa7481cbf6f",
+      "bytes": 632,
+      "passed": true
+    },
+    {
+      "file": "Episode-Completion.json",
+      "sha256": "2d0db35927b35f1ca21706a3431ba7a46af3207015b9318cacb1520bc8d82913",
+      "bytes": 4243,
+      "passed": true
+    },
+    {
+      "file": "Episode-Implementation.json",
+      "sha256": "85dac7a92402f69763ca68fe6948c349dc9fda4dc0dfd2b18bf4c6bf37cba1f6",
+      "bytes": 2801,
+      "passed": true
+    },
+    {
+      "file": "Final-Media-QA.json",
+      "sha256": "421b2ea824927d459903a34d32c01397ca05d66f62261ae151c36f43a180347c",
+      "bytes": 14170,
+      "passed": true
+    },
+    {
+      "file": "Font-Copyright.txt",
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+      "bytes": 14712,
+      "passed": true
+    },
+    {
+      "file": "Freeze-Voice-QA.json",
+      "sha256": "c4131789dc6cc452a1707334cdd8b88557751b83da58e11f36387b3512f4d156",
+      "bytes": 11005,
+      "passed": true
+    },
+    {
+      "file": "Mechanism-Tikka.json",
+      "sha256": "1e79429678f8e701e5e6d92d6818a609659520a24be8ec492d40cb2736702c43",
+      "bytes": 19192,
+      "passed": true
+    },
+    {
+      "file": "Packaging-Manifest.json",
+      "sha256": "6b4893cceee2c4e10c4d784872218b1cd629a22df00a84b2084baa3168bbae27",
+      "bytes": 1239,
+      "passed": true
+    },
+    {
+      "file": "Pause-Preview.jpg",
+      "sha256": "79038867be9f2a17f858108f17057ff74c0ace6770352fd92cf6b59b7ad49af6",
+      "bytes": 618899,
+      "passed": true
+    },
+    {
+      "file": "Preview.jpg",
+      "sha256": "4c900bc5a0e3f2998070df3025bd7946ead85fd7ab85ea120ba9fe77668231ef",
+      "bytes": 1758658,
+      "passed": true
+    },
+    {
+      "file": "Production-and-Evidence.zip.part001",
+      "sha256": "ed01d489db32ca0c542c5016ea6278b832e7b2b8c444ff0d4a96fe82f80e023d",
+      "bytes": 92274688,
+      "passed": true
+    },
+    {
+      "file": "Production-and-Evidence.zip.part002",
+      "sha256": "276a30506b6286fe3d7d0eb359461936a852b318dcdf51d68409886c1a17c649",
+      "bytes": 55709081,
+      "passed": true
+    },
+    {
+      "file": "README.md",
+      "sha256": "c6698bf8ae71b3c1e632b7f631f043adb2b7578000af105c823ea7d108e60b47",
+      "bytes": 1558,
+      "passed": true
+    },
+    {
+      "file": "Render-Input-Freeze.json",
+      "sha256": "c3fa1a288bf4f7169852df266b31b267e27c0e7114d7849d83a2fe67b42d5588",
+      "bytes": 70958,
+      "passed": true
+    },
+    {
+      "file": "Render-Manifest.json",
+      "sha256": "cfb73f19d397dafcc8dc66e0f6d29b9ca3926f75227d67f1d90f273067eb1e06",
+      "bytes": 6701,
+      "passed": true
+    },
+    {
+      "file": "Reproduce.md",
+      "sha256": "fde6041a819d02878e358068052ff0ba9851f126e311eafb53701ec15b15e16f",
+      "bytes": 3128,
+      "passed": true
+    },
+    {
+      "file": "ResearchReport.md",
+      "sha256": "ac4cb43deb4a352051414853eed35fc13d792ace3ba1725a8a89ae78088fa8f7",
+      "bytes": 5004,
+      "passed": true
+    },
+    {
+      "file": "Roster-Audit.md",
+      "sha256": "f559a772e09b68c495492ec6d688f33c0cb4a1bf6577899b5e9c1f0d444405b0",
+      "bytes": 877,
+      "passed": true
+    },
+    {
+      "file": "SHA256SUMS.txt",
+      "sha256": "4e3d52cb8ae3f98c785a43fade4f9e59abd4eb7f0ebef96a2142b8e0e594860c",
+      "bytes": 3218,
+      "passed": true
+    },
+    {
+      "file": "Script.md",
+      "sha256": "d2f8ab61d478997e6bd34761d18160097ff401172f7e23cea2a1af3e8e6fde61",
+      "bytes": 18835,
+      "passed": true
+    },
+    {
+      "file": "Stone-Goals.md",
+      "sha256": "f9a3d3c8f928c1ad3c6127a9c162422a97fd27af3a305c250ca1066ee1d3a7ea",
+      "bytes": 1367,
+      "passed": true
+    },
+    {
+      "file": "Subtitles-ja.srt",
+      "sha256": "520f5ee1ce6062415e13e85d1fe68470615cbc1662d223632f4cfa9a6a7ea529",
+      "bytes": 8183,
+      "passed": true
+    },
+    {
+      "file": "ThisGirl-03-v2.mp4",
+      "sha256": "5249ac08962c2a8ca0eabe40ab39e4df2d4d04a4210f396731fad947ca9fac92",
+      "bytes": 71286917,
+      "passed": true
+    },
+    {
+      "file": "Thumbnail-Source.py",
+      "sha256": "21d485d608e510e120eca6e30b5482edb6ebd50239d8984eee8e878133b1883e",
+      "bytes": 1577,
+      "passed": true
+    },
+    {
+      "file": "Thumbnail-ThisGirl-03-v2.png",
+      "sha256": "102903804c8d5218d4b5954b5b228c29258c9700ae83829c9c9a488213b8c617",
+      "bytes": 1427144,
+      "passed": true
+    },
+    {
+      "file": "Used-Audio-Plan.json",
+      "sha256": "0f5423fa9e8607d34289724f4857fe34f501f2b3ff139ef00a071f8c632c8543",
+      "bytes": 182472,
+      "passed": true
+    },
+    {
+      "file": "Visual-QC.json",
+      "sha256": "6d9dc21454fb210d1db84539095706ab9d524e85245b618413e2201da50a9175",
+      "bytes": 1270,
+      "passed": true
+    },
+    {
+      "file": "YouTube-Description.txt",
+      "sha256": "315a71ba4feb5f1a335481cfff47c74668bdeb617e187a92e319d125892d47af",
+      "bytes": 1729,
+      "passed": true
+    },
+    {
+      "file": "combat-portfolio-research.md",
+      "sha256": "be2d3a784f5d6fabaed6bdccd1ba79513d6e1c4a532adc8fb0e789c305da0e68",
+      "bytes": 9811,
+      "passed": true
+    },
+    {
+      "file": "endgame-invariance-v03.md",
+      "sha256": "d84449bdda27df2393eebbe29fdbd967be0253e7da535f38df54470ae2b1531e",
+      "bytes": 19500,
+      "passed": true
+    },
+    {
+      "file": "portfolio-optimization-v02.md",
+      "sha256": "06b4033e323ba4d9dce916be93e241497186a9058206b79c3f3e39a12c9c2c91",
+      "bytes": 14340,
+      "passed": true
+    }
+  ]
+}
