@@ -11,3 +11,5 @@ Gitへ確認条件を固定したe095ba2の後に、分離した256シードを�
 4か所の停止・枠・実画面拡大で重要な一手を解説。完成ファイルの音声/映像同期、全48発話、停止像、全編デコード、Chromium/WebKit再生/シークを検査。報告は同じ完成SHAに束縛している。修正前の検査結果は今回の完成ファイルへ流用していない。
 
 制作コード：scripts/this-girl-02。詳細はReproduce.md、ResearchReport.mdと各QA JSONを参照。
+
+公開ダウンロードcommit: `29ec05ed4f062c0159b0dde1eff5ecd6a83cf2f0`。全30ファイルを公開先から最後まで読み戻し、SHA256一致を確認。Publication-Verification.jsonを参照。
