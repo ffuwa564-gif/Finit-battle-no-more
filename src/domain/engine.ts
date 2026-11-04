@@ -1,4 +1,4 @@
-import { applyJamExposure, grantJamRelay } from './jam-relay';
+import { grantJamRelay } from './jam-relay';
 import { characterSkills } from './character-skills';
 import { markBarrierReturn, canMarkBarrierReturn, expireBarrierReturn, storeBarrierAbsorption, takeBarrierReturn, barrierReturnDamage } from './barrier-return';
 import { quoteBarrierMend, applyBarrierMend, barrierMendTarget, harvestMendThreads } from './barrier-mend';
@@ -727,7 +727,6 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
         target.cooldowns[id]=Math.max(old,battle.round+2);
         jamExtended ||= target.cooldowns[id]>old;
       }
-      if(action.skill && !action.ultimate && !action.forcedBy && !memoryDef) applyJamExposure(target,battle.round,action.skill,jamExtended);
       targetIds.push(target.uid);
     } else if (isAilment(action.template)) {
       const target = action.targets[0]!; const roll = rng(battle.seed); battle.seed = roll.seed;
