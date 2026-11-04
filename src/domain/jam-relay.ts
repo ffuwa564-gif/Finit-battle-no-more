@@ -5,7 +5,7 @@ import type { Battle, JamRelayContract, SkillDef, Unit } from './types';
 export function validJamRelayContract(value: unknown): value is JamRelayContract {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
   const v=value as Record<string,unknown>;
-  return Object.keys(v).sort().join(',')==='charge,exposeStrength' && Number.isSafeInteger(v.charge) && Number(v.charge)>=0 && Number(v.charge)<=25 && Number.isSafeInteger(v.exposeStrength) && Number(v.exposeStrength)>=0 && Number(v.exposeStrength)<=30;
+  return Object.keys(v).join(',')==='charge' && Number.isSafeInteger(v.charge) && Number(v.charge)>=0 && Number(v.charge)<=25;
 }
 export function grantJamRelay(battle: Battle, actor: Unit, skill: SkillDef, extended: boolean): { recipientId: string; charge: number } | undefined {
   if (!extended || skill.template!=='jam' || !validJamRelayContract(skill.jamRelay) || !skill.jamRelay.charge || actor.side!=='party' || actor.hp<=0) return;
@@ -17,12 +17,3 @@ export function grantJamRelay(battle: Battle, actor: Unit, skill: SkillDef, exte
   return charge>0?{recipientId:recipient.uid,charge}:undefined;
 }
 
-/** Reuse the ordinary defense weakness. Never overwrite or prolong a stronger active weakness. */
-export function applyJamExposure(target: Unit, round: number, skill: SkillDef, extended: boolean): boolean {
-  if (!extended || skill.template!=='jam' || !validJamRelayContract(skill.jamRelay) || !skill.jamRelay.exposeStrength || target.hp<=0) return false;
-  const active=(target.debuffUntil??-1)>=round;
-  if(active && (target.debuffStrength??10)>=skill.jamRelay.exposeStrength)return false;
-  target.debuffStrength=skill.jamRelay.exposeStrength;
-  target.debuffUntil=Math.max(active?target.debuffUntil!:0,round+1);
-  return true;
-}

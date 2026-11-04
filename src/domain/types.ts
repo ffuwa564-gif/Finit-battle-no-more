@@ -15,7 +15,7 @@ export type LeaderEffect = 'acceleration' | 'regeneration' | 'finisher' | 'lifes
 export type LeaderStat = 'hp' | 'attack' | 'defense';
 export type Side = 'party' | 'enemy';
 export interface BossBitPattern { every: number; count: number; duration: number; power: number }
-export interface JamRelayContract { charge: number; exposeStrength: number }
+export interface JamRelayContract { charge: number }
 export interface BarrierMendContract { donorScope: 'target' | 'party'; carryRounds: number; conversionPercent: number; healingFirst: boolean }
 export interface CharacterDef { skillOverrides?: Record<string, { name?: string; description?: string; barrierReturn?: BarrierReturnContract; jamRelay?: JamRelayContract; barrierMend?: BarrierMendContract }>; recruitCost?: MaterialCost[]; encounterLoot?: { guaranteed: MaterialCost[]; gold: number }; id: string; name: string; epithet: string; flavor: string; speciesId: string; role: Role; strength: number; leaderStat: LeaderStat; leaderEffect?: LeaderEffect; skillIds: string[]; portraitId: string; artId: string; motionId?: string; portraitMotionId?: string; familyId?: string; encounterArtId?: string; origin: ('initial' | 'recruit' | 'gacha' | 'event' | 'awakening' | 'gold_exchange' | 'trial' | 'xr_gacha')[]; rarity: CharacterRarity; published: boolean; soundProfile: string; dialogue?: { intro: string; threshold: string; defeat: string } }
 export interface SkillDef { description?: string; barrierReturn?: BarrierReturnContract; jamRelay?: JamRelayContract; barrierMend?: BarrierMendContract; id: string; name: string; template: SkillTemplate; strength: number; soundProfile: string }
