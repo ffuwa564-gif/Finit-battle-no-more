@@ -17,6 +17,13 @@ def wrap(text,width):
    current='' if char=='\n' else char
   else:current+=char
  if current:lines.append(current)
+ # Balance two-line Japanese captions and keep closing punctuation off line starts.
+ if len(lines)==2:
+  whole=''.join(lines);closing='、。！？）」』】〕〉》,.!?';opening='（「『【〔〈《'
+  choices=[i for i in range(1,len(whole))if whole[i]not in closing and whole[i-1]not in opening and face.getlength(whole[:i])<=width and face.getlength(whole[i:])<=width and not(whole[i-1].isascii()and whole[i].isascii()and whole[i-1].isalnum()and whole[i].isalnum())]
+  if choices:
+   at=min(choices,key=lambda i:abs(face.getlength(whole[:i])-face.getlength(whole[i:])))
+   lines=[whole[:at],whole[at:]]
  return lines
 def captions(text,start,end,battle):
  # Split only for reading, never imply a phoneme-accurate word alignment.
