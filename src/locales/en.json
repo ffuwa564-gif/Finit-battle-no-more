@@ -3181,5 +3181,9 @@
   "秒針の余白": "A Second of Shelter",
   "余白の緩衝 {0}%": "Dampening {0}%",
   "次の通常攻撃1回を軽減。第{0}ラウンド終了まで。スキル・必殺・予告大技・ビットは対象外。": "Reduce the next ordinary attack. Expires after round{0}. Skills, ultimates, boss arts and bits are unaffected.",
-  "{0}（余白の緩衝{1}%）": "{0} (Dampened {1}%)"
+  "{0}（余白の緩衝{1}%）": "{0} (Dampened {1}%)",
+  "資源を守る号令：予約した生存中の受領者全員が、石の再使用待ち終了または準備済み必殺を予約中なら、発令を見送り本人は通常判断へ戻る。発令しないので号令のゲージ25や追加攻撃は得ず、本人の通常1行動と追加リーダー効果を保つ。通常判断で石を必ず使うという予測ではない。1人でも条件外なら従来どおり発令・消費し、発令後の対象死亡や適用なしでは返却しない。": "Resource-aware orders: if every living reserved recipient has a memory skill off cooldown or a ready ultimate queued, the order is withheld and the commander takes her normal action. No command charge or additional attack is granted. Her normal action and additional leader effect remain. This is a visible reservation rule, not a prediction of AI skill choice. Otherwise normal command costs apply; no refund after issuance.",
+  "発令する場合は、指揮役の行動を使います": "Issuing an order costs the commander’s action",
+  "{0}人へ予約。全員の石・必殺が準備済みなら見送り、それ以外は「{1}」へ発令して通常1手を消費。": "Reserve {0} recipients. Withhold if all have ready stones or ultimates; otherwise issue to {1} at the cost of one normal action.",
+  "{0} — 資源を守る号令（発令を見送り、通常行動へ）": "{0} — Resource-aware order (withheld; normal action retained)"
 }

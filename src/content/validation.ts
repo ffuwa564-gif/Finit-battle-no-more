@@ -21,6 +21,7 @@ const strengthValid = (value: number, maximum = 40, minimum = 10) => Number.isIn
 /** Shared build/runtime validation; personal skills require a fixed, owned engine contract. */
 export function validateContent(content: Content): string[] {
   const errors: string[] = [];
+  if(content.commandRules!==undefined&&(!content.commandRules||typeof content.commandRules!=='object'||Object.keys(content.commandRules).join(',')!=='respectReadyResources'||typeof content.commandRules.respectReadyResources!=='boolean'))errors.push('Invalid command resource safety contract');
   const reject = (condition: boolean, message: string) => { if (condition) errors.push(message); };
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion'] as const) reject(!plain(content[key]), `${key}: required version`);
   reject(!Number.isInteger(content.schemaVersion) || content.schemaVersion < 1, 'schemaVersion: positive integer required');
