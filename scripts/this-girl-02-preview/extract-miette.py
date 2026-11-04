@@ -1,6 +1,6 @@
 from pathlib import Path
 import json,gzip,hashlib
-ROOT=Path(__file__).resolve().parents[2];O=ROOT/'artifacts/this-girl-03';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();pp=O/'proofs/miette.json.gz';p=json.loads(gzip.decompress(pp.read_bytes()));meta=O/'capture/miette.json';m=json.loads(meta.read_text())if meta.exists()else None;times={x['event']['id']:x for x in m['battleEvents']}if m and m.get('calibration')else{};previous=[];traces=[]
+ROOT=Path(__file__).resolve().parents[2];O=ROOT/'artifacts/this-girl-02-preview';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();pp=O/'proofs/miette.json.gz';p=json.loads(gzip.decompress(pp.read_bytes()));meta=O/'capture/miette.json';m=json.loads(meta.read_text())if meta.exists()else None;times={x['event']['id']:x for x in m['battleEvents']}if m and m.get('calibration')else{};previous=[];traces=[]
 for e in p['events']:
  if e.get('actorId')=='party:miette'and e.get('skillId')=='barrier-mend-18':
   assert len(e['targetIds'])==1;uid=e['targetIds'][0];a=next(u for u in previous if u['uid']==uid);b=next(u for u in e['unitsAfter']if u['uid']==uid);spent=a.get('barrier',0)-b.get('barrier',0);heal=b['hp']-a['hp'];assert heal==e['amount']and spent>0;trace={'eventId':e['id'],'actorId':e['actorId'],'targetId':uid,'beforeHp':a['hp'],'afterHp':b['hp'],'maxHp':a['maxHp'],'beforeBarrier':a.get('barrier',0),'afterBarrier':b.get('barrier',0),'barrierSpent':spent,'hpHealed':heal,'noFabricatedHudValues':True,'sourceFrame':times.get(e['id'],{}).get('sourceFrame')};traces.append(trace)

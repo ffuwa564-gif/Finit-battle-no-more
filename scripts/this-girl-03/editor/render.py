@@ -112,7 +112,7 @@ def main():
  mix=json.loads((O/'research/audio-mix.json').read_text());assert sha(master)==mix['outputSha256']
  movie=O/'render/ThisGirl-03.mp4'
  # The final encode is the only AAC generation. No post-sync repair is applied.
- run(['-i',deck,'-i',master,'-vf',f"subtitles=filename='{ass}':fontsdir='/usr/share/fonts/opentype/noto'",'-map','0:v:0','-map','1:a:0','-frames:v',t['durationFrames'],'-c:v','libx264','-threads','2','-preset','fast','-profile:v','baseline','-level:v','4.0','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-ar','48000','-ac','2','-movflags','+faststart',movie])
+ run(['-i',deck,'-i',master,'-vf',f"subtitles=filename='{ass}':fontsdir='/usr/share/fonts/opentype/noto',fade=t=out:st={t['durationFrames']/30-1}:d=1:color=0x211b17",'-map','0:v:0','-map','1:a:0','-frames:v',t['durationFrames'],'-c:v','libx264','-threads','2','-preset','fast','-profile:v','baseline','-level:v','4.0','-crf','23','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-ar','48000','-ac','2','-movflags','+faststart',movie])
  delivery=O/'delivery/ThisGirl-03.mp4'
  if delivery.is_symlink():delivery.unlink()
  assert not delivery.exists(),'Refuse to overwrite an unrelated delivery file'

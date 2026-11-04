@@ -1,48 +1,45 @@
 from pathlib import Path
-import json,hashlib,math
-ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-03';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
-N=json.loads((O/'narration.json').read_text());L={l['lineId']:l for c in N['chapters']for l in c['lines']};A=O/'research/analysis/main.json';case='ivory-tower-010-T6-F1';pages=[]
-def refs(prefix,a,b):return[f'{prefix}-{i:02}'for i in range(a,b)]
+import json,hashlib,math,gzip
+ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-03';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();N=json.load(open(O/'narration.json'));L={l['lineId']:l for c in N['chapters']for l in c['lines']};A=O/'research/analysis/main.json';C=json.load(open(O/'research/recording-selection.json'));M=json.load(open(O/'research/mechanism-tikka.json'));J=M['selected'];F=M['ordinaryAttackAfterSeal'];pages=[]
+def refs(p,a,b):return[f'{p}-{i:02}'for i in range(a,b)]
 def add(id,kind,title,lines,chapter=None,**spec):
  p={'id':id,'spec':{'kind':kind,'title':title,**spec},'lines':lines,'leadSeconds':.35,'tailSeconds':.8,'lineGapSeconds':.3}
  if chapter:p['chapter']=chapter
  pages.append(p);return p
-def table(id,title,mode,lines,**kw):return add(id,'data-table',title,lines,evidence=str(A.relative_to(ROOT)),evidenceSha256=sha(A),mode=mode,caseId=case,**kw)
-def cut(id,src,a,b,lines,title,body):
- p=add(id,'battle',title,lines,section='白亜の塔 第10層 · T6 / 編成1',body=body,note='実戦の抜粋 · ゲーム設定×1 · 途中を省略',unreleased=True)
- proof=O/f'research/native-buffer-qa-{src}.json';assert json.loads(proof.read_text())['passed'];p['durationFrames']=b-a
- p['gameCut']={'file':f'artifacts/this-girl-03/capture/{src}.mov','sourceStartFrame':a,'sourceEndFrame':b,'sourceApplicationSpeed':1,'audioSourceOffsetSamples':0,'audioCalibrationEvidence':{'file':str(proof.relative_to(ROOT)),'sha256':sha(proof)}}
- assert sum(math.ceil(L[x]['duration']*30)+9 for x in lines)+11<=b-a
- return p
-def pause(id,src,f,title,lines,focus,inset,explain):
- p=add(id,'battle-pause',title,lines,pauseId=id,freeze={'file':f'artifacts/this-girl-03/capture/{src}.mov','sourceFrame':f,'sha256':sha(O/f'capture/{src}.mov')},focus=focus,inset=inset,explain=explain)
- return p
-add('opening','desk','その盾を、ほどいてもいいのかな。',refs('question',0,1),'その盾を、ほどいてもいいのかな。')
-add('subject','subject','守りを、命に縫い直す子。',refs('question',1,4),characterId='miette',body=['ミエット · SR / BD019','障壁を消費し、HPを回復する。','守りをほどく、という選択。'])
-add('skill','choice','いま、使える能力。',refs('skill',0,4),'装甲リサイクルの仕組み',cards=[{'title':'装甲リサイクル','body':['HP75%以下の味方。','障壁を消費し、回復。'],'status':'公開版の能力'},{'title':'基本の交換','body':['消費は最大HPの15%まで。','基本は、消費量の2倍を回復。'],'status':'HP上限まで'},{'title':'交換の代償','body':['1行動を使う。','再使用は3ラウンド後。'],'status':'残る守りも見る'}])
-add('methods','summary','同じ条件で、確かめる。',refs('method',0,3),'研究の条件',body=['公開版1.12の能力を使用。今回は能力を追加しない。','回復できる17形態を、同じ探索予算で比較。','探索用と確認用の乱数を分離。各条件256シード。'])
-add('conditions','conditions','勝てる。その先も、見る。',refs('method',3,4),note='薬・全員生還・別の編成での働きも、同じ基準で確認する。')
-add('elements','choice','4要素を、ひとつの選択に。',refs('elements',0,5),'スキル・LS・石・指揮',cards=[{'title':'リーダー','body':['ミエット：毎ラウンド再生。','アテナ：別の守り方。'],'status':'同時には使えない'},{'title':'記憶石','body':['障壁を支える特性。','装備と操作を一緒に探索。'],'status':'石だけの効果と混同しない'},{'title':'指揮','body':['ノエルの指揮は、','今回は測っていません。'],'status':'未検証'}])
-add('owned-scope','summary','この先は、全所持を仮定した研究。',refs('battle',0,1),'実戦を止めて、見る',body=['未入手のXRも含む、最終盤を想定した研究用セーブ。','映像の能力は公開版。入手できる編成の案内ではありません。'])
-cut('battle-reference','reference',1370,1700,refs('battle',1,2),'比較の回復役は、弁財天。',['右端の回復役を、差し替えます。','仲間3人・出発シード・装備予算をそろえる。'])
-pause('pause-reference','reference',1699,'見るのは、回復役と薬。',refs('battle',2,3),[[338,459,105,132],[270,600,65,110]],[338,459,105,132],['右端が、比較する枠。','回復薬と生還も見る。'])
-add('miette-party','party','ここからは、ミエットと。',refs('battle',3,4),characters=[{'id':'seris-awakened'},{'id':'athena','leader':True},{'id':'astraea'},{'id':'miette','subject':True}],note='操作は各編成で事前に探索。同じ敵とシードで比較。')
-pause('pause-target','miette',1631,'左端のセリスを、追います。',refs('battle',4,5),[[3,459,108,132]],[3,459,108,132],['左端の味方。','HPと障壁を見ます。'])
-cut('battle-miette','miette',1631,1775,[],'装甲リサイクル。',['障壁を使い、傷を縫い直す。'])['durationFrames']=144
-# A short mechanism action is lengthened before the event, preserving all frames and normal playback.
-pages[-1]['gameCut']['sourceStartFrame']=1547;pages[-1]['durationFrames']=228
-pause('pause-conversion','miette',1774,'守り48を、回復96へ。',refs('battle',5,8),[[3,459,108,132]],[3,459,108,132],['障壁 216 → 168','HP 218 → 314','消費48 → 回復96'])
-pause('pause-remainder','miette',1774,'168の守りは、残っています。',refs('battle',8,10),[[3,459,108,132]],[3,459,108,132],['障壁は、全部使わない。','消費48は、次の守りに使えない。'])
-cut('battle-miette-finish','miette',3830,4165,refs('battle',10,11),'この一戦は、どちらも生還。',['両編成とも、9ラウンド。','4人とも、生きて帰りました。'])
-table('sample-cost','同じ勝利でも、薬が違いました。','example',refs('battle',11,12))
-table('main-results','勝利数だけでは、決められない。','main',refs('results',0,3),chapter='256シードの結果')
-table('frugal-results','節約を目指しても、差は残る。','frugal',refs('results',3,4))
-table('all-results','別の編成でも、同じでしょうか。','panel',refs('results',4,6))
-table('ablation','この能力を、外したら。','ablation',refs('control',0,4),chapter='固有の働きを、切り分ける')
+def table(id,title,mode,lines,case='ivory-tower-010-T6-F1',**kw):return add(id,'data-table',title,lines,evidence=str(A.relative_to(ROOT)),evidenceSha256=sha(A),mode=mode,caseId=case,**kw)
+def cut(id,src,a,b,lines,title,body,replay=False):
+ proof=O/f'research/native-buffer-qa-{src}.json';assert json.load(open(proof))['passed'];p=add(id,'battle',title,lines,section='塔 第10層 · T6 / 編成1',body=body,note=('直前の場面を再掲 · ゲーム設定×1'if replay else'実戦の抜粋 · ゲーム設定×1 · 途中を省略'),unreleased=True);p['durationFrames']=b-a;p['gameCut']={'file':f'artifacts/this-girl-03/capture/{src}.mov','sourceStartFrame':a,'sourceEndFrame':b,'sourceApplicationSpeed':1,'audioSourceOffsetSamples':0,'audioCalibrationEvidence':{'file':str(proof.relative_to(ROOT)),'sha256':sha(proof)}};assert b-a>=180
+ assert sum(math.ceil(L[x]['duration']*30)+9 for x in lines)+11<=b-a,(id,b-a,lines);return p
+def pause(id,src,f,title,lines,focus,inset,explain):return add(id,'battle-pause',title,lines,pauseId=id,freeze={'file':f'artifacts/this-girl-03/capture/{src}.mov','sourceFrame':f,'sha256':sha(O/f'capture/{src}.mov')},focus=focus,inset=inset,explain=explain)
+def card(index):return[3+112*index,459,108,132]
+add('opening','desk','その一拍で、救えるかな。',refs('question',0,1),'その一拍で、救えるかな。')
+add('subject','subject','小さな一手を、選ぶ理由。',refs('question',1,4),characterId='tikka',body=['R · 定数1.4 / 機巧の弱体役','通常技を封じ、必殺へつなぐ。','遅らせた時間は、何を変える？'])
+add('skill','choice','止められるもの、止まらないもの。',refs('skill',0,4),'秒針ジャミングの仕組み',cards=[{'title':'秒針ジャミング','body':['敵1体の通常スキル。','R1・R2は待機、R3から使用可。'],'status':'再使用は4ラウンド後'},{'title':'故障診断','body':['通常の封印で待ちを延長。','本人の必殺ゲージ＋8。'],'status':'1行動1回・上限100'},{'title':'対象の外','body':['通常攻撃。','予告大技・ビット射撃。'],'status':'封印 ≠ 行動不能'}])
+add('method','summary','比較の前に、条件を固定。',refs('method',0,3),'研究の条件',body=['公開版1.12の既存能力。新しい強化は足さない。','弱体役＋高レア攻撃役の16形態を、同じ予算で探索。','2戦場 × 2編成 × T3/T4/T6。別の256シードで確認。'])
+add('conditions','conditions','勝てる。その先も、見る。',refs('method',3,4),note='速さ・薬・生還・別の組み合わせまで、同じ基準で確認する。')
+add('elements','choice','一手は、ほかの選択と交換。',refs('elements',0,4),'LS・石・指揮',cards=[{'title':'薄明の追撃','body':['HP35%以下の敵へ','ダメージ20%増。'],'status':'映像ではアテナを選択'},{'title':'奪灯石','body':['敵の強化を奪う。','封印以外の仕事も持つ。'],'status':'石・方針を同時に探索'},{'title':'指揮','body':['ノエルの号令を含む','全面の比較は未検証。'],'status':'今回は含めない'}])
+add('owned-scope','summary','この先は、全所持を仮定した研究。',refs('battle',0,1),'実戦を止めて、見る',body=['未入手のXRも含む、最終盤を想定した研究用セーブ。','能力は公開版。通常の入手進行の案内ではありません。'])
+r=json.load(open(O/'capture/reference.json'));a=next(e['sourceFrame']for e in r['battleEvents']if e['wave']==1)+120;b=a+360
+cut('battle-reference','reference',a,b,refs('battle',1,2),'比較は、アストライア入り。',['同じ3人を残し、1枠を差し替える。','石と操作も、同じ探索予算で選ぶ。'])
+index=C['arms']['A']['config']['party'].index('astraea');box=card(index)
+pause('pause-reference','reference',b-1,'速さと、帰り方も見る。',refs('battle',2,3),[box,[275,600,60,110]],box,['この一枠を、差し替える。','薬と、生還も見る。'])
+add('tikka-party','party','ここからは、ティッカと。',refs('battle',3,4),characters=[{'id':id,'leader':id==C['arms']['M']['config']['leader'],'subject':id=='tikka'}for id in C['arms']['M']['config']['party']],note='同じ敵・出発シード・装備予算。双方の方針を事前に選定。')
+box=card(C['arms']['M']['config']['party'].index('tikka'));f=J['sourceFrame'];assert f is not None
+pause('pause-target','tikka',f-4,'右端のゲージを、追います。',refs('battle',4,5),[box],box,['右端が、ティッカ。','必殺ゲージを見ます。'])
+pause('pause-jam','tikka',f+18,'通常25と、故障診断8。',refs('battle',5,9),[box,[70,225,310,65]],box,['通常技2種は、R3から使用可。','必殺 0 → 33%','行動25 ＋ 固有8'])
+cut('battle-tikka','tikka',f-90,F['sourceFrame']+22,[],'直前から、もう一度。',['秒針ジャミングの後も、','エオスは通常攻撃を行う。'],replay=True)
+pause('pause-ordinary','tikka',F['sourceFrame']+18,'封印しても、攻撃は来る。',refs('battle',9,10),[[70,225,310,65]],[70,225,310,65],['封印中も、通常攻撃。','障壁が70受けた。','HPへの損傷は0。'])
+meta=json.load(open(O/'capture/tikka.json'));frames={x['event']['id']:x['sourceFrame']for x in meta['battleEvents']};proof=json.loads(gzip.decompress((O/'proofs/tikka.json.gz').read_bytes()));dead=[e for e in proof['events']if e.get('actorId','').startswith('party:')and(e.get('amount')or 0)>0 and e.get('unitsAfter')and not any(u['side']=='enemy'and u['hp']>0 for u in e['unitsAfter'])];last=frames[dead[-1]['id']]
+cut('battle-tikka-finish','tikka',last-390,last+20,refs('battle',10,11),'この一戦は、17ラウンド。',['比較側は、11ラウンド。','両編成とも勝利。生還は3人。'])
+table('sample-cost','同じ勝利でも、道のりが違う。','example',refs('battle',11,12))
+table('main-results','全勝だけでは、決められない。','main',refs('results',0,2),chapter='256シードの結果')
+table('frugal-results','帰り方を変える、という選択。','frugal',refs('results',2,3))
+table('all-results','同じ仕事は、どこでもできる？','panel',refs('results',3,5))
+table('ablation','技能が役立つことと、選ぶ理由。','ablation',refs('control',0,4),case='ivory-tower-010-T6-F2',chapter='封印の働きを、切り分ける')
 table('growth','良い石は、どこまで助ける？','growth',refs('growth',0,2),chapter='次に探したい石')
-add('stone-goal','goal','まずは、障壁を支える石から。',refs('growth',2,3),stone='澄明の残響石 · 障壁特性',body=['映像例：Tier6 / 力239・特性239。','塔41層以降などに、T6の入手候補。','指定の石・特性・ロールは確定しません。'])
-add('judgment','summary','今回は、研究中。',refs('judgment',0,3),'研究日誌',status='研究中 · 固有の採用理由は未確立',certified=False,body=['既存能力の作動は確認できました。','最終盤で、他の回復役より選ぶ理由はまだ足りない。','次は、障壁を使うタイミングを研究。新能力は未実装。'])
-add('farewell','desk','好きな子との、お別れにしないために。',refs('judgment',3,6))
+add('stone-goal','goal','封じる仕事と、奪う仕事。',refs('growth',2,3),stone='奪灯石 · 機巧系',body=['映像例：T6・庇護 / 力239・特性239。','候補：ルネット覚醒級、塔41層以降の機巧系など。','指定の石・特性・ロールは、確定しません。'])
+add('judgment','summary','今回は、研究中。',refs('judgment',0,3),'研究日誌',status='研究中 · 最終盤での採用価値は未確立',certified=False,body=['通常スキルの封印と、追加の充填は作動。','役立つことと、最良代替より選ぶ理由を分ける。','共通の通常技予告は、まだ未実装の設計案。'])
+add('farewell','desk','小さな一拍を、なくさないために。',refs('judgment',3,5))
+add('next-preview','preview','次回、その号令は、誰のため。',refs('preview',0,3),'次回予告：ノエル',characterId='noelle',status='次回の研究対象 · 未検証',body=['星図の号令。','指揮官の一手と、仲間の一撃。','その交換は、得になる？'])
 add('ledger','roster','研究記録',[],judgment='artifacts/this-girl-03/research/reports/judgment.json')['durationFrames']=1050
-music=json.loads((O/'research/rights/music-source.json').read_text())
-e={'episode':'THIS-GIRL-003','finalized':False,'music':music,'pages':pages};(O/'editorial.json').write_text(json.dumps(e,ensure_ascii=False,indent=2));print('PAGES',len(pages))
+music=json.load(open(O/'research/rights/music-source.json'));e={'episode':'THIS-GIRL-003','finalized':False,'music':music,'pages':pages};(O/'editorial.json').write_text(json.dumps(e,ensure_ascii=False,indent=2));print('PAGES',len(pages),[(p['id'],p['durationFrames'])for p in pages if p.get('gameCut')])
