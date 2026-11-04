@@ -9,3 +9,5 @@ Rノエルの公開版1.12の号令を研究。新能力なし、判定研究中
 [完成MP4](https://github.com/ffuwa564-gif/Finit-battle-no-more/raw/refs/heads/downloads/this-girl-04/ThisGirl-04.mp4) / [サムネイル・字幕・投稿文・研究資料](https://github.com/ffuwa564-gif/Finit-battle-no-more/tree/downloads/this-girl-04)
 
 8分15.733秒・1080p30。全48発話、4停止像、実戦12映像区間/18音声アンカー、全編decode、Chromium/WebKit各3点が同じ完成SHAで合格。mainマージ/itch配信なし。
+
+公開commit `c9a11a8593cff4e65deb8e94aa4c7578ae2d3ffd` の全32ファイルを最後まで読み戻し、全SHA256一致を確認。Publication-Verification.json参照。
