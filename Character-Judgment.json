@@ -1,0 +1,47 @@
+{
+  "finalized": true,
+  "episode": "THIS-GIRL-004-V2",
+  "subject": {
+    "characterId": "noelle",
+    "seriesId": "BD004",
+    "buildName": "資源を守る号令"
+  },
+  "overall": {
+    "status": "research",
+    "certified": false,
+    "label": "保護策採用／研究中",
+    "reason": "Scoped safety improvement for requested command operation; unrestricted no-order benchmark remains better in medicine consumption. Unique endgame command role unproven."
+  },
+  "implementation": {
+    "status": "adopted-scoped",
+    "ability": "資源を守る号令",
+    "publiclyReleased": false,
+    "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/146"
+  },
+  "scope": {
+    "stageIds": [
+      "ivory-tower-010",
+      "kuzuha-awakening"
+    ],
+    "tiers": [
+      3,
+      4,
+      6
+    ],
+    "inputsPerCondition": 256,
+    "limitations": [
+      "C/B independently selected18conditional-command operations, NOT unrestricted-best baseline.",
+      "N9 no-order/L27 other-leader/alternatives18 or awakened36 legal candidates; finite role-dependent search spaces.",
+      "16development and diverse3x32selection; chosen frozen configs before unopened256-input confirmation.",
+      "C-B and C-X jointly Holm96; all unfavorable results retained.",
+      "Full-roster endgame uniqueness and outer optimization not established."
+    ]
+  },
+  "nextEpisode": {
+    "characterId": "lisette",
+    "seriesId": "BD036",
+    "status": "unverified",
+    "certified": false,
+    "label": "次回：リゼットの改修研究・未検証"
+  }
+}

@@ -1,0 +1,670 @@
+{
+  "passed": true,
+  "scope": "Actual engine/application events and actual source frames, never a fabricated redirect or performance proof",
+  "reference": {
+    "party": [
+      "noelle",
+      "seris-awakened",
+      "athena",
+      "benzaiten"
+    ],
+    "leader": "noelle",
+    "config": {
+      "party": [
+        "noelle",
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "leader": "noelle",
+      "gems": [
+        {
+          "id": "ghollow-lantern",
+          "defId": "hollow-lantern",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "bulwark",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "mercy",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "bulwark",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "mercy",
+            "value": 239
+          }
+        }
+      ],
+      "policy": 2,
+      "autoPilot": true,
+      "command": true,
+      "commandMode": "conditional",
+      "commandSelective": true,
+      "commandTarget": "priority"
+    },
+    "issued": {
+      "kind": "issued",
+      "eventId": "run-1000-3437130321:w1:r2:buff:2585034732:e0",
+      "eventIndex": 31,
+      "event": {
+        "kind": "buff",
+        "actionSelection": true,
+        "actorId": "party:noelle",
+        "targetIds": [
+          "enemy:w1:2:pale-wolf"
+        ],
+        "text": "ノエル — 星図の号令",
+        "unitsAfter": [
+          {
+            "uid": "party:noelle",
+            "characterId": "noelle",
+            "side": "party",
+            "boss": false,
+            "hp": 105,
+            "maxHp": 126,
+            "attack": 41,
+            "defense": 14,
+            "speed": 11,
+            "tie": 1865418620,
+            "cooldowns": {
+              "area-14": 4
+            },
+            "ultimateCharge": 100
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 270,
+            "maxHp": 270,
+            "attack": 90,
+            "defense": 32,
+            "speed": 14,
+            "tie": 3220618411,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 368,
+            "maxHp": 368,
+            "attack": 43,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3084233230,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "ultimateCharge": 95,
+            "guardTarget": "party:benzaiten",
+            "guardUntil": 2,
+            "guardStrength": 23
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 220,
+            "maxHp": 220,
+            "attack": 57,
+            "defense": 31,
+            "speed": 12,
+            "tie": 1332226581,
+            "cooldowns": {
+              "heal-22": 4
+            },
+            "ultimateCharge": 95
+          },
+          {
+            "uid": "enemy:w1:0:hollow-keeper",
+            "characterId": "hollow-keeper",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 192,
+            "attack": 22,
+            "defense": 31,
+            "speed": 18,
+            "tie": 17009418,
+            "cooldowns": {
+              "guard-12": 3
+            }
+          },
+          {
+            "uid": "enemy:w1:1:veil-priestess",
+            "characterId": "veil-priestess",
+            "side": "enemy",
+            "boss": false,
+            "hp": 79,
+            "maxHp": 110,
+            "attack": 28,
+            "defense": 15,
+            "speed": 12,
+            "tie": 1190985441,
+            "cooldowns": {},
+            "debuffStrength": 30,
+            "debuffUntil": 2
+          },
+          {
+            "uid": "enemy:w1:2:pale-wolf",
+            "characterId": "pale-wolf",
+            "side": "enemy",
+            "boss": false,
+            "hp": 68,
+            "maxHp": 100,
+            "attack": 32,
+            "defense": 12,
+            "speed": 14,
+            "tie": 2295237324,
+            "cooldowns": {
+              "attack-10": 4
+            },
+            "debuffStrength": 30,
+            "debuffUntil": 2
+          }
+        ],
+        "id": "run-1000-3437130321:w1:r2:buff:2585034732:e0"
+      },
+      "sourceFrame": 1645
+    },
+    "fallback": null,
+    "ordinary": null,
+    "actualTotals": {
+      "issued": 1,
+      "fallbacks": 0,
+      "applied": 1,
+      "redirects": 1,
+      "ordinaryNoelle": 7,
+      "areaUses": 3,
+      "exposureUses": 2
+    },
+    "proofSha256": "6a79c528bb4cf6c8bedcdaad9b5cee0c6b9286a786d24ff810145bfdda5c2f45",
+    "metadataSha256": "3fca4b5e662107d1611a0c6803be1899fe9e1912fb9504e6bb98192f70ed96e3",
+    "sourceSha256": "913fb58feb1f0e4e6a92272d92dde8a112b6970cb048201ed54f64f423b0540e"
+  },
+  "noelle": {
+    "party": [
+      "noelle",
+      "seris-awakened",
+      "athena",
+      "benzaiten"
+    ],
+    "leader": "noelle",
+    "config": {
+      "party": [
+        "noelle",
+        "seris-awakened",
+        "athena",
+        "benzaiten"
+      ],
+      "leader": "noelle",
+      "gems": [
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "bulwark",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "mercy",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "bulwark",
+            "value": 239
+          }
+        },
+        {
+          "id": "gecho-shard",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "roll": {
+            "power": 239,
+            "trait": "mercy",
+            "value": 239
+          }
+        }
+      ],
+      "policy": 1,
+      "autoPilot": true,
+      "command": true,
+      "commandMode": "conditional",
+      "commandSelective": false,
+      "commandTarget": "priority"
+    },
+    "issued": {
+      "kind": "issued",
+      "eventId": "run-1000-3437130321:w3:r2:buff:2585034732:e0",
+      "eventIndex": 74,
+      "event": {
+        "kind": "buff",
+        "actionSelection": true,
+        "actorId": "party:noelle",
+        "targetIds": [
+          "enemy:w3:1:pale-wolf"
+        ],
+        "text": "ノエル — 星図の号令",
+        "unitsAfter": [
+          {
+            "uid": "party:noelle",
+            "characterId": "noelle",
+            "side": "party",
+            "boss": false,
+            "hp": 126,
+            "maxHp": 126,
+            "attack": 41,
+            "defense": 14,
+            "speed": 11,
+            "tie": 1865418620,
+            "cooldowns": {},
+            "ultimateCharge": 25,
+            "barrier": 95,
+            "barrierUntil": 2
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 270,
+            "maxHp": 270,
+            "attack": 90,
+            "defense": 32,
+            "speed": 14,
+            "tie": 3220618411,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=239~mercy~239:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 95,
+            "barrier": 201,
+            "barrierUntil": 2
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 368,
+            "maxHp": 368,
+            "attack": 43,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3084233230,
+            "cooldowns": {},
+            "ultimateCharge": 0,
+            "barrier": 230,
+            "barrierUntil": 2
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 220,
+            "maxHp": 220,
+            "attack": 57,
+            "defense": 31,
+            "speed": 12,
+            "tie": 1332226581,
+            "cooldowns": {},
+            "ultimateCharge": 0,
+            "barrier": 186,
+            "barrierUntil": 2
+          },
+          {
+            "uid": "enemy:w3:0:veil-priestess",
+            "characterId": "veil-priestess",
+            "side": "enemy",
+            "boss": false,
+            "hp": 12,
+            "maxHp": 110,
+            "attack": 28,
+            "defense": 15,
+            "speed": 12,
+            "tie": 3090922926,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w3:1:pale-wolf",
+            "characterId": "pale-wolf",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1,
+            "maxHp": 100,
+            "attack": 32,
+            "defense": 12,
+            "speed": 14,
+            "tie": 3943229749,
+            "cooldowns": {
+              "attack-10": 4
+            }
+          },
+          {
+            "uid": "enemy:w3:2:moon-moth",
+            "characterId": "moon-moth",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 90,
+            "attack": 28,
+            "defense": 10,
+            "speed": 11,
+            "tie": 2130372880,
+            "cooldowns": {}
+          }
+        ],
+        "id": "run-1000-3437130321:w3:r2:buff:2585034732:e0"
+      },
+      "sourceFrame": 3870
+    },
+    "fallback": {
+      "kind": "fallback",
+      "eventId": "run-1000-3437130321:w0:r1:buff:69035875:e0",
+      "eventIndex": 1,
+      "actorId": "party:noelle",
+      "recipientIds": [
+        "party:seris-awakened"
+      ],
+      "event": {
+        "kind": "buff",
+        "commandAction": "resource-fallback",
+        "actorId": "party:noelle",
+        "targetIds": [
+          "party:seris-awakened"
+        ],
+        "text": "ノエル — 資源を守る号令（発令を見送り、通常行動へ）",
+        "unitsAfter": [
+          {
+            "uid": "party:noelle",
+            "characterId": "noelle",
+            "side": "party",
+            "boss": false,
+            "hp": 126,
+            "maxHp": 126,
+            "attack": 41,
+            "defense": 14,
+            "speed": 11,
+            "tie": 1865418620,
+            "cooldowns": {}
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 270,
+            "maxHp": 270,
+            "attack": 90,
+            "defense": 32,
+            "speed": 14,
+            "tie": 3220618411,
+            "cooldowns": {}
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 368,
+            "maxHp": 368,
+            "attack": 43,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3084233230,
+            "cooldowns": {}
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 220,
+            "maxHp": 220,
+            "attack": 57,
+            "defense": 31,
+            "speed": 12,
+            "tie": 1332226581,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:0:pale-wolf",
+            "characterId": "pale-wolf",
+            "side": "enemy",
+            "boss": false,
+            "hp": 100,
+            "maxHp": 100,
+            "attack": 32,
+            "defense": 12,
+            "speed": 14,
+            "tie": 3783947376,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:1:thorn-witch",
+            "characterId": "thorn-witch",
+            "side": "enemy",
+            "boss": false,
+            "hp": 120,
+            "maxHp": 120,
+            "attack": 29,
+            "defense": 14,
+            "speed": 15,
+            "tie": 969637135,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:2:moon-moth",
+            "characterId": "moon-moth",
+            "side": "enemy",
+            "boss": false,
+            "hp": 90,
+            "maxHp": 90,
+            "attack": 28,
+            "defense": 10,
+            "speed": 11,
+            "tie": 1980712738,
+            "cooldowns": {}
+          }
+        ],
+        "id": "run-1000-3437130321:w0:r1:buff:69035875:e0"
+      },
+      "sourceFrame": 250
+    },
+    "ordinary": {
+      "kind": "ordinary",
+      "eventId": "run-1000-3437130321:w0:r1:attack:2242996662:e8",
+      "eventIndex": 9,
+      "event": {
+        "actionSelection": true,
+        "kind": "attack",
+        "bossStrike": false,
+        "text": "ノエル — 澄明の残響石",
+        "actorId": "party:noelle",
+        "targetIds": [
+          "enemy:w0:0:pale-wolf"
+        ],
+        "skillId": "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0",
+        "amount": 100,
+        "unitsAfter": [
+          {
+            "uid": "party:noelle",
+            "characterId": "noelle",
+            "side": "party",
+            "boss": false,
+            "hp": 126,
+            "maxHp": 126,
+            "attack": 41,
+            "defense": 14,
+            "speed": 11,
+            "tie": 1865418620,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=239~bulwark~239:slot-0": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 270,
+            "maxHp": 270,
+            "attack": 90,
+            "defense": 32,
+            "speed": 14,
+            "tie": 3220618411,
+            "cooldowns": {},
+            "ailments": {
+              "charm": {
+                "turns": 1,
+                "sourceId": "enemy:w0:1:thorn-witch"
+              }
+            }
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 368,
+            "maxHp": 368,
+            "attack": 43,
+            "defense": 60,
+            "speed": 18,
+            "tie": 3084233230,
+            "cooldowns": {
+              "guard-23": 3
+            },
+            "guardTarget": "party:noelle",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 45
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 220,
+            "maxHp": 220,
+            "attack": 57,
+            "defense": 31,
+            "speed": 12,
+            "tie": 1332226581,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=239~mercy~239:slot-3": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25
+          },
+          {
+            "uid": "enemy:w0:0:pale-wolf",
+            "characterId": "pale-wolf",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 100,
+            "attack": 32,
+            "defense": 12,
+            "speed": 14,
+            "tie": 3783947376,
+            "cooldowns": {
+              "attack-10": 4
+            }
+          },
+          {
+            "uid": "enemy:w0:1:thorn-witch",
+            "characterId": "thorn-witch",
+            "side": "enemy",
+            "boss": false,
+            "hp": 120,
+            "maxHp": 120,
+            "attack": 29,
+            "defense": 14,
+            "speed": 15,
+            "tie": 969637135,
+            "cooldowns": {
+              "charm-12": 5
+            }
+          },
+          {
+            "uid": "enemy:w0:2:moon-moth",
+            "characterId": "moon-moth",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 90,
+            "attack": 28,
+            "defense": 10,
+            "speed": 11,
+            "tie": 1980712738,
+            "cooldowns": {}
+          }
+        ],
+        "id": "run-1000-3437130321:w0:r1:attack:2242996662:e8"
+      },
+      "sourceFrame": 608
+    },
+    "actualTotals": {
+      "issued": 1,
+      "fallbacks": 5,
+      "applied": 1,
+      "redirects": 0,
+      "ordinaryNoelle": 7,
+      "areaUses": 2,
+      "exposureUses": 1
+    },
+    "proofSha256": "e433eb47cc74c64d7919ce68bd5bbb5e30b49e5e9b2eee0a8fb54f04d212dac6",
+    "metadataSha256": "7cb99b108f4f792f8c9e40a9ae3228bbc2606091b896cd321ef1119ee5ea5e6f",
+    "sourceSha256": "313658d181191511ffe079ef1cad445df3240675ddb229dba5be403f8a20dea4"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "episode": "THIS-GIRL-004-V2",
+  "status": "implementation-complete",
+  "adoptionScope": "scoped-not-endgame-certified",
+  "baseEngineCommit": "53c4cd0",
+  "implementationCommit": "568c57f",
+  "policyCommit": "96d2e00",
+  "freezeCommit": "98273ae",
+  "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/146",
+  "changedEngineFiles": [
+    "src/content/index.ts",
+    "src/content/validation.ts",
+    "src/content/version.ts",
+    "src/domain/command-resource-safety.ts",
+    "src/domain/engine.ts",
+    "src/domain/types.ts",
+    "src/locales/en.json",
+    "src/platform/save.ts",
+    "src/screens/GameViews.tsx",
+    "src/ui/CommandDoctrine.tsx"
+  ],
+  "evidence": {
+    "artifacts/this-girl-04-v2/research/analysis/main.json": "06217d754fde52d1f4892f9958b1f95d3caa9d7ece3e4f18a0bfb77040fa1603",
+    "artifacts/this-girl-04-v2/research/confirmation-lock.json": "9d1ebe7fdb248c4541718dd49e656c2452f12ab37827ff4e5174e63d58896c79",
+    "artifacts/this-girl-04-v2/research/reports/adoption.json": "c633aeb9cd9ff14d0ff3883383c6e739bc6e07f7366cacf9f7d772c5f2666ee8",
+    "artifacts/this-girl-04-v2/research/reports/judgment.json": "a053041202040d70fec6ab38718fb2d077c659fe3b0f0adca894645562e12ad6",
+    "artifacts/this-girl-04-v2/research/reports/ResearchReport.md": "d7af68c02eb6693a737032b13142decaf7431d4a50a6de50565b84dcf24eb261",
+    "artifacts/this-girl-04-v2/research/baseline-equivalence.json": "cb8885d70d20262d72c9e745991b45983ce6a60db44a5023d0e47a9caa3d9db6",
+    "artifacts/this-girl-04-v2/research/full-public-tests.log": "a7d461a0e2c501368467a8b495ae851c75bd278222da9e0a47af16013a05d5cb",
+    "artifacts/this-girl-04-v2/research/game-browser-tests.log": "c4f24d43fba4d20f2486e5f743a8937b91e21055e79f391fe72002fcb842984d",
+    "artifacts/this-girl-04-v2/research/research-build.log": "7c7cecf7ae8344ebffe402cd020e0bdf7c0e2a13799faa3134318bb7a68f37d1",
+    "artifacts/this-girl-04-v2/research/public-build.log": "41453bb1bcf1d5d181b1c36afeca0fbc7da8aa5b1d99d656e1f674dc547b4322",
+    "artifacts/this-girl-04-v2/research/recording-selection.json": "d58e4bb75b20e8bfc60a572753158597530af8a4625fc0e8261dd0e660518139",
+    "artifacts/this-girl-04-v2/research/code-pr.json": "7a6d304ab3c599baf89a092ab08e0850279036b8a55764cb788d4ff11c147c70",
+    "artifacts/this-girl-04-v2/proofs/reference.json.gz": "6a79c528bb4cf6c8bedcdaad9b5cee0c6b9286a786d24ff810145bfdda5c2f45",
+    "artifacts/this-girl-04-v2/proofs/noelle.json.gz": "e433eb47cc74c64d7919ce68bd5bbb5e30b49e5e9b2eee0a8fb54f04d212dac6"
+  },
+  "verification": {
+    "publicUnitTests": 775,
+    "newMechanicTestsIncluded": 12,
+    "gameBrowserTests": 2,
+    "legacyOutcomeMatches": 72
+  },
+  "negativeConditionDisclosed": "All12 conditions are in ResearchReport and analysis. Scoped adoption is not universal noninferiority or endgame uniqueness.",
+  "gamePublished": false
+}

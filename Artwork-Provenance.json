@@ -1,0 +1,17 @@
+{
+  "episode": "THIS-GIRL-004-V2",
+  "images": [
+    {
+      "destination": "artifacts/this-girl-04-v2/assets/research-desk-original.png",
+      "sha256": "7553d8ffb00ea79c3b13b541f136e973ff53eb519e27a01b0d0e9c32bec3a5d6",
+      "source": "/workspace/generated_images/exec-9122915d-1b3b-454f-899d-93bd70fa1ec9.png",
+      "method": "Reuse of approved episode04 artwork; original generation provenance retained separately in original04."
+    }
+  ],
+  "references": [
+    "artifacts/this-girl-03/assets/research-desk-original.png",
+    "public/art/noelle.png"
+  ],
+  "newRunwayVideoGeneration": false,
+  "reuseNote": "Approved episode04 artwork reused; no new image or Runway generation."
+}

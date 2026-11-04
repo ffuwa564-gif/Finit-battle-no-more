@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "movieSha256": "b4d564d08de1efd4ea30c31aa63487854639f83cc92499720a10327b87a7df24",
+  "method": "Manual review of exact final decoded page contact sheet, all four final freeze explanations and separate approved POV thumbnail; native/inset quantitative matching is separate.",
+  "reviewed": {
+    "Preview.jpg": "12f1aa010bdea2d857bf71f1321f527e58ed70e54a82be99f974b06cc775b741",
+    "Pause-Preview.jpg": "4b8b528f5beabba9d2a782e4ff9eb235407a4fb53885a1a82f951c09267da203",
+    "Thumbnail-ThisGirl-04-v2.png": "aa61df66e146421190289b476d80e77aa6d18c8f0ab7d14b1a29af536adec0eb"
+  },
+  "checks": {
+    "all28PagesReviewed": true,
+    "fourActualFreezeFramesAndInsets": true,
+    "faceCropsUseMeasuredNativeLayout": true,
+    "readinessNotClaimedFromUltimateGauge": true,
+    "nativeHudNotPaintedOver": true,
+    "captionsMaximumTwoLines": true,
+    "researchVersionClearlyLabeled": true,
+    "unfavorableSingleBattleAndNoOrderOpportunityCostDisclosed": true,
+    "noNewEndgameCertification": true,
+    "nextLisettePreviewUnverified": true,
+    "thumbnailHandAndPenVisible": true
+  },
+  "nativeLayoutEvidenceSha256": "4e1d4a624245aabc24e68bfd8ef1cb71329040202861e36fa146ddb0927f0f4a"
+}
