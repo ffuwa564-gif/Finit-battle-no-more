@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "episode": "THIS-GIRL-004",
+  "finishedSha256": "ba73482568f2698a7d1c119c4e2b05a22016957b247377f722aa576d3006d034",
+  "productionCommit": "ac574fa07b38ed60f60f142bac41b2c335674bd8",
+  "sourceLockSha256": "dc592c3cf6c48734314f5ebb2200c3743707d53af77b189ac64e7ebfbedbcc2d",
+  "durationFrames": 14872,
+  "fps": 30,
+  "fullMotion": true,
+  "applicationSpeed": 1,
+  "nativeSourceIds": [
+    "reference",
+    "noelle"
+  ],
+  "freezeExplanations": 4,
+  "researchVerdict": "research; no certification",
+  "archive": {
+    "sha256": "bb65d85579cd8c97faa46103c746e8d40c3f8f44aefeee57a31054b0fc8ed6b5",
+    "parts": [
+      {
+        "file": "Production-and-Evidence.zip.part001",
+        "bytes": 92274688,
+        "sha256": "b0a6653f44c54e5861a910e3bd7cde86948dc7405b7f3a9c3255b10c5ad285f6"
+      },
+      {
+        "file": "Production-and-Evidence.zip.part002",
+        "bytes": 13061048,
+        "sha256": "523fb2a2c0353027fd5e183f4fef221b7aa8574de46d1429a40fc1e1c27d7bc8"
+      }
+    ],
+    "files": 337,
+    "excluded": "OS raw MKV retained locally; original music, voice models and raw synthesized narration excluded. Canonical PCM MOV and independent graph references included."
+  },
+  "gameMainOrItchUpdated": false
+}
