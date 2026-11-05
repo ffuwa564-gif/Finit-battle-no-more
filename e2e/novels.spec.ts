@@ -44,7 +44,7 @@ test('new game opens the full-screen OP, saves its place and never restarts it a
   await expect(story).toHaveAttribute('data-page', '0');
 });
 
-test('first chapter clear commits rewards before the epilogue, with no duplicate rewards on replay', async ({ page }) => {
+test('first chapter clear commits rewards without a story interruption; archive replay grants no rewards', async ({ page }) => {
   await begin(page); await skipStory(page);
   await page.evaluate(async () => {
     const { loadSave, persistSave } = await import('/src/platform/save.ts'); const { content } = await import('/src/content/index.ts'); const { createBattle } = await import('/src/domain/engine.ts');
@@ -59,7 +59,7 @@ test('first chapter clear commits rewards before the epilogue, with no duplicate
   });
   await page.reload(); await page.getByRole('button', { name: 'タップしてはじめる', exact: true }).click();
   await page.getByRole('button', { name: '獲得を確定', exact: true }).click();
-  await expect(page.locator('.visual-novel')).toHaveAttribute('data-scene', 'chapter-1-epilogue');
+  await expect(page.locator('.visual-novel')).toHaveCount(0);
   const claimed = await saved(page); expect(claimed.battle).toBeNull(); expect(claimed.materials['stone:common']).toBe(2);
   await skipStory(page);
   const after = await saved(page); expect(after.gold).toBe(claimed.gold); expect(after.stones).toBe(claimed.stones);

@@ -30,7 +30,7 @@ test('confirming a chapter boss clear opens chapter two and returns to campaign 
   });
   await page.reload();await enterGame(page);await expect(page.locator('.result-panel')).toContainText('初踏破 +3');
   await page.getByRole('button',{name:'獲得を確定',exact:true}).click();
-  await expect(page.locator('.visual-novel')).toBeVisible(); await skipStory(page);
+  await expect(page.locator('.visual-novel')).toHaveCount(0);
   await expect(page.locator('.world-map')).toBeVisible();
   await page.goto('/#dungeons/list');await enterGame(page);
   await expect(page.locator('.chapter-heading')).toContainText('ふたりぶんの空席');
@@ -67,7 +67,7 @@ test('chapter bosses visibly announce their periodic heavy attack and persist it
   const strike=b.events.find(e=>e.bossStrike)!;expect(strike.kind).toBe('attack');expect(strike.amount).toBeGreaterThan(200);
 });
 
-test('chapter two shows its romance before departure and its tragic ending only after victory, with a persistent reread',async({page},testInfo)=>{
+test('chapter two uses resource flavor and never displays obsolete departure or victory stories',async({page},testInfo)=>{
   await page.setViewportSize({width:390,height:844});await page.goto('/#dungeons/list');await enterGame(page);
   await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const save=(await loadSave())!,rev=save.revision;save.completedDungeonIds=['last-safety-key'];save.revision++;await persistSave(save,rev);});
   await page.reload();await enterGame(page);
@@ -75,7 +75,8 @@ test('chapter two shows its romance before departure and its tragic ending only 
   const card=page.locator('.dungeon-card').filter({has:page.getByRole('heading',{name:'虚ろの門',exact:true})});
   await expect(card.locator('details')).toHaveCount(0);
   await card.getByRole('button',{name:'探索の準備',exact:true}).click();
-  await expect(page.getByRole('region',{name:'探索前の物語',exact:true})).toContainText('防衛機構');
+  await expect(page.getByRole('region',{name:'探索前の物語',exact:true})).toHaveCount(0);
+  await expect(page.locator('.industry-dungeon-resources')).toBeVisible();
   await expect(page.getByText('炉は止まった。',{exact:false})).toHaveCount(0);
   await page.evaluate(async()=>{
     const {content}=await import('/src/content/index.ts');const {applyCommand}=await import('/src/application/game.ts');const {loadSave,persistSave}=await import('/src/platform/save.ts');
@@ -87,21 +88,19 @@ test('chapter two shows its romance before departure and its tragic ending only 
     if(save.battle?.phase!=='reward')throw Error('No victory');save.revision=revision+1;await persistSave(save,revision);
   });
   await page.reload();await enterGame(page);
-  await expect(page.getByRole('region',{name:'探索後の物語',exact:true})).toContainText('どなたですか');
+  await expect(page.getByRole('region',{name:'探索後の物語',exact:true})).toHaveCount(0);
   await page.screenshot({path:testInfo.outputPath('chapter-two-ending.png'),fullPage:true});
   await page.getByRole('button',{name:'獲得を確定',exact:true}).click();
-  await expect(page.locator('.visual-novel')).toBeVisible(); await skipStory(page);
+  await expect(page.locator('.visual-novel')).toHaveCount(0);
   await page.goto('/#dungeons/list');await enterGame(page);
   await page.getByRole('button',{name:'第2章 ふたりぶんの空席',exact:true}).click();
-  await card.getByText('踏破した物語を読み返す',{exact:true}).click();
-  await expect(card.getByRole('region',{name:'探索後の物語',exact:true})).toContainText('個体は生まれず');
-  await page.reload();await enterGame(page);await page.getByRole('button',{name:'第2章 ふたりぶんの空席',exact:true}).click();
-  await card.getByText('踏破した物語を読み返す',{exact:true}).click();await expect(card.locator('details')).toHaveAttribute('open','');
+  await expect(card.getByText('踏破した物語を読み返す',{exact:true})).toHaveCount(0);
+  await expect(card.locator('details')).toHaveCount(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
   await page.goto('/#settings');await page.getByRole('button',{name:'English',exact:true}).click();await page.goto('/#dungeons/list');
   await page.getByRole('button',{name:'Chapter 2: Two Empty Chairs',exact:true}).click();
   const englishCard=page.locator('.dungeon-card').filter({has:page.getByRole('heading',{name:'The Hollow Gate',exact:true})});
-  await englishCard.getByText('Reread this completed story',{exact:true}).click();
-  await expect(englishCard.getByRole('region',{name:'Story After Victory',exact:true})).toContainText('Who are you?');
+  await expect(englishCard.getByText('Reread this completed story',{exact:true})).toHaveCount(0);
+  await expect(englishCard.getByRole('region',{name:'Story After Victory',exact:true})).toHaveCount(0);
   expect(await englishCard.innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
 });

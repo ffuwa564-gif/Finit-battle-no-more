@@ -25,11 +25,16 @@
 
 /* Keep objectives off the painting until explicitly opened. */
 .world-objective-dock {position:absolute;z-index:8;}
-.world-objective-dock--map {right:60px;bottom:196px;}
+.world-objective-dock--map {right:60px;bottom:152px;}
 .world-objective-dock--home {right:12px;bottom:24px;}
 .world-objective-dock .world-objective-dock__trigger {position:relative;display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid #d3d1bdad;border-radius:50%;color:#f4eedc;background:#14212dda;box-shadow:0 2px 6px #0006;backdrop-filter:blur(5px);}
 .world-objective-dock__badge {position:absolute;top:1px;right:1px;width:9px;height:9px;border-radius:50%;background:#efab88;border:2px solid #182332;}
 .world-objective-dock.is-incident .world-objective-dock__trigger {border-color:#e0b095;}
 .hub-illustration:has(.world-objective-dock--home) .animated-illustration__toggle {bottom:76px;}
 .world-objective-dialog {max-width:360px;}
-@media(min-width:761px) {.world-objective-dock--map {right:72px;bottom:220px;}}
+@media(min-width:761px) {.world-objective-dock--map {right:72px;bottom:152px;}}
+
+.world-story-objective__main p{font-size:12px;line-height:1.8;color:#e1d9c8;margin:8px 0;}
+.world-next-action{position:absolute;z-index:8;left:12px;right:104px;top:72px;display:flex;border:1px solid #b9aa7b88;border-radius:8px;background:#132231e6;}
+.world-next-action>.button{border:0;background:transparent;color:#f5e5bd;box-shadow:none;padding:7px;min-height:32px;min-width:28px;font-size:11px;}
+.world-next-action>.button:first-child{flex:1;min-width:0;justify-content:flex-start;gap:5px;}.world-next-action span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}

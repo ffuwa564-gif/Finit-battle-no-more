@@ -3,11 +3,12 @@ import type { Content, GameSave } from '../domain/types';
 import { activeWorldIncident, storyActors, storyText, worldStorySupportingSpeakers } from '../domain/world-story';
 import { getLanguage, tr } from '../locales/i18n';
 import { Button, PortraitArt } from './index';
-export function WorldStoryPeople({ content, save, scale, selected, onSelect }: {
+export function WorldStoryPeople({ content, save, scale, selected, onSelect, detailed = false }: {
     content: Content;
     save: GameSave;
     scale: number;
     selected?: string;
+    detailed?: boolean;
     onSelect: (id: string) => void;
 }) {
     const def = content.worldStory, s = save.worldStory;
@@ -16,7 +17,9 @@ export function WorldStoryPeople({ content, save, scale, selected, onSelect }: {
     const actors = storyActors(save, def), incident = activeWorldIncident(save, def);
     return <>{actors.map(a => {
             const group = actors.filter(p => p.hub.id === a.hub.id), index = group.indexOf(a), ch = content.characters.find(c => c.id === a.actorId), name = tr(ch?.name ?? worldStorySupportingSpeakers[a.actorId] ?? '旅の少女');
+            const essential = !a.node.optional;
+            const quiet = !essential && !detailed && selected !== 'actor:' + a.actorId;
             const offset = (index - (group.length - 1) / 2) * 76;
-            return <div key={a.actorId} className="world-person-anchor" style={{ left: `${a.hub.x * 100}%`, top: `${a.hub.y * 100}%`, transform: `scale(${1 / scale}) translate(${offset}px,0)` }}><Button variant="icon" className={`world-person${!incident || a.node.optional ? ' is-ambient' : ' is-essential'}${selected === 'actor:' + a.actorId ? ' is-selected' : ''}`} aria-label={name + '：' + storyText(a.node.bubble, s.profile, getLanguage())} onClick={() => onSelect('actor:' + a.actorId)}><span className="world-person__bubble">{storyText(a.node.bubble, s.profile, getLanguage())}</span><span className="world-person__face">{ch ? <PortraitArt character={ch} face/> : <UserRound size={25}/>}</span><small>{name}</small></Button></div>;
+            return <div key={a.actorId} className="world-person-anchor" style={{ left: `${a.hub.x * 100}%`, top: `${a.hub.y * 100}%`, transform: `scale(${1 / scale}) translate(${offset}px,0)` }}><Button variant="icon" className={`world-person${essential ? ' is-essential' : ' is-ambient'}${quiet ? ' is-quiet' : ''}${selected === 'actor:' + a.actorId ? ' is-selected' : ''}`} aria-label={name + '：' + storyText(a.node.bubble, s.profile, getLanguage())} onClick={() => onSelect('actor:' + a.actorId)}><span className="world-person__bubble">{storyText(essential && a.node.task ? a.node.task : a.node.bubble, s.profile, getLanguage())}</span><span className="world-person__face">{ch ? <PortraitArt character={ch} face/> : <UserRound size={25}/>}</span><small>{name}</small></Button></div>;
         })}</>;
 }

@@ -1,3 +1,4 @@
+import { applyIndustry, grantIndustryLoot, settleIndustry } from '../domain/industry';
 import { startWorldStory, startStoryTravel, cancelStoryTravel, beginStoryTalk, advanceStoryTalk, validHero, storyDestinations, acknowledgeWorldIncident } from '../domain/world-story';
 import { combatContent } from '../domain/combat-compatibility';
 import { roughMemoryGem, startGemPolish, tapGemPolish, ROUGH_NAMES } from '../domain/gem-polishing';
@@ -102,12 +103,13 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.battle) delete save.battle.omens;
   if(save.worldStory?.active && !['worldTalkNext','worldTalkBack','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
+    case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);applyIndustry(save,command,publicContent,context.now??Date.now());break;}
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
-    case 'worldTravel': {town(save);startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
+    case 'worldTravel': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
     case 'worldIncidentNotice': {if(!content.worldStory||!save.worldStory)fail('旅はまだ始まっていません。');acknowledgeWorldIncident(save,content.worldStory,command.incidentId);break;}
     case 'worldTravelCancel': {town(save);if(save.worldStory)cancelStoryTravel(save.worldStory,context.now??Date.now());break;}
-    case 'worldTalk': {town(save);beginStoryTalk(save,content,command.nodeId,context.now??Date.now());break;}
+    case 'worldTalk': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());beginStoryTalk(save,content,command.nodeId,context.now??Date.now());break;}
     case 'worldTalkNext': case 'worldTalkBack': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkBack'?'back':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);break;}
 
     case 'trackBuild': {
@@ -352,6 +354,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
         const family = dungeonGemFamily(dungeon);
         inventory.dust[family] = (inventory.dust[family] ?? 0) + (dungeon.towerFloor ? towerDustReward(dungeon) : 1);
       }
+      grantIndustryLoot(save, dungeon, publicContent, context.now ?? Date.now());
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);

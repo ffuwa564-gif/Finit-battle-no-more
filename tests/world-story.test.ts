@@ -1,3 +1,4 @@
+import { emptyIndustry } from '../src/domain/industry';
 import { describe, it, expect } from 'vitest';
 import { content, validateContent } from '../src/content';
 import { createInitialSave, applyCommand } from '../src/application/game';
@@ -39,6 +40,9 @@ describe('living world story and quiet days', () => {
             }
             const next = storyNext(s, def);
             expect(next).toBeDefined();
+            // This graph test uses fixtures for both dungeon clears and crafted tools.
+            // Resource conservation and actual crafting are tested in industry.test.ts.
+            if (next!.recipeId) { s.industry ??= emptyIndustry(1000); s.industry.stock[next!.recipeId] = 1; }
             if (next!.node)
                 s = finish(s, next!.node, next!.node.id === 'c5-address' ? 'infirmary' : undefined);
             else {

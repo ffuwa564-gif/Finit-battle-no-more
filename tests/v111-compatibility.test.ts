@@ -6,9 +6,9 @@ import {migrateSaveTo110}from'../src/platform/save-migration';
 import {isUpgradeableSaveVersion,assertSaveCompatibility}from'../src/platform/save';
 import {decodeBackup,encodeBackup}from'../src/platform/save-backup';
 const previousContent={...content,...content.legacyCombat,appVersion:'1.10.0',contentVersion:'v1.10-r1',rulesVersion:'2'};
-describe('1.21 compatible expedition upgrade',()=>{
- it('preserves 1.20 inventory, active combat, travel and dialogue through migration and backup import',()=>{
-  const previousContent={...content,appVersion:'1.20.0',contentVersion:'v1.20-r1'};
+describe('1.22 compatible expedition upgrade',()=>{
+ it.each([{appVersion:'1.20.0',contentVersion:'v1.20-r1'},{appVersion:'1.21.0',contentVersion:'v1.21-r1'}])('preserves $appVersion inventory, active combat, travel and dialogue through migration and backup import',version=>{
+  const previousContent={...content,...version};
   let old=createInitialSave(previousContent,28113);
   old=applyCommand(old,{type:'worldStoryBegin',profile:{name:'ミオ',voice:'soft',favorite:'flowers'},from:'beginning'},previousContent,{now:1000});
   old=applyCommand(old,{type:'worldTravel',destinationId:content.worldStory!.nodes[0].hubId},previousContent,{now:1000});

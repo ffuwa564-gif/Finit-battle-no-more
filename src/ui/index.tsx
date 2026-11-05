@@ -212,3 +212,5 @@ export { FieldSkillChoice } from './FieldSkillChoice';
 export { WorldConversation } from './WorldConversation';
 
 export { WorldIncidentBanner, WorldIncidentNotice } from './WorldIncident';
+
+export { IndustryWorkshop, IndustryDungeonResources } from './IndustryWorkshop';

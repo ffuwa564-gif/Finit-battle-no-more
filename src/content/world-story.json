@@ -115,8 +115,8 @@
       "number": 1,
       "chapterId": "mistbound-sanctuary",
       "objective": {
-        "ja": "リオラと世界を見て、街で最初の仕事を受ける",
-        "en": "See the world with Liora and take your first job in town"
+        "ja": "街を知り、最初の巡回を終える",
+        "en": "Get to know the town and complete your first patrol"
       },
       "endingNodeId": "c1-return",
       "gates": {
@@ -141,7 +141,11 @@
         "withered-nursery",
         "fountain-threshold",
         "stone-fountain"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "街の周囲を調べ、仲間たちの暮らしを知る。",
+        "en": "Explore the outskirts and get to know your companions."
+      }
     },
     {
       "number": 2,
@@ -181,7 +185,11 @@
         "overwritten-room",
         "last-safety-key",
         "hollow-gate"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "管理の記録を探し、少女たちの居場所を確かめる。",
+        "en": "Find the ward records and locate the missing girls."
+      }
     },
     {
       "number": 3,
@@ -215,7 +223,11 @@
         "dawn-sluice",
         "bell-sword-approach",
         "pale-throne"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "地下水路を調べ、街に伸びる根を止める道を探す。",
+        "en": "Survey the waterways to stop the roots spreading through town."
+      }
     },
     {
       "number": 4,
@@ -236,7 +248,11 @@
       "dungeonIds": [
         "ritual-stone-grove",
         "zakuro-procession"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "樹海で、儀式に必要な石の手掛かりを探す。",
+        "en": "Search the forest for the stone needed for the ritual."
+      }
     },
     {
       "number": 5,
@@ -270,7 +286,11 @@
         "present-address",
         "registry-threshold",
         "register-return"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "少女が帰る場所と、名前の記録を確かめる。",
+        "en": "Find a place for the girl to return to and verify her records."
+      }
     },
     {
       "number": 6,
@@ -305,7 +325,11 @@
         "prayer-without-order",
         "last-lantern-watch",
         "lantern-return"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "夜道をつなぐ灯りの設置場所を調べる。",
+        "en": "Survey the night roads for places to install relay lanterns."
+      }
     },
     {
       "number": 7,
@@ -341,7 +365,11 @@
         "stop-signal",
         "unfinished-name",
         "two-signatures"
-      ]
+      ],
+      "explorationPurpose": {
+        "ja": "温室に残された、個体を管理する仕組みを確かめる。",
+        "en": "Investigate the individual-management system left in the greenhouse."
+      }
     }
   ],
   "nodes": [
@@ -425,7 +453,15 @@
           }
         }
       ],
-      "backgroundId": "key-art"
+      "backgroundId": "key-art",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "白亜の塔と、少女たちが暮らす街を見渡す。",
+        "en": "Look out over the Ivory Tower and the town."
+      }
     },
     {
       "id": "c1-offerings",
@@ -516,7 +552,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "少女たちが宝石を集める理由を聞く。",
+        "en": "Learn why the girls collect gems."
+      }
     },
     {
       "id": "c1-generation",
@@ -646,7 +690,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "庭で、新しい少女が生まれる儀式を見届ける。",
+        "en": "Witness the birth ritual in the garden."
+      }
     },
     {
       "id": "c1-garden-rounds",
@@ -751,7 +803,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "庭園の女と話す",
+        "en": "Talk to the garden keeper"
+      },
+      "purpose": {
+        "ja": "庭園の女が少女たちと過ごす様子を見る。",
+        "en": "Observe the garden keeper with the girls."
+      }
     },
     {
       "id": "c1-garden-night",
@@ -894,7 +954,15 @@
           "shade": "dark"
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "庭園の女と話す",
+        "en": "Talk to the garden keeper"
+      },
+      "purpose": {
+        "ja": "庭園で夜を過ごし、翌日の仕事へつなぐ。",
+        "en": "Spend the night in the garden before the first job."
+      }
     },
     {
       "id": "c1-job",
@@ -962,10 +1030,25 @@
             "ja": "道が狭くなったら、後ろへ下がれ。",
             "en": "When the path narrows, fall in behind me."
           }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "携帯灯も工房で作っておこう。暗い通路では、足元を見失いやすい。",
+            "en": "We should make a field lantern in the workshop. It is easy to lose your footing in a dark passage."
+          }
         }
       ],
       "leadDungeonId": "silent-cathedral",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "一日の仕事と、最初に調べる場所をリオラに教わる。",
+        "en": "Ask Liora about the day's work and where to begin."
+      }
     },
     {
       "id": "c1-chart",
@@ -1024,7 +1107,15 @@
         }
       ],
       "leadDungeonId": "moon-garden",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "見つけた道の目印を、ノエルと地図に書き込む。",
+        "en": "Mark the landmarks you found on Noelle's map."
+      }
     },
     {
       "id": "c1-wolf",
@@ -1086,7 +1177,15 @@
         }
       ],
       "leadDungeonId": "root-waterway",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "セリスと話す",
+        "en": "Talk to Seris"
+      },
+      "purpose": {
+        "ja": "道を塞いだ狼のことを、セリスと確かめる。",
+        "en": "Ask Seris about the wolf blocking the road."
+      }
     },
     {
       "id": "c1-flowers",
@@ -1137,7 +1236,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "エレインの鉢を届け、次の巡回先を聞く。",
+        "en": "Deliver Elaine's flowerpot and ask where to patrol next."
+      }
     },
     {
       "id": "c1-care",
@@ -1189,7 +1296,15 @@
         }
       ],
       "leadDungeonId": "stone-fountain",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "携帯灯で足元を照らし、リオラと怪我を手当てする。",
+        "en": "Use the field lantern to check your footing and tend the injury with Liora."
+      }
     },
     {
       "id": "c1-oath",
@@ -1318,7 +1433,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "帰還したリオラに声をかけ、様子を確かめる。",
+        "en": "Check on Liora after returning home."
+      }
     },
     {
       "id": "c1-held",
@@ -1453,7 +1576,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "寝込んだリオラを、庭園で見舞う。",
+        "en": "Visit Liora while she rests in the garden."
+      }
     },
     {
       "id": "c1-return",
@@ -1507,7 +1638,15 @@
         }
       ],
       "ending": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "翌朝のリオラに花を届け、休ませておく。",
+        "en": "Bring Liora flowers the next morning and let her rest."
+      }
     },
     {
       "id": "c1-snack",
@@ -1676,7 +1815,15 @@
         }
       ],
       "leadDungeonId": "veiled-cloister",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "鉢を運ぶリオラと、温室への道を確かめる。",
+        "en": "Check the path to the greenhouse with Liora and her flowerpot."
+      }
     },
     {
       "id": "c2-tea",
@@ -1738,7 +1885,15 @@
         }
       ],
       "leadDungeonId": "thorn-court",
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "荊の魔女と話す",
+        "en": "Talk to the thorn witch"
+      },
+      "purpose": {
+        "ja": "荊の魔女を訪ね、温室で一緒にお茶を飲む。",
+        "en": "Visit the thorn witch and share tea in the greenhouse."
+      }
     },
     {
       "id": "c2-promise",
@@ -1840,7 +1995,15 @@
           ]
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "荊の魔女と話す",
+        "en": "Talk to the thorn witch"
+      },
+      "purpose": {
+        "ja": "荊の魔女と、次に会う約束について話す。",
+        "en": "Talk with the thorn witch about your next visit."
+      }
     },
     {
       "id": "c2-plan",
@@ -1892,7 +2055,15 @@
         }
       ],
       "leadDungeonId": "memory-grafting",
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "荊の魔女と話す",
+        "en": "Talk to the thorn witch"
+      },
+      "purpose": {
+        "ja": "温室の研究内容と、手伝えることを聞く。",
+        "en": "Learn about the greenhouse research and how you can help."
+      }
     },
     {
       "id": "c2-clinic",
@@ -1941,9 +2112,24 @@
             "ja": "一緒に来てくれたでしょう。今日は、帰って休もう。",
             "en": "You came here with me. Let us go home and rest today."
           }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "安全弁の鍵なら工房で作れます。記録にある形を、確かめてみましょう。",
+            "en": "We can make the safety valve key in the workshop. Let us check the shape in the records."
+          }
         }
       ],
-      "backgroundId": "thorn-witch-art"
+      "backgroundId": "thorn-witch-art",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "エレインに二人の体調を相談し、研究の進め方を見直す。",
+        "en": "Ask Elaine about your health and reconsider the research."
+      }
     },
     {
       "id": "c2-key",
@@ -1993,7 +2179,15 @@
         }
       ],
       "leadDungeonId": "missing-name",
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "荊の魔女と話す",
+        "en": "Talk to the thorn witch"
+      },
+      "purpose": {
+        "ja": "安全弁の鍵を持ち、荊の魔女と研究を止める手順を確かめる。",
+        "en": "Bring the safety valve key and plan how to stop the experiment with the thorn witch."
+      }
     },
     {
       "id": "c2-rescue",
@@ -2045,7 +2239,15 @@
         }
       ],
       "leadDungeonId": "hollow-gate",
-      "backgroundId": "thorn-witch-art"
+      "backgroundId": "thorn-witch-art",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "リオラと、療養室へ向かう道を開ける。",
+        "en": "Help Liora open the route to the infirmary."
+      }
     },
     {
       "id": "c2-after",
@@ -2097,7 +2299,15 @@
         }
       ],
       "ending": true,
-      "backgroundId": "liora-art"
+      "backgroundId": "liora-art",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "休んでいる少女の様子を、エレインに聞く。",
+        "en": "Ask Elaine about the resting girl."
+      }
     },
     {
       "id": "c3-visit",
@@ -2155,7 +2365,15 @@
         }
       ],
       "leadDungeonId": "silver-crypt",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "セリスと話す",
+        "en": "Talk to Seris"
+      },
+      "purpose": {
+        "ja": "セリスと合流して、封印の異常を調べ始める。",
+        "en": "Meet Seris and begin investigating the damaged seal."
+      }
     },
     {
       "id": "c3-record",
@@ -2204,10 +2422,25 @@
             "ja": "水路を探す。封印を解く前に、力を逃がせる場所が要る。",
             "en": "I will find a waterway. We need somewhere for that power to drain before opening the seal."
           }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "水門の操作輪が外されてる。工房で歯車と金属板を組んで、代わりを作ろう。",
+            "en": "The sluice handwheel is missing. We can build a replacement from gears and plates in the workshop."
+          }
         }
       ],
       "leadDungeonId": "starless-terrace",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "灰の書庫の記録を、ノエルと照合する。",
+        "en": "Compare the ash archive records with Noelle."
+      }
     },
     {
       "id": "c3-evacuate",
@@ -2258,7 +2491,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "エレインと、療養室の少女たちを避難させる。",
+        "en": "Help Elaine evacuate the girls in the infirmary."
+      }
     },
     {
       "id": "c3-bridge",
@@ -2309,7 +2550,15 @@
           }
         }
       ],
-      "backgroundId": "noelle-art"
+      "backgroundId": "noelle-art",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "リオラと、橋を渡る少女たちの点呼を取る。",
+        "en": "Help Liora account for the girls crossing the bridge."
+      }
     },
     {
       "id": "c3-water",
@@ -2360,7 +2609,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "水門の操作輪を取り付け、根に流れ込む力を逃がす。",
+        "en": "Fit the sluice handwheel and divert power away from the roots."
+      }
     },
     {
       "id": "c3-sword",
@@ -2414,7 +2671,15 @@
         }
       ],
       "leadDungeonId": "pale-throne",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "セリスと話す",
+        "en": "Talk to Seris"
+      },
+      "purpose": {
+        "ja": "封印へ向かう前に、セリスと帰り道を確かめる。",
+        "en": "Check the return route with Seris before approaching the seal."
+      }
     },
     {
       "id": "c3-morning",
@@ -2466,7 +2731,15 @@
         }
       ],
       "ending": true,
-      "backgroundId": "lisette-art"
+      "backgroundId": "lisette-art",
+      "task": {
+        "ja": "セリスと話す",
+        "en": "Talk to Seris"
+      },
+      "purpose": {
+        "ja": "街の封印を守ったあと、セリスの無事を確かめる。",
+        "en": "Check on Seris after securing the town seal."
+      }
     },
     {
       "id": "c4-invitation",
@@ -2511,9 +2784,24 @@
             "ja": "分かった。帰りに寄りたい場所も、話していい？",
             "en": "All right. Can I tell you where I would like to stop on the way home?"
           }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "樹海に入る前に測量器が欲しい。来た道を、確かに残しておきたいんだ。",
+            "en": "I want a surveying compass before we enter the forest. We need a reliable way back."
+          }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "リオラと、契生石を探す準備をする。",
+        "en": "Prepare to search for the ritual stone with Liora."
+      }
     },
     {
       "id": "c4-supplies",
@@ -2562,7 +2850,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "フィオと話す",
+        "en": "Talk to Fio"
+      },
+      "purpose": {
+        "ja": "フィオから、森へ持ち込む包みを受け取る。",
+        "en": "Collect the forest supplies from Fio."
+      }
     },
     {
       "id": "c4-walk",
@@ -2622,7 +2918,15 @@
         }
       ],
       "leadDungeonId": "ritual-stone-grove",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "森の目印を地図に残し、リオラと休憩する。",
+        "en": "Mark the forest landmarks and rest with Liora."
+      }
     },
     {
       "id": "c4-cover",
@@ -2681,7 +2985,15 @@
         }
       ],
       "leadDungeonId": "zakuro-procession",
-      "backgroundId": "encounter-zakuro"
+      "backgroundId": "encounter-zakuro",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "測量器で来た道を確かめ、リオラと身を隠す。",
+        "en": "Check the return route with your compass and take cover with Liora."
+      }
     },
     {
       "id": "c4-retreat",
@@ -2746,7 +3058,15 @@
           }
         }
       ],
-      "backgroundId": "encounter-zakuro"
+      "backgroundId": "encounter-zakuro",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "石探しを中断し、傷ついたリオラと帰る。",
+        "en": "Abandon the stone search and return with the injured Liora."
+      }
     },
     {
       "id": "c4-report",
@@ -2795,7 +3115,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "ザクロの行列が通った場所を、ノエルと記録する。",
+        "en": "Record Zakuro's procession route with Noelle."
+      }
     },
     {
       "id": "c4-home",
@@ -2845,7 +3173,15 @@
         }
       ],
       "ending": true,
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "帰還したリオラと、隣で休む。",
+        "en": "Rest beside Liora after returning home."
+      }
     },
     {
       "id": "c5-request",
@@ -2893,7 +3229,15 @@
         }
       ],
       "leadDungeonId": "guild-blank-request",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "イオネから、帰還便が止まっている事情を聞く。",
+        "en": "Ask Ione why the return service has stopped."
+      }
     },
     {
       "id": "c5-girl",
@@ -2961,7 +3305,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "帰ることを迷っている少女に、イオネと会いに行く。",
+        "en": "Meet the girl who is unsure about returning, together with Ione."
+      }
     },
     {
       "id": "c5-register",
@@ -3012,7 +3364,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "古い名簿の宛先を、イオネと確かめる。",
+        "en": "Check the address in the old register with Ione."
+      }
     },
     {
       "id": "c5-cloth",
@@ -3063,7 +3423,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "フィオと話す",
+        "en": "Talk to Fio"
+      },
+      "purpose": {
+        "ja": "フィオの薬布を届け、次の引継ぎを決める。",
+        "en": "Deliver Fio's medical cloth and arrange the next handover."
+      }
     },
     {
       "id": "c5-bed",
@@ -3112,9 +3480,24 @@
             "ja": "本人に、どっちがいいか聞いてみる。",
             "en": "I will ask which she prefers."
           }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "帰り道で迷わないように、名札を作ってあげましょう。行き先も書いておくの。",
+            "en": "Let us make her a homeward nameplate, with her destination written on it."
+          }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "エレインと、少女の寝る場所を用意する。",
+        "en": "Help Elaine prepare a bed for the girl."
+      }
     },
     {
       "id": "c5-address",
@@ -3208,7 +3591,15 @@
           ]
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "名札を用意して、少女が今夜帰る場所を一緒に決める。",
+        "en": "Prepare a nameplate and help the girl choose where to stay tonight."
+      }
     },
     {
       "id": "c5-finish",
@@ -3260,7 +3651,15 @@
         }
       ],
       "ending": true,
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "新しい宛先を届け、帰還便の再開を見届ける。",
+        "en": "Deliver the new address and see the return service resume."
+      }
     },
     {
       "id": "c6-invite",
@@ -3308,7 +3707,15 @@
         }
       ],
       "leadDungeonId": "night-watch-request",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ネリと話す",
+        "en": "Talk to Neri"
+      },
+      "purpose": {
+        "ja": "夜番の前にネリと食事をし、手伝うことを聞く。",
+        "en": "Share a meal with Neri and ask how to help with the night watch."
+      }
     },
     {
       "id": "c6-lights",
@@ -3357,9 +3764,24 @@
             "ja": "じゃあ、戻ってくるまで持ってるね。",
             "en": "I will hold it until you return."
           }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "中継灯は工房で組み立てよう。蓄光結晶なら、道に火を持ち込まずに済む。",
+            "en": "We can assemble relay lanterns in the workshop. Charged crystals will light the road without a flame."
+          }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "ノエルと灯りの位置を確かめ、中継灯の準備を進める。",
+        "en": "Check the lighting positions with Noelle and prepare the relay lanterns."
+      }
     },
     {
       "id": "c6-table",
@@ -3434,7 +3856,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "フィオと話す",
+        "en": "Talk to Fio"
+      },
+      "purpose": {
+        "ja": "フィオと食事の席を整え、休憩の順番を決める。",
+        "en": "Set the table with Fio and arrange rest breaks."
+      }
     },
     {
       "id": "c6-relay",
@@ -3487,7 +3917,15 @@
         }
       ],
       "leadDungeonId": "closed-homeward-lane",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ネリと話す",
+        "en": "Talk to Neri"
+      },
+      "purpose": {
+        "ja": "中継灯を持ち、ネリと夜番の交代合図を決める。",
+        "en": "Bring the relay lanterns and agree on the handover signal with Neri."
+      }
     },
     {
       "id": "c6-prayer",
@@ -3538,7 +3976,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "祈りを終えるリオラを待ち、一緒に戻る。",
+        "en": "Wait for Liora to finish her prayer and return together."
+      }
     },
     {
       "id": "c6-path",
@@ -3590,7 +4036,15 @@
         }
       ],
       "leadDungeonId": "lantern-return",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ノエルと話す",
+        "en": "Talk to Noelle"
+      },
+      "purpose": {
+        "ja": "帰る少女のために、ノエルと道の灯りを残す。",
+        "en": "Leave lights along the return path with Noelle."
+      }
     },
     {
       "id": "c6-breakfast",
@@ -3683,7 +4137,15 @@
           ]
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ネリと話す",
+        "en": "Talk to Neri"
+      },
+      "purpose": {
+        "ja": "夜番を終えて、ネリたちと朝食を取る。",
+        "en": "Have breakfast with Neri and the others after the watch."
+      }
     },
     {
       "id": "c7-sleeve",
@@ -3731,7 +4193,15 @@
         }
       ],
       "leadDungeonId": "mending-room",
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "ルカと話す",
+        "en": "Talk to Ruka"
+      },
+      "purpose": {
+        "ja": "ルカと傷んだ袖を繕い、儀式の支度を始める。",
+        "en": "Mend your sleeve with Ruka and begin preparing for the ritual."
+      }
     },
     {
       "id": "c7-stone",
@@ -3782,7 +4252,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "リオラと契生石を確かめ、儀式の記録を読む。",
+        "en": "Examine the ritual stone and read the records with Liora."
+      }
     },
     {
       "id": "c7-names",
@@ -3833,7 +4311,15 @@
           }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "イオネと話す",
+        "en": "Talk to Ione"
+      },
+      "purpose": {
+        "ja": "イオネと、生まれた少女の世話の分担を相談する。",
+        "en": "Discuss who will care for the new girl with Ione."
+      }
     },
     {
       "id": "c7-care",
@@ -3892,9 +4378,24 @@
             "ja": "……うん。頼める人にも、先に聞いておくね。",
             "en": "...Yes. We will ask those people first too."
           }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "温室の調整核は、工房で作りましょう。誰かが止めたいと言ったら、止められるように。",
+            "en": "Let us make the greenhouse regulator in the workshop, so the ritual can stop when someone asks it to."
+          }
         }
       ],
-      "backgroundId": "cathedral"
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "エレインと話す",
+        "en": "Talk to Elaine"
+      },
+      "purpose": {
+        "ja": "エレインと、儀式のあとに必要な世話を確認する。",
+        "en": "Ask Elaine what care will be needed after the ritual."
+      }
     },
     {
       "id": "c7-door",
@@ -3946,7 +4447,15 @@
           }
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "荊の魔女と話す",
+        "en": "Talk to the thorn witch"
+      },
+      "purpose": {
+        "ja": "調整核を持って荊の魔女を訪ね、温室で儀式の支度をする。",
+        "en": "Bring the regulator to the thorn witch and prepare the greenhouse for the ritual."
+      }
     },
     {
       "id": "c7-stop",
@@ -4008,7 +4517,15 @@
         }
       ],
       "leadDungeonId": "two-signatures",
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "リオラと、途中でやめるための合図を実際に試す。",
+        "en": "Practice the stop signal with Liora."
+      }
     },
     {
       "id": "c7-together",
@@ -4111,7 +4628,15 @@
           ]
         }
       ],
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "リオラと話す",
+        "en": "Talk to Liora"
+      },
+      "purpose": {
+        "ja": "支度を終えたリオラと、これからの暮らしを話す。",
+        "en": "Talk about your future together with Liora after the preparations."
+      }
     },
     {
       "id": "home-liora",

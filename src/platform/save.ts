@@ -1,3 +1,4 @@
+import { validIndustry } from '../domain/industry';
 import { validWorldStory, validateWorldStorySave } from '../domain/world-story';
 import { validFieldState } from '../domain/field-research';
 import { characterSkills } from '../domain/character-skills';
@@ -98,6 +99,7 @@ function validEvent(value: unknown): boolean {
 
 /** Reject unreadable records; callers must never interpret corruption as a new game. */
 export function assertValidSave(value: unknown): asserts value is GameSave {
+  if (record(value) && value.industry !== undefined && !validIndustry(value.industry)) throw new Error('工房の記録を読み込めません。');
   if (record(value) && value.worldStory !== undefined && !validWorldStory(value.worldStory)) throw new Error('旅の記録を読み込めません。');
   if (record(value) && value.researchSkillIds !== undefined && !stringArray(value.researchSkillIds)) throw new Error('研究技能の記録が不正です。');
   if (!record(value) || value.schemaVersion !== 1) throw new Error('未対応または破損した保存形式です。セーブは保持されています。');
@@ -333,7 +335,8 @@ export function isLegacySaveVersion(value: Pick<GameSave, 'schemaVersion' | 'app
 export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return value.schemaVersion === RELEASE.schemaVersion && (
     (['1.10.0', '1.11.0', '1.12.0', '1.13.0'].includes(value.appVersion) && value.contentVersion === 'v1.10-r1' && value.rulesVersion === '2') ||
-    (value.appVersion === '1.20.0' && value.contentVersion === 'v1.20-r1' && value.rulesVersion === '3')
+    (value.appVersion === '1.20.0' && value.contentVersion === 'v1.20-r1' && value.rulesVersion === '3') ||
+    (value.appVersion === '1.21.0' && value.contentVersion === 'v1.21-r1' && value.rulesVersion === '3')
   );
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {

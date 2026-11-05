@@ -7,8 +7,6 @@ export function initialNovelProgress(content: Content, opening: boolean): NovelP
   const scene = opening ? content.novels?.find(scene => scene.trigger.kind === 'opening') : undefined;
   return { seen: [], ...(scene ? { active: { sceneId: scene.id, page: 0 } } : {}) };
 }
-export function enqueueMilestone(save: GameSave, dungeonId: string, previouslyCleared: boolean, content: Content): void {
-  if (!save.novels || previouslyCleared || save.worldStory) return;
-  const scene = content.novels?.find(scene => scene.trigger.kind === 'dungeon-clear' && scene.trigger.dungeonId === dungeonId && !save.novels!.seen.includes(scene.id));
-  if (scene) save.novels.active = { sceneId: scene.id, page: 0 };
-}
+/** Retained for legacy save upgrades. Dungeon milestones now open on the map;
+ * completedDungeonIds still unlock every scene in the manual archive. */
+export function enqueueMilestone(_save: GameSave, _dungeonId: string, _previouslyCleared: boolean, _content: Content): void {}

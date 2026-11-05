@@ -11,7 +11,7 @@ async function checkObjective(page: import('@playwright/test').Page, text: strin
     await panel.getByRole('button', { name: /^(閉じる|Close)$/ }).click();
     await expect(panel).toHaveCount(0);
 }
-async function start(page: import('@playwright/test').Page, name = 'ミオ', afterIntroduction = true) { await page.goto('/#dungeons'); await enterGame(page); await openObjective(page); await page.getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0);
+async function start(page: import('@playwright/test').Page, name = 'ミオ', afterIntroduction = true) { await page.goto('/#dungeons'); await enterGame(page); await openObjective(page); await page.getByRole('dialog', { name: '旅の大目標', exact: true }).getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0);
     // Existing regressions begin at the first job; the introduction has its own real-UI traversal below.
     if (afterIntroduction) {
         await page.evaluate(async () => {
@@ -48,7 +48,7 @@ test('quiet days personalize and resume conversations, then rotate ordinary visi
     await page.setViewportSize({ width: 390, height: 844 });
     await start(page);
     await page.clock.install();
-    await checkObjective(page, '街の日常');
+    await checkObjective(page, '街を知り、最初の巡回を終える');
     const dock = await page.locator('.world-objective-dock__trigger').boundingBox();
     expect(dock!.width).toBeGreaterThanOrEqual(44);
     expect(dock!.x + dock!.width).toBeLessThanOrEqual(390);
@@ -135,14 +135,14 @@ test('a real story trigger raises an alert, persists on the home screen, and ret
     await page.evaluate(async () => { const { content } = await import('/src/content/index.ts'); const { loadSave, persistSave } = await import('/src/platform/save.ts'); const s = (await loadSave())!, r = s.revision; s.completedDungeonIds = content.chapters![0].dungeonIds; s.worldStory!.completed = content.worldStory!.nodes.filter(n => n.chapter === 1 && !n.optional).map(n => n.id); s.revision++; await persistSave(s, r); });
     await page.reload();
     await enterGame(page);
-    await checkObjective(page, '街の日常');
+    await checkObjective(page, '温室の研究を手伝う');
     await expect(page.locator('.world-objective-dock--home')).not.toHaveClass(/is-incident/);
 });
 
 test('language settings translate actor hints and the personalized conversation',async({page})=>{
  await page.setViewportSize({width:320,height:740});await start(page,'Mio');
  await page.goto('/#settings');await page.getByRole('button',{name:'English',exact:true}).click();await page.goto('/#dungeons');
- await checkObjective(page, 'Everyday Life');
+ await checkObjective(page, 'Talk to Liora');
  expect(await page.locator('.world-map__hint').innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
  await page.clock.install();await page.locator('.world-map__travel').click();await page.clock.fastForward(46000);await page.locator('.world-map__travel').click();
  await expect(page.locator('.world-conversation__line')).toContainText('Mio');
@@ -173,7 +173,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     const modal = page.locator('.world-conversation');
     await expect(modal.locator('.world-conversation__line')).toContainText('どうか、お命じください');
     await finish(page);
-    await checkObjective(page, 'リオラの様子を見たい');
+    await checkObjective(page, '寝込んだリオラ');
     await page.getByRole('button', { name: '声をかける', exact: true }).click();
     await expect(modal).toContainText('寝台から起き上がれなかった');
     for (let i = 0; i < 5; i++) await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
@@ -185,7 +185,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     const s = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
     expect(s.worldStory!.completed).toContain('c1-held');
     expect(s.worldStory!.completed).not.toContain('c1-return');
-    await checkObjective(page, '朝、寝台を訪ねる');
+    await checkObjective(page, '翌朝のリオラ');
 });
 
 test('chapter one begins with the tower, offerings, a birth, and the garden keeper’s private night', async ({ page }, info) => {
@@ -234,7 +234,7 @@ test('chapter one begins with the tower, offerings, a birth, and the garden keep
     expect(night).toContain('別の庭園の管理者');
     expect(night).toContain('かわいそうなひと');
     expect(night).toContain('自分が誰よりも愛されている');
-    await checkObjective(page, '初仕事の話をしよう');
+    await checkObjective(page, 'リオラと話す');
     const save = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
     expect(save.gold).toBe(100); expect(save.stones).toBe(0);
     expect(save.worldStory!.completed).not.toContain('c1-job');

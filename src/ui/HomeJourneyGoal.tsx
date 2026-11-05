@@ -1,3 +1,5 @@
+import { currentWorldObjective } from '../domain/world-objective';
+import { getLanguage } from '../locales/i18n';
 import { ArrowRight, Gem, Mountain } from 'lucide-react';
 import { content as currentContent } from '../content';
 import { homeJourneyTarget } from '../domain/home-journey';
@@ -11,10 +13,13 @@ export interface HomeJourneyGoalProps {
   content?: Content;
   busy?: boolean;
   onNavigate: (dungeonId: string) => void;
+  onStoryNavigate?: (locationId?: string, recipeId?: string) => void;
 }
 
 /** One short journey objective. Equipment progress belongs to BuildGoalSummary. */
-export function HomeJourneyGoal({save,content=currentContent,busy=false,onNavigate}:HomeJourneyGoalProps) {
+export function HomeJourneyGoal({save,content=currentContent,busy=false,onNavigate,onStoryNavigate}:HomeJourneyGoalProps) {
+  const objective = currentWorldObjective(save,content);
+  if (save.worldStory && onStoryNavigate) return <section className="home-journey-goal" aria-label={tr('次の旅の目標')} data-testid="home-journey-goal"><div className="home-journey-goal__copy"><span>{objective.goal[getLanguage()]}</span><h2>{objective.action[getLanguage()]}</h2><p>{objective.reason[getLanguage()]}</p></div><Button variant="secondary" disabled={busy||Boolean(save.battle)} aria-label={tr('次の目的地へ')} onClick={() => onStoryNavigate(objective.locationId,objective.recipeId)}>{tr('向かう')}<ArrowRight size={16}/></Button></section>;
   const target=homeJourneyTarget(content,save);
   if(!target)return null;
   const chapter=target.chapter;

@@ -1,3 +1,4 @@
+import { currentWorldObjective } from '../domain/world-objective';
 import { useEffect, useRef } from 'react';
 import { BellRing, ChevronRight, Heart } from 'lucide-react';
 import type { Content, GameSave, GameCommand } from '../domain/types';
@@ -15,7 +16,8 @@ export function WorldIncidentBanner({ save, content, onOpen }: {
     if (!save.worldStory || !content.worldStory)
         return null;
     const incident = activeWorldIncident(save, content.worldStory), text = (v: Parameters<typeof storyText>[0]) => storyText(v, save.worldStory!.profile, getLanguage());
-    return <WorldObjectiveDock location="home" incident={Boolean(incident)}>{close => <Button variant="secondary" className={`home-world-story${incident ? ' is-incident' : ''}`} onClick={() => { close(); onOpen(); }}><span>{incident ? <BellRing size={20}/> : <Heart size={20}/>}</span><span><small>{tr(incident ? '事件発生' : '街の日常')}</small><strong>{incident ? text(incident.title) : tr('{0}、今日は誰に会いに行く？').replace('{0}', save.worldStory!.profile.name)}</strong></span><ChevronRight size={16}/></Button>}</WorldObjectiveDock>;
+    const objective = currentWorldObjective(save, content);
+    return <WorldObjectiveDock location="home" incident={Boolean(incident)}>{close => <Button variant="secondary" className={`home-world-story${incident ? ' is-incident' : ''}`} onClick={() => { close(); onOpen(); }}><span>{incident ? <BellRing size={20}/> : <Heart size={20}/>}</span><span><small>{incident ? tr('事件発生') + ' · ' + text(incident.title) : text(objective.goal)}</small><strong>{text(objective.action)}</strong><p>{text(objective.reason)}</p></span><ChevronRight size={16}/></Button>}</WorldObjectiveDock>;
 }
 export function WorldIncidentNotice({ save, content, busy, command, onOpen }: {
     save: GameSave;
