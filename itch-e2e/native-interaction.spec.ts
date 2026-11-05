@@ -32,11 +32,11 @@ async function preparation(page: Page) {
         transaction.onerror = () => reject(transaction.error);
       };
     });
-    location.hash = 'dungeons';
+    location.hash = 'dungeons/list';
   }, { save, boot: bootMetadata(save), database: SAVE_DATABASE, store: SAVE_STORE });
   await page.reload(); await begin();
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await game.locator('.app-shell').evaluate(() => { location.hash = 'dungeons'; });
+  await game.locator('.app-shell').evaluate(() => { location.hash = 'dungeons/list'; });
   const card = game.locator('.dungeon-card').filter({ has: game.getByRole('heading', { name: '虚ろの門', exact: true }) });
   await card.getByRole('button', { name: '探索の準備', exact: true }).click();
   const modal = game.getByRole('dialog', { name: '虚ろの門', exact: true });

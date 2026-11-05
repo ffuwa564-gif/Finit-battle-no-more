@@ -19,7 +19,7 @@ test('Zakuro chapter opens after the old campaign and renders the procession, po
     save.revision++; await persistSave(save, revision);
     localStorage.setItem('stillveil-fairy-tutorial-v1', JSON.stringify({ version: 2, enrolled: false, dismissed: true, seen: [] }));
   });
-  await page.goto('/#dungeons'); await page.reload(); await enterGame(page);
+  await page.goto('/#dungeons/list'); await page.reload(); await enterGame(page);
   await page.getByRole('button', { name: '第4章 柘榴の樹海', exact: true }).click();
   await expect(page.getByRole('heading', { name: '柘榴の樹海', exact: true })).toBeVisible();
   const procession = page.locator('.dungeon-card').filter({ hasText: '怠惰姫の渡御' });

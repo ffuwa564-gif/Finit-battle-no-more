@@ -41,7 +41,7 @@ test('GLSL renders all cues, leaves progression unchanged, and survives context 
   });
   expect(pixels.every(result => result.error === 0 && result.visible)).toBe(true);
 
-  await page.goto('/#dungeons');
+  await page.goto('/#dungeons/list');
   await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();

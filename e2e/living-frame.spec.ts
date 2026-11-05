@@ -3,7 +3,7 @@ import { enterGame } from './boot';
 
 const saved = (page: Page) => page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
 async function prepare(page: Page, kind?: 'heal' | 'strike', reduced = false) {
-  await page.goto('/#dungeons'); await enterGame(page);
+  await page.goto('/#dungeons/list'); await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める', exact: true }).click();
   await expect(page.getByRole('button', { name: 'ラウンドを進める', exact: true })).toBeEnabled();

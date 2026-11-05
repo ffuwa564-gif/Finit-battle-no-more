@@ -1,3 +1,6 @@
+import { validFieldState } from '../domain/field-research';
+import { characterSkills } from '../domain/character-skills';
+import { validBarrierReturnState } from '../domain/barrier-return';
 import { RELEASE } from '../content/version';
 import { validBattleReview, validExpeditionTracking } from '../domain/expedition-review';
 import { validateCommandOrder } from '../domain/command-doctrine';
@@ -41,12 +44,16 @@ function validExpeditionHistory(value: unknown): boolean {
 }
 function validGachaResult(value: unknown): value is GachaResult { return record(value) && nonempty(value.characterId) && typeof value.duplicate === 'boolean' && count(value.refund) && value.refund <= 3 && (value.currency === undefined || ['stones', 'astralStones'].includes(value.currency as string)); }
 function validUnit(value: unknown): boolean {
+  if(record(value)&&value.jamDampening!==undefined&&(!record(value.jamDampening)||!count(value.jamDampening.percent)||value.jamDampening.percent<1||value.jamDampening.percent>75||!count(value.jamDampening.until)||!nonempty(value.jamDampening.sourceId)))return false;
   if (!record(value) || !nonempty(value.uid) || !nonempty(value.characterId) || !['party', 'enemy'].includes(value.side as string) || typeof value.boss !== 'boolean') return false;
   for (const key of ['hp', 'maxHp', 'attack', 'defense', 'speed', 'tie']) if (!count(value[key])) return false;
   if (Number(value.maxHp) < 1 || Number(value.hp) > Number(value.maxHp) || !record(value.cooldowns) || Object.values(value.cooldowns).some(item => !count(item))) return false;
   if (value.ailments !== undefined && (!record(value.ailments) || Object.entries(value.ailments).some(([id,state]) => !(ailments as readonly string[]).includes(id) || !record(state) || !count(state.turns) || state.turns < 1 || state.turns > 2 || !nonempty(state.sourceId)))) return false;
   if (value.ultimateCharge !== undefined && (value.side !== 'party' || !count(value.ultimateCharge) || value.ultimateCharge > 100)) return false;
   if (value.ultimateQueued !== undefined && (typeof value.ultimateQueued !== 'boolean' || value.side !== 'party' || value.ultimateQueued && value.ultimateCharge !== 100)) return false;
+  if(value.field!==undefined&&!validFieldState(value.field))return false;
+  if(value.barrierReturn!==undefined&&!validBarrierReturnState(value.barrierReturn))return false;
+  if(value.mendThread!==undefined&&(!record(value.mendThread)||Object.keys(value.mendThread).sort().join(',')!=='amount,until'||!count(value.mendThread.amount)||value.mendThread.amount<1||value.mendThread.amount>Number(value.maxHp)||!count(value.mendThread.until)))return false;
   if (value.statusWardUntil !== undefined && !count(value.statusWardUntil)) return false;
   if (value.bossWindup !== undefined && (!record(value.bossWindup) || value.side !== 'enemy' || !value.boss || !count(value.bossWindup.round) || value.bossWindup.round < 1 || !count(value.bossWindup.damage))) return false;
   if (value.bossRecoveryUntil !== undefined && (value.side !== 'enemy' || !value.boss || !count(value.bossRecoveryUntil))) return false;
@@ -62,8 +69,12 @@ function validUnit(value: unknown): boolean {
 }
 function validUnits(value: unknown): boolean { return Array.isArray(value) && value.every(validUnit) && new Set(value.map(unit => unit.uid)).size === value.length; }
 function validEvent(value: unknown): boolean {
-  if (record(value) && ['absorbed', 'selfCost'].some(key => value[key] !== undefined && !count(value[key]))) return false;
+  if(record(value)&&value.commandAction!==undefined&&(value.commandAction!=='resource-fallback'||value.kind!=='buff'||!nonempty(value.actorId)||value.actionSelection||value.ultimate||value.bossStrike))return false;
+  if(record(value)&&value.jamDampenedPercent!==undefined&&(!count(value.jamDampenedPercent)||value.jamDampenedPercent<1||value.jamDampenedPercent>75||value.kind!=='attack'||value.skillId!==undefined||value.ultimate||value.bossStrike||value.bitAction))return false;
+  if (record(value) && ['absorbed', 'selfCost', 'resourceAmount', 'returnDamage'].some(key => value[key] !== undefined && !count(value[key]))) return false;
   if (record(value) && value.coordinationAction !== undefined && (!['linked', 'isolated', 'held', 'interrupted'].includes(value.coordinationAction as string) || value.coordinationAction === 'isolated' && value.kind !== 'attack')) return false;
+  if(record(value)&&value.barrierReturnAction!==undefined&&(!['capture','consume'].includes(String(value.barrierReturnAction))||value.kind!=='buff'||!count(value.resourceAmount)))return false;
+  if(record(value)&&value.commandRedirected!==undefined&&typeof value.commandRedirected!=='boolean')return false;
   if (record(value) && value.actionSelection !== undefined && typeof value.actionSelection !== 'boolean') return false;
   if (!record(value) || !nonempty(value.id) || typeof value.text !== 'string' || !['attack', 'area', 'heal', 'guard', 'buff', 'debuff', 'drop', 'dialogue', 'wave', 'defeat'].includes(value.kind as string)) return false;
   for (const key of ['actorId', 'skillId', 'materialId', 'ultimateName']) if (value[key] !== undefined && !nonempty(value[key])) return false;
@@ -86,6 +97,7 @@ function validEvent(value: unknown): boolean {
 
 /** Reject unreadable records; callers must never interpret corruption as a new game. */
 export function assertValidSave(value: unknown): asserts value is GameSave {
+  if (record(value) && value.researchSkillIds !== undefined && !stringArray(value.researchSkillIds)) throw new Error('研究技能の記録が不正です。');
   if (!record(value) || value.schemaVersion !== 1) throw new Error('未対応または破損した保存形式です。セーブは保持されています。');
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
   for (const key of ['revision', 'gold', 'potions', 'stones', 'drawCount', 'seed']) if (!count(value[key])) throw new Error('保存データの所持数または状態が不正です。');
@@ -128,7 +140,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (value.battle !== null) {
     const battle = value.battle;
     if (record(battle) && (battle.tracking !== undefined && !validExpeditionTracking(battle.tracking) || battle.failureKind !== undefined && !['defeat', 'timeout', 'retreat'].includes(String(battle.failureKind)))) throw new Error('探索の集計状態が不正です。');
-    if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || battle.rulesVersion !== undefined && !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
     if (battle.scoutState !== undefined) {
       const s = battle.scoutState;
       if (!record(s) || ['ioneLeaderTriggered','neriLeaderTriggered','fioLeaderTriggered'].some(k => s[k] !== undefined && typeof s[k] !== 'boolean') || s.rukaHeals !== undefined && (!count(s.rukaHeals) || s.rukaHeals > 3) || s.rukaHealRound !== undefined && !count(s.rukaHealRound)) throw new Error('仲間の固有技能の記録が不正です。');
@@ -180,13 +192,18 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
       if (!scene || active.page >= scene.pages.length || (scene.trigger.kind !== 'opening' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
     }
   }
+  if (save.researchSkillIds && (!Array.isArray(save.researchSkillIds) || new Set(save.researchSkillIds).size !== save.researchSkillIds.length || save.researchSkillIds.some(id => !save.ownedIds.includes(id) || !content.fieldSkills?.[id]))) throw new Error('研究技能の記録が不正です。');
   const battle = save.battle;
   if (!battle) return;
+  for (const u of [...battle.units,...battle.initialUnits,...battle.events.flatMap(e=>e.unitsAfter??[])]) if (u.field && !validFieldState(u.field)) throw new Error('研究技能の状態が不正です。');
+  if (battle.researchSkillIds && (!Array.isArray(battle.researchSkillIds) || battle.researchSkillIds.some(id=>!save.ownedIds.includes(id)||!content.fieldSkills?.[id]))) throw new Error('研究技能の記録が不正です。');
+  if (battle.fieldSupplies && (!record(battle.fieldSupplies) || Object.values(battle.fieldSupplies).some(q=>!q||!Number.isSafeInteger(q.amount)||q.amount<0||q.amount>60||!Number.isSafeInteger(q.until)||q.until<0||q.usedRound!==undefined&&!Number.isSafeInteger(q.usedRound)))) throw new Error('研究技能の状態が不正です。');
+  if (battle.fieldScenario && (!record(battle.fieldScenario) || ['failed','complete'].some(k=>k in battle.fieldScenario! && typeof (battle.fieldScenario as unknown as Record<string,unknown>)[k] !== 'boolean') || !content.dungeons.some(d=>d.id===battle.dungeonId&&d.fieldLesson===battle.fieldScenario!.kind)||battle.fieldScenario.rounds!==12||battle.fieldScenario.spent!==undefined&&(!Number.isSafeInteger(battle.fieldScenario.spent)||battle.fieldScenario.spent<0))) throw new Error('研究試練の状態が不正です。');
   assertReviewReferences(battle.tracking?.review);
   if (battle.commandOrder !== undefined) validateCommandOrder(battle.commandOrder, battle, content, { stored: true });
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
-  if (!dungeon || battle.wave >= dungeon.waves.length || battle.contentVersion !== content.contentVersion || battle.rulesVersion !== content.rulesVersion || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
+  if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');
   if (battle.roughGemFinds?.some(raw => !save.memoryGems?.rough?.some(item => item.id === raw.id && JSON.stringify(item) === JSON.stringify(raw)))) throw new Error('獲得した原石が所持情報にありません。');
   if (battle.gemFinds?.some(gem => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)))) throw new Error('獲得した記憶石が所持情報にありません。');
@@ -196,6 +213,13 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (snapshots.some(units => units.some(unit => unit.whiteFlower && (unit.characterId !== battle.partyIds[0] || unit.whiteFlower.until > battle.round + 2)))) throw new Error('白花の種の対象か期限が正しくありません。');
   if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id) && id !== 'memory:slot' && !gemDefinitionForSkill(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
+  if(snapshots.some(units=>units.some(unit=>{
+    const state=unit.barrierReturn;if(!state)return false;
+    const source=units.find(source=>source.uid===state.sourceId&&source.side===unit.side);
+    const owner=source&&content.characters.find(character=>character.id===source.characterId);
+    const contract=owner&&characterSkills(owner,content).find(skill=>skill.id===state.skillId)?.barrierReturn;
+    return !contract||contract.conversionPercent!==state.conversionPercent||contract.capacityPercent!==state.capacityPercent||contract.payoutPercent!==state.payoutPercent;
+  })))throw new Error('返礼の印が付与者の技能と一致しません。');
   if (snapshots.some(units => units.some(unit => unit.scoutMark && !units.some(source => source.uid === unit.scoutMark!.sourceId && source.side === 'party')))) throw new Error('道標の付与者が探索に存在しません。');
   if (snapshots.some(units => units.some(unit => Object.values(unit.ailments ?? {}).some(state => !units.some(source => source.uid === state.sourceId))))) throw new Error('状態異常の付与者が戦闘データにありません。');
   if (battle.events.some(event => event.skillId && !skills.has(event.skillId) && !gemDefinitionForSkill(event.skillId))) throw new Error('保存済み演出のスキル定義がありません。');
@@ -304,7 +328,7 @@ export function isLegacySaveVersion(value: Pick<GameSave, 'schemaVersion' | 'app
 }
 /** Presentation-only releases preserve 1.10–1.12 combat and farming snapshots. */
 export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
-  return value.schemaVersion === RELEASE.schemaVersion && ['1.10.0', '1.11.0', '1.12.0'].includes(value.appVersion) && value.contentVersion === RELEASE.contentVersion && value.rulesVersion === RELEASE.rulesVersion;
+  return value.schemaVersion === RELEASE.schemaVersion && ['1.10.0', '1.11.0', '1.12.0', '1.13.0'].includes(value.appVersion) && value.contentVersion === 'v1.10-r1' && value.rulesVersion === '2';
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return isLegacySaveVersion(value) || isPortraitHotfixSaveVersion(value);

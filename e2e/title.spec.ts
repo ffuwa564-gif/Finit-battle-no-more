@@ -18,7 +18,7 @@ test('title starts music with a keyboard gesture and preserves the requested pag
 });
 
 test('reloading a battle pauses replay behind the title until tapped', async ({ page }) => {
-  await page.goto('/#dungeons');
+  await page.goto('/#dungeons/list');
   await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();

@@ -56,7 +56,7 @@ async function securedChest(page: Page, claimInFixture = false) {
     return {id:stone.id,roll:stone.roll!,pilot:save.partyIds[0],dungeonId:dungeon.id,profile:dungeon.gemLoot!};
   },claimInFixture);
   if(claimInFixture)await polishFixtureStone(page,result.id);
-  await page.goto(claimInFixture ? '/#bag' : '/#dungeons'); await page.reload(); await enterGame(page);
+  await page.goto(claimInFixture ? '/#bag' : '/#dungeons/list'); await page.reload(); await enterGame(page);
   return result;
 }
 

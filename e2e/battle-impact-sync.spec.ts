@@ -34,7 +34,7 @@ async function prepare(page: Page, mode: 'attack' | 'heal' | 'ultimate' | 'letha
   await page.reload(); await page.locator('.title-screen__start').waitFor();
   // CSS animations use real time even while Playwright's JavaScript clock is paused.
   await page.addStyleTag({ content: '.combat-number { animation-play-state: paused !important; }' });
-  await page.clock.install(); await page.clock.pauseAt(new Date());
+  const clockStart = new Date(); await page.clock.install({time:clockStart}); await page.clock.pauseAt(new Date(clockStart.getTime()+1000));
   await page.locator('.title-screen__start').click(); await page.clock.runFor(350);
   await page.locator('.battle-layout').waitFor(); await page.clock.runFor(20);
   return fixture;

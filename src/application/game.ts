@@ -1,3 +1,4 @@
+import { combatContent } from '../domain/combat-compatibility';
 import { roughMemoryGem, startGemPolish, tapGemPolish, ROUGH_NAMES } from '../domain/gem-polishing';
 import { scoutRecruitments } from '../content/scout-maidens';
 import { createExpeditionTracking, finishTracking, trackEventBatch, trackPotion } from '../domain/expedition-review';
@@ -91,8 +92,9 @@ export function createInitialSave(content: Content, seed = 0x584a39b1, options: 
 }
 
 /** All accepted mutations produce one complete save for an atomic persistence transaction. */
-export function applyCommand(previous: GameSave, command: GameCommand, content: Content, context: { now?: number } = {}): GameSave {
-  if (previous.schemaVersion !== content.schemaVersion || previous.appVersion !== content.appVersion || previous.contentVersion !== content.contentVersion || previous.rulesVersion !== content.rulesVersion) fail('保存データに対応するリリースで再開してください。');
+export function applyCommand(previous: GameSave, command: GameCommand, publicContent: Content, context: { now?: number } = {}): GameSave {
+  if (previous.schemaVersion !== publicContent.schemaVersion || previous.appVersion !== publicContent.appVersion || previous.contentVersion !== publicContent.contentVersion || previous.rulesVersion !== publicContent.rulesVersion) fail('保存データに対応するリリースで再開してください。');
+  const content = combatContent(previous.battle, publicContent);
   const save = structuredClone(previous);
   if (save.novels?.active && !['novelNext', 'novelBack', 'novelFinish', 'settings'].includes(command.type)) fail('物語を閉じてから操作してください。');
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
@@ -124,6 +126,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       log(save, '所持品でビルドを編成しました。');
       break;
     }
+    case 'researchSkill': { town(save); if (!save.ownedIds.includes(command.characterId) || !publicContent.fieldSkills?.[command.characterId] || typeof command.enabled !== 'boolean') fail('研究技能の設定が正しくありません。'); save.researchSkillIds = [...new Set([...(save.researchSkillIds ?? []).filter(id => id !== command.characterId), ...(command.enabled ? [command.characterId] : [])])]; break; }
     case 'startGemPolish': {
       town(save);
       startGemPolish(save.memoryGems ??= emptyGemInventory(), command.rawId, context.now ?? Date.now(), save.seed ^ save.revision);
@@ -245,6 +248,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       save.seed = next.seed;
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
       save.battle.tracking = createExpeditionTracking(context.now);
+      save.battle.researchSkillIds = [...(save.researchSkillIds ?? [])];
       syncMemoryGems(save);
       log(save, `${dungeon.name}へ出発しました。`);
       break;

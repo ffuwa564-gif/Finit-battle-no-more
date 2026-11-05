@@ -1,9 +1,11 @@
+import { combatContent } from '../domain/combat-compatibility';
+import { characterSkills } from '../domain/character-skills';
 import { gemSkill } from '../domain/memory-gems';
 import { createGamePortal } from './GamePortal';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Heart, HeartPulse, Shield, ShieldCheck, Sparkles, Swords, Sword, Crosshair, WandSparkles, X, RotateCcw, Eye, Hand, MoreHorizontal, CircleHelp } from 'lucide-react';
 import { Button, CharacterPortrait } from './index';
-import { characterById, content } from '../content';
+import { characterById, content as publicContent } from '../content';
 import { commandUnits, orderTargets, partyOrderOptions, type OrderOption } from '../domain/party-orders';
 import type { Battle, BattleEvent, PartyOrder, Unit } from '../domain/types';
 import type { CompanionSignal } from '../domain/companion-behavior';
@@ -25,6 +27,7 @@ const orderId = (order?: PartyOrder) => order?.kind === 'skill' ? 'skill:' + ord
 
 /** Pointer capture keeps touch/pen/mouse on one continuous hold–drag–release path. */
 export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Unit; battle: Battle; targetId?: string; onOrder: (order: PartyOrder | null) => void }) {
+  const content = combatContent(battle, publicContent);
   const root = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const gesture = useRef<{ id: number; x: number; y: number; held: boolean } | undefined>(undefined);
@@ -96,7 +99,10 @@ export function PartyCommandDial({ unit, battle, targetId, onOrder }: { unit: Un
   const queued = options.find(o => o.id === orderId(effectiveOrder));
   const selected = options.find(o => o.id === hover);
   const visibleBattle = { ...battle, focusTargetId: targetId ?? battle.focusTargetId, units: commandUnits(battle) };
-  const targets = selected && selected.template !== 'auto' ? selected.order?.kind === 'guard' ? [unit] : selected.id === 'ultimate' && ['heal', 'barrier', 'rally'].includes(ultimateFor(characterById(unit.characterId)).template) ? visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0) : orderTargets(unit, visibleBattle, selected.template, selected.order?.kind === 'skill' ? selected.order.skillId : undefined) : [];
+  const selectedSkillId = selected?.order?.kind === 'skill' ? selected.order.skillId : undefined;
+  const memory = battle.memoryGems?.[unit.characterId];
+  const selectedSkill = [...characterSkills(content.characters.find(c=>c.id===unit.characterId)!, content, battle), ...(memory ? [gemSkill(memory)] : [])].find(skill => skill.id === selectedSkillId);
+  const targets = selected && selected.template !== 'auto' ? selected.order?.kind === 'guard' ? [unit] : selected.id === 'ultimate' && ['heal', 'barrier', 'rally'].includes(ultimateFor(characterById(unit.characterId)).template) ? visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0) : orderTargets(unit, visibleBattle, selected.template, selectedSkillId, selectedSkill) : [];
   const targetLabel = targets.length > 1 ? targets[0].side === 'party' ? targets.length === visibleBattle.units.filter(u => u.side === 'party' && u.hp > 0).length ? '味方全体' : `味方${targets.length}人` : '敵全体' : targets[0] ? characterById(targets[0].characterId).name : '';
   const targetNumber = content.dungeons.find(d => d.id === battle.dungeonId)?.coordination && targets.length === 1 && targets[0].side === 'enemy' ? '#' + (battle.units.filter(candidate => candidate.side === 'enemy').findIndex(candidate => candidate.uid === targets[0].uid) + 1) : '';
   return <div ref={root} className={`party-pilot${anchor ? ' is-commanding' : ''}`} data-pilot onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={close} onLostPointerCapture={() => { if (gesture.current) close(); }} onContextMenu={e => e.preventDefault()} onDragStart={e => e.preventDefault()} onKeyDownCapture={e => { if (e.key === 'Enter' || e.key === ' ') suppressClick.current = false; }}>
@@ -141,9 +147,10 @@ export function CompanionChoice({ unit, battle, index, reducedMotion, hidden, si
   }, [upcoming?.id, hidden, reducedMotion, index, unit.hp <= 0]);
   if ((!upcoming && !signal) || unit.hp <= 0 || hidden) return null;
   const stage = signal ? 'reading' : cue?.id === upcoming?.id ? cue!.stage : 'waiting';
+  const content = combatContent(battle, publicContent);
   const memory = battle.memoryGems?.[unit.characterId];
   const memorySkill = memory ? gemSkill(memory) : undefined;
-  const skill = content.skills.find(s => s.id === upcoming?.skillId) ?? (memorySkill?.id === upcoming?.skillId ? memorySkill : undefined);
+  const skill = characterSkills(content.characters.find(c=>c.id===unit.characterId)!, content, battle).find(s => s.id === upcoming?.skillId) ?? (memorySkill?.id === upcoming?.skillId ? memorySkill : undefined);
   const label = signal?.label ?? (upcoming!.ultimate ? ultimateLabel(upcoming!, unit) : skill?.name ?? (upcoming!.kind === 'guard' ? '身を守る' : '通常攻撃'));
   const template = upcoming?.ultimate ? 'ultimate' : skill?.template ?? (upcoming?.kind === 'guard' ? 'guard' : 'attack');
   const target = upcoming ? revealedTargets(upcoming.targetIds ?? [], battle) : '';

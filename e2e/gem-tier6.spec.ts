@@ -52,7 +52,7 @@ test('secures an eligible Tier 6 chest and preserves its tier through equipment,
     save.revision=revision+1; await persistSave(save,revision);
     return {id:stone.id,roll:stone.roll!,pilot:save.partyIds[0],dungeonId:dungeon.id,profile:dungeon.gemLoot!};
   });
-  await page.goto('/#dungeons'); await page.reload(); await enterGame(page);
+  await page.goto('/#dungeons/list'); await page.reload(); await enterGame(page);
   await expect(page.locator('.memory-gem-summary')).toContainText('確保した原石');
   await expect(page.locator('.memory-gem-summary .memory-gem-tier')).toHaveCount(0);
   await page.locator('[data-guide="claim"]').click();

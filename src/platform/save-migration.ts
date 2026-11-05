@@ -12,9 +12,10 @@ export function migrateSaveTo110(value: GameSave, content: Content): GameSave {
   const current = value.schemaVersion === content.schemaVersion && value.appVersion === content.appVersion && value.contentVersion === content.contentVersion && value.rulesVersion === content.rulesVersion;
   if (current) { assertSaveCompatibility(value, content); return value; }
   if (isPortraitHotfixSaveVersion(value) && content.appVersion === RELEASE.appVersion && content.contentVersion === RELEASE.contentVersion && content.rulesVersion === RELEASE.rulesVersion && content.schemaVersion === RELEASE.schemaVersion) {
-    assertSaveCompatibility(value, { ...content, appVersion: value.appVersion });
+    assertSaveCompatibility(value, { ...content, appVersion: value.appVersion, contentVersion: value.contentVersion, rulesVersion: value.rulesVersion });
     const next = structuredClone(value);
-    next.appVersion = content.appVersion;
+    next.appVersion = content.appVersion; next.contentVersion = content.contentVersion; next.rulesVersion = content.rulesVersion;
+    if (next.battle && !next.battle.rulesVersion) next.battle.rulesVersion = value.rulesVersion;
     next.revision++;
     // Preserve the exact battle cursor, tower record, RNG, ledger and equipment.
     assertSaveCompatibility(next, content);
