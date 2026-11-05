@@ -214,6 +214,7 @@ export function finishFieldRound(b: Battle): BattleEvent[] {
             const loss = Math.min(target.maxHp, Math.max(Math.ceil(original * .1), Math.ceil(original * rate)));
             const exhausted = loss >= target.maxHp;
             target.maxHp = Math.max(1, target.maxHp - loss);
+            if (target.mendThread) target.mendThread.amount = Math.min(target.mendThread.amount, target.maxHp);
             target.hp = exhausted ? 0 : Math.min(target.hp, target.maxHp);
             emit('debuff', `夜露の萎れ — 最大HP容量${loss}減少`, [target.uid]);
         }

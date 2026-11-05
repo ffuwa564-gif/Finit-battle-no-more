@@ -675,8 +675,9 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const customScout = action.skill && !memoryDef && !action.ultimate && !action.forcedBy ? fieldSkill(battle,actor,action.skill,potency) ?? scoutSkillAction(battle, actor, action.skill.id, potency, action.targets.map(target => target.uid)) : undefined;
     const scoutPower = action.skill && !memoryDef && !action.ultimate && !action.forcedBy ? scoutDamageMultiplier(battle, actor, action.skill.id) : 1;
     if (customScout) {
-      for(const unit of battle.units){const old=before.find(t=>t.uid===unit.uid);if(old&&unit.hp<old.hp){const wanted=old.hp-unit.hp;const capped=capFieldDamage(battle,unit,wanted);unit.hp+=wanted-capped;}}
-      amount = customScout.amount; targetIds.push(...customScout.targetIds);
+      let prevented = 0;
+      for(const unit of battle.units){const old=before.find(t=>t.uid===unit.uid);if(old&&unit.hp<old.hp){const wanted=old.hp-unit.hp;const capped=capFieldDamage(battle,unit,wanted);unit.hp+=wanted-capped;prevented+=wanted-capped;}}
+      amount = Math.max(0,customScout.amount-prevented); targetIds.push(...customScout.targetIds);
     } else if (memoryDef?.id === 'white-flower-seed') {
       const flower = plantWhiteFlower(battle, actor);
       amount = flower.initialHealing;
@@ -884,7 +885,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     }
     const stage = dungeon(content, battle.dungeonId);
     const guardingForecast = Boolean(action.manualGuard && enemyArtCharging(battle, stage));
-    for (const event of payFieldSupply(battle,actor,before,!action.ultimate&&!action.forcedBy&&!memoryDef)) emit(battle,event);
+    for (const event of payFieldSupply(battle,actor,before,!action.ultimate&&!action.forcedBy&&!memoryDef&&!action.power)) emit(battle,event);
     const scoutMessages = [...(customScout?.messages ?? []), ...afterScoutAction(battle, actor, before, { skillId: action.skill?.id, ordinary: !action.ultimate && !action.forcedBy && !memoryDef, guardedDuringWindup: guardingForecast })];
     for (const text of scoutMessages) emit(battle, { kind: text.includes('回復') ? 'heal' : 'buff', actorId: actor.uid, text, unitsAfter: clone(battle.units) });
     const settled = settleAction(battle, content, before);

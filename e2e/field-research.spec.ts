@@ -10,6 +10,6 @@ test('personal research skill is opt-in, saved, and available in a real battle p
  await card.getByRole('button',{name:'研究技能に切替',exact:true}).click();await expect(card).toContainText('留め縫い');
  await page.reload();await enterGame(page);await expect(card.getByRole('button',{name:'通常技能に戻す'})).toBeVisible();
  await page.goto('/#dungeons/list');await enterGame(page);await page.getByRole('button',{name:'探索の準備',exact:true}).first().click();await page.getByRole('button',{name:'探索を始める',exact:true}).click();
- await page.getByRole('button',{name:'ルカ：行動を選ぶ',exact:true}).click();await expect(page.locator('.command-dial')).toContainText('留め縫い');
+ await page.getByRole('button',{name:'ルカ：行動を選ぶ',exact:true}).click();await expect(page.locator('.command-dial').getByRole('button',{name:'留め縫い',exact:true})).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });

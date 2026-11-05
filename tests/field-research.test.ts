@@ -72,6 +72,14 @@ describe('1.20 adopted field research', () => {
         expect(payFieldSupply(b, enemy, before, true)).toHaveLength(0);
         expect(b.fieldSupplies![f.uid].amount).toBe(Math.max(0, stock - 30));
     });
+    it('keeps repair threads finite when the capacity rule shrinks their owner', () => {
+        const b = ready('research-whiteflower-return'), target = b.units[0];
+        target.mendThread = { amount: target.maxHp, until: b.round + 2 };
+        finishFieldRound(b);
+        expect(target.mendThread.amount).toBe(target.maxHp);
+        const save = createInitialSave(content, 42); save.ownedIds = content.characters.filter(c => c.published).map(c => c.id); save.partyIds = b.partyIds; save.leaderId = b.leaderId; save.battle = b;
+        expect(() => assertSaveCompatibility(save, content)).not.toThrow();
+    });
     it('restores capacity without healing current HP', () => {
         const b = ready(), e = b.units[0];
         e.field = { originalMaxHp: e.maxHp };

@@ -42,7 +42,7 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await volume.getByRole('button', { name: '0%', exact: true }).click();
   await expect(music).toHaveJSProperty('paused', true);
   await volume.getByRole('button', { name: '25%', exact: true }).click();
-  await expect(music).toHaveJSProperty('volume', 0.25);
+  await expect(music).toHaveJSProperty('volume', 0.125);
   await expect(music).toHaveJSProperty('paused', false);
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ダンジョン', exact: true }).click();
   await page.getByRole('button', { name: '探索地点の一覧', exact: true }).click();
@@ -54,7 +54,7 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await expect.poll(() => music.evaluate((el: HTMLAudioElement) => el.currentTime)).toBeGreaterThan(0);
   await page.getByRole('button', { name: '効果音をミュート', exact: true }).click();
   await expect(music).toHaveJSProperty('paused', false);
-  await expect(music).toHaveJSProperty('volume', 0.25);
+  await expect(music).toHaveJSProperty('volume', 0.125);
   // Browser suspension does not restart the track or lose its volume setting.
   await page.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => true }); document.dispatchEvent(new Event('visibilitychange')); });
   await expect(music).toHaveJSProperty('paused', true);
@@ -63,7 +63,7 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await page.getByRole('button', { name: '撤退', exact: true }).click();
   await page.getByRole('button', { name: '撤退する', exact: true }).click();
   await page.getByRole('button', { name: '街へ戻る', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
+  await expect(page.getByRole('region', { name: '世界地図', exact: true })).toBeVisible();
   await expect(music).toHaveAttribute('data-scene', 'home');
   await page.goto('/#settings');
   await enterGame(page);
