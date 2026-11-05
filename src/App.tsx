@@ -16,7 +16,7 @@ import { createInitialSave, applyCommand } from './application/game';
 import { assertSaveCompatibility, loadSave, persistSave, readBootMetadata, isUpgradeableSaveVersion, persistMigratedSave } from './platform/save';
 import { enableAudio, installAudioRecovery, playSound, scheduleUltimateSound, setAudioVolume } from './platform/audio';
 import { installGameInteractionGuards } from './platform/interaction-guards';
-import { configureBgm, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
+import { configureBgm, setBgmVolume, createBgmDucker, getBgmScene, unlockBgm, refreshBgm, disposeBgm } from './platform/bgm';
 import { battleEventSound, commandSound } from './platform/sound-cues';
 import { hpChanges } from './platform/combat-feedback';
 import { animateEvent } from './platform/presentation';
@@ -94,8 +94,14 @@ export default function App() {
     if (!previous || busyRef.current) return false;
     if (expectedEventId && previous.battle?.events[previous.battle.cursor]?.id !== expectedEventId) return false;
     busyRef.current = true; setBusy(true);
+    let previewingBgm = false;
     try {
       const next = applyCommand(previous, action, content, { now: Date.now() });
+      // Safari needs play/resume in the actual tap, before IndexedDB resolves.
+      if (action.type === 'settings' && next.settings.bgmVolume !== previous.settings.bgmVolume) {
+        previewingBgm = true;
+        setBgmVolume(next.settings.bgmVolume);
+      }
       await persistSave(next, previous.revision);
       state.current = next; setSave(next);
       setAudioVolume(next.settings.seVolume);
@@ -125,6 +131,7 @@ export default function App() {
       }
       return true;
     } catch (error) {
+      if (previewingBgm) setBgmVolume(previous.settings.bgmVolume);
       const text = error instanceof Error ? error.message : '操作を保存できませんでした。';
       playSound('error');
       setToast({ text, tone: 'error' });
@@ -146,7 +153,9 @@ export default function App() {
   }, [!!save, bgmScene, save?.settings.bgmVolume, fatal]);
   useEffect(() => {
     document.addEventListener('visibilitychange', refreshBgm);
-    return () => { document.removeEventListener('visibilitychange', refreshBgm); disposeBgm(); };
+    window.addEventListener('pageshow', refreshBgm);
+    window.addEventListener('focus', refreshBgm);
+    return () => { document.removeEventListener('visibilitychange', refreshBgm); window.removeEventListener('pageshow', refreshBgm); window.removeEventListener('focus', refreshBgm); disposeBgm(); };
   }, []);
   useEffect(() => {
     document.documentElement.dataset.motion = save?.settings.reducedMotion ? 'reduced' : 'full';
