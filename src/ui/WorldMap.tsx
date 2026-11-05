@@ -20,7 +20,7 @@ import './world-map.css';
 const storageKey = 'stillveil-world-travel-v1';
 const icons = { cathedral: Castle, cave: Mountain, tower: Crown, forest: Trees, story: MessageCircle, event: Sparkles, trial: Swords };
 function readTravel(): WorldTravelState { try { return parseWorldTravel(JSON.parse(localStorage.getItem(storageKey) ?? 'null')); } catch { return { position: WORLD_START }; } }
-export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBack, onPolish }: { content: Content; save: GameSave; busy: boolean; command: (command: GameCommand) => Promise<boolean>; onSelect: (id: string) => void; onOpen: (mode: string) => void; onBack: () => void; onPolish: () => void }) {
+export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBack, onPolish, focusDungeonId }: { focusDungeonId?: string; content: Content; save: GameSave; busy: boolean; command: (command: GameCommand) => Promise<boolean>; onSelect: (id: string) => void; onOpen: (mode: string) => void; onBack: () => void; onPolish: () => void }) {
   const language=useLanguage();
   const actors=content.worldStory?storyActors(save,content.worldStory):[];
   const nextStory=content.worldStory?storyNext(save,content.worldStory):undefined;
@@ -61,6 +61,11 @@ export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBac
     const target = places.find(p => p.id === id); if (!target) return;
     setSelectedId(id); setCamera(c => bounded({ ...c, x: (.5-target.x)*W*base*c.zoom, y: (.5-target.y)*H*base*c.zoom }));
   }
+  useEffect(() => {
+    if (!focusDungeonId) return;
+    const target = places.find(p => p.dungeonId === focusDungeonId);
+    if (target) focus(target.id);
+  }, [focusDungeonId, size.width, size.height]);
   useEffect(() => { if (previousSeen.current === seenKey) return; previousSeen.current = seenKey; if (lead) focus(lead.id); }, [seenKey]);
   useEffect(()=>{if(!save.worldStory||previousProgress.current===storyProgress)return;previousProgress.current=storyProgress;const target=nextStory?.node?'actor:'+nextStory.node.actorId:nextStory?.dungeonId;if(target)focus(target);},[Boolean(save.worldStory),storyProgress]);
   function recenter() { setCamera(c => bounded({ ...c, x: (.5 - position.x) * W * base * c.zoom, y: (.5 - position.y) * H * base * c.zoom })); }

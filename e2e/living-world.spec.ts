@@ -1,6 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
-async function start(page: import('@playwright/test').Page, name = 'ミオ', afterIntroduction = true) { await page.goto('/#dungeons'); await enterGame(page); await page.getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0);
+async function openObjective(page: import('@playwright/test').Page) {
+    await expect(page.locator('.world-story-objective, .home-world-story')).toHaveCount(0);
+    await page.locator('.world-objective-dock__trigger').click();
+    return page.getByRole('dialog', { name: /旅の大目標|Journey Objective/ });
+}
+async function checkObjective(page: import('@playwright/test').Page, text: string) {
+    const panel = await openObjective(page);
+    await expect(panel).toContainText(text);
+    await panel.getByRole('button', { name: /^(閉じる|Close)$/ }).click();
+    await expect(panel).toHaveCount(0);
+}
+async function start(page: import('@playwright/test').Page, name = 'ミオ', afterIntroduction = true) { await page.goto('/#dungeons'); await enterGame(page); await openObjective(page); await page.getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0);
     // Existing regressions begin at the first job; the introduction has its own real-UI traversal below.
     if (afterIntroduction) {
         await page.evaluate(async () => {
@@ -37,7 +48,11 @@ test('quiet days personalize and resume conversations, then rotate ordinary visi
     await page.setViewportSize({ width: 390, height: 844 });
     await start(page);
     await page.clock.install();
-    await expect(page.getByRole('complementary', { name: '旅の大目標' })).toContainText('街の日常');
+    await checkObjective(page, '街の日常');
+    const dock = await page.locator('.world-objective-dock__trigger').boundingBox();
+    expect(dock!.width).toBeGreaterThanOrEqual(44);
+    expect(dock!.x + dock!.width).toBeLessThanOrEqual(390);
+    await page.screenshot({ path: info.outputPath('compact-world-map.png') });
     await page.getByRole('button', { name: '自動移動', exact: true }).click();
     await page.clock.fastForward(46000);
     await page.getByRole('button', { name: '声をかける', exact: true }).click();
@@ -105,23 +120,29 @@ test('a real story trigger raises an alert, persists on the home screen, and ret
     await page.screenshot({ path: info.outputPath('incident-alert.png') });
     await alert.getByRole('button', { name: 'あとで向かう' }).click();
     await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ホーム', exact: true }).click();
-    await expect(page.locator('.home-world-story')).toContainText('事件発生');
+    await expect(page.locator('.world-objective-dock--home')).toHaveClass(/is-incident/);
+    const goalIcon = await page.locator('.world-objective-dock__trigger').boundingBox();
+    const playback = await page.locator('.animated-illustration__toggle').boundingBox();
+    expect(goalIcon!.y).toBeGreaterThanOrEqual(playback!.y + playback!.height + 4);
+    expect(Math.abs(goalIcon!.x - playback!.x)).toBeLessThan(2);
+    await page.screenshot({ path: info.outputPath('home-compact-objective.png') });
+    await checkObjective(page, '事件発生');
     await page.screenshot({ path: info.outputPath('home-incident.png') });
     await page.reload();
     await enterGame(page);
     await expect(alert).toHaveCount(0);
-    await expect(page.locator('.home-world-story')).toContainText('聖域から応答がない');
+    await checkObjective(page, '聖域から応答がない');
     await page.evaluate(async () => { const { content } = await import('/src/content/index.ts'); const { loadSave, persistSave } = await import('/src/platform/save.ts'); const s = (await loadSave())!, r = s.revision; s.completedDungeonIds = content.chapters![0].dungeonIds; s.worldStory!.completed = content.worldStory!.nodes.filter(n => n.chapter === 1 && !n.optional).map(n => n.id); s.revision++; await persistSave(s, r); });
     await page.reload();
     await enterGame(page);
-    await expect(page.locator('.home-world-story')).toContainText('街の日常');
-    await expect(page.locator('.home-world-story')).not.toHaveClass(/is-incident/);
+    await checkObjective(page, '街の日常');
+    await expect(page.locator('.world-objective-dock--home')).not.toHaveClass(/is-incident/);
 });
 
 test('language settings translate actor hints and the personalized conversation',async({page})=>{
  await page.setViewportSize({width:320,height:740});await start(page,'Mio');
  await page.goto('/#settings');await page.getByRole('button',{name:'English',exact:true}).click();await page.goto('/#dungeons');
- await expect(page.locator('.world-story-objective')).toContainText('Everyday Life');
+ await checkObjective(page, 'Everyday Life');
  expect(await page.locator('.world-map__hint').innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
  await page.clock.install();await page.locator('.world-map__travel').click();await page.clock.fastForward(46000);await page.locator('.world-map__travel').click();
  await expect(page.locator('.world-conversation__line')).toContainText('Mio');
@@ -152,7 +173,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     const modal = page.locator('.world-conversation');
     await expect(modal.locator('.world-conversation__line')).toContainText('どうか、お命じください');
     await finish(page);
-    await expect(page.locator('.world-story-objective')).toContainText('リオラの様子を見たい');
+    await checkObjective(page, 'リオラの様子を見たい');
     await page.getByRole('button', { name: '声をかける', exact: true }).click();
     await expect(modal).toContainText('寝台から起き上がれなかった');
     for (let i = 0; i < 5; i++) await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
@@ -164,7 +185,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     const s = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
     expect(s.worldStory!.completed).toContain('c1-held');
     expect(s.worldStory!.completed).not.toContain('c1-return');
-    await expect(page.locator('.world-story-objective')).toContainText('朝、寝台を訪ねる');
+    await checkObjective(page, '朝、寝台を訪ねる');
 });
 
 test('chapter one begins with the tower, offerings, a birth, and the garden keeper’s private night', async ({ page }, info) => {
@@ -172,6 +193,7 @@ test('chapter one begins with the tower, offerings, a birth, and the garden keep
     await start(page, 'ミオ', false);
     await page.clock.install();
     const readScene = async (id: string) => {
+        await openObjective(page);
         await page.locator('.world-story-objective__main').click();
         const travel = page.getByRole('button', { name: '自動移動', exact: true });
         if (await travel.count()) {
@@ -212,7 +234,7 @@ test('chapter one begins with the tower, offerings, a birth, and the garden keep
     expect(night).toContain('別の庭園の管理者');
     expect(night).toContain('かわいそうなひと');
     expect(night).toContain('自分が誰よりも愛されている');
-    await expect(page.locator('.world-story-objective')).toContainText('初仕事の話をしよう');
+    await checkObjective(page, '初仕事の話をしよう');
     const save = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
     expect(save.gold).toBe(100); expect(save.stones).toBe(0);
     expect(save.worldStory!.completed).not.toContain('c1-job');

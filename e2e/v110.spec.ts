@@ -87,7 +87,7 @@ for(const language of ['ja','en']as const){
   });
 }
 
-test('en 320px: home journey opens the first campaign preparation without spending resources',async({page},testInfo)=>{
+test('en 320px: home journey selects its map destination and prepares only after arrival',async({page},testInfo)=>{
   await page.setViewportSize({width:320,height:844});
   await page.addInitScript(()=>{localStorage.setItem('stillveil-language','en');localStorage.setItem('stillveil-fairy-tutorial-v1',JSON.stringify({version:2,enrolled:false,dismissed:true,seen:[]}));});
   await page.goto('/');await enter(page);
@@ -96,11 +96,22 @@ test('en 320px: home journey opens the first campaign preparation without spendi
   const goal=page.getByTestId('home-journey-goal');await expect(goal).toBeVisible();await expect(goal).toHaveAttribute('data-dungeon-id',target.dungeon.id);
   expect(await goal.innerText()).not.toMatch(japanese);
   const before=await saveNow(page);await goal.getByRole('button').click();
-  const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
-  const name=await label(page,target.dungeon.name);await expect(dialog).toContainText(name);
-  expect(page.url()).toContain(`dungeons/prepare/${target.dungeon.id}`);
+  await expect(page.locator('.world-map')).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  const name=await label(page,target.dungeon.name);
+  await expect(page.locator('.world-map__destination h2')).toHaveText(name);
+  expect(page.url()).toContain(`dungeons/map/${target.dungeon.id}`);
   const after=await saveNow(page);for(const key of ['gold','stones','seed','battle']as const)expect(after[key]).toEqual(before[key]);
+  await page.reload(); await enter(page);
+  await expect(page.locator('.world-map__destination h2')).toHaveText(name);
+  await page.clock.install();
+  await page.locator('.world-map__travel').click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.clock.fastForward(46000);
+  await page.locator('.world-map__travel').click();
+  const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText(name);
   expect(await dialog.innerText()).not.toMatch(japanese);await noOverflow(page);
-  await dialog.evaluate(async element=>{await Promise.all(element.parentElement!.getAnimations({subtree:true}).filter(a=>a.effect?.getTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{})));});
+  await page.clock.resume();
   await page.screenshot({path:testInfo.outputPath('home-journey-en-320.png')});
 });
