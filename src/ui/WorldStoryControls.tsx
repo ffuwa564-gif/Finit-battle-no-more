@@ -4,6 +4,7 @@ import type { Content, GameSave, GameCommand } from '../domain/types';
 import { activeWorldIncident, defaultHero, storyChapter, storyNext, storyText, type HeroProfile } from '../domain/world-story';
 import { getLanguage, tr, useLanguage } from '../locales/i18n';
 import { Button, Modal } from './index';
+import { WorldObjectiveDock } from './WorldObjectiveDock';
 export function WorldStoryControls({ save, content, busy, command, onFocus }: {
     save: GameSave;
     content: Content;
@@ -31,7 +32,7 @@ export function WorldStoryControls({ save, content, busy, command, onFocus }: {
         setProfileOpen(false);
         onFocus('actor:liora');
     } }
-    return <><aside className={`world-story-objective${incident ? ' is-incident' : ''}`} aria-label={tr('旅の大目標')}><Button className="world-story-objective__main" variant="secondary" onClick={focus}><small>{incident ? tr('事件発生') : tr(s ? '街の日常' : 'あなたの旅')}</small><strong>{incident ? text(incident.title) : tr(s ? '今日は、誰に会おう' : '少女たちと旅を始める')}</strong><span>{next?.node ? text(next.node.bubble) : next?.dungeonId ? tr(content.dungeons.find(d => d.id === next.dungeonId)!.name) : tr(s ? '街の仲間に声をかける' : '主人公の名前を教える')}<ChevronRight size={13}/></span></Button><div><Button variant="icon" aria-label={tr('主人公の設定')} onClick={() => { setProfile(s?.profile ?? profile); setProfileOpen(true); }}><UserRound size={15}/></Button>{s && <Button variant="icon" aria-label={tr('旅の記録')} onClick={() => setJournal(true)}><BookOpen size={15}/></Button>}</div></aside>
+    return <><WorldObjectiveDock location="map" incident={Boolean(incident)}>{close => <aside className={`world-story-objective${incident ? ' is-incident' : ''}`}><Button className="world-story-objective__main" variant="secondary" onClick={() => { close(); focus(); }}><small>{incident ? tr('事件発生') : tr(s ? '街の日常' : 'あなたの旅')}</small><strong>{incident ? text(incident.title) : tr(s ? '今日は、誰に会おう' : '少女たちと旅を始める')}</strong><span>{next?.node ? text(next.node.bubble) : next?.dungeonId ? tr(content.dungeons.find(d => d.id === next.dungeonId)!.name) : tr(s ? '街の仲間に声をかける' : '主人公の名前を教える')}<ChevronRight size={13}/></span></Button><div><Button variant="icon" aria-label={tr('主人公の設定')} onClick={() => { close(); setProfile(s?.profile ?? profile); setProfileOpen(true); }}><UserRound size={15}/></Button>{s && <Button variant="icon" aria-label={tr('旅の記録')} onClick={() => { close(); setJournal(true); }}><BookOpen size={15}/></Button>}</div></aside>}</WorldObjectiveDock>
  <Modal open={profileOpen} title={tr('主人公の設定')} onClose={() => setProfileOpen(false)}><form className="world-hero-profile" onSubmit={e => { e.preventDefault(); if (s)
         void command({ type: 'worldProfile', profile }).then(ok => { if (ok)
             setProfileOpen(false); });
