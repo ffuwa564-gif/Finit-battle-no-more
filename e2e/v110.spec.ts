@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { skipStory } from './boot';
 
-test.use({ baseURL:process.env.V110_BASE_URL ?? 'http://127.0.0.1:4194' });
+if (process.env.V110_BASE_URL) test.use({ baseURL: process.env.V110_BASE_URL });
 const japanese = /[\u3040-\u30ff\u3400-\u9fff]/;
 async function enter(page: Page) {
   await page.waitForFunction(() => Boolean(document.querySelector('.title-screen__start,.app-shell,[role=alert]')));
