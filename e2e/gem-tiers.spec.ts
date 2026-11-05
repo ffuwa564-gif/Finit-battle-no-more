@@ -1,3 +1,4 @@
+import { polishFixtureStone } from './polishing-fixture';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { enterGame } from './boot';
@@ -48,22 +49,25 @@ async function securedChest(page: Page, claimInFixture = false) {
     battle.phase = 'playing'; battle.nextPhase = 'reward'; battle.cursor = 0;
     battle.events = [{id:'tier-fixture-final-wave',kind:'dialogue',text:'The final wave is defeated.',unitsAfter:structuredClone(battle.units)}];
     save = applyCommand(save,{type:'replay'},content);
-    const stone = save.battle!.gemFinds!.at(-1)!;
+    const stone = save.battle!.roughGemFinds!.at(-1)!.result;
     if (gemPowerTier(stone) !== 4 || gemTraitTier(stone) !== 5) throw new Error('Secured chest differs from its seeded preview');
     if (claimInFixture) save = applyCommand(save,{type:'claim'},content);
     save.revision = revision+1; await persistSave(save,revision);
     return {id:stone.id,roll:stone.roll!,pilot:save.partyIds[0],dungeonId:dungeon.id,profile:dungeon.gemLoot!};
   },claimInFixture);
-  await page.goto(claimInFixture ? '/#bag' : '/#dungeons'); await page.reload(); await enterGame(page);
+  if(claimInFixture)await polishFixtureStone(page,result.id);
+  await page.goto(claimInFixture ? '/#bag' : '/#dungeons/list'); await page.reload(); await enterGame(page);
   return result;
 }
 
 test('secures a real high-tier chest, equips it, and finishes its acquired tier through a restored paid offer',async ({page}) => {
   const stone = await securedChest(page);
-  await expect(page.locator('.memory-gem-summary .memory-gem-tier[data-tier="5"]')).toBeVisible();
-  expect((await saved(page)).memoryGems!.items.find(item => item.id === stone.id)!.roll).toEqual(stone.roll);
+  await expect(page.locator('.memory-gem-summary')).toContainText('確保した原石');
+  await expect(page.locator('.memory-gem-summary .memory-gem-tier')).toHaveCount(0);
+  expect((await saved(page)).memoryGems!.rough!.find(item => item.id === stone.id)!.result.roll).toEqual(stone.roll);
   await page.locator('[data-guide="claim"]').click();
   await expect.poll(async () => (await saved(page)).battle).toBeNull();
+  await polishFixtureStone(page,stone.id);
   await page.goto('/#bag'); await page.reload(); await enterGame(page);
   await page.getByRole('button',{name:/記憶石の管理/}).click();
   for (const id of ['memory-stones','memory-refinement','memory-crafting','memory-sources']) await expect(page.locator(`[data-inventory-section="${id}"]`)).not.toHaveAttribute('open');

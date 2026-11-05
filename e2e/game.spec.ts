@@ -10,7 +10,7 @@ async function stored(page: Page): Promise<GameSave> {
   }));
 }
 async function openDungeon(page: Page) {
-  await page.goto('/#dungeons');
+  await page.goto('/#dungeons/list');
   await enterGame(page);
   await page.getByRole('button', { name: '探索の準備' }).first().click();
   await page.getByRole('button', { name: '探索を始める' }).click();

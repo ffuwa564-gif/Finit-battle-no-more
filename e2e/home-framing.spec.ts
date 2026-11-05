@@ -34,6 +34,8 @@ test('all owned home paintings reach the top with compact corner badges on mobil
 test('retreat backup and retreat actions have matching sizes and preserve the expedition on export', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/'); await enterGame(page);
   await page.getByRole('navigation', { name: 'ホームのメニュー', exact: true }).getByRole('button', { name: 'ダンジョン', exact: true }).click();
+  await page.getByRole('button', { name: '探索地点の一覧', exact: true }).click();
+  await page.getByRole('button', { name: 'すべての探索を一覧で見る', exact: true }).click();
   await page.getByRole('button', { name: '探索の準備' }).first().click(); await page.getByRole('button', { name: '探索を始める', exact: true }).click();
   await expect(page.getByRole('button', { name: '撤退', exact: true })).toBeEnabled(); await page.getByRole('button', { name: '撤退', exact: true }).click();
   const dialog = page.getByRole('dialog');

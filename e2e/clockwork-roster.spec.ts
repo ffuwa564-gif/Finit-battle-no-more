@@ -18,7 +18,7 @@ test('clockwork SSR/SR/R have original art and unique skills in both languages',
   await expect.poll(() => artwork.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBe(1086);
   await page.screenshot({ path: 'artifacts/clockwork-roster/vespera-detail-390.png' });
   await dialog.getByRole('button', { name: '閉じる', exact: true }).click();
-  for (const [name, skill, id] of [['ミエット', '装甲リサイクル', 'miette'], ['ティッカ', '秒針ジャミング', 'tikka']]) {
+  for (const [name, skill, id] of [['ミエット', '余り糸の修繕', 'miette'], ['ティッカ', '秒針の余白', 'tikka']]) {
     const card = page.locator('.gacha-exclusive-pool .character-card').filter({ has: page.getByRole('heading', { name, exact: true }) });
     await card.getByRole('button').click();
     await expect(dialog).toContainText(skill);

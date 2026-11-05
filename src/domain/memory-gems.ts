@@ -12,7 +12,9 @@ export const TIER_RANGES: Record<GemTier, readonly [number, number]> = {
 export interface GemRoll { power: number; trait: GemTrait; value: number }
 export type GemRefinementMode = 'power' | 'trait';
 export interface MemoryGem { id: string; defId: string; variant: GemVariant; locked?: boolean; roll?: GemRoll }
-export interface GemInventory { items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number; pending?: { gemId: string; candidate: MemoryGem } }
+export interface RoughMemoryGem { id: string; promise: 'ordinary' | 'glimmering' | 'radiant'; result: MemoryGem }
+export interface GemPolishSession { rawId: string; startedAt: number; expiresAt: number; progress: number; lastTapAt: number; attempt: number; nonce: number; lastResult: 'ready' | 'good' | 'miss' }
+export interface GemInventory { rough?: RoughMemoryGem[]; polish?: GemPolishSession; items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number; pending?: { gemId: string; candidate: MemoryGem } }
 export interface GemDefinition { fixedRoll?: GemRoll; id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
 
 export const GEM_CRAFT_COST = 6;
@@ -192,8 +194,22 @@ function validGemRoll(value: unknown, defId: string): value is GemRoll {
   if (!record(value) || !validValue(value.power) || !validValue(value.value) || typeof value.trait !== 'string' || !supportedGemTraits(defId).includes(value.trait as GemTrait)) return false;
   return value.trait !== 'none' || value.value === 0;
 }
+export function validRoughGem(value: unknown): value is RoughMemoryGem {
+  return record(value) && typeof value.id === 'string' && ['ordinary','glimmering','radiant'].includes(value.promise as string) && validMemoryGem(value.result) && value.result.id === value.id;
+}
 export function validGemInventory(value: unknown): value is GemInventory {
   if (!record(value) || !Array.isArray(value.items) || !value.items.every(validMemoryGem) || !record(value.equipped) || !record(value.dust) || !Array.isArray(value.seen) || !value.seen.every(v => typeof v === 'string' && definitions.has(v)) || value.craftSerial !== undefined && !count(value.craftSerial)) return false;
+  if (value.rough !== undefined && (!Array.isArray(value.rough) || !value.rough.every(validRoughGem))) return false;
+  const rough = (value.rough ?? []) as RoughMemoryGem[];
+  if (new Set(rough.map(r => r.id)).size !== rough.length || rough.some(r => (value.items as MemoryGem[]).some(g => g.id === r.id))) return false;
+  if (value.polish !== undefined) {
+    const q = value.polish;
+    if (!record(q) || typeof q.rawId !== 'string' || !rough.some(r => r.id === q.rawId) || !['startedAt','expiresAt','lastTapAt'].every(k => typeof q[k] === 'number' && Number.isFinite(q[k])) || !count(q.progress) || q.progress >= 100 || !count(q.attempt) || q.attempt > 200 || !count(q.nonce) || q.nonce > 4294967295 || !['ready','good','miss'].includes(q.lastResult as string)) return false;
+    const start=q.startedAt as number, end=q.expiresAt as number, last=q.lastTapAt as number;
+    const raw=rough.find(r=>r.id===q.rawId)!;
+    const seconds={ordinary:35,glimmering:40,radiant:45}[raw.promise];
+    if(start<0 || end-start!==seconds*1000 || last<start-500 || last>=end) return false;
+  }
   const ids = value.items.map(v => (v as MemoryGem).id);
   if (new Set(ids).size !== ids.length || new Set(value.seen).size !== value.seen.length) return false;
   const equipped = Object.values(value.equipped);

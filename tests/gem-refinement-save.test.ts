@@ -89,7 +89,8 @@ describe('persistent gem refinement and tower rewards', () => {
     expect(() => act(initial, { type:'depart', dungeonId:floor2.id, potions:0 })).toThrow();
     const ready = replay(act(initial, { type:'depart', dungeonId:floor1.id, potions:0 }));
     const completed = wonWave(ready, true);
-    expect(completed.memoryGems!.items).toHaveLength(2);
+    expect(completed.memoryGems!.items).toHaveLength(1);
+    expect(completed.memoryGems!.rough).toHaveLength(1);
     expect(completed.completedDungeonIds).not.toContain(floor1.id);
     const stones = completed.stones;
     const claimed = act(completed, { type:'claim' });

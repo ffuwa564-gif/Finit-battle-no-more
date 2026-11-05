@@ -82,10 +82,11 @@ for(const oldVersion of ['1.10.0','1.11.0']) test(`${oldVersion} boot upgrades a
     const{loadSave,bootMetadata,SAVE_DATABASE,SAVE_STORE}=await import('/src/platform/save.ts');
     const{content}=await import('/src/content/index.ts');
     const{createBattle,advanceReplay}=await import('/src/domain/engine.ts');
-    const old=(await loadSave())!;old.appVersion=appVersion;old.towerRecord={version:'1.10',completedFloors:[1,2,3],legacyHighest:9};
+    const legacyContent={...content,...content.legacyCombat,appVersion,contentVersion:'v1.10-r1',rulesVersion:'2'};
+    const old=(await loadSave())!;old.appVersion=appVersion;old.contentVersion=legacyContent.contentVersion;old.rulesVersion=legacyContent.rulesVersion;old.towerRecord={version:'1.10',completedFloors:[1,2,3],legacyHighest:9};
     old.completedDungeonIds.push(...[1,2,3].map(n=>`ivory-tower-${String(n).padStart(3,'0')}`));old.gold=173;old.stones=11;
-    let battle=createBattle({...content,appVersion},old.partyIds,old.leaderId,'silent-cathedral',0,42,'portrait-update');
-    while(battle.phase==='playing')battle=advanceReplay(battle,content);
+    let battle=createBattle(legacyContent,old.partyIds,old.leaderId,'silent-cathedral',0,42,'portrait-update');
+    while(battle.phase==='playing')battle=advanceReplay(battle,legacyContent);
     old.battle=battle;
     const original=structuredClone(old);original.appVersion='0.1.0';original.contentVersion='initial-r1';original.rulesVersion='1';delete original.towerRecord;original.battle=null;
     const db=await new Promise<IDBDatabase>((resolve,reject)=>{const q=indexedDB.open(SAVE_DATABASE);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});
@@ -98,6 +99,6 @@ for(const oldVersion of ['1.10.0','1.11.0']) test(`${oldVersion} boot upgrades a
     const db=await new Promise<IDBDatabase>((resolve,reject)=>{const q=indexedDB.open(SAVE_DATABASE);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});
     return new Promise<any>((resolve,reject)=>{const tx=db.transaction(SAVE_STORE,'readonly'),store=tx.objectStore(SAVE_STORE),old=store.get(`migration-v${appVersion.replace(/\.0$/, '')}`),original=store.get('migration-v1.0');tx.oncomplete=()=>{db.close();resolve({save,old:old.result,original:original.result});};tx.onerror=()=>reject(tx.error);});
   },oldVersion);
-  expect(records.save).toEqual({...fixture.old,appVersion:RELEASE.appVersion,revision:fixture.old.revision+1});
+  expect(records.save).toEqual({...fixture.old,appVersion:RELEASE.appVersion,contentVersion:RELEASE.contentVersion,rulesVersion:RELEASE.rulesVersion,revision:fixture.old.revision+1});
   expect(records.old).toEqual(fixture.old);expect(records.original).toEqual(fixture.original);
 });

@@ -27,7 +27,7 @@ for(const language of ['ja','en']as const)for(const width of [320,390])test(`${l
  await page.setViewportSize({width,height:844});await page.addInitScript(l=>{localStorage.setItem('stillveil-language',l);localStorage.setItem('stillveil-fairy-tutorial-v1',JSON.stringify({version:2,enrolled:false,dismissed:true,seen:[]}));},language);
  await page.goto('/');await enter(page);const fixture=await nativeResultFixture(page);
  expect(fixture.history).toHaveLength(1);expect(fixture.review.largestHit?.round).toBe(1);
- await page.goto('/#dungeons');await page.reload();await enter(page);
+ await page.goto('/#dungeons/list');await page.reload();await enter(page);
  const review=page.locator('[data-inventory-section="expedition-review"]');await expect(review).toBeVisible();await expect(review).not.toHaveAttribute('open');await review.locator(':scope > summary').click();
  await expect(review.getByTestId('expedition-review')).toBeVisible();await expect(review).toContainText('Round 1');if(language==='en')expect(await review.innerText()).not.toMatch(japanese);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);await review.scrollIntoViewIfNeeded();await page.screenshot({path:testInfo.outputPath(`review-${language}-${width}.png`)});

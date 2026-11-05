@@ -1,3 +1,5 @@
+import { ROUGH_NAMES } from '../domain/gem-polishing';
+import { Button } from './index';
 import { getBuildDefinition, gemMeetsBuildTarget, targetNeedsNewTier, type BuildGoal } from '../domain/builds';
 import { towerDustReward } from '../domain/ivory-tower';
 import { useEffect, useState } from 'react';
@@ -10,14 +12,16 @@ import './memory-gem-find.css';
 
 /** A secured find never pauses exploration or demands a confirmation. */
 export function MemoryGemFind({ battle, reducedMotion, onOpen }: { battle: Battle; reducedMotion: boolean; onOpen: () => void }) {
+  const raw = battle.roughGemFinds?.at(-1);
   const latest = battle.gemFinds?.at(-1);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
-    if (!latest) return;
+    if (!latest && !raw) return;
     setVisible(true);
     const timer = setTimeout(() => setVisible(false), 5600);
     return () => clearTimeout(timer);
-  }, [latest?.id]);
+  }, [latest?.id, raw?.id]);
+  if (raw && visible) return <Button variant="secondary" className={`memory-gem-find memory-gem-find--${raw.promise === 'radiant' ? 'epic' : raw.promise === 'glimmering' ? 'rare' : 'common'}`} onClick={() => { setVisible(false); onOpen(); }} aria-label={tr('獲得した原石を見る')}><span className="memory-gem-find__chest"><PackageOpen size={25}/><Gem size={17}/></span><span role="status"><small>{tr('宝箱から原石を確保')}</small><strong>{tr(ROUGH_NAMES[raw.promise])}</strong><small>{tr('Tierは研磨完了後に判明')}</small></span></Button>;
   if (!latest || !visible) return null;
   const roll = gemRoll(latest);
   return <button type="button" className={`memory-gem-find memory-gem-find--${gemRarity(latest)} memory-gem-find--tier-${gemTier(latest)}${reducedMotion ? ' is-still' : ''}`} onClick={() => { setVisible(false); onOpen(); }} aria-label={tr('獲得した記憶石を見る')}>
@@ -37,7 +41,7 @@ export function MemoryGemSource({ dungeon, compact = false }: { dungeon: Dungeon
 }
 
 export function MemoryGemSummary({ battle, buildGoal }: { battle: Battle; buildGoal?: BuildGoal }) {
-  if (!battle.gemFinds?.length) return null;
+  if (!battle.gemFinds?.length && !battle.roughGemFinds?.length) return null;
   const targets = buildGoal ? getBuildDefinition(buildGoal.buildId)?.stages[buildGoal.stage].slots.map(slot => slot.gem) ?? [] : [];
-  return <div className="memory-gem-summary"><h2><Gem size={20} />{tr('確保した記憶石')}</h2>{battle.gemFinds.map(gem => <div key={gem.id}><MemoryGemTier tier={gemTier(gem)} /><span>{tr(gemName(gem))}{targets.some(target => target.defId === gem.defId && target.variant === gem.variant) && <small className="memory-gem-summary__goal">{tr(targets.some(target => gemMeetsBuildTarget(gem, target)) ? '目標性能の石を獲得' : targets.some(target => target.defId === gem.defId && target.variant === gem.variant && targetNeedsNewTier(gem, target)) ? '目標の術式・上位Tierを探そう' : '目標ビルドの候補・調律で仕上げる')}</small>}{gem.roll && <small className="memory-gem-summary__quality">{tr('技効力 ×{0}').replace('{0}', gemPowerMultiplier(gem).toFixed(2))} · {tr(gemTraitInfo[gemRoll(gem).trait].name)}</small>}</span></div>)}<p>{tr('記憶石は取得済みです。撤退・全滅でも失いません。')}</p></div>;
+  return <div className="memory-gem-summary"><h2><Gem size={20} />{tr(battle.roughGemFinds?.length ? '確保した原石' : '確保した記憶石')}</h2>{battle.roughGemFinds?.map(raw => <div key={raw.id}><Gem size={20}/><span>{tr(ROUGH_NAMES[raw.promise])}<small>{tr('Tierは研磨完了後に判明')}</small></span></div>)}{battle.gemFinds?.map(gem => <div key={gem.id}><MemoryGemTier tier={gemTier(gem)} /><span>{tr(gemName(gem))}{targets.some(target => target.defId === gem.defId && target.variant === gem.variant) && <small className="memory-gem-summary__goal">{tr(targets.some(target => gemMeetsBuildTarget(gem, target)) ? '目標性能の石を獲得' : targets.some(target => target.defId === gem.defId && target.variant === gem.variant && targetNeedsNewTier(gem, target)) ? '目標の術式・上位Tierを探そう' : '目標ビルドの候補・調律で仕上げる')}</small>}{gem.roll && <small className="memory-gem-summary__quality">{tr('技効力 ×{0}').replace('{0}', gemPowerMultiplier(gem).toFixed(2))} · {tr(gemTraitInfo[gemRoll(gem).trait].name)}</small>}</span></div>)}<p>{tr(battle.roughGemFinds?.length ? '原石は確保済みです。街に戻って磨けます。' : '記憶石は取得済みです。撤退・全滅でも失いません。')}</p></div>;
 }

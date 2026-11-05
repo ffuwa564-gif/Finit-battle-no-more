@@ -1,3 +1,4 @@
+import { characterSkills } from '../domain/character-skills';
 import { PreparationGuide } from './PreparationGuide';
 import { useState } from 'react';
 import { dungeonGemFamily, GEM_FAMILIES } from '../domain/memory-gems';
@@ -48,7 +49,7 @@ export function TowerEncounterPreview({stage,content}:{stage:DungeonDef;content:
         const portrait=content.assets.find(asset=>asset.id===character.portraitId);
         return <li key={`${character.id}-${i}`} className={enemy.boss?'is-guardian':''}>
           <GameImage src={assetPath(character.portraitId)} alt="" loading="lazy" style={{objectPosition:portrait?.anchor??'50% 15%'}} />
-          <div><strong>{enemy.boss&&<Crown size={12} aria-label={tr('主役の幻影')} />}{tr(character.name)}</strong><small>{tr(roleName(character.role))}</small><span>{character.skillIds.map(id=>content.skills.find(skill=>skill.id===id)?.name).filter(Boolean).map(name=>tr(name)).join(' / ')}</span></div>
+          <div><strong>{enemy.boss&&<Crown size={12} aria-label={tr('主役の幻影')} />}{tr(character.name)}</strong><small>{tr(roleName(character.role))}</small><span>{characterSkills(character, content).map(skill=>skill.name).filter(Boolean).map(name=>tr(name)).join(' / ')}</span></div>
         </li>;
       })}</ul>
     </li>)}</ol>

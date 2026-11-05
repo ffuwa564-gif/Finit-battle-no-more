@@ -1,3 +1,6 @@
+import { validBarrierReturnContract } from '../domain/barrier-return';
+import { validJamDampeningContract } from '../domain/jam-dampening';
+import { validBarrierMendContract } from '../domain/barrier-mend';
 import { FACE_FRAME_ASPECTS, portraitHeadFits } from './portrait-framing';
 import { scoutSkillContract } from '../domain/scout-skills';
 import { characterRarities } from '../domain/xr-gacha';
@@ -18,6 +21,7 @@ const strengthValid = (value: number, maximum = 40, minimum = 10) => Number.isIn
 /** Shared build/runtime validation; personal skills require a fixed, owned engine contract. */
 export function validateContent(content: Content): string[] {
   const errors: string[] = [];
+  if(content.commandRules!==undefined&&(!content.commandRules||typeof content.commandRules!=='object'||Object.keys(content.commandRules).join(',')!=='respectReadyResources'||typeof content.commandRules.respectReadyResources!=='boolean'))errors.push('Invalid command resource safety contract');
   const reject = (condition: boolean, message: string) => { if (condition) errors.push(message); };
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion'] as const) reject(!plain(content[key]), `${key}: required version`);
   reject(!Number.isInteger(content.schemaVersion) || content.schemaVersion < 1, 'schemaVersion: positive integer required');
@@ -56,15 +60,23 @@ export function validateContent(content: Content): string[] {
   const novelTriggers = new Set<string>();
   for (const scene of content.novels ?? []) {
     reject(!plain(scene.title) || !Array.isArray(scene.pages) || !scene.pages.length || scene.pages.length > 200, `novels/${scene.id}: title and 1..200 pages required`);
-    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : '';
+    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
     reject(!trigger || novelTriggers.has(trigger), `novels/${scene.id}: unique trigger required`); novelTriggers.add(trigger);
-    if (scene.trigger.kind === 'dungeon-clear') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
+    if (scene.trigger.kind === 'dungeon-clear' || scene.trigger.kind === 'map') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
+    if (scene.trigger.kind === 'map') {
+      const map = scene.mapEncounter;
+      reject(!map || !Number.isFinite(map.x) || !Number.isFinite(map.y) || map.x <= 0 || map.x >= 1 || map.y <= 0 || map.y >= 1 || !plain(map.teaser) || !content.characters.some(c => c.id === map.characterId && c.published) || !content.dungeons.some(d => d.id === map.leadDungeonId && d.published && d.chapterId), `novels/${scene.id}: valid map encounter and destination required`);
+    } else reject(Boolean(scene.mapEncounter), `novels/${scene.id}: map metadata needs a map trigger`);
     for (const page of scene.pages) {
       reject(!plain(page.text) || (page.speaker !== undefined && !plain(page.speaker)), `novels/${scene.id}: plain page text required`);
       reject(!content.assets.some(asset => asset.id === page.backgroundId && ['background', 'illustration'].includes(asset.kind)), `novels/${scene.id}: background required`);
       reject(page.shade !== undefined && !['dark', 'black'].includes(page.shade), `novels/${scene.id}: invalid shade`);
     }
   }
+  for(const[id,choice]of Object.entries(content.fieldSkills??{})){
+    reject(!content.characters.some(c=>c.id===id&&c.skillIds.includes(choice.skillId))||!plain(choice.name)||!plain(choice.description)||!['stitch','rest','receipt','supply','capacity'].includes(choice.effect),`fieldSkills/${id}: valid owned skill and effect required`);
+  }
+  for(const d of content.dungeons)if(d.fieldLesson)reject(!['rewind','duty','capacity'].includes(d.fieldLesson)||d.kind!=='trial'||d.waves.length!==1,`dungeons/${d.id}: valid research trial required`);
   const semanticKeys = new Set<string>();
   for (const skill of content.skills) {
     reject(!plain(skill.name), `skills/${skill.id}: plain name required`);
@@ -78,6 +90,18 @@ export function validateContent(content: Content): string[] {
     reject(Object.keys(skill).some(key => !['id', 'name', 'template', 'strength', 'soundProfile'].includes(key)), `skills/${skill.id}: derived effect overrides are forbidden`);
   }
   for (const char of content.characters) {
+    for(const[id,override]of Object.entries(char.skillOverrides??{})){
+      if(!override||typeof override!=='object'||Array.isArray(override)){errors.push(`characters/${char.id}: personal override must be an object`);continue;}
+      const base=content.skills.find(skill=>skill.id===id);
+      reject(!char.skillIds.includes(id)||!base,`characters/${char.id}: override must reference an owned skill`);
+      reject(Object.keys(override).some(key=>!['name','description','fieldEffect','dispelStrikePercent','barrierReturn','barrierMend','jamDampening'].includes(key)),`characters/${char.id}: unsupported personal override`);
+      reject(override.name!==undefined&&!plain(override.name)||override.description!==undefined&&!plain(override.description),`characters/${char.id}: plain override text required`);
+      reject(override.barrierReturn!==undefined&&(base?.template!=='barrier'||!validBarrierReturnContract(override.barrierReturn)),`characters/${char.id}: invalid barrier return contract`);
+      reject(override.dispelStrikePercent!==undefined&&(base?.template!=='dispel'||!Number.isInteger(override.dispelStrikePercent)||override.dispelStrikePercent<1||override.dispelStrikePercent>150),`characters/${char.id}: invalid dispel strike contract`);
+      reject(override.jamDampening!==undefined&&(base?.template!=='jam'||!validJamDampeningContract(override.jamDampening)),`characters/${char.id}: invalid jam dampening contract`);
+      reject(override.barrierMend!==undefined&&(base?.template!=='barrier_mend'||!validBarrierMendContract(override.barrierMend)),`characters/${char.id}: invalid barrier mend contract`);
+    }
+
     if (char.encounterLoot) {
       const loot = char.encounterLoot;
       reject(!char.origin.includes('recruit') || !Number.isSafeInteger(loot.gold) || loot.gold < 0 || loot.gold > 10000 || !loot.guaranteed.length || loot.guaranteed.length > 3, `characters/${char.id}: invalid encounter loot`);
@@ -190,7 +214,7 @@ export function validateContent(content: Content): string[] {
       const limits = dungeon.towerBattle;
       reject(dungeon.towerFloor === undefined || ![limits.healLimit, limits.barrierLimit].every(limit => Number.isSafeInteger(limit) && limit >= 0 && limit <= 10), `dungeons/${dungeon.id}: invalid tower support budget`);
     }
-    if (dungeon.enemyScale) reject(dungeon.towerFloor === undefined || Object.values(dungeon.enemyScale).length !== 3 || ![dungeon.enemyScale.hp, dungeon.enemyScale.attack, dungeon.enemyScale.defense].every(value => Number.isFinite(value) && value > 0 && value <= 10000), `dungeons/${dungeon.id}: invalid tower enemy scale`);
+    if (dungeon.enemyScale) reject((dungeon.towerFloor === undefined && !dungeon.fieldLesson) || Object.values(dungeon.enemyScale).length !== 3 || ![dungeon.enemyScale.hp, dungeon.enemyScale.attack, dungeon.enemyScale.defense].every(value => Number.isFinite(value) && value > 0 && value <= 10000), `dungeons/${dungeon.id}: invalid tower enemy scale`);
     if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || (dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
     if (dungeon.coordination) {
       const rule = dungeon.coordination;
@@ -200,7 +224,9 @@ export function validateContent(content: Content): string[] {
     reject(dungeon.kind !== undefined && !['normal', 'event', 'trial'].includes(dungeon.kind), `dungeons/${dungeon.id}: invalid kind`);
     if (dungeon.kind === 'trial') {
       reject(Boolean(dungeon.eventId || dungeon.eventReward || dungeon.bossLoot || dungeon.rareEncounter || dungeon.bossBits || dungeon.storyId), `dungeons/${dungeon.id}: trials cannot carry loot or special encounters`);
-      if (dungeon.coordination) {
+      if (dungeon.fieldLesson) {
+        reject(dungeon.waves.length !== 1 || dungeon.waves[0]?.length !== 1 || !dungeon.waves[0][0]?.boss, `dungeons/${dungeon.id}: research trial requires one boss`);
+      } else if (dungeon.coordination) {
         reject(dungeon.waves.length < 1 || dungeon.waves.some(wave => wave.length < 2 || wave.length > 4 || wave.some(enemy => !enemy.boss || !content.characters.some(char => char.id === enemy.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR'))), `dungeons/${dungeon.id}: coordination trials require two to four SSR goddess bosses per wave`);
       } else {
         reject(dungeon.waves.length < (dungeon.bossClock ? 1 : 2) || dungeon.waves.some(wave => wave.length !== 1 || !wave[0]?.boss || !content.characters.some(char => char.id === wave[0]!.characterId && char.published && (char.origin.includes('gacha') || char.origin.includes('trial')) && char.rarity === 'SSR')), `dungeons/${dungeon.id}: trials require sequential SSR goddess bosses`);

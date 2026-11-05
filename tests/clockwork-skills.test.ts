@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { content } from '../src/content';
+import { releasedContent as content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { advanceReplay, createBattle, resolveRound } from '../src/domain/engine';
 import { eventHpChanges } from '../src/platform/combat-feedback';

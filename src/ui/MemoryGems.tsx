@@ -94,6 +94,7 @@ export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetD
   }
 
   return <section className="memory-gems" aria-label={tr('記憶石')} data-testid="memory-gems">
+    <Button variant="secondary" disabled={Boolean(save.battle)} onClick={() => { location.hash = 'bag/polish'; }}><Sparkles size={17}/>{tr('原石を磨く')} · {inventory?.rough?.length ?? 0}</Button>
     <header className="memory-gems__header"><div><span className="memory-gems__eyebrow">MEMORY STONES</span><h2><Gem size={23} />{tr('記憶石')}</h2><p>{tr('ひとつの石が、旅の戦い方を変える。')}</p></div>{onClose && <Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button>}</header>
     {onBuilds && !save.battle && <Button variant="secondary" onClick={onBuilds}><Sparkles size={16} />{tr('おすすめビルド')}</Button>}
     <p className="memory-gems__intro">{tr('仲間1人につき1個。能力値を上げず、新しいスキルを授けます。')}</p>
