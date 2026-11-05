@@ -1,3 +1,4 @@
+import { validWorldStory, validateWorldStorySave } from '../domain/world-story';
 import { validFieldState } from '../domain/field-research';
 import { characterSkills } from '../domain/character-skills';
 import { validBarrierReturnState } from '../domain/barrier-return';
@@ -97,6 +98,7 @@ function validEvent(value: unknown): boolean {
 
 /** Reject unreadable records; callers must never interpret corruption as a new game. */
 export function assertValidSave(value: unknown): asserts value is GameSave {
+  if (record(value) && value.worldStory !== undefined && !validWorldStory(value.worldStory)) throw new Error('旅の記録を読み込めません。');
   if (record(value) && value.researchSkillIds !== undefined && !stringArray(value.researchSkillIds)) throw new Error('研究技能の記録が不正です。');
   if (!record(value) || value.schemaVersion !== 1) throw new Error('未対応または破損した保存形式です。セーブは保持されています。');
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
@@ -192,6 +194,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
       if (!scene || active.page >= scene.pages.length || (scene.trigger.kind !== 'opening' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
     }
   }
+  validateWorldStorySave(save,content);
   if (save.researchSkillIds && (!Array.isArray(save.researchSkillIds) || new Set(save.researchSkillIds).size !== save.researchSkillIds.length || save.researchSkillIds.some(id => !save.ownedIds.includes(id) || !content.fieldSkills?.[id]))) throw new Error('研究技能の記録が不正です。');
   const battle = save.battle;
   if (!battle) return;

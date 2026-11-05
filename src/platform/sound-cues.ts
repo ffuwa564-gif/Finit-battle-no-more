@@ -7,6 +7,7 @@ export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff', drop: 'drop', dialogue: 'dialogue', wave: 'wave', defeat: 'defeat',
 };
 export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
+  worldIncidentNotice:'select',worldStoryBegin:'confirm',worldProfile:'select',worldTravel:'depart',worldTravelCancel:'cancel',worldTalk:'dialogue',worldTalkNext:'dialogue',worldTalkFinish:'confirm',worldTalkClose:'cancel',worldTalkChoice:'select',
   researchSkill: 'select', startGemPolish: 'select', tapGemPolish: 'select', trackBuild: 'select', applyBuild: 'confirm',
   startGemRefinement: 'exchange', resolveGemRefinement: 'confirm', equipMemoryGem: 'confirm', salvageMemoryGem: 'exchange', lockMemoryGem: 'select', craftMemoryGem: 'recruit',
   commandOrder: 'select', partyOrder: 'select', focusEnemy: 'select',

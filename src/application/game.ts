@@ -1,3 +1,4 @@
+import { startWorldStory, startStoryTravel, cancelStoryTravel, beginStoryTalk, advanceStoryTalk, validHero, storyDestinations, acknowledgeWorldIncident } from '../domain/world-story';
 import { combatContent } from '../domain/combat-compatibility';
 import { roughMemoryGem, startGemPolish, tapGemPolish, ROUGH_NAMES } from '../domain/gem-polishing';
 import { scoutRecruitments } from '../content/scout-maidens';
@@ -99,7 +100,16 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.novels?.active && !['novelNext', 'novelBack', 'novelFinish', 'settings'].includes(command.type)) fail('物語を閉じてから操作してください。');
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
+  if(save.worldStory?.active && !['worldTalkNext','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
+    case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
+    case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
+    case 'worldTravel': {town(save);startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
+    case 'worldIncidentNotice': {if(!content.worldStory||!save.worldStory)fail('旅はまだ始まっていません。');acknowledgeWorldIncident(save,content.worldStory,command.incidentId);break;}
+    case 'worldTravelCancel': {town(save);if(save.worldStory)cancelStoryTravel(save.worldStory,context.now??Date.now());break;}
+    case 'worldTalk': {town(save);beginStoryTalk(save,content,command.nodeId,context.now??Date.now());break;}
+    case 'worldTalkNext': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);break;}
+
     case 'trackBuild': {
       town(save);
       const stage = command.stage ?? 'starter';
@@ -246,6 +256,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       if (command.potions > Math.min(5, save.potions)) fail('持ち込める回復薬は在庫内で5個までです。');
       const next = rng(save.seed);
       save.seed = next.seed;
+      if(save.worldStory){const point=content.worldStory?.chapters.flatMap(c=>c.dungeonIds).includes(dungeon.id);if(point){const {x,y}=storyDestinations(content,save).find(p=>p.id===dungeon.id)!;save.worldStory.position={x,y};}delete save.worldStory.journey;}
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
       save.battle.tracking = createExpeditionTracking(context.now);
       save.battle.researchSkillIds = [...(save.researchSkillIds ?? [])];

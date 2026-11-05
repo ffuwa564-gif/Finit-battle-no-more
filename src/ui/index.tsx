@@ -208,3 +208,7 @@ export { MemoryGemTier } from "./MemoryGemTier";
 import './field-research.css';
 
 export { FieldSkillChoice } from './FieldSkillChoice';
+
+export { WorldConversation } from './WorldConversation';
+
+export { WorldIncidentBanner, WorldIncidentNotice } from './WorldIncident';

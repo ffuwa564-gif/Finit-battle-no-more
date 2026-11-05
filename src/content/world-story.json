@@ -1,0 +1,4386 @@
+{
+  "version": 1,
+  "hubs": [
+    {
+      "id": "hub-guild",
+      "name": {
+        "ja": "ギルド",
+        "en": "Guild"
+      },
+      "x": 0.36,
+      "y": 0.71
+    },
+    {
+      "id": "hub-temple",
+      "name": {
+        "ja": "聖堂の前",
+        "en": "Cathedral"
+      },
+      "x": 0.25,
+      "y": 0.39
+    },
+    {
+      "id": "hub-greenhouse",
+      "name": {
+        "ja": "温室",
+        "en": "Greenhouse"
+      },
+      "x": 0.73,
+      "y": 0.6
+    },
+    {
+      "id": "hub-infirmary",
+      "name": {
+        "ja": "療養室",
+        "en": "Infirmary"
+      },
+      "x": 0.27,
+      "y": 0.55
+    },
+    {
+      "id": "hub-bridge",
+      "name": {
+        "ja": "帰還の橋",
+        "en": "Homeward Bridge"
+      },
+      "x": 0.44,
+      "y": 0.49
+    },
+    {
+      "id": "hub-observatory",
+      "name": {
+        "ja": "観測所",
+        "en": "Observatory"
+      },
+      "x": 0.77,
+      "y": 0.41
+    },
+    {
+      "id": "hub-forest",
+      "name": {
+        "ja": "樹海の境",
+        "en": "Forest Border"
+      },
+      "x": 0.24,
+      "y": 0.64
+    },
+    {
+      "id": "hub-garden",
+      "name": {
+        "ja": "庭園の卓",
+        "en": "Garden Table"
+      },
+      "x": 0.52,
+      "y": 0.17
+    },
+    {
+      "id": "hub-square",
+      "name": {
+        "ja": "灯祭の広場",
+        "en": "Lantern Square"
+      },
+      "x": 0.65,
+      "y": 0.76
+    },
+    {
+      "id": "hub-workshop",
+      "name": {
+        "ja": "仕立て室",
+        "en": "Sewing Room"
+      },
+      "x": 0.53,
+      "y": 0.65
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "chapterId": "mistbound-sanctuary",
+      "objective": {
+        "ja": "聖域の道を調べる",
+        "en": "Survey the sanctuary paths"
+      },
+      "endingNodeId": "c1-return",
+      "gates": {
+        "silent-cathedral": [
+          "c1-job"
+        ],
+        "stone-fountain": [
+          "c1-flowers",
+          "c1-care"
+        ]
+      },
+      "dungeonIds": [
+        "silent-cathedral",
+        "chapel-approach",
+        "bell-stairs",
+        "moon-garden",
+        "root-waterway",
+        "drowned-vestry",
+        "blue-lantern-path",
+        "sealed-arbor",
+        "scale-bridge",
+        "withered-nursery",
+        "fountain-threshold",
+        "stone-fountain"
+      ]
+    },
+    {
+      "number": 2,
+      "chapterId": "sealed-gate",
+      "objective": {
+        "ja": "温室の研究を手伝う",
+        "en": "Help at the greenhouse"
+      },
+      "endingNodeId": "c2-after",
+      "gates": {
+        "veiled-cloister": [
+          "c2-pot"
+        ],
+        "unwritten-cradle": [
+          "c2-promise"
+        ],
+        "memory-grafting": [
+          "c2-plan"
+        ],
+        "missing-name": [
+          "c2-key"
+        ],
+        "hollow-gate": [
+          "c2-rescue"
+        ]
+      },
+      "dungeonIds": [
+        "veiled-cloister",
+        "rain-glasshouse",
+        "two-teacups",
+        "thorn-court",
+        "unwritten-cradle",
+        "memory-grafting",
+        "closed-consultation",
+        "borrowed-lullaby",
+        "missing-name",
+        "overwritten-room",
+        "last-safety-key",
+        "hollow-gate"
+      ]
+    },
+    {
+      "number": 3,
+      "chapterId": "promise-of-dawn",
+      "objective": {
+        "ja": "街へ伸びた根を止める",
+        "en": "Stop the roots spreading through town"
+      },
+      "endingNodeId": "c3-morning",
+      "gates": {
+        "silver-crypt": [
+          "c3-visit"
+        ],
+        "starless-terrace": [
+          "c3-record"
+        ],
+        "pale-throne": [
+          "c3-sword"
+        ]
+      },
+      "dungeonIds": [
+        "silver-crypt",
+        "nameless-graves",
+        "soot-corridor",
+        "ashen-library",
+        "unburned-letter",
+        "pendulum-hall",
+        "starless-terrace",
+        "erased-star-chart",
+        "last-observatory",
+        "dawn-sluice",
+        "bell-sword-approach",
+        "pale-throne"
+      ]
+    },
+    {
+      "number": 4,
+      "chapterId": "pomegranate-forest",
+      "objective": {
+        "ja": "契生石を探して帰る",
+        "en": "Find the ritual stone and return"
+      },
+      "endingNodeId": "c4-home",
+      "gates": {
+        "ritual-stone-grove": [
+          "c4-walk"
+        ],
+        "zakuro-procession": [
+          "c4-cover"
+        ]
+      },
+      "dungeonIds": [
+        "ritual-stone-grove",
+        "zakuro-procession"
+      ]
+    },
+    {
+      "number": 5,
+      "chapterId": "blank-register",
+      "objective": {
+        "ja": "止まった帰還便を動かす",
+        "en": "Get the homeward carriage moving"
+      },
+      "endingNodeId": "c5-finish",
+      "gates": {
+        "guild-blank-request": [
+          "c5-request"
+        ],
+        "present-address": [
+          "c5-register",
+          "c5-cloth",
+          "c5-bed"
+        ],
+        "register-return": [
+          "c5-address"
+        ]
+      },
+      "dungeonIds": [
+        "guild-blank-request",
+        "registry-corridor",
+        "infirmary-delivery",
+        "unclaimed-courtyard",
+        "infirmary-handover",
+        "old-return-seal",
+        "borrowed-bed",
+        "present-address",
+        "registry-threshold",
+        "register-return"
+      ]
+    },
+    {
+      "number": 6,
+      "chapterId": "returned-lanterns",
+      "objective": {
+        "ja": "灯祭の夜を迎える",
+        "en": "See the lantern festival through"
+      },
+      "endingNodeId": "c6-breakfast",
+      "gates": {
+        "night-watch-request": [
+          "c6-invite"
+        ],
+        "closed-homeward-lane": [
+          "c6-relay"
+        ],
+        "last-lantern-watch": [
+          "c6-prayer"
+        ],
+        "lantern-return": [
+          "c6-path"
+        ]
+      },
+      "dungeonIds": [
+        "night-watch-request",
+        "lantern-oil-store",
+        "festival-table",
+        "resting-sign",
+        "watch-relay",
+        "unlit-lantern",
+        "closed-homeward-lane",
+        "prayer-without-order",
+        "last-lantern-watch",
+        "lantern-return"
+      ]
+    },
+    {
+      "number": 7,
+      "chapterId": "two-signatures-chapter",
+      "objective": {
+        "ja": "二人で、儀式の支度をする",
+        "en": "Prepare for the ritual together"
+      },
+      "endingNodeId": "c7-together",
+      "gates": {
+        "mending-room": [
+          "c7-sleeve"
+        ],
+        "two-wishes": [
+          "c7-names",
+          "c7-care"
+        ],
+        "stop-signal": [
+          "c7-door"
+        ],
+        "two-signatures": [
+          "c7-stop"
+        ]
+      },
+      "dungeonIds": [
+        "mending-room",
+        "ritual-stone-check",
+        "care-names",
+        "two-wishes",
+        "signature-margin",
+        "open-greenhouse-door",
+        "unspent-thread",
+        "stop-signal",
+        "unfinished-name",
+        "two-signatures"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "c1-job",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "初仕事の話をしよう",
+        "en": "Our first job"
+      },
+      "title": {
+        "ja": "初仕事の話をしよう",
+        "en": "Our first job"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "{name}、地図を出せ。今日は聖堂までだ。",
+            "en": "{name}, get your map. Today we go to the cathedral."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……これ、逆さま？",
+            "en": "Okay. ...Am I holding it upside down?"
+          },
+          "voices": {
+            "soft": {
+              "ja": "うん。……これ、逆さま？",
+              "en": "Okay. ...Am I holding it upside down?"
+            },
+            "honest": {
+              "ja": "分かった。あ、地図が逆だった。",
+              "en": "All right. Oh, I had the map upside down."
+            },
+            "dreamy": {
+              "ja": "うん。……泉って、こんな形だったんだね。",
+              "en": "Okay. ...So that is the shape of the fountain."
+            }
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "泉が上だ。そこを持てば、風で折れない。",
+            "en": "The fountain goes at the top. Hold that corner against the wind."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ありがとう。隣、歩いてもいい？",
+            "en": "Thank you. Can I walk beside you?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "道が狭くなったら、後ろへ下がれ。",
+            "en": "When the path narrows, fall in behind me."
+          }
+        }
+      ],
+      "leadDungeonId": "silent-cathedral"
+    },
+    {
+      "id": "c1-chart",
+      "chapter": 1,
+      "actorId": "noelle",
+      "hubId": "hub-observatory",
+      "bubble": {
+        "ja": "鐘楼の地図を見せて",
+        "en": "Let me see the belfry map"
+      },
+      "title": {
+        "ja": "鐘楼の地図を見せて",
+        "en": "Let me see the belfry map"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "bell-stairs"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "ここの泉、紙を削って消してある。水音を聞いても、道を外れないで。",
+            "en": "Someone scraped this fountain off the paper. Stay on the path, even if you hear water."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "……泉の調査に出た人たちが、まだ戻っていないの。セリスに聞いてみて。",
+            "en": "...The people surveying the fountain have not returned. Ask Seris."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "狼にも、言っておく？",
+            "en": "Should we tell the wolf too?"
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "あの子は知ってるみたい。心配なのは、あなた。",
+            "en": "She seems to know already. You are the one I worry about."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、目印を教えて。一緒に覚えるから。",
+            "en": "Then show me the landmarks. I will learn them with you."
+          }
+        }
+      ],
+      "leadDungeonId": "moon-garden"
+    },
+    {
+      "id": "c1-wolf",
+      "chapter": 1,
+      "actorId": "seris",
+      "hubId": "hub-temple",
+      "bubble": {
+        "ja": "狼が動かなくて",
+        "en": "The wolf will not budge"
+      },
+      "title": {
+        "ja": "狼が動かなくて",
+        "en": "The wolf will not budge"
+      },
+      "requiresNodes": [
+        "c1-chart"
+      ],
+      "requiresDungeons": [
+        "moon-garden"
+      ],
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "門に来ると、いつもこうなんだ。誰かを待ってるのかな。",
+            "en": "She always stops at the gate. Maybe she is waiting for someone."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "少し、一緒に待ってみようよ。",
+            "en": "Let us wait with her for a little while."
+          },
+          "voices": {
+            "honest": {
+              "ja": "待ってみよう。私も、ここにいる。",
+              "en": "Let us wait. I will stay here too."
+            },
+            "dreamy": {
+              "ja": "この子、誰のことを待っているのかな。少し一緒にいようよ。",
+              "en": "I wonder whom she is waiting for. Let us stay with her a while."
+            }
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "……ありがとう。私も、ここを知ってる気がするんだけど。",
+            "en": "...Thank you. I feel as if I know this place too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "思い出したら、聞かせて。急がなくていいから。",
+            "en": "Tell me if you remember. There is no hurry."
+          }
+        }
+      ],
+      "leadDungeonId": "root-waterway"
+    },
+    {
+      "id": "c1-flowers",
+      "chapter": 1,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "この鉢を届けたいの",
+        "en": "A pot to deliver"
+      },
+      "title": {
+        "ja": "この鉢を届けたいの",
+        "en": "A pot to deliver"
+      },
+      "requiresNodes": [
+        "c1-chart"
+      ],
+      "requiresDungeons": [
+        "withered-nursery"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "温室の方へ届けたいんです。窓辺に置けば、寝台からも見えるので。",
+            "en": "I want to send this to the greenhouse. She can see the windowsill from her bed."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私が持っていくね。抱え方、これで平気？",
+            "en": "I will take it. Am I holding it properly?"
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "底をもう片方の手で。……そう。あなたの袖も汚れちゃいますね。",
+            "en": "Put your other hand under it. Yes. ...Your sleeve will get dirty."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "洗えば落ちるよ。あの人、喜んでくれるといいな。",
+            "en": "It will wash out. I hope she likes it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-care",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "足を見せてみろ",
+        "en": "Let me see your foot"
+      },
+      "title": {
+        "ja": "足を見せてみろ",
+        "en": "Let me see your foot"
+      },
+      "requiresNodes": [
+        "c1-wolf"
+      ],
+      "requiresDungeons": [
+        "fountain-threshold"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "歩き方がおかしい。どこで痛めた。",
+            "en": "You are limping. Where did you hurt yourself?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "橋で、ちょっと。歩けるから……。",
+            "en": "At the bridge. Just a little. I can still walk..."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "座れ。靴の中に石が入っているだけかもしれん。",
+            "en": "Sit down. There may only be a stone in your shoe."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……ほんとだ。小さいのに、痛かったね。",
+            "en": "...There is. Such a little thing, and it hurt so much."
+          }
+        }
+      ],
+      "leadDungeonId": "stone-fountain"
+    },
+    {
+      "id": "c1-return",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "皆、戻ったな",
+        "en": "Everyone is back"
+      },
+      "title": {
+        "ja": "皆、戻ったな",
+        "en": "Everyone is back"
+      },
+      "requiresNodes": [
+        "c1-flowers",
+        "c1-care"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "点呼は済んだ。報告を出したら、庭園へ戻る。",
+            "en": "Everyone is accounted for. We will return to the garden after filing the report."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "その前に、鉢を届けてもいい？",
+            "en": "Can we deliver the pot first?"
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "水は替えてあります。重かったら、途中まで持ちますよ。",
+            "en": "I changed the water. If it is heavy, I can carry it part of the way."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……道は調べてある。明日、私が案内する。",
+            "en": "...I checked the route. I will take you tomorrow."
+          }
+        }
+      ],
+      "ending": true
+    },
+    {
+      "id": "c1-snack",
+      "chapter": 1,
+      "actorId": "fio",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "帰りに寄っていかない？",
+        "en": "Stop by on the way home?"
+      },
+      "title": {
+        "ja": "帰りに寄っていかない？",
+        "en": "Stop by on the way home?"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "moon-garden"
+      ],
+      "lines": [
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "配達、終わった？ お茶をいれたところなんだ。",
+            "en": "Finished your deliveries? I just made tea."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "邪魔じゃなければ、少しだけ。",
+            "en": "If I am not in the way, just for a little while."
+          }
+        },
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "あなたの分もあるよ。椅子、引いて。",
+            "en": "There is some for you too. Pull up a chair."
+          },
+          "favorites": {
+            "tea": {
+              "ja": "砂糖は、こっち。あなた、甘い方が好きだったよね。",
+              "en": "The sugar is here. You like yours sweet, right?"
+            },
+            "flowers": {
+              "ja": "窓の花、見て。配達先で一輪もらったんだ。",
+              "en": "Look at the flower by the window. Someone gave it to me on my rounds."
+            },
+            "animals": {
+              "ja": "狼の寝る場所なら、机の下を空けてあるよ。",
+              "en": "I cleared a space under the table for the wolf to sleep."
+            }
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……うれしい。ありがとう。",
+            "en": "...That makes me happy. Thank you."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "配達は、あと一軒。戻ったら、お茶にしない？",
+              "en": "One more delivery. Shall we have tea when I get back?"
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "じゃあ、お湯を沸かしておく。",
+              "en": "I will put the water on."
+            }
+          },
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "ありがとう。すぐ戻るよ。",
+              "en": "Thank you. I will be right back."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "包みをまとめておくね",
+          "en": "I will gather the parcels"
+        },
+        "lines": [
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "必要な包みを、ここへまとめておくね。帰るとき、寄っていって。",
+              "en": "I will gather the supplies here. Stop by when you come back."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "どれを運ぶか、戻ったら教えて。",
+              "en": "Tell me which parcels to carry when I get back."
+            }
+          },
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "目印を付けておくね。",
+              "en": "I will mark them for you."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-pot",
+      "chapter": 2,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "温室まで送る",
+        "en": "I will take you to the greenhouse"
+      },
+      "title": {
+        "ja": "温室まで送る",
+        "en": "I will take you to the greenhouse"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "その鉢、昨日から抱えているだろう。少し持つ。",
+            "en": "You have been holding that pot since yesterday. Let me take it."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私が届けるって、約束したから。",
+            "en": "I promised to deliver it."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "届けるのはおまえだ。途中まで持つだけだ。",
+            "en": "You will deliver it. I am only carrying it part of the way."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……じゃあ、お願い。",
+            "en": "...All right. Thank you."
+          }
+        }
+      ],
+      "leadDungeonId": "veiled-cloister"
+    },
+    {
+      "id": "c2-tea",
+      "chapter": 2,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "今日は、こっちで食べない？",
+        "en": "Will you eat here today?"
+      },
+      "title": {
+        "ja": "今日は、こっちで食べない？",
+        "en": "Will you eat here today?"
+      },
+      "requiresNodes": [
+        "c2-pot"
+      ],
+      "requiresDungeons": [
+        "two-teacups"
+      ],
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "椅子の紙、どけていいよ。そんなところで立ってないで。",
+            "en": "Move the papers off the chair. Do not stand in the doorway."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "これ、研究の途中じゃない？",
+            "en": "Are these part of your research?"
+          },
+          "voices": {
+            "honest": {
+              "ja": "この紙、どこへ置いたらいい？",
+              "en": "Where should I put these papers?"
+            },
+            "dreamy": {
+              "ja": "文字がいっぱい。……途中の紙なら、こっちへ寄せてもいい？",
+              "en": "So many notes. ...If these are unfinished, can I move them over here?"
+            }
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "途中。だから捨てないで、隣に積んで。",
+            "en": "They are. Stack them beside you; do not throw them away."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……お茶、いい匂い。",
+            "en": "Okay. ...The tea smells lovely."
+          }
+        }
+      ],
+      "leadDungeonId": "thorn-court"
+    },
+    {
+      "id": "c2-promise",
+      "chapter": 2,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "また、来てくれる？",
+        "en": "Will you come again?"
+      },
+      "title": {
+        "ja": "また、来てくれる？",
+        "en": "Will you come again?"
+      },
+      "requiresNodes": [
+        "c2-tea"
+      ],
+      "requiresDungeons": [
+        "thorn-court"
+      ],
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "昨日、あなたが帰ったあと、もう一つ茶碗を洗っちゃった。",
+            "en": "Yesterday, after you left, I washed an extra cup by mistake."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私も、帰りにお茶の葉を買ったよ。ここで飲みたくて。",
+            "en": "I bought tea on the way back. I wanted to drink it here."
+          },
+          "voices": {
+            "honest": {
+              "ja": "私も、また来たくて。帰りにお茶の葉を買ったよ。",
+              "en": "I wanted to come back too. I bought tea on the way home."
+            },
+            "dreamy": {
+              "ja": "帰り道も、お茶の匂いを思い出してた。……葉っぱ、買ってきたの。",
+              "en": "I kept remembering the scent on the way home. ...I brought some tea leaves."
+            }
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "……会えない日もあると思う。返事が遅くても、待ってくれる？",
+            "en": "...There will be days I cannot see you. Will you wait, even if I am slow to answer?"
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "visit",
+          "label": {
+            "ja": "また、会いに来たい",
+            "en": "I want to see you again"
+          },
+          "response": [
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "あなたに会いに来たい。お茶がなくても。",
+                "en": "I want to see you, even if there is no tea."
+              }
+            },
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "じゃあ、明日も椅子は空けておく。",
+                "en": "Then I will leave the chair free tomorrow."
+              }
+            }
+          ]
+        },
+        {
+          "id": "stay",
+          "label": {
+            "ja": "もう少し、そばにいたい",
+            "en": "I want to stay a little longer"
+          },
+          "response": [
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "今日は、もう少しそばにいてもいい？",
+                "en": "Can I stay beside you a little longer today?"
+              }
+            },
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "うん。私も、まだ帰ってほしくない。",
+                "en": "Yes. I do not want you to leave yet either."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c2-plan",
+      "chapter": 2,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "研究も、見ていく？",
+        "en": "Would you like to see my research?"
+      },
+      "title": {
+        "ja": "研究も、見ていく？",
+        "en": "Would you like to see my research?"
+      },
+      "requiresNodes": [
+        "c2-promise"
+      ],
+      "requiresDungeons": [
+        "unwritten-cradle"
+      ],
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "新しい子を迎えるための炉だって。でも、古い図なの。",
+            "en": "They say this furnace can bring a new girl into the world. But the plans are old."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "一緒に読んでもいい？ 分からないところ、書いておくね。",
+            "en": "Can I read them with you? I will note what we do not understand."
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "まず、止め方から。鍵はあなたが持っていて。",
+            "en": "First, how to stop it. You keep the key."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。今日は、二人で確かめよう。",
+            "en": "All right. Let us check it together today."
+          }
+        }
+      ],
+      "leadDungeonId": "memory-grafting"
+    },
+    {
+      "id": "c2-clinic",
+      "chapter": 2,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "二人とも、少し休んで",
+        "en": "Both of you need some rest"
+      },
+      "title": {
+        "ja": "二人とも、少し休んで",
+        "en": "Both of you need some rest"
+      },
+      "requiresNodes": [
+        "c2-plan"
+      ],
+      "requiresDungeons": [
+        "closed-consultation"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "実験は、今夜から休んでください。手帳は、なくさないように。",
+            "en": "Please suspend the experiment tonight. Keep your notebooks safe."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "お店の名前、二人とも思い出せないんです。",
+            "en": "Neither of us can remember the name of the shop."
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "……私が先に気づけばよかった。",
+            "en": "...I should have noticed sooner."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "一緒に来てくれたでしょう。今日は、帰って休もう。",
+            "en": "You came here with me. Let us go home and rest today."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c2-key",
+      "chapter": 2,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "今夜、止めよう",
+        "en": "Let us stop it tonight"
+      },
+      "title": {
+        "ja": "今夜、止めよう",
+        "en": "Let us stop it tonight"
+      },
+      "requiresNodes": [
+        "c2-clinic"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "停止の頁、折っておいた。……今夜、止めよう。",
+            "en": "I folded the shutdown page. ...Let us stop it tonight."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。鍵は、ここにあるよ。",
+            "en": "Yes. I have the key here."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "彼女が奥の部屋へ戻ったあとも、炉からは二人で笑った午後の声がした。",
+            "en": "After she went to her room, the furnace still played the voices of an afternoon we had spent laughing."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……明日には、止める。",
+            "en": "...Tomorrow. I will stop it tomorrow."
+          }
+        }
+      ],
+      "leadDungeonId": "missing-name"
+    },
+    {
+      "id": "c2-rescue",
+      "chapter": 2,
+      "actorId": "liora",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "療養室への道を開ける",
+        "en": "Clear the infirmary route"
+      },
+      "title": {
+        "ja": "療養室への道を開ける",
+        "en": "Clear the infirmary route"
+      },
+      "requiresNodes": [
+        "c2-key"
+      ],
+      "requiresDungeons": [
+        "last-safety-key"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "エレインが運んでいる。おまえは鍵を離すな。",
+            "en": "Elaine is carrying her out. Hold on to the key."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私が、昨日止めていれば……。",
+            "en": "If I had stopped it yesterday..."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "今は、あの二人が通る道を開ける。手を貸せ。",
+            "en": "Right now, we need a path for those two. Help me."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……ここを、押さえるね。",
+            "en": "Yes. ...I will hold this down."
+          }
+        }
+      ],
+      "leadDungeonId": "hollow-gate"
+    },
+    {
+      "id": "c2-after",
+      "chapter": 2,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "今日は眠っています",
+        "en": "She is asleep today"
+      },
+      "title": {
+        "ja": "今日は眠っています",
+        "en": "She is asleep today"
+      },
+      "requiresNodes": [
+        "c2-rescue"
+      ],
+      "requiresDungeons": [
+        "hollow-gate"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "手当ては済みました。今日は、眠っています。",
+            "en": "Her wounds are treated. She is asleep today."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私のこと、分からなかった。",
+            "en": "She did not know who I was."
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "明日もいらっしゃいますか。起きていたら、お声をかけます。",
+            "en": "Will you come tomorrow? If she is awake, I will let her know."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……うん。お茶は、まだ持ってきてもいい？",
+            "en": "...Yes. Is it still all right to bring tea?"
+          }
+        }
+      ],
+      "ending": true
+    },
+    {
+      "id": "c3-visit",
+      "chapter": 3,
+      "actorId": "seris",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "今日は、一緒に歩こう",
+        "en": "Let us walk together today"
+      },
+      "title": {
+        "ja": "今日は、一緒に歩こう",
+        "en": "Let us walk together today"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "療養室へ行くんでしょう。今日は、私も行っていい？",
+            "en": "You are going to the infirmary, right? Can I come today?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "用事、あったんじゃ……。",
+            "en": "Did you not have something to do?"
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "帰りに寄れるから。あなたも、道で迷ったって聞いたし。",
+            "en": "I can do it on the way back. I heard you lost your way too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……じゃあ、隣にいて。",
+            "en": "...Then stay beside me."
+          },
+          "voices": {
+            "honest": {
+              "ja": "来てくれると、うれしい。一緒に行こう。",
+              "en": "I would be glad if you came. Let us go together."
+            },
+            "dreamy": {
+              "ja": "うん。……今日は、並んで歩きたいな。",
+              "en": "Yes. ...I would like to walk side by side today."
+            }
+          }
+        }
+      ],
+      "leadDungeonId": "silver-crypt"
+    },
+    {
+      "id": "c3-record",
+      "chapter": 3,
+      "actorId": "noelle",
+      "hubId": "hub-observatory",
+      "bubble": {
+        "ja": "書庫の図を広げよう",
+        "en": "Spread out the archive plans"
+      },
+      "title": {
+        "ja": "書庫の図を広げよう",
+        "en": "Spread out the archive plans"
+      },
+      "requiresNodes": [
+        "c3-visit"
+      ],
+      "requiresDungeons": [
+        "ashen-library"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "温室の根が、街の封印まで伸びてる。これを止めた剣、覚えてる？",
+            "en": "The greenhouse roots have reached the town seal. Do you remember the sword that stopped it?"
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "……私のだと思う。朝を、ここで止めた。",
+            "en": "...I think it was mine. I stopped the morning here."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "セリス、ここに座って。私も一緒に聞くから。",
+            "en": "Seris, sit here. I will listen with you."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "水路を探す。封印を解く前に、力を逃がせる場所が要る。",
+            "en": "I will find a waterway. We need somewhere for that power to drain before opening the seal."
+          }
+        }
+      ],
+      "leadDungeonId": "starless-terrace"
+    },
+    {
+      "id": "c3-evacuate",
+      "chapter": 3,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "療養室を空けなくちゃ",
+        "en": "We must evacuate the infirmary"
+      },
+      "title": {
+        "ja": "療養室を空けなくちゃ",
+        "en": "We must evacuate the infirmary"
+      },
+      "requiresNodes": [
+        "c3-record"
+      ],
+      "requiresDungeons": [
+        "erased-star-chart"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "歩けない人もいます。私だけでは、一度に連れていけません。",
+            "en": "Some cannot walk. I cannot take everyone at once."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私が、戻ってくる人を数えるね。もう一度迎えに来るときも。",
+            "en": "I will count everyone returning, including on the second trip."
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "では、毛布を先に橋へ。あの人の鉢も、忘れずに。",
+            "en": "Then take the blankets to the bridge first. And do not forget her pot."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。鉢は、私が持つ。",
+            "en": "I will carry it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c3-bridge",
+      "chapter": 3,
+      "actorId": "liora",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "橋の点呼を頼む",
+        "en": "Count everyone at the bridge"
+      },
+      "title": {
+        "ja": "橋の点呼を頼む",
+        "en": "Count everyone at the bridge"
+      },
+      "requiresNodes": [
+        "c3-record"
+      ],
+      "requiresDungeons": [
+        "last-observatory"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私は最後の列についていく。先に戻って、空いた寝台を数えてくれ。",
+            "en": "I will escort the last group. Go ahead and count the free beds."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "戻ってきたら、あなたの名前も呼ぶからね。",
+            "en": "When you return, I will call your name too."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……聞こえる所まで戻る。",
+            "en": "...I will come back within earshot."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "待ってる。セリスにも、伝えておく。",
+            "en": "I will be waiting. I will tell Seris."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c3-water",
+      "chapter": 3,
+      "actorId": "noelle",
+      "hubId": "hub-observatory",
+      "bubble": {
+        "ja": "水門を開けに行こう",
+        "en": "Let us open the sluice"
+      },
+      "title": {
+        "ja": "水門を開けに行こう",
+        "en": "Let us open the sluice"
+      },
+      "requiresNodes": [
+        "c3-record"
+      ],
+      "requiresDungeons": [
+        "dawn-sluice"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "水は流れ始めた。でも、玉座の床はまだ揺れてる。",
+            "en": "The water is moving, but the throne room floor is still shaking."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "橋の人たちは、もう一度迎えに行ってる。",
+            "en": "They have gone back for another group at the bridge."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "じゃあ、解除は待ってもらう。見える位置に灯を置こう。",
+            "en": "Then we must delay the release. Put a lamp where she can see it."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私が持っていく。消えたら、点け直せるように。",
+            "en": "I will carry it, with what I need to relight it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c3-sword",
+      "chapter": 3,
+      "actorId": "seris",
+      "hubId": "hub-temple",
+      "bubble": {
+        "ja": "帰り道も、確かめたい",
+        "en": "I want to check the way back"
+      },
+      "title": {
+        "ja": "帰り道も、確かめたい",
+        "en": "I want to check the way back"
+      },
+      "requiresNodes": [
+        "c3-evacuate",
+        "c3-bridge",
+        "c3-water"
+      ],
+      "requiresDungeons": [
+        "bell-sword-approach"
+      ],
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "剣を合わせると、師匠の声を思い出すんだ。また、一人で行くのかって。",
+            "en": "When our swords meet, I remember my teacher asking if I am going alone again."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……今は、私もいるよ。",
+            "en": "...I am here now too."
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "うん。帰りも、いてほしい。",
+            "en": "Yes. I want you here on the way back too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、帰ってからのお茶、何人分か数えよう。",
+            "en": "Then let us count how many cups of tea we will need when we return."
+          }
+        }
+      ],
+      "leadDungeonId": "pale-throne"
+    },
+    {
+      "id": "c3-morning",
+      "chapter": 3,
+      "actorId": "seris",
+      "hubId": "hub-temple",
+      "bubble": {
+        "ja": "朝になったよ",
+        "en": "Morning has come"
+      },
+      "title": {
+        "ja": "朝になったよ",
+        "en": "Morning has come"
+      },
+      "requiresNodes": [
+        "c3-sword"
+      ],
+      "requiresDungeons": [
+        "pale-throne"
+      ],
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "狼の影、あんなに長かったんだね。",
+            "en": "I never knew the wolf had such a long shadow."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……明るいと、道が違って見えるね。",
+            "en": "...The road looks different in the light."
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "花を摘んだら、療養室へ戻ります。お二人も来ますか。",
+            "en": "I am going back to the infirmary after picking flowers. Will you both come?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。今日は、私の名前から話してみる。",
+            "en": "Yes. Today, I will start by telling her my name."
+          }
+        }
+      ],
+      "ending": true
+    },
+    {
+      "id": "c4-invitation",
+      "chapter": 4,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "森へ行く前に",
+        "en": "Before we go to the forest"
+      },
+      "title": {
+        "ja": "森へ行く前に",
+        "en": "Before we go to the forest"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "契生石の依頼が出ている。……おまえと、話してから受けようと思った。",
+            "en": "There is a request for a ritual stone. ...I wanted to talk to you before accepting."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "二人で行くの？",
+            "en": "Just the two of us?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ああ。途中で戻ることもある。その合図も、先に決める。",
+            "en": "Yes. We may turn back. We should agree on that signal first."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "分かった。帰りに寄りたい場所も、話していい？",
+            "en": "All right. Can I tell you where I would like to stop on the way home?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "c4-supplies",
+      "chapter": 4,
+      "actorId": "fio",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "包みは二つでいい？",
+        "en": "Two parcels for the road?"
+      },
+      "title": {
+        "ja": "包みは二つでいい？",
+        "en": "Two parcels for the road?"
+      },
+      "requiresNodes": [
+        "c4-invitation"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "二人で遠出？ お昼は分けて包むね。片方が濡れても済むように。",
+            "en": "A trip for two? I will wrap lunch separately, in case one parcel gets wet."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "リオラの分、私が持とうかな。",
+            "en": "Maybe I could carry Liora's too."
+          }
+        },
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "あなた、自分の分まで忘れそう。ちゃんと名前を書いておこう。",
+            "en": "You might forget to eat your own. Let us label them."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……帰ってきたら、包みも返しに来るね。",
+            "en": "...I will bring the wrapping back when we return."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c4-walk",
+      "chapter": 4,
+      "actorId": "liora",
+      "hubId": "hub-forest",
+      "bubble": {
+        "ja": "少し、休んでいこう",
+        "en": "Let us rest a little"
+      },
+      "title": {
+        "ja": "少し、休んでいこう",
+        "en": "Let us rest a little"
+      },
+      "requiresNodes": [
+        "c4-supplies"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あの木、帰りにも見に寄りたいな。花が咲きそうだった。",
+            "en": "I would like to see that tree on the way home. It looked ready to bloom."
+          },
+          "voices": {
+            "honest": {
+              "ja": "帰りに、あの木を見に寄ろうよ。花が咲きそうだった。",
+              "en": "Let us stop at that tree on the way back. It looked ready to bloom."
+            },
+            "dreamy": {
+              "ja": "帰りに、あの木を探してもいい？ つぼみが気になって。",
+              "en": "Can we look for that tree on the way home? I keep thinking about its buds."
+            }
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "今日のうちに咲くものか？",
+            "en": "Will it bloom today?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "分からない。……見に寄りたいだけ。",
+            "en": "I do not know. ...I just want to look."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "なら、地図へ印を付けておけ。",
+            "en": "Then mark it on the map."
+          }
+        }
+      ],
+      "leadDungeonId": "ritual-stone-grove"
+    },
+    {
+      "id": "c4-cover",
+      "chapter": 4,
+      "actorId": "liora",
+      "hubId": "hub-forest",
+      "bubble": {
+        "ja": "盾の陰へ来い",
+        "en": "Get behind my shield"
+      },
+      "title": {
+        "ja": "盾の陰へ来い",
+        "en": "Get behind my shield"
+      },
+      "requiresNodes": [
+        "c4-walk"
+      ],
+      "requiresDungeons": [
+        "ritual-stone-grove"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "{name}、伏せろ。枝の鈴は、庭の境だ。",
+            "en": "{name}, get down. Those bells mark a garden border."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……あの人たち、傷ついた子も一緒に動いてる。",
+            "en": "...They are moving together, even with their wounded."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ザクロの行列だ。道を塞ぐ者も、すぐ交代している。",
+            "en": "Zakuro's procession. Even those blocking the road take turns at once."
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "聞きたくないわ。この子たちに近づけないで。空からは、盾の後ろを狙いなさい。",
+            "en": "I do not want to hear it. Keep them away from my girls. From above, aim behind that shield."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あなたの後ろにいる。抜けられる道を、一緒に探す。",
+            "en": "I will stay behind you. Let us find a way through together."
+          }
+        }
+      ],
+      "leadDungeonId": "zakuro-procession"
+    },
+    {
+      "id": "c4-retreat",
+      "chapter": 4,
+      "actorId": "liora",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "石より、先に手を",
+        "en": "Your hand, before the stone"
+      },
+      "title": {
+        "ja": "石より、先に手を",
+        "en": "Your hand, before the stone"
+      },
+      "requiresNodes": [
+        "c4-cover"
+      ],
+      "requiresDungeons": [
+        "zakuro-procession"
+      ],
+      "lines": [
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "石は、鞄にある。……腕、支えてもいい？",
+            "en": "The stone is in my bag. ...Can I support your arm?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "盾を外す。少しだけ、ここを押さえろ。",
+            "en": "I will take off my shield. Hold this for a moment."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。痛かったら、言ってね。",
+            "en": "All right. Tell me if it hurts."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……おまえの手も、あとで見せろ。",
+            "en": "...Show me your hand afterward too."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "赤い紐の向こうで、神輿の鈴が止まった。",
+            "en": "Beyond the red cord, the palanquin bells fell silent."
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "追わなくていいわ。……その紐、傷に当たっているでしょう。少し足を上げて。",
+            "en": "Do not pursue them. ...That cord is rubbing your wound. Lift your foot a little."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c4-report",
+      "chapter": 4,
+      "actorId": "noelle",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "行列の通り道を描こう",
+        "en": "Mark the procession route"
+      },
+      "title": {
+        "ja": "行列の通り道を描こう",
+        "en": "Mark the procession route"
+      },
+      "requiresNodes": [
+        "c4-retreat"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "同じ道へ戻らないように、見た場所を教えて。",
+            "en": "Tell me where you saw them, so we do not take that road again."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "赤い紐があって、その先で……。",
+            "en": "There was a red cord, and beyond it..."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "休ませる場所も決めていた。追うのを止めたのは、傷ついた子がいたからだ。",
+            "en": "They had arranged a place to rest too. She stopped the pursuit because one of her girls was hurt."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "分かった。今度近づくなら、先に知らせよう。",
+            "en": "All right. If we approach again, we should send word first."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c4-home",
+      "chapter": 4,
+      "actorId": "liora",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "ここにいてもいいか",
+        "en": "May I stay here?"
+      },
+      "title": {
+        "ja": "ここにいてもいいか",
+        "en": "May I stay here?"
+      },
+      "requiresNodes": [
+        "c4-report"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "手当てが済むまで、ここにいる。庭園への報告は、あとだ。",
+            "en": "I will stay until your hand is treated. The report can wait."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……お昼の包み、返しに行かなきゃ。",
+            "en": "...We still have to return the lunch wrapping."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "一緒に行けばいい。今は、座っていろ。",
+            "en": "We will go together. Sit down for now."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。隣、空けておくね。",
+            "en": "All right. I will keep the seat beside me free."
+          }
+        }
+      ],
+      "ending": true
+    },
+    {
+      "id": "c5-request",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "帰還便が止まっていて",
+        "en": "The homeward carriage has stopped"
+      },
+      "title": {
+        "ja": "帰還便が止まっていて",
+        "en": "The homeward carriage has stopped"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "橋で帰還便が止まっています。名簿と人数が合わないと、門が開かないんです。",
+            "en": "The carriage is stuck at the bridge. The gate will not open because the register and passenger count disagree."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "誰か、降りちゃったの？",
+            "en": "Did someone get off?"
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "一人、帰るとは答えていない方がいて。まず、話を聞きに行きたいんです。",
+            "en": "One girl has not agreed to go back. I want to hear what she has to say first."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "一緒に行こう。急かされると、話しにくいものね。",
+            "en": "Let us go together. It is hard to talk when everyone is rushing you."
+          }
+        }
+      ],
+      "leadDungeonId": "guild-blank-request"
+    },
+    {
+      "id": "c5-girl",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "あの子に会ってくれる？",
+        "en": "Will you meet her?"
+      },
+      "title": {
+        "ja": "あの子に会ってくれる？",
+        "en": "Will you meet her?"
+      },
+      "requiresNodes": [
+        "c5-request"
+      ],
+      "requiresDungeons": [
+        "guild-blank-request"
+      ],
+      "lines": [
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "……ここの人？",
+            "en": "...Are you from here?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "イオネも、向こうで待ってる。ここ、座ってもいい？",
+            "en": "Ione is waiting over there. Can I sit here?"
+          },
+          "voices": {
+            "honest": {
+              "ja": "イオネも向こうで待ってる。ここに座っていい？",
+              "en": "Ione is waiting over there too. Can I sit here?"
+            },
+            "dreamy": {
+              "ja": "一緒に待ってもいい？ イオネも、すぐそこにいるから。",
+              "en": "May I wait with you? Ione is just over there too."
+            }
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "その椅子、脚がぐらつくよ。",
+            "en": "That chair has a loose leg."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "教えてくれて、ありがとう。こっちなら平気かな。",
+            "en": "Thank you for telling me. Perhaps this one will be all right."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "うん。……まだ、庭へは戻りたくない。",
+            "en": "Yes. ...I do not want to go back to the garden yet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c5-register",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "古い宛先を確かめたい",
+        "en": "Check the old address"
+      },
+      "title": {
+        "ja": "古い宛先を確かめたい",
+        "en": "Check the old address"
+      },
+      "requiresNodes": [
+        "c5-girl"
+      ],
+      "requiresDungeons": [
+        "registry-corridor"
+      ],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "昔は、ここへ帰れば探してもらえたんですね。でも、今の返事を書く欄がない。",
+            "en": "Once, people could be found if they returned here. But there is no space for her answer now."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "紙を一枚、足せる？ 古い方も、残したままで。",
+            "en": "Can we add a page, keeping the old one too?"
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "はい。……今夜の住所は、本人に聞いてから書きます。",
+            "en": "Yes. ...I will ask where she wants to stay tonight before writing the address."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "寝る場所が決まったら、また知らせに来るね。",
+            "en": "I will come back when we know where she will sleep."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c5-cloth",
+      "chapter": 5,
+      "actorId": "fio",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "薬布を運んでくれる？",
+        "en": "Will you carry these dressings?"
+      },
+      "title": {
+        "ja": "薬布を運んでくれる？",
+        "en": "Will you carry these dressings?"
+      },
+      "requiresNodes": [
+        "c5-girl"
+      ],
+      "requiresDungeons": [
+        "infirmary-handover"
+      ],
+      "lines": [
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "今度来る子の分、棚を一段空けたよ。これも運んでくれる？",
+            "en": "I cleared a shelf for the new girl. Will you carry these too?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。包みが多いね。",
+            "en": "Of course. There are a lot of parcels."
+          }
+        },
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "全部覚えるのは無理だった。だから、札を付けた。戻す場所も書いてある。",
+            "en": "I could not remember them all. So I added labels, including where they go back."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、私が帰る時刻も書いておこう。",
+            "en": "Then I will write when I am coming back too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c5-bed",
+      "chapter": 5,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "寝台を一つ空けました",
+        "en": "A bed is ready"
+      },
+      "title": {
+        "ja": "寝台を一つ空けました",
+        "en": "A bed is ready"
+      },
+      "requiresNodes": [
+        "c5-girl"
+      ],
+      "requiresDungeons": [
+        "borrowed-bed"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "一晩なら、泊まれます。明日の世話番にも、話しておきました。",
+            "en": "She can stay for the night. I spoke to tomorrow's attendants too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ずっと、ここにいなきゃいけない？",
+            "en": "Does she have to stay here afterward?"
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "いいえ。仕立て室にも空き部屋があります。落ち着いたら、見に行きましょう。",
+            "en": "No. There is a spare room at the sewing house too. We can look once she has settled."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "本人に、どっちがいいか聞いてみる。",
+            "en": "I will ask which she prefers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c5-address",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "今夜、どこへ帰ろうか",
+        "en": "Where shall we go tonight?"
+      },
+      "title": {
+        "ja": "今夜、どこへ帰ろうか",
+        "en": "Where shall we go tonight?"
+      },
+      "requiresNodes": [
+        "c5-register",
+        "c5-cloth",
+        "c5-bed"
+      ],
+      "requiresDungeons": [
+        "present-address"
+      ],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "薬布も、寝台も用意できました。あとは、どちらにするか聞かせてください。",
+            "en": "The dressings and bed are ready. Please tell us which place you would prefer."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "一人で眠るのは、まだ嫌。でも、薬の匂いも苦手。",
+            "en": "I do not want to sleep alone yet. But I do not like the smell of medicine either."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "一緒に見に行こうか。途中で変えても、大丈夫だよ。",
+            "en": "Shall we look together? It is all right to change your mind on the way."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "workshop",
+          "label": {
+            "ja": "仕立て室へ案内する",
+            "en": "Show her the sewing house"
+          },
+          "response": [
+            {
+              "speaker": "guest",
+              "text": {
+                "ja": "あっちなら、起きてる人がいる？",
+                "en": "Will someone be awake there?"
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "ルカに聞いておくね。私も、着くまで一緒にいる。",
+                "en": "I will ask Ruka. I will stay with you until we arrive."
+              }
+            }
+          ]
+        },
+        {
+          "id": "infirmary",
+          "label": {
+            "ja": "療養室の部屋を見に行く",
+            "en": "Look at the infirmary room"
+          },
+          "response": [
+            {
+              "speaker": "guest",
+              "text": {
+                "ja": "……エレインにも、話を聞いてほしい。",
+                "en": "...I would like to talk to Elaine too."
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "うん。窓の近くの部屋、空けてくれたって。",
+                "en": "Yes. She has a room near the window ready for you."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c5-finish",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "帰還便が動きました",
+        "en": "The carriage is moving again"
+      },
+      "title": {
+        "ja": "帰還便が動きました",
+        "en": "The carriage is moving again"
+      },
+      "requiresNodes": [
+        "c5-address"
+      ],
+      "requiresDungeons": [
+        "register-return"
+      ],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "門が開きました。残った人も、帰る人も、確かめられています。",
+            "en": "The gate opened. Everyone staying and everyone leaving has been accounted for."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あの子、お茶を飲んでた。少し、眠れそうだって。",
+            "en": "She was having tea. She thinks she can sleep a little now."
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "では、明日は私も顔を出します。今日は、あなたも休んでください。",
+            "en": "Then I will visit tomorrow too. You should rest today."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……あなたの分の椅子も、持っていくね。",
+            "en": "All right. ...I will bring a chair for you too."
+          }
+        }
+      ],
+      "ending": true
+    },
+    {
+      "id": "c6-invite",
+      "chapter": 6,
+      "actorId": "neri",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "夜番の前に、食べよう",
+        "en": "Eat before the watch"
+      },
+      "title": {
+        "ja": "夜番の前に、食べよう",
+        "en": "Eat before the watch"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "灯祭、手伝ってくれる？ その前に、半分食べて。",
+            "en": "Will you help with the lantern festival? First, eat half of this."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ネリの分じゃないの？",
+            "en": "Is this not yours?"
+          }
+        },
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "二人分買ったよ。立ったまま食べないで、こっち。",
+            "en": "I bought enough for two. Come here; do not eat standing up."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……今日は、何から手伝えばいい？",
+            "en": "...What shall I help with first today?"
+          }
+        }
+      ],
+      "leadDungeonId": "night-watch-request"
+    },
+    {
+      "id": "c6-lights",
+      "chapter": 6,
+      "actorId": "noelle",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "灯の場所を確かめたい",
+        "en": "Check the lamp positions"
+      },
+      "title": {
+        "ja": "灯の場所を確かめたい",
+        "en": "Check the lamp positions"
+      },
+      "requiresNodes": [
+        "c6-invite"
+      ],
+      "requiresDungeons": [
+        "lantern-oil-store"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "全部は灯せないね。帰り道と療養室を、先に残そう。",
+            "en": "We cannot light them all. Keep the homeward path and infirmary lit first."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ここに置いたら、向こうからも見える？",
+            "en": "Could we see this from the other side?"
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "あと少し右。……そう。私が回って確かめる。",
+            "en": "A little farther right. ...Yes. I will go around and check."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、戻ってくるまで持ってるね。",
+            "en": "I will hold it until you return."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c6-table",
+      "chapter": 6,
+      "actorId": "fio",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "あなたが座る番だよ",
+        "en": "Your turn to sit down"
+      },
+      "title": {
+        "ja": "あなたが座る番だよ",
+        "en": "Your turn to sit down"
+      },
+      "requiresNodes": [
+        "c6-invite"
+      ],
+      "requiresDungeons": [
+        "festival-table"
+      ],
+      "lines": [
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "配達は終わり。今度は、あなたが座る番。",
+            "en": "Deliveries are done. Now it is your turn to sit."
+          },
+          "favorites": {
+            "tea": {
+              "ja": "あなたのお茶、甘い方にしておいたよ。もう座って。",
+              "en": "I sweetened your tea. Sit down now."
+            },
+            "flowers": {
+              "ja": "席に花を飾っておいたよ。窓辺から一輪だけ。",
+              "en": "I put a flower by your seat. Just one from the windowsill."
+            },
+            "animals": {
+              "ja": "狼も食べたよ。今度はあなたの番。",
+              "en": "The wolf has eaten too. Now it is your turn."
+            }
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "まだ、椀が足りない気がして……。",
+            "en": "I think we are still short of bowls..."
+          },
+          "voices": {
+            "honest": {
+              "ja": "椀だけ、数えてからでもいい？ 足りなくなりそうで。",
+              "en": "Can I count the bowls first? I think we may be short."
+            },
+            "dreamy": {
+              "ja": "あれ、椀はいくつだったかな。途中で分からなくなっちゃった。",
+              "en": "Oh, how many bowls were there? I lost count halfway through."
+            }
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "残りはこちらで。あなたの席も、取ってありますよ。",
+            "en": "We will handle the rest. Your seat is saved too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ありがとう。食べ終わったら、また声をかけてね。",
+            "en": "Thank you. Call me again after I have eaten."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c6-relay",
+      "chapter": 6,
+      "actorId": "neri",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "交代の合図を決めよう",
+        "en": "Agree on the handover signal"
+      },
+      "title": {
+        "ja": "交代の合図を決めよう",
+        "en": "Agree on the handover signal"
+      },
+      "requiresNodes": [
+        "c6-lights",
+        "c6-table"
+      ],
+      "requiresDungeons": [
+        "watch-relay"
+      ],
+      "lines": [
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "帰った人まで、まだ当番に数えられてる。だから、道が閉じたままなんだ。",
+            "en": "Even those who went home are still counted as on duty. That is why the road stays closed."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "次の人が来たら、この紐を引くんだね。",
+            "en": "So we pull this cord when the next watch arrives."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ああ。届くか、やってみろ。",
+            "en": "Yes. Try it and see whether you can reach."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……聞こえた？",
+            "en": "...Did you hear it?"
+          }
+        }
+      ],
+      "leadDungeonId": "closed-homeward-lane"
+    },
+    {
+      "id": "c6-prayer",
+      "chapter": 6,
+      "actorId": "liora",
+      "hubId": "hub-temple",
+      "bubble": {
+        "ja": "少し、待っていてくれ",
+        "en": "Wait for me a little"
+      },
+      "title": {
+        "ja": "少し、待っていてくれ",
+        "en": "Wait for me a little"
+      },
+      "requiresNodes": [
+        "c6-relay"
+      ],
+      "requiresDungeons": [
+        "prayer-without-order"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "祈りを終えたら、広場へ戻る。おまえは先に食べていろ。",
+            "en": "I will return to the square after praying. Go ahead and eat."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ここで待っててもいい？ 邪魔はしないから。",
+            "en": "Can I wait here? I will not disturb you."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……冷える。そこの布を使え。",
+            "en": "...It is cold. Use that blanket."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。終わったら、一緒に戻ろう。",
+            "en": "All right. Let us go back together when you are done."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c6-path",
+      "chapter": 6,
+      "actorId": "noelle",
+      "hubId": "hub-bridge",
+      "bubble": {
+        "ja": "帰る人の灯を残して",
+        "en": "Keep the homeward lamps lit"
+      },
+      "title": {
+        "ja": "帰る人の灯を残して",
+        "en": "Keep the homeward lamps lit"
+      },
+      "requiresNodes": [
+        "c6-prayer"
+      ],
+      "requiresDungeons": [
+        "last-lantern-watch"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "消すのは、この列だけ。橋の灯には触らないで。",
+            "en": "Only put out this row. Leave the bridge lights alone."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ネリは、もう休めそう？",
+            "en": "Can Neri rest now?"
+          }
+        },
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "次の番が来た。……今度こそ、座っていくね。",
+            "en": "The next watch arrived. ...This time, I really will sit down."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "椀、温め直しておく。",
+            "en": "I will warm your bowl again."
+          }
+        }
+      ],
+      "leadDungeonId": "lantern-return"
+    },
+    {
+      "id": "c6-breakfast",
+      "chapter": 6,
+      "actorId": "neri",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "朝食、誰の隣にする？",
+        "en": "Who will you sit beside?"
+      },
+      "title": {
+        "ja": "朝食、誰の隣にする？",
+        "en": "Who will you sit beside?"
+      },
+      "requiresNodes": [
+        "c6-path"
+      ],
+      "requiresDungeons": [
+        "lantern-return"
+      ],
+      "lines": [
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "夜番の札は返したよ。今は、呼ばれても行かないからね。",
+            "en": "I returned my watch token. Even if someone calls now, I am staying here."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……お疲れさま。席、一緒に探そう。",
+            "en": "...You worked hard. Let us find a seat together."
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "こっち、一つ空いてるよ。",
+            "en": "There is a free place over here."
+          }
+        }
+      ],
+      "ending": true,
+      "choices": [
+        {
+          "id": "seris",
+          "label": {
+            "ja": "セリスの隣へ",
+            "en": "Beside Seris"
+          },
+          "response": [
+            {
+              "speaker": "seris",
+              "text": {
+                "ja": "眠くなったら、寄りかかっていいよ。",
+                "en": "Lean on me if you get sleepy."
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "じゃあ、少しだけ。",
+                "en": "Then, just for a little while."
+              }
+            }
+          ]
+        },
+        {
+          "id": "liora",
+          "label": {
+            "ja": "リオラの隣へ",
+            "en": "Beside Liora"
+          },
+          "response": [
+            {
+              "speaker": "liora",
+              "text": {
+                "ja": "椀を持ったまま寝るなよ。",
+                "en": "Do not fall asleep holding your bowl."
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "……落としそうになったら、呼んで。",
+                "en": "...Wake me if I look as if I might drop it."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c7-sleeve",
+      "chapter": 7,
+      "actorId": "ruka",
+      "hubId": "hub-workshop",
+      "bubble": {
+        "ja": "また、ここを引っ掛けた？",
+        "en": "Caught it here again?"
+      },
+      "title": {
+        "ja": "また、ここを引っ掛けた？",
+        "en": "Caught it here again?"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "ruka",
+          "text": {
+            "ja": "また、この袖？ 前に直したの、私だよ。",
+            "en": "This sleeve again? I was the one who mended it last time."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……分かる？",
+            "en": "...You can tell?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "古い縫い目は残してくれ。",
+            "en": "Leave the old stitches in place."
+          }
+        },
+        {
+          "speaker": "ruka",
+          "text": {
+            "ja": "うん。どこまで替えるか、二人で見て。",
+            "en": "All right. Have a look together and tell me how much to replace."
+          }
+        }
+      ],
+      "leadDungeonId": "mending-room"
+    },
+    {
+      "id": "c7-stone",
+      "chapter": 7,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "石を、もう一度見よう",
+        "en": "Let us look at the stone again"
+      },
+      "title": {
+        "ja": "石を、もう一度見よう",
+        "en": "Let us look at the stone again"
+      },
+      "requiresNodes": [
+        "c7-sleeve"
+      ],
+      "requiresDungeons": [
+        "ritual-stone-check"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "始める前に、止め方を確かめる。あの炉の時とは違う術だが。",
+            "en": "Before beginning, we check how to stop. This is a different working from that furnace."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "前の手順も、持ってきた。比べておきたくて。",
+            "en": "I brought the old instructions too. I wanted to compare them."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "分からない所は、まだ進めない。印を付けてくれ。",
+            "en": "We will not proceed past anything unclear. Mark those parts."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。今日は、読むだけでもいいから。",
+            "en": "Yes. It is all right if all we do today is read."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c7-names",
+      "chapter": 7,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "世話の分担を聞かせて",
+        "en": "Tell me how you will share the care"
+      },
+      "title": {
+        "ja": "世話の分担を聞かせて",
+        "en": "Tell me how you will share the care"
+      },
+      "requiresNodes": [
+        "c7-stone"
+      ],
+      "requiresDungeons": [
+        "care-names"
+      ],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "護衛、とだけ書くんですか。夜に起きる人も決めておきたいです。",
+            "en": "Only an escort? We should also decide who will get up at night."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……そこまでは、考えていなかった。",
+            "en": "...I had not thought that far."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "エレインにも聞いてくる。二人で分からないまま、決めたくない。",
+            "en": "I will ask Elaine too. I do not want us to decide without knowing."
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "では、ここは空けておきます。戻ったら、一緒に書きましょう。",
+            "en": "Then I will leave this blank. We can fill it in together when you return."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c7-care",
+      "chapter": 7,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "眠れない夜もありますよ",
+        "en": "There will be sleepless nights"
+      },
+      "title": {
+        "ja": "眠れない夜もありますよ",
+        "en": "There will be sleepless nights"
+      },
+      "requiresNodes": [
+        "c7-stone"
+      ],
+      "requiresDungeons": [
+        "care-names"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "食べる時間も、眠る時間も、思うようにはいかないと思います。",
+            "en": "Meals and sleep may not happen when you expect."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "二人とも眠れない日は、どうしたらいい？",
+            "en": "What do we do when neither of us can sleep?"
+          },
+          "voices": {
+            "honest": {
+              "ja": "二人とも眠れない日は、誰に頼んだらいい？",
+              "en": "Whom should we ask when neither of us can sleep?"
+            },
+            "dreamy": {
+              "ja": "二人とも、眠くて起きられなかったら……。誰か、呼べるのかな。",
+              "en": "If we are both too sleepy to get up... could we call someone?"
+            }
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "その前に、誰を呼べるか決めましょう。私にも、できる日とできない日があります。",
+            "en": "Decide whom you can call before that happens. Some days I can help, and some days I cannot."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……うん。頼める人にも、先に聞いておくね。",
+            "en": "...Yes. We will ask those people first too."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c7-door",
+      "chapter": 7,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "戸を押さえてくれる？",
+        "en": "Would you hold the door?"
+      },
+      "title": {
+        "ja": "戸を押さえてくれる？",
+        "en": "Would you hold the door?"
+      },
+      "requiresNodes": [
+        "c7-names",
+        "c7-care"
+      ],
+      "requiresDungeons": [
+        "open-greenhouse-door"
+      ],
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "その鉢、窓辺へ。戸が閉まるから、少し押さえてて。",
+            "en": "Put that pot by the window. The door swings shut; hold it a moment."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。今日は、どこまで手伝おうか。",
+            "en": "Of course. How much would you like me to do today?"
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "これだけ。あとでお茶なら、いれられると思う。",
+            "en": "Just this. I think I can make tea afterward."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、終わったら一緒に飲みたい。",
+            "en": "Then I would like to have some with you when we finish."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c7-stop",
+      "chapter": 7,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "合図を、試してみよう",
+        "en": "Let us try the signal"
+      },
+      "title": {
+        "ja": "合図を、試してみよう",
+        "en": "Let us try the signal"
+      },
+      "requiresNodes": [
+        "c7-door"
+      ],
+      "requiresDungeons": [
+        "stop-signal"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "止める。……まだ、私に分からない所がある。",
+            "en": "Stop. ...There are things I still do not understand."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。石は、しまっておくね。",
+            "en": "All right. I will put the stone away."
+          },
+          "voices": {
+            "honest": {
+              "ja": "分かった。石は、しまっておく。",
+              "en": "All right. I will put the stone away."
+            },
+            "dreamy": {
+              "ja": "うん。……布は、ここにあったね。石を戻しておく。",
+              "en": "Yes. ...The cloth is here. I will wrap the stone again."
+            }
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "嫌になったのではない。それを言うのが、難しかった。",
+            "en": "I have not changed my mind about you. It was hard to say that."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "言ってくれて、よかった。私も、待っていてほしい日は言うから。",
+            "en": "I am glad you told me. I will tell you when I need us to wait too."
+          }
+        }
+      ],
+      "leadDungeonId": "two-signatures"
+    },
+    {
+      "id": "c7-together",
+      "chapter": 7,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "今日は、どうしようか",
+        "en": "What shall we do today?"
+      },
+      "title": {
+        "ja": "今日は、どうしようか",
+        "en": "What shall we do today?"
+      },
+      "requiresNodes": [
+        "c7-stop"
+      ],
+      "requiresDungeons": [
+        "two-signatures"
+      ],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "署名はした。だが、今日中に始めると決めたわけではない。",
+            "en": "We signed. But we did not promise to begin today."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……あなたは、どうしたい？",
+            "en": "...What would you like to do?"
+          },
+          "voices": {
+            "honest": {
+              "ja": "あなたがどうしたいかも、聞きたい。",
+              "en": "I want to hear what you would like too."
+            },
+            "dreamy": {
+              "ja": "……帰り道も、あなたと話していたいな。あなたは？",
+              "en": "...I would like to keep talking with you on the way home too. What about you?"
+            }
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "もう少し、おまえの話を聞きたい。帰ってからも。",
+            "en": "I want to hear more from you. After we get home too."
+          }
+        }
+      ],
+      "ending": true,
+      "choices": [
+        {
+          "id": "wait",
+          "label": {
+            "ja": "今日は、一緒に帰ろう",
+            "en": "Let us go home together today"
+          },
+          "response": [
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "今日は、一緒に帰ろう。話したいこと、まだあるから。",
+                "en": "Let us go home together today. There is still so much I want to tell you."
+              }
+            },
+            {
+              "speaker": "liora",
+              "text": {
+                "ja": "ああ。温室へも、寄っていくか。",
+                "en": "Yes. Shall we stop by the greenhouse?"
+              }
+            }
+          ]
+        },
+        {
+          "id": "prepare",
+          "label": {
+            "ja": "次に話す日を、決めておこう",
+            "en": "Let us decide when to talk again"
+          },
+          "response": [
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "次に話す日を、決めておこう。その日は、私がお茶をいれるね。",
+                "en": "Let us decide when to talk again. I will make tea that day."
+              }
+            },
+            {
+              "speaker": "liora",
+              "text": {
+                "ja": "分かった。……甘い方を、おまえの分にしておく。",
+                "en": "All right. ...I will save the sweeter cup for you."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "home-liora",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "支度はできたか",
+        "en": "Ready to go?"
+      },
+      "title": {
+        "ja": "支度はできたか",
+        "en": "Ready to go?"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "忘れ物はないか。……手帳は？",
+            "en": "Have you forgotten anything? ...Your notebook?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あるよ。あなたの分の紙も。",
+            "en": "I have it. With some paper for you too."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "なら、行こう。",
+            "en": "Then let us go."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "liora",
+            "text": {
+              "ja": "髪に葉が付いている。動くな。",
+              "en": "There is a leaf in your hair. Hold still."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "……取れた？",
+              "en": "...Did you get it?"
+            }
+          },
+          {
+            "speaker": "liora",
+            "text": {
+              "ja": "ああ。今日はどこを歩いてきた。",
+              "en": "Yes. Where have you been walking today?"
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "足元を確かめろ",
+          "en": "Watch your footing"
+        },
+        "lines": [
+          {
+            "speaker": "liora",
+            "text": {
+              "ja": "急ぐ時ほど、足元を見ろ。戻る道を見失うなよ。",
+              "en": "Watch your footing, especially when you hurry. Do not lose the way back."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "あなたも、怪我をしないでね。",
+              "en": "Please take care of yourself too."
+            }
+          },
+          {
+            "speaker": "liora",
+            "text": {
+              "ja": "盾は点検した。おまえも、靴を確かめておけ。",
+              "en": "I checked my shield. You check your shoes too."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-seris",
+      "chapter": 1,
+      "actorId": "seris",
+      "hubId": "hub-temple",
+      "bubble": {
+        "ja": "少し、歩かない？",
+        "en": "Walk with me?"
+      },
+      "title": {
+        "ja": "少し、歩かない？",
+        "en": "Walk with me?"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "狼が、あなたの方を見てる。呼んであげて。",
+            "en": "The wolf is looking at you. Call her over."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ここで、一緒に休もうか。",
+            "en": "Shall we rest here together?"
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "うん。私も、少しだけ。",
+            "en": "Yes. I would like that too."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "seris",
+            "text": {
+              "ja": "その石、まだ持ってたんだ。狼がくわえてきたやつ。",
+              "en": "You still have that stone the wolf brought you."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "返そうとしたら、また持ってきたの。",
+              "en": "When I tried to give it back, she brought it to me again."
+            }
+          },
+          {
+            "speaker": "seris",
+            "text": {
+              "ja": "じゃあ、あげるつもりだったのかな。",
+              "en": "Perhaps she meant it as a gift."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "剣は、持ってるよ",
+          "en": "I have my sword"
+        },
+        "lines": [
+          {
+            "speaker": "seris",
+            "text": {
+              "ja": "剣は持った。知らせが来たら、すぐ動ける。あなたも無理しないでね。",
+              "en": "I have my sword. I can move as soon as word comes. Do not push yourself too hard."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "じゃあ、私も支度を見直してくる。",
+              "en": "Then I will check my things too."
+            }
+          },
+          {
+            "speaker": "seris",
+            "text": {
+              "ja": "終わったら、一度顔を見せて。",
+              "en": "Come and see me once you are ready."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-elaine",
+      "chapter": 1,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "お水、飲みました？",
+        "en": "Have you had some water?"
+      },
+      "title": {
+        "ja": "お水、飲みました？",
+        "en": "Have you had some water?"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "lines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "お水、飲みました？ 歩いていると、忘れますから。",
+            "en": "Have you had water? It is easy to forget when you are walking."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……今、飲むね。",
+            "en": "...I will have some now."
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "私も。少し座りましょう。",
+            "en": "So will I. Let us sit a while."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "elaine",
+            "text": {
+              "ja": "花瓶を少し動かしたいんです。片方、持っていただけますか。",
+              "en": "I need to move this vase. Would you hold one side?"
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "うん。お水、こぼれそう。",
+              "en": "Of course. The water might spill."
+            }
+          },
+          {
+            "speaker": "elaine",
+            "text": {
+              "ja": "では、一緒にゆっくり。せーの。",
+              "en": "Then slowly, together. Ready?"
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "ここは任せてください",
+          "en": "Leave this place to me"
+        },
+        "lines": [
+          {
+            "speaker": "elaine",
+            "text": {
+              "ja": "こちらの支度は続けます。帰ってきたら、まずここへ顔を出してくださいね。",
+              "en": "I will keep preparing things here. Come and see me first when you get back."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "戻ってきたら、呼んでもいい？",
+              "en": "May I call for you when I return?"
+            }
+          },
+          {
+            "speaker": "elaine",
+            "text": {
+              "ja": "もちろん。急ぎなら、遠慮せずに呼んでください。",
+              "en": "Of course. If it is urgent, do not hesitate to call."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-noelle",
+      "chapter": 1,
+      "actorId": "noelle",
+      "hubId": "hub-observatory",
+      "bubble": {
+        "ja": "地図、広げてみて",
+        "en": "Let me see your map"
+      },
+      "title": {
+        "ja": "地図、広げてみて",
+        "en": "Let me see your map"
+      },
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "lines": [
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "その折り目、破れそう。ここに重ねて。",
+            "en": "That fold is wearing thin. Put it on top of this."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "いつも、直してもらってるね。",
+            "en": "You are always fixing it for me."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "あなたが道を覚えて、教えてくれることもあるでしょう。",
+            "en": "You remember routes and show them to me too."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "noelle",
+            "text": {
+              "ja": "今日は雲が厚いね。星の話は、あとでもいい？",
+              "en": "The clouds are thick today. Can the stars wait?"
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "うん。じゃあ、お茶にしよう。",
+              "en": "Yes. Let us have tea instead."
+            }
+          },
+          {
+            "speaker": "noelle",
+            "text": {
+              "ja": "……それなら、私も片づける。",
+              "en": "...Then I will put this away too."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "地図を直しているの",
+          "en": "I am correcting the map"
+        },
+        "lines": [
+          {
+            "speaker": "noelle",
+            "text": {
+              "ja": "道の様子が変わってる。通れた場所は、戻ったら教えて。",
+              "en": "The routes are changing. Tell me which ways were open when you return."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "足跡が残っていた所も、覚えておくね。",
+              "en": "I will remember where I saw footprints too."
+            }
+          },
+          {
+            "speaker": "noelle",
+            "text": {
+              "ja": "手帳へ書いて。忘れても、見せてもらえるから。",
+              "en": "Write it in your notebook. Then you can show me even if you forget."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-fio",
+      "chapter": 5,
+      "actorId": "fio",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "お茶、あるよ",
+        "en": "There is tea"
+      },
+      "title": {
+        "ja": "お茶、あるよ",
+        "en": "There is tea"
+      },
+      "requiresNodes": [
+        "c5-cloth"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "配達は、あと一軒。戻ったら、お茶にしない？",
+            "en": "One more delivery. Shall we have tea when I get back?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、お湯を沸かしておく。",
+            "en": "I will put the water on."
+          }
+        },
+        {
+          "speaker": "fio",
+          "text": {
+            "ja": "ありがとう。すぐ戻るよ。",
+            "en": "Thank you. I will be right back."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "味見、してくれる？ ちょっと甘くしすぎたかも。",
+              "en": "Will you taste this? It may be too sweet."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "……私は、好き。",
+              "en": "...I like it."
+            }
+          },
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "ふふ。じゃあ、あなたの分はこのままにしよう。",
+              "en": "Then I will leave your portion just like this."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "包みをまとめておくね",
+          "en": "I will gather the parcels"
+        },
+        "lines": [
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "必要な包みを、ここへまとめておくね。帰るとき、寄っていって。",
+              "en": "I will gather the supplies here. Stop by when you come back."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "どれを運ぶか、戻ったら教えて。",
+              "en": "Tell me which parcels to carry when I get back."
+            }
+          },
+          {
+            "speaker": "fio",
+            "text": {
+              "ja": "目印を付けておくね。",
+              "en": "I will mark them for you."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-ione",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "椅子を持ってきますね",
+        "en": "I will bring a chair"
+      },
+      "title": {
+        "ja": "椅子を持ってきますね",
+        "en": "I will bring a chair"
+      },
+      "requiresNodes": [
+        "c5-finish"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "立ったまま、ずっと待っていたんですか。椅子を持ってきますね。",
+            "en": "Have you been standing all this time? I will bring a chair."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私も運ぶよ。二つ、いるでしょう。",
+            "en": "I will help. We need two, do we not?"
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "……はい。私の分も、お願いします。",
+            "en": "...Yes. One for me too, please."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "ione",
+            "text": {
+              "ja": "あなたの字、前より読みやすくなりましたね。",
+              "en": "Your handwriting is easier to read now."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "急ぐと、また曲がっちゃうけど。",
+              "en": "It still goes crooked when I hurry."
+            }
+          },
+          {
+            "speaker": "ione",
+            "text": {
+              "ja": "私もです。この頁は、見なかったことにしてください。",
+              "en": "So does mine. Please pretend you did not see this page."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "戻った人を確かめます",
+          "en": "I will check who has returned"
+        },
+        "lines": [
+          {
+            "speaker": "ione",
+            "text": {
+              "ja": "戻ってきた人を、一人ずつ確かめます。あなたの名も、呼んでいいですか。",
+              "en": "I will check everyone who returns. May I call your name too?"
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "うん。私も、返事するね。",
+              "en": "Yes. I will answer too."
+            }
+          },
+          {
+            "speaker": "ione",
+            "text": {
+              "ja": "……聞こえる所まで、戻ってきてくださいね。",
+              "en": "...Come back within earshot, please."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-neri",
+      "chapter": 6,
+      "actorId": "neri",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "今日は、休みなんだ",
+        "en": "I am off duty today"
+      },
+      "title": {
+        "ja": "今日は、休みなんだ",
+        "en": "I am off duty today"
+      },
+      "requiresNodes": [
+        "c6-breakfast"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "今日は休み。門の話は、あとにしよう。",
+            "en": "I am off today. We can talk about the gate later."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "じゃあ、お店を見に行かない？",
+            "en": "Then shall we look around the shops?"
+          }
+        },
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "行く。まだ、朝のパンがあるかも。",
+            "en": "Yes. There may still be some fresh bread."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "neri",
+            "text": {
+              "ja": "パン、半分にしよう。大きい方、持って。",
+              "en": "Let us split the bread. Take the bigger half."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "ネリの方が、お腹すいてない？",
+              "en": "Are you not hungrier than I am?"
+            }
+          },
+          {
+            "speaker": "neri",
+            "text": {
+              "ja": "じゃあ、もう一つ買ってくる？ 一緒に。",
+              "en": "Then shall we buy another one? Together."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "門の様子を見てくる",
+          "en": "I will check the gate"
+        },
+        "lines": [
+          {
+            "speaker": "neri",
+            "text": {
+              "ja": "門の様子を見てくる。戻る人が迷わないように、灯は残しておくよ。",
+              "en": "I will check the gate. I will leave the lamps lit so people can find their way back."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "私も、帰るときに灯を確かめる。",
+              "en": "I will check the lamps on my way back too."
+            }
+          },
+          {
+            "speaker": "neri",
+            "text": {
+              "ja": "消えていたら、教えて。替えの油は持ってるから。",
+              "en": "Tell me if any are out. I have spare oil."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-ruka",
+      "chapter": 7,
+      "actorId": "ruka",
+      "hubId": "hub-workshop",
+      "bubble": {
+        "ja": "次は、どこへ行くの？",
+        "en": "Where are you going next?"
+      },
+      "title": {
+        "ja": "次は、どこへ行くの？",
+        "en": "Where are you going next?"
+      },
+      "requiresNodes": [
+        "c7-sleeve"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "ruka",
+          "text": {
+            "ja": "次は、どこへ行くの？ 糸は多めに持っていく？",
+            "en": "Where are you going next? Shall we take extra thread?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あなたの荷物まで、重くならない？",
+            "en": "Will that not make your bag heavy too?"
+          }
+        },
+        {
+          "speaker": "ruka",
+          "text": {
+            "ja": "少しなら平気。帰りに、何か買えるくらいは空けてあるよ。",
+            "en": "A little is fine. I left enough space to buy something on the way back."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "ruka",
+            "text": {
+              "ja": "この色、どう？ 袋の持ち手だけ替えようと思って。",
+              "en": "What do you think of this color? I am replacing the bag handles."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "明るくて、見つけやすそう。",
+              "en": "It is bright. It should be easy to find."
+            }
+          },
+          {
+            "speaker": "ruka",
+            "text": {
+              "ja": "そう。私、いつもどこかへ置いちゃうんだ。",
+              "en": "Yes. I keep leaving it somewhere."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "袋を確かめていって",
+          "en": "Check your bag before leaving"
+        },
+        "lines": [
+          {
+            "speaker": "ruka",
+            "text": {
+              "ja": "袋の底、確かめていって。途中でほどけたら、せっかくの荷物を落とすから。",
+              "en": "Check the bottom of your bag before you go. We do not want it coming loose and spilling your things."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "ありがとう。ここ、縫い目が緩いかも。",
+              "en": "Thank you. These stitches may be loose."
+            }
+          },
+          {
+            "speaker": "ruka",
+            "text": {
+              "ja": "貸して。そこだけ、先に留めるね。",
+              "en": "Let me see. I will secure that part first."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-guest",
+      "chapter": 5,
+      "actorId": "guest",
+      "hubId": "hub-workshop",
+      "bubble": {
+        "ja": "今日は、一人？",
+        "en": "Are you alone today?"
+      },
+      "title": {
+        "ja": "今日は、一人？",
+        "en": "Are you alone today?"
+      },
+      "requiresNodes": [
+        "c5-finish"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "{name}、今日は一人？ イオネは？",
+            "en": "{name}, are you alone today? Where is Ione?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あとで来るって。ここ、座ってもいい？",
+            "en": "She will come later. Can I sit here?"
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "うん。そっちの椅子は、もう直した。",
+            "en": "Yes. That chair is fixed now."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "daily": [
+        [
+          {
+            "speaker": "guest",
+            "text": {
+              "ja": "今日は、私がお茶をいれた。……薄かったら、ごめん。",
+              "en": "I made tea today. ...Sorry if it is too weak."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "ありがとう。一緒に飲もう。",
+              "en": "Thank you. Let us have it together."
+            }
+          },
+          {
+            "speaker": "guest",
+            "text": {
+              "ja": "うん。こっちの椅子、使って。",
+              "en": "Yes. Take this chair."
+            }
+          }
+        ]
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "ここで、待ってる",
+          "en": "I will wait here"
+        },
+        "lines": [
+          {
+            "speaker": "guest",
+            "text": {
+              "ja": "ここで待ってる。戻ってきたら、声をかけて。……お願い。",
+              "en": "I will wait here. Say something when you get back. ...Please."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "ここへ戻るから、椅子に座って待っていて。",
+              "en": "I will come back here. Sit down while you wait."
+            }
+          },
+          {
+            "speaker": "guest",
+            "text": {
+              "ja": "うん。……椀を二つ、出しておく。",
+              "en": "All right. ...I will set out two cups."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "home-witch",
+      "chapter": 2,
+      "actorId": "thorn-witch",
+      "hubId": "hub-greenhouse",
+      "bubble": {
+        "ja": "今日は、お茶あるよ",
+        "en": "There is tea today"
+      },
+      "title": {
+        "ja": "温室のお茶",
+        "en": "Tea in the greenhouse"
+      },
+      "requiresNodes": [
+        "c2-tea"
+      ],
+      "requiresDungeons": [],
+      "optional": true,
+      "ambient": true,
+      "lines": [
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "椅子、こっちへ寄せて。鉢にぶつけないでね。",
+            "en": "Pull your chair over here. Watch the pots."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……今日は、何を調べてたの？",
+            "en": "Of course. ...What were you studying today?"
+          }
+        },
+        {
+          "speaker": "thorn-witch",
+          "text": {
+            "ja": "芽が出るまでの日数。待ってる間に、お茶が冷めちゃった。",
+            "en": "How long the seeds take to sprout. The tea went cold while I waited."
+          }
+        }
+      ],
+      "variants": [
+        {
+          "requiresNodes": [
+            "c2-after"
+          ],
+          "hubId": "hub-infirmary",
+          "bubble": {
+            "ja": "少し、お話しませんか",
+            "en": "Could we talk a little?"
+          },
+          "lines": [
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "……お名前、もう一度聞いてもいい？",
+                "en": "...May I ask your name again?"
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "{name}だよ。今日は、お茶を持ってきたの。",
+                "en": "It is {name}. I brought tea today."
+              }
+            },
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "ありがとう。そこの椅子、使って。",
+                "en": "Thank you. Take that chair."
+              }
+            }
+          ]
+        },
+        {
+          "requiresNodes": [
+            "c7-door"
+          ],
+          "hubId": "hub-greenhouse",
+          "bubble": {
+            "ja": "窓辺に、置いてくれる？",
+            "en": "Could you put it by the window?"
+          },
+          "lines": [
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "今日は、窓辺を空けたの。この鉢、置いてくれる？",
+                "en": "I cleared the windowsill today. Could you put this pot there?"
+              }
+            },
+            {
+              "speaker": "hero",
+              "text": {
+                "ja": "うん。お茶も、ここで飲む？",
+                "en": "Of course. Shall we have tea here too?"
+              }
+            },
+            {
+              "speaker": "thorn-witch",
+              "text": {
+                "ja": "そうしよう。今なら、花がよく見えるから。",
+                "en": "Let us. We can see the flowers clearly now."
+              }
+            }
+          ]
+        }
+      ],
+      "emergency": {
+        "bubble": {
+          "ja": "廊下が、騒がしいね",
+          "en": "It is noisy outside"
+        },
+        "lines": [
+          {
+            "speaker": "thorn-witch",
+            "text": {
+              "ja": "外が騒がしいね。……あなた、出かけるの？",
+              "en": "It is noisy outside. ...Are you going out?"
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "……戻ったら、また一緒にお茶を飲んでくれる？",
+              "en": "...Will you have tea with me again when I return?"
+            }
+          },
+          {
+            "speaker": "thorn-witch",
+            "text": {
+              "ja": "うん。私は、ここにいるよ。",
+              "en": "Yes. I will be here."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "incidents": [
+    {
+      "id": "sanctuary-silence",
+      "chapter": 1,
+      "title": {
+        "ja": "聖域から応答がない",
+        "en": "Silence from the sanctuary"
+      },
+      "message": {
+        "ja": "泉の側へ向かった調査隊が戻っていません。狼とセリスが門で足を止めています。",
+        "en": "The survey party has not returned from the fountain. Seris and the wolf have stopped at the gate."
+      },
+      "requiresNodes": [
+        "c1-chart"
+      ],
+      "requiresDungeons": [],
+      "resolvedBy": "c1-return",
+      "hubId": "hub-temple"
+    },
+    {
+      "id": "greenhouse-emergency",
+      "chapter": 2,
+      "title": {
+        "ja": "温室の炉が暴走",
+        "en": "The greenhouse furnace is out of control"
+      },
+      "message": {
+        "ja": "停止の鍵が効きません。温室から伸びた根が、療養室への道へ迫っています。",
+        "en": "The shutdown key failed. Roots from the greenhouse are reaching the infirmary route."
+      },
+      "requiresNodes": [
+        "c2-key"
+      ],
+      "requiresDungeons": [
+        "missing-name"
+      ],
+      "resolvedBy": "c2-after",
+      "hubId": "hub-greenhouse"
+    },
+    {
+      "id": "sealed-city-crisis",
+      "chapter": 3,
+      "title": {
+        "ja": "街の封印に亀裂",
+        "en": "The town seal is cracking"
+      },
+      "message": {
+        "ja": "療養室と橋を守りながら、水門を開く必要があります。仲間たちが別々の場所で待っています。",
+        "en": "Protect the infirmary and bridge while opening the sluice. Your companions are waiting at separate locations."
+      },
+      "requiresNodes": [
+        "c3-record"
+      ],
+      "requiresDungeons": [],
+      "resolvedBy": "c3-morning",
+      "hubId": "hub-observatory"
+    },
+    {
+      "id": "forest-ambush",
+      "chapter": 4,
+      "title": {
+        "ja": "樹海で包囲された",
+        "en": "Ambushed in the forest"
+      },
+      "message": {
+        "ja": "赤い紐の先から少女たちが現れました。リオラと合流し、抜け道を探してください。",
+        "en": "Girls have appeared beyond the red cord. Stay with Liora and find a way through."
+      },
+      "requiresNodes": [
+        "c4-walk"
+      ],
+      "requiresDungeons": [
+        "ritual-stone-grove"
+      ],
+      "resolvedBy": "c4-retreat",
+      "hubId": "hub-forest"
+    },
+    {
+      "id": "homeward-carriage",
+      "chapter": 5,
+      "title": {
+        "ja": "帰還便が停止",
+        "en": "The homeward carriage has stopped"
+      },
+      "message": {
+        "ja": "帰還を拒む少女がいます。記録・薬布・寝台を整え、本人に行き先を確かめましょう。",
+        "en": "A girl does not want to return. Prepare her records, dressings and a bed, then ask where she wants to go."
+      },
+      "requiresNodes": [
+        "c5-request"
+      ],
+      "requiresDungeons": [],
+      "resolvedBy": "c5-finish",
+      "hubId": "hub-bridge"
+    },
+    {
+      "id": "festival-lockdown",
+      "chapter": 6,
+      "title": {
+        "ja": "灯祭の帰路が封鎖",
+        "en": "The festival routes are sealed"
+      },
+      "message": {
+        "ja": "古い当番表が、帰る人を持ち場へ戻そうとしています。灯と交代の合図を確かめてください。",
+        "en": "The old roster is sending people back to their posts. Check the lamps and handover signals."
+      },
+      "requiresNodes": [
+        "c6-relay"
+      ],
+      "requiresDungeons": [
+        "closed-homeward-lane"
+      ],
+      "resolvedBy": "c6-breakfast",
+      "hubId": "hub-bridge"
+    },
+    {
+      "id": "ritual-return",
+      "chapter": 7,
+      "title": {
+        "ja": "契印が帰路を閉じた",
+        "en": "The ritual seal blocks the way home"
+      },
+      "message": {
+        "ja": "古い願いの刻まれた結界が動き出しました。二人で決めた中断の合図を使い、帰路を残しましょう。",
+        "en": "A barrier inscribed with old wishes has awakened. Use the agreed stop signal and preserve a way home."
+      },
+      "requiresNodes": [
+        "c7-stop"
+      ],
+      "requiresDungeons": [
+        "unfinished-name"
+      ],
+      "resolvedBy": "c7-together",
+      "hubId": "hub-garden"
+    }
+  ]
+}
