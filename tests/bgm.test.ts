@@ -7,6 +7,34 @@ import { advanceReplay, createBattle } from '../src/domain/engine';
 afterEach(() => { disposeBgm(); vi.unstubAllGlobals(); });
 
 describe('BGM scene transitions', () => {
+  it.each([
+    { userAgent: 'iPhone', platform: 'iPhone', maxTouchPoints: 5 },
+    { userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 5 },
+  ])('controls native music gain when iOS ignores element volume: $platform', navigator => {
+    const param = { value: 1, setValueAtTime: vi.fn((value: number) => { param.value = value; }) };
+    const gain = { gain: param, connect: vi.fn(), disconnect: vi.fn() };
+    const source = { connect: vi.fn(), disconnect: vi.fn() };
+    const context = { state: 'suspended', currentTime: 1, destination: {}, createGain: vi.fn(() => gain), createMediaElementSource: vi.fn(() => source), resume: vi.fn(async () => { context.state = 'running'; }), close: vi.fn(async () => { context.state = 'closed'; }) };
+    const audio = { hidden: false, loop: false, preload: '', dataset: {} as Record<string,string>, src: '', paused: true,
+      get volume() { return 1; }, set volume(_value: number) {},
+      play: vi.fn(async () => { audio.paused = false; }), pause: vi.fn(() => { audio.paused = true; }), load: vi.fn(), removeAttribute: vi.fn(), remove: vi.fn() };
+    vi.stubGlobal('navigator', navigator);
+    vi.stubGlobal('window', { AudioContext: vi.fn(function () { return context; }) });
+    vi.stubGlobal('document', { hidden: false, createElement: () => audio, body: { append: vi.fn() } });
+    configureBgm('home', .25); unlockBgm();
+    expect(param.value).toBe(.125); expect(audio.volume).toBe(1);
+    expect(source.connect).toHaveBeenCalledWith(gain); expect(gain.connect).toHaveBeenCalledWith(context.destination);
+    const loads = audio.load.mock.calls.length;
+    configureBgm('home', 1); expect(param.value).toBe(.5); expect(audio.load).toHaveBeenCalledTimes(loads);
+    const duck = createBgmDucker(); duck.set(.08); expect(param.value).toBeCloseTo(.04);
+    configureBgm('boss', .5); expect(param.value).toBeCloseTo(.02);
+    duck.dispose(); expect(param.value).toBe(.25);
+    configureBgm('boss', 0); expect(param.value).toBe(0); expect(audio.paused).toBe(true);
+    configureBgm('boss', .25); expect(param.value).toBe(.125); expect(audio.paused).toBe(false);
+    context.state = 'suspended'; refreshBgm(); expect(context.state).toBe('running');
+    expect(context.createMediaElementSource).toHaveBeenCalledTimes(1);
+    disposeBgm(); expect(source.disconnect).toHaveBeenCalled(); expect(context.close).toHaveBeenCalled();
+  });
   it('starts new games at 50% music without changing the sound-effect default', () => {
     expect(createInitialSave(content,42).settings).toMatchObject({bgmVolume:.5,seVolume:1});
   });

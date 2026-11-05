@@ -33,7 +33,38 @@ let volume = 0.5;
 const BGM_MASTER_GAIN = 0.5;
 let unlocked = false;
 const ducks=new Map<symbol,number>();
-function applyVolume():void { if(player)player.volume=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values()); }
+let volumeContext: AudioContext | undefined;
+let volumeGain: GainNode | undefined;
+let mediaSource: MediaElementAudioSourceNode | undefined;
+// iOS ignores HTMLMediaElement.volume, including installed web apps. Route its
+// music through a native gain instead; desktop retains the existing media path.
+function needsNativeVolume(): boolean {
+  return typeof navigator !== 'undefined' && (/iPad|iPhone|iPod/.test(navigator.userAgent) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+function unlockVolumeContext(): void {
+  if (!needsNativeVolume() || typeof window === 'undefined') return;
+  try {
+    volumeContext ??= new window.AudioContext();
+    if (volumeContext.state !== 'running') void volumeContext.resume().catch(() => undefined);
+  } catch { /* Media playback remains available if Web Audio is unavailable. */ }
+}
+function connectNativeVolume(): void {
+  if (!player || !volumeContext || mediaSource) return;
+  try {
+    const gain = volumeContext.createGain();
+    gain.gain.value = BGM_MASTER_GAIN * volume * Math.min(1, ...ducks.values());
+    gain.connect(volumeContext.destination);
+    mediaSource = volumeContext.createMediaElementSource(player);
+    mediaSource.connect(gain);
+    volumeGain = gain;
+    player.volume = 1;
+  } catch { /* Fall back to the media element on unsupported browsers. */ }
+}
+function applyVolume():void {
+  const level=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values());
+  if (volumeGain) volumeGain.gain.setValueAtTime(level, volumeContext!.currentTime);
+  else if(player) player.volume=level;
+}
 /** Temporary mix gain never changes the player's saved music setting or track position. */
 export function createBgmDucker(){
   const key=Symbol();ducks.set(key,1);
@@ -45,7 +76,9 @@ export function createBgmDucker(){
 
 function syncBgm(): void {
   if (!unlocked) return;
+  applyVolume();
   if (document.hidden || volume === 0) { player?.pause(); return; }
+  unlockVolumeContext();
   if (!player) {
     player = document.createElement('audio');
     player.hidden = true;
@@ -54,6 +87,7 @@ function syncBgm(): void {
     player.dataset.bgm = 'true';
     document.body.append(player);
   }
+  connectNativeVolume();
   if (player.dataset.scene !== scene) {
     player.pause();
     player.src = `${import.meta.env.BASE_URL}audio/${bgmTracks[scene].file}`;
@@ -68,15 +102,23 @@ function syncBgm(): void {
 
 export function configureBgm(nextScene: BgmScene, nextVolume: number): void {
   scene = nextScene;
+  setBgmVolume(nextVolume);
+}
+/** Apply inside the settings gesture so Safari can resume a muted media element. */
+export function setBgmVolume(nextVolume: number): void {
   volume = Number.isFinite(nextVolume) ? Math.max(0, Math.min(1, nextVolume)) : 0;
   syncBgm();
 }
-export function unlockBgm(): void { unlocked = true; syncBgm(); }
+export function unlockBgm(): void { unlocked = true; unlockVolumeContext(); syncBgm(); }
 export function refreshBgm(): void { syncBgm(); }
 export function disposeBgm(): void {
   player?.pause();
   if (player) { player.removeAttribute('src'); player.load(); player.remove(); }
   player = undefined;
+  mediaSource?.disconnect(); volumeGain?.disconnect();
+  mediaSource = undefined; volumeGain = undefined;
+  if (volumeContext && volumeContext.state !== 'closed') void volumeContext.close().catch(() => undefined);
+  volumeContext = undefined;
   ducks.clear();
   unlocked = false;
 }
