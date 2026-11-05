@@ -1,0 +1,26 @@
+{
+  "stillveil-gameplay-01.mp4": {
+    "sha256": "6e05fe56e8bc9f8454400c4ca460fbeb0df46d7507ab848642db031d5f639b1a",
+    "bytes": 27596750
+  },
+  "stillveil-gameplay-01-youtube.zip": {
+    "sha256": "7976655f49d48e9598b8f40f26b39f5239db2370a54c446b68d610061e7ae19d",
+    "bytes": 27102450
+  },
+  "stillveil-gameplay-01-thumbnail.jpg": {
+    "sha256": "43b7c4b7509f070e76f6afe2244cc16b17d06e9bcd0bb4872abacca49a28da4a",
+    "bytes": 216050
+  },
+  "youtube-description.txt": {
+    "sha256": "d8d8c07cb9f9986ad43c89c0925c4dfca604da1a246ba66ee74af516f41834ff",
+    "bytes": 3140
+  },
+  "stillveil-gameplay-01.srt": {
+    "sha256": "d196b16da785eb9f0f1b5c6f159bee78477830c14d784fa5cc2cbac68c165e17",
+    "bytes": 7111
+  },
+  "final-qa.json": {
+    "sha256": "655c94eb09f206d0487be35af8ac6118f92b5508f3ffa718ceaaa626cdabce8f",
+    "bytes": 2298
+  }
+}

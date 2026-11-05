@@ -1,0 +1,85 @@
+{
+  "movieSha256": "6e05fe56e8bc9f8454400c4ca460fbeb0df46d7507ab848642db031d5f639b1a",
+  "sourceCommit": "dc4b996a016f474ff896cd82660839ac5cb685e0",
+  "duration": 247.366667,
+  "fullDecode": true,
+  "voiceChecks": 65,
+  "combatAudioChecks": 12,
+  "sourceFootageChecks": 33,
+  "finishedSceneChecks": 24,
+  "browserPlayback": {
+    "sha256": "6e05fe56e8bc9f8454400c4ca460fbeb0df46d7507ab848642db031d5f639b1a",
+    "results": [
+      {
+        "browser": "chromium",
+        "pass": true,
+        "points": [
+          {
+            "time": 0.661076,
+            "width": 1920,
+            "height": 1080,
+            "ready": 4,
+            "error": null,
+            "paused": false,
+            "ended": false
+          },
+          {
+            "time": 123.858513,
+            "width": 1920,
+            "height": 1080,
+            "ready": 4,
+            "error": null,
+            "paused": false,
+            "ended": false
+          },
+          {
+            "time": 245.546949,
+            "width": 1920,
+            "height": 1080,
+            "ready": 4,
+            "error": null,
+            "paused": false,
+            "ended": false
+          }
+        ]
+      },
+      {
+        "browser": "webkit",
+        "pass": true,
+        "points": [
+          {
+            "time": 0.671762605,
+            "width": 1920,
+            "height": 1080,
+            "ready": 4,
+            "error": null,
+            "paused": false,
+            "ended": false
+          },
+          {
+            "time": 163.158057971,
+            "width": 1920,
+            "height": 1080,
+            "ready": 2,
+            "error": null,
+            "paused": false,
+            "ended": false
+          },
+          {
+            "time": 247.367,
+            "width": 1920,
+            "height": 1080,
+            "ready": 4,
+            "error": null,
+            "paused": true,
+            "ended": true
+          }
+        ]
+      }
+    ],
+    "pass": true
+  },
+  "manualReview": "Finished 24-scene contact sheet and individual full-screen conversation frames reviewed. Finite background fades were completed before capture. The polisher result visibly shows Tier1 and the item description. Gameplay uses the larger phone layout; conversations fill the screen.",
+  "toleranceMs": 80,
+  "pass": true
+}
