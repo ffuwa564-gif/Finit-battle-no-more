@@ -86,9 +86,10 @@ export function validateContent(content: Content): string[] {
       if(!override||typeof override!=='object'||Array.isArray(override)){errors.push(`characters/${char.id}: personal override must be an object`);continue;}
       const base=content.skills.find(skill=>skill.id===id);
       reject(!char.skillIds.includes(id)||!base,`characters/${char.id}: override must reference an owned skill`);
-      reject(Object.keys(override).some(key=>!['name','description','barrierReturn','barrierMend','jamDampening'].includes(key)),`characters/${char.id}: unsupported personal override`);
+      reject(Object.keys(override).some(key=>!['name','description','dispelStrikePercent','barrierReturn','barrierMend','jamDampening'].includes(key)),`characters/${char.id}: unsupported personal override`);
       reject(override.name!==undefined&&!plain(override.name)||override.description!==undefined&&!plain(override.description),`characters/${char.id}: plain override text required`);
       reject(override.barrierReturn!==undefined&&(base?.template!=='barrier'||!validBarrierReturnContract(override.barrierReturn)),`characters/${char.id}: invalid barrier return contract`);
+      reject(override.dispelStrikePercent!==undefined&&(base?.template!=='dispel'||!Number.isInteger(override.dispelStrikePercent)||override.dispelStrikePercent<1||override.dispelStrikePercent>150),`characters/${char.id}: invalid dispel strike contract`);
       reject(override.jamDampening!==undefined&&(base?.template!=='jam'||!validJamDampeningContract(override.jamDampening)),`characters/${char.id}: invalid jam dampening contract`);
       reject(override.barrierMend!==undefined&&(base?.template!=='barrier_mend'||!validBarrierMendContract(override.barrierMend)),`characters/${char.id}: invalid barrier mend contract`);
     }
