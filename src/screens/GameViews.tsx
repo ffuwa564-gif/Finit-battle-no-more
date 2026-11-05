@@ -47,7 +47,7 @@ export function HomeView(p: ViewProps) {
     <div className="hub-illustration">
       <HomeArtwork save={p.save} busy={p.busy} command={p.command} suspended={Boolean(p.artworkSuspended)} />
       <SceneEffects mode="menu" reducedMotion={p.save.settings.reducedMotion} />
-      <SceneAtmosphere reducedMotion={p.save.settings.reducedMotion} />
+      <SceneAtmosphere suspendWithScene reducedMotion={p.save.settings.reducedMotion} />
       <div className="hub-profile">
         <div className="hub-profile-person">
           <span className="hub-profile-avatar"><PortraitArt character={leader} face /></span>
@@ -251,7 +251,7 @@ export function BattleView(p: ViewProps) {
       <MemoryGemFind battle={battle} reducedMotion={p.save.settings.reducedMotion} onOpen={() => setGemBag(true)} />
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
-      <SceneAtmosphere mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
+      <SceneAtmosphere suspendWithScene mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
       <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} onCrystal={role => { void p.command({ type: 'crystalRole', role }); }} onFairy={fairyId => { void p.command({ type: 'battleFairy', fairyId }); }} onBloom={bloomId => { void p.command({ type: 'battleBloom', bloomId }); }} />
       <NoticeSurface present={!!event && !event.ultimate} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}${event?.coordinationAction ? ' coordination-toast coordination-toast--' + event.coordinationAction : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{event?.coordinationAction && (event.coordinationAction === 'isolated' ? <Unlink size={15} /> : <Link2 size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
       {localize(event?.kind === 'drop' && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}

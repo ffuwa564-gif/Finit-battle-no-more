@@ -32,6 +32,8 @@ test('sound effects default to 100%, preview once, and stay independent of BGM',
   await game.getByRole('navigation', { name: 'Home menu', exact: true }).getByRole('button', { name: 'Settings', exact: true }).click();
   const effects = game.getByRole('group', { name: 'Sound Effects', exact: true });
   const music = game.getByRole('group', { name: 'Music Volume', exact: true });
+  await expect(music.getByRole('button', { name: '50%', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  expect(await game.locator('body').evaluate(() => document.querySelector<HTMLAudioElement>('audio[data-bgm]')?.volume)).toBe(.25);
   await expect(effects.getByRole('button', { name: '100%', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await game.locator('body').evaluate(() => {
     (window as any).cues = [];

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createSceneRenderer, type FxCue, type FxMode } from '../platform/fx-renderer';
+import { useAnimationSettings } from './animation-settings';
 import './scene-effects.css';
 
 export interface SceneEffectsProps { mode: FxMode; reducedMotion: boolean }
@@ -9,6 +10,14 @@ const cueKinds = new Set(['attack', 'area', 'heal', 'guard', 'buff', 'debuff', '
 export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [backend, setBackend] = useState<'webgl' | 'static'>('static');
+  const { suspended } = useAnimationSettings();
+  const paused = useRef(suspended);
+  const updatePlayback = useRef<(() => void) | undefined>(undefined);
+
+  useEffect(() => {
+    paused.current = suspended;
+    updatePlayback.current?.();
+  }, [suspended]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,19 +26,25 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
     let renderer: ReturnType<typeof createSceneRenderer> = null;
     let frame = 0;
     let lastFrame = -Infinity;
+    let burstUntil = -Infinity;
     let inViewport = true;
     let hasSize = false;
     let stopped = false;
     let contextLost = false;
 
     const cancelFrame = () => { cancelAnimationFrame(frame); frame = 0; };
-    const canAnimate = () => !stopped && !document.hidden && inViewport && hasSize && !!renderer;
+    const canAnimate = () => !stopped && !paused.current && !document.hidden && inViewport && hasSize && !!renderer;
     const tick = (time: number) => {
       frame = 0;
       if (!canAnimate()) return;
-      if (time - lastFrame >= 1000 / 30 - 1) {
+      // Slow ambient drift stays animated; real combat bursts retain 30fps.
+      const fps = time < burstUntil ? 30 : 15;
+      const interval = 1000 / fps;
+      const elapsed = time - lastFrame;
+      if (elapsed >= interval - 1) {
         renderer!.render(time);
-        lastFrame = time;
+        // Carry the remainder rather than rounding each interval to rAF ticks.
+        lastFrame = Number.isFinite(lastFrame) ? lastFrame + Math.max(1, Math.floor(elapsed / interval)) * interval : time;
       }
       frame = requestAnimationFrame(tick);
     };
@@ -37,6 +52,7 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
       if (canAnimate()) { if (!frame) frame = requestAnimationFrame(tick); }
       else cancelFrame();
     };
+    updatePlayback.current = resume;
     const measure = () => {
       const rect = canvas.getBoundingClientRect();
       hasSize = rect.width > 0 && rect.height > 0;
@@ -66,7 +82,11 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
       const rect = canvas.getBoundingClientRect();
       const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
       const rarity = detail.rarity === 'common' || detail.rarity === 'rare' || detail.rarity === 'epic' ? detail.rarity : undefined;
-      renderer!.cue({ kind: detail.kind as FxCue['kind'], x: clamp((detail.x! - rect.left) / rect.width, .06, .94), y: clamp((detail.y! - rect.top) / rect.height, .18, .85), rarity });
+      const now = performance.now();
+      renderer!.cue({ kind: detail.kind as FxCue['kind'], x: clamp((detail.x! - rect.left) / rect.width, .06, .94), y: clamp((detail.y! - rect.top) / rect.height, .18, .85), rarity }, now);
+      burstUntil = now + 2800;
+      lastFrame = -Infinity; // Do not delay an impact until the next ambient beat.
+      resume();
     };
     const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(canvas);
@@ -83,6 +103,7 @@ export function SceneEffects({ mode, reducedMotion }: SceneEffectsProps) {
     reconcile();
     return () => {
       stopped = true;
+      updatePlayback.current = undefined;
       cancelFrame();
       resizeObserver.disconnect();
       intersectionObserver.disconnect();

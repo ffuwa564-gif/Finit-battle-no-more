@@ -8,7 +8,7 @@ export interface FxCue {
 }
 export interface SceneRenderer {
   resize(width: number, height: number, pixelRatio: number): void;
-  cue(cue: FxCue): void;
+  cue(cue: FxCue, timeMs?: number): void;
   render(timeMs: number): void;
   dispose(): void;
 }
@@ -59,6 +59,9 @@ void main() {
   for(int i=0;i<5;i++) {
     vec4 event=u_events[i];
     float age=t-event.z;
+    // Uniform per event: skip the expensive shapes when no visible burst exists.
+    // Their previous contribution was exactly zero outside this same lifetime.
+    if(age<0. || age>=1.8) continue;
     float alive=step(0.,age)*(1.-step(1.8,age));
     float p=clamp(age/1.8,0.,1.);
     vec2 d=(uv-event.xy)*vec2(aspect,1.);
@@ -123,6 +126,8 @@ precision mediump float;
 varying mediump vec4 v_color;
 varying mediump float v_style;
 void main() {
+  // Expired particles have zero alpha over their entire point quad.
+  if(v_color.a<=0.) discard;
   vec2 p=gl_PointCoord*2.-1.;
   float r=length(p);
   float glow=exp(-r*r*5.)*(1.-smoothstep(.75,1.,r));
@@ -245,8 +250,33 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, mode: FxMode): Sc
       if (canvas.height !== height) canvas.height=height;
       context.viewport(0,0,width,height);
     };
-    const cue = (effect: FxCue) => {
+    const updateClock = (timeMs: number) => {
+      if (baseline===undefined) baseline=timeMs;
+      now=Math.max(now,(timeMs-baseline)/1000-clockOffset);
+      // Keep shader times below 64 seconds, including on GPUs without fragment highp.
+      // Birth times move together with the clock, preserving live bursts across the boundary.
+      const shift=Math.floor(now/64)*64;
+      if(shift>0) {
+        now-=shift;
+        clockOffset+=shift;
+        for(let i=0;i<PARTICLE_COUNT;i++) {
+          const offset=i*STRIDE;
+          const life=data[offset+5];
+          const birth=data[offset+4]-shift;
+          data[offset+4]=i<AMBIENT_COUNT
+            ? now-((now-birth)%life)
+            : Math.max(birth,now-life-1);
+        }
+        for(let i=0;i<EVENT_COUNT;i++) {
+          const offset=i*4+2;
+          events[offset]=Math.max(events[offset]-shift,now-2);
+        }
+        dirty=true;
+      }
+    };
+    const cue = (effect: FxCue, timeMs?: number) => {
       if (disposed || !Number.isFinite(effect.x) || !Number.isFinite(effect.y)) return;
+      if (timeMs !== undefined && Number.isFinite(timeMs)) updateClock(timeMs);
       const x=clamp(effect.x,0,1), y=clamp(effect.y,0,1);
       const kinds: FxCue['kind'][]=['attack','area','heal','guard','buff','debuff','drop','wave','defeat'];
       let type=kinds.indexOf(effect.kind);
@@ -282,28 +312,7 @@ export function createSceneRenderer(canvas: HTMLCanvasElement, mode: FxMode): Sc
     };
     const render = (timeMs: number) => {
       if (disposed || context.isContextLost() || !Number.isFinite(timeMs)) return;
-      if (baseline===undefined) baseline=timeMs;
-      now=Math.max(now,(timeMs-baseline)/1000-clockOffset);
-      // Keep shader times below 64 seconds, including on GPUs without fragment highp.
-      // Birth times move together with the clock, preserving live bursts across the boundary.
-      const shift=Math.floor(now/64)*64;
-      if(shift>0) {
-        now-=shift;
-        clockOffset+=shift;
-        for(let i=0;i<PARTICLE_COUNT;i++) {
-          const offset=i*STRIDE;
-          const life=data[offset+5];
-          const birth=data[offset+4]-shift;
-          data[offset+4]=i<AMBIENT_COUNT
-            ? now-((now-birth)%life)
-            : Math.max(birth,now-life-1);
-        }
-        for(let i=0;i<EVENT_COUNT;i++) {
-          const offset=i*4+2;
-          events[offset]=Math.max(events[offset]-shift,now-2);
-        }
-        dirty=true;
-      }
+      updateClock(timeMs);
       context.disable(context.DEPTH_TEST);
       context.disable(context.CULL_FACE);
       context.enable(context.BLEND);

@@ -7,6 +7,9 @@ import { advanceReplay, createBattle } from '../src/domain/engine';
 afterEach(() => { disposeBgm(); vi.unstubAllGlobals(); });
 
 describe('BGM scene transitions', () => {
+  it('starts new games at 50% music without changing the sound-effect default', () => {
+    expect(createInitialSave(content,42).settings).toMatchObject({bgmVolume:.5,seVolume:1});
+  });
   it('uses Fjord throughout every normal dungeon approach, while keeping event and boss tracks', () => {
     const save = createInitialSave(content, 42);
     const normal = content.dungeons.filter(d => d.published && (d.kind ?? 'normal') === 'normal');
@@ -78,9 +81,9 @@ describe('BGM scene transitions', () => {
       play:vi.fn(()=>{audio.paused=false;return Promise.resolve();}),pause:vi.fn(),load:vi.fn(),removeAttribute:vi.fn(),remove:vi.fn()};
     vi.stubGlobal('document',{hidden:false,createElement:()=>audio,body:{append:vi.fn()}});
     configureBgm('clockBoss',.4);unlockBgm();const loads=audio.load.mock.calls.length;
-    const duck=createBgmDucker();duck.set(.08);expect(audio.volume).toBeCloseTo(.032);
-    configureBgm('clockBoss',.7);expect(audio.volume).toBeCloseTo(.056);expect(audio.load).toHaveBeenCalledTimes(loads);
-    duck.dispose();expect(audio.volume).toBe(.7);
+    const duck=createBgmDucker();duck.set(.08);expect(audio.volume).toBeCloseTo(.016);
+    configureBgm('clockBoss',.7);expect(audio.volume).toBeCloseTo(.028);expect(audio.load).toHaveBeenCalledTimes(loads);
+    duck.dispose();expect(audio.volume).toBe(.35);
     const muted=createBgmDucker();muted.set(.08);configureBgm('clockBoss',0);muted.dispose();expect(audio.volume).toBe(0);
   });
   it('changes source on transitions, preserves playback during updates, and resumes the requested scene after mute or hiding', () => {
@@ -100,7 +103,7 @@ describe('BGM scene transitions', () => {
     const loads = audio.load.mock.calls.length;
     configureBgm('boss', 0.7);
     expect(audio.load).toHaveBeenCalledTimes(loads);
-    expect(audio.volume).toBe(0.7);
+    expect(audio.volume).toBe(0.35);
     configureBgm('clockBoss', 0.7);
     expect(audio.src).toContain(bgmTracks.clockBoss.file);
     const clockLoads = audio.load.mock.calls.length;
@@ -122,11 +125,11 @@ describe('BGM scene transitions', () => {
     const storyLoads = audio.load.mock.calls.length;
     configureBgm('novel', 0.25);
     expect(audio.load).toHaveBeenCalledTimes(storyLoads);
-    expect(audio.volume).toBe(0.25);
+    expect(audio.volume).toBe(0.125);
     configureBgm('novel', 0);
     expect(audio.paused).toBe(true);
     configureBgm('home', 0.25);
     expect(audio.src).toContain(bgmTracks.home.file);
-    expect(audio.volume).toBe(0.25);
+    expect(audio.volume).toBe(0.125);
   });
 });
