@@ -22,8 +22,8 @@ export function GemPolishing({ save, content, busy, command, onClose, navigate }
   const window=active && selected ? polishWindow(active,selected,now) : {angle:0,center:65,width:rule.width};
   const remaining=result ? 0 : active ? Math.max(0,Math.min(rule.seconds,Math.ceil((active.expiresAt-now)/1000))) : rule.seconds;
   const progress=active?.progress ?? (result?100:0);
-  let journey;
-  try { journey=parseWorldTravel(JSON.parse(localStorage.getItem('stillveil-world-travel-v1') ?? 'null')).journey; } catch { /* Storage is optional for polishing. */ }
+  let journey=save.worldStory?.journey;
+  try { if(!save.worldStory) journey=parseWorldTravel(JSON.parse(localStorage.getItem('stillveil-world-travel-v1') ?? 'null')).journey; } catch { /* Storage is optional for polishing. */ }
   const destination=journey && worldLocations(content,save.completedDungeonIds).find(p=>p.id===journey.destinationId);
   const travelLeft=journey ? Math.max(0,Math.ceil((journey.arrivesAt-now)/1000)) : 0;
   const stamp=(seconds:number)=>`${Math.floor(seconds/60).toString().padStart(2,'0')}:${(seconds%60).toString().padStart(2,'0')}`;

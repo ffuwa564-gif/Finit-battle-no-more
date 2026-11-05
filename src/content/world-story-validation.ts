@@ -38,13 +38,14 @@ export function validateWorldStoryContent(content: Content): string[] {
         if (ids.has(r))
             visit(r); visiting.delete(id); done.add(id); }
     for (const n of def.nodes) {
+        bad(Boolean(n.backgroundId && !content.assets.some(a => a.id === n.backgroundId)), 'unknown scene background ' + n.id);
         bad(!chars.has(n.actorId) || ['hero', 'narration'].includes(n.actorId) || !hubs.has(n.hubId) || !def.chapters.some(c => c.number === n.chapter) || !text(n.bubble) || !text(n.title) || n.lines.length < 2, 'invalid node ' + n.id);
         bad(n.requiresNodes.some(id => !ids.has(id)) || n.requiresDungeons.some(id => !content.dungeons.some(d => d.id === id)) || Boolean(n.leadDungeonId && !content.dungeons.some(d => d.id === n.leadDungeonId)), 'unknown prerequisite ' + n.id);
         const lines = [...n.lines, ...(n.choices ?? []).flatMap(c => c.response), ...(n.daily ?? []).flat(), ...(n.emergency?.lines ?? []), ...(n.variants ?? []).flatMap(v => v.lines)];
         for (const v of n.variants ?? [])
             bad(!hubs.has(v.hubId) || !text(v.bubble) || v.requiresNodes.some(id => !ids.has(id)), 'invalid daily variant ' + n.id);
         for (const line of lines)
-            bad(!chars.has(line.speaker) || !text(line.text) || Object.values({ ...line.voices, ...line.favorites }).some(t => !text(t)), 'invalid dialogue ' + n.id);
+            bad(Boolean(line.backgroundId && !content.assets.some(a => a.id === line.backgroundId)) || Boolean(line.shade && !['normal', 'dark', 'black'].includes(line.shade)) || !chars.has(line.speaker) || !text(line.text) || Object.values({ ...line.voices, ...line.favorites }).some(t => !text(t)), 'invalid dialogue ' + n.id);
         if (n.choices)
             bad(new Set(n.choices.map(c => c.id)).size !== n.choices.length || n.choices.some(c => !text(c.label) || !c.response.length), 'invalid choice ' + n.id);
         visit(n.id);

@@ -24,6 +24,8 @@ export interface HeroProfile {
     favorite: HeroFavorite;
 }
 export interface WorldStoryLine {
+    backgroundId?: string;
+    shade?: 'normal' | 'dark' | 'black';
     speaker: string;
     text: StoryText;
     voices?: Partial<Record<HeroVoice, StoryText>>;
@@ -35,6 +37,7 @@ export interface WorldStoryChoice {
     response: WorldStoryLine[];
 }
 export interface WorldStoryNode {
+    backgroundId?: string;
     id: string;
     chapter: number;
     actorId: string;
@@ -217,7 +220,7 @@ export function beginStoryTalk(save: GameSave, content: Content, nodeId: string,
         throw new Error('人物のいる場所へ移動してください。');
     s.active = { nodeId, line: 0, replay, ...(node.ambient && activeWorldIncident(save, def) ? { emergency: true } : {}), ...(replay && s.choices[nodeId] ? { choiceId: s.choices[nodeId] } : {}) };
 }
-export function advanceStoryTalk(save: GameSave, content: Content, action: 'next' | 'finish' | 'close' | 'choice', choiceId?: string): void {
+export function advanceStoryTalk(save: GameSave, content: Content, action: 'next' | 'back' | 'finish' | 'close' | 'choice', choiceId?: string): void {
     const s = save.worldStory, active = s?.active, node = content.worldStory?.nodes.find(n => n.id === active?.nodeId);
     if (!s || !active || !node)
         throw new Error('会話を再開できません。');
@@ -226,6 +229,11 @@ export function advanceStoryTalk(save: GameSave, content: Content, action: 'next
         return;
     }
     const lines = nodeLines(node, s);
+    if (action === 'back') {
+        if (active.line <= 0) throw new Error('最初の会話です。');
+        active.line--;
+        return;
+    }
     if (action === 'next') {
         if (active.line >= lines.length - 1)
             throw new Error('最後の会話です。');

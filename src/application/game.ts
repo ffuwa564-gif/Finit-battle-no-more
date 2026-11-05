@@ -100,7 +100,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.novels?.active && !['novelNext', 'novelBack', 'novelFinish', 'settings'].includes(command.type)) fail('物語を閉じてから操作してください。');
   // Discard retired choice metadata; retain already-saved stats, loot and replay.
   if (save.battle) delete save.battle.omens;
-  if(save.worldStory?.active && !['worldTalkNext','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
+  if(save.worldStory?.active && !['worldTalkNext','worldTalkBack','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
@@ -108,7 +108,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
     case 'worldIncidentNotice': {if(!content.worldStory||!save.worldStory)fail('旅はまだ始まっていません。');acknowledgeWorldIncident(save,content.worldStory,command.incidentId);break;}
     case 'worldTravelCancel': {town(save);if(save.worldStory)cancelStoryTravel(save.worldStory,context.now??Date.now());break;}
     case 'worldTalk': {town(save);beginStoryTalk(save,content,command.nodeId,context.now??Date.now());break;}
-    case 'worldTalkNext': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);break;}
+    case 'worldTalkNext': case 'worldTalkBack': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkBack'?'back':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);break;}
 
     case 'trackBuild': {
       town(save);

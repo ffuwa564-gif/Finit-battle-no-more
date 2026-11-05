@@ -29,7 +29,9 @@ async function finish(page: import('@playwright/test').Page) { const modal = pag
         await expect(modal).toHaveCount(0);
         return;
     }
+    const line = await modal.locator('.world-conversation__line').getAttribute('data-world-line');
     await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
+    await expect(modal.locator('.world-conversation__line')).not.toHaveAttribute('data-world-line', line!);
 } throw Error('Dialogue did not finish'); }
 test('quiet days personalize and resume conversations, then rotate ordinary visits without rewards', async ({ page }, info) => {
     await page.setViewportSize({ width: 390, height: 844 });
@@ -42,11 +44,15 @@ test('quiet days personalize and resume conversations, then rotate ordinary visi
     await expect(page.locator('.world-conversation__line')).toContainText('ミオ');
     await page.getByRole('button', { name: '次の台詞', exact: true }).click();
     await expect(page.locator('.world-conversation__line')).toContainText('地図が逆');
-    for (const frame of await page.locator('.world-conversation__portrait').all()) {
-        const b = (await frame.boundingBox())!;
-        expect(b.width).toBeCloseTo(48, 0);
-        expect(b.height).toBeCloseTo(48, 0);
-    }
+    const stage = page.locator('.world-conversation');
+    const bounds = (await stage.boundingBox())!;
+    expect(bounds.x).toBe(0); expect(bounds.y).toBe(0);
+    expect(bounds.width).toBe(390); expect(bounds.height).toBe(844);
+    await expect(stage.locator('.novel-backgrounds img.is-current')).toBeVisible();
+    await page.getByRole('button', { name: '前の台詞', exact: true }).click();
+    await expect(stage.locator('.world-conversation__line')).toContainText('ミオ');
+    await page.getByRole('button', { name: '次の台詞', exact: true }).click();
+    await expect(stage.locator('.world-conversation__line')).toContainText('地図が逆');
     await page.screenshot({ path: info.outputPath('protagonist-conversation.png') });
     await page.reload();
     await enterGame(page);
@@ -148,7 +154,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     await finish(page);
     await expect(page.locator('.world-story-objective')).toContainText('リオラの様子を見たい');
     await page.getByRole('button', { name: '声をかける', exact: true }).click();
-    await expect(modal).toContainText('庭園の女');
+    await expect(modal).toContainText('寝台から起き上がれなかった');
     for (let i = 0; i < 5; i++) await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
     await expect(modal.locator('.world-conversation__line strong')).toHaveText('庭園の女');
     await expect(modal.locator('.world-conversation__line')).toContainText('こっちを向いて');

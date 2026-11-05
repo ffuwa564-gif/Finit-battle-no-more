@@ -12,7 +12,7 @@ export async function enterGame(page: Page) {
 /** Non-story regression tests explicitly skip the opening through the real UI. */
 export async function skipStory(target: Page | import('@playwright/test').FrameLocator) {
   await expect(target.locator('.title-screen')).toHaveCount(0);
-  if (!await target.locator('.visual-novel').count()) return;
+  if (!await target.locator('.visual-novel:not(.world-conversation)').count()) return;
   await target.getByRole('button', { name: /^(物語をスキップ|Skip Story)$/ }).click();
   await target.getByRole('button', { name: /^(スキップして進む|Skip and Continue)$/ }).click();
   await expect(target.locator('.visual-novel')).toHaveCount(0);

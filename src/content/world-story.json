@@ -424,7 +424,8 @@
             "en": "Let us go down into town. There are places I want you to see."
           }
         }
-      ]
+      ],
+      "backgroundId": "key-art"
     },
     {
       "id": "c1-offerings",
@@ -514,7 +515,8 @@
             "en": "The girl with the scraped hands had already shouldered her bag again. She was going back so she could see her once more. I almost called out, then lowered my hand."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-generation",
@@ -609,14 +611,18 @@
           "text": {
             "ja": "私は口元だけで笑った。うなずこうとしたとき、欲望の扉の前で、少女が別の少女の腕を掴んだ光景がよぎった。",
             "en": "I managed a smile. As I tried to nod, I saw again the girl seizing another girl by the arm before the Door of Desire."
-          }
+          },
+          "backgroundId": "novel-desire-gate",
+          "shade": "dark"
         },
         {
           "speaker": "narration",
           "text": {
             "ja": "あの三人は、もう笑いながら歩いていた。本当に、この子たちは幸せに生きていけるのだろうか。",
             "en": "The three were already walking away, laughing. Could these girls really go on living happily?"
-          }
+          },
+          "backgroundId": "novel-desire-gate",
+          "shade": "dark"
         },
         {
           "speaker": "liora",
@@ -639,7 +645,8 @@
             "en": "Of course. Let us sit over there."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-garden-rounds",
@@ -743,7 +750,8 @@
             "en": "I see. Tell me about it later, when we have time. Come to my room tonight."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-garden-night",
@@ -866,23 +874,27 @@
           "text": {
             "ja": "別の庭園では、一人の管理者が水鏡を見つめていた。眠る女と、その周りの少女たちを、しばらく黙って眺めている。",
             "en": "In another garden, a keeper watched her water mirror. For a while she silently studied the sleeping woman and the girls around her."
-          }
+          },
+          "shade": "dark"
         },
         {
           "speaker": "garden-observer",
           "text": {
             "ja": "かわいそうなひと……。",
             "en": "You poor thing..."
-          }
+          },
+          "shade": "dark"
         },
         {
           "speaker": "narration",
           "text": {
             "ja": "その言葉は、眠る女には届かなかった。",
             "en": "Her words did not reach the sleeping woman."
-          }
+          },
+          "shade": "dark"
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-job",
@@ -952,7 +964,8 @@
           }
         }
       ],
-      "leadDungeonId": "silent-cathedral"
+      "leadDungeonId": "silent-cathedral",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-chart",
@@ -1010,7 +1023,8 @@
           }
         }
       ],
-      "leadDungeonId": "moon-garden"
+      "leadDungeonId": "moon-garden",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-wolf",
@@ -1071,7 +1085,8 @@
           }
         }
       ],
-      "leadDungeonId": "root-waterway"
+      "leadDungeonId": "root-waterway",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-flowers",
@@ -1121,7 +1136,8 @@
             "en": "It will wash out. I hope she likes it."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-care",
@@ -1172,7 +1188,8 @@
           }
         }
       ],
-      "leadDungeonId": "stone-fountain"
+      "leadDungeonId": "stone-fountain",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c1-oath",
@@ -1300,7 +1317,8 @@
             "en": "Why had she bowed to me? Perhaps the woman in the garden had put something into her head. For now, I left it at that."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-held",
@@ -1434,7 +1452,8 @@
             "en": "To her, Liora was like a child. I sat in the chair and waited as Liora's breathing steadied in her arms."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-return",
@@ -1487,7 +1506,8 @@
           }
         }
       ],
-      "ending": true
+      "ending": true,
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c1-snack",
@@ -1607,7 +1627,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "c2-pot",
@@ -1654,7 +1675,8 @@
           }
         }
       ],
-      "leadDungeonId": "veiled-cloister"
+      "leadDungeonId": "veiled-cloister",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c2-tea",
@@ -1715,7 +1737,8 @@
           }
         }
       ],
-      "leadDungeonId": "thorn-court"
+      "leadDungeonId": "thorn-court",
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c2-promise",
@@ -1816,7 +1839,8 @@
             }
           ]
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c2-plan",
@@ -1867,7 +1891,8 @@
           }
         }
       ],
-      "leadDungeonId": "memory-grafting"
+      "leadDungeonId": "memory-grafting",
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c2-clinic",
@@ -1917,7 +1942,8 @@
             "en": "You came here with me. Let us go home and rest today."
           }
         }
-      ]
+      ],
+      "backgroundId": "thorn-witch-art"
     },
     {
       "id": "c2-key",
@@ -1966,7 +1992,8 @@
           }
         }
       ],
-      "leadDungeonId": "missing-name"
+      "leadDungeonId": "missing-name",
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c2-rescue",
@@ -2017,7 +2044,8 @@
           }
         }
       ],
-      "leadDungeonId": "hollow-gate"
+      "leadDungeonId": "hollow-gate",
+      "backgroundId": "thorn-witch-art"
     },
     {
       "id": "c2-after",
@@ -2068,7 +2096,8 @@
           }
         }
       ],
-      "ending": true
+      "ending": true,
+      "backgroundId": "liora-art"
     },
     {
       "id": "c3-visit",
@@ -2125,7 +2154,8 @@
           }
         }
       ],
-      "leadDungeonId": "silver-crypt"
+      "leadDungeonId": "silver-crypt",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c3-record",
@@ -2176,7 +2206,8 @@
           }
         }
       ],
-      "leadDungeonId": "starless-terrace"
+      "leadDungeonId": "starless-terrace",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c3-evacuate",
@@ -2226,7 +2257,8 @@
             "en": "I will carry it."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c3-bridge",
@@ -2276,7 +2308,8 @@
             "en": "I will be waiting. I will tell Seris."
           }
         }
-      ]
+      ],
+      "backgroundId": "noelle-art"
     },
     {
       "id": "c3-water",
@@ -2326,7 +2359,8 @@
             "en": "I will carry it, with what I need to relight it."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c3-sword",
@@ -2379,7 +2413,8 @@
           }
         }
       ],
-      "leadDungeonId": "pale-throne"
+      "leadDungeonId": "pale-throne",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c3-morning",
@@ -2430,7 +2465,8 @@
           }
         }
       ],
-      "ending": true
+      "ending": true,
+      "backgroundId": "lisette-art"
     },
     {
       "id": "c4-invitation",
@@ -2476,7 +2512,8 @@
             "en": "All right. Can I tell you where I would like to stop on the way home?"
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c4-supplies",
@@ -2524,7 +2561,8 @@
             "en": "...I will bring the wrapping back when we return."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c4-walk",
@@ -2583,7 +2621,8 @@
           }
         }
       ],
-      "leadDungeonId": "ritual-stone-grove"
+      "leadDungeonId": "ritual-stone-grove",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c4-cover",
@@ -2641,7 +2680,8 @@
           }
         }
       ],
-      "leadDungeonId": "zakuro-procession"
+      "leadDungeonId": "zakuro-procession",
+      "backgroundId": "encounter-zakuro"
     },
     {
       "id": "c4-retreat",
@@ -2705,7 +2745,8 @@
             "en": "Do not pursue them. ...That cord is rubbing your wound. Lift your foot a little."
           }
         }
-      ]
+      ],
+      "backgroundId": "encounter-zakuro"
     },
     {
       "id": "c4-report",
@@ -2753,7 +2794,8 @@
             "en": "All right. If we approach again, we should send word first."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c4-home",
@@ -2802,7 +2844,8 @@
           }
         }
       ],
-      "ending": true
+      "ending": true,
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-request",
@@ -2849,7 +2892,8 @@
           }
         }
       ],
-      "leadDungeonId": "guild-blank-request"
+      "leadDungeonId": "guild-blank-request",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-girl",
@@ -2916,7 +2960,8 @@
             "en": "Yes. ...I do not want to go back to the garden yet."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-register",
@@ -2966,7 +3011,8 @@
             "en": "I will come back when we know where she will sleep."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-cloth",
@@ -3016,7 +3062,8 @@
             "en": "Then I will write when I am coming back too."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-bed",
@@ -3066,7 +3113,8 @@
             "en": "I will ask which she prefers."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-address",
@@ -3159,7 +3207,8 @@
             }
           ]
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c5-finish",
@@ -3210,7 +3259,8 @@
           }
         }
       ],
-      "ending": true
+      "ending": true,
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-invite",
@@ -3257,7 +3307,8 @@
           }
         }
       ],
-      "leadDungeonId": "night-watch-request"
+      "leadDungeonId": "night-watch-request",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-lights",
@@ -3307,7 +3358,8 @@
             "en": "I will hold it until you return."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-table",
@@ -3381,7 +3433,8 @@
             "en": "Thank you. Call me again after I have eaten."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-relay",
@@ -3433,7 +3486,8 @@
           }
         }
       ],
-      "leadDungeonId": "closed-homeward-lane"
+      "leadDungeonId": "closed-homeward-lane",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-prayer",
@@ -3483,7 +3537,8 @@
             "en": "All right. Let us go back together when you are done."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-path",
@@ -3534,7 +3589,8 @@
           }
         }
       ],
-      "leadDungeonId": "lantern-return"
+      "leadDungeonId": "lantern-return",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c6-breakfast",
@@ -3626,7 +3682,8 @@
             }
           ]
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c7-sleeve",
@@ -3673,7 +3730,8 @@
           }
         }
       ],
-      "leadDungeonId": "mending-room"
+      "leadDungeonId": "mending-room",
+      "backgroundId": "cathedral"
     },
     {
       "id": "c7-stone",
@@ -3723,7 +3781,8 @@
             "en": "Yes. It is all right if all we do today is read."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c7-names",
@@ -3773,7 +3832,8 @@
             "en": "Then I will leave this blank. We can fill it in together when you return."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c7-care",
@@ -3833,7 +3893,8 @@
             "en": "...Yes. We will ask those people first too."
           }
         }
-      ]
+      ],
+      "backgroundId": "cathedral"
     },
     {
       "id": "c7-door",
@@ -3884,7 +3945,8 @@
             "en": "Then I would like to have some with you when we finish."
           }
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c7-stop",
@@ -3945,7 +4007,8 @@
           }
         }
       ],
-      "leadDungeonId": "two-signatures"
+      "leadDungeonId": "two-signatures",
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "c7-together",
@@ -4047,7 +4110,8 @@
             }
           ]
         }
-      ]
+      ],
+      "backgroundId": "novel-awakening-garden"
     },
     {
       "id": "home-liora",
@@ -4144,7 +4208,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-seris",
@@ -4243,7 +4308,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-elaine",
@@ -4342,7 +4408,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-noelle",
@@ -4441,7 +4508,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-fio",
@@ -4538,7 +4606,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-ione",
@@ -4635,7 +4704,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-neri",
@@ -4732,7 +4802,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-ruka",
@@ -4829,7 +4900,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-guest",
@@ -4926,7 +4998,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "cathedral"
     },
     {
       "id": "home-witch",
@@ -5066,7 +5139,8 @@
             }
           }
         ]
-      }
+      },
+      "backgroundId": "novel-awakening-garden"
     }
   ],
   "incidents": [
