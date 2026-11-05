@@ -1,3 +1,4 @@
+import { novelAvailable } from '../src/domain/novels';
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
@@ -57,7 +58,8 @@ describe('Zakuro and the ritual forest', () => {
     expect(save.materials['ritual-stone:rare']).toBeUndefined();
     const claimed = applyCommand(save, { type: 'claim' }, content);
     expect(claimed.materials['ritual-stone:rare']).toBe(1);
-    expect(claimed.novels?.active?.sceneId).toBe('zakuro-forest-encounter');
+    expect(claimed.novels?.active).toBeUndefined();
+    expect(novelAvailable(content.novels!.find(n => n.id === 'zakuro-forest-encounter')!, claimed)).toBe(true);
     assertSaveCompatibility(claimed, content);
     const failure = applyCommand(prepared(), { type: 'depart', dungeonId: 'ritual-stone-grove', potions: 0 }, content);
     while (failure.battle!.phase === 'playing') failure.battle = advanceReplay(failure.battle!, content);
@@ -99,7 +101,8 @@ describe('Zakuro and the ritual forest', () => {
     expect(battle.pendingMaterials['pomegranate:rare']).toBeGreaterThanOrEqual(1);
     const save = prepared(); save.completedDungeonIds.push('ritual-stone-grove'); save.battle = battle;
     const claimed = applyCommand(save, { type: 'claim' }, content);
-    expect(claimed.novels?.active?.sceneId).toBe('chapter-4-epilogue');
+    expect(claimed.novels?.active).toBeUndefined();
+    expect(novelAvailable(content.novels!.find(n => n.id === 'chapter-4-epilogue')!, claimed)).toBe(true);
     expect(claimed.completedDungeonIds).toContain('zakuro-procession');
     assertSaveCompatibility(claimed, content);
   });

@@ -38,14 +38,15 @@ describe('saved visual novel stories', () => {
     const replay = applyCommand(done, { type: 'novelStart', sceneId: 'opening-desire-gate' }, content);
     expect(applyCommand(replay, { type: 'novelFinish' }, content).novels!.seen).toEqual(['opening-desire-gate']);
   });
-  it.each(content.novels!.filter(scene => scene.trigger.kind === 'dungeon-clear'))('queues $id atomically after first-clear rewards and never grants those rewards twice', scene => {
+  it.each(content.novels!.filter(scene => scene.trigger.kind === 'dungeon-clear'))('leaves $id on the map archive after rewards without interrupting play or granting rewards twice', scene => {
     if (scene.trigger.kind !== 'dungeon-clear') throw Error('fixture');
     const stageId = scene.trigger.dungeonId;
     const before = won(stageId), after = applyCommand(before, { type: 'claim' }, content);
-    expect(after.battle).toBeNull(); expect(after.novels!.active!.sceneId).toBe(scene.id);
+    expect(after.battle).toBeNull(); expect(after.novels!.active).toBeUndefined();
     assertSaveCompatibility(JSON.parse(JSON.stringify(after)), content);
     expect(after.gold).toBe(before.gold + 20); expect(after.stones).toBe(before.stones + 3); expect(after.revision).toBe(before.revision + 1);
-    const finished = applyCommand(after, { type: 'novelFinish' }, content);
+    const manual = applyCommand(after, { type: 'novelStart', sceneId: scene.id }, content);
+    const finished = applyCommand(manual, { type: 'novelFinish' }, content);
     expect(finished.gold).toBe(after.gold); expect(finished.stones).toBe(after.stones);
     expect(() => applyCommand(finished, { type: 'claim' }, content)).toThrow();
     const repeat = won(stageId, [stageId]); expect(applyCommand(repeat, { type: 'claim' }, content).novels!.active).toBeUndefined();

@@ -140,6 +140,22 @@ export default function App() {
     } finally { busyRef.current = false; setBusy(false); }
   }, [navigate]);
 
+  // A manual workshop job completes once, even after leaving the workshop.
+  // Avoid ticking/persisting the whole save during combat or dialogue.
+  const workshopDeadline = save?.industry?.job?.readyAt;
+  useEffect(() => {
+    if (workshopDeadline === undefined || save?.battle || save?.novels?.active || save?.worldStory?.active || fatal) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const complete = () => {
+      if (document.hidden) return;
+      if (busyRef.current) { timer = setTimeout(complete, 250); return; }
+      void command({ type: 'industrySync' });
+    };
+    const schedule = () => { clearTimeout(timer); timer = setTimeout(complete, Math.max(0, workshopDeadline - Date.now())); };
+    schedule(); document.addEventListener('visibilitychange', schedule);
+    return () => { clearTimeout(timer); document.removeEventListener('visibilitychange', schedule); };
+  }, [workshopDeadline, Boolean(save?.battle), Boolean(save?.novels?.active), Boolean(save?.worldStory?.active), fatal, command]);
+
   useEffect(() => {
     setAudioVolume(save?.settings.seVolume ?? 1);
     const onUI = (event: Event) => { unlockBgm(); const kind = (event as CustomEvent).detail?.kind; void enableAudio().then(() => playSound(kind === 'cancel' || kind === 'select' ? kind : 'confirm')); };

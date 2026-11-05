@@ -63,7 +63,8 @@ describe('1.10 continuation chapters and story', () => {
       expect(save.stones).toBe(initialStones + (index + 1) * 3);
       const expected = newNovels.find(n => n.trigger.kind === 'dungeon-clear' && n.trigger.dungeonId === d.id);
       if (expected) {
-        expect(save.novels?.active?.sceneId).toBe(expected.id);
+        expect(save.novels?.active).toBeUndefined();
+        save = applyCommand(save, { type: 'novelStart', sceneId: expected.id }, fixture);
         const resources = { stones: save.stones, materials: { ...save.materials } };
         save = applyCommand(save, { type: 'novelFinish' }, fixture);
         expect(save.stones).toBe(resources.stones); expect(save.materials).toEqual(resources.materials);

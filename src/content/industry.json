@@ -1,0 +1,1312 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "timber",
+      "name": {
+        "ja": "原木",
+        "en": "Timber"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "stone",
+      "name": {
+        "ja": "原石材",
+        "en": "Stone"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "ore",
+      "name": {
+        "ja": "鉄鉱石",
+        "en": "Iron ore"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "copper",
+      "name": {
+        "ja": "銅鉱石",
+        "en": "Copper ore"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "silica",
+      "name": {
+        "ja": "珪砂",
+        "en": "Silica sand"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "clay",
+      "name": {
+        "ja": "粘土",
+        "en": "Clay"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "coal",
+      "name": {
+        "ja": "石炭",
+        "en": "Coal"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "fish",
+      "name": {
+        "ja": "湖魚",
+        "en": "Lake fish"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "fiber",
+      "name": {
+        "ja": "水草繊維",
+        "en": "Reed fiber"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "water",
+      "name": {
+        "ja": "清水",
+        "en": "Fresh water"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "crystal",
+      "name": {
+        "ja": "微光石",
+        "en": "Glimmerstone"
+      },
+      "kind": "raw"
+    },
+    {
+      "id": "plank",
+      "name": {
+        "ja": "木板",
+        "en": "Planks"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "charcoal",
+      "name": {
+        "ja": "木炭",
+        "en": "Charcoal"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "iron",
+      "name": {
+        "ja": "鉄インゴット",
+        "en": "Iron ingot"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "copper-ingot",
+      "name": {
+        "ja": "銅インゴット",
+        "en": "Copper ingot"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "glass",
+      "name": {
+        "ja": "ガラス",
+        "en": "Glass"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "brick",
+      "name": {
+        "ja": "耐火レンガ",
+        "en": "Firebrick"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "gear",
+      "name": {
+        "ja": "歯車",
+        "en": "Gear"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "plate",
+      "name": {
+        "ja": "金属板",
+        "en": "Metal plate"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "wire",
+      "name": {
+        "ja": "銅線",
+        "en": "Copper wire"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "rope",
+      "name": {
+        "ja": "繊維縄",
+        "en": "Reed rope"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "oil",
+      "name": {
+        "ja": "機械油",
+        "en": "Machine oil"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "sealant",
+      "name": {
+        "ja": "防水材",
+        "en": "Sealant"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "pure-water",
+      "name": {
+        "ja": "蒸留水",
+        "en": "Distilled water"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "precision",
+      "name": {
+        "ja": "精密部品",
+        "en": "Precision parts"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "charged-crystal",
+      "name": {
+        "ja": "蓄光結晶",
+        "en": "Charged crystal"
+      },
+      "kind": "part"
+    },
+    {
+      "id": "bench",
+      "name": {
+        "ja": "作業台",
+        "en": "Workbench"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "furnace",
+      "name": {
+        "ja": "精錬炉",
+        "en": "Smelting furnace"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "kiln",
+      "name": {
+        "ja": "焼成窯",
+        "en": "Kiln"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "sawmill",
+      "name": {
+        "ja": "製材機",
+        "en": "Sawmill"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "press",
+      "name": {
+        "ja": "圧延機",
+        "en": "Rolling press"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "lathe",
+      "name": {
+        "ja": "旋盤",
+        "en": "Lathe"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "wire-drawer",
+      "name": {
+        "ja": "伸線機",
+        "en": "Wire drawer"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "loom",
+      "name": {
+        "ja": "織機",
+        "en": "Loom"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "extractor",
+      "name": {
+        "ja": "抽出機",
+        "en": "Extractor"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "condenser",
+      "name": {
+        "ja": "蒸留塔",
+        "en": "Distillation column"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "assembler",
+      "name": {
+        "ja": "自動組立機",
+        "en": "Automatic assembler"
+      },
+      "kind": "machine"
+    },
+    {
+      "id": "pick",
+      "name": {
+        "ja": "採掘つるはし",
+        "en": "Mining pick"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "rod",
+      "name": {
+        "ja": "改良釣り竿",
+        "en": "Improved fishing rod"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "axe",
+      "name": {
+        "ja": "伐採斧",
+        "en": "Logging axe"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "drill",
+      "name": {
+        "ja": "歯車式採掘機",
+        "en": "Geared mining drill"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "fishing-rig",
+      "name": {
+        "ja": "巻上式釣り具",
+        "en": "Powered fishing reel"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "logging-rig",
+      "name": {
+        "ja": "機械鋸",
+        "en": "Mechanical saw"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "crate",
+      "name": {
+        "ja": "資源保管箱",
+        "en": "Resource storage crate"
+      },
+      "kind": "tool"
+    },
+    {
+      "id": "field-lantern",
+      "name": {
+        "ja": "携帯灯",
+        "en": "Field lantern"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "safety-key",
+      "name": {
+        "ja": "安全弁の鍵",
+        "en": "Safety valve key"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "sluice-handle",
+      "name": {
+        "ja": "水門の操作輪",
+        "en": "Sluice handwheel"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "survey-compass",
+      "name": {
+        "ja": "樹海の測量器",
+        "en": "Forest surveying compass"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "nameplate",
+      "name": {
+        "ja": "帰路の名札",
+        "en": "Homeward nameplate"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "relay-lamp",
+      "name": {
+        "ja": "中継灯",
+        "en": "Relay lantern"
+      },
+      "kind": "story"
+    },
+    {
+      "id": "resonance-core",
+      "name": {
+        "ja": "温室の調整核",
+        "en": "Greenhouse regulator"
+      },
+      "kind": "story"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "bench",
+      "name": {
+        "ja": "作業台",
+        "en": "Workbench"
+      },
+      "inputs": {
+        "timber": 4,
+        "stone": 3
+      },
+      "outputs": {
+        "bench": 1
+      },
+      "seconds": 12,
+      "station": null,
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "furnace",
+      "name": {
+        "ja": "精錬炉",
+        "en": "Smelting furnace"
+      },
+      "inputs": {
+        "stone": 6,
+        "clay": 4
+      },
+      "outputs": {
+        "furnace": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "kiln",
+      "name": {
+        "ja": "焼成窯",
+        "en": "Kiln"
+      },
+      "inputs": {
+        "stone": 5,
+        "clay": 5
+      },
+      "outputs": {
+        "kiln": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "sawmill",
+      "name": {
+        "ja": "製材機",
+        "en": "Sawmill"
+      },
+      "inputs": {
+        "iron": 4,
+        "gear": 2,
+        "plank": 4
+      },
+      "outputs": {
+        "sawmill": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "press",
+      "name": {
+        "ja": "圧延機",
+        "en": "Rolling press"
+      },
+      "inputs": {
+        "iron": 5,
+        "gear": 2,
+        "brick": 3
+      },
+      "outputs": {
+        "press": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 2,
+      "automatable": false
+    },
+    {
+      "id": "lathe",
+      "name": {
+        "ja": "旋盤",
+        "en": "Lathe"
+      },
+      "inputs": {
+        "plate": 4,
+        "gear": 3,
+        "copper-ingot": 2
+      },
+      "outputs": {
+        "lathe": 1
+      },
+      "seconds": 12,
+      "station": "press",
+      "chapter": 2,
+      "automatable": false
+    },
+    {
+      "id": "wire-drawer",
+      "name": {
+        "ja": "伸線機",
+        "en": "Wire drawer"
+      },
+      "inputs": {
+        "copper-ingot": 3,
+        "gear": 2,
+        "plank": 3
+      },
+      "outputs": {
+        "wire-drawer": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "loom",
+      "name": {
+        "ja": "織機",
+        "en": "Loom"
+      },
+      "inputs": {
+        "plank": 5,
+        "gear": 2,
+        "rope": 2
+      },
+      "outputs": {
+        "loom": 1
+      },
+      "seconds": 12,
+      "station": "bench",
+      "chapter": 2,
+      "automatable": false
+    },
+    {
+      "id": "extractor",
+      "name": {
+        "ja": "抽出機",
+        "en": "Extractor"
+      },
+      "inputs": {
+        "plate": 4,
+        "glass": 3,
+        "wire": 4
+      },
+      "outputs": {
+        "extractor": 1
+      },
+      "seconds": 12,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "condenser",
+      "name": {
+        "ja": "蒸留塔",
+        "en": "Distillation column"
+      },
+      "inputs": {
+        "glass": 5,
+        "plate": 3,
+        "wire": 3
+      },
+      "outputs": {
+        "condenser": 1
+      },
+      "seconds": 12,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "assembler",
+      "name": {
+        "ja": "自動組立機",
+        "en": "Automatic assembler"
+      },
+      "inputs": {
+        "plate": 5,
+        "gear": 4,
+        "wire": 6,
+        "brick": 3
+      },
+      "outputs": {
+        "assembler": 1
+      },
+      "seconds": 12,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "plank",
+      "name": {
+        "ja": "木板",
+        "en": "Planks"
+      },
+      "inputs": {
+        "timber": 1
+      },
+      "outputs": {
+        "plank": 2
+      },
+      "seconds": 4,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "charcoal",
+      "name": {
+        "ja": "木炭",
+        "en": "Charcoal"
+      },
+      "inputs": {
+        "timber": 2
+      },
+      "outputs": {
+        "charcoal": 3
+      },
+      "seconds": 8,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "iron",
+      "name": {
+        "ja": "鉄インゴット",
+        "en": "Iron ingot"
+      },
+      "inputs": {
+        "ore": 2,
+        "charcoal": 1
+      },
+      "outputs": {
+        "iron": 2
+      },
+      "seconds": 10,
+      "station": "furnace",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "copper-ingot",
+      "name": {
+        "ja": "銅インゴット",
+        "en": "Copper ingot"
+      },
+      "inputs": {
+        "copper": 2,
+        "charcoal": 1
+      },
+      "outputs": {
+        "copper-ingot": 2
+      },
+      "seconds": 10,
+      "station": "furnace",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "glass",
+      "name": {
+        "ja": "ガラス",
+        "en": "Glass"
+      },
+      "inputs": {
+        "silica": 2,
+        "charcoal": 1
+      },
+      "outputs": {
+        "glass": 2
+      },
+      "seconds": 10,
+      "station": "kiln",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "brick",
+      "name": {
+        "ja": "耐火レンガ",
+        "en": "Firebrick"
+      },
+      "inputs": {
+        "clay": 2,
+        "charcoal": 1
+      },
+      "outputs": {
+        "brick": 3
+      },
+      "seconds": 10,
+      "station": "kiln",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "gear",
+      "name": {
+        "ja": "歯車",
+        "en": "Gear"
+      },
+      "inputs": {
+        "iron": 2
+      },
+      "outputs": {
+        "gear": 2
+      },
+      "seconds": 8,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "plate",
+      "name": {
+        "ja": "金属板",
+        "en": "Metal plate"
+      },
+      "inputs": {
+        "iron": 2
+      },
+      "outputs": {
+        "plate": 3
+      },
+      "seconds": 10,
+      "station": "press",
+      "chapter": 2,
+      "automatable": true
+    },
+    {
+      "id": "wire",
+      "name": {
+        "ja": "銅線",
+        "en": "Copper wire"
+      },
+      "inputs": {
+        "copper-ingot": 1
+      },
+      "outputs": {
+        "wire": 3
+      },
+      "seconds": 8,
+      "station": "wire-drawer",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "rope",
+      "name": {
+        "ja": "繊維縄",
+        "en": "Reed rope"
+      },
+      "inputs": {
+        "fiber": 2
+      },
+      "outputs": {
+        "rope": 2
+      },
+      "seconds": 6,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "oil",
+      "name": {
+        "ja": "機械油",
+        "en": "Machine oil"
+      },
+      "inputs": {
+        "fish": 2
+      },
+      "outputs": {
+        "oil": 3
+      },
+      "seconds": 12,
+      "station": "extractor",
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "sealant",
+      "name": {
+        "ja": "防水材",
+        "en": "Sealant"
+      },
+      "inputs": {
+        "fiber": 2,
+        "oil": 1
+      },
+      "outputs": {
+        "sealant": 3
+      },
+      "seconds": 12,
+      "station": "extractor",
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "pure-water",
+      "name": {
+        "ja": "蒸留水",
+        "en": "Distilled water"
+      },
+      "inputs": {
+        "water": 2,
+        "coal": 1
+      },
+      "outputs": {
+        "pure-water": 3
+      },
+      "seconds": 12,
+      "station": "condenser",
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "precision",
+      "name": {
+        "ja": "精密部品",
+        "en": "Precision parts"
+      },
+      "inputs": {
+        "plate": 1,
+        "gear": 1,
+        "wire": 2
+      },
+      "outputs": {
+        "precision": 2
+      },
+      "seconds": 14,
+      "station": "assembler",
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "charged-crystal",
+      "name": {
+        "ja": "蓄光結晶",
+        "en": "Charged crystal"
+      },
+      "inputs": {
+        "crystal": 1,
+        "wire": 2,
+        "pure-water": 1
+      },
+      "outputs": {
+        "charged-crystal": 2
+      },
+      "seconds": 16,
+      "station": "assembler",
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "sawn-plank",
+      "name": {
+        "ja": "自動製材",
+        "en": "Automatic sawing"
+      },
+      "inputs": {
+        "timber": 1
+      },
+      "outputs": {
+        "plank": 4
+      },
+      "seconds": 8,
+      "station": "sawmill",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "turned-gear",
+      "name": {
+        "ja": "精密歯切り",
+        "en": "Automatic gear cutting"
+      },
+      "inputs": {
+        "iron": 2
+      },
+      "outputs": {
+        "gear": 4
+      },
+      "seconds": 12,
+      "station": "lathe",
+      "chapter": 2,
+      "automatable": true
+    },
+    {
+      "id": "woven-rope",
+      "name": {
+        "ja": "自動製縄",
+        "en": "Automatic rope weaving"
+      },
+      "inputs": {
+        "fiber": 2
+      },
+      "outputs": {
+        "rope": 4
+      },
+      "seconds": 10,
+      "station": "loom",
+      "chapter": 2,
+      "automatable": true
+    },
+    {
+      "id": "carbonize",
+      "name": {
+        "ja": "木炭焼成",
+        "en": "Automatic charcoal firing"
+      },
+      "inputs": {
+        "timber": 2
+      },
+      "outputs": {
+        "charcoal": 4
+      },
+      "seconds": 12,
+      "station": "kiln",
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "pick",
+      "name": {
+        "ja": "採掘つるはし",
+        "en": "Mining pick"
+      },
+      "inputs": {
+        "iron": 3,
+        "plank": 2,
+        "rope": 1
+      },
+      "outputs": {
+        "pick": 1
+      },
+      "seconds": 16,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "rod",
+      "name": {
+        "ja": "改良釣り竿",
+        "en": "Improved fishing rod"
+      },
+      "inputs": {
+        "plank": 3,
+        "rope": 2,
+        "gear": 1
+      },
+      "outputs": {
+        "rod": 1
+      },
+      "seconds": 16,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "axe",
+      "name": {
+        "ja": "伐採斧",
+        "en": "Logging axe"
+      },
+      "inputs": {
+        "iron": 3,
+        "plank": 2
+      },
+      "outputs": {
+        "axe": 1
+      },
+      "seconds": 16,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "drill",
+      "name": {
+        "ja": "歯車式採掘機",
+        "en": "Geared mining drill"
+      },
+      "inputs": {
+        "precision": 3,
+        "gear": 5,
+        "plate": 4,
+        "oil": 2
+      },
+      "outputs": {
+        "drill": 1
+      },
+      "seconds": 16,
+      "station": "assembler",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "fishing-rig",
+      "name": {
+        "ja": "巻上式釣り具",
+        "en": "Powered fishing reel"
+      },
+      "inputs": {
+        "precision": 2,
+        "wire": 5,
+        "rope": 4,
+        "oil": 2
+      },
+      "outputs": {
+        "fishing-rig": 1
+      },
+      "seconds": 16,
+      "station": "assembler",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "logging-rig",
+      "name": {
+        "ja": "機械鋸",
+        "en": "Mechanical saw"
+      },
+      "inputs": {
+        "precision": 3,
+        "plate": 4,
+        "oil": 2
+      },
+      "outputs": {
+        "logging-rig": 1
+      },
+      "seconds": 16,
+      "station": "assembler",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "crate",
+      "name": {
+        "ja": "資源保管箱",
+        "en": "Resource storage crate"
+      },
+      "inputs": {
+        "plank": 8,
+        "iron": 2
+      },
+      "outputs": {
+        "crate": 1
+      },
+      "seconds": 10,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "field-lantern",
+      "name": {
+        "ja": "携帯灯",
+        "en": "Field lantern"
+      },
+      "inputs": {
+        "glass": 2,
+        "wire": 2,
+        "plank": 2
+      },
+      "outputs": {
+        "field-lantern": 1
+      },
+      "seconds": 20,
+      "station": "bench",
+      "chapter": 1,
+      "automatable": false
+    },
+    {
+      "id": "safety-key",
+      "name": {
+        "ja": "安全弁の鍵",
+        "en": "Safety valve key"
+      },
+      "inputs": {
+        "gear": 2,
+        "plate": 2,
+        "wire": 2
+      },
+      "outputs": {
+        "safety-key": 1
+      },
+      "seconds": 20,
+      "station": "press",
+      "chapter": 2,
+      "automatable": false
+    },
+    {
+      "id": "sluice-handle",
+      "name": {
+        "ja": "水門の操作輪",
+        "en": "Sluice handwheel"
+      },
+      "inputs": {
+        "gear": 4,
+        "plate": 4,
+        "rope": 2
+      },
+      "outputs": {
+        "sluice-handle": 1
+      },
+      "seconds": 20,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false
+    },
+    {
+      "id": "survey-compass",
+      "name": {
+        "ja": "樹海の測量器",
+        "en": "Forest surveying compass"
+      },
+      "inputs": {
+        "precision": 2,
+        "glass": 3,
+        "wire": 4
+      },
+      "outputs": {
+        "survey-compass": 1
+      },
+      "seconds": 20,
+      "station": "assembler",
+      "chapter": 4,
+      "automatable": false
+    },
+    {
+      "id": "nameplate",
+      "name": {
+        "ja": "帰路の名札",
+        "en": "Homeward nameplate"
+      },
+      "inputs": {
+        "precision": 2,
+        "wire": 4,
+        "rope": 3
+      },
+      "outputs": {
+        "nameplate": 1
+      },
+      "seconds": 20,
+      "station": "assembler",
+      "chapter": 5,
+      "automatable": false
+    },
+    {
+      "id": "relay-lamp",
+      "name": {
+        "ja": "中継灯",
+        "en": "Relay lantern"
+      },
+      "inputs": {
+        "charged-crystal": 2,
+        "glass": 4,
+        "wire": 6
+      },
+      "outputs": {
+        "relay-lamp": 1
+      },
+      "seconds": 20,
+      "station": "assembler",
+      "chapter": 6,
+      "automatable": false
+    },
+    {
+      "id": "resonance-core",
+      "name": {
+        "ja": "温室の調整核",
+        "en": "Greenhouse regulator"
+      },
+      "inputs": {
+        "charged-crystal": 3,
+        "precision": 3,
+        "sealant": 4
+      },
+      "outputs": {
+        "resonance-core": 1
+      },
+      "seconds": 20,
+      "station": "assembler",
+      "chapter": 7,
+      "automatable": false
+    }
+  ],
+  "bonuses": {
+    "pick": {
+      "category": "mining",
+      "bonus": 0.25
+    },
+    "rod": {
+      "category": "fishing",
+      "bonus": 0.25
+    },
+    "axe": {
+      "category": "logging",
+      "bonus": 0.25
+    },
+    "drill": {
+      "category": "mining",
+      "bonus": 0.75
+    },
+    "fishing-rig": {
+      "category": "fishing",
+      "bonus": 0.75
+    },
+    "logging-rig": {
+      "category": "logging",
+      "bonus": 0.75
+    }
+  },
+  "storyTools": {
+    "c1-care": "field-lantern",
+    "c2-key": "safety-key",
+    "c3-water": "sluice-handle",
+    "c4-cover": "survey-compass",
+    "c5-address": "nameplate",
+    "c6-relay": "relay-lamp",
+    "c7-door": "resonance-core"
+  },
+  "profiles": [
+    {
+      "id": "mining",
+      "name": {
+        "ja": "採掘",
+        "en": "Mining"
+      },
+      "flavor": {
+        "ja": "冷たい石壁の隙間に、小さな鉱脈が光っている。",
+        "en": "Small mineral veins glint between the cold stone walls."
+      },
+      "drops": {
+        "stone": 7,
+        "ore": 6,
+        "copper": 4,
+        "coal": 3,
+        "timber": 4
+      }
+    },
+    {
+      "id": "fishing",
+      "name": {
+        "ja": "釣り・採水",
+        "en": "Fishing and water"
+      },
+      "flavor": {
+        "ja": "水面の下を銀色の影が横切り、岸辺の草が静かに揺れる。",
+        "en": "Silver shapes cross beneath the water as reeds stir along the bank."
+      },
+      "drops": {
+        "fish": 6,
+        "fiber": 6,
+        "water": 7,
+        "clay": 5,
+        "timber": 3,
+        "stone": 3
+      }
+    },
+    {
+      "id": "logging",
+      "name": {
+        "ja": "伐採・採集",
+        "en": "Logging and gathering"
+      },
+      "flavor": {
+        "ja": "苔むした小径には、まだ使えそうな枝や石が残っている。",
+        "en": "Useful branches and stones lie along the moss-covered path."
+      },
+      "drops": {
+        "timber": 9,
+        "stone": 4,
+        "silica": 5,
+        "clay": 3
+      }
+    }
+  ]
+}

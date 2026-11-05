@@ -1,3 +1,5 @@
+import { dungeonIndustryProfile } from '../domain/industry';
+import { getLanguage } from '../locales/i18n';
 import { GameImage } from './GameMedia';
 import { MemoryGemSource } from './MemoryGemFind';
 import { useState } from 'react';
@@ -8,7 +10,7 @@ import { dungeonLock } from '../domain/events';
 import { dungeonDifficulty } from '../domain/engine';
 import { assetPath, materialName } from '../content';
 import { tr } from '../locales/i18n';
-import { Button, CampaignStory, CurrencyEmblem, Panel } from './index';
+import { Button, CurrencyEmblem, Panel } from './index';
 import './campaign-dungeons.css';
 
 export function CampaignDungeons({ content, save, busy, onSelect, onInspect }: {
@@ -40,11 +42,11 @@ export function CampaignDungeons({ content, save, busy, onSelect, onInspect }: {
       const finale = stage.id === final.id;
       return <Panel className={`dungeon-card${finale ? ' dungeon-card--finale' : ''}`} key={stage.id}>
         <div className="dungeon-image"><GameImage src={assetPath(stage.artId)} alt="" /><span className="dungeon-index">{chapter.number}-{index + 1}</span>{complete && <span className="clear-label"><Check size={12} />{tr(' 踏破済')}</span>}</div>
-        <div className="dungeon-info"><span className="eyebrow">{stage.waves.length} WAVES · {tr(finale ? '章末ボス' : '探索')}</span><h2>{tr(stage.name)}</h2><p>{tr(stage.subtitle)}</p>
+        <div className="dungeon-info"><span className="eyebrow">{stage.waves.length} WAVES · {tr(finale ? '章末ボス' : '探索')}</span><h2>{tr(stage.name)}</h2><p>{dungeonIndustryProfile(stage,content).flavor[getLanguage()]}</p>
           <div className="dungeon-meta"><span><Hexagon size={14} />{tr(' 難易度 ')}{dungeonDifficulty(stage, content).toFixed(1)}</span><span><CurrencyEmblem kind="stone" size={14} /> {tr(complete ? '初踏破報酬 受取済' : '初踏破 石3個')}</span></div>
           <MemoryGemSource dungeon={stage} compact />{stage.bossLoot && <p className="dungeon-loot">{stage.bossLoot.guaranteed.map(cost => `${tr(materialName(cost.materialId))} ×${cost.count}`).join(' / ')}</p>}
           {lock && <p className="dungeon-lock"><LockKeyhole size={12} /> {tr(lock)}</p>}
-          <>{complete && stage.narrative && <details className="campaign-story-archive"><summary>{tr('踏破した物語を読み返す')}</summary><CampaignStory dungeon={stage} phase="before" /><CampaignStory dungeon={stage} phase="after" /></details>}</><Button data-guide={lock ? undefined : 'prepare'} variant={finale ? 'primary' : 'secondary'} disabled={busy || Boolean(lock)} onClick={() => onSelect(stage.id)}>{tr('探索の準備 ')}<ArrowRight size={15} /></Button>
+          <Button data-guide={lock ? undefined : 'prepare'} variant={finale ? 'primary' : 'secondary'} disabled={busy || Boolean(lock)} onClick={() => onSelect(stage.id)}>{tr('探索の準備 ')}<ArrowRight size={15} /></Button>
         </div>
       </Panel>;
     })}</div>

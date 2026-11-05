@@ -1,3 +1,4 @@
+import { missingStoryTool } from './industry';
 import type { Content, GameSave } from './types';
 import { WORLD_START, parseWorldTravel, routePosition, travelSeconds, worldLocations, type MapPosition, type WorldJourney } from './world-map';
 export type StoryText = {
@@ -37,6 +38,8 @@ export interface WorldStoryChoice {
     response: WorldStoryLine[];
 }
 export interface WorldStoryNode {
+    task?: StoryText;
+    purpose?: StoryText;
     backgroundId?: string;
     id: string;
     chapter: number;
@@ -68,6 +71,7 @@ export interface WorldStoryChapter {
     number: number;
     chapterId: string;
     objective: StoryText;
+    explorationPurpose?: StoryText;
     endingNodeId: string;
     dungeonIds: string[];
     gates: Record<string, string[]>;
@@ -139,6 +143,7 @@ function contentChapterDungeons(def: WorldStoryDefinition, number: number) { ret
 export function storyNext(save: GameSave, def: WorldStoryDefinition): {
     node?: WorldStoryNode;
     dungeonId?: string;
+    recipeId?: string;
 } | undefined {
     const s = save.worldStory;
     if (!s)
@@ -148,7 +153,7 @@ export function storyNext(save: GameSave, def: WorldStoryDefinition): {
         return;
     const available = def.nodes.find(n => !n.optional && storyNodeAvailable(n, save, def));
     if (available)
-        return { node: available };
+        return { node: available, recipeId: missingStoryTool(save, available.id) };
     const pending = def.nodes.filter(n => n.chapter === chapter.number && !n.optional && !s.completed.includes(n.id) && n.requiresNodes.every(id => s.completed.includes(id) || s.carriedChapters.includes(def.nodes.find(n => n.id === id)?.chapter ?? -1)));
     const required = pending.flatMap(n => n.requiresDungeons).find(id => !save.completedDungeonIds.includes(id));
     if (required) {
@@ -212,6 +217,7 @@ export function beginStoryTalk(save: GameSave, content: Content, nodeId: string,
     if (!s || !def || !node || s.active)
         throw new Error('今はこの会話を始められません。');
     const replay = s.completed.includes(nodeId);
+    if (!replay && missingStoryTool(save, nodeId)) throw new Error('先に必要な道具を工房で製作してください。');
     if (!replay && !storyNodeAvailable(node, save, def))
         throw new Error('まだこの会話は聞けません。');
     settleStoryArrival(s, now);
