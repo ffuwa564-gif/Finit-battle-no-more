@@ -6,5 +6,5 @@ def job(i):
  with p.open('w')as f:r=subprocess.run(['npx','tsx','scripts/this-girl-05/search.mts',str(i)],cwd=ROOT,env={**os.environ,'VITE_SAKUYA_RESEARCH':'0','VITE_MIETTE_RESEARCH':'0','VITE_TIKKA_RESEARCH':'0','VITE_LISETTE_RESEARCH':'1','GAME_COMMIT':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT).decode().strip()},stdout=f,stderr=subprocess.STDOUT)
  if r.returncode:raise RuntimeError(p.read_text())
  print(p.read_text(),flush=True)
-with concurrent.futures.ThreadPoolExecutor(max_workers=3)as pool:list(pool.map(job,range(12,18)))
+with concurrent.futures.ThreadPoolExecutor(max_workers=3)as pool:list(pool.map(job,range(18)))
 print('ALL DEVELOPMENT/SELECTION CASES COMPLETE',flush=True)
