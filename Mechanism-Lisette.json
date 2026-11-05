@@ -1,0 +1,1592 @@
+{
+  "passed": true,
+  "scope": "Actual application events and actual frame bindings, not an invented damage or victory proof.",
+  "reference": {
+    "firstRemoval": {
+      "eventIndex": 15,
+      "eventId": "run-1000-1417273148:w0:r2:debuff:2502241278:e2",
+      "sourceFrame": 850,
+      "event": {
+        "actionSelection": true,
+        "kind": "debuff",
+        "bossStrike": false,
+        "text": "リゼット — 結び直す指先",
+        "actorId": "party:lisette",
+        "targetIds": [
+          "enemy:w0:1:seris"
+        ],
+        "skillId": "dispel-18",
+        "amount": 0,
+        "unitsAfter": [
+          {
+            "uid": "party:lisette",
+            "characterId": "lisette",
+            "side": "party",
+            "boss": false,
+            "hp": 213,
+            "maxHp": 213,
+            "attack": 43,
+            "defense": 22,
+            "speed": 15,
+            "tie": 3798806891,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+              "memory:slot": 4,
+              "dispel-18": 5
+            },
+            "ultimateCharge": 50,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 287184846,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 327,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1804614869,
+            "cooldowns": {
+              "guard-23": 3,
+              "rally-23": 6
+            },
+            "guardTarget": "party:lisette",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 80,
+            "barrier": 0,
+            "barrierUntil": 2,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 466348080,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "enemy:w0:0:stone-drake",
+            "characterId": "stone-drake",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3686,
+            "maxHp": 4484,
+            "attack": 82,
+            "defense": 30,
+            "speed": 18,
+            "tie": 2432490959,
+            "cooldowns": {
+              "guard-11": 3
+            },
+            "guardTarget": "enemy:w0:1:seris",
+            "guardUntil": 2,
+            "guardStrength": 11
+          },
+          {
+            "uid": "enemy:w0:1:seris",
+            "characterId": "seris",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 154,
+            "defense": 17,
+            "speed": 14,
+            "tie": 48083170,
+            "cooldowns": {
+              "attack-14": 4
+            }
+          },
+          {
+            "uid": "enemy:w0:2:elaine",
+            "characterId": "elaine",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 119,
+            "defense": 20,
+            "speed": 12,
+            "tie": 4231854809,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:3:wakahirume",
+            "characterId": "wakahirume",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1775,
+            "maxHp": 1775,
+            "attack": 143,
+            "defense": 31,
+            "speed": 13,
+            "tie": 3601540708,
+            "cooldowns": {
+              "buff-19": 4
+            }
+          }
+        ],
+        "id": "run-1000-1417273148:w0:r2:debuff:2502241278:e2"
+      },
+      "beforeUnits": [
+        {
+          "uid": "party:lisette",
+          "characterId": "lisette",
+          "side": "party",
+          "boss": false,
+          "hp": 213,
+          "maxHp": 213,
+          "attack": 43,
+          "defense": 22,
+          "speed": 15,
+          "tie": 3798806891,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 287184846,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 327,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 1804614869,
+          "cooldowns": {
+            "guard-23": 3,
+            "rally-23": 6
+          },
+          "guardTarget": "party:lisette",
+          "guardUntil": 2,
+          "guardStrength": 23,
+          "ultimateCharge": 80,
+          "barrier": 0,
+          "barrierUntil": 2,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 466348080,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "enemy:w0:0:stone-drake",
+          "characterId": "stone-drake",
+          "side": "enemy",
+          "boss": true,
+          "hp": 3686,
+          "maxHp": 4484,
+          "attack": 82,
+          "defense": 30,
+          "speed": 18,
+          "tie": 2432490959,
+          "cooldowns": {
+            "guard-11": 3
+          },
+          "guardTarget": "enemy:w0:1:seris",
+          "guardUntil": 2,
+          "guardStrength": 11
+        },
+        {
+          "uid": "enemy:w0:1:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 154,
+          "defense": 17,
+          "speed": 14,
+          "tie": 48083170,
+          "cooldowns": {
+            "attack-14": 4
+          },
+          "buffUntil": 2,
+          "buffStrength": 19
+        },
+        {
+          "uid": "enemy:w0:2:elaine",
+          "characterId": "elaine",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 119,
+          "defense": 20,
+          "speed": 12,
+          "tie": 4231854809,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:3:wakahirume",
+          "characterId": "wakahirume",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1775,
+          "maxHp": 1775,
+          "attack": 143,
+          "defense": 31,
+          "speed": 13,
+          "tie": 3601540708,
+          "cooldowns": {
+            "buff-19": 4
+          }
+        }
+      ]
+    },
+    "firstStrike": null,
+    "lastStrike": null,
+    "firstPostStrike": null,
+    "totals": {
+      "strikes": 0,
+      "damage": 0
+    },
+    "proofSha256": "507cb5cff65c80e6651e58f32f53f11ce8abe76a9a7e0f3a4fb8763fe68f8cd8",
+    "metadataSha256": "53d4c94f38dfba4231ffed1f1509a68f45550da24159449d805c599b92415f7d",
+    "sourceSha256": "c91122515196b98ecbc74d69b70ea266df1b5d8f6b48028bcb35ee728c7b0083"
+  },
+  "lisette": {
+    "firstRemoval": {
+      "eventIndex": 16,
+      "eventId": "run-1000-1417273148:w0:r2:debuff:1524446283:e3",
+      "sourceFrame": 909,
+      "event": {
+        "actionSelection": true,
+        "kind": "debuff",
+        "bossStrike": false,
+        "text": "リゼット — 弔鐘の返し刃",
+        "actorId": "party:lisette",
+        "targetIds": [
+          "enemy:w0:1:seris"
+        ],
+        "skillId": "dispel-18",
+        "amount": 0,
+        "unitsAfter": [
+          {
+            "uid": "party:lisette",
+            "characterId": "lisette",
+            "side": "party",
+            "boss": false,
+            "hp": 213,
+            "maxHp": 213,
+            "attack": 43,
+            "defense": 22,
+            "speed": 15,
+            "tie": 3798806891,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+              "memory:slot": 4,
+              "dispel-18": 5
+            },
+            "ultimateCharge": 50,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 287184846,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 327,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1804614869,
+            "cooldowns": {
+              "guard-23": 3,
+              "rally-23": 6
+            },
+            "guardTarget": "party:lisette",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 80,
+            "barrier": 0,
+            "barrierUntil": 2,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 466348080,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "enemy:w0:0:stone-drake",
+            "characterId": "stone-drake",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3645,
+            "maxHp": 4484,
+            "attack": 82,
+            "defense": 30,
+            "speed": 18,
+            "tie": 2432490959,
+            "cooldowns": {
+              "guard-11": 3
+            },
+            "guardTarget": "enemy:w0:1:seris",
+            "guardUntil": 2,
+            "guardStrength": 11
+          },
+          {
+            "uid": "enemy:w0:1:seris",
+            "characterId": "seris",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 154,
+            "defense": 17,
+            "speed": 14,
+            "tie": 48083170,
+            "cooldowns": {
+              "attack-14": 4
+            }
+          },
+          {
+            "uid": "enemy:w0:2:elaine",
+            "characterId": "elaine",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 119,
+            "defense": 20,
+            "speed": 12,
+            "tie": 4231854809,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:3:wakahirume",
+            "characterId": "wakahirume",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1775,
+            "maxHp": 1775,
+            "attack": 143,
+            "defense": 31,
+            "speed": 13,
+            "tie": 3601540708,
+            "cooldowns": {
+              "buff-19": 4
+            }
+          }
+        ],
+        "id": "run-1000-1417273148:w0:r2:debuff:1524446283:e3"
+      },
+      "beforeUnits": [
+        {
+          "uid": "party:lisette",
+          "characterId": "lisette",
+          "side": "party",
+          "boss": false,
+          "hp": 213,
+          "maxHp": 213,
+          "attack": 43,
+          "defense": 22,
+          "speed": 15,
+          "tie": 3798806891,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 287184846,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 327,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 1804614869,
+          "cooldowns": {
+            "guard-23": 3,
+            "rally-23": 6
+          },
+          "guardTarget": "party:lisette",
+          "guardUntil": 2,
+          "guardStrength": 23,
+          "ultimateCharge": 80,
+          "barrier": 0,
+          "barrierUntil": 2,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 466348080,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "enemy:w0:0:stone-drake",
+          "characterId": "stone-drake",
+          "side": "enemy",
+          "boss": true,
+          "hp": 3645,
+          "maxHp": 4484,
+          "attack": 82,
+          "defense": 30,
+          "speed": 18,
+          "tie": 2432490959,
+          "cooldowns": {
+            "guard-11": 3
+          },
+          "guardTarget": "enemy:w0:1:seris",
+          "guardUntil": 2,
+          "guardStrength": 11
+        },
+        {
+          "uid": "enemy:w0:1:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 154,
+          "defense": 17,
+          "speed": 14,
+          "tie": 48083170,
+          "cooldowns": {
+            "attack-14": 4
+          }
+        },
+        {
+          "uid": "enemy:w0:2:elaine",
+          "characterId": "elaine",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 119,
+          "defense": 20,
+          "speed": 12,
+          "tie": 4231854809,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:3:wakahirume",
+          "characterId": "wakahirume",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1775,
+          "maxHp": 1775,
+          "attack": 143,
+          "defense": 31,
+          "speed": 13,
+          "tie": 3601540708,
+          "cooldowns": {
+            "buff-19": 4
+          }
+        }
+      ]
+    },
+    "firstStrike": {
+      "eventIndex": 15,
+      "eventId": "run-1000-1417273148:w0:r2:attack:4102878823:e2",
+      "sourceFrame": 861,
+      "event": {
+        "kind": "attack",
+        "actorId": "party:lisette",
+        "targetIds": [
+          "enemy:w0:0:stone-drake"
+        ],
+        "skillId": "dispel-18",
+        "amount": 41,
+        "absorbed": 0,
+        "text": "リゼット — 弔鐘の返し刃・斬撃",
+        "unitsAfter": [
+          {
+            "uid": "party:lisette",
+            "characterId": "lisette",
+            "side": "party",
+            "boss": false,
+            "hp": 213,
+            "maxHp": 213,
+            "attack": 43,
+            "defense": 22,
+            "speed": 15,
+            "tie": 3798806891,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 287184846,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 327,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1804614869,
+            "cooldowns": {
+              "guard-23": 3,
+              "rally-23": 6
+            },
+            "guardTarget": "party:lisette",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 80,
+            "barrier": 0,
+            "barrierUntil": 2,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 466348080,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "enemy:w0:0:stone-drake",
+            "characterId": "stone-drake",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3645,
+            "maxHp": 4484,
+            "attack": 82,
+            "defense": 30,
+            "speed": 18,
+            "tie": 2432490959,
+            "cooldowns": {
+              "guard-11": 3
+            },
+            "guardTarget": "enemy:w0:1:seris",
+            "guardUntil": 2,
+            "guardStrength": 11
+          },
+          {
+            "uid": "enemy:w0:1:seris",
+            "characterId": "seris",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 154,
+            "defense": 17,
+            "speed": 14,
+            "tie": 48083170,
+            "cooldowns": {
+              "attack-14": 4
+            }
+          },
+          {
+            "uid": "enemy:w0:2:elaine",
+            "characterId": "elaine",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 119,
+            "defense": 20,
+            "speed": 12,
+            "tie": 4231854809,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:3:wakahirume",
+            "characterId": "wakahirume",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1775,
+            "maxHp": 1775,
+            "attack": 143,
+            "defense": 31,
+            "speed": 13,
+            "tie": 3601540708,
+            "cooldowns": {
+              "buff-19": 4
+            }
+          }
+        ],
+        "id": "run-1000-1417273148:w0:r2:attack:4102878823:e2"
+      },
+      "beforeUnits": [
+        {
+          "uid": "party:lisette",
+          "characterId": "lisette",
+          "side": "party",
+          "boss": false,
+          "hp": 213,
+          "maxHp": 213,
+          "attack": 43,
+          "defense": 22,
+          "speed": 15,
+          "tie": 3798806891,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 287184846,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 327,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 1804614869,
+          "cooldowns": {
+            "guard-23": 3,
+            "rally-23": 6
+          },
+          "guardTarget": "party:lisette",
+          "guardUntil": 2,
+          "guardStrength": 23,
+          "ultimateCharge": 80,
+          "barrier": 0,
+          "barrierUntil": 2,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 466348080,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "enemy:w0:0:stone-drake",
+          "characterId": "stone-drake",
+          "side": "enemy",
+          "boss": true,
+          "hp": 3686,
+          "maxHp": 4484,
+          "attack": 82,
+          "defense": 30,
+          "speed": 18,
+          "tie": 2432490959,
+          "cooldowns": {
+            "guard-11": 3
+          },
+          "guardTarget": "enemy:w0:1:seris",
+          "guardUntil": 2,
+          "guardStrength": 11
+        },
+        {
+          "uid": "enemy:w0:1:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 154,
+          "defense": 17,
+          "speed": 14,
+          "tie": 48083170,
+          "cooldowns": {
+            "attack-14": 4
+          },
+          "buffUntil": 2,
+          "buffStrength": 19
+        },
+        {
+          "uid": "enemy:w0:2:elaine",
+          "characterId": "elaine",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 119,
+          "defense": 20,
+          "speed": 12,
+          "tie": 4231854809,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:3:wakahirume",
+          "characterId": "wakahirume",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1775,
+          "maxHp": 1775,
+          "attack": 143,
+          "defense": 31,
+          "speed": 13,
+          "tie": 3601540708,
+          "cooldowns": {
+            "buff-19": 4
+          }
+        }
+      ]
+    },
+    "lastStrike": {
+      "eventIndex": 194,
+      "eventId": "run-1000-1417273148:w0:r20:attack:4102878823:e1",
+      "sourceFrame": 10364,
+      "event": {
+        "kind": "attack",
+        "actorId": "party:lisette",
+        "targetIds": [
+          "enemy:w0:3:wakahirume"
+        ],
+        "skillId": "dispel-18",
+        "amount": 32,
+        "absorbed": 0,
+        "text": "リゼット — 弔鐘の返し刃・斬撃",
+        "unitsAfter": [
+          {
+            "uid": "party:lisette",
+            "characterId": "lisette",
+            "side": "party",
+            "boss": false,
+            "hp": 213,
+            "maxHp": 213,
+            "attack": 43,
+            "defense": 22,
+            "speed": 15,
+            "tie": 3798806891,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 22,
+              "memory:slot": 22,
+              "dispel-18": 20,
+              "debuff-18": 19
+            },
+            "ultimateCharge": 25
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 287184846,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 20,
+              "memory:slot": 20,
+              "attack-27": 21,
+              "dawn-27": 19
+            },
+            "ultimateCharge": 0
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 436,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1804614869,
+            "cooldowns": {
+              "guard-23": 22,
+              "rally-23": 20,
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-2": 22,
+              "memory:slot": 22
+            },
+            "ultimateCharge": 90,
+            "barrier": 261,
+            "barrierUntil": 20,
+            "guardTarget": "party:lisette",
+            "guardUntil": 21,
+            "guardStrength": 23
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 466348080,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 20,
+              "memory:slot": 20,
+              "heal-22": 19,
+              "mend-pair-22": 13
+            },
+            "ultimateCharge": 100
+          },
+          {
+            "uid": "enemy:w0:0:stone-drake",
+            "characterId": "stone-drake",
+            "side": "enemy",
+            "boss": true,
+            "hp": 0,
+            "maxHp": 4484,
+            "attack": 82,
+            "defense": 30,
+            "speed": 18,
+            "tie": 2432490959,
+            "cooldowns": {
+              "guard-11": 17,
+              "barrier-11": 11
+            },
+            "towerSupportUsed": {
+              "healing": 0,
+              "barrier": 2
+            }
+          },
+          {
+            "uid": "enemy:w0:1:seris",
+            "characterId": "seris",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 1189,
+            "attack": 154,
+            "defense": 17,
+            "speed": 14,
+            "tie": 48083170,
+            "cooldowns": {
+              "attack-14": 19,
+              "pierce-14": 20
+            }
+          },
+          {
+            "uid": "enemy:w0:2:elaine",
+            "characterId": "elaine",
+            "side": "enemy",
+            "boss": false,
+            "hp": 0,
+            "maxHp": 1189,
+            "attack": 119,
+            "defense": 20,
+            "speed": 12,
+            "tie": 4231854809,
+            "cooldowns": {
+              "cleanse-14": 19,
+              "heal-14": 15
+            },
+            "towerSupportUsed": {
+              "healing": 3,
+              "barrier": 0
+            }
+          },
+          {
+            "uid": "enemy:w0:3:wakahirume",
+            "characterId": "wakahirume",
+            "side": "enemy",
+            "boss": false,
+            "hp": 996,
+            "maxHp": 1775,
+            "attack": 143,
+            "defense": 31,
+            "speed": 13,
+            "tie": 3601540708,
+            "cooldowns": {
+              "buff-19": 22,
+              "barrier-19": 9
+            },
+            "towerSupportUsed": {
+              "healing": 0,
+              "barrier": 2
+            }
+          }
+        ],
+        "id": "run-1000-1417273148:w0:r20:attack:4102878823:e1"
+      },
+      "beforeUnits": [
+        {
+          "uid": "party:lisette",
+          "characterId": "lisette",
+          "side": "party",
+          "boss": false,
+          "hp": 213,
+          "maxHp": 213,
+          "attack": 43,
+          "defense": 22,
+          "speed": 15,
+          "tie": 3798806891,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 22,
+            "memory:slot": 22,
+            "dispel-18": 20,
+            "debuff-18": 19
+          },
+          "ultimateCharge": 25
+        },
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 287184846,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 20,
+            "memory:slot": 20,
+            "attack-27": 21,
+            "dawn-27": 19
+          },
+          "ultimateCharge": 0
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 436,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 1804614869,
+          "cooldowns": {
+            "guard-23": 22,
+            "rally-23": 20,
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-2": 22,
+            "memory:slot": 22
+          },
+          "ultimateCharge": 90,
+          "barrier": 261,
+          "barrierUntil": 20,
+          "guardTarget": "party:lisette",
+          "guardUntil": 21,
+          "guardStrength": 23
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 466348080,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 20,
+            "memory:slot": 20,
+            "heal-22": 19,
+            "mend-pair-22": 13
+          },
+          "ultimateCharge": 100
+        },
+        {
+          "uid": "enemy:w0:0:stone-drake",
+          "characterId": "stone-drake",
+          "side": "enemy",
+          "boss": true,
+          "hp": 0,
+          "maxHp": 4484,
+          "attack": 82,
+          "defense": 30,
+          "speed": 18,
+          "tie": 2432490959,
+          "cooldowns": {
+            "guard-11": 17,
+            "barrier-11": 11
+          },
+          "towerSupportUsed": {
+            "healing": 0,
+            "barrier": 2
+          }
+        },
+        {
+          "uid": "enemy:w0:1:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": false,
+          "hp": 0,
+          "maxHp": 1189,
+          "attack": 154,
+          "defense": 17,
+          "speed": 14,
+          "tie": 48083170,
+          "cooldowns": {
+            "attack-14": 19,
+            "pierce-14": 20
+          }
+        },
+        {
+          "uid": "enemy:w0:2:elaine",
+          "characterId": "elaine",
+          "side": "enemy",
+          "boss": false,
+          "hp": 0,
+          "maxHp": 1189,
+          "attack": 119,
+          "defense": 20,
+          "speed": 12,
+          "tie": 4231854809,
+          "cooldowns": {
+            "cleanse-14": 19,
+            "heal-14": 15
+          },
+          "towerSupportUsed": {
+            "healing": 3,
+            "barrier": 0
+          }
+        },
+        {
+          "uid": "enemy:w0:3:wakahirume",
+          "characterId": "wakahirume",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1028,
+          "maxHp": 1775,
+          "attack": 143,
+          "defense": 31,
+          "speed": 13,
+          "tie": 3601540708,
+          "cooldowns": {
+            "buff-19": 22,
+            "barrier-19": 9
+          },
+          "towerSupportUsed": {
+            "healing": 0,
+            "barrier": 2
+          },
+          "buffUntil": 20,
+          "buffStrength": 19
+        }
+      ]
+    },
+    "firstPostStrike": {
+      "eventIndex": 16,
+      "eventId": "run-1000-1417273148:w0:r2:debuff:1524446283:e3",
+      "sourceFrame": 909,
+      "event": {
+        "actionSelection": true,
+        "kind": "debuff",
+        "bossStrike": false,
+        "text": "リゼット — 弔鐘の返し刃",
+        "actorId": "party:lisette",
+        "targetIds": [
+          "enemy:w0:1:seris"
+        ],
+        "skillId": "dispel-18",
+        "amount": 0,
+        "unitsAfter": [
+          {
+            "uid": "party:lisette",
+            "characterId": "lisette",
+            "side": "party",
+            "boss": false,
+            "hp": 213,
+            "maxHp": 213,
+            "attack": 43,
+            "defense": 22,
+            "speed": 15,
+            "tie": 3798806891,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+              "memory:slot": 4,
+              "dispel-18": 5
+            },
+            "ultimateCharge": 50,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:seris-awakened",
+            "characterId": "seris-awakened",
+            "side": "party",
+            "boss": false,
+            "hp": 320,
+            "maxHp": 320,
+            "attack": 86,
+            "defense": 32,
+            "speed": 14,
+            "tie": 287184846,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:athena",
+            "characterId": "athena",
+            "side": "party",
+            "boss": false,
+            "hp": 327,
+            "maxHp": 436,
+            "attack": 41,
+            "defense": 60,
+            "speed": 18,
+            "tie": 1804614869,
+            "cooldowns": {
+              "guard-23": 3,
+              "rally-23": 6
+            },
+            "guardTarget": "party:lisette",
+            "guardUntil": 2,
+            "guardStrength": 23,
+            "ultimateCharge": 80,
+            "barrier": 0,
+            "barrierUntil": 2,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "party:benzaiten",
+            "characterId": "benzaiten",
+            "side": "party",
+            "boss": false,
+            "hp": 260,
+            "maxHp": 260,
+            "attack": 55,
+            "defense": 31,
+            "speed": 12,
+            "tie": 466348080,
+            "cooldowns": {
+              "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+              "memory:slot": 4
+            },
+            "ultimateCharge": 25,
+            "buffStrength": 23,
+            "buffUntil": 3
+          },
+          {
+            "uid": "enemy:w0:0:stone-drake",
+            "characterId": "stone-drake",
+            "side": "enemy",
+            "boss": true,
+            "hp": 3645,
+            "maxHp": 4484,
+            "attack": 82,
+            "defense": 30,
+            "speed": 18,
+            "tie": 2432490959,
+            "cooldowns": {
+              "guard-11": 3
+            },
+            "guardTarget": "enemy:w0:1:seris",
+            "guardUntil": 2,
+            "guardStrength": 11
+          },
+          {
+            "uid": "enemy:w0:1:seris",
+            "characterId": "seris",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 154,
+            "defense": 17,
+            "speed": 14,
+            "tie": 48083170,
+            "cooldowns": {
+              "attack-14": 4
+            }
+          },
+          {
+            "uid": "enemy:w0:2:elaine",
+            "characterId": "elaine",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1189,
+            "maxHp": 1189,
+            "attack": 119,
+            "defense": 20,
+            "speed": 12,
+            "tie": 4231854809,
+            "cooldowns": {}
+          },
+          {
+            "uid": "enemy:w0:3:wakahirume",
+            "characterId": "wakahirume",
+            "side": "enemy",
+            "boss": false,
+            "hp": 1775,
+            "maxHp": 1775,
+            "attack": 143,
+            "defense": 31,
+            "speed": 13,
+            "tie": 3601540708,
+            "cooldowns": {
+              "buff-19": 4
+            }
+          }
+        ],
+        "id": "run-1000-1417273148:w0:r2:debuff:1524446283:e3"
+      },
+      "beforeUnits": [
+        {
+          "uid": "party:lisette",
+          "characterId": "lisette",
+          "side": "party",
+          "boss": false,
+          "hp": 213,
+          "maxHp": 213,
+          "attack": 43,
+          "defense": 22,
+          "speed": 15,
+          "tie": 3798806891,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~bulwark~139:slot-0": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:seris-awakened",
+          "characterId": "seris-awakened",
+          "side": "party",
+          "boss": false,
+          "hp": 320,
+          "maxHp": 320,
+          "attack": 86,
+          "defense": 32,
+          "speed": 14,
+          "tie": 287184846,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-1": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:athena",
+          "characterId": "athena",
+          "side": "party",
+          "boss": false,
+          "hp": 327,
+          "maxHp": 436,
+          "attack": 41,
+          "defense": 60,
+          "speed": 18,
+          "tie": 1804614869,
+          "cooldowns": {
+            "guard-23": 3,
+            "rally-23": 6
+          },
+          "guardTarget": "party:lisette",
+          "guardUntil": 2,
+          "guardStrength": 23,
+          "ultimateCharge": 80,
+          "barrier": 0,
+          "barrierUntil": 2,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "party:benzaiten",
+          "characterId": "benzaiten",
+          "side": "party",
+          "boss": false,
+          "hp": 260,
+          "maxHp": 260,
+          "attack": 55,
+          "defense": 31,
+          "speed": 12,
+          "tie": 466348080,
+          "cooldowns": {
+            "memory:echo-shard:pure:@roll=139~mercy~139:slot-3": 4,
+            "memory:slot": 4
+          },
+          "ultimateCharge": 25,
+          "buffStrength": 23,
+          "buffUntil": 3
+        },
+        {
+          "uid": "enemy:w0:0:stone-drake",
+          "characterId": "stone-drake",
+          "side": "enemy",
+          "boss": true,
+          "hp": 3645,
+          "maxHp": 4484,
+          "attack": 82,
+          "defense": 30,
+          "speed": 18,
+          "tie": 2432490959,
+          "cooldowns": {
+            "guard-11": 3
+          },
+          "guardTarget": "enemy:w0:1:seris",
+          "guardUntil": 2,
+          "guardStrength": 11
+        },
+        {
+          "uid": "enemy:w0:1:seris",
+          "characterId": "seris",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 154,
+          "defense": 17,
+          "speed": 14,
+          "tie": 48083170,
+          "cooldowns": {
+            "attack-14": 4
+          }
+        },
+        {
+          "uid": "enemy:w0:2:elaine",
+          "characterId": "elaine",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1189,
+          "maxHp": 1189,
+          "attack": 119,
+          "defense": 20,
+          "speed": 12,
+          "tie": 4231854809,
+          "cooldowns": {}
+        },
+        {
+          "uid": "enemy:w0:3:wakahirume",
+          "characterId": "wakahirume",
+          "side": "enemy",
+          "boss": false,
+          "hp": 1775,
+          "maxHp": 1775,
+          "attack": 143,
+          "defense": 31,
+          "speed": 13,
+          "tie": 3601540708,
+          "cooldowns": {
+            "buff-19": 4
+          }
+        }
+      ]
+    },
+    "totals": {
+      "strikes": 2,
+      "damage": 73
+    },
+    "proofSha256": "b52397654d16294f6ca5025f6301a86abefce429f545752ab402f7f6f2a8ae0e",
+    "metadataSha256": "a9f51afe2b41011a8ed994e1d1d9f20d4ad29382aba5899fe592dee6237baedd",
+    "sourceSha256": "a293d18e052a471d3b5a5ec95e59e22f4dddf712c9b903502714e38ee917841c"
+  }
+}

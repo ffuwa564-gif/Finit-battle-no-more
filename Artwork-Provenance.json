@@ -1,0 +1,18 @@
+{
+  "episode": "THIS-GIRL-005",
+  "images": [
+    {
+      "destination": "artifacts/this-girl-05/assets/research-desk-original.png",
+      "sha256": "7553d8ffb00ea79c3b13b541f136e973ff53eb519e27a01b0d0e9c32bec3a5d6",
+      "source": "/workspace/generated_images/exec-9122915d-1b3b-454f-899d-93bd70fa1ec9.png",
+      "method": "Reuse of approved episode04 desk original; layout overlays use existing game character artwork."
+    }
+  ],
+  "references": [
+    "artifacts/this-girl-03/assets/research-desk-original.png",
+    "public/art/noelle.png",
+    "public/art/lisette.png"
+  ],
+  "newRunwayVideoGeneration": false,
+  "reuseNote": "No new Runway/image generation. Existing desk is contextual background; subject Lisette is displayed using her actual game illustration."
+}

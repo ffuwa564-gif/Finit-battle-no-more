@@ -1,0 +1,423 @@
+{
+  "passed": true,
+  "movieSha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+  "qaCodeSha256": "75d32b9d43647285aa43ef402b6cf9f2ef05acd7051d1fe7fb02d08444e850eb",
+  "voiceChecks": [
+    {
+      "id": "question-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998910732302086,
+      "passed": true
+    },
+    {
+      "id": "question-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998298887742807,
+      "passed": true
+    },
+    {
+      "id": "question-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996404762268805,
+      "passed": true
+    },
+    {
+      "id": "design-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998578348069533,
+      "passed": true
+    },
+    {
+      "id": "design-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997085868778683,
+      "passed": true
+    },
+    {
+      "id": "design-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996522066254168,
+      "passed": true
+    },
+    {
+      "id": "design-03",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998744412514506,
+      "passed": true
+    },
+    {
+      "id": "method-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998907878825241,
+      "passed": true
+    },
+    {
+      "id": "method-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998735240914175,
+      "passed": true
+    },
+    {
+      "id": "method-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.999763398641668,
+      "passed": true
+    },
+    {
+      "id": "elements-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998421719796746,
+      "passed": true
+    },
+    {
+      "id": "elements-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998669277545249,
+      "passed": true
+    },
+    {
+      "id": "battle-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.999902801424704,
+      "passed": true
+    },
+    {
+      "id": "battle-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996478799188443,
+      "passed": true
+    },
+    {
+      "id": "battle-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998913139546074,
+      "passed": true
+    },
+    {
+      "id": "battle-03",
+      "lagSeconds": 0.0,
+      "correlation": 0.999791495888831,
+      "passed": true
+    },
+    {
+      "id": "battle-04",
+      "lagSeconds": 0.0,
+      "correlation": 0.9999043042956925,
+      "passed": true
+    },
+    {
+      "id": "battle-05",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996823155105121,
+      "passed": true
+    },
+    {
+      "id": "battle-06",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998404553373922,
+      "passed": true
+    },
+    {
+      "id": "battle-07",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997689950183328,
+      "passed": true
+    },
+    {
+      "id": "battle-08",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997123203716684,
+      "passed": true
+    },
+    {
+      "id": "battle-09",
+      "lagSeconds": 0.0,
+      "correlation": 0.99978171211536,
+      "passed": true
+    },
+    {
+      "id": "results-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998709628969564,
+      "passed": true
+    },
+    {
+      "id": "results-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996233393526942,
+      "passed": true
+    },
+    {
+      "id": "results-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998407051161736,
+      "passed": true
+    },
+    {
+      "id": "results-03",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997298624175904,
+      "passed": true
+    },
+    {
+      "id": "limits-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997603534560445,
+      "passed": true
+    },
+    {
+      "id": "limits-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997690629629455,
+      "passed": true
+    },
+    {
+      "id": "limits-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998193393521667,
+      "passed": true
+    },
+    {
+      "id": "growth-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9996981477634268,
+      "passed": true
+    },
+    {
+      "id": "growth-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998204467943823,
+      "passed": true
+    },
+    {
+      "id": "growth-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997862166433712,
+      "passed": true
+    },
+    {
+      "id": "judgment-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9999192181291071,
+      "passed": true
+    },
+    {
+      "id": "judgment-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998820333727443,
+      "passed": true
+    },
+    {
+      "id": "judgment-02",
+      "lagSeconds": 0.0,
+      "correlation": 0.9997384680085489,
+      "passed": true
+    },
+    {
+      "id": "judgment-03",
+      "lagSeconds": 0.0,
+      "correlation": 0.999912782407917,
+      "passed": true
+    },
+    {
+      "id": "preview-00",
+      "lagSeconds": 0.0,
+      "correlation": 0.9998979011622722,
+      "passed": true
+    },
+    {
+      "id": "preview-01",
+      "lagSeconds": 0.0,
+      "correlation": 0.9995161460701208,
+      "passed": true
+    }
+  ],
+  "pauseChecks": [
+    {
+      "id": "pause-reference",
+      "actualSourceFrame": 862,
+      "sourceMovieSha256": "c91122515196b98ecbc74d69b70ea266df1b5d8f6b48028bcb35ee728c7b0083",
+      "checks": [
+        {
+          "frame": 4389,
+          "region": "native",
+          "meanAbsoluteError": 2.133425925925926,
+          "passed": true
+        },
+        {
+          "frame": 4389,
+          "region": "inset",
+          "meanAbsoluteError": 2.422523148148148,
+          "passed": true
+        },
+        {
+          "frame": 4590,
+          "region": "native",
+          "meanAbsoluteError": 2.2403472222222223,
+          "passed": true
+        },
+        {
+          "frame": 4590,
+          "region": "inset",
+          "meanAbsoluteError": 2.29875,
+          "passed": true
+        },
+        {
+          "frame": 4791,
+          "region": "native",
+          "meanAbsoluteError": 2.230648148148148,
+          "passed": true
+        },
+        {
+          "frame": 4791,
+          "region": "inset",
+          "meanAbsoluteError": 2.2426157407407405,
+          "passed": true
+        }
+      ],
+      "noContinuingGameAudioResidualRms": 0.002162442309781909,
+      "passed": true
+    },
+    {
+      "id": "pause-guard",
+      "actualSourceFrame": 873,
+      "sourceMovieSha256": "a293d18e052a471d3b5a5ec95e59e22f4dddf712c9b903502714e38ee917841c",
+      "checks": [
+        {
+          "frame": 5539,
+          "region": "native",
+          "meanAbsoluteError": 2.0590740740740743,
+          "passed": true
+        },
+        {
+          "frame": 5539,
+          "region": "inset",
+          "meanAbsoluteError": 2.5597453703703703,
+          "passed": true
+        },
+        {
+          "frame": 5848,
+          "region": "native",
+          "meanAbsoluteError": 2.1972453703703705,
+          "passed": true
+        },
+        {
+          "frame": 5848,
+          "region": "inset",
+          "meanAbsoluteError": 2.3758333333333335,
+          "passed": true
+        },
+        {
+          "frame": 6158,
+          "region": "native",
+          "meanAbsoluteError": 2.182662037037037,
+          "passed": true
+        },
+        {
+          "frame": 6158,
+          "region": "inset",
+          "meanAbsoluteError": 2.390671296296296,
+          "passed": true
+        }
+      ],
+      "noContinuingGameAudioResidualRms": 0.0024479744024574757,
+      "passed": true
+    },
+    {
+      "id": "pause-action",
+      "actualSourceFrame": 921,
+      "sourceMovieSha256": "a293d18e052a471d3b5a5ec95e59e22f4dddf712c9b903502714e38ee917841c",
+      "checks": [
+        {
+          "frame": 6194,
+          "region": "native",
+          "meanAbsoluteError": 2.259837962962963,
+          "passed": true
+        },
+        {
+          "frame": 6194,
+          "region": "inset",
+          "meanAbsoluteError": 2.370740740740741,
+          "passed": true
+        },
+        {
+          "frame": 6338,
+          "region": "native",
+          "meanAbsoluteError": 2.259675925925926,
+          "passed": true
+        },
+        {
+          "frame": 6338,
+          "region": "inset",
+          "meanAbsoluteError": 2.3714814814814815,
+          "passed": true
+        },
+        {
+          "frame": 6482,
+          "region": "native",
+          "meanAbsoluteError": 2.252476851851852,
+          "passed": true
+        },
+        {
+          "frame": 6482,
+          "region": "inset",
+          "meanAbsoluteError": 2.328078703703704,
+          "passed": true
+        }
+      ],
+      "noContinuingGameAudioResidualRms": 0.002526399679481983,
+      "passed": true
+    },
+    {
+      "id": "pause-late",
+      "actualSourceFrame": 10376,
+      "sourceMovieSha256": "a293d18e052a471d3b5a5ec95e59e22f4dddf712c9b903502714e38ee917841c",
+      "checks": [
+        {
+          "frame": 6848,
+          "region": "native",
+          "meanAbsoluteError": 2.160787037037037,
+          "passed": true
+        },
+        {
+          "frame": 6848,
+          "region": "inset",
+          "meanAbsoluteError": 2.7891435185185185,
+          "passed": true
+        },
+        {
+          "frame": 7158,
+          "region": "native",
+          "meanAbsoluteError": 2.3786342592592593,
+          "passed": true
+        },
+        {
+          "frame": 7158,
+          "region": "inset",
+          "meanAbsoluteError": 2.610925925925926,
+          "passed": true
+        },
+        {
+          "frame": 7469,
+          "region": "native",
+          "meanAbsoluteError": 2.3613194444444443,
+          "passed": true
+        },
+        {
+          "frame": 7469,
+          "region": "inset",
+          "meanAbsoluteError": 2.586898148148148,
+          "passed": true
+        }
+      ],
+      "noContinuingGameAudioResidualRms": 0.0017590457573533058,
+      "passed": true
+    }
+  ],
+  "usedIntervalsPlanSha256": "8d758e58d48f62cd1280638d9e6781ce71bb7b77bb542fb4889962e62a671a26",
+  "rawGlobalCalibration": {
+    "reference": true,
+    "lisette": true
+  },
+  "scope": "All actual utterances and four freeze pages at early/middle/late positions; actual source/inset binding and no continuing game audio. Separate finished-file native sync and browser tests remain required."
+}

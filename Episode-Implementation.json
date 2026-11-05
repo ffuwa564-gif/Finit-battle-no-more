@@ -1,0 +1,40 @@
+{
+  "episode": "THIS-GIRL-005",
+  "status": "implementation-complete",
+  "adoptionScope": "scoped-not-endgame-certified",
+  "baseEngineCommit": "6f235e3",
+  "implementationCommit": "d80aafd",
+  "freezeCommit": "d45214f",
+  "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/148",
+  "changedEngineFiles": [
+    "src/content/index.ts",
+    "src/content/validation.ts",
+    "src/content/version.ts",
+    "src/domain/engine.ts",
+    "src/domain/types.ts",
+    "src/locales/en.json"
+  ],
+  "evidence": {
+    "artifacts/this-girl-05/research/analysis/main.json": "88ba4793e72ca0058f58dfdf0ac49579828451f71d1d276491a262ade8532aea",
+    "artifacts/this-girl-05/research/confirmation-lock.json": "9c7b2cc0cf95fee59fdefb2693bfa89178d261dc7c41239970922a5da21a30e7",
+    "artifacts/this-girl-05/research/reports/adoption.json": "8f3ea776d9e41a1d356151bc294c5bb1c620b92e0312a472d265703f43aa0801",
+    "artifacts/this-girl-05/research/reports/judgment.json": "63d753fb352bd41b4e83c677af97ddd03a3321b2f58dde2c8a862c6b820fc4e6",
+    "artifacts/this-girl-05/research/reports/ResearchReport.md": "4b822b1ec540bda16b6a233e37d8d4ac1ce73709b074902e8eb5953817024270",
+    "artifacts/this-girl-05/research/baseline-equivalence.json": "cb8885d70d20262d72c9e745991b45983ce6a60db44a5023d0e47a9caa3d9db6",
+    "artifacts/this-girl-05/research/full-public-tests.log": "eb3ad03186f770b3f3c54e4057c9c1f966d60aa00eaaf604559f325e1fd6c98b",
+    "artifacts/this-girl-05/research/game-browser-tests.log": "8a431ae41ba4835d0789fe602f4f32943e451bf6011fb0354a3c890dcc7bd81b",
+    "artifacts/this-girl-05/research/builds.log": "486e89344c5f5e0cc207efcd1e456c6aa60d53c17f6871ae18f590baf8d6d3eb",
+    "artifacts/this-girl-05/research/recording-selection.json": "4a16580056ae86648eb710c1a5061923a0ee9d4832d48aabb67a55110d314ccc",
+    "artifacts/this-girl-05/research/code-pr.json": "9e70b55d4356c26bbc876091b592528d22b862cbceba4e65b13049ad5163adbe",
+    "artifacts/this-girl-05/proofs/reference.json.gz": "507cb5cff65c80e6651e58f32f53f11ce8abe76a9a7e0f3a4fb8763fe68f8cd8",
+    "artifacts/this-girl-05/proofs/lisette.json.gz": "b52397654d16294f6ca5025f6301a86abefce429f545752ab402f7f6f2a8ae0e"
+  },
+  "verification": {
+    "publicUnitTests": 786,
+    "newMechanicTestsIncluded": 11,
+    "gameBrowserTests": 2,
+    "legacyOutcomeMatches": 72
+  },
+  "negativeConditionDisclosed": "All18 conditions retained, including no-trigger and worse outcomes. Finite alternatives may remain stronger; no full-roster endgame certificate.",
+  "gamePublished": false
+}

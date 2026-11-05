@@ -1,0 +1,135 @@
+{
+  "finalized": true,
+  "renderComplete": true,
+  "finalQaComplete": true,
+  "episode": "THIS-GIRL-005",
+  "movie": "artifacts/this-girl-05/render/ThisGirl-05.mp4",
+  "sha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+  "timelineSha256": "46949d0584ac83bddd2bb5feec6f28ae180898a9495ddf534cb148a99599c2d7",
+  "rendererSha256": "041a5902b36978663910c30a9e2486383420a843327a02df1a67ef948ced29c7",
+  "audioMixSha256": "93cbebffbf6caff57464ec0b67fbf174aa26e4e40460c1a2d7c638326457623b",
+  "captionAssSha256": "5f590a6acc4e2ea30b6ee12abacbbfa2bafc7435474278581e71a53cb85a2abf",
+  "pages": [
+    {
+      "file": "artifacts/this-girl-05/render/page-opening.mp4",
+      "sha256": "e4f9d3c638f50ec78698f6c127586419e9f53e0b5512551b89d049e859108f07"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-subject.mp4",
+      "sha256": "ae2e2fdd2af49b4227b253b0402c369ac57fd2c5d0f4b41dc9018f2f51405d61"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-new-rule.mp4",
+      "sha256": "fdada6ebd36df223658b5d7e02a80fb643736ea1f3d3bd47a980aaa0ae4f028e"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-one-action.mp4",
+      "sha256": "e69924d4854f062bdf28865e2fe87cc0899a013d239c30bf36225cf0c1794545"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-method.mp4",
+      "sha256": "63e02041d5177c24181aa93652d947b98483514f5495fdac06cc67746ad6e94a"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-elements.mp4",
+      "sha256": "230239955728d2c834fe1a9c1985df2d14c84256fb4dc954e725f8881561ace5"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-owned-scope.mp4",
+      "sha256": "dcbd65f65de979a0e11247a1285a48b3aaebd6314d8b4fef4803483d4cb27ea7"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-battle-reference.mp4",
+      "sha256": "cf49f28d4ebab9a5c24f5bd742f2dabb8398b57097c91f77c066ea63ad0263db"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-pause-reference.mp4",
+      "sha256": "dffd6043435be35a5c9287052282ca07624cc373662005e8cdfd7aa3df5b4fc9"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-party.mp4",
+      "sha256": "08df8141f21fd490ac58e10cc777c99a2fd9121f4fa75597322fccfef35c4a2a"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-battle-strike.mp4",
+      "sha256": "8252c45ef87b282fa8840b2ae9fdc33b06dcca0b8987796989792ca5f50401f3"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-pause-guard.mp4",
+      "sha256": "4c093e7b312b4e56ee4e4c3f66e82642dee2c5038ca2eea373b46ffc6b3cbb1c"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-pause-action.mp4",
+      "sha256": "20124031d54bcdb3bfa31a42de55e59b9b0d4d1783a47cecc95c3ee23bf97a33"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-battle-late.mp4",
+      "sha256": "96410ff9cad6f8a81908d983725486200e74c6ec08a2dc2850c2305861ec7e05"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-pause-late.mp4",
+      "sha256": "2eb6a2dcadc987b65c3a020d8940124c4b4d0746b6ea57ebd4aacc53d4903f40"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-battle-finish.mp4",
+      "sha256": "f2c3caf6ba32bff958b3bc3dd80400588d57ecb69529d58eadba150993d7f9d3"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-example.mp4",
+      "sha256": "29bdd991c646f9334f1ec23da3f8e6c0462fbd7eba431dd70683ffc5eb87a535"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-main-results.mp4",
+      "sha256": "3ba0d6df67aa9e40a93029f00d643f9aa817d73d139bacca9fc1d254dc87c2e9"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-causal.mp4",
+      "sha256": "908a2b2c6ca2b463e854eafc667a9a5279fa329824ba87a0f6b5950a3a9fd1f9"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-panel.mp4",
+      "sha256": "3ef05538799fd09999a666ea9f7d5307f931b78da2397691f05686f54a5f56c7"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-opportunity.mp4",
+      "sha256": "987c4726e6aaea9b200bedea7f2f4edd8b47bced65e135e84f8521c69c96cea4"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-no-gems.mp4",
+      "sha256": "07df37b6e332e9b130983d65486a9d5af157da5169a2019964ef252ee17e24bb"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-growth.mp4",
+      "sha256": "cdfb4b93242a769d64f0b9ee697e72d39725eaa89f40ff5778ec3deb2d6c5421"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-stone-goal.mp4",
+      "sha256": "db020a39147cf013e17f543dbea73efc7f6582652aa13a7215ff7c6f199959bf"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-judgment.mp4",
+      "sha256": "7341ac000f37eda838896e5b65430bb7962a19a87fcb2709e72a5b4246452653"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-farewell.mp4",
+      "sha256": "435b7e09bc3c0cb1a39b9cdd5559da046ed7a5ff28efc87e77fbdfe9b64c0da9"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-preview.mp4",
+      "sha256": "1a1f3b1e47ab07bc9c863b4a1d6ada740b1cdaea0bf0eb382cdb37384ee7a257"
+    },
+    {
+      "file": "artifacts/this-girl-05/render/page-ledger.mp4",
+      "sha256": "9b28ba0a69b46218ea6b0567878cb8cf388d08d5ac5d670bd4e3afff8771a5a8"
+    }
+  ],
+  "note": "Actual gameplay implementation, locked independent confirmation, newly recorded before/after footage and exact finished-file QA complete. Scoped adoption only; no endgame certification.",
+  "implementationReceiptSha256": "0916042c9c20a5ae3edd6f07e56f81e1f341d706681aaa3b761d628d1203ca58",
+  "finalQaEvidence": {
+    "artifacts/this-girl-05/research/final-independent-qa.json": "d06809a1d44641af2482cfa9deb2a047dbff5fcf029e107fdb84f0f0c827a745",
+    "artifacts/this-girl-05/research/freeze-and-voice-qa.json": "16dfb41f0ca5c81c86834377fce6177008b018c80d47a7bb1403784565202fb6",
+    "artifacts/this-girl-05/research/final-browser-qa.json": "faf830304d2a50502871d8f042838a6639d4c2526e0f99ebd0dda3bd1e1c692b",
+    "artifacts/this-girl-05/research/visual-qa.json": "183b1e1ccfef0b0458c0bb232c1745f24ddda2c9292f926f2c4c8f9a3e834fbb",
+    "render-input-freeze.json": "2e4153e8d839c86c11b1f9d072d8b167dd282e8f385ac8b491d6cd8b2b89d0e3"
+  }
+}

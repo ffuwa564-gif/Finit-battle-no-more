@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "movieSha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+  "method": "Manual review of exact finished-MP4 decoded contact sheet, all four final freeze explanations and separate subject thumbnail; source/inset quantitative matching is independent.",
+  "reviewed": {
+    "Preview.jpg": "0ac86c6766b3f2b9ad4e8179975f22145955aa8046b8eaf399fb01d758c1beea",
+    "Pause-Preview.jpg": "9f6ccab2c80b5bba226a9c21c8ee3afe30e48e173ec1fb38035ed2f33ba955e6",
+    "Thumbnail-ThisGirl-05.png": "c8885cad5540dbbd66d3b0b0bc7384f9e19bd881120ec6f04340469481ba12d7"
+  },
+  "checks": {
+    "all28PagesReviewed": true,
+    "fourActualFreezeFramesAndInsets": true,
+    "faceAndGaugeUseMeasuredNativeLayout": true,
+    "firstHitGuardRecipientDistinguishedFromDispelTarget": true,
+    "actual41and32DamageNotRepainted": true,
+    "nativeHudNotPaintedOver": true,
+    "captionsMaximumTwoLines": true,
+    "researchBuildLabeled": true,
+    "sameResultSingleBattleDisclosed": true,
+    "negativeConditionsAndStrongerFiniteAlternativeDisclosed": true,
+    "roundMetricAndFailed120RPenaltyDefined": true,
+    "nonmonotoneGrowthDisclosed": true,
+    "noNewEndgameCertification": true,
+    "nextElainePreviewUnverified": true,
+    "thumbnailCharacterHeadAndResearcherPenVisible": true
+  },
+  "nativeLayoutEvidenceSha256": "47961804054f59f5d0093a5936abd4999eba6f7ee1dd7bfb43253d69e7d65fe6"
+}

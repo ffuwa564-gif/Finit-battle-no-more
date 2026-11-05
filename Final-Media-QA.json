@@ -1,0 +1,511 @@
+{
+  "passed": true,
+  "movie": "/tmp/stillveil-05/artifacts/render/ThisGirl-05.mp4",
+  "movieSha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+  "qaCodeSha256": "a997c9c5126f27a5cb6738a5fd1e86c72d47e766ee2475d36b03afa1e630044f",
+  "timelineSha256": "46949d0584ac83bddd2bb5feec6f28ae180898a9495ddf534cb148a99599c2d7",
+  "audio": [
+    {
+      "component": "game",
+      "anchor": "battle-reference:0",
+      "outputSample": 6441600,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9934142490632148,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-reference:1",
+      "outputSample": 6673600,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9952226004757437,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-reference:2",
+      "outputSample": 6821600,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9914412304564867,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-strike:0",
+      "outputSample": 8273600,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9923316538289234,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-strike:1",
+      "outputSample": 8520266,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9932081661876776,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-strike:2",
+      "outputSample": 8730933,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9915602978976389,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-late:0",
+      "outputSample": 10460000,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9961845532385998,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-late:1",
+      "outputSample": 10612000,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9872914166877027,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-late:2",
+      "outputSample": 10824000,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.989899445580058,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-finish:0",
+      "outputSample": 12003200,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9987663994446446,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-finish:1",
+      "outputSample": 12139200,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9896053261175535,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "game",
+      "anchor": "battle-finish:2",
+      "outputSample": 12359200,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9965242999914555,
+      "minimumCorrelation": 0.65,
+      "passed": true
+    },
+    {
+      "component": "voice",
+      "anchor": "question-00",
+      "outputSample": 124000,
+      "durationSamples": 48000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9998989417722847,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    },
+    {
+      "component": "voice",
+      "anchor": "battle-07",
+      "outputSample": 11028000,
+      "durationSamples": 48000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9997695015558234,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    },
+    {
+      "component": "voice",
+      "anchor": "preview-01",
+      "outputSample": 21981600,
+      "durationSamples": 48000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9995396693390192,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    },
+    {
+      "component": "music",
+      "anchor": "0.12",
+      "outputSample": 2856192,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9921728095060258,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    },
+    {
+      "component": "music",
+      "anchor": "0.48",
+      "outputSample": 11544768,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9934132115619709,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    },
+    {
+      "component": "music",
+      "anchor": "0.84",
+      "outputSample": 20017344,
+      "durationSamples": 96000,
+      "lagSeconds": 0.0,
+      "correlation": 0.9899466124060018,
+      "minimumCorrelation": 0.72,
+      "passed": true
+    }
+  ],
+  "video": [
+    {
+      "cut": "battle-reference",
+      "third": 0,
+      "sourceFrame": 655,
+      "outputFrame": 4026,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 12.393515586853027,
+      "lagSeconds": 0.0,
+      "rmse": 1.80738365650177,
+      "outside80msMinimumRmse": 25.623546600341797,
+      "timingDiscriminationMargin": 23.816162943840027,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        655,
+        1000
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        655,
+        761
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-reference",
+      "third": 1,
+      "sourceFrame": 853,
+      "outputFrame": 4224,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 10.747847557067871,
+      "lagSeconds": 0.0,
+      "rmse": 1.773010015487671,
+      "outside80msMinimumRmse": 25.070751190185547,
+      "timingDiscriminationMargin": 23.297741174697876,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        655,
+        1000
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        770,
+        876
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-reference",
+      "third": 2,
+      "sourceFrame": 989,
+      "outputFrame": 4360,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 13.815998077392578,
+      "lagSeconds": 0.0,
+      "rmse": 1.8047584295272827,
+      "outside80msMinimumRmse": 29.18045425415039,
+      "timingDiscriminationMargin": 27.375695824623108,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        655,
+        1000
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        885,
+        991
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-strike",
+      "third": 0,
+      "sourceFrame": 665,
+      "outputFrame": 5175,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 10.420086860656738,
+      "lagSeconds": 0.0,
+      "rmse": 1.8124462366104126,
+      "outside80msMinimumRmse": 27.14996910095215,
+      "timingDiscriminationMargin": 25.337522864341736,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        661,
+        1011
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        661,
+        768
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-strike",
+      "third": 1,
+      "sourceFrame": 815,
+      "outputFrame": 5325,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 4.377578258514404,
+      "lagSeconds": 0.0,
+      "rmse": 1.5612692832946777,
+      "outside80msMinimumRmse": 9.828144073486328,
+      "timingDiscriminationMargin": 8.26687479019165,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        661,
+        1011
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        777,
+        885
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-strike",
+      "third": 2,
+      "sourceFrame": 909,
+      "outputFrame": 5419,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 9.664443969726562,
+      "lagSeconds": 0.0,
+      "rmse": 1.7372773885726929,
+      "outside80msMinimumRmse": 23.66242790222168,
+      "timingDiscriminationMargin": 21.925150513648987,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        661,
+        1011
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        894,
+        1002
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-late",
+      "third": 0,
+      "sourceFrame": 10266,
+      "outputFrame": 6582,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 2.920781135559082,
+      "lagSeconds": 0.0,
+      "rmse": 1.7816407680511475,
+      "outside80msMinimumRmse": 10.580361366271973,
+      "timingDiscriminationMargin": 8.798720598220825,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10184,
+        10514
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10184,
+        10285
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-late",
+      "third": 1,
+      "sourceFrame": 10363,
+      "outputFrame": 6679,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 2.3374478816986084,
+      "lagSeconds": 0.0,
+      "rmse": 1.686541199684143,
+      "outside80msMinimumRmse": 10.054582595825195,
+      "timingDiscriminationMargin": 8.368041396141052,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10184,
+        10514
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10294,
+        10395
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-late",
+      "third": 2,
+      "sourceFrame": 10456,
+      "outputFrame": 6772,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 3.1491057872772217,
+      "lagSeconds": 0.0,
+      "rmse": 1.6651335954666138,
+      "outside80msMinimumRmse": 10.033790588378906,
+      "timingDiscriminationMargin": 8.368656992912292,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10184,
+        10514
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10404,
+        10505
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-finish",
+      "third": 0,
+      "sourceFrame": 10694,
+      "outputFrame": 7497,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 2.061579942703247,
+      "lagSeconds": 0.0,
+      "rmse": 1.951643466949463,
+      "outside80msMinimumRmse": 13.100558280944824,
+      "timingDiscriminationMargin": 11.148914813995361,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10684,
+        10984
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10684,
+        10775
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-finish",
+      "third": 1,
+      "sourceFrame": 10833,
+      "outputFrame": 7636,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 7.888376712799072,
+      "lagSeconds": 0.0,
+      "rmse": 1.7199156284332275,
+      "outside80msMinimumRmse": 14.293936729431152,
+      "timingDiscriminationMargin": 12.574021100997925,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10684,
+        10984
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10784,
+        10875
+      ],
+      "passed": true
+    },
+    {
+      "cut": "battle-finish",
+      "third": 2,
+      "sourceFrame": 10964,
+      "outputFrame": 7767,
+      "nineFrameCount": 9,
+      "uniqueSourceFrames": 9,
+      "sourceActivity": 8.640356063842773,
+      "lagSeconds": 0.0,
+      "rmse": 1.675918698310852,
+      "outside80msMinimumRmse": 28.452924728393555,
+      "timingDiscriminationMargin": 26.777006030082703,
+      "minimumMargin": 1,
+      "sourceOnlyWindowSelection": true,
+      "visibleInterval": [
+        10684,
+        10984
+      ],
+      "excludedFadeFramesPerEdge": 0,
+      "fadeExclusionReason": "Renderer-declared paper alpha transition",
+      "thirdCandidateRange": [
+        10884,
+        10975
+      ],
+      "passed": true
+    }
+  ],
+  "constantFrameRateVerified": true,
+  "audioMixSha256": "93cbebffbf6caff57464ec0b67fbf174aa26e4e40460c1a2d7c638326457623b",
+  "sourceHashes": {
+    "/workspace/STILLVEIL-this-girl-01/artifacts/this-girl-05/capture/lisette.mov": "a293d18e052a471d3b5a5ec95e59e22f4dddf712c9b903502714e38ee917841c",
+    "/workspace/STILLVEIL-this-girl-01/artifacts/this-girl-05/capture/reference.mov": "c91122515196b98ecbc74d69b70ea266df1b5d8f6b48028bcb35ee728c7b0083"
+  },
+  "fullDecodePassed": true,
+  "scope": "Finished H264/AAC movie source-frame and independent source-audio sync only; browser seek/playback requires separate browser-qa report bound to this same SHA."
+}

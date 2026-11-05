@@ -1,0 +1,35 @@
+{
+  "finalized": true,
+  "episode": "THIS-GIRL-005",
+  "subject": {
+    "characterId": "lisette",
+    "seriesId": "BD036",
+    "buildName": "弔鐘の返し刃"
+  },
+  "overall": {
+    "status": "research",
+    "certified": false,
+    "label": "返し刃採用／研究中"
+  },
+  "scope": "One observed T4Tower4 witness; not universal or endgame certification",
+  "nextEpisode": {
+    "characterId": "elaine",
+    "status": "unverified",
+    "certified": false
+  },
+  "adoption": {
+    "passed": true,
+    "scope": "Scoped conditional-counterblade adoption only; no all-roster/endgame certification",
+    "witnesses": [
+      {
+        "caseId": "ivory-tower-004-T4-F1",
+        "C-B": [
+          "rounds"
+        ],
+        "C-X": [
+          "rounds"
+        ]
+      }
+    ]
+  }
+}
