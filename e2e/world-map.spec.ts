@@ -8,7 +8,7 @@ test('world map pans, zooms, persists travel, arrives and opens a real expeditio
   await expect(map.getByRole('button',{name:'自動移動',exact:true})).toBeEnabled();
   await page.screenshot({path:info.outputPath('world-map-mobile.png')});
   const land=map.locator('.world-map__land');const original=await land.getAttribute('style');
-  await map.getByRole('button',{name:'拡大',exact:true}).click();expect(await land.getAttribute('style')).not.toBe(original);
+  await map.getByRole('button',{name:'拡大',exact:true}).click();await expect(land).not.toHaveAttribute('style',original!);
   await page.mouse.move(180,320);await page.mouse.down();await page.mouse.move(230,360,{steps:8});await page.mouse.up();
   await map.getByRole('button',{name:'自動移動',exact:true}).click(); await expect(map.getByRole('button',{name:'移動を中止'})).toBeVisible();
   await page.reload(); await enterGame(page); await expect(map.getByRole('button',{name:'移動を中止'})).toBeVisible();
