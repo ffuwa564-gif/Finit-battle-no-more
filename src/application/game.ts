@@ -1,3 +1,4 @@
+import { roughMemoryGem, startGemPolish, tapGemPolish, ROUGH_NAMES } from '../domain/gem-polishing';
 import { scoutRecruitments } from '../content/scout-maidens';
 import { createExpeditionTracking, finishTracking, trackEventBatch, trackPotion } from '../domain/expedition-review';
 import { finalizeExpedition } from '../domain/expedition-ledger';
@@ -64,13 +65,14 @@ function secureMemoryChest(save: GameSave, wave: number, content: Content): void
   if (battle.gemChestChecks?.includes(key)) return;
   battle.gemChestChecks = [...(battle.gemChestChecks ?? []), key];
   const inventory = save.memoryGems ??= emptyGemInventory();
-  const result = rollGemDrop(dungeon, battle.seed, key, { first: inventory.seen.length === 0, boss: wave === dungeon.waves.length - 1 });
+  const result = rollGemDrop(dungeon, battle.seed, key, { first: inventory.seen.length === 0 && !inventory.rough?.length, boss: wave === dungeon.waves.length - 1 });
   battle.seed = result.seed;
   if (!result.gem || inventory.items.some(item => item.id === result.gem!.id)) return;
-  inventory.items.push(result.gem);
-  if (!inventory.seen.includes(result.gem.defId)) inventory.seen.push(result.gem.defId);
-  battle.gemFinds = [...(battle.gemFinds ?? []), result.gem];
-  log(save, `宝箱から${gemName(result.gem)}を確保しました。`, key);
+  const raw = roughMemoryGem(result.gem, result.seed);
+  if (inventory.rough?.some(item => item.id === raw.id)) return;
+  (inventory.rough ??= []).push(raw);
+  battle.roughGemFinds = [...(battle.roughGemFinds ?? []), raw];
+  log(save, `宝箱から${ROUGH_NAMES[raw.promise]}を確保しました。`, key);
 }
 
 export function createInitialSave(content: Content, seed = 0x584a39b1, options: { opening?: boolean } = {}): GameSave {
@@ -120,6 +122,17 @@ export function applyCommand(previous: GameSave, command: GameCommand, content: 
       save.partyIds = [...plan.partyIds];
       save.leaderId = plan.leaderId;
       log(save, '所持品でビルドを編成しました。');
+      break;
+    }
+    case 'startGemPolish': {
+      town(save);
+      startGemPolish(save.memoryGems ??= emptyGemInventory(), command.rawId, context.now ?? Date.now(), save.seed ^ save.revision);
+      break;
+    }
+    case 'tapGemPolish': {
+      town(save);
+      const result=tapGemPolish(save.memoryGems ??= emptyGemInventory(), command.rawId, context.now ?? Date.now());
+      if(result==='complete')log(save, '原石の研磨が完了しました。記憶石の性能を確認できます。');
       break;
     }
     case 'startGemRefinement': {

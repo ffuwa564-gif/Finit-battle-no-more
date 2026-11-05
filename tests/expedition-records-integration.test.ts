@@ -15,7 +15,7 @@ function finishWave(s:GameSave,now=3000){for(const u of s.battle!.units){if(u.si
 function win(now?:number){let s=depart(now);for(let n=0;s.battle?.phase!=='reward'&&n<5;n++)s=finishWave(s,5000);expect(s.battle?.phase).toBe('reward');return s;}
 describe('native expedition observations, terminal commit and backup',()=>{
  it('commits a two-wave victory once, separating secured loot from claim-only rewards and excluding claim waiting',()=>{
-  const reward=win(1000),before=structuredClone(reward),battle=reward.battle!,pending={...battle.pendingMaterials},earnedGold=battle.goldEarned,gems=reward.memoryGems!.items.length;
+  const reward=win(1000),before=structuredClone(reward),battle=reward.battle!,pending={...battle.pendingMaterials},earnedGold=battle.goldEarned,gems=reward.memoryGems!.items.length+(reward.memoryGems!.rough?.length??0);
   const review=structuredClone(battle.tracking!.review);expect(review.rounds).toBe(2);expect(review.enemyDamageTaken).toBe(2);
   const done=act(reward,{type:'claim'},100000);const row=done.expeditionHistory![0];
   expect(row.outcome).toBe('victory');expect(row.durationMs).toBe(4000);expect(row.potionsUsed).toBe(0);expect(row.review).toEqual(review);
@@ -46,11 +46,11 @@ describe('native expedition observations, terminal commit and backup',()=>{
  });
  it('keeps secured gold and gems after retreat, loses provisional materials and commits just one retreat on return',()=>{
   let s=finishWave(depart(1000));expect(s.battle?.phase).toBe('ready');expect(s.battle!.wave).toBe(1);
-  const gold=s.gold,gems=s.memoryGems!.items.length;expect(gold).toBeGreaterThan(100);expect(gems).toBeGreaterThan(0);expect(Object.keys(s.battle!.pendingMaterials).length).toBeGreaterThan(0);
+  const gold=s.gold,gems=s.memoryGems!.items.length+(s.memoryGems!.rough?.length??0);expect(gold).toBeGreaterThan(100);expect(gems).toBeGreaterThan(0);expect(Object.keys(s.battle!.pendingMaterials).length).toBeGreaterThan(0);
   const failed=act(s,{type:'retreat'},6000);expect(failed.battle!.pendingMaterials).toEqual({});
   const done=act(failed,{type:'leaveFailure'},90000),row=done.expeditionHistory![0];
   expect(row.outcome).toBe('retreat');expect(row.durationMs).toBe(5000);expect(row.earned.gold).toBe(gold-100);expect(row.earned.gemCount).toBe(gems);expect(row.earned.materials).toEqual({});expect(row.earned.stones).toBe(0);expect(row.earned.dust).toEqual({});
-  expect(done.gold).toBe(gold);expect(done.memoryGems!.items).toHaveLength(gems);expect(()=>act(done,{type:'leaveFailure'},100000)).toThrow();expect(done.expeditionHistory).toHaveLength(1);
+  expect(done.gold).toBe(gold);expect(done.memoryGems!.items.length+(done.memoryGems!.rough?.length??0)).toBe(gems);expect(()=>act(done,{type:'leaveFailure'},100000)).toThrow();expect(done.expeditionHistory).toHaveLength(1);
  });
  it('records a real total defeat, with the actual hit wave and round and without double counting replays',()=>{
   let s=depart(1000);for(const u of s.battle!.units){if(u.side==='party'){u.hp=1;u.attack=0;u.speed=0;}else{u.hp=u.maxHp=10000;u.attack=100000;u.speed=1000;}}

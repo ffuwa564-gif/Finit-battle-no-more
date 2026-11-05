@@ -198,3 +198,9 @@ export { ExpeditionReview } from './ExpeditionReview';
 export { ExpeditionLedger } from './ExpeditionLedger';
 export { PreparationGuide, type PreparationGuideProps } from './PreparationGuide';
 export { ExpeditionNextStep } from './ExpeditionNextStep';
+
+export { WorldMap } from './WorldMap';
+
+export { GemPolishing } from './GemPolishing';
+
+export { MemoryGemTier } from "./MemoryGemTier";

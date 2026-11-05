@@ -219,7 +219,7 @@ test('mobile inventory protects favorites, equips one stone, crafts a chosen ski
   await page.screenshot({ path: 'artifacts/memory-gems/inventory-mobile-320.png', fullPage: true });
 });
 
-test('the first chest is nonblocking, equips at the next wave and stays secured after UI retreat', async ({ page }) => {
+test('the first raw chest is nonblocking, stays sealed in battle and stays secured after UI retreat', async ({ page }) => {
   await page.goto('/'); await enterGame(page);
   await page.evaluate(async () => {
     const { content } = await import('/src/content/index.ts');
@@ -244,20 +244,18 @@ test('the first chest is nonblocking, equips at the next wave and stays secured 
   await page.reload(); await enterGame(page);
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'ラウンドを進める', exact: true })).toBeEnabled();
-  const gem = (await currentSave(page)).memoryGems!.items[0];
-  expect(gem).toBeDefined();
-  await expect(page.getByRole('button', { name: '獲得した記憶石を見る', exact: true })).toBeVisible();
+  const raw = (await currentSave(page)).memoryGems!.rough![0];
+  expect(raw).toBeDefined();
+  await expect(page.getByRole('button', { name: '獲得した原石を見る', exact: true })).toBeVisible();
   await page.screenshot({ path: 'artifacts/memory-gems/chest-find-mobile-390.png' });
-  await page.getByRole('button', { name: '獲得した記憶石を見る', exact: true }).click();
+  await page.getByRole('button', { name: '獲得した原石を見る', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
-  await openGemInventory(page);
-  await page.locator(`[data-testid="memory-gem-card"][data-gem-id="${gem.id}"]`).click();
-  await page.getByRole('button', { name: 'この仲間に託す', exact: true }).click();
-  await expect.poll(async () => Object.values((await currentSave(page)).battle!.memoryGems ?? {}).map(item => item.id)).toContain(gem.id);
+  await expect(page.getByRole('button',{name:/原石を磨く/})).toBeDisabled();
+  await expect(page.locator(`[data-testid="memory-gem-card"][data-gem-id="${raw.id}"]`)).toHaveCount(0);
   await page.getByRole('dialog').getByRole('button', { name: '閉じる', exact: true }).click();
   await page.getByRole('button', { name: '撤退', exact: true }).click();
   await page.getByRole('button', { name: '撤退する', exact: true }).click();
   await page.getByRole('button', { name: /街へ戻る/ }).click();
   await page.reload(); await enterGame(page);
-  expect((await currentSave(page)).memoryGems!.items.map(item => item.id)).toContain(gem.id);
+  expect((await currentSave(page)).memoryGems!.rough!.map(item => item.id)).toContain(raw.id);
 });

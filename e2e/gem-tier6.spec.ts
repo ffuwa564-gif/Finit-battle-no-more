@@ -1,3 +1,4 @@
+import { polishFixtureStone } from './polishing-fixture';
 import { expect, test, type Page } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { enterGame } from './boot';
@@ -46,15 +47,17 @@ test('secures an eligible Tier 6 chest and preserves its tier through equipment,
     battle.phase='playing'; battle.nextPhase='reward'; battle.cursor=0;
     battle.events=[{id:'tier6-defeated-final-wave',kind:'dialogue',text:'The final wave is defeated.',unitsAfter:structuredClone(battle.units)}];
     save=applyCommand(save,{type:'replay'},content);
-    const stone=save.battle!.gemFinds!.at(-1)!;
+    const stone=save.battle!.roughGemFinds!.at(-1)!.result;
     if (gemPowerTier(stone)!==6) throw new Error('Secured stone differs from preview');
     save.revision=revision+1; await persistSave(save,revision);
     return {id:stone.id,roll:stone.roll!,pilot:save.partyIds[0],dungeonId:dungeon.id,profile:dungeon.gemLoot!};
   });
   await page.goto('/#dungeons'); await page.reload(); await enterGame(page);
-  await expect(page.locator('.memory-gem-summary .memory-gem-tier[data-tier="6"]')).toBeVisible();
+  await expect(page.locator('.memory-gem-summary')).toContainText('確保した原石');
+  await expect(page.locator('.memory-gem-summary .memory-gem-tier')).toHaveCount(0);
   await page.locator('[data-guide="claim"]').click();
   await expect.poll(async () => (await saved(page)).battle).toBeNull();
+  await polishFixtureStone(page,found.id);
   await page.goto('/#bag'); await page.reload(); await enterGame(page);
   await page.getByRole('button',{name:/記憶石の管理/}).click();
   await expect(page.locator('[data-inventory-section="memory-stones"]')).not.toHaveAttribute('open');

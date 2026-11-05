@@ -1,0 +1,15 @@
+import { describe,expect,it } from 'vitest';
+import { content,validateContent } from '../src/content';
+import { applyCommand,createInitialSave } from '../src/application/game';
+import { novelAvailable,enqueueMilestone } from '../src/domain/novels';
+import { worldLocations } from '../src/domain/world-map';
+import { assertSaveCompatibility } from '../src/platform/save';
+import { decodeBackup,encodeBackup } from '../src/platform/save-backup';
+const scenes=content.novels!.filter(s=>s.trigger.kind==='map');
+describe('optional map story encounters',()=>{
+ it('validates all six short episodes and their real leads',()=>{expect(scenes).toHaveLength(6);expect(validateContent(content)).toEqual([]);for(const s of scenes){expect(s.pages.length).toBeLessThanOrEqual(8);expect(content.dungeons.some(d=>d.id===s.mapEncounter!.leadDungeonId)).toBe(true);}});
+ it('keeps undiscovered scenes and their spoilers out of the map and rejects opening them',()=>{const save=createInitialSave(content);expect(worldLocations(content,[]).some(p=>p.sceneId)).toBe(false);for(const s of scenes){expect(novelAvailable(s,save)).toBe(false);expect(()=>applyCommand(save,{type:'novelStart',sceneId:s.id},content)).toThrow();}});
+ it.each(scenes)('unlocks $id through the real prerequisite, but never forces playback on claim',scene=>{if(scene.trigger.kind!=='map')throw Error('fixture');const save=createInitialSave(content);save.completedDungeonIds=[scene.trigger.dungeonId];save.novels={seen:[]};expect(novelAvailable(scene,save)).toBe(true);expect(worldLocations(content,save.completedDungeonIds)).toContainEqual(expect.objectContaining({sceneId:scene.id}));enqueueMilestone(save,scene.trigger.dungeonId,false,content);expect(save.novels.active?.sceneId).not.toBe(scene.id);});
+ it('saves an encounter mid-page and completes or skips it without granting loot or unlocking routes',()=>{const scene=scenes[0]!,save=createInitialSave(content);if(scene.trigger.kind!=='map')throw Error('fixture');save.completedDungeonIds=[scene.trigger.dungeonId];const before=structuredClone(save);const open=applyCommand(save,{type:'novelStart',sceneId:scene.id},content);const next=applyCommand(open,{type:'novelNext'},content);assertSaveCompatibility(next,content);const restored=decodeBackup(encodeBackup(next,content),content).save;expect(restored.novels!.active!.page).toBe(1);const done=applyCommand(restored,{type:'novelFinish'},content);expect(done.novels!.seen).toContain(scene.id);expect(done.gold).toBe(before.gold);expect(done.stones).toBe(before.stones);expect(done.completedDungeonIds).toEqual(before.completedDungeonIds);expect(save).toEqual(before);});
+ it('rejects invalid map coordinates and nonexistent leads',()=>{const c=structuredClone(content),s=c.novels!.find(s=>s.trigger.kind==='map')!;s.mapEncounter!.x=NaN;expect(validateContent(c).some(error=>error.includes('valid map encounter'))).toBe(true);s.mapEncounter!.x=.5;s.mapEncounter!.leadDungeonId='missing';expect(validateContent(c).some(error=>error.includes('valid map encounter'))).toBe(true);});
+});

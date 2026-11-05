@@ -56,9 +56,13 @@ export function validateContent(content: Content): string[] {
   const novelTriggers = new Set<string>();
   for (const scene of content.novels ?? []) {
     reject(!plain(scene.title) || !Array.isArray(scene.pages) || !scene.pages.length || scene.pages.length > 200, `novels/${scene.id}: title and 1..200 pages required`);
-    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : '';
+    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
     reject(!trigger || novelTriggers.has(trigger), `novels/${scene.id}: unique trigger required`); novelTriggers.add(trigger);
-    if (scene.trigger.kind === 'dungeon-clear') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
+    if (scene.trigger.kind === 'dungeon-clear' || scene.trigger.kind === 'map') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
+    if (scene.trigger.kind === 'map') {
+      const map = scene.mapEncounter;
+      reject(!map || !Number.isFinite(map.x) || !Number.isFinite(map.y) || map.x <= 0 || map.x >= 1 || map.y <= 0 || map.y >= 1 || !plain(map.teaser) || !content.characters.some(c => c.id === map.characterId && c.published) || !content.dungeons.some(d => d.id === map.leadDungeonId && d.published && d.chapterId), `novels/${scene.id}: valid map encounter and destination required`);
+    } else reject(Boolean(scene.mapEncounter), `novels/${scene.id}: map metadata needs a map trigger`);
     for (const page of scene.pages) {
       reject(!plain(page.text) || (page.speaker !== undefined && !plain(page.speaker)), `novels/${scene.id}: plain page text required`);
       reject(!content.assets.some(asset => asset.id === page.backgroundId && ['background', 'illustration'].includes(asset.kind)), `novels/${scene.id}: background required`);

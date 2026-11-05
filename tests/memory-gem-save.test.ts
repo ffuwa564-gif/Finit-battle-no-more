@@ -55,13 +55,14 @@ describe('memory gem application and portable persistence', () => {
     const input = atWaveEnd(start());
     const awarded = applyCommand(input, { type: 'replay' }, content);
     expect(input.memoryGems!.items).toHaveLength(0);
-    expect(awarded.memoryGems!.items).toHaveLength(1);
+    expect(awarded.memoryGems!.items).toHaveLength(0);
+    expect(awarded.memoryGems!.rough).toHaveLength(1);
     expect(awarded.battle!.gemChestChecks).toHaveLength(1);
-    expect(awarded.battle!.gemFinds).toEqual(awarded.memoryGems!.items);
+    expect(awarded.battle!.roughGemFinds).toEqual(awarded.memoryGems!.rough);
     expect(applyCommand(structuredClone(input), { type: 'replay' }, content)).toEqual(awarded);
     const restored = decodeBackup(encodeBackup(awarded, content), content).save;
     const ready = finishReplay(restored);
-    expect(ready.memoryGems!.items).toHaveLength(1);
+    expect(ready.memoryGems!.rough).toHaveLength(1);
     const retreated = applyCommand(ready, { type: 'retreat' }, content);
     expect(retreated.memoryGems).toEqual(awarded.memoryGems);
     expect(() => applyCommand(retreated, { type: 'replay' }, content)).toThrow();

@@ -1,3 +1,4 @@
+import { polishWindow } from '../src/domain/gem-polishing';
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
 import { applyCommand, createInitialSave } from '../src/application/game';
@@ -32,17 +33,25 @@ describe('memory gem exploration to combat integration', () => {
     const before = save.battle!.units.filter(unit => unit.side === 'party').map(unit => ({ id: unit.characterId, hp: unit.maxHp, attack: unit.attack, defense: unit.defense, speed: unit.speed }));
     save = clearWave(save);
     expect(save.battle!.phase).toBe('ready');
-    expect(save.memoryGems!.items).toHaveLength(1);
-    const gem = save.memoryGems!.items[0];
+    expect(save.memoryGems!.items).toHaveLength(0);
+    expect(save.memoryGems!.rough).toHaveLength(1);
+    const gem = save.memoryGems!.rough![0].result;
     const checks = [...save.battle!.gemChestChecks!];
     assertSaveCompatibility(JSON.parse(JSON.stringify(save)), content);
-    save = command(save, { type: 'equipMemoryGem', characterId: save.partyIds[0], gemId: gem.id });
-    expect(save.battle!.memoryGems![save.partyIds[0]]).toEqual(gem);
+    expect(() => command(save, { type: 'equipMemoryGem', characterId: save.partyIds[0], gemId: gem.id })).toThrow();
     expect(save.battle!.gemChestChecks).toEqual(checks);
     save = command(command(save, { type: 'retreat' }), { type: 'leaveFailure' });
     save = JSON.parse(JSON.stringify(save)) as GameSave;
     assertSaveCompatibility(save, content);
+    expect(save.memoryGems!.rough![0].result).toEqual(gem);
+    let now=1000;save=applyCommand(save,{type:'startGemPolish',rawId:gem.id},content,{now});
+    for(let n=0;save.memoryGems!.polish && n<30;n++){
+      const session=save.memoryGems!.polish!,raw=save.memoryGems!.rough![0];now=Math.max(now+300,session.lastTapAt+300);
+      while(Math.abs(((polishWindow(session,raw,now).angle-polishWindow(session,raw,now).center+540)%360)-180)>8)now+=5;
+      save=applyCommand(save,{type:'tapGemPolish',rawId:gem.id},content,{now});
+    }
     expect(save.memoryGems!.items).toEqual([gem]);
+    save = command(save, { type: 'equipMemoryGem', characterId: save.partyIds[0], gemId: gem.id });
     save = replay(command(save, { type: 'depart', dungeonId: 'silent-cathedral', potions: 0 }));
     const after = save.battle!.units.filter(unit => unit.side === 'party').map(unit => ({ id: unit.characterId, hp: unit.maxHp, attack: unit.attack, defense: unit.defense, speed: unit.speed }));
     expect(after).toEqual(before);

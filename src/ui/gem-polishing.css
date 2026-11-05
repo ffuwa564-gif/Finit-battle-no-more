@@ -1,0 +1,58 @@
+.gem-polish-shell { position:fixed; inset:0; z-index:40; overflow:auto; background:#09111b; color:#f2e9d5; }
+.gem-polish { position:relative; isolation:isolate; overflow:hidden; width:100%; max-width:560px; margin:auto; min-height:max(740px,100dvh); display:grid; grid-template-rows:50px 36px 60px minmax(230px,1fr) 66px 106px 74px 26px 64px; font-family:var(--font-display); padding-top:env(safe-area-inset-top,0px); }
+.gem-polish__backdrop { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; }
+.gem-polish::before { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(#09101c70,transparent 30%,#08132115 53%,#08111de8 76%,#08111df5); }
+.gem-polish__header { display:flex; align-items:center; gap:12px; padding:4px 14px; border-bottom:1px solid #aea58b; background:#0c1520b8; }
+.gem-polish__header h1 { font-size:23px; color:#f3ead8; }
+.gem-polish__header > span { margin-left:auto; font:10px Georgia,serif; letter-spacing:.16em; }
+.gem-polish__header .button { border-color:#a49e8e; background:#121d29d9; color:#f4ebd5; width:37px; height:35px; min-height:35px; }
+.gem-polish__travel { margin:5px 10px 0; display:flex; align-items:center; justify-content:center; gap:7px; padding:4px 6px; border:1px solid #a8a18d80; border-radius:4px 12px; font-size:10px; background:#142130ab; }
+.gem-polish__travel > span:first-of-type { max-width:38%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.gem-polish__travel i { color:#d8c798; font-style:normal; letter-spacing:1px; }
+.gem-polish__travel strong { font:15px Georgia,serif; color:#ffe9b7; }
+.gem-polish__travel .button { min-height:22px; min-width:22px; padding:0; color:#f1dfb3; }
+.gem-polish__title { display:grid; justify-items:center; align-content:center; gap:4px; }
+.gem-polish__title h2 { display:flex; align-items:center; gap:8px; font-size:20px; letter-spacing:.08em; color:#f4ecdc; }
+.gem-polish__title > span { color:#dccb9e; border-block:1px solid #9f947a80; padding:1px 17px; font-size:11px; }
+.gem-polish__arena { position:relative; display:grid; place-items:center; min-height:230px; }
+.gem-polish__ring { width:min(83vw,360px); aspect-ratio:1; max-height:100%; position:absolute; border:1px solid #e0e4e4a8; border-radius:50%; box-shadow:0 0 7px #d7e8ff50,inset 0 0 8px #dfebff24; }
+.gem-polish__arc { position:absolute; inset:-3px; border-radius:50%; background:conic-gradient(from var(--arc-start),#ffe8a5 0deg var(--arc-width),transparent var(--arc-width) 360deg); mask:radial-gradient(circle,transparent 67%,#000 68%,#000 71%,transparent 72%); filter:drop-shadow(0 0 5px #ffe49d); }
+.gem-polish__needle { position:absolute; inset:0; transform-origin:50% 50%; will-change:transform; }
+.gem-polish__needle i { position:absolute; top:-6px; left:calc(50% - 6px); width:13px; height:13px; background:#fff5cb; border:1px solid white; border-radius:50%; box-shadow:0 0 12px 3px #ffe5aa; }
+.gem-polish__feedback { position:absolute; right:18px; top:18%; padding:4px 8px; color:#dbb3ad; font-size:15px; text-shadow:0 2px 4px #000; }
+.gem-polish__feedback.is-good { color:#ffedb5; border-block:1px solid #b7a27a; background:#15202ab3; }
+.gem-polish__gauge { margin:0 23px; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:7px; }
+.gem-polish__gauge label { font-size:12px; color:#f0e6ce; }
+.gem-polish__gauge label strong { font:17px Georgia,serif; }
+.gem-polish__gauge progress { width:100%; height:9px; border:1px solid #b3b6b4; border-radius:5px; overflow:hidden; background:#132030; }
+.gem-polish__gauge progress::-webkit-progress-bar { background:#132030; }
+.gem-polish__gauge progress::-webkit-progress-value { background:linear-gradient(90deg,#d8bb76,#fff0bd,#9ccaff); }
+.gem-polish__gauge progress::-moz-progress-bar { background:linear-gradient(90deg,#d8bb76,#fff0bd,#9ccaff); }
+.gem-polish__gauge > span { grid-column:1/-1; display:flex; align-items:center; justify-content:center; gap:8px; font-size:12px; }
+.gem-polish__gauge > span strong { font:25px Georgia,serif; }
+.gem-polish__action { display:grid; justify-items:center; gap:6px; align-content:center; padding-inline:18px; }
+.gem-polish__action > p { font-size:11px; color:#ede4d0; }
+.gem-polish__action > small { font-size:10px; color:#c3bdad; }
+.gem-polish .gem-polish__pad { width:86%; min-height:57px; border:2px solid #bcbdb8; border-radius:16px 5px; background:linear-gradient(135deg,#172a44dc,#1b314ed9,#0c192dee); box-shadow:inset 0 0 0 3px #c2c5bf24,0 0 13px #b6d6ff22; color:#fff0cf; font-size:22px; letter-spacing:.14em; }
+.gem-polish__pad span { display:grid; justify-items:center; gap:0; }
+.gem-polish__pad small { font:8px Georgia,serif; letter-spacing:.4em; }
+.gem-polish__stones { display:flex; overflow:auto; gap:7px; margin:3px 12px; scrollbar-width:thin; }
+.gem-polish__stones .button { flex:0 0 112px; min-width:112px; padding:3px; display:flex; gap:4px; border:1px solid #aea891; border-radius:4px 10px; background:#132131d1; color:#eee6d4; font-size:10px; }
+.gem-polish__stones .button.is-selected { border-color:#f4dda0; box-shadow:inset 0 0 8px #e4cc8f55; }
+.gem-polish__stones img { width:35px; height:43px; object-fit:cover; object-position:50% 42%; border-radius:6px; }
+.gem-polish__stones span { min-width:0; }
+.gem-polish__stones small { display:block; font-size:8px; opacity:.8; }
+.gem-polish__secret { display:flex; align-items:center; justify-content:center; gap:7px; font-size:11px; color:#c3beaf; }
+.gem-polish .hub-navigation { margin:0; padding-bottom:env(safe-area-inset-bottom,4px); background:linear-gradient(#1c2735,#0d1725); border-color:#b8ad8a; }
+.gem-polish .hub-navigation .button { background:transparent; color:#adb8c4; border:0; box-shadow:none; }
+.gem-polish .hub-navigation .button--primary { color:#f1d49b; }
+.gem-polish__empty,.gem-polish__reveal { position:relative; z-index:2; margin:15px; padding:18px; text-align:center; background:#111e30ed; border:1px solid #c9b888; border-radius:9px; }
+.gem-polish__empty p,.gem-polish__reveal p { font-size:11px; margin:10px 0; line-height:1.7; }
+.gem-polish__reveal h3 { font-size:18px; margin-top:6px; }
+.gem-polish__reveal > svg { color:#f1d9a4; }
+@media(min-height:880px) { .gem-polish { min-height:100dvh; grid-template-rows:54px 40px 75px minmax(300px,1fr) 76px 120px 86px 30px 64px; } }
+@media(prefers-reduced-motion:reduce) { .gem-polish * { transition:none!important; } }
+
+:root .gem-polish .button.gem-polish__pad { border:1px solid #d2c7a9; border-radius:28px 7px; color:#fff1ce; background:radial-gradient(ellipse at 30% 20%,#4e638f70,transparent 65%),linear-gradient(135deg,#14233c,#233b60 52%,#0c1629); box-shadow:inset 0 0 0 3px #c7c9bd35,inset 0 0 20px #799bde25,0 0 12px #b6c8e42b; }
+:root .gem-polish .hub-navigation > .button { border:0; border-radius:0; background:transparent; box-shadow:none; }
+:root .gem-polish .hub-navigation > .button--primary { color:#f0d49d; background:radial-gradient(ellipse at bottom,#d5b15c25,transparent 75%); }
