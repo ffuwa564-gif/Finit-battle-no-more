@@ -1,4 +1,4 @@
-import worldStory from './world-story.json';
+import worldStory from './world-story.json' with { type: 'json' };
 import { worldStorySupportingSpeakers } from '../domain/world-story';
 import { zakuroEpilogue } from './zakuro';
 import { lateChapterBridge, lateChapterReturns } from './late-chapters';

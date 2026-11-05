@@ -329,9 +329,12 @@ export async function persistSave(save: GameSave, expectedRevision?: number, opt
 export function isLegacySaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return value.schemaVersion === 1 && value.appVersion === '0.1.0' && value.contentVersion === 'initial-r1' && value.rulesVersion === '1';
 }
-/** Presentation-only releases preserve 1.10–1.12 combat and farming snapshots. */
+/** Compatible releases preserve combat, farming and story snapshots. */
 export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
-  return value.schemaVersion === RELEASE.schemaVersion && ['1.10.0', '1.11.0', '1.12.0', '1.13.0'].includes(value.appVersion) && value.contentVersion === 'v1.10-r1' && value.rulesVersion === '2';
+  return value.schemaVersion === RELEASE.schemaVersion && (
+    (['1.10.0', '1.11.0', '1.12.0', '1.13.0'].includes(value.appVersion) && value.contentVersion === 'v1.10-r1' && value.rulesVersion === '2') ||
+    (value.appVersion === '1.20.0' && value.contentVersion === 'v1.20-r1' && value.rulesVersion === '3')
+  );
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
   return isLegacySaveVersion(value) || isPortraitHotfixSaveVersion(value);

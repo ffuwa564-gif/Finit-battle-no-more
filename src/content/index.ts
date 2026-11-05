@@ -1,4 +1,4 @@
-import worldStoryData from './world-story.json';
+import worldStoryData from './world-story.json' with { type: 'json' };
 import type { WorldStoryDefinition } from '../domain/world-story';
 import { withFieldResearch } from './field-research';
 import { mapStories } from './map-stories';
