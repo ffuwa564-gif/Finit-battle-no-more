@@ -18,7 +18,7 @@ def gray_frames(path):
  return np.frombuffer(raw,np.uint8).reshape(-1,80,45)
 def main():
  reports=[]
- for ident in sys.argv[1:]or['reference','sakuya']:
+ for ident in sys.argv[1:]or['reference','lisette']:
   src=C/(ident+'.mov');metadata=C/(ident+'.json')
   original=src.with_suffix('.mov.tmporiginal');original_metadata=metadata.with_suffix('.json.tmporiginal')
   assert src.exists()and metadata.exists()
