@@ -757,12 +757,17 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       }
     } else if (action.template === 'dispel') {
       const target = action.targets[0]!;
+      const removedActiveEffect=(target.buffUntil??-1)>=battle.round||(target.regenUntil??-1)>=battle.round;
       if (memoryDef?.id === 'hollow-lantern') {
         const recipient = alive(battle.units, actor.side).sort((a,b) => b.attack - a.attack || byId(a,b))[0];
         if (recipient && (target.buffUntil ?? -1) >= battle.round) { recipient.buffUntil = Math.max(recipient.buffUntil ?? 0, target.buffUntil!); recipient.buffStrength = Math.max((before.find(u => u.uid === recipient.uid)?.buffUntil ?? -1) >= battle.round ? recipient.buffStrength ?? 10 : 0, resonantStrength(target.buffStrength ?? 10, memoryPower)); }
         if (recipient && (target.regenUntil ?? -1) >= battle.round) { recipient.regenUntil = Math.max(recipient.regenUntil ?? 0, target.regenUntil!); recipient.regenStrength = Math.max((before.find(u => u.uid === recipient.uid)?.regenUntil ?? -1) >= battle.round ? recipient.regenStrength ?? 10 : 0, resonantStrength(target.regenStrength ?? 10, memoryPower, 40)); }
       }
       delete target.buffUntil; delete target.buffStrength; delete target.regenUntil; delete target.regenStrength;
+      if(removedActiveEffect&&action.skill?.dispelStrikePercent){
+        const hit=damage(actor,target,action.skill.dispelStrikePercent,100,battle,true,content,false,false,false,potency,coordination,false,true);
+        emit(battle,{kind:'attack',actorId:actor.uid,targetIds:[hit.unit.uid],skillId:action.skill.id,amount:hit.amount,absorbed:hit.absorbed,text:`${name} — ${action.skill.name}・斬撃`,unitsAfter:clone(battle.units)});
+      }
       targetIds.push(target.uid);
     } else if (action.template === 'regen') {
       const target = action.targets[0]!; target.regenUntil = battle.round + 2; target.regenStrength = resonantStrength(action.skill!.strength, potency, 40); targetIds.push(target.uid);

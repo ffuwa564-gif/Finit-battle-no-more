@@ -1,0 +1,2 @@
+import{content}from'./policy.mts';
+const original=content.characters.find(c=>c.id==='lisette')!.skillOverrides;export type Mode='before'|'after';export function setMode(mode:Mode){if(!original?.['dispel-18']?.dispelStrikePercent)throw Error('Lisette research required');content.characters.find(c=>c.id==='lisette')!.skillOverrides=mode==='after'?original:undefined;}export function resetMode(){setMode('after');}
