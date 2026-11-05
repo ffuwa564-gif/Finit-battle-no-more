@@ -6,7 +6,31 @@ import {migrateSaveTo110}from'../src/platform/save-migration';
 import {isUpgradeableSaveVersion,assertSaveCompatibility}from'../src/platform/save';
 import {decodeBackup,encodeBackup}from'../src/platform/save-backup';
 const previousContent={...content,...content.legacyCombat,appVersion:'1.10.0',contentVersion:'v1.10-r1',rulesVersion:'2'};
-describe('1.20 legacy expedition upgrade',()=>{
+describe('1.21 compatible expedition upgrade',()=>{
+ it('preserves 1.20 inventory, active combat, travel and dialogue through migration and backup import',()=>{
+  const previousContent={...content,appVersion:'1.20.0',contentVersion:'v1.20-r1'};
+  let old=createInitialSave(previousContent,28113);
+  old=applyCommand(old,{type:'worldStoryBegin',profile:{name:'ミオ',voice:'soft',favorite:'flowers'},from:'beginning'},previousContent,{now:1000});
+  old=applyCommand(old,{type:'worldTravel',destinationId:content.worldStory!.nodes[0].hubId},previousContent,{now:1000});
+  old.gold=912;old.stones=43;old.settings.seVolume=.25;
+  old.battle=createBattle(previousContent,old.partyIds,old.leaderId,'silent-cathedral',0,42,'v120-upgrade');
+  const before=structuredClone(old),next=migrateSaveTo110(old,content);
+  expect(isUpgradeableSaveVersion(old)).toBe(true);
+  expect(next).toEqual({...before,battle:{...before.battle,contentVersion:content.contentVersion},appVersion:content.appVersion,contentVersion:content.contentVersion,rulesVersion:content.rulesVersion,revision:before.revision+1});
+  expect(old).toEqual(before);
+  expect(decodeBackup(encodeBackup(old,previousContent),content).save).toEqual(next);
+  expect(advanceReplay(next.battle!,content)).toEqual({...advanceReplay(old.battle!,previousContent),contentVersion:content.contentVersion});
+  let resumed=next.battle!,original=old.battle!;
+  while(resumed.phase==='playing')resumed=advanceReplay(resumed,content);
+  while(original.phase==='playing')original=advanceReplay(original,previousContent);
+  expect(resolveRound(resumed,content).battle).toEqual({...resolveRound(original,previousContent).battle,contentVersion:content.contentVersion});
+  // Keep a separate mid-conversation save: the exact line remains resumable.
+  old.battle=null;
+  old=applyCommand(old,{type:'worldTalk',nodeId:content.worldStory!.nodes[0].id},previousContent,{now:47000});
+  old=applyCommand(old,{type:'worldTalkNext'},previousContent);
+  expect(migrateSaveTo110(old,content).worldStory).toEqual(old.worldStory);
+  expect(isUpgradeableSaveVersion({...old,contentVersion:'v1.20-unknown'})).toBe(false);
+ });
  it.each(['1.10.0','1.11.0','1.12.0','1.13.0'])('preserves an entire %s exploration and progression, upgrading version metadata and revision',appVersion=>{
   const previousContent={...content,...content.legacyCombat,appVersion,contentVersion:'v1.10-r1',rulesVersion:'2'};
   const old=createInitialSave(previousContent,7586);

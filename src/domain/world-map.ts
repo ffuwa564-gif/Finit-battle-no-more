@@ -1,6 +1,6 @@
 import type { Content } from './types';
 export interface MapPosition { x: number; y: number }
-export interface WorldLocation extends MapPosition { id: string; sceneId?: string; characterId?: string; teaser?: string; dungeonId?: string; label: string; kind: 'cathedral' | 'cave' | 'tower' | 'forest' | 'story' | 'event' | 'trial'; region?: string; representative?: boolean; chapterNumber?: number; category?: 'campaign' | 'memory' | 'event' | 'trial' | 'story'; encounter?: boolean }
+export interface WorldLocation extends MapPosition { id: string; actorNodeId?: string; hubId?:string; sceneId?: string; characterId?: string; teaser?: string; dungeonId?: string; label: string; kind: 'cathedral' | 'cave' | 'tower' | 'forest' | 'story' | 'event' | 'trial'; region?: string; representative?: boolean; chapterNumber?: number; category?: 'campaign' | 'memory' | 'event' | 'trial' | 'story' | 'living'; encounter?: boolean }
 const regions: MapPosition[] = [{ x: .25, y: .39 }, { x: .73, y: .60 }, { x: .76, y: .43 }, { x: .24, y: .63 }, { x: .25, y: .22 }, { x: .67, y: .77 }, { x: .52, y: .16 }];
 export const WORLD_START: MapPosition = { x: .38, y: .72 };
 export function worldLocations(content: Content, completed: readonly string[]): WorldLocation[] {

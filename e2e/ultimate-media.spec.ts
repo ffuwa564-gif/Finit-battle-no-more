@@ -320,15 +320,17 @@ test('damage tint selects hurt party cards and omits healing and reduced motion'
   expect(report).toEqual({party:1,enemy:0,cleanup:0,healing:0,reduced:0});
 });
 
-test('Lunette lowers the actual music through her final echoes and restores the saved volume on skip',async({page})=>{
+test('Lunette lowers the actual music through her final echoes and restores the normal mix on skip',async({page})=>{
   await prepare(page,'lunette-awakened');
   const music=page.locator('audio[data-bgm="true"]');
   const saved=await page.evaluate(async()=>{const {loadSave}=await import('/src/platform/save.ts');return (await loadSave())!.settings.bgmVolume;});
   expect(saved).toBeGreaterThan(0);
-  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeLessThan(saved*.25);
+  // The approved BGM master mix is half the saved setting (see bgm.spec.ts).
+  const normalMix=saved*.5;
+  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeLessThan(normalMix*.25);
   await expect(page.locator('.ultimate-cinematic')).toHaveAttribute('data-stage','finish',{timeout:9000});
-  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeLessThan(saved*.10);
+  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeLessThan(normalMix*.10);
   await page.getByRole('button',{name:'次の演出へ',exact:true}).click();
-  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeCloseTo(saved,5);
+  await expect.poll(()=>music.evaluate((a:HTMLAudioElement)=>a.volume)).toBeCloseTo(normalMix,5);
   expect(await page.evaluate(async()=>{const {loadSave}=await import('/src/platform/save.ts');return (await loadSave())!.settings.bgmVolume;})).toBe(saved);
 });

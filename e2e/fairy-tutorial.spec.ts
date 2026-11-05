@@ -62,7 +62,12 @@ test('departure guidance is inside its modal and battle lessons neither start ro
   await expect(card(page)).toContainText('少しずつ、先の章へ');
   await card(page).getByRole('button', { name: '次へ', exact: true }).click();
   await expect(card(page)).toContainText('出発前に、ひと呼吸');
+  await page.clock.install();
   await page.locator('[data-guide="prepare"]').first().click();
+  await page.clock.fastForward(46000);
+  await expect(page.locator('.world-map__travel')).toHaveText('探索の準備');
+  await page.locator('.world-map__travel').click();
+  await page.clock.resume();
   const preparation = page.getByRole('dialog').filter({ has: page.locator('[data-guide="depart"]') });
   await expect(preparation.locator('.fairy-guide')).toContainText('お薬、持っていく？');
   expect((await stored(page)).battle).toBeNull();
@@ -94,7 +99,7 @@ test('English lessons fit small and large screens, and skipping leaves normal pl
   await card(page).getByRole('button', { name: 'Skip the Guide', exact: true }).click();
   await expect(card(page)).toHaveCount(0);
   await page.locator('[data-guide="home-dungeons"]').click();
-  await expect(page.getByRole('heading', { name: 'Dungeons', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /World Map.*STILLVEIL/ })).toBeVisible();
 });
 
 test('gacha advice highlights the real summon without spending stones or consuming the guarantee', async ({ page }) => {
@@ -120,7 +125,7 @@ test('blocked tutorial preferences cannot prevent normal play or skipping', asyn
   await card(page).getByRole('button', { name: '案内をスキップ', exact: true }).click();
   await expect(card(page)).toHaveCount(0);
   await page.locator('[data-guide="home-dungeons"]').click();
-  await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /世界地図.*STILLVEIL/ })).toBeVisible();
 });
 
 

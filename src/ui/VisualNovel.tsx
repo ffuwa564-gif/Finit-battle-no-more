@@ -1,14 +1,13 @@
-import { GameImage } from './GameMedia';
 import { useEffect, useRef, useState } from 'react';
 import { createGamePortal } from './GamePortal';
 import { ArrowLeft, ArrowRight, BookOpen, FastForward, X } from 'lucide-react';
 import type { GameCommand, GameSave, NovelSceneDef } from '../domain/types';
-import { assetPath, content } from '../content';
+import { content } from '../content';
 import { novelAvailable } from '../domain/novels';
 import { tr } from '../locales/i18n';
 import { Button, Modal, Panel } from './index';
 import './visual-novel.css';
-import { SceneAtmosphere } from './SceneAtmosphere';
+import { NovelStage } from './NovelStage';
 
 export function NovelLibrary({ save, busy, command }: { save: GameSave; busy: boolean; command: (c: GameCommand) => Promise<boolean> }) {
   const scenes = (content.novels ?? []).filter(scene => novelAvailable(scene, save));
@@ -21,13 +20,11 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
 }) {
   const page = scene.pages[pageIndex]!;
   const [phase, setPhase] = useState(reducedMotion ? 'reading' : 'entering');
-  const [backgrounds, setBackgrounds] = useState([page.backgroundId]);
   const [skip, setSkip] = useState(false), [log, setLog] = useState(false), [error, setError] = useState('');
   const root = useRef<HTMLElement>(null);
   const closing = useRef(false);
   const last = pageIndex + 1 === scene.pages.length;
   const blocked = busy || phase !== 'reading';
-  useEffect(() => { if (backgrounds.at(-1) !== page.backgroundId) setBackgrounds(old => [...old.slice(-1), page.backgroundId]); }, [page.backgroundId, backgrounds]);
   useEffect(() => {
     const timer = setTimeout(() => setPhase('reading'), reducedMotion ? 0 : 650);
     const oldFocus = document.activeElement as HTMLElement | null;
@@ -62,18 +59,14 @@ export function VisualNovel({ scene, pageIndex, reducedMotion, busy, onNext, onB
     document.addEventListener('keydown', keys); return () => document.removeEventListener('keydown', keys);
   }, [skip, log, blocked, last, onNext, onFinish]);
   return createGamePortal(<>
-    <section ref={root} className={`visual-novel visual-novel--${phase}${reducedMotion ? ' visual-novel--reduced' : ''}`} role="dialog" aria-modal="true" aria-labelledby="novel-title" tabIndex={-1} data-scene={scene.id} data-page={pageIndex}>
-      <div className="novel-backgrounds" aria-hidden="true">{backgrounds.map(id => <GameImage key={id} src={assetPath(id)} alt="" style={{ objectPosition: content.assets.find(asset => asset.id === id)?.anchor ?? '50% 50%' }} className={id === page.backgroundId ? 'is-current' : ''} />)}</div>
-      <div className={`novel-shade novel-shade--${page.shade ?? 'normal'}`} aria-hidden="true" />
-      {page.shade !== 'black' && <SceneAtmosphere mode={page.shade === 'dark' ? 'memory' : 'quiet'} reducedMotion={reducedMotion} />}
-      <header className="novel-header"><div><span>{scene.mapEncounter ? tr('地図で見つけた物語') : 'STILLVEIL · STORY'}</span><h1 id="novel-title">{tr(scene.title)}</h1></div><div className="novel-toolbar"><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setLog(true)}><BookOpen size={15} />{tr('会話ログ')}</Button><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setSkip(true)}><FastForward size={15} />{tr('物語をスキップ')}</Button></div></header>
+    <NovelStage rootRef={root} title={tr(scene.title)} titleId="novel-title" sceneId={scene.id} pageIndex={pageIndex} backgroundId={page.backgroundId} shade={page.shade} phase={phase} reducedMotion={reducedMotion} eyebrow={scene.mapEncounter ? tr('地図で見つけた物語') : 'STILLVEIL · STORY'} toolbar={<><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setLog(true)}><BookOpen size={15} />{tr('会話ログ')}</Button><Button variant="secondary" size="sm" disabled={blocked} onClick={() => setSkip(true)}><FastForward size={15} />{tr('物語をスキップ')}</Button></>}>
       <div className="novel-message">
         <div className="novel-speaker" aria-live="polite">{tr(page.speaker ?? '語り')}</div>
         <Button className="novel-dialogue" sound={false} disabled={blocked} onClick={advance} aria-label={tr('台詞を進める')} aria-describedby="novel-text"><span id="novel-text" className="novel-text" key={`${scene.id}:${pageIndex}`} aria-live="polite">{tr(page.text)}</span><span className="novel-cursor" aria-hidden="true">◇</span></Button>
         {error && <p role="alert">{tr(error)}</p>}
         <footer className="novel-footer"><Button variant="secondary" size="sm" disabled={blocked || pageIndex === 0} onClick={() => { void move(true); }}><ArrowLeft size={15} />{tr('前の台詞')}</Button><span>{pageIndex + 1} / {scene.pages.length}</span><Button size="sm" disabled={blocked} onClick={advance}>{tr(last ? scene.mapEncounter ? '地図へ戻る' : '物語を閉じる' : '次の台詞')}<ArrowRight size={15} /></Button></footer>
       </div>
-    </section>
+    </NovelStage>
     <Modal className="novel-confirm" open={skip} title={tr('この物語をスキップしますか？')} onClose={() => setSkip(false)}><p>{tr('スキップした物語は、設定の「物語の記録」から読み返せます。')}</p><div className="toolbar"><Button disabled={blocked} onClick={() => { void finish(); }}>{tr('スキップして進む')}</Button><Button variant="secondary" onClick={() => setSkip(false)}>{tr('読み続ける')}</Button></div></Modal>
     <Modal className="novel-log" open={log} title={tr('会話ログ')} onClose={() => setLog(false)}><div className="novel-log__entries">{scene.pages.slice(0, pageIndex + 1).map((entry, index) => <article key={index}><strong>{tr(entry.speaker ?? '語り')}</strong><p>{tr(entry.text)}</p></article>)}</div><Button onClick={() => setLog(false)}><X size={15} />{tr('物語に戻る')}</Button></Modal>
   </>, document.body);

@@ -1,3 +1,5 @@
+import worldStoryData from './world-story.json' with { type: 'json' };
+import type { WorldStoryDefinition } from '../domain/world-story';
 import { withFieldResearch } from './field-research';
 import { mapStories } from './map-stories';
 import { scoutMaidenCharacters, scoutMaidenSkills, scoutMaidenAssets, scoutMaidenMaterials } from './scout-maidens';
@@ -320,7 +322,7 @@ export const tikkaResearchContent: Content={...releasedContent,...TIKKA_RESEARCH
 export const noelleResearchContent: Content={...releasedContent,...NOELLE_RESEARCH_RELEASE,commandRules:{respectReadyResources:true}};
 export const lisetteResearchContent: Content={...releasedContent,...LISETTE_RESEARCH_RELEASE,characters:releasedContent.characters.map(character=>character.id==='lisette'?{...character,skillOverrides:{'dispel-18':{name:'弔鐘の返し刃',description:'敵1体の攻撃強化と再生を解除。実際に有効な効果を1つ以上解除した時だけ、同じ対象へ攻撃力100%を基準に防御・かばう・障壁を適用する斬撃を1回。2効果を解除しても1回のみ。追加行動・再発動・追加の必殺ゲージは生まない。通常の1行動と再使用3ラウンドを使う。',dispelStrikePercent:100}}}:character)};
 /** Adopted research improvements now coexist in the normal 1.20 game. */
-export const adoptedContent: Content = { ...releasedContent, legacyCombat: { characters: releasedContent.characters, skills: releasedContent.skills }, commandRules: { respectReadyResources: true }, characters: releasedContent.characters.map(character => {
+export const adoptedContent: Content = { ...releasedContent, worldStory: worldStoryData as unknown as WorldStoryDefinition, legacyCombat: { characters: releasedContent.characters, skills: releasedContent.skills }, commandRules: { respectReadyResources: true }, characters: releasedContent.characters.map(character => {
   const candidate = [researchContent, mietteResearchContent, tikkaResearchContent, lisetteResearchContent].map(c => c.characters.find(other => other.id === character.id)!).find(other => other.skillOverrides);
   return candidate ?? character;
 }) };
