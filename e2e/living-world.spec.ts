@@ -1,7 +1,28 @@
 import { test, expect } from '@playwright/test';
 import { enterGame } from './boot';
-async function start(page: import('@playwright/test').Page, name = 'ミオ') { await page.goto('/#dungeons'); await enterGame(page); await page.getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0); }
-async function finish(page: import('@playwright/test').Page) { const modal = page.locator('.world-conversation'); for (let i = 0; i < 15 && await modal.count(); i++) {
+async function start(page: import('@playwright/test').Page, name = 'ミオ', afterIntroduction = true) { await page.goto('/#dungeons'); await enterGame(page); await page.getByRole('button', { name: /少女たちと旅を始める/ }).click(); const form = page.getByRole('dialog', { name: '主人公の設定' }); await form.getByRole('textbox', { name: '名前', exact: true }).fill(name); await form.getByRole('combobox', { name: '話し方' }).selectOption('honest'); await form.getByRole('button', { name: '今の旅から始める' }).click(); await expect(form).toHaveCount(0);
+    // Existing regressions begin at the first job; the introduction has its own real-UI traversal below.
+    if (afterIntroduction) {
+        await page.evaluate(async () => {
+            const { content } = await import('/src/content/index.ts');
+            const { applyCommand } = await import('/src/application/game.ts');
+            const { nodeLines } = await import('/src/domain/world-story.ts');
+            const { loadSave, persistSave } = await import('/src/platform/save.ts');
+            let s = (await loadSave())!; const revision = s.revision;
+            for (const id of ['c1-hill', 'c1-offerings', 'c1-generation', 'c1-garden-rounds', 'c1-garden-night']) {
+                const n = content.worldStory!.nodes.find(n => n.id === id)!;
+                s = applyCommand(s, { type: 'worldTravel', destinationId: n.hubId }, content, { now: 1000 });
+                s = applyCommand(s, { type: 'worldTalk', nodeId: id }, content, { now: 47000 });
+                while (s.worldStory!.active!.line < nodeLines(n, s.worldStory!).length - 1)
+                    s = applyCommand(s, { type: 'worldTalkNext' }, content);
+                s = applyCommand(s, { type: 'worldTalkFinish' }, content);
+            }
+            s.revision = revision + 1; await persistSave(s, revision);
+        });
+        await page.reload(); await enterGame(page);
+    }
+}
+async function finish(page: import('@playwright/test').Page) { const modal = page.locator('.world-conversation'); for (let i = 0; i < 30 && await modal.count(); i++) {
     const done = modal.getByRole('button', { name: '地図へ戻る', exact: true });
     if (await done.count()) {
         await done.click();
@@ -112,7 +133,7 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
         let s = (await loadSave())!;
         const revision = s.revision;
         s.completedDungeonIds = content.chapters![0].dungeonIds;
-        s.worldStory!.completed = ['c1-job', 'c1-chart', 'c1-wolf', 'c1-flowers', 'c1-care'];
+        s.worldStory!.completed.push('c1-job', 'c1-chart', 'c1-wolf', 'c1-flowers', 'c1-care');
         s.worldStory!.notified = ['sanctuary-silence'];
         s = applyCommand(s, { type: 'worldTravel', destinationId: 'hub-garden' }, content, { now: 1000 });
         s = applyCommand(s, { type: 'worldTalk', nodeId: 'c1-oath' }, content, { now: 47000 });
@@ -138,4 +159,55 @@ test('Liora offers an unbidden oath, then rests in the garden woman’s arms bef
     expect(s.worldStory!.completed).toContain('c1-held');
     expect(s.worldStory!.completed).not.toContain('c1-return');
     await expect(page.locator('.world-story-objective')).toContainText('朝、寝台を訪ねる');
+});
+
+test('chapter one begins with the tower, offerings, a birth, and the garden keeper’s private night', async ({ page }, info) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await start(page, 'ミオ', false);
+    await page.clock.install();
+    const readScene = async (id: string) => {
+        await page.locator('.world-story-objective__main').click();
+        const travel = page.getByRole('button', { name: '自動移動', exact: true });
+        if (await travel.count()) {
+            await travel.click();
+            await page.clock.fastForward(46000);
+        }
+        await page.getByRole('button', { name: '声をかける', exact: true }).click();
+        const modal = page.locator('.world-conversation');
+        await expect(modal.locator('.world-conversation__line')).toHaveAttribute('data-world-node', id);
+        const lines: string[] = [];
+        for (let i = 0; i < 30; i++) {
+            await expect(modal.locator('.world-conversation__line')).toHaveAttribute('data-world-line', String(i));
+            lines.push(await modal.locator('.world-conversation__line').innerText());
+            const done = modal.getByRole('button', { name: '地図へ戻る', exact: true });
+            if (await done.count()) {
+                if (id === 'c1-garden-night') await page.screenshot({ path: info.outputPath('garden-night.png') });
+                await done.click(); await expect(modal).toHaveCount(0);
+                return lines.join('\n');
+            }
+            await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
+        }
+        throw Error('Introduction scene did not finish: ' + id);
+    };
+    const hill = await readScene('c1-hill');
+    expect(hill).toContain('ミオ');
+    expect(hill).toContain('白亜の塔');
+    expect(hill).toContain('女の子しかいない');
+    const offerings = await readScene('c1-offerings');
+    expect(offerings).toContain('宝石を集める少女');
+    expect(offerings).toContain('擦りむいた指');
+    const birth = await readScene('c1-generation');
+    expect(birth).toContain('生まれてくれて、ありがとう');
+    expect(birth).toContain('三人は手をつないだ');
+    expect(birth).toContain('欲望の扉');
+    const rounds = await readScene('c1-garden-rounds');
+    expect(rounds).toContain('今日は、こんなにお花を集めたんだね');
+    const night = await readScene('c1-garden-night');
+    expect(night).toContain('別の庭園の管理者');
+    expect(night).toContain('かわいそうなひと');
+    expect(night).toContain('自分が誰よりも愛されている');
+    await expect(page.locator('.world-story-objective')).toContainText('初仕事の話をしよう');
+    const save = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
+    expect(save.gold).toBe(100); expect(save.stones).toBe(0);
+    expect(save.worldStory!.completed).not.toContain('c1-job');
 });

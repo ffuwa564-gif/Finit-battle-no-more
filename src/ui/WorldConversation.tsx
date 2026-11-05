@@ -1,7 +1,7 @@
 import { BookOpen, MessageCircle, UserRound } from 'lucide-react';
 import { assetPath } from '../content';
 import { getLanguage, tr, useLanguage } from '../locales/i18n';
-import { nodeLines, storyText } from '../domain/world-story';
+import { nodeLines, storyText, worldStorySupportingSpeakers } from '../domain/world-story';
 import type { Content, GameSave, GameCommand } from '../domain/types';
 import { Button, GameImage, Modal, PortraitArt } from './index';
 import './world-story.css';
@@ -15,7 +15,7 @@ export function WorldConversation({ save, content, busy, command }: {
     const s = save.worldStory, a = s?.active, node = content.worldStory?.nodes.find(n => n.id === a?.nodeId);
     if (!s || !a || !node)
         return null;
-    const speakerName = (id: string) => id === 'hero' ? s.profile.name : tr(content.characters.find(c => c.id === id)?.name ?? (id === 'garden-woman' ? '庭園の女' : id === 'guest' ? '旅の少女' : '語り'));
+    const speakerName = (id: string) => id === 'hero' ? s.profile.name : tr(content.characters.find(c => c.id === id)?.name ?? worldStorySupportingSpeakers[id] ?? '語り');
     const lines = nodeLines(node, s), line = lines[a.line], speaker = speakerName(line.speaker);
     const current = line.speaker === 'hero' ? line.voices?.[s.profile.voice] ?? line.favorites?.[s.profile.favorite] ?? line.text : line.favorites?.[s.profile.favorite] ?? line.text;
     const text = (v: Parameters<typeof storyText>[0]) => storyText(v, s.profile, getLanguage());

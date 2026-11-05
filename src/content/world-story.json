@@ -90,6 +90,24 @@
       },
       "x": 0.53,
       "y": 0.65
+    },
+    {
+      "id": "hub-overlook",
+      "name": {
+        "ja": "塔を望む丘",
+        "en": "Tower Overlook"
+      },
+      "x": 0.48,
+      "y": 0.34
+    },
+    {
+      "id": "hub-birth-garden",
+      "name": {
+        "ja": "個体生成の庭",
+        "en": "Garden of Creation"
+      },
+      "x": 0.6,
+      "y": 0.26
     }
   ],
   "chapters": [
@@ -97,8 +115,8 @@
       "number": 1,
       "chapterId": "mistbound-sanctuary",
       "objective": {
-        "ja": "聖域の道を調べる",
-        "en": "Survey the sanctuary paths"
+        "ja": "リオラと世界を見て、街で最初の仕事を受ける",
+        "en": "See the world with Liora and take your first job in town"
       },
       "endingNodeId": "c1-return",
       "gates": {
@@ -328,6 +346,545 @@
   ],
   "nodes": [
     {
+      "id": "c1-hill",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-overlook",
+      "title": {
+        "ja": "丘から見える世界",
+        "en": "The World from the Hill"
+      },
+      "bubble": {
+        "ja": "白亜の塔を見よう",
+        "en": "Come and see the Ivory Tower"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "{name}、こっちだ。丘の上まで来てみろ。",
+            "en": "{name}, this way. Come up to the top of the hill."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……きれいだね。",
+            "en": "...It is beautiful."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "屋根の連なりの向こうに、白亜の塔がそびえていた。薄い雲が壁を横切り、その白さがゆっくりと変わっていく。",
+            "en": "Beyond the clustered rooftops rose the Ivory Tower. Thin clouds passed before its walls, slowly changing the shade of white."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "白亜の塔だ。道に迷ったら、あれを探せ。",
+            "en": "The Ivory Tower. If you lose your way, look for it."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "丘の下では、少女が荷車を押していた。店先で呼び込みをするのも、手を振って応えるのも、みんな少女だった。",
+            "en": "Below us, a girl pushed a handcart. A girl called from a shopfront, and another waved back. Everywhere I looked, there were only girls."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "この世界には、女の子しかいないんだね。",
+            "en": "There are only girls in this world, then."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ああ。あの街にも、私たちがこれから行く先にも。",
+            "en": "Yes. In that city, and wherever we go beyond it."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……そっか。",
+            "en": "...I see."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "街へ下りよう。見せたい場所がある。",
+            "en": "Let us go down into town. There are places I want you to see."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-offerings",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-square",
+      "title": {
+        "ja": "あの子に会うために",
+        "en": "To See Her Again"
+      },
+      "bubble": {
+        "ja": "あの広場へ寄っていこう",
+        "en": "Let us stop by the square"
+      },
+      "requiresNodes": [
+        "c1-hill"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "広場の水場で、少女たちが泥を洗い流していた。擦りむいた指で、小さな宝石を数えている。",
+            "en": "At the fountain, girls were washing off mud. They counted small gemstones with scraped fingers."
+          }
+        },
+        {
+          "speaker": "admirer",
+          "text": {
+            "ja": "あと二つ。もう一度潜れば、今日のうちに渡せる。",
+            "en": "Two more. One more trip down, and I can give them to her today."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "その手、痛くない？",
+            "en": "Does your hand hurt?"
+          }
+        },
+        {
+          "speaker": "admirer",
+          "text": {
+            "ja": "平気。ほら、あの子、もう来てるから。",
+            "en": "I am fine. Look, she is already here."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "少女の指した先には、人だかりができていた。真ん中の少女へ、宝石を包んだ布が次々と差し出される。",
+            "en": "A crowd had gathered where she pointed. One cloth bundle of gemstones after another was offered to the girl at its center."
+          }
+        },
+        {
+          "speaker": "beloved",
+          "text": {
+            "ja": "また来てくれたんだ。ありがとう。今日は、名前を聞いてもいい？",
+            "en": "You came back. Thank you. May I ask your name today?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "呼ばれた少女は宝石を渡し、両手を握ってもらった。その次の少女は、順番を待ちながら髪を何度も直していた。",
+            "en": "The girl stepped forward with her stones, and the girl at the center took both her hands. The next girl kept smoothing her hair as she waited."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "みんな、あの子にあげるために集めてるの？",
+            "en": "They are all collecting them to give to her?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "人気があるんだ。遠くの採掘場まで通う者もいる。",
+            "en": "She is well loved. Some travel to distant mines for her."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "さっきの少女は、もう荷袋を背負い直していた。もう一度、あの子に会うために。私は呼び止めかけて、手を下ろした。",
+            "en": "The girl with the scraped hands had already shouldered her bag again. She was going back so she could see her once more. I almost called out, then lowered my hand."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-generation",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-birth-garden",
+      "title": {
+        "ja": "三人で帰る家",
+        "en": "A Home for Three"
+      },
+      "bubble": {
+        "ja": "個体生成の庭を見ていこう",
+        "en": "Come and see the Garden of Creation"
+      },
+      "requiresNodes": [
+        "c1-offerings"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "庭の入口には、二人ずつ並ぶ少女たちがいた。肩を寄せ、宝石の入った箱を一緒に抱えている。",
+            "en": "Girls stood in pairs at the garden entrance, leaning close and holding boxes of gemstones together."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ここでも、誰かに渡すの？",
+            "en": "Are they giving them to someone here, too?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ここは個体生成の庭だ。あの二人は、恋人同士だろう。",
+            "en": "This is a garden where new individuals are created. Those two are lovers, I would say."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "恋人たちは鉢へ宝石を捧げ、手をつないだ。光が二人の足元から伸び、花の間に少女の姿が現れる。",
+            "en": "The lovers offered their gemstones into a basin and joined hands. Light rose from their feet, and a girl appeared among the flowers."
+          }
+        },
+        {
+          "speaker": "lover-one",
+          "text": {
+            "ja": "……生まれてくれて、ありがとう。",
+            "en": "...Thank you for being born."
+          }
+        },
+        {
+          "speaker": "lover-two",
+          "text": {
+            "ja": "会いたかったよ。手、つないでもいい？",
+            "en": "We have wanted to meet you. May we hold your hands?"
+          }
+        },
+        {
+          "speaker": "new-girl",
+          "text": {
+            "ja": "うん。……おうちって、どっち？",
+            "en": "Yes. ...Which way is home?"
+          }
+        },
+        {
+          "speaker": "lover-one",
+          "text": {
+            "ja": "あっち。ゆっくり行こう。",
+            "en": "That way. We can take our time."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "生まれた少女を真ん中にして、三人は手をつないだ。門の段差を越えるところで、二人が同時に振り向いた。",
+            "en": "With the new girl between them, the three joined hands. At the step by the gate, both lovers turned to help her at once."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "美しいな……この世界は。",
+            "en": "Beautiful... This world is beautiful."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私は口元だけで笑った。うなずこうとしたとき、欲望の扉の前で、少女が別の少女の腕を掴んだ光景がよぎった。",
+            "en": "I managed a smile. As I tried to nod, I saw again the girl seizing another girl by the arm before the Door of Desire."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "あの三人は、もう笑いながら歩いていた。本当に、この子たちは幸せに生きていけるのだろうか。",
+            "en": "The three were already walking away, laughing. Could these girls really go on living happily?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "どうした。疲れたか。",
+            "en": "What is it? Are you tired?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……少し。もうちょっと、ここにいてもいい？",
+            "en": "...A little. Could we stay here a moment longer?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ああ。そこの椅子に座ろう。",
+            "en": "Of course. Let us sit over there."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-garden-rounds",
+      "chapter": 1,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "title": {
+        "ja": "ひとりずつの名前",
+        "en": "Each Girl in Turn"
+      },
+      "bubble": {
+        "ja": "庭を一緒に歩きましょう",
+        "en": "Walk around the garden with me"
+      },
+      "requiresNodes": [
+        "c1-generation"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "庭へ戻ると、女は花壇のそばにしゃがんでいた。少女の籠をのぞき、一本ずつ花を見せてもらっている。",
+            "en": "Back in the garden, the woman was crouching beside a flowerbed. A girl showed her the flowers in her basket, one at a time."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今日は、こんなにお花を集めたんだね。すごいわね。",
+            "en": "You gathered so many flowers today. Well done."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "こっちは、まだつぼみなの。お部屋に置いてもいい？",
+            "en": "These are still buds. Can I put them in your room?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。開いたら、一緒に見ましょう。",
+            "en": "Of course. When they open, we can look at them together."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女は次の少女にも声をかけた。昼に食べたものを聞き、ほどけた髪紐を結び直す。その次の少女は、直したばかりの椅子を見せた。",
+            "en": "She went to the next girl, asked what she had eaten for lunch, and retied her loose hair ribbon. Another girl showed her a chair she had just repaired."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "座ってみてもいい？ ……本当だ、もう揺れないわ。",
+            "en": "May I sit on it? ...You are right. It does not wobble anymore."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "あなたが座るところだから、ちゃんと直したかったの。",
+            "en": "It is your chair. I wanted to fix it properly."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "一人が話し終えるまで、女は足を止めて聞いていた。庭の端で黙っていた少女にも、自分から会いに行く。",
+            "en": "She stayed with each girl until she had finished speaking. She even went over to the girl sitting quietly at the edge of the garden."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "みんなと、こうやって話してるんだね。",
+            "en": "You talk to everyone like this."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。あなたは、今日どんなものを見てきたの？",
+            "en": "Yes. And what did you see today?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "塔と、広場。それから、三人で帰っていくところを。",
+            "en": "The tower, and the square. And three girls going home together."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "そう。あとで、ゆっくり聞かせてちょうだい。夜は私の部屋へいらっしゃい。",
+            "en": "I see. Tell me about it later, when we have time. Come to my room tonight."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-garden-night",
+      "chapter": 1,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "title": {
+        "ja": "庭園の夜",
+        "en": "A Night in the Garden"
+      },
+      "bubble": {
+        "ja": "夜は、私の部屋へ",
+        "en": "Come to my room tonight"
+      },
+      "requiresNodes": [
+        "c1-garden-rounds"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "夜、女の部屋には少女たちが集まった。花を飾る子、寝台へ枕を運ぶ子。昼に見せていた籠は、窓辺に置かれていた。",
+            "en": "That night, girls gathered in the woman's room. One arranged flowers; another carried pillows to the bed. The basket from that afternoon stood by the window."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "リオラも、こっち。そこに立ってたら、寒いよ。",
+            "en": "Liora, over here. You will get cold standing there."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私は、戸口にいれば……。",
+            "en": "I can stay by the door..."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今夜はもう、おしまい。盾を置いて、いらっしゃい。",
+            "en": "You are done for tonight. Put down your shield and come here."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラは壁に盾を預け、女の隣へ座った。袖を引いていた少女が、その肩へ掛布をかける。",
+            "en": "Liora rested her shield against the wall and sat beside the woman. The girl who had tugged her sleeve draped a blanket over her shoulders."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……みんな、おやすみ。",
+            "en": "...Good night, everyone."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "おやすみなさい。あなたの部屋にも、お花を置いておいたわ。",
+            "en": "Good night. I left some flowers in your room, too."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私は廊下へ出た。戸が閉まる直前、リオラが女の肩へ頭を寄せるのが見えた。",
+            "en": "I stepped into the corridor. Just before the door closed, I saw Liora lean her head against the woman's shoulder."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "――庭園の女の部屋。",
+            "en": "—The woman's room, in the garden."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女が横になると、少女たちがそばへ寄った。髪に触れる手も、掛布からはみ出した手も、女は順に握り返した。",
+            "en": "As the woman lay down, the girls drew close. She took their hands in turn, the ones touching her hair and the ones reaching out from under the blanket."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "明日も、庭に来てくれる？",
+            "en": "Will you come out into the garden tomorrow, too?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "もちろん。花が開いたか、一緒に見なくちゃ。",
+            "en": "Of course. We have to see whether the flowers have opened."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラも、ほかの少女たちも、今夜は自分のそばにいる。女は一人ずつ顔を見渡した。これほど大勢に慕われ、求められている者が、ほかにいるだろうか。",
+            "en": "Liora and all the other girls were beside her tonight. The woman looked at each face. Who else could be loved and needed by so many?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "自分が誰よりも愛されている。その思いが、とてつもなく心地よかった。女は微笑んだまま目を閉じ、少女たちに囲まれて幸せな夢へ落ちていった。",
+            "en": "She was loved more than anyone else. The thought gave her an overwhelming pleasure. Still smiling, she closed her eyes and slipped into happy dreams, surrounded by the girls."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "別の庭園では、一人の管理者が水鏡を見つめていた。眠る女と、その周りの少女たちを、しばらく黙って眺めている。",
+            "en": "In another garden, a keeper watched her water mirror. For a while she silently studied the sleeping woman and the girls around her."
+          }
+        },
+        {
+          "speaker": "garden-observer",
+          "text": {
+            "ja": "かわいそうなひと……。",
+            "en": "You poor thing..."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "その言葉は、眠る女には届かなかった。",
+            "en": "Her words did not reach the sleeping woman."
+          }
+        }
+      ]
+    },
+    {
       "id": "c1-job",
       "chapter": 1,
       "actorId": "liora",
@@ -340,7 +897,9 @@
         "ja": "初仕事の話をしよう",
         "en": "Our first job"
       },
-      "requiresNodes": [],
+      "requiresNodes": [
+        "c1-garden-night"
+      ],
       "requiresDungeons": [],
       "lines": [
         {

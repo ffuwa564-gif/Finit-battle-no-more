@@ -1,7 +1,17 @@
 import worldStory from './world-story.json';
+import { worldStorySupportingSpeakers } from '../domain/world-story';
 import { zakuroEpilogue } from './zakuro';
 import { lateChapterBridge, lateChapterReturns } from './late-chapters';
 import type { ChapterDef, DungeonDef, NovelSceneDef } from '../domain/types';
+
+/** Shared authored scenes; appending leaves existing saved page offsets unchanged. */
+function worldStoryPages(ids: string[]): NovelSceneDef['pages'] {
+  return ids.flatMap(id => worldStory.nodes.find(node => node.id === id)!.lines.map(line => ({
+    backgroundId: 'novel-awakening-garden',
+    ...(line.speaker === 'narration' ? {} : { speaker: line.speaker === 'hero' ? '私' : worldStorySupportingSpeakers[line.speaker] ?? 'リオラ' }),
+    text: line.text.ja,
+  })));
+}
 
 export const openingNovel: NovelSceneDef = {
   id: 'opening-desire-gate', title: '序章 ― 欲望の扉、その向こう', trigger: { kind: 'opening' },
@@ -86,11 +96,7 @@ const chapterReturns: Record<number, NovelSceneDef['pages']> = {
       "text": "手帳には、初仕事を終えたと書いた。\n鉢を抱え直すと、リオラが黙って荷紐を締めてくれた。明日も同じ道を歩くことだけは、もう決まっていた。"
     },
     // Append only: existing chapter-1 page offsets remain valid in older saves.
-    ...['c1-oath', 'c1-held'].flatMap(id => worldStory.nodes.find(node => node.id === id)!.lines.map(line => ({
-      backgroundId: 'novel-awakening-garden',
-      ...(line.speaker === 'narration' ? {} : { speaker: line.speaker === 'hero' ? '私' : line.speaker === 'garden-woman' ? '庭園の女' : 'リオラ' }),
-      text: line.text.ja,
-    }))),
+    ...worldStoryPages(['c1-oath', 'c1-held']),
   ],
   "2": [
     {

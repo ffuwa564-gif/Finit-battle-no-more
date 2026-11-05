@@ -1,4 +1,4 @@
-import { storyActors } from '../domain/world-story';
+import { storyActors, worldStorySupportingSpeakers } from '../domain/world-story';
 import { useState } from 'react';
 import { BookOpen, Check, ChevronRight, LockKeyhole, MapPin } from 'lucide-react';
 import type { Content, GameSave } from '../domain/types';
@@ -17,7 +17,7 @@ export function WorldMapIndex({ content, save, places, onChoose, onOpen }: { con
    <Button selected={tab==='journey'} variant="secondary" onClick={()=>setTab('journey')}>{tr('章の旅路')}</Button><Button selected={tab==='story'} variant="secondary" onClick={()=>setTab('story')}>{tr('物語')}</Button><Button selected={tab==='side'} variant="secondary" onClick={()=>setTab('side')}>{tr('追憶と寄り道')}</Button>
    {save.worldStory&&<Button selected={tab==='people'} variant="secondary" onClick={()=>setTab('people')}>{tr('仲間')}</Button>}
   </div>
-  {tab==='people'&&content.worldStory&&storyActors(save,content.worldStory).map(a=><Button key={a.actorId} variant="secondary" onClick={()=>onChoose('actor:'+a.actorId)}>{tr(content.characters.find(c=>c.id===a.actorId)?.name??'旅の少女')}<ChevronRight size={14}/></Button>)}
+  {tab==='people'&&content.worldStory&&storyActors(save,content.worldStory).map(a=><Button key={a.actorId} variant="secondary" onClick={()=>onChoose('actor:'+a.actorId)}>{tr(content.characters.find(c=>c.id===a.actorId)?.name??worldStorySupportingSpeakers[a.actorId]??'旅の少女')}<ChevronRight size={14}/></Button>)}
   {tab==='journey'&&<><div className="world-index-chapters" role="group" aria-label={tr('地図の章')}>
    {content.chapters?.map(c=><Button key={c.id} variant="secondary" selected={c.id===chapterId} onClick={()=>setChapterId(c.id)}>{tr('第{0}章').replace('{0}',String(c.number))}<small>{tr(c.title)}</small></Button>)}
   </div>{chapter&&<section className="world-index-section"><h3>{tr(chapter.title)}</h3><p>{tr(chapter.subtitle)}</p><small>{chapter.dungeonIds.filter(id=>save.completedDungeonIds.includes(id)).length} / {chapter.dungeonIds.length}</small>{chapter.dungeonIds.flatMap(id=>places.filter(p=>p.dungeonId===id)).map(location)}</section>}</>}

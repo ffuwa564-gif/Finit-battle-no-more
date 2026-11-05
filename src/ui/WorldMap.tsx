@@ -1,7 +1,7 @@
 import { WorldStoryControls } from './WorldStoryControls';
 import { WorldStoryPeople } from './WorldStoryPeople';
 import { WorldStoryLandscape } from './WorldStoryLandscape';
-import { storyActors, storyNext, storyText } from '../domain/world-story';
+import { storyActors, storyNext, storyText, worldStorySupportingSpeakers } from '../domain/world-story';
 import { getLanguage } from '../locales/i18n';
 import { useMapCamera } from './useMapCamera';
 import { WorldMapIndex } from './WorldMapIndex';
@@ -24,7 +24,7 @@ export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBac
   const language=useLanguage();
   const actors=content.worldStory?storyActors(save,content.worldStory):[];
   const nextStory=content.worldStory?storyNext(save,content.worldStory):undefined;
-  const places = useMemo<WorldLocation[]>(() => [...worldLocations(content, save.completedDungeonIds),...(content.worldStory?storyActors(save,content.worldStory).map(a=>({id:'actor:'+a.actorId,actorNodeId:a.node.id,hubId:a.hub.id,characterId:a.actorId==='guest'?undefined:a.actorId,label:content.characters.find(c=>c.id===a.actorId)?.name??'旅の少女',kind:'story' as const,category:'living' as const,x:a.hub.x,y:a.hub.y,teaser:storyText(a.node.bubble,save.worldStory!.profile,getLanguage())})):[])], [content, save.completedDungeonIds,save.worldStory,language]);
+  const places = useMemo<WorldLocation[]>(() => [...worldLocations(content, save.completedDungeonIds),...(content.worldStory?storyActors(save,content.worldStory).map(a=>({id:'actor:'+a.actorId,actorNodeId:a.node.id,hubId:a.hub.id,characterId:content.characters.some(c=>c.id===a.actorId)?a.actorId:undefined,label:content.characters.find(c=>c.id===a.actorId)?.name??worldStorySupportingSpeakers[a.actorId]??'旅の少女',kind:'story' as const,category:'living' as const,x:a.hub.x,y:a.hub.y,teaser:storyText(a.node.bubble,save.worldStory!.profile,getLanguage())})):[])], [content, save.completedDungeonIds,save.worldStory,language]);
   const openingId=content.novels?.find(s=>s.trigger.kind==='opening')?.id;
   const unreadEncounter = places.find(p => p.encounter && !save.novels?.seen.includes(p.sceneId!)) ?? places.find(p => p.sceneId && p.sceneId!==openingId && !save.novels?.seen.includes(p.sceneId));
   const lastSeenScene = [...(save.novels?.seen ?? [])].reverse().map(id => content.novels?.find(s => s.id === id)).find(s => s?.mapEncounter);

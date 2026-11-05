@@ -4,6 +4,18 @@ export type StoryText = {
     ja: string;
     en: string;
 };
+/** Narrative-only speakers are distinct from recruitable party characters. */
+export const worldStorySupportingSpeakers: Record<string, string> = {
+    guest: '旅の少女',
+    'garden-woman': '庭園の女',
+    admirer: '宝石を集める少女',
+    beloved: '人気の少女',
+    'lover-one': '恋人の少女',
+    'lover-two': 'もう一人の恋人',
+    'new-girl': '生まれた少女',
+    'garden-girl': '庭園の少女',
+    'garden-observer': '別の庭園の管理者',
+};
 export type HeroVoice = 'soft' | 'honest' | 'dreamy';
 export type HeroFavorite = 'tea' | 'flowers' | 'animals';
 export interface HeroProfile {
