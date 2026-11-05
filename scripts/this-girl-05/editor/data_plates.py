@@ -4,7 +4,7 @@ ROOT=Path(__file__).resolve().parents[3];O=ROOT/'artifacts/this-girl-05';sys.pat
 from PIL import ImageDraw
 sha=v.sha
 def render_scene(spec,path):
- p=ROOT/spec['evidence'];assert sha(p)==spec['evidenceSha256'];a=json.load(open(p));assert a['passedDataValidation'] and a['adoption']['passed'];cases={c['id']:c for c in a['cases']};c=cases[spec['caseId']];s=c['summaries'];n=a['nPerCondition'];mode=spec['mode'];im=v.sheet(spec['title'],f'実測 · 確認用{n}入力 / 同じ予算で比較');d=ImageDraw.Draw(im)
+ p=ROOT/spec['evidence'];assert sha(p)==spec['evidenceSha256'];a=json.load(open(p));assert a['passedDataValidation'] and a['adoption']['passed'];cases={c['id']:c for c in a['cases']};c=cases[spec['caseId']];s=c['summaries'];n=a['nPerCondition'];mode=spec['mode'];im=v.sheet(spec['title'],f'実測 · {n}入力 / 同じ予算 / 失敗は120R換算');d=ImageDraw.Draw(im)
  def table(headers,rows):
   xs=[175,640,920,1190,1470]if len(headers)==5 else[175,740,1060,1400]
   for i,(x,t)in enumerate(zip(xs,headers)):v.text(d,(x,280),t,29,v.MUTED,True,width=430 if i==0 else 240,max_lines=1)

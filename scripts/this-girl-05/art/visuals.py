@@ -65,8 +65,9 @@ def desk_original():
 
 def desk(light=True):
  out=desk_original().copy()
- d=ImageDraw.Draw(out);d.rounded_rectangle((110,265,825,940),28,fill=PAPER,outline=EDGE,width=3)
- contain(out,ROOT/'public/art/lisette.png',(140,280,655,620),32)
+ if not light:
+  d=ImageDraw.Draw(out);d.rounded_rectangle((110,265,825,940),28,fill=PAPER,outline=EDGE,width=3)
+  contain(out,ROOT/'public/art/lisette.png',(140,280,655,620),32)
  if light:out.alpha_composite(Image.new('RGBA',(W,H),(255,250,242,70)))
  return out
 

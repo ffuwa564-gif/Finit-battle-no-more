@@ -21,8 +21,8 @@ add('elements','summary','変える技能。残す選択肢。',refs('elements',
 add('owned-scope','summary','全所持を仮定した、研究の実戦。',refs('battle',0,1),'実戦：白亜の塔 第4層',body=['未入手XRを含む仮想所持 / 四人にT4石 / 薬5。','通常の入手進行の案内ではありません。','同じ出発入力。実際の21ラウンドから抜粋。'])
 b=J['reference']['firstRemoval']['sourceFrame'];f=J['lisette']['firstStrike']['sourceFrame'];n=J['lisette']['firstPostStrike']['sourceFrame'];late=J['lisette']['lastStrike']['sourceFrame'];hud=[103,38,230,50]
 cut('battle-reference','reference',b-195,b+150,'まずは、改修前の解除。',['敵セリスの強化を解除。','次に止めて、一手の仕事を見ます。'])
-pause('pause-reference','reference',b+12,'まずは、解除だけの一手。',refs('battle',1,3),hud,['敵セリスの強化を解除。','この技能では、HPは減らない。','通常の行動を一回消費。'])
-add('party','party','同じ四人、同じ石と作戦へ。',refs('battle',3,4),members=[{'id':'lisette','subject':True,'job':'解除 → 斬り返し'},{'id':'seris-awakened','job':'攻撃と決着'},{'id':'athena','job':'リーダー・かばう'},{'id':'benzaiten','job':'回復'}],note='別々に選抜したB/Cが、主条件では同じ構成に収束。')
+pause('pause-reference','reference',b+12,'まずは、解除だけの一手。',refs('battle',1,3),hud,['敵セリスの強化を解除。','この技能でのHP損失は0。','通常の行動を一回消費。'])
+add('party','party','同じ四人、同じ石と作戦へ。',refs('battle',3,4),characters=[{'id':'lisette','subject':True,'role':'解除 → 斬り返し'},{'id':'seris-awakened','role':'攻撃と決着'},{'id':'athena','role':'かばう・障壁','leader':True},{'id':'benzaiten','role':'回復'}],note='別々に選抜したB/Cが、主条件では同じ構成に収束。')
 cut('battle-strike','lisette',f-200,f+150,'解除と斬撃。受ける相手は？',['解除の対象：敵セリス。','斬撃の被弾：石燐の幼竜。'])
 pause('pause-guard','lisette',f+12,'41ダメージは、かばった幼竜へ。',refs('battle',4,6),hud,['解除は、敵セリスへ。','斬撃は、かばう幼竜へ。','幼竜への実HP損失41。'],footnote='解除と被弾の相手は実イベントで照合。別の対象へ塗り替えていません。')
 pause('pause-action','lisette',n+12,'25 → 50。一手分だけ。',refs('battle',6,7),card(0),['本人の通常行動は、一回。','ゲージ25 → 50。','再使用待ちは通常の3R。'])
