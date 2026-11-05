@@ -99,6 +99,9 @@ test('a closed engine rebuilds its graph; returning never unmutes saved SE setti
   await prepare(page);
   await page.evaluate(async () => { await (window as any).seContext.close(); window.dispatchEvent(new Event('focus')); });
   await expect.poll(() => page.evaluate(() => { const w = window as any; return w.gameContext !== w.seContext && w.gameContext.state === 'running'; })).toBe(true);
+  // A running native context precedes Tone graph/PCM preparation. Await the
+  // public ready promise before measuring a deliberately requested test cue.
+  await page.evaluate(async () => { await (await import('/src/platform/audio.ts')).enableAudio(); });
   await page.evaluate(() => { const w = window as any; w.seContext = w.gameContext; });
   await audible(page);
   await page.getByRole('button', { name: '効果音をミュート', exact: true }).click();
