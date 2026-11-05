@@ -42,3 +42,5 @@
 .novel-footer .button { min-width: 0; white-space: normal; padding: 8px 10px; }
 .novel-library__list { grid-template-columns: minmax(0,1fr); }
 .novel-library__list .button > span { min-width: 0; overflow-wrap: anywhere; }
+
+.novel-text { line-break:strict; word-break:normal; overflow-wrap:break-word; }

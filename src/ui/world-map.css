@@ -75,3 +75,24 @@
 .world-map__destination-portrait { width:70px; height:94px; overflow:hidden; border:1px solid #baae8b; border-radius:3px; }
 .world-map__destination-portrait > .portrait-art { width:100%; height:100%; object-fit:cover; }
 @media(min-width:761px) { .world-map .world-map__story-goal { left:94px; right:auto; width:260px; } }
+
+.world-map__surface { overscroll-behavior:contain; }
+.world-map__paths { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.world-map__paths polyline { fill:none; stroke:#dad5bb; stroke-width:1.5; stroke-dasharray:4 7; vector-effect:non-scaling-stroke; opacity:0; }
+.world-map__paths.is-detailed polyline { opacity:.38; }
+.world-map__paths polyline.is-current { opacity:.65; stroke:#f1d58f; }
+.world-region-label { position:absolute; display:grid; justify-items:center; gap:2px; pointer-events:none; white-space:nowrap; opacity:.8; color:#e6e0ca; text-shadow:0 2px 4px #000; font-size:13px; letter-spacing:.08em; }
+.world-region-label small { font:9px var(--font-body); letter-spacing:.1em; }
+.world-region-label.is-current { color:#fff0b7; opacity:1; }
+.world-pin--chronicle .world-pin__symbol { border-radius:50%; color:#ecd3a1; }
+.world-map .world-pin--chronicle .world-pin__label { max-width:140px; font-size:10px; }
+.world-index-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; }
+.world-index-tabs .button { font-size:12px; min-width:0; padding:8px 3px; }
+.world-index-chapters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+.world-index-chapters .button { display:grid; gap:3px; justify-items:start; min-width:0; white-space:normal; text-align:left; font-size:12px; }
+.world-index-chapters small { font-size:11px; }
+.world-index-section { display:grid; gap:6px; }
+.world-index-section h3 { margin:12px 0 0; }.world-index-section p { margin:2px 0; font-size:12px; line-height:1.7; }
+.world-map__index .world-index-place { display:flex; gap:8px; align-items:center; text-align:left; white-space:normal; min-height:44px; }
+.world-index-place > span:nth-child(2) { flex:1; min-width:0; }.world-index-place small { display:block; font-size:10px; opacity:.7; }
+.world-region-label { padding:4px 10px; border-radius:12px; background:radial-gradient(ellipse,#101d2bd9,transparent 75%); }

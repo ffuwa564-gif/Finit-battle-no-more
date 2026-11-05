@@ -1,6 +1,6 @@
 import type { Content } from './types';
 export interface MapPosition { x: number; y: number }
-export interface WorldLocation extends MapPosition { id: string; sceneId?: string; characterId?: string; teaser?: string; dungeonId?: string; label: string; kind: 'cathedral' | 'cave' | 'tower' | 'forest' | 'story' | 'event' | 'trial'; region?: string; representative?: boolean }
+export interface WorldLocation extends MapPosition { id: string; sceneId?: string; characterId?: string; teaser?: string; dungeonId?: string; label: string; kind: 'cathedral' | 'cave' | 'tower' | 'forest' | 'story' | 'event' | 'trial'; region?: string; representative?: boolean; chapterNumber?: number; category?: 'campaign' | 'memory' | 'event' | 'trial' | 'story'; encounter?: boolean }
 const regions: MapPosition[] = [{ x: .25, y: .39 }, { x: .73, y: .60 }, { x: .76, y: .43 }, { x: .24, y: .63 }, { x: .25, y: .22 }, { x: .67, y: .77 }, { x: .52, y: .16 }];
 export const WORLD_START: MapPosition = { x: .38, y: .72 };
 export function worldLocations(content: Content, completed: readonly string[]): WorldLocation[] {
@@ -14,16 +14,33 @@ export function worldLocations(content: Content, completed: readonly string[]): 
       const representative = id === focus;
       const angle = j * 2.39996;
       const radius = .025 + Math.sqrt(j) * .018;
-      locations.push({ id, dungeonId: id, label: stage.name, region: chapter.id, representative, kind: i === 1 ? 'cave' : i === 3 ? 'forest' : 'cathedral', x: anchor.x + Math.cos(angle) * radius, y: anchor.y + Math.sin(angle) * radius * .65 });
+      locations.push({ id, dungeonId: id, label: stage.name, region: chapter.id, chapterNumber: chapter.number, category: 'campaign', representative, kind: i === 1 ? 'cave' : i === 3 ? 'forest' : 'cathedral', x: anchor.x + Math.cos(angle) * radius, y: anchor.y + Math.sin(angle) * radius * .65 });
     });
   }
   const tower = content.dungeons.find(d => d.towerFloor === 1);
   if (tower) locations.push({ id: 'world-tower', dungeonId: tower.id, label: '白亜の塔', kind: 'tower', x: .53, y: .28 });
-  locations.push({ id: 'world-story', label: '旅人の灯', kind: 'story', x: .24, y: .53 }, { id: 'world-events', label: '宵宮への小径', kind: 'event', x: .81, y: .24 }, { id: 'world-trials', label: '女神の試練', kind: 'trial', x: .79, y: .13 });
+  locations.push({ id: 'world-memories', label: '追憶の回廊', kind: 'cathedral', x: .58, y: .34 }, { id: 'world-story', label: '旅人の灯', kind: 'story', x: .24, y: .53 }, { id: 'world-events', label: '宵宮への小径', kind: 'event', x: .81, y: .24 }, { id: 'world-trials', label: '女神の試練', kind: 'trial', x: .79, y: .13 });
+  const chapterStageIds = new Set((content.chapters ?? []).flatMap(c => c.dungeonIds));
+  const extras = content.dungeons.filter(d => d.published && !chapterStageIds.has(d.id) && !d.towerFloor);
+  const groups = [
+    { key: 'memory' as const, stages: extras.filter(d => d.storyId && d.kind !== 'trial'), anchor: { x: .58, y: .37 } },
+    { key: 'event' as const, stages: extras.filter(d => d.kind === 'event'), anchor: { x: .84, y: .27 } },
+    { key: 'trial' as const, stages: extras.filter(d => d.kind === 'trial'), anchor: { x: .83, y: .12 } },
+  ];
+  for (const group of groups) group.stages.forEach((stage, i) => {
+    const x = group.anchor.x + (i % 3 - 1) * .055, y = group.anchor.y + Math.floor(i / 3) * .039;
+    locations.push({ id: stage.id, dungeonId: stage.id, label: stage.name, kind: group.key === 'memory' ? 'cathedral' : group.key, category: group.key, region: `world-${group.key}`, x, y });
+  });
   for (const scene of content.novels ?? []) {
-    if (scene.trigger.kind !== 'map' || !scene.mapEncounter || !completed.includes(scene.trigger.dungeonId)) continue;
-    const map = scene.mapEncounter;
-    locations.push({ id: `story:${scene.id}`, sceneId: scene.id, characterId: map.characterId, teaser: map.teaser, label: scene.title, kind: 'story', x: map.x, y: map.y });
+    if (scene.trigger.kind !== 'opening' && !completed.includes(scene.trigger.dungeonId)) continue;
+    if (scene.trigger.kind === 'map' && scene.mapEncounter) {
+      const map = scene.mapEncounter;
+      locations.push({ id: `story:${scene.id}`, sceneId: scene.id, characterId: map.characterId, teaser: map.teaser, label: scene.title, kind: 'story', category: 'story', encounter: true, x: map.x, y: map.y });
+    } else {
+      const trigger = scene.trigger;
+      const source = trigger.kind === 'opening' ? undefined : locations.find(p => p.dungeonId === trigger.dungeonId);
+      locations.push({ id: `story:${scene.id}`, sceneId: scene.id, label: scene.title, kind: 'story', category: 'story', region: source?.region ?? 'world-opening', chapterNumber: source?.chapterNumber, x: Math.min(.95, (source?.x ?? .36) + .027), y: Math.max(.05, (source?.y ?? .72) - .025) });
+    }
   }
   return locations;
 }
@@ -44,4 +61,12 @@ export function parseWorldTravel(value: unknown): WorldTravelState {
     if ('from' in j && validPoint(j.from) && 'to' in j && validPoint(j.to) && 'destinationId' in j && typeof j.destinationId === 'string' && 'startedAt' in j && typeof j.startedAt === 'number' && Number.isFinite(j.startedAt) && 'arrivesAt' in j && typeof j.arrivesAt === 'number' && Number.isFinite(j.arrivesAt) && j.arrivesAt > j.startedAt && j.arrivesAt - j.startedAt <= 45000) state.journey = j as WorldJourney;
   }
   return state;
+}
+
+/** Every canonical chapter keeps its own route and opening text on the map. */
+export function worldRegions(content: Content) {
+  return (content.chapters ?? []).map((chapter, i) => ({ ...regions[i % regions.length]!, id: chapter.id, number: chapter.number, title: chapter.title, subtitle: chapter.subtitle, dungeonIds: chapter.dungeonIds }));
+}
+export function worldChapterPaths(content: Content, places: WorldLocation[]) {
+  return (content.chapters ?? []).map(chapter => ({ id: chapter.id, points: chapter.dungeonIds.flatMap(id => places.filter(p => p.dungeonId === id)) }));
 }

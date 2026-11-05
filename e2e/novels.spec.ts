@@ -106,7 +106,7 @@ for (const language of ['ja','en'] as const) {
       save.completedDungeonIds=content.chapters!.flatMap(chapter=>chapter.dungeonIds);
       save.settings.reducedMotion=true;save.revision++;
       await persistSave(save,revision);localStorage.setItem('stillveil-language',language);
-      return content.novels!.map(scene=>({id:scene.id,pages:scene.pages.length}));
+      return content.novels!.map(scene=>({id:scene.id,pages:scene.pages.length,map:Boolean(scene.mapEncounter)}));
     },language);
     await page.reload();
     await page.getByRole('button',{name:language==='en'?'Tap to Begin':'タップしてはじめる',exact:true}).click();
@@ -125,8 +125,9 @@ for (const language of ['ja','en'] as const) {
         await expect(story).toContainText(language==='en'?'Even so, I knocked.':'それでも、私は扉を叩いた。');
         await page.screenshot({path:info.outputPath(`chosen-door-${language}.png`)});
       }
-      await story.getByRole('button',{name:language==='en'?'Close Story':'物語を閉じる',exact:true}).click();
+      await story.getByRole('button',{name:scene.map?(language==='en'?'Return to Map':'地図へ戻る'):(language==='en'?'Close Story':'物語を閉じる'),exact:true}).click();
       await expect(story).toHaveCount(0);
+      if(scene.map){await page.goto('/#settings');await expect(page.locator('.novel-library')).toBeVisible();}
     }
     const after=await saved(page);
     expect(after.gold).toBe(before.gold);expect(after.stones).toBe(before.stones);
