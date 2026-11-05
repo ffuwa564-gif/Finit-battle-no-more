@@ -1,0 +1,295 @@
+{
+  "episode": "THIS-GIRL-005",
+  "status": "complete",
+  "title": "祓った、その先へ。",
+  "implementationReceipt": "research/episode-implementation.json",
+  "implementationReceiptSha256": "0916042c9c20a5ae3edd6f07e56f81e1f341d706681aaa3b761d628d1203ca58",
+  "movieSha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+  "movie": "ThisGirl-05.mp4",
+  "finalQaEvidence": {
+    "artifacts/this-girl-05/research/final-independent-qa.json": "d06809a1d44641af2482cfa9deb2a047dbff5fcf029e107fdb84f0f0c827a745",
+    "artifacts/this-girl-05/research/freeze-and-voice-qa.json": "16dfb41f0ca5c81c86834377fce6177008b018c80d47a7bb1403784565202fb6",
+    "artifacts/this-girl-05/research/final-browser-qa.json": "faf830304d2a50502871d8f042838a6639d4c2526e0f99ebd0dda3bd1e1c692b",
+    "artifacts/this-girl-05/research/visual-qa.json": "183b1e1ccfef0b0458c0bb232c1745f24ddda2c9292f926f2c4c8f9a3e834fbb",
+    "render-input-freeze.json": "2e4153e8d839c86c11b1f9d072d8b167dd282e8f385ac8b491d6cd8b2b89d0e3"
+  },
+  "gameMainMerged": false,
+  "itchDeployed": false,
+  "scopedAdoption": true,
+  "endgameCertified": false,
+  "priorEpisodePreserved": true,
+  "nextEpisodePreview": "エレインの改修研究・未検証",
+  "implementation": {
+    "episode": "THIS-GIRL-005",
+    "status": "implementation-complete",
+    "adoptionScope": "scoped-not-endgame-certified",
+    "baseEngineCommit": "6f235e3",
+    "implementationCommit": "d80aafd",
+    "freezeCommit": "d45214f",
+    "codePR": "https://github.com/ffuwa564-gif/Finit-battle-no-more/pull/148",
+    "changedEngineFiles": [
+      "src/content/index.ts",
+      "src/content/validation.ts",
+      "src/content/version.ts",
+      "src/domain/engine.ts",
+      "src/domain/types.ts",
+      "src/locales/en.json"
+    ],
+    "evidence": {
+      "artifacts/this-girl-05/research/analysis/main.json": "88ba4793e72ca0058f58dfdf0ac49579828451f71d1d276491a262ade8532aea",
+      "artifacts/this-girl-05/research/confirmation-lock.json": "9c7b2cc0cf95fee59fdefb2693bfa89178d261dc7c41239970922a5da21a30e7",
+      "artifacts/this-girl-05/research/reports/adoption.json": "8f3ea776d9e41a1d356151bc294c5bb1c620b92e0312a472d265703f43aa0801",
+      "artifacts/this-girl-05/research/reports/judgment.json": "63d753fb352bd41b4e83c677af97ddd03a3321b2f58dde2c8a862c6b820fc4e6",
+      "artifacts/this-girl-05/research/reports/ResearchReport.md": "4b822b1ec540bda16b6a233e37d8d4ac1ce73709b074902e8eb5953817024270",
+      "artifacts/this-girl-05/research/baseline-equivalence.json": "cb8885d70d20262d72c9e745991b45983ce6a60db44a5023d0e47a9caa3d9db6",
+      "artifacts/this-girl-05/research/full-public-tests.log": "eb3ad03186f770b3f3c54e4057c9c1f966d60aa00eaaf604559f325e1fd6c98b",
+      "artifacts/this-girl-05/research/game-browser-tests.log": "8a431ae41ba4835d0789fe602f4f32943e451bf6011fb0354a3c890dcc7bd81b",
+      "artifacts/this-girl-05/research/builds.log": "486e89344c5f5e0cc207efcd1e456c6aa60d53c17f6871ae18f590baf8d6d3eb",
+      "artifacts/this-girl-05/research/recording-selection.json": "4a16580056ae86648eb710c1a5061923a0ee9d4832d48aabb67a55110d314ccc",
+      "artifacts/this-girl-05/research/code-pr.json": "9e70b55d4356c26bbc876091b592528d22b862cbceba4e65b13049ad5163adbe",
+      "artifacts/this-girl-05/proofs/reference.json.gz": "507cb5cff65c80e6651e58f32f53f11ce8abe76a9a7e0f3a4fb8763fe68f8cd8",
+      "artifacts/this-girl-05/proofs/lisette.json.gz": "b52397654d16294f6ca5025f6301a86abefce429f545752ab402f7f6f2a8ae0e"
+    },
+    "verification": {
+      "publicUnitTests": 786,
+      "newMechanicTestsIncluded": 11,
+      "gameBrowserTests": 2,
+      "legacyOutcomeMatches": 72
+    },
+    "negativeConditionDisclosed": "All18 conditions retained, including no-trigger and worse outcomes. Finite alternatives may remain stronger; no full-roster endgame certificate.",
+    "gamePublished": false
+  },
+  "publicVersion": "1.12.0",
+  "researchVersion": "1.12.0-lisette-research.1",
+  "publication": {
+    "passed": true,
+    "commit": "44026ebd2884bb323197a596c277a29142d0e3ab",
+    "fullPublicReadback": [
+      {
+        "file": "Artwork-Provenance.json",
+        "sha256": "f51c4348d2f170d68634cdfc1032953545d460774b889b864fdb7788eec10bbf",
+        "bytes": 772,
+        "passed": true
+      },
+      {
+        "file": "Browser-QA.json",
+        "sha256": "faf830304d2a50502871d8f042838a6639d4c2526e0f99ebd0dda3bd1e1c692b",
+        "bytes": 7439,
+        "passed": true
+      },
+      {
+        "file": "Chapters.txt",
+        "sha256": "09aa1e12743cb7745a3469af416723cf276a41a92f16ecbf68d37631c4f0a4bb",
+        "bytes": 302,
+        "passed": true
+      },
+      {
+        "file": "Character-Judgment.json",
+        "sha256": "63d753fb352bd41b4e83c677af97ddd03a3321b2f58dde2c8a862c6b820fc4e6",
+        "bytes": 784,
+        "passed": true
+      },
+      {
+        "file": "Credits.md",
+        "sha256": "0516966c3dd4031a7dd8affbd7cb8aaa57d37000ff7b004e5c427e789df22e60",
+        "bytes": 982,
+        "passed": true
+      },
+      {
+        "file": "Design-Decisions.md",
+        "sha256": "1d832c1dcec4087ab628d7881f247c7f474d9052e41000f424e558daa3eb56b5",
+        "bytes": 624,
+        "passed": true
+      },
+      {
+        "file": "Episode-Completion.json",
+        "sha256": "eff17bac83238d2b0f44922decc51059ea31f4d751f786933f331f1e648ef7cd",
+        "bytes": 3937,
+        "passed": true
+      },
+      {
+        "file": "Episode-Implementation.json",
+        "sha256": "0916042c9c20a5ae3edd6f07e56f81e1f341d706681aaa3b761d628d1203ca58",
+        "bytes": 2527,
+        "passed": true
+      },
+      {
+        "file": "Final-Media-QA.json",
+        "sha256": "d06809a1d44641af2482cfa9deb2a047dbff5fcf029e107fdb84f0f0c827a745",
+        "bytes": 14210,
+        "passed": true
+      },
+      {
+        "file": "Font-Copyright.txt",
+        "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+        "bytes": 14712,
+        "passed": true
+      },
+      {
+        "file": "Freeze-Voice-QA.json",
+        "sha256": "16dfb41f0ca5c81c86834377fce6177008b018c80d47a7bb1403784565202fb6",
+        "bytes": 10128,
+        "passed": true
+      },
+      {
+        "file": "Mechanism-Lisette.json",
+        "sha256": "0e6834cb71d3ede79da23a83860df01d4146386febc7507b708b829dda829ca6",
+        "bytes": 43119,
+        "passed": true
+      },
+      {
+        "file": "Packaging-Manifest.json",
+        "sha256": "70f64670c6a78890795409e2e8b5046b02bfedf273225e064503966d5e661e59",
+        "bytes": 1422,
+        "passed": true
+      },
+      {
+        "file": "Pause-Preview.jpg",
+        "sha256": "9f6ccab2c80b5bba226a9c21c8ee3afe30e48e173ec1fb38035ed2f33ba955e6",
+        "bytes": 615793,
+        "passed": true
+      },
+      {
+        "file": "Preview.jpg",
+        "sha256": "0ac86c6766b3f2b9ad4e8179975f22145955aa8046b8eaf399fb01d758c1beea",
+        "bytes": 1625086,
+        "passed": true
+      },
+      {
+        "file": "Production-and-Evidence.zip.part001",
+        "sha256": "da4aba69ec0ef4c604e55c2109ec6988e96f57594a21b6206b1b3b5009c2d5cb",
+        "bytes": 92274688,
+        "passed": true
+      },
+      {
+        "file": "Production-and-Evidence.zip.part002",
+        "sha256": "71a81c699e087080c806b1e13abc689669606dd70776c47617632538b1df9981",
+        "bytes": 92274688,
+        "passed": true
+      },
+      {
+        "file": "Production-and-Evidence.zip.part003",
+        "sha256": "606f1598794c9eadee23f873bb626e38133f0ca163285eb8e4444f4ba6dbd475",
+        "bytes": 19254575,
+        "passed": true
+      },
+      {
+        "file": "README.md",
+        "sha256": "d479101d0ce030d40c016f25caf1fb4ae29cff4a9f857331c9cc36b22472acc3",
+        "bytes": 1380,
+        "passed": true
+      },
+      {
+        "file": "Render-Input-Freeze.json",
+        "sha256": "2e4153e8d839c86c11b1f9d072d8b167dd282e8f385ac8b491d6cd8b2b89d0e3",
+        "bytes": 68961,
+        "passed": true
+      },
+      {
+        "file": "Render-Manifest.json",
+        "sha256": "7fe09f8c95f78a1935d829e93225c322c975d63bdd2c5f9e1be2c231cffecc34",
+        "bytes": 6100,
+        "passed": true
+      },
+      {
+        "file": "Reproduce.md",
+        "sha256": "492b06659485f176ffbfc8f346351230473b0e747b04bef0686e048fc05ea7aa",
+        "bytes": 2637,
+        "passed": true
+      },
+      {
+        "file": "ResearchReport.md",
+        "sha256": "4b822b1ec540bda16b6a233e37d8d4ac1ce73709b074902e8eb5953817024270",
+        "bytes": 4694,
+        "passed": true
+      },
+      {
+        "file": "Roster-Audit.md",
+        "sha256": "c6907788d33839e565c31e117f4b51a169282ab6a92012b79f4112c8673973e3",
+        "bytes": 589,
+        "passed": true
+      },
+      {
+        "file": "SHA256SUMS.txt",
+        "sha256": "c06279b4fa35b879d789ec498d37015552e47a2201c4332963655401bdf2950d",
+        "bytes": 3047,
+        "passed": true
+      },
+      {
+        "file": "Script.md",
+        "sha256": "fd362334c6aca68ce6ba9e1431b2f2d8dafbfcc1b233dd5cc30c772801d6760b",
+        "bytes": 17053,
+        "passed": true
+      },
+      {
+        "file": "Stone-Goals.md",
+        "sha256": "fcba619fc4937d473c108a4afd5808bf6c34f2b1424e27474b221f9f94b55ba0",
+        "bytes": 1488,
+        "passed": true
+      },
+      {
+        "file": "Subtitles-ja.srt",
+        "sha256": "724ff7e249fa25810c0e69ecfcc37b238ae68fec68c45506719e01a25076aa18",
+        "bytes": 7674,
+        "passed": true
+      },
+      {
+        "file": "ThisGirl-05.mp4",
+        "sha256": "bd81fd26775c95a8cb1e71ad93f8ef0fff0de231cb10e1b7cc25da8c36ad4150",
+        "bytes": 66659108,
+        "passed": true
+      },
+      {
+        "file": "Thumbnail-ThisGirl-05.png",
+        "sha256": "c8885cad5540dbbd66d3b0b0bc7384f9e19bd881120ec6f04340469481ba12d7",
+        "bytes": 1314879,
+        "passed": true
+      },
+      {
+        "file": "Used-Audio-Plan.json",
+        "sha256": "8d758e58d48f62cd1280638d9e6781ce71bb7b77bb542fb4889962e62a671a26",
+        "bytes": 248166,
+        "passed": true
+      },
+      {
+        "file": "Visual-QC.json",
+        "sha256": "183b1e1ccfef0b0458c0bb232c1745f24ddda2c9292f926f2c4c8f9a3e834fbb",
+        "bytes": 1405,
+        "passed": true
+      },
+      {
+        "file": "YouTube-Description.txt",
+        "sha256": "29290be660b980f9b4cffcff77206d7631080584361681fbc715a0518678c4d1",
+        "bytes": 1695,
+        "passed": true
+      },
+      {
+        "file": "combat-portfolio-research.md",
+        "sha256": "be2d3a784f5d6fabaed6bdccd1ba79513d6e1c4a532adc8fb0e789c305da0e68",
+        "bytes": 9811,
+        "passed": true
+      },
+      {
+        "file": "endgame-invariance-v03.md",
+        "sha256": "d84449bdda27df2393eebbe29fdbd967be0253e7da535f38df54470ae2b1531e",
+        "bytes": 19500,
+        "passed": true
+      },
+      {
+        "file": "portfolio-optimization-v02.md",
+        "sha256": "06b4033e323ba4d9dce916be93e241497186a9058206b79c3f3e39a12c9c2c91",
+        "bytes": 14340,
+        "passed": true
+      }
+    ]
+  },
+  "publicHeader": {
+    "passed": true,
+    "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/44026ebd2884bb323197a596c277a29142d0e3ab/ThisGirl-05.mp4",
+    "httpStatus": 206,
+    "firstMiBSha256": "873d078373030299066bcb1a251f6da4d803f0876861324f591418f7b93bce3d",
+    "moovOffset": 36,
+    "mdatOffset": 432957,
+    "scope": "Public header and faststart; independent full readback required."
+  }
+}
