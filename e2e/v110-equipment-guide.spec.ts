@@ -22,7 +22,7 @@ async function fixture(page: Page) {
     await persistSave(save,revision);
   });
   await page.goto('/#bag');await page.reload();await boot(page);
-  await page.locator('.bag-gem-entry .button').first().click();
+  await page.getByRole('button',{name:/記憶石の管理|Manage Memory Stones/}).click();
   await expect(page.getByTestId('memory-gems')).toBeVisible();
 }
 

@@ -87,7 +87,7 @@ test('full exploration preserves provisional rewards across reload and claims on
   expect(Object.values(claimed.materials).reduce((sum, n) => sum + n, 0)).toBe(amount);
   await page.reload();
   await enterGame(page);
-  await expect(page.getByRole('heading', { name: 'ダンジョン', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /世界地図.*STILLVEIL/ })).toBeVisible();
   expect((await stored(page)).stones).toBe(3);
   expect((await stored(page)).materials).toEqual(claimed.materials);
 });
