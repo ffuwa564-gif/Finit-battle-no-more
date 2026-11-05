@@ -101,3 +101,41 @@ test('language settings translate actor hints and the personalized conversation'
  expect(await page.locator('.world-conversation').innerText()).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
 });
+
+test('Liora offers an unbidden oath, then rests in the garden woman’s arms before chapter one can end', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await start(page);
+    await page.evaluate(async () => {
+        const { content } = await import('/src/content/index.ts');
+        const { applyCommand } = await import('/src/application/game.ts');
+        const { loadSave, persistSave } = await import('/src/platform/save.ts');
+        let s = (await loadSave())!;
+        const revision = s.revision;
+        s.completedDungeonIds = content.chapters![0].dungeonIds;
+        s.worldStory!.completed = ['c1-job', 'c1-chart', 'c1-wolf', 'c1-flowers', 'c1-care'];
+        s.worldStory!.notified = ['sanctuary-silence'];
+        s = applyCommand(s, { type: 'worldTravel', destinationId: 'hub-garden' }, content, { now: 1000 });
+        s = applyCommand(s, { type: 'worldTalk', nodeId: 'c1-oath' }, content, { now: 47000 });
+        for (let i = 0; i < 3; i++) s = applyCommand(s, { type: 'worldTalkNext' }, content);
+        s.revision = revision + 1;
+        await persistSave(s, revision);
+    });
+    await page.reload();
+    await enterGame(page);
+    const modal = page.locator('.world-conversation');
+    await expect(modal.locator('.world-conversation__line')).toContainText('どうか、お命じください');
+    await finish(page);
+    await expect(page.locator('.world-story-objective')).toContainText('リオラの様子を見たい');
+    await page.getByRole('button', { name: '声をかける', exact: true }).click();
+    await expect(modal).toContainText('庭園の女');
+    for (let i = 0; i < 5; i++) await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
+    await expect(modal.locator('.world-conversation__line strong')).toHaveText('庭園の女');
+    await expect(modal.locator('.world-conversation__line')).toContainText('こっちを向いて');
+    for (let i = 0; i < 4; i++) await modal.getByRole('button', { name: '次の台詞', exact: true }).click();
+    await expect(modal.locator('.world-conversation__line')).toContainText('抱き上げられても離さず');
+    await finish(page);
+    const s = await page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!);
+    expect(s.worldStory!.completed).toContain('c1-held');
+    expect(s.worldStory!.completed).not.toContain('c1-return');
+    await expect(page.locator('.world-story-objective')).toContainText('朝、寝台を訪ねる');
+});

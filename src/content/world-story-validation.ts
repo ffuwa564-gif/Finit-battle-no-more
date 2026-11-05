@@ -7,7 +7,7 @@ export function validateWorldStoryContent(content: Content): string[] {
     const errors: string[] = [];
     const bad = (v: boolean, s: string) => { if (v)
         errors.push('world-story: ' + s); };
-    const ids = new Set(def.nodes.map(n => n.id)), hubs = new Set(def.hubs.map(h => h.id)), chars = new Set([...content.characters.map(c => c.id), 'hero', 'guest', 'narration']);
+    const ids = new Set(def.nodes.map(n => n.id)), hubs = new Set(def.hubs.map(h => h.id)), chars = new Set([...content.characters.map(c => c.id), 'hero', 'guest', 'garden-woman', 'narration']);
     const text = (t: unknown) => !!t && typeof t === 'object' && ['ja', 'en'].every(k => typeof (t as Record<string, unknown>)[k] === 'string' && String((t as Record<string, unknown>)[k]).trim().length > 0);
     bad(def.version !== 1 || ids.size !== def.nodes.length || hubs.size !== def.hubs.length, 'unique versioned nodes and hubs required');
     bad(!def.chapters.length || def.chapters.some((c, i) => c.number !== i + 1), 'story chapters must form a contiguous campaign prefix');

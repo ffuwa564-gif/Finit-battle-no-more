@@ -616,17 +616,17 @@
       "leadDungeonId": "stone-fountain"
     },
     {
-      "id": "c1-return",
+      "id": "c1-oath",
       "chapter": 1,
       "actorId": "liora",
-      "hubId": "hub-guild",
+      "hubId": "hub-garden",
       "bubble": {
-        "ja": "皆、戻ったな",
-        "en": "Everyone is back"
+        "ja": "庭園で、荷を降ろそう",
+        "en": "Let us put our things down in the garden"
       },
       "title": {
-        "ja": "皆、戻ったな",
-        "en": "Everyone is back"
+        "ja": "差し出された忠義",
+        "en": "An Unbidden Oath"
       },
       "requiresNodes": [
         "c1-flowers",
@@ -637,31 +637,294 @@
       ],
       "lines": [
         {
-          "speaker": "liora",
+          "speaker": "narration",
           "text": {
-            "ja": "点呼は済んだ。報告を出したら、庭園へ戻る。",
-            "en": "Everyone is accounted for. We will return to the garden after filing the report."
+            "ja": "庭園に着き、鉢を卓へ置いた。リオラが盾を下ろすより先に、私は振り返った。",
+            "en": "Back in the garden, I set the flowerpot on the table and turned before Liora could put down her shield."
           }
         },
         {
           "speaker": "hero",
           "text": {
-            "ja": "その前に、鉢を届けてもいい？",
-            "en": "Can we deliver the pot first?"
+            "ja": "リオラ、今日もありがとう。あなたがいてくれて、よかった。",
+            "en": "Thank you for today, Liora. I was glad you were there."
           }
         },
         {
-          "speaker": "elaine",
+          "speaker": "narration",
           "text": {
-            "ja": "水は替えてあります。重かったら、途中まで持ちますよ。",
-            "en": "I changed the water. If it is heavy, I can carry it part of the way."
+            "ja": "リオラの膝が地面についた。背筋を伸ばし、私に向かって深く頭を垂れる。",
+            "en": "Liora sank to one knee. Her back straightened, and she bowed her head low before me."
           }
         },
         {
           "speaker": "liora",
           "text": {
-            "ja": "……道は調べてある。明日、私が案内する。",
-            "en": "...I checked the route. I will take you tomorrow."
+            "ja": "この身も、盾も、あなたのために。どうか、お命じください。",
+            "en": "My life and my shield are yours. Please, command me."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……リオラ？ 私に言ってるの？",
+            "en": "...Liora? Are you saying that to me?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "返事がない。私はしゃがみ、彼女の顔をのぞいた。",
+            "en": "She did not answer. I crouched down to look at her face."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "頭を上げて。私、そんなこと頼んでないよ。",
+            "en": "Please look up. I never asked you to do that."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……今、私は何を。",
+            "en": "...What did I just do?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラは顔を上げ、自分の膝を見た。立ち上がろうとして足を滑らせ、私が差し出した手からも身を引いた。",
+            "en": "Liora raised her head and stared at her own knee. She slipped as she tried to stand, then recoiled from the hand I offered."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "違う。おまえに、こんな……私は、あの方に。",
+            "en": "No. Not to you. I... My oath is to her."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "誰かに、そうするように言われたの？",
+            "en": "Did someone tell you to do that?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "言われていない。言われていないのに、どうして。",
+            "en": "No one did. No one told me to. Why did I—"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "盾の紐を握る手が震えていた。リオラは何か言い直そうとして、何度も息を吸った。",
+            "en": "Her hand trembled around the shield strap. She kept trying to speak, drawing breath again and again."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "今は話さなくていいよ。座ろう。私も、ここにいるから。",
+            "en": "You do not have to explain now. Let us sit down. I will stay with you."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "なぜ、私に頭を下げたのだろう。庭園の女が、何か吹き込んだのかもしれない。今は、そう思っておくことにした。",
+            "en": "Why had she bowed to me? Perhaps the woman in the garden had put something into her head. For now, I left it at that."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-held",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "リオラの様子を見たい",
+        "en": "I want to see how Liora is doing"
+      },
+      "title": {
+        "ja": "寝台のそばで",
+        "en": "Beside the Bed"
+      },
+      "requiresNodes": [
+        "c1-oath"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "その夜、リオラは寝台から起き上がれなかった。目を閉じても眠れないらしく、掛布の端を握っていた。",
+            "en": "That night, Liora could not get out of bed. Even with her eyes closed she could not seem to sleep, and she clutched the edge of the blanket."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "お水、ここに置くね。",
+            "en": "I will leave some water here."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "あの方には……何と、報告すれば。",
+            "en": "What am I to... tell her?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "報告はあとでいいよ。今、呼んでくるから。",
+            "en": "The report can wait. I will go and get her."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "戸口には、もう庭園の女が立っていた。私が椅子をよけると、女は寝台の端に腰を下ろした。",
+            "en": "The woman in the garden was already at the door. I moved the chair aside, and she sat on the edge of the bed."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "リオラ。こっちを向いて。",
+            "en": "Liora. Look at me."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私は、あの子に……あなたではなく、あの子に。",
+            "en": "I bowed to her... To her, instead of you."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。聞いているわ。",
+            "en": "Yes. I heard."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "どうしたらいいのか、分からない。",
+            "en": "I do not know what to do."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女が両腕を差し入れると、リオラはその首にしがみついた。抱き上げられても離さず、肩に顔を押しつける。",
+            "en": "The woman slipped both arms beneath her, and Liora clung to her neck. Even as she was lifted, she held on, her face pressed against the woman's shoulder."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "大丈夫。今は、こうしていましょう。",
+            "en": "It is all right. Let us stay like this for a while."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "昼間は盾を担いで私の前を歩いていたリオラが、小さく背を丸めて抱かれている。私は、脱がせた靴を寝台の下へそろえた。",
+            "en": "Liora had carried her shield ahead of me all day. Now she curled into the woman's arms. I set her shoes neatly beneath the bed."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……離さないで。",
+            "en": "...Do not let go."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "離さないわ。眠るまで、ここにいるから。",
+            "en": "I will not. I am staying until you fall asleep."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女は返事を急かさず、リオラの背をゆっくり撫でた。掛布がずれるたびに引き上げ、冷えた足先まで包み直す。",
+            "en": "The woman asked for no answer. She slowly stroked Liora's back, pulling up the blanket whenever it slipped and tucking it around her cold feet."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "あの人にとっては、リオラも子供のような存在なのだ。抱かれたまま呼吸が落ち着いていくのを、私は椅子に座って待った。",
+            "en": "To her, Liora was like a child. I sat in the chair and waited as Liora's breathing steadied in her arms."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-return",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "朝、寝台を訪ねる",
+        "en": "Visit her bedside in the morning"
+      },
+      "title": {
+        "ja": "翌朝の庭園",
+        "en": "The Garden Next Morning"
+      },
+      "requiresNodes": [
+        "c1-flowers",
+        "c1-care",
+        "c1-held"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "翌朝、リオラは寝台の端に座っていた。昨夜のことを尋ねると、膝の上の手が強く重なった。",
+            "en": "The next morning, Liora was sitting on the edge of the bed. When I asked about last night, she clasped her hands tightly in her lap."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……分からない。今は、聞かないでくれ。",
+            "en": "...I do not know. Please do not ask me yet."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。今日は休んでて。鉢は私が届けるから。",
+            "en": "All right. Rest today. I will deliver the flowers."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "そうしてちょうだい。この子のことは、私が見ているわ。",
+            "en": "Please do. I will look after her."
           }
         }
       ],
