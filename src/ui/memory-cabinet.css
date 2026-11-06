@@ -1,0 +1,32 @@
+.cabinet-filters { position:absolute; top:11.7%; left:10%; right:10%; display:flex; justify-content:center; gap:7px; }
+.cabinet-filters .button { flex:1; min-width:0; min-height:38px; padding:5px; font-size:12px; border-radius:20px; color:#e7dac0; background:#11192bbb; border-color:#c8b39266; }
+.cabinet-filters .button.is-selected { color:#392e2b; background:linear-gradient(120deg,#b7a281,#f3e8d0,#bfaa86); box-shadow:0 0 13px #e8d7b744; }
+.cabinet-collection { position:absolute; inset:19% 7.8% 33%; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(0,1fr)); gap:7px; }
+.inventory-scene .cabinet-cell { position:relative; min-width:0; min-height:0; width:100%; padding:5px; display:flex; justify-content:center; align-items:center; border:2px solid #77758c; border-radius:7px; background:radial-gradient(ellipse at center,#38415c44,#080c1899 75%); box-shadow:inset 0 0 9px #000e,0 1px 2px #000; color:#dfcfb3; }
+.inventory-scene .cabinet-cell.is-selected { border-color:#e7cf9b; box-shadow:inset 0 0 10px #e6d19c55,0 0 9px #e7d7a566; }
+.cabinet-cell .collected-gem-art { width:100%; max-width:85px; filter:drop-shadow(0 0 5px #b3bce555); }
+.cabinet-cell__tier { position:absolute; top:2px; left:3px; z-index:1; font:12px var(--font-display); background:#131526c9; border:1px solid #cdbd9d77; border-radius:3px; padding:0 3px; }
+.cabinet-cell__count { position:absolute; bottom:3px; left:4px; font:10px var(--font-body); text-shadow:0 1px 3px #000; }
+.cabinet-cell__marks { position:absolute; bottom:3px; right:3px; display:flex; gap:1px; filter:drop-shadow(0 1px 2px #000); }
+.cabinet-pagination { position:absolute; top:69%; left:23%; right:23%; display:flex; justify-content:center; align-items:center; gap:12px; color:#e2d4b5; }
+.cabinet-pagination .button { padding:0; width:32px; min-height:32px; border-radius:50%; color:inherit; background:#131a2ca6; border-color:#a7977866; }
+.cabinet-pagination span { font-size:11px; white-space:nowrap; }
+.cabinet-empty { position:absolute; top:40%; left:10%; right:10%; padding:15px 8px; text-align:center; font-size:13px; color:#eadabd; background:#101627e6; border:1px solid #c6b89966; }
+.cabinet-tray { position:absolute; top:73%; height:18%; left:5%; right:5%; display:grid; grid-template-columns:27% 73%; align-items:center; }
+.cabinet-tray__gem .collected-gem-art { width:100%; }
+.cabinet-tray__card { min-width:0; padding:3px 12px 3px 10px; color:#302832; }
+.cabinet-tray h2 { margin:0; font:clamp(12px,3.9vw,18px)/1.5 var(--font-display); display:flex; justify-content:space-between; gap:4px; }
+.cabinet-tray h2 small { font-size:11px; white-space:nowrap; }
+.cabinet-tray p { font-size:10px; line-height:1.5; margin:3px 0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.cabinet-owner select { width:100%; min-height:25px; padding:0 18px 0 4px; background:#f4e8cb66; color:#352d32; border:1px solid #8e765266; font-size:11px; border-radius:3px; }
+.cabinet-tray__actions { display:flex; gap:7px; margin-top:4px; }
+.cabinet-tray .button { min-height:29px; padding:2px 7px; flex:1; font-size:11px; color:#352e2c; background:linear-gradient(#f8efd9,#d1ba94); border:1px solid #97805a; border-radius:4px 10px; }
+.inventory-scene .cabinet-manage { position:absolute; bottom:1.3%; left:30%; right:30%; min-height:34px; padding:3px 7px; font-size:11px; color:#e9d6b3; background:#111a2bc9; border-color:#b49d7877; }
+@media(max-width:360px) { .cabinet-collection { gap:4px; } .cabinet-tray__card { padding-inline:7px; } .cabinet-tray p { -webkit-line-clamp:1; } .cabinet-tray h2 { font-size:12px; } .cabinet-filters .button { font-size:11px; } }
+.cabinet-pagination { top:67.3%; }
+.cabinet-pagination .button { width:40px; min-width:40px; min-height:40px; }
+.cabinet-tray { grid-template-columns:30% 70%; }
+.cabinet-tray h2>span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cabinet-filters .button { min-height:44px; }
+.cabinet-tray .button { min-height:34px; }
+.inventory-scene .cabinet-owner select { background:#f2e5c8; color:#352d32; -webkit-text-fill-color:#352d32; color-scheme:light; }

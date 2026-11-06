@@ -22,15 +22,15 @@ export function MemoryGemSigil({ family = 'sanctuary', rare = false, className =
   </span>;
 }
 
-export interface MemoryGemsProps { save: GameSave; content: Content; dispatch: (command: GameCommand) => void; onClose?: () => void; busy?: boolean; onBuilds?: () => void; targetDefId?: string }
+export interface MemoryGemsProps { save: GameSave; content: Content; dispatch: (command: GameCommand) => void; onClose?: () => void; busy?: boolean; onBuilds?: () => void; targetDefId?: string; initialGemId?: string; initialCharacterId?: string }
 
-export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetDefId, busy = false }: MemoryGemsProps) {
+export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetDefId, initialGemId, initialCharacterId, busy = false }: MemoryGemsProps) {
   const inventory = save.memoryGems;
   const items = inventory?.items ?? [];
   const equipped = inventory?.equipped ?? {};
   const characters = content.characters.filter(character => save.ownedIds.includes(character.id));
-  const [characterId, setCharacterId] = useState(save.partyIds[0] ?? characters[0]?.id ?? '');
-  const [selectedId, setSelectedId] = useState<string | null>(inventory?.pending?.gemId ?? null);
+  const [characterId, setCharacterId] = useState(initialCharacterId ?? save.partyIds[0] ?? characters[0]?.id ?? '');
+  const [selectedId, setSelectedId] = useState<string | null>(initialGemId ?? inventory?.pending?.gemId ?? null);
   const [family, setFamily] = useState<Family | 'all'>('all');
   const [filter, setFilter] = useState<InventoryFilter>('all');
   const [variant, setVariant] = useState('all');
@@ -41,6 +41,7 @@ export function MemoryGems({ save, content, dispatch, onClose, onBuilds, targetD
   const [sort, setSort] = useState('recent');
   const [craftVariants, setCraftVariants] = useState<Record<string, GemVariant>>({});
   const detail = useRef<HTMLElement>(null);
+  useEffect(() => { if (initialGemId) { const section=detail.current?.closest('details'); if(section) section.open=true; } }, [initialGemId]);
   const offer = useRef<HTMLElement>(null);
   useEffect(() => { detail.current?.scrollIntoView({ block: 'nearest', behavior: 'auto' }); }, [selectedId]);
   const selectedCharacter = characters.find(character => character.id === characterId) ?? characters[0];

@@ -27,11 +27,12 @@ async function cues(page: Page, expected: string[]) {
 test('gem equipment, removal and another saved command each sound exactly once', async ({page}) => {
   await prepare(page,'bag');
   await page.getByRole('button',{name:/記憶石の管理/}).click();
+  await page.getByRole('button',{name:'整理・調律',exact:true}).click();
   await page.locator('[data-inventory-section="memory-stones"] > summary').click();
   await page.getByTestId('memory-gem-card').click();
   await clear(page);
   await page.getByRole('button',{name:'この仲間に託す',exact:true}).click();
-  await expect(page.getByRole('button',{name:'装備中',exact:true})).toBeVisible();
+  await expect(page.getByRole('dialog').getByRole('button',{name:'装備中',exact:true})).toBeVisible();
   await cues(page,['confirm']);
   await clear(page);
   await page.getByRole('button',{name:'外す',exact:true}).click();
@@ -68,6 +69,7 @@ test('BGM volume feedback plays once, including zero BGM, and obeys SE mute', as
 test('a rejected save plays only an error, without a premature success beep', async ({page}) => {
   await prepare(page,'bag');
   await page.getByRole('button',{name:/記憶石の管理/}).click();
+  await page.getByRole('button',{name:'整理・調律',exact:true}).click();
   await page.locator('[data-inventory-section="memory-stones"] > summary').click();
   await page.getByTestId('memory-gem-card').click();
   await page.evaluate(async () => {

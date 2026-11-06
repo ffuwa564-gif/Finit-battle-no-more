@@ -19,7 +19,7 @@ export function worldLocations(content: Content, completed: readonly string[]): 
   }
   const tower = content.dungeons.find(d => d.towerFloor === 1);
   if (tower) locations.push({ id: 'world-tower', dungeonId: tower.id, label: '白亜の塔', kind: 'tower', x: .53, y: .28 });
-  locations.push({ id: 'world-workshop', label: '旅の工房', kind: 'workshop', x: .36, y: .83 });
+  locations.push({ id: 'world-workshop', label: 'クラフト', kind: 'workshop', x: .36, y: .83 });
   locations.push({ id: 'world-memories', label: '追憶の回廊', kind: 'cathedral', x: .58, y: .34 }, { id: 'world-story', label: '旅人の灯', kind: 'story', x: .24, y: .53 }, { id: 'world-events', label: '宵宮への小径', kind: 'event', x: .81, y: .24 }, { id: 'world-trials', label: '女神の試練', kind: 'trial', x: .79, y: .13 });
   const chapterStageIds = new Set((content.chapters ?? []).flatMap(c => c.dungeonIds));
   const extras = content.dungeons.filter(d => d.published && !chapterStageIds.has(d.id) && !d.towerFloor);

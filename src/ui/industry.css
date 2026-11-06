@@ -2,3 +2,30 @@
 .industry-workshop,.industry-target,.industry-machine,.industry-recipe{min-width:0;max-width:100%;}.industry-target .button{min-width:0;white-space:normal;}.industry-header>div{min-width:0;}.industry-header h1{font-size:28px;}.industry-header small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.industry-target h2{overflow-wrap:anywhere;}.industry-machine select{min-width:0;max-width:100%;}
 .industry-tier{display:inline-flex;align-items:center;font:600 9px/1.4 var(--font-body,sans-serif);letter-spacing:.06em;color:#b99a62;border:1px solid #b99a6266;border-radius:4px;padding:2px 5px;margin-right:7px;vertical-align:middle;white-space:nowrap;}.industry-tiers{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;margin:14px 0;}.industry-tiers .button{min-width:0;padding:8px 2px;font-size:12px;}.industry-power{padding:14px;}.industry-power header{display:flex;align-items:center;gap:8px;}.industry-power header>span{margin-left:auto;font-size:12px;font-variant-numeric:tabular-nums;}.industry-power progress{width:100%;height:7px;accent-color:#c5a967;margin:10px 0 5px;}.industry-power>div{display:flex;justify-content:space-between;gap:8px;font-size:11px;line-height:1.6;}.industry-power>.button{margin-top:10px;}.industry-energy{display:flex;align-items:center;gap:5px;}.industry-energy.is-short{color:#bb7956;}.industry-generator p{line-height:1.7;}.industry-machine header strong{min-width:0;overflow-wrap:anywhere;}.industry-recipe strong{display:block;overflow-wrap:anywhere;}
 .industry-chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;}.industry-chain .button{justify-content:flex-start;min-width:0;text-align:left;white-space:normal;}.industry-chain .button>svg{margin-left:auto;flex-shrink:0;}.industry-chain small{display:block;font-size:10px;opacity:.75;}
+.industry-workshop.industry-workshop--illustrated { padding:0; max-width:none; margin:0; }
+.inventory-hotspot--generator { left:4%; top:23%; width:32%; height:24%; }
+.inventory-hotspot--machines { left:62%; top:22%; width:34%; height:25%; }
+.inventory-hotspot--shelf { left:32%; top:11%; width:36%; height:12%; }
+.inventory-hotspot--recipes { left:0; top:51%; width:23%; height:21%; z-index:2; }
+.inventory-hotspot--recipes .inventory-hotspot__label { padding-inline:8px; font-size:13px; }
+.craft-desk__recipe { position:absolute; left:17%; right:15%; top:51%; bottom:12%; display:flex; align-items:center; justify-content:center; color:#44352d; }
+.craft-desk__recipe .industry-target { padding:8px 5px; border:0; border-radius:0; background:transparent; box-shadow:none; width:100%; max-height:100%; overflow-y:auto; scrollbar-width:thin; }
+.craft-desk__recipe .industry-target>small { color:#786448; font-size:10px; letter-spacing:.12em; }
+.craft-desk__recipe .industry-target h2 { display:flex; align-items:center; justify-content:center; gap:6px; color:#3d3030; font:clamp(15px,4.5vw,22px)/1.5 var(--font-display); margin:4px 0 10px; }
+.craft-desk__recipe .industry-tier { color:#735f42; border-color:#8f7b5366; font-size:10px; }
+.craft-desk__recipe .industry-target p { color:#625247; font-size:11px; line-height:1.6; margin:6px 0; }
+.craft-desk__recipe .industry-target .button { min-height:39px; padding:7px 9px; font-size:11px; border-radius:4px 11px; color:#3e3028; background:linear-gradient(#f4e8ca,#cbb186); border-color:#917449; }
+.craft-desk__recipe .industry-balances { justify-content:center; gap:5px; margin:10px 0; }
+.craft-desk__recipe .industry-balances>span { color:#4a503c; font-size:10px; background:#fff8df66; border-color:#8d866c77; }
+.craft-desk__recipe .industry-balances .is-short { color:#8b3a3b; background:#f9e0c577; border-color:#a1665a66; }
+.craft-desk__recipe .industry-sources { display:grid; gap:4px; }
+.inventory-scene .craft-desk__catalog { position:absolute; bottom:3%; left:24%; right:24%; min-height:42px; background:#101a2bcc; color:#e6d4ac; border-color:#a68e69; font-size:13px; }
+.craft-desk__job { position:absolute; left:28%; right:13%; bottom:11%; font-size:10px; color:#534331; text-align:center; }
+.craft-detail-modal .industry-tabs { position:sticky; top:0; z-index:2; background:#101a2bf5; padding-block:6px; }
+.craft-detail-modal .industry-help,.craft-detail-modal p { color:#d5d0c5; }
+@media(max-width:360px) { .craft-desk__recipe { left:19%; right:13%; } .craft-desk__recipe .industry-target h2 { margin:2px 0 4px; } .craft-desk__recipe .industry-target p { font-size:10px; } }
+.craft-desk__drawing { display:flex; justify-content:center; align-items:center; margin:4px auto 10px; width:88px; height:80px; border:1px solid #84694255; outline:1px solid #9c81552b; outline-offset:3px; border-radius:50%; color:#806444; background:radial-gradient(ellipse,#faf0d544,transparent); }
+@media(max-height:720px) { .craft-desk__drawing { width:58px; height:50px; margin-bottom:5px; } .craft-desk__drawing svg { width:42px; height:42px; } }
+.craft-desk__power { position:absolute; top:45.3%; left:9%; width:24%; display:flex; align-items:center; flex-direction:column; gap:2px; color:#e6d5b3; text-shadow:0 1px 4px #000; pointer-events:none; }
+.craft-desk__power progress { width:100%; height:5px; accent-color:#b9d9ff; }
+.craft-desk__power small { font-size:9px; font-variant-numeric:tabular-nums; }

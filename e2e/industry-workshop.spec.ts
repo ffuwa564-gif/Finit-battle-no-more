@@ -14,14 +14,14 @@ async function win(page: Page, index: number) {
   }, index);
   await page.reload(); await enterGame(page);
   await expect(page.locator('.campaign-story')).toHaveCount(0);
-  await expect(page.locator('.industry-dungeon-resources')).toContainText('持ち帰る工房資源');
+  await expect(page.locator('.industry-dungeon-resources')).toContainText('持ち帰るクラフト資源');
   await page.getByRole('button', { name: '獲得を確定', exact: true }).click();
   await expect.poll(async () => (await read(page)).battle).toBeNull();
 }
 test('dungeon resources build a real workshop and an automatic furnace while travel remains on the map', async ({ page }, info) => {
   await boot(page); await win(page, 0);
   expect((await read(page)).industry!.stock.timber).toBe(4);
-  await page.goto('/#bag/workshop'); await expect(page.getByRole('heading', { name: '旅の工房' })).toBeVisible();
+  await page.goto('/#bag/workshop'); await expect(page.getByRole('heading', { name: 'クラフト' })).toBeVisible();
   await page.clock.install();
   await page.getByRole('button', { name: '加工する · 作業台', exact: true }).click();
   await expect.poll(async () => (await read(page)).industry!.job?.recipeId).toBe('bench');
@@ -42,12 +42,13 @@ test('dungeon resources build a real workshop and an automatic furnace while tra
   await page.getByRole('button', { name: '装置を設置 · 精錬炉', exact: true }).click();
   await page.goto('/#bag/workshop/charcoal');
   await page.getByRole('button', { name: '加工する · 木炭', exact: true }).click(); await page.clock.fastForward(9000);
+  await page.locator('.inventory-hotspot--machines').click();
   await page.getByRole('combobox', { name: '精錬炉 #1', exact: true }).selectOption('iron');
   await page.clock.fastForward(31000); await page.getByRole('button', { name: '生産を更新', exact: true }).click();
   await expect.poll(async () => (await read(page)).industry!.stock.iron).toBe(6);
   const s = await read(page); expect(s.industry!.stock.charcoal).toBe(0); expect(s.industry!.stock.ore).toBe(0);
   await page.screenshot({ path: info.outputPath('automatic-furnace.png') });
-  await page.reload(); await enterGame(page); await expect(page.locator('.industry-machine')).toContainText(['作業台', '精錬炉']);
+  await page.reload(); await enterGame(page); await page.locator('.inventory-hotspot--machines').click(); await expect(page.locator('.industry-machine')).toContainText(['作業台', '精錬炉']);
   for (const width of [320, 390]) { await page.setViewportSize({ width, height: 844 }); await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))); const layout = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > innerWidth, offenders: [...document.querySelectorAll('body *')].filter(el => el.getBoundingClientRect().right > innerWidth + 1).map(el => el.className + ':' + el.textContent?.slice(0,50)) })); expect(layout.overflow, JSON.stringify({width, ...layout})).toBe(false); }
 });
 test('chapter three explains a craft requirement and links it to the workshop without resetting progress', async ({ page }, info) => {
@@ -59,7 +60,7 @@ test('chapter three explains a craft requirement and links it to the workshop wi
   await page.reload(); await enterGame(page);
   await expect(page.getByTestId('home-journey-goal')).toContainText('水門の操作輪を作る');
   await page.getByRole('button', { name: '次の目的地へ', exact: true }).click();
-  await expect(page.getByRole('heading', { name: '旅の工房' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'クラフト' })).toBeVisible();
   await expect(page.locator('.industry-target')).toContainText('水門の操作輪');
   await expect(page.locator('.industry-target')).toContainText('根に流れ込む力');
   await page.screenshot({ path: info.outputPath('chapter-three-crafting-guidance.png') });
