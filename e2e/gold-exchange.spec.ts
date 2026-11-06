@@ -7,7 +7,7 @@ async function prepare(page: import('@playwright/test').Page, gold: number) {
     const { loadSave, persistSave } = await import('/src/platform/save.ts'); const save = (await loadSave())!; const revision = save.revision;
     save.gold = gold; save.stones = 17; save.drawCount = 11; save.ssrPity = 9; save.settings.reducedMotion = true; save.revision++; await persistSave(save, revision);
   }, gold);
-  await page.reload(); await enterGame(page); await page.getByRole('button', { name: 'ゴールド交換', exact: true }).click();
+  await page.reload(); await enterGame(page); await page.getByRole('button', { name: '道具', exact: true }).click(); await page.getByRole('button', { name: 'ゴールド交換', exact: true }).click();
 }
 const readSave = (page: import('@playwright/test').Page) => page.evaluate(async () => (await import('/src/platform/save.ts')).loadSave());
 

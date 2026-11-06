@@ -29,7 +29,7 @@ export function ExpeditionLedger({save,content}:{save:GameSave;content:Content})
     <section><h4>{tr('確保した金貨・記憶石')}</h4><ul><li><span>{tr('金貨')}</span><strong>{perHour?rate(earned.gold):earned.gold.toLocaleString()}</strong></li><li><span>{tr('記憶石（個）')}</span><strong>{perHour?rate(earned.gemCount):earned.gemCount}</strong></li></ul></section>
     <section><h4>{tr('受取時の祈願石・素材・欠片')}</h4><ul><li><span>{tr('祈願石')}</span><strong>{perHour?rate(earned.stones):earned.stones}</strong></li>{entries(earned.materials,namedMaterial,perHour)}{entries(earned.dust,id=>`${dustName(id)} ${tr('欠片')}`,perHour)}</ul></section>
   </div>;
-  return <InventorySection id="expedition-ledger" title="周回の実績" count={records.length} tone="night">
+  return <InventorySection art="open-folio" id="expedition-ledger" title="周回の実績" count={records.length} tone="night">
     <div className="expedition-ledger" data-testid="expedition-ledger">
       <div className="expedition-ledger__filters"><label>{tr('集計する版')}<select value={version} onChange={event=>setVersion(event.target.value)}><option value="current">{tr('現在のコンテンツ・ルール版')}</option><option value="all">{tr('すべての版')}</option></select></label><label>{tr('ダンジョン')}<select value={dungeonId} onChange={event=>setDungeonId(event.target.value)}><option value="">{tr('すべてのダンジョン')}</option>{[...new Set(records.map(record=>record.dungeonId))].map(id=><option key={id} value={id}>{dungeonName(id)}</option>)}</select></label></div>
       <p className="expedition-ledger__note">{tr('更新後に開始した最新{0}件のうち、条件に合う{1}件を集計。最大30探索を保存します。').replace('{0}',String(records.length)).replace('{1}',String(summary.total))}</p>
