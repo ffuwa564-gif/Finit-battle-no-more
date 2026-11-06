@@ -211,7 +211,7 @@ describe('1.10 guaranteed scout recruitment journeys', () => {
       let save=createInitialSave(content,42);
       const ids=content.chapters!.flatMap(ch=>ch.dungeonIds),index=ids.indexOf(offer.dungeonId);
       expect(index).toBeGreaterThan(0);save.completedDungeonIds=ids.slice(0,index);
-      save.novels={seen:(content.novels??[]).filter(n=>n.trigger.kind==='opening'||save.completedDungeonIds.includes(n.trigger.dungeonId)).map(n=>n.id)};
+      save.novels={seen:(content.novels??[]).filter(n=>!('dungeonId' in n.trigger)||save.completedDungeonIds.includes(n.trigger.dungeonId)).map(n=>n.id)};
       expect(save.discoveredIds).not.toContain(offer.characterId);
       expect(()=>applyCommand(save,{type:'recruit',characterId:offer.characterId},content)).toThrow();
       const won=clearCurrentExploration(applyCommand(save,{type:'depart',dungeonId:offer.dungeonId,potions:0},content));

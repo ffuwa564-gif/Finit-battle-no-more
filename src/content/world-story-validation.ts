@@ -12,6 +12,12 @@ export function validateWorldStoryContent(content: Content): string[] {
     const text = (t: unknown) => !!t && typeof t === 'object' && ['ja', 'en'].every(k => typeof (t as Record<string, unknown>)[k] === 'string' && String((t as Record<string, unknown>)[k]).trim().length > 0);
     bad(def.version !== 1 || ids.size !== def.nodes.length || hubs.size !== def.hubs.length, 'unique versioned nodes and hubs required');
     bad(!def.chapters.length || def.chapters.some((c, i) => c.number !== i + 1), 'story chapters must form a contiguous campaign prefix');
+    if (def.onboarding) {
+        const o = def.onboarding;
+        bad(!Number.isSafeInteger(o.travelSeconds) || o.travelSeconds < 1 || o.travelSeconds > 15 || !o.dungeonIds.length || o.dungeonIds.some(id => !def.chapters[0].dungeonIds.includes(id)) || o.destinationIds.some(id => !hubs.has(id) && !o.dungeonIds.includes(id)), 'invalid early patrol route');
+    }
+    for (const [id, n] of Object.entries(def.legacyFirstChapter ?? {}))
+        bad(!def.nodes.some(node => node.id === id && node.chapter === 1) || n.requiresNodes.some(r => !ids.has(r)) || n.requiresDungeons.some(d => !def.chapters[0].dungeonIds.includes(d)), 'invalid historical prerequisite ' + id);
     for (const h of def.hubs)
         bad(!text(h.name) || ![h.x, h.y].every(v => Number.isFinite(v) && v >= 0 && v <= 1), 'invalid hub ' + h.id);
     for (const c of def.chapters) {
@@ -42,7 +48,8 @@ export function validateWorldStoryContent(content: Content): string[] {
         bad(Boolean(n.backgroundId && !content.assets.some(a => a.id === n.backgroundId)), 'unknown scene background ' + n.id);
         bad(!chars.has(n.actorId) || ['hero', 'narration'].includes(n.actorId) || !hubs.has(n.hubId) || !def.chapters.some(c => c.number === n.chapter) || !text(n.bubble) || !text(n.title) || n.lines.length < 2, 'invalid node ' + n.id);
         bad(n.requiresNodes.some(id => !ids.has(id)) || n.requiresDungeons.some(id => !content.dungeons.some(d => d.id === id)) || Boolean(n.leadDungeonId && !content.dungeons.some(d => d.id === n.leadDungeonId)), 'unknown prerequisite ' + n.id);
-        const lines = [...n.lines, ...(n.choices ?? []).flatMap(c => c.response), ...(n.daily ?? []).flat(), ...(n.emergency?.lines ?? []), ...(n.variants ?? []).flatMap(v => v.lines)];
+        bad(Boolean(n.firstVisitLines && (n.firstVisitLines.length < 2 || n.firstVisitLines.length > 5 || n.choices || n.daily || n.variants)), 'short first visits require 2..5 lines without branching ' + n.id);
+        const lines = [...n.lines, ...(n.firstVisitLines ?? []), ...(n.choices ?? []).flatMap(c => c.response), ...(n.daily ?? []).flat(), ...(n.emergency?.lines ?? []), ...(n.variants ?? []).flatMap(v => v.lines)];
         for (const v of n.variants ?? [])
             bad(!hubs.has(v.hubId) || !text(v.bubble) || v.requiresNodes.some(id => !ids.has(id)), 'invalid daily variant ' + n.id);
         for (const line of lines)

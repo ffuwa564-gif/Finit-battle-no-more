@@ -1,10 +1,10 @@
 import type { Content, GameSave, NovelProgress, NovelSceneDef } from './types';
 
 export function novelAvailable(scene: NovelSceneDef, save: GameSave): boolean {
-  return scene.trigger.kind === 'opening' || save.completedDungeonIds.includes(scene.trigger.dungeonId);
+  return scene.trigger.kind === 'intro' || scene.trigger.kind === 'opening' || save.completedDungeonIds.includes(scene.trigger.dungeonId);
 }
 export function initialNovelProgress(content: Content, opening: boolean): NovelProgress {
-  const scene = opening ? content.novels?.find(scene => scene.trigger.kind === 'opening') : undefined;
+  const scene = opening ? content.novels?.find(scene => scene.trigger.kind === 'intro') ?? content.novels?.find(scene => scene.trigger.kind === 'opening') : undefined;
   return { seen: [], ...(scene ? { active: { sceneId: scene.id, page: 0 } } : {}) };
 }
 /** Retained for legacy save upgrades. Dungeon milestones now open on the map;

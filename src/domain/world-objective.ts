@@ -6,7 +6,7 @@ export interface WorldObjective { kind: 'start' | 'talk' | 'dungeon' | 'craft' |
 export function currentWorldObjective(save: GameSave, content: Content): WorldObjective {
   const s = save.worldStory, def = content.worldStory;
   const empty = { completed: 0, total: 0, goal: { ja: '少女たちとの旅', en: 'A journey with the girls' } };
-  if (!s || !def) return { ...empty, kind: 'start', action: { ja: '少女たちと旅を始める', en: 'Begin your journey with the girls' }, reason: { ja: '主人公を設定して、最初に会う仲間を確認する。', en: 'Create your traveler and find your first companion.' } };
+  if (!s || !def) return { ...empty, kind: 'start', action: { ja: '最初の依頼を受ける', en: 'Accept your first request' }, reason: { ja: '主人公の名前を決め、リオラから聖堂の巡回を引き受ける。', en: 'Choose your name and accept Liora’s cathedral patrol.' } };
   const ch = storyChapter(s, def), next = storyNext(save, def);
   const nodes = def.nodes.filter(n => n.chapter === ch?.number && !n.optional);
   const base = { goal: activeWorldIncident(save, def)?.title ?? ch?.objective ?? empty.goal, chapter: ch?.number, completed: nodes.filter(n => s.completed.includes(n.id)).length, total: nodes.length };

@@ -13,6 +13,14 @@ function worldStoryPages(ids: string[]): NovelSceneDef['pages'] {
   })));
 }
 
+export const firstAdventureIntro: NovelSceneDef = {
+  id: 'opening-first-adventure', title: '旅のはじまり', trigger: { kind: 'intro' },
+  pages: [
+    { backgroundId: 'novel-desire-gate', text: '「どんな願いも叶う」という扉の前で、少女たちは争っていた。\n次に目を開けたとき、私は見知らぬ庭にいた。' },
+    { backgroundId: 'novel-awakening-garden', speaker: 'リオラ', text: '庭園の女から、おまえの案内を任された。\nここで暮らすのは、みんな少女だ。まずは聖堂の巡回に、一緒に来い。' },
+  ],
+};
+
 export const openingNovel: NovelSceneDef = {
   id: 'opening-desire-gate', title: '序章 ― 欲望の扉、その向こう', trigger: { kind: 'opening' },
   pages: [

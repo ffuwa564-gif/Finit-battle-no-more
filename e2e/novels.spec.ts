@@ -7,10 +7,18 @@ async function begin(page: Page) {
 }
 async function saved(page: Page) { return page.evaluate(async () => (await (await import('/src/platform/save.ts')).loadSave())!); }
 
-test('new game opens the full-screen OP, saves its place and never restarts it after completion', async ({ page }, info) => {
+test('new game opens a two-page intro and the full OP remains available with saved replay positions', async ({ page }, info) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await begin(page);
   const story = page.locator('.visual-novel');
+  await expect(story).toHaveAttribute('data-scene', 'opening-first-adventure');
+  await story.getByRole('button', { name: '次の台詞', exact: true }).click();
+  await expect(story).toHaveAttribute('data-page', '1');
+  await story.getByRole('button', { name: '物語を閉じる', exact: true }).click();
+  await expect(story).toHaveCount(0);
+  await expect(page.locator('.fairy-invitation')).toBeVisible();
+  await page.goto('/#settings');
+  await page.getByRole('button', { name: /序章 ― 欲望の扉、その向こう/ }).click();
   await expect(story).toHaveAttribute('data-scene', 'opening-desire-gate');
   await expect(story.locator('.novel-text')).not.toBeEmpty();
   const openingLine = (await story.locator('.novel-text').innerText()).trim();
@@ -35,7 +43,7 @@ test('new game opens the full-screen OP, saves its place and never restarts it a
   await story.getByRole('button', { name: '前の台詞', exact: true }).click();
   await expect(story).toHaveAttribute('data-page', '8');
   await skipStory(page);
-  await expect(page.locator('.fairy-invitation')).toBeVisible();
+  await page.goto('/#home');
   await page.reload(); await page.getByRole('button', { name: 'タップしてはじめる', exact: true }).click();
   await expect(page.locator('.title-screen')).toHaveCount(0);
   await expect(story).toHaveCount(0);

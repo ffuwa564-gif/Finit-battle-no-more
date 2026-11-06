@@ -12,7 +12,7 @@ import { titleArt } from './title-art';
 import { storyMilestones } from './story-milestones';
 import { zakuroCharacter, zakuroSkills, zakuroAssets, zakuroDungeons, zakuroEncounterNovel } from './zakuro';
 import { livingGardenArt } from './living-garden';
-import { openingNovel, campaignNovels } from './novels';
+import { openingNovel, firstAdventureIntro, campaignNovels } from './novels';
 import { xrGacha } from './xr-gacha';
 import { withMotionPosters } from './motion-posters';
 import { goldExchanges, goldExchangeArt } from './gold-exchanges';
@@ -313,7 +313,7 @@ const milestoneOrder = (scene: typeof milestones[number]) => {
   const trigger = scene.trigger;
   return trigger.kind === 'dungeon-clear' ? releasedContent.dungeons.findIndex(stage => stage.id === trigger.dungeonId) : -1;
 };
-releasedContent.novels = [openingNovel, ...milestones.sort((a, b) => milestoneOrder(a) - milestoneOrder(b)), ...mapStories];
+releasedContent.novels = [openingNovel, ...milestones.sort((a, b) => milestoneOrder(a) - milestoneOrder(b)), ...mapStories, firstAdventureIntro];
 
 /** Research data is explicit and opt-in, never silently enabled for old public saves. */
 export const researchContent: Content={...releasedContent,...SAKUYA_RESEARCH_RELEASE,characters:releasedContent.characters.map(character=>character.id==='mireille'?{...character,skillOverrides:{'barrier-18':{name:'桜の返礼',description:'味方1人に通常の90%の障壁と、重ならない返礼の印を付与。印は2ラウンド後まで。敵の主攻撃を障壁で実際に防ぐと、守ったHP割合の5倍を花びらとして最大100%まで蓄える。次の主攻撃の最初の相手への実ダメージに、その割合を一度だけ追加する。印は消費時か期限・戦闘不能で消える。追撃や花の攻撃からは蓄えず、追加分から追撃・石特性・追加ゲージを作らない。',barrierReturn:{shieldPercent:90,conversionPercent:500,capacityPercent:100,windowRounds:2,payoutPercent:100}}}}:character)};

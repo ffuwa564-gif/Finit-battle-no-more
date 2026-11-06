@@ -3644,5 +3644,10 @@
   "目標の案内を隠す": "Hide next-step hint",
   "この資源の採集地点はまだ未開放です。地図で旅を進めると見つかります。": "This resource location is not open yet. Continue your journey on the map to discover it.",
   "地図で次の行動を見る": "See the next action on the map",
-  "その道具は1つだけ製作できます。": "Only one copy of this tool can be crafted."
+  "その道具は1つだけ製作できます。": "Only one copy of this tool can be crafted.",
+  "旅のはじまり": "The First Patrol",
+  "「どんな願いも叶う」という扉の前で、少女たちは争っていた。\n次に目を開けたとき、私は見知らぬ庭にいた。": "Girls fought before a gate said to grant any wish.\nWhen I next opened my eyes, I was in an unfamiliar garden.",
+  "庭園の女から、おまえの案内を任された。\nここで暮らすのは、みんな少女だ。まずは聖堂の巡回に、一緒に来い。": "The woman of the garden asked me to guide you.\nEveryone here is a girl. Come patrol the cathedral with me.",
+  "最初の依頼を受ける": "Accept Your First Request",
+  "主人公の名前を決め、リオラから聖堂の巡回を引き受ける。": "Choose your name and accept Liora’s cathedral patrol request."
 }

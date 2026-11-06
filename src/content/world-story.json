@@ -115,13 +115,34 @@
       "number": 1,
       "chapterId": "mistbound-sanctuary",
       "objective": {
-        "ja": "街を知り、最初の巡回を終える",
-        "en": "Get to know the town and complete your first patrol"
+        "ja": "リオラと巡回し、聖域へ続く道を開く",
+        "en": "Patrol with Liora and open the way to the sanctuary"
       },
       "endingNodeId": "c1-return",
       "gates": {
         "silent-cathedral": [
           "c1-job"
+        ],
+        "chapel-approach": [
+          "c1-hill"
+        ],
+        "bell-stairs": [
+          "c1-offerings"
+        ],
+        "moon-garden": [
+          "c1-chart"
+        ],
+        "root-waterway": [
+          "c1-wolf"
+        ],
+        "blue-lantern-path": [
+          "c1-water-report"
+        ],
+        "scale-bridge": [
+          "c1-lantern-report"
+        ],
+        "fountain-threshold": [
+          "c1-flowers"
         ],
         "stone-fountain": [
           "c1-flowers",
@@ -374,6 +395,113 @@
   ],
   "nodes": [
     {
+      "id": "c1-job",
+      "chapter": 1,
+      "actorId": "liora",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "初仕事の話をしよう",
+        "en": "Our first job"
+      },
+      "title": {
+        "ja": "初仕事の話をしよう",
+        "en": "Our first job"
+      },
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "{name}、地図を出せ。今日は聖堂までだ。",
+            "en": "{name}, get your map. Today we go to the cathedral."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……これ、逆さま？",
+            "en": "Okay. ...Am I holding it upside down?"
+          },
+          "voices": {
+            "soft": {
+              "ja": "うん。……これ、逆さま？",
+              "en": "Okay. ...Am I holding it upside down?"
+            },
+            "honest": {
+              "ja": "分かった。あ、地図が逆だった。",
+              "en": "All right. Oh, I had the map upside down."
+            },
+            "dreamy": {
+              "ja": "うん。……泉って、こんな形だったんだね。",
+              "en": "Okay. ...So that is the shape of the fountain."
+            }
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "泉が上だ。そこを持てば、風で折れない。",
+            "en": "The fountain goes at the top. Hold that corner against the wind."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ありがとう。隣、歩いてもいい？",
+            "en": "Thank you. Can I walk beside you?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "道が狭くなったら、後ろへ下がれ。",
+            "en": "When the path narrows, fall in behind me."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "携帯灯も工房で作っておこう。暗い通路では、足元を見失いやすい。",
+            "en": "We should make a field lantern in the workshop. It is easy to lose your footing in a dark passage."
+          }
+        }
+      ],
+      "leadDungeonId": "silent-cathedral",
+      "backgroundId": "cathedral",
+      "task": {
+        "ja": "リオラから最初の依頼を受ける",
+        "en": "Accept your first request from Liora"
+      },
+      "purpose": {
+        "ja": "聖堂の入口を巡回し、狼を追い払って資材を持ち帰る。",
+        "en": "Patrol the cathedral entrance, drive off its wolves, and bring back supplies."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "{name}、最初の仕事だ。聖堂の入口にいる狼を追い払う。",
+            "en": "{name}, your first job is to drive the wolves away from the cathedral entrance."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "拾ったものは、持って帰っていいの？",
+            "en": "Can we bring back the things we find?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "ああ。資材は工房でも使える。地図の聖堂を選べ。一緒に行こう。",
+            "en": "Yes. The workshop can use the supplies. Choose the cathedral on the map. I will go with you."
+          }
+        }
+      ]
+    },
+    {
       "id": "c1-hill",
       "chapter": 1,
       "actorId": "liora",
@@ -386,8 +514,12 @@
         "ja": "白亜の塔を見よう",
         "en": "Come and see the Ivory Tower"
       },
-      "requiresNodes": [],
-      "requiresDungeons": [],
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
       "lines": [
         {
           "speaker": "liora",
@@ -455,13 +587,51 @@
       ],
       "backgroundId": "key-art",
       "task": {
-        "ja": "リオラと話す",
-        "en": "Talk to Liora"
+        "ja": "リオラに巡回を報告する",
+        "en": "Report the patrol to Liora"
       },
       "purpose": {
-        "ja": "白亜の塔と、少女たちが暮らす街を見渡す。",
-        "en": "Look out over the Ivory Tower and the town."
-      }
+        "ja": "聖堂の報告をして、次の巡回先を聞く。",
+        "en": "Report your findings and ask where to patrol next."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "戻ったな、{name}。拾った資材はカバンに入れたか。",
+            "en": "You are back, {name}. Did you put the supplies in your bag?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。……丘から見ると、街がずっと続いてるんだね。",
+            "en": "Yes. ...From this hill, the town seems to go on forever."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "あの白い塔を目印にしろ。この街も、塔の向こうも、暮らしているのはみんな少女だ。",
+            "en": "Use that white tower as your landmark. Everyone living here, and beyond it, is a girl."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "次は、どこを見に行くの？",
+            "en": "Where should we look next?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "聖堂の参道だ。石段が通れるか、確かめよう。",
+            "en": "The cathedral approach. We need to check whether the steps are passable."
+          }
+        }
+      ],
+      "leadDungeonId": "chapel-approach"
     },
     {
       "id": "c1-offerings",
@@ -479,7 +649,9 @@
       "requiresNodes": [
         "c1-hill"
       ],
-      "requiresDungeons": [],
+      "requiresDungeons": [
+        "chapel-approach"
+      ],
       "lines": [
         {
           "speaker": "narration",
@@ -554,13 +726,44 @@
       ],
       "backgroundId": "cathedral",
       "task": {
-        "ja": "リオラと話す",
-        "en": "Talk to Liora"
+        "ja": "広場で次の仕事を聞く",
+        "en": "Ask about the next job in the square"
       },
       "purpose": {
-        "ja": "少女たちが宝石を集める理由を聞く。",
-        "en": "Learn why the girls collect gems."
-      }
+        "ja": "参道の報告をして、鐘楼へ向かう。",
+        "en": "Report the approach and head for the bell stairs."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "広場では、少女たちが泥のついた宝石を数えていた。擦りむいた手を気にする様子もない。",
+            "en": "In the square, girls counted muddy gemstones, seemingly unconcerned about their scraped hands."
+          }
+        },
+        {
+          "speaker": "admirer",
+          "text": {
+            "ja": "あと二つ。もう一度潜れば、あの子に渡せる。",
+            "en": "Two more. One more trip and I can give them to her."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "会いたい子がいるんだね。……私たちの次の仕事は？",
+            "en": "There is someone you want to see. ...What is our next job?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "鐘楼へ行く。ノエルが、鐘の鳴らない理由を調べている。",
+            "en": "The bell stairs. Noelle is investigating why the bells have fallen silent."
+          }
+        }
+      ],
+      "leadDungeonId": "bell-stairs"
     },
     {
       "id": "c1-generation",
@@ -578,7 +781,9 @@
       "requiresNodes": [
         "c1-offerings"
       ],
-      "requiresDungeons": [],
+      "requiresDungeons": [
+        "bell-stairs"
+      ],
       "lines": [
         {
           "speaker": "narration",
@@ -692,363 +897,50 @@
       ],
       "backgroundId": "novel-awakening-garden",
       "task": {
-        "ja": "リオラと話す",
-        "en": "Talk to Liora"
+        "ja": "リオラとノエルを訪ねる",
+        "en": "Visit Noelle with Liora"
       },
       "purpose": {
-        "ja": "庭で、新しい少女が生まれる儀式を見届ける。",
-        "en": "Witness the birth ritual in the garden."
-      }
-    },
-    {
-      "id": "c1-garden-rounds",
-      "chapter": 1,
-      "actorId": "garden-woman",
-      "hubId": "hub-garden",
-      "title": {
-        "ja": "ひとりずつの名前",
-        "en": "Each Girl in Turn"
+        "ja": "鐘楼の調査結果を聞く途中、個体生成の庭を通る。",
+        "en": "Pass through the garden of creation on your way to hear the bell investigation results."
       },
-      "bubble": {
-        "ja": "庭を一緒に歩きましょう",
-        "en": "Walk around the garden with me"
-      },
-      "requiresNodes": [
-        "c1-generation"
-      ],
-      "requiresDungeons": [],
-      "lines": [
+      "firstVisitLines": [
         {
-          "speaker": "narration",
+          "speaker": "liora",
           "text": {
-            "ja": "庭へ戻ると、女は花壇のそばにしゃがんでいた。少女の籠をのぞき、一本ずつ花を見せてもらっている。",
-            "en": "Back in the garden, the woman was crouching beside a flowerbed. A girl showed her the flowers in her basket, one at a time."
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "今日は、こんなにお花を集めたんだね。すごいわね。",
-            "en": "You gathered so many flowers today. Well done."
-          }
-        },
-        {
-          "speaker": "garden-girl",
-          "text": {
-            "ja": "こっちは、まだつぼみなの。お部屋に置いてもいい？",
-            "en": "These are still buds. Can I put them in your room?"
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "ええ。開いたら、一緒に見ましょう。",
-            "en": "Of course. When they open, we can look at them together."
+            "ja": "ここは個体生成の庭だ。あの二人は、恋人同士だろう。",
+            "en": "This is the garden of creation. Those two must be lovers."
           }
         },
         {
           "speaker": "narration",
           "text": {
-            "ja": "女は次の少女にも声をかけた。昼に食べたものを聞き、ほどけた髪紐を結び直す。その次の少女は、直したばかりの椅子を見せた。",
-            "en": "She went to the next girl, asked what she had eaten for lunch, and retied her loose hair ribbon. Another girl showed her a chair she had just repaired."
+            "ja": "二人が宝石を捧げると、花の間に少女が現れた。",
+            "en": "When they offered their gemstones, a girl appeared among the flowers."
           }
         },
         {
-          "speaker": "garden-woman",
+          "speaker": "lover-one",
           "text": {
-            "ja": "座ってみてもいい？ ……本当だ、もう揺れないわ。",
-            "en": "May I sit on it? ...You are right. It does not wobble anymore."
+            "ja": "生まれてくれて、ありがとう。……三人で帰ろうね。",
+            "en": "Thank you for being born. ...Let us go home together."
           }
         },
         {
-          "speaker": "garden-girl",
+          "speaker": "liora",
           "text": {
-            "ja": "あなたが座るところだから、ちゃんと直したかったの。",
-            "en": "It is your chair. I wanted to fix it properly."
+            "ja": "美しいな、この世界は。……ノエルが呼んでいる。調査の結果を聞きに行こう。",
+            "en": "This world is beautiful. ...Noelle is calling us. Let us hear what she found."
           }
         },
         {
           "speaker": "narration",
           "text": {
-            "ja": "一人が話し終えるまで、女は足を止めて聞いていた。庭の端で黙っていた少女にも、自分から会いに行く。",
-            "en": "She stayed with each girl until she had finished speaking. She even went over to the girl sitting quietly at the edge of the garden."
-          }
-        },
-        {
-          "speaker": "hero",
-          "text": {
-            "ja": "みんなと、こうやって話してるんだね。",
-            "en": "You talk to everyone like this."
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "ええ。あなたは、今日どんなものを見てきたの？",
-            "en": "Yes. And what did you see today?"
-          }
-        },
-        {
-          "speaker": "hero",
-          "text": {
-            "ja": "塔と、広場。それから、三人で帰っていくところを。",
-            "en": "The tower, and the square. And three girls going home together."
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "そう。あとで、ゆっくり聞かせてちょうだい。夜は私の部屋へいらっしゃい。",
-            "en": "I see. Tell me about it later, when we have time. Come to my room tonight."
+            "ja": "三人が手をつなぐ姿に、私は笑顔を返した。それでも、扉の前の争いが頭から離れなかった。",
+            "en": "I smiled as the three joined hands. Even so, I could not forget the fighting before the gate."
           }
         }
-      ],
-      "backgroundId": "novel-awakening-garden",
-      "task": {
-        "ja": "庭園の女と話す",
-        "en": "Talk to the garden keeper"
-      },
-      "purpose": {
-        "ja": "庭園の女が少女たちと過ごす様子を見る。",
-        "en": "Observe the garden keeper with the girls."
-      }
-    },
-    {
-      "id": "c1-garden-night",
-      "chapter": 1,
-      "actorId": "garden-woman",
-      "hubId": "hub-garden",
-      "title": {
-        "ja": "庭園の夜",
-        "en": "A Night in the Garden"
-      },
-      "bubble": {
-        "ja": "夜は、私の部屋へ",
-        "en": "Come to my room tonight"
-      },
-      "requiresNodes": [
-        "c1-garden-rounds"
-      ],
-      "requiresDungeons": [],
-      "lines": [
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "夜、女の部屋には少女たちが集まった。花を飾る子、寝台へ枕を運ぶ子。昼に見せていた籠は、窓辺に置かれていた。",
-            "en": "That night, girls gathered in the woman's room. One arranged flowers; another carried pillows to the bed. The basket from that afternoon stood by the window."
-          }
-        },
-        {
-          "speaker": "garden-girl",
-          "text": {
-            "ja": "リオラも、こっち。そこに立ってたら、寒いよ。",
-            "en": "Liora, over here. You will get cold standing there."
-          }
-        },
-        {
-          "speaker": "liora",
-          "text": {
-            "ja": "私は、戸口にいれば……。",
-            "en": "I can stay by the door..."
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "今夜はもう、おしまい。盾を置いて、いらっしゃい。",
-            "en": "You are done for tonight. Put down your shield and come here."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "リオラは壁に盾を預け、女の隣へ座った。袖を引いていた少女が、その肩へ掛布をかける。",
-            "en": "Liora rested her shield against the wall and sat beside the woman. The girl who had tugged her sleeve draped a blanket over her shoulders."
-          }
-        },
-        {
-          "speaker": "hero",
-          "text": {
-            "ja": "……みんな、おやすみ。",
-            "en": "...Good night, everyone."
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "おやすみなさい。あなたの部屋にも、お花を置いておいたわ。",
-            "en": "Good night. I left some flowers in your room, too."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "私は廊下へ出た。戸が閉まる直前、リオラが女の肩へ頭を寄せるのが見えた。",
-            "en": "I stepped into the corridor. Just before the door closed, I saw Liora lean her head against the woman's shoulder."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "――庭園の女の部屋。",
-            "en": "—The woman's room, in the garden."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "女が横になると、少女たちがそばへ寄った。髪に触れる手も、掛布からはみ出した手も、女は順に握り返した。",
-            "en": "As the woman lay down, the girls drew close. She took their hands in turn, the ones touching her hair and the ones reaching out from under the blanket."
-          }
-        },
-        {
-          "speaker": "garden-girl",
-          "text": {
-            "ja": "明日も、庭に来てくれる？",
-            "en": "Will you come out into the garden tomorrow, too?"
-          }
-        },
-        {
-          "speaker": "garden-woman",
-          "text": {
-            "ja": "もちろん。花が開いたか、一緒に見なくちゃ。",
-            "en": "Of course. We have to see whether the flowers have opened."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "リオラも、ほかの少女たちも、今夜は自分のそばにいる。女は一人ずつ顔を見渡した。これほど大勢に慕われ、求められている者が、ほかにいるだろうか。",
-            "en": "Liora and all the other girls were beside her tonight. The woman looked at each face. Who else could be loved and needed by so many?"
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "自分が誰よりも愛されている。その思いが、とてつもなく心地よかった。女は微笑んだまま目を閉じ、少女たちに囲まれて幸せな夢へ落ちていった。",
-            "en": "She was loved more than anyone else. The thought gave her an overwhelming pleasure. Still smiling, she closed her eyes and slipped into happy dreams, surrounded by the girls."
-          }
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "別の庭園では、一人の管理者が水鏡を見つめていた。眠る女と、その周りの少女たちを、しばらく黙って眺めている。",
-            "en": "In another garden, a keeper watched her water mirror. For a while she silently studied the sleeping woman and the girls around her."
-          },
-          "shade": "dark"
-        },
-        {
-          "speaker": "garden-observer",
-          "text": {
-            "ja": "かわいそうなひと……。",
-            "en": "You poor thing..."
-          },
-          "shade": "dark"
-        },
-        {
-          "speaker": "narration",
-          "text": {
-            "ja": "その言葉は、眠る女には届かなかった。",
-            "en": "Her words did not reach the sleeping woman."
-          },
-          "shade": "dark"
-        }
-      ],
-      "backgroundId": "novel-awakening-garden",
-      "task": {
-        "ja": "庭園の女と話す",
-        "en": "Talk to the garden keeper"
-      },
-      "purpose": {
-        "ja": "庭園で夜を過ごし、翌日の仕事へつなぐ。",
-        "en": "Spend the night in the garden before the first job."
-      }
-    },
-    {
-      "id": "c1-job",
-      "chapter": 1,
-      "actorId": "liora",
-      "hubId": "hub-guild",
-      "bubble": {
-        "ja": "初仕事の話をしよう",
-        "en": "Our first job"
-      },
-      "title": {
-        "ja": "初仕事の話をしよう",
-        "en": "Our first job"
-      },
-      "requiresNodes": [
-        "c1-garden-night"
-      ],
-      "requiresDungeons": [],
-      "lines": [
-        {
-          "speaker": "liora",
-          "text": {
-            "ja": "{name}、地図を出せ。今日は聖堂までだ。",
-            "en": "{name}, get your map. Today we go to the cathedral."
-          }
-        },
-        {
-          "speaker": "hero",
-          "text": {
-            "ja": "うん。……これ、逆さま？",
-            "en": "Okay. ...Am I holding it upside down?"
-          },
-          "voices": {
-            "soft": {
-              "ja": "うん。……これ、逆さま？",
-              "en": "Okay. ...Am I holding it upside down?"
-            },
-            "honest": {
-              "ja": "分かった。あ、地図が逆だった。",
-              "en": "All right. Oh, I had the map upside down."
-            },
-            "dreamy": {
-              "ja": "うん。……泉って、こんな形だったんだね。",
-              "en": "Okay. ...So that is the shape of the fountain."
-            }
-          }
-        },
-        {
-          "speaker": "liora",
-          "text": {
-            "ja": "泉が上だ。そこを持てば、風で折れない。",
-            "en": "The fountain goes at the top. Hold that corner against the wind."
-          }
-        },
-        {
-          "speaker": "hero",
-          "text": {
-            "ja": "ありがとう。隣、歩いてもいい？",
-            "en": "Thank you. Can I walk beside you?"
-          }
-        },
-        {
-          "speaker": "liora",
-          "text": {
-            "ja": "道が狭くなったら、後ろへ下がれ。",
-            "en": "When the path narrows, fall in behind me."
-          }
-        },
-        {
-          "speaker": "liora",
-          "text": {
-            "ja": "携帯灯も工房で作っておこう。暗い通路では、足元を見失いやすい。",
-            "en": "We should make a field lantern in the workshop. It is easy to lose your footing in a dark passage."
-          }
-        }
-      ],
-      "leadDungeonId": "silent-cathedral",
-      "backgroundId": "cathedral",
-      "task": {
-        "ja": "リオラと話す",
-        "en": "Talk to Liora"
-      },
-      "purpose": {
-        "ja": "一日の仕事と、最初に調べる場所をリオラに教わる。",
-        "en": "Ask Liora about the day's work and where to begin."
-      }
+      ]
     },
     {
       "id": "c1-chart",
@@ -1064,7 +956,7 @@
         "en": "Let me see the belfry map"
       },
       "requiresNodes": [
-        "c1-job"
+        "c1-generation"
       ],
       "requiresDungeons": [
         "bell-stairs"
@@ -1188,6 +1080,112 @@
       }
     },
     {
+      "id": "c1-water-report",
+      "chapter": 1,
+      "actorId": "noelle",
+      "hubId": "hub-observatory",
+      "title": {
+        "ja": "水路の報告",
+        "en": "Report the waterway to Noelle"
+      },
+      "bubble": {
+        "ja": "ノエルに水路の様子を伝える",
+        "en": "Report the waterway to Noelle"
+      },
+      "task": {
+        "ja": "ノエルに水路の様子を伝える",
+        "en": "Report the waterway to Noelle"
+      },
+      "purpose": {
+        "ja": "青灯の道だね。リオラたちと行ってくる。",
+        "en": "The blue lantern path. I will go with Liora and the others."
+      },
+      "requiresNodes": [
+        "c1-wolf"
+      ],
+      "requiresDungeons": [
+        "drowned-vestry"
+      ],
+      "leadDungeonId": "blue-lantern-path",
+      "lines": [
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "水路の先まで見てきたよ。青い灯りは、まだ点いていた。",
+            "en": "We checked beyond the waterway. The blue lights are still burning."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "それなら、調査隊もあの道を使ったはず。目印を確かめてきて。",
+            "en": "Then the survey party must have used that path. Please check its markers."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "青灯の道だね。リオラたちと行ってくる。",
+            "en": "The blue lantern path. I will go with Liora and the others."
+          }
+        }
+      ],
+      "backgroundId": "cathedral"
+    },
+    {
+      "id": "c1-lantern-report",
+      "chapter": 1,
+      "actorId": "seris",
+      "hubId": "hub-temple",
+      "title": {
+        "ja": "橋へ続く足跡",
+        "en": "Report the path to Seris"
+      },
+      "bubble": {
+        "ja": "セリスに道の様子を伝える",
+        "en": "Report the path to Seris"
+      },
+      "task": {
+        "ja": "セリスに道の様子を伝える",
+        "en": "Report the path to Seris"
+      },
+      "purpose": {
+        "ja": "うん。鱗の橋から苗床へ。見つけたら、エレインにも知らせて。",
+        "en": "Yes. Follow the scale bridge to the nursery. Tell Elaine what you find."
+      },
+      "requiresNodes": [
+        "c1-water-report"
+      ],
+      "requiresDungeons": [
+        "sealed-arbor"
+      ],
+      "leadDungeonId": "scale-bridge",
+      "lines": [
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "灯りの先で、狼が橋の方を見てる。誰か、あっちへ行ったんだ。",
+            "en": "The wolf is looking toward the bridge beyond the lights. Someone went that way."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "足跡を追ってみよう。迷ったら、目印まで戻ればいいよね。",
+            "en": "Let us follow their tracks. If we lose them, we can return to the marker."
+          }
+        },
+        {
+          "speaker": "seris",
+          "text": {
+            "ja": "うん。鱗の橋から苗床へ。見つけたら、エレインにも知らせて。",
+            "en": "Yes. Follow the scale bridge to the nursery. Tell Elaine what you find."
+          }
+        }
+      ],
+      "backgroundId": "cathedral"
+    },
+    {
       "id": "c1-flowers",
       "chapter": 1,
       "actorId": "elaine",
@@ -1201,7 +1199,7 @@
         "en": "A pot to deliver"
       },
       "requiresNodes": [
-        "c1-chart"
+        "c1-lantern-report"
       ],
       "requiresDungeons": [
         "withered-nursery"
@@ -1242,9 +1240,40 @@
         "en": "Talk to Elaine"
       },
       "purpose": {
-        "ja": "エレインの鉢を届け、次の巡回先を聞く。",
-        "en": "Deliver Elaine's flowerpot and ask where to patrol next."
-      }
+        "ja": "薬草を預かり、泉へ入る支度をする。",
+        "en": "Collect the herbs and prepare to enter the fountain."
+      },
+      "leadDungeonId": "fountain-threshold",
+      "firstVisitLines": [
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "苗床で拾った薬草を、泉へ向かった調査隊に届けてください。",
+            "en": "Please take the herbs from the nursery to the survey party at the fountain."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。暗い通路もあるんだよね。",
+            "en": "Of course. Some of the passages are dark, are they not?"
+          }
+        },
+        {
+          "speaker": "elaine",
+          "text": {
+            "ja": "ええ。工房で携帯灯も作っておいて。リオラが、泉の入口で待っています。",
+            "en": "Yes. Make a field lantern in the workshop too. Liora will be waiting at the fountain entrance."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "薬草と灯りを持って、入口まで見に行くね。",
+            "en": "I will take the herbs and the lantern and check the entrance."
+          }
+        }
+      ]
     },
     {
       "id": "c1-care",
@@ -1260,7 +1289,7 @@
         "en": "Let me see your foot"
       },
       "requiresNodes": [
-        "c1-wolf"
+        "c1-flowers"
       ],
       "requiresDungeons": [
         "fountain-threshold"
@@ -1302,9 +1331,39 @@
         "en": "Talk to Liora"
       },
       "purpose": {
-        "ja": "携帯灯で足元を照らし、リオラと怪我を手当てする。",
-        "en": "Use the field lantern to check your footing and tend the injury with Liora."
-      }
+        "ja": "携帯灯を点検して、調査隊を迎えに泉の奥へ進む。",
+        "en": "Check the field lantern and enter the fountain to bring back the survey party."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "灯りは点くか。泉の中は、足元も見えにくい。",
+            "en": "Does the lantern work? It is hard to see your footing inside the fountain."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。薬草も預かってきたよ。",
+            "en": "Yes. I brought the herbs too."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "よし。……足をかばっていたな。靴に石が入っているぞ。",
+            "en": "Good. ...You were limping. There is a stone in your shoe."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……ほんとだ。これなら歩ける。一緒に、奥まで行こう。",
+            "en": "...There is. Now I can walk properly. Let us go farther in together."
+          }
+        }
+      ]
     },
     {
       "id": "c1-oath",
@@ -1441,7 +1500,44 @@
       "purpose": {
         "ja": "帰還したリオラに声をかけ、様子を確かめる。",
         "en": "Check on Liora after returning home."
-      }
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "リオラ、今日もありがとう。あなたがいてくれて、よかった。",
+            "en": "Thank you again, Liora. I am glad you were with me."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラは私に膝をつき、頭を垂れた。盾を抱く手が震えている。",
+            "en": "Liora knelt and bowed her head to me. Her hands trembled around her shield."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "この身も、盾も、あなたのために。……違う。私は今、何を言った？",
+            "en": "My body and shield are yours. ...No. What did I just say?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "頭を上げて。そんなこと、頼んでいないよ。……今は休もう。",
+            "en": "Lift your head. I never asked that of you. ...Let us rest for now."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私にもリオラにも、理由は分からなかった。庭園の女が何か吹き込んだのかもしれない。今は、そう思っておくことにした。",
+            "en": "Neither of us understood why. Perhaps the woman of the garden had told her something. For now, I left it at that."
+          }
+        }
+      ]
     },
     {
       "id": "c1-held",
@@ -1584,7 +1680,44 @@
       "purpose": {
         "ja": "寝込んだリオラを、庭園で見舞う。",
         "en": "Visit Liora while she rests in the garden."
-      }
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "その夜、リオラは寝台から起き上がれなかった。庭園の女が来ると、声を震わせた。",
+            "en": "That night, Liora could not get out of bed. Her voice shook when the woman of the garden arrived."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私は、あの子に……あなたではなく、あの子に。どうしたらいいのか、分からない。",
+            "en": "I said it to her...not to you. I do not know what to do."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女が抱き上げると、リオラはその首にしがみついた。昼間、盾を担いでいた姿とはまるで違っていた。",
+            "en": "When the woman lifted her, Liora clung to her neck. She looked nothing like the shield-bearer who had walked with me that day."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "大丈夫。眠るまで、離さないわ。",
+            "en": "It is all right. I will hold you until you fall asleep."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女にとっては、リオラも子供のような存在なのだ。私は水を置き、呼吸が落ち着くまでそばで待った。",
+            "en": "To the woman, Liora too was like a child. I set down her water and waited nearby until her breathing settled."
+          }
+        }
+      ]
     },
     {
       "id": "c1-return",
@@ -1646,6 +1779,433 @@
       "purpose": {
         "ja": "翌朝のリオラに花を届け、休ませておく。",
         "en": "Bring Liora flowers the next morning and let her rest."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "調査隊は皆、街へ戻った。泉の道も、しばらくは通れる。",
+            "en": "The whole survey party is back in town. The fountain road should stay open for a while."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "リオラも今日は休んでね。昨日のことは、話せるようになってからでいいよ。",
+            "en": "You should rest today too, Liora. We can talk about yesterday when you feel ready."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "……あれだけは、まだ私にも分からん。",
+            "en": "...I still do not understand that myself."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "うん。庭園の女に任せよう。私は、お花を届けてくる。",
+            "en": "All right. We will leave it to the woman of the garden. I will deliver the flowers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1-garden-rounds",
+      "chapter": 1,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "title": {
+        "ja": "ひとりずつの名前",
+        "en": "Each Girl in Turn"
+      },
+      "bubble": {
+        "ja": "庭を一緒に歩きましょう",
+        "en": "Walk around the garden with me"
+      },
+      "requiresNodes": [
+        "c1-hill"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "庭へ戻ると、女は花壇のそばにしゃがんでいた。少女の籠をのぞき、一本ずつ花を見せてもらっている。",
+            "en": "Back in the garden, the woman was crouching beside a flowerbed. A girl showed her the flowers in her basket, one at a time."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今日は、こんなにお花を集めたんだね。すごいわね。",
+            "en": "You gathered so many flowers today. Well done."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "こっちは、まだつぼみなの。お部屋に置いてもいい？",
+            "en": "These are still buds. Can I put them in your room?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。開いたら、一緒に見ましょう。",
+            "en": "Of course. When they open, we can look at them together."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女は次の少女にも声をかけた。昼に食べたものを聞き、ほどけた髪紐を結び直す。その次の少女は、直したばかりの椅子を見せた。",
+            "en": "She went to the next girl, asked what she had eaten for lunch, and retied her loose hair ribbon. Another girl showed her a chair she had just repaired."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "座ってみてもいい？ ……本当だ、もう揺れないわ。",
+            "en": "May I sit on it? ...You are right. It does not wobble anymore."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "あなたが座るところだから、ちゃんと直したかったの。",
+            "en": "It is your chair. I wanted to fix it properly."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "一人が話し終えるまで、女は足を止めて聞いていた。庭の端で黙っていた少女にも、自分から会いに行く。",
+            "en": "She stayed with each girl until she had finished speaking. She even went over to the girl sitting quietly at the edge of the garden."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "みんなと、こうやって話してるんだね。",
+            "en": "You talk to everyone like this."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。あなたは、今日どんなものを見てきたの？",
+            "en": "Yes. And what did you see today?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "塔と、広場。それから、三人で帰っていくところを。",
+            "en": "The tower, and the square. And three girls going home together."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "そう。あとで、ゆっくり聞かせてちょうだい。夜は私の部屋へいらっしゃい。",
+            "en": "I see. Tell me about it later, when we have time. Come to my room tonight."
+          }
+        }
+      ],
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "庭園の女と話す",
+        "en": "Talk to the garden keeper"
+      },
+      "purpose": {
+        "ja": "庭園の女が少女たちと過ごす様子を見る。",
+        "en": "Observe the garden keeper with the girls."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今日は、こんなにお花を集めたんだね。すごいわね。",
+            "en": "You gathered so many flowers today. How lovely."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "まだつぼみなの。開いたら、一緒に見てくれる？",
+            "en": "They are still buds. Will you look at them with me when they open?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。……あなたは、最初の仕事はどうだった？",
+            "en": "Of course. ...And how did your first job go?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "まだ慣れないけど、リオラが一緒に歩いてくれるよ。",
+            "en": "I am still learning, but Liora walks with me."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "emergency": {
+        "bubble": {
+          "ja": "今は帰りを待っている",
+          "en": "Waiting for everyone to return"
+        },
+        "lines": [
+          {
+            "speaker": "garden-woman",
+            "text": {
+              "ja": "戻ってきた子を休ませられるように、部屋を空けているの。",
+              "en": "We are making room so the girls can rest when they return."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "私も、調査隊を捜してくるね。",
+              "en": "I will help find the survey party."
+            }
+          },
+          {
+            "speaker": "garden-woman",
+            "text": {
+              "ja": "ええ。あなたも、ちゃんと帰ってくるのよ。",
+              "en": "Yes. Make sure you come back too."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "c1-garden-night",
+      "chapter": 1,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "title": {
+        "ja": "庭園の夜",
+        "en": "A Night in the Garden"
+      },
+      "bubble": {
+        "ja": "夜は、私の部屋へ",
+        "en": "Come to my room tonight"
+      },
+      "requiresNodes": [
+        "c1-garden-rounds"
+      ],
+      "requiresDungeons": [
+        "chapel-approach"
+      ],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "夜、女の部屋には少女たちが集まった。花を飾る子、寝台へ枕を運ぶ子。昼に見せていた籠は、窓辺に置かれていた。",
+            "en": "That night, girls gathered in the woman's room. One arranged flowers; another carried pillows to the bed. The basket from that afternoon stood by the window."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "リオラも、こっち。そこに立ってたら、寒いよ。",
+            "en": "Liora, over here. You will get cold standing there."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私は、戸口にいれば……。",
+            "en": "I can stay by the door..."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今夜はもう、おしまい。盾を置いて、いらっしゃい。",
+            "en": "You are done for tonight. Put down your shield and come here."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラは壁に盾を預け、女の隣へ座った。袖を引いていた少女が、その肩へ掛布をかける。",
+            "en": "Liora rested her shield against the wall and sat beside the woman. The girl who had tugged her sleeve draped a blanket over her shoulders."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……みんな、おやすみ。",
+            "en": "...Good night, everyone."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "おやすみなさい。あなたの部屋にも、お花を置いておいたわ。",
+            "en": "Good night. I left some flowers in your room, too."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私は廊下へ出た。戸が閉まる直前、リオラが女の肩へ頭を寄せるのが見えた。",
+            "en": "I stepped into the corridor. Just before the door closed, I saw Liora lean her head against the woman's shoulder."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "――庭園の女の部屋。",
+            "en": "—The woman's room, in the garden."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女が横になると、少女たちがそばへ寄った。髪に触れる手も、掛布からはみ出した手も、女は順に握り返した。",
+            "en": "As the woman lay down, the girls drew close. She took their hands in turn, the ones touching her hair and the ones reaching out from under the blanket."
+          }
+        },
+        {
+          "speaker": "garden-girl",
+          "text": {
+            "ja": "明日も、庭に来てくれる？",
+            "en": "Will you come out into the garden tomorrow, too?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "もちろん。花が開いたか、一緒に見なくちゃ。",
+            "en": "Of course. We have to see whether the flowers have opened."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リオラも、ほかの少女たちも、今夜は自分のそばにいる。女は一人ずつ顔を見渡した。これほど大勢に慕われ、求められている者が、ほかにいるだろうか。",
+            "en": "Liora and all the other girls were beside her tonight. The woman looked at each face. Who else could be loved and needed by so many?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "自分が誰よりも愛されている。その思いが、とてつもなく心地よかった。女は微笑んだまま目を閉じ、少女たちに囲まれて幸せな夢へ落ちていった。",
+            "en": "She was loved more than anyone else. The thought gave her an overwhelming pleasure. Still smiling, she closed her eyes and slipped into happy dreams, surrounded by the girls."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "別の庭園では、一人の管理者が水鏡を見つめていた。眠る女と、その周りの少女たちを、しばらく黙って眺めている。",
+            "en": "In another garden, a keeper watched her water mirror. For a while she silently studied the sleeping woman and the girls around her."
+          },
+          "shade": "dark"
+        },
+        {
+          "speaker": "garden-observer",
+          "text": {
+            "ja": "かわいそうなひと……。",
+            "en": "You poor thing..."
+          },
+          "shade": "dark"
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "その言葉は、眠る女には届かなかった。",
+            "en": "Her words did not reach the sleeping woman."
+          },
+          "shade": "dark"
+        }
+      ],
+      "backgroundId": "novel-awakening-garden",
+      "task": {
+        "ja": "庭園の女と話す",
+        "en": "Talk to the garden keeper"
+      },
+      "purpose": {
+        "ja": "庭園で夜を過ごし、翌日の仕事へつなぐ。",
+        "en": "Spend the night in the garden before the first job."
+      },
+      "firstVisitLines": [
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今夜の仕事はおしまい。リオラも、盾を置いていらっしゃい。",
+            "en": "Work is over for tonight. Liora, put down your shield and come here too."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "少女たちが女を囲んだ。リオラも肩へ頭を預け、女は一人ずつ手を握り返した。",
+            "en": "The girls gathered around her. Liora rested her head against her shoulder, and the woman squeezed each hand in turn."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……みんな、おやすみ。また明日ね。",
+            "en": "...Good night, everyone. See you tomorrow."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "誰よりも愛され、求められている。その心地よさに包まれて、女は眠った。別の庭園では、管理者がその姿を水鏡で見つめていた。",
+            "en": "Loved and wanted more than anyone else, the woman fell asleep in comfort. In another garden, its keeper watched her through a water mirror."
+          }
+        },
+        {
+          "speaker": "garden-observer",
+          "text": {
+            "ja": "かわいそうなひと……。",
+            "en": "Poor thing..."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "emergency": {
+        "bubble": {
+          "ja": "今は帰りを待っている",
+          "en": "Waiting for everyone to return"
+        },
+        "lines": [
+          {
+            "speaker": "garden-woman",
+            "text": {
+              "ja": "戻ってきた子を休ませられるように、部屋を空けているの。",
+              "en": "We are making room so the girls can rest when they return."
+            }
+          },
+          {
+            "speaker": "hero",
+            "text": {
+              "ja": "私も、調査隊を捜してくるね。",
+              "en": "I will help find the survey party."
+            }
+          },
+          {
+            "speaker": "garden-woman",
+            "text": {
+              "ja": "ええ。あなたも、ちゃんと帰ってくるのよ。",
+              "en": "Yes. Make sure you come back too."
+            }
+          }
+        ]
       }
     },
     {
@@ -5803,5 +6363,190 @@
       "resolvedBy": "c7-together",
       "hubId": "hub-garden"
     }
-  ]
+  ],
+  "onboarding": {
+    "dungeonIds": [
+      "silent-cathedral",
+      "chapel-approach",
+      "bell-stairs"
+    ],
+    "destinationIds": [
+      "hub-guild",
+      "hub-overlook",
+      "hub-square",
+      "silent-cathedral",
+      "chapel-approach",
+      "bell-stairs"
+    ],
+    "travelSeconds": 8
+  },
+  "legacyFirstChapter": {
+    "c1-hill": {
+      "requiresNodes": [],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-offerings": {
+      "requiresNodes": [
+        "c1-hill"
+      ],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-generation": {
+      "requiresNodes": [
+        "c1-offerings"
+      ],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-garden-rounds": {
+      "requiresNodes": [
+        "c1-generation"
+      ],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-garden-night": {
+      "requiresNodes": [
+        "c1-garden-rounds"
+      ],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-job": {
+      "requiresNodes": [
+        "c1-garden-night"
+      ],
+      "requiresDungeons": [],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-chart": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "bell-stairs"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-wolf": {
+      "requiresNodes": [
+        "c1-chart"
+      ],
+      "requiresDungeons": [
+        "moon-garden"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-flowers": {
+      "requiresNodes": [
+        "c1-chart"
+      ],
+      "requiresDungeons": [
+        "withered-nursery"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-care": {
+      "requiresNodes": [
+        "c1-wolf"
+      ],
+      "requiresDungeons": [
+        "fountain-threshold"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-oath": {
+      "requiresNodes": [
+        "c1-flowers",
+        "c1-care"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-held": {
+      "requiresNodes": [
+        "c1-oath"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-return": {
+      "requiresNodes": [
+        "c1-flowers",
+        "c1-care",
+        "c1-held"
+      ],
+      "requiresDungeons": [
+        "stone-fountain"
+      ],
+      "optional": false,
+      "ambient": false
+    },
+    "c1-snack": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "moon-garden"
+      ],
+      "optional": true,
+      "ambient": true
+    },
+    "home-liora": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [],
+      "optional": true,
+      "ambient": true
+    },
+    "home-seris": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "optional": true,
+      "ambient": true
+    },
+    "home-elaine": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "optional": true,
+      "ambient": true
+    },
+    "home-noelle": {
+      "requiresNodes": [
+        "c1-job"
+      ],
+      "requiresDungeons": [
+        "silent-cathedral"
+      ],
+      "optional": true,
+      "ambient": true
+    }
+  }
 }

@@ -38,6 +38,8 @@ export interface WorldStoryChoice {
     response: WorldStoryLine[];
 }
 export interface WorldStoryNode {
+    /** Short first encounter; full authored lines remain available on replay. */
+    firstVisitLines?: WorldStoryLine[];
     task?: StoryText;
     purpose?: StoryText;
     backgroundId?: string;
@@ -91,6 +93,9 @@ export interface WorldIncident {
     hubId: string;
 }
 export interface WorldStoryDefinition {
+    onboarding?: { dungeonIds: string[]; destinationIds: string[]; travelSeconds: number };
+    /** Historical prerequisites validate existing records, never unlock new talks. */
+    legacyFirstChapter?: Record<string, { requiresNodes: string[]; requiresDungeons: string[]; optional: boolean; ambient: boolean }>;
     incidents: WorldIncident[];
     version: 1;
     hubs: WorldStoryHub[];
@@ -113,12 +118,13 @@ export interface WorldStoryState {
         choiceId?: string;
         emergency?: boolean;
         replay: boolean;
+        briefing?: boolean;
     };
 }
 export const defaultHero: HeroProfile = { name: 'ユイ', voice: 'soft', favorite: 'tea' };
 export function storyText(text: StoryText, profile: HeroProfile, language: 'ja' | 'en' = 'ja'): string { return text[language].replaceAll('{name}', profile.name); }
 export function resolvedStoryNode(node: WorldStoryNode, s: WorldStoryState): WorldStoryNode { const variant = node.variants?.filter(v => v.requiresNodes.every(id => s.completed.includes(id))).at(-1); return variant ? { ...node, ...variant } : node; }
-export function nodeLines(node: WorldStoryNode, state: WorldStoryState): WorldStoryLine[] { const resolved = resolvedStoryNode(node, state); const cycles = [resolved.lines, ...(resolved.daily ?? [])]; const base = state.active?.emergency && node.emergency ? node.emergency.lines : cycles[(state.visits?.[node.id] ?? 0) % cycles.length]; return [...base, ...(state.active?.choiceId ? node.choices?.find(c => c.id === state.active!.choiceId)?.response ?? [] : [])]; }
+export function nodeLines(node: WorldStoryNode, state: WorldStoryState): WorldStoryLine[] { const resolved = resolvedStoryNode(node, state); const cycles = [resolved.lines, ...(resolved.daily ?? [])]; const base = state.active?.emergency && node.emergency ? node.emergency.lines : state.active?.briefing && resolved.firstVisitLines ? resolved.firstVisitLines : cycles[(state.visits?.[node.id] ?? 0) % cycles.length]; return [...base, ...(state.active?.choiceId ? node.choices?.find(c => c.id === state.active!.choiceId)?.response ?? [] : [])]; }
 export function activeWorldIncident(save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, def: WorldStoryDefinition): WorldIncident | undefined { const s = save.worldStory; if (!s)
     return; const c = storyChapter(s, def); return def.incidents.find(i => i.chapter === c?.number && !s.completed.includes(i.resolvedBy) && i.requiresNodes.every(id => s.completed.includes(id)) && i.requiresDungeons.every(id => save.completedDungeonIds.includes(id))); }
 export function acknowledgeWorldIncident(save: GameSave, def: WorldStoryDefinition, id: string): void { if (activeWorldIncident(save, def)?.id !== id)
@@ -197,6 +203,12 @@ export function settleStoryArrival(s: WorldStoryState, now: number): void { if (
     delete s.journey;
 } }
 export function storyDestinations(content: Content, save: GameSave) { return [...worldLocations(content, save.completedDungeonIds), ...(content.worldStory?.hubs ?? [])]; }
+/** The preview and saved arrival use the same early-patrol travel policy. */
+export function storyTravelSeconds(save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, content: Content, from: MapPosition, to: MapPosition, destinationId: string): number {
+    const onboarding = content.worldStory?.onboarding;
+    const early = save.worldStory && onboarding && onboarding.destinationIds.includes(destinationId) && !onboarding.dungeonIds.every(id => save.completedDungeonIds.includes(id)) && storyChapter(save.worldStory, content.worldStory!)?.number === 1;
+    return early ? Math.min(travelSeconds(from, to), onboarding.travelSeconds) : travelSeconds(from, to);
+}
 export function startStoryTravel(save: GameSave, content: Content, destinationId: string, now: number): void {
     const s = save.worldStory;
     if (!s || s.active)
@@ -208,7 +220,8 @@ export function startStoryTravel(save: GameSave, content: Content, destinationId
     if (!target)
         throw new Error('目的地が見つかりません。');
     const to = { x: target.x, y: target.y };
-    s.journey = { from: { ...s.position }, to, destinationId, startedAt: now, arrivesAt: now + travelSeconds(s.position, to) * 1000 };
+    const seconds = storyTravelSeconds(save, content, s.position, to, destinationId);
+    s.journey = { from: { ...s.position }, to, destinationId, startedAt: now, arrivesAt: now + seconds * 1000 };
 }
 export function cancelStoryTravel(s: WorldStoryState, now: number): void { const j = s.journey; if (!j)
     return; s.position = routePosition(j.from, j.to, (now - j.startedAt) / (j.arrivesAt - j.startedAt)); delete s.journey; }
@@ -224,7 +237,7 @@ export function beginStoryTalk(save: GameSave, content: Content, nodeId: string,
     const hub = def.hubs.find(h => h.id === (node.actorId === 'guest' && s.choices['c5-address'] === 'infirmary' ? 'hub-infirmary' : resolvedStoryNode(node, s).hubId))!;
     if (!replay && (s.journey || Math.hypot(s.position.x - hub.x, s.position.y - hub.y) > .008))
         throw new Error('人物のいる場所へ移動してください。');
-    s.active = { nodeId, line: 0, replay, ...(node.ambient && activeWorldIncident(save, def) ? { emergency: true } : {}), ...(replay && s.choices[nodeId] ? { choiceId: s.choices[nodeId] } : {}) };
+    s.active = { nodeId, line: 0, replay, ...(!replay && node.firstVisitLines ? { briefing: true } : {}), ...(node.ambient && activeWorldIncident(save, def) ? { emergency: true } : {}), ...(replay && s.choices[nodeId] ? { choiceId: s.choices[nodeId] } : {}) };
 }
 export function advanceStoryTalk(save: GameSave, content: Content, action: 'next' | 'back' | 'finish' | 'close' | 'choice', choiceId?: string): void {
     const s = save.worldStory, active = s?.active, node = content.worldStory?.nodes.find(n => n.id === active?.nodeId);
@@ -278,7 +291,7 @@ export function validWorldStory(v: unknown): v is WorldStoryState {
     const t = parseWorldTravel({ position: v.position, journey: v.journey });
     if (JSON.stringify(t.position) !== JSON.stringify(v.position) || v.journey && JSON.stringify(t.journey) !== JSON.stringify(v.journey))
         return false;
-    if (v.active !== undefined && (!record(v.active) || typeof v.active.nodeId !== 'string' || !Number.isSafeInteger(v.active.line) || Number(v.active.line) < 0 || typeof v.active.replay !== 'boolean' || v.active.emergency !== undefined && typeof v.active.emergency !== 'boolean' || v.active.choiceId !== undefined && typeof v.active.choiceId !== 'string'))
+    if (v.active !== undefined && (!record(v.active) || typeof v.active.nodeId !== 'string' || !Number.isSafeInteger(v.active.line) || Number(v.active.line) < 0 || typeof v.active.replay !== 'boolean' || v.active.briefing !== undefined && typeof v.active.briefing !== 'boolean' || v.active.emergency !== undefined && typeof v.active.emergency !== 'boolean' || v.active.choiceId !== undefined && typeof v.active.choiceId !== 'string'))
         return false;
     return true;
 }
@@ -295,7 +308,9 @@ export function validateWorldStorySave(save: GameSave, content: Content): void {
         throw new Error('日常の会話記録が正しくありません。');
     for (const id of s.completed) {
         const node = def.nodes.find(n => n.id === id);
-        if (!node || node.requiresNodes.some(r => !s.completed.includes(r) && !s.carriedChapters.includes(def.nodes.find(n => n.id === r)!.chapter)) || !s.carriedChapters.includes(node.chapter) && node.requiresDungeons.some(d => !save.completedDungeonIds.includes(d)))
+        const recorded = (n: WorldStoryNode) => n.requiresNodes.every(r => s.completed.includes(r) || s.carriedChapters.includes(def.nodes.find(v => v.id === r)!.chapter)) && (s.carriedChapters.includes(n.chapter) || n.requiresDungeons.every(d => save.completedDungeonIds.includes(d)));
+        const legacy = node && def.legacyFirstChapter?.[id];
+        if (!node || !recorded(node) && !(legacy && recorded({ ...node, ...legacy })))
             throw new Error('会話の進行記録が正しくありません。');
     }
     for (const [id, choice] of Object.entries(s.choices))
@@ -305,7 +320,9 @@ export function validateWorldStorySave(save: GameSave, content: Content): void {
         throw new Error('旅の目的地が正しくありません。');
     if (s.active) {
         const a = s.active, n = def.nodes.find(n => n.id === a.nodeId);
-        if (!n || a.emergency && !n.ambient || save.battle || save.novels?.active || a.replay !== s.completed.includes(a.nodeId) || a.choiceId && !n.choices?.some(c => c.id === a.choiceId) || a.line >= nodeLines(n, s).length || !a.replay && !storyNodeAvailable(n, save, def))
+        const legacy = n && !a.briefing && def.legacyFirstChapter?.[n.id];
+        const available = n && (storyNodeAvailable(n, save, def) || legacy && storyNodeAvailable({ ...n, ...legacy }, save, def));
+        if (!n || a.briefing && (a.replay || !n.firstVisitLines) || a.emergency && !n.ambient || save.battle || save.novels?.active || a.replay !== s.completed.includes(a.nodeId) || a.choiceId && !n.choices?.some(c => c.id === a.choiceId) || a.line >= nodeLines(n, s).length || !a.replay && !available)
             throw new Error('会話の再開位置が正しくありません。');
     }
 }

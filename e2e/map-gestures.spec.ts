@@ -41,7 +41,7 @@ test('the atlas includes all chapters and unlocked canonical scenes without reve
  await dialog.getByRole('button',{name:'閉じる',exact:true}).click();
  await page.evaluate(async()=>{const{content}=await import('/src/content/index.ts');const{loadSave,persistSave}=await import('/src/platform/save.ts');const s=(await loadSave())!,r=s.revision;s.completedDungeonIds=content.dungeons.map(d=>d.id);s.novels={seen:content.novels!.map(n=>n.id)};s.revision++;await persistSave(s,r);});
  await page.reload();await enterGame(page);await page.getByRole('button',{name:'探索地点の一覧',exact:true}).click();await dialog.getByRole('button',{name:'物語',exact:true}).click();
- const total=await page.evaluate(async()=> (await import('/src/content/index.ts')).content.novels!.length);await expect(dialog.locator('.world-index-place')).toHaveCount(total);
+ const total=await page.evaluate(async()=> (await import('/src/content/index.ts')).content.novels!.filter(n=>n.trigger.kind!=='intro').length);await expect(dialog.locator('.world-index-place')).toHaveCount(total);
  await dialog.getByRole('button',{name:/祈りを預けずに/}).click();
  await expect(page.locator('.world-map__destination h2')).toHaveText('祈りを預けずに');
  await page.clock.install();await page.getByRole('button',{name:'自動移動',exact:true}).click();await page.clock.fastForward(46000);await page.getByRole('button',{name:'物語を読む',exact:true}).click();await page.clock.runFor(700);await expect(page.locator('.visual-novel')).toHaveAttribute('data-scene','prayer-and-return');

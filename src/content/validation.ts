@@ -62,7 +62,7 @@ export function validateContent(content: Content): string[] {
   const novelTriggers = new Set<string>();
   for (const scene of content.novels ?? []) {
     reject(!plain(scene.title) || !Array.isArray(scene.pages) || !scene.pages.length || scene.pages.length > 200, `novels/${scene.id}: title and 1..200 pages required`);
-    const trigger = scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
+    const trigger = scene.trigger.kind === 'intro' ? 'intro' : scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
     reject(!trigger || novelTriggers.has(trigger), `novels/${scene.id}: unique trigger required`); novelTriggers.add(trigger);
     if (scene.trigger.kind === 'dungeon-clear' || scene.trigger.kind === 'map') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
     if (scene.trigger.kind === 'map') {
