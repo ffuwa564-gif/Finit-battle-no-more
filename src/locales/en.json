@@ -3675,5 +3675,6 @@
   "消灯する": "Extinguish",
   "蓄灯容量": "Light capacity",
   "灯力待ち": "Needs light",
-  "製作のつながり": "Crafting dependencies"
+  "製作のつながり": "Crafting dependencies",
+  "重なっている地点": "Overlapping destinations"
 }

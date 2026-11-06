@@ -1,3 +1,4 @@
+import { dungeonHash, dungeonReturnDestination } from './application/dungeon-navigation';
 import { RELEASE_LABEL } from './content/version';
 import { migrateSaveTo110 } from './platform/save-migration';
 import { gemDefinitionForSkill } from './domain/memory-gems';
@@ -123,7 +124,7 @@ export default function App() {
       if (action.type === 'buyPotion') setToast({ text: '回復薬を購入しました。', tone: 'success' });
       if (action.type === 'claim' || action.type === 'leaveFailure') {
         const previousDungeon = content.dungeons.find(dungeon => dungeon.id === previous.battle?.dungeonId);
-        const returnHash = previousDungeon?.towerFloor ? 'dungeons/tower' : previousDungeon?.kind === 'trial' ? 'dungeons/trials' : previousDungeon?.eventId ? 'dungeons/boss-events' : previousDungeon?.kind === 'event' ? 'dungeons/events' : previousDungeon?.previousDungeonId && !previousDungeon.chapterId ? 'dungeons/memories' : '';
+        const returnHash = dungeonHash(dungeonReturnDestination(previousDungeon));
         navigate('dungeons');
         if (returnHash) location.hash = returnHash;
         // Deployed releases return to the stable launcher only at a safe town boundary.
