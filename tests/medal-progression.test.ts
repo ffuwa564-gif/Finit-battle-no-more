@@ -11,8 +11,8 @@ import {decodeBackup,encodeBackup} from '../src/platform/save-backup';
 const initial=()=>createInitialSave(content,42);
 function stones():MemoryGem[]{return ['sanctuary','clock','grave'].map(f=>{const d=GEM_DEFINITIONS.find(d=>d.family===f)!;return{id:'family-'+f,defId:d.id,variant:d.variants[0],roll:{power:0,trait:'none',value:0}};});}
 describe('expanded medal progression',()=>{
- it('keeps all six routes valid, with reachable references and distinct tree cells',()=>{
-  expect(medalCatalog.medals).toHaveLength(57);expect(medalCatalog.branches).toHaveLength(6);expect(validateMedals(content)).toEqual([]);
+ it('keeps all eight routes valid, with reachable references and distinct tree cells',()=>{
+  expect(medalCatalog.medals).toHaveLength(100);expect(medalCatalog.branches).toHaveLength(8);expect(validateMedals(content)).toEqual([]);
   const node=medalCatalog.medals[1],previous=node.column;node.column=medalCatalog.medals[0].column;
   const rank=node.rank;node.rank=0;
   try{expect(validateMedals(content).some(e=>e.includes('Overlapping'))).toBe(true);}finally{node.column=previous;node.rank=rank;}
