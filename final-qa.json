@@ -1,0 +1,228 @@
+{
+  "sha256": "83b0ba1140aa5008c53d80e791d562417bec5b5607eb53e0b374bb41da304c87",
+  "duration": 895.1,
+  "version": "1.22.0",
+  "sourceCommit": "3808c1321ad265ef7215da0742deacd172c1752c",
+  "uncut": {
+    "uncut": true,
+    "sourceFrames": 30928,
+    "coveredSourceFrames": 30928,
+    "rates": [
+      1,
+      2,
+      4
+    ],
+    "pass": true
+  },
+  "clockMarkers": 109,
+  "dialogueCoverage": [
+    {
+      "scene": "opening-desire-gate",
+      "pages": 28,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-hill",
+      "pages": 9,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-offerings",
+      "pages": 10,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-generation",
+      "pages": 15,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-garden-rounds",
+      "pages": 12,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-garden-night",
+      "pages": 17,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-job",
+      "pages": 6,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pass": true
+    }
+  ],
+  "voiceChecks": 58,
+  "gameAudioChecks": 18,
+  "imageSequenceChecks": 21,
+  "fullDecode": true,
+  "browsers": [
+    {
+      "browser": "chromium",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.751667,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 447.763457,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 893.319554,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.723137349,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 447.758393915,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 893.317207683,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    }
+  ],
+  "manualReview": "Contact sheet and individual beginning, middle, end, battle and workshop frames reviewed; game and dialogue are continuously visible, avatar ears and head stay within the approved contain artwork.",
+  "pass": true
+}
