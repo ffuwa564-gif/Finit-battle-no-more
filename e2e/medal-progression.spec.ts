@@ -4,11 +4,11 @@ import {readFileSync} from 'node:fs';
 const catalog=JSON.parse(readFileSync(new URL('../src/content/medals.json',import.meta.url),'utf8')) as {branches:{id:string;name:{ja:string;en:string}}[];medals:{branch:string}[]};
 test.use({viewport:{width:390,height:844}});
 
-test('six full branches stay readable and do not overlap at mobile and desktop widths in both languages',async({page},info)=>{
+test('eight full branches stay readable and do not overlap at mobile and desktop widths in both languages',async({page},info)=>{
  await page.goto('/#codex/medals');await enterGame(page);
- await expect(page.locator('.medals__heading')).toContainText('/ 57');
- await expect(page.locator('.medals__tabs>.button')).toHaveCount(6);
- await expect(page.locator('.medal-node')).toHaveCount(13);
+ await expect(page.locator('.medals__heading')).toContainText('/ 100');
+ await expect(page.locator('.medals__tabs>.button')).toHaveCount(8);
+ await expect(page.locator('.medal-node')).toHaveCount(16);
  await expect(page.locator('[data-medal-id="craft-hundred-thousand"]')).toContainText('???');
  for(const language of ['ja','en'] as const){
   if(language==='en'){
@@ -54,9 +54,11 @@ test('carried chapters can earn The Broken Girl by reading; incomplete readings 
   await expect(page.locator('.world-conversation')).toBeVisible();
   if(id==='broken-girl'){
    await page.getByRole('button',{name:'会話を閉じる',exact:true}).click();
+   await expect(page.locator('.world-conversation')).toHaveCount(0);
    await expect(page.locator(`[data-medal-id="${id}"]`)).not.toHaveClass(/is-earned/);
    await page.locator(`[data-medal-id="${id}"]`).click();await page.getByRole('dialog').getByRole('button',{name:'引き継いだ章を読み返す',exact:true}).click();
   }
+  await expect(page.locator('.world-conversation')).toBeVisible();
   for(let line=0;line<20&&await page.locator('.world-conversation').count();line++){
    const back=page.getByRole('button',{name:'勲章へ戻る',exact:true});
    if(await back.count()){await back.click();await expect(page.locator('.world-conversation')).toHaveCount(0);break;}
@@ -90,5 +92,29 @@ test('stone medals open the real stone inventory and secret-only unfinished coll
   const s=(await loadSave())!,r=s.revision;s.medals={version:1,earned:medalCatalog.medals.filter(m=>!m.secret).map(m=>m.id),feats:[]};s.revision++;await persistSave(s,r);
  });
  await page.reload();await enterGame(page);await expect(page.locator('.medals__complete')).toHaveCount(0);
- await expect(page.locator('.medals__heading')).toContainText('55 / 57');
+ await expect(page.locator('.medals__heading')).toContainText('98 / 100');
+});
+
+test('new formation proofs come from a real claimed victory; boss links open the exact preparation screen',async({page},info)=>{
+ await page.goto('/#codex/medals');await enterGame(page);
+ await page.evaluate(async()=>{
+  const {content}=await import('/src/content/index.ts');const {loadSave,persistSave}=await import('/src/platform/save.ts');const {applyCommand}=await import('/src/application/game.ts');
+  let s=(await loadSave())!;const revision=s.revision;
+  s=applyCommand(s,{type:'depart',dungeonId:'silent-cathedral',potions:0},content);
+  for(let i=0;i<500&&s.battle&&!['reward','failed'].includes(s.battle.phase);i++)s=applyCommand(s,{type:s.battle.phase==='playing'?'replay':'round'},content);
+  if(s.battle?.phase!=='reward')throw Error('Legal starter party did not win');
+  s=applyCommand(s,{type:'claim'},content);s.revision=revision+1;await persistSave(s,revision);
+ });
+ await page.reload();await enterGame(page);await page.locator('.medals__tabs').getByRole('button',{name:'編成',exact:true}).click();
+ for(const id of ['four-roles','only-r-sr','only-r','no-stones'])await expect(page.locator(`[data-medal-id="${id}"]`)).toHaveClass(/is-earned/);
+ await page.screenshot({path:info.outputPath('medal-formations-v127.png'),fullPage:true});
+ await page.reload();await enterGame(page);
+ const state=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.medals!);
+ expect(state.victories).toBe(1);expect(state.challenges).toContain('only-r');
+ await page.locator('.medals__tabs').getByRole('button',{name:'強敵',exact:true}).click();
+ await page.locator('[data-medal-id="boss-kuzuha-beginner"]').click();await page.getByRole('dialog').getByRole('button',{name:'挑戦先を確認する',exact:true}).click();
+ await expect(page).toHaveURL(/#dungeons\/prepare\/kuzuha-beginner$/);
+ await expect(page.getByRole('dialog')).toContainText('宵宮に咲く九尾・初級');
+ const completed=await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.completedDungeonIds);
+ expect(completed).not.toContain('kuzuha-beginner');
 });
