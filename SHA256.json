@@ -1,18 +1,10 @@
 {
-  "pass": true,
-  "movieSha256": "83b0ba1140aa5008c53d80e791d562417bec5b5607eb53e0b374bb41da304c87",
+  "video": "Stillveil-Zundamon.mp4",
+  "durationSeconds": 895.1,
   "files": {
-    "sync-audit.json": {
-      "sha256": "774968db64cb2b06cd5e42672ac95c7768e425983b0c53d717bea74117f372bb",
-      "bytes": 43542
-    },
     "credits.txt": {
       "sha256": "8d45390d8ddadbfd0580b2ab70fde93b420a0728e6899d4b00273dcdc5d10b78",
       "bytes": 667
-    },
-    "stillveil-story-uncut-youtube.zip": {
-      "sha256": "acab97817ece227ec6c2a1e8357cc3cc5f74e802dc1a536e126418fc6ad0459c",
-      "bytes": 88385032
     },
     "thumbnail.jpg": {
       "sha256": "d89d9d40affb9fb6cc961a99a47d3fbf5a7a8a5645f3ceb5f7059e3117812c1e",
@@ -22,10 +14,6 @@
       "sha256": "f51b218f9f7d78dddcfd90ca8e3ae279e099ccaedf77aaa7e3c009ee6551e642",
       "bytes": 6376
     },
-    "stillveil-story-uncut.mp4": {
-      "sha256": "83b0ba1140aa5008c53d80e791d562417bec5b5607eb53e0b374bb41da304c87",
-      "bytes": 89270345
-    },
     "youtube-description.txt": {
       "sha256": "3188086bd894a5b7e061bb886774a96fbf2264b555b993c099a359709b283de9",
       "bytes": 2160
@@ -34,35 +22,21 @@
       "sha256": "d21b3f9c64445055b989e519bac7aa2510d8904bf9b7e3389c78cb1e4bfba115",
       "bytes": 500
     },
-    "script.md": {
-      "sha256": "7484d6a443bec6bb87d4ade5a913b719e7dd43982ad3d14e29d519b9193496ec",
-      "bytes": 6027
+    "Stillveil-Zundamon.mp4": {
+      "sha256": "83b0ba1140aa5008c53d80e791d562417bec5b5607eb53e0b374bb41da304c87",
+      "bytes": 89270345
     },
-    "storyboard.csv": {
-      "sha256": "c3854b399d80fd053491c4cba15cf4c82cee44b557c48b3b1babae2aec27986e",
-      "bytes": 20290
-    },
-    "contact-sheet.jpg": {
-      "sha256": "30b5e15d9dbb1117cd3ffd820bacae6c029d07ec90953497cc6e8a2a79056cf9",
-      "bytes": 335861
-    },
-    "playback-audit.json": {
-      "sha256": "56194fe8dcfd458cd5c8d0ffd6e34f279ec55853fa6eabc20c7f5b8c5dbe3559",
-      "bytes": 1212
+    "README.md": {
+      "sha256": "4062c05b09b52a7c8ddf22fed9a7165e53c4775e9b7a2ea17a929e984cc091a9",
+      "bytes": 959
     },
     "chapters.txt": {
       "sha256": "1b67a23eaa41e4d890eaccf2631c288ed6cf9a230dffe99ecb7764eed1eb7fb3",
       "bytes": 289
     },
-    "starting-conditions.json": {
-      "sha256": "53b2c572f4d8016a62af23a456aafb49e24065477996213d741def6a4b0d1e98",
-      "bytes": 611
-    },
     "final-qa.json": {
       "sha256": "77c8c99c5a3f4894b19caafce00b6240a4867fc94ef1c18bc9c4773ae02d5b67",
       "bytes": 3719
     }
-  },
-  "productionArchive": "artifacts/story-uncut-v122/stillveil-story-uncut-production.zip",
-  "publication": "Not uploaded to YouTube or itch; no game source modifications or deployment."
+  }
 }
