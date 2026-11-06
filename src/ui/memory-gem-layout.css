@@ -1,0 +1,64 @@
+/* Stones use legible cards; paper controls do not sit over atlas button ornaments. */
+.inventory-gem-document.inventory-theme--plain .memory-gems__header { margin:16px 0 10px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__header h2 { font-size:25px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__intro { font-size:13px; margin-block:14px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__equipment { padding:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__character-select { display:grid; grid-template-columns:minmax(0,1fr); gap:7px; color:#594630; font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__character-select>svg { display:none; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__character-select select { width:100%; padding-right:10px; appearance:auto; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__party { gap:7px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__party-character.button { min-height:44px; padding:4px; color:#e9e3d8; background:#203246; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__party-character.button:hover:not(:disabled),.inventory-gem-document.inventory-theme--plain .memory-gems__party-character.button.is-selected { background:#304b62; color:#fff0d2; border-color:#c5a66b; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__party-character>span { font-size:11px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__slot { display:grid; grid-template-columns:46px minmax(0,1fr); gap:10px; padding-top:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__slot>.collected-gem-art { width:46px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__slot>.button { grid-column:1 / -1; width:100%; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__slot p { font-size:13px; line-height:1.8; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__inventory-heading { align-items:flex-start; flex-wrap:wrap; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__inventory-heading h3 { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__search { display:grid; grid-template-columns:minmax(0,1fr); gap:9px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__search :is(input,select) { width:100%; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__filters { display:grid; gap:10px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__family-filters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__family-filters .button { min-height:44px; font-size:12px; padding:9px 6px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__purpose { display:grid; gap:7px; color:#594630; font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__grid { grid-template-columns:repeat(2,minmax(0,1fr)); max-height:480px; gap:10px; margin-top:14px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item.button { min-height:185px; padding:28px 8px 12px; gap:7px; background:#203247; color:#f7e9cc; border:1px solid #8297a6; border-radius:9px; box-shadow:none; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item.button:hover:not(:disabled) { background:#304b61; color:#f7e9cc; border-color:#cab17e; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item.button.is-selected { background:#294055; color:#f7e9cc; border:2px solid #b69a61; outline:0; box-shadow:inset 0 0 0 1px #f5d99e; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item-name { font:14px/1.6 var(--font-display); }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item-roll { font-size:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item-roll small { font-size:11px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__detail { padding:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__effect { font-size:14px; line-height:1.85; margin-top:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__roll-detail p { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__detail-actions { display:grid; grid-template-columns:minmax(0,1fr); gap:9px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__detail-actions .button { width:100%; min-height:44px; font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-modes>div { display:grid; gap:12px; padding:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-modes strong { font-size:15px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-modes p { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-modes small { font-size:12px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-modes .button { width:100%; min-height:44px; font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-offer { padding:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-offer>p { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems .memory-gems__refinement-compare { display:grid; grid-template-columns:minmax(0,1fr); gap:12px; padding:0; background:transparent; border:0; }
+.inventory-gem-document.inventory-theme--plain .memory-gems .memory-gems__refinement-compare>div { padding:14px; border:1px solid #b7a37d; background:#fbf3e3; border-radius:9px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems .memory-gems__refinement-compare>div:last-child { border-color:#658477; background:#edf1df; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-compare :is(span,p) { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-compare strong { font-size:15px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-actions { display:grid; grid-template-columns:minmax(0,1fr); gap:9px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-actions .button { min-height:44px; font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__craft>p,.inventory-gem-document.inventory-theme--plain .memory-gems__refinement>p { font-size:13px; line-height:1.85; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipes { gap:14px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipe { display:grid; grid-template-columns:42px minmax(0,1fr); align-items:start; gap:9px; padding:12px; background:#fbf3e3; border:1px solid #b9a37c; border-radius:8px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipe>.collected-gem-art { width:42px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipe>div { min-width:0; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipe p { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__recipe>.button { grid-column:1 / -1; width:100%; margin:0; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__source p,.inventory-gem-document.inventory-theme--plain .memory-gems__source ul { font-size:13px; }
+.inventory-gem-document.inventory-theme--plain .inventory-confirmation>.button { display:flex; width:100%; margin-top:10px; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__restriction { color:#684d2d; font-size:13px; }
+@media(min-width:600px) { .inventory-gem-document.inventory-theme--plain .memory-gems__grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .inventory-gem-document.inventory-theme--plain .memory-gems .memory-gems__refinement-compare { grid-template-columns:repeat(2,minmax(0,1fr)); } .inventory-gem-document.inventory-theme--plain .memory-gems__detail-actions,.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.inventory-gem-document.inventory-theme--plain .memory-gems__refinement-actions { position:sticky; bottom:-22px; z-index:3; padding:12px 0; background:#f1e4cceF; border-top:1px solid #b8a27c; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__item :where(.memory-gems__item-name,.memory-gems__item-roll,.memory-gems__item-status,.memory-gems__item-roll>small) { color:#f2e4c8; }
+.inventory-gem-document.inventory-theme--plain .memory-gems__roll-line { color:#5a4733; }

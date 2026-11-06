@@ -25,7 +25,8 @@ test('child screens use real artwork for materials, inspection, refinement, mach
  await page.getByRole('button',{name:'閉じる',exact:true}).click();
  await page.getByRole('button',{name:'記憶石の管理',exact:true}).click();
  await page.locator('[data-testid="cabinet-gem"][data-gem-id="decor-stone"]').click();await page.getByRole('button',{name:'詳細',exact:true}).click();
- await expect(page.getByRole('dialog').locator('[data-inventory-button]')).not.toHaveCount(0);
+ await expect(page.getByRole('dialog')).toHaveClass(/inventory-theme--plain/);
+ expect(await page.getByRole('dialog').getByRole('button').first().evaluate(el=>el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(44);
  const inspection=page.locator('.inventory-inspection-heading');
  const title=await inspection.locator('h3').boundingBox(),protect=await inspection.getByRole('button').boundingBox();
  expect(title&&protect&&(title.y+title.height<=protect.y||title.x+title.width<=protect.x)).toBe(true);

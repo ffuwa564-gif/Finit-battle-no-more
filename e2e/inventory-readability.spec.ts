@@ -1,18 +1,8 @@
-import {test,expect,type Locator,type Page} from '@playwright/test';
+import {test,expect,type Page} from '@playwright/test';
 import {enterGame} from './boot';
+import {contrast} from './readability-checks';
 
 test.use({viewport:{width:390,height:844},locale:'ja-JP'});
-async function contrast(locator:Locator) {
- const readings=await locator.evaluateAll(nodes=>nodes.filter(n=>n.getBoundingClientRect().width&&n.getBoundingClientRect().height).map(node=>{
-  const rgb=(s:string)=>s.match(/[\d.]+/g)?.map(Number)??[0,0,0,0];
-  const luminance=(c:number[])=>c.slice(0,3).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((n,x,i)=>n+x*[.2126,.7152,.0722][i],0);
-  const fg=rgb(getComputedStyle(node).color);let parent:Element|null=node,bg=[255,255,255,1];
-  while(parent){const color=rgb(getComputedStyle(parent).backgroundColor);if(color.length===3||color[3]>=.98){bg=color;break;}parent=parent.parentElement;}
-  const a=luminance(fg),b=luminance(bg);return {text:node.textContent?.trim().slice(0,80),ratio:(Math.max(a,b)+.05)/(Math.min(a,b)+.05)};
- }));
- expect(readings.length).toBeGreaterThan(0);
- for(const r of readings)expect(r.ratio,`${r.text}: contrast ${r.ratio.toFixed(2)}`).toBeGreaterThanOrEqual(4.5);
-}
 async function folded(page:Page,id:string) {const section=page.locator(`[data-inventory-section="${id}"]`);if(!await section.getAttribute('open')){if(!await section.evaluate(el=>(el as HTMLDetailsElement).open))await section.locator(':scope>summary').click();}return section;}
 
 test('build notebook keeps the next action ahead of the roster and readable across languages, sizes and selection states',async({page},info)=>{

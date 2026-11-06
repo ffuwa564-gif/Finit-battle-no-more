@@ -29,6 +29,7 @@ test('tier-four crafting builds power, reserves energy, then runs an automatic l
  await page.getByRole('button',{name:/蓄灯槽 ×1.*設置/}).click();
  await expect(page.locator('.industry-power')).toContainText('1200');
  await page.screenshot({path:info.outputPath('powered-workshop-390.png')});
+ await page.getByRole('dialog').getByRole('button',{name:'製作図',exact:true}).click();
  await page.getByRole('navigation',{name:'クラフトのTier'}).getByRole('button',{name:'T4',exact:true}).click();
  await expect(page.locator('#industry-recipes-part')).toHaveCount(0); // InventorySection uses its own accessible details id.
  await page.getByText('中間素材',{exact:true}).click();
@@ -52,6 +53,7 @@ test('tier filters and translated power controls fit narrow screens and dependen
  await page.locator('.inventory-hotspot--machines').click();
  await expect(page.getByRole('dialog')).not.toContainText(/[\u3040-\u30ff\u3400-\u9fff]/);
  const closed=page.locator('details').filter({hasText:'Crafting dependencies'});await expect(closed).not.toHaveAttribute('open','');
+ await page.getByRole('dialog').getByRole('button',{name:'Blueprints',exact:true}).click();
  await page.getByRole('navigation',{name:'Craft tiers'}).getByRole('button',{name:'T5',exact:true}).click();
  await page.getByText('Components',{exact:true}).click();
  for(const width of[320,390,1440]){await page.setViewportSize({width,height:900});expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);}

@@ -3,6 +3,7 @@ import { assetPath } from '../content';
 import spriteCatalog from '../content/inventory-sprites.json';
 import { GameImage } from './GameMedia';
 import './inventory-children.css';
+import './inventory-controls.css';
 
 export const InventoryThemeContext = createContext(false);
 export function InventoryTheme({children,className='',controls='illustrated'}:{children:ReactNode;className?:string;controls?:'illustrated'|'plain'}) {return <InventoryThemeContext.Provider value={controls==='illustrated'}><div className={`inventory-theme inventory-theme--${controls} ${className}`}>{children}</div></InventoryThemeContext.Provider>;}
