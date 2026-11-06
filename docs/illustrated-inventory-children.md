@@ -42,3 +42,7 @@
 | ![原石研磨](images/illustrated-inventory-children/polishing-mobile.webp) | ![ビルド手帳](images/illustrated-inventory-children/build-book-390.webp) | ![人物詳細](images/illustrated-inventory-children/character-detail-390.webp) |
 
 [320pxの製作図](images/illustrated-inventory-children/recipes-320.webp) / [旅の記録](images/illustrated-inventory-children/journal-390.webp)
+
+## ビルド手帳と文字の整理
+
+ビルド手帳は[専用の構成へ再設計](build-notebook.md)。一覧と実演を初期折りたたみにし、現在の進捗と次の行動を先に表示する。ビルド部分のボタンは単純な枠へ変更し、古い配色との競合を解消した。旅の記録・欠片・調律のラベルと、クラフトのレシピの配置も調整している。
