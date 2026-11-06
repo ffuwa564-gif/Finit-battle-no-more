@@ -114,3 +114,11 @@
 @media(min-width:761px){.world-map__destination{width:440px;grid-template-columns:58px 1fr;}.world-map__destination>img{width:58px;height:72px;}.world-map__tools{bottom:152px;}.world-objective-dock--map{bottom:152px;}}
 
 .world-map .world-pin{transition:color .15s,border-color .15s,background-color .15s;}
+
+/* Press feedback must preserve the geographic transform and hit target. */
+.world-map .world-pin:active:not(:disabled) {
+  transform:scale(var(--pin-scale)) translate(-50%,-50%);
+}
+.world-map .world-person:active:not(:disabled) {
+  transform:translate(-50%,-50%);
+}
