@@ -1,10 +1,12 @@
 import { test,expect,type Page } from '@playwright/test';
 import { enterGame } from './boot';
+import {contrast} from './readability-checks';
 async function seed(page:Page){await page.goto('/#bag');await enterGame(page);await page.evaluate(async()=>{const {loadSave,persistSave}=await import('/src/platform/save.ts');const {roughMemoryGem}=await import('/src/domain/gem-polishing.ts');const save=(await loadSave())!,rev=save.revision;save.memoryGems!.rough=[{...roughMemoryGem({id:'rough-radiant',defId:'pale-ward',variant:'pure',roll:{power:170,trait:'bulwark',value:128}},1),promise:'radiant'},{...roughMemoryGem({id:'rough-ordinary',defId:'echo-shard',variant:'pure',roll:{power:40,trait:'none',value:0}},4),promise:'ordinary'}];save.revision++;await persistSave(save,rev);localStorage.setItem('stillveil-world-travel-v1',JSON.stringify({position:{x:.38,y:.72},journey:{from:{x:.38,y:.72},to:{x:.53,y:.28},destinationId:'world-tower',startedAt:Date.now(),arrivesAt:Date.now()+45000}}));});await page.reload();await enterGame(page);await page.goto('/#bag/polish');await page.locator('.gem-polish').waitFor();}
 test('polish a sealed stone during travel, reveal its real tier once and keep legacy equipment',async({page},info)=>{
  await page.setViewportSize({width:390,height:844});await seed(page);
  await expect(page.locator('.gem-polish__travel')).toContainText('白亜の塔');
  await expect(page.locator('.gem-polish .memory-gem-tier')).toHaveCount(0);
+ await expect(page.locator('.gem-polish__pad')).toBeEnabled();await contrast(page.locator('.gem-polish__pad'));await page.screenshot({path:info.outputPath('ready-to-polish-mobile.png')});
  await page.clock.install();await page.clock.pauseAt(new Date(await page.evaluate(()=>Date.now())+1000));
  await page.getByRole('button',{name:'研磨を始める',exact:false}).click();
  await page.screenshot({path:info.outputPath('polishing-mobile.png')});

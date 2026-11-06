@@ -1,0 +1,55 @@
+/* Flat controls keep labels readable while the surrounding illustrated frame carries the ornament. */
+.inventory-theme--plain .button.button { min-height:44px; padding:10px 13px; gap:7px; line-height:1.5; font-size:13px; white-space:normal; letter-spacing:0; color:#3c3228; background:#fff5e2; border:1px solid #ab916a; border-radius:7px; box-shadow:0 1px 2px #37251412; }
+.inventory-theme--plain .button.button--primary { background:#263e53; border-color:#263e53; color:#fff0d2; }
+.inventory-theme--plain .button.button--danger { background:#843f4c; border-color:#843f4c; color:#fff2df; }
+.inventory-theme--plain .button.button.is-selected { background:#263e53; border-color:#263e53; color:#fff0d2; box-shadow:inset 0 -2px #d7b773; }
+.inventory-theme--plain .button.button:hover:not(:disabled) { background:#ead5ad; border-color:#8a6d44; color:#382c20; box-shadow:0 1px 3px #37251422; }
+.inventory-theme--plain .button.button--primary:hover:not(:disabled),.inventory-theme--plain .button.button.is-selected:hover:not(:disabled) { background:#35546c; color:#fff0d2; }
+.inventory-theme--plain .button.button--danger:hover:not(:disabled) { background:#994c5b; color:#fff2df; }
+.inventory-theme--plain .button.button:disabled { background:#e4dcca; color:#706553; border-color:#c3b8a2; opacity:1; box-shadow:none; filter:none; }
+.inventory-theme--plain .button.button svg { flex-shrink:0; }
+.inventory-theme--plain .button.button:focus-visible { outline:3px solid #397791; outline-offset:2px; }
+.inventory-art-modal.inventory-theme--plain .modal__header .button { min-width:44px; width:44px; height:44px; padding:10px; background:#182c43; color:#fceacf; border-color:#a3aeb8; border-radius:50%; }
+.inventory-art-modal.inventory-theme--plain .modal__body { padding-block:16px 22px; font-size:13px; line-height:1.75; }
+.inventory-art-modal.inventory-theme--plain .modal__body :is(input,select,textarea) { min-height:44px; font-size:13px; }
+.inventory-art-modal.inventory-theme--plain .inventory-section>summary { min-height:52px; font-size:14px; line-height:1.6; padding:12px; }
+.inventory-art-modal.inventory-theme--plain .inventory-section__body { padding:14px 12px; }
+.inventory-art-modal.inventory-theme--plain .inventory-section__body>p { margin-top:0; }
+.inventory-art-modal.inventory-theme--plain .shop-item { display:grid; grid-template-columns:64px minmax(0,1fr); gap:14px; align-items:center; }
+.inventory-art-modal.inventory-theme--plain .inventory-potion-art { width:64px; }
+.inventory-art-modal.inventory-theme--plain .shop-item h2 { color:#3d3022; font-size:21px; line-height:1.5; margin:0 0 6px; }
+.inventory-art-modal.inventory-theme--plain .shop-item p { font-size:13px; line-height:1.8; }
+.inventory-art-modal.inventory-theme--plain .shop-item .subtle { color:#61513c; font-size:13px; }
+.inventory-art-modal.inventory-theme--plain .shop-panel>.button { width:100%; margin-top:14px; }
+.inventory-art-modal.inventory-theme--plain .exchange-row { display:grid; grid-template-columns:minmax(0,1fr); gap:8px; padding-block:12px; border-bottom:1px solid #b9a48277; }
+.inventory-art-modal.inventory-theme--plain .exchange-row>span { color:#48392a; font-size:13px; overflow-wrap:anywhere; }
+.inventory-art-modal.inventory-theme--plain .exchange-row .toolbar { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:0; }
+.inventory-art-modal.inventory-theme--plain .exchange-row .button { font-size:12px; min-width:0; padding-inline:7px; }
+.inventory-art-modal.inventory-theme--plain .resource-item { display:grid; grid-template-columns:48px minmax(0,1fr); gap:12px; padding:12px; }
+.inventory-art-modal.inventory-theme--plain .resource-item .inventory-sprite { width:48px; }
+.inventory-art-modal.inventory-theme--plain .resource-item strong { color:#48392a; font-size:14px; overflow-wrap:anywhere; }
+.inventory-art-modal.inventory-theme--plain .resource-item p { color:#675239; margin:5px 0 0; font-size:15px; }
+.inventory-art-modal.inventory-theme--plain .preparation-guide__choices { display:grid; grid-template-columns:minmax(0,1fr); }
+.inventory-art-modal.inventory-theme--plain .preparation-guide { padding:13px; }
+.inventory-art-modal.inventory-theme--plain .preparation-guide header>span { margin-left:0; flex-basis:100%; font-size:12px; }
+.inventory-art-modal.inventory-theme--plain .expedition-ledger__filters { grid-template-columns:minmax(0,1fr); }
+.inventory-art-modal.inventory-theme--plain .expedition-ledger__history small { color:#67523c; }
+.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__copy { padding:18px; gap:12px; }
+.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__skills small { color:#66523d; font-size:13px; }
+.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__cost strong { color:#684a22; }
+@media(min-width:600px) { .inventory-art-modal.inventory-theme--plain .preparation-guide__choices,.inventory-art-modal.inventory-theme--plain .expedition-ledger__filters { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
+.inventory-art-modal.inventory-theme--plain .modal__body :is(input,select,textarea),
+.inventory-gem-document.inventory-theme--plain :is(input,select,textarea) { background:#fcf3e3; color:#382f2b; -webkit-text-fill-color:#382f2b; border-color:#aa9270; color-scheme:light; }
+.inventory-theme--plain input::placeholder { color:#77614b; opacity:1; }
+/* A tier badge owns its ink even inside a paper comparison or a dark item card. */
+.inventory-theme .memory-gem-tier[aria-label] { color:var(--tier-ink); -webkit-text-fill-color:var(--tier-ink); background-color:#142031; font-size:11px; }
+.inventory-polish-document.inventory-theme--plain .gem-polish .button.gem-polish__pad { background:linear-gradient(135deg,#1e3049,#2b4764),#223b56; color:#fff0d2; border:1px solid #b7c2c6; box-shadow:inset 0 0 0 2px #aebec52b; border-radius:10px; font-size:20px; }
+.inventory-polish-document.inventory-theme--plain .gem-polish .button.gem-polish__pad:disabled { background:#35414d; color:#c1c6c7; border-color:#657480; }
+.inventory-polish-document.inventory-theme--plain .gem-polish__stones .button { color:#443528; background:#f6e8ce; padding:9px; }
+.inventory-polish-document.inventory-theme--plain .gem-polish__stones .button.is-selected { background:#2b445a; color:#fff0d2; border-color:#cfb77d; }
+.inventory-polish-document.inventory-theme--plain .hub-navigation>.button { min-width:0; min-height:52px; padding:4px 0; background:transparent; color:#c7d0d9; border:0; box-shadow:none; font-size:10px; white-space:nowrap; }
+.inventory-polish-document.inventory-theme--plain .hub-navigation>.button--primary { color:#f0d49d; background:radial-gradient(ellipse at bottom,#d5b15c25,transparent 75%); }
+.inventory-polish-document.inventory-theme--plain .gem-polish__stones .button { flex-basis:166px; min-width:166px; display:grid; grid-template-columns:32px minmax(0,1fr); gap:8px; min-height:64px; font-size:13px; }
+.inventory-polish-document.inventory-theme--plain .gem-polish__stones .inventory-sprite { width:32px; }
+.inventory-polish-document.inventory-theme--plain .gem-polish__stones small { font-size:11px; }

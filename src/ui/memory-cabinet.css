@@ -30,3 +30,16 @@
 .cabinet-filters .button { min-height:44px; }
 .cabinet-tray .button { min-height:34px; }
 .inventory-scene .cabinet-owner select { background:#f2e5c8; color:#352d32; -webkit-text-fill-color:#352d32; color-scheme:light; }
+/* Keep the lower drawer operable at phone sizes; do not shrink controls to fit the painting. */
+.inventory-scene--memory-cabinet { min-height:660px; }
+.cabinet-collection { bottom:42%; }
+.cabinet-pagination { top:59%; }
+.cabinet-pagination .button { width:44px; min-width:44px; min-height:44px; }
+.cabinet-tray { top:auto; bottom:58px; height:auto; min-height:160px; left:5%; right:5%; grid-template-columns:54px minmax(0,1fr); gap:8px; padding:9px; background:#f0e3c9f5; border:1px solid #a18a60; border-radius:9px; box-shadow:0 3px 12px #060c1d55; }
+.cabinet-tray__card { padding:0; }
+.cabinet-tray h2 { font-size:14px; }
+.cabinet-tray p { font-size:12px; -webkit-line-clamp:1; margin:4px 0 7px; }
+.inventory-scene .cabinet-owner select { min-height:44px; font-size:13px; padding:8px 5px; }
+.cabinet-tray__actions { gap:7px; }
+.cabinet-tray .button { min-height:44px; font-size:13px; padding:7px 9px; }
+.inventory-scene .cabinet-manage { min-height:44px; bottom:1%; left:22%; right:22%; font-size:13px; }

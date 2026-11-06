@@ -53,7 +53,7 @@
 /* Existing functional components inherit the same paper stock; no screen-local skin forks. */
 .inventory-gem-document .memory-gems { --memory-muted:#685b4b; background:transparent; padding:0; border:0; color:#382f2b; box-shadow:none; }
 .inventory-theme .memory-gems :is(.memory-gems__equipment,.memory-gems__slot,.memory-gems__detail,.memory-gems__refinement-offer,.memory-gems__target-craft,.memory-gems__stack-detail,.memory-gems__comparison,.memory-gems__transfer-confirm,.memory-gems__salvage-confirm,.memory-gems__source,.memory-gems__dust>div) { background:#f3e6cdbb; border-color:#af9871; color:#382f2b; box-shadow:none; }
-.inventory-theme .memory-gems :is(h2,h3,h4,p,small,.memory-gems__label,.memory-gems__eyebrow,.memory-gems__collection,.memory-gems__cooldown,.memory-gems__roll-line,.memory-gems__effect,.memory-gems__tier-stats strong,.memory-gems__tier-stats>div>span:first-child,.memory-gems__source li,.memory-gems__source-loot,.memory-gems__source-rates) { color:#493b30; }
+.inventory-theme .memory-gems :where(h2,h3,h4,p,small,.memory-gems__label,.memory-gems__eyebrow,.memory-gems__collection,.memory-gems__cooldown,.memory-gems__roll-line,.memory-gems__effect,.memory-gems__tier-stats strong,.memory-gems__tier-stats>div>span:first-child,.memory-gems__source li,.memory-gems__source-loot,.memory-gems__source-rates) { color:#493b30; }
 .inventory-theme .memory-gems__header p,.inventory-theme .memory-gems__intro { color:#76624b; }
 .inventory-theme .memory-gems__refinement-compare>div { background:#f7ebd350; border-color:#a68d64; color:#44372e; }
 .inventory-theme .memory-gems__refinement-compare { margin-block:18px; }
@@ -120,10 +120,7 @@
 .fairy-guide--inventory { isolation:isolate; color:#3f342e; border:0; background:#eadbc0; }
 .fairy-guide--inventory>.inventory-frame { grid-template-rows:0 minmax(0,1fr) 24px; grid-template-columns:16px minmax(0,1fr) 16px; z-index:-1; }
 .fairy-guide--inventory :is(h2,p,.fairy-guide__chapter,.fairy-guide__hint) { color:#4b3a2d; }
-/* Native selects must keep the paper palette even under each legacy component stylesheet. */
-.inventory-gem-document.inventory-theme :is(input,select,textarea),
-.inventory-art-modal.inventory-theme :is(input,select,textarea),
-.inventory-gem-document.inventory-theme input::placeholder { color:#776851; opacity:1; }
+/* Native paper controls are owned by inventory-controls.css. */
 
 .inventory-theme .memory-gems__roll-detail { background:#e3d2b2; border-color:#af9871; color:#493b30; }
 
