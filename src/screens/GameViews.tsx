@@ -24,7 +24,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, sharedSSRIds, gachaBaseChance, gachaPoolIds } from '../content/gacha';
 import { useEffect, useState } from 'react';
 import { ArrowRight, Factory, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather, Link2, Unlink } from 'lucide-react';
-import { MedalTree, GemPolishing, WorldMap, BuildPlanner, BuildGoalSummary, IvoryTower, InventorySection, MemoryGems, MemoryGemFind, MemoryGemSource, MemoryGemSummary, PartyCommandDial, CompanionChoice, LivingBattleFrame, SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, StatusFeedback, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
+import { TravelBag, MemoryCabinet, MedalTree, GemPolishing, WorldMap, BuildPlanner, BuildGoalSummary, IvoryTower, InventorySection, MemoryGems, MemoryGemFind, MemoryGemSource, MemoryGemSummary, PartyCommandDial, CompanionChoice, LivingBattleFrame, SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, StatusFeedback, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
 import { bgmTracks } from '../platform/bgm';
 import { content as publicContent, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
@@ -128,30 +128,22 @@ export function PartyView(p: ViewProps) {
 }
 
 export function BagView(p: ViewProps) {
-  const [tab, setTab] = useState(() => location.hash.includes('/workshop') ? 'workshop' : location.hash.includes('/polish') ? 'polish' : location.hash.includes('/builds') ? 'builds' : location.hash.includes('/gems') ? 'gems' : 'items');
-  useEffect(() => { const sync = () => setTab(location.hash.includes('/workshop') ? 'workshop' : location.hash.includes('/polish') ? 'polish' : location.hash.includes('/builds') ? 'builds' : location.hash.includes('/gems') ? 'gems' : 'items'); window.addEventListener('hashchange', sync); return () => window.removeEventListener('hashchange', sync); }, []);
-  if (tab === 'workshop') return <IndustryWorkshop save={p.save} content={content} busy={p.busy} command={p.command} onClose={() => { setTab('items'); location.hash = 'bag'; }} onDungeon={id => { p.navigate('dungeons'); location.hash = id ? `dungeons/map/${encodeURIComponent(id)}` : 'dungeons'; }}/>;
-  if (tab === 'polish') return <GemPolishing save={p.save} content={content} busy={p.busy} command={p.command} navigate={p.navigate} onClose={() => { setTab('gems'); location.hash = 'bag/gems'; }} />;
-  if (tab === 'builds') return <BuildPlannerView p={p} onClose={() => { setTab('items'); location.hash = 'bag'; }} onGems={defId => { setTab('gems'); location.hash = defId ? `bag/gems/${encodeURIComponent(defId)}` : 'bag/gems'; }} />;
+  const readTab = () => location.hash.includes('/workshop') || location.hash.includes('/craft') ? 'workshop' : location.hash.includes('/polish') ? 'polish' : location.hash.includes('/builds') ? 'builds' : location.hash.includes('/gems') ? 'gems' : location.hash.includes('/materials') ? 'materials' : location.hash.includes('/items') ? 'items' : location.hash.includes('/notes') ? 'notes' : 'bag';
+  const [tab, setTab] = useState(readTab);
+  useEffect(() => { const sync = () => setTab(readTab()); window.addEventListener('hashchange', sync); return () => window.removeEventListener('hashchange', sync); }, []);
+  function open(place: string) { location.hash = place === 'bag' ? 'bag' : `bag/${place}`; setTab(place); }
+  if (tab === 'workshop') return <IndustryWorkshop save={p.save} content={content} busy={p.busy} command={p.command} onClose={() => open('bag')} onDungeon={id => { p.navigate('dungeons'); location.hash = id ? `dungeons/map/${encodeURIComponent(id)}` : 'dungeons'; }}/>;
+  if (tab === 'polish') return <GemPolishing save={p.save} content={content} busy={p.busy} command={p.command} navigate={p.navigate} onClose={() => open('gems')} />;
+  if (tab === 'builds') return <BuildPlannerView p={p} onClose={() => open('bag')} onGems={defId => { setTab('gems'); location.hash = defId ? `bag/gems/${encodeURIComponent(defId)}` : 'bag/gems'; }} />;
+  if (tab === 'gems') return <MemoryCabinet targetDefId={location.hash.startsWith('#bag/gems/') ? location.hash.slice('#bag/gems/'.length) : undefined} save={p.save} content={content} dispatch={p.command} busy={p.busy} onBack={() => open('bag')} onBuilds={() => open('builds')} />;
   const entries = Object.entries(p.save.materials).filter(([, n]) => n > 0);
   const exchangeSpecies = content.species.filter(s => !isolatedMaterialSpecies(content, s.id) && rarities.some(r => (p.save.materials[`${s.id}:${r}`] ?? 0) > 0));
   return <>
-    <PageTitle eyebrow="COLLECTED MEMORIES" title={tr("カバン・道具")} /><div className="bag-gem-entry"><Button variant="secondary" onClick={() => { setTab('workshop'); location.hash = 'bag/workshop'; }}><Factory size={20}/>{tr('旅の工房')}<ChevronRight size={18}/></Button></div>
-    <div className="bag-gem-entry"><Button variant="secondary" onClick={() => { setTab('polish'); location.hash = 'bag/polish'; }}><Sparkles size={20}/>{tr('原石を磨く')}<span>{p.save.memoryGems?.rough?.length ?? 0}</span><ChevronRight size={18}/></Button></div>
-    <div className="bag-gem-entry"><Button onClick={() => setTab('gems')}><Hexagon size={21} />{tr('記憶石の管理')}<span className="bag-gem-entry__count">{p.save.memoryGems?.items.length ?? 0}</span><ChevronRight size={18} /></Button></div>
-    <div className="bag-gem-entry"><Button variant="secondary" onClick={() => { setTab('builds'); location.hash = 'bag/builds'; }}><BookOpen size={21} />{tr('おすすめビルド')}<ChevronRight size={18} /></Button></div>
-    <BuildGoalSummary save={p.save} content={content} onOpen={() => { setTab('builds'); location.hash = 'bag/builds'; }} />
-    {tab === 'items' && <><PreparationGuide save={p.save} content={content} busy={p.busy}
-      onGems={id => { setTab('gems'); location.hash = `bag/gems/${encodeURIComponent(id)}`; }}
-      onDungeon={id => { p.navigate('dungeons'); location.hash = dungeonHash({ kind: 'prepare', dungeonId: id }); }} />
-      <ExpeditionLedger save={p.save} content={content} /></>}
-    <div className="dungeon-mode-tabs" role="group" aria-label={tr("カバンの種類")}>
-      <Button selected={tab === 'gems'} variant={tab === 'gems' ? 'primary' : 'secondary'} onClick={() => setTab('gems')}>{tr("記憶石")}</Button>
-      <Button selected={tab === 'items'} variant={tab === 'items' ? 'primary' : 'secondary'} onClick={() => setTab('items')}>{tr("道具・素材")}</Button>
-    </div>
-    {tab === 'gems' ? <MemoryGems targetDefId={location.hash.startsWith('#bag/gems/') ? location.hash.slice('#bag/gems/'.length) : undefined} save={p.save} content={content} dispatch={p.command} busy={p.busy} onBuilds={() => { setTab('builds'); location.hash = 'bag/builds'; }} /> : <>
-      <Panel className="shop-panel" data-guide="bag-potions"><div className="shop-item"><FlaskConical size={32} /><div><h2>{tr("回復薬")}</h2><p>{tr("味方1人のHPを30%回復。持込は最大5個。")}</p><span className="subtle">{tr("所持 ")}{p.save.potions}{tr(" 個")}</span></div></div><Button disabled={p.busy || p.save.gold < 10} onClick={() => p.command({ type: 'buyPotion', count: 1 })}><CurrencyEmblem kind="gold" size={16} />{tr(" 10 G で購入")}</Button></Panel>
-      <div className="story-link"><Button variant="secondary" onClick={() => p.navigate('recruit')}><CurrencyEmblem kind="gold" size={16} />{tr('ゴールド交換')}</Button></div>
+    <TravelBag save={p.save} onOpen={open} onBack={() => p.navigate('home')} />
+    <Modal open={['items','materials','notes'].includes(tab)} title={tr(tab === 'materials' ? '素材' : tab === 'notes' ? '旅の記録' : '道具')} className="inventory-room-modal" onClose={() => open('bag')}>
+    {tab === 'notes' && <><FairyGuideButton /><BuildGoalSummary save={p.save} content={content} onOpen={() => open('builds')} /><PreparationGuide save={p.save} content={content} busy={p.busy} onGems={id => {setTab('gems');location.hash=`bag/gems/${encodeURIComponent(id)}`;}} onDungeon={id => {p.navigate('dungeons');location.hash=dungeonHash({kind:'prepare',dungeonId:id});}} /><ExpeditionLedger save={p.save} content={content} /></>}
+    {tab === 'items' && <><Panel className="shop-panel" data-guide="bag-potions"><div className="shop-item"><FlaskConical size={32} /><div><h2>{tr('回復薬')}</h2><p>{tr('味方1人のHPを30%回復。持込は最大5個。')}</p><span className="subtle">{tr('所持 ')}{p.save.potions}{tr(' 個')}</span></div></div><Button disabled={p.busy || p.save.gold < 10} onClick={() => p.command({type:'buyPotion',count:1})}><CurrencyEmblem kind="gold" size={16}/>{tr(' 10 G で購入')}</Button></Panel><Button variant="secondary" onClick={() => p.navigate('recruit')}><CurrencyEmblem kind="gold" size={16}/>{tr('ゴールド交換')}</Button></>}
+    {tab === 'materials' && <>
       <InventorySection id="materials" title="所持素材" count={entries.length}>
         {entries.length ? <div className="resource-list">{entries.map(([id, n]) => <Panel className="resource-item" key={id}><MaterialIcon rarity={id.split(':')[1] as Rarity} /><div><strong>{tr(materialName(id))}</strong><p className="subtle">× {n}</p></div></Panel>)}</div> : <p className="subtle">{tr("素材はまだありません。")}</p>}
       </InventorySection>
@@ -160,6 +152,7 @@ export function BagView(p: ViewProps) {
         <div className="resource-list">{exchangeSpecies.map(s => <Panel key={s.id}><h3>{tr(s.name)}</h3>{rarities.map(r => <div className="exchange-row" key={r}><span>{tr(materialName(`${s.id}:${r}`))} ×{p.save.materials[`${s.id}:${r}`] ?? 0}</span><div className="toolbar">{r !== 'epic' && <Button size="sm" variant="secondary" disabled={p.busy || (p.save.materials[`${s.id}:${r}`] ?? 0) < 5} onClick={() => p.command({ type: 'exchange', speciesId: s.id, rarity: r, direction: 'up' })}>{tr("5個を合成")}</Button>}{r !== 'common' && <Button size="sm" variant="secondary" disabled={p.busy || !(p.save.materials[`${s.id}:${r}`] > 0)} onClick={() => p.command({ type: 'exchange', speciesId: s.id, rarity: r, direction: 'down' })}>{tr("1個を分解")}</Button>}</div></div>)}</Panel>)}</div>
       </InventorySection>
     </>}
+    </Modal>
   </>;
 }
 

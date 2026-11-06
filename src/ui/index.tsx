@@ -216,3 +216,6 @@ export { WorldIncidentBanner, WorldIncidentNotice } from './WorldIncident';
 export { IndustryWorkshop, IndustryDungeonResources } from './IndustryWorkshop';
 
 export { StatusFeedback } from './StatusFeedback';
+export { TravelBag, type BagPlace } from './TravelBag';
+export { InventoryScene, InventoryHotspot, CollectedGemArt } from './InventoryScene';
+export { MemoryCabinet } from './MemoryCabinet';
