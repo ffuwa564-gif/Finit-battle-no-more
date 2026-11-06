@@ -8,7 +8,7 @@ import { dungeonLock } from '../domain/events';
 import { buildTactics } from '../domain/build-tactics';
 import { GEM_DEFINITIONS, GEM_VARIANTS, gemName, gemDescription, gemPowerRefinementIsFixed, gemPowerMultiplier, gemRoll, gemTraitDescription, gemTraitInfo, gemPowerTier, gemTraitTier, type MemoryGem } from '../domain/memory-gems';
 import { tr } from '../locales/i18n';
-import { Button, InventorySection } from './index';
+import { Button, InventorySection, InventoryTheme, InventoryIllustration } from './index';
 import { BuildDemo } from './BuildDemo';
 import { MemoryGemTier } from './MemoryGemTier';
 import './build-planner.css';
@@ -84,10 +84,10 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
     </div>;
   }
 
-  return <section className="build-planner" aria-label={tr('ビルドの道標')} data-testid="build-planner">
-    <header className="build-planner__header"><div><span className="build-planner__eyebrow">BUILD ATELIER</span><h2>{tr('ビルドの道標')}</h2><p>{tr('作りたい戦い方から、次の一周を選ぶ。')}</p></div><Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button></header>
+  return <InventoryTheme className="inventory-build-document"><section className="build-planner" aria-label={tr('ビルドの道標')} data-testid="build-planner">
+    <div className="inventory-book-cover"><InventoryIllustration kind="open-folio"/></div><header className="build-planner__header"><div><span className="build-planner__eyebrow">BUILD ATELIER</span><h2>{tr('ビルドの道標')}</h2><p>{tr('作りたい戦い方から、次の一周を選ぶ。')}</p></div><Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button></header>
     <div className="build-planner__choices" aria-label={tr('おすすめビルド')}>
-      {BUILD_DEFINITIONS.map((build,index) => { const Icon=icons[index % icons.length]; const members=build.stages.complete.slots.slice(0,3).map(slot => character(slot.characterIds[0])).filter(Boolean); return <Button key={build.id} variant="secondary" selected={selectedId === build.id} data-testid={`build-card-${build.id}`} data-build-id={build.id} className={`build-planner__choice build-planner__choice--${index}`} onClick={() => choose(build.id)}>
+      {BUILD_DEFINITIONS.map((build,index) => { const Icon=icons[index % icons.length]; const members=build.stages.complete.slots.slice(0,3).map(slot => character(slot.characterIds[0])).filter(Boolean); return <Button key={build.id} variant="secondary" selected={selectedId === build.id} data-testid={`build-card-${build.id}`} data-build-id={build.id} inventoryArt="none" className={`build-planner__choice build-planner__choice--${index}`} onClick={() => choose(build.id)}>
         <span className="build-planner__choice-art" aria-hidden="true">{members.map((member,i) => member && <GameImage key={`${member.id}-${i}`} src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />)}</span>
         <span className="build-planner__choice-copy"><span><Icon size={15} />{tr(build.name)}</span><small>{tr(build.tagline)}</small></span><ChevronRight size={18} />
       </Button>; })}
@@ -115,7 +115,7 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
 
       <BuildDemo buildId={selectedId} stage={stage} content={content} reducedMotion={save.settings.reducedMotion} />
 
-      <InventorySection id="build-recipe" title="目標の編成と装備" count={plan.totalCount} tone="night"><div className="build-planner__recipe">{plan.slots.map((slot,index) => { const def=GEM_DEFINITIONS.find(gem => gem.id === slot.slot.gem.defId)!; return <article key={slot.slot.id} data-testid="build-slot" data-slot-id={slot.slot.id} className="build-planner__slot">
+      <InventorySection art="craft-blueprint" id="build-recipe" title="目標の編成と装備" count={plan.totalCount} tone="night"><div className="build-planner__recipe">{plan.slots.map((slot,index) => { const def=GEM_DEFINITIONS.find(gem => gem.id === slot.slot.gem.defId)!; return <article key={slot.slot.id} data-testid="build-slot" data-slot-id={slot.slot.id} className="build-planner__slot">
         <div className="build-planner__slot-heading"><span>{String(index+1).padStart(2,'0')}</span><div><h4>{tr(slot.slot.label)}</h4><strong>{name(slot.characterId ?? slot.preferredCharacterId)}</strong></div>{slot.fulfilled && <Check size={18} />}</div>
         {slot.substitute && <p className="build-planner__muted">{tr('所持している代役です。実演の編成とは性能が異なります。')}</p>}
         {!slot.characterId && <p className="build-planner__lock"><Users size={13} />{tr('この枠の仲間を持っていません。')}</p>}
@@ -127,18 +127,18 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
         <p className="build-planner__alternatives">{tr('編成できる仲間')}：{slot.slot.characterIds.map(id => name(id)).join(' / ')}</p>
       </article>; })}</div></InventorySection>
 
-      <InventorySection id="build-farm-sources" title="不足している石の入手先" count={requiredDefs.length} tone="night"><div className="build-planner__sources">
+      <InventorySection art="open-folio" id="build-farm-sources" title="不足している石の入手先" count={requiredDefs.length} tone="night"><div className="build-planner__sources">
         <p className="build-planner__muted">{tr('石の系統が合う探索を表示します。狙った石や特性の入手は保証されません。')}</p>{plan.slots.some(slot => gemPowerTier(targetGem(slot)) >= 4 || gemTraitTier(targetGem(slot)) >= 4) && <p className="build-planner__muted">{tr('上位Tier率は、踏破宝箱で石を得たときの各項目の確率です。1周あたりの入手率ではありません。追加特性がある石だけ、特性も抽選します。')}</p>}
         {requiredDefs.length === 0 ? <p>{tr('この段階で不足している石はありません。さらに上の段階も目指せます。')}</p> : requiredDefs.map(id => { const def=GEM_DEFINITIONS.find(gem=>gem.id===id)!; const sources=findGemSources(content,save,id,plan.slots.find(slot => slot.slot.gem.defId === id && slot.gemStatus !== 'ready')?.slot.gem); const shown=sources.slice(0,6); return <section key={id} className="build-planner__source-group"><h4><Gem size={16} />{tr(def.name)}</h4>{shown.map(source => <SourceRow key={source.id} source={source} />)}{sources.length > shown.length && <p className="build-planner__muted">{tr('ほかにも同じ系統の探索で抽選されます。')}</p>}{sources.length === 0 && <p>{tr('現在表示できる入手先はありません。')}</p>}</section>; })}
       </div></InventorySection>
 
-      {tactics && <InventorySection id="build-matchups" title="得意な相手と、持ち替えの注意" tone="night"><dl className="build-planner__tactics"><div><dt>{tr('得意な探索')}</dt><dd>{tr(tactics.goodAgainst)}</dd></div><div><dt>{tr('苦手な場面')}</dt><dd>{tr(tactics.beCareful)}</dd></div><div><dt>{tr('王冠を渡す代価')}</dt><dd>{tr(tactics.leaderCost)}</dd></div><div><dt>{tr('代替の仲間を選ぶ時')}</dt><dd>{tr(tactics.alternatives)}</dd></div></dl></InventorySection>}
+      {tactics && <InventorySection art="open-folio" id="build-matchups" title="得意な相手と、持ち替えの注意" tone="night"><dl className="build-planner__tactics"><div><dt>{tr('得意な探索')}</dt><dd>{tr(tactics.goodAgainst)}</dd></div><div><dt>{tr('苦手な場面')}</dt><dd>{tr(tactics.beCareful)}</dd></div><div><dt>{tr('王冠を渡す代価')}</dt><dd>{tr(tactics.leaderCost)}</dd></div><div><dt>{tr('代替の仲間を選ぶ時')}</dt><dd>{tr(tactics.alternatives)}</dd></div></dl></InventorySection>}
 
-      <InventorySection id="build-how-it-works" title="このビルドの使い方" tone="night"><div className="build-planner__mechanic"><p>{tr(definition.mechanic)}</p><ol>{definition.steps.map((step,index) => <li key={index}>{tr(step)}</li>)}</ol></div></InventorySection>
+      <InventorySection art="open-folio" id="build-how-it-works" title="このビルドの使い方" tone="night"><div className="build-planner__mechanic"><p>{tr(definition.mechanic)}</p><ol>{definition.steps.map((step,index) => <li key={index}>{tr(step)}</li>)}</ol></div></InventorySection>
 
       <div ref={applySection} className="build-planner__apply"><h4><Users size={17} />{tr('所持品で編成する')}</h4><p>{tr('仲間と石が揃うと、まとめて編成できます。変更前に内容を確認します。')}</p>{!plan.complete && plan.canApply && <p className="build-planner__transfer">{tr('性能目標に届いていない石も含みます。')}</p>}{!plan.functional && !plan.missingCharacters && !plan.missingGems && <p className="build-planner__lock">{tr('この戦い方に必要な特性が不足しています。石を調律して準備しましょう。')}</p>}{save.battle && <p className="build-planner__lock">{tr('編成の変更は探索を終えてから行えます。')}</p>}{save.memoryGems?.pending && <p className="build-planner__lock">{tr('調律の結果を選んでから編成できます。')}</p>}<Button disabled={busy || !plan.canApply} onClick={() => setConfirmApply(!confirmApply)}>{tr(confirmApply ? '変更の確認を閉じる' : '編成の変更内容を確認')}<ChevronRight size={16} /></Button>
-        {confirmApply && <div className="build-planner__confirmation" role="region" aria-label={tr('編成変更の確認')}><h5>{tr('現在のパーティと装備を変更します')}</h5><p>{tr('石や素材は消費しません。ほかの仲間が装備している石は移動します。')}</p><ul>{plan.slots.map((slot,index)=><li key={slot.slot.id}><strong>{name(slot.characterId)}{index === plan.stageDefinition.leaderSlot && <Crown size={12} />}</strong><span>{slot.gem ? tr(gemName(slot.gem)) : tr('未所持')}</span>{slot.needsTransfer && <small>{tr('{0}から移動').replace('{0}',name(slot.ownerId))}</small>}</li>)}</ul><div><Button disabled={busy || !plan.canApply} onClick={() => { dispatch({type:'applyBuild',buildId:selectedId,stage}); setConfirmApply(false); }}>{tr('この内容で編成する')}</Button><Button variant="secondary" disabled={busy} onClick={() => setConfirmApply(false)}>{tr('キャンセル')}</Button></div></div>}
+        {confirmApply && <div className="build-planner__confirmation inventory-confirmation" role="region" aria-label={tr('編成変更の確認')}><h5>{tr('現在のパーティと装備を変更します')}</h5><p>{tr('石や素材は消費しません。ほかの仲間が装備している石は移動します。')}</p><ul>{plan.slots.map((slot,index)=><li key={slot.slot.id}><strong>{name(slot.characterId)}{index === plan.stageDefinition.leaderSlot && <Crown size={12} />}</strong><span>{slot.gem ? tr(gemName(slot.gem)) : tr('未所持')}</span>{slot.needsTransfer && <small>{tr('{0}から移動').replace('{0}',name(slot.ownerId))}</small>}</li>)}</ul><div><Button disabled={busy || !plan.canApply} onClick={() => { dispatch({type:'applyBuild',buildId:selectedId,stage}); setConfirmApply(false); }}>{tr('この内容で編成する')}</Button><Button variant="secondary" disabled={busy} onClick={() => setConfirmApply(false)}>{tr('キャンセル')}</Button></div></div>}
       </div>
     </article>
-  </section>;
+  </section></InventoryTheme>;
 }

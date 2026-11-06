@@ -1,3 +1,4 @@
+import { InventoryFrame, InventoryButtonArt, InventoryThemeContext, type InventoryPanelKind } from './InventoryArts';
 export { MedalTree } from './MedalTree';
 export { PartyMemberActions, type PartyMemberActionsProps } from './PartyMemberActions';
 export { PartyFormation, type PartyFormationProps } from './PartyFormation';
@@ -9,7 +10,7 @@ export { VisualNovel, NovelLibrary } from './VisualNovel';
 export { FairyGuide, FairyGuideButton } from './FairyGuide';
 export { XRGacha } from './XRGacha';
 import { tr, localize } from '../locales/i18n';
-import { useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
+import { useContext, useEffect, useId, useRef, type ButtonHTMLAttributes, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 import { createGamePortal } from './GamePortal';
 import { ChevronRight, Crown, Diamond, X } from 'lucide-react';
 import type { CharacterDef, Rarity } from '../domain/types';
@@ -48,14 +49,16 @@ export { PortraitArt } from './PortraitArt';
 export { CurrencyEmblem, EncounterCrest } from './Sigils';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'icon';
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean; sound?: UISound | false }
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { variant?: ButtonVariant; size?: 'sm' | 'md' | 'lg'; selected?: boolean; sound?: UISound | false; inventoryArt?: 'auto' | 'slot' | 'none' }
 
 /** All interactive controls share this visual and sound boundary. */
-export function Button({ variant = 'primary', size = 'md', selected, className = '', sound = 'confirm', onClick, children, type = 'button', ...props }: ButtonProps) {
-  return <button {...props} type={type} aria-pressed={selected} className={`button button--${variant} button--${size}${selected ? ' is-selected' : ''} ${className}`} onClick={(event) => {
+export function Button({ variant = 'primary', size = 'md', selected, className = '', sound = 'confirm', onClick, children, type = 'button', inventoryArt = 'auto', ...props }: ButtonProps) {
+  const themed=useContext(InventoryThemeContext)&&inventoryArt!=='none';
+  const art=inventoryArt==='slot'?(selected?'slot-selected':'slot-default'):props.disabled?'button-disabled':variant==='icon'?'round-control':selected?'tab-active':variant==='danger'?'button-danger':variant==='secondary'?'button-secondary':'button-primary';
+  return <button data-inventory-button={themed?art:undefined} {...props} type={type} aria-pressed={selected} className={`button button--${variant} button--${size}${selected ? ' is-selected' : ''}${themed?' inventory-button':''} ${className}`} onClick={(event) => {
     // Commands own their saved success/error cue; view-only buttons own a UI cue.
     runUIInteraction(() => onClick?.(event), sound);
-  }}>{localize(children)}</button>;
+  }}>{themed&&<InventoryButtonArt id={art}/ >}{localize(children)}</button>;
 }
 
 export function IconButton({ label, children, ...props }: Omit<ButtonProps, 'variant'> & { label: string }) {
@@ -105,7 +108,7 @@ export function CharacterPortrait({ character, label, selected, leader, hp, maxH
   const face = variant === 'face' || compact === true;
   const body = <><div className="portrait-image"><PortraitArt character={character} face={face} /><RarityFrame rarity={character.rarity} /><RarityBadge rarity={character.rarity} />{localize(leader && <span className="leader-mark" title={tr("リーダー")}><Crown size={13} /><span className="sr-only">{tr("リーダー")}</span></span>)}<span className="portrait-constant">{localize((character.strength / 10).toFixed(1))}</span></div>{localize((showName || showRole) && <div className="portrait-copy">{localize(showName && <strong>{localize(character.name)}</strong>)}{localize(showRole && <span>{localize(roleName(character.role))}</span>)}</div>)}{localize(hp !== undefined && maxHp !== undefined && <HPBar hp={hp} maxHp={maxHp} label={tr(`${character.name}のHP`)} />)}</>;
   const classes = `character-portrait${selected ? ' is-selected' : ''}${hp === 0 ? ' is-fallen' : ''}${compact ? ' character-portrait--compact' : ''}${face ? ' character-portrait--face' : ''}`;
-  return onClick ? <Button variant="secondary" className={classes} data-rarity={character.rarity} aria-description={tr(`レアリティ ${character.rarity}`)} onClick={onClick} disabled={disabled} selected={selected} aria-label={tr(label ?? `${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`)}>{localize(body)}</Button> : <div className={classes} data-rarity={character.rarity}>{localize(body)}</div>;
+  return onClick ? <Button inventoryArt="none" variant="secondary" className={classes} data-rarity={character.rarity} aria-description={tr(`レアリティ ${character.rarity}`)} onClick={onClick} disabled={disabled} selected={selected} aria-label={tr(label ?? `${character.name}${leader ? '・リーダー' : ''}${hp !== undefined ? ` HP ${hp}/${maxHp}` : ''}`)}>{localize(body)}</Button> : <div className={classes} data-rarity={character.rarity}>{localize(body)}</div>;
 }
 
 export function MaterialIcon({ rarity, size = 'md' }: { rarity: Rarity; size?: 'sm' | 'md' | 'lg' }) {
@@ -126,7 +129,7 @@ export function Toast({ children, tone = 'info', onClose, present = true }: { ch
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */
-export function Modal({ open = true, title, children, onClose, footer, className = '' }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode; className?: string }) {
+export function Modal({ open = true, title, children, onClose, footer, className = '', inventoryArt }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode; className?: string; inventoryArt?: InventoryPanelKind }) {
   const ref = useRef<HTMLDivElement>(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
@@ -154,7 +157,7 @@ export function Modal({ open = true, title, children, onClose, footer, className
     return () => { document.body.style.overflow = oldOverflow; if (root) root.style.overflow = oldRootOverflow ?? ''; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createGamePortal(<div className="modal-backdrop"><div className={`modal ${className}`} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}><div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div>, document.body);
+  return createGamePortal(<InventoryThemeContext.Provider value={Boolean(inventoryArt)}><div className="modal-backdrop"><div className={`modal ${className}${inventoryArt ? ' inventory-theme inventory-art-modal' : ''}`} data-inventory-art={inventoryArt} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>{inventoryArt && <InventoryFrame kind={inventoryArt}/>}<div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div></InventoryThemeContext.Provider>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{localize(children)}<ChevronRight size={16} aria-hidden="true" /></span>; }
@@ -219,3 +222,4 @@ export { StatusFeedback } from './StatusFeedback';
 export { TravelBag, type BagPlace } from './TravelBag';
 export { InventoryScene, InventoryHotspot, CollectedGemArt } from './InventoryScene';
 export { MemoryCabinet } from './MemoryCabinet';
+export { InventoryTheme, InventoryFrame, InventoryIllustration, InventorySprite, InventoryVignette, InventoryPaper, type InventoryPanelKind, type InventorySpriteId } from './InventoryArts';

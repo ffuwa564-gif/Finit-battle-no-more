@@ -43,7 +43,7 @@ export function MemoryCabinet(props: MemoryGemsProps & {onBack:()=>void}) {
       </article>
       <Button className="cabinet-manage" variant="secondary" onClick={()=>{setInspect(false);setDetail(true);}}><SlidersHorizontal size={14}/>{tr('整理・調律')}</Button>
     </InventoryScene>
-    <Modal open={detail} title={tr('記憶石の管理')} className="inventory-room-modal cabinet-detail-modal" onClose={()=>setDetail(false)}>
+    <Modal inventoryArt="parchment-list" open={detail} title={tr('記憶石の管理')} className="inventory-room-modal cabinet-detail-modal" onClose={()=>setDetail(false)}>
       <MemoryGems key={`${inspect?selected?.id:'all'}:${characterId}`} {...props} initialGemId={inspect?selected?.id:undefined} initialCharacterId={characterId} />
     </Modal>
   </>;
