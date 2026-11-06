@@ -6255,7 +6255,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden",
+      "backgroundId": "cathedral",
       "lines": [
         {
           "speaker": "narration",
@@ -6423,7 +6423,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-correction",
@@ -6814,7 +6814,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-disposal-warrant",
@@ -6903,7 +6903,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-garden-siege",
@@ -7013,7 +7013,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-refusal",
@@ -7109,7 +7109,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-empty-throne",
@@ -7205,7 +7205,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-price-of-light",
@@ -7301,7 +7301,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-common-table",
@@ -7397,7 +7397,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-aftercare",
@@ -7479,7 +7479,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-four-tomorrows",
@@ -7561,7 +7561,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-unearned-meal",
@@ -7643,7 +7643,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     },
     {
       "id": "seven-breakfast",
@@ -7725,7 +7725,7 @@
       "optional": true,
       "ambient": true,
       "continuation": true,
-      "backgroundId": "novel-awakening-garden"
+      "backgroundId": "cathedral"
     }
   ],
   "incidents": [
