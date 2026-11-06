@@ -169,7 +169,7 @@ export function CodexView(p: ViewProps) {
  else if(a.kind==='gems'){p.navigate('bag');location.hash='bag/gems';}
  else if(a.kind==='character')p.inspect(characterById(a.characterId));
  else if(a.kind==='party'||a.kind==='recruit')p.navigate(a.kind);
- else{p.navigate('dungeons');location.hash=a.kind==='dungeon'?dungeonHash(content.dungeons.find(d=>d.id===a.dungeonId)?.towerFloor?{kind:'panel',panel:'tower'}:{kind:'map',dungeonId:a.dungeonId}):dungeonHash({kind:'map'});}
+ else{p.navigate('dungeons');location.hash=a.kind==='dungeon'?dungeonHash({kind:'prepare',dungeonId:a.dungeonId}):dungeonHash({kind:'map'});}
 }}/>:<div className="character-grid">{localize(content.characters.filter(ch => ch.published || p.save.ownedIds.includes(ch.id)).map(ch => <Panel className="character-card" key={ch.id}><CharacterPortrait character={ch} onClick={() => p.inspect(ch)} /><span className="eyebrow">{localize(ch.epithet)}</span><h3>{localize(ch.name)}</h3><p>{localize(roleName(ch.role))} · {localize(ch.origin.includes('trial') ? '試練の敵' : ch.origin.includes('gold_exchange') ? 'ゴールド交換限定' : ch.origin.includes('xr_gacha') ? 'XR祈願限定' : ch.origin.includes('gacha') ? '祈願限定' : ch.origin.includes('event') ? 'イベント限定' : ch.origin.includes('awakening') ? `覚醒 · ${ch.epithet}` : p.save.discoveredIds.includes(ch.id) ? '出会った記憶' : 'まだ見ぬ縁')}</p><Button variant="secondary" onClick={() => p.inspect(ch)}>{tr("物語を読む ")}<BookOpen size={14} /></Button></Panel>))}</div>}</>; }
 
 export function GachaView(p: ViewProps) {
