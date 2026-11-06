@@ -1,3 +1,4 @@
+import {fulfillAudioFixture} from './audio-fixture';
 import { test, expect, type Page } from '@playwright/test';
 import { enterGame } from './boot';
 
@@ -23,19 +24,24 @@ async function rms(page: Page) {
 }
 
 test('music settings change real output when iPhone media volume is ignored, retaining mute and foreground recovery', async ({ page }) => {
-  await page.route('**/audio/*.mp3', route => route.fulfill({ contentType: 'audio/wav', body: steadyMusic() }));
+  await page.route('**/audio/*.mp3', route => fulfillAudioFixture(route, steadyMusic()));
   await page.addInitScript(() => {
     localStorage.setItem('stillveil-fairy-tutorial-v1', JSON.stringify({ version: 2, enrolled: false, dismissed: true, seen: [] }));
     Object.defineProperty(navigator, 'standalone', { get: () => true });
     // Emulate iOS's read-only media volume, then measure the actual gain output.
     Object.defineProperty(HTMLMediaElement.prototype, 'volume', { configurable: true, get: () => 1, set: () => {} });
-    const gains: GainNode[] = [], createGain = AudioContext.prototype.createGain;
-    AudioContext.prototype.createGain = function () { const gain = createGain.call(this); gains.push(gain); return gain; };
     const createSource = AudioContext.prototype.createMediaElementSource;
     AudioContext.prototype.createMediaElementSource = function (element) {
-      const source = createSource.call(this, element), meter = this.createAnalyser(); meter.fftSize = 2048;
-      gains.find(gain => gain.context === this)!.connect(meter);
-      (window as any).musicMeter = meter; (window as any).musicContext = this;
+      const source = createSource.call(this, element), context = this, connect = source.connect.bind(source);
+      // Shared contexts contain SE gains too. Follow the actual music edge.
+      source.connect = function (destination, ...args: any[]) {
+        if (destination instanceof GainNode) {
+          const meter = context.createAnalyser(); meter.fftSize = 2048;
+          destination.connect(meter);
+          (window as any).musicMeter = meter; (window as any).musicContext = context;
+        }
+        return (connect as Function)(destination, ...args);
+      } as typeof source.connect;
       return source;
     };
   });

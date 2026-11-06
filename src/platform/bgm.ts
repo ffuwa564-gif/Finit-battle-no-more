@@ -1,3 +1,5 @@
+import { acquireGameAudioContext, releaseGameAudioContext } from './audio-context';
+import { resumeAudioContext } from './audio-resume';
 import type { Battle, DungeonDef } from '../domain/types';
 
 /** Downloaded game BGM; ownership and source links stay separate from project art. */
@@ -36,6 +38,35 @@ const ducks=new Map<symbol,number>();
 let volumeContext: AudioContext | undefined;
 let volumeGain: GainNode | undefined;
 let mediaSource: MediaElementAudioSourceNode | undefined;
+let restorePosition: { scene: string; time: number } | undefined;
+function keepOriginalPitch(): void {
+  if (!player) return;
+  if (player.defaultPlaybackRate !== 1) player.defaultPlaybackRate = 1;
+  if (player.playbackRate !== 1) player.playbackRate = 1;
+  if (!player.preservesPitch) player.preservesPitch = true;
+}
+function restartNativeLoop(): void {
+  if (!player || !unlocked || document.hidden || volume === 0) return;
+  // Keep the already-unlocked element. WebKit's automatic media-source loop
+  // can leave its resampler at EOF while the shared synth clock keeps running.
+  keepOriginalPitch(); player.currentTime = 0;
+  void player.play().catch(() => undefined);
+}
+function musicContextChanged(): void {
+  if (unlocked && !document.hidden && volume > 0) syncBgm();
+}
+function removePlayer(): void {
+  if (!player) return;
+  player.removeEventListener('ratechange', keepOriginalPitch);
+  player.removeEventListener('ended', restartNativeLoop);
+  player.pause(); player.removeAttribute('src'); player.load(); player.remove();
+  player = undefined;
+}
+function renewPlayer(): void {
+  if (player) { restorePosition = { scene: player.dataset.scene ?? scene, time: player.currentTime }; removePlayer(); }
+  mediaSource?.disconnect(); volumeGain?.disconnect();
+  mediaSource = undefined; volumeGain = undefined;
+}
 // iOS ignores HTMLMediaElement.volume, including installed web apps. Route its
 // music through a native gain instead; desktop retains the existing media path.
 function needsNativeVolume(): boolean {
@@ -44,8 +75,18 @@ function needsNativeVolume(): boolean {
 function unlockVolumeContext(): void {
   if (!needsNativeVolume() || typeof window === 'undefined') return;
   try {
-    volumeContext ??= new window.AudioContext();
-    if (volumeContext.state !== 'running') void volumeContext.resume().catch(() => undefined);
+    const context = acquireGameAudioContext('music');
+    if (context !== volumeContext) {
+      // A media element may only be connected to one MediaElementSource, even
+      // after its context closes. Replace it, retaining the current track/time.
+      if (volumeContext) renewPlayer();
+      volumeContext?.removeEventListener('statechange', musicContextChanged);
+      mediaSource?.disconnect(); volumeGain?.disconnect();
+      mediaSource = undefined; volumeGain = undefined;
+      volumeContext = context;
+      context.addEventListener('statechange', musicContextChanged);
+    }
+    if (context.state !== 'running') void resumeAudioContext(context);
   } catch { /* Media playback remains available if Web Audio is unavailable. */ }
 }
 function connectNativeVolume(): void {
@@ -82,14 +123,27 @@ function syncBgm(): void {
   if (!player) {
     player = document.createElement('audio');
     player.hidden = true;
-    player.loop = true;
+    player.loop = !needsNativeVolume();
+    if (!player.loop) player.addEventListener('ended', restartNativeLoop);
     player.preload = 'none';
     player.dataset.bgm = 'true';
+    player.addEventListener('ratechange', keepOriginalPitch);
+    const element = player;
+    player.addEventListener('loadedmetadata', () => {
+      if (element !== player) return;
+      const saved = restorePosition;
+      if (saved && player && player.dataset.scene === saved.scene && Number.isFinite(saved.time)) {
+        player.currentTime = Math.max(0, Math.min(saved.time, Number.isFinite(player.duration) ? Math.max(0, player.duration - .01) : saved.time));
+      }
+      restorePosition = undefined;
+    });
     document.body.append(player);
   }
+  keepOriginalPitch();
   connectNativeVolume();
   if (player.dataset.scene !== scene) {
     player.pause();
+    if (restorePosition?.scene !== scene) restorePosition = undefined;
     player.src = `${import.meta.env.BASE_URL}audio/${bgmTracks[scene].file}`;
     player.dataset.scene = scene;
     player.load();
@@ -112,12 +166,11 @@ export function setBgmVolume(nextVolume: number): void {
 export function unlockBgm(): void { unlocked = true; unlockVolumeContext(); syncBgm(); }
 export function refreshBgm(): void { syncBgm(); }
 export function disposeBgm(): void {
-  player?.pause();
-  if (player) { player.removeAttribute('src'); player.load(); player.remove(); }
-  player = undefined;
+  removePlayer();
+  restorePosition = undefined;
   mediaSource?.disconnect(); volumeGain?.disconnect();
   mediaSource = undefined; volumeGain = undefined;
-  if (volumeContext && volumeContext.state !== 'closed') void volumeContext.close().catch(() => undefined);
+  if (volumeContext) { volumeContext.removeEventListener('statechange', musicContextChanged); releaseGameAudioContext('music', volumeContext); }
   volumeContext = undefined;
   ducks.clear();
   unlocked = false;

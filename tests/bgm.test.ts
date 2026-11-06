@@ -14,10 +14,10 @@ describe('BGM scene transitions', () => {
     const param = { value: 1, setValueAtTime: vi.fn((value: number) => { param.value = value; }) };
     const gain = { gain: param, connect: vi.fn(), disconnect: vi.fn() };
     const source = { connect: vi.fn(), disconnect: vi.fn() };
-    const context = { state: 'suspended', currentTime: 1, destination: {}, createGain: vi.fn(() => gain), createMediaElementSource: vi.fn(() => source), resume: vi.fn(async () => { context.state = 'running'; }), close: vi.fn(async () => { context.state = 'closed'; }) };
+    const context = { addEventListener: vi.fn(), removeEventListener: vi.fn(), state: 'suspended', currentTime: 1, destination: {}, createGain: vi.fn(() => gain), createMediaElementSource: vi.fn(() => source), resume: vi.fn(async () => { context.state = 'running'; }), close: vi.fn(async () => { context.state = 'closed'; }) };
     const audio = { hidden: false, loop: false, preload: '', dataset: {} as Record<string,string>, src: '', paused: true,
       get volume() { return 1; }, set volume(_value: number) {},
-      play: vi.fn(async () => { audio.paused = false; }), pause: vi.fn(() => { audio.paused = true; }), load: vi.fn(), removeAttribute: vi.fn(), remove: vi.fn() };
+      play: vi.fn(async () => { audio.paused = false; }), pause: vi.fn(() => { audio.paused = true; }), load: vi.fn(), removeAttribute: vi.fn(), remove: vi.fn(), addEventListener: vi.fn(), removeEventListener: vi.fn() };
     vi.stubGlobal('navigator', navigator);
     vi.stubGlobal('window', { AudioContext: vi.fn(function () { return context; }) });
     vi.stubGlobal('document', { hidden: false, createElement: () => audio, body: { append: vi.fn() } });
@@ -106,7 +106,7 @@ describe('BGM scene transitions', () => {
 
   it('temporarily lowers music without losing the user volume, source or playback position',()=>{
     const audio={hidden:false,loop:false,preload:'',dataset:{} as Record<string,string>,src:'',volume:0,paused:true,
-      play:vi.fn(()=>{audio.paused=false;return Promise.resolve();}),pause:vi.fn(),load:vi.fn(),removeAttribute:vi.fn(),remove:vi.fn()};
+      play:vi.fn(()=>{audio.paused=false;return Promise.resolve();}),pause:vi.fn(),load:vi.fn(),removeAttribute:vi.fn(),remove:vi.fn(),addEventListener:vi.fn(),removeEventListener:vi.fn()};
     vi.stubGlobal('document',{hidden:false,createElement:()=>audio,body:{append:vi.fn()}});
     configureBgm('clockBoss',.4);unlockBgm();const loads=audio.load.mock.calls.length;
     const duck=createBgmDucker();duck.set(.08);expect(audio.volume).toBeCloseTo(.016);
@@ -118,7 +118,7 @@ describe('BGM scene transitions', () => {
     const audio = {
       hidden: false, loop: false, preload: '', dataset: {} as Record<string, string>, src: '', volume: 0, paused: true,
       play: vi.fn(() => { audio.paused = false; return Promise.resolve(); }),
-      pause: vi.fn(() => { audio.paused = true; }), load: vi.fn(), removeAttribute: vi.fn(), remove: vi.fn(),
+      pause: vi.fn(() => { audio.paused = true; }), load: vi.fn(), removeAttribute: vi.fn(), remove: vi.fn(), addEventListener: vi.fn(), removeEventListener: vi.fn(),
     };
     const document = { hidden: false, createElement: vi.fn(() => audio), body: { append: vi.fn() } };
     vi.stubGlobal('document', document);
@@ -160,4 +160,28 @@ describe('BGM scene transitions', () => {
     expect(audio.src).toContain(bgmTracks.home.file);
     expect(audio.volume).toBe(0.125);
   });
+});
+
+it('rebinds a closed music device at the same position, ignoring stale metadata and retaining the saved mix', async () => {
+  class Stream extends EventTarget {
+    hidden=false;loop=false;preload='';dataset:Record<string,string>={};src='';volume=1;paused=true;currentTime=0;duration=120;defaultPlaybackRate=1;playbackRate=1;preservesPitch=true;
+    play=vi.fn(async()=>{this.paused=false;});pause=vi.fn(()=>{this.paused=true;});load=vi.fn();remove=vi.fn();removeAttribute=vi.fn(()=>{this.src='';});
+  }
+  class Device extends EventTarget {
+    state='running';currentTime=0;destination={};
+    gain={gain:{value:1,setValueAtTime:vi.fn()},connect:vi.fn(),disconnect:vi.fn()};
+    createGain=vi.fn(()=>this.gain);createMediaElementSource=vi.fn(()=>({connect:vi.fn(),disconnect:vi.fn()}));resume=vi.fn(async()=>{this.state='running';});
+    close=vi.fn(async()=>{this.state='closed';this.dispatchEvent(new Event('statechange'));});
+  }
+  const devices:Device[]=[],streams:Stream[]=[];
+  vi.stubGlobal('navigator',{userAgent:'iPhone',platform:'iPhone',maxTouchPoints:5});
+  vi.stubGlobal('window',{AudioContext:vi.fn(function(){const device=new Device();devices.push(device);return device;})});
+  vi.stubGlobal('document',{hidden:false,createElement:()=>{const stream=new Stream();streams.push(stream);return stream;},body:{append:vi.fn()}});
+  configureBgm('home',.4);unlockBgm();const duck=createBgmDucker();duck.set(.1);streams[0].currentTime=120;
+  expect(streams[0].loop).toBe(false);streams[0].dispatchEvent(new Event('ended'));expect(streams[0].currentTime).toBe(0);expect(streams[0].play).toHaveBeenCalledTimes(2);
+  streams[0].currentTime=37.25;
+  await devices[0].close();expect(streams).toHaveLength(2);expect(devices).toHaveLength(2);
+  streams[0].dispatchEvent(new Event('loadedmetadata'));streams[1].dispatchEvent(new Event('loadedmetadata'));
+  expect(streams[1].currentTime).toBe(37.25);expect(streams[1].src).toContain(bgmTracks.home.file);expect(devices[1].gain.gain.value).toBeCloseTo(.02);
+  expect(streams[0].remove).toHaveBeenCalledTimes(1);expect(streams[1].paused).toBe(false);duck.dispose();
 });
