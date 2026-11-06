@@ -59,8 +59,10 @@ test('carried chapters can earn The Broken Girl by reading; incomplete readings 
   }
   for(let line=0;line<20&&await page.locator('.world-conversation').count();line++){
    const back=page.getByRole('button',{name:'勲章へ戻る',exact:true});
-   if(await back.count()){await back.click();break;}
+   if(await back.count()){await back.click();await expect(page.locator('.world-conversation')).toHaveCount(0);break;}
+   const dialogue=page.locator('.world-conversation__line'),previousLine=await dialogue.getAttribute('data-world-line');
    await page.getByRole('button',{name:'次の台詞',exact:true}).click();
+   await expect(dialogue).not.toHaveAttribute('data-world-line',previousLine!);
   }
   await expect(page.locator(`[data-medal-id="${id}"]`)).toHaveClass(/is-earned/);
  }

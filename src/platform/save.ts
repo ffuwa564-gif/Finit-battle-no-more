@@ -343,7 +343,7 @@ export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion
     (value.appVersion === '1.22.0' && value.contentVersion === 'v1.22-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.23.0' && value.contentVersion === 'v1.23-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.24.0' && value.contentVersion === 'v1.24-r1' && value.rulesVersion === '3') ||
-    (value.appVersion === '1.25.0' && value.contentVersion === 'v1.25-r1' && value.rulesVersion === '3')
+    (['1.25.0','1.25.1'].includes(value.appVersion) && value.contentVersion === 'v1.25-r1' && value.rulesVersion === '3')
   );
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {
