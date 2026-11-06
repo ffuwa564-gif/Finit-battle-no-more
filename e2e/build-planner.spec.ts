@@ -56,7 +56,7 @@ async function installOwnedRecipe(page: Page) {
 test('zero-stone inventory exposes build goals, preserves the chosen stage, and keeps long collections folded', async ({page}) => {
   await page.goto('/#bag');await enterGame(page);
   expect((await saved(page)).memoryGems?.items ?? []).toHaveLength(0);
-  await page.getByRole('button',{name:'おすすめビルド',exact:true}).click();
+  await page.getByRole('button',{name:'ビルド',exact:true}).click();
   const planner=page.getByTestId('build-planner');
   await expect(planner).toBeVisible();
   await expect(planner.locator('[data-testid^="build-card-"]')).toHaveCount(6);
@@ -72,6 +72,7 @@ test('zero-stone inventory exposes build goals, preserves the chosen stage, and 
   await assertNoOverflow(page);
   await snapshot(page,'planner-empty-goal-390-ja.png');
   await page.getByTestId('build-planner').getByRole('button',{name:'閉じる',exact:true}).click();
+  await page.getByRole('button',{name:'旅の記録',exact:true}).click();
   await expect(page.getByTestId('tracked-build-summary')).toContainText('残響連鎖');
   await expect(page.getByTestId('tracked-build-summary')).toContainText('厳選');
   await page.getByRole('button',{name:'目標の続きを見る',exact:true}).click();
@@ -116,6 +117,7 @@ test('lower-quality owned recipes remain incomplete and apply only after the exa
 test('a sample combat demo advances real frames without changing the saved party, loot, resources or RNG', async ({page}) => {
   const planner=await openPlanner(page);
   const before=await saved(page);
+  await openSection(page,'build-demo');
   const demo=planner.getByTestId('build-demo');
   await expect(demo).toBeVisible();
   const frame=demo.getByTestId('build-demo-frame');
@@ -179,6 +181,7 @@ test('a funded goal opens its exact crafting recipe and progress increases only 
     await persistSave(save,revision);
   });
   const planner=await openPlanner(page);
+  await openSection(page,'build-catalog');
   await planner.getByTestId('build-card-shield-cannon').click();
   await planner.getByRole('button',{name:'このビルドを目標にする',exact:true}).click();
   await expect.poll(async () => (await saved(page)).buildGoal).toEqual({buildId:'shield-cannon',stage:'starter'});
@@ -194,6 +197,7 @@ test('a funded goal opens its exact crafting recipe and progress increases only 
   const after=await saved(page);
   expect(after.memoryGems!.items[0].defId).toBe('shield-break');
   expect(after.memoryGems!.dust.sanctuary).toBe(0);
+  await page.goto('/#bag/notes');await enterGame(page);
   await page.getByTestId('tracked-build-summary').getByRole('button',{name:'目標の続きを見る',exact:true}).click();
   await expect(page.getByTestId('build-planner').locator('.build-planner__progress strong')).toHaveText('1 / 4');
   await assertNoOverflow(page);
@@ -307,6 +311,7 @@ test('T6 goals inspect each affix and direct ordinary stones toward real upper-t
       }
     }
     await planner.getByRole('button',{name:'閉じる',exact:true}).click();
+    await page.getByRole('button',{name:'旅の記録',exact:true}).click();
     const summary=page.getByTestId('tracked-build-summary');
     await expect(summary).toContainText(mode==='trait-gap'?'を調律':'を探す');
     expect((await saved(page)).buildGoal).toEqual({buildId:'shield-cannon',stage:'perfect'});

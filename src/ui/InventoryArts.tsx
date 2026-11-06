@@ -5,7 +5,7 @@ import { GameImage } from './GameMedia';
 import './inventory-children.css';
 
 export const InventoryThemeContext = createContext(false);
-export function InventoryTheme({children,className=''}:{children:ReactNode;className?:string}) {return <InventoryThemeContext.Provider value={true}><div className={`inventory-theme ${className}`}>{children}</div></InventoryThemeContext.Provider>;}
+export function InventoryTheme({children,className='',controls='illustrated'}:{children:ReactNode;className?:string;controls?:'illustrated'|'plain'}) {return <InventoryThemeContext.Provider value={controls==='illustrated'}><div className={`inventory-theme inventory-theme--${controls} ${className}`}>{children}</div></InventoryThemeContext.Provider>;}
 
 export const inventoryPanels = ['open-folio','parchment-list','material-drawers','inspection-tray','comparison-folio','polishing-mat','refinement-table','craft-blueprint','confirmation-frame','machine-panel','power-panel','portrait-frame'] as const;
 export type InventoryPanelKind = typeof inventoryPanels[number];

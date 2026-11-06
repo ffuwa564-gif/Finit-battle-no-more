@@ -69,16 +69,6 @@
 .inventory-theme .memory-gems__item :is(span,small) { color:#ebd8b6; }
 .inventory-theme .memory-gems__item>.collected-gem-art { width:70px; max-width:90%; }
 .inventory-theme .memory-gems__recipe>.collected-gem-art { width:45px; }
-.inventory-build-document { padding:12px; background:#152035; border:1px solid #b49b7277; border-radius:10px; }
-.inventory-book-cover,.inventory-journal-cover { height:145px; margin:0 auto 12px; max-width:350px; }
-.inventory-build-document .build-planner { padding:16px 13px; background:#edddbd; color:#382f2b; border-color:#bca37a; }
-.inventory-build-document .build-planner__detail { background:#f5e8cd; border:1px solid #ae946a; border-radius:5px 15px; }
-.inventory-build-document .build-planner :is(.build-planner__detail-heading h3,.build-planner__detail-heading p,.build-planner__stage-description,.build-planner__eyebrow,.build-planner__progress,.build-planner__progress p,.build-planner__progress span,.build-planner__progress strong,.build-planner__member strong,.build-planner__member small,.build-planner__next,.build-planner__next p,.build-planner__next h4,.build-planner__source,.build-planner__source p,.build-planner__source strong,.build-planner__muted,.build-planner__target,.build-planner__owned-gem,.build-planner__apply,.build-planner__apply p,.build-planner__slot,.build-planner__slot p,.build-planner__slot strong,.build-planner__slot h4,.build-planner__mechanic,.build-planner__tactics) { color:#493c30; }
-.inventory-build-document .build-planner :is(.build-planner__progress,.build-planner__next,.build-planner__source,.build-planner__slot,.build-planner__apply,.build-planner__confirmation) { background:#f2e4c9; border-color:#b59d72; border-radius:5px 13px; }
-.inventory-build-document .build-planner__choice { background:#17243a; color:#eedcba; border-color:#a38c65; }
-.inventory-build-document .build-planner__choice-copy :is(span,small) { color:#f1dfbd; }
-.inventory-build-document .build-planner__member { background:#ecddc1; border-color:#b39d76; }
-.inventory-build-document .build-planner__stages .button { color:#eeddba; }
 .inventory-theme .industry-recipe,.inventory-theme .industry-machine { background:#f2e4c9; color:#43362d; border-color:#b39b74; border-radius:5px 13px; }
 .inventory-theme .industry-machine p,.inventory-theme .industry-recipe p,.inventory-theme .industry-help { color:#685743; }
 .inventory-theme .industry-balances>span { background:#fff3d9; color:#5b6245; border-color:#ac9977; display:inline-flex; align-items:center; flex-wrap:wrap; gap:3px; }
@@ -133,7 +123,6 @@
 /* Native selects must keep the paper palette even under each legacy component stylesheet. */
 .inventory-gem-document.inventory-theme :is(input,select,textarea),
 .inventory-art-modal.inventory-theme :is(input,select,textarea),
-.inventory-build-document.inventory-theme :is(input,select,textarea) { background:#f7ecd6; color:#382f2b; -webkit-text-fill-color:#382f2b; border-color:#a18e6c; color-scheme:light; }
 .inventory-gem-document.inventory-theme input::placeholder { color:#776851; opacity:1; }
 
 .inventory-theme .memory-gems__roll-detail { background:#e3d2b2; border-color:#af9871; color:#493b30; }
@@ -152,3 +141,45 @@
 .inventory-portrait__caption small { display:block; font-size:10px; line-height:1.5; }
 
 @media(max-width:350px) { .inventory-theme .memory-gems .inventory-comparison { padding:12px; gap:12px; } }
+.inventory-journal-cover { height:90px; margin:0 auto 16px; max-width:240px; }
+/* Paper surfaces own their text palette, including legacy component labels. */
+.inventory-art-modal.inventory-theme .modal__body { --gold:#80613b; --muted:#675948; --text:#382f2b; }
+.inventory-art-modal.inventory-theme .preparation-guide :is(header,h3,h4,p,small),
+.inventory-art-modal.inventory-theme .preparation-guide header>span { color:#514331; }
+.inventory-art-modal.inventory-theme .preparation-guide p { font-size:13px; }
+.inventory-art-modal.inventory-theme .preparation-guide h4 { color:#3e3022; }
+.inventory-art-modal.inventory-theme .preparation-guide .preparation-guide__progress { color:#755529; }
+.inventory-art-modal.inventory-theme .expedition-ledger,
+.inventory-art-modal.inventory-theme .expedition-ledger :is(h3,h4,label,p,small,dt,dd,strong,li) { color:#514331; }
+.inventory-art-modal.inventory-theme .expedition-ledger__stats>div,
+.inventory-art-modal.inventory-theme .expedition-ledger__yields section { background:#f7edd8; border-color:#bca781; }
+.inventory-art-modal.inventory-theme .expedition-ledger__stats dt { color:#65553f; }
+.inventory-art-modal.inventory-theme .expedition-ledger__stats dd { color:#3b3022; }
+.inventory-art-modal.inventory-theme .expedition-ledger__note { font-size:12px; }
+.inventory-art-modal.inventory-theme .build-goal-summary { background:#22364b; color:#f4e8cc; border-color:#9c885e; }
+.inventory-art-modal.inventory-theme .build-goal-summary :is(h3,p,small) { color:#e4e7e4; }
+.inventory-art-modal.inventory-theme .build-goal-summary>div>span { color:#e8cc91; }
+.inventory-gem-document.inventory-theme .memory-gems__refinement-modes>div { background:#f6eacf; border-color:#bba579; }
+.inventory-gem-document.inventory-theme .memory-gems__refinement-modes :is(p,strong,small),
+.inventory-gem-document.inventory-theme .memory-gems__dust :is(span,strong,small),
+.inventory-gem-document.inventory-theme .memory-gems__tactic :is(dt,dd),
+.inventory-gem-document.inventory-theme .memory-gems__recipe>div>span,
+.inventory-gem-document.inventory-theme .memory-gems__fixed-craft,
+.inventory-gem-document.inventory-theme .memory-gems .memory-gems__tier-rule { color:#574731; }
+.inventory-gem-document.inventory-theme .memory-gems__dust { grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:8px; }
+.inventory-gem-document.inventory-theme .memory-gems__dust strong { color:#3b3023; }
+.inventory-gem-document.inventory-theme .memory-gems__recipe { flex-wrap:wrap; gap:10px; }
+.inventory-gem-document.inventory-theme .memory-gems__recipe>.button { margin-left:auto; }
+.inventory-gem-document.inventory-theme .memory-gems__item-name { font-size:13px; }
+.inventory-gem-document.inventory-theme .memory-gems__item-meta,
+.inventory-gem-document.inventory-theme .memory-gems__item-roll,
+.inventory-gem-document.inventory-theme .memory-gems__item-status { font-size:11px; }
+.inventory-theme .button.inventory-button:disabled { opacity:1; color:#dedbd3; filter:grayscale(.65); }
+.inventory-art-modal.inventory-theme .industry-help { font-size:13px; }
+.inventory-art-modal.inventory-theme .industry-recipe { display:grid; grid-template-columns:minmax(0,1fr) 64px; gap:8px; }
+.inventory-art-modal.inventory-theme .industry-recipe>.industry-recipe-art { grid-column:2; grid-row:1; width:64px; float:none; margin:0; }
+.inventory-art-modal.inventory-theme .industry-recipe>div:nth-child(2) { grid-column:1; grid-row:1; min-width:0; }
+.inventory-art-modal.inventory-theme .industry-recipe>:not(:first-child):not(:nth-child(2)) { grid-column:1 / -1; }
+.inventory-art-modal.inventory-theme .industry-recipe p { font-size:13px; margin:0; }
+.inventory-art-modal.inventory-theme .industry-power { grid-template-columns:54px minmax(0,1fr); }
+.inventory-art-modal.inventory-theme .industry-power>.inventory-illustration { width:54px; height:115px; }
