@@ -6,7 +6,7 @@ import { WorldStoryPeople } from './WorldStoryPeople';
 import { WorldStoryLandscape } from './WorldStoryLandscape';
 import { storyActors, storyNext, storyText, storyTravelSeconds, worldStorySupportingSpeakers } from '../domain/world-story';
 import { getLanguage } from '../locales/i18n';
-import { overlappingMapPlaces } from './map-hit-targets';
+import { mapPlacesAtPoint, overlappingMapPlaces } from './map-hit-targets';
 import { runUIInteraction } from './interaction';
 import { useMapCamera } from './useMapCamera';
 import { WorldMapIndex } from './WorldMapIndex';
@@ -52,7 +52,13 @@ export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBac
   const storyProgress=(save.worldStory?.completed??[]).join('|');
   const previousProgress=useRef<string|undefined>(save.worldStory?storyProgress:undefined);
   const surface = useRef<HTMLDivElement>(null);
-  const {camera,setCamera,zoom,handlers}=useMapCamera(surface,size);
+  const {camera,setCamera,zoom,handlers}=useMapCamera(surface,size,point=>{
+    if (!surface.current) return false;
+    const ids = mapPlacesAtPoint(surface.current,point);
+    if (!ids.length) return false;
+    runUIInteraction(()=>{if(ids.length>1)setOverlapIds(ids);else choosePlace(ids[0]);},'select');
+    return true;
+  });
   const atlasRegions=useMemo(()=>worldRegions(content),[content]);
   const chapterPaths=useMemo(()=>worldChapterPaths(content,places),[content,places]);
   const place = places.find(p => p.id === selectedId) ?? places[0]!;
@@ -107,7 +113,7 @@ export function WorldMap({ content, save, busy, command, onSelect, onOpen, onBac
     <div ref={surface} data-guide="chapters" className="world-map__surface" tabIndex={0} role="group" aria-label={tr('ドラッグで移動、ピンチで拡大縮小')} onKeyDown={e => { if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)) { e.preventDefault(); setCamera(c => bounded({ ...c, x: c.x + (e.key === 'ArrowLeft' ? 60 : e.key === 'ArrowRight' ? -60 : 0), y: c.y + (e.key === 'ArrowUp' ? 60 : e.key === 'ArrowDown' ? -60 : 0) })); } }}
       {...handlers} onClickCapture={e => {
         handlers.onClickCapture(e);
-        if (e.isPropagationStopped() || e.detail === 0 || !(e.target instanceof Element)) return;
+        if (e.isPropagationStopped() || !(e.target instanceof Element)) return;
         const ids = overlappingMapPlaces(e.currentTarget, e.target);
         if (ids.length < 2) return;
         e.preventDefault(); e.stopPropagation();
