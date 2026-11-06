@@ -413,8 +413,8 @@
         {
           "speaker": "liora",
           "text": {
-            "ja": "{name}、地図を出せ。今日は聖堂までだ。",
-            "en": "{name}, get your map. Today we go to the cathedral."
+            "ja": "{name}、地図を出せ。今日は聖堂までだ。依頼書の七つの印には触るな。ギルドの印ではない。",
+            "en": "{name}, get the map out. Today we go to the cathedral. Do not touch the seven seals on the request. They are not the Guild’s."
           }
         },
         {
@@ -455,8 +455,8 @@
         {
           "speaker": "liora",
           "text": {
-            "ja": "道が狭くなったら、後ろへ下がれ。",
-            "en": "When the path narrows, fall in behind me."
+            "ja": "道が狭くなったら、後ろへ下がれ。おまえを引き渡せという照会は、あの方が止めている。知らない使いにはついていくな。",
+            "en": "Fall behind me when the path narrows. The lady is holding off demands to surrender you. Do not follow an unfamiliar messenger."
           }
         },
         {
@@ -481,22 +481,22 @@
         {
           "speaker": "liora",
           "text": {
-            "ja": "{name}、最初の仕事だ。聖堂の入口にいる狼を追い払う。",
-            "en": "{name}, your first job is to drive the wolves away from the cathedral entrance."
+            "ja": "{name}、最初の仕事だ。聖堂の入口にいる狼を追い払う。依頼書の七つの印は、ギルドの印ではない。",
+            "en": "{name}, your first task is to drive the wolves from the cathedral entrance. The seven seals on the request are not the Guild’s."
           }
         },
         {
           "speaker": "hero",
           "text": {
-            "ja": "拾ったものは、持って帰っていいの？",
-            "en": "Can we bring back the things we find?"
+            "ja": "拾ったものは、持って帰っていいの？　……私の名前、どうして別の印でも囲まれてるの？",
+            "en": "May I bring back what we find? ...Why are those other seals around my name?"
           }
         },
         {
           "speaker": "liora",
           "text": {
-            "ja": "ああ。資材は工房でも使える。地図の聖堂を選べ。一緒に行こう。",
-            "en": "Yes. The workshop can use the supplies. Choose the cathedral on the map. I will go with you."
+            "ja": "資材は工房でも使える。その囲みは、おまえを引き取る権利の照会だ。ここでは返事をするな。地図の聖堂を選べ。一緒に行こう。",
+            "en": "The materials are useful in the workshop. Those seals concern claims to your custody. Do not answer here. Choose the cathedral on the map. We go together."
           }
         }
       ]
@@ -538,8 +538,8 @@
         {
           "speaker": "narration",
           "text": {
-            "ja": "屋根の連なりの向こうに、白亜の塔がそびえていた。薄い雲が壁を横切り、その白さがゆっくりと変わっていく。",
-            "en": "Beyond the clustered rooftops rose the Ivory Tower. Thin clouds passed before its walls, slowly changing the shade of white."
+            "ja": "屋根の向こうに白亜の塔がそびえていた。北には黒い軍旗。橋には白い検問柵。同じ街を囲む少女たちが、別々の方向へ槍を向けている。",
+            "en": "The Ivory Tower rose beyond the rooftops. Black military banners stood north, white checkpoints by the bridge. The girls surrounding the same town pointed their spears in different directions."
           }
         },
         {
@@ -612,8 +612,8 @@
         {
           "speaker": "liora",
           "text": {
-            "ja": "あの白い塔を目印にしろ。この街も、塔の向こうも、暮らしているのはみんな少女だ。",
-            "en": "Use that white tower as your landmark. Everyone living here, and beyond it, is a girl."
+            "ja": "あの白い塔を目印にしろ。暮らしているのはみんな少女だ。……北には遠征団の旗、橋には白庭の検問。灯が消えた道へは行くな。",
+            "en": "Use the white tower as your landmark. Everyone living here is a girl. ...Expedition banners stand north, White Garden checkpoints at the bridge. Stay off roads whose lights have gone out."
           }
         },
         {
@@ -656,8 +656,8 @@
         {
           "speaker": "narration",
           "text": {
-            "ja": "広場の水場で、少女たちが泥を洗い流していた。擦りむいた指で、小さな宝石を数えている。",
-            "en": "At the fountain, girls were washing off mud. They counted small gemstones with scraped fingers."
+            "ja": "水場で少女たちが泥を洗い、宝石を数えていた。背後には「花冠院・今月の開花率」。名の剥がされた段だけ、新しい紙が白く光っている。",
+            "en": "Girls washed away mud and counted gems. Behind them hung the Flowercrown Institute’s monthly bloom scores. Fresh white paper covered the rows where names had been removed."
           }
         },
         {
@@ -737,8 +737,8 @@
         {
           "speaker": "narration",
           "text": {
-            "ja": "広場では、少女たちが泥のついた宝石を数えていた。擦りむいた手を気にする様子もない。",
-            "en": "In the square, girls counted muddy gemstones, seemingly unconcerned about their scraped hands."
+            "ja": "水場で少女たちが宝石を数えていた。背後の選抜表には「花冠院・今月の開花率」。下の方は紙が剥がされ、名前の最初の文字だけ残っている。",
+            "en": "Girls counted gems by the water. Behind them hung the Flowercrown Institute’s monthly bloom scores. The bottom of the sheet had been torn away, leaving only the beginnings of names."
           }
         },
         {
@@ -890,8 +890,8 @@
         {
           "speaker": "liora",
           "text": {
-            "ja": "ああ。そこの椅子に座ろう。",
-            "en": "Of course. Let us sit over there."
+            "ja": "ああ、そこの椅子に座ろう。……白衣の使いには、私が話す。新しく生まれた子の照会も、もう来ているらしい。",
+            "en": "Yes, let us sit there. ...I will speak to the messenger in white. They have already sent an inquiry about the newborn girl."
           }
         }
       ],
@@ -936,8 +936,8 @@
         {
           "speaker": "narration",
           "text": {
-            "ja": "三人が手をつなぐ姿に、私は笑顔を返した。それでも、扉の前の争いが頭から離れなかった。",
-            "en": "I smiled as the three joined hands. Even so, I could not forget the fighting before the gate."
+            "ja": "三人が手をつなぐ姿に、私は笑顔を返した。門の外では白衣の使いが、生まれた少女の名を写していた。封書の印は、私の依頼書と同じだった。",
+            "en": "I smiled at the three holding hands. Outside the gate, a white-coated messenger copied the newborn girl’s name. Her letter bore the same seal as my request."
           }
         }
       ]
@@ -965,8 +965,8 @@
         {
           "speaker": "noelle",
           "text": {
-            "ja": "ここの泉、紙を削って消してある。水音を聞いても、道を外れないで。",
-            "en": "Someone scraped this fountain off the paper. Stay on the path, even if you hear water."
+            "ja": "ここの泉、紙を削って消してある。重ねて「移送停止」の白い印。水音を聞いても、道を外れないで。",
+            "en": "Someone scraped the spring off this map, then stamped “Transfer Suspended” over it in white. Stay on the path even if you hear water."
           }
         },
         {
@@ -1118,8 +1118,8 @@
         {
           "speaker": "noelle",
           "text": {
-            "ja": "それなら、調査隊もあの道を使ったはず。目印を確かめてきて。",
-            "en": "Then the survey party must have used that path. Please check its markers."
+            "ja": "青灯は街へ来る配給管の目印。遠征団の封があるから、壊さないで。調査隊もあの道を使ったはず。足跡を確かめてきて。",
+            "en": "Blue lights mark the town’s supply pipes. They bear the Expedition’s seal; do not break them. The survey team must have used that route. Check their tracks."
           }
         },
         {
@@ -1248,8 +1248,8 @@
         {
           "speaker": "elaine",
           "text": {
-            "ja": "苗床で拾った薬草を、泉へ向かった調査隊に届けてください。",
-            "en": "Please take the herbs from the nursery to the survey party at the fountain."
+            "ja": "苗床の薬草を、泉へ向かった調査隊に届けてください。名簿に順位の札が付いていても、薬を渡す順には使わないで。",
+            "en": "Take the nursery herbs to the team at the spring. Even if their names bear rank tags, do not use those tags to decide who receives medicine first."
           }
         },
         {
@@ -1765,8 +1765,8 @@
         {
           "speaker": "garden-woman",
           "text": {
-            "ja": "そうしてちょうだい。この子のことは、私が見ているわ。",
-            "en": "Please do. I will look after her."
+            "ja": "この子は私が見ているわ。あなたの引渡要求も、止めておく。七人とも、もう生還を知ったのね。花を届けたら、必ず帰っていらっしゃい。",
+            "en": "I will look after her, and hold off the demands to surrender you. All seven know you survived now. Deliver the flowers, then come straight back."
           }
         }
       ],
@@ -1805,8 +1805,8 @@
         {
           "speaker": "hero",
           "text": {
-            "ja": "うん。庭園の女に任せよう。私は、お花を届けてくる。",
-            "en": "All right. We will leave it to the woman of the garden. I will deliver the flowers."
+            "ja": "うん。私はお花を届けてくる。……ねえ、戸口の七通の封書、全部に私の名前がある。扉の前から、まだ争いは続いてるの？",
+            "en": "Yes. I will deliver the flowers. ...Those seven letters by the door all name me. Is the fighting at the gate still going on?"
           }
         }
       ]
@@ -6225,6 +6225,1506 @@
           }
         ]
       },
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-first-warrant",
+      "chapter": 1,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "あなたの名がある封書",
+        "en": "Letters Bearing Your Name"
+      },
+      "title": {
+        "ja": "七通の引渡要求",
+        "en": "Seven Demands for Custody"
+      },
+      "task": {
+        "ja": "七通の引渡要求を確かめる",
+        "en": "Examine the seven custody demands"
+      },
+      "purpose": {
+        "ja": "最初の依頼の背後で、誰が主人公の帰還先を決めようとしているかを知る。",
+        "en": "Learn who is trying to decide your destination behind the first request."
+      },
+      "requiresNodes": [
+        "c1-return"
+      ],
+      "requiresDungeons": [],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden",
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "鉢を抱え直すと、卓の下に七通の封書が見えた。白、赤、金。扉の前で倒れた少女たちが握っていた札にも、同じ色があった。",
+            "en": "As I lifted the pot, I saw seven letters beneath the table. White, red, gold: the same colors as the tags held by the girls who fell before the gate."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私、誰にも迎えを頼んでいないよ。",
+            "en": "I have not asked anyone to collect me."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "ええ。でも向こうは、扉の生還者を誰が預かるか決めたがっている。私はもう、あなたを保管したと返したわ。",
+            "en": "No. But they want to decide who holds the survivor of the gate. I have already replied that you are in my keeping."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "封書の一つから、小さな石が転がった。薄い歌のあとに、少女の声がした。",
+            "en": "A little stone rolled from one letter. A faint song played, followed by a girl’s voice."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "生還は結構。でも、選ばれる資格があるかは、これからでしょう？",
+            "en": "Surviving is commendable. Whether she deserves to be chosen remains to be seen."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "門の外で金属が鳴った。リオラが盾を取る。白衣の使いは、空の受取箱だけを置いて去った。",
+            "en": "Metal rang outside the gate. Liora took up her shield. The messenger in white left only an empty collection case."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "あの子の採点表へは載せない。あなたが街へ行く道も、ここで閉じさせないわ。",
+            "en": "You will not go on her score sheet. Nor will I let them close your road to town."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "どうして、私に返事を聞く人はいないの？",
+            "en": "Why is no one asking me for an answer?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女は返事をせず、七通目を裏返した。その封書には、彼女自身の管理印が押されていた。",
+            "en": "The woman said nothing and turned over the seventh letter. It bore her own administrative seal."
+          }
+        }
+      ]
+    },
+    {
+      "id": "seven-seals",
+      "chapter": 4,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "七つの封蝋",
+        "en": "Seven Seals"
+      },
+      "title": {
+        "ja": "七つの封蝋",
+        "en": "Seven Seals"
+      },
+      "task": {
+        "ja": "七つの封蝋の話を聞く",
+        "en": "Read: Seven Seals"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-first-warrant",
+        "c4-home"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ザクロの行列から帰った夜。庭の卓には七通の封書があった。一通だけ封が切られ、そこに私とリオラの名がある。",
+            "en": "The night we returned from Zakuro’s procession, seven sealed letters lay on the garden table. One was open. It named Liora and me."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "あの子は剪定者、ザクロ。私を含めて、管理者は七人いるの。仲良くしていた時期も、なくはなかったわ。",
+            "en": "That was Zakuro, the Pruner. There are seven administrators, including me. We were not always enemies."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私たちを襲ったことも、ここに書いてあるの？",
+            "en": "Does that letter say she attacked us?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "負傷者の手当代と、境界の通行停止。謝罪はないわね。あの子は、自分の庭の子しか数えないもの。",
+            "en": "Medical expenses and a closed border. No apology. She counts only the girls of her own garden."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "こちらも、私の怪我を報告する欄しかない。隣にいた者のことは書けないのですか。",
+            "en": "Our form has room for my injury, but none for the person beside me. May I add her?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女は白い紙を一枚渡した。引き出しには、同じ顔で違う名を持つ少女たちの記録が、何十年分も重なっていた。",
+            "en": "The woman gave her a blank sheet. In the drawer lay decades of records: girls whose faces scarcely changed, under different names."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "白庭管理院は、私と校訂者イヴラ。無名の灯にはザクロ。永貌聖会には選定者ヴェスパ。",
+            "en": "Ivra the Corrector and I belong to the White Garden Administration. Zakuro leads the Nameless Light. Vesper the Selector heads the Church of the Everfair."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "綴り手商会の継承者シオン。暁の遠征団には征討者アズハと、終止者リゼ。封蝋の色は覚えておきなさい。",
+            "en": "Shion the Inheritor runs the Scribes’ Exchange. Azha the Conqueror and Rize the Terminator lead the Dawn Expedition. Remember their seals."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あなたは、何を管理しているの？",
+            "en": "What do you administer?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "帰る場所よ。……だから、勝手にいなくなられると困るの。",
+            "en": "A place to return to. ...Which is why I dislike losing a girl without notice."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-correction",
+      "chapter": 5,
+      "actorId": "ione",
+      "hubId": "hub-guild",
+      "bubble": {
+        "ja": "迎えの白衣",
+        "en": "The White Coat at the Door"
+      },
+      "title": {
+        "ja": "迎えの白衣",
+        "en": "The White Coat at the Door"
+      },
+      "task": {
+        "ja": "迎えの白衣の話を聞く",
+        "en": "Read: The White Coat at the Door"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-seals",
+        "c5-girl"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "帰還便が止まった日のことを、イオネが書き留めていた。少女の席の向かいには、迎えに来た白衣の女がいた。",
+            "en": "Ione had recorded the day the homebound carriage stopped. Across from the girl sat a woman in a white coat, come to collect her."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "登録上、この子は帰還を望んでいます。今の拒絶は、記録との不整合です。",
+            "en": "Her registration states that she wishes to return. Her present refusal is inconsistent with that record."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "あそこへ帰ったら、嫌だったことまで、言えなくなる。前にもそうだった。",
+            "en": "If I go back, I will stop being able to say what hurt me. It happened before."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "その痛みを取り除いたの。礼を言ってくれたことも、残っていますよ。",
+            "en": "I removed that pain. Your gratitude is documented too."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "今日は、何て言っているか聞いて。",
+            "en": "Listen to what she is saying today."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "イヴラは少女の手首の番号を確かめた。庭籍。帰る場所も、治療も、配給も、この番号に結びついている。",
+            "en": "Ivra checked the number on her wrist. Her garden registration linked her home, treatment and provisions to that number."
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "名簿は捨てません。でも、今夜の行き先は、この子が答えるまで空けておきます。",
+            "en": "We will keep the register. But her destination tonight stays blank until she answers."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "では、記録と違う個体を、あなた方が預かるのですね。",
+            "en": "Then you accept custody of an individual who contradicts her record."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "引受印の欄へ、イオネが自分の名を書いた。白衣の女が去っても、少女はしばらく手首を隠していた。",
+            "en": "Ione signed the custody field. Long after the white coat left, the girl kept her wrist covered."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "cathedral"
+    },
+    {
+      "id": "seven-unbloomed",
+      "chapter": 5,
+      "actorId": "elaine",
+      "hubId": "hub-infirmary",
+      "bubble": {
+        "ja": "咲かなかった子の寝台",
+        "en": "The Bed of the Unbloomed"
+      },
+      "title": {
+        "ja": "咲かなかった子の寝台",
+        "en": "The Bed of the Unbloomed"
+      },
+      "task": {
+        "ja": "咲かなかった子の寝台の話を聞く",
+        "en": "Read: The Bed of the Unbloomed"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-correction",
+        "c5-finish"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "花冠院から戻された寝具を、フィオがほどいていた。名の刺繍だけが、四角く切り取られている。",
+            "en": "Fio unwrapped bedding returned from the Flowercrown Institute. A neat square containing the embroidered name had been cut out."
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "あの子、みんなの袖を繕ってた。でも針仕事は、今年から開花率に入らなくなったの。",
+            "en": "She mended everyone’s sleeves. But sewing stopped counting toward our bloom score this year."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "点が足りないと、どうなるの？",
+            "en": "What happens if your score is too low?"
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "診てもらう日が来なくなる。灯の配給が止まって、だんだん起きなくなる。最後の朝も、放送はいつもと同じだった。",
+            "en": "Your turn for treatment never comes. Then the sustaining light stops. You sleep longer and longer. On her last morning, the announcement was the same as ever."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "本日も、皆様の開花をお祈りしております。",
+            "en": "May every one of you bloom today."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "包みから落ちた小さな放送石が、ヴェスパの声を繰り返した。少女が石を布で覆った。",
+            "en": "A little announcement stone fell from the bundle, repeating Vesper’s voice. The girl covered it with cloth."
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "全員、前より頑張ったんだよ。でも、灯をもらえる人数は変わらなかった。私、あの子に問題の答え、教えなかった。",
+            "en": "We all worked harder. But the number of girls receiving light stayed the same. I stopped helping her with the exam questions."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "……その子の名前、聞いてもいい？",
+            "en": "...May I ask her name?"
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "ミナ。ここに書いたら、また点を付けられる？",
+            "en": "Mina. If you write it down here, will someone score her again?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私は名簿を閉じた。直された袖に指を入れると、内側にだけ、違う色の糸が残っていた。ミナを戻せる記録はなかった。",
+            "en": "I closed the register. Inside the mended sleeve was a thread of a different color. No record could bring Mina back."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "cathedral"
+    },
+    {
+      "id": "seven-light-ledger",
+      "chapter": 6,
+      "actorId": "noelle",
+      "hubId": "hub-square",
+      "bubble": {
+        "ja": "消す灯を選ぶ手",
+        "en": "The Hand That Chooses Darkness"
+      },
+      "title": {
+        "ja": "消す灯を選ぶ手",
+        "en": "The Hand That Chooses Darkness"
+      },
+      "task": {
+        "ja": "消す灯を選ぶ手の話を聞く",
+        "en": "Read: The Hand That Chooses Darkness"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-unbloomed",
+        "c6-lights"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "灯祭の配線図に、商会の納品書を重ねた。街が受け取る灯より、途中の検問所に留まる灯の方が多かった。",
+            "en": "We laid the Exchange’s delivery records over the festival wiring plan. More light remained at checkpoints than reached the town."
+          }
+        },
+        {
+          "speaker": "shion",
+          "text": {
+            "ja": "横流しではありませんよ。七つの管理印、それぞれの優先配給です。私の倉庫にもあります。",
+            "en": "It is not smuggling. Each of the seven seals has priority provisions. Some are in my warehouses too."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "全部戻したら、療養室の分は足りる。でも、祭りを全部灯すだけはないね。",
+            "en": "If we release it all, there is enough for the infirmary. Still not enough to light the entire festival."
+          }
+        },
+        {
+          "speaker": "azha",
+          "text": {
+            "ja": "北の供給路は私の隊が守っている。ここへ回せば、次の遠征を縮める。守れなくなる道も出る。",
+            "en": "My troops hold the northern supply route. Diverting its light means a smaller expedition, and roads we can no longer defend."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "灯がないから、あの子たちは消されたんじゃないの？",
+            "en": "Were those girls allowed to vanish because there was no light?"
+          }
+        },
+        {
+          "speaker": "shion",
+          "text": {
+            "ja": "足りない場所は本当にあります。誰に先に渡すかを決めた者も、本当にいます。",
+            "en": "Some places truly lack it. And someone truly decided who would receive it first."
+          }
+        },
+        {
+          "speaker": "rize",
+          "text": {
+            "ja": "名を消せば、次の帳簿から必要量も消える。私は、その終わりを何度も承認した。",
+            "en": "Erase a name, and next month’s ledger no longer needs provisions for her. I authorized that ending many times."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "リゼは記録から人を甦らせる方法を知らないと言った。彼女が止めてきたのは、残された記憶を別の個体へ継がせる処理だった。",
+            "en": "Rize said she knew no way to resurrect a person from a record. What she had stopped was the transfer of remaining memories into other individuals."
+          }
+        },
+        {
+          "speaker": "neri",
+          "text": {
+            "ja": "橋と療養室は残す。広場の飾りは、半分にしよう。まず、今夜の分を運んで。",
+            "en": "Keep the bridge and infirmary lit. Halve the decorations. First, carry what we need tonight."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "cathedral"
+    },
+    {
+      "id": "seven-four-girls",
+      "chapter": 6,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "記録に収まらない四人",
+        "en": "Four Girls Beyond the Register"
+      },
+      "title": {
+        "ja": "記録に収まらない四人",
+        "en": "Four Girls Beyond the Register"
+      },
+      "task": {
+        "ja": "記録に収まらない四人の話を聞く",
+        "en": "Read: Four Girls Beyond the Register"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-light-ledger",
+        "c6-breakfast"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "朝食のあと、庭へ四つの椅子を運んだ。管理院の照会書には、四人とも「例外個体」とある。",
+            "en": "After breakfast, we carried four chairs into the garden. The Administration’s inquiry called all four girls “exceptional individuals.”"
+          }
+        },
+        {
+          "speaker": "towa",
+          "text": {
+            "ja": "トワ。消された名簿も覚えてる。証言してって、何度も言われるけど……今日は、あの子の話をしたくない。",
+            "en": "Towa. I remember erased registers too. People keep asking me to testify. ...I do not want to speak about her today."
+          }
+        },
+        {
+          "speaker": "utsushi",
+          "text": {
+            "ja": "私はウツシ。預かった記憶の手順なら、同じようにできる。でも、その人になれるわけじゃない。好きだったお茶も、私には苦い。",
+            "en": "I am Utsushi. I can follow the procedures in memories entrusted to me. That does not make me that person. The tea she loved tastes bitter to me."
+          }
+        },
+        {
+          "speaker": "ashita",
+          "text": {
+            "ja": "アシタ。袖、また短くなったの。治療で止めようって言われたけど……止めてほしいとは、まだ言ってない。",
+            "en": "Ashita. My sleeves are short again. They offered treatment to stop the change. ...I have not asked them to stop it."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "私は、名前をここに書かない。書いても、次の日には欄が空いてる。だけど、昨日の椅子は覚えてるよ。",
+            "en": "I will not write my name here. The field is blank again the next day. But I remember yesterday’s chair."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "四人が揃うと、何かできるの？",
+            "en": "Does something happen when the four of you gather?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "七人とも、それを調べたがっている。記録を消しても残る記憶。個体を越える技能。変わる身体。留められない庭籍。",
+            "en": "All seven of us want to find out. Memory that survives erasure. Skills crossing individuals. A changing body. A registration that will not stay."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "私たち、まだ一緒に何かするって、言ってない。",
+            "en": "We have not said we want to do anything together."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "アシタが椅子を少し離した。私は、四人分を結ぶ紐が付いた書類を、卓の下へ戻した。",
+            "en": "Ashita moved her chair away a little. I put the document binding all four applications together beneath the table."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-disposal-warrant",
+      "chapter": 7,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "保管者の署名",
+        "en": "The Keeper’s Signature"
+      },
+      "title": {
+        "ja": "保管者の署名",
+        "en": "The Keeper’s Signature"
+      },
+      "task": {
+        "ja": "保管者の署名の話を聞く",
+        "en": "Read: The Keeper’s Signature"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-four-girls",
+        "c7-stone"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "石をしまった帰り、庭の女に呼び止められた。七人分の食器の隣に、一枚の処分命令書があった。",
+            "en": "On our way back after putting the stone away, the garden woman called us over. Beside seven place settings lay a disposal warrant."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "これ……旅の少女の番号。あなたの署名もある。",
+            "en": "This is the traveling girl’s number. Your signature is here too."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "消えたことにすれば、迎えは来ないと思ったのよ。保管者の印なら、処理済みと通せるはずだった。",
+            "en": "I thought that if she was listed as gone, no one would collect her. The Keeper’s seal should have closed the case."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "あの子には、聞いた？",
+            "en": "Did you ask her?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "居場所を守ったの。それでは足りない？",
+            "en": "I protected her home. Was that not enough?"
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "あの方を敬っている。だが、私の帰る日まで代わりに決めてよいとは、申し上げていません。",
+            "en": "I revere you. But I have never said you may decide when I return."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女はリオラではなく、空いた椅子を見た。封書には、イヴラの回収命令と、ヴェスパの配給差止めが重ねてある。",
+            "en": "The woman looked at an empty chair instead of Liora. Ivra’s collection order lay over Vesper’s suspension of provisions."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "今夜は庭から出ないで。お願いと命令を、分けていられる余裕がないの。",
+            "en": "Do not leave the garden tonight. I do not have the luxury of separating a request from an order."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-garden-siege",
+      "chapter": 7,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "庭へ来た七人",
+        "en": "The Seven at the Garden"
+      },
+      "title": {
+        "ja": "庭へ来た七人",
+        "en": "The Seven at the Garden"
+      },
+      "task": {
+        "ja": "庭へ来た七人の話を聞く",
+        "en": "Read: The Seven at the Garden"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-disposal-warrant",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "七人が揃う前に、庭の門が裂けた。イヴラの回収兵が白い杭を打ち、配給管を閉じる。窓辺の灯が一つ消えた。",
+            "en": "The gate split before all seven had arrived. Ivra’s retrieval troops drove white stakes into the ground and closed the supply pipes. A bedside light went out."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "例外個体四名を引き渡しなさい。拒めば、庭全体を未登録として処理します。",
+            "en": "Surrender the four exceptional individuals. Refuse, and the entire garden will be processed as unregistered."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "私の庭へ、杭を打ったのね。",
+            "en": "You drove stakes into my garden."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "女が手袋を外した。門の内側へ入った兵が倒れ、後ろの兵も足を止めた。私の袖へ、リオラの盾の縁が押しつけられる。",
+            "en": "She removed a glove. The soldiers inside the gate fell, and those behind them stopped. Liora pressed the edge of her shield against my sleeve."
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "白衣の列から潰せ。私の子に、その針を向けるな。",
+            "en": "Break the line in white. Keep those needles away from my girls."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "赤い鈴とともに、空から少女たちが降りた。ザクロは神輿から動かず、負傷した一人の名を呼んで列を引かせた。私たちの退路までは守ってくれない。",
+            "en": "Girls descended with the red bells. Zakuro remained on her palanquin, calling one wounded girl by name and drawing her line back. She did not protect our retreat."
+          }
+        },
+        {
+          "speaker": "azha",
+          "text": {
+            "ja": "橋は私が押さえる。四人を北へ出せ。観測は移送後だ。",
+            "en": "I will hold the bridge. Send the four north. Observation can wait until after transport."
+          }
+        },
+        {
+          "speaker": "shion",
+          "text": {
+            "ja": "その引渡状には私の保管権もあります。勝者が決まる前に、燃やさないでくださいね。",
+            "en": "That transfer also includes my custody claim. Kindly do not burn it before we know the victor."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "枠は四つ。誰を生かすか、決める時間をあげているのよ。",
+            "en": "There are four places. I am giving you time to decide who lives."
+          }
+        },
+        {
+          "speaker": "rize",
+          "text": {
+            "ja": "門の外にいる子も、四人の中には入っていない。誰が数えた四つだ。",
+            "en": "The girls outside the gate are not among your four. Who decided the count?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "私は寝台の灯を持ち上げた。廊下には、特別とは呼ばれなかった少女たちが、眠ったまま残されていた。",
+            "en": "I lifted the bedside light. Down the corridor lay the sleeping girls no one had called exceptional."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-refusal",
+      "chapter": 7,
+      "actorId": "noelle",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "四つ目の空席",
+        "en": "The Fourth Empty Chair"
+      },
+      "title": {
+        "ja": "四つ目の空席",
+        "en": "The Fourth Empty Chair"
+      },
+      "task": {
+        "ja": "四つ目の空席の話を聞く",
+        "en": "Read: The Fourth Empty Chair"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-garden-siege",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ノエルが供給管の図を広げ、セリスが北の弁へ走った。配給の切替には、管理印と、受取人の記録が要る。四人をまとめる書類が差し出された。",
+            "en": "Noelle spread the supply diagram as Seris ran toward the northern valve. Rerouting provisions required an administrative seal and recipient records. Someone offered the document binding the four together."
+          }
+        },
+        {
+          "speaker": "ashita",
+          "text": {
+            "ja": "私、行かない。身体を調べてもらうために、ここへ来たんじゃない。",
+            "en": "I am not going. I did not come here to have my body examined."
+          }
+        },
+        {
+          "speaker": "azha",
+          "text": {
+            "ja": "観測を断れば、突破路の計算はできない。今から別の経路を探す時間は――",
+            "en": "Without observation, we cannot calculate the passage. There is no time to find another route—"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "その計算は、やめよう。今夜の灯を戻す道を探して。",
+            "en": "Then stop that calculation. Find a route that restores tonight’s light."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "戻せる。遠征用の予備管を、逆に流せば。ただ、北へ進む分を使うよ。",
+            "en": "We can. Reverse the expedition reserve pipe. But it uses the supply meant for going north."
+          }
+        },
+        {
+          "speaker": "utsushi",
+          "text": {
+            "ja": "手順を借りるなら、貸す人に聞いて。アズハ、あなたの弁の扱い方を、私に渡してくれる？",
+            "en": "If I borrow the procedure, ask its owner. Azha, will you entrust me with operating your valve?"
+          }
+        },
+        {
+          "speaker": "towa",
+          "text": {
+            "ja": "消された配給先なら覚えてる。でも全部は、今は話せない。療養室の道からでいい？",
+            "en": "I remember the erased recipients. I cannot speak about all of them now. May I start with the infirmary route?"
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "私の欄は空くよ。だから、椅子を一つ持っていって。そこに私が座る。",
+            "en": "My field will go blank. Bring a chair instead. I will sit in it."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "アシタは避難の列へ入った。四人は揃わなかった。アズハは遠征図を裂き、弁の順序が書かれた側をウツシへ渡した。",
+            "en": "Ashita joined the evacuees. The four did not unite. Azha tore her expedition map and handed Utsushi the side showing the valve sequence."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-empty-throne",
+      "chapter": 7,
+      "actorId": "liora",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "八人目の席",
+        "en": "The Eighth Seat"
+      },
+      "title": {
+        "ja": "八人目の席",
+        "en": "The Eighth Seat"
+      },
+      "task": {
+        "ja": "八人目の席の話を聞く",
+        "en": "Read: The Eighth Seat"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-refusal",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "切替盤へ通じる回廊で、イヴラの兵とザクロの列が衝突した。リオラは誰かの勝利を待たず、運ばれてきた寝台を先に通した。",
+            "en": "Ivra’s troops collided with Zakuro’s line in the corridor to the switchboard. Liora did not wait for a victor. She let the stretchers through first."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "この数を誰が預かるのです。責任者のいない保護など、次の事故を待つだけです。",
+            "en": "Who will take custody of so many? Protection without a responsible custodian only awaits its next disaster."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "なら、この子に印を渡す。私たちを見てきたのだから、同じ間違いは――",
+            "en": "Then give her the seal. Having watched us, she will not make the same—"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "私も、止めてと言われた夜に、止めなかった。",
+            "en": "I too failed to stop on the night someone asked me to."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "炉の鍵を、管理印の横へ置いた。好きな子のためなら決めていい。その考えで、私はもう一度手を伸ばしかけていた。",
+            "en": "I put the furnace key beside the seal. I had nearly reached for it again, believing love entitled me to decide."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "灯の管を直す責任は持つ。でも、誰がここにいなきゃいけないかまで、私が決めたくない。",
+            "en": "I will take responsibility for repairing the pipes. I do not want the power to decide who must stay here."
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "きれいに断って、それで誰が門を守る。言うだけなら、私の子を使うな。",
+            "en": "A pretty refusal. Who holds the gate? If words are all you offer, do not spend my girls."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "私が立つ。だが、交代が来たら退く。おまえの列にも、その約束をさせろ。",
+            "en": "I will stand there. And withdraw when relieved. Make the same promise to your line."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ザクロは笑わなかった。二人の担ぎ手を門へ回し、神輿を地面へ下ろした。",
+            "en": "Zakuro did not laugh. She sent two bearers to the gate and had her palanquin lowered to the ground."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-price-of-light",
+      "chapter": 7,
+      "actorId": "noelle",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "最初に消す灯",
+        "en": "The First Light We Extinguish"
+      },
+      "title": {
+        "ja": "最初に消す灯",
+        "en": "The First Light We Extinguish"
+      },
+      "task": {
+        "ja": "最初に消す灯の話を聞く",
+        "en": "Read: The First Light We Extinguish"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-empty-throne",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "供給の切替盤には、七つの優先印があった。外せば、管理者だけが使えた再生槽と、聖堂の飾り灯への直通管が止まる。",
+            "en": "The supply board bore seven priority seals. Removing them would stop the direct pipes to the administrators’ restoration baths and the cathedral’s ornamental lights."
+          }
+        },
+        {
+          "speaker": "shion",
+          "text": {
+            "ja": "私の保管庫も、一部は失います。記憶の持ち主へ返しても、本人が保存を望むとは限りませんね。",
+            "en": "I will lose part of my vault as well. Even returned memories may not be preserved if their owners do not wish it."
+          }
+        },
+        {
+          "speaker": "azha",
+          "text": {
+            "ja": "北への出発は延期する。だが、供給路の警備は残す。全員を庭へ戻せば、次の冬に途切れる。",
+            "en": "The northern departure is postponed. The supply guard stays. Bring everyone home, and supply fails next winter."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "私の温室も、今までどおりには保てないわ。この庭だけ無傷、とはいかないのね。",
+            "en": "My greenhouse cannot remain as it was. This garden does not get to stay untouched."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "選ばれた子の灯を奪って、何も成さなかった子へ渡すの？　その子たちが守ってきた街でしょう。",
+            "en": "You would take light from the chosen and give it to those who achieved nothing? It was the chosen who defended this town."
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "ミナの縫った袖で、みんな帰ってきたよ。点に入らなかっただけ。",
+            "en": "They all came home wearing sleeves Mina mended. It simply did not count toward a score."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "イヴラが切替盤へ手を伸ばした。リオラが腕を押さえ、セリスが白い杭の根元を断った。ヴェスパの護衛は、負傷者を抱えたまま進めなかった。",
+            "en": "Ivra reached for the board. Liora caught her arm as Seris severed the base of a white stake. Vesper’s guards could not advance while carrying their wounded."
+          }
+        },
+        {
+          "speaker": "rize",
+          "text": {
+            "ja": "私の停止印も外す。一人の署名で、受取人を帳簿から消せなくする。",
+            "en": "Remove my termination seal too. No single signature will erase a recipient from the ledger."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "優先印が五つ外れた。残る二つは、敗れた管理者から取り上げた。供給が戻るまで、私たちは手で寝台の灯を運んだ。",
+            "en": "Five priority seals came away. The other two were taken from the defeated administrators. Until supply returned, we carried bedside lights by hand."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-common-table",
+      "chapter": 7,
+      "actorId": "ione",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "配給表の下の約束",
+        "en": "The Promise Beneath the Ledger"
+      },
+      "title": {
+        "ja": "配給表の下の約束",
+        "en": "The Promise Beneath the Ledger"
+      },
+      "task": {
+        "ja": "配給表の下の約束の話を聞く",
+        "en": "Read: The Promise Beneath the Ledger"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-price-of-light",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "配給が戻ったのは、庭と街を結ぶ管の範囲だけだった。遠い庭の検問は残り、境界ではまだ鈴が鳴っている。",
+            "en": "Supply returned only along the pipes linking the garden and town. Distant checkpoints remained. Bells still sounded at the borders."
+          }
+        },
+        {
+          "speaker": "ione",
+          "text": {
+            "ja": "最低限の灯と食事、治療を、順位や所属だけで止めない。まずは、この管に繋がる場所から始めます。",
+            "en": "Basic light, food and treatment will not be stopped merely for rank or allegiance. We begin with the places on these pipes."
+          }
+        },
+        {
+          "speaker": "noelle",
+          "text": {
+            "ja": "配給を減らす時は別の担当者も確かめる。本人にも知らせる。誰かの印だけで消えないよう、療養室にも控えを置くね。",
+            "en": "A different steward checks any reduction, and the recipient is informed. The infirmary keeps a copy so one person’s seal cannot erase someone."
+          }
+        },
+        {
+          "speaker": "shion",
+          "text": {
+            "ja": "記憶の移植は、渡す本人と受ける本人へ。昔の契約だけでは進めない。保管庫の鍵は、それぞれへ返します。",
+            "en": "Memory transfer requires both giver and recipient. An old contract alone will not suffice. Each owner receives her vault key."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "庭を出るとき、私の許可はいらない。戻る場所は残す。……帰ってこない子も、いるのでしょうね。",
+            "en": "You need no permission from me to leave the garden. There will be a place to return. ...Some girls will not come back, will they?"
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "私の列にも、降りる道は作る。ただし、おまえたちの命令では降ろさせない。",
+            "en": "My procession will have an exit too. But you do not get to order my girls off it."
+          }
+        },
+        {
+          "speaker": "azha",
+          "text": {
+            "ja": "次の遠征は、行くと答えた者だけで組む。足りなければ、行ける場所を減らす。",
+            "en": "The next expedition will include only those who agree to go. If too few answer, we reduce our reach."
+          }
+        },
+        {
+          "speaker": "rize",
+          "text": {
+            "ja": "終わりたいという返事は、私一人に預けさせない。話を聞く者と、暮らしを支える者を、別に置く。",
+            "en": "A wish to end will not be entrusted to me alone. Those who listen and those who support her daily life will be different people."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "ここにいない子にも、この約束が届く道を作ろう。今日、世界全部を救えたとは、書かないで。",
+            "en": "Let us make a path for this promise to reach the girls elsewhere. Do not write that we saved the whole world today."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-aftercare",
+      "chapter": 7,
+      "actorId": "ione",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "救ったという記録",
+        "en": "The Record That Says We Saved Her"
+      },
+      "title": {
+        "ja": "救ったという記録",
+        "en": "The Record That Says We Saved Her"
+      },
+      "task": {
+        "ja": "救ったという記録の話を聞く",
+        "en": "Read: The Record That Says We Saved Her"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-common-table",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "イヴラは管理印を失い、監督者のいる治療室へ移った。彼女に助けられた少女も、近づくことを拒む少女もいた。",
+            "en": "Without her administrative seal, Ivra moved to a supervised clinic. Some girls said she had helped them. Others refused to come near her."
+          }
+        },
+        {
+          "speaker": "ivra",
+          "text": {
+            "ja": "以前の処置を、元に戻してほしいのですか。戻せるとは限りませんよ。",
+            "en": "You want the earlier treatment reversed? It may not be possible."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "戻せるかを聞きたい。決める前に、何をするのか教えて。",
+            "en": "I want to ask whether it can be. Tell me what you would do before deciding."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ザクロへも面会の返事が届いた。かつて彼女が門を壊して連れ出した少女は、今は会いたくないと書いていた。",
+            "en": "A reply reached Zakuro too. A girl she had once taken out through a shattered gate wrote that she did not want to see her now."
+          }
+        },
+        {
+          "speaker": "zakuro",
+          "text": {
+            "ja": "返事は要らないと伝えろ。……いや、そのままにしておけ。",
+            "en": "Tell her no reply is needed. ...No. Leave it as it is."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "紙を取り上げる者はいなかった。ザクロは、破れた門の修繕費だけを別の封筒へ入れた。",
+            "en": "No one took the letter away. Zakuro put only the gate’s repair expenses into a separate envelope."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "助けたって書いた後にも、その子の返事は続くんだね。",
+            "en": "Her answers keep coming after the line where we write that we saved her."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-four-tomorrows",
+      "chapter": 7,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "観測しない午後",
+        "en": "An Afternoon Without Observation"
+      },
+      "title": {
+        "ja": "観測しない午後",
+        "en": "An Afternoon Without Observation"
+      },
+      "task": {
+        "ja": "観測しない午後の話を聞く",
+        "en": "Read: An Afternoon Without Observation"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-aftercare",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "トワの証言は、途中で終わっている。続きの日付は、まだ決めなかった。",
+            "en": "Towa’s testimony ends midway. We have not scheduled the rest."
+          }
+        },
+        {
+          "speaker": "towa",
+          "text": {
+            "ja": "今日は、覚えてることを話さなくてもいい？　忘れたんじゃないよ。",
+            "en": "May I keep what I remember to myself today? I have not forgotten."
+          }
+        },
+        {
+          "speaker": "utsushi",
+          "text": {
+            "ja": "私のお茶は、甘い方にして。借りた記憶には、そう書いてなかったけど。",
+            "en": "Make my tea sweet. That is not what the borrowed memories said, but it is what I want."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ルカはアシタの袖の寸法を測り直した。古い寸法も残す。治ったかどうかを判定する帳面ではなく、次の服を縫うための帳面だった。",
+            "en": "Ruka measured Ashita’s sleeves again and kept the older measurements. The notebook was for sewing her next clothes, not deciding whether she had been cured."
+          }
+        },
+        {
+          "speaker": "guest",
+          "text": {
+            "ja": "明日、ここに私の名前がなくても、この椅子、片づけないでね。",
+            "en": "Even if my name is gone tomorrow, do not put this chair away."
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "座る人が戻るかどうか、聞いてからにする。",
+            "en": "I will ask whether its occupant is coming back first."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "四人を同じ部屋に集める予定はなくなった。観測欄の空白に、庭の女は何も書き足さなかった。",
+            "en": "The plan to keep all four in one room was abandoned. The garden woman left the observation fields blank."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-unearned-meal",
+      "chapter": 7,
+      "actorId": "elaine",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "選定者の食事",
+        "en": "The Selector’s Meal"
+      },
+      "title": {
+        "ja": "選定者の食事",
+        "en": "The Selector’s Meal"
+      },
+      "task": {
+        "ja": "選定者の食事の話を聞く",
+        "en": "Read: The Selector’s Meal"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-four-tomorrows",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "ヴェスパの部屋には鍵があり、廊下には見張りがいる。彼女の命令で灯を失った少女たちは、同じ階に泊まらずに済むようにした。",
+            "en": "Vesper’s room was locked and guarded. The girls deprived of light by her orders did not have to share her floor."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "こんな所へ運ぶ分まで、配るのね。私は、あなたたちの役には立たないわ。",
+            "en": "You even send provisions here. I will be of no use to you."
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "冷めるから、ここに置くね。",
+            "en": "I will leave it here before it gets cold."
+          }
+        },
+        {
+          "speaker": "vesper",
+          "text": {
+            "ja": "……私に、何をさせたいの？",
+            "en": "...What do you want me to do?"
+          }
+        },
+        {
+          "speaker": "unbloomed",
+          "text": {
+            "ja": "食べ終わったら、お皿を外に出しておいてください。次は別の当番が来るから。",
+            "en": "Please put the plate outside when you finish. The next meal will be brought by someone else."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "少女は返事を待たずに廊下へ戻った。許したとは言わなかった。配膳を続けたいかは、当番を決める前に尋ねてある。",
+            "en": "The girl returned to the corridor without waiting. She did not say she forgave her. We had asked whether she wanted the task before assigning it."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "扉の向こうで、匙が一度だけ皿に触れた。ミナの空いた寝台が、それで埋まることはなかった。",
+            "en": "Behind the door, a spoon touched the plate once. Mina’s empty bed did not fill because of it."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
+      "backgroundId": "novel-awakening-garden"
+    },
+    {
+      "id": "seven-breakfast",
+      "chapter": 7,
+      "actorId": "garden-woman",
+      "hubId": "hub-garden",
+      "bubble": {
+        "ja": "まずは、食べましょうか",
+        "en": "First, Shall We Eat?"
+      },
+      "title": {
+        "ja": "まずは、食べましょうか",
+        "en": "First, Shall We Eat?"
+      },
+      "task": {
+        "ja": "まずは、食べましょうかの話を聞く",
+        "en": "Read: First, Shall We Eat?"
+      },
+      "purpose": {
+        "ja": "七人の管理者と、管理からこぼれた少女たちの行方を確かめる。",
+        "en": "Follow the seven administrators and the girls their system cannot contain."
+      },
+      "requiresNodes": [
+        "seven-unearned-meal",
+        "c7-together"
+      ],
+      "requiresDungeons": [],
+      "lines": [
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "庭の朝食には、働いた子と、眠れなかった子が来た。怪我で椀を持てない子の隣へ、エレインが座る。",
+            "en": "Girls who had worked and girls who had not slept came to breakfast. Elaine sat beside a girl too injured to hold her bowl."
+          }
+        },
+        {
+          "speaker": "liora",
+          "text": {
+            "ja": "今日は街へ泊まる。戻るのは、その次の日にしたい。",
+            "en": "I will stay in town tonight. I would like to return the following day."
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "……分かったわ。あなたの部屋は、そのままにしておく。",
+            "en": "...Very well. Your room will be here."
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "庭の女は人数を数えかけ、配膳の係へ尋ね直した。何人分あるか。まだ来ていない子へ、誰が声をかけるか。",
+            "en": "The garden woman began to count us, then asked the servers instead: how many meals were ready, and who would check on the girls not yet here?"
+          }
+        },
+        {
+          "speaker": "hero",
+          "text": {
+            "ja": "今日は、何をすればいい？",
+            "en": "What should I do today?"
+          }
+        },
+        {
+          "speaker": "garden-woman",
+          "text": {
+            "ja": "……まずは、食べましょうか。",
+            "en": "...First, shall we eat?"
+          }
+        },
+        {
+          "speaker": "narration",
+          "text": {
+            "ja": "世界のすべての庭に、まだこの朝は届いていない。遠征の縮んだ地図も、消えた子の名も残っている。私たちは食べ終えたら、次の道を確かめに行く。",
+            "en": "This morning has not reached every garden. The reduced expedition map remains, as do the names of the lost. After breakfast, we will go and find the next road."
+          }
+        }
+      ],
+      "optional": true,
+      "ambient": true,
+      "continuation": true,
       "backgroundId": "novel-awakening-garden"
     }
   ],
