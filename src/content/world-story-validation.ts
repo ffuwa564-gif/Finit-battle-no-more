@@ -44,6 +44,7 @@ export function validateWorldStoryContent(content: Content): string[] {
         if (ids.has(r))
             visit(r); visiting.delete(id); done.add(id); }
     for (const n of def.nodes) {
+        bad(n.continuation !== undefined && (typeof n.continuation !== 'boolean' || n.continuation && (!n.optional || !n.ambient || Boolean(n.daily) || Boolean(n.variants))), 'continuations must be optional, persistent authored scenes ' + n.id);
         bad(!n.optional && (!text(n.task) || !text(n.purpose)), 'main conversations need clear tasks and reasons ' + n.id);
         bad(Boolean(n.backgroundId && !content.assets.some(a => a.id === n.backgroundId)), 'unknown scene background ' + n.id);
         bad(!chars.has(n.actorId) || ['hero', 'narration'].includes(n.actorId) || !hubs.has(n.hubId) || !def.chapters.some(c => c.number === n.chapter) || !text(n.bubble) || !text(n.title) || n.lines.length < 2, 'invalid node ' + n.id);

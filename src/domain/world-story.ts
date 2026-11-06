@@ -8,6 +8,15 @@ export type StoryText = {
 /** Narrative-only speakers are distinct from recruitable party characters. */
 export const worldStorySupportingSpeakers: Record<string, string> = {
     guest: '旅の少女',
+    ivra: 'イヴラ',
+    vesper: 'ヴェスパ',
+    shion: '墨染シオン',
+    azha: '黎刃アズハ',
+    rize: '灰鐘リゼ',
+    towa: 'トワ',
+    utsushi: 'ウツシ',
+    ashita: 'アシタ',
+    unbloomed: '花冠院を出た少女',
     'garden-woman': '庭園の女',
     admirer: '宝石を集める少女',
     beloved: '人気の少女',
@@ -40,6 +49,8 @@ export interface WorldStoryChoice {
 export interface WorldStoryNode {
     /** Short first encounter; full authored lines remain available on replay. */
     firstVisitLines?: WorldStoryLine[];
+    /** Authored interludes remain available across chapters and after the campaign. */
+    continuation?: boolean;
     task?: StoryText;
     purpose?: StoryText;
     backgroundId?: string;
@@ -131,18 +142,22 @@ export function activeWorldIncident(save: Pick<GameSave, 'worldStory' | 'complet
 export function acknowledgeWorldIncident(save: GameSave, def: WorldStoryDefinition, id: string): void { if (activeWorldIncident(save, def)?.id !== id)
     throw new Error('その事件は現在発生していません。'); save.worldStory!.notified = [...new Set([...(save.worldStory!.notified ?? []), id])]; }
 export function storyChapter(state: WorldStoryState, def: WorldStoryDefinition) { return def.chapters.find(c => !state.carriedChapters.includes(c.number) && !state.completed.includes(c.endingNodeId)); }
+function storyPrerequisiteMet(id: string, s: WorldStoryState, def: WorldStoryDefinition): boolean {
+    const node = def.nodes.find(n => n.id === id);
+    return s.completed.includes(id) || Boolean(node && !node.continuation && s.carriedChapters.includes(node.chapter));
+}
 export function storyNodeAvailable(node: WorldStoryNode, save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, def: WorldStoryDefinition): boolean {
     const s = save.worldStory;
     if (!s || s.completed.includes(node.id) || (!node.ambient && storyChapter(s, def)?.number !== node.chapter))
         return false;
-    return node.requiresNodes.every(id => s.completed.includes(id) || s.carriedChapters.includes(def.nodes.find(n => n.id === id)?.chapter ?? -1)) && (node.ambient && s.carriedChapters.includes(node.chapter) || node.requiresDungeons.every(id => save.completedDungeonIds.includes(id)));
+    return node.requiresNodes.every(id => storyPrerequisiteMet(id, s, def)) && (node.ambient && s.carriedChapters.includes(node.chapter) || node.requiresDungeons.every(id => save.completedDungeonIds.includes(id)));
 }
 export function storyActors(save: GameSave, def: WorldStoryDefinition) {
     const s = save.worldStory;
     if (!s)
         return [];
     const incident = activeWorldIncident(save, def);
-    const nodes = def.nodes.map(n => { const resolved = resolvedStoryNode(n, s); return incident && resolved.ambient && resolved.emergency ? { ...resolved, bubble: resolved.emergency.bubble } : resolved; }).filter(n => storyNodeAvailable(n, save, def) || n.ambient && s.completed.includes(n.id)).sort((a, b) => Number(Boolean(a.optional)) - Number(Boolean(b.optional)) || b.chapter - a.chapter);
+    const nodes = def.nodes.map(n => { const resolved = resolvedStoryNode(n, s); return incident && resolved.ambient && resolved.emergency ? { ...resolved, bubble: resolved.emergency.bubble } : resolved; }).filter(n => storyNodeAvailable(n, save, def) || n.ambient && s.completed.includes(n.id)).sort((a, b) => Number(Boolean(b.continuation) && !incident && !s.completed.includes(b.id)) - Number(Boolean(a.continuation) && !incident && !s.completed.includes(a.id)) || Number(Boolean(a.optional)) - Number(Boolean(b.optional)) || b.chapter - a.chapter);
     const actors = [...new Set(nodes.map(n => n.actorId))];
     return actors.map(actorId => { const choices = nodes.filter(n => n.actorId === actorId); return { actorId, node: choices[0], nodes: choices, hub: def.hubs.find(h => h.id === (actorId === 'guest' && s.choices['c5-address'] === 'infirmary' ? 'hub-infirmary' : choices[0].hubId))! }; });
 }
@@ -155,6 +170,9 @@ export function storyNext(save: GameSave, def: WorldStoryDefinition): {
     const s = save.worldStory;
     if (!s)
         return;
+    const continuation = def.nodes.find(n => n.continuation && storyNodeAvailable(n, save, def));
+    // Rescue/crafting objectives keep priority while an incident is unresolved.
+    if (continuation && !activeWorldIncident(save, def)) return { node: continuation };
     const chapter = storyChapter(s, def);
     if (!chapter)
         return;
@@ -312,7 +330,7 @@ export function validateWorldStorySave(save: GameSave, content: Content): void {
         throw new Error('日常の会話記録が正しくありません。');
     for (const id of s.completed) {
         const node = def.nodes.find(n => n.id === id);
-        const recorded = (n: WorldStoryNode) => n.requiresNodes.every(r => s.completed.includes(r) || s.carriedChapters.includes(def.nodes.find(v => v.id === r)!.chapter)) && (s.carriedChapters.includes(n.chapter) || n.requiresDungeons.every(d => save.completedDungeonIds.includes(d)));
+        const recorded = (n: WorldStoryNode) => n.requiresNodes.every(r => storyPrerequisiteMet(r, s, def)) && (s.carriedChapters.includes(n.chapter) || n.requiresDungeons.every(d => save.completedDungeonIds.includes(d)));
         const legacy = node && def.legacyFirstChapter?.[id];
         if (!node || !recorded(node) && !(legacy && recorded({ ...node, ...legacy })))
             throw new Error('会話の進行記録が正しくありません。');
