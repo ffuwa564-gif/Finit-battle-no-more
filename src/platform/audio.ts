@@ -1,3 +1,4 @@
+import { acquireGameAudioContext } from './audio-context';
 import { combatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily } from './combat-audio';
 import type * as ToneTypes from 'tone';
@@ -30,7 +31,7 @@ export async function enableAudio(): Promise<void> {
       gain = undefined; voice = undefined; combat = undefined; limiter = undefined;
       active = false; lastCueAt = 0; pending.length = 0; enabling = undefined;
     }
-    try { browserContext = new window.AudioContext(); } catch { return; }
+    try { browserContext = acquireGameAudioContext('effects'); } catch { return; }
   }
   const context = browserContext;
   const unlocked = resumeAudioContext(context);
@@ -41,9 +42,18 @@ export async function enableAudio(): Promise<void> {
       // Unlock a native context synchronously in the gesture before downloading Tone.
       // This preserves Safari's gesture requirement while keeping the synth out of
       // the initial home-screen bundle.
+      // Bind the raw device clock before Tone's entry point initializes its
+      // exported singletons. Otherwise importing Tone itself creates a second
+      // native context before setContext can run.
+      if (!Tone) {
+        const binding = await import('tone/build/esm/core/Global.js');
+        if (context !== browserContext) return;
+        binding.setContext(context, true);
+      }
       const tone = await import('tone');
       if (!await unlocked || context !== browserContext) return;
-      if (!Tone || tone.getContext().rawContext !== context) { Tone = tone; tone.setContext(context); }
+      if (tone.getContext().rawContext !== context) tone.setContext(context, true);
+      Tone = tone;
       if (!gain) {
         // The compressor can overshoot on overlapping sub-millisecond attacks.
         // Keep the approved isolated sounds unchanged below .88, and catch only
