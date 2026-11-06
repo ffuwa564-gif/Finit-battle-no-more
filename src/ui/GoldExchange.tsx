@@ -16,7 +16,7 @@ export function GoldExchange({ content, save, busy, command, onInspect }: {
   const offer = offers.find(item => item.id === selected);
   const target = offer && content.characters.find(char => char.id === offer.characterId);
   if (!offers.length) return null;
-  return <InventoryTheme className="inventory-exchange-document"><section className="gold-exchange-section" aria-label={tr('ゴールド交換')}>
+  return <InventoryTheme className="inventory-exchange-document" controls="plain"><section className="gold-exchange-section" aria-label={tr('ゴールド交換')}>
     <h2>{tr('ゴールド交換')}</h2>
     {offers.map(offer => {
       const character = content.characters.find(char => char.id === offer.characterId)!;

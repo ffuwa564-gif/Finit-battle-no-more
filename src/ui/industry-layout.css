@@ -1,0 +1,47 @@
+.inventory-art-modal.inventory-theme--plain .industry-tiers { grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin:16px 0; }
+.inventory-art-modal.inventory-theme--plain .industry-tiers .button { min-height:44px; padding:8px 5px; }
+.inventory-art-modal.inventory-theme--plain .industry-tabs { gap:7px; padding:8px 0; }
+.inventory-art-modal.inventory-theme--plain .industry-tabs .button { flex-direction:column; min-height:64px; padding:8px 4px; gap:5px; font-size:13px; }
+.inventory-art-modal.inventory-theme--plain .industry-batch { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin-top:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-batch .button { min-height:44px; }
+.inventory-art-modal.inventory-theme--plain .industry-power { display:block; padding:14px; }
+.inventory-art-modal.inventory-theme--plain .industry-power header { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.inventory-art-modal.inventory-theme--plain .industry-power header strong { font-size:17px; }
+.inventory-art-modal.inventory-theme--plain .industry-power header>span { font-size:14px; color:#4b3b29; }
+.inventory-art-modal.inventory-theme--plain .industry-power>div { flex-wrap:wrap; font-size:12px; color:#584a38; }
+.inventory-art-modal.inventory-theme--plain .industry-power>.button { width:100%; margin-top:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-power progress { display:block; width:100%; margin:12px 0; }
+.inventory-art-modal.inventory-theme--plain .industry-machine { display:grid; grid-template-columns:64px minmax(0,1fr); gap:9px 12px; padding:14px; background:#f7ecd5; }
+.inventory-art-modal.inventory-theme--plain .industry-machine>.industry-machine-art { grid-column:1; grid-row:1; width:64px; float:none; margin:0; }
+.inventory-art-modal.inventory-theme--plain .industry-machine>header { grid-column:2; grid-row:1; display:block; min-width:0; margin:0; }
+.inventory-art-modal.inventory-theme--plain .industry-machine header>svg { display:none; }
+.inventory-art-modal.inventory-theme--plain .industry-machine header strong { display:block; font-size:15px; line-height:1.6; }
+.inventory-art-modal.inventory-theme--plain .industry-machine header small { display:inline; font-size:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-machine header>span { display:block; margin:5px 0 0; font-size:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-machine>:not(:first-child):not(header) { grid-column:1 / -1; }
+.inventory-art-modal.inventory-theme--plain .industry-machine p { margin:0; font-size:13px; line-height:1.8; }
+.inventory-art-modal.inventory-theme--plain .industry-machine small { font-size:12px; line-height:1.7; }
+.inventory-art-modal.inventory-theme--plain .industry-machine select { min-width:0; width:100%; min-height:44px; font-size:13px; }
+.inventory-art-modal.inventory-theme--plain .industry-recipe strong { color:#463723; font-size:15px; line-height:1.65; }
+.inventory-art-modal.inventory-theme--plain .industry-recipe small { color:#65523a; font-size:12px; line-height:1.7; }
+.inventory-art-modal.inventory-theme--plain .industry-tier { color:#6d502a; border-color:#b79e73; background:#f1e1bf; font-size:10px; }
+.inventory-art-modal.inventory-theme--plain .industry-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.inventory-art-modal.inventory-theme--plain .industry-actions .button { padding-inline:7px; font-size:12px; min-width:0; }
+.inventory-art-modal.inventory-theme--plain .industry-balances { gap:6px; margin:5px 0; }
+.inventory-art-modal.inventory-theme--plain .industry-balances>span { background:#fff6e3; border-color:#bba87f; color:#4f5a3c; font-size:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-balances>.is-short { color:#823b2d; background:#f4decb; }
+.inventory-art-modal.inventory-theme--plain .industry-stock>div { display:grid; grid-template-columns:38px minmax(0,1fr) auto; align-items:center; gap:8px; padding:11px; border:1px solid #bba57f; border-radius:8px; background:#fbf2df; }
+.inventory-art-modal.inventory-theme--plain .industry-stock .inventory-sprite { width:38px; }
+.inventory-art-modal.inventory-theme--plain .industry-stock>div>span:nth-child(2) { min-width:0; overflow-wrap:anywhere; font-size:13px; }
+.inventory-art-modal.inventory-theme--plain .industry-stock strong { color:#3b3023; font-size:17px; }
+.inventory-art-modal.inventory-theme--plain .industry-stock small { grid-column:2 / -1; color:#5e513a; font-size:12px; }
+.inventory-art-modal.inventory-theme--plain .industry-job { display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; }
+.inventory-art-modal.inventory-theme--plain .industry-job .button { grid-column:1 / -1; }
+.inventory-art-modal.inventory-theme--plain .industry-chain>.button { display:grid; grid-template-columns:38px minmax(0,1fr) 16px; gap:9px; width:100%; text-align:left; margin-top:9px; }
+.inventory-art-modal.inventory-theme--plain .industry-chain>.button>.inventory-sprite { width:38px; grid-column:1; grid-row:1; }
+.inventory-art-modal.inventory-theme--plain .industry-chain>.button>.industry-chain-link,.inventory-art-modal.inventory-theme--plain .industry-chain>.button>.industry-tier { display:none; }
+.inventory-art-modal.inventory-theme--plain .industry-chain>.button>span:last-of-type { grid-column:2; grid-row:1; }
+.inventory-art-modal.inventory-theme--plain .industry-chain small { display:block; font-size:12px; margin-top:3px; }
+.inventory-art-modal.inventory-theme--plain .industry-chain>.button>svg { grid-column:3; grid-row:1; }
+@media(min-width:600px) { .inventory-art-modal.inventory-theme--plain .industry-tiers { grid-template-columns:repeat(6,minmax(0,1fr)); } }
+.inventory-art-modal.inventory-theme--plain .industry-tabs { top:-16px; margin:0 0 14px; padding:12px 0; background:#eee1c7; border-bottom:1px solid #bba680; box-shadow:0 4px 6px #59442712; z-index:4; }

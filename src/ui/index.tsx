@@ -129,7 +129,7 @@ export function Toast({ children, tone = 'info', onClose, present = true }: { ch
 }
 
 /** A single accessible dialog with keyboard containment and focus restoration. */
-export function Modal({ open = true, title, children, onClose, footer, className = '', inventoryArt }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode; className?: string; inventoryArt?: InventoryPanelKind }) {
+export function Modal({ open = true, title, children, onClose, footer, className = '', inventoryArt, inventoryControls = 'plain' }: { open?: boolean; title: string; children: ReactNode; onClose: () => void; footer?: ReactNode; className?: string; inventoryArt?: InventoryPanelKind; inventoryControls?: 'plain' | 'illustrated' }) {
   const ref = useRef<HTMLDivElement>(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
@@ -157,7 +157,7 @@ export function Modal({ open = true, title, children, onClose, footer, className
     return () => { document.body.style.overflow = oldOverflow; if (root) root.style.overflow = oldRootOverflow ?? ''; document.removeEventListener('keydown', handleKey); previous?.focus(); };
   }, [open]);
   if (!open) return null;
-  return createGamePortal(<InventoryThemeContext.Provider value={Boolean(inventoryArt)}><div className="modal-backdrop"><div className={`modal ${className}${inventoryArt ? ' inventory-theme inventory-art-modal' : ''}`} data-inventory-art={inventoryArt} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>{inventoryArt && <InventoryFrame kind={inventoryArt}/>}<div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div></InventoryThemeContext.Provider>, document.body);
+  return createGamePortal(<InventoryThemeContext.Provider value={Boolean(inventoryArt) && inventoryControls === 'illustrated'}><div className="modal-backdrop"><div className={`modal ${className}${inventoryArt ? ` inventory-theme inventory-theme--${inventoryControls} inventory-art-modal` : ''}`} data-inventory-art={inventoryArt} ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>{inventoryArt && <InventoryFrame kind={inventoryArt}/>}<div className="modal__header"><h2 id={titleId}>{localize(title)}</h2><IconButton className="close-button" label={tr("閉じる")} sound="cancel" onClick={onClose}><X size={20} /></IconButton></div><div className="modal__body">{localize(children)}</div>{localize(footer && <div className="modal__footer">{localize(footer)}</div>)}</div></div></InventoryThemeContext.Provider>, document.body);
 }
 
 export function LinkArrow({ children }: { children: ReactNode }) { return <span className="link-arrow">{localize(children)}<ChevronRight size={16} aria-hidden="true" /></span>; }
