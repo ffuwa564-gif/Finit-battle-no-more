@@ -1,0 +1,968 @@
+{
+  "version": 1,
+  "branches": [
+    {
+      "id": "craft",
+      "name": {
+        "ja": "工房",
+        "en": "Workshop"
+      },
+      "icon": "hammer"
+    },
+    {
+      "id": "explore",
+      "name": {
+        "ja": "探索",
+        "en": "Exploration"
+      },
+      "icon": "compass"
+    },
+    {
+      "id": "tactics",
+      "name": {
+        "ja": "連携",
+        "en": "Tactics"
+      },
+      "icon": "shield"
+    },
+    {
+      "id": "companions",
+      "name": {
+        "ja": "仲間",
+        "en": "Companions"
+      },
+      "icon": "heart"
+    }
+  ],
+  "medals": [
+    {
+      "id": "craft-bench",
+      "branch": "craft",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "最初の作業台",
+        "en": "A Place to Work"
+      },
+      "condition": {
+        "kind": "installed",
+        "itemIds": [
+          "bench"
+        ],
+        "amount": 1
+      },
+      "description": {
+        "ja": "作業台を1台設置する。",
+        "en": "Install a workbench."
+      },
+      "flavor": {
+        "ja": "持ち帰った資源に、使い道ができた。",
+        "en": "The supplies you brought home now have a purpose."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "bench"
+      }
+    },
+    {
+      "id": "craft-t2",
+      "branch": "craft",
+      "rank": 1,
+      "column": 1,
+      "parents": [
+        "craft-bench"
+      ],
+      "name": {
+        "ja": "歯車がまわる",
+        "en": "Turning Gears"
+      },
+      "condition": {
+        "kind": "craftTier",
+        "amount": 2
+      },
+      "description": {
+        "ja": "Tier2以上の品を製作する。",
+        "en": "Craft an item of Tier 2 or higher."
+      },
+      "flavor": {
+        "ja": "手で作った部品が、次の仕事を助けてくれる。",
+        "en": "Parts made by hand help with the next task."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "gear"
+      }
+    },
+    {
+      "id": "craft-generator",
+      "branch": "craft",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "craft-t2"
+      ],
+      "name": {
+        "ja": "工房に灯を",
+        "en": "Light the Workshop"
+      },
+      "condition": {
+        "kind": "installed",
+        "itemIds": [
+          "wick-generator",
+          "moon-waterwheel",
+          "lunar-reactor"
+        ],
+        "amount": 1
+      },
+      "description": {
+        "ja": "発灯設備を1台設置する。",
+        "en": "Install a light generator."
+      },
+      "flavor": {
+        "ja": "この灯りで、何を作ろう。",
+        "en": "What shall we make with this light?"
+      },
+      "icon": "flame",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "wick-generator"
+      }
+    },
+    {
+      "id": "craft-t3",
+      "branch": "craft",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "craft-t2"
+      ],
+      "name": {
+        "ja": "精密な手仕事",
+        "en": "Careful Work"
+      },
+      "condition": {
+        "kind": "craftTier",
+        "amount": 3
+      },
+      "description": {
+        "ja": "Tier3以上の品を製作する。",
+        "en": "Craft an item of Tier 3 or higher."
+      },
+      "flavor": {
+        "ja": "小さな部品にも、手を抜かない。",
+        "en": "Even the smallest part deserves care."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "precision"
+      }
+    },
+    {
+      "id": "craft-powered",
+      "branch": "craft",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "craft-generator"
+      ],
+      "name": {
+        "ja": "灯りの使い道",
+        "en": "Put Light to Work"
+      },
+      "condition": {
+        "kind": "power",
+        "metric": "consumed",
+        "amount": 100
+      },
+      "description": {
+        "ja": "加工で灯力を合計100L使う。",
+        "en": "Use a total of 100 L of light in production."
+      },
+      "flavor": {
+        "ja": "灯りが部品に変わっていく。",
+        "en": "Light becomes something you can hold."
+      },
+      "icon": "flame",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "light-sawn-plank"
+      }
+    },
+    {
+      "id": "craft-t4",
+      "branch": "craft",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "craft-t3"
+      ],
+      "name": {
+        "ja": "共鳴加工の始まり",
+        "en": "Resonant Craft"
+      },
+      "condition": {
+        "kind": "craftTier",
+        "amount": 4
+      },
+      "description": {
+        "ja": "Tier4以上の品を製作する。",
+        "en": "Craft an item of Tier 4 or higher."
+      },
+      "flavor": {
+        "ja": "次に作りたいものが、また増えた。",
+        "en": "There is more you want to make now."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "resonant-circuit"
+      }
+    },
+    {
+      "id": "craft-light",
+      "branch": "craft",
+      "rank": 4,
+      "column": 0,
+      "parents": [
+        "craft-powered"
+      ],
+      "name": {
+        "ja": "一万の灯",
+        "en": "Ten Thousand Lights"
+      },
+      "condition": {
+        "kind": "power",
+        "metric": "generated",
+        "amount": 10000
+      },
+      "description": {
+        "ja": "灯力網へ合計10,000L供給する。",
+        "en": "Supply a total of 10,000 L to the light network."
+      },
+      "flavor": {
+        "ja": "工房の灯りが、毎日の仕事になった。",
+        "en": "Keeping the workshop lit is now part of your day."
+      },
+      "icon": "flame",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "light-reservoir"
+      }
+    },
+    {
+      "id": "craft-t5",
+      "branch": "craft",
+      "rank": 4,
+      "column": 2,
+      "parents": [
+        "craft-t4"
+      ],
+      "name": {
+        "ja": "星灯の職人",
+        "en": "Starlight Artisan"
+      },
+      "condition": {
+        "kind": "craftTier",
+        "amount": 5
+      },
+      "description": {
+        "ja": "Tier5の品を製作する。",
+        "en": "Craft a Tier 5 item."
+      },
+      "flavor": {
+        "ja": "最初の木板から、ここまで来た。",
+        "en": "It started with a wooden plank."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "autonomous-core"
+      }
+    },
+    {
+      "id": "craft-autonomous",
+      "branch": "craft",
+      "rank": 5,
+      "column": 1,
+      "parents": [
+        "craft-powered",
+        "craft-t5"
+      ],
+      "name": {
+        "ja": "次の探索の相棒",
+        "en": "Ready for the Next Trip"
+      },
+      "condition": {
+        "kind": "craftedAny",
+        "itemIds": [
+          "autonomous-drill",
+          "autonomous-fishing",
+          "autonomous-saw"
+        ],
+        "amount": 1
+      },
+      "description": {
+        "ja": "自律式の採集道具を1つ製作する。",
+        "en": "Craft an autonomous gathering tool."
+      },
+      "flavor": {
+        "ja": "新しい道具を、次の探索へ持っていこう。",
+        "en": "Take your new tool on the next expedition."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "autonomous-drill"
+      }
+    },
+    {
+      "id": "explore-first",
+      "branch": "explore",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "初めての踏破",
+        "en": "First Clear"
+      },
+      "condition": {
+        "kind": "clears",
+        "amount": 1
+      },
+      "description": {
+        "ja": "ダンジョンを1つ踏破する。",
+        "en": "Clear a dungeon."
+      },
+      "flavor": {
+        "ja": "ちゃんと、帰ってこられた。",
+        "en": "You made it home."
+      },
+      "icon": "compass",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-one",
+      "branch": "explore",
+      "rank": 1,
+      "column": 1,
+      "parents": [
+        "explore-first"
+      ],
+      "name": {
+        "ja": "霧の向こうへ",
+        "en": "Beyond the Mist"
+      },
+      "condition": {
+        "kind": "chapters",
+        "amount": 1
+      },
+      "description": {
+        "ja": "通常ダンジョンを1章分すべて踏破する。",
+        "en": "Clear every dungeon in one normal chapter."
+      },
+      "flavor": {
+        "ja": "見慣れた道にも、まだ続きがある。",
+        "en": "Even a familiar road leads somewhere new."
+      },
+      "icon": "compass",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-three",
+      "branch": "explore",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "explore-one"
+      ],
+      "name": {
+        "ja": "三つの旅路",
+        "en": "Three Journeys"
+      },
+      "condition": {
+        "kind": "chapters",
+        "amount": 3
+      },
+      "description": {
+        "ja": "通常ダンジョンを3章分すべて踏破する。",
+        "en": "Clear every dungeon in three normal chapters."
+      },
+      "flavor": {
+        "ja": "帰り道の話も、増えてきた。",
+        "en": "You have more stories for the way home."
+      },
+      "icon": "compass",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-tower",
+      "branch": "explore",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "explore-one"
+      ],
+      "name": {
+        "ja": "白亜の一歩",
+        "en": "First Step in the Tower"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 1
+      },
+      "description": {
+        "ja": "白亜の塔の第1層を踏破する。",
+        "en": "Clear the first floor of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "下から見上げていた塔に、足を踏み入れた。",
+        "en": "You have stepped into the tower you once gazed up at."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-001"
+      }
+    },
+    {
+      "id": "explore-seven",
+      "branch": "explore",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "explore-three"
+      ],
+      "name": {
+        "ja": "世界を巡って",
+        "en": "Across the World"
+      },
+      "condition": {
+        "kind": "chapters",
+        "amount": 7
+      },
+      "description": {
+        "ja": "通常ダンジョン全7章を踏破する。",
+        "en": "Clear every dungeon in all seven normal chapters."
+      },
+      "flavor": {
+        "ja": "地図の印は、一緒に歩いた場所。",
+        "en": "The marks on the map are places you walked together."
+      },
+      "icon": "compass",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-ten",
+      "branch": "explore",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "explore-tower"
+      ],
+      "name": {
+        "ja": "十層の足跡",
+        "en": "Ten Floors Up"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 10
+      },
+      "description": {
+        "ja": "白亜の塔の第10層を踏破する。",
+        "en": "Clear floor 10 of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "一層ずつ、登ってきた。",
+        "en": "You climbed it one floor at a time."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-010"
+      }
+    },
+    {
+      "id": "explore-ending",
+      "branch": "explore",
+      "rank": 4,
+      "column": 0,
+      "parents": [
+        "explore-seven"
+      ],
+      "name": {
+        "ja": "ふたりの署名",
+        "en": "Two Signatures"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c7-together"
+      },
+      "description": {
+        "ja": "第7章の最後に、地図でリオラとの会話を読み終える。",
+        "en": "Finish the final conversation with Liora on the map in Chapter 7."
+      },
+      "flavor": {
+        "ja": "帰ってからも、話を聞きたい。",
+        "en": "I want to keep talking after we get home."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-thirty",
+      "branch": "explore",
+      "rank": 4,
+      "column": 2,
+      "parents": [
+        "explore-ten"
+      ],
+      "name": {
+        "ja": "三十層の空",
+        "en": "The Sky above Thirty"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 30
+      },
+      "description": {
+        "ja": "白亜の塔の第30層を踏破する。",
+        "en": "Clear floor 30 of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "見える景色が、少しずつ変わった。",
+        "en": "The view changed as you climbed."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-030"
+      }
+    },
+    {
+      "id": "tactics-return",
+      "branch": "tactics",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "そろって帰ろう",
+        "en": "Everyone Comes Home"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "full-party"
+      },
+      "description": {
+        "ja": "4人全員が生存した状態でダンジョンを踏破する。",
+        "en": "Clear a dungeon with all four companions alive."
+      },
+      "flavor": {
+        "ja": "誰も置いていかない帰り道。",
+        "en": "A journey home with no one left behind."
+      },
+      "icon": "shield",
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "tactics-links",
+      "branch": "tactics",
+      "rank": 1,
+      "column": 0,
+      "parents": [
+        "tactics-return"
+      ],
+      "name": {
+        "ja": "一手をつなぐ",
+        "en": "Linked Intentions"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "linked-three"
+      },
+      "description": {
+        "ja": "1回の探索で協撃アクションを3回以上成功させ、踏破する。",
+        "en": "Land at least three linked actions in one expedition and clear it."
+      },
+      "flavor": {
+        "ja": "隣の一手が、自分の一手を変えた。",
+        "en": "A companion’s choice changed your own."
+      },
+      "icon": "swords",
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "tactics-shield",
+      "branch": "tactics",
+      "rank": 1,
+      "column": 2,
+      "parents": [
+        "tactics-return"
+      ],
+      "name": {
+        "ja": "盾の向こう側",
+        "en": "Behind the Shield"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "barrier-500"
+      },
+      "description": {
+        "ja": "1回の探索で障壁が合計500以上のダメージを防ぎ、踏破する。",
+        "en": "Have barriers absorb at least 500 damage in one expedition and clear it."
+      },
+      "flavor": {
+        "ja": "防いだ一撃のぶん、前へ進めた。",
+        "en": "Each blow stopped let you take another step."
+      },
+      "icon": "shield",
+      "action": {
+        "kind": "character",
+        "characterId": "liora"
+      }
+    },
+    {
+      "id": "tactics-status",
+      "branch": "tactics",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "tactics-links"
+      ],
+      "name": {
+        "ja": "三つの足止め",
+        "en": "Three Ways to Stop"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "three-ailments"
+      },
+      "description": {
+        "ja": "1回の探索で敵に異なる3種類の状態異常を付与し、踏破する。",
+        "en": "Inflict three different ailments on enemies in one expedition and clear it."
+      },
+      "flavor": {
+        "ja": "力押しだけが、進み方ではない。",
+        "en": "There is more than one way forward."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "tactics-no-potion",
+      "branch": "tactics",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "tactics-return"
+      ],
+      "name": {
+        "ja": "薬に頼らず",
+        "en": "Without a Potion"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "no-potion"
+      },
+      "description": {
+        "ja": "回復薬を1度も使わず、4人全員生存で踏破する。",
+        "en": "Clear with all four companions alive without using a potion."
+      },
+      "flavor": {
+        "ja": "仲間の手が、回復薬のかわりになった。",
+        "en": "Your companions helped you save the medicine."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "character",
+        "characterId": "elaine"
+      }
+    },
+    {
+      "id": "tactics-clock",
+      "branch": "tactics",
+      "rank": 3,
+      "column": 1,
+      "parents": [
+        "tactics-links",
+        "tactics-shield"
+      ],
+      "name": {
+        "ja": "時計より先に",
+        "en": "Ahead of the Clock"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "clock-acceleration"
+      },
+      "description": {
+        "ja": "加速リーダーで大時計のボスに挑み、終焉技を使われる前に踏破する。",
+        "en": "Use an acceleration leader to clear a clock boss before its finale."
+      },
+      "flavor": {
+        "ja": "最後の鐘は、鳴らなかった。",
+        "en": "The final bell never rang."
+      },
+      "icon": "clock",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "frozen-dawn-clock"
+      }
+    },
+    {
+      "id": "companions-five",
+      "branch": "companions",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "新しい縁",
+        "en": "A New Bond"
+      },
+      "condition": {
+        "kind": "owned",
+        "amount": 5
+      },
+      "description": {
+        "ja": "仲間を5人迎える。",
+        "en": "Have five different companions."
+      },
+      "flavor": {
+        "ja": "名前を呼べる相手が、また増えた。",
+        "en": "Another companion whose name you know."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "recruit"
+      }
+    },
+    {
+      "id": "wolf-finish",
+      "branch": "companions",
+      "rank": 1,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "狼の意地",
+        "en": "The Wolf’s Resolve"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "wolf-finish"
+      },
+      "description": {
+        "ja": "白霧の狼が、自分より基礎係数の高いボスにとどめを刺し、生還する。",
+        "en": "Have Pale Wolf finish a boss with a higher base coefficient and survive the clear."
+      },
+      "flavor": {
+        "ja": "この牙にも、届く相手がいる。",
+        "en": "These fangs can still reach something greater."
+      },
+      "icon": "wolf",
+      "action": {
+        "kind": "character",
+        "characterId": "pale-wolf"
+      }
+    },
+    {
+      "id": "elaine-rescue",
+      "branch": "companions",
+      "rank": 1,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "祈りが届く",
+        "en": "A Prayer in Time"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "elaine-rescue"
+      },
+      "description": {
+        "ja": "エレインの1回の回復スキルで、HP25%以下の仲間を50%以上に戻し、踏破する。",
+        "en": "Use one Elaine healing skill to restore an ally from at most 25% HP to at least 50%, then clear."
+      },
+      "flavor": {
+        "ja": "立ち上がるまで、そばにいる。",
+        "en": "Stay beside her until she can stand."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "character",
+        "characterId": "elaine"
+      }
+    },
+    {
+      "id": "liora-guard",
+      "branch": "companions",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "守りの誓い",
+        "en": "A Promise to Guard"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "liora-guard"
+      },
+      "description": {
+        "ja": "リオラがHP25%以下の仲間にかばうを使い、4人全員生存で踏破する。",
+        "en": "Have Liora guard an ally at 25% HP or below, then clear with all four alive."
+      },
+      "flavor": {
+        "ja": "その盾は、誰かのために。",
+        "en": "A shield raised for someone else."
+      },
+      "icon": "shield",
+      "action": {
+        "kind": "character",
+        "characterId": "liora"
+      }
+    },
+    {
+      "id": "noelle-double",
+      "branch": "companions",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "静寂の二重奏",
+        "en": "A Quiet Duet"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "noelle-double"
+      },
+      "description": {
+        "ja": "ノエルの1回の全体攻撃で敵2体以上を同時に倒し、踏破する。",
+        "en": "Have Noelle defeat at least two enemies with one area skill, then clear."
+      },
+      "flavor": {
+        "ja": "雨がやむと、道が開けていた。",
+        "en": "When the rain stopped, the way was clear."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "character",
+        "characterId": "noelle"
+      }
+    },
+    {
+      "id": "wolf-tower",
+      "branch": "companions",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "wolf-finish"
+      ],
+      "name": {
+        "ja": "小さな力で",
+        "en": "With Modest Strength"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "low-band-tower"
+      },
+      "description": {
+        "ja": "白霧の狼を含む定数1.5以下の4体で塔を踏破し、狼が生還する。",
+        "en": "Clear a tower floor with four companions of coefficient 1.5 or lower, including a surviving Pale Wolf."
+      },
+      "flavor": {
+        "ja": "大きな数字だけでは、決まらなかった。",
+        "en": "The bigger number did not decide everything."
+      },
+      "icon": "wolf",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-001"
+      }
+    },
+    {
+      "id": "seris-pierce",
+      "branch": "companions",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "銀閃の決着",
+        "en": "A Silver Finish"
+      },
+      "condition": {
+        "kind": "feat",
+        "feat": "seris-pierce"
+      },
+      "description": {
+        "ja": "セリスの貫通スキルでボスにとどめを刺し、踏破する。",
+        "en": "Have Seris finish a boss with a piercing skill, then clear."
+      },
+      "flavor": {
+        "ja": "一筋の隙を、見逃さなかった。",
+        "en": "She did not miss that narrow opening."
+      },
+      "icon": "swords",
+      "action": {
+        "kind": "character",
+        "characterId": "seris"
+      }
+    },
+    {
+      "id": "companions-twelve",
+      "branch": "companions",
+      "rank": 4,
+      "column": 1,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "にぎやかな庭",
+        "en": "A Lively Garden"
+      },
+      "condition": {
+        "kind": "owned",
+        "amount": 12
+      },
+      "description": {
+        "ja": "仲間を12人迎える。",
+        "en": "Have twelve different companions."
+      },
+      "flavor": {
+        "ja": "帰って話したいことが、たくさんある。",
+        "en": "There is so much to talk about when you return."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "recruit"
+      }
+    }
+  ]
+}

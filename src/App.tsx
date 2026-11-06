@@ -1,3 +1,5 @@
+import { medalById } from './domain/medals';
+import { getLanguage } from './locales/i18n';
 import { dungeonHash, dungeonReturnDestination } from './application/dungeon-navigation';
 import { RELEASE_LABEL } from './content/version';
 import { migrateSaveTo110 } from './platform/save-migration';
@@ -108,6 +110,8 @@ export default function App() {
       setAudioVolume(next.settings.seVolume);
       const cue = action.type === 'tapGemPolish' ? (next.memoryGems?.items.length ?? 0) > (previous.memoryGems?.items.length ?? 0) ? 'recruit' : next.memoryGems?.polish?.attempt === previous.memoryGems?.polish?.attempt ? null : next.memoryGems?.polish?.lastResult === 'good' ? 'exchange' : 'cancel' : commandSound(action, next.settings);
       if (cue) playSound(cue);
+      const gained=(next.medals?.earned??[]).filter(id=>!previous.medals?.earned.includes(id));
+      if(gained.length){setToast({text:tr('勲章を獲得：{0}').replace('{0}',medalById(gained[0])!.name[getLanguage()]+(gained.length>1?` +${gained.length-1}`:'')),tone:'success'});if(!cue)playSound('confirm');}
       if ((next.memoryGems?.rough?.length ?? 0) > (previous.memoryGems?.rough?.length ?? 0) && action.type === 'replay') playSound('drop');
       if (action.type === 'novelFinish' && content.novels?.find(scene => scene.id === previous.novels?.active?.sceneId)?.mapEncounter) { navigate('dungeons'); location.hash = 'dungeons'; }
       if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
