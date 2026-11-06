@@ -7,7 +7,8 @@
         "ja": "原木",
         "en": "Timber"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "stone",
@@ -15,7 +16,8 @@
         "ja": "原石材",
         "en": "Stone"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "ore",
@@ -23,7 +25,8 @@
         "ja": "鉄鉱石",
         "en": "Iron ore"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "copper",
@@ -31,7 +34,8 @@
         "ja": "銅鉱石",
         "en": "Copper ore"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "silica",
@@ -39,7 +43,8 @@
         "ja": "珪砂",
         "en": "Silica sand"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "clay",
@@ -47,7 +52,8 @@
         "ja": "粘土",
         "en": "Clay"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "coal",
@@ -55,7 +61,8 @@
         "ja": "石炭",
         "en": "Coal"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "fish",
@@ -63,7 +70,8 @@
         "ja": "湖魚",
         "en": "Lake fish"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "fiber",
@@ -71,7 +79,8 @@
         "ja": "水草繊維",
         "en": "Reed fiber"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "water",
@@ -79,7 +88,8 @@
         "ja": "清水",
         "en": "Fresh water"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "crystal",
@@ -87,7 +97,8 @@
         "ja": "微光石",
         "en": "Glimmerstone"
       },
-      "kind": "raw"
+      "kind": "raw",
+      "tier": 0
     },
     {
       "id": "plank",
@@ -95,7 +106,8 @@
         "ja": "木板",
         "en": "Planks"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "charcoal",
@@ -103,7 +115,8 @@
         "ja": "木炭",
         "en": "Charcoal"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "iron",
@@ -111,7 +124,8 @@
         "ja": "鉄インゴット",
         "en": "Iron ingot"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "copper-ingot",
@@ -119,7 +133,8 @@
         "ja": "銅インゴット",
         "en": "Copper ingot"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "glass",
@@ -127,7 +142,8 @@
         "ja": "ガラス",
         "en": "Glass"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "brick",
@@ -135,7 +151,8 @@
         "ja": "耐火レンガ",
         "en": "Firebrick"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "gear",
@@ -143,7 +160,8 @@
         "ja": "歯車",
         "en": "Gear"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 2
     },
     {
       "id": "plate",
@@ -151,7 +169,8 @@
         "ja": "金属板",
         "en": "Metal plate"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 2
     },
     {
       "id": "wire",
@@ -159,7 +178,8 @@
         "ja": "銅線",
         "en": "Copper wire"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 2
     },
     {
       "id": "rope",
@@ -167,7 +187,8 @@
         "ja": "繊維縄",
         "en": "Reed rope"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 1
     },
     {
       "id": "oil",
@@ -175,7 +196,8 @@
         "ja": "機械油",
         "en": "Machine oil"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 3
     },
     {
       "id": "sealant",
@@ -183,7 +205,8 @@
         "ja": "防水材",
         "en": "Sealant"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 3
     },
     {
       "id": "pure-water",
@@ -191,7 +214,8 @@
         "ja": "蒸留水",
         "en": "Distilled water"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 3
     },
     {
       "id": "precision",
@@ -199,7 +223,8 @@
         "ja": "精密部品",
         "en": "Precision parts"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 3
     },
     {
       "id": "charged-crystal",
@@ -207,7 +232,8 @@
         "ja": "蓄光結晶",
         "en": "Charged crystal"
       },
-      "kind": "part"
+      "kind": "part",
+      "tier": 3
     },
     {
       "id": "bench",
@@ -215,7 +241,8 @@
         "ja": "作業台",
         "en": "Workbench"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 1
     },
     {
       "id": "furnace",
@@ -223,7 +250,8 @@
         "ja": "精錬炉",
         "en": "Smelting furnace"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 1
     },
     {
       "id": "kiln",
@@ -231,7 +259,8 @@
         "ja": "焼成窯",
         "en": "Kiln"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 1
     },
     {
       "id": "sawmill",
@@ -239,7 +268,8 @@
         "ja": "製材機",
         "en": "Sawmill"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 2
     },
     {
       "id": "press",
@@ -247,7 +277,8 @@
         "ja": "圧延機",
         "en": "Rolling press"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 2
     },
     {
       "id": "lathe",
@@ -255,7 +286,8 @@
         "ja": "旋盤",
         "en": "Lathe"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 2
     },
     {
       "id": "wire-drawer",
@@ -263,7 +295,8 @@
         "ja": "伸線機",
         "en": "Wire drawer"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 2
     },
     {
       "id": "loom",
@@ -271,7 +304,8 @@
         "ja": "織機",
         "en": "Loom"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 2
     },
     {
       "id": "extractor",
@@ -279,7 +313,8 @@
         "ja": "抽出機",
         "en": "Extractor"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 3
     },
     {
       "id": "condenser",
@@ -287,7 +322,8 @@
         "ja": "蒸留塔",
         "en": "Distillation column"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 3
     },
     {
       "id": "assembler",
@@ -295,7 +331,8 @@
         "ja": "自動組立機",
         "en": "Automatic assembler"
       },
-      "kind": "machine"
+      "kind": "machine",
+      "tier": 3
     },
     {
       "id": "pick",
@@ -303,7 +340,8 @@
         "ja": "採掘つるはし",
         "en": "Mining pick"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 2
     },
     {
       "id": "rod",
@@ -311,7 +349,8 @@
         "ja": "改良釣り竿",
         "en": "Improved fishing rod"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 2
     },
     {
       "id": "axe",
@@ -319,7 +358,8 @@
         "ja": "伐採斧",
         "en": "Logging axe"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 2
     },
     {
       "id": "drill",
@@ -327,7 +367,8 @@
         "ja": "歯車式採掘機",
         "en": "Geared mining drill"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 3
     },
     {
       "id": "fishing-rig",
@@ -335,7 +376,8 @@
         "ja": "巻上式釣り具",
         "en": "Powered fishing reel"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 3
     },
     {
       "id": "logging-rig",
@@ -343,7 +385,8 @@
         "ja": "機械鋸",
         "en": "Mechanical saw"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 3
     },
     {
       "id": "crate",
@@ -351,7 +394,8 @@
         "ja": "資源保管箱",
         "en": "Resource storage crate"
       },
-      "kind": "tool"
+      "kind": "tool",
+      "tier": 2
     },
     {
       "id": "field-lantern",
@@ -359,7 +403,8 @@
         "ja": "携帯灯",
         "en": "Field lantern"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 2
     },
     {
       "id": "safety-key",
@@ -367,7 +412,8 @@
         "ja": "安全弁の鍵",
         "en": "Safety valve key"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 3
     },
     {
       "id": "sluice-handle",
@@ -375,7 +421,8 @@
         "ja": "水門の操作輪",
         "en": "Sluice handwheel"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 3
     },
     {
       "id": "survey-compass",
@@ -383,7 +430,8 @@
         "ja": "樹海の測量器",
         "en": "Forest surveying compass"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 4
     },
     {
       "id": "nameplate",
@@ -391,7 +439,8 @@
         "ja": "帰路の名札",
         "en": "Homeward nameplate"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 4
     },
     {
       "id": "relay-lamp",
@@ -399,7 +448,8 @@
         "ja": "中継灯",
         "en": "Relay lantern"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 4
     },
     {
       "id": "resonance-core",
@@ -407,7 +457,152 @@
         "ja": "温室の調整核",
         "en": "Greenhouse regulator"
       },
-      "kind": "story"
+      "kind": "story",
+      "tier": 5
+    },
+    {
+      "id": "wick-generator",
+      "name": {
+        "ja": "灯芯炉",
+        "en": "Wick Hearth"
+      },
+      "kind": "machine",
+      "tier": 2
+    },
+    {
+      "id": "light-reservoir",
+      "name": {
+        "ja": "蓄灯槽",
+        "en": "Light Reservoir"
+      },
+      "kind": "machine",
+      "tier": 3
+    },
+    {
+      "id": "moon-waterwheel",
+      "name": {
+        "ja": "月下の水車",
+        "en": "Moonlit Waterwheel"
+      },
+      "kind": "machine",
+      "tier": 3
+    },
+    {
+      "id": "resonant-circuit",
+      "name": {
+        "ja": "共鳴回路",
+        "en": "Resonant Circuit"
+      },
+      "kind": "part",
+      "tier": 4
+    },
+    {
+      "id": "luminous-alloy",
+      "name": {
+        "ja": "導灯合金",
+        "en": "Light-Conducting Alloy"
+      },
+      "kind": "part",
+      "tier": 4
+    },
+    {
+      "id": "resonance-assembler",
+      "name": {
+        "ja": "共鳴組立機",
+        "en": "Resonance Assembler"
+      },
+      "kind": "machine",
+      "tier": 4
+    },
+    {
+      "id": "star-circuit",
+      "name": {
+        "ja": "星紋回路",
+        "en": "Star-Sigil Circuit"
+      },
+      "kind": "part",
+      "tier": 5
+    },
+    {
+      "id": "lunar-reactor",
+      "name": {
+        "ja": "月光共鳴炉",
+        "en": "Moonlight Resonator"
+      },
+      "kind": "machine",
+      "tier": 5
+    },
+    {
+      "id": "star-assembler",
+      "name": {
+        "ja": "星灯工作機",
+        "en": "Starlight Fabricator"
+      },
+      "kind": "machine",
+      "tier": 5
+    },
+    {
+      "id": "autonomous-core",
+      "name": {
+        "ja": "自律核",
+        "en": "Autonomous Core"
+      },
+      "kind": "part",
+      "tier": 5
+    },
+    {
+      "id": "resonance-drill",
+      "name": {
+        "ja": "共鳴式採掘機",
+        "en": "Resonant Drill"
+      },
+      "kind": "tool",
+      "tier": 4
+    },
+    {
+      "id": "resonance-fishing",
+      "name": {
+        "ja": "共鳴式巻上具",
+        "en": "Resonant Fishing Rig"
+      },
+      "kind": "tool",
+      "tier": 4
+    },
+    {
+      "id": "resonance-saw",
+      "name": {
+        "ja": "共鳴式機械鋸",
+        "en": "Resonant Saw"
+      },
+      "kind": "tool",
+      "tier": 4
+    },
+    {
+      "id": "autonomous-drill",
+      "name": {
+        "ja": "自律採掘機",
+        "en": "Autonomous Drill"
+      },
+      "kind": "tool",
+      "tier": 5
+    },
+    {
+      "id": "autonomous-fishing",
+      "name": {
+        "ja": "自律釣り装置",
+        "en": "Autonomous Fishing Rig"
+      },
+      "kind": "tool",
+      "tier": 5
+    },
+    {
+      "id": "autonomous-saw",
+      "name": {
+        "ja": "自律伐採機",
+        "en": "Autonomous Logging Rig"
+      },
+      "kind": "tool",
+      "tier": 5
     }
   ],
   "recipes": [
@@ -427,7 +622,9 @@
       "seconds": 12,
       "station": null,
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "furnace",
@@ -445,7 +642,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "kiln",
@@ -463,7 +662,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "sawmill",
@@ -482,7 +683,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "press",
@@ -501,7 +704,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 2,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "lathe",
@@ -520,7 +725,9 @@
       "seconds": 12,
       "station": "press",
       "chapter": 2,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "wire-drawer",
@@ -539,7 +746,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "loom",
@@ -558,7 +767,9 @@
       "seconds": 12,
       "station": "bench",
       "chapter": 2,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "extractor",
@@ -577,7 +788,9 @@
       "seconds": 12,
       "station": "lathe",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "condenser",
@@ -596,7 +809,9 @@
       "seconds": 12,
       "station": "lathe",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "assembler",
@@ -616,7 +831,9 @@
       "seconds": 12,
       "station": "lathe",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "plank",
@@ -633,7 +850,9 @@
       "seconds": 4,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "charcoal",
@@ -650,7 +869,9 @@
       "seconds": 8,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "iron",
@@ -668,7 +889,9 @@
       "seconds": 10,
       "station": "furnace",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "copper-ingot",
@@ -686,7 +909,9 @@
       "seconds": 10,
       "station": "furnace",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "glass",
@@ -704,7 +929,9 @@
       "seconds": 10,
       "station": "kiln",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "brick",
@@ -722,7 +949,9 @@
       "seconds": 10,
       "station": "kiln",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "gear",
@@ -739,7 +968,9 @@
       "seconds": 8,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "plate",
@@ -756,7 +987,9 @@
       "seconds": 10,
       "station": "press",
       "chapter": 2,
-      "automatable": true
+      "automatable": true,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "wire",
@@ -773,7 +1006,9 @@
       "seconds": 8,
       "station": "wire-drawer",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "rope",
@@ -790,7 +1025,9 @@
       "seconds": 6,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "oil",
@@ -807,7 +1044,9 @@
       "seconds": 12,
       "station": "extractor",
       "chapter": 3,
-      "automatable": true
+      "automatable": true,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "sealant",
@@ -825,7 +1064,9 @@
       "seconds": 12,
       "station": "extractor",
       "chapter": 3,
-      "automatable": true
+      "automatable": true,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "pure-water",
@@ -843,7 +1084,9 @@
       "seconds": 12,
       "station": "condenser",
       "chapter": 3,
-      "automatable": true
+      "automatable": true,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "precision",
@@ -862,7 +1105,9 @@
       "seconds": 14,
       "station": "assembler",
       "chapter": 3,
-      "automatable": true
+      "automatable": true,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "charged-crystal",
@@ -881,7 +1126,9 @@
       "seconds": 16,
       "station": "assembler",
       "chapter": 3,
-      "automatable": true
+      "automatable": true,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "sawn-plank",
@@ -898,7 +1145,9 @@
       "seconds": 8,
       "station": "sawmill",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "turned-gear",
@@ -915,7 +1164,9 @@
       "seconds": 12,
       "station": "lathe",
       "chapter": 2,
-      "automatable": true
+      "automatable": true,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "woven-rope",
@@ -932,7 +1183,9 @@
       "seconds": 10,
       "station": "loom",
       "chapter": 2,
-      "automatable": true
+      "automatable": true,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "carbonize",
@@ -949,7 +1202,9 @@
       "seconds": 12,
       "station": "kiln",
       "chapter": 1,
-      "automatable": true
+      "automatable": true,
+      "tier": 1,
+      "power": 0
     },
     {
       "id": "pick",
@@ -968,7 +1223,9 @@
       "seconds": 16,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "rod",
@@ -987,7 +1244,9 @@
       "seconds": 16,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "axe",
@@ -1005,7 +1264,9 @@
       "seconds": 16,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "drill",
@@ -1025,7 +1286,9 @@
       "seconds": 16,
       "station": "assembler",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "fishing-rig",
@@ -1045,7 +1308,9 @@
       "seconds": 16,
       "station": "assembler",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "logging-rig",
@@ -1064,7 +1329,9 @@
       "seconds": 16,
       "station": "assembler",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "crate",
@@ -1082,7 +1349,9 @@
       "seconds": 10,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "field-lantern",
@@ -1101,7 +1370,9 @@
       "seconds": 20,
       "station": "bench",
       "chapter": 1,
-      "automatable": false
+      "automatable": false,
+      "tier": 2,
+      "power": 0
     },
     {
       "id": "safety-key",
@@ -1120,7 +1391,9 @@
       "seconds": 20,
       "station": "press",
       "chapter": 2,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "sluice-handle",
@@ -1139,7 +1412,9 @@
       "seconds": 20,
       "station": "lathe",
       "chapter": 3,
-      "automatable": false
+      "automatable": false,
+      "tier": 3,
+      "power": 0
     },
     {
       "id": "survey-compass",
@@ -1158,7 +1433,9 @@
       "seconds": 20,
       "station": "assembler",
       "chapter": 4,
-      "automatable": false
+      "automatable": false,
+      "tier": 4,
+      "power": 0
     },
     {
       "id": "nameplate",
@@ -1177,7 +1454,9 @@
       "seconds": 20,
       "station": "assembler",
       "chapter": 5,
-      "automatable": false
+      "automatable": false,
+      "tier": 4,
+      "power": 0
     },
     {
       "id": "relay-lamp",
@@ -1196,7 +1475,9 @@
       "seconds": 20,
       "station": "assembler",
       "chapter": 6,
-      "automatable": false
+      "automatable": false,
+      "tier": 4,
+      "power": 0
     },
     {
       "id": "resonance-core",
@@ -1215,7 +1496,415 @@
       "seconds": 20,
       "station": "assembler",
       "chapter": 7,
-      "automatable": false
+      "automatable": false,
+      "tier": 5,
+      "power": 0
+    },
+    {
+      "id": "wick-generator",
+      "name": {
+        "ja": "灯芯炉",
+        "en": "Wick Hearth"
+      },
+      "inputs": {
+        "brick": 4,
+        "copper-ingot": 3,
+        "gear": 2,
+        "rope": 2
+      },
+      "outputs": {
+        "wick-generator": 1
+      },
+      "seconds": 18,
+      "station": "bench",
+      "chapter": 2,
+      "automatable": false,
+      "tier": 2,
+      "power": 0
+    },
+    {
+      "id": "light-reservoir",
+      "name": {
+        "ja": "蓄灯槽",
+        "en": "Light Reservoir"
+      },
+      "inputs": {
+        "charged-crystal": 2,
+        "glass": 4,
+        "wire": 5
+      },
+      "outputs": {
+        "light-reservoir": 1
+      },
+      "seconds": 24,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false,
+      "tier": 3,
+      "power": 0
+    },
+    {
+      "id": "moon-waterwheel",
+      "name": {
+        "ja": "月下の水車",
+        "en": "Moonlit Waterwheel"
+      },
+      "inputs": {
+        "plate": 5,
+        "gear": 4,
+        "rope": 3,
+        "pure-water": 4
+      },
+      "outputs": {
+        "moon-waterwheel": 1
+      },
+      "seconds": 32,
+      "station": "lathe",
+      "chapter": 3,
+      "automatable": false,
+      "tier": 3,
+      "power": 0
+    },
+    {
+      "id": "resonant-circuit",
+      "name": {
+        "ja": "共鳴回路",
+        "en": "Resonant Circuit"
+      },
+      "inputs": {
+        "precision": 2,
+        "charged-crystal": 1,
+        "wire": 3
+      },
+      "outputs": {
+        "resonant-circuit": 2
+      },
+      "seconds": 20,
+      "station": "assembler",
+      "chapter": 4,
+      "automatable": true,
+      "tier": 4,
+      "power": 3
+    },
+    {
+      "id": "luminous-alloy",
+      "name": {
+        "ja": "導灯合金",
+        "en": "Light-Conducting Alloy"
+      },
+      "inputs": {
+        "iron": 3,
+        "copper-ingot": 2,
+        "charged-crystal": 1
+      },
+      "outputs": {
+        "luminous-alloy": 3
+      },
+      "seconds": 24,
+      "station": "assembler",
+      "chapter": 4,
+      "automatable": true,
+      "tier": 4,
+      "power": 3
+    },
+    {
+      "id": "resonance-assembler",
+      "name": {
+        "ja": "共鳴組立機",
+        "en": "Resonance Assembler"
+      },
+      "inputs": {
+        "resonant-circuit": 3,
+        "luminous-alloy": 4,
+        "precision": 3
+      },
+      "outputs": {
+        "resonance-assembler": 1
+      },
+      "seconds": 30,
+      "station": "assembler",
+      "chapter": 4,
+      "automatable": false,
+      "tier": 4,
+      "power": 4
+    },
+    {
+      "id": "star-circuit",
+      "name": {
+        "ja": "星紋回路",
+        "en": "Star-Sigil Circuit"
+      },
+      "inputs": {
+        "resonant-circuit": 3,
+        "luminous-alloy": 2,
+        "charged-crystal": 2
+      },
+      "outputs": {
+        "star-circuit": 2
+      },
+      "seconds": 30,
+      "station": "resonance-assembler",
+      "chapter": 5,
+      "automatable": true,
+      "tier": 5,
+      "power": 5
+    },
+    {
+      "id": "lunar-reactor",
+      "name": {
+        "ja": "月光共鳴炉",
+        "en": "Moonlight Resonator"
+      },
+      "inputs": {
+        "star-circuit": 2,
+        "luminous-alloy": 5,
+        "precision": 4
+      },
+      "outputs": {
+        "lunar-reactor": 1
+      },
+      "seconds": 36,
+      "station": "resonance-assembler",
+      "chapter": 5,
+      "automatable": false,
+      "tier": 5,
+      "power": 5
+    },
+    {
+      "id": "star-assembler",
+      "name": {
+        "ja": "星灯工作機",
+        "en": "Starlight Fabricator"
+      },
+      "inputs": {
+        "star-circuit": 3,
+        "resonant-circuit": 4,
+        "luminous-alloy": 4
+      },
+      "outputs": {
+        "star-assembler": 1
+      },
+      "seconds": 36,
+      "station": "resonance-assembler",
+      "chapter": 5,
+      "automatable": false,
+      "tier": 5,
+      "power": 5
+    },
+    {
+      "id": "autonomous-core",
+      "name": {
+        "ja": "自律核",
+        "en": "Autonomous Core"
+      },
+      "inputs": {
+        "star-circuit": 3,
+        "resonant-circuit": 2,
+        "precision": 3,
+        "oil": 2
+      },
+      "outputs": {
+        "autonomous-core": 1
+      },
+      "seconds": 40,
+      "station": "star-assembler",
+      "chapter": 6,
+      "automatable": true,
+      "tier": 5,
+      "power": 8
+    },
+    {
+      "id": "resonance-drill",
+      "name": {
+        "ja": "共鳴式採掘機",
+        "en": "Resonant Drill"
+      },
+      "inputs": {
+        "drill": 1,
+        "resonant-circuit": 3,
+        "luminous-alloy": 4,
+        "oil": 3
+      },
+      "outputs": {
+        "resonance-drill": 1
+      },
+      "seconds": 30,
+      "station": "resonance-assembler",
+      "chapter": 4,
+      "automatable": false,
+      "tier": 4,
+      "power": 4
+    },
+    {
+      "id": "resonance-fishing",
+      "name": {
+        "ja": "共鳴式巻上具",
+        "en": "Resonant Fishing Rig"
+      },
+      "inputs": {
+        "fishing-rig": 1,
+        "resonant-circuit": 3,
+        "luminous-alloy": 4,
+        "oil": 3
+      },
+      "outputs": {
+        "resonance-fishing": 1
+      },
+      "seconds": 30,
+      "station": "resonance-assembler",
+      "chapter": 4,
+      "automatable": false,
+      "tier": 4,
+      "power": 4
+    },
+    {
+      "id": "resonance-saw",
+      "name": {
+        "ja": "共鳴式機械鋸",
+        "en": "Resonant Saw"
+      },
+      "inputs": {
+        "logging-rig": 1,
+        "resonant-circuit": 3,
+        "luminous-alloy": 4,
+        "oil": 3
+      },
+      "outputs": {
+        "resonance-saw": 1
+      },
+      "seconds": 30,
+      "station": "resonance-assembler",
+      "chapter": 4,
+      "automatable": false,
+      "tier": 4,
+      "power": 4
+    },
+    {
+      "id": "autonomous-drill",
+      "name": {
+        "ja": "自律採掘機",
+        "en": "Autonomous Drill"
+      },
+      "inputs": {
+        "resonance-drill": 1,
+        "autonomous-core": 2,
+        "star-circuit": 3,
+        "sealant": 3
+      },
+      "outputs": {
+        "autonomous-drill": 1
+      },
+      "seconds": 40,
+      "station": "star-assembler",
+      "chapter": 6,
+      "automatable": false,
+      "tier": 5,
+      "power": 8
+    },
+    {
+      "id": "autonomous-fishing",
+      "name": {
+        "ja": "自律釣り装置",
+        "en": "Autonomous Fishing Rig"
+      },
+      "inputs": {
+        "resonance-fishing": 1,
+        "autonomous-core": 2,
+        "star-circuit": 3,
+        "sealant": 3
+      },
+      "outputs": {
+        "autonomous-fishing": 1
+      },
+      "seconds": 40,
+      "station": "star-assembler",
+      "chapter": 6,
+      "automatable": false,
+      "tier": 5,
+      "power": 8
+    },
+    {
+      "id": "autonomous-saw",
+      "name": {
+        "ja": "自律伐採機",
+        "en": "Autonomous Logging Rig"
+      },
+      "inputs": {
+        "resonance-saw": 1,
+        "autonomous-core": 2,
+        "star-circuit": 3,
+        "sealant": 3
+      },
+      "outputs": {
+        "autonomous-saw": 1
+      },
+      "seconds": 40,
+      "station": "star-assembler",
+      "chapter": 6,
+      "automatable": false,
+      "tier": 5,
+      "power": 8
+    },
+    {
+      "id": "light-sawn-plank",
+      "name": {
+        "ja": "灯力製材",
+        "en": "Light-Powered Sawing"
+      },
+      "tier": 2,
+      "chapter": 2,
+      "station": "sawmill",
+      "inputs": {
+        "timber": 1
+      },
+      "outputs": {
+        "plank": 6
+      },
+      "seconds": 6,
+      "power": 1,
+      "automatable": true
+    },
+    {
+      "id": "light-precision",
+      "name": {
+        "ja": "灯力精密加工",
+        "en": "Light-Powered Precision"
+      },
+      "tier": 3,
+      "chapter": 3,
+      "station": "assembler",
+      "inputs": {
+        "plate": 1,
+        "gear": 1,
+        "wire": 2
+      },
+      "outputs": {
+        "precision": 4
+      },
+      "seconds": 12,
+      "power": 2,
+      "automatable": true
+    },
+    {
+      "id": "light-crystal",
+      "name": {
+        "ja": "灯力結晶加工",
+        "en": "Light-Powered Crystallizing"
+      },
+      "tier": 3,
+      "chapter": 3,
+      "station": "assembler",
+      "inputs": {
+        "crystal": 1,
+        "wire": 2,
+        "pure-water": 1
+      },
+      "outputs": {
+        "charged-crystal": 4
+      },
+      "seconds": 16,
+      "power": 2,
+      "automatable": true
     }
   ],
   "bonuses": {
@@ -1242,6 +1931,30 @@
     "logging-rig": {
       "category": "logging",
       "bonus": 0.75
+    },
+    "resonance-drill": {
+      "category": "mining",
+      "bonus": 1.5
+    },
+    "resonance-fishing": {
+      "category": "fishing",
+      "bonus": 1.5
+    },
+    "resonance-saw": {
+      "category": "logging",
+      "bonus": 1.5
+    },
+    "autonomous-drill": {
+      "category": "mining",
+      "bonus": 2.5
+    },
+    "autonomous-fishing": {
+      "category": "fishing",
+      "bonus": 2.5
+    },
+    "autonomous-saw": {
+      "category": "logging",
+      "bonus": 2.5
     }
   },
   "storyTools": {
@@ -1306,6 +2019,82 @@
         "stone": 4,
         "silica": 5,
         "clay": 3
+      }
+    }
+  ],
+  "power": {
+    "baseCapacity": 200,
+    "storage": {
+      "light-reservoir": 1000
+    },
+    "generators": {
+      "wick-generator": {
+        "output": 3,
+        "fuel": {
+          "itemId": "charcoal",
+          "count": 1,
+          "seconds": 30
+        },
+        "flavor": {
+          "ja": "木炭の火を、工房を動かす灯力へ変える。満蓄時は燃焼を休める。",
+          "en": "Turns charcoal embers into workshop light. Pauses combustion when storage is full."
+        }
+      },
+      "moon-waterwheel": {
+        "output": 2,
+        "flavor": {
+          "ja": "月明かりの水路を回る水車。燃料を使わず、少しずつ灯力を生む。",
+          "en": "A wheel in a moonlit channel. Slowly generates light without fuel."
+        }
+      },
+      "lunar-reactor": {
+        "output": 12,
+        "fuel": {
+          "itemId": "charged-crystal",
+          "count": 1,
+          "seconds": 60
+        },
+        "flavor": {
+          "ja": "蓄光結晶を共鳴させ、大きな灯力を取り出す。",
+          "en": "Resonates charged crystals to release a strong flow of light."
+        }
+      }
+    }
+  },
+  "tiers": [
+    {
+      "level": 1,
+      "name": {
+        "ja": "手仕事",
+        "en": "Handcraft"
+      }
+    },
+    {
+      "level": 2,
+      "name": {
+        "ja": "機械加工",
+        "en": "Mechanical Processing"
+      }
+    },
+    {
+      "level": 3,
+      "name": {
+        "ja": "精密加工",
+        "en": "Precision Processing"
+      }
+    },
+    {
+      "level": 4,
+      "name": {
+        "ja": "共鳴加工",
+        "en": "Resonant Processing"
+      }
+    },
+    {
+      "level": 5,
+      "name": {
+        "ja": "星灯と自律",
+        "en": "Starlight and Automation"
       }
     }
   ]

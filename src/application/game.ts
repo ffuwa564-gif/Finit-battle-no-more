@@ -103,7 +103,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.battle) delete save.battle.omens;
   if(save.worldStory?.active && !['worldTalkNext','worldTalkBack','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
-    case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);applyIndustry(save,command,publicContent,context.now??Date.now());break;}
+    case 'industryPower': case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);applyIndustry(save,command,publicContent,context.now??Date.now());break;}
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
     case 'worldTravel': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
