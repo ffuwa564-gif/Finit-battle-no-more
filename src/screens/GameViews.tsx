@@ -1,3 +1,4 @@
+import { gemDefinitionForSkill } from '../domain/memory-gems';
 import { dungeonHash, readDungeonDestination, type DungeonPanel } from '../application/dungeon-navigation';
 import { IndustryWorkshop, IndustryDungeonResources } from '../ui';
 import { FieldSkillChoice } from '../ui';
@@ -23,7 +24,7 @@ import { dungeonStoneReward } from '../domain/rewards';
 import { gachaPity, gachaCollections, flowerGacha, introductoryGuarantee, sharedGoddessIds, sharedSSRIds, gachaBaseChance, gachaPoolIds } from '../content/gacha';
 import { useEffect, useState } from 'react';
 import { ArrowRight, Factory, Backpack, BookOpen, ChevronRight, CircleHelp, Compass, Crown, Heart, Hexagon, Moon, Plus, Shield, Sparkles, Swords, Users, Volume2, VolumeX, WandSparkles, FlaskConical, Check, FastForward, Play, Package, Settings, Feather, Link2, Unlink } from 'lucide-react';
-import { MedalTree, GemPolishing, WorldMap, BuildPlanner, BuildGoalSummary, IvoryTower, InventorySection, MemoryGems, MemoryGemFind, MemoryGemSource, MemoryGemSummary, PartyCommandDial, CompanionChoice, LivingBattleFrame, SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
+import { MedalTree, GemPolishing, WorldMap, BuildPlanner, BuildGoalSummary, IvoryTower, InventorySection, MemoryGems, MemoryGemFind, MemoryGemSource, MemoryGemSummary, PartyCommandDial, CompanionChoice, LivingBattleFrame, SceneAtmosphere, NovelLibrary, FairyGuideButton, UltimateCutIn, UltimateMeter, XRGacha, Button, Panel, CharacterPortrait, MaterialIcon, HPBar, Modal, MenuEmblem, EnemyCarousel, SceneEffects, TownNavigation, BattleControlPad, StatusFeedback, CombatFeedback, NoticeSurface, GachaShowcase, EventDungeons, CharacterArtwork, AnimatedIllustration, PortraitArt, CurrencyEmblem, UnitEffects, LanguageSwitch, QuickGuide, SaveBackup, BackupExportButton, StoryAwakening, HomeArtwork, GoldExchange } from '../ui';
 import { bgmTracks } from '../platform/bgm';
 import { content as publicContent, initialGacha, assetPath, characterById, materialName, roleName } from '../content';
 import { characterStats, dungeonDifficulty, leaderBonus, recruitCost } from '../domain/engine';
@@ -283,6 +284,7 @@ export function BattleView(p: ViewProps) {
       </div>))}
     </div>
     <CommandDoctrine battle={battle} content={content} busy={p.busy} onOrder={order => { void p.command({ type: 'commandOrder', battleId: battle.id, order }); }} />
+    <StatusFeedback event={event} before={before} impact={impact} round={displayRound} template={content.skills.find(skill => skill.id === event?.skillId)?.template ?? gemDefinitionForSkill(event?.skillId ?? '')?.skill.template} reducedMotion={p.save.settings.reducedMotion} />
     <CombatFeedback event={event} before={before} onImpact={setImpact} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
     <BattleControlPad strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command(battle.phase === 'playing' ? { type: 'replay' } : { type: 'round', battleId: battle.id, targetId: commandTargetId }); }}

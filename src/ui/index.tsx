@@ -214,3 +214,5 @@ export { WorldConversation } from './WorldConversation';
 export { WorldIncidentBanner, WorldIncidentNotice } from './WorldIncident';
 
 export { IndustryWorkshop, IndustryDungeonResources } from './IndustryWorkshop';
+
+export { StatusFeedback } from './StatusFeedback';
