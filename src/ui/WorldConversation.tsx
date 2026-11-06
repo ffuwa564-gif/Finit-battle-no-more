@@ -52,12 +52,13 @@ export function WorldConversation({ save, content, busy, command }: {
       <Button variant="secondary" size="sm" disabled={busy} aria-label={tr('会話を閉じる')} onClick={() => command({ type: 'worldTalkClose' })}><X size={15} /></Button>
     </>}>
       <div className="novel-message world-conversation__line" data-world-node={node.id} data-world-line={a.line}>
+        {a.recall&&<small className="world-conversation__recall">{tr('引き継いだ章の読み返し')}</small>}
         <strong className="novel-speaker" aria-live="polite">{name(line.speaker)}</strong>
         <Button className="novel-dialogue" sound={false} disabled={busy || choosing} onClick={advance} aria-label={tr('台詞を進める')} aria-describedby="world-novel-text"><span id="world-novel-text" className="novel-text" key={`${node.id}:${a.line}`} aria-live="polite">{words(line)}</span><span className="novel-cursor" aria-hidden="true">◇</span></Button>
         <footer className="novel-footer">
           <Button variant="secondary" size="sm" disabled={busy || a.line === 0} onClick={() => command({ type: 'worldTalkBack' })}><ArrowLeft size={15} />{tr('前の台詞')}</Button>
           <span>{a.line + 1} / {lines.length}</span>
-          {!choosing && <Button size="sm" disabled={busy} onClick={advance}>{tr(last ? '地図へ戻る' : '次の台詞')}<ArrowRight size={15} /></Button>}
+          {!choosing && <Button size="sm" disabled={busy} onClick={advance}>{tr(last ? a.recall ? '勲章へ戻る' : '地図へ戻る' : '次の台詞')}<ArrowRight size={15} /></Button>}
           {choosing && <div className="world-conversation__choices">{node.choices!.map(choice => <Button key={choice.id} disabled={busy} variant="secondary" onClick={() => command({ type: 'worldTalkChoice', choiceId: choice.id })}>{text(choice.label)}</Button>)}</div>}
         </footer>
       </div>
