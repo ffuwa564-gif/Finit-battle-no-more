@@ -26,6 +26,7 @@ for (const selector of ['.world-pin', '.world-person']) {
       await page.getByRole('dialog').locator('.world-index-place').first().click();
     }
     const target = selector === '.world-pin' ? page.locator('.world-pin.is-selected') : pin;
+    await target.click({ trial: true });
     const before = (await target.boundingBox())!;
     const x = before.x + before.width / 2, y = before.y + before.height / 2;
     expect(y).toBeGreaterThan(80);
