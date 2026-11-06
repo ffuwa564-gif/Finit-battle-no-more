@@ -76,6 +76,7 @@ for (const [file, functionName] of [['src/screens/GameViews.tsx', 'BagView'], ['
 for (const file of walk('src').filter(path => /\.tsx?$/.test(path))) {
   const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, file.endsWith('.tsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
   const visit = (node: ts.Node) => {
+    if (ts.isNewExpression(node) && file !== 'src/platform/audio-context.ts' && /^(?:window\.)?(?:webkit)?AudioContext$/.test(node.expression.getText(source))) report(file, node, source, 'Use acquireGameAudioContext; native device clocks must be shared by music and effects.');
     if (file !== 'src/ui/GamePortal.tsx' && ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier) && node.moduleSpecifier.text === 'react-dom') report(file, node, source, 'Use createGamePortal; raw portals bypass the shared native-interaction surface.');
     if (file !== 'src/ui/GamePortal.tsx' && ts.isCallExpression(node) && (ts.isIdentifier(node.expression) && node.expression.text === 'createPortal' || ts.isPropertyAccessExpression(node.expression) && node.expression.name.text === 'createPortal')) report(file, node, source, 'Raw portals are forbidden; use createGamePortal.');
     if (file !== 'src/ui/GameMedia.tsx' && (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) && ['img', 'video'].includes(node.tagName.getText(source))) report(file, node, source, 'Use GameImage/GameVideo; native artwork must not own hold gestures.');

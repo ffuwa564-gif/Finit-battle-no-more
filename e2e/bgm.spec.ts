@@ -45,9 +45,8 @@ test('BGM unlocks on interaction, switches with exploration, and remembers indep
   await expect(music).toHaveJSProperty('volume', 0.125);
   await expect(music).toHaveJSProperty('paused', false);
   await page.getByRole('navigation', { name: 'モバイルメニュー', exact: true }).getByRole('button', { name: 'ダンジョン', exact: true }).click();
-  await page.getByRole('button', { name: '探索地点の一覧', exact: true }).click();
-  await page.getByRole('button', { name: 'すべての探索を一覧で見る', exact: true }).click();
-  await page.getByRole('button', { name: '探索の準備' }).first().click();
+  await page.evaluate(() => { location.hash = 'dungeons/prepare/silent-cathedral'; });
+  await expect(page.getByRole('dialog', { name: '忘却の聖堂', exact: true })).toBeVisible();
   await page.getByRole('button', { name: '探索を始める' }).click();
   await expect(music).toHaveAttribute('data-scene', 'normalBattle');
   await expect(music).toHaveAttribute('src', /audio\/fjordnosundakaze.mp3$/);
