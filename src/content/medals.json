@@ -32,6 +32,22 @@
         "en": "Companions"
       },
       "icon": "heart"
+    },
+    {
+      "id": "story",
+      "name": {
+        "ja": "物語",
+        "en": "Story"
+      },
+      "icon": "moon"
+    },
+    {
+      "id": "gems",
+      "name": {
+        "ja": "記憶石",
+        "en": "Memory Stones"
+      },
+      "icon": "sparkles"
     }
   ],
   "medals": [
@@ -962,6 +978,801 @@
       "icon": "heart",
       "action": {
         "kind": "recruit"
+      }
+    },
+    {
+      "id": "craft-five",
+      "branch": "craft",
+      "rank": 6,
+      "column": 0,
+      "parents": [
+        "craft-autonomous"
+      ],
+      "name": {
+        "ja": "工房の輪郭",
+        "en": "A Workshop Takes Shape"
+      },
+      "condition": {
+        "kind": "installed",
+        "itemIds": [
+          "bench",
+          "furnace",
+          "kiln",
+          "sawmill",
+          "press",
+          "lathe",
+          "wire-drawer",
+          "loom",
+          "extractor",
+          "condenser",
+          "assembler",
+          "wick-generator",
+          "light-reservoir",
+          "moon-waterwheel",
+          "resonance-assembler",
+          "lunar-reactor",
+          "star-assembler"
+        ],
+        "amount": 5
+      },
+      "description": {
+        "ja": "設備を同時に5台設置する。",
+        "en": "Have five machines installed at once."
+      },
+      "flavor": {
+        "ja": "机の上だけでは、収まらなくなった。",
+        "en": "Your work no longer fits on one table."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "bench"
+      }
+    },
+    {
+      "id": "craft-trio",
+      "branch": "craft",
+      "rank": 6,
+      "column": 2,
+      "parents": [
+        "craft-autonomous"
+      ],
+      "name": {
+        "ja": "三つの仕事仲間",
+        "en": "Three Helpers"
+      },
+      "condition": {
+        "kind": "craftedKinds",
+        "itemIds": [
+          "autonomous-drill",
+          "autonomous-fishing",
+          "autonomous-saw"
+        ],
+        "amount": 3
+      },
+      "description": {
+        "ja": "自律式の採掘・釣り・伐採道具を、それぞれ1つ以上製作する。",
+        "en": "Craft at least one autonomous mining, fishing and logging tool."
+      },
+      "flavor": {
+        "ja": "明日の荷造りが、少し楽しみになった。",
+        "en": "Packing for tomorrow is a little more exciting."
+      },
+      "icon": "hammer",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "autonomous-saw"
+      }
+    },
+    {
+      "id": "craft-network",
+      "branch": "craft",
+      "rank": 7,
+      "column": 0,
+      "parents": [
+        "craft-five"
+      ],
+      "name": {
+        "ja": "灯りを絶やさず",
+        "en": "Keep the Lights On"
+      },
+      "condition": {
+        "kind": "installed",
+        "itemIds": [
+          "wick-generator",
+          "moon-waterwheel",
+          "lunar-reactor"
+        ],
+        "amount": 3
+      },
+      "description": {
+        "ja": "発灯設備を同時に3台設置する。",
+        "en": "Have three light generators installed at once."
+      },
+      "flavor": {
+        "ja": "誰かが帰る時間まで、灯しておこう。",
+        "en": "Keep a light on until everyone returns."
+      },
+      "icon": "flame",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "moon-waterwheel"
+      }
+    },
+    {
+      "id": "craft-hundred-thousand",
+      "branch": "craft",
+      "rank": 8,
+      "column": 0,
+      "parents": [
+        "craft-network"
+      ],
+      "name": {
+        "ja": "十万の灯",
+        "en": "A Hundred Thousand Lights"
+      },
+      "condition": {
+        "kind": "power",
+        "metric": "generated",
+        "amount": 100000
+      },
+      "description": {
+        "ja": "灯力網へ合計100,000L供給する。",
+        "en": "Supply a total of 100,000 L to the light network."
+      },
+      "flavor": {
+        "ja": "灯りを作る手つきが、日々の暮らしになった。",
+        "en": "Keeping the lights on has become a way of life."
+      },
+      "icon": "flame",
+      "action": {
+        "kind": "workshop",
+        "recipeId": "lunar-reactor"
+      }
+    },
+    {
+      "id": "explore-fifty",
+      "branch": "explore",
+      "rank": 5,
+      "column": 2,
+      "parents": [
+        "explore-thirty"
+      ],
+      "name": {
+        "ja": "半天の眺め",
+        "en": "Halfway to the Sky"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 50
+      },
+      "description": {
+        "ja": "白亜の塔の第50層を踏破する。",
+        "en": "Clear floor 50 of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "まだ先があると思って、ここまで来た。",
+        "en": "You kept climbing, knowing there was more."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-050"
+      }
+    },
+    {
+      "id": "explore-seventy-five",
+      "branch": "explore",
+      "rank": 6,
+      "column": 2,
+      "parents": [
+        "explore-fifty"
+      ],
+      "name": {
+        "ja": "七十五の段差",
+        "en": "Seventy-Five Steps"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 75
+      },
+      "description": {
+        "ja": "白亜の塔の第75層を踏破する。",
+        "en": "Clear floor 75 of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "まだ先があると思って、ここまで来た。",
+        "en": "You kept climbing, knowing there was more."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-075"
+      }
+    },
+    {
+      "id": "explore-hundred",
+      "branch": "explore",
+      "rank": 7,
+      "column": 2,
+      "parents": [
+        "explore-seventy-five"
+      ],
+      "name": {
+        "ja": "白亜の頂",
+        "en": "The Ivory Summit"
+      },
+      "condition": {
+        "kind": "tower",
+        "amount": 100
+      },
+      "description": {
+        "ja": "白亜の塔の第100層を踏破する。",
+        "en": "Clear floor 100 of the Ivory Tower."
+      },
+      "flavor": {
+        "ja": "一番高い場所にも、帰り道はある。",
+        "en": "Even the highest place has a way home."
+      },
+      "icon": "tower",
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "ivory-tower-100"
+      }
+    },
+    {
+      "id": "companions-twenty-four",
+      "branch": "companions",
+      "rank": 5,
+      "column": 1,
+      "parents": [
+        "companions-twelve"
+      ],
+      "name": {
+        "ja": "庭に重なる声",
+        "en": "Voices in the Garden"
+      },
+      "condition": {
+        "kind": "owned",
+        "amount": 24
+      },
+      "description": {
+        "ja": "仲間を24人迎える。",
+        "en": "Welcome 24 companions."
+      },
+      "flavor": {
+        "ja": "名前の数だけ、聞きたい話がある。",
+        "en": "Every name is another story you want to hear."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "recruit"
+      }
+    },
+    {
+      "id": "companions-forty-eight",
+      "branch": "companions",
+      "rank": 6,
+      "column": 1,
+      "parents": [
+        "companions-twenty-four"
+      ],
+      "name": {
+        "ja": "ひとりひとりの居場所",
+        "en": "A Place for Everyone"
+      },
+      "condition": {
+        "kind": "owned",
+        "amount": 48
+      },
+      "description": {
+        "ja": "仲間を48人迎える。",
+        "en": "Welcome 48 companions."
+      },
+      "flavor": {
+        "ja": "名前の数だけ、聞きたい話がある。",
+        "en": "Every name is another story you want to hear."
+      },
+      "icon": "heart",
+      "action": {
+        "kind": "recruit"
+      }
+    },
+    {
+      "id": "tactics-six",
+      "branch": "tactics",
+      "rank": 4,
+      "column": 1,
+      "parents": [
+        "tactics-clock"
+      ],
+      "name": {
+        "ja": "戦術の引き出し",
+        "en": "More Than One Answer"
+      },
+      "condition": {
+        "kind": "featCount",
+        "amount": 6
+      },
+      "description": {
+        "ja": "連携・仲間の活躍など、戦闘実績を6種類記録する。",
+        "en": "Record 6 different combat feats, including teamwork and companion achievements."
+      },
+      "flavor": {
+        "ja": "同じ四人でも、選べる答えはひとつじゃない。",
+        "en": "Even the same four companions have more than one answer."
+      },
+      "icon": "swords",
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "tactics-twelve",
+      "branch": "tactics",
+      "rank": 5,
+      "column": 1,
+      "parents": [
+        "tactics-six"
+      ],
+      "name": {
+        "ja": "十二の答え",
+        "en": "Twelve Answers"
+      },
+      "condition": {
+        "kind": "featCount",
+        "amount": 12
+      },
+      "description": {
+        "ja": "連携・仲間の活躍など、戦闘実績を12種類記録する。",
+        "en": "Record 12 different combat feats, including teamwork and companion achievements."
+      },
+      "flavor": {
+        "ja": "同じ四人でも、選べる答えはひとつじゃない。",
+        "en": "Even the same four companions have more than one answer."
+      },
+      "icon": "swords",
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "story-garden",
+      "branch": "story",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "朝の庭で",
+        "en": "A Morning in the Garden"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c1-return"
+      },
+      "description": {
+        "ja": "物語「翌朝の庭園」を読み終える。",
+        "en": "Finish the conversation “The Garden Next Morning”."
+      },
+      "flavor": {
+        "ja": "帰ってきたことを、誰かが知っている。",
+        "en": "Someone knows you made it home."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "story-tea",
+      "branch": "story",
+      "rank": 1,
+      "column": 1,
+      "parents": [
+        "story-garden"
+      ],
+      "name": {
+        "ja": "もうひとつの茶碗",
+        "en": "Another Cup"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c2-tea"
+      },
+      "description": {
+        "ja": "物語「今日は、こっちで食べない？」を読み終える。",
+        "en": "Finish the conversation “Will you eat here today?”."
+      },
+      "flavor": {
+        "ja": "座る場所を、空けておいてくれた。",
+        "en": "She made room for you to sit."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "broken-girl",
+      "branch": "story",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "story-tea"
+      ],
+      "name": {
+        "ja": "壊れた彼女",
+        "en": "The Broken Girl"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c2-after"
+      },
+      "description": {
+        "ja": "物語「今日は眠っています」を読み終える。",
+        "en": "Finish the conversation “She is asleep today”."
+      },
+      "flavor": {
+        "ja": "私を忘れても。明日も、お茶を持っていく。",
+        "en": "Even if she forgets me, I will bring tea again tomorrow."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      },
+      "secret": true
+    },
+    {
+      "id": "story-morning",
+      "branch": "story",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "story-tea"
+      ],
+      "name": {
+        "ja": "朝になったよ",
+        "en": "Morning Has Come"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c3-morning"
+      },
+      "description": {
+        "ja": "物語「朝になったよ」を読み終える。",
+        "en": "Finish the conversation “Morning has come”."
+      },
+      "flavor": {
+        "ja": "眠れなかった夜にも、終わりがあった。",
+        "en": "Even a sleepless night came to an end."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "story-hand",
+      "branch": "story",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "story-morning"
+      ],
+      "name": {
+        "ja": "石より、先に",
+        "en": "A Hand Before a Stone"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c4-retreat"
+      },
+      "description": {
+        "ja": "物語「石より、先に手を」を読み終える。",
+        "en": "Finish the conversation “Your hand, before the stone”."
+      },
+      "flavor": {
+        "ja": "欲しかったものより、先に伸ばした手。",
+        "en": "A hand reached out before a wish could."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "story-homeward",
+      "branch": "story",
+      "rank": 4,
+      "column": 2,
+      "parents": [
+        "story-hand"
+      ],
+      "name": {
+        "ja": "彼女の行き先",
+        "en": "Her Own Destination"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c5-finish"
+      },
+      "description": {
+        "ja": "物語「帰還便が動きました」を読み終える。",
+        "en": "Finish the conversation “The carriage is moving again”."
+      },
+      "flavor": {
+        "ja": "帰る場所は、自分で選んでいい。",
+        "en": "She can choose where to go home."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "story-breakfast",
+      "branch": "story",
+      "rank": 5,
+      "column": 2,
+      "parents": [
+        "story-homeward"
+      ],
+      "name": {
+        "ja": "隣の席",
+        "en": "The Seat Beside You"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c6-breakfast"
+      },
+      "description": {
+        "ja": "物語「朝食、誰の隣にする？」を読み終える。",
+        "en": "Finish the conversation “Who will you sit beside?”."
+      },
+      "flavor": {
+        "ja": "いつもの朝を、誰の隣で迎えよう。",
+        "en": "Who will share this ordinary morning?"
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "story-window",
+      "branch": "story",
+      "rank": 5,
+      "column": 0,
+      "parents": [
+        "broken-girl"
+      ],
+      "name": {
+        "ja": "また、窓辺で",
+        "en": "By the Window Again"
+      },
+      "condition": {
+        "kind": "story",
+        "nodeId": "c7-door"
+      },
+      "description": {
+        "ja": "物語「戸を押さえてくれる？」を読み終える。",
+        "en": "Finish the conversation “Would you hold the door?”."
+      },
+      "flavor": {
+        "ja": "思い出せないこともある。それでも、今日は一緒に。",
+        "en": "Some things are still forgotten. Today, we can still be together."
+      },
+      "icon": "moon",
+      "action": {
+        "kind": "map"
+      },
+      "secret": true
+    },
+    {
+      "id": "gems-first",
+      "branch": "gems",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "掌の記憶",
+        "en": "A Memory in Your Palm"
+      },
+      "condition": {
+        "kind": "gemTier",
+        "tier": 1,
+        "amount": 1
+      },
+      "description": {
+        "ja": "研磨・製作などで、装備できる記憶石を1個手に入れる。",
+        "en": "Obtain one polished, equippable memory stone."
+      },
+      "flavor": {
+        "ja": "小さな石にも、旅の続きが眠っている。",
+        "en": "Even a small stone holds another journey."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-three",
+      "branch": "gems",
+      "rank": 1,
+      "column": 1,
+      "parents": [
+        "gems-first"
+      ],
+      "name": {
+        "ja": "磨きはじめの輝き",
+        "en": "A Glimmer of Potential"
+      },
+      "condition": {
+        "kind": "gemTier",
+        "tier": 3,
+        "amount": 1
+      },
+      "description": {
+        "ja": "T3以上の記憶石を1個手に入れる。",
+        "en": "Obtain a memory stone of Tier 3 or higher."
+      },
+      "flavor": {
+        "ja": "誰に託そうか。考える時間も楽しい。",
+        "en": "Choosing who will carry it is part of the joy."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-families",
+      "branch": "gems",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "gems-three"
+      ],
+      "name": {
+        "ja": "三つの記憶",
+        "en": "Three Kinds of Memory"
+      },
+      "condition": {
+        "kind": "gemFamilies",
+        "amount": 3
+      },
+      "description": {
+        "ja": "聖域・機巧・黄昏の記憶石を、同時に各1個以上所持する。",
+        "en": "Own at least one Sanctuary, Clockwork and Twilight memory stone at the same time."
+      },
+      "flavor": {
+        "ja": "違う記憶を、同じ旅へ連れていく。",
+        "en": "Bring different memories on the same journey."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-four",
+      "branch": "gems",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "gems-three"
+      ],
+      "name": {
+        "ja": "ひときわの光",
+        "en": "An Uncommon Light"
+      },
+      "condition": {
+        "kind": "gemTier",
+        "tier": 4,
+        "amount": 1
+      },
+      "description": {
+        "ja": "T4以上の記憶石を1個手に入れる。",
+        "en": "Obtain a memory stone of Tier 4 or higher."
+      },
+      "flavor": {
+        "ja": "昨日とは違う組み合わせを、試したくなった。",
+        "en": "You want to try a different combination today."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-types",
+      "branch": "gems",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "gems-families"
+      ],
+      "name": {
+        "ja": "記憶の標本箱",
+        "en": "A Box of Memories"
+      },
+      "condition": {
+        "kind": "gemTypes",
+        "amount": 12
+      },
+      "description": {
+        "ja": "異なる術式の記憶石を12種類、同時に所持する。変種違いは同じ種類として数える。",
+        "en": "Own 12 different memory-stone definitions at once. Variants of one stone count as one type."
+      },
+      "flavor": {
+        "ja": "並べた石のぶんだけ、試したいことがある。",
+        "en": "Every stone is another idea to try."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-five",
+      "branch": "gems",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "gems-four"
+      ],
+      "name": {
+        "ja": "まだ先の輝き",
+        "en": "A Brighter Possibility"
+      },
+      "condition": {
+        "kind": "gemTier",
+        "tier": 5,
+        "amount": 1
+      },
+      "description": {
+        "ja": "T5以上の記憶石を1個手に入れる。",
+        "en": "Obtain a memory stone of Tier 5 or higher."
+      },
+      "flavor": {
+        "ja": "あと少し、届かなかった場所へ。",
+        "en": "For the place you could not quite reach."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-six",
+      "branch": "gems",
+      "rank": 4,
+      "column": 1,
+      "parents": [
+        "gems-families",
+        "gems-five"
+      ],
+      "name": {
+        "ja": "極光を手に",
+        "en": "An Aurora in Your Hands"
+      },
+      "condition": {
+        "kind": "gemTier",
+        "tier": 6,
+        "amount": 1
+      },
+      "description": {
+        "ja": "威力または特性値がT6の記憶石を1個手に入れる。未研磨の原石と未確定の調律候補は含まない。",
+        "en": "Obtain a memory stone with Tier 6 power or trait value. Rough stones and unaccepted refinement candidates do not count."
+      },
+      "flavor": {
+        "ja": "この光を、一緒に歩いた子へ。",
+        "en": "Give this light to someone who walked beside you."
+      },
+      "icon": "sparkles",
+      "action": {
+        "kind": "gems"
       }
     }
   ]

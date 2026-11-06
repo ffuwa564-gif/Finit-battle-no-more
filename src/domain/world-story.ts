@@ -119,6 +119,7 @@ export interface WorldStoryState {
         emergency?: boolean;
         replay: boolean;
         briefing?: boolean;
+        recall?: boolean;
     };
 }
 export const defaultHero: HeroProfile = { name: 'ユイ', voice: 'soft', favorite: 'tea' };
@@ -230,14 +231,15 @@ export function beginStoryTalk(save: GameSave, content: Content, nodeId: string,
     if (!s || !def || !node || s.active)
         throw new Error('今はこの会話を始められません。');
     const replay = s.completed.includes(nodeId);
-    if (!replay && missingStoryTool(save, nodeId)) throw new Error('先に必要な道具を工房で製作してください。');
-    if (!replay && !storyNodeAvailable(node, save, def))
+    const recall = !replay && !node.ambient && s.carriedChapters.includes(node.chapter);
+    if (!replay && !recall && missingStoryTool(save, nodeId)) throw new Error('先に必要な道具を工房で製作してください。');
+    if (!replay && !recall && !storyNodeAvailable(node, save, def))
         throw new Error('まだこの会話は聞けません。');
-    settleStoryArrival(s, now);
+    if (!recall) settleStoryArrival(s, now);
     const hub = def.hubs.find(h => h.id === (node.actorId === 'guest' && s.choices['c5-address'] === 'infirmary' ? 'hub-infirmary' : resolvedStoryNode(node, s).hubId))!;
-    if (!replay && (s.journey || Math.hypot(s.position.x - hub.x, s.position.y - hub.y) > .008))
+    if (!replay && !recall && (s.journey || Math.hypot(s.position.x - hub.x, s.position.y - hub.y) > .008))
         throw new Error('人物のいる場所へ移動してください。');
-    s.active = { nodeId, line: 0, replay, ...(!replay && node.firstVisitLines ? { briefing: true } : {}), ...(node.ambient && activeWorldIncident(save, def) ? { emergency: true } : {}), ...(replay && s.choices[nodeId] ? { choiceId: s.choices[nodeId] } : {}) };
+    s.active = { nodeId, line: 0, replay, ...(recall ? { recall: true } : {}), ...(!replay && !recall && node.firstVisitLines ? { briefing: true } : {}), ...(node.ambient && activeWorldIncident(save, def) ? { emergency: true } : {}), ...(replay && s.choices[nodeId] ? { choiceId: s.choices[nodeId] } : {}) };
 }
 export function advanceStoryTalk(save: GameSave, content: Content, action: 'next' | 'back' | 'finish' | 'close' | 'choice', choiceId?: string): void {
     const s = save.worldStory, active = s?.active, node = content.worldStory?.nodes.find(n => n.id === active?.nodeId);
@@ -268,6 +270,8 @@ export function advanceStoryTalk(save: GameSave, content: Content, action: 'next
     }
     if (active.line !== lines.length - 1 || node.choices?.length && !active.choiceId)
         throw new Error('会話の続きを聞いてください。');
+    // Reading a carried chapter is a memory, not a new decision in the current journey.
+    if (active.recall) { delete s.active; return; }
     if (node.ambient) {
         s.visits ??= {};
         s.visits[node.id] = (s.visits[node.id] ?? 0) + 1;
@@ -291,7 +295,7 @@ export function validWorldStory(v: unknown): v is WorldStoryState {
     const t = parseWorldTravel({ position: v.position, journey: v.journey });
     if (JSON.stringify(t.position) !== JSON.stringify(v.position) || v.journey && JSON.stringify(t.journey) !== JSON.stringify(v.journey))
         return false;
-    if (v.active !== undefined && (!record(v.active) || typeof v.active.nodeId !== 'string' || !Number.isSafeInteger(v.active.line) || Number(v.active.line) < 0 || typeof v.active.replay !== 'boolean' || v.active.briefing !== undefined && typeof v.active.briefing !== 'boolean' || v.active.emergency !== undefined && typeof v.active.emergency !== 'boolean' || v.active.choiceId !== undefined && typeof v.active.choiceId !== 'string'))
+    if (v.active !== undefined && (!record(v.active) || typeof v.active.nodeId !== 'string' || !Number.isSafeInteger(v.active.line) || Number(v.active.line) < 0 || typeof v.active.replay !== 'boolean' || v.active.briefing !== undefined && typeof v.active.briefing !== 'boolean' || v.active.emergency !== undefined && typeof v.active.emergency !== 'boolean' || v.active.recall !== undefined && typeof v.active.recall !== 'boolean' || v.active.choiceId !== undefined && typeof v.active.choiceId !== 'string'))
         return false;
     return true;
 }
@@ -321,8 +325,9 @@ export function validateWorldStorySave(save: GameSave, content: Content): void {
     if (s.active) {
         const a = s.active, n = def.nodes.find(n => n.id === a.nodeId);
         const legacy = n && !a.briefing && def.legacyFirstChapter?.[n.id];
-        const available = n && (storyNodeAvailable(n, save, def) || legacy && storyNodeAvailable({ ...n, ...legacy }, save, def));
-        if (!n || a.briefing && (a.replay || !n.firstVisitLines) || a.emergency && !n.ambient || save.battle || save.novels?.active || a.replay !== s.completed.includes(a.nodeId) || a.choiceId && !n.choices?.some(c => c.id === a.choiceId) || a.line >= nodeLines(n, s).length || !a.replay && !available)
+        const recalled = Boolean(n && a.recall && !a.replay && !a.briefing && !a.emergency && !n.ambient && s.carriedChapters.includes(n.chapter));
+        const available = n && (recalled || storyNodeAvailable(n, save, def) || legacy && storyNodeAvailable({ ...n, ...legacy }, save, def));
+        if (!n || a.recall && !recalled || a.briefing && (a.replay || !n.firstVisitLines) || a.emergency && !n.ambient || save.battle || save.novels?.active || a.replay !== s.completed.includes(a.nodeId) || a.choiceId && !n.choices?.some(c => c.id === a.choiceId) || a.line >= nodeLines(n, s).length || !a.replay && !available)
             throw new Error('会話の再開位置が正しくありません。');
     }
 }

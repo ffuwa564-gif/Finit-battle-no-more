@@ -1,4 +1,4 @@
-import { createMedalRun, trackMedalBatch, commitMedalVictory, synchronizeMedals, medalById, medalRevealed } from '../domain/medals';
+import { createMedalRun, trackMedalBatch, commitMedalVictory, recordMedalStoryRecall, synchronizeMedals, medalById, medalRevealed } from '../domain/medals';
 import { applyIndustry, grantIndustryLoot, settleIndustry } from '../domain/industry';
 import { startWorldStory, startStoryTravel, cancelStoryTravel, beginStoryTalk, advanceStoryTalk, validHero, storyDestinations, acknowledgeWorldIncident } from '../domain/world-story';
 import { combatContent } from '../domain/combat-compatibility';
@@ -119,7 +119,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
     case 'worldIncidentNotice': {if(!content.worldStory||!save.worldStory)fail('旅はまだ始まっていません。');acknowledgeWorldIncident(save,content.worldStory,command.incidentId);break;}
     case 'worldTravelCancel': {town(save);if(save.worldStory)cancelStoryTravel(save.worldStory,context.now??Date.now());break;}
     case 'worldTalk': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());beginStoryTalk(save,content,command.nodeId,context.now??Date.now());break;}
-    case 'worldTalkNext': case 'worldTalkBack': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkBack'?'back':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);break;}
+    case 'worldTalkNext': case 'worldTalkBack': case 'worldTalkFinish': case 'worldTalkClose': case 'worldTalkChoice': {town(save);advanceStoryTalk(save,content,command.type==='worldTalkNext'?'next':command.type==='worldTalkBack'?'back':command.type==='worldTalkFinish'?'finish':command.type==='worldTalkClose'?'close':'choice',command.type==='worldTalkChoice'?command.choiceId:undefined);if(command.type==='worldTalkFinish'&&previous.worldStory?.active?.recall)recordMedalStoryRecall(save,previous.worldStory.active.nodeId,publicContent);break;}
 
     case 'trackBuild': {
       town(save);
@@ -561,7 +561,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   }
   if ((command.type === 'claim' || command.type === 'leaveFailure') && previous.battle) finalizeExpedition(previous, save, previous.battle, content);
   if(command.type==='claim'&&previous.battle)commitMedalVictory(save,previous.battle,content);
-  if(!save.battle&&['claim','novelFinish','worldTalkFinish','recruit','eventRecruit','goldRecruit','awaken','draw','drawXR','industrySync','industryCollect','industryInstall','industryCraft','industryConfigure','industryCancel'].includes(command.type))synchronizeMedals(save,publicContent);
+  if(!save.battle&&['claim','novelFinish','worldTalkFinish','recruit','eventRecruit','goldRecruit','awaken','draw','drawXR','industrySync','industryCollect','industryInstall','industryCraft','industryConfigure','industryCancel','tapGemPolish','resolveGemRefinement','craftMemoryGem','equipMemoryGem','salvageMemoryGem'].includes(command.type))synchronizeMedals(save,publicContent);
   if (!Number.isSafeInteger(save.gold) || !Number.isSafeInteger(save.stones)) fail('所持数の上限を超えています。');
   save.revision = previous.revision + 1;
   return save;
