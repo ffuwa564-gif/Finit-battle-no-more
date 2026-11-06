@@ -1,0 +1,57 @@
+{
+  "movieSha256": "d1710e3f338e4f4906f9c1008c1505ea3efee7ead5442f8a1474c2a9fad1c2bc",
+  "files": {
+    "Chapters.txt": {
+      "bytes": 335,
+      "sha256": "d0f97b6978f19ec879899b14178f48a5d28e226ae32a8ff3e9ee854d5d97eaef"
+    },
+    "Contact-Sheet.jpg": {
+      "bytes": 385331,
+      "sha256": "fd6b134bee1b01f5d73584971a38767bd2cb2369027457a94d19c9f754178dc0"
+    },
+    "Credits.txt": {
+      "bytes": 667,
+      "sha256": "8d45390d8ddadbfd0580b2ab70fde93b420a0728e6899d4b00273dcdc5d10b78"
+    },
+    "Playback-Audit.json": {
+      "bytes": 1212,
+      "sha256": "91ccdad7b016a256dad66208ead5e98d8629805c873cbe4eec21862342e5de97"
+    },
+    "Quality-Report.json": {
+      "bytes": 2766,
+      "sha256": "70c5fb3aa2d8b1bcfd15c31e645708ae7fd764b09c80d125b5e0bb94b7c041b7"
+    },
+    "README.md": {
+      "bytes": 2100,
+      "sha256": "bf74b1a6057e627ae745bf2223c53626cf39a1f2c9e8f06a9d89d85037eac717"
+    },
+    "Script.md": {
+      "bytes": 5767,
+      "sha256": "f1de9bd0b537b66d01ac484362d5b029101ce0787423ea25d5b244d0c71eb8c4"
+    },
+    "Starting-Conditions.json": {
+      "bytes": 660,
+      "sha256": "d4a62d28ba93222fbaa58503ee06cccb1b4aad0e34014de8257470697e1ccd07"
+    },
+    "Stillveil-Zundamon-v123.mp4": {
+      "bytes": 88022734,
+      "sha256": "d1710e3f338e4f4906f9c1008c1505ea3efee7ead5442f8a1474c2a9fad1c2bc"
+    },
+    "Stillveil-Zundamon-v123.srt": {
+      "bytes": 6102,
+      "sha256": "1fb24223c558318b35e37ec843f3ab02f897212d7feda27fead88518e9514b35"
+    },
+    "Sync-Audit.json": {
+      "bytes": 49486,
+      "sha256": "91bd86ece1d227239c13e177c9e162aa8c8098736d10fb7be5b0fbbfce04595d"
+    },
+    "Thumbnail.jpg": {
+      "bytes": 240049,
+      "sha256": "68ef45dd1555430c81c9005d846ed12c79e2b1a0bdc801556401097b34b170bb"
+    },
+    "YouTube-Description.txt": {
+      "bytes": 2315,
+      "sha256": "e552eccc48e265a0311a589df7e028318cf545078c0c10a63f01479ea018a49b"
+    }
+  }
+}

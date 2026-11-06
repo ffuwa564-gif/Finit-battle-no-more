@@ -1,0 +1,23 @@
+{
+  "version": "1.23.0",
+  "commit": "4e8abc1c03b5d26587fb6011a16aafcf82bbddb8",
+  "freshBrowser": true,
+  "randomSeedFixed": false,
+  "party": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "leader": "liora",
+  "tutorial": "declined before starting",
+  "gameplay": "Normal UI input automation; no stats, inventory, progression or clock edits. Post-dubbed commentary.",
+  "completedDungeonIds": [
+    "silent-cathedral",
+    "chapel-approach",
+    "bell-stairs"
+  ],
+  "rawCapture": "artifacts/story-uncut-v123/raw/video.mp4",
+  "productionArchive": "artifacts/story-uncut-v123/stillveil-story-uncut-production.zip",
+  "youtubeUploaded": false
+}

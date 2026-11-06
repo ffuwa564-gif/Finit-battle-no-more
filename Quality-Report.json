@@ -1,0 +1,147 @@
+{
+  "sha256": "d1710e3f338e4f4906f9c1008c1505ea3efee7ead5442f8a1474c2a9fad1c2bc",
+  "duration": 786.0333333333333,
+  "version": "1.23.0",
+  "sourceCommit": "4e8abc1c03b5d26587fb6011a16aafcf82bbddb8",
+  "uncut": {
+    "uncut": true,
+    "sourceFrames": 25176,
+    "coveredSourceFrames": 25176,
+    "rates": [
+      1,
+      2
+    ],
+    "pass": true
+  },
+  "clockMarkers": 107,
+  "dialogueCoverage": [
+    {
+      "scene": "opening-first-adventure",
+      "pages": 2,
+      "observed": [
+        0,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-job",
+      "pages": 3,
+      "observed": [
+        0,
+        1,
+        2
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-hill",
+      "pages": 5,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-offerings",
+      "pages": 4,
+      "observed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-generation",
+      "pages": 5,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    },
+    {
+      "scene": "c1-chart",
+      "pages": 5,
+      "observed": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "pass": true
+    }
+  ],
+  "voiceChecks": 56,
+  "gameAudioChecks": 28,
+  "imageSequenceChecks": 37,
+  "fullDecode": true,
+  "browsers": [
+    {
+      "browser": "chromium",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.718806,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 393.230344,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 784.278069,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.712951947,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 393.223285075,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 784.251259528,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    }
+  ],
+  "manualReview": "Contact sheet and individual beginning, middle, end, battle and workshop frames reviewed; game and dialogue are continuously visible, avatar ears and head stay within the approved contain artwork.",
+  "pass": true
+}
