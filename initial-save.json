@@ -1,0 +1,67 @@
+{
+  "novels": {
+    "seen": [],
+    "active": {
+      "sceneId": "opening-first-adventure",
+      "page": 1
+    }
+  },
+  "schemaVersion": 1,
+  "appVersion": "1.28.0",
+  "contentVersion": "v1.28-r1",
+  "rulesVersion": "3",
+  "revision": 1,
+  "gold": 100,
+  "potions": 10,
+  "stones": 0,
+  "astralStones": 0,
+  "xrDrawCount": 0,
+  "ownedIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "partyIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "leaderId": "liora",
+  "materials": {},
+  "discoveredIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "towerRecord": {
+    "version": "1.10",
+    "completedFloors": [],
+    "legacyHighest": 0
+  },
+  "completedDungeonIds": [],
+  "claimedExplorationIds": [],
+  "drawCount": 0,
+  "ssrPity": 0,
+  "seed": 2944624111,
+  "memoryGems": {
+    "items": [],
+    "equipped": {},
+    "dust": {
+      "sanctuary": 0,
+      "clock": 0,
+      "grave": 0
+    },
+    "seen": []
+  },
+  "battle": null,
+  "history": [],
+  "settings": {
+    "bgmVolume": 0.5,
+    "seVolume": 1,
+    "reducedMotion": false,
+    "speed": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "version": "1.28.0",
+  "commit": "e6f4715798a45f1c237071ea4320e4dbcb6a67be",
+  "freshBrowser": true,
+  "tutorial": "declined",
+  "uiAutomation": true,
+  "statsInventoryProgressionClockEdited": false,
+  "initialSave": "initial-save.json",
+  "finalSave": "final-save.json",
+  "completedDungeons": [
+    "silent-cathedral",
+    "chapel-approach"
+  ],
+  "earnedMedals": [
+    "explore-first",
+    "tactics-return",
+    "four-roles",
+    "only-r-sr",
+    "no-stones",
+    "tactics-no-potion",
+    "only-r"
+  ],
+  "rawRecording": "artifacts/medal-diary-01/raw/video.mp4",
+  "rawPcm": "retained locally; not publicly distributed as standalone music",
+  "youtubeUploaded": false
+}

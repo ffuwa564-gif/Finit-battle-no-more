@@ -1,0 +1,38 @@
+{
+  "sha256": "ada3e797746995adafe029513728a4aac98cc8d500edfc6a3f3b677eedbe8b7f",
+  "pass": true,
+  "reviewed": [
+    "contact-sheet.jpg (9 actual final-file checkpoints)",
+    "final-frame-battle.jpg (220 seconds)",
+    "final-frame-result.jpg (436 seconds)"
+  ],
+  "checks": {
+    "gameUnobscured": true,
+    "headAndEarsContained": true,
+    "captionsAtMostTwoLines": true,
+    "captionsLegible": true,
+    "correctSpeakerAndExpression": true,
+    "actualMedalCounterMatchesSave": true,
+    "noDiagnosticStripOrAudioChannel": true
+  },
+  "avatarAlphaBounds": {
+    "happy": [
+      49,
+      36,
+      271,
+      376
+    ],
+    "panic": [
+      54,
+      34,
+      266,
+      378
+    ]
+  },
+  "avatarCanvas": [
+    320,
+    440
+  ],
+  "headSafetyMarginPixelsAtLeast": 34,
+  "audioReview": "All 43 narration excerpts and 15 game audio checkpoints compared to independent source stems in final MP4. Pitch preservation and transient timing tested; no claim of a separate human listening review."
+}

@@ -1,0 +1,78 @@
+{
+  "sync-audit.json": {
+    "sha256": "531b865da321dbd63e93519950b715d54440a17c50840fd717ab6d008af0276b",
+    "bytes": 34780
+  },
+  "stillveil-medal-diary-01.mp4": {
+    "sha256": "ada3e797746995adafe029513728a4aac98cc8d500edfc6a3f3b677eedbe8b7f",
+    "bytes": 44304950
+  },
+  "credits.txt": {
+    "sha256": "962fe6fc3a8d0fcf40dcb4a472efd9d51919781df96c5ca2abfb8deede4add61",
+    "bytes": 747
+  },
+  "thumbnail.jpg": {
+    "sha256": "d70d165a0c5f17b06db06b5518494356ab5cd700a31764a96ee65bc9343c6433",
+    "bytes": 163169
+  },
+  "visual-review.json": {
+    "sha256": "b11870274485d43386e81d245521de0e7ed5a11756a05a11a8cb57e801e5d34b",
+    "bytes": 997
+  },
+  "final-save.json": {
+    "sha256": "b1d02ce21d31e2462649fdfd1bd0dc5095d78ccdaf9c7cbca07ad2c0c3eb336c",
+    "bytes": 6981
+  },
+  "youtube-description.txt": {
+    "sha256": "cfef679415312f54708849044cecbe1f8ccfc20472535409fbed71ea38322a86",
+    "bytes": 2215
+  },
+  "README.txt": {
+    "sha256": "e2cf5965286ceb517d223fd0186a3d718ccb422a8831172a82c25af704a088e0",
+    "bytes": 322
+  },
+  "Production-Inputs.zip": {
+    "sha256": "ddc6047cefd111e7887b61f5242816a66c21a74f012208343fc297a16a596cbd",
+    "bytes": 83542047
+  },
+  "script.md": {
+    "sha256": "fab5cb43ddd741c16bbdb59db7e80bf66828f807925fbf9cda47fa444c10bd17",
+    "bytes": 4494
+  },
+  "storyboard.csv": {
+    "sha256": "f191214352d952d610e1e55edd960de91cd8b9e46eecf9ce8142522385bd89ab",
+    "bytes": 14154
+  },
+  "initial-save.json": {
+    "sha256": "58bdca7554a4b395040ba4511d9c48e57740810a5692eb5ff5abcd3125633841",
+    "bytes": 1102
+  },
+  "stillveil-medal-diary-01.srt": {
+    "sha256": "12a29ad6d13aa75bfec80d74f4fe3bd0f3659a508ba7b5def95b34056b26c520",
+    "bytes": 4730
+  },
+  "contact-sheet.jpg": {
+    "sha256": "f2a2febdf4b2ec9b23406d52a89e8fab026d055fa558794e9963031a7dbbe477",
+    "bytes": 320540
+  },
+  "playback-audit.json": {
+    "sha256": "3c3b2c8c2f31321f88fe81fe19692915abcc58a15225be6db3c24dbce37e6db8",
+    "bytes": 1212
+  },
+  "chapters.txt": {
+    "sha256": "44642475035023c081e8d0541c0da3c4a95d10768a10a12d5b3bcb604de16580",
+    "bytes": 245
+  },
+  "clock-stretch-test.json": {
+    "sha256": "f33f7854e5fc38dfd3a7c0fb1fd45ab0588df40740a62bc6c6d14060e43899c3",
+    "bytes": 797
+  },
+  "starting-conditions.json": {
+    "sha256": "6d9b290820c55d209109e234a899b57ba702dd92892ac7d70694b53a5994cf41",
+    "bytes": 676
+  },
+  "final-qa.json": {
+    "sha256": "f9cace5391919e8ed46d2d3d4c9cb0a0317e39518b7a13c98e60b583ebd3223a",
+    "bytes": 3593
+  }
+}
