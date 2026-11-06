@@ -1,3 +1,4 @@
+import { validMedals, validMedalRun } from '../domain/medals';
 import { validIndustry } from '../domain/industry';
 import { validWorldStory, validateWorldStorySave } from '../domain/world-story';
 import { validFieldState } from '../domain/field-research';
@@ -129,6 +130,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     const floors = [...r.completedFloors].sort((a,b) => Number(a)-Number(b));
     if (floors.some((f,i) => f !== i+1)) throw new Error('白亜の塔の記録が連続していません。');
   }
+  if(value.medals!==undefined&&!validMedals(value.medals))throw new Error('勲章の保存状態が不正です。');
   if (value.buildGoal !== undefined && !validBuildGoal(value.buildGoal)) throw new Error('目標ビルドの保存状態が不正です。');
   if (value.memoryGems !== undefined) {
     if (!validGemInventory(value.memoryGems)) throw new Error('記憶石の保存状態が不正です。');
@@ -143,6 +145,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   if (settings.homeCharacterId !== undefined && settings.homeCharacterId !== null && (!nonempty(settings.homeCharacterId) || !(value.ownedIds as string[]).includes(settings.homeCharacterId))) throw new Error('ホームの表示設定が不正です。');
   if (value.battle !== null) {
     const battle = value.battle;
+    if(record(battle)&&battle.medalRun!==undefined&&!validMedalRun(battle.medalRun))throw new Error('勲章の探索記録が不正です。');
     if (record(battle) && (battle.tracking !== undefined && !validExpeditionTracking(battle.tracking) || battle.failureKind !== undefined && !['defeat', 'timeout', 'retreat'].includes(String(battle.failureKind)))) throw new Error('探索の集計状態が不正です。');
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || battle.rulesVersion !== undefined && !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
     if (battle.scoutState !== undefined) {
@@ -338,7 +341,8 @@ export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion
     (value.appVersion === '1.20.0' && value.contentVersion === 'v1.20-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.21.0' && value.contentVersion === 'v1.21-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.22.0' && value.contentVersion === 'v1.22-r1' && value.rulesVersion === '3') ||
-    (value.appVersion === '1.23.0' && value.contentVersion === 'v1.23-r1' && value.rulesVersion === '3')
+    (value.appVersion === '1.23.0' && value.contentVersion === 'v1.23-r1' && value.rulesVersion === '3') ||
+    (value.appVersion === '1.24.0' && value.contentVersion === 'v1.24-r1' && value.rulesVersion === '3')
   );
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {

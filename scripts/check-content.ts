@@ -1,9 +1,10 @@
+import { validateMedals } from '../src/domain/medals';
 import { checkMotionPosters } from './motion-posters';
 import { existsSync, readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { content, validateContent } from '../src/content/index';
 
-const errors = validateContent(content);
+const errors = [...validateContent(content),...validateMedals(content)];
 const publicRoot = resolve('public');
 for (const asset of content.assets) {
   const path = resolve(publicRoot, asset.path);

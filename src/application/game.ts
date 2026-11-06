@@ -1,3 +1,4 @@
+import { createMedalRun, trackMedalBatch, commitMedalVictory, synchronizeMedals, medalById, medalRevealed } from '../domain/medals';
 import { applyIndustry, grantIndustryLoot, settleIndustry } from '../domain/industry';
 import { startWorldStory, startStoryTravel, cancelStoryTravel, beginStoryTalk, advanceStoryTalk, validHero, storyDestinations, acknowledgeWorldIncident } from '../domain/world-story';
 import { combatContent } from '../domain/combat-compatibility';
@@ -103,6 +104,14 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.battle) delete save.battle.omens;
   if(save.worldStory?.active && !['worldTalkNext','worldTalkBack','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
+    case 'medalSync': { town(save); synchronizeMedals(save,publicContent); break; }
+    case 'medalTrack': case 'medalTitle': {
+      town(save); synchronizeMedals(save,publicContent);
+      const m=command.medalId===null?undefined:medalById(command.medalId);
+      if(command.medalId!==null&&(!m||!medalRevealed(m,save)||command.type==='medalTitle'&&!save.medals!.earned.includes(m.id)))fail('勲章の選択が正しくありません。');
+      const key=command.type==='medalTitle'?'titleId':'trackedId';
+      if(m)save.medals![key]=m.id;else delete save.medals![key];break;
+    }
     case 'industryPower': case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);applyIndustry(save,command,publicContent,context.now??Date.now());break;}
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
@@ -261,6 +270,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       if(save.worldStory){const point=content.worldStory?.chapters.flatMap(c=>c.dungeonIds).includes(dungeon.id);if(point){const {x,y}=storyDestinations(content,save).find(p=>p.id===dungeon.id)!;save.worldStory.position={x,y};}delete save.worldStory.journey;}
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
       save.battle.tracking = createExpeditionTracking(context.now);
+      save.battle.medalRun = createMedalRun();
       save.battle.researchSkillIds = [...(save.researchSkillIds ?? [])];
       syncMemoryGems(save);
       log(save, `${dungeon.name}へ出発しました。`);
@@ -540,6 +550,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   }
   // Account for generated actions once. Replaying their visuals never adds them again.
   const active = save.battle;
+  if(active && previous.battle && ['round','battleBloom','battleFairy'].includes(command.type)) trackMedalBatch(active,content);
   if (active?.tracking) {
     if (previous.battle && ['round', 'battleBloom', 'battleFairy'].includes(command.type)) {
       trackEventBatch(active.tracking, active, { round: previous.battle.round, wave: previous.battle.wave });
@@ -549,6 +560,8 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
     if (active.phase === 'reward' || active.phase === 'failed') finishTracking(active.tracking, context.now);
   }
   if ((command.type === 'claim' || command.type === 'leaveFailure') && previous.battle) finalizeExpedition(previous, save, previous.battle, content);
+  if(command.type==='claim'&&previous.battle)commitMedalVictory(save,previous.battle,content);
+  if(!save.battle&&['claim','novelFinish','worldTalkFinish','recruit','eventRecruit','goldRecruit','awaken','draw','drawXR','industrySync','industryCollect','industryInstall','industryCraft','industryConfigure','industryCancel'].includes(command.type))synchronizeMedals(save,publicContent);
   if (!Number.isSafeInteger(save.gold) || !Number.isSafeInteger(save.stones)) fail('所持数の上限を超えています。');
   save.revision = previous.revision + 1;
   return save;
