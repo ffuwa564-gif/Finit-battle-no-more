@@ -193,7 +193,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
     const active = save.novels.active;
     if (active) {
       const scene = content.novels?.find(scene => scene.id === active.sceneId);
-      if (!scene || active.page >= scene.pages.length || (scene.trigger.kind !== 'opening' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
+      if (!scene || active.page >= scene.pages.length || (scene.trigger.kind !== 'opening' && scene.trigger.kind !== 'intro' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
     }
   }
   validateWorldStorySave(save,content);
@@ -336,7 +336,8 @@ export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion
   return value.schemaVersion === RELEASE.schemaVersion && (
     (['1.10.0', '1.11.0', '1.12.0', '1.13.0'].includes(value.appVersion) && value.contentVersion === 'v1.10-r1' && value.rulesVersion === '2') ||
     (value.appVersion === '1.20.0' && value.contentVersion === 'v1.20-r1' && value.rulesVersion === '3') ||
-    (value.appVersion === '1.21.0' && value.contentVersion === 'v1.21-r1' && value.rulesVersion === '3')
+    (value.appVersion === '1.21.0' && value.contentVersion === 'v1.21-r1' && value.rulesVersion === '3') ||
+    (value.appVersion === '1.22.0' && value.contentVersion === 'v1.22-r1' && value.rulesVersion === '3')
   );
 }
 export function isUpgradeableSaveVersion(value: Pick<GameSave, 'schemaVersion' | 'appVersion' | 'contentVersion' | 'rulesVersion'>): boolean {

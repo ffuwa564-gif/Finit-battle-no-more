@@ -20,9 +20,10 @@ function finish(s: GameSave, node: WorldStoryNode, choice?: string) { s = arrive
         return applyCommand(s, { type: 'worldTalkFinish' }, content);
     s = applyCommand(s, { type: 'worldTalkNext' }, content);
 } throw Error('unbounded dialogue'); }
+// A real v1.22 pre-patrol history: sightseeing was required before the first job.
 function throughIntroduction(s = begin()) {
-    for (const id of ['c1-hill', 'c1-offerings', 'c1-generation', 'c1-garden-rounds', 'c1-garden-night'])
-        s = finish(s, def.nodes.find(n => n.id === id)!);
+    s.worldStory!.completed = ['c1-hill', 'c1-offerings', 'c1-generation', 'c1-garden-rounds', 'c1-garden-night'];
+    assertSaveCompatibility(s, content);
     return s;
 }
 describe('living world story and quiet days', () => {

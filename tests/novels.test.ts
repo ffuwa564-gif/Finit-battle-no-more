@@ -15,7 +15,7 @@ function won(id: string, completed: string[] = []) {
 }
 describe('saved visual novel stories', () => {
   it('starts the opening only for an explicitly new interactive game and preserves old saves', () => {
-    expect(start().novels!.active).toEqual({ sceneId: 'opening-desire-gate', page: 0 });
+    expect(start().novels!.active).toEqual({ sceneId: 'opening-first-adventure', page: 0 });
     const old = createInitialSave(content); expect(old.novels).toBeUndefined(); assertSaveCompatibility(old, content);
     expect(initialNovelProgress(content, false)).toEqual({ seen: [] });
   });
@@ -32,11 +32,11 @@ describe('saved visual novel stories', () => {
   });
   it('marks a finished or skipped story seen once without changing resources', () => {
     const save = start(), done = applyCommand(save, { type: 'novelFinish' }, content);
-    expect(done.novels).toEqual({ seen: ['opening-desire-gate'] });
+    expect(done.novels).toEqual({ seen: ['opening-first-adventure'] });
     expect(done.gold).toBe(save.gold); expect(done.ownedIds).toEqual(save.ownedIds);
     expect(() => applyCommand(done, { type: 'novelFinish' }, content)).toThrow();
     const replay = applyCommand(done, { type: 'novelStart', sceneId: 'opening-desire-gate' }, content);
-    expect(applyCommand(replay, { type: 'novelFinish' }, content).novels!.seen).toEqual(['opening-desire-gate']);
+    expect(applyCommand(replay, { type: 'novelFinish' }, content).novels!.seen).toEqual(['opening-first-adventure', 'opening-desire-gate']);
   });
   it.each(content.novels!.filter(scene => scene.trigger.kind === 'dungeon-clear'))('leaves $id on the map archive after rewards without interrupting play or granting rewards twice', scene => {
     if (scene.trigger.kind !== 'dungeon-clear') throw Error('fixture');

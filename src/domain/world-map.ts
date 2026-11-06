@@ -33,6 +33,7 @@ export function worldLocations(content: Content, completed: readonly string[]): 
     locations.push({ id: stage.id, dungeonId: stage.id, label: stage.name, kind: group.key === 'memory' ? 'cathedral' : group.key, category: group.key, region: `world-${group.key}`, x, y });
   });
   for (const scene of content.novels ?? []) {
+    if (scene.trigger.kind === 'intro') continue;
     if (scene.trigger.kind !== 'opening' && !completed.includes(scene.trigger.dungeonId)) continue;
     if (scene.trigger.kind === 'map' && scene.mapEncounter) {
       const map = scene.mapEncounter;
