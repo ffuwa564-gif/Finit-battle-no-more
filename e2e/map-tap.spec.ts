@@ -66,6 +66,8 @@ test('a touch selects another destination and still works after dragging the map
     expect(label).toBeTruthy();
     const pin = page.locator('.world-pin').and(page.getByRole('button', { name: label!, exact: true }));
     await pin.tap();
+    const chooser = page.getByRole('dialog', {name:'重なっている地点',exact:true});
+    if (await chooser.count()) await chooser.getByRole('button', {name:new RegExp('^' + label!)}).click();
     await expect(pin).toHaveClass(/is-selected/);
     await expect(page.locator('.world-map__destination h2')).toHaveText(label!);
   }

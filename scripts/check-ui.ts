@@ -22,11 +22,14 @@ for (const file of files) {
     }
     if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
       const tag = node.tagName.getText(source);
+      if (tag === 'CampaignDungeons') report(file, node, source, 'Dungeon screens must use WorldMap; legacy campaign lists are forbidden.');
       const native = /^[a-z]/.test(tag);
       if (native && ['button', 'input', 'select', 'textarea'].includes(tag)) report(file, node, source, `Native ${tag} must use a shared UI control.`);
       for (const prop of node.attributes.properties) {
         if (!ts.isJsxAttribute(prop)) continue;
         const name = prop.name.getText(source);
+        const dungeonScreen = source.statements.find(statement => ts.isFunctionDeclaration(statement) && statement.name?.text === 'DungeonsView');
+        if (dungeonScreen && node.pos >= dungeonScreen.pos && node.end <= dungeonScreen.end && name === 'className' && prop.initializer && ts.isStringLiteral(prop.initializer) && /\b(dungeon-list|dungeon-mode-tabs|normal-subtabs)\b/.test(prop.initializer.text)) report(file, prop, source, 'Legacy dungeon list modes are forbidden; use the typed map navigation contract.');
         if (name === 'style') report(file, prop, source, 'Inline styles are forbidden in screens; use approved UI variants/layout.');
         if (name === 'dangerouslySetInnerHTML') report(file, prop, source, 'Raw HTML content is forbidden.');
         if (native && ['onClick', 'onPointerDown', 'onTouchStart', 'onKeyDown'].includes(name)) report(file, prop, source, 'Interactive native elements bypass shared controls.');

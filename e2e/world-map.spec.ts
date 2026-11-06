@@ -22,8 +22,7 @@ test('world map pans, zooms, persists travel, arrives and opens a real expeditio
 test('locked places stay locked and directories remain accessible',async({page})=>{
  await page.goto('/#dungeons');await enterGame(page);
  const pin=page.locator('.world-pin.is-locked').first();await pin.click();await expect(page.locator('.world-map__travel')).toBeDisabled();
- await page.getByRole('button',{name:'探索地点の一覧',exact:true}).click();await page.getByRole('button',{name:'すべての探索を一覧で見る',exact:true}).click();await expect(page.getByRole('group',{name:'通常ダンジョンの章',exact:true})).toBeVisible();
- await page.getByRole('button',{name:'世界地図へ',exact:true}).click();await expect(page.locator('.world-map')).toBeVisible();
+ await page.getByRole('button',{name:'探索地点の一覧',exact:true}).click();await expect(page.getByRole('group',{name:'地図の章',exact:true})).toBeVisible();await page.getByRole('dialog').getByRole('button',{name:'閉じる',exact:true}).click();await expect(page.locator('.world-map')).toBeVisible();
 });
 test('a story destination opens the available novel library after traveling',async({page})=>{
  await page.goto('/#dungeons');await enterGame(page);await page.clock.install();
