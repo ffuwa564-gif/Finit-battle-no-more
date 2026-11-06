@@ -7,7 +7,8 @@ export function animateEvent(event: BattleEvent, reducedMotion: boolean): () => 
   // shakes at the actual HP impact, including enemy and friendly recipients.
   if (event.ultimate) return () => {};
   // One visual boundary for every character: cues never enter combat or save state.
-  if (event.kind !== 'dialogue') {
+  const statusOnly = Boolean(event.statusAction && event.statusAction !== 'friendly_fire');
+  if (event.kind !== 'dialogue' && !statusOnly) {
     const scene = document.querySelector('.battle-scene');
     const bounds = scene?.getBoundingClientRect();
     if (bounds) {
@@ -26,10 +27,10 @@ export function animateEvent(event: BattleEvent, reducedMotion: boolean): () => 
   }
   const context = gsap.context(() => {
     const actor = event.actorId ? document.querySelector(`[data-unit="${event.actorId}"]`) : null;
-    if (actor && !actor.hasAttribute('data-encounter-scene') && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(event.kind)) {
+    if (!statusOnly && actor && !actor.hasAttribute('data-encounter-scene') && ['attack', 'area', 'heal', 'guard', 'buff', 'debuff'].includes(event.kind)) {
       gsap.fromTo(actor, { y: 0 }, { y: -10, duration: 0.16, yoyo: true, repeat: 1, clearProps: 'transform' });
     }
-    for (const id of event.targetIds ?? []) {
+    for (const id of statusOnly ? [] : event.targetIds ?? []) {
       const target = document.querySelector(`[data-unit="${id}"]`);
       if (target && !target.hasAttribute('data-encounter-scene')) gsap.fromTo(target, { opacity: 0.45 }, { opacity: 1, duration: 0.3, clearProps: 'opacity' });
     }
