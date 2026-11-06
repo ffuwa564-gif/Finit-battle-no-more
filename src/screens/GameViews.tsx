@@ -170,7 +170,7 @@ export function RecruitView(p: ViewProps) {
 export function CodexView(p: ViewProps) {
   const [medals,setMedals]=useState(()=>location.hash==='#codex/medals');
   useEffect(()=>{const sync=()=>setMedals(location.hash==='#codex/medals');window.addEventListener('hashchange',sync);return()=>window.removeEventListener('hashchange',sync);},[]);
-  return <><PageTitle eyebrow="THE ARCHIVE" title={tr("記憶の図鑑")} /><div className="codex-tabs" role="group" aria-label={tr('図鑑の種類')}><Button variant="secondary" selected={!medals} onClick={()=>{setMedals(false);location.hash='codex';}}>{tr('少女たち')}</Button><Button variant="secondary" selected={medals} onClick={()=>{setMedals(true);location.hash='codex/medals';}}>{tr('勲章')}</Button></div>{medals?<MedalTree save={p.save} content={content} busy={p.busy} command={p.command} onAction={a=>{
+  return <>{!medals&&<PageTitle eyebrow="THE ARCHIVE" title={tr("記憶の図鑑")} />}<div className="codex-tabs" role="group" aria-label={tr('図鑑の種類')}><Button variant="secondary" selected={!medals} onClick={()=>{setMedals(false);location.hash='codex';}}>{tr('少女たち')}</Button><Button variant="secondary" selected={medals} onClick={()=>{setMedals(true);location.hash='codex/medals';}}>{tr('勲章')}</Button></div>{medals?<MedalTree save={p.save} content={content} busy={p.busy} command={p.command} onAction={a=>{
  if(a.kind==='workshop'){p.navigate('bag');location.hash=`bag/workshop/${encodeURIComponent(a.recipeId)}`;}
  else if(a.kind==='gems'){p.navigate('bag');location.hash='bag/gems';}
  else if(a.kind==='character')p.inspect(characterById(a.characterId));

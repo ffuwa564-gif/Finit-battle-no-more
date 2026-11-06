@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {enterGame} from './boot';
-import catalog from '../src/content/medals.json';
+import {readFileSync} from 'node:fs';
+const catalog=JSON.parse(readFileSync(new URL('../src/content/medals.json',import.meta.url),'utf8')) as {branches:{id:string;name:{ja:string;en:string}}[];medals:{branch:string}[]};
 test.use({viewport:{width:390,height:844}});
 
 test('six full branches stay readable and do not overlap at mobile and desktop widths in both languages',async({page},info)=>{
@@ -87,5 +88,5 @@ test('stone medals open the real stone inventory and secret-only unfinished coll
   const s=(await loadSave())!,r=s.revision;s.medals={version:1,earned:medalCatalog.medals.filter(m=>!m.secret).map(m=>m.id),feats:[]};s.revision++;await persistSave(s,r);
  });
  await page.reload();await enterGame(page);await expect(page.locator('.medals__complete')).toHaveCount(0);
- await expect(page.locator('.medals__summary')).toContainText('55');
+ await expect(page.locator('.medals__heading')).toContainText('55 / 57');
 });
