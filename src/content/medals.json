@@ -48,6 +48,22 @@
         "en": "Memory Stones"
       },
       "icon": "sparkles"
+    },
+    {
+      "id": "formations",
+      "name": {
+        "ja": "編成",
+        "en": "Formations"
+      },
+      "icon": "swords"
+    },
+    {
+      "id": "bosses",
+      "name": {
+        "ja": "強敵",
+        "en": "Bosses"
+      },
+      "icon": "tower"
     }
   ],
   "medals": [
@@ -1773,6 +1789,1320 @@
       "icon": "sparkles",
       "action": {
         "kind": "gems"
+      }
+    },
+    {
+      "id": "four-roles",
+      "branch": "formations",
+      "rank": 0,
+      "column": 1,
+      "parents": [],
+      "name": {
+        "ja": "四つの役目",
+        "en": "Four Different Roles"
+      },
+      "description": {
+        "ja": "4人が異なる4種類以上の役割を持つ編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: a party with at least four different roles."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "four-roles"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "only-r-sr",
+      "branch": "formations",
+      "rank": 1,
+      "column": 0,
+      "parents": [
+        "four-roles"
+      ],
+      "name": {
+        "ja": "手の届く仲間で",
+        "en": "A Modest Quartet"
+      },
+      "description": {
+        "ja": "R・SRだけの4人編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four R/SR companions only."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "only-r-sr"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "no-stones",
+      "branch": "formations",
+      "rank": 1,
+      "column": 2,
+      "parents": [
+        "four-roles"
+      ],
+      "name": {
+        "ja": "素のままの強さ",
+        "en": "Without a Stone"
+      },
+      "description": {
+        "ja": "記憶石を誰にも装備しない4人編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four companions with no equipped memory stones."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "no-stones"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "only-r",
+      "branch": "formations",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "only-r-sr"
+      ],
+      "name": {
+        "ja": "小さな四重奏",
+        "en": "An R-Rarity Quartet"
+      },
+      "description": {
+        "ja": "Rだけの4人編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four R companions only."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "only-r"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "mixed-r-high",
+      "branch": "formations",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "no-stones"
+      ],
+      "name": {
+        "ja": "肩を並べて",
+        "en": "Side by Side"
+      },
+      "description": {
+        "ja": "Rが2人以上、SSRまたはXRが1人以上いる4人編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four companions including at least two R and at least one SSR/XR."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "mixed-r-high"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "one-family",
+      "branch": "formations",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "only-r-sr"
+      ],
+      "name": {
+        "ja": "ひとつの記憶に",
+        "en": "One Shared Memory"
+      },
+      "description": {
+        "ja": "4人全員に同じ系統の記憶石を装備した編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four companions all equipped with stones from the same family."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "one-family"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "three-families",
+      "branch": "formations",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "mixed-r-high"
+      ],
+      "name": {
+        "ja": "三色の共鳴",
+        "en": "Threefold Resonance"
+      },
+      "description": {
+        "ja": "4人全員に石を装備し、聖域・機巧・黄昏をすべて含む編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four equipped companions using all three stone families."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "three-families"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "budget-tower",
+      "branch": "formations",
+      "rank": 4,
+      "column": 0,
+      "parents": [
+        "one-family"
+      ],
+      "name": {
+        "ja": "磨き途中の勝利",
+        "en": "A Modest Stone Budget"
+      },
+      "description": {
+        "ja": "4人全員にT3以下の石を装備した編成で、白亜の塔10層以上を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: floor 10 or higher of the Ivory Tower with all four stones at T3 or lower."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "budget-tower"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "no-healer",
+      "branch": "formations",
+      "rank": 4,
+      "column": 2,
+      "parents": [
+        "no-stones"
+      ],
+      "name": {
+        "ja": "癒し手のいない旅",
+        "en": "Without a Healer"
+      },
+      "description": {
+        "ja": "癒し手の役割を持つ仲間がいない4人編成を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: four companions with no Healer-role character."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "no-healer"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "without-athena",
+      "branch": "formations",
+      "rank": 5,
+      "column": 1,
+      "parents": [
+        "budget-tower",
+        "no-healer"
+      ],
+      "name": {
+        "ja": "梟のいない空",
+        "en": "A Sky Without the Owl"
+      },
+      "description": {
+        "ja": "アテナの全衣装を使わず、白亜の塔10層以上を、ボスを含む探索の踏破時点で満たし、4人全員が生還する。",
+        "en": "Clear a boss-containing expedition with all four alive, meeting this end-state condition: floor 10 or higher of the Ivory Tower without any form of Athena."
+      },
+      "flavor": {
+        "ja": "違う答えで、同じ帰り道へ。",
+        "en": "A different answer, the same journey home."
+      },
+      "icon": "swords",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "without-athena"
+      },
+      "action": {
+        "kind": "party"
+      }
+    },
+    {
+      "id": "boss-kuzuha-beginner",
+      "branch": "bosses",
+      "rank": 0,
+      "column": 0,
+      "parents": [],
+      "name": {
+        "ja": "九尾への挑戦・初級",
+        "en": "Nine-Tailed — First"
+      },
+      "description": {
+        "ja": "常設ボスイベントの初級を踏破し、獲得を確定する。",
+        "en": "Clear the first event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "moon",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-beginner"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "kuzuha-beginner"
+      }
+    },
+    {
+      "id": "boss-kuzuha-intermediate",
+      "branch": "bosses",
+      "rank": 1,
+      "column": 0,
+      "parents": [
+        "boss-kuzuha-beginner"
+      ],
+      "name": {
+        "ja": "九尾への挑戦・中級",
+        "en": "Nine-Tailed — Second"
+      },
+      "description": {
+        "ja": "常設ボスイベントの中級を踏破し、獲得を確定する。",
+        "en": "Clear the second event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "moon",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-intermediate"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "kuzuha-intermediate"
+      }
+    },
+    {
+      "id": "boss-kuzuha-advanced",
+      "branch": "bosses",
+      "rank": 2,
+      "column": 0,
+      "parents": [
+        "boss-kuzuha-intermediate"
+      ],
+      "name": {
+        "ja": "九尾への挑戦・上級",
+        "en": "Nine-Tailed — Third"
+      },
+      "description": {
+        "ja": "常設ボスイベントの上級を踏破し、獲得を確定する。",
+        "en": "Clear the third event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "moon",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-advanced"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "kuzuha-advanced"
+      }
+    },
+    {
+      "id": "boss-kuzuha-expert",
+      "branch": "bosses",
+      "rank": 3,
+      "column": 0,
+      "parents": [
+        "boss-kuzuha-advanced"
+      ],
+      "name": {
+        "ja": "九尾への挑戦・超級",
+        "en": "Nine-Tailed — Fourth"
+      },
+      "description": {
+        "ja": "常設ボスイベントの超級を踏破し、獲得を確定する。",
+        "en": "Clear the fourth event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "moon",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-expert"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "kuzuha-expert"
+      }
+    },
+    {
+      "id": "boss-kuzuha-awakening",
+      "branch": "bosses",
+      "rank": 4,
+      "column": 0,
+      "parents": [
+        "boss-kuzuha-expert"
+      ],
+      "name": {
+        "ja": "九尾への挑戦・覚醒級",
+        "en": "Nine-Tailed — Awakened"
+      },
+      "description": {
+        "ja": "常設ボスイベントの覚醒級を踏破し、獲得を確定する。",
+        "en": "Clear the awakened event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "moon",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-awakening"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "kuzuha-awakening"
+      }
+    },
+    {
+      "id": "boss-lunette-beginner",
+      "branch": "bosses",
+      "rank": 0,
+      "column": 2,
+      "parents": [],
+      "name": {
+        "ja": "星時計への挑戦・初級",
+        "en": "Clockwork — First"
+      },
+      "description": {
+        "ja": "常設ボスイベントの初級を踏破し、獲得を確定する。",
+        "en": "Clear the first event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "lunette-beginner"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "lunette-beginner"
+      }
+    },
+    {
+      "id": "boss-lunette-intermediate",
+      "branch": "bosses",
+      "rank": 1,
+      "column": 2,
+      "parents": [
+        "boss-lunette-beginner"
+      ],
+      "name": {
+        "ja": "星時計への挑戦・中級",
+        "en": "Clockwork — Second"
+      },
+      "description": {
+        "ja": "常設ボスイベントの中級を踏破し、獲得を確定する。",
+        "en": "Clear the second event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "lunette-intermediate"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "lunette-intermediate"
+      }
+    },
+    {
+      "id": "boss-lunette-advanced",
+      "branch": "bosses",
+      "rank": 2,
+      "column": 2,
+      "parents": [
+        "boss-lunette-intermediate"
+      ],
+      "name": {
+        "ja": "星時計への挑戦・上級",
+        "en": "Clockwork — Third"
+      },
+      "description": {
+        "ja": "常設ボスイベントの上級を踏破し、獲得を確定する。",
+        "en": "Clear the third event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "lunette-advanced"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "lunette-advanced"
+      }
+    },
+    {
+      "id": "boss-lunette-expert",
+      "branch": "bosses",
+      "rank": 3,
+      "column": 2,
+      "parents": [
+        "boss-lunette-advanced"
+      ],
+      "name": {
+        "ja": "星時計への挑戦・超級",
+        "en": "Clockwork — Fourth"
+      },
+      "description": {
+        "ja": "常設ボスイベントの超級を踏破し、獲得を確定する。",
+        "en": "Clear the fourth event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "lunette-expert"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "lunette-expert"
+      }
+    },
+    {
+      "id": "boss-lunette-awakening",
+      "branch": "bosses",
+      "rank": 4,
+      "column": 2,
+      "parents": [
+        "boss-lunette-expert"
+      ],
+      "name": {
+        "ja": "星時計への挑戦・覚醒級",
+        "en": "Clockwork — Awakened"
+      },
+      "description": {
+        "ja": "常設ボスイベントの覚醒級を踏破し、獲得を確定する。",
+        "en": "Clear the awakened event difficulty and confirm the result."
+      },
+      "flavor": {
+        "ja": "ひとつ越えて、また次の姿を見に。",
+        "en": "Beyond one challenge, another awaits."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "lunette-awakening"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "lunette-awakening"
+      }
+    },
+    {
+      "id": "boss-clock",
+      "branch": "bosses",
+      "rank": 5,
+      "column": 1,
+      "parents": [
+        "boss-kuzuha-advanced",
+        "boss-lunette-advanced"
+      ],
+      "name": {
+        "ja": "凍暁に間に合う",
+        "en": "Before Frozen Dawn"
+      },
+      "description": {
+        "ja": "凍暁の大時計を踏破し、結果を確定する。",
+        "en": "Clear the Frozen Dawn Clock and confirm the result."
+      },
+      "flavor": {
+        "ja": "針が進むたび、考え直した一手。",
+        "en": "With every tick, another choice."
+      },
+      "icon": "clock",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "frozen-dawn-clock"
+        ],
+        "amount": 1
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "frozen-dawn-clock"
+      }
+    },
+    {
+      "id": "boss-three",
+      "branch": "bosses",
+      "rank": 6,
+      "column": 1,
+      "parents": [
+        "boss-kuzuha-awakening",
+        "boss-lunette-awakening",
+        "boss-clock"
+      ],
+      "name": {
+        "ja": "三つの夜を越えて",
+        "en": "Beyond Three Nights"
+      },
+      "description": {
+        "ja": "葛葉・ルネットの覚醒級と、凍暁の大時計をすべて踏破する。",
+        "en": "Clear Kuzuha Awakening, Lunette Awakening and the Frozen Dawn Clock."
+      },
+      "flavor": {
+        "ja": "帰り道に話せることが、また増えた。",
+        "en": "More stories for the way home."
+      },
+      "icon": "tower",
+      "condition": {
+        "kind": "dungeons",
+        "dungeonIds": [
+          "kuzuha-awakening",
+          "lunette-awakening",
+          "frozen-dawn-clock"
+        ],
+        "amount": 3
+      },
+      "action": {
+        "kind": "dungeon",
+        "dungeonId": "frozen-dawn-clock"
+      }
+    },
+    {
+      "id": "sakuya-ward",
+      "branch": "companions",
+      "rank": 7,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "桜に守られて",
+        "en": "Sheltered by Sakura"
+      },
+      "description": {
+        "ja": "コノハナサクヤヒメの固有障壁スキルで、味方の有効な障壁値を増やす。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Increase an ally’s effective barrier with Sakuya’s own barrier skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "sakuya-ward"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "mireille"
+      }
+    },
+    {
+      "id": "flora-cleanse",
+      "branch": "companions",
+      "rank": 7,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "花風のあとの空",
+        "en": "After the Flower Breeze"
+      },
+      "description": {
+        "ja": "フローラの固有浄化スキルで、有効な状態異常か弱体を実際に解除する。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Flora remove an active ailment or debuff with her own cleansing skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "flora-cleanse"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "flora"
+      }
+    },
+    {
+      "id": "hebe-pair",
+      "branch": "companions",
+      "rank": 8,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "ふたりに届く手",
+        "en": "A Hand for Two"
+      },
+      "description": {
+        "ja": "ヘベの固有の二人回復で、同じ行動中に味方2人のHPを実際に増やす。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Hebe restore HP to two allies in the same use of her own pair-healing skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "hebe-pair"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "hebe"
+      }
+    },
+    {
+      "id": "persephone-sleep",
+      "branch": "companions",
+      "rank": 8,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "冥花のまどろみ",
+        "en": "Underworld Slumber"
+      },
+      "description": {
+        "ja": "ペルセポネの固有睡眠スキルで、眠っていない敵を新たに眠らせる。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Persephone put an awake enemy to sleep with her own sleep skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "persephone-sleep"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "persephone"
+      }
+    },
+    {
+      "id": "artemis-finish",
+      "branch": "companions",
+      "rank": 9,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "月矢の決着",
+        "en": "The Moon Arrow Lands"
+      },
+      "description": {
+        "ja": "アルテミスの固有貫通スキルで、ボスのHPを0にする。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Artemis finish a boss with her own piercing skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "artemis-finish"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "artemis"
+      }
+    },
+    {
+      "id": "nike-shatter",
+      "branch": "companions",
+      "rank": 9,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "勝利へのひび",
+        "en": "A Crack Toward Victory"
+      },
+      "description": {
+        "ja": "ニケの固有破砕スキルで、敵の有効な障壁値を実際に減らす。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Nike reduce an enemy’s active barrier with her own shattering skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "nike-shatter"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "nike"
+      }
+    },
+    {
+      "id": "lunette-three",
+      "branch": "companions",
+      "rank": 10,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "三つをつなぐ星",
+        "en": "Three Stars at Once"
+      },
+      "description": {
+        "ja": "ルネットまたは覚醒ルネットの固有全体攻撃で、一度に敵3体以上のHPを減らす。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have either form of Lunette damage at least three enemies in one use of her own area skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "lunette-three"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "lunette"
+      }
+    },
+    {
+      "id": "kuzuha-debuff",
+      "branch": "companions",
+      "rank": 10,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "九尾の誘い",
+        "en": "The Fox’s Invitation"
+      },
+      "description": {
+        "ja": "葛葉または九尾・葛葉の固有弱体スキルで、有効な弱体を新規付与・強化・延長する。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have either form of Kuzuha apply, strengthen or extend an active debuff with her own skill. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "kuzuha-debuff"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "kuzuha"
+      }
+    },
+    {
+      "id": "selene-ultimate",
+      "branch": "companions",
+      "rank": 11,
+      "column": 0,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "月宴のやすらぎ",
+        "en": "Rest Beneath the Moon"
+      },
+      "description": {
+        "ja": "セレネの必殺技で、同じ行動中に味方2人以上のHPを実際に増やす。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Selene’s ultimate restore HP to at least two allies in the same action. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "selene-ultimate"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "selene"
+      }
+    },
+    {
+      "id": "nox-ultimate",
+      "branch": "companions",
+      "rank": 11,
+      "column": 2,
+      "parents": [
+        "companions-five"
+      ],
+      "name": {
+        "ja": "零式の終止符",
+        "en": "Zero’s Final Note"
+      },
+      "description": {
+        "ja": "ノクスの必殺技でボスのHPを0にする。 その仲間を生還させ、ボスを含む探索の獲得を確定する。",
+        "en": "Have Nox finish a boss with her ultimate. Keep that character alive and confirm victory in a boss-containing expedition."
+      },
+      "flavor": {
+        "ja": "あなたの一手を、忘れない。",
+        "en": "Your contribution will be remembered."
+      },
+      "icon": "heart",
+      "condition": {
+        "kind": "challenge",
+        "challenge": "nox-ultimate"
+      },
+      "action": {
+        "kind": "character",
+        "characterId": "nox"
+      }
+    },
+    {
+      "id": "gems-equipped",
+      "branch": "gems",
+      "rank": 5,
+      "column": 0,
+      "parents": [
+        "gems-families"
+      ],
+      "name": {
+        "ja": "四人の旅支度",
+        "en": "Four Stones Ready"
+      },
+      "description": {
+        "ja": "現在の4人のパーティ全員に記憶石を装備する。",
+        "en": "Equip a memory stone on each of the four current party members."
+      },
+      "flavor": {
+        "ja": "次の一人にも、似合う石を。",
+        "en": "Find a fitting stone for the next companion too."
+      },
+      "icon": "sparkles",
+      "condition": {
+        "kind": "gemEquipped",
+        "amount": 4
+      },
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-variants",
+      "branch": "gems",
+      "rank": 5,
+      "column": 2,
+      "parents": [
+        "gems-types"
+      ],
+      "name": {
+        "ja": "三つの詠み方",
+        "en": "Three Ways to Cast"
+      },
+      "description": {
+        "ja": "澄明・残響・速唱の変種を、同時に各1個以上所持する。",
+        "en": "Own Pure, Echo and Swift stone variants at the same time."
+      },
+      "flavor": {
+        "ja": "次の一人にも、似合う石を。",
+        "en": "Find a fitting stone for the next companion too."
+      },
+      "icon": "sparkles",
+      "condition": {
+        "kind": "gemVariants",
+        "amount": 3
+      },
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-four-t4",
+      "branch": "gems",
+      "rank": 6,
+      "column": 0,
+      "parents": [
+        "gems-equipped"
+      ],
+      "name": {
+        "ja": "四重の輝き",
+        "en": "Four Bright Stones"
+      },
+      "description": {
+        "ja": "T4以上の研磨済み記憶石を同時に4個所持する。",
+        "en": "Own four polished memory stones at T4 or higher at the same time."
+      },
+      "flavor": {
+        "ja": "次の一人にも、似合う石を。",
+        "en": "Find a fitting stone for the next companion too."
+      },
+      "icon": "sparkles",
+      "condition": {
+        "kind": "gemTier",
+        "tier": 4,
+        "amount": 4
+      },
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-four-t5",
+      "branch": "gems",
+      "rank": 7,
+      "column": 0,
+      "parents": [
+        "gems-four-t4"
+      ],
+      "name": {
+        "ja": "星明かりの編成",
+        "en": "A Starlit Party"
+      },
+      "description": {
+        "ja": "T5以上の研磨済み記憶石を同時に4個所持する。",
+        "en": "Own four polished memory stones at T5 or higher at the same time."
+      },
+      "flavor": {
+        "ja": "次の一人にも、似合う石を。",
+        "en": "Find a fitting stone for the next companion too."
+      },
+      "icon": "sparkles",
+      "condition": {
+        "kind": "gemTier",
+        "tier": 5,
+        "amount": 4
+      },
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "gems-four-t6",
+      "branch": "gems",
+      "rank": 8,
+      "column": 1,
+      "parents": [
+        "gems-four-t5",
+        "gems-six"
+      ],
+      "name": {
+        "ja": "極光の四重奏",
+        "en": "An Aurora Quartet"
+      },
+      "description": {
+        "ja": "威力または特性値がT6の研磨済み記憶石を、同時に4個所持する。",
+        "en": "Own four polished stones with T6 power or trait value at the same time."
+      },
+      "flavor": {
+        "ja": "次の一人にも、似合う石を。",
+        "en": "Find a fitting stone for the next companion too."
+      },
+      "icon": "sparkles",
+      "condition": {
+        "kind": "gemTier",
+        "tier": 6,
+        "amount": 4
+      },
+      "action": {
+        "kind": "gems"
+      }
+    },
+    {
+      "id": "craft-ten-kinds",
+      "branch": "craft",
+      "rank": 9,
+      "column": 0,
+      "parents": [
+        "craft-five"
+      ],
+      "name": {
+        "ja": "十の作業音",
+        "en": "Ten Workshop Voices"
+      },
+      "description": {
+        "ja": "異なる種類の設備を同時に10種類設置する。",
+        "en": "Install ten different machine types at the same time."
+      },
+      "flavor": {
+        "ja": "覚えた手順が、次の旅を支えてくれる。",
+        "en": "What you learned supports the next journey."
+      },
+      "icon": "hammer",
+      "condition": {
+        "kind": "installedKinds",
+        "amount": 10
+      },
+      "action": {
+        "kind": "workshop",
+        "recipeId": "bench"
+      }
+    },
+    {
+      "id": "craft-twenty-recipes",
+      "branch": "craft",
+      "rank": 9,
+      "column": 2,
+      "parents": [
+        "craft-trio"
+      ],
+      "name": {
+        "ja": "二十の手順",
+        "en": "Twenty Recipes"
+      },
+      "description": {
+        "ja": "異なるレシピで製作を20種類以上完了する。",
+        "en": "Complete production from at least twenty different recipes."
+      },
+      "flavor": {
+        "ja": "覚えた手順が、次の旅を支えてくれる。",
+        "en": "What you learned supports the next journey."
+      },
+      "icon": "hammer",
+      "condition": {
+        "kind": "craftedRecipes",
+        "amount": 20
+      },
+      "action": {
+        "kind": "workshop",
+        "recipeId": "autonomous-core"
+      }
+    },
+    {
+      "id": "craft-full-cycle",
+      "branch": "craft",
+      "rank": 10,
+      "column": 1,
+      "parents": [
+        "craft-ten-kinds",
+        "craft-twenty-recipes"
+      ],
+      "name": {
+        "ja": "灯りが巡る工房",
+        "en": "A Workshop in Motion"
+      },
+      "description": {
+        "ja": "加工で灯力を合計100,000L使う。",
+        "en": "Use a total of 100,000 L of light in production."
+      },
+      "flavor": {
+        "ja": "覚えた手順が、次の旅を支えてくれる。",
+        "en": "What you learned supports the next journey."
+      },
+      "icon": "hammer",
+      "condition": {
+        "kind": "power",
+        "metric": "consumed",
+        "amount": 100000
+      },
+      "action": {
+        "kind": "workshop",
+        "recipeId": "star-assembler"
+      }
+    },
+    {
+      "id": "explore-return-ten",
+      "branch": "explore",
+      "rank": 5,
+      "column": 0,
+      "parents": [
+        "explore-first"
+      ],
+      "name": {
+        "ja": "また、帰ってきた",
+        "en": "Home Once More"
+      },
+      "description": {
+        "ja": "新たに10回、探索を踏破して結果を確定する。同じ探索の周回も数える。",
+        "en": "Confirm 10 new expedition victories. Repeated clears count."
+      },
+      "flavor": {
+        "ja": "ただいまと言える日を、ひとつずつ。",
+        "en": "One more day to say I am home."
+      },
+      "icon": "compass",
+      "condition": {
+        "kind": "victories",
+        "amount": 10
+      },
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-return-fifty",
+      "branch": "explore",
+      "rank": 6,
+      "column": 0,
+      "parents": [
+        "explore-return-ten"
+      ],
+      "name": {
+        "ja": "足取りは確かに",
+        "en": "Steady Footsteps"
+      },
+      "description": {
+        "ja": "新たに50回、探索を踏破して結果を確定する。同じ探索の周回も数える。",
+        "en": "Confirm 50 new expedition victories. Repeated clears count."
+      },
+      "flavor": {
+        "ja": "ただいまと言える日を、ひとつずつ。",
+        "en": "One more day to say I am home."
+      },
+      "icon": "compass",
+      "condition": {
+        "kind": "victories",
+        "amount": 50
+      },
+      "action": {
+        "kind": "map"
+      }
+    },
+    {
+      "id": "explore-return-hundred",
+      "branch": "explore",
+      "rank": 7,
+      "column": 0,
+      "parents": [
+        "explore-return-fifty"
+      ],
+      "name": {
+        "ja": "百度の帰路",
+        "en": "A Hundred Returns"
+      },
+      "description": {
+        "ja": "新たに100回、探索を踏破して結果を確定する。同じ探索の周回も数える。",
+        "en": "Confirm 100 new expedition victories. Repeated clears count."
+      },
+      "flavor": {
+        "ja": "ただいまと言える日を、ひとつずつ。",
+        "en": "One more day to say I am home."
+      },
+      "icon": "compass",
+      "condition": {
+        "kind": "victories",
+        "amount": 100
+      },
+      "action": {
+        "kind": "map"
       }
     }
   ]

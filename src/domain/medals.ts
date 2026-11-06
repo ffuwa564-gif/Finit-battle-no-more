@@ -1,18 +1,19 @@
 import catalog from '../content/medals.json';
 import { industryCatalog } from './industry';
 import { GEM_DEFINITIONS, gemDefinition, gemTier } from './memory-gems';
+import {medalChallengeIds,characterMedalChallenges,observeMedalChallenge,commitMedalChallenges,type MedalChallengeId,type CharacterMedalChallengeId} from './medal-challenges';
 import type { Ailment, Battle, Content, GameSave } from './types';
 export const medalFeats = ['full-party','linked-three','barrier-500','no-potion','three-ailments','clock-acceleration','wolf-finish','elaine-rescue','liora-guard','noelle-double','seris-pierce','low-band-tower'] as const;
 export type MedalFeat = typeof medalFeats[number];
-export interface MedalState { version: 1; earned: string[]; feats: MedalFeat[]; trackedId?: string; titleId?: string; proofs?: Record<string,number> }
-export interface MedalRun { version: 1; facts: MedalFeat[]; linkedActions: number; ailments: Ailment[]; finale: boolean }
+export interface MedalState { version: 1; earned: string[]; feats: MedalFeat[]; trackedId?: string; titleId?: string; proofs?: Record<string,number>; challenges?:MedalChallengeId[]; victories?:number }
+export interface MedalRun { version: 1; facts: MedalFeat[]; linkedActions: number; ailments: Ailment[]; finale: boolean; challenges?:CharacterMedalChallengeId[] }
 interface Text { ja: string; en: string }
-type Condition = { kind:'installed'|'craftedAny'|'craftedKinds'; itemIds:string[]; amount:number } | { kind:'craftTier'|'clears'|'chapters'|'tower'|'owned'|'gemFamilies'|'gemTypes'|'featCount'; amount:number } | {kind:'gemTier';tier:number;amount:number} | {kind:'power';metric:'generated'|'consumed';amount:number} | {kind:'story';nodeId:string} | {kind:'feat';feat:MedalFeat};
+type Condition = { kind:'installed'|'craftedAny'|'craftedKinds'; itemIds:string[]; amount:number } | { kind:'craftTier'|'clears'|'chapters'|'tower'|'owned'|'gemFamilies'|'gemTypes'|'gemVariants'|'gemEquipped'|'installedKinds'|'craftedRecipes'|'victories'|'featCount'; amount:number } | {kind:'gemTier';tier:number;amount:number} | {kind:'power';metric:'generated'|'consumed';amount:number} | {kind:'story';nodeId:string} | {kind:'feat';feat:MedalFeat} | {kind:'challenge';challenge:MedalChallengeId} | {kind:'dungeons';dungeonIds:string[];amount:number};
 export type MedalAction = {kind:'workshop';recipeId:string}|{kind:'dungeon';dungeonId:string}|{kind:'character';characterId:string}|{kind:'map'|'party'|'recruit'|'gems'};
 export interface MedalDef { id:string;branch:string;rank:number;column:number;parents:string[];name:Text;description:Text;flavor:Text;icon:string;condition:Condition;action:MedalAction;secret?:boolean }
 export const medalCatalog = catalog as unknown as {version:1;branches:{id:string;name:Text;icon:string}[];medals:MedalDef[]};
 export const medalById = (id:string) => medalCatalog.medals.find(m=>m.id===id);
-export const createMedalRun = ():MedalRun=>({version:1,facts:[],linkedActions:0,ailments:[],finale:false});
+export const createMedalRun = ():MedalRun=>({version:1,facts:[],linkedActions:0,ailments:[],finale:false,challenges:[]});
 const add = <T>(list:T[],value:T) => { if(!list.includes(value))list.push(value); };
 const state = (save:GameSave) => save.medals ??= {version:1,earned:[],feats:[]};
 /** One immutable save observation; share lazy aggregates across every node in a sync/render. */
@@ -51,6 +52,13 @@ export function createMedalProgress(save:GameSave,content:Content) {
       case 'gemTier':value=once('gemTier:'+c.tier,()=>(save.memoryGems?.items??[]).filter(g=>gemTier(g)>=c.tier).length);break;
       case 'gemFamilies':value=once('gemFamilies',()=>new Set((save.memoryGems?.items??[]).map(g=>gemDefinition(g).family)).size);break;
       case 'gemTypes':value=once('gemTypes',()=>new Set((save.memoryGems?.items??[]).map(g=>g.defId)).size);break;
+      case 'gemVariants':value=once('gemVariants',()=>new Set((save.memoryGems?.items??[]).map(g=>g.variant)).size);break;
+      case 'gemEquipped':value=save.partyIds.filter(id=>{const gemId=save.memoryGems?.equipped[id];return gemId&&save.memoryGems?.items.some(g=>g.id===gemId);}).length;break;
+      case 'installedKinds':value=once('installedKinds',()=>new Set(Object.values(save.industry?.machines??{}).map(m=>m.kind)).size);break;
+      case 'craftedRecipes':value=once('craftedRecipes',()=>industryCatalog.recipes.filter(r=>(save.industry?.crafted?.[r.id]??0)>0).length);break;
+      case 'victories':value=save.medals?.victories??0;break;
+      case 'dungeons':value=c.dungeonIds.filter(id=>cleared().has(id)).length;break;
+      case 'challenge':value=save.medals?.challenges?.includes(c.challenge)?1:0;break;
       case 'featCount':value=save.medals?.feats.length??0;break;
     }
     return {value:Math.min(Math.max(value,proof),target),target};
@@ -105,6 +113,7 @@ export function trackMedalBatch(battle:Battle,content:Content) {
       if(actor.characterId==='liora'&&skill?.template==='guard'&&before.some(u=>u.side==='party'&&u.hp>0&&u.hp<=u.maxHp/4&&event.targetIds?.includes(u.uid)))add(run.facts,'liora-guard');
       if(event.statusAction==='inflict'&&event.ailment&&event.targetIds?.some(id=>after.some(u=>u.uid===id&&u.side==='enemy')))add(run.ailments,event.ailment);
     }
+    observeMedalChallenge(run,battle,content,before,event,after);
     before=after;
   }
 }
@@ -122,16 +131,17 @@ export function commitMedalVictory(save:GameSave,battle:Battle,content:Content) 
     const dungeon=content.dungeons.find(d=>d.id===battle.dungeonId);
     if(dungeon?.bossClock&&!run.finale&&content.characters.find(c=>c.id===battle.leaderId)?.leaderEffect==='acceleration')add(s.feats,'clock-acceleration');
   }
+  commitMedalChallenges(s,battle,content);
   if(content.dungeons.find(d=>d.id===battle.dungeonId)?.towerFloor&&battle.partyIds.length===4&&alive('pale-wolf')&&battle.partyIds.every(id=>(content.characters.find(c=>c.id===id)?.strength??Infinity)<=15))add(s.feats,'low-band-tower');
 }
 const object=(v:unknown):v is Record<string,unknown>=>Boolean(v&&typeof v==='object'&&!Array.isArray(v));
 const known=(v:unknown,ids:readonly string[]):v is string[]=>Array.isArray(v)&&v.every(s=>typeof s==='string'&&ids.includes(s))&&new Set(v).size===v.length;
 export function validMedals(v:unknown):v is MedalState {
   const ids=medalCatalog.medals.map(m=>m.id);
-  return object(v)&&v.version===1&&known(v.earned,ids)&&known(v.feats,medalFeats)&&(v.trackedId===undefined||typeof v.trackedId==='string'&&ids.includes(v.trackedId))&&(v.titleId===undefined||typeof v.titleId==='string'&&v.earned.includes(v.titleId))&&(v.proofs===undefined||object(v.proofs)&&Object.entries(v.proofs).every(([id,n])=>{const m=medalById(id);return m&&Number.isSafeInteger(n)&&Number(n)>0&&Number(n)<=('amount'in m.condition?m.condition.amount:1);}));
+  return object(v)&&v.version===1&&known(v.earned,ids)&&known(v.feats,medalFeats)&&(v.challenges===undefined||known(v.challenges,medalChallengeIds))&&(v.victories===undefined||Number.isSafeInteger(v.victories)&&Number(v.victories)>=0&&Number(v.victories)<=1_000_000)&&(v.trackedId===undefined||typeof v.trackedId==='string'&&ids.includes(v.trackedId))&&(v.titleId===undefined||typeof v.titleId==='string'&&v.earned.includes(v.titleId))&&(v.proofs===undefined||object(v.proofs)&&Object.entries(v.proofs).every(([id,n])=>{const m=medalById(id);return m&&Number.isSafeInteger(n)&&Number(n)>0&&Number(n)<=('amount'in m.condition?m.condition.amount:1);}));
 }
 export function validMedalRun(v:unknown):v is MedalRun {
-  return object(v)&&v.version===1&&known(v.facts,medalFeats)&&known(v.ailments,['confusion','sleep','paralysis','charm'])&&Number.isSafeInteger(v.linkedActions)&&Number(v.linkedActions)>=0&&Number(v.linkedActions)<=1000000&&typeof v.finale==='boolean';
+  return object(v)&&v.version===1&&known(v.facts,medalFeats)&&(v.challenges===undefined||known(v.challenges,characterMedalChallenges.map(c=>c.id)))&&known(v.ailments,['confusion','sleep','paralysis','charm'])&&Number.isSafeInteger(v.linkedActions)&&Number(v.linkedActions)>=0&&Number(v.linkedActions)<=1000000&&typeof v.finale==='boolean';
 }
 export function validateMedals(content:Content):string[] {
   const errors:string[]=[],ids=new Set<string>(),branches=new Set(medalCatalog.branches.map(b=>b.id)),cells=new Set<string>();
@@ -143,7 +153,10 @@ export function validateMedals(content:Content):string[] {
     if(new Set(m.parents).size!==m.parents.length||m.secret!==undefined&&typeof m.secret!=='boolean')errors.push('Invalid medal presentation: '+m.id);
     if(m.parents.some(id=>{const p=medalById(id);return !p||p.branch!==m.branch||p.rank>=m.rank;}))errors.push('Invalid medal parents: '+m.id);
     const c=m.condition,a=m.action;
-    if(!['installed','craftedAny','craftedKinds','craftTier','clears','chapters','tower','owned','power','story','feat','featCount','gemTier','gemFamilies','gemTypes'].includes(c.kind)||!['workshop','dungeon','character','map','party','recruit','gems'].includes(a.kind))errors.push('Unknown medal contract: '+m.id);
+    if(!['installed','craftedAny','craftedKinds','craftTier','clears','chapters','tower','owned','power','story','feat','featCount','gemTier','gemFamilies','gemTypes','gemVariants','gemEquipped','installedKinds','craftedRecipes','victories','dungeons','challenge'].includes(c.kind)||!['workshop','dungeon','character','map','party','recruit','gems'].includes(a.kind))errors.push('Unknown medal contract: '+m.id);
+    if(c.kind==='challenge'&&!medalChallengeIds.includes(c.challenge))errors.push('Invalid medal challenge: '+m.id);
+    if(c.kind==='dungeons'&&(!c.dungeonIds.length||new Set(c.dungeonIds).size!==c.dungeonIds.length||c.amount>c.dungeonIds.length||c.dungeonIds.some(id=>!content.dungeons.some(d=>d.id===id&&d.published))))errors.push('Invalid medal dungeon collection: '+m.id);
+    if(c.kind==='gemVariants'&&c.amount>3||c.kind==='gemEquipped'&&c.amount>4||c.kind==='installedKinds'&&c.amount>industryCatalog.items.filter(i=>i.kind==='machine').length||c.kind==='craftedRecipes'&&c.amount>industryCatalog.recipes.length)errors.push('Unreachable medal target: '+m.id);
     if(c.kind==='gemTier'&&(!Number.isInteger(c.tier)||c.tier<1||c.tier>6)||c.kind==='gemFamilies'&&c.amount>3||c.kind==='gemTypes'&&c.amount>GEM_DEFINITIONS.length||c.kind==='featCount'&&c.amount>medalFeats.length)errors.push('Unreachable medal target: '+m.id);
     if(c.kind==='power'&&!['generated','consumed'].includes(c.metric)||c.kind==='craftTier'&&c.amount>5)errors.push('Invalid medal measure: '+m.id);
     if('amount'in c&&(!Number.isSafeInteger(c.amount)||c.amount<=0))errors.push('Invalid medal target: '+m.id);
@@ -152,5 +165,6 @@ export function validateMedals(content:Content):string[] {
     if(c.kind==='story'&&!content.worldStory?.nodes.some(n=>n.id===c.nodeId))errors.push('Invalid medal story: '+m.id);
     if(a.kind==='workshop'&&!industryCatalog.recipes.some(r=>r.id===a.recipeId)||a.kind==='dungeon'&&!content.dungeons.some(d=>d.published&&d.id===a.dungeonId)||a.kind==='character'&&!content.characters.some(ch=>ch.published&&ch.id===a.characterId))errors.push('Invalid medal action: '+m.id);
   }
+  for(const c of characterMedalChallenges)for(const id of c.actorIds){const actor=content.characters.find(a=>a.id===id&&a.published);if(!actor||c.template!==null&&!actor.skillIds.some(id=>content.skills.some(s=>s.id===id&&s.template===c.template)))errors.push('Unreachable character medal: '+c.id);}
   return errors;
 }

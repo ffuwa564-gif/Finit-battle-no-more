@@ -6,14 +6,14 @@ import {migrateSaveTo110}from'../src/platform/save-migration';
 import {isUpgradeableSaveVersion,assertSaveCompatibility}from'../src/platform/save';
 import {decodeBackup,encodeBackup}from'../src/platform/save-backup';
 const previousContent={...content,...content.legacyCombat,appVersion:'1.10.0',contentVersion:'v1.10-r1',rulesVersion:'2'};
-describe('1.26 compatible expedition upgrade',()=>{
- it.each([{appVersion:'1.20.0',contentVersion:'v1.20-r1'},{appVersion:'1.21.0',contentVersion:'v1.21-r1'},{appVersion:'1.22.0',contentVersion:'v1.22-r1'},{appVersion:'1.23.0',contentVersion:'v1.23-r1'},{appVersion:'1.24.0',contentVersion:'v1.24-r1'},{appVersion:'1.25.0',contentVersion:'v1.25-r1'},{appVersion:'1.25.1',contentVersion:'v1.25-r1'}])('preserves $appVersion inventory, active combat, travel and dialogue through migration and backup import',version=>{
+describe('1.27 compatible expedition upgrade',()=>{
+ it.each([{appVersion:'1.20.0',contentVersion:'v1.20-r1'},{appVersion:'1.21.0',contentVersion:'v1.21-r1'},{appVersion:'1.22.0',contentVersion:'v1.22-r1'},{appVersion:'1.23.0',contentVersion:'v1.23-r1'},{appVersion:'1.24.0',contentVersion:'v1.24-r1'},{appVersion:'1.25.0',contentVersion:'v1.25-r1'},{appVersion:'1.25.1',contentVersion:'v1.25-r1'},{appVersion:'1.26.0',contentVersion:'v1.26-r1'}])('preserves $appVersion inventory, active combat, travel and dialogue through migration and backup import',version=>{
   const previousContent={...content,...version};
   let old=createInitialSave(previousContent,28113);
   old=applyCommand(old,{type:'worldStoryBegin',profile:{name:'ミオ',voice:'soft',favorite:'flowers'},from:'beginning'},previousContent,{now:1000});
   old=applyCommand(old,{type:'worldTravel',destinationId:content.worldStory!.nodes[0].hubId},previousContent,{now:1000});
   old.gold=912;old.stones=43;old.settings.seVolume=.25;
-  if(['1.25.0','1.25.1'].includes(version.appVersion))old.medals={version:1,earned:['craft-bench'],feats:['full-party'],titleId:'craft-bench',trackedId:'craft-t2'};
+  if(['1.25.0','1.25.1','1.26.0'].includes(version.appVersion))old.medals={version:1,earned:['craft-bench'],feats:['full-party'],titleId:'craft-bench',trackedId:'craft-t2'};
   old.battle=createBattle(previousContent,old.partyIds,old.leaderId,'silent-cathedral',0,42,'v120-upgrade');
   const before=structuredClone(old),next=migrateSaveTo110(old,content);
   expect(isUpgradeableSaveVersion(old)).toBe(true);
