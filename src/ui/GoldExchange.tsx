@@ -4,7 +4,7 @@ import { tr, localize } from '../locales/i18n';
 import type { CharacterDef, Content, GameCommand, GameSave } from '../domain/types';
 import { roleName } from '../content';
 import { skillDescription, leaderEffectDescription } from '../domain/skill-info';
-import { Button, Panel, Modal, CurrencyEmblem, CharacterArtwork, InventoryTheme, InventoryIllustration } from './index';
+import { Button, Panel, Modal, CurrencyEmblem, CharacterArtwork, InventoryTheme, InventorySection } from './index';
 import './gold-exchange.css';
 
 /** All offers share the same portrait, controls, confirmation, and command boundary. */
@@ -22,15 +22,15 @@ export function GoldExchange({ content, save, busy, command, onInspect }: {
       const character = content.characters.find(char => char.id === offer.characterId)!;
       const owned = save.ownedIds.includes(character.id);
       return <Panel className="gold-exchange-card" key={offer.id}>
-        <div className="gold-exchange-card__art inventory-portrait"><CharacterArtwork character={character} reducedMotion={true} /><InventoryIllustration kind="portrait-frame"/><div className="inventory-portrait__caption"><small>SSR</small><strong>{localize(character.name)}</strong></div></div>
+        <div className="gold-exchange-card__art"><CharacterArtwork character={character} reducedMotion={true} /></div>
         <div className="gold-exchange-card__copy"><span className="eyebrow">SSR · {tr('交換限定')}</span><p className="gold-exchange-card__epithet">{localize(character.epithet)}</p><h3>{localize(character.name)}</h3>
           <p>{localize(roleName(character.role))} · {localize((character.strength / 10).toFixed(1))}</p>
-          <div className="gold-exchange-card__skills">{characterSkills(character, content).map(skill => { const id = skill.id; return <p key={id}><strong>{localize(skill.name)}</strong><small>{localize(skillDescription(skill))}</small></p>; })}</div>
-          <p className="gold-exchange-card__leader">{localize(leaderEffectDescription(character))}</p>
-          <Button size="sm" variant="secondary" onClick={() => onInspect(character)}>{tr('物語と能力を見る')}</Button>
           <div className="gold-exchange-card__cost"><CurrencyEmblem kind="gold" size={20} /><strong>{localize(offer.goldCost.toLocaleString())} G</strong><span>{tr('常設・1回限り')}</span></div>
           {!owned && <div className="gold-exchange-card__progress"><progress max={offer.goldCost} value={Math.min(save.gold, offer.goldCost)} aria-label={tr('交換までのゴールド')} /><span>{tr('所持 {0} G').replace('{0}', save.gold.toLocaleString())}</span></div>}
           <Button disabled={busy || owned || save.gold < offer.goldCost} onClick={() => setSelected(offer.id)}>{tr(owned ? '交換済み' : 'ゴールドで迎える')}</Button>
+          <Button size="sm" variant="secondary" onClick={() => onInspect(character)}>{tr('物語と能力を見る')}</Button>
+          <InventorySection id={`gold-offer-${offer.id}-skills`} title="スキル" count={characterSkills(character, content).length}><div className="gold-exchange-card__skills">{characterSkills(character, content).map(skill => { const id = skill.id; return <p key={id}><strong>{localize(skill.name)}</strong><small>{localize(skillDescription(skill))}</small></p>; })}</div>
+          <p className="gold-exchange-card__leader">{localize(leaderEffectDescription(character))}</p></InventorySection>
         </div>
       </Panel>;
     })}

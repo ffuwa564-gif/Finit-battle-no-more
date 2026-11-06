@@ -34,9 +34,6 @@
 .inventory-art-modal.inventory-theme--plain .preparation-guide header>span { margin-left:0; flex-basis:100%; font-size:12px; }
 .inventory-art-modal.inventory-theme--plain .expedition-ledger__filters { grid-template-columns:minmax(0,1fr); }
 .inventory-art-modal.inventory-theme--plain .expedition-ledger__history small { color:#67523c; }
-.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__copy { padding:18px; gap:12px; }
-.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__skills small { color:#66523d; font-size:13px; }
-.inventory-exchange-document.inventory-theme--plain .gold-exchange-card__cost strong { color:#684a22; }
 @media(min-width:600px) { .inventory-art-modal.inventory-theme--plain .preparation-guide__choices,.inventory-art-modal.inventory-theme--plain .expedition-ledger__filters { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 
 .inventory-art-modal.inventory-theme--plain .modal__body :is(input,select,textarea),
