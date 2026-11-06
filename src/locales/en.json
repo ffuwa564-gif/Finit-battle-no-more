@@ -3699,5 +3699,20 @@
   "この勲章を目指す": "Track this medal",
   "キャラクターを見る": "View character",
   "編成を見直す": "Review party",
-  "手前の勲章を獲得すると、条件が分かります。": "Earn the preceding medal to reveal these requirements."
+  "手前の勲章を獲得すると、条件が分かります。": "Earn the preceding medal to reveal these requirements.",
+  "冠章": "Crown medal",
+  "金章": "Gold medal",
+  "銀章": "Silver medal",
+  "銅章": "Bronze medal",
+  "冒険の記録": "Your journey",
+  "勲章の収集率": "Medal collection progress",
+  "追跡中の目標": "Tracked goal",
+  "すべての勲章を獲得しました。": "You have earned every medal.",
+  "最近の勲章": "Recent medals",
+  "系統の達成度": "Branch progress",
+  "条件は達成済みです。前提勲章の獲得後に授与されます。": "The condition is already met. Earn the prerequisite medals to receive this one.",
+  "物語を進めると、記録が明らかになります。": "Continue the story to reveal this memory.",
+  "引き継いだ章を読み返す": "Read this carried chapter",
+  "引き継いだ章の読み返し": "Revisiting a carried chapter",
+  "勲章へ戻る": "Return to medals"
 }
