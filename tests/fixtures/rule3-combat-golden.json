@@ -1,0 +1,43 @@
+{
+  "baseline": "3d907cbd53733e510f79bd0caf8c4df16a5e3b87",
+  "engineSHA256": "510e4dcdc60084add875f1e6ce906f50c8e573aaf7fb5f607963ede4faf09c2e",
+  "contentVersion": "v1.28-r1",
+  "rows": [
+    {
+      "mode": null,
+      "seed": 1,
+      "rounds": 5,
+      "digest": "5ed05182fa1ce55bbdeed370b8a953c3f7b592af60b764820b582ee15869ecef"
+    },
+    {
+      "mode": null,
+      "seed": 42,
+      "rounds": 5,
+      "digest": "8bd30b83f25c1fe2627fdb5fa4aad56921bbfd79772ec6cf5ab19429464ad56f"
+    },
+    {
+      "mode": null,
+      "seed": 731,
+      "rounds": 5,
+      "digest": "85cfd3a83a77596ee02c59035f6af50e6b7d0cdd8b2d7b11ecfe209c4ac1efef"
+    },
+    {
+      "mode": "hunt",
+      "seed": 1,
+      "rounds": 5,
+      "digest": "734fe5d9386ede77ba6c7f450e8dbfe9eae2e6a86ba786b61d5b8295afcebab9"
+    },
+    {
+      "mode": "hunt",
+      "seed": 42,
+      "rounds": 5,
+      "digest": "10461da76b13dfa009eacc46518e54ae69af69646700243f4f60c5241524a6de"
+    },
+    {
+      "mode": "hunt",
+      "seed": 731,
+      "rounds": 5,
+      "digest": "ace39c2d2a19bc6877ebc30429bbbc98d3e262501fd7eb6272f19876a4935ee4"
+    }
+  ]
+}

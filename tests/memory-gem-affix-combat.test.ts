@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { content } from '../src/content';
-import { advanceReplay, characterStats, createBattle, resolveRound } from '../src/domain/engine';
+import { advanceReplay, characterStats, encounterStats, createBattle, resolveRound } from '../src/domain/engine';
 import { gemSkill, type MemoryGem } from '../src/domain/memory-gems';
 import { TOWER_ROUND_LIMIT } from '../src/domain/ivory-tower';
 import type { Battle, Content } from '../src/domain/types';
@@ -47,7 +47,9 @@ describe('rolled gem combat and tower scaling', () => {
     expect(action(resolveRound(battle, local).battle).skillId).toBe(gemSkill(item).id);
     const older = ready({ id:'legacy-ward', defId:'pale-ward', variant:'pure' }); delete older.partyOrder;
     older.units.find(unit => unit.characterId === 'noelle')!.hp = 1000;
-    expect(action(resolveRound(older, local).battle).skillId).toBe('barrier-23');
+    expect(action(resolveRound(older, local).battle).skillId).toBe(gemSkill(older.memoryGems!.seris).id); // Aptitude makes even the unrolled stone slightly stronger than native 18.
+    const cooling=structuredClone(older);cooling.units.find(u=>u.characterId==='seris')!.cooldowns['memory:slot']=99;
+    expect(action(resolveRound(cooling, local).battle).skillId).toBe('barrier-23');
   });
 
   it('caps rolled utility effects without changing the legacy rewind or allowing gem cooldown loops', () => {
@@ -147,7 +149,7 @@ describe('rolled gem combat and tower scaling', () => {
       if (unit.side === 'party') expect(unit).toEqual(previous);
       else {
         const def = local.characters.find(character => character.id === unit.characterId)!;
-        const baseline = characterStats(def, undefined, unit.boss, baseStage.bossScale);
+        const baseline = encounterStats(def,{...baseStage,enemyScale:undefined},unit.boss);
         expect(unit.maxHp).toBe(Math.round(baseline.hp * 2));
         expect(unit.attack).toBe(Math.round(baseline.attack * 1.5));
         expect(unit.defense).toBe(Math.round(baseline.defense * 1.2));

@@ -32,7 +32,7 @@ describe('War Goddess Rally', () => {
     expect(event.targetIds).toEqual(battle.units.filter(unit => unit.side === 'party' && unit.hp > 0).map(unit => unit.uid));
     for (const unit of event.unitsAfter!) {
       if (event.targetIds!.includes(unit.uid)) {
-        expect(unit.buffStrength).toBe(skill.strength); expect(unit.buffUntil).toBe(2);
+        expect(unit.buffStrength).toBe(18); expect(unit.buffUntil).toBe(2);
       } else expect(unit.buffUntil).toBeUndefined();
     }
     expect(event.unitsAfter!.find(unit => unit.uid === event.actorId)!.cooldowns[skill.id]).toBe(5);
@@ -60,7 +60,7 @@ describe('War Goddess Rally', () => {
     weak.buffStrength = 10; weak.buffUntil = 2;
     const event = cast(battle);
     expect(event.unitsAfter!.find(unit => unit.uid === strong.uid)).toMatchObject({ buffStrength: 30, buffUntil: 4 });
-    expect(event.unitsAfter!.find(unit => unit.uid === weak.uid)).toMatchObject({ buffStrength: 23, buffUntil: 2 });
+    expect(event.unitsAfter!.find(unit => unit.uid === weak.uid)).toMatchObject({ buffStrength: 18, buffUntil: 2 });
   });
 
   it('avoids a redundant cast and does not issue orders when alone or asleep', () => {

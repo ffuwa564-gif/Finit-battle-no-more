@@ -177,3 +177,6 @@
 .inventory-art-modal.inventory-theme .industry-recipe p { font-size:13px; margin:0; }
 .inventory-art-modal.inventory-theme .industry-power { grid-template-columns:54px minmax(0,1fr); }
 .inventory-art-modal.inventory-theme .industry-power>.inventory-illustration { width:54px; height:115px; }
+
+/* The night-sheet rule has the same specificity: keep parchment skill text legible. */
+.inventory-theme .memory-gems .memory-gems__effect { color:#493b30; }

@@ -12,8 +12,11 @@ export const clockTeams = [
   { name: 'power', ids: ['athena','selene','asteria','freyja'], leader: 'athena' },
   { name: 'starter', ids: ['elaine','liora','seris','noelle'], leader: 'liora' },
 ];
-export function simulateClock(team: typeof clockTeams[number], seed: number, policy: Strategy | 'switch' = 'switch') {
+export function simulateClock(team: typeof clockTeams[number], seed: number, policy: Strategy | 'switch' = 'switch', stones=true) {
   let battle = createBattle(content, team.ids, team.leader, 'frozen-dawn-clock', 5, seed, `clock-${seed}`);
+  // Rule 4 comparisons include the same legal entry T3 stone in every party with Seris.
+  const striker=team.ids.find(id=>id==='seris'||id==='seris-awakened');
+  if(striker&&stones)battle.memoryGems={[striker]:{id:'clock-entry-echo',defId:'echo-shard',variant:'pure',roll:{power:80,trait:'none',value:0}}};
   const turns: { round: number; damage: number; breaks: number; bossHp: number; living: number; acceleration: boolean; finale: boolean }[] = [];
   while (battle.phase !== 'reward' && battle.phase !== 'failed' && turns.length < 45) {
     if (battle.phase === 'playing') { battle = advanceReplay(battle, content); continue; }

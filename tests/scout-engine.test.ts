@@ -17,7 +17,7 @@ const finish = (b: Battle) => ready(resolveRound(b, lab).battle);
 
 describe('resident mechanics wired into real battle rounds', () => {
   it('creates and recovers Ione marks via actual ordinary actions, retaining the4R cooldown', () => {
-    let b = fixture(['ione', 'ruka']);
+    let b = fixture(['ione', 'ruka']); ally(b,'ruka').speed=100; // Ruka acts before the mark, then recovers it in the following round.
     b.partyOrder = { kind: 'skill', skillId: SCOUT_SKILLS.mark }; b = finish(b);
     expect(foe(b).scoutMark?.sourceId).toBe(ally(b, 'ione').uid);
     expect(ally(b, 'ione').cooldowns[SCOUT_SKILLS.mark]).toBe(5);

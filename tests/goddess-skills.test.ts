@@ -30,7 +30,7 @@ describe('lower rarity goddess utility', () => {
     const heals = changes.filter(change => change.amount > 0);
     expect(heals).toHaveLength(2);
     expect(cast.amount).toBe(heals.reduce((sum, change) => sum + change.amount, 0));
-    expect(cast.unitsAfter!.find(unit => unit.uid === thread.uid)!.hp).toBe(thread.maxHp);
+    expect(cast.unitsAfter!.find(unit => unit.uid === thread.uid)!.hp).toBe(Math.min(thread.maxHp,thread.hp+Math.floor(caster.attack*(18+30)/40)));
     expect(cast.unitsAfter!.find(unit => unit.characterId === 'wakahirume')!.hp).toBe(0);
     expect(cast.unitsAfter!.find(unit => unit.uid === caster.uid)!.cooldowns['mend-pair-17']).toBe(4);
     expect(stone.hp).toBe(Math.floor(stone.maxHp * .7));
@@ -104,7 +104,7 @@ it('Eos strengthens an attacker or protects an ally, while Nike removes a barrie
   const result=resolveRound(battle,content).battle;
   const support=result.events.find(event=>event.actorId==='party:eos')!;
   expect(support.targetIds).toEqual(['party:nike']);
-  expect(support.unitsAfter!.find(unit=>unit.uid==='party:nike')!.buffStrength).toBe(15);
+  expect(support.unitsAfter!.find(unit=>unit.uid==='party:nike')!.buffStrength).toBe(18);
   const strike=result.events.find(event=>event.actorId==='party:nike')!;
   const struck=strike.unitsAfter!.find(unit=>unit.uid===enemy.uid)!;
   expect(struck.barrier).toBeUndefined();expect(struck.hp).toBeLessThan(enemy.hp);

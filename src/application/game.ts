@@ -73,7 +73,7 @@ function secureMemoryChest(save: GameSave, wave: number, content: Content): void
   if (battle.gemChestChecks?.includes(key)) return;
   battle.gemChestChecks = [...(battle.gemChestChecks ?? []), key];
   const inventory = save.memoryGems ??= emptyGemInventory();
-  const result = rollGemDrop(dungeon, battle.seed, key, { first: inventory.seen.length === 0 && !inventory.rough?.length, boss: wave === dungeon.waves.length - 1 });
+  const result = rollGemDrop(dungeon, battle.seed, key, { rulesVersion:battle.rulesVersion,first: inventory.seen.length === 0 && !inventory.rough?.length, boss: wave === dungeon.waves.length - 1 });
   battle.seed = result.seed;
   if (!result.gem || inventory.items.some(item => item.id === result.gem!.id)) return;
   const raw = roughMemoryGem(result.gem, result.seed);

@@ -1,3 +1,8 @@
+import {BUILD_GEM_IDS,buildGemSuggested,startBuildGem,expireBuildGems,afterBuildPrimary,releaseBossReserves} from './build-gems';
+import {consumeRoyalPower,observeRoyalBreak,royalLethalProtection,observeRoyalRank} from './royal-leaders';
+import {COMBAT_REFERENCE,profileStats} from './combat-profiles';
+import {RELEASE} from '../content/version';
+import {combatContent} from './combat-compatibility';
 import { canHunt, huntPool, huntProgress, HUNT_HANDS, HUNT_RULES, HUNT_BOSS_UNLOCK } from './hunt';
 import { capFieldDamage, finishFieldRound, beginFieldRound, fieldSkill, fieldSuggested, repairFieldReceipt, payFieldSupply } from './field-research';
 import { commandYieldsToResources } from './command-resource-safety';
@@ -57,16 +62,22 @@ export function rng(seed: number): { seed: number; value: number } {
   return { seed: next, value: next / 4294967296 };
 }
 export function skillFactor(strength: number): number { return 1 + (strength - 10) / 40; }
-export function baseStats(def: CharacterDef): Stats {
+export function baseStats(def: CharacterDef, rulesVersion=RELEASE.rulesVersion as string): Stats {
   const base = BASE[def.role];
   if (!base || !Number.isInteger(def.strength) || def.strength <= 0) throw new Error('キャラクターの能力定義が不正です');
+  if(rulesVersion==='4')return profileStats(def,base);
   return { hp: Math.round(base.hp * def.strength / 10), attack: Math.round(base.attack * def.strength / 10), defense: Math.round(base.defense * def.strength / 10), speed: base.speed };
+}
+/** Encounter level scales a shared sheet; rarity never creates a second enemy stat table.
+ * Earlier ordinary creatures keep their introductory level. Boss difficulty belongs to stage scales. */
+export function enemyEncounterMultiplier(def:CharacterDef,rulesVersion=RELEASE.rulesVersion as string):number{
+ return rulesVersion==='4'?Math.min(1,def.strength/COMBAT_REFERENCE):1;
 }
 export function leaderBonus(def: CharacterDef): { stat: LeaderStat; percent: number } {
   return { stat: def.leaderStat, percent: (def.leaderStat === 'hp' ? 8 : def.leaderStat === 'attack' ? 3 : 10) * def.strength / 10 };
 }
-export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = false, scale = { hp: 300, attack: 120 }): Stats {
-  const stats = baseStats(def);
+export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = false, scale = { hp: 300, attack: 120 }, rulesVersion=RELEASE.rulesVersion as string): Stats {
+  const stats = baseStats(def,rulesVersion);
   if (boss) { stats.hp = Math.round(stats.hp * scale.hp / 100); stats.attack = Math.round(stats.attack * scale.attack / 100); }
   if (leader) {
     const bonus = leaderBonus(leader);
@@ -74,6 +85,18 @@ export function characterStats(def: CharacterDef, leader?: CharacterDef, boss = 
     stats[bonus.stat] = Math.round(stats[bonus.stat] * (1000 + rate * leader.strength) / 1000);
   }
   return stats;
+}
+/** The enemy sheet is the recruit sheet with visible encounter/boss/stage multipliers. */
+export function encounterStats(def:CharacterDef,stage:DungeonDef,boss=false,rulesVersion=RELEASE.rulesVersion as string):Stats{
+ const stats=characterStats(def,undefined,boss,stage.bossScale,rulesVersion);
+ const level=enemyEncounterMultiplier(def,rulesVersion);
+ for(const key of ['hp','attack','defense'] as const){
+  stats[key]=Math.max(key==='hp'?1:0,Math.round(stats[key]*level));
+  const scale=stage.enemyScale?.[key]??1;
+  if(!Number.isFinite(scale)||scale<=0)throw new Error('キャラクターの能力定義が不正です');
+  stats[key]=Math.min(Number.MAX_SAFE_INTEGER,Math.max(key==='hp'?1:0,Math.round(stats[key]*scale)));
+ }
+ return stats;
 }
 export function dungeonDifficulty(def: DungeonDef, content: Content): number {
   const scale = def.bossScale ?? { hp: 300, attack: 120 };
@@ -113,14 +136,7 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   const def = character(content, characterId);
   const leader = side === 'party' ? character(content, battle.leaderId) : undefined;
   const stage = dungeon(content, battle.dungeonId);
-  const stats = characterStats(def, leader, boss, stage.bossScale);
-  if (side === 'enemy' && stage.enemyScale) {
-    for (const key of ['hp', 'attack', 'defense'] as const) {
-      const scale = stage.enemyScale[key];
-      if (!Number.isFinite(scale) || scale <= 0) throw new Error('キャラクターの能力定義が不正です');
-      stats[key] = Math.min(Number.MAX_SAFE_INTEGER, Math.max(key === 'hp' ? 1 : 0, Math.round(stats[key] * scale)));
-    }
-  }
+  const stats = side==='enemy'?encounterStats(def,stage,boss,battle.rulesVersion):characterStats(def,leader,false,undefined,battle.rulesVersion);
   const random = rng(battle.seed); battle.seed = random.seed;
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
 }
@@ -156,6 +172,7 @@ function clearEffects(unit: Unit): void {
   delete unit.bossWindup; delete unit.bossRecoveryUntil;
   delete unit.defendingUntil;
   delete unit.ultimateQueued;
+  delete unit.concordMark;if(unit.gemPreparation?.kind==='camp')delete unit.gemPreparation;
   delete unit.ailments; delete unit.statusWardUntil;
   delete unit.bits;
   delete unit.guardTarget; delete unit.guardUntil; delete unit.guardStrength;
@@ -196,11 +213,13 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
   battle.units = [...party, ...wave.map((enemy, i) => makeUnit(battle, content, enemy.characterId, 'enemy', i, !!enemy.boss))];
   if(battle.hunt?.stage==='hunting'){battle.units=party;refillHunt(battle,content);}
   battle.fieldSupplies=undefined; if(def.fieldLesson) battle.fieldScenario={kind:def.fieldLesson,rounds:12};
+  if(battle.royalLeader){delete battle.royalLeader.verdictRound;delete battle.royalLeader.verdictUsedRound;}
   battle.round = 1; battle.potionUsed = false;
   restoreClockShield(battle, content, false);
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
   battle.phase = 'playing'; battle.nextPhase = 'ready';
   emit(battle, { kind: 'wave', text: `Wave ${battle.wave + 1} / ${def.waves.length}`, unitsAfter: clone(battle.units) });
+  releaseBossReserves(battle,e=>emit(battle,e));
   if (rareId) emit(battle, { kind: 'dialogue', actorId: battle.units.find(unit => unit.side === 'enemy' && unit.characterId === rareId)!.uid, text: `希少な気配 — ${character(content, rareId).name}` });
   for (const boss of battle.units.filter((unit) => unit.boss)) {
     const flag = `${boss.uid}:enter`;
@@ -255,7 +274,7 @@ function skillList(actor: Unit, content: Content, battle: Battle): SkillDef[] {
   const skills = characterSkills(character(content, actor.characterId), content,battle);
   if (equipped) skills.push(gemSkill(equipped));
   const equippedId = equipped ? gemSkill(equipped).id : undefined;
-  const skillValue = (skill: SkillDef) => skill.id === equippedId ? (skill.strength + 30) * gemPowerMultiplier(equipped!) - 30 : skill.strength;
+  const skillValue = (skill: SkillDef) => skill.id === equippedId ? (skill.strength + 30) * gemPowerMultiplier(equipped!,character(content,actor.characterId),content,battle.rulesVersion) - 30 : skill.strength;
   return skills.filter(skill => enemySupportAvailable(actor, skill.template, dungeon(content, battle.dungeonId)) && (actor.cooldowns[skill.id] ?? 0) <= battle.round && (!gemDefinitionForSkill(skill.id) || ((actor.cooldowns['memory:slot'] ?? 0) <= battle.round && memorySkillUsable(actor, battle, skill)))).sort((a,b) => skillValue(b) - skillValue(a) || a.id.localeCompare(b.id));
 }
 interface Action { commandRedirected?: boolean; commanded?: boolean; manualGuard?: boolean; ultimate?: boolean; clockFinale?: boolean; directive?: 'aggressive' | 'survival'; skill?: SkillDef; template: SkillTemplate; targets: Unit[]; power?: number; name?: string; forcedBy?: Ailment }
@@ -308,7 +327,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   const role = character(content, actor.characterId).role;
   const strategy = actor.side === 'party' ? battle.strategy : 'balanced';
   const skills = skillList(actor, content, battle);
-  const get = (template: SkillTemplate) => skills.find((skill) => skill.template === template && !['shield-break', 'rewind-thread', 'echo-shard', 'wick-stone'].includes(gemDefinitionForSkill(skill.id)?.id ?? ''));
+  const get = (template: SkillTemplate) => skills.find((skill) => skill.template === template && ![...BUILD_GEM_IDS,'shield-break', 'rewind-thread', 'echo-shard', 'wick-stone'].includes(gemDefinitionForSkill(skill.id)?.id ?? ''));
   const stage = dungeon(content, battle.dungeonId);
   const forecast = enemyArtCharging(battle, stage);
   const fieldAction = fieldSuggested(battle,actor,skills); if (fieldAction) return fieldAction;
@@ -353,7 +372,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
   }
   const barrier = get('barrier');
   const barrierMemory = barrier && actor.side === 'party' ? battle.memoryGems?.[actor.characterId] : undefined;
-  const barrierPower = (barrierMemory && barrier!.id === gemSkill(barrierMemory).id ? gemPowerMultiplier(barrierMemory) : 1)
+  const barrierPower = (barrierMemory && barrier!.id === gemSkill(barrierMemory).id ? gemPowerMultiplier(barrierMemory,character(content,actor.characterId),content,battle.rulesVersion) : 1)
     * (actor.side === 'party' && battle.crystalRole === role ? CRYSTAL_POWER : 1);
   const exposed = barrier ? allies.filter(unit => {
     const old = (unit.barrierUntil ?? -1) >= battle.round ? unit.barrier ?? 0 : 0;
@@ -388,6 +407,7 @@ function chooseDefaultAction(actor: Unit, battle: Battle, content: Content, coun
     }
   }
   if (counter) return counter;
+  const buildMemory=buildGemSuggested(actor,battle,skills,content);if(buildMemory)return {...buildMemory,template:buildMemory.skill.template};
   const memory = skills.find(skill => ['shield-break', 'rewind-thread', 'echo-shard', 'wick-stone'].includes(gemDefinitionForSkill(skill.id)?.id ?? '') && memorySkillUsable(actor, battle, skill));
   if (memory && !(gemDefinitionForSkill(memory.id)?.id === 'shield-break' && allies.some(unit => unit.hp <= unit.maxHp * .3))) return { skill: memory, template: memory.template, targets: orderTargets(actor, battle, memory.template, memory.id) };
   const memoryHeal = skills.find(skill => gemDefinitionForSkill(skill.id) && skill.template === 'heal');
@@ -451,6 +471,7 @@ function chooseAction(actor: Unit, battle: Battle, content: Content): Action {
   return ordinary.skill?.id !== comparison.skill?.id ? { ...chosen, directive: battle.strategy } : chosen;
 }
 function expireRoundEffects(battle: Battle, content: Content) {
+  expireBuildGems(battle);
   const stored = harvestMendThreads(battle.units, battle.round, content);
   for (const unit of battle.units) {
     if(unit.jamDampening&&(unit.hp<=0||unit.jamDampening.until<battle.round))delete unit.jamDampening;
@@ -485,14 +506,14 @@ function plannedAction(actor: Unit, intent: PlannedPartyAction, battle: Battle, 
   if (intent.skillId && (!skill || !orderSkillReady(actor, battle, skill))) return;
   if (intent.ultimate && !ultimateReady(actor)) return;
   let targets = intent.targetIds.flatMap(id => battle.units.filter(u => u.uid === id && u.hp > 0));
-  if (!targets.length) targets = orderTargets(actor, battle, intent.template, skill?.id, skill);
+  if (!targets.length || BUILD_GEM_IDS.includes(gemDefinitionForSkill(skill?.id??'')?.id as typeof BUILD_GEM_IDS[number])) targets = orderTargets(actor, battle, intent.template, skill?.id, skill);
   if (!targets.length) return;
   return { template: intent.template, targets, skill, ultimate: intent.ultimate, name: intent.name };
 }
 
 interface CoordinationHits { bonusPercent: number; hits: Map<string, Set<string>>; linked: Set<string> }
 
-function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1, coordination?: CoordinationHits, isBossStrike = false, secondary = false): { unit: Unit; amount: number; absorbed: number; shattered: number } {
+function damage(actor: Unit, target: Unit, numerator: number, denominator: number, battle: Battle, guardable: boolean, content: Content, piercing = false, shattering = false, dawning = false, potency = 1, coordination?: CoordinationHits, isBossStrike = false, secondary = false): { unit: Unit; amount: number; absorbed: number; shattered: number; overflow:number } {
   const guard = guardable ? battle.units.find(unit => unit.hp > 0 && unit.side === target.side && unit.uid !== target.uid && unit.guardTarget === target.uid && (unit.guardUntil ?? -1) >= battle.round) : undefined;
   const recipient = guard ?? target;
   const shattered = shattering && (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0;
@@ -515,7 +536,10 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   amount = Math.max(1, Math.floor(amount * consumeScoutLantern(recipient, battle.round, isBossStrike)));
   const absorbed = Math.min(amount, (recipient.barrierUntil ?? -1) >= battle.round ? recipient.barrier ?? 0 : 0);
   if (absorbed) recipient.barrier = (recipient.barrier ?? 0) - absorbed;
-  const actual = capFieldDamage(battle,recipient,Math.min(recipient.hp, amount - absorbed)); recipient.hp -= actual;
+  const overkill=Math.max(0,amount-absorbed-recipient.hp);
+  const rawActual=capFieldDamage(battle,recipient,Math.min(recipient.hp, amount-absorbed));
+  const actual=actor.side!==recipient.side?royalLethalProtection(battle,recipient,rawActual,content):rawActual;recipient.hp-=actual;
+  // The primary attack event owns its HP and gauge snapshot, preserving audiovisual timing.
   storeBarrierAbsorption(recipient, absorbed, battle.round, actor.side !== recipient.side && !secondary);
   if (actor.side === 'party' && recipient.side === 'enemy') recordBossWindupDamage(recipient, pressure, battle.round, actual);
   if (coordination && actor.side === 'party' && recipient.side === 'enemy' && (actual > 0 || absorbed > 0)) {
@@ -525,7 +549,7 @@ function damage(actor: Unit, target: Unit, numerator: number, denominator: numbe
   if (actual > 0) gainUltimate(recipient, 10);
   if (actual > 0 && recipient.ailments?.sleep) { delete recipient.ailments.sleep; recipient.statusWardUntil = battle.round + 1; }
   if (recipient.hp <= 0) { delete recipient.ailments; delete recipient.statusWardUntil; delete recipient.barrierReturn; delete recipient.mendThread; delete recipient.jamDampening; }
-  return { unit: recipient, amount: actual, absorbed, shattered };
+  return { unit: recipient, amount: actual, absorbed, shattered,overflow:overkill };
 }
 const eventKind: Record<SkillTemplate, BattleEvent['kind']> = {
   overclock: 'buff', barrier_mend: 'heal', jam: 'debuff',
@@ -624,10 +648,12 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
       emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId === event.core.id ? 'epic' : 'rare' });
     }
   }
+  if(battle.rulesVersion==='4')observeRoyalRank(battle,content,e=>emit(battle,e));
   refillHunt(battle,content);
   return { goldEarned, discoveredIds };
 }
 export function resolveRound(input: Battle, content: Content): RoundResult {
+  content=combatContent(input,content);
   if (input.phase !== 'ready') throw new Error('今はラウンドを進められません');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const command = input.commandOrder ? validateCommandOrder(input.commandOrder, input, content, { stored: true }) : undefined;
@@ -692,9 +718,10 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const equippedMemory = actor.side === 'party' && action.skill ? battle.memoryGems?.[actor.characterId] : undefined;
     const memoryGem = equippedMemory && action.skill?.id === gemSkill(equippedMemory).id ? equippedMemory : undefined;
     const memoryRoll = memoryGem ? gemRoll(memoryGem) : undefined;
-    const memoryPower = memoryGem ? gemPowerMultiplier(memoryGem) : 1;
+    const memoryPower = memoryGem ? gemPowerMultiplier(memoryGem,actorDef,content,battle.rulesVersion) : 1;
     const executionPower = (target: Unit) => memoryGem && memoryRoll?.trait === 'execution' && target.hp <= target.maxHp * .35 ? 1 + gemTraitAmount(memoryGem) / 100 : 1;
-    const potency = memoryPower * (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
+    const royalPower=consumeRoyalPower(battle,actor,content,['attack','area','pierce','drain','shatter','dawn'].includes(action.template)&&!action.forcedBy);
+    const potency = royalPower * memoryPower * (actor.side === 'party' && battle.crystalRole === actorDef.role && !action.forcedBy && (action.skill || action.ultimate) ? CRYSTAL_POWER : 1);
     const name = actorDef.name;
     const openedBarrier = Boolean(action.power && actor.barrier);
     if (action.power) {
@@ -706,11 +733,12 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     const actionName=jamDampened?`${baseActionName}（余白の緩衝${jamDampened}%）`:baseActionName;
     let statusAction: BattleEvent['statusAction'] = action.forcedBy && action.targets[0]?.side === actor.side ? 'friendly_fire' : undefined;
     let jamExtended = false;
-    const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0; let selfCost = 0;
+    const targetIds: string[] = []; let amount = 0; let absorbed = 0; let drained = 0; let shattered = 0; let selfCost = 0; let overflow = 0;
     const memoryDef = action.skill ? gemDefinitionForSkill(action.skill.id) : undefined;
     const customScout = action.skill && !memoryDef && !action.ultimate && !action.forcedBy ? fieldSkill(battle,actor,action.skill,potency) ?? scoutSkillAction(battle, actor, action.skill.id, potency, action.targets.map(target => target.uid)) : undefined;
     const scoutPower = action.skill && !memoryDef && !action.ultimate && !action.forcedBy ? scoutDamageMultiplier(battle, actor, action.skill.id) : 1;
-    if (customScout) {
+    if (memoryDef&&battle.rulesVersion==='4'&&startBuildGem(actor,battle,action.skill!,action.targets,potency)) {targetIds.push(...action.targets.map(u=>u.uid));}
+    else if (customScout) {
       let prevented = 0;
       for(const unit of battle.units){const old=before.find(t=>t.uid===unit.uid);if(old&&unit.hp<old.hp){const wanted=old.hp-unit.hp;const capped=capFieldDamage(battle,unit,wanted);unit.hp+=wanted-capped;prevented+=wanted-capped;}}
       amount = Math.max(0,customScout.amount-prevented); targetIds.push(...customScout.targetIds);
@@ -844,9 +872,13 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
       const denominator = action.power ? 100 : action.template === 'shatter' ? 50 : (action.template === 'pierce' || action.template === 'dawn') ? 40 : action.template === 'drain' ? 400 : action.template === 'area' ? 800 : action.skill ? 80 : 1;
       for (const target of action.targets) {
         const attackActor = memoryGem ? { ...actor, attack: gemAttackReference(memoryGem, actor) } : actor;
-        const hit = damage(attackActor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency * (100-jamDampened)/100 * executionPower(target) * scoutPower, coordination, Boolean(action.power && actor.side === 'enemy' && actor.boss)); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered; targetIds.push(hit.unit.uid);
+        const disrupt=memoryDef?.id==='disrupt-sigil'&&dungeon(content,battle.dungeonId).bossStrike?.windup&&bossWindupStatus(target,dungeon(content,battle.dungeonId).bossStrike!,battle.round).phase==='charging'?1.75:1;
+        const hit = damage(attackActor, target, numerator, denominator, battle, action.template !== 'area', content, action.template === 'pierce' || action.template === 'dawn', action.template === 'shatter', action.template === 'dawn', potency * disrupt * (100-jamDampened)/100 * executionPower(target) * scoutPower, coordination, Boolean(action.power && actor.side === 'enemy' && actor.boss)); amount += hit.amount; absorbed += hit.absorbed; shattered += hit.shattered;overflow+=hit.overflow; targetIds.push(hit.unit.uid);
       }
     }
+    const primaryAfter=battle.units.map(u=>({...u}));
+    const royalEvents:Omit<BattleEvent,'id'>[]=[];
+    if(!action.forcedBy&&['attack','area','pierce','drain','shatter','dawn'].includes(action.template))observeRoyalBreak(battle,before,content,e=>royalEvents.push(e));
     if (action.skill && memoryDef && ['attack', 'area', 'pierce', 'drain', 'shatter', 'dawn'].includes(action.template) && (['echo-shard', 'wick-stone'].includes(memoryDef.id) || gemVariantForSkill(action.skill.id) === 'echo')) {
       const target = battle.units.find(u => targetIds.includes(u.uid) && u.hp > 0 && u.side !== actor.side);
       if (target && amount > 0) {
@@ -875,6 +907,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     clearInvalidGuards(battle);
     const recovered = ageAilments(actor, battle.round);
     emit(battle, { jamDampenedPercent:jamDampened||undefined, commandRedirected: action.commanded ? Boolean(action.commandRedirected) : undefined, returnDamage: returnDamage || undefined, coordinationAction: coordination?.linked.has(actor.uid) ? 'linked' : undefined, actionSelection: true, kind: eventKind[action.template], ultimate: (action.ultimate || Boolean(action.power)) || undefined, ultimateName: action.power ? actionName : undefined, clockAction: action.clockFinale ? 'finale' : undefined, bossStrike: Boolean(action.power), directive: action.directive, statusAction, ailment: isAilment(action.template) ? action.template : action.forcedBy, text: `${name} — ${actionName}${action.commanded ? '（号令の宛先）' : ''}${rescue.note ? `（${rescue.note}）` : ''}${coordination?.linked.has(actor.uid) ? '（協撃）' : ''}${openedBarrier ? '（障壁を解いて攻勢）' : ''}${statusAction === 'resist' ? '（状態異常を防いだ）' : isAilment(action.template) ? `（${ailmentNames[action.template]}を付与）` : ''}${shattered ? `（障壁${shattered}を破壊）` : ''}${absorbed ? `（障壁が${absorbed}軽減）` : ''}${drained ? `（HP${drained}吸収）` : ''}`, actorId: actor.uid, targetIds: [...new Set(targetIds)], skillId: action.skill?.id, amount: amount + returnDamage, absorbed: absorbed || undefined, selfCost: selfCost || undefined, unitsAfter: clone(battle.units) });
+    for(const event of royalEvents)emit(battle,{...event,unitsAfter:clone(battle.units)});
     if(returnGift)emit(battle,{kind:'buff',actorId:actor.uid,targetIds:returnTarget?[returnTarget.uid]:[],skillId:returnGift.skillId,barrierReturnAction:'consume',resourceAmount:returnGift.power,text:`${returnGift.name} — 蓄えた花びらを一撃へ`,unitsAfter:clone(battle.units)});
     // The ordinary guard snapshot precedes the seed's independent HP change.
     if (action.manualGuard) {
@@ -924,7 +957,9 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     for (const event of payFieldSupply(battle,actor,before,!action.ultimate&&!action.forcedBy&&!memoryDef&&!action.power)) emit(battle,event);
     const scoutMessages = [...(customScout?.messages ?? []), ...afterScoutAction(battle, actor, before, { skillId: action.skill?.id, ordinary: !action.ultimate && !action.forcedBy && !memoryDef, guardedDuringWindup: guardingForecast })];
     for (const text of scoutMessages) emit(battle, { kind: text.includes('回復') ? 'heal' : 'buff', actorId: actor.uid, text, unitsAfter: clone(battle.units) });
+    if(!action.forcedBy){afterBuildPrimary(battle,actor,before,action.skill,action.template,targetIds,overflow,content,(source,target,power)=>damage({...source,attack:power},target,100,100,battle,true,content,false,false,false,1,undefined,false,true),e=>emit(battle,e),primaryAfter);}
     const settled = settleAction(battle, content, before);
+
     goldEarned += settled.goldEarned;
     discoveredIds.push(...settled.discoveredIds.filter(id => !discoveredIds.includes(id)));
   }
@@ -998,6 +1033,7 @@ export function useBattleBloom(input: Battle, bloomId: string, content: Content)
 }
 /** Saved off-turn aid uses ordinary damage, defeat, drop and replay settlement. */
 export function useBattleAid(input: Battle, kind: 'heal' | 'strike', content: Content, source: 'bloom' | 'harvest' = 'harvest'): RoundResult {
+  content=combatContent(input,content);
   if (input.phase !== 'ready') throw new Error('指示待ちのときだけ操作できます。');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input), before = clone(battle.units);
@@ -1025,6 +1061,7 @@ export function useBattleAid(input: Battle, kind: 'heal' | 'strike', content: Co
 }
 /** A single saved blessing; never advances combat or resets the potion allowance. */
 export function useBattleFairy(input: Battle, fairyId: string, content: Content): Battle {
+  content=combatContent(input,content);
   const visitor = input.fairies?.visitor;
   if (input.phase !== 'ready' || !visitor || visitor.id !== fairyId || visitor.wave !== input.wave || input.round >= visitor.round + FAIRY_STAY) throw new Error('この妖精はもういません。');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
@@ -1040,6 +1077,7 @@ export function useBattleFairy(input: Battle, fairyId: string, content: Content)
   return battle;
 }
 export function advanceReplay(input: Battle, content: Content): Battle {
+  content=combatContent(input,content);
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
   const battle = clone(input);
   delete battle.omens;
@@ -1075,6 +1113,7 @@ export function usePotion(input: Battle, unitId: string): Battle {
 
 
 export function proceedToHuntBoss(input:Battle,content:Content):Battle {
+  content=combatContent(input,content);
  if(input.phase!=='ready'||input.hunt?.stage!=='hunting'||input.hunt.kills<HUNT_BOSS_UNLOCK)throw Error('Bランクに到達してからボスへ進めます。');
  const b=clone(input);b.hunt!.finishAt=b.hunt!.actions;b.initialUnits=clone(b.units);b.phase='playing';b.nextPhase='wave';b.events=[];b.cursor=0;
  emit(b,{kind:'wave',text:'ボスへ向かった',unitsAfter:clone(b.units)});return b;

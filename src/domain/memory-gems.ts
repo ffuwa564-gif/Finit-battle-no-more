@@ -1,4 +1,5 @@
-import type { DungeonDef, SkillDef } from './types';
+import {stoneAffinity} from './combat-profiles';
+import type { CharacterDef,Content,DungeonDef, SkillDef } from './types';
 
 export type GemFamily = 'sanctuary' | 'clock' | 'grave';
 export type GemVariant = 'pure' | 'echo' | 'swift';
@@ -15,7 +16,7 @@ export interface MemoryGem { id: string; defId: string; variant: GemVariant; loc
 export interface RoughMemoryGem { id: string; promise: 'ordinary' | 'glimmering' | 'radiant'; result: MemoryGem }
 export interface GemPolishSession { rawId: string; startedAt: number; expiresAt: number; progress: number; lastTapAt: number; attempt: number; nonce: number; lastResult: 'ready' | 'good' | 'miss' }
 export interface GemInventory { rough?: RoughMemoryGem[]; polish?: GemPolishSession; items: MemoryGem[]; equipped: Record<string, string>; dust: Record<string, number>; seen: string[]; craftSerial?: number; pending?: { gemId: string; candidate: MemoryGem } }
-export interface GemDefinition { fixedRoll?: GemRoll; id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
+export interface GemDefinition { introducedRule?: number; fixedRoll?: GemRoll; id: string; name: string; description: string; family: GemFamily; rarity: 'common' | 'rare' | 'epic'; skill: SkillDef; cooldown: number; variants: GemVariant[]; bossOnly?: boolean }
 
 export const GEM_CRAFT_COST = 6;
 export const GEM_FAMILIES: Record<GemFamily, { name: string; description: string; color: string }> = {
@@ -29,9 +30,9 @@ export const GEM_VARIANTS: Record<GemVariant, { name: string; description: strin
   swift: { name: '速唱', description: '攻撃の威力を抑え、再使用が1ラウンド早まる。' },
 };
 
-function definition(id: string, name: string, description: string, family: GemFamily, template: SkillDef['template'], cooldown: number, strength = 14, options: { variants?: GemVariant[]; bossOnly?: boolean; rarity?: GemDefinition['rarity']; fixedRoll?: GemRoll } = {}): GemDefinition {
+function definition(id: string, name: string, description: string, family: GemFamily, template: SkillDef['template'], cooldown: number, strength = 14, options: { introducedRule?:number; variants?: GemVariant[]; bossOnly?: boolean; rarity?: GemDefinition['rarity']; fixedRoll?: GemRoll } = {}): GemDefinition {
   const soundProfile = ['barrier'].includes(template) ? 'guard' : ['cleanse', 'overclock', 'buff'].includes(template) ? 'buff' : ['heal', 'mend_pair'].includes(template) ? 'heal' : ['dispel', 'sleep'].includes(template) ? 'debuff' : 'attack';
-  return { id, name, description, family, rarity: options.rarity ?? 'common', skill: { id: `memory:${id}:pure:catalogue`, name, template, strength, soundProfile }, cooldown, variants: options.variants ?? ['pure'], ...(options.bossOnly ? { bossOnly: true } : {}), ...(options.fixedRoll ? { fixedRoll: options.fixedRoll } : {}) };
+  return { ...(options.introducedRule?{introducedRule:options.introducedRule}:{}),id, name, description, family, rarity: options.rarity ?? 'common', skill: { id: `memory:${id}:pure:catalogue`, name, template, strength, soundProfile }, cooldown, variants: options.variants ?? ['pure'], ...(options.bossOnly ? { bossOnly: true } : {}), ...(options.fixedRoll ? { fixedRoll: options.fixedRoll } : {}) };
 }
 
 /** Loot changes available actions, never the wearer's permanent statistics. */
@@ -49,6 +50,13 @@ export const GEM_DEFINITIONS: GemDefinition[] = [
   definition('twin-tide', '双潮の記憶', '傷ついた味方2人を同時に回復する。1人ずつへの回復量は単体回復より控えめ。', 'grave', 'mend_pair', 3, 22, { bossOnly: true, rarity: 'epic' }),
   definition('wick-stone', '灯芯の補助石', '攻撃の参照値を最大24補い、参照値65まで引き上げて敵1体を攻撃する。元の攻撃は下げない。実際のHPダメージの35%で次ラウンドに追撃し、追撃は連鎖しない。固定T3製作品で、調律はできない。覚醒後も装備でき、高い攻撃には補助が自然に減る。', 'clock', 'attack', 3, 14, { fixedRoll: { power: 80, trait: 'none', value: 0 } }),
   definition('white-flower-seed', '摘まない白花', '出発時の先頭の生存者を20回復し、種を1個預ける。付与から2ラウンド後の終了までに本人が通常の防御を実行すると、種を消費して50回復。防御の予約だけでは咲かない。種は重ねず更新しない。回復量は固定で、石や結晶の倍率はかからない。固定T3製作品で、調律はできない。', 'sanctuary', 'heal', 4, 14, { fixedRoll: { power: 80, trait: 'none', value: 0 } }),
+  definition('sweep-prism','掃討晶石','敵が2体以上いるとき、敵全体へ控えめな攻撃。単体の敵には使えない。','clock','area',4,12,{introducedRule:4}),
+  definition('overflow-ember','残火石','敵を攻撃。撃破時の余剰火力の半分を別の敵1体へ渡す。追加分は攻撃力と石の効力で上限が決まり、再発動しない。','grave','attack',4,14,{introducedRule:4}),
+  definition('camp-lantern','野営灯石','一手を使い準備。5ラウンド以内に味方の主攻撃で敵を3体倒すと、味方全員を最大HPの5%×石の効力で一度だけ回復（上限35%）。','sanctuary','buff',5,14,{introducedRule:4}),
+  definition('concord-mark','共鳴標石','敵1体へ4ラウンドの標。異なる味方2人の主攻撃が実際にHPを削ると、使用者の攻撃力と石の効力による一撃を追加。追撃からは進まない。','clock','debuff',4,14,{introducedRule:4}),
+  definition('disrupt-sigil','破調印石','ボスへ貫通攻撃。予告大技の準備中は威力が上昇し、崩すための一手に向く。ボス以外には使えない。','sanctuary','pierce',4,10,{introducedRule:4}),
+  definition('boss-reserve','戦果の備え石','ボスのいない道中で一手を使い準備。その後の味方の主攻撃による討伐を12体まで蓄え、ボス出現時に自分のゲージと障壁へ一度だけ変換する。','grave','buff',6,14,{introducedRule:4}),
+
 ];
 
 const definitions = new Map(GEM_DEFINITIONS.map(def => [def.id, def]));
@@ -128,7 +136,7 @@ export function gemTraitAmount(gem: MemoryGem): number {
   if (trait === 'mercy') return 20 + Math.round(value * .3);
   return 0;
 }
-export function gemPowerMultiplier(gem: MemoryGem): number { return gem.defId === 'white-flower-seed' ? 1 : 1 + gemRoll(gem).power * .015; }
+export function gemPowerMultiplier(gem: MemoryGem,wearer?:CharacterDef,content?:Content,rulesVersion=content?.rulesVersion): number { return gem.defId === 'white-flower-seed' ? 1 : (1 + gemRoll(gem).power * .015)*(wearer&&rulesVersion==='4'?stoneAffinity(wearer,gem.defId,content):1); }
 export function gemRollKey(gem: MemoryGem): string {
   const roll = gemRoll(gem), key = `${gem.defId}:${gem.variant}`;
   return roll.power === 0 && roll.trait === 'none' && roll.value === 0 ? key : `${key}:${roll.power}:${roll.trait}:${roll.value}`;
@@ -284,7 +292,7 @@ function nextRandom(seed: number): { seed: number; value: number } {
   const next = (Math.imul(seed >>> 0, 1664525) + 1013904223) >>> 0;
   return { seed: next, value: next / 4294967296 };
 }
-export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, options: { first?: boolean; boss?: boolean } = {}): { gem?: MemoryGem; seed: number } {
+export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, options: { first?: boolean; boss?: boolean; rulesVersion?:string } = {}): { gem?: MemoryGem; seed: number } {
   if (dungeon.kind === 'trial') return { seed: seed >>> 0 };
   if (!dropId || dropId.length > 300) throw new Error('宝箱の識別子が正しくありません。');
   const family = dungeonGemFamily(dungeon);
@@ -298,7 +306,7 @@ export function rollGemDrop(dungeon: DungeonDef, seed: number, dropId: string, o
   }
   random = nextRandom(random.seed);
   const unique = options.boss && !options.first && random.value < .12;
-  const candidates = GEM_DEFINITIONS.filter(def => !def.fixedRoll && def.family === family && Boolean(def.bossOnly) === Boolean(unique));
+  const candidates = GEM_DEFINITIONS.filter(def => (!def.introducedRule||!['2','3'].includes(options.rulesVersion??'4')) && !def.fixedRoll && def.family === family && Boolean(def.bossOnly) === Boolean(unique));
   random = nextRandom(random.seed);
   const firstId = { sanctuary: 'pale-ward', clock: 'echo-shard', grave: 'night-dew' }[family];
   const def = options.first ? definitions.get(firstId)! : featured ?? candidates[Math.min(candidates.length - 1, Math.floor(random.value * candidates.length))];

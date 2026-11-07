@@ -17,7 +17,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   const recipe = definition.stages[stage];
   const partyIds = recipe.slots.map(slot => slot.characterIds[0]);
   const leaderId = partyIds[recipe.leaderSlot];
-  const dungeonId = buildId === 'echo-chain' ? stage === 'perfect' ? 'kuzuha-advanced' : 'drowned-vestry' : 'veiled-cloister';
+  const dungeonId = buildId === 'echo-chain' ? 'ivory-tower-001' : 'veiled-cloister';
   const fixtures: Record<string, MemoryGem> = Object.fromEntries(recipe.slots.map((slot, index) => [partyIds[index], {
     id: `build-demo-${buildId}-${index}`, defId: slot.gem.defId, variant: slot.gem.variant,
     roll: { power: slot.gem.power, trait: slot.gem.trait ?? 'none', value: slot.gem.value ?? 0 },
@@ -63,7 +63,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
       else if(buildId==='enduring-tides' && friendly && event.actionSelection && gem?.skill.template==='drain' && damagedEnemy && actualHealing>0){proof.drainHealing+=actualHealing;highlight='drain';}
       else if(buildId==='enduring-tides' && friendly && event.kind==='heal' && event.text.endsWith('月の雫の再生') && actualHealing>0){proof.regenerationHealing+=actualHealing;highlight='regen';}
       else if(buildId==='skill-rewind' && normalCooldownReduction>0){proof.rewindCasts++;proof.cooldownReduction+=normalCooldownReduction;highlight='rewind';}
-      else if (buildId === 'shield-cannon'  && friendly && event.actionSelection && barrierGain > 0) { proof.barrierCasts++; highlight='barrier'; }
+      else if (buildId === 'shield-cannon'  && friendly && barrierGain > 0) { proof.barrierCasts++; highlight='barrier'; }
       else if (friendly && event.text.endsWith('・連鎖') && (event.amount ?? 0) > 0) { proof.chainHits++; highlight='chain'; }
       else if (friendly && event.text.endsWith('・残響') && (event.amount ?? 0) > 0) { proof.echoHits++; highlight='echo'; }
       else if (friendly && gem?.id === 'shield-break' && event.actionSelection && (event.amount ?? 0) > 0) {
