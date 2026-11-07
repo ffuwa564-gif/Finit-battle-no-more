@@ -1,0 +1,180 @@
+{
+  "passed": true,
+  "commit": "84bc048fee18128ce35d958cae1badb86ca0cae7",
+  "fullPublicReadback": [
+    {
+      "file": "Browser-QA.json",
+      "sha256": "8ca2e6cc077a98e594fe4fd63b5467e7d2cb51e0a353a89dee3e4a67600d63c3",
+      "bytes": 1500,
+      "passed": true
+    },
+    {
+      "file": "Chapters.txt",
+      "sha256": "e45624ac448528a4e4d6ed3a798ca4c5a1ab4781c7acd4dd4adeade77450c2fb",
+      "bytes": 369,
+      "passed": true
+    },
+    {
+      "file": "Credits.md",
+      "sha256": "11f4aa44b3b1c4785fcadd810f4f955811aaff40ea6486709d936c1335ce9cdb",
+      "bytes": 1413,
+      "passed": true
+    },
+    {
+      "file": "Design-Decisions.md",
+      "sha256": "0809ee9151c08821a31c43d6859c024a938636ea9ac4b1aba198d8cad53cc996",
+      "bytes": 926,
+      "passed": true
+    },
+    {
+      "file": "Final-Media-QA.json",
+      "sha256": "5c528ec1eea9c4088f26bf0836b5d7440d3acdf1bbcb0a0b7438fe00e7b25c3e",
+      "bytes": 11396,
+      "passed": true
+    },
+    {
+      "file": "Font-Copyright.txt",
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+      "bytes": 14712,
+      "passed": true
+    },
+    {
+      "file": "Freeze-Voice-QA.json",
+      "sha256": "a6e128a7dc0877935876aa91cdb7f5367daaaf39199fda49e60fa3882e9aa023",
+      "bytes": 11788,
+      "passed": true
+    },
+    {
+      "file": "Mechanism-Miette.json",
+      "sha256": "c9bbf3afd33e4a0ba9ef43d1418f00c24df3836571869d6f4e2ddafdb8aac2bc",
+      "bytes": 1592,
+      "passed": true
+    },
+    {
+      "file": "Packaging-Manifest.json",
+      "sha256": "3105fd14bf579b6b1aa00d4d5b13d9711b568387e52b9c074b248a4069e26309",
+      "bytes": 1053,
+      "passed": true
+    },
+    {
+      "file": "Pause-Preview.jpg",
+      "sha256": "0c3f58cb803778afbc4557754aae9b1f1518ae38d21e78918451398276a8bf76",
+      "bytes": 629613,
+      "passed": true
+    },
+    {
+      "file": "Preview.jpg",
+      "sha256": "2e8f19ce78df80774fa64b4601c05704476380fff625fb8a3b20a079487cec9c",
+      "bytes": 1053972,
+      "passed": true
+    },
+    {
+      "file": "Production-and-Evidence.zip.part001",
+      "sha256": "fbc338e405d87d3664105a290ff0bb43adc911e1371c634ca53aafd5a2d5d5a8",
+      "bytes": 77066356,
+      "passed": true
+    },
+    {
+      "file": "README.md",
+      "sha256": "d7f44b07c183563b22180ad4185d51ad8bcb719d6709dbed2929b97620c00628",
+      "bytes": 1417,
+      "passed": true
+    },
+    {
+      "file": "Render-Input-Freeze.json",
+      "sha256": "58bf6674c75b69d460a11a90ac0a23c63f0006976d5c6f3c28fcd0927712d7da",
+      "bytes": 77521,
+      "passed": true
+    },
+    {
+      "file": "Reproduce.md",
+      "sha256": "bab2b88b541a86b188bf0d09bf7c9416a69d8b5fbcbb84000c873793cada7157",
+      "bytes": 1329,
+      "passed": true
+    },
+    {
+      "file": "ResearchReport.md",
+      "sha256": "07995a2c47b63055e84ae178cfc56eb1f4db43ae26e9a26567aa1082abbedf67",
+      "bytes": 3915,
+      "passed": true
+    },
+    {
+      "file": "Roster-Audit.md",
+      "sha256": "b1763c064c9413a02a8883ecd7a6ed8c57e346be0e6313c265def741ef4a24b5",
+      "bytes": 374,
+      "passed": true
+    },
+    {
+      "file": "SHA256SUMS.txt",
+      "sha256": "f31b0481ffc731157714a4c5d2b9dfc549463891c17740e90c27b8d06d3210ac",
+      "bytes": 2407,
+      "passed": true
+    },
+    {
+      "file": "Script.md",
+      "sha256": "6b0e41ef41cec07c5417b6a13722ba60a147dcf68f910b042517041094e932e8",
+      "bytes": 16335,
+      "passed": true
+    },
+    {
+      "file": "Stone-Goals.md",
+      "sha256": "38b52641770b1d48c73ceacb7b6b026ce72ca05c4d522a91afb28fe9717d8d2f",
+      "bytes": 1588,
+      "passed": true
+    },
+    {
+      "file": "Subtitles-ja.srt",
+      "sha256": "15665e25597e00091df12b690f69825b96c2dbbb29c842ebb4d246863032a483",
+      "bytes": 7697,
+      "passed": true
+    },
+    {
+      "file": "ThisGirl-02-Preview.mp4",
+      "sha256": "2dcf51dc2885fc219331f9abf6659c78a79be902a9410108c6573f6b9df905c3",
+      "bytes": 60744671,
+      "passed": true
+    },
+    {
+      "file": "Thumbnail-ThisGirl-02-Preview.png",
+      "sha256": "18a4bfed9bf9aaeb6f59c7d70bc9066332a58c36ab525b22ad3d652784c1fb7e",
+      "bytes": 1282253,
+      "passed": true
+    },
+    {
+      "file": "Used-Audio-Plan.json",
+      "sha256": "f6f6b64c6d4d4d9173004c3542209e1782fa99843ffb947bd69a20532b4442bf",
+      "bytes": 79440,
+      "passed": true
+    },
+    {
+      "file": "Visual-QC.json",
+      "sha256": "7a665bbc0212f2e2d84a90a1d8dc74a4c2ae9fcf8170a5ee44fa9ea120b89469",
+      "bytes": 903,
+      "passed": true
+    },
+    {
+      "file": "YouTube-Description.txt",
+      "sha256": "8927b8392e99287b06e03de746c4837dbac410140820363a038496259e668ed3",
+      "bytes": 1269,
+      "passed": true
+    },
+    {
+      "file": "combat-portfolio-research.md",
+      "sha256": "be2d3a784f5d6fabaed6bdccd1ba79513d6e1c4a532adc8fb0e789c305da0e68",
+      "bytes": 9811,
+      "passed": true
+    },
+    {
+      "file": "endgame-invariance-v03.md",
+      "sha256": "d84449bdda27df2393eebbe29fdbd967be0253e7da535f38df54470ae2b1531e",
+      "bytes": 19500,
+      "passed": true
+    },
+    {
+      "file": "portfolio-optimization-v02.md",
+      "sha256": "06b4033e323ba4d9dce916be93e241497186a9058206b79c3f3e39a12c9c2c91",
+      "bytes": 14340,
+      "passed": true
+    }
+  ]
+}

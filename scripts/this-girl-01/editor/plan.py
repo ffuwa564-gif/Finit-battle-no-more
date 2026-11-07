@@ -39,9 +39,9 @@ def build(editorial,narration,pending_calibration=False):
  assert editorial['episode']==narration['episode']=='THIS-GIRL-001'
  assert narration['finalized']and(editorial['finalized']or pending_calibration),'Final reviewed dialogue is required; pending calibration may only prepare static caches'
  lines={l['lineId']:l for c in narration['chapters']for l in c['lines']};used=set();cursor=0
- timeline={'episode':'THIS-GIRL-001','finalized':not pending_calibration,'pendingCalibration':pending_calibration,'fps':30,'sampleRate':48000,'gameBox':[40,28,576,1024],'gameFadeFrames':14,'pages':[],'voice':[],'gameCuts':[],'captions':[],'music':editorial['music'],'chapters':[]}
+ timeline={'episode':'THIS-GIRL-001','finalized':not pending_calibration,'pendingCalibration':pending_calibration,'fps':30,'sampleRate':48000,'gameBox':[40,28,576,1024],'gameFadeFrames':0,'pages':[],'voice':[],'gameCuts':[],'captions':[],'music':editorial['music'],'chapters':[]}
  for page_index,page in enumerate(editorial['pages']):
-  local=round(page.get('leadSeconds',.25)*30);voices=[];battle=page['spec']['kind']=='battle'
+  local=round(page.get('leadSeconds',.25)*30);voices=[];battle=page['spec']['kind'] in ['battle','battle-pause']
   for ref in page.get('lines',[]):
    ref={'lineId':ref}if isinstance(ref,str)else ref;ident=ref['lineId'];assert ident not in used;used.add(ident);line=lines[ident]
    assert sha(ROOT/line['file'])==line['sha256'],'Narration changed'
@@ -57,7 +57,7 @@ def build(editorial,narration,pending_calibration=False):
   else:assert duration>=local-8
   if page['spec']['kind']=='roster':assert duration>=26*30
   cut=page.get('gameCut')
-  if battle:
+  if page['spec']['kind']=='battle':
    assert cut and cut['sourceEndFrame']-cut['sourceStartFrame']==duration,'Whole battle page must share exact video/audio interval'
    assert duration>=180,'A major native cut needs room for independent thirds-based sync QA'
    assert 'sourceApplicationSpeed'in cut,'Disclose the recorded application speed separately from editorial speed'

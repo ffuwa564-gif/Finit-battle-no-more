@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "selected": {
+    "orderEventId": "run-1000-2735694467:w0:r3:buff:2585034732:e0",
+    "orderSourceFrame": 1010,
+    "changedEventId": "run-1000-2735694467:w0:r3:attack:4259647496:e2",
+    "changedSourceFrame": 1100,
+    "actorId": "party:lisette-awakened",
+    "actorCharacterId": "lisette-awakened",
+    "targetIds": [
+      "enemy:w0:1:thorn-witch"
+    ],
+    "targetCharacters": [
+      "thorn-witch"
+    ],
+    "actualDamage": 50,
+    "eventText": "リゼット — 通常攻撃（号令の宛先）",
+    "followers": [
+      {
+        "uid": "party:seris-awakened",
+        "characterId": "seris-awakened",
+        "load": 1
+      },
+      {
+        "uid": "party:lisette-awakened",
+        "characterId": "lisette-awakened",
+        "load": 2
+      }
+    ],
+    "reservedRecipients": 2,
+    "capacity": 3,
+    "load": 3,
+    "appliedActions": 1,
+    "changedActions": 1,
+    "commanderOrdinaryActions": 0,
+    "roundKey": "run-1000-2735694467:w0:r3",
+    "noInventedExtraDamage": true,
+    "protectedStoneActions": [
+      {
+        "eventId": "run-1000-2735694467:w0:r3:attack:2686460253:e4",
+        "text": "セリス — 澄明の残響石",
+        "actorId": "party:seris-awakened"
+      }
+    ]
+  },
+  "proofSha256": "280e835c3d1155417124831f8975dd0e49db60adab02985671bec4d0e35085c5",
+  "scope": "First actual target change after a real order in the predeclared selected run. Damage belongs to follower ordinary action, NOT additive command damage. No private commitments were used by policy.",
+  "sourceSha256": "c777cb65958a98b0cbe32df5f8d9d71a5c4c98ac33f5c14006269ba9e5c25f72",
+  "metadataSha256": "0189801f568cfff24066a14a0fbd0da4da7a044871f6dbe6ba80f4384eb56a0b"
+}
