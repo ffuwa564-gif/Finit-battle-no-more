@@ -1,0 +1,127 @@
+# 石の目標と、実際の入手先
+今回の4石は、ミエット/覚醒セリス/アストレアが残響石、アテナが白灯石。すべてT6・澄明。固定ビルドの成長比較では4石のpower/trait帯をT3/T4/T6へ変え、同じ操作・リーダーを使いました。白灯石1個だけの因果効果ではありません。
+T3で入口、T4/T6で安定性を検討。必要周回数や理想特性の完成確率は推定していません。下記は公開済みコンテンツから抽出した対応系統の実入手先であり、毎回確定入手を意味しません。
+## 白灯石
+- 忘却の聖堂 (`silent-cathedral`)
+- 祈りの参道 (`chapel-approach`)
+- 水没の祭具室 (`drowned-vestry`)
+- 青灯の小径 (`blue-lantern-path`)
+- 白帳の回廊 (`veiled-cloister`)
+- 雨音の温室 (`rain-glasshouse`)
+- 白紙の揺籠 (`unwritten-cradle`)
+- 名前の欠片 (`missing-name`)
+- 最後の安全鍵 (`last-safety-key`)
+- 虚ろの門 (`hollow-gate`)
+- 灰の書庫 (`ashen-library`)
+- 消された星図 (`erased-star-chart`)
+- 怠惰姫の渡御 (`zakuro-procession`) / T6の抽選あり
+- 追憶・白花の約束 (`memory-elaine`)
+- 追憶・開かれた門 (`memory-liora`)
+- 追憶・明け星の余白 (`memory-noelle`)
+- 追憶・朝を斬った剣 (`memory-seris`)
+- 白花の祈り路 (`event-whiteflower-path`)
+- 銀灯の守門 (`event-silver-lantern`)
+- 女神の試練・不可侵 (`goddess-procession-impossible`)
+- 誓鎖の稽古 (`oath-chain-rehearsal`)
+- 空欄の依頼書 (`guild-blank-request`)
+- いまの宛先 (`present-address`)
+- 空欄を返す日 (`register-return`) / T6の抽選あり
+- 会わない日の印 (`resting-sign`)
+- 灯さない灯 (`unlit-lantern`)
+- 命令のない祈り (`prayer-without-order`)
+- 契生石の点検 (`ritual-stone-check`)
+- 署名の余白 (`signature-margin`)
+- 白亜の塔・第1層 (`ivory-tower-001`)
+- 白亜の塔・第4層 (`ivory-tower-004`)
+- 白亜の塔・第7層 (`ivory-tower-007`)
+- 白亜の塔・第10層 (`ivory-tower-010`)
+- 白亜の塔・第13層 (`ivory-tower-013`)
+- 白亜の塔・第16層 (`ivory-tower-016`)
+- 白亜の塔・第19層 (`ivory-tower-019`)
+- 白亜の塔・第22層 (`ivory-tower-022`)
+- 白亜の塔・第25層 (`ivory-tower-025`)
+- 白亜の塔・第28層 (`ivory-tower-028`)
+- 白亜の塔・第31層 (`ivory-tower-031`)
+- 白亜の塔・第34層 (`ivory-tower-034`)
+- 白亜の塔・第37層 (`ivory-tower-037`)
+- 白亜の塔・第40層 (`ivory-tower-040`)
+- 白亜の塔・第43層 (`ivory-tower-043`) / T6の抽選あり
+- 白亜の塔・第46層 (`ivory-tower-046`) / T6の抽選あり
+- 白亜の塔・第49層 (`ivory-tower-049`) / T6の抽選あり
+- 白亜の塔・第52層 (`ivory-tower-052`) / T6の抽選あり
+- 白亜の塔・第55層 (`ivory-tower-055`) / T6の抽選あり
+- 白亜の塔・第58層 (`ivory-tower-058`) / T6の抽選あり
+- 白亜の塔・第61層 (`ivory-tower-061`) / T6の抽選あり
+- 白亜の塔・第64層 (`ivory-tower-064`) / T6の抽選あり
+- 白亜の塔・第67層 (`ivory-tower-067`) / T6の抽選あり
+- 白亜の塔・第70層 (`ivory-tower-070`) / T6の抽選あり
+- 白亜の塔・第73層 (`ivory-tower-073`) / T6の抽選あり
+- 白亜の塔・第76層 (`ivory-tower-076`) / T6の抽選あり
+- 白亜の塔・第79層 (`ivory-tower-079`) / T6の抽選あり
+- 白亜の塔・第82層 (`ivory-tower-082`) / T6の抽選あり
+- 白亜の塔・第85層 (`ivory-tower-085`) / T6の抽選あり
+- 白亜の塔・第88層 (`ivory-tower-088`) / T6の抽選あり
+- 白亜の塔・第91層 (`ivory-tower-091`) / T6の抽選あり
+- 白亜の塔・第94層 (`ivory-tower-094`) / T6の抽選あり
+- 白亜の塔・第97層 (`ivory-tower-097`) / T6の抽選あり
+- 白亜の塔・第100層 (`ivory-tower-100`) / T6の抽選あり
+
+## 残響石
+- 鐘楼の階段 (`bell-stairs`)
+- 石鱗の橋 (`scale-bridge`)
+- 記憶の接ぎ木 (`memory-grafting`)
+- 閉ざした診療室 (`closed-consultation`)
+- 燃え残った手紙 (`unburned-letter`)
+- 終わりの天文台 (`last-observatory`)
+- 弔剣の参道 (`bell-sword-approach`)
+- 契生石の樹海 (`ritual-stone-grove`)
+- 時計庭のうさぎ姫・初級 (`lunette-beginner`)
+- 時計庭のうさぎ姫・中級 (`lunette-intermediate`)
+- 時計庭のうさぎ姫・上級 (`lunette-advanced`)
+- 時計庭のうさぎ姫・超級 (`lunette-expert`)
+- 時計庭のうさぎ姫・覚醒級 (`lunette-awakening`) / T6の抽選あり
+- 女神の試練 (`goddess-procession`)
+- 凍暁の大時計 (`frozen-dawn-clock`)
+- 名簿の回廊 (`registry-corridor`)
+- 薬布の引き継ぎ (`infirmary-handover`)
+- 古い返還印 (`old-return-seal`)
+- 借りた寝台 (`borrowed-bed`)
+- 祭りの食卓 (`festival-table`)
+- 閉じた帰り道 (`closed-homeward-lane`)
+- 最後の灯守 (`last-lantern-watch`)
+- 帰還の仕立て室 (`mending-room`)
+- 止めるための合図 (`stop-signal`)
+- 白亜の塔・第2層 (`ivory-tower-002`)
+- 白亜の塔・第5層 (`ivory-tower-005`)
+- 白亜の塔・第8層 (`ivory-tower-008`)
+- 白亜の塔・第11層 (`ivory-tower-011`)
+- 白亜の塔・第14層 (`ivory-tower-014`)
+- 白亜の塔・第17層 (`ivory-tower-017`)
+- 白亜の塔・第20層 (`ivory-tower-020`)
+- 白亜の塔・第23層 (`ivory-tower-023`)
+- 白亜の塔・第26層 (`ivory-tower-026`)
+- 白亜の塔・第29層 (`ivory-tower-029`)
+- 白亜の塔・第32層 (`ivory-tower-032`)
+- 白亜の塔・第35層 (`ivory-tower-035`)
+- 白亜の塔・第38層 (`ivory-tower-038`)
+- 白亜の塔・第41層 (`ivory-tower-041`) / T6の抽選あり
+- 白亜の塔・第44層 (`ivory-tower-044`) / T6の抽選あり
+- 白亜の塔・第47層 (`ivory-tower-047`) / T6の抽選あり
+- 白亜の塔・第50層 (`ivory-tower-050`) / T6の抽選あり
+- 白亜の塔・第53層 (`ivory-tower-053`) / T6の抽選あり
+- 白亜の塔・第56層 (`ivory-tower-056`) / T6の抽選あり
+- 白亜の塔・第59層 (`ivory-tower-059`) / T6の抽選あり
+- 白亜の塔・第62層 (`ivory-tower-062`) / T6の抽選あり
+- 白亜の塔・第65層 (`ivory-tower-065`) / T6の抽選あり
+- 白亜の塔・第68層 (`ivory-tower-068`) / T6の抽選あり
+- 白亜の塔・第71層 (`ivory-tower-071`) / T6の抽選あり
+- 白亜の塔・第74層 (`ivory-tower-074`) / T6の抽選あり
+- 白亜の塔・第77層 (`ivory-tower-077`) / T6の抽選あり
+- 白亜の塔・第80層 (`ivory-tower-080`) / T6の抽選あり
+- 白亜の塔・第83層 (`ivory-tower-083`) / T6の抽選あり
+- 白亜の塔・第86層 (`ivory-tower-086`) / T6の抽選あり
+- 白亜の塔・第89層 (`ivory-tower-089`) / T6の抽選あり
+- 白亜の塔・第92層 (`ivory-tower-092`) / T6の抽選あり
+- 白亜の塔・第95層 (`ivory-tower-095`) / T6の抽選あり
+- 白亜の塔・第98層 (`ivory-tower-098`) / T6の抽選あり
+
