@@ -1,3 +1,6 @@
+import {validGemPreparation,validConcordMark,BUILD_GEM_IDS} from '../domain/build-gems';
+import {validRoyalLeaderState} from '../domain/royal-leaders';
+import {RULE3_CONTENT} from '../domain/combat-compatibility';
 import { validRecycling, validLoadout } from '../domain/expedition-supplies';
 import { validHunt, canHunt } from '../domain/hunt';
 import { validBattleHarvest } from '../domain/battle-harvest';
@@ -67,6 +70,8 @@ function validUnit(value: unknown): boolean {
   if (value.defendingUntil !== undefined && !count(value.defendingUntil)) return false;
   if (value.bits !== undefined && (!record(value.bits) || value.side !== 'enemy' || !value.boss || !count(value.bits.count) || value.bits.count < 1 || value.bits.count > 4 || !count(value.bits.deployedRound) || value.bits.deployedRound < 1 || !count(value.bits.expiresRound) || value.bits.expiresRound <= value.bits.deployedRound || value.bits.expiresRound > value.bits.deployedRound + 5)) return false;
   if (value.towerSupportUsed !== undefined && (!record(value.towerSupportUsed) || value.side !== 'enemy' || !count(value.towerSupportUsed.healing) || !count(value.towerSupportUsed.barrier))) return false;
+  if(value.gemPreparation!==undefined&&(!validGemPreparation(value.gemPreparation)||value.side!=='party'))return false;
+  if(value.concordMark!==undefined&&(!validConcordMark(value.concordMark)||value.side!=='enemy'))return false;
   if (value.whiteFlower !== undefined && (!record(value.whiteFlower) || value.side !== 'party' || !count(value.whiteFlower.amount) || value.whiteFlower.amount !== 50 || !count(value.whiteFlower.until))) return false;
   if (value.scoutMark !== undefined && (!record(value.scoutMark) || !nonempty(value.scoutMark.sourceId) || !count(value.scoutMark.until))) return false;
   for (const key of ['scoutLanternUntil','scoutThreadUntil']) if (value[key] !== undefined && !count(value[key])) return false;
@@ -155,6 +160,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     if(record(battle)&&battle.medalRun!==undefined&&!validMedalRun(battle.medalRun))throw new Error('勲章の探索記録が不正です。');
     if (record(battle) && (battle.tracking !== undefined && !validExpeditionTracking(battle.tracking) || battle.failureKind !== undefined && !['defeat', 'timeout', 'retreat'].includes(String(battle.failureKind)))) throw new Error('探索の集計状態が不正です。');
     if (!record(battle) || !nonempty(battle.id) || !nonempty(battle.dungeonId) || !nonempty(battle.contentVersion) || battle.rulesVersion !== undefined && !nonempty(battle.rulesVersion) || !['ready', 'playing', 'reward', 'failed'].includes(battle.phase as string) || !['ready', 'wave', 'reward', 'failed'].includes(battle.nextPhase as string) || !validUnits(battle.units) || !Array.isArray(battle.events) || !battle.events.every(validEvent) || !validUnits(battle.initialUnits) || !count(battle.cursor) || battle.cursor > battle.events.length || !count(battle.wave) || !count(battle.round) || battle.round < 1 || !materialMap(battle.pendingMaterials) || !uniqueStrings(battle.partyIds) || !nonempty(battle.leaderId) || !battle.partyIds.includes(battle.leaderId) || !uniqueStrings(battle.talkFlags) || !count(battle.potionsRemaining) || battle.potionsRemaining > 5 || typeof battle.potionUsed !== 'boolean' || !count(battle.seed) || !count(battle.goldEarned) || !['balanced', 'aggressive', 'survival'].includes(battle.strategy as string)) throw new Error('探索の保存状態を読み込めません。セーブは保持されています。');
+    if(battle.royalLeader!==undefined&&!validRoyalLeaderState(battle.royalLeader))throw new Error('リーダーの戦闘記録が正しくありません。');
     if (battle.scoutState !== undefined) {
       const s = battle.scoutState;
       if (!record(s) || ['ioneLeaderTriggered','neriLeaderTriggered','fioLeaderTriggered'].some(k => s[k] !== undefined && typeof s[k] !== 'boolean') || s.rukaHeals !== undefined && (!count(s.rukaHeals) || s.rukaHeals > 3) || s.rukaHealRound !== undefined && !count(s.rukaHealRound)) throw new Error('仲間の固有技能の記録が不正です。');
@@ -224,13 +230,16 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
   if(battle.supplies&&(!battle.hunt||!dungeon||battle.supplies.incense!==undefined&&battle.supplies.incense!=='gem'&&!Object.hasOwn(dungeonIndustryProfile(dungeon,content).drops,battle.supplies.incense)))throw new Error('遠征用品の保存状態が不正です。');
   if (battle.hunt && (!dungeon || !canHunt(dungeon) || battle.hunt.stage==='hunting'&&battle.wave!==0 || battle.hunt.stage==='boss'&&battle.wave!==dungeon.waves.length-1)) throw new Error('連続討伐の地点が不正です。');
-  if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
+  if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.rulesVersion==='4'&&battle.rulesVersion==='3'&&RULE3_CONTENT.includes(battle.contentVersion)) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');
   if (battle.roughGemFinds?.some(raw => !save.memoryGems?.rough?.some(item => item.id === raw.id && JSON.stringify(item) === JSON.stringify(raw)))) throw new Error('獲得した原石が所持情報にありません。');
   if (battle.gemFinds?.some(gem => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)))) throw new Error('獲得した記憶石が所持情報にありません。');
   if (battle.memoryEchoes?.some(echo => !battle.units.some(unit => unit.uid === echo.actorId && unit.side === 'party') || !battle.units.some(unit => unit.uid === echo.targetId && unit.side === 'enemy'))) throw new Error('記憶石の残響対象が戦闘データにありません。');
   if (battle.omens && dungeon.kind === 'trial') throw new Error('腕試しの探索状態が不正です。');
+  if(battle.royalLeader!==undefined&&!validRoyalLeaderState(battle.royalLeader))throw new Error('リーダーの戦闘記録が正しくありません。');
   const snapshots = [battle.units, battle.initialUnits, ...battle.events.flatMap(event => event.unitsAfter ? [event.unitsAfter] : [])];
+  if(battle.rulesVersion!=='4'&&(battle.royalLeader!==undefined||snapshots.some(units=>units.some(u=>u.gemPreparation||u.concordMark))||Object.values(battle.memoryGems??{}).some(g=>BUILD_GEM_IDS.includes(g.defId as typeof BUILD_GEM_IDS[number]))))throw new Error('探索を再開するための固定定義がありません。');
+  if(snapshots.some(units=>units.some(unit=>unit.concordMark&&(!units.some(source=>source.uid===unit.concordMark!.sourceId&&source.side==='party')||unit.concordMark.contributors.some(id=>!units.some(source=>source.uid===id&&source.side==='party'))))))throw new Error('共鳴標の参照先が正しくありません。');
   if (snapshots.some(units => units.some(unit => unit.whiteFlower && (unit.characterId !== battle.partyIds[0] || unit.whiteFlower.until > battle.round + 2)))) throw new Error('白花の種の対象か期限が正しくありません。');
   if (snapshots.some(units => units.some(unit => (unit.bossWindup?.round ?? 0) > battle.round || (unit.bossRecoveryUntil ?? 0) > battle.round))) throw new Error('ボスの予告状態が探索のラウンドと一致しません。');
   if (snapshots.some(units => units.some(unit => !characters.has(unit.characterId) || Object.keys(unit.cooldowns).some(id => !skills.has(id) && id !== 'memory:slot' && !gemDefinitionForSkill(id))))) throw new Error('戦闘データが参照するキャラクター・スキルがありません。');
@@ -356,6 +365,7 @@ export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion
     (value.appVersion === '1.22.0' && value.contentVersion === 'v1.22-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.23.0' && value.contentVersion === 'v1.23-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.24.0' && value.contentVersion === 'v1.24-r1' && value.rulesVersion === '3') ||
+    (value.appVersion === '1.28.0' && value.contentVersion === 'v1.28-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.27.0' && value.contentVersion === 'v1.27-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.26.0' && value.contentVersion === 'v1.26-r1' && value.rulesVersion === '3') ||
     (['1.25.0','1.25.1'].includes(value.appVersion) && value.contentVersion === 'v1.25-r1' && value.rulesVersion === '3')

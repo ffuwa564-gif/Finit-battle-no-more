@@ -6,9 +6,9 @@ import {migrateSaveTo110}from'../src/platform/save-migration';
 import {isUpgradeableSaveVersion,assertSaveCompatibility}from'../src/platform/save';
 import {decodeBackup,encodeBackup}from'../src/platform/save-backup';
 const previousContent={...content,...content.legacyCombat,appVersion:'1.10.0',contentVersion:'v1.10-r1',rulesVersion:'2'};
-describe('1.28 compatible expedition upgrade',()=>{
- it.each([{appVersion:'1.20.0',contentVersion:'v1.20-r1'},{appVersion:'1.21.0',contentVersion:'v1.21-r1'},{appVersion:'1.22.0',contentVersion:'v1.22-r1'},{appVersion:'1.23.0',contentVersion:'v1.23-r1'},{appVersion:'1.24.0',contentVersion:'v1.24-r1'},{appVersion:'1.25.0',contentVersion:'v1.25-r1'},{appVersion:'1.25.1',contentVersion:'v1.25-r1'},{appVersion:'1.26.0',contentVersion:'v1.26-r1'},{appVersion:'1.27.0',contentVersion:'v1.27-r1'}])('preserves $appVersion inventory, active combat, travel and dialogue through migration and backup import',version=>{
-  const previousContent={...content,...version};
+describe('1.29 compatible expedition upgrade',()=>{
+ it.each([{appVersion:'1.20.0',contentVersion:'v1.20-r1'},{appVersion:'1.21.0',contentVersion:'v1.21-r1'},{appVersion:'1.22.0',contentVersion:'v1.22-r1'},{appVersion:'1.23.0',contentVersion:'v1.23-r1'},{appVersion:'1.24.0',contentVersion:'v1.24-r1'},{appVersion:'1.25.0',contentVersion:'v1.25-r1'},{appVersion:'1.25.1',contentVersion:'v1.25-r1'},{appVersion:'1.26.0',contentVersion:'v1.26-r1'},{appVersion:'1.27.0',contentVersion:'v1.27-r1'},{appVersion:'1.28.0',contentVersion:'v1.28-r1'}])('preserves $appVersion inventory, active combat, travel and dialogue through migration and backup import',version=>{
+  const previousContent={...content,...version,rulesVersion:'3'};
   let old=createInitialSave(previousContent,28113);
   old=applyCommand(old,{type:'worldStoryBegin',profile:{name:'ミオ',voice:'soft',favorite:'flowers'},from:'beginning'},previousContent,{now:1000});
   old=applyCommand(old,{type:'worldTravel',destinationId:content.worldStory!.nodes[0].hubId},previousContent,{now:1000});
@@ -17,14 +17,14 @@ describe('1.28 compatible expedition upgrade',()=>{
   old.battle=createBattle(previousContent,old.partyIds,old.leaderId,'silent-cathedral',0,42,'v120-upgrade');
   const before=structuredClone(old),next=migrateSaveTo110(old,content);
   expect(isUpgradeableSaveVersion(old)).toBe(true);
-  expect(next).toEqual({...before,battle:{...before.battle,contentVersion:content.contentVersion},appVersion:content.appVersion,contentVersion:content.contentVersion,rulesVersion:content.rulesVersion,revision:before.revision+1});
+  expect(next).toEqual({...before,appVersion:content.appVersion,contentVersion:content.contentVersion,rulesVersion:content.rulesVersion,revision:before.revision+1});
   expect(old).toEqual(before);
   expect(decodeBackup(encodeBackup(old,previousContent),content).save).toEqual(next);
-  expect(advanceReplay(next.battle!,content)).toEqual({...advanceReplay(old.battle!,previousContent),contentVersion:content.contentVersion});
+  expect(advanceReplay(next.battle!,content)).toEqual(advanceReplay(old.battle!,previousContent));
   let resumed=next.battle!,original=old.battle!;
   while(resumed.phase==='playing')resumed=advanceReplay(resumed,content);
   while(original.phase==='playing')original=advanceReplay(original,previousContent);
-  expect(resolveRound(resumed,content).battle).toEqual({...resolveRound(original,previousContent).battle,contentVersion:content.contentVersion});
+  expect(resolveRound(resumed,content).battle).toEqual(resolveRound(original,previousContent).battle);
   // Keep a separate mid-conversation save: the exact line remains resumable.
   old.battle=null;
   old=applyCommand(old,{type:'worldTalk',nodeId:content.worldStory!.nodes[0].id},previousContent,{now:47000});
@@ -51,7 +51,7 @@ describe('1.28 compatible expedition upgrade',()=>{
   delete (b as Partial<typeof b>).rulesVersion;old.battle=b;
   const next=migrateSaveTo110(old,content),result=applyCommand(next,{type:'round'},content);
   expect(result.battle).toEqual(expected);
-  expect(result.rulesVersion).toBe('3');expect(result.battle!.rulesVersion).toBe('2');
+  expect(result.rulesVersion).toBe(content.rulesVersion);expect(result.battle!.rulesVersion).toBe('2');
  });
  it('only accepts released compatible contracts and leaves an already-updated save alone',()=>{
   const old=createInitialSave(previousContent,1);

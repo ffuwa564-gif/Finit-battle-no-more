@@ -256,7 +256,10 @@ test('the first raw chest is nonblocking, stays sealed in battle and stays secur
   expect(raw).toBeDefined();
   await expect(page.getByRole('button', { name: '獲得した原石を見る', exact: true })).toBeVisible();
   await page.screenshot({ path: 'artifacts/memory-gems/chest-find-mobile-390.png' });
-  await page.getByRole('button', { name: '獲得した原石を見る', exact: true }).click();
+  // Wave transition also opens the harvest choices; collapse that real overlay first.
+  const harvestCards=page.getByRole('button',{name:'カードをたたむ',exact:true});
+  if(await harvestCards.isVisible())await harvestCards.click();
+  await page.getByRole('button',{name:'獲得した原石を見る',exact:true}).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('button',{name:/原石を磨く/})).toBeDisabled();
   await expect(page.locator(`[data-testid="memory-gem-card"][data-gem-id="${raw.id}"]`)).toHaveCount(0);

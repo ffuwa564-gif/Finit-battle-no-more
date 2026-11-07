@@ -1,3 +1,4 @@
+import {royalLeaderDescription} from './royal-leaders';
 import { scoutSkillDescription, scoutLeaderDescription } from './scout-skills';
 import type { CharacterDef, LeaderEffect, SkillDef, SkillTemplate } from './types';
 
@@ -49,9 +50,10 @@ const leaderDescriptions: Record<LeaderEffect, string> = {
   resonance: '星の共鳴：味方全員の全体攻撃の威力が15%上昇。',
 };
 export function leaderEffectDescription(character: CharacterDef): string {
+  const royal=royalLeaderDescription(character);
   const personal = scoutLeaderDescription(character.id);
   if (personal) return `${personal} リーダー生存中のみ有効。`;
-  return character.leaderEffect ? `${leaderDescriptions[character.leaderEffect]} リーダー生存中のみ有効。` : '';
+  return (character.leaderEffect ? `${leaderDescriptions[character.leaderEffect]} リーダー生存中のみ有効。` : '')+(royal?` ${royal}`:'');
 }
 
 /** Every template explicitly declares its shared sound and presentation family. */

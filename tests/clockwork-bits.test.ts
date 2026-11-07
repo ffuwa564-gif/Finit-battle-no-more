@@ -81,6 +81,8 @@ describe('clockwork boss bits', () => {
   });
   it('awards the new currency only on confirmed clears and unlocks the next tier once', () => {
     let save = createInitialSave(content, 42); save.completedDungeonIds = ['silent-cathedral'];
+    // A legal lower-damage party leaves time for the boss's first telegraphed salvo.
+    save.partyIds=['liora','elaine'];save.leaderId='liora';
     save = applyCommand(save, { type: 'depart', dungeonId: 'lunette-beginner', potions: 0 }, content);
     let shots = 0;
     for (let i = 0; i < 1000 && save.battle && !['reward', 'failed'].includes(save.battle.phase); i++) {

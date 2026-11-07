@@ -27,7 +27,7 @@ describe('request-first opening and historical story saves',()=>{
   s=finish(restored);s=applyCommand(s,{type:'worldTalk',nodeId:'c1-job'},content);expect(s.worldStory!.active!.replay).toBe(true);expect(s.worldStory!.active!.briefing).toBeUndefined();expect(nodeLines(def.nodes.find(n=>n.id==='c1-job')!,s.worldStory!)).toHaveLength(6);
  });
  it('keeps the old pre-patrol history and last page of its long conversation intact through a v1.22 upgrade',()=>{
-  const oldContent:Content={...content,appVersion:'1.22.0',contentVersion:'v1.22-r1'};let old=createInitialSave(oldContent,42);old=applyCommand(old,{type:'worldStoryBegin',profile:defaultHero,from:'beginning'},oldContent);
+  const oldContent:Content={...content,appVersion:'1.22.0',contentVersion:'v1.22-r1',rulesVersion:'3'};let old=createInitialSave(oldContent,42);old=applyCommand(old,{type:'worldStoryBegin',profile:defaultHero,from:'beginning'},oldContent);
   old.worldStory!.completed=['c1-hill','c1-offerings','c1-generation','c1-garden-rounds'];const hub=def.hubs.find(h=>h.id==='hub-garden')!;old.worldStory!.position={x:hub.x,y:hub.y};
   old.worldStory!.active={nodeId:'c1-garden-night',line:16,replay:false};assertSaveCompatibility(old,oldContent);
   const upgraded=migrateSaveTo110(old,content);expect(upgraded.worldStory).toEqual(old.worldStory);expect(upgraded.completedDungeonIds).toEqual([]);expect(upgraded.gold).toBe(old.gold);expect(upgraded.seed).toBe(old.seed);expect(nodeLines(def.nodes.find(n=>n.id==='c1-garden-night')!,upgraded.worldStory!)).toHaveLength(17);

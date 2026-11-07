@@ -1,3 +1,4 @@
+import {GEM_DEFINITIONS} from './memory-gems';
 /** Describes an action's job, rather than ranking stones by their tier badge. */
 export type GemPurpose = 'offense' | 'survival' | 'support' | 'control';
 export interface GemTactic { purpose: GemPurpose; use: string; timing: string; cost: string }
@@ -19,6 +20,11 @@ const tactics: Record<string, GemTactic> = {
   'hollow-lantern': { purpose:'control', use:'敵の攻撃強化と再生を奪い、攻撃力の高い味方へ渡します。', timing:'敵が強化や再生を使った後に。', cost:'障壁は奪えません。敵に対象の強化がない場面では、別の行動を選びます。' },
   'dream-lace': { purpose:'control', use:'眠らせて、敵の行動を遅らせる機会を作ります。', timing:'すぐ攻撃しない相手へ。仲間が攻撃する順番にも注意します。', cost:'ダメージで目覚め、ボスには効きにくい技です。全ての予告大技を止める保証はありません。' },
 };
+const addedPurposes:Record<string,GemPurpose>={'sweep-prism':'offense','overflow-ember':'offense','camp-lantern':'survival','concord-mark':'support','disrupt-sigil':'control','boss-reserve':'support'};
+for(const [id,purpose] of Object.entries(addedPurposes)){
+ const def=GEM_DEFINITIONS.find(g=>g.id===id)!;
+ tactics[id]={purpose,use:def.description,timing:def.description,cost:'装備枠と通常の一手を使います。技効力は使用者の石適性と得意な石で変わります。'};
+}
 export function gemTactic(defId: string): GemTactic | undefined { return tactics[defId]; }
 export function gemMatchesPurpose(defId: string, purpose: GemPurpose | 'all'): boolean {
   return purpose === 'all' || gemTactic(defId)?.purpose === purpose;

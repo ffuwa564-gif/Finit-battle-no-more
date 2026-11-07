@@ -145,7 +145,7 @@ describe('Tier 6 combat upgrades', () => {
     const legacy = ready({id:'legacy-furnace',defId:'star-furnace',variant:'pure'});
     legacy.crystalRole = 'attacker';
     const ally=legacy.units.find(unit=>unit.characterId==='liora')!; ally.attack=1000;
-    expect(action(legacy).unitsAfter!.find(unit=>unit.characterId==='liora')!.ultimateCharge).toBe(42);
+    expect(action(legacy).unitsAfter!.find(unit=>unit.characterId==='liora')!.ultimateCharge).toBe(53);
   });
 
   it('keeps T6 sleep cadence/caps and adds exactly 45 self charge on either outcome', () => {

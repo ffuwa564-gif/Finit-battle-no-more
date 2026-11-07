@@ -27,6 +27,8 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   if (unit.whiteFlower && unit.whiteFlower.until >= round) effects.push({ icon: Sprout, label: '摘まない白花の種', title: `本人が通常の「身を守る」を実行するとHP${unit.whiteFlower.amount}回復。第${unit.whiteFlower.until}ラウンド終了まで。種は重ねず期限も更新しない。防御予約・作戦変更・戦場の花では開花しない。余剰回復は消える。` });
   if(unit.barrierReturn&&unit.barrierReturn.power>0&&unit.barrierReturn.until>=round)effects.push({icon:Flower2,label:`桜の返礼 +${unit.barrierReturn.power}%`,title:`次の主攻撃の最初の対象への実HPダメージを強化。追撃は対象外。第${unit.barrierReturn.until}ラウンド終了まで。`});
   if(unit.mendThread&&unit.mendThread.amount>0&&unit.mendThread.until>=round)effects.push({icon:Scissors,label:`修繕糸 ${unit.mendThread.amount}`,title:`失効した障壁の残り。第${unit.mendThread.until}ラウンド終了まで修繕に使用できる。有効な障壁とは別の有限資源。`});
+  if(unit.gemPreparation)effects.push({icon:Lamp,label:unit.gemPreparation.kind==='camp'?`野営の準備 ${unit.gemPreparation.kills}/3`:`ボスへの備え ${unit.gemPreparation.kills}/12`,title:unit.gemPreparation.kind==='camp'?'主攻撃で3体討伐すると一度だけ全体回復。期限内の討伐が必要。':'道中の討伐を蓄え、ボス出現時に本人のゲージと障壁へ変換。'});
+  if(unit.concordMark&&unit.concordMark.until>=round)effects.push({icon:Flag,label:`共鳴標 ${unit.concordMark.contributors.length}/2`,title:'異なる味方2人の主攻撃でHPを削ると追加攻撃。追撃では進まない。',bad:true});
   for (const id of ailments) {
     const state = unit.ailments?.[id];
     if (state) effects.push({ label: `${ailmentNames[id]} · ${state.turns}`, title: `${ailmentDescriptions[id]} 残り${state.turns}回の行動。`, bad: true, ailment: id });
@@ -35,7 +37,7 @@ export function UnitEffects({ unit, round, compact = false }: { unit: Unit; roun
   const icons = { confusion: CloudFog, sleep: Moon, paralysis: Zap, charm: Heart };
   if (!effects.length) return null;
   const scoutEffect = Boolean(unit.scoutMark && unit.scoutMark.until >= round || (unit.scoutLanternUntil ?? -1) >= round || (unit.scoutThreadUntil ?? -1) >= round);
-  if (compact || Boolean(unit.field) || Boolean(unit.jamDampening&&unit.jamDampening.until>=round) || Boolean(unit.mendThread && unit.mendThread.until >= round) || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
+  if (compact || Boolean(unit.gemPreparation||unit.concordMark) || Boolean(unit.field) || Boolean(unit.jamDampening&&unit.jamDampening.until>=round) || Boolean(unit.mendThread && unit.mendThread.until >= round) || scoutEffect || Boolean(unit.barrierReturn && unit.barrierReturn.power > 0 && unit.barrierReturn.until >= round) || Boolean(unit.whiteFlower && unit.whiteFlower.until >= round)) {
     effects.sort((a, b) => Number(!!b.bad) - Number(!!a.bad));
     const iconFor = (effect: typeof effects[number]) => effect.ailment ? icons[effect.ailment] : effect.icon ?? Sparkles;
     const controls = <>

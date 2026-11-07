@@ -1,3 +1,4 @@
+import {buildGemUsable} from './build-gems';
 import { characterSkills } from './character-skills';
 import { barrierMendTarget } from './barrier-mend';
 import { gemSkill, gemDefinitionForSkill } from './memory-gems';
@@ -23,6 +24,9 @@ export function orderTargets(actor: Unit, battle: Battle, template: SkillTemplat
   const wounded = [...friends].sort((a,b) => a.hp / a.maxHp - b.hp / b.maxHp || a.uid.localeCompare(b.uid));
   if (skillId && gemDefinitionForSkill(skillId)?.id === 'white-flower-seed') return friends.filter(u => u.characterId === battle.partyIds[0]).slice(0, 1);
   if (skillId && gemDefinitionForSkill(skillId)?.id === 'rewind-thread') return friends.filter(u => u.uid !== actor.uid && Object.entries(u.cooldowns).some(([id, round]) => !id.startsWith('memory:') && round > battle.round)).sort((a,b) => b.attack - a.attack || a.uid.localeCompare(b.uid)).slice(0, 1);
+  if(skillId&&['camp-lantern','boss-reserve'].includes(gemDefinitionForSkill(skillId)?.id??''))return [actor];
+  if(skillId&&gemDefinitionForSkill(skillId)?.id==='disrupt-sigil')return enemies.filter(u=>u.boss).slice(0,1);
+  if(skillId&&gemDefinitionForSkill(skillId)?.id==='concord-mark')return enemies.filter(u=>!u.concordMark||u.concordMark.until<battle.round).sort((a,b)=>Number(Boolean(b.boss))-Number(Boolean(a.boss))||b.hp-a.hp).slice(0,1);
   if (template === 'rally') return friends;
   if (template === 'mend_pair') return wounded.slice(0, 2);
   if (template === 'overclock') return friends.filter(u => u.uid !== actor.uid && (u.ultimateCharge ?? 0) <= 65).sort((a,b) => b.attack - a.attack).slice(0, 1);
@@ -60,6 +64,7 @@ export function partyOrderOptions(actor: Unit, battle: Battle, content: Content)
 export function memorySkillUsable(actor: Unit, battle: Battle, skill: SkillDef): boolean {
   const def = gemDefinitionForSkill(skill.id);
   if (!def) return true;
+  if(!buildGemUsable(actor,battle,skill))return false;
   const equipped = actor.side === 'party' && battle.partyIds.includes(actor.characterId) ? battle.memoryGems?.[actor.characterId] : undefined;
   if (!equipped || gemSkill(equipped).id !== skill.id) return false;
   const friends = battle.units.filter(u => u.side === actor.side && u.hp > 0);

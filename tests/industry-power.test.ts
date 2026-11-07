@@ -66,7 +66,7 @@ describe('tiered workshop and finite light power',()=>{
   settleIndustry(s,91000);expect(s.stock.charcoal).toBe(1);expect(s.power).toEqual({stored:199,generated:290,consumed:91});expect(validIndustry(s)).toBe(true);
  });
  it('keeps a 1.23 workshop, running job, stock and combat seed intact during version upgrade',()=>{
-  const old=player();old.appVersion='1.23.0';old.contentVersion='v1.23-r1';old.industry!.stock={timber:2,stone:1};old.industry!.job={recipeId:'bench',count:1,readyAt:12000};
+  const old=player();old.appVersion='1.23.0';old.contentVersion='v1.23-r1';old.rulesVersion='3';if(old.battle){old.battle.rulesVersion='3';old.battle.contentVersion='v1.23-r1';}old.industry!.stock={timber:2,stone:1};old.industry!.job={recipeId:'bench',count:1,readyAt:12000};
   const upgraded=migrateSaveTo110(old,content);expect(upgraded.industry).toEqual(old.industry);expect(upgraded.seed).toBe(old.seed);expect(upgraded.gold).toBe(old.gold);
   const finished=applyCommand(upgraded,{type:'industrySync'},content,{now:12000});expect(finished.industry!.stock.bench).toBe(1);expect(finished.industry!.power).toBeUndefined();
  });
