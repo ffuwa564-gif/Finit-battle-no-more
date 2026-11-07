@@ -1,0 +1,62 @@
+.battle-harvest{position:absolute;inset:0 0 -32px;z-index:15;pointer-events:none;overflow:visible}
+/* The artwork floats; the generous tap surface stays still. */
+.battle-harvest .harvest-drop.button{position:absolute;translate:-50% -50%;width:44px;height:48px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;pointer-events:auto;touch-action:manipulation;color:#fff4cf;text-shadow:0 1px 4px #071020}
+.battle-harvest .harvest-drop.button:hover:not(:disabled){background:none;box-shadow:none}
+.harvest-drop__art{display:grid;place-items:center;width:44px;height:44px;filter:drop-shadow(0 2px 3px #081120cc);animation:harvest-drift 3.6s ease-in-out infinite;animation-delay:var(--drift-delay);pointer-events:none}
+.harvest-drop__art .inventory-sprite{width:40px;height:40px}.harvest-drop__art .harvest-gem{width:32px;height:41px}
+.harvest-drop--gem .harvest-drop__art{filter:drop-shadow(0 0 5px #e9c57699) drop-shadow(0 2px 2px #081120)}
+.harvest-drop--heal .harvest-drop__art{filter:drop-shadow(0 0 4px #8fd9c17a) drop-shadow(0 2px 2px #081120)}
+.harvest-drop__hits{position:absolute;bottom:2px;right:0;font:700 11px/1 sans-serif;color:#fff4dc;text-shadow:0 1px 3px #050b15,0 0 5px #050b15;pointer-events:none}
+.harvest-drop__life{position:absolute;bottom:0;left:3px;max-width:38px;height:1px;background:#e5d3a2aa;pointer-events:none}
+.harvest-drop small{position:absolute;top:0;left:0;font-size:10px;line-height:1;color:#fff0bc;pointer-events:none}
+.harvest-drop.is-tapped .harvest-drop__art{filter:brightness(1.45) drop-shadow(0 0 4px #e9ddbd)}
+.harvest-card-panel{position:absolute;left:12px;right:12px;top:clamp(84px,20%,112px);z-index:12;pointer-events:none;animation:harvest-cards-in .24s ease-out both}
+.harvest-card-panel header{display:flex;align-items:center;justify-content:center;gap:10px;min-height:44px;margin-bottom:5px;color:#fbf2db;text-shadow:0 1px 5px #030915}
+.harvest-card-panel header>span{display:grid;gap:1px}.harvest-card-panel header small{font:500 8px/1.2 sans-serif;letter-spacing:.22em;color:#d9c896}.harvest-card-panel header strong{font-size:15px;font-weight:500;letter-spacing:.08em}
+.battle-harvest .harvest-card-panel header .button{width:44px;height:44px;min-width:44px;padding:10px;pointer-events:auto;border:0;border-radius:8px;background:#102033b3;color:#e7dfce;box-shadow:none}.harvest-card-panel header svg{width:18px;height:18px}
+.harvest-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:stretch}
+.harvest-card--touch{--card-accent:#8ccce7;--card-glow:#6bbce633}.harvest-card--linger{--card-accent:#c2a6e8;--card-glow:#b099dd33}.harvest-card--abundance{--card-accent:#e5c877;--card-glow:#d6b86633}.harvest-card--mercy{--card-accent:#96d7b7;--card-glow:#8fd4ba33}.harvest-card--focus{--card-accent:#e5a4b0;--card-glow:#d892ad33}
+.battle-harvest .harvest-card.button{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;min-height:184px;height:184px;margin:0;padding:10px 6px 7px;overflow:hidden;border:1px solid #adbec84d;border-radius:9px;background:linear-gradient(155deg,#243447f5,#101c2bf5 65%);box-shadow:inset 0 1px 0 #eaf3ff22,0 9px 20px #02081680;pointer-events:auto;touch-action:manipulation;color:#f2ede1;text-align:center;transition:border-color .18s,box-shadow .18s}
+.harvest-card::before{content:'';position:absolute;left:12%;right:12%;top:0;height:1px;background:var(--card-accent);box-shadow:0 0 12px var(--card-accent)}
+.harvest-card::after{content:'';position:absolute;top:15px;left:0;right:0;height:80px;background:radial-gradient(ellipse,var(--card-glow),transparent 68%);pointer-events:none}
+.harvest-card__index{position:absolute;top:7px;left:7px;font:9px/1 sans-serif;letter-spacing:.1em;color:#bac7d480}
+.harvest-card__art{display:grid;place-items:center;width:56px;height:64px;max-width:100%;flex-shrink:0;position:relative;z-index:1;filter:drop-shadow(0 4px 7px #020714)}
+.harvest-gem{display:block;width:100%;height:100%;pointer-events:none}
+.harvest-card strong{font-size:clamp(11px,2.9vw,14px);font-weight:500;line-height:1.3;min-height:2.6em;display:grid;place-content:center;color:#f7eedb;letter-spacing:.01em}
+.harvest-card__effect{display:flex;align-items:flex-start;justify-content:center;gap:3px;min-height:2.8em;font-size:clamp(10px,2.6vw,12px);line-height:1.4;color:#c9d4df;overflow-wrap:anywhere}.harvest-card__effect svg{flex-shrink:0;width:11px;height:11px;margin-top:1px;color:var(--card-accent)}
+.harvest-card__select{display:flex;align-items:center;justify-content:center;gap:3px;width:100%;margin-top:auto;padding-top:6px;border-top:1px solid #bac8d523;font-size:10px;line-height:1.3;color:var(--card-accent)}.harvest-card__select svg{width:11px;height:11px;rotate:90deg}
+.battle-harvest .harvest-card.is-selected,.battle-harvest .harvest-card.button:hover:not(:disabled){border-color:var(--card-accent);background:linear-gradient(155deg,#2c4055fa,#132033fa 65%);box-shadow:inset 0 0 16px var(--card-glow),0 9px 20px #02081680}
+.harvest-card-panel footer{padding-top:7px;text-align:center;color:#eee2c3;font-size:10px;line-height:1.4;text-shadow:0 1px 4px #050d19}
+.harvest-choices{position:absolute;left:50%;top:calc(93% - 2px);width:24%;translate:-50% -50%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;pointer-events:none}
+.harvest-socket-anchor{display:block;position:relative;width:44px;height:44px;justify-self:center;flex-shrink:0}
+.battle-harvest .harvest-socket.button{position:relative;display:block;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;pointer-events:auto;touch-action:manipulation;color:#d7c493}
+.harvest-socket::before{content:'';position:absolute;inset:2px;opacity:0;background:radial-gradient(ellipse,#c9dcea44,transparent 70%);pointer-events:none}.harvest-socket.is-filled::before{opacity:1}
+.battle-harvest .harvest-socket.button:disabled{opacity:1;cursor:default}.battle-harvest .harvest-socket.button:hover:not(:disabled){background:none;box-shadow:none}
+.harvest-socket__number{position:absolute;left:0;right:0;top:-9px;font:9px/1 Georgia,serif;color:#c4c5bf99;pointer-events:none}
+.harvest-socket__gem{position:absolute;inset:0;display:grid;place-items:center;filter:drop-shadow(0 0 5px #b8d7e84d);pointer-events:none}.harvest-socket__gem.is-in-flight{opacity:0}
+.harvest-sockets[data-awaiting='true'] .harvest-socket::before,.harvest-sockets[data-offer='true'] .harvest-socket:not(.is-filled)::before{opacity:1;background:radial-gradient(ellipse,#e5d2a266,transparent 70%)}
+.harvest-socket.is-landed .harvest-socket__gem{animation:harvest-settle .65s ease-out both}
+.harvest-choice-life{position:absolute;top:-16px;width:100%;height:2px;accent-color:#e2cc96;opacity:.7}
+.harvest-aids{position:absolute;top:82%;left:50%;translate:-50% 0;padding:2px 6px;background:#0e1a2b99;color:#e7d7ae;font-size:10px;line-height:1.1}
+.harvest-gem-flight{position:fixed;z-index:160;pointer-events:none;width:60px;height:72px;margin-left:-30px;margin-top:-36px;filter:drop-shadow(0 0 9px #e6d9aabb);animation:harvest-equip .68s cubic-bezier(.2,.75,.2,1) both}
+.harvest-summary{padding:12px;border:1px solid #bfa66c55;border-radius:12px;background:#152435}.harvest-summary h3{margin:0 0 8px;color:#eddbac}.harvest-summary>div{display:flex;gap:10px;flex-wrap:wrap}.harvest-summary span{display:inline-flex;gap:4px;align-items:center;color:#f0e8d7;font-size:13px}.harvest-summary .inventory-sprite{width:30px;height:30px}.harvest-summary>small{display:block;margin-top:8px;color:#c5d0dd}
+.battle-control-pad__advance{grid-column:1/-1;display:grid;grid-template-columns:48px minmax(0,1fr);gap:6px}.battle-layout .battle-control-pad__advance .moon-command--advance{grid-column:auto;min-width:0}
+.battle-layout .battle-control-pad .battle-auto.button{display:flex;flex-direction:column;gap:5px;min-width:44px;padding:6px 2px;border:1px solid #bcced799;border-radius:14px;color:#d6e1eb;background:linear-gradient(140deg,#273a50,#121c2c);font-size:9px;letter-spacing:.04em}.battle-layout .battle-control-pad .battle-auto.is-selected{color:#fff0bc;border-color:#ead59b;box-shadow:inset 0 0 13px #dac27a44,0 0 8px #d4ba7855}.battle-auto svg{width:21px;height:21px}
+.battle-scene:has(.battle-harvest) .enemy-carousel-controls{bottom:28%}
+body:has(.harvest-card-panel) .companion-choice__bubble{visibility:hidden}
+body:has(.command-dial) .harvest-card-panel{visibility:hidden}
+@keyframes harvest-drift{0%,100%{transform:translateY(1px) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@keyframes harvest-cards-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes harvest-equip{0%{opacity:1;transform:translate3d(0,0,0) scale(1)}20%{opacity:1;transform:translate3d(0,-10px,0) scale(1.08)}100%{opacity:1;transform:translate3d(var(--flight-x),var(--flight-y),0) scale(.5)}}
+@keyframes harvest-settle{0%{filter:brightness(1.8) drop-shadow(0 0 12px #f4e4bc);transform:scale(1.14)}100%{filter:brightness(1);transform:scale(1)}}
+.battle-harvest[data-reduced='true'] *{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.battle-harvest *,.harvest-gem-flight{animation:none!important;transition:none!important}.harvest-gem-flight{display:none}}
+@media(forced-colors:active){.battle-harvest .button{border:1px solid ButtonText;background:ButtonFace;color:ButtonText}.harvest-card__effect,.harvest-card strong{color:ButtonText}}
+
+.harvest-socket__gem .harvest-gem{width:clamp(18px,6vw,28px);height:clamp(25px,8vw,36px)}
+body:has(.harvest-card-panel) .enemy-carousel-controls{visibility:hidden}
+
+.harvest-card-panel[data-replacing='true'] .harvest-card{height:106px;min-height:106px;padding-block:7px}.harvest-card-panel[data-replacing='true'] .harvest-card__art{height:42px;width:35px}.harvest-card-panel[data-replacing='true'] .harvest-card__effect,.harvest-card-panel[data-replacing='true'] .harvest-card__select{display:none}.harvest-card-panel[data-replacing='true'] .harvest-card:not(.is-selected){opacity:.55}
+/* A cinematic hides the underlying board; invisible pickups must not accept taps. */
+body:has(:is(.ultimate-cinematic,.ultimate-party-effect,.ultimate-target-fallback)) .battle-harvest{visibility:hidden}
+body:has(:is(.ultimate-cinematic,.ultimate-party-effect,.ultimate-target-fallback)) .harvest-gem-flight{visibility:hidden}

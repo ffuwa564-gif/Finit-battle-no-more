@@ -80,6 +80,9 @@ test('departure guidance is inside its modal and battle lessons neither start ro
   await expect(card(page)).toContainText('仲間への指示');
   await page.screenshot({ path: info.outputPath('lumi-battle-mobile.png') });
   expect(await stored(page)).toEqual(before);
+  await card(page).getByRole('button', { name: '次へ', exact: true }).click();
+  await expect(card(page)).toContainText('欲しい光から、集めよう');
+  expect(await stored(page)).toEqual(before);
   await card(page).getByRole('button', { name: 'この案内を閉じる', exact: true }).click();
   await page.getByRole('button', { name: 'ラウンドを進める', exact: true }).click();
   await expect.poll(async () => (await stored(page)).battle!.round).toBeGreaterThan(before.battle!.round);

@@ -1,12 +1,14 @@
 import { tr, localize } from '../locales/i18n';
 import type { CSSProperties, ReactNode } from 'react';
-import { Compass, Flag, FlaskConical, Shield, Swords } from 'lucide-react';
+import { Compass, Flag, FlaskConical, Shield, Swords, Timer } from 'lucide-react';
 import type { Strategy } from '../domain/types';
 import { assetPath } from '../content';
 import { Button } from './index';
 import './battle-control-pad.css';
 
 export interface BattleControlPadProps {
+  auto?: boolean;
+  onToggleAuto?: () => void;
   strategy: Strategy;
   onStrategy: (strategy: Strategy) => void;
   strategyDisabled: boolean;
@@ -45,9 +47,12 @@ export function BattleControlPad(p: BattleControlPadProps) {
         <div className="battle-control-pad__toolbar">{localize(p.toolbar)}</div>
         <Button variant="secondary" className="moon-command moon-command--retreat" aria-label={tr("撤退")} title={tr("撤退")} disabled={p.retreatDisabled} onClick={p.onRetreat}><Flag aria-hidden="true" /><span>RETREAT</span></Button>
       </div>
+      <div className="battle-control-pad__advance">
+      <Button variant="secondary" className="battle-auto" selected={!!p.auto} aria-label={tr(p.auto ? 'オート進行を停止' : 'オート進行を開始')} onClick={p.onToggleAuto}><Timer aria-hidden="true"/><span>AUTO</span></Button>
       <Button className="moon-command moon-command--advance" data-guide="battle-advance" aria-label={tr(p.advancing ? '次の演出へ' : 'ラウンドを進める')} disabled={p.advanceDisabled} onClick={p.onAdvance}>
         <Swords aria-hidden="true" /><span>{localize(p.advancing ? 'NEXT' : 'ATTACK')}</span><span className="moon-command__flourish" aria-hidden="true">✦</span>
       </Button>
+      </div>
     </div>
   </section>;
 }

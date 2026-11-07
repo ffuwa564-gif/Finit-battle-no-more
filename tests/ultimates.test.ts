@@ -72,14 +72,26 @@ describe('player-selected character ultimates', () => {
     expect(ally(save, 'seris').ultimateQueued).toBe(false); expect(ally(save, 'seris').ultimateCharge).toBe(100);
     expect(ally(save, 'elaine').ultimateQueued).toBe(true);
   });
-  it('rejects unavailable units, uncharged, dead and replay-time requests without mutating saves', () => {
+  it('rejects unavailable units, uncharged, dead and finished-battle requests without mutating saves', () => {
     const save = ready(), before = structuredClone(save);
     for (const uid of ['missing', 'party:seris', save.battle!.units.find(unit => unit.side === 'enemy')!.uid]) expect(() => applyCommand(save, { type: 'ultimate', unitId: uid }, content)).toThrow();
     expect(save).toEqual(before);
     ally(save, 'seris').ultimateCharge = 100; ally(save, 'seris').hp = 0;
     expect(() => applyCommand(save, { type: 'ultimate', unitId: 'party:seris' }, content)).toThrow();
-    ally(save, 'seris').hp = 1; save.battle!.phase = 'playing';
+    ally(save, 'seris').hp = 1; save.battle!.phase = 'failed';
     expect(() => applyCommand(save, { type: 'ultimate', unitId: 'party:seris' }, content)).toThrow();
+  });
+  it('reserves and cancels during replay without changing resolved actions or spending charge', () => {
+    let save = ready();
+    save.battle = resolveRound(save.battle!, content).battle;
+    ally(save, 'seris').ultimateCharge = 100;
+    const before = structuredClone(save), events = structuredClone(save.battle.events);
+    save = applyCommand(save, {type:'ultimate',unitId:'party:seris'}, content);
+    expect(ally(save,'seris').ultimateQueued).toBe(true);
+    expect(ally(save,'seris').ultimateCharge).toBe(100);
+    expect(save.battle!.events).toEqual(events); expect(before.battle!.units.find(u=>u.uid==='party:seris')!.ultimateQueued).not.toBe(true);
+    save = applyCommand(save, {type:'ultimate',unitId:'party:seris'}, content);
+    expect(ally(save,'seris').ultimateQueued).toBe(false); expect(save.battle!.events).toEqual(events); assertValidSave(save);
   });
   it('replaces one action in normal speed order, spends once, and leaves normal skill cooldowns untouched', () => {
     const { save, battle, event } = fire('seris');

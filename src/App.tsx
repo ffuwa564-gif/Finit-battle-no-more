@@ -90,7 +90,7 @@ export default function App() {
     // Claim before any await so the originating button cannot also play a cue.
     // Unlock while still in the trusted gesture; saved commands may finish later.
     if (claimCommandFeedback()) { unlockBgm(); void enableAudio(); }
-    if (action.type === 'partyOrder' || action.type === 'focusEnemy') {
+    if (action.type === 'partyOrder' || action.type === 'focusEnemy' || action.type === 'harvestTap' || action.type === 'harvestChoose' || action.type === 'ultimate' || action.type === 'potion') {
       for (let wait = 0; busyRef.current && wait < 100; wait++) await new Promise(resolve => setTimeout(resolve, 20));
     }
     const previous = state.current;
@@ -100,6 +100,7 @@ export default function App() {
     let previewingBgm = false;
     try {
       const next = applyCommand(previous, action, content, { now: Date.now() });
+      if (next === previous) return false;
       // Safari needs play/resume in the actual tap, before IndexedDB resolves.
       if (action.type === 'settings' && next.settings.bgmVolume !== previous.settings.bgmVolume) {
         previewingBgm = true;
@@ -108,13 +109,15 @@ export default function App() {
       await persistSave(next, previous.revision);
       state.current = next; setSave(next);
       setAudioVolume(next.settings.seVolume);
-      const cue = action.type === 'tapGemPolish' ? (next.memoryGems?.items.length ?? 0) > (previous.memoryGems?.items.length ?? 0) ? 'recruit' : next.memoryGems?.polish?.attempt === previous.memoryGems?.polish?.attempt ? null : next.memoryGems?.polish?.lastResult === 'good' ? 'exchange' : 'cancel' : commandSound(action, next.settings);
-      if (cue) playSound(cue);
+      const harvestGem = action.type === 'harvestTap' && (next.battle?.harvest?.gems.length ?? 0) > (previous.battle?.harvest?.gems.length ?? 0);
+      const harvested = action.type === 'harvestTap' && (next.battle?.harvest?.collected ?? 0) > (previous.battle?.harvest?.collected ?? 0);
+      const cue = action.type === 'potion' && next.potions === previous.potions ? next.battle?.pendingPotionId ? 'select' : null : action.type === 'harvestTap' ? harvestGem ? 'drop' : harvested ? 'exchange' : 'select' : action.type === 'tapGemPolish' ? (next.memoryGems?.items.length ?? 0) > (previous.memoryGems?.items.length ?? 0) ? 'recruit' : next.memoryGems?.polish?.attempt === previous.memoryGems?.polish?.attempt ? null : next.memoryGems?.polish?.lastResult === 'good' ? 'exchange' : 'cancel' : commandSound(action, next.settings);
+      if (cue) playSound(cue, harvestGem ? 'rare' : undefined);
       const gained=(next.medals?.earned??[]).filter(id=>!previous.medals?.earned.includes(id));
       if(gained.length){setToast({text:tr('勲章を獲得：{0}').replace('{0}',medalById(gained[0])!.name[getLanguage()]+(gained.length>1?` +${gained.length-1}`:'')),tone:'success'});if(!cue)playSound('confirm');}
       if ((next.memoryGems?.rough?.length ?? 0) > (previous.memoryGems?.rough?.length ?? 0) && action.type === 'replay') playSound('drop');
       if (action.type === 'novelFinish' && content.novels?.find(scene => scene.id === previous.novels?.active?.sceneId)?.mapEncounter) { navigate('dungeons'); location.hash = 'dungeons'; }
-      if (action.type === 'potion' && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
+      if (action.type === 'potion' && next.potions < previous.potions && previous.battle && next.battle) window.dispatchEvent(new CustomEvent('game:hp', { detail: { id: `potion:${next.revision}`, changes: hpChanges(previous.battle.units, next.battle.units) } }));
       if (next.battle?.phase === 'reward' && previous.battle?.phase !== 'reward') playSound('victory');
       if (action.type === 'recruit') { setToast({ text: '新しい仲間との縁が結ばれました。', tone: 'success' }); }
       if (action.type === 'eventRecruit' || action.type === 'awaken' || action.type === 'goldRecruit') {
@@ -248,7 +251,7 @@ export default function App() {
     const duration = event.ultimate ? ultimateClock.current.delay(timing.end, performance.now()) : battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
-      if (busyRef.current) { timer = setTimeout(complete, 100); return; }
+      if (busyRef.current || document.hidden || document.querySelector('[role="dialog"],.command-dial')) { timer = setTimeout(complete, 100); return; }
       void command({ type: 'replay' }, event.id);
     };
     timer = setTimeout(complete, duration);
