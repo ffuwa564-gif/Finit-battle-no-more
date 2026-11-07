@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "exitCode": 124,
+  "timeoutSeconds": 90,
+  "movieSha256": "8e86d4f4f9a8100437ac500bdf7be8febef5cf34c345fd90acd78b7f5e915058",
+  "environment": {
+    "WEBKIT_GST_USE_PLAYBIN3": "0",
+    "WEBKIT_GST_WORKAROUND_BASE_SINK_POSITION_FLUSH": "1"
+  },
+  "scope": "Bounded runtime workaround diagnostic; no movie or source edits."
+}

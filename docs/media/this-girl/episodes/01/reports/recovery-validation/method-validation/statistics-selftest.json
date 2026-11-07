@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "synthetic": true,
+  "notCombatEvidence": true,
+  "method": "CP discordance-rate/conditional-direction rectangle",
+  "coverageProof": "statistical-analysis-plan.md, union-bound derivation",
+  "finiteEnumerationIsNotAUniversalProof": true,
+  "intervalClaimCount": 516,
+  "pairedCodeSha256": "6302debea59e07ff2559c5b1dba79305ab3085b9401ec1d9fa3e8588bb742acc",
+  "checks": [
+    {
+      "n": 2,
+      "alpha": 0.05,
+      "minimumGridCoverage": 0.99,
+      "minimumGridParameter": [
+        0.9,
+        0
+      ],
+      "nominalCoverage": 0.95,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 2,
+      "alpha": 9.689922480620155e-05,
+      "minimumGridCoverage": 0.9999999999999999,
+      "minimumGridParameter": [
+        0.01,
+        0.1
+      ],
+      "nominalCoverage": 0.9999031007751938,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 5,
+      "alpha": 0.05,
+      "minimumGridCoverage": 0.9914399999999999,
+      "minimumGridParameter": [
+        0.9,
+        0
+      ],
+      "nominalCoverage": 0.95,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 5,
+      "alpha": 9.689922480620155e-05,
+      "minimumGridCoverage": 0.9999899966604509,
+      "minimumGridParameter": [
+        0.9,
+        0.01
+      ],
+      "nominalCoverage": 0.9999031007751938,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 10,
+      "alpha": 0.05,
+      "minimumGridCoverage": 0.978515625,
+      "minimumGridParameter": [
+        1,
+        0.5
+      ],
+      "nominalCoverage": 0.95,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 10,
+      "alpha": 9.689922480620155e-05,
+      "minimumGridCoverage": 0.9999908784,
+      "minimumGridParameter": [
+        0.9,
+        0
+      ],
+      "nominalCoverage": 0.9999031007751938,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 20,
+      "alpha": 0.05,
+      "minimumGridCoverage": 0.9864965283514054,
+      "minimumGridParameter": [
+        0.9,
+        0.5
+      ],
+      "nominalCoverage": 0.95,
+      "syntheticParameterPairs": 49
+    },
+    {
+      "n": 20,
+      "alpha": 9.689922480620155e-05,
+      "minimumGridCoverage": 0.9999599456787109,
+      "minimumGridParameter": [
+        1,
+        0.5
+      ],
+      "nominalCoverage": 0.9999031007751938,
+      "syntheticParameterPairs": 49
+    }
+  ],
+  "syntheticExamples": [
+    {
+      "better": 0,
+      "worse": 0,
+      "interval": [
+        -0.04066615427836628,
+        0.04066615427836628
+      ]
+    },
+    {
+      "better": 8,
+      "worse": 0,
+      "interval": [
+        -0.047137126688102715,
+        0.10023624855867425
+      ]
+    },
+    {
+      "better": 16,
+      "worse": 0,
+      "interval": [
+        0.0005340025462810232,
+        0.1460261322483819
+      ]
+    },
+    {
+      "better": 20,
+      "worse": 0,
+      "interval": [
+        0.004705765603587466,
+        0.1672262962744176
+      ]
+    },
+    {
+      "better": 32,
+      "worse": 4,
+      "interval": [
+        0.008253322364679029,
+        0.2437708390844887
+      ]
+    }
+  ],
+  "allWinsAbsoluteInterval": [
+    0.961934863642351,
+    1.0
+  ],
+  "zeroMeanRoundDifferenceBound": {
+    "mean": 0.0,
+    "interval": [
+      -15.560143017221044,
+      15.560143017221044
+    ],
+    "variance": 0.0,
+    "radius": 15.560143017221044,
+    "method": "two-sided empirical-Bernstein",
+    "alpha": 9.689922480620155e-05,
+    "trueBounds": [
+      -80,
+      80
+    ],
+    "assumption": "iid approximately uniform seed model; no bootstrap"
+  }
+}

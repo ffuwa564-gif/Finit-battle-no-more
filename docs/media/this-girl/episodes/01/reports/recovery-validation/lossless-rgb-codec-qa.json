@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "60-frame codec-only lossless same-input test; not A/V recording approval",
+  "sourceSha256": "ef447cbc57080059ef864131017dd2c9933467901cca8a915955d71312c89a47",
+  "testFileSha256": "64b882b74264384a8c6aeb316c3d08b54cc6ae894e44eee5645a00fc3c87cc21",
+  "rgb24FrameHashesMatch": 60,
+  "maximumPtsDifferenceSeconds": 0.0,
+  "audioPrefixBytesIdentical": 358888,
+  "testBytes": 1070860,
+  "sourceEncoding": "FFV1 bgr0",
+  "testEncoding": "libx264rgb crf0 ultrafast rgb24 bf0 threads1",
+  "helperSha256": "0d61136e8f3fdcd20f8b86d65599c4a562efd70d39c05604ec4d66037f5f8f95"
+}

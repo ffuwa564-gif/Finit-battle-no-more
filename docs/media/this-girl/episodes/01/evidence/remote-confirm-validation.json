@@ -1,0 +1,342 @@
+{
+  "lockSha256": "bc86fe204966cc1adc5468ea6720815bbeb999498e11d053ec1341268711a020",
+  "runId": "41643865484",
+  "sourceCommit": "caf86e2e1d9a27dfeab3cd2e1459707c7ad37120",
+  "complete": true,
+  "expectedJobs": 18,
+  "observedJobs": 18,
+  "missing": [],
+  "incomplete": [],
+  "rawConfirmationRowsChecked": 49664,
+  "cases": [
+    {
+      "case": [
+        "growth",
+        "supplementary",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "growth/ivory-tower-010-F1_T4-T3.json.gz",
+        "growth/ivory-tower-010-F1_T6-T4.json.gz",
+        "growth/ivory-tower-010-F1_T6-T3.json.gz",
+        "growth/ivory-tower-010-F4_T4-T3.json.gz",
+        "growth/ivory-tower-010-F4_T6-T4.json.gz",
+        "growth/ivory-tower-010-F4_T6-T3.json.gz",
+        "growth/kuzuha-awakening-F1_T4-T3.json.gz",
+        "growth/kuzuha-awakening-F1_T6-T4.json.gz",
+        "growth/kuzuha-awakening-F1_T6-T3.json.gz",
+        "growth/kuzuha-awakening-F4_T4-T3.json.gz",
+        "growth/kuzuha-awakening-F4_T6-T4.json.gz",
+        "growth/kuzuha-awakening-F4_T6-T3.json.gz"
+      ],
+      "fileHashes": {
+        "growth/ivory-tower-010-F1_T4-T3.json.gz": "e6190dea49e384df50f55db5a8979d25dcc2a553ff8f61e8118f65f68e623695",
+        "growth/ivory-tower-010-F1_T6-T4.json.gz": "215fb8a49934f172c83bb3022e23a84d3201bd16d346cc4301077fcc584eb5bf",
+        "growth/ivory-tower-010-F1_T6-T3.json.gz": "52a4acbc7eabdeb7841570845248ec909384a083e385a06be7a1315cb2712fdc",
+        "growth/ivory-tower-010-F4_T4-T3.json.gz": "4b3755932df515db7937f006da75e17664d482a94bbe399335af1e0be58becdd",
+        "growth/ivory-tower-010-F4_T6-T4.json.gz": "fd68a991b2fff79a460a73a2db08e645ba51c671bd78be4be00c635ff6b32455",
+        "growth/ivory-tower-010-F4_T6-T3.json.gz": "da40784c71069368b41ad05a67d54cece637ac7e1e19d4fa8b656e22597ec178",
+        "growth/kuzuha-awakening-F1_T4-T3.json.gz": "651fa9026d0a7b7bd591e7816d339db0b8711a362ee9ec885e238b877d0299ee",
+        "growth/kuzuha-awakening-F1_T6-T4.json.gz": "61d1ae38b79369f3fd588242328a4b5a1e313f4401897bc737231f6e8af89da3",
+        "growth/kuzuha-awakening-F1_T6-T3.json.gz": "524537911490237dd12d6a25636fc0a47c6485da6fbdb540226c68a111d7e6bc",
+        "growth/kuzuha-awakening-F4_T4-T3.json.gz": "37113e983bae71fd6da3b58933adb1efe737f241624e93cd382446b60e4650b0",
+        "growth/kuzuha-awakening-F4_T6-T4.json.gz": "3cef24be64ee6ebb68ddf421f49e43afbf0b060f8e2dda2abcaee37d8d9aa9f4",
+        "growth/kuzuha-awakening-F4_T6-T3.json.gz": "6117939ab20b7b3652e23e6b1472499207f9c49b7371a0ce326a44674e035f3e"
+      },
+      "provenanceSha256": "b0fc142be131d088bb14d65cddc1091ad31b236a6481d37de9752f9d55dd716e"
+    },
+    {
+      "case": [
+        "hidden",
+        "supplementary",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "hidden/lunette-awakening-F1.json.gz",
+        "hidden/lunette-awakening-F4.json.gz",
+        "hidden/ivory-tower-025-F1.json.gz",
+        "hidden/ivory-tower-025-F4.json.gz",
+        "hidden/moonshield-rehearsal-F1.json.gz",
+        "hidden/moonshield-rehearsal-F4.json.gz"
+      ],
+      "fileHashes": {
+        "hidden/lunette-awakening-F1.json.gz": "b5a563b71d3f32a38c95ffb7aee8d7f95365fc585ee65bc5c597917d5a737120",
+        "hidden/lunette-awakening-F4.json.gz": "d62b386b2fff013fc0348c4be7370e6a1ac8feb395ff49ab2e56b449ce49828a",
+        "hidden/ivory-tower-025-F1.json.gz": "d13fde545e06d9a5970ba8626f39fd31e08c71344fccd3be79fa3e887ccf1f0d",
+        "hidden/ivory-tower-025-F4.json.gz": "99fe9f07cfa7a558c2807dd32d04df3c6a043856f5fde643c6897625e98db376",
+        "hidden/moonshield-rehearsal-F1.json.gz": "42539d40fb1be1d8ae07fdb9c310c02bbdbe983a5fcb2639766c40d874e2aba4",
+        "hidden/moonshield-rehearsal-F4.json.gz": "76295d2ba34dd79f2a783720e12199d967d6c53504a72ac3670e18c142cf998e"
+      },
+      "provenanceSha256": "4db8e6591eca9762891ccb8e3259c7918a25066db76528049673bff8234bdc57"
+    },
+    {
+      "case": [
+        "landscape",
+        "exploratory",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "landscape.json.gz"
+      ],
+      "fileHashes": {
+        "landscape.json.gz": "4e07d02339da15683908790a23ffe58039c5d39017dc6b3e6622e078dff271f2"
+      },
+      "provenanceSha256": "5b3c405a47e606dcaf8ada1be2a9e85120e4ba4e7d07ce23c5af3a0eabaa9bb8"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        3,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T3-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T3-F1.json.gz": "01278cae2f457c40a9f44669dbcb67b538ae2e92d20ca957ce24e0223299f5d6"
+      },
+      "provenanceSha256": "15d0720854ca12d8d8879f5403b5178e706feda309d8a95d591afef566f21458"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        3,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T3-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T3-F4.json.gz": "0046c716cb67afa01b2a7787b89538edba51ddb553fbfcdcca984b8ade6ad7cb"
+      },
+      "provenanceSha256": "748389dd9f9cee946c920d66b6cb822ce3264d496c4f6f6a9e762824257b0bfe"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        4,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T4-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T4-F1.json.gz": "2294bcc089553c595ba7ac2968fa5fb6bb741c5d482dd55d40b6d0b09723a3a4"
+      },
+      "provenanceSha256": "9987100ce50cf1fd6793cd54b3dca3fe35957f1778aef6462897404aa55a2f3a"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        4,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T4-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T4-F4.json.gz": "8edc15693337568e2b454fd9d602936b72540ec4f5203e20649c41fba57661b1"
+      },
+      "provenanceSha256": "bf47c768349a4484bd217db5c49239159de245693ec3c0aa9292e5a1cb459b80"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        6,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T6-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T6-F1.json.gz": "f904f63a495fcff19a15b95669382e12bdbbcb54dcca3d848bf54148919cd2db"
+      },
+      "provenanceSha256": "9f1fb5df6889224c35921c23c6ad0142b963de39504032294dcf24f104c0d5f3"
+    },
+    {
+      "case": [
+        "main",
+        "ivory-tower-010",
+        6,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/ivory-tower-010-T6-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/ivory-tower-010-T6-F4.json.gz": "067d55bb3ff5fe22bb49c086597574c91019ca6e3840e2ff9b326887ff90102c"
+      },
+      "provenanceSha256": "81c974e57ca2b6baac820b0eae739ac876f772fcd935e784542535f4505db0d5"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        3,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T3-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T3-F1.json.gz": "6ae3467aa12f8908f211c38413d903ddcd33530b4a83fba1206a7521d3e420d1"
+      },
+      "provenanceSha256": "903a80872babd3441402ee9511e36751e799520b31d5da6c767351d3a7d1334f"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        3,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T3-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T3-F4.json.gz": "aa2e02e7c915e98e4d564b893eb5705eac423f8b2ce7e075dc67121e070444bb"
+      },
+      "provenanceSha256": "66367d59a9f7e7ef8f7de136c720eafbd04068fb895c3dd7f7d3323384fe613a"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        4,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T4-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T4-F1.json.gz": "be9ff3b015517f9fcf272f4962ea1440470bea284e9ca22938480a8b36406150"
+      },
+      "provenanceSha256": "39c60139b9e9dbd795a444fdc32a8861a4e78254e1a4792ab899a4c5b57a6e14"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        4,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T4-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T4-F4.json.gz": "f9477d97ea911249841e8e34242b1f6f6fc376effaa747618ede2bbcba68b606"
+      },
+      "provenanceSha256": "f62db74103dc35b8ad430d64ea434599c9a6ce7559bf5cfc1093178d2cc9f4b6"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        6,
+        "F1"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T6-F1.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T6-F1.json.gz": "493bd69d2e79b7c968e7628ea716d822714cf761b036e35a7916f0778efa55df"
+      },
+      "provenanceSha256": "c72273ddf584d224d182fffeb278881f55d230543c245c678136f1dd6471e2ff"
+    },
+    {
+      "case": [
+        "main",
+        "kuzuha-awakening",
+        6,
+        "F4"
+      ],
+      "complete": true,
+      "files": [
+        "confirmation/kuzuha-awakening-T6-F4.json.gz"
+      ],
+      "fileHashes": {
+        "confirmation/kuzuha-awakening-T6-F4.json.gz": "529aaf8c4728430564cc8a261bfee06a8c7bfc4c6a2ea7e2c1a658fe3ba6e6e6"
+      },
+      "provenanceSha256": "9e41819011a1c94778d39a9a168ec99c2b73d3f8c8d41293571a63a118c2d362"
+    },
+    {
+      "case": [
+        "noel",
+        "supplementary",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "noel/ivory-tower-010.json.gz",
+        "noel/kuzuha-awakening.json.gz"
+      ],
+      "fileHashes": {
+        "noel/ivory-tower-010.json.gz": "c708ab87c1048ddb62c08448f66347901bc2063641be035341d221b42d09ec54",
+        "noel/kuzuha-awakening.json.gz": "f98250bfcc01334a134bf5de3c02aedaca68700e9b9be9e41a4d31e5533ecb85"
+      },
+      "provenanceSha256": "0edfedcf8503d0c0c7184bb95ba9c9deda3811b6052138c94b7a827217611ed1"
+    },
+    {
+      "case": [
+        "roster",
+        "exploratory",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "roster-screen.json.gz"
+      ],
+      "fileHashes": {
+        "roster-screen.json.gz": "082e3a7f6e9c2eaf2cd7590e5f9344018eaf3ec6a4c8094a9b91522535693a0f"
+      },
+      "provenanceSha256": "235d120043d768fb08417c33c3b9c763f13954f386e515838e006299c959d820"
+    },
+    {
+      "case": [
+        "stress",
+        "supplementary",
+        0,
+        "all"
+      ],
+      "complete": true,
+      "files": [
+        "stress/ivory-tower-010-T6-F1.json.gz",
+        "stress/ivory-tower-010-T6-F4.json.gz",
+        "stress/kuzuha-awakening-T6-F1.json.gz",
+        "stress/kuzuha-awakening-T6-F4.json.gz"
+      ],
+      "fileHashes": {
+        "stress/ivory-tower-010-T6-F1.json.gz": "b43e9d88311a245bc91e517f33207b5e8b6c5ff1b2a00cfbd57e0748595dc0ac",
+        "stress/ivory-tower-010-T6-F4.json.gz": "a8386006616cddbc0e74055efa7fa3dca0cc9a686c5975ca6bd2e9e91a4f9448",
+        "stress/kuzuha-awakening-T6-F1.json.gz": "e2a4e4e9c2ecd47ac4d76f41c0326ecb1af75bca89aabfdf206f660c60579754",
+        "stress/kuzuha-awakening-T6-F4.json.gz": "f78fe2b0d1a3d53d2def695ea9c2255c31c91e41f5794ed3eeb72673ca70e26d"
+      },
+      "provenanceSha256": "31a619b8619a0067001d99fb01ea300e6bfba983a6223445a3a12a59efe685bc"
+    }
+  ],
+  "adopted": false
+}

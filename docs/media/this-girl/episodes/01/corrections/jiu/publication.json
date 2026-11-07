@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "commit": "0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb",
+  "baseCommit": "5684031a8a320ae0f323f094b4bfe2d7719796c4",
+  "movieSha256": "4d45eb71d0930012f7ef376afd44dbf4829d2d66ea515b9ee97d4460fb343ef3",
+  "changedFiles": [
+    {
+      "file": "ThisGirl-01.mp4",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/ThisGirl-01.mp4",
+      "sha256": "4d45eb71d0930012f7ef376afd44dbf4829d2d66ea515b9ee97d4460fb343ef3",
+      "bytes": 50893717
+    },
+    {
+      "file": "Reproduce.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Reproduce.md",
+      "sha256": "ce6eb4d60193f731fab465c5089ed30ddd9e9972b1694c4135ba3e1daa46101d",
+      "bytes": 11701
+    },
+    {
+      "file": "Base-Packaging-Manifest-v1.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Base-Packaging-Manifest-v1.json",
+      "sha256": "669b83f51fa4ae6184dbf49f219a1654e715afba1599ea71eb33096688da5a80",
+      "bytes": 215663
+    },
+    {
+      "file": "Base-SHA256SUMS-v1.txt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Base-SHA256SUMS-v1.txt",
+      "sha256": "dfd04e68e9fe4eb801b93b7a66fa26a4596ca652561837fe12a21c9fce5358b7",
+      "bytes": 1681
+    },
+    {
+      "file": "Audio-Correction-README.md",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Audio-Correction-README.md",
+      "sha256": "e28ef11d6dfc7b42390d63a7f2ee05d3d00ede46aa3c7690cfc29c1853af1a18",
+      "bytes": 1907
+    },
+    {
+      "file": "Audio-Correction-jiu.zip",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Audio-Correction-jiu.zip",
+      "sha256": "394cc711c8e637c3f7cdfb86d136f07752c2a6a1159ff23fcc088f3bd46a0e1f",
+      "bytes": 15583
+    },
+    {
+      "file": "Packaging-Manifest.json",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/Packaging-Manifest.json",
+      "sha256": "d770b631a4c58236206b3136c46296993f48e20278d220a64116401b985ebddf",
+      "bytes": 4895
+    },
+    {
+      "file": "SHA256SUMS.txt",
+      "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/0c3ca10b1dea4f1688d6fc5a9ae23bc42cb6cabb/SHA256SUMS.txt",
+      "sha256": "2342b9617e18e189c5cdb5335f7478adc58f59d5e0d5449c360413f693e649e6",
+      "bytes": 2052
+    }
+  ],
+  "unchangedFilesReusedFromVerifiedBase": [
+    "Chapters.txt",
+    "Character-Judgment.json",
+    "Credits.md",
+    "Design-Decisions.md",
+    "Production-and-Evidence.zip.part001",
+    "Production-and-Evidence.zip.part002",
+    "Production-and-Evidence.zip.part003",
+    "Production-and-Evidence.zip.part004",
+    "Production-and-Evidence.zip.part005",
+    "ResearchReport.md",
+    "Roster-Audit.md",
+    "Script.md",
+    "Stone-Goals.md",
+    "Subtitles-ja.srt",
+    "Thumbnail-ThisGirl-01.png",
+    "YouTube-Description.txt"
+  ]
+}

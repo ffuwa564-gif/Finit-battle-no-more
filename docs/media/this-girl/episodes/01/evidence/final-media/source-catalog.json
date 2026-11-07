@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "episode": "THIS-GIRL-001",
+  "sources": {
+    "reference": {
+      "movie": "artifacts/this-girl-01/capture/reference-uniform.mov",
+      "metadata": "artifacts/this-girl-01/capture/reference-uniform.json",
+      "nativeQa": "artifacts/this-girl-01/research/native-buffer-qa-reference-uniform.json",
+      "packetQa": "artifacts/this-girl-01/research/packet-pcm-qa-reference-uniform.json",
+      "rawMovie": "artifacts/this-girl-01/capture/reference-uniform-os-raw.mkv",
+      "graphPcm": "artifacts/this-girl-01/capture/reference-uniform.pcm",
+      "preNotchMovie": "artifacts/this-girl-01/capture/reference-uniform-native-calibration.mov",
+      "proofReport": "artifacts/this-girl-01/research/proof-reference.json",
+      "proofGzip": "artifacts/this-girl-01/proofs/reference.json.gz",
+      "actualCaptureId": "reference",
+      "canonicalVariant": "uniform",
+      "hashes": {
+        "movie": "95ca58f0edd86f359497759a1f64944e5facac0bc3dbd238bc12dbf3c22c3772",
+        "metadata": "a430148e93602ea0857aa6e30f30a12426f885071e38f075ce09079caf6a4c8a",
+        "nativeQa": "fe5b18723f0e7963370e0cdeddc0a7d691a4b7e079965622f069f998d49ab242",
+        "packetQa": "b1f111578575d7d45933b529eed72d0473e666f6be76ac85f886f165f1d14a6b",
+        "rawMovie": "a1be8076de4b52be1ba9285b989113801fae017a46ff98218d50d550e70ea47f",
+        "graphPcm": "af015c597a58a53de50c1c5abc7b6e8f4c3aa14c3bc21ad65c0eeab894dfd186",
+        "preNotchMovie": "70a9be77146ee1290562bb6cb15285e9b40149df77301bbb2eba33c061684b2d",
+        "proofReport": "4f8a142394d5844ee4ba434c4030fd37730c98c7fc87a12c4db2fe516d340775",
+        "proofGzip": "bdb224f75fb7ec3b118fa199a2e70db8a6fc4d6815248889fe332fde9d586e53"
+      },
+      "fullSourcePassed": false,
+      "approvalScope": "Global native QA result is retained unchanged; only explicitly frozen rendered intervals may receive separate scope approval."
+    },
+    "sakuya": {
+      "movie": "artifacts/this-girl-01/capture/sakuya.mov",
+      "metadata": "artifacts/this-girl-01/capture/sakuya.json",
+      "nativeQa": "artifacts/this-girl-01/research/native-buffer-qa-sakuya.json",
+      "packetQa": "artifacts/this-girl-01/research/packet-pcm-qa-sakuya.json",
+      "rawMovie": "artifacts/this-girl-01/capture/sakuya-os-raw.mkv",
+      "graphPcm": "artifacts/this-girl-01/capture/sakuya.pcm",
+      "preNotchMovie": "artifacts/this-girl-01/capture/sakuya-native-calibration.mov",
+      "proofReport": "artifacts/this-girl-01/research/proof-sakuya.json",
+      "proofGzip": "artifacts/this-girl-01/proofs/sakuya.json.gz",
+      "actualCaptureId": "sakuya",
+      "canonicalVariant": "fixed-sample-clock-lowlatency",
+      "hashes": {
+        "movie": "b98bbb1dd8e02aff70cd416f0af59f3fee4a952b490e2bd986f9dbd723e2dbc3",
+        "metadata": "0f8741f198243ce7d9caf65fec070496b2e104df30c650fc930205eaba86f543",
+        "nativeQa": "ad24dbad7a475c3b52835631a84f437aeb1cf750f6d512056877ae75594473a2",
+        "packetQa": "59be67187cd30a96eae9c26d2ddabfbc8d6b6f7f8d8f06dc43e3af6d3d34181a",
+        "rawMovie": "cfdc588c6362bed055b404a0030dbead0415381d53c9287d3703f5c3952b3420",
+        "graphPcm": "da96db94619351ddb7b5a6ad469b2ef528f0021d1fde31822ef3b85eda4fc39d",
+        "preNotchMovie": "34d1d5270b3b1e86dcd21b67b5832e120c4384b87644ecf8572b05370cb34441",
+        "proofReport": "eb7236de7af0a733a41edaea000b06c0efca40364c7f1d81c0100b13943cd690",
+        "proofGzip": "337c5133e475d8e2260a75a32bd60412573a8e8f82dc9bcc478051e6cadde768"
+      },
+      "fullSourcePassed": false,
+      "approvalScope": "Global native QA result is retained unchanged; only explicitly frozen rendered intervals may receive separate scope approval."
+    }
+  },
+  "frozenIntervals": "artifacts/this-girl-01/capture/used-intervals.json",
+  "frozenIntervalsSha256": "6cc86540019b888712158a65358318d74608363cc8ff2a5bd5f81a6804c5728b",
+  "policy": "Same chosen battle/proof/seed/policy. Canonical reference-uniform preserves all native PCM samples; no async interior correction. Neither global source is declared globally sync-approved. Rendered usage is independently scoped and any fixed shot audio alignment is separately recorded."
+}

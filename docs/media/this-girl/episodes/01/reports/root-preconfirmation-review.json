@@ -1,0 +1,21 @@
+{
+  "reviewer": "/root",
+  "passed": true,
+  "lockSha256": "bc86fe204966cc1adc5468ea6720815bbeb999498e11d053ec1341268711a020",
+  "confirmationPreviouslyRun": false,
+  "checks": {
+    "all33SelectionInputHashesMatch": true,
+    "all12CasesPresent": true,
+    "all72ComparisonIdsPresent": true,
+    "all12ControlledGrowthPairsPresent": true,
+    "all768MappingsRecomputedUnique": true,
+    "replacementCoresFixed": true,
+    "EHasSameBuildAndOnlyPayoutDisabled": true,
+    "legalFourSlotsAndLeaders": true,
+    "wholeJudgmentSuccessNotAssumed": true,
+    "all457SourceHashesMatch": true,
+    "preregistrationInSourceClosure": true
+  },
+  "scope": "Preconfirmation code/configuration/seed review. No heldout battle outcomes inspected.",
+  "supersedesUnexecutedLockSha256": "248bbc12f92697e6e01825aaf10681eace4460adef42537c12bcc88dd7e63f9a"
+}

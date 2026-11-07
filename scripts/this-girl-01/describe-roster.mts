@@ -1,0 +1,3 @@
+/** Report-only source projection. No combat, selection, balance changes, or certification. */
+import{content}from'./after-policy.mts';import{write,OUT}from'./study-io.mts';
+write(`${OUT}/roster-definitions.json`,{status:'coarse functional descriptions, not a complete proof of ID-specific mechanical equivalence',stageCaps:Object.fromEntries(content.dungeons.map(d=>[d.id,d.waves.length*40])),characters:content.characters.filter(c=>c.published).map(c=>({id:c.id,name:c.name,rarity:c.rarity,role:c.role,familyId:c.familyId??c.id,leaderStat:c.leaderStat,leaderEffect:c.leaderEffect??null,templates:c.skillIds.map(id=>content.skills.find(s=>s.id===id)!.template),barrierReturn:Boolean(Object.values(c.skillOverrides??{}).some(s=>s.barrierReturn))}))});

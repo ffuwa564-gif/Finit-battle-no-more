@@ -1,0 +1,2652 @@
+[
+  {
+    "caseId": "ivory-tower-010-T6-F1",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 6,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "benzaiten"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "seris-awakened",
+            "athena",
+            "astraea",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 2,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T6-F1",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "benzaiten"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T6-F1",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "seris-awakened",
+            "athena",
+            "astraea",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 2,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "ivory-tower-010-T6-F4",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 6,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "benzaiten"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T6-F4",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "benzaiten"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T6-F4",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "kuzuha-awakening-T6-F1",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "kuzuha-awakening",
+    "tier": 6,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "kuzuha-awakening-T6-F1",
+        "arm": "A",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "kuzuha-awakening-T6-F1",
+        "arm": "C",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 239,
+                "trait": "mercy",
+                "value": 239
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 239,
+                "trait": "bulwark",
+                "value": 239
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "ivory-tower-010-T4-F1",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 4,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T4-F1",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T4-F1",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "ivory-tower-010-T4-F4",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 4,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T4-F4",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T4-F4",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "kuzuha-awakening-T4-F4",
+    "logicalSeed": 930149,
+    "applicationSeed": 4168992957,
+    "stageId": "kuzuha-awakening",
+    "tier": 4,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "mireille",
+            "liora-awakened",
+            "astraea",
+            "seris-awakened"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 3,
+          "command": false,
+          "commandMode": "never",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.45
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "kuzuha-awakening-T4-F4",
+        "arm": "A",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 4168992957,
+        "logicalSeed": 930149,
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "kuzuha-awakening-T4-F4",
+        "arm": "C",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 4168992957,
+        "logicalSeed": 930149,
+        "config": {
+          "party": [
+            "mireille",
+            "liora-awakened",
+            "astraea",
+            "seris-awakened"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "bulwark",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 139,
+                "trait": "mercy",
+                "value": 139
+              }
+            }
+          ],
+          "policy": 3,
+          "command": false,
+          "commandMode": "never",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.45
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "ivory-tower-010-T3-F1",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 3,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T3-F1",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T3-F1",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "ivory-tower-010-T3-F4",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "ivory-tower-010",
+    "tier": 3,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "ivory-tower-010-T3-F4",
+        "arm": "A",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "ivory-tower-010-T3-F4",
+        "arm": "C",
+        "stageId": "ivory-tower-010",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "liora-awakened",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "kuzuha-awakening-T3-F1",
+    "logicalSeed": 930001,
+    "applicationSeed": 3503471766,
+    "stageId": "kuzuha-awakening",
+    "tier": 3,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "kuzuha-awakening-T3-F1",
+        "arm": "A",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "kuzuha-awakening-T3-F1",
+        "arm": "C",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 3503471766,
+        "logicalSeed": 930001,
+        "config": {
+          "party": [
+            "astraea",
+            "athena",
+            "seris-awakened",
+            "mireille"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 1,
+          "command": false,
+          "commandMode": "conditional",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.6
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  },
+  {
+    "caseId": "kuzuha-awakening-T3-F4",
+    "logicalSeed": 930010,
+    "applicationSeed": 1284112411,
+    "stageId": "kuzuha-awakening",
+    "tier": 3,
+    "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d",
+    "arms": {
+      "A": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        }
+      },
+      "C": {
+        "mode": "after",
+        "config": {
+          "party": [
+            "mireille",
+            "liora-awakened",
+            "astraea",
+            "seris-awakened"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 3,
+          "command": false,
+          "commandMode": "never",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.45
+        }
+      }
+    },
+    "selectionRule": "first ascending common victory with positive capture/consume/returnDamage; illustration, not win-rate evidence",
+    "specs": [
+      {
+        "id": "reference",
+        "caseId": "kuzuha-awakening-T3-F4",
+        "arm": "A",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 1284112411,
+        "logicalSeed": 930010,
+        "config": {
+          "party": [
+            "athena",
+            "astraea",
+            "benzaiten",
+            "seris-awakened"
+          ],
+          "leader": "athena",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 5,
+          "command": false,
+          "commandMode": "always",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.75
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      },
+      {
+        "id": "sakuya",
+        "caseId": "kuzuha-awakening-T3-F4",
+        "arm": "C",
+        "stageId": "kuzuha-awakening",
+        "applicationSeed": 1284112411,
+        "logicalSeed": 930010,
+        "config": {
+          "party": [
+            "mireille",
+            "liora-awakened",
+            "astraea",
+            "seris-awakened"
+          ],
+          "leader": "liora-awakened",
+          "gems": [
+            {
+              "id": "slot-0",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-1",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "bulwark",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-2",
+              "defId": "echo-shard",
+              "variant": "pure",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            },
+            {
+              "id": "slot-3",
+              "defId": "echo-shard",
+              "variant": "swift",
+              "roll": {
+                "power": 100,
+                "trait": "mercy",
+                "value": 100
+              }
+            }
+          ],
+          "policy": 3,
+          "command": false,
+          "commandMode": "never",
+          "autoPilot": false,
+          "offensivePilot": false,
+          "potionThreshold": 0.45
+        },
+        "sourceGameCommit": "ad41e62b0b1c8e6c5731e82a88a6b2932efb541d"
+      }
+    ]
+  }
+]

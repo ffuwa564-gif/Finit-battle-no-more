@@ -1,0 +1,126 @@
+{
+  "priorEvidence": [
+    {
+      "path": "artifacts/this-girl-01/research/final-browser-qa-before-libav.json",
+      "sha256": "b7429c499e5e531705743001f63fb438dfd74049b8893572a7fa8ab53c72d885"
+    },
+    {
+      "path": "artifacts/this-girl-01/research/final-browser-qa-libav-root.json",
+      "sha256": "78bd36e2a32e700f0f9718e6699c7796efede3e6532a8541caf3d018d2befd42"
+    },
+    {
+      "path": "artifacts/this-girl-01/research/browser-decoder-provenance.json",
+      "sha256": "65b412ef01087c45027f64fe71810d1f82561b8217cde308d764a5f02869677a"
+    },
+    {
+      "path": "artifacts/this-girl-01/research/final-webkit-fresh90-diagnostic.json",
+      "sha256": "181fbf1dcded6591283095847f83cb74f6075ff57e03a5158d53ff1313525b34"
+    }
+  ],
+  "passed": true,
+  "movieSha256": "4d45eb71d0930012f7ef376afd44dbf4829d2d66ea515b9ee97d4460fb343ef3",
+  "checks": [
+    {
+      "engine": "chromium",
+      "fraction": 0.05,
+      "requestedTime": 21.09166665,
+      "duration": 421.833333,
+      "state": {
+        "time": 23.068277,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.5,
+      "requestedTime": 210.9166665,
+      "duration": 421.833333,
+      "state": {
+        "time": 212.902369,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "fraction": 0.9,
+      "requestedTime": 379.64999969999997,
+      "duration": 421.833333,
+      "state": {
+        "time": 381.636882,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.05,
+      "requestedTime": 21.091700000000003,
+      "duration": 421.834,
+      "state": {
+        "time": 23.132296119,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.5,
+      "requestedTime": 210.917,
+      "duration": 421.834,
+      "state": {
+        "time": 212.965487426,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "fraction": 0.9,
+      "requestedTime": 379.6506,
+      "duration": 421.834,
+      "state": {
+        "time": 381.692178146,
+        "ended": false,
+        "readyState": 4,
+        "paused": false,
+        "error": null,
+        "width": 1920,
+        "height": 1080
+      },
+      "passed": true
+    }
+  ],
+  "unchangedDuringQA": true,
+  "error": null,
+  "qaCodeSha256": "fff78e9abb31c2e1da5dddb4f13307b868a0e0b75e4beb543ddb350a2cce1dc9",
+  "scenario": "fresh-media-instance-per-checkpoint",
+  "knownLimitation": "Linux WPE sequential seeks in one media instance failed at the final checkpoint; retained in final-browser-qa-libav-root.json. Fresh-instance compatibility is a separate scope, not a pass for sequential seeking.",
+  "scope": "Each Chromium/WebKit checkpoint loads a new player, seeks from the beginning and demonstrates playback for 2s with at least 0.7s actual progress. Does not certify same-instance consecutive seeks. Source/final A/V alignment has a separate required gate."
+}

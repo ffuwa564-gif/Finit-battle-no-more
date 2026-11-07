@@ -1,0 +1,327 @@
+{
+  "episode": "THIS-GIRL-001",
+  "sourceLockSha256": "bc86fe204966cc1adc5468ea6720815bbeb999498e11d053ec1341268711a020",
+  "files": {
+    "optimization/kuzuha-awakening-6-after-F1.json.gz": {
+      "sha256": "560c4603b3c3c34394f459f5cad2e9d86b13caf1441820ad7dd87c44edc3b618",
+      "bytes": 30075
+    },
+    "optimization/ivory-tower-010-6-after-F4.json.gz": {
+      "sha256": "69a7dc9f6f5432b9d7c32794f2456b87f63422376a6167477c5c9c2ee31bbcfa",
+      "bytes": 41006
+    },
+    "optimization/ivory-tower-010-6-before-F4.json.gz": {
+      "sha256": "e9b3c00606d6111bcd5ac9268b2c9968852a3399376f80786925c3b936fbae6c",
+      "bytes": 414209
+    },
+    "optimization/kuzuha-awakening-3-before-F4.json.gz": {
+      "sha256": "c2b68589fa2b865af819cebffd418a4840a2432123e3ed0af41077bb93f3c650",
+      "bytes": 238729
+    },
+    "optimization/ivory-tower-010-6-before-F1.json.gz": {
+      "sha256": "7d0a24b1d413ca12e1e6c701b7e9e24278fb6dfcdbac2cbde34cad7aa515dde7",
+      "bytes": 415832
+    },
+    "optimization/ivory-tower-010-6-after-F5.json.gz": {
+      "sha256": "13d95acb2034f33d2983c969c3412c1e23e5d4eae7d1b00872935b804a977c6a",
+      "bytes": 43210
+    },
+    "optimization/kuzuha-awakening-3-after-F1.json.gz": {
+      "sha256": "c3551fcbd238b1027d77cb07c14bbb886a546d3ef49417d82f42c1099fd1a02d",
+      "bytes": 17271
+    },
+    "optimization/kuzuha-awakening-6-after-F5.json.gz": {
+      "sha256": "eb9a50c0198edea2b832821a21c87980e53feb92f978bc07e501cdf3d9e65307",
+      "bytes": 26921
+    },
+    "optimization/ivory-tower-010-3-after-F4.json.gz": {
+      "sha256": "a236d54295a9c1a881be7efefec37aa86f5c1fdb0ab168a2250553af762545f1",
+      "bytes": 26473
+    },
+    "optimization/ivory-tower-010-4-before-F4.json.gz": {
+      "sha256": "b04afece81cd4939bb18320a025c20a0b55d45a6e773ef6f02d101c9efc61f0e",
+      "bytes": 276165
+    },
+    "optimization/ivory-tower-010-3-before-F4.json.gz": {
+      "sha256": "944215d5fb7de12d597c9d3fc12ef54a9aff277b1a7e2c5201bde845ad647558",
+      "bytes": 277976
+    },
+    "optimization/ivory-tower-010-4-after-F1.json.gz": {
+      "sha256": "563e2912687ca370b5b69a92a4d430a320e113d3ae64bdf4be04b07386bede24",
+      "bytes": 26536
+    },
+    "optimization/kuzuha-awakening-4-after-F1.json.gz": {
+      "sha256": "331ae32ea60e9dcc8896c2e8c23d1284cd18a3684304476008f31bdc4a282cef",
+      "bytes": 15974
+    },
+    "optimization/ivory-tower-010-4-before-F1.json.gz": {
+      "sha256": "9f313c41f4ab9720e9c89d32b2e554b6c6dd04e7fb0bf07dd08c3950f124e0bf",
+      "bytes": 280976
+    },
+    "optimization/ivory-tower-010-3-after-F1.json.gz": {
+      "sha256": "9fb56fc8e9e7fb59560be33d59e83323d5e47940fba333638066679d8e662b13",
+      "bytes": 26879
+    },
+    "optimization/kuzuha-awakening-6-before-F4.json.gz": {
+      "sha256": "ac8c24ccb1d49c12ab751c35e13a0d98441476b791b1c7b81e92a6541977647e",
+      "bytes": 327613
+    },
+    "optimization/ivory-tower-010-6-after-F1.json.gz": {
+      "sha256": "454a22bef5fd561abff0b78c0358f71fba7f286e0e832307784d52649bba71f5",
+      "bytes": 39880
+    },
+    "optimization/ivory-tower-010-4-after-F4.json.gz": {
+      "sha256": "5c6a5d4878b5ff6aebb751eaa0863aa82602fc56798957c3696521f31354089e",
+      "bytes": 26899
+    },
+    "optimization/kuzuha-awakening-6-after-F4.json.gz": {
+      "sha256": "8f420a640111308e4a24f88d37de38e831f0c108f82b5da791074c8758240904",
+      "bytes": 23178
+    },
+    "optimization/kuzuha-awakening-3-after-F4.json.gz": {
+      "sha256": "b9ded020a150a5189cee8b43bde1434fa5f87345b9a0ff3ff93140b2c4d61daa",
+      "bytes": 16504
+    },
+    "optimization/kuzuha-awakening-4-after-F4.json.gz": {
+      "sha256": "9bf9026483f6af70c3a4ab3206b575ad84b96993d8649c4f54c93791a75a4d9b",
+      "bytes": 15813
+    },
+    "optimization/kuzuha-awakening-4-before-F1.json.gz": {
+      "sha256": "ac455ec787259307f497943e76cb1499058eef98e53026f3a693b0211910814f",
+      "bytes": 231287
+    },
+    "optimization/kuzuha-awakening-6-before-F1.json.gz": {
+      "sha256": "b07543b681aa55c70e3551d6b3d72f27147fe6d955a7f9d421c6659eadb642ab",
+      "bytes": 329763
+    },
+    "optimization/kuzuha-awakening-3-before-F1.json.gz": {
+      "sha256": "7cd14b19b50ac0e47c77890bb4731d3187491e45583770f60d6341b2a94bd92a",
+      "bytes": 237024
+    },
+    "optimization/ivory-tower-010-3-before-F1.json.gz": {
+      "sha256": "97537b4bc8592709c8db20d0a39018cf64b5314c4575e8091c166553b61c8536",
+      "bytes": 280930
+    },
+    "optimization/kuzuha-awakening-4-before-F4.json.gz": {
+      "sha256": "d15072e1dafad3d4d550f079c61de610c153e2c66d6fae426c87354fb9bfb50e",
+      "bytes": 232969
+    },
+    "global/kuzuha-awakening-4.json.gz": {
+      "sha256": "e793e7f54ca9042f5a904172c454fa2a17e5af90ab8ce2741ce860fe467f3987",
+      "bytes": 16068
+    },
+    "global/kuzuha-awakening-6.json.gz": {
+      "sha256": "c10b87b7e6a481f383a4151f362fa66c3640dc126b9d409cbcc14e462847cf6a",
+      "bytes": 15747
+    },
+    "global/ivory-tower-010-4.json.gz": {
+      "sha256": "b8a842d224217c600b29f98aa8ee121a8b744a5a31c8d694885c3c59cc98d421",
+      "bytes": 19302
+    },
+    "global/ivory-tower-010-3.json.gz": {
+      "sha256": "27d9dc2fac0901c021536f78eccd265b7e5f7b99eb5682f37cdcbf863d450c97",
+      "bytes": 18737
+    },
+    "global/kuzuha-awakening-3.json.gz": {
+      "sha256": "4b1fb1a87ea557dc956d7dbe9f5271d8e4905b8cc696b1fa0f96dc5e01e58755",
+      "bytes": 16172
+    },
+    "global/ivory-tower-010-6.json.gz": {
+      "sha256": "eeb2117e3b781adcc94ff3dfda75cccb19f42895dd334d42643f956e5ff082e0",
+      "bytes": 18170
+    },
+    "confirmation/kuzuha-awakening-T3-F4.json.gz": {
+      "sha256": "aa2e02e7c915e98e4d564b893eb5705eac423f8b2ce7e075dc67121e070444bb",
+      "bytes": 42304
+    },
+    "confirmation/kuzuha-awakening-T4-F1.json.gz": {
+      "sha256": "be9ff3b015517f9fcf272f4962ea1440470bea284e9ca22938480a8b36406150",
+      "bytes": 43075
+    },
+    "confirmation/ivory-tower-010-T4-F1.json.gz": {
+      "sha256": "2294bcc089553c595ba7ac2968fa5fb6bb741c5d482dd55d40b6d0b09723a3a4",
+      "bytes": 49069
+    },
+    "confirmation/ivory-tower-010-T3-F1.json.gz": {
+      "sha256": "01278cae2f457c40a9f44669dbcb67b538ae2e92d20ca957ce24e0223299f5d6",
+      "bytes": 49542
+    },
+    "confirmation/kuzuha-awakening-T3-F1.json.gz": {
+      "sha256": "6ae3467aa12f8908f211c38413d903ddcd33530b4a83fba1206a7521d3e420d1",
+      "bytes": 43560
+    },
+    "confirmation/ivory-tower-010-T3-F4.json.gz": {
+      "sha256": "0046c716cb67afa01b2a7787b89538edba51ddb553fbfcdcca984b8ade6ad7cb",
+      "bytes": 49695
+    },
+    "confirmation/ivory-tower-010-T6-F1.json.gz": {
+      "sha256": "f904f63a495fcff19a15b95669382e12bdbbcb54dcca3d848bf54148919cd2db",
+      "bytes": 46851
+    },
+    "confirmation/ivory-tower-010-T6-F4.json.gz": {
+      "sha256": "067d55bb3ff5fe22bb49c086597574c91019ca6e3840e2ff9b326887ff90102c",
+      "bytes": 47705
+    },
+    "confirmation/kuzuha-awakening-T4-F4.json.gz": {
+      "sha256": "f9477d97ea911249841e8e34242b1f6f6fc376effaa747618ede2bbcba68b606",
+      "bytes": 42413
+    },
+    "confirmation/kuzuha-awakening-T6-F4.json.gz": {
+      "sha256": "529aaf8c4728430564cc8a261bfee06a8c7bfc4c6a2ea7e2c1a658fe3ba6e6e6",
+      "bytes": 41891
+    },
+    "confirmation/kuzuha-awakening-T6-F1.json.gz": {
+      "sha256": "493bd69d2e79b7c968e7628ea716d822714cf761b036e35a7916f0778efa55df",
+      "bytes": 43201
+    },
+    "confirmation/ivory-tower-010-T4-F4.json.gz": {
+      "sha256": "8edc15693337568e2b454fd9d602936b72540ec4f5203e20649c41fba57661b1",
+      "bytes": 49401
+    },
+    "growth/ivory-tower-010-F1_T6-T4.json.gz": {
+      "sha256": "215fb8a49934f172c83bb3022e23a84d3201bd16d346cc4301077fcc584eb5bf",
+      "bytes": 13440
+    },
+    "growth/kuzuha-awakening-F4_T6-T3.json.gz": {
+      "sha256": "6117939ab20b7b3652e23e6b1472499207f9c49b7371a0ce326a44674e035f3e",
+      "bytes": 11563
+    },
+    "growth/kuzuha-awakening-F1_T4-T3.json.gz": {
+      "sha256": "651fa9026d0a7b7bd591e7816d339db0b8711a362ee9ec885e238b877d0299ee",
+      "bytes": 12277
+    },
+    "growth/ivory-tower-010-F4_T4-T3.json.gz": {
+      "sha256": "4b3755932df515db7937f006da75e17664d482a94bbe399335af1e0be58becdd",
+      "bytes": 14529
+    },
+    "growth/kuzuha-awakening-F1_T6-T3.json.gz": {
+      "sha256": "524537911490237dd12d6a25636fc0a47c6485da6fbdb540226c68a111d7e6bc",
+      "bytes": 12232
+    },
+    "growth/ivory-tower-010-F1_T4-T3.json.gz": {
+      "sha256": "e6190dea49e384df50f55db5a8979d25dcc2a553ff8f61e8118f65f68e623695",
+      "bytes": 13749
+    },
+    "growth/kuzuha-awakening-F1_T6-T4.json.gz": {
+      "sha256": "61d1ae38b79369f3fd588242328a4b5a1e313f4401897bc737231f6e8af89da3",
+      "bytes": 12290
+    },
+    "growth/kuzuha-awakening-F4_T4-T3.json.gz": {
+      "sha256": "37113e983bae71fd6da3b58933adb1efe737f241624e93cd382446b60e4650b0",
+      "bytes": 11570
+    },
+    "growth/ivory-tower-010-F4_T6-T4.json.gz": {
+      "sha256": "fd68a991b2fff79a460a73a2db08e645ba51c671bd78be4be00c635ff6b32455",
+      "bytes": 14434
+    },
+    "growth/ivory-tower-010-F1_T6-T3.json.gz": {
+      "sha256": "52a4acbc7eabdeb7841570845248ec909384a083e385a06be7a1315cb2712fdc",
+      "bytes": 13594
+    },
+    "growth/ivory-tower-010-F4_T6-T3.json.gz": {
+      "sha256": "da40784c71069368b41ad05a67d54cece637ac7e1e19d4fa8b656e22597ec178",
+      "bytes": 14320
+    },
+    "growth/kuzuha-awakening-F4_T6-T4.json.gz": {
+      "sha256": "3cef24be64ee6ebb68ddf421f49e43afbf0b060f8e2dda2abcaee37d8d9aa9f4",
+      "bytes": 11489
+    },
+    "stress/ivory-tower-010-T6-F1.json.gz": {
+      "sha256": "b43e9d88311a245bc91e517f33207b5e8b6c5ff1b2a00cfbd57e0748595dc0ac",
+      "bytes": 92486
+    },
+    "stress/ivory-tower-010-T6-F4.json.gz": {
+      "sha256": "a8386006616cddbc0e74055efa7fa3dca0cc9a686c5975ca6bd2e9e91a4f9448",
+      "bytes": 96069
+    },
+    "stress/kuzuha-awakening-T6-F4.json.gz": {
+      "sha256": "f78fe2b0d1a3d53d2def695ea9c2255c31c91e41f5794ed3eeb72673ca70e26d",
+      "bytes": 80750
+    },
+    "stress/kuzuha-awakening-T6-F1.json.gz": {
+      "sha256": "e2a4e4e9c2ecd47ac4d76f41c0326ecb1af75bca89aabfdf206f660c60579754",
+      "bytes": 84346
+    },
+    "hidden/lunette-awakening-F4.json.gz": {
+      "sha256": "d62b386b2fff013fc0348c4be7370e6a1ac8feb395ff49ab2e56b449ce49828a",
+      "bytes": 14414
+    },
+    "hidden/lunette-awakening-F1.json.gz": {
+      "sha256": "b5a563b71d3f32a38c95ffb7aee8d7f95365fc585ee65bc5c597917d5a737120",
+      "bytes": 14880
+    },
+    "hidden/ivory-tower-025-F4.json.gz": {
+      "sha256": "99fe9f07cfa7a558c2807dd32d04df3c6a043856f5fde643c6897625e98db376",
+      "bytes": 17824
+    },
+    "hidden/ivory-tower-025-F1.json.gz": {
+      "sha256": "d13fde545e06d9a5970ba8626f39fd31e08c71344fccd3be79fa3e887ccf1f0d",
+      "bytes": 17564
+    },
+    "hidden/moonshield-rehearsal-F1.json.gz": {
+      "sha256": "42539d40fb1be1d8ae07fdb9c310c02bbdbe983a5fcb2639766c40d874e2aba4",
+      "bytes": 14069
+    },
+    "hidden/moonshield-rehearsal-F4.json.gz": {
+      "sha256": "76295d2ba34dd79f2a783720e12199d967d6c53504a72ac3670e18c142cf998e",
+      "bytes": 14036
+    },
+    "noel/ivory-tower-010.json.gz": {
+      "sha256": "c708ab87c1048ddb62c08448f66347901bc2063641be035341d221b42d09ec54",
+      "bytes": 29580
+    },
+    "noel/kuzuha-awakening.json.gz": {
+      "sha256": "f98250bfcc01334a134bf5de3c02aedaca68700e9b9be9e41a4d31e5533ecb85",
+      "bytes": 24312
+    },
+    "analysis/main.json": {
+      "sha256": "5f1d56df319e7a4cef38d5d8ffce2f1a0d8195d67e132f827fe1616bdbc6d31c",
+      "bytes": 378556
+    },
+    "analysis/growth.json": {
+      "sha256": "3f8dbc647a957e97976b790456182b5511d28300a7cd0fcfea622f13f1513798",
+      "bytes": 62823
+    },
+    "confirmation-lock.json": {
+      "sha256": "bc86fe204966cc1adc5468ea6720815bbeb999498e11d053ec1341268711a020",
+      "bytes": 194542
+    },
+    "recording-candidates.json": {
+      "sha256": "8c6bbc6b8b778be7d887f6822d8703e9650e65e8ce5827b954ffaa2e5fa99ff4",
+      "bytes": 69410
+    },
+    "landscape.json.gz": {
+      "sha256": "4e07d02339da15683908790a23ffe58039c5d39017dc6b3e6622e078dff271f2",
+      "bytes": 45011
+    },
+    "roster-screen.json.gz": {
+      "sha256": "082e3a7f6e9c2eaf2cd7590e5f9344018eaf3ec6a4c8094a9b91522535693a0f",
+      "bytes": 198396
+    },
+    "implementation-facts.json": {
+      "sha256": "28af56028b5557dff6f353749033d79ffd01b80748de73353626596e8a015931",
+      "bytes": 153642
+    },
+    "remote-search-import.json": {
+      "sha256": "59303b3a4886d2787168caeb93266323519bb1345deb2259dc74479b5a908d18",
+      "bytes": 51459
+    },
+    "remote-confirm-import.json": {
+      "sha256": "b9077c0a978e8abf66ee318fd77652f904c81e746c139b38653f53f57f5bbd7b",
+      "bytes": 11807
+    },
+    "remote-confirm-validation.json": {
+      "sha256": "5cd05f6f5a606c66248a9b2bece431fcd575ae6959d391de731d126385e4dcd7",
+      "bytes": 11717
+    },
+    "reports/judgment.json": {
+      "sha256": "62eb4f6a4021590a10f4cdfd4f68155141935e4b20444117630f0fc26cf5208f",
+      "bytes": 74002
+    },
+    "reports/independent-statistical-review.md": {
+      "sha256": "80fbb444d941acd675ac1d189d54200380312b42abd6ca59c970937ebcfe32c0",
+      "bytes": 5033
+    }
+  },
+  "scope": "Frozen measured research snapshot; final movie and visual/audio QA are separate and unfinished."
+}
