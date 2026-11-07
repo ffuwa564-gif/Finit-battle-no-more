@@ -38,6 +38,7 @@ const ducks=new Map<symbol,number>();
 let volumeContext: AudioContext | undefined;
 let volumeGain: GainNode | undefined;
 let mediaSource: MediaElementAudioSourceNode | undefined;
+let volumeTarget: number | undefined;
 let restorePosition: { scene: string; time: number } | undefined;
 function keepOriginalPitch(): void {
   if (!player) return;
@@ -65,7 +66,7 @@ function removePlayer(): void {
 function renewPlayer(): void {
   if (player) { restorePosition = { scene: player.dataset.scene ?? scene, time: player.currentTime }; removePlayer(); }
   mediaSource?.disconnect(); volumeGain?.disconnect();
-  mediaSource = undefined; volumeGain = undefined;
+  mediaSource = undefined; volumeGain = undefined; volumeTarget = undefined;
 }
 // iOS ignores HTMLMediaElement.volume, including installed web apps. Route its
 // music through a native gain instead; desktop retains the existing media path.
@@ -82,7 +83,7 @@ function unlockVolumeContext(): void {
       if (volumeContext) renewPlayer();
       volumeContext?.removeEventListener('statechange', musicContextChanged);
       mediaSource?.disconnect(); volumeGain?.disconnect();
-      mediaSource = undefined; volumeGain = undefined;
+      mediaSource = undefined; volumeGain = undefined; volumeTarget = undefined;
       volumeContext = context;
       context.addEventListener('statechange', musicContextChanged);
     }
@@ -98,12 +99,22 @@ function connectNativeVolume(): void {
     mediaSource = volumeContext.createMediaElementSource(player);
     mediaSource.connect(gain);
     volumeGain = gain;
+    volumeTarget = gain.gain.value;
     player.volume = 1;
   } catch { /* Fall back to the media element on unsupported browsers. */ }
 }
 function applyVolume():void {
   const level=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values());
-  if (volumeGain) volumeGain.gain.setValueAtTime(level, volumeContext!.currentTime);
+  if (volumeGain) {
+    if(volumeTarget===level)return;
+    const param=volumeGain.gain,now=volumeContext!.currentTime;
+    if(typeof param.setTargetAtTime==='function'){
+      if(typeof param.cancelAndHoldAtTime==='function')param.cancelAndHoldAtTime(now);
+      else {param.cancelScheduledValues(now);param.setValueAtTime(param.value,now);}
+      param.setTargetAtTime(level,now,.012);
+    }else param.setValueAtTime(level,now);
+    volumeTarget=level;
+  }
   else if(player) player.volume=level;
 }
 /** Temporary mix gain never changes the player's saved music setting or track position. */
@@ -125,7 +136,7 @@ function syncBgm(): void {
     player.hidden = true;
     player.loop = !needsNativeVolume();
     if (!player.loop) player.addEventListener('ended', restartNativeLoop);
-    player.preload = 'none';
+    player.preload = 'auto';
     player.dataset.bgm = 'true';
     player.addEventListener('ratechange', keepOriginalPitch);
     const element = player;
@@ -169,7 +180,7 @@ export function disposeBgm(): void {
   removePlayer();
   restorePosition = undefined;
   mediaSource?.disconnect(); volumeGain?.disconnect();
-  mediaSource = undefined; volumeGain = undefined;
+  mediaSource = undefined; volumeGain = undefined; volumeTarget = undefined;
   if (volumeContext) { volumeContext.removeEventListener('statechange', musicContextChanged); releaseGameAudioContext('music', volumeContext); }
   volumeContext = undefined;
   ducks.clear();

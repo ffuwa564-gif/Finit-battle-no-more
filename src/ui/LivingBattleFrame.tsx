@@ -58,7 +58,8 @@ function OpeningFlower({ id, kind, animate, restored, onOpen }: { id: string; ki
 }
 
 /** Saved bloom state controls the action; the five-second opening changes presentation only. */
-export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, onBloom, onFairy, onCrystal }: {
+export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, onBloom, onFairy, onCrystal, queuedFairyId, queuedBloomId, queuedCrystalRole }: {
+  queuedCrystalRole?:string; queuedFairyId?:string; queuedBloomId?:string;
   battle: Battle; event?: BattleEvent; units: Unit[]; busy: boolean; reducedMotion: boolean;
   onBloom: (id: string) => void; onFairy: (id: string) => void; onCrystal: (role: Role | null) => void;
 }) {
@@ -110,19 +111,19 @@ export function LivingBattleFrame({ battle, event, units, busy, reducedMotion, o
     <GardenArt key={battle.crystalRole ?? 'neutral'} className="garden-crystal-art"
       moving={battle.crystalRole ? `living-garden-role-${battle.crystalRole.replaceAll('_', '-')}-motion` : 'living-garden-crystal-motion'}
       poster={battle.crystalRole ? `living-garden-role-${battle.crystalRole.replaceAll('_', '-')}-poster` : 'living-garden-crystal'} animate={animate} />
-    <Button className="battle-crystal" variant="secondary" sound={false}
+    <Button className="battle-crystal" variant="secondary" sound={false} selected={!!queuedCrystalRole}
       aria-label={tr(battle.crystalRole ? `宝石の共鳴：${roleName(battle.crystalRole)}` : '宝石の共鳴を選ぶ')}
       title={nextRole ? tr(`タップで${roleName(nextRole)}に切り替え（スキル効果20%上昇）`) : undefined}
-      disabled={busy || battle.phase !== 'ready' || !nextRole} onClick={() => { if (nextRole && nextRole !== battle.crystalRole) onCrystal(nextRole); }} />
+      disabled={!['ready','playing'].includes(battle.phase) || !nextRole} onClick={() => { if (nextRole && nextRole !== battle.crystalRole) onCrystal(nextRole); }} />
     {fairySide && <div key={departing ? event!.id : visitor!.id} className={`garden-fairy garden-fairy--${fairySide}`} data-departing={Boolean(departing)}>
       <GardenArt className="garden-fairy__art" moving={`living-garden-fairy-${fairyFacing}-motion`} poster={`living-garden-fairy-${fairyFacing}-poster`} animate={animate} />
-      {!departing && visitor && <Button className="battle-fairy" variant="secondary" sound={false}
+      {!departing && visitor && <Button className="battle-fairy" variant="secondary" sound="select" selected={queuedFairyId===visitor.id}
         aria-label={tr('妖精の祝福：味方全員の必殺ゲージを15%増やす')}
-        disabled={busy || battle.phase !== 'ready'} onClick={() => onFairy(visitor.id)} />}
+        disabled={!['ready','playing'].includes(battle.phase)} onClick={() => onFairy(visitor.id)} />}
     </div>}
     {departing && <span key={event!.id} className="garden-fairy-blessing" aria-hidden="true" />}
-    {flower && <Button className="battle-bloom" variant="secondary" sound={false} aria-label={label}
-      disabled={busy || battle.phase !== 'ready'} onClick={() => onBloom(flower.id)} />}
+    {flower && <Button className="battle-bloom" variant="secondary" sound="select" selected={queuedBloomId===flower.id} aria-label={label}
+      disabled={!['ready','playing'].includes(battle.phase)} onClick={() => onBloom(flower.id)} />}
 
   </div>;
 }

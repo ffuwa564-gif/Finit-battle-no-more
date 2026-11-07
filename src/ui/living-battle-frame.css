@@ -50,3 +50,5 @@
 .living-frame .battle-crystal.button:focus-visible { outline:2px solid #d9f2ff; outline-offset:2px; }
 .living-frame[data-bloom-state='open'][data-bloom-kind='strike'] .garden-flower-art { filter:drop-shadow(0 0 4px #c795ffbb); }
 @media(forced-colors:active) { .living-frame .battle-crystal.button { border:2px solid ButtonText; background:ButtonFace; color:ButtonText; } }
+
+.battle-crystal[aria-pressed="true"],.battle-fairy[aria-pressed="true"],.battle-bloom[aria-pressed="true"]{outline:2px solid #f2d894;outline-offset:3px;filter:drop-shadow(0 0 8px #ffe6a7)}

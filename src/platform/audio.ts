@@ -120,9 +120,10 @@ export function installAudioRecovery(): () => void {
 }
 
 export function setAudioVolume(next: number): void {
-  volume = Number.isFinite(next) ? Math.max(0, Math.min(1, next)) : 0;
+  const level = Number.isFinite(next) ? Math.max(0, Math.min(1, next)) : 0;
+  const changed=level!==volume; volume=level;
   if (volume === 0) pending.length = 0;
-  gain?.gain.rampTo(volume * 0.9, 0.05);
+  if(changed)gain?.gain.rampTo(volume * 0.9, 0.05);
 }
 
 /** The sole synth dispatcher. It accepts game events, never character-specific code. */

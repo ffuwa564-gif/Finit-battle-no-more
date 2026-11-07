@@ -11,7 +11,7 @@ describe('BGM scene transitions', () => {
     { userAgent: 'iPhone', platform: 'iPhone', maxTouchPoints: 5 },
     { userAgent: 'Macintosh', platform: 'MacIntel', maxTouchPoints: 5 },
   ])('controls native music gain when iOS ignores element volume: $platform', navigator => {
-    const param = { value: 1, setValueAtTime: vi.fn((value: number) => { param.value = value; }) };
+    const param = { value: 1, setValueAtTime: vi.fn((value: number) => { param.value = value; }), cancelAndHoldAtTime: vi.fn(), setTargetAtTime: vi.fn((value:number)=>{param.value=value;}) };
     const gain = { gain: param, connect: vi.fn(), disconnect: vi.fn() };
     const source = { connect: vi.fn(), disconnect: vi.fn() };
     const context = { addEventListener: vi.fn(), removeEventListener: vi.fn(), state: 'suspended', currentTime: 1, destination: {}, createGain: vi.fn(() => gain), createMediaElementSource: vi.fn(() => source), resume: vi.fn(async () => { context.state = 'running'; }), close: vi.fn(async () => { context.state = 'closed'; }) };
@@ -26,6 +26,9 @@ describe('BGM scene transitions', () => {
     expect(source.connect).toHaveBeenCalledWith(gain); expect(gain.connect).toHaveBeenCalledWith(context.destination);
     const loads = audio.load.mock.calls.length;
     configureBgm('home', 1); expect(param.value).toBe(.5); expect(audio.load).toHaveBeenCalledTimes(loads);
+    expect(param.setTargetAtTime).toHaveBeenLastCalledWith(.5,1,.012);
+    const ramps=param.setTargetAtTime.mock.calls.length;refreshBgm();refreshBgm();expect(param.setTargetAtTime).toHaveBeenCalledTimes(ramps);
+    expect(param.setValueAtTime).not.toHaveBeenCalled();
     const duck = createBgmDucker(); duck.set(.08); expect(param.value).toBeCloseTo(.04);
     configureBgm('boss', .5); expect(param.value).toBeCloseTo(.02);
     duck.dispose(); expect(param.value).toBe(.25);

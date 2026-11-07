@@ -1,3 +1,4 @@
+import {PARTY_PRESET_LIMIT,presetProblem} from '../domain/party-presets';
 import {reincarnate,ascendedRecipe,REBIRTH_CORE,REBIRTH_SHELL} from '../domain/reincarnation';
 import {craftAscendedGem,gemDefinition} from '../domain/memory-gems';
 import { recycleMaterials, replenishPowder, quickPolish, consumeExpeditionLoadout, validRecycling } from '../domain/expedition-supplies';
@@ -373,7 +374,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       if (!save.battle || save.battle.phase !== 'playing') fail('再生できる演出がありません。');
       const before = save.battle;
       const finishedWave = before.cursor + 1 >= before.events.length && ['wave', 'reward'].includes(before.nextPhase) ? before.wave : undefined;
-      save.battle = advanceReplay(before, content);
+      save.battle = advanceReplay(before, content, true);
       const replayed = before.events[before.cursor];
       if (replayed) advanceHarvest(save.battle, replayed, content);
       if (finishedWave !== undefined) secureMemoryChest(save, finishedWave, content);
@@ -527,6 +528,24 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       if ((save.materials[from] ?? 0) < cost) fail('交換に必要な素材が不足しています。');
       save.materials[from] = (save.materials[from] ?? 0) - cost;
       save.materials[to] = (save.materials[to] ?? 0) + (command.direction === 'up' ? 1 : 3);
+      break;
+    }
+    case 'savePartyPreset': case 'loadPartyPreset': case 'deletePartyPreset': {
+      town(save);
+      if(!Number.isInteger(command.slot)||command.slot<0||command.slot>=PARTY_PRESET_LIMIT)fail('編成の保存枠が正しくありません。');
+      const presets=save.partyPresets??=[];
+      if(command.type==='deletePartyPreset'){save.partyPresets=presets.filter(p=>p.slot!==command.slot);break;}
+      if(command.type==='savePartyPreset'){
+        if(typeof command.name!=='string'||!command.name.trim()||command.name.trim().length>32)fail('編成名は1〜32文字で入力してください。');
+        const equipped=Object.fromEntries(save.partyIds.flatMap(id=>save.memoryGems?.equipped[id]?[[id,save.memoryGems.equipped[id]]]:[]));
+        save.partyPresets=[...presets.filter(p=>p.slot!==command.slot),{slot:command.slot,name:command.name.trim(),partyIds:[...save.partyIds],leaderId:save.leaderId,equipped}].sort((a,b)=>a.slot-b.slot);break;
+      }
+      const preset=presets.find(p=>p.slot===command.slot);if(!preset)fail('保存した編成がありません。');
+      const problem=presetProblem(preset,save,content);if(problem)fail(problem);
+      if(save.memoryGems?.pending)fail('先に調律の結果を選んでください。');
+      validateParty(save,preset.partyIds,preset.leaderId,content);
+      if(save.memoryGems){for(const id of preset.partyIds)delete save.memoryGems.equipped[id];for(const [id,gem]of Object.entries(preset.equipped))equipGem(save.memoryGems,id,gem,{transfer:true});}
+      save.partyIds=[...preset.partyIds];save.leaderId=preset.leaderId;
       break;
     }
     case 'party': {

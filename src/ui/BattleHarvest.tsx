@@ -126,9 +126,12 @@ export function HarvestSummary({ battle }: { battle: Battle }) {
 /** Only the ready boundary advances automatically. Replay keeps its existing cadence.
  * No saved timer, background catch-up, repeated NEXT, or per-frame persistence. */
 export function useBattleAuto(battle: Battle, busy: boolean, blocked: boolean, targetId: string | undefined, command: (c: GameCommand) => Promise<boolean>) {
-  const [auto, setAuto] = useState(false), latest = useRef({battle,busy,blocked,targetId,command,auto});
-  latest.current = {battle,busy,blocked,targetId,command,auto};
-  useEffect(() => { setAuto(false); }, [battle.id]);
+  const [auto, setAuto] = useState(false);
+  const [queuedGarden,setQueuedGarden]=useState<{kind:'fairy'|'bloom'|'crystal';id:string}[]>([]);
+  const queueGarden=(kind:'fairy'|'bloom'|'crystal',id:string)=>setQueuedGarden(q=>q.some(x=>x.kind===kind&&x.id===id)?q.filter(x=>x.kind!==kind):[...q.filter(x=>x.kind!==kind),{kind,id}]);
+  const latest=useRef({battle,busy,blocked,targetId,command,auto,queuedGarden});
+  latest.current = {battle,busy,blocked,targetId,command,auto,queuedGarden};
+  useEffect(() => { setAuto(false); setQueuedGarden([]); }, [battle.id]);
   useEffect(() => {
     let key = '', readyAt = 0, inFlight = false;
     const timer = setInterval(() => {
@@ -137,13 +140,15 @@ export function useBattleAuto(battle: Battle, busy: boolean, blocked: boolean, t
       const checkpoint = `${b.id}:${b.wave}:${b.round}:${b.events.at(-1)?.id ?? ''}`;
       if (checkpoint !== key) { key = checkpoint; readyAt = performance.now(); }
       if (inFlight || p.busy) return;
-      const pending = b.pendingPotionId ? {type:'potion' as const,unitId:b.pendingPotionId,battleId:b.id} : nextHarvestAid(b) >= 0 ? {type:'harvestAid' as const,battleId:b.id} : undefined;
-      if (!pending && (!p.auto || performance.now()-readyAt<1200)) return;
+      const garden=p.queuedGarden[0];
+      if(garden && garden.kind!=='crystal' && (garden.kind==='fairy'?b.fairies?.visitor?.id:b.blooms?.flower?.id)!==garden.id){setQueuedGarden(q=>q.filter(x=>x!==garden));return;}
+      const pending:GameCommand|undefined = garden ? garden.kind==='crystal'?{type:'crystalRole',role:garden.id as import('../domain/types').Role}:garden.kind==='fairy'?{type:'battleFairy',fairyId:garden.id}:{type:'battleBloom',bloomId:garden.id} : b.pendingPotionId ? {type:'potion' as const,unitId:b.pendingPotionId,battleId:b.id} : nextHarvestAid(b) >= 0 ? {type:'harvestAid' as const,battleId:b.id} : undefined;
+      if (!pending && (!p.auto || performance.now()-readyAt<(b.hunt?300:450))) return;
       const action: GameCommand = pending ?? {type:'round',battleId:b.id,targetId:p.targetId};
       inFlight=true;
-      void p.command(action).then(ok => { if (!ok) setAuto(false); }).finally(() => { inFlight=false; });
+      void p.command(action).then(ok => { if(garden)setQueuedGarden(q=>q.filter(x=>x!==garden)); if (!ok) setAuto(false); }).finally(() => { inFlight=false; });
     },100);
     return () => clearInterval(timer);
   }, [battle.id]);
-  return {auto,setAuto};
+  return {auto,setAuto,queueGarden,queuedGarden};
 }
