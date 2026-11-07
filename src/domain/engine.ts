@@ -1,4 +1,4 @@
-import { canHunt, huntPool, huntProgress, HUNT_HANDS, HUNT_RULES } from './hunt';
+import { canHunt, huntPool, huntProgress, HUNT_HANDS, HUNT_RULES, HUNT_BOSS_UNLOCK } from './hunt';
 import { capFieldDamage, finishFieldRound, beginFieldRound, fieldSkill, fieldSuggested, repairFieldReceipt, payFieldSupply } from './field-research';
 import { commandYieldsToResources } from './command-resource-safety';
 import { applyJamDampening, consumeJamDampening } from './jam-dampening';
@@ -1073,3 +1073,9 @@ export function usePotion(input: Battle, unitId: string): Battle {
   return battle;
 }
 
+
+export function proceedToHuntBoss(input:Battle,content:Content):Battle {
+ if(input.phase!=='ready'||input.hunt?.stage!=='hunting'||input.hunt.kills<HUNT_BOSS_UNLOCK)throw Error('Bランクに到達してからボスへ進めます。');
+ const b=clone(input);b.hunt!.finishAt=b.hunt!.actions;b.initialUnits=clone(b.units);b.phase='playing';b.nextPhase='wave';b.events=[];b.cursor=0;
+ emit(b,{kind:'wave',text:'ボスへ向かった',unitsAfter:clone(b.units)});return b;
+}

@@ -1,0 +1,105 @@
+{
+  "conditions": "Same starter party and leader. No equipment or stat edits, no optional aid, potions or ultimate reservations. Estimated configured 1x replay durations plus auto-ready waits, not measured wall-clock play time.",
+  "rows": [
+    {
+      "seed": 42,
+      "mode": "full",
+      "phase": "reward",
+      "partyActions": 100,
+      "kills": 29,
+      "rounds": 28,
+      "replayEvents": 226,
+      "estimatedAutoSeconds": 323
+    },
+    {
+      "seed": 42,
+      "mode": "boss-at-B",
+      "phase": "reward",
+      "partyActions": 36,
+      "kills": 12,
+      "rounds": 12,
+      "replayEvents": 91,
+      "estimatedAutoSeconds": 134
+    },
+    {
+      "seed": 123,
+      "mode": "full",
+      "phase": "reward",
+      "partyActions": 100,
+      "kills": 28,
+      "rounds": 28,
+      "replayEvents": 225,
+      "estimatedAutoSeconds": 323
+    },
+    {
+      "seed": 123,
+      "mode": "boss-at-B",
+      "phase": "reward",
+      "partyActions": 32,
+      "kills": 12,
+      "rounds": 11,
+      "replayEvents": 80,
+      "estimatedAutoSeconds": 117
+    },
+    {
+      "seed": 504,
+      "mode": "full",
+      "phase": "reward",
+      "partyActions": 100,
+      "kills": 28,
+      "rounds": 28,
+      "replayEvents": 231,
+      "estimatedAutoSeconds": 331
+    },
+    {
+      "seed": 504,
+      "mode": "boss-at-B",
+      "phase": "reward",
+      "partyActions": 32,
+      "kills": 12,
+      "rounds": 11,
+      "replayEvents": 86,
+      "estimatedAutoSeconds": 126
+    },
+    {
+      "seed": 1024,
+      "mode": "full",
+      "phase": "reward",
+      "partyActions": 100,
+      "kills": 30,
+      "rounds": 28,
+      "replayEvents": 231,
+      "estimatedAutoSeconds": 329
+    },
+    {
+      "seed": 1024,
+      "mode": "boss-at-B",
+      "phase": "reward",
+      "partyActions": 32,
+      "kills": 12,
+      "rounds": 11,
+      "replayEvents": 84,
+      "estimatedAutoSeconds": 123
+    },
+    {
+      "seed": 8801,
+      "mode": "full",
+      "phase": "reward",
+      "partyActions": 100,
+      "kills": 29,
+      "rounds": 28,
+      "replayEvents": 231,
+      "estimatedAutoSeconds": 330
+    },
+    {
+      "seed": 8801,
+      "mode": "boss-at-B",
+      "phase": "reward",
+      "partyActions": 32,
+      "kills": 12,
+      "rounds": 11,
+      "replayEvents": 84,
+      "estimatedAutoSeconds": 123
+    }
+  ]
+}

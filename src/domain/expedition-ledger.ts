@@ -42,7 +42,7 @@ export function finalizeExpedition(previous: GameSave, next: GameSave, battle: B
     gold: battle.goldEarned + Math.max(0, next.gold - previous.gold),
     stones: Math.max(0, next.stones - previous.stones),
     gemCount: new Set([...(battle.gemFinds ?? []), ...(battle.roughGemFinds ?? []), ...(battle.phase==='reward'?battle.harvest?.gems??[]:[])].map(gem => gem.id)).size,
-    materials: positiveDifference(previous.materials, next.materials),
+    materials: next.recycling?.automatic&&battle.phase==='reward'?structuredClone(battle.pendingMaterials):positiveDifference(previous.materials,next.materials),
     dust: positiveDifference(previous.memoryGems?.dust ?? {}, next.memoryGems?.dust ?? {}),
   };
   // Trials already forbid loot. Do not silently turn invalid loot into an ordinary farm record.

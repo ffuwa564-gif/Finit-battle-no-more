@@ -1,3 +1,5 @@
+import { recycleMaterials, replenishPowder, quickPolish, consumeExpeditionLoadout, validRecycling } from '../domain/expedition-supplies';
+import { proceedToHuntBoss } from '../domain/engine';
 import { createBattleHarvest, advanceHarvest, tapHarvest, chooseHarvest, nextHarvestAid } from '../domain/battle-harvest';
 import { useBattleAid } from '../domain/engine';
 import { createMedalRun, trackMedalBatch, commitMedalVictory, recordMedalStoryRecall, synchronizeMedals, medalById, medalRevealed } from '../domain/medals';
@@ -106,6 +108,11 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   if (save.battle) delete save.battle.omens;
   if(save.worldStory?.active && !['worldTalkNext','worldTalkBack','worldTalkFinish','worldTalkClose','worldTalkChoice','settings'].includes(command.type))fail('会話を終えてから操作してください。');
   switch (command.type) {
+    case 'recyclingSettings': {town(save);if(!validRecycling(command.settings))fail('素材保護の設定が正しくありません。');save.recycling=structuredClone(command.settings);break;}
+    case 'recycleMaterials': {town(save);recycleMaterials(save,publicContent,command.powder,context.now??Date.now());break;}
+    case 'quickPolish': {town(save);quickPolish(save,command.rawIds,command.tool,context.now??Date.now());break;}
+    case 'huntBoss': {const b=ready(save);if(b.id!==command.battleId)fail('探索を選び直してください。');save.battle=proceedToHuntBoss(b,content);break;}
+
     case 'medalSync': { town(save); synchronizeMedals(save,publicContent); break; }
     case 'medalTrack': case 'medalTitle': {
       town(save); synchronizeMedals(save,publicContent);
@@ -114,7 +121,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       const key=command.type==='medalTitle'?'titleId':'trackedId';
       if(m)save.medals![key]=m.id;else delete save.medals![key];break;
     }
-    case 'industryPower': case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);applyIndustry(save,command,publicContent,context.now??Date.now());break;}
+    case 'industryPower': case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);replenishPowder(save,publicContent,context.now??Date.now());applyIndustry(save,command,publicContent,context.now??Date.now());break;}
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
     case 'worldTravel': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
@@ -271,6 +278,8 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       save.seed = next.seed;
       if(save.worldStory){const point=content.worldStory?.chapters.flatMap(c=>c.dungeonIds).includes(dungeon.id);if(point){const {x,y}=storyDestinations(content,save).find(p=>p.id===dungeon.id)!;save.worldStory.position={x,y};}delete save.worldStory.journey;}
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`, command.mode);
+      if(command.supplies&&!save.battle.hunt)fail('遠征用品は連続討伐で使えます。');
+      save.battle.supplies=consumeExpeditionLoadout(save,publicContent,dungeon.id,command.supplies);
       if (dungeon.kind !== 'trial') save.battle.harvest = createBattleHarvest(save.battle.id);
       save.battle.tracking = createExpeditionTracking(context.now);
       save.battle.medalRun = createMedalRun();
@@ -404,6 +413,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
         const inventory = save.memoryGems ??= emptyGemInventory();
         for (const raw of battle.harvest.gems) if (!inventory.rough?.some(g => g.id === raw.id) && !inventory.items.some(g => g.id === raw.id)) (inventory.rough ??= []).push(raw);
       }
+      const recycledPowder=replenishPowder(save,publicContent,context.now??Date.now());
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
@@ -414,7 +424,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       }
       for (const offer of scoutRecruitments) if (offer.dungeonId === dungeon.id && !save.discoveredIds.includes(offer.characterId)) save.discoveredIds.push(offer.characterId);
       save.claimedExplorationIds.push(battle.id);
-      log(save, dungeon.kind === 'trial' ? '女神の試練を踏破しました。' : '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
+      log(save, dungeon.kind === 'trial' ? '女神の試練を踏破しました。' : recycledPowder ? '探索報酬を確定しました。素材の一部を研磨粉へ変換しました。' : '探索報酬を確定しました。素材をカバンへ持ち帰りました。');
       save.battle = null;
       enqueueMilestone(save, dungeon.id, previouslyCleared, content);
       break;

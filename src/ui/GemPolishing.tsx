@@ -6,12 +6,18 @@ import { gemDescription, gemName, gemTier } from '../domain/memory-gems';
 import { parseWorldTravel, worldLocations } from '../domain/world-map';
 import { assetPath } from '../content';
 import { tr } from '../locales/i18n';
-import { Button, GameImage, MemoryGemTier, TownNavigation, InventoryTheme, InventoryIllustration, InventorySprite, CollectedGemArt } from './index';
+import { InventorySection, Button, GameImage, MemoryGemTier, TownNavigation, InventoryTheme, InventoryIllustration, InventorySprite, CollectedGemArt } from './index';
 import type { TownDestination } from './TownNavigation';
 import './gem-polishing.css';
+import './expedition-supplies.css';
+import { runUIInteraction } from './interaction';
 export function GemPolishing({ save, content, busy, command, onClose, navigate }: { save: GameSave; content: Content; busy: boolean; command: (command: GameCommand) => Promise<boolean>; onClose: () => void; navigate: (page: TownDestination) => void }) {
   const raws=save.memoryGems?.rough ?? [], session=save.memoryGems?.polish;
   const [selectedId,setSelectedId]=useState(session?.rawId ?? raws[0]?.id);
+  const [batchIds,setBatchIds]=useState<string[]>([]),[lastBatch,setLastBatch]=useState<string[]>([]);
+  const toolsPane=useRef<HTMLDivElement>(null);
+  const closeTools=()=>{const details=toolsPane.current?.querySelector('details');if(details)details.open=false;};
+  const cloth=save.industry?.stock['polishing-cloth']??0,kits=save.industry?.stock['polishing-kit']??0;
   const [now,setNow]=useState(Date.now);
   const needle=useRef<HTMLDivElement>(null);
   const selected=raws.find(r=>r.id===(session && now<session.expiresAt ? session.rawId : selectedId));
@@ -34,6 +40,14 @@ export function GemPolishing({ save, content, busy, command, onClose, navigate }
     <header className="gem-polish__header"><Button variant="icon" aria-label={tr('カバンへ戻る')} onClick={onClose}><ArrowLeft size={24}/></Button><h1>{tr('原石研磨')}</h1><span>STILLVEIL</span></header>
     <div className="gem-polish__travel"><Footprints size={16}/><span>{destination ? tr(destination.label) : tr('工房で研磨中')}</span><i>···········</i><span>{journey ? tr(travelLeft ? '移動中' : '到着済み') : tr('自由研磨')} <strong>{journey?stamp(travelLeft):''}</strong></span>{journey&&<Button variant="icon" aria-label={tr('世界地図へ')} onClick={()=>navigate('dungeons')}><ChevronRight size={15}/></Button>}</div>
     <div className="gem-polish__title"><h2><Sparkles size={17}/>{tr(selected?ROUGH_NAMES[selected.promise]:result?gemName(result):'原石を選んでください')}</h2><span>{tr(selected?.promise==='radiant'?'高期待・難しい':selected?.promise==='glimmering'?'期待の光・標準':result?'研磨完了':'穏やかな光・やさしい')}</span></div>
+    <div className="gem-polish-tools" ref={toolsPane}><InventorySection id="polish-tools" title={tr('道具で研磨')} count={cloth+kits}>
+      <p>{tr('研磨布')} ×{cloth} · {tr('連続研磨キット')} ×{kits}</p><p>{tr('道具は原石1個につき1個消費。石の中身は変わりません。')}</p>
+      <div className="gem-polish-tool-actions"><Button disabled={busy||!selected||!cloth||Boolean(active&&!expired)} onClick={async()=>{if(selected&&await command({type:'quickPolish',rawIds:[selected.id],tool:'polishing-cloth'})){setSelectedId(selected.id);setLastBatch([selected.id]);closeTools();}}}>{tr('選択中の原石を研磨布で仕上げる')}</Button>
+      <Button variant="secondary" disabled={busy||!kits} onClick={()=>setBatchIds(raws.filter(r=>r.promise==='ordinary').slice(0,Math.min(kits,100)).map(r=>r.id))}>{tr('普通の原石を道具の数だけ選ぶ')}</Button>
+      <Button variant="secondary" disabled={busy||!kits} onClick={()=>setBatchIds(raws.slice(0,Math.min(kits,100)).map(r=>r.id))}>{tr('道具の数だけ選ぶ（最大100個）')}</Button></div>
+      <InventorySection id="polish-batch-selection" title={tr('まとめて磨く原石を選択')} count={raws.length}><div className="gem-polish-batch">{raws.slice(0,100).map(r=><label key={r.id}><input type="checkbox" checked={batchIds.includes(r.id)} disabled={busy} onChange={()=>runUIInteraction(()=>setBatchIds(xs=>xs.includes(r.id)?xs.filter(id=>id!==r.id):[...xs,r.id]),'select')}/><InventorySprite id={`rough-${r.promise}`}/>{tr(ROUGH_NAMES[r.promise])}</label>)}</div></InventorySection>
+      <Button disabled={busy||!batchIds.length||batchIds.length>kits||Boolean(session&&now<session.expiresAt)} onClick={async()=>{if(await command({type:'quickPolish',rawIds:batchIds,tool:'polishing-kit'})){setSelectedId(batchIds[0]);setLastBatch(batchIds);setBatchIds([]);closeTools();}}}>{tr('まとめて研磨')} · {batchIds.length}{tr('個')}</Button>
+    </InventorySection>{lastBatch.length>0&&<InventorySection id="polish-batch-result" title={tr('今回の研磨結果')} count={lastBatch.length}>{lastBatch.map(id=>{const g=save.memoryGems?.items.find(g=>g.id===id);return g?<div className="supplies-material" key={id}><span>{tr(gemName(g))}</span><MemoryGemTier tier={gemTier(g)}/></div>:null;})}</InventorySection>}</div>
     <div className={`gem-polish__arena${result?' is-revealed':''}`}><InventoryIllustration kind="polishing-mat"/>{selected&&!result&&<InventorySprite className="gem-polish__rough-art" id={`rough-${selected.promise}`}/>}
       <div className="gem-polish__ring" role="img" aria-label={tr('光が金色の範囲に入ったらタップ')} style={{'--arc-start':`${window.center-window.width/2}deg`,'--arc-width':`${window.width}deg`} as CSSProperties}><div className="gem-polish__arc"/>{active&&!expired&&<div ref={needle} className="gem-polish__needle"><i/></div>}</div>
       {result?<div className="gem-polish__reveal" role="status"><CollectedGemArt id={result.defId}/><MemoryGemTier tier={gemTier(result)}/><h3>{tr(gemName(result))}</h3><p>{tr(gemDescription(result))}</p><Button onClick={onClose}>{tr('記憶石を管理する')}</Button></div>:!selected?<div className="gem-polish__empty"><h3>{tr('原石はまだありません')}</h3><p>{tr('ダンジョンの宝箱から原石を持ち帰ろう')}</p><Button onClick={()=>navigate('dungeons')}>{tr('世界地図へ')}</Button></div>:<span className={`gem-polish__feedback${active?.lastResult==='good'?' is-good':''}`} aria-live="polite">{expired?tr('時間切れ・原石は残っています'):active?.lastResult==='good'?`GOOD +${rule.gain}%`:active?.lastResult==='miss'?'MISS −3%':''}</span>}

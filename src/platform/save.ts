@@ -1,7 +1,8 @@
+import { validRecycling, validLoadout } from '../domain/expedition-supplies';
 import { validHunt, canHunt } from '../domain/hunt';
 import { validBattleHarvest } from '../domain/battle-harvest';
 import { validMedals, validMedalRun } from '../domain/medals';
-import { validIndustry } from '../domain/industry';
+import { validIndustry, dungeonIndustryProfile } from '../domain/industry';
 import { validWorldStory, validateWorldStorySave } from '../domain/world-story';
 import { validFieldState } from '../domain/field-research';
 import { characterSkills } from '../domain/character-skills';
@@ -112,6 +113,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
   for (const key of ['appVersion', 'contentVersion', 'rulesVersion', 'leaderId']) if (typeof value[key] !== 'string' || !value[key]) throw new Error('保存データの版情報を読めません。');
   for (const key of ['revision', 'gold', 'potions', 'stones', 'drawCount', 'seed']) if (!count(value[key])) throw new Error('保存データの所持数または状態が不正です。');
   for (const key of ['astralStones', 'xrDrawCount']) if (value[key] !== undefined && !count(value[key])) throw new Error('星晶の所持数または状態が不正です。');
+  if(value.recycling!==undefined&&!validRecycling(value.recycling))throw new Error('素材保護の設定が正しくありません。');
   if (value.expeditionHistory !== undefined && !validExpeditionHistory(value.expeditionHistory)) throw new Error('周回の実績が不正です。');
   if (value.ssrPity !== undefined && (!count(value.ssrPity) || value.ssrPity >= 90 || value.ssrPity > Number(value.drawCount))) throw new Error('祈願の天井情報が不正です。');
   if (value.lastGachaResult !== undefined && !validGachaResult(value.lastGachaResult)) throw new Error('祈願の結果情報が不正です。');
@@ -170,6 +172,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
     if (battle.pendingPotionId !== undefined && (typeof battle.pendingPotionId !== 'string' || !(battle.units as {uid:string;side:string}[]).some(u=>u.uid===battle.pendingPotionId&&u.side==='party'))) throw new Error('回復の予約が不正です。');
+    if(battle.supplies!==undefined&&!validLoadout(battle.supplies))throw new Error('遠征用品の保存状態が不正です。');
     if (battle.hunt !== undefined && !validHunt(battle.hunt)) throw new Error('連続討伐の保存状態が不正です。');
     if (battle.harvest !== undefined && !validBattleHarvest(battle.harvest, battle as unknown as Parameters<typeof validBattleHarvest>[1])) throw new Error('回収の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
@@ -219,6 +222,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (battle.commandOrder !== undefined) validateCommandOrder(battle.commandOrder, battle, content, { stored: true });
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
+  if(battle.supplies&&(!battle.hunt||!dungeon||battle.supplies.incense!==undefined&&battle.supplies.incense!=='gem'&&!Object.hasOwn(dungeonIndustryProfile(dungeon,content).drops,battle.supplies.incense)))throw new Error('遠征用品の保存状態が不正です。');
   if (battle.hunt && (!dungeon || !canHunt(dungeon) || battle.hunt.stage==='hunting'&&battle.wave!==0 || battle.hunt.stage==='boss'&&battle.wave!==dungeon.waves.length-1)) throw new Error('連続討伐の地点が不正です。');
   if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');

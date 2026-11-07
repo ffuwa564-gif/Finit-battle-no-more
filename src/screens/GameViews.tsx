@@ -1,5 +1,5 @@
-import { canHunt } from '../domain/hunt';
-import { HuntMaterialFlights, HuntStatus, BattleHarvest, HarvestSummary, useBattleAuto } from '../ui';
+import { canHunt, HUNT_BOSS_UNLOCK } from '../domain/hunt';
+import { ExpeditionLoadoutPicker, HuntMaterialFlights, HuntStatus, BattleHarvest, HarvestSummary, useBattleAuto } from '../ui';
 import { gemDefinitionForSkill } from '../domain/memory-gems';
 import { dungeonHash, readDungeonDestination, type DungeonPanel } from '../application/dungeon-navigation';
 import { IndustryWorkshop, IndustryDungeonResources } from '../ui';
@@ -90,6 +90,7 @@ function BuildPlannerView({ p, onClose, onGems }: { p: ViewProps; onClose: () =>
 }
 
 export function DungeonsView(p: ViewProps) {
+  const [expeditionSupplies,setExpeditionSupplies]=useState<import('../domain/expedition-supplies').ExpeditionLoadout>({});
   const [destination, setDestination] = useState(() => readDungeonDestination(location.hash, content));
   const [selected, setSelected] = useState<string | null>(() => destination.kind === 'prepare' ? destination.dungeonId : null);
   const [carry, setCarry] = useState(Math.min(5, p.save.potions));
@@ -107,13 +108,14 @@ export function DungeonsView(p: ViewProps) {
   const openPanel = (panel: DungeonPanel) => { location.hash = dungeonHash({ kind: 'panel', panel }); };
   const closePanel = () => { location.hash = dungeonHash({ kind: 'map' }); };
   const closePreparation = () => { setSelected(null); if (destination.kind === 'prepare') location.hash = dungeonHash({ kind: 'map', dungeonId: destination.dungeonId }); };
+  useEffect(()=>setExpeditionSupplies({}),[selected]);
   const dungeon = content.dungeons.find(d => d.id === selected);
   return <><WorldMap onWorkshop={id => { p.navigate('bag'); location.hash = id ? `bag/workshop/${encodeURIComponent(id)}` : 'bag/workshop'; }} focusDungeonId={mapTarget} onPolish={() => { p.navigate('bag'); location.hash = 'bag/polish'; }} content={content} save={p.save} busy={p.busy} command={p.command} onSelect={setSelected} onBack={() => p.navigate('home')} onOpen={openPanel} />
     <Modal open={Boolean(panel) && !dungeon} onClose={closePanel} title={tr(panel === 'tower' ? '白亜の塔' : panel === 'memories' ? '追憶・覚醒' : '常設ボスイベント')}>
       {panel === 'tower' && <IvoryTower content={content} save={p.save} busy={p.busy} onSelect={setSelected} onEquipment={id => { p.navigate('bag'); location.hash = id ? `bag/gems/${encodeURIComponent(id)}` : 'bag/gems'; }} />}
       {panel === 'memories' && <StoryAwakening content={content} save={p.save} busy={p.busy} suspended={Boolean(p.artworkSuspended || dungeon)} inspect={p.inspect} command={p.command} />}
       {panel === 'boss-events' && <EventDungeons content={content} save={p.save} busy={p.busy} suspended={Boolean(p.artworkSuspended || dungeon)} onSelect={setSelected} onInspect={p.inspect} command={p.command} />}
-    </Modal><Modal inventoryArt="parchment-list" open={!!dungeon} onClose={closePreparation} title={tr(dungeon?.name ?? '探索の準備')}>{localize(dungeon && <><IndustryDungeonResources dungeon={dungeon} save={p.save} content={content}/><p className="dungeon-reward-note">{dungeon.kind !== 'trial' && <CurrencyEmblem kind="stone" size={17} />} {localize(dungeon.towerFloor ? '踏破で記憶石と調律用の欠片を獲得' : dungeon.kind === 'trial' ? '戦利品なし・踏破の記録のみ' : dungeon.kind === 'event' ? '踏破報酬：毎回 石1個' : dungeonStoneReward(dungeon, p.save.completedDungeonIds) ? '初踏破報酬：石3個' : '初踏破報酬は受取済み')}</p><MemoryGemSource dungeon={dungeon} />{canHunt(dungeon)&&<p className="notice">{tr("100手の連続討伐 → ボス戦。討伐ランクで希少品の出現率が上がります。")}</p>}<div className="notice"><Shield size={18} /><span>{tr("全回復で出発。")}<br />{tr(dungeon.kind === 'trial' ? "HPは連戦で引き継ぎます。使用した薬は消費します。" : "全滅・撤退で今回の素材をすべて失います。")}</span></div><p>{tr("持ち込む回復薬 ")}<strong>{localize(carry)}{tr(" 個")}</strong>{tr(" / 所持 ")}{localize(p.save.potions)}{tr(" 個")}</p><div className="toolbar" data-guide="supplies"><Button variant="secondary" disabled={carry <= 0} onClick={() => setCarry(n => n - 1)}>−</Button><Button variant="secondary" disabled={carry >= Math.min(5, p.save.potions)} onClick={() => setCarry(n => n + 1)}>＋</Button></div><div className="home-party">{localize(p.save.partyIds.map(id => <CharacterPortrait key={id} character={characterById(id)} leader={id === p.save.leaderId} />))}</div><Button data-guide="depart" size="lg" disabled={p.busy || Boolean(dungeonLock(dungeon, p.save, content))} onClick={async () => { if (await p.command({ type: 'depart', dungeonId: dungeon.id, potions: carry, ...(canHunt(dungeon)?{mode:'hunt' as const}:{}) })) setSelected(null); }}><Compass size={18} />{tr(" 探索を始める")}</Button></>)}</Modal>
+    </Modal><Modal inventoryArt="parchment-list" open={!!dungeon} onClose={closePreparation} title={tr(dungeon?.name ?? '探索の準備')}>{localize(dungeon && <><IndustryDungeonResources dungeon={dungeon} save={p.save} content={content}/><p className="dungeon-reward-note">{dungeon.kind !== 'trial' && <CurrencyEmblem kind="stone" size={17} />} {localize(dungeon.towerFloor ? '踏破で記憶石と調律用の欠片を獲得' : dungeon.kind === 'trial' ? '戦利品なし・踏破の記録のみ' : dungeon.kind === 'event' ? '踏破報酬：毎回 石1個' : dungeonStoneReward(dungeon, p.save.completedDungeonIds) ? '初踏破報酬：石3個' : '初踏破報酬は受取済み')}</p><MemoryGemSource dungeon={dungeon} />{canHunt(dungeon)&&<ExpeditionLoadoutPicker save={p.save} dungeon={dungeon} content={content} value={expeditionSupplies} onChange={setExpeditionSupplies}/> }{canHunt(dungeon)&&<p className="notice">{tr("最大100手の連続討伐 → ボス戦。Bランクから早めにボスへ進めます。")}</p>}<div className="notice"><Shield size={18} /><span>{tr("全回復で出発。")}<br />{tr(dungeon.kind === 'trial' ? "HPは連戦で引き継ぎます。使用した薬は消費します。" : "全滅・撤退で今回の素材をすべて失います。")}</span></div><p>{tr("持ち込む回復薬 ")}<strong>{localize(carry)}{tr(" 個")}</strong>{tr(" / 所持 ")}{localize(p.save.potions)}{tr(" 個")}</p><div className="toolbar" data-guide="supplies"><Button variant="secondary" disabled={carry <= 0} onClick={() => setCarry(n => n - 1)}>−</Button><Button variant="secondary" disabled={carry >= Math.min(5, p.save.potions)} onClick={() => setCarry(n => n + 1)}>＋</Button></div><div className="home-party">{localize(p.save.partyIds.map(id => <CharacterPortrait key={id} character={characterById(id)} leader={id === p.save.leaderId} />))}</div><Button data-guide="depart" size="lg" disabled={p.busy || Boolean(dungeonLock(dungeon, p.save, content))} onClick={async () => { if (await p.command({ type: 'depart', dungeonId: dungeon.id, potions: carry, ...(canHunt(dungeon)?{mode:'hunt' as const,supplies:expeditionSupplies}:{}) })) setSelected(null); }}><Compass size={18} />{tr(" 探索を始める")}</Button></>)}</Modal>
   </>;
 }
 
@@ -146,6 +148,7 @@ export function BagView(p: ViewProps) {
     {tab === 'notes' && <><FairyGuideButton /><BuildGoalSummary save={p.save} content={content} onOpen={() => open('builds')} /><PreparationGuide save={p.save} content={content} busy={p.busy} onGems={id => {setTab('gems');location.hash=`bag/gems/${encodeURIComponent(id)}`;}} onDungeon={id => {p.navigate('dungeons');location.hash=dungeonHash({kind:'prepare',dungeonId:id});}} /><ExpeditionLedger save={p.save} content={content} /></>}
     {tab === 'items' && <><Panel className="shop-panel" data-guide="bag-potions"><div className="shop-item"><InventorySprite id="healing-potion" className="inventory-potion-art"/><div><h2>{tr('回復薬')}</h2><p>{tr('味方1人のHPを30%回復。持込は最大5個。')}</p><span className="subtle">{tr('所持 ')}{p.save.potions}{tr(' 個')}</span></div></div><Button disabled={p.busy || p.save.gold < 10} onClick={() => p.command({type:'buyPotion',count:1})}><CurrencyEmblem kind="gold" size={16}/>{tr(' 10 G で購入')}</Button></Panel><Button variant="secondary" onClick={() => p.navigate('recruit')}><CurrencyEmblem kind="gold" size={16}/>{tr('ゴールド交換')}</Button></>}
     {tab === 'materials' && <>
+      <Button variant="secondary" onClick={()=>{location.hash='bag/workshop/supplies';setTab('workshop');}}>{tr('余剰素材を遠征用品にする')}</Button>
       <InventorySection id="materials" title="所持素材" count={entries.length}>
         {entries.length ? <div className="resource-list">{entries.map(([id, n]) => <Panel className="resource-item" key={id}><InventorySprite id={`material-${id.split(':')[1]}`} /><div><strong>{tr(materialName(id))}</strong><p className="subtle">× {n}</p></div></Panel>)}</div> : <p className="subtle">{tr("素材はまだありません。")}</p>}
       </InventorySection>
@@ -237,6 +240,8 @@ export function BattleView(p: ViewProps) {
   const battle = p.save.battle!;
   const [usingPotion, setUsingPotion] = useState(false);
   const [retreat, setRetreat] = useState(false);
+  const [bossGate,setBossGate]=useState(false),[bossRequested,setBossRequested]=useState(false);
+  useEffect(()=>{if(bossRequested&&battle.phase==='ready'){setBossGate(true);setBossRequested(false);}if(['failed','reward'].includes(battle.phase))setBossRequested(false);},[bossRequested,battle.phase]);
   const [gemBag, setGemBag] = useState(false);
   const [impact, setImpact] = useState<ImpactSnapshot>();
   const [viewedEnemyId, setViewedEnemyId] = useState<string>();
@@ -286,12 +291,13 @@ export function BattleView(p: ViewProps) {
     <CommandDoctrine battle={battle} content={content} busy={p.busy} onOrder={order => { void p.command({ type: 'commandOrder', battleId: battle.id, order }); }} />
     <StatusFeedback event={event} before={before} impact={impact} round={displayRound} template={content.skills.find(skill => skill.id === event?.skillId)?.template ?? gemDefinitionForSkill(event?.skillId ?? '')?.skill.template} reducedMotion={p.save.settings.reducedMotion} />
     <CombatFeedback event={event} before={before} onImpact={setImpact} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
-    <BattleControlPad auto={auto} onToggleAuto={() => setAuto(!auto)} strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
+    <BattleControlPad bossGate={battle.hunt?.stage==='hunting'?{disabled:p.busy||battle.hunt.kills<HUNT_BOSS_UNLOCK,onClick:()=>{setAuto(false);setBossRequested(true);}}:undefined} auto={auto} onToggleAuto={() => setAuto(!auto)} strategy={battle.strategy} strategyDisabled={p.busy || battle.phase !== 'ready'} onStrategy={strategy => { void p.command({ type: 'strategy', strategy }); }}
       advancing={battle.phase === 'playing'} advanceDisabled={p.busy || (battle.phase !== 'playing' && usingPotion)} onAdvance={() => { void p.command(battle.phase === 'playing' ? { type: 'replay' } : { type: 'round', battleId: battle.id, targetId: commandTargetId }); }}
       potionCount={battle.potionsRemaining} potionDisabled={p.busy || battle.potionUsed || !battle.potionsRemaining} potionSelected={usingPotion} onPotion={() => setUsingPotion(!usingPotion)}
       retreatDisabled={p.busy || battle.phase !== 'ready'} onRetreat={() => setRetreat(true)}
       toolbar={<><FairyGuideButton compact /><Button size="sm" variant="icon" title={tr("記憶石")} aria-label={tr("記憶石を開く")} onClick={() => setGemBag(true)}><Hexagon size={17} /></Button>{localize(usingPotion && <><span className="sr-only">{tr("回復する仲間を選択")}</span><Button size="sm" variant="secondary" onClick={() => setUsingPotion(false)}>{tr("取消")}</Button></>)}<Button sound={false} variant="icon" title={tr(p.save.settings.seVolume === 0 ? '効果音を有効にする' : '効果音をミュート')} disabled={p.busy} onClick={() => p.command({ type: 'settings', settings: { seVolume: p.save.settings.seVolume === 0 ? 1 : 0 } })}>{localize(p.save.settings.seVolume === 0 ? <VolumeX size={17} /> : <Volume2 size={17} />)}</Button><Button size="sm" variant="secondary" disabled={p.busy} title={tr("演出速度")} onClick={() => p.command({ type: 'settings', settings: { speed: p.save.settings.speed === 1 ? 2 : 1 } })}><FastForward size={14} /> ×{localize(p.save.settings.speed)}</Button></>} />
     <Modal className="memory-gem-modal" open={gemBag} onClose={() => setGemBag(false)} title={tr("記憶石")}><MemoryGems save={p.save} content={content} dispatch={p.command} busy={p.busy} /></Modal>
+    <Modal open={bossGate} onClose={()=>setBossGate(false)} title={tr('このランクでボスへ進みますか？')}><p>{tr('回収品はボスを倒して獲得を確定すると持ち帰れます。')}</p><Button disabled={p.busy||battle.phase!=='ready'} onClick={async()=>{if(await p.command({type:'huntBoss',battleId:battle.id}))setBossGate(false);}}>{tr('ボスへ進む')}</Button></Modal>
     <Modal className="retreat-confirm" open={retreat} onClose={() => setRetreat(false)} title={tr("探索から撤退しますか？")} footer={<><BackupExportButton /><Button variant="danger" disabled={p.busy} onClick={async () => { if (await p.command({ type: 'retreat' })) setRetreat(false); }}>{tr("撤退する")}</Button></>}><p>{tr("追加回収の素材と原石は失われます。宝箱で確保済みの記憶石・ゴールド・敵の記録は残ります。")}</p></Modal>
   </div>;
 }

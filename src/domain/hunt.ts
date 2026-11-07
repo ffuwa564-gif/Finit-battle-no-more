@@ -2,7 +2,7 @@ import { dungeonIndustryProfile, industryItem } from './industry';
 import type { Battle, Content, DungeonDef } from './types';
 
 /** A hand is one party action (including a skipped action), not a replay effect. */
-export interface HuntState { actions: number; kills: number; serial: number; stage: 'hunting' | 'boss' }
+export interface HuntState { finishAt?: number; actions: number; kills: number; serial: number; stage: 'hunting' | 'boss' }
 export const HUNT_HANDS = 100;
 export const HUNT_RULES={initialEnemies:3,lateEnemies:4,rampAt:50,hp:.65,attack:.45,pressure:.8,eliteEvery:10,eliteHp:1.8,eliteAttack:1.35} as const;
 export const HUNT_RANKS = [
@@ -12,6 +12,7 @@ export const HUNT_RANKS = [
   { rank: 'S', kills: 40, rare: 19, epic: 7, gem: 22, tier4: .22, tier5: .06 },
   { rank: 'SS', kills: 60, rare: 25, epic: 10, gem: 27, tier4: .30, tier5: .10 },
 ] as const;
+export const HUNT_BOSS_UNLOCK=HUNT_RANKS[1].kills;
 export function huntRank(kills: number) { return [...HUNT_RANKS].reverse().find(r => kills >= r.kills)!; }
 export function canHunt(d: DungeonDef): boolean { return (d.kind ?? 'normal') === 'normal' && !d.towerFloor && !d.fieldLesson && d.waves.length > 1 && d.waves.at(-1)!.some(e=>e.boss) && d.waves.slice(0,-1).some(w=>w.some(e=>!e.boss)); }
 export function huntPool(d: DungeonDef): string[] { return [...new Set(d.waves.slice(0,-1).flatMap(w=>w.filter(e=>!e.boss).map(e=>e.characterId)))]; }
@@ -27,7 +28,7 @@ export function huntPartPool(d: DungeonDef, c: Content, epic: boolean): string[]
 }
 export function validHunt(value: unknown): value is HuntState {
   if(!value||typeof value!=='object')return false;const h=value as HuntState;
-  return Number.isSafeInteger(h.actions)&&h.actions>=0&&h.actions<=HUNT_HANDS&&Number.isSafeInteger(h.kills)&&h.kills>=0&&h.kills<=2000&&Number.isSafeInteger(h.serial)&&h.serial>=0&&h.serial<=2010&&h.serial>=h.kills&&['hunting','boss'].includes(h.stage)&&(h.stage!=='boss'||h.actions===HUNT_HANDS);
+  return Number.isSafeInteger(h.actions)&&h.actions>=0&&h.actions<=HUNT_HANDS&&Number.isSafeInteger(h.kills)&&h.kills>=0&&h.kills<=2000&&Number.isSafeInteger(h.serial)&&h.serial>=0&&h.serial<=2010&&h.serial>=h.kills&&['hunting','boss'].includes(h.stage)&&(h.finishAt===undefined||Number.isSafeInteger(h.finishAt)&&h.finishAt>=1&&h.finishAt<=HUNT_HANDS&&h.kills>=HUNT_BOSS_UNLOCK&&h.actions===h.finishAt)&&h.actions<=(h.finishAt??HUNT_HANDS)&&(h.stage!=='boss'||h.actions===(h.finishAt??HUNT_HANDS));
 }
 export function huntProgress(b: Battle) { return b.hunt ? { ...b.hunt } : undefined; }
 

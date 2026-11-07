@@ -63,7 +63,7 @@ export function BattleHarvest({ battle, command, reducedMotion=false }: { battle
     {s.offers.map(o=>{
       const name=o.kind==='gem'?tr(ROUGH_NAMES[o.gem!.promise]):o.kind==='material'?industryItem(o.itemId!)!.name[lang]:tr(o.kind==='heal'?'癒しの雫':'援護の結晶');
       const sprite=o.kind==='gem'?`rough-${o.gem!.promise}`:o.kind==='material'?o.itemId!:'healing-potion';
-      const remaining=Math.ceil((o.required-o.hits)/(1+s.upgrades.touch));
+      const remaining=Math.ceil((o.required-o.hits)/(1+s.upgrades.touch+(battle.supplies?.collection===o.kind?1:0)));
       return <Button key={o.id} variant="secondary" className={`harvest-drop harvest-drop--${o.kind}${flash===o.id?' is-tapped':''}`} data-harvest-id={o.id} data-slot={o.slot} data-quality={harvestQuality(o)} data-promise={o.gem?.promise}
         style={{left:`${positions[o.slot][0]}%`,top:`${positions[o.slot][1]}%`,'--drift-delay':`${-o.slot*.8}s`} as CSSProperties}
         aria-label={tr('{0}：あと{1}回で回収').replace('{0}',name).replace('{1}',String(remaining))}

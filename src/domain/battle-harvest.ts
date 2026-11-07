@@ -62,7 +62,7 @@ export function advanceHarvest(battle: Battle, event: BattleEvent, content: Cont
   const rank = huntRank(event.huntProgress?.kills ?? battle.hunt?.kills ?? 0);
   const roll = next(s) % 100;
   let kind: HarvestKind = roll < 43 ? 'material' : roll < 68 ? 'heal' : roll < 90 ? 'strike' : 'gem';
-  if (battle.hunt) kind=roll<rank.gem?'gem':roll<rank.gem+54?'material':roll<rank.gem+67?'heal':'strike';
+  if (battle.hunt) {const gemRate=rank.gem+(battle.supplies?.incense==='gem'?12:0),materialRate=54+(battle.supplies?.incense&&battle.supplies.incense!=='gem'?12:0);kind=roll<gemRate?'gem':roll<gemRate+materialRate?'material':roll<gemRate+materialRate+13?'heal':'strike';}
   // Keep rare items special, and bound additional equipment per expedition.
   if (kind === 'gem' && s.gems.length + s.offers.filter(o => o.kind === 'gem').length >= harvestGemLimit(battle)) kind = 'material';
   const reserved = Object.values(s.materials).reduce((a,b) => a+b, 0) + s.offers.filter(o=>o.kind==='material').reduce((n,o)=>n+o.amount!,0);
@@ -72,6 +72,7 @@ export function advanceHarvest(battle: Battle, event: BattleEvent, content: Cont
   if (kind === 'material') {
     const items = Object.keys(dungeonIndustryProfile(d, content).drops);
     offer.itemId = items[next(s) % items.length]!;
+    if(battle.supplies?.incense&&items.includes(battle.supplies.incense)&&next(s)%100<65)offer.itemId=battle.supplies.incense;
     offer.rarity='common';
     if(battle.hunt){const quality=next(s)%100;offer.rarity=quality<rank.epic?'epic':quality<rank.epic+rank.rare?'rare':'common';if(offer.rarity!=='common'){const parts=huntPartPool(d,content,offer.rarity==='epic');offer.itemId=parts[next(s)%parts.length]!;}}
     offer.amount = Math.min((offer.rarity==='epic'?3:offer.rarity==='rare'?1:2) + s.upgrades.abundance, 5, materialCapacity(s,offer.itemId!,true));
@@ -119,7 +120,7 @@ export function tapHarvest(battle: Battle, id: string): 'miss' | 'tap' | Harvest
   const s = battle.harvest, offer = s?.offers.find(o => o.id === id);
   if (!s || !active(battle) || !offer || offer.expires <= s.beat) return 'miss';
   if (['heal','strike'].includes(offer.kind) && s.aids.length >= 3) return 'miss';
-  offer.hits = Math.min(offer.required, offer.hits + 1 + s.upgrades.touch);
+  offer.hits = Math.min(offer.required, offer.hits + 1 + s.upgrades.touch + (battle.supplies?.collection===offer.kind?1:0));
   if (offer.hits < offer.required) return 'tap';
   collect(s, offer);
   if (offer.kind === 'heal' && s.upgrades.mercy) {

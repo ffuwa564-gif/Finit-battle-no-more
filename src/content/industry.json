@@ -603,6 +603,51 @@
       },
       "kind": "tool",
       "tier": 5
+    },
+    {
+      "id": "polishing-powder",
+      "name": {
+        "ja": "研磨粉",
+        "en": "Polishing powder"
+      },
+      "kind": "raw",
+      "tier": 0
+    },
+    {
+      "id": "polishing-cloth",
+      "name": {
+        "ja": "研磨布",
+        "en": "Polishing cloth"
+      },
+      "kind": "part",
+      "tier": 1
+    },
+    {
+      "id": "polishing-kit",
+      "name": {
+        "ja": "連続研磨キット",
+        "en": "Batch polishing kit"
+      },
+      "kind": "part",
+      "tier": 2
+    },
+    {
+      "id": "recovery-lantern",
+      "name": {
+        "ja": "回収用の灯",
+        "en": "Gathering light"
+      },
+      "kind": "part",
+      "tier": 2
+    },
+    {
+      "id": "exploration-incense",
+      "name": {
+        "ja": "探索の香",
+        "en": "Exploration incense"
+      },
+      "kind": "part",
+      "tier": 3
     }
   ],
   "recipes": [
@@ -1904,6 +1949,154 @@
       },
       "seconds": 16,
       "power": 2,
+      "automatable": true
+    },
+    {
+      "id": "polishing-cloth",
+      "name": {
+        "ja": "研磨布",
+        "en": "Polishing cloth"
+      },
+      "tier": 1,
+      "power": 0,
+      "station": "bench",
+      "seconds": 3,
+      "inputs": {
+        "polishing-powder": 3,
+        "fiber": 1
+      },
+      "outputs": {
+        "polishing-cloth": 1
+      },
+      "chapter": 1,
+      "automatable": true
+    },
+    {
+      "id": "polishing-kit",
+      "name": {
+        "ja": "連続研磨キット",
+        "en": "Batch polishing kits"
+      },
+      "tier": 2,
+      "power": 1,
+      "station": "loom",
+      "seconds": 6,
+      "inputs": {
+        "polishing-cloth": 3,
+        "gear": 1
+      },
+      "outputs": {
+        "polishing-kit": 8
+      },
+      "chapter": 2,
+      "automatable": true
+    },
+    {
+      "id": "recovery-lantern",
+      "name": {
+        "ja": "回収用の灯",
+        "en": "Gathering light"
+      },
+      "tier": 2,
+      "power": 1,
+      "station": "press",
+      "seconds": 8,
+      "inputs": {
+        "polishing-powder": 8,
+        "glass": 2,
+        "wire": 1
+      },
+      "outputs": {
+        "recovery-lantern": 1
+      },
+      "chapter": 2,
+      "automatable": true
+    },
+    {
+      "id": "exploration-incense",
+      "name": {
+        "ja": "探索の香",
+        "en": "Exploration incense"
+      },
+      "tier": 3,
+      "power": 2,
+      "station": "assembler",
+      "seconds": 12,
+      "inputs": {
+        "polishing-powder": 30,
+        "oil": 2,
+        "charged-crystal": 1
+      },
+      "outputs": {
+        "exploration-incense": 1
+      },
+      "chapter": 3,
+      "automatable": true
+    },
+    {
+      "id": "polishing-kit-efficient",
+      "name": {
+        "ja": "連続研磨キット・精密製法",
+        "en": "Precision batch polishing kits"
+      },
+      "tier": 4,
+      "power": 3,
+      "station": "resonance-assembler",
+      "seconds": 12,
+      "inputs": {
+        "polishing-cloth": 2,
+        "luminous-alloy": 1,
+        "resonant-circuit": 1,
+        "polishing-powder": 6
+      },
+      "outputs": {
+        "polishing-kit": 24
+      },
+      "chapter": 4,
+      "automatable": true
+    },
+    {
+      "id": "recovery-lantern-efficient",
+      "name": {
+        "ja": "回収用の灯・星工製法",
+        "en": "Stellar gathering lights"
+      },
+      "tier": 5,
+      "power": 4,
+      "station": "star-assembler",
+      "seconds": 12,
+      "inputs": {
+        "glass": 4,
+        "wire": 2,
+        "star-circuit": 1,
+        "polishing-powder": 24
+      },
+      "outputs": {
+        "recovery-lantern": 8
+      },
+      "chapter": 5,
+      "automatable": true
+    },
+    {
+      "id": "exploration-incense-efficient",
+      "name": {
+        "ja": "探索の香・星工製法",
+        "en": "Stellar exploration incense"
+      },
+      "tier": 5,
+      "power": 4,
+      "station": "star-assembler",
+      "seconds": 15,
+      "inputs": {
+        "oil": 3,
+        "resonant-circuit": 1,
+        "autonomous-core": 1,
+        "polishing-powder": 60
+      },
+      "outputs": {
+        "exploration-incense": 6
+      },
+      "chapter": 5,
       "automatable": true
     }
   ],
