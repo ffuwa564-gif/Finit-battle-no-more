@@ -1,0 +1,17 @@
+{
+  "sha256": "3897a8620ca9f01ac16fd34007db93d06c54071fc24a752cc6a24f50462a30c8",
+  "pass": true,
+  "reviewed": [
+    "contact-sheet.jpg",
+    "final-card-review.jpg",
+    "final-reward-review.jpg"
+  ],
+  "observations": [
+    "Nine finished-file checkpoints cover title, departure, card choice, results, combat, three sockets, and ending.",
+    "Avatar head and ears remain inside the 320x440 contain frame.",
+    "Bottom captions remain within cream band; no text overlaps gameplay.",
+    "Three cards and actual loot results remain visible; recording diagnostic strip is excluded.",
+    "Trial-version label identifies PR #171; source is not presented as the current public release."
+  ],
+  "audioVerification": "20 narration waveforms and 6 game-audio checkpoints passed independent completed-file matching; see sync-audit.json. Playback passed mobile viewport Chromium/WebKit."
+}

@@ -1,0 +1,40 @@
+{
+  "method": "rubberband tempo adjustment with pitch=1",
+  "sampleRate": 48000,
+  "pass": true,
+  "checks": [
+    {
+      "tempo": 0.84,
+      "frequencyHz": 440.0,
+      "expectedHz": 440,
+      "transientErrorsMs": [
+        -23.758928571428584,
+        -23.068452380952564,
+        -22.41964285714282
+      ],
+      "pass": true
+    },
+    {
+      "tempo": 0.98,
+      "frequencyHz": 438.0,
+      "expectedHz": 440,
+      "transientErrorsMs": [
+        -2.245748299319783,
+        -2.2372448979590676,
+        -2.1870748299317455
+      ],
+      "pass": true
+    },
+    {
+      "tempo": 1.1,
+      "frequencyHz": 438.0,
+      "expectedHz": 440,
+      "transientErrorsMs": [
+        10.871212121212114,
+        11.4469696969699,
+        11.876893939394062
+      ],
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "changedKeys": [
+    "revision"
+  ],
+  "reason": "Standard restoreBackup API resets only optimistic-concurrency revision from 141 to 1 in the fresh browser.",
+  "sourceSha256": "b1d02ce21d31e2462649fdfd1bd0dc5095d78ccdaf9c7cbca07ad2c0c3eb336c",
+  "recordedStartSha256": "a3f26bbdf53925da390acf89cd3aa763229a5aa74a27f29c20cdaf4c2c88774d"
+}

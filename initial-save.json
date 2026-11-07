@@ -1,0 +1,325 @@
+{
+  "novels": {
+    "seen": [
+      "opening-first-adventure"
+    ]
+  },
+  "schemaVersion": 1,
+  "appVersion": "1.28.0",
+  "contentVersion": "v1.28-r1",
+  "rulesVersion": "3",
+  "revision": 1,
+  "gold": 196,
+  "potions": 10,
+  "stones": 6,
+  "astralStones": 0,
+  "xrDrawCount": 0,
+  "ownedIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "partyIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle"
+  ],
+  "leaderId": "liora",
+  "materials": {
+    "mist:rare": 1,
+    "mist:common": 6,
+    "moon:rare": 2,
+    "stone:common": 1,
+    "moon:common": 1
+  },
+  "discoveredIds": [
+    "elaine",
+    "liora",
+    "seris",
+    "noelle",
+    "pale-wolf",
+    "moon-moth",
+    "stone-drake"
+  ],
+  "towerRecord": {
+    "version": "1.10",
+    "completedFloors": [],
+    "legacyHighest": 0
+  },
+  "completedDungeonIds": [
+    "silent-cathedral",
+    "chapel-approach"
+  ],
+  "claimedExplorationIds": [
+    "run-11-1963940482",
+    "run-94-1497076684"
+  ],
+  "drawCount": 0,
+  "ssrPity": 0,
+  "seed": 3392112066,
+  "memoryGems": {
+    "items": [],
+    "equipped": {},
+    "dust": {
+      "sanctuary": 2,
+      "clock": 0,
+      "grave": 0
+    },
+    "seen": [],
+    "rough": [
+      {
+        "id": "run-11-1963940482:wave:0",
+        "promise": "ordinary",
+        "result": {
+          "id": "run-11-1963940482:wave:0",
+          "defId": "pale-ward",
+          "variant": "pure"
+        }
+      },
+      {
+        "id": "run-11-1963940482:wave:1",
+        "promise": "ordinary",
+        "result": {
+          "id": "run-11-1963940482:wave:1",
+          "defId": "shield-break",
+          "variant": "pure",
+          "roll": {
+            "power": 19,
+            "trait": "execution",
+            "value": 32
+          }
+        }
+      },
+      {
+        "id": "run-11-1963940482:wave:2",
+        "promise": "ordinary",
+        "result": {
+          "id": "run-11-1963940482:wave:2",
+          "defId": "pale-ward",
+          "variant": "pure",
+          "roll": {
+            "power": 6,
+            "trait": "none",
+            "value": 0
+          }
+        }
+      },
+      {
+        "id": "run-94-1497076684:wave:1",
+        "promise": "glimmering",
+        "result": {
+          "id": "run-94-1497076684:wave:1",
+          "defId": "pale-ward",
+          "variant": "pure",
+          "roll": {
+            "power": 19,
+            "trait": "bulwark",
+            "value": 60
+          }
+        }
+      }
+    ]
+  },
+  "battle": null,
+  "history": [
+    {
+      "id": "140-7",
+      "text": "探索報酬を確定しました。素材をカバンへ持ち帰りました。"
+    },
+    {
+      "id": "139-run-94-1497076684:wave:1",
+      "text": "宝箱から輝く原石を確保しました。"
+    },
+    {
+      "id": "94-5",
+      "text": "祈りの参道へ出発しました。"
+    },
+    {
+      "id": "85-4",
+      "text": "探索報酬を確定しました。素材をカバンへ持ち帰りました。"
+    },
+    {
+      "id": "84-run-11-1963940482:wave:2",
+      "text": "宝箱から普通の原石を確保しました。"
+    },
+    {
+      "id": "62-run-11-1963940482:wave:1",
+      "text": "宝箱から普通の原石を確保しました。"
+    },
+    {
+      "id": "41-run-11-1963940482:wave:0",
+      "text": "宝箱から普通の原石を確保しました。"
+    },
+    {
+      "id": "11-0",
+      "text": "忘却の聖堂へ出発しました。"
+    }
+  ],
+  "settings": {
+    "bgmVolume": 0.5,
+    "seVolume": 1,
+    "reducedMotion": false,
+    "speed": 1
+  },
+  "medals": {
+    "version": 1,
+    "earned": [
+      "explore-first",
+      "tactics-return",
+      "four-roles",
+      "only-r-sr",
+      "no-stones",
+      "tactics-no-potion",
+      "only-r"
+    ],
+    "feats": [
+      "full-party",
+      "no-potion"
+    ],
+    "proofs": {
+      "companions-five": 4,
+      "companions-twelve": 4,
+      "companions-twenty-four": 4,
+      "companions-forty-eight": 4,
+      "explore-first": 1,
+      "tactics-return": 1,
+      "tactics-no-potion": 1,
+      "tactics-six": 2,
+      "tactics-twelve": 2,
+      "four-roles": 1,
+      "only-r-sr": 1,
+      "no-stones": 1,
+      "only-r": 1,
+      "explore-return-ten": 2,
+      "explore-return-fifty": 2,
+      "explore-return-hundred": 2
+    },
+    "victories": 2,
+    "challenges": [
+      "four-roles",
+      "only-r-sr",
+      "only-r",
+      "no-stones"
+    ]
+  },
+  "worldStory": {
+    "version": 1,
+    "profile": {
+      "name": "ずん",
+      "voice": "soft",
+      "favorite": "tea"
+    },
+    "carriedChapters": [],
+    "completed": [
+      "c1-job",
+      "c1-hill"
+    ],
+    "choices": {},
+    "position": {
+      "x": 0.21829323205376303,
+      "y": 0.40888002028747505
+    }
+  },
+  "industry": {
+    "version": 1,
+    "stock": {
+      "stone": 10,
+      "ore": 6,
+      "copper": 4,
+      "coal": 3,
+      "timber": 7,
+      "fish": 6,
+      "fiber": 6,
+      "water": 7,
+      "clay": 5
+    },
+    "machines": {},
+    "updatedAt": 1794004454000
+  },
+  "expeditionHistory": [
+    {
+      "runId": "run-94-1497076684",
+      "dungeonId": "chapel-approach",
+      "appVersion": "1.28.0",
+      "contentVersion": "v1.28-r1",
+      "rulesVersion": "3",
+      "outcome": "victory",
+      "durationMs": 98369,
+      "review": {
+        "rounds": 6,
+        "partyDamageTaken": 55,
+        "enemyDamageTaken": 536,
+        "partyHealing": 8,
+        "partyBarrierAbsorbed": 31,
+        "partyHpSpent": 0,
+        "actionsLost": 1,
+        "potionsUsed": 0,
+        "largestHit": {
+          "actorCharacterId": "moon-moth",
+          "targetCharacterId": "seris",
+          "skillId": "area-10",
+          "amount": 11,
+          "wave": 1,
+          "round": 2
+        }
+      },
+      "earned": {
+        "gold": 36,
+        "stones": 3,
+        "gemCount": 1,
+        "materials": {
+          "moon:rare": 1,
+          "stone:common": 1,
+          "moon:common": 1
+        },
+        "dust": {
+          "sanctuary": 1
+        }
+      },
+      "potionsUsed": 0
+    },
+    {
+      "runId": "run-11-1963940482",
+      "dungeonId": "silent-cathedral",
+      "appVersion": "1.28.0",
+      "contentVersion": "v1.28-r1",
+      "rulesVersion": "3",
+      "outcome": "victory",
+      "durationMs": 154785,
+      "review": {
+        "rounds": 10,
+        "partyDamageTaken": 166,
+        "enemyDamageTaken": 996,
+        "partyHealing": 77,
+        "partyBarrierAbsorbed": 58,
+        "partyHpSpent": 0,
+        "actionsLost": 0,
+        "potionsUsed": 0,
+        "largestHit": {
+          "actorCharacterId": "pale-wolf",
+          "targetCharacterId": "liora",
+          "skillId": "attack-10",
+          "amount": 30,
+          "wave": 2,
+          "round": 1
+        }
+      },
+      "earned": {
+        "gold": 60,
+        "stones": 3,
+        "gemCount": 3,
+        "materials": {
+          "mist:rare": 1,
+          "mist:common": 6,
+          "moon:rare": 1
+        },
+        "dust": {
+          "sanctuary": 1
+        }
+      },
+      "potionsUsed": 0
+    }
+  ]
+}

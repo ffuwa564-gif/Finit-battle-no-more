@@ -1,0 +1,82 @@
+{
+  "sync-audit.json": {
+    "sha256": "83e8515a286a96a7710aa9655d6747fb2735bbc1184c911f74ca2aa569b3f323",
+    "bytes": 15010
+  },
+  "stillveil-auto-harvest.mp4": {
+    "sha256": "3897a8620ca9f01ac16fd34007db93d06c54071fc24a752cc6a24f50462a30c8",
+    "bytes": 24075523
+  },
+  "credits.txt": {
+    "sha256": "65c80dcd11237cbe59ce35d62bef9c0785302a951fd9982124b1b70b0593a2c4",
+    "bytes": 717
+  },
+  "thumbnail.jpg": {
+    "sha256": "5d04a8e277a6a2fffd7b689999bb9d1d123f6634547805ba10b1f59d14f146d4",
+    "bytes": 207341
+  },
+  "visual-review.json": {
+    "sha256": "25e2ae5b6a6147617eb827dc91ff6919fd9ee089e998790ccf0ffc8627992fa7",
+    "bytes": 884
+  },
+  "final-save.json": {
+    "sha256": "edf2c2ccae22adf71841f4231dc7b6999e7412dc6e5981cc80777722dc75c73a",
+    "bytes": 10106
+  },
+  "youtube-description.txt": {
+    "sha256": "0fbc613e389bf048677ab730630634507b4e216373a46823bbc53eab0320ba4e",
+    "bytes": 2169
+  },
+  "README.txt": {
+    "sha256": "df62367e3eba8fdf848ecb3164ddb26d0f17cc9e3f7e30b055f4359c0681dd3d",
+    "bytes": 359
+  },
+  "Production-Inputs.zip": {
+    "sha256": "d4ac5e7cdac49233ebb1fca94633b710d4a19c1c311bd59ae7bcaee7d85f0b26",
+    "bytes": 46079781
+  },
+  "restoration-audit.json": {
+    "sha256": "551ade914a5bf33b69df2914c2197b39ab49b84da5aa1023f807884799c6f89f",
+    "bytes": 358
+  },
+  "script.md": {
+    "sha256": "293ea66ac716f1353330708abfe3031a33d5648f8a2851089c13629b3559e4f7",
+    "bytes": 2316
+  },
+  "storyboard.csv": {
+    "sha256": "bc2de332219ff66f903ce23497b5fee69d4632be6c2b75c0e6ba22e12d9b604a",
+    "bytes": 8928
+  },
+  "initial-save.json": {
+    "sha256": "a3f26bbdf53925da390acf89cd3aa763229a5aa74a27f29c20cdaf4c2c88774d",
+    "bytes": 6979
+  },
+  "stillveil-auto-harvest.srt": {
+    "sha256": "f96dbca4c9518196f21da8f7194a104a47e2ac63f3e69c1059cca8ebffb4df08",
+    "bytes": 2354
+  },
+  "contact-sheet.jpg": {
+    "sha256": "9b4f493aa009c4db3404e7d70a37d47ad7a96671adac2c314325c862df164696",
+    "bytes": 363801
+  },
+  "playback-audit.json": {
+    "sha256": "2123d5652137438077453543a4b4785dcea75c583f3fe787766710aaf7d4a4da",
+    "bytes": 1212
+  },
+  "chapters.txt": {
+    "sha256": "77df6cba5269a97e8db29aecd51ad29a728df779e2f36866e6ac87b12f092e5c",
+    "bytes": 210
+  },
+  "clock-stretch-test.json": {
+    "sha256": "f33f7854e5fc38dfd3a7c0fb1fd45ab0588df40740a62bc6c6d14060e43899c3",
+    "bytes": 797
+  },
+  "starting-conditions.json": {
+    "sha256": "b1a9f44af55e57924b85781fdf298ae668f12059349191d04268334e3b19102b",
+    "bytes": 771
+  },
+  "final-qa.json": {
+    "sha256": "f8d391cc938389abe91f2832500b1bb949dfcbe9e943942c59b96e86b2ebed3e",
+    "bytes": 3423
+  }
+}
