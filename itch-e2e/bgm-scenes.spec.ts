@@ -10,7 +10,7 @@ function transitions(dungeonId = content.dungeons[0].id) {
   let save = createInitialSave(content, 42);
   const party = ['elaine-awakened', 'liora-awakened', 'seris-awakened', 'lisette-awakened'];
   save.ownedIds = [...new Set([...save.ownedIds, ...party])];
-  save.completedDungeonIds = content.dungeons.map(d => d.id);
+  save.completedDungeonIds = content.dungeons.filter(d=>!d.rebirth).map(d=>d.id);
   save.partyIds = party; save.leaderId = party[1];
   save.settings = { ...save.settings, speed: 2, bgmVolume: 0.5 };
   save = applyCommand(save, { type: 'depart', dungeonId, potions: 0 }, content);

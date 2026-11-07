@@ -4,7 +4,7 @@ export const POLISH_RULES = { ordinary: { seconds: 35, width: 90, period: 2400, 
 const hash = (seed: number) => (Math.imul(seed ^ (seed >>> 16), 0x45d9f3b) >>> 0) / 4294967296;
 /** Promise is a noisy appraisal, never a tier guarantee. The sealed result is immutable across retries. */
 export function roughMemoryGem(gem: MemoryGem, seed: number): RoughMemoryGem {
-  const tier = gemTier(gem), chance = hash(seed), bounds = [[.80,.98],[.55,.95],[.25,.80],[.10,.60],[.05,.35],[.02,.20]][tier-1]!;
+  const tier = gemTier(gem), chance = hash(seed), bounds = [[.80,.98],[.55,.95],[.25,.80],[.10,.60],[.05,.35],[.02,.20],[.01,.12]][tier-1]!;
   return { id: gem.id, promise: chance < bounds[0] ? 'ordinary' : chance < bounds[1] ? 'glimmering' : 'radiant', result: structuredClone(gem) };
 }
 export function polishWindow(session: GemPolishSession, rough: RoughMemoryGem, now: number) {

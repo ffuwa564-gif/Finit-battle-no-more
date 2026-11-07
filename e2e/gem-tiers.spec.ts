@@ -28,7 +28,7 @@ async function securedChest(page: Page, claimInFixture = false) {
       {id:'tier-old-250',defId:'night-dew',variant:'pure',roll:{power:100,trait:'mercy',value:50}},
     ];
     save.memoryGems.seen = ['night-dew']; save.memoryGems.dust.grave = 1000;
-    save.completedDungeonIds = content.dungeons.filter(dungeon => !dungeon.towerFloor).map(dungeon => dungeon.id);
+    save.completedDungeonIds = content.dungeons.filter(dungeon => !dungeon.rebirth && !dungeon.towerFloor).map(dungeon => dungeon.id);
     save.settings.reducedMotion = true;
     const dungeon = content.dungeons.filter(dungeon => dungeon.chapterId && dungeonGemFamily(dungeon) === 'grave' && (dungeon.gemLoot?.tier5Chance ?? 0) > 0)
       .sort((a,b) => b.gemLoot!.tier5Chance-a.gemLoot!.tier5Chance)[0]!;

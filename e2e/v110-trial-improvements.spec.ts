@@ -50,7 +50,7 @@ for(const language of ['ja','en'] as const)for(const width of [320,390]) {
       const {content}=await import('/src/content/index.ts');const {createBattle,advanceReplay}=await import('/src/domain/engine.ts');
       const {loadSave,persistSave}=await import('/src/platform/save.ts');const s=(await loadSave())!,revision=s.revision;
       s.partyIds=['liora','noelle','seris','elaine'];s.leaderId='noelle';s.settings.reducedMotion=true;
-      s.novels={seen:(content.novels??[]).map(n=>n.id)};
+      s.novels={seen:(content.novels??[]).filter(n=>n.trigger.kind!=='rebirth').map(n=>n.id)};
       let b=createBattle(content,s.partyIds,s.leaderId,'silent-cathedral',2,20261101,'command-preview');
       while(b.phase==='playing')b=advanceReplay(b,content);s.battle=b;s.revision++;await persistSave(s,revision);
     });

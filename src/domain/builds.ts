@@ -24,7 +24,7 @@ export interface BuildFarmSource {
   id: string; kind: 'dungeon' | 'craft'; name: string; description: string; family: GemFamily;
   dungeonId?: string; unlockDungeonId?: string; locked: boolean; lockReason: string | null; bossOnly: boolean;
   craftCost?: number; waves?: number; towerFloor?: number; difficulty?: number;
-  maxTier: GemTier; featured: boolean; tierChances: { tier4: number; tier5: number; tier6: number };
+  maxTier: GemTier; featured: boolean; tierChances: { tier4: number; tier5: number; tier6: number; tier7?:number };
   targetTier?: GemTier; targetPowerTier?: GemTier; targetTraitTier?: GemTier;
 }
 
@@ -135,7 +135,7 @@ export function gemMeetsBuildTarget(gem: MemoryGem, target: BuildGemTarget): boo
 
 function targetValueTier(value: number): GemTier | undefined {
   if (!Number.isSafeInteger(value) || value < 0) return undefined;
-  return ([1,2,3,4,5,6] as GemTier[]).find(tier => TIER_RANGES[tier][1] >= value);
+  return ([1,2,3,4,5,6,7] as GemTier[]).find(tier => TIER_RANGES[tier][1] >= value);
 }
 
 /** Tiers are acquired per affix, never by the maximum badge across the whole stone. */
@@ -149,10 +149,10 @@ export function targetNeedsNewTier(gem: MemoryGem, target: BuildGemTarget): bool
     || Boolean(trait && (target.value ?? 0) > (trait === 'none' ? 0 : traitLimit));
 }
 
-function canDropTargetValue(value: number, tier4: number, tier5: number, tier6: number): boolean {
+function canDropTargetValue(value: number, tier4: number, tier5: number, tier6: number,tier7=0): boolean {
   if (!targetValueTier(value)) return false;
   return value <= 100 || tier4 > 0 && value <= TIER_RANGES[4][1]
-    || tier5 > 0 && value <= TIER_RANGES[5][1] || tier6 > 0 && value <= TIER_RANGES[6][1];
+    || tier5 > 0 && value <= TIER_RANGES[5][1] || tier6 > 0 && value <= TIER_RANGES[6][1] || tier7>0&&value<=TIER_RANGES[7][1];
 }
 
 function chooseCharacters(content: Content, save: GameSave, slots: BuildSlot[]): (string | null)[] {
@@ -266,15 +266,15 @@ export function findGemSources(content: Content, save: GameSave, defId: string, 
     if (fixedCraft || !dungeon.published || dungeon.kind === 'trial' || !dungeon.waves.length || dungeonGemFamily(dungeon) !== definition.family) return false;
     if (!target) return true;
     const profile = dungeonGemLootProfile(dungeon);
-    return canDropTargetValue(target.power,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0)
-      && (!trait || canDropTargetValue(target.value ?? 0,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0));
+    return canDropTargetValue(target.power,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0,profile.tier7Chance??0)
+      && (!trait || canDropTargetValue(target.value ?? 0,profile.tier4Chance,profile.tier5Chance,profile.tier6Chance ?? 0,profile.tier7Chance??0));
   }).map(dungeon => {
     const lockReason = dungeonLock(dungeon,save,content);
     const unlockDungeonId = lockReason ? reachablePrerequisite(content,save,dungeon.id) : undefined;
     const profile = dungeonGemLootProfile(dungeon);
-    const maxTier: GemTier = (profile.tier6Chance ?? 0) > 0 ? 6 : profile.tier5Chance > 0 ? 5 : profile.tier4Chance > 0 ? 4 : 3;
+    const maxTier: GemTier = (profile.tier7Chance??0)>0?7:(profile.tier6Chance ?? 0) > 0 ? 6 : profile.tier5Chance > 0 ? 5 : profile.tier4Chance > 0 ? 4 : 3;
     return { id:dungeon.id,kind:'dungeon',name:dungeon.name,description:highTarget ? '対象のTierが出現する踏破宝箱から抽選。効力と特性のTierは別々に抽選され、狙った石の確定入手ではありません。' : bossOnly ? '同じ系統の踏破宝箱から抽選。狙った石の確定入手ではありません。' : '同じ系統の宝箱から抽選。狙った石の確定入手ではありません。',
-      maxTier,featured:profile.featuredDefId === defId,tierChances:{tier4:profile.tier4Chance,tier5:profile.tier5Chance,tier6:profile.tier6Chance ?? 0},...targetInfo,
+      maxTier,featured:profile.featuredDefId === defId,tierChances:{tier4:profile.tier4Chance,tier5:profile.tier5Chance,tier6:profile.tier6Chance ?? 0,...(profile.tier7Chance?{tier7:profile.tier7Chance}:{})},...targetInfo,
       family:definition.family,dungeonId:dungeon.id,...(unlockDungeonId ? {unlockDungeonId} : {}),locked:Boolean(lockReason),lockReason,bossOnly,waves:dungeon.waves.length,difficulty:dungeonDifficulty(dungeon,content),...(dungeon.towerFloor ? {towerFloor:dungeon.towerFloor} : {}) };
   });
   sources.sort((a,b) => Number(a.locked)-Number(b.locked) || Number(Boolean(a.towerFloor))-Number(Boolean(b.towerFloor)) || (a.difficulty ?? 0)-(b.difficulty ?? 0) || Number(b.featured)-Number(a.featured) || (a.waves ?? 0)-(b.waves ?? 0) || (a.towerFloor ?? 0)-(b.towerFloor ?? 0) || a.id.localeCompare(b.id));

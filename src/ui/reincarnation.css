@@ -1,0 +1,14 @@
+.reincarnation-entry {width:100%;margin:12px 0;gap:10px;min-height:44px;}
+.reincarnation-hub {display:grid;gap:16px;min-width:0;}
+.reincarnation-hub p {font-size:13px;line-height:1.9;overflow-wrap:anywhere;}
+.reincarnation-hub h3 {display:flex;align-items:center;gap:9px;}
+.reincarnation-stage {border:1px solid #b1a0c550;border-radius:14px;padding:14px;margin:12px 0;background:#111c2a;}
+.reincarnation-stage h4 {font-size:16px;margin:8px 0;}
+.reincarnation-actions,.reincarnation-confirm {display:grid;gap:9px;margin-top:12px;}
+.reincarnation-actions {grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.reincarnation-actions .button {min-height:44px;white-space:normal;}
+.reincarnation-lock {display:flex;gap:8px;align-items:center;}
+.reincarnation-forge {display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:12px 0;}
+.reincarnation-forge label {display:grid;gap:7px;font-size:13px;min-width:0;}
+.reincarnation-forge select {width:100%;min-height:44px;min-width:0;background:#152232;color:#eee1c9;border:1px solid #9d98ac;border-radius:8px;padding:8px;font-size:14px;}
+

@@ -1,0 +1,1445 @@
+{
+  "scope": "Finite candidate exploration, not a proof of global optimality.",
+  "results": [
+    {
+      "stage": "rebirth-1",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "mireille",
+            "liora",
+            "noelle"
+          ],
+          "leader": "liora"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 3,
+      "wins": 8,
+      "seeds": 8,
+      "meanRounds": 32.25,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:rare": 1,
+            "pilgrim:common": 1,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40002,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40003,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40004,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40005,
+          "win": true,
+          "rounds": 36,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 4,
+          "guards": 3,
+          "materials": {
+            "pilgrim:rare": 1,
+            "pilgrim:common": 1,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40006,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40007,
+          "win": true,
+          "rounds": 36,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 4,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40008,
+          "win": true,
+          "rounds": 31,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:epic": 1,
+            "palimpsest:common": 1
+          }
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-1",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 3,
+      "wins": 8,
+      "seeds": 8,
+      "meanRounds": 30,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:rare": 1,
+            "pilgrim:common": 1,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40002,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40003,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40004,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40005,
+          "win": true,
+          "rounds": 30,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 4,
+          "materials": {
+            "pilgrim:rare": 1,
+            "pilgrim:common": 1,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40006,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40007,
+          "win": true,
+          "rounds": 30,
+          "potions": 0,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 4,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:rare": 1,
+            "palimpsest:common": 1
+          }
+        },
+        {
+          "seed": 40008,
+          "win": true,
+          "rounds": 30,
+          "potions": 1,
+          "survivors": 4,
+          "breaks": 3,
+          "guards": 3,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:epic": 1,
+            "palimpsest:common": 1
+          }
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-2",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "astraea",
+            "athena",
+            "selene",
+            "vespera"
+          ],
+          "leader": "astraea"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 6,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-2",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "astraea",
+            "athena",
+            "selene",
+            "vespera"
+          ],
+          "leader": "astraea"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 6,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 6,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-3",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "seris",
+            "noelle",
+            "elaine",
+            "liora"
+          ],
+          "leader": "liora"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 11.125,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 13,
+          "potions": 5,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 13,
+          "potions": 5,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 13,
+          "potions": 5,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 10,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 10,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 10,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 10,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 10,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-3",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "seris-awakened",
+            "athena",
+            "selene",
+            "evelyn"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "balanced"
+      },
+      "trainingWins": 3,
+      "wins": 8,
+      "seeds": 8,
+      "meanRounds": 45,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:rare": 1,
+            "clockwork:common": 1,
+            "moon:common": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40002,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:common": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40003,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:common": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40004,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:rare": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40005,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:rare": 1,
+            "clockwork:common": 1,
+            "moon:rare": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40006,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:rare": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40007,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:rare": 1,
+            "palimpsest:common": 3
+          }
+        },
+        {
+          "seed": 40008,
+          "win": true,
+          "rounds": 45,
+          "potions": 5,
+          "survivors": 2,
+          "breaks": 2,
+          "guards": 7,
+          "materials": {
+            "clockwork:common": 2,
+            "moon:epic": 1,
+            "palimpsest:common": 3
+          }
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-4",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "balanced"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 26,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 26,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 3,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-4",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 3,
+      "wins": 8,
+      "seeds": 8,
+      "meanRounds": 60.75,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:rare": 1,
+            "moon:common": 1,
+            "clockwork:common": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40002,
+          "win": true,
+          "rounds": 57,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 1,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:common": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40003,
+          "win": true,
+          "rounds": 57,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 1,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:common": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40004,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:rare": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40005,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:rare": 1,
+            "moon:common": 1,
+            "clockwork:rare": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40006,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:rare": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40007,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:rare": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        },
+        {
+          "seed": 40008,
+          "win": true,
+          "rounds": 62,
+          "potions": 5,
+          "survivors": 4,
+          "breaks": 2,
+          "guards": 10,
+          "materials": {
+            "moon:common": 2,
+            "clockwork:epic": 1,
+            "palimpsest:common": 4,
+            "palimpsest:rare": 1
+          }
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-5",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 15,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 15,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 15,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-5",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "athena"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 15,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 15,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 15,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 15,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-6",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "astraea",
+            "athena",
+            "selene",
+            "vespera"
+          ],
+          "leader": "astraea"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 21.875,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 23,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 21,
+          "potions": 4,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 21,
+          "potions": 4,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 21,
+          "potions": 4,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 21,
+          "potions": 4,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 21,
+          "potions": 4,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 24,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 23,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-6",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "mireille",
+            "liora",
+            "noelle"
+          ],
+          "leader": "liora"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "survival"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 20.25,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 21,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 21,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 21,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 19,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 19,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 19,
+          "potions": 1,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 21,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 21,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 1,
+          "materials": {}
+        }
+      ]
+    }
+  ]
+}

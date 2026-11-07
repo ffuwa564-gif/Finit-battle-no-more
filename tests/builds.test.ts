@@ -241,7 +241,7 @@ describe('honest build farming destinations', () => {
       const dungeon = content.dungeons.find(dungeon => dungeon.id === source.dungeonId)!;
       expect(dungeonGemFamily(dungeon)).toBe('clock');
       expect(dungeonGemLootProfile(dungeon).tier6Chance!).toBeGreaterThan(0);
-      expect(source.maxTier).toBe(6); expect(source.targetTier).toBe(6);
+      expect(source.maxTier).toBeGreaterThanOrEqual(6); expect(source.targetTier).toBe(6);
       expect(source.targetPowerTier).toBe(6); expect(source.targetTraitTier).toBe(3);
       expect(source.featured).toBe(dungeonGemLootProfile(dungeon).featuredDefId === 'echo-shard');
     }
@@ -253,8 +253,8 @@ describe('honest build farming destinations', () => {
     const save = createInitialSave(content);
     const target = {defId:'echo-shard',variant:'pure' as const,power:0,trait:'chain' as const,value:220};
     const sources = findGemSources(content,save,'echo-shard',target);
-    expect(sources.length).toBeGreaterThan(0); expect(sources.every(source => source.maxTier === 6)).toBe(true);
-    expect(findGemSources(content,save,'echo-shard',{...target,power:240})).toEqual([]);
+    expect(sources.length).toBeGreaterThan(0); expect(sources.every(source => source.maxTier >= 6)).toBe(true);
+    expect(findGemSources(content,save,'echo-shard',{...target,power:300})).toEqual([]);
     expect(findGemSources(content,save,'echo-shard',{...target,trait:'none'})).toEqual([]);
     expect(findGemSources(content,save,'pale-ward',{...target,defId:'pale-ward'})).toEqual([]);
     const swift = findGemSources(content,save,'echo-shard',{...target,variant:'swift',value:0}).find(source => source.kind === 'craft')!;

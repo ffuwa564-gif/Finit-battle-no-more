@@ -39,7 +39,7 @@ test('the atlas includes all chapters and unlocked canonical scenes without reve
  await dialog.getByRole('button',{name:/第7章.*ふたりの署名/}).click();await expect(dialog).toContainText('契生石の点検');
  await dialog.getByRole('button',{name:'物語',exact:true}).click();await expect(dialog).toContainText('序章');await expect(dialog).not.toContainText('祈りを預けずに');
  await dialog.getByRole('button',{name:'閉じる',exact:true}).click();
- await page.evaluate(async()=>{const{content}=await import('/src/content/index.ts');const{loadSave,persistSave}=await import('/src/platform/save.ts');const s=(await loadSave())!,r=s.revision;s.completedDungeonIds=content.dungeons.map(d=>d.id);s.novels={seen:content.novels!.map(n=>n.id)};s.revision++;await persistSave(s,r);});
+ await page.evaluate(async()=>{const{content}=await import('/src/content/index.ts');const{loadSave,persistSave}=await import('/src/platform/save.ts');const s=(await loadSave())!,r=s.revision;s.completedDungeonIds=content.dungeons.filter(d=>!d.rebirth).map(d=>d.id);s.novels={seen:content.novels!.filter(n=>n.trigger.kind!=='rebirth').map(n=>n.id)};s.revision++;await persistSave(s,r);});
  await page.reload();await enterGame(page);await page.getByRole('button',{name:'探索地点の一覧',exact:true}).click();await dialog.getByRole('button',{name:'物語',exact:true}).click();
  const total=await page.evaluate(async()=> (await import('/src/content/index.ts')).content.novels!.filter(n=>n.trigger.kind!=='intro').length);await expect(dialog.locator('.world-index-place')).toHaveCount(total);
  await dialog.getByRole('button',{name:/祈りを預けずに/}).click();

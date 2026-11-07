@@ -6,7 +6,7 @@ async function saved(page:Page){return page.evaluate(async()=>(await(await impor
 async function nativeResultFixture(page:Page){return page.evaluate(async()=>{
  const{content}=await import('/src/content/index.ts'),{applyCommand}=await import('/src/application/game.ts'),{loadSave,persistSave}=await import('/src/platform/save.ts');
  let s=(await loadSave())!,revision=s.revision;
- s.novels={seen:(content.novels??[]).map(scene=>scene.id)};s.settings.reducedMotion=true;
+ s.novels={seen:(content.novels??[]).filter(scene=>scene.trigger.kind!=='rebirth').map(scene=>scene.id)};s.settings.reducedMotion=true;
  const act=(c:Parameters<typeof applyCommand>[1],now:number)=>{s=applyCommand(s,c,content,{now});};
  const replay=(now:number)=>{let n=0;while(s.battle?.phase==='playing'){if(n++>1000)throw Error('replay limit');act({type:'replay'},now);}};
  act({type:'depart',dungeonId:'silent-cathedral',potions:2},1000);replay(1000);

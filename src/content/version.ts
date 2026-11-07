@@ -1,5 +1,5 @@
-/** Public 1.29 release; isolated flags retain historical research reproduction. */
-export const PUBLIC_RELEASE={appVersion:'1.29.0',contentVersion:'v1.29-r1',rulesVersion:'4',schemaVersion:1} as const;
+/** Public 1.30 release; isolated flags retain historical research reproduction. */
+export const PUBLIC_RELEASE={appVersion:'1.30.0',contentVersion:'v1.30-r1',rulesVersion:'4',schemaVersion:1} as const;
 export const SAKUYA_RESEARCH_RELEASE={appVersion:'1.12.0-sakuya-research.2',contentVersion:'sakuya-research-v2',rulesVersion:'2-sakuya-research-v2',schemaVersion:1} as const;
 const nodeFlag=typeof process==='undefined'?undefined:process.env.VITE_SAKUYA_RESEARCH;
 export const SAKUYA_RESEARCH_ENABLED=import.meta.env?.VITE_SAKUYA_RESEARCH==='1'||nodeFlag==='1';
@@ -17,4 +17,4 @@ const lisetteNodeFlag=typeof process==='undefined'?undefined:process.env.VITE_LI
 export const LISETTE_RESEARCH_ENABLED=import.meta.env?.VITE_LISETTE_RESEARCH==='1'||lisetteNodeFlag==='1';
 if([SAKUYA_RESEARCH_ENABLED,MIETTE_RESEARCH_ENABLED,TIKKA_RESEARCH_ENABLED,NOELLE_RESEARCH_ENABLED,LISETTE_RESEARCH_ENABLED].filter(Boolean).length>1)throw new Error('研究仕様は同時に有効化できません。');
 export const RELEASE=LISETTE_RESEARCH_ENABLED?LISETTE_RESEARCH_RELEASE:NOELLE_RESEARCH_ENABLED?NOELLE_RESEARCH_RELEASE:TIKKA_RESEARCH_ENABLED?TIKKA_RESEARCH_RELEASE:MIETTE_RESEARCH_ENABLED?MIETTE_RESEARCH_RELEASE:SAKUYA_RESEARCH_ENABLED?SAKUYA_RESEARCH_RELEASE:PUBLIC_RELEASE;
-export const RELEASE_LABEL=SAKUYA_RESEARCH_ENABLED||MIETTE_RESEARCH_ENABLED||TIKKA_RESEARCH_ENABLED||NOELLE_RESEARCH_ENABLED||LISETTE_RESEARCH_ENABLED?'研究版・未公開仕様':'1.29';
+export const RELEASE_LABEL=SAKUYA_RESEARCH_ENABLED||MIETTE_RESEARCH_ENABLED||TIKKA_RESEARCH_ENABLED||NOELLE_RESEARCH_ENABLED||LISETTE_RESEARCH_ENABLED?'研究版・未公開仕様':'1.30';

@@ -61,6 +61,20 @@ describe('living world story and quiet days', () => {
         expect(s.seed).toBe(before.seed);
         expect(storyActors(s, def).find(a => a.actorId === 'guest')!.hub.id).toBe('hub-infirmary');
     });
+    it('replays the complete current-loop graph after transfer without using lifetime clears as shortcuts',()=>{
+        let s=begin();s.completedDungeonIds=def.chapters.flatMap(c=>c.dungeonIds);s.worldStory!.completed=def.nodes.map(n=>n.id);s.novels={seen:[]};
+        s=applyCommand(s,{type:'reincarnate'},content);s=applyCommand(s,{type:'novelFinish'},content);let reclears=0;
+        for(let step=0;step<220;step++){
+            const next=storyNext(s,def);if(!next)break;
+            if(next.recipeId){s.industry??=emptyIndustry(1000);s.industry.stock[next.recipeId]=1;}
+            if(next.node)s=finish(s,next.node);
+            else{const dungeon=content.dungeons.find(d=>d.id===next.dungeonId)!;expect(dungeonLock(dungeon,s,content),dungeon.id).toBeNull();s.worldStory!.dungeonProgress!.push(dungeon.id);reclears++;}
+            // Dungeon victories are graph fixtures; real combat and claim accounting have separate tests.
+            expect(()=>assertSaveCompatibility(s,content)).not.toThrow();
+        }
+        expect(reclears).toBeGreaterThan(20);expect(s.worldStory!.completed).toContain('seven-breakfast');
+        s=applyCommand(s,{type:'reincarnate'},content);expect(s.reincarnation!.count).toBe(2);
+    });
     it('keeps quiet visits repeatable, rotates daily lines, and never grants resources or advances chapter goals', () => { let s = throughIntroduction(); s = finish(s, def.nodes.find(n => n.id === 'c1-job')!); const home = def.nodes.find(n => n.id === 'home-liora')!; s = finish(s, home); const original = structuredClone(s), line = nodeLines(home, s.worldStory!)[0].text.ja; s = finish(s, home); expect(nodeLines(home, s.worldStory!)[0].text.ja).not.toBe(line); expect(s.worldStory!.completed).toEqual(original.worldStory!.completed); expect(s.gold).toBe(original.gold); expect(s.stones).toBe(original.stones); expect(storyChapter(s.worldStory!, def)?.number).toBe(1); });
     it('persists a conversation mid-line and a notification acknowledgement in backups', () => { let s = begin(); s = arrive(s, def.nodes[0]); s = applyCommand(s, { type: 'worldTalkNext' }, content); const atOne = structuredClone(s); s = applyCommand(s, { type: 'worldTalkBack' }, content); expect(s.worldStory!.active!.line).toBe(0); expect(() => applyCommand(s, { type: 'worldTalkBack' }, content)).toThrow(); s = applyCommand(s, { type: 'worldTalkNext' }, content); const restored = decodeBackup(encodeBackup(s, content), content).save; expect(restored.worldStory).toEqual(atOne.worldStory); expect(storyText({ ja: '{name}、待ってる。', en: 'Waiting, {name}.' }, s.worldStory!.profile, 'en')).toBe('Waiting, ミオ.'); });
     it('never resets an old save or pretends prior conversations were read when joining a later chapter', () => { const old = createInitialSave(content, 55); old.completedDungeonIds = content.chapters!.slice(0, 2).flatMap(c => c.dungeonIds); old.gold = 12345; const s = begin('current', old); expect(s.worldStory!.carriedChapters).toEqual([1, 2]); expect(s.worldStory!.completed).toEqual([]); expect(storyChapter(s.worldStory!, def)?.number).toBe(3); expect(s.gold).toBe(old.gold); expect(old.worldStory).toBeUndefined(); expect(() => assertSaveCompatibility(s, content)).not.toThrow(); });

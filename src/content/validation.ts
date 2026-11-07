@@ -60,11 +60,17 @@ export function validateContent(content: Content): string[] {
 
   }
   allIds(content.novels ?? [], 'novels');
+  if(content.reincarnation){const r=content.reincarnation;
+    reject(Boolean(content.worldStory)&&!content.worldStory?.nodes.some(n=>n.id===r.endingNodeId&&n.continuation), 'reincarnation: missing completed ending');
+    reject(!r.dungeonIds.length||new Set(r.dungeonIds).size!==r.dungeonIds.length||r.dungeonIds.some((id,i)=>!content.dungeons.some(d=>d.id===id&&d.published&&d.rebirth&&d.previousDungeonId===(i?r.dungeonIds[i-1]:undefined))), 'reincarnation: invalid route chain');
+    reject(!content.novels?.some(s=>s.id===r.introSceneId&&s.trigger.kind==='rebirth'&&!s.trigger.dungeonId)||r.dungeonIds.some(id=>!content.novels?.some(s=>s.id===`${id}-after`&&s.trigger.kind==='rebirth'&&s.trigger.dungeonId===id)), 'reincarnation: missing route records');
+  }
   const novelTriggers = new Set<string>();
   for (const scene of content.novels ?? []) {
     reject(!plain(scene.title) || !Array.isArray(scene.pages) || !scene.pages.length || scene.pages.length > 200, `novels/${scene.id}: title and 1..200 pages required`);
-    const trigger = scene.trigger.kind === 'intro' ? 'intro' : scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
+    const trigger = scene.trigger.kind==='rebirth'?`rebirth:${scene.trigger.dungeonId??'intro'}`:scene.trigger.kind === 'intro' ? 'intro' : scene.trigger.kind === 'opening' ? 'opening' : scene.trigger.kind === 'dungeon-clear' ? scene.trigger.dungeonId : scene.trigger.kind === 'map' ? `map:${scene.id}` : '';
     reject(!trigger || novelTriggers.has(trigger), `novels/${scene.id}: unique trigger required`); novelTriggers.add(trigger);
+    if(scene.trigger.kind==='rebirth')reject(!content.reincarnation||scene.trigger.dungeonId!==undefined&&!content.reincarnation.dungeonIds.includes(scene.trigger.dungeonId),`novels/${scene.id}: invalid reincarnation record`);
     if (scene.trigger.kind === 'dungeon-clear' || scene.trigger.kind === 'map') { const stageId = scene.trigger.dungeonId; reject(!content.dungeons.some(stage => stage.id === stageId && stage.published && stage.chapterId && (stage.kind ?? 'normal') === 'normal'), `novels/${scene.id}: published normal chapter stage required`); }
     if (scene.trigger.kind === 'map') {
       const map = scene.mapEncounter;
@@ -206,9 +212,10 @@ export function validateContent(content: Content): string[] {
     if (dungeon.gemLoot) {
       const loot = dungeon.gemLoot;
       const featured = GEM_DEFINITIONS.find(def => def.id === loot.featuredDefId);
-      const tier6Chance = loot.tier6Chance === undefined ? 0 : loot.tier6Chance;
-      reject(dungeon.kind === 'trial' || ![loot.tier4Chance, loot.tier5Chance, tier6Chance].every(rate => Number.isFinite(rate) && rate >= 0 && rate <= 1) || loot.tier4Chance + loot.tier5Chance + tier6Chance > 1 || Boolean(loot.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))), `dungeons/${dungeon.id}: invalid memory stone loot profile`);
+      const tier6Chance = loot.tier6Chance === undefined ? 0 : loot.tier6Chance,tier7Chance=loot.tier7Chance??0;
+      reject(dungeon.kind === 'trial' || ![loot.tier4Chance, loot.tier5Chance, tier6Chance,tier7Chance].every(rate => Number.isFinite(rate) && rate >= 0 && rate <= 1) || loot.tier4Chance + loot.tier5Chance + tier6Chance+tier7Chance > 1 || tier7Chance>0&&!dungeon.rebirth || Boolean(loot.featuredDefId && (!featured || featured.family !== dungeonGemFamily(dungeon))), `dungeons/${dungeon.id}: invalid memory stone loot profile`);
     }
+    if(dungeon.rebirth)reject(!content.reincarnation?.dungeonIds.includes(dungeon.id)||dungeon.kind!=='normal'||Boolean(dungeon.chapterId||dungeon.eventId||dungeon.towerFloor)||!dungeon.enemyScale,`dungeons/${dungeon.id}: invalid reincarnation stage`);
     if (dungeon.towerFloor !== undefined) {
       const floor = dungeon.towerFloor;
       reject(!Number.isSafeInteger(floor) || floor < 1 || floor > IVORY_TOWER_FLOORS || dungeon.id !== ivoryTowerId(floor) || dungeon.kind !== 'normal' || Boolean(dungeon.chapterId || dungeon.eventId || dungeon.storyId) || !dungeon.enemyScale || dungeon.previousDungeonId !== (floor === 1 ? 'silent-cathedral' : ivoryTowerId(floor - 1)), `dungeons/${dungeon.id}: invalid ivory tower floor`);
@@ -217,8 +224,8 @@ export function validateContent(content: Content): string[] {
       const limits = dungeon.towerBattle;
       reject(dungeon.towerFloor === undefined || ![limits.healLimit, limits.barrierLimit].every(limit => Number.isSafeInteger(limit) && limit >= 0 && limit <= 10), `dungeons/${dungeon.id}: invalid tower support budget`);
     }
-    if (dungeon.enemyScale) reject((dungeon.towerFloor === undefined && !dungeon.fieldLesson) || Object.values(dungeon.enemyScale).length !== 3 || ![dungeon.enemyScale.hp, dungeon.enemyScale.attack, dungeon.enemyScale.defense].every(value => Number.isFinite(value) && value > 0 && value <= 10000), `dungeons/${dungeon.id}: invalid tower enemy scale`);
-    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || (dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
+    if (dungeon.enemyScale) reject((dungeon.towerFloor === undefined && !dungeon.fieldLesson && !dungeon.rebirth) || Object.values(dungeon.enemyScale).length !== 3 || ![dungeon.enemyScale.hp, dungeon.enemyScale.attack, dungeon.enemyScale.defense].every(value => Number.isFinite(value) && value > 0 && value <= 10000), `dungeons/${dungeon.id}: invalid tower enemy scale`);
+    if (dungeon.tacticalCommands !== undefined) reject(dungeon.tacticalCommands !== true || (dungeon.kind !== 'trial' && dungeon.towerFloor === undefined && !dungeon.rebirth) || (!dungeon.bossStrike && !dungeon.bossClock), `dungeons/${dungeon.id}: tactical commands require a telegraphed trial`);
     if (dungeon.coordination) {
       const rule = dungeon.coordination;
       reject(dungeon.kind !== 'trial' || Boolean(dungeon.bossClock || dungeon.bossBits) || !Number.isSafeInteger(rule.bonusPercent) || rule.bonusPercent < 1 || rule.bonusPercent > 100 || !dungeon.waves.some(wave => wave.some(enemy => enemy.boss)), `dungeons/${dungeon.id}: invalid coordination trial`);
@@ -237,7 +244,7 @@ export function validateContent(content: Content): string[] {
     }
     if (dungeon.eventId) reject(dungeon.kind !== 'event', `dungeons/${dungeon.id}: boss event must have event kind`);
     if (dungeon.eventId) reject(!eventIds.has(dungeon.eventId) || !content.events?.some(event => event.id === dungeon.eventId && event.dungeonIds.includes(dungeon.id)), `dungeons/${dungeon.id}: unknown event`);
-    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.number >= 3) ? 800 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
+    if (dungeon.bossScale) reject((!dungeon.eventId && !dungeon.storyId && !dungeon.chapterId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined && !dungeon.rebirth) || !Number.isSafeInteger(dungeon.bossScale.hp) || dungeon.bossScale.hp < 100 || dungeon.bossScale.hp > (dungeon.kind === 'trial' ? 10000 : 2000) || !Number.isSafeInteger(dungeon.bossScale.attack) || dungeon.bossScale.attack < 25 || dungeon.bossScale.attack > (dungeon.kind === 'trial' ? 1000 : chapters.some(chapter => chapter.id === dungeon.chapterId && chapter.number >= 3) ? 800 : 300), `dungeons/${dungeon.id}: invalid event boss scale`);
     if (dungeon.bossStrike) {
       const strike = dungeon.bossStrike;
       const allowed = dungeon.kind === 'trial' ? dungeon.tacticalCommands === true || Boolean(dungeon.coordination)
@@ -250,7 +257,7 @@ export function validateContent(content: Content): string[] {
     }
     if (dungeon.bossClock) {
       const clock = dungeon.bossClock;
-      reject((dungeon.kind !== 'trial' && dungeon.towerFloor === undefined) || (dungeon.towerFloor === undefined && dungeon.waves.length !== 1) || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
+      reject((dungeon.kind !== 'trial' && dungeon.towerFloor === undefined && !dungeon.rebirth) || (dungeon.towerFloor === undefined && dungeon.waves.length !== 1) || Boolean(dungeon.bossBits || dungeon.bossStrike) || ![clock.shield, clock.brokenDefensePercent, clock.deadline, clock.finalePower].every(Number.isSafeInteger) || clock.shield < 1 || clock.shield > 10000 || clock.brokenDefensePercent < 1 || clock.brokenDefensePercent > 99 || clock.deadline < 5 || clock.deadline > 40 || clock.finalePower < 1000 || clock.finalePower > 100000 || !plain(clock.shieldName) || !plain(clock.finaleName), `dungeons/${dungeon.id}: invalid boss clock`);
     }
     if (dungeon.bossBits) {
       const bits = dungeon.bossBits;
@@ -266,8 +273,8 @@ export function validateContent(content: Content): string[] {
       for (const enemy of wave) {
         const char = content.characters.find(item => item.id === enemy.characterId);
         reject(!characterIds.has(enemy.characterId), `dungeons/${dungeon.id}: missing enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.published || !((dungeon.towerFloor !== undefined) || (dungeon.kind === 'trial' && char.rarity === 'SSR' && (char.origin.includes('gacha') || char.origin.includes('trial'))) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
-        if (dungeon.published && char) reject(!char.encounterArtId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined, `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
+        if (dungeon.published && char) reject(!char.published || !((dungeon.towerFloor !== undefined) || dungeon.rebirth || (dungeon.kind === 'trial' && char.rarity === 'SSR' && (char.origin.includes('gacha') || char.origin.includes('trial'))) || char.origin.includes('recruit') || (char.origin.includes('awakening') && Boolean(dungeon.storyId) && Boolean(content.awakenings?.some(def => def.awakenedId === char.id))) || (char.origin.includes('event') && content.events?.some(event => event.id === dungeon.eventId && [event.normalId, event.awakenedId].includes(char.id)))), `dungeons/${dungeon.id}: unavailable enemy ${enemy.characterId}`);
+        if (dungeon.published && char) reject(!char.encounterArtId && dungeon.kind !== 'trial' && dungeon.towerFloor === undefined && !dungeon.rebirth, `dungeons/${dungeon.id}: missing encounter scene for ${char.id}`);
         reject(Boolean(enemy.boss) && dungeon.kind !== 'trial' && index !== dungeon.waves.length - 1, `dungeons/${dungeon.id}: boss before final wave`);
       }
     });
@@ -328,7 +335,7 @@ export function validateContent(content: Content): string[] {
     if (stage.storyId) reject(!content.storylines?.some(story => story.id === stage.storyId) || stage.kind === 'event', `dungeons/${stage.id}: valid normal storyline required`);
     if (stage.requiresOwnedIds) reject(stage.requiresOwnedIds.some(id => !awakeningForms.has(id)), `dungeons/${stage.id}: invalid awakened ownership lock`);
     if (stage.bossLoot) {
-      reject((!stage.storyId && !stage.chapterId) || !stage.bossLoot.guaranteed.length || stage.bossLoot.guaranteed.some(cost => !validCost(cost)), `dungeons/${stage.id}: invalid guaranteed boss loot`);
+      reject((!stage.storyId && !stage.chapterId && !stage.rebirth) || !stage.bossLoot.guaranteed.length || stage.bossLoot.guaranteed.some(cost => !validCost(cost)), `dungeons/${stage.id}: invalid guaranteed boss loot`);
       if (stage.bossLoot.bonus) reject(!validCost(stage.bossLoot.bonus.reward) || !Number.isInteger(stage.bossLoot.bonus.chance) || stage.bossLoot.bonus.chance < 1 || stage.bossLoot.bonus.chance > 100, `dungeons/${stage.id}: invalid bonus boss loot`);
     }
   }

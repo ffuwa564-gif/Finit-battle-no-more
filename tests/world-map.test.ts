@@ -10,8 +10,8 @@ describe('world map travel', () => {
   const completed=content.dungeons.map(d=>d.id),places=worldLocations(content,completed);
   expect(worldRegions(content)).toHaveLength(content.chapters!.length);
   expect(new Set(worldRegions(content).map(r=>`${r.x},${r.y}`)).size).toBe(content.chapters!.length);
-  for(const d of content.dungeons.filter(d=>d.published&&!d.towerFloor))expect(places.some(p=>p.dungeonId===d.id),d.id).toBe(true);
-  for(const scene of content.novels!)expect(places.filter(p=>p.sceneId===scene.id),scene.id).toHaveLength(scene.trigger.kind==='intro'?0:1);
+  for(const d of content.dungeons.filter(d=>d.published&&!d.towerFloor&&!d.rebirth))expect(places.some(p=>p.dungeonId===d.id),d.id).toBe(true);
+  for(const scene of content.novels!)expect(places.filter(p=>p.sceneId===scene.id),scene.id).toHaveLength(['intro','rebirth'].includes(scene.trigger.kind)?0:1);
   for(const p of places){expect(p.x).toBeGreaterThanOrEqual(0);expect(p.x).toBeLessThanOrEqual(1);expect(p.y).toBeGreaterThanOrEqual(0);expect(p.y).toBeLessThanOrEqual(1);}
  });
  it('caps travel time and interpolates the actual route endpoints',()=>{

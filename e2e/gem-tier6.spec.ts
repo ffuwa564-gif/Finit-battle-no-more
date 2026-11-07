@@ -26,7 +26,7 @@ test('secures an eligible Tier 6 chest and preserves its tier through equipment,
       {id:'tier6-old-5',defId:'night-dew',variant:'pure',roll:{power:179,trait:'mercy',value:179}},
     ];
     save.memoryGems.seen = ['night-dew']; save.memoryGems.dust.grave = 1000;
-    save.completedDungeonIds = content.dungeons.filter(dungeon => !dungeon.towerFloor).map(dungeon => dungeon.id);
+    save.completedDungeonIds = content.dungeons.filter(dungeon => !dungeon.rebirth && !dungeon.towerFloor).map(dungeon => dungeon.id);
     save.settings.reducedMotion = true;
     const dungeon = content.dungeons.filter(dungeon => dungeon.chapterId && dungeonGemFamily(dungeon) === 'grave' && (dungeon.gemLoot?.tier6Chance ?? 0)>0)
       .sort((a,b) => b.gemLoot!.tier6Chance!-a.gemLoot!.tier6Chance!)[0];

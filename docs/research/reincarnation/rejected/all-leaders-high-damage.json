@@ -1,0 +1,221 @@
+{
+  "scope": "Finite candidate exploration, not a proof of global optimality.",
+  "results": [
+    {
+      "stage": "rebirth-6",
+      "power": 230,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "eos-standard"
+        },
+        "stones": [
+          "wick-stone",
+          "pale-ward",
+          "hollow-lantern",
+          "dawn-crown"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 17.75,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 19,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 17,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 17,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 17,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 17,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 17,
+          "potions": 3,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 19,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 19,
+          "potions": 2,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    },
+    {
+      "stage": "rebirth-6",
+      "power": 290,
+      "config": {
+        "team": {
+          "ids": [
+            "nox",
+            "athena",
+            "benzaiten",
+            "eos-standard"
+          ],
+          "leader": "eos-standard"
+        },
+        "stones": [
+          "dawn-crown",
+          "pale-ward",
+          "twin-tide",
+          "echo-shard"
+        ],
+        "strategy": "aggressive"
+      },
+      "trainingWins": 0,
+      "wins": 0,
+      "seeds": 8,
+      "meanRounds": 15,
+      "rows": [
+        {
+          "seed": 40001,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40002,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40003,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40004,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40005,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40006,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40007,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        },
+        {
+          "seed": 40008,
+          "win": false,
+          "rounds": 15,
+          "potions": 0,
+          "survivors": 0,
+          "breaks": 0,
+          "guards": 0,
+          "materials": {}
+        }
+      ]
+    }
+  ]
+}

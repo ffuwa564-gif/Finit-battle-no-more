@@ -149,7 +149,7 @@ test('farm destinations respect locks and open the actual preparation screen wit
     const {loadSave,persistSave}=await import('/src/platform/save.ts');
     const {content}=await import('/src/content/index.ts');
     const save=(await loadSave())!,revision=save.revision;
-    save.completedDungeonIds=content.dungeons.filter(dungeon=>dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
+    save.completedDungeonIds=content.dungeons.filter(dungeon=>!dungeon.rebirth && dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
     save.revision++;await persistSave(save,revision);
   });
   await openPlanner(page);
@@ -245,7 +245,7 @@ async function installTierRecipe(page: Page, mode:'t3'|'power-gap'|'trait-gap') 
     if(stage.slots[0].gem.power<220) throw new Error('The perfect recipe must use the current T6 power target.');
     const available=content.characters.filter(character=>character.published && !character.origin.includes('xr_gacha') && !character.origin.includes('trial')).map(character=>character.id);
     save.ownedIds=[...new Set([...save.ownedIds,...available,...stage.slots.map(slot=>slot.characterIds[0])])];
-    save.completedDungeonIds=content.dungeons.filter(dungeon=>dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
+    save.completedDungeonIds=content.dungeons.filter(dungeon=>!dungeon.rebirth && dungeon.published && !dungeon.towerFloor && !dungeon.eventId && (dungeon.kind ?? 'normal')==='normal').map(dungeon=>dungeon.id);
     save.memoryGems=emptyGemInventory();
     save.memoryGems.dust={sanctuary:1000,clock:1000,grave:1000};
     save.memoryGems.items=stage.slots.map((slot,index)=>({id:`tier-browser-${index}`,defId:slot.gem.defId,variant:slot.gem.variant,roll:mode==='t3'?{power:100,trait:slot.gem.trait ?? 'none',value:slot.gem.trait?100:0}:{power:slot.gem.power,trait:slot.gem.trait ?? 'none',value:slot.gem.trait?(slot.gem.value ?? 0):0}}));
