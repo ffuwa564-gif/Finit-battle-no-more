@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { content, validateContent } from '../src/content';
 import { goddessTrial, ultimateGoddessTrial, impossibleGoddessTrial } from '../src/content/trials';
 import { applyCommand, createInitialSave } from '../src/application/game';
-import { characterStats, dungeonDifficulty } from '../src/domain/engine';
+import { characterStats, encounterStats, dungeonDifficulty } from '../src/domain/engine';
 import { dungeonStoneReward } from '../src/domain/rewards';
 import { assertSaveCompatibility } from '../src/platform/save';
 import type { GameSave } from '../src/domain/types';
@@ -29,8 +29,8 @@ describe('SSR goddess gauntlet', () => {
     const entered = drain(applyCommand(save, { type: 'depart', dungeonId: ultimateGoddessTrial.id, potions: 0 }, content));
     const enemy = entered.battle!.units.find(unit => unit.side === 'enemy')!;
     const char = content.characters.find(char => char.id === enemy.characterId)!;
-    const ordinary = characterStats(char, undefined, true, goddessTrial.bossScale);
-    expect(enemy.hp).toBe(characterStats(char, undefined, true, ultimateGoddessTrial.bossScale).hp);
+    const ordinary = encounterStats(char,goddessTrial,true);
+    expect(enemy.hp).toBe(encounterStats(char,ultimateGoddessTrial,true).hp);
     expect(enemy.maxHp).toBeGreaterThan(ordinary.hp * 6);
     expect(enemy.attack).toBeGreaterThan(ordinary.attack * 2);
     expect(dungeonStoneReward(ultimateGoddessTrial, [])).toBe(0);
@@ -44,7 +44,7 @@ describe('SSR goddess gauntlet', () => {
     const battle = start().battle!; const enemy = battle.units.find(unit => unit.side === 'enemy')!;
     const char = content.characters.find(char => char.id === enemy.characterId)!;
     expect(char.rarity).toBe('SSR'); expect(char.origin).toContain('gacha'); expect(enemy.boss).toBe(true);
-    expect(enemy.maxHp).toBe(characterStats(char, undefined, true, goddessTrial.bossScale).hp);
+    expect(enemy.maxHp).toBe(encounterStats(char,goddessTrial,true).hp);
     expect(char.dialogue?.intro).toBeTruthy(); expect(content.assets.some(asset => asset.id === char.artId)).toBe(true);
     expect(dungeonDifficulty(goddessTrial, content)).toBeGreaterThan(0);
   });
@@ -111,8 +111,7 @@ it('adds a deliberately impossible 100.0 trial without changing lower trial stat
   const entered=drain(applyCommand(save,{type:'depart',dungeonId:impossibleGoddessTrial.id,potions:0},content));
   const enemy=entered.battle!.units.find(unit=>unit.side==='enemy')!;
   const char=content.characters.find(char=>char.id===enemy.characterId)!;
-  const base=characterStats(char);
-  expect(enemy.maxHp).toBe(base.hp*61);expect(enemy.attack).toBe(base.attack*10);
+  const expected=encounterStats(char,content.dungeons.find(d=>d.id===entered.battle!.dungeonId)!,true);expect(enemy.maxHp).toBe(expected.hp);expect(enemy.attack).toBe(expected.attack);
   expect(entered.battle!.pendingMaterials).toEqual({});expect(entered.battle!.goldEarned).toBe(0);
   assertSaveCompatibility(JSON.parse(JSON.stringify(entered)),content);
   const retreated=applyCommand(entered,{type:'retreat'},content);

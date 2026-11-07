@@ -21,10 +21,10 @@ function start(content = fixture(), party = ['tank', 'hero', 'healer']): Battle 
 describe('shared character rules', () => {
   it('shares base stats across sides, then applies boss and leader separately', () => {
     const tank = { ...fixture().characters[0]!, strength: 15 };
-    expect(baseStats(tank)).toEqual({ hp: 240, attack: 27, defense: 39, speed: 18 });
-    expect(characterStats(tank, undefined, true)).toEqual({ hp: 720, attack: 32, defense: 39, speed: 18 });
+    expect(baseStats(tank,'3')).toEqual({ hp: 240, attack: 27, defense: 39, speed: 18 });
+    expect(characterStats(tank, undefined, true,undefined,'3')).toEqual({ hp: 720, attack: 32, defense: 39, speed: 18 });
     expect(leaderBonus(tank)).toEqual({ stat: 'hp', percent: 12 });
-    expect(characterStats(tank, tank).hp).toBe(269);
+    expect(characterStats(tank, tank,false,undefined,'3').hp).toBe(269);
     expect(recruitCost({ ...tank, strength: 20 })).toEqual([{ materialId: 'ashen:common', count: 8 }, { materialId: 'ashen:rare', count: 2 }, { materialId: 'ashen:epic', count: 1 }]);
   });
   it('rejects duplicate parties and includes boss load in dungeon difficulty', () => {

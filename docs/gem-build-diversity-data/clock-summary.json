@@ -1,0 +1,115 @@
+{
+  "scope": "Regression confirmation of existing published clock strategies, not a global optimizer.",
+  "records": [
+    {
+      "team": {
+        "name": "acceleration-fortuna",
+        "ids": [
+          "eos-standard",
+          "selene",
+          "seris-awakened",
+          "fortuna"
+        ],
+        "leader": "eos-standard"
+      },
+      "gear": "One T3 power80 echo-shard on Seris / awakened Seris. Other slots empty; potions5; no frame aid.",
+      "policy": "aggressive",
+      "seeds": [
+        30001,
+        30200
+      ],
+      "wins": 200,
+      "meanRounds": 10,
+      "meanPotions": 0.38,
+      "allAlive": 200
+    },
+    {
+      "team": {
+        "name": "same-without-acceleration",
+        "ids": [
+          "eos-standard",
+          "selene",
+          "seris-awakened",
+          "fortuna"
+        ],
+        "leader": "fortuna"
+      },
+      "gear": "One T3 power80 echo-shard on Seris / awakened Seris. Other slots empty; potions5; no frame aid.",
+      "policy": "aggressive",
+      "seeds": [
+        30001,
+        30200
+      ],
+      "wins": 200,
+      "meanRounds": 17,
+      "meanPotions": 0.38,
+      "allAlive": 200
+    },
+    {
+      "team": {
+        "name": "acceleration-no-gacha-SSR",
+        "ids": [
+          "eos-standard",
+          "elaine-awakened",
+          "seris-awakened",
+          "liora-awakened"
+        ],
+        "leader": "eos-standard"
+      },
+      "gear": "One T3 power80 echo-shard on Seris / awakened Seris. Other slots empty; potions5; no frame aid.",
+      "policy": "switch",
+      "seeds": [
+        30001,
+        30200
+      ],
+      "wins": 200,
+      "meanRounds": 10,
+      "meanPotions": 0,
+      "allAlive": 200
+    },
+    {
+      "team": {
+        "name": "counter",
+        "ids": [
+          "selene",
+          "iwanagahime",
+          "seris-awakened",
+          "rainbow-iris"
+        ],
+        "leader": "selene"
+      },
+      "gear": "One T3 power80 echo-shard on Seris / awakened Seris. Other slots empty; potions5; no frame aid.",
+      "policy": "switch",
+      "seeds": [
+        30001,
+        30200
+      ],
+      "wins": 200,
+      "meanRounds": 11,
+      "meanPotions": 0,
+      "allAlive": 200
+    },
+    {
+      "team": {
+        "name": "starter",
+        "ids": [
+          "elaine",
+          "liora",
+          "seris",
+          "noelle"
+        ],
+        "leader": "liora"
+      },
+      "gear": "One T3 power80 echo-shard on Seris / awakened Seris. Other slots empty; potions5; no frame aid.",
+      "policy": "switch",
+      "seeds": [
+        30001,
+        30200
+      ],
+      "wins": 200,
+      "meanRounds": 11,
+      "meanPotions": 0,
+      "allAlive": 200
+    }
+  ]
+}

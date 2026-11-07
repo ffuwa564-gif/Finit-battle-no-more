@@ -80,9 +80,9 @@ export function advanceHarvest(battle: Battle, event: BattleEvent, content: Cont
   }
   if (kind === 'gem') {
     // Preserve ordinary/ boss loot ceilings; never change the combat random stream.
-    let result = rollGemDrop(d, next(s), offer.id, { boss: event.kind === 'drop' && battle.wave === d.waves.length - 1 });
+    let result = rollGemDrop(d, next(s), offer.id, {rulesVersion:battle.rulesVersion, boss: event.kind === 'drop' && battle.wave === d.waves.length - 1 });
     if (!result.gem) {
-      const fallback = rollGemDrop(d, result.seed, offer.id, { first: true });
+      const fallback = rollGemDrop(d, result.seed, offer.id, { rulesVersion:battle.rulesVersion,first: true });
       result = rollGemCandidate(fallback.gem!, fallback.seed, d.towerFloor ?? 0);
     }
     if(battle.hunt){
@@ -90,7 +90,7 @@ export function advanceHarvest(battle: Battle, event: BattleEvent, content: Cont
       const base=d.gemLoot??{tier4Chance:0,tier5Chance:0};
       const tier6Chance=base.tier6Chance??0,tier5Chance=Math.min(1-tier6Chance,base.tier5Chance+rank.tier5);
       const boosted={...d,gemLoot:{...base,tier5Chance,tier6Chance,tier4Chance:Math.min(1-tier5Chance-tier6Chance,base.tier4Chance+rank.tier4)}};
-      for(let attempt=0;attempt<12;attempt++){const rolled=rollGemDrop(boosted,result.seed,offer.id,{boss:true});result={gem:rolled.gem??result.gem,seed:rolled.seed};if(rolled.gem)break;}
+      for(let attempt=0;attempt<12;attempt++){const rolled=rollGemDrop(boosted,result.seed,offer.id,{rulesVersion:battle.rulesVersion,boss:true});result={gem:rolled.gem??result.gem,seed:rolled.seed};if(rolled.gem)break;}
     }
     s.seed = result.seed; offer.gem = roughMemoryGem(result.gem!, s.seed);
   }

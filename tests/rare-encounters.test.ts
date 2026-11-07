@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { content, validateContent } from '../src/content';
-import { advanceReplay, characterStats, createBattle, dungeonDifficulty, recruitCost } from '../src/domain/engine';
+import { advanceReplay, characterStats, encounterStats, createBattle, dungeonDifficulty, recruitCost } from '../src/domain/engine';
 import { applyCommand, createInitialSave } from '../src/application/game';
 import { assertSaveCompatibility } from '../src/platform/save';
 import type { Battle, Content } from '../src/domain/types';
@@ -49,7 +49,7 @@ describe('rare ordinary encounters', () => {
     const data = guaranteed(); const battle = penultimate(42, data);
     const unit = battle.units.find(unit => unit.characterId === 'lucielle')!;
     const char = data.characters.find(char => char.id === unit.characterId)!;
-    const stats = characterStats(char);
+    const stats = encounterStats(char,data.dungeons.find(d=>d.id===battle.dungeonId)!);
     expect({ hp: unit.hp, attack: unit.attack, defense: unit.defense, speed: unit.speed }).toEqual(stats);
     const stage = structuredClone(data.dungeons[0]!);
     expect(dungeonDifficulty(stage, data)).toBeGreaterThanOrEqual(dungeonDifficulty({ ...stage, rareEncounter: undefined }, data));

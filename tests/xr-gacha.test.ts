@@ -76,7 +76,7 @@ describe('future XR summons', () => {
     expect(counts).toEqual({ R: 70000, SR: 25000, SSR: 4900, XR: 100 });
     const xr = definitions.characters.find(character => character.rarity === 'XR')!;
     const higher = baseStats(xr), ssr = baseStats({ ...xr, rarity: 'SSR', strength: 30 });
-    expect(higher.hp).toBeGreaterThan(ssr.hp); expect(higher.attack).toBeGreaterThan(ssr.attack); expect(higher.defense).toBeGreaterThan(ssr.defense);
+    expect(higher.hp).toBe(ssr.hp); expect(higher.attack).toBe(ssr.attack); expect(higher.defense).toBe(ssr.defense);
     xr.strength = 30; expect(validateContent(definitions)).toContain('characters/astraea: XR strength 31..40 required');
   });
   it('awards XR with premium stones and keeps all normal stones, counts and pity unchanged', () => {

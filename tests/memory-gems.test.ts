@@ -8,8 +8,8 @@ const item = (id = 'one', defId = 'night-dew', variant: MemoryGem['variant'] = '
 function stash(...items: MemoryGem[]): GemInventory { return { ...emptyGemInventory(), items }; }
 
 describe('memory gem collection and deterministic loot', () => {
-  it('preserves eight dropped basic skills, three boss uniques and two fixed crafted support stones', () => {
-    expect(GEM_DEFINITIONS.filter(def => !def.bossOnly && !def.fixedRoll)).toHaveLength(8);
+  it('preserves eight old and six new dropped basic skills, three boss uniques and two fixed crafted support stones', () => {
+    expect(GEM_DEFINITIONS.filter(def => !def.bossOnly && !def.fixedRoll)).toHaveLength(14);
     expect(GEM_DEFINITIONS.filter(def => def.fixedRoll)).toHaveLength(2);
     const bosses = GEM_DEFINITIONS.filter(def => def.bossOnly);
     expect(bosses).toHaveLength(3);

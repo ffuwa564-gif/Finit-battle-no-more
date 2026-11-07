@@ -74,7 +74,7 @@ describe('seven administrators playable story',()=>{
   let s=advanceTo('seven-first-warrant');s=applyCommand(s,{type:'worldTravel',destinationId:scenes[0].hubId},content,{now:1000});s=applyCommand(s,{type:'worldTalk',nodeId:scenes[0].id},content,{now:100000});s=applyCommand(s,{type:'worldTalkNext'},content);
   const restored=decodeBackup(encodeBackup(s,content),content).save;expect(restored.worldStory).toEqual(s.worldStory);
   const closed=applyCommand(restored,{type:'worldTalkClose'},content);expect(closed.worldStory!.completed).not.toContain(scenes[0].id);expect(storyNext(closed,def)?.node?.id).toBe(scenes[0].id);
-  const old=begin();old.appVersion='1.27.0';old.contentVersion='v1.27-r1';const next=migrateSaveTo110(old,content);expect(next.worldStory).toEqual(old.worldStory);expect(next.worldStory!.completed).toEqual([]);
+  const old=begin();old.appVersion='1.27.0';old.contentVersion='v1.27-r1';old.rulesVersion='3';const next=migrateSaveTo110(old,content);expect(next.worldStory).toEqual(old.worldStory);expect(next.worldStory!.completed).toEqual([]);
  });
  it('rejects continuation flags that would silently create mandatory or cycling daily stories',()=>{
   const n=scenes[0],original=n.optional;n.optional=false;

@@ -16,9 +16,8 @@ export function migrateSaveTo110(value: GameSave, content: Content): GameSave {
     const next = structuredClone(value);
     next.appVersion = content.appVersion; next.contentVersion = content.contentVersion; next.rulesVersion = content.rulesVersion;
     if (next.battle && !next.battle.rulesVersion) next.battle.rulesVersion = value.rulesVersion;
-    // Compatible releases retain the same rule-3 combat. Rebind its versioned
-    // definitions without replaying events, advancing the seed or changing loot.
-    if (next.battle && ['v1.20-r1', 'v1.21-r1', 'v1.22-r1', 'v1.23-r1', 'v1.24-r1', 'v1.25-r1', 'v1.26-r1', 'v1.27-r1'].includes(next.battle.contentVersion) && next.battle.rulesVersion === '3') next.battle.contentVersion = content.contentVersion;
+    // In-flight battles retain their original combat contract, events, RNG and loot.
+    // Newly departed expeditions use the new rules after this run is finished.
     next.revision++;
     // Preserve the exact battle cursor, tower record, RNG, ledger and equipment.
     assertSaveCompatibility(next, content);

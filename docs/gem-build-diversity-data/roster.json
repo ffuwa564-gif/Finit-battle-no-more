@@ -1,0 +1,1848 @@
+{
+  "styles": {
+    "balanced": {
+      "name": "均衡",
+      "hp": 100,
+      "attack": 100,
+      "defense": 100,
+      "speed": 0
+    },
+    "swift": {
+      "name": "機敏",
+      "hp": 90,
+      "attack": 100,
+      "defense": 90,
+      "speed": 2
+    },
+    "precise": {
+      "name": "鋭撃",
+      "hp": 95,
+      "attack": 110,
+      "defense": 95,
+      "speed": 0
+    },
+    "bruiser": {
+      "name": "重撃",
+      "hp": 105,
+      "attack": 110,
+      "defense": 105,
+      "speed": -2
+    },
+    "bastion": {
+      "name": "堅守",
+      "hp": 110,
+      "attack": 90,
+      "defense": 110,
+      "speed": -1
+    },
+    "enduring": {
+      "name": "持久",
+      "hp": 115,
+      "attack": 90,
+      "defense": 105,
+      "speed": -1
+    }
+  },
+  "roster": [
+    {
+      "id": "elaine",
+      "family": "elaine",
+      "rarity": "R",
+      "role": "healer",
+      "style": "swift",
+      "favorites": [
+        "clear-tear",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-14",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "cleanse-14",
+          "template": "cleanse",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "liora",
+      "family": "liora",
+      "rarity": "R",
+      "role": "tank",
+      "style": "bastion",
+      "favorites": [
+        "pale-ward",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "guard-14",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-14",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "seris",
+      "family": "seris",
+      "rarity": "R",
+      "role": "attacker",
+      "style": "swift",
+      "favorites": [
+        "concord-mark",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-14",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "pierce-14",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "noelle",
+      "family": "noelle",
+      "rarity": "R",
+      "role": "area_attacker",
+      "style": "precise",
+      "favorites": [
+        "sweep-prism",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "area-14",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "attack-14",
+          "template": "attack",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "pale-wolf",
+      "family": "pale-wolf",
+      "rarity": "R",
+      "role": "attacker",
+      "style": "precise",
+      "favorites": [
+        "overflow-ember",
+        "night-dew"
+      ],
+      "skills": [
+        {
+          "id": "attack-10",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "drain-10",
+          "template": "drain",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "stone-drake",
+      "family": "stone-drake",
+      "rarity": "R",
+      "role": "tank",
+      "style": "bruiser",
+      "favorites": [
+        "shield-break",
+        "pale-ward"
+      ],
+      "skills": [
+        {
+          "id": "guard-11",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-11",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hollow-keeper",
+      "family": "hollow-keeper",
+      "rarity": "R",
+      "role": "tank",
+      "style": "balanced",
+      "favorites": [
+        "disrupt-sigil",
+        "hollow-lantern"
+      ],
+      "skills": [
+        {
+          "id": "guard-12",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "paralysis-12",
+          "template": "paralysis",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "moon-moth",
+      "family": "moon-moth",
+      "rarity": "R",
+      "role": "area_attacker",
+      "style": "swift",
+      "favorites": [
+        "dream-lace",
+        "sweep-prism"
+      ],
+      "skills": [
+        {
+          "id": "area-10",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "sleep-10",
+          "template": "sleep",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "veil-priestess",
+      "family": "veil-priestess",
+      "rarity": "R",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "camp-lantern",
+        "twin-tide"
+      ],
+      "skills": [
+        {
+          "id": "heal-11",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "regen-11",
+          "template": "regen",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "thorn-witch",
+      "family": "thorn-witch",
+      "rarity": "R",
+      "role": "debuffer",
+      "style": "swift",
+      "favorites": [
+        "dream-lace",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "debuff-12",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "charm-12",
+          "template": "charm",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "iris",
+      "family": "iris",
+      "rarity": "R",
+      "role": "supporter",
+      "style": "precise",
+      "favorites": [
+        "star-furnace",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "buff-12",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "charm-12",
+          "template": "charm",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "mireille",
+      "family": "mireille",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "balanced",
+      "favorites": [
+        "pale-ward",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-18",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "barrier-18",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "asteria",
+      "family": "asteria",
+      "rarity": "SSR",
+      "role": "area_attacker",
+      "style": "bruiser",
+      "favorites": [
+        "sweep-prism",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "area-22",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "pierce-22",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "evelyn",
+      "family": "evelyn",
+      "rarity": "SSR",
+      "role": "tank",
+      "style": "swift",
+      "favorites": [
+        "shield-break",
+        "night-dew"
+      ],
+      "skills": [
+        {
+          "id": "guard-24",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "drain-24",
+          "template": "drain",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "selene",
+      "family": "selene",
+      "rarity": "SSR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "twin-tide",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "heal-21",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "barrier-21",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "athena",
+      "family": "athena",
+      "rarity": "SSR",
+      "role": "tank",
+      "style": "balanced",
+      "favorites": [
+        "disrupt-sigil",
+        "pale-ward"
+      ],
+      "skills": [
+        {
+          "id": "guard-23",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "rally-23",
+          "template": "rally",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "flora",
+      "family": "flora",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "balanced",
+      "favorites": [
+        "clear-tear",
+        "twin-tide"
+      ],
+      "skills": [
+        {
+          "id": "heal-16",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "cleanse-16",
+          "template": "cleanse",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "rainbow-iris",
+      "family": "rainbow-iris",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "swift",
+      "favorites": [
+        "hollow-lantern",
+        "rewind-thread"
+      ],
+      "skills": [
+        {
+          "id": "buff-20",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-20",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "eos",
+      "family": "eos",
+      "rarity": "R",
+      "role": "supporter",
+      "style": "swift",
+      "favorites": [
+        "star-furnace",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-15",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-15",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "nike",
+      "family": "nike",
+      "rarity": "R",
+      "role": "attacker",
+      "style": "bruiser",
+      "favorites": [
+        "shield-break",
+        "overflow-ember"
+      ],
+      "skills": [
+        {
+          "id": "attack-13",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "shatter-13",
+          "template": "shatter",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "vespera",
+      "family": "vespera",
+      "rarity": "SSR",
+      "role": "supporter",
+      "style": "precise",
+      "favorites": [
+        "star-furnace",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-24",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "overclock-24",
+          "template": "overclock",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "miette",
+      "family": "miette",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "pale-ward",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-18",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "barrier-mend-18",
+          "template": "barrier_mend",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "tikka",
+      "family": "tikka",
+      "rarity": "R",
+      "role": "debuffer",
+      "style": "swift",
+      "favorites": [
+        "rewind-thread",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "debuff-14",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "jam-14",
+          "template": "jam",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "nox",
+      "family": "nox",
+      "rarity": "SSR",
+      "role": "attacker",
+      "style": "bruiser",
+      "favorites": [
+        "disrupt-sigil",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-25",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "pierce-25",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "kuzuha",
+      "family": "kuzuha",
+      "rarity": "SSR",
+      "role": "debuffer",
+      "style": "precise",
+      "favorites": [
+        "dream-lace",
+        "night-dew"
+      ],
+      "skills": [
+        {
+          "id": "debuff-26",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "attack-26",
+          "template": "attack",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "kuzuha-awakened",
+      "family": "kuzuha",
+      "rarity": "SSR",
+      "role": "debuffer",
+      "style": "precise",
+      "favorites": [
+        "dream-lace",
+        "night-dew"
+      ],
+      "skills": [
+        {
+          "id": "debuff-30",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "attack-30",
+          "template": "attack",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "artemis",
+      "family": "artemis",
+      "rarity": "SR",
+      "role": "attacker",
+      "style": "precise",
+      "favorites": [
+        "overflow-ember",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-19",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "pierce-19",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "persephone",
+      "family": "persephone",
+      "rarity": "SR",
+      "role": "debuffer",
+      "style": "enduring",
+      "favorites": [
+        "dream-lace",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "debuff-18",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "sleep-18",
+          "template": "sleep",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hestia",
+      "family": "hestia",
+      "rarity": "R",
+      "role": "tank",
+      "style": "enduring",
+      "favorites": [
+        "pale-ward",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "guard-14",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-14",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hebe",
+      "family": "hebe",
+      "rarity": "R",
+      "role": "healer",
+      "style": "precise",
+      "favorites": [
+        "twin-tide",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-13",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "mend-pair-13",
+          "template": "mend_pair",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "seoritsu",
+      "family": "seoritsu",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "clear-tear",
+        "dream-lace"
+      ],
+      "skills": [
+        {
+          "id": "heal-19",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "confusion-19",
+          "template": "confusion",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "ukanomitama",
+      "family": "ukanomitama",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "enduring",
+      "favorites": [
+        "camp-lantern",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-16",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "regen-16",
+          "template": "regen",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "mizuhanome",
+      "family": "mizuhanome",
+      "rarity": "R",
+      "role": "debuffer",
+      "style": "balanced",
+      "favorites": [
+        "disrupt-sigil",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "debuff-15",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "paralysis-15",
+          "template": "paralysis",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "haniyasu",
+      "family": "haniyasu",
+      "rarity": "R",
+      "role": "tank",
+      "style": "balanced",
+      "favorites": [
+        "shield-break",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "guard-12",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-12",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "toyotama",
+      "family": "toyotama",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "balanced",
+      "favorites": [
+        "twin-tide",
+        "clear-tear"
+      ],
+      "skills": [
+        {
+          "id": "heal-17",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "mend-pair-17",
+          "template": "mend_pair",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "wakahirume",
+      "family": "wakahirume",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "precise",
+      "favorites": [
+        "pale-ward",
+        "star-furnace"
+      ],
+      "skills": [
+        {
+          "id": "buff-19",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-19",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "iwanagahime",
+      "family": "iwanagahime",
+      "rarity": "R",
+      "role": "tank",
+      "style": "precise",
+      "favorites": [
+        "shield-break",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "guard-13",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "shatter-13",
+          "template": "shatter",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "kukurihime",
+      "family": "kukurihime",
+      "rarity": "R",
+      "role": "debuffer",
+      "style": "enduring",
+      "favorites": [
+        "hollow-lantern",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "debuff-14",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-14",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "lisette",
+      "family": "lisette",
+      "rarity": "SR",
+      "role": "debuffer",
+      "style": "precise",
+      "favorites": [
+        "hollow-lantern",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "debuff-18",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-18",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "elaine-awakened",
+      "family": "elaine",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "swift",
+      "favorites": [
+        "clear-tear",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-20",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "mend-pair-20",
+          "template": "mend_pair",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "liora-awakened",
+      "family": "liora",
+      "rarity": "SR",
+      "role": "tank",
+      "style": "bastion",
+      "favorites": [
+        "pale-ward",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "guard-20",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-20",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "noelle-awakened",
+      "family": "noelle",
+      "rarity": "SR",
+      "role": "area_attacker",
+      "style": "precise",
+      "favorites": [
+        "sweep-prism",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "area-20",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "pierce-20",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "lisette-awakened",
+      "family": "lisette",
+      "rarity": "SR",
+      "role": "debuffer",
+      "style": "precise",
+      "favorites": [
+        "hollow-lantern",
+        "disrupt-sigil"
+      ],
+      "skills": [
+        {
+          "id": "debuff-22",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-22",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "seris-awakened",
+      "family": "seris",
+      "rarity": "SSR",
+      "role": "attacker",
+      "style": "swift",
+      "favorites": [
+        "concord-mark",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-27",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "dawn-27",
+          "template": "dawn",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "selene-standard",
+      "family": "selene",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "twin-tide",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "heal-19",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "regen-19",
+          "template": "regen",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "athena-standard",
+      "family": "athena",
+      "rarity": "SR",
+      "role": "tank",
+      "style": "balanced",
+      "favorites": [
+        "disrupt-sigil",
+        "pale-ward"
+      ],
+      "skills": [
+        {
+          "id": "guard-18",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "rally-18",
+          "template": "rally",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "flora-standard",
+      "family": "flora",
+      "rarity": "R",
+      "role": "healer",
+      "style": "balanced",
+      "favorites": [
+        "clear-tear",
+        "twin-tide"
+      ],
+      "skills": [
+        {
+          "id": "heal-12",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "cleanse-12",
+          "template": "cleanse",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "amaterasu-standard",
+      "family": "asteria",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "bruiser",
+      "favorites": [
+        "sweep-prism",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-17",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-17",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "izanami-standard",
+      "family": "evelyn",
+      "rarity": "R",
+      "role": "debuffer",
+      "style": "swift",
+      "favorites": [
+        "shield-break",
+        "night-dew"
+      ],
+      "skills": [
+        {
+          "id": "debuff-15",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "drain-15",
+          "template": "drain",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "artemis-standard",
+      "family": "artemis",
+      "rarity": "SR",
+      "role": "attacker",
+      "style": "precise",
+      "favorites": [
+        "overflow-ember",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-18",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "pierce-18",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "persephone-standard",
+      "family": "persephone",
+      "rarity": "SR",
+      "role": "debuffer",
+      "style": "enduring",
+      "favorites": [
+        "dream-lace",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "debuff-17",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "regen-17",
+          "template": "regen",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hestia-standard",
+      "family": "hestia",
+      "rarity": "R",
+      "role": "tank",
+      "style": "enduring",
+      "favorites": [
+        "pale-ward",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "guard-13",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "barrier-13",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hebe-standard",
+      "family": "hebe",
+      "rarity": "R",
+      "role": "healer",
+      "style": "precise",
+      "favorites": [
+        "twin-tide",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "heal-12",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "mend-pair-12",
+          "template": "mend_pair",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "eos-standard",
+      "family": "eos",
+      "rarity": "R",
+      "role": "supporter",
+      "style": "swift",
+      "favorites": [
+        "star-furnace",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-14",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "cleanse-14",
+          "template": "cleanse",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "nike-standard",
+      "family": "nike",
+      "rarity": "R",
+      "role": "attacker",
+      "style": "bruiser",
+      "favorites": [
+        "shield-break",
+        "overflow-ember"
+      ],
+      "skills": [
+        {
+          "id": "attack-14",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "shatter-14",
+          "template": "shatter",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "rainbow-iris-standard",
+      "family": "rainbow-iris",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "swift",
+      "favorites": [
+        "hollow-lantern",
+        "rewind-thread"
+      ],
+      "skills": [
+        {
+          "id": "buff-16",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-16",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "toyotama-standard",
+      "family": "toyotama",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "balanced",
+      "favorites": [
+        "twin-tide",
+        "clear-tear"
+      ],
+      "skills": [
+        {
+          "id": "heal-16",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "barrier-16",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "lunette",
+      "family": "lunette",
+      "rarity": "SSR",
+      "role": "area_attacker",
+      "style": "swift",
+      "favorites": [
+        "sweep-prism",
+        "star-furnace"
+      ],
+      "skills": [
+        {
+          "id": "area-20",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "barrier-20",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "lunette-awakened",
+      "family": "lunette",
+      "rarity": "SSR",
+      "role": "area_attacker",
+      "style": "swift",
+      "favorites": [
+        "sweep-prism",
+        "star-furnace"
+      ],
+      "skills": [
+        {
+          "id": "area-24",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "barrier-24",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "lucielle",
+      "family": "lucielle",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "balanced",
+      "favorites": [
+        "pale-ward",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-14",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-14",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "nemuria",
+      "family": "nemuria",
+      "rarity": "SR",
+      "role": "debuffer",
+      "style": "precise",
+      "favorites": [
+        "dream-lace",
+        "rewind-thread"
+      ],
+      "skills": [
+        {
+          "id": "debuff-18",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "sleep-18",
+          "template": "sleep",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "chrona",
+      "family": "chrona",
+      "rarity": "SSR",
+      "role": "area_attacker",
+      "style": "balanced",
+      "favorites": [
+        "rewind-thread",
+        "sweep-prism"
+      ],
+      "skills": [
+        {
+          "id": "area-24",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "attack-24",
+          "template": "attack",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "fortuna",
+      "family": "fortuna",
+      "rarity": "SSR",
+      "role": "supporter",
+      "style": "enduring",
+      "favorites": [
+        "boss-reserve",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "buff-23",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-23",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "hecate",
+      "family": "hecate",
+      "rarity": "SSR",
+      "role": "debuffer",
+      "style": "balanced",
+      "favorites": [
+        "hollow-lantern",
+        "concord-mark"
+      ],
+      "skills": [
+        {
+          "id": "debuff-24",
+          "template": "debuff",
+          "strength": 18
+        },
+        {
+          "id": "dispel-24",
+          "template": "dispel",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "freyja",
+      "family": "freyja",
+      "rarity": "SSR",
+      "role": "attacker",
+      "style": "enduring",
+      "favorites": [
+        "night-dew",
+        "overflow-ember"
+      ],
+      "skills": [
+        {
+          "id": "attack-23",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "drain-23",
+          "template": "drain",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "benzaiten",
+      "family": "benzaiten",
+      "rarity": "SSR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "twin-tide",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "heal-22",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "mend-pair-22",
+          "template": "mend_pair",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "seoritsu-standard",
+      "family": "seoritsu",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "enduring",
+      "favorites": [
+        "clear-tear",
+        "dream-lace"
+      ],
+      "skills": [
+        {
+          "id": "heal-16",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "cleanse-16",
+          "template": "cleanse",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "wakahirume-standard",
+      "family": "wakahirume",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "precise",
+      "favorites": [
+        "pale-ward",
+        "star-furnace"
+      ],
+      "skills": [
+        {
+          "id": "buff-17",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "regen-17",
+          "template": "regen",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "ukanomitama-standard",
+      "family": "ukanomitama",
+      "rarity": "R",
+      "role": "supporter",
+      "style": "enduring",
+      "favorites": [
+        "camp-lantern",
+        "boss-reserve"
+      ],
+      "skills": [
+        {
+          "id": "buff-13",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "barrier-13",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "astraea",
+      "family": "astraea",
+      "rarity": "XR",
+      "role": "attacker",
+      "style": "balanced",
+      "favorites": [
+        "boss-reserve",
+        "dawn-crown"
+      ],
+      "skills": [
+        {
+          "id": "attack-36",
+          "template": "attack",
+          "strength": 18
+        },
+        {
+          "id": "pierce-36",
+          "template": "pierce",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "zakuro",
+      "family": "zakuro",
+      "rarity": "SSR",
+      "role": "area_attacker",
+      "style": "enduring",
+      "favorites": [
+        "sweep-prism",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "area-28",
+          "template": "area",
+          "strength": 18
+        },
+        {
+          "id": "barrier-28",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "ione",
+      "family": "ione",
+      "rarity": "SR",
+      "role": "supporter",
+      "style": "balanced",
+      "favorites": [
+        "concord-mark",
+        "clear-tear"
+      ],
+      "skills": [
+        {
+          "id": "buff-16",
+          "template": "buff",
+          "strength": 18
+        },
+        {
+          "id": "scout-ione-mark",
+          "template": "debuff",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "neri",
+      "family": "neri",
+      "rarity": "R",
+      "role": "tank",
+      "style": "swift",
+      "favorites": [
+        "disrupt-sigil",
+        "camp-lantern"
+      ],
+      "skills": [
+        {
+          "id": "guard-13",
+          "template": "guard",
+          "strength": 18
+        },
+        {
+          "id": "scout-neri-lantern",
+          "template": "barrier",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "fio",
+      "family": "fio",
+      "rarity": "SR",
+      "role": "healer",
+      "style": "bruiser",
+      "favorites": [
+        "camp-lantern",
+        "clear-tear"
+      ],
+      "skills": [
+        {
+          "id": "heal-17",
+          "template": "heal",
+          "strength": 18
+        },
+        {
+          "id": "scout-fio-overflow",
+          "template": "heal",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    },
+    {
+      "id": "ruka",
+      "family": "ruka",
+      "rarity": "SSR",
+      "role": "attacker",
+      "style": "bastion",
+      "favorites": [
+        "boss-reserve",
+        "overflow-ember"
+      ],
+      "skills": [
+        {
+          "id": "pierce-19",
+          "template": "pierce",
+          "strength": 18
+        },
+        {
+          "id": "scout-ruka-shear",
+          "template": "attack",
+          "strength": 18
+        }
+      ],
+      "status": "not-individually-certified"
+    }
+  ]
+}

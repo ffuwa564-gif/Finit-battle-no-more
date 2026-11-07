@@ -1,0 +1,26 @@
+{
+  "release": "1.29.0",
+  "combatRule": "4",
+  "baseCommit": "3d907cbd53733e510f79bd0caf8c4df16a5e3b87",
+  "combatReference": 24,
+  "normalSkillStrength": 18,
+  "confirmationSeeds": [
+    10001,
+    10200
+  ],
+  "trainingSeeds": [
+    100,
+    107
+  ],
+  "clockSeeds": [
+    30001,
+    30200
+  ],
+  "audit": "Finite exploratory benchmark; see README for group budgets and unverified conditions.",
+  "finalSourceSHA256": {
+    "src/domain/engine.ts": "1f906d54914063717632e6e152ef51e90789a20e34af0dba24f494edaedeb2ba",
+    "src/domain/combat-profiles.ts": "536a6c6c327c5559b220e55b381d8c767bc99124f320b0574cc1ca414b26e57a",
+    "src/domain/build-gems.ts": "0b8f6e18582c0fb064a794f2abf390b8ff858d9d617b305f482b4d1fcda908aa",
+    "src/domain/royal-leaders.ts": "10c40850e22e59e22bf7cc876c7dcc97683c8c9fb4f880ab295c64dfd9d8c936"
+  }
+}

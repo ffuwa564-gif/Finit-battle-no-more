@@ -134,6 +134,6 @@ describe('memory gem combat integration', () => {
     ally.buffStrength = 120; ally.buffUntil = 0;
     const done = use(battle, equipped); const snapshot = action(done).unitsAfter!;
     expect(snapshot.find(unit => unit.uid === enemy.uid)!.buffStrength).toBeUndefined();
-    expect(snapshot.find(unit => unit.uid === ally.uid)!.buffStrength).toBe(22);
+    expect(snapshot.find(unit => unit.uid === ally.uid)!.buffStrength).toBe(35);
   });
 });
