@@ -60,3 +60,21 @@ body:has(.harvest-card-panel) .enemy-carousel-controls{visibility:hidden}
 /* A cinematic hides the underlying board; invisible pickups must not accept taps. */
 body:has(:is(.ultimate-cinematic,.ultimate-party-effect,.ultimate-target-fallback)) .battle-harvest{visibility:hidden}
 body:has(:is(.ultimate-cinematic,.ultimate-party-effect,.ultimate-target-fallback)) .harvest-gem-flight{visibility:hidden}
+/* Value is legible before tapping. The artwork moves, the 44px hit target does not. */
+.harvest-drop{--loot-color:#d0e6ef}
+.harvest-drop[data-quality="rare"]{--loot-color:#c5a0ff}
+.harvest-drop[data-quality="epic"]{--loot-color:#ffe091}
+.harvest-drop__name{position:absolute;top:44px;left:0;white-space:nowrap;font-size:11px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:var(--loot-color);text-shadow:0 1px 3px #02060b,0 0 5px #02060b;pointer-events:none;background:#07101bd9;padding:2px 4px;border-radius:3px}
+.harvest-drop[data-slot="1"] .harvest-drop__name,.harvest-drop[data-slot="3"] .harvest-drop__name{left:auto;right:0}
+.harvest-drop__beam{position:absolute;pointer-events:none;left:14px;bottom:8px;width:16px;height:96px;opacity:0;background:linear-gradient(0deg,var(--loot-color),transparent);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);transform-origin:bottom}
+.harvest-drop[data-quality="rare"] .harvest-drop__beam,.harvest-drop[data-quality="epic"] .harvest-drop__beam{opacity:.75;animation:harvest-beam 1.7s ease-in-out infinite alternate}
+.harvest-drop[data-quality="rare"] .harvest-drop__art{filter:drop-shadow(0 0 6px #b48bff) drop-shadow(0 2px 2px #081120)}
+.harvest-drop[data-quality="epic"] .harvest-drop__art{scale:1.22;filter:drop-shadow(0 0 9px #ffd77c) drop-shadow(0 2px 2px #081120)}
+.harvest-drop[data-quality="rare"] .harvest-drop__name,.harvest-drop[data-quality="epic"] .harvest-drop__name{border-bottom:1px solid var(--loot-color)}
+@keyframes harvest-beam{from{opacity:.4;scale:1 .85}to{opacity:.9;scale:1 1.1}}
+.battle-harvest[data-reduced="true"] .harvest-drop__beam{animation:none}
+@media(prefers-reduced-motion:reduce){.harvest-drop__beam{animation:none!important}}
+.hunt-meta b{color:#ffe19a;font-size:13px;margin-right:3px}
+.hunt-status{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;color:#f5e9c8;background:#101e2c;border:1px solid #cbb47a88;border-radius:12px;padding:14px;margin:12px 0}
+.hunt-status>strong{font:700 42px/1 serif;color:#ffe19a}.hunt-status b{font-size:23px}.hunt-status small{font-size:12px;opacity:.8}.hunt-status>small{flex-basis:100%}
+.harvest-drop__quality{position:absolute;top:-10px;left:50%;translate:-50% 0;font:800 9px/1.1 sans-serif;letter-spacing:.1em;color:var(--loot-color);text-shadow:0 0 5px #07101b;pointer-events:none}

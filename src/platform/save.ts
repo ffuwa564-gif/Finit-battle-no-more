@@ -1,3 +1,4 @@
+import { validHunt, canHunt } from '../domain/hunt';
 import { validBattleHarvest } from '../domain/battle-harvest';
 import { validMedals, validMedalRun } from '../domain/medals';
 import { validIndustry } from '../domain/industry';
@@ -36,11 +37,12 @@ function validExpeditionHistory(value: unknown): boolean {
   if (!Array.isArray(value) || value.length > 30) return false;
   const ids = new Set<string>();
   return value.every(item => {
-    if (!record(item) || Object.keys(item).some(key => !['runId', 'dungeonId', 'appVersion', 'contentVersion', 'rulesVersion', 'outcome', 'durationMs', 'review', 'earned', 'potionsUsed'].includes(key))) return false;
+    if (!record(item) || Object.keys(item).some(key => !['runId', 'dungeonId', 'appVersion', 'contentVersion', 'rulesVersion', 'outcome', 'durationMs', 'review', 'earned', 'potionsUsed', 'hunt'].includes(key))) return false;
     for (const key of ['runId', 'dungeonId', 'appVersion', 'contentVersion', 'rulesVersion']) if (!nonempty(item[key]) || String(item[key]).length > 256) return false;
     if (ids.has(String(item.runId))) return false;
     ids.add(String(item.runId));
     if (!['victory', 'defeat', 'timeout', 'retreat'].includes(String(item.outcome)) || item.durationMs !== null && !count(item.durationMs) || item.potionsUsed !== null && (!count(item.potionsUsed) || Number(item.potionsUsed) > 5) || item.review !== undefined && !validBattleReview(item.review)) return false;
+    if(item.hunt!==undefined&&!validHunt(item.hunt))return false;
     const earned = item.earned;
     if (!record(earned) || Object.keys(earned).some(key => !['gold', 'stones', 'gemCount', 'materials', 'dust'].includes(key)) || !count(earned.gold) || !count(earned.stones) || !count(earned.gemCount) || !materialMap(earned.materials) || !record(earned.dust) || Object.entries(earned.dust).some(([id, amount]) => !['sanctuary', 'clock', 'grave'].includes(id) || !count(amount))) return false;
     return true;
@@ -92,6 +94,7 @@ function validEvent(value: unknown): boolean {
   if (value.ailment !== undefined && !(ailments as readonly string[]).includes(value.ailment as string)) return false;
   if (value.statusAction !== undefined && (!['inflict', 'resist', 'skip', 'recover', 'friendly_fire'].includes(value.statusAction as string) || value.ailment === undefined)) return false;
   if (value.fairyAction !== undefined && !(value.fairyAction === 'charge' && value.kind === 'buff' && ['left', 'right'].includes(value.fairySide as string))) return false;
+  if (value.huntProgress !== undefined && !validHunt(value.huntProgress) || value.huntKill !== undefined && (value.huntKill !== true || value.kind !== 'drop')) return false;
   if (value.harvestAction !== undefined && !((value.harvestAction === 'heal' && value.kind === 'heal') || (value.harvestAction === 'strike' && value.kind === 'attack'))) return false;
   if (value.bloomAction !== undefined && !((value.bloomAction === 'heal' && value.kind === 'heal') || (value.bloomAction === 'strike' && value.kind === 'attack'))) return false;
   if (value.bitAction !== undefined && !['deploy', 'fire', 'expire'].includes(value.bitAction as string)) return false;
@@ -167,6 +170,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
     if (battle.pendingPotionId !== undefined && (typeof battle.pendingPotionId !== 'string' || !(battle.units as {uid:string;side:string}[]).some(u=>u.uid===battle.pendingPotionId&&u.side==='party'))) throw new Error('回復の予約が不正です。');
+    if (battle.hunt !== undefined && !validHunt(battle.hunt)) throw new Error('連続討伐の保存状態が不正です。');
     if (battle.harvest !== undefined && !validBattleHarvest(battle.harvest, battle as unknown as Parameters<typeof validBattleHarvest>[1])) throw new Error('回収の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
     if (battle.omens !== undefined && !validLegacyOmens(battle.omens, battle as unknown as Parameters<typeof validLegacyOmens>[1])) throw new Error('痕跡の保存状態が不正です。');
@@ -215,6 +219,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (battle.commandOrder !== undefined) validateCommandOrder(battle.commandOrder, battle, content, { stored: true });
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId);
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
+  if (battle.hunt && (!dungeon || !canHunt(dungeon) || battle.hunt.stage==='hunting'&&battle.wave!==0 || battle.hunt.stage==='boss'&&battle.wave!==dungeon.waves.length-1)) throw new Error('連続討伐の地点が不正です。');
   if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');
   if (battle.roughGemFinds?.some(raw => !save.memoryGems?.rough?.some(item => item.id === raw.id && JSON.stringify(item) === JSON.stringify(raw)))) throw new Error('獲得した原石が所持情報にありません。');

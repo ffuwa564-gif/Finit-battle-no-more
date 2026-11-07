@@ -1,3 +1,4 @@
+import type { HuntState } from './hunt';
 import type { Battle, Content, GameSave } from './types';
 import type { BattleReview } from './expedition-review';
 
@@ -8,6 +9,7 @@ export interface ExpeditionEarnings {
   materials: Record<string, number>; dust: Record<string, number>;
 }
 export interface ExpeditionRecord {
+  hunt?: HuntState;
   runId: string; dungeonId: string; appVersion: string; contentVersion: string; rulesVersion: string;
   outcome: ExpeditionOutcome; durationMs: number | null; review?: BattleReview;
   earned: ExpeditionEarnings; potionsUsed: number | null;
@@ -39,7 +41,7 @@ export function finalizeExpedition(previous: GameSave, next: GameSave, battle: B
   const earned: ExpeditionEarnings = {
     gold: battle.goldEarned + Math.max(0, next.gold - previous.gold),
     stones: Math.max(0, next.stones - previous.stones),
-    gemCount: new Set([...(battle.gemFinds ?? []), ...(battle.roughGemFinds ?? [])].map(gem => gem.id)).size,
+    gemCount: new Set([...(battle.gemFinds ?? []), ...(battle.roughGemFinds ?? []), ...(battle.phase==='reward'?battle.harvest?.gems??[]:[])].map(gem => gem.id)).size,
     materials: positiveDifference(previous.materials, next.materials),
     dust: positiveDifference(previous.memoryGems?.dust ?? {}, next.memoryGems?.dust ?? {}),
   };
@@ -50,6 +52,7 @@ export function finalizeExpedition(previous: GameSave, next: GameSave, battle: B
     runId: battle.id, dungeonId: battle.dungeonId, appVersion: previous.appVersion,
     contentVersion: battle.contentVersion, rulesVersion: battle.rulesVersion, outcome,
     durationMs: knownCount(tracking?.elapsedMs) ? tracking.elapsedMs : null,
+    ...(battle.hunt?{hunt:structuredClone(battle.hunt)}:{}),
     review: structuredClone(tracking.review), earned,
     potionsUsed: knownCount(tracking?.review.potionsUsed) ? tracking.review.potionsUsed : null,
   };

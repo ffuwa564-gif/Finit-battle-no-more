@@ -66,7 +66,7 @@ function syncMemoryGems(save: GameSave): void {
 function secureMemoryChest(save: GameSave, wave: number, content: Content): void {
   const battle = save.battle!;
   const dungeon = content.dungeons.find(item => item.id === battle.dungeonId)!;
-  if (dungeon.kind === 'trial' || dungeon.towerFloor && wave !== dungeon.waves.length - 1) return;
+  if (battle.hunt || dungeon.kind === 'trial' || dungeon.towerFloor && wave !== dungeon.waves.length - 1) return;
   const key = `${battle.id}:wave:${wave}`;
   if (battle.gemChestChecks?.includes(key)) return;
   battle.gemChestChecks = [...(battle.gemChestChecks ?? []), key];
@@ -270,7 +270,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       const next = rng(save.seed);
       save.seed = next.seed;
       if(save.worldStory){const point=content.worldStory?.chapters.flatMap(c=>c.dungeonIds).includes(dungeon.id);if(point){const {x,y}=storyDestinations(content,save).find(p=>p.id===dungeon.id)!;save.worldStory.position={x,y};}delete save.worldStory.journey;}
-      save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
+      save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`, command.mode);
       if (dungeon.kind !== 'trial') save.battle.harvest = createBattleHarvest(save.battle.id);
       save.battle.tracking = createExpeditionTracking(context.now);
       save.battle.medalRun = createMedalRun();
