@@ -9,7 +9,7 @@ import { tr } from '../locales/i18n';
 import { Button } from './index';
 import './build-demo.css';
 
-const highlights: Record<BuildDemoHighlight,string> = {barrier:'味方に障壁を展開',chain:'別の敵へ連鎖',echo:'次のラウンドに追撃',shield:'障壁を砲撃へ変換',battery:'ルネットへゲージ供給',ultimate:'うさぎの必殺技へ',sleep:'睡眠を実際に付与',drain:'与えたHP被害から吸収',regen:'再生でHPが戻る',rewind:'通常技の待ちを短縮'};
+const highlights: Record<BuildDemoHighlight,string> = {barrier:'味方に障壁を展開',chain:'別の敵へ連鎖',echo:'次のラウンドに追撃',shield:'障壁を砲撃へ変換',battery:'ルネットへゲージ供給',ultimate:'うさぎの必殺技へ',sleep:'睡眠を実際に付与',drain:'与えたHP被害から吸収',regen:'再生でHPが戻る',rewind:'通常技の待ちを短縮',sweep:'複数の敵へ掃討',overflow:'余った火力を次の敵へ',concord:'二人の主攻撃が共鳴',disrupt:'ボスへ破調の貫通攻撃'};
 export interface BuildDemoProps { buildId: string; stage: BuildStage; content: Content; reducedMotion?: boolean }
 
 export function BuildDemo({buildId,stage,content,reducedMotion=false}:BuildDemoProps) {

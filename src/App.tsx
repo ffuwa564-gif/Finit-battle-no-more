@@ -256,7 +256,7 @@ export default function App() {
       heardImpact.current = event.id;
       cleanupImpact = animateEvent(event, save.settings.reducedMotion);
     }, ultimateClock.current.delay(timing.impact, performance.now())) : undefined;
-    const duration = event.ultimate ? ultimateClock.current.delay(timing.end, performance.now()) : battleEventDuration(event, save.settings.speed);
+    const duration = event.ultimate ? ultimateClock.current.delay(timing.end, performance.now()) : event.kind==='wave'&&battle.hunt?.stage==='boss'?2200:battleEventDuration(event, save.settings.speed);
     let timer: ReturnType<typeof setTimeout>;
     const complete = () => {
       if (busyRef.current || document.hidden || document.querySelector('[role="dialog"],.command-dial')) { timer = setTimeout(complete, 100); return; }

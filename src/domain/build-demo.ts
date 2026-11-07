@@ -5,9 +5,9 @@ import { partyOrderOptions } from './party-orders';
 import { ultimateReady } from './ultimates';
 import type { Battle, BattleEvent, Content, Unit } from './types';
 
-export type BuildDemoHighlight = 'chain' | 'echo' | 'barrier' | 'shield' | 'battery' | 'ultimate' | 'sleep' | 'drain' | 'regen' | 'rewind';
+export type BuildDemoHighlight = 'chain' | 'echo' | 'barrier' | 'shield' | 'battery' | 'ultimate' | 'sleep' | 'drain' | 'regen' | 'rewind' | 'sweep' | 'overflow' | 'concord' | 'disrupt';
 export interface BuildDemoFrame { event: BattleEvent; units: Unit[]; before: Unit[]; wave: number; round: number; highlight?: BuildDemoHighlight }
-export interface BuildDemoProof { chainHits: number; echoHits: number; barrierCasts: number; shieldShots: number; consumedBarrier: number; batteryCharges: number; chargeReceived: number; rabbitUltimates: number; sleepApplications: number; drainHealing: number; regenerationHealing: number; rewindCasts: number; cooldownReduction: number }
+export interface BuildDemoProof { chainHits: number; echoHits: number; barrierCasts: number; shieldShots: number; consumedBarrier: number; batteryCharges: number; chargeReceived: number; rabbitUltimates: number; sleepApplications: number; drainHealing: number; regenerationHealing: number; rewindCasts: number; cooldownReduction: number; sweepCasts:number;overflowHits:number;concordHits:number;disruptHits:number }
 export interface BuildDemoResult { dungeonId: string; partyIds: string[]; leaderId: string; initialUnits: Unit[]; frames: BuildDemoFrame[]; events: BuildDemoFrame[]; proof: BuildDemoProof; demonstrated: boolean }
 
 /** Isolated fixture inventory. Never reads or writes a player's save, stats, seed or resources. */
@@ -17,7 +17,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   const recipe = definition.stages[stage];
   const partyIds = recipe.slots.map(slot => slot.characterIds[0]);
   const leaderId = partyIds[recipe.leaderSlot];
-  const dungeonId = buildId === 'echo-chain' ? 'ivory-tower-001' : 'veiled-cloister';
+  const dungeonId = definition.demoDungeonIds?.[stage] ?? (buildId==='sweep-dance'||buildId==='overflow-relay'?'silent-cathedral': buildId==='concord-duet'?'veiled-cloister':buildId === 'echo-chain' ? 'ivory-tower-001' : 'veiled-cloister');
   const fixtures: Record<string, MemoryGem> = Object.fromEntries(recipe.slots.map((slot, index) => [partyIds[index], {
     id: `build-demo-${buildId}-${index}`, defId: slot.gem.defId, variant: slot.gem.variant,
     roll: { power: slot.gem.power, trait: slot.gem.trait ?? 'none', value: slot.gem.value ?? 0 },
@@ -26,7 +26,7 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
   battle.memoryGems = fixtures;
   const initialUnits = structuredClone(battle.initialUnits);
   const frames: BuildDemoFrame[] = [];
-  const proof: BuildDemoProof = { chainHits:0, echoHits:0, barrierCasts:0, shieldShots:0, consumedBarrier:0, batteryCharges:0, chargeReceived:0, rabbitUltimates:0, sleepApplications:0, drainHealing:0, regenerationHealing:0, rewindCasts:0, cooldownReduction:0 };
+  const proof: BuildDemoProof = { chainHits:0, echoHits:0, barrierCasts:0, shieldShots:0, consumedBarrier:0, batteryCharges:0, chargeReceived:0, rabbitUltimates:0, sleepApplications:0, drainHealing:0, regenerationHealing:0, rewindCasts:0, cooldownReduction:0,sweepCasts:0,overflowHits:0,concordHits:0,disruptHits:0 };
   let steps = 0, rounds = 0;
   while (!['failed','reward'].includes(battle.phase) && steps++ < 1500 && rounds < 22) {
     if (battle.phase === 'playing') { battle = advanceReplay(battle,content); continue; }
@@ -63,6 +63,10 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
       else if(buildId==='enduring-tides' && friendly && event.actionSelection && gem?.skill.template==='drain' && damagedEnemy && actualHealing>0){proof.drainHealing+=actualHealing;highlight='drain';}
       else if(buildId==='enduring-tides' && friendly && event.kind==='heal' && event.text.endsWith('月の雫の再生') && actualHealing>0){proof.regenerationHealing+=actualHealing;highlight='regen';}
       else if(buildId==='skill-rewind' && normalCooldownReduction>0){proof.rewindCasts++;proof.cooldownReduction+=normalCooldownReduction;highlight='rewind';}
+      else if(buildId==='sweep-dance'&&friendly&&gem?.id==='sweep-prism'&&event.actionSelection&&(event.targetIds?.length??0)>=2){proof.sweepCasts++;highlight='sweep';}
+      else if(buildId==='overflow-relay'&&friendly&&event.text.startsWith('残火石 —')&&(event.amount??0)>0){proof.overflowHits++;highlight='overflow';}
+      else if(buildId==='concord-duet'&&friendly&&event.text.startsWith('共鳴標石 — 二人')&&(event.amount??0)>0){proof.concordHits++;highlight='concord';}
+      else if(buildId==='disrupt-window'&&friendly&&gem?.id==='disrupt-sigil'&&event.actionSelection&&(event.amount??0)>0){proof.disruptHits++;highlight='disrupt';}
       else if (buildId === 'shield-cannon'  && friendly && barrierGain > 0) { proof.barrierCasts++; highlight='barrier'; }
       else if (friendly && event.text.endsWith('・連鎖') && (event.amount ?? 0) > 0) { proof.chainHits++; highlight='chain'; }
       else if (friendly && event.text.endsWith('・残響') && (event.amount ?? 0) > 0) { proof.echoHits++; highlight='echo'; }
@@ -105,8 +109,8 @@ export function createBuildDemo(content: Content, buildId: string, stage: BuildS
 
 /** Each recipe declares its own observable mechanism; unknown recipes never inherit a success. */
 export function buildDemoHighlights(buildId:string): BuildDemoHighlight[] {
- return ({'echo-chain':['chain','echo'],'shield-cannon':['barrier','shield'],'rabbit-battery':['battery','ultimate'],'status-weave':['sleep'],'enduring-tides':['drain','regen'],'skill-rewind':['rewind']} as Record<string,BuildDemoHighlight[]>)[buildId]??[];
+ return ({'echo-chain':['chain','echo'],'shield-cannon':['barrier','shield'],'rabbit-battery':['battery','ultimate'],'status-weave':['sleep'],'enduring-tides':['drain','regen'],'skill-rewind':['rewind'],'sweep-dance':['sweep'],'overflow-relay':['overflow'],'concord-duet':['concord'],'disrupt-window':['disrupt']} as Record<string,BuildDemoHighlight[]>)[buildId]??[];
 }
 function mechanicDemonstrated(id:string,p:BuildDemoProof):boolean {
- return id==='echo-chain'?p.chainHits>0&&p.echoHits>0:id==='shield-cannon'?p.shieldShots>0:id==='rabbit-battery'?p.batteryCharges>0&&p.rabbitUltimates>0:id==='status-weave'?p.sleepApplications>0:id==='enduring-tides'?p.drainHealing>0&&p.regenerationHealing>0:id==='skill-rewind'?p.rewindCasts>0:false;
+ return id==='echo-chain'?p.chainHits>0&&p.echoHits>0:id==='shield-cannon'?p.shieldShots>0:id==='rabbit-battery'?p.batteryCharges>0&&p.rabbitUltimates>0:id==='status-weave'?p.sleepApplications>0:id==='enduring-tides'?p.drainHealing>0&&p.regenerationHealing>0:id==='skill-rewind'?p.rewindCasts>0:id==='sweep-dance'?p.sweepCasts>0:id==='overflow-relay'?p.overflowHits>0:id==='concord-duet'?p.concordHits>0:id==='disrupt-window'?p.disruptHits>0:false;
 }

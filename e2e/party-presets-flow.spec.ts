@@ -3,23 +3,22 @@ import {enterGame} from './boot';
 import {contrast,touchTargets} from './readability-checks';
 test.use({actionTimeout:10000,viewport:{width:390,height:844}});
 const saved=(page:import('@playwright/test').Page)=>page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!);
-test('ten formations survive reload and all build recipes are directly selectable',async({page},info)=>{
+test('saved formations switch by swipe and build recipes use cards without a dropdown',async({page},info)=>{
  await page.goto('/#party');await enterGame(page);const initial=await saved(page);
  const section=page.locator('[data-inventory-section="party-presets"]');await section.locator('summary').click();
- await section.getByLabel('編成名',{exact:true}).fill('塔の編成');await section.getByRole('button',{name:'現在の編成を保存',exact:true}).click();
+ await section.getByRole('button',{name:'編成名を変更',exact:true}).click();await section.getByLabel('編成名',{exact:true}).fill('塔の編成');await section.getByRole('button',{name:'この枠に保存',exact:true}).click();
  await page.locator('.party-formation__slots [data-member-id="seris"]').click();await page.getByRole('button',{name:'この仲間を先頭に',exact:true}).click();await page.getByRole('button',{name:'この仲間をリーダーに',exact:true}).click();
- await section.getByLabel('保存枠',{exact:true}).selectOption('9');await section.getByLabel('編成名',{exact:true}).fill('周回の編成');await section.getByRole('button',{name:'現在の編成を保存',exact:true}).click();
- expect(await section.locator('select option').count()).toBe(10);
- await section.getByLabel('保存枠',{exact:true}).selectOption('0');await section.getByRole('button',{name:'この編成を使う',exact:true}).click();
- await expect.poll(async()=>(await saved(page)).partyIds).toEqual(initial.partyIds);expect((await saved(page)).leaderId).toBe(initial.leaderId);
- for(const width of [320,390]){await page.setViewportSize({width,height:844});await touchTargets(section);await contrast(section.locator('label,.party-presets__preview strong,.party-presets__preview li,.party-presets__preview p'));}
- await page.screenshot({path:info.outputPath('formations-390.png')});
- await page.reload();await enterGame(page);expect((await saved(page)).partyPresets).toHaveLength(2);
- await page.goto('/#party/builds');const selector=page.getByLabel('確認するビルド',{exact:true});await expect(selector).toBeVisible();
- const options=await selector.locator('option').evaluateAll(nodes=>nodes.map(n=>({id:(n as HTMLOptionElement).value,name:n.textContent!.split(' · ')[0]})));
- expect(options.length).toBeGreaterThanOrEqual(6);
- for(const option of options){await selector.selectOption(option.id);await expect(page.locator('.build-planner__detail-heading h3')).toHaveText(option.name);}
- await page.locator('[data-inventory-section="party-presets"]>summary').click();await expect(page.locator('.party-presets select option')).toHaveCount(10);
+ await section.getByRole('button',{name:'次の編成',exact:true}).click();await section.getByRole('button',{name:'この枠に保存',exact:true}).click();
+ await section.getByRole('button',{name:'前の編成',exact:true}).click();await expect.poll(async()=>(await saved(page)).partyIds).toEqual(initial.partyIds);
+ const swipe=async(left:boolean)=>{const area=section.locator('.party-presets__swipe');await area.scrollIntoViewIfNeeded();const r=(await area.boundingBox())!;await page.mouse.move(r.x+(left?r.width-20:20),r.y+30);await page.mouse.down();await page.mouse.move(r.x+(left?20:r.width-20),r.y+30,{steps:8});await page.mouse.up();};
+ await swipe(true);await expect.poll(async()=>(await saved(page)).partyIds[0]).toBe('seris');expect((await saved(page)).leaderId).toBe('seris');
+ await swipe(false);await expect.poll(async()=>(await saved(page)).partyIds).toEqual(initial.partyIds);expect((await saved(page)).leaderId).toBe(initial.leaderId);
+ expect(await section.locator('.party-presets__dots button').count()).toBe(10);await expect(section.locator('select')).toHaveCount(0);
+ for(const width of [320,390]){await page.setViewportSize({width,height:844});await touchTargets(section);await contrast(section.locator('.party-presets__pager strong,.party-presets__roster strong'));}
+ await page.screenshot({path:info.outputPath('swipe-formations-390.png')});await page.reload();await enterGame(page);expect((await saved(page)).partyPresets).toHaveLength(2);
+ await page.goto('/#party/builds');await expect(page.getByLabel('確認するビルド',{exact:true})).toHaveCount(0);const catalog=page.locator('[data-inventory-section="build-catalog"]');await catalog.locator('summary').click();
+ expect(await catalog.locator('[data-build-id]').count()).toBe(10);
+ for(const id of ['sweep-dance','overflow-relay','concord-duet','disrupt-window']){if(!await catalog.evaluate(e=>(e as HTMLDetailsElement).open))await catalog.locator('summary').click();await catalog.locator(`[data-build-id="${id}"]`).click();await expect(page.locator('.build-planner__detail-heading h3')).not.toBeEmpty();}
 });
 
 test('flowers, fairies and resonance can be queued during auto replay and execute before the next round',async({page},info)=>{

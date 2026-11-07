@@ -1,4 +1,4 @@
-import {PartyPresets} from '../ui';
+import {PartyPresets,ExplorationComplete} from '../ui';
 import {ReincarnationHub} from '../ui';
 import {combatProfile,COMBAT_STYLES,stoneMastery} from '../domain/combat-profiles';
 import {GEM_DEFINITIONS,gemPowerMultiplier} from '../domain/memory-gems';
@@ -280,13 +280,14 @@ export function BattleView(p: ViewProps) {
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label={tr("敵の戦場")}>
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} hunt={battle.hunt ? (event?.huntProgress??battle.hunt) : undefined} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} roundLimit={dungeon.towerFloor ? TOWER_ROUND_LIMIT : undefined} materials={total + harvestedTotal} targetId={focusedEnemyId} fixedNumbers={Boolean(dungeon.coordination)} onDisplay={setViewedEnemyId} />
       <MemoryGemFind battle={battle} reducedMotion={p.save.settings.reducedMotion} onOpen={() => setGemBag(true)} />
+      <ExplorationComplete battle={battle} event={event} reducedMotion={p.save.settings.reducedMotion}/>
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
       <SceneAtmosphere suspendWithScene mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />
       <LivingBattleFrame battle={battle} event={event} units={units} busy={p.busy} reducedMotion={p.save.settings.reducedMotion} queuedCrystalRole={queuedGarden.find(q=>q.kind==='crystal')?.id} onCrystal={role => {if(role)queueGarden('crystal',role);}} queuedFairyId={queuedGarden.find(q=>q.kind==='fairy')?.id} queuedBloomId={queuedGarden.find(q=>q.kind==='bloom')?.id} onFairy={id => queueGarden('fairy',id)} onBloom={id => queueGarden('bloom',id)} />
       {battle.hunt&&<HuntMaterialFlights event={event} reducedMotion={p.save.settings.reducedMotion}/>}
       {battle.harvest && <BattleHarvest battle={battle} command={p.command} reducedMotion={p.save.settings.reducedMotion}/>}
-      <NoticeSurface present={!!event && !event.ultimate && !event.huntKill} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}${event?.coordinationAction ? ' coordination-toast coordination-toast--' + event.coordinationAction : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{event?.coordinationAction && (event.coordinationAction === 'isolated' ? <Unlink size={15} /> : <Link2 size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
+      <NoticeSurface present={!!event && !event.ultimate && !event.huntKill && !(event.kind==='wave'&&battle.hunt?.stage==='boss')} noticeKey={event?.id} className={`battle-toast ${event?.kind === 'dialogue' ? 'dialogue-toast' : ''}${event?.coordinationAction ? ' coordination-toast coordination-toast--' + event.coordinationAction : ''}`} role="status">{localize(event?.kind === 'dialogue' && <Feather size={15} />)}{event?.coordinationAction && (event.coordinationAction === 'isolated' ? <Unlink size={15} /> : <Link2 size={15} />)}{localize(event?.text)}{event?.directive && <small className="battle-directive">{tr(event.directive === 'aggressive' ? '突破優先' : '生存優先')}</small>}</NoticeSurface>
       {localize(event?.kind === 'drop' && !event.huntKill && <div data-drop className={`material-flight rarity-${event.rarity}`} key={`drop-${event.id}`}><MaterialIcon rarity={event.rarity ?? 'common'} /></div>)}
     </section>
     <div data-guide="battle-party" className={`party-strip${usingPotion ? ' party-strip--selecting' : ''}`} aria-label={tr("パーティメンバー")} onContextMenuCapture={event => event.preventDefault()} onDragStartCapture={event => event.preventDefault()}>

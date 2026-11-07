@@ -658,13 +658,13 @@
         "en": "Workbench"
       },
       "inputs": {
-        "timber": 4,
-        "stone": 3
+        "timber": 5,
+        "stone": 4
       },
       "outputs": {
         "bench": 1
       },
-      "seconds": 12,
+      "seconds": 15,
       "station": null,
       "chapter": 1,
       "automatable": false,
@@ -678,13 +678,13 @@
         "en": "Smelting furnace"
       },
       "inputs": {
-        "stone": 6,
-        "clay": 4
+        "stone": 8,
+        "clay": 5
       },
       "outputs": {
         "furnace": 1
       },
-      "seconds": 12,
+      "seconds": 15,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -698,13 +698,13 @@
         "en": "Kiln"
       },
       "inputs": {
-        "stone": 5,
-        "clay": 5
+        "stone": 7,
+        "clay": 7
       },
       "outputs": {
         "kiln": 1
       },
-      "seconds": 12,
+      "seconds": 15,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -718,14 +718,14 @@
         "en": "Sawmill"
       },
       "inputs": {
-        "iron": 4,
-        "gear": 2,
-        "plank": 4
+        "iron": 6,
+        "gear": 3,
+        "plank": 6
       },
       "outputs": {
         "sawmill": 1
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -739,14 +739,14 @@
         "en": "Rolling press"
       },
       "inputs": {
-        "iron": 5,
-        "gear": 2,
-        "brick": 3
+        "iron": 7,
+        "gear": 3,
+        "brick": 5
       },
       "outputs": {
         "press": 1
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "bench",
       "chapter": 2,
       "automatable": false,
@@ -760,14 +760,14 @@
         "en": "Lathe"
       },
       "inputs": {
-        "plate": 4,
-        "gear": 3,
-        "copper-ingot": 2
+        "plate": 6,
+        "gear": 5,
+        "copper-ingot": 3
       },
       "outputs": {
         "lathe": 1
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "press",
       "chapter": 2,
       "automatable": false,
@@ -781,14 +781,14 @@
         "en": "Wire drawer"
       },
       "inputs": {
-        "copper-ingot": 3,
-        "gear": 2,
-        "plank": 3
+        "copper-ingot": 5,
+        "gear": 3,
+        "plank": 5
       },
       "outputs": {
         "wire-drawer": 1
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -802,14 +802,14 @@
         "en": "Loom"
       },
       "inputs": {
-        "plank": 5,
-        "gear": 2,
-        "rope": 2
+        "plank": 7,
+        "gear": 3,
+        "rope": 3
       },
       "outputs": {
         "loom": 1
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "bench",
       "chapter": 2,
       "automatable": false,
@@ -823,14 +823,14 @@
         "en": "Extractor"
       },
       "inputs": {
-        "plate": 4,
-        "glass": 3,
-        "wire": 4
+        "plate": 7,
+        "glass": 5,
+        "wire": 7
       },
       "outputs": {
         "extractor": 1
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -844,14 +844,14 @@
         "en": "Distillation column"
       },
       "inputs": {
-        "glass": 5,
-        "plate": 3,
-        "wire": 3
+        "glass": 9,
+        "plate": 5,
+        "wire": 5
       },
       "outputs": {
         "condenser": 1
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -865,15 +865,15 @@
         "en": "Automatic assembler"
       },
       "inputs": {
-        "plate": 5,
-        "gear": 4,
-        "wire": 6,
-        "brick": 3
+        "plate": 9,
+        "gear": 7,
+        "wire": 10,
+        "brick": 5
       },
       "outputs": {
         "assembler": 1
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -892,7 +892,7 @@
       "outputs": {
         "plank": 2
       },
-      "seconds": 4,
+      "seconds": 5,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -906,12 +906,12 @@
         "en": "Charcoal"
       },
       "inputs": {
-        "timber": 2
+        "timber": 3
       },
       "outputs": {
         "charcoal": 3
       },
-      "seconds": 8,
+      "seconds": 10,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -925,13 +925,13 @@
         "en": "Iron ingot"
       },
       "inputs": {
-        "ore": 2,
+        "ore": 3,
         "charcoal": 1
       },
       "outputs": {
         "iron": 2
       },
-      "seconds": 10,
+      "seconds": 12,
       "station": "furnace",
       "chapter": 1,
       "automatable": true,
@@ -945,13 +945,13 @@
         "en": "Copper ingot"
       },
       "inputs": {
-        "copper": 2,
+        "copper": 3,
         "charcoal": 1
       },
       "outputs": {
         "copper-ingot": 2
       },
-      "seconds": 10,
+      "seconds": 12,
       "station": "furnace",
       "chapter": 1,
       "automatable": true,
@@ -965,13 +965,13 @@
         "en": "Glass"
       },
       "inputs": {
-        "silica": 2,
+        "silica": 3,
         "charcoal": 1
       },
       "outputs": {
         "glass": 2
       },
-      "seconds": 10,
+      "seconds": 12,
       "station": "kiln",
       "chapter": 1,
       "automatable": true,
@@ -985,13 +985,13 @@
         "en": "Firebrick"
       },
       "inputs": {
-        "clay": 2,
+        "clay": 3,
         "charcoal": 1
       },
       "outputs": {
         "brick": 3
       },
-      "seconds": 10,
+      "seconds": 12,
       "station": "kiln",
       "chapter": 1,
       "automatable": true,
@@ -1005,12 +1005,12 @@
         "en": "Gear"
       },
       "inputs": {
-        "iron": 2
+        "iron": 3
       },
       "outputs": {
         "gear": 2
       },
-      "seconds": 8,
+      "seconds": 11,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1024,12 +1024,12 @@
         "en": "Metal plate"
       },
       "inputs": {
-        "iron": 2
+        "iron": 3
       },
       "outputs": {
         "plate": 3
       },
-      "seconds": 10,
+      "seconds": 14,
       "station": "press",
       "chapter": 2,
       "automatable": true,
@@ -1043,12 +1043,12 @@
         "en": "Copper wire"
       },
       "inputs": {
-        "copper-ingot": 1
+        "copper-ingot": 2
       },
       "outputs": {
         "wire": 3
       },
-      "seconds": 8,
+      "seconds": 11,
       "station": "wire-drawer",
       "chapter": 1,
       "automatable": true,
@@ -1062,12 +1062,12 @@
         "en": "Reed rope"
       },
       "inputs": {
-        "fiber": 2
+        "fiber": 3
       },
       "outputs": {
         "rope": 2
       },
-      "seconds": 6,
+      "seconds": 8,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1081,12 +1081,12 @@
         "en": "Machine oil"
       },
       "inputs": {
-        "fish": 2
+        "fish": 4
       },
       "outputs": {
         "oil": 3
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "extractor",
       "chapter": 3,
       "automatable": true,
@@ -1100,13 +1100,13 @@
         "en": "Sealant"
       },
       "inputs": {
-        "fiber": 2,
-        "oil": 1
+        "fiber": 4,
+        "oil": 2
       },
       "outputs": {
         "sealant": 3
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "extractor",
       "chapter": 3,
       "automatable": true,
@@ -1120,13 +1120,13 @@
         "en": "Distilled water"
       },
       "inputs": {
-        "water": 2,
-        "coal": 1
+        "water": 4,
+        "coal": 2
       },
       "outputs": {
         "pure-water": 3
       },
-      "seconds": 12,
+      "seconds": 18,
       "station": "condenser",
       "chapter": 3,
       "automatable": true,
@@ -1140,14 +1140,14 @@
         "en": "Precision parts"
       },
       "inputs": {
-        "plate": 1,
-        "gear": 1,
-        "wire": 2
+        "plate": 2,
+        "gear": 2,
+        "wire": 4
       },
       "outputs": {
         "precision": 2
       },
-      "seconds": 14,
+      "seconds": 21,
       "station": "assembler",
       "chapter": 3,
       "automatable": true,
@@ -1161,14 +1161,14 @@
         "en": "Charged crystal"
       },
       "inputs": {
-        "crystal": 1,
-        "wire": 2,
-        "pure-water": 1
+        "crystal": 2,
+        "wire": 4,
+        "pure-water": 2
       },
       "outputs": {
         "charged-crystal": 2
       },
-      "seconds": 16,
+      "seconds": 24,
       "station": "assembler",
       "chapter": 3,
       "automatable": true,
@@ -1182,12 +1182,12 @@
         "en": "Automatic sawing"
       },
       "inputs": {
-        "timber": 1
+        "timber": 2
       },
       "outputs": {
         "plank": 4
       },
-      "seconds": 8,
+      "seconds": 11,
       "station": "sawmill",
       "chapter": 1,
       "automatable": true,
@@ -1201,12 +1201,12 @@
         "en": "Automatic gear cutting"
       },
       "inputs": {
-        "iron": 2
+        "iron": 3
       },
       "outputs": {
         "gear": 4
       },
-      "seconds": 12,
+      "seconds": 17,
       "station": "lathe",
       "chapter": 2,
       "automatable": true,
@@ -1220,12 +1220,12 @@
         "en": "Automatic rope weaving"
       },
       "inputs": {
-        "fiber": 2
+        "fiber": 3
       },
       "outputs": {
         "rope": 4
       },
-      "seconds": 10,
+      "seconds": 14,
       "station": "loom",
       "chapter": 2,
       "automatable": true,
@@ -1239,12 +1239,12 @@
         "en": "Automatic charcoal firing"
       },
       "inputs": {
-        "timber": 2
+        "timber": 3
       },
       "outputs": {
         "charcoal": 4
       },
-      "seconds": 12,
+      "seconds": 15,
       "station": "kiln",
       "chapter": 1,
       "automatable": true,
@@ -1258,14 +1258,14 @@
         "en": "Mining pick"
       },
       "inputs": {
-        "iron": 3,
-        "plank": 2,
-        "rope": 1
+        "iron": 5,
+        "plank": 3,
+        "rope": 2
       },
       "outputs": {
         "pick": 1
       },
-      "seconds": 16,
+      "seconds": 22,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1279,14 +1279,14 @@
         "en": "Improved fishing rod"
       },
       "inputs": {
-        "plank": 3,
-        "rope": 2,
-        "gear": 1
+        "plank": 5,
+        "rope": 3,
+        "gear": 2
       },
       "outputs": {
         "rod": 1
       },
-      "seconds": 16,
+      "seconds": 22,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1300,13 +1300,13 @@
         "en": "Logging axe"
       },
       "inputs": {
-        "iron": 3,
-        "plank": 2
+        "iron": 5,
+        "plank": 3
       },
       "outputs": {
         "axe": 1
       },
-      "seconds": 16,
+      "seconds": 22,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1320,15 +1320,15 @@
         "en": "Geared mining drill"
       },
       "inputs": {
-        "precision": 3,
-        "gear": 5,
-        "plate": 4,
-        "oil": 2
+        "precision": 5,
+        "gear": 9,
+        "plate": 7,
+        "oil": 4
       },
       "outputs": {
         "drill": 1
       },
-      "seconds": 16,
+      "seconds": 24,
       "station": "assembler",
       "chapter": 3,
       "automatable": false,
@@ -1342,15 +1342,15 @@
         "en": "Powered fishing reel"
       },
       "inputs": {
-        "precision": 2,
-        "wire": 5,
-        "rope": 4,
-        "oil": 2
+        "precision": 4,
+        "wire": 9,
+        "rope": 7,
+        "oil": 4
       },
       "outputs": {
         "fishing-rig": 1
       },
-      "seconds": 16,
+      "seconds": 24,
       "station": "assembler",
       "chapter": 3,
       "automatable": false,
@@ -1364,14 +1364,14 @@
         "en": "Mechanical saw"
       },
       "inputs": {
-        "precision": 3,
-        "plate": 4,
-        "oil": 2
+        "precision": 5,
+        "plate": 7,
+        "oil": 4
       },
       "outputs": {
         "logging-rig": 1
       },
-      "seconds": 16,
+      "seconds": 24,
       "station": "assembler",
       "chapter": 3,
       "automatable": false,
@@ -1385,13 +1385,13 @@
         "en": "Resource storage crate"
       },
       "inputs": {
-        "plank": 8,
-        "iron": 2
+        "plank": 12,
+        "iron": 3
       },
       "outputs": {
         "crate": 1
       },
-      "seconds": 10,
+      "seconds": 14,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1405,14 +1405,14 @@
         "en": "Field lantern"
       },
       "inputs": {
-        "glass": 2,
-        "wire": 2,
-        "plank": 2
+        "glass": 3,
+        "wire": 3,
+        "plank": 3
       },
       "outputs": {
         "field-lantern": 1
       },
-      "seconds": 20,
+      "seconds": 27,
       "station": "bench",
       "chapter": 1,
       "automatable": false,
@@ -1426,14 +1426,14 @@
         "en": "Safety valve key"
       },
       "inputs": {
-        "gear": 2,
-        "plate": 2,
-        "wire": 2
+        "gear": 4,
+        "plate": 4,
+        "wire": 4
       },
       "outputs": {
         "safety-key": 1
       },
-      "seconds": 20,
+      "seconds": 30,
       "station": "press",
       "chapter": 2,
       "automatable": false,
@@ -1447,14 +1447,14 @@
         "en": "Sluice handwheel"
       },
       "inputs": {
-        "gear": 4,
-        "plate": 4,
-        "rope": 2
+        "gear": 7,
+        "plate": 7,
+        "rope": 4
       },
       "outputs": {
         "sluice-handle": 1
       },
-      "seconds": 20,
+      "seconds": 30,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -1468,14 +1468,14 @@
         "en": "Forest surveying compass"
       },
       "inputs": {
-        "precision": 2,
-        "glass": 3,
-        "wire": 4
+        "precision": 4,
+        "glass": 6,
+        "wire": 8
       },
       "outputs": {
         "survey-compass": 1
       },
-      "seconds": 20,
+      "seconds": 35,
       "station": "assembler",
       "chapter": 4,
       "automatable": false,
@@ -1489,14 +1489,14 @@
         "en": "Homeward nameplate"
       },
       "inputs": {
-        "precision": 2,
-        "wire": 4,
-        "rope": 3
+        "precision": 4,
+        "wire": 8,
+        "rope": 6
       },
       "outputs": {
         "nameplate": 1
       },
-      "seconds": 20,
+      "seconds": 35,
       "station": "assembler",
       "chapter": 5,
       "automatable": false,
@@ -1510,14 +1510,14 @@
         "en": "Relay lantern"
       },
       "inputs": {
-        "charged-crystal": 2,
-        "glass": 4,
-        "wire": 6
+        "charged-crystal": 4,
+        "glass": 8,
+        "wire": 12
       },
       "outputs": {
         "relay-lamp": 1
       },
-      "seconds": 20,
+      "seconds": 35,
       "station": "assembler",
       "chapter": 6,
       "automatable": false,
@@ -1531,14 +1531,14 @@
         "en": "Greenhouse regulator"
       },
       "inputs": {
-        "charged-crystal": 3,
-        "precision": 3,
-        "sealant": 4
+        "charged-crystal": 7,
+        "precision": 7,
+        "sealant": 10
       },
       "outputs": {
         "resonance-core": 1
       },
-      "seconds": 20,
+      "seconds": 40,
       "station": "assembler",
       "chapter": 7,
       "automatable": false,
@@ -1552,15 +1552,15 @@
         "en": "Wick Hearth"
       },
       "inputs": {
-        "brick": 4,
-        "copper-ingot": 3,
-        "gear": 2,
-        "rope": 2
+        "brick": 6,
+        "copper-ingot": 5,
+        "gear": 3,
+        "rope": 3
       },
       "outputs": {
         "wick-generator": 1
       },
-      "seconds": 18,
+      "seconds": 25,
       "station": "bench",
       "chapter": 2,
       "automatable": false,
@@ -1574,14 +1574,14 @@
         "en": "Light Reservoir"
       },
       "inputs": {
-        "charged-crystal": 2,
-        "glass": 4,
-        "wire": 5
+        "charged-crystal": 4,
+        "glass": 7,
+        "wire": 9
       },
       "outputs": {
         "light-reservoir": 1
       },
-      "seconds": 24,
+      "seconds": 36,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -1595,15 +1595,15 @@
         "en": "Moonlit Waterwheel"
       },
       "inputs": {
-        "plate": 5,
-        "gear": 4,
-        "rope": 3,
-        "pure-water": 4
+        "plate": 9,
+        "gear": 7,
+        "rope": 5,
+        "pure-water": 7
       },
       "outputs": {
         "moon-waterwheel": 1
       },
-      "seconds": 32,
+      "seconds": 48,
       "station": "lathe",
       "chapter": 3,
       "automatable": false,
@@ -1617,19 +1617,19 @@
         "en": "Resonant Circuit"
       },
       "inputs": {
-        "precision": 2,
-        "charged-crystal": 1,
-        "wire": 3
+        "precision": 4,
+        "charged-crystal": 2,
+        "wire": 6
       },
       "outputs": {
         "resonant-circuit": 2
       },
-      "seconds": 20,
+      "seconds": 35,
       "station": "assembler",
       "chapter": 4,
       "automatable": true,
       "tier": 4,
-      "power": 3
+      "power": 4
     },
     {
       "id": "luminous-alloy",
@@ -1638,19 +1638,19 @@
         "en": "Light-Conducting Alloy"
       },
       "inputs": {
-        "iron": 3,
-        "copper-ingot": 2,
-        "charged-crystal": 1
+        "iron": 6,
+        "copper-ingot": 4,
+        "charged-crystal": 2
       },
       "outputs": {
         "luminous-alloy": 3
       },
-      "seconds": 24,
+      "seconds": 42,
       "station": "assembler",
       "chapter": 4,
       "automatable": true,
       "tier": 4,
-      "power": 3
+      "power": 4
     },
     {
       "id": "resonance-assembler",
@@ -1659,19 +1659,19 @@
         "en": "Resonance Assembler"
       },
       "inputs": {
-        "resonant-circuit": 3,
-        "luminous-alloy": 4,
-        "precision": 3
+        "resonant-circuit": 6,
+        "luminous-alloy": 8,
+        "precision": 6
       },
       "outputs": {
         "resonance-assembler": 1
       },
-      "seconds": 30,
+      "seconds": 53,
       "station": "assembler",
       "chapter": 4,
       "automatable": false,
       "tier": 4,
-      "power": 4
+      "power": 5
     },
     {
       "id": "star-circuit",
@@ -1680,19 +1680,19 @@
         "en": "Star-Sigil Circuit"
       },
       "inputs": {
-        "resonant-circuit": 3,
-        "luminous-alloy": 2,
-        "charged-crystal": 2
+        "resonant-circuit": 7,
+        "luminous-alloy": 5,
+        "charged-crystal": 5
       },
       "outputs": {
         "star-circuit": 2
       },
-      "seconds": 30,
+      "seconds": 60,
       "station": "resonance-assembler",
       "chapter": 5,
       "automatable": true,
       "tier": 5,
-      "power": 5
+      "power": 7
     },
     {
       "id": "lunar-reactor",
@@ -1701,19 +1701,19 @@
         "en": "Moonlight Resonator"
       },
       "inputs": {
-        "star-circuit": 2,
-        "luminous-alloy": 5,
-        "precision": 4
+        "star-circuit": 5,
+        "luminous-alloy": 12,
+        "precision": 10
       },
       "outputs": {
         "lunar-reactor": 1
       },
-      "seconds": 36,
+      "seconds": 72,
       "station": "resonance-assembler",
       "chapter": 5,
       "automatable": false,
       "tier": 5,
-      "power": 5
+      "power": 7
     },
     {
       "id": "star-assembler",
@@ -1722,19 +1722,19 @@
         "en": "Starlight Fabricator"
       },
       "inputs": {
-        "star-circuit": 3,
-        "resonant-circuit": 4,
-        "luminous-alloy": 4
+        "star-circuit": 7,
+        "resonant-circuit": 10,
+        "luminous-alloy": 10
       },
       "outputs": {
         "star-assembler": 1
       },
-      "seconds": 36,
+      "seconds": 72,
       "station": "resonance-assembler",
       "chapter": 5,
       "automatable": false,
       "tier": 5,
-      "power": 5
+      "power": 7
     },
     {
       "id": "autonomous-core",
@@ -1743,20 +1743,20 @@
         "en": "Autonomous Core"
       },
       "inputs": {
-        "star-circuit": 3,
-        "resonant-circuit": 2,
-        "precision": 3,
-        "oil": 2
+        "star-circuit": 7,
+        "resonant-circuit": 5,
+        "precision": 7,
+        "oil": 5
       },
       "outputs": {
         "autonomous-core": 1
       },
-      "seconds": 40,
+      "seconds": 80,
       "station": "star-assembler",
       "chapter": 6,
       "automatable": true,
       "tier": 5,
-      "power": 8
+      "power": 11
     },
     {
       "id": "resonance-drill",
@@ -1766,19 +1766,19 @@
       },
       "inputs": {
         "drill": 1,
-        "resonant-circuit": 3,
-        "luminous-alloy": 4,
-        "oil": 3
+        "resonant-circuit": 6,
+        "luminous-alloy": 8,
+        "oil": 6
       },
       "outputs": {
         "resonance-drill": 1
       },
-      "seconds": 30,
+      "seconds": 53,
       "station": "resonance-assembler",
       "chapter": 4,
       "automatable": false,
       "tier": 4,
-      "power": 4
+      "power": 5
     },
     {
       "id": "resonance-fishing",
@@ -1788,19 +1788,19 @@
       },
       "inputs": {
         "fishing-rig": 1,
-        "resonant-circuit": 3,
-        "luminous-alloy": 4,
-        "oil": 3
+        "resonant-circuit": 6,
+        "luminous-alloy": 8,
+        "oil": 6
       },
       "outputs": {
         "resonance-fishing": 1
       },
-      "seconds": 30,
+      "seconds": 53,
       "station": "resonance-assembler",
       "chapter": 4,
       "automatable": false,
       "tier": 4,
-      "power": 4
+      "power": 5
     },
     {
       "id": "resonance-saw",
@@ -1810,19 +1810,19 @@
       },
       "inputs": {
         "logging-rig": 1,
-        "resonant-circuit": 3,
-        "luminous-alloy": 4,
-        "oil": 3
+        "resonant-circuit": 6,
+        "luminous-alloy": 8,
+        "oil": 6
       },
       "outputs": {
         "resonance-saw": 1
       },
-      "seconds": 30,
+      "seconds": 53,
       "station": "resonance-assembler",
       "chapter": 4,
       "automatable": false,
       "tier": 4,
-      "power": 4
+      "power": 5
     },
     {
       "id": "autonomous-drill",
@@ -1832,19 +1832,19 @@
       },
       "inputs": {
         "resonance-drill": 1,
-        "autonomous-core": 2,
-        "star-circuit": 3,
-        "sealant": 3
+        "autonomous-core": 5,
+        "star-circuit": 7,
+        "sealant": 7
       },
       "outputs": {
         "autonomous-drill": 1
       },
-      "seconds": 40,
+      "seconds": 80,
       "station": "star-assembler",
       "chapter": 6,
       "automatable": false,
       "tier": 5,
-      "power": 8
+      "power": 11
     },
     {
       "id": "autonomous-fishing",
@@ -1854,19 +1854,19 @@
       },
       "inputs": {
         "resonance-fishing": 1,
-        "autonomous-core": 2,
-        "star-circuit": 3,
-        "sealant": 3
+        "autonomous-core": 5,
+        "star-circuit": 7,
+        "sealant": 7
       },
       "outputs": {
         "autonomous-fishing": 1
       },
-      "seconds": 40,
+      "seconds": 80,
       "station": "star-assembler",
       "chapter": 6,
       "automatable": false,
       "tier": 5,
-      "power": 8
+      "power": 11
     },
     {
       "id": "autonomous-saw",
@@ -1876,19 +1876,19 @@
       },
       "inputs": {
         "resonance-saw": 1,
-        "autonomous-core": 2,
-        "star-circuit": 3,
-        "sealant": 3
+        "autonomous-core": 5,
+        "star-circuit": 7,
+        "sealant": 7
       },
       "outputs": {
         "autonomous-saw": 1
       },
-      "seconds": 40,
+      "seconds": 80,
       "station": "star-assembler",
       "chapter": 6,
       "automatable": false,
       "tier": 5,
-      "power": 8
+      "power": 11
     },
     {
       "id": "light-sawn-plank",
@@ -1900,12 +1900,12 @@
       "chapter": 2,
       "station": "sawmill",
       "inputs": {
-        "timber": 1
+        "timber": 2
       },
       "outputs": {
         "plank": 6
       },
-      "seconds": 6,
+      "seconds": 9,
       "power": 1,
       "automatable": true
     },
@@ -1919,15 +1919,15 @@
       "chapter": 3,
       "station": "assembler",
       "inputs": {
-        "plate": 1,
-        "gear": 1,
-        "wire": 2
+        "plate": 2,
+        "gear": 2,
+        "wire": 4
       },
       "outputs": {
         "precision": 4
       },
-      "seconds": 12,
-      "power": 2,
+      "seconds": 18,
+      "power": 3,
       "automatable": true
     },
     {
@@ -1940,15 +1940,15 @@
       "chapter": 3,
       "station": "assembler",
       "inputs": {
-        "crystal": 1,
-        "wire": 2,
-        "pure-water": 1
+        "crystal": 2,
+        "wire": 4,
+        "pure-water": 2
       },
       "outputs": {
         "charged-crystal": 4
       },
-      "seconds": 16,
-      "power": 2,
+      "seconds": 24,
+      "power": 3,
       "automatable": true
     },
     {
@@ -1960,9 +1960,9 @@
       "tier": 1,
       "power": 0,
       "station": "bench",
-      "seconds": 3,
+      "seconds": 4,
       "inputs": {
-        "polishing-powder": 3,
+        "polishing-powder": 4,
         "fiber": 1
       },
       "outputs": {
@@ -1980,10 +1980,10 @@
       "tier": 2,
       "power": 1,
       "station": "loom",
-      "seconds": 6,
+      "seconds": 9,
       "inputs": {
-        "polishing-cloth": 3,
-        "gear": 1
+        "polishing-cloth": 5,
+        "gear": 2
       },
       "outputs": {
         "polishing-kit": 8
@@ -2000,11 +2000,11 @@
       "tier": 2,
       "power": 1,
       "station": "press",
-      "seconds": 8,
+      "seconds": 11,
       "inputs": {
-        "polishing-powder": 8,
-        "glass": 2,
-        "wire": 1
+        "polishing-powder": 12,
+        "glass": 3,
+        "wire": 2
       },
       "outputs": {
         "recovery-lantern": 1
@@ -2019,13 +2019,13 @@
         "en": "Exploration incense"
       },
       "tier": 3,
-      "power": 2,
+      "power": 3,
       "station": "assembler",
-      "seconds": 12,
+      "seconds": 18,
       "inputs": {
-        "polishing-powder": 30,
-        "oil": 2,
-        "charged-crystal": 1
+        "polishing-powder": 50,
+        "oil": 4,
+        "charged-crystal": 2
       },
       "outputs": {
         "exploration-incense": 1
@@ -2040,14 +2040,14 @@
         "en": "Precision batch polishing kits"
       },
       "tier": 4,
-      "power": 3,
+      "power": 4,
       "station": "resonance-assembler",
-      "seconds": 12,
+      "seconds": 21,
       "inputs": {
-        "polishing-cloth": 2,
-        "luminous-alloy": 1,
-        "resonant-circuit": 1,
-        "polishing-powder": 6
+        "polishing-cloth": 4,
+        "luminous-alloy": 2,
+        "resonant-circuit": 2,
+        "polishing-powder": 12
       },
       "outputs": {
         "polishing-kit": 24
@@ -2062,14 +2062,14 @@
         "en": "Stellar gathering lights"
       },
       "tier": 5,
-      "power": 4,
+      "power": 6,
       "station": "star-assembler",
-      "seconds": 12,
+      "seconds": 24,
       "inputs": {
-        "glass": 4,
-        "wire": 2,
-        "star-circuit": 1,
-        "polishing-powder": 24
+        "glass": 10,
+        "wire": 5,
+        "star-circuit": 3,
+        "polishing-powder": 56
       },
       "outputs": {
         "recovery-lantern": 8
@@ -2084,14 +2084,14 @@
         "en": "Stellar exploration incense"
       },
       "tier": 5,
-      "power": 4,
+      "power": 6,
       "station": "star-assembler",
-      "seconds": 15,
+      "seconds": 30,
       "inputs": {
-        "oil": 3,
-        "resonant-circuit": 1,
-        "autonomous-core": 1,
-        "polishing-powder": 60
+        "oil": 7,
+        "resonant-circuit": 3,
+        "autonomous-core": 3,
+        "polishing-powder": 138
       },
       "outputs": {
         "exploration-incense": 6

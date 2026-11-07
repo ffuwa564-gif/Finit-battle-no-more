@@ -25,21 +25,21 @@ describe('tiered workshop and finite light power',()=>{
   settleIndustry(starved,200000);expect(starved.power?.stored).toBe(90);
  });
  it('pauses powered work during an outage, shares scarce power, and gives identical results across reload intervals',()=>{
-  const s=powered();settleIndustry(s,40000);expect(s.stock['resonant-circuit']).toBe(4);expect(s.crafted?.['resonant-circuit']).toBe(2);expect(s.power?.consumed).toBe(120);
-  const chunked=powered();for(const t of[1000,7000,17000,23000,40000])settleIndustry(chunked,t);expect(chunked).toEqual(s);
-  const outage=powered();delete outage.machines['wick-generator:1'];outage.power={stored:3,generated:3,consumed:0};settleIndustry(outage,1000);
+  const s=powered();settleIndustry(s,100000);expect(s.stock['resonant-circuit']).toBe(2);expect(s.crafted?.['resonant-circuit']).toBe(1);expect(s.power?.consumed).toBe(300);
+  const chunked=powered();for(const t of[1000,7000,17000,23000,100000])settleIndustry(chunked,t);expect(chunked).toEqual(s);
+  const outage=powered();delete outage.machines['wick-generator:1'];outage.power={stored:4,generated:4,consumed:0};settleIndustry(outage,1000);
   const progress=Object.values(outage.machines).map(m=>m.progress);expect(progress.reduce((a,b)=>a+b,0)).toBe(1000);
   settleIndustry(outage,10000);expect(Object.values(outage.machines).map(m=>m.progress)).toEqual(progress);expect(validIndustry(outage)).toBe(true);
  });
  it('reserves manual craft energy inside battery capacity and refunds exactly once without creating light',()=>{
   let s=player();s.industry=powered();for(const m of Object.values(s.industry.machines))if(m.kind==='assembler')m.enabled=false;
-  s.industry.power={stored:200,generated:200,consumed:0};const energy=industryEnergyCost(industryRecipe('resonant-circuit')!);expect(energy).toBe(60);
-  const before=structuredClone(s);s=applyCommand(s,{type:'industryCraft',recipeId:'resonant-circuit',count:1},content,{now:0});expect(s.industry!.power!.stored).toBe(140);expect(s.industry!.job!.energy).toBe(60);
+  s.industry.power={stored:200,generated:200,consumed:0};const energy=industryEnergyCost(industryRecipe('resonant-circuit')!);expect(energy).toBe(140);
+  const before=structuredClone(s);s=applyCommand(s,{type:'industryCraft',recipeId:'resonant-circuit',count:1},content,{now:0});expect(s.industry!.power!.stored).toBe(60);expect(s.industry!.job!.energy).toBe(140);
   s=decodeBackup(encodeBackup(s,content),content).save;s=applyCommand(s,{type:'industrySync'},content,{now:10000});expect(s.industry!.power!.generated).toBe(200);expect(s.industry!.stock.charcoal).toBe(before.industry!.stock.charcoal);
   s=applyCommand(s,{type:'industryCancel'},content,{now:10000});expect(s.industry!.power).toEqual(before.industry!.power);expect(s.industry!.stock).toEqual(before.industry!.stock);
   expect(()=>applyCommand(s,{type:'industryCancel'},content,{now:10000})).toThrow();
-  s=applyCommand(s,{type:'industryCraft',recipeId:'resonant-circuit',count:1},content,{now:10000});s=applyCommand(s,{type:'industrySync'},content,{now:30000});
-  expect(s.industry!.power!.consumed).toBe(60);expect(s.industry!.crafted?.['resonant-circuit']).toBe(1);expect(s.industry!.power!.stored+s.industry!.power!.consumed).toBe(s.industry!.power!.generated);
+  s=applyCommand(s,{type:'industryCraft',recipeId:'resonant-circuit',count:1},content,{now:10000});s=applyCommand(s,{type:'industrySync'},content,{now:45000});
+  expect(s.industry!.power!.consumed).toBe(140);expect(s.industry!.crafted?.['resonant-circuit']).toBe(1);expect(s.industry!.power!.stored+s.industry!.power!.consumed).toBe(s.industry!.power!.generated);
  });
  it('caps offline generation, prevents clock-rollback duplication and lets reservoirs increase real capacity',()=>{
   const s=emptyIndustry(0);s.machines={'moon-waterwheel:1':{...machine('moon-waterwheel'),enabled:true}};settleIndustry(s,7*86400000);expect(s.power!.generated).toBe(200);
@@ -53,7 +53,7 @@ describe('tiered workshop and finite light power',()=>{
  });
  it('uses fuel for an efficient tier-two sawmill without creating raw resources',()=>{
   const s=emptyIndustry(0);s.stock={timber:12,charcoal:1};s.machines={'wick-generator:1':{...machine('wick-generator'),enabled:true},'sawmill:1':machine('sawmill','light-sawn-plank')};
-  settleIndustry(s,60000);expect(s.stock).toMatchObject({timber:2,charcoal:0,plank:60});expect(s.power).toEqual({stored:30,generated:90,consumed:60});expect(s.crafted?.['light-sawn-plank']).toBe(10);
+  settleIndustry(s,60000);expect(s.stock).toMatchObject({timber:0,charcoal:0,plank:36});expect(s.power).toEqual({stored:36,generated:90,consumed:54});expect(s.crafted?.['light-sawn-plank']).toBe(6);
  });
  it('applies a harvesting tool that finishes during exploration to the real claimed resources',()=>{
   const s=createInitialSave(content,42),id=content.chapters![0].dungeonIds[0],d=content.dungeons.find(d=>d.id===id)!;
@@ -72,7 +72,7 @@ describe('tiered workshop and finite light power',()=>{
  });
  it('bootstraps a tier-five harvesting tool from raw resources through the actual craft planner and commands',()=>{
   let s=player(),now=0;s.industry!.stock=Object.fromEntries(industryCatalog.items.filter(i=>i.kind==='raw').map(i=>[i.id,10000]));
-  for(let step=0;step<1200;step++){
+  for(let step=0;step<2000;step++){
    const need=nextIndustryNeed(s.industry!,'autonomous-drill',7);if(!need)break;
    if(need.kind==='raw'||need.kind==='chapter')throw Error(JSON.stringify(need));
    if(need.kind==='waiting'){now=s.industry!.job!.readyAt;s=applyCommand(s,{type:'industrySync'},content,{now});}
