@@ -202,7 +202,9 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
   const party = first ? battle.partyIds.map((id, i) => makeUnit(battle, content, id, 'party', i)) : battle.units.filter((unit) => unit.side === 'party');
   party.forEach((unit) => { clearEffects(unit); unit.cooldowns = {}; });
   let rareId: string | undefined;
-  if (def.rareEncounter && battle.wave === def.waves.length - 2) {
+  // Hunts generate their own rare encounters in refillHunt; wave replacements
+  // would be discarded before their dialogue can reference the spawned actor.
+  if (def.rareEncounter && !battle.hunt && battle.wave === def.waves.length - 2) {
     const roll = rng(battle.seed); battle.seed = roll.seed;
     if (roll.value * 100 < def.rareEncounter.chance) {
       const pick = rng(battle.seed); battle.seed = pick.seed;

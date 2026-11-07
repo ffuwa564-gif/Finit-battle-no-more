@@ -10,6 +10,18 @@ const stage=content.dungeons.find(d=>d.id==='silent-cathedral')!;
 function fixture(seed=42){const s=createInitialSave(content,seed);s.battle=createBattle(content,s.partyIds,s.leaderId,stage.id,5,seed,`hunt-${seed}`,'hunt');s.battle.harvest=createBattleHarvest(s.battle.id);return s;}
 function ready(s:ReturnType<typeof fixture>){while(s.battle?.phase==='playing')s=applyCommand(s,{type:'replay'},content);return s;}
 describe('continuous hunt',()=>{
+ it('does not apply legacy rare-wave replacement before constructing a hunt roster',()=>{
+  const source=content.dungeons.find(d=>d.rareEncounter)!;
+  const d={...stage,waves:[stage.waves[0]!,stage.waves.at(-1)!],rareEncounter:{...source.rareEncounter!,chance:100}};
+  const c={...content,dungeons:content.dungeons.map(x=>x.id===d.id?d:x)},s=createInitialSave(c);
+  const hunt=createBattle(c,s.partyIds,s.leaderId,d.id,0,42,'rare-opening','hunt');
+  expect(hunt.units.filter(u=>u.side==='enemy'&&u.hp>0)).toHaveLength(3);
+  expect(hunt.events.every(e=>!e.actorId||hunt.units.some(u=>u.uid===e.actorId))).toBe(true);
+  const wave=createBattle(c,s.partyIds,s.leaderId,d.id,0,42,'rare-legacy');
+  expect(wave.units.some(u=>d.rareEncounter.characterIds.includes(u.characterId))).toBe(true);
+  expect(wave.events.some(e=>e.kind==='dialogue'&&e.text.startsWith('希少な気配'))).toBe(true);
+ });
+
  it('keeps existing saves and special battles in their original mode',()=>{
   const s=createInitialSave(content);expect(createBattle(content,s.partyIds,s.leaderId,stage.id,0,42,'old').hunt).toBeUndefined();
   expect(canHunt({...stage,kind:'trial'})).toBe(false);expect(canHunt({...stage,towerFloor:1})).toBe(false);
