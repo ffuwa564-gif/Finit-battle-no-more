@@ -1,0 +1,10 @@
+音声：VOICEVOX:ずんだもん（ノーマル）／VOICEVOX:四国めたん（ノーマル）
+https://voicevox.hiroshiba.jp/
+キャラクター：東北ずん子・ずんだもんプロジェクト
+https://zunko.jp/
+実況イラスト：承認済みSTILLVEIL攻略日記Part2のオリジナル表情素材を再利用。
+音楽：甘茶の音楽工房（作曲：甘茶）「フィヨルドの澄んだ風」
+https://amachamusic.chagasi.com/music_fjordnosundakaze.html
+楽曲の単体再配布・Content ID登録はしないでください。
+ゲーム：STILLVEIL ― 静謐の残響
+効果音：ゲームの実装内PCM合成を、実際の戦闘イベント表示フレームに合わせて再構成。

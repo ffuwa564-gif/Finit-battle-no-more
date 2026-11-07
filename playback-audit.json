@@ -1,0 +1,60 @@
+{
+  "sha256": "2ca684cd9bda76e5c456f0472ddf7c4f29f5d68e80eb30e9ee1801272f5ea436",
+  "results": [
+    {
+      "browser": "chromium",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.708589,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 150.400845,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 298.581977,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "pass": true,
+      "points": [
+        {
+          "time": 0.71008129,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 150.389559611,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        },
+        {
+          "time": 298.578120218,
+          "width": 1920,
+          "height": 1080,
+          "error": null,
+          "paused": false
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

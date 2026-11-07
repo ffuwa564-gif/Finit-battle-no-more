@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "commandsIncludingReplay": 121257,
+  "expectedCommands": 121257,
+  "initialSha256": "1d30b130cbce17f45c6d5650fdb6782d4cc52098a996eebb136eb4d205a73d2e",
+  "finalSha256": "bd235e0e564c0e087740186a789955a5c7a5f35bdcfec82032ec8850990ad138",
+  "initialSeed": "0x584a39b1",
+  "journalSha256": "9b4e13550d40d40cbfe005bba7e404dd65558717f9dc53b2ddecb288623abbad",
+  "conditions": "Default new save reconstructed solely through applyCommand. Omitted replay commands deterministically drained before the next input. No stock, stat, seed or clear injections."
+}

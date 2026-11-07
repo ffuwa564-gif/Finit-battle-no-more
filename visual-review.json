@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "sha256": "2ca684cd9bda76e5c456f0472ddf7c4f29f5d68e80eb30e9ee1801272f5ea436",
+  "reviewedTimes": [
+    2,
+    78,
+    150,
+    200,
+    264,
+    299
+  ],
+  "reviewSheet": "cfr-review-sheet.jpg",
+  "checks": {
+    "avatarsHeadAndEarsInsideContain": true,
+    "captionsAtMostTwoLines": true,
+    "speakerColorsAndLabelsAgree": true,
+    "initialRosterAndGoalBuildDistinct": true,
+    "polishResultMatchesNarration": true,
+    "towerCardPanelClearedByLegalChoices": true,
+    "finalCreditsPresent": true
+  },
+  "avatarBounds": "Original 320x440 avatar assets have >=32px padding; placed at x0/x1600 y470 with no cropping.",
+  "scope": "Reviewed frames from the exact final MP4, including final second. Dynamic battle/audio synchronization audited separately."
+}
