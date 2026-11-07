@@ -1,0 +1,34 @@
+{
+  "revision": "pronunciation-jiu-01",
+  "baseMovieSha256": "8e86d4f4f9a8100437ac500bdf7be8febef5cf34c345fd90acd78b7f5e915058",
+  "movieSha256": "4d45eb71d0930012f7ef376afd44dbf4829d2d66ea515b9ee97d4460fb343ef3",
+  "sourceCodeSha256": "3173d5c95dcf9b66c05360d7bb80f8399ff07ba8eaf643e4b01e1252fd5d529b",
+  "originalQuerySha256": "48e228bf0ed8c407ab4b13b584b5e79bfcbe47c6aadb919d6c2aa2cb0f805f1d",
+  "correctedQuerySha256": "55668a0bd220211377b22282b7d718606038df14f21d9d5f96809de487abf0e4",
+  "oldMoras": [
+    "ジ",
+    "イ"
+  ],
+  "newMoras": [
+    "ジ",
+    "ウ"
+  ],
+  "changedFields": [
+    "accent_phrases[11].moras[1].text",
+    "accent_phrases[11].moras[1].vowel"
+  ],
+  "allOtherQueryFieldsIdentical": true,
+  "sameNarrationSampleCount": 421376,
+  "changedMasterSampleRange": [
+    8661454,
+    8710724
+  ],
+  "changedMasterTimeRange": [
+    180.44695833333333,
+    181.47341666666668
+  ],
+  "masterPcmIdenticalOutsideCorrection": true,
+  "masterSha256": "59ef8fc7e930723bbb5daac6b56645cbc1c5b083403fd9cac203d8dbfccfa0c2",
+  "videoPolicy": "Copy original H264 packets; no video re-encoding. Verify packet hashes separately.",
+  "audioPolicy": "Only the isolated noun and its comma pauses are replaced in the original lossless master. Same sample count, no time stretch; AAC generated from lossless master."
+}

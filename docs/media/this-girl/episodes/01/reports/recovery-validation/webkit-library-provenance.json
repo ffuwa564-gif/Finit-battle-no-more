@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://deb.debian.org/debian/pool/main/l/lzo2/liblzo2-2_2.10-3+b2_amd64.deb",
+    "sha256": "e6d203343d6031d486a3a0c651b44c3f9c1672bf93831c264a17e37588a1cba9"
+  },
+  {
+    "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libgles2_1.7.0-1+b2_amd64.deb",
+    "sha256": "e12c18aa77939d122ee1dea520ba0440b97dc19200b7396e03dff03a3ece74c1"
+  }
+]
