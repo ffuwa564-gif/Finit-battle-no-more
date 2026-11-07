@@ -1078,10 +1078,11 @@ export function useBattleFairy(input: Battle, fairyId: string, content: Content)
   emit(battle, { kind: 'buff', fairyAction: 'charge', fairySide: visitor.side, targetIds: party.map(unit => unit.uid), amount: FAIRY_CHARGE, text: '妖精の祝福 — 味方全員の必殺ゲージ＋15%', unitsAfter: clone(battle.units) });
   return battle;
 }
-export function advanceReplay(input: Battle, content: Content): Battle {
+export function advanceReplay(input: Battle, content: Content, owned = false): Battle {
   content=combatContent(input,content);
   if (input.phase !== 'playing') throw new Error('再生中ではありません');
-  const battle = clone(input);
+  // applyCommand already owns a full clone; avoid copying every event snapshot twice.
+  const battle = owned ? input : clone(input);
   delete battle.omens;
   if (battle.cursor < battle.events.length) battle.cursor += 1;
   if (battle.cursor < battle.events.length) return battle;

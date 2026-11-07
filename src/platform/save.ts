@@ -1,3 +1,4 @@
+import {validPartyPresets} from '../domain/party-presets';
 import {validReincarnation,hasTier7} from '../domain/reincarnation';
 import {novelAvailable} from '../domain/novels';
 import {validGemPreparation,validConcordMark,BUILD_GEM_IDS} from '../domain/build-gems';
@@ -113,6 +114,7 @@ function validEvent(value: unknown): boolean {
 
 /** Reject unreadable records; callers must never interpret corruption as a new game. */
 export function assertValidSave(value: unknown): asserts value is GameSave {
+  if(record(value)&&value.partyPresets!==undefined&&!validPartyPresets(value.partyPresets))throw new Error('保存した編成の記録が不正です。');
   if (record(value) && value.industry !== undefined && !validIndustry(value.industry)) throw new Error('工房の記録を読み込めません。');
   if (record(value) && value.worldStory !== undefined && !validWorldStory(value.worldStory)) throw new Error('旅の記録を読み込めません。');
   if (record(value) && value.researchSkillIds !== undefined && !stringArray(value.researchSkillIds)) throw new Error('研究技能の記録が不正です。');

@@ -1,3 +1,4 @@
+import {PartyPresets} from './PartyPresets';
 import { GameImage } from './GameMedia';
 import { useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronRight, Crown, Gem, Layers3, LockKeyhole, Shield, Target, Users, X, Zap } from 'lucide-react';
@@ -88,6 +89,8 @@ export function BuildPlanner({ save, content, dispatch, busy = false, onClose, o
 
   return <InventoryTheme className="inventory-build-document" controls="plain"><section className="build-planner" aria-label={tr('ビルドの道標')} data-testid="build-planner">
     <header className="build-planner__header"><div><span className="build-planner__eyebrow">BUILD ATELIER</span><h2>{tr('ビルドの道標')}</h2></div><div className="inventory-book-cover" aria-hidden="true"><InventoryIllustration kind="open-folio"/></div><Button variant="icon" aria-label={tr('閉じる')} onClick={onClose}><X size={20} /></Button></header>
+    <label className="build-planner__selector">{tr('確認するビルド')}<select aria-label={tr('確認するビルド')} value={selectedId} onChange={e=>choose(e.target.value)}>{BUILD_DEFINITIONS.map(b=><option key={b.id} value={b.id}>{tr(b.name)} · {tr(b.tagline)}</option>)}</select></label>
+    <PartyPresets save={save} content={content} busy={busy} command={dispatch}/>
     <div ref={catalog} className="build-planner__catalog"><InventorySection id="build-catalog" title="おすすめビルド" count={BUILD_DEFINITIONS.length}><div className="build-planner__choices" aria-label={tr('おすすめビルド')}>
       {BUILD_DEFINITIONS.map((build,index) => { const Icon=icons[index % icons.length]; const members=build.stages.complete.slots.slice(0,3).map(slot => character(slot.characterIds[0])).filter(Boolean); return <Button key={build.id} variant="secondary" selected={selectedId === build.id} data-testid={`build-card-${build.id}`} data-build-id={build.id} inventoryArt="none" className={`build-planner__choice build-planner__choice--${index}`} onClick={() => choose(build.id)}>
         <span className="build-planner__choice-art" aria-hidden="true">{members.map((member,i) => member && <GameImage key={`${member.id}-${i}`} src={assetPath(member.portraitId)} alt="" style={{objectPosition:content.assets.find(asset=>asset.id===member.portraitId)?.anchor ?? '50% 20%'}} />)}</span>
