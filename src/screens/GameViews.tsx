@@ -1,4 +1,4 @@
-import {PartyPresets} from '../ui';
+import {PartyPresets,ExplorationComplete} from '../ui';
 import {ReincarnationHub} from '../ui';
 import {combatProfile,COMBAT_STYLES,stoneMastery} from '../domain/combat-profiles';
 import {GEM_DEFINITIONS,gemPowerMultiplier} from '../domain/memory-gems';
@@ -280,6 +280,7 @@ export function BattleView(p: ViewProps) {
     <section className={`battle-scene${enemies.some(unit => unit.boss) ? ' battle-scene--boss' : ''}`} aria-label={tr("敵の戦場")}>
       <EnemyCarousel key={`${battle.id}:${battle.wave}`} units={enemies} bitPattern={dungeon.bossBits} bossStrike={dungeon.bossStrike} bossClock={dungeon.bossClock} event={event} reducedMotion={p.save.settings.reducedMotion} hunt={battle.hunt ? (event?.huntProgress??battle.hunt) : undefined} wave={battle.wave + 1} waveCount={dungeon.waves.length} round={displayRound} roundLimit={dungeon.towerFloor ? TOWER_ROUND_LIMIT : undefined} materials={total + harvestedTotal} targetId={focusedEnemyId} fixedNumbers={Boolean(dungeon.coordination)} onDisplay={setViewedEnemyId} />
       <MemoryGemFind battle={battle} reducedMotion={p.save.settings.reducedMotion} onOpen={() => setGemBag(true)} />
+      <ExplorationComplete battle={battle} event={event} reducedMotion={p.save.settings.reducedMotion}/>
       <UltimateCutIn event={event} units={units} speed={p.save.settings.speed} reducedMotion={p.save.settings.reducedMotion} />
       <SceneEffects mode="battle" reducedMotion={p.save.settings.reducedMotion} />
       <SceneAtmosphere suspendWithScene mode="battle" reducedMotion={p.save.settings.reducedMotion} disturbance={event?.kind === 'wave'} key={event?.kind === 'wave' ? event.id : 'quiet'} />

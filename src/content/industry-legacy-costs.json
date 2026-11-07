@@ -1,0 +1,610 @@
+{
+  "bench": {
+    "inputs": {
+      "timber": 4,
+      "stone": 3
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "furnace": {
+    "inputs": {
+      "stone": 6,
+      "clay": 4
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "kiln": {
+    "inputs": {
+      "stone": 5,
+      "clay": 5
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "sawmill": {
+    "inputs": {
+      "iron": 4,
+      "gear": 2,
+      "plank": 4
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "press": {
+    "inputs": {
+      "iron": 5,
+      "gear": 2,
+      "brick": 3
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "lathe": {
+    "inputs": {
+      "plate": 4,
+      "gear": 3,
+      "copper-ingot": 2
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "wire-drawer": {
+    "inputs": {
+      "copper-ingot": 3,
+      "gear": 2,
+      "plank": 3
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "loom": {
+    "inputs": {
+      "plank": 5,
+      "gear": 2,
+      "rope": 2
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "extractor": {
+    "inputs": {
+      "plate": 4,
+      "glass": 3,
+      "wire": 4
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "condenser": {
+    "inputs": {
+      "glass": 5,
+      "plate": 3,
+      "wire": 3
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "assembler": {
+    "inputs": {
+      "plate": 5,
+      "gear": 4,
+      "wire": 6,
+      "brick": 3
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "plank": {
+    "inputs": {
+      "timber": 1
+    },
+    "seconds": 4,
+    "power": 0
+  },
+  "charcoal": {
+    "inputs": {
+      "timber": 2
+    },
+    "seconds": 8,
+    "power": 0
+  },
+  "iron": {
+    "inputs": {
+      "ore": 2,
+      "charcoal": 1
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "copper-ingot": {
+    "inputs": {
+      "copper": 2,
+      "charcoal": 1
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "glass": {
+    "inputs": {
+      "silica": 2,
+      "charcoal": 1
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "brick": {
+    "inputs": {
+      "clay": 2,
+      "charcoal": 1
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "gear": {
+    "inputs": {
+      "iron": 2
+    },
+    "seconds": 8,
+    "power": 0
+  },
+  "plate": {
+    "inputs": {
+      "iron": 2
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "wire": {
+    "inputs": {
+      "copper-ingot": 1
+    },
+    "seconds": 8,
+    "power": 0
+  },
+  "rope": {
+    "inputs": {
+      "fiber": 2
+    },
+    "seconds": 6,
+    "power": 0
+  },
+  "oil": {
+    "inputs": {
+      "fish": 2
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "sealant": {
+    "inputs": {
+      "fiber": 2,
+      "oil": 1
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "pure-water": {
+    "inputs": {
+      "water": 2,
+      "coal": 1
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "precision": {
+    "inputs": {
+      "plate": 1,
+      "gear": 1,
+      "wire": 2
+    },
+    "seconds": 14,
+    "power": 0
+  },
+  "charged-crystal": {
+    "inputs": {
+      "crystal": 1,
+      "wire": 2,
+      "pure-water": 1
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "sawn-plank": {
+    "inputs": {
+      "timber": 1
+    },
+    "seconds": 8,
+    "power": 0
+  },
+  "turned-gear": {
+    "inputs": {
+      "iron": 2
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "woven-rope": {
+    "inputs": {
+      "fiber": 2
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "carbonize": {
+    "inputs": {
+      "timber": 2
+    },
+    "seconds": 12,
+    "power": 0
+  },
+  "pick": {
+    "inputs": {
+      "iron": 3,
+      "plank": 2,
+      "rope": 1
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "rod": {
+    "inputs": {
+      "plank": 3,
+      "rope": 2,
+      "gear": 1
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "axe": {
+    "inputs": {
+      "iron": 3,
+      "plank": 2
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "drill": {
+    "inputs": {
+      "precision": 3,
+      "gear": 5,
+      "plate": 4,
+      "oil": 2
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "fishing-rig": {
+    "inputs": {
+      "precision": 2,
+      "wire": 5,
+      "rope": 4,
+      "oil": 2
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "logging-rig": {
+    "inputs": {
+      "precision": 3,
+      "plate": 4,
+      "oil": 2
+    },
+    "seconds": 16,
+    "power": 0
+  },
+  "crate": {
+    "inputs": {
+      "plank": 8,
+      "iron": 2
+    },
+    "seconds": 10,
+    "power": 0
+  },
+  "field-lantern": {
+    "inputs": {
+      "glass": 2,
+      "wire": 2,
+      "plank": 2
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "safety-key": {
+    "inputs": {
+      "gear": 2,
+      "plate": 2,
+      "wire": 2
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "sluice-handle": {
+    "inputs": {
+      "gear": 4,
+      "plate": 4,
+      "rope": 2
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "survey-compass": {
+    "inputs": {
+      "precision": 2,
+      "glass": 3,
+      "wire": 4
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "nameplate": {
+    "inputs": {
+      "precision": 2,
+      "wire": 4,
+      "rope": 3
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "relay-lamp": {
+    "inputs": {
+      "charged-crystal": 2,
+      "glass": 4,
+      "wire": 6
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "resonance-core": {
+    "inputs": {
+      "charged-crystal": 3,
+      "precision": 3,
+      "sealant": 4
+    },
+    "seconds": 20,
+    "power": 0
+  },
+  "wick-generator": {
+    "inputs": {
+      "brick": 4,
+      "copper-ingot": 3,
+      "gear": 2,
+      "rope": 2
+    },
+    "seconds": 18,
+    "power": 0
+  },
+  "light-reservoir": {
+    "inputs": {
+      "charged-crystal": 2,
+      "glass": 4,
+      "wire": 5
+    },
+    "seconds": 24,
+    "power": 0
+  },
+  "moon-waterwheel": {
+    "inputs": {
+      "plate": 5,
+      "gear": 4,
+      "rope": 3,
+      "pure-water": 4
+    },
+    "seconds": 32,
+    "power": 0
+  },
+  "resonant-circuit": {
+    "inputs": {
+      "precision": 2,
+      "charged-crystal": 1,
+      "wire": 3
+    },
+    "seconds": 20,
+    "power": 3
+  },
+  "luminous-alloy": {
+    "inputs": {
+      "iron": 3,
+      "copper-ingot": 2,
+      "charged-crystal": 1
+    },
+    "seconds": 24,
+    "power": 3
+  },
+  "resonance-assembler": {
+    "inputs": {
+      "resonant-circuit": 3,
+      "luminous-alloy": 4,
+      "precision": 3
+    },
+    "seconds": 30,
+    "power": 4
+  },
+  "star-circuit": {
+    "inputs": {
+      "resonant-circuit": 3,
+      "luminous-alloy": 2,
+      "charged-crystal": 2
+    },
+    "seconds": 30,
+    "power": 5
+  },
+  "lunar-reactor": {
+    "inputs": {
+      "star-circuit": 2,
+      "luminous-alloy": 5,
+      "precision": 4
+    },
+    "seconds": 36,
+    "power": 5
+  },
+  "star-assembler": {
+    "inputs": {
+      "star-circuit": 3,
+      "resonant-circuit": 4,
+      "luminous-alloy": 4
+    },
+    "seconds": 36,
+    "power": 5
+  },
+  "autonomous-core": {
+    "inputs": {
+      "star-circuit": 3,
+      "resonant-circuit": 2,
+      "precision": 3,
+      "oil": 2
+    },
+    "seconds": 40,
+    "power": 8
+  },
+  "resonance-drill": {
+    "inputs": {
+      "drill": 1,
+      "resonant-circuit": 3,
+      "luminous-alloy": 4,
+      "oil": 3
+    },
+    "seconds": 30,
+    "power": 4
+  },
+  "resonance-fishing": {
+    "inputs": {
+      "fishing-rig": 1,
+      "resonant-circuit": 3,
+      "luminous-alloy": 4,
+      "oil": 3
+    },
+    "seconds": 30,
+    "power": 4
+  },
+  "resonance-saw": {
+    "inputs": {
+      "logging-rig": 1,
+      "resonant-circuit": 3,
+      "luminous-alloy": 4,
+      "oil": 3
+    },
+    "seconds": 30,
+    "power": 4
+  },
+  "autonomous-drill": {
+    "inputs": {
+      "resonance-drill": 1,
+      "autonomous-core": 2,
+      "star-circuit": 3,
+      "sealant": 3
+    },
+    "seconds": 40,
+    "power": 8
+  },
+  "autonomous-fishing": {
+    "inputs": {
+      "resonance-fishing": 1,
+      "autonomous-core": 2,
+      "star-circuit": 3,
+      "sealant": 3
+    },
+    "seconds": 40,
+    "power": 8
+  },
+  "autonomous-saw": {
+    "inputs": {
+      "resonance-saw": 1,
+      "autonomous-core": 2,
+      "star-circuit": 3,
+      "sealant": 3
+    },
+    "seconds": 40,
+    "power": 8
+  },
+  "light-sawn-plank": {
+    "inputs": {
+      "timber": 1
+    },
+    "seconds": 6,
+    "power": 1
+  },
+  "light-precision": {
+    "inputs": {
+      "plate": 1,
+      "gear": 1,
+      "wire": 2
+    },
+    "seconds": 12,
+    "power": 2
+  },
+  "light-crystal": {
+    "inputs": {
+      "crystal": 1,
+      "wire": 2,
+      "pure-water": 1
+    },
+    "seconds": 16,
+    "power": 2
+  },
+  "polishing-cloth": {
+    "inputs": {
+      "polishing-powder": 3,
+      "fiber": 1
+    },
+    "seconds": 3,
+    "power": 0
+  },
+  "polishing-kit": {
+    "inputs": {
+      "polishing-cloth": 3,
+      "gear": 1
+    },
+    "seconds": 6,
+    "power": 1
+  },
+  "recovery-lantern": {
+    "inputs": {
+      "polishing-powder": 8,
+      "glass": 2,
+      "wire": 1
+    },
+    "seconds": 8,
+    "power": 1
+  },
+  "exploration-incense": {
+    "inputs": {
+      "polishing-powder": 30,
+      "oil": 2,
+      "charged-crystal": 1
+    },
+    "seconds": 12,
+    "power": 2
+  },
+  "polishing-kit-efficient": {
+    "inputs": {
+      "polishing-cloth": 2,
+      "luminous-alloy": 1,
+      "resonant-circuit": 1,
+      "polishing-powder": 6
+    },
+    "seconds": 12,
+    "power": 3
+  },
+  "recovery-lantern-efficient": {
+    "inputs": {
+      "glass": 4,
+      "wire": 2,
+      "star-circuit": 1,
+      "polishing-powder": 24
+    },
+    "seconds": 12,
+    "power": 4
+  },
+  "exploration-incense-efficient": {
+    "inputs": {
+      "oil": 3,
+      "resonant-circuit": 1,
+      "autonomous-core": 1,
+      "polishing-powder": 60
+    },
+    "seconds": 15,
+    "power": 4
+  }
+}

@@ -1,9 +1,10 @@
+import legacyCosts from '../content/industry-legacy-costs.json' with {type:'json'};
 import catalog from '../content/industry.json' with { type: 'json' };
 import type { Content, DungeonDef, GameSave } from './types';
 export interface IndustryText { ja: string; en: string }
 export interface IndustryRecipe { tier: number; power: number; id: string; name: IndustryText; inputs: Record<string, number>; outputs: Record<string, number>; seconds: number; station: string | null; chapter: number; automatable: boolean }
 export interface IndustryMachine { kind: string; recipeId?: string; enabled: boolean; progress: number; fuelSeconds?: number; fuelRemainder?: number }
-export interface IndustryState { version: 1; stock: Record<string, number>; machines: Record<string, IndustryMachine>; updatedAt: number; power?: { stored: number; generated: number; consumed: number }; crafted?: Record<string, number>; target?: string; job?: { recipeId: string; count: number; readyAt: number; energy?: number } }
+export interface IndustryState { version: 1; stock: Record<string, number>; machines: Record<string, IndustryMachine>; updatedAt: number; power?: { stored: number; generated: number; consumed: number }; crafted?: Record<string, number>; target?: string; job?: { recipeId: string; count: number; readyAt: number; energy?: number; inputs?: Record<string,number> } }
 export type IndustryCommand = { type: 'industryPower'; machineId: string; enabled: boolean } | { type: 'industrySync' } | { type: 'industryCollect' } | { type: 'industryTrack'; recipeId: string | null } | { type: 'industryCraft'; recipeId: string; count: number } | { type: 'industryInstall'; itemId: string } | { type: 'industryConfigure'; machineId: string; recipeId: string | null } | { type: 'industryCancel' };
 export const industryCatalog = catalog as unknown as { version: number; tiers: {level: number; name: IndustryText}[]; items: { id: string; name: IndustryText; kind: 'raw' | 'part' | 'machine' | 'tool' | 'story'; tier: number }[]; recipes: IndustryRecipe[]; bonuses: Record<string, { category: string; bonus: number }>; storyTools: Record<string, string>; power: { baseCapacity: number; storage: Record<string,number>; generators: Record<string,{ output: number; fuel?: { itemId: string; count: number; seconds: number }; flavor: IndustryText }> }; profiles: { id: string; name: IndustryText; flavor: IndustryText; drops: Record<string, number> }[] };
 const MAX = 9999999, OFFLINE_SECONDS = 7200;
@@ -38,7 +39,7 @@ export function industryPowerFlow(s: IndustryState) {
   }
   return {supply,demand};
 }
-/** Deterministic one-second simulation. Old mechanical recipes retain their costs.
+/** Deterministic one-second simulation. Mechanical recipes use no light power.
  * New light-powered lines pause during outages, preserving paid work; supply and
  * fuel are settled before loads, with absolute-time rotation among powered loads.
  * No resource or elapsed production can be minted by reloads or clock rollback. */
@@ -103,7 +104,7 @@ export function applyIndustry(save: GameSave, command: IndustryCommand, content:
     m.enabled=command.enabled;return;
   }
   if (command.type === 'industryTrack') { if (command.recipeId !== null && !industryRecipe(command.recipeId)) throw Error('その製作図はありません。'); if (command.recipeId) s.target = command.recipeId; else delete s.target; return; }
-  if (command.type === 'industryCancel') { if (!s.job) throw Error('加工中の品はありません。'); add(s, industryRecipe(s.job.recipeId)!.inputs, s.job.count); if(s.job.energy){const p=powerState(s);p.stored=Math.min(industryEnergyCapacity(s),p.stored+s.job.energy);} delete s.job; return; }
+  if (command.type === 'industryCancel') { if (!s.job) throw Error('加工中の品はありません。'); add(s, s.job.inputs??(legacyCosts as Record<string,{inputs:Record<string,number>}>)[s.job.recipeId]?.inputs??industryRecipe(s.job.recipeId)!.inputs, s.job.count); if(s.job.energy){const p=powerState(s);p.stored=Math.min(industryEnergyCapacity(s),p.stored+s.job.energy);} delete s.job; return; }
   if (command.type === 'industryInstall') {
     if (industryItem(command.itemId)?.kind !== 'machine' || !(s.stock[command.itemId] > 0)) throw Error('設置できる装置がありません。');
     const count = installedIndustry(s, command.itemId);
@@ -124,7 +125,7 @@ export function applyIndustry(save: GameSave, command: IndustryCommand, content:
   const energy=industryEnergyCost(r,count);
   if(energy>(s.power?.stored??0))throw Error('灯力が足りません。発灯設備と蓄灯槽を確認してください。');
   spend(s, r.inputs, count);if(energy)powerState(s).stored-=energy;
-  s.job = { recipeId: r.id, count, readyAt: now + r.seconds * count * 1000, ...(energy?{energy}:{}) };
+  s.job = { recipeId: r.id, count, inputs:{...r.inputs}, readyAt: now + r.seconds * count * 1000, ...(energy?{energy}:{}) };
 }
 export function dungeonIndustryProfile(d: DungeonDef, content: Content) {
   const chapter = content.chapters?.find(c => c.dungeonIds.includes(d.id)), index = chapter?.dungeonIds.indexOf(d.id) ?? (d.towerFloor ?? 0);
@@ -168,7 +169,8 @@ export function nextIndustryNeed(s: IndustryState, recipeId: string, chapter: nu
       const producer = industryCatalog.recipes.find(p => p.outputs[input] && p.id === input) ?? industryCatalog.recipes.find(p => p.outputs[input]);
       if (producer) return visit(producer.id, Math.ceil(missing / producer.outputs[input]), seen);
     }
-    const amount=Math.min(20,count),energy=industryEnergyCost(r,amount);
+    const unitEnergy=industryEnergyCost(r,1);
+    const amount=Math.min(20,count,unitEnergy?Math.max(1,Math.floor(industryEnergyCapacity(s)/unitEnergy)):20),energy=industryEnergyCost(r,amount);
     if(energy>(s.power?.stored??0)){
       if(energy>industryEnergyCapacity(s)&&installedIndustry(s,'light-reservoir')<8)return (s.stock['light-reservoir']??0)>0?{kind:'install',id:'light-reservoir',count:1}:visit('light-reservoir',1,seen);
       if(!Object.keys(industryCatalog.power.generators).some(id=>installedIndustry(s,id)))return (s.stock['wick-generator']??0)>0?{kind:'install',id:'wick-generator',count:1}:visit('wick-generator',1,seen);
@@ -195,7 +197,13 @@ export function validIndustry(value: unknown): value is IndustryState {
   if(s.power!==undefined&&(!s.power||typeof s.power!=='object'||Array.isArray(s.power)||!natural(s.power.stored)||s.power.stored+(s.job?.energy??0)>industryEnergyCapacity(s)||!natural(s.power.generated)||!natural(s.power.consumed)))return false;
   if(s.crafted!==undefined&&(!s.crafted||typeof s.crafted!=='object'||Array.isArray(s.crafted)||Object.entries(s.crafted).some(([id,n])=>!industryRecipe(id)||!natural(n))))return false;
   if (s.target !== undefined && !industryRecipe(s.target)) return false;
-  return !s.job || Boolean(industryRecipe(s.job.recipeId) && natural(s.job.count) && s.job.count >= 1 && s.job.count <= 20 && Number.isSafeInteger(s.job.readyAt) && s.job.readyAt >= 0 && (s.job.energy === undefined ? !industryRecipe(s.job.recipeId)!.power : Boolean(s.power) && natural(s.job.energy) && s.job.energy === industryEnergyCost(industryRecipe(s.job.recipeId)!,s.job.count)));
+  if(!s.job)return true;
+  const job=s.job,r=industryRecipe(job.recipeId),old=(legacyCosts as Record<string,{inputs:Record<string,number>;seconds:number;power:number}>)[job.recipeId];
+  if(!r||!natural(job.count)||job.count<1||job.count>20||!Number.isSafeInteger(job.readyAt)||job.readyAt<0)return false;
+  const same=(a:Record<string,number>,b:Record<string,number>)=>Object.keys(a).length===Object.keys(b).length&&Object.entries(a).every(([k,v])=>v===b[k]);
+  if(job.inputs!==undefined&&(!job.inputs||typeof job.inputs!=='object'||Array.isArray(job.inputs)||!same(job.inputs,r.inputs)))return false;
+  const energy=job.inputs?industryEnergyCost(r,job.count):(old?old.power*old.seconds*job.count:industryEnergyCost(r,job.count));
+  return energy===0?job.energy===undefined||job.energy===0:Boolean(s.power)&&natural(job.energy)&&job.energy===energy;
 }
 export function validateIndustryCatalog(): string[] {
   const errors: string[] = [], ids = new Set(industryCatalog.items.map(i => i.id));

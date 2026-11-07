@@ -1,4 +1,4 @@
-import { acquireGameAudioContext } from './audio-context';
+import { acquireGameAudioContext,gameAudioOutput } from './audio-context';
 import { combatSignature, type CombatSignature } from './combat-signatures';
 import { combatFamily } from './combat-audio';
 import type * as ToneTypes from 'tone';
@@ -16,6 +16,7 @@ let limiter: ToneTypes.Limiter | undefined;
 let lastCueAt = 0;
 const pending: { kind: SoundCue; rarity?: Rarity; skill?: SkillTemplate; variationKey?: string; signature?: CombatSignature; at: number }[] = [];
 let browserContext: AudioContext | undefined;
+let boundBrowserContext: AudioContext | undefined;
 let active = false;
 let volume = 1;
 let enabling: Promise<void> | undefined;
@@ -45,15 +46,16 @@ export async function enableAudio(): Promise<void> {
       // Bind the raw device clock before Tone's entry point initializes its
       // exported singletons. Otherwise importing Tone itself creates a second
       // native context before setContext can run.
-      if (!Tone) {
+      if (!Tone && boundBrowserContext !== context) {
         const binding = await import('tone/build/esm/core/Global.js');
         if (context !== browserContext) return;
         binding.setContext(context, true);
+        boundBrowserContext=context;
       }
       const tone = await import('tone');
-      if (!await unlocked || context !== browserContext) return;
+      if ((!await unlocked && context.state !== 'running') || context !== browserContext) return;
       if (tone.getContext().rawContext !== context) tone.setContext(context, true);
-      Tone = tone;
+      Tone = tone; boundBrowserContext=context;
       if (!gain) {
         // The compressor can overshoot on overlapping sub-millisecond attacks.
         // Keep the approved isolated sounds unchanged below .88, and catch only
@@ -61,7 +63,7 @@ export async function enableAudio(): Promise<void> {
         const ceiling = new tone.WaveShaper(value => {
           const level = Math.abs(value);
           return level <= .88 ? value : Math.sign(value) * (.88 + .1 * Math.tanh((level - .88) / .1));
-        }, 4096).toDestination();
+        }, 4096).connect(gameAudioOutput(context));
         gain = new tone.Gain(volume * 0.9).connect(limiter = new tone.Limiter(-2).connect(ceiling));
         voice = new tone.PolySynth(tone.Synth, {
           oscillator: { type: 'sine' },
@@ -80,7 +82,8 @@ export async function enableAudio(): Promise<void> {
         for (const cue of queued) playSound(cue.kind, cue.rarity, cue.skill, cue.variationKey, cue.signature);
         window.dispatchEvent(new Event('game:audio-ready'));
       }
-    } catch {
+    } catch (error) {
+      if(import.meta.env.DEV)console.warn('Audio initialization:',error);
       if (context === browserContext) active = false;
     } finally {
       if (enabling === attempt) enabling = undefined;

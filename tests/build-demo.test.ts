@@ -12,7 +12,7 @@ describe('real-engine build demonstrations',()=>{
       expect(demo.demonstrated,`${definition.id}/${stage}`).toBe(true);
       expect(demo.frames.length).toBeLessThanOrEqual(16);
       const highlights=demo.frames.map(frame=>frame.highlight);
-      const expected=({'echo-chain':['chain','echo'],'shield-cannon':['barrier','shield'],'rabbit-battery':['battery','ultimate'],'status-weave':['sleep'],'enduring-tides':['drain','regen'],'skill-rewind':['rewind']} as Record<string,string[]>)[definition.id];
+      const expected=({'echo-chain':['chain','echo'],'shield-cannon':['barrier','shield'],'rabbit-battery':['battery','ultimate'],'status-weave':['sleep'],'enduring-tides':['drain','regen'],'skill-rewind':['rewind'],'sweep-dance':['sweep'],'overflow-relay':['overflow'],'concord-duet':['concord'],'disrupt-window':['disrupt']} as Record<string,string[]>)[definition.id];
       expect(expected).toBeDefined();
       for(const value of expected) expect(highlights,`${definition.id}/${stage} visible ${value}`).toContain(value);
       for(const frame of demo.frames) expect(frame.units).toEqual(frame.event.unitsAfter);

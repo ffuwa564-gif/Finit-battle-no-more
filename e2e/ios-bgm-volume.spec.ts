@@ -1,4 +1,4 @@
-import {fulfillAudioFixture} from './audio-fixture';
+import {fulfillAudioFixture,installDecodedMusicMeter} from './audio-fixture';
 import { test, expect, type Page } from '@playwright/test';
 import { enterGame } from './boot';
 
@@ -30,42 +30,29 @@ test('music settings change real output when iPhone media volume is ignored, ret
     Object.defineProperty(navigator, 'standalone', { get: () => true });
     // Emulate iOS's read-only media volume, then measure the actual gain output.
     Object.defineProperty(HTMLMediaElement.prototype, 'volume', { configurable: true, get: () => 1, set: () => {} });
-    const createSource = AudioContext.prototype.createMediaElementSource;
-    AudioContext.prototype.createMediaElementSource = function (element) {
-      const source = createSource.call(this, element), context = this, connect = source.connect.bind(source);
-      // Shared contexts contain SE gains too. Follow the actual music edge.
-      source.connect = function (destination, ...args: any[]) {
-        if (destination instanceof GainNode) {
-          const meter = context.createAnalyser(); meter.fftSize = 2048;
-          destination.connect(meter);
-          (window as any).musicMeter = meter; (window as any).musicContext = context;
-        }
-        return (connect as Function)(destination, ...args);
-      } as typeof source.connect;
-      return source;
-    };
   });
+  await page.addInitScript(installDecodedMusicMeter,2);
   await page.goto('/#settings'); await enterGame(page);
   const controls = page.getByRole('group', { name: 'BGM音量', exact: true });
-  const music = page.locator('audio[data-bgm]');
+  const state=()=>page.evaluate(async()=>(await import('/src/platform/bgm.ts')).getBgmPlaybackState());
   await controls.getByRole('button', { name: '100%', exact: true }).click();
   await expect.poll(() => rms(page)).toBeGreaterThan(.08);
-  const full = await rms(page), position = await music.evaluate((a: HTMLAudioElement) => a.currentTime);
+  const full = await rms(page), position = (await state()).position;
   await controls.getByRole('button', { name: '25%', exact: true }).click();
   await expect.poll(async () => (await rms(page)) / full).toBeGreaterThan(.22);
   await expect.poll(async () => (await rms(page)) / full).toBeLessThan(.28);
-  expect(await music.evaluate((a: HTMLAudioElement) => a.currentTime)).toBeGreaterThanOrEqual(position);
-  await expect(music).toHaveJSProperty('volume', 1);
+  expect(((await state()).position-position+2)%2).toBeLessThan(.8);
+  expect((await state()).backend).toBe('pcm');
   await controls.getByRole('button', { name: '50%', exact: true }).click();
   await expect.poll(async () => (await rms(page)) / full).toBeGreaterThan(.46);
   await expect.poll(async () => (await rms(page)) / full).toBeLessThan(.54);
   await page.evaluate(async () => { await (window as any).musicContext.suspend(); window.dispatchEvent(new Event('pageshow')); });
   await expect.poll(async () => (await rms(page)) / full).toBeGreaterThan(.46);
   await controls.getByRole('button', { name: '0%', exact: true }).click();
-  await expect(music).toHaveJSProperty('paused', true);
+  await expect.poll(async()=>(await state()).playing).toBe(false);
   await expect.poll(() => rms(page)).toBeLessThan(.0001);
   await page.evaluate(() => window.dispatchEvent(new Event('focus')));
-  await expect(music).toHaveJSProperty('paused', true);
+  await expect.poll(async()=>(await state()).playing).toBe(false);
   await controls.getByRole('button', { name: '25%', exact: true }).click();
   await expect.poll(async () => (await rms(page)) / full).toBeGreaterThan(.22);
   await expect.poll(async () => (await rms(page)) / full).toBeLessThan(.28);

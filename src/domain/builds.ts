@@ -7,7 +7,7 @@ export type BuildStage = 'starter' | 'complete' | 'perfect';
 export interface BuildGemTarget { defId: string; variant: GemVariant; power: number; trait?: GemTrait; value?: number; coreTrait?: GemTrait }
 export interface BuildSlot { id: string; label: string; characterIds: string[]; gem: BuildGemTarget }
 export interface BuildStageDefinition { label: string; description: string; slots: BuildSlot[]; leaderSlot: number }
-export interface BuildDefinition { id: string; name: string; tagline: string; description: string; mechanic: string; steps: string[]; stages: Record<BuildStage, BuildStageDefinition> }
+export interface BuildDefinition { demoDungeonIds?:Partial<Record<BuildStage,string>>; id: string; name: string; tagline: string; description: string; mechanic: string; steps: string[]; stages: Record<BuildStage, BuildStageDefinition> }
 export interface BuildGoal { buildId: string; stage: BuildStage }
 export interface BuildSlotPlan {
   slot: BuildSlot; characterId: string | null; preferredCharacterId: string; substitute: boolean;
@@ -117,6 +117,55 @@ export const BUILD_DEFINITIONS: BuildDefinition[] = [
       slot('healer', '回復技の再使用を支える', ['benzaiten', 'elaine-awakened', 'elaine'], 'twin-tide', stage, stage === 'starter' ? undefined : 'bulwark'),
     ], 1),
   },
+  {
+    id:'sweep-dance',name:'掃討輪舞',tagline:'敵が増えるほど、全体攻撃の出番。',
+    description:'掃討晶石と範囲役を組み合わせて複数の敵を削る。道中の討伐を伸ばし、単体のボスには別の攻撃へ切り替える。',
+    mechanic:'掃討晶石は敵が2体以上いるときに使える。1体あたりの威力は控えめで、残った1体には単体技が必要になる。',
+    steps:['先頭の範囲役に掃討晶石を装備する。','敵が複数いる間に石を使い、単体役で残りを仕留める。','ボスが1体になったら通常技や必殺へ持ち替える。'],
+    stages:defineStages(stage=>[
+      slot('sweep','複数の敵を削る起点',['noelle','noelle-awakened','asteria'],'sweep-prism',stage),
+      slot('finish','残った敵を仕留める',['seris','seris-awakened','nox'],'echo-shard',stage),
+      slot('guard','範囲役を守る',['liora','liora-awakened','athena'],'pale-ward',stage),
+      slot('heal','周回の傷を戻す',['elaine','elaine-awakened','miette'],'twin-tide',stage),
+    ]),
+  },
+  {
+    id:'overflow-relay',name:'残火リレー',tagline:'仕留めた一撃を、次の敵へ。',
+    description:'残火石で弱った敵を倒し、余った火力を別の敵へ渡す。最も硬い敵を殴り続けるより、仕留める相手を選ぶ構成。',
+    mechanic:'残火は撃破時の余剰ダメージの半分を使い、攻撃力と石の効力による上限がある。追加攻撃から残火は再発動しない。',
+    steps:['先頭の攻撃役に残火石を託す。','仲間の攻撃で弱った敵へページを合わせ、先頭の石を予約する。','敵が1体だけになったら、通常の攻撃へ切り替える。'],
+    stages:defineStages(stage=>[
+      slot('ember','残火を渡す攻撃役',['seris','seris-awakened','nox'],'overflow-ember',stage),
+      slot('soften','複数の敵を先に削る',['noelle','noelle-awakened','asteria'],'sweep-prism',stage),
+      slot('guard','攻撃役を支える',['liora','liora-awakened','athena'],'pale-ward',stage),
+      slot('heal','仕留める機会まで守る',['elaine','elaine-awakened','miette'],'night-dew',stage),
+    ]),
+  },
+  {
+    id:'concord-duet',demoDungeonIds:{perfect:'silver-crypt'},name:'共鳴二重奏',tagline:'同じ敵へ、二人の一手をつなぐ。',
+    description:'共鳴標石で印を置き、異なる二人の主攻撃を合わせて追加の一撃を出す。敵のページと味方の狙いをそろえることが主役になる。',
+    mechanic:'印の相手へ、異なる二人が実際のHPダメージを与えると発動する。障壁だけへの攻撃や追撃では進まず、印には期限がある。',
+    steps:['先頭の支援役に共鳴標石を装備する。','長く残りそうな敵へ印を置き、仲間二人の狙いを合わせる。','障壁が残る相手では、先に障壁を削ってから印を狙う。'],
+    stages:defineStages(stage=>[
+      slot('mark','二人の攻撃を受ける印',['noelle','noelle-awakened','iris'],'concord-mark',stage),
+      slot('first','一人目の主攻撃',['seris','seris-awakened'],'echo-shard',stage),
+      slot('second','二人目の主攻撃',['nox','freyja'],'night-dew',stage),
+      slot('guard','攻撃をそろえる間の守り',['liora','liora-awakened','athena'],'pale-ward',stage),
+    ],3),
+  },
+  {
+    id:'disrupt-window',name:'破調の一閃',tagline:'ボスの予告に、一撃を合わせる。',
+    description:'破調印石を持つ攻撃役を守り、ボスの予告大技に合わせて貫通攻撃を差し込む。道中の掃討より、ボスの準備を読むことに寄せる。',
+    mechanic:'破調印石はボスだけを狙い、予告大技の準備中に威力が上がる。石だけで必ず大技を止められるわけではない。',
+    steps:['攻撃役に破調印石を装備し、道中は通常技で進む。','ボスの予告が見えたら、使用可能な破調印石を予約する。','削り切れない大技には、盾役と回復役の備えも残す。'],
+    stages:defineStages(stage=>[
+      slot('disrupt','予告に合わせる貫通役',['seris','seris-awakened','nox'],'disrupt-sigil',stage),
+      slot('rewind','通常技の再使用を支える',['noelle','iris','vespera'],'rewind-thread',stage),
+      slot('guard','大技に備える守護',['liora','liora-awakened','athena'],'pale-ward',stage),
+      slot('heal','大技の後を立て直す',['elaine','elaine-awakened','benzaiten'],'twin-tide',stage),
+    ]),
+  },
+
 ];
 
 export function isBuildStage(value: unknown): value is BuildStage { return typeof value === 'string' && stages.includes(value as BuildStage); }

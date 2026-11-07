@@ -39,8 +39,8 @@ describe('surplus materials and expedition supplies',()=>{
   s.battle=createBattle(content,s.partyIds,s.leaderId,'silent-cathedral',0,42,'busy','hunt');expect(()=>applyCommand(s,{type:'quickPolish',rawIds:['one'],tool:'polishing-cloth'},content)).toThrow();
  });
  it('uses genuine tiered recipes, consumes ingredients and can automate polishing cloth',()=>{
-  const s=base();s.industry!.machines['bench:1']={kind:'bench',enabled:true,progress:0};s.industry!.stock={'polishing-powder':6,fiber:2};
-  let next=applyCommand(s,{type:'industryCraft',recipeId:'polishing-cloth',count:2},content,{now:1000});expect(next.industry!.stock['polishing-powder']).toBe(0);next=applyCommand(next,{type:'industryCollect'},content,{now:8000});expect(next.industry!.stock['polishing-cloth']).toBe(2);
+  const s=base();s.industry!.machines['bench:1']={kind:'bench',enabled:true,progress:0};s.industry!.stock={'polishing-powder':8,fiber:2};
+  let next=applyCommand(s,{type:'industryCraft',recipeId:'polishing-cloth',count:2},content,{now:1000});expect(next.industry!.stock['polishing-powder']).toBe(0);next=applyCommand(next,{type:'industryCollect'},content,{now:9000});expect(next.industry!.stock['polishing-cloth']).toBe(2);
   const efficient=industryRecipe('polishing-kit-efficient')!,normal=industryRecipe('polishing-kit')!;expect(efficient.inputs['polishing-cloth']/efficient.outputs['polishing-kit']).toBeLessThan(normal.inputs['polishing-cloth']/normal.outputs['polishing-kit']);
  });
  it('consumes selected supplies only on successful departure, and applies only to available resources',()=>{
@@ -66,7 +66,7 @@ describe('surplus materials and expedition supplies',()=>{
  });
 });
 it('automates cloth production using normal installed-machine processing',()=>{
- const s=base();s.industry!.machines['bench:1']={kind:'bench',enabled:true,progress:0};s.industry!.stock={'polishing-powder':3,fiber:1};
+ const s=base();s.industry!.machines['bench:1']={kind:'bench',enabled:true,progress:0};s.industry!.stock={'polishing-powder':4,fiber:1};
  let next=applyCommand(s,{type:'industryConfigure',machineId:'bench:1',recipeId:'polishing-cloth'},content,{now:1000});
  next=applyCommand(next,{type:'industrySync'},content,{now:5000});expect(next.industry!.stock['polishing-cloth']).toBe(1);expect(next.industry!.stock['polishing-powder']).toBe(0);
 });

@@ -1,4 +1,5 @@
-import { acquireGameAudioContext, releaseGameAudioContext } from './audio-context';
+import {PcmMusic} from './pcm-music';
+import { acquireGameAudioContext, releaseGameAudioContext,gameAudioOutput } from './audio-context';
 import { resumeAudioContext } from './audio-resume';
 import type { Battle, DungeonDef } from '../domain/types';
 
@@ -39,6 +40,9 @@ let volumeContext: AudioContext | undefined;
 let volumeGain: GainNode | undefined;
 let mediaSource: MediaElementAudioSourceNode | undefined;
 let volumeTarget: number | undefined;
+let pcmMusic:PcmMusic|undefined;
+let pcmRestore:{url:string;position:number}|undefined;
+let failedPcmScene:BgmScene|undefined;
 let restorePosition: { scene: string; time: number } | undefined;
 function keepOriginalPitch(): void {
   if (!player) return;
@@ -80,6 +84,7 @@ function unlockVolumeContext(): void {
     if (context !== volumeContext) {
       // A media element may only be connected to one MediaElementSource, even
       // after its context closes. Replace it, retaining the current track/time.
+      if(pcmMusic){pcmRestore=pcmMusic.snapshot();pcmMusic.dispose();pcmMusic=undefined;}
       if (volumeContext) renewPlayer();
       volumeContext?.removeEventListener('statechange', musicContextChanged);
       mediaSource?.disconnect(); volumeGain?.disconnect();
@@ -95,7 +100,7 @@ function connectNativeVolume(): void {
   try {
     const gain = volumeContext.createGain();
     gain.gain.value = BGM_MASTER_GAIN * volume * Math.min(1, ...ducks.values());
-    gain.connect(volumeContext.destination);
+    gain.connect(gameAudioOutput(volumeContext));
     mediaSource = volumeContext.createMediaElementSource(player);
     mediaSource.connect(gain);
     volumeGain = gain;
@@ -105,6 +110,7 @@ function connectNativeVolume(): void {
 }
 function applyVolume():void {
   const level=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values());
+  if(pcmMusic){pcmMusic.setVolume(level);return;}
   if (volumeGain) {
     if(volumeTarget===level)return;
     const param=volumeGain.gain,now=volumeContext!.currentTime;
@@ -129,8 +135,14 @@ export function createBgmDucker(){
 function syncBgm(): void {
   if (!unlocked) return;
   applyVolume();
-  if (document.hidden || volume === 0) { player?.pause(); return; }
+  if (document.hidden || volume === 0) { player?.pause();pcmMusic?.pause(); return; }
   unlockVolumeContext();
+  if(needsNativeVolume()&&volumeContext&&typeof volumeContext.decodeAudioData==='function'&&typeof volumeContext.createBufferSource==='function'&&failedPcmScene!==scene){
+    const level=BGM_MASTER_GAIN*volume*Math.min(1,...ducks.values());
+    if(!pcmMusic){removePlayer();mediaSource?.disconnect();volumeGain?.disconnect();mediaSource=undefined;volumeGain=undefined;volumeTarget=undefined;pcmMusic=new PcmMusic(volumeContext,level,(url)=>{failedPcmScene=url.endsWith(bgmTracks[scene].file)?scene:undefined;pcmMusic?.dispose();pcmMusic=undefined;syncBgm();},pcmRestore);pcmRestore=undefined;}
+    pcmMusic.sync(`${import.meta.env.BASE_URL}audio/${bgmTracks[scene].file}`,level,true);
+    return;
+  }
   if (!player) {
     player = document.createElement('audio');
     player.hidden = true;
@@ -176,7 +188,9 @@ export function setBgmVolume(nextVolume: number): void {
 }
 export function unlockBgm(): void { unlocked = true; unlockVolumeContext(); syncBgm(); }
 export function refreshBgm(): void { syncBgm(); }
+export function getBgmPlaybackState(){return {backend:pcmMusic?'pcm':player?'media':'idle',scene,position:pcmMusic?.position??player?.currentTime??0,playing:pcmMusic?.playing??(!!player&&!player.paused),sampleRate:volumeContext?.sampleRate};}
 export function disposeBgm(): void {
+  pcmMusic?.dispose();pcmMusic=undefined;pcmRestore=undefined;failedPcmScene=undefined;
   removePlayer();
   restorePosition = undefined;
   mediaSource?.disconnect(); volumeGain?.disconnect();

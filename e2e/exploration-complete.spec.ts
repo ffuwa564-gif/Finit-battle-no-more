@@ -1,0 +1,8 @@
+import{test,expect}from'@playwright/test';import{enterGame}from'./boot';
+for(const reducedMotion of [false,true])test(`reduced motion ${reducedMotion}: a real early boss transition shows the English completion banner and continues automatically`,async({page},info)=>{
+ await page.setViewportSize({width:390,height:844});await page.goto('/');await enterGame(page);
+ await page.evaluate(async(reducedMotion)=>{const{content}=await import('/src/content/index.ts'),{createBattle,advanceReplay}=await import('/src/domain/engine.ts'),{loadSave,persistSave}=await import('/src/platform/save.ts');const s=(await loadSave())!,rev=s.revision;let b=createBattle(content,s.partyIds,s.leaderId,'silent-cathedral',5,42,'complete-banner','hunt');while(b.phase==='playing')b=advanceReplay(b,content);b.hunt!.kills=12;b.hunt!.actions=45;b.hunt!.serial=15;s.battle=b;s.settings.speed=2;s.settings.reducedMotion=reducedMotion;s.revision++;await persistSave(s,rev);},reducedMotion);
+ await page.reload();await enterGame(page);await page.getByRole('button',{name:'ボスへ',exact:true}).click();await page.getByRole('button',{name:'ボスへ進む',exact:true}).click();
+ const banner=page.getByRole('status',{name:'Exploration complete',exact:true});await expect(banner).toBeVisible({timeout:15000});await expect(banner).toContainText('COMPLETE');await expect(banner).toContainText('BOSS APPROACHING');await expect.poll(()=>banner.evaluate(e=>Number(getComputedStyle(e).opacity))).toBeGreaterThan(.9);await page.screenshot({path:info.outputPath('exploration-complete-390.png')});await expect(banner).toHaveCount(0,{timeout:10000});
+ expect(await page.evaluate(async()=>(await(await import('/src/platform/save.ts')).loadSave())!.battle!.hunt!.stage)).toBe('boss');
+});

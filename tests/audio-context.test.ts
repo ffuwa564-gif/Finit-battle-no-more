@@ -1,5 +1,5 @@
 import {afterEach,describe,it,expect,vi} from 'vitest';
-import {acquireGameAudioContext,releaseGameAudioContext} from '../src/platform/audio-context';
+import {acquireGameAudioContext,releaseGameAudioContext,gameAudioOutput} from '../src/platform/audio-context';
 class DeviceContext extends EventTarget {
  state='running';sampleRate=48000;
  close=vi.fn(async()=>{this.state='closed';this.dispatchEvent(new Event('statechange'));});
@@ -20,4 +20,9 @@ describe('one game audio device clock',()=>{
   const se=acquireGameAudioContext('effects');last=se;expect(se).not.toBe(old);expect(acquireGameAudioContext('music')).toBe(se);
   releaseGameAudioContext('music',old);expect(se.close).not.toHaveBeenCalled();expect(construct).toHaveBeenCalledTimes(2);
  });
+});
+
+it('shares a final music/SE ceiling with unity gain for ordinary levels',()=>{
+ const gains:any[]=[],shapers:any[]=[];const c={destination:{},createGain:()=>{const n={gain:{value:1},connect:vi.fn()};gains.push(n);return n;},createWaveShaper:()=>{const n={curve:new Float32Array(),oversample:'none',connect:vi.fn()};shapers.push(n);return n;}} as unknown as AudioContext;
+ expect(gameAudioOutput(c)).toBe(gameAudioOutput(c));expect(gains).toHaveLength(1);expect(shapers).toHaveLength(1);expect(gains[0].gain.value).toBe(.5);expect(shapers[0].curve[2304]).toBeCloseTo(.25,5);expect(Math.max(...shapers[0].curve)).toBeLessThan(.981);expect(shapers[0].oversample).toBe('2x');
 });

@@ -55,35 +55,35 @@ describe('noncombat industrial workshop', () => {
     let s = createInitialSave(content, 42); s.industry = emptyIndustry(0); s.industry.stock = { timber: 8, stone: 6 };
     expect(() => applyCommand(s, { type: 'industryCraft', recipeId: 'iron', count: 1 }, content, { now: 0 })).toThrow();
     const started = applyCommand(s, { type: 'industryCraft', recipeId: 'bench', count: 1 }, content, { now: 0 });
-    expect(started.industry!.stock).toEqual({ timber: 4, stone: 3 });
+    expect(started.industry!.stock).toEqual({ timber: 3, stone: 2 });
     const canceled = applyCommand(started, { type: 'industryCancel' }, content, { now: 1000 });
     expect(canceled.industry!.stock).toEqual(s.industry.stock);
     expect(() => applyCommand(canceled, { type: 'industryCancel' }, content)).toThrow();
     s = decodeBackup(encodeBackup(started, content), content).save;
-    s = applyCommand(s, { type: 'industrySync' }, content, { now: 12000 }); expect(s.industry!.stock.bench).toBe(1);
-    s = applyCommand(s, { type: 'industrySync' }, content, { now: 13000 }); expect(s.industry!.stock.bench).toBe(1);
+    s = applyCommand(s, { type: 'industrySync' }, content, { now: 15000 }); expect(s.industry!.stock.bench).toBe(1);
+    s = applyCommand(s, { type: 'industrySync' }, content, { now: 16000 }); expect(s.industry!.stock.bench).toBe(1);
     expect(nextIndustryNeed(s.industry!, 'bench', 1)).toEqual({ kind: 'install', id: 'bench', count: 1 });
-    s = applyCommand(s, { type: 'industryInstall', itemId: 'bench' }, content, { now: 13000 }); expect(nextIndustryNeed(s.industry!, 'bench', 1)).toBeUndefined();
+    s = applyCommand(s, { type: 'industryInstall', itemId: 'bench' }, content, { now: 16000 }); expect(nextIndustryNeed(s.industry!, 'bench', 1)).toBeUndefined();
   });
   it('runs independent furnaces with different recipes, conserves inputs and never banks starvation time', () => {
     const s = emptyIndustry(0); s.stock = { ore: 6, copper: 6, charcoal: 6 };
     s.machines = { 'furnace:1': { kind: 'furnace', enabled: true, recipeId: 'iron', progress: 0 }, 'furnace:2': { kind: 'furnace', enabled: true, recipeId: 'copper-ingot', progress: 0 } };
-    settleIndustry(s, 30000); expect(s.stock).toMatchObject({ ore: 0, copper: 0, charcoal: 0, iron: 6, 'copper-ingot': 6 });
-    settleIndustry(s, 60000); expect(s.stock.iron).toBe(6); expect(s.machines['furnace:1'].progress).toBe(0);
-    s.stock.ore = 2; s.stock.charcoal = 1; settleIndustry(s, 69000); expect(s.stock.iron).toBe(6);
-    settleIndustry(s, 70000); expect(s.stock.iron).toBe(8); expect(s.stock.charcoal).toBe(0);
+    settleIndustry(s, 30000); expect(s.stock).toMatchObject({ ore: 0, copper: 0, charcoal: 2, iron: 4, 'copper-ingot': 4 });
+    settleIndustry(s, 60000); expect(s.stock.iron).toBe(4); expect(s.machines['furnace:1'].progress).toBe(0);
+    s.stock.ore = 3; s.stock.charcoal = 1; settleIndustry(s, 71000); expect(s.stock.iron).toBe(4);
+    settleIndustry(s, 72000); expect(s.stock.iron).toBe(6); expect(s.stock.charcoal).toBe(0);
     expect(validIndustry(JSON.parse(JSON.stringify(s)))).toBe(true);
   });
   it('resumes a blocked production line exactly when a paid manual job delivers its component', () => {
-    const s = emptyIndustry(0); s.job = { recipeId: 'iron', count: 1, readyAt: 5000 };
+    const s = emptyIndustry(0); s.job = { recipeId: 'iron', count: 2, readyAt: 5000 };
     s.machines = { 'lathe:1': { kind: 'lathe', enabled: true, recipeId: 'turned-gear', progress: 0 } };
-    settleIndustry(s, 15000); expect(s.stock.gear ?? 0).toBe(0); expect(s.stock.iron).toBe(2);
-    settleIndustry(s, 16000); expect(s.stock.gear).toBe(4); expect(s.stock.iron).toBe(0);
+    settleIndustry(s, 20000); expect(s.stock.gear ?? 0).toBe(0); expect(s.stock.iron).toBe(4);
+    settleIndustry(s, 21000); expect(s.stock.gear).toBe(4); expect(s.stock.iron).toBe(1);
   });
   it('caps offline production at two hours, stops at storage capacity and cannot duplicate with clock rollback', () => {
     const s = emptyIndustry(0); s.stock = { ore: 10000, charcoal: 10000, crate: 9 }; s.machines = { 'furnace:1': { kind: 'furnace', enabled: true, recipeId: 'iron', progress: 0 } };
-    const week = 7 * 86400000; settleIndustry(s, week); expect(s.stock.iron).toBe(1440);
-    settleIndustry(s, week); expect(s.stock.iron).toBe(1440); settleIndustry(s, 0); expect(s.stock.iron).toBe(1440);
+    const week = 7 * 86400000; settleIndustry(s, week); expect(s.stock.iron).toBe(1200);
+    settleIndustry(s, week); expect(s.stock.iron).toBe(1200); settleIndustry(s, 0); expect(s.stock.iron).toBe(1200);
     const full = emptyIndustry(0); full.stock = { ore: 100, charcoal: 100, iron: 200 }; full.machines = structuredClone(s.machines);
     settleIndustry(full, 60000); expect(full.stock).toEqual({ ore: 100, charcoal: 100, iron: 200 });
   });
