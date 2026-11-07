@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "url": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/2e1f6d5b276221164ee594e34f02359ef48da6c3/ThisGirl-03-v2.mp4",
+  "httpStatus": 206,
+  "contentType": "application/octet-stream",
+  "atoms": [
+    {
+      "kind": "ftyp",
+      "offset": 0,
+      "bytes": 32
+    },
+    {
+      "kind": "moov",
+      "offset": 32,
+      "bytes": 451961
+    },
+    {
+      "kind": "free",
+      "offset": 451993,
+      "bytes": 8
+    },
+    {
+      "kind": "mdat",
+      "offset": 452001,
+      "bytes": 70834916
+    }
+  ],
+  "headerSha256": "155d45162120223c0e215c7951da10dccf2a5e6397bf19554ecbc10e689c1eaf",
+  "faststart": true
+}
