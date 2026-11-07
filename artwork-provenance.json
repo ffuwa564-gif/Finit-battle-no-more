@@ -1,0 +1,146 @@
+{
+  "series": "ビルド研究日誌",
+  "subtitle": "みんなが輝くRPGを！",
+  "episode": "01 ルカ",
+  "method": "Image generation/edit tool; approved outputs copied unchanged. No programmatic character-illustration editing.",
+  "artDirection": "Approved cute chibi palette, Tsumugi as warm-hearted glasses-wearing scientist gyaru; Zundamon and Metan help.",
+  "assets": [
+    {
+      "file": "artifacts/build-diary-01/assets/t-research-happy.png",
+      "sha256": "d76bdbd3a40f3350b8bde8ed6a336c9dc72d44f94e5067050db2500f369f7905",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "strongAlphaBounds": [
+        171,
+        17,
+        1109,
+        1232
+      ],
+      "generatedOriginal": "/workspace/generated_images/exec-8d559019-8356-4be4-adbe-819051b03091.png",
+      "originalPreserved": true,
+      "references": [
+        "artifacts/diary-part3/assets/t-happy.png"
+      ],
+      "productionBrief": "優しい主役のリケジョギャルつむぎ。原絵の黄カーディガン・金髪とピンク差し色・青い目を保ち、薄い丸メガネ、開いた白衣、研究ノートとペン。透明、全身。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    },
+    {
+      "file": "artifacts/build-diary-01/assets/t-research-think.png",
+      "sha256": "7060c68b46304454a0305b2703273d5d30839109e227b22b57582c663cd50748",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "strongAlphaBounds": [
+        198,
+        16,
+        1139,
+        1236
+      ],
+      "generatedOriginal": "/workspace/generated_images/exec-a4174103-b92d-45c4-8042-e1f3a0678b9f.png",
+      "originalPreserved": true,
+      "references": [
+        "artifacts/build-diary-01/assets/t-research-happy.png"
+      ],
+      "productionBrief": "同一研究服のつむぎ。ノートを持ち、ペンを顎の近くで考える。優しい思案表情、透明、全身。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    },
+    {
+      "file": "artifacts/build-diary-01/assets/t-research-determined.png",
+      "sha256": "d85daebbfeb97a9a2e1cc4a73384443b112b134d8e8a180624b190a3ed315d0a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "strongAlphaBounds": [
+        143,
+        15,
+        1141,
+        1240
+      ],
+      "generatedOriginal": "/workspace/generated_images/exec-5a5a05c6-43a6-4921-ab87-9d2e18d7f459.png",
+      "originalPreserved": true,
+      "references": [
+        "artifacts/build-diary-01/assets/t-research-happy.png"
+      ],
+      "productionBrief": "同一研究服のつむぎ。発見に目を輝かせ、ノートを抱えてペンを上げる。怒りではなく親切で熱心な決意、透明、全身。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    },
+    {
+      "file": "artifacts/build-diary-01/assets/t-research-care.png",
+      "sha256": "cee26bbbda6649f4aebf9a064405efc01963f405bf203afab1865068920b9bcb",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "strongAlphaBounds": [
+        165,
+        10,
+        1118,
+        1234
+      ],
+      "generatedOriginal": "/workspace/generated_images/exec-08f9d33b-0a50-46c2-8f46-2fc2ee5a9cea.png",
+      "originalPreserved": true,
+      "references": [
+        "artifacts/build-diary-01/assets/t-research-happy.png"
+      ],
+      "productionBrief": "同一研究服のつむぎ。研究の見直し時に少女を気遣い、胸に手を当てて励ます優しい表情。透明、全身。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    },
+    {
+      "file": "artifacts/build-diary-01/assets/research-lab.png",
+      "sha256": "60ea1d9952f40a0259a91e58f36c4116e14722f2af0e2299433f8a695cc0a26e",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "strongAlphaBounds": null,
+      "generatedOriginal": "/workspace/generated_images/exec-f63a3270-187a-4748-a8da-64bff4be7813.png",
+      "originalPreserved": true,
+      "references": [
+        "artifacts/build-diary-01/assets/t-research-happy.png",
+        "artifacts/diary-part3/assets/z-happy.png",
+        "artifacts/diary-part3/assets/m-happy.png"
+      ],
+      "productionBrief": "つむぎ中央で熱心に研究ノートへ、ずんだもん左が少女カード整理、めたん右が分岐図を手伝う。クリーム・ピンク・ミントの可愛い研究室。壁の宝石分岐はイメージ図。横長16:9近似。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    },
+    {
+      "file": "artifacts/build-diary-01/assets/thumbnail-original.png",
+      "sha256": "ee6d2801ed65a679e806fbd5471a527dbf31f3cc6257e216c54ba3341b6c68ea",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "strongAlphaBounds": null,
+      "generatedOriginal": "/workspace/generated_images/exec-931aaa82-28f0-4dca-b1eb-d87bf1490f70.png",
+      "originalPreserved": true,
+      "references": [
+        "/workspace/generated_images/exec-1c23b319-3831-440a-82db-b7786f347d15.png"
+      ],
+      "productionBrief": "『ビルド研究日誌』『みんなが輝くRPGを！』『#01 ルカ』『余った守りが、勝ち筋に。』。メガネつむぎ主役、Z/M手伝い、左にルカ研究カード。初稿のめたん髪飾り見切れを修正し、安全余白を増やした版。",
+      "briefIsVerbatimPrompt": false,
+      "manualHeadReview": "Full ahoge/hair/ornaments/ears safely in frame; both shoes complete for standalone sprites. Lab lower bodies naturally occluded by desk. Thumbnail safe-margin correction reviewed."
+    }
+  ],
+  "rejectedDrafts": [
+    {
+      "original": "/workspace/generated_images/exec-1c23b319-3831-440a-82db-b7786f347d15.png",
+      "reason": "Metan right hair/headpiece touches and clips right frame edge; not copied into episode assets."
+    }
+  ],
+  "videoPlacement": "Contain with padded avatar canvas; do not cover-crop the generated full heads. Minor low-alpha generation noise can extend to some PNG edges; strong-alpha bounds and manual inspection are recorded."
+}

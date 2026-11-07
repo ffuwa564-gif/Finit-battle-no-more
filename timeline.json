@@ -1,0 +1,1114 @@
+{
+  "fps": 30,
+  "sampleRate": 48000,
+  "frames": 8644,
+  "masterGain": 1,
+  "chapters": [
+    {
+      "id": "hook",
+      "title": "最後の壁、あと少し。",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "好きな子と、最後まで勝ちたい。今日はサクヤヒメと、転生の裏ルートに挑戦するよ。",
+          "path": "artifacts/loot-diary-01/speech/d526bf8b03483abed6338d4ec85502c7c5cb1fad6674541700fee65728e09781.wav",
+          "duration": 5.813333,
+          "reading": "好きな子と、最後まで勝ちたい。今日はサクヤヒメと、転生の裏ルートに挑戦するよ。",
+          "voiceId": 8,
+          "sha256": "c0873d8795e89b1f6068bca98e1388f4aadb081f30577f90a437a1e9b355157d",
+          "frame": 10,
+          "frames": 175
+        },
+        {
+          "speaker": "z",
+          "text": "ティア七の石を作ったら、今度こそ勝てるのだ？",
+          "path": "artifacts/loot-diary-01/speech/34f127d3054ec41ee97dc74001365f7e202e36fa9e675b6561d18a7679d971a2.wav",
+          "duration": 3.509333,
+          "reading": "ティア七の石を作ったら、今度こそ勝てるのだ？",
+          "voiceId": 3,
+          "sha256": "fdbdc45bdb0b4401c861467b2a7bd414ca35a8d1eca96e0b9d2249f793d1ac64",
+          "frame": 191,
+          "frames": 106
+        },
+        {
+          "speaker": "t",
+          "text": "そう思ってた。でも、今日はそんなに簡単じゃなかった。",
+          "path": "artifacts/loot-diary-01/speech/a77945ef4151cdb1109c15b1b2f87d66237f638635a9ba462a2b1e315543c727.wav",
+          "duration": 3.754667,
+          "reading": "そう思ってた。でも、今日はそんなに簡単じゃなかった。",
+          "voiceId": 8,
+          "sha256": "05ef328cce54e76447c00b52c965cac6ddd231a6cee0fe406b8fd07d2bce8f46",
+          "frame": 303,
+          "frames": 113
+        }
+      ],
+      "startFrame": 180,
+      "durationFrames": 431
+    },
+    {
+      "id": "party",
+      "title": "今回の４人と、持ち込み条件",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "使うのは公開版、一点三十。比較用に用意した終盤のセーブだよ。前回の冒険の続きではありません。",
+          "path": "artifacts/loot-diary-01/speech/0fbe09c25750cc0a80e18c140753add427ca1b2f4e327b319a3ca4c0cf89bdd7.wav",
+          "duration": 7.509333,
+          "reading": "使うのは公開版、一点三十。比較用に用意した終盤のセーブだよ。前回の冒険の続きではありません。",
+          "voiceId": 8,
+          "sha256": "81545ddce4b5b4fbec7ff2e701c1e7f911a198b25482239185fc20b2968b435d",
+          "frame": 10,
+          "frames": 226
+        },
+        {
+          "speaker": "m",
+          "text": "仲間は全員所持。石はティア六が四つ。金貨は三万、同じ系統の欠片は二百七十ずつよ。",
+          "path": "artifacts/loot-diary-01/speech/61110ac0dc4d6da7936bafcd30fa39e84f55e61adca8db285b8f33a07b610bc4.wav",
+          "duration": 6.837333,
+          "reading": "仲間は全員所持。石はティア六が四つ。金貨は三万、同じ系統の欠片は二百七十ずつよ。",
+          "voiceId": 2,
+          "sha256": "a8cf7fbcabc2550e6cd87ed5860f5c291c502c6383ca97fb025b92a1c17b4ef0",
+          "frame": 242,
+          "frames": 206
+        },
+        {
+          "speaker": "t",
+          "text": "ノクスが一体を削って、サクヤヒメが守りを支える。リオラが受け持ち、ノエルが別の敵も削る。",
+          "path": "artifacts/loot-diary-01/speech/c8b3e2ca05d6b07da9cdcc288d243ee1b1165683a38edffc77c2ab0c45e9b777.wav",
+          "duration": 6.634667,
+          "reading": "ノクスが一体を削って、サクヤヒメが守りを支える。リオラが受け持ち、ノエルが別の敵も削る。",
+          "voiceId": 8,
+          "sha256": "54d6b7a4e1e48301d8b78790017c686591967fe91f65af84411c290664fe627e",
+          "frame": 454,
+          "frames": 200
+        },
+        {
+          "speaker": "z",
+          "text": "高レアで四人を埋めないのだ？",
+          "path": "artifacts/loot-diary-01/speech/fe42346799120f09e42281d1d3fce8b77040eaadda63c7ab88f8d2182fc2eb3f.wav",
+          "duration": 2.165333,
+          "reading": "高レアで四人を埋めないのだ？",
+          "voiceId": 3,
+          "sha256": "b4cd21a8c55f759decacbf69357404d56ffcbb83aa9e730c9ab9378972cbdd2c",
+          "frame": 660,
+          "frames": 65
+        },
+        {
+          "speaker": "t",
+          "text": "この四人で、まずどこまで行けるか見たいんだ。サクヤヒメを外す前に、できることを探したい。",
+          "path": "artifacts/loot-diary-01/speech/943a0f2eca2344be07132de6f6e97576bf181add78127f149d82616aa9e500e6.wav",
+          "duration": 6.090667,
+          "reading": "この四人で、まずどこまで行けるか見たいんだ。サクヤヒメを外す前に、できることを探したい。",
+          "voiceId": 8,
+          "sha256": "7ccc1f3e78fdb0cfd4ddd913b9ff59a87d6e72eea6fca396a1c01654b73fcec4",
+          "frame": 731,
+          "frames": 183
+        },
+        {
+          "speaker": "m",
+          "text": "ほかの全編成より強い、という検証ではないわ。今回はこのパーティで遊ぶ記録ね。",
+          "path": "artifacts/loot-diary-01/speech/81b9b32ff54be580a30a561bc5e5bf5c8128073d843e0c06785cb8a4221f093a.wav",
+          "duration": 5.514667,
+          "reading": "ほかの全編成より強い、という検証ではないわ。今回はこのパーティで遊ぶ記録ね。",
+          "voiceId": 2,
+          "sha256": "3e6547fdc8ff86ccfe524cbdf900a37a246ed2d6fef3d8ebf682cbbfc5bb8020",
+          "frame": 920,
+          "frames": 166
+        }
+      ],
+      "startFrame": 611,
+      "durationFrames": 1101
+    },
+    {
+      "id": "before",
+      "title": "初戦：T6装備で深部へ",
+      "clip": "attempt-before",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "前のウェーブを越えたところから。奥で待つのは、アストレアとアテナの記憶。",
+          "path": "artifacts/loot-diary-01/speech/13dbf1f3ba385dcdf0929f05f867499bed7980926a0970d852efd590a663f56f.wav",
+          "duration": 4.64,
+          "reading": "前のウェーブを越えたところから。奥で待つのは、アストレアとアテナの記憶。",
+          "voiceId": 8,
+          "sha256": "60d91fe6fd2036740673c98e4ee69dad6c380e6eb7d1a3a4deb2aea89a3e87e1",
+          "frame": 10,
+          "frames": 140
+        },
+        {
+          "speaker": "z",
+          "text": "かばう相手と、倒したい相手が別なのだ。これは面倒なのだ。",
+          "path": "artifacts/loot-diary-01/speech/f228bc7004cc60b2f77624303761979e9a62ccd65e0b68f49720f97b366a0efa.wav",
+          "duration": 4.661333,
+          "reading": "かばう相手と、倒したい相手が別なのだ。これは面倒なのだ。",
+          "voiceId": 3,
+          "sha256": "2d3919a5df3ae6ee283b48024614ec4432f23d89416fd657fffc4ff4493f5bf9",
+          "frame": 156,
+          "frames": 140
+        },
+        {
+          "speaker": "t",
+          "text": "予告が来たら集中して、崩せないときは先頭を守る。薬も、ここで惜しまない。",
+          "path": "artifacts/loot-diary-01/speech/24c28090fcb6c192f02c81ec454fb54ad080f8ea8748598018b25ae977d00399.wav",
+          "duration": 5.557333,
+          "reading": "予告が来たら集中して、崩せないときは先頭を守る。薬も、ここで惜しまない。",
+          "voiceId": 8,
+          "sha256": "eb6509e38c5d02494065fd404f5c24e3c4db90f8bb36688bfef8647ae1f2d399",
+          "frame": 302,
+          "frames": 167
+        },
+        {
+          "speaker": "m",
+          "text": "回復だけを続けても、相手の体力が残れば戦いは終わらないわね。",
+          "path": "artifacts/loot-diary-01/speech/3683b2531f76492abb898471f5e92dae1e63780230fb4a54c995dee7e95e02f2.wav",
+          "duration": 4.448,
+          "reading": "回復だけを続けても、相手の体力が残れば戦いは終わらないわね。",
+          "voiceId": 2,
+          "sha256": "9b7ff8f7ecc666cc340f8a353cf3385741ad9f2b382e587b893bee3ffcc74095",
+          "frame": 475,
+          "frames": 134
+        },
+        {
+          "speaker": "t",
+          "text": "あっ、ここで一人落ちちゃった。残った子で戻せるかな。",
+          "path": "artifacts/loot-diary-01/speech/ec2d494f04a9560b4b54925378340e5c819f5a2ff13d08326e3bf189e0fdce27.wav",
+          "duration": 3.445333,
+          "reading": "あっ、ここで一人落ちちゃった。残った子で戻せるかな。",
+          "voiceId": 8,
+          "sha256": "8f807ff83c88ae9a9ce8d03024c78da39679d24a5df3ed1a91acde2d5aadd19f",
+          "frame": 615,
+          "frames": 104
+        },
+        {
+          "speaker": "z",
+          "text": "がんばれ、がんばるのだ。",
+          "path": "artifacts/loot-diary-01/speech/55850f55707268ba9f6ef53fa6f765af28ff2079125fde0b05f2bfc496857ed9.wav",
+          "duration": 1.866667,
+          "reading": "がんばれ、がんばるのだ。",
+          "voiceId": 3,
+          "sha256": "43f097f5f775760fd2c4625a62a1882b56433927b3f68632de9cbffd7c52c30f",
+          "frame": 725,
+          "frames": 57
+        },
+        {
+          "speaker": "t",
+          "text": "……届かなかった。四十四ラウンドで全滅。ボスの残りは、八千三百四十六。",
+          "path": "artifacts/loot-diary-01/speech/ad5be733639e162a0ef1d430953947af7a1b015cacd30a53e3874ee6c5e1a493.wav",
+          "duration": 5.824,
+          "reading": "……届かなかった。四十四ラウンドで全滅。ボスの残りは、八千三百四十六。",
+          "voiceId": 8,
+          "sha256": "f1ae1e74b8283d433e0acdbabbe765e76c85df4b9f95318f5358dcdbfcb458e0",
+          "frame": 788,
+          "frames": 175
+        },
+        {
+          "speaker": "m",
+          "text": "勝ち筋を断定するには一戦では足りない。でも、今回の負け方は記録できたわ。",
+          "path": "artifacts/loot-diary-01/speech/e6b0ede8fba88fe6336169201883d6c57aa13c1023f64b012614253e88982a04.wav",
+          "duration": 5.290667,
+          "reading": "勝ち筋を断定するには一戦では足りない。でも、今回の負け方は記録できたわ。",
+          "voiceId": 2,
+          "sha256": "9b54b84afab2ee1a989d086432738e4e6ee3e5f6bf21f0edfdcc51f6ede1cd14",
+          "frame": 969,
+          "frames": 159
+        }
+      ],
+      "startFrame": 1712,
+      "durationFrames": 1143
+    },
+    {
+      "id": "target",
+      "title": "次の目標：T7 暁冠の記憶",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "今回は、ノクスの暁冠をティア七にしたい。長引く戦いを、もう少し短くできないかな。",
+          "path": "artifacts/loot-diary-01/speech/1f393c04c5d346c6cb924bbffa7a7e02c45e374af5b0a6b799d8cfb1166a840f.wav",
+          "duration": 6.133333,
+          "reading": "今回は、ノクスのギョウカンをティア七にしたい。長引く戦いを、もう少し短くできないかな。",
+          "voiceId": 8,
+          "sha256": "e7b43bb083f345977e4c73ebc6078abe68387efd880ef4481f27a93623d429f1",
+          "frame": 10,
+          "frames": 184
+        },
+        {
+          "speaker": "z",
+          "text": "サクヤヒメの石じゃないのだ？",
+          "path": "artifacts/loot-diary-01/speech/7580d109c262b7f3c134f73729f5517c52215429d539c87ba17ab72e2bdf9f9a.wav",
+          "duration": 2.037333,
+          "reading": "サクヤヒメの石じゃないのだ？",
+          "voiceId": 3,
+          "sha256": "f4fe3cd5bddcdbee34104efb0c8e3dec4a9e627ad4c9453407f8bc5c5dc4b8e4",
+          "frame": 200,
+          "frames": 62
+        },
+        {
+          "speaker": "t",
+          "text": "好きな子を主役にするって、その子だけ強化することじゃないと思う。支えた先の攻撃を、もう少し伸ばしてみたい。",
+          "path": "artifacts/loot-diary-01/speech/9feb7d404290ac50f0b2408089aeba0b1f977673f162ab6fe92aec7d98b0acaf.wav",
+          "duration": 7.274667,
+          "reading": "好きな子を主役にするって、その子だけ強化することじゃないと思う。支えた先の攻撃を、もう少し伸ばしてみたい。",
+          "voiceId": 8,
+          "sha256": "875f54e7107de92b0c283aa3c7593fab7a139b302aeb42edc6444d957ddc6618",
+          "frame": 268,
+          "frames": 219
+        },
+        {
+          "speaker": "m",
+          "text": "必要なのは同じ系統の欠片二百七十、金貨一万、輪廻の殻九つ、深層核三つ。",
+          "path": "artifacts/loot-diary-01/speech/d4cf8a5e1bd772a3cdf2e0bdbdc42d4bf6dbeceb1aa5c05b6ea56395234403f2.wav",
+          "duration": 6.752,
+          "reading": "必要なのは同じ系統の欠片二百七十、金貨一万、輪廻の殻九つ、深層核三つ。",
+          "voiceId": 2,
+          "sha256": "ad93534744c27ecf8492e4c26e75382bddd81a018b4f9691a0f4b0ef54bcf986",
+          "frame": 493,
+          "frames": 203
+        },
+        {
+          "speaker": "t",
+          "text": "欠片と金貨は用意してある。あとは入口のボスで、殻と核を集めよう。",
+          "path": "artifacts/loot-diary-01/speech/c70a2bbfcb90738a190d94d6dee7027e2a1ceda416f567e29e349c2ed41e7d4b.wav",
+          "duration": 4.853333,
+          "reading": "欠片と金貨は用意してある。あとは入口のボスで、殻と核を集めよう。",
+          "voiceId": 8,
+          "sha256": "7b4393d8aed2116352b88bf107de3023e7c764c8a2f662e15f2cb6bdbcfbe50c",
+          "frame": 702,
+          "frames": 146
+        }
+      ],
+      "startFrame": 2855,
+      "durationFrames": 863
+    },
+    {
+      "id": "farm",
+      "title": "入口を周回。まず１個。",
+      "clip": "farm-1",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "相手が変わったから、同じ作戦でも手応えが違うね。ここは素材を持ち帰ることが目標。",
+          "path": "artifacts/loot-diary-01/speech/3c6e7f197d895600271a7789139dec2b0fe8ee58f915f90ee944832900008f3b.wav",
+          "duration": 5.930667,
+          "reading": "相手が変わったから、同じ作戦でも手応えが違うね。ここは素材を持ち帰ることが目標。",
+          "voiceId": 8,
+          "sha256": "ecf105b935d4cdb11f6f9495233008c48486a83cbbdd08558a1acfff82afeddb",
+          "frame": 10,
+          "frames": 178
+        },
+        {
+          "speaker": "z",
+          "text": "さっきより、ちゃんと回復が間に合っているのだ。",
+          "path": "artifacts/loot-diary-01/speech/0893bf6e93e907255cc34fc1077229c222e9a07ae86b63c87a8555d6531854ba.wav",
+          "duration": 3.370667,
+          "reading": "さっきより、ちゃんと回復が間に合っているのだ。",
+          "voiceId": 3,
+          "sha256": "507036d4de68c373868e895a537f9fe505f473ce17c648f62a676cbf9b9c7330",
+          "frame": 194,
+          "frames": 102
+        },
+        {
+          "speaker": "m",
+          "text": "この一周は十六ラウンド。四人とも生還、薬は使わずに踏破よ。",
+          "path": "artifacts/loot-diary-01/speech/7b4a7a66d97b3333de220aa97df3d39146ed905165f520dafb85b0971fc7756c.wav",
+          "duration": 4.970667,
+          "reading": "この一周は十六ラウンド。四人とも生還、薬は使わずに踏破よ。",
+          "voiceId": 2,
+          "sha256": "a293ed5888a77585eaf488eeb62e46e66d4552f860ada668492f5b5dd4272aea",
+          "frame": 302,
+          "frames": 150
+        },
+        {
+          "speaker": "t",
+          "text": "よし、殻ひとつと、核ひとつ。まず一歩。",
+          "path": "artifacts/loot-diary-01/speech/bb20b1449b4a93fb340f8d44352156e6cf5f408a47b77b4de5b6bad6faa93c4c.wav",
+          "duration": 3.648,
+          "reading": "よし、殻ひとつと、核ひとつ。まず一歩。",
+          "voiceId": 8,
+          "sha256": "a6e61e81ea329f471c287d503e9589dea84f15dbf7104f5a8e3ee1d01a0b6882",
+          "frame": 458,
+          "frames": 110
+        },
+        {
+          "speaker": "z",
+          "text": "一個増えただけなのに、ちょっとうれしいのだ。",
+          "path": "artifacts/loot-diary-01/speech/81db00208742ed35df4c74af38db056d71f1b2289c7551e2c43bb329571f88f7.wav",
+          "duration": 3.050667,
+          "reading": "一個増えただけなのに、ちょっとうれしいのだ。",
+          "voiceId": 3,
+          "sha256": "6ae1025e88da4936021d064c84847ad10a1d7c8b2ded6dbcf7909604566321cd",
+          "frame": 574,
+          "frames": 92
+        }
+      ],
+      "startFrame": 3718,
+      "durationFrames": 681
+    },
+    {
+      "id": "loot",
+      "title": "小休憩：今日の惜しい石",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "z",
+          "text": "光ってる原石が来たら、ぜったい強いのだ？",
+          "path": "artifacts/loot-diary-01/speech/a643ac07228932424dc1b193ac1e51dc465111d9e82e255968a6888d074928b3.wav",
+          "duration": 3.445333,
+          "reading": "光ってる原石が来たら、ぜったい強いのだ？",
+          "voiceId": 3,
+          "sha256": "d9f4e15ab4296cbae55ec8cecc0fb98c21c3ef45f4151560fe7a08c42644b967",
+          "frame": 10,
+          "frames": 104
+        },
+        {
+          "speaker": "t",
+          "text": "そこはまだ分からないよ。原石の見た目は、性能の確約じゃないんだ。",
+          "path": "artifacts/loot-diary-01/speech/f87e17b1c9021707f4c1b2e3da3405ab8cb05aedf6cbcd5130c3b510f471cc74.wav",
+          "duration": 4.725333,
+          "reading": "そこはまだ分からないよ。原石の見た目は、性能の確約じゃないんだ。",
+          "voiceId": 8,
+          "sha256": "6cdf20a60b4a6d63330610dbd322053bbabf30e0160462e1fbde3e6df482fd24",
+          "frame": 120,
+          "frames": 142
+        },
+        {
+          "speaker": "m",
+          "text": "欲しい石の種類と、技効力と、追加特性。自分の狙いに合っているか、研磨してから確かめましょう。",
+          "path": "artifacts/loot-diary-01/speech/c0a2e6d2bdf945982ccffcb8d532b3388a065525df68e012f389b0fbe8582b2b.wav",
+          "duration": 7.114667,
+          "reading": "欲しい石の種類と、技効力と、追加特性。自分の狙いに合っているか、研磨してから確かめましょう。",
+          "voiceId": 2,
+          "sha256": "42c4aa1b32bd7de882f25a763391fedf91088e852960d3bd3532137b29e82e84",
+          "frame": 268,
+          "frames": 214
+        },
+        {
+          "speaker": "t",
+          "text": "今日は途中で拾う原石を、当たりだったことにはしない。まずは、決めた製作素材を集めきろう。",
+          "path": "artifacts/loot-diary-01/speech/27098328b705f605802cc952cb5a78d9f27320da5066e68a6b856efe33166458.wav",
+          "duration": 6.293333,
+          "reading": "今日は途中で拾う原石を、当たりだったことにはしない。まずは、決めた製作素材を集めきろう。",
+          "voiceId": 8,
+          "sha256": "04606e6966ee46e0fdc7395cd744dde94f91d37db3b407c70c9fbe4447091bec",
+          "frame": 488,
+          "frames": 189
+        }
+      ],
+      "startFrame": 4399,
+      "durationFrames": 692
+    },
+    {
+      "id": "nine",
+      "title": "９周の記録と、T7製作",
+      "clip": "forge",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "繰り返し部分を省略して、入口を九周。九回とも四人で帰れたよ。",
+          "path": "artifacts/loot-diary-01/speech/73e5755d1ddece3ad3440f008c7ad77883c3afd7e84876a170c4ee01145b9ccf.wav",
+          "duration": 5.141333,
+          "reading": "繰り返し部分を省略して、入口を九周。九回とも四人で帰れたよ。",
+          "voiceId": 8,
+          "sha256": "2a586b610ee06babe40fbbbd2d8f4ea9222fe5a356b2cf8696653d7fd292869b",
+          "frame": 10,
+          "frames": 155
+        },
+        {
+          "speaker": "m",
+          "text": "輪廻の殻九つ、深層核九つ。九周とも薬の消費はゼロ。ここは周回場所にできそうね。",
+          "path": "artifacts/loot-diary-01/speech/f2bad8be5184f0c38ed28083fd41c476926ad66a417dbbab640d6588244b5fe7.wav",
+          "duration": 6.634667,
+          "reading": "輪廻の殻九つ、深層核九つ。九周とも薬の消費はゼロ。ここは周回場所にできそうね。",
+          "voiceId": 2,
+          "sha256": "027a0ddf10626b9572aa53daa2cf361b53f8b52b230d383a12149a785f25c7fa",
+          "frame": 171,
+          "frames": 200
+        },
+        {
+          "speaker": "z",
+          "text": "素材が、ちゃんと目標の数になったのだ！",
+          "path": "artifacts/loot-diary-01/speech/49fe537451f03bee1a02c49ccb7121e54a5264ae28fbad3f63181c35e4bf73b3.wav",
+          "duration": 3.072,
+          "reading": "素材が、ちゃんと目標の数になったのだ！",
+          "voiceId": 3,
+          "sha256": "d58ccd6ff24abb875ba24c197509f3395b665beab18a1f17f7e6fc17f1fb0ffd",
+          "frame": 377,
+          "frames": 93
+        },
+        {
+          "speaker": "t",
+          "text": "暁冠の記憶、ティア七。追加特性は慈雨を選ぶ。使った素材と、出来た石を見ておこう。",
+          "path": "artifacts/loot-diary-01/speech/3aa5a48d26b7972bd8a7c432f9ac36fdbbe26a23450abec33d8db467f8073852.wav",
+          "duration": 6.869333,
+          "reading": "ギョウカンの記憶、ティア七。追加特性はジウを選ぶ。使った素材と、出来た石を見ておこう。",
+          "voiceId": 8,
+          "sha256": "bf7d90d7d3cc46ba2fe63a576cde4a86dd1fb47ea8d544723a539d63668fb606",
+          "frame": 476,
+          "frames": 207
+        },
+        {
+          "speaker": "m",
+          "text": "製作品は保護されるわ。ティアを上げても、すべての効果が無制限に伸びるわけではないからね。",
+          "path": "artifacts/loot-diary-01/speech/7ee3032263bddb0665334d83acb0603c059ef49c4837e738714f5949a4f09fdb.wav",
+          "duration": 5.834667,
+          "reading": "製作品は保護されるわ。ティアを上げても、すべての効果が無制限に伸びるわけではないからね。",
+          "voiceId": 2,
+          "sha256": "08c84705c5893b90b95691a20fbe7de88bc00289ff452aade21b7ef90457b078",
+          "frame": 689,
+          "frames": 176
+        },
+        {
+          "speaker": "t",
+          "text": "ノクスに装備して、もう一度。サクヤヒメ、さっきの続きに行こう。",
+          "path": "artifacts/loot-diary-01/speech/a4a98c30622f823f1cc578836cc19c74d81ce86b6df9bec38057fe44cf337b7e.wav",
+          "duration": 4.821333,
+          "reading": "ノクスに装備して、もう一度。サクヤヒメ、さっきの続きに行こう。",
+          "voiceId": 8,
+          "sha256": "ff1953dbf7beb0d8e63c4a895f12ea2a28016c3e8bb3516648565c655d2f7589",
+          "frame": 871,
+          "frames": 145
+        }
+      ],
+      "startFrame": 5091,
+      "durationFrames": 1031
+    },
+    {
+      "id": "after",
+      "title": "再挑戦：石を１個更新したら",
+      "clip": "attempt-after",
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "同じメンバー、同じリーダーで再挑戦。石の更新はノクスの一個だよ。",
+          "path": "artifacts/loot-diary-01/speech/00ecdcbd66e04b55ee8b75995f7e2d74e05df5ff24325054e655962d1d07a613.wav",
+          "duration": 5.12,
+          "reading": "同じメンバー、同じリーダーで再挑戦。石の更新はノクスの一個だよ。",
+          "voiceId": 8,
+          "sha256": "3034fb554a6fe53a49f37d809e687eeb0895f8a92c668835700a884d80a9435c",
+          "frame": 10,
+          "frames": 154
+        },
+        {
+          "speaker": "m",
+          "text": "ただし別の探索だから、乱数は進んでいるわ。差のすべてを石の効果と決めないように。",
+          "path": "artifacts/loot-diary-01/speech/1e2d070c3c14f04dad2f7d02d8dd38b309add195ee3692881e301923f92b63b8.wav",
+          "duration": 5.568,
+          "reading": "ただし別の探索だから、乱数は進んでいるわ。差のすべてを石の効果と決めないように。",
+          "voiceId": 2,
+          "sha256": "3ec0ea7a2760b40ceef54ac5156c94985b90255545ddf9a0a85c5f425035f903",
+          "frame": 170,
+          "frames": 168
+        },
+        {
+          "speaker": "z",
+          "text": "今度は、さっきより削れているのだ。",
+          "path": "artifacts/loot-diary-01/speech/a94a566cf1f0fbb6a1d1033865a92251c4bc76cd6c802ab900c0250c49d496d0.wav",
+          "duration": 2.698667,
+          "reading": "今度は、さっきより削れているのだ。",
+          "voiceId": 3,
+          "sha256": "4fe920fc83f159b3371a831464baf7097bdc7cc98c3f6bbe02ceb4f6b4a55ed0",
+          "frame": 344,
+          "frames": 81
+        },
+        {
+          "speaker": "t",
+          "text": "それでも、受ける攻撃は重い。守りと回復が続く間に、あと一押しできるかな。",
+          "path": "artifacts/loot-diary-01/speech/d7325c4861fe04056e2ac74a17728807137b93fc1068a30763c36aff65d1e81b.wav",
+          "duration": 5.792,
+          "reading": "それでも、受ける攻撃は重い。守りと回復が続く間に、あと一押しできるかな。",
+          "voiceId": 8,
+          "sha256": "b34478921def3596b4b17cdca9e9cae115ab4dd61bf7dbcbb4199e8d9287be6e",
+          "frame": 431,
+          "frames": 174
+        },
+        {
+          "speaker": "t",
+          "text": "……ああ、まだ届かない。五十五ラウンドで全滅。残ったボスの体力は、二千九百三十八。",
+          "path": "artifacts/loot-diary-01/speech/654edae10129ae523b7939e4336a31978ae94a6b64dffbf3dbd8db25fb952ba8.wav",
+          "duration": 6.954667,
+          "reading": "……ああ、まだ届かない。五十五ラウンドで全滅。残ったボスの体力は、二千九百三十八。",
+          "voiceId": 8,
+          "sha256": "975dd5f3628cb584de5df091ee0be2e9a5452c0ee8eeeb504ab4a183c76a88d0",
+          "frame": 611,
+          "frames": 209
+        },
+        {
+          "speaker": "z",
+          "text": "石を作ったら、即クリア、ではなかったのだ。",
+          "path": "artifacts/loot-diary-01/speech/92e4d831ec65fc51f4ec4a20bf252d76ba689df84229062cb662273c84dfbce8.wav",
+          "duration": 3.509333,
+          "reading": "石を作ったら、即クリア、ではなかったのだ。",
+          "voiceId": 3,
+          "sha256": "526a991c3b81b221d1273999cf7747d74269c98d88406b3321174675e2be18dd",
+          "frame": 826,
+          "frames": 106
+        },
+        {
+          "speaker": "t",
+          "text": "うん。でも、次に考えたいところが見えてきた。まだ、この子と遊びたい。",
+          "path": "artifacts/loot-diary-01/speech/b17d555dc928b9950088b7a2339cc23da99d2816c082216f87f37f1ea47258c8.wav",
+          "duration": 5.557333,
+          "reading": "うん。でも、次に考えたいところが見えてきた。まだ、この子と遊びたい。",
+          "voiceId": 8,
+          "sha256": "fe0da86733ccdc10a2bb02d361e8b785893e239e4764eeb42cdb1ef9c494212f",
+          "frame": 938,
+          "frames": 167
+        }
+      ],
+      "startFrame": 6122,
+      "durationFrames": 1120
+    },
+    {
+      "id": "leader",
+      "title": "もう１案：リーダーも替えてみる",
+      "clip": "attempt-leader",
+      "lines": [
+        {
+          "speaker": "m",
+          "text": "ノクスをリーダーにした試行も一回。こちらは四十九ラウンド、ボスの残り四千百四。",
+          "path": "artifacts/loot-diary-01/speech/d08238ac37589f52a28107cff021f84f8dd49a494b0a87132d272d1cf3948dac.wav",
+          "duration": 5.706667,
+          "reading": "ノクスをリーダーにした試行も一回。こちらは四十九ラウンド、ボスの残り四千百四。",
+          "voiceId": 2,
+          "sha256": "cce81728e7d39b9d80f2f31cb76610c0a8f5c28fe0ef28e1b9a189aa9f94a0e9",
+          "frame": 10,
+          "frames": 172
+        },
+        {
+          "speaker": "t",
+          "text": "今回はリオラのときより残ったね。強そうな名前だけで選ばず、失った守りも見たい。",
+          "path": "artifacts/loot-diary-01/speech/a4c4f44dc8f9126d9f34a71fe3fe754ee07a46fa0e7bcae0fcbec3400e4ef3de.wav",
+          "duration": 5.749333,
+          "reading": "今回はリオラのときより残ったね。強そうな名前だけで選ばず、失った守りも見たい。",
+          "voiceId": 8,
+          "sha256": "1dabe108fc9cc859cffd6420d4e8e3d6224e8b87bc3050f8666bd380408e6613",
+          "frame": 188,
+          "frames": 173
+        },
+        {
+          "speaker": "z",
+          "text": "負けたから全部だめ、ではないのだな。",
+          "path": "artifacts/loot-diary-01/speech/48df8d073678b8bfde173864683c9b258e246cf5e4409b1499aa66f5ce30f4c0.wav",
+          "duration": 2.730667,
+          "reading": "負けたから全部だめ、ではないのだな。",
+          "voiceId": 3,
+          "sha256": "78e6c50d52205c3fff7eb7e6cce48b645f758f486bf9c1949cc7a03508a0184a",
+          "frame": 367,
+          "frames": 82
+        },
+        {
+          "speaker": "t",
+          "text": "そう。今日は三戦とも負けた。でも、何を変えたかと、どこまで行けたかは残しておく。",
+          "path": "artifacts/loot-diary-01/speech/ed0df8f7c3c41ef76ff043fb6d0dbf321f6cec98ad53a08bd863400d5eee6d93.wav",
+          "duration": 6.357333,
+          "reading": "そう。今日は三戦とも負けた。でも、何を変えたかと、どこまで行けたかは残しておく。",
+          "voiceId": 8,
+          "sha256": "d1beb91ea3cfe681b93e21885587ba23ac6076495a9bee33d9f1e017450aff30",
+          "frame": 455,
+          "frames": 191
+        }
+      ],
+      "startFrame": 7242,
+      "durationFrames": 661
+    },
+    {
+      "id": "end",
+      "title": "次に掘りたいもの",
+      "clip": null,
+      "lines": [
+        {
+          "speaker": "t",
+          "text": "次は残響石や予告への対処を見直したい。攻撃の重なるタイミングを、もう少しそろえられないかな。",
+          "path": "artifacts/loot-diary-01/speech/2412e7a387253a36ae7a8de8190e1f3ffaf32c253b8d4a39c9c362623f0b4cea.wav",
+          "duration": 6.442667,
+          "reading": "次は残響石や予告への対処を見直したい。攻撃の重なるタイミングを、もう少しそろえられないかな。",
+          "voiceId": 8,
+          "sha256": "a318e92dc86a5f895f7017b90e7e7a09b6055d1f550d44d5aba28953fa35afec",
+          "frame": 10,
+          "frames": 194
+        },
+        {
+          "speaker": "m",
+          "text": "勝率や、この子だけの採用価値を認定した回ではありません。今回は公開版での攻略日記よ。",
+          "path": "artifacts/loot-diary-01/speech/2c6f8862a1c113e108e26da290e4b0af1633404420e791371bf0ecef2b516769.wav",
+          "duration": 6.549333,
+          "reading": "勝率や、この子だけの採用価値を認定した回ではありません。今回は公開版での攻略日記よ。",
+          "voiceId": 2,
+          "sha256": "3a135053f4b84a294ebe2ee77fe8b3f01d6fb244ea548aac96809e7423988b75",
+          "frame": 210,
+          "frames": 197
+        },
+        {
+          "speaker": "z",
+          "text": "ぼくは、今度こそ四人で帰るところが見たいのだ。",
+          "path": "artifacts/loot-diary-01/speech/72da4bc112ad5197a424fe23b1ed14457c1c429a112387450f724f68011456ad.wav",
+          "duration": 3.616,
+          "reading": "ぼくは、今度こそ四人で帰るところが見たいのだ。",
+          "voiceId": 3,
+          "sha256": "f50db15641b1b971d376f09bfcdfe887cde4f1e44982ea4d08054790f9b48125",
+          "frame": 413,
+          "frames": 109
+        },
+        {
+          "speaker": "t",
+          "text": "私も。サクヤヒメ、もう少しだけ付き合ってね。好きな子と勝ちたい気持ちは、まだ変わってないから。",
+          "path": "artifacts/loot-diary-01/speech/6747c6d5285261974ec34e40c85c61c128d67874d8b988df094030b5c0e6aa25.wav",
+          "duration": 6.581333,
+          "reading": "私も。サクヤヒメ、もう少しだけ付き合ってね。好きな子と勝ちたい気持ちは、まだ変わってないから。",
+          "voiceId": 8,
+          "sha256": "27c2389fb833bf6f54d0df293859d640a9f84d55e974e5ebeaea8be9a6322859",
+          "frame": 528,
+          "frames": 198
+        }
+      ],
+      "startFrame": 7903,
+      "durationFrames": 741
+    }
+  ],
+  "voices": [
+    {
+      "file": "artifacts/loot-diary-01/speech/d526bf8b03483abed6338d4ec85502c7c5cb1fad6674541700fee65728e09781.wav",
+      "startFrame": 190,
+      "frames": 175,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/34f127d3054ec41ee97dc74001365f7e202e36fa9e675b6561d18a7679d971a2.wav",
+      "startFrame": 371,
+      "frames": 106,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/a77945ef4151cdb1109c15b1b2f87d66237f638635a9ba462a2b1e315543c727.wav",
+      "startFrame": 483,
+      "frames": 113,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/0fbe09c25750cc0a80e18c140753add427ca1b2f4e327b319a3ca4c0cf89bdd7.wav",
+      "startFrame": 621,
+      "frames": 226,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/61110ac0dc4d6da7936bafcd30fa39e84f55e61adca8db285b8f33a07b610bc4.wav",
+      "startFrame": 853,
+      "frames": 206,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/c8b3e2ca05d6b07da9cdcc288d243ee1b1165683a38edffc77c2ab0c45e9b777.wav",
+      "startFrame": 1065,
+      "frames": 200,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/fe42346799120f09e42281d1d3fce8b77040eaadda63c7ab88f8d2182fc2eb3f.wav",
+      "startFrame": 1271,
+      "frames": 65,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/943a0f2eca2344be07132de6f6e97576bf181add78127f149d82616aa9e500e6.wav",
+      "startFrame": 1342,
+      "frames": 183,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/81b9b32ff54be580a30a561bc5e5bf5c8128073d843e0c06785cb8a4221f093a.wav",
+      "startFrame": 1531,
+      "frames": 166,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/13dbf1f3ba385dcdf0929f05f867499bed7980926a0970d852efd590a663f56f.wav",
+      "startFrame": 1722,
+      "frames": 140,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/f228bc7004cc60b2f77624303761979e9a62ccd65e0b68f49720f97b366a0efa.wav",
+      "startFrame": 1868,
+      "frames": 140,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/24c28090fcb6c192f02c81ec454fb54ad080f8ea8748598018b25ae977d00399.wav",
+      "startFrame": 2014,
+      "frames": 167,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/3683b2531f76492abb898471f5e92dae1e63780230fb4a54c995dee7e95e02f2.wav",
+      "startFrame": 2187,
+      "frames": 134,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/ec2d494f04a9560b4b54925378340e5c819f5a2ff13d08326e3bf189e0fdce27.wav",
+      "startFrame": 2327,
+      "frames": 104,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/55850f55707268ba9f6ef53fa6f765af28ff2079125fde0b05f2bfc496857ed9.wav",
+      "startFrame": 2437,
+      "frames": 57,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/ad5be733639e162a0ef1d430953947af7a1b015cacd30a53e3874ee6c5e1a493.wav",
+      "startFrame": 2500,
+      "frames": 175,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/e6b0ede8fba88fe6336169201883d6c57aa13c1023f64b012614253e88982a04.wav",
+      "startFrame": 2681,
+      "frames": 159,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/1f393c04c5d346c6cb924bbffa7a7e02c45e374af5b0a6b799d8cfb1166a840f.wav",
+      "startFrame": 2865,
+      "frames": 184,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/7580d109c262b7f3c134f73729f5517c52215429d539c87ba17ab72e2bdf9f9a.wav",
+      "startFrame": 3055,
+      "frames": 62,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/9feb7d404290ac50f0b2408089aeba0b1f977673f162ab6fe92aec7d98b0acaf.wav",
+      "startFrame": 3123,
+      "frames": 219,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/d4cf8a5e1bd772a3cdf2e0bdbdc42d4bf6dbeceb1aa5c05b6ea56395234403f2.wav",
+      "startFrame": 3348,
+      "frames": 203,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/c70a2bbfcb90738a190d94d6dee7027e2a1ceda416f567e29e349c2ed41e7d4b.wav",
+      "startFrame": 3557,
+      "frames": 146,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/3c6e7f197d895600271a7789139dec2b0fe8ee58f915f90ee944832900008f3b.wav",
+      "startFrame": 3728,
+      "frames": 178,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/0893bf6e93e907255cc34fc1077229c222e9a07ae86b63c87a8555d6531854ba.wav",
+      "startFrame": 3912,
+      "frames": 102,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/7b4a7a66d97b3333de220aa97df3d39146ed905165f520dafb85b0971fc7756c.wav",
+      "startFrame": 4020,
+      "frames": 150,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/bb20b1449b4a93fb340f8d44352156e6cf5f408a47b77b4de5b6bad6faa93c4c.wav",
+      "startFrame": 4176,
+      "frames": 110,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/81db00208742ed35df4c74af38db056d71f1b2289c7551e2c43bb329571f88f7.wav",
+      "startFrame": 4292,
+      "frames": 92,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/a643ac07228932424dc1b193ac1e51dc465111d9e82e255968a6888d074928b3.wav",
+      "startFrame": 4409,
+      "frames": 104,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/f87e17b1c9021707f4c1b2e3da3405ab8cb05aedf6cbcd5130c3b510f471cc74.wav",
+      "startFrame": 4519,
+      "frames": 142,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/c0a2e6d2bdf945982ccffcb8d532b3388a065525df68e012f389b0fbe8582b2b.wav",
+      "startFrame": 4667,
+      "frames": 214,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/27098328b705f605802cc952cb5a78d9f27320da5066e68a6b856efe33166458.wav",
+      "startFrame": 4887,
+      "frames": 189,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/73e5755d1ddece3ad3440f008c7ad77883c3afd7e84876a170c4ee01145b9ccf.wav",
+      "startFrame": 5101,
+      "frames": 155,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/f2bad8be5184f0c38ed28083fd41c476926ad66a417dbbab640d6588244b5fe7.wav",
+      "startFrame": 5262,
+      "frames": 200,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/49fe537451f03bee1a02c49ccb7121e54a5264ae28fbad3f63181c35e4bf73b3.wav",
+      "startFrame": 5468,
+      "frames": 93,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/3aa5a48d26b7972bd8a7c432f9ac36fdbbe26a23450abec33d8db467f8073852.wav",
+      "startFrame": 5567,
+      "frames": 207,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/7ee3032263bddb0665334d83acb0603c059ef49c4837e738714f5949a4f09fdb.wav",
+      "startFrame": 5780,
+      "frames": 176,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/a4a98c30622f823f1cc578836cc19c74d81ce86b6df9bec38057fe44cf337b7e.wav",
+      "startFrame": 5962,
+      "frames": 145,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/00ecdcbd66e04b55ee8b75995f7e2d74e05df5ff24325054e655962d1d07a613.wav",
+      "startFrame": 6132,
+      "frames": 154,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/1e2d070c3c14f04dad2f7d02d8dd38b309add195ee3692881e301923f92b63b8.wav",
+      "startFrame": 6292,
+      "frames": 168,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/a94a566cf1f0fbb6a1d1033865a92251c4bc76cd6c802ab900c0250c49d496d0.wav",
+      "startFrame": 6466,
+      "frames": 81,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/d7325c4861fe04056e2ac74a17728807137b93fc1068a30763c36aff65d1e81b.wav",
+      "startFrame": 6553,
+      "frames": 174,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/654edae10129ae523b7939e4336a31978ae94a6b64dffbf3dbd8db25fb952ba8.wav",
+      "startFrame": 6733,
+      "frames": 209,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/92e4d831ec65fc51f4ec4a20bf252d76ba689df84229062cb662273c84dfbce8.wav",
+      "startFrame": 6948,
+      "frames": 106,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/b17d555dc928b9950088b7a2339cc23da99d2816c082216f87f37f1ea47258c8.wav",
+      "startFrame": 7060,
+      "frames": 167,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/d08238ac37589f52a28107cff021f84f8dd49a494b0a87132d272d1cf3948dac.wav",
+      "startFrame": 7252,
+      "frames": 172,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/a4c4f44dc8f9126d9f34a71fe3fe754ee07a46fa0e7bcae0fcbec3400e4ef3de.wav",
+      "startFrame": 7430,
+      "frames": 173,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/48df8d073678b8bfde173864683c9b258e246cf5e4409b1499aa66f5ce30f4c0.wav",
+      "startFrame": 7609,
+      "frames": 82,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/ed0df8f7c3c41ef76ff043fb6d0dbf321f6cec98ad53a08bd863400d5eee6d93.wav",
+      "startFrame": 7697,
+      "frames": 191,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/2412e7a387253a36ae7a8de8190e1f3ffaf32c253b8d4a39c9c362623f0b4cea.wav",
+      "startFrame": 7913,
+      "frames": 194,
+      "speaker": "t"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/2c6f8862a1c113e108e26da290e4b0af1633404420e791371bf0ecef2b516769.wav",
+      "startFrame": 8113,
+      "frames": 197,
+      "speaker": "m"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/72da4bc112ad5197a424fe23b1ed14457c1c429a112387450f724f68011456ad.wav",
+      "startFrame": 8316,
+      "frames": 109,
+      "speaker": "z"
+    },
+    {
+      "file": "artifacts/loot-diary-01/speech/6747c6d5285261974ec34e40c85c61c128d67874d8b988df094030b5c0e6aa25.wav",
+      "startFrame": 8431,
+      "frames": 198,
+      "speaker": "t"
+    }
+  ],
+  "gameCuts": [
+    {
+      "id": "attempt-before-start",
+      "piece": "artifacts/loot-diary-01/render/attempt-before-start-piece-sync-sync.mov",
+      "startFrame": 1712,
+      "frames": 263,
+      "source": "artifacts/loot-diary-01/capture/attempt-before-start-raw.mkv",
+      "sourceStartPTS": 3.2669999599456787,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-before-middle",
+      "piece": "artifacts/loot-diary-01/render/attempt-before-middle-piece-sync-sync.mov",
+      "startFrame": 1975,
+      "frames": 263,
+      "source": "artifacts/loot-diary-01/capture/attempt-before-middle-raw.mkv",
+      "sourceStartPTS": 11.778999996185302,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-before-end",
+      "piece": "artifacts/loot-diary-01/render/attempt-before-end-piece-sync-sync.mov",
+      "startFrame": 2238,
+      "frames": 262,
+      "source": "artifacts/loot-diary-01/capture/attempt-before-end-raw.mkv",
+      "sourceStartPTS": 9.553999996185302,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "farm-1-start",
+      "piece": "artifacts/loot-diary-01/render/farm-1-start-piece-sync-sync.mov",
+      "startFrame": 3718,
+      "frames": 302,
+      "source": "artifacts/loot-diary-01/capture/farm-1-start-raw.mkv",
+      "sourceStartPTS": 3.4600000381469727,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "forge",
+      "piece": "artifacts/loot-diary-01/render/forge-piece-sync-sync.mov",
+      "startFrame": 5567,
+      "frames": 192,
+      "source": "artifacts/loot-diary-01/capture/forge-raw.mkv",
+      "sourceStartPTS": 3.490999937057495,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-after-start",
+      "piece": "artifacts/loot-diary-01/render/attempt-after-start-piece-sync-sync.mov",
+      "startFrame": 6122,
+      "frames": 204,
+      "source": "artifacts/loot-diary-01/capture/attempt-after-start-raw.mkv",
+      "sourceStartPTS": 3.86899995803833,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-after-middle",
+      "piece": "artifacts/loot-diary-01/render/attempt-after-middle-piece-sync-sync.mov",
+      "startFrame": 6326,
+      "frames": 204,
+      "source": "artifacts/loot-diary-01/capture/attempt-after-middle-raw.mkv",
+      "sourceStartPTS": 12.662333424886068,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-after-end",
+      "piece": "artifacts/loot-diary-01/render/attempt-after-end-piece-sync-sync.mov",
+      "startFrame": 6530,
+      "frames": 203,
+      "source": "artifacts/loot-diary-01/capture/attempt-after-end-raw.mkv",
+      "sourceStartPTS": 10.572666613260905,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    },
+    {
+      "id": "attempt-leader-end",
+      "piece": "artifacts/loot-diary-01/render/attempt-leader-end-piece-sync-sync.mov",
+      "startFrame": 7242,
+      "frames": 288,
+      "source": "artifacts/loot-diary-01/capture/attempt-leader-end-raw.mkv",
+      "sourceStartPTS": 3.3299999237060547,
+      "box": [
+        310,
+        66,
+        486,
+        864
+      ]
+    }
+  ],
+  "finalSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c",
+  "nativeCalibration": "Native-Calibration.json"
+}

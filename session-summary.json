@@ -1,0 +1,1450 @@
+{
+  "version": "1.30.0",
+  "startingSeed": 20261107,
+  "scope": "Prepared endgame ownership; public rules; scripted legal operation; single attempts are not a causal or win-rate study.",
+  "runs": [
+    {
+      "id": "attempt-before",
+      "outcome": {
+        "phase": "failed",
+        "rounds": 44,
+        "wave": 1,
+        "bossHp": 8346,
+        "survivors": 0,
+        "potions": 5,
+        "materials": {}
+      }
+    },
+    {
+      "id": "farm-1",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 1,
+          "pilgrim:rare": 1,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-2",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 2,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-3",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 2,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-4",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:rare": 1,
+          "pilgrim:common": 1,
+          "veil:rare": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-5",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 2,
+          "veil:rare": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-6",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:rare": 1,
+          "pilgrim:common": 1,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-7",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 2,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-8",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:rare": 1,
+          "pilgrim:common": 1,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "farm-9",
+      "outcome": {
+        "phase": "reward",
+        "rounds": 16,
+        "wave": 1,
+        "bossHp": 0,
+        "survivors": 4,
+        "potions": 0,
+        "materials": {
+          "pilgrim:common": 2,
+          "veil:common": 1,
+          "palimpsest:common": 1,
+          "palimpsest:rare": 1
+        }
+      }
+    },
+    {
+      "id": "forge",
+      "gem": {
+        "id": "ascended-8",
+        "defId": "dawn-crown",
+        "variant": "pure",
+        "locked": true,
+        "roll": {
+          "power": 297,
+          "trait": "mercy",
+          "value": 297
+        }
+      }
+    },
+    {
+      "id": "attempt-after",
+      "outcome": {
+        "phase": "failed",
+        "rounds": 55,
+        "wave": 1,
+        "bossHp": 2938,
+        "survivors": 0,
+        "potions": 5,
+        "materials": {}
+      }
+    },
+    {
+      "id": "attempt-leader",
+      "outcome": {
+        "phase": "failed",
+        "rounds": 49,
+        "wave": 1,
+        "bossHp": 4104,
+        "survivors": 0,
+        "potions": 5,
+        "materials": {}
+      }
+    }
+  ],
+  "ending": {
+    "schemaVersion": 1,
+    "appVersion": "1.30.0",
+    "contentVersion": "v1.30-r1",
+    "rulesVersion": "4",
+    "revision": 3112,
+    "gold": 20459,
+    "potions": 84,
+    "stones": 0,
+    "astralStones": 0,
+    "xrDrawCount": 0,
+    "ownedIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle",
+      "pale-wolf",
+      "stone-drake",
+      "hollow-keeper",
+      "moon-moth",
+      "veil-priestess",
+      "thorn-witch",
+      "iris",
+      "mireille",
+      "asteria",
+      "evelyn",
+      "selene",
+      "athena",
+      "flora",
+      "rainbow-iris",
+      "eos",
+      "nike",
+      "vespera",
+      "miette",
+      "tikka",
+      "nox",
+      "kuzuha",
+      "kuzuha-awakened",
+      "artemis",
+      "persephone",
+      "hestia",
+      "hebe",
+      "seoritsu",
+      "ukanomitama",
+      "mizuhanome",
+      "haniyasu",
+      "toyotama",
+      "wakahirume",
+      "iwanagahime",
+      "kukurihime",
+      "lisette",
+      "elaine-awakened",
+      "liora-awakened",
+      "noelle-awakened",
+      "lisette-awakened",
+      "seris-awakened",
+      "selene-standard",
+      "athena-standard",
+      "flora-standard",
+      "amaterasu-standard",
+      "izanami-standard",
+      "artemis-standard",
+      "persephone-standard",
+      "hestia-standard",
+      "hebe-standard",
+      "eos-standard",
+      "nike-standard",
+      "rainbow-iris-standard",
+      "toyotama-standard",
+      "lunette",
+      "lunette-awakened",
+      "lucielle",
+      "nemuria",
+      "chrona",
+      "fortuna",
+      "hecate",
+      "freyja",
+      "benzaiten",
+      "seoritsu-standard",
+      "wakahirume-standard",
+      "ukanomitama-standard",
+      "astraea",
+      "zakuro",
+      "ione",
+      "neri",
+      "fio",
+      "ruka"
+    ],
+    "partyIds": [
+      "nox",
+      "mireille",
+      "liora",
+      "noelle"
+    ],
+    "leaderId": "nox",
+    "materials": {
+      "pilgrim:common": 14,
+      "pilgrim:rare": 4,
+      "veil:common": 7,
+      "palimpsest:common": 0,
+      "palimpsest:rare": 6,
+      "veil:rare": 2
+    },
+    "discoveredIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle",
+      "athena",
+      "mireille"
+    ],
+    "towerRecord": {
+      "version": "1.10",
+      "completedFloors": [],
+      "legacyHighest": 0
+    },
+    "completedDungeonIds": [
+      "silent-cathedral",
+      "chapel-approach",
+      "bell-stairs",
+      "moon-garden",
+      "root-waterway",
+      "drowned-vestry",
+      "blue-lantern-path",
+      "sealed-arbor",
+      "scale-bridge",
+      "withered-nursery",
+      "fountain-threshold",
+      "stone-fountain",
+      "veiled-cloister",
+      "rain-glasshouse",
+      "two-teacups",
+      "thorn-court",
+      "unwritten-cradle",
+      "memory-grafting",
+      "closed-consultation",
+      "borrowed-lullaby",
+      "missing-name",
+      "overwritten-room",
+      "last-safety-key",
+      "hollow-gate",
+      "silver-crypt",
+      "nameless-graves",
+      "soot-corridor",
+      "ashen-library",
+      "unburned-letter",
+      "pendulum-hall",
+      "starless-terrace",
+      "erased-star-chart",
+      "last-observatory",
+      "dawn-sluice",
+      "bell-sword-approach",
+      "pale-throne",
+      "ritual-stone-grove",
+      "zakuro-procession",
+      "guild-blank-request",
+      "registry-corridor",
+      "infirmary-delivery",
+      "unclaimed-courtyard",
+      "infirmary-handover",
+      "old-return-seal",
+      "borrowed-bed",
+      "present-address",
+      "registry-threshold",
+      "register-return",
+      "night-watch-request",
+      "lantern-oil-store",
+      "festival-table",
+      "resting-sign",
+      "watch-relay",
+      "unlit-lantern",
+      "closed-homeward-lane",
+      "prayer-without-order",
+      "last-lantern-watch",
+      "lantern-return",
+      "mending-room",
+      "ritual-stone-check",
+      "care-names",
+      "two-wishes",
+      "signature-margin",
+      "open-greenhouse-door",
+      "unspent-thread",
+      "stop-signal",
+      "unfinished-name",
+      "two-signatures",
+      "rebirth-1",
+      "rebirth-2",
+      "rebirth-3",
+      "rebirth-4",
+      "rebirth-5"
+    ],
+    "claimedExplorationIds": [
+      "run-420-1648714847",
+      "run-605-3019600632",
+      "run-789-192391054",
+      "run-975-2361573746",
+      "run-1160-1042778293",
+      "run-1344-2763860067",
+      "run-1529-2741070423",
+      "run-1726-1480883439",
+      "run-1910-3628964414"
+    ],
+    "drawCount": 0,
+    "ssrPity": 0,
+    "seed": 962841271,
+    "memoryGems": {
+      "items": [
+        {
+          "id": "fixture-0",
+          "defId": "dawn-crown",
+          "variant": "pure",
+          "locked": true,
+          "roll": {
+            "power": 230,
+            "trait": "mercy",
+            "value": 230
+          }
+        },
+        {
+          "id": "fixture-1",
+          "defId": "pale-ward",
+          "variant": "pure",
+          "locked": true,
+          "roll": {
+            "power": 230,
+            "trait": "bulwark",
+            "value": 230
+          }
+        },
+        {
+          "id": "fixture-2",
+          "defId": "twin-tide",
+          "variant": "pure",
+          "locked": true,
+          "roll": {
+            "power": 230,
+            "trait": "bulwark",
+            "value": 230
+          }
+        },
+        {
+          "id": "fixture-3",
+          "defId": "echo-shard",
+          "variant": "pure",
+          "locked": true,
+          "roll": {
+            "power": 230,
+            "trait": "mercy",
+            "value": 230
+          }
+        },
+        {
+          "id": "ascended-8",
+          "defId": "dawn-crown",
+          "variant": "pure",
+          "locked": true,
+          "roll": {
+            "power": 297,
+            "trait": "mercy",
+            "value": 297
+          }
+        }
+      ],
+      "equipped": {
+        "nox": "ascended-8",
+        "mireille": "fixture-1",
+        "liora": "fixture-2",
+        "noelle": "fixture-3"
+      },
+      "dust": {
+        "sanctuary": 0,
+        "clock": 270,
+        "grave": 279
+      },
+      "seen": [
+        "dawn-crown",
+        "pale-ward",
+        "twin-tide",
+        "echo-shard"
+      ],
+      "rough": [
+        {
+          "id": "run-420-1648714847:wave:1",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-420-1648714847:wave:1",
+            "defId": "boss-reserve",
+            "variant": "pure",
+            "roll": {
+              "power": 64,
+              "trait": "bulwark",
+              "value": 134
+            }
+          }
+        },
+        {
+          "id": "run-605-3019600632:wave:1",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-605-3019600632:wave:1",
+            "defId": "boss-reserve",
+            "variant": "pure",
+            "roll": {
+              "power": 232,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "run-789-192391054:wave:0",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-789-192391054:wave:0",
+            "defId": "overflow-ember",
+            "variant": "pure",
+            "roll": {
+              "power": 45,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "run-1160-1042778293:wave:1",
+          "promise": "radiant",
+          "result": {
+            "id": "run-1160-1042778293:wave:1",
+            "defId": "overflow-ember",
+            "variant": "pure",
+            "roll": {
+              "power": 170,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "run-1344-2763860067:wave:0",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-1344-2763860067:wave:0",
+            "defId": "overflow-ember",
+            "variant": "pure",
+            "roll": {
+              "power": 38,
+              "trait": "execution",
+              "value": 4
+            }
+          }
+        },
+        {
+          "id": "run-1529-2741070423:wave:1",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-1529-2741070423:wave:1",
+            "defId": "night-dew",
+            "variant": "echo",
+            "roll": {
+              "power": 127,
+              "trait": "execution",
+              "value": 121
+            }
+          }
+        },
+        {
+          "id": "run-1910-3628964414:wave:1",
+          "promise": "radiant",
+          "result": {
+            "id": "run-1910-3628964414:wave:1",
+            "defId": "dream-lace",
+            "variant": "pure",
+            "roll": {
+              "power": 163,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "run-2103-3574724470:wave:0",
+          "promise": "ordinary",
+          "result": {
+            "id": "run-2103-3574724470:wave:0",
+            "defId": "sweep-prism",
+            "variant": "pure",
+            "roll": {
+              "power": 5,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        },
+        {
+          "id": "run-2649-4141189224:wave:0",
+          "promise": "glimmering",
+          "result": {
+            "id": "run-2649-4141189224:wave:0",
+            "defId": "rewind-thread",
+            "variant": "pure",
+            "roll": {
+              "power": 63,
+              "trait": "none",
+              "value": 0
+            }
+          }
+        }
+      ],
+      "craftSerial": 9
+    },
+    "battle": null,
+    "history": [
+      {
+        "id": "3112-12",
+        "text": "街へ帰還しました。次の探索は全回復で始まります。"
+      },
+      {
+        "id": "2719-run-2649-4141189224:wave:0",
+        "text": "宝箱から輝く原石を確保しました。"
+      },
+      {
+        "id": "2649-12",
+        "text": "管理中枢・名前の外側へ出発しました。"
+      },
+      {
+        "id": "2647-12",
+        "text": "街へ帰還しました。次の探索は全回復で始まります。"
+      },
+      {
+        "id": "2204-run-2103-3574724470:wave:0",
+        "text": "宝箱から普通の原石を確保しました。"
+      },
+      {
+        "id": "2103-12",
+        "text": "管理中枢・名前の外側へ出発しました。"
+      },
+      {
+        "id": "2101-12",
+        "text": "T7の記憶石を製作し、保護しました。"
+      },
+      {
+        "id": "2100-12",
+        "text": "探索報酬を確定しました。素材をカバンへ持ち帰りました。"
+      },
+      {
+        "id": "2099-run-1910-3628964414:wave:1",
+        "text": "宝箱から強く輝く原石を確保しました。"
+      },
+      {
+        "id": "1910-12",
+        "text": "裏庭・欠番の温室へ出発しました。"
+      },
+      {
+        "id": "1909-12",
+        "text": "探索報酬を確定しました。素材をカバンへ持ち帰りました。"
+      },
+      {
+        "id": "1726-12",
+        "text": "裏庭・欠番の温室へ出発しました。"
+      }
+    ],
+    "settings": {
+      "bgmVolume": 0,
+      "seVolume": 0.65,
+      "reducedMotion": false,
+      "speed": 2
+    },
+    "novels": {
+      "seen": [
+        "rebirth-introduction",
+        "rebirth-1-after",
+        "rebirth-2-after",
+        "rebirth-3-after",
+        "rebirth-4-after",
+        "rebirth-5-after"
+      ]
+    },
+    "reincarnation": {
+      "version": 1,
+      "count": 1,
+      "previousChoices": {}
+    },
+    "worldStory": {
+      "version": 1,
+      "profile": {
+        "name": "ユイ",
+        "voice": "soft",
+        "favorite": "tea"
+      },
+      "carriedChapters": [],
+      "completed": [
+        "c1-job",
+        "c1-hill",
+        "c1-offerings",
+        "c1-generation",
+        "c1-chart",
+        "c1-wolf",
+        "c1-water-report",
+        "c1-lantern-report",
+        "c1-flowers",
+        "c1-care",
+        "c1-oath",
+        "c1-held",
+        "c1-return",
+        "c1-garden-rounds",
+        "c1-garden-night",
+        "c1-snack",
+        "c2-pot",
+        "c2-tea",
+        "c2-promise",
+        "c2-plan",
+        "c2-clinic",
+        "c2-key",
+        "c2-rescue",
+        "c2-after",
+        "c3-visit",
+        "c3-record",
+        "c3-evacuate",
+        "c3-bridge",
+        "c3-water",
+        "c3-sword",
+        "c3-morning",
+        "c4-invitation",
+        "c4-supplies",
+        "c4-walk",
+        "c4-cover",
+        "c4-retreat",
+        "c4-report",
+        "c4-home",
+        "c5-request",
+        "c5-girl",
+        "c5-register",
+        "c5-cloth",
+        "c5-bed",
+        "c5-address",
+        "c5-finish",
+        "c6-invite",
+        "c6-lights",
+        "c6-table",
+        "c6-relay",
+        "c6-prayer",
+        "c6-path",
+        "c6-breakfast",
+        "c7-sleeve",
+        "c7-stone",
+        "c7-names",
+        "c7-care",
+        "c7-door",
+        "c7-stop",
+        "c7-together",
+        "home-liora",
+        "home-seris",
+        "home-elaine",
+        "home-noelle",
+        "home-fio",
+        "home-ione",
+        "home-neri",
+        "home-ruka",
+        "home-guest",
+        "home-witch",
+        "seven-first-warrant",
+        "seven-seals",
+        "seven-correction",
+        "seven-unbloomed",
+        "seven-light-ledger",
+        "seven-four-girls",
+        "seven-disposal-warrant",
+        "seven-garden-siege",
+        "seven-refusal",
+        "seven-empty-throne",
+        "seven-price-of-light",
+        "seven-common-table",
+        "seven-aftercare",
+        "seven-four-tomorrows",
+        "seven-unearned-meal",
+        "seven-breakfast"
+      ],
+      "choices": {},
+      "position": {
+        "x": 0.47,
+        "y": 0.77
+      },
+      "dungeonProgress": [
+        "silent-cathedral",
+        "chapel-approach",
+        "bell-stairs",
+        "moon-garden",
+        "root-waterway",
+        "drowned-vestry",
+        "blue-lantern-path",
+        "sealed-arbor",
+        "scale-bridge",
+        "withered-nursery",
+        "fountain-threshold",
+        "stone-fountain",
+        "veiled-cloister",
+        "rain-glasshouse",
+        "two-teacups",
+        "thorn-court",
+        "unwritten-cradle",
+        "memory-grafting",
+        "closed-consultation",
+        "borrowed-lullaby",
+        "missing-name",
+        "overwritten-room",
+        "last-safety-key",
+        "hollow-gate",
+        "silver-crypt",
+        "nameless-graves",
+        "soot-corridor",
+        "ashen-library",
+        "unburned-letter",
+        "pendulum-hall",
+        "starless-terrace",
+        "erased-star-chart",
+        "last-observatory",
+        "dawn-sluice",
+        "bell-sword-approach",
+        "pale-throne",
+        "ritual-stone-grove",
+        "zakuro-procession",
+        "guild-blank-request",
+        "registry-corridor",
+        "infirmary-delivery",
+        "unclaimed-courtyard",
+        "infirmary-handover",
+        "old-return-seal",
+        "borrowed-bed",
+        "present-address",
+        "registry-threshold",
+        "register-return",
+        "night-watch-request",
+        "lantern-oil-store",
+        "festival-table",
+        "resting-sign",
+        "watch-relay",
+        "unlit-lantern",
+        "closed-homeward-lane",
+        "prayer-without-order",
+        "last-lantern-watch",
+        "lantern-return",
+        "mending-room",
+        "ritual-stone-check",
+        "care-names",
+        "two-wishes",
+        "signature-margin",
+        "open-greenhouse-door",
+        "unspent-thread",
+        "stop-signal",
+        "unfinished-name",
+        "two-signatures"
+      ]
+    },
+    "expeditionHistory": [
+      {
+        "runId": "run-2649-4141189224",
+        "dungeonId": "rebirth-6",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "defeat",
+        "durationMs": 462,
+        "review": {
+          "rounds": 49,
+          "partyDamageTaken": 5690,
+          "enemyDamageTaken": 18408,
+          "partyHealing": 4571,
+          "partyBarrierAbsorbed": 5476,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 5,
+          "largestHit": {
+            "actorCharacterId": "astraea",
+            "targetCharacterId": "liora",
+            "skillId": "attack-36",
+            "amount": 319,
+            "wave": 1,
+            "round": 1
+          }
+        },
+        "earned": {
+          "gold": 24,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {},
+          "dust": {}
+        },
+        "potionsUsed": 5
+      },
+      {
+        "runId": "run-2103-3574724470",
+        "dungeonId": "rebirth-6",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "defeat",
+        "durationMs": 543,
+        "review": {
+          "rounds": 55,
+          "partyDamageTaken": 6145,
+          "enemyDamageTaken": 19574,
+          "partyHealing": 4901,
+          "partyBarrierAbsorbed": 4433,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 5,
+          "largestHit": {
+            "actorCharacterId": "astraea",
+            "targetCharacterId": "liora",
+            "amount": 374,
+            "wave": 1,
+            "round": 40
+          }
+        },
+        "earned": {
+          "gold": 24,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {},
+          "dust": {}
+        },
+        "potionsUsed": 5
+      },
+      {
+        "runId": "run-1910-3628964414",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 189,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 97,
+          "enemyDamageTaken": 7842,
+          "partyHealing": 97,
+          "partyBarrierAbsorbed": 195,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-1726-1480883439",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 182,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 189,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 189,
+          "partyBarrierAbsorbed": 260,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 0,
+          "materials": {
+            "pilgrim:common": 1,
+            "pilgrim:rare": 1,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-1529-2741070423",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 195,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 170,
+          "enemyDamageTaken": 7842,
+          "partyHealing": 170,
+          "partyBarrierAbsorbed": 221,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-1344-2763860067",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 183,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 189,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 189,
+          "partyBarrierAbsorbed": 239,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 1,
+            "pilgrim:rare": 1,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-1160-1042778293",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 182,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 189,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 189,
+          "partyBarrierAbsorbed": 239,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 2,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1,
+            "veil:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-975-2361573746",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 183,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 189,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 189,
+          "partyBarrierAbsorbed": 239,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 0,
+          "materials": {
+            "pilgrim:common": 1,
+            "pilgrim:rare": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1,
+            "veil:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-789-192391054",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 184,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 97,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 97,
+          "partyBarrierAbsorbed": 278,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-605-3019600632",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 182,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 189,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 189,
+          "partyBarrierAbsorbed": 260,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 2,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-420-1648714847",
+        "dungeonId": "rebirth-1",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "victory",
+        "durationMs": 183,
+        "review": {
+          "rounds": 16,
+          "partyDamageTaken": 147,
+          "enemyDamageTaken": 7636,
+          "partyHealing": 147,
+          "partyBarrierAbsorbed": 239,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 0,
+          "largestHit": {
+            "actorCharacterId": "mireille",
+            "targetCharacterId": "nox",
+            "amount": 66,
+            "wave": 1,
+            "round": 4
+          }
+        },
+        "earned": {
+          "gold": 43,
+          "stones": 0,
+          "gemCount": 1,
+          "materials": {
+            "pilgrim:common": 1,
+            "pilgrim:rare": 1,
+            "veil:common": 1,
+            "palimpsest:common": 1,
+            "palimpsest:rare": 1
+          },
+          "dust": {
+            "grave": 1
+          }
+        },
+        "potionsUsed": 0
+      },
+      {
+        "runId": "run-1-2049825206",
+        "dungeonId": "rebirth-6",
+        "appVersion": "1.30.0",
+        "contentVersion": "v1.30-r1",
+        "rulesVersion": "4",
+        "outcome": "defeat",
+        "durationMs": 417,
+        "review": {
+          "rounds": 44,
+          "partyDamageTaken": 4923,
+          "enemyDamageTaken": 14166,
+          "partyHealing": 3679,
+          "partyBarrierAbsorbed": 3636,
+          "partyHpSpent": 0,
+          "actionsLost": 0,
+          "potionsUsed": 5,
+          "largestHit": {
+            "actorCharacterId": "astraea",
+            "targetCharacterId": "liora",
+            "amount": 374,
+            "wave": 1,
+            "round": 12
+          }
+        },
+        "earned": {
+          "gold": 24,
+          "stones": 0,
+          "gemCount": 0,
+          "materials": {},
+          "dust": {}
+        },
+        "potionsUsed": 5
+      }
+    ],
+    "industry": {
+      "version": 1,
+      "stock": {
+        "stone": 63,
+        "ore": 54,
+        "copper": 36,
+        "coal": 27,
+        "timber": 36
+      },
+      "machines": {},
+      "updatedAt": 1794038402000
+    },
+    "medals": {
+      "version": 1,
+      "earned": [
+        "explore-first",
+        "tactics-return",
+        "companions-five",
+        "story-garden",
+        "gems-first",
+        "four-roles",
+        "explore-one",
+        "story-tea",
+        "gems-three",
+        "explore-three",
+        "tactics-no-potion",
+        "broken-girl",
+        "story-morning",
+        "gems-families",
+        "gems-four",
+        "explore-seven",
+        "story-hand",
+        "gems-five",
+        "explore-ending",
+        "companions-twelve",
+        "story-homeward",
+        "gems-six",
+        "companions-twenty-four",
+        "story-breakfast",
+        "story-window",
+        "gems-equipped",
+        "companions-forty-eight",
+        "gems-four-t4",
+        "sakuya-ward",
+        "gems-four-t5",
+        "gems-four-t6",
+        "nox-ultimate"
+      ],
+      "feats": [
+        "full-party",
+        "no-potion"
+      ],
+      "victories": 9,
+      "challenges": [
+        "sakuya-ward",
+        "nox-ultimate",
+        "four-roles",
+        "mixed-r-high",
+        "three-families"
+      ],
+      "proofs": {
+        "explore-first": 1,
+        "explore-one": 1,
+        "explore-three": 3,
+        "explore-seven": 7,
+        "explore-ending": 1,
+        "tactics-return": 1,
+        "tactics-no-potion": 1,
+        "companions-five": 5,
+        "companions-twelve": 12,
+        "companions-twenty-four": 24,
+        "companions-forty-eight": 48,
+        "tactics-six": 2,
+        "tactics-twelve": 2,
+        "story-garden": 1,
+        "story-tea": 1,
+        "broken-girl": 1,
+        "story-morning": 1,
+        "story-hand": 1,
+        "story-homeward": 1,
+        "story-breakfast": 1,
+        "story-window": 1,
+        "gems-first": 1,
+        "gems-three": 1,
+        "gems-families": 3,
+        "gems-four": 1,
+        "gems-types": 4,
+        "gems-five": 1,
+        "gems-six": 1,
+        "four-roles": 1,
+        "mixed-r-high": 1,
+        "three-families": 1,
+        "sakuya-ward": 1,
+        "nox-ultimate": 1,
+        "gems-equipped": 4,
+        "gems-variants": 1,
+        "gems-four-t4": 4,
+        "gems-four-t5": 4,
+        "gems-four-t6": 4,
+        "explore-return-ten": 9,
+        "explore-return-fifty": 9,
+        "explore-return-hundred": 9
+      }
+    }
+  }
+}

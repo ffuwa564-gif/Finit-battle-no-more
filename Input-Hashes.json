@@ -1,0 +1,47 @@
+{
+  "gameCommit": "56775d6d57f868137dc41a41d8398e66fdead6ea",
+  "inputs": [
+    {
+      "path": "artifacts/loot-diary-01/common-op-original.mp4",
+      "sha256": "226d8a8f305774156295062bc7d33049657c6a7b270af24ecbf05e695e6d1e6f",
+      "bytes": 21008136
+    },
+    {
+      "path": "artifacts/loot-diary-01/m-deadpan-avatar.png",
+      "sha256": "7c568e3f6ec6ffdf933ad1aa1b94383f46937db02600fb5fc9a0f6ed01c2a505",
+      "bytes": 134777
+    },
+    {
+      "path": "artifacts/loot-diary-01/z-happy-avatar.png",
+      "sha256": "85fda8a33af9f4a6d11716ffd64f8d052c6374745c4f2cd83a02573e2fb96112",
+      "bytes": 118369
+    },
+    {
+      "path": "artifacts/loot-diary-01/t-research-think-avatar.png",
+      "sha256": "3d8549a20596c9b08fc5f8aa58952ce0fb1843537df5810e6d4788908754f16b",
+      "bytes": 143086
+    },
+    {
+      "path": "artifacts/loot-diary-01/t-research-happy-avatar.png",
+      "sha256": "2db2d125a79ddc19407cb7b78ba622dbe25256a44000665f45e5ae7c29dad00e",
+      "bytes": 142652
+    },
+    {
+      "path": "artifacts/loot-diary-01/t-research-determined-avatar.png",
+      "sha256": "49203d616bc33d1a68bf5836d5dede79a714a9d65925df970f02ea183f20bec3",
+      "bytes": 135303
+    },
+    {
+      "path": "artifacts/loot-diary-01/t-research-care-avatar.png",
+      "sha256": "f781ffd697d7197de812885f83a89c5a215bda889ef8177374de0df8483972f9",
+      "bytes": 143677
+    },
+    {
+      "path": "public/audio/tanoshiibouken.mp3",
+      "sha256": "c0b1cf90dfc73f49957172357fa901056cf1b9fe500e812e57bf3b13b34b43ba",
+      "bytes": 1738361
+    }
+  ],
+  "approvedAvatarSource": "https://github.com/ffuwa564-gif/Finit-battle-no-more/blob/c85eb5fabd4eb01c3f5267505bb496a74063b111/Production-Materials.zip",
+  "opSource": "https://raw.githubusercontent.com/ffuwa564-gif/Finit-battle-no-more/017a0ccca241d1ec6a72b8a73f63188fc1043875/STILLVEIL-TowerDiary-Opening-v4-1080p.mp4"
+}

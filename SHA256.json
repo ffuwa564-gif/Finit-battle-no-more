@@ -1,0 +1,102 @@
+{
+  "Status.json": {
+    "sha256": "72e09dbb27858eb7bcccd768af0ea6acc916361ea0d2b14c381f40242a51b063",
+    "bytes": 471
+  },
+  "Production-Materials.zip": {
+    "sha256": "d577e859524997eca712294fb7dc5b94ff506292070435f920aee5a06cfe31a6",
+    "bytes": 19947960
+  },
+  "Recording-Sources.zip": {
+    "sha256": "6fe8de81fe4ca9cae78b61f74487129911d8153d1455d6dbd278288d075d7c56",
+    "bytes": 29484255
+  },
+  "Native-Source-Hashes.json": {
+    "sha256": "915df1692947f0d1dd6009820cdbda6be057223ce1470049c551e9dc6288e7a3",
+    "bytes": 1939
+  },
+  "brief.md": {
+    "sha256": "bcaefd4f7e1094f5b812406ddba0d358c515baf84918b5654eac0eec94f1bd07",
+    "bytes": 1628
+  },
+  "source-lock.json": {
+    "sha256": "23229861db4cb49013349c546a502e4e496d180e10552cfa67cf225ce9c44c9a",
+    "bytes": 1450
+  },
+  "art-map.json": {
+    "sha256": "60394e6dabaeb76253cb35aaa234d245d372f27c5d5b6d692db1c6f3a0b4800f",
+    "bytes": 1354
+  },
+  "Chapters.txt": {
+    "sha256": "6a05022ff62fffff79ee026d8da48761d5e5dfd68cef697b80c4f8c6bc8c569b",
+    "bytes": 419
+  },
+  "Script.md": {
+    "sha256": "b73b1de397b71583154fc491b77feef82a932376629bfb8751a360d7a9cc5231",
+    "bytes": 6747
+  },
+  "Description.txt": {
+    "sha256": "847be3357d1603dd308af51df81b3202f45b1b431c7a93145889de2bf3d6c536",
+    "bytes": 1476
+  },
+  "Credits.md": {
+    "sha256": "859f0b6ef731ef8d10d96d9eab9eb5f8ab4817ba9057ad8f0b261797876522f3",
+    "bytes": 1879
+  },
+  "README.md": {
+    "sha256": "7df1807a45885b3f5366113d88060b0dd233cfaa467f9d4c6a7249cc4ca10b95",
+    "bytes": 4867
+  },
+  "Input-Hashes.json": {
+    "sha256": "3fa01bda1125504a46aad3ee22e1564cda9e1dd0a85942f8e1fb639e1a4907c7",
+    "bytes": 1871
+  },
+  "Review.md": {
+    "sha256": "2f151ca5d9dbe8d9e3606f3ddbc7ba67a5e3277d45136b798514aa2dc29b0b79",
+    "bytes": 1814
+  },
+  "QA-Summary.md": {
+    "sha256": "9681eeacae646d1a4d8c297bf9da01e3c32bda012eef558eb3328839481780fd",
+    "bytes": 944
+  },
+  "artwork-provenance.json": {
+    "sha256": "57bf2c04fb3cde952d310272110dc3581a7a08ffdef2b7b427a681403c8c9d86",
+    "bytes": 7087
+  },
+  "session-summary.json": {
+    "sha256": "62387d49df9774237e6b6b975d81ae092ceb1b6fe78a64eb4cdfc27ab66005d6",
+    "bytes": 35101
+  },
+  "Native-Calibration.json": {
+    "sha256": "de45d8307d91b1d3c621790ab250d25cf961bbcc5c1863e1aa6fcaedff768b86",
+    "bytes": 7999
+  },
+  "Browser-QA.json": {
+    "sha256": "ae2416b343597d4d20f77f26960a012b607d8dbf2438321f13c16c24c715d779",
+    "bytes": 1639
+  },
+  "Final-QA.json": {
+    "sha256": "17359239b5e1425f32a798e6fab823f69a069e5849f0629ccb2af46a2c0af0ea",
+    "bytes": 15364
+  },
+  "timeline.json": {
+    "sha256": "2884c12cbfd17d7356f5b360b15d99cd71fe3fb1495a83c086f891ee8cae3167",
+    "bytes": 47247
+  },
+  "Subtitles.srt": {
+    "sha256": "eff186ad6fbecaf2b8ef0c67f8d90b4784ad2187afc7163fe92f056468cfa1f7",
+    "bytes": 6996
+  },
+  "Preview.jpg": {
+    "sha256": "d1909e20934bc391cfdfc268878ab7d93c6afaf999fdfb4790d03f6ee89112e1",
+    "bytes": 304189
+  },
+  "Thumbnail.png": {
+    "sha256": "d0068d608d76e96c94cc75525885cfb9f5d3ff5c55e1d47e987542d11751b934",
+    "bytes": 598530
+  },
+  "STILLVEIL-LootDiary-01.mp4": {
+    "sha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c",
+    "bytes": 16968006
+  }
+}

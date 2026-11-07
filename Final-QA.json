@@ -1,0 +1,658 @@
+{
+  "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c",
+  "toleranceMs": 80,
+  "checks": [
+    {
+      "kind": "video",
+      "id": "attempt-before-start",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.184994765837004,
+      "motion": 2.0271084308624268,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-start",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.6789494422403697,
+      "motion": 10.637272834777832,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-start",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 1.6009339607990836,
+      "motion": 8.64207935333252,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-middle",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.207173886181261,
+      "motion": 1.3582414388656616,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-middle",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.240237160323904,
+      "motion": 2.175980567932129,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-middle",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 1.3901603454209168,
+      "motion": 2.7700588703155518,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.2670607912767675,
+      "motion": 2.1064469814300537,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.3562186206484736,
+      "motion": 2.118046760559082,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-before-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 0.8092169636968728,
+      "motion": 41.575172424316406,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "farm-1-start",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.2419182473472552,
+      "motion": 2.4543707370758057,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "farm-1-start",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.3632725561802137,
+      "motion": 30.08222198486328,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "farm-1-start",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 1.5721762038312883,
+      "motion": 22.561073303222656,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "forge",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 0.7782714911900984,
+      "motion": 12.864585876464844,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "forge",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 0.7724905023584523,
+      "motion": 0.5033965706825256,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "forge",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 1.0507704802038578,
+      "motion": 34.4715461730957,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-start",
+      "third": 0,
+      "lagMs": -33.333333333333336,
+      "RMSE": 1.2244076122633396,
+      "motion": 2.0974109172821045,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-start",
+      "third": 1,
+      "lagMs": -33.333333333333336,
+      "RMSE": 1.235099460381381,
+      "motion": 2.2278902530670166,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-start",
+      "third": 2,
+      "lagMs": -33.333333333333336,
+      "RMSE": 1.6442134487148914,
+      "motion": 11.035696029663086,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-middle",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.6098647553326568,
+      "motion": 14.420148849487305,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-middle",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.3341581871358341,
+      "motion": 2.152460813522339,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-middle",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 1.3302456129859772,
+      "motion": 2.23545241355896,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.315150413488881,
+      "motion": 2.085939407348633,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.1964735227316368,
+      "motion": 5.421558380126953,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-after-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 0.8412170870751665,
+      "motion": 57.59773254394531,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-leader-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "RMSE": 1.3978556430326248,
+      "motion": 6.639387130737305,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-leader-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "RMSE": 1.451451180737236,
+      "motion": 7.050948619842529,
+      "passed": true
+    },
+    {
+      "kind": "video",
+      "id": "attempt-leader-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "RMSE": 0.8592815642993333,
+      "motion": 53.39707946777344,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-start",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.5659185377632443,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-start",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.6022153796244842,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-start",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.41417089835417825,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-middle",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.4860484712058556,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-middle",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.41682382623102554,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-middle",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.663818862343001,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.5592725815766114,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.4633521278200781,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-before-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.31702749681387543,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "farm-1-start",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.4486758155513971,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "farm-1-start",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.8446125686420937,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "farm-1-start",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.8537931909344243,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "forge",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.45810839677291915,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "forge",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.4227488895007528,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "forge",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.307263406834962,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-start",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.3542846203054038,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-start",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.605215551017869,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-start",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.6287437756181379,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-middle",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.45167362084802526,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-middle",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.6312401781012164,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-middle",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.6208609160366593,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.40914131168426277,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.4070936292620214,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.1292100453011925,
+      "passed": false
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-leader-end",
+      "third": 0,
+      "lagMs": 0.0,
+      "correlation": 0.49383390074857836,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-leader-end",
+      "third": 1,
+      "lagMs": 0.0,
+      "correlation": 0.6170240864428895,
+      "passed": true
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-leader-end",
+      "third": 2,
+      "lagMs": 0.08333333333333333,
+      "correlation": 0.21959348186121014,
+      "passed": false
+    },
+    {
+      "kind": "voice",
+      "speaker": "t",
+      "time": 6.433333333333334,
+      "lagMs": 0.0,
+      "correlation": 0.9952085370897176,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "t",
+      "time": 139.3,
+      "lagMs": 0.0,
+      "correlation": 0.9852048892421619,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "t",
+      "time": 281.1333333333333,
+      "lagMs": 0.0,
+      "correlation": 0.9942591921880424,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "z",
+      "time": 12.466666666666667,
+      "lagMs": 0.0,
+      "correlation": 0.9883483897165757,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "z",
+      "time": 143.16666666666666,
+      "lagMs": 0.0,
+      "correlation": 0.9881575511964852,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "z",
+      "time": 277.3,
+      "lagMs": 0.0,
+      "correlation": 0.9889616847909368,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "m",
+      "time": 28.533333333333335,
+      "lagMs": 0.0,
+      "correlation": 0.9926799942912511,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "m",
+      "time": 155.66666666666666,
+      "lagMs": 0.0,
+      "correlation": 0.9899465432694139,
+      "passed": true
+    },
+    {
+      "kind": "voice",
+      "speaker": "m",
+      "time": 270.53333333333336,
+      "lagMs": 0.0,
+      "correlation": 0.9958978416677872,
+      "passed": true
+    }
+  ],
+  "fullDecodePassed": true,
+  "nativeCalibration": [
+    {
+      "file": "attempt-after-end-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.12500000000159173,
+        -0.12499999999803901,
+        -0.12499999999803901
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-after-middle-raw.mkv",
+      "lagMs": [
+        -0.1458333333333962,
+        -0.12499999999803901,
+        -0.12500000000159173,
+        -0.12500000000159173
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-after-start-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.16666666666253616,
+        -0.16666666666964158,
+        -0.16666666666253616
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-before-end-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.12499999999803901,
+        -0.12499999999803901,
+        -0.12500000000159173
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-before-middle-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.12500000000159173,
+        -0.16666666666608887,
+        -0.12499999999803901
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-before-start-raw.mkv",
+      "lagMs": [
+        -0.12500000000025946,
+        -0.1875000000001138,
+        -0.1875000000001138,
+        -0.1875000000001138
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "attempt-leader-end-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.12499999999981537,
+        -0.12500000000159173,
+        -0.12499999999981537
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "farm-1-start-raw.mkv",
+      "lagMs": [
+        -0.12500000000025946,
+        -0.1875000000001138,
+        -0.1875000000001138,
+        -0.1875000000001138
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    },
+    {
+      "file": "forge-raw.mkv",
+      "lagMs": [
+        -0.12499999999981537,
+        -0.12499999999981537,
+        -0.12500000000159173,
+        -0.12500000000159173
+      ],
+      "passed": true,
+      "scope": "stabilized source interval: final start flash and three end flashes; first two capture warm-up flashes excluded"
+    }
+  ],
+  "passed": false,
+  "failures": [
+    {
+      "kind": "game-audio",
+      "id": "attempt-after-end",
+      "third": 2,
+      "lagMs": 0.0,
+      "correlation": 0.1292100453011925,
+      "passed": false
+    },
+    {
+      "kind": "game-audio",
+      "id": "attempt-leader-end",
+      "third": 2,
+      "lagMs": 0.08333333333333333,
+      "correlation": 0.21959348186121014,
+      "passed": false
+    }
+  ]
+}

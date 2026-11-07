@@ -1,0 +1,56 @@
+[
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-after-end-raw.mkv",
+    "bytes": 68856721,
+    "sha256": "c6991298d3d21ea15bee2545630c626a1571980c47a21943833908cf4f4ef7ca",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-after-middle-raw.mkv",
+    "bytes": 133902577,
+    "sha256": "f5f2fe6843c1cc4db817aad9391df60130085d31f008f7bbdbb126991053bede",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-after-start-raw.mkv",
+    "bytes": 181797993,
+    "sha256": "01967fc2006a2190f7448a11882aa6ac8df69a7a2631aa566af614f44f2f6d18",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-before-end-raw.mkv",
+    "bytes": 71482802,
+    "sha256": "c424c5f1ef87c3e0ff2364afed94eea5d982b7e15b0d9c45ff1e6cc9e28f7fc1",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-before-middle-raw.mkv",
+    "bytes": 119571930,
+    "sha256": "8062d813d0c698a84d7b3e1a1e59215ec65a737b7039f3fba9cc93a9c693d765",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-before-start-raw.mkv",
+    "bytes": 193632704,
+    "sha256": "e734695aeb210a68f7ae07fa9edfbc81ecbc14bf34862c4fe63c280cf809b01f",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/attempt-leader-end-raw.mkv",
+    "bytes": 66805916,
+    "sha256": "33e76c33bc2f6144b02dd945ac04187391669f7df280b8ae41ac99435dcbf7ff",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/farm-1-start-raw.mkv",
+    "bytes": 186830499,
+    "sha256": "52a45ac2061c38cd8011763f20e67c5919b50cc758fdb7125f135c47673a6ed6",
+    "retainedLocally": true
+  },
+  {
+    "file": "artifacts/loot-diary-01/capture/forge-raw.mkv",
+    "bytes": 15376285,
+    "sha256": "8059b3b7491b0f0c4845f7205319ed191a9b5d2951b6908f52a74ac37ff5a8da",
+    "retainedLocally": true
+  }
+]

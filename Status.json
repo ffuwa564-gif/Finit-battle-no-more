@@ -1,0 +1,10 @@
+{
+  "status": "preview",
+  "sourceCommit": "a3ac19ff50c1c4f0971d9dfb45f48a1211a5442d",
+  "gameCommit": "56775d6d57f868137dc41a41d8398e66fdead6ea",
+  "movieSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c",
+  "finalTechnicalQaPassed": false,
+  "browserPassed": true,
+  "sourceInteriorIndependentSyncCertified": false,
+  "note": "Do not treat fitted diagnostic anchors as independent source-interior validation. See Review.md and Final-QA.json."
+}

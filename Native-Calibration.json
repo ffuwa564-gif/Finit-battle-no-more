@@ -1,0 +1,290 @@
+[
+  {
+    "file": "attempt-after-end-raw.mkv",
+    "audioTimes": [
+      2.4601458333333333,
+      2.8969791666666667,
+      3.2809791666666666,
+      17.404854166666667,
+      17.7781875,
+      18.1381875
+    ],
+    "videoTimesPlus5ms": [
+      2.6229999999999998,
+      3.074,
+      3.421,
+      17.363,
+      17.744999999999997,
+      18.092
+    ],
+    "slope": 0.987122868193042,
+    "intercept": 0.18227043451838343,
+    "uncorrectedOffsetMs": [
+      -162.85416666666652,
+      -177.02083333333317,
+      -140.02083333333326,
+      41.85416666666697,
+      33.18750000000392,
+      46.187500000002046
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-after-middle-raw.mkv",
+    "audioTimes": [
+      2.2050416666666663,
+      2.7745208333333333,
+      3.2386875,
+      28.469479166666666,
+      28.924,
+      29.364
+    ],
+    "videoTimesPlus5ms": [
+      2.405,
+      2.905,
+      3.405,
+      28.637999999999998,
+      29.072,
+      29.438
+    ],
+    "slope": 1.000087525328674,
+    "intercept": 0.16602903281208947,
+    "uncorrectedOffsetMs": [
+      -199.95833333333346,
+      -130.4791666666665,
+      -166.31249999999963,
+      -168.52083333333212,
+      -147.9999999999997,
+      -73.99999999999807
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-after-start-raw.mkv",
+    "audioTimes": [
+      2.4715416666666665,
+      2.918375,
+      3.460354166666667,
+      34.77922916666667,
+      35.206875000000004,
+      35.648187500000006
+    ],
+    "videoTimesPlus5ms": [
+      2.705,
+      3.138,
+      3.638,
+      34.972,
+      35.438,
+      35.805
+    ],
+    "slope": 1.0004829356099159,
+    "intercept": 0.17597470508332913,
+    "uncorrectedOffsetMs": [
+      -233.45833333333354,
+      -219.62499999999974,
+      -177.64583333333306,
+      -192.77083333333422,
+      -231.1249999999987,
+      -156.8124999999938
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-before-end-raw.mkv",
+    "audioTimes": [
+      2.1218333333333335,
+      2.6685,
+      3.0974166666666667,
+      18.36039583333333,
+      18.733729166666667,
+      19.093729166666666
+    ],
+    "videoTimesPlus5ms": [
+      2.4379999999999997,
+      2.8049999999999997,
+      3.3049999999999997,
+      18.337999999999997,
+      18.705,
+      19.072
+    ],
+    "slope": 0.9849322229850824,
+    "intercept": 0.2542545169889556,
+    "uncorrectedOffsetMs": [
+      -316.1666666666663,
+      -136.49999999999983,
+      -207.583333333333,
+      22.39583333333428,
+      28.72916666666825,
+      21.7291666666668
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-before-middle-raw.mkv",
+    "audioTimes": [
+      2.342791666666667,
+      2.7613958333333333,
+      3.2513125,
+      28.927270833333335,
+      29.391458333333336,
+      29.971145833333335
+    ],
+    "videoTimesPlus5ms": [
+      2.54,
+      2.9739999999999998,
+      3.4419999999999997,
+      29.114,
+      29.615,
+      30.15
+    ],
+    "slope": 0.9998458350305003,
+    "intercept": 0.19118873849239604,
+    "uncorrectedOffsetMs": [
+      -197.2083333333332,
+      -212.6041666666665,
+      -190.6874999999997,
+      -186.72916666666595,
+      -223.5416666666623,
+      -178.85416666666387
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-before-start-raw.mkv",
+    "audioTimes": [
+      1.8698541666666666,
+      2.331625,
+      2.8017916666666665,
+      35.75802083333333,
+      36.190020833333335,
+      36.70022916666667
+    ],
+    "videoTimesPlus5ms": [
+      2.044,
+      2.4459999999999997,
+      2.983,
+      35.832,
+      36.502,
+      36.837
+    ],
+    "slope": 0.996746315662378,
+    "intercept": 0.1903244789964469,
+    "uncorrectedOffsetMs": [
+      -174.14583333333346,
+      -114.37499999999989,
+      -181.20833333333363,
+      -73.9791666666676,
+      -311.97916666666714,
+      -136.77083333333684
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "attempt-leader-end-raw.mkv",
+    "audioTimes": [
+      2.0326041666666668,
+      2.475270833333333,
+      2.9632708333333335,
+      12.985625,
+      13.358958333333334,
+      13.718958333333333
+    ],
+    "videoTimesPlus5ms": [
+      2.138,
+      2.505,
+      3.038,
+      12.972000000000001,
+      13.305000000000001,
+      13.672
+    ],
+    "slope": 0.9911842901181319,
+    "intercept": 0.10085250263473444,
+    "uncorrectedOffsetMs": [
+      -105.39583333333313,
+      -29.729166666666806,
+      -74.72916666666629,
+      13.624999999999332,
+      53.95833333333222,
+      46.95833333333255
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "farm-1-start-raw.mkv",
+    "audioTimes": [
+      1.9956666666666667,
+      2.491416666666667,
+      3.043229166666667,
+      35.946020833333336,
+      36.357458333333334,
+      36.83777083333334
+    ],
+    "videoTimesPlus5ms": [
+      2.118,
+      2.659,
+      3.233,
+      35.988,
+      36.495000000000005,
+      36.968
+    ],
+    "slope": 0.995508233217293,
+    "intercept": 0.2034403090163317,
+    "uncorrectedOffsetMs": [
+      -122.33333333333319,
+      -167.58333333333297,
+      -189.77083333333323,
+      -41.979166666664014,
+      -137.5416666666709,
+      -130.22916666666617
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  },
+  {
+    "file": "forge-raw.mkv",
+    "audioTimes": [
+      2.254479166666667,
+      2.7318125,
+      3.1611458333333333,
+      9.964375,
+      10.369708333333334,
+      10.764375
+    ],
+    "videoTimesPlus5ms": [
+      2.405,
+      2.8049999999999997,
+      3.272,
+      10.005,
+      10.372000000000002,
+      10.805000000000001
+    ],
+    "slope": 0.9896770834928267,
+    "intercept": 0.14348641117116534,
+    "uncorrectedOffsetMs": [
+      -150.52083333333277,
+      -73.18749999999952,
+      -110.85416666666647,
+      -40.625000000000355,
+      -2.291666666668135,
+      -40.62500000000213
+    ],
+    "fitAnchors": "all six measured flash/tone onset pairs; diagnostic tone duration preserved",
+    "passed": true,
+    "method": "piecewise linear timing correction using six paired flash/tone anchors; no independent interior holdout; internal source sync not certified"
+  }
+]

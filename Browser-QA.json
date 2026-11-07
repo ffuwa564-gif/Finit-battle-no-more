@@ -1,0 +1,68 @@
+[
+  {
+    "browser": "chromium",
+    "seek": 1,
+    "currentTime": 1.431731,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  },
+  {
+    "browser": "chromium",
+    "seek": 144,
+    "currentTime": 144.43189,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  },
+  {
+    "browser": "chromium",
+    "seek": 277,
+    "currentTime": 277.436706,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  },
+  {
+    "browser": "webkit",
+    "seek": 1,
+    "currentTime": 1.82073433,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  },
+  {
+    "browser": "webkit",
+    "seek": 144,
+    "currentTime": 144.816969442,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  },
+  {
+    "browser": "webkit",
+    "seek": 277,
+    "currentTime": 277.817131269,
+    "paused": false,
+    "readyState": 4,
+    "width": 1920,
+    "height": 1080,
+    "passed": true,
+    "finishedSha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c"
+  }
+]
