@@ -11,3 +11,9 @@ SECTIONS=[
 ('leader','もう１案：リーダーも替えてみる','attempt-leader',[('m','ノクスをリーダーにした試行も一回。こちらは四十九ラウンド、ボスの残り四千百四。'),('t','今回はリオラのときより残ったね。強そうな名前だけで選ばず、失った守りも見たい。'),('z','負けたから全部だめ、ではないのだな。'),('t','そう。今日は三戦とも負けた。でも、何を変えたかと、どこまで行けたかは残しておく。')]),
 ('end','次に掘りたいもの',None,[('t','次は残響石や予告への対処を見直したい。攻撃の重なるタイミングを、もう少しそろえられないかな。'),('m','勝率や、この子だけの採用価値を認定した回ではありません。今回は公開版での攻略日記よ。'),('z','ぼくは、今度こそ四人で帰るところが見たいのだ。'),('t','私も。サクヤヒメ、もう少しだけ付き合ってね。好きな子と勝ちたい気持ちは、まだ変わってないから。')]),
 ]
+
+if __name__=='__main__':
+ from pathlib import Path
+ import json
+ root=Path('artifacts/loot-diary-01');root.mkdir(parents=True,exist_ok=True)
+ (root/'story.json').write_text(json.dumps([{'id':id,'title':title,'clip':clip,'lines':[{'speaker':speaker,'text':text}for speaker,text in lines]}for id,title,clip,lines in SECTIONS],ensure_ascii=False,indent=2))

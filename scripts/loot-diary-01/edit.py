@@ -15,7 +15,7 @@ def plate(title):
  d.rounded_rectangle((296,65,1624,925),28,fill=C['paper'],outline=C['edge'],width=3);d.rectangle((0,935,W,H),fill='#fff8f2');txt(d,(35,17),'つむぎのハクスラ日記',30);txt(d,(1120,20),'#01  好きなSRと、最後の壁へ',28);txt(d,(335,90),title,38);return im
 paths={'nox':'public/art/nox.png','mireille':'public/art/mireille.png','liora':'public/art/liora.png','noelle':'public/art/noelle.png'}
 # Resolve real artwork paths from the retained current-content registry if needed.
-registry=json.loads(Path('/workspace/stillveil-this-girl-01/artifacts/this-girl-01/assets/art-map.json').read_text())
+registry=json.loads(Path('docs/media/loot-diary/01/art-map.json').read_text())
 for id in paths:
  if not Path(paths[id]).exists():paths[id]='public/'+registry[id]['path']
 notes={
@@ -97,7 +97,7 @@ for ch in story:
    ident=clip+('-'+tag if tag else'');meta=json.loads((O/'capture'/f'{ident}.json').read_text());raw=O/'capture'/f'{ident}-raw.mkv';available=math.floor((meta['gameEnd']-meta['gameStart'])*30);length=min(available,desired//len(tags)+(1 if j<desired%len(tags) else 0));length=max(1,length)
    offset=max(0,(available-length)/30) if tag=='end' else max(0,(available-length)/60) if tag=='middle' else 0
    start=meta['gameStart']-meta['wallEpoch']+offset;end=start+length/30;piece=R/(ident+'-piece.mov')
-   run(['-copyts','-i',raw,'-filter_complex',f'[0:v]trim=start={start}:end={end},setpts=PTS-{start}/TB,fps=30,crop=540:960:0:0,scale=486:864,setsar=1[v];[0:a]atrim=start={start}:end={end},asetpts=PTS-{start}/TB,aresample=48000:first_pts=0,lowpass=f=14000,apad,atrim=end_sample={length*1600}[a]','-map','[v]','-map','[a]','-frames:v',length,'-c:v','libx264','-preset','ultrafast','-crf','18','-threads','1','-pix_fmt','yuv420p','-c:a','pcm_s16le',piece]);pieces.append(piece);gamecuts.append({'id':ident,'piece':str(piece),'startFrame':cursor+piece_cursor,'frames':length,'source':str(raw),'sourceStartPTS':start,'box':[310,66,486,864]});piece_cursor+=length
+   run(['-copyts','-i',raw,'-i',raw.with_suffix('.sync.wav'),'-filter_complex',f'[0:v]trim=start={start}:end={end},setpts=PTS-{start}/TB,fps=30,crop=540:960:0:0,scale=486:864,setsar=1[v];[1:a]atrim=start={start}:end={end},asetpts=PTS-{start}/TB,aresample=48000:first_pts=0,lowpass=f=14000,apad,atrim=end_sample={length*1600}[a]','-map','[v]','-map','[a]','-frames:v',length,'-c:v','libx264','-preset','ultrafast','-crf','18','-threads','1','-pix_fmt','yuv420p','-c:a','pcm_s16le',piece]);pieces.append(piece);gamecuts.append({'id':ident,'piece':str(piece),'startFrame':cursor+piece_cursor,'frames':length,'source':str(raw),'sourceStartPTS':start,'box':[310,66,486,864]});piece_cursor+=length
   joined=R/(ch['id']+'-game.mov');li=R/(ch['id']+'-game.txt');li.write_text('\n'.join("file '"+str(p.resolve())+"'" for p in pieces));run(['-f','concat','-safe','0','-i',li,'-c','copy',joined]);game_end=piece_cursor
   inputs+=['-i',joined];filter+=f';[1:v]setpts=PTS-STARTPTS+{game_start}/30/TB,tpad=stop_mode=clone:stop_duration={secs}[g];[{base}][g]overlay=310:66:enable=\'gte(t,{game_start/30})\'[withgame]';base='withgame';nextidx=2
   if (R/(ch['id']+'-result.png')).exists():

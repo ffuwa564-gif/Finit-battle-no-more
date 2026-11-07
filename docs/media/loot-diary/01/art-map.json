@@ -1,0 +1,50 @@
+{
+  "nox": {
+    "name": "ノクス",
+    "displayName": "ノクス",
+    "formLabel": "登録形態",
+    "role": "attacker",
+    "rarity": "SSR",
+    "seriesId": "BD021",
+    "path": "art/gacha-nox.png",
+    "sha256": "7dad95f3990ba36410e7d5b33dcc1b2d1cdb6cd315ad2df370116e031cf195fc",
+    "width": 1440,
+    "height": 1920
+  },
+  "mireille": {
+    "name": "コノハナサクヤヒメ",
+    "displayName": "コノハナサクヤヒメ",
+    "formLabel": "登録形態",
+    "role": "healer",
+    "rarity": "SR",
+    "seriesId": "BD009",
+    "path": "art/gacha-sakuya.png",
+    "sha256": "6a88e0730d9712352846736778ced81316d963f5bfa5ecb132a2d1432347c557",
+    "width": 1024,
+    "height": 1536
+  },
+  "liora": {
+    "name": "リオラ",
+    "displayName": "リオラ",
+    "formLabel": "登録形態",
+    "role": "tank",
+    "rarity": "R",
+    "seriesId": "BD002",
+    "path": "art/liora.png",
+    "sha256": "5b85db4b3047094a833c7592bc603f771907acb2408e8543f11b55ffcdda60c1",
+    "width": 1024,
+    "height": 1536
+  },
+  "noelle": {
+    "name": "ノエル",
+    "displayName": "ノエル",
+    "formLabel": "登録形態",
+    "role": "area_attacker",
+    "rarity": "R",
+    "seriesId": "BD004",
+    "path": "art/noelle.png",
+    "sha256": "5697468ce5b3ac063c111cf62a0a3967714c451d8d229bf95f3ab536ff41615e",
+    "width": 1024,
+    "height": 1536
+  }
+}

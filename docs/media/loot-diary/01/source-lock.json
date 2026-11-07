@@ -5,5 +5,16 @@
   "files": {
     "scripts/loot-diary-01/session.ts": "f39fc1be21d3b80f04cf24f322520dba1e56b9de6fbeef6306e046736954d2ee",
     "scripts/loot-diary-01/record.mjs": "cdb0544a7275625ba590707cda5189475cda897722f9660ef61cd56f96a4bd1f"
+  },
+  "productionCode": {
+    "scripts/loot-diary-01/remix.py": "018bed7e2defcfb7d999298e93f065fae5b07b27e0aca960a2ce8ae389c0b6de",
+    "scripts/loot-diary-01/calibrate.py": "99c193fea01ad123298fa6d806c1cc72efacbacf62d95e46cf7b94210030e1d6",
+    "scripts/loot-diary-01/qa.py": "88476b563a84678b36425a62c16c0f177b63378c711416e2aff76e62b91e3f1e",
+    "scripts/loot-diary-01/edit.py": "99a25b0b4f16380db10608a75330471fa9c064bcbded66a3308ed97ce6ec190e",
+    "scripts/loot-diary-01/speech.py": "9f1f4a5a4e471225aa1ad532f1e100a2b528d34ac1d2035db1bae9d4a24e2b9a",
+    "scripts/loot-diary-01/story.py": "89003046a20e279e0b8f0293787b6c291d2d35feb695c32de55d8b865f793936",
+    "scripts/loot-diary-01/browser-qa.mjs": "fd0e4723abf99c58a9bb92469676578796a695e84047d97e9c4963c3e68b7495",
+    "scripts/loot-diary-01/record.mjs": "cdb0544a7275625ba590707cda5189475cda897722f9660ef61cd56f96a4bd1f",
+    "scripts/loot-diary-01/session.ts": "f39fc1be21d3b80f04cf24f322520dba1e56b9de6fbeef6306e046736954d2ee"
   }
 }
