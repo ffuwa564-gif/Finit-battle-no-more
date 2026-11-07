@@ -3813,5 +3813,19 @@
   "空き枠 {0}": "Empty socket {0}",
   "空き枠": "Empty socket",
   "素材・雫・原石は何回かタップして回収してね。戦闘が進むと消えるよ。強化は3枚のカードから選ぶと、宝石が下の3枠に入るの。いっぱいになったら入れ替える枠を選ぼう。追加の素材と原石はクリア時に確定するよ。": "Tap materials, healing and rough stones several times to collect them before they fade. Choose one of three cards to set a gem in the three sockets below. When full, choose a socket to replace. Extra materials and rough stones are secured on clear.",
-  "選ぶ": "Select"
+  "選ぶ": "Select",
+  "このダンジョンは連続討伐に対応していません": "This dungeon does not support continuous hunts.",
+  "連続討伐の保存状態が不正です。": "Invalid saved hunt state.",
+  "連続討伐の地点が不正です。": "Invalid hunt location.",
+  "100手の連続討伐 → ボス戦。討伐ランクで希少品の出現率が上がります。": "Hunt for 100 party actions, then face the boss. Higher kill ranks improve rare loot odds.",
+  "討伐": "Kills",
+  "ボス戦": "BOSS",
+  "手": "ACT",
+  "討伐ランク": "Hunt rank",
+  "討伐の進行": "Hunt progress",
+  "今回の回収品は失われました。": "Loot collected this run was lost.",
+  "ランク到達後から希少部材・高期待値の原石が出やすくなります。": "Higher ranks improve subsequent rare component and rough stone drops.",
+  "これまでの最高討伐": "Previous best kills",
+  "狙える希少部材": "Rare components to hunt for",
+  "最近の最高討伐": "Recent best kills"
 }

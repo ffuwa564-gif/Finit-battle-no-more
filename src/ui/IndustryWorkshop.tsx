@@ -1,3 +1,4 @@
+import { canHunt, huntPartPool } from '../domain/hunt';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronRight, Factory, Hammer, Package, Play, RotateCcw, Settings2, Flame, Battery, Lamp, Cog } from 'lucide-react';
 import type { Content, DungeonDef, GameCommand, GameSave } from '../domain/types';
@@ -93,5 +94,5 @@ export function IndustryDungeonResources({ dungeon, save, content, reward = fals
   useEffect(()=>{if(!reward||!readyAt||readyAt<=Date.now())return;const timer=setTimeout(()=>setNow(Date.now()),readyAt-Date.now()+10);return()=>clearTimeout(timer);},[reward,readyAt]);
   const industry=useMemo(()=>reward?previewIndustry(save,Math.max(now,Date.now())):save.industry,[reward,save.industry,now]);
   const loot = industryLoot(dungeon, {...save,industry}, content), text = (v: { ja: string; en: string }) => v[getLanguage()];
-  return <div className="industry-dungeon-resources">{!reward && <p>{text(dungeonIndustryProfile(dungeon, content).flavor)}</p>}{Object.keys(loot).length > 0 && <><small>{tr(reward ? '持ち帰るクラフト資源' : '踏破で採集できる資源')} · {text(dungeonIndustryProfile(dungeon, content).name)}</small><div>{Object.entries(loot).map(([id, n]) => <span key={id}><InventorySprite id={id}/>{text(industryItem(id).name)} <b>+{n}</b></span>)}</div></>}</div>;
+  return <div className="industry-dungeon-resources">{!reward && <p>{text(dungeonIndustryProfile(dungeon, content).flavor)}</p>}{Object.keys(loot).length > 0 && <><small>{tr(reward ? '持ち帰るクラフト資源' : '踏破で採集できる資源')} · {text(dungeonIndustryProfile(dungeon, content).name)}</small><div>{Object.entries(loot).map(([id, n]) => <span key={id}><InventorySprite id={id}/>{text(industryItem(id).name)} <b>+{n}</b></span>)}</div></>}{!reward&&canHunt(dungeon)&&<><small>{tr('狙える希少部材')}</small><div>{[...new Set([...huntPartPool(dungeon,content,false),...huntPartPool(dungeon,content,true)])].map(id=><span key={id}><InventorySprite id={id}/>{text(industryItem(id).name)}</span>)}</div></>}</div>;
 }
