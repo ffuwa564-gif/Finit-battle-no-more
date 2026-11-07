@@ -35,6 +35,9 @@
 .inventory-theme .inventory-section__body { background:#f8ecd440; }
 .inventory-theme .panel { background:#f1e4cba8; color:#382f2b; border-color:#a78f6b66; }
 .inventory-theme :is(p,small,.subtle) { color:inherit; }
+/* Paper and inset navy panels must keep their own text palettes. */
+.inventory-theme { --memory-source-ink:var(--inventory-ink); --memory-source-icon:#5d513f; --memory-source-muted:#685b4b; }
+.inventory-theme .notice { color:#d9e3ee; background:#1c2b3e; border-color:#4b6079; }
 .inventory-theme .inventory-sprite img { opacity:1; }
 .inventory-theme .inventory-confirmation { padding:14px; border:1px solid #b39268; background:#efe0c2; border-radius:5px 14px; }
 .inventory-comparison { position:relative; isolation:isolate; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; padding:65px 23px 24px; }
