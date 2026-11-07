@@ -24,7 +24,7 @@ export async function prepare(spec:ProofSpec){
  if(spec.sourceGameCommit&&spec.sourceGameCommit!==sourceGameCommit)throw Error('Different capture commit');
  let researchLock:any;
  if(!spec.preflight){
-  const lockPath=resolve(O,'research/confirmation-lock.json');
+  const lockPath=resolve(O,process.env.RERECORD_CAPTURE_LOCK??'research/confirmation-lock.json');
   if(!spec.researchLockSha256||sha(lockPath)!==spec.researchLockSha256)throw Error('Missing or different frozen research lock');
   researchLock=JSON.parse(readFileSync(lockPath,'utf8'));
   if(spec.researchLockCommit!==researchLock.sourceGameCommit)throw Error('Research lock commit mismatch');
@@ -77,7 +77,7 @@ export async function prepare(spec:ProofSpec){
  if(!Object.values(checks).every(Boolean))throw Error('Native/application mismatch '+JSON.stringify(checks));
  assertSaveCompatibility(s,content);
  if(sourceFingerprint().sha256!==source.sha256)throw Error('Source changed during proof preparation');
- if(!spec.preflight&&sha(resolve(O,'research/confirmation-lock.json'))!==spec.researchLockSha256)throw Error('Research lock changed during proof preparation');
+ if(!spec.preflight&&sha(resolve(O,process.env.RERECORD_CAPTURE_LOCK??'research/confirmation-lock.json'))!==spec.researchLockSha256)throw Error('Research lock changed during proof preparation');
  const out={schemaVersion:1,episode:'THIS-GIRL-001',id:spec.id,spec,initial,fixture,final:structuredClone(s),groups,events,allCommands,config:spec.config,nativeSummary:{win:native.win,rounds:native.rounds,pots:native.pots,survivors:native.survivors,telemetry:native.telemetry},nativeVerified:true,applicationVerified:true,checks,sourceGameCommit,researchLockSha256:spec.researchLockSha256,researchLockCommit:spec.researchLockCommit,sourceTreeSha256:source.sha256,sourceFiles:source.files,disclosure:'Hypothetical endgame comparison fixture: all75 published forms including currently unobtainable XR, all gem definitions seen, legal family/slot rules,5potions. Real application commands, no enemy/stage edits. Not naturally acquired player progress.'};
  mkdirSync(resolve(O,'proofs'),{recursive:true});mkdirSync(resolve(O,'research'),{recursive:true});
  const path=resolve(O,`proofs/${spec.id}.json.gz`);writeFileSync(path,gzipSync(JSON.stringify(out)));

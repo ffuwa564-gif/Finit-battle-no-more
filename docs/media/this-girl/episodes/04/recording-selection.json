@@ -1,0 +1,164 @@
+{
+  "caseId": "kuzuha-awakening-T6-F2",
+  "stageId": "kuzuha-awakening",
+  "logicalSeed": 940002,
+  "applicationSeed": 388622004,
+  "referenceArm": "E",
+  "arms": {
+    "M": {
+      "config": {
+        "party": [
+          "noelle",
+          "seris-awakened",
+          "lisette-awakened",
+          "mireille"
+        ],
+        "leader": "noelle",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 0,
+        "autoPilot": true,
+        "command": true,
+        "commandMode": "conditional",
+        "commandSelective": false,
+        "commandTarget": "priority"
+      }
+    },
+    "A": {
+      "config": {
+        "party": [
+          "noelle",
+          "seris-awakened",
+          "lisette-awakened",
+          "mireille"
+        ],
+        "leader": "noelle",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 0,
+        "autoPilot": true,
+        "command": false,
+        "commandMode": "never",
+        "commandSelective": false,
+        "commandTarget": "priority"
+      }
+    }
+  },
+  "rowM": {
+    "logical": 940002,
+    "seed": 388622004,
+    "win": true,
+    "rounds": 13,
+    "cappedRounds": 13,
+    "pots": 1,
+    "survivors": 3,
+    "fullAliveWin": false,
+    "issued": 7,
+    "applied": 2,
+    "redirects": 1,
+    "damageRedirects": 1,
+    "redirectDamage": 50,
+    "zeroChangeOrders": 6,
+    "ordinaryAreaUses": 0,
+    "exposureUses": 0
+  },
+  "rowA": {
+    "logical": 940002,
+    "seed": 388622004,
+    "win": true,
+    "rounds": 11,
+    "cappedRounds": 11,
+    "pots": 1,
+    "survivors": 3,
+    "fullAliveWin": false,
+    "issued": 0,
+    "applied": 0,
+    "redirects": 0,
+    "damageRedirects": 0,
+    "redirectDamage": 0,
+    "zeroChangeOrders": 0,
+    "ordinaryAreaUses": 0,
+    "exposureUses": 0
+  },
+  "selectionPolicy": "Priority kuzuha T6 F2,F1 then tower10 T6 F1 then kuzuha T4 F2,F1. First ascending logical seed M/E both win, at least1actual M redirect, both <=24rounds. If no common-winning witness, first M redirect including loss; disclose it. Reference is E, not strongest A."
+}

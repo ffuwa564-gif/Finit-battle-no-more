@@ -1,0 +1,56 @@
+{
+  "finalized": true,
+  "episode": "THIS-GIRL-004",
+  "sourceLockSha256": "dc592c3cf6c48734314f5ebb2200c3743707d53af77b189ac64e7ebfbedbcc2d",
+  "subject": {
+    "characterId": "noelle",
+    "seriesId": "BD004",
+    "buildName": "星図の交換条件"
+  },
+  "overall": {
+    "status": "research",
+    "certified": false,
+    "label": "研究中",
+    "reason": "Real target redirection verified, but tested command policies do not establish net benefit over exact no-command or finite alternatives. Victory alone is insufficient."
+  },
+  "scope": {
+    "stages": [
+      "ivory-tower-010",
+      "kuzuha-awakening"
+    ],
+    "cores": [
+      "F1:seris-awakened/athena/benzaiten",
+      "F2:seris-awakened/lisette-awakened/mireille"
+    ],
+    "tiers": [
+      3,
+      4,
+      6
+    ],
+    "seedCount": 256,
+    "ownership": "Hypothetical all published forms including unavailable XR;4legal gems/5potions",
+    "mechanics": "Public1.12, no abilities changed. Commands reroute ordinary single-enemy actions; no extra attacks.",
+    "limitations": [
+      "Finite role-dependent search spaces, no global optimum.",
+      "Shared confirmation seeds are paired inputs, not24576 independent samples.",
+      "Primary M-E win comparison Holm12; secondary metrics descriptive.",
+      "Stone extension designed after primary outcomes, separately frozen with256 new seeds.",
+      "No all-roster endgame adoption certification."
+    ]
+  },
+  "evidenceRefs": [
+    {
+      "path": "artifacts/this-girl-04/research/analysis/main.json",
+      "sha256": "4e3538cd868859858490535254555488e17787fc27f16b4e358136ddd981b9ef"
+    },
+    {
+      "path": "artifacts/this-girl-04/research/stone-extension.json.gz",
+      "sha256": "19d0b101a63b717155c37fd8622d4fe1fc1da2186c726d14d0f08fc56b522951"
+    }
+  ],
+  "nextEpisode": {
+    "characterId": "lisette",
+    "status": "unverified",
+    "certified": false
+  }
+}

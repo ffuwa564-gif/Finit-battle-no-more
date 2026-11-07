@@ -1,0 +1,148 @@
+{
+  "caseId": "ivory-tower-010-T6-F1",
+  "stageId": "ivory-tower-010",
+  "logicalSeed": 940001,
+  "applicationSeed": 1916557409,
+  "arms": {
+    "A": {
+      "config": {
+        "party": [
+          "astraea",
+          "seris-awakened",
+          "athena",
+          "benzaiten"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 0,
+        "prefer": [
+          "pierce"
+        ]
+      }
+    },
+    "M": {
+      "config": {
+        "party": [
+          "seris-awakened",
+          "athena",
+          "benzaiten",
+          "tikka"
+        ],
+        "leader": "athena",
+        "gems": [
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "mercy",
+              "value": 239
+            }
+          },
+          {
+            "id": "gecho-shard",
+            "defId": "echo-shard",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          },
+          {
+            "id": "ghollow-lantern",
+            "defId": "hollow-lantern",
+            "variant": "pure",
+            "roll": {
+              "power": 239,
+              "trait": "bulwark",
+              "value": 239
+            }
+          }
+        ],
+        "policy": 0
+      }
+    }
+  },
+  "rowA": {
+    "logical": 940001,
+    "seed": 1916557409,
+    "win": true,
+    "rounds": 11,
+    "cappedRounds": 11,
+    "pots": 3,
+    "survivors": 3,
+    "fullAliveWin": false,
+    "jamUses": 0,
+    "jamExtended": 0,
+    "diagnosisUses": 0,
+    "jamTargets": 0
+  },
+  "rowM": {
+    "logical": 940001,
+    "seed": 1916557409,
+    "win": true,
+    "rounds": 17,
+    "cappedRounds": 17,
+    "pots": 3,
+    "survivors": 3,
+    "fullAliveWin": false,
+    "jamUses": 2,
+    "jamExtended": 4,
+    "diagnosisUses": 2,
+    "jamTargets": 2
+  },
+  "selectionPolicy": "Priority T6 tower F1 then T6 lunette F1, then T4 tower F1. First ascending logical seed with both wins and at least one actual ordinary Tikka jam extending an enemy cooldown. Otherwise retain failure/no-mechanism result; no fabricated demonstration."
+}

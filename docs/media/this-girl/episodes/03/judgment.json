@@ -1,0 +1,51 @@
+{
+  "finalized": true,
+  "episode": "THIS-GIRL-003",
+  "sourceLockSha256": "c5b183bfb07b075e7ea09b45ab85a1659230e498564e32eb7417b2369acbe26f",
+  "subject": {
+    "characterId": "tikka",
+    "seriesId": "BD020",
+    "buildName": "秒針の診断書"
+  },
+  "overall": {
+    "status": "research",
+    "certified": false,
+    "label": "研究中",
+    "reason": "Ordinary jam and diagnosis operate, but wins/time/medicine/survival do not establish endgame adoption over the best-known alternatives. Some core bands strongly favor the alternative. Full-roster/portfolio optimization unverified."
+  },
+  "scope": {
+    "stages": [
+      "ivory-tower-010",
+      "lunette-awakening"
+    ],
+    "cores": [
+      "F1:seris-awakened/athena/benzaiten",
+      "F2:lunette-awakened/liora-awakened/mireille"
+    ],
+    "tiers": [
+      3,
+      4,
+      6
+    ],
+    "seedCount": 256,
+    "ownership": "Hypothetical all published forms including unavailable XR;4legal gems/5potions",
+    "mechanics": "Public1.12, no new ability added. Jam does not stop normal attack, boss windups or bits.",
+    "limitations": [
+      "Finite16candidate forms,18configurations each; no global optimum claim.",
+      "Secondary metrics descriptive; no certification from victory alone.",
+      "E removes ordinary jam AND its dependent diagnosis chain; not diagnosis8-only ablation.",
+      "Full-roster adoption, all gem combinations and command are unverified."
+    ]
+  },
+  "evidenceRefs": [
+    {
+      "path": "artifacts/this-girl-03/research/analysis/main.json",
+      "sha256": "5cf3c07e6d171fb7c538d88f95b0976e175c8ba72430f53dc33ee852eaa0a87f"
+    }
+  ],
+  "nextEpisode": {
+    "characterId": "noelle",
+    "status": "unverified",
+    "certified": false
+  }
+}

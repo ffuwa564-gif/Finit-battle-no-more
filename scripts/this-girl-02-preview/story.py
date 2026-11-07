@@ -1,0 +1,62 @@
+from pathlib import Path
+import json
+ROOT=Path(__file__).resolve().parents[2];O=ROOT/'artifacts/this-girl-02-preview';(O/'rerecord').mkdir(exist_ok=True);D=json.loads((O/'research/analysis/main.json').read_text());C={c['id']:c for c in D['cases']};F=C['ivory-tower-010-T6-F1']['summaries'];F2=C['ivory-tower-010-T6-F2']['summaries'];T3=C['ivory-tower-010-T3-F1']['summaries'];T4=C['ivory-tower-010-T4-F1']['summaries'];mech=json.loads((O/'research/mechanism-miette.json').read_text())['selected'];selection=json.loads((O/'research/recording-selection.json').read_text());a=selection['rowA'];m=selection['rowM'];chapters=[]
+def ch(id,title,texts):chapters.append({'id':id,'title':title,'lines':[{'text':t}for t in texts]})
+ch('question','その盾を、ほどいてもいいのかな。',[
+'その盾を、ほどいてもいいのかな。',
+'今日は、ミエット。修繕工房で働く、SRの回復役です。',
+'前回は、守った力を攻撃へ返しました。今回は、残っている障壁を、命へ編み直す子です。',
+'でも、障壁も、命を守っています。HPが増えたら、それで良い修繕だったと言えるでしょうか。'])
+ch('skill','守りと、命を交換する。',[
+'装甲リサイクル。HPが75パーセント以下で、まだ障壁のある味方を選びます。',
+'消費する障壁は、最大HPの15パーセントまで。基本は、その2倍を回復します。',
+'必要な分だけ使いますが、一手と再使用待ちが必要です。重傷の味方への通常回復を、優先する場合もあります。',
+'今のHPと、次の一撃を受ける守り。これは、その使い道を交換する行動なんですね。'])
+ch('method','先に条件を、そろえる。',[
+'今回は、公開版1.12の技能を、そのまま使います。新しい能力は、まだ足しません。',
+'同じ三人を残し、17人の回復役それぞれで、石とリーダー、操作を探し直しました。',
+'速さだけでなく、生還や薬を優先する候補も残します。最後は、選ぶ時に使っていない256のシードで比べました。',
+'勝てる。選ぶ理由がある。育てたくなる。そして、ほかの子の出番も消さない。この約束は、前回と同じです。'])
+ch('elements','一人分の仕事を、組み立てる。',[
+'ミエットのリーダーは、月の慈愛。ラウンドの終わりに、味方全員を回復します。',
+'ただ、リーダーは一人。他の子の守りや火力を、同時に全部はもらえません。今回の実戦例では、アテナを選びました。',
+'石では、庇護の特性が障壁を作れます。でも、その障壁をほどくなら、次の攻撃を受ける力は減ります。',
+'高いTierの石は、行動の威力や特性を変えます。ミエット自身の能力値が、上がるわけではありません。',
+'ノエルの指揮は、今回は組み込みませんでした。指揮官の一手とリーダー枠まで含めた比較は、別の研究です。'])
+ch('battle','同じ戦場で、一緒に見る。',[
+'では、塔の第10層へ。全所持と最高級の石を仮定した比較です。XRが、今すぐ手に入るという意味ではありません。',
+'まずは比較側の、弁財天入り。ここを見てください。回復役の枠を、入れ替えて比べています。',
+'勝ったかどうかだけでなく、薬をどれだけ使い、何人が残れたかも見ます。',
+'次は、ミエット。同じ出発シード、敵と予算。双方で探した作戦を使います。',
+'この場面では、左端のセリスに注目します。HPと障壁を、一緒に追ってください。',
+'少し、止めます。いま、装甲リサイクルが働きました。',
+f"障壁は{mech['beforeBarrier']}から{mech['afterBarrier']}へ。HPは{mech['beforeHp']}から{mech['afterHp']}へ戻っています。",
+f"使った障壁は{mech['barrierSpent']}。回復は{mech['hpHealed']}。この一手は、基本の2倍どおりです。",
+f"残りの{mech['afterBarrier']}は、まだ守ってくれます。でも使った{mech['barrierSpent']}は、次の被弾には回せません。",
+'HPが戻った。その瞬間だけで、技能のおかげで勝てた、とは認定しません。',
+f"この一戦は、両方とも{m['rounds']}ラウンドで勝利。四人とも生還できました。",
+f"使った薬は、弁財天入りが{a['pots']}個。ミエット入りは{m['pots']}個です。"])
+ch('results','勝利の先も、見てみる。',[
+f"確認用256シードでは、このアテナ組で、ミエット入りは{F['M']['wins']}勝、比較側は{F['A']['wins']}勝でした。",
+f"ただ、平均の薬は、ミエット側が{F['M']['meanPotions']:.2f}個、比較側が{F['A']['meanPotions']:.2f}個。",
+f"四人生還での勝利は、{F['M']['fourAliveWins']}回と{F['A']['fourAliveWins']}回。勝利数だけなら、見落としてしまう差です。",
+'薬を優先して選び直した作戦では、両方とも256勝になりました。それでも、この候補では、比較側の方が薬は少なく済んでいます。',
+f"もう一つの仲間組では、ミエット側が{F2['M']['wins']}勝、比較側が{F2['A']['wins']}勝。いつでも同じように働けるとは、確認できませんでした。",
+'葛葉の覚醒級では、両方が全勝した条件が多くありました。差が見えない条件を、固有の強さの証明にはしません。'])
+ch('control','その技能が、変えたこと。',[
+'同じミエットの編成から、装甲リサイクルだけを外した、研究用の対照も作りました。',
+f"この固定作戦では、技能ありで{F['M']['wins']}勝、外した側は{F['E']['wins']}勝。働きがあったと考える手がかりです。",
+'ただ、これは六回という観測の差です。複数の比較や不確かさを考えると、強さを証明できた、とは言い切りません。',
+'この子の技能が働くことと、他の回復役より選ぶべきことは、別の問いなんですね。'])
+ch('growth','いい石と、いい使い方を。',[
+f"石の装備帯と作戦を選び直すと、この組では、Tier3で{T3['M']['wins']}勝。Tier4と6で256勝でした。",
+'作戦も変えているので、石だけの効果を取り出した比較ではありません。',
+'今回使った石の一例は、庇護つきの残響石です。入手先は、実際のドロップ条件を資料に残します。'])
+ch('judgment','まだ、ほどく前に考えたい。',[
+'今回は、研究中。回復へ編み直す働きは、見えました。でも、全所持の最後まで選ぶ理由は、まだ十分ではありません。',
+'次に考えたいのは、何を増やすかより、いつ、どの障壁をほどくかです。',
+'失効が近い守りを優先する。次の大技を見て、ほどかず残す。どちらも、まだ設計案です。',
+'他の子を弱くするのではなく、この子が判断できる仕事を、探したい。',
+'強い子を迎えることが、好きな子とのお別れにならないように。',
+'……もう少し、この糸の使い道を、考えてみます。'])
+story={'episode':'THIS-GIRL-002','finalized':True,'speaker':'VOICEVOX:春日部つむぎ','chapters':chapters,'scope':'Public1.12 abilities, fixed independently heldout256-seed experiments. No new ability implementation or new overall certification.','evidence':['artifacts/this-girl-02-preview/research/analysis/main.json','artifacts/this-girl-02-preview/research/recording-selection.json','artifacts/this-girl-02-preview/research/mechanism-miette.json']};(O/'rerecord/story.json').write_text(json.dumps(story,ensure_ascii=False,indent=2));(ROOT/'scripts/this-girl-02-preview/editor/story.json').write_text(json.dumps(story,ensure_ascii=False,indent=2));print('Story lines',sum(len(c['lines'])for c in chapters),'chars',sum(len(l['text'])for c in chapters for l in c['lines']))

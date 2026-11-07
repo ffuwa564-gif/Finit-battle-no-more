@@ -32,11 +32,11 @@ const groups=partialGroups?proof.groups.slice(0,partialGroups):proof.groups,expe
 const pcmFile=resolve(capture,id+'.pcm'),referenceFolder=resolve(capture,'native-references-'+id);mkdirSync(referenceFolder,{recursive:true});writeFileSync(pcmFile,Buffer.alloc(0));
 const pcmChunks=[],nativeBuffers=[],bufferFiles=new Map();
 proof.fixture.settings={...proof.fixture.settings,speed:applicationSpeed,bgmVolume:0,seVolume:1,reducedMotion:process.env.CAPTURE_REDUCED_MOTION==='1'};
-const captureProfile={prefersReducedMotion:'reduce',requestedPulseLatencyMsec:Number(process.env.PULSE_LATENCY_MSEC??0),requestedAudioBufferSize:512};const pulseLatencyProbes=[];
+const captureProfile={prefersReducedMotion:'no-preference',requestedPulseLatencyMsec:Number(process.env.PULSE_LATENCY_MSEC??0),requestedAudioBufferSize:512};const pulseLatencyProbes=[];
 const pulseProbe=label=>{try{pulseLatencyProbes.push({label,wallTime:Date.now()/1000,sinkInputs:JSON.parse(execFileSync('pactl',['--format=json','list','sink-inputs'],{encoding:'utf8'}))});}catch(e){pulseLatencyProbes.push({label,wallTime:Date.now()/1000,error:String(e)});}};
 const browser=await chromium.launch({headless:false,ignoreDefaultArgs:['--mute-audio'],args:['--autoplay-policy=no-user-gesture-required','--no-sandbox','--kiosk','--start-fullscreen','--window-position=0,0','--window-size=450,848','--force-device-scale-factor=1','--audio-buffer-size=512']});
 try{
- const context=await browser.newContext({viewport:{width:450,height:848},deviceScaleFactor:1,locale:'ja-JP',reducedMotion:'reduce'});
+ const context=await browser.newContext({viewport:{width:450,height:848},deviceScaleFactor:1,locale:'ja-JP',reducedMotion:'no-preference'});
  await context.addInitScript(()=>{
   window.__name=f=>f;localStorage.setItem('stillveil-language','ja');
   localStorage.setItem('stillveil-fairy-tutorial-v1',JSON.stringify({version:2,enrolled:false,dismissed:true,seen:[]}));
