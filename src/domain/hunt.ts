@@ -14,7 +14,7 @@ export const HUNT_RANKS = [
 ] as const;
 export const HUNT_BOSS_UNLOCK=HUNT_RANKS[1].kills;
 export function huntRank(kills: number) { return [...HUNT_RANKS].reverse().find(r => kills >= r.kills)!; }
-export function canHunt(d: DungeonDef): boolean { return (d.kind ?? 'normal') === 'normal' && !d.towerFloor && !d.fieldLesson && d.waves.length > 1 && d.waves.at(-1)!.some(e=>e.boss) && d.waves.slice(0,-1).some(w=>w.some(e=>!e.boss)); }
+export function canHunt(d: DungeonDef): boolean { return (d.kind ?? 'normal') === 'normal' && !d.rebirth && !d.towerFloor && !d.fieldLesson && d.waves.length > 1 && d.waves.at(-1)!.some(e=>e.boss) && d.waves.slice(0,-1).some(w=>w.some(e=>!e.boss)); }
 export function huntPool(d: DungeonDef): string[] { return [...new Set(d.waves.slice(0,-1).flatMap(w=>w.filter(e=>!e.boss).map(e=>e.characterId)))]; }
 export function huntChapter(d: DungeonDef, c: Content): number { return c.chapters?.find(ch=>ch.dungeonIds.includes(d.id))?.number ?? 1; }
 const HUNT_PARTS: Record<string,{rare:string[][];epic:string[][]}> = {

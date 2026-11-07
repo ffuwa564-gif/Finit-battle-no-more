@@ -157,7 +157,7 @@ export function validateMedals(content:Content):string[] {
     if(c.kind==='challenge'&&!medalChallengeIds.includes(c.challenge))errors.push('Invalid medal challenge: '+m.id);
     if(c.kind==='dungeons'&&(!c.dungeonIds.length||new Set(c.dungeonIds).size!==c.dungeonIds.length||c.amount>c.dungeonIds.length||c.dungeonIds.some(id=>!content.dungeons.some(d=>d.id===id&&d.published))))errors.push('Invalid medal dungeon collection: '+m.id);
     if(c.kind==='gemVariants'&&c.amount>3||c.kind==='gemEquipped'&&c.amount>4||c.kind==='installedKinds'&&c.amount>industryCatalog.items.filter(i=>i.kind==='machine').length||c.kind==='craftedRecipes'&&c.amount>industryCatalog.recipes.length)errors.push('Unreachable medal target: '+m.id);
-    if(c.kind==='gemTier'&&(!Number.isInteger(c.tier)||c.tier<1||c.tier>6)||c.kind==='gemFamilies'&&c.amount>3||c.kind==='gemTypes'&&c.amount>GEM_DEFINITIONS.length||c.kind==='featCount'&&c.amount>medalFeats.length)errors.push('Unreachable medal target: '+m.id);
+    if(c.kind==='gemTier'&&(!Number.isInteger(c.tier)||c.tier<1||c.tier>7)||c.kind==='gemFamilies'&&c.amount>3||c.kind==='gemTypes'&&c.amount>GEM_DEFINITIONS.length||c.kind==='featCount'&&c.amount>medalFeats.length)errors.push('Unreachable medal target: '+m.id);
     if(c.kind==='power'&&!['generated','consumed'].includes(c.metric)||c.kind==='craftTier'&&c.amount>5)errors.push('Invalid medal measure: '+m.id);
     if('amount'in c&&(!Number.isSafeInteger(c.amount)||c.amount<=0))errors.push('Invalid medal target: '+m.id);
     if('itemIds'in c&&(!c.itemIds.length||new Set(c.itemIds).size!==c.itemIds.length||c.itemIds.some(id=>!industryCatalog.items.some(i=>i.id===id))||c.kind==='craftedKinds'&&c.amount>c.itemIds.length))errors.push('Invalid medal item: '+m.id);

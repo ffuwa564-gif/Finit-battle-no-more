@@ -79,10 +79,12 @@ export function advanceHarvest(battle: Battle, event: BattleEvent, content: Cont
     if(!offer.amount){offer.kind='heal';offer.required=2;delete offer.itemId;delete offer.amount;delete offer.rarity;}
   }
   if (kind === 'gem') {
-    // Preserve ordinary/ boss loot ceilings; never change the combat random stream.
-    let result = rollGemDrop(d, next(s), offer.id, {rulesVersion:battle.rulesVersion, boss: event.kind === 'drop' && battle.wave === d.waves.length - 1 });
+    // T7 belongs to the secured clear chest, never an extraction before victory.
+    const lootDungeon = d.rebirth && d.gemLoot ? {...d,gemLoot:{...d.gemLoot,tier7Chance:0}} : d;
+    // Preserve all ordinary random-stream contracts.
+    let result = rollGemDrop(lootDungeon, next(s), offer.id, {rulesVersion:battle.rulesVersion, boss: event.kind === 'drop' && battle.wave === d.waves.length - 1 });
     if (!result.gem) {
-      const fallback = rollGemDrop(d, result.seed, offer.id, { rulesVersion:battle.rulesVersion,first: true });
+      const fallback = rollGemDrop(lootDungeon, result.seed, offer.id, { rulesVersion:battle.rulesVersion,first: true });
       result = rollGemCandidate(fallback.gem!, fallback.seed, d.towerFloor ?? 0);
     }
     if(battle.hunt){

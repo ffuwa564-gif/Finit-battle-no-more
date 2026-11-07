@@ -7,6 +7,7 @@ export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff', drop: 'drop', dialogue: 'dialogue', wave: 'wave', defeat: 'defeat',
 };
 export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
+  reincarnate:'depart',craftAscendedGem:'recruit',
   recyclingSettings:'select',recycleMaterials:'exchange',quickPolish:'recruit',huntBoss:'depart',
   harvestTap:'select',harvestChoose:'buff',harvestAid:null,
   medalSync:null,medalTrack:'select',medalTitle:'confirm',

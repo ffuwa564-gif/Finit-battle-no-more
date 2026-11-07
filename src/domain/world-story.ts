@@ -114,6 +114,7 @@ export interface WorldStoryDefinition {
     nodes: WorldStoryNode[];
 }
 export interface WorldStoryState {
+    dungeonProgress?: string[];
     version: 1;
     profile: HeroProfile;
     carriedChapters: number[];
@@ -133,12 +134,14 @@ export interface WorldStoryState {
         recall?: boolean;
     };
 }
+/** Current-loop campaign clears; the lifetime first-clear ledger is never erased. */
+export function storyDungeonIds(save:Pick<GameSave,'worldStory'|'completedDungeonIds'>):string[]{return save.worldStory?.dungeonProgress??save.completedDungeonIds;}
 export const defaultHero: HeroProfile = { name: 'ユイ', voice: 'soft', favorite: 'tea' };
 export function storyText(text: StoryText, profile: HeroProfile, language: 'ja' | 'en' = 'ja'): string { return text[language].replaceAll('{name}', profile.name); }
 export function resolvedStoryNode(node: WorldStoryNode, s: WorldStoryState): WorldStoryNode { const variant = node.variants?.filter(v => v.requiresNodes.every(id => s.completed.includes(id))).at(-1); return variant ? { ...node, ...variant } : node; }
 export function nodeLines(node: WorldStoryNode, state: WorldStoryState): WorldStoryLine[] { const resolved = resolvedStoryNode(node, state); const cycles = [resolved.lines, ...(resolved.daily ?? [])]; const base = state.active?.emergency && node.emergency ? node.emergency.lines : state.active?.briefing && resolved.firstVisitLines ? resolved.firstVisitLines : cycles[(state.visits?.[node.id] ?? 0) % cycles.length]; return [...base, ...(state.active?.choiceId ? node.choices?.find(c => c.id === state.active!.choiceId)?.response ?? [] : [])]; }
 export function activeWorldIncident(save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, def: WorldStoryDefinition): WorldIncident | undefined { const s = save.worldStory; if (!s)
-    return; const c = storyChapter(s, def); return def.incidents.find(i => i.chapter === c?.number && !s.completed.includes(i.resolvedBy) && i.requiresNodes.every(id => s.completed.includes(id)) && i.requiresDungeons.every(id => save.completedDungeonIds.includes(id))); }
+    return; const c = storyChapter(s, def); return def.incidents.find(i => i.chapter === c?.number && !s.completed.includes(i.resolvedBy) && i.requiresNodes.every(id => s.completed.includes(id)) && i.requiresDungeons.every(id => storyDungeonIds(save).includes(id))); }
 export function acknowledgeWorldIncident(save: GameSave, def: WorldStoryDefinition, id: string): void { if (activeWorldIncident(save, def)?.id !== id)
     throw new Error('その事件は現在発生していません。'); save.worldStory!.notified = [...new Set([...(save.worldStory!.notified ?? []), id])]; }
 export function storyChapter(state: WorldStoryState, def: WorldStoryDefinition) { return def.chapters.find(c => !state.carriedChapters.includes(c.number) && !state.completed.includes(c.endingNodeId)); }
@@ -150,7 +153,7 @@ export function storyNodeAvailable(node: WorldStoryNode, save: Pick<GameSave, 'w
     const s = save.worldStory;
     if (!s || s.completed.includes(node.id) || (!node.ambient && storyChapter(s, def)?.number !== node.chapter))
         return false;
-    return node.requiresNodes.every(id => storyPrerequisiteMet(id, s, def)) && (node.ambient && s.carriedChapters.includes(node.chapter) || node.requiresDungeons.every(id => save.completedDungeonIds.includes(id)));
+    return node.requiresNodes.every(id => storyPrerequisiteMet(id, s, def)) && (node.ambient && s.carriedChapters.includes(node.chapter) || node.requiresDungeons.every(id => storyDungeonIds(save).includes(id)));
 }
 export function storyActors(save: GameSave, def: WorldStoryDefinition) {
     const s = save.worldStory;
@@ -180,16 +183,16 @@ export function storyNext(save: GameSave, def: WorldStoryDefinition): {
     if (available)
         return { node: available, recipeId: missingStoryTool(save, available.id) };
     const pending = def.nodes.filter(n => n.chapter === chapter.number && !n.optional && !s.completed.includes(n.id) && n.requiresNodes.every(id => s.completed.includes(id) || s.carriedChapters.includes(def.nodes.find(n => n.id === id)?.chapter ?? -1)));
-    const required = pending.flatMap(n => n.requiresDungeons).find(id => !save.completedDungeonIds.includes(id));
+    const required = pending.flatMap(n => n.requiresDungeons).find(id => !storyDungeonIds(save).includes(id));
     if (required) {
         const route = contentChapterDungeons(def, chapter.number);
-        return { dungeonId: route.find(id => !save.completedDungeonIds.includes(id)) ?? required };
+        return { dungeonId: route.find(id => !storyDungeonIds(save).includes(id)) ?? required };
     }
     return undefined;
 }
 export function worldStoryLock(dungeonId: string, save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, content: Content): string | null {
     const s = save.worldStory, def = content.worldStory;
-    if (!s || !def || save.completedDungeonIds.includes(dungeonId))
+    if (!s || !def || storyDungeonIds(save).includes(dungeonId))
         return null;
     const chapter = def.chapters.find(c => content.chapters?.find(ch => ch.id === c.chapterId)?.dungeonIds.includes(dungeonId));
     if (!chapter || s.carriedChapters.includes(chapter.number))
@@ -197,6 +200,7 @@ export function worldStoryLock(dungeonId: string, save: Pick<GameSave, 'worldSto
     const current = storyChapter(s, def);
     if (!current)
         return null;
+    if(s.dungeonProgress){const previous=content.dungeons.find(d=>d.id===dungeonId)?.previousDungeonId;if(previous&&chapter.dungeonIds.includes(previous)&&!s.dungeonProgress.includes(previous))return '今周の前の探索を踏破してから進みましょう。';}
     if (chapter.number > current.number)
         return '地図の仲間と話して、次の旅へ進みましょう。';
     if ((chapter.gates[dungeonId] ?? []).some(id => !s.completed.includes(id)))
@@ -221,11 +225,11 @@ export function settleStoryArrival(s: WorldStoryState, now: number): void { if (
     s.position = s.journey.to;
     delete s.journey;
 } }
-export function storyDestinations(content: Content, save: GameSave) { return [...worldLocations(content, save.completedDungeonIds), ...(content.worldStory?.hubs ?? [])]; }
+export function storyDestinations(content: Content, save: GameSave) { return [...worldLocations(content, storyDungeonIds(save)), ...(content.worldStory?.hubs ?? [])]; }
 /** The preview and saved arrival use the same early-patrol travel policy. */
 export function storyTravelSeconds(save: Pick<GameSave, 'worldStory' | 'completedDungeonIds'>, content: Content, from: MapPosition, to: MapPosition, destinationId: string): number {
     const onboarding = content.worldStory?.onboarding;
-    const early = save.worldStory && onboarding && onboarding.destinationIds.includes(destinationId) && !onboarding.dungeonIds.every(id => save.completedDungeonIds.includes(id)) && storyChapter(save.worldStory, content.worldStory!)?.number === 1;
+    const early = save.worldStory && onboarding && onboarding.destinationIds.includes(destinationId) && !onboarding.dungeonIds.every(id => storyDungeonIds(save).includes(id)) && storyChapter(save.worldStory, content.worldStory!)?.number === 1;
     return early ? Math.min(travelSeconds(from, to), onboarding.travelSeconds) : travelSeconds(from, to);
 }
 export function startStoryTravel(save: GameSave, content: Content, destinationId: string, now: number): void {
@@ -306,6 +310,7 @@ export function validHero(v: unknown): v is HeroProfile { return record(v) && ty
 export function validWorldStory(v: unknown): v is WorldStoryState {
     if (!record(v) || v.version !== 1 || !validHero(v.profile) || !Array.isArray(v.carriedChapters) || !v.carriedChapters.every(n => Number.isSafeInteger(n) && n >= 1 && n <= 6) || new Set(v.carriedChapters).size !== v.carriedChapters.length || !Array.isArray(v.completed) || !v.completed.every(id => typeof id === 'string') || new Set(v.completed).size !== v.completed.length || !record(v.choices) || !Object.values(v.choices).every(id => typeof id === 'string'))
         return false;
+    if(v.dungeonProgress!==undefined&&(!Array.isArray(v.dungeonProgress)||!v.dungeonProgress.every(id=>typeof id==='string')||new Set(v.dungeonProgress).size!==v.dungeonProgress.length))return false;
     if (v.notified !== undefined && (!Array.isArray(v.notified) || !v.notified.every(id => typeof id === 'string') || new Set(v.notified).size !== v.notified.length))
         return false;
     if (v.visits !== undefined && (!record(v.visits) || !Object.values(v.visits).every(n => Number.isSafeInteger(n) && Number(n) >= 0 && Number(n) <= 1e6)))
@@ -324,13 +329,14 @@ export function validateWorldStorySave(save: GameSave, content: Content): void {
     const def = content.worldStory;
     if (!validWorldStory(s) || !def)
         throw new Error('旅の記録を読み込めません。');
-    if (s.carriedChapters.some((n, i) => n !== i + 1 || !save.completedDungeonIds.includes(def.chapters.find(c => c.number === n)!.dungeonIds.at(-1)!)))
+    if(s.dungeonProgress!==undefined&&(!save.reincarnation?.count||!Array.isArray(s.dungeonProgress)||new Set(s.dungeonProgress).size!==s.dungeonProgress.length||s.dungeonProgress.some(id=>!def.chapters.some(c=>c.dungeonIds.includes(id))||!save.completedDungeonIds.includes(id))))throw new Error('今周の探索記録が正しくありません。');
+    if (s.carriedChapters.some((n, i) => n !== i + 1 || !storyDungeonIds(save).includes(def.chapters.find(c => c.number === n)!.dungeonIds.at(-1)!)))
         throw new Error('旅の引き継ぎ記録が正しくありません。');
     if (s.notified?.some(id => !def.incidents.some(i => i.id === id)) || Object.keys(s.visits ?? {}).some(id => !s.completed.includes(id) || !def.nodes.find(n => n.id === id)?.ambient))
         throw new Error('日常の会話記録が正しくありません。');
     for (const id of s.completed) {
         const node = def.nodes.find(n => n.id === id);
-        const recorded = (n: WorldStoryNode) => n.requiresNodes.every(r => storyPrerequisiteMet(r, s, def)) && (s.carriedChapters.includes(n.chapter) || n.requiresDungeons.every(d => save.completedDungeonIds.includes(d)));
+        const recorded = (n: WorldStoryNode) => n.requiresNodes.every(r => storyPrerequisiteMet(r, s, def)) && (s.carriedChapters.includes(n.chapter) || n.requiresDungeons.every(d => storyDungeonIds(save).includes(d)));
         const legacy = node && def.legacyFirstChapter?.[id];
         if (!node || !recorded(node) && !(legacy && recorded({ ...node, ...legacy })))
             throw new Error('会話の進行記録が正しくありません。');

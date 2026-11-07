@@ -180,3 +180,20 @@ describe('Tier 6 combat upgrades', () => {
     expect(new Set(result.ultimates.map(event => `${event.actorId}:${event.round}`)).size).toBe(result.ultimates.length);
   });
 });
+
+describe('T7 follows the same finite combat contracts',()=>{
+ it.each(['shield-break','echo-shard','night-dew','dawn-crown'])('improves native %s damage over max T6',defId=>{
+  expect(damage(defId,280)).toBeGreaterThan(damage(defId,239));
+ });
+ it('does not exceed the reviewed furnace/rewind per-use limits at max T7',()=>{
+  for(const defId of ['star-furnace','rewind-thread']){
+   const battle=ready(item(defId,299));const ally=battle.units.find(u=>u.characterId==='liora')!;ally.attack=1000;const native=content.characters.find(c=>c.id==='liora')!.skillIds[0];ally.cooldowns[native]=9;ally.cooldowns['memory:slot']=9;
+   const event=action(battle),after=event.unitsAfter!.find(u=>u.characterId==='liora')!;
+   if(defId==='star-furnace'){expect(after.ultimateCharge).toBe(80);expect(event.unitsAfter!.find(u=>u.characterId==='seris')!.hp).toBe(9000);}
+   else{expect(after.cooldowns[native]).toBe(7);expect(after.cooldowns['memory:slot']).toBe(9);}
+  }
+ });
+ it('keeps max-T7 charge loops finite and pays the battery HP cost on each use',()=>{
+  const result=supportTrace(299,['star-furnace','rewind-thread','star-furnace']);expect(result.batteries).toBeGreaterThan(5);expect(result.paidBatteryCasts).toBe(result.batteries);expect(new Set(result.ultimates.map(e=>`${e.actorId}:${e.round}`)).size).toBe(result.ultimates.length);
+ });
+});

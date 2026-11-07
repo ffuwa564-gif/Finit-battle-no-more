@@ -1,3 +1,4 @@
+import {ReincarnationHub} from '../ui';
 import {combatProfile,COMBAT_STYLES,stoneMastery} from '../domain/combat-profiles';
 import {GEM_DEFINITIONS,gemPowerMultiplier} from '../domain/memory-gems';
 import { canHunt, HUNT_BOSS_UNLOCK } from '../domain/hunt';
@@ -72,6 +73,7 @@ export function HomeView(p: ViewProps) {
     <HomeJourneyGoal onStoryNavigate={(id, recipeId) => { if (recipeId) { p.navigate('bag'); location.hash = `bag/workshop/${encodeURIComponent(recipeId)}`; } else { p.navigate('dungeons'); location.hash = id && content.dungeons.some(d => d.id === id) ? `dungeons/map/${encodeURIComponent(id)}` : 'dungeons'; } }} save={p.save} busy={p.busy} onNavigate={id => { p.navigate('dungeons'); location.hash = `dungeons/map/${encodeURIComponent(id)}`; }} />
     <div className="home-hub-menu">{localize(menu.map(item => <Button variant="secondary" className="hub-menu-tile" data-guide={`home-${item.page}`} key={item.page} onClick={() => p.navigate(item.page)}><MenuEmblem kind={item.emblem} /><strong>{localize(item.title)}</strong></Button>))}</div>
     <Button variant="secondary" className="hub-dungeon-entry" data-guide="home-dungeons" onClick={() => p.navigate('dungeons')}><GameImage src={assetPath('cathedral')} alt={tr("")} /><span><strong>{tr("ダンジョンへ")}</strong></span><ChevronRight size={24} /></Button>
+    <ReincarnationHub save={p.save} content={content} busy={p.busy} command={p.command} onSelect={id=>{p.navigate('dungeons');location.hash=dungeonHash({kind:'prepare',dungeonId:id});}}/>
     <div className="guide-actions"><QuickGuide /><FairyGuideButton /></div>
     <div data-guide="welcome-slot" />
     <TownNavigation active="home" onNavigate={p.navigate} embedded />

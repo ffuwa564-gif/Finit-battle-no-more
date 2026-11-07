@@ -18,6 +18,7 @@ export function migrateSaveTo110(value: GameSave, content: Content): GameSave {
     if (next.battle && !next.battle.rulesVersion) next.battle.rulesVersion = value.rulesVersion;
     // In-flight battles retain their original combat contract, events, RNG and loot.
     // Newly departed expeditions use the new rules after this run is finished.
+    if(next.battle?.rulesVersion==='4'&&next.battle.contentVersion==='v1.29-r1')next.battle.contentVersion=content.contentVersion;
     next.revision++;
     // Preserve the exact battle cursor, tower record, RNG, ledger and equipment.
     assertSaveCompatibility(next, content);
