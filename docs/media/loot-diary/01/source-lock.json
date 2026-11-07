@@ -1,0 +1,9 @@
+{
+  "gameCommit": "56775d6d57f868137dc41a41d8398e66fdead6ea",
+  "mode": "public-game-play-diary",
+  "seed": 20261107,
+  "files": {
+    "scripts/loot-diary-01/session.ts": "f39fc1be21d3b80f04cf24f322520dba1e56b9de6fbeef6306e046736954d2ee",
+    "scripts/loot-diary-01/record.mjs": "cdb0544a7275625ba590707cda5189475cda897722f9660ef61cd56f96a4bd1f"
+  }
+}
