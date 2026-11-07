@@ -1,0 +1,26 @@
+[
+  {
+    "file": "STILLVEIL-LootDiary-01.mp4",
+    "sha256": "514fadf8a9d5b66af704afe9da7b27ca4db75cdfa92a6264f10b31f2a428b16c",
+    "bytes": 16968006,
+    "passed": true
+  },
+  {
+    "file": "Thumbnail.png",
+    "sha256": "d0068d608d76e96c94cc75525885cfb9f5d3ff5c55e1d47e987542d11751b934",
+    "bytes": 598530,
+    "passed": true
+  },
+  {
+    "file": "Final-QA.json",
+    "sha256": "17359239b5e1425f32a798e6fab823f69a069e5849f0629ccb2af46a2c0af0ea",
+    "bytes": 15364,
+    "passed": true
+  },
+  {
+    "file": "Subtitles.srt",
+    "sha256": "eff186ad6fbecaf2b8ef0c67f8d90b4784ad2187afc7163fe92f056468cfa1f7",
+    "bytes": 6996,
+    "passed": true
+  }
+]
