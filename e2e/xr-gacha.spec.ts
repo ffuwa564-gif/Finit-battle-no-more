@@ -17,7 +17,7 @@ test('XR is a locked separate summon with zero unobtainable premium stones in th
     const { loadSave, persistSave } = await import('/src/platform/save.ts');
     const { content } = await import('/src/content/index.ts');
     const save = (await loadSave())!; const revision = save.revision;
-    save.completedDungeonIds = content.dungeons.map(dungeon => dungeon.id); save.stones = 10000; save.astralStones = 100;
+    save.completedDungeonIds = content.dungeons.filter(d=>!d.rebirth).map(dungeon=>dungeon.id); save.stones = 10000; save.astralStones = 100;
     save.revision++; await persistSave(save, revision);
   });
   await page.reload(); await enterGame(page);

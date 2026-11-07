@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import {content} from '../src/content';
 import { skipStory } from '../e2e/boot';
 
 test('opening fills the nested game viewport and resumes across host reloads only until finished', async ({ page }) => {
@@ -7,7 +8,9 @@ test('opening fills the nested game viewport and resumes across host reloads onl
   const game = page.frameLocator('iframe');
   await game.getByRole('button', { name: 'Tap to Begin', exact: true }).click();
   const story = game.locator('.visual-novel');
-  await expect(story).toHaveAttribute('data-scene', 'opening-desire-gate');
+  const opening=content.novels!.find(scene=>scene.trigger.kind==='intro')??content.novels!.find(scene=>scene.trigger.kind==='opening')!;
+  expect(opening.pages.length).toBeGreaterThan(1);
+  await expect(story).toHaveAttribute('data-scene',opening.id);
   const dimensions = await story.evaluate(el => ({ width: el.getBoundingClientRect().width, height: el.getBoundingClientRect().height, viewportWidth: innerWidth, viewportHeight: innerHeight }));
   expect(dimensions.width).toBe(dimensions.viewportWidth); expect(dimensions.height).toBe(dimensions.viewportHeight);
   await story.getByRole('button', { name: 'Next Line', exact: true }).click();

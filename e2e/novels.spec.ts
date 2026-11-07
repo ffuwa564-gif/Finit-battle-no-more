@@ -114,7 +114,7 @@ for (const language of ['ja','en'] as const) {
       save.completedDungeonIds=content.chapters!.flatMap(chapter=>chapter.dungeonIds);
       save.settings.reducedMotion=true;save.revision++;
       await persistSave(save,revision);localStorage.setItem('stillveil-language',language);
-      return content.novels!.map(scene=>({id:scene.id,pages:scene.pages.length,map:Boolean(scene.mapEncounter)}));
+      return content.novels!.filter(scene=>scene.trigger.kind!=='rebirth').map(scene=>({id:scene.id,pages:scene.pages.length,map:Boolean(scene.mapEncounter)}));
     },language);
     await page.reload();
     await page.getByRole('button',{name:language==='en'?'Tap to Begin':'タップしてはじめる',exact:true}).click();
