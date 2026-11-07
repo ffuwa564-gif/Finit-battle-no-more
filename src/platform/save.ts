@@ -1,3 +1,5 @@
+import {validReincarnation,hasTier7} from '../domain/reincarnation';
+import {novelAvailable} from '../domain/novels';
 import {validGemPreparation,validConcordMark,BUILD_GEM_IDS} from '../domain/build-gems';
 import {validRoyalLeaderState} from '../domain/royal-leaders';
 import {RULE3_CONTENT} from '../domain/combat-compatibility';
@@ -128,6 +130,7 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     const last = results.at(-1)!;
     if (last.characterId !== value.lastGachaResult.characterId || last.duplicate !== value.lastGachaResult.duplicate || last.refund !== value.lastGachaResult.refund || (last.currency ?? 'stones') !== (value.lastGachaResult.currency ?? 'stones')) throw new Error('祈願の結果情報が不正です。');
   }
+  if(value.reincarnation!==undefined&&!validReincarnation(value.reincarnation))throw new Error('転生の記録が正しくありません。');
   if (value.novels !== undefined) {
     const novels = value.novels;
     if (!record(novels) || !uniqueStrings(novels.seen)) throw new Error('物語の記録が不正です。');
@@ -206,6 +209,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
     assertReviewReferences(item.review);
   }
   const dungeonIds = new Set(content.dungeons.map(item => item.id));
+  if(!save.reincarnation?.count&&save.completedDungeonIds.some(id=>content.dungeons.some(d=>d.id===id&&d.rebirth)))throw new Error('裏ルートは転生後に解放されます。');
   if ([...save.ownedIds, ...save.discoveredIds].some(id => !characters.has(id)) || save.completedDungeonIds.some(id => !dungeonIds.has(id)) || Object.keys(save.materials).some(id => !species.has(id.split(':')[0]!))) throw new Error('保存データが参照する定義がありません。セーブを保持して停止します。');
   if ([...(save.lastGachaResults ?? []), ...(save.lastGachaResult ? [save.lastGachaResult] : [])].some(result => !characters.has(result.characterId) || !save.ownedIds.includes(result.characterId))) throw new Error('祈願の結果が所持情報と一致しません。');
   if (save.novels) {
@@ -213,9 +217,13 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
     const active = save.novels.active;
     if (active) {
       const scene = content.novels?.find(scene => scene.id === active.sceneId);
-      if (!scene || active.page >= scene.pages.length || (scene.trigger.kind !== 'opening' && scene.trigger.kind !== 'intro' && !save.completedDungeonIds.includes(scene.trigger.dungeonId))) throw new Error('物語を再開するための定義がありません。');
+      if (!scene || active.page >= scene.pages.length || !novelAvailable(scene,save)) throw new Error('物語を再開するための定義がありません。');
     }
   }
+  if(save.reincarnation&&(!save.worldStory?.dungeonProgress||Object.entries(save.reincarnation.previousChoices).some(([id,choice])=>!content.worldStory?.nodes.some(n=>n.id===id&&n.choices?.some(c=>c.id===choice)))))throw new Error('転生の記録が正しくありません。');
+  const inventory=save.memoryGems;
+  if(!save.reincarnation?.count&&[...(inventory?.items??[]),...(inventory?.rough??[]).map(r=>r.result),...(inventory?.pending?[inventory.pending.candidate]:[])].some(hasTier7))throw new Error('T7は転生後に解放されます。');
+  if(save.novels?.seen.some(id=>{const scene=content.novels?.find(s=>s.id===id);return scene?.trigger.kind==='rebirth'&&!novelAvailable(scene,save);}))throw new Error('裏側の記録の解放条件が正しくありません。');
   validateWorldStorySave(save,content);
   if (save.researchSkillIds && (!Array.isArray(save.researchSkillIds) || new Set(save.researchSkillIds).size !== save.researchSkillIds.length || save.researchSkillIds.some(id => !save.ownedIds.includes(id) || !content.fieldSkills?.[id]))) throw new Error('研究技能の記録が不正です。');
   const battle = save.battle;
@@ -230,6 +238,7 @@ export function assertSaveCompatibility(save: GameSave, content: Content): void 
   if (battle.partyOrder?.kind === 'skill' && !content.characters.find(c => c.id === battle.partyIds[0])?.skillIds.includes(battle.partyOrder.skillId) && (!battle.memoryGems?.[battle.partyIds[0]!] || gemSkill(battle.memoryGems[battle.partyIds[0]!]!).id !== battle.partyOrder.skillId)) throw new Error('行動の予約が正しくありません。');
   if(battle.supplies&&(!battle.hunt||!dungeon||battle.supplies.incense!==undefined&&battle.supplies.incense!=='gem'&&!Object.hasOwn(dungeonIndustryProfile(dungeon,content).drops,battle.supplies.incense)))throw new Error('遠征用品の保存状態が不正です。');
   if (battle.hunt && (!dungeon || !canHunt(dungeon) || battle.hunt.stage==='hunting'&&battle.wave!==0 || battle.hunt.stage==='boss'&&battle.wave!==dungeon.waves.length-1)) throw new Error('連続討伐の地点が不正です。');
+  if(dungeon?.rebirth&&!save.reincarnation?.count)throw new Error('裏ルートは転生後に解放されます。');
   if (!dungeon || battle.wave >= dungeon.waves.length || (battle.contentVersion !== content.contentVersion || (battle.rulesVersion ?? '2') !== content.rulesVersion) && !(content.rulesVersion==='4'&&battle.rulesVersion==='3'&&RULE3_CONTENT.includes(battle.contentVersion)) && !(content.legacyCombat && battle.contentVersion === 'v1.10-r1' && (battle.rulesVersion ?? '2') === '2') || battle.partyIds.some(id => !save.ownedIds.includes(id)) || Object.keys(battle.pendingMaterials).some(id => !species.has(id.split(':')[0]!))) throw new Error('探索を再開するための固定定義がありません。');
   if (battle.memoryGems && Object.entries(battle.memoryGems).some(([characterId, gem]) => !save.memoryGems?.items.some(item => item.id === gem.id && gemRollKey(item) === gemRollKey(gem)) || save.memoryGems.equipped[characterId] !== gem.id)) throw new Error('戦闘の記憶石が所持・装備情報と一致しません。');
   if (battle.roughGemFinds?.some(raw => !save.memoryGems?.rough?.some(item => item.id === raw.id && JSON.stringify(item) === JSON.stringify(raw)))) throw new Error('獲得した原石が所持情報にありません。');
@@ -365,6 +374,7 @@ export function isPortraitHotfixSaveVersion(value: Pick<GameSave, 'schemaVersion
     (value.appVersion === '1.22.0' && value.contentVersion === 'v1.22-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.23.0' && value.contentVersion === 'v1.23-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.24.0' && value.contentVersion === 'v1.24-r1' && value.rulesVersion === '3') ||
+    (value.appVersion === '1.29.0' && value.contentVersion === 'v1.29-r1' && value.rulesVersion === '4') ||
     (value.appVersion === '1.28.0' && value.contentVersion === 'v1.28-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.27.0' && value.contentVersion === 'v1.27-r1' && value.rulesVersion === '3') ||
     (value.appVersion === '1.26.0' && value.contentVersion === 'v1.26-r1' && value.rulesVersion === '3') ||

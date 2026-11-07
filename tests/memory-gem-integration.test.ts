@@ -67,7 +67,7 @@ describe('memory gem exploration to combat integration', () => {
     const dungeon = content.dungeons.find(def => dungeonGemFamily(def) === definition.family && def.id === 'silent-cathedral')
       ?? content.dungeons.find(def => def.kind !== 'trial' && dungeonGemFamily(def) === definition.family)!;
     // Start with a mature save so the chosen family's entrance is unlocked.
-    save.completedDungeonIds = content.dungeons.map(def => def.id);
+    save.completedDungeonIds = content.dungeons.filter(def => !def.rebirth).map(def => def.id);
     for (let run = 0; run < GEM_CRAFT_COST; run++) {
       save = replay(command(save, { type: 'depart', dungeonId: dungeon.id, potions: 0 }));
       for (let wave = 0; save.battle!.phase === 'ready' && wave < dungeon.waves.length; wave++) save = clearWave(save);

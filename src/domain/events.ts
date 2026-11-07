@@ -1,9 +1,11 @@
+import {reincarnationStageLock} from './reincarnation';
 import { worldStoryLock } from './world-story';
 import { towerLock } from './ivory-tower';
 import { campaignLock } from './campaign';
 import type { Content, DungeonDef, EventDef, GameSave } from './types';
 
-export function dungeonLock(def: DungeonDef, save: Pick<GameSave, 'completedDungeonIds' | 'ownedIds'> & Partial<Pick<GameSave,'worldStory'>>, content: Content): string | null {
+export function dungeonLock(def: DungeonDef, save: Pick<GameSave, 'completedDungeonIds' | 'ownedIds'> & Partial<Pick<GameSave,'worldStory'|'reincarnation'|'novels'>>, content: Content): string | null {
+  const rebirthLock=reincarnationStageLock(def.id,save,content);if(rebirthLock)return rebirthLock;
   const storyLock=worldStoryLock(def.id,save,content);if(storyLock)return storyLock;
   if (def.towerFloor !== undefined) return towerLock(def, save);
   if (def.chapterId) { const lock = campaignLock(def, save, content); if (lock) return lock; }

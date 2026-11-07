@@ -1,3 +1,5 @@
+import {reincarnate,ascendedRecipe,REBIRTH_CORE,REBIRTH_SHELL} from '../domain/reincarnation';
+import {craftAscendedGem,gemDefinition} from '../domain/memory-gems';
 import { recycleMaterials, replenishPowder, quickPolish, consumeExpeditionLoadout, validRecycling } from '../domain/expedition-supplies';
 import { proceedToHuntBoss } from '../domain/engine';
 import { createBattleHarvest, advanceHarvest, tapHarvest, chooseHarvest, nextHarvestAid } from '../domain/battle-harvest';
@@ -122,6 +124,19 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       if(m)save.medals![key]=m.id;else delete save.medals![key];break;
     }
     case 'industryPower': case 'industrySync': case 'industryCollect': case 'industryTrack': case 'industryCraft': case 'industryInstall': case 'industryConfigure': case 'industryCancel': {town(save);replenishPowder(save,publicContent,context.now??Date.now());applyIndustry(save,command,publicContent,context.now??Date.now());break;}
+    case 'reincarnate': {town(save);reincarnate(save,publicContent);log(save,'記録を渡り、もう一度庭から旅を始めました。T7と上位製作・裏ルートが解放されました。');break;}
+    case 'craftAscendedGem': {
+      town(save);if(!save.reincarnation?.count)fail('上位製作は転生後に解放されます。');
+      const recipe=ascendedRecipe(command.tier);if(!recipe)fail('上位製作のTierが正しくありません。');
+      const inventory=save.memoryGems??=emptyGemInventory();
+      const def=gemDefinition({id:'recipe',defId:command.defId,variant:command.variant});
+      if(inventory.pending||inventory.polish)fail('先に石の作業を終えてください。');
+      if(save.gold<recipe.gold||(inventory.dust[def.family]??0)<recipe.dust||(save.materials[REBIRTH_SHELL]??0)<recipe.shell||(save.materials[REBIRTH_CORE]??0)<recipe.core)fail('上位製作に必要な金貨・欠片・裏ルート素材が不足しています。');
+      const result=craftAscendedGem(inventory,command.defId,command.variant,command.tier,command.trait,save.seed);
+      save.gold-=recipe.gold;inventory.dust[def.family]-=recipe.dust;save.materials[REBIRTH_SHELL]=(save.materials[REBIRTH_SHELL]??0)-recipe.shell;
+      if(recipe.core)save.materials[REBIRTH_CORE]-=recipe.core;
+      save.seed=result.seed;log(save,`T${command.tier}の記憶石を製作し、保護しました。`);break;
+    }
     case 'worldStoryBegin': {town(save);if(save.worldStory||!['current','beginning'].includes(command.from))fail('旅はすでに始まっています。');save.worldStory=startWorldStory(save,content,command.profile,command.from);break;}
     case 'worldProfile': {town(save);if(!save.worldStory||!validHero(command.profile))fail('主人公の設定が正しくありません。');save.worldStory.profile={...command.profile,name:command.profile.name.trim()};break;}
     case 'worldTravel': {town(save);if(save.industry)settleIndustry(save.industry,context.now??Date.now());startStoryTravel(save,content,command.destinationId,context.now??Date.now());break;}
@@ -417,6 +432,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
+      if(save.worldStory?.dungeonProgress&&publicContent.worldStory?.chapters.some(c=>c.dungeonIds.includes(battle.dungeonId))&&!save.worldStory.dungeonProgress.includes(battle.dungeonId))save.worldStory.dungeonProgress.push(battle.dungeonId);
       if (dungeon.towerFloor) {
         save.towerRecord ??= { version: '1.10', completedFloors: [], legacyHighest: 0 };
         if (!save.towerRecord.completedFloors.includes(dungeon.towerFloor)) save.towerRecord.completedFloors.push(dungeon.towerFloor);

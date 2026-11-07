@@ -22,7 +22,7 @@ export function worldLocations(content: Content, completed: readonly string[]): 
   locations.push({ id: 'world-workshop', label: 'クラフト', kind: 'workshop', x: .36, y: .83 });
   locations.push({ id: 'world-memories', label: '追憶の回廊', kind: 'cathedral', x: .58, y: .34 }, { id: 'world-story', label: '旅人の灯', kind: 'story', x: .24, y: .53 }, { id: 'world-events', label: '宵宮への小径', kind: 'event', x: .81, y: .24 }, { id: 'world-trials', label: '女神の試練', kind: 'trial', x: .79, y: .13 });
   const chapterStageIds = new Set((content.chapters ?? []).flatMap(c => c.dungeonIds));
-  const extras = content.dungeons.filter(d => d.published && !chapterStageIds.has(d.id) && !d.towerFloor);
+  const extras = content.dungeons.filter(d => d.published && !d.rebirth && !chapterStageIds.has(d.id) && !d.towerFloor);
   const groups = [
     { key: 'memory' as const, stages: extras.filter(d => d.storyId && d.kind !== 'trial'), anchor: { x: .58, y: .37 } },
     { key: 'event' as const, stages: extras.filter(d => d.kind === 'event'), anchor: { x: .84, y: .27 } },
@@ -33,7 +33,7 @@ export function worldLocations(content: Content, completed: readonly string[]): 
     locations.push({ id: stage.id, dungeonId: stage.id, label: stage.name, kind: group.key === 'memory' ? 'cathedral' : group.key, category: group.key, region: `world-${group.key}`, x, y });
   });
   for (const scene of content.novels ?? []) {
-    if (scene.trigger.kind === 'intro') continue;
+    if (scene.trigger.kind === 'intro'||scene.trigger.kind==='rebirth') continue;
     if (scene.trigger.kind !== 'opening' && !completed.includes(scene.trigger.dungeonId)) continue;
     if (scene.trigger.kind === 'map' && scene.mapEncounter) {
       const map = scene.mapEncounter;

@@ -1,6 +1,7 @@
 import type { Content, GameSave, NovelProgress, NovelSceneDef } from './types';
 
 export function novelAvailable(scene: NovelSceneDef, save: GameSave): boolean {
+  if(scene.trigger.kind==='rebirth')return Boolean(save.reincarnation?.count)&&(!scene.trigger.dungeonId||save.completedDungeonIds.includes(scene.trigger.dungeonId));
   return scene.trigger.kind === 'intro' || scene.trigger.kind === 'opening' || save.completedDungeonIds.includes(scene.trigger.dungeonId);
 }
 export function initialNovelProgress(content: Content, opening: boolean): NovelProgress {
