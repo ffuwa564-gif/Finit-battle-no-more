@@ -223,3 +223,5 @@ export { TravelBag, type BagPlace } from './TravelBag';
 export { InventoryScene, InventoryHotspot, CollectedGemArt } from './InventoryScene';
 export { MemoryCabinet } from './MemoryCabinet';
 export { InventoryTheme, InventoryFrame, InventoryIllustration, InventorySprite, InventoryVignette, InventoryPaper, type InventoryPanelKind, type InventorySpriteId } from './InventoryArts';
+
+export { BattleHarvest, HarvestSummary, useBattleAuto } from './BattleHarvest';

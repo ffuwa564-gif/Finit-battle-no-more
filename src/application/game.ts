@@ -1,3 +1,5 @@
+import { createBattleHarvest, advanceHarvest, tapHarvest, chooseHarvest, nextHarvestAid } from '../domain/battle-harvest';
+import { useBattleAid } from '../domain/engine';
 import { createMedalRun, trackMedalBatch, commitMedalVictory, recordMedalStoryRecall, synchronizeMedals, medalById, medalRevealed } from '../domain/medals';
 import { applyIndustry, grantIndustryLoot, settleIndustry } from '../domain/industry';
 import { startWorldStory, startStoryTravel, cancelStoryTravel, beginStoryTalk, advanceStoryTalk, validHero, storyDestinations, acknowledgeWorldIncident } from '../domain/world-story';
@@ -269,6 +271,7 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       save.seed = next.seed;
       if(save.worldStory){const point=content.worldStory?.chapters.flatMap(c=>c.dungeonIds).includes(dungeon.id);if(point){const {x,y}=storyDestinations(content,save).find(p=>p.id===dungeon.id)!;save.worldStory.position={x,y};}delete save.worldStory.journey;}
       save.battle = createBattle(content, save.partyIds, save.leaderId, dungeon.id, command.potions, save.seed, `run-${save.revision + 1}-${save.seed}`);
+      if (dungeon.kind !== 'trial') save.battle.harvest = createBattleHarvest(save.battle.id);
       save.battle.tracking = createExpeditionTracking(context.now);
       save.battle.medalRun = createMedalRun();
       save.battle.researchSkillIds = [...(save.researchSkillIds ?? [])];
@@ -290,7 +293,9 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       break;
     }
     case 'ultimate': {
-      const battle = ready(save);
+      if (command.battleId !== undefined && save.battle?.id !== command.battleId) return previous;
+      const battle = save.battle;
+      if (!battle || !['ready','playing'].includes(battle.phase)) fail('今は行動を予約できません。');
       const unit = battle.units.find(unit => unit.uid === command.unitId);
       if (!unit || !ultimateReady(unit)) fail('必殺技の準備ができている仲間を選んでください。');
       unit.ultimateQueued = !unit.ultimateQueued;
@@ -305,6 +310,25 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       const result = useBattleBloom(ready(save), command.bloomId, content);
       save.battle = result.battle;
       save.gold += result.goldEarned;
+      save.discoveredIds = [...new Set([...save.discoveredIds, ...result.discoveredIds])];
+      save.seed = result.battle.seed;
+      break;
+    }
+    case 'harvestTap': case 'harvestChoose': {
+      const battle = save.battle;
+      if (!battle || battle.id !== command.battleId || !battle.harvest || !['ready','playing'].includes(battle.phase)) break;
+      if (command.type === 'harvestTap') { if (tapHarvest(battle, command.offerId) === 'miss') return previous; }
+      else if (!chooseHarvest(battle, command.choiceId, command.upgrade, command.slot)) return previous;
+      break;
+    }
+    case 'harvestAid': {
+      const battle = ready(save);
+      if (battle.id !== command.battleId || !battle.harvest?.aids.length) break;
+      const index = nextHarvestAid(battle);
+      if (index < 0) break;
+      const kind = battle.harvest.aids.splice(index,1)[0]!;
+      const result = useBattleAid(battle, kind, content);
+      save.battle = result.battle; save.gold += result.goldEarned;
       save.discoveredIds = [...new Set([...save.discoveredIds, ...result.discoveredIds])];
       save.seed = result.battle.seed;
       break;
@@ -326,12 +350,22 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
       const before = save.battle;
       const finishedWave = before.cursor + 1 >= before.events.length && ['wave', 'reward'].includes(before.nextPhase) ? before.wave : undefined;
       save.battle = advanceReplay(before, content);
+      const replayed = before.events[before.cursor];
+      if (replayed) advanceHarvest(save.battle, replayed, content);
       if (finishedWave !== undefined) secureMemoryChest(save, finishedWave, content);
       save.seed = save.battle.seed;
       break;
     }
     case 'potion': {
-      const battle = ready(save);
+      if (command.battleId !== undefined && save.battle?.id !== command.battleId) return previous;
+      const battle = save.battle;
+      if (!battle || !['ready','playing'].includes(battle.phase)) fail('指示待ちのときだけ操作できます。');
+      if (battle.phase === 'playing') {
+        if (battle.potionUsed || battle.potionsRemaining < 1 || save.potions < 1 || !battle.units.some(u => u.uid === command.unitId && u.side === 'party' && u.hp > 0)) fail('回復する仲間を選んでください。');
+        battle.pendingPotionId = command.unitId; break;
+      }
+      if (battle.pendingPotionId === command.unitId && (!battle.units.some(u => u.uid === command.unitId && u.hp > 0 && u.hp < u.maxHp) || battle.potionUsed)) { delete battle.pendingPotionId; break; }
+      delete battle.pendingPotionId;
       if (save.potions < 1) fail('回復薬を持っていません。');
       save.battle = usePotion(battle, command.unitId);
       save.potions -= 1;
@@ -365,6 +399,11 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
         inventory.dust[family] = (inventory.dust[family] ?? 0) + (dungeon.towerFloor ? towerDustReward(dungeon) : 1);
       }
       grantIndustryLoot(save, dungeon, publicContent, context.now ?? Date.now());
+      if (dungeon.kind !== 'trial' && battle.harvest) {
+        for (const [id, amount] of Object.entries(battle.harvest.materials)) save.industry!.stock[id] = (save.industry!.stock[id] ?? 0) + amount;
+        const inventory = save.memoryGems ??= emptyGemInventory();
+        for (const raw of battle.harvest.gems) if (!inventory.rough?.some(g => g.id === raw.id) && !inventory.items.some(g => g.id === raw.id)) (inventory.rough ??= []).push(raw);
+      }
       save.stones += dungeonStoneReward(dungeon, save.completedDungeonIds);
       const previouslyCleared = save.completedDungeonIds.includes(battle.dungeonId);
       if (!save.completedDungeonIds.includes(battle.dungeonId)) save.completedDungeonIds.push(battle.dungeonId);
@@ -550,9 +589,9 @@ export function applyCommand(previous: GameSave, command: GameCommand, publicCon
   }
   // Account for generated actions once. Replaying their visuals never adds them again.
   const active = save.battle;
-  if(active && previous.battle && ['round','battleBloom','battleFairy'].includes(command.type)) trackMedalBatch(active,content);
+  if(active && previous.battle && ['round','battleBloom','battleFairy','harvestAid'].includes(command.type)) trackMedalBatch(active,content);
   if (active?.tracking) {
-    if (previous.battle && ['round', 'battleBloom', 'battleFairy'].includes(command.type)) {
+    if (previous.battle && ['round', 'battleBloom', 'battleFairy', 'harvestAid'].includes(command.type)) {
       trackEventBatch(active.tracking, active, { round: previous.battle.round, wave: previous.battle.wave });
       if (command.type === 'round') active.tracking.review.rounds++;
     }

@@ -7,6 +7,7 @@ export const battleSounds: Record<BattleEvent['kind'], SoundCue> = {
   attack: 'attack', area: 'area', heal: 'heal', guard: 'guard', buff: 'buff', debuff: 'debuff', drop: 'drop', dialogue: 'dialogue', wave: 'wave', defeat: 'defeat',
 };
 export const commandSounds: Record<GameCommand['type'], SoundCue | null> = {
+  harvestTap:'select',harvestChoose:'buff',harvestAid:null,
   medalSync:null,medalTrack:'select',medalTitle:'confirm',
   industryPower:'select',industrySync:null,industryCollect:'confirm',industryTrack:'select',industryCraft:'exchange',industryInstall:'confirm',industryConfigure:'select',industryCancel:'cancel',
   worldIncidentNotice:'select',worldStoryBegin:'confirm',worldProfile:'select',worldTravel:'depart',worldTravelCancel:'cancel',worldTalk:'dialogue',worldTalkNext:'dialogue',worldTalkBack:'dialogue',worldTalkFinish:'confirm',worldTalkClose:'cancel',worldTalkChoice:'select',

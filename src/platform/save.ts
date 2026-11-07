@@ -1,3 +1,4 @@
+import { validBattleHarvest } from '../domain/battle-harvest';
 import { validMedals, validMedalRun } from '../domain/medals';
 import { validIndustry } from '../domain/industry';
 import { validWorldStory, validateWorldStorySave } from '../domain/world-story';
@@ -91,6 +92,7 @@ function validEvent(value: unknown): boolean {
   if (value.ailment !== undefined && !(ailments as readonly string[]).includes(value.ailment as string)) return false;
   if (value.statusAction !== undefined && (!['inflict', 'resist', 'skip', 'recover', 'friendly_fire'].includes(value.statusAction as string) || value.ailment === undefined)) return false;
   if (value.fairyAction !== undefined && !(value.fairyAction === 'charge' && value.kind === 'buff' && ['left', 'right'].includes(value.fairySide as string))) return false;
+  if (value.harvestAction !== undefined && !((value.harvestAction === 'heal' && value.kind === 'heal') || (value.harvestAction === 'strike' && value.kind === 'attack'))) return false;
   if (value.bloomAction !== undefined && !((value.bloomAction === 'heal' && value.kind === 'heal') || (value.bloomAction === 'strike' && value.kind === 'attack'))) return false;
   if (value.bitAction !== undefined && !['deploy', 'fire', 'expire'].includes(value.bitAction as string)) return false;
   if (value.bitIndex !== undefined && (value.bitAction !== 'fire' || !count(value.bitIndex) || value.bitIndex > 3)) return false;
@@ -164,6 +166,8 @@ export function assertValidSave(value: unknown): asserts value is GameSave {
     if (battle.commandIssuedRound !== undefined) throw new Error('号令の一時状態を保存できません。');
     if (battle.focusTargetId !== undefined && (!nonempty(battle.focusTargetId) || !(battle.units as { uid: string; side: string }[]).some(u => u.uid === battle.focusTargetId && u.side === 'enemy'))) throw new Error('狙う敵を選んでください。');
     if (battle.fairies !== undefined && !validBattleFairies(battle.fairies, battle as unknown as Parameters<typeof validBattleFairies>[1])) throw new Error('妖精の保存状態が不正です。');
+    if (battle.pendingPotionId !== undefined && (typeof battle.pendingPotionId !== 'string' || !(battle.units as {uid:string;side:string}[]).some(u=>u.uid===battle.pendingPotionId&&u.side==='party'))) throw new Error('回復の予約が不正です。');
+    if (battle.harvest !== undefined && !validBattleHarvest(battle.harvest, battle as unknown as Parameters<typeof validBattleHarvest>[1])) throw new Error('回収の保存状態が不正です。');
     if (battle.blooms !== undefined && !validBattleBlooms(battle.blooms, battle as unknown as Parameters<typeof validBattleBlooms>[1])) throw new Error('花の保存状態が不正です。');
     if (battle.omens !== undefined && !validLegacyOmens(battle.omens, battle as unknown as Parameters<typeof validLegacyOmens>[1])) throw new Error('痕跡の保存状態が不正です。');
     if (battle.phase !== 'playing' && battle.cursor !== battle.events.length) throw new Error('探索演出の完了状態が不正です。');

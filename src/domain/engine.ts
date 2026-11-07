@@ -953,25 +953,31 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
 export function useBattleBloom(input: Battle, bloomId: string, content: Content): RoundResult {
   const flower = input.blooms?.flower;
   if (input.phase !== 'ready' || !flower || !['heal', 'strike'].includes(flower.kind) || flower.id !== bloomId || flower.wave < 0 || flower.wave > input.wave || flower.round < 2 || (flower.wave === input.wave && flower.round > input.round)) throw new Error('この花はもう使えません。');
+  const result = useBattleAid(input, flower.kind, content, 'bloom');
+  clearBattleBloom(result.battle);
+  result.battle.blooms!.checked = `${result.battle.wave}:${result.battle.round}`;
+  return result;
+}
+/** Saved off-turn aid uses ordinary damage, defeat, drop and replay settlement. */
+export function useBattleAid(input: Battle, kind: 'heal' | 'strike', content: Content, source: 'bloom' | 'harvest' = 'harvest'): RoundResult {
+  if (input.phase !== 'ready') throw new Error('指示待ちのときだけ操作できます。');
   if (input.contentVersion !== content.contentVersion || input.rulesVersion !== content.rulesVersion) throw new Error('探索とコンテンツの版が一致しません');
   const battle = clone(input), before = clone(battle.units);
   const party = alive(battle.units, 'party');
   if (!party.length || !alive(battle.units, 'enemy').length) throw new Error('この花はもう使えません。');
   battle.initialUnits = clone(battle.units); battle.events = []; battle.cursor = 0;
   battle.phase = 'playing'; battle.nextPhase = 'ready';
-  clearBattleBloom(battle);
   // Harvesting an older bloom must not trigger another roll in the same round.
-  battle.blooms!.checked = `${battle.wave}:${battle.round}`;
-  if (flower.kind === 'heal') {
+  if (kind === 'heal') {
     const target = party.sort((a,b) => a.hp * b.maxHp - b.hp * a.maxHp || byId(a,b))[0]!;
-    const amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(target.maxHp * BLOOM_HEAL_PERCENT / 100)));
+    const amount = Math.min(target.maxHp - target.hp, Math.max(1, Math.floor(target.maxHp * (source === 'bloom' ? BLOOM_HEAL_PERCENT : 12 + Math.min(3, input.harvest?.upgrades.focus ?? 0) * 3) / 100)));
     target.hp += amount;
-    emit(battle, { kind: 'heal', bloomAction: 'heal', targetIds: [target.uid], amount, text: amount ? `癒しの花 — 最も傷ついた味方を${amount}回復` : '癒しの花 — 味方のHPは満ちています', unitsAfter: clone(battle.units) });
+    emit(battle, { kind: 'heal', ...(source === 'bloom' ? {bloomAction:'heal' as const} : {harvestAction:'heal' as const}), targetIds: [target.uid], amount, text: amount ? `${source === 'bloom' ? '癒しの花' : '回収した癒し'} — 最も傷ついた味方を${amount}回復` : '味方のHPは満ちています', unitsAfter: clone(battle.units) });
   } else {
     const target = alive(battle.units, 'enemy').sort((a,b) => a.hp - b.hp || byId(a,b))[0]!;
-    const source = { ...party[0]!, buffUntil: undefined, buffStrength: undefined, attack: Math.round(party.reduce((sum,unit) => sum + unit.attack, 0) / party.length) };
-    const hit = damage(source, target, 150, 100, battle, true, content, false, false, false, 1, undefined, false, true);
-    emit(battle, { kind: 'attack', bloomAction: 'strike', targetIds: [hit.unit.uid], amount: hit.amount, absorbed: hit.absorbed || undefined, text: `月晶の花 — ${hit.amount}ダメージ（障壁 ${hit.absorbed}）`, unitsAfter: clone(battle.units) });
+    const striker = { ...party[0]!, buffUntil: undefined, buffStrength: undefined, attack: Math.round(party.reduce((sum,unit) => sum + unit.attack, 0) / party.length) };
+    const hit = damage(striker, target, source === 'harvest' ? 90 + (input.harvest?.upgrades.focus ?? 0) * 20 : 150, 100, battle, true, content, false, false, false, 1, undefined, false, true);
+    emit(battle, { kind: 'attack', ...(source === 'bloom' ? {bloomAction:'strike' as const} : {harvestAction:'strike' as const}), targetIds: [hit.unit.uid], amount: hit.amount, absorbed: hit.absorbed || undefined, text: `${source === 'bloom' ? '月晶の花' : '回収した援護'} — ${hit.amount}ダメージ（障壁 ${hit.absorbed}）`, unitsAfter: clone(battle.units) });
   }
   const settled = settleAction(battle, content, before);
   if (!alive(battle.units, 'enemy').length && !battle.fieldScenario) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
@@ -1005,7 +1011,7 @@ export function advanceReplay(input: Battle, content: Content): Battle {
     case 'failed': clearBattleBloom(battle); clearBattleFairy(battle); battle.phase = 'failed'; battle.pendingMaterials = {}; break;
     case 'ready':
       battle.phase = 'ready';
-      if (!battle.events.some(event => event.bloomAction || event.fairyAction)) {
+      if (!battle.events.some(event => event.bloomAction || event.fairyAction || event.harvestAction)) {
         battle.potionUsed = false;
         offerBattleBloom(battle);
         offerBattleFairy(battle);

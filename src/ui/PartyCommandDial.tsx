@@ -132,11 +132,12 @@ export function CompanionChoice({ unit, battle, index, reducedMotion, hidden, si
     if (!cueKey || hidden) return;
     const place = () => {
       const r = host.current?.getBoundingClientRect();
-      if (r) setPosition({ left: r.left + r.width / 2, top: r.top - 8, width: r.width + 2 });
+      const choices = battle.harvest ? host.current?.closest('.battle-layout')?.querySelector('.harvest-choices')?.getBoundingClientRect() : undefined;
+      if (r) setPosition({ left: r.left + r.width / 2, top: Math.min(r.top - 8, choices ? choices.top - 8 : Infinity), width: r.width + 2 });
     };
     place(); window.addEventListener('resize', place); window.addEventListener('scroll', place, true);
     return () => { window.removeEventListener('resize', place); window.removeEventListener('scroll', place, true); };
-  }, [cueKey, hidden]);
+  }, [cueKey, hidden, !!battle.harvest]);
   useEffect(() => {
     setCue(undefined);
     if (!upcoming || unit.hp <= 0 || hidden) return;
