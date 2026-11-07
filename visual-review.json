@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "sha256": "9beed31d505d39af629cf32cc9e01ab415022a5f6a6edd43d17af7b7062044ca",
+  "reviewedImages": "contact-sheet.jpg, all 20 final-MP4 scene samples; reviews/12-build.jpg enlarged",
+  "reviewedTimes": [
+    2.0,
+    18.566666666666666,
+    34.43333333333333,
+    47.8,
+    60.46666666666667,
+    73.03333333333333,
+    85.36666666666666,
+    102.23333333333333,
+    118.93333333333334,
+    133.36666666666667,
+    146.8,
+    158.56666666666666,
+    178.56666666666666,
+    196.0,
+    209.03333333333333,
+    234.56666666666666,
+    251.73333333333332,
+    266.3333333333333,
+    279.3666666666667,
+    295.06666666666666
+  ],
+  "checks": {
+    "avatarHeadAndEarsInsideContain": true,
+    "captionsMaxTwoLines": true,
+    "speakerColorsAndLabelsAgree": true,
+    "actualAcquisitionsDriveTheRoster": true,
+    "currentHuntStatusAndRankVisible": true,
+    "polishTiersMatchActualResults": true,
+    "towerThreeSurvivorsAndFarm55KillsMatchLogs": true,
+    "clothShotRetakenAfterAdapterFix": true,
+    "creditsAtEnding": true
+  },
+  "notes": "Visual review of the exact final MP4. Audio and dynamic frame timing verified independently."
+}

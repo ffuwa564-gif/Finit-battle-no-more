@@ -1,0 +1,66 @@
+{
+  "sync-audit.json": {
+    "sha256": "ec1bdef34c09277843fee0813cdb26245e9ecac236ab867637dd25ea49b492d8",
+    "bytes": 20428
+  },
+  "credits.txt": {
+    "sha256": "ec74ad3a1bd5a30f989ddad252c509c606e61b5706ed8c674bb8694bb88d39fe",
+    "bytes": 709
+  },
+  "thumbnail.jpg": {
+    "sha256": "09d5bf8c857cce610bb8958c49a648c3854af677d9c75c57b9a8a7f88c361708",
+    "bytes": 250409
+  },
+  "visual-review.json": {
+    "sha256": "fafd43a9eec8cabd5bda9b312f878a3bc278b844be01de53a48e5fc161b04fb1",
+    "bytes": 1153
+  },
+  "stillveil-hunt-tower.mp4": {
+    "sha256": "9beed31d505d39af629cf32cc9e01ab415022a5f6a6edd43d17af7b7062044ca",
+    "bytes": 28784092
+  },
+  "youtube-description.txt": {
+    "sha256": "85e7fed3f51a0e4c430e67b4e805bfd6daf96a22f23501abce984599e7d30e35",
+    "bytes": 3904
+  },
+  "playthrough-verification.json": {
+    "sha256": "131d56b6c6a85182aa59c684193c892312109595e09ed342e5c7eb3d4ce70944",
+    "bytes": 492
+  },
+  "Production-Inputs.zip": {
+    "sha256": "abe84d2542a3bf167dff26cff156431300a749370e024521db435b1243c0cd32",
+    "bytes": 98072151
+  },
+  "script.md": {
+    "sha256": "98fd72a5c5d2105f010491d70a2a468e68e8c8eb405f38ea4f6be5eb89a9a7eb",
+    "bytes": 7483
+  },
+  "storyboard.csv": {
+    "sha256": "5c5cc3abfcbf964b6b3e909e0ebf64e4620678c7a4573caaca711648b6aea709",
+    "bytes": 7165
+  },
+  "contact-sheet.jpg": {
+    "sha256": "b6a5442f7df692456fef4ed21bb7e371c230d6508852cbba8b6ddbf8bcf4d590",
+    "bytes": 881317
+  },
+  "stillveil-hunt-tower.srt": {
+    "sha256": "5a4fdf582f030aa6ea9b2d3fe7a4cb313ad89224ebd584bf0302f61752aca9e1",
+    "bytes": 7799
+  },
+  "playback-audit.json": {
+    "sha256": "cbd6279b363e39bd0fea9a7b20ede464d1e4b679640ed51c5665c9578661e570",
+    "bytes": 1212
+  },
+  "chapters.txt": {
+    "sha256": "caea1048c343c673939b5e49b294c863a37b3af5d8968f448ca4d0107a5d0665",
+    "bytes": 562
+  },
+  "final-qa.json": {
+    "sha256": "9de96d402766342e417634c8c4a2d74c4837aeb8d2cecbb55fef95c3feccb688",
+    "bytes": 518
+  },
+  "YouTube-Package.zip": {
+    "sha256": "e7de451a6c77208c9157f23039c416633ed2411141311340c42cfc275ca32fca",
+    "bytes": 28780388
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "commands": 124640,
+  "expected": 124640,
+  "initialSeed": "0x584a39b1",
+  "finalSha256": "5391043fd6f934369d8027627ad5fe52fee142fc4ce06a9a75d1a2d5e5a8c597",
+  "journalSha256": "b9bb6ec15e0585450846436691613b4fe1e98393e4a3e588e2fe09fc358c2da3",
+  "conditions": "New game, all inputs including replay logged; ordinary UI departures use hunt mode; one unaltered collection, no targeted SSR roster or seed resets. Choices based on owned character skills and acquired gems."
+}

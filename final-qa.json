@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "sha256": "9beed31d505d39af629cf32cc9e01ab415022a5f6a6edd43d17af7b7062044ca",
+  "duration": 312.4,
+  "resolution": "1920x1080",
+  "voicevoxSpeakers": [
+    "ずんだもん",
+    "四国めたん"
+  ],
+  "evidence": [
+    "sync-audit.json",
+    "playback-audit.json",
+    "visual-review.json",
+    "playthrough-verification.json"
+  ],
+  "audio": "48kHz common sample clock, offline game PCM, smooth fades/ducking, single final AAC encode. Entire encoded waveform checked against lossless master."
+}

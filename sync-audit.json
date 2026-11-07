@@ -1,0 +1,1052 @@
+{
+  "sha256": "9beed31d505d39af629cf32cc9e01ab415022a5f6a6edd43d17af7b7062044ca",
+  "toleranceMs": 80,
+  "voices": [
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999981,
+      "id": "001",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999923,
+      "id": "002",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999941,
+      "id": "003",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999738,
+      "id": "004",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999761,
+      "id": "005",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999883,
+      "id": "006",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99994,
+      "id": "007",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999931,
+      "id": "008",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999938,
+      "id": "009",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999971,
+      "id": "010",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999981,
+      "id": "011",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999984,
+      "id": "012",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999965,
+      "id": "013",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999929,
+      "id": "014",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999812,
+      "id": "015",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999756,
+      "id": "016",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999265,
+      "id": "017",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999845,
+      "id": "018",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999932,
+      "id": "019",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999951,
+      "id": "020",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999961,
+      "id": "021",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999932,
+      "id": "022",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999972,
+      "id": "023",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99994,
+      "id": "024",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999947,
+      "id": "025",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999962,
+      "id": "026",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999874,
+      "id": "027",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999916,
+      "id": "028",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999918,
+      "id": "029",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999942,
+      "id": "030",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999898,
+      "id": "031",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999972,
+      "id": "032",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999968,
+      "id": "033",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999955,
+      "id": "034",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999637,
+      "id": "035",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999965,
+      "id": "036",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999964,
+      "id": "037",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999928,
+      "id": "038",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99994,
+      "id": "039",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999932,
+      "id": "040",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999949,
+      "id": "041",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999881,
+      "id": "042",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999919,
+      "id": "043",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999969,
+      "id": "044",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999856,
+      "id": "045",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999234,
+      "id": "046",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999842,
+      "id": "047",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999881,
+      "id": "048",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999903,
+      "id": "049",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999958,
+      "id": "050",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99989,
+      "id": "051",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999929,
+      "id": "052",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999954,
+      "id": "053",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999943,
+      "id": "054",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999933,
+      "id": "055",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999817,
+      "id": "056",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999555,
+      "id": "057",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999671,
+      "id": "058",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999973,
+      "id": "059",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999875,
+      "id": "060",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99987,
+      "id": "061",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999961,
+      "id": "062",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999832,
+      "id": "063",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999912,
+      "id": "064",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999961,
+      "id": "065",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999931,
+      "id": "066",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999941,
+      "id": "067",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99988,
+      "id": "068",
+      "speaker": "z",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999928,
+      "id": "069",
+      "speaker": "m",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999981,
+      "id": "070",
+      "speaker": "z",
+      "pass": true
+    }
+  ],
+  "gameAudio": [
+    {
+      "lagMs": 0.0,
+      "correlation": 0.998942,
+      "scene": "hunt",
+      "third": 0,
+      "rms": 0.1379103660583496,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.997419,
+      "scene": "hunt",
+      "third": 1,
+      "rms": 0.12882903218269348,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.989066,
+      "scene": "hunt",
+      "third": 2,
+      "rms": 0.1876199096441269,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999997,
+      "scene": "loot",
+      "event": "epic-arrival",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999924,
+      "scene": "loot",
+      "event": "pickup-25",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999537,
+      "scene": "loot",
+      "event": "pickup-43",
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99708,
+      "scene": "ramp",
+      "third": 0,
+      "rms": 0.12886753678321838,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.99693,
+      "scene": "ramp",
+      "third": 1,
+      "rms": 0.15854622423648834,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999076,
+      "scene": "ramp",
+      "third": 2,
+      "rms": 0.15951545536518097,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.987344,
+      "scene": "loss",
+      "third": 0,
+      "rms": 0.1291516125202179,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999733,
+      "scene": "loss",
+      "third": 1,
+      "rms": 0.08952698856592178,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.996697,
+      "scene": "loss",
+      "third": 2,
+      "rms": 0.07945465296506882,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.988335,
+      "scene": "tower",
+      "third": 0,
+      "rms": 0.13760755956172943,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.996637,
+      "scene": "tower",
+      "third": 1,
+      "rms": 0.137228325009346,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.997613,
+      "scene": "tower",
+      "third": 2,
+      "rms": 0.0920725166797638,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999973,
+      "scene": "finish",
+      "third": 0,
+      "rms": 0.08000188320875168,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.998141,
+      "scene": "finish",
+      "third": 1,
+      "rms": 0.15099528431892395,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.997972,
+      "scene": "finish",
+      "third": 2,
+      "rms": 0.11924847215414047,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.986037,
+      "scene": "farm",
+      "third": 0,
+      "rms": 0.1104603260755539,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.999287,
+      "scene": "farm",
+      "third": 1,
+      "rms": 0.13892029225826263,
+      "pass": true
+    },
+    {
+      "lagMs": 0.0,
+      "correlation": 0.995052,
+      "scene": "farm",
+      "third": 2,
+      "rms": 0.12991607189178467,
+      "pass": true
+    }
+  ],
+  "gameFootage": [
+    {
+      "scene": "hunt",
+      "third": 0,
+      "frame": 20,
+      "motion": 7.934007305819021,
+      "lagMs": 0.0,
+      "rmse": 1.3722919598839571,
+      "pass": true
+    },
+    {
+      "scene": "hunt",
+      "third": 1,
+      "frame": 172,
+      "motion": 8.771460843373495,
+      "lagMs": 0.0,
+      "rmse": 1.40415292865,
+      "pass": true
+    },
+    {
+      "scene": "hunt",
+      "third": 2,
+      "frame": 205,
+      "motion": 10.26711900794668,
+      "lagMs": 0.0,
+      "rmse": 1.3283680940433567,
+      "pass": true
+    },
+    {
+      "scene": "cards",
+      "third": 0,
+      "frame": 38,
+      "motion": 2.514371315047424,
+      "lagMs": 0.0,
+      "rmse": 1.1033979196795727,
+      "pass": true
+    },
+    {
+      "scene": "cards",
+      "third": 1,
+      "frame": 40,
+      "motion": 0.330011535503717,
+      "lagMs": 0.0,
+      "rmse": 1.1074014520568165,
+      "pass": true
+    },
+    {
+      "scene": "cards",
+      "third": 2,
+      "frame": 102,
+      "motion": 0.2934423865675468,
+      "lagMs": 0.0,
+      "rmse": 1.0860732479128432,
+      "pass": true
+    },
+    {
+      "scene": "loot",
+      "third": 0,
+      "frame": 0,
+      "motion": 0.2972715329402717,
+      "lagMs": 0.0,
+      "rmse": 1.1656102930992684,
+      "pass": true
+    },
+    {
+      "scene": "loot",
+      "third": 1,
+      "frame": 79,
+      "motion": 0.23646981543194054,
+      "lagMs": 0.0,
+      "rmse": 1.1085132979579875,
+      "pass": true
+    },
+    {
+      "scene": "loot",
+      "third": 2,
+      "frame": 110,
+      "motion": 0.44603947705716485,
+      "lagMs": 0.0,
+      "rmse": 1.1123640006756537,
+      "pass": true
+    },
+    {
+      "scene": "ramp",
+      "third": 0,
+      "frame": 40,
+      "motion": 8.23236029223276,
+      "lagMs": 0.0,
+      "rmse": 1.4192171350719431,
+      "pass": true
+    },
+    {
+      "scene": "ramp",
+      "third": 1,
+      "frame": 164,
+      "motion": 9.161729364265573,
+      "lagMs": 0.0,
+      "rmse": 1.4111186354645258,
+      "pass": true
+    },
+    {
+      "scene": "ramp",
+      "third": 2,
+      "frame": 232,
+      "motion": 9.299394386054857,
+      "lagMs": 0.0,
+      "rmse": 1.327542324534284,
+      "pass": true
+    },
+    {
+      "scene": "polish",
+      "third": 0,
+      "frame": 38,
+      "motion": 0.3245642143040246,
+      "lagMs": 0.0,
+      "rmse": 1.0792627895214377,
+      "pass": true
+    },
+    {
+      "scene": "polish",
+      "third": 1,
+      "frame": 94,
+      "motion": 0.3030472955652397,
+      "lagMs": 0.0,
+      "rmse": 1.0733183612224744,
+      "pass": true
+    },
+    {
+      "scene": "polish",
+      "third": 2,
+      "frame": 144,
+      "motion": 1.417689374519354,
+      "lagMs": 0.0,
+      "rmse": 1.0618930503493487,
+      "pass": true
+    },
+    {
+      "scene": "boss-choice",
+      "third": 0,
+      "frame": 28,
+      "motion": 6.517327287874904,
+      "lagMs": 0.0,
+      "rmse": 1.1842554232342049,
+      "pass": true
+    },
+    {
+      "scene": "boss-choice",
+      "third": 1,
+      "frame": 78,
+      "motion": 5.088198538836195,
+      "lagMs": 0.0,
+      "rmse": 1.0910088028626965,
+      "pass": true
+    },
+    {
+      "scene": "boss-choice",
+      "third": 2,
+      "frame": 84,
+      "motion": 6.779808062035375,
+      "lagMs": 0.0,
+      "rmse": 1.3783186022267686,
+      "pass": true
+    },
+    {
+      "scene": "loss",
+      "third": 0,
+      "frame": 8,
+      "motion": 6.814919251473981,
+      "lagMs": 0.0,
+      "rmse": 1.3321151403320521,
+      "pass": true
+    },
+    {
+      "scene": "loss",
+      "third": 1,
+      "frame": 46,
+      "motion": 8.657820110228146,
+      "lagMs": 0.0,
+      "rmse": 1.3070799307066887,
+      "pass": true
+    },
+    {
+      "scene": "loss",
+      "third": 2,
+      "frame": 59,
+      "motion": 6.6237663419635995,
+      "lagMs": 0.0,
+      "rmse": 1.2982300178261263,
+      "pass": true
+    },
+    {
+      "scene": "tower",
+      "third": 0,
+      "frame": 16,
+      "motion": 6.995505960010254,
+      "lagMs": 0.0,
+      "rmse": 1.371336870517691,
+      "pass": true
+    },
+    {
+      "scene": "tower",
+      "third": 1,
+      "frame": 68,
+      "motion": 8.137008138938734,
+      "lagMs": 0.0,
+      "rmse": 1.3579291701726102,
+      "pass": true
+    },
+    {
+      "scene": "tower",
+      "third": 2,
+      "frame": 159,
+      "motion": 9.714592412202,
+      "lagMs": 0.0,
+      "rmse": 1.37428305177855,
+      "pass": true
+    },
+    {
+      "scene": "finish",
+      "third": 0,
+      "frame": 48,
+      "motion": 7.309239618046655,
+      "lagMs": 0.0,
+      "rmse": 1.3084030710646093,
+      "pass": true
+    },
+    {
+      "scene": "finish",
+      "third": 1,
+      "frame": 68,
+      "motion": 4.2599493719559085,
+      "lagMs": 0.0,
+      "rmse": 1.3158838530562316,
+      "pass": true
+    },
+    {
+      "scene": "finish",
+      "third": 2,
+      "frame": 125,
+      "motion": 1.6650698538836195,
+      "lagMs": 0.0,
+      "rmse": 1.3410759557228351,
+      "pass": true
+    },
+    {
+      "scene": "farm",
+      "third": 0,
+      "frame": 72,
+      "motion": 8.0695014098949,
+      "lagMs": 0.0,
+      "rmse": 1.402087448218779,
+      "pass": true
+    },
+    {
+      "scene": "farm",
+      "third": 1,
+      "frame": 84,
+      "motion": 7.489433799025891,
+      "lagMs": 0.0,
+      "rmse": 1.3195584266379965,
+      "pass": true
+    },
+    {
+      "scene": "farm",
+      "third": 2,
+      "frame": 155,
+      "motion": 7.971041079210459,
+      "lagMs": 0.0,
+      "rmse": 1.4292713726573105,
+      "pass": true
+    }
+  ],
+  "audioQuality": {
+    "windowMs": 20,
+    "dropoutWindows": [],
+    "encodedVsMasterRms": 0.0011995644308626652,
+    "max20msResidualRms": 0.014620364643633366,
+    "masterSamples12k": 3748800,
+    "decodedSamples12k": 3748864,
+    "decodedSamplePeak": 0.7841867804527283,
+    "sceneJoins": [
+      {
+        "time": 16.566666666666666,
+        "addedResidualPeak": 0.0003735516220331192,
+        "pass": true
+      },
+      {
+        "time": 32.43333333333333,
+        "addedResidualPeak": 0.0004425179213285446,
+        "pass": true
+      },
+      {
+        "time": 45.8,
+        "addedResidualPeak": 0.00038382154889404774,
+        "pass": true
+      },
+      {
+        "time": 58.46666666666667,
+        "addedResidualPeak": 0.010132461786270142,
+        "pass": true
+      },
+      {
+        "time": 71.03333333333333,
+        "addedResidualPeak": 0.0005216803401708603,
+        "pass": true
+      },
+      {
+        "time": 83.36666666666666,
+        "addedResidualPeak": 0.00021224655210971832,
+        "pass": true
+      },
+      {
+        "time": 100.23333333333333,
+        "addedResidualPeak": 0.00019766436889767647,
+        "pass": true
+      },
+      {
+        "time": 116.93333333333334,
+        "addedResidualPeak": 0.00025516049936413765,
+        "pass": true
+      },
+      {
+        "time": 131.36666666666667,
+        "addedResidualPeak": 0.00026466231793165207,
+        "pass": true
+      },
+      {
+        "time": 144.8,
+        "addedResidualPeak": 0.00026721961330622435,
+        "pass": true
+      },
+      {
+        "time": 156.56666666666666,
+        "addedResidualPeak": 0.0007532238960266113,
+        "pass": true
+      },
+      {
+        "time": 176.56666666666666,
+        "addedResidualPeak": 0.0003375876694917679,
+        "pass": true
+      },
+      {
+        "time": 194.0,
+        "addedResidualPeak": 0.00046502193436026573,
+        "pass": true
+      },
+      {
+        "time": 207.03333333333333,
+        "addedResidualPeak": 0.009144529700279236,
+        "pass": true
+      },
+      {
+        "time": 232.56666666666666,
+        "addedResidualPeak": 0.00021788361482322216,
+        "pass": true
+      },
+      {
+        "time": 249.73333333333332,
+        "addedResidualPeak": 0.00034734373912215233,
+        "pass": true
+      },
+      {
+        "time": 264.3333333333333,
+        "addedResidualPeak": 0.00031025707721710205,
+        "pass": true
+      },
+      {
+        "time": 277.3666666666667,
+        "addedResidualPeak": 5.8685895055532455e-05,
+        "pass": true
+      },
+      {
+        "time": 293.06666666666666,
+        "addedResidualPeak": 0.00010850559920072556,
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "structural": {
+    "width": 1920,
+    "height": 1080,
+    "frames": 9372,
+    "duration": 312.4,
+    "sampleRate": "48000",
+    "pass": true
+  },
+  "fullDecode": true,
+  "pass": true
+}
