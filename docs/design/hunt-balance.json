@@ -1,0 +1,1444 @@
+[
+  {
+    "party": "initial",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 42,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 29,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 226,
+    "maxUnits": 8,
+    "materials": {
+      "copper": 6,
+      "stone": 16,
+      "timber": 15,
+      "coal": 5,
+      "ore": 9,
+      "copper-ingot": 3
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "glimmering"
+    ],
+    "rareParts": {
+      "copper-ingot": 3
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 132,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 169,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 108,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 123,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 225,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 13,
+      "coal": 19,
+      "stone": 10,
+      "timber": 3,
+      "copper": 3,
+      "iron": 5
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "glimmering"
+    ],
+    "rareParts": {
+      "iron": 5
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 78,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 165,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 120,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 504,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 231,
+    "maxUnits": 8,
+    "materials": {
+      "copper": 17,
+      "ore": 10,
+      "coal": 11,
+      "iron": 2,
+      "copper-ingot": 8,
+      "stone": 5,
+      "timber": 8
+    },
+    "gems": [
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "iron": 2,
+      "copper-ingot": 8
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 186,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 117,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 140,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 1024,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 30,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 231,
+    "maxUnits": 8,
+    "materials": {
+      "timber": 7,
+      "coal": 9,
+      "copper-ingot": 2,
+      "copper": 6,
+      "iron": 4,
+      "ore": 3
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 2,
+      "iron": 4
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 139,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 197,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 112,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 8801,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 29,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 231,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 14,
+      "timber": 3,
+      "coal": 3,
+      "copper": 7,
+      "stone": 18
+    },
+    "gems": [
+      "radiant",
+      "ordinary",
+      "glimmering",
+      "radiant",
+      "radiant",
+      "ordinary",
+      "ordinary",
+      "radiant"
+    ],
+    "rareParts": {},
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 111,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 185,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 145,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 140,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-aggressive",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 42,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 30,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 231,
+    "maxUnits": 8,
+    "materials": {
+      "coal": 13,
+      "ore": 8,
+      "stone": 12,
+      "iron": 2,
+      "timber": 8,
+      "copper": 8
+    },
+    "gems": [
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "ordinary"
+    ],
+    "rareParts": {
+      "iron": 2
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 118,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 136,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 141,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 84,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-aggressive",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 123,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 26,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 228,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 8,
+      "stone": 7,
+      "timber": 5,
+      "copper": 3,
+      "iron": 4
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "glimmering"
+    ],
+    "rareParts": {
+      "iron": 4
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 137,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 174,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 100,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 49,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-aggressive",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 504,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 232,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 8,
+      "copper": 10,
+      "timber": 9,
+      "stone": 5,
+      "copper-ingot": 2,
+      "coal": 9
+    },
+    "gems": [
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "glimmering"
+    ],
+    "rareParts": {
+      "copper-ingot": 2
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 69,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 90,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 149,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 94,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-aggressive",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 1024,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 25,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 238,
+    "maxUnits": 8,
+    "materials": {
+      "copper": 11,
+      "ore": 11,
+      "coal": 9,
+      "timber": 13,
+      "copper-ingot": 3
+    },
+    "gems": [
+      "glimmering",
+      "glimmering"
+    ],
+    "rareParts": {
+      "copper-ingot": 3
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 137,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 105,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 144,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 73,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-aggressive",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 8801,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 27,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 242,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 6,
+      "copper": 17,
+      "coal": 10,
+      "timber": 3,
+      "copper-ingot": 4
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 4
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 108,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 117,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 150,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 70,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-survival",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 42,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 230,
+    "maxUnits": 9,
+    "materials": {
+      "stone": 15,
+      "coal": 12,
+      "copper": 8,
+      "timber": 7,
+      "ore": 13,
+      "copper-ingot": 8
+    },
+    "gems": [
+      "glimmering",
+      "radiant",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 8
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 102,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 160,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 147,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 140,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-survival",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 123,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 225,
+    "maxUnits": 8,
+    "materials": {
+      "copper": 12,
+      "coal": 12,
+      "timber": 3,
+      "ore": 8,
+      "stone": 22,
+      "copper-ingot": 3
+    },
+    "gems": [
+      "radiant",
+      "glimmering"
+    ],
+    "rareParts": {
+      "copper-ingot": 3
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 142,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 222,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 149,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 113,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-survival",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 504,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 27,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 227,
+    "maxUnits": 8,
+    "materials": {
+      "copper": 15,
+      "ore": 7,
+      "timber": 12,
+      "stone": 3,
+      "coal": 6,
+      "iron": 2
+    },
+    "gems": [
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "iron": 2
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 148,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 222,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 154,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 128,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-survival",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 1024,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 29,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 227,
+    "maxUnits": 8,
+    "materials": {
+      "stone": 13,
+      "copper": 16,
+      "coal": 11,
+      "ore": 3,
+      "timber": 9,
+      "copper-ingot": 4
+    },
+    "gems": [
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 4
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 139,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 219,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 156,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 100,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-survival",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 8801,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 28,
+    "rank": "A",
+    "rounds": 28,
+    "replayEvents": 229,
+    "maxUnits": 9,
+    "materials": {
+      "stone": 12,
+      "timber": 10,
+      "copper": 2,
+      "coal": 10,
+      "iron": 1,
+      "ore": 6
+    },
+    "gems": [
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "radiant"
+    ],
+    "rareParts": {
+      "iron": 1
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 123,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 222,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 143,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 140,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-wick",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 42,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 45,
+    "rank": "S",
+    "rounds": 26,
+    "replayEvents": 219,
+    "maxUnits": 9,
+    "materials": {
+      "timber": 25,
+      "stone": 31,
+      "copper": 10,
+      "ore": 21,
+      "iron": 6,
+      "copper-ingot": 17
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "iron": 6,
+      "copper-ingot": 17
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 117,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 198,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 135,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-wick",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 123,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 45,
+    "rank": "S",
+    "rounds": 26,
+    "replayEvents": 221,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 13,
+      "copper": 9,
+      "coal": 9,
+      "stone": 12,
+      "timber": 18,
+      "iron": 4,
+      "copper-ingot": 15
+    },
+    "gems": [
+      "ordinary",
+      "radiant",
+      "ordinary",
+      "glimmering",
+      "glimmering"
+    ],
+    "rareParts": {
+      "iron": 4,
+      "copper-ingot": 15
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 113,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 202,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 148,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 124,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-wick",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 504,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 48,
+    "rank": "S",
+    "rounds": 26,
+    "replayEvents": 222,
+    "maxUnits": 8,
+    "materials": {
+      "timber": 25,
+      "coal": 26,
+      "stone": 17,
+      "ore": 4,
+      "copper": 14,
+      "copper-ingot": 5
+    },
+    "gems": [
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "radiant"
+    ],
+    "rareParts": {
+      "copper-ingot": 5
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 150,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 190,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 125,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-wick",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 1024,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 44,
+    "rank": "S",
+    "rounds": 26,
+    "replayEvents": 227,
+    "maxUnits": 8,
+    "materials": {
+      "ore": 14,
+      "stone": 13,
+      "timber": 9,
+      "coal": 13,
+      "iron": 2,
+      "copper": 16,
+      "copper-ingot": 4
+    },
+    "gems": [
+      "glimmering",
+      "radiant",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "glimmering"
+    ],
+    "rareParts": {
+      "iron": 2,
+      "copper-ingot": 4
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 92,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 208,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 152,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 137,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "initial-wick",
+    "partyIds": [
+      "elaine",
+      "liora",
+      "seris",
+      "noelle"
+    ],
+    "seed": 8801,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 47,
+    "rank": "S",
+    "rounds": 26,
+    "replayEvents": 230,
+    "maxUnits": 8,
+    "materials": {
+      "coal": 19,
+      "stone": 25,
+      "copper": 20,
+      "copper-ingot": 11,
+      "timber": 16,
+      "ore": 19,
+      "iron": 5
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 11,
+      "iron": 5
+    },
+    "remainingHp": [
+      {
+        "id": "elaine",
+        "hp": 125,
+        "max": 156
+      },
+      {
+        "id": "liora",
+        "hp": 162,
+        "max": 249
+      },
+      {
+        "id": "seris",
+        "hp": 148,
+        "max": 156
+      },
+      {
+        "id": "noelle",
+        "hp": 130,
+        "max": 140
+      }
+    ]
+  },
+  {
+    "party": "veteran",
+    "partyIds": [
+      "evelyn",
+      "selene",
+      "asteria",
+      "nox"
+    ],
+    "seed": 42,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 42,
+    "rank": "S",
+    "rounds": 27,
+    "replayEvents": 261,
+    "maxUnits": 9,
+    "materials": {
+      "ore": 14,
+      "coal": 3,
+      "copper": 16,
+      "stone": 10,
+      "timber": 11,
+      "iron": 9,
+      "copper-ingot": 7
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "ordinary"
+    ],
+    "rareParts": {
+      "iron": 9,
+      "copper-ingot": 7
+    },
+    "remainingHp": [
+      {
+        "id": "evelyn",
+        "hp": 399,
+        "max": 458
+      },
+      {
+        "id": "selene",
+        "hp": 250,
+        "max": 250
+      },
+      {
+        "id": "asteria",
+        "hp": 236,
+        "max": 236
+      },
+      {
+        "id": "nox",
+        "hp": 298,
+        "max": 298
+      }
+    ]
+  },
+  {
+    "party": "veteran",
+    "partyIds": [
+      "evelyn",
+      "selene",
+      "asteria",
+      "nox"
+    ],
+    "seed": 123,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 50,
+    "rank": "S",
+    "rounds": 27,
+    "replayEvents": 242,
+    "maxUnits": 8,
+    "materials": {
+      "timber": 15,
+      "ore": 9,
+      "coal": 6,
+      "stone": 9,
+      "copper-ingot": 12,
+      "copper": 18
+    },
+    "gems": [
+      "ordinary",
+      "radiant",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "ordinary",
+      "ordinary",
+      "radiant"
+    ],
+    "rareParts": {
+      "copper-ingot": 12
+    },
+    "remainingHp": [
+      {
+        "id": "evelyn",
+        "hp": 457,
+        "max": 458
+      },
+      {
+        "id": "selene",
+        "hp": 246,
+        "max": 250
+      },
+      {
+        "id": "asteria",
+        "hp": 235,
+        "max": 236
+      },
+      {
+        "id": "nox",
+        "hp": 298,
+        "max": 298
+      }
+    ]
+  },
+  {
+    "party": "veteran",
+    "partyIds": [
+      "evelyn",
+      "selene",
+      "asteria",
+      "nox"
+    ],
+    "seed": 504,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 41,
+    "rank": "S",
+    "rounds": 27,
+    "replayEvents": 270,
+    "maxUnits": 9,
+    "materials": {
+      "copper-ingot": 5,
+      "coal": 16,
+      "stone": 14,
+      "ore": 7,
+      "copper": 21,
+      "iron": 12
+    },
+    "gems": [
+      "ordinary",
+      "radiant",
+      "radiant",
+      "ordinary",
+      "glimmering",
+      "glimmering",
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 5,
+      "iron": 12
+    },
+    "remainingHp": [
+      {
+        "id": "evelyn",
+        "hp": 440,
+        "max": 458
+      },
+      {
+        "id": "selene",
+        "hp": 217,
+        "max": 250
+      },
+      {
+        "id": "asteria",
+        "hp": 236,
+        "max": 236
+      },
+      {
+        "id": "nox",
+        "hp": 298,
+        "max": 298
+      }
+    ]
+  },
+  {
+    "party": "veteran",
+    "partyIds": [
+      "evelyn",
+      "selene",
+      "asteria",
+      "nox"
+    ],
+    "seed": 1024,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 47,
+    "rank": "S",
+    "rounds": 27,
+    "replayEvents": 250,
+    "maxUnits": 8,
+    "materials": {
+      "coal": 10,
+      "stone": 11,
+      "timber": 9,
+      "copper-ingot": 2,
+      "copper": 12,
+      "ore": 3,
+      "iron": 16
+    },
+    "gems": [
+      "ordinary",
+      "ordinary",
+      "ordinary",
+      "glimmering",
+      "radiant",
+      "ordinary",
+      "glimmering"
+    ],
+    "rareParts": {
+      "copper-ingot": 2,
+      "iron": 16
+    },
+    "remainingHp": [
+      {
+        "id": "evelyn",
+        "hp": 438,
+        "max": 458
+      },
+      {
+        "id": "selene",
+        "hp": 247,
+        "max": 250
+      },
+      {
+        "id": "asteria",
+        "hp": 165,
+        "max": 236
+      },
+      {
+        "id": "nox",
+        "hp": 298,
+        "max": 298
+      }
+    ]
+  },
+  {
+    "party": "veteran",
+    "partyIds": [
+      "evelyn",
+      "selene",
+      "asteria",
+      "nox"
+    ],
+    "seed": 8801,
+    "phase": "reward",
+    "actions": 100,
+    "kills": 47,
+    "rank": "S",
+    "rounds": 27,
+    "replayEvents": 260,
+    "maxUnits": 9,
+    "materials": {
+      "copper": 28,
+      "coal": 11,
+      "copper-ingot": 10,
+      "ore": 22,
+      "timber": 25,
+      "stone": 25,
+      "iron": 9
+    },
+    "gems": [
+      "ordinary",
+      "ordinary"
+    ],
+    "rareParts": {
+      "copper-ingot": 10,
+      "iron": 9
+    },
+    "remainingHp": [
+      {
+        "id": "evelyn",
+        "hp": 414,
+        "max": 458
+      },
+      {
+        "id": "selene",
+        "hp": 229,
+        "max": 250
+      },
+      {
+        "id": "asteria",
+        "hp": 219,
+        "max": 236
+      },
+      {
+        "id": "nox",
+        "hp": 298,
+        "max": 298
+      }
+    ]
+  }
+]

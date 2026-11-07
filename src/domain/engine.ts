@@ -1,3 +1,4 @@
+import { canHunt, huntPool, huntProgress, HUNT_HANDS, HUNT_RULES, HUNT_BOSS_UNLOCK } from './hunt';
 import { capFieldDamage, finishFieldRound, beginFieldRound, fieldSkill, fieldSuggested, repairFieldReceipt, payFieldSupply } from './field-research';
 import { commandYieldsToResources } from './command-resource-safety';
 import { applyJamDampening, consumeJamDampening } from './jam-dampening';
@@ -99,6 +100,7 @@ export function recruitCost(def: CharacterDef): MaterialCost[] {
   return costs;
 }
 function emit(battle: Battle, event: Omit<BattleEvent, 'id'>): void {
+  if (battle.hunt) event = { ...event, huntProgress: huntProgress(battle) };
  const reserves=event.barrierReturnAction?[]:event.unitsAfter?.filter(unit=>(unit.barrierReturn?.power??0)>0)??[];
  let previous=battle.initialUnits;
  if(reserves.length)for(let i=battle.events.length-1;i>=0;i--)if(battle.events[i]!.unitsAfter){previous=battle.events[i]!.unitsAfter!;break;}
@@ -121,6 +123,32 @@ function makeUnit(battle: Battle, content: Content, characterId: string, side: U
   }
   const random = rng(battle.seed); battle.seed = random.seed;
   return { uid: side === 'party' ? `party:${characterId}` : `enemy:w${battle.wave}:${index}:${characterId}`, characterId, side, boss, hp: stats.hp, maxHp: stats.hp, attack: stats.attack, defense: stats.defense, speed: stats.speed, tie: random.seed, cooldowns: {} };
+}
+function refillHunt(battle: Battle, content: Content): void {
+  const h=battle.hunt;if(!h||h.stage!=='hunting'||h.actions>=HUNT_HANDS)return;
+  const stage=dungeon(content,battle.dungeonId),pool=huntPool(stage),capacity=h.actions>=HUNT_RULES.rampAt?HUNT_RULES.lateEnemies:HUNT_RULES.initialEnemies;
+  const sources=new Set(battle.units.filter(u=>u.hp>0).flatMap(u=>[...Object.values(u.ailments??{}).map(a=>a.sourceId),...(u.barrierReturn?[u.barrierReturn.sourceId]:[])]));
+  battle.units=battle.units.filter(u=>u.side==='party'||u.hp>0||sources.has(u.uid));
+  if(battle.focusTargetId&&!battle.units.some(u=>u.uid===battle.focusTargetId&&u.hp>0))delete battle.focusTargetId;
+  if(battle.memoryEchoes)battle.memoryEchoes=battle.memoryEchoes.filter(e=>battle.units.some(u=>u.uid===e.targetId&&u.hp>0));
+  const spawned: string[]=[];
+  while(alive(battle.units,'enemy').length<capacity){
+    const pick=rng(battle.seed);battle.seed=pick.seed;const serial=++h.serial;
+    const rare=stage.rareEncounter && serial%15===0 && (pick.seed>>>8)%100<stage.rareEncounter.chance;
+    const id=rare?stage.rareEncounter!.characterIds[pick.seed%stage.rareEncounter!.characterIds.length]!:pool[pick.seed%pool.length]!;
+    const unit=makeUnit(battle,content,id,'enemy',serial,false),elite=serial%HUNT_RULES.eliteEvery===0;
+    unit.uid=`enemy:hunt:${serial}:${elite?'elite:':''}${id}`;
+    // Encounter modifiers leave the shared recruitable character definition untouched.
+    const pressure=1+h.actions/HUNT_HANDS*HUNT_RULES.pressure;
+    unit.hp=unit.maxHp=Math.max(1,Math.round(unit.maxHp*HUNT_RULES.hp*(elite?HUNT_RULES.eliteHp:1)*pressure));
+    unit.attack=Math.max(1,Math.round(unit.attack*HUNT_RULES.attack*(elite?HUNT_RULES.eliteAttack:1)*pressure));
+    battle.units.push(unit);spawned.push(unit.uid);
+  }
+  const last=battle.events.at(-1);
+  if(spawned.length&&last){last.unitsAfter=clone(battle.units);last.huntProgress=huntProgress(battle);}
+}
+function huntTransition(b: Battle): boolean {
+  if(b.hunt?.stage==='hunting'&&b.hunt.actions>=HUNT_HANDS){b.nextPhase='wave';return true;}return false;
 }
 function clearEffects(unit: Unit): void {
   clearScoutEffects(unit); delete unit.field;
@@ -151,6 +179,7 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
   if (battle.blooms && !battle.blooms.flower) battle.blooms.growth = 0;
   const def = dungeon(content, battle.dungeonId);
   delete battle.commandOrder; delete battle.commandIssuedRound;
+  if (battle.hunt && !first) { battle.hunt.stage='boss'; battle.wave=def.waves.length-1; }
   let wave = def.waves[battle.wave];
   if (!wave?.length || wave.length > 4) throw new Error('Waveの敵編成が不正です');
   const party = first ? battle.partyIds.map((id, i) => makeUnit(battle, content, id, 'party', i)) : battle.units.filter((unit) => unit.side === 'party');
@@ -165,6 +194,7 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
     }
   }
   battle.units = [...party, ...wave.map((enemy, i) => makeUnit(battle, content, enemy.characterId, 'enemy', i, !!enemy.boss))];
+  if(battle.hunt?.stage==='hunting'){battle.units=party;refillHunt(battle,content);}
   battle.fieldSupplies=undefined; if(def.fieldLesson) battle.fieldScenario={kind:def.fieldLesson,rounds:12};
   battle.round = 1; battle.potionUsed = false;
   restoreClockShield(battle, content, false);
@@ -181,12 +211,14 @@ function openWave(battle: Battle, content: Content, first: boolean): Battle {
   }
   return battle;
 }
-export function createBattle(content: Content, partyIds: string[], leaderId: string, dungeonId: string, potions: number, seed: number, id: string): Battle {
+export function createBattle(content: Content, partyIds: string[], leaderId: string, dungeonId: string, potions: number, seed: number, id: string, mode?: 'hunt'): Battle {
   if (duplicateFamily(partyIds, content) || partyIds.length < 1 || partyIds.length > 4 || new Set(partyIds).size !== partyIds.length || !partyIds.includes(leaderId)) throw new Error('編成とリーダーを確認してください');
   if (!Number.isInteger(potions) || potions < 0 || potions > 5) throw new Error('薬の持ち込み数が不正です');
   const def = dungeon(content, dungeonId);
   if (!def.published || !def.waves.length) throw new Error('このダンジョンには出発できません');
-  return openWave({ id, dungeonId, contentVersion: content.contentVersion, rulesVersion: content.rulesVersion, wave: 0, round: 1, units: [], initialUnits: [], partyIds: [...partyIds], leaderId, strategy: 'balanced', potionsRemaining: potions, potionUsed: false, pendingMaterials: {}, seed: seed >>> 0, talkFlags: [], phase: 'playing', nextPhase: 'ready', events: [], cursor: 0, goldEarned: 0 }, content, true);
+  if(mode!==undefined&&mode!=='hunt')throw new Error('このダンジョンは連続討伐に対応していません');
+  if(mode==='hunt'&&!canHunt(def))throw new Error('このダンジョンは連続討伐に対応していません');
+  return openWave({ ...(mode==='hunt'?{hunt:{actions:0,kills:0,serial:0,stage:'hunting' as const}}:{}), id, dungeonId, contentVersion: content.contentVersion, rulesVersion: content.rulesVersion, wave: 0, round: 1, units: [], initialUnits: [], partyIds: [...partyIds], leaderId, strategy: 'balanced', potionsRemaining: potions, potionUsed: false, pendingMaterials: {}, seed: seed >>> 0, talkFlags: [], phase: 'playing', nextPhase: 'ready', events: [], cursor: 0, goldEarned: 0 }, content, true);
 }
 function alive(units: Unit[], side: Unit['side']): Unit[] { return units.filter((unit) => unit.side === side && unit.hp > 0); }
 function lowerHP(a: Unit, b: Unit): number { return a.hp / a.maxHp - b.hp / b.maxHp || byId(a, b); }
@@ -554,6 +586,7 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
     if (unit.boss && !battle.talkFlags.includes(`${unit.uid}:dead`)) { battle.talkFlags.push(`${unit.uid}:dead`); emit(battle, { kind: 'dialogue', actorId: unit.uid, text: bossLine(content, unit.characterId, 'defeat', battle.dungeonId) }); }
     if (unit.side !== 'enemy' || dungeon(content, battle.dungeonId).kind === 'trial') continue;
     const stage = dungeon(content, battle.dungeonId);
+    if(battle.hunt?.stage==='hunting')battle.hunt.kills++;
     const event = content.events?.find(item => item.id === stage.eventId);
     const special = unit.boss && event && stage.eventReward && battle.wave === stage.waves.length - 1;
     const random = rng(battle.seed); battle.seed = random.seed;
@@ -566,7 +599,7 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
     // Keep the rarity RNG draw above so this policy does not change combat RNG.
     if (stage.towerFloor !== undefined) continue;
     if (!special) battle.pendingMaterials[materialId] = (battle.pendingMaterials[materialId] ?? 0) + 1;
-    if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity });
+    if (!special) emit(battle, { kind: 'drop', actorId: unit.uid, text: `${def.name}の素材を仮取得`, materialId, rarity, ...(battle.hunt?.stage==='hunting'?{huntKill:true}:{}) });
     for (const reward of def.encounterLoot?.guaranteed ?? []) {
       battle.pendingMaterials[reward.materialId] = (battle.pendingMaterials[reward.materialId] ?? 0) + reward.count;
       const label = content.materials?.find(item => item.id === reward.materialId)?.name ?? reward.materialId;
@@ -591,6 +624,7 @@ function settleAction(battle: Battle, content: Content, before: Unit[]) {
       emit(battle, { kind: 'drop', actorId: unit.uid, text: `${label} ×${reward.count}を仮取得`, materialId: reward.materialId, amount: reward.count, rarity: reward.materialId === event.core.id ? 'epic' : 'rare' });
     }
   }
+  refillHunt(battle,content);
   return { goldEarned, discoveredIds };
 }
 export function resolveRound(input: Battle, content: Content): RoundResult {
@@ -615,6 +649,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   const issued = resourceFallback ? undefined : requested;
   if(resourceFallback)emit(battle,{kind:'buff',commandAction:'resource-fallback',actorId:commander!.uid,targetIds:requested!.followerIds,text:`${character(content,commander!.characterId).name} — 資源を守る号令（発令を見送り、通常行動へ）`,unitsAfter:clone(battle.units)});
   if (issued) {
+    if(battle.hunt?.stage==='hunting')battle.hunt.actions=Math.min(HUNT_HANDS,battle.hunt.actions+1);
     battle.commandIssuedRound = battle.round;
     gainUltimate(commander!, 25);
     emit(battle, { kind: 'buff', actionSelection: true, actorId: commander!.uid, targetIds: [issued.targetId], text: `${character(content, commander!.characterId).name} — 星図の号令`, unitsAfter: clone(battle.units) });
@@ -633,6 +668,7 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
     if (actor.field?.restRound === battle.round) continue;
     if (actor.hp <= 0 || issued && actor.uid === commander!.uid) continue;
     if (!alive(battle.units, 'party').length || !alive(battle.units, 'enemy').length && !battle.fieldScenario) break;
+    if(actor.side==='party'&&battle.hunt?.stage==='hunting'){if(battle.hunt.actions>=HUNT_HANDS)continue;battle.hunt.actions++;}
     const before = clone(battle.units);
     const controlled = controlledAction(actor, battle, content);
     if (controlled.skip) {
@@ -934,6 +970,8 @@ export function resolveRound(input: Battle, content: Content): RoundResult {
   else if (!alive(battle.units, 'party').length) {
     battle.nextPhase = 'failed'; battle.failureKind = 'defeat'; battle.failureReason = 'パーティが全滅しました';
     emit(battle, { kind: 'defeat', text: dungeon(content, battle.dungeonId).kind === 'trial' ? '挑戦終了 — パーティが全滅しました' : '探索失敗 — 今回の素材はすべて失われます' });
+  } else if (huntTransition(battle)) {
+    // The remaining ordinary enemies leave when the hunt ends; they grant no kills or loot.
   } else if (!alive(battle.units, 'enemy').length) {
     battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
   } else if (battle.round >= (dungeon(content, battle.dungeonId).towerFloor ? TOWER_ROUND_LIMIT : 100)) {
@@ -979,8 +1017,10 @@ export function useBattleAid(input: Battle, kind: 'heal' | 'strike', content: Co
     const hit = damage(striker, target, source === 'harvest' ? 90 + (input.harvest?.upgrades.focus ?? 0) * 20 : 150, 100, battle, true, content, false, false, false, 1, undefined, false, true);
     emit(battle, { kind: 'attack', ...(source === 'bloom' ? {bloomAction:'strike' as const} : {harvestAction:'strike' as const}), targetIds: [hit.unit.uid], amount: hit.amount, absorbed: hit.absorbed || undefined, text: `${source === 'bloom' ? '月晶の花' : '回収した援護'} — ${hit.amount}ダメージ（障壁 ${hit.absorbed}）`, unitsAfter: clone(battle.units) });
   }
+  if(kind==='strike'&&battle.hunt?.stage==='hunting')battle.hunt.actions=Math.min(HUNT_HANDS,battle.hunt.actions+1);
   const settled = settleAction(battle, content, before);
-  if (!alive(battle.units, 'enemy').length && !battle.fieldScenario) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
+  if(huntTransition(battle)){}
+  else if (!alive(battle.units, 'enemy').length && !battle.fieldScenario) battle.nextPhase = battle.wave + 1 >= dungeon(content, battle.dungeonId).waves.length ? 'reward' : 'wave';
   return { battle, ...settled };
 }
 /** A single saved blessing; never advances combat or resets the potion allowance. */
@@ -1033,3 +1073,9 @@ export function usePotion(input: Battle, unitId: string): Battle {
   return battle;
 }
 
+
+export function proceedToHuntBoss(input:Battle,content:Content):Battle {
+ if(input.phase!=='ready'||input.hunt?.stage!=='hunting'||input.hunt.kills<HUNT_BOSS_UNLOCK)throw Error('Bランクに到達してからボスへ進めます。');
+ const b=clone(input);b.hunt!.finishAt=b.hunt!.actions;b.initialUnits=clone(b.units);b.phase='playing';b.nextPhase='wave';b.events=[];b.cursor=0;
+ emit(b,{kind:'wave',text:'ボスへ向かった',unitsAfter:clone(b.units)});return b;
+}

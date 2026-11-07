@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ChevronDown, ChevronUp, Hand, Hourglass, Leaf, HeartPulse, Sun } from 'lucide-react';
 import type { Battle, GameCommand } from '../domain/types';
-import { harvestUpgradeText, harvestSockets, nextHarvestAid, type HarvestUpgrade } from '../domain/battle-harvest';
+import { harvestQuality, harvestUpgradeText, harvestSockets, nextHarvestAid, type HarvestUpgrade } from '../domain/battle-harvest';
 import { industryItem } from '../domain/industry';
 import { ROUGH_NAMES } from '../domain/gem-polishing';
 import { tr, useLanguage } from '../locales/i18n';
@@ -63,15 +63,15 @@ export function BattleHarvest({ battle, command, reducedMotion=false }: { battle
     {s.offers.map(o=>{
       const name=o.kind==='gem'?tr(ROUGH_NAMES[o.gem!.promise]):o.kind==='material'?industryItem(o.itemId!)!.name[lang]:tr(o.kind==='heal'?'癒しの雫':'援護の結晶');
       const sprite=o.kind==='gem'?`rough-${o.gem!.promise}`:o.kind==='material'?o.itemId!:'healing-potion';
-      const remaining=Math.ceil((o.required-o.hits)/(1+s.upgrades.touch));
-      return <Button key={o.id} variant="secondary" className={`harvest-drop harvest-drop--${o.kind}${flash===o.id?' is-tapped':''}`} data-harvest-id={o.id} data-slot={o.slot}
+      const remaining=Math.ceil((o.required-o.hits)/(1+s.upgrades.touch+(battle.supplies?.collection===o.kind?1:0)));
+      return <Button key={o.id} variant="secondary" className={`harvest-drop harvest-drop--${o.kind}${flash===o.id?' is-tapped':''}`} data-harvest-id={o.id} data-slot={o.slot} data-quality={harvestQuality(o)} data-promise={o.gem?.promise}
         style={{left:`${positions[o.slot][0]}%`,top:`${positions[o.slot][1]}%`,'--drift-delay':`${-o.slot*.8}s`} as CSSProperties}
         aria-label={tr('{0}：あと{1}回で回収').replace('{0}',name).replace('{1}',String(remaining))}
         title={['heal','strike'].includes(o.kind)&&s.aids.length>=3?tr('援護の待機枠がいっぱいです'):name}
         disabled={['heal','strike'].includes(o.kind)&&s.aids.length>=3}
         onClick={()=>{setFlash(o.id);send({type:'harvestTap',battleId:battle.id,offerId:o.id});}}>
-        <span className="harvest-drop__art">{o.kind==='strike'?<HarvestGem kind="touch"/>:<InventorySprite id={sprite}/>}</span>
-        <span className="harvest-drop__hits">{remaining}</span>
+        <span className="harvest-drop__beam" aria-hidden="true"/><span className="harvest-drop__art">{o.kind==='strike'?<HarvestGem kind="touch"/>:<InventorySprite id={sprite}/>}</span>
+        {harvestQuality(o)!=='common'&&<span className="harvest-drop__quality" aria-hidden="true">{harvestQuality(o)==='epic'?'EPIC':'RARE'}</span>}<span className="harvest-drop__name">{name}</span><span className="harvest-drop__hits">{remaining}</span>
         <span className="harvest-drop__life" style={{width:`${Math.min(100,(o.expires-s.beat)/(o.kind==='gem'?18:10)*100)}%`}}/>
         {o.kind==='material'&&<small>×{o.amount}</small>}
       </Button>;

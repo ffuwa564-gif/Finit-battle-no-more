@@ -7,6 +7,7 @@ import { Button } from './index';
 import './battle-control-pad.css';
 
 export interface BattleControlPadProps {
+  bossGate?: {disabled:boolean;onClick:()=>void};
   auto?: boolean;
   onToggleAuto?: () => void;
   strategy: Strategy;
@@ -46,6 +47,7 @@ export function BattleControlPad(p: BattleControlPadProps) {
       <div className="battle-control-pad__utilities">
         <div className="battle-control-pad__toolbar">{localize(p.toolbar)}</div>
         <Button variant="secondary" className="moon-command moon-command--retreat" aria-label={tr("撤退")} title={tr("撤退")} disabled={p.retreatDisabled} onClick={p.onRetreat}><Flag aria-hidden="true" /><span>RETREAT</span></Button>
+        {p.bossGate&&<Button className="hunt-boss-gate" variant="secondary" disabled={p.bossGate.disabled} onClick={p.bossGate.onClick} title={tr('Bランクからボスへ進めます')}>{tr('ボスへ')}</Button>}
       </div>
       <div className="battle-control-pad__advance">
       <Button variant="secondary" className="battle-auto" selected={!!p.auto} aria-label={tr(p.auto ? 'オート進行を停止' : 'オート進行を開始')} onClick={p.onToggleAuto}><Timer aria-hidden="true"/><span>AUTO</span></Button>

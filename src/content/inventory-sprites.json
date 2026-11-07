@@ -1402,5 +1402,65 @@
     "y": 631,
     "width": 281,
     "height": 276
+  },
+  "polishing-powder": {
+    "atlas": "raw-items-atlas",
+    "columns": 4,
+    "rows": 3,
+    "index": 4,
+    "atlasWidth": 1448,
+    "atlasHeight": 1086,
+    "x": 48,
+    "y": 426,
+    "width": 314,
+    "height": 242
+  },
+  "polishing-cloth": {
+    "atlas": "raw-items-atlas",
+    "columns": 4,
+    "rows": 3,
+    "index": 8,
+    "atlasWidth": 1448,
+    "atlasHeight": 1086,
+    "x": 51,
+    "y": 728,
+    "width": 311,
+    "height": 294
+  },
+  "polishing-kit": {
+    "atlas": "parts-atlas",
+    "columns": 5,
+    "rows": 4,
+    "index": 13,
+    "atlasWidth": 1402,
+    "atlasHeight": 1122,
+    "x": 851,
+    "y": 579,
+    "width": 250,
+    "height": 263
+  },
+  "recovery-lantern": {
+    "atlas": "tools-story-atlas",
+    "columns": 5,
+    "rows": 4,
+    "index": 13,
+    "atlasWidth": 1402,
+    "atlasHeight": 1122,
+    "x": 841,
+    "y": 561,
+    "width": 220,
+    "height": 281
+  },
+  "exploration-incense": {
+    "atlas": "parts-atlas",
+    "columns": 5,
+    "rows": 4,
+    "index": 10,
+    "atlasWidth": 1402,
+    "atlasHeight": 1122,
+    "x": 61,
+    "y": 561,
+    "width": 206,
+    "height": 245
   }
 }

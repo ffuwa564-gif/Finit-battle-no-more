@@ -58,3 +58,8 @@
   .battle-layout .battle-control-pad .moon-command--strategy > svg { width: 25px; height: 25px; }
 }
 @media (prefers-reduced-motion: reduce) { .battle-layout .battle-control-pad .moon-command { transition: none; } }
+.battle-control-pad .hunt-boss-gate{font-size:11px;border:1px solid #c5ae70aa;background:#192838;color:#ead8a4;border-radius:8px}
+.battle-control-pad__utilities:has(.hunt-boss-gate){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:54px 56px;gap:2px}
+.battle-control-pad__utilities:has(.hunt-boss-gate) .battle-control-pad__toolbar{grid-column:1/-1}
+.battle-layout .battle-control-pad__utilities:has(.hunt-boss-gate) .moon-command--retreat{min-height:44px;height:56px}
+.battle-layout .battle-control-pad .hunt-boss-gate{min-width:44px;min-height:44px;margin:0;padding:2px;font-size:11px;white-space:nowrap}
