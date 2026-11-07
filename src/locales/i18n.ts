@@ -1,5 +1,5 @@
 import { useSyncExternalStore, type ReactNode } from 'react';
-import english from './en.json';
+import english from './en.json' with { type: 'json' };
 
 export type Language = 'ja' | 'en';
 const storageKey = 'stillveil-language';

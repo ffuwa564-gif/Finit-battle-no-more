@@ -1,6 +1,6 @@
 import { createContext, type ReactNode } from 'react';
 import { assetPath } from '../content';
-import spriteCatalog from '../content/inventory-sprites.json';
+import spriteCatalog from '../content/inventory-sprites.json' with { type: 'json' };
 import { GameImage } from './GameMedia';
 import './inventory-children.css';
 import './inventory-controls.css';

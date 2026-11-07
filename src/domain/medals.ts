@@ -1,4 +1,4 @@
-import catalog from '../content/medals.json';
+import catalog from '../content/medals.json' with { type: 'json' };
 import { industryCatalog } from './industry';
 import { GEM_DEFINITIONS, gemDefinition, gemTier } from './memory-gems';
 import {medalChallengeIds,characterMedalChallenges,observeMedalChallenge,commitMedalChallenges,type MedalChallengeId,type CharacterMedalChallengeId} from './medal-challenges';
